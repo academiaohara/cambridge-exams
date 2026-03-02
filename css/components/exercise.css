@@ -119,9 +119,11 @@
   font-size: 0.95rem;
 }
 
+/* css/components/exercise.css - Reemplaza la sección .exercise-main-layout */
+
 .exercise-main-layout {
-  display: grid;
-  grid-template-columns: 1fr 300px;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
   margin: 24px 0;
 }
@@ -147,8 +149,22 @@
   padding: 20px;
   min-height: 200px;
   border: 1px solid var(--border-light);
+  margin-top: 20px;
+  width: 100%;
 }
-/* css/components/exercise.css - Añade esto al final */
+
+/* Para pantallas grandes, podemos ponerlo en 2 columnas */
+@media (min-width: 1024px) {
+  .exercise-main-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 24px;
+  }
+  
+  .active-tool-content {
+    margin-top: 0;
+  }
+}
 
 /* ===== FOOTER DE EJERCICIOS ===== */
 .exercise-footer {
