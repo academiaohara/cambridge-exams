@@ -22,8 +22,15 @@
     checkAnswers: function() {
       if (!AppState.currentExercise || !AppState.currentExercise.answers || 
           Object.keys(AppState.currentExercise.answers).length === 0) {
-        alert(I18n.t('answerFirst'));
-        return;
+        const partConfig = CONFIG.PART_TYPES[
+          AppState.currentSection === 'reading' ? AppState.currentPart :
+          `${AppState.currentSection}${AppState.currentPart}`
+        ];
+        const skipCheck = ['essay', 'choice', 'interview', 'long-turn', 'collaborative', 'discussion'];
+        if (!partConfig || !skipCheck.includes(partConfig.type)) {
+          alert(I18n.t('answerFirst'));
+          return;
+        }
       }
       
       AppState.answersChecked = true;
@@ -72,7 +79,8 @@
         'sentence-completion': window.ListeningType2,
         'cross-text-matching': window.ReadingType6,
         'gapped-text': window.ReadingType7,
-        'multiple-matching': window.ReadingType8
+        'multiple-matching': window.ReadingType8,
+        'dual-matching': window.ListeningType4
       };
       return typeMap[type];
     },
@@ -146,6 +154,15 @@
           
         case 'gapped-text':
           document.querySelectorAll('select.paragraph-select').forEach(select => select.disabled = true);
+          break;
+
+        case 'essay':
+        case 'choice':
+          document.querySelectorAll('.writing-textarea').forEach(t => t.disabled = true);
+          break;
+
+        case 'dual-matching':
+          document.querySelectorAll('.listening-type4-select').forEach(s => s.disabled = true);
           break;
       }
     },
@@ -242,6 +259,22 @@
           document.querySelectorAll('select.paragraph-select').forEach(select => {
             select.value = '';
             select.disabled = false;
+          });
+          break;
+
+        case 'essay':
+        case 'choice':
+          document.querySelectorAll('.writing-textarea').forEach(t => {
+            t.value = '';
+            t.disabled = false;
+          });
+          break;
+
+        case 'dual-matching':
+          document.querySelectorAll('.listening-type4-select').forEach(s => {
+            s.value = '';
+            s.disabled = false;
+            s.classList.remove('correct', 'incorrect');
           });
           break;
       }

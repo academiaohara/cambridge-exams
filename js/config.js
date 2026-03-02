@@ -59,8 +59,36 @@
         js: 'listening-type1.js'
       },
       'listening-4': {
-        css: 'listening-type1.css',
-        js: 'listening-type1.js'
+        css: 'listening-type4.css',
+        js: 'listening-type4.js'
+      },
+      'essay': {
+        css: 'writing-type1.css',
+        js: 'writing-type1.js'
+      },
+      'choice': {
+        css: 'writing-type2.css',
+        js: 'writing-type2.js'
+      },
+      'interview': {
+        css: 'speaking-type.css',
+        js: 'speaking-type.js'
+      },
+      'long-turn': {
+        css: 'speaking-type.css',
+        js: 'speaking-type.js'
+      },
+      'collaborative': {
+        css: 'speaking-type.css',
+        js: 'speaking-type.js'
+      },
+      'discussion': {
+        css: 'speaking-type.css',
+        js: 'speaking-type.js'
+      },
+      'dual-matching': {
+        css: 'listening-type4.css',
+        js: 'listening-type4.js'
       }
     }
   };
@@ -71,6 +99,8 @@
   window.CONFIG.TIPS_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/tips/`;
   window.CONFIG.JS_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/js/`;
   window.CONFIG.CSS_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/css/`;
+  window.CONFIG.AI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
+  window.CONFIG.AI_MODEL = 'gpt-4o-mini';
   
   // Configuración de tipos de ejercicios
   window.CONFIG.PART_TYPES = {
@@ -87,8 +117,8 @@
     // Listening
     listening1: { type: 'multiple-choice', inputMode: 'radio', total: 8 },
     listening2: { type: 'sentence-completion', inputMode: 'text', total: 10 },
-    listening3: { type: 'multiple-matching', inputMode: 'modal', total: 5 },
-    listening4: { type: 'multiple-choice', inputMode: 'radio', total: 7 },
+    listening3: { type: 'multiple-choice-text', inputMode: 'radio', total: 6 },
+    listening4: { type: 'dual-matching', inputMode: 'select', total: 10 },
     
     // Writing
     writing1: { type: 'essay', inputMode: 'textarea', total: 1 },

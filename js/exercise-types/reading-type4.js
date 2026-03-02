@@ -49,13 +49,16 @@
     
     isAnswerCorrect: function(userAnswer, correctAnswer) {
       if (!userAnswer) return false;
-      
+      const normalize = s => s.trim().toLowerCase().replace(/\s+/g, ' ');
+      const normalizedUser = normalize(userAnswer);
+
       if (Array.isArray(correctAnswer)) {
-        return correctAnswer.some(ans => 
-          userAnswer.toLowerCase().includes(ans.toLowerCase())
-        );
+        return correctAnswer.some(ans => normalizedUser.includes(normalize(ans)));
       }
-      return userAnswer.toLowerCase().includes(correctAnswer.toLowerCase());
+      if (typeof correctAnswer === 'string' && correctAnswer.includes('/')) {
+        return correctAnswer.split('/').some(ans => normalizedUser.includes(normalize(ans)));
+      }
+      return normalizedUser.includes(normalize(correctAnswer));
     },
     
     checkAnswers: function() {
