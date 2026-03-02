@@ -25,6 +25,37 @@
       }
     },
     
+    // Cargar CSS específico del tipo de ejercicio
+    loadExerciseTypeCSS: function(type) {
+      const fileInfo = window.CONFIG?.EXERCISE_TYPE_FILES?.[type];
+      if (!fileInfo || !fileInfo.css) return;
+      
+      const cssId = `css-${type}`;
+      if (document.getElementById(cssId)) return;
+      
+      const link = document.createElement('link');
+      link.id = cssId;
+      link.rel = 'stylesheet';
+      link.href = `${window.CONFIG.CSS_BASE_URL}exercise-types/${fileInfo.css}`;
+      document.head.appendChild(link);
+      console.log(`🎨 CSS cargado para tipo: ${type}`);
+    },
+    
+    // Cargar JS específico del tipo de ejercicio
+    loadExerciseTypeJS: function(type) {
+      const fileInfo = window.CONFIG?.EXERCISE_TYPE_FILES?.[type];
+      if (!fileInfo || !fileInfo.js) return;
+      
+      const jsId = `js-${type}`;
+      if (document.getElementById(jsId)) return;
+      
+      const script = document.createElement('script');
+      script.id = jsId;
+      script.src = `${window.CONFIG.JS_BASE_URL}exercise-types/${fileInfo.js}`;
+      document.body.appendChild(script);
+      console.log(`📦 JS cargado para tipo: ${type}`);
+    },
+    
     // Formatear tiempo
     formatTime: function(seconds) {
       const mins = Math.floor(seconds / 60);
