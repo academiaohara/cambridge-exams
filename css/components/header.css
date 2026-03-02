@@ -1,0 +1,83 @@
+/* css/components/header.css */
+.main-header {
+  background: rgb(107 111 212 / 65%);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo i {
+  font-size: 2rem;
+  color: white;
+  background: rgba(255,255,255,0.2);
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.logo-text span {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.9;
+  display: block;
+}
+
+.level-nav { 
+  display: flex; 
+  gap: 12px; 
+  flex-wrap: wrap; 
+}
+
+.level-btn {
+  padding: 12px 24px;
+  border-radius: 40px;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.level-btn:hover { 
+  transform: translateY(-2px); 
+  background: rgba(255,255,255,0.2); 
+  border-color: white; 
+}
+
+.level-btn.active { 
+  background: white; 
+  color: var(--text-dark); 
+  border-color: white; 
+  box-shadow: var(--shadow-md); 
+}
