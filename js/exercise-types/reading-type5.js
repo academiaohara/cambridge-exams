@@ -17,7 +17,8 @@
     
     renderOptions: function(question, qNum, isChecked, userAnswer) {
       let html = '';
-      question.options.forEach(opt => {
+      const options = question.options || ['A', 'B', 'C', 'D'];
+      options.forEach(opt => {
         const letter = opt.charAt(0);
         const checked = userAnswer === letter ? 'checked' : '';
         const labelClass = isChecked

@@ -13,12 +13,10 @@
         const colorClass = isCorrect ? 'reading-type4-correct' : 'reading-type4-incorrect';
         gapHTML = `<span class="reading-type4-inline-wrap ${colorClass}">` +
           `<input type="text" class="reading-type4-inline-input gap-input ${colorClass}" data-question="${qNum}" value="${userAnswer || ''}" disabled ${!isCorrect ? 'title="✓ ' + question.correct + '"' : ''}>` +
-          `<span class="reading-type4-keyword-badge">${question.keyWord}</span>` +
           `</span>`;
       } else {
         gapHTML = `<span class="reading-type4-inline-wrap${userAnswer ? ' reading-type4-purple' : ''}">` +
           `<input type="text" class="reading-type4-inline-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" placeholder="..." oninput="ReadingType4.handleInput(${qNum}, this.value)">` +
-          `<span class="reading-type4-keyword-badge">${question.keyWord}</span>` +
           `</span>`;
       }
       
@@ -27,6 +25,9 @@
           <div class="reading-type4-number">${qNum}.</div>
           <div class="reading-type4-original">
             ${question.firstSentence}
+          </div>
+          <div class="reading-type4-keyword-line">
+            <span class="reading-type4-keyword">${question.keyWord}</span>
           </div>
           <div class="reading-type4-second">
             ${beforeGap} ${gapHTML} ${afterGap}
