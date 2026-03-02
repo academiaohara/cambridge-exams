@@ -35,11 +35,8 @@
     
     // Función de traducción
     t: function(key) {
-      // Verificar que AppState existe
-      if (!window.AppState) return key;
-      
-      const translations = AppState.translations || {};
-      const currentLang = AppState.currentLanguage || 'es';
+      const translations = AppState.translations;
+      const currentLang = AppState.currentLanguage;
       
       if (!translations || Object.keys(translations).length === 0) return key;
       return translations[currentLang]?.[key] || translations['en']?.[key] || key;
@@ -47,9 +44,6 @@
 
     // Actualizar UI con el idioma
     updateUILanguage: function() {
-      // Verificar que podemos acceder al DOM
-      if (!document) return;
-      
       // Actualizar todos los elementos con data-i18n
       document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
@@ -62,7 +56,7 @@
         element.placeholder = this.t(key);
       });
       
-      // Actualizar elementos específicos que no tienen data-i18n
+      // Actualizar elementos específicos
       const modeHeader = document.getElementById('modeHeader');
       if (modeHeader) modeHeader.textContent = this.t('fullExams');
       
@@ -72,9 +66,9 @@
       });
       
       // Actualizar títulos de secciones si es necesario
-      if (window.AppState && AppState.currentExercise) {
+      if (AppState.currentExercise) {
         const sectionTitle = document.querySelector('.exercise-title h2');
-        if (sectionTitle && window.Utils) {
+        if (sectionTitle) {
           const levelName = Utils.getLevelName(AppState.currentLevel);
           const sectionDisplay = Utils.getSectionTitle(AppState.currentSection);
           sectionTitle.textContent = `${levelName} - ${sectionDisplay}`;
@@ -82,7 +76,7 @@
       }
     },
     
-    // Actualizar bandera seleccionada
+    // ¡¡ESTE MÉTODO FALTA EN TU CÓDIGO ACTUAL!!
     updateSelectedFlag: function(lang) {
       const flagElement = document.getElementById('selectedFlag');
       const langElement = document.getElementById('selectedLang');
@@ -116,7 +110,4 @@
       });
     }
   };
-  
-  // Verificar que se creó correctamente
-  console.log('✅ I18n cargado correctamente:', window.I18n);
 })();
