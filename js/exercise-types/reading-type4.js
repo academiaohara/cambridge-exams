@@ -1,39 +1,39 @@
-// js/exercise-types/reading-tipe4.js
+// js/exercise-types/reading-type4.js
 // Key word transformations - Part 4
 
 (function() {
-  window.ReadingTipe4 = {
+  window.ReadingType4 = {
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
-      let inputClass = 'reading-tipe4-input';
+      let inputClass = 'reading-type4-input';
       if (isChecked) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
         inputClass += isCorrect ? ' correct' : ' incorrect';
       }
       
       return `
-        <div class="reading-tipe4-question">
-          <div class="reading-tipe4-sentence">
+        <div class="reading-type4-question">
+          <div class="reading-type4-sentence">
             ${question.firstSentence}
           </div>
-          <div class="reading-tipe4-keyword">
+          <div class="reading-type4-keyword">
             ${question.keyWord}
           </div>
-          <div class="reading-tipe4-transformation">
-            <div class="reading-tipe4-gap-container">
-              <div class="reading-tipe4-gap">
+          <div class="reading-type4-transformation">
+            <div class="reading-type4-gap-container">
+              <div class="reading-type4-gap">
                 <input type="text" 
                        class="${inputClass}" 
                        data-question="${qNum}" 
                        value="${userAnswer || ''}" 
                        placeholder="${I18n.t('writeAnswer')}" 
                        ${isChecked ? 'disabled' : ''}
-                       oninput="ReadingTipe4.handleInput(${qNum}, this.value)">
+                       oninput="ReadingType4.handleInput(${qNum}, this.value)">
               </div>
-              <div class="reading-tipe4-word-limit">
+              <div class="reading-type4-word-limit">
                 <i class="fas fa-key"></i> ${I18n.t('useKeyword')}
               </div>
             </div>
-            <div class="reading-tipe4-second-sentence">
+            <div class="reading-type4-second-sentence">
               ${question.secondSentence}
             </div>
           </div>
