@@ -39,19 +39,41 @@
       if (!translations || Object.keys(translations).length === 0) return key;
       return translations[currentLang]?.[key] || translations['en']?.[key] || key;
     },
-    
-    // Actualizar UI con idioma
-    updateUILanguage: function() {
-      const modeHeader = document.getElementById('modeHeader');
-      if (modeHeader) modeHeader.textContent = this.t('fullExams');
-      
-      document.querySelectorAll('.exam-progress-badge').forEach(badge => {
-        const badgeText = badge.textContent.toLowerCase();
-        if (badgeText.includes('próximamente') || badgeText.includes('soon')) {
-          badge.innerHTML = `<i class="fas fa-clock"></i> ${this.t('soon')}`;
-        }
-      });
-    },
+
+    // En i18n.js - Reemplazar la función updateUILanguage
+updateUILanguage: function() {
+  // Actualizar todos los elementos con data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    element.textContent = this.t(key);
+  });
+  
+  // Actualizar placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    element.placeholder = this.t(key);
+  });
+  
+  // Actualizar elementos específicos que no tienen data-i18n
+  const modeHeader = document.getElementById('modeHeader');
+  if (modeHeader) modeHeader.textContent = this.t('fullExams');
+  
+  // Actualizar badges de progreso
+  document.querySelectorAll('.exam-progress-badge').forEach(badge => {
+    badge.innerHTML = `<i class="fas fa-clock"></i> ${this.t('soon')}`;
+  });
+  
+  // Actualizar títulos de secciones si es necesario
+  if (AppState.currentExercise) {
+    // Si estamos en un ejercicio, actualizar títulos específicos
+    const sectionTitle = document.querySelector('.exercise-title h2');
+    if (sectionTitle) {
+      const levelName = Utils.getLevelName(AppState.currentLevel);
+      const sectionDisplay = Utils.getSectionTitle(AppState.currentSection);
+      sectionTitle.textContent = `${levelName} - ${sectionDisplay}`;
+    }
+  }
+}
     
     // Actualizar bandera seleccionada
     updateSelectedFlag: function(lang) {
