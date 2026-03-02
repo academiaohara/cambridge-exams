@@ -1,0 +1,84 @@
+/* css/components/modal.css */
+.modal-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background: transparent;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 20000;
+  pointer-events: none;
+}
+
+.modal-content {
+  background: var(--modal-bg);
+  width: 90%;
+  max-width: 800px;
+  padding: 30px;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  border: 1px solid var(--border-light);
+  border-bottom: none;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 10;
+}
+
+.modal-close:hover { color: var(--text-dark); }
+
+.modal-header { margin-bottom: 30px; }
+
+.modal-header h3 { 
+  color: var(--primary); 
+  margin-bottom: 5px; 
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.modal-header p { 
+  color: var(--text-medium); 
+  font-size: 1rem;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.opt-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+
+.opt-btn:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
