@@ -148,3 +148,153 @@
   min-height: 200px;
   border: 1px solid var(--border-light);
 }
+/* css/components/exercise.css - Añade esto al final */
+
+/* ===== FOOTER DE EJERCICIOS ===== */
+.exercise-footer {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid #f1f5f9;
+  flex-wrap: wrap;
+}
+
+.btn-check, .btn-explanations, .btn-reset, .btn-prev, .btn-next {
+  padding: 14px 20px;
+  border-radius: 40px;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-check {
+  flex: 2;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  min-width: 160px;
+}
+
+.btn-check:hover:not(:disabled) { 
+  filter: brightness(1.1); 
+  transform: translateY(-2px); 
+}
+
+.btn-check:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-explanations {
+  flex: 1;
+  background: var(--primary-light);
+  color: white;
+  min-width: 140px;
+}
+
+.btn-explanations:hover { 
+  filter: brightness(1.1); 
+  transform: translateY(-2px); 
+}
+
+.btn-reset {
+  flex: 1;
+  background: white;
+  color: var(--text-medium);
+  border: 2px solid #e2e8f0;
+  min-width: 140px;
+}
+
+.btn-reset:hover { 
+  background: #f1f5f9; 
+  border-color: var(--text-light); 
+  transform: translateY(-2px); 
+}
+
+.btn-prev, .btn-next {
+  flex: 1;
+  background: #f1f5f9;
+  color: var(--text-medium);
+  border: 2px solid transparent;
+  min-width: 120px;
+}
+
+.btn-prev:hover, .btn-next:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ===== ESTADOS DE CARGA ===== */
+.loading-exercise, .error-message {
+  text-align: center;
+  padding: 60px;
+  background: white;
+  border-radius: 24px;
+}
+
+.loading-exercise i { 
+  font-size: 3rem; 
+  color: var(--primary); 
+  margin-bottom: 20px; 
+  animation: spin 1s linear infinite; 
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.error-message i { 
+  font-size: 3rem; 
+  color: #ef4444; 
+  margin-bottom: 20px; 
+}
+
+.error-message h3 { 
+  font-size: 1.5rem; 
+  margin-bottom: 10px; 
+}
+
+.loading-mini {
+  text-align: center;
+  color: var(--text-light);
+  padding: 20px;
+}
+
+.loading-mini i { 
+  animation: spin 1s linear infinite; 
+}
+
+.empty-msg, .placeholder-text {
+  color: var(--text-light);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.95rem;
+}
+
+.btn-back {
+  margin-top: 20px;
+  padding: 12px 32px;
+  border-radius: 40px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-back:hover { 
+  filter: brightness(1.1); 
+  transform: translateY(-2px); 
+}
