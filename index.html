@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
     
-    <!-- CSS BASE - TODOS ESTOS SON NECESARIOS -->
+    <!-- CSS BASE - COMPONENTES PRINCIPALES -->
     <link rel="stylesheet" href="css/components/header.css">
     <link rel="stylesheet" href="css/components/footer.css">
     <link rel="stylesheet" href="css/components/dashboard.css">
@@ -22,44 +22,137 @@
     <link rel="stylesheet" href="css/components/tools.css">
     <link rel="stylesheet" href="css/components/responsive.css">
     
-    <!-- ESTOS TAMBIÉN SON NECESARIOS - CONTIENEN ESTILOS BASE -->
+    <!-- CSS BASE DE EJERCICIOS -->
     <link rel="stylesheet" href="css/components/exercise.css">
     <link rel="stylesheet" href="css/components/example.css">
     <link rel="stylesheet" href="css/components/gaps.css">
     
+    <!-- CSS DE TIPOS DE EJERCICIO (se cargarán dinámicamente según sea necesario)
+         Estos son solo respaldo, normalmente se cargan mediante Utils.loadExerciseTypeCSS() -->
+    
     <style>
-        /* Variables globales */
+        /* Variables globales - Asegurar que todas las variables CSS estén definidas */
         :root {
             --primary: #1e3a8a;
-            --secondary: #3b82f6;
-            --primary-dark: #1e3a8a;
-            --primary-light: #60a5fa;
-            --text-dark: #1e293b;
-            --text-medium: #475569;
+            --primary-light: #3b5b9b;
+            --primary-dark: #0f2b66;
+            --secondary: #7c3aed;
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+            --text-medium: #334155;
             --text-light: #64748b;
-            --border-light: #e2e8f0;
+            --white: #ffffff;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
             --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-            --white: #ffffff;
             --completed: #10b981;
-            --in-progress: #f59e0b;
-            --incorrect: #ef4444;
-            --correct: #10b981;
-            --gap-purple: #8b5cf6;
-            --gap-purple-dark: #6d28d9;
+            --in-progress: #818cf8;
+            --pending: #e2e8f0;
+            --reading: #8b5cf6;
+            --listening: #f97316;
+            --writing: #10b981;
+            --speaking: #ec4899;
+            --gap-purple: #c084fc;
+            --gap-purple-dark: #a855f7;
+            --modal-bg: #ffffff;
             --tool-bg: #f8fafc;
+            --border-light: #e2e8f0;
+            --correct: #10b981;
+            --incorrect: #ef4444;
+            --timer-normal: #000000;
+            --timer-warning: #f97316;
+            --timer-danger: #ef4444;
         }
+        
         body { 
             font-family: 'Inter', sans-serif; 
             margin: 0; 
             padding: 0; 
-            background: #f1f5f9; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
         }
+        
         .app-container { 
             max-width: 1200px; 
             margin: 0 auto; 
-            padding: 0 24px; 
+            padding: 0 24px;
+            width: 100%;
+            flex: 1;
+        }
+        
+        /* Estilos para loading */
+        .loading-exercise {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .loading-exercise i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .loading-exercise h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .loading-exercise p {
+            color: var(--text-medium);
+        }
+        
+        /* Estilos para error */
+        .error-message {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .error-message i {
+            font-size: 3rem;
+            color: var(--incorrect);
+            margin-bottom: 20px;
+        }
+        
+        .error-message h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .error-message p {
+            color: var(--text-medium);
+            margin-bottom: 20px;
+        }
+        
+        .btn-back {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        
+        .btn-back:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
         }
     </style>
 </head>
@@ -183,5 +276,16 @@
     <script src="js/exercise.js"></script>
     <script src="js/tools.js"></script>
     <script src="js/app.js"></script>
+    
+    <!-- Los JS de tipos específicos se cargarán dinámicamente mediante Utils.loadExerciseTypeJS() -->
+    <!-- No es necesario incluirlos aquí, pero si quieres precargarlos puedes descomentar: -->
+    <!-- 
+    <script src="js/exercise-types/reading-type1.js"></script>
+    <script src="js/exercise-types/reading-type2.js"></script>
+    <script src="js/exercise-types/reading-type3.js"></script>
+    <script src="js/exercise-types/reading-type4.js"></script>
+    <script src="js/exercise-types/listening-type1.js"></script>
+    <script src="js/exercise-types/listening-type2.js"></script>
+    -->
 </body>
 </html>
