@@ -1,6 +1,4 @@
 /* css/components/gaps.css */
-
-/* Gaps básicos */
 .gap-box {
   min-width: 100px;
   display: inline-flex;
@@ -24,14 +22,14 @@
   margin-right: 4px;
 }
 
-.gap-container { 
-  display: inline-block; 
-  position: relative; 
-  margin: 0 2px; 
+.gap-container {
+  display: inline-block;
+  position: relative;
+  margin: 0 2px;
   vertical-align: middle;
 }
 
-.gap-box:hover { 
+.gap-box:hover {
   background: rgba(192, 132, 252, 0.1);
   transform: scale(1.02);
 }
@@ -41,8 +39,13 @@
   font-weight: 700;
 }
 
-.gap-box.correct .gap-answer { color: var(--correct); }
-.gap-box.incorrect .gap-answer { color: var(--incorrect); }
+.gap-box.correct .gap-answer {
+  color: var(--correct);
+}
+
+.gap-box.incorrect .gap-answer {
+  color: var(--incorrect);
+}
 
 .gap-box.checked {
   cursor: not-allowed;
@@ -54,7 +57,7 @@
   transform: none;
 }
 
-.gap-answer { 
+.gap-answer {
   text-align: center;
   color: var(--gap-purple);
   display: flex;
@@ -94,7 +97,24 @@
   display: block;
 }
 
-/* Inputs de texto */
+.gap-box.incorrect .gap-answer::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--primary-dark) transparent transparent transparent;
+  display: none;
+  z-index: 10;
+  margin-bottom: -1px;
+}
+
+.gap-box.incorrect .gap-answer:hover::before {
+  display: block;
+}
+
 .gap-input {
   width: 100px;
   padding: 6px 10px;
@@ -135,7 +155,6 @@
   opacity: 0.7;
 }
 
-/* Transformation gap (Parte 4) */
 .transformation-gap {
   display: inline-flex;
   align-items: center;
@@ -162,7 +181,6 @@
   width: 220px;
 }
 
-/* Radio buttons para parte 5 */
 .radio-gap {
   display: inline-flex;
   flex-direction: column;
@@ -220,7 +238,6 @@
   color: var(--text-dark);
 }
 
-/* Selector para parte 7 (Gapped Text) */
 .paragraph-select {
   padding: 8px 16px;
   border: 2px solid var(--border-light);
@@ -251,7 +268,6 @@
   margin: 0 4px;
 }
 
-/* Error gap */
 .gap-error {
   color: var(--incorrect);
   font-weight: 700;
