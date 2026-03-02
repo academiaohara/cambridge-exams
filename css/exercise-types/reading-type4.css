@@ -1,14 +1,14 @@
-/* css/exercise-types/reading-tipe4.css */
+/* css/exercise-types/reading-type4.css */
 /* Key word transformations - Part 4 */
 
-.reading-tipe4-container {
+.reading-type4-container {
   background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
   border-radius: 20px;
   padding: 24px;
   border: 1px solid #fed7aa;
 }
 
-.reading-tipe4-question {
+.reading-type4-question {
   background: white;
   border-radius: 20px;
   padding: 24px;
@@ -17,7 +17,7 @@
   border: 1px solid #ffedd5;
 }
 
-.reading-tipe4-sentence {
+.reading-type4-sentence {
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--text-dark);
@@ -28,7 +28,7 @@
   border-left: 4px solid #f97316;
 }
 
-.reading-tipe4-keyword {
+.reading-type4-keyword {
   background: #f97316;
   color: white;
   padding: 6px 18px;
@@ -42,14 +42,14 @@
   box-shadow: 0 4px 8px rgba(249, 115, 22, 0.3);
 }
 
-.reading-tipe4-transformation {
+.reading-type4-transformation {
   background: #f1f5f9;
   padding: 20px;
   border-radius: 16px;
   margin-top: 16px;
 }
 
-.reading-tipe4-gap-container {
+.reading-type4-gap-container {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -60,12 +60,12 @@
   border: 1px solid #e2e8f0;
 }
 
-.reading-tipe4-gap {
+.reading-type4-gap {
   flex: 1;
   min-width: 250px;
 }
 
-.reading-tipe4-input {
+.reading-type4-input {
   width: 100%;
   padding: 12px 18px;
   border: 2px solid #cbd5e1;
@@ -76,25 +76,25 @@
   transition: all 0.2s;
 }
 
-.reading-tipe4-input:focus {
+.reading-type4-input:focus {
   outline: none;
   border-color: #f97316;
   box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
 }
 
-.reading-tipe4-input.correct {
+.reading-type4-input.correct {
   border-color: var(--correct);
   background-color: #d1fae5;
   color: #065f46;
 }
 
-.reading-tipe4-input.incorrect {
+.reading-type4-input.incorrect {
   border-color: var(--incorrect);
   background-color: #fee2e2;
   color: #991b1b;
 }
 
-.reading-tipe4-word-limit {
+.reading-type4-word-limit {
   color: #64748b;
   font-size: 0.85rem;
   margin-top: 8px;
