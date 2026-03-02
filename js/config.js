@@ -4,9 +4,49 @@
     GITHUB_USER: 'academiaohara',
     REPO_NAME: 'cambridge-exams',
     BRANCH: 'main',
-    APP_VERSION: '3.1.0',
+    APP_VERSION: '3.2.0',
     WARNING_TIME: 300,
-    DANGER_TIME: 600
+    DANGER_TIME: 600,
+    
+    // Mapeo de tipos de ejercicio a archivos CSS y JS
+    EXERCISE_TYPE_FILES: {
+      'multiple-choice': {
+        css: 'reading-type1.css',
+        js: 'reading-type1.js'
+      },
+      'open-cloze': {
+        css: 'reading-type2.css',
+        js: 'reading-type2.js'
+      },
+      'word-formation': {
+        css: 'reading-type3.css',
+        js: 'reading-type3.js'
+      },
+      'transformations': {
+        css: 'reading-type4.css',
+        js: 'reading-type4.js'
+      },
+      'multiple-choice-text': {
+        css: 'reading-type5.css',
+        js: 'reading-type5.js'
+      },
+      'cross-text-matching': {
+        css: 'reading-type6.css',
+        js: 'reading-type6.js'
+      },
+      'gapped-text': {
+        css: 'reading-type7.css',
+        js: 'reading-type7.js'
+      },
+      'multiple-matching': {
+        css: 'reading-type8.css',
+        js: 'reading-type8.js'
+      },
+      'sentence-completion': {
+        css: 'listening-type2.css',
+        js: 'listening-type2.js'
+      }
+    }
   };
   
   // URLs base
@@ -14,6 +54,7 @@
   window.CONFIG.LANG_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/lang/`;
   window.CONFIG.TIPS_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/tips/`;
   window.CONFIG.JS_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/js/`;
+  window.CONFIG.CSS_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/css/`;
   
   // Configuración de tipos de ejercicios
   window.CONFIG.PART_TYPES = {
