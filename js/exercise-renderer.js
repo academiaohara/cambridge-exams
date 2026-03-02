@@ -108,7 +108,6 @@
             </div>
           </div>
 
-                      
           <div id="active-tool-content" class="active-tool-content">
             <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
           </div>
