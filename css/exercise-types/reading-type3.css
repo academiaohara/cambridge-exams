@@ -178,3 +178,9 @@
   margin-left: 4px;
   border: 1px dashed #c084fc;
 }
+
+.reading-type3-example-answer {
+  color: var(--correct);
+  font-weight: 700;
+  pointer-events: none;
+}

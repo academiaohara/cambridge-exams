@@ -4,6 +4,13 @@
 (function() {
   window.ReadingType7 = {
     renderGap: function(question, qNum, isChecked, userAnswer) {
+      if (qNum === 0) {
+        return `
+          <span class="reading-type7-gap">
+            <span class="reading-type7-example-answer">${userAnswer || ''}</span>
+          </span>
+        `;
+      }
       const paragraphs = AppState.currentExercise.content.paragraphs || {};
       const options = Object.keys(paragraphs);
       

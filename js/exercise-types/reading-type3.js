@@ -4,6 +4,14 @@
 (function() {
   window.ReadingType3 = {
     renderGap: function(question, qNum, isChecked, userAnswer) {
+      if (qNum === 0) {
+        return `
+          <span class="reading-type3-gap-inline">
+            <span class="reading-type3-gap-number">(${qNum})</span>
+            <span class="reading-type3-answered reading-type3-example-answer">${userAnswer || ''}</span>
+          </span>
+        `;
+      }
       if (isChecked) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
         const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';

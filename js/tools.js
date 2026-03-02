@@ -104,24 +104,44 @@
     
     renderNotesArea: function() {
       const container = document.getElementById('active-tool-content');
+      let html = '';
       if (AppState.notes.length === 0) {
-        container.innerHTML = '<p class="empty-msg">' + I18n.t('noHighlights') + '</p>';
-        return;
-      }
-      
-      let html = '<div class="notes-list-container"><h4><i class="fas fa-highlighter"></i> ' + I18n.t('highlights') + '</h4>';
-      AppState.notes.forEach(n => {
-        html += `
-          <div class="note-item-display" style="background-color: ${n.color}40; border-left: 4px solid ${n.color};">
-            <div class="note-item-content">
-              <span class="note-item-phrase">"${n.text}"</span>
-              <span class="note-item-comment">${n.comment}</span>
+        html = '<p class="empty-msg">' + I18n.t('noHighlights') + '</p>';
+      } else {
+        html = '<div class="notes-list-container"><h4><i class="fas fa-highlighter"></i> ' + I18n.t('highlights') + '</h4>';
+        AppState.notes.forEach(n => {
+          html += `
+            <div class="note-item-display" style="background-color: ${n.color}40; border-left: 4px solid ${n.color};">
+              <div class="note-item-content">
+                <span class="note-item-phrase">"${n.text}"</span>
+                <span class="note-item-comment">${n.comment}</span>
+              </div>
+              <button class="note-delete" onclick="Tools.deleteNote(${n.id})">&times;</button>
             </div>
-            <button class="note-delete" onclick="Tools.deleteNote(${n.id})">&times;</button>
+          `;
+        });
+        html += '</div>';
+      }
+      html += `
+        <div id="note-creator" class="note-creator-card" style="display:none;">
+          <div class="note-creator-header">
+            <span data-i18n="highlightText">${I18n.t('highlightText')}</span> "<span id="selected-phrase-display"></span>"
           </div>
-        `;
-      });
-      html += '</div>';
+          <input type="text" id="note-input-field" data-i18n-placeholder="addNote" placeholder="${I18n.t('addNote')}">
+          <div class="note-creator-footer">
+            <div class="color-options">
+              <span class="color-dot yellow active" data-color="#fef08a" onclick="Tools.setNoteColor('#fef08a', this)"></span>
+              <span class="color-dot green" data-color="#bbf7d0" onclick="Tools.setNoteColor('#bbf7d0', this)"></span>
+              <span class="color-dot blue" data-color="#bfdbfe" onclick="Tools.setNoteColor('#bfdbfe', this)"></span>
+              <span class="color-dot pink" data-color="#fbcfe8" onclick="Tools.setNoteColor('#fbcfe8', this)"></span>
+            </div>
+            <div class="note-actions">
+              <button class="btn-cancel" onclick="Tools.hideNoteCreator()"><span data-i18n="cancel">${I18n.t('cancel')}</span></button>
+              <button class="btn-confirm" onclick="Tools.saveNote()"><span data-i18n="confirm">${I18n.t('confirm')}</span></button>
+            </div>
+          </div>
+        </div>
+      `;
       container.innerHTML = html;
     },
     
@@ -135,12 +155,24 @@
             placeholder="${I18n.t('notebookPlaceholder')}" 
             oninput="AppState.freeNotes = this.value"
           >${AppState.freeNotes}</textarea>
-          <p class="small-info">${I18n.t('autoSave')}</p>
+          <div class="free-notes-footer">
+            <p class="small-info">${I18n.t('autoSave')}</p>
+            <button class="btn-confirm" onclick="Tools.confirmFreeNotes()">
+              <i class="fas fa-check"></i> <span data-i18n="confirm">${I18n.t('confirm')}</span>
+            </button>
+          </div>
         </div>
       `;
       
       const textarea = document.getElementById('free-notes-area');
       if (textarea) textarea.value = AppState.freeNotes;
+    },
+    
+    confirmFreeNotes: function() {
+      const textarea = document.getElementById('free-notes-area');
+      if (textarea) {
+        AppState.freeNotes = textarea.value;
+      }
     },
     
     buscarEnDiccionario: async function(texto) {
