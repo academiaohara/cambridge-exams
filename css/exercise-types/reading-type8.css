@@ -1,0 +1,68 @@
+/* css/exercise-types/reading-type8.css */
+/* Multiple matching - Part 8 */
+
+.reading-type8-container {
+  background: linear-gradient(135deg, #fdf4ff 0%, #ffffff 100%);
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid #e9d5ff;
+}
+
+.reading-type8-texts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.reading-type8-text-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.06);
+  border: 1px solid #e9d5ff;
+}
+
+.reading-type8-text-label {
+  display: inline-block;
+  background: var(--reading);
+  color: white;
+  padding: 4px 14px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.reading-type8-text-content {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+}
+
+.reading-type8-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reading-type8-question {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.06);
+  border: 1px solid #e9d5ff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.reading-type8-question-text {
+  flex: 1;
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  line-height: 1.5;
+  min-width: 200px;
+}

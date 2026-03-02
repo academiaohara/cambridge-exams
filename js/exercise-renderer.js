@@ -9,6 +9,12 @@
       Utils.loadExerciseTypeCSS(partConfig.type);
       Utils.loadExerciseTypeJS(partConfig.type);
       
+      // Cargar CSS/JS adicional para secciones de listening
+      if (section === 'listening') {
+        Utils.loadExerciseTypeCSS('listening-' + part);
+        Utils.loadExerciseTypeJS('listening-' + part);
+      }
+      
       const paragraphs = exercise.content.text ? exercise.content.text.split('||') : [];
       let paragraphsHTML = this.renderParagraphs(paragraphs, exercise, partConfig);
       let exampleHTML = this.renderExampleBox(exercise.content.example, partConfig);
@@ -216,7 +222,11 @@
     initTypeSpecificListeners: function(type) {
       switch(type) {
         case 'multiple-choice':
-          if (typeof ReadingType1?.initListeners === 'function') ReadingType1.initListeners();
+          if (AppState.currentSection === 'listening' && typeof ListeningType1?.initListeners === 'function') {
+            ListeningType1.initListeners();
+          } else if (typeof ReadingType1?.initListeners === 'function') {
+            ReadingType1.initListeners();
+          }
           break;
         case 'multiple-choice-text':
           if (AppState.currentSection === 'listening' && typeof ListeningType1?.initListeners === 'function') {
