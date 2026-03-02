@@ -24,7 +24,7 @@
       else if (section === 'writing') fileName = `writing${part}.json`;
       else if (section === 'speaking') fileName = `speaking${part}.json`;
       
-      const baseUrl = CONFIG.EXERCISES_URL.replace('/Nivel/C1/Exams/', `/Nivel/${AppState.currentLevel}/Exams/`);
+      const baseUrl = CONFIG.EXERCISES_URL.replace('Nivel/C1/Exams/', `Nivel/${AppState.currentLevel}/Exams/`);
       const targetUrl = `${baseUrl}${examId}/${fileName}`;
       
       content.innerHTML = `<div class="loading-exercise"><i class="fas fa-spinner fa-spin"></i><h3>${I18n.t('loading')}</h3><p>Test ${examId} - ${section} - ${I18n.t('part')} ${part}</p></div>`;
@@ -68,14 +68,18 @@
         console.error('❌ Error crítico:', error);
         content.innerHTML = `
           <div class="error-message">
-            <i class="fas fa-sync-alt"></i>
+            <i class="fas fa-exclamation-circle"></i>
             <h3>Error de Sincronización</h3>
             <p>No se pudo obtener la versión más reciente del examen.</p>
             <p><small>${error.message}</small></p>
-            <p><small>URL: ${targetUrl}</small></p>
-            <button class="btn-back" onclick="Dashboard.render()">
-              <i class="fas fa-arrow-left"></i> Reintentar
-            </button>
+            <div class="error-actions">
+              <button class="btn-back" onclick="Exercise.openPart('${examId}', '${section}', ${part})">
+                <i class="fas fa-redo"></i> Reintentar
+              </button>
+              <button class="btn-back btn-back-secondary" onclick="Dashboard.render()">
+                <i class="fas fa-home"></i> Volver al inicio
+              </button>
+            </div>
           </div>`;
       }
     },
