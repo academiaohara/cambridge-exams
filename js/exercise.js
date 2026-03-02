@@ -1,7 +1,14 @@
 // js/exercise.js
 (function() {
   window.Exercise = {
-    // Aquí va tu función openPart
+    startFullSection: async function(examId, section) {
+      AppState.currentExamId = examId;
+      AppState.currentSection = section;
+      
+      this.markPartInProgress(examId, section, 1);
+      await this.openPart(examId, section, 1);
+    },
+    
     openPart: async function(examId, section, part) {
       const content = document.getElementById('main-content');
       AppState.currentSection = section;
@@ -10,9 +17,6 @@
       AppState.answersChecked = false;
       
       this.markPartInProgress(examId, section, part);
-      
-      // Cargar CSS base de ejercicios (example.css, gaps.css)
-      Utils.loadBaseExerciseCSS();
       
       let fileName = '';
       if (section === 'reading') fileName = `reading${part}.json`;
@@ -76,19 +80,127 @@
       }
     },
     
-    // Aquí deben ir las otras funciones que usa openPart
-    markPartInProgress: function(examId, section, part) {
-      // Implementación de markPartInProgress
-      console.log('Marcando como en progreso:', examId, section, part);
-      // Aquí va tu lógica para marcar la parte como "en progreso"
-    },
-    
     restoreSavedAnswers: function() {
-      // Implementación de restoreSavedAnswers
-      console.log('Restaurando respuestas guardadas');
-      // Aquí va tu lógica para restaurar respuestas guardadas
+      if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
+      const partConfig = CONFIG.PART_TYPES[
+        AppState.currentSection === 'reading' ? AppState.currentPart : 
+        `${AppState.currentSection}${AppState.currentPart}`
+      ];
+      
+      setTimeout(() => {
+        Object.entries(AppState.currentExercise.answers).forEach(([qNum, answer]) => {
+          if (qNum === '0') return;
+          
+          const question = AppState.currentExercise.content.questions?.find(q => q.number === parseInt(qNum));
+          if (!question) return;
+          
+          switch(partConfig.type) {
+            case 'multiple-choice':
+            case 'cross-text-matching':
+            case 'multiple-matching':
+              const option = question.options?.find(opt => opt.startsWith(answer));
+              if (option) {
+                const text = option.substring(2).trim();
+                const answerSpan = document.getElementById(`answer-${qNum}`);
+                if (answerSpan) {
+                  answerSpan.innerHTML = `<span class="gap-number">${qNum})</span> <span class="gap-text">${text}</span>`;
+                  const gapBox = answerSpan.closest('.gap-box');
+                  if (gapBox) gapBox.classList.add('answered');
+                }
+              }
+              break;
+              
+            case 'open-cloze':
+            case 'word-formation':
+            case 'sentence-completion':
+            case 'transformations':
+              const input = document.querySelector(`input[data-question="${qNum}"]`);
+              if (input) input.value = answer;
+              break;
+              
+            case 'multiple-choice-text':
+              const radio = document.querySelector(`input[name="q${qNum}"][value="${answer}"]`);
+              if (radio) radio.checked = true;
+              break;
+              
+            case 'gapped-text':
+              const select = document.querySelector(`select[data-question="${qNum}"]`);
+              if (select) select.value = answer;
+              break;
+          }
+        });
+        
+        Timer.updateScoreDisplay();
+      }, 100);
     },
     
-    // Otras funciones que pueda tener Exercise...
+    goToNextPart: async function() {
+      if (!AppState.currentSection || !AppState.currentPart || !AppState.currentExamId) return;
+      
+      const sectionData = EXAMS_DATA[AppState.currentLevel].find(e => e.id === AppState.currentExamId)?.sections[AppState.currentSection];
+      if (!sectionData) return;
+      
+      const nextPart = AppState.currentPart + 1;
+      if (nextPart <= sectionData.total) {
+        this.markPartCompleted(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
+        this.markPartInProgress(AppState.currentExamId, AppState.currentSection, nextPart);
+        
+        await this.openPart(AppState.currentExamId, AppState.currentSection, nextPart);
+      }
+    },
+    
+    goToPrevPart: async function() {
+      if (!AppState.currentSection || !AppState.currentPart || !AppState.currentExamId) return;
+      
+      const prevPart = AppState.currentPart - 1;
+      if (prevPart >= 1) {
+        await this.openPart(AppState.currentExamId, AppState.currentSection, prevPart);
+      }
+    },
+    
+    closeExercise: function() {
+      Modal.closeOptionsModal();
+      
+      if (Timer.timerInterval) {
+        clearInterval(Timer.timerInterval);
+        Timer.timerInterval = null;
+      }
+      
+      AppState.currentExercise = null;
+      AppState.currentSection = null;
+      AppState.currentPart = null;
+      AppState.currentExamId = null;
+      AppState.activeTool = null;
+      AppState.notes = [];
+      AppState.freeNotes = "";
+      AppState.answersChecked = false;
+      
+      Dashboard.render();
+    },
+    
+    markPartInProgress: function(examId, section, part) {
+      const exam = EXAMS_DATA[AppState.currentLevel].find(e => e.id === examId);
+      if (exam && exam.status === 'available') {
+        if (!exam.sections[section].completed.includes(part)) {
+          if (!exam.sections[section].inProgress.includes(part)) {
+            exam.sections[section].inProgress.push(part);
+          }
+        }
+      }
+    },
+    
+    markPartCompleted: function(examId, section, part) {
+      const exam = EXAMS_DATA[AppState.currentLevel].find(e => e.id === examId);
+      if (exam && exam.status === 'available') {
+        if (!exam.sections[section].completed.includes(part)) {
+          exam.sections[section].completed.push(part);
+          
+          const inProgressIndex = exam.sections[section].inProgress.indexOf(part);
+          if (inProgressIndex > -1) {
+            exam.sections[section].inProgress.splice(inProgressIndex, 1);
+          }
+        }
+      }
+    }
   };
 })();
