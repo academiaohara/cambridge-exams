@@ -409,3 +409,41 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   font-size: 0.95rem;
 }
+
+/* css/components/tools.css - Añade estos estilos al final */
+
+.placeholder-text {
+  color: var(--text-light);
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 1rem;
+  background: white;
+  border-radius: 12px;
+  border: 2px dashed var(--border-light);
+}
+
+.empty-msg {
+  color: var(--text-light);
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 1rem;
+  background: white;
+  border-radius: 12px;
+}
+
+.loading-mini {
+  text-align: center;
+  color: var(--text-light);
+  padding: 40px 20px;
+  font-size: 1rem;
+}
+
+.loading-mini i {
+  margin-right: 8px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
