@@ -30,7 +30,7 @@
         return `
           <span class="reading-type1-gap">
             <span class="reading-type1-gap-number">(${qNum})</span>
-            <span class="reading-type1-answered-word reading-type1-purple">${answerText}</span>
+            <span class="reading-type1-answered-word reading-type1-purple" onclick="ReadingType1.openOptions(${qNum})">${answerText}</span>
           </span>
         `;
       }
@@ -80,7 +80,7 @@
         if (numSpan && numSpan.textContent.trim() === `(${qNum})`) {
           gap.innerHTML = `
             <span class="reading-type1-gap-number">(${qNum})</span>
-            <span class="reading-type1-answered-word reading-type1-purple">${text}</span>
+            <span class="reading-type1-answered-word reading-type1-purple" onclick="ReadingType1.openOptions(${qNum})">${text}</span>
           `;
         }
       });

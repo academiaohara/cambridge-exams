@@ -130,7 +130,13 @@
           }
           
           if (gapHtml) {
-            const regex = new RegExp(`\\(${qNum}\\)`, 'g');
+            let regex;
+            if (partConfig.type === 'open-cloze') {
+              // For open-cloze, also remove the answer word that follows the gap marker
+              regex = new RegExp(`\\(${qNum}\\)\\s+\\S+`, 'g');
+            } else {
+              regex = new RegExp(`\\(${qNum}\\)`, 'g');
+            }
             paraProcessed = paraProcessed.replace(regex, gapHtml);
           }
         });
@@ -168,7 +174,7 @@
           
         case 'open-cloze':
           if (typeof window.ReadingType2 !== 'undefined') {
-            return ReadingType2.renderGap(qNum, isChecked, userAnswer, question.correct);
+            return ReadingType2.renderGap(question, qNum, isChecked, userAnswer);
           }
           break;
           
@@ -298,6 +304,15 @@
         `;
       }
       
+      if (partConfig.type === 'open-cloze') {
+        return `
+          <span class="reading-type2-gap">
+            <span class="reading-type2-gap-number">(${qNum})</span>
+            <strong class="reading-type2-example-answer">${exampleText}</strong>
+          </span>
+        `;
+      }
+      
       return `
         <span class="gap-container">
           <span class="gap-box correct checked" style="pointer-events: none;">
@@ -339,6 +354,19 @@
             </div>
             <div class="example-options-row">
               ${optionsHTML}
+            </div>
+          </div>
+        `;
+      }
+      
+      if (partConfig.type === 'open-cloze') {
+        return `
+          <div class="example-container simple">
+            <div class="example-title">
+              <i class="fas fa-lightbulb"></i> <span data-i18n="example">${I18n.t('example')}</span>:
+            </div>
+            <div class="example-text">
+              <strong>0</strong> <strong>${exampleData.correct || ''}</strong>
             </div>
           </div>
         `;

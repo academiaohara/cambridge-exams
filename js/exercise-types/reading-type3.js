@@ -27,7 +27,7 @@
         return `
           <span class="reading-type3-gap-inline">
             <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered reading-type3-purple">${userAnswer}</span>
+            <span class="reading-type3-answered reading-type3-purple" onclick="ReadingType3.openInput(${qNum})">${userAnswer}</span>
           </span>
         `;
       }
@@ -100,7 +100,7 @@
         if (numSpan && numSpan.textContent.trim() === `(${qNum})`) {
           gap.innerHTML = `
             <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered reading-type3-purple">${value}</span>
+            <span class="reading-type3-answered reading-type3-purple" onclick="ReadingType3.openInput(${qNum})">${value}</span>
           `;
         }
       });
