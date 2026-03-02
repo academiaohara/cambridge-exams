@@ -19,6 +19,8 @@
         console.log(`✅ Idioma ${lang} cargado correctamente`);
         
         this.updateUILanguage();
+        this.updateSelectedFlag(lang);
+        
         return langData;
         
       } catch (error) {
@@ -33,60 +35,74 @@
     
     // Función de traducción
     t: function(key) {
-      const translations = AppState.translations;
-      const currentLang = AppState.currentLanguage;
+      // Verificar que AppState existe
+      if (!window.AppState) return key;
+      
+      const translations = AppState.translations || {};
+      const currentLang = AppState.currentLanguage || 'es';
       
       if (!translations || Object.keys(translations).length === 0) return key;
       return translations[currentLang]?.[key] || translations['en']?.[key] || key;
     },
 
-    // En i18n.js - Reemplazar la función updateUILanguage
-updateUILanguage: function() {
-  // Actualizar todos los elementos con data-i18n
-  document.querySelectorAll('[data-i18n]').forEach(element => {
-    const key = element.getAttribute('data-i18n');
-    element.textContent = this.t(key);
-  });
-  
-  // Actualizar placeholders
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-    const key = element.getAttribute('data-i18n-placeholder');
-    element.placeholder = this.t(key);
-  });
-  
-  // Actualizar elementos específicos que no tienen data-i18n
-  const modeHeader = document.getElementById('modeHeader');
-  if (modeHeader) modeHeader.textContent = this.t('fullExams');
-  
-  // Actualizar badges de progreso
-  document.querySelectorAll('.exam-progress-badge').forEach(badge => {
-    badge.innerHTML = `<i class="fas fa-clock"></i> ${this.t('soon')}`;
-  });
-  
-  // Actualizar títulos de secciones si es necesario
-  if (AppState.currentExercise) {
-    // Si estamos en un ejercicio, actualizar títulos específicos
-    const sectionTitle = document.querySelector('.exercise-title h2');
-    if (sectionTitle) {
-      const levelName = Utils.getLevelName(AppState.currentLevel);
-      const sectionDisplay = Utils.getSectionTitle(AppState.currentSection);
-      sectionTitle.textContent = `${levelName} - ${sectionDisplay}`;
-    }
-  }
-}
+    // Actualizar UI con el idioma
+    updateUILanguage: function() {
+      // Verificar que podemos acceder al DOM
+      if (!document) return;
+      
+      // Actualizar todos los elementos con data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        element.textContent = this.t(key);
+      });
+      
+      // Actualizar placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        element.placeholder = this.t(key);
+      });
+      
+      // Actualizar elementos específicos que no tienen data-i18n
+      const modeHeader = document.getElementById('modeHeader');
+      if (modeHeader) modeHeader.textContent = this.t('fullExams');
+      
+      // Actualizar badges de progreso
+      document.querySelectorAll('.exam-progress-badge').forEach(badge => {
+        badge.innerHTML = `<i class="fas fa-clock"></i> ${this.t('soon')}`;
+      });
+      
+      // Actualizar títulos de secciones si es necesario
+      if (window.AppState && AppState.currentExercise) {
+        const sectionTitle = document.querySelector('.exercise-title h2');
+        if (sectionTitle && window.Utils) {
+          const levelName = Utils.getLevelName(AppState.currentLevel);
+          const sectionDisplay = Utils.getSectionTitle(AppState.currentSection);
+          sectionTitle.textContent = `${levelName} - ${sectionDisplay}`;
+        }
+      }
+    },
     
     // Actualizar bandera seleccionada
     updateSelectedFlag: function(lang) {
       const flagElement = document.getElementById('selectedFlag');
-      const countryCode = countryCodeMap[lang] || 'es';
-      flagElement.className = `fi fi-${countryCode}`;
-      document.getElementById('selectedLang').textContent = lang.toUpperCase();
+      const langElement = document.getElementById('selectedLang');
+      
+      if (flagElement) {
+        const countryCode = countryCodeMap[lang] || 'es';
+        flagElement.className = `fi fi-${countryCode}`;
+      }
+      
+      if (langElement) {
+        langElement.textContent = lang.toUpperCase();
+      }
     },
     
     // Toggle dropdown
     toggleDropdown: function() {
       const dropdown = document.getElementById('languageDropdown');
-      dropdown.classList.toggle('show');
+      if (dropdown) {
+        dropdown.classList.toggle('show');
+      }
     },
     
     // Cerrar dropdown al hacer clic fuera
@@ -100,4 +116,7 @@ updateUILanguage: function() {
       });
     }
   };
+  
+  // Verificar que se creó correctamente
+  console.log('✅ I18n cargado correctamente:', window.I18n);
 })();
