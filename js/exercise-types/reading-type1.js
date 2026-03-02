@@ -4,9 +4,16 @@
 (function() {
   window.ReadingType1 = {
     renderGap: function(question, qNum, isChecked, userAnswer) {
+      let btnClass = 'reading-type1-gap-btn';
+      if (isChecked) btnClass += ' checked';
+      if (userAnswer) btnClass += ' answered';
+      if (isChecked && userAnswer) {
+        btnClass += this.isAnswerCorrect(question, userAnswer) ? ' correct' : ' incorrect';
+      }
+      
       return `
         <span class="reading-type1-gap">
-          <span class="reading-type1-gap-btn ${isChecked ? 'checked' : ''} ${userAnswer ? 'answered' : ''} ${isChecked && userAnswer ? (this.isAnswerCorrect(question, userAnswer) ? 'correct' : 'incorrect') : ''}" 
+          <span class="${btnClass}" 
                 onclick="${!isChecked ? 'ReadingType1.openOptions(' + qNum + ')' : ''}"
                 data-correct="${isChecked && !this.isAnswerCorrect(question, userAnswer) ? '✓ ' + this.getCorrectText(question) : ''}">
             <span class="reading-type1-gap-number">${qNum}</span>
@@ -20,33 +27,41 @@
       const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
       if (!question) return;
       
-      Modal.openCustomModal({
-        title: `${I18n.t('question')} ${qNum}`,
-        message: I18n.t('selectOption'),
-        options: question.options.map(opt => {
-          const letter = opt.charAt(0);
-          const text = opt.substring(2).trim();
-          return {
-            text: text,
-            value: letter,
-            handler: () => {
-              this.selectAnswer(qNum, letter, text);
-            }
-          };
-        })
+      // Crear modal personalizado
+      const overlay = document.getElementById('exercise-modal-overlay');
+      const body = document.getElementById('modal-body');
+      
+      let optionsHTML = '<div class="modal-header"><h3>' + I18n.t('question') + ' ' + qNum + '</h3><p>' + I18n.t('selectOption') + '</p></div>';
+      optionsHTML += '<div class="options-grid">';
+      
+      question.options.forEach(opt => {
+        const letter = opt.charAt(0);
+        const text = opt.substring(2).trim();
+        optionsHTML += `
+          <button class="opt-btn" onclick="ReadingType1.selectAnswer(${qNum}, '${letter}', '${text.replace(/'/g, "\\'")}')">
+            ${text}
+          </button>
+        `;
       });
+      
+      optionsHTML += '</div>';
+      body.innerHTML = optionsHTML;
+      overlay.style.display = 'flex';
     },
     
     selectAnswer: function(qNum, letter, text) {
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = letter;
       
-      const gapBtn = document.querySelector(`.reading-type1-gap-btn[onclick*="${qNum}"]`);
+      const gapBtn = document.querySelector(`.reading-type1-gap-btn[onclick*="ReadingType1.openOptions(${qNum})"]`);
       if (gapBtn) {
         const answerSpan = gapBtn.querySelector('.reading-type1-answer');
         if (answerSpan) answerSpan.textContent = text;
         gapBtn.classList.add('answered');
       }
+      
+      // Cerrar modal
+      document.getElementById('exercise-modal-overlay').style.display = 'none';
       
       Timer.updateScoreDisplay();
     },
@@ -67,7 +82,6 @@
     },
     
     checkAnswers: function() {
-      // Lógica específica para reading-type1
       const questions = AppState.currentExercise.content.questions;
       let correct = 0;
       
