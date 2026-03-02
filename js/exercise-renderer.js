@@ -19,7 +19,7 @@
           <div class="exercise-header">
             <div class="exercise-title">
               <h2>${levelName} - ${sectionTitle}</h2>
-              <div class="exercise-subtitle">${I18n.t('part')} ${part} ${I18n.t('of')} ${totalParts}</div>
+              <div class="exercise-subtitle" data-i18n="part">${I18n.t('part')} ${part} ${I18n.t('of')} ${totalParts}</div>
               <span class="exercise-badge">${exercise.title || I18n.t('exercise')}</span>
             </div>
             <div class="exercise-toolbar">
@@ -30,10 +30,10 @@
           </div>
           
           <div class="exercise-info">
-      <div class="exercise-info-left">
-        <span><i class="fas fa-clock"></i> ${exercise.time || '10'} <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
-        <span><i class="fas fa-question-circle"></i> ${exercise.totalQuestions || partConfig.total} <span data-i18n="questions">${I18n.t('questions')}</span></span>
-      </div>
+            <div class="exercise-info-left">
+              <span><i class="fas fa-clock"></i> ${exercise.time || '10'} <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
+              <span><i class="fas fa-question-circle"></i> ${exercise.totalQuestions || partConfig.total} <span data-i18n="questions">${I18n.t('questions')}</span></span>
+            </div>
             <div class="exercise-info-right">
               <div class="exercise-timer" id="exercise-timer">
                 <i class="fas fa-hourglass-half"></i>
@@ -44,26 +44,26 @@
           </div>
           
           <div class="exercise-description">
-            <p>${exercise.description || this.getDefaultDescription(partConfig)}</p>
+            <p data-i18n-description="${this.getDescriptionKey(partConfig)}">${exercise.description || this.getDefaultDescription(partConfig)}</p>
           </div>
           
           ${exampleHTML}
           
           <div class="tool-tabs-horizontal">
             <button class="tool-btn-nav" id="tab-notes" onclick="Tools.switchTool('notes')">
-              <i class="fas fa-highlighter"></i> ${I18n.t('highlight')}
+              <i class="fas fa-highlighter"></i> <span data-i18n="highlight">${I18n.t('highlight')}</span>
             </button>
             <button class="tool-btn-nav" id="tab-freenotes" onclick="Tools.switchTool('freenotes')">
-              <i class="fas fa-sticky-note"></i> ${I18n.t('notes')}
+              <i class="fas fa-sticky-note"></i> <span data-i18n="notes">${I18n.t('notes')}</span>
             </button>
             <button class="tool-btn-nav" id="tab-dict" onclick="Tools.switchTool('dict')">
-              <i class="fas fa-book"></i> ${I18n.t('dictionary')}
+              <i class="fas fa-book"></i> <span data-i18n="dictionary">${I18n.t('dictionary')}</span>
             </button>
             <button class="tool-btn-nav" id="tab-translate" onclick="Tools.switchTool('translate')">
-              <i class="fas fa-language"></i> ${I18n.t('translate')}
+              <i class="fas fa-language"></i> <span data-i18n="translate">${I18n.t('translate')}</span>
             </button>
             <button class="tool-btn-nav" id="tab-tips" onclick="Tools.switchTool('tips')">
-              <i class="fas fa-lightbulb"></i> ${I18n.t('tips')}
+              <i class="fas fa-lightbulb"></i> <span data-i18n="tips">${I18n.t('tips')}</span>
             </button>
           </div>
           
@@ -73,9 +73,9 @@
               
               <div id="note-creator" class="note-creator-card" style="display:none;">
                 <div class="note-creator-header">
-                  ${I18n.t('highlightText')} "<span id="selected-phrase-display"></span>"
+                  <span data-i18n="highlightText">${I18n.t('highlightText')}</span> "<span id="selected-phrase-display"></span>"
                 </div>
-                <input type="text" id="note-input-field" placeholder="${I18n.t('addNote')}">
+                <input type="text" id="note-input-field" data-i18n-placeholder="addNote" placeholder="${I18n.t('addNote')}">
                 <div class="note-creator-footer">
                   <div class="color-options">
                     <span class="color-dot yellow active" data-color="#fef08a" onclick="Tools.setNoteColor('#fef08a', this)"></span>
@@ -84,15 +84,15 @@
                     <span class="color-dot pink" data-color="#fbcfe8" onclick="Tools.setNoteColor('#fbcfe8', this)"></span>
                   </div>
                   <div class="note-actions">
-                    <button class="btn-cancel" onclick="Tools.hideNoteCreator()">${I18n.t('cancel')}</button>
-                    <button class="btn-confirm" onclick="Tools.saveNote()">${I18n.t('confirm')}</button>
+                    <button class="btn-cancel" onclick="Tools.hideNoteCreator()"><span data-i18n="cancel">${I18n.t('cancel')}</span></button>
+                    <button class="btn-confirm" onclick="Tools.saveNote()"><span data-i18n="confirm">${I18n.t('confirm')}</span></button>
                   </div>
                 </div>
               </div>
             </div>
             
             <div id="active-tool-content" class="active-tool-content">
-              <p class="placeholder-text">${I18n.t('activateTool')}</p>
+              <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
             </div>
           </div>
           
@@ -220,7 +220,7 @@
                       data-question="${qNum}" 
                       ${isChecked ? 'disabled' : ''}
                       onchange="ExerciseHandlers.handleSelectGap(${qNum}, this.value)">
-                <option value="">${I18n.t('selectParagraph')}</option>
+                <option value="" data-i18n="selectParagraph">${I18n.t('selectParagraph')}</option>
                 ${question.options?.map(opt => {
                   const letter = opt.charAt(0);
                   const text = opt.substring(2).trim();
@@ -266,7 +266,13 @@
     },
     
     renderExampleBox: function(exampleData, partConfig) {
+      // Si no hay datos de ejemplo, no renderizar nada
       if (!exampleData) return '';
+      
+      // Verificar si es un ejemplo válido (no "example-test")
+      if (exampleData.text === "example-test" || exampleData.correct === "test") {
+        return ''; // No renderizar ejemplos de prueba
+      }
       
       if (partConfig.type === 'multiple-choice' && exampleData.options) {
         let optionsHTML = '';
@@ -283,7 +289,7 @@
         return `
           <div class="example-container">
             <div class="example-title">
-              <i class="fas fa-lightbulb"></i> ${I18n.t('example')}:
+              <i class="fas fa-lightbulb"></i> <span data-i18n="example">${I18n.t('example')}</span>:
             </div>
             <div class="example-text">
               ${exampleData.text || ''}
@@ -303,7 +309,7 @@
       return `
         <div class="example-container simple">
           <div class="example-title">
-            <i class="fas fa-lightbulb"></i> ${I18n.t('example')}:
+            <i class="fas fa-lightbulb"></i> <span data-i18n="example">${I18n.t('example')}</span>:
           </div>
           <div class="example-text">
             ${exampleData.text || ''} <strong>${exampleData.correct || ''}</strong>
@@ -317,7 +323,7 @@
       
       let explanations = `
         <div class="explanations-section" id="explanations-section" style="display: none;">
-          <h3><i class="fas fa-info-circle"></i> ${I18n.t('showExplanations')}</h3>
+          <h3><i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span></h3>
       `;
       
       exercise.content.questions.forEach(q => {
@@ -335,22 +341,22 @@
     renderExerciseFooter: function(part, totalParts) {
       let footer = `
         <button class="btn-check" onclick="ExerciseHandlers.checkAnswers()" ${AppState.answersChecked ? 'disabled' : ''}>
-          <i class="fas fa-check"></i> ${I18n.t('checkAnswers')}
+          <i class="fas fa-check"></i> <span data-i18n="checkAnswers">${I18n.t('checkAnswers')}</span>
         </button>
         <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()">
-          <i class="fas fa-info-circle"></i> ${I18n.t('showExplanations')}
+          <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
         </button>
         <button class="btn-reset" onclick="ExerciseHandlers.resetExercise()">
-          <i class="fas fa-redo-alt"></i> ${I18n.t('reset')}
+          <i class="fas fa-redo-alt"></i> <span data-i18n="reset">${I18n.t('reset')}</span>
         </button>
       `;
       
       if (part > 1) {
-        footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-arrow-left"></i> ${I18n.t('previous')}</button>`;
+        footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-arrow-left"></i> <span data-i18n="previous">${I18n.t('previous')}</span></button>`;
       }
       
       if (part < totalParts) {
-        footer += `<button class="btn-next" onclick="Exercise.goToNextPart()">${I18n.t('next')} <i class="fas fa-arrow-right"></i></button>`;
+        footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">${I18n.t('next')}</span> <i class="fas fa-arrow-right"></i></button>`;
       }
       
       return footer;
@@ -369,6 +375,21 @@
         'sentence-completion': I18n.t('sentenceCompletionDesc')
       };
       return descriptions[partConfig.type] || I18n.t('defaultDesc');
+    },
+    
+    getDescriptionKey: function(partConfig) {
+      const keys = {
+        'multiple-choice': 'multipleChoiceDesc',
+        'open-cloze': 'openClozeDesc',
+        'word-formation': 'wordFormationDesc',
+        'transformations': 'transformationsDesc',
+        'multiple-choice-text': 'multipleChoiceTextDesc',
+        'cross-text-matching': 'crossTextDesc',
+        'gapped-text': 'gappedTextDesc',
+        'multiple-matching': 'multipleMatchingDesc',
+        'sentence-completion': 'sentenceCompletionDesc'
+      };
+      return keys[partConfig.type] || 'defaultDesc';
     }
   };
 })();
