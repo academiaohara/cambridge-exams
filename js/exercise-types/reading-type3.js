@@ -4,7 +4,7 @@
 (function() {
   window.ReadingType3 = {
     renderGap: function(question, qNum, isChecked, userAnswer) {
-      let inputClass = 'reading-type3-input';
+      let inputClass = 'reading-type3-input gap-input';
       if (isChecked) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
         inputClass += isCorrect ? ' correct' : ' incorrect';

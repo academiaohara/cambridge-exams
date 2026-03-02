@@ -1,14 +1,14 @@
-/* css/exercise-types/reading-tipe3.css */
+/* css/exercise-types/reading-type3.css */
 /* Word formation - Part 3 */
 
-.reading-tipe3-container {
+.reading-type3-container {
   background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%);
   border-radius: 20px;
   padding: 24px;
   border: 1px solid #e9d5ff;
 }
 
-.reading-tipe3-text {
+.reading-type3-text {
   font-size: 1.05rem;
   line-height: 2;
   color: var(--text-dark);
@@ -17,7 +17,7 @@
   border-radius: 16px;
 }
 
-.reading-tipe3-word-box {
+.reading-type3-word-box {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -28,7 +28,7 @@
   border: 1px solid #c084fc;
 }
 
-.reading-tipe3-stem {
+.reading-type3-stem {
   font-weight: 700;
   color: #7e22ce;
   text-transform: uppercase;
@@ -39,7 +39,7 @@
   letter-spacing: 0.5px;
 }
 
-.reading-tipe3-input {
+.reading-type3-input {
   width: 140px;
   padding: 8px 12px;
   border: 2px solid #cbd5e1;
@@ -51,26 +51,26 @@
   background: white;
 }
 
-.reading-tipe3-input:focus {
+.reading-type3-input:focus {
   outline: none;
   border-color: #a855f7;
   box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
   width: 160px;
 }
 
-.reading-tipe3-input.correct {
+.reading-type3-input.correct {
   border-color: var(--correct);
   background-color: #d1fae5;
   color: #065f46;
 }
 
-.reading-tipe3-input.incorrect {
+.reading-type3-input.incorrect {
   border-color: var(--incorrect);
   background-color: #fee2e2;
   color: #991b1b;
 }
 
-.reading-tipe3-hint {
+.reading-type3-hint {
   display: inline-block;
   font-size: 0.8rem;
   color: #a855f7;

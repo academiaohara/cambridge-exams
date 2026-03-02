@@ -4,7 +4,7 @@
 (function() {
   window.ReadingType4 = {
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
-      let inputClass = 'reading-type4-input';
+      let inputClass = 'reading-type4-input gap-input';
       if (isChecked) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
         inputClass += isCorrect ? ' correct' : ' incorrect';

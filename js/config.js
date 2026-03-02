@@ -45,6 +45,22 @@
       'sentence-completion': {
         css: 'listening-type2.css',
         js: 'listening-type2.js'
+      },
+      'listening-1': {
+        css: 'listening-type1.css',
+        js: 'listening-type1.js'
+      },
+      'listening-2': {
+        css: 'listening-type2.css',
+        js: 'listening-type2.js'
+      },
+      'listening-3': {
+        css: 'listening-type1.css',
+        js: 'listening-type1.js'
+      },
+      'listening-4': {
+        css: 'listening-type1.css',
+        js: 'listening-type1.js'
       }
     }
   };

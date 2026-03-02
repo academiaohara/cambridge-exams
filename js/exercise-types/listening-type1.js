@@ -120,6 +120,47 @@
       });
       
       return correct;
+    },
+    
+    initListeners: function() {
+      const exercise = AppState.currentExercise;
+      if (!exercise) return;
+      
+      // If there is no text with (N) markers, render all questions as a list
+      if (!exercise.content.text && exercise.content.questions) {
+        const container = document.getElementById('selectable-text');
+        if (!container) return;
+        
+        const isChecked = AppState.answersChecked;
+        let html = '';
+        
+        exercise.content.questions.forEach(q => {
+          const userAnswer = exercise.answers?.[q.number] || '';
+          html += `
+            <div class="listening-type1-extract">
+              <div class="listening-type1-audio-bar" data-extract="${q.number}">
+                <button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(${q.number}, this)">
+                  <i class="fas fa-play"></i>
+                </button>
+                <div class="listening-type1-timeline" id="timeline-${q.number}">
+                  <div class="listening-type1-progress" id="progress-${q.number}" style="width: 0%"></div>
+                </div>
+                <span class="listening-type1-time" id="time-${q.number}">00:00</span>
+              </div>
+              <p class="listening-type1-question-text">${q.question || ''}</p>
+              <div class="listening-type1-options">
+                ${this.renderOptions(q, q.number, isChecked, userAnswer)}
+              </div>
+            </div>
+          `;
+        });
+        
+        const noteCreator = container.querySelector('#note-creator');
+        const wrapper = document.createElement('div');
+        wrapper.className = 'listening-type1-questions-wrapper';
+        wrapper.innerHTML = html;
+        container.insertBefore(wrapper, noteCreator);
+      }
     }
   };
 })();
