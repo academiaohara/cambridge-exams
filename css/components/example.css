@@ -108,12 +108,12 @@
   border-left: 4px solid var(--primary);
 }
 
-.explanations-section h3 { 
-  display: flex; 
-  align-items: center; 
-  gap: 8px; 
-  margin-bottom: 16px; 
-  color: var(--text-dark); 
+.explanations-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: var(--text-dark);
 }
 
 .explanation-item {
@@ -124,7 +124,7 @@
   border: 1px solid var(--border-light);
 }
 
-.explanation-item strong { 
-  color: var(--primary); 
-  margin-right: 8px; 
+.explanation-item strong {
+  color: var(--primary);
+  margin-right: 8px;
 }
