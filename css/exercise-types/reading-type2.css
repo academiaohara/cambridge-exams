@@ -25,6 +25,7 @@
 
 .reading-type2-input {
   width: 120px;
+  max-width: 100%;
   padding: 8px 12px;
   border: 2px solid #cbd5e1;
   border-radius: 30px;
@@ -34,13 +35,13 @@
   transition: all 0.2s;
   background: white;
   font-size: 0.95rem;
+  box-sizing: border-box;
 }
 
 .reading-type2-input:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
-  width: 140px;
 }
 
 .reading-type2-input.correct {
@@ -86,4 +87,10 @@
   color: var(--correct);
   font-weight: 700;
   pointer-events: none;
+}
+
+.reading-type2-gap-number {
+  font-weight: 700;
+  color: var(--text-medium);
+  margin-right: 2px;
 }

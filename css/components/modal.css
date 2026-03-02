@@ -26,6 +26,13 @@
   pointer-events: auto;
   transform: translateY(0);
   transition: transform 0.3s ease;
+  box-sizing: border-box;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .modal-close {
@@ -46,19 +53,21 @@
 }
 
 .modal-header {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-light);
 }
 
 .modal-header h3 {
-  color: var(--primary);
+  color: var(--text-dark);
   margin-bottom: 5px;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
 .modal-header p {
-  color: var(--text-medium);
-  font-size: 1rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
 }
 
 .options-grid {

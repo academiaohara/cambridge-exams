@@ -163,12 +163,9 @@
           break;
 
         case 'transformations':
-          // New reading-type4 design uses modal-based input
-          document.querySelectorAll('.reading-type4-gap-slot').forEach(slot => {
-            slot.style.pointerEvents = 'none';
-          });
-          document.querySelectorAll('.reading-type4-answered').forEach(el => {
-            el.style.pointerEvents = 'none';
+          // Inline input design for transformations
+          document.querySelectorAll('.reading-type4-inline-input').forEach(input => {
+            input.disabled = true;
           });
           document.querySelectorAll('input.gap-input').forEach(input => input.disabled = true);
           break;

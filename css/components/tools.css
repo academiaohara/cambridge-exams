@@ -66,6 +66,7 @@
   border-radius: 8px;
   margin-bottom: 15px;
   font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
 }
 
 .note-creator-footer {
@@ -225,6 +226,7 @@
   font-size: 0.95rem;
   line-height: 1.6;
   resize: vertical;
+  box-sizing: border-box;
 }
 
 #free-notes-area:focus {
