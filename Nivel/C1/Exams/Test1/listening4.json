@@ -1,17 +1,48 @@
 {
   "title": "Listening - Part 4",
   "time": 10,
-  "totalQuestions": 7,
-  "description": "Choose the correct answer (A, B or C).",
+  "totalQuestions": 10,
+  "description": "You will hear five short extracts in which people are talking about their experience of learning something new. Complete both tasks.",
   "content": {
-    "questions": [
-      {
-        "number": 1,
-        "question": "Why did the man choose this job?",
-        "options": ["A) For the salary", "B) For the location", "C) For the hours"],
-        "correct": "B",
-        "explanation": "He says it's close to where he lives."
-      }
-    ]
+    "task1": {
+      "instruction": "Task 1: For questions 1-5, choose from the list (A-H) what motivated each speaker to take up the activity.",
+      "options": {
+        "A": "A friend's recommendation",
+        "B": "A desire for self-improvement",
+        "C": "A professional requirement",
+        "D": "Childhood ambition",
+        "E": "A chance encounter",
+        "F": "Health reasons",
+        "G": "Family influence",
+        "H": "Financial incentive"
+      },
+      "questions": [
+        { "number": 1, "speaker": "Speaker 1", "correct": "D", "explanation": "Speaker 1 mentions a lifelong dream from childhood." },
+        { "number": 2, "speaker": "Speaker 2", "correct": "A", "explanation": "Speaker 2 says a friend told them about it." },
+        { "number": 3, "speaker": "Speaker 3", "correct": "F", "explanation": "Speaker 3 started for health benefits." },
+        { "number": 4, "speaker": "Speaker 4", "correct": "C", "explanation": "Speaker 4 needed it for their job." },
+        { "number": 5, "speaker": "Speaker 5", "correct": "B", "explanation": "Speaker 5 wanted to challenge themselves." }
+      ]
+    },
+    "task2": {
+      "instruction": "Task 2: For questions 6-10, choose from the list (A-H) how each speaker felt about the experience of learning.",
+      "options": {
+        "A": "Frustrated by the difficulty",
+        "B": "Surprised by their own progress",
+        "C": "Disappointed with the instruction",
+        "D": "Proud of their achievement",
+        "E": "Overwhelmed at first",
+        "F": "Bored by the repetition",
+        "G": "Inspired to continue",
+        "H": "Nervous about performing"
+      },
+      "questions": [
+        { "number": 6, "speaker": "Speaker 1", "correct": "E", "explanation": "Speaker 1 describes feeling overwhelmed initially." },
+        { "number": 7, "speaker": "Speaker 2", "correct": "B", "explanation": "Speaker 2 was surprised by how quickly they improved." },
+        { "number": 8, "speaker": "Speaker 3", "correct": "G", "explanation": "Speaker 3 felt motivated to keep going." },
+        { "number": 9, "speaker": "Speaker 4", "correct": "D", "explanation": "Speaker 4 expresses pride in their accomplishment." },
+        { "number": 10, "speaker": "Speaker 5", "correct": "A", "explanation": "Speaker 5 found it more difficult than expected." }
+      ]
+    }
   }
 }

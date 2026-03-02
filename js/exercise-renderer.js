@@ -238,6 +238,21 @@
         case 'sentence-completion':
           if (typeof ListeningType2?.initListeners === 'function') ListeningType2.initListeners();
           break;
+        case 'essay':
+          if (typeof WritingType1?.initListeners === 'function') WritingType1.initListeners();
+          break;
+        case 'choice':
+          if (typeof WritingType2?.initListeners === 'function') WritingType2.initListeners();
+          break;
+        case 'interview':
+        case 'long-turn':
+        case 'collaborative':
+        case 'discussion':
+          if (typeof SpeakingType?.initListeners === 'function') SpeakingType.initListeners();
+          break;
+        case 'dual-matching':
+          if (typeof ListeningType4?.initListeners === 'function') ListeningType4.initListeners();
+          break;
       }
     },
     
