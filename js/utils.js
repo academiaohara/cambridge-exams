@@ -28,32 +28,65 @@
     // Cargar CSS específico del tipo de ejercicio
     loadExerciseTypeCSS: function(type) {
       const fileInfo = window.CONFIG?.EXERCISE_TYPE_FILES?.[type];
-      if (!fileInfo || !fileInfo.css) return;
+      if (!fileInfo || !fileInfo.css) {
+        console.warn(`⚠️ No hay CSS definido para el tipo: ${type}`);
+        return;
+      }
       
       const cssId = `css-${type}`;
-      if (document.getElementById(cssId)) return;
+      if (document.getElementById(cssId)) {
+        console.log(`✅ CSS ya cargado para tipo: ${type}`);
+        return;
+      }
       
       const link = document.createElement('link');
       link.id = cssId;
       link.rel = 'stylesheet';
       link.href = `${window.CONFIG.CSS_BASE_URL}exercise-types/${fileInfo.css}`;
+      link.onload = () => console.log(`🎨 CSS cargado: ${fileInfo.css}`);
+      link.onerror = () => console.error(`❌ Error cargando CSS: ${fileInfo.css}`);
       document.head.appendChild(link);
-      console.log(`🎨 CSS cargado para tipo: ${type}`);
     },
     
     // Cargar JS específico del tipo de ejercicio
     loadExerciseTypeJS: function(type) {
       const fileInfo = window.CONFIG?.EXERCISE_TYPE_FILES?.[type];
-      if (!fileInfo || !fileInfo.js) return;
+      if (!fileInfo || !fileInfo.js) {
+        console.warn(`⚠️ No hay JS definido para el tipo: ${type}`);
+        return;
+      }
       
       const jsId = `js-${type}`;
-      if (document.getElementById(jsId)) return;
+      if (document.getElementById(jsId)) {
+        console.log(`✅ JS ya cargado para tipo: ${type}`);
+        return;
+      }
       
       const script = document.createElement('script');
       script.id = jsId;
       script.src = `${window.CONFIG.JS_BASE_URL}exercise-types/${fileInfo.js}`;
+      script.onload = () => console.log(`📦 JS cargado: ${fileInfo.js}`);
+      script.onerror = () => console.error(`❌ Error cargando JS: ${fileInfo.js}`);
       document.body.appendChild(script);
-      console.log(`📦 JS cargado para tipo: ${type}`);
+    },
+    
+    // NUEVO: Cargar CSS base que antes estaba en components
+    loadBaseExerciseCSS: function() {
+      const baseCSSFiles = [
+        { id: 'base-example-css', file: 'example.css' },
+        { id: 'base-gaps-css', file: 'gaps.css' }
+      ];
+      
+      baseCSSFiles.forEach(item => {
+        if (!document.getElementById(item.id)) {
+          const link = document.createElement('link');
+          link.id = item.id;
+          link.rel = 'stylesheet';
+          link.href = `${window.CONFIG.CSS_BASE_URL}components/${item.file}`;
+          document.head.appendChild(link);
+          console.log(`📁 CSS base cargado: ${item.file}`);
+        }
+      });
     },
     
     // Formatear tiempo
