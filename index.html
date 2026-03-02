@@ -2,250 +2,75 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>English Tests - Cambridge Preparation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambridge Exams</title>
     
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Flag Icons CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/css/flag-icons.min.css">
-    
-    <!-- Google Fonts -->
+    <!-- Fuentes e iconos (globales) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
     
-    <!-- CSS Principal -->
-    <link rel="stylesheet" href="css/imports.css">
+    <!-- CSS BASE (estructural) -->
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/dashboard.css">
+    <link rel="stylesheet" href="css/components/language-selector.css">
+    <link rel="stylesheet" href="css/components/modal.css">
+    <link rel="stylesheet" href="css/components/tools.css">
+    <link rel="stylesheet" href="css/components/responsive.css">
     
-    <!-- Favicon (opcional) -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+    <!-- ESTOS YA NO VAN: Se cargan dinámicamente -->
+    <!-- <link rel="stylesheet" href="css/components/exercise.css"> -->
+    <!-- <link rel="stylesheet" href="css/components/example.css"> -->
+    <!-- <link rel="stylesheet" href="css/components/gaps.css"> -->
+    
+    <style>
+        /* Tus variables globales aquí si las tienes */
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --primary-light: #60a5fa;
+            --text-dark: #1e293b;
+            --text-medium: #475569;
+            --text-light: #64748b;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+            --white: #ffffff;
+            --completed: #10b981;
+            --in-progress: #f59e0b;
+            --incorrect: #ef4444;
+            --correct: #10b981;
+            --gap-purple: #8b5cf6;
+            --gap-purple-dark: #6d28d9;
+            --tool-bg: #f8fafc;
+        }
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #f1f5f9; }
+        .app-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    </style>
 </head>
 <body>
-    <header class="main-header">
-        <div class="header-container">
-            <div class="logo" onclick="window.loadDashboard()">
-                <i class="fas fa-graduation-cap"></i>
-                <div class="logo-text">
-                    English Tests
-                    <span>Cambridge Preparation</span>
-                </div>
-            </div>
-            
-            <div class="language-selector-wrapper">
-                <button class="language-selector-btn" onclick="toggleLanguageDropdown()">
-                    <div class="flag-circle-wrapper">
-                        <span class="fi fi-es" id="selectedFlag"></span>
-                    </div>
-                    <span class="selected-lang" id="selectedLang">ES</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-
-                <div class="language-dropdown" id="languageDropdown">
-                    <div class="language-option" onclick="window.setLanguage('es')">
-                        <span class="fi fi-es"></span>
-                        <span class="lang-name">Español</span>
-                        <span class="lang-code">ES</span>
-                    </div>
-                    <div class="language-option" onclick="window.setLanguage('en')">
-                        <span class="fi fi-gb"></span>
-                        <span class="lang-name">English</span>
-                        <span class="lang-code">EN</span>
-                    </div>
-                    <div class="language-option" onclick="window.setLanguage('fr')">
-                        <span class="fi fi-fr"></span>
-                        <span class="lang-name">Français</span>
-                        <span class="lang-code">FR</span>
-                    </div>
-                    <div class="language-option" onclick="window.setLanguage('de')">
-                        <span class="fi fi-de"></span>
-                        <span class="lang-name">Deutsch</span>
-                        <span class="lang-code">DE</span>
-                    </div>
-                    <div class="language-option" onclick="window.setLanguage('it')">
-                        <span class="fi fi-it"></span>
-                        <span class="lang-name">Italiano</span>
-                        <span class="lang-code">IT</span>
-                    </div>
-                    <div class="language-option" onclick="window.setLanguage('pt')">
-                        <span class="fi fi-pt"></span>
-                        <span class="lang-name">Português</span>
-                        <span class="lang-code">PT</span>
-                    </div>
-                </div>
-            </div>
-            
-            <nav class="level-nav">
-                <button class="level-btn" data-level="A2" onclick="window.filterByLevel('A2')"><i class="fas fa-leaf"></i> A2</button>
-                <button class="level-btn" data-level="B1" onclick="window.filterByLevel('B1')"><i class="fas fa-seedling"></i> B1</button>
-                <button class="level-btn" data-level="B2" onclick="window.filterByLevel('B2')"><i class="fas fa-tree"></i> B2</button>
-                <button class="level-btn active" data-level="C1" onclick="window.filterByLevel('C1')"><i class="fas fa-crown"></i> C1</button>
-                <button class="level-btn" data-level="C2" onclick="window.filterByLevel('C2')"><i class="fas fa-dragon"></i> C2</button>
-            </nav>
-        </div>
-    </header>
-
-    <div class="app-container">
-        <div class="mode-header" id="modeHeader">EXÁMENES COMPLETOS</div>
-        <div id="main-content">
-            <!-- El contenido se carga dinámicamente aquí -->
-            <div class="loading-exercise">
-                <i class="fas fa-spinner fa-spin"></i>
-                <h3>Cargando plataforma...</h3>
-            </div>
-        </div>
+    <div id="app">
+        <!-- Tu contenido de la app -->
     </div>
     
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4><i class="fas fa-info-circle"></i> Sobre la plataforma</h4>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-question-circle"></i> Cómo usar</a></li>
-                        <li><a href="#"><i class="fas fa-star"></i> Características</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4><i class="fas fa-certificate"></i> Niveles</h4>
-                    <ul>
-                        <li><a onclick="window.filterByLevel('A2')"><i class="fas fa-chevron-right"></i> A2 Key</a></li>
-                        <li><a onclick="window.filterByLevel('B1')"><i class="fas fa-chevron-right"></i> B1 Preliminary</a></li>
-                        <li><a onclick="window.filterByLevel('B2')"><i class="fas fa-chevron-right"></i> B2 First</a></li>
-                        <li><a onclick="window.filterByLevel('C1')"><i class="fas fa-chevron-right"></i> C1 Advanced</a></li>
-                        <li><a onclick="window.filterByLevel('C2')"><i class="fas fa-chevron-right"></i> C2 Proficiency</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4><i class="fas fa-link"></i> Enlaces</h4>
-                    <ul>
-                        <li><a href="https://github.com/academiaohara/cambridge-exams" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> Contacto</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 English Tests - Cambridge Preparation v3.1.0</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modal para opciones de gaps -->
-    <div class="modal-overlay" id="exercise-modal-overlay" style="display: none;">
-        <div class="modal-content">
-            <button class="modal-close" onclick="window.Modal.closeOptionsModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div id="modal-body"></div>
-        </div>
-    </div>
-
-    <!-- Scripts - Carga local para desarrollo, con fallback a CDN -->
-<!-- Scripts - Carga secuencial garantizada -->
-<script>
-    // Detectar si estamos en GitHub Pages o local
-    window.BASE_PATH = window.location.hostname.includes('github.io') 
-        ? '/cambridge-exams'  // Cambia por el nombre de tu repo
-        : '';
-    
-    // Lista de scripts en orden de dependencia
-    const scripts = [
-        'js/config.js',      // Configuración primero
-        'js/state.js',        // Estado global
-        'js/utils.js',        // Utilidades
-        'js/i18n.js',         // Internacionalización (define I18n)
-        'js/dashboard.js',     // Dashboard
-        'js/timer.js',         // Timer
-        'js/modal.js',         // Modal
-        'js/exercise-renderer.js',
-        'js/exercise-handlers.js',
-        'js/exercise.js',
-        'js/tools.js',
-        'js/app.js'           // App.js al final (depende de I18n)
-    ];
-
-    // Función para cargar un script y esperar
-    function loadScript(src) {
-        return new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = src;
-            script.onload = resolve;
-            script.onerror = reject;
-            document.body.appendChild(script);
-        });
-    }
-
-    // Función para cargar con retry a CDN
-    async function loadWithFallback(scriptPath) {
-        const localUrl = scriptPath;
-        const cdnUrl = `https://cdn.jsdelivr.net/gh/academiaohara/cambridge-exams@main/${scriptPath}`;
-        
-        try {
-            await loadScript(localUrl);
-            console.log(`✅ Cargado: ${scriptPath}`);
-            return true;
-        } catch (error) {
-            console.warn(`⚠️ Falló local, intentando CDN: ${scriptPath}`);
-            try {
-                await loadScript(cdnUrl);
-                console.log(`✅ Cargado desde CDN: ${scriptPath}`);
-                return true;
-            } catch (cdnError) {
-                console.error(`❌ Error crítico con ${scriptPath}:`, cdnError);
-                return false;
-            }
-        }
-    }
-
-    // Cargar scripts en orden
-    (async function() {
-        console.log('🚀 Iniciando carga de scripts...');
-        
-        for (const script of scripts) {
-            const success = await loadWithFallback(script);
-            if (!success) {
-                console.error(`❌ No se pudo cargar ${script}. Deteniendo.`);
-                document.getElementById('main-content').innerHTML = `
-                    <div class="error-message">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <h3>Error de carga</h3>
-                        <p>No se pudo cargar el script: ${script}</p>
-                        <button class="btn-back" onclick="location.reload()">
-                            <i class="fas fa-redo"></i> Reintentar
-                        </button>
-                    </div>
-                `;
-                return;
-            }
-        }
-        
-        console.log('✅ Todos los scripts cargados correctamente');
-        
-        // Inicializar la app manualmente si app.js no lo hace
-        if (window.App && window.App.init) {
-            window.App.init();
-        } else {
-            console.warn('⚠️ App no definida, esperando...');
-            // Esperar un poco y verificar
-            setTimeout(() => {
-                if (window.App && window.App.init) {
-                    window.App.init();
-                } else {
-                    console.error('❌ App nunca se definió');
-                }
-            }, 500);
-        }
-    })();
-</script>
-
-<!-- Fallback: Carga directa por si todo falla -->
-<noscript>
-    <div style="text-align: center; padding: 50px; background: #fee; color: #c00;">
-        <h3>JavaScript necesario</h3>
-        <p>Esta aplicación requiere JavaScript para funcionar.</p>
-    </div>
-</noscript>
+    <!-- Scripts: El orden es importante -->
+    <script src="js/config.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/exercise-renderer.js"></script>
+    <script src="js/exercise-handlers.js"></script>
+    <script src="js/exercise.js"></script>
+    <script src="js/tools.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
