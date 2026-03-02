@@ -24,7 +24,7 @@
               <i class="fas fa-info-circle"></i> ${wordLimit} ${I18n.t('wordsWritten')}
             </div>
           </div>
-          <textarea class="writing-type1-textarea"
+          <textarea class="writing-type1-textarea writing-textarea"
                     placeholder="${I18n.t('writeEssay')}..."
                     oninput="WritingType1.handleInput(this.value)">${savedAnswer}</textarea>
           <div class="writing-type1-word-count">
@@ -77,7 +77,7 @@
       const key = prompt(I18n.t('apiKeyPrompt'));
       if (key && key.trim()) {
         localStorage.setItem('ai_api_key', key.trim());
-        alert('API key saved.');
+        alert(I18n.t('apiKeySaved'));
       }
     },
 

@@ -125,7 +125,7 @@
       const key = prompt(I18n.t('apiKeyPrompt'));
       if (key && key.trim()) {
         localStorage.setItem('ai_api_key', key.trim());
-        alert('API key saved.');
+        alert(I18n.t('apiKeySaved'));
       }
     },
 
