@@ -370,3 +370,125 @@
     opacity: 0.8;
   }
 }
+
+/* AÑADIR AL FINAL DE exercise.css */
+
+/* Layout principal del ejercicio - active-tool-content debajo */
+.exercise-main-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 24px 0;
+  width: 100%;
+}
+
+.reading-text-enhanced {
+  width: 100%;
+  order: 1;
+}
+
+.active-tool-content {
+  width: 100%;
+  order: 2;
+  margin-top: 20px;
+  border-top: 2px solid #e2e8f0;
+  padding-top: 24px;
+  background: var(--tool-bg);
+  border-radius: 12px;
+  min-height: 200px;
+}
+
+/* Para pantallas grandes - opcional mantener lado a lado */
+@media (min-width: 1200px) {
+  .exercise-main-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .reading-text-enhanced {
+    width: 60%;
+  }
+  
+  .active-tool-content {
+    width: 40%;
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+/* Timer en horizontal - REEMPLAZAR la sección existente */
+.exercise-info-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.exercise-timer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border-radius: 40px;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.exercise-timer i {
+  font-size: 18px;
+  color: #fbbf24;
+}
+
+#timer-display {
+  font-size: 18px;
+  font-family: 'Courier New', monospace;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* Estados del timer */
+.exercise-timer.warning {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+.exercise-timer.warning i {
+  color: white;
+  animation: pulse 1s infinite;
+}
+
+.exercise-timer.danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  animation: shake 0.5s infinite;
+}
+.exercise-timer.danger i {
+  color: white;
+}
+
+/* Score display */
+.score-display {
+  padding: 8px 24px;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border-radius: 40px;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Animaciones */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
