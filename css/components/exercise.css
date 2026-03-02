@@ -127,17 +127,17 @@
 .exercise-description {
   background: linear-gradient(135deg, #f0f4ff, #f8fafc);
   border-left: 4px solid var(--primary);
-  padding: 16px 20px;
-  border-radius: 0 12px 12px 0;
+  padding: 10px 16px;
+  border-radius: 8px;
   margin-bottom: 24px;
   font-size: 0.95rem;
   color: var(--text-medium);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .exercise-main-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
   margin-top: 20px;
 }

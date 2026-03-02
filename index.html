@@ -71,14 +71,18 @@
             min-height: 100vh;
             color: var(--text-dark);
             line-height: 1.5;
+        }
+
+        #app {
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
         
         .app-container { 
             max-width: 1200px; 
             margin: 0 auto; 
-            padding: 0 24px;
+            padding: 32px 24px 0;
             width: 100%;
             flex: 1;
         }
@@ -169,11 +173,11 @@
                 </div>
                 
                 <div class="level-nav">
-                    <button class="level-btn" data-level="A2" onclick="filterByLevel('A2')">A2 Key</button>
-                    <button class="level-btn" data-level="B1" onclick="filterByLevel('B1')">B1 Preliminary</button>
-                    <button class="level-btn" data-level="B2" onclick="filterByLevel('B2')">B2 First</button>
-                    <button class="level-btn active" data-level="C1" onclick="filterByLevel('C1')">C1 Advanced</button>
-                    <button class="level-btn" data-level="C2" onclick="filterByLevel('C2')">C2 Proficiency</button>
+                    <button class="level-btn" data-level="A2" onclick="filterByLevel('A2')"><i class="fas fa-seedling"></i> A2 Key</button>
+                    <button class="level-btn" data-level="B1" onclick="filterByLevel('B1')"><i class="fas fa-book-reader"></i> B1 Preliminary</button>
+                    <button class="level-btn" data-level="B2" onclick="filterByLevel('B2')"><i class="fas fa-graduation-cap"></i> B2 First</button>
+                    <button class="level-btn active" data-level="C1" onclick="filterByLevel('C1')"><i class="fas fa-award"></i> C1 Advanced</button>
+                    <button class="level-btn" data-level="C2" onclick="filterByLevel('C2')"><i class="fas fa-crown"></i> C2 Proficiency</button>
                 </div>
                 
                 <div class="language-selector-wrapper">

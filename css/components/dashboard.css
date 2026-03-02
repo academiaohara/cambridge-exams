@@ -168,16 +168,16 @@
 }
 
 .section-icon {
-  font-size: 1.8rem !important;
+  font-size: 1.3rem !important;
   color: white !important;
-  padding: 12px;
-  border-radius: 16px;
+  padding: 8px;
+  border-radius: 12px;
   background: transparent;
-  border: 2px solid white;
+  border: none;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,8 +204,8 @@
 }
 
 .section-icon:hover {
-  transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.1) !important;
+  transform: scale(1.1);
+  filter: brightness(1.15);
 }
 
 .section-header h4 {
