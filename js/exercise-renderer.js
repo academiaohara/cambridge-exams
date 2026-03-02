@@ -5,6 +5,10 @@
       const content = document.getElementById('main-content');
       const partConfig = CONFIG.PART_TYPES[section === 'reading' ? part : `${section}${part}`] || CONFIG.PART_TYPES[1];
       
+      // Cargar CSS y JS específicos del tipo de ejercicio
+      Utils.loadExerciseTypeCSS(partConfig.type);
+      Utils.loadExerciseTypeJS(partConfig.type);
+      
       const paragraphs = exercise.content.text ? exercise.content.text.split('||') : [];
       let paragraphsHTML = this.renderParagraphs(paragraphs, exercise, partConfig);
       let exampleHTML = this.renderExampleBox(exercise.content.example, partConfig);
@@ -104,6 +108,11 @@
         </div>`;
       
       content.innerHTML = html;
+      
+      // Inicializar listeners específicos después de renderizar
+      setTimeout(() => {
+        this.initTypeSpecificListeners(partConfig.type);
+      }, 100);
     },
     
     renderParagraphs: function(paragraphs, exercise, partConfig) {
@@ -144,94 +153,81 @@
       
       switch(partConfig.type) {
         case 'multiple-choice':
-        case 'cross-text-matching':
-        case 'multiple-matching':
-          return `
-            <span class="gap-container">
-              <span class="gap-box ${isChecked ? 'checked' : ''}" onclick="${!isChecked ? 'Modal.openOptionsModal(' + qNum + ')' : ''}">
-                <span class="gap-answer" id="answer-${qNum}">
-                  <span class="gap-number">${qNum})</span>
-                  <span class="gap-dots">.........</span>
-                </span>
-              </span>
-            </span>
-          `;
-        
-        case 'open-cloze':
-        case 'word-formation':
-        case 'sentence-completion':
-          let inputClass = 'gap-input';
-          if (isChecked) {
-            const isCorrect = Utils.compareAnswers(userAnswer, question.correct, partConfig.type);
-            inputClass += isCorrect ? ' correct' : ' incorrect';
+          if (typeof window.ReadingType1 !== 'undefined') {
+            return ReadingType1.renderGap(question, qNum, isChecked, userAnswer);
           }
-          return `
-            <span class="gap-container">
-              <input type="text" 
-                     class="${inputClass}" 
-                     data-question="${qNum}" 
-                     value="${userAnswer}" 
-                     placeholder="..." 
-                     ${isChecked ? 'disabled' : ''}
-                     oninput="ExerciseHandlers.handleTextGap(${qNum}, this.value)">
-            </span>
-          `;
-        
+          break;
+          
+        case 'open-cloze':
+          if (typeof window.ReadingType2 !== 'undefined') {
+            return ReadingType2.renderGap(qNum, isChecked, userAnswer, question.correct);
+          }
+          break;
+          
+        case 'word-formation':
+          if (typeof window.ReadingType3 !== 'undefined') {
+            return ReadingType3.renderGap(question, qNum, isChecked, userAnswer);
+          }
+          break;
+          
         case 'transformations':
-          const keyWords = question.keyWord || '';
-          return `
-            <span class="gap-container transformation-gap">
-              <span class="transformation-keywords">${keyWords}</span>
-              <input type="text" 
-                     class="gap-input transformation-input ${isChecked ? (Utils.compareAnswers(userAnswer, question.correct, partConfig.type) ? 'correct' : 'incorrect') : ''}" 
-                     data-question="${qNum}" 
-                     value="${userAnswer}" 
-                     placeholder="${I18n.t('writeAnswer')}" 
-                     ${isChecked ? 'disabled' : ''}
-                     oninput="ExerciseHandlers.handleTextGap(${qNum}, this.value)">
-            </span>
-          `;
-        
+          if (typeof window.ReadingType4 !== 'undefined') {
+            return ReadingType4.renderQuestion(question, qNum, isChecked, userAnswer);
+          }
+          break;
+          
         case 'multiple-choice-text':
-          let radioHtml = `<span class="gap-container radio-gap" id="radio-group-${qNum}">`;
-          question.options.forEach(opt => {
-            const letter = opt.charAt(0);
-            const text = opt.substring(2).trim();
-            const checked = userAnswer === letter ? 'checked' : '';
-            radioHtml += `
-              <label class="radio-option ${isChecked ? 'disabled' : ''}">
-                <input type="radio" 
-                       name="q${qNum}" 
-                       value="${letter}" 
-                       ${checked} 
-                       ${isChecked ? 'disabled' : ''}
-                       onchange="ExerciseHandlers.handleRadioGap(${qNum}, '${letter}')">
-                <span class="radio-text">${letter}) ${text}</span>
-              </label>
-            `;
-          });
-          radioHtml += `</span>`;
-          return radioHtml;
-        
+          if (AppState.currentSection === 'listening' && typeof window.ListeningType1 !== 'undefined') {
+            return ListeningType1.renderQuestion(question, qNum, isChecked, userAnswer);
+          } else if (typeof window.ReadingType5 !== 'undefined') {
+            return ReadingType5.renderQuestion(question, qNum, isChecked, userAnswer);
+          }
+          break;
+          
+        case 'sentence-completion':
+          if (typeof window.ListeningType2 !== 'undefined') {
+            return ListeningType2.renderGap(question, qNum, isChecked, userAnswer);
+          }
+          break;
+          
+        case 'cross-text-matching':
+          if (typeof window.ReadingType6 !== 'undefined') {
+            return ReadingType6.renderQuestion(question, qNum, isChecked, userAnswer);
+          }
+          break;
+          
         case 'gapped-text':
-          return `
-            <span class="gap-container paragraph-gap">
-              <select class="paragraph-select" 
-                      data-question="${qNum}" 
-                      ${isChecked ? 'disabled' : ''}
-                      onchange="ExerciseHandlers.handleSelectGap(${qNum}, this.value)">
-                <option value="" data-i18n="selectParagraph">${I18n.t('selectParagraph')}</option>
-                ${question.options?.map(opt => {
-                  const letter = opt.charAt(0);
-                  const text = opt.substring(2).trim();
-                  return `<option value="${letter}" ${userAnswer === letter ? 'selected' : ''}>${letter}) ${text}</option>`;
-                }).join('')}
-              </select>
-            </span>
-          `;
-        
-        default:
-          return `<span class="gap-error">[Error]</span>`;
+          if (typeof window.ReadingType7 !== 'undefined') {
+            return ReadingType7.renderGap(question, qNum, isChecked, userAnswer);
+          }
+          break;
+          
+        case 'multiple-matching':
+          if (typeof window.ReadingType8 !== 'undefined') {
+            return ReadingType8.renderQuestion(question, qNum, isChecked, userAnswer);
+          }
+          break;
+      }
+      
+      // Fallback genérico
+      return `<span class="gap-error">[Error: Tipo no soportado]</span>`;
+    },
+    
+    initTypeSpecificListeners: function(type) {
+      switch(type) {
+        case 'multiple-choice':
+          if (typeof ReadingType1?.initListeners === 'function') ReadingType1.initListeners();
+          break;
+        case 'multiple-choice-text':
+          if (AppState.currentSection === 'listening' && typeof ListeningType1?.initListeners === 'function') {
+            ListeningType1.initListeners();
+          } else if (typeof ReadingType5?.initListeners === 'function') {
+            ReadingType5.initListeners();
+          }
+          break;
+        case 'sentence-completion':
+          if (typeof ListeningType2?.initListeners === 'function') ListeningType2.initListeners();
+          break;
       }
     },
     
@@ -266,12 +262,10 @@
     },
     
     renderExampleBox: function(exampleData, partConfig) {
-      // Si no hay datos de ejemplo, no renderizar nada
       if (!exampleData) return '';
       
-      // Verificar si es un ejemplo válido (no "example-test")
       if (exampleData.text === "example-test" || exampleData.correct === "test") {
-        return ''; // No renderizar ejemplos de prueba
+        return '';
       }
       
       if (partConfig.type === 'multiple-choice' && exampleData.options) {
