@@ -1,0 +1,130 @@
+/* css/components/example.css */
+.example-container {
+  background: #f0f4ff;
+  border-left: 4px solid var(--primary);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-sm);
+}
+
+.example-container.simple {
+  background: #f0f4ff;
+  border-left: 4px solid var(--primary);
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.example-container.simple .example-text {
+  font-size: 1rem;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+}
+
+.example-container.simple strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.example-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.example-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e7ff;
+}
+
+.example-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.example-option {
+  flex: 1 1 calc(25% - 9px);
+  min-width: 120px;
+  padding: 12px 15px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.example-option.correct {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  border-color: #059669;
+  color: white;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.example-option i {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.example-explanation {
+  margin-top: 15px;
+  padding: 12px 16px;
+  background: #fff3cd;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+  font-size: 0.95rem;
+  color: #856404;
+}
+
+.example-explanation i {
+  margin-right: 8px;
+  color: #856404;
+}
+
+.explanations-section {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 24px;
+  border-left: 4px solid var(--primary);
+}
+
+.explanations-section h3 { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  margin-bottom: 16px; 
+  color: var(--text-dark); 
+}
+
+.explanation-item {
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  background: white;
+  border: 1px solid var(--border-light);
+}
+
+.explanation-item strong { 
+  color: var(--primary); 
+  margin-right: 8px; 
+}
