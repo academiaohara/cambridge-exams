@@ -35,13 +35,20 @@
       let correct = 0;
       const questions = AppState.currentExercise.content.questions || [];
       
-      questions.forEach(q => {
-        const userAnswer = AppState.currentExercise.answers[q.number];
-        const isCorrect = Utils.compareAnswers(userAnswer, q.correct, partConfig.type);
-        if (isCorrect) correct++;
-        
-        this.markAnswerVisual(q.number, userAnswer, q.correct, isCorrect, partConfig);
-      });
+      // Usar el método específico del tipo si existe
+      const typeChecker = this.getTypeChecker(partConfig.type);
+      if (typeChecker && typeof typeChecker.checkAnswers === 'function') {
+        correct = typeChecker.checkAnswers();
+      } else {
+        // Fallback al método genérico
+        questions.forEach(q => {
+          const userAnswer = AppState.currentExercise.answers[q.number];
+          const isCorrect = Utils.compareAnswers(userAnswer, q.correct, partConfig.type);
+          if (isCorrect) correct++;
+          
+          this.markAnswerVisual(q.number, userAnswer, q.correct, isCorrect, partConfig);
+        });
+      }
       
       Timer.updateScoreDisplay();
       
@@ -53,6 +60,21 @@
       if (AppState.currentExamId && AppState.currentSection && AppState.currentPart) {
         Exercise.markPartCompleted(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
       }
+    },
+    
+    getTypeChecker: function(type) {
+      const typeMap = {
+        'multiple-choice': window.ReadingType1,
+        'open-cloze': window.ReadingType2,
+        'word-formation': window.ReadingType3,
+        'transformations': window.ReadingType4,
+        'multiple-choice-text': AppState.currentSection === 'listening' ? window.ListeningType1 : window.ReadingType5,
+        'sentence-completion': window.ListeningType2,
+        'cross-text-matching': window.ReadingType6,
+        'gapped-text': window.ReadingType7,
+        'multiple-matching': window.ReadingType8
+      };
+      return typeMap[type];
     },
     
     markAnswerVisual: function(qNum, userAnswer, correctAnswer, isCorrect, partConfig) {
