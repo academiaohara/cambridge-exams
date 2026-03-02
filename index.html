@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambridge Exams</title>
     
-    <!-- Fuentes e iconos (globales) -->
+    <!-- Fuentes e iconos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
     
-    <!-- CSS BASE (estructural) -->
+    <!-- CSS BASE - TODOS ESTOS SON NECESARIOS -->
     <link rel="stylesheet" href="css/components/header.css">
     <link rel="stylesheet" href="css/components/footer.css">
     <link rel="stylesheet" href="css/components/dashboard.css">
@@ -22,13 +22,13 @@
     <link rel="stylesheet" href="css/components/tools.css">
     <link rel="stylesheet" href="css/components/responsive.css">
     
-    <!-- ESTOS YA NO VAN: Se cargan dinámicamente -->
-    <!-- <link rel="stylesheet" href="css/components/exercise.css"> -->
-    <!-- <link rel="stylesheet" href="css/components/example.css"> -->
-    <!-- <link rel="stylesheet" href="css/components/gaps.css"> -->
+    <!-- ESTOS TAMBIÉN SON NECESARIOS - CONTIENEN ESTILOS BASE -->
+    <link rel="stylesheet" href="css/components/exercise.css">
+    <link rel="stylesheet" href="css/components/example.css">
+    <link rel="stylesheet" href="css/components/gaps.css">
     
     <style>
-        /* Tus variables globales aquí si las tienes */
+        /* Variables globales */
         :root {
             --primary: #1e3a8a;
             --secondary: #3b82f6;
@@ -50,16 +50,127 @@
             --gap-purple-dark: #6d28d9;
             --tool-bg: #f8fafc;
         }
-        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: #f1f5f9; }
-        .app-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background: #f1f5f9; 
+        }
+        .app-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+        }
     </style>
 </head>
 <body>
     <div id="app">
-        <!-- Tu contenido de la app -->
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-container">
+                <div class="logo" onclick="loadDashboard()">
+                    <i class="fas fa-book-open"></i>
+                    <div class="logo-text">
+                        Cambridge Exams
+                        <span>Practice & Prepare</span>
+                    </div>
+                </div>
+                
+                <div class="level-nav">
+                    <button class="level-btn" data-level="A2" onclick="filterByLevel('A2')">A2 Key</button>
+                    <button class="level-btn" data-level="B1" onclick="filterByLevel('B1')">B1 Preliminary</button>
+                    <button class="level-btn" data-level="B2" onclick="filterByLevel('B2')">B2 First</button>
+                    <button class="level-btn active" data-level="C1" onclick="filterByLevel('C1')">C1 Advanced</button>
+                    <button class="level-btn" data-level="C2" onclick="filterByLevel('C2')">C2 Proficiency</button>
+                </div>
+                
+                <div class="language-selector-wrapper">
+                    <button class="language-selector-btn" onclick="toggleLanguageDropdown()">
+                        <span class="flag-circle-wrapper">
+                            <span class="fi fi-es" id="selectedFlag"></span>
+                        </span>
+                        <span class="selected-lang" id="selectedLang">ES</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option" onclick="setLanguage('es')">
+                            <span class="fi fi-es"></span>
+                            <span class="lang-name">Español</span>
+                            <span class="lang-code">ES</span>
+                        </div>
+                        <div class="language-option" onclick="setLanguage('en')">
+                            <span class="fi fi-gb"></span>
+                            <span class="lang-name">English</span>
+                            <span class="lang-code">EN</span>
+                        </div>
+                        <div class="language-option" onclick="setLanguage('fr')">
+                            <span class="fi fi-fr"></span>
+                            <span class="lang-name">Français</span>
+                            <span class="lang-code">FR</span>
+                        </div>
+                        <div class="language-option" onclick="setLanguage('de')">
+                            <span class="fi fi-de"></span>
+                            <span class="lang-name">Deutsch</span>
+                            <span class="lang-code">DE</span>
+                        </div>
+                        <div class="language-option" onclick="setLanguage('it')">
+                            <span class="fi fi-it"></span>
+                            <span class="lang-name">Italiano</span>
+                            <span class="lang-code">IT</span>
+                        </div>
+                        <div class="language-option" onclick="setLanguage('pt')">
+                            <span class="fi fi-pt"></span>
+                            <span class="lang-name">Português</span>
+                            <span class="lang-code">PT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="app-container">
+            <div id="main-content">
+                <!-- El dashboard se cargará aquí dinámicamente -->
+            </div>
+        </main>
+
+        <!-- Modal para opciones de ejercicios -->
+        <div id="exercise-modal-overlay" class="modal-overlay" style="display: none;">
+            <div class="modal-content" id="modal-body">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4><i class="fas fa-info-circle"></i> Cambridge Exams</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-question-circle"></i> Acerca de</a></li>
+                            <li><a href="#"><i class="fas fa-envelope"></i> Contacto</a></li>
+                            <li><a href="#"><i class="fas fa-shield-alt"></i> Privacidad</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4><i class="fas fa-cog"></i> Recursos</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-book"></i> Guías de estudio</a></li>
+                            <li><a href="#"><i class="fas fa-video"></i> Tutoriales</a></li>
+                            <li><a href="#"><i class="fas fa-question"></i> FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Cambridge Exams Practice. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
     </div>
-    
-    <!-- Scripts: El orden es importante -->
+
+    <!-- Scripts en orden correcto -->
     <script src="js/config.js"></script>
     <script src="js/state.js"></script>
     <script src="js/utils.js"></script>
