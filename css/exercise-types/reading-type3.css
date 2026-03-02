@@ -124,6 +124,13 @@
   border-radius: 30px;
   margin: 0 4px;
   border: 1px solid #c084fc;
+  vertical-align: middle;
+  transition: all 0.2s;
+}
+
+.reading-type3-word-box.reading-type3-filled {
+  border-color: var(--secondary);
+  background: #f5f3ff;
 }
 
 .reading-type3-stem {

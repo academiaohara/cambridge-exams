@@ -152,12 +152,9 @@
           break;
           
         case 'word-formation':
-          // New reading-type3 design uses modal-based input
-          document.querySelectorAll('.reading-type3-gap-slot').forEach(slot => {
-            slot.style.pointerEvents = 'none';
-          });
-          document.querySelectorAll('.reading-type3-answered').forEach(el => {
-            el.style.pointerEvents = 'none';
+          // Inline input design for word formation
+          document.querySelectorAll('.reading-type3-input').forEach(input => {
+            input.disabled = true;
           });
           document.querySelectorAll('input.gap-input').forEach(input => input.disabled = true);
           break;
@@ -217,7 +214,7 @@
       AppState.answersChecked = false;
       
       // Re-render exercise for types that use new gap design
-      const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations'];
+      const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text'];
       if (reRenderTypes.includes(partConfig.type)) {
         ExerciseRenderer.render(
           AppState.currentExercise,

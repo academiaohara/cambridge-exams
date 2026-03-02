@@ -23,6 +23,11 @@
         paragraphsHTML = this.renderTransformationQuestions(exercise, partConfig);
       }
       
+      // For multiple-choice-text (Part 5), render questions directly if no text
+      if (partConfig.type === 'multiple-choice-text' && !exercise.content.text && exercise.content.questions) {
+        paragraphsHTML = this.renderMultipleChoiceTextQuestions(exercise, partConfig);
+      }
+      
       let exampleHTML = this.renderExampleBox(exercise.content.example, partConfig);
       
       const sectionTitle = Utils.getSectionTitle(section);
@@ -155,6 +160,24 @@
       questions.forEach(q => {
         if (typeof window.ReadingType4 !== 'undefined') {
           html += ReadingType4.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
+        }
+      });
+      
+      return html;
+    },
+    
+    renderMultipleChoiceTextQuestions: function(exercise, partConfig) {
+      let html = '';
+      if (exercise.content.title) {
+        html += `<h3 class="reading-type5-content-title">${exercise.content.title}</h3>`;
+      }
+      const questions = exercise.content.questions || [];
+      const userAnswer = AppState.currentExercise?.answers || {};
+      const isChecked = AppState.answersChecked;
+      
+      questions.forEach(q => {
+        if (typeof window.ReadingType5 !== 'undefined') {
+          html += ReadingType5.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
         }
       });
       
