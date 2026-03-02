@@ -143,61 +143,109 @@
     </div>
 
     <!-- Scripts - Carga local para desarrollo, con fallback a CDN -->
-    <script>
-        // Detectar si estamos en GitHub Pages o local
-        window.BASE_PATH = window.location.hostname.includes('github.io') 
-            ? '/cambridge-exams'  // Cambia 'cambridge-exams' por el nombre de tu repo
-            : '';
-        
-        // Función para cargar scripts
-        function loadScript(src) {
-            return new Promise((resolve, reject) => {
-                const script = document.createElement('script');
-                script.src = src;
-                script.onload = resolve;
-                script.onerror = reject;
-                document.body.appendChild(script);
-            });
-        }
+<!-- Scripts - Carga secuencial garantizada -->
+<script>
+    // Detectar si estamos en GitHub Pages o local
+    window.BASE_PATH = window.location.hostname.includes('github.io') 
+        ? '/cambridge-exams'  // Cambia por el nombre de tu repo
+        : '';
+    
+    // Lista de scripts en orden de dependencia
+    const scripts = [
+        'js/config.js',      // Configuración primero
+        'js/state.js',        // Estado global
+        'js/utils.js',        // Utilidades
+        'js/i18n.js',         // Internacionalización (define I18n)
+        'js/dashboard.js',     // Dashboard
+        'js/timer.js',         // Timer
+        'js/modal.js',         // Modal
+        'js/exercise-renderer.js',
+        'js/exercise-handlers.js',
+        'js/exercise.js',
+        'js/tools.js',
+        'js/app.js'           // App.js al final (depende de I18n)
+    ];
 
-        // Cargar scripts en orden
-        (async function() {
-            const scripts = [
-                'js/config.js',
-                'js/state.js',
-                'js/utils.js',
-                'js/i18n.js',
-                'js/dashboard.js',
-                'js/timer.js',
-                'js/modal.js',
-                'js/exercise-renderer.js',
-                'js/exercise-handlers.js',
-                'js/exercise.js',
-                'js/tools.js',
-                'js/app.js'
-            ];
-            
+    // Función para cargar un script y esperar
+    function loadScript(src) {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.body.appendChild(script);
+        });
+    }
+
+    // Función para cargar con retry a CDN
+    async function loadWithFallback(scriptPath) {
+        const localUrl = scriptPath;
+        const cdnUrl = `https://cdn.jsdelivr.net/gh/academiaohara/cambridge-exams@main/${scriptPath}`;
+        
+        try {
+            await loadScript(localUrl);
+            console.log(`✅ Cargado: ${scriptPath}`);
+            return true;
+        } catch (error) {
+            console.warn(`⚠️ Falló local, intentando CDN: ${scriptPath}`);
             try {
-                for (const script of scripts) {
-                    await loadScript(script);
-                }
-                console.log('✅ Todos los scripts cargados');
-            } catch (error) {
-                console.error('❌ Error cargando scripts:', error);
-                // Fallback a CDN si falla la carga local
-                const cdnScripts = scripts.map(s => 
-                    `https://cdn.jsdelivr.net/gh/academiaohara/cambridge-exams@main/${s}`
-                );
-                
-                for (const script of cdnScripts) {
-                    try {
-                        await loadScript(script);
-                    } catch (e) {
-                        console.error('❌ Error también con CDN:', script);
-                    }
-                }
+                await loadScript(cdnUrl);
+                console.log(`✅ Cargado desde CDN: ${scriptPath}`);
+                return true;
+            } catch (cdnError) {
+                console.error(`❌ Error crítico con ${scriptPath}:`, cdnError);
+                return false;
             }
-        })();
-    </script>
+        }
+    }
+
+    // Cargar scripts en orden
+    (async function() {
+        console.log('🚀 Iniciando carga de scripts...');
+        
+        for (const script of scripts) {
+            const success = await loadWithFallback(script);
+            if (!success) {
+                console.error(`❌ No se pudo cargar ${script}. Deteniendo.`);
+                document.getElementById('main-content').innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Error de carga</h3>
+                        <p>No se pudo cargar el script: ${script}</p>
+                        <button class="btn-back" onclick="location.reload()">
+                            <i class="fas fa-redo"></i> Reintentar
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+        }
+        
+        console.log('✅ Todos los scripts cargados correctamente');
+        
+        // Inicializar la app manualmente si app.js no lo hace
+        if (window.App && window.App.init) {
+            window.App.init();
+        } else {
+            console.warn('⚠️ App no definida, esperando...');
+            // Esperar un poco y verificar
+            setTimeout(() => {
+                if (window.App && window.App.init) {
+                    window.App.init();
+                } else {
+                    console.error('❌ App nunca se definió');
+                }
+            }, 500);
+        }
+    })();
+</script>
+
+<!-- Fallback: Carga directa por si todo falla -->
+<noscript>
+    <div style="text-align: center; padding: 50px; background: #fee; color: #c00;">
+        <h3>JavaScript necesario</h3>
+        <p>Esta aplicación requiere JavaScript para funcionar.</p>
+    </div>
+</noscript>
 </body>
 </html>
