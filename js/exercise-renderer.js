@@ -174,8 +174,6 @@
       
       return html;
     },
-      return html;
-    },
     
     renderGapByType: function(question, qNum, partConfig) {
       const userAnswer = AppState.currentExercise?.answers?.[qNum] || '';
