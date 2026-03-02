@@ -46,14 +46,10 @@
   border: 2px solid #fef08a;
   border-radius: 15px;
   padding: 20px;
-  margin: 15px 0;
+  margin: 15px 0 0;
   box-shadow: var(--shadow-md);
-  position: absolute;
-  z-index: 100;
-  width: 90%;
-  max-width: 400px;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .note-creator-header {

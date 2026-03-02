@@ -93,12 +93,12 @@
     }
   };
   
-  // URLs base
-  window.CONFIG.EXERCISES_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/Nivel/C1/Exams/`;
-  window.CONFIG.LANG_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/lang/`;
-  window.CONFIG.TIPS_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/tips/`;
-  window.CONFIG.JS_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/js/`;
-  window.CONFIG.CSS_BASE_URL = `https://cdn.jsdelivr.net/gh/${CONFIG.GITHUB_USER}/${CONFIG.REPO_NAME}@${CONFIG.BRANCH}/css/`;
+  // URLs base (relative paths for GitHub Pages)
+  window.CONFIG.EXERCISES_URL = `Nivel/C1/Exams/`;
+  window.CONFIG.LANG_BASE_URL = `lang/`;
+  window.CONFIG.TIPS_BASE_URL = `tips/`;
+  window.CONFIG.JS_BASE_URL = `js/`;
+  window.CONFIG.CSS_BASE_URL = `css/`;
   window.CONFIG.AI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
   window.CONFIG.AI_MODEL = 'gpt-4o-mini';
   

@@ -138,6 +138,14 @@
             margin-bottom: 20px;
         }
         
+        .error-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
         .btn-back {
             background: var(--primary);
             color: white;
@@ -156,6 +164,15 @@
             background: var(--secondary);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+        }
+        
+        .btn-back-secondary {
+            background: var(--text-medium);
+        }
+        
+        .btn-back-secondary:hover {
+            background: var(--text-dark);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
         }
     </style>
 </head>
@@ -280,15 +297,20 @@
     <script src="js/tools.js"></script>
     <script src="js/app.js"></script>
     
-    <!-- Los JS de tipos específicos se cargarán dinámicamente mediante Utils.loadExerciseTypeJS() -->
-    <!-- No es necesario incluirlos aquí, pero si quieres precargarlos puedes descomentar: -->
-    <!-- 
+    <!-- JS de tipos específicos de ejercicio (cargados estáticamente para evitar problemas de timing) -->
     <script src="js/exercise-types/reading-type1.js"></script>
     <script src="js/exercise-types/reading-type2.js"></script>
     <script src="js/exercise-types/reading-type3.js"></script>
     <script src="js/exercise-types/reading-type4.js"></script>
+    <script src="js/exercise-types/reading-type5.js"></script>
+    <script src="js/exercise-types/reading-type6.js"></script>
+    <script src="js/exercise-types/reading-type7.js"></script>
+    <script src="js/exercise-types/reading-type8.js"></script>
     <script src="js/exercise-types/listening-type1.js"></script>
     <script src="js/exercise-types/listening-type2.js"></script>
-    -->
+    <script src="js/exercise-types/listening-type4.js"></script>
+    <script src="js/exercise-types/speaking-type.js"></script>
+    <script src="js/exercise-types/writing-type1.js"></script>
+    <script src="js/exercise-types/writing-type2.js"></script>
 </body>
 </html>

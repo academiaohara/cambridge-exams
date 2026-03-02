@@ -285,6 +285,19 @@
         `;
       }
       
+      if (partConfig.type === 'word-formation') {
+        const wordHtml = exampleData.word
+          ? `<span class="reading-type3-hint">(${exampleData.word})</span>`
+          : '';
+        return `
+          <span class="reading-type3-gap-inline">
+            <span class="reading-type3-gap-number">(${qNum})</span>
+            <span class="reading-type3-answered reading-type3-example-answer">${exampleText}</span>
+            ${wordHtml}
+          </span>
+        `;
+      }
+      
       return `
         <span class="gap-container">
           <span class="gap-box correct checked" style="pointer-events: none;">

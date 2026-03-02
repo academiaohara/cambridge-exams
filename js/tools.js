@@ -48,7 +48,12 @@
     },
     
     hideNoteCreator: function() {
-      document.getElementById('note-creator').style.display = 'none';
+      const noteCreator = document.getElementById('note-creator');
+      if (noteCreator) {
+        noteCreator.style.display = 'none';
+        const emptyMsg = noteCreator.closest('#active-tool-content')?.querySelector('.empty-msg');
+        if (emptyMsg) emptyMsg.style.display = '';
+      }
       document.getElementById('note-input-field').value = '';
       window.getSelection().removeAllRanges();
     },
@@ -348,7 +353,11 @@
       try {
         AppState.currentNoteRange = selection.getRangeAt(0).cloneRange();
         document.getElementById('selected-phrase-display').textContent = text;
-        document.getElementById('note-creator').style.display = 'block';
+        const noteCreator = document.getElementById('note-creator');
+        noteCreator.style.display = 'block';
+        // Hide the empty-msg sibling inside #active-tool-content so note-creator takes its place
+        const emptyMsg = noteCreator.closest('#active-tool-content')?.querySelector('.empty-msg');
+        if (emptyMsg) emptyMsg.style.display = 'none';
         document.getElementById('note-input-field').focus();
       } catch (e) {
         console.log('Error al seleccionar texto:', e);
