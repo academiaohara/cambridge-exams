@@ -86,25 +86,6 @@
           <div class="exercise-main-layout">
             <div class="reading-text-enhanced" id="selectable-text">
               ${paragraphsHTML}
-              
-              <div id="note-creator" class="note-creator-card" style="display:none;">
-                <div class="note-creator-header">
-                  <span data-i18n="highlightText">${I18n.t('highlightText')}</span> "<span id="selected-phrase-display"></span>"
-                </div>
-                <input type="text" id="note-input-field" data-i18n-placeholder="addNote" placeholder="${I18n.t('addNote')}">
-                <div class="note-creator-footer">
-                  <div class="color-options">
-                    <span class="color-dot yellow active" data-color="#fef08a" onclick="Tools.setNoteColor('#fef08a', this)"></span>
-                    <span class="color-dot green" data-color="#bbf7d0" onclick="Tools.setNoteColor('#bbf7d0', this)"></span>
-                    <span class="color-dot blue" data-color="#bfdbfe" onclick="Tools.setNoteColor('#bfdbfe', this)"></span>
-                    <span class="color-dot pink" data-color="#fbcfe8" onclick="Tools.setNoteColor('#fbcfe8', this)"></span>
-                  </div>
-                  <div class="note-actions">
-                    <button class="btn-cancel" onclick="Tools.hideNoteCreator()"><span data-i18n="cancel">${I18n.t('cancel')}</span></button>
-                    <button class="btn-confirm" onclick="Tools.saveNote()"><span data-i18n="confirm">${I18n.t('confirm')}</span></button>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 

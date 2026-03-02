@@ -4,6 +4,14 @@
 (function() {
   window.ReadingType1 = {
     renderGap: function(question, qNum, isChecked, userAnswer) {
+      if (qNum === 0) {
+        return `
+          <span class="reading-type1-gap">
+            <span class="reading-type1-gap-number">(${qNum})</span>
+            <span class="reading-type1-answered-word reading-type1-example-answer">${userAnswer || ''}</span>
+          </span>
+        `;
+      }
       if (isChecked && userAnswer) {
         const isCorrect = this.isAnswerCorrect(question, userAnswer);
         const answerText = this.getDisplayAnswer(question, userAnswer);

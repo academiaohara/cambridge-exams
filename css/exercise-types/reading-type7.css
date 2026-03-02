@@ -103,3 +103,9 @@
   font-size: 0.8rem;
   margin-bottom: 6px;
 }
+
+.reading-type7-example-answer {
+  color: var(--correct);
+  font-weight: 700;
+  pointer-events: none;
+}

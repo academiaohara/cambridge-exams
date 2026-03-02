@@ -243,6 +243,17 @@
   text-align: right;
 }
 
+.free-notes-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.free-notes-footer .small-info {
+  margin-top: 0;
+}
+
 .dict-card-container {
   background-color: #f0f4ff;
   border: 1px solid #dbeafe;

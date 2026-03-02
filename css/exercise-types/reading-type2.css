@@ -81,3 +81,9 @@
   font-size: 0.9rem;
   margin-right: 8px;
 }
+
+.reading-type2-example-answer {
+  color: var(--correct);
+  font-weight: 700;
+  pointer-events: none;
+}

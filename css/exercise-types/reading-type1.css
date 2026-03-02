@@ -92,3 +92,9 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+.reading-type1-example-answer {
+  color: var(--correct);
+  font-weight: 700;
+  pointer-events: none;
+}

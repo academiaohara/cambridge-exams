@@ -4,6 +4,13 @@
 (function() {
   window.ReadingType2 = {
     renderGap: function(question, qNum, isChecked, userAnswer) {
+      if (qNum === 0) {
+        return `
+          <span class="reading-type2-gap">
+            <span class="reading-type2-example-answer">${userAnswer || ''}</span>
+          </span>
+        `;
+      }
       let inputClass = 'reading-type2-input gap-input';
       if (isChecked) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
