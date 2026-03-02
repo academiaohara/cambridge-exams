@@ -104,12 +104,22 @@
         case 'open-cloze':
         case 'word-formation':
         case 'sentence-completion':
-          return userAnswer.trim().toLowerCase() === correctAnswer.toLowerCase();
+          if (typeof correctAnswer === 'string' && correctAnswer.includes('/')) {
+            return correctAnswer.split('/').some(ans =>
+              userAnswer.trim().toLowerCase() === ans.trim().toLowerCase()
+            );
+          }
+          return userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
           
         case 'transformations':
           if (Array.isArray(correctAnswer)) {
             return correctAnswer.some(ans => 
               userAnswer.toLowerCase().includes(ans.toLowerCase())
+            );
+          }
+          if (typeof correctAnswer === 'string' && correctAnswer.includes('/')) {
+            return correctAnswer.split('/').some(ans =>
+              userAnswer.toLowerCase().includes(ans.trim().toLowerCase())
             );
           }
           return userAnswer.toLowerCase().includes(correctAnswer.toLowerCase());
