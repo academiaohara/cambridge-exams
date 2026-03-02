@@ -30,10 +30,10 @@
           </div>
           
           <div class="exercise-info">
-            <div class="exercise-info-left">
-              <span><i class="fas fa-clock"></i> ${exercise.time || '10'} ${I18n.t('minutes')}</span>
-              <span><i class="fas fa-question-circle"></i> ${exercise.totalQuestions || partConfig.total} ${I18n.t('questions')}</span>
-            </div>
+      <div class="exercise-info-left">
+        <span><i class="fas fa-clock"></i> ${exercise.time || '10'} <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
+        <span><i class="fas fa-question-circle"></i> ${exercise.totalQuestions || partConfig.total} <span data-i18n="questions">${I18n.t('questions')}</span></span>
+      </div>
             <div class="exercise-info-right">
               <div class="exercise-timer" id="exercise-timer">
                 <i class="fas fa-hourglass-half"></i>
