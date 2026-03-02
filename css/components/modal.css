@@ -41,19 +41,23 @@
   z-index: 10;
 }
 
-.modal-close:hover { color: var(--text-dark); }
+.modal-close:hover {
+  color: var(--text-dark);
+}
 
-.modal-header { margin-bottom: 30px; }
+.modal-header {
+  margin-bottom: 30px;
+}
 
-.modal-header h3 { 
-  color: var(--primary); 
-  margin-bottom: 5px; 
+.modal-header h3 {
+  color: var(--primary);
+  margin-bottom: 5px;
   font-size: 1.8rem;
   font-weight: 700;
 }
 
-.modal-header p { 
-  color: var(--text-medium); 
+.modal-header p {
+  color: var(--text-medium);
   font-size: 1rem;
 }
 
