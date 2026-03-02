@@ -4,21 +4,33 @@
 (function() {
   window.ReadingType1 = {
     renderGap: function(question, qNum, isChecked, userAnswer) {
-      let btnClass = 'reading-type1-gap-btn';
-      if (isChecked) btnClass += ' checked';
-      if (userAnswer) btnClass += ' answered';
       if (isChecked && userAnswer) {
-        btnClass += this.isAnswerCorrect(question, userAnswer) ? ' correct' : ' incorrect';
+        const isCorrect = this.isAnswerCorrect(question, userAnswer);
+        const answerText = this.getDisplayAnswer(question, userAnswer);
+        const colorClass = isCorrect ? 'reading-type1-correct' : 'reading-type1-incorrect';
+        const correctText = !isCorrect ? this.getCorrectText(question) : '';
+        return `
+          <span class="reading-type1-gap">
+            <span class="reading-type1-gap-number">(${qNum})</span>
+            <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'title="✓ ' + correctText + '"' : ''}>${answerText}</span>
+          </span>
+        `;
+      }
+      
+      if (userAnswer) {
+        const answerText = this.getDisplayAnswer(question, userAnswer);
+        return `
+          <span class="reading-type1-gap">
+            <span class="reading-type1-gap-number">(${qNum})</span>
+            <span class="reading-type1-answered-word reading-type1-purple">${answerText}</span>
+          </span>
+        `;
       }
       
       return `
         <span class="reading-type1-gap">
-          <span class="${btnClass}" 
-                onclick="${!isChecked ? 'ReadingType1.openOptions(' + qNum + ')' : ''}"
-                data-correct="${isChecked && !this.isAnswerCorrect(question, userAnswer) ? '✓ ' + this.getCorrectText(question) : ''}">
-            <span class="reading-type1-gap-number">${qNum}</span>
-            <span class="reading-type1-answer">${this.getDisplayAnswer(question, userAnswer)}</span>
-          </span>
+          <span class="reading-type1-gap-number">(${qNum})</span>
+          <span class="reading-type1-gap-slot" onclick="ReadingType1.openOptions(${qNum})"></span>
         </span>
       `;
     },
@@ -27,11 +39,10 @@
       const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
       if (!question) return;
       
-      // Crear modal personalizado
       const overlay = document.getElementById('exercise-modal-overlay');
       const body = document.getElementById('modal-body');
       
-      let optionsHTML = '<div class="modal-header"><h3>' + I18n.t('question') + ' ' + qNum + '</h3><p>' + I18n.t('selectOption') + '</p></div>';
+      let optionsHTML = '<div class="modal-header"><p>' + I18n.t('selectOption') + '</p></div>';
       optionsHTML += '<div class="options-grid">';
       
       question.options.forEach(opt => {
@@ -53,16 +64,20 @@
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = letter;
       
-      const gapBtn = document.querySelector(`.reading-type1-gap-btn[onclick*="ReadingType1.openOptions(${qNum})"]`);
-      if (gapBtn) {
-        const answerSpan = gapBtn.querySelector('.reading-type1-answer');
-        if (answerSpan) answerSpan.textContent = text;
-        gapBtn.classList.add('answered');
-      }
+      // Re-render the gap in place
+      const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
+      const gaps = document.querySelectorAll('.reading-type1-gap');
+      gaps.forEach(gap => {
+        const numSpan = gap.querySelector('.reading-type1-gap-number');
+        if (numSpan && numSpan.textContent.trim() === `(${qNum})`) {
+          gap.innerHTML = `
+            <span class="reading-type1-gap-number">(${qNum})</span>
+            <span class="reading-type1-answered-word reading-type1-purple">${text}</span>
+          `;
+        }
+      });
       
-      // Cerrar modal
       document.getElementById('exercise-modal-overlay').style.display = 'none';
-      
       Timer.updateScoreDisplay();
     },
     
@@ -76,9 +91,9 @@
     },
     
     getDisplayAnswer: function(question, userAnswer) {
-      if (!userAnswer) return '_____';
+      if (!userAnswer) return '';
       const option = question.options.find(opt => opt.startsWith(userAnswer + ')'));
-      return option ? option.substring(2).trim() : '_____';
+      return option ? option.substring(2).trim() : '';
     },
     
     checkAnswers: function() {
@@ -87,7 +102,23 @@
       
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
-        if (this.isAnswerCorrect(q, userAnswer)) correct++;
+        const isCorrect = this.isAnswerCorrect(q, userAnswer);
+        if (isCorrect) correct++;
+        
+        // Update visual state
+        const gaps = document.querySelectorAll('.reading-type1-gap');
+        gaps.forEach(gap => {
+          const numSpan = gap.querySelector('.reading-type1-gap-number');
+          if (numSpan && numSpan.textContent.trim() === `(${q.number})`) {
+            const answerText = this.getDisplayAnswer(q, userAnswer) || '_____';
+            const colorClass = isCorrect ? 'reading-type1-correct' : 'reading-type1-incorrect';
+            const correctText = !isCorrect ? this.getCorrectText(q) : '';
+            gap.innerHTML = `
+              <span class="reading-type1-gap-number">(${q.number})</span>
+              <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'title="✓ ' + correctText + '"' : ''}>${answerText}</span>
+            `;
+          }
+        });
       });
       
       return correct;

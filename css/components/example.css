@@ -86,3 +86,27 @@
   color: var(--text-medium);
   line-height: 1.5;
 }
+
+.example-options-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.example-option-inline {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: white;
+  border: 1px solid #d1fae5;
+  color: var(--text-medium);
+}
+
+.example-option-inline.correct {
+  background: #d1fae5;
+  color: #065f46;
+  font-weight: 600;
+  border-color: #6ee7b7;
+}

@@ -274,6 +274,15 @@
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       if (exampleAnswer) AppState.currentExercise.answers[qNum] = exampleAnswer;
       
+      if (partConfig.type === 'multiple-choice') {
+        return `
+          <span class="reading-type1-gap">
+            <span class="reading-type1-gap-number">(${qNum})</span>
+            <span class="reading-type1-answered-word reading-type1-correct">${exampleText}</span>
+          </span>
+        `;
+      }
+      
       return `
         <span class="gap-container">
           <span class="gap-box correct checked" style="pointer-events: none;">
@@ -293,34 +302,29 @@
         return '';
       }
       
+      // For multiple-choice type, show simplified inline example
       if (partConfig.type === 'multiple-choice' && exampleData.options) {
+        const correctOption = exampleData.options.find(opt => opt.startsWith(exampleData.correct + ')'));
+        const correctText = correctOption ? correctOption.substring(2).trim() : exampleData.correct;
+        
         let optionsHTML = '';
         exampleData.options.forEach(opt => {
           const isCorrect = opt.startsWith(exampleData.correct + ')');
           optionsHTML += `
-            <div class="example-option ${isCorrect ? 'correct' : ''}">
-              ${isCorrect ? '<i class="fas fa-check-circle"></i>' : '<i class="far fa-circle"></i>'}
+            <span class="example-option-inline ${isCorrect ? 'correct' : ''}">
               ${opt}
-            </div>
+            </span>
           `;
         });
         
         return `
-          <div class="example-container">
+          <div class="example-container simple">
             <div class="example-title">
               <i class="fas fa-lightbulb"></i> <span data-i18n="example">${I18n.t('example')}</span>:
             </div>
-            <div class="example-text">
-              ${exampleData.text || ''}
-            </div>
-            <div class="example-options">
+            <div class="example-options-row">
               ${optionsHTML}
             </div>
-            ${exampleData.explanation ? `
-              <div class="example-explanation">
-                <i class="fas fa-info-circle"></i> ${exampleData.explanation}
-              </div>
-            ` : ''}
           </div>
         `;
       }
@@ -371,11 +375,11 @@
       `;
       
       if (part > 1) {
-        footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-arrow-left"></i> <span data-i18n="previous">${I18n.t('previous')}</span></button>`;
+        footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">${I18n.t('previous')}</span></button>`;
       }
       
       if (part < totalParts) {
-        footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">${I18n.t('next')}</span> <i class="fas fa-arrow-right"></i></button>`;
+        footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">${I18n.t('next')}</span> <i class="fas fa-chevron-right"></i></button>`;
       }
       
       return footer;
