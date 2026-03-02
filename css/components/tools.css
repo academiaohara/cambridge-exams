@@ -32,7 +32,15 @@
   color: white;
 }
 
-/* Notas de subrayado */
+.active-tool-content {
+  margin-top: 25px;
+  padding: 20px;
+  background: var(--tool-bg);
+  border-radius: 12px;
+  min-height: 120px;
+  border: 1px solid var(--border-light);
+}
+
 .note-creator-card {
   background: #fffdf0;
   border: 2px solid #fef08a;
@@ -95,10 +103,21 @@
   box-shadow: 0 0 0 2px var(--primary);
 }
 
-.color-dot.yellow { background: #fef08a; }
-.color-dot.green { background: #bbf7d0; }
-.color-dot.blue { background: #bfdbfe; }
-.color-dot.pink { background: #fbcfe8; }
+.color-dot.yellow {
+  background: #fef08a;
+}
+
+.color-dot.green {
+  background: #bbf7d0;
+}
+
+.color-dot.blue {
+  background: #bfdbfe;
+}
+
+.color-dot.pink {
+  background: #fbcfe8;
+}
 
 .btn-cancel {
   background: transparent;
@@ -145,7 +164,7 @@
   margin-bottom: 10px;
   position: relative;
   background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .note-item-content {
@@ -191,7 +210,6 @@
   border-radius: 3px;
 }
 
-/* Notas libres */
 .free-notes-container {
   padding: 10px;
 }
@@ -225,7 +243,6 @@
   text-align: right;
 }
 
-/* Diccionario */
 .dict-card-container {
   background-color: #f0f4ff;
   border: 1px solid #dbeafe;
@@ -233,7 +250,7 @@
   padding: 20px;
   position: relative;
   margin-top: 15px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .dict-close-x {
@@ -334,7 +351,6 @@
   transform: scale(1.05);
 }
 
-/* Traductor */
 .translator-card {
   padding: 15px;
 }
@@ -382,7 +398,6 @@
   color: var(--text-dark);
 }
 
-/* Tips */
 .tips-content {
   padding: 10px;
 }
@@ -406,11 +421,9 @@
   background: white;
   border-radius: 8px;
   border-left: 3px solid var(--primary);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   font-size: 0.95rem;
 }
-
-/* css/components/tools.css - Añade estos estilos al final */
 
 .placeholder-text {
   color: var(--text-light);
@@ -444,6 +457,10 @@
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
