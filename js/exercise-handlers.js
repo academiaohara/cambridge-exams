@@ -133,6 +133,16 @@
     disableAllInputs: function(partConfig) {
       switch(partConfig.type) {
         case 'multiple-choice':
+          // New reading-type1 design uses onclick attributes, remove them
+          document.querySelectorAll('.reading-type1-gap-slot').forEach(slot => {
+            slot.style.pointerEvents = 'none';
+          });
+          document.querySelectorAll('.gap-box').forEach(box => {
+            box.classList.add('checked');
+            box.style.pointerEvents = 'none';
+          });
+          break;
+
         case 'cross-text-matching':
         case 'multiple-matching':
           document.querySelectorAll('.gap-box').forEach(box => {
@@ -141,10 +151,30 @@
           });
           break;
           
-        case 'open-cloze':
         case 'word-formation':
-        case 'sentence-completion':
+          // New reading-type3 design uses modal-based input
+          document.querySelectorAll('.reading-type3-gap-slot').forEach(slot => {
+            slot.style.pointerEvents = 'none';
+          });
+          document.querySelectorAll('.reading-type3-answered').forEach(el => {
+            el.style.pointerEvents = 'none';
+          });
+          document.querySelectorAll('input.gap-input').forEach(input => input.disabled = true);
+          break;
+
         case 'transformations':
+          // New reading-type4 design uses modal-based input
+          document.querySelectorAll('.reading-type4-gap-slot').forEach(slot => {
+            slot.style.pointerEvents = 'none';
+          });
+          document.querySelectorAll('.reading-type4-answered').forEach(el => {
+            el.style.pointerEvents = 'none';
+          });
+          document.querySelectorAll('input.gap-input').forEach(input => input.disabled = true);
+          break;
+
+        case 'open-cloze':
+        case 'sentence-completion':
           document.querySelectorAll('input.gap-input').forEach(input => input.disabled = true);
           break;
           
@@ -180,8 +210,6 @@
         `${AppState.currentSection}${AppState.currentPart}`
       ];
       
-      this.resetInputsByType(partConfig);
-      
       if (AppState.currentExercise) {
         const exampleCorrect = AppState.currentExercise.content?.example?.correct;
         AppState.currentExercise.answers = exampleCorrect ? { '0': exampleCorrect } : {};
@@ -190,8 +218,21 @@
       if (Timer.timerInterval) clearInterval(Timer.timerInterval);
       AppState.elapsedSeconds = 0;
       AppState.answersChecked = false;
-      Timer.startTimer();
       
+      // Re-render exercise for types that use new gap design
+      const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations'];
+      if (reRenderTypes.includes(partConfig.type)) {
+        ExerciseRenderer.render(
+          AppState.currentExercise,
+          AppState.currentExamId,
+          AppState.currentSection,
+          AppState.currentPart
+        );
+      } else {
+        this.resetInputsByType(partConfig);
+      }
+      
+      Timer.startTimer();
       Timer.updateTimerColor();
       Timer.updateScoreDisplay();
       

@@ -17,6 +17,12 @@
       
       const paragraphs = exercise.content.text ? exercise.content.text.split('||') : [];
       let paragraphsHTML = this.renderParagraphs(paragraphs, exercise, partConfig);
+      
+      // For transformations (Part 4), render questions directly if no text
+      if (partConfig.type === 'transformations' && !exercise.content.text && exercise.content.questions) {
+        paragraphsHTML = this.renderTransformationQuestions(exercise, partConfig);
+      }
+      
       let exampleHTML = this.renderExampleBox(exercise.content.example, partConfig);
       
       const sectionTitle = Utils.getSectionTitle(section);
@@ -150,6 +156,23 @@
         
         html += `<p>${paraProcessed}</p>`;
       });
+      return html;
+    },
+    
+    renderTransformationQuestions: function(exercise, partConfig) {
+      let html = '';
+      const questions = exercise.content.questions || [];
+      const userAnswer = AppState.currentExercise?.answers || {};
+      const isChecked = AppState.answersChecked;
+      
+      questions.forEach(q => {
+        if (typeof window.ReadingType4 !== 'undefined') {
+          html += ReadingType4.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
+        }
+      });
+      
+      return html;
+    },
       return html;
     },
     
