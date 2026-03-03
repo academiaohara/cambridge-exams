@@ -1,7 +1,8 @@
 // js/i18n.js
 (function() {
   const countryCodeMap = {
-    'es': 'es', 'en': 'gb', 'fr': 'fr', 'de': 'de', 'it': 'it', 'pt': 'pt'
+    'es': 'es', 'en': 'gb', 'fr': 'fr', 'de': 'de', 'it': 'it', 'pt': 'pt',
+    'ar': 'sa', 'zh': 'cn', 'ja': 'jp', 'ko': 'kr', 'hi': 'in', 'ru': 'ru'
   };
   
   window.I18n = {

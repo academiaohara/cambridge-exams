@@ -168,3 +168,26 @@
   background: #fee2e2;
   border-radius: 8px;
 }
+
+.gap-number-outside {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+.gap-box.gap-box-small {
+  min-width: 50px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+}
+
+.gap-box.gap-box-small .gap-text {
+  font-size: 0.85rem;
+}
+
+.gap-box.gap-box-small .gap-dots {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}

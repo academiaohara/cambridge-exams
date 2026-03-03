@@ -52,7 +52,18 @@
       
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
-        if (this.isAnswerCorrect(q, userAnswer)) correct++;
+        const isCorrect = this.isAnswerCorrect(q, userAnswer);
+        if (isCorrect) correct++;
+        
+        // Visual feedback on select elements
+        const select = document.querySelector(`select[data-question="${q.number}"]`);
+        if (select) {
+          select.classList.add(isCorrect ? 'correct' : 'incorrect');
+          select.disabled = true;
+          if (!isCorrect) {
+            select.setAttribute('title', `✓ ${q.correct}`);
+          }
+        }
       });
       
       return correct;
