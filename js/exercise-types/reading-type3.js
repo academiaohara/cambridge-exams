@@ -50,13 +50,11 @@
       const currentAnswer = AppState.currentExercise.answers?.[qNum] || '';
       
       let html = '<div class="modal-header"><p>' + I18n.t('question') + ' ' + qNum + '</p></div>';
-      html += '<div class="reading-type3-modal-row">';
-      html += '<div class="reading-type3-modal-input-wrap">';
-      html += '<input type="text" class="reading-type3-modal-input" id="type3-modal-input" value="' + currentAnswer + '" placeholder="..." autofocus>';
-      html += '</div>';
-      html += '<div class="reading-type3-modal-word">';
+      html += '<div class="reading-type3-modal-word" style="text-align:left;">';
       html += '<span class="reading-type3-stem-label">' + question.word + '</span>';
       html += '</div>';
+      html += '<div class="reading-type3-modal-input-wrap">';
+      html += '<input type="text" class="reading-type3-modal-input" id="type3-modal-input" value="' + currentAnswer + '" placeholder="..." autofocus>';
       html += '</div>';
       html += '<div class="reading-type3-modal-actions">';
       html += '<button class="opt-btn" onclick="ReadingType3.submitAnswer(' + qNum + ')">' + I18n.t('confirm') + '</button>';
