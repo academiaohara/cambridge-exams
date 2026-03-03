@@ -86,8 +86,8 @@
       const sectionTotalQuestions = this.getSectionTotalQuestions(section);
       
       const partTotal = exercise.totalQuestions || partConfig.total;
-      const contentTitle = exercise.title || 'TITLE';
-      const contentSubtitle = exercise.content?.subtitle || exercise.description || 'SUBTITLE';
+      const contentTitle = exercise.title || I18n.t('exercise');
+      const contentSubtitle = exercise.content?.subtitle || exercise.description || '';
       
       let html = `
         <div class="exercise-container">
@@ -144,8 +144,8 @@
           
           <div class="content-section-header">
             <div class="content-title-block">
-              <div class="content-title">${contentTitle}</div>
-              <div class="content-subtitle">${contentSubtitle}</div>
+              <div class="content-title" title="${contentTitle}">${contentTitle}</div>
+              <div class="content-subtitle" title="${contentSubtitle}">${contentSubtitle}</div>
             </div>
             ${toggleHTML}
           </div>
