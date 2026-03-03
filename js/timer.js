@@ -71,8 +71,7 @@
       AppState.sectionScores[sectionKey][AppState.currentPart] = correct;
       
       // Sum all parts' scores for the section total
-      const runningTotal = Object.values(AppState.sectionScores[sectionKey])
-        .reduce((sum, score) => sum + score, 0);
+      const runningTotal = ExerciseRenderer.getSectionRunningTotal(sectionKey);
       
       const scoreElement = document.getElementById('score-display');
       if (scoreElement) {

@@ -78,7 +78,7 @@
       const completedParts = exam.sections[AppState.currentSection]?.completed || [];
       
       document.querySelectorAll('.part-nav-cell').forEach(cell => {
-        const partNum = parseInt(cell.textContent.trim());
+        const partNum = parseInt(cell.getAttribute('data-part'));
         if (completedParts.includes(partNum)) {
           cell.classList.add('completed');
           if (!cell.querySelector('.part-nav-check')) {

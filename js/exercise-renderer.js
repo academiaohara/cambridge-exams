@@ -92,11 +92,7 @@
       // Calculate running total from sectionScores
       const sectionKey = `${examId}_${section}`;
       if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
-      const runningTotal = Object.entries(AppState.sectionScores[sectionKey])
-        .filter(([p]) => parseInt(p) !== part)
-        .reduce((sum, [, score]) => sum + score, 0);
-      const currentPartSaved = AppState.sectionScores[sectionKey][part] || 0;
-      const displayTotal = runningTotal + currentPartSaved;
+      const displayTotal = this.getSectionRunningTotal(sectionKey);
       
       // Build part navigation cells
       const partNavHTML = this.renderPartNavigation(section, part, totalParts, examId);
@@ -243,6 +239,12 @@
         return [1, 2, 3, 4].reduce((sum, part) => sum + (CONFIG.PART_TYPES[`speaking${part}`]?.total || 0), 0);
       }
       return 0;
+    },
+    
+    getSectionRunningTotal: function(sectionKey) {
+      if (!AppState.sectionScores[sectionKey]) return 0;
+      return Object.values(AppState.sectionScores[sectionKey])
+        .reduce((sum, score) => sum + score, 0);
     },
     
     renderTextsCards: function(exercise, partConfig) {
@@ -652,7 +654,7 @@
         if (isActive) cellClass += ' active';
         if (isCompleted) cellClass += ' completed';
         
-        cells += `<button class="${cellClass}" onclick="Exercise.openPart('${examId}', '${section}', ${i})" title="${I18n.t('part')} ${i}">
+        cells += `<button class="${cellClass}" data-part="${i}" onclick="Exercise.openPart('${examId}', '${section}', ${i})" title="${I18n.t('part')} ${i}">
           ${i}
           ${isCompleted ? '<i class="fas fa-check part-nav-check"></i>' : ''}
         </button>`;
