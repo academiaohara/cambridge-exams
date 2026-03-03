@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="css/components/gaps.css">
     <link rel="stylesheet" href="css/components/example.css">
     <link rel="stylesheet" href="css/components/responsive.css">
+    <link rel="stylesheet" href="css/components/mobile-ios.css">
     
     
     <!-- CSS DE TIPOS DE EJERCICIO (se cargarán dinámicamente según sea necesario)
@@ -324,6 +325,30 @@
                 </div>
             </div>
         </footer>
+
+        <!-- iOS-style bottom tab bar (mobile only — desktop hides via CSS) -->
+        <nav class="ios-tab-bar" id="iosTabBar" aria-label="Level navigation">
+            <button class="ios-tab-item level-btn" data-level="A2" onclick="filterByLevel('A2')" aria-label="A2">
+                <i class="fas fa-seedling"></i>
+                <span>A2</span>
+            </button>
+            <button class="ios-tab-item level-btn" data-level="B1" onclick="filterByLevel('B1')" aria-label="B1">
+                <i class="fas fa-book-reader"></i>
+                <span>B1</span>
+            </button>
+            <button class="ios-tab-item level-btn" data-level="B2" onclick="filterByLevel('B2')" aria-label="B2">
+                <i class="fas fa-graduation-cap"></i>
+                <span>B2</span>
+            </button>
+            <button class="ios-tab-item level-btn" data-level="C1" onclick="filterByLevel('C1')" aria-label="C1">
+                <i class="fas fa-award"></i>
+                <span>C1</span>
+            </button>
+            <button class="ios-tab-item level-btn" data-level="C2" onclick="filterByLevel('C2')" aria-label="C2">
+                <i class="fas fa-crown"></i>
+                <span>C2</span>
+            </button>
+        </nav>
     </div>
 
     <!-- Scripts en orden correcto -->
