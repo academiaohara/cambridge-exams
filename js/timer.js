@@ -79,6 +79,9 @@
         scoreElement.innerHTML = `${runningTotal}/${sectionTotal || total}`;
       }
       
+      // Save state to localStorage
+      Exercise.savePartState();
+      
       return { correct, total };
     }
   };

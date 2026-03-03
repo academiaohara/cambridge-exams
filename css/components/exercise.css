@@ -75,7 +75,7 @@
   align-items: center;
   background: #f8fafc;
   border-radius: 16px;
-  padding: 16px 20px;
+  padding: 12px 20px;
   margin-bottom: 20px;
   gap: 12px;
   flex-wrap: wrap;
@@ -301,10 +301,8 @@
 /* Part navigation row */
 .part-nav-row {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 6px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .part-nav-cell {
@@ -312,14 +310,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   border: 2px solid #e2e8f0;
   background: #f8fafc;
   color: var(--text-medium);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s;
   font-family: 'Inter', sans-serif;
