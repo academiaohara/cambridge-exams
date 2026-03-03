@@ -15,6 +15,7 @@
       AppState.currentPart = part;
       AppState.currentExamId = examId;
       AppState.answersChecked = false;
+      AppState.currentPartScore = 0;
       
       this.markPartInProgress(examId, section, part);
       
@@ -146,7 +147,11 @@
       
       const nextPart = AppState.currentPart + 1;
       if (nextPart <= sectionData.total) {
-        this.markPartCompleted(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
+        // Save current part score before moving
+        const sectionKey = `${AppState.currentExamId}_${AppState.currentSection}`;
+        if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+        AppState.sectionScores[sectionKey][AppState.currentPart] = AppState.currentPartScore || 0;
+        
         this.markPartInProgress(AppState.currentExamId, AppState.currentSection, nextPart);
         
         await this.openPart(AppState.currentExamId, AppState.currentSection, nextPart);
@@ -155,6 +160,11 @@
     
     goToPrevPart: async function() {
       if (!AppState.currentSection || !AppState.currentPart || !AppState.currentExamId) return;
+      
+      // Save current part score before moving
+      const sectionKey = `${AppState.currentExamId}_${AppState.currentSection}`;
+      if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+      AppState.sectionScores[sectionKey][AppState.currentPart] = AppState.currentPartScore || 0;
       
       const prevPart = AppState.currentPart - 1;
       if (prevPart >= 1) {
@@ -178,6 +188,8 @@
       AppState.notes = [];
       AppState.freeNotes = "";
       AppState.answersChecked = false;
+      AppState.sectionScores = {};
+      AppState.currentPartScore = 0;
       
       Dashboard.render();
     },
