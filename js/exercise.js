@@ -14,7 +14,7 @@
         partScore: AppState.currentPartScore || 0,
         elapsedSeconds: AppState.elapsedSeconds || 0
       };
-      try { localStorage.setItem(key, JSON.stringify(data)); } catch(e) {}
+      try { localStorage.setItem(key, JSON.stringify(data)); } catch(e) { console.warn('Could not save state:', e); }
     },
     
     loadPartState: function(examId, section, part) {
@@ -22,13 +22,13 @@
       try {
         var raw = localStorage.getItem(key);
         if (raw) return JSON.parse(raw);
-      } catch(e) {}
+      } catch(e) { console.warn('Could not load state:', e); }
       return null;
     },
     
     clearPartState: function(examId, section, part) {
       var key = this.getStorageKey(examId, section, part);
-      try { localStorage.removeItem(key); } catch(e) {}
+      try { localStorage.removeItem(key); } catch(e) { console.warn('Could not clear state:', e); }
     },
     
     startFullSection: async function(examId, section) {

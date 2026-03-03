@@ -94,6 +94,17 @@
             ${toggleHTML}
           </div>
         `;
+      } else if (section !== 'reading') {
+        const contentTitle = exercise.title || I18n.t('exercise');
+        const contentSubtitle = exercise.content?.subtitle || exercise.description || '';
+        contentHeaderHTML = `
+          <div class="content-section-header">
+            <div class="content-title-block">
+              <div class="content-title" title="${contentTitle}">${contentTitle}</div>
+              <div class="content-subtitle" title="${contentSubtitle}">${contentSubtitle}</div>
+            </div>
+          </div>
+        `;
       }
       
       // Calculate running total from sectionScores
