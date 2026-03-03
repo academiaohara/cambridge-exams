@@ -66,7 +66,28 @@
       
       if (AppState.currentExamId && AppState.currentSection && AppState.currentPart) {
         Exercise.markPartCompleted(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
+        
+        // Update part navigation to show completed state
+        this.updatePartNavigation();
       }
+    },
+    
+    updatePartNavigation: function() {
+      const exam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === AppState.currentExamId);
+      if (!exam) return;
+      const completedParts = exam.sections[AppState.currentSection]?.completed || [];
+      
+      document.querySelectorAll('.part-nav-cell').forEach(cell => {
+        const partNum = parseInt(cell.textContent.trim());
+        if (completedParts.includes(partNum)) {
+          cell.classList.add('completed');
+          if (!cell.querySelector('.part-nav-check')) {
+            const checkIcon = document.createElement('i');
+            checkIcon.className = 'fas fa-check part-nav-check';
+            cell.appendChild(checkIcon);
+          }
+        }
+      });
     },
     
     getTypeChecker: function(type) {
@@ -204,6 +225,21 @@
         AppState.currentSection === 'reading' ? AppState.currentPart : 
         `${AppState.currentSection}${AppState.currentPart}`
       ];
+      
+      // Subtract current part's score from section total before reset
+      const sectionKey = `${AppState.currentExamId}_${AppState.currentSection}`;
+      if (AppState.sectionScores[sectionKey]) {
+        AppState.sectionScores[sectionKey][AppState.currentPart] = 0;
+      }
+      AppState.currentPartScore = 0;
+      
+      // Remove from completed when resetting
+      const exam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === AppState.currentExamId);
+      if (exam && exam.sections[AppState.currentSection]) {
+        const completedArr = exam.sections[AppState.currentSection].completed;
+        const idx = completedArr.indexOf(AppState.currentPart);
+        if (idx > -1) completedArr.splice(idx, 1);
+      }
       
       if (AppState.currentExercise) {
         const exampleCorrect = AppState.currentExercise.content?.example?.correct;

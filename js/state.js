@@ -53,6 +53,8 @@
     currentLanguage: 'es',
     answersChecked: false,
     translations: {},
-    tipsData: {}
+    tipsData: {},
+    sectionScores: {},
+    currentPartScore: 0
   };
 })();

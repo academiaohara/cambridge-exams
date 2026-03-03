@@ -53,10 +53,31 @@
         }
       });
       
+      // Update partial (part) score
+      const partTotal = AppState.currentExercise.totalQuestions || partConfig.total;
+      const partScoreElement = document.getElementById('part-score-display');
+      if (partScoreElement) {
+        partScoreElement.innerHTML = `${correct}/${partTotal}`;
+      }
+      
+      // Store current part score
+      AppState.currentPartScore = correct;
+      
+      // Update total (section) score
+      const sectionKey = `${AppState.currentExamId}_${AppState.currentSection}`;
+      if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+      
+      // Save current part's score
+      AppState.sectionScores[sectionKey][AppState.currentPart] = correct;
+      
+      // Sum all parts' scores for the section total
+      const runningTotal = Object.values(AppState.sectionScores[sectionKey])
+        .reduce((sum, score) => sum + score, 0);
+      
       const scoreElement = document.getElementById('score-display');
       if (scoreElement) {
         const sectionTotal = ExerciseRenderer.getSectionTotalQuestions(AppState.currentSection);
-        scoreElement.innerHTML = `${correct}/${sectionTotal || total}`;
+        scoreElement.innerHTML = `${runningTotal}/${sectionTotal || total}`;
       }
       
       return { correct, total };

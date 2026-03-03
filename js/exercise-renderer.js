@@ -89,6 +89,18 @@
       const contentTitle = exercise.title || I18n.t('exercise');
       const contentSubtitle = exercise.content?.subtitle || exercise.description || '';
       
+      // Calculate running total from sectionScores
+      const sectionKey = `${examId}_${section}`;
+      if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+      const runningTotal = Object.entries(AppState.sectionScores[sectionKey])
+        .filter(([p]) => parseInt(p) !== part)
+        .reduce((sum, [, score]) => sum + score, 0);
+      const currentPartSaved = AppState.sectionScores[sectionKey][part] || 0;
+      const displayTotal = runningTotal + currentPartSaved;
+      
+      // Build part navigation cells
+      const partNavHTML = this.renderPartNavigation(section, part, totalParts, examId);
+      
       let html = `
         <div class="exercise-container">
           <div class="exercise-header">
@@ -97,24 +109,28 @@
               <div class="exercise-subtitle" data-i18n="part">${I18n.t('part')} ${part} ${I18n.t('of')} ${totalParts}</div>
               <span class="exercise-badge">${exercise.title || I18n.t('exercise')}</span>
             </div>
-            <div class="exercise-toolbar">
-              <button class="btn-exit" onclick="Exercise.closeExercise()">
-                <i class="fas fa-times"></i>
-              </button>
+            <div class="exercise-header-right">
+              <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
+              <div class="exercise-toolbar">
+                <button class="btn-exit" onclick="Exercise.closeExercise()">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
             </div>
           </div>
+          
+          ${partNavHTML}
           
           <div class="exercise-info">
             <div class="exercise-info-left">
               <span><i class="fas fa-clock"></i> ${exercise.time || '10'} <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
-              <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
             </div>
             <div class="exercise-info-right">
               <div class="exercise-timer" id="exercise-timer">
                 <i class="fas fa-hourglass-half"></i>
                 <span id="timer-display">${Utils.formatTime(AppState.elapsedSeconds)}</span>
               </div>
-              <div class="score-display" id="score-display">0/${sectionTotalQuestions}</div>
+              <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
             </div>
           </div>
           
@@ -620,6 +636,29 @@
       }
       
       return footer;
+    },
+    
+    renderPartNavigation: function(section, currentPart, totalParts, examId) {
+      const exam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === examId);
+      if (!exam) return '';
+      
+      const completedParts = exam.sections[section]?.completed || [];
+      
+      let cells = '';
+      for (let i = 1; i <= totalParts; i++) {
+        const isActive = i === currentPart;
+        const isCompleted = completedParts.includes(i);
+        let cellClass = 'part-nav-cell';
+        if (isActive) cellClass += ' active';
+        if (isCompleted) cellClass += ' completed';
+        
+        cells += `<button class="${cellClass}" onclick="Exercise.openPart('${examId}', '${section}', ${i})" title="${I18n.t('part')} ${i}">
+          ${i}
+          ${isCompleted ? '<i class="fas fa-check part-nav-check"></i>' : ''}
+        </button>`;
+      }
+      
+      return `<div class="part-nav-row">${cells}</div>`;
     },
     
     getDefaultDescription: function(partConfig) {
