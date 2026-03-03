@@ -1,6 +1,36 @@
 // js/exercise.js
 (function() {
   window.Exercise = {
+    getStorageKey: function(examId, section, part) {
+      return `cambridge_${AppState.currentLevel}_${examId}_${section}_${part}`;
+    },
+    
+    savePartState: function() {
+      if (!AppState.currentExamId || !AppState.currentSection || !AppState.currentPart) return;
+      var key = this.getStorageKey(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
+      var data = {
+        answers: AppState.currentExercise ? AppState.currentExercise.answers : {},
+        answersChecked: AppState.answersChecked,
+        partScore: AppState.currentPartScore || 0,
+        elapsedSeconds: AppState.elapsedSeconds || 0
+      };
+      try { localStorage.setItem(key, JSON.stringify(data)); } catch(e) { console.warn('Could not save state:', e); }
+    },
+    
+    loadPartState: function(examId, section, part) {
+      var key = this.getStorageKey(examId, section, part);
+      try {
+        var raw = localStorage.getItem(key);
+        if (raw) return JSON.parse(raw);
+      } catch(e) { console.warn('Could not load state:', e); }
+      return null;
+    },
+    
+    clearPartState: function(examId, section, part) {
+      var key = this.getStorageKey(examId, section, part);
+      try { localStorage.removeItem(key); } catch(e) { console.warn('Could not clear state:', e); }
+    },
+    
     startFullSection: async function(examId, section) {
       AppState.currentExamId = examId;
       AppState.currentSection = section;
@@ -16,6 +46,19 @@
       AppState.currentExamId = examId;
       AppState.answersChecked = false;
       AppState.currentPartScore = 0;
+      
+      // Restore saved state from localStorage
+      const savedState = this.loadPartState(examId, section, part);
+      if (savedState) {
+        AppState.answersChecked = savedState.answersChecked || false;
+        AppState.currentPartScore = savedState.partScore || 0;
+        // Restore section score
+        const sectionKey = `${examId}_${section}`;
+        if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+        if (savedState.answersChecked) {
+          AppState.sectionScores[sectionKey][part] = savedState.partScore || 0;
+        }
+      }
       
       this.markPartInProgress(examId, section, part);
       
@@ -47,9 +90,14 @@
           AppState.currentExercise.answers[0] = exercise.content.example.correct;
         }
         
+        // Restore saved answers from localStorage
+        if (savedState && savedState.answers) {
+          Object.assign(AppState.currentExercise.answers, savedState.answers);
+        }
+        
         AppState.notes = [];
         AppState.freeNotes = "";
-        AppState.elapsedSeconds = 0;
+        AppState.elapsedSeconds = savedState ? (savedState.elapsedSeconds || 0) : 0;
         
         ExerciseRenderer.render(exercise, examId, section, part);
         
@@ -59,7 +107,22 @@
             const partConfig = CONFIG.PART_TYPES[
               section === 'reading' ? part : `${section}${part}`
             ];
+            // Re-run answer checking to restore visual marks
+            const typeChecker = ExerciseHandlers.getTypeChecker(partConfig.type);
+            if (typeChecker && typeof typeChecker.checkAnswers === 'function') {
+              typeChecker.checkAnswers();
+            } else {
+              const questions = AppState.currentExercise.content.questions || [];
+              questions.forEach(q => {
+                const userAnswer = AppState.currentExercise.answers[q.number];
+                const isCorrect = Utils.compareAnswers(userAnswer, q.correct, partConfig.type);
+                ExerciseHandlers.markAnswerVisual(q.number, userAnswer, q.correct, isCorrect, partConfig);
+              });
+            }
             ExerciseHandlers.disableAllInputs(partConfig);
+            const checkBtn = document.querySelector('.btn-check');
+            if (checkBtn) checkBtn.disabled = true;
+            Timer.updateScoreDisplay();
           }
         }, 100);
         
@@ -142,6 +205,9 @@
     goToNextPart: async function() {
       if (!AppState.currentSection || !AppState.currentPart || !AppState.currentExamId) return;
       
+      // Save current state to localStorage before moving
+      this.savePartState();
+      
       const sectionData = EXAMS_DATA[AppState.currentLevel].find(e => e.id === AppState.currentExamId)?.sections[AppState.currentSection];
       if (!sectionData) return;
       
@@ -160,6 +226,9 @@
     
     goToPrevPart: async function() {
       if (!AppState.currentSection || !AppState.currentPart || !AppState.currentExamId) return;
+      
+      // Save current state to localStorage before moving
+      this.savePartState();
       
       // Save current part score before moving
       const sectionKey = `${AppState.currentExamId}_${AppState.currentSection}`;

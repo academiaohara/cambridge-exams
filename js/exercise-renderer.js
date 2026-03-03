@@ -44,14 +44,7 @@
           textsSectionHTML = this.renderTextsCards(exercise, partConfig);
         }
         if (hasTextContent) {
-          let titleHTML = '';
-          if (exercise.content.title) {
-            titleHTML += `<h3 class="reading-type5-content-title">${exercise.content.title}</h3>`;
-          }
-          if (exercise.content.subtitle) {
-            titleHTML += `<p class="reading-type5-content-subtitle">${exercise.content.subtitle}</p>`;
-          }
-          textsSectionHTML = titleHTML + paragraphsHTML;
+          textsSectionHTML = paragraphsHTML;
         }
         
         questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
@@ -86,8 +79,33 @@
       const sectionTotalQuestions = this.getSectionTotalQuestions(section);
       
       const partTotal = exercise.totalQuestions || partConfig.total;
-      const contentTitle = exercise.title || I18n.t('exercise');
-      const contentSubtitle = exercise.content?.subtitle || exercise.description || '';
+      
+      // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
+      let contentHeaderHTML = '';
+      if (isToggleType) {
+        const cTitle = exercise.content?.title || '';
+        const cSubtitle = (section === 'reading' && part === 5) ? (exercise.content?.subtitle || '') : '';
+        contentHeaderHTML = `
+          <div class="content-section-header">
+            <div class="content-title-block">
+              <div class="content-title" title="${cTitle}">${cTitle}</div>
+              ${cSubtitle ? `<div class="content-subtitle" title="${cSubtitle}">${cSubtitle}</div>` : ''}
+            </div>
+            ${toggleHTML}
+          </div>
+        `;
+      } else if (section !== 'reading') {
+        const contentTitle = exercise.title || I18n.t('exercise');
+        const contentSubtitle = exercise.content?.subtitle || exercise.description || '';
+        contentHeaderHTML = `
+          <div class="content-section-header">
+            <div class="content-title-block">
+              <div class="content-title" title="${contentTitle}">${contentTitle}</div>
+              <div class="content-subtitle" title="${contentSubtitle}">${contentSubtitle}</div>
+            </div>
+          </div>
+        `;
+      }
       
       // Calculate running total from sectionScores
       const sectionKey = `${examId}_${section}`;
@@ -115,10 +133,9 @@
             </div>
           </div>
           
-          ${partNavHTML}
-          
           <div class="exercise-info">
             <div class="exercise-info-left">
+              ${partNavHTML}
               <span><i class="fas fa-clock"></i> ${exercise.time || '10'} <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
             </div>
             <div class="exercise-info-right">
@@ -154,13 +171,7 @@
             </button>
           </div>
           
-          <div class="content-section-header">
-            <div class="content-title-block">
-              <div class="content-title" title="${contentTitle}">${contentTitle}</div>
-              <div class="content-subtitle" title="${contentSubtitle}">${contentSubtitle}</div>
-            </div>
-            ${toggleHTML}
-          </div>
+          ${contentHeaderHTML}
           
           <div class="exercise-main-layout">
             <div class="reading-text-enhanced" id="selectable-text">
@@ -347,9 +358,6 @@
     
     renderMultipleChoiceTextQuestions: function(exercise, partConfig) {
       let html = '';
-      if (exercise.content.title) {
-        html += `<h3 class="reading-type5-content-title">${exercise.content.title}</h3>`;
-      }
       const questions = exercise.content.questions || [];
       const userAnswer = AppState.currentExercise?.answers || {};
       const isChecked = AppState.answersChecked;

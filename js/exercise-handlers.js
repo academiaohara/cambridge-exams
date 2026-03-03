@@ -20,18 +20,8 @@
     },
     
     checkAnswers: function() {
-      if (!AppState.currentExercise || !AppState.currentExercise.answers || 
-          Object.keys(AppState.currentExercise.answers).length === 0) {
-        const partConfig = CONFIG.PART_TYPES[
-          AppState.currentSection === 'reading' ? AppState.currentPart :
-          `${AppState.currentSection}${AppState.currentPart}`
-        ];
-        const skipCheck = ['essay', 'choice', 'interview', 'long-turn', 'collaborative', 'discussion'];
-        if (!partConfig || !skipCheck.includes(partConfig.type)) {
-          alert(I18n.t('answerFirst'));
-          return;
-        }
-      }
+      if (!AppState.currentExercise) return;
+      if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       
       AppState.answersChecked = true;
       const partConfig = CONFIG.PART_TYPES[
@@ -70,6 +60,8 @@
         // Update part navigation to show completed state
         this.updatePartNavigation();
       }
+      
+      Exercise.savePartState();
     },
     
     updatePartNavigation: function() {
@@ -249,6 +241,9 @@
       if (Timer.timerInterval) clearInterval(Timer.timerInterval);
       AppState.elapsedSeconds = 0;
       AppState.answersChecked = false;
+      
+      // Clear saved state from localStorage
+      Exercise.clearPartState(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
       
       // Re-render exercise for types that use new gap design
       const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'multiple-matching'];
