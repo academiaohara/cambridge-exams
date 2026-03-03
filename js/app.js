@@ -67,33 +67,66 @@
           return acc;
         }, {});
         
-        const discovered = [];
-        let i = 1;
-        while (true) {
-          const examId = `Test${i}`;
-          const testFile = `Nivel/${level}/Exams/${examId}/reading1.json`;
-          try {
-            const response = await fetch(testFile, { method: 'HEAD' });
-            if (!response.ok) {
-              console.debug(`Test discovery stopped at ${testFile} (${response.status})`);
+        // Try to load index.json catalog for this level first
+        let indexData = null;
+        try {
+          const indexResponse = await fetch(`Nivel/${level}/Exams/index.json`);
+          if (indexResponse.ok) {
+            indexData = await indexResponse.json();
+          }
+        } catch (e) {
+          console.debug(`No index.json found for level ${level}, falling back to HEAD requests`);
+        }
+        
+        let discovered = [];
+        
+        if (indexData && Array.isArray(indexData.tests)) {
+          // Build exam list from index.json catalog
+          discovered = indexData.tests.map((testEntry, idx) => {
+            const examId = testEntry.id;
+            const parsed = parseInt(examId.replace('Test', ''), 10);
+            const number = Number.isNaN(parsed) ? (idx + 1) : parsed;
+            const prev = existingById[examId];
+            return {
+              id: examId,
+              number: number,
+              title: `Test ${number}`,
+              status: testEntry.status || 'available',
+              progress: testEntry.status === 'coming_soon'
+                ? 'Próximamente'
+                : 'Ejercicios disponibles: Reading 1-8, Listening 1-4, Writing 1-2, Speaking 1-4',
+              sections: prev?.sections || JSON.parse(JSON.stringify(sectionTemplate))
+            };
+          });
+        } else {
+          // Fallback: sequential HEAD requests to detect available tests
+          let i = 1;
+          while (true) {
+            const examId = `Test${i}`;
+            const testFile = `Nivel/${level}/Exams/${examId}/reading1.json`;
+            try {
+              const response = await fetch(testFile, { method: 'HEAD' });
+              if (!response.ok) {
+                console.debug(`Test discovery stopped at ${testFile} (${response.status})`);
+                break;
+              }
+            } catch (error) {
+              // Stop discovery if the next sequential test folder is not available.
+              console.debug(`Test discovery stopped at ${testFile}`);
               break;
             }
-          } catch (error) {
-            // Stop discovery if the next sequential test folder is not available.
-            console.debug(`Test discovery stopped at ${testFile}`);
-            break;
+            
+            const prev = existingById[examId];
+            discovered.push({
+              id: examId,
+              number: i,
+              title: `Test ${i}`,
+              status: 'available',
+              progress: 'Ejercicios disponibles: Reading 1-8, Listening 1-4, Writing 1-2, Speaking 1-4',
+              sections: prev?.sections || JSON.parse(JSON.stringify(sectionTemplate))
+            });
+            i++;
           }
-          
-          const prev = existingById[examId];
-          discovered.push({
-            id: examId,
-            number: i,
-            title: `Test ${i}`,
-            status: 'available',
-            progress: 'Ejercicios disponibles: Reading 1-8, Listening 1-4, Writing 1-2, Speaking 1-4',
-            sections: prev?.sections || JSON.parse(JSON.stringify(sectionTemplate))
-          });
-          i++;
         }
         
         EXAMS_DATA[level] = discovered;

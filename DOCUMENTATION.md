@@ -122,6 +122,7 @@ cambridge-exams/
 ├── Nivel/                        # Datos de los exámenes organizados por nivel CEFR
 │   └── C1/
 │       └── Exams/
+│           ├── index.json        # Catálogo de tests del nivel C1 (id + status)
 │           └── Test1/            # Primer test completo
 │               ├── reading1.json … reading8.json
 │               ├── listening1.json … listening4.json
@@ -195,7 +196,7 @@ Usuario clica "Comprobar respuestas"
 
 ### 4.5 Descubrimiento Automático de Tests
 
-`App.syncExamsFromFolders()` hace peticiones HEAD a `Nivel/{level}/Exams/Test1/reading1.json`, `Test2/reading1.json`, etc. hasta recibir un error HTTP, y construye dinámicamente `EXAMS_DATA[level]`. Esto significa que **añadir una nueva carpeta de test es suficiente para que aparezca en la UI**.
+`App.syncExamsFromFolders()` lee el archivo `Nivel/{level}/Exams/index.json` de cada nivel para obtener la lista de tests disponibles. Ese fichero especifica el `id` y el `status` (`available` o `coming_soon`) de cada test. Si el archivo `index.json` no existe (compatibilidad hacia atrás), la función recurre a peticiones HEAD secuenciales sobre `Nivel/{level}/Exams/Test1/reading1.json`, `Test2/reading1.json`, etc. hasta recibir un error HTTP.
 
 ---
 
@@ -214,7 +215,7 @@ Expone `window.CONFIG` con:
 
 ### `js/state.js` — Estado Global
 
-- `window.EXAMS_DATA` — catálogo inicial de exámenes; se sobreescribe en tiempo de ejecución por `syncExamsFromFolders()`
+- `window.EXAMS_DATA` — catálogo de exámenes vacío al arranque; se rellena en tiempo de ejecución por `syncExamsFromFolders()` a partir de los archivos `Nivel/{level}/Exams/index.json`
 - `window.AppState` — objeto mutable que contiene: nivel actual, ejercicio activo, sección, parte, idioma, notas, puntuaciones, temporizador, flags de estado
 
 ### `js/app.js` — Punto de Arranque
@@ -403,7 +404,25 @@ Secciones disponibles: `reading`, `listening`, `writing`, `speaking`, `use-of-en
 
 `status` puede ser `"available"` o `"coming_soon"`. Los tests `coming_soon` se muestran pero no son clickables.
 
-### 6.5 Esquema de `CONFIG.PART_TYPES` (`config.js`)
+### 6.5 Esquema de `Nivel/{level}/Exams/index.json`
+
+Archivo de catálogo que lista los tests disponibles para un nivel. Es la fuente de verdad para `syncExamsFromFolders()`.
+
+```json
+{
+  "tests": [
+    { "id": "Test1", "status": "available" },
+    { "id": "Test2", "status": "coming_soon" }
+  ]
+}
+```
+
+| Campo | Tipo | Descripción |
+|---|---|---|
+| `id` | string | Identificador del test; coincide con el nombre de la subcarpeta (p.ej. `"Test1"`) |
+| `status` | string | `"available"` (clickable) o `"coming_soon"` (mostrado desactivado) |
+
+### 6.6 Esquema de `CONFIG.PART_TYPES` (`config.js`)
 
 Mapea cada parte del examen a su configuración de renderizado. Las partes de Reading usan el número entero como clave; el resto usa prefijo de sección:
 
@@ -554,8 +573,13 @@ Las herramientas se muestran en el panel lateral derecho durante el ejercicio. S
    - `listening1.json` … `listening4.json`
    - `writing1.json`, `writing2.json`
    - `speaking1.json` … `speaking4.json`
-3. El sistema lo detectará automáticamente al recargar (via HEAD request en `syncExamsFromFolders`).
-4. Si el test aún no está listo, añadirlo en `state.js` con `status: "coming_soon"` para mostrarlo desactivado.
+3. Añadir la entrada en `Nivel/C1/Exams/index.json`:
+   ```json
+   { "id": "Test2", "status": "available" }
+   ```
+4. Si el test aún no está listo, usar `"status": "coming_soon"` para mostrarlo desactivado en el dashboard sin necesidad de crear los JSON de ejercicio.
+
+> **Nota:** El archivo `Nivel/{level}/Exams/index.json` es la fuente de verdad del catálogo de tests de cada nivel. Si no existe, el sistema recurre a peticiones HEAD secuenciales (compatibilidad hacia atrás).
 
 ### Añadir un nuevo nivel (p.ej. B2)
 
@@ -625,6 +649,7 @@ console.log(AppState.currentExercise);
 
 | Versión | Cambios principales |
 |---|---|
+| 3.3.0 | Descubrimiento de tests mediante `Nivel/{level}/Exams/index.json`. El catálogo de cada nivel se gestiona en ese archivo JSON (id + status). `state.js` ya no contiene tests hardcodeados. Fallback a HEAD requests si no existe index.json. |
 | 3.2.0 | Estado actual documentado. UI responsive con menú hamburguesa. Soporte para 12 idiomas. Descubrimiento automático de tests. Persistencia completa en localStorage. Herramientas: diccionario, traductor, subrayador, notas, tips. |
 
 ---
