@@ -193,7 +193,42 @@
   color: var(--text-dark);
 }
 
-/* Toggle view for text/questions (Parts 5, 6, 8) */
+/* Toggle view inline in exercise-info */
+.toggle-view-inline {
+  display: inline-flex;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.toggle-view-inline .toggle-view-btn {
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  border-width: 1.5px;
+}
+
+/* Section score badge near exercise title */
+.section-score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.section-score-badge i {
+  font-size: 0.65rem;
+}
+
+/* Score display states */
+.score-display.checked {
+  background: var(--correct);
+}
 .toggle-view-header {
   display: flex;
   justify-content: flex-start;

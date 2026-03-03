@@ -39,7 +39,6 @@
     updateScoreDisplay: function() {
       if (!AppState.currentExercise || !AppState.currentExercise.answers) return;
       
-      let correct = 0;
       const questions = AppState.currentExercise.content.questions || [];
       const total = questions.length;
       const partConfig = CONFIG.PART_TYPES[
@@ -47,19 +46,37 @@
         `${AppState.currentSection}${AppState.currentPart}`
       ];
       
-      questions.forEach(q => {
-        if (Utils.compareAnswers(AppState.currentExercise.answers[q.number], q.correct, partConfig.type)) {
-          correct++;
-        }
-      });
-      
       const scoreElement = document.getElementById('score-display');
-      if (scoreElement) {
-        const sectionTotal = ExerciseRenderer.getSectionTotalQuestions(AppState.currentSection);
-        scoreElement.innerHTML = `${correct}/${sectionTotal || total}`;
-      }
       
-      return { correct, total };
+      if (AppState.answersChecked) {
+        // After checking: show correct count vs part total
+        let correct = 0;
+        questions.forEach(q => {
+          if (Utils.compareAnswers(AppState.currentExercise.answers[q.number], q.correct, partConfig.type)) {
+            correct++;
+          }
+        });
+        
+        if (scoreElement) {
+          scoreElement.innerHTML = `${correct}/${total}`;
+          scoreElement.classList.add('checked');
+        }
+        return { correct, total };
+      } else {
+        // Before checking: show answered count vs part total
+        let answered = 0;
+        questions.forEach(q => {
+          if (AppState.currentExercise.answers[q.number]) {
+            answered++;
+          }
+        });
+        
+        if (scoreElement) {
+          scoreElement.innerHTML = `${answered}/${total}`;
+          scoreElement.classList.remove('checked');
+        }
+        return { correct: 0, total };
+      }
     }
   };
 })();
