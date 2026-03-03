@@ -55,7 +55,8 @@
       
       const scoreElement = document.getElementById('score-display');
       if (scoreElement) {
-        scoreElement.innerHTML = `${correct}/${total}`;
+        const sectionTotal = ExerciseRenderer.getSectionTotalQuestions(AppState.currentSection);
+        scoreElement.innerHTML = `${correct}/${sectionTotal || total}`;
       }
       
       return { correct, total };

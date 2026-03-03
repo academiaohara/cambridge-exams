@@ -83,6 +83,7 @@
       const levelName = Utils.getLevelName(AppState.currentLevel);
       const exam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === examId);
       const totalParts = exam?.sections[section]?.total || 1;
+      const sectionTotalQuestions = this.getSectionTotalQuestions(section);
       
       let html = `
         <div class="exercise-container">
@@ -109,7 +110,7 @@
                 <i class="fas fa-hourglass-half"></i>
                 <span id="timer-display">${Utils.formatTime(AppState.elapsedSeconds)}</span>
               </div>
-              <div class="score-display" id="score-display">0/${exercise.totalQuestions || partConfig.total}</div>
+              <div class="score-display" id="score-display">0/${sectionTotalQuestions}</div>
             </div>
           </div>
           
@@ -199,6 +200,22 @@
         html += `<p>${paraProcessed}</p>`;
       });
       return html;
+    },
+    
+    getSectionTotalQuestions: function(section) {
+      if (section === 'reading') {
+        return [1, 2, 3, 4, 5, 6, 7, 8].reduce((sum, part) => sum + (CONFIG.PART_TYPES[part]?.total || 0), 0);
+      }
+      if (section === 'listening') {
+        return [1, 2, 3, 4].reduce((sum, part) => sum + (CONFIG.PART_TYPES[`listening${part}`]?.total || 0), 0);
+      }
+      if (section === 'writing') {
+        return [1, 2].reduce((sum, part) => sum + (CONFIG.PART_TYPES[`writing${part}`]?.total || 0), 0);
+      }
+      if (section === 'speaking') {
+        return [1, 2, 3, 4].reduce((sum, part) => sum + (CONFIG.PART_TYPES[`speaking${part}`]?.total || 0), 0);
+      }
+      return 0;
     },
     
     renderTextsCards: function(exercise, partConfig) {

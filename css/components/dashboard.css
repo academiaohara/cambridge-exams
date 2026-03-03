@@ -276,23 +276,6 @@
   color: white;
 }
 
-.part-number.completed::after {
-  content: '\2713';
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 18px;
-  height: 18px;
-  background: #059669;
-  color: white;
-  border-radius: 50%;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid white;
-}
-
 .part-number.in-progress {
   background: var(--in-progress);
   color: white;

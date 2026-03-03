@@ -21,6 +21,8 @@
       
       // Inicializar eventos de dropdown
       I18n.initClickOutside();
+
+      await this.syncExamsFromFolders();
       
       // Renderizar dashboard
       Dashboard.render();
@@ -48,6 +50,54 @@
     
     loadDashboard: function() {
       Exercise.closeExercise();
+    },
+    
+    syncExamsFromFolders: async function() {
+      const levels = Object.keys(EXAMS_DATA || {});
+      const sectionTemplate = {
+        reading: { name: 'READING & USE OF ENGLISH', icon: 'book-open', total: 8, completed: [], inProgress: [] },
+        listening: { name: 'LISTENING', icon: 'headphones', total: 4, completed: [], inProgress: [] },
+        writing: { name: 'WRITING', icon: 'pen', total: 2, completed: [], inProgress: [] },
+        speaking: { name: 'SPEAKING', icon: 'microphone', total: 4, completed: [], inProgress: [] }
+      };
+      
+      await Promise.all(levels.map(async level => {
+        const existingById = (EXAMS_DATA[level] || []).reduce((acc, exam) => {
+          acc[exam.id] = exam;
+          return acc;
+        }, {});
+        
+        const discovered = [];
+        let i = 1;
+        while (true) {
+          const examId = `Test${i}`;
+          const testFile = `Nivel/${level}/Exams/${examId}/reading1.json`;
+          try {
+            const response = await fetch(testFile, { method: 'HEAD' });
+            if (!response.ok) {
+              console.debug(`Test discovery stopped at ${testFile} (${response.status})`);
+              break;
+            }
+          } catch (error) {
+            // Stop discovery if the next sequential test folder is not available.
+            console.debug(`Test discovery stopped at ${testFile}`);
+            break;
+          }
+          
+          const prev = existingById[examId];
+          discovered.push({
+            id: examId,
+            number: i,
+            title: `Test ${i}`,
+            status: 'available',
+            progress: 'Ejercicios disponibles: Reading 1-8, Listening 1-4, Writing 1-2, Speaking 1-4',
+            sections: prev?.sections || JSON.parse(JSON.stringify(sectionTemplate))
+          });
+          i++;
+        }
+        
+        EXAMS_DATA[level] = discovered;
+      }));
     }
   };
   
