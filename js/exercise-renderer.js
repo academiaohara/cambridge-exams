@@ -85,6 +85,10 @@
       const totalParts = exam?.sections[section]?.total || 1;
       const sectionTotalQuestions = this.getSectionTotalQuestions(section);
       
+      const partTotal = exercise.totalQuestions || partConfig.total;
+      const contentTitle = exercise.title || 'TITLE';
+      const contentSubtitle = exercise.content?.subtitle || exercise.description || 'SUBTITLE';
+      
       let html = `
         <div class="exercise-container">
           <div class="exercise-header">
@@ -103,7 +107,7 @@
           <div class="exercise-info">
             <div class="exercise-info-left">
               <span><i class="fas fa-clock"></i> ${exercise.time || '10'} <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
-              <span><i class="fas fa-question-circle"></i> ${exercise.totalQuestions || partConfig.total} <span data-i18n="questions">${I18n.t('questions')}</span></span>
+              <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
             </div>
             <div class="exercise-info-right">
               <div class="exercise-timer" id="exercise-timer">
@@ -138,8 +142,15 @@
             </button>
           </div>
           
-          <div class="exercise-main-layout">
+          <div class="content-section-header">
+            <div class="content-title-block">
+              <div class="content-title">${contentTitle}</div>
+              <div class="content-subtitle">${contentSubtitle}</div>
+            </div>
             ${toggleHTML}
+          </div>
+          
+          <div class="exercise-main-layout">
             <div class="reading-text-enhanced" id="selectable-text">
               ${paragraphsHTML}
             </div>

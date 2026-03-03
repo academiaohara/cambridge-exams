@@ -7,6 +7,7 @@
   padding: 30px;
   box-shadow: var(--shadow-lg);
   margin-bottom: 40px;
+  border: 3px solid #e2e8f0;
 }
 
 .exercise-header {
@@ -233,4 +234,58 @@
   background: var(--primary-dark);
   border-color: var(--primary-dark);
   color: white;
+}
+
+/* Part-level progress pill */
+.part-score-display {
+  background: var(--secondary);
+  color: white;
+  padding: 4px 14px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Content section header with title/subtitle and toggle buttons */
+.content-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  gap: 12px;
+}
+
+.content-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.content-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-section-header .toggle-view-header {
+  margin-bottom: 0;
+  flex-shrink: 0;
 }
