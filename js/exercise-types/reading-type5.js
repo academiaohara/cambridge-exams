@@ -6,8 +6,10 @@
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
       return `
         <div class="reading-type5-question">
-          <div class="reading-type5-question-number">${qNum}</div>
-          <div class="reading-type5-question-text">${question.question}</div>
+          <div class="reading-type5-question-header">
+            <div class="reading-type5-question-number">${qNum}</div>
+            <div class="reading-type5-question-text">${question.question}</div>
+          </div>
           <div class="reading-type5-options">
             ${this.renderOptions(question, qNum, isChecked, userAnswer)}
           </div>
