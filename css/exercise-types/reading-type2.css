@@ -21,6 +21,29 @@
 .reading-type2-gap {
   display: inline-block;
   margin: 0 4px;
+  position: relative;
+}
+
+.reading-type2-gap.incorrect::after {
+  content: attr(data-correct);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-dark);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  display: none;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.reading-type2-gap.incorrect:hover::after {
+  display: block;
 }
 
 .reading-type2-input {
