@@ -52,7 +52,23 @@
       
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
-        if (this.isAnswerCorrect(userAnswer, q.correct)) correct++;
+        const isCorrect = this.isAnswerCorrect(userAnswer, q.correct);
+        if (isCorrect) correct++;
+        
+        const input = document.querySelector(`.reading-type2-input[data-question="${q.number}"]`);
+        if (input) {
+          const colorClass = isCorrect ? 'correct' : 'incorrect';
+          input.classList.add(colorClass);
+          input.disabled = true;
+          if (!isCorrect) {
+            const correctText = q.correct.includes('/') ? q.correct.split('/')[0].trim() : q.correct;
+            input.setAttribute('title', '✓ ' + q.correct);
+            const correctionSpan = document.createElement('span');
+            correctionSpan.className = 'reading-type2-correction';
+            correctionSpan.textContent = correctText;
+            input.parentNode.appendChild(correctionSpan);
+          }
+        }
       });
       
       return correct;

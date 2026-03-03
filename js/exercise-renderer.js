@@ -315,14 +315,10 @@
       }
       
       if (partConfig.type === 'word-formation') {
-        const wordHtml = exampleData.word
-          ? `<span class="reading-type3-hint">(${exampleData.word})</span>`
-          : '';
         return `
           <span class="reading-type3-gap-inline">
             <span class="reading-type3-gap-number">(${qNum})</span>
             <span class="reading-type3-answered reading-type3-example-answer">${exampleText}</span>
-            ${wordHtml}
           </span>
         `;
       }
@@ -390,6 +386,20 @@
             </div>
             <div class="example-text">
               <strong>0</strong> <strong>${exampleData.correct || ''}</strong>
+            </div>
+          </div>
+        `;
+      }
+      
+      if (partConfig.type === 'word-formation') {
+        const wordHint = exampleData.word ? ` (${exampleData.word})` : '';
+        return `
+          <div class="example-container simple">
+            <div class="example-title">
+              <i class="fas fa-lightbulb"></i> <span data-i18n="example">${I18n.t('example')}</span>:
+            </div>
+            <div class="example-text">
+              <strong>(0)</strong> <strong>${exampleData.correct || ''}</strong>${wordHint}
             </div>
           </div>
         `;

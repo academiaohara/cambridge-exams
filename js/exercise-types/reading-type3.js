@@ -15,20 +15,26 @@
       if (isChecked) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
         const colorClass = isCorrect ? 'correct' : 'incorrect';
+        const correctionHtml = !isCorrect ? `<span class="reading-type3-correction">${question.correct}</span>` : '';
         return `
-          <span class="reading-type3-word-box">
+          <span class="reading-type3-gap-inline">
             <span class="reading-type3-gap-number">(${qNum})</span>
-            <input type="text" class="reading-type3-input gap-input ${colorClass}" data-question="${qNum}" value="${userAnswer || ''}" disabled ${!isCorrect ? 'title="✓ ' + question.correct + '"' : ''}>
-            <span class="reading-type3-stem">${question.word}</span>
+            <span class="reading-type3-word-box">
+              <input type="text" class="reading-type3-input gap-input ${colorClass}" data-question="${qNum}" value="${userAnswer || ''}" disabled ${!isCorrect ? 'title="✓ ' + question.correct + '"' : ''}>
+              <span class="reading-type3-stem">${question.word}</span>
+            </span>
+            ${correctionHtml}
           </span>
         `;
       }
       
       return `
-        <span class="reading-type3-word-box${userAnswer ? ' reading-type3-filled' : ''}">
+        <span class="reading-type3-gap-inline">
           <span class="reading-type3-gap-number">(${qNum})</span>
-          <input type="text" class="reading-type3-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" placeholder="..." oninput="ReadingType3.handleInput(${qNum}, this.value)">
-          <span class="reading-type3-stem">${question.word}</span>
+          <span class="reading-type3-word-box${userAnswer ? ' reading-type3-filled' : ''}">
+            <input type="text" class="reading-type3-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" placeholder="..." oninput="ReadingType3.handleInput(${qNum}, this.value)">
+            <span class="reading-type3-stem">${question.word}</span>
+          </span>
         </span>
       `;
     },
@@ -69,7 +75,16 @@
           const colorClass = isCorrect ? 'correct' : 'incorrect';
           input.classList.add(colorClass);
           input.disabled = true;
-          if (!isCorrect) input.setAttribute('title', '✓ ' + q.correct);
+          if (!isCorrect) {
+            input.setAttribute('title', '✓ ' + q.correct);
+            const gapInline = input.closest('.reading-type3-gap-inline') || wrap?.parentNode;
+            if (gapInline && !gapInline.querySelector('.reading-type3-correction')) {
+              const correctionSpan = document.createElement('span');
+              correctionSpan.className = 'reading-type3-correction';
+              correctionSpan.textContent = q.correct;
+              gapInline.appendChild(correctionSpan);
+            }
+          }
           if (wrap) {
             wrap.classList.remove('reading-type3-filled');
           }
