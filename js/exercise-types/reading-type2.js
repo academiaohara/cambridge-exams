@@ -12,13 +12,19 @@
         `;
       }
       let inputClass = 'reading-type2-input gap-input';
+      let gapClass = 'reading-type2-gap';
+      let gapDataAttr = '';
       if (isChecked) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
         inputClass += isCorrect ? ' correct' : ' incorrect';
+        if (!isCorrect) {
+          gapClass += ' incorrect';
+          gapDataAttr = ` data-correct="✓ ${question.correct}"`;
+        }
       }
       
       return `
-        <span class="reading-type2-gap">
+        <span class="${gapClass}"${gapDataAttr}>
           <input type="text" 
                  class="${inputClass}" 
                  data-question="${qNum}" 
@@ -61,7 +67,11 @@
           input.classList.add(colorClass);
           input.disabled = true;
           if (!isCorrect) {
-            input.setAttribute('title', '✓ ' + q.correct);
+            const gap = input.closest('.reading-type2-gap');
+            if (gap) {
+              gap.classList.add('incorrect');
+              gap.setAttribute('data-correct', '✓ ' + q.correct);
+            }
           }
         }
       });

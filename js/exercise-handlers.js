@@ -283,6 +283,11 @@
             input.classList.remove('correct', 'incorrect');
             input.disabled = false;
             input.removeAttribute('title');
+            const gap = input.closest('.reading-type2-gap');
+            if (gap) {
+              gap.classList.remove('incorrect');
+              gap.removeAttribute('data-correct');
+            }
           });
           break;
           
