@@ -124,7 +124,7 @@
     if (navGroup && toggle && navGroup.classList.contains('show')) {
       if (!navGroup.contains(e.target) && !toggle.contains(e.target)) {
         navGroup.classList.remove('show');
-        var icon = document.getElementById('mobileMenuIcon');
+        const icon = document.getElementById('mobileMenuIcon');
         if (icon) icon.className = 'fas fa-bars';
       }
     }
