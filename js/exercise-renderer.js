@@ -44,7 +44,14 @@
           textsSectionHTML = this.renderTextsCards(exercise, partConfig);
         }
         if (hasTextContent) {
-          textsSectionHTML = paragraphsHTML;
+          let titleHTML = '';
+          if (exercise.content.title) {
+            titleHTML += `<h3 class="reading-type5-content-title">${exercise.content.title}</h3>`;
+          }
+          if (exercise.content.subtitle) {
+            titleHTML += `<p class="reading-type5-content-subtitle">${exercise.content.subtitle}</p>`;
+          }
+          textsSectionHTML = titleHTML + paragraphsHTML;
         }
         
         questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
@@ -228,10 +235,14 @@
         } else if (typeof window.ReadingType5 !== 'undefined') {
           questionGap = ReadingType5.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
         }
-        html += '<div class="' + typePrefix + '-question">';
-        html += '<div class="' + typePrefix + '-question-text">' + q.question + '</div>';
-        html += questionGap;
-        html += '</div>';
+        if (partConfig.type === 'multiple-choice-text') {
+          html += questionGap;
+        } else {
+          html += '<div class="' + typePrefix + '-question">';
+          html += '<div class="' + typePrefix + '-question-text">' + q.question + '</div>';
+          html += questionGap;
+          html += '</div>';
+        }
       });
       html += '</div>';
       return html;
