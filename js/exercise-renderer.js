@@ -60,8 +60,11 @@
           </div>
         `;
         
+        const questionNavRowHTML = this.renderQuestionNavRow(exercise);
+        
         paragraphsHTML = `
           <div class="toggle-text-section" id="toggle-text-section">
+            ${questionNavRowHTML}
             ${textsSectionHTML}
           </div>
           <div class="toggle-questions-section" id="toggle-questions-section" style="display: none;">
@@ -320,6 +323,27 @@
       return html;
     },
     
+    renderQuestionNavRow: function(exercise) {
+      const questions = exercise.content.questions || [];
+      if (!questions.length) return '';
+      const answers = AppState.currentExercise?.answers || {};
+      const isChecked = AppState.answersChecked;
+      let cells = '';
+      questions.forEach(function(q) {
+        const qNum = q.number;
+        const answer = answers[qNum];
+        let cls = 'question-nav-cell';
+        if (isChecked) {
+          if (answer) cls += answer === q.correct ? ' correct' : ' incorrect';
+          else cls += ' unanswered-checked';
+        } else if (answer) {
+          cls += ' answered';
+        }
+        cells += '<button class="' + cls + '" data-qnum="' + qNum + '" onclick="QuestionNav.openQuestion(' + qNum + ')">' + qNum + '</button>';
+      });
+      return '<div class="question-nav-row" id="question-nav-row">' + cells + '</div>';
+    },
+
     toggleView: function(view) {
       var textSection = document.getElementById('toggle-text-section');
       var questionsSection = document.getElementById('toggle-questions-section');
