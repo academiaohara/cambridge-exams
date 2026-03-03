@@ -58,7 +58,21 @@
       
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
-        if (this.isAnswerCorrect(q, userAnswer)) correct++;
+        const isCorrect = this.isAnswerCorrect(q, userAnswer);
+        if (isCorrect) correct++;
+        
+        // Mark visual feedback on options
+        document.querySelectorAll(`input[name="q${q.number}"]`).forEach(radio => {
+          const label = radio.closest('.reading-type5-option');
+          if (!label) return;
+          radio.disabled = true;
+          label.classList.add('disabled');
+          if (radio.value === q.correct) {
+            label.classList.add('correct');
+          } else if (radio.value === userAnswer && !isCorrect) {
+            label.classList.add('incorrect');
+          }
+        });
       });
       
       return correct;

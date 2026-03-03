@@ -137,9 +137,8 @@
             </button>
           </div>
           
-          ${toggleHTML}
-          
           <div class="exercise-main-layout">
+            ${toggleHTML}
             <div class="reading-text-enhanced" id="selectable-text">
               ${paragraphsHTML}
             </div>
