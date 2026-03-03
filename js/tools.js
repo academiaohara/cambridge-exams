@@ -317,21 +317,36 @@
         const response = await Utils.fetchWithNoCache(url);
         const tips = await response.json();
         
-        let html = `
-          <div class="tips-content">
-            <h4><i class="fas fa-lightbulb"></i> ${tips.title}</h4>
-            <ul>
-        `;
+        let html = `<div class="tips-content">`;
         
-        tips.tips.forEach(tip => {
-          html += `<li>${tip}</li>`;
-        });
+        // Show part-specific tips if available
+        const currentPart = AppState.currentPart;
+        if (tips.parts && currentPart && tips.parts[currentPart]) {
+          const partTips = tips.parts[currentPart];
+          html += `<h4><i class="fas fa-lightbulb"></i> ${partTips.title || tips.title}</h4><ul>`;
+          partTips.tips.forEach(tip => {
+            html += `<li>${tip}</li>`;
+          });
+          html += `</ul>`;
+        } else if (tips.tips) {
+          // Fallback to legacy format
+          html += `<h4><i class="fas fa-lightbulb"></i> ${tips.title}</h4><ul>`;
+          tips.tips.forEach(tip => {
+            html += `<li>${tip}</li>`;
+          });
+          html += `</ul>`;
+        }
         
-        html += `
-            </ul>
-          </div>
-        `;
+        // Show general tips if available
+        if (tips.general) {
+          html += `<h4 style="margin-top: 16px;"><i class="fas fa-info-circle"></i> General Tips</h4><ul>`;
+          tips.general.forEach(tip => {
+            html += `<li>${tip}</li>`;
+          });
+          html += `</ul>`;
+        }
         
+        html += `</div>`;
         container.innerHTML = html;
         
       } catch (error) {
