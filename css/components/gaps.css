@@ -20,7 +20,7 @@
   font-size: 0.9rem;
 }
 
-.gap-box:hover:not([style*="pointer-events: none"]) {
+.gap-box:hover:not(.checked) {
   background: linear-gradient(135deg, #e0e7ff, #d1dbfa);
   transform: scale(1.02);
   box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
@@ -178,9 +178,11 @@
 }
 
 .gap-box.gap-box-small {
-  min-width: 50px;
+  min-width: 36px;
   padding: 5px 10px;
   font-size: 0.85rem;
+  justify-content: center;
+  text-align: center;
 }
 
 .gap-box.gap-box-small .gap-text {

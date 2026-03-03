@@ -96,13 +96,12 @@
             if (gapBox) {
               gapBox.classList.add('checked');
               gapBox.classList.add(isCorrect ? 'correct' : 'incorrect');
-              gapBox.style.pointerEvents = 'none';
               
               if (!isCorrect) {
                 const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
                 const correctOption = question.options.find(opt => opt.startsWith(correctAnswer));
                 const correctText = correctOption ? correctOption.substring(2).trim() : correctAnswer;
-                answerSpan.setAttribute('data-correct', `✓ ${correctText}`);
+                gapBox.setAttribute('data-correct', `✓ ${correctText}`);
               }
             }
           }
@@ -147,7 +146,6 @@
         case 'multiple-matching':
           document.querySelectorAll('.gap-box').forEach(box => {
             box.classList.add('checked');
-            box.style.pointerEvents = 'none';
           });
           break;
           
