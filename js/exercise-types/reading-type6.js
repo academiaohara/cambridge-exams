@@ -17,8 +17,7 @@
         <span class="gap-container">
           <span class="gap-number-outside">${qNum})</span>
           <span class="${btnClass}" ${correctAttr}
-                onclick="${!isChecked ? 'ReadingType6.openOptions(' + qNum + ')' : ''}"
-                style="${isChecked ? 'pointer-events: none;' : ''}">
+                onclick="${!isChecked ? 'ReadingType6.openOptions(' + qNum + ')' : ''}">
             <span class="gap-answer" id="answer-${qNum}">
               <span class="gap-text">${displayText}</span>
             </span>
@@ -85,7 +84,6 @@
           if (gapBox) {
             gapBox.classList.add('checked');
             gapBox.classList.add(isCorrect ? 'correct' : 'incorrect');
-            gapBox.style.pointerEvents = 'none';
             
             if (!isCorrect) {
               gapBox.setAttribute('data-correct', `✓ ${q.correct}`);

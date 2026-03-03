@@ -201,6 +201,82 @@
   .radio-option {
     padding: 8px 12px;
   }
+
+  /* Reading Type 6 - mobile */
+  .reading-type6-container {
+    padding: 16px;
+  }
+
+  .reading-type6-text-card {
+    padding: 16px;
+  }
+
+  .reading-type6-text-content {
+    font-size: 0.9rem;
+  }
+
+  .reading-type6-question {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .reading-type6-question-text {
+    font-size: 0.9rem;
+    min-width: 0;
+  }
+
+  /* Reading Type 7 - mobile */
+  .reading-type7-container {
+    padding: 16px;
+  }
+
+  .reading-type7-paragraphs {
+    padding: 16px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .reading-type7-options {
+    padding: 14px 16px;
+  }
+
+  .reading-type7-paragraph-item {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  /* Reading Type 8 - mobile */
+  .reading-type8-container {
+    padding: 16px;
+  }
+
+  .reading-type8-text-card {
+    padding: 16px;
+  }
+
+  .reading-type8-text-content {
+    font-size: 0.9rem;
+  }
+
+  .reading-type8-question {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .reading-type8-question-text {
+    font-size: 0.9rem;
+    min-width: 0;
+  }
+
+  /* Toggle view buttons - mobile */
+  .toggle-view-header {
+    justify-content: center;
+  }
+
+  .toggle-view-btn {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -268,5 +344,39 @@
     min-width: 150px;
     font-size: 0.8rem;
     padding: 6px 10px;
+  }
+
+  /* Reading Type 6 & 8 questions - small mobile */
+  .reading-type6-question,
+  .reading-type8-question {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .reading-type6-text-card,
+  .reading-type8-text-card {
+    padding: 14px;
+  }
+
+  .reading-type6-text-content,
+  .reading-type8-text-content {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  /* Reading Type 7 - small mobile */
+  .reading-type7-paragraphs {
+    padding: 14px;
+    font-size: 0.9rem;
+  }
+
+  .reading-type7-paragraph-item {
+    font-size: 0.8rem;
+  }
+
+  .gap-box.gap-box-small {
+    min-width: 30px;
+    font-size: 0.8rem;
   }
 }
