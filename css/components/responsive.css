@@ -277,6 +277,21 @@
     font-size: 0.8rem;
     padding: 6px 14px;
   }
+
+  /* Content section header - mobile */
+  .content-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .content-title-block {
+    width: 100%;
+  }
+
+  .content-section-header .toggle-view-header {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
