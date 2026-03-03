@@ -28,9 +28,9 @@
         paragraphsHTML = this.renderMultipleChoiceTextQuestions(exercise, partConfig);
       }
       
-      // Check if toggle is needed for types 5, 6, 8
+      // Check if toggle is needed for types 5, 6, 7, 8
       const isToggleType = section === 'reading' && 
-        ['multiple-choice-text', 'cross-text-matching', 'multiple-matching'].includes(partConfig.type);
+        ['multiple-choice-text', 'cross-text-matching', 'gapped-text', 'multiple-matching'].includes(partConfig.type);
       const hasTextsContent = exercise.content.texts && Object.keys(exercise.content.texts).length > 0;
       const hasTextContent = !!exercise.content.text;
       const needsToggle = isToggleType && (hasTextsContent || hasTextContent);
@@ -222,9 +222,25 @@
       const userAnswer = AppState.currentExercise?.answers || {};
       const isChecked = AppState.answersChecked;
       const typePrefix = partConfig.type === 'cross-text-matching' ? 'reading-type6' : 
-                         partConfig.type === 'multiple-matching' ? 'reading-type8' : 'reading-type5';
+                         partConfig.type === 'multiple-matching' ? 'reading-type8' :
+                         partConfig.type === 'gapped-text' ? 'reading-type7' : 'reading-type5';
       
-      let html = '<div class="' + typePrefix + '-questions">';
+      let html = '';
+      
+      // For gapped-text (Part 7), show paragraph options A-G
+      if (partConfig.type === 'gapped-text' && exercise.content.paragraphs) {
+        html += '<div class="reading-type7-options">';
+        html += '<h4><i class="fas fa-list"></i> ' + I18n.t('paragraphOptions') + '</h4>';
+        html += '<div class="reading-type7-paragraph-list">';
+        Object.entries(exercise.content.paragraphs).forEach(function(entry) {
+          const key = entry[0], text = entry[1];
+          html += '<div class="reading-type7-paragraph-item"><strong>' + key + '</strong> ' + text + '</div>';
+        });
+        html += '</div></div>';
+        return html;
+      }
+      
+      html += '<div class="' + typePrefix + '-questions">';
       questions.forEach(function(q) {
         var questionGap = '';
         if (partConfig.type === 'cross-text-matching' && typeof window.ReadingType6 !== 'undefined') {

@@ -4,7 +4,7 @@
 (function() {
   window.ReadingType8 = {
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
-      const btnClass = 'gap-box' +
+      const btnClass = 'gap-box gap-box-small' +
         (userAnswer ? ' answered' : '') +
         (isChecked ? ' checked' : '') +
         (isChecked && userAnswer ? (this.isAnswerCorrect(question, userAnswer) ? ' correct' : ' incorrect') : '');
@@ -15,11 +15,11 @@
       
       return `
         <span class="gap-container">
+          <span class="gap-number-outside">${qNum})</span>
           <span class="${btnClass}" ${correctAttr}
                 onclick="${!isChecked ? 'ReadingType8.openOptions(' + qNum + ')' : ''}"
                 style="${isChecked ? 'pointer-events: none;' : ''}">
             <span class="gap-answer" id="answer-${qNum}">
-              <span class="gap-number">${qNum})</span>
               <span class="gap-text">${displayText}</span>
             </span>
           </span>
@@ -57,7 +57,7 @@
       
       const answerSpan = document.getElementById(`answer-${qNum}`);
       if (answerSpan) {
-        answerSpan.innerHTML = `<span class="gap-number">${qNum})</span> <span class="gap-text">${letter}</span>`;
+        answerSpan.innerHTML = `<span class="gap-text">${letter}</span>`;
         const gapBox = answerSpan.closest('.gap-box');
         if (gapBox) gapBox.classList.add('answered');
       }
@@ -76,7 +76,23 @@
       
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
-        if (this.isAnswerCorrect(q, userAnswer)) correct++;
+        const isCorrect = this.isAnswerCorrect(q, userAnswer);
+        if (isCorrect) correct++;
+        
+        // Visual feedback
+        const answerSpan = document.getElementById(`answer-${q.number}`);
+        if (answerSpan) {
+          const gapBox = answerSpan.closest('.gap-box');
+          if (gapBox) {
+            gapBox.classList.add('checked');
+            gapBox.classList.add(isCorrect ? 'correct' : 'incorrect');
+            gapBox.style.pointerEvents = 'none';
+            
+            if (!isCorrect) {
+              gapBox.setAttribute('data-correct', `✓ ${q.correct}`);
+            }
+          }
+        }
       });
       
       return correct;
