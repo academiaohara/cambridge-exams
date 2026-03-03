@@ -1,0 +1,188 @@
+/* css/exercise-types/speaking-type.css */
+
+.speaking-type-container {
+  width: 100%;
+}
+
+.speaking-type-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.speaking-type-task {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.speaking-type-task h3 {
+  color: var(--primary);
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.speaking-type-task-text {
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin: 0 0 0.75rem 0;
+}
+
+.speaking-type-options {
+  color: var(--text-dark);
+  line-height: 1.8;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.speaking-type-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.speaking-type-image {
+  max-width: 200px;
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+  object-fit: cover;
+}
+
+.speaking-type-chat {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.speaking-chat-history {
+  min-height: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #f8fafc;
+}
+
+.speaking-type-start-msg {
+  text-align: center;
+  color: var(--text-medium);
+  font-size: 0.875rem;
+  padding: 2rem;
+}
+
+.speaking-type-message {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  gap: 0.25rem;
+}
+
+.speaking-type-message.user {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.speaking-type-message.examiner {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.speaking-type-label {
+  font-size: 0.75rem;
+  color: var(--text-medium);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.speaking-type-bubble {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.speaking-type-message.user .speaking-type-bubble {
+  background: var(--primary);
+  color: var(--white);
+  border-bottom-right-radius: 4px;
+}
+
+.speaking-type-message.examiner .speaking-type-bubble {
+  background: var(--white);
+  color: var(--text-dark);
+  border: 1px solid var(--border-light);
+  border-bottom-left-radius: 4px;
+}
+
+.speaking-type-message.typing .speaking-type-bubble {
+  color: var(--text-medium);
+}
+
+.speaking-type-input-area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-top: 1px solid var(--border-light);
+  background: var(--white);
+}
+
+.speaking-type-input {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.speaking-type-input:focus {
+  border-color: var(--primary);
+}
+
+.speaking-type-mic-btn,
+.speaking-type-send-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.speaking-type-mic-btn {
+  background: var(--secondary);
+  color: var(--white);
+  padding: 0.55rem 0.85rem;
+}
+
+.speaking-type-send-btn {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.speaking-type-mic-btn:hover,
+.speaking-type-send-btn:hover {
+  opacity: 0.85;
+}
+
+.speaking-type-actions {
+  display: flex;
+  gap: 0.75rem;
+}

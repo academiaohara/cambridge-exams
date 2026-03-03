@@ -1,0 +1,202 @@
+/* css/exercise-types/reading-type3.css */
+/* Word formation - Part 3 */
+
+.reading-type3-container {
+  background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%);
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid #e9d5ff;
+}
+
+.reading-type3-text {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--text-dark);
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+}
+
+.reading-type3-gap-inline {
+  display: inline;
+  white-space: nowrap;
+}
+
+.reading-type3-gap-number {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #7e22ce;
+}
+
+.reading-type3-gap-slot {
+  display: inline-block;
+  width: 70px;
+  height: 24px;
+  background: #f3e8ff;
+  border: 1.5px solid #c084fc;
+  border-radius: 6px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left: 4px;
+  transition: all 0.2s;
+}
+
+.reading-type3-gap-slot:hover {
+  background: #e9d5ff;
+  border-color: #a855f7;
+  box-shadow: 0 2px 6px rgba(168, 85, 247, 0.15);
+}
+
+.reading-type3-answered-word {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-left: 2px;
+}
+
+.reading-type3-purple {
+  color: var(--secondary);
+}
+
+.reading-type3-correct {
+  color: var(--correct);
+  font-weight: 700;
+}
+
+.reading-type3-incorrect {
+  color: var(--incorrect);
+  text-decoration: line-through;
+  font-weight: 600;
+  cursor: help;
+}
+
+/* Modal styles for word formation */
+.reading-type3-modal-word {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.reading-type3-stem-label {
+  font-weight: 800;
+  color: #7e22ce;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  background: #f3e8ff;
+  padding: 8px 24px;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  border: 2px solid #c084fc;
+}
+
+.reading-type3-modal-input-wrap {
+  margin: 16px 0;
+}
+
+.reading-type3-modal-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.reading-type3-modal-input:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+}
+
+.reading-type3-modal-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.reading-type3-word-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f3e8ff;
+  padding: 4px 12px;
+  border-radius: 30px;
+  margin: 0 4px;
+  border: 1px solid #c084fc;
+  vertical-align: middle;
+  transition: all 0.2s;
+}
+
+.reading-type3-word-box.reading-type3-filled {
+  border-color: var(--secondary);
+  background: #f5f3ff;
+}
+
+.reading-type3-stem {
+  font-weight: 700;
+  color: #7e22ce;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  background: white;
+  padding: 2px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.reading-type3-input {
+  width: 140px;
+  padding: 8px 12px;
+  border: 2px solid #cbd5e1;
+  border-radius: 30px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s;
+  background: white;
+}
+
+.reading-type3-input:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+  width: 160px;
+}
+
+.reading-type3-input.correct {
+  border-color: var(--correct);
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.reading-type3-input.incorrect {
+  border-color: var(--incorrect);
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.reading-type3-hint {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #a855f7;
+  background: #faf5ff;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 4px;
+  border: 1px dashed #c084fc;
+}
+
+.reading-type3-example-answer {
+  color: var(--correct);
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.reading-type3-correction {
+  display: inline-block;
+  color: #7e22ce;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-left: 4px;
+  font-style: italic;
+}
