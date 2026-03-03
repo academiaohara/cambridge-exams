@@ -233,7 +233,7 @@
         html += '<h4><i class="fas fa-list"></i> ' + I18n.t('paragraphOptions') + '</h4>';
         html += '<div class="reading-type7-paragraph-list">';
         Object.entries(exercise.content.paragraphs).forEach(function(entry) {
-          var key = entry[0], text = entry[1];
+          const key = entry[0], text = entry[1];
           html += '<div class="reading-type7-paragraph-item"><strong>' + key + '</strong> ' + text + '</div>';
         });
         html += '</div></div>';
