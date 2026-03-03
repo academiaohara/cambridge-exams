@@ -172,7 +172,7 @@
   }
 
   #app {
-    padding-top: 70px;
+    padding-top: var(--header-height, 70px);
   }
 
   .app-container {

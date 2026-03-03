@@ -83,8 +83,8 @@
             <div class="exercise-title">
               <h2>${levelName} - ${sectionTitle}</h2>
               <div class="exercise-subtitle" data-i18n="part">${I18n.t('part')} ${part} ${I18n.t('of')} ${totalParts}
-                <span class="section-score-badge" id="section-score-badge" title="${sectionTitle}">
-                  <i class="fas fa-trophy"></i> ${sectionScore}/${sectionTotalAllParts}
+                <span class="section-score-badge" id="section-score-badge" title="${sectionTitle}" aria-label="${sectionTitle}: ${sectionScore} de ${sectionTotalAllParts}">
+                  <i class="fas fa-trophy" aria-hidden="true"></i> ${sectionScore}/${sectionTotalAllParts}
                 </span>
               </div>
               <span class="exercise-badge">${exercise.title || I18n.t('exercise')}</span>
