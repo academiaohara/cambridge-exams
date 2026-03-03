@@ -61,12 +61,7 @@
           input.classList.add(colorClass);
           input.disabled = true;
           if (!isCorrect) {
-            const correctText = q.correct.includes('/') ? q.correct.split('/')[0].trim() : q.correct;
             input.setAttribute('title', '✓ ' + q.correct);
-            const correctionSpan = document.createElement('span');
-            correctionSpan.className = 'reading-type2-correction';
-            correctionSpan.textContent = correctText;
-            input.parentNode.appendChild(correctionSpan);
           }
         }
       });

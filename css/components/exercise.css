@@ -192,3 +192,45 @@
 .explanation-item strong {
   color: var(--text-dark);
 }
+
+/* Toggle view for text/questions (Parts 5, 6, 8) */
+.toggle-view-header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.toggle-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 30px;
+  background: #f8fafc;
+  color: var(--text-medium);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggle-view-btn:hover {
+  border-color: var(--primary-light);
+  background: #f0f4ff;
+  color: var(--primary);
+}
+
+.toggle-view-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.toggle-view-btn.active:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: white;
+}
