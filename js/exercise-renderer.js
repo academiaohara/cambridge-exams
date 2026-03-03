@@ -28,6 +28,48 @@
         paragraphsHTML = this.renderMultipleChoiceTextQuestions(exercise, partConfig);
       }
       
+      // Check if toggle is needed for types 5, 6, 8
+      const isToggleType = section === 'reading' && 
+        ['multiple-choice-text', 'cross-text-matching', 'multiple-matching'].includes(partConfig.type);
+      const hasTextsContent = exercise.content.texts && Object.keys(exercise.content.texts).length > 0;
+      const hasTextContent = !!exercise.content.text;
+      const needsToggle = isToggleType && (hasTextsContent || hasTextContent);
+      
+      let toggleHTML = '';
+      if (needsToggle) {
+        let textsSectionHTML = '';
+        let questionsSectionHTML = '';
+        
+        if (hasTextsContent) {
+          textsSectionHTML = this.renderTextsCards(exercise, partConfig);
+        }
+        if (hasTextContent) {
+          textsSectionHTML = paragraphsHTML;
+        }
+        
+        questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
+        
+        toggleHTML = `
+          <div class="toggle-view-header">
+            <button class="toggle-view-btn active" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
+              <i class="fas fa-file-alt"></i> <span data-i18n="showText">${I18n.t('showText')}</span>
+            </button>
+            <button class="toggle-view-btn" id="toggle-questions-btn" onclick="ExerciseRenderer.toggleView('questions')">
+              <i class="fas fa-question-circle"></i> <span data-i18n="showQuestions">${I18n.t('showQuestions')}</span>
+            </button>
+          </div>
+        `;
+        
+        paragraphsHTML = `
+          <div class="toggle-text-section" id="toggle-text-section">
+            ${textsSectionHTML}
+          </div>
+          <div class="toggle-questions-section" id="toggle-questions-section" style="display: none;">
+            ${questionsSectionHTML}
+          </div>
+        `;
+      }
+      
       let exampleHTML = this.renderExampleBox(exercise.content.example, partConfig);
       
       const sectionTitle = Utils.getSectionTitle(section);
@@ -87,6 +129,8 @@
               <i class="fas fa-lightbulb"></i> <span data-i18n="tips">${I18n.t('tips')}</span>
             </button>
           </div>
+          
+          ${toggleHTML}
           
           <div class="exercise-main-layout">
             <div class="reading-text-enhanced" id="selectable-text">
@@ -149,6 +193,69 @@
         html += `<p>${paraProcessed}</p>`;
       });
       return html;
+    },
+    
+    renderTextsCards: function(exercise, partConfig) {
+      const texts = exercise.content.texts;
+      const typePrefix = partConfig.type === 'cross-text-matching' ? 'reading-type6' : 'reading-type8';
+      
+      let html = '<div class="' + typePrefix + '-texts">';
+      Object.entries(texts).forEach(function(entry) {
+        var key = entry[0], text = entry[1];
+        html += '<div class="' + typePrefix + '-text-card">';
+        html += '<span class="' + typePrefix + '-text-label">' + key + '</span>';
+        html += '<div class="' + typePrefix + '-text-content">' + text + '</div>';
+        html += '</div>';
+      });
+      html += '</div>';
+      return html;
+    },
+    
+    renderToggleQuestions: function(exercise, partConfig) {
+      const questions = exercise.content.questions || [];
+      const userAnswer = AppState.currentExercise?.answers || {};
+      const isChecked = AppState.answersChecked;
+      const typePrefix = partConfig.type === 'cross-text-matching' ? 'reading-type6' : 
+                         partConfig.type === 'multiple-matching' ? 'reading-type8' : 'reading-type5';
+      
+      let html = '<div class="' + typePrefix + '-questions">';
+      questions.forEach(function(q) {
+        var questionGap = '';
+        if (partConfig.type === 'cross-text-matching' && typeof window.ReadingType6 !== 'undefined') {
+          questionGap = ReadingType6.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
+        } else if (partConfig.type === 'multiple-matching' && typeof window.ReadingType8 !== 'undefined') {
+          questionGap = ReadingType8.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
+        } else if (typeof window.ReadingType5 !== 'undefined') {
+          questionGap = ReadingType5.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
+        }
+        html += '<div class="' + typePrefix + '-question">';
+        html += '<div class="' + typePrefix + '-question-text">' + q.question + '</div>';
+        html += questionGap;
+        html += '</div>';
+      });
+      html += '</div>';
+      return html;
+    },
+    
+    toggleView: function(view) {
+      var textSection = document.getElementById('toggle-text-section');
+      var questionsSection = document.getElementById('toggle-questions-section');
+      var textBtn = document.getElementById('toggle-text-btn');
+      var questionsBtn = document.getElementById('toggle-questions-btn');
+      
+      if (!textSection || !questionsSection) return;
+      
+      if (view === 'text') {
+        textSection.style.display = '';
+        questionsSection.style.display = 'none';
+        if (textBtn) textBtn.classList.add('active');
+        if (questionsBtn) questionsBtn.classList.remove('active');
+      } else {
+        textSection.style.display = 'none';
+        questionsSection.style.display = '';
+        if (questionsBtn) questionsBtn.classList.add('active');
+        if (textBtn) textBtn.classList.remove('active');
+      }
     },
     
     renderTransformationQuestions: function(exercise, partConfig) {
