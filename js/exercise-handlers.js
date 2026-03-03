@@ -62,6 +62,14 @@
       }
       
       Exercise.savePartState();
+      
+      // Update question nav row cells to reflect checked state
+      if (typeof QuestionNav !== 'undefined') {
+        QuestionNav.updateAllNavCells();
+        if (QuestionNav.currentQNum !== null) {
+          QuestionNav.openQuestion(QuestionNav.currentQNum);
+        }
+      }
     },
     
     updatePartNavigation: function() {

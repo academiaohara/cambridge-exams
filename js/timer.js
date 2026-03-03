@@ -82,6 +82,9 @@
       // Save state to localStorage
       Exercise.savePartState();
       
+      // Update question nav row cells if visible (parts 5-8)
+      if (typeof QuestionNav !== 'undefined') QuestionNav.updateAllNavCells();
+      
       return { correct, total };
     }
   };
