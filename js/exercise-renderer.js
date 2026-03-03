@@ -36,6 +36,7 @@
       const needsToggle = isToggleType && (hasTextsContent || hasTextContent);
       
       let toggleHTML = '';
+      let questionNavRowHTML = '';
       if (needsToggle) {
         let textsSectionHTML = '';
         let questionsSectionHTML = '';
@@ -60,11 +61,23 @@
           </div>
         `;
         
-        const questionNavRowHTML = this.renderQuestionNavRow(exercise);
+        questionNavRowHTML = this.renderQuestionNavRow(exercise);
+        
+        const cTitle = exercise.content?.title || '';
+        const cSubtitle = (section === 'reading' && part === 5) ? (exercise.content?.subtitle || '') : '';
+        const toggleContentHeader = `
+          <div class="content-section-header">
+            <div class="content-title-block">
+              <div class="content-title" title="${cTitle}">${cTitle}</div>
+              ${cSubtitle ? `<div class="content-subtitle" title="${cSubtitle}">${cSubtitle}</div>` : ''}
+            </div>
+            ${toggleHTML}
+          </div>
+        `;
         
         paragraphsHTML = `
           <div class="toggle-text-section" id="toggle-text-section">
-            ${questionNavRowHTML}
+            ${toggleContentHeader}
             ${textsSectionHTML}
           </div>
           <div class="toggle-questions-section" id="toggle-questions-section" style="display: none;">
@@ -83,20 +96,10 @@
       
       const partTotal = exercise.totalQuestions || partConfig.total;
       
-      // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
+      // For parts 5-8, content header was moved inside toggle-text-section; for others, keep it here
       let contentHeaderHTML = '';
       if (isToggleType) {
-        const cTitle = exercise.content?.title || '';
-        const cSubtitle = (section === 'reading' && part === 5) ? (exercise.content?.subtitle || '') : '';
-        contentHeaderHTML = `
-          <div class="content-section-header">
-            <div class="content-title-block">
-              <div class="content-title" title="${cTitle}">${cTitle}</div>
-              ${cSubtitle ? `<div class="content-subtitle" title="${cSubtitle}">${cSubtitle}</div>` : ''}
-            </div>
-            ${toggleHTML}
-          </div>
-        `;
+        // Content header is already embedded in paragraphsHTML for toggle types
       } else if (section !== 'reading') {
         const contentTitle = exercise.title || I18n.t('exercise');
         const contentSubtitle = exercise.content?.subtitle || exercise.description || '';
@@ -174,6 +177,7 @@
             </button>
           </div>
           
+          ${questionNavRowHTML}
           ${contentHeaderHTML}
           
           <div class="exercise-main-layout">

@@ -70,9 +70,15 @@
 }
 
 /* Modal styles for word formation */
+.reading-type3-modal-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0;
+}
+
 .reading-type3-modal-word {
   text-align: center;
-  margin: 16px 0;
 }
 
 .reading-type3-stem-label {
@@ -88,11 +94,11 @@
 }
 
 .reading-type3-modal-input-wrap {
-  margin: 16px 0;
+  flex-shrink: 0;
 }
 
 .reading-type3-modal-input {
-  width: 100%;
+  width: 140px;
   padding: 14px 18px;
   border: 2px solid #cbd5e1;
   border-radius: 12px;
