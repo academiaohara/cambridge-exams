@@ -57,7 +57,12 @@
         });
       }
       
-      Timer.updateScoreDisplay();
+      const scoreResult = Timer.updateScoreDisplay();
+      
+      // Save part score to section total
+      if (scoreResult && AppState.currentExamId && AppState.currentSection) {
+        ExerciseRenderer.saveSectionScore(AppState.currentSection, AppState.currentExamId, scoreResult.correct);
+      }
       
       const checkBtn = document.querySelector('.btn-check');
       if (checkBtn) checkBtn.disabled = true;

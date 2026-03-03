@@ -268,6 +268,10 @@
                         </div>
                     </div>
                 </div>
+
+                <button class="hamburger-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </header>
 
@@ -284,6 +288,68 @@
                 <button class="modal-close" onclick="Modal.closeOptionsModal()">&times;</button>
                 <div id="modal-body">
                     <!-- Contenido dinámico -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-header">
+                <h3>☰ Menu</h3>
+                <button class="mobile-menu-close" onclick="closeMobileMenu()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mobile-menu-section">
+                <h4>📚 Level</h4>
+                <div class="mobile-menu-levels">
+                    <button class="level-btn" data-level="A2" onclick="filterByLevel('A2'); closeMobileMenu();">A2</button>
+                    <button class="level-btn" data-level="B1" onclick="filterByLevel('B1'); closeMobileMenu();">B1</button>
+                    <button class="level-btn" data-level="B2" onclick="filterByLevel('B2'); closeMobileMenu();">B2</button>
+                    <button class="level-btn active" data-level="C1" onclick="filterByLevel('C1'); closeMobileMenu();">C1</button>
+                    <button class="level-btn" data-level="C2" onclick="filterByLevel('C2'); closeMobileMenu();">C2</button>
+                </div>
+            </div>
+            <div class="mobile-menu-section">
+                <h4>🌐 Language</h4>
+                <div class="mobile-menu-lang">
+                    <div class="language-option" onclick="setLanguage('es'); closeMobileMenu();">
+                        <span class="fi fi-es"></span> ES
+                    </div>
+                    <div class="language-option" onclick="setLanguage('en'); closeMobileMenu();">
+                        <span class="fi fi-gb"></span> EN
+                    </div>
+                    <div class="language-option" onclick="setLanguage('fr'); closeMobileMenu();">
+                        <span class="fi fi-fr"></span> FR
+                    </div>
+                    <div class="language-option" onclick="setLanguage('de'); closeMobileMenu();">
+                        <span class="fi fi-de"></span> DE
+                    </div>
+                    <div class="language-option" onclick="setLanguage('it'); closeMobileMenu();">
+                        <span class="fi fi-it"></span> IT
+                    </div>
+                    <div class="language-option" onclick="setLanguage('pt'); closeMobileMenu();">
+                        <span class="fi fi-pt"></span> PT
+                    </div>
+                    <div class="language-option" onclick="setLanguage('ar'); closeMobileMenu();">
+                        <span class="fi fi-sa"></span> AR
+                    </div>
+                    <div class="language-option" onclick="setLanguage('zh'); closeMobileMenu();">
+                        <span class="fi fi-cn"></span> ZH
+                    </div>
+                    <div class="language-option" onclick="setLanguage('ja'); closeMobileMenu();">
+                        <span class="fi fi-jp"></span> JA
+                    </div>
+                    <div class="language-option" onclick="setLanguage('ko'); closeMobileMenu();">
+                        <span class="fi fi-kr"></span> KO
+                    </div>
+                    <div class="language-option" onclick="setLanguage('hi'); closeMobileMenu();">
+                        <span class="fi fi-in"></span> HI
+                    </div>
+                    <div class="language-option" onclick="setLanguage('ru'); closeMobileMenu();">
+                        <span class="fi fi-ru"></span> RU
+                    </div>
                 </div>
             </div>
         </div>

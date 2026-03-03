@@ -35,7 +35,6 @@
       const hasTextContent = !!exercise.content.text;
       const needsToggle = isToggleType && (hasTextsContent || hasTextContent);
       
-      let toggleHTML = '';
       if (needsToggle) {
         let textsSectionHTML = '';
         let questionsSectionHTML = '';
@@ -56,17 +55,6 @@
         
         questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
         
-        toggleHTML = `
-          <div class="toggle-view-header">
-            <button class="toggle-view-btn active" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
-              <i class="fas fa-file-alt"></i> <span data-i18n="showText">${I18n.t('showText')}</span>
-            </button>
-            <button class="toggle-view-btn" id="toggle-questions-btn" onclick="ExerciseRenderer.toggleView('questions')">
-              <i class="fas fa-question-circle"></i> <span data-i18n="showQuestions">${I18n.t('showQuestions')}</span>
-            </button>
-          </div>
-        `;
-        
         paragraphsHTML = `
           <div class="toggle-text-section" id="toggle-text-section">
             ${textsSectionHTML}
@@ -83,14 +71,22 @@
       const levelName = Utils.getLevelName(AppState.currentLevel);
       const exam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === examId);
       const totalParts = exam?.sections[section]?.total || 1;
-      const sectionTotalQuestions = this.getSectionTotalQuestions(section);
+      const sectionTotalQuestions = partConfig.total;
+      
+      // Calculate section score from completed parts
+      const sectionScore = this.calculateSectionScore(section, examId);
+      const sectionTotalAllParts = this.getSectionTotalQuestions(section);
       
       let html = `
         <div class="exercise-container">
           <div class="exercise-header">
             <div class="exercise-title">
               <h2>${levelName} - ${sectionTitle}</h2>
-              <div class="exercise-subtitle" data-i18n="part">${I18n.t('part')} ${part} ${I18n.t('of')} ${totalParts}</div>
+              <div class="exercise-subtitle" data-i18n="part">${I18n.t('part')} ${part} ${I18n.t('of')} ${totalParts}
+                <span class="section-score-badge" id="section-score-badge" title="${sectionTitle}">
+                  <i class="fas fa-trophy"></i> ${sectionScore}/${sectionTotalAllParts}
+                </span>
+              </div>
               <span class="exercise-badge">${exercise.title || I18n.t('exercise')}</span>
             </div>
             <div class="exercise-toolbar">
@@ -104,6 +100,16 @@
             <div class="exercise-info-left">
               <span><i class="fas fa-clock"></i> ${exercise.time || '10'} <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
               <span><i class="fas fa-question-circle"></i> ${exercise.totalQuestions || partConfig.total} <span data-i18n="questions">${I18n.t('questions')}</span></span>
+              ${needsToggle ? `
+              <span class="toggle-view-inline">
+                <button class="toggle-view-btn active" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
+                  <i class="fas fa-file-alt"></i> <span class="toggle-label" data-i18n="showText">${I18n.t('showText')}</span>
+                </button>
+                <button class="toggle-view-btn" id="toggle-questions-btn" onclick="ExerciseRenderer.toggleView('questions')">
+                  <i class="fas fa-question-circle"></i> <span class="toggle-label" data-i18n="showQuestions">${I18n.t('showQuestions')}</span>
+                </button>
+              </span>
+              ` : ''}
             </div>
             <div class="exercise-info-right">
               <div class="exercise-timer" id="exercise-timer">
@@ -122,24 +128,23 @@
           
           <div class="tool-tabs-horizontal">
             <button class="tool-btn-nav" id="tab-notes" onclick="Tools.switchTool('notes')">
-              <i class="fas fa-highlighter"></i> <span data-i18n="highlight">${I18n.t('highlight')}</span>
+              <i class="fas fa-highlighter"></i> <span class="tool-label" data-i18n="highlight">${I18n.t('highlight')}</span>
             </button>
             <button class="tool-btn-nav" id="tab-freenotes" onclick="Tools.switchTool('freenotes')">
-              <i class="fas fa-sticky-note"></i> <span data-i18n="notes">${I18n.t('notes')}</span>
+              <i class="fas fa-sticky-note"></i> <span class="tool-label" data-i18n="notes">${I18n.t('notes')}</span>
             </button>
             <button class="tool-btn-nav" id="tab-dict" onclick="Tools.switchTool('dict')">
-              <i class="fas fa-book"></i> <span data-i18n="dictionary">${I18n.t('dictionary')}</span>
+              <i class="fas fa-book"></i> <span class="tool-label" data-i18n="dictionary">${I18n.t('dictionary')}</span>
             </button>
             <button class="tool-btn-nav" id="tab-translate" onclick="Tools.switchTool('translate')">
-              <i class="fas fa-language"></i> <span data-i18n="translate">${I18n.t('translate')}</span>
+              <i class="fas fa-language"></i> <span class="tool-label" data-i18n="translate">${I18n.t('translate')}</span>
             </button>
             <button class="tool-btn-nav" id="tab-tips" onclick="Tools.switchTool('tips')">
-              <i class="fas fa-lightbulb"></i> <span data-i18n="tips">${I18n.t('tips')}</span>
+              <i class="fas fa-lightbulb"></i> <span class="tool-label" data-i18n="tips">${I18n.t('tips')}</span>
             </button>
           </div>
           
           <div class="exercise-main-layout">
-            ${toggleHTML}
             <div class="reading-text-enhanced" id="selectable-text">
               ${paragraphsHTML}
             </div>
@@ -216,6 +221,35 @@
         return [1, 2, 3, 4].reduce((sum, part) => sum + (CONFIG.PART_TYPES[`speaking${part}`]?.total || 0), 0);
       }
       return 0;
+    },
+    
+    calculateSectionScore: function(section, examId) {
+      const key = `sectionScore_${AppState.currentLevel}_${examId}_${section}`;
+      try {
+        return parseInt(localStorage.getItem(key) || '0', 10);
+      } catch (e) {
+        return 0;
+      }
+    },
+    
+    saveSectionScore: function(section, examId, partScore) {
+      const key = `sectionScore_${AppState.currentLevel}_${examId}_${section}`;
+      try {
+        const current = parseInt(localStorage.getItem(key) || '0', 10);
+        const partKey = `partScore_${AppState.currentLevel}_${examId}_${section}_${AppState.currentPart}`;
+        const previousPartScore = parseInt(localStorage.getItem(partKey) || '0', 10);
+        const newTotal = current - previousPartScore + partScore;
+        localStorage.setItem(key, newTotal.toString());
+        localStorage.setItem(partKey, partScore.toString());
+        
+        const badge = document.getElementById('section-score-badge');
+        if (badge) {
+          const sectionTotal = this.getSectionTotalQuestions(section);
+          badge.innerHTML = `<i class="fas fa-trophy"></i> ${newTotal}/${sectionTotal}`;
+        }
+      } catch (e) {
+        // localStorage not available
+      }
     },
     
     renderTextsCards: function(exercise, partConfig) {

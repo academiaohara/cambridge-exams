@@ -53,7 +53,7 @@
     },
     
     syncExamsFromFolders: async function() {
-      const levels = Object.keys(EXAMS_DATA || {});
+      const levels = CONFIG.ACTIVE_LEVELS || Object.keys(EXAMS_DATA || {});
       const sectionTemplate = {
         reading: { name: 'READING & USE OF ENGLISH', icon: 'book-open', total: 8, completed: [], inProgress: [] },
         listening: { name: 'LISTENING', icon: 'headphones', total: 4, completed: [], inProgress: [] },
@@ -106,6 +106,23 @@
   window.filterByLevel = App.filterByLevel;
   window.loadDashboard = App.loadDashboard;
   window.toggleLanguageDropdown = I18n.toggleDropdown;
+  
+  // Mobile menu functions
+  window.toggleMobileMenu = function() {
+    const menu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('mobileMenuOverlay');
+    if (menu && overlay) {
+      menu.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+  };
+  
+  window.closeMobileMenu = function() {
+    const menu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('mobileMenuOverlay');
+    if (menu) menu.classList.remove('show');
+    if (overlay) overlay.classList.remove('show');
+  };
   
   // Inicializar cuando el DOM esté listo
   document.addEventListener('DOMContentLoaded', () => App.init());
