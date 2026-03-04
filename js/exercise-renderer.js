@@ -335,12 +335,25 @@
       const paragraphs = exercise.content.paragraphs || {};
       const isPart7 = partConfig && partConfig.type === 'gapped-text' && Object.keys(paragraphs).length;
       if (!questions.length && !isPart7) return '';
+      const escapeHtml = function(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      };
+      const escapeJsString = function(value) {
+        return String(value)
+          .replace(/\\/g, '\\\\')
+          .replace(/'/g, '\\\'');
+      };
       const answers = AppState.currentExercise?.answers || {};
       const isChecked = AppState.answersChecked;
       let cells = '';
       if (isPart7) {
         Object.keys(paragraphs).forEach(function(key) {
-          cells += '<button class="question-nav-cell" data-paragraph="' + key + '" onclick="QuestionNav.openParagraph(\'' + key + '\')">' + key + '</button>';
+          cells += '<button class="question-nav-cell" onclick="QuestionNav.openParagraph(\'' + escapeJsString(key) + '\')">' + escapeHtml(key) + '</button>';
         });
         return '<div class="question-nav-row" id="question-nav-row">' + cells + '</div>';
       }
