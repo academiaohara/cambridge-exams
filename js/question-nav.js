@@ -34,7 +34,7 @@
       if (!overlay || !body) return;
 
       body.innerHTML = '<div class="qnav-header">' +
-        '<span class="qnav-title">' + key + '</span>' +
+        '<span class="qnav-title">' + this._escapeHtml(key) + '</span>' +
         '<button class="qnav-close-btn" onclick="QuestionNav.close()">' +
           '<i class="fas fa-times"></i>' +
         '</button>' +
