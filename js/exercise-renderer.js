@@ -661,14 +661,21 @@
     },
     
     renderExplanationsSection: function(exercise) {
-      if (!exercise.content?.questions) return '';
+      // Collect all questions: from content.questions or from dual-matching tasks
+      var allQuestions = [];
+      if (exercise.content?.questions) {
+        allQuestions = exercise.content.questions;
+      } else if (exercise.content?.task1 && exercise.content?.task2) {
+        allQuestions = (exercise.content.task1.questions || []).concat(exercise.content.task2.questions || []);
+      }
+      if (allQuestions.length === 0) return '';
       
       let explanations = `
         <div class="explanations-section" id="explanations-section" style="display: none;">
           <h3><i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span></h3>
       `;
       
-      exercise.content.questions.forEach(q => {
+      allQuestions.forEach(q => {
         explanations += `
           <div class="explanation-item" data-question="${q.number}">
             <strong>${q.number}.</strong> — ${q.explanation || I18n.t('noExplanation')}
