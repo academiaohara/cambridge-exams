@@ -57,14 +57,7 @@
       const radio = document.querySelector('input[name="q' + qNum + '"][value="' + letter + '"]');
       if (radio) radio.checked = true;
       this._updateNavCell(qNum);
-      // update selected state in the open panel without full re-render
-      const panel = document.getElementById('question-nav-body');
-      if (panel) {
-        panel.querySelectorAll('.qnav-option').forEach(function(btn) {
-          const optLetter = btn.querySelector('.qnav-option-letter');
-          btn.classList.toggle('selected', !!(optLetter && optLetter.textContent.trim() === letter));
-        });
-      }
+      this.close();
     },
 
     answerPart6: function(qNum, letter) {
@@ -148,12 +141,11 @@
     },
 
     _buildPart5: function(question, qNum, isChecked, userAnswer) {
-      var html = '<div class="qnav-options">';
+      var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
       (question.options || []).forEach(function(opt) {
         var letter = opt.charAt(0);
-        var text = opt.substring(2).trim();
         var isSelected = userAnswer === letter;
-        var cls = 'qnav-option';
+        var cls = 'qnav-opt-btn';
         if (isChecked) {
           cls += letter === question.correct ? ' correct' : (isSelected ? ' incorrect' : '');
           cls += ' disabled';
@@ -161,17 +153,14 @@
           if (isSelected) cls += ' selected';
         }
         var onclick = isChecked ? '' : 'onclick="QuestionNav.answerPart5(' + qNum + ', \'' + letter + '\')"';
-        html += '<button class="' + cls + '" ' + onclick + '>' +
-          '<span class="qnav-option-letter">' + letter + '</span>' +
-          '<span class="qnav-option-text">' + text + '</span>' +
-          '</button>';
+        html += '<button class="' + cls + '" ' + onclick + '>' + letter + '</button>';
       });
       html += '</div>';
       return html;
     },
 
     _buildPart6: function(question, qNum, isChecked, userAnswer) {
-      var html = '<div class="qnav-opts-grid">';
+      var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
       (question.options || []).forEach(function(opt) {
         var isSelected = userAnswer === opt;
         var cls = 'qnav-opt-btn';
@@ -190,11 +179,11 @@
 
     _buildPart7: function(question, qNum, isChecked, userAnswer) {
       var paragraphs = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.paragraphs) || {};
-      var html = '<p class="qnav-question-text">' + I18n.t('question') + ' ' + qNum + '</p>';
-      html += '<div class="qnav-options">';
-      Object.keys(paragraphs).forEach(function(key) {
+      var keys = Object.keys(paragraphs);
+      var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
+      keys.forEach(function(key) {
         var isSelected = userAnswer === key;
-        var cls = 'qnav-option';
+        var cls = 'qnav-opt-btn';
         if (isChecked) {
           cls += key === question.correct ? ' correct' : (isSelected ? ' incorrect' : '');
           cls += ' disabled';
@@ -202,12 +191,8 @@
           if (isSelected) cls += ' selected';
         }
         var onclick = isChecked ? '' : 'onclick="QuestionNav.answerPart7(' + qNum + ', \'' + key + '\')"';
-        var paragraphText = this._escapeHtml(paragraphs[key] || '');
-        html += '<button class="' + cls + '" ' + onclick + '>' +
-          '<span class="qnav-option-letter">' + key + '</span>' +
-          '<span class="qnav-option-text">' + paragraphText + '</span>' +
-          '</button>';
-      }, this);
+        html += '<button class="' + cls + '" ' + onclick + '>' + key + '</button>';
+      });
       html += '</div>';
       return html;
     },
