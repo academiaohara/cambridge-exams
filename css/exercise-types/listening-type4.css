@@ -4,16 +4,36 @@
   width: 100%;
 }
 
+/* Audio section at top */
+.listening-type4-audio-section {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  color: #fff;
+}
+
+.listening-type4-audio-section p {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+}
+
+.listening-type4-audio-section audio {
+  width: 100%;
+  border-radius: 6px;
+}
+
 .listening-type4-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .listening-type4-tasks {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  gap: 1rem;
+  align-items: start;
 }
 
 @media (max-width: 768px) {
@@ -26,7 +46,7 @@
   background: var(--white);
   border: 1px solid var(--border-light);
   border-radius: 8px;
-  padding: 1.25rem;
+  padding: 1rem;
   box-shadow: var(--shadow-sm);
 }
 
@@ -34,116 +54,90 @@
   color: var(--primary);
   font-size: 1rem;
   font-weight: 700;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.4rem 0;
 }
 
 .listening-type4-instruction {
   color: var(--text-dark);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin: 0 0 1rem 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0 0 0.75rem 0;
 }
 
+/* Options list A-H */
 .listening-type4-options-list {
   background: #f8fafc;
   border: 1px solid var(--border-light);
   border-radius: 6px;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.15rem;
 }
 
 .listening-type4-option {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--text-dark);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .listening-type4-option strong {
   color: var(--primary);
-  margin-right: 0.4rem;
+  margin-right: 0.3rem;
 }
 
+/* Question rows - compact */
 .listening-type4-questions {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.4rem;
 }
 
 .listening-type4-question {
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  padding: 0.75rem;
-  background: #fafafa;
-}
-
-.listening-type4-audio-bar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.listening-type4-play-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: none;
-  background: var(--primary);
-  color: var(--white);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  flex-shrink: 0;
-  transition: opacity 0.2s;
-}
-
-.listening-type4-play-btn:hover {
-  opacity: 0.85;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  background: #fafafa;
 }
 
 .listening-type4-speaker-label {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-dark);
   white-space: nowrap;
+  min-width: 5rem;
 }
 
-.listening-type4-timeline {
-  flex: 1;
-  height: 4px;
-  background: var(--border-light);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.listening-type4-progress {
-  height: 100%;
+.listening-type4-q-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
   background: var(--primary);
-  transition: width 0.3s linear;
-}
-
-.listening-type4-time {
-  font-size: 0.75rem;
-  color: var(--text-medium);
-  white-space: nowrap;
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
 }
 
 .listening-type4-select {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
+  flex: 1;
+  padding: 0.35rem 0.5rem;
   border: 1px solid var(--border-light);
   border-radius: 6px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-dark);
   background: var(--white);
   cursor: pointer;
   outline: none;
   transition: border-color 0.2s;
+  min-width: 0;
 }
 
 .listening-type4-select:focus {
@@ -163,9 +157,8 @@
 }
 
 .listening-type4-correct-answer {
-  display: block;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--correct);
-  margin-top: 0.35rem;
   font-weight: 600;
+  white-space: nowrap;
 }
