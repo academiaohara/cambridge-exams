@@ -104,7 +104,7 @@
             ${toggleHTML}
           </div>
         `;
-      } else if (section !== 'reading') {
+      } else if (section !== 'reading' && !(section === 'listening' && part === 1)) {
         const contentTitle = exercise.title || I18n.t('exercise');
         const contentSubtitle = exercise.content?.subtitle || exercise.description || '';
         contentHeaderHTML = `
