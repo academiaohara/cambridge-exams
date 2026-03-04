@@ -166,7 +166,7 @@
           <div class="free-notes-footer">
             <p class="small-info">${I18n.t('autoSave')}</p>
             <button class="btn-confirm" onclick="Tools.confirmFreeNotes()">
-              <i class="fas fa-check"></i> <span data-i18n="confirm">${I18n.t('confirm')}</span>
+              <span data-i18n="confirm">${I18n.t('confirm')}</span>
             </button>
           </div>
         </div>
