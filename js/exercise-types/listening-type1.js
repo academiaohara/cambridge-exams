@@ -158,7 +158,7 @@
         
         const isChecked = AppState.answersChecked;
         const extracts = exercise.content.extracts || [];
-        var audioSource = exercise.audio_source || '';
+        var audioSource = exercise.audio_source || exercise.audioUrl || '';
         var hasAudioSource = false;
         try {
           if (audioSource) {
@@ -213,16 +213,18 @@
           exercise.content.questions.forEach(function(q) {
             var userAnswer = exercise.answers?.[q.number] || '';
             html += '<div class="listening-type1-extract">';
-            html += '<div class="listening-type1-audio-bar" data-extract="' + q.number + '">';
-            html += '<button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(' + q.number + ', this)">';
-            html += '<i class="fas fa-play"></i>';
-            html += '</button>';
-            html += '<div class="listening-type1-timeline" id="timeline-' + q.number + '">';
-            html += '<div class="listening-type1-progress" id="progress-' + q.number + '" style="width: 0%"></div>';
-            html += '</div>';
-            html += '<span class="listening-type1-time" id="time-' + q.number + '">00:00</span>';
-            html += '</div>';
-            html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
+            if (!hasAudioSource) {
+              html += '<div class="listening-type1-audio-bar" data-extract="' + q.number + '">';
+              html += '<button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(' + q.number + ', this)">';
+              html += '<i class="fas fa-play"></i>';
+              html += '</button>';
+              html += '<div class="listening-type1-timeline" id="timeline-' + q.number + '">';
+              html += '<div class="listening-type1-progress" id="progress-' + q.number + '" style="width: 0%"></div>';
+              html += '</div>';
+              html += '<span class="listening-type1-time" id="time-' + q.number + '">00:00</span>';
+              html += '</div>';
+            }
+            html += '<p class="listening-type1-question-text"><strong>' + q.number + '.</strong> ' + (q.question || '') + '</p>';
             html += '<div class="listening-type1-options">';
             html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
             html += '</div>';

@@ -24,7 +24,8 @@
       }
       
       // For multiple-choice-text (Part 5), render questions directly if no text
-      if (partConfig.type === 'multiple-choice-text' && !exercise.content.text && exercise.content.questions) {
+      // Skip for listening section — ListeningType1.initListeners() handles rendering
+      if (partConfig.type === 'multiple-choice-text' && !exercise.content.text && exercise.content.questions && section !== 'listening') {
         paragraphsHTML = this.renderMultipleChoiceTextQuestions(exercise, partConfig);
       }
       
@@ -104,7 +105,7 @@
             ${toggleHTML}
           </div>
         `;
-      } else if (section !== 'reading' && !(section === 'listening' && (part === 1 || part === 2))) {
+      } else if (section !== 'reading' && !(section === 'listening' && (part === 1 || part === 2 || part === 3))) {
         const contentTitle = exercise.title || I18n.t('exercise');
         const contentSubtitle = exercise.content?.subtitle || exercise.description || '';
         contentHeaderHTML = `
