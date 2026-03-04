@@ -682,7 +682,7 @@
     renderExerciseFooter: function(part, totalParts) {
       let footer = `
         <button class="btn-check" onclick="ExerciseHandlers.checkAnswers()" ${AppState.answersChecked ? 'disabled' : ''}>
-          <i class="fas fa-check"></i> <span data-i18n="checkAnswers">${I18n.t('checkAnswers')}</span>
+          <span data-i18n="checkAnswers">${I18n.t('checkAnswers')}</span>
         </button>
         <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()">
           <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
@@ -719,7 +719,6 @@
         
         cells += `<button class="${cellClass}" data-part="${i}" onclick="Exercise.openPart('${examId}', '${section}', ${i})" title="${I18n.t('part')} ${i}">
           ${i}
-          ${isCompleted ? '<i class="fas fa-check part-nav-check"></i>' : ''}
         </button>`;
       }
       

@@ -81,11 +81,6 @@
         const partNum = parseInt(cell.getAttribute('data-part'));
         if (completedParts.includes(partNum)) {
           cell.classList.add('completed');
-          if (!cell.querySelector('.part-nav-check')) {
-            const checkIcon = document.createElement('i');
-            checkIcon.className = 'fas fa-check part-nav-check';
-            cell.appendChild(checkIcon);
-          }
         }
       });
     },
