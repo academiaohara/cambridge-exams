@@ -288,7 +288,7 @@
       });
       
       // Remove type-specific correction classes
-      document.querySelectorAll('[class*="reading-type"][class*="correct"], [class*="reading-type"][class*="incorrect"]').forEach(function(el) {
+      document.querySelectorAll('.reading-type1-correct, .reading-type1-incorrect, .reading-type3-correct, .reading-type3-incorrect, .reading-type4-correct, .reading-type4-incorrect').forEach(function(el) {
         el.classList.remove(
           'reading-type1-correct', 'reading-type1-incorrect',
           'reading-type3-correct', 'reading-type3-incorrect',
