@@ -10,7 +10,7 @@
      * @returns {Promise<string>} Transcribed text
      */
     transcribe: async function(audioBlob) {
-      const apiKey = localStorage.getItem('hf_api_key');
+      const apiKey = CONFIG.HF_API_KEY || localStorage.getItem('hf_api_key');
       if (!apiKey) throw new Error('NO_HF_API_KEY');
 
       const model = CONFIG.WHISPER_MODEL;
