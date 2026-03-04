@@ -178,13 +178,23 @@
           if (isSelected) cls += ' selected';
         }
         var onclick = isChecked ? '' : 'onclick="QuestionNav.answerPart7(' + qNum + ', \'' + key + '\')"';
+        var paragraphText = this._escapeHtml(paragraphs[key] || '');
         html += '<button class="' + cls + '" ' + onclick + '>' +
           '<span class="qnav-option-letter">' + key + '</span>' +
-          '<span class="qnav-option-text">' + paragraphs[key] + '</span>' +
+          '<span class="qnav-option-text">' + paragraphText + '</span>' +
           '</button>';
-      });
+      }, this);
       html += '</div>';
       return html;
+    },
+
+    _escapeHtml: function(text) {
+      return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     },
 
     _buildPart8: function(question, qNum, isChecked, userAnswer) {

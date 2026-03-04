@@ -51,14 +51,15 @@
         
         questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
         
-        const secondToggleLabel = partConfig.type === 'gapped-text' ? I18n.t('paragraphOptions') : I18n.t('showQuestions');
+        const secondToggleI18nKey = partConfig.type === 'gapped-text' ? 'paragraphOptions' : 'showQuestions';
+        const secondToggleLabel = I18n.t(secondToggleI18nKey);
         toggleHTML = `
           <div class="toggle-view-header">
             <button class="toggle-view-btn active" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
               <i class="fas fa-file-alt"></i> <span data-i18n="showText">${I18n.t('showText')}</span>
             </button>
             <button class="toggle-view-btn" id="toggle-questions-btn" onclick="ExerciseRenderer.toggleView('questions')">
-              <i class="fas fa-question-circle"></i> <span>${secondToggleLabel}</span>
+              <i class="fas fa-question-circle"></i> <span data-i18n="${secondToggleI18nKey}">${secondToggleLabel}</span>
             </button>
           </div>
         `;
