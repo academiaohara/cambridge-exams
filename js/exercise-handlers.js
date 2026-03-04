@@ -36,6 +36,10 @@
       const typeChecker = this.getTypeChecker(partConfig.type);
       if (typeChecker && typeof typeChecker.checkAnswers === 'function') {
         correct = typeChecker.checkAnswers();
+        // Re-render type-specific content to reflect checked state (e.g. correct/incorrect classes)
+        if (typeof typeChecker.reRender === 'function') {
+          typeChecker.reRender();
+        }
       } else {
         // Fallback al método genérico
         questions.forEach(q => {
