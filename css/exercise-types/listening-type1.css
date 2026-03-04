@@ -93,7 +93,7 @@
 
 .listening-type1-options {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr;
   gap: 12px;
   margin: 16px 0;
 }
@@ -169,10 +169,12 @@
   background: rgba(255,255,255,0.2);
   width: 28px;
   height: 28px;
+  min-width: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .listening-type1-question-text {
@@ -191,7 +193,7 @@
 }
 
 .listening-type1-context {
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   color: var(--text-medium);
   font-style: italic;
   line-height: 1.5;
