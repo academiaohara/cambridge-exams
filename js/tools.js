@@ -337,13 +337,22 @@
           html += `</ul>`;
         }
         
-        // Show general tips if available
+        // Show general tips if available, filtered by current part
         if (tips.general) {
-          html += `<h4 style="margin-top: 16px;"><i class="fas fa-info-circle"></i> General Tips</h4><ul>`;
-          tips.general.forEach(tip => {
-            html += `<li>${tip}</li>`;
+          const partNum = currentPart ? parseInt(currentPart) : null;
+          const filteredTips = tips.general.filter(item => {
+            if (typeof item === 'string') return true;
+            if (item.parts && partNum) return item.parts.includes(partNum);
+            return true;
           });
-          html += `</ul>`;
+          if (filteredTips.length > 0) {
+            html += `<h4 style="margin-top: 16px;"><i class="fas fa-info-circle"></i> General Tips</h4><ul>`;
+            filteredTips.forEach(item => {
+              const tipText = typeof item === 'string' ? item : item.tip;
+              html += `<li>${tipText}</li>`;
+            });
+            html += `</ul>`;
+          }
         }
         
         html += `</div>`;
