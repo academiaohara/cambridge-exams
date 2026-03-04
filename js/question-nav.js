@@ -141,11 +141,13 @@
     },
 
     _buildPart5: function(question, qNum, isChecked, userAnswer) {
-      var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
+      var self = this;
+      var html = '<div class="qnav-options">';
       (question.options || []).forEach(function(opt) {
         var letter = opt.charAt(0);
+        var text = opt.substring(2).trim();
         var isSelected = userAnswer === letter;
-        var cls = 'qnav-opt-btn';
+        var cls = 'qnav-option';
         if (isChecked) {
           cls += letter === question.correct ? ' correct' : (isSelected ? ' incorrect' : '');
           cls += ' disabled';
@@ -153,7 +155,10 @@
           if (isSelected) cls += ' selected';
         }
         var onclick = isChecked ? '' : 'onclick="QuestionNav.answerPart5(' + qNum + ', \'' + letter + '\')"';
-        html += '<button class="' + cls + '" ' + onclick + '>' + letter + '</button>';
+        html += '<button class="' + cls + '" ' + onclick + '>' +
+          '<span class="qnav-option-letter">' + letter + '</span>' +
+          '<span class="qnav-option-text">' + self._escapeHtml(text) + '</span>' +
+          '</button>';
       });
       html += '</div>';
       return html;
