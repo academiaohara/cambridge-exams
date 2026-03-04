@@ -228,7 +228,6 @@
       var keys = ['A', 'B', 'C', 'D'].filter(function(key) {
         return Object.prototype.hasOwnProperty.call(texts, key);
       });
-      if (!keys.length) keys = Object.keys(texts);
       var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
       keys.forEach(function(key) {
         var isSelected = userAnswer === key;
