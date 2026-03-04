@@ -44,14 +44,18 @@
             inputClass += this.isAnswerCorrect(userAnswer, q.correct) ? ' correct' : ' incorrect';
           }
           
-          const questionHtml = q.question.replace(
-            GAP_MARKER,
-            `<input type="text" class="${inputClass}" data-question="${q.number}" value="${userAnswer}" placeholder="..." ${isChecked ? 'disabled' : ''} oninput="ListeningType2.handleInput(${q.number}, this.value)">`
-          );
+          const inputHtml = `<input type="text" class="${inputClass}" data-question="${q.number}" value="${userAnswer}" placeholder="..." ${isChecked ? 'disabled' : ''} oninput="ListeningType2.handleInput(${q.number}, this.value)">`;
+          let questionHtml;
+          if (q.question.includes(GAP_MARKER)) {
+            questionHtml = q.question.replace(GAP_MARKER, inputHtml);
+          } else {
+            const numberPattern = new RegExp('\\(' + q.number + '\\)');
+            questionHtml = q.question.replace(numberPattern, `(${q.number}) ` + inputHtml);
+          }
           
           html += `
             <div class="listening-type2-sentence">
-              <strong>${q.number}.</strong> ${questionHtml}
+              ${questionHtml}
             </div>
           `;
         });
