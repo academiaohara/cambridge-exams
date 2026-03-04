@@ -41,6 +41,7 @@
     
     openPart: async function(examId, section, part) {
       const content = document.getElementById('main-content');
+      if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
       AppState.currentSection = section;
       AppState.currentPart = part;
       AppState.currentExamId = examId;
@@ -243,6 +244,7 @@
     
     closeExercise: function() {
       Modal.closeOptionsModal();
+      if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
       
       if (Timer.timerInterval) {
         clearInterval(Timer.timerInterval);

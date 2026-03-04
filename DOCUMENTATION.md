@@ -249,9 +249,9 @@ Expone `window.CONFIG` con:
 - Genera el esqueleto HTML del ejercicio: cabecera, texto, ejemplo, preguntas, botones
 - `renderParagraphs()` — convierte el texto (separado por `||`) en párrafos HTML con gaps numerados
 - `renderTextsCards()` — para ejercicios con múltiples textos (Part 6)
-- `renderToggleQuestions()` — para partes con vista de texto / vista de preguntas (Parts 5–8)
+- `renderToggleQuestions()` — para partes con vista de texto / vista de preguntas (Parts 5, 6 y 8) y texto / párrafos (Part 7)
 - `renderTransformationQuestions()` — layout especial para transformaciones (Part 4)
-- `ExerciseRenderer.toggleView('text'|'questions')` — alterna la vista en partes 5–8
+- `ExerciseRenderer.toggleView('text'|'questions')` — alterna la vista en partes 5–8 (en Part 7 la segunda pestaña muestra párrafos)
 
 ### `js/exercise-handlers.js` — Manejadores de Eventos
 
@@ -342,8 +342,7 @@ Expone `window.CONFIG` con:
 
 **Campos `content` alternativos por tipo:**
 - `content.texts` — objeto con múltiples textos (para Part 6 cross-text-matching)
-- `content.paragraphs` — array de párrafos para gapped-text (Part 7)
-- `content.options` — párrafos/opciones para insertar en gapped-text
+- `content.paragraphs` — objeto `{ "A": "...", "B": "..." }` con párrafos/opciones para insertar en gapped-text (Part 7)
 - `content.keyword` — para transformaciones (Part 4)
 - `content.audio_script` — para ejercicios de listening
 - `content.images` — URLs de imágenes para speaking
@@ -649,6 +648,7 @@ console.log(AppState.currentExercise);
 
 | Versión | Cambios principales |
 |---|---|
+| 3.3.1 | Reading Part 7: la segunda pestaña del toggle se etiqueta como “Opciones de párrafos” y el panel de pregunta muestra párrafos completos seleccionables (A-G). Además, el panel flotante de navegación de preguntas se cierra automáticamente al cambiar de parte/ejercicio o al volver al dashboard. |
 | 3.3.0 | Descubrimiento de tests mediante `Nivel/{level}/Exams/index.json`. El catálogo de cada nivel se gestiona en ese archivo JSON (id + status). `state.js` ya no contiene tests hardcodeados. Fallback a HEAD requests si no existe index.json. |
 | 3.2.0 | Estado actual documentado. UI responsive con menú hamburguesa. Soporte para 12 idiomas. Descubrimiento automático de tests. Persistencia completa en localStorage. Herramientas: diccionario, traductor, subrayador, notas, tips. |
 

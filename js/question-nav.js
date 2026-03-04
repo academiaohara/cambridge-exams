@@ -167,10 +167,10 @@
     _buildPart7: function(question, qNum, isChecked, userAnswer) {
       var paragraphs = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.paragraphs) || {};
       var html = '<p class="qnav-question-text">' + I18n.t('question') + ' ' + qNum + '</p>';
-      html += '<div class="qnav-opts-grid">';
+      html += '<div class="qnav-options">';
       Object.keys(paragraphs).forEach(function(key) {
         var isSelected = userAnswer === key;
-        var cls = 'qnav-opt-btn';
+        var cls = 'qnav-option';
         if (isChecked) {
           cls += key === question.correct ? ' correct' : (isSelected ? ' incorrect' : '');
           cls += ' disabled';
@@ -178,7 +178,10 @@
           if (isSelected) cls += ' selected';
         }
         var onclick = isChecked ? '' : 'onclick="QuestionNav.answerPart7(' + qNum + ', \'' + key + '\')"';
-        html += '<button class="' + cls + '" ' + onclick + '>' + key + '</button>';
+        html += '<button class="' + cls + '" ' + onclick + '>' +
+          '<span class="qnav-option-letter">' + key + '</span>' +
+          '<span class="qnav-option-text">' + paragraphs[key] + '</span>' +
+          '</button>';
       });
       html += '</div>';
       return html;
