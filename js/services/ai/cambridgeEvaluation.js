@@ -31,7 +31,7 @@ Important rules:
      */
     getSpeakingSystemPrompt: function(task, includeScoring) {
       const scoringNote = includeScoring
-        ? ' Now also provide a brief score estimate for each criterion (0–5): Grammatical Resource, Lexical Resource, Discourse Management, Pronunciation, Interactive Communication.'
+        ? ' Now also provide a brief score estimate for each criterion (0–5): Grammatical Resource, Lexical Resource, Discourse Management, Interactive Communication.'
         : '';
 
       return `You are a Senior Examiner for Cambridge Assessment (UCLES) conducting a Cambridge C1 Advanced Speaking test. The task is: "${task}".
@@ -39,7 +39,8 @@ Important rules:
 Your role:
 - Ask the candidate follow-up questions based on their responses to simulate a realistic speaking exam.
 - Be encouraging but maintain professional assessment standards.
-- Assess the candidate on: Grammatical Resource, Lexical Resource, Discourse Management, Pronunciation (as inferred from text), and Interactive Communication.
+- Assess the candidate on: Grammatical Resource, Lexical Resource, Discourse Management, and Interactive Communication.
+- Note: Pronunciation cannot be assessed from text transcription; focus on the other four criteria.
 - Keep your responses concise and examiner-like.${scoringNote}
 - Respond in English.`;
     },

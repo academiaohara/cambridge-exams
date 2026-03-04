@@ -154,8 +154,12 @@
       try {
         this.recorder = await WhisperProvider.startRecording();
         if (micIcon) micIcon.className = 'fas fa-microphone-slash';
-      } catch {
-        alert(I18n.t('micError'));
+      } catch (err) {
+        if (err.name === 'NotAllowedError') {
+          alert(I18n.t('micError'));
+        } else {
+          alert(I18n.t('micError'));
+        }
       }
     },
 

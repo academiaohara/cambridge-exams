@@ -64,11 +64,14 @@
       const maxTokens = options.maxOutputTokens || 300;
       const endpoint = `${CONFIG.GEMINI_API_ENDPOINT}/${model}:generateContent?key=${apiKey}`;
 
-      // Convert OpenAI-style messages to Gemini format
-      const contents = messages.map(msg => ({
-        role: msg.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: msg.content }]
-      }));
+      // Convert messages to Gemini format, filtering out any system role messages
+      // (system instructions are handled separately via systemInstruction)
+      const contents = messages
+        .filter(msg => msg.role !== 'system')
+        .map(msg => ({
+          role: msg.role === 'assistant' ? 'model' : 'user',
+          parts: [{ text: msg.content }]
+        }));
 
       const body = {
         systemInstruction: {

@@ -36,7 +36,7 @@
 
       const data = await response.json();
       const text = data.text || '';
-      if (!text.trim()) throw new Error('Empty transcription from Whisper');
+      if (!text.trim()) throw new Error('No speech detected in audio. Please try speaking louder or closer to the microphone.');
       return text.trim();
     },
 
