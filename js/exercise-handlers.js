@@ -257,6 +257,9 @@
       // Clear saved state from localStorage
       Exercise.clearPartState(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
       
+      // Clear all visual correction indicators before re-rendering or resetting inputs
+      this.clearAllCorrections();
+      
       // Re-render exercise for types that use new gap design
       const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'multiple-matching'];
       if (reRenderTypes.includes(partConfig.type)) {
@@ -276,6 +279,37 @@
       
       const checkBtn = document.querySelector('.btn-check');
       if (checkBtn) checkBtn.disabled = false;
+    },
+    
+    clearAllCorrections: function() {
+      // Remove correction classes from gap boxes, inputs, labels, options
+      document.querySelectorAll('.correct, .incorrect, .checked, .correct-answer').forEach(function(el) {
+        el.classList.remove('correct', 'incorrect', 'checked', 'correct-answer');
+      });
+      
+      // Remove type-specific correction classes
+      document.querySelectorAll('[class*="reading-type"][class*="correct"], [class*="reading-type"][class*="incorrect"]').forEach(function(el) {
+        el.classList.remove(
+          'reading-type1-correct', 'reading-type1-incorrect',
+          'reading-type3-correct', 'reading-type3-incorrect',
+          'reading-type4-correct', 'reading-type4-incorrect'
+        );
+      });
+      
+      // Remove data-correct attributes (correction tooltips)
+      document.querySelectorAll('[data-correct]').forEach(function(el) {
+        el.removeAttribute('data-correct');
+      });
+      
+      // Remove injected correction text spans (e.g., reading-type4)
+      document.querySelectorAll('.reading-type4-correction-text').forEach(function(el) {
+        el.remove();
+      });
+      
+      // Remove title tooltips that show correct answers
+      document.querySelectorAll('[title^="✓"]').forEach(function(el) {
+        el.removeAttribute('title');
+      });
     },
     
     resetInputsByType: function(partConfig) {
@@ -319,12 +353,12 @@
         case 'word-formation':
         case 'sentence-completion':
         case 'transformations':
-          document.querySelectorAll('input.gap-input').forEach(input => {
+          document.querySelectorAll('input.gap-input, .reading-type2-input, .listening-type2-input').forEach(input => {
             input.value = '';
             input.classList.remove('correct', 'incorrect');
             input.disabled = false;
             input.removeAttribute('title');
-            const gap = input.closest('.reading-type2-gap');
+            const gap = input.closest('.reading-type2-gap, .listening-type2-gap');
             if (gap) {
               gap.classList.remove('incorrect');
               gap.removeAttribute('data-correct');
@@ -336,6 +370,10 @@
           document.querySelectorAll('input[type="radio"]').forEach(radio => {
             radio.checked = false;
             radio.disabled = false;
+            const label = radio.closest('.reading-type5-option');
+            if (label) {
+              label.classList.remove('correct', 'incorrect', 'disabled');
+            }
           });
           break;
           
@@ -343,6 +381,8 @@
           document.querySelectorAll('select.paragraph-select').forEach(select => {
             select.value = '';
             select.disabled = false;
+            select.classList.remove('correct', 'incorrect');
+            select.removeAttribute('title');
           });
           break;
 
