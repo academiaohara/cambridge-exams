@@ -36,6 +36,8 @@
       const needsToggle = isToggleType && (hasTextsContent || hasTextContent);
       
       let toggleHTML = '';
+      let questionNavRowHTML = '';
+      let contentTitleBlockHTML = '';
       if (needsToggle) {
         let textsSectionHTML = '';
         let questionsSectionHTML = '';
@@ -60,11 +62,19 @@
           </div>
         `;
         
-        const questionNavRowHTML = this.renderQuestionNavRow(exercise);
+        questionNavRowHTML = this.renderQuestionNavRow(exercise);
+        const cTitle = exercise.content?.title || '';
+        const cSubtitle = (section === 'reading' && part === 5) ? (exercise.content?.subtitle || '') : '';
+        contentTitleBlockHTML = `
+          <div class="content-title-block">
+            <div class="content-title" title="${cTitle}">${cTitle}</div>
+            ${cSubtitle ? `<div class="content-subtitle" title="${cSubtitle}">${cSubtitle}</div>` : ''}
+          </div>
+        `;
         
         paragraphsHTML = `
           <div class="toggle-text-section" id="toggle-text-section">
-            ${questionNavRowHTML}
+            ${contentTitleBlockHTML}
             ${textsSectionHTML}
           </div>
           <div class="toggle-questions-section" id="toggle-questions-section" style="display: none;">
@@ -86,14 +96,9 @@
       // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
       let contentHeaderHTML = '';
       if (isToggleType) {
-        const cTitle = exercise.content?.title || '';
-        const cSubtitle = (section === 'reading' && part === 5) ? (exercise.content?.subtitle || '') : '';
         contentHeaderHTML = `
           <div class="content-section-header">
-            <div class="content-title-block">
-              <div class="content-title" title="${cTitle}">${cTitle}</div>
-              ${cSubtitle ? `<div class="content-subtitle" title="${cSubtitle}">${cSubtitle}</div>` : ''}
-            </div>
+            ${questionNavRowHTML}
             ${toggleHTML}
           </div>
         `;
