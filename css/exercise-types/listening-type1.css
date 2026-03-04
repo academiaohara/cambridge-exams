@@ -155,3 +155,22 @@
   font-style: italic;
   line-height: 1.5;
 }
+
+.listening-type1-audio-section {
+  background: #0c4a6e;
+  color: white;
+  padding: 20px 24px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 16px rgba(12, 74, 110, 0.2);
+}
+
+.listening-type1-audio-section p {
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+}
+
+.listening-type1-audio-section audio {
+  width: 100%;
+  border-radius: 8px;
+}
