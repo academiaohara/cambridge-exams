@@ -64,7 +64,7 @@
           </div>
         `;
         
-        questionNavRowHTML = this.renderQuestionNavRow(exercise);
+        questionNavRowHTML = this.renderQuestionNavRow(exercise, partConfig);
         const cTitle = exercise.content?.title || '';
         const cSubtitle = (section === 'reading' && part === 5) ? (exercise.content?.subtitle || '') : '';
         contentTitleBlockHTML = `
@@ -330,12 +330,20 @@
       return html;
     },
     
-    renderQuestionNavRow: function(exercise) {
+    renderQuestionNavRow: function(exercise, partConfig) {
       const questions = exercise.content.questions || [];
-      if (!questions.length) return '';
+      const paragraphs = exercise.content.paragraphs || {};
+      const isPart7 = partConfig && partConfig.type === 'gapped-text' && Object.keys(paragraphs).length;
+      if (!questions.length && !isPart7) return '';
       const answers = AppState.currentExercise?.answers || {};
       const isChecked = AppState.answersChecked;
       let cells = '';
+      if (isPart7) {
+        Object.keys(paragraphs).forEach(function(key) {
+          cells += '<button class="question-nav-cell" data-paragraph="' + key + '" onclick="QuestionNav.openParagraph(\'' + key + '\')">' + key + '</button>';
+        });
+        return '<div class="question-nav-row" id="question-nav-row">' + cells + '</div>';
+      }
       questions.forEach(function(q) {
         const qNum = q.number;
         const answer = answers[qNum];

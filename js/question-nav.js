@@ -25,6 +25,24 @@
       overlay.style.display = 'flex';
     },
 
+    openParagraph: function(key) {
+      const paragraphs = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.paragraphs) || {};
+      const paragraphText = paragraphs[key];
+      if (!paragraphText) return;
+      const overlay = document.getElementById('question-nav-overlay');
+      const body = document.getElementById('question-nav-body');
+      if (!overlay || !body) return;
+
+      body.innerHTML = '<div class="qnav-header">' +
+        '<span class="qnav-title">' + key + '</span>' +
+        '<button class="qnav-close-btn" onclick="QuestionNav.close()">' +
+          '<i class="fas fa-times"></i>' +
+        '</button>' +
+        '</div>' +
+        '<div class="qnav-body"><p class="qnav-question-text">' + this._escapeHtml(paragraphText) + '</p></div>';
+      overlay.style.display = 'flex';
+    },
+
     close: function() {
       const overlay = document.getElementById('question-nav-overlay');
       if (overlay) overlay.style.display = 'none';
