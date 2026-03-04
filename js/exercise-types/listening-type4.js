@@ -65,29 +65,39 @@
         var key = 't' + taskNum + '_' + q.number;
         var savedAnswer = (AppState.currentExercise.answers && AppState.currentExercise.answers[key]) || '';
         var selectClass = 'listening-type4-select';
+        var isIncorrect = false;
         if (isChecked) {
-          selectClass += savedAnswer === q.correct ? ' correct' : ' incorrect';
+          if (savedAnswer === q.correct) {
+            selectClass += ' correct';
+          } else {
+            selectClass += ' incorrect';
+            isIncorrect = true;
+          }
         }
 
         var optSelectHTML = optionEntries.map(function(entry) {
           return '<option value="' + entry[0] + '"' + (savedAnswer === entry[0] ? ' selected' : '') + '>' + entry[0] + '</option>';
         }).join('');
 
-        var correctHint = '';
-        if (isChecked && savedAnswer !== q.correct) {
-          correctHint = '<span class="listening-type4-correct-answer">\u2713 ' + q.correct + '</span>';
+        var selectHTML = '<select class="' + selectClass + '" data-key="' + key + '"' +
+            (isChecked ? ' disabled' : '') +
+            ' onchange="ListeningType4.handleSelect(' + taskNum + ', ' + q.number + ', this.value)">' +
+            '<option value="">' + I18n.t('chooseOption') + '</option>' +
+            optSelectHTML +
+          '</select>';
+
+        // Wrap incorrect answers with a tooltip showing the correct answer
+        if (isIncorrect) {
+          selectHTML = '<span class="listening-type4-answer-wrapper">' +
+            selectHTML +
+            '<span class="listening-type4-correct-tooltip">' + I18n.t('correctAnswer') + ': ' + q.correct + '</span>' +
+          '</span>';
         }
 
         return '<div class="listening-type4-question">' +
           '<span class="listening-type4-speaker-label">' + I18n.t('speaker') + ' ' + q.speaker.replace('Speaker ', '') + '</span>' +
           '<span class="listening-type4-q-number">' + q.number + '</span>' +
-          '<select class="' + selectClass + '" data-key="' + key + '"' +
-            (isChecked ? ' disabled' : '') +
-            ' onchange="ListeningType4.handleSelect(' + taskNum + ', ' + q.number + ', this.value)">' +
-            '<option value="">' + I18n.t('chooseOption') + '</option>' +
-            optSelectHTML +
-          '</select>' +
-          correctHint +
+          selectHTML +
         '</div>';
       }).join('');
 

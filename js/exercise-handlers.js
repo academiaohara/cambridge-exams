@@ -36,6 +36,12 @@
       const typeChecker = this.getTypeChecker(partConfig.type);
       if (typeChecker && typeof typeChecker.checkAnswers === 'function') {
         correct = typeChecker.checkAnswers();
+        // Re-render type-specific content to reflect checked state (e.g. correct/incorrect classes)
+        if (typeChecker.initListeners) {
+          const existingContainer = document.querySelector('.listening-type4-container');
+          if (existingContainer) existingContainer.remove();
+          typeChecker.initListeners();
+        }
       } else {
         // Fallback al método genérico
         questions.forEach(q => {

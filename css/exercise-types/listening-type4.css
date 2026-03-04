@@ -77,9 +77,9 @@
 }
 
 .listening-type4-option {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--text-dark);
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
 .listening-type4-option strong {
@@ -156,9 +156,47 @@
   color: var(--incorrect);
 }
 
-.listening-type4-correct-answer {
-  font-size: 0.78rem;
-  color: var(--correct);
-  font-weight: 600;
+/* Wrapper for incorrect select + tooltip */
+.listening-type4-answer-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.listening-type4-answer-wrapper .listening-type4-select {
+  flex: 1;
+}
+
+.listening-type4-correct-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--correct);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 6px;
   white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  pointer-events: none;
+}
+
+.listening-type4-correct-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--correct);
+}
+
+.listening-type4-answer-wrapper:hover .listening-type4-correct-tooltip {
+  display: block;
 }
