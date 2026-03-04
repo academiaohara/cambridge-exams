@@ -210,9 +210,9 @@
           });
         } else {
           // Fallback: render flat question list
-          exercise.content.questions.forEach(function(q) {
+          html += '<div class="listening-type1-extract listening-type1-compact">';
+          exercise.content.questions.forEach(function(q, idx) {
             var userAnswer = exercise.answers?.[q.number] || '';
-            html += '<div class="listening-type1-extract">';
             if (!hasAudioSource) {
               html += '<div class="listening-type1-audio-bar" data-extract="' + q.number + '">';
               html += '<button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(' + q.number + ', this)">';
@@ -228,8 +228,11 @@
             html += '<div class="listening-type1-options">';
             html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
             html += '</div>';
-            html += '</div>';
+            if (idx < exercise.content.questions.length - 1) {
+              html += '<hr class="listening-type1-separator">';
+            }
           });
+          html += '</div>';
         }
         
         const noteCreator = container.querySelector('#note-creator');

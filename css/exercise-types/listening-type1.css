@@ -235,3 +235,35 @@
   width: 100%;
   border-radius: 8px;
 }
+
+/* Compact mode for flat question lists (e.g. Listening Part 3) */
+
+.listening-type1-compact .listening-type1-question-text {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.listening-type1-compact .listening-type1-options {
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.listening-type1-compact .listening-type1-option {
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.listening-type1-compact .listening-type1-option-letter {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  font-size: 0.85rem;
+}
+
+.listening-type1-separator {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 12px 0;
+}
