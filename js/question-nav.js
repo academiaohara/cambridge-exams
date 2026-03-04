@@ -121,7 +121,7 @@
     _buildContent: function(question, qNum, isChecked, userAnswer, partConfig) {
       var type = partConfig ? partConfig.type : '';
       var inner = '';
-      var isPart8 = type === 'multiple-matching';
+      var showHeaderQuestion = type === 'multiple-choice-text' || type === 'cross-text-matching' || type === 'multiple-matching';
       if (type === 'multiple-choice-text') {
         inner = this._buildPart5(question, qNum, isChecked, userAnswer);
       } else if (type === 'cross-text-matching') {
@@ -131,8 +131,8 @@
       } else if (type === 'multiple-matching') {
         inner = this._buildPart8(question, qNum, isChecked, userAnswer);
       }
-      var titleText = isPart8 ? qNum : I18n.t('question') + ' ' + qNum;
-      var headerQuestion = isPart8
+      var titleText = showHeaderQuestion ? qNum : I18n.t('question') + ' ' + qNum;
+      var headerQuestion = showHeaderQuestion
         ? '<span class="qnav-question-text qnav-question-text-header">' + this._escapeHtml(question.question) + '</span>'
         : '';
       return '<div class="qnav-header">' +
@@ -148,8 +148,7 @@
     },
 
     _buildPart5: function(question, qNum, isChecked, userAnswer) {
-      var html = '<p class="qnav-question-text">' + question.question + '</p>';
-      html += '<div class="qnav-options">';
+      var html = '<div class="qnav-options">';
       (question.options || []).forEach(function(opt) {
         var letter = opt.charAt(0);
         var text = opt.substring(2).trim();
@@ -172,8 +171,7 @@
     },
 
     _buildPart6: function(question, qNum, isChecked, userAnswer) {
-      var html = '<p class="qnav-question-text">' + question.question + '</p>';
-      html += '<div class="qnav-opts-grid">';
+      var html = '<div class="qnav-opts-grid">';
       (question.options || []).forEach(function(opt) {
         var isSelected = userAnswer === opt;
         var cls = 'qnav-opt-btn';
