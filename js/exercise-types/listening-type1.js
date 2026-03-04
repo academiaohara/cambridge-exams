@@ -131,7 +131,25 @@
         
         const isChecked = AppState.answersChecked;
         const extracts = exercise.content.extracts || [];
+        var audioSource = exercise.audio_source || '';
+        var hasAudioSource = false;
+        try {
+          if (audioSource) {
+            var url = new URL(audioSource);
+            hasAudioSource = url.protocol === 'https:' || url.protocol === 'http:';
+          }
+        } catch(e) { hasAudioSource = false; }
         let html = '';
+        
+        if (hasAudioSource) {
+          var safeUrl = audioSource.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          html += '<div class="listening-type1-audio-section">';
+          html += '<p><strong>Click play to start the listening test:</strong></p>';
+          html += '<audio controls controlsList="nodownload">';
+          html += '<source src="' + safeUrl + '" type="audio/mpeg">';
+          html += '</audio>';
+          html += '</div>';
+        }
         
         if (extracts.length > 0) {
           // Render grouped by extracts
@@ -141,15 +159,17 @@
             html += '<span class="listening-type1-extract-number">' + extract.id + '</span>';
             html += '<span class="listening-type1-context">' + extract.context + '</span>';
             html += '</div>';
-            html += '<div class="listening-type1-audio-bar" data-extract="' + extract.id + '">';
-            html += '<button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(' + extract.id + ', this)">';
-            html += '<i class="fas fa-play"></i>';
-            html += '</button>';
-            html += '<div class="listening-type1-timeline" id="timeline-' + extract.id + '">';
-            html += '<div class="listening-type1-progress" id="progress-' + extract.id + '" style="width: 0%"></div>';
-            html += '</div>';
-            html += '<span class="listening-type1-time" id="time-' + extract.id + '">00:00</span>';
-            html += '</div>';
+            if (!hasAudioSource) {
+              html += '<div class="listening-type1-audio-bar" data-extract="' + extract.id + '">';
+              html += '<button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(' + extract.id + ', this)">';
+              html += '<i class="fas fa-play"></i>';
+              html += '</button>';
+              html += '<div class="listening-type1-timeline" id="timeline-' + extract.id + '">';
+              html += '<div class="listening-type1-progress" id="progress-' + extract.id + '" style="width: 0%"></div>';
+              html += '</div>';
+              html += '<span class="listening-type1-time" id="time-' + extract.id + '">00:00</span>';
+              html += '</div>';
+            }
             
             extract.questions.forEach(function(q) {
               var userAnswer = exercise.answers?.[q.number] || '';
