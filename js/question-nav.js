@@ -133,7 +133,7 @@
       }
       var titleText = isPart8 ? qNum : I18n.t('question') + ' ' + qNum;
       var headerQuestion = isPart8
-        ? '<span class="qnav-question-text qnav-question-text-header">' + question.question + '</span>'
+        ? '<span class="qnav-question-text qnav-question-text-header">' + this._escapeHtml(question.question) + '</span>'
         : '';
       return '<div class="qnav-header">' +
         '<div class="qnav-header-main">' +
