@@ -53,7 +53,7 @@
           var safeUrl = audioSource.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
           html += '<div class="listening-type2-audio-section">';
           html += '<p><strong>Click play to start the listening test:</strong></p>';
-          html += '<audio controls controlsList="nodownload">';
+          html += '<audio controls controlsList="nodownload" aria-label="Listening exercise audio">';
           html += '<source src="' + safeUrl + '" type="audio/mpeg">';
           html += '</audio>';
           html += '</div>';

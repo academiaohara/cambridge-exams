@@ -68,7 +68,8 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.listening-type2-gap.incorrect:hover::after {
+.listening-type2-gap.incorrect:hover::after,
+.listening-type2-gap.incorrect:focus-within::after {
   display: block;
 }
 
