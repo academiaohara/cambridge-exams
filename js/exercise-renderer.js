@@ -158,7 +158,7 @@
             </div>
           </div>
           
-          <div class="exercise-description">
+          <div class="exercise-description" lang="en">
             <p data-i18n-description="${this.getDescriptionKey(partConfig)}">${exercise.description || this.getDefaultDescription(partConfig)}</p>
           </div>
           
@@ -187,7 +187,7 @@
           
           ${contentHeaderHTML}
           
-          <div class="exercise-main-layout">
+          <div class="exercise-main-layout" lang="en">
             <div class="reading-text-enhanced" id="selectable-text">
               ${paragraphsHTML}
             </div>
@@ -671,7 +671,7 @@
       if (allQuestions.length === 0) return '';
       
       let explanations = `
-        <div class="explanations-section" id="explanations-section" style="display: none;">
+        <div class="explanations-section" id="explanations-section" style="display: none;" lang="en">
           <h3><i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span></h3>
       `;
       
