@@ -4,6 +4,7 @@
     render: function() {
       const content = document.getElementById('main-content');
       if (!content) return;
+      if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
       
       const exams = window.EXAMS_DATA[AppState.currentLevel] || [];
       
