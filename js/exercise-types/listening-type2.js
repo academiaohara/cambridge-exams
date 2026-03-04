@@ -2,7 +2,7 @@
 // Sentence completion - Listening Part 2
 
 (function() {
-  var GAP_PATTERN = /\(\d+\)\s*\.{3,}/g;
+  var GAP_PATTERN = /\(\d+\)\s*(?:\.{3,})?/g;
   
   window.ListeningType2 = {
     renderGap: function(question, qNum, isChecked, userAnswer) {
