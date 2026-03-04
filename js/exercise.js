@@ -78,6 +78,30 @@
         const response = await Utils.fetchWithNoCache(targetUrl);
         const exercise = await response.json();
         
+        // Transform listening extracts format to standard content format
+        if (!exercise.content && exercise.extracts) {
+          exercise.content = { questions: [], extracts: exercise.extracts };
+          exercise.time = exercise.duration_minutes || 10;
+          exercise.description = exercise.instructions || '';
+          exercise.totalQuestions = 0;
+          exercise.extracts.forEach(function(extract) {
+            extract.questions.forEach(function(q) {
+              if (q.options && typeof q.options === 'object' && !Array.isArray(q.options)) {
+                q.options = Object.entries(q.options).map(function(entry) {
+                  return entry[0] + ') ' + entry[1];
+                });
+              }
+              if (q.answer && !q.correct) {
+                q.correct = q.answer;
+              }
+              q.context = extract.context;
+              q.extractId = extract.id;
+              exercise.content.questions.push(q);
+              exercise.totalQuestions++;
+            });
+          });
+        }
+        
         if (!exercise.content) {
           throw new Error('El archivo JSON no tiene la estructura correcta');
         }

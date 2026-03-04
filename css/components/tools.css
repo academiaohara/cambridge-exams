@@ -473,3 +473,56 @@
     transform: rotate(360deg);
   }
 }
+
+.transcript-content {
+  padding: 10px;
+}
+
+.transcript-content h4 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.transcript-extract {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-left: 4px solid #0ea5e9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.transcript-extract-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.transcript-extract-number {
+  background: #0ea5e9;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.transcript-text {
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: var(--text-medium);
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
