@@ -300,6 +300,13 @@
       }
     },
     
+    reRenderCurrentExercise: async function() {
+      if (AppState.currentExamId && AppState.currentSection && AppState.currentPart) {
+        this.savePartState();
+        await this.openPart(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
+      }
+    },
+    
     markPartCompleted: function(examId, section, part) {
       const exam = EXAMS_DATA[AppState.currentLevel].find(e => e.id === examId);
       if (exam && exam.status === 'available') {
