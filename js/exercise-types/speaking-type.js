@@ -54,9 +54,6 @@
             </div>
           </div>
           <div class="speaking-type-actions">
-            <button class="btn-set-api-key" onclick="SpeakingType.setApiKeys()">
-              <i class="fas fa-key"></i> ${I18n.t('setApiKey')}
-            </button>
           </div>
         </div>
       `;
@@ -83,12 +80,6 @@
     },
 
     sendMessage: function(text) {
-      const apiKey = localStorage.getItem('gemini_api_key');
-      if (!apiKey) {
-        alert(I18n.t('noApiKey'));
-        return;
-      }
-
       this._addMessage('user', text);
       this.conversation.push({ role: 'user', content: text });
       this.exchangeCount++;
@@ -127,13 +118,6 @@
         try {
           const audioBlob = await this.recorder.stop();
           this.recorder = null;
-
-          const hfKey = localStorage.getItem('hf_api_key');
-          if (!hfKey) {
-            alert(I18n.t('noHfApiKey'));
-            if (micIcon) micIcon.className = 'fas fa-microphone';
-            return;
-          }
 
           const transcript = await WhisperProvider.transcribe(audioBlob);
           const input = document.getElementById('speaking-type-input');
@@ -180,20 +164,6 @@
       `;
       historyEl.appendChild(msgEl);
       historyEl.scrollTop = historyEl.scrollHeight;
-    },
-
-    setApiKeys: function() {
-      const geminiKey = prompt(I18n.t('apiKeyPrompt'));
-      if (geminiKey && geminiKey.trim()) {
-        localStorage.setItem('gemini_api_key', geminiKey.trim());
-      }
-      const hfKey = prompt(I18n.t('hfApiKeyPrompt'));
-      if (hfKey && hfKey.trim()) {
-        localStorage.setItem('hf_api_key', hfKey.trim());
-      }
-      if ((geminiKey && geminiKey.trim()) || (hfKey && hfKey.trim())) {
-        alert(I18n.t('apiKeySaved'));
-      }
     },
 
     checkAnswers: function() {

@@ -12,7 +12,7 @@
      * @returns {Promise<string>} The model's text response
      */
     generateContent: async function(systemPrompt, userPrompt, options = {}) {
-      const apiKey = localStorage.getItem('gemini_api_key');
+      const apiKey = CONFIG.GEMINI_API_KEY || localStorage.getItem('gemini_api_key');
       if (!apiKey) throw new Error('NO_API_KEY');
 
       const model = options.model || CONFIG.GEMINI_MODEL;
@@ -57,7 +57,7 @@
      * @returns {Promise<string>} The model's text response
      */
     chat: async function(systemPrompt, messages, options = {}) {
-      const apiKey = localStorage.getItem('gemini_api_key');
+      const apiKey = CONFIG.GEMINI_API_KEY || localStorage.getItem('gemini_api_key');
       if (!apiKey) throw new Error('NO_API_KEY');
 
       const model = options.model || CONFIG.GEMINI_MODEL;

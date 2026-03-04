@@ -42,9 +42,6 @@
               <span id="writing-type2-count">0</span> ${I18n.t('wordsWritten')}
             </div>
             <div class="writing-type2-actions">
-              <button class="btn-set-api-key" onclick="WritingType2.setApiKey()">
-                <i class="fas fa-key"></i> ${I18n.t('setApiKey')}
-              </button>
               <button class="btn-evaluate-ai" onclick="WritingType2.evaluateWithAI()">
                 <i class="fas fa-robot"></i> ${I18n.t('evaluateAI')}
               </button>
@@ -121,21 +118,7 @@
       this._updateCount(value);
     },
 
-    setApiKey: function() {
-      const key = prompt(I18n.t('apiKeyPrompt'));
-      if (key && key.trim()) {
-        localStorage.setItem('gemini_api_key', key.trim());
-        alert(I18n.t('apiKeySaved'));
-      }
-    },
-
     evaluateWithAI: function() {
-      const apiKey = localStorage.getItem('gemini_api_key');
-      if (!apiKey) {
-        alert(I18n.t('noApiKey'));
-        return;
-      }
-
       const essay = AppState.currentExercise.answers?.[this.selectedTaskId || 1] || '';
       if (!essay.trim()) {
         alert(I18n.t('writeEssay'));

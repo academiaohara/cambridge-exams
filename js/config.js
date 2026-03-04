@@ -102,10 +102,12 @@
   // Gemini (Google AI Studio) — free tier
   window.CONFIG.GEMINI_API_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models';
   window.CONFIG.GEMINI_MODEL = 'gemini-2.0-flash';
+  window.CONFIG.GEMINI_API_KEY = '';
 
   // Whisper (Hugging Face Inference API) — free tier
   window.CONFIG.HF_API_ENDPOINT = 'https://api-inference.huggingface.co';
   window.CONFIG.WHISPER_MODEL = 'openai/whisper-large-v3';
+  window.CONFIG.HF_API_KEY = '';
   
   // Configuración de tipos de ejercicios
   window.CONFIG.PART_TYPES = {
