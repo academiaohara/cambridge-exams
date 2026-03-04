@@ -1,10 +1,11 @@
 // js/exercise-types/speaking-type.js
 // AI Speaking interface - Cambridge C1 Speaking Parts
+// Uses Whisper (Hugging Face) for transcription + Gemini for evaluation
 
 (function() {
   window.SpeakingType = {
     conversation: [],
-    recognition: null,
+    recorder: null,
     exchangeCount: 0,
     SIMULATE_DURATION: 30,
 
@@ -22,13 +23,6 @@
       let imagesHTML = images.map(src => `<img class="speaking-type-image" src="${src}" alt="Speaking task image">`).join('');
       let optionsHTML = options.length
         ? `<ul class="speaking-type-options">${options.map(o => `<li>${o}</li>`).join('')}</ul>`
-        : '';
-
-      const hasMic = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
-      const micButton = hasMic
-        ? `<button class="speaking-type-mic-btn" onclick="SpeakingType.startMic()" title="Microphone">
-             <i class="fas fa-microphone"></i>
-           </button>`
         : '';
 
       const html = `
@@ -51,14 +45,16 @@
                      id="speaking-type-input"
                      placeholder="${I18n.t('speakingPrompt')}"
                      onkeydown="if(event.key==='Enter') SpeakingType.sendFromInput()">
-              ${micButton}
+              <button class="speaking-type-mic-btn" id="speaking-mic-btn" onclick="SpeakingType.toggleRecording()" title="Record audio (Whisper)">
+                <i class="fas fa-microphone"></i>
+              </button>
               <button class="speaking-type-send-btn" onclick="SpeakingType.sendFromInput()">
                 <i class="fas fa-paper-plane"></i> ${I18n.t('sendMessage')}
               </button>
             </div>
           </div>
           <div class="speaking-type-actions">
-            <button class="btn-set-api-key" onclick="SpeakingType.setApiKey()">
+            <button class="btn-set-api-key" onclick="SpeakingType.setApiKeys()">
               <i class="fas fa-key"></i> ${I18n.t('setApiKey')}
             </button>
           </div>
@@ -87,7 +83,7 @@
     },
 
     sendMessage: function(text) {
-      const apiKey = localStorage.getItem('ai_api_key');
+      const apiKey = localStorage.getItem('gemini_api_key');
       if (!apiKey) {
         alert(I18n.t('noApiKey'));
         return;
@@ -99,10 +95,6 @@
 
       const exercise = AppState.currentExercise;
       const task = exercise?.content.task || exercise?.content.questions?.[0]?.task || '';
-      const scoringNote = this.exchangeCount >= 5 ? ' Now provide a brief score estimate for each criterion (0-5): fluency, lexical resource, grammatical range, discourse management.' : '';
-      const systemPrompt = `You are a Cambridge C1 Advanced speaking examiner. The task is: "${task}". Ask the student follow-up questions based on their responses. Be encouraging but assess fluency, lexical resource, grammatical range, and discourse management.${scoringNote}`;
-
-      const messages = [{ role: 'system', content: systemPrompt }, ...this.conversation];
 
       const historyEl = document.getElementById('speaking-chat-history');
       const typingEl = document.createElement('div');
@@ -110,29 +102,61 @@
       typingEl.innerHTML = '<span class="speaking-type-bubble"><i class="fas fa-ellipsis-h"></i></span>';
       if (historyEl) historyEl.appendChild(typingEl);
 
-      fetch(CONFIG.AI_API_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({
-          model: CONFIG.AI_MODEL,
-          messages: messages,
-          max_tokens: 300
+      CambridgeEvaluation.evaluateSpeaking(task, this.conversation, this.exchangeCount)
+        .then(reply => {
+          if (historyEl && typingEl.parentNode) historyEl.removeChild(typingEl);
+          this.conversation.push({ role: 'assistant', content: reply });
+          this._addMessage('examiner', reply);
         })
-      })
-      .then(r => r.json())
-      .then(data => {
-        if (historyEl && typingEl.parentNode) historyEl.removeChild(typingEl);
-        const reply = data.choices?.[0]?.message?.content || I18n.t('aiError');
-        this.conversation.push({ role: 'assistant', content: reply });
-        this._addMessage('examiner', reply);
-      })
-      .catch(() => {
-        if (historyEl && typingEl.parentNode) historyEl.removeChild(typingEl);
-        this._addMessage('examiner', I18n.t('aiError'));
-      });
+        .catch(() => {
+          if (historyEl && typingEl.parentNode) historyEl.removeChild(typingEl);
+          this._addMessage('examiner', I18n.t('aiError'));
+        });
+    },
+
+    /**
+     * Toggle audio recording using MediaRecorder + Whisper transcription.
+     */
+    toggleRecording: async function() {
+      const micBtn = document.getElementById('speaking-mic-btn');
+      const micIcon = micBtn?.querySelector('i');
+
+      // If already recording, stop and transcribe
+      if (this.recorder) {
+        if (micIcon) micIcon.className = 'fas fa-spinner fa-spin';
+        try {
+          const audioBlob = await this.recorder.stop();
+          this.recorder = null;
+
+          const hfKey = localStorage.getItem('hf_api_key');
+          if (!hfKey) {
+            alert(I18n.t('noHfApiKey'));
+            if (micIcon) micIcon.className = 'fas fa-microphone';
+            return;
+          }
+
+          const transcript = await WhisperProvider.transcribe(audioBlob);
+          const input = document.getElementById('speaking-type-input');
+          if (input) input.value = transcript;
+          this.sendFromInput();
+        } catch (err) {
+          if (err.message === 'WHISPER_LOADING') {
+            alert(I18n.t('whisperLoading'));
+          } else {
+            alert(I18n.t('aiError'));
+          }
+        }
+        if (micIcon) micIcon.className = 'fas fa-microphone';
+        return;
+      }
+
+      // Start recording
+      try {
+        this.recorder = await WhisperProvider.startRecording();
+        if (micIcon) micIcon.className = 'fas fa-microphone-slash';
+      } catch {
+        alert(I18n.t('micError'));
+      }
     },
 
     _addMessage: function(role, text) {
@@ -154,44 +178,16 @@
       historyEl.scrollTop = historyEl.scrollHeight;
     },
 
-    startMic: function() {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) return;
-
-      if (this.recognition) {
-        this.recognition.stop();
-        this.recognition = null;
-        document.querySelector('.speaking-type-mic-btn i').className = 'fas fa-microphone';
-        return;
+    setApiKeys: function() {
+      const geminiKey = prompt(I18n.t('apiKeyPrompt'));
+      if (geminiKey && geminiKey.trim()) {
+        localStorage.setItem('gemini_api_key', geminiKey.trim());
       }
-
-      this.recognition = new SpeechRecognition();
-      this.recognition.lang = 'en-GB';
-      this.recognition.interimResults = false;
-      this.recognition.maxAlternatives = 1;
-
-      const micBtn = document.querySelector('.speaking-type-mic-btn i');
-      if (micBtn) micBtn.className = 'fas fa-microphone-slash';
-
-      this.recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        const input = document.getElementById('speaking-type-input');
-        if (input) input.value = transcript;
-        this.sendFromInput();
-      };
-
-      this.recognition.onend = () => {
-        this.recognition = null;
-        if (micBtn) micBtn.className = 'fas fa-microphone';
-      };
-
-      this.recognition.start();
-    },
-
-    setApiKey: function() {
-      const key = prompt(I18n.t('apiKeyPrompt'));
-      if (key && key.trim()) {
-        localStorage.setItem('ai_api_key', key.trim());
+      const hfKey = prompt(I18n.t('hfApiKeyPrompt'));
+      if (hfKey && hfKey.trim()) {
+        localStorage.setItem('hf_api_key', hfKey.trim());
+      }
+      if ((geminiKey && geminiKey.trim()) || (hfKey && hfKey.trim())) {
         alert(I18n.t('apiKeySaved'));
       }
     },

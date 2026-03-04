@@ -76,13 +76,13 @@
     setApiKey: function() {
       const key = prompt(I18n.t('apiKeyPrompt'));
       if (key && key.trim()) {
-        localStorage.setItem('ai_api_key', key.trim());
+        localStorage.setItem('gemini_api_key', key.trim());
         alert(I18n.t('apiKeySaved'));
       }
     },
 
     evaluateWithAI: function() {
-      const apiKey = localStorage.getItem('ai_api_key');
+      const apiKey = localStorage.getItem('gemini_api_key');
       if (!apiKey) {
         alert(I18n.t('noApiKey'));
         return;
@@ -102,32 +102,13 @@
       if (resultsDiv) resultsDiv.style.display = 'block';
       if (contentDiv) contentDiv.textContent = I18n.t('evaluating');
 
-      const systemPrompt = `You are a Cambridge C1 Advanced writing examiner. Evaluate the essay on four criteria, each scored 0-5: Content, Communicative Achievement, Organisation, and Language. Provide a score and brief feedback for each criterion, then a total score out of 20 and overall comments. Format your response clearly with sections for each criterion.`;
-      const userPrompt = `Task: ${question}\nWord limit: ${wordLimit}\n\nEssay:\n${essay}`;
-
-      fetch(CONFIG.AI_API_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({
-          model: CONFIG.AI_MODEL,
-          messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: userPrompt }
-          ],
-          max_tokens: 800
+      CambridgeEvaluation.evaluateWriting(essay, question, wordLimit, 'Essay')
+        .then(text => {
+          if (contentDiv) contentDiv.innerHTML = `<pre class="writing-type1-ai-text">${text}</pre>`;
         })
-      })
-      .then(r => r.json())
-      .then(data => {
-        const text = data.choices?.[0]?.message?.content || I18n.t('aiError');
-        if (contentDiv) contentDiv.innerHTML = `<pre class="writing-type1-ai-text">${text}</pre>`;
-      })
-      .catch(() => {
-        if (contentDiv) contentDiv.textContent = I18n.t('aiError');
-      });
+        .catch(() => {
+          if (contentDiv) contentDiv.textContent = I18n.t('aiError');
+        });
     },
 
     checkAnswers: function() {
