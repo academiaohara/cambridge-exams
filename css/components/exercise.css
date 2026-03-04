@@ -19,14 +19,14 @@
 }
 
 .exercise-title h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 6px;
 }
 
 .exercise-subtitle {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-light);
   margin-bottom: 8px;
 }
@@ -37,7 +37,7 @@
   color: white;
   padding: 4px 14px;
   border-radius: 30px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
 }
 
@@ -85,7 +85,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--text-medium);
   font-weight: 500;
 }
@@ -106,7 +106,7 @@
   align-items: center;
   gap: 8px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--timer-normal);
 }
 
@@ -120,7 +120,7 @@
   padding: 6px 16px;
   border-radius: 30px;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   min-width: 60px;
   text-align: center;
 }
@@ -131,7 +131,7 @@
   padding: 10px 16px;
   border-radius: 8px;
   margin-bottom: 24px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--text-medium);
   line-height: 1.5;
 }
@@ -144,7 +144,7 @@
 }
 
 .reading-text-enhanced {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1.9;
   color: var(--text-dark);
   background: #fafafa;
@@ -172,7 +172,7 @@
 
 .explanations-section h3 {
   color: var(--text-dark);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -184,7 +184,7 @@
   background: white;
   border-radius: 10px;
   margin-bottom: 10px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--text-medium);
   border-left: 3px solid #f59e0b;
   line-height: 1.6;
@@ -213,7 +213,7 @@
   color: var(--text-medium);
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -243,7 +243,7 @@
   padding: 4px 14px;
   border-radius: 30px;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   min-width: 50px;
   text-align: center;
 }
@@ -269,7 +269,7 @@
 }
 
 .content-title {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-dark);
   white-space: nowrap;
@@ -278,7 +278,7 @@
 }
 
 .content-subtitle {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-light);
   white-space: nowrap;
   overflow: hidden;
@@ -317,7 +317,7 @@
   background: #f8fafc;
   color: var(--text-medium);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s;
   font-family: 'Inter', sans-serif;
