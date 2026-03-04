@@ -130,6 +130,12 @@
       });
 
       return correct;
+    },
+
+    reRender: function() {
+      var existing = document.querySelector('.listening-type4-container');
+      if (existing) existing.remove();
+      this.initListeners();
     }
   };
 })();
