@@ -131,14 +131,22 @@
         
         const isChecked = AppState.answersChecked;
         const extracts = exercise.content.extracts || [];
-        const hasAudioSource = !!exercise.audio_source;
+        var audioSource = exercise.audio_source || '';
+        var hasAudioSource = false;
+        try {
+          if (audioSource) {
+            var url = new URL(audioSource);
+            hasAudioSource = url.protocol === 'https:' || url.protocol === 'http:';
+          }
+        } catch(e) { hasAudioSource = false; }
         let html = '';
         
         if (hasAudioSource) {
+          var safeUrl = audioSource.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
           html += '<div class="listening-type1-audio-section">';
           html += '<p><strong>Click play to start the listening test:</strong></p>';
           html += '<audio controls controlsList="nodownload">';
-          html += '<source src="' + exercise.audio_source + '" type="audio/mpeg">';
+          html += '<source src="' + safeUrl + '" type="audio/mpeg">';
           html += '</audio>';
           html += '</div>';
         }
