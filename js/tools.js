@@ -36,6 +36,9 @@
             container.innerHTML = '<p class="placeholder-text">' + I18n.t('activateTool') + '</p>';
           }
           break;
+        case 'transcript':
+          this.renderTranscript();
+          break;
         default:
           container.innerHTML = '<p class="placeholder-text">' + I18n.t('activateTool') + '</p>';
       }
@@ -299,6 +302,33 @@
     
     searchWord: function(word) {
       this.buscarEnDiccionario(word);
+    },
+    
+    renderTranscript: function() {
+      var container = document.getElementById('active-tool-content');
+      var exercise = AppState.currentExercise;
+      var extracts = exercise && exercise.content ? exercise.content.extracts || [] : [];
+      
+      if (extracts.length === 0) {
+        container.innerHTML = '<p class="placeholder-text">' + I18n.t('activateTool') + '</p>';
+        return;
+      }
+      
+      var html = '<div class="transcript-content">';
+      html += '<h4><i class="fas fa-file-audio"></i> ' + I18n.t('transcript') + '</h4>';
+      
+      extracts.forEach(function(extract) {
+        html += '<div class="transcript-extract">';
+        html += '<div class="transcript-extract-header">';
+        html += '<span class="transcript-extract-number">' + extract.id + '</span>';
+        html += '<span>' + extract.context + '</span>';
+        html += '</div>';
+        html += '<div class="transcript-text">' + extract.audio_script.replace(/\n/g, '<br>') + '</div>';
+        html += '</div>';
+      });
+      
+      html += '</div>';
+      container.innerHTML = html;
     },
     
     showTips: async function(section) {

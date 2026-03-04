@@ -141,3 +141,17 @@
   color: var(--text-dark);
   line-height: 1.6;
 }
+
+.listening-type1-extract-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.listening-type1-context {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  font-style: italic;
+  line-height: 1.5;
+}

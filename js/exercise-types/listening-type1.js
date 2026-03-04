@@ -60,25 +60,24 @@
       Timer.updateScoreDisplay();
     },
     
-    playExtract: function(qNum, btn) {
-      if (this.currentPlaying && this.currentPlaying !== qNum) {
+    playExtract: function(extractId, btn) {
+      if (this.currentPlaying && this.currentPlaying !== extractId) {
         this.stopExtract(this.currentPlaying);
       }
       
       const icon = btn.querySelector('i');
       if (icon.classList.contains('fa-play')) {
-        // Simular reproducción
         icon.classList.remove('fa-play');
         icon.classList.add('fa-pause');
-        this.currentPlaying = qNum;
-        this.simulateProgress(qNum);
+        this.currentPlaying = extractId;
+        this.simulateProgress(extractId);
       } else {
-        this.stopExtract(qNum);
+        this.stopExtract(extractId);
       }
     },
     
-    stopExtract: function(qNum) {
-      const btn = document.querySelector(`[onclick*="ListeningType1.playExtract(${qNum}"] i`);
+    stopExtract: function(extractId) {
+      const btn = document.querySelector(`[onclick*="ListeningType1.playExtract(${extractId}"] i`);
       if (btn) {
         btn.classList.remove('fa-pause');
         btn.classList.add('fa-play');
@@ -86,14 +85,14 @@
       this.currentPlaying = null;
     },
     
-    simulateProgress: function(qNum) {
-      const progressBar = document.getElementById(`progress-${qNum}`);
-      const timeDisplay = document.getElementById(`time-${qNum}`);
+    simulateProgress: function(extractId) {
+      const progressBar = document.getElementById(`progress-${extractId}`);
+      const timeDisplay = document.getElementById(`time-${extractId}`);
       let seconds = 0;
-      const duration = 30; // 30 segundos simulados
+      const duration = 30;
       
       const interval = setInterval(() => {
-        if (this.currentPlaying !== qNum) {
+        if (this.currentPlaying !== extractId) {
           clearInterval(interval);
           return;
         }
@@ -105,7 +104,7 @@
         
         if (seconds >= duration) {
           clearInterval(interval);
-          this.stopExtract(qNum);
+          this.stopExtract(extractId);
         }
       }, 1000);
     },
@@ -126,34 +125,63 @@
       const exercise = AppState.currentExercise;
       if (!exercise) return;
       
-      // If there is no text with (N) markers, render all questions as a list
       if (!exercise.content.text && exercise.content.questions) {
         const container = document.getElementById('selectable-text');
         if (!container) return;
         
         const isChecked = AppState.answersChecked;
+        const extracts = exercise.content.extracts || [];
         let html = '';
         
-        exercise.content.questions.forEach(q => {
-          const userAnswer = exercise.answers?.[q.number] || '';
-          html += `
-            <div class="listening-type1-extract">
-              <div class="listening-type1-audio-bar" data-extract="${q.number}">
-                <button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(${q.number}, this)">
-                  <i class="fas fa-play"></i>
-                </button>
-                <div class="listening-type1-timeline" id="timeline-${q.number}">
-                  <div class="listening-type1-progress" id="progress-${q.number}" style="width: 0%"></div>
-                </div>
-                <span class="listening-type1-time" id="time-${q.number}">00:00</span>
-              </div>
-              <p class="listening-type1-question-text">${q.question || ''}</p>
-              <div class="listening-type1-options">
-                ${this.renderOptions(q, q.number, isChecked, userAnswer)}
-              </div>
-            </div>
-          `;
-        });
+        if (extracts.length > 0) {
+          // Render grouped by extracts
+          extracts.forEach(function(extract) {
+            html += '<div class="listening-type1-extract">';
+            html += '<div class="listening-type1-extract-header">';
+            html += '<span class="listening-type1-extract-number">' + extract.id + '</span>';
+            html += '<span class="listening-type1-context">' + extract.context + '</span>';
+            html += '</div>';
+            html += '<div class="listening-type1-audio-bar" data-extract="' + extract.id + '">';
+            html += '<button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(' + extract.id + ', this)">';
+            html += '<i class="fas fa-play"></i>';
+            html += '</button>';
+            html += '<div class="listening-type1-timeline" id="timeline-' + extract.id + '">';
+            html += '<div class="listening-type1-progress" id="progress-' + extract.id + '" style="width: 0%"></div>';
+            html += '</div>';
+            html += '<span class="listening-type1-time" id="time-' + extract.id + '">00:00</span>';
+            html += '</div>';
+            
+            extract.questions.forEach(function(q) {
+              var userAnswer = exercise.answers?.[q.number] || '';
+              html += '<p class="listening-type1-question-text"><strong>' + q.number + '.</strong> ' + q.question + '</p>';
+              html += '<div class="listening-type1-options">';
+              html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
+              html += '</div>';
+            });
+            
+            html += '</div>';
+          });
+        } else {
+          // Fallback: render flat question list
+          exercise.content.questions.forEach(function(q) {
+            var userAnswer = exercise.answers?.[q.number] || '';
+            html += '<div class="listening-type1-extract">';
+            html += '<div class="listening-type1-audio-bar" data-extract="' + q.number + '">';
+            html += '<button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(' + q.number + ', this)">';
+            html += '<i class="fas fa-play"></i>';
+            html += '</button>';
+            html += '<div class="listening-type1-timeline" id="timeline-' + q.number + '">';
+            html += '<div class="listening-type1-progress" id="progress-' + q.number + '" style="width: 0%"></div>';
+            html += '</div>';
+            html += '<span class="listening-type1-time" id="time-' + q.number + '">00:00</span>';
+            html += '</div>';
+            html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
+            html += '<div class="listening-type1-options">';
+            html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
+            html += '</div>';
+            html += '</div>';
+          });
+        }
         
         const noteCreator = container.querySelector('#note-creator');
         const wrapper = document.createElement('div');

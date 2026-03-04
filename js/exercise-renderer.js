@@ -179,6 +179,9 @@
             <button class="tool-btn-nav" id="tab-tips" onclick="Tools.switchTool('tips')">
               <i class="fas fa-lightbulb"></i> <span data-i18n="tips">${I18n.t('tips')}</span>
             </button>
+            ${section === 'listening' ? `<button class="tool-btn-nav" id="tab-transcript" onclick="Tools.switchTool('transcript')">
+              <i class="fas fa-file-audio"></i> <span data-i18n="transcript">${I18n.t('transcript')}</span>
+            </button>` : ''}
           </div>
           
           ${contentHeaderHTML}
