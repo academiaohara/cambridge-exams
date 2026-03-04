@@ -27,7 +27,7 @@
 
 .reading-type7-select {
   padding: 6px 12px;
-  border: 2px solid #6ee7b7;
+  border: 2px solid var(--border-light);
   border-radius: 8px;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
@@ -36,13 +36,13 @@
   cursor: pointer;
   transition: all 0.2s;
   min-width: 80px;
-  color: #065f46;
+  color: var(--text-dark);
 }
 
 .reading-type7-select:focus {
   outline: none;
-  border-color: var(--correct);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 .reading-type7-select.correct {
