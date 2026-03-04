@@ -116,7 +116,7 @@
     
     // Listening
     listening1: { type: 'multiple-choice', inputMode: 'radio', total: 8 },
-    listening2: { type: 'sentence-completion', inputMode: 'text', total: 10 },
+    listening2: { type: 'sentence-completion', inputMode: 'text', total: 8 },
     listening3: { type: 'multiple-choice-text', inputMode: 'radio', total: 6 },
     listening4: { type: 'dual-matching', inputMode: 'select', total: 10 },
     

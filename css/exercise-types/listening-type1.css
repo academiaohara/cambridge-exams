@@ -166,7 +166,9 @@
 
 .listening-type1-option-letter {
   font-weight: 800;
-  background: rgba(255,255,255,0.2);
+  background: #e0f2fe;
+  color: #0c4a6e;
+  border: 2px solid #0ea5e9;
   width: 28px;
   height: 28px;
   min-width: 28px;
@@ -175,6 +177,13 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.listening-type1-option.selected .listening-type1-option-letter {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border-color: white;
 }
 
 .listening-type1-question-text {
