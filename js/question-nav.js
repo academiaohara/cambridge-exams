@@ -121,6 +121,7 @@
     _buildContent: function(question, qNum, isChecked, userAnswer, partConfig) {
       var type = partConfig ? partConfig.type : '';
       var inner = '';
+      var isPart8 = type === 'multiple-matching';
       if (type === 'multiple-choice-text') {
         inner = this._buildPart5(question, qNum, isChecked, userAnswer);
       } else if (type === 'cross-text-matching') {
@@ -130,8 +131,15 @@
       } else if (type === 'multiple-matching') {
         inner = this._buildPart8(question, qNum, isChecked, userAnswer);
       }
+      var titleText = isPart8 ? qNum : I18n.t('question') + ' ' + qNum;
+      var headerQuestion = isPart8
+        ? '<span class="qnav-question-text qnav-question-text-header">' + this._escapeHtml(question.question) + '</span>'
+        : '';
       return '<div class="qnav-header">' +
-        '<span class="qnav-title">' + I18n.t('question') + ' ' + qNum + '</span>' +
+        '<div class="qnav-header-main">' +
+          '<span class="qnav-title">' + titleText + '</span>' +
+          headerQuestion +
+        '</div>' +
         '<button class="qnav-close-btn" onclick="QuestionNav.close()">' +
           '<i class="fas fa-times"></i>' +
         '</button>' +
@@ -217,9 +225,11 @@
 
     _buildPart8: function(question, qNum, isChecked, userAnswer) {
       var texts = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts) || {};
-      var html = '<p class="qnav-question-text">' + question.question + '</p>';
-      html += '<div class="qnav-opts-grid">';
-      Object.keys(texts).forEach(function(key) {
+      var keys = ['A', 'B', 'C', 'D'].filter(function(key) {
+        return Object.prototype.hasOwnProperty.call(texts, key);
+      });
+      var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
+      keys.forEach(function(key) {
         var isSelected = userAnswer === key;
         var cls = 'qnav-opt-btn';
         if (isChecked) {

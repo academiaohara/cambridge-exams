@@ -104,6 +104,14 @@
   border-image: linear-gradient(90deg, var(--primary), var(--secondary)) 1;
 }
 
+.qnav-header-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
 .qnav-title {
   background: #1e3a8a;
   color: white;
@@ -138,6 +146,13 @@
   font-size: 0.95rem;
   margin: 0 0 14px;
   line-height: 1.5;
+}
+
+.qnav-question-text-header {
+  margin: 0;
+  font-size: 1.08rem;
+  color: #1f2937;
+  font-weight: 600;
 }
 
 /* Part 5: full-width option rows */
@@ -207,6 +222,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
   gap: 12px;
+}
+
+.qnav-opts-grid-part8 {
+  grid-template-columns: repeat(4, minmax(70px, 90px));
+  justify-content: center;
 }
 
 .qnav-opt-btn {
