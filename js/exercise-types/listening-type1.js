@@ -32,8 +32,18 @@
         const letter = opt.charAt(0);
         const text = opt.substring(2).trim();
         const selected = userAnswer === letter ? 'selected' : '';
+        let stateClass = '';
+        if (isChecked) {
+          if (letter === question.correct && userAnswer === letter) {
+            stateClass = 'correct';
+          } else if (userAnswer === letter && letter !== question.correct) {
+            stateClass = 'incorrect';
+          } else if (letter === question.correct) {
+            stateClass = 'correct-answer';
+          }
+        }
         html += `
-          <div class="listening-type1-option ${selected} ${isChecked ? 'disabled' : ''}" 
+          <div class="listening-type1-option ${selected} ${stateClass} ${isChecked ? 'disabled' : ''}" 
                onclick="${!isChecked ? 'ListeningType1.selectAnswer(' + qNum + ', \'' + letter + '\')' : ''}">
             <span class="listening-type1-option-letter">${letter}</span>
             <span>${text}</span>
@@ -115,7 +125,24 @@
       
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
-        if (userAnswer === q.correct) correct++;
+        const isCorrect = userAnswer === q.correct;
+        if (isCorrect) correct++;
+        
+        // Visual feedback on DOM options
+        const optionEls = document.querySelectorAll('[onclick*="ListeningType1.selectAnswer(' + q.number + ',"]');
+        optionEls.forEach(function(opt) {
+          var letter = opt.querySelector('.listening-type1-option-letter');
+          var optLetter = letter ? letter.textContent.trim() : '';
+          opt.classList.add('disabled');
+          opt.style.pointerEvents = 'none';
+          if (optLetter === q.correct && userAnswer === optLetter) {
+            opt.classList.add('correct');
+          } else if (userAnswer === optLetter && optLetter !== q.correct) {
+            opt.classList.add('incorrect');
+          } else if (optLetter === q.correct) {
+            opt.classList.add('correct-answer');
+          }
+        });
       });
       
       return correct;

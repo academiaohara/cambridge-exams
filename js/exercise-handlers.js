@@ -92,7 +92,7 @@
     
     getTypeChecker: function(type) {
       const typeMap = {
-        'multiple-choice': window.ReadingType1,
+        'multiple-choice': AppState.currentSection === 'listening' ? window.ListeningType1 : window.ReadingType1,
         'open-cloze': window.ReadingType2,
         'word-formation': window.ReadingType3,
         'transformations': window.ReadingType4,
@@ -160,6 +160,11 @@
           document.querySelectorAll('.gap-box').forEach(box => {
             box.classList.add('checked');
             box.style.pointerEvents = 'none';
+          });
+          // Listening-type1 options
+          document.querySelectorAll('.listening-type1-option').forEach(opt => {
+            opt.classList.add('disabled');
+            opt.style.pointerEvents = 'none';
           });
           break;
 
