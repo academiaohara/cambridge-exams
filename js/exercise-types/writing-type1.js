@@ -36,6 +36,11 @@
           <textarea class="writing-type1-textarea writing-textarea"
                     placeholder="${I18n.t('writeEssay')}..."
                     oninput="WritingType1.handleInput(this.value)">${savedAnswer}</textarea>
+          <button class="writing-evaluate-btn" id="writing-type1-evaluate-btn"
+                  onclick="WritingType1.evaluateWithAI()">
+            <i class="fas fa-robot"></i> ${I18n.t('evaluateAI')}
+          </button>
+          <div id="writing-type1-eval-result"></div>
         </div>
       `;
 
@@ -90,9 +95,116 @@
       this._updateStats(value);
     },
 
+    evaluateWithAI: async function() {
+      var text = AppState.currentExercise?.answers?.[1] || '';
+      if (!text.trim()) return;
+
+      var apiKey = (typeof DeepSeekProvider !== 'undefined') && DeepSeekProvider.getApiKey();
+      if (!apiKey) {
+        this._showApiKeyPrompt('writing-type1-eval-result');
+        return;
+      }
+
+      var btn = document.getElementById('writing-type1-evaluate-btn');
+      var resultDiv = document.getElementById('writing-type1-eval-result');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + I18n.t('evaluating');
+      }
+      if (resultDiv) resultDiv.innerHTML = '';
+
+      try {
+        var taskPrompt = AppState.currentExercise?.content?.question || '';
+        var level = AppState.currentLevel || 'c1';
+        var result = await CambridgeCorrector.evaluate(text, level, taskPrompt);
+        this._renderResult(resultDiv, result);
+      } catch (err) {
+        if (resultDiv) {
+          resultDiv.innerHTML = '<div class="writing-eval-error"><i class="fas fa-exclamation-triangle"></i> ' +
+            I18n.t('aiError') + '</div>';
+        }
+        console.error('AI evaluation error:', err);
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-robot"></i> ' + I18n.t('evaluateAI');
+        }
+      }
+    },
+
+    _showApiKeyPrompt: function(containerId) {
+      var container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML =
+        '<div class="writing-apikey-bar">' +
+          '<i class="fas fa-key"></i> ' +
+          '<span>' + I18n.t('noApiKey') + '</span>' +
+          '<button onclick="WritingType1._promptApiKey()">' + I18n.t('setApiKey') + '</button>' +
+        '</div>';
+    },
+
+    _promptApiKey: function() {
+      var key = prompt(I18n.t('apiKeyPrompt'));
+      if (key && key.trim()) {
+        DeepSeekProvider.setApiKey(key.trim());
+        var resultDiv = document.getElementById('writing-type1-eval-result');
+        if (resultDiv) resultDiv.innerHTML = '';
+      }
+    },
+
+    _renderResult: function(container, result) {
+      if (!container || !result) return;
+
+      var scores = result.criteria_scores || {};
+      var criteriaKeys = [
+        { key: 'content', label: I18n.t('content') },
+        { key: 'communicative', label: I18n.t('communicativeAchievement') },
+        { key: 'organisation', label: I18n.t('organisation') },
+        { key: 'language', label: I18n.t('language') }
+      ];
+
+      var criteriaHTML = criteriaKeys.map(function(c) {
+        var score = scores[c.key] || 0;
+        return '<div class="writing-criterion">' +
+          '<span class="writing-criterion-label">' + c.label + '</span>' +
+          '<span class="writing-criterion-score">' + score + '/5</span>' +
+          '<div class="writing-criterion-bar"><div class="writing-criterion-bar-fill score-' + score + '"></div></div>' +
+          '</div>';
+      }).join('');
+
+      var strengthsHTML = '';
+      if (result.strengths && result.strengths.length) {
+        strengthsHTML = '<div class="writing-eval-section">' +
+          '<div class="writing-eval-section-title strengths-title"><i class="fas fa-check-circle"></i> ' + I18n.t('strengths') + '</div>' +
+          '<ul class="writing-eval-list strengths-list">' +
+          result.strengths.map(function(s) { return '<li>' + s + '</li>'; }).join('') +
+          '</ul></div>';
+      }
+
+      var improvementsHTML = '';
+      if (result.improvements && result.improvements.length) {
+        improvementsHTML = '<div class="writing-eval-section">' +
+          '<div class="writing-eval-section-title improvements-title"><i class="fas fa-arrow-up"></i> ' + I18n.t('improvements') + '</div>' +
+          '<ul class="writing-eval-list improvements-list">' +
+          result.improvements.map(function(s) { return '<li>' + s + '</li>'; }).join('') +
+          '</ul></div>';
+      }
+
+      container.innerHTML =
+        '<div class="writing-evaluation-result">' +
+          '<div class="writing-evaluation-header"><i class="fas fa-clipboard-check"></i> ' + I18n.t('aiEvaluation') + '</div>' +
+          '<div class="writing-evaluation-score">' + (result.total_score || '?/20') + '</div>' +
+          '<div class="writing-criteria-grid">' + criteriaHTML + '</div>' +
+          (result.feedback ? '<div class="writing-feedback">' + result.feedback + '</div>' : '') +
+          strengthsHTML +
+          improvementsHTML +
+        '</div>';
+    },
+
     checkAnswers: function() {
       return 0;
     }
   };
 })();
+
 
