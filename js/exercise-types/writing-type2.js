@@ -161,7 +161,8 @@
       } else {
         localStorage.removeItem('gemini_api_key');
       }
-      document.getElementById('writing-type2-api-key-row').style.display = 'none';
+      const row = document.getElementById('writing-type2-api-key-row');
+      if (row) row.style.display = 'none';
       this._showMsg(I18n.t('apiKeySaved'));
     },
 
