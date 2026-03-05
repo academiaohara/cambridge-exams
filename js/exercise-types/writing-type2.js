@@ -156,7 +156,7 @@
       var text = taskId && AppState.currentExercise?.answers?.[taskId] || '';
       if (!text.trim()) return;
 
-      var apiKey = (typeof DeepSeekProvider !== 'undefined') && DeepSeekProvider.getApiKey();
+      var apiKey = (typeof GeminiProvider !== 'undefined') && GeminiProvider.getApiKey();
       if (!apiKey) {
         CambridgeCorrector.showApiKeyPrompt('writing-type2-eval-result');
         return;

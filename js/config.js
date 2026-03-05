@@ -8,10 +8,9 @@
     WARNING_TIME: 300,
     DANGER_TIME: 600,
     
-    // DeepSeek API configuration
-    DEEPSEEK_API_KEY: '',          // Set via UI or localStorage ('deepseek_api_key')
-    DEEPSEEK_BASE_URL: 'https://api.deepseek.com/v1',
-    DEEPSEEK_MODEL: 'deepseek-chat',
+    // Gemini API configuration
+    GEMINI_BASE_URL: 'https://generativelanguage.googleapis.com/v1beta',
+    GEMINI_MODEL: 'gemini-2.5-flash',
     
     // Mapeo de tipos de ejercicio a archivos CSS y JS
     EXERCISE_TYPE_FILES: {

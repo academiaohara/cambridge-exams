@@ -50,8 +50,8 @@
   "aiEvaluation": "Evaluación IA",
   "evaluating": "Evaluando...",
   "setApiKey": "Configurar clave API",
-  "apiKeyPrompt": "Introduce tu clave API de DeepSeek",
-  "noApiKey": "No hay clave API. Haz clic en 'Configurar clave API' para añadirla.",
+  "apiKeyPrompt": "Introduce tu clave API de Gemini",
+  "noApiKey": "No hay clave API de Gemini. Configúrala para evaluar con IA.",
   "aiError": "Error al conectar con la IA. Comprueba tu clave API.",
   "selectTask": "Selecciona una tarea",
   "startSpeaking": "Iniciar la conversación",
@@ -109,5 +109,13 @@
   "organisation": "Organización",
   "language": "Lenguaje",
   "strengths": "Puntos fuertes",
-  "improvements": "Áreas de mejora"
+  "improvements": "Áreas de mejora",
+  "howToGetApiKey": "¿Cómo obtener mi API Key?",
+  "howToGetApiKeyTitle": "Cómo obtener tu API Key de Gemini (Gratis)",
+  "apiKeyHelpIntro": "Para que podamos evaluar tu examen sin coste, necesitamos que utilices tu propia clave de acceso. Es un proceso de 30 segundos:",
+  "apiKeyStep1": "Entra en",
+  "apiKeyStep2": "Identifícate con tu cuenta de Gmail.",
+  "apiKeyStep3": "En la barra lateral izquierda, pulsa el botón \"Get API key\".",
+  "apiKeyStep4": "Haz clic en \"Create API key in new project\".",
+  "apiKeyStep5": "Copia el código (empieza por AIza...) y pégalo en el recuadro de configuración de nuestra página."
 }

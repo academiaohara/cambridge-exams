@@ -99,7 +99,7 @@
       var text = AppState.currentExercise?.answers?.[1] || '';
       if (!text.trim()) return;
 
-      var apiKey = (typeof DeepSeekProvider !== 'undefined') && DeepSeekProvider.getApiKey();
+      var apiKey = (typeof GeminiProvider !== 'undefined') && GeminiProvider.getApiKey();
       if (!apiKey) {
         CambridgeCorrector.showApiKeyPrompt('writing-type1-eval-result');
         return;
