@@ -125,9 +125,9 @@
           this.sendFromInput();
         } catch (err) {
           if (err.message === 'WHISPER_LOADING') {
-            alert(I18n.t('whisperLoading'));
+            this._addMessage('examiner', I18n.t('whisperLoading'));
           } else {
-            alert(I18n.t('aiError'));
+            this._addMessage('examiner', I18n.t('aiError'));
           }
         }
         if (micIcon) micIcon.className = 'fas fa-microphone';
@@ -139,11 +139,7 @@
         this.recorder = await WhisperProvider.startRecording();
         if (micIcon) micIcon.className = 'fas fa-microphone-slash';
       } catch (err) {
-        if (err.name === 'NotAllowedError') {
-          alert(I18n.t('micError'));
-        } else {
-          alert(I18n.t('micError'));
-        }
+        this._addMessage('examiner', I18n.t('micError'));
       }
     },
 
