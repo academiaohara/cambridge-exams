@@ -158,7 +158,7 @@
 
       var apiKey = (typeof DeepSeekProvider !== 'undefined') && DeepSeekProvider.getApiKey();
       if (!apiKey) {
-        WritingType1._showApiKeyPrompt('writing-type2-eval-result');
+        CambridgeCorrector.showApiKeyPrompt('writing-type2-eval-result');
         return;
       }
 
@@ -176,7 +176,7 @@
         var taskPrompt = task ? task.prompt : '';
         var level = AppState.currentLevel || 'c1';
         var result = await CambridgeCorrector.evaluate(text, level, taskPrompt);
-        WritingType1._renderResult(resultDiv, result);
+        CambridgeCorrector.renderResult(resultDiv, result);
       } catch (err) {
         if (resultDiv) {
           resultDiv.innerHTML = '<div class="writing-eval-error"><i class="fas fa-exclamation-triangle"></i> ' +
