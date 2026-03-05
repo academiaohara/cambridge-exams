@@ -118,6 +118,18 @@
       this._showMsg(I18n.t('apiKeySaved'));
     },
 
+    sendWriting: async function(text) {
+      const res = await fetch("/api/writing", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text })
+      });
+
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      return data.corrected;
+    },
+
     evaluateWithAI: function() {
       const essay = AppState.currentExercise.answers?.[1] || '';
       if (!essay.trim()) {
@@ -133,12 +145,19 @@
       if (resultsDiv) resultsDiv.style.display = 'block';
       if (contentDiv) contentDiv.textContent = I18n.t('evaluating');
 
-      CambridgeEvaluation.evaluateWriting(essay, question, wordLimit, 'Essay')
+      // Try server endpoint first, fall back to client-side Gemini
+      this.sendWriting(essay)
         .then(text => {
           if (contentDiv) contentDiv.innerHTML = `<pre class="writing-type1-ai-text">${text}</pre>`;
         })
         .catch(() => {
-          if (contentDiv) contentDiv.textContent = I18n.t('aiError');
+          CambridgeEvaluation.evaluateWriting(essay, question, wordLimit, 'Essay')
+            .then(text => {
+              if (contentDiv) contentDiv.innerHTML = `<pre class="writing-type1-ai-text">${text}</pre>`;
+            })
+            .catch(() => {
+              if (contentDiv) contentDiv.textContent = I18n.t('aiError');
+            });
         });
     },
 
