@@ -70,20 +70,41 @@ FOR SPEAKING CHAT:
     },
 
     /**
+     * Parse a JSON writing evaluation result from raw Gemini text.
+     * Strips markdown fences if present. Returns null if parsing fails.
+     * @param {string} text - Raw text from Gemini
+     * @returns {Object|null} Parsed evaluation object or null
+     */
+    parseWritingResult: function(text) {
+      try {
+        var cleaned = text.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
+        return JSON.parse(cleaned);
+      } catch (e) {
+        var match = text.match(/\{[\s\S]*\}/);
+        if (match) {
+          try { return JSON.parse(match[0]); } catch (e2) {}
+        }
+        return null;
+      }
+    },
+
+    /**
      * Evaluate a writing submission using Gemini.
      * @param {string} essay - The candidate's text
      * @param {string} question - The task/question prompt
      * @param {string} wordLimit - Expected word range (e.g. "220-260")
      * @param {string} [taskType] - Task type (e.g. "Essay", "Review", "Letter")
-     * @returns {Promise<string>} Evaluation feedback text
+     * @returns {Promise<Object|string>} Parsed evaluation object, or raw text on parse failure
      */
     evaluateWriting: async function(essay, question, wordLimit, taskType) {
       const systemPrompt = this.getWritingSystemPrompt(taskType);
       const userPrompt = `Task type: ${taskType || 'Essay'}\nTask: ${question}\nWord limit: ${wordLimit}\n\nCandidate's response:\n${essay}`;
 
-      return await GeminiProvider.generateContent(systemPrompt, userPrompt, {
+      const text = await GeminiProvider.generateContent(systemPrompt, userPrompt, {
         maxOutputTokens: 800
       });
+
+      return this.parseWritingResult(text) || text;
     },
 
     /**
