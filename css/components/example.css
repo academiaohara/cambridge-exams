@@ -1,0 +1,112 @@
+/* css/components/example.css */
+/* Example box styles used across exercise types */
+
+.example-container {
+  background: #f0fdf4;
+  border: 2px solid #86efac;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
+}
+
+.example-container.simple {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.example-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #065f46;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.example-title i {
+  color: #10b981;
+}
+
+.example-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  background: white;
+  border-radius: 10px;
+}
+
+.example-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.example-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  background: white;
+  border: 1px solid #d1fae5;
+  color: var(--text-medium);
+}
+
+.example-option.correct {
+  background: #d1fae5;
+  color: #065f46;
+  font-weight: 600;
+  border-color: #6ee7b7;
+}
+
+.example-option i {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.example-option.correct i {
+  color: #10b981;
+}
+
+.example-explanation {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: white;
+  border-left: 3px solid #10b981;
+  border-radius: 0 10px 10px 0;
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  line-height: 1.5;
+}
+
+.example-options-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.example-option-inline {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: white;
+  border: 1px solid #d1fae5;
+  color: var(--text-medium);
+}
+
+.example-option-inline.correct {
+  background: #d1fae5;
+  color: #065f46;
+  font-weight: 600;
+  border-color: #6ee7b7;
+}
