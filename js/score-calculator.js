@@ -561,7 +561,7 @@
       html += '</div>';
 
       if (chartMode === 'cambridge') {
-        html += this._buildCambridgeChart(skillScores, grades, examType);
+        html += this._buildCambridgeChart(skillScores, grades);
       } else {
         html += this._buildRawChart(skillScores);
       }
@@ -576,7 +576,7 @@
       if (body) this._renderResultsContent(body);
     },
 
-    _buildCambridgeChart: function(skillScores, grades, examType) {
+    _buildCambridgeChart: function(skillScores, grades) {
       // Determine scale range from grades
       var lowestGrade = grades[grades.length - 1].min;
       var highestGrade = grades[0].min;
@@ -683,7 +683,7 @@
       var html = '<div class="cb-raw-chart">';
 
       skillScores.forEach(function(s) {
-        var pct = s.maxRaw > 0 ? Math.round(s.raw / s.maxRaw * 100) : 0;
+        var pct = s.maxRaw > 0 ? Math.min(100, Math.round(s.raw / s.maxRaw * 100)) : 0;
         var icon = skillIcons[s.skill] || 'fa-school';
         html += '<div class="cb-raw-row">';
         html += '<div class="cb-raw-label"><i class="fas ' + icon + '"></i> ' + s.skill + '</div>';
