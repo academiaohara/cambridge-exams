@@ -137,6 +137,12 @@
             <div class="exercise-header-right">
               <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
               <div class="exercise-toolbar">
+                <button class="btn-cambridge-score" onclick="ScoreCalculator.showLiveSectionResults()" title="${I18n.t('cambridgeScore') || 'Cambridge Score'}">
+                  <i class="fas fa-chart-bar"></i>
+                </button>
+                <button class="btn-cambridge-score btn-cambridge-overall" onclick="ScoreCalculator.showLiveOverallResults()" title="${I18n.t('overallResults') || 'Overall Results'}">
+                  <i class="fas fa-chart-line"></i>
+                </button>
                 <button class="btn-exit" onclick="Exercise.closeExercise()">
                   <i class="fas fa-times"></i>
                 </button>

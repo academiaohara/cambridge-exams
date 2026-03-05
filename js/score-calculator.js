@@ -248,6 +248,29 @@
       return 0;
     },
 
+    // Like getStoredSectionScore but includes in-progress (unchecked) scores
+    getLiveSectionScore: function(examId, section, part) {
+      // If this is the current active part, use the in-memory score
+      if (AppState.currentExamId === examId && AppState.currentSection === section && AppState.currentPart === part) {
+        return AppState.currentPartScore || 0;
+      }
+      // Otherwise check AppState.sectionScores first
+      var sectionKey = examId + '_' + section;
+      if (AppState.sectionScores[sectionKey] && AppState.sectionScores[sectionKey][part] !== undefined) {
+        return AppState.sectionScores[sectionKey][part];
+      }
+      // Fall back to localStorage, accepting even unchecked scores
+      var key = 'cambridge_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
+      try {
+        var raw = localStorage.getItem(key);
+        if (raw) {
+          var data = JSON.parse(raw);
+          return data.partScore || 0;
+        }
+      } catch(e) {}
+      return 0;
+    },
+
     getSectionMaxRaw: function(section) {
       if (section === 'reading') {
         return [1,2,3,4,5,6,7,8].reduce(function(s,p){ return s + (CONFIG.PART_TYPES[p]?.total || 0); }, 0);
@@ -360,6 +383,118 @@
 
     showOverallResults: function(examId) {
       var skillScores = this.getAllSkillScores(examId);
+      if (!skillScores.length) return;
+
+      var examType = AppState.currentLevel || 'C1';
+      var totalScale = 0;
+      skillScores.forEach(function(s) { totalScale += s.scale; });
+      var overall = Math.round(totalScale / skillScores.length);
+      var gradeInfo = getGradeInfo(overall, examType);
+
+      this.openResultsModal(skillScores, overall, gradeInfo, examType, null);
+    },
+
+    // --- Live results (include in-progress/unchecked scores) ---
+
+    getLiveSkillScoresForSection: function(examId, sectionKey) {
+      var examType = AppState.currentLevel || 'C1';
+      var data = conversionData[examType];
+      if (!data) return [];
+
+      var hasUoE = data.skills.indexOf('Use of English') !== -1;
+      var self = this;
+      var results = [];
+
+      if (sectionKey === 'reading') {
+        if (hasUoE) {
+          var uoeRaw = 0; var uoeMax = 0;
+          for (var p = 1; p <= 4; p++) {
+            uoeRaw += self.getLiveSectionScore(examId, 'reading', p);
+            uoeMax += (CONFIG.PART_TYPES[p]?.total || 0);
+          }
+          var uoeTableMax = data.tables['Use of English'][data.tables['Use of English'].length-1][0];
+          var uoeNormalized = uoeMax > 0 ? Math.round(uoeRaw / uoeMax * uoeTableMax) : 0;
+          results.push({ skill: 'Use of English', raw: uoeRaw, maxRaw: uoeMax, scale: getScaleScore(uoeNormalized, data.tables['Use of English']) });
+
+          var readRaw = 0; var readMax = 0;
+          for (var p2 = 5; p2 <= 8; p2++) {
+            readRaw += self.getLiveSectionScore(examId, 'reading', p2);
+            readMax += (CONFIG.PART_TYPES[p2]?.total || 0);
+          }
+          var readTableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
+          var readNormalized = readMax > 0 ? Math.round(readRaw / readMax * readTableMax) : 0;
+          results.push({ skill: 'Reading', raw: readRaw, maxRaw: readMax, scale: getScaleScore(readNormalized, data.tables['Reading']) });
+        } else {
+          var rawTotal = 0; var maxTotal = 0;
+          for (var p3 = 1; p3 <= 8; p3++) {
+            rawTotal += self.getLiveSectionScore(examId, 'reading', p3);
+            maxTotal += (CONFIG.PART_TYPES[p3]?.total || 0);
+          }
+          var tableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
+          var normalized = maxTotal > 0 ? Math.round(rawTotal / maxTotal * tableMax) : 0;
+          results.push({ skill: 'Reading', raw: rawTotal, maxRaw: maxTotal, scale: getScaleScore(normalized, data.tables['Reading']) });
+        }
+      } else {
+        var skillName = sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
+        var parts = sectionKey === 'writing' ? [1,2] : [1,2,3,4];
+        var sRaw = 0; var sMax = 0;
+        parts.forEach(function(pp) {
+          sRaw += self.getLiveSectionScore(examId, sectionKey, pp);
+          sMax += (CONFIG.PART_TYPES[sectionKey+pp]?.total || 0);
+        });
+        if (data.tables[skillName]) {
+          var stMax = data.tables[skillName][data.tables[skillName].length-1][0];
+          var sNorm = sMax > 0 ? Math.round(sRaw / sMax * stMax) : 0;
+          results.push({ skill: skillName, raw: sRaw, maxRaw: sMax, scale: getScaleScore(sNorm, data.tables[skillName]) });
+        }
+      }
+      return results;
+    },
+
+    getAllLiveSkillScores: function(examId) {
+      var examType = AppState.currentLevel || 'C1';
+      var data = conversionData[examType];
+      if (!data) return [];
+
+      var readingScores = this.getLiveSkillScoresForSection(examId, 'reading');
+      var listeningScores = this.getLiveSkillScoresForSection(examId, 'listening');
+      var writingScores = this.getLiveSkillScoresForSection(examId, 'writing');
+      var speakingScores = this.getLiveSkillScoresForSection(examId, 'speaking');
+
+      var allScores = {};
+      readingScores.concat(listeningScores, writingScores, speakingScores).forEach(function(s) {
+        allScores[s.skill] = s;
+      });
+
+      var ordered = [];
+      data.skills.forEach(function(skill) {
+        if (allScores[skill]) ordered.push(allScores[skill]);
+      });
+      return ordered;
+    },
+
+    showLiveSectionResults: function() {
+      var examId = AppState.currentExamId;
+      var sectionKey = AppState.currentSection;
+      if (!examId || !sectionKey) return;
+
+      var skillScores = this.getLiveSkillScoresForSection(examId, sectionKey);
+      if (!skillScores.length) return;
+
+      var examType = AppState.currentLevel || 'C1';
+      var totalScale = 0;
+      skillScores.forEach(function(s) { totalScale += s.scale; });
+      var overall = Math.round(totalScale / skillScores.length);
+      var gradeInfo = getGradeInfo(overall, examType);
+
+      this.openResultsModal(skillScores, overall, gradeInfo, examType, sectionKey);
+    },
+
+    showLiveOverallResults: function() {
+      var examId = AppState.currentExamId;
+      if (!examId) return;
+
+      var skillScores = this.getAllLiveSkillScores(examId);
       if (!skillScores.length) return;
 
       var examType = AppState.currentLevel || 'C1';
