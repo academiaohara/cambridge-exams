@@ -53,11 +53,20 @@
   "errorsDetected": "ошибок обнаружено",
   "applyFix": "Исправить",
   "writingSuggestions": "Предложения",
-  "apiKeyPrompt": "Введите ваш API-ключ DeepSeek",
+  "apiKeyPrompt": "Введите ваш API ключ Gemini",
   "content": "Содержание",
   "communicativeAchievement": "Коммуникативное достижение",
   "organisation": "Организация",
   "language": "Язык",
   "strengths": "Сильные стороны",
-  "improvements": "Области для улучшения"
+  "improvements": "Области для улучшения",
+  "noApiKey": "API ключ Gemini не задан. Задайте его для оценки с помощью ИИ.",
+  "howToGetApiKey": "Как получить API ключ?",
+  "howToGetApiKeyTitle": "Как получить API ключ Gemini (Бесплатно)",
+  "apiKeyHelpIntro": "Чтобы бесплатно оценить ваш экзамен, вам нужен собственный ключ доступа. Это займёт всего 30 секунд:",
+  "apiKeyStep1": "Перейдите на",
+  "apiKeyStep2": "Войдите в свою учётную запись Google.",
+  "apiKeyStep3": "На левой боковой панели нажмите кнопку \"Get API key\".",
+  "apiKeyStep4": "Нажмите \"Create API key in new project\".",
+  "apiKeyStep5": "Скопируйте ключ (начинается с AIza...) и вставьте его в поле настроек на нашей странице."
 }
