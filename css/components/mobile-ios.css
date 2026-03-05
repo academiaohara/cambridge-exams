@@ -295,6 +295,28 @@
     transform: scale(0.94);
   }
 
+  .section-results-btn {
+    background: rgba(0, 122, 255, 0.1);
+    color: #007AFF;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+  }
+
+  .section-results-btn:active {
+    background: rgba(0, 122, 255, 0.22);
+    transform: scale(0.94);
+  }
+
+  .exam-results-btn {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .exam-results-btn:active {
+    background: rgba(255, 255, 255, 0.32);
+    transform: scale(0.94);
+  }
+
   /* Part number circles */
   .part-number {
     width: 44px;

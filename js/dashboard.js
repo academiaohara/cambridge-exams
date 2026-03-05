@@ -61,6 +61,9 @@
                 <div class="exam-subtitle">${I18n.t('availableExercises')}</div>
               </div>
             </div>
+            <button class="exam-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showOverallResults('${exam.id}')" title="${I18n.t('overallResults') || 'Overall Results'}">
+              <i class="fas fa-chart-bar"></i>
+            </button>
             <i class="fas fa-chevron-down exam-arrow"></i>
           </div>
           <div class="exam-content">
@@ -89,6 +92,9 @@
             <h4>${section.name}</h4>
             <button class="section-play" onclick="event.stopPropagation(); Exercise.startFullSection('${exam.id}', '${sectionKey}')">
               <i class="fas fa-play"></i>
+            </button>
+            <button class="section-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showSectionResults('${exam.id}', '${sectionKey}')" title="${I18n.t('sectionResults') || 'Section Results'}">
+              <i class="fas fa-chart-bar"></i>
             </button>
             <span class="section-progress">${section.completed.length}/${section.total}</span>
           </div>

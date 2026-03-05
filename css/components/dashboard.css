@@ -301,3 +301,193 @@
   margin-left: 8px;
   font-weight: 500;
 }
+
+/* ── Results buttons ── */
+.exam-results-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1rem;
+  margin-left: auto;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.exam-results-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
+}
+
+.section-results-btn {
+  background: transparent;
+  color: var(--primary);
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.section-results-btn:hover {
+  transform: scale(1.2);
+  color: var(--secondary);
+}
+
+.section-results-btn i {
+  font-size: 1rem;
+  background: transparent;
+  color: inherit;
+}
+
+/* ── Results modal ── */
+.results-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.results-modal-content {
+  background: var(--white, #fff);
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.3s ease;
+  box-sizing: border-box;
+}
+
+.results-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-light, #999);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 10;
+}
+
+.results-modal-close:hover {
+  color: var(--text-dark, #333);
+}
+
+.results-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--primary, #667eea), var(--secondary, #764ba2)) 1;
+}
+
+.results-modal-header h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-dark, #333);
+  margin: 0;
+}
+
+.results-exam-level {
+  background: linear-gradient(135deg, var(--primary, #667eea), var(--secondary, #764ba2));
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.results-skills-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.results-skill-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.results-skill-row i {
+  font-size: 1rem;
+  color: var(--primary, #667eea);
+  width: 20px;
+  text-align: center;
+}
+
+.results-skill-name {
+  font-weight: 600;
+  color: var(--text-dark, #333);
+  flex: 1;
+}
+
+.results-skill-raw {
+  font-size: 0.85rem;
+  color: var(--text-light, #999);
+  font-weight: 500;
+}
+
+.results-skill-scale {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--primary, #667eea);
+  min-width: 36px;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .results-modal-content {
+    padding: 16px;
+    border-radius: 16px;
+    max-height: 85vh;
+  }
+
+  .results-modal-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .exam-results-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .section-results-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+}
