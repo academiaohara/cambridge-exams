@@ -1,6 +1,8 @@
 import fetch from "node-fetch";
 
 export async function correctWriting(text) {
+  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
+
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -8,11 +10,12 @@ export async function correctWriting(text) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: "gpt-4o-mini",
+      model,
+      response_format: { type: "json_object" },
       messages: [
         {
           role: "system",
-          content: "You are an English teacher correcting student writing."
+          content: "You are an English teacher correcting student writing. Always respond in valid JSON."
         },
         {
           role: "user",
@@ -21,7 +24,7 @@ export async function correctWriting(text) {
   "corrected_text": "...",
   "errors": [{"original": "...", "correction": "...", "explanation": "..."}],
   "suggestions": ["..."],
-  "score": {"grammar": 0, "vocabulary": 0, "coherence": 0, "task_response": 0},
+  "score": {"grammar": 0-10, "vocabulary": 0-10, "coherence": 0-10, "task_response": 0-10},
   "feedback": "..."
 }
 
@@ -31,6 +34,14 @@ Writing: ${text}`
     }),
   });
 
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error?.message || `OpenAI API error: ${response.status}`);
+  }
+
   const data = await response.json();
+  if (!data.choices || !data.choices[0]?.message?.content) {
+    throw new Error("Empty response from OpenAI");
+  }
   return data.choices[0].message.content;
 }
