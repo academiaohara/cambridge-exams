@@ -54,7 +54,8 @@
       });
       
       // Update partial (part) score
-      const partTotal = AppState.currentExercise.totalQuestions || partConfig.total;
+      const isWritingOrSpeaking = AppState.currentSection === 'writing' || AppState.currentSection === 'speaking';
+      const partTotal = isWritingOrSpeaking ? partConfig.total : (AppState.currentExercise.totalQuestions || partConfig.total);
       const partScoreElement = document.getElementById('part-score-display');
       if (partScoreElement) {
         partScoreElement.innerHTML = `${correct}/${partTotal}`;

@@ -22,6 +22,7 @@
             <span class="writing-type2-task-title">${task.title}</span>
           </div>
           <p class="writing-type2-task-preview">${task.prompt.substring(0, 100)}${task.prompt.length > 100 ? '…' : ''}</p>
+          <div class="writing-type2-task-full-prompt" style="display:none;">${task.prompt}</div>
         </div>
       `).join('');
 
@@ -81,7 +82,12 @@
       this.selectedTaskId = taskId;
 
       document.querySelectorAll('.writing-type2-task-option').forEach(el => {
-        el.classList.toggle('selected', el.dataset.taskId === taskId);
+        const isSelected = el.dataset.taskId === taskId;
+        el.classList.toggle('selected', isSelected);
+        const preview = el.querySelector('.writing-type2-task-preview');
+        const fullPrompt = el.querySelector('.writing-type2-task-full-prompt');
+        if (preview) preview.style.display = isSelected ? 'none' : '';
+        if (fullPrompt) fullPrompt.style.display = isSelected ? 'block' : 'none';
       });
 
       const tasks = AppState.currentExercise.content.tasks || [];
