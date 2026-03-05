@@ -34,7 +34,18 @@
             <button class="btn-evaluate-ai" onclick="WritingType1.evaluateWithAI()">
               <i class="fas fa-robot"></i> ${I18n.t('evaluateAI')}
             </button>
+            <button class="btn-set-api-key" onclick="WritingType1.toggleApiKeyInput()">
+              <i class="fas fa-key"></i> ${I18n.t('setApiKey')}
+            </button>
           </div>
+          <div class="writing-api-key-row" id="writing-type1-api-key-row" style="display:none;">
+            <input type="password" class="writing-api-key-input" id="writing-type1-api-key-input"
+                   placeholder="${I18n.t('apiKeyPrompt')}" />
+            <button class="btn-save-api-key" onclick="WritingType1.saveApiKey()">
+              <i class="fas fa-check"></i>
+            </button>
+          </div>
+          <div class="writing-inline-msg" id="writing-type1-msg" style="display:none;"></div>
           <div class="writing-type1-ai-results" id="writing-type1-ai-results" style="display:none;">
             <h4><i class="fas fa-star"></i> ${I18n.t('aiEvaluation')}</h4>
             <div id="writing-type1-ai-content"></div>
@@ -70,10 +81,47 @@
       this._updateCount(value);
     },
 
+    _showMsg: function(text) {
+      const msg = document.getElementById('writing-type1-msg');
+      if (!msg) return;
+      msg.textContent = text;
+      msg.style.display = 'block';
+      clearTimeout(this._msgTimer);
+      this._msgTimer = setTimeout(() => { msg.style.display = 'none'; }, 4000);
+    },
+
+    toggleApiKeyInput: function() {
+      const row = document.getElementById('writing-type1-api-key-row');
+      if (!row) return;
+      const visible = row.style.display !== 'none';
+      row.style.display = visible ? 'none' : 'flex';
+      if (!visible) {
+        const input = document.getElementById('writing-type1-api-key-input');
+        if (input) {
+          input.value = localStorage.getItem('gemini_api_key') || '';
+          input.focus();
+        }
+      }
+    },
+
+    saveApiKey: function() {
+      const input = document.getElementById('writing-type1-api-key-input');
+      if (!input) return;
+      const key = input.value.trim();
+      if (key) {
+        localStorage.setItem('gemini_api_key', key);
+      } else {
+        localStorage.removeItem('gemini_api_key');
+      }
+      const row = document.getElementById('writing-type1-api-key-row');
+      if (row) row.style.display = 'none';
+      this._showMsg(I18n.t('apiKeySaved'));
+    },
+
     evaluateWithAI: function() {
       const essay = AppState.currentExercise.answers?.[1] || '';
       if (!essay.trim()) {
-        alert(I18n.t('writeEssay'));
+        this._showMsg(I18n.t('writeEssay'));
         return;
       }
 
