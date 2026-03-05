@@ -187,9 +187,9 @@
           const score = this._extractScore(text);
           this._updatePartScore(score);
 
-          // Display feedback (exclude corrected text section)
+          // Display feedback in tabs (exclude corrected text section)
           const feedbackText = text.replace(/✏️\s*CORRECTED TEXT\s*\n[\s\S]*?(?=\n📝\s*DETAILED FEEDBACK|\n✅|\n⚠️|$)/i, '');
-          if (contentDiv) contentDiv.innerHTML = `<div class="writing-ai-feedback">${this._formatFeedback(feedbackText)}</div>`;
+          if (contentDiv) contentDiv.innerHTML = this._buildFeedbackTabs(feedbackText, 'type1');
         })
         .catch(() => {
           if (contentDiv) contentDiv.textContent = I18n.t('aiError');
@@ -197,6 +197,75 @@
           if (textarea) { textarea.disabled = false; textarea.style.display = ''; }
           if (evalBtn) evalBtn.disabled = false;
         });
+    },
+
+    _parseFeedbackSections: function(text) {
+      const sections = { scores: '', detailed: '', strengths: '', improvements: '' };
+      const escaped = text
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+      // Extract scores section
+      const scoresMatch = escaped.match(/📊\s*SCORES\s*\n([\s\S]*?)(?=\n✏️|\n📝|\n✅|\n⚠️|$)/i);
+      if (scoresMatch) sections.scores = scoresMatch[1].trim();
+
+      // Extract detailed feedback section
+      const detailedMatch = escaped.match(/📝\s*DETAILED FEEDBACK\s*\n([\s\S]*?)(?=\n✅|\n⚠️|$)/i);
+      if (detailedMatch) sections.detailed = detailedMatch[1].trim();
+
+      // Extract strengths section
+      const strengthsMatch = escaped.match(/✅\s*STRENGTHS\s*\n([\s\S]*?)(?=\n⚠️|$)/i);
+      if (strengthsMatch) sections.strengths = strengthsMatch[1].trim();
+
+      // Extract improvements section
+      const improvementsMatch = escaped.match(/⚠️\s*AREAS FOR IMPROVEMENT\s*\n([\s\S]*?)$/i);
+      if (improvementsMatch) sections.improvements = improvementsMatch[1].trim();
+
+      return sections;
+    },
+
+    _formatSectionContent: function(text) {
+      return text
+        .replace(/^• (.+)/gm, '<div class="writing-score-line">$1</div>')
+        .replace(/\n/g, '<br>');
+    },
+
+    _buildFeedbackTabs: function(text, prefix) {
+      const sections = this._parseFeedbackSections(text);
+      const tabs = [
+        { id: 'scores', icon: 'fa-chart-bar', label: I18n.t('feedbackScores'), content: sections.scores },
+        { id: 'detailed', icon: 'fa-comment-dots', label: I18n.t('feedbackDetailed'), content: sections.detailed },
+        { id: 'strengths', icon: 'fa-check-circle', label: I18n.t('feedbackStrengths'), content: sections.strengths },
+        { id: 'improvements', icon: 'fa-exclamation-triangle', label: I18n.t('feedbackImprovements'), content: sections.improvements }
+      ].filter(t => t.content);
+
+      if (!tabs.length) return '<div class="writing-ai-feedback">' + text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>') + '</div>';
+
+      let html = '<div class="writing-feedback-tabs">';
+      html += '<div class="writing-feedback-tab-buttons">';
+      tabs.forEach((tab, i) => {
+        html += `<button class="writing-feedback-tab-btn${i === 0 ? ' active' : ''}" data-tab="${prefix}-${tab.id}" onclick="WritingType1.switchFeedbackTab('${prefix}', '${tab.id}')">
+          <i class="fas ${tab.icon}"></i> ${tab.label}
+        </button>`;
+      });
+      html += '</div>';
+
+      tabs.forEach((tab, i) => {
+        html += `<div class="writing-feedback-tab-panel${i === 0 ? ' active' : ''}" id="panel-${prefix}-${tab.id}">
+          <div class="writing-ai-feedback">${this._formatSectionContent(tab.content)}</div>
+        </div>`;
+      });
+
+      html += '</div>';
+      return html;
+    },
+
+    switchFeedbackTab: function(prefix, tabId) {
+      document.querySelectorAll(`.writing-feedback-tab-btn[data-tab^="${prefix}-"]`).forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === `${prefix}-${tabId}`);
+      });
+      document.querySelectorAll(`.writing-feedback-tab-panel[id^="panel-${prefix}-"]`).forEach(panel => {
+        panel.classList.toggle('active', panel.id === `panel-${prefix}-${tabId}`);
+      });
     },
 
     _formatFeedback: function(text) {

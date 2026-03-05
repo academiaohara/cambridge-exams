@@ -94,7 +94,7 @@
       const totalParts = exam?.sections[section]?.total || 1;
       const sectionTotalQuestions = this.getSectionTotalQuestions(section);
       
-      const partTotal = exercise.totalQuestions || partConfig.total;
+      const partTotal = (section === 'writing' || section === 'speaking') ? partConfig.total : (exercise.totalQuestions || partConfig.total);
       
       // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
       let contentHeaderHTML = '';
@@ -164,7 +164,7 @@
           
           ${exampleHTML}
           
-          <div class="tool-tabs-horizontal">
+          ${section !== 'writing' && section !== 'speaking' ? `<div class="tool-tabs-horizontal">
             <button class="tool-btn-nav" id="tab-notes" onclick="Tools.switchTool('notes')">
               <i class="fas fa-highlighter"></i> <span data-i18n="highlight">${I18n.t('highlight')}</span>
             </button>
@@ -183,7 +183,7 @@
             ${section === 'listening' ? `<button class="tool-btn-nav" id="tab-transcript" onclick="Tools.switchTool('transcript')">
               <i class="fas fa-file-audio"></i> <span data-i18n="transcript">${I18n.t('transcript')}</span>
             </button>` : ''}
-          </div>
+          </div>` : ''}
           
           ${contentHeaderHTML}
           
@@ -193,9 +193,9 @@
             </div>
           </div>
 
-          <div id="active-tool-content" class="active-tool-content">
+          ${section !== 'writing' && section !== 'speaking' ? `<div id="active-tool-content" class="active-tool-content">
             <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
-          </div>
+          </div>` : ''}
           
           ${this.renderExplanationsSection(exercise)}
           
