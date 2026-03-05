@@ -1,5 +1,5 @@
 // js/exercise-types/speaking-type.js
-// Speaking interface - Cambridge C1 Speaking Parts
+// Speaking task display - Cambridge C1 Speaking Parts
 
 (function() {
   window.SpeakingType = {
