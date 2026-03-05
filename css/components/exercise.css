@@ -69,6 +69,39 @@
   transform: rotate(90deg);
 }
 
+/* Cambridge Score buttons in exercise toolbar */
+.btn-cambridge-score {
+  background: #e30613;
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(227, 6, 19, 0.3);
+}
+
+.btn-cambridge-score:hover {
+  background: #c00510;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(227, 6, 19, 0.45);
+}
+
+.btn-cambridge-overall {
+  background: #b71c1c;
+  box-shadow: 0 2px 8px rgba(183, 28, 28, 0.3);
+}
+
+.btn-cambridge-overall:hover {
+  background: #8e0000;
+  box-shadow: 0 4px 12px rgba(183, 28, 28, 0.45);
+}
+
 .exercise-info {
   display: flex;
   justify-content: space-between;
