@@ -135,7 +135,7 @@
             <button class="btn-back" onclick="loadDashboard()">
               <i class="fas fa-arrow-left"></i> ${I18n.t('backToDashboard') || 'Back'}
             </button>
-            <h2><i class="fas fa-calculator"></i> Score Calculator</h2>
+            <h2><i class="fas fa-calculator"></i> ${I18n.t('scoreCalculator') || 'Score Calculator'}</h2>
           </div>
 
           <div class="sc-selector">
@@ -204,26 +204,26 @@
     },
 
     calculateExam: function() {
-      var examType = document.getElementById('examSelector').value;
-      var data = conversionData[examType];
-      var skills = data.skills;
-      var totalScale = 0;
-      var skillScores = [];
+      const examType = document.getElementById('examSelector').value;
+      const data = conversionData[examType];
+      const skills = data.skills;
+      let totalScale = 0;
+      const skillScores = [];
 
       skills.forEach(function(skill) {
-        var el = document.getElementById('input-' + skill);
-        var raw = parseInt(el ? el.value : '0', 10) || 0;
-        var table = data.tables[skill];
-        var maxRaw = table[table.length - 1][0];
+        const el = document.getElementById('input-' + skill);
+        let raw = parseInt(el ? el.value : '0', 10) || 0;
+        const table = data.tables[skill];
+        const maxRaw = table[table.length - 1][0];
         if (raw > maxRaw) raw = maxRaw;
         if (raw < 0) raw = 0;
-        var scale = getScaleScore(raw, table);
+        const scale = getScaleScore(raw, table);
         totalScale += scale;
         skillScores.push({ skill: skill, raw: raw, scale: scale });
       });
 
-      var overall = Math.round(totalScale / skills.length);
-      var gradeInfo = getGradeInfo(overall, examType);
+      const overall = Math.round(totalScale / skills.length);
+      const gradeInfo = getGradeInfo(overall, examType);
 
       document.getElementById('resultText').innerText = gradeInfo.result;
       document.getElementById('overallScore').innerText = overall;
@@ -235,18 +235,16 @@
     },
 
     renderChart: function(skillScores, overall, examType) {
-      var chartArea = document.getElementById('chartArea');
+      const chartArea = document.getElementById('chartArea');
       if (!chartArea) return;
 
-      var grades = conversionData[examType].grades;
-      var minBand = grades[grades.length - 1].min;
-      var maxBand = grades[0].min;
+      const grades = conversionData[examType].grades;
 
-      var html = '<div class="chart-scale">';
+      let html = '<div class="chart-scale">';
 
       // Scale labels on left
       html += '<div class="chart-labels">';
-      for (var s = SCALE_MAX; s >= SCALE_MIN; s -= 10) {
+      for (let s = SCALE_MAX; s >= SCALE_MIN; s -= 10) {
         html += '<div class="chart-label">' + s + '</div>';
       }
       html += '</div>';
@@ -257,11 +255,11 @@
       // Grade bands background
       html += '<div class="chart-bands">';
       grades.forEach(function(g, i) {
-        var top = grades[i - 1] ? grades[i - 1].min : SCALE_MAX;
-        var bottom = g.min;
-        var topPct = 100 - arrowPercent(top);
-        var bottomPct = 100 - arrowPercent(bottom);
-        var heightPct = bottomPct - topPct;
+        const top = grades[i - 1] ? grades[i - 1].min : SCALE_MAX;
+        const bottom = g.min;
+        const topPct = 100 - arrowPercent(top);
+        const bottomPct = 100 - arrowPercent(bottom);
+        const heightPct = bottomPct - topPct;
         html += '<div class="chart-band" style="top:' + topPct + '%;height:' + heightPct + '%;" title="' + g.label + ' (' + g.cefr + ')">';
         html += '<span class="band-label">' + g.label + '</span>';
         html += '</div>';
@@ -270,7 +268,7 @@
 
       // Skill columns
       skillScores.forEach(function(item) {
-        var pct = arrowPercent(item.scale);
+        const pct = arrowPercent(item.scale);
         html += '<div class="chart-column">';
         html += '<div class="chart-bar-area">';
         html += '<div class="arrow-marker" style="bottom:' + pct + '%;">' + item.scale + '</div>';
@@ -280,7 +278,7 @@
       });
 
       // Overall column
-      var overallPct = arrowPercent(overall);
+      const overallPct = arrowPercent(overall);
       html += '<div class="chart-column overall-column">';
       html += '<div class="chart-bar-area">';
       html += '<div class="arrow-marker overall-marker" style="bottom:' + overallPct + '%;">' + overall + '</div>';
