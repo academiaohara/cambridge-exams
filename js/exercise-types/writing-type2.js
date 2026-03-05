@@ -36,10 +36,16 @@
           <div class="writing-type2-writing-section" id="writing-type2-writing-area" style="display:none;">
             <div class="writing-type2-prompt" id="writing-type2-prompt-box"></div>
             <textarea class="writing-type2-textarea writing-textarea"
+                      lang="en" spellcheck="true"
                       placeholder="${I18n.t('writeEssay')}..."
                       oninput="WritingType2.handleInput(this.value)"></textarea>
-            <div class="writing-type2-word-count">
-              <span id="writing-type2-count">0</span> ${I18n.t('wordsWritten')}
+            <div class="writing-type2-footer-row">
+              <div class="writing-type2-word-count">
+                <span id="writing-type2-count">0</span> ${I18n.t('wordsWritten')}
+              </div>
+              <button class="btn-copy-clipboard" onclick="WritingType2.copyToClipboard()" title="${I18n.t('copyClipboard')}">
+                <i class="fas fa-copy"></i> ${I18n.t('copyClipboard')}
+              </button>
             </div>
             <div class="writing-type2-actions">
               <button class="btn-evaluate-ai" onclick="WritingType2.evaluateWithAI()">
@@ -128,11 +134,24 @@
       this._msgTimer = setTimeout(() => { msg.style.display = 'none'; }, 4000);
     },
 
-    sendWriting: async function(text) {
+    copyToClipboard: function() {
+      const essay = AppState.currentExercise.answers?.[this.selectedTaskId] || '';
+      if (!essay.trim()) {
+        this._showMsg(I18n.t('writeEssay'));
+        return;
+      }
+      navigator.clipboard.writeText(essay).then(() => {
+        this._showMsg(I18n.t('copiedClipboard'));
+      }).catch(() => {
+        this._showMsg(I18n.t('copyError'));
+      });
+    },
+
+    sendWriting: async function(text, taskType, taskPrompt) {
       const res = await fetch("/api/writing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text })
+        body: JSON.stringify({ text, taskType, taskPrompt })
       });
 
       const data = await res.json();
@@ -141,7 +160,12 @@
     },
 
     evaluateWithAI: function() {
-      const essay = AppState.currentExercise.answers?.[this.selectedTaskId || 1] || '';
+      if (!this.selectedTaskId) {
+        this._showMsg(I18n.t('selectTask'));
+        return;
+      }
+
+      const essay = AppState.currentExercise.answers?.[this.selectedTaskId] || '';
       if (!essay.trim()) {
         this._showMsg(I18n.t('writeEssay'));
         return;
@@ -150,15 +174,28 @@
       const resultsDiv = document.getElementById('writing-type2-ai-results');
       const contentDiv = document.getElementById('writing-type2-ai-content');
       if (resultsDiv) resultsDiv.style.display = 'block';
-      if (contentDiv) contentDiv.textContent = I18n.t('evaluating');
+      if (contentDiv) contentDiv.innerHTML = `<div class="writing-ai-loading"><i class="fas fa-spinner fa-spin"></i> ${I18n.t('evaluating')}</div>`;
 
-      this.sendWriting(essay)
+      const tasks = AppState.currentExercise.content.tasks || [];
+      const task = tasks.find(t => t.id === this.selectedTaskId);
+      const taskType = task?.type || '';
+      const taskPrompt = task?.prompt || '';
+
+      this.sendWriting(essay, taskType, taskPrompt)
         .then(text => {
-          if (contentDiv) contentDiv.innerHTML = `<pre class="writing-type2-ai-text">${text}</pre>`;
+          if (contentDiv) contentDiv.innerHTML = `<div class="writing-ai-feedback">${this._formatFeedback(text)}</div>`;
         })
         .catch(() => {
           if (contentDiv) contentDiv.textContent = I18n.t('aiError');
         });
+    },
+
+    _formatFeedback: function(text) {
+      return text
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/^(📊 SCORES|📝 DETAILED FEEDBACK|✅ STRENGTHS|⚠️ AREAS FOR IMPROVEMENT|📌 CAMBRIDGE ENGLISH SCALE)/gm, '<h5 class="writing-feedback-heading">$1</h5>')
+        .replace(/^• (.+)/gm, '<div class="writing-score-line">$1</div>')
+        .replace(/\n/g, '<br>');
     },
 
     checkAnswers: function() {

@@ -122,10 +122,15 @@
   color: var(--text-medium);
 }
 
+.writing-type2-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .writing-type2-word-count {
   color: var(--text-medium);
   font-size: 0.875rem;
-  text-align: right;
 }
 
 .writing-type2-actions {
