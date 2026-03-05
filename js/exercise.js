@@ -153,6 +153,8 @@
         
         Timer.startTimer();
         
+        history.pushState({ view: 'exercise', examId: examId, section: section, part: part }, '');
+        
       } catch (error) {
         console.error('❌ Error crítico:', error);
         content.innerHTML = `
@@ -266,7 +268,8 @@
       }
     },
     
-    closeExercise: function() {
+    closeExercise: function(opts) {
+      opts = opts || {};
       Modal.closeOptionsModal();
       if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
       
@@ -274,6 +277,9 @@
         clearInterval(Timer.timerInterval);
         Timer.timerInterval = null;
       }
+      
+      // Remember which exam was open so we can expand it in the dashboard
+      var returnToExamId = AppState.currentExamId;
       
       AppState.currentExercise = null;
       AppState.currentSection = null;
@@ -286,7 +292,10 @@
       AppState.sectionScores = {};
       AppState.currentPartScore = 0;
       
-      Dashboard.render();
+      Dashboard.render(returnToExamId);
+      if (!opts.skipHistory) {
+        history.pushState({ view: 'dashboard' }, '');
+      }
     },
     
     markPartInProgress: function(examId, section, part) {

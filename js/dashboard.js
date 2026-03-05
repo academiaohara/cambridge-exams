@@ -1,7 +1,7 @@
 // js/dashboard.js
 (function() {
   window.Dashboard = {
-    render: function() {
+    render: function(expandExamId) {
       const content = document.getElementById('main-content');
       if (!content) return;
       if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
@@ -24,7 +24,7 @@
         if (exam.status === 'coming_soon') {
           html += this.renderComingSoonExam(exam);
         } else {
-          html += this.renderAvailableExam(exam);
+          html += this.renderAvailableExam(exam, expandExamId);
         }
       });
       html += '</div>';
@@ -50,10 +50,11 @@
       `;
     },
     
-    renderAvailableExam: function(exam) {
+    renderAvailableExam: function(exam, expandExamId) {
+      var isOpen = expandExamId && exam.id === expandExamId;
       let html = `
         <div class="exam-item">
-          <div class="exam-header" onclick="Dashboard.toggleExam(this)">
+          <div class="exam-header${isOpen ? ' active' : ''}" onclick="Dashboard.toggleExam(this)">
             <div class="exam-header-left">
               <span class="exam-number">${exam.number}</span>
               <div>
@@ -66,7 +67,7 @@
             </button>
             <i class="fas fa-chevron-down exam-arrow"></i>
           </div>
-          <div class="exam-content">
+          <div class="exam-content${isOpen ? ' show' : ''}">
             <div class="exam-sections">
       `;
       
