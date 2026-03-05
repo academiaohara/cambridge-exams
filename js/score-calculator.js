@@ -234,6 +234,230 @@
       document.getElementById('statementOfResults').scrollIntoView({ behavior: 'smooth' });
     },
 
+    // --- Results from stored exam scores ---
+
+    getStoredSectionScore: function(examId, section, part) {
+      var key = 'cambridge_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
+      try {
+        var raw = localStorage.getItem(key);
+        if (raw) {
+          var data = JSON.parse(raw);
+          if (data.answersChecked) return data.partScore || 0;
+        }
+      } catch(e) {}
+      return 0;
+    },
+
+    getSectionMaxRaw: function(section) {
+      if (section === 'reading') {
+        return [1,2,3,4,5,6,7,8].reduce(function(s,p){ return s + (CONFIG.PART_TYPES[p]?.total || 0); }, 0);
+      }
+      if (section === 'listening') {
+        return [1,2,3,4].reduce(function(s,p){ return s + (CONFIG.PART_TYPES['listening'+p]?.total || 0); }, 0);
+      }
+      if (section === 'writing') {
+        return [1,2].reduce(function(s,p){ return s + (CONFIG.PART_TYPES['writing'+p]?.total || 0); }, 0);
+      }
+      if (section === 'speaking') {
+        return [1,2,3,4].reduce(function(s,p){ return s + (CONFIG.PART_TYPES['speaking'+p]?.total || 0); }, 0);
+      }
+      return 0;
+    },
+
+    getSkillScoresForSection: function(examId, sectionKey) {
+      var examType = AppState.currentLevel || 'C1';
+      var data = conversionData[examType];
+      if (!data) return [];
+
+      var hasUoE = data.skills.indexOf('Use of English') !== -1;
+      var self = this;
+      var results = [];
+
+      if (sectionKey === 'reading') {
+        if (hasUoE) {
+          // Parts 1-4 → Use of English
+          var uoeRaw = 0; var uoeMax = 0;
+          for (var p = 1; p <= 4; p++) {
+            uoeRaw += self.getStoredSectionScore(examId, 'reading', p);
+            uoeMax += (CONFIG.PART_TYPES[p]?.total || 0);
+          }
+          var uoeTableMax = data.tables['Use of English'][data.tables['Use of English'].length-1][0];
+          var uoeNormalized = uoeMax > 0 ? Math.round(uoeRaw / uoeMax * uoeTableMax) : 0;
+          results.push({ skill: 'Use of English', raw: uoeRaw, maxRaw: uoeMax, scale: getScaleScore(uoeNormalized, data.tables['Use of English']) });
+
+          // Parts 5-8 → Reading
+          var readRaw = 0; var readMax = 0;
+          for (var p2 = 5; p2 <= 8; p2++) {
+            readRaw += self.getStoredSectionScore(examId, 'reading', p2);
+            readMax += (CONFIG.PART_TYPES[p2]?.total || 0);
+          }
+          var readTableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
+          var readNormalized = readMax > 0 ? Math.round(readRaw / readMax * readTableMax) : 0;
+          results.push({ skill: 'Reading', raw: readRaw, maxRaw: readMax, scale: getScaleScore(readNormalized, data.tables['Reading']) });
+        } else {
+          // A2/B1: All parts → Reading
+          var rawTotal = 0; var maxTotal = 0;
+          for (var p3 = 1; p3 <= 8; p3++) {
+            rawTotal += self.getStoredSectionScore(examId, 'reading', p3);
+            maxTotal += (CONFIG.PART_TYPES[p3]?.total || 0);
+          }
+          var tableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
+          var normalized = maxTotal > 0 ? Math.round(rawTotal / maxTotal * tableMax) : 0;
+          results.push({ skill: 'Reading', raw: rawTotal, maxRaw: maxTotal, scale: getScaleScore(normalized, data.tables['Reading']) });
+        }
+      } else {
+        var skillName = sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
+        var parts = sectionKey === 'writing' ? [1,2] : [1,2,3,4];
+        var sRaw = 0; var sMax = 0;
+        parts.forEach(function(pp) {
+          sRaw += self.getStoredSectionScore(examId, sectionKey, pp);
+          sMax += (CONFIG.PART_TYPES[sectionKey+pp]?.total || 0);
+        });
+        if (data.tables[skillName]) {
+          var stMax = data.tables[skillName][data.tables[skillName].length-1][0];
+          var sNorm = sMax > 0 ? Math.round(sRaw / sMax * stMax) : 0;
+          results.push({ skill: skillName, raw: sRaw, maxRaw: sMax, scale: getScaleScore(sNorm, data.tables[skillName]) });
+        }
+      }
+      return results;
+    },
+
+    getAllSkillScores: function(examId) {
+      var examType = AppState.currentLevel || 'C1';
+      var data = conversionData[examType];
+      if (!data) return [];
+
+      var readingScores = this.getSkillScoresForSection(examId, 'reading');
+      var listeningScores = this.getSkillScoresForSection(examId, 'listening');
+      var writingScores = this.getSkillScoresForSection(examId, 'writing');
+      var speakingScores = this.getSkillScoresForSection(examId, 'speaking');
+
+      // Combine in the order of the skill list
+      var allScores = {};
+      readingScores.concat(listeningScores, writingScores, speakingScores).forEach(function(s) {
+        allScores[s.skill] = s;
+      });
+
+      var ordered = [];
+      data.skills.forEach(function(skill) {
+        if (allScores[skill]) ordered.push(allScores[skill]);
+      });
+      return ordered;
+    },
+
+    showSectionResults: function(examId, sectionKey) {
+      var skillScores = this.getSkillScoresForSection(examId, sectionKey);
+      if (!skillScores.length) return;
+
+      var examType = AppState.currentLevel || 'C1';
+      var totalScale = 0;
+      skillScores.forEach(function(s) { totalScale += s.scale; });
+      var overall = Math.round(totalScale / skillScores.length);
+      var gradeInfo = getGradeInfo(overall, examType);
+
+      this.openResultsModal(skillScores, overall, gradeInfo, examType, sectionKey);
+    },
+
+    showOverallResults: function(examId) {
+      var skillScores = this.getAllSkillScores(examId);
+      if (!skillScores.length) return;
+
+      var examType = AppState.currentLevel || 'C1';
+      var totalScale = 0;
+      skillScores.forEach(function(s) { totalScale += s.scale; });
+      var overall = Math.round(totalScale / skillScores.length);
+      var gradeInfo = getGradeInfo(overall, examType);
+
+      this.openResultsModal(skillScores, overall, gradeInfo, examType, null);
+    },
+
+    openResultsModal: function(skillScores, overall, gradeInfo, examType, sectionKey) {
+      var overlay = document.getElementById('results-modal-overlay');
+      var body = document.getElementById('results-modal-body');
+      if (!overlay || !body) return;
+
+      var title = sectionKey
+        ? (I18n.t('sectionResults') || 'Section Results') + ' — ' + sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)
+        : (I18n.t('overallResults') || 'Overall Results');
+
+      var html = '<div class="results-modal-header"><h3>' + title + '</h3><span class="results-exam-level">' + examType + '</span></div>';
+      html += '<div class="statement-of-results" style="display:block;">';
+      html += '<h3 class="sor-title">Statement of Results</h3>';
+      html += '<div class="result-header">';
+      html += '<div class="box">RESULT<br><span>' + gradeInfo.result + '</span></div>';
+      html += '<div class="box red">OVERALL SCORE<br><span>' + overall + '</span></div>';
+      html += '<div class="box">CEFR LEVEL<br><span>' + gradeInfo.cefr + '</span></div>';
+      html += '</div>';
+
+      // Skill details
+      html += '<div class="results-skills-detail">';
+      skillScores.forEach(function(s) {
+        var icon = skillIcons[s.skill] || 'fa-school';
+        html += '<div class="results-skill-row">';
+        html += '<i class="fas ' + icon + '"></i> ';
+        html += '<span class="results-skill-name">' + s.skill + '</span>';
+        html += '<span class="results-skill-raw">' + s.raw + '/' + s.maxRaw + '</span>';
+        html += '<span class="results-skill-scale">' + s.scale + '</span>';
+        html += '</div>';
+      });
+      html += '</div>';
+
+      // Chart
+      html += '<div class="chart-area" id="resultsChartArea"></div>';
+      html += '</div>';
+
+      body.innerHTML = html;
+      overlay.style.display = 'flex';
+
+      // Render chart into the modal
+      var chartArea = document.getElementById('resultsChartArea');
+      if (chartArea) {
+        var grades = conversionData[examType].grades;
+        var chartHtml = '<div class="chart-scale">';
+        chartHtml += '<div class="chart-labels">';
+        for (var s = SCALE_MAX; s >= SCALE_MIN; s -= 10) {
+          chartHtml += '<div class="chart-label">' + s + '</div>';
+        }
+        chartHtml += '</div>';
+        chartHtml += '<div class="chart-columns">';
+        chartHtml += '<div class="chart-bands">';
+        grades.forEach(function(g, i) {
+          var top = grades[i - 1] ? grades[i - 1].min : SCALE_MAX;
+          var bottom = g.min;
+          var topPct = 100 - arrowPercent(top);
+          var bottomPct = 100 - arrowPercent(bottom);
+          var heightPct = bottomPct - topPct;
+          chartHtml += '<div class="chart-band" style="top:' + topPct + '%;height:' + heightPct + '%;" title="' + g.label + ' (' + g.cefr + ')">';
+          chartHtml += '<span class="band-label">' + g.label + '</span>';
+          chartHtml += '</div>';
+        });
+        chartHtml += '</div>';
+        skillScores.forEach(function(item) {
+          var pct = arrowPercent(item.scale);
+          chartHtml += '<div class="chart-column">';
+          chartHtml += '<div class="chart-bar-area">';
+          chartHtml += '<div class="arrow-marker" style="bottom:' + pct + '%;">' + item.scale + '</div>';
+          chartHtml += '</div>';
+          chartHtml += '<div class="chart-col-label">' + item.skill + '</div>';
+          chartHtml += '</div>';
+        });
+        var overallPct = arrowPercent(overall);
+        chartHtml += '<div class="chart-column overall-column">';
+        chartHtml += '<div class="chart-bar-area">';
+        chartHtml += '<div class="arrow-marker overall-marker" style="bottom:' + overallPct + '%;">' + overall + '</div>';
+        chartHtml += '</div>';
+        chartHtml += '<div class="chart-col-label"><strong>Overall</strong></div>';
+        chartHtml += '</div>';
+        chartHtml += '</div></div>';
+        chartArea.innerHTML = chartHtml;
+      }
+    },
+
+    closeResultsModal: function() {
+      var overlay = document.getElementById('results-modal-overlay');
+      if (overlay) overlay.style.display = 'none';
+    },
+
     renderChart: function(skillScores, overall, examType) {
       const chartArea = document.getElementById('chartArea');
       if (!chartArea) return;
