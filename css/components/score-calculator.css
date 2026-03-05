@@ -258,10 +258,95 @@
   gap: 6px;
 }
 
+/* ── Chart mode toggle ── */
+.cb-chart-toggle {
+  display: flex;
+  gap: 0;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.cb-toggle-btn {
+  padding: 6px 18px;
+  border: none;
+  background: var(--white, #fff);
+  color: var(--text-medium, #666);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cb-toggle-btn:hover {
+  background: #f5f3ff;
+}
+
+.cb-toggle-btn.cb-toggle-active {
+  background: #7c3aed;
+  color: #fff;
+}
+
+/* ── Raw chart ── */
+.cb-raw-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cb-raw-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cb-raw-label {
+  min-width: 120px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark, #333);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cb-raw-label i {
+  color: #7c3aed;
+  font-size: 0.9rem;
+  width: 18px;
+  text-align: center;
+}
+
+.cb-raw-bar-wrap {
+  flex: 1;
+  height: 24px;
+  background: #f1f0fb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cb-raw-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  border-radius: 12px;
+  transition: width 0.4s ease;
+  min-width: 2px;
+}
+
+.cb-raw-value {
+  min-width: 60px;
+  text-align: right;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #7c3aed;
+}
+
 /* ── Chart container ── */
 .cb-chart {
-  margin-bottom: 12px;
-  overflow-x: auto;
+  margin-bottom: 0;
+  overflow: visible;
 }
 
 .cb-chart-header {
@@ -285,7 +370,8 @@
 
 .cb-chart-body {
   display: flex;
-  height: 220px;
+  height: 40vh;
+  min-height: 200px;
   position: relative;
 }
 
@@ -433,6 +519,9 @@
 
   .cb-cefr-label { font-size: 0.85rem; }
   .cb-score-badge span { font-size: 0.65rem; padding: 3px 8px; }
+
+  .cb-raw-label { min-width: 90px; font-size: 0.75rem; }
+  .cb-raw-value { min-width: 50px; font-size: 0.8rem; }
 }
 
 /* ── Chart area (Score Calculator page) ── */

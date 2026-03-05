@@ -506,10 +506,38 @@
       this.openResultsModal(skillScores, overall, gradeInfo, examType, null);
     },
 
+    // Store current modal data for chart toggle
+    _modalData: null,
+
     openResultsModal: function(skillScores, overall, gradeInfo, examType, sectionKey) {
       var overlay = document.getElementById('results-modal-overlay');
       var body = document.getElementById('results-modal-body');
       if (!overlay || !body) return;
+
+      // Store data for chart toggle
+      this._modalData = {
+        skillScores: skillScores,
+        overall: overall,
+        gradeInfo: gradeInfo,
+        examType: examType,
+        sectionKey: sectionKey,
+        chartMode: 'cambridge'
+      };
+
+      this._renderResultsContent(body);
+      overlay.style.display = 'flex';
+    },
+
+    _renderResultsContent: function(body) {
+      var d = this._modalData;
+      if (!d) return;
+
+      var skillScores = d.skillScores;
+      var overall = d.overall;
+      var gradeInfo = d.gradeInfo;
+      var examType = d.examType;
+      var sectionKey = d.sectionKey;
+      var chartMode = d.chartMode;
 
       var title = sectionKey
         ? (I18n.t('sectionResults') || 'Section Results') + ' — ' + sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)
@@ -517,6 +545,38 @@
 
       var grades = conversionData[examType].grades;
 
+      var html = '<div class="results-modal-header"><h3>' + title + '</h3><span class="results-exam-level">' + examType + '</span></div>';
+
+      // Top result boxes — Cambridge style
+      html += '<div class="cb-result-boxes">';
+      html += '<div class="cb-result-box cb-result-green"><div class="cb-result-label">Result</div><div class="cb-result-value">' + gradeInfo.result + '</div></div>';
+      html += '<div class="cb-result-box"><div class="cb-result-label">Overall Score</div><div class="cb-result-value cb-result-score">' + overall + '</div></div>';
+      html += '<div class="cb-result-box"><div class="cb-result-label">CEFR Level</div><div class="cb-result-value cb-result-cefr">' + gradeInfo.cefr + '</div></div>';
+      html += '</div>';
+
+      // Chart mode toggle
+      html += '<div class="cb-chart-toggle">';
+      html += '<button class="cb-toggle-btn' + (chartMode === 'cambridge' ? ' cb-toggle-active' : '') + '" onclick="ScoreCalculator.switchChartMode(\'cambridge\')">Cambridge</button>';
+      html += '<button class="cb-toggle-btn' + (chartMode === 'raw' ? ' cb-toggle-active' : '') + '" onclick="ScoreCalculator.switchChartMode(\'raw\')">Raw</button>';
+      html += '</div>';
+
+      if (chartMode === 'cambridge') {
+        html += this._buildCambridgeChart(skillScores, grades);
+      } else {
+        html += this._buildRawChart(skillScores);
+      }
+
+      body.innerHTML = html;
+    },
+
+    switchChartMode: function(mode) {
+      if (!this._modalData) return;
+      this._modalData.chartMode = mode;
+      var body = document.getElementById('results-modal-body');
+      if (body) this._renderResultsContent(body);
+    },
+
+    _buildCambridgeChart: function(skillScores, grades) {
       // Determine scale range from grades
       var lowestGrade = grades[grades.length - 1].min;
       var highestGrade = grades[0].min;
@@ -538,18 +598,8 @@
         return { cefr: cefr, min: cefrMap[cefr] };
       }).sort(function(a, b) { return a.min - b.min; });
 
-      var html = '<div class="results-modal-header"><h3>' + title + '</h3><span class="results-exam-level">' + examType + '</span></div>';
-
-      // Top result boxes — Cambridge style
-      html += '<div class="cb-result-boxes">';
-      html += '<div class="cb-result-box cb-result-green"><div class="cb-result-label">Result</div><div class="cb-result-value">' + gradeInfo.result + '</div></div>';
-      html += '<div class="cb-result-box"><div class="cb-result-label">Overall Score</div><div class="cb-result-value cb-result-score">' + overall + '</div></div>';
-      html += '<div class="cb-result-box"><div class="cb-result-label">CEFR Level</div><div class="cb-result-value cb-result-cefr">' + gradeInfo.cefr + '</div></div>';
-      html += '</div>';
-
       // Cambridge-style chart
-      var numSkills = skillScores.length;
-      html += '<div class="cb-chart">';
+      var html = '<div class="cb-chart">';
 
       // Chart header row
       html += '<div class="cb-chart-header">';
@@ -626,21 +676,26 @@
 
       html += '</div></div>';
 
-      // Skill detail rows (below chart)
-      html += '<div class="results-skills-detail">';
+      return html;
+    },
+
+    _buildRawChart: function(skillScores) {
+      var html = '<div class="cb-raw-chart">';
+
       skillScores.forEach(function(s) {
+        var pct = s.maxRaw > 0 ? Math.min(100, Math.round(s.raw / s.maxRaw * 100)) : 0;
         var icon = skillIcons[s.skill] || 'fa-school';
-        html += '<div class="results-skill-row">';
-        html += '<i class="fas ' + icon + '"></i> ';
-        html += '<span class="results-skill-name">' + s.skill + '</span>';
-        html += '<span class="results-skill-raw">' + s.raw + '/' + s.maxRaw + '</span>';
-        html += '<span class="results-skill-scale">' + s.scale + '</span>';
+        html += '<div class="cb-raw-row">';
+        html += '<div class="cb-raw-label"><i class="fas ' + icon + '"></i> ' + s.skill + '</div>';
+        html += '<div class="cb-raw-bar-wrap">';
+        html += '<div class="cb-raw-bar" style="width:' + pct + '%"></div>';
+        html += '</div>';
+        html += '<div class="cb-raw-value">' + s.raw + '/' + s.maxRaw + '</div>';
         html += '</div>';
       });
-      html += '</div>';
 
-      body.innerHTML = html;
-      overlay.style.display = 'flex';
+      html += '</div>';
+      return html;
     },
 
     closeResultsModal: function() {
