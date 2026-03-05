@@ -77,7 +77,6 @@
   flex-wrap: wrap;
 }
 
-.btn-set-api-key,
 .btn-evaluate-ai {
   display: inline-flex;
   align-items: center;
@@ -89,19 +88,10 @@
   font-size: 0.9rem;
   font-weight: 500;
   transition: opacity 0.2s;
-}
-
-.btn-set-api-key {
-  background: var(--secondary);
-  color: var(--white);
-}
-
-.btn-evaluate-ai {
   background: var(--primary);
   color: var(--white);
 }
 
-.btn-set-api-key:hover,
 .btn-evaluate-ai:hover {
   opacity: 0.85;
 }
@@ -127,48 +117,6 @@
   line-height: 1.6;
   color: var(--text-dark);
   margin: 0;
-}
-
-/* Shared writing API key row & inline message */
-.writing-api-key-row {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.writing-api-key-input {
-  flex: 1;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  font-size: 0.875rem;
-  color: var(--text-dark);
-  transition: border-color 0.2s;
-}
-
-.writing-api-key-input:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(var(--primary-rgb, 59, 130, 246), 0.1);
-}
-
-.btn-save-api-key {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 6px;
-  background: var(--completed);
-  color: var(--white);
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: opacity 0.2s;
-}
-
-.btn-save-api-key:hover {
-  opacity: 0.85;
 }
 
 .writing-inline-msg {
