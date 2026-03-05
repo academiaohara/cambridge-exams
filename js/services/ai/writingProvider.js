@@ -25,6 +25,8 @@ export async function correctWriting(text, taskType, taskPrompt) {
 3. Organisation — Is the text well-organised with clear paragraphing and cohesive devices?
 4. Language — Is there a range of vocabulary and grammatical structures? How accurate is the language?
 
+IMPORTANT: If the student's writing is completely off-topic and does not address the task prompt at all, ALL scores must be 0/5 (Total: 0/20). Clearly state this is because the writing does not address the required topic.
+
 Respond in plain natural language (NOT JSON). Structure your response exactly like this:
 
 📊 SCORES
@@ -34,6 +36,9 @@ Respond in plain natural language (NOT JSON). Structure your response exactly li
 • Organisation: X/5
 • Language: X/5
 • Total: XX/20
+
+✏️ CORRECTED TEXT
+[Reproduce the student's full text but mark corrections: use ~~wrong text~~ for errors/text to remove and ++corrected text++ for the correct replacement. Only mark actual errors. Keep correct parts unchanged.]
 
 📝 DETAILED FEEDBACK
 
@@ -53,11 +58,7 @@ Language:
 [List main strengths]
 
 ⚠️ AREAS FOR IMPROVEMENT
-[List areas to work on with specific suggestions]
-
-📌 CAMBRIDGE ENGLISH SCALE (full exam = 2 tasks, max 40)
-34/40 → 200 (C2) | 24/40 → 180 (C1) | 16/40 → 160 (B2) | 10/40 → 142
-This task score: XX/20 (combine both tasks for the full exam score)`
+[List areas to work on with specific suggestions]`
         },
         {
           role: "user",

@@ -28,6 +28,7 @@
                     lang="en" spellcheck="true"
                     placeholder="${I18n.t('writeEssay')}..."
                     oninput="WritingType1.handleInput(this.value)">${savedAnswer}</textarea>
+          <div class="writing-corrected-text" id="writing-type1-corrected" style="display:none;"></div>
           <div class="writing-type1-footer-row">
             <div class="writing-type1-word-count">
               <span id="writing-type1-count">0</span> ${I18n.t('wordsWritten')}
@@ -37,7 +38,7 @@
             </button>
           </div>
           <div class="writing-type1-actions">
-            <button class="btn-evaluate-ai" onclick="WritingType1.evaluateWithAI()">
+            <button class="btn-evaluate-ai" id="writing-type1-evaluate-btn" onclick="WritingType1.evaluateWithAI()">
               <i class="fas fa-robot"></i> ${I18n.t('evaluateAI')}
             </button>
           </div>
@@ -111,6 +112,47 @@
       return data.corrected;
     },
 
+    _extractScore: function(text) {
+      const match = text.match(/Total:\s*(\d+)\s*\/\s*20/i);
+      return match ? parseInt(match[1], 10) : 0;
+    },
+
+    _extractCorrectedText: function(text) {
+      const match = text.match(/✏️\s*CORRECTED TEXT\s*\n([\s\S]*?)(?=\n📝\s*DETAILED FEEDBACK|\n✅|\n⚠️|$)/i);
+      if (!match) return '';
+      return match[1].trim();
+    },
+
+    _renderCorrectedText: function(corrected) {
+      let html = corrected
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/~~(.*?)~~/g, '<del class="writing-correction-del">$1</del>')
+        .replace(/\+\+(.*?)\+\+/g, '<ins class="writing-correction-ins">$1</ins>')
+        .replace(/\n/g, '<br>');
+      return html;
+    },
+
+    _updatePartScore: function(score) {
+      const partScoreElement = document.getElementById('part-score-display');
+      if (partScoreElement) {
+        partScoreElement.innerHTML = score + '/20';
+      }
+
+      const sectionKey = AppState.currentExamId + '_' + AppState.currentSection;
+      if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+      AppState.sectionScores[sectionKey][AppState.currentPart] = score;
+      AppState.currentPartScore = score;
+
+      const scoreElement = document.getElementById('score-display');
+      if (scoreElement) {
+        const sectionTotal = ExerciseRenderer.getSectionTotalQuestions(AppState.currentSection);
+        const runningTotal = ExerciseRenderer.getSectionRunningTotal(sectionKey);
+        scoreElement.innerHTML = runningTotal + '/' + sectionTotal;
+      }
+
+      Exercise.savePartState();
+    },
+
     evaluateWithAI: function() {
       const essay = AppState.currentExercise.answers?.[1] || '';
       if (!essay.trim()) {
@@ -123,20 +165,44 @@
       if (resultsDiv) resultsDiv.style.display = 'block';
       if (contentDiv) contentDiv.innerHTML = `<div class="writing-ai-loading"><i class="fas fa-spinner fa-spin"></i> ${I18n.t('evaluating')}</div>`;
 
+      // Disable textarea and evaluate button during evaluation
+      const textarea = document.querySelector('.writing-type1-textarea');
+      const evalBtn = document.getElementById('writing-type1-evaluate-btn');
+      if (textarea) textarea.disabled = true;
+      if (evalBtn) evalBtn.disabled = true;
+
       const question = AppState.currentExercise.content.question || '';
       this.sendWriting(essay, question)
         .then(text => {
-          if (contentDiv) contentDiv.innerHTML = `<div class="writing-ai-feedback">${this._formatFeedback(text)}</div>`;
+          // Extract and display corrected text
+          const correctedText = this._extractCorrectedText(text);
+          const correctedDiv = document.getElementById('writing-type1-corrected');
+          if (correctedText && correctedDiv) {
+            correctedDiv.innerHTML = this._renderCorrectedText(correctedText);
+            correctedDiv.style.display = 'block';
+            if (textarea) textarea.style.display = 'none';
+          }
+
+          // Extract score and update display
+          const score = this._extractScore(text);
+          this._updatePartScore(score);
+
+          // Display feedback (exclude corrected text section)
+          const feedbackText = text.replace(/✏️\s*CORRECTED TEXT\s*\n[\s\S]*?(?=\n📝\s*DETAILED FEEDBACK|\n✅|\n⚠️|$)/i, '');
+          if (contentDiv) contentDiv.innerHTML = `<div class="writing-ai-feedback">${this._formatFeedback(feedbackText)}</div>`;
         })
         .catch(() => {
           if (contentDiv) contentDiv.textContent = I18n.t('aiError');
+          // Re-enable on error
+          if (textarea) { textarea.disabled = false; textarea.style.display = ''; }
+          if (evalBtn) evalBtn.disabled = false;
         });
     },
 
     _formatFeedback: function(text) {
       return text
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/^(📊 SCORES|📝 DETAILED FEEDBACK|✅ STRENGTHS|⚠️ AREAS FOR IMPROVEMENT|📌 CAMBRIDGE ENGLISH SCALE.*)/gm, '<h5 class="writing-feedback-heading">$1</h5>')
+        .replace(/^(📊 SCORES|📝 DETAILED FEEDBACK|✅ STRENGTHS|⚠️ AREAS FOR IMPROVEMENT)/gm, '<h5 class="writing-feedback-heading">$1</h5>')
         .replace(/^• (.+)/gm, '<div class="writing-score-line">$1</div>')
         .replace(/\n/g, '<br>');
     },

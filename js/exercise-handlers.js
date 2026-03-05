@@ -391,6 +391,17 @@
           document.querySelectorAll('.writing-textarea').forEach(t => {
             t.value = '';
             t.disabled = false;
+            t.style.display = '';
+          });
+          document.querySelectorAll('.writing-corrected-text').forEach(d => {
+            d.innerHTML = '';
+            d.style.display = 'none';
+          });
+          document.querySelectorAll('.writing-type1-ai-results, .writing-type2-ai-results').forEach(d => {
+            d.style.display = 'none';
+          });
+          document.querySelectorAll('.btn-evaluate-ai').forEach(b => {
+            b.disabled = false;
           });
           break;
 
