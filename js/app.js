@@ -27,6 +27,23 @@
       // Renderizar dashboard
       Dashboard.render();
       
+      // Set initial history state
+      history.replaceState({ view: 'dashboard' }, '');
+      
+      // Handle browser back/forward buttons
+      window.addEventListener('popstate', function(e) {
+        var state = e.state;
+        if (!state || state.view === 'dashboard') {
+          if (AppState.currentExercise) {
+            Exercise.closeExercise({ skipHistory: true });
+          } else {
+            Dashboard.render();
+          }
+        } else if (state.view === 'exercise' && state.examId && state.section && state.part) {
+          Exercise.openPart(state.examId, state.section, state.part);
+        }
+      });
+      
       console.log('✅ App lista');
     },
     

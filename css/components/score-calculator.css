@@ -203,7 +203,236 @@
   color: var(--white);
 }
 
-/* ── Chart area ── */
+/* ── Cambridge Results Chart (modal) ── */
+.cb-result-boxes {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.cb-result-box {
+  flex: 1;
+  text-align: center;
+  padding: 12px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.cb-result-box.cb-result-green {
+  background: #6faf39;
+  border-color: #6faf39;
+  color: #fff;
+}
+
+.cb-result-box.cb-result-green .cb-result-label {
+  color: rgba(255,255,255,0.85);
+}
+
+.cb-result-box.cb-result-green .cb-result-value {
+  color: #fff;
+}
+
+.cb-result-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+.cb-result-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.cb-result-score,
+.cb-result-cefr {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Chart container ── */
+.cb-chart {
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.cb-chart-header {
+  display: flex;
+  border-bottom: 2px solid #ccc;
+}
+
+.cb-hdr {
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-medium);
+  padding: 6px 4px;
+  line-height: 1.2;
+}
+
+.cb-hdr-cefr { width: 60px; flex-shrink: 0; }
+.cb-hdr-scale { width: 50px; flex-shrink: 0; }
+.cb-hdr-grades { width: 80px; flex-shrink: 0; }
+.cb-hdr-skill { flex: 1; min-width: 70px; }
+
+.cb-chart-body {
+  display: flex;
+  height: 340px;
+  position: relative;
+}
+
+.cb-col {
+  position: relative;
+}
+
+.cb-col-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.cb-col-cefr { width: 60px; flex-shrink: 0; }
+.cb-col-scale { width: 50px; flex-shrink: 0; border-right: 1px solid #bbb; }
+.cb-col-grades { width: 80px; flex-shrink: 0; }
+.cb-col-skill { flex: 1; min-width: 70px; border-left: 1px solid #e2e8f0; }
+
+/* CEFR labels */
+.cb-cefr-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(50%);
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* Scale ticks */
+.cb-scale-tick {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(50%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.cb-scale-num {
+  font-size: 0.6rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.cb-scale-line {
+  display: inline-block;
+  width: 6px;
+  height: 1px;
+  background: #999;
+}
+
+/* Grade labels */
+.cb-grade-label {
+  position: absolute;
+  left: 4px;
+  right: 0;
+  transform: translateY(50%);
+}
+
+.cb-grade-text {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #6faf39;
+  line-height: 1.2;
+}
+
+/* Grade bands in skill columns */
+.cb-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.cb-band:nth-child(1) {
+  background: rgba(111, 175, 57, 0.10);
+}
+.cb-band:nth-child(2) {
+  background: rgba(111, 175, 57, 0.07);
+}
+.cb-band:nth-child(3) {
+  background: rgba(111, 175, 57, 0.04);
+}
+.cb-band:nth-child(4) {
+  background: rgba(200, 200, 200, 0.08);
+}
+
+/* Dotted lines at grade boundaries */
+.cb-dotted-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 2px dotted #c8c8c8;
+  z-index: 1;
+  transform: translateY(0);
+}
+
+/* Score badges */
+.cb-score-badge {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 3;
+}
+
+.cb-score-badge span {
+  display: inline-block;
+  background: #6faf39;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(111, 175, 57, 0.35);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .cb-result-boxes {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .cb-result-value {
+    font-size: 1.1rem;
+  }
+
+  .cb-hdr-cefr,
+  .cb-col-cefr { width: 40px; }
+
+  .cb-hdr-scale,
+  .cb-col-scale { width: 36px; }
+
+  .cb-hdr-grades,
+  .cb-col-grades { width: 60px; }
+
+  .cb-col-skill { min-width: 55px; }
+
+  .cb-cefr-label { font-size: 0.85rem; }
+  .cb-score-badge span { font-size: 0.65rem; padding: 3px 8px; }
+}
+
+/* ── Chart area (Score Calculator page) ── */
 .chart-area {
   overflow-x: auto;
 }
