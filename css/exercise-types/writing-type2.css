@@ -77,27 +77,6 @@
   gap: 1rem;
 }
 
-.writing-type2-prompt {
-  background: var(--white);
-  border: 1px solid var(--border-light);
-  border-left: 4px solid var(--primary);
-  border-radius: 8px;
-  padding: 1.25rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.writing-type2-prompt h4 {
-  color: var(--text-dark);
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
-
-.writing-type2-prompt p {
-  color: var(--text-dark);
-  line-height: 1.6;
-  margin: 0;
-}
-
 .writing-type2-textarea {
   width: 100%;
   min-height: 400px;

@@ -118,8 +118,8 @@
     listening4: { type: 'dual-matching', inputMode: 'select', total: 10 },
     
     // Writing
-    writing1: { type: 'essay', inputMode: 'textarea', total: 1 },
-    writing2: { type: 'choice', inputMode: 'textarea', total: 1 },
+    writing1: { type: 'essay', inputMode: 'textarea', total: 20 },
+    writing2: { type: 'choice', inputMode: 'textarea', total: 20 },
     
     // Speaking
     speaking1: { type: 'interview', inputMode: 'script', total: 1 },

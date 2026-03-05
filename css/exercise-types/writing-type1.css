@@ -188,3 +188,34 @@
   color: var(--text-medium);
   padding: 0.4rem 0;
 }
+
+/* Corrected text display */
+.writing-corrected-text {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  background: #fafbfc;
+  box-sizing: border-box;
+}
+
+.writing-correction-del {
+  color: #dc2626;
+  text-decoration: line-through;
+  background: #fef2f2;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.writing-correction-ins {
+  color: #16a34a;
+  text-decoration: none;
+  background: #f0fdf4;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-weight: 500;
+}
