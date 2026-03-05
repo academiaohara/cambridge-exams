@@ -297,3 +297,111 @@
   font-size: 0.85rem;
   color: #991b1b;
 }
+
+/* ── "How to get API Key" help button ────────────────────── */
+.writing-apikey-help-btn {
+  padding: 0.35rem 1rem;
+  background: var(--primary, #1e3a8a);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.writing-apikey-help-btn:hover {
+  background: var(--secondary, #7c3aed);
+}
+
+/* ── API Key help modal overlay ──────────────────────────── */
+.apikey-help-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.apikey-help-modal {
+  position: relative;
+  background: var(--white, #fff);
+  border-radius: 16px;
+  padding: 2rem 2rem 1.75rem;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease;
+}
+
+.apikey-help-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-light, #64748b);
+  line-height: 1;
+  padding: 0.25rem;
+  transition: color 0.2s;
+}
+
+.apikey-help-close:hover {
+  color: var(--text-dark, #0f172a);
+}
+
+.apikey-help-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary, #1e3a8a);
+  margin-bottom: 0.75rem;
+}
+
+.apikey-help-header i {
+  font-size: 1.25rem;
+  color: #f59e0b;
+}
+
+.apikey-help-intro {
+  font-size: 0.9rem;
+  color: var(--text-medium, #334155);
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.apikey-help-steps {
+  padding-left: 1.5rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.apikey-help-steps li {
+  font-size: 0.88rem;
+  color: var(--text-medium, #334155);
+  line-height: 1.5;
+}
+
+.apikey-help-steps a {
+  color: var(--primary, #1e3a8a);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.apikey-help-steps a:hover {
+  text-decoration: underline;
+}
