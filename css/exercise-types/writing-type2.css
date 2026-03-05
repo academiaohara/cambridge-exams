@@ -127,32 +127,3 @@
   font-size: 0.875rem;
   text-align: right;
 }
-
-.writing-type2-actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.writing-type2-ai-results {
-  background: var(--white);
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  padding: 1.25rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.writing-type2-ai-results h4 {
-  color: var(--primary);
-  margin: 0 0 0.75rem 0;
-  font-size: 1rem;
-}
-
-.writing-type2-ai-text {
-  white-space: pre-wrap;
-  font-family: inherit;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--text-dark);
-  margin: 0;
-}
