@@ -46,6 +46,11 @@
             <textarea class="writing-type2-textarea writing-textarea"
                       placeholder="${I18n.t('writeEssay')}..."
                       oninput="WritingType2.handleInput(this.value)"></textarea>
+            <button class="writing-evaluate-btn" id="writing-type2-evaluate-btn"
+                    onclick="WritingType2.evaluateWithAI()">
+              <i class="fas fa-robot"></i> ${I18n.t('evaluateAI')}
+            </button>
+            <div id="writing-type2-eval-result"></div>
           </div>
         </div>
       `;
@@ -106,6 +111,10 @@
         textarea.value = savedText;
         this._updateStats(savedText);
       }
+
+      // Clear previous evaluation result when switching tasks
+      var resultDiv = document.getElementById('writing-type2-eval-result');
+      if (resultDiv) resultDiv.innerHTML = '';
     },
 
     _parseWordLimit: function(wordLimit) {
@@ -142,9 +151,50 @@
       this._updateStats(value);
     },
 
+    evaluateWithAI: async function() {
+      var taskId = this.selectedTaskId;
+      var text = taskId && AppState.currentExercise?.answers?.[taskId] || '';
+      if (!text.trim()) return;
+
+      var apiKey = (typeof DeepSeekProvider !== 'undefined') && DeepSeekProvider.getApiKey();
+      if (!apiKey) {
+        CambridgeCorrector.showApiKeyPrompt('writing-type2-eval-result');
+        return;
+      }
+
+      var btn = document.getElementById('writing-type2-evaluate-btn');
+      var resultDiv = document.getElementById('writing-type2-eval-result');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + I18n.t('evaluating');
+      }
+      if (resultDiv) resultDiv.innerHTML = '';
+
+      try {
+        var tasks = AppState.currentExercise?.content?.tasks || [];
+        var task = tasks.find(function(t) { return t.id === taskId; });
+        var taskPrompt = task ? task.prompt : '';
+        var level = AppState.currentLevel || 'c1';
+        var result = await CambridgeCorrector.evaluate(text, level, taskPrompt);
+        CambridgeCorrector.renderResult(resultDiv, result);
+      } catch (err) {
+        if (resultDiv) {
+          resultDiv.innerHTML = '<div class="writing-eval-error"><i class="fas fa-exclamation-triangle"></i> ' +
+            I18n.t('aiError') + '</div>';
+        }
+        console.error('AI evaluation error:', err);
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-robot"></i> ' + I18n.t('evaluateAI');
+        }
+      }
+    },
+
     checkAnswers: function() {
       return 0;
     }
   };
 })();
+
 
