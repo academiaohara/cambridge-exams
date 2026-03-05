@@ -193,7 +193,7 @@
     _formatFeedback: function(text) {
       return text
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/^(📊 SCORES|📝 DETAILED FEEDBACK|✅ STRENGTHS|⚠️ AREAS FOR IMPROVEMENT|📌 CAMBRIDGE ENGLISH SCALE)/gm, '<h5 class="writing-feedback-heading">$1</h5>')
+        .replace(/^(📊 SCORES|📝 DETAILED FEEDBACK|✅ STRENGTHS|⚠️ AREAS FOR IMPROVEMENT|📌 CAMBRIDGE ENGLISH SCALE.*)/gm, '<h5 class="writing-feedback-heading">$1</h5>')
         .replace(/^• (.+)/gm, '<div class="writing-score-line">$1</div>')
         .replace(/\n/g, '<br>');
     },

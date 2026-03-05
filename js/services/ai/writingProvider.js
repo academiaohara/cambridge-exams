@@ -55,8 +55,9 @@ Language:
 ⚠️ AREAS FOR IMPROVEMENT
 [List areas to work on with specific suggestions]
 
-📌 CAMBRIDGE ENGLISH SCALE
-34/40 → 200 (C2) | 24/40 → 180 (C1) | 16/40 → 160 (B2) | 10/40 → 142`
+📌 CAMBRIDGE ENGLISH SCALE (full exam = 2 tasks, max 40)
+34/40 → 200 (C2) | 24/40 → 180 (C1) | 16/40 → 160 (B2) | 10/40 → 142
+This task score: XX/20 (combine both tasks for the full exam score)`
         },
         {
           role: "user",
