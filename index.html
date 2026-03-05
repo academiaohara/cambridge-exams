@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/components/example.css">
     <link rel="stylesheet" href="css/components/responsive.css">
     <link rel="stylesheet" href="css/components/mobile-ios.css">
+    <link rel="stylesheet" href="css/components/score-calculator.css">
     
     
     <!-- CSS DE TIPOS DE EJERCICIO (se cargarán dinámicamente según sea necesario)
@@ -206,6 +207,7 @@
                     <button class="level-btn" data-level="B2" onclick="filterByLevel('B2')"><i class="fas fa-graduation-cap"></i> B2</button>
                     <button class="level-btn active" data-level="C1" onclick="filterByLevel('C1')"><i class="fas fa-award"></i> C1</button>
                     <button class="level-btn" data-level="C2" onclick="filterByLevel('C2')"><i class="fas fa-crown"></i> C2</button>
+                    <button class="level-btn calculator-btn" onclick="openScoreCalculator()" title="Score Calculator"><i class="fas fa-calculator"></i></button>
                 </div>
                 
                 <div class="language-selector-wrapper">
@@ -374,6 +376,7 @@
     <script src="js/exercise-handlers.js"></script>
     <script src="js/exercise.js"></script>
     <script src="js/tools.js"></script>
+    <script src="js/score-calculator.js"></script>
     <script src="js/app.js"></script>
     
     <!-- JS de tipos específicos de ejercicio (cargados estáticamente para evitar problemas de timing) -->

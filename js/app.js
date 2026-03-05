@@ -139,6 +139,10 @@
   window.filterByLevel = App.filterByLevel;
   window.loadDashboard = App.loadDashboard;
   window.toggleLanguageDropdown = I18n.toggleDropdown;
+  window.openScoreCalculator = function() {
+    if (AppState.currentExercise) Exercise.closeExercise();
+    ScoreCalculator.render();
+  };
   
   // Mobile menu toggle
   window.toggleMobileMenu = function() {
