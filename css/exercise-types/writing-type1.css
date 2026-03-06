@@ -319,13 +319,6 @@
   flex-shrink: 0;
 }
 
-.writing-score-bullet {
-  font-size: 0.35rem;
-  color: var(--primary);
-  margin-top: 0.4rem;
-  flex-shrink: 0;
-}
-
 /* Model answer / Ideal response */
 .writing-model-answer {
   font-size: 0.95rem;
@@ -336,16 +329,5 @@
   border: 1px solid #fde68a;
   border-left: 4px solid #f59e0b;
   border-radius: 8px;
-  position: relative;
 }
 
-.writing-model-answer::before {
-  content: '✨';
-  position: absolute;
-  top: -0.6rem;
-  left: 0.75rem;
-  font-size: 1.2rem;
-  background: var(--white);
-  padding: 0 0.3rem;
-  border-radius: 50%;
-}

@@ -148,3 +148,197 @@
   color: var(--text-dark);
   margin: 0;
 }
+
+/* Corrected text display */
+.writing-corrected-text {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  background: #fafbfc;
+  box-sizing: border-box;
+}
+
+.writing-correction-del {
+  color: #dc2626;
+  text-decoration: line-through;
+  background: #fef2f2;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.writing-correction-ins {
+  color: #16a34a;
+  text-decoration: none;
+  background: #f0fdf4;
+  padding: 0 2px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/* Feedback tabs */
+.writing-feedback-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.writing-feedback-tab-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--border-light);
+  padding-bottom: 0.75rem;
+}
+
+.writing-feedback-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-medium);
+  background: #f1f5f9;
+  transition: all 0.2s;
+}
+
+.writing-feedback-tab-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #eff6ff;
+}
+
+.writing-feedback-tab-btn.active {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+}
+
+.writing-feedback-tab-panel {
+  display: none;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.writing-feedback-tab-panel.active {
+  display: block;
+}
+
+/* Feedback section content */
+.writing-ai-feedback {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+.writing-feedback-criterion-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.75rem 0 0.3rem 0;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.writing-feedback-criterion-title:first-child {
+  margin-top: 0;
+}
+
+.writing-score-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  margin: 0.25rem 0;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  font-weight: 500;
+}
+
+.writing-feedback-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0.35rem 0;
+  background: #fff;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.writing-feedback-list-icon {
+  color: var(--primary);
+  font-size: 0.65rem;
+  margin-top: 0.35rem;
+  flex-shrink: 0;
+}
+
+/* Strengths panel — green theme */
+#panel-type2-strengths .writing-feedback-criterion-title {
+  color: #15803d;
+  border-bottom-color: #bbf7d0;
+}
+
+#panel-type2-strengths .writing-score-line {
+  background: #f0fdf4;
+  border-left-color: #16a34a;
+}
+
+#panel-type2-strengths .writing-feedback-list-item {
+  border-left-color: #16a34a;
+}
+
+#panel-type2-strengths .writing-feedback-list-icon {
+  color: #16a34a;
+}
+
+/* Improvements panel — amber theme */
+#panel-type2-improvements .writing-feedback-criterion-title {
+  color: #b45309;
+  border-bottom-color: #fde68a;
+}
+
+#panel-type2-improvements .writing-score-line {
+  background: #fffbeb;
+  border-left-color: #f59e0b;
+}
+
+#panel-type2-improvements .writing-feedback-list-item {
+  border-left-color: #f59e0b;
+}
+
+#panel-type2-improvements .writing-feedback-list-icon {
+  color: #f59e0b;
+}
+
+/* Model answer / Ideal response */
+.writing-model-answer {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+  border: 1px solid #fde68a;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+}
