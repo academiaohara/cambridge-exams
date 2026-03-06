@@ -64,6 +64,29 @@
 
       // Update word count for any saved text
       if (savedAnswer) this._updateCount(savedAnswer);
+
+      // Restore AI feedback if previously evaluated
+      const savedFeedback = exercise.answers?._aiFeedback;
+      if (savedFeedback) {
+        const correctedText = this._extractCorrectedText(savedFeedback);
+        const correctedDiv = document.getElementById('writing-type1-corrected');
+        const textarea = document.querySelector('.writing-type1-textarea');
+        if (correctedText && correctedDiv) {
+          correctedDiv.innerHTML = this._renderCorrectedText(correctedText);
+          correctedDiv.style.display = 'block';
+          if (textarea) textarea.style.display = 'none';
+        }
+        if (textarea) textarea.disabled = true;
+
+        const evalBtn = document.getElementById('writing-type1-evaluate-btn');
+        if (evalBtn) evalBtn.disabled = true;
+
+        const resultsDiv = document.getElementById('writing-type1-ai-results');
+        const contentDiv = document.getElementById('writing-type1-ai-content');
+        if (resultsDiv) resultsDiv.style.display = 'block';
+        const feedbackText = savedFeedback.replace(/✏️\s*CORRECTED TEXT\s*\n[\s\S]*?(?=\n📝\s*DETAILED FEEDBACK|\n✅|\n⚠️|$)/i, '');
+        if (contentDiv) contentDiv.innerHTML = this._buildFeedbackTabs(feedbackText, 'type1');
+      }
     },
 
     _updateCount: function(text) {
@@ -182,6 +205,10 @@
             correctedDiv.style.display = 'block';
             if (textarea) textarea.style.display = 'none';
           }
+
+          // Save AI feedback for persistence
+          AppState.currentExercise.answers._aiFeedback = text;
+          AppState.answersChecked = true;
 
           // Extract score and update display
           const score = this._extractScore(text);

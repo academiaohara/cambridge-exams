@@ -47,14 +47,19 @@
         `${AppState.currentSection}${AppState.currentPart}`
       ];
       
-      questions.forEach(q => {
-        if (Utils.compareAnswers(AppState.currentExercise.answers[q.number], q.correct, partConfig.type)) {
-          correct++;
-        }
-      });
+      const isWritingOrSpeaking = AppState.currentSection === 'writing' || AppState.currentSection === 'speaking';
+      
+      if (isWritingOrSpeaking) {
+        correct = AppState.currentPartScore || 0;
+      } else {
+        questions.forEach(q => {
+          if (Utils.compareAnswers(AppState.currentExercise.answers[q.number], q.correct, partConfig.type)) {
+            correct++;
+          }
+        });
+      }
       
       // Update partial (part) score
-      const isWritingOrSpeaking = AppState.currentSection === 'writing' || AppState.currentSection === 'speaking';
       const partTotal = isWritingOrSpeaking ? partConfig.total : (AppState.currentExercise.totalQuestions || partConfig.total);
       const partScoreElement = document.getElementById('part-score-display');
       if (partScoreElement) {
