@@ -104,7 +104,7 @@
       const res = await fetch("/api/writing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, taskType: "Essay", taskPrompt })
+        body: JSON.stringify({ text, taskType: "Essay", taskPrompt, examLevel: AppState.currentLevel || 'C1' })
       });
 
       const data = await res.json();
@@ -225,17 +225,28 @@
 
     _formatSectionContent: function(text) {
       return text
-        .replace(/^• (.+)/gm, '<div class="writing-score-line">$1</div>')
+        .replace(/^(Content|Communicative Achievement|Organisation|Language):/gm,
+          '<div class="writing-feedback-criterion-title"><i class="fas fa-angle-right"></i> <strong>$1</strong></div>')
+        .replace(/^• (.+)/gm, '<div class="writing-score-line"><i class="fas fa-circle writing-score-bullet"></i> $1</div>')
+        .replace(/^- (.+)/gm, '<div class="writing-feedback-list-item"><i class="fas fa-chevron-right writing-feedback-list-icon"></i> $1</div>')
         .replace(/\n/g, '<br>');
+    },
+
+    _getModelAnswer: function() {
+      const exercise = AppState.currentExercise;
+      return exercise?.content?.modelAnswer || '';
     },
 
     _buildFeedbackTabs: function(text, prefix) {
       const sections = this._parseFeedbackSections(text);
+      const modelAnswer = this._getModelAnswer();
+
       const tabs = [
         { id: 'scores', icon: 'fa-chart-bar', label: I18n.t('feedbackScores'), content: sections.scores },
         { id: 'detailed', icon: 'fa-comment-dots', label: I18n.t('feedbackDetailed'), content: sections.detailed },
         { id: 'strengths', icon: 'fa-check-circle', label: I18n.t('feedbackStrengths'), content: sections.strengths },
-        { id: 'improvements', icon: 'fa-exclamation-triangle', label: I18n.t('feedbackImprovements'), content: sections.improvements }
+        { id: 'improvements', icon: 'fa-exclamation-triangle', label: I18n.t('feedbackImprovements'), content: sections.improvements },
+        { id: 'ideal', icon: 'fa-star', label: I18n.t('feedbackIdealResponse'), content: modelAnswer }
       ].filter(t => t.content);
 
       if (!tabs.length) return '<div class="writing-ai-feedback">' + text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>') + '</div>';
@@ -250,8 +261,12 @@
       html += '</div>';
 
       tabs.forEach((tab, i) => {
+        const isIdeal = tab.id === 'ideal';
+        const contentHtml = isIdeal
+          ? '<div class="writing-model-answer">' + tab.content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>') + '</div>'
+          : '<div class="writing-ai-feedback">' + this._formatSectionContent(tab.content) + '</div>';
         html += `<div class="writing-feedback-tab-panel${i === 0 ? ' active' : ''}" id="panel-${prefix}-${tab.id}">
-          <div class="writing-ai-feedback">${this._formatSectionContent(tab.content)}</div>
+          ${contentHtml}
         </div>`;
       });
 
