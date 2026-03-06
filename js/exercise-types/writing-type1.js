@@ -227,7 +227,7 @@
       return text
         .replace(/^(Content|Communicative Achievement|Organisation|Language):/gm,
           '<div class="writing-feedback-criterion-title"><i class="fas fa-angle-right"></i> <strong>$1</strong></div>')
-        .replace(/^• (.+)/gm, '<div class="writing-score-line"><i class="fas fa-circle writing-score-bullet"></i> $1</div>')
+        .replace(/^• (.+)/gm, '<div class="writing-score-line">$1</div>')
         .replace(/^- (.+)/gm, '<div class="writing-feedback-list-item"><i class="fas fa-chevron-right writing-feedback-list-icon"></i> $1</div>')
         .replace(/\n/g, '<br>');
     },
