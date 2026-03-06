@@ -359,6 +359,9 @@
   display: flex;
   gap: 6px;
   border-left: 2px solid #9ca3af;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .cb-column {
@@ -383,7 +386,7 @@
 .cb-column-cefr { width: 60px; flex-shrink: 0; }
 .cb-column-scale { width: 64px; flex-shrink: 0; }
 .cb-column-grades { width: 80px; flex-shrink: 0; }
-.cb-column-skill { flex: 1; min-width: 50px; max-width: 160px; }
+.cb-column-skill { width: 140px; flex-shrink: 1; min-width: 50px; }
 
 .cb-col-body {
   height: 40vh;
