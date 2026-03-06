@@ -2,9 +2,11 @@
 
 /* ── Container ── */
 .score-calculator {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 60px;
   background: var(--white);
   border-radius: 20px;
   box-shadow: var(--shadow-md);
@@ -64,7 +66,7 @@
 /* ── Input fields ── */
 .sc-inputs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -488,10 +490,63 @@
   transform: translateY(0);
 }
 
+/* Grade band blocks in the grades column */
+.cb-grade-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.cb-grade-band-text {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.cb-grade-band.cb-grade-top {
+  background: #555;
+}
+.cb-grade-band.cb-grade-top .cb-grade-band-text {
+  color: #fff;
+}
+.cb-grade-band.cb-grade-below {
+  background: #888;
+}
+.cb-grade-band.cb-grade-below .cb-grade-band-text {
+  color: #fff;
+}
+.cb-grade-band.cb-grade-bottom {
+  background: #d4d4d4;
+}
+.cb-grade-band.cb-grade-bottom .cb-grade-band-text {
+  color: #555;
+}
+
+/* CEFR band blocks (centered labels) */
+.cb-cefr-band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cb-cefr-band strong {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
 /* Score arrow markers */
 .cb-score-badge {
   position: absolute;
-  left: -5px;
+  left: 0;
   right: 0;
   transform: translateY(50%);
   z-index: 3;
@@ -500,27 +555,21 @@
 .cb-score-badge span {
   display: flex;
   align-items: center;
+  justify-content: center;
   background: #7c3aed;
   color: #fff;
-  padding: 0 10px;
+  padding: 0 4px;
   height: 28px;
   font-size: 0.8rem;
   font-weight: 700;
   white-space: nowrap;
   position: relative;
   box-shadow: 0 2px 6px rgba(124, 58, 237, 0.35);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Arrow triangle pointing right */
-.cb-score-badge span::after {
-  content: "";
-  position: absolute;
-  right: -10px;
-  top: 0;
-  border-top: 14px solid transparent;
-  border-bottom: 14px solid transparent;
-  border-left: 10px solid #7c3aed;
-}
+/* Arrow triangle removed – score badge is now a full-width rectangle */
 
 /* ── Responsive ── */
 @media (max-width: 600px) {
@@ -545,13 +594,7 @@
   .cb-col-skill { min-width: 55px; margin-left: 8px; }
 
   .cb-cefr-label { font-size: 0.85rem; }
-  .cb-score-badge span { font-size: 0.65rem; padding: 0 6px; height: 22px; }
-  .cb-score-badge span::after {
-    border-top-width: 11px;
-    border-bottom-width: 11px;
-    border-left-width: 8px;
-    right: -8px;
-  }
+  .cb-score-badge span { font-size: 0.65rem; padding: 0 4px; height: 22px; }
 
   .cb-raw-label { min-width: 90px; font-size: 0.75rem; }
   .cb-raw-value { min-width: 50px; font-size: 0.8rem; }
