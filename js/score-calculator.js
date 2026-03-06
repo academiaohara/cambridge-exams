@@ -663,7 +663,8 @@
         var topPct = scoreToPercent(bandTop);
         var bottomPct = scoreToPercent(bandBottom);
         var heightPct = topPct - bottomPct;
-        // First 3 grades (A, B, C) = dark gray; next grade (below level) = medium gray; rest = light gray
+        // Grades are ordered [A, B, C, below-level] in conversionData.
+        // First 3 (A, B, C) = dark gray; 4th (below level) = medium gray; any extra = light gray
         var bandClass = idx <= 2 ? 'cb-grade-top' : (idx === 3 ? 'cb-grade-below' : 'cb-grade-bottom');
         html += '<div class="cb-grade-band ' + bandClass + '" style="bottom:' + bottomPct + '%;height:' + heightPct + '%">';
         html += '<span class="cb-grade-band-text">' + g.label + '</span>';
