@@ -610,6 +610,20 @@
         return lines;
       }
 
+      // Dashed lines only at CEFR boundaries (where the CEFR level changes)
+      function buildCefrDashedLines() {
+        var lines = '';
+        grades.forEach(function(g, idx) {
+          var nextGrade = grades[idx + 1];
+          if (!nextGrade || g.cefr !== nextGrade.cefr) {
+            var linePct = scoreToPercent(g.min);
+            lines += '<div class="cb-dotted-line" style="bottom:' + linePct + '%"></div>';
+          }
+        });
+        lines += '<div class="cb-dotted-line" style="bottom:100%"></div>';
+        return lines;
+      }
+
       // Cambridge-style chart
       var html = '<div class="cb-chart">';
 
@@ -636,8 +650,8 @@
         var heightPct = bandTop - bandBottom;
         html += '<div class="cb-cefr-band" style="bottom:' + bandBottom + '%;height:' + heightPct + '%"><strong>' + lvl.cefr + '</strong></div>';
       });
-      // Dashed lines in CEFR column
-      html += buildDashedLines();
+      // Dashed lines in CEFR column (only at CEFR boundaries)
+      html += buildCefrDashedLines();
       html += '</div></div>';
 
       // Scale column (ruler)
