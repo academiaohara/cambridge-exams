@@ -355,9 +355,15 @@
   font-family: sans-serif;
 }
 
-.cb-chart-header {
+.cb-chart-columns {
   display: flex;
-  border-bottom: 2px solid #ccc;
+  gap: 6px;
+  border-left: 2px solid #9ca3af;
+}
+
+.cb-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .cb-hdr {
@@ -367,23 +373,18 @@
   color: var(--text-medium);
   padding: 6px 4px;
   line-height: 1.2;
+  border-bottom: 2px solid #ccc;
 }
 
-.cb-hdr-cefr { width: 60px; flex-shrink: 0; }
-.cb-hdr-scale { width: 64px; flex-shrink: 0; }
-.cb-hdr-grades { width: 80px; flex-shrink: 0; margin-right: 10px; }
-.cb-hdr-skill { flex: 1; min-width: 50px; }
+.cb-column-cefr { width: 60px; flex-shrink: 0; }
+.cb-column-scale { width: 64px; flex-shrink: 0; }
+.cb-column-grades { width: 80px; flex-shrink: 0; }
+.cb-column-skill { flex: 1; min-width: 50px; }
 
-.cb-chart-body {
-  display: flex;
+.cb-col-body {
+  flex: 1;
   height: 40vh;
   min-height: 200px;
-  position: relative;
-  border-left: 2px solid #9ca3af;
-  gap: 0;
-}
-
-.cb-col {
   position: relative;
 }
 
@@ -396,19 +397,14 @@
 }
 
 /* Graduated ruler background for scale column */
-.cb-col-scale .cb-col-inner {
+.cb-column-scale .cb-col-inner {
   background: linear-gradient(to right, #e8e4f0, #f0ecf6);
   border-left: 2px solid #9ca3af;
   border-right: 2px solid #9ca3af;
   z-index: 2;
 }
 
-.cb-col-cefr { width: 60px; flex-shrink: 0; }
-.cb-col-scale { width: 64px; flex-shrink: 0; }
-.cb-col-grades { width: 80px; flex-shrink: 0; margin-right: 10px; }
-.cb-col-skill {
-  flex: 1;
-  min-width: 50px;
+.cb-column-skill .cb-col-body {
   background-color: #f5f3ff;
   background-image: linear-gradient(#e5e7eb 1px, transparent 1px);
   background-size: 100% 25px;
@@ -590,17 +586,15 @@
     font-size: 1.1rem;
   }
 
-  .cb-hdr-cefr,
-  .cb-col-cefr { width: 40px; }
+  .cb-column-cefr { width: 40px; }
 
-  .cb-hdr-scale,
-  .cb-col-scale { width: 44px; }
+  .cb-column-scale { width: 44px; }
 
-  .cb-hdr-grades,
-  .cb-col-grades { width: 60px; margin-right: 6px; }
+  .cb-column-grades { width: 60px; }
 
-  .cb-col-skill { min-width: 40px; }
-  .cb-hdr-skill { min-width: 40px; }
+  .cb-column-skill { min-width: 40px; }
+
+  .cb-chart-columns { gap: 4px; }
 
   .cb-cefr-label { font-size: 0.85rem; }
   .cb-score-badge span { font-size: 0.65rem; padding: 0 4px; height: 22px; }

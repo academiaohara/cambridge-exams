@@ -624,39 +624,27 @@
         return lines;
       }
 
-      // Cambridge-style chart
+      // Cambridge-style chart – unified column layout (header + body per column)
       var html = '<div class="cb-chart">';
+      html += '<div class="cb-chart-columns">';
 
-      // Chart header row
-      html += '<div class="cb-chart-header">';
-      html += '<div class="cb-hdr cb-hdr-cefr">CEFR<br>Level</div>';
-      html += '<div class="cb-hdr cb-hdr-scale">Cambridge<br>English<br>Scale</div>';
-      html += '<div class="cb-hdr cb-hdr-grades">Certificated<br>Results</div>';
-      skillScores.forEach(function(s) {
-        var displayName = s.skill === 'Use of English' ? 'UOE' : s.skill;
-        html += '<div class="cb-hdr cb-hdr-skill">' + displayName + '</div>';
-      });
-      html += '</div>';
-
-      // Chart body
-      html += '<div class="cb-chart-body">';
-
-      // CEFR level column – labels centered in their vertical band
-      html += '<div class="cb-col cb-col-cefr">';
-      html += '<div class="cb-col-inner">';
+      // CEFR column
+      html += '<div class="cb-column cb-column-cefr">';
+      html += '<div class="cb-hdr">CEFR<br>Level</div>';
+      html += '<div class="cb-col-body"><div class="cb-col-inner">';
       cefrLevels.forEach(function(lvl, idx) {
         var bandBottom = scoreToPercent(lvl.min);
         var bandTop = idx < cefrLevels.length - 1 ? scoreToPercent(cefrLevels[idx + 1].min) : 100;
         var heightPct = bandTop - bandBottom;
         html += '<div class="cb-cefr-band" style="bottom:' + bandBottom + '%;height:' + heightPct + '%"><strong>' + lvl.cefr + '</strong></div>';
       });
-      // Dashed lines in CEFR column (only at CEFR boundaries)
       html += buildCefrDashedLines();
-      html += '</div></div>';
+      html += '</div></div></div>';
 
       // Scale column (ruler)
-      html += '<div class="cb-col cb-col-scale">';
-      html += '<div class="cb-col-inner">';
+      html += '<div class="cb-column cb-column-scale">';
+      html += '<div class="cb-hdr">Cambridge<br>English<br>Scale</div>';
+      html += '<div class="cb-col-body"><div class="cb-col-inner">';
       for (var tick = scaleTop; tick >= scaleBottom; tick -= 10) {
         var tickPct = scoreToPercent(tick);
         html += '<div class="cb-scale-tick" style="bottom:' + tickPct + '%">';
@@ -664,35 +652,34 @@
         html += '<span class="cb-scale-line"></span>';
         html += '</div>';
       }
-      // Dashed lines in scale column
       html += buildDashedLines();
-      html += '</div></div>';
+      html += '</div></div></div>';
 
-      // Certificated Results column – grade band backgrounds with labels
-      html += '<div class="cb-col cb-col-grades">';
-      html += '<div class="cb-col-inner">';
+      // Certificated Results column
+      html += '<div class="cb-column cb-column-grades">';
+      html += '<div class="cb-hdr">Certificated<br>Results</div>';
+      html += '<div class="cb-col-body"><div class="cb-col-inner">';
       grades.forEach(function(g, idx) {
         var bandTop = idx === 0 ? scaleTop : grades[idx - 1].min;
         var bandBottom = g.min;
         var topPct = scoreToPercent(bandTop);
         var bottomPct = scoreToPercent(bandBottom);
         var heightPct = topPct - bottomPct;
-        // Grades are ordered [A, B, C, below-level] in conversionData.
-        // First 3 (A, B, C) = dark gray; 4th (below level) = medium gray; any extra = light gray
         var bandClass = idx <= 2 ? 'cb-grade-top' : (idx === 3 ? 'cb-grade-below' : 'cb-grade-bottom');
         html += '<div class="cb-grade-band ' + bandClass + '" style="bottom:' + bottomPct + '%;height:' + heightPct + '%">';
         html += '<span class="cb-grade-band-text">' + g.label + '</span>';
         html += '</div>';
       });
-      // Dashed lines in grades column
       html += buildDashedLines();
-      html += '</div></div>';
+      html += '</div></div></div>';
 
       // Skill columns
       skillScores.forEach(function(item) {
         var pct = scoreToPercent(item.scale);
-        html += '<div class="cb-col cb-col-skill">';
-        html += '<div class="cb-col-inner">';
+        var displayName = item.skill === 'Use of English' ? 'UOE' : item.skill;
+        html += '<div class="cb-column cb-column-skill">';
+        html += '<div class="cb-hdr">' + displayName + '</div>';
+        html += '<div class="cb-col-body"><div class="cb-col-inner">';
 
         // Grade band backgrounds
         grades.forEach(function(g, idx) {
@@ -704,13 +691,10 @@
           html += '<div class="cb-band" style="bottom:' + bottomPct + '%;height:' + heightPct + '%;"></div>';
         });
 
-        // Dotted lines at grade boundaries
         html += buildDashedLines();
-
-        // Score badge
         html += '<div class="cb-score-badge" style="bottom:' + pct + '%"><span>' + item.scale + '</span></div>';
 
-        html += '</div></div>';
+        html += '</div></div></div>';
       });
 
       html += '</div></div>';
