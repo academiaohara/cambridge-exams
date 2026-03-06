@@ -103,10 +103,45 @@
       }
 
       const textarea = area?.querySelector('.writing-type2-textarea');
-      if (textarea) {
-        const savedText = AppState.currentExercise.answers?.[taskId] || '';
-        textarea.value = savedText;
-        this._updateCount(savedText);
+      const correctedDiv = document.getElementById('writing-type2-corrected');
+      const evalBtn = document.getElementById('writing-type2-evaluate-btn');
+      const resultsDiv = document.getElementById('writing-type2-ai-results');
+      const contentDiv = document.getElementById('writing-type2-ai-content');
+
+      const savedFeedback = AppState.currentExercise.answers?.['_aiFeedback_' + taskId];
+
+      if (savedFeedback) {
+        // Restore evaluated state
+        const correctedText = this._extractCorrectedText(savedFeedback);
+        if (correctedText && correctedDiv) {
+          correctedDiv.innerHTML = this._renderCorrectedText(correctedText);
+          correctedDiv.style.display = 'block';
+        } else if (correctedDiv) {
+          correctedDiv.style.display = 'none';
+        }
+        if (textarea) {
+          textarea.value = AppState.currentExercise.answers?.[taskId] || '';
+          textarea.disabled = true;
+          textarea.style.display = 'none';
+        }
+        if (evalBtn) evalBtn.disabled = true;
+        if (resultsDiv) resultsDiv.style.display = 'block';
+        const feedbackText = savedFeedback.replace(/✏️\s*CORRECTED TEXT\s*\n[\s\S]*?(?=\n📝\s*DETAILED FEEDBACK|\n✅|\n⚠️|$)/i, '');
+        if (contentDiv) contentDiv.innerHTML = this._buildFeedbackTabs(feedbackText, 'type2');
+        this._updateCount(AppState.currentExercise.answers?.[taskId] || '');
+      } else {
+        // Normal unevaluated state
+        if (textarea) {
+          const savedText = AppState.currentExercise.answers?.[taskId] || '';
+          textarea.value = savedText;
+          textarea.disabled = false;
+          textarea.style.display = '';
+          this._updateCount(savedText);
+        }
+        if (correctedDiv) { correctedDiv.innerHTML = ''; correctedDiv.style.display = 'none'; }
+        if (evalBtn) evalBtn.disabled = false;
+        if (resultsDiv) resultsDiv.style.display = 'none';
+        if (contentDiv) contentDiv.innerHTML = '';
       }
     },
 
@@ -235,6 +270,11 @@
             correctedDiv.style.display = 'block';
             if (textarea) textarea.style.display = 'none';
           }
+
+          // Save AI feedback for persistence
+          if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
+          AppState.currentExercise.answers['_aiFeedback_' + this.selectedTaskId] = text;
+          AppState.answersChecked = true;
 
           // Extract score and update display
           const score = this._extractScore(text);
