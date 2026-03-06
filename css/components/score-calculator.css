@@ -367,6 +367,10 @@
 }
 
 .cb-hdr {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   text-align: center;
   font-size: 0.65rem;
   font-weight: 600;
@@ -379,10 +383,9 @@
 .cb-column-cefr { width: 60px; flex-shrink: 0; }
 .cb-column-scale { width: 64px; flex-shrink: 0; }
 .cb-column-grades { width: 80px; flex-shrink: 0; }
-.cb-column-skill { flex: 1; min-width: 50px; }
+.cb-column-skill { flex: 1; min-width: 50px; max-width: 160px; }
 
 .cb-col-body {
-  flex: 1;
   height: 40vh;
   min-height: 200px;
   position: relative;

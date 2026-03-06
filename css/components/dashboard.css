@@ -381,6 +381,10 @@
   overflow-y: auto;
 }
 
+.results-modal-content.results-modal-section {
+  max-width: 700px;
+}
+
 .results-modal-close {
   position: absolute;
   top: 15px;

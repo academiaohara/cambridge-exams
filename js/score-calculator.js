@@ -515,6 +515,12 @@
       var body = document.getElementById('results-modal-body');
       if (!overlay || !body) return;
 
+      // Toggle section-specific class for smaller modal
+      var content = overlay.querySelector('.results-modal-content');
+      if (content) {
+        content.classList.toggle('results-modal-section', !!sectionKey);
+      }
+
       // Store data for chart toggle
       this._modalData = {
         skillScores: skillScores,
