@@ -155,15 +155,7 @@
             <i class="fas fa-chart-bar"></i> Calculate Score
           </button>
 
-          <div class="statement-of-results" id="statementOfResults" style="display:none;">
-            <h3 class="sor-title">Statement of Results</h3>
-            <div class="result-header">
-              <div class="box">RESULT<br><span id="resultText">-</span></div>
-              <div class="box red">OVERALL SCORE<br><span id="overallScore">-</span></div>
-              <div class="box">CEFR LEVEL<br><span id="cefrLevel">-</span></div>
-            </div>
-            <div class="chart-area" id="chartArea"></div>
-          </div>
+          <div class="statement-of-results" id="statementOfResults" style="display:none;"></div>
         </div>
       `;
 
@@ -220,19 +212,60 @@
         if (raw < 0) raw = 0;
         const scale = getScaleScore(raw, table);
         totalScale += scale;
-        skillScores.push({ skill: skill, raw: raw, scale: scale });
+        skillScores.push({ skill: skill, raw: raw, maxRaw: maxRaw, scale: scale });
       });
 
       const overall = Math.round(totalScale / skills.length);
       const gradeInfo = getGradeInfo(overall, examType);
 
-      document.getElementById('resultText').innerText = gradeInfo.result;
-      document.getElementById('overallScore').innerText = overall;
-      document.getElementById('cefrLevel').innerText = gradeInfo.cefr;
+      this._calcData = {
+        skillScores: skillScores,
+        overall: overall,
+        gradeInfo: gradeInfo,
+        examType: examType,
+        chartMode: 'cambridge'
+      };
 
-      this.renderChart(skillScores, overall, examType);
+      this._renderCalcContent();
       document.getElementById('statementOfResults').style.display = 'block';
       document.getElementById('statementOfResults').scrollIntoView({ behavior: 'smooth' });
+    },
+
+    _calcData: null,
+
+    _renderCalcContent: function() {
+      var container = document.getElementById('statementOfResults');
+      if (!container || !this._calcData) return;
+
+      var d = this._calcData;
+      var grades = conversionData[d.examType].grades;
+
+      var html = '<div class="results-modal-header"><h3>Statement of Results</h3><span class="results-exam-level">' + d.examType + '</span></div>';
+
+      html += '<div class="cb-result-boxes">';
+      html += '<div class="cb-result-box cb-result-green"><div class="cb-result-label">Result</div><div class="cb-result-value">' + d.gradeInfo.result + '</div></div>';
+      html += '<div class="cb-result-box"><div class="cb-result-label">Overall Score</div><div class="cb-result-value cb-result-score">' + d.overall + '</div></div>';
+      html += '<div class="cb-result-box"><div class="cb-result-label">CEFR Level</div><div class="cb-result-value cb-result-cefr">' + d.gradeInfo.cefr + '</div></div>';
+      html += '</div>';
+
+      html += '<div class="cb-chart-toggle">';
+      html += '<button class="cb-toggle-btn' + (d.chartMode === 'cambridge' ? ' cb-toggle-active' : '') + '" onclick="ScoreCalculator.switchCalcChartMode(\'cambridge\')">Cambridge</button>';
+      html += '<button class="cb-toggle-btn' + (d.chartMode === 'raw' ? ' cb-toggle-active' : '') + '" onclick="ScoreCalculator.switchCalcChartMode(\'raw\')">Raw</button>';
+      html += '</div>';
+
+      if (d.chartMode === 'cambridge') {
+        html += this._buildCambridgeChart(d.skillScores, grades);
+      } else {
+        html += this._buildRawChart(d.skillScores);
+      }
+
+      container.innerHTML = html;
+    },
+
+    switchCalcChartMode: function(mode) {
+      if (!this._calcData) return;
+      this._calcData.chartMode = mode;
+      this._renderCalcContent();
     },
 
     // --- Results from stored exam scores ---
@@ -731,64 +764,6 @@
     closeResultsModal: function() {
       var overlay = document.getElementById('results-modal-overlay');
       if (overlay) overlay.style.display = 'none';
-    },
-
-    renderChart: function(skillScores, overall, examType) {
-      const chartArea = document.getElementById('chartArea');
-      if (!chartArea) return;
-
-      const grades = conversionData[examType].grades;
-
-      let html = '<div class="chart-scale">';
-
-      // Scale labels on left
-      html += '<div class="chart-labels">';
-      for (let s = SCALE_MAX; s >= SCALE_MIN; s -= 10) {
-        html += '<div class="chart-label">' + s + '</div>';
-      }
-      html += '</div>';
-
-      // Columns for each skill + overall
-      html += '<div class="chart-columns">';
-
-      // Grade bands background
-      html += '<div class="chart-bands">';
-      grades.forEach(function(g, i) {
-        const top = grades[i - 1] ? grades[i - 1].min : SCALE_MAX;
-        const bottom = g.min;
-        const topPct = 100 - arrowPercent(top);
-        const bottomPct = 100 - arrowPercent(bottom);
-        const heightPct = bottomPct - topPct;
-        html += '<div class="chart-band" style="top:' + topPct + '%;height:' + heightPct + '%;" title="' + g.label + ' (' + g.cefr + ')">';
-        html += '<span class="band-label">' + g.label + '</span>';
-        html += '</div>';
-      });
-      html += '</div>';
-
-      // Skill columns
-      skillScores.forEach(function(item) {
-        const pct = arrowPercent(item.scale);
-        const displayName = item.skill === 'Use of English' ? 'UOE' : item.skill;
-        html += '<div class="chart-column">';
-        html += '<div class="chart-bar-area">';
-        html += '<div class="arrow-marker" style="bottom:' + pct + '%;">' + item.scale + '</div>';
-        html += '</div>';
-        html += '<div class="chart-col-label">' + displayName + '</div>';
-        html += '</div>';
-      });
-
-      // Overall column
-      const overallPct = arrowPercent(overall);
-      html += '<div class="chart-column overall-column">';
-      html += '<div class="chart-bar-area">';
-      html += '<div class="arrow-marker overall-marker" style="bottom:' + overallPct + '%;">' + overall + '</div>';
-      html += '</div>';
-      html += '<div class="chart-col-label"><strong>Overall</strong></div>';
-      html += '</div>';
-
-      html += '</div>'; // chart-columns
-      html += '</div>'; // chart-scale
-      chartArea.innerHTML = html;
     }
   };
 })();
