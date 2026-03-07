@@ -418,15 +418,16 @@
         Timer.timerInterval = null;
       }
       
-      // Save and check the current part first
+      var currentSection = AppState.currentSection;
+      var examId = AppState.currentExamId;
+      
+      // Save and check the current part first.
+      // For writing sections, skip checkAnswers (returns 0) so _autoCheckAllParts can do AI evaluation.
       this.savePartState();
-      if (!AppState.answersChecked && AppState.currentExercise) {
+      if (!AppState.answersChecked && AppState.currentExercise && currentSection !== 'writing' && currentSection !== 'speaking') {
         ExerciseHandlers.checkAnswers();
         this.savePartState();
       }
-      
-      var currentSection = AppState.currentSection;
-      var examId = AppState.currentExamId;
       
       // Show loading screen while auto-checking / evaluating all parts
       var content = document.getElementById('main-content');
