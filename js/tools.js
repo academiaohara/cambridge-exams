@@ -9,6 +9,10 @@
   // Request ID to prevent async race conditions when switching tools
   var _toolRequestId = 0;
 
+  function _escapeHtml(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
   window.Tools = {
     toggleSidebar: function() {
       var sidebar = document.getElementById('tools-sidebar');
@@ -682,10 +686,6 @@
     }
   };
 
-  function _escapeHtml(str) {
-    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-  
   // Inicializar eventos de selección de texto
   document.addEventListener('mouseup', async function(e) {
     if (!AppState.activeTool) return;
