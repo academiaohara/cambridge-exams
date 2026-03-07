@@ -563,7 +563,7 @@
   /* ============================================
      TOOLS PANEL — iOS style
      ============================================ */
-  .tool-btn-nav {
+  .sidebar-tool-btn {
     background: rgba(118, 118, 128, 0.12);
     border: none;
     border-radius: 10px;
@@ -571,12 +571,12 @@
     font-weight: 500;
   }
 
-  .tool-btn-nav.active {
+  .sidebar-tool-btn.active {
     background: #007AFF;
     color: #ffffff;
   }
 
-  .active-tool-content {
+  .tools-sidebar .active-tool-content {
     background: #ffffff;
     border-radius: 12px;
     border: none;
