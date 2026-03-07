@@ -158,7 +158,7 @@
             <div class="exercise-info-right">
               <div class="exercise-timer" id="exercise-timer">
                 <i class="fas fa-hourglass-half"></i>
-                <span id="timer-display">${Utils.formatTime(AppState.elapsedSeconds)}</span>
+                <span id="timer-display">${AppState.currentMode === 'exam' ? Utils.formatTime(Math.max(0, (exercise.time || 10) * 60 - AppState.elapsedSeconds)) : Utils.formatTime(AppState.elapsedSeconds)}</span>
               </div>
               <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
             </div>
@@ -170,7 +170,7 @@
           
           ${exampleHTML}
           
-          ${section !== 'writing' && section !== 'speaking' ? `<div class="tool-tabs-horizontal">
+          ${(section !== 'writing' && section !== 'speaking' && AppState.currentMode !== 'exam') ? `<div class="tool-tabs-horizontal">
             <button class="tool-btn-nav" id="tab-notes" onclick="Tools.switchTool('notes')">
               <i class="fas fa-highlighter"></i> <span data-i18n="highlight">${I18n.t('highlight')}</span>
             </button>
@@ -190,6 +190,7 @@
               <i class="fas fa-file-audio"></i> <span data-i18n="transcript">${I18n.t('transcript')}</span>
             </button>` : ''}
           </div>` : ''}
+          ${AppState.currentMode === 'exam' ? `<div class="exam-mode-badge"><i class="fas fa-file-alt"></i> ${I18n.t('examModeActive')}</div>` : ''}
           
           ${contentHeaderHTML}
           
@@ -199,7 +200,7 @@
             </div>
           </div>
 
-          ${section !== 'writing' && section !== 'speaking' ? `<div id="active-tool-content" class="active-tool-content">
+          ${(section !== 'writing' && section !== 'speaking' && AppState.currentMode !== 'exam') ? `<div id="active-tool-content" class="active-tool-content">
             <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
           </div>` : ''}
           
@@ -694,23 +695,30 @@
     },
     
     renderExerciseFooter: function(part, totalParts) {
-      let footer = `
-        <button class="btn-check" onclick="ExerciseHandlers.checkAnswers()" ${AppState.answersChecked ? 'disabled' : ''}>
-          <span data-i18n="checkAnswers">${I18n.t('checkAnswers')}</span>
-        </button>
-        <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()">
-          <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
-        </button>
-        <button class="btn-reset" onclick="ExerciseHandlers.resetExercise()">
-          <i class="fas fa-redo-alt"></i> <span data-i18n="reset">${I18n.t('reset')}</span>
-        </button>
-      `;
+      var isExamMode = AppState.currentMode === 'exam';
+      let footer = '';
       
-      if (part > 1) {
+      if (!isExamMode) {
+        footer += `
+          <button class="btn-check" onclick="ExerciseHandlers.checkAnswers()" ${AppState.answersChecked ? 'disabled' : ''}>
+            <span data-i18n="checkAnswers">${I18n.t('checkAnswers')}</span>
+          </button>
+          <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()">
+            <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
+          </button>
+          <button class="btn-reset" onclick="ExerciseHandlers.resetExercise()">
+            <i class="fas fa-redo-alt"></i> <span data-i18n="reset">${I18n.t('reset')}</span>
+          </button>
+        `;
+      }
+      
+      if (!isExamMode && part > 1) {
         footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">${I18n.t('previous')}</span></button>`;
       }
       
       if (part < totalParts) {
+        footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">${I18n.t('next')}</span> <i class="fas fa-chevron-right"></i></button>`;
+      } else if (isExamMode && AppState.examFullMode) {
         footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">${I18n.t('next')}</span> <i class="fas fa-chevron-right"></i></button>`;
       }
       

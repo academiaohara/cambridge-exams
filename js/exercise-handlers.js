@@ -225,6 +225,9 @@
     },
     
     resetExercise: function() {
+      // Prevent reset in exam mode
+      if (AppState.currentMode === 'exam') return;
+      
       const partConfig = CONFIG.PART_TYPES[
         AppState.currentSection === 'reading' ? AppState.currentPart : 
         `${AppState.currentSection}${AppState.currentPart}`

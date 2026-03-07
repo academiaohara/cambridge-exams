@@ -9,16 +9,54 @@
       this.updateTimerDisplay();
       this.updateTimerColor();
       
-      this.timerInterval = setInterval(() => {
-        AppState.elapsedSeconds++;
-        this.updateTimerDisplay();
-        this.updateTimerColor();
-      }, 1000);
+      if (AppState.currentMode === 'exam') {
+        // Countdown mode
+        this.timerInterval = setInterval(() => {
+          AppState.elapsedSeconds++;
+          this.updateTimerDisplay();
+          this.updateTimerColor();
+          
+          // Check if countdown reached 0
+          const totalSeconds = (AppState.currentExercise?.time || 10) * 60;
+          const remaining = totalSeconds - AppState.elapsedSeconds;
+          if (remaining <= 0) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+            this.onTimeUp();
+          }
+        }, 1000);
+      } else {
+        // Count up mode (practice)
+        this.timerInterval = setInterval(() => {
+          AppState.elapsedSeconds++;
+          this.updateTimerDisplay();
+          this.updateTimerColor();
+        }, 1000);
+      }
+    },
+    
+    onTimeUp: function() {
+      // Auto-save current answers
+      Exercise.savePartState();
+      
+      // Auto-check answers
+      if (!AppState.answersChecked) {
+        ExerciseHandlers.checkAnswers();
+      }
+      
+      // Auto-advance to next part
+      Exercise.goToNextPart();
     },
     
     updateTimerDisplay: function() {
       const timerDisplay = document.getElementById('timer-display');
-      if (timerDisplay) {
+      if (!timerDisplay) return;
+      
+      if (AppState.currentMode === 'exam') {
+        const totalSeconds = (AppState.currentExercise?.time || 10) * 60;
+        const remaining = Math.max(0, totalSeconds - AppState.elapsedSeconds);
+        timerDisplay.textContent = Utils.formatTime(remaining);
+      } else {
         timerDisplay.textContent = Utils.formatTime(AppState.elapsedSeconds);
       }
     },
@@ -29,10 +67,20 @@
       
       timerElement.classList.remove('warning', 'danger');
       
-      if (AppState.elapsedSeconds >= CONFIG.DANGER_TIME) {
-        timerElement.classList.add('danger');
-      } else if (AppState.elapsedSeconds >= CONFIG.WARNING_TIME) {
-        timerElement.classList.add('warning');
+      if (AppState.currentMode === 'exam') {
+        const totalSeconds = (AppState.currentExercise?.time || 10) * 60;
+        const remaining = totalSeconds - AppState.elapsedSeconds;
+        if (remaining <= 60) {
+          timerElement.classList.add('danger');
+        } else if (remaining <= 120) {
+          timerElement.classList.add('warning');
+        }
+      } else {
+        if (AppState.elapsedSeconds >= CONFIG.DANGER_TIME) {
+          timerElement.classList.add('danger');
+        } else if (AppState.elapsedSeconds >= CONFIG.WARNING_TIME) {
+          timerElement.classList.add('warning');
+        }
       }
     },
     
