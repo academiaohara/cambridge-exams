@@ -61,65 +61,54 @@
 }
 
 .sidebar-tool-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  height: 36px;
+  border-radius: 18px;
   border: none;
   background: white;
   cursor: pointer;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  gap: 6px;
+  padding: 0 12px;
+  font-size: 0.82rem;
   color: var(--text-medium);
   transition: all 0.25s cubic-bezier(.4,0,.2,1);
   position: relative;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .sidebar-tool-btn .tool-label {
-  position: absolute;
-  left: calc(100% + 6px);
-  top: 50%;
-  transform: translateY(-50%) scale(0.92);
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: white;
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.2s cubic-bezier(.4,0,.2,1);
-  z-index: 40;
+  letter-spacing: 0.01em;
 }
 
 .sidebar-tool-btn:hover {
   background: rgba(255, 255, 255, 0.95);
   color: var(--primary);
-  transform: scale(1.12);
+  transform: scale(1.05);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-tool-btn:hover .tool-label {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
+  color: var(--primary);
 }
 
 .sidebar-tool-btn.active {
   background: var(--primary);
   color: white;
   box-shadow: 0 3px 12px rgba(30, 58, 138, 0.3);
-  transform: scale(1.05);
 }
 
 .sidebar-tool-btn.active:hover {
   background: var(--primary);
   color: white;
+  transform: scale(1.05);
 }
 
 /* =============================================
@@ -293,16 +282,6 @@
   font-size: 1rem;
 }
 
-#note-input-field {
-  width: 100%;
-  border: 1px solid #fde68a;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  font-family: 'Inter', sans-serif;
-  box-sizing: border-box;
-}
-
 .note-creator-footer {
   display: flex;
   justify-content: space-between;
@@ -380,12 +359,6 @@
   overflow-y: auto;
 }
 
-.notes-list-container h4 {
-  margin-bottom: 15px;
-  color: var(--primary);
-  font-size: 1.1rem;
-}
-
 .note-item-display {
   display: flex;
   justify-content: space-between;
@@ -434,6 +407,151 @@
   background: #fee2e2;
 }
 
+/* =============================================
+   NOTES CAROUSEL
+   ============================================= */
+.notes-carousel {
+  margin-bottom: 4px;
+}
+
+.notes-carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.notes-nav-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--primary);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.notes-nav-btn:hover:not(:disabled) {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.notes-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.notes-nav-counter {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  font-weight: 600;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* =============================================
+   CHAR COUNTER
+   ============================================= */
+.note-input-wrapper {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.note-input-wrapper #note-input-field {
+  width: 100%;
+  border: 1px solid #fde68a;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+.char-counter {
+  display: block;
+  text-align: right;
+  font-size: 0.72rem;
+  color: var(--text-light);
+  margin-top: 3px;
+}
+
+/* =============================================
+   FREE NOTES REDESIGN
+   ============================================= */
+.fn-input-wrapper {
+  margin-bottom: 10px;
+}
+
+.fn-input {
+  width: 100%;
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  box-sizing: border-box;
+  padding: 8px 12px;
+  resize: none;
+  transition: min-height 0.25s ease, border-color 0.2s;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+.fn-input-small {
+  min-height: 38px;
+  max-height: 38px;
+}
+
+.fn-input-large {
+  min-height: 110px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.fn-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.fn-input-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  gap: 8px;
+}
+
+.fn-save-btn {
+  padding: 5px 14px;
+  font-size: 0.82rem;
+}
+
+.fn-note-display {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: white;
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  gap: 8px;
+}
+
+.fn-note-text {
+  flex: 1;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
 .text-highlight {
   cursor: help;
   border-bottom: 2px solid currentColor;
@@ -443,11 +561,6 @@
 
 .free-notes-container {
   padding: 10px;
-}
-
-.free-notes-container h4 {
-  color: var(--primary);
-  margin-bottom: 15px;
 }
 
 #free-notes-area {
@@ -874,15 +987,6 @@
 
 .tools-sidebar .notes-list-container {
   max-height: none;
-}
-
-.tools-sidebar .free-notes-container h4 {
-  font-size: 0.95rem;
-}
-
-.tools-sidebar #free-notes-area {
-  min-height: 140px;
-  font-size: 0.88rem;
 }
 
 .tools-sidebar .placeholder-text {
