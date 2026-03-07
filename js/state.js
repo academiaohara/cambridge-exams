@@ -17,6 +17,7 @@
     currentPart: null,
     currentExamId: null,
     activeTool: null,
+    toolSelectionEnabled: true,
     notes: [],
     freeNotes: "",
     timerInterval: null,

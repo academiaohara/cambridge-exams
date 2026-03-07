@@ -36,6 +36,7 @@
         if (sidebar) sidebar.classList.remove('open');
       } else {
         AppState.activeTool = tool;
+        AppState.toolSelectionEnabled = true;
         if (sidebar) sidebar.classList.add('open');
         // Close modals when a tool is activated
         this._closeModals();
@@ -60,9 +61,15 @@
         };
         titleEl.textContent = titles[AppState.activeTool] || '';
       }
+
+      // Show/hide toggle for selection-based tools
+      this._renderToolToggle();
       
       var container = document.getElementById('active-tool-content');
       if (!container) return;
+      
+      // Clear any lingering selection to avoid cross-tool bleed
+      window.getSelection().removeAllRanges();
       
       switch(AppState.activeTool) {
         case 'notes':
@@ -90,6 +97,36 @@
         default:
           container.innerHTML = '<p class="placeholder-text">' + I18n.t('activateTool') + '</p>';
       }
+    },
+
+    _isSelectionTool: function(tool) {
+      return tool === 'notes' || tool === 'dict' || tool === 'translate';
+    },
+
+    _renderToolToggle: function() {
+      var existing = document.getElementById('tool-toggle-row');
+      if (existing) existing.remove();
+
+      if (!AppState.activeTool || !this._isSelectionTool(AppState.activeTool)) return;
+
+      var header = document.querySelector('.sidebar-panel-header');
+      if (!header) return;
+
+      var row = document.createElement('div');
+      row.className = 'tool-toggle-row';
+      row.id = 'tool-toggle-row';
+      row.innerHTML =
+        '<span class="tool-toggle-label">' + (I18n.t('autoDetect') || 'Auto-detect') + '</span>' +
+        '<label class="tool-toggle-switch">' +
+          '<input type="checkbox" id="tool-selection-toggle" ' + (AppState.toolSelectionEnabled ? 'checked' : '') + ' onchange="Tools.toggleToolSelection(this.checked)">' +
+          '<span class="tool-toggle-slider"></span>' +
+        '</label>';
+
+      header.parentNode.insertBefore(row, header.nextSibling);
+    },
+
+    toggleToolSelection: function(enabled) {
+      AppState.toolSelectionEnabled = enabled;
     },
 
     renderDictSearch: function() {
@@ -504,6 +541,7 @@
   // Inicializar eventos de selección de texto
   document.addEventListener('mouseup', async function(e) {
     if (!AppState.activeTool) return;
+    if (!AppState.toolSelectionEnabled) return;
     
     const selection = window.getSelection();
     const text = selection.toString().trim();

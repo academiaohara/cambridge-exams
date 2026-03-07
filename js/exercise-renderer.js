@@ -147,24 +147,24 @@
             <div class="sidebar-rail">
               <div class="sidebar-tools-list">
                 <button class="sidebar-tool-btn" id="tab-notes" onclick="Tools.switchTool('notes')" data-tooltip="${I18n.t('highlight')}">
-                  <i class="fas fa-highlighter"></i>
+                  <i class="fas fa-highlighter"></i><span class="tool-label">${I18n.t('highlight')}</span>
                 </button>
                 <button class="sidebar-tool-btn" id="tab-freenotes" onclick="Tools.switchTool('freenotes')" data-tooltip="${I18n.t('notes')}">
-                  <i class="fas fa-sticky-note"></i>
+                  <i class="fas fa-sticky-note"></i><span class="tool-label">${I18n.t('notes')}</span>
                 </button>
                 ${!isExamMode ? `
                 <button class="sidebar-tool-btn" id="tab-dict" onclick="Tools.switchTool('dict')" data-tooltip="${I18n.t('dictionary')}">
-                  <i class="fas fa-book"></i>
+                  <i class="fas fa-book"></i><span class="tool-label">${I18n.t('dictionary')}</span>
                 </button>
                 <button class="sidebar-tool-btn" id="tab-translate" onclick="Tools.switchTool('translate')" data-tooltip="${I18n.t('translate')}">
-                  <i class="fas fa-language"></i>
+                  <i class="fas fa-language"></i><span class="tool-label">${I18n.t('translate')}</span>
                 </button>
                 <button class="sidebar-tool-btn" id="tab-tips" onclick="Tools.switchTool('tips')" data-tooltip="${I18n.t('tips')}">
-                  <i class="fas fa-lightbulb"></i>
+                  <i class="fas fa-lightbulb"></i><span class="tool-label">${I18n.t('tips')}</span>
                 </button>
                 ${section === 'listening' ? `
                 <button class="sidebar-tool-btn" id="tab-transcript" onclick="Tools.switchTool('transcript')" data-tooltip="${I18n.t('transcript')}">
-                  <i class="fas fa-file-audio"></i>
+                  <i class="fas fa-file-audio"></i><span class="tool-label">${I18n.t('transcript')}</span>
                 </button>` : ''}
                 ` : ''}
               </div>
