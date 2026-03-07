@@ -49,6 +49,54 @@
       });
     },
     
+    startFullExam: async function(examId) {
+      var self = this;
+      var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
+      if (!exam) return;
+      
+      // Check if there's any saved progress for this exam
+      var hasSaved = false;
+      ['reading', 'listening', 'writing', 'speaking'].forEach(function(section) {
+        var sectionData = exam.sections[section];
+        if (sectionData) {
+          for (var i = 1; i <= sectionData.total; i++) {
+            if (self.loadPartState(examId, section, i)) { hasSaved = true; }
+          }
+        }
+      });
+      
+      if (hasSaved) {
+        Dashboard.showConfirmDialog(I18n.t('confirmStartExam'), function() {
+          // Clear all previous progress
+          ['reading', 'listening', 'writing', 'speaking'].forEach(function(section) {
+            var sectionData = exam.sections[section];
+            if (sectionData) {
+              for (var i = 1; i <= sectionData.total; i++) {
+                self.clearPartState(examId, section, i);
+              }
+              sectionData.completed = [];
+              sectionData.inProgress = [];
+            }
+            var scoreKey = examId + '_' + section;
+            if (AppState.sectionScores[scoreKey]) delete AppState.sectionScores[scoreKey];
+          });
+          self._doStartFullExam(examId);
+        });
+        return;
+      }
+      
+      this._doStartFullExam(examId);
+    },
+    
+    _doStartFullExam: async function(examId) {
+      var firstSection = AppState.examSectionsOrder[0] || 'reading';
+      AppState.currentExamId = examId;
+      AppState.currentSection = firstSection;
+      AppState.examFullMode = true;
+      this.markPartInProgress(examId, firstSection, 1);
+      await this.openPart(examId, firstSection, 1);
+    },
+    
     startFullSection: async function(examId, section) {
       var self = this;
       

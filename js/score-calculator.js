@@ -271,7 +271,7 @@
     // --- Results from stored exam scores ---
 
     getStoredSectionScore: function(examId, section, part) {
-      var key = 'cambridge_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
+      var key = 'cambridge_' + AppState.currentMode + '_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
       try {
         var raw = localStorage.getItem(key);
         if (raw) {
@@ -294,7 +294,7 @@
         return AppState.sectionScores[sectionKey][part];
       }
       // Fall back to localStorage, accepting even unchecked scores
-      var key = 'cambridge_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
+      var key = 'cambridge_' + AppState.currentMode + '_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
       try {
         var raw = localStorage.getItem(key);
         if (raw) {

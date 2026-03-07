@@ -133,6 +133,7 @@
               <h2>${levelName} - ${sectionTitle}</h2>
               <div class="exercise-subtitle" data-i18n="part">${I18n.t('part')} ${part} ${I18n.t('of')} ${totalParts}</div>
               <span class="exercise-badge">${exercise.title || I18n.t('exercise')}</span>
+              ${AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> ${I18n.t('examModeActive')}</span>` : ''}
             </div>
             <div class="exercise-header-right">
               <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
@@ -190,7 +191,9 @@
               <i class="fas fa-file-audio"></i> <span data-i18n="transcript">${I18n.t('transcript')}</span>
             </button>` : ''}
           </div>` : ''}
-          ${AppState.currentMode === 'exam' ? `<div class="exam-mode-badge"><i class="fas fa-file-alt"></i> ${I18n.t('examModeActive')}</div>` : ''}
+          ${(section !== 'writing' && section !== 'speaking' && AppState.currentMode !== 'exam') ? `<div id="active-tool-content" class="active-tool-content">
+            <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
+          </div>` : ''}
           
           ${contentHeaderHTML}
           
@@ -200,10 +203,6 @@
             </div>
           </div>
 
-          ${(section !== 'writing' && section !== 'speaking' && AppState.currentMode !== 'exam') ? `<div id="active-tool-content" class="active-tool-content">
-            <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
-          </div>` : ''}
-          
           ${this.renderExplanationsSection(exercise)}
           
           <div class="exercise-footer">
