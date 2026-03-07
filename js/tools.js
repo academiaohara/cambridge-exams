@@ -24,10 +24,8 @@
     },
 
     _closeModals: function() {
-      var modalOverlay = document.getElementById('exercise-modal-overlay');
-      if (modalOverlay) modalOverlay.style.display = 'none';
-      var qnavOverlay = document.getElementById('question-nav-overlay');
-      if (qnavOverlay) qnavOverlay.style.display = 'none';
+      if (window.Modal) Modal.closeOptionsModal();
+      if (window.QuestionNav) QuestionNav.close();
     },
 
     switchTool: function(tool) {
