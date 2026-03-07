@@ -257,7 +257,9 @@
         }
         
         AppState.notes = [];
-        AppState.freeNotes = "";
+        AppState.notesIndex = 0;
+        AppState.freeNotes = [];
+        AppState.freeNotesIndex = 0;
         AppState.elapsedSeconds = savedState ? (savedState.elapsedSeconds || 0) : 0;
         
         // In exam mode with countdown, set elapsed to saved or 0 (countdown calculates remaining)
@@ -737,7 +739,9 @@
       AppState.currentExamId = null;
       AppState.activeTool = null;
       AppState.notes = [];
-      AppState.freeNotes = "";
+      AppState.notesIndex = 0;
+      AppState.freeNotes = [];
+      AppState.freeNotesIndex = 0;
       AppState.answersChecked = false;
       AppState.sectionScores = {};
       AppState.currentPartScore = 0;
