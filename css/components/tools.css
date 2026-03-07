@@ -1,7 +1,7 @@
 /* css/components/tools.css */
 
 /* =============================================
-   EXERCISE PAGE WRAPPER (sidebar + exercise)
+   EXERCISE PAGE WRAPPER
    ============================================= */
 .exercise-page-wrapper {
   display: flex;
@@ -20,92 +20,49 @@
   transition: all 0.35s cubic-bezier(.4,0,.2,1);
 }
 
-/* When sidebar is open, expand wrapper into parent padding for more space */
-@media (min-width: 769px) {
-  .exercise-page-wrapper:has(.tools-sidebar.open) {
-    margin-left: -20px;
-    margin-right: -12px;
-  }
-}
-
 /* =============================================
-   LEFT SIDEBAR — Apple Glass Style
+   FLOATING BOTTOM TOOLS BAR
    ============================================= */
 .tools-sidebar {
-  display: flex;
   position: sticky;
-  top: 20px;
+  bottom: 0;
   z-index: 20;
-  height: fit-content;
-  max-height: calc(100vh - 100px);
-  flex-shrink: 0;
-  transition: all 0.35s cubic-bezier(.4,0,.2,1);
+  display: flex;
+  flex-direction: column;
+  margin: 20px -30px -30px -30px;
+  border-radius: 0 0 27px 27px;
+  overflow: hidden;
 }
 
 .sidebar-rail {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 6px;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.5);
-  flex-shrink: 0;
-}
-
-.sidebar-toggle-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  cursor: pointer;
-  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: 1.05rem;
-  color: var(--primary);
-  transition: all 0.25s cubic-bezier(.4,0,.2,1);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-.sidebar-toggle-btn:hover {
-  background: var(--primary);
-  color: white;
-  transform: scale(1.08);
-  box-shadow: 0 4px 16px rgba(30, 58, 138, 0.25);
-}
-
-.tools-sidebar.open .sidebar-toggle-btn {
-  background: var(--primary);
-  color: white;
+  gap: 6px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
 }
 
 .sidebar-tools-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
-/* Divider between toggle and tools */
+/* Remove the divider pseudo-element */
 .sidebar-tools-list::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.08);
-  margin-bottom: 2px;
+  display: none;
 }
 
 .sidebar-tool-btn {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: none;
   background: rgba(255, 255, 255, 0.5);
@@ -113,7 +70,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--text-medium);
   transition: all 0.25s cubic-bezier(.4,0,.2,1);
   position: relative;
@@ -133,13 +90,13 @@
   transform: scale(1.05);
 }
 
-/* Tooltip on hover */
+/* Tooltip on hover — show above buttons */
 .sidebar-tool-btn[data-tooltip]::after {
   content: attr(data-tooltip);
   position: absolute;
-  left: calc(100% + 14px);
-  top: 50%;
-  transform: translateY(-50%) scale(0.9);
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -158,35 +115,33 @@
 
 .sidebar-tool-btn:hover[data-tooltip]::after {
   opacity: 1;
-  transform: translateY(-50%) scale(1);
+  transform: translateX(-50%) scale(1);
 }
 
 /* =============================================
-   SIDEBAR PANEL (expanded content)
+   TOOLS PANEL (expanded content above rail)
    ============================================= */
 .sidebar-panel {
   display: none;
-  width: 320px;
-  margin-left: 4px;
-  background: rgba(255, 255, 255, 0.65);
+  width: 100%;
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.06);
   overflow-y: auto;
-  max-height: calc(100vh - 100px);
+  max-height: 45vh;
   flex-shrink: 0;
-  animation: sidebarPanelIn 0.3s cubic-bezier(.4,0,.2,1);
+  animation: toolsPanelIn 0.3s cubic-bezier(.4,0,.2,1);
 }
 
 .tools-sidebar.open .sidebar-panel {
   display: block;
 }
 
-@keyframes sidebarPanelIn {
-  from { opacity: 0; transform: translateX(-12px); }
-  to { opacity: 1; transform: translateX(0); }
+@keyframes toolsPanelIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .sidebar-panel-header {
@@ -225,9 +180,9 @@
   color: var(--incorrect);
 }
 
-/* Active tool content inside sidebar */
+/* Active tool content inside tools bar */
 .tools-sidebar .active-tool-content {
-  padding: 14px;
+  padding: 16px 24px;
   margin-top: 0;
   background: transparent;
   border: none;

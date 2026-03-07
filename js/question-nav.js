@@ -12,6 +12,9 @@
       const question = questions.find(function(q) { return q.number === qNum; });
       if (!question) return;
 
+      // Close tools panel when question nav opens
+      if (window.Tools) Tools.closeSidebar();
+
       const overlay = document.getElementById('question-nav-overlay');
       const body = document.getElementById('question-nav-body');
       if (!overlay || !body) return;
@@ -29,6 +32,10 @@
       const paragraphs = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.paragraphs) || {};
       const paragraphText = paragraphs[key];
       if (!paragraphText) return;
+
+      // Close tools panel when paragraph nav opens
+      if (window.Tools) Tools.closeSidebar();
+
       const overlay = document.getElementById('question-nav-overlay');
       const body = document.getElementById('question-nav-body');
       if (!overlay || !body) return;
