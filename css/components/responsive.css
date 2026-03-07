@@ -324,7 +324,7 @@
     font-size: 0.85rem;
   }
 
-  .sidebar-tool-btn[data-tooltip]::after {
+  .sidebar-tool-btn .tool-label {
     display: none;
   }
 
