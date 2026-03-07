@@ -32,6 +32,7 @@
     currentMode: 'practice',
     examFullMode: false,
     examSectionsOrder: ['reading', 'listening', 'writing', 'speaking'],
-    examCurrentSectionIndex: 0
+    examCurrentSectionIndex: 0,
+    sectionElapsedSeconds: 0
   };
 })();

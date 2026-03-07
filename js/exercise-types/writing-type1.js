@@ -38,9 +38,9 @@
             </button>
           </div>
           <div class="writing-type1-actions">
-            <button class="btn-evaluate-ai" id="writing-type1-evaluate-btn" onclick="WritingType1.evaluateWithAI()">
+            ${AppState.currentMode !== 'exam' ? `<button class="btn-evaluate-ai" id="writing-type1-evaluate-btn" onclick="WritingType1.evaluateWithAI()">
               <i class="fas fa-robot"></i> ${I18n.t('evaluateAI')}
-            </button>
+            </button>` : ''}
           </div>
           <div class="writing-inline-msg" id="writing-type1-msg" style="display:none;"></div>
           <div class="writing-type1-ai-results" id="writing-type1-ai-results" style="display:none;">
