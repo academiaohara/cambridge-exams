@@ -126,17 +126,25 @@
       // Build part navigation cells
       const partNavHTML = this.renderPartNavigation(section, part, totalParts, examId);
       
-      // Build sidebar HTML for tools (not for writing/speaking)
-      const showSidebar = section !== 'writing' && section !== 'speaking';
+      // Build tools bar HTML (not for writing/speaking)
+      const showTools = section !== 'writing' && section !== 'speaking';
       const isExamMode = AppState.currentMode === 'exam';
-      let sidebarHTML = '';
-      if (showSidebar) {
-        sidebarHTML = `
-          <aside class="tools-sidebar" id="tools-sidebar">
+      let toolsBarHTML = '';
+      if (showTools) {
+        toolsBarHTML = `
+          <div class="tools-sidebar" id="tools-sidebar">
+            <div class="sidebar-panel" id="sidebar-panel">
+              <div class="sidebar-panel-header">
+                <span class="sidebar-panel-title" id="sidebar-panel-title"></span>
+                <button class="sidebar-panel-close" onclick="Tools.toggleSidebar()">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div id="active-tool-content" class="active-tool-content">
+                <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
+              </div>
+            </div>
             <div class="sidebar-rail">
-              <button class="sidebar-toggle-btn" onclick="Tools.toggleSidebar()" title="${I18n.t('tools') || 'Tools'}">
-                <i class="fas fa-wrench"></i>
-              </button>
               <div class="sidebar-tools-list">
                 <button class="sidebar-tool-btn" id="tab-notes" onclick="Tools.switchTool('notes')" data-tooltip="${I18n.t('highlight')}">
                   <i class="fas fa-highlighter"></i>
@@ -161,23 +169,11 @@
                 ` : ''}
               </div>
             </div>
-            <div class="sidebar-panel" id="sidebar-panel">
-              <div class="sidebar-panel-header">
-                <span class="sidebar-panel-title" id="sidebar-panel-title"></span>
-                <button class="sidebar-panel-close" onclick="Tools.toggleSidebar()">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-              <div id="active-tool-content" class="active-tool-content">
-                <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
-              </div>
-            </div>
-          </aside>`;
+          </div>`;
       }
 
       let html = `
-        <div class="exercise-page-wrapper${showSidebar ? '' : ' no-sidebar'}">
-          ${sidebarHTML}
+        <div class="exercise-page-wrapper no-sidebar">
           <div class="exercise-container">
             <div class="exercise-header">
               <div class="exercise-title">
@@ -245,6 +241,7 @@
             <div class="exercise-footer">
               ${this.renderExerciseFooter(part, totalParts)}
             </div>
+            ${toolsBarHTML}
           </div>
         </div>`;
       

@@ -10,7 +10,22 @@
         document.querySelectorAll('.sidebar-tool-btn').forEach(function(btn) { btn.classList.remove('active'); });
       } else {
         sidebar.classList.add('open');
+        // Close modals when tools open
+        this._closeModals();
       }
+    },
+
+    closeSidebar: function() {
+      var sidebar = document.getElementById('tools-sidebar');
+      if (!sidebar) return;
+      sidebar.classList.remove('open');
+      AppState.activeTool = null;
+      document.querySelectorAll('.sidebar-tool-btn').forEach(function(btn) { btn.classList.remove('active'); });
+    },
+
+    _closeModals: function() {
+      if (window.Modal) Modal.closeOptionsModal();
+      if (window.QuestionNav) QuestionNav.close();
     },
 
     switchTool: function(tool) {
@@ -22,6 +37,8 @@
       } else {
         AppState.activeTool = tool;
         if (sidebar) sidebar.classList.add('open');
+        // Close modals when a tool is activated
+        this._closeModals();
       }
       
       document.querySelectorAll('.sidebar-tool-btn').forEach(function(btn) { btn.classList.remove('active'); });

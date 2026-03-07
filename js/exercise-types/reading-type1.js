@@ -47,6 +47,9 @@
       const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
       if (!question) return;
       
+      // Close tools panel when modal opens
+      if (window.Tools) Tools.closeSidebar();
+      
       const overlay = document.getElementById('exercise-modal-overlay');
       const body = document.getElementById('modal-body');
       

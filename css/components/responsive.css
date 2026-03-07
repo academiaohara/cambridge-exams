@@ -309,63 +309,27 @@
   }
 
   .tools-sidebar {
-    position: fixed;
-    top: auto;
-    bottom: 70px;
-    left: 10px;
-    z-index: 100;
-    max-height: none;
-    height: auto;
-  }
-
-  .tools-sidebar:not(.open) .sidebar-panel {
-    display: none;
-  }
-
-  .tools-sidebar.open {
-    bottom: 70px;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-  }
-
-  .tools-sidebar.open .sidebar-rail {
-    flex-direction: row;
-    border-radius: 18px 18px 0 0;
-    padding: 10px 16px;
-    gap: 8px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .tools-sidebar.open .sidebar-tools-list {
-    flex-direction: row;
-    gap: 6px;
-  }
-
-  .tools-sidebar.open .sidebar-tools-list::before {
-    width: 1px;
-    height: 24px;
-    margin-bottom: 0;
-    margin-right: 2px;
-  }
-
-  .tools-sidebar.open .sidebar-panel {
-    width: 100%;
-    margin-left: 0;
-    border-radius: 0 0 18px 18px;
-    max-height: 50vh;
-    overflow-y: auto;
+    margin: 16px -12px -12px -12px;
+    border-radius: 0 0 17px 17px;
   }
 
   .sidebar-rail {
-    flex-direction: column;
-    padding: 10px 8px;
-    border-radius: 18px;
+    padding: 8px 12px;
+    gap: 4px;
+  }
+
+  .sidebar-tool-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
   }
 
   .sidebar-tool-btn[data-tooltip]::after {
     display: none;
+  }
+
+  .tools-sidebar .active-tool-content {
+    padding: 12px 14px;
   }
 
   /* --- Modal mobile (full-width bottom sheet) --- */
