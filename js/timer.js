@@ -9,30 +9,80 @@
       this.updateTimerDisplay();
       this.updateTimerColor();
       
-      this.timerInterval = setInterval(() => {
-        AppState.elapsedSeconds++;
-        this.updateTimerDisplay();
-        this.updateTimerColor();
-      }, 1000);
+      var self = this;
+      
+      if (AppState.currentMode === 'exam') {
+        // Countdown mode
+        this.timerInterval = setInterval(function() {
+          AppState.elapsedSeconds++;
+          self.updateTimerDisplay();
+          self.updateTimerColor();
+          
+          // Check if countdown reached 0
+          var totalSeconds = (AppState.currentExercise?.time || 10) * 60;
+          var remaining = totalSeconds - AppState.elapsedSeconds;
+          if (remaining <= 0) {
+            clearInterval(self.timerInterval);
+            self.timerInterval = null;
+            self.onTimeUp();
+          }
+        }, 1000);
+      } else {
+        // Count up mode (practice)
+        this.timerInterval = setInterval(function() {
+          AppState.elapsedSeconds++;
+          self.updateTimerDisplay();
+          self.updateTimerColor();
+        }, 1000);
+      }
+    },
+    
+    onTimeUp: function() {
+      // Auto-save current answers
+      Exercise.savePartState();
+      
+      // Auto-check answers
+      if (!AppState.answersChecked) {
+        ExerciseHandlers.checkAnswers();
+      }
+      
+      // Auto-advance to next part
+      Exercise.goToNextPart();
     },
     
     updateTimerDisplay: function() {
-      const timerDisplay = document.getElementById('timer-display');
-      if (timerDisplay) {
+      var timerDisplay = document.getElementById('timer-display');
+      if (!timerDisplay) return;
+      
+      if (AppState.currentMode === 'exam') {
+        var totalSeconds = (AppState.currentExercise?.time || 10) * 60;
+        var remaining = Math.max(0, totalSeconds - AppState.elapsedSeconds);
+        timerDisplay.textContent = Utils.formatTime(remaining);
+      } else {
         timerDisplay.textContent = Utils.formatTime(AppState.elapsedSeconds);
       }
     },
     
     updateTimerColor: function() {
-      const timerElement = document.getElementById('exercise-timer');
+      var timerElement = document.getElementById('exercise-timer');
       if (!timerElement) return;
       
       timerElement.classList.remove('warning', 'danger');
       
-      if (AppState.elapsedSeconds >= CONFIG.DANGER_TIME) {
-        timerElement.classList.add('danger');
-      } else if (AppState.elapsedSeconds >= CONFIG.WARNING_TIME) {
-        timerElement.classList.add('warning');
+      if (AppState.currentMode === 'exam') {
+        var totalSeconds = (AppState.currentExercise?.time || 10) * 60;
+        var remaining = totalSeconds - AppState.elapsedSeconds;
+        if (remaining <= 60) {
+          timerElement.classList.add('danger');
+        } else if (remaining <= 120) {
+          timerElement.classList.add('warning');
+        }
+      } else {
+        if (AppState.elapsedSeconds >= CONFIG.DANGER_TIME) {
+          timerElement.classList.add('danger');
+        } else if (AppState.elapsedSeconds >= CONFIG.WARNING_TIME) {
+          timerElement.classList.add('warning');
+        }
       }
     },
     

@@ -28,6 +28,10 @@
     translations: {},
     tipsData: {},
     sectionScores: {},
-    currentPartScore: 0
+    currentPartScore: 0,
+    currentMode: 'practice',
+    examFullMode: false,
+    examSectionsOrder: ['reading', 'listening', 'writing', 'speaking'],
+    examCurrentSectionIndex: 0
   };
 })();

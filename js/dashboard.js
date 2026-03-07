@@ -20,6 +20,19 @@
       }
       
       let html = '<div class="exams-container">';
+      
+      // Mode toggle
+      html += `
+        <div class="mode-toggle">
+          <button class="mode-btn ${AppState.currentMode === 'practice' ? 'active' : ''}" data-mode="practice" onclick="Dashboard.setMode('practice')">
+            <i class="fas fa-pencil-alt"></i> ${I18n.t('practiceMode')}
+          </button>
+          <button class="mode-btn ${AppState.currentMode === 'exam' ? 'active' : ''}" data-mode="exam" onclick="Dashboard.setMode('exam')">
+            <i class="fas fa-file-alt"></i> ${I18n.t('examMode')}
+          </button>
+        </div>
+      `;
+      
       exams.forEach(exam => {
         if (exam.status === 'coming_soon') {
           html += this.renderComingSoonExam(exam);
@@ -65,6 +78,9 @@
             <button class="exam-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showOverallResults('${exam.id}')" title="${I18n.t('overallResults') || 'Overall Results'}">
               <i class="fas fa-chart-bar"></i>
             </button>
+            <button class="dashboard-reset-btn reset-test-btn" onclick="event.stopPropagation(); Dashboard.resetTest('${exam.id}')" title="${I18n.t('resetTest')}">
+              <i class="fas fa-redo-alt"></i>
+            </button>
             <i class="fas fa-chevron-down exam-arrow"></i>
           </div>
           <div class="exam-content${isOpen ? ' show' : ''}">
@@ -96,6 +112,9 @@
             </button>
             <button class="section-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showSectionResults('${exam.id}', '${sectionKey}')" title="${I18n.t('sectionResults') || 'Section Results'}">
               <i class="fas fa-chart-bar"></i>
+            </button>
+            <button class="dashboard-reset-btn reset-section-btn" onclick="event.stopPropagation(); Dashboard.resetSection('${exam.id}', '${sectionKey}')" title="${I18n.t('resetSection')}">
+              <i class="fas fa-redo-alt"></i>
             </button>
             <span class="section-progress">${section.completed.length}/${section.total}</span>
           </div>
@@ -131,7 +150,80 @@
         }
       });
       
+      App.restoreExamStatuses();
       this.render();
+    },
+    
+    setMode: function(mode) {
+      AppState.currentMode = mode;
+      localStorage.setItem('preferred_mode', mode);
+      App.restoreExamStatuses();
+      this.render();
+    },
+    
+    showConfirmDialog: function(message, onConfirm) {
+      var overlay = document.createElement('div');
+      overlay.className = 'confirm-dialog-overlay';
+      overlay.innerHTML = `
+        <div class="confirm-dialog">
+          <p>${message}</p>
+          <div class="confirm-dialog-buttons">
+            <button class="confirm-dialog-btn confirm-cancel">${I18n.t('cancel')}</button>
+            <button class="confirm-dialog-btn confirm-ok">${I18n.t('confirm')}</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+      
+      overlay.querySelector('.confirm-cancel').addEventListener('click', function() {
+        document.body.removeChild(overlay);
+      });
+      overlay.querySelector('.confirm-ok').addEventListener('click', function() {
+        document.body.removeChild(overlay);
+        onConfirm();
+      });
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) document.body.removeChild(overlay);
+      });
+    },
+    
+    resetSection: function(examId, sectionKey) {
+      var self = this;
+      this.showConfirmDialog(I18n.t('confirmResetSection'), function() {
+        var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
+        if (!exam) return;
+        var sectionData = exam.sections[sectionKey];
+        if (!sectionData) return;
+        for (var i = 1; i <= sectionData.total; i++) {
+          Exercise.clearPartState(examId, sectionKey, i);
+        }
+        sectionData.completed = [];
+        sectionData.inProgress = [];
+        // Clear section scores
+        var scoreKey = examId + '_' + sectionKey;
+        if (AppState.sectionScores[scoreKey]) delete AppState.sectionScores[scoreKey];
+        self.render(examId);
+      });
+    },
+    
+    resetTest: function(examId) {
+      var self = this;
+      this.showConfirmDialog(I18n.t('confirmResetTest'), function() {
+        var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
+        if (!exam) return;
+        ['reading', 'listening', 'writing', 'speaking'].forEach(function(sectionKey) {
+          var sectionData = exam.sections[sectionKey];
+          if (!sectionData) return;
+          for (var i = 1; i <= sectionData.total; i++) {
+            Exercise.clearPartState(examId, sectionKey, i);
+          }
+          sectionData.completed = [];
+          sectionData.inProgress = [];
+          var scoreKey = examId + '_' + sectionKey;
+          if (AppState.sectionScores[scoreKey]) delete AppState.sectionScores[scoreKey];
+        });
+        self.render(examId);
+      });
     }
   };
 })();

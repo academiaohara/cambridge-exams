@@ -8,6 +8,10 @@
       const savedLevel = localStorage.getItem('preferred_level') || 'C1';
       AppState.currentLevel = savedLevel;
       
+      // Cargar modo guardado
+      const savedMode = localStorage.getItem('preferred_mode') || 'practice';
+      AppState.currentMode = savedMode;
+      
       document.querySelectorAll('.level-btn').forEach(btn => {
         if (btn.getAttribute('data-level') === savedLevel) {
           btn.classList.add('active');
@@ -23,6 +27,9 @@
       I18n.initClickOutside();
 
       await this.syncExamsFromFolders();
+      
+      // Restore completed/inProgress statuses from localStorage
+      this.restoreExamStatuses();
       
       // Renderizar dashboard
       Dashboard.render();
@@ -45,6 +52,35 @@
       });
       
       console.log('✅ App lista');
+    },
+    
+    restoreExamStatuses: function() {
+      var level = AppState.currentLevel;
+      var mode = AppState.currentMode;
+      var exams = EXAMS_DATA[level] || [];
+      exams.forEach(function(exam) {
+        if (exam.status !== 'available') return;
+        ['reading', 'listening', 'writing', 'speaking'].forEach(function(section) {
+          var sectionData = exam.sections[section];
+          if (!sectionData) return;
+          sectionData.completed = [];
+          sectionData.inProgress = [];
+          for (var i = 1; i <= sectionData.total; i++) {
+            var key = 'cambridge_' + mode + '_' + level + '_' + exam.id + '_' + section + '_' + i;
+            try {
+              var raw = localStorage.getItem(key);
+              if (raw) {
+                var data = JSON.parse(raw);
+                if (data.answersChecked) {
+                  sectionData.completed.push(i);
+                } else {
+                  sectionData.inProgress.push(i);
+                }
+              }
+            } catch(e) { /* ignore parse errors */ }
+          }
+        });
+      });
     },
     
     setLanguage: async function(lang) {

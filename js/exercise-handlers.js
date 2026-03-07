@@ -21,6 +21,10 @@
     
     checkAnswers: function() {
       if (!AppState.currentExercise) return;
+      if (AppState.currentMode === 'exam' && !AppState.answersChecked) {
+        // In exam mode, only allow auto-check (called internally)
+        // Direct user clicks are prevented by not rendering the button
+      }
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       
       AppState.answersChecked = true;
@@ -225,6 +229,9 @@
     },
     
     resetExercise: function() {
+      // Prevent reset in exam mode
+      if (AppState.currentMode === 'exam') return;
+      
       const partConfig = CONFIG.PART_TYPES[
         AppState.currentSection === 'reading' ? AppState.currentPart : 
         `${AppState.currentSection}${AppState.currentPart}`

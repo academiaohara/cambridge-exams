@@ -2,7 +2,7 @@
 (function() {
   window.Exercise = {
     getStorageKey: function(examId, section, part) {
-      return `cambridge_${AppState.currentLevel}_${examId}_${section}_${part}`;
+      return `cambridge_${AppState.currentMode}_${AppState.currentLevel}_${examId}_${section}_${part}`;
     },
     
     savePartState: function() {
@@ -31,9 +31,63 @@
       try { localStorage.removeItem(key); } catch(e) { console.warn('Could not clear state:', e); }
     },
     
+    clearExamAttempt: function(examId) {
+      var self = this;
+      var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
+      if (!exam) return;
+      ['reading', 'listening', 'writing', 'speaking'].forEach(function(section) {
+        var sectionData = exam.sections[section];
+        if (sectionData) {
+          for (var i = 1; i <= sectionData.total; i++) {
+            self.clearPartState(examId, section, i);
+          }
+          sectionData.completed = [];
+          sectionData.inProgress = [];
+        }
+        var scoreKey = examId + '_' + section;
+        if (AppState.sectionScores[scoreKey]) delete AppState.sectionScores[scoreKey];
+      });
+    },
+    
     startFullSection: async function(examId, section) {
+      var self = this;
+      
+      if (AppState.currentMode === 'exam') {
+        // Check if there's already a saved attempt and confirm deletion
+        var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
+        var hasSaved = false;
+        if (exam) {
+          var sectionData = exam.sections[section];
+          if (sectionData) {
+            for (var i = 1; i <= sectionData.total; i++) {
+              if (self.loadPartState(examId, section, i)) { hasSaved = true; break; }
+            }
+          }
+        }
+        
+        if (hasSaved) {
+          Dashboard.showConfirmDialog(I18n.t('confirmStartExam'), function() {
+            // Clear previous attempt for this section
+            if (exam && exam.sections[section]) {
+              for (var i = 1; i <= exam.sections[section].total; i++) {
+                self.clearPartState(examId, section, i);
+              }
+              exam.sections[section].completed = [];
+              exam.sections[section].inProgress = [];
+            }
+            self._doStartFullSection(examId, section);
+          });
+          return;
+        }
+      }
+      
+      this._doStartFullSection(examId, section);
+    },
+    
+    _doStartFullSection: async function(examId, section) {
       AppState.currentExamId = examId;
       AppState.currentSection = section;
+      AppState.examFullMode = true;
       
       this.markPartInProgress(examId, section, 1);
       await this.openPart(examId, section, 1);
@@ -123,6 +177,11 @@
         AppState.notes = [];
         AppState.freeNotes = "";
         AppState.elapsedSeconds = savedState ? (savedState.elapsedSeconds || 0) : 0;
+        
+        // In exam mode with countdown, set elapsed to saved or 0 (countdown calculates remaining)
+        if (AppState.currentMode === 'exam') {
+          AppState.elapsedSeconds = savedState ? (savedState.elapsedSeconds || 0) : 0;
+        }
         
         ExerciseRenderer.render(exercise, examId, section, part);
         
@@ -248,6 +307,9 @@
         this.markPartInProgress(AppState.currentExamId, AppState.currentSection, nextPart);
         
         await this.openPart(AppState.currentExamId, AppState.currentSection, nextPart);
+      } else if (AppState.currentMode === 'exam' && AppState.examFullMode) {
+        // In exam full mode: show section completion screen
+        this.showSectionComplete();
       }
     },
     
@@ -266,6 +328,117 @@
       if (prevPart >= 1) {
         await this.openPart(AppState.currentExamId, AppState.currentSection, prevPart);
       }
+    },
+    
+    showSectionComplete: function() {
+      if (Timer.timerInterval) {
+        clearInterval(Timer.timerInterval);
+        Timer.timerInterval = null;
+      }
+      
+      // Auto-check answers for exam mode if not already checked
+      if (!AppState.answersChecked && AppState.currentExercise) {
+        ExerciseHandlers.checkAnswers();
+      }
+      
+      var currentSection = AppState.currentSection;
+      var examId = AppState.currentExamId;
+      var sectionKey = examId + '_' + currentSection;
+      var sectionScore = ExerciseRenderer.getSectionRunningTotal(sectionKey);
+      var sectionTotal = ExerciseRenderer.getSectionTotalQuestions(currentSection);
+      var sectionName = I18n.t(currentSection) || currentSection;
+      
+      // Find next section
+      var currentIdx = AppState.examSectionsOrder.indexOf(currentSection);
+      var nextSection = null;
+      if (currentIdx >= 0 && currentIdx < AppState.examSectionsOrder.length - 1) {
+        nextSection = AppState.examSectionsOrder[currentIdx + 1];
+      }
+      
+      var content = document.getElementById('main-content');
+      var nextSectionName = nextSection ? (I18n.t(nextSection) || nextSection) : '';
+      
+      var html = `
+        <div class="section-complete-screen">
+          <div class="section-complete-icon"><i class="fas fa-check-circle"></i></div>
+          <h2>${I18n.t('sectionComplete')} ${sectionName}!</h2>
+          <div class="section-complete-score">
+            <span class="section-complete-label">${I18n.t('sectionScore')}:</span>
+            <span class="section-complete-value">${sectionScore} / ${sectionTotal}</span>
+          </div>
+          <div class="section-complete-actions">
+      `;
+      
+      if (nextSection) {
+        html += `<button class="btn-next-section" onclick="Exercise.continueToNextSection('${examId}', '${nextSection}')">
+          ${I18n.t('continueToNext')} ${nextSectionName} <i class="fas fa-chevron-right"></i>
+        </button>`;
+      } else {
+        html += `<button class="btn-final-results" onclick="Exercise.showFinalResults('${examId}')">
+          <i class="fas fa-trophy"></i> ${I18n.t('viewFinalResults')}
+        </button>`;
+      }
+      
+      html += `
+            <button class="btn-back-dashboard" onclick="Exercise.closeExercise()">
+              <i class="fas fa-home"></i> ${I18n.t('backToDashboard')}
+            </button>
+          </div>
+        </div>
+      `;
+      
+      content.innerHTML = html;
+    },
+    
+    continueToNextSection: async function(examId, nextSection) {
+      AppState.currentSection = nextSection;
+      AppState.examFullMode = true;
+      this.markPartInProgress(examId, nextSection, 1);
+      await this.openPart(examId, nextSection, 1);
+    },
+    
+    showFinalResults: function(examId) {
+      var content = document.getElementById('main-content');
+      var totalScore = 0;
+      var totalQuestions = 0;
+      var sectionsHTML = '';
+      
+      AppState.examSectionsOrder.forEach(function(section) {
+        var sectionKey = examId + '_' + section;
+        var score = ExerciseRenderer.getSectionRunningTotal(sectionKey);
+        var total = ExerciseRenderer.getSectionTotalQuestions(section);
+        var sectionName = I18n.t(section) || section;
+        totalScore += score;
+        totalQuestions += total;
+        sectionsHTML += `
+          <div class="final-results-section-row">
+            <span class="final-results-section-name">${sectionName}</span>
+            <span class="final-results-section-score">${score} / ${total}</span>
+          </div>
+        `;
+      });
+      
+      var html = `
+        <div class="section-complete-screen">
+          <div class="section-complete-icon final"><i class="fas fa-trophy"></i></div>
+          <h2>${I18n.t('examFinished')}</h2>
+          <p>${I18n.t('examFinishedDesc')}</p>
+          <div class="final-results-breakdown">
+            ${sectionsHTML}
+          </div>
+          <div class="section-complete-score final-total">
+            <span class="section-complete-label">${I18n.t('finalScore')}:</span>
+            <span class="section-complete-value">${totalScore} / ${totalQuestions}</span>
+          </div>
+          <div class="section-complete-actions">
+            <button class="btn-back-dashboard" onclick="Exercise.closeExercise()">
+              <i class="fas fa-home"></i> ${I18n.t('backToDashboard')}
+            </button>
+          </div>
+        </div>
+      `;
+      
+      content.innerHTML = html;
     },
     
     closeExercise: function(opts) {
@@ -291,7 +464,10 @@
       AppState.answersChecked = false;
       AppState.sectionScores = {};
       AppState.currentPartScore = 0;
+      AppState.examFullMode = false;
+      AppState.examCurrentSectionIndex = 0;
       
+      App.restoreExamStatuses();
       Dashboard.render(returnToExamId);
       if (!opts.skipHistory) {
         history.pushState({ view: 'dashboard' }, '');
