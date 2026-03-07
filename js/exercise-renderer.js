@@ -126,97 +126,125 @@
       // Build part navigation cells
       const partNavHTML = this.renderPartNavigation(section, part, totalParts, examId);
       
-      let html = `
-        <div class="exercise-container">
-          <div class="exercise-header">
-            <div class="exercise-title">
-              <h2>${levelName} - ${sectionTitle}</h2>
-              <div class="exercise-subtitle" data-i18n="part">${I18n.t('part')} ${part} ${I18n.t('of')} ${totalParts}</div>
-              <span class="exercise-badge">${exercise.title || I18n.t('exercise')}</span>
-              ${AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> ${I18n.t('examModeActive')}</span>` : ''}
+      // Build sidebar HTML for tools (not for writing/speaking)
+      const showSidebar = section !== 'writing' && section !== 'speaking';
+      const isExamMode = AppState.currentMode === 'exam';
+      let sidebarHTML = '';
+      if (showSidebar) {
+        sidebarHTML = `
+          <aside class="tools-sidebar" id="tools-sidebar">
+            <div class="sidebar-rail">
+              <button class="sidebar-toggle-btn" onclick="Tools.toggleSidebar()" title="${I18n.t('tools') || 'Tools'}">
+                <i class="fas fa-wrench"></i>
+              </button>
+              <div class="sidebar-tools-list">
+                <button class="sidebar-tool-btn" id="tab-notes" onclick="Tools.switchTool('notes')" data-tooltip="${I18n.t('highlight')}">
+                  <i class="fas fa-highlighter"></i>
+                </button>
+                <button class="sidebar-tool-btn" id="tab-freenotes" onclick="Tools.switchTool('freenotes')" data-tooltip="${I18n.t('notes')}">
+                  <i class="fas fa-sticky-note"></i>
+                </button>
+                ${!isExamMode ? `
+                <button class="sidebar-tool-btn" id="tab-dict" onclick="Tools.switchTool('dict')" data-tooltip="${I18n.t('dictionary')}">
+                  <i class="fas fa-book"></i>
+                </button>
+                <button class="sidebar-tool-btn" id="tab-translate" onclick="Tools.switchTool('translate')" data-tooltip="${I18n.t('translate')}">
+                  <i class="fas fa-language"></i>
+                </button>
+                <button class="sidebar-tool-btn" id="tab-tips" onclick="Tools.switchTool('tips')" data-tooltip="${I18n.t('tips')}">
+                  <i class="fas fa-lightbulb"></i>
+                </button>
+                ${section === 'listening' ? `
+                <button class="sidebar-tool-btn" id="tab-transcript" onclick="Tools.switchTool('transcript')" data-tooltip="${I18n.t('transcript')}">
+                  <i class="fas fa-file-audio"></i>
+                </button>` : ''}
+                ` : ''}
+              </div>
             </div>
-            <div class="exercise-header-right">
-              <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
-              <div class="exercise-toolbar">
-                <button class="btn-cambridge-score" onclick="ScoreCalculator.showLiveSectionResults()" title="${I18n.t('cambridgeScore') || 'Cambridge Score'}">
-                  <i class="fas fa-chart-bar"></i>
-                </button>
-                <button class="btn-cambridge-score btn-cambridge-overall" onclick="ScoreCalculator.showLiveOverallResults()" title="${I18n.t('overallResults') || 'Overall Results'}">
-                  <i class="fas fa-chart-line"></i>
-                </button>
-                <button class="btn-exit" onclick="Exercise.closeExercise()">
+            <div class="sidebar-panel" id="sidebar-panel">
+              <div class="sidebar-panel-header">
+                <span class="sidebar-panel-title" id="sidebar-panel-title"></span>
+                <button class="sidebar-panel-close" onclick="Tools.toggleSidebar()">
                   <i class="fas fa-times"></i>
                 </button>
               </div>
-            </div>
-          </div>
-          
-          <div class="exercise-info">
-            <div class="exercise-info-left">
-              ${partNavHTML}
-              <span><i class="fas fa-clock"></i> ${
-                (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
-                  ? CONFIG.SECTION_TIMES[section]
-                  : (exercise.time || '10')
-              } <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
-            </div>
-            <div class="exercise-info-right">
-              <div class="exercise-timer" id="exercise-timer">
-                <i class="fas fa-hourglass-half"></i>
-                <span id="timer-display">${
-                  (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
-                    ? Utils.formatTime(Math.max(0, CONFIG.SECTION_TIMES[section] * 60 - AppState.sectionElapsedSeconds))
-                    : AppState.currentMode === 'exam'
-                      ? Utils.formatTime(Math.max(0, (exercise.time || 10) * 60 - AppState.elapsedSeconds))
-                      : Utils.formatTime(AppState.elapsedSeconds)
-                }</span>
+              <div id="active-tool-content" class="active-tool-content">
+                <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
               </div>
-              <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
             </div>
-          </div>
-          
-          <div class="exercise-description" lang="en">
-            <p data-i18n-description="${this.getDescriptionKey(partConfig)}">${exercise.description || this.getDefaultDescription(partConfig)}</p>
-          </div>
-          
-          ${exampleHTML}
-          
-          ${(section !== 'writing' && section !== 'speaking' && AppState.currentMode !== 'exam') ? `<div class="tool-tabs-horizontal">
-            <button class="tool-btn-nav" id="tab-notes" onclick="Tools.switchTool('notes')">
-              <i class="fas fa-highlighter"></i> <span data-i18n="highlight">${I18n.t('highlight')}</span>
-            </button>
-            <button class="tool-btn-nav" id="tab-freenotes" onclick="Tools.switchTool('freenotes')">
-              <i class="fas fa-sticky-note"></i> <span data-i18n="notes">${I18n.t('notes')}</span>
-            </button>
-            <button class="tool-btn-nav" id="tab-dict" onclick="Tools.switchTool('dict')">
-              <i class="fas fa-book"></i> <span data-i18n="dictionary">${I18n.t('dictionary')}</span>
-            </button>
-            <button class="tool-btn-nav" id="tab-translate" onclick="Tools.switchTool('translate')">
-              <i class="fas fa-language"></i> <span data-i18n="translate">${I18n.t('translate')}</span>
-            </button>
-            <button class="tool-btn-nav" id="tab-tips" onclick="Tools.switchTool('tips')">
-              <i class="fas fa-lightbulb"></i> <span data-i18n="tips">${I18n.t('tips')}</span>
-            </button>
-            ${section === 'listening' ? `<button class="tool-btn-nav" id="tab-transcript" onclick="Tools.switchTool('transcript')">
-              <i class="fas fa-file-audio"></i> <span data-i18n="transcript">${I18n.t('transcript')}</span>
-            </button>` : ''}
-          </div>` : ''}
-          ${(section !== 'writing' && section !== 'speaking' && AppState.currentMode !== 'exam') ? `<div id="active-tool-content" class="active-tool-content">
-            <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
-          </div>` : ''}
-          
-          ${contentHeaderHTML}
-          
-          <div class="exercise-main-layout" lang="en">
-            <div class="reading-text-enhanced" id="selectable-text">
-              ${paragraphsHTML}
-            </div>
-          </div>
+          </aside>`;
+      }
 
-          ${this.renderExplanationsSection(exercise)}
-          
-          <div class="exercise-footer">
-            ${this.renderExerciseFooter(part, totalParts)}
+      let html = `
+        <div class="exercise-page-wrapper${showSidebar ? '' : ' no-sidebar'}">
+          ${sidebarHTML}
+          <div class="exercise-container">
+            <div class="exercise-header">
+              <div class="exercise-title">
+                <h2>${levelName} - ${sectionTitle}</h2>
+                <div class="exercise-subtitle" data-i18n="part">${I18n.t('part')} ${part} ${I18n.t('of')} ${totalParts}</div>
+                <span class="exercise-badge">${exercise.title || I18n.t('exercise')}</span>
+                ${AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> ${I18n.t('examModeActive')}</span>` : ''}
+              </div>
+              <div class="exercise-header-right">
+                <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
+                <div class="exercise-toolbar">
+                  <button class="btn-cambridge-score" onclick="ScoreCalculator.showLiveSectionResults()" title="${I18n.t('cambridgeScore') || 'Cambridge Score'}">
+                    <i class="fas fa-chart-bar"></i>
+                  </button>
+                  <button class="btn-cambridge-score btn-cambridge-overall" onclick="ScoreCalculator.showLiveOverallResults()" title="${I18n.t('overallResults') || 'Overall Results'}">
+                    <i class="fas fa-chart-line"></i>
+                  </button>
+                  <button class="btn-exit" onclick="Exercise.closeExercise()">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="exercise-info">
+              <div class="exercise-info-left">
+                ${partNavHTML}
+                <span><i class="fas fa-clock"></i> ${
+                  (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
+                    ? CONFIG.SECTION_TIMES[section]
+                    : (exercise.time || '10')
+                } <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
+              </div>
+              <div class="exercise-info-right">
+                <div class="exercise-timer" id="exercise-timer">
+                  <i class="fas fa-hourglass-half"></i>
+                  <span id="timer-display">${
+                    (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
+                      ? Utils.formatTime(Math.max(0, CONFIG.SECTION_TIMES[section] * 60 - AppState.sectionElapsedSeconds))
+                      : AppState.currentMode === 'exam'
+                        ? Utils.formatTime(Math.max(0, (exercise.time || 10) * 60 - AppState.elapsedSeconds))
+                        : Utils.formatTime(AppState.elapsedSeconds)
+                  }</span>
+                </div>
+                <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
+              </div>
+            </div>
+            
+            <div class="exercise-description" lang="en">
+              <p data-i18n-description="${this.getDescriptionKey(partConfig)}">${exercise.description || this.getDefaultDescription(partConfig)}</p>
+            </div>
+            
+            ${exampleHTML}
+            
+            ${contentHeaderHTML}
+            
+            <div class="exercise-main-layout" lang="en">
+              <div class="reading-text-enhanced" id="selectable-text">
+                ${paragraphsHTML}
+              </div>
+            </div>
+
+            ${this.renderExplanationsSection(exercise)}
+            
+            <div class="exercise-footer">
+              ${this.renderExerciseFooter(part, totalParts)}
+            </div>
           </div>
         </div>`;
       

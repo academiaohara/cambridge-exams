@@ -1,20 +1,51 @@
 // js/tools.js
 (function() {
   window.Tools = {
+    toggleSidebar: function() {
+      var sidebar = document.getElementById('tools-sidebar');
+      if (!sidebar) return;
+      if (sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+        AppState.activeTool = null;
+        document.querySelectorAll('.sidebar-tool-btn').forEach(function(btn) { btn.classList.remove('active'); });
+      } else {
+        sidebar.classList.add('open');
+      }
+    },
+
     switchTool: function(tool) {
+      var sidebar = document.getElementById('tools-sidebar');
+
       if (AppState.activeTool === tool) {
         AppState.activeTool = null;
+        if (sidebar) sidebar.classList.remove('open');
       } else {
         AppState.activeTool = tool;
+        if (sidebar) sidebar.classList.add('open');
       }
       
-      document.querySelectorAll('.tool-btn-nav').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.sidebar-tool-btn').forEach(function(btn) { btn.classList.remove('active'); });
       if (AppState.activeTool) {
-        const activeBtn = document.getElementById(`tab-${tool}`);
+        var activeBtn = document.getElementById('tab-' + tool);
         if (activeBtn) activeBtn.classList.add('active');
       }
+
+      // Update panel title
+      var titleEl = document.getElementById('sidebar-panel-title');
+      if (titleEl) {
+        var titles = {
+          notes: I18n.t('highlight'),
+          freenotes: I18n.t('notes'),
+          dict: I18n.t('dictionary'),
+          translate: I18n.t('translate'),
+          tips: I18n.t('tips'),
+          transcript: I18n.t('transcript')
+        };
+        titleEl.textContent = titles[AppState.activeTool] || '';
+      }
       
-      const container = document.getElementById('active-tool-content');
+      var container = document.getElementById('active-tool-content');
+      if (!container) return;
       
       switch(AppState.activeTool) {
         case 'notes':
@@ -24,7 +55,7 @@
           this.renderFreeNotes();
           break;
         case 'dict':
-          container.innerHTML = '<p class="placeholder-text">' + I18n.t('selectWord') + '</p>';
+          this.renderDictSearch();
           break;
         case 'translate':
           container.innerHTML = '<p class="placeholder-text">' + I18n.t('selectPhrase') + '</p>';
@@ -41,6 +72,35 @@
           break;
         default:
           container.innerHTML = '<p class="placeholder-text">' + I18n.t('activateTool') + '</p>';
+      }
+    },
+
+    renderDictSearch: function() {
+      var container = document.getElementById('active-tool-content');
+      if (!container) return;
+      container.innerHTML = '<div class="dict-search-wrapper">' +
+        '<div class="dict-search-box">' +
+          '<i class="fas fa-search"></i>' +
+          '<input type="text" id="dict-search-input" placeholder="' + (I18n.t('typeWordPlaceholder') || 'Type a word or phrasal verb...') + '">' +
+          '<button class="dict-search-go" onclick="Tools.searchFromInput()">' +
+            '<i class="fas fa-arrow-right"></i>' +
+          '</button>' +
+        '</div>' +
+        '<p class="dict-help-text">' + I18n.t('selectWord') + '</p>' +
+      '</div>';
+      var input = document.getElementById('dict-search-input');
+      if (input) {
+        input.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') Tools.searchFromInput();
+        });
+        input.focus();
+      }
+    },
+
+    searchFromInput: function() {
+      var input = document.getElementById('dict-search-input');
+      if (input && input.value.trim().length >= 2) {
+        this.buscarEnDiccionario(input.value.trim());
       }
     },
     
@@ -185,70 +245,111 @@
     
     buscarEnDiccionario: async function(texto) {
       const areaHerramientas = document.getElementById('active-tool-content');
-      areaHerramientas.innerHTML = '<p class="loading-mini">' + I18n.t('loading') + '...</p>';
+      const searchBoxHTML = '<div class="dict-search-wrapper">' +
+        '<div class="dict-search-box">' +
+          '<i class="fas fa-search"></i>' +
+          '<input type="text" id="dict-search-input" placeholder="' + (I18n.t('typeWordPlaceholder') || 'Type a word or phrasal verb...') + '" value="' + texto.replace(/"/g, '&quot;') + '">' +
+          '<button class="dict-search-go" onclick="Tools.searchFromInput()">' +
+            '<i class="fas fa-arrow-right"></i>' +
+          '</button>' +
+        '</div>' +
+      '</div>';
+      areaHerramientas.innerHTML = searchBoxHTML + '<p class="loading-mini"><i class="fas fa-spinner fa-spin"></i> ' + I18n.t('loading') + '...</p>';
+      var searchInput = document.getElementById('dict-search-input');
+      if (searchInput) {
+        searchInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') Tools.searchFromInput();
+        });
+      }
       
       try {
         let query = texto.trim().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g,"");
-        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(query)}`);
-        const data = await response.json();
-        
+
+        // Try full query first (supports phrasal verbs like "give up", "look after")
+        let response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(query));
+        let data = await response.json();
+
+        // If full query not found, try replacing spaces with %20 as hyphenated form
+        if (data.title === "No Definitions Found" && query.indexOf(' ') !== -1) {
+          var hyphenated = query.replace(/ /g, '-');
+          response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(hyphenated));
+          data = await response.json();
+        }
+
+        // If still not found and multi-word, try first word as fallback
         if (data.title === "No Definitions Found") {
-          const palabras = query.split(' ');
+          var palabras = query.split(' ');
           if (palabras.length > 1) {
             this.buscarEnDiccionario(palabras[0]);
             return;
           }
-          areaHerramientas.innerHTML = `<p>${I18n.t('noDefinition')} "${query}".</p>`;
+          areaHerramientas.innerHTML = searchBoxHTML + '<p class="dict-not-found">' + I18n.t('noDefinition') + ' "' + query + '".</p>';
+          var searchInput2 = document.getElementById('dict-search-input');
+          if (searchInput2) {
+            searchInput2.addEventListener('keydown', function(e) {
+              if (e.key === 'Enter') Tools.searchFromInput();
+            });
+          }
           return;
         }
         
         const info = data[0];
-        let definicionConEjemplo = null;
+        let allMeaningsHTML = '';
         let synonymsList = [];
         
-        for (const meaning of info.meanings) {
-          for (const def of meaning.definitions) {
+        info.meanings.forEach(function(meaning) {
+          var defs = meaning.definitions.slice(0, 2);
+          defs.forEach(function(def) {
+            var exHtml = '';
             if (def.example) {
-              definicionConEjemplo = def;
-              break;
+              exHtml = '<div class="dict-example-box"><p class="dict-example-text">"' + def.example + '"</p></div>';
             }
-          }
+            allMeaningsHTML += '<div class="dict-meaning-block">' +
+              '<span class="dict-pos-badge">' + meaning.partOfSpeech + '</span>' +
+              '<p class="dict-definition-text">' + def.definition + '</p>' +
+              exHtml +
+            '</div>';
+          });
           if (meaning.synonyms && meaning.synonyms.length > 0) {
-            synonymsList = [...synonymsList, ...meaning.synonyms];
+            synonymsList = synonymsList.concat(meaning.synonyms);
           }
+        });
+        
+        var synonyms = [];
+        var seen = {};
+        synonymsList.forEach(function(s) {
+          if (!seen[s]) { seen[s] = true; synonyms.push(s); }
+        });
+        synonyms = synonyms.slice(0, 5);
+        
+        var resultHTML = '<div class="dict-card-container">' +
+            '<div class="dict-header-row">' +
+              '<span class="dict-word-title">' + info.word + '</span>' +
+              '<span class="dict-phonetic-text">' + (info.phonetic || '') + '</span>' +
+            '</div>' +
+            allMeaningsHTML +
+            '<div class="dict-tags-row">' +
+              synonyms.map(function(s) { return '<span class="dict-tag-pill" onclick="Tools.searchWord(\'' + s + '\')">' + s + '</span>'; }).join('') +
+            '</div>' +
+          '</div>';
+        
+        areaHerramientas.innerHTML = searchBoxHTML + resultHTML;
+        var searchInput3 = document.getElementById('dict-search-input');
+        if (searchInput3) {
+          searchInput3.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') Tools.searchFromInput();
+          });
         }
-        
-        const definicion = definicionConEjemplo || info.meanings[0].definitions[0];
-        const synonyms = [...new Set(synonymsList)].slice(0, 5);
-        
-        let ejemploHTML = '';
-        if (definicion.example) {
-          ejemploHTML = `
-            <div class="dict-example-box">
-              <p class="dict-example-text">"${definicion.example}"</p>
-            </div>
-          `;
-        }
-        
-        areaHerramientas.innerHTML = `
-          <div class="dict-card-container">
-            <button class="dict-close-x" onclick="this.parentElement.remove()">&times;</button>
-            <div class="dict-header-row">
-              <span class="dict-word-title">${info.word}</span>
-              <span class="dict-phonetic-text">${info.phonetic || ''}</span>
-              <span class="dict-pos-badge">${info.meanings[0].partOfSpeech}</span>
-            </div>
-            <p class="dict-definition-text">${definicion.definition}</p>
-            ${ejemploHTML}
-            <div class="dict-tags-row">
-              ${synonyms.map(s => `<span class="dict-tag-pill" onclick="Tools.searchWord('${s}')">${s}</span>`).join('')}
-            </div>
-          </div>
-        `;
         
       } catch (error) {
         console.error('Error en diccionario:', error);
-        areaHerramientas.innerHTML = '<p>' + I18n.t('errorDict') + '</p>';
+        areaHerramientas.innerHTML = searchBoxHTML + '<p>' + I18n.t('errorDict') + '</p>';
+        var searchInput4 = document.getElementById('dict-search-input');
+        if (searchInput4) {
+          searchInput4.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') Tools.searchFromInput();
+          });
+        }
       }
     },
     
@@ -371,23 +472,7 @@
           html += `</ul>`;
         }
         
-        // Show general tips if available, filtered by current part
-        if (tips.general) {
-          const partNum = currentPart ? parseInt(currentPart) : null;
-          const filteredTips = tips.general.filter(item => {
-            if (typeof item === 'string') return true;
-            if (item.parts && partNum) return item.parts.includes(partNum);
-            return true;
-          });
-          if (filteredTips.length > 0) {
-            html += `<h4 style="margin-top: 16px;"><i class="fas fa-info-circle"></i> General Tips</h4><ul>`;
-            filteredTips.forEach(item => {
-              const tipText = typeof item === 'string' ? item : item.tip;
-              html += `<li>${tipText}</li>`;
-            });
-            html += `</ul>`;
-          }
-        }
+        // General tips removed — only part-specific tips are shown
         
         html += `</div>`;
         container.innerHTML = html;

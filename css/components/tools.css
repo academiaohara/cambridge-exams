@@ -1,44 +1,229 @@
 /* css/components/tools.css */
-.tool-tabs-horizontal {
+
+/* =============================================
+   EXERCISE PAGE WRAPPER (sidebar + exercise)
+   ============================================= */
+.exercise-page-wrapper {
   display: flex;
-  gap: 12px;
-  margin: 20px 0;
-  border-bottom: 1px solid var(--border-light);
-  padding-bottom: 12px;
-  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
 }
 
-.tool-btn-nav {
-  padding: 8px 20px;
-  border: none;
-  background: #f1f5f9;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 600;
-  color: var(--text-medium);
-  transition: all 0.3s;
-  font-size: 0.9rem;
-  display: inline-flex;
+.exercise-page-wrapper.no-sidebar .exercise-container {
+  width: 100%;
+}
+
+.exercise-page-wrapper .exercise-container {
+  flex: 1;
+  min-width: 0;
+  transition: all 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+/* =============================================
+   LEFT SIDEBAR — Apple Glass Style
+   ============================================= */
+.tools-sidebar {
+  display: flex;
+  position: sticky;
+  top: 20px;
+  z-index: 20;
+  height: fit-content;
+  max-height: calc(100vh - 100px);
+  flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.sidebar-rail {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
+  padding: 14px 10px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.5);
+  flex-shrink: 0;
 }
 
-.tool-btn-nav i {
-  font-size: 1rem;
+.sidebar-toggle-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  color: var(--primary);
+  transition: all 0.25s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
-.tool-btn-nav.active {
+.sidebar-toggle-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(30, 58, 138, 0.25);
+}
+
+.tools-sidebar.open .sidebar-toggle-btn {
   background: var(--primary);
   color: white;
 }
 
-.active-tool-content {
-  margin-top: 25px;
-  padding: 20px;
-  background: var(--tool-bg);
-  border-radius: 12px;
-  min-height: 120px;
-  border: 1px solid var(--border-light);
+.sidebar-tools-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Divider between toggle and tools */
+.sidebar-tools-list::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin-bottom: 2px;
+}
+
+.sidebar-tool-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  transition: all 0.25s cubic-bezier(.4,0,.2,1);
+  position: relative;
+}
+
+.sidebar-tool-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary);
+  transform: scale(1.12);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar-tool-btn.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 3px 12px rgba(30, 58, 138, 0.3);
+  transform: scale(1.05);
+}
+
+/* Tooltip on hover */
+.sidebar-tool-btn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) scale(0.9);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(.4,0,.2,1);
+  z-index: 30;
+}
+
+.sidebar-tool-btn:hover[data-tooltip]::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* =============================================
+   SIDEBAR PANEL (expanded content)
+   ============================================= */
+.sidebar-panel {
+  display: none;
+  width: 320px;
+  margin-left: 10px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.5);
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+  flex-shrink: 0;
+  animation: sidebarPanelIn 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.tools-sidebar.open .sidebar-panel {
+  display: block;
+}
+
+@keyframes sidebarPanelIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.sidebar-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-panel-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-panel-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  transition: all 0.2s;
+}
+
+.sidebar-panel-close:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--incorrect);
+}
+
+/* Active tool content inside sidebar */
+.tools-sidebar .active-tool-content {
+  padding: 14px;
+  margin-top: 0;
+  background: transparent;
+  border: none;
+  min-height: 80px;
+  border-radius: 0;
 }
 
 .note-creator-card {
@@ -525,4 +710,156 @@
   padding: 12px;
   background: #f8fafc;
   border-radius: 8px;
+}
+
+/* =============================================
+   DICTIONARY SEARCH BOX
+   ============================================= */
+.dict-search-wrapper {
+  margin-bottom: 12px;
+}
+
+.dict-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid var(--border-light);
+  border-radius: 14px;
+  padding: 6px 10px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.dict-search-box:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+.dict-search-box i {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.dict-search-box input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  outline: none;
+  padding: 6px 0;
+  min-width: 0;
+}
+
+.dict-search-box input::placeholder {
+  color: var(--text-light);
+}
+
+.dict-search-go {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.dict-search-go:hover {
+  background: var(--secondary);
+  transform: scale(1.08);
+}
+
+.dict-help-text {
+  color: var(--text-light);
+  font-size: 0.8rem;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.dict-not-found {
+  color: var(--text-medium);
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+}
+
+.dict-meaning-block {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.dict-meaning-block:last-of-type {
+  border-bottom: none;
+  margin-bottom: 4px;
+}
+
+/* Sidebar-specific adjustments for smaller containers */
+.tools-sidebar .dict-card-container {
+  margin-top: 8px;
+  padding: 14px;
+  font-size: 0.9rem;
+}
+
+.tools-sidebar .dict-word-title {
+  font-size: 1.2rem;
+}
+
+.tools-sidebar .dict-definition-text {
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+}
+
+.tools-sidebar .dict-example-text {
+  font-size: 0.85rem;
+}
+
+.tools-sidebar .notes-list-container {
+  max-height: none;
+}
+
+.tools-sidebar .free-notes-container h4 {
+  font-size: 0.95rem;
+}
+
+.tools-sidebar #free-notes-area {
+  min-height: 140px;
+  font-size: 0.88rem;
+}
+
+.tools-sidebar .placeholder-text {
+  padding: 24px 14px;
+  font-size: 0.9rem;
+}
+
+.tools-sidebar .empty-msg {
+  padding: 24px 14px;
+  font-size: 0.9rem;
+}
+
+.tools-sidebar .translator-card {
+  padding: 10px;
+}
+
+.tools-sidebar .tips-content li {
+  font-size: 0.88rem;
+  padding: 8px 12px;
+}
+
+.tools-sidebar .transcript-extract {
+  padding: 12px;
+}
+
+.tools-sidebar .transcript-text {
+  font-size: 0.85rem;
+  padding: 10px;
 }

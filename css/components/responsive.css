@@ -304,30 +304,68 @@
   }
 
   /* --- Tools mobile --- */
-  .tool-tabs-horizontal {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    gap: 8px;
-    padding-bottom: 12px;
+  .exercise-page-wrapper {
+    flex-direction: column;
   }
 
-  .tool-tabs-horizontal::-webkit-scrollbar {
+  .tools-sidebar {
+    position: fixed;
+    top: auto;
+    bottom: 70px;
+    left: 10px;
+    z-index: 100;
+    max-height: none;
+    height: auto;
+  }
+
+  .tools-sidebar:not(.open) .sidebar-panel {
     display: none;
   }
 
-  .tool-btn-nav {
-    flex: 0 0 auto;
-    min-height: 40px;
-    padding: 8px 16px;
-    font-size: 0.85rem;
-    white-space: nowrap;
+  .tools-sidebar.open {
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
   }
 
-  .active-tool-content {
-    padding: 14px;
-    margin-top: 16px;
+  .tools-sidebar.open .sidebar-rail {
+    flex-direction: row;
+    border-radius: 18px 18px 0 0;
+    padding: 10px 16px;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tools-sidebar.open .sidebar-tools-list {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .tools-sidebar.open .sidebar-tools-list::before {
+    width: 1px;
+    height: 24px;
+    margin-bottom: 0;
+    margin-right: 2px;
+  }
+
+  .tools-sidebar.open .sidebar-panel {
+    width: 100%;
+    margin-left: 0;
+    border-radius: 0 0 18px 18px;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  .sidebar-rail {
+    flex-direction: column;
+    padding: 10px 8px;
+    border-radius: 18px;
+  }
+
+  .sidebar-tool-btn[data-tooltip]::after {
+    display: none;
   }
 
   /* --- Modal mobile (full-width bottom sheet) --- */
@@ -859,7 +897,7 @@
     transform: scale(0.9);
   }
 
-  .tool-btn-nav:active {
+  .sidebar-tool-btn:active {
     opacity: 0.8;
   }
 
