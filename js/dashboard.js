@@ -75,6 +75,9 @@
                 <div class="exam-subtitle">${I18n.t('availableExercises')}</div>
               </div>
             </div>
+            ${AppState.currentMode === 'exam' ? `<button class="exam-play-btn" onclick="event.stopPropagation(); Exercise.startFullExam('${exam.id}')" title="${I18n.t('startExam') || 'Start Exam'}">
+              <i class="fas fa-play"></i>
+            </button>` : ''}
             <button class="exam-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showOverallResults('${exam.id}')" title="${I18n.t('overallResults') || 'Overall Results'}">
               <i class="fas fa-chart-bar"></i>
             </button>
@@ -102,6 +105,7 @@
     
     renderSection: function(exam, sectionKey) {
       const section = exam.sections[sectionKey];
+      const isExamMode = AppState.currentMode === 'exam';
       let html = `
         <div class="exam-section">
           <div class="section-header">
@@ -113,9 +117,6 @@
             <button class="section-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showSectionResults('${exam.id}', '${sectionKey}')" title="${I18n.t('sectionResults') || 'Section Results'}">
               <i class="fas fa-chart-bar"></i>
             </button>
-            <button class="dashboard-reset-btn reset-section-btn" onclick="event.stopPropagation(); Dashboard.resetSection('${exam.id}', '${sectionKey}')" title="${I18n.t('resetSection')}">
-              <i class="fas fa-redo-alt"></i>
-            </button>
             <span class="section-progress">${section.completed.length}/${section.total}</span>
           </div>
           <div class="section-parts">
@@ -126,10 +127,18 @@
         if (section.completed.includes(i)) statusClass = 'completed';
         else if (section.inProgress.includes(i)) statusClass = 'in-progress';
         
-        html += `<span class="part-number ${statusClass}" onclick="event.stopPropagation(); Exercise.openPart('${exam.id}', '${sectionKey}', ${i})">${i}</span>`;
+        if (isExamMode && !section.completed.includes(i)) {
+          html += `<span class="part-number ${statusClass} exam-locked" title="${I18n.t('completeExamFirst') || 'Complete the exam first'}">${i}</span>`;
+        } else {
+          html += `<span class="part-number ${statusClass}" onclick="event.stopPropagation(); Exercise.openPart('${exam.id}', '${sectionKey}', ${i})">${i}</span>`;
+        }
       }
       
-      html += '</div></div>';
+      html += `</div>
+          <button class="reset-section-corner-btn" onclick="event.stopPropagation(); Dashboard.resetSection('${exam.id}', '${sectionKey}')" title="${I18n.t('resetSection')}">
+            <i class="fas fa-redo-alt"></i>
+          </button>
+        </div>`;
       return html;
     },
     
