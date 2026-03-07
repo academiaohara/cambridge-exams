@@ -21,10 +21,6 @@
     
     checkAnswers: function() {
       if (!AppState.currentExercise) return;
-      if (AppState.currentMode === 'exam' && !AppState.answersChecked) {
-        // In exam mode, only allow auto-check (called internally)
-        // Direct user clicks are prevented by not rendering the button
-      }
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       
       AppState.answersChecked = true;

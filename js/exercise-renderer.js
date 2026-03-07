@@ -158,7 +158,7 @@
             <div class="exercise-info-right">
               <div class="exercise-timer" id="exercise-timer">
                 <i class="fas fa-hourglass-half"></i>
-                <span id="timer-display">${Utils.formatTime(AppState.elapsedSeconds)}</span>
+                <span id="timer-display">${AppState.currentMode === 'exam' ? Utils.formatTime(Math.max(0, (exercise.time || 10) * 60 - AppState.elapsedSeconds)) : Utils.formatTime(AppState.elapsedSeconds)}</span>
               </div>
               <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
             </div>

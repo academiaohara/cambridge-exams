@@ -87,7 +87,7 @@
     _doStartFullSection: async function(examId, section) {
       AppState.currentExamId = examId;
       AppState.currentSection = section;
-      AppState.examFullMode = true;
+      AppState.examFullMode = AppState.currentMode === 'exam';
       
       this.markPartInProgress(examId, section, 1);
       await this.openPart(examId, section, 1);
