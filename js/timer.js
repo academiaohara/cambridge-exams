@@ -9,30 +9,28 @@
       this.updateTimerDisplay();
       this.updateTimerColor();
       
-      var self = this;
-      
       if (AppState.currentMode === 'exam') {
         // Countdown mode
-        this.timerInterval = setInterval(function() {
+        this.timerInterval = setInterval(() => {
           AppState.elapsedSeconds++;
-          self.updateTimerDisplay();
-          self.updateTimerColor();
+          this.updateTimerDisplay();
+          this.updateTimerColor();
           
           // Check if countdown reached 0
-          var totalSeconds = (AppState.currentExercise?.time || 10) * 60;
-          var remaining = totalSeconds - AppState.elapsedSeconds;
+          const totalSeconds = (AppState.currentExercise?.time || 10) * 60;
+          const remaining = totalSeconds - AppState.elapsedSeconds;
           if (remaining <= 0) {
-            clearInterval(self.timerInterval);
-            self.timerInterval = null;
-            self.onTimeUp();
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+            this.onTimeUp();
           }
         }, 1000);
       } else {
         // Count up mode (practice)
-        this.timerInterval = setInterval(function() {
+        this.timerInterval = setInterval(() => {
           AppState.elapsedSeconds++;
-          self.updateTimerDisplay();
-          self.updateTimerColor();
+          this.updateTimerDisplay();
+          this.updateTimerColor();
         }, 1000);
       }
     },
@@ -51,12 +49,12 @@
     },
     
     updateTimerDisplay: function() {
-      var timerDisplay = document.getElementById('timer-display');
+      const timerDisplay = document.getElementById('timer-display');
       if (!timerDisplay) return;
       
       if (AppState.currentMode === 'exam') {
-        var totalSeconds = (AppState.currentExercise?.time || 10) * 60;
-        var remaining = Math.max(0, totalSeconds - AppState.elapsedSeconds);
+        const totalSeconds = (AppState.currentExercise?.time || 10) * 60;
+        const remaining = Math.max(0, totalSeconds - AppState.elapsedSeconds);
         timerDisplay.textContent = Utils.formatTime(remaining);
       } else {
         timerDisplay.textContent = Utils.formatTime(AppState.elapsedSeconds);
@@ -64,14 +62,14 @@
     },
     
     updateTimerColor: function() {
-      var timerElement = document.getElementById('exercise-timer');
+      const timerElement = document.getElementById('exercise-timer');
       if (!timerElement) return;
       
       timerElement.classList.remove('warning', 'danger');
       
       if (AppState.currentMode === 'exam') {
-        var totalSeconds = (AppState.currentExercise?.time || 10) * 60;
-        var remaining = totalSeconds - AppState.elapsedSeconds;
+        const totalSeconds = (AppState.currentExercise?.time || 10) * 60;
+        const remaining = totalSeconds - AppState.elapsedSeconds;
         if (remaining <= 60) {
           timerElement.classList.add('danger');
         } else if (remaining <= 120) {
