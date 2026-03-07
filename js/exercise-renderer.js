@@ -154,12 +154,22 @@
           <div class="exercise-info">
             <div class="exercise-info-left">
               ${partNavHTML}
-              <span><i class="fas fa-clock"></i> ${exercise.time || '10'} <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
+              <span><i class="fas fa-clock"></i> ${
+                (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
+                  ? CONFIG.SECTION_TIMES[section]
+                  : (exercise.time || '10')
+              } <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
             </div>
             <div class="exercise-info-right">
               <div class="exercise-timer" id="exercise-timer">
                 <i class="fas fa-hourglass-half"></i>
-                <span id="timer-display">${AppState.currentMode === 'exam' ? Utils.formatTime(Math.max(0, (exercise.time || 10) * 60 - AppState.elapsedSeconds)) : Utils.formatTime(AppState.elapsedSeconds)}</span>
+                <span id="timer-display">${
+                  (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
+                    ? Utils.formatTime(Math.max(0, CONFIG.SECTION_TIMES[section] * 60 - AppState.sectionElapsedSeconds))
+                    : AppState.currentMode === 'exam'
+                      ? Utils.formatTime(Math.max(0, (exercise.time || 10) * 60 - AppState.elapsedSeconds))
+                      : Utils.formatTime(AppState.elapsedSeconds)
+                }</span>
               </div>
               <div class="part-score-display" id="part-score-display">0/${partTotal}</div>
             </div>
@@ -711,14 +721,16 @@
         `;
       }
       
-      if (!isExamMode && part > 1) {
+      // Allow going back in both practice mode and exam full mode
+      if (part > 1 && (!isExamMode || AppState.examFullMode)) {
         footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">${I18n.t('previous')}</span></button>`;
       }
       
       if (part < totalParts) {
         footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">${I18n.t('next')}</span> <i class="fas fa-chevron-right"></i></button>`;
-      } else if (isExamMode && AppState.examFullMode) {
-        footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">${I18n.t('next')}</span> <i class="fas fa-chevron-right"></i></button>`;
+      } else if (AppState.examFullMode) {
+        // Last part of a section in exam full mode: show "Finish Section" button
+        footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span data-i18n="finishSection">${I18n.t('finishSection')}</span> <i class="fas fa-check"></i></button>`;
       }
       
       return footer;

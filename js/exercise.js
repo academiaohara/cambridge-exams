@@ -5,6 +5,30 @@
       return `cambridge_${AppState.currentMode}_${AppState.currentLevel}_${examId}_${section}_${part}`;
     },
     
+    getSectionTimerKey: function(examId, section) {
+      return `cambridge_${AppState.currentMode}_${AppState.currentLevel}_${examId}_${section}_sectimer`;
+    },
+    
+    saveSectionTimerState: function() {
+      if (!AppState.currentExamId || !AppState.currentSection) return;
+      var key = this.getSectionTimerKey(AppState.currentExamId, AppState.currentSection);
+      try { localStorage.setItem(key, String(AppState.sectionElapsedSeconds || 0)); } catch(e) { console.warn('Could not save section timer:', e); }
+    },
+    
+    loadSectionTimerState: function(examId, section) {
+      var key = this.getSectionTimerKey(examId, section);
+      try {
+        var raw = localStorage.getItem(key);
+        if (raw !== null) return parseInt(raw, 10) || 0;
+      } catch(e) { console.warn('Could not load section timer:', e); }
+      return 0;
+    },
+    
+    clearSectionTimerState: function(examId, section) {
+      var key = this.getSectionTimerKey(examId, section);
+      try { localStorage.removeItem(key); } catch(e) { console.warn('Could not clear section timer:', e); }
+    },
+    
     savePartState: function() {
       if (!AppState.currentExamId || !AppState.currentSection || !AppState.currentPart) return;
       var key = this.getStorageKey(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
@@ -44,6 +68,7 @@
           sectionData.completed = [];
           sectionData.inProgress = [];
         }
+        self.clearSectionTimerState(examId, section);
         var scoreKey = examId + '_' + section;
         if (AppState.sectionScores[scoreKey]) delete AppState.sectionScores[scoreKey];
       });
@@ -77,6 +102,7 @@
               sectionData.completed = [];
               sectionData.inProgress = [];
             }
+            self.clearSectionTimerState(examId, section);
             var scoreKey = examId + '_' + section;
             if (AppState.sectionScores[scoreKey]) delete AppState.sectionScores[scoreKey];
           });
@@ -93,6 +119,7 @@
       AppState.currentExamId = examId;
       AppState.currentSection = firstSection;
       AppState.examFullMode = true;
+      AppState.sectionElapsedSeconds = 0;
       this.markPartInProgress(examId, firstSection, 1);
       await this.openPart(examId, firstSection, 1);
     },
@@ -123,6 +150,7 @@
               exam.sections[section].completed = [];
               exam.sections[section].inProgress = [];
             }
+            self.clearSectionTimerState(examId, section);
             self._doStartFullSection(examId, section);
           });
           return;
@@ -136,6 +164,7 @@
       AppState.currentExamId = examId;
       AppState.currentSection = section;
       AppState.examFullMode = AppState.currentMode === 'exam';
+      AppState.sectionElapsedSeconds = 0;
       
       this.markPartInProgress(examId, section, 1);
       await this.openPart(examId, section, 1);
@@ -161,6 +190,11 @@
         if (savedState.answersChecked) {
           AppState.sectionScores[sectionKey][part] = savedState.partScore || 0;
         }
+      }
+      
+      // Restore section-level timer (in exam full mode, timer is shared across all parts)
+      if (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section]) {
+        AppState.sectionElapsedSeconds = this.loadSectionTimerState(examId, section);
       }
       
       this.markPartInProgress(examId, section, part);
@@ -378,33 +412,224 @@
       }
     },
     
-    showSectionComplete: function() {
+    showSectionComplete: async function() {
       if (Timer.timerInterval) {
         clearInterval(Timer.timerInterval);
         Timer.timerInterval = null;
       }
       
-      // Auto-check answers for exam mode if not already checked
-      if (!AppState.answersChecked && AppState.currentExercise) {
-        ExerciseHandlers.checkAnswers();
-      }
-      
       var currentSection = AppState.currentSection;
       var examId = AppState.currentExamId;
-      var sectionKey = examId + '_' + currentSection;
-      var sectionScore = ExerciseRenderer.getSectionRunningTotal(sectionKey);
-      var sectionTotal = ExerciseRenderer.getSectionTotalQuestions(currentSection);
-      var sectionName = I18n.t(currentSection) || currentSection;
       
-      // Find next section
-      var currentIdx = AppState.examSectionsOrder.indexOf(currentSection);
+      // Save and check the current part first.
+      // For writing sections, skip checkAnswers (returns 0) so _autoCheckAllParts can do AI evaluation.
+      this.savePartState();
+      if (!AppState.answersChecked && AppState.currentExercise && currentSection !== 'writing' && currentSection !== 'speaking') {
+        ExerciseHandlers.checkAnswers();
+        this.savePartState();
+      }
+      
+      // Show loading screen while auto-checking / evaluating all parts
+      var content = document.getElementById('main-content');
+      content.innerHTML = `
+        <div class="section-complete-screen">
+          <div class="section-complete-icon"><i class="fas fa-spinner fa-spin"></i></div>
+          <h2>${I18n.t('calculatingResults')}</h2>
+        </div>
+      `;
+      
+      // Auto-check all parts of the section (including writing AI evaluation)
+      await this._autoCheckAllParts(examId, currentSection);
+      
+      // Now render the full section complete screen with per-part breakdown
+      this._renderSectionComplete(examId, currentSection);
+    },
+    
+    _autoCheckAllParts: async function(examId, section) {
+      var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
+      if (!exam || !exam.sections[section]) return;
+      
+      var totalParts = exam.sections[section].total;
+      var isWriting = section === 'writing';
+      var sectionKey = examId + '_' + section;
+      if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+      
+      for (var i = 1; i <= totalParts; i++) {
+        var savedState = this.loadPartState(examId, section, i);
+        
+        if (!savedState) {
+          // No answers saved — store empty checked state
+          var key = this.getStorageKey(examId, section, i);
+          try { localStorage.setItem(key, JSON.stringify({ answers: {}, answersChecked: true, partScore: 0, elapsedSeconds: 0 })); } catch(e) {}
+          AppState.sectionScores[sectionKey][i] = 0;
+        } else if (!savedState.answersChecked) {
+          if (isWriting) {
+            await this._evaluateWritingPart(examId, section, i, savedState);
+          } else {
+            await this._checkNonWritingPart(examId, section, i, savedState);
+          }
+        } else {
+          // Already checked — just ensure sectionScores is up to date
+          AppState.sectionScores[sectionKey][i] = savedState.partScore || 0;
+        }
+        
+        this.markPartCompleted(examId, section, i);
+      }
+    },
+    
+    _checkNonWritingPart: async function(examId, section, part, savedState) {
+      try {
+        var fileName = '';
+        if (section === 'reading') fileName = 'reading' + part + '.json';
+        else if (section === 'listening') fileName = 'listening' + part + '.json';
+        else if (section === 'speaking') fileName = 'speaking' + part + '.json';
+        
+        var baseUrl = CONFIG.EXERCISES_URL.replace('Nivel/C1/Exams/', 'Nivel/' + AppState.currentLevel + '/Exams/');
+        var targetUrl = baseUrl + examId + '/' + fileName;
+        
+        var response = await Utils.fetchWithNoCache(targetUrl);
+        var exercise = await response.json();
+        
+        // Normalise listening format
+        if (!exercise.content && exercise.extracts) {
+          exercise.content = { questions: [] };
+          exercise.extracts.forEach(function(extract) {
+            extract.questions.forEach(function(q) {
+              if (q.answer && !q.correct) q.correct = q.answer;
+              exercise.content.questions.push(q);
+            });
+          });
+        }
+        
+        var questions = (exercise.content && exercise.content.questions) || [];
+        var partKey = section === 'reading' ? part : section + part;
+        var partConfig = CONFIG.PART_TYPES[partKey];
+        
+        var score = 0;
+        var answers = savedState.answers || {};
+        questions.forEach(function(q) {
+          if (Utils.compareAnswers(answers[q.number], q.correct, partConfig && partConfig.type)) {
+            score++;
+          }
+        });
+        
+        var key = this.getStorageKey(examId, section, part);
+        try { localStorage.setItem(key, JSON.stringify(Object.assign({}, savedState, { answersChecked: true, partScore: score }))); } catch(e) {}
+        
+        var sectionKey = examId + '_' + section;
+        if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+        AppState.sectionScores[sectionKey][part] = score;
+      } catch(e) {
+        console.error('Error checking part ' + section + part + ':', e);
+      }
+    },
+    
+    _evaluateWritingPart: async function(examId, section, part, savedState) {
+      try {
+        var fileName = 'writing' + part + '.json';
+        var baseUrl = CONFIG.EXERCISES_URL.replace('Nivel/C1/Exams/', 'Nivel/' + AppState.currentLevel + '/Exams/');
+        var targetUrl = baseUrl + examId + '/' + fileName;
+        
+        var response = await Utils.fetchWithNoCache(targetUrl);
+        var exercise = await response.json();
+        
+        var answers = Object.assign({}, savedState.answers || {});
+        var score = 0;
+        
+        if (part === 1) {
+          var essay = answers[1] || '';
+          if (essay.trim()) {
+            var question = (exercise.content && exercise.content.question) || '';
+            try {
+              var res = await fetch('/api/writing', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: essay, taskType: 'Essay', taskPrompt: question, examLevel: AppState.currentLevel || 'C1' })
+              });
+              var data = await res.json();
+              if (!data.error && data.corrected) {
+                var m = data.corrected.match(/Total:\s*(\d+)\s*\/\s*20/i);
+                score = m ? parseInt(m[1], 10) : 0;
+                answers._aiFeedback = data.corrected;
+              }
+            } catch(aiErr) { console.error('AI eval error part1:', aiErr); }
+          }
+        } else if (part === 2) {
+          var taskId = answers.taskId;
+          if (taskId) {
+            var taskEssay = answers[taskId] || '';
+            if (taskEssay.trim()) {
+              var tasks = (exercise.content && exercise.content.tasks) || [];
+              var task = tasks.find(function(t) { return t.id === taskId; });
+              var taskType = (task && task.type) || '';
+              var taskPrompt = (task && task.prompt) || '';
+              try {
+                var res2 = await fetch('/api/writing', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ text: taskEssay, taskType: taskType, taskPrompt: taskPrompt, examLevel: AppState.currentLevel || 'C1' })
+                });
+                var data2 = await res2.json();
+                if (!data2.error && data2.corrected) {
+                  var m2 = data2.corrected.match(/Total:\s*(\d+)\s*\/\s*20/i);
+                  score = m2 ? parseInt(m2[1], 10) : 0;
+                  answers['_aiFeedback_' + taskId] = data2.corrected;
+                }
+              } catch(aiErr2) { console.error('AI eval error part2:', aiErr2); }
+            }
+          }
+        }
+        
+        var key = this.getStorageKey(examId, section, part);
+        try { localStorage.setItem(key, JSON.stringify(Object.assign({}, savedState, { answers: answers, answersChecked: true, partScore: score }))); } catch(e) {}
+        
+        var sectionKey = examId + '_' + section;
+        if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+        AppState.sectionScores[sectionKey][part] = score;
+      } catch(e) {
+        console.error('Error evaluating writing part ' + part + ':', e);
+      }
+    },
+    
+    _renderSectionComplete: function(examId, section) {
+      var sectionKey = examId + '_' + section;
+      var sectionScore = ExerciseRenderer.getSectionRunningTotal(sectionKey);
+      var sectionTotal = ExerciseRenderer.getSectionTotalQuestions(section);
+      var sectionName = I18n.t(section) || section;
+      
+      var currentIdx = AppState.examSectionsOrder.indexOf(section);
       var nextSection = null;
       if (currentIdx >= 0 && currentIdx < AppState.examSectionsOrder.length - 1) {
         nextSection = AppState.examSectionsOrder[currentIdx + 1];
       }
       
-      var content = document.getElementById('main-content');
       var nextSectionName = nextSection ? (I18n.t(nextSection) || nextSection) : '';
+      
+      var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
+      var totalParts = (exam && exam.sections[section] && exam.sections[section].total) || 1;
+      var partsHTML = '';
+      
+      for (var i = 1; i <= totalParts; i++) {
+        var partState = this.loadPartState(examId, section, i);
+        var partScore = (AppState.sectionScores[sectionKey] && AppState.sectionScores[sectionKey][i]) !== undefined
+          ? AppState.sectionScores[sectionKey][i]
+          : (partState ? (partState.partScore || 0) : 0);
+        var partKey = section === 'reading' ? i : section + i;
+        var partConfig = CONFIG.PART_TYPES[partKey];
+        var partTotal = partConfig ? partConfig.total : 0;
+        
+        partsHTML += `
+          <div class="section-complete-part-row">
+            <span class="section-complete-part-name">${I18n.t('part')} ${i}</span>
+            <span class="section-complete-part-score">${partScore}/${partTotal}</span>
+            <button class="btn-review-part" onclick="Exercise.openPart('${examId}', '${section}', ${i})">
+              <i class="fas fa-eye"></i> ${I18n.t('reviewAnswers')}
+            </button>
+          </div>
+        `;
+      }
+      
+      var content = document.getElementById('main-content');
       
       var html = `
         <div class="section-complete-screen">
@@ -413,6 +638,9 @@
           <div class="section-complete-score">
             <span class="section-complete-label">${I18n.t('sectionScore')}:</span>
             <span class="section-complete-value">${sectionScore} / ${sectionTotal}</span>
+          </div>
+          <div class="section-complete-parts-breakdown">
+            ${partsHTML}
           </div>
           <div class="section-complete-actions">
       `;
@@ -441,6 +669,7 @@
     continueToNextSection: async function(examId, nextSection) {
       AppState.currentSection = nextSection;
       AppState.examFullMode = true;
+      AppState.sectionElapsedSeconds = 0;
       this.markPartInProgress(examId, nextSection, 1);
       await this.openPart(examId, nextSection, 1);
     },
@@ -514,6 +743,7 @@
       AppState.currentPartScore = 0;
       AppState.examFullMode = false;
       AppState.examCurrentSectionIndex = 0;
+      AppState.sectionElapsedSeconds = 0;
       
       App.restoreExamStatuses();
       Dashboard.render(returnToExamId);

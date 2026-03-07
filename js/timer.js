@@ -3,20 +3,41 @@
   window.Timer = {
     timerInterval: null,
     
+    _isExamSectionMode: function() {
+      return AppState.currentMode === 'exam' &&
+             AppState.examFullMode &&
+             !!(CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[AppState.currentSection]);
+    },
+    
     startTimer: function() {
       if (this.timerInterval) clearInterval(this.timerInterval);
       
       this.updateTimerDisplay();
       this.updateTimerColor();
       
-      if (AppState.currentMode === 'exam') {
-        // Countdown mode
+      if (this._isExamSectionMode()) {
+        // Section-level countdown: timer shared across all parts in the section
+        const sectionTotal = CONFIG.SECTION_TIMES[AppState.currentSection] * 60;
+        this.timerInterval = setInterval(() => {
+          AppState.sectionElapsedSeconds++;
+          Exercise.saveSectionTimerState();
+          this.updateTimerDisplay();
+          this.updateTimerColor();
+          
+          const remaining = sectionTotal - AppState.sectionElapsedSeconds;
+          if (remaining <= 0) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+            this.onTimeUp();
+          }
+        }, 1000);
+      } else if (AppState.currentMode === 'exam') {
+        // Per-exercise countdown (individual part exam mode, not full section)
         this.timerInterval = setInterval(() => {
           AppState.elapsedSeconds++;
           this.updateTimerDisplay();
           this.updateTimerColor();
           
-          // Check if countdown reached 0
           const totalSeconds = (AppState.currentExercise?.time || 10) * 60;
           const remaining = totalSeconds - AppState.elapsedSeconds;
           if (remaining <= 0) {
@@ -44,15 +65,24 @@
         ExerciseHandlers.checkAnswers();
       }
       
-      // Auto-advance to next part
-      Exercise.goToNextPart();
+      // In exam full mode with section timer, always trigger section complete
+      if (this._isExamSectionMode()) {
+        Exercise.showSectionComplete();
+      } else {
+        // Auto-advance to next part
+        Exercise.goToNextPart();
+      }
     },
     
     updateTimerDisplay: function() {
       const timerDisplay = document.getElementById('timer-display');
       if (!timerDisplay) return;
       
-      if (AppState.currentMode === 'exam') {
+      if (this._isExamSectionMode()) {
+        const sectionTotal = CONFIG.SECTION_TIMES[AppState.currentSection] * 60;
+        const remaining = Math.max(0, sectionTotal - AppState.sectionElapsedSeconds);
+        timerDisplay.textContent = Utils.formatTime(remaining);
+      } else if (AppState.currentMode === 'exam') {
         const totalSeconds = (AppState.currentExercise?.time || 10) * 60;
         const remaining = Math.max(0, totalSeconds - AppState.elapsedSeconds);
         timerDisplay.textContent = Utils.formatTime(remaining);
@@ -67,7 +97,15 @@
       
       timerElement.classList.remove('warning', 'danger');
       
-      if (AppState.currentMode === 'exam') {
+      if (this._isExamSectionMode()) {
+        const sectionTotal = CONFIG.SECTION_TIMES[AppState.currentSection] * 60;
+        const remaining = sectionTotal - AppState.sectionElapsedSeconds;
+        if (remaining <= 60) {
+          timerElement.classList.add('danger');
+        } else if (remaining <= 300) {
+          timerElement.classList.add('warning');
+        }
+      } else if (AppState.currentMode === 'exam') {
         const totalSeconds = (AppState.currentExercise?.time || 10) * 60;
         const remaining = totalSeconds - AppState.elapsedSeconds;
         if (remaining <= 60) {

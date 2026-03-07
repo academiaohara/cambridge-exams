@@ -172,7 +172,7 @@
 
 /* ── Section complete screen ── */
 .section-complete-screen {
-  max-width: 520px;
+  max-width: 640px;
   margin: 40px auto;
   text-align: center;
   background: var(--white);
@@ -304,6 +304,57 @@
 .final-results-section-score {
   font-weight: 700;
   color: var(--primary);
+}
+
+/* ── Section complete per-part breakdown ── */
+.section-complete-parts-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+  text-align: left;
+}
+
+.section-complete-part-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.section-complete-part-name {
+  flex: 1;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+}
+
+.section-complete-part-score {
+  font-weight: 700;
+  color: var(--primary);
+  min-width: 48px;
+  text-align: right;
+}
+
+.btn-review-part {
+  padding: 5px 12px;
+  border: 1.5px solid var(--primary);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.btn-review-part:hover {
+  background: var(--primary);
+  color: white;
 }
 
 /* ── Exam mode badge ── */

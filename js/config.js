@@ -8,6 +8,14 @@
     WARNING_TIME: 300,
     DANGER_TIME: 600,
     
+    // Section-level timer durations (minutes) for exam full mode
+    SECTION_TIMES: {
+      reading: 75,
+      listening: 40,
+      writing: 90,
+      speaking: null
+    },
+    
     // Mapeo de tipos de ejercicio a archivos CSS y JS
     EXERCISE_TYPE_FILES: {
       'multiple-choice': {
