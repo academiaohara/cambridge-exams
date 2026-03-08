@@ -11,13 +11,14 @@
       if (isChecked) {
         const result = this.evaluateTransformation(userAnswer, question.correct);
         const colorClass = result.score > 0 ? 'reading-type4-correct' : 'reading-type4-incorrect';
-        const dataAttr = result.score < 2 ? ` data-correct="✓ ${question.correct}"` : '';
+        const escapedCorrect = String(question.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const dataAttr = result.score < 2 ? ` data-correct="✓ ${escapedCorrect}"` : '';
         gapHTML = `<span class="reading-type4-inline-wrap ${colorClass}${result.score < 2 ? ' incorrect' : ''}"${dataAttr}>` +
           `<input type="text" class="reading-type4-inline-input gap-input ${colorClass}" data-question="${qNum}" value="${userAnswer || ''}" disabled>` +
           `</span>`;
       } else {
         gapHTML = `<span class="reading-type4-inline-wrap${userAnswer ? ' reading-type4-purple' : ''}">` +
-          `<input type="text" class="reading-type4-inline-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" placeholder="..." oninput="ReadingType4.handleInput(${qNum}, this.value)" onkeyup="ReadingType4.resizeInput(this)">` +
+          `<input type="text" class="reading-type4-inline-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" placeholder="..." oninput="ReadingType4.handleInput(${qNum}, this.value); ReadingType4.resizeInput(this)">` +
           `</span>`;
       }
       
@@ -179,7 +180,8 @@
             wrap.classList.add(colorClass);
             if (!isCorrect) {
               wrap.classList.add('incorrect');
-              wrap.setAttribute('data-correct', '✓ ' + q.correct);
+              const escapedCorrect = String(q.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+              wrap.setAttribute('data-correct', '✓ ' + escapedCorrect);
             }
           }
         }

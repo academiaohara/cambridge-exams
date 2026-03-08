@@ -15,7 +15,8 @@
       if (isChecked && userAnswer) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
         const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
-        const dataAttr = !isCorrect ? ` data-correct="✓ ${question.correct}"` : '';
+        const escapedCorrect = String(question.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const dataAttr = !isCorrect ? ` data-correct="✓ ${escapedCorrect}"` : '';
         return `
           <span class="reading-type3-gap-inline${!isCorrect ? ' incorrect' : ''}"${dataAttr}>
             <span class="reading-type3-gap-number">(${qNum})</span>
@@ -126,9 +127,9 @@
           if (numSpan && numSpan.textContent.trim() === `(${q.number})`) {
             const answerText = userAnswer || '_____';
             const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
-            const dataAttr = !isCorrect ? ` data-correct="✓ ${q.correct}"` : '';
+            const escapedCorrect = String(q.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             gap.className = 'reading-type3-gap-inline' + (!isCorrect ? ' incorrect' : '');
-            if (!isCorrect) gap.setAttribute('data-correct', '✓ ' + q.correct);
+            if (!isCorrect) gap.setAttribute('data-correct', '✓ ' + escapedCorrect);
             else gap.removeAttribute('data-correct');
             gap.innerHTML = `
               <span class="reading-type3-gap-number">(${q.number})</span>
