@@ -1,75 +1,81 @@
 {
   "title": "Reading and Use of English - Part 4",
-  "questions": [
-    {
-      "number": 25,
-      "firstSentence": "Even though it had started to rain, we decided to continue our tennis match.",
-      "keyWord": "WITH",
-      "beforeGap": "We decided to go",
-      "afterGap": "the rain.",
-      "routes": [
-        { "p1": "ahead with", "p2": "our (the) tennis match despite" },
-        { "p1": "on with", "p2": "our (the) tennis match despite" }
-      ]
-    },
-    {
-      "number": 26,
-      "firstSentence": "Jo loves living in the city and probably won’t move.",
-      "keyWord": "UNLIKELY",
-      "beforeGap": "It’s",
-      "afterGap": "the city as she loves living there.",
-      "routes": [
-        { "p1": "unlikely (that) jo", "p2": "will leave" },
-        { "p1": "unlikely (that) jo", "p2": "'ll leave" },
-        { "p1": "unlikely (that) jo", "p2": "will move away from" },
-        { "p1": "unlikely (that) jo", "p2": "will move out of" }
-      ]
-    },
-    {
-      "number": 27,
-      "firstSentence": "My brother never considered the option of taking a year out, until I did it.",
-      "keyWord": "MIND",
-      "beforeGap": "The option of taking a year out never",
-      "afterGap": ", until I did it.",
-      "routes": [
-        { "p1": "entered", "p2": "my brother’s mind" },
-        { "p1": "crossed", "p2": "my brother’s mind" }
-      ]
-    },
-    {
-      "number": 28,
-      "firstSentence": "We never needed to show our train tickets during our journey.",
-      "keyWord": "REQUIRED",
-      "beforeGap": "At no",
-      "afterGap": "show our train tickets during our journey.",
-      "routes": [
-        { "p1": "time", "p2": "were we required to" },
-        { "p1": "point", "p2": "were we required to" }
-      ]
-    },
-    {
-      "number": 29,
-      "firstSentence": "The delegates arrived late for the conference because of the traffic jam.",
-      "keyWord": "PREVENTED",
-      "beforeGap": "The traffic jam",
-      "afterGap": "time for the conference.",
-      "routes": [
-        { "p1": "prevented the delegates (from)", "p2": "arriving in (on/at)" },
-        { "p1": "prevented the delegates (from)", "p2": "being in (on/at)" }
-      ]
-    },
-    {
-      "number": 30,
-      "firstSentence": "The manager admitted that debiting my account twice had been a mistake.",
-      "keyWord": "NOT",
-      "beforeGap": "The manager admitted that my account should",
-      "afterGap": "twice.",
-      "routes": [
-        { "p1": "not have", "p2": "been debited" },
-        { "p1": "not have", "p2": "been charged" },
-        { "p1": "have not", "p2": "been debited" },
-        { "p1": "n't have", "p2": "been debited" }
-      ]
-    }
-  ]
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. Use between three and six words.",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "Even though it had started to rain, we decided to continue our tennis match.",
+        "keyWord": "WITH",
+        "beforeGap": "We decided to go",
+        "afterGap": "the rain.",
+        "routes": [
+          { "p1": "ahead with", "p2": "our (the) tennis match despite" },
+          { "p1": "on with", "p2": "our (the) tennis match despite" }
+        ]
+      },
+      {
+        "number": 26,
+        "firstSentence": "Jo loves living in the city and probably won't move.",
+        "keyWord": "UNLIKELY",
+        "beforeGap": "It's",
+        "afterGap": "the city as she loves living there.",
+        "routes": [
+          { "p1": "unlikely (that) jo", "p2": "will leave" },
+          { "p1": "unlikely (that) jo", "p2": "'ll leave" },
+          { "p1": "unlikely (that) jo", "p2": "will move away from" },
+          { "p1": "unlikely (that) jo", "p2": "will move out of" }
+        ]
+      },
+      {
+        "number": 27,
+        "firstSentence": "My brother never considered the option of taking a year out, until I did it.",
+        "keyWord": "MIND",
+        "beforeGap": "The option of taking a year out never",
+        "afterGap": ", until I did it.",
+        "routes": [
+          { "p1": "entered", "p2": "my brother's mind" },
+          { "p1": "crossed", "p2": "my brother's mind" }
+        ]
+      },
+      {
+        "number": 28,
+        "firstSentence": "We never needed to show our train tickets during our journey.",
+        "keyWord": "REQUIRED",
+        "beforeGap": "At no",
+        "afterGap": "show our train tickets during our journey.",
+        "routes": [
+          { "p1": "time", "p2": "were we required to" },
+          { "p1": "point", "p2": "were we required to" }
+        ]
+      },
+      {
+        "number": 29,
+        "firstSentence": "The delegates arrived late for the conference because of the traffic jam.",
+        "keyWord": "PREVENTED",
+        "beforeGap": "The traffic jam",
+        "afterGap": "time for the conference.",
+        "routes": [
+          { "p1": "prevented the delegates (from)", "p2": "arriving in (on/at)" },
+          { "p1": "prevented the delegates (from)", "p2": "being in (on/at)" }
+        ]
+      },
+      {
+        "number": 30,
+        "firstSentence": "The manager admitted that debiting my account twice had been a mistake.",
+        "keyWord": "NOT",
+        "beforeGap": "The manager admitted that my account should",
+        "afterGap": "twice.",
+        "routes": [
+          { "p1": "not have", "p2": "been debited" },
+          { "p1": "not have", "p2": "been charged" },
+          { "p1": "have not", "p2": "been debited" },
+          { "p1": "n't have", "p2": "been debited" }
+        ]
+      }
+    ]
+  }
 }

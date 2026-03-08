@@ -151,7 +151,8 @@
       }
       
       // Update partial (part) score
-      const partMax = partConfig ? (partConfig.maxMarks || partConfig.total) : total;      const partTotal = isWritingOrSpeaking ? partConfig.total : (AppState.currentExercise.totalQuestions || partMax);
+      const partMax = partConfig ? (partConfig.maxMarks || partConfig.total) : total;
+      const partTotal = isWritingOrSpeaking ? partConfig.total : partMax;
       const partScoreElement = document.getElementById('part-score-display');
       if (partScoreElement) {
         partScoreElement.innerHTML = `${correct}/${partTotal}`;

@@ -301,16 +301,16 @@
       } catch (error) {
         console.error('❌ Error crítico:', error);
         content.innerHTML = `
-          <div class="error-message">
-            <i class="fas fa-exclamation-circle"></i>
-            <h3>Error de Sincronización</h3>
-            <p>No se pudo obtener la versión más reciente del examen.</p>
-            <p><small>${error.message}</small></p>
-            <div class="error-actions">
-              <button class="btn-back" onclick="Exercise.openPart('${examId}', '${section}', ${part})">
+          <div class="exercise-error-card">
+            <div class="exercise-error-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3 class="exercise-error-title">Error al cargar el ejercicio</h3>
+            <p class="exercise-error-desc">No se pudo cargar este ejercicio. Inténtalo de nuevo o vuelve al inicio.</p>
+            <div class="exercise-error-detail"><code>${error.message}</code></div>
+            <div class="exercise-error-actions">
+              <button class="exercise-error-btn exercise-error-btn-primary" onclick="Exercise.openPart('${examId}', '${section}', ${part})">
                 <i class="fas fa-redo"></i> Reintentar
               </button>
-              <button class="btn-back btn-back-secondary" onclick="Dashboard.render()">
+              <button class="exercise-error-btn exercise-error-btn-secondary" onclick="Dashboard.render()">
                 <i class="fas fa-home"></i> Volver al inicio
               </button>
             </div>

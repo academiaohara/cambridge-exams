@@ -22,46 +22,42 @@
         const dataAttr = !isCorrect ? ` data-correct="${question.correct}"` : '';
         const labelBg = isCorrect ? '#10b981' : '#ef4444';
         let html = `<span class="reading-type7-gap" data-qnum="${qNum}">`;
+        html += `<span class="reading-type7-gap-inline-row">`;
         html += `<span class="reading-type7-gap-number">(${qNum})</span>`;
+        if (userAnswer) {
+          html += `<span class="reading-type7-para-letter-checked" style="background:${labelBg}">${userAnswer}</span>`;
+        }
+        html += `</span>`;
         html += `<span class="${blockClass}"${dataAttr}>`;
         if (userAnswer) {
-          html += `<span class="reading-type7-para-letter" style="background:${labelBg}">${userAnswer}</span>`;
           html += `<span class="reading-type7-para-text">${this._escapeHtml(chosenText)}</span>`;
         } else {
           html += `<span class="reading-type7-para-empty">${I18n.t('noAnswer') || '—'}</span>`;
         }
         if (!isCorrect) {
-          html += `<span class="reading-type7-correct-label"><span class="reading-type7-para-letter" style="background:#10b981">${question.correct}</span><span class="reading-type7-para-text reading-type7-correct-text">${this._escapeHtml(correctText)}</span></span>`;
+          html += `<span class="reading-type7-correct-label"><span class="reading-type7-para-letter-checked" style="background:#10b981">${question.correct}</span><span class="reading-type7-para-text reading-type7-correct-text">${this._escapeHtml(correctText)}</span></span>`;
         }
         html += '</span></span>';
         return html;
       }
       
-      if (userAnswer) {
-        const paraText = paragraphs[userAnswer] || '';
-        return `
-          <span class="reading-type7-gap" data-qnum="${qNum}">
-            <span class="reading-type7-gap-number">(${qNum})</span>
-            <span class="reading-type7-answer-block filled" onclick="ReadingType7.openSelectModal(${qNum})">
-              <span class="reading-type7-para-letter">${userAnswer}</span>
-              <span class="reading-type7-para-text">${this._escapeHtml(paraText)}</span>
-            </span>
-          </span>
-        `;
-      }
-      
       let optionsHTML = `<option value="">-- ${I18n.t('selectOption')} --</option>`;
       options.forEach(key => {
-        optionsHTML += `<option value="${key}">${key}</option>`;
+        optionsHTML += `<option value="${key}"${userAnswer === key ? ' selected' : ''}>${key}</option>`;
       });
+
+      const paraText = userAnswer ? (paragraphs[userAnswer] || '') : '';
       
       return `
         <span class="reading-type7-gap" data-qnum="${qNum}">
-          <span class="reading-type7-gap-number">(${qNum})</span>
-          <select class="reading-type7-select paragraph-select" data-question="${qNum}"
-                  onchange="ReadingType7.handleSelect(${qNum}, this.value)">
-            ${optionsHTML}
-          </select>
+          <span class="reading-type7-gap-inline-row">
+            <span class="reading-type7-gap-number">(${qNum})</span>
+            <select class="reading-type7-select paragraph-select${userAnswer ? ' has-value' : ''}" data-question="${qNum}"
+                    onchange="ReadingType7.handleSelect(${qNum}, this.value)">
+              ${optionsHTML}
+            </select>
+          </span>
+          ${userAnswer ? `<span class="reading-type7-selected-text">${this._escapeHtml(paraText)}</span>` : ''}
         </span>
       `;
     },
