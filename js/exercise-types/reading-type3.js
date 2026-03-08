@@ -15,10 +15,12 @@
       if (isChecked && userAnswer) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
         const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
+        const escapedCorrect = String(question.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const dataAttr = !isCorrect ? ` data-correct="✓ ${escapedCorrect}"` : '';
         return `
-          <span class="reading-type3-gap-inline">
+          <span class="reading-type3-gap-inline${!isCorrect ? ' incorrect' : ''}"${dataAttr}>
             <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered-word ${colorClass}" ${!isCorrect ? 'title="✓ ' + question.correct + '"' : ''}>${userAnswer}</span>
+            <span class="reading-type3-answered-word ${colorClass}">${userAnswer}</span>
           </span>
         `;
       }
@@ -52,12 +54,10 @@
       
       const currentAnswer = AppState.currentExercise.answers?.[qNum] || '';
       
-      let html = '<div class="modal-header"><p>' + I18n.t('question') + ' ' + qNum + '</p></div>';
-      html += '<div class="reading-type3-modal-word" style="text-align:left;">';
-      html += '<span class="reading-type3-stem-label">' + question.word + '</span>';
-      html += '</div>';
-      html += '<div class="reading-type3-modal-input-wrap">';
+      let html = '<div class="modal-header"><div class="modal-header-row"><span class="modal-q-circle">' + qNum + '</span></div></div>';
+      html += '<div class="reading-type3-input-word-row">';
       html += '<input type="text" class="reading-type3-modal-input" id="type3-modal-input" value="' + currentAnswer + '" placeholder="..." autofocus>';
+      html += '<span class="reading-type3-word-badge">' + question.word + '</span>';
       html += '</div>';
       html += '<div class="reading-type3-modal-actions">';
       html += '<button class="opt-btn" onclick="ReadingType3.submitAnswer(' + qNum + ')">' + I18n.t('confirm') + '</button>';
@@ -127,9 +127,13 @@
           if (numSpan && numSpan.textContent.trim() === `(${q.number})`) {
             const answerText = userAnswer || '_____';
             const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
+            const escapedCorrect = String(q.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            gap.className = 'reading-type3-gap-inline' + (!isCorrect ? ' incorrect' : '');
+            if (!isCorrect) gap.setAttribute('data-correct', '✓ ' + escapedCorrect);
+            else gap.removeAttribute('data-correct');
             gap.innerHTML = `
               <span class="reading-type3-gap-number">(${q.number})</span>
-              <span class="reading-type3-answered-word ${colorClass}" ${!isCorrect ? 'title="✓ ' + q.correct + '"' : ''}>${answerText}</span>
+              <span class="reading-type3-answered-word ${colorClass}">${answerText}</span>
             `;
           }
         });

@@ -286,7 +286,14 @@
           }
         });
         
-        html += `<p>${paraProcessed}</p>`;
+        // For gapped-text (Part 7), use a div wrapper for gap-only paragraphs to allow block display
+        const isGappedTextGap = partConfig.type === 'gapped-text' && gapNumbers.length > 0 &&
+          para.trim().match(/^\(\d+\)$/);
+        if (isGappedTextGap) {
+          html += `<div class="reading-type7-gap-para">${paraProcessed}</div>`;
+        } else {
+          html += `<p>${paraProcessed}</p>`;
+        }
       });
       return html;
     },
@@ -542,6 +549,14 @@
           } else if (typeof ReadingType1?.initListeners === 'function') {
             ReadingType1.initListeners();
           }
+          break;
+        case 'transformations':
+          // Initialize auto-resize for all transformation inputs that have existing answers
+          setTimeout(function() {
+            document.querySelectorAll('.reading-type4-inline-input:not([disabled])').forEach(function(inp) {
+              if (inp.value && typeof ReadingType4 !== 'undefined') ReadingType4.resizeInput(inp);
+            });
+          }, 50);
           break;
         case 'multiple-choice-text':
           if (AppState.currentSection === 'listening' && typeof ListeningType1?.initListeners === 'function') {

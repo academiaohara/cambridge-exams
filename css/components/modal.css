@@ -75,6 +75,26 @@
   font-weight: 600;
 }
 
+.modal-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-q-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
 .options-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

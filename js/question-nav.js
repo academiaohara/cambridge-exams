@@ -75,9 +75,6 @@
 
     answerPart7: function(qNum, value) {
       ReadingType7.handleSelect(qNum, value);
-      // sync select in text section if present
-      const sel = document.querySelector('select[data-question="' + qNum + '"]');
-      if (sel) sel.value = value;
       this._updateNavCell(qNum);
       this.close();
     },

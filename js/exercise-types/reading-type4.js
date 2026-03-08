@@ -11,13 +11,14 @@
       if (isChecked) {
         const result = this.evaluateTransformation(userAnswer, question.correct);
         const colorClass = result.score > 0 ? 'reading-type4-correct' : 'reading-type4-incorrect';
-        const correctionHtml = result.score < 2 ? `<span class="reading-type4-correction-text" title="✓ ${question.correct}">${question.correct}</span>` : '';
-        gapHTML = `<span class="reading-type4-inline-wrap ${colorClass}">` +
+        const escapedCorrect = String(question.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const dataAttr = result.score < 2 ? ` data-correct="✓ ${escapedCorrect}"` : '';
+        gapHTML = `<span class="reading-type4-inline-wrap ${colorClass}${result.score < 2 ? ' incorrect' : ''}"${dataAttr}>` +
           `<input type="text" class="reading-type4-inline-input gap-input ${colorClass}" data-question="${qNum}" value="${userAnswer || ''}" disabled>` +
-          `</span>` + correctionHtml;
+          `</span>`;
       } else {
         gapHTML = `<span class="reading-type4-inline-wrap${userAnswer ? ' reading-type4-purple' : ''}">` +
-          `<input type="text" class="reading-type4-inline-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" placeholder="..." oninput="ReadingType4.handleInput(${qNum}, this.value)">` +
+          `<input type="text" class="reading-type4-inline-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" placeholder="..." oninput="ReadingType4.handleInput(${qNum}, this.value); ReadingType4.resizeInput(this)">` +
           `</span>`;
       }
       
@@ -50,6 +51,13 @@
       }
       
       Timer.updateScoreDisplay();
+    },
+    
+    resizeInput: function(input) {
+      const minWidth = 200;
+      input.style.width = '0px';
+      const newWidth = Math.max(minWidth, input.scrollWidth + 16);
+      input.style.width = newWidth + 'px';
     },
     
     evaluateTransformation: function(userAnswer, officialString) {
@@ -153,29 +161,28 @@
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
         const result = this.evaluateTransformation(userAnswer, q.correct);
-        totalScore += result.score > 0 ? 1 : 0;
+        totalScore += result.score;
         
         const input = document.querySelector(`.reading-type4-inline-input[data-question="${q.number}"]`);
         if (input) {
           const wrap = input.closest('.reading-type4-inline-wrap');
-          const isCorrect = result.score > 0;
+          const isCorrect = result.score >= 2;
           const colorClass = isCorrect ? 'reading-type4-correct' : 'reading-type4-incorrect';
           input.classList.add(colorClass);
           input.disabled = true;
           if (!isCorrect) {
-            input.setAttribute('title', '✓ ' + q.correct);
             const secondDiv = input.closest('.reading-type4-second');
-            if (secondDiv && !secondDiv.querySelector('.reading-type4-correction-text')) {
-              const correctionSpan = document.createElement('span');
-              correctionSpan.className = 'reading-type4-correction-text';
-              correctionSpan.textContent = q.correct;
-              correctionSpan.setAttribute('title', '✓ ' + q.correct);
-              wrap.parentNode.insertBefore(correctionSpan, wrap.nextSibling);
-            }
+            // Remove any leftover correction text elements
+            secondDiv && secondDiv.querySelectorAll('.reading-type4-correction-text').forEach(el => el.remove());
           }
           if (wrap) {
             wrap.classList.remove('reading-type4-purple');
             wrap.classList.add(colorClass);
+            if (!isCorrect) {
+              wrap.classList.add('incorrect');
+              const escapedCorrect = String(q.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+              wrap.setAttribute('data-correct', '✓ ' + escapedCorrect);
+            }
           }
         }
       });
