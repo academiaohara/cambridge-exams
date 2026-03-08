@@ -65,7 +65,7 @@
       }
       span.style.font = window.getComputedStyle(input).font;
       span.textContent = input.value || input.placeholder || '';
-      const newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 28);
+      const newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 28); // extra buffer to prevent text cutoff at edge
       input.style.width = newWidth + 'px';
     },
     
@@ -88,6 +88,7 @@
     
     _formatRoutesDisplay: function(routes) {
       if (!Array.isArray(routes) || routes.length === 0) return '';
+      // Show first route as representative correct answer
       var r = routes[0];
       return ((r.p1 || '') + ' ' + (r.p2 || '')).trim();
     },
