@@ -1,65 +1,75 @@
 {
   "title": "Reading and Use of English - Part 4",
-  "type": "transformations",
-  "time": 15,
-  "totalQuestions": 6,
-  "description": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
-  "content": {
-    "questions": [
-      {
-        "number": 25,
-        "firstSentence": "Jo loves living in the city and probably won’t move.",
-        "keyWord": "UNLIKELY",
-        "beforeGap": "It's",
-        "afterGap": "the city as she loves living there.",
-        "correct": "UNLIKELY (that) Jo will/’ll | leave/move (away) from/out of",
-        "explanation": "The correct phrase is 'a long time since I've seen', using the present perfect after 'since'."
-      },
-      {
-        "number": 26,
-        "firstSentence": "The last time I went to the cinema was months ago.",
-        "keyWord": "BEEN",
-        "beforeGap": "I",
-        "afterGap": "to the cinema for months.",
-        "correct": "haven't been",
-        "explanation": "Use present perfect with 'for months': 'haven't been'."
-      },
-      {
-        "number": 27,
-        "firstSentence": "They say that the company is losing money.",
-        "keyWord": "SAID",
-        "beforeGap": "The company",
-        "afterGap": "losing money.",
-        "correct": "is said to be",
-        "explanation": "Passive reporting structure: 'is said to be'."
-      },
-      {
-        "number": 28,
-        "firstSentence": "He regrets not studying harder at school.",
-        "keyWord": "WISHES",
-        "beforeGap": "He",
-        "afterGap": "harder at school.",
-        "correct": "wishes he had studied",
-        "explanation": "Third conditional wish: 'wishes he had studied'."
-      },
-      {
-        "number": 29,
-        "firstSentence": "It isn't necessary for you to come early tomorrow.",
-        "keyWord": "NEED",
-        "beforeGap": "You",
-        "afterGap": "early tomorrow.",
-        "correct": "don't need to come",
-        "explanation": "'Don't need to come' expresses lack of necessity."
-      },
-      {
-        "number": 30,
-        "firstSentence": "She started learning French three years ago.",
-        "keyWord": "BEEN",
-        "beforeGap": "She",
-        "afterGap": "French for three years.",
-        "correct": "has been learning",
-        "explanation": "Present perfect continuous: 'has been learning'."
-      }
-    ]
-  }
+  "questions": [
+    {
+      "number": 25,
+      "firstSentence": "Even though it had started to rain, we decided to continue our tennis match.",
+      "keyWord": "WITH",
+      "beforeGap": "We decided to go",
+      "afterGap": "the rain.",
+      "routes": [
+        { "p1": "ahead with", "p2": "our (the) tennis match despite" },
+        { "p1": "on with", "p2": "our (the) tennis match despite" }
+      ]
+    },
+    {
+      "number": 26,
+      "firstSentence": "Jo loves living in the city and probably won’t move.",
+      "keyWord": "UNLIKELY",
+      "beforeGap": "It’s",
+      "afterGap": "the city as she loves living there.",
+      "routes": [
+        { "p1": "unlikely (that) jo", "p2": "will leave" },
+        { "p1": "unlikely (that) jo", "p2": "'ll leave" },
+        { "p1": "unlikely (that) jo", "p2": "will move away from" },
+        { "p1": "unlikely (that) jo", "p2": "will move out of" }
+      ]
+    },
+    {
+      "number": 27,
+      "firstSentence": "My brother never considered the option of taking a year out, until I did it.",
+      "keyWord": "MIND",
+      "beforeGap": "The option of taking a year out never",
+      "afterGap": ", until I did it.",
+      "routes": [
+        { "p1": "entered", "p2": "my brother’s mind" },
+        { "p1": "crossed", "p2": "my brother’s mind" }
+      ]
+    },
+    {
+      "number": 28,
+      "firstSentence": "We never needed to show our train tickets during our journey.",
+      "keyWord": "REQUIRED",
+      "beforeGap": "At no",
+      "afterGap": "show our train tickets during our journey.",
+      "routes": [
+        { "p1": "time", "p2": "were we required to" },
+        { "p1": "point", "p2": "were we required to" }
+      ]
+    },
+    {
+      "number": 29,
+      "firstSentence": "The delegates arrived late for the conference because of the traffic jam.",
+      "keyWord": "PREVENTED",
+      "beforeGap": "The traffic jam",
+      "afterGap": "time for the conference.",
+      "routes": [
+        { "p1": "prevented the delegates (from)", "p2": "arriving in (on/at)" },
+        { "p1": "prevented the delegates (from)", "p2": "being in (on/at)" }
+      ]
+    },
+    {
+      "number": 30,
+      "firstSentence": "The manager admitted that debiting my account twice had been a mistake.",
+      "keyWord": "NOT",
+      "beforeGap": "The manager admitted that my account should",
+      "afterGap": "twice.",
+      "routes": [
+        { "p1": "not have", "p2": "been debited" },
+        { "p1": "not have", "p2": "been charged" },
+        { "p1": "have not", "p2": "been debited" },
+        { "p1": "n't have", "p2": "been debited" }
+      ]
+    }
+  ]
 }
