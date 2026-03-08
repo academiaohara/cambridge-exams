@@ -286,7 +286,14 @@
           }
         });
         
-        html += `<p>${paraProcessed}</p>`;
+        // For gapped-text (Part 7), use a div wrapper for gap-only paragraphs to allow block display
+        const isGappedTextGap = partConfig.type === 'gapped-text' && gapNumbers.length > 0 &&
+          para.trim().match(/^\(\d+\)$/);
+        if (isGappedTextGap) {
+          html += `<div class="reading-type7-gap-para">${paraProcessed}</div>`;
+        } else {
+          html += `<p>${paraProcessed}</p>`;
+        }
       });
       return html;
     },

@@ -17,15 +17,93 @@
   border-radius: 16px;
 }
 
+/* Hover tooltip for incorrect answers */
 .reading-type3-gap-inline {
   display: inline;
   white-space: nowrap;
+  position: relative;
+}
+
+.reading-type3-gap-inline.incorrect {
+  cursor: help;
+}
+
+.reading-type3-gap-inline.incorrect::after {
+  content: attr(data-correct);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-dark);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  display: none;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-weight: 600;
+}
+
+.reading-type3-gap-inline.incorrect:hover::after {
+  display: block;
+}
+
+/* Combined input + word badge layout in modal */
+.reading-type3-input-word-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+  background: #f8fafc;
+  border: 2px solid #cbd5e1;
+  border-radius: 16px;
+  padding: 6px 6px 6px 12px;
+  transition: border-color 0.2s;
+}
+
+.reading-type3-input-word-row:focus-within {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+}
+
+.reading-type3-modal-input {
+  flex: 1;
+  padding: 10px 4px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-align: left;
+  background: transparent;
+  transition: all 0.2s;
+  min-width: 0;
+}
+
+.reading-type3-modal-input:focus {
+  outline: none;
+}
+
+.reading-type3-word-badge {
+  background: #7e22ce;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .reading-type3-gap-number {
   font-weight: 700;
   font-size: 0.95rem;
-  color: #7e22ce;
+  color: var(--primary);
 }
 
 .reading-type3-gap-slot {
@@ -88,10 +166,10 @@
 }
 
 .reading-type3-modal-input-wrap {
-  margin: 16px 0;
+  display: none;
 }
 
-.reading-type3-modal-input {
+.reading-type3-modal-input-standalone {
   width: 100%;
   padding: 14px 18px;
   border: 2px solid #cbd5e1;
@@ -101,12 +179,6 @@
   font-size: 1.2rem;
   text-align: center;
   transition: all 0.2s;
-}
-
-.reading-type3-modal-input:focus {
-  outline: none;
-  border-color: #a855f7;
-  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
 }
 
 .reading-type3-modal-actions {

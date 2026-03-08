@@ -25,7 +25,7 @@
       
       return `
         <span class="${gapClass}"${gapDataAttr}>
-          <input type="text" 
+          <span class="reading-type2-gap-number">(${qNum})</span><input type="text" 
                  class="${inputClass}" 
                  data-question="${qNum}" 
                  value="${userAnswer || ''}" 

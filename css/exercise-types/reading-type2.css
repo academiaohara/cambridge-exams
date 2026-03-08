@@ -114,8 +114,10 @@
 
 .reading-type2-gap-number {
   font-weight: 700;
-  color: var(--text-medium);
+  color: var(--primary);
+  font-size: 0.95rem;
   margin-right: 2px;
+  vertical-align: middle;
 }
 
 .reading-type2-correction {

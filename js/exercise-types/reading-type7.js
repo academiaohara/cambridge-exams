@@ -14,21 +14,51 @@
       const paragraphs = AppState.currentExercise.content.paragraphs || {};
       const options = Object.keys(paragraphs);
       
-      let selectClass = 'reading-type7-select paragraph-select';
       if (isChecked) {
-        selectClass += this.isAnswerCorrect(question, userAnswer) ? ' correct' : ' incorrect';
+        const isCorrect = this.isAnswerCorrect(question, userAnswer);
+        const chosenText = userAnswer ? (paragraphs[userAnswer] || '') : '';
+        const correctText = paragraphs[question.correct] || '';
+        const blockClass = isCorrect ? 'reading-type7-answer-block correct' : 'reading-type7-answer-block incorrect';
+        const dataAttr = !isCorrect ? ` data-correct="${question.correct}"` : '';
+        const labelBg = isCorrect ? '#10b981' : '#ef4444';
+        let html = `<span class="reading-type7-gap" data-qnum="${qNum}">`;
+        html += `<span class="reading-type7-gap-number">(${qNum})</span>`;
+        html += `<span class="${blockClass}"${dataAttr}>`;
+        if (userAnswer) {
+          html += `<span class="reading-type7-para-letter" style="background:${labelBg}">${userAnswer}</span>`;
+          html += `<span class="reading-type7-para-text">${this._escapeHtml(chosenText)}</span>`;
+        } else {
+          html += `<span class="reading-type7-para-empty">${I18n.t('noAnswer') || '—'}</span>`;
+        }
+        if (!isCorrect) {
+          html += `<span class="reading-type7-correct-label"><span class="reading-type7-para-letter" style="background:#10b981">${question.correct}</span><span class="reading-type7-para-text reading-type7-correct-text">${this._escapeHtml(correctText)}</span></span>`;
+        }
+        html += '</span></span>';
+        return html;
+      }
+      
+      if (userAnswer) {
+        const paraText = paragraphs[userAnswer] || '';
+        return `
+          <span class="reading-type7-gap" data-qnum="${qNum}">
+            <span class="reading-type7-gap-number">(${qNum})</span>
+            <span class="reading-type7-answer-block filled" onclick="ReadingType7.openSelectModal(${qNum})">
+              <span class="reading-type7-para-letter">${userAnswer}</span>
+              <span class="reading-type7-para-text">${this._escapeHtml(paraText)}</span>
+            </span>
+          </span>
+        `;
       }
       
       let optionsHTML = `<option value="">-- ${I18n.t('selectOption')} --</option>`;
       options.forEach(key => {
-        const selected = userAnswer === key ? 'selected' : '';
-        optionsHTML += `<option value="${key}" ${selected}>${key}</option>`;
+        optionsHTML += `<option value="${key}">${key}</option>`;
       });
       
       return `
-        <span class="reading-type7-gap">
-          <select class="${selectClass}" data-question="${qNum}"
-                  ${isChecked ? 'disabled' : ''}
+        <span class="reading-type7-gap" data-qnum="${qNum}">
+          <span class="reading-type7-gap-number">(${qNum})</span>
+          <select class="reading-type7-select paragraph-select" data-question="${qNum}"
                   onchange="ReadingType7.handleSelect(${qNum}, this.value)">
             ${optionsHTML}
           </select>
@@ -36,14 +66,40 @@
       `;
     },
     
+    openSelectModal: function(qNum) {
+      const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
+      if (!question) return;
+      if (window.Tools) Tools.closeSidebar();
+      // Use the question nav to re-select
+      QuestionNav.openQuestion(qNum);
+    },
+    
     handleSelect: function(qNum, value) {
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = value;
+      
+      // Update the gap display in place
+      const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
+      const gap = document.querySelector(`.reading-type7-gap[data-qnum="${qNum}"]`);
+      if (gap && question) {
+        const isChecked = AppState.answersChecked;
+        gap.outerHTML = ReadingType7.renderGap(question, qNum, isChecked, value);
+      }
+      
       Timer.updateScoreDisplay();
     },
     
     isAnswerCorrect: function(question, userAnswer) {
       return userAnswer === question.correct;
+    },
+    
+    _escapeHtml: function(text) {
+      return String(text || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     },
     
     checkAnswers: function() {
@@ -55,13 +111,18 @@
         const isCorrect = this.isAnswerCorrect(q, userAnswer);
         if (isCorrect) correct++;
         
-        // Visual feedback on select elements
-        const select = document.querySelector(`select[data-question="${q.number}"]`);
-        if (select) {
-          select.classList.add(isCorrect ? 'correct' : 'incorrect');
-          select.disabled = true;
-          if (!isCorrect) {
-            select.setAttribute('title', `✓ ${q.correct}`);
+        // Update gap display to show paragraph text with correct/incorrect styling
+        const gap = document.querySelector(`.reading-type7-gap[data-qnum="${q.number}"]`);
+        if (gap) {
+          gap.outerHTML = ReadingType7.renderGap(q, q.number, true, userAnswer || '');
+        } else {
+          // Fallback: find by select element
+          const select = document.querySelector(`select[data-question="${q.number}"]`);
+          if (select) {
+            const parentGap = select.closest('.reading-type7-gap');
+            if (parentGap) {
+              parentGap.outerHTML = ReadingType7.renderGap(q, q.number, true, userAnswer || '');
+            }
           }
         }
       });
