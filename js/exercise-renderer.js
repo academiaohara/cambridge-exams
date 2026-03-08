@@ -94,7 +94,7 @@
       const totalParts = exam?.sections[section]?.total || 1;
       const sectionTotalQuestions = this.getSectionTotalQuestions(section);
       
-      const partTotal = (section === 'writing' || section === 'speaking') ? partConfig.total : (exercise.totalQuestions || partConfig.total);
+      const partTotal = (section === 'writing' || section === 'speaking') ? partConfig.total : (partConfig.maxMarks || exercise.totalQuestions || partConfig.total);
       
       // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
       let contentHeaderHTML = '';
@@ -356,7 +356,7 @@
         html += '<div class="reading-type7-paragraph-list">';
         Object.entries(exercise.content.paragraphs).forEach(function(entry) {
           const key = entry[0], text = entry[1];
-          html += '<div class="reading-type7-paragraph-item"><strong>' + key + '</strong> ' + text + '</div>';
+          html += '<div class="reading-type7-paragraph-row"><span class="reading-type7-paragraph-label">' + key + '</span><div class="reading-type7-paragraph-item">' + text + '</div></div>';
         });
         html += '</div></div>';
         return html;

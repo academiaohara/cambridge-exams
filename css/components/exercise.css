@@ -394,3 +394,105 @@
   align-items: center;
   justify-content: center;
 }
+
+/* ============================================
+   EXERCISE ERROR CARD
+   ============================================ */
+.exercise-error-card {
+  background: linear-gradient(135deg, #fff1f2 0%, #ffffff 100%);
+  border: 1.5px solid #fecaca;
+  border-radius: 20px;
+  padding: 48px 40px;
+  text-align: center;
+  max-width: 520px;
+  margin: 40px auto;
+  box-shadow: 0 4px 24px rgba(239, 68, 68, 0.08);
+  animation: fadeInUp 0.4s ease;
+}
+
+.exercise-error-icon {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+}
+
+.exercise-error-icon i {
+  font-size: 2rem;
+  color: white;
+}
+
+.exercise-error-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #991b1b;
+  margin-bottom: 10px;
+}
+
+.exercise-error-desc {
+  color: #6b7280;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.exercise-error-detail {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-bottom: 24px;
+}
+
+.exercise-error-detail code {
+  font-size: 0.85rem;
+  color: #b91c1c;
+  word-break: break-word;
+}
+
+.exercise-error-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.exercise-error-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.exercise-error-btn-primary {
+  background: linear-gradient(135deg, var(--primary), #2563eb);
+  color: white;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.exercise-error-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+}
+
+.exercise-error-btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+.exercise-error-btn-secondary:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
