@@ -42,14 +42,18 @@
         }
       } else {
         // Fallback al método genérico
+        const marksPerQ = partConfig.maxMarks && partConfig.total ? Math.round(partConfig.maxMarks / partConfig.total) : 1;
         questions.forEach(q => {
           const userAnswer = AppState.currentExercise.answers[q.number];
           const isCorrect = Utils.compareAnswers(userAnswer, q.correct, partConfig.type);
-          if (isCorrect) correct++;
+          if (isCorrect) correct += marksPerQ;
           
           this.markAnswerVisual(q.number, userAnswer, q.correct, isCorrect, partConfig);
         });
       }
+      
+      // Store the actual score (may include partial marks) before updateScoreDisplay overrides it
+      AppState.currentPartScore = correct;
       
       Timer.updateScoreDisplay();
       

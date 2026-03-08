@@ -134,19 +134,22 @@
       ];
       
       const isWritingOrSpeaking = AppState.currentSection === 'writing' || AppState.currentSection === 'speaking';
+      const isMultiMarkPart = partConfig && partConfig.maxMarks && partConfig.maxMarks > partConfig.total;
       
-      if (isWritingOrSpeaking) {
+      if (isWritingOrSpeaking || (AppState.answersChecked && isMultiMarkPart)) {
+        // Use the stored score which reflects actual marks (e.g. partial marks for Part 4)
         correct = AppState.currentPartScore || 0;
       } else {
+        const marksPerQ = isMultiMarkPart ? Math.round(partConfig.maxMarks / partConfig.total) : 1;
         questions.forEach(q => {
           if (Utils.compareAnswers(AppState.currentExercise.answers[q.number], q.correct, partConfig.type)) {
-            correct++;
+            correct += marksPerQ;
           }
         });
       }
       
       // Update partial (part) score
-      const partTotal = isWritingOrSpeaking ? partConfig.total : (AppState.currentExercise.totalQuestions || partConfig.total);
+      const partMax = partConfig ? (partConfig.maxMarks || partConfig.total) : total;      const partTotal = isWritingOrSpeaking ? partConfig.total : (AppState.currentExercise.totalQuestions || partMax);
       const partScoreElement = document.getElementById('part-score-display');
       if (partScoreElement) {
         partScoreElement.innerHTML = `${correct}/${partTotal}`;

@@ -307,7 +307,10 @@
 
     getSectionMaxRaw: function(section) {
       if (section === 'reading') {
-        return [1,2,3,4,5,6,7,8].reduce(function(s,p){ return s + (CONFIG.PART_TYPES[p]?.total || 0); }, 0);
+        return [1,2,3,4,5,6,7,8].reduce(function(s,p){
+          var cfg = CONFIG.PART_TYPES[p];
+          return s + (cfg ? (cfg.maxMarks || cfg.total || 0) : 0);
+        }, 0);
       }
       if (section === 'listening') {
         return [1,2,3,4].reduce(function(s,p){ return s + (CONFIG.PART_TYPES['listening'+p]?.total || 0); }, 0);
@@ -332,22 +335,25 @@
 
       if (sectionKey === 'reading') {
         if (hasUoE) {
-          // Parts 1-4 → Use of English
+          // Parts 2-4 → Use of English (8+8+12 = 28 marks)
           var uoeRaw = 0; var uoeMax = 0;
-          for (var p = 1; p <= 4; p++) {
+          for (var p = 2; p <= 4; p++) {
             uoeRaw += self.getStoredSectionScore(examId, 'reading', p);
-            uoeMax += (CONFIG.PART_TYPES[p]?.total || 0);
+            var cfg = CONFIG.PART_TYPES[p];
+            uoeMax += cfg ? (cfg.maxMarks || cfg.total || 0) : 0;
           }
           var uoeTableMax = data.tables['Use of English'][data.tables['Use of English'].length-1][0];
           var uoeNormalized = uoeMax > 0 ? Math.round(uoeRaw / uoeMax * uoeTableMax) : 0;
           results.push({ skill: 'Use of English', raw: uoeRaw, maxRaw: uoeMax, scale: getScaleScore(uoeNormalized, data.tables['Use of English']) });
 
-          // Parts 5-8 → Reading
+          // Parts 1, 5-8 → Reading (8+12+8+12+10 = 50 marks)
           var readRaw = 0; var readMax = 0;
-          for (var p2 = 5; p2 <= 8; p2++) {
+          var readParts = [1, 5, 6, 7, 8];
+          readParts.forEach(function(p2) {
             readRaw += self.getStoredSectionScore(examId, 'reading', p2);
-            readMax += (CONFIG.PART_TYPES[p2]?.total || 0);
-          }
+            var cfg2 = CONFIG.PART_TYPES[p2];
+            readMax += cfg2 ? (cfg2.maxMarks || cfg2.total || 0) : 0;
+          });
           var readTableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
           var readNormalized = readMax > 0 ? Math.round(readRaw / readMax * readTableMax) : 0;
           results.push({ skill: 'Reading', raw: readRaw, maxRaw: readMax, scale: getScaleScore(readNormalized, data.tables['Reading']) });
@@ -356,7 +362,8 @@
           var rawTotal = 0; var maxTotal = 0;
           for (var p3 = 1; p3 <= 8; p3++) {
             rawTotal += self.getStoredSectionScore(examId, 'reading', p3);
-            maxTotal += (CONFIG.PART_TYPES[p3]?.total || 0);
+            var cfg3 = CONFIG.PART_TYPES[p3];
+            maxTotal += cfg3 ? (cfg3.maxMarks || cfg3.total || 0) : 0;
           }
           var tableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
           var normalized = maxTotal > 0 ? Math.round(rawTotal / maxTotal * tableMax) : 0;
@@ -441,20 +448,25 @@
 
       if (sectionKey === 'reading') {
         if (hasUoE) {
+          // Parts 2-4 → Use of English (8+8+12 = 28 marks)
           var uoeRaw = 0; var uoeMax = 0;
-          for (var p = 1; p <= 4; p++) {
+          for (var p = 2; p <= 4; p++) {
             uoeRaw += self.getLiveSectionScore(examId, 'reading', p);
-            uoeMax += (CONFIG.PART_TYPES[p]?.total || 0);
+            var cfg = CONFIG.PART_TYPES[p];
+            uoeMax += cfg ? (cfg.maxMarks || cfg.total || 0) : 0;
           }
           var uoeTableMax = data.tables['Use of English'][data.tables['Use of English'].length-1][0];
           var uoeNormalized = uoeMax > 0 ? Math.round(uoeRaw / uoeMax * uoeTableMax) : 0;
           results.push({ skill: 'Use of English', raw: uoeRaw, maxRaw: uoeMax, scale: getScaleScore(uoeNormalized, data.tables['Use of English']) });
 
+          // Parts 1, 5-8 → Reading (8+12+8+12+10 = 50 marks)
           var readRaw = 0; var readMax = 0;
-          for (var p2 = 5; p2 <= 8; p2++) {
+          var readParts = [1, 5, 6, 7, 8];
+          readParts.forEach(function(p2) {
             readRaw += self.getLiveSectionScore(examId, 'reading', p2);
-            readMax += (CONFIG.PART_TYPES[p2]?.total || 0);
-          }
+            var cfg2 = CONFIG.PART_TYPES[p2];
+            readMax += cfg2 ? (cfg2.maxMarks || cfg2.total || 0) : 0;
+          });
           var readTableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
           var readNormalized = readMax > 0 ? Math.round(readRaw / readMax * readTableMax) : 0;
           results.push({ skill: 'Reading', raw: readRaw, maxRaw: readMax, scale: getScaleScore(readNormalized, data.tables['Reading']) });
@@ -462,7 +474,8 @@
           var rawTotal = 0; var maxTotal = 0;
           for (var p3 = 1; p3 <= 8; p3++) {
             rawTotal += self.getLiveSectionScore(examId, 'reading', p3);
-            maxTotal += (CONFIG.PART_TYPES[p3]?.total || 0);
+            var cfg3 = CONFIG.PART_TYPES[p3];
+            maxTotal += cfg3 ? (cfg3.maxMarks || cfg3.total || 0) : 0;
           }
           var tableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
           var normalized = maxTotal > 0 ? Math.round(rawTotal / maxTotal * tableMax) : 0;
