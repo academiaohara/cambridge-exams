@@ -99,15 +99,20 @@
   background: #d1fae5;
 }
 
+.reading-type4-inline-wrap.reading-type4-partial {
+  border-color: #f97316;
+  background: #fff7ed;
+}
+
 .reading-type4-inline-wrap.reading-type4-incorrect {
   border-color: var(--incorrect);
   background: #fee2e2;
 }
 
 .reading-type4-inline-input {
-  width: 200px;
-  min-width: 200px;
-  max-width: 60vw;
+  width: 120px;
+  min-width: 80px;
+  max-width: 600px;
   padding: 6px 12px;
   border: none;
   border-radius: 28px;
@@ -127,6 +132,13 @@
 .reading-type4-inline-input.reading-type4-correct {
   color: #065f46;
   font-weight: 700;
+  background: transparent;
+  border: none;
+}
+
+.reading-type4-inline-input.reading-type4-partial {
+  color: #9a3412;
+  font-weight: 600;
   background: transparent;
   border: none;
 }
@@ -176,6 +188,11 @@
 .reading-type4-correct {
   color: var(--correct);
   font-weight: 700;
+}
+
+.reading-type4-partial {
+  color: #f97316;
+  font-weight: 600;
 }
 
 .reading-type4-incorrect {
