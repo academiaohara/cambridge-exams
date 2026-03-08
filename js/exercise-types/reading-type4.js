@@ -10,7 +10,7 @@
       let gapHTML = '';
       if (isChecked) {
         const result = this.evaluateTransformation(userAnswer, question.correct);
-        const colorClass = result.score > 0 ? 'reading-type4-correct' : 'reading-type4-incorrect';
+        const colorClass = result.score === 2 ? 'reading-type4-correct' : result.score === 1 ? 'reading-type4-partial' : 'reading-type4-incorrect';
         const escapedCorrect = String(question.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         const dataAttr = result.score < 2 ? ` data-correct="✓ ${escapedCorrect}"` : '';
         gapHTML = `<span class="reading-type4-inline-wrap ${colorClass}${result.score < 2 ? ' incorrect' : ''}"${dataAttr}>` +
@@ -18,7 +18,7 @@
           `</span>`;
       } else {
         gapHTML = `<span class="reading-type4-inline-wrap${userAnswer ? ' reading-type4-purple' : ''}">` +
-          `<input type="text" class="reading-type4-inline-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" placeholder="..." oninput="ReadingType4.handleInput(${qNum}, this.value); ReadingType4.resizeInput(this)">` +
+          `<input type="text" class="reading-type4-inline-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" maxlength="100" placeholder="..." oninput="ReadingType4.handleInput(${qNum}, this.value); ReadingType4.resizeInput(this)">` +
           `</span>`;
       }
       
@@ -54,99 +54,64 @@
     },
     
     resizeInput: function(input) {
-      const minWidth = 200;
+      const minWidth = 120;
       input.style.width = '0px';
       const newWidth = Math.max(minWidth, input.scrollWidth + 16);
       input.style.width = newWidth + 'px';
     },
     
+    _buildPartRegex: function(text) {
+      const pattern = text
+        .replace(/\((.*?)\)/g, '(?:$1)?')
+        .replace(/\//g, '|')
+        .replace(/\s+/g, '\\s+');
+      return new RegExp(pattern, 'i');
+    },
+    
     evaluateTransformation: function(userAnswer, officialString) {
       if (!userAnswer || !officialString) return { score: 0, parts: [] };
       
-      const normalize = s => s.trim().toLowerCase().replace(/\s+/g, ' ');
-      const normalizedUser = normalize(userAnswer);
-      
-      // Handle array format
+      // Handle array format (legacy)
       if (Array.isArray(officialString)) {
+        const normalize = s => s.trim().toLowerCase().replace(/\s+/g, ' ');
+        const normalizedUser = normalize(userAnswer);
         const matched = officialString.some(ans => normalizedUser.includes(normalize(ans)));
         return { score: matched ? 2 : 0, parts: [matched] };
       }
       
-      // Check if officialString uses pipe separator for two-part scoring
-      if (typeof officialString === 'string' && officialString.includes('|')) {
-        const parts = officialString.split('|').map(p => p.trim());
-        const results = parts.map(part => this._matchPart(normalizedUser, part));
-        const score = results.filter(r => r).length;
-        return { score: score, parts: results };
-      }
+      if (typeof officialString !== 'string') return { score: 0, parts: [] };
       
-      // Simple string (no pipe) - check with alternatives support
-      if (typeof officialString === 'string') {
-        const matched = this._matchPart(normalizedUser, officialString);
+      const trimmedAnswer = userAnswer.trim();
+      
+      // Single-part (no | separator) - full match only
+      if (!officialString.includes('|')) {
+        const regexTotal = new RegExp(`^${this._buildPartRegex(officialString).source}$`, 'i');
+        const matched = regexTotal.test(trimmedAnswer);
         return { score: matched ? 2 : 0, parts: [matched] };
       }
       
-      return { score: 0, parts: [] };
-    },
-    
-    _matchPart: function(normalizedUser, partString) {
-      // Build regex-like patterns from the part string
-      // Handle alternatives (/) and optionals (())
-      const patterns = this._generatePatterns(partString);
-      return patterns.some(pattern => {
-        const normalizedPattern = pattern.trim().toLowerCase().replace(/\s+/g, ' ');
-        return normalizedUser.includes(normalizedPattern);
-      });
-    },
-    
-    _generatePatterns: function(partString) {
-      // Step 1: Extract optional groups (words in parentheses)
-      const optionalRegex = /\(([^)]+)\)/g;
-      const optionals = [];
-      let match;
-      let cleanString = partString;
+      // Two-part scoring with | separator
+      const [part1, part2] = officialString.split('|').map(p => p.trim());
+      const regexPart1 = new RegExp(`^${this._buildPartRegex(part1).source}`, 'i');
+      const regexPart2 = new RegExp(`${this._buildPartRegex(part2).source}$`, 'i');
+      const regexTotal = new RegExp(`^${this._buildPartRegex(part1).source}\\s+${this._buildPartRegex(part2).source}$`, 'i');
       
-      while ((match = optionalRegex.exec(partString)) !== null) {
-        optionals.push(match[1].trim());
+      if (regexTotal.test(trimmedAnswer)) {
+        return { score: 2, parts: [true, true] };
       }
-      cleanString = cleanString.replace(optionalRegex, ' __OPT__ ').replace(/\s+/g, ' ').trim();
       
-      // Step 2: Split by / for alternatives at each position
-      const segments = cleanString.split(/\s+/);
-      const expandedSegments = segments.map(seg => {
-        if (seg === '__OPT__') return seg;
-        if (seg.includes('/')) {
-          return seg.split('/').map(s => s.trim()).filter(s => s);
-        }
-        return [seg];
-      });
+      let score = 0;
+      const parts = [false, false];
+      if (regexPart1.test(trimmedAnswer)) {
+        score = 1;
+        parts[0] = true;
+      }
+      if (regexPart2.test(trimmedAnswer)) {
+        score = 1;
+        parts[1] = true;
+      }
       
-      // Step 3: Generate all alternative combinations
-      let combinations = [''];
-      expandedSegments.forEach(seg => {
-        if (seg === '__OPT__') {
-          // For optional words, generate versions with and without
-          if (optionals.length > 0) {
-            const optWord = optionals.shift();
-            const newCombinations = [];
-            combinations.forEach(c => {
-              newCombinations.push((c + ' ' + optWord).trim());
-              newCombinations.push(c.trim());
-            });
-            combinations = newCombinations;
-          }
-        } else {
-          const newCombinations = [];
-          combinations.forEach(c => {
-            seg.forEach(alt => {
-              newCombinations.push((c + ' ' + alt).trim());
-            });
-          });
-          combinations = newCombinations;
-        }
-      });
-      
-      return combinations.length > 0 ? combinations : [partString];
+      return { score, parts };
     },
     
     isAnswerCorrect: function(userAnswer, correctAnswer) {
@@ -167,7 +132,8 @@
         if (input) {
           const wrap = input.closest('.reading-type4-inline-wrap');
           const isCorrect = result.score >= 2;
-          const colorClass = isCorrect ? 'reading-type4-correct' : 'reading-type4-incorrect';
+          const isPartial = result.score === 1;
+          const colorClass = isCorrect ? 'reading-type4-correct' : isPartial ? 'reading-type4-partial' : 'reading-type4-incorrect';
           input.classList.add(colorClass);
           input.disabled = true;
           if (!isCorrect) {

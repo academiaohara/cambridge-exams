@@ -108,7 +108,12 @@
     
     isAnswerCorrect: function(userAnswer, correctAnswer) {
       if (!userAnswer) return false;
-      return userAnswer.trim().toLowerCase() === correctAnswer.toLowerCase();
+      if (typeof correctAnswer === 'string' && correctAnswer.includes('/')) {
+        return correctAnswer.split('/').some(ans =>
+          userAnswer.trim().toLowerCase() === ans.trim().toLowerCase()
+        );
+      }
+      return userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
     },
     
     checkAnswers: function() {
