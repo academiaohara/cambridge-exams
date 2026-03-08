@@ -109,7 +109,7 @@
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
         const isCorrect = this.isAnswerCorrect(q, userAnswer);
-        if (isCorrect) correct++;
+        if (isCorrect) correct += 2;
         
         // Update gap display to show paragraph text with correct/incorrect styling
         const gap = document.querySelector(`.reading-type7-gap[data-qnum="${q.number}"]`);

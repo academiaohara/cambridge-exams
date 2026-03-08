@@ -59,7 +59,7 @@
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
         const isCorrect = this.isAnswerCorrect(q, userAnswer);
-        if (isCorrect) correct++;
+        if (isCorrect) correct += 2;
         
         // Mark visual feedback on options
         document.querySelectorAll(`input[name="q${q.number}"]`).forEach(radio => {

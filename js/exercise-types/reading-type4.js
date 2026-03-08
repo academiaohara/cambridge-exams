@@ -55,8 +55,16 @@
     
     resizeInput: function(input) {
       const minWidth = 120;
-      input.style.width = '0px';
-      const newWidth = Math.max(minWidth, input.scrollWidth + 16);
+      var span = document.getElementById('reading-type4-resize-span');
+      if (!span) {
+        span = document.createElement('span');
+        span.id = 'reading-type4-resize-span';
+        span.style.cssText = 'visibility:hidden;position:absolute;white-space:pre;pointer-events:none;';
+        document.body.appendChild(span);
+      }
+      span.style.font = window.getComputedStyle(input).font;
+      span.textContent = input.value || input.placeholder || '';
+      const newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 16);
       input.style.width = newWidth + 'px';
     },
     

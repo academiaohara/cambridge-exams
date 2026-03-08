@@ -113,10 +113,10 @@
     1: { type: 'multiple-choice', inputMode: 'modal', total: 8 },
     2: { type: 'open-cloze', inputMode: 'text', total: 8 },
     3: { type: 'word-formation', inputMode: 'text', total: 8 },
-    4: { type: 'transformations', inputMode: 'text-with-key', total: 6 },
-    5: { type: 'multiple-choice-text', inputMode: 'radio', total: 6 },
-    6: { type: 'cross-text-matching', inputMode: 'modal', total: 4 },
-    7: { type: 'gapped-text', inputMode: 'select', total: 6 },
+    4: { type: 'transformations', inputMode: 'text-with-key', total: 6, maxMarks: 12 },
+    5: { type: 'multiple-choice-text', inputMode: 'radio', total: 6, maxMarks: 12 },
+    6: { type: 'cross-text-matching', inputMode: 'modal', total: 4, maxMarks: 8 },
+    7: { type: 'gapped-text', inputMode: 'select', total: 6, maxMarks: 12 },
     8: { type: 'multiple-matching', inputMode: 'modal', total: 10 },
     
     // Listening

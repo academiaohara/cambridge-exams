@@ -300,7 +300,10 @@
     
     getSectionTotalQuestions: function(section) {
       if (section === 'reading') {
-        return [1, 2, 3, 4, 5, 6, 7, 8].reduce((sum, part) => sum + (CONFIG.PART_TYPES[part]?.total || 0), 0);
+        return [1, 2, 3, 4, 5, 6, 7, 8].reduce((sum, part) => {
+          const cfg = CONFIG.PART_TYPES[part];
+          return sum + (cfg ? (cfg.maxMarks || cfg.total || 0) : 0);
+        }, 0);
       }
       if (section === 'listening') {
         return [1, 2, 3, 4].reduce((sum, part) => sum + (CONFIG.PART_TYPES[`listening${part}`]?.total || 0), 0);

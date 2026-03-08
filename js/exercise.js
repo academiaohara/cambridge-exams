@@ -351,9 +351,16 @@
             case 'open-cloze':
             case 'word-formation':
             case 'sentence-completion':
-            case 'transformations':
               const input = document.querySelector(`input[data-question="${qNum}"]`);
               if (input) input.value = answer;
+              break;
+              
+            case 'transformations':
+              const transformationInput = document.querySelector(`input[data-question="${qNum}"]`);
+              if (transformationInput) {
+                transformationInput.value = answer;
+                if (typeof ReadingType4 !== 'undefined') ReadingType4.resizeInput(transformationInput);
+              }
               break;
               
             case 'multiple-choice-text':
@@ -510,8 +517,20 @@
         var score = 0;
         var answers = savedState.answers || {};
         questions.forEach(function(q) {
-          if (Utils.compareAnswers(answers[q.number], q.correct, partConfig && partConfig.type)) {
-            score++;
+          if (partConfig && partConfig.type === 'transformations') {
+            // Key word transformations: 0, 1, or 2 marks per question
+            var evalScore = 0;
+            if (window.ReadingType4 && typeof ReadingType4.evaluateTransformation === 'function') {
+              evalScore = ReadingType4.evaluateTransformation(answers[q.number], q.correct).score;
+            } else if (Utils.compareAnswers(answers[q.number], q.correct, 'transformations')) {
+              evalScore = 2;
+            }
+            score += evalScore;
+          } else {
+            if (Utils.compareAnswers(answers[q.number], q.correct, partConfig && partConfig.type)) {
+              var marksPerQ = partConfig && partConfig.maxMarks && partConfig.total ? Math.round(partConfig.maxMarks / partConfig.total) : 1;
+              score += marksPerQ;
+            }
           }
         });
         
@@ -618,7 +637,7 @@
           : (partState ? (partState.partScore || 0) : 0);
         var partKey = section === 'reading' ? i : section + i;
         var partConfig = CONFIG.PART_TYPES[partKey];
-        var partTotal = partConfig ? partConfig.total : 0;
+        var partTotal = partConfig ? (partConfig.maxMarks || partConfig.total) : 0;
         
         partsHTML += `
           <div class="section-complete-part-row">
