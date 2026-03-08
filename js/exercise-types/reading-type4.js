@@ -9,9 +9,10 @@
       
       let gapHTML = '';
       if (isChecked) {
-        const result = this.evaluateTransformation(userAnswer, question.correct);
+        const result = this.evaluateTransformation(userAnswer, question.routes);
         const colorClass = result.score === 2 ? 'reading-type4-correct' : result.score === 1 ? 'reading-type4-partial' : 'reading-type4-incorrect';
-        const escapedCorrect = String(question.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const displayCorrect = this._formatRoutesDisplay(question.routes);
+        const escapedCorrect = String(displayCorrect).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         const dataAttr = result.score < 2 ? ` data-correct="✓ ${escapedCorrect}"` : '';
         gapHTML = `<span class="reading-type4-inline-wrap ${colorClass}${result.score < 2 ? ' incorrect' : ''}"${dataAttr}>` +
           `<input type="text" class="reading-type4-inline-input gap-input ${colorClass}" data-question="${qNum}" value="${userAnswer || ''}" disabled>` +
@@ -64,66 +65,78 @@
       }
       span.style.font = window.getComputedStyle(input).font;
       span.textContent = input.value || input.placeholder || '';
-      const newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 16);
+      const newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 28);
       input.style.width = newWidth + 'px';
     },
     
     _buildPartRegex: function(text) {
-      const pattern = text
-        .replace(/\((.*?)\)/g, '(?:$1)?')
-        .replace(/\//g, '|')
-        .replace(/\s+/g, '\\s+');
+      // Single pass: handle all parenthesized optional groups
+      var pattern = text.replace(/(\s*)\(([^)]*)\)/g, function(match, space, inner) {
+        var alternatives = inner.split('/').map(function(s) { return s.trim(); }).join('|');
+        if (space) {
+          // Preceding space + optional group → both become optional together
+          return '(?:\\s+(?:' + alternatives + '))?';
+        }
+        return '(?:' + alternatives + ')?';
+      });
+      // Handle remaining slashes as alternatives
+      pattern = pattern.replace(/\//g, '|');
+      // Replace remaining spaces with flexible whitespace
+      pattern = pattern.replace(/\s+/g, '\\s+');
       return new RegExp(pattern, 'i');
     },
     
-    evaluateTransformation: function(userAnswer, officialString) {
-      if (!userAnswer || !officialString) return { score: 0, parts: [] };
-      
-      // Handle array format (legacy)
-      if (Array.isArray(officialString)) {
-        const normalize = s => s.trim().toLowerCase().replace(/\s+/g, ' ');
-        const normalizedUser = normalize(userAnswer);
-        const matched = officialString.some(ans => normalizedUser.includes(normalize(ans)));
-        return { score: matched ? 2 : 0, parts: [matched] };
-      }
-      
-      if (typeof officialString !== 'string') return { score: 0, parts: [] };
-      
-      const trimmedAnswer = userAnswer.trim();
-      
-      // Single-part (no | separator) - full match only
-      if (!officialString.includes('|')) {
-        const regexTotal = new RegExp(`^${this._buildPartRegex(officialString).source}$`, 'i');
-        const matched = regexTotal.test(trimmedAnswer);
-        return { score: matched ? 2 : 0, parts: [matched] };
-      }
-      
-      // Two-part scoring with | separator
-      const [part1, part2] = officialString.split('|').map(p => p.trim());
-      const regexPart1 = new RegExp(`^${this._buildPartRegex(part1).source}`, 'i');
-      const regexPart2 = new RegExp(`${this._buildPartRegex(part2).source}$`, 'i');
-      const regexTotal = new RegExp(`^${this._buildPartRegex(part1).source}\\s+${this._buildPartRegex(part2).source}$`, 'i');
-      
-      if (regexTotal.test(trimmedAnswer)) {
-        return { score: 2, parts: [true, true] };
-      }
-      
-      let score = 0;
-      const parts = [false, false];
-      if (regexPart1.test(trimmedAnswer)) {
-        score = 1;
-        parts[0] = true;
-      }
-      if (regexPart2.test(trimmedAnswer)) {
-        score = 1;
-        parts[1] = true;
-      }
-      
-      return { score, parts };
+    _formatRoutesDisplay: function(routes) {
+      if (!Array.isArray(routes) || routes.length === 0) return '';
+      var r = routes[0];
+      return ((r.p1 || '') + ' ' + (r.p2 || '')).trim();
     },
     
-    isAnswerCorrect: function(userAnswer, correctAnswer) {
-      const result = this.evaluateTransformation(userAnswer, correctAnswer);
+    evaluateTransformation: function(userAnswer, routes) {
+      if (!userAnswer) return { score: 0, parts: [] };
+      if (!Array.isArray(routes) || routes.length === 0) return { score: 0, parts: [] };
+      
+      var normalizedUser = userAnswer.trim().replace(/\s+/g, ' ');
+      if (!normalizedUser) return { score: 0, parts: [] };
+      
+      var self = this;
+      var bestScore = 0;
+      
+      for (var i = 0; i < routes.length; i++) {
+        var route = routes[i];
+        if (!route.p1 || !route.p2) continue;
+        
+        // Build regex for p1 (must match start of user answer)
+        var p1Regex = new RegExp('^' + self._buildPartRegex(route.p1).source, 'i');
+        var p1Match = normalizedUser.match(p1Regex);
+        
+        if (!p1Match) continue;
+        
+        // p1 matched → at least 1 point
+        var score = 1;
+        
+        // Get residue (what's left after p1 match)
+        var residue = normalizedUser.slice(p1Match[0].length).trim();
+        
+        // Build regex for p2 (must match residue exactly)
+        var p2Regex = new RegExp('^' + self._buildPartRegex(route.p2).source + '$', 'i');
+        
+        if (p2Regex.test(residue)) {
+          score = 2;
+        }
+        
+        if (score > bestScore) bestScore = score;
+        if (bestScore === 2) break;
+      }
+      
+      return {
+        score: bestScore,
+        parts: bestScore === 2 ? [true, true] : bestScore === 1 ? [true, false] : [false, false]
+      };
+    },
+    
+    isAnswerCorrect: function(userAnswer, routes) {
+      const result = this.evaluateTransformation(userAnswer, routes);
       return result.score > 0;
     },
     
@@ -133,7 +146,7 @@
       
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
-        const result = this.evaluateTransformation(userAnswer, q.correct);
+        const result = this.evaluateTransformation(userAnswer, q.routes);
         totalScore += result.score;
         
         const input = document.querySelector(`.reading-type4-inline-input[data-question="${q.number}"]`);
@@ -154,7 +167,8 @@
             wrap.classList.add(colorClass);
             if (!isCorrect) {
               wrap.classList.add('incorrect');
-              const escapedCorrect = String(q.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+              const displayCorrect = this._formatRoutesDisplay(q.routes);
+              const escapedCorrect = String(displayCorrect).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
               wrap.setAttribute('data-correct', '✓ ' + escapedCorrect);
             }
           }

@@ -521,7 +521,7 @@
             // Key word transformations: 0, 1, or 2 marks per question
             var evalScore = 0;
             if (window.ReadingType4 && typeof ReadingType4.evaluateTransformation === 'function') {
-              evalScore = ReadingType4.evaluateTransformation(answers[q.number], q.correct).score;
+              evalScore = ReadingType4.evaluateTransformation(answers[q.number], q.routes).score;
             } else if (Utils.compareAnswers(answers[q.number], q.correct, 'transformations')) {
               evalScore = 2;
             }
