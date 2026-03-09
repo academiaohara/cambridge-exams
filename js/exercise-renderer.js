@@ -248,6 +248,7 @@
             </div>
 
             ${this.renderExplanationsSection(exercise)}
+            ${needsToggle ? this.renderExplanationsPanel(exercise, partConfig) : ''}
             
             <div class="exercise-footer">
               ${this.renderExerciseFooter(part, totalParts)}
@@ -264,6 +265,10 @@
       }, 100);
     },
     
+    processEvidenceMarkers: function(text) {
+      return text.replace(/\[(\d+)\]([\s\S]*?)\[\/\1\]/g, '<span class="evidence-marker" data-qnum="$1">$2</span>');
+    },
+
     renderParagraphs: function(paragraphs, exercise, partConfig) {
       let html = '';
       paragraphs.forEach(para => {
@@ -296,6 +301,9 @@
             paraProcessed = paraProcessed.replace(regex, gapHtml);
           }
         });
+        
+        // Process evidence markers [n]...[/n]
+        paraProcessed = this.processEvidenceMarkers(paraProcessed);
         
         // For gapped-text (Part 7), use a div wrapper for gap-only paragraphs to allow block display
         const isGappedTextGap = partConfig.type === 'gapped-text' && gapNumbers.length > 0 &&
@@ -337,13 +345,14 @@
     renderTextsCards: function(exercise, partConfig) {
       const texts = exercise.content.texts;
       const typePrefix = partConfig.type === 'cross-text-matching' ? 'reading-type6' : 'reading-type8';
+      var self = this;
       
       let html = '<div class="' + typePrefix + '-texts">';
       Object.entries(texts).forEach(function(entry) {
         var key = entry[0], text = entry[1];
         html += '<div class="' + typePrefix + '-text-card">';
         html += '<span class="' + typePrefix + '-text-label">' + key + '</span>';
-        html += '<div class="' + typePrefix + '-text-content">' + text + '</div>';
+        html += '<div class="' + typePrefix + '-text-content">' + self.processEvidenceMarkers(text) + '</div>';
         html += '</div>';
       });
       html += '</div>';
@@ -362,12 +371,13 @@
       
       // For gapped-text (Part 7), show paragraph options A-G
       if (partConfig.type === 'gapped-text' && exercise.content.paragraphs) {
+        var self = this;
         html += '<div class="reading-type7-options">';
         html += '<h4><i class="fas fa-list"></i> ' + I18n.t('paragraphOptions') + '</h4>';
         html += '<div class="reading-type7-paragraph-list">';
         Object.entries(exercise.content.paragraphs).forEach(function(entry) {
           const key = entry[0], text = entry[1];
-          html += '<div class="reading-type7-paragraph-row"><span class="reading-type7-paragraph-label">' + key + '</span><div class="reading-type7-paragraph-item">' + text + '</div></div>';
+          html += '<div class="reading-type7-paragraph-row"><span class="reading-type7-paragraph-label">' + key + '</span><div class="reading-type7-paragraph-item">' + self.processEvidenceMarkers(text) + '</div></div>';
         });
         html += '</div></div>';
         return html;
@@ -759,6 +769,43 @@
       
       explanations += `</div>`;
       return explanations;
+    },
+
+    renderExplanationsPanel: function(exercise, partConfig) {
+      var questions = exercise.content.questions || [];
+      if (questions.length === 0) return '';
+
+      var html = '<div class="explanations-panel" id="explanations-panel" style="display:none" lang="en">';
+      html += '<h3><i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">' + (I18n.t('showExplanations') || 'Explanations') + '</span></h3>';
+
+      questions.forEach(function(q) {
+        html += '<div class="explanation-card" data-qnum="' + q.number + '" onclick="ExerciseHandlers.selectExplanationQuestion(' + q.number + ')">';
+        html += '<div class="explanation-card-header">';
+        html += '<span class="explanation-card-number">' + q.number + '</span>';
+        if (q.question) {
+          html += '<span class="explanation-card-question">' + q.question + '</span>';
+        }
+        html += '</div>';
+
+        // Show options with correct answer highlighted
+        if (q.options && q.options.length > 0) {
+          html += '<div class="explanation-card-options">';
+          q.options.forEach(function(opt) {
+            var letter = opt.charAt(0);
+            var isCorrect = letter === q.correct;
+            html += '<span class="explanation-card-option' + (isCorrect ? ' correct-option' : '') + '">' + opt + '</span>';
+          });
+          html += '</div>';
+        }
+
+        if (q.explanation) {
+          html += '<div class="explanation-card-text">' + q.explanation + '</div>';
+        }
+        html += '</div>';
+      });
+
+      html += '</div>';
+      return html;
     },
     
     renderExerciseFooter: function(part, totalParts) {

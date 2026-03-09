@@ -769,6 +769,22 @@
     border-left: 3px solid #FF9500;
   }
 
+  .explanations-panel {
+    background: rgba(255, 214, 10, 0.08);
+    border: 0.5px solid rgba(255, 214, 10, 0.4);
+    border-radius: 12px;
+  }
+
+  .explanation-card {
+    border-radius: 10px;
+    border-left: 4px solid #e2e8f0;
+  }
+
+  .explanation-card.explanation-active {
+    border-left-color: #FF9500;
+    background: rgba(255, 149, 0, 0.08);
+  }
+
   /* ============================================
      NO EXAMS STATE — iOS style
      ============================================ */

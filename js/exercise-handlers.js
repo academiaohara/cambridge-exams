@@ -250,6 +250,10 @@
         const navRow = document.getElementById('question-nav-row');
         if (navRow) navRow.classList.add('explanation-mode');
 
+        // Show explanations panel
+        var panel = document.getElementById('explanations-panel');
+        if (panel) panel.style.display = '';
+
         // Remove student highlights (keep their text but remove the highlight spans)
         this._removeStudentHighlights();
 
@@ -278,6 +282,13 @@
 
         document.querySelectorAll('.question-nav-cell.explanation-active').forEach(function(cell) {
           cell.classList.remove('explanation-active');
+        });
+
+        // Hide explanations panel
+        var panel = document.getElementById('explanations-panel');
+        if (panel) panel.style.display = 'none';
+        document.querySelectorAll('.explanation-card.explanation-active').forEach(function(card) {
+          card.classList.remove('explanation-active');
         });
 
         this._clearEvidenceHighlights();
@@ -311,12 +322,23 @@
     },
 
     _updateExplanationActiveQuestion: function(qNum) {
+      // Update nav cells
       document.querySelectorAll('.question-nav-cell.explanation-active').forEach(function(cell) {
         cell.classList.remove('explanation-active');
       });
 
       var cell = document.querySelector('.question-nav-cell[data-qnum="' + qNum + '"]');
       if (cell) cell.classList.add('explanation-active');
+
+      // Update explanation panel cards
+      document.querySelectorAll('.explanation-card.explanation-active').forEach(function(card) {
+        card.classList.remove('explanation-active');
+      });
+      var card = document.querySelector('.explanation-card[data-qnum="' + qNum + '"]');
+      if (card) {
+        card.classList.add('explanation-active');
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
 
       var questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
       var question = questions.find(function(q) { return q.number === qNum; });
@@ -325,88 +347,41 @@
       var qDisplay = document.getElementById('explanation-question-display');
       if (!qDisplay) return;
       qDisplay.style.display = '';
-      qDisplay.innerHTML =
-        '<span class="eq-number">' + qNum + '</span>' +
-        '<span class="eq-text">' + (question.question || '') + '</span>';
+
+      var html = '<span class="eq-number">' + qNum + '</span>';
+      html += '<div class="eq-content">';
+      html += '<span class="eq-text">' + (question.question || '') + '</span>';
+
+      // Show options with correct answer in orange
+      if (question.options && question.options.length > 0) {
+        html += '<div class="eq-options">';
+        question.options.forEach(function(opt) {
+          var letter = opt.charAt(0);
+          var isCorrect = letter === question.correct;
+          html += '<span class="eq-option' + (isCorrect ? ' eq-option-correct' : '') + '">' + opt + '</span>';
+        });
+        html += '</div>';
+      }
+
+      html += '</div>';
+      qDisplay.innerHTML = html;
     },
 
     _applyEvidenceHighlight: function(qNum) {
-      var questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
-      var question = questions.find(function(q) { return q.number === qNum; });
-      if (!question || !question.evidence) return;
-
-      var container = document.getElementById('toggle-text-section');
-      if (!container) return;
-
-      // Evidence may have multiple strings separated by ' | '
-      var parts = question.evidence.split(' | ');
-      var self = this;
-      parts.forEach(function(evidenceText) {
-        evidenceText = evidenceText.trim();
-        if (evidenceText) {
-          self._highlightTextInElement(container, evidenceText, question.explanation || '', qNum);
-        }
+      document.querySelectorAll('.evidence-marker[data-qnum="' + qNum + '"]').forEach(function(span) {
+        span.classList.add('evidence-active');
       });
     },
 
     _applyAllEvidenceHighlights: function() {
-      var questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
-      var container = document.getElementById('toggle-questions-section');
-      if (!container) return;
-
-      var self = this;
-      questions.forEach(function(q) {
-        if (!q.evidence) return;
-        var parts = q.evidence.split(' | ');
-        parts.forEach(function(evidenceText) {
-          evidenceText = evidenceText.trim();
-          if (evidenceText) {
-            self._highlightTextInElement(container, evidenceText, q.explanation || '', q.number);
-          }
-        });
-      });
-    },
-
-    _highlightTextInElement: function(container, searchText, explanation, qNum) {
-      var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
-      var textNodes = [];
-      var node;
-      while ((node = walker.nextNode())) {
-        textNodes.push(node);
-      }
-
-      textNodes.forEach(function(textNode) {
-        var text = textNode.textContent;
-        var idx = text.indexOf(searchText);
-        if (idx === -1) return;
-
-        var before = text.slice(0, idx);
-        var after = text.slice(idx + searchText.length);
-
-        var fragment = document.createDocumentFragment();
-        if (before) fragment.appendChild(document.createTextNode(before));
-
-        var mark = document.createElement('mark');
-        mark.className = 'evidence-highlight';
-        mark.setAttribute('data-explanation', explanation);
-        mark.setAttribute('data-qnum', String(qNum));
-        mark.textContent = searchText;
-        fragment.appendChild(mark);
-
-        if (after) fragment.appendChild(document.createTextNode(after));
-
-        textNode.parentNode.replaceChild(fragment, textNode);
+      document.querySelectorAll('.evidence-marker').forEach(function(span) {
+        span.classList.add('evidence-active');
       });
     },
 
     _clearEvidenceHighlights: function() {
-      document.querySelectorAll('mark.evidence-highlight').forEach(function(mark) {
-        var parent = mark.parentNode;
-        if (parent) {
-          var text = document.createTextNode(mark.textContent);
-          parent.replaceChild(text, mark);
-          parent.normalize();
-        }
+      document.querySelectorAll('.evidence-marker.evidence-active').forEach(function(span) {
+        span.classList.remove('evidence-active');
       });
     },
     
