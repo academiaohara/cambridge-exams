@@ -36,6 +36,8 @@
     examFullMode: false,
     examSectionsOrder: ['reading', 'listening', 'writing', 'speaking'],
     examCurrentSectionIndex: 0,
-    sectionElapsedSeconds: 0
+    sectionElapsedSeconds: 0,
+    explanationMode: false,
+    explanationActiveQuestion: null
   };
 })();

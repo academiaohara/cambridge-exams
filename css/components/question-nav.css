@@ -58,6 +58,25 @@
   opacity: 0.6;
 }
 
+/* ---- Explanation mode styles ---- */
+.question-nav-row.explanation-mode .question-nav-cell {
+  border-color: #f97316;
+  color: #f97316;
+}
+
+.question-nav-row.explanation-mode .question-nav-cell:hover {
+  background: #fff7ed;
+  border-color: #ea580c;
+  color: #ea580c;
+  transform: translateY(-1px);
+}
+
+.question-nav-cell.explanation-active {
+  background: #f97316 !important;
+  border-color: #f97316 !important;
+  color: #fff !important;
+}
+
 /* ---- Bottom question panel overlay ---- */
 #question-nav-overlay {
   position: fixed;

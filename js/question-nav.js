@@ -5,6 +5,14 @@
     currentQNum: null,
 
     openQuestion: function(qNum) {
+      // If in explanation mode, select the question for explanation instead of opening modal
+      if (AppState.explanationMode) {
+        if (typeof ExerciseHandlers !== 'undefined') {
+          ExerciseHandlers.selectExplanationQuestion(qNum);
+        }
+        return;
+      }
+
       if (!AppState.currentExercise) return;
       this.currentQNum = qNum;
 

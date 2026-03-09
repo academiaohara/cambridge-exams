@@ -178,6 +178,8 @@
       AppState.currentExamId = examId;
       AppState.answersChecked = false;
       AppState.currentPartScore = 0;
+      AppState.explanationMode = false;
+      AppState.explanationActiveQuestion = null;
       
       // Restore saved state from localStorage
       const savedState = this.loadPartState(examId, section, part);
@@ -767,6 +769,8 @@
       AppState.examFullMode = false;
       AppState.examCurrentSectionIndex = 0;
       AppState.sectionElapsedSeconds = 0;
+      AppState.explanationMode = false;
+      AppState.explanationActiveQuestion = null;
       
       App.restoreExamStatuses();
       Dashboard.render(returnToExamId);
