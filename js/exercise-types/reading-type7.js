@@ -69,7 +69,7 @@
       let html = `<div class="modal-header"><h3>${I18n.t('question')} ${qNum}</h3><p>${I18n.t('selectOption')}</p></div>`;
       html += '<div class="options-grid">';
       Object.keys(paragraphs).forEach(key => {
-        html += `<button class="opt-btn" onclick="ReadingType7.selectFromModal(${qNum}, '${key}')">${key}</button>`;
+        html += `<button class="opt-btn" onclick="ReadingType7.selectFromModal(${qNum}, ${JSON.stringify(key)})">${this._escapeHtml(key)}</button>`;
       });
       html += '</div>';
       body.innerHTML = html;
