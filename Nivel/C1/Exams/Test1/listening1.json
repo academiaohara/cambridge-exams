@@ -8,7 +8,7 @@
     {
       "id": 1,
       "context": "You hear two managers talking about interviewing people for jobs.",
-      "audio_script": "Man: Interviewing can be tricky, can’t it?\nWoman: Yes, it can throw up unexpected issues like even if a candidate is new to the particular role, they need to demonstrate that they’re a self-starter and have got a bit about them. I also think it tells you a lot about how well someone will perform on any job. This doesn’t always come across, of course.\nMan: It helps if a candidate has a proven track record, obviously, but the ability to come up with their own solutions and ideas is what should shine through at interview. I know people keep banging on about the importance of expressing yourself effectively but frankly anyone can learn that.\nWoman: And I don’t want to hire someone who isn’t going to be happy with the job they’re getting. I had one candidate – extremely bright, very motivated, but didn’t ask a single question about the work itself, just about how quickly she could get promotion. She’d obviously done her homework on what sort of company we are and how fast we’re expanding. Interestingly, she did well on the group tasks so that wasn’t the issue.\nMan: Yes, I always look for someone who shows they can get on with colleagues.",
+      "audio_script": "Man: Interviewing can be tricky, can’t it?\nWoman: Yes, it can throw up unexpected issues like even if a candidate is new to the particular role, [1]they need to demonstrate that they’re a self-starter and have got a bit about them.[/1] I also think it tells you a lot about how well someone will perform on any job. This doesn’t always come across, of course.\nMan: It helps if a candidate has a proven track record, obviously, but [1]the ability to come up with their own solutions and ideas is what should shine through at interview.[/1] I know people keep banging on about the importance of expressing yourself effectively but frankly anyone can learn that.\nWoman: And I don’t want to hire someone who isn’t going to be happy with the job they’re getting. I had one candidate – extremely bright, very motivated, but [2]didn’t ask a single question about the work itself, just about how quickly she could get promotion.[/2] She’d obviously done her homework on what sort of company we are and how fast we’re expanding. Interestingly, she did well on the group tasks so that wasn’t the issue.\nMan: Yes, I always look for someone who shows they can get on with colleagues.",
       "questions": [
         {
           "number": 1,
@@ -19,7 +19,7 @@
             "C": "relevant previous experience."
           },
           "answer": "A",
-          "explanation": "The woman says candidates need to be a 'self-starter' and the man agrees, saying the 'ability to come up with their own solutions and ideas is what should shine through.' Both phrases directly point to showing initiative."
+          "explanation": "The woman mentions needing to be a 'self-starter' and the man mentions the 'ability to come up with their own solutions', both of which are synonyms for initiative."
         },
         {
           "number": 2,
@@ -30,14 +30,14 @@
             "C": "revealed her lack of interest in the post she was applying for."
           },
           "answer": "C",
-          "explanation": "The woman mentions the candidate 'didn’t ask a single question about the work itself, just about how quickly she could get promotion,' indicating she wasn't actually interested in the specific role she was being interviewed for."
+          "explanation": "By not asking about the work itself and only about promotion, the candidate showed she wasn't interested in the actual job duties of the post."
         }
       ]
     },
     {
       "id": 2,
       "context": "You hear two friends discussing online learning compared to college-based learning.",
-      "audio_script": "Man: I’m thinking of taking a computer course to improve my IT skills for work, but I can’t decide between going to college or an online course? Any ideas?\nWoman: It sounds like you’re looking for practical knowledge. That’s something a lot of online courses excel at. They’re actually designed to prepare you for work so there’s less focus on theory. Also, I reckon you’ll find online wins on up-to-date content. It doesn’t have to be planned well in advance like college courses do. For something like language courses though, I’d opt for college every time, just for the face-to-face interaction, but good online courses will still have a trainer available by phone if you need help.\nMan: Are there any drawbacks with online learning do you think?\nWoman: If you want a list, just think about the pros of traditional education. Online’s great provided you can stay motivated. You know, it can be tempting to just check one more email, or do a bit of surfing! And students don’t get the same networking opportunities, or the chances to meet other students that they do in college. Plus, a lot of online qualifications aren’t that widely recognised by employers. You just want to brush up your skills, though, so that shouldn’t matter.",
+      "audio_script": "Man: I’m thinking of taking a computer course to improve my IT skills for work, but I can’t decide between going to college or an online course? Any ideas?\nWoman: [3]It sounds like you’re looking for practical knowledge. That’s something a lot of online courses excel at. They’re actually designed to prepare you for work so there’s less focus on theory. Also, I reckon you’ll find online wins on up-to-date content.[/3] It doesn’t have to be planned well in advance like college courses do. For something like language courses though, I’d opt for college every time, just for the face-to-face interaction, but good online courses will still have a trainer available by phone if you need help.\nMan: Are there any drawbacks with online learning do you think?\nWoman: If you want a list, just think about the pros of traditional education. Online’s great provided you can stay motivated. You know, [4]it can be tempting to just check one more email, or do a bit of surfing![/4] And students don’t get the same networking opportunities, or the chances to meet other students that they do in college. Plus, a lot of online qualifications aren’t that widely recognised by employers. You just want to brush up your skills, though, so that shouldn’t matter.",
       "questions": [
         {
           "number": 3,
@@ -48,7 +48,7 @@
             "C": "It would be easier to prepare for."
           },
           "answer": "A",
-          "explanation": "The man wants to improve 'IT skills for work.' The woman explains that online courses 'excel' at 'practical knowledge' and 'up-to-date content,' which specifically aligns with his professional requirements."
+          "explanation": "She explains that online courses are better for 'practical knowledge' and 'up-to-date content', which matches his goal of improving IT skills for work."
         },
         {
           "number": 4,
@@ -59,14 +59,14 @@
             "C": "find his job prospects limited."
           },
           "answer": "A",
-          "explanation": "She warns that 'it can be tempting to just check one more email, or do a bit of surfing,' highlighting the difficulty of maintaining focus when studying independently online."
+          "explanation": "The temptation to 'check email' or 'surf' the web instead of studying refers to a difficulty in maintaining focus."
         }
       ]
     },
     {
       "id": 3,
       "context": "You hear two friends talking about the jetlag they suffer after long aeroplane flights.",
-      "audio_script": "Woman: Hi Jon! You’re just back from your business trip, aren’t you?\nMan: Yeah – and still getting over the jetlag from a 14-hour flight. Colleagues seem shocked at my confusion when they ask me about sales figures, ’cos I usually have no trouble bringing this sort of stuff immediately to mind.\nWoman: I see.\nMan: And as for this month’s reports for the executive board – good job they’ve extended the deadline when they heard what’s been happening to me, as I can’t even get my head around the thought of them! Routine work is less challenging though, I can just plod through the humdrum stuff at my own pace, trying to force my brain back into gear.\nWoman: Well, although hopping into bed for twelve hours’ sleep the minute you get to your destination is what some people feel like doing, it’s actually the worst thing – the body clock just gets confused. The quickest way to feel better is just to have short catnaps. You can also lessen the impact in the first place by keeping yourself hydrated when travelling, and then exposing yourself to lots of sunlight when you arrive.\nMan: Mmm… interesting.",
+      "audio_script": "Woman: Hi Jon! You’re just back from your business trip, aren’t you?\nMan: Yeah – and still getting over the jetlag from a 14-hour flight. Colleagues seem shocked at my confusion when they ask me about sales figures, ’cos I usually have no trouble bringing this sort of stuff immediately to mind.\nWoman: I see.\nMan: And as for this month’s reports for the executive board – [5]good job they’ve extended the deadline when they heard what’s been happening to me[/5], as I can’t even get my head around the thought of them! Routine work is less challenging though, I can just plod through the humdrum stuff at my own pace, trying to force my brain back into gear.\nWoman: Well, although [6]hopping into bed for twelve hours’ sleep... is actually the worst thing[/6] – the body clock just gets confused. [6]The quickest way to feel better is just to have short catnaps. You can also lessen the impact... by keeping yourself hydrated... and then exposing yourself to lots of sunlight[/6] when you arrive.\nMan: Mmm… interesting.",
       "questions": [
         {
           "number": 5,
@@ -77,7 +77,7 @@
             "C": "relieved at the understanding shown by superiors"
           },
           "answer": "C",
-          "explanation": "The man says, 'good job they’ve extended the deadline when they heard what’s been happening to me.' Using 'good job' in this context shows he feels relieved by the flexibility of his bosses."
+          "explanation": "He says 'good job' they extended the deadline, which expresses relief that his bosses were understanding of his situation."
         },
         {
           "number": 6,
@@ -88,7 +88,7 @@
             "C": "praising recent findings"
           },
           "answer": "A",
-          "explanation": "The woman compares methods: she dismisses long sleep as 'the worst thing' and promotes 'short catnaps,' 'hydration,' and 'sunlight.' This is the process of evaluating which remedies are effective."
+          "explanation": "She evaluates different options, calling one 'the worst thing' and suggesting others like catnaps, hydration, and sunlight as better alternatives."
         }
       ]
     }
