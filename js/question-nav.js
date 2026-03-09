@@ -37,6 +37,9 @@
     },
 
     openParagraph: function(key) {
+      // Do nothing in explanation mode for Part 7 - all explanations shown at once
+      if (AppState.explanationMode) return;
+
       const paragraphs = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.paragraphs) || {};
       const paragraphText = paragraphs[key];
       if (!paragraphText) return;
@@ -54,7 +57,7 @@
           '<i class="fas fa-times"></i>' +
         '</button>' +
         '</div>' +
-        '<div class="qnav-body"><p class="qnav-question-text">' + this._escapeHtml(paragraphText) + '</p></div>';
+        '<div class="qnav-body"><p class="qnav-question-text">' + this._escapeHtml(ReadingType7._stripBrackets(paragraphText)) + '</p></div>';
       overlay.style.display = 'flex';
     },
 

@@ -782,25 +782,10 @@
         html += '<div class="explanation-card" data-qnum="' + q.number + '" onclick="ExerciseHandlers.selectExplanationQuestion(' + q.number + ')">';
         html += '<div class="explanation-card-header">';
         html += '<span class="explanation-card-number">' + q.number + '</span>';
-        if (q.question) {
-          html += '<span class="explanation-card-question">' + q.question + '</span>';
+        if (q.explanation) {
+          html += '<span class="explanation-card-text">' + q.explanation + '</span>';
         }
         html += '</div>';
-
-        // Show options with correct answer highlighted
-        if (q.options && q.options.length > 0) {
-          html += '<div class="explanation-card-options">';
-          q.options.forEach(function(opt) {
-            var letter = opt.charAt(0);
-            var isCorrect = letter === q.correct;
-            html += '<span class="explanation-card-option' + (isCorrect ? ' correct-option' : '') + '">' + opt + '</span>';
-          });
-          html += '</div>';
-        }
-
-        if (q.explanation) {
-          html += '<div class="explanation-card-text">' + q.explanation + '</div>';
-        }
         html += '</div>';
       });
 

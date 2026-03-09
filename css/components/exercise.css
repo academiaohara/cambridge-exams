@@ -568,6 +568,34 @@
   border-bottom: 2px solid #f97316;
   border-radius: 3px;
   padding: 0 1px;
+  position: relative;
+  cursor: help;
+}
+
+.evidence-marker.evidence-active[data-explanation]::after {
+  content: attr(data-explanation);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a3a5c;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  white-space: normal;
+  max-width: 300px;
+  min-width: 150px;
+  display: none;
+  z-index: 30;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-weight: 500;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+.evidence-marker.evidence-active[data-explanation]:hover::after {
+  display: block;
 }
 
 /* Options display in explanation-question-display */
@@ -645,7 +673,6 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: 8px;
 }
 
 .explanation-card-number {
@@ -663,44 +690,9 @@
   padding: 0 4px;
 }
 
-.explanation-card-question {
-  font-size: 0.95rem;
-  color: var(--text-dark);
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-.explanation-card-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 8px;
-  padding-left: 38px;
-}
-
-.explanation-card-option {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  background: #f1f5f9;
-  color: var(--text-medium);
-  border: 1px solid #e2e8f0;
-}
-
-.explanation-card-option.correct-option {
-  background: #fff7ed;
-  color: #ea580c;
-  border-color: #f97316;
-  font-weight: 600;
-}
-
 .explanation-card-text {
   font-size: 0.95rem;
   color: var(--text-medium);
   line-height: 1.6;
-  padding-left: 38px;
-  border-top: 1px solid #f1f5f9;
-  padding-top: 8px;
-  margin-top: 4px;
+  flex: 1;
 }

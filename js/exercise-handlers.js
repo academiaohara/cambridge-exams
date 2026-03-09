@@ -247,6 +247,8 @@
     toggleExplanationMode: function() {
       AppState.explanationMode = !AppState.explanationMode;
       const btn = document.getElementById('toggle-explanation-btn');
+      const partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
+      const isPart7 = partConfig && partConfig.type === 'gapped-text';
 
       if (AppState.explanationMode) {
         if (btn) btn.classList.add('explanation-active');
@@ -261,14 +263,20 @@
         // Remove student highlights (keep their text but remove the highlight spans)
         this._removeStudentHighlights();
 
-        const partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
-        const isPart7 = partConfig && partConfig.type === 'gapped-text';
-
         if (isPart7) {
-          // Part 7: switch to questions view, highlight all evidence
-          ExerciseRenderer.toggleView('questions');
+          // Part 7: switch to text view, show all explanations at once
+          ExerciseRenderer.toggleView('text');
+          if (typeof ReadingType7 !== 'undefined') ReadingType7.applyExplanationMode();
+          // Add tooltips after applyExplanationMode creates new evidence-marker spans in gap texts
+          this._addEvidenceTooltips();
           this._applyAllEvidenceHighlights();
+          // Activate all explanation cards at once
+          document.querySelectorAll('.explanation-card').forEach(function(card) {
+            card.classList.add('explanation-active');
+          });
         } else {
+          // Add explanation tooltips to evidence markers
+          this._addEvidenceTooltips();
           // Parts 5, 6, 8: switch to text view, activate first question
           ExerciseRenderer.toggleView('text');
           const questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
@@ -296,6 +304,12 @@
         });
 
         this._clearEvidenceHighlights();
+        this._removeEvidenceTooltips();
+
+        // Reverse Part 7 explanation mode changes
+        if (isPart7 && typeof ReadingType7 !== 'undefined') {
+          ReadingType7.removeExplanationMode();
+        }
 
         const qDisplay = document.getElementById('explanation-question-display');
         if (qDisplay) qDisplay.style.display = 'none';
@@ -306,6 +320,10 @@
 
     selectExplanationQuestion: function(qNum) {
       if (!AppState.explanationMode) return;
+      // Part 7: all explanations shown at once, no individual selection
+      const partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
+      if (partConfig && partConfig.type === 'gapped-text') return;
+
       AppState.explanationActiveQuestion = qNum;
       this._clearEvidenceHighlights();
       this._updateExplanationActiveQuestion(qNum);
@@ -354,19 +372,7 @@
 
       var html = '<span class="eq-number">' + qNum + '</span>';
       html += '<div class="eq-content">';
-      html += '<span class="eq-text">' + (question.question || '') + '</span>';
-
-      // Show options with correct answer in orange
-      if (question.options && question.options.length > 0) {
-        html += '<div class="eq-options">';
-        question.options.forEach(function(opt) {
-          var letter = opt.charAt(0);
-          var isCorrect = letter === question.correct;
-          html += '<span class="eq-option' + (isCorrect ? ' eq-option-correct' : '') + '">' + opt + '</span>';
-        });
-        html += '</div>';
-      }
-
+      html += '<span class="eq-text">' + (question.explanation || '') + '</span>';
       html += '</div>';
       qDisplay.innerHTML = html;
     },
@@ -386,6 +392,23 @@
     _clearEvidenceHighlights: function() {
       document.querySelectorAll('.evidence-marker.evidence-active').forEach(function(span) {
         span.classList.remove('evidence-active');
+      });
+    },
+
+    _addEvidenceTooltips: function() {
+      var questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
+      questions.forEach(function(q) {
+        if (q.explanation) {
+          document.querySelectorAll('.evidence-marker[data-qnum="' + q.number + '"]').forEach(function(span) {
+            span.setAttribute('data-explanation', q.explanation);
+          });
+        }
+      });
+    },
+
+    _removeEvidenceTooltips: function() {
+      document.querySelectorAll('.evidence-marker[data-explanation]').forEach(function(span) {
+        span.removeAttribute('data-explanation');
       });
     },
     

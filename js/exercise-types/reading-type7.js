@@ -34,7 +34,7 @@
         html += `</span>`;
         html += `<span class="reading-type7-answer-block ${isCorrect ? 'correct' : 'incorrect'}" data-qnum-block="${qNum}">`;
         if (userAnswer) {
-          html += `<span class="reading-type7-para-text">${this._escapeHtml(chosenText)}</span>`;
+          html += `<span class="reading-type7-para-text">${this._escapeHtml(this._stripBrackets(chosenText))}</span>`;
         } else {
           html += `<span class="reading-type7-para-empty">—</span>`;
         }
@@ -51,7 +51,7 @@
             <span class="reading-type7-gap-num">${qNum}</span>
             <span class="reading-type7-gap-circle">${userAnswer || '?'}</span>
           </span>
-          ${userAnswer ? `<span class="reading-type7-selected-text">${this._escapeHtml(paraText)}</span>` : ''}
+          ${userAnswer ? `<span class="reading-type7-selected-text">${this._escapeHtml(this._stripBrackets(paraText))}</span>` : ''}
         </span>
       `;
     },
@@ -103,7 +103,7 @@
       if (!isRevealed) {
         const correctText = paragraphs[question.correct] || '';
         block.className = 'reading-type7-answer-block correct';
-        block.innerHTML = `<span class="reading-type7-para-text">${ReadingType7._escapeHtml(correctText)}</span>`;
+        block.innerHTML = `<span class="reading-type7-para-text">${ReadingType7._escapeHtml(ReadingType7._stripBrackets(correctText))}</span>`;
         btn.dataset.revealed = 'true';
         const icon = btn.querySelector('i');
         if (icon) icon.className = 'fas fa-eye-slash';
@@ -111,7 +111,7 @@
         const chosenText = userAnswer ? (paragraphs[userAnswer] || '') : '';
         block.className = 'reading-type7-answer-block incorrect';
         block.innerHTML = userAnswer
-          ? `<span class="reading-type7-para-text">${ReadingType7._escapeHtml(chosenText)}</span>`
+          ? `<span class="reading-type7-para-text">${ReadingType7._escapeHtml(ReadingType7._stripBrackets(chosenText))}</span>`
           : `<span class="reading-type7-para-empty">—</span>`;
         btn.dataset.revealed = 'false';
         const icon = btn.querySelector('i');
@@ -146,7 +146,49 @@
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
     },
+
+    _stripBrackets: function(text) {
+      return String(text || '').replace(/\[\/?(\d+)\]/g, '');
+    },
     
+    applyExplanationMode: function() {
+      var questions = AppState.currentExercise.content.questions || [];
+      var paragraphs = AppState.currentExercise.content.paragraphs || {};
+      var answers = AppState.currentExercise.answers || {};
+
+      questions.forEach(function(q) {
+        var userAnswer = answers[q.number];
+        var isCorrect = userAnswer === q.correct;
+
+        if (isCorrect) {
+          var paraBlock = document.querySelector('.reading-type7-answer-block[data-qnum-block="' + q.number + '"]');
+          if (paraBlock) {
+            var rawText = paragraphs[userAnswer] || '';
+            paraBlock.innerHTML = '<span class="reading-type7-para-text">' + ExerciseRenderer.processEvidenceMarkers(rawText) + '</span>';
+          }
+        }
+      });
+    },
+
+    removeExplanationMode: function() {
+      var questions = AppState.currentExercise.content.questions || [];
+      var paragraphs = AppState.currentExercise.content.paragraphs || {};
+      var answers = AppState.currentExercise.answers || {};
+
+      questions.forEach(function(q) {
+        var userAnswer = answers[q.number];
+        var isCorrect = userAnswer === q.correct;
+
+        if (isCorrect) {
+          var paraBlock = document.querySelector('.reading-type7-answer-block[data-qnum-block="' + q.number + '"]');
+          if (paraBlock) {
+            var rawText = paragraphs[userAnswer] || '';
+            paraBlock.innerHTML = '<span class="reading-type7-para-text">' + ReadingType7._escapeHtml(ReadingType7._stripBrackets(rawText)) + '</span>';
+          }
+        }
+      });
+    },
+
     checkAnswers: function() {
       const questions = AppState.currentExercise.content.questions;
       let correct = 0;
