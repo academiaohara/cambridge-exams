@@ -263,19 +263,20 @@
         // Remove student highlights (keep their text but remove the highlight spans)
         this._removeStudentHighlights();
 
-        // Add explanation tooltips to evidence markers
-        this._addEvidenceTooltips();
-
         if (isPart7) {
           // Part 7: switch to text view, show all explanations at once
           ExerciseRenderer.toggleView('text');
           if (typeof ReadingType7 !== 'undefined') ReadingType7.applyExplanationMode();
+          // Add tooltips after applyExplanationMode creates new evidence-marker spans in gap texts
+          this._addEvidenceTooltips();
           this._applyAllEvidenceHighlights();
           // Activate all explanation cards at once
           document.querySelectorAll('.explanation-card').forEach(function(card) {
             card.classList.add('explanation-active');
           });
         } else {
+          // Add explanation tooltips to evidence markers
+          this._addEvidenceTooltips();
           // Parts 5, 6, 8: switch to text view, activate first question
           ExerciseRenderer.toggleView('text');
           const questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];

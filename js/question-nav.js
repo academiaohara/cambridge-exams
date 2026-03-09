@@ -57,7 +57,7 @@
           '<i class="fas fa-times"></i>' +
         '</button>' +
         '</div>' +
-        '<div class="qnav-body"><p class="qnav-question-text">' + this._escapeHtml(paragraphText.replace(/\[\/?(\d+)\]/g, '')) + '</p></div>';
+        '<div class="qnav-body"><p class="qnav-question-text">' + this._escapeHtml(ReadingType7._stripBrackets(paragraphText)) + '</p></div>';
       overlay.style.display = 'flex';
     },
 
