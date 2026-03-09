@@ -84,6 +84,12 @@
       if (autoSwitchTypes.includes(partConfig.type) && typeof ExerciseRenderer !== 'undefined') {
         ExerciseRenderer.toggleView('questions');
       }
+
+      // For reading parts 5–8: reveal the explanations button after checking
+      if (AppState.currentSection === 'reading' && AppState.currentPart >= 5) {
+        const explBtn = document.querySelector('.btn-explanations');
+        if (explBtn) explBtn.style.display = '';
+      }
     },
     
     updatePartNavigation: function() {

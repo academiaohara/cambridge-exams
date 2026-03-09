@@ -752,6 +752,7 @@
     
     renderExerciseFooter: function(part, totalParts) {
       var isExamMode = AppState.currentMode === 'exam';
+      var isReading = AppState.currentSection === 'reading';
       let footer = '';
       
       if (!isExamMode) {
@@ -759,9 +760,26 @@
           <button class="btn-check" onclick="ExerciseHandlers.checkAnswers()" ${AppState.answersChecked ? 'disabled' : ''}>
             <span data-i18n="checkAnswers">${I18n.t('checkAnswers')}</span>
           </button>
+        `;
+
+        // Part 4 of reading: never show explanations button (broken)
+        // Parts 5–8 of reading: show only after answers have been checked
+        // All other parts: always show in practice mode
+        if (!isReading || (part >= 1 && part <= 3)) {
+          footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()">
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
           </button>
+          `;
+        } else if (isReading && part >= 5) {
+          footer += `
+          <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
+            <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
+          </button>
+          `;
+        }
+
+        footer += `
           <button class="btn-reset" onclick="ExerciseHandlers.resetExercise()">
             <i class="fas fa-redo-alt"></i> <span data-i18n="reset">${I18n.t('reset')}</span>
           </button>
