@@ -274,7 +274,7 @@
       this.clearAllCorrections();
       
       // Re-render exercise for types that use new gap design
-      const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'multiple-matching'];
+      const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'gapped-text', 'multiple-matching'];
       if (reRenderTypes.includes(partConfig.type)) {
         ExerciseRenderer.render(
           AppState.currentExercise,

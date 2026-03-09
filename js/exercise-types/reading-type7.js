@@ -66,10 +66,19 @@
       const body = document.getElementById('modal-body');
       if (!overlay || !body) return;
       
-      let html = `<div class="modal-header"><h3>${I18n.t('question')} ${qNum}</h3><p>${I18n.t('selectOption')}</p></div>`;
-      html += '<div class="options-grid">';
+      // Collect letters already used by other questions
+      const usedLetters = new Set();
+      const answers = AppState.currentExercise.answers || {};
+      Object.entries(answers).forEach(function(entry) {
+        const n = parseInt(entry[0], 10);
+        if (n !== qNum && entry[1]) usedLetters.add(entry[1]);
+      });
+      
+      let html = '<div class="modal-header"><div class="modal-header-row"><span class="modal-q-circle">' + parseInt(qNum, 10) + '</span></div></div>';
+      html += '<div class="options-grid-type7">';
       Object.keys(paragraphs).forEach(key => {
-        html += `<button class="opt-btn" onclick="ReadingType7.selectFromModal(${qNum}, ${JSON.stringify(key)})">${this._escapeHtml(key)}</button>`;
+        const usedClass = usedLetters.has(key) ? ' opt-btn-used' : '';
+        html += `<button class="opt-btn opt-btn-letter${usedClass}" onclick="ReadingType7.selectFromModal(${qNum}, '${key}')">${this._escapeHtml(key)}</button>`;
       });
       html += '</div>';
       body.innerHTML = html;
