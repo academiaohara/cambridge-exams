@@ -256,6 +256,10 @@
         const navRow = document.getElementById('question-nav-row');
         if (navRow) navRow.classList.add('explanation-mode');
 
+        // Apply explanation mode paragraph styling
+        const textContainer = document.getElementById('selectable-text');
+        if (textContainer) textContainer.classList.add('explanation-mode-text');
+
         // Show explanations panel
         var panel = document.getElementById('explanations-panel');
         if (panel) panel.style.display = '';
@@ -291,6 +295,10 @@
 
         const navRow = document.getElementById('question-nav-row');
         if (navRow) navRow.classList.remove('explanation-mode');
+
+        // Remove explanation mode paragraph styling
+        const textContainer = document.getElementById('selectable-text');
+        if (textContainer) textContainer.classList.remove('explanation-mode-text');
 
         document.querySelectorAll('.question-nav-cell.explanation-active').forEach(function(cell) {
           cell.classList.remove('explanation-active');
@@ -359,7 +367,6 @@
       var card = document.querySelector('.explanation-card[data-qnum="' + qNum + '"]');
       if (card) {
         card.classList.add('explanation-active');
-        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
 
       var questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
@@ -370,8 +377,50 @@
       if (!qDisplay) return;
       qDisplay.style.display = '';
 
+      // Determine part type for layout
+      var partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
+      var partType = partConfig ? partConfig.type : '';
+
       var html = '<span class="eq-number">' + qNum + '</span>';
       html += '<div class="eq-content">';
+
+      // Add question text
+      if (question.question) {
+        html += '<span class="eq-question-text">' + question.question + '</span>';
+      }
+
+      // Add options based on part type
+      var options = [];
+      if (partType === 'multiple-choice-text' && question.options) {
+        // Part 5: options like "A) some text"
+        options = question.options;
+      } else if (partType === 'cross-text-matching' && question.options) {
+        // Part 6: options like ["A", "B", "C", "D"]
+        options = question.options;
+      } else if (partType === 'multiple-matching') {
+        // Part 8: options from texts keys
+        var texts = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts || {};
+        options = Object.keys(texts);
+      }
+
+      if (options.length > 0) {
+        var layoutClass = partType === 'multiple-choice-text' ? 'eq-options eq-options-rows' : 'eq-options eq-options-columns';
+        html += '<div class="' + layoutClass + '">';
+        options.forEach(function(opt) {
+          var optText = opt;
+          var optLetter = '';
+          if (partType === 'multiple-choice-text') {
+            optLetter = opt.charAt(0);
+          } else {
+            optLetter = opt;
+          }
+          var isCorrect = optLetter === question.correct;
+          html += '<span class="eq-option' + (isCorrect ? ' eq-option-correct' : '') + '">' + optText + '</span>';
+        });
+        html += '</div>';
+      }
+
+      // Add explanation text
       html += '<span class="eq-text">' + (question.explanation || '') + '</span>';
       html += '</div>';
       qDisplay.innerHTML = html;
