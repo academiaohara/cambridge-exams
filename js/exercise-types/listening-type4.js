@@ -8,7 +8,7 @@
       var exercise = AppState.currentExercise;
       if (!exercise) return;
 
-      var container = document.getElementById('selectable-text');
+      var container = document.getElementById('toggle-questions-section') || document.getElementById('selectable-text');
       if (!container) return;
 
       var task1 = exercise.content.task1;
@@ -51,7 +51,11 @@
       var wrapper = document.createElement('div');
       wrapper.className = 'listening-type4-container';
       wrapper.innerHTML = html;
-      container.insertBefore(wrapper, noteCreator);
+      if (noteCreator) {
+        container.insertBefore(wrapper, noteCreator);
+      } else {
+        container.appendChild(wrapper);
+      }
     },
 
     _renderTask: function(task, taskNum, isChecked) {

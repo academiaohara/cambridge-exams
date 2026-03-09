@@ -85,8 +85,8 @@
         ExerciseRenderer.toggleView('questions');
       }
 
-      // For reading parts 5–8: reveal the explanation toggle button in the toggle-view-header
-      if (AppState.currentSection === 'reading' && AppState.currentPart >= 5) {
+      // For reading parts 5–8 and listening: reveal the explanation toggle button in the toggle-view-header
+      if ((AppState.currentSection === 'reading' && AppState.currentPart >= 5) || AppState.currentSection === 'listening') {
         const explBtn = document.getElementById('toggle-explanation-btn');
         if (explBtn) explBtn.style.display = '';
       }
@@ -249,6 +249,7 @@
       const btn = document.getElementById('toggle-explanation-btn');
       const partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
       const isPart7 = partConfig && partConfig.type === 'gapped-text';
+      const isListening = AppState.currentSection === 'listening';
 
       if (AppState.explanationMode) {
         if (btn) btn.classList.add('explanation-active');
@@ -281,9 +282,9 @@
         } else {
           // Add explanation tooltips to evidence markers
           this._addEvidenceTooltips();
-          // Parts 5, 6, 8: switch to text view, activate first question
+          // Switch to text/transcript view, activate first question
           ExerciseRenderer.toggleView('text');
-          const questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
+          var questions = this._getAllQuestions();
           if (questions.length > 0) {
             AppState.explanationActiveQuestion = questions[0].number;
             this._updateExplanationActiveQuestion(questions[0].number);
@@ -319,6 +320,11 @@
           ReadingType7.removeExplanationMode();
         }
 
+        // For listening: switch back to questions view
+        if (isListening) {
+          ExerciseRenderer.toggleView('questions');
+        }
+
         const qDisplay = document.getElementById('explanation-question-display');
         if (qDisplay) qDisplay.style.display = 'none';
 
@@ -336,6 +342,18 @@
       this._clearEvidenceHighlights();
       this._updateExplanationActiveQuestion(qNum);
       this._applyEvidenceHighlight(qNum);
+    },
+
+    _getAllQuestions: function() {
+      var exercise = AppState.currentExercise;
+      if (!exercise || !exercise.content) return [];
+      if (exercise.content.questions && exercise.content.questions.length > 0) {
+        return exercise.content.questions;
+      }
+      if (exercise.content.task1 && exercise.content.task2) {
+        return (exercise.content.task1.questions || []).concat(exercise.content.task2.questions || []);
+      }
+      return [];
     },
 
     _removeStudentHighlights: function() {
@@ -369,7 +387,7 @@
         card.classList.add('explanation-active');
       }
 
-      var questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
+      var questions = this._getAllQuestions();
       var question = questions.find(function(q) { return q.number === qNum; });
       if (!question) return;
 
@@ -391,25 +409,34 @@
 
       // Add options based on part type
       var options = [];
-      if (partType === 'multiple-choice-text' && question.options) {
-        // Part 5: options like "A) some text"
-        options = question.options;
+      if ((partType === 'multiple-choice-text' || partType === 'multiple-choice') && question.options) {
+        options = Array.isArray(question.options) ? question.options : [];
       } else if (partType === 'cross-text-matching' && question.options) {
-        // Part 6: options like ["A", "B", "C", "D"]
         options = question.options;
       } else if (partType === 'multiple-matching') {
-        // Part 8: options from texts keys
         var texts = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts || {};
         options = Object.keys(texts);
+      } else if (partType === 'dual-matching') {
+        // For dual-matching, find which task this question belongs to
+        var exercise = AppState.currentExercise;
+        var task = null;
+        if (exercise.content.task1 && exercise.content.task1.questions.some(function(q) { return q.number === qNum; })) {
+          task = exercise.content.task1;
+        } else if (exercise.content.task2 && exercise.content.task2.questions.some(function(q) { return q.number === qNum; })) {
+          task = exercise.content.task2;
+        }
+        if (task && task.options) {
+          options = Object.entries(task.options).map(function(entry) { return entry[0] + ') ' + entry[1]; });
+        }
       }
 
       if (options.length > 0) {
-        var layoutClass = partType === 'multiple-choice-text' ? 'eq-options eq-options-rows' : 'eq-options eq-options-columns';
+        var layoutClass = (partType === 'multiple-choice-text' || partType === 'multiple-choice') ? 'eq-options eq-options-rows' : 'eq-options eq-options-columns';
         html += '<div class="' + layoutClass + '">';
         options.forEach(function(opt) {
           var optText = opt;
           var optLetter = '';
-          if (partType === 'multiple-choice-text') {
+          if (partType === 'multiple-choice-text' || partType === 'multiple-choice' || partType === 'dual-matching') {
             optLetter = opt.charAt(0);
           } else {
             optLetter = opt;
@@ -418,6 +445,11 @@
           html += '<span class="eq-option' + (isCorrect ? ' eq-option-correct' : '') + '">' + optText + '</span>';
         });
         html += '</div>';
+      }
+
+      // For sentence-completion, show correct answer
+      if (partType === 'sentence-completion' && question.correct) {
+        html += '<span class="eq-option eq-option-correct" style="display:inline-block;margin-top:4px">' + question.correct + '</span>';
       }
 
       // Add explanation text
@@ -445,7 +477,7 @@
     },
 
     _addEvidenceTooltips: function() {
-      var questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
+      var questions = this._getAllQuestions();
       questions.forEach(function(q) {
         if (q.explanation) {
           document.querySelectorAll('.evidence-marker[data-qnum="' + q.number + '"]').forEach(function(span) {

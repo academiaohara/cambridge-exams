@@ -177,7 +177,9 @@
           var paraBlock = gap.querySelector('.reading-type7-answer-block');
           if (paraBlock) paraBlock.classList.add('rt7-explanation');
         } else {
-          // For incorrect answers: hide reveal button and add fixed orange explanation block
+          // For incorrect answers: hide the incorrect answer block and reveal button, add fixed orange explanation block
+          var incorrectBlock = gap.querySelector('.reading-type7-answer-block.incorrect');
+          if (incorrectBlock) incorrectBlock.style.display = 'none';
           var revealBtn = gap.querySelector('.reading-type7-reveal-btn');
           if (revealBtn) revealBtn.style.display = 'none';
 
@@ -223,6 +225,9 @@
           gap.querySelectorAll('.reading-type7-explanation-block').forEach(function(el) {
             el.remove();
           });
+          // Restore hidden incorrect answer block
+          var incorrectBlock = gap.querySelector('.reading-type7-answer-block.incorrect');
+          if (incorrectBlock) incorrectBlock.style.display = '';
           // Restore reveal button
           var revealBtn = gap.querySelector('.reading-type7-reveal-btn');
           if (revealBtn) revealBtn.style.display = '';

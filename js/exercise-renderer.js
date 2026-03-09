@@ -36,6 +36,10 @@
       const hasTextContent = !!exercise.content.text;
       const needsToggle = isToggleType && (hasTextsContent || hasTextContent);
       
+      // Check if listening toggle is needed (transcript + questions toggle)
+      const isListeningToggle = section === 'listening';
+      const hasTranscript = isListeningToggle && this._hasTranscriptContent(exercise);
+      
       let toggleHTML = '';
       let questionNavRowHTML = '';
       let contentTitleBlockHTML = '';
@@ -93,6 +97,35 @@
             ${questionsSectionHTML}
           </div>
         `;
+      } else if (hasTranscript) {
+        // Listening toggle: Questions (active) | Transcript | Explanation
+        const transcriptHTML = this.renderListeningTranscript(exercise);
+        const isExamMode = AppState.currentMode === 'exam';
+        toggleHTML = `
+          <div class="toggle-view-header">
+            <button class="toggle-view-btn active" id="toggle-questions-btn" onclick="ExerciseRenderer.toggleView('questions')">
+              <i class="fas fa-question-circle"></i> <span data-i18n="showQuestions">${I18n.t('showQuestions')}</span>
+            </button>
+            <button class="toggle-view-btn" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
+              <i class="fas fa-file-audio"></i> <span data-i18n="transcript">${I18n.t('transcript')}</span>
+            </button>
+            ${!isExamMode ? `
+            <button class="toggle-view-btn btn-explanation-mode" id="toggle-explanation-btn"
+                    style="${AppState.answersChecked ? '' : 'display:none'}"
+                    onclick="ExerciseHandlers.toggleExplanationMode()">
+              <i class="fas fa-lightbulb"></i> <span data-i18n="explanation">${I18n.t('explanation') || 'Explanation'}</span>
+            </button>
+            ` : ''}
+          </div>
+        `;
+        questionNavRowHTML = this.renderListeningQuestionNavRow(exercise, partConfig);
+        paragraphsHTML = `
+          <div class="toggle-questions-section" id="toggle-questions-section">
+          </div>
+          <div class="toggle-text-section" id="toggle-text-section" style="display: none;">
+            ${transcriptHTML}
+          </div>
+        `;
       }
       
       let exampleHTML = this.renderExampleBox(exercise.content.example, partConfig);
@@ -107,7 +140,7 @@
       
       // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
       let contentHeaderHTML = '';
-      if (isToggleType) {
+      if (isToggleType || hasTranscript) {
         contentHeaderHTML = `
           <div class="content-section-header">
             ${questionNavRowHTML}
@@ -171,10 +204,6 @@
                 <button class="sidebar-tool-btn" id="tab-tips" onclick="Tools.switchTool('tips')" data-tooltip="${I18n.t('tips')}">
                   <i class="fas fa-lightbulb"></i><span class="tool-label">${I18n.t('tips')}</span>
                 </button>
-                ${section === 'listening' ? `
-                <button class="sidebar-tool-btn" id="tab-transcript" onclick="Tools.switchTool('transcript')" data-tooltip="${I18n.t('transcript')}">
-                  <i class="fas fa-file-audio"></i><span class="tool-label">${I18n.t('transcript')}</span>
-                </button>` : ''}
                 ` : ''}
               </div>
             </div>
@@ -248,7 +277,7 @@
             </div>
 
             ${this.renderExplanationsSection(exercise)}
-            ${needsToggle ? this.renderExplanationsPanel(exercise, partConfig) : ''}
+            ${(needsToggle || hasTranscript) ? this.renderExplanationsPanel(exercise, partConfig) : ''}
             
             <div class="exercise-footer">
               ${this.renderExerciseFooter(part, totalParts)}
@@ -468,6 +497,87 @@
         if (textBtn) textBtn.classList.remove('active');
       }
     },
+
+    _hasTranscriptContent: function(exercise) {
+      if (exercise.content.extracts && exercise.content.extracts.length > 0) {
+        return exercise.content.extracts.some(function(e) { return !!e.audio_script; });
+      }
+      return !!exercise.content.audio_script;
+    },
+
+    renderListeningTranscript: function(exercise) {
+      var html = '<div class="transcript-content listening-transcript-main">';
+      var escapeHtml = function(text) {
+        return String(text || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      };
+      var self = this;
+      var processScript = function(script) {
+        var escaped = escapeHtml(script);
+        var withMarkers = self.processEvidenceMarkers(escaped);
+        return withMarkers.replace(/\n/g, '<br>');
+      };
+
+      if (exercise.content.extracts && exercise.content.extracts.length > 0) {
+        exercise.content.extracts.forEach(function(extract) {
+          if (!extract.audio_script) return;
+          html += '<div class="transcript-extract">';
+          html += '<div class="transcript-extract-header">';
+          html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
+          html += '<span>' + escapeHtml(extract.context) + '</span>';
+          html += '</div>';
+          html += '<div class="transcript-text">' + processScript(extract.audio_script) + '</div>';
+          html += '</div>';
+        });
+      } else if (exercise.content.audio_script) {
+        var parts = exercise.content.audio_script.split('||');
+        parts.forEach(function(part, idx) {
+          if (part.trim() === '') return;
+          html += '<div class="transcript-extract">';
+          html += '<div class="transcript-text">' + processScript(part) + '</div>';
+          html += '</div>';
+        });
+      }
+
+      html += '</div>';
+      return html;
+    },
+
+    renderListeningQuestionNavRow: function(exercise, partConfig) {
+      var questions = exercise.content.questions || [];
+      if (questions.length === 0 && exercise.content.task1 && exercise.content.task2) {
+        questions = (exercise.content.task1.questions || []).concat(exercise.content.task2.questions || []);
+      }
+      if (questions.length === 0) return '';
+
+      var answers = AppState.currentExercise?.answers || {};
+      var isChecked = AppState.answersChecked;
+      var cells = '';
+      questions.forEach(function(q) {
+        var qNum = q.number;
+        var answer = answers[qNum];
+        // For dual-matching, answers use key format 't1_qNum' or 't2_qNum'
+        if (!answer && exercise.content.task1) {
+          answer = answers['t1_' + qNum] || answers['t2_' + qNum];
+        }
+        var cls = 'question-nav-cell';
+        if (isChecked) {
+          if (answer) {
+            var correct = q.correct;
+            cls += answer === correct ? ' correct' : ' incorrect';
+          } else cls += ' unanswered-checked';
+        } else if (answer) {
+          cls += ' answered';
+        }
+        cells += '<button class="' + cls + '" data-qnum="' + qNum + '" onclick="QuestionNav.openQuestion(' + qNum + ')">' + qNum + '</button>';
+      });
+      return '<div class="question-nav-row" id="question-nav-row">' + cells + '</div>';
+    },
+
     
     renderTransformationQuestions: function(exercise, partConfig) {
       let html = '';
@@ -773,6 +883,10 @@
 
     renderExplanationsPanel: function(exercise, partConfig) {
       var questions = exercise.content.questions || [];
+      // Also include questions from dual-matching tasks
+      if (questions.length === 0 && exercise.content.task1 && exercise.content.task2) {
+        questions = (exercise.content.task1.questions || []).concat(exercise.content.task2.questions || []);
+      }
       if (questions.length === 0) return '';
 
       var html = '<div class="explanations-panel" id="explanations-panel" style="display:none" lang="en">';
@@ -808,8 +922,9 @@
 
         // Reading and listening: show explanations only after answers have been checked
         // Reading part 4: never show (broken); reading parts 5-8: explanation button is in toggle-view-header
+        // Listening: explanation button is now in toggle-view-header
         // all other sections: always show in practice mode
-        if ((isReading && part !== 4 && part < 5) || isListening) {
+        if (isReading && part !== 4 && part < 5) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
