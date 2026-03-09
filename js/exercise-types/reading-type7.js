@@ -36,7 +36,7 @@
         if (userAnswer) {
           html += `<span class="reading-type7-para-text">${this._escapeHtml(chosenText)}</span>`;
         } else {
-          html += `<span class="reading-type7-para-empty">${I18n.t('noAnswer') || '—'}</span>`;
+          html += `<span class="reading-type7-para-empty">—</span>`;
         }
         html += `</span></span>`;
         return html;
@@ -103,7 +103,7 @@
         block.className = 'reading-type7-answer-block incorrect';
         block.innerHTML = userAnswer
           ? `<span class="reading-type7-para-text">${ReadingType7._escapeHtml(chosenText)}</span>`
-          : `<span class="reading-type7-para-empty">${I18n.t('noAnswer') || '—'}</span>`;
+          : `<span class="reading-type7-para-empty">—</span>`;
         btn.dataset.revealed = 'false';
         const icon = btn.querySelector('i');
         if (icon) icon.className = 'fas fa-eye';
