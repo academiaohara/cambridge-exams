@@ -20,7 +20,7 @@
         return `
           <span class="reading-type1-gap">
             <span class="reading-type1-gap-number">(${qNum})</span>
-            <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'title="✓ ' + correctText + '"' : ''}>${answerText}</span>
+            <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'data-correct="✓ ' + correctText + '"' : ''}>${answerText}</span>
           </span>
         `;
       }
@@ -126,7 +126,7 @@
             const correctText = !isCorrect ? this.getCorrectText(q) : '';
             gap.innerHTML = `
               <span class="reading-type1-gap-number">(${q.number})</span>
-              <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'title="✓ ' + correctText + '"' : ''}>${answerText}</span>
+              <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'data-correct="✓ ' + correctText + '"' : ''}>${answerText}</span>
             `;
           }
         });
