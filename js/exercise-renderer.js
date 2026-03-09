@@ -105,7 +105,7 @@
             ${toggleHTML}
           </div>
         `;
-      } else if (section !== 'reading' && section !== 'writing' && section !== 'listening') {
+      } else if (section !== 'reading' && section !== 'writing' && section !== 'listening' && section !== 'speaking') {
         const contentTitle = exercise.title || I18n.t('exercise');
         const contentSubtitle = exercise.content?.subtitle || exercise.description || '';
         contentHeaderHTML = `
@@ -753,6 +753,7 @@
     renderExerciseFooter: function(part, totalParts) {
       var isExamMode = AppState.currentMode === 'exam';
       var isReading = AppState.currentSection === 'reading';
+      var isListening = AppState.currentSection === 'listening';
       let footer = '';
       
       if (!isExamMode) {
@@ -762,18 +763,17 @@
           </button>
         `;
 
-        // Part 4 of reading: never show explanations button (broken)
-        // Parts 5–8 of reading: show only after answers have been checked
-        // All other parts: always show in practice mode
-        if (!isReading || (part >= 1 && part <= 3)) {
+        // Reading and listening: show explanations only after answers have been checked
+        // Reading part 4: never show (broken); all other sections: always show in practice mode
+        if ((isReading && part !== 4) || isListening) {
           footer += `
-          <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()">
+          <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
           </button>
           `;
-        } else if (isReading && part >= 5) {
+        } else if (!isReading && !isListening) {
           footer += `
-          <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
+          <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()">
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
           </button>
           `;
