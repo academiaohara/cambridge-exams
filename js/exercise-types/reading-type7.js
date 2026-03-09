@@ -159,32 +159,73 @@
       questions.forEach(function(q) {
         var userAnswer = answers[q.number];
         var isCorrect = userAnswer === q.correct;
+        var gap = document.querySelector('.reading-type7-gap[data-qnum="' + q.number + '"]');
+        if (!gap || gap.dataset.rt7ExplMode === '1') return;
+        gap.dataset.rt7ExplMode = '1';
+
+        // Update gap-circle to show correct answer in orange
+        var circle = gap.querySelector('.reading-type7-gap-circle');
+        if (circle) {
+          circle.dataset.origText = circle.textContent;
+          circle.dataset.origStyle = circle.getAttribute('style') || '';
+          circle.textContent = q.correct;
+          circle.style.color = '#f97316';
+        }
 
         if (isCorrect) {
-          var paraBlock = document.querySelector('.reading-type7-answer-block[data-qnum-block="' + q.number + '"]');
-          if (paraBlock) {
-            var rawText = paragraphs[userAnswer] || '';
-            paraBlock.innerHTML = '<span class="reading-type7-para-text">' + ExerciseRenderer.processEvidenceMarkers(rawText) + '</span>';
-          }
+          // For correct answers: add orange styling to the existing answer block
+          var paraBlock = gap.querySelector('.reading-type7-answer-block');
+          if (paraBlock) paraBlock.classList.add('rt7-explanation');
+        } else {
+          // For incorrect answers: hide reveal button and add fixed orange explanation block
+          var revealBtn = gap.querySelector('.reading-type7-reveal-btn');
+          if (revealBtn) revealBtn.style.display = 'none';
+
+          var correctText = paragraphs[q.correct] || '';
+          var explanationBlock = document.createElement('span');
+          explanationBlock.className = 'reading-type7-answer-block reading-type7-explanation-block';
+          explanationBlock.innerHTML = '<span class="reading-type7-para-text">' + ExerciseRenderer.processEvidenceMarkers(correctText) + '</span>';
+          gap.appendChild(explanationBlock);
         }
       });
     },
 
     removeExplanationMode: function() {
       var questions = AppState.currentExercise.content.questions || [];
-      var paragraphs = AppState.currentExercise.content.paragraphs || {};
       var answers = AppState.currentExercise.answers || {};
 
       questions.forEach(function(q) {
         var userAnswer = answers[q.number];
         var isCorrect = userAnswer === q.correct;
+        var gap = document.querySelector('.reading-type7-gap[data-qnum="' + q.number + '"]');
+        if (!gap || gap.dataset.rt7ExplMode !== '1') return;
+        delete gap.dataset.rt7ExplMode;
+
+        // Restore gap-circle to original content and color
+        var circle = gap.querySelector('.reading-type7-gap-circle');
+        if (circle && Object.prototype.hasOwnProperty.call(circle.dataset, 'origText')) {
+          circle.textContent = circle.dataset.origText;
+          var origStyle = circle.dataset.origStyle;
+          if (origStyle) {
+            circle.setAttribute('style', origStyle);
+          } else {
+            circle.removeAttribute('style');
+          }
+          delete circle.dataset.origText;
+          delete circle.dataset.origStyle;
+        }
 
         if (isCorrect) {
-          var paraBlock = document.querySelector('.reading-type7-answer-block[data-qnum-block="' + q.number + '"]');
-          if (paraBlock) {
-            var rawText = paragraphs[userAnswer] || '';
-            paraBlock.innerHTML = '<span class="reading-type7-para-text">' + ReadingType7._escapeHtml(ReadingType7._stripBrackets(rawText)) + '</span>';
-          }
+          var paraBlock = gap.querySelector('.reading-type7-answer-block');
+          if (paraBlock) paraBlock.classList.remove('rt7-explanation');
+        } else {
+          // Remove added explanation block
+          gap.querySelectorAll('.reading-type7-explanation-block').forEach(function(el) {
+            el.remove();
+          });
+          // Restore reveal button
+          var revealBtn = gap.querySelector('.reading-type7-reveal-btn');
+          if (revealBtn) revealBtn.style.display = '';
         }
       });
     },

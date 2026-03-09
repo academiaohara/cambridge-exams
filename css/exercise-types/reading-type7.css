@@ -207,6 +207,13 @@
   background: #fee2e2;
 }
 
+/* Explanation mode: orange border for correct block, and added correct-answer block for incorrect */
+.reading-type7-answer-block.correct.rt7-explanation,
+.reading-type7-explanation-block {
+  border-color: #f97316;
+  background: #fff7ed;
+}
+
 /* Letter badge shown after checking (legacy, kept for safety) */
 .reading-type7-para-letter-checked {
   display: inline-flex;
