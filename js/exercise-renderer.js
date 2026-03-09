@@ -54,6 +54,8 @@
         
         const secondToggleI18nKey = partConfig.type === 'gapped-text' ? 'paragraphOptions' : 'showQuestions';
         const secondToggleLabel = I18n.t(secondToggleI18nKey);
+        const isReadingPart5to8 = section === 'reading' && part >= 5;
+        const showExplanationBtn = isReadingPart5to8;
         toggleHTML = `
           <div class="toggle-view-header">
             <button class="toggle-view-btn active" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
@@ -62,6 +64,13 @@
             <button class="toggle-view-btn" id="toggle-questions-btn" onclick="ExerciseRenderer.toggleView('questions')">
               <i class="fas fa-question-circle"></i> <span data-i18n="${secondToggleI18nKey}">${secondToggleLabel}</span>
             </button>
+            ${showExplanationBtn ? `
+            <button class="toggle-view-btn btn-explanation-mode" id="toggle-explanation-btn"
+                    style="${AppState.answersChecked ? '' : 'display:none'}"
+                    onclick="ExerciseHandlers.toggleExplanationMode()">
+              <i class="fas fa-lightbulb"></i> <span data-i18n="explanation">${I18n.t('explanation') || 'Explanation'}</span>
+            </button>
+            ` : ''}
           </div>
         `;
         
@@ -229,6 +238,8 @@
             ${exampleHTML}
             
             ${contentHeaderHTML}
+            
+            <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
             
             <div class="exercise-main-layout" lang="en">
               <div class="reading-text-enhanced" id="selectable-text">
@@ -764,8 +775,9 @@
         `;
 
         // Reading and listening: show explanations only after answers have been checked
-        // Reading part 4: never show (broken); all other sections: always show in practice mode
-        if ((isReading && part !== 4) || isListening) {
+        // Reading part 4: never show (broken); reading parts 5-8: explanation button is in toggle-view-header
+        // all other sections: always show in practice mode
+        if ((isReading && part !== 4 && part < 5) || isListening) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>

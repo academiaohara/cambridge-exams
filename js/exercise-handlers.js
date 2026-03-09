@@ -85,9 +85,9 @@
         ExerciseRenderer.toggleView('questions');
       }
 
-      // For reading parts 5–8: reveal the explanations button after checking
+      // For reading parts 5–8: reveal the explanation toggle button in the toggle-view-header
       if (AppState.currentSection === 'reading' && AppState.currentPart >= 5) {
-        const explBtn = document.querySelector('.btn-explanations');
+        const explBtn = document.getElementById('toggle-explanation-btn');
         if (explBtn) explBtn.style.display = '';
       }
     },
@@ -239,6 +239,177 @@
         explanations.style.display = explanations.style.display === 'none' ? 'block' : 'none';
       }
     },
+
+    toggleExplanationMode: function() {
+      AppState.explanationMode = !AppState.explanationMode;
+      const btn = document.getElementById('toggle-explanation-btn');
+
+      if (AppState.explanationMode) {
+        if (btn) btn.classList.add('explanation-active');
+
+        const navRow = document.getElementById('question-nav-row');
+        if (navRow) navRow.classList.add('explanation-mode');
+
+        // Remove student highlights (keep their text but remove the highlight spans)
+        this._removeStudentHighlights();
+
+        const partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
+        const isPart7 = partConfig && partConfig.type === 'gapped-text';
+
+        if (isPart7) {
+          // Part 7: switch to questions view, highlight all evidence
+          ExerciseRenderer.toggleView('questions');
+          this._applyAllEvidenceHighlights();
+        } else {
+          // Parts 5, 6, 8: switch to text view, activate first question
+          ExerciseRenderer.toggleView('text');
+          const questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
+          if (questions.length > 0) {
+            AppState.explanationActiveQuestion = questions[0].number;
+            this._updateExplanationActiveQuestion(questions[0].number);
+            this._applyEvidenceHighlight(questions[0].number);
+          }
+        }
+      } else {
+        if (btn) btn.classList.remove('explanation-active');
+
+        const navRow = document.getElementById('question-nav-row');
+        if (navRow) navRow.classList.remove('explanation-mode');
+
+        document.querySelectorAll('.question-nav-cell.explanation-active').forEach(function(cell) {
+          cell.classList.remove('explanation-active');
+        });
+
+        this._clearEvidenceHighlights();
+
+        const qDisplay = document.getElementById('explanation-question-display');
+        if (qDisplay) qDisplay.style.display = 'none';
+
+        AppState.explanationActiveQuestion = null;
+      }
+    },
+
+    selectExplanationQuestion: function(qNum) {
+      if (!AppState.explanationMode) return;
+      AppState.explanationActiveQuestion = qNum;
+      this._clearEvidenceHighlights();
+      this._updateExplanationActiveQuestion(qNum);
+      this._applyEvidenceHighlight(qNum);
+    },
+
+    _removeStudentHighlights: function() {
+      document.querySelectorAll('.text-highlight').forEach(function(span) {
+        var parent = span.parentNode;
+        if (parent) {
+          var text = document.createTextNode(span.textContent);
+          parent.replaceChild(text, span);
+          parent.normalize();
+        }
+      });
+      AppState.notes = [];
+      AppState.notesIndex = 0;
+    },
+
+    _updateExplanationActiveQuestion: function(qNum) {
+      document.querySelectorAll('.question-nav-cell.explanation-active').forEach(function(cell) {
+        cell.classList.remove('explanation-active');
+      });
+
+      var cell = document.querySelector('.question-nav-cell[data-qnum="' + qNum + '"]');
+      if (cell) cell.classList.add('explanation-active');
+
+      var questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
+      var question = questions.find(function(q) { return q.number === qNum; });
+      if (!question) return;
+
+      var qDisplay = document.getElementById('explanation-question-display');
+      if (!qDisplay) return;
+      qDisplay.style.display = '';
+      qDisplay.innerHTML =
+        '<span class="eq-number">' + qNum + '</span>' +
+        '<span class="eq-text">' + (question.question || '') + '</span>';
+    },
+
+    _applyEvidenceHighlight: function(qNum) {
+      var questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
+      var question = questions.find(function(q) { return q.number === qNum; });
+      if (!question || !question.evidence) return;
+
+      var container = document.getElementById('toggle-text-section');
+      if (!container) return;
+
+      // Evidence may have multiple strings separated by ' | '
+      var parts = question.evidence.split(' | ');
+      var self = this;
+      parts.forEach(function(evidenceText) {
+        evidenceText = evidenceText.trim();
+        if (evidenceText) {
+          self._highlightTextInElement(container, evidenceText, question.explanation || '', qNum);
+        }
+      });
+    },
+
+    _applyAllEvidenceHighlights: function() {
+      var questions = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions || [];
+      var container = document.getElementById('toggle-questions-section');
+      if (!container) return;
+
+      var self = this;
+      questions.forEach(function(q) {
+        if (!q.evidence) return;
+        var parts = q.evidence.split(' | ');
+        parts.forEach(function(evidenceText) {
+          evidenceText = evidenceText.trim();
+          if (evidenceText) {
+            self._highlightTextInElement(container, evidenceText, q.explanation || '', q.number);
+          }
+        });
+      });
+    },
+
+    _highlightTextInElement: function(container, searchText, explanation, qNum) {
+      var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+      var textNodes = [];
+      var node;
+      while ((node = walker.nextNode())) {
+        textNodes.push(node);
+      }
+
+      textNodes.forEach(function(textNode) {
+        var text = textNode.textContent;
+        var idx = text.indexOf(searchText);
+        if (idx === -1) return;
+
+        var before = text.slice(0, idx);
+        var after = text.slice(idx + searchText.length);
+
+        var fragment = document.createDocumentFragment();
+        if (before) fragment.appendChild(document.createTextNode(before));
+
+        var mark = document.createElement('mark');
+        mark.className = 'evidence-highlight';
+        mark.setAttribute('data-explanation', explanation);
+        mark.setAttribute('data-qnum', String(qNum));
+        mark.textContent = searchText;
+        fragment.appendChild(mark);
+
+        if (after) fragment.appendChild(document.createTextNode(after));
+
+        textNode.parentNode.replaceChild(fragment, textNode);
+      });
+    },
+
+    _clearEvidenceHighlights: function() {
+      document.querySelectorAll('mark.evidence-highlight').forEach(function(mark) {
+        var parent = mark.parentNode;
+        if (parent) {
+          var text = document.createTextNode(mark.textContent);
+          parent.replaceChild(text, mark);
+          parent.normalize();
+        }
+      });
+    },
+    
     
     resetExercise: function() {
       // Prevent reset in exam mode
@@ -272,6 +443,8 @@
       if (Timer.timerInterval) clearInterval(Timer.timerInterval);
       AppState.elapsedSeconds = 0;
       AppState.answersChecked = false;
+      AppState.explanationMode = false;
+      AppState.explanationActiveQuestion = null;
       
       // Clear saved state from localStorage
       Exercise.clearPartState(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
