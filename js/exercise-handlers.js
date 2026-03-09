@@ -78,6 +78,12 @@
           QuestionNav.openQuestion(QuestionNav.currentQNum);
         }
       }
+      
+      // For types 5, 6, 8: auto-switch to questions view after correction so user sees results
+      const autoSwitchTypes = ['multiple-choice-text', 'cross-text-matching', 'multiple-matching'];
+      if (autoSwitchTypes.includes(partConfig.type) && typeof ExerciseRenderer !== 'undefined') {
+        ExerciseRenderer.toggleView('questions');
+      }
     },
     
     updatePartNavigation: function() {
