@@ -90,6 +90,10 @@
         const explBtn = document.getElementById('toggle-explanation-btn');
         if (explBtn) explBtn.style.display = '';
       }
+
+      // For parts 1–3 and listening: reveal the footer explanation button
+      const footerExplBtn = document.querySelector('.btn-explanations');
+      if (footerExplBtn) footerExplBtn.style.display = '';
     },
     
     updatePartNavigation: function() {
