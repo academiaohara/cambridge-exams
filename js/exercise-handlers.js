@@ -257,7 +257,7 @@
         if (navRow) navRow.classList.add('explanation-mode');
 
         // Apply explanation mode paragraph styling
-        var textContainer = document.getElementById('selectable-text');
+        const textContainer = document.getElementById('selectable-text');
         if (textContainer) textContainer.classList.add('explanation-mode-text');
 
         // Show explanations panel
@@ -297,7 +297,7 @@
         if (navRow) navRow.classList.remove('explanation-mode');
 
         // Remove explanation mode paragraph styling
-        var textContainer = document.getElementById('selectable-text');
+        const textContainer = document.getElementById('selectable-text');
         if (textContainer) textContainer.classList.remove('explanation-mode-text');
 
         document.querySelectorAll('.question-nav-cell.explanation-active').forEach(function(cell) {
