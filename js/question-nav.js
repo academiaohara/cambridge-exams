@@ -13,6 +13,9 @@
         return;
       }
 
+      // For listening, nav cells are for display only (no modal)
+      if (AppState.currentSection === 'listening') return;
+
       if (!AppState.currentExercise) return;
       this.currentQNum = qNum;
 

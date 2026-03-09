@@ -34,7 +34,7 @@
       if (!exercise) return;
       
       if (!exercise.content.text && exercise.content.questions) {
-        var container = document.getElementById('selectable-text');
+        var container = document.getElementById('toggle-questions-section') || document.getElementById('selectable-text');
         if (!container) return;
         
         var isChecked = AppState.answersChecked;
@@ -99,7 +99,11 @@
         var wrapper = document.createElement('div');
         wrapper.className = 'listening-type2-questions-wrapper';
         wrapper.innerHTML = html;
-        container.insertBefore(wrapper, noteCreator);
+        if (noteCreator) {
+          container.insertBefore(wrapper, noteCreator);
+        } else {
+          container.appendChild(wrapper);
+        }
       }
     },
     
