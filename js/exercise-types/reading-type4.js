@@ -8,6 +8,7 @@
       const afterGap = question.afterGap || '';
       
       let gapHTML = '';
+      let answersPanel = '';
       if (isChecked) {
         const result = this.evaluateTransformation(userAnswer, question.routes);
         const colorClass = result.score === 2 ? 'reading-type4-correct' : result.score === 1 ? 'reading-type4-partial' : 'reading-type4-incorrect';
@@ -17,6 +18,7 @@
         gapHTML = `<span class="reading-type4-inline-wrap ${colorClass}${result.score < 2 ? ' incorrect' : ''}"${dataAttr}>` +
           `<input type="text" class="reading-type4-inline-input gap-input ${colorClass}" data-question="${qNum}" value="${userAnswer || ''}" disabled>` +
           `</span>`;
+        answersPanel = this._renderAnswersPanel(question, qNum, beforeGap, afterGap);
       } else {
         gapHTML = `<span class="reading-type4-inline-wrap${userAnswer ? ' reading-type4-purple' : ''}">` +
           `<input type="text" class="reading-type4-inline-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" maxlength="100" placeholder="..." oninput="ReadingType4.handleInput(${qNum}, this.value); ReadingType4.resizeInput(this)">` +
@@ -34,8 +36,45 @@
           <div class="reading-type4-second">
             ${beforeGap} ${gapHTML} ${afterGap}
           </div>
+          ${answersPanel}
         </div>
       `;
+    },
+
+    _renderAnswersPanel: function(question, qNum, beforeGap, afterGap) {
+      const routes = question.routes || [];
+      if (routes.length === 0) return '';
+      let routesHTML = '';
+      routes.forEach(function(route, idx) {
+        const full = [route.p1, route.p2].filter(Boolean).join(' ');
+        routesHTML += `<div class="reading-type4-answer-route">` +
+          `<span class="reading-type4-answer-route-num">${idx + 1}.</span>` +
+          `<span class="reading-type4-answer-route-text">${beforeGap} <strong>${full}</strong> ${afterGap}</span>` +
+          `</div>`;
+      });
+      return `<div class="reading-type4-answers-panel" data-qnum-answers="${qNum}" style="display:none;">${routesHTML}</div>`;
+    },
+
+    _renderShowAllBtn: function() {
+      const showLabel = window.I18n ? I18n.t('showAllAnswers') : 'See all the right possible answers';
+      return `<div class="reading-type4-show-all-row">` +
+        `<button class="reading-type4-show-all-btn" onclick="ReadingType4.toggleAllAnswers(this)" data-showing="false">` +
+        `<i class="fas fa-eye"></i> <span>${showLabel}</span>` +
+        `</button></div>`;
+    },
+
+    toggleAllAnswers: function(btn) {
+      const panels = document.querySelectorAll('.reading-type4-answers-panel');
+      const isShowing = btn.dataset.showing === 'true';
+      if (!isShowing) {
+        panels.forEach(function(p) { p.style.display = 'block'; });
+        btn.dataset.showing = 'true';
+        btn.innerHTML = '<i class="fas fa-eye-slash"></i> <span>' + (window.I18n ? I18n.t('hideAllAnswers') : 'Hide all the right possible answers') + '</span>';
+      } else {
+        panels.forEach(function(p) { p.style.display = 'none'; });
+        btn.dataset.showing = 'false';
+        btn.innerHTML = '<i class="fas fa-eye"></i> <span>' + (window.I18n ? I18n.t('showAllAnswers') : 'See all the right possible answers') + '</span>';
+      }
     },
     
     handleInput: function(qNum, value) {
@@ -153,6 +192,7 @@
         const input = document.querySelector(`.reading-type4-inline-input[data-question="${q.number}"]`);
         if (input) {
           const wrap = input.closest('.reading-type4-inline-wrap');
+          const questionDiv = input.closest('.reading-type4-question');
           const isCorrect = result.score >= 2;
           const isPartial = result.score === 1;
           const colorClass = isCorrect ? 'reading-type4-correct' : isPartial ? 'reading-type4-partial' : 'reading-type4-incorrect';
@@ -173,8 +213,19 @@
               wrap.setAttribute('data-correct', '✓ ' + escapedCorrect);
             }
           }
+          // Inject answers panel into the question card
+          if (questionDiv && !questionDiv.querySelector('.reading-type4-answers-panel')) {
+            questionDiv.insertAdjacentHTML('beforeend',
+              this._renderAnswersPanel(q, q.number, q.beforeGap || '', q.afterGap || ''));
+          }
         }
       });
+
+      // Inject "Show all possible answers" button above the first question
+      const container = document.getElementById('selectable-text');
+      if (container && !container.querySelector('.reading-type4-show-all-row')) {
+        container.insertAdjacentHTML('afterbegin', this._renderShowAllBtn());
+      }
       
       return totalScore;
     }
