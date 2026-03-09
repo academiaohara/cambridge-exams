@@ -24,7 +24,7 @@
   margin: 8px 0;
 }
 
-/* Inline row: number + select side by side */
+/* Inline row: number + select side by side (legacy, kept for safety) */
 .reading-type7-gap-inline-row {
   display: inline-flex;
   align-items: center;
@@ -38,7 +38,138 @@
   white-space: nowrap;
 }
 
-/* Text of selected paragraph shown below the inline row */
+/* ===== New pill design (pre-correction) ===== */
+.reading-type7-gap-pill {
+  display: inline-flex;
+  align-items: center;
+  background: #1a3a5c;
+  border-radius: 20px;
+  padding: 4px 4px 4px 12px;
+  cursor: pointer;
+  gap: 8px;
+  transition: background 0.2s, transform 0.15s;
+  vertical-align: middle;
+  margin: 4px 0;
+  user-select: none;
+}
+
+.reading-type7-gap-pill:hover:not(.correct):not(.incorrect) {
+  background: #122a47;
+  transform: translateY(-1px);
+}
+
+.reading-type7-gap-num {
+  color: white;
+  font-weight: 800;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.reading-type7-gap-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+  color: #1a3a5c;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.reading-type7-gap-pill.has-value .reading-type7-gap-circle {
+  color: #7c3aed;
+}
+
+/* Post-correction pill states */
+.reading-type7-gap-pill.correct {
+  background: #065f46;
+  cursor: default;
+}
+
+.reading-type7-gap-pill.correct .reading-type7-gap-circle {
+  color: #065f46;
+}
+
+.reading-type7-gap-pill.incorrect {
+  background: #1a3a5c;
+  cursor: default;
+}
+
+.reading-type7-gap-pill.incorrect .reading-type7-gap-circle {
+  color: #ef4444;
+}
+
+/* ===== Check row (post-correction inline row) ===== */
+.reading-type7-gap-check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+/* Hover tooltip on check row when incorrect */
+.reading-type7-gap-check-row[data-correct]::after {
+  content: attr(data-correct);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  background: #1a3a5c;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  display: none;
+  z-index: 20;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.reading-type7-gap-check-row[data-correct]:hover::after {
+  display: block;
+}
+
+/* ===== Reveal button (eye + green circle) ===== */
+.reading-type7-reveal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 3px 6px;
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin-left: auto;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.reading-type7-reveal-btn:hover {
+  color: #1a3a5c;
+}
+
+.reading-type7-correct-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #10b981;
+  color: white;
+  font-weight: 700;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+/* Text of selected paragraph shown below the pill */
 .reading-type7-selected-text {
   display: block;
   margin-top: 6px;
@@ -76,7 +207,7 @@
   background: #fee2e2;
 }
 
-/* Letter badge shown after checking (next to question number in inline row) */
+/* Letter badge shown after checking (legacy, kept for safety) */
 .reading-type7-para-letter-checked {
   display: inline-flex;
   align-items: center;
