@@ -43,7 +43,7 @@
 /* ── Row 1: Top row (Arena · Practice · Streak) ── */
 .bento-top-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
 }
 
@@ -749,7 +749,7 @@
 
 @media (min-width: 480px) and (max-width: 768px) {
   .bento-top-row {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .bento-learning-row {

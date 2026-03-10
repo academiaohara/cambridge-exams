@@ -11,7 +11,7 @@
 
       var html = '<div class="bento-grid">';
 
-      // Row 1: Arena · Practice · Day Streak
+      // Row 1: Arena · Practice
       html += this._renderTopRow(exams);
 
       // Row 2: Lessons · Micro-Learning
@@ -20,10 +20,7 @@
       // Row 3: Recommended Exercise
       html += this._renderRecommendedExercise(exams);
 
-      // Row 4: Grade Tracker
-      html += this._renderGradeTracker(exams);
-
-      // Row 5 (optional): Next in-progress lesson
+      // Row 4 (optional): Next in-progress lesson
       if (nextLesson) {
         html += this._renderNextLesson(nextLesson);
       }
@@ -50,19 +47,6 @@
         '</div>';
       }
 
-      // Streak data
-      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
-      var streakCount = streak ? (streak.currentStreak || 0) : 0;
-      var streakBest = streak ? (streak.longestStreak || 0) : 0;
-      var practicedToday = streak ? streak.practicedToday : false;
-      var atRisk = (typeof StreakManager !== 'undefined') ? StreakManager.isAtRisk() : false;
-
-      var streakStatusHtml = practicedToday
-        ? '<span class="bento-streak-status bento-streak-safe">✅ Safe</span>'
-        : (atRisk
-          ? '<span class="bento-streak-status bento-streak-risk">⚠️ At risk!</span>'
-          : '<span class="bento-streak-status">Practice today</span>');
-
       return '<div class="bento-top-row">' +
 
         '<div class="bento-card bento-mode-arena ' + (currentMode === 'exam' ? 'bento-mode-active' : '') + '" ' +
@@ -80,15 +64,6 @@
           '<div class="bento-mode-title">Practice</div>' +
           '<div class="bento-mode-desc">No limits. Safe space.</div>' +
           '<div class="bento-mode-tests">' + availableCount + ' tests</div>' +
-        '</div>' +
-
-        '<div class="bento-card bento-streak-card" data-streak-widget="1" ' +
-          'onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
-          '<div class="bento-streak-fire">🔥</div>' +
-          '<div class="bento-streak-number">' + streakCount + '</div>' +
-          '<div class="bento-streak-label">day streak</div>' +
-          streakStatusHtml +
-          '<div class="bento-streak-best">Best: ' + streakBest + ' days</div>' +
         '</div>' +
 
       '</div>';
@@ -441,11 +416,18 @@
           '<div style="color:#64748b;font-size:0.85rem;">Complete exercises to see your performance here!</div>' +
         '</div>';
       }
-      var levelData = AppState.currentLevel || 'C1';
-      var scaleBounds = { A2: [82, 140], B1: [102, 160], B2: [122, 180], C1: [142, 200], C2: [162, 220] };
-      var bounds = scaleBounds[levelData] || [142, 200];
-      var scaleMin = bounds[0];
-      var scaleMax = bounds[1];
+
+      // CEFR level from scale score
+      function getCefrFromScale(scale) {
+        if (scale >= 200) return 'C2';
+        if (scale >= 180) return 'C1';
+        if (scale >= 160) return 'B2';
+        if (scale >= 140) return 'B1';
+        if (scale >= 120) return 'A2';
+        if (scale >= 100) return 'A1';
+        return '—';
+      }
+
       var skillColors = {
         'Reading': '#3b82f6',
         'Use of English': '#8b5cf6',
@@ -453,27 +435,62 @@
         'Listening': '#f59e0b',
         'Speaking': '#ef4444'
       };
-      var barsHtml = '';
-      skillNames.forEach(function(skill) {
+
+      var slidesHtml = '';
+      skillNames.forEach(function(skill, idx) {
         var d = skillTotals[skill];
-        var avgScale = d.count > 0 ? Math.round(d.scale / d.count) : scaleMin;
-        var pct = Math.round(((avgScale - scaleMin) / (scaleMax - scaleMin)) * 100);
-        pct = Math.max(2, Math.min(100, pct));
+        var avgRaw = d.count > 0 ? Math.round(d.raw / d.count) : 0;
+        var avgScale = d.count > 0 ? Math.round(d.scale / d.count) : 0;
+        var cefr = getCefrFromScale(avgScale);
         var color = skillColors[skill] || '#3b82f6';
-        barsHtml +=
-          '<div class="bento-grade-bar-row">' +
-            '<div class="bento-grade-skill" style="font-size:0.78rem;">' + skill + '</div>' +
-            '<div class="bento-grade-track">' +
-              '<div class="bento-grade-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
-            '</div>' +
-            '<div class="bento-grade-score" style="font-size:0.78rem;">' + avgScale + '</div>' +
+        slidesHtml +=
+          '<div class="grade-carousel-slide" data-slide="' + idx + '" style="display:' + (idx === 0 ? 'flex' : 'none') + '">' +
+            '<div class="grade-carousel-cefr" style="color:' + color + '">' + cefr + '</div>' +
+            '<div class="grade-carousel-raw" style="color:' + color + '">' + avgRaw + '</div>' +
+            '<div class="grade-carousel-skill">' + skill + '</div>' +
           '</div>';
       });
-      return '<div class="sidebar-widget">' +
+
+      return '<div class="sidebar-widget grade-tracker-carousel-widget" data-total-slides="' + skillNames.length + '">' +
         '<div class="sidebar-widget-title">📊 Grade Tracker</div>' +
-        '<div style="color:#64748b;font-size:0.75rem;margin-bottom:10px;">Avg. across ' + examCount + ' exam' + (examCount !== 1 ? 's' : '') + ' · Scale ' + scaleMin + '–' + scaleMax + '</div>' +
-        '<div class="bento-grade-bars">' + barsHtml + '</div>' +
+        '<div class="grade-carousel-viewport">' + slidesHtml + '</div>' +
+        '<div class="grade-carousel-dots" data-total="' + skillNames.length + '"></div>' +
       '</div>';
+    },
+
+    _startGradeCarousel: function() {
+      var widget = document.querySelector('.grade-tracker-carousel-widget');
+      if (!widget) return;
+      var total = parseInt(widget.getAttribute('data-total-slides'), 10);
+      if (!total || total <= 1) return;
+
+      // Build dots
+      var dotsContainer = widget.querySelector('.grade-carousel-dots');
+      if (dotsContainer && dotsContainer.children.length === 0) {
+        for (var i = 0; i < total; i++) {
+          var dot = document.createElement('span');
+          dot.className = 'grade-carousel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('data-idx', i);
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      var currentSlide = 0;
+      if (window._gradeCarouselTimer) clearInterval(window._gradeCarouselTimer);
+
+      window._gradeCarouselTimer = setInterval(function() {
+        var slides = widget.querySelectorAll('.grade-carousel-slide');
+        var dots = widget.querySelectorAll('.grade-carousel-dot');
+        if (!slides.length) return;
+
+        slides[currentSlide].style.display = 'none';
+        if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+
+        currentSlide = (currentSlide + 1) % total;
+
+        slides[currentSlide].style.display = 'flex';
+        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+      }, 3000);
     },
 
     _buildNextLessonSidebarHtml: function(lesson) {

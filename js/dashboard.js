@@ -33,7 +33,7 @@
       var leftSidebarContent = '';
       var rightSidebarContent = '';
       if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent = BentoGrid._buildStreakSidebarHtml() + BentoGrid._buildMicroLearningSidebarHtml();
+        leftSidebarContent = BentoGrid._buildStreakSidebarHtml();
         var nextLesson = BentoGrid._findNextLesson(exams);
         rightSidebarContent = BentoGrid._buildGradeTrackerSidebarHtml(exams);
         if (nextLesson) {
@@ -56,6 +56,7 @@
       if (typeof BentoGrid !== 'undefined') {
         const bentoContainer = document.getElementById('bento-grid-container');
         if (bentoContainer) BentoGrid.render(bentoContainer);
+        BentoGrid._startGradeCarousel();
       }
     },
 
@@ -105,6 +106,9 @@
       '</div>';
 
       content.innerHTML = html;
+      if (typeof BentoGrid !== 'undefined') {
+        BentoGrid._startGradeCarousel();
+      }
     },
     
     renderComingSoonExam: function(exam) {

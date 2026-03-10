@@ -1051,6 +1051,67 @@
   margin-bottom: 14px;
 }
 
+/* ── Grade Tracker Carousel ── */
+.grade-carousel-viewport {
+  position: relative;
+  min-height: 100px;
+}
+
+.grade-carousel-slide {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 0;
+  animation: gradeCarouselFadeIn 0.4s ease;
+}
+
+.grade-carousel-cefr {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+.grade-carousel-raw {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.grade-carousel-skill {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.grade-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.grade-carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d1d5db;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.grade-carousel-dot.active {
+  background: #7c3aed;
+  transform: scale(1.3);
+}
+
+@keyframes gradeCarouselFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Level subpage header */
 .subpage-header {
   display: flex;
