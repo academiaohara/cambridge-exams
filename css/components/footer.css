@@ -1,7 +1,7 @@
 /* css/components/footer.css */
 .main-footer {
-  background: rgba(49, 27, 146, 0.06);
-  border-top: 1px solid rgba(124, 58, 237, 0.1);
+  background: rgba(45, 46, 95, 0.04);
+  border-top: 1px solid rgba(45, 46, 95, 0.06);
   padding: 48px 24px 24px;
   color: var(--text-dark);
   margin-top: auto;
@@ -46,14 +46,14 @@
 }
 
 .footer-col ul li a:hover {
-  color: #7c3aed;
+  color: #1E9D8E;
   transform: translateX(5px);
 }
 
 .footer-bottom {
   text-align: center;
   padding-top: 24px;
-  border-top: 1px solid rgba(124, 58, 237, 0.1);
+  border-top: 1px solid rgba(45, 46, 95, 0.06);
 }
 
 /* AÑADIR AL FINAL DE footer.css */

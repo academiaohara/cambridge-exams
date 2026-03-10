@@ -12,8 +12,8 @@
    ============================================ */
 .mobile-menu-toggle {
   display: none;
-  background: rgba(124, 58, 237, 0.08);
-  border: 1px solid rgba(124, 58, 237, 0.15);
+  background: rgba(45, 46, 95, 0.08);
+  border: 1px solid rgba(45, 46, 95, 0.15);
   color: var(--text-dark);
   width: 44px;
   height: 44px;
@@ -27,7 +27,7 @@
 }
 
 .mobile-menu-toggle:active {
-  background: rgba(124, 58, 237, 0.15);
+  background: rgba(45, 46, 95, 0.15);
 }
 
 /* ============================================
@@ -115,7 +115,7 @@
     flex-direction: column;
     gap: 12px;
     padding-top: 12px;
-    border-top: 1px solid rgba(124, 58, 237, 0.1);
+    border-top: 1px solid rgba(45, 46, 95, 0.1);
     order: 3;
   }
 

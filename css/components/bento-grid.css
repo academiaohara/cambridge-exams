@@ -1,19 +1,19 @@
 /* css/components/bento-grid.css — Premium Bento Grid dashboard */
 
 :root {
-  --oxford-blue: #1e3a8a;
-  --oxford-light: #3b5b9b;
-  --oxford-dark: #0f2b66;
-  --amber: #FCD34D;
-  --amber-dark: #F59E0B;
-  --white-snow: #f8fafc;
+  --oxford-blue: #2D2E5F;
+  --oxford-light: #4a4b7c;
+  --oxford-dark: #1e1f42;
+  --amber: #FFD28E;
+  --amber-dark: #e6b86e;
+  --white-snow: #F4F7FF;
   --accent-red: #ef4444;
   --accent-orange: #f97316;
-  --accent-green: #10b981;
+  --accent-green: #1E9D8E;
   --accent-purple: #8b5cf6;
-  --bento-radius: 24px;
-  --bento-shadow: 0 4px 20px rgba(124, 58, 237, 0.08);
-  --bento-hover-shadow: 0 8px 30px rgba(124, 58, 237, 0.14);
+  --bento-radius: 20px;
+  --bento-shadow: 0 2px 10px rgba(45, 46, 95, 0.05);
+  --bento-hover-shadow: 0 4px 18px rgba(45, 46, 95, 0.09);
 }
 
 /* ── Grid wrapper ── */
@@ -27,11 +27,11 @@
 
 /* ── Base card ── */
 .bento-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
   border-radius: var(--bento-radius);
   padding: 20px 24px;
   box-shadow: var(--bento-shadow);
-  border: 1px solid rgba(124, 58, 237, 0.06);
+  border: 1px solid rgba(45, 46, 95, 0.04);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -65,18 +65,18 @@
 }
 
 .bento-mode-arena {
-  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
-  color: #880e4f;
+  background: linear-gradient(135deg, #fff0ee 0%, #FFB8AD 100%);
+  color: #7a3028;
 }
 
 .bento-mode-micro {
-  background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
-  color: #004d40;
+  background: linear-gradient(135deg, #e6f7f5 0%, #b2e8e0 100%);
+  color: #0e5d52;
 }
 
 .bento-mode-practice {
-  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
-  color: #e65100;
+  background: linear-gradient(135deg, #fff8e6 0%, #FFD28E 100%);
+  color: #7a5a1a;
 }
 
 /* Abstract animal decorations on mode cards */
@@ -88,7 +88,7 @@
   width: 90px;
   height: 90px;
   opacity: 0.18;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='35' r='20' fill='%23880e4f'/%3E%3Cpolygon points='30,60 50,40 70,60' fill='%23880e4f'/%3E%3Cpolygon points='35,55 25,80 45,80' fill='%23880e4f'/%3E%3Cpolygon points='65,55 55,80 75,80' fill='%23880e4f'/%3E%3Ccircle cx='44' cy='30' r='3' fill='%23fff'/%3E%3Ccircle cx='56' cy='30' r='3' fill='%23fff'/%3E%3Cpolygon points='40,15 50,5 60,15' fill='%23880e4f'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='35' r='20' fill='%237a3028'/%3E%3Cpolygon points='30,60 50,40 70,60' fill='%237a3028'/%3E%3Cpolygon points='35,55 25,80 45,80' fill='%237a3028'/%3E%3Cpolygon points='65,55 55,80 75,80' fill='%237a3028'/%3E%3Ccircle cx='44' cy='30' r='3' fill='%23fff'/%3E%3Ccircle cx='56' cy='30' r='3' fill='%23fff'/%3E%3Cpolygon points='40,15 50,5 60,15' fill='%237a3028'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
   pointer-events: none;
@@ -102,7 +102,7 @@
   width: 80px;
   height: 80px;
   opacity: 0.16;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='55' rx='28' ry='22' fill='%23e65100'/%3E%3Ccircle cx='50' cy='30' r='16' fill='%23e65100'/%3E%3Cpolygon points='50,18 46,10 54,10' fill='%23e65100'/%3E%3Ccircle cx='44' cy='27' r='2.5' fill='%23fff'/%3E%3Ccircle cx='56' cy='27' r='2.5' fill='%23fff'/%3E%3Cpolygon points='48,33 50,36 52,33' fill='%23fff'/%3E%3Cellipse cx='30' cy='50' rx='16' ry='6' transform='rotate(-30 30 50)' fill='%23e65100'/%3E%3Cellipse cx='70' cy='50' rx='16' ry='6' transform='rotate(30 70 50)' fill='%23e65100'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='55' rx='28' ry='22' fill='%237a5a1a'/%3E%3Ccircle cx='50' cy='30' r='16' fill='%237a5a1a'/%3E%3Cpolygon points='50,18 46,10 54,10' fill='%237a5a1a'/%3E%3Ccircle cx='44' cy='27' r='2.5' fill='%23fff'/%3E%3Ccircle cx='56' cy='27' r='2.5' fill='%23fff'/%3E%3Cpolygon points='48,33 50,36 52,33' fill='%23fff'/%3E%3Cellipse cx='30' cy='50' rx='16' ry='6' transform='rotate(-30 30 50)' fill='%237a5a1a'/%3E%3Cellipse cx='70' cy='50' rx='16' ry='6' transform='rotate(30 70 50)' fill='%237a5a1a'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
   pointer-events: none;
@@ -116,7 +116,7 @@
   width: 85px;
   height: 85px;
   opacity: 0.16;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='22' fill='%23004d40'/%3E%3Cellipse cx='50' cy='75' rx='18' ry='12' fill='%23004d40'/%3E%3Ccircle cx='42' cy='36' r='3' fill='%23fff'/%3E%3Ccircle cx='58' cy='36' r='3' fill='%23fff'/%3E%3Cpath d='M44 46 Q50 52 56 46' stroke='%23fff' stroke-width='2' fill='none'/%3E%3Cellipse cx='28' cy='35' rx='10' ry='16' fill='%23004d40'/%3E%3Cellipse cx='72' cy='35' rx='10' ry='16' fill='%23004d40'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='22' fill='%230e5d52'/%3E%3Cellipse cx='50' cy='75' rx='18' ry='12' fill='%230e5d52'/%3E%3Ccircle cx='42' cy='36' r='3' fill='%23fff'/%3E%3Ccircle cx='58' cy='36' r='3' fill='%23fff'/%3E%3Cpath d='M44 46 Q50 52 56 46' stroke='%23fff' stroke-width='2' fill='none'/%3E%3Cellipse cx='28' cy='35' rx='10' ry='16' fill='%230e5d52'/%3E%3Cellipse cx='72' cy='35' rx='10' ry='16' fill='%230e5d52'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
   pointer-events: none;
@@ -180,8 +180,8 @@
 
 /* ── Streak Card (in top row) ── */
 .bento-streak-card {
-  background: linear-gradient(135deg, #ede7f6, #d1c4e9);
-  color: #4a148c;
+  background: linear-gradient(135deg, #eeeaff, #d8d0f0);
+  color: #2D2E5F;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -237,8 +237,8 @@
 
 /* ── Lessons Card ── */
 .bento-lessons-card {
-  background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
-  color: #1a237e;
+  background: linear-gradient(135deg, #e8f0ff 0%, #d0ddf8 100%);
+  color: #2D2E5F;
   cursor: pointer;
   text-align: center;
   position: relative;
@@ -249,7 +249,7 @@
   margin-top: 8px;
   font-size: 0.72rem;
   font-weight: 700;
-  background: rgba(26, 35, 126, 0.12);
+  background: rgba(45, 46, 95, 0.1);
   padding: 2px 10px;
   border-radius: 20px;
   letter-spacing: 0.04em;
@@ -261,8 +261,8 @@
 }
 
 .bento-recommended {
-  background: linear-gradient(135deg, #e8eaf6 0%, #d1c4e9 100%);
-  color: #311b92;
+  background: linear-gradient(135deg, #e8f0ff 0%, #d8d0f0 100%);
+  color: #2D2E5F;
 }
 
 .bento-recommended-header {
@@ -313,7 +313,7 @@
 
 .bento-rec-btn {
   flex-shrink: 0;
-  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  background: linear-gradient(135deg, #2D2E5F, #1E9D8E);
   color: white;
   border: none;
   border-radius: 14px;
@@ -327,7 +327,7 @@
 
 .bento-rec-btn:hover {
   transform: scale(1.04);
-  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 16px rgba(45, 46, 95, 0.2);
 }
 
 .bento-recommended-empty {
@@ -417,8 +417,8 @@
 }
 
 .bento-next-lesson {
-  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 60%, #d1c4e9 100%);
-  color: #1a237e;
+  background: linear-gradient(135deg, #e8f4ff 0%, #d0e0f8 60%, #d8d0f0 100%);
+  color: #2D2E5F;
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto auto;
@@ -477,7 +477,7 @@
   grid-column: 2;
   grid-row: 1 / 4;
   align-self: center;
-  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  background: linear-gradient(135deg, #2D2E5F, #1E9D8E);
   color: white;
   border: none;
   border-radius: 14px;
@@ -491,7 +491,7 @@
 
 .bento-resume-btn:hover {
   transform: scale(1.04);
-  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 16px rgba(45, 46, 95, 0.2);
 }
 
 /* ── Progress bar (shared) ── */
@@ -504,7 +504,7 @@
 
 .bento-progress-fill {
   height: 100%;
-  background: var(--amber-dark);
+  background: var(--accent-teal);
   border-radius: 99px;
   transition: width 0.8s ease;
 }
@@ -522,24 +522,24 @@
 }
 
 .bento-streak-modal {
-  background: linear-gradient(145deg, #ede7f6, #d1c4e9);
-  color: #4a148c;
-  border-radius: 28px;
+  background: linear-gradient(145deg, #eeeaff, #d8d0f0);
+  color: #2D2E5F;
+  border-radius: 20px;
   padding: 32px 28px 24px;
   max-width: 360px;
   width: 90%;
   position: relative;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 40px rgba(45, 46, 95, 0.15);
 }
 
 .bento-streak-modal-close {
   position: absolute;
   top: 14px;
   right: 16px;
-  background: rgba(74, 20, 140, 0.1);
+  background: rgba(45, 46, 95, 0.08);
   border: none;
-  color: #4a148c;
+  color: #2D2E5F;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 50%;
@@ -587,7 +587,7 @@
 }
 
 .bento-streak-stat {
-  background: rgba(74, 20, 140, 0.08);
+  background: rgba(45, 46, 95, 0.06);
   border-radius: 14px;
   padding: 10px 6px;
 }
@@ -623,13 +623,13 @@
 .bento-cal-day {
   aspect-ratio: 1;
   border-radius: 6px;
-  background: rgba(74, 20, 140, 0.08);
+  background: rgba(45, 46, 95, 0.06);
   transition: background 0.2s;
 }
 
 .bento-cal-active {
-  background: #7c3aed;
-  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.3);
+  background: #1E9D8E;
+  box-shadow: 0 2px 6px rgba(30, 157, 142, 0.3);
 }
 
 /* ── Generic Modal (Lessons etc.) ── */
@@ -646,13 +646,13 @@
 
 .bento-generic-modal {
   background: white;
-  border-radius: 24px;
+  border-radius: 20px;
   padding: 36px 28px 28px;
   max-width: 340px;
   width: 90%;
   text-align: center;
   position: relative;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  box-shadow: 0 10px 40px rgba(45, 46, 95, 0.12);
 }
 
 .bento-generic-modal-close {
@@ -692,7 +692,7 @@
 }
 
 .bento-generic-modal-btn {
-  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  background: linear-gradient(135deg, #2D2E5F, #1E9D8E);
   color: white;
   border: none;
   border-radius: 14px;

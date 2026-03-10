@@ -6,7 +6,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#f0ecf6">
+    <meta name="theme-color" content="#F4F7FF">
     <title>Cambridge Exams</title>
     
     <!-- Supabase JS Client -->
@@ -15,7 +15,7 @@
     <!-- Fuentes e iconos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
@@ -48,42 +48,47 @@
     <style>
         /* Variables globales - Asegurar que todas las variables CSS estén definidas */
         :root {
-            --primary: #1e3a8a;
-            --primary-light: #3b5b9b;
-            --primary-dark: #0f2b66;
-            --secondary: #7c3aed;
-            --bg-light: #f8fafc;
-            --text-dark: #0f172a;
-            --text-medium: #334155;
-            --text-light: #64748b;
+            --primary: #2D2E5F;
+            --primary-light: #4a4b7c;
+            --primary-dark: #1e1f42;
+            --secondary: #1E9D8E;
+            --bg-light: #F4F7FF;
+            --text-dark: #2D2E5F;
+            --text-medium: #4a4b7c;
+            --text-light: #7b7ca0;
             --white: #ffffff;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-            --completed: #10b981;
+            --shadow-sm: 0 1px 4px rgba(45,46,95,0.04);
+            --shadow-md: 0 2px 8px rgba(45,46,95,0.06);
+            --shadow-lg: 0 4px 16px rgba(45,46,95,0.08);
+            --completed: #1E9D8E;
             --in-progress: #818cf8;
             --pending: #e2e8f0;
-            --reading: #8b5cf6;
-            --listening: #f97316;
-            --writing: #10b981;
-            --speaking: #ec4899;
+            --reading: #1E9D8E;
+            --listening: #FFD28E;
+            --writing: #1E9D8E;
+            --speaking: #FFB8AD;
             --gap-purple: #c084fc;
             --gap-purple-dark: #a855f7;
             --modal-bg: #ffffff;
-            --tool-bg: #f8fafc;
-            --border-light: #e2e8f0;
-            --correct: #10b981;
+            --tool-bg: #F4F7FF;
+            --border-light: #e8ecf4;
+            --correct: #1E9D8E;
             --incorrect: #ef4444;
-            --timer-normal: #000000;
+            --timer-normal: #2D2E5F;
             --timer-warning: #f97316;
             --timer-danger: #ef4444;
+            /* New accent palette */
+            --accent-coral: #FFB8AD;
+            --accent-teal: #1E9D8E;
+            --accent-amber: #FFD28E;
+            --accent-cream: #FFE59E;
         }
         
         body { 
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Nunito', sans-serif; 
             margin: 0; 
             padding: 0; 
-            background: #f0ecf6;
+            background: #F4F7FF;
             min-height: 100vh;
             color: var(--text-dark);
             line-height: 1.5;
@@ -108,7 +113,7 @@
             text-align: center;
             padding: 60px 20px;
             background: white;
-            border-radius: 30px;
+            border-radius: 20px;
             box-shadow: var(--shadow-lg);
         }
         
@@ -133,7 +138,7 @@
             text-align: center;
             padding: 60px 20px;
             background: white;
-            border-radius: 30px;
+            border-radius: 20px;
             box-shadow: var(--shadow-lg);
         }
         
@@ -179,7 +184,7 @@
         .btn-back:hover {
             background: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 4px 12px rgba(30, 157, 142, 0.25);
         }
         
         .btn-back-secondary {

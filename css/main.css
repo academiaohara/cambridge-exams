@@ -1,55 +1,60 @@
 /* css/main.css */
 :root {
-  --primary: #1e3a8a;
-  --primary-light: #3b5b9b;
-  --primary-dark: #0f2b66;
-  --secondary: #7c3aed;
-  --bg-light: #f8fafc;
-  --text-dark: #0f172a;
-  --text-medium: #334155;
-  --text-light: #64748b;
+  --primary: #2D2E5F;
+  --primary-light: #4a4b7c;
+  --primary-dark: #1e1f42;
+  --secondary: #1E9D8E;
+  --bg-light: #F4F7FF;
+  --text-dark: #2D2E5F;
+  --text-medium: #4a4b7c;
+  --text-light: #7b7ca0;
   --white: #ffffff;
-  --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
-  --completed: #10b981;
+  --shadow-md: 0 2px 8px rgba(45, 46, 95, 0.06);
+  --shadow-lg: 0 4px 16px rgba(45, 46, 95, 0.08);
+  --completed: #1E9D8E;
   --in-progress: #818cf8;
   --pending: #e2e8f0;
-  --reading: #8b5cf6;
-  --listening: #f97316;
-  --writing: #10b981;
-  --speaking: #ec4899;
+  --reading: #1E9D8E;
+  --listening: #FFD28E;
+  --writing: #1E9D8E;
+  --speaking: #FFB8AD;
   --gap-purple: #c084fc;
   --gap-purple-dark: #a855f7;
   --modal-bg: #ffffff;
-  --tool-bg: #f8fafc;
-  --border-light: #e2e8f0;
-  --correct: #10b981;
+  --tool-bg: #F4F7FF;
+  --border-light: #e8ecf4;
+  --correct: #1E9D8E;
   --incorrect: #ef4444;
-  --timer-normal: #000000;
+  --timer-normal: #2D2E5F;
   --timer-warning: #f97316;
   --timer-danger: #ef4444;
   /* Bento Grid palette */
-  --oxford-blue: #1e3a8a;
-  --oxford-light: #3b5b9b;
-  --oxford-dark: #0f2b66;
-  --amber: #FCD34D;
-  --amber-dark: #F59E0B;
-  --white-snow: #f8fafc;
+  --oxford-blue: #2D2E5F;
+  --oxford-light: #4a4b7c;
+  --oxford-dark: #1e1f42;
+  --amber: #FFD28E;
+  --amber-dark: #e6b86e;
+  --white-snow: #F4F7FF;
   --accent-red: #ef4444;
   --accent-orange: #f97316;
-  --accent-green: #10b981;
+  --accent-green: #1E9D8E;
   --accent-purple: #8b5cf6;
+  /* New accent palette */
+  --accent-coral: #FFB8AD;
+  --accent-teal: #1E9D8E;
+  --accent-amber: #FFD28E;
+  --accent-cream: #FFE59E;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 body {
-  background: #f0ecf6;
+  background: #F4F7FF;
   min-height: 100vh;
   color: var(--text-dark);
   line-height: 1.5;
