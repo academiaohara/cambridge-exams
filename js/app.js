@@ -8,6 +8,14 @@
       if (typeof Auth !== 'undefined') {
         await Auth.init();
       }
+
+      // Inicializar streak y sesión de examen
+      if (typeof StreakManager !== 'undefined') {
+        StreakManager.init();
+      }
+      if (typeof ExamSession !== 'undefined') {
+        ExamSession.init();
+      }
       
       // Cargar nivel guardado
       const savedLevel = localStorage.getItem('preferred_level') || 'C1';

@@ -41,6 +41,17 @@
     explanationActiveQuestion: null,
     // Auth state
     isAuthenticated: false,
-    currentUser: null
+    currentUser: null,
+    // Streak state (managed by StreakManager)
+    streak: {
+      currentStreak: 0,
+      longestStreak: 0,
+      practicedToday: false,
+      lastActivityDate: null
+    },
+    // Exam attempts (managed by ExamSession)
+    examAttempts: {},
+    // Writing validation flags
+    writingValidationEnabled: true
   };
 })();

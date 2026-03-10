@@ -148,7 +148,12 @@
     _updateCount: function(text) {
       const count = text.trim() ? text.trim().split(/\s+/).length : 0;
       const el = document.getElementById('writing-type2-count');
-      if (el) el.textContent = count;
+      if (el) {
+        el.textContent = count;
+        if (typeof WritingValidator !== 'undefined') {
+          el.className = 'wv-counter-number ' + WritingValidator.getColorClass(count);
+        }
+      }
     },
 
     handleInput: function(value) {
@@ -244,6 +249,18 @@
         return;
       }
 
+      // Pre-submit word count validation
+      if (typeof WritingValidator !== 'undefined') {
+        WritingValidator.validateBeforeSubmit(essay, () => {
+          this._doEvaluate(essay);
+        }, null);
+        return;
+      }
+
+      this._doEvaluate(essay);
+    },
+
+    _doEvaluate: function(essay) {
       const resultsDiv = document.getElementById('writing-type2-ai-results');
       const contentDiv = document.getElementById('writing-type2-ai-content');
       if (resultsDiv) resultsDiv.style.display = 'block';
