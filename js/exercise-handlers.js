@@ -453,11 +453,11 @@
         (partType === 'multiple-choice' || partType === 'dual-matching');
       if (isListeningFixed) {
         qDisplay.style.position = 'fixed';
-        var container = document.querySelector('.exercise-container');
-        if (container) {
-          var cRect = container.getBoundingClientRect();
-          qDisplay.style.left = cRect.left + 'px';
-          qDisplay.style.width = cRect.width + 'px';
+        var mainLayout = document.querySelector('.exercise-main-layout');
+        if (mainLayout) {
+          var mRect = mainLayout.getBoundingClientRect();
+          qDisplay.style.left = mRect.left + 'px';
+          qDisplay.style.width = mRect.width + 'px';
         }
       } else {
         qDisplay.style.position = '';
