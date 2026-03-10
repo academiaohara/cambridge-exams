@@ -271,15 +271,22 @@
     // --- Results from stored exam scores ---
 
     getStoredSectionScore: function(examId, section, part) {
-      var key = 'cambridge_' + AppState.currentMode + '_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
-      try {
-        var raw = localStorage.getItem(key);
-        if (raw) {
-          var data = JSON.parse(raw);
-          if (data.answersChecked) return data.partScore || 0;
-        }
-      } catch(e) {}
-      return 0;
+      var modes = ['practice', 'exam'];
+      var bestScore = 0;
+      for (var i = 0; i < modes.length; i++) {
+        var key = 'cambridge_' + modes[i] + '_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
+        try {
+          var raw = localStorage.getItem(key);
+          if (raw) {
+            var data = JSON.parse(raw);
+            if (data.answersChecked) {
+              var score = data.partScore || 0;
+              if (score > bestScore) bestScore = score;
+            }
+          }
+        } catch(e) {}
+      }
+      return bestScore;
     },
 
     // Like getStoredSectionScore but includes in-progress (unchecked) scores
@@ -293,16 +300,21 @@
       if (AppState.sectionScores[sectionKey] && AppState.sectionScores[sectionKey][part] !== undefined) {
         return AppState.sectionScores[sectionKey][part];
       }
-      // Fall back to localStorage, accepting even unchecked scores
-      var key = 'cambridge_' + AppState.currentMode + '_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
-      try {
-        var raw = localStorage.getItem(key);
-        if (raw) {
-          var data = JSON.parse(raw);
-          return data.partScore || 0;
-        }
-      } catch(e) {}
-      return 0;
+      // Fall back to localStorage, checking both modes
+      var modes = ['practice', 'exam'];
+      var bestScore = 0;
+      for (var i = 0; i < modes.length; i++) {
+        var key = 'cambridge_' + modes[i] + '_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
+        try {
+          var raw = localStorage.getItem(key);
+          if (raw) {
+            var data = JSON.parse(raw);
+            var score = data.partScore || 0;
+            if (score > bestScore) bestScore = score;
+          }
+        } catch(e) {}
+      }
+      return bestScore;
     },
 
     getSectionMaxRaw: function(section) {

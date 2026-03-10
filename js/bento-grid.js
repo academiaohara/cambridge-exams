@@ -381,6 +381,45 @@
       '</div>';
     },
 
+    _buildLevelSelectorSidebarHtml: function() {
+      var currentLevel = AppState.currentLevel || 'C1';
+      var levels = [
+        { code: 'A2', icon: 'fas fa-seedling', label: 'A2 Key' },
+        { code: 'B1', icon: 'fas fa-book-reader', label: 'B1 Preliminary' },
+        { code: 'B2', icon: 'fas fa-graduation-cap', label: 'B2 First' },
+        { code: 'C1', icon: 'fas fa-award', label: 'C1 Advanced' },
+        { code: 'C2', icon: 'fas fa-crown', label: 'C2 Proficiency' }
+      ];
+      var current = levels.find(function(l) { return l.code === currentLevel; }) || levels[3];
+      var optionsHtml = '';
+      levels.forEach(function(l) {
+        var isActive = l.code === currentLevel;
+        optionsHtml += '<button class="level-selector-option' + (isActive ? ' level-selector-active' : '') + '" ' +
+          'data-level="' + l.code + '" onclick="BentoGrid.changeLevel(\'' + l.code + '\')">' +
+          '<i class="' + l.icon + '"></i> ' + l.code +
+        '</button>';
+      });
+      return '<div class="sidebar-widget level-selector-widget">' +
+        '<div class="sidebar-widget-title">🎓 Level</div>' +
+        '<div class="level-selector-current">' +
+          '<i class="' + current.icon + '"></i>' +
+          '<div class="level-selector-current-info">' +
+            '<div class="level-selector-current-code">' + current.code + '</div>' +
+            '<div class="level-selector-current-label">' + current.label + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="level-selector-options">' + optionsHtml + '</div>' +
+      '</div>';
+    },
+
+    changeLevel: function(level) {
+      if (typeof filterByLevel === 'function') {
+        filterByLevel(level);
+      } else if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
+        Dashboard.filterByLevel(level);
+      }
+    },
+
     _buildMicroLearningSidebarHtml: function() {
       return '<div class="sidebar-widget" onclick="BentoGrid.openMicroLearning()" style="cursor:pointer">' +
         '<div class="sidebar-widget-title">📱 Micro-Learning</div>' +

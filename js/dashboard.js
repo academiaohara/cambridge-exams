@@ -33,9 +33,10 @@
       var leftSidebarContent = '';
       var rightSidebarContent = '';
       if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent = BentoGrid._buildStreakSidebarHtml();
+        leftSidebarContent = BentoGrid._buildLevelSelectorSidebarHtml();
+        rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
+        rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
         var nextLesson = BentoGrid._findNextLesson(exams);
-        rightSidebarContent = BentoGrid._buildGradeTrackerSidebarHtml(exams);
         if (nextLesson) {
           rightSidebarContent += BentoGrid._buildNextLessonSidebarHtml(nextLesson);
         }
@@ -93,8 +94,12 @@
         }
       });
 
-      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildStreakSidebarHtml() : '';
-      var rightSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildGradeTrackerSidebarHtml(exams) : '';
+      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      var rightSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined') {
+        rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
+        rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+      }
 
       var html = '<div class="dashboard-layout">' +
         '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
