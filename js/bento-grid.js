@@ -400,7 +400,7 @@
         '</button>';
       });
       return '<div class="sidebar-widget level-selector-widget">' +
-        '<div class="level-selector-current" onclick="BentoGrid.toggleLevelDropdown()" role="button" tabindex="0" aria-expanded="false">' +
+        '<div class="level-selector-current" onclick="BentoGrid.toggleLevelDropdown()" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid.toggleLevelDropdown()}" role="button" tabindex="0" aria-expanded="false" aria-describedby="level-selector-hint">' +
           '<i class="' + current.icon + ' level-selector-current-icon"></i>' +
           '<div class="level-selector-current-info">' +
             '<div class="level-selector-current-code">' + current.code + '</div>' +
@@ -408,7 +408,7 @@
           '</div>' +
           '<div class="level-selector-chevron"><i class="fas fa-chevron-down"></i></div>' +
         '</div>' +
-        '<div class="level-selector-hint">Tap to change level</div>' +
+        '<div class="level-selector-hint" id="level-selector-hint">Tap to change level</div>' +
         '<div class="level-selector-options level-selector-collapsed">' + optionsHtml + '</div>' +
       '</div>';
     },
