@@ -270,16 +270,27 @@
 
     // --- Results from stored exam scores ---
 
+    // Helper: find best score across both modes in localStorage
+    _getBestScoreFromModes: function(examId, section, part, requireChecked) {
+      var modes = ['practice', 'exam'];
+      var bestScore = 0;
+      for (var i = 0; i < modes.length; i++) {
+        var key = 'cambridge_' + modes[i] + '_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
+        try {
+          var raw = localStorage.getItem(key);
+          if (raw) {
+            var data = JSON.parse(raw);
+            if (requireChecked && !data.answersChecked) continue;
+            var score = data.partScore || 0;
+            if (score > bestScore) bestScore = score;
+          }
+        } catch(e) {}
+      }
+      return bestScore;
+    },
+
     getStoredSectionScore: function(examId, section, part) {
-      var key = 'cambridge_' + AppState.currentMode + '_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
-      try {
-        var raw = localStorage.getItem(key);
-        if (raw) {
-          var data = JSON.parse(raw);
-          if (data.answersChecked) return data.partScore || 0;
-        }
-      } catch(e) {}
-      return 0;
+      return this._getBestScoreFromModes(examId, section, part, true);
     },
 
     // Like getStoredSectionScore but includes in-progress (unchecked) scores
@@ -293,16 +304,8 @@
       if (AppState.sectionScores[sectionKey] && AppState.sectionScores[sectionKey][part] !== undefined) {
         return AppState.sectionScores[sectionKey][part];
       }
-      // Fall back to localStorage, accepting even unchecked scores
-      var key = 'cambridge_' + AppState.currentMode + '_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
-      try {
-        var raw = localStorage.getItem(key);
-        if (raw) {
-          var data = JSON.parse(raw);
-          return data.partScore || 0;
-        }
-      } catch(e) {}
-      return 0;
+      // Fall back to localStorage, checking both modes (accepting unchecked scores)
+      return this._getBestScoreFromModes(examId, section, part, false);
     },
 
     getSectionMaxRaw: function(section) {
