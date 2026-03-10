@@ -9,26 +9,6 @@
       const level = AppState.currentLevel || 'C1';
       const exams = window.EXAMS_DATA[level] || [];
       
-      if (exams.length === 0) {
-        content.innerHTML = `
-          <div class='no-exams'>
-            <i class='fas fa-search'></i>
-            <h3>${I18n.t('noExams')}</h3>
-            <p>${I18n.t('soon')} ${AppState.currentLevel}</p>
-          </div>
-        `;
-        return;
-      }
-      
-      let examListHtml = '';
-      exams.forEach(exam => {
-        if (exam.status === 'coming_soon') {
-          examListHtml += this.renderComingSoonExam(exam);
-        } else {
-          examListHtml += this.renderAvailableExam(exam, expandExamId);
-        }
-      });
-
       // Build sidebar content
       var leftSidebarContent = '';
       var rightSidebarContent = '';
@@ -46,7 +26,6 @@
         '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
         '<div class="dashboard-center">' +
           '<div id="bento-grid-container"></div>' +
-          '<div class="exams-container">' + examListHtml + '</div>' +
         '</div>' +
         '<div class="dashboard-right-sidebar">' + rightSidebarContent + '</div>' +
       '</div>';
