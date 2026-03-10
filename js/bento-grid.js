@@ -393,26 +393,49 @@
       var current = levels.find(function(l) { return l.code === currentLevel; }) || levels[3];
       var optionsHtml = '';
       levels.forEach(function(l) {
-        var isActive = l.code === currentLevel;
-        optionsHtml += '<button class="level-selector-option' + (isActive ? ' level-selector-active' : '') + '" ' +
-          'data-level="' + l.code + '" onclick="BentoGrid.changeLevel(\'' + l.code + '\')">' +
-          '<i class="' + l.icon + '"></i> ' + l.code +
+        if (l.code === currentLevel) return;
+        optionsHtml += '<button class="level-selector-option" ' +
+          'data-level="' + l.code + '" onclick="event.stopPropagation(); BentoGrid.changeLevel(\'' + l.code + '\')">' +
+          '<i class="' + l.icon + '"></i> ' + l.label +
         '</button>';
       });
       return '<div class="sidebar-widget level-selector-widget">' +
-        '<div class="sidebar-widget-title">🎓 Level</div>' +
-        '<div class="level-selector-current">' +
-          '<i class="' + current.icon + '"></i>' +
+        '<div class="level-selector-current" onclick="BentoGrid.toggleLevelDropdown()" role="button" tabindex="0" aria-expanded="false">' +
+          '<i class="' + current.icon + ' level-selector-current-icon"></i>' +
           '<div class="level-selector-current-info">' +
             '<div class="level-selector-current-code">' + current.code + '</div>' +
             '<div class="level-selector-current-label">' + current.label + '</div>' +
           '</div>' +
+          '<div class="level-selector-chevron"><i class="fas fa-chevron-down"></i></div>' +
         '</div>' +
-        '<div class="level-selector-options">' + optionsHtml + '</div>' +
+        '<div class="level-selector-hint">Tap to change level</div>' +
+        '<div class="level-selector-options level-selector-collapsed">' + optionsHtml + '</div>' +
       '</div>';
     },
 
+    toggleLevelDropdown: function() {
+      var options = document.querySelector('.level-selector-options');
+      var current = document.querySelector('.level-selector-current');
+      if (!options || !current) return;
+      var isCollapsed = options.classList.contains('level-selector-collapsed');
+      if (isCollapsed) {
+        options.classList.remove('level-selector-collapsed');
+        options.classList.add('level-selector-expanded');
+        current.setAttribute('aria-expanded', 'true');
+      } else {
+        options.classList.add('level-selector-collapsed');
+        options.classList.remove('level-selector-expanded');
+        current.setAttribute('aria-expanded', 'false');
+      }
+    },
+
     changeLevel: function(level) {
+      // Collapse the dropdown before changing level
+      var options = document.querySelector('.level-selector-options');
+      if (options) {
+        options.classList.add('level-selector-collapsed');
+        options.classList.remove('level-selector-expanded');
+      }
       if (typeof filterByLevel === 'function') {
         filterByLevel(level);
       } else if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
