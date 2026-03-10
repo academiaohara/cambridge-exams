@@ -315,6 +315,11 @@
         this._clearEvidenceHighlights();
         this._removeEvidenceTooltips();
 
+        // Restore all transcript extract visibility
+        document.querySelectorAll('.transcript-extract').forEach(function(div) {
+          div.style.display = '';
+        });
+
         // Reverse Part 7 explanation mode changes
         if (isPart7 && typeof ReadingType7 !== 'undefined') {
           ReadingType7.removeExplanationMode();
@@ -390,6 +395,34 @@
       var questions = this._getAllQuestions();
       var question = questions.find(function(q) { return q.number === qNum; });
       if (!question) return;
+
+      // For listening: show only the relevant transcript extract or speaker
+      if (AppState.currentSection === 'listening') {
+        var exercise = AppState.currentExercise;
+        if (exercise && exercise.content) {
+          if (exercise.content.extracts && exercise.content.extracts.length > 0) {
+            var extractId = question.extractId;
+            if (extractId != null) {
+              document.querySelectorAll('.transcript-extract[data-extract-id]').forEach(function(div) {
+                div.style.display = (String(div.getAttribute('data-extract-id')) === String(extractId)) ? '' : 'none';
+              });
+            }
+          } else if (exercise.content.audio_script) {
+            var speakerIdx = -1;
+            if (exercise.content.task1) {
+              var idx1 = exercise.content.task1.questions.findIndex(function(q) { return q.number === qNum; });
+              if (idx1 >= 0) speakerIdx = idx1;
+            }
+            if (speakerIdx === -1 && exercise.content.task2) {
+              var idx2 = exercise.content.task2.questions.findIndex(function(q) { return q.number === qNum; });
+              if (idx2 >= 0) speakerIdx = idx2;
+            }
+            document.querySelectorAll('.transcript-extract[data-speaker-index]').forEach(function(div) {
+              div.style.display = (speakerIdx >= 0 && parseInt(div.getAttribute('data-speaker-index')) === speakerIdx + 1) ? '' : 'none';
+            });
+          }
+        }
+      }
 
       var qDisplay = document.getElementById('explanation-question-display');
       if (!qDisplay) return;
