@@ -102,7 +102,7 @@
           };
           var result = await client
             .from('user_progress')
-            .upsert(row, { onConflict: 'user_id,exam_id,section,part,mode', ignoreDuplicates: false });
+            .upsert(row);
           if (!result.error) {
             successKeys.push(item.key);
           }

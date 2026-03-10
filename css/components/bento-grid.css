@@ -41,136 +41,21 @@
   box-shadow: var(--bento-hover-shadow);
 }
 
-/* ── Hero Row ── */
-.bento-hero-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 16px;
-}
-
-.bento-hero {
-  background: linear-gradient(135deg, var(--oxford-blue) 0%, var(--oxford-light) 100%);
-  color: white;
-}
-
-.bento-hero-greeting {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.bento-hero-level {
-  font-size: 0.9rem;
-  opacity: 0.85;
-  margin-bottom: 14px;
-}
-
-.bento-level-badge {
-  background: var(--amber);
-  color: var(--oxford-dark);
-  font-weight: 800;
-  padding: 2px 10px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-}
-
-.bento-hero-progress {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.bento-progress-label {
-  font-size: 0.85rem;
-  opacity: 0.9;
-}
-
-.bento-progress-track {
-  height: 8px;
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 99px;
-  overflow: hidden;
-}
-
-.bento-progress-fill {
-  height: 100%;
-  background: var(--amber);
-  border-radius: 99px;
-  transition: width 0.8s ease;
-}
-
-.bento-progress-pct {
-  font-size: 0.8rem;
-  font-weight: 700;
-  opacity: 0.9;
-  text-align: right;
-}
-
-/* ── Streak Card ── */
-.bento-streak-card {
-  background: linear-gradient(135deg, #4c1d95, var(--accent-purple));
-  color: white;
-  min-width: 140px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 4px;
-  padding: 20px 18px;
-}
-
-.bento-streak-fire {
-  font-size: 2.4rem;
-  animation: fireFlicker 1.5s ease-in-out infinite;
-  line-height: 1;
-}
-
-.bento-streak-number {
-  font-size: 2.8rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.bento-streak-label {
-  font-size: 0.78rem;
-  opacity: 0.85;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.bento-streak-status {
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 20px;
-  margin-top: 4px;
-}
-
-.bento-streak-safe {
-  background: rgba(16, 185, 129, 0.25);
-  color: #6ee7b7;
-}
-
-.bento-streak-risk {
-  background: rgba(239, 68, 68, 0.25);
-  color: #fca5a5;
-  animation: pulse 1.2s ease-in-out infinite;
-}
-
-.bento-streak-best {
-  font-size: 0.72rem;
-  opacity: 0.7;
-  margin-top: 4px;
-}
-
-/* ── Study Modes Row ── */
-.bento-modes-row {
+/* ── Row 1: Top row (Arena · Practice · Streak) ── */
+.bento-top-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
 }
 
+/* ── Row 2: Learning row (Lessons · Micro-Learning) ── */
+.bento-learning-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── Study Mode Cards ── */
 .bento-mode-arena,
 .bento-mode-micro,
 .bento-mode-practice {
@@ -249,6 +134,239 @@
   background: rgba(0,0,0,0.2);
   border-radius: 8px;
   padding: 2px 6px;
+}
+
+/* ── Streak Card (in top row) ── */
+.bento-streak-card {
+  background: linear-gradient(135deg, #4c1d95, var(--accent-purple));
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+  padding: 20px 18px;
+}
+
+.bento-streak-fire {
+  font-size: 2.4rem;
+  animation: fireFlicker 1.5s ease-in-out infinite;
+  line-height: 1;
+}
+
+.bento-streak-number {
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.bento-streak-label {
+  font-size: 0.78rem;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bento-streak-status {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-top: 4px;
+}
+
+.bento-streak-safe {
+  background: rgba(16, 185, 129, 0.25);
+  color: #6ee7b7;
+}
+
+.bento-streak-risk {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.bento-streak-best {
+  font-size: 0.72rem;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* ── Lessons Card ── */
+.bento-lessons-card {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b5b9b 100%);
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+}
+
+.bento-lessons-badge {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(255,255,255,0.2);
+  padding: 2px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Row 3: Recommended Exercise ── */
+.bento-recommended-row {
+  /* full-width single card */
+}
+
+.bento-recommended {
+  background: linear-gradient(135deg, #1e3a8a 0%, #6d28d9 100%);
+  color: white;
+}
+
+.bento-recommended-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.bento-recommended-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.9;
+}
+
+.bento-rec-why {
+  font-size: 0.78rem;
+  opacity: 0.7;
+}
+
+.bento-recommended-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.bento-rec-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.bento-rec-info {
+  flex: 1;
+}
+
+.bento-rec-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.bento-rec-score {
+  font-size: 0.82rem;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.bento-rec-btn {
+  flex-shrink: 0;
+  background: var(--amber);
+  color: var(--oxford-dark);
+  border: none;
+  border-radius: 14px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+
+.bento-rec-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px rgba(252, 211, 77, 0.4);
+}
+
+.bento-recommended-empty {
+  font-size: 0.88rem;
+  opacity: 0.8;
+  margin-top: 8px;
+}
+
+/* ── Row 4: Grade Tracker ── */
+.bento-grade-row {
+  /* full-width single card */
+}
+
+.bento-grade-tracker {
+  /* uses default .bento-card white style */
+}
+
+.bento-grade-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.bento-grade-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--oxford-blue);
+}
+
+.bento-grade-subtitle {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.bento-grade-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bento-grade-bar-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 48px;
+  align-items: center;
+  gap: 10px;
+}
+
+.bento-grade-skill {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.bento-grade-track {
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.bento-grade-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.8s ease;
+}
+
+.bento-grade-score {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #374151;
+  text-align: right;
+}
+
+.bento-grade-empty {
+  font-size: 0.88rem;
+  color: #6b7280;
+  margin-top: 8px;
 }
 
 /* ── Next Lesson Row ── */
@@ -334,22 +452,244 @@
   box-shadow: 0 4px 16px rgba(252, 211, 77, 0.4);
 }
 
+/* ── Progress bar (shared) ── */
+.bento-progress-track {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.bento-progress-fill {
+  height: 100%;
+  background: var(--amber);
+  border-radius: 99px;
+  transition: width 0.8s ease;
+}
+
+/* ── Streak Modal ── */
+.bento-streak-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: slideDown 0.25s ease-out;
+}
+
+.bento-streak-modal {
+  background: linear-gradient(145deg, #4c1d95, #6d28d9);
+  color: white;
+  border-radius: 28px;
+  padding: 32px 28px 24px;
+  max-width: 360px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.bento-streak-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bento-streak-modal-fire {
+  font-size: 3.5rem;
+  animation: fireFlicker 1.5s ease-in-out infinite;
+}
+
+.bento-streak-modal-count {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  margin: 4px 0;
+}
+
+.bento-streak-modal-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.bento-streak-modal-status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.bento-streak-modal-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.bento-streak-stat {
+  background: rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 10px 6px;
+}
+
+.bento-streak-stat-val {
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.bento-streak-stat-lbl {
+  font-size: 0.68rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.bento-streak-modal-section {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+/* ── Streak Calendar ── */
+.bento-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.bento-cal-day {
+  aspect-ratio: 1;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.12);
+  transition: background 0.2s;
+}
+
+.bento-cal-active {
+  background: var(--amber);
+  box-shadow: 0 2px 6px rgba(252, 211, 77, 0.4);
+}
+
+/* ── Generic Modal (Lessons etc.) ── */
+.bento-generic-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: slideDown 0.25s ease-out;
+}
+
+.bento-generic-modal {
+  background: white;
+  border-radius: 24px;
+  padding: 36px 28px 28px;
+  max-width: 340px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+}
+
+.bento-generic-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: #f3f4f6;
+  border: none;
+  color: #374151;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bento-generic-modal-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.bento-generic-modal-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--oxford-blue);
+  margin-bottom: 10px;
+}
+
+.bento-generic-modal-text {
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.bento-generic-modal-btn {
+  background: var(--oxford-blue);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 28px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.bento-generic-modal-btn:hover {
+  opacity: 0.85;
+}
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .bento-hero-row {
+  .bento-top-row {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .bento-streak-card {
     flex-direction: row;
     justify-content: flex-start;
     gap: 14px;
-    min-width: unset;
+    text-align: left;
   }
 
-  .bento-modes-row {
+  .bento-learning-row {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .bento-recommended-body {
+    flex-wrap: wrap;
+  }
+
+  .bento-grade-bar-row {
+    grid-template-columns: 100px 1fr 40px;
   }
 
   .bento-next-lesson {
@@ -366,7 +706,11 @@
 }
 
 @media (min-width: 480px) and (max-width: 768px) {
-  .bento-modes-row {
+  .bento-top-row {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bento-learning-row {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
