@@ -78,6 +78,14 @@
       var self = this;
       var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
       if (!exam) return;
+
+      // Check exam attempt limit (exam mode only) — global daily limit (null key)
+      if (AppState.currentMode === 'exam' && typeof ExamSession !== 'undefined') {
+        if (!ExamSession.canStart(null)) {
+          ExamSession.showBlockedModal(null);
+          return;
+        }
+      }
       
       // Check if there's any saved progress for this exam
       var hasSaved = false;
@@ -120,6 +128,12 @@
       AppState.currentSection = firstSection;
       AppState.examFullMode = true;
       AppState.sectionElapsedSeconds = 0;
+
+      // Record attempt usage (exam mode only) — global daily limit (null key)
+      if (AppState.currentMode === 'exam' && typeof ExamSession !== 'undefined') {
+        ExamSession.incrementAttempts(null);
+      }
+
       this.markPartInProgress(examId, firstSection, 1);
       await this.openPart(examId, firstSection, 1);
     },
@@ -806,6 +820,11 @@
           const inProgressIndex = exam.sections[section].inProgress.indexOf(part);
           if (inProgressIndex > -1) {
             exam.sections[section].inProgress.splice(inProgressIndex, 1);
+          }
+
+          // Record streak activity when a part is completed
+          if (typeof StreakManager !== 'undefined') {
+            StreakManager.recordActivity();
           }
         }
       }

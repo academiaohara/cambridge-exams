@@ -53,11 +53,28 @@ CREATE TABLE IF NOT EXISTS public.exam_sessions (
   UNIQUE (user_id, exam_id)
 );
 
+-- ── Exam attempts (5/day limit) ────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS public.exam_attempts (
+  id            UUID  PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id       UUID  REFERENCES auth.users(id) ON DELETE CASCADE,
+  exam_id       TEXT,
+  attempt_date  DATE  DEFAULT CURRENT_DATE,
+  attempt_count INT   DEFAULT 1,
+  reset_time    TIMESTAMPTZ,
+  created_at    TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE (user_id, exam_id, attempt_date)
+);
+
+-- user_streaks: add current_streak_ended_at column if not present
+ALTER TABLE public.user_streaks ADD COLUMN IF NOT EXISTS
+  current_streak_ended_at TIMESTAMPTZ;
+
 -- ── Row Level Security ─────────────────────────────────────────────────────
 ALTER TABLE public.profiles       ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_streaks   ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_progress  ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.exam_sessions  ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.exam_attempts  ENABLE ROW LEVEL SECURITY;
 
 -- profiles
 CREATE POLICY "profiles_select" ON public.profiles
@@ -89,6 +106,14 @@ CREATE POLICY "sessions_select" ON public.exam_sessions
 CREATE POLICY "sessions_insert" ON public.exam_sessions
   FOR INSERT WITH CHECK (auth.uid() = user_id);
 CREATE POLICY "sessions_update" ON public.exam_sessions
+  FOR UPDATE USING (auth.uid() = user_id);
+
+-- exam_attempts
+CREATE POLICY "attempts_select" ON public.exam_attempts
+  FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "attempts_insert" ON public.exam_attempts
+  FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "attempts_update" ON public.exam_attempts
   FOR UPDATE USING (auth.uid() = user_id);
 
 -- ── Auto-create profile on signup ─────────────────────────────────────────

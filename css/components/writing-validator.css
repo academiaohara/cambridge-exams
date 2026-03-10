@@ -1,0 +1,186 @@
+/* css/components/writing-validator.css — Word counter and validation */
+
+/* ── Inline floating counter (inside writing area) ── */
+.wv-counter-wrapper {
+  position: relative;
+}
+
+.wv-counter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: #f1f5f9;
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.wv-counter-number {
+  font-weight: 800;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+/* Color states */
+.wv-red    { color: #ef4444; }
+.wv-orange { color: #f97316; }
+.wv-green  { color: #10b981; }
+
+.wv-counter-badge.wv-state-red {
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+.wv-counter-badge.wv-state-orange {
+  border-color: #fed7aa;
+  background: #fff7ed;
+}
+
+.wv-counter-badge.wv-state-green {
+  border-color: #a7f3d0;
+  background: #ecfdf5;
+}
+
+/* ── Inline counter inside footer row ── */
+.wv-inline-counter {
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.wv-inline-counter.wv-red    { background: #fef2f2; color: #ef4444; }
+.wv-inline-counter.wv-orange { background: #fff7ed; color: #f97316; }
+.wv-inline-counter.wv-green  { background: #ecfdf5; color: #10b981; }
+
+/* ── Generic simple modal overlay (shared by WritingValidator & ExamSession) ── */
+.wv-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.wv-modal-dialog {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 28px 22px;
+  max-width: 420px;
+  width: calc(100% - 40px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  animation: bounceIn 0.3s ease-out;
+}
+
+.wv-modal-icon {
+  font-size: 2.5rem;
+}
+
+.wv-modal-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0;
+}
+
+.wv-modal-dialog p {
+  font-size: 0.92rem;
+  color: #475569;
+  margin: 0;
+}
+
+.wv-modal-note {
+  font-size: 0.85rem;
+  color: #64748b;
+  padding: 8px 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+.wv-modal-note.wv-red {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+.wv-modal-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.wv-modal-btn {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s;
+}
+
+.wv-modal-btn:hover {
+  opacity: 0.88;
+}
+
+.wv-modal-btn-primary {
+  background: var(--oxford-blue, #1e3a8a);
+  color: #fff;
+}
+
+.wv-modal-btn-secondary {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1.5px solid #e2e8f0;
+}
+
+/* ── Exam attempts timer ── */
+.exam-blocked-timer {
+  font-weight: 700;
+  color: #ef4444;
+}
+
+/* ── Attempts badge on exam cards ── */
+.bento-attempts-block .attempts-exhausted,
+[data-exam-attempts-block].attempts-exhausted {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.exam-attempts-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.exam-attempts-badge.attempts-ok {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.25);
+}

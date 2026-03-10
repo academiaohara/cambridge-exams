@@ -21,6 +21,9 @@
       
       let html = '<div class="exams-container">';
       
+      // Bento Grid premium header
+      html += '<div id="bento-grid-container"></div>';
+      
       // Mode toggle
       html += `
         <div class="mode-toggle">
@@ -42,6 +45,12 @@
       });
       html += '</div>';
       content.innerHTML = html;
+
+      // Render bento grid into its container after DOM is updated
+      if (typeof BentoGrid !== 'undefined') {
+        const bentoContainer = document.getElementById('bento-grid-container');
+        if (bentoContainer) BentoGrid.render(bentoContainer);
+      }
     },
     
     renderComingSoonExam: function(exam) {
