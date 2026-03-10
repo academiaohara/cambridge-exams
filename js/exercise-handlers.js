@@ -408,18 +408,22 @@
               });
             }
           } else if (exercise.content.audio_script) {
-            var speakerIdx = -1;
-            if (exercise.content.task1) {
-              var idx1 = exercise.content.task1.questions.findIndex(function(q) { return q.number === qNum; });
-              if (idx1 >= 0) speakerIdx = idx1;
+            if (exercise.content.task1 || exercise.content.task2) {
+              // Dual-matching (Part 4): filter transcript to show only the relevant speaker
+              var speakerIdx = -1;
+              if (exercise.content.task1) {
+                var idx1 = exercise.content.task1.questions.findIndex(function(q) { return q.number === qNum; });
+                if (idx1 >= 0) speakerIdx = idx1;
+              }
+              if (speakerIdx === -1 && exercise.content.task2) {
+                var idx2 = exercise.content.task2.questions.findIndex(function(q) { return q.number === qNum; });
+                if (idx2 >= 0) speakerIdx = idx2;
+              }
+              document.querySelectorAll('.transcript-extract[data-speaker-index]').forEach(function(div) {
+                div.style.display = (speakerIdx >= 0 && parseInt(div.getAttribute('data-speaker-index')) === speakerIdx + 1) ? '' : 'none';
+              });
             }
-            if (speakerIdx === -1 && exercise.content.task2) {
-              var idx2 = exercise.content.task2.questions.findIndex(function(q) { return q.number === qNum; });
-              if (idx2 >= 0) speakerIdx = idx2;
-            }
-            document.querySelectorAll('.transcript-extract[data-speaker-index]').forEach(function(div) {
-              div.style.display = (speakerIdx >= 0 && parseInt(div.getAttribute('data-speaker-index')) === speakerIdx + 1) ? '' : 'none';
-            });
+            // For single audio_script exercises (e.g. Part 3), all transcript extracts remain visible
           }
         }
       }
