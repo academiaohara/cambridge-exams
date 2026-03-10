@@ -102,8 +102,9 @@
           };
           var result = await client
             .from('user_progress')
-            .upsert(row);
-          if (!result.error) {
+            .upsert(row)
+            .select();  // ← Agrega esto
+          if (!result.error && result.data) {
             successKeys.push(item.key);
           }
         } catch (err) {
