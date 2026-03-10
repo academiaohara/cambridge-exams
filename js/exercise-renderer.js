@@ -525,7 +525,7 @@
       if (exercise.content.extracts && exercise.content.extracts.length > 0) {
         exercise.content.extracts.forEach(function(extract) {
           if (!extract.audio_script) return;
-          html += '<div class="transcript-extract">';
+          html += '<div class="transcript-extract" data-extract-id="' + extract.id + '">';
           html += '<div class="transcript-extract-header">';
           html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
           html += '<span>' + escapeHtml(extract.context) + '</span>';
@@ -537,7 +537,7 @@
         var parts = exercise.content.audio_script.split('||');
         parts.forEach(function(part, idx) {
           if (part.trim() === '') return;
-          html += '<div class="transcript-extract">';
+          html += '<div class="transcript-extract" data-speaker-index="' + (idx + 1) + '">';
           html += '<div class="transcript-text">' + processScript(part) + '</div>';
           html += '</div>';
         });
