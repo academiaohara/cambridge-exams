@@ -5,10 +5,10 @@
   align-items: center;
   gap: 12px;
   padding: 12px 18px;
-  background: linear-gradient(135deg, #4c1d95, #8b5cf6);
+  background: linear-gradient(135deg, #ede7f6, #d1c4e9);
   border-radius: 16px;
-  color: white;
-  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+  color: #4a148c;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.12);
 }
 
 .streak-fire {
@@ -45,13 +45,13 @@
 }
 
 .streak-status.streak-safe {
-  background: rgba(16, 185, 129, 0.25);
-  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.15);
+  color: #065f46;
 }
 
 .streak-status.streak-risk {
-  background: rgba(239, 68, 68, 0.25);
-  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.15);
+  color: #991b1b;
   animation: pulse 1.2s ease-in-out infinite;
 }
 
