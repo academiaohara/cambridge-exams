@@ -81,3 +81,44 @@
   border-color: transparent;
   box-shadow: 0 4px 14px rgba(45, 46, 95, 0.2);
 }
+
+/* ── Header mode navigation ── */
+.header-mode-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.header-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 40px;
+  border: 2px solid rgba(45, 46, 95, 0.10);
+  background: rgba(45, 46, 95, 0.04);
+  color: var(--text-medium);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+
+.header-mode-btn:hover {
+  background: rgba(45, 46, 95, 0.08);
+  border-color: rgba(45, 46, 95, 0.18);
+  transform: translateY(-1px);
+}
+
+.header-mode-btn.active {
+  background: linear-gradient(135deg, #2D2E5F, #1E9D8E);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 3px 12px rgba(45, 46, 95, 0.18);
+}
+
+.header-mode-icon {
+  font-size: 1rem;
+  line-height: 1;
+}

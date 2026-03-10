@@ -16,6 +16,7 @@
         leftSidebarContent = BentoGrid._buildLevelSelectorSidebarHtml();
         rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
         rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+        rightSidebarContent += BentoGrid._buildCalculatorSidebarHtml();
         var nextLesson = BentoGrid._findNextLesson(exams);
         if (nextLesson) {
           rightSidebarContent += BentoGrid._buildNextLessonSidebarHtml(nextLesson);
@@ -52,12 +53,13 @@
       const level = AppState.currentLevel || 'C1';
       const exams = window.EXAMS_DATA[level] || [];
 
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var modeConfig = mode === 'exam'
-        ? { icon: '⏱️', title: 'The Arena', subtitle: 'Timed exam mode' }
-        : { icon: '🛡️', title: 'Practice', subtitle: 'No limits. Safe space.' };
+        ? { icon: '⏱️', title: t('theArena', 'The Arena'), subtitle: t('timedExamMode', 'Timed exam mode') }
+        : { icon: '🛡️', title: t('practiceMode', 'Practice'), subtitle: t('noLimitsSafeSpace', 'No limits. Safe space.') };
 
       var subpageHeader = '<div class="subpage-header">' +
-        '<button class="subpage-back-btn" onclick="history.back()">← ' + (typeof I18n !== 'undefined' ? I18n.t('backToDashboard') || 'Back' : 'Back') + '</button>' +
+        '<button class="subpage-back-btn" onclick="history.back()">← ' + t('backToDashboard', 'Back') + '</button>' +
         '<div>' +
           '<div class="subpage-title">' + modeConfig.icon + ' ' + modeConfig.title + '</div>' +
           '<div class="subpage-subtitle">' + modeConfig.subtitle + '</div>' +
@@ -78,6 +80,7 @@
       if (typeof BentoGrid !== 'undefined') {
         rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
         rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+        rightSidebarContent += BentoGrid._buildCalculatorSidebarHtml();
       }
 
       var html = '<div class="dashboard-layout">' +

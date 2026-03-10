@@ -139,7 +139,7 @@
           </div>
 
           <div class="sc-selector">
-            <label for="examSelector">Exam Level:</label>
+            <label for="examSelector">${I18n.t('examLevel') || 'Exam Level'}:</label>
             <select id="examSelector" onchange="ScoreCalculator.onExamChange()">
               <option value="A2" ${examType === 'A2' ? 'selected' : ''}>A2 Key</option>
               <option value="B1" ${examType === 'B1' ? 'selected' : ''}>B1 Preliminary</option>
@@ -152,7 +152,7 @@
           <div id="dynamicInputs" class="sc-inputs"></div>
 
           <button class="sc-calculate-btn" onclick="ScoreCalculator.calculateExam()">
-            <i class="fas fa-chart-bar"></i> Calculate Score
+            <i class="fas fa-chart-bar"></i> ${I18n.t('calculateScoreBtn') || 'Calculate Score'}
           </button>
 
           <div class="statement-of-results" id="statementOfResults" style="display:none;"></div>
