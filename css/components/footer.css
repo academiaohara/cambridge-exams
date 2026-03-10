@@ -1,10 +1,9 @@
 /* css/components/footer.css */
 .main-footer {
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(49, 27, 146, 0.06);
+  border-top: 1px solid rgba(124, 58, 237, 0.1);
   padding: 48px 24px 24px;
-  color: white;
+  color: var(--text-dark);
   margin-top: auto;
 }
 
@@ -37,7 +36,7 @@
 }
 
 .footer-col ul li a {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-medium);
   text-decoration: none;
   cursor: pointer;
   display: flex;
@@ -47,14 +46,14 @@
 }
 
 .footer-col ul li a:hover {
-  color: white;
+  color: #7c3aed;
   transform: translateX(5px);
 }
 
 .footer-bottom {
   text-align: center;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(124, 58, 237, 0.1);
 }
 
 /* AÑADIR AL FINAL DE footer.css */
