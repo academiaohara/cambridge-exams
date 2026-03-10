@@ -1051,6 +1051,15 @@
   margin-bottom: 14px;
 }
 
+.sidebar-calculator-widget .sidebar-widget-title i {
+  color: #1E9D8E;
+  margin-right: 4px;
+}
+
+.sidebar-calc-btn {
+  background: linear-gradient(135deg, #2D2E5F, #1E9D8E) !important;
+}
+
 /* ── Grade Tracker Carousel ── */
 .grade-carousel-viewport {
   position: relative;

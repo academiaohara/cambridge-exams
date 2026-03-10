@@ -216,6 +216,17 @@
                 
                 <div class="header-nav-group" id="headerNavGroup">
                 
+                <div class="header-mode-nav" id="headerModeNav">
+                    <button class="header-mode-btn" data-mode="practice" onclick="BentoGrid.selectMode('practice')">
+                        <span class="header-mode-icon">🛡️</span>
+                        <span data-i18n="practiceMode">Práctica</span>
+                    </button>
+                    <button class="header-mode-btn" data-mode="exam" onclick="BentoGrid.selectMode('exam')">
+                        <span class="header-mode-icon">⏱️</span>
+                        <span data-i18n="theArena">La Arena</span>
+                    </button>
+                </div>
+                
                 <div class="language-selector-wrapper">
                     <button class="language-selector-btn" onclick="toggleLanguageDropdown()">
                         <span class="flag-circle-wrapper">

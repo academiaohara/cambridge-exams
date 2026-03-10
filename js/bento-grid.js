@@ -32,6 +32,7 @@
     _renderTopRow: function(exams) {
       var availableCount = exams.filter(function(e) { return e.status === 'available'; }).length;
       var currentMode = AppState.currentMode || 'practice';
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
 
       // Exam session attempts
       var examAttempts = '';
@@ -42,8 +43,8 @@
           '<span class="bento-attempts-used">' + used + '</span>' +
           '<span class="bento-attempts-sep">/</span>' +
           '<span class="bento-attempts-max">5</span>' +
-          '<span class="bento-attempts-label"> today</span>' +
-          (remaining === 0 ? '<div class="bento-attempts-exhausted">Locked 🔒</div>' : '') +
+          '<span class="bento-attempts-label"> ' + t('todayLabel', 'today') + '</span>' +
+          (remaining === 0 ? '<div class="bento-attempts-exhausted">' + t('lockedLabel', 'Locked') + ' 🔒</div>' : '') +
         '</div>';
       }
 
@@ -52,44 +53,46 @@
         '<div class="bento-card bento-mode-arena ' + (currentMode === 'exam' ? 'bento-mode-active' : '') + '" ' +
           'onclick="BentoGrid.selectMode(\'exam\')">' +
           '<div class="bento-mode-icon">⏱️</div>' +
-          '<div class="bento-mode-title">The Arena</div>' +
-          '<div class="bento-mode-desc">Timed exam mode</div>' +
+          '<div class="bento-mode-title">' + t('theArena', 'The Arena') + '</div>' +
+          '<div class="bento-mode-desc">' + t('timedExamMode', 'Timed exam mode') + '</div>' +
           examAttempts +
-          '<div class="bento-mode-tests">' + availableCount + ' tests</div>' +
+          '<div class="bento-mode-tests">' + availableCount + ' ' + t('testsCount', 'tests') + '</div>' +
         '</div>' +
 
         '<div class="bento-card bento-mode-practice ' + (currentMode === 'practice' ? 'bento-mode-active' : '') + '" ' +
           'onclick="BentoGrid.selectMode(\'practice\')">' +
           '<div class="bento-mode-icon">🛡️</div>' +
-          '<div class="bento-mode-title">Practice</div>' +
-          '<div class="bento-mode-desc">No limits. Safe space.</div>' +
-          '<div class="bento-mode-tests">' + availableCount + ' tests</div>' +
+          '<div class="bento-mode-title">' + t('practiceMode', 'Practice') + '</div>' +
+          '<div class="bento-mode-desc">' + t('noLimitsSafeSpace', 'No limits. Safe space.') + '</div>' +
+          '<div class="bento-mode-tests">' + availableCount + ' ' + t('testsCount', 'tests') + '</div>' +
         '</div>' +
 
       '</div>';
     },
 
     _renderLearningRow: function() {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       return '<div class="bento-learning-row">' +
 
         '<div class="bento-card bento-lessons-card" onclick="BentoGrid.openLessons()">' +
           '<div class="bento-mode-icon">📚</div>' +
-          '<div class="bento-mode-title">Lessons</div>' +
-          '<div class="bento-mode-desc">Study the curriculum at your own pace</div>' +
-          '<div class="bento-lessons-badge">Coming Soon</div>' +
+          '<div class="bento-mode-title">' + t('lessons', 'Lessons') + '</div>' +
+          '<div class="bento-mode-desc">' + t('studyCurriculum', 'Study the curriculum at your own pace') + '</div>' +
+          '<div class="bento-lessons-badge">' + t('comingSoon', 'Coming Soon') + '</div>' +
         '</div>' +
 
         '<div class="bento-card bento-mode-micro" onclick="BentoGrid.openMicroLearning()">' +
           '<div class="bento-mode-icon">📱</div>' +
-          '<div class="bento-mode-title">Micro-Learning</div>' +
-          '<div class="bento-mode-desc">Quick cards. Scroll style.</div>' +
-          '<div class="bento-mode-tests">Vocab · Transformations · MC</div>' +
+          '<div class="bento-mode-title">' + t('microLearning', 'Micro-Learning') + '</div>' +
+          '<div class="bento-mode-desc">' + t('quickCards', 'Quick cards. Scroll style.') + '</div>' +
+          '<div class="bento-mode-tests">' + t('vocabTransformations', 'Vocab · Transformations · MC') + '</div>' +
         '</div>' +
 
       '</div>';
     },
 
     _renderRecommendedExercise: function(exams) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var weak = this._getWeakTopic(exams);
 
       // If no score data yet, suggest first incomplete part
@@ -114,8 +117,8 @@
       if (!weak) {
         return '<div class="bento-recommended-row">' +
           '<div class="bento-card bento-recommended">' +
-            '<div class="bento-recommended-label">🎯 Recommended Exercise</div>' +
-            '<div class="bento-recommended-empty">Complete some exercises to get personalised recommendations!</div>' +
+            '<div class="bento-recommended-label">🎯 ' + t('recommendedExercise', 'Recommended Exercise') + '</div>' +
+            '<div class="bento-recommended-empty">' + t('completeForRecommendations', 'Complete some exercises to get personalised recommendations!') + '</div>' +
           '</div>' +
         '</div>';
       }
@@ -123,25 +126,25 @@
       var sectionIcon = { reading: '📖', listening: '🎧', writing: '✍️', speaking: '🎤' };
       var icon = sectionIcon[weak.section] || '📚';
       var scoreHtml = weak.ratio !== null
-        ? '<div class="bento-rec-score">Your score: ' + Math.round(weak.ratio * 100) + '%</div>'
+        ? '<div class="bento-rec-score">' + t('yourScore', 'Your score') + ': ' + Math.round(weak.ratio * 100) + '%</div>'
         : '';
       var whyHtml = weak.ratio !== null
-        ? '<div class="bento-rec-why">Weakest area — keep practising!</div>'
+        ? '<div class="bento-rec-why">' + t('weakestArea', 'Weakest area — keep practising!') + '</div>'
         : '';
 
       return '<div class="bento-recommended-row">' +
         '<div class="bento-card bento-recommended">' +
           '<div class="bento-recommended-header">' +
-            '<div class="bento-recommended-label">🎯 Recommended Exercise</div>' +
+            '<div class="bento-recommended-label">🎯 ' + t('recommendedExercise', 'Recommended Exercise') + '</div>' +
             whyHtml +
           '</div>' +
           '<div class="bento-recommended-body">' +
             '<span class="bento-rec-icon">' + icon + '</span>' +
             '<div class="bento-rec-info">' +
-              '<div class="bento-rec-title">' + this._escapeHTML(weak.examId) + ' — ' + this._capitalize(weak.section) + (weak.part ? ' Part ' + weak.part : '') + '</div>' +
+              '<div class="bento-rec-title">' + this._escapeHTML(weak.examId) + ' — ' + this._capitalize(weak.section) + (weak.part ? ' ' + t('part', 'Part') + ' ' + weak.part : '') + '</div>' +
               scoreHtml +
             '</div>' +
-            '<button class="bento-rec-btn" onclick="Exercise.openPart(\'' + this._escapeHTML(weak.examId) + '\', \'' + weak.section + '\', ' + (weak.part || 1) + ')">Start →</button>' +
+            '<button class="bento-rec-btn" onclick="Exercise.openPart(\'' + this._escapeHTML(weak.examId) + '\', \'' + weak.section + '\', ' + (weak.part || 1) + ')">' + t('startArrow', 'Start →') + '</button>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -149,6 +152,7 @@
 
     _renderGradeTracker: function(exams) {
       if (typeof ScoreCalculator === 'undefined') return '';
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
 
       var skillTotals = {};
       var examCount = 0;
@@ -175,8 +179,8 @@
       if (skillNames.length === 0) {
         return '<div class="bento-grade-row">' +
           '<div class="bento-card bento-grade-tracker">' +
-            '<div class="bento-grade-title">📊 Grade Tracker</div>' +
-            '<div class="bento-grade-empty">Complete exercises to see your performance here!</div>' +
+            '<div class="bento-grade-title">📊 ' + t('gradeTracker', 'Grade Tracker') + '</div>' +
+            '<div class="bento-grade-empty">' + t('completeForPerformance', 'Complete exercises to see your performance here!') + '</div>' +
           '</div>' +
         '</div>';
       }
@@ -215,8 +219,8 @@
       return '<div class="bento-grade-row">' +
         '<div class="bento-card bento-grade-tracker">' +
           '<div class="bento-grade-header">' +
-            '<div class="bento-grade-title">📊 Grade Tracker</div>' +
-            '<div class="bento-grade-subtitle">Avg. across ' + examCount + ' exam' + (examCount !== 1 ? 's' : '') + ' · Scale ' + scaleMin + '–' + scaleMax + '</div>' +
+            '<div class="bento-grade-title">📊 ' + t('gradeTracker', 'Grade Tracker') + '</div>' +
+            '<div class="bento-grade-subtitle">' + t('avgAcross', 'Avg. across') + ' ' + examCount + ' ' + t('examsLabel', 'exams') + ' · ' + t('scaleLabel', 'Scale') + ' ' + scaleMin + '–' + scaleMax + '</div>' +
           '</div>' +
           '<div class="bento-grade-bars">' + barsHtml + '</div>' +
         '</div>' +
@@ -224,6 +228,7 @@
     },
 
     _renderNextLesson: function(lesson) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var completedParts = lesson.completedParts || 0;
       var totalParts = lesson.totalParts || 1;
       var pct = Math.round((completedParts / totalParts) * 100);
@@ -232,22 +237,22 @@
 
       return '<div class="bento-next-row">' +
         '<div class="bento-card bento-next-lesson">' +
-          '<div class="bento-next-badge">📌 Next Up</div>' +
+          '<div class="bento-next-badge">📌 ' + t('nextUp', 'Next Up') + '</div>' +
           '<div class="bento-next-header">' +
             '<span class="bento-next-icon">' + icon + '</span>' +
             '<div>' +
               '<div class="bento-next-title">' + this._escapeHTML(lesson.examId) + ' — ' + this._capitalize(lesson.section) + '</div>' +
-              '<div class="bento-next-part">Part ' + lesson.part + '</div>' +
+              '<div class="bento-next-part">' + t('part', 'Part') + ' ' + lesson.part + '</div>' +
             '</div>' +
           '</div>' +
           '<div class="bento-next-progress">' +
             '<div class="bento-progress-track">' +
               '<div class="bento-progress-fill" style="width:' + pct + '%"></div>' +
             '</div>' +
-            '<span class="bento-next-progress-text">' + completedParts + '/' + totalParts + ' parts</span>' +
+            '<span class="bento-next-progress-text">' + completedParts + '/' + totalParts + ' ' + t('partsLabel', 'parts') + '</span>' +
           '</div>' +
           '<button class="bento-resume-btn" onclick="Exercise.openPart(\'' + this._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')">' +
-            '▶ Resume' +
+            t('resumeArrow', '▶ Resume') +
           '</button>' +
         '</div>' +
       '</div>';
@@ -336,6 +341,9 @@
       } else if (typeof Dashboard !== 'undefined' && Dashboard.setMode) {
         Dashboard.setMode(mode);
       }
+      if (typeof App !== 'undefined' && App.updateHeaderModeButtons) {
+        App.updateHeaderModeButtons();
+      }
     },
 
     openMicroLearning: function() {
@@ -345,43 +353,46 @@
     },
 
     openLessons: function() {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var el = document.createElement('div');
       el.className = 'bento-generic-modal-overlay';
       el.innerHTML =
         '<div class="bento-generic-modal">' +
           '<button class="bento-generic-modal-close" onclick="this.closest(\'.bento-generic-modal-overlay\').remove()">✕</button>' +
           '<div class="bento-generic-modal-icon">📚</div>' +
-          '<div class="bento-generic-modal-title">Lessons &amp; Curriculum</div>' +
-          '<div class="bento-generic-modal-text">The structured curriculum section is on its way! For now, practise with the exam sections below.</div>' +
-          '<button class="bento-generic-modal-btn" onclick="this.closest(\'.bento-generic-modal-overlay\').remove()">Got it</button>' +
+          '<div class="bento-generic-modal-title">' + t('lessonsCurriculum', 'Lessons &amp; Curriculum') + '</div>' +
+          '<div class="bento-generic-modal-text">' + t('lessonsComingDesc', 'The structured curriculum section is on its way! For now, practise with the exam sections below.') + '</div>' +
+          '<button class="bento-generic-modal-btn" onclick="this.closest(\'.bento-generic-modal-overlay\').remove()">' + t('gotIt', 'Got it') + '</button>' +
         '</div>';
       document.body.appendChild(el);
       el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
     },
 
     _buildStreakSidebarHtml: function() {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       var streakBest = streak ? (streak.longestStreak || 0) : 0;
       var practicedToday = streak ? streak.practicedToday : false;
       var atRisk = (typeof StreakManager !== 'undefined') ? StreakManager.isAtRisk() : false;
       var statusHtml = practicedToday
-        ? '<div style="color:#10b981;font-size:0.8rem;font-weight:700;margin-top:4px;">✅ Streak safe!</div>'
+        ? '<div style="color:#10b981;font-size:0.8rem;font-weight:700;margin-top:4px;">✅ ' + t('streakSafe', 'Streak safe!') + '</div>'
         : (atRisk
-          ? '<div style="color:#f59e0b;font-size:0.8rem;font-weight:700;margin-top:4px;">⚠️ At risk!</div>'
-          : '<div style="color:#64748b;font-size:0.8rem;margin-top:4px;">Practice today</div>');
+          ? '<div style="color:#f59e0b;font-size:0.8rem;font-weight:700;margin-top:4px;">⚠️ ' + t('streakAtRisk', 'At risk!') + '</div>'
+          : '<div style="color:#64748b;font-size:0.8rem;margin-top:4px;">' + t('practiceToday', 'Practice today') + '</div>');
       return '<div class="sidebar-widget" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
-        '<div class="sidebar-widget-title">🔥 Day Streak</div>' +
+        '<div class="sidebar-widget-title">🔥 ' + t('dayStreak', 'Day Streak') + '</div>' +
         '<div style="text-align:center;padding:4px 0;">' +
           '<div style="font-size:2.2rem;font-weight:800;color:#f59e0b;">' + streakCount + '</div>' +
-          '<div style="color:#64748b;font-size:0.8rem;">day streak</div>' +
+          '<div style="color:#64748b;font-size:0.8rem;">' + t('dayStreakLower', 'day streak') + '</div>' +
           statusHtml +
-          '<div style="color:#94a3b8;font-size:0.75rem;margin-top:6px;">Best: ' + streakBest + ' days</div>' +
+          '<div style="color:#94a3b8;font-size:0.75rem;margin-top:6px;">' + t('bestStreak', 'Best') + ': ' + streakBest + ' ' + t('daysLabel', 'days') + '</div>' +
         '</div>' +
       '</div>';
     },
 
     _buildLevelSelectorSidebarHtml: function() {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var currentLevel = AppState.currentLevel || 'C1';
       var levels = [
         { code: 'A2', icon: 'fas fa-seedling', label: 'A2 Key' },
@@ -408,7 +419,7 @@
           '</div>' +
           '<div class="level-selector-chevron"><i class="fas fa-chevron-down"></i></div>' +
         '</div>' +
-        '<div class="level-selector-hint" id="level-selector-hint">Tap to change level</div>' +
+        '<div class="level-selector-hint" id="level-selector-hint">' + t('tapToChangeLevel', 'Tap to change level') + '</div>' +
         '<div class="level-selector-options level-selector-collapsed">' + optionsHtml + '</div>' +
       '</div>';
     },
@@ -445,14 +456,25 @@
 
     _buildMicroLearningSidebarHtml: function() {
       return '<div class="sidebar-widget" onclick="BentoGrid.openMicroLearning()" style="cursor:pointer">' +
-        '<div class="sidebar-widget-title">📱 Micro-Learning</div>' +
-        '<div style="color:#64748b;font-size:0.85rem;margin-bottom:12px;">Quick cards · Vocab · Transformations</div>' +
-        '<button class="bento-resume-btn" style="width:100%;justify-content:center;" onclick="event.stopPropagation();BentoGrid.openMicroLearning()">Start →</button>' +
+        '<div class="sidebar-widget-title">📱 ' + (typeof I18n !== 'undefined' ? I18n.t('microLearning') : 'Micro-Learning') + '</div>' +
+        '<div style="color:#64748b;font-size:0.85rem;margin-bottom:12px;">' + (typeof I18n !== 'undefined' ? I18n.t('vocabTransformations') : 'Vocab · Transformations · MC') + '</div>' +
+        '<button class="bento-resume-btn" style="width:100%;justify-content:center;" onclick="event.stopPropagation();BentoGrid.openMicroLearning()">' + (typeof I18n !== 'undefined' ? I18n.t('startArrow') : 'Start →') + '</button>' +
+      '</div>';
+    },
+
+    _buildCalculatorSidebarHtml: function() {
+      if (typeof ScoreCalculator === 'undefined') return '';
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      return '<div class="sidebar-widget sidebar-calculator-widget" onclick="openScoreCalculator()" style="cursor:pointer">' +
+        '<div class="sidebar-widget-title"><i class="fas fa-calculator"></i> ' + t('scoreCalculator', 'Score Calculator') + '</div>' +
+        '<div style="color:#64748b;font-size:0.85rem;margin-bottom:12px;">' + t('examLevel', 'Exam Level') + ': ' + (AppState.currentLevel || 'C1') + '</div>' +
+        '<button class="bento-resume-btn sidebar-calc-btn" style="width:100%;justify-content:center;" onclick="event.stopPropagation();openScoreCalculator()">' + t('openCalculator', 'Open') + ' →</button>' +
       '</div>';
     },
 
     _buildGradeTrackerSidebarHtml: function(exams) {
       if (typeof ScoreCalculator === 'undefined') return '';
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var skillTotals = {};
       var examCount = 0;
       exams.forEach(function(exam) {
@@ -474,8 +496,8 @@
       var skillNames = Object.keys(skillTotals);
       if (skillNames.length === 0) {
         return '<div class="sidebar-widget">' +
-          '<div class="sidebar-widget-title">📊 Grade Tracker</div>' +
-          '<div style="color:#64748b;font-size:0.85rem;">Complete exercises to see your performance here!</div>' +
+          '<div class="sidebar-widget-title">📊 ' + t('gradeTracker', 'Grade Tracker') + '</div>' +
+          '<div style="color:#64748b;font-size:0.85rem;">' + t('completeForPerformance', 'Complete exercises to see your performance here!') + '</div>' +
         '</div>';
       }
 
@@ -514,7 +536,7 @@
       });
 
       return '<div class="sidebar-widget grade-tracker-carousel-widget" data-total-slides="' + skillNames.length + '">' +
-        '<div class="sidebar-widget-title">📊 Grade Tracker</div>' +
+        '<div class="sidebar-widget-title">📊 ' + t('gradeTracker', 'Grade Tracker') + '</div>' +
         '<div class="grade-carousel-viewport">' + slidesHtml + '</div>' +
         '<div class="grade-carousel-dots"></div>' +
       '</div>';
@@ -556,6 +578,7 @@
     },
 
     _buildNextLessonSidebarHtml: function(lesson) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var completedParts = lesson.completedParts || 0;
       var totalParts = lesson.totalParts || 1;
       var pct = Math.round((completedParts / totalParts) * 100);
@@ -563,25 +586,26 @@
       var icon = sectionIcon[lesson.section] || '📚';
       var self = this;
       return '<div class="sidebar-widget">' +
-        '<div class="sidebar-widget-title">📌 Next Up</div>' +
+        '<div class="sidebar-widget-title">📌 ' + t('nextUp', 'Next Up') + '</div>' +
         '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">' +
           '<span style="font-size:1.5rem;">' + icon + '</span>' +
           '<div>' +
             '<div style="font-weight:700;font-size:0.9rem;color:#0f172a;">' + self._escapeHTML(lesson.examId) + ' — ' + self._capitalize(lesson.section) + '</div>' +
-            '<div style="color:#64748b;font-size:0.8rem;">Part ' + lesson.part + '</div>' +
+            '<div style="color:#64748b;font-size:0.8rem;">' + t('part', 'Part') + ' ' + lesson.part + '</div>' +
           '</div>' +
         '</div>' +
         '<div class="bento-next-progress" style="margin-bottom:10px;">' +
           '<div class="bento-progress-track">' +
             '<div class="bento-progress-fill" style="width:' + pct + '%"></div>' +
           '</div>' +
-          '<span class="bento-next-progress-text">' + completedParts + '/' + totalParts + ' parts</span>' +
+          '<span class="bento-next-progress-text">' + completedParts + '/' + totalParts + ' ' + t('partsLabel', 'parts') + '</span>' +
         '</div>' +
-        '<button class="bento-resume-btn" style="width:100%;justify-content:center;" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')">▶ Resume</button>' +
+        '<button class="bento-resume-btn" style="width:100%;justify-content:center;" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')">' + t('resumeArrow', '▶ Resume') + '</button>' +
       '</div>';
     },
 
     openStreakSection: function() {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       var streakBest = streak ? (streak.longestStreak || 0) : 0;
@@ -613,10 +637,10 @@
       calHtml += '</div>';
 
       var statusHtml = practicedToday
-        ? '<div class="bento-streak-modal-status bento-streak-safe">✅ Streak safe today!</div>'
+        ? '<div class="bento-streak-modal-status bento-streak-safe">✅ ' + t('streakSafeToday', 'Streak safe today!') + '</div>'
         : (StreakManager && StreakManager.isAtRisk()
-          ? '<div class="bento-streak-modal-status bento-streak-risk">⚠️ Practice now to keep your streak!</div>'
-          : '<div class="bento-streak-modal-status">Start today\'s practice to build your streak</div>');
+          ? '<div class="bento-streak-modal-status bento-streak-risk">⚠️ ' + t('practiceNowStreak', 'Practice now to keep your streak!') + '</div>'
+          : '<div class="bento-streak-modal-status">' + t('startTodayStreak', 'Start today\'s practice to build your streak') + '</div>');
 
       var el = document.createElement('div');
       el.className = 'bento-streak-modal-overlay';
@@ -625,14 +649,14 @@
           '<button class="bento-streak-modal-close" onclick="this.closest(\'.bento-streak-modal-overlay\').remove()">✕</button>' +
           '<div class="bento-streak-modal-fire">🔥</div>' +
           '<div class="bento-streak-modal-count">' + streakCount + '</div>' +
-          '<div class="bento-streak-modal-label">day streak</div>' +
+          '<div class="bento-streak-modal-label">' + t('dayStreakLower', 'day streak') + '</div>' +
           statusHtml +
           '<div class="bento-streak-modal-stats">' +
-            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + streakBest + '</div><div class="bento-streak-stat-lbl">Best</div></div>' +
-            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + totalDays + '</div><div class="bento-streak-stat-lbl">Total Days</div></div>' +
-            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + (practicedToday ? '✅' : '❌') + '</div><div class="bento-streak-stat-lbl">Today</div></div>' +
+            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + streakBest + '</div><div class="bento-streak-stat-lbl">' + t('bestStreak', 'Best') + '</div></div>' +
+            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + totalDays + '</div><div class="bento-streak-stat-lbl">' + t('totalDaysLabel', 'Total Days') + '</div></div>' +
+            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + (practicedToday ? '✅' : '❌') + '</div><div class="bento-streak-stat-lbl">' + t('todayLabel', 'Today') + '</div></div>' +
           '</div>' +
-          '<div class="bento-streak-modal-section">Last 28 days</div>' +
+          '<div class="bento-streak-modal-section">' + t('last28Days', 'Last 28 days') + '</div>' +
           calHtml +
         '</div>';
       document.body.appendChild(el);

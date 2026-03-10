@@ -47,6 +47,9 @@
       // Renderizar dashboard
       Dashboard.render();
       
+      // Update header mode buttons
+      this.updateHeaderModeButtons();
+      
       // Set initial history state
       history.replaceState({ view: 'dashboard' }, '');
       
@@ -110,6 +113,18 @@
       } else {
         Dashboard.render();
       }
+      this.updateHeaderModeButtons();
+    },
+    
+    updateHeaderModeButtons: function() {
+      var mode = AppState.currentMode || 'practice';
+      document.querySelectorAll('.header-mode-btn').forEach(function(btn) {
+        if (btn.getAttribute('data-mode') === mode) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
     },
     
     filterByLevel: function(level) {
