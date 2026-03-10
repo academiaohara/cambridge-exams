@@ -432,6 +432,12 @@
       if (!qDisplay) return;
       qDisplay.style.display = '';
 
+      // Offset sticky top to sit below the sticky header
+      var header = document.querySelector('.main-header');
+      if (header) {
+        qDisplay.style.top = header.offsetHeight + 'px';
+      }
+
       // Determine part type for layout
       var partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
       var partType = partConfig ? partConfig.type : '';
