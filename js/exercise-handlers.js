@@ -331,7 +331,12 @@
         }
 
         const qDisplay = document.getElementById('explanation-question-display');
-        if (qDisplay) qDisplay.style.display = 'none';
+        if (qDisplay) {
+          qDisplay.style.display = 'none';
+          qDisplay.style.position = '';
+          qDisplay.style.left = '';
+          qDisplay.style.width = '';
+        }
 
         AppState.explanationActiveQuestion = null;
       }
@@ -441,6 +446,24 @@
       // Determine part type for layout
       var partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
       var partType = partConfig ? partConfig.type : '';
+
+      // For listening parts 1 (multiple-choice) and 4 (dual-matching), use fixed positioning.
+      // Note: position is calculated at activation time; layout changes after this point are not tracked.
+      var isListeningFixed = AppState.currentSection === 'listening' &&
+        (partType === 'multiple-choice' || partType === 'dual-matching');
+      if (isListeningFixed) {
+        qDisplay.style.position = 'fixed';
+        var container = document.querySelector('.exercise-container');
+        if (container) {
+          var cRect = container.getBoundingClientRect();
+          qDisplay.style.left = cRect.left + 'px';
+          qDisplay.style.width = cRect.width + 'px';
+        }
+      } else {
+        qDisplay.style.position = '';
+        qDisplay.style.left = '';
+        qDisplay.style.width = '';
+      }
 
       var html = '<span class="eq-number">' + qNum + '</span>';
       html += '<div class="eq-content">';
