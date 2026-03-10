@@ -432,8 +432,8 @@
       if (!qDisplay) return;
       qDisplay.style.display = '';
 
-      // Apply sticky-mode only for Listening parts 1 and 4
-      if (AppState.currentSection === 'listening' && (AppState.currentPart === 1 || AppState.currentPart === 4)) {
+      // Apply sticky-mode only for Listening parts 2 and 3
+      if (AppState.currentSection === 'listening' && (AppState.currentPart === 2 || AppState.currentPart === 3)) {
         qDisplay.classList.add('sticky-mode');
       } else {
         qDisplay.classList.remove('sticky-mode');
