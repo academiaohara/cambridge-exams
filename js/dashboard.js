@@ -24,18 +24,6 @@
       // Bento Grid premium header
       html += '<div id="bento-grid-container"></div>';
       
-      // Mode toggle
-      html += `
-        <div class="mode-toggle">
-          <button class="mode-btn ${AppState.currentMode === 'practice' ? 'active' : ''}" data-mode="practice" onclick="Dashboard.setMode('practice')">
-            <i class="fas fa-pencil-alt"></i> ${I18n.t('practiceMode')}
-          </button>
-          <button class="mode-btn ${AppState.currentMode === 'exam' ? 'active' : ''}" data-mode="exam" onclick="Dashboard.setMode('exam')">
-            <i class="fas fa-file-alt"></i> ${I18n.t('examMode')}
-          </button>
-        </div>
-      `;
-      
       exams.forEach(exam => {
         if (exam.status === 'coming_soon') {
           html += this.renderComingSoonExam(exam);
