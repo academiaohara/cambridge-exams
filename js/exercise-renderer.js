@@ -521,18 +521,12 @@
         return withMarkers.replace(/\n/g, '<br>');
       };
 
-      // Determine whether to show the extract number badge (hidden for sentence-completion / part 2)
-      var currentPartConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
-      var showExtractNumber = !currentPartConfig || currentPartConfig.type !== 'sentence-completion';
-
       if (exercise.content.extracts && exercise.content.extracts.length > 0) {
         exercise.content.extracts.forEach(function(extract) {
           if (!extract.audio_script) return;
           html += '<div class="transcript-extract" data-extract-id="' + extract.id + '">';
           html += '<div class="transcript-extract-header">';
-          if (showExtractNumber) {
-            html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
-          }
+          html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
           html += '<span>' + escapeHtml(extract.context) + '</span>';
           html += '</div>';
           html += '<div class="transcript-text">' + processScript(extract.audio_script) + '</div>';
