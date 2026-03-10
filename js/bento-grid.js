@@ -454,7 +454,7 @@
       return '<div class="sidebar-widget grade-tracker-carousel-widget" data-total-slides="' + skillNames.length + '">' +
         '<div class="sidebar-widget-title">📊 Grade Tracker</div>' +
         '<div class="grade-carousel-viewport">' + slidesHtml + '</div>' +
-        '<div class="grade-carousel-dots" data-total="' + skillNames.length + '"></div>' +
+        '<div class="grade-carousel-dots"></div>' +
       '</div>';
     },
 
@@ -476,9 +476,9 @@
       }
 
       var currentSlide = 0;
-      if (window._gradeCarouselTimer) clearInterval(window._gradeCarouselTimer);
+      if (BentoGrid._gradeCarouselTimer) clearInterval(BentoGrid._gradeCarouselTimer);
 
-      window._gradeCarouselTimer = setInterval(function() {
+      BentoGrid._gradeCarouselTimer = setInterval(function() {
         var slides = widget.querySelectorAll('.grade-carousel-slide');
         var dots = widget.querySelectorAll('.grade-carousel-dot');
         if (!slides.length) return;
