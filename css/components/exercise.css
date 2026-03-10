@@ -3,11 +3,11 @@
 
 .exercise-container {
   background: white;
-  border-radius: 30px;
+  border-radius: 20px;
   padding: 30px;
   box-shadow: var(--shadow-lg);
   margin-bottom: 40px;
-  border: 3px solid #e2e8f0;
+  border: 1px solid var(--border-light);
 }
 
 .exercise-header {
@@ -106,7 +106,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f8fafc;
+  background: var(--bg-light);
   border-radius: 16px;
   padding: 12px 20px;
   margin-bottom: 20px;
@@ -180,10 +180,10 @@
   font-size: 1.15rem;
   line-height: 1.9;
   color: var(--text-dark);
-  background: #fafafa;
+  background: #fafcff;
   padding: 28px;
   border-radius: 20px;
-  border: 1px solid #f1f5f9;
+  border: 1px solid var(--border-light);
   position: relative;
   text-align: justify;
 }
@@ -245,7 +245,7 @@
   border-radius: 30px;
   background: #f8fafc;
   color: var(--text-medium);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
@@ -354,7 +354,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 .part-nav-cell:hover {
@@ -470,7 +470,7 @@
   border-radius: 12px;
   font-size: 0.95rem;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Nunito', sans-serif;
   cursor: pointer;
   border: none;
   transition: all 0.2s;

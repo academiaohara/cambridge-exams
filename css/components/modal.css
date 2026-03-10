@@ -22,7 +22,7 @@
   position: relative;
   border: 1px solid var(--border-light);
   border-bottom: none;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -4px 16px rgba(45, 46, 95, 0.06);
   pointer-events: auto;
   transform: translateY(0);
   transition: transform 0.3s ease;
@@ -118,5 +118,5 @@
 .opt-btn:hover {
   background: var(--secondary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 12px rgba(30, 157, 142, 0.25);
 }

@@ -132,7 +132,7 @@
 }
 
 .qnav-title {
-  background: #1e3a8a;
+  background: #2D2E5F;
   color: white;
   padding: 5px 15px;
   border-radius: 20px;
@@ -265,12 +265,12 @@
 .qnav-opt-btn:hover:not(.disabled) {
   background: var(--secondary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 12px rgba(45, 46, 95, 0.3);
 }
 
 .qnav-opt-btn.selected {
   background: var(--secondary);
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 2px 8px rgba(45, 46, 95, 0.35);
 }
 
 .qnav-opt-btn.correct {

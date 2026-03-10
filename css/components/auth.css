@@ -9,7 +9,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: linear-gradient(135deg, rgba(15,43,102,0.85) 0%, rgba(124,58,237,0.85) 100%);
+  background: linear-gradient(135deg, rgba(30,31,66,0.85) 0%, rgba(30,157,142,0.85) 100%);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   align-items: center;
@@ -27,12 +27,12 @@
 /* ── Auth modal card ────────────────────────────────────────────────────── */
 .auth-modal-card {
   background: #fff;
-  border-radius: 24px;
+  border-radius: 20px;
   padding: 48px 40px;
   width: 100%;
   max-width: 400px;
   margin: 16px;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 40px rgba(45, 46, 95, 0.15);
   text-align: center;
   animation: authCardIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
 }
@@ -52,7 +52,7 @@
   margin: 0 auto 20px;
   font-size: 1.8rem;
   color: #fff;
-  box-shadow: 0 8px 20px rgba(30,58,138,0.3);
+  box-shadow: 0 4px 12px rgba(45, 46, 95, 0.2);
 }
 
 .auth-modal-card h2 {
@@ -156,8 +156,8 @@
   cursor: pointer;
   padding: 6px 12px 6px 6px;
   border-radius: 50px;
-  background: rgba(124, 58, 237, 0.06);
-  border: 1px solid rgba(124, 58, 237, 0.12);
+  background: rgba(45, 46, 95, 0.04);
+  border: 1px solid rgba(45, 46, 95, 0.08);
   transition: background 0.2s;
   color: var(--text-dark);
   font-size: 0.875rem;
@@ -165,7 +165,7 @@
   user-select: none;
 }
 .user-widget:hover {
-  background: rgba(124, 58, 237, 0.12);
+  background: rgba(45, 46, 95, 0.08);
 }
 
 .user-avatar {
@@ -207,8 +207,8 @@
   width: 300px;
   background: #fff;
   border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 30px rgba(45, 46, 95, 0.1);
+  border: 1px solid var(--border-light);
   flex-direction: column;
   overflow: hidden;
   z-index: 8888;

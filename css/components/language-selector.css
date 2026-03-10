@@ -5,8 +5,8 @@
 }
 
 .language-selector-btn {
-  background: rgba(124, 58, 237, 0.06);
-  border: 1px solid rgba(124, 58, 237, 0.12);
+  background: rgba(45, 46, 95, 0.06);
+  border: 1px solid rgba(45, 46, 95, 0.12);
   border-radius: 40px;
   padding: 5px 15px 5px 6px;
   color: var(--text-dark);
@@ -21,8 +21,8 @@
 }
 
 .language-selector-btn:hover {
-  background: rgba(124, 58, 237, 0.12);
-  border-color: rgba(124, 58, 237, 0.25);
+  background: rgba(45, 46, 95, 0.12);
+  border-color: rgba(45, 46, 95, 0.25);
   transform: translateY(-1px);
 }
 
@@ -34,10 +34,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(124, 58, 237, 0.25);
+  border: 2px solid rgba(45, 46, 95, 0.25);
   flex-shrink: 0;
-  background: rgba(124, 58, 237, 0.06);
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.1);
+  background: rgba(45, 46, 95, 0.06);
+  box-shadow: 0 2px 8px rgba(45, 46, 95, 0.1);
 }
 
 .flag-circle-wrapper .fi {
@@ -50,7 +50,7 @@
 }
 
 .flag-circle-wrapper:hover {
-  border-color: #7c3aed;
+  border-color: #2D2E5F;
   transform: scale(1.05);
   transition: all 0.2s;
 }
@@ -72,7 +72,7 @@
   right: 0;
   background: white;
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 24px rgba(45, 46, 95, 0.1);
   min-width: 260px;
   max-height: 400px;
   overflow-y: auto;
@@ -130,8 +130,8 @@
 }
 
 .language-option:hover {
-  background: linear-gradient(135deg, #ede7f6, #e8eaf6);
-  color: #311b92;
+  background: linear-gradient(135deg, #eef2ff, #e8f0ff);
+  color: #2D2E5F;
 }
 
 .language-option .fi {
@@ -158,6 +158,6 @@
 }
 
 .language-option:hover .lang-code {
-  background: rgba(124, 58, 237, 0.1);
-  color: #311b92;
+  background: rgba(45, 46, 95, 0.1);
+  color: #2D2E5F;
 }
