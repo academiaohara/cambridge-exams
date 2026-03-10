@@ -355,7 +355,10 @@
     },
 
     selectMode: function(mode) {
-      if (typeof Dashboard !== 'undefined' && Dashboard.setMode) {
+      if (typeof Dashboard !== 'undefined' && Dashboard.renderSubpage) {
+        history.pushState({ view: 'subpage', mode: mode }, '');
+        Dashboard.renderSubpage(mode);
+      } else if (typeof Dashboard !== 'undefined' && Dashboard.setMode) {
         Dashboard.setMode(mode);
       }
     },
@@ -379,6 +382,124 @@
         '</div>';
       document.body.appendChild(el);
       el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
+    },
+
+    _buildStreakSidebarHtml: function() {
+      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
+      var streakCount = streak ? (streak.currentStreak || 0) : 0;
+      var streakBest = streak ? (streak.longestStreak || 0) : 0;
+      var practicedToday = streak ? streak.practicedToday : false;
+      var atRisk = (typeof StreakManager !== 'undefined') ? StreakManager.isAtRisk() : false;
+      var statusHtml = practicedToday
+        ? '<div style="color:#10b981;font-size:0.8rem;font-weight:700;margin-top:4px;">✅ Streak safe!</div>'
+        : (atRisk
+          ? '<div style="color:#f59e0b;font-size:0.8rem;font-weight:700;margin-top:4px;">⚠️ At risk!</div>'
+          : '<div style="color:#64748b;font-size:0.8rem;margin-top:4px;">Practice today</div>');
+      return '<div class="sidebar-widget" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
+        '<div class="sidebar-widget-title">🔥 Day Streak</div>' +
+        '<div style="text-align:center;padding:4px 0;">' +
+          '<div style="font-size:2.2rem;font-weight:800;color:#f59e0b;">' + streakCount + '</div>' +
+          '<div style="color:#64748b;font-size:0.8rem;">day streak</div>' +
+          statusHtml +
+          '<div style="color:#94a3b8;font-size:0.75rem;margin-top:6px;">Best: ' + streakBest + ' days</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _buildMicroLearningSidebarHtml: function() {
+      return '<div class="sidebar-widget" onclick="BentoGrid.openMicroLearning()" style="cursor:pointer">' +
+        '<div class="sidebar-widget-title">📱 Micro-Learning</div>' +
+        '<div style="color:#64748b;font-size:0.85rem;margin-bottom:12px;">Quick cards · Vocab · Transformations</div>' +
+        '<button class="bento-resume-btn" style="width:100%;justify-content:center;" onclick="event.stopPropagation();BentoGrid.openMicroLearning()">Start →</button>' +
+      '</div>';
+    },
+
+    _buildGradeTrackerSidebarHtml: function(exams) {
+      if (typeof ScoreCalculator === 'undefined') return '';
+      var skillTotals = {};
+      var examCount = 0;
+      exams.forEach(function(exam) {
+        if (exam.status !== 'available') return;
+        try {
+          var scores = ScoreCalculator.getAllSkillScores(exam.id);
+          var hasData = scores.some(function(s) { return s.raw > 0; });
+          if (!hasData) return;
+          examCount++;
+          scores.forEach(function(s) {
+            if (!skillTotals[s.skill]) skillTotals[s.skill] = { raw: 0, maxRaw: 0, scale: 0, count: 0 };
+            skillTotals[s.skill].raw += s.raw;
+            skillTotals[s.skill].maxRaw += s.maxRaw;
+            skillTotals[s.skill].scale += s.scale;
+            skillTotals[s.skill].count++;
+          });
+        } catch (e) { /* skip */ }
+      });
+      var skillNames = Object.keys(skillTotals);
+      if (skillNames.length === 0) {
+        return '<div class="sidebar-widget">' +
+          '<div class="sidebar-widget-title">📊 Grade Tracker</div>' +
+          '<div style="color:#64748b;font-size:0.85rem;">Complete exercises to see your performance here!</div>' +
+        '</div>';
+      }
+      var levelData = AppState.currentLevel || 'C1';
+      var scaleBounds = { A2: [82, 140], B1: [102, 160], B2: [122, 180], C1: [142, 200], C2: [162, 220] };
+      var bounds = scaleBounds[levelData] || [142, 200];
+      var scaleMin = bounds[0];
+      var scaleMax = bounds[1];
+      var skillColors = {
+        'Reading': '#3b82f6',
+        'Use of English': '#8b5cf6',
+        'Writing': '#10b981',
+        'Listening': '#f59e0b',
+        'Speaking': '#ef4444'
+      };
+      var barsHtml = '';
+      skillNames.forEach(function(skill) {
+        var d = skillTotals[skill];
+        var avgScale = d.count > 0 ? Math.round(d.scale / d.count) : scaleMin;
+        var pct = Math.round(((avgScale - scaleMin) / (scaleMax - scaleMin)) * 100);
+        pct = Math.max(2, Math.min(100, pct));
+        var color = skillColors[skill] || '#3b82f6';
+        barsHtml +=
+          '<div class="bento-grade-bar-row">' +
+            '<div class="bento-grade-skill" style="font-size:0.78rem;">' + skill + '</div>' +
+            '<div class="bento-grade-track">' +
+              '<div class="bento-grade-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
+            '</div>' +
+            '<div class="bento-grade-score" style="font-size:0.78rem;">' + avgScale + '</div>' +
+          '</div>';
+      });
+      return '<div class="sidebar-widget">' +
+        '<div class="sidebar-widget-title">📊 Grade Tracker</div>' +
+        '<div style="color:#64748b;font-size:0.75rem;margin-bottom:10px;">Avg. across ' + examCount + ' exam' + (examCount !== 1 ? 's' : '') + ' · Scale ' + scaleMin + '–' + scaleMax + '</div>' +
+        '<div class="bento-grade-bars">' + barsHtml + '</div>' +
+      '</div>';
+    },
+
+    _buildNextLessonSidebarHtml: function(lesson) {
+      var completedParts = lesson.completedParts || 0;
+      var totalParts = lesson.totalParts || 1;
+      var pct = Math.round((completedParts / totalParts) * 100);
+      var sectionIcon = { reading: '📖', listening: '🎧', writing: '✍️', speaking: '🎤' };
+      var icon = sectionIcon[lesson.section] || '📚';
+      var self = this;
+      return '<div class="sidebar-widget">' +
+        '<div class="sidebar-widget-title">📌 Next Up</div>' +
+        '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">' +
+          '<span style="font-size:1.5rem;">' + icon + '</span>' +
+          '<div>' +
+            '<div style="font-weight:700;font-size:0.9rem;color:#0f172a;">' + self._escapeHTML(lesson.examId) + ' — ' + self._capitalize(lesson.section) + '</div>' +
+            '<div style="color:#64748b;font-size:0.8rem;">Part ' + lesson.part + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="bento-next-progress" style="margin-bottom:10px;">' +
+          '<div class="bento-progress-track">' +
+            '<div class="bento-progress-fill" style="width:' + pct + '%"></div>' +
+          '</div>' +
+          '<span class="bento-next-progress-text">' + completedParts + '/' + totalParts + ' parts</span>' +
+        '</div>' +
+        '<button class="bento-resume-btn" style="width:100%;justify-content:center;" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')">▶ Resume</button>' +
+      '</div>';
     },
 
     openStreakSection: function() {

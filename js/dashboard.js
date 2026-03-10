@@ -6,7 +6,8 @@
       if (!content) return;
       if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
       
-      const exams = window.EXAMS_DATA[AppState.currentLevel] || [];
+      const level = AppState.currentLevel || 'C1';
+      const exams = window.EXAMS_DATA[level] || [];
       
       if (exams.length === 0) {
         content.innerHTML = `
@@ -19,19 +20,36 @@
         return;
       }
       
-      let html = '<div class="exams-container">';
-      
-      // Bento Grid premium header
-      html += '<div id="bento-grid-container"></div>';
-      
+      let examListHtml = '';
       exams.forEach(exam => {
         if (exam.status === 'coming_soon') {
-          html += this.renderComingSoonExam(exam);
+          examListHtml += this.renderComingSoonExam(exam);
         } else {
-          html += this.renderAvailableExam(exam, expandExamId);
+          examListHtml += this.renderAvailableExam(exam, expandExamId);
         }
       });
-      html += '</div>';
+
+      // Build sidebar content
+      var leftSidebarContent = '';
+      var rightSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined') {
+        leftSidebarContent = BentoGrid._buildStreakSidebarHtml() + BentoGrid._buildMicroLearningSidebarHtml();
+        var nextLesson = BentoGrid._findNextLesson(exams);
+        rightSidebarContent = BentoGrid._buildGradeTrackerSidebarHtml(exams);
+        if (nextLesson) {
+          rightSidebarContent += BentoGrid._buildNextLessonSidebarHtml(nextLesson);
+        }
+      }
+
+      var html = '<div class="dashboard-layout">' +
+        '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+        '<div class="dashboard-center">' +
+          '<div id="bento-grid-container"></div>' +
+          '<div class="exams-container">' + examListHtml + '</div>' +
+        '</div>' +
+        '<div class="dashboard-right-sidebar">' + rightSidebarContent + '</div>' +
+      '</div>';
+
       content.innerHTML = html;
 
       // Render bento grid into its container after DOM is updated
@@ -39,6 +57,54 @@
         const bentoContainer = document.getElementById('bento-grid-container');
         if (bentoContainer) BentoGrid.render(bentoContainer);
       }
+    },
+
+    renderSubpage: function(mode) {
+      AppState.currentMode = mode;
+      localStorage.setItem('preferred_mode', mode);
+      if (typeof App !== 'undefined') App.restoreExamStatuses();
+
+      const content = document.getElementById('main-content');
+      if (!content) return;
+      if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
+
+      const level = AppState.currentLevel || 'C1';
+      const exams = window.EXAMS_DATA[level] || [];
+
+      var modeConfig = mode === 'exam'
+        ? { icon: '⏱️', title: 'The Arena', subtitle: 'Timed exam mode' }
+        : { icon: '🛡️', title: 'Practice', subtitle: 'No limits. Safe space.' };
+
+      var subpageHeader = '<div class="subpage-header">' +
+        '<button class="subpage-back-btn" onclick="history.back()">← ' + (typeof I18n !== 'undefined' ? I18n.t('backToDashboard') || 'Back' : 'Back') + '</button>' +
+        '<div>' +
+          '<div class="subpage-title">' + modeConfig.icon + ' ' + modeConfig.title + '</div>' +
+          '<div class="subpage-subtitle">' + modeConfig.subtitle + '</div>' +
+        '</div>' +
+      '</div>';
+
+      let examListHtml = '';
+      exams.forEach(exam => {
+        if (exam.status === 'coming_soon') {
+          examListHtml += this.renderComingSoonExam(exam);
+        } else {
+          examListHtml += this.renderAvailableExam(exam, null);
+        }
+      });
+
+      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildStreakSidebarHtml() : '';
+      var rightSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildGradeTrackerSidebarHtml(exams) : '';
+
+      var html = '<div class="dashboard-layout">' +
+        '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+        '<div class="dashboard-center">' +
+          subpageHeader +
+          '<div class="exams-container">' + examListHtml + '</div>' +
+        '</div>' +
+        '<div class="dashboard-right-sidebar">' + rightSidebarContent + '</div>' +
+      '</div>';
+
+      content.innerHTML = html;
     },
     
     renderComingSoonExam: function(exam) {

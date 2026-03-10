@@ -59,6 +59,8 @@
           } else {
             Dashboard.render();
           }
+        } else if (state.view === 'subpage' && state.mode) {
+          Dashboard.renderSubpage(state.mode);
         } else if (state.view === 'exercise' && state.examId && state.section && state.part) {
           Exercise.openPart(state.examId, state.section, state.part);
         }
