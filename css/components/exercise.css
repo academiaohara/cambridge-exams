@@ -185,6 +185,7 @@
   border-radius: 20px;
   border: 1px solid #f1f5f9;
   position: relative;
+  text-align: justify;
 }
 
 .reading-text-enhanced p {
@@ -536,6 +537,9 @@
   font-size: 1rem;
   line-height: 1.5;
   color: var(--text-dark);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .eq-number {
@@ -733,4 +737,5 @@
 .listening-transcript-main .transcript-text {
   font-size: 1rem;
   line-height: 1.8;
+  text-align: justify;
 }

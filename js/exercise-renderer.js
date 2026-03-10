@@ -268,9 +268,8 @@
             
             ${contentHeaderHTML}
             
-            <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-            
             <div class="exercise-main-layout" lang="en">
+              <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
               <div class="reading-text-enhanced" id="selectable-text">
                 ${paragraphsHTML}
               </div>
