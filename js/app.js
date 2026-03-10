@@ -4,6 +4,11 @@
     init: async function() {
       console.log('🚀 Iniciando aplicación v' + CONFIG.APP_VERSION);
       
+      // Inicializar autenticación Supabase
+      if (typeof Auth !== 'undefined') {
+        await Auth.init();
+      }
+      
       // Cargar nivel guardado
       const savedLevel = localStorage.getItem('preferred_level') || 'C1';
       AppState.currentLevel = savedLevel;

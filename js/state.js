@@ -38,6 +38,9 @@
     examCurrentSectionIndex: 0,
     sectionElapsedSeconds: 0,
     explanationMode: false,
-    explanationActiveQuestion: null
+    explanationActiveQuestion: null,
+    // Auth state
+    isAuthenticated: false,
+    currentUser: null
   };
 })();
