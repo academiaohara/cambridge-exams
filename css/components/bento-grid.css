@@ -846,6 +846,12 @@
   box-shadow: 0 0 0 3px rgba(90, 159, 212, 0.15);
 }
 
+.sidebar-unit-item.expanded .sidebar-unit-dot {
+  background: white;
+  border-color: #1a9fd4;
+  box-shadow: none;
+}
+
 .sidebar-unit-dot.unit-completed {
   background: #1E9D8E;
   border-color: #1E9D8E;
@@ -859,36 +865,37 @@
 }
 
 .sidebar-unit-lessons {
-  margin-top: 4px;
-  margin-left: 2px;
-  padding-left: 8px;
-  border-left: 1.5px solid rgba(120, 176, 224, 0.25);
+  margin-top: 6px;
+  margin-left: 0;
+  padding-left: 0;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 6px;
 }
 
 .sidebar-lesson-item {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #5a7a9a;
-  padding: 4px 10px;
-  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1a7fbf;
+  padding: 8px 16px;
+  border-radius: 25px;
+  border: 2px solid #1a9fd4;
+  background: white;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
 .sidebar-lesson-item i {
-  font-size: 0.6rem;
-  opacity: 0.5;
+  display: none;
 }
 
 .sidebar-lesson-item:hover {
-  background: rgba(120, 176, 224, 0.12);
-  color: #2a4a6a;
+  background: rgba(26, 159, 212, 0.08);
+  color: #1a6fa0;
+  box-shadow: 0 2px 8px rgba(26, 159, 212, 0.15);
 }
 
 /* ── Right Sidebar: Pastel widget cards ── */
