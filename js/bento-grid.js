@@ -494,6 +494,7 @@
         var dotClass = hasCompleted ? 'unit-completed' : (hasInProgress ? 'unit-open' : '');
         html += '<div class="sidebar-unit-item" data-exam-id="' + unit.id + '" onclick="BentoGrid._toggleUnit(this)">' +
           '<div class="sidebar-unit-dot ' + dotClass + '"></div>' +
+          '<div class="sidebar-unit-content">' +
           '<div class="sidebar-unit-label">' + t('unit', 'Unit') + ' ' + unit.number + '</div>';
 
         // Expandable lessons section (always present, hidden by default)
@@ -505,7 +506,8 @@
         });
         html += '</div>';
 
-        html += '</div>';
+        html += '</div>'; // close sidebar-unit-content
+        html += '</div>'; // close sidebar-unit-item
       });
       html += '</div>';
 
