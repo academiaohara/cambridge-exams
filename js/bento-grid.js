@@ -577,87 +577,69 @@
     _buildGradeTrackerSidebarHtml: function(exams) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var level = AppState.currentLevel || 'C1';
-      var noScore = t('noScoreYet', '–');
 
-      // Collect scores from localStorage directly
-      var sectionScores = {}; // { 'reading': [{score, updatedAt}, ...], ... }
-      var sections = ['reading', 'listening', 'writing', 'speaking'];
-
-      try {
-        for (var i = 0; i < localStorage.length; i++) {
-          var k = localStorage.key(i);
-          if (!k || !k.startsWith('cambridge_')) continue;
-          var raw = localStorage.getItem(k);
-          if (!raw) continue;
-          var entry;
-          try { entry = JSON.parse(raw); } catch(e) { continue; }
-          if (!entry.answersChecked) continue;
-          if (entry.level !== level) continue;
-          if (entry.score === null || entry.score === undefined) continue;
-          var sec = entry.section;
-          if (sections.indexOf(sec) === -1) continue;
-          if (!sectionScores[sec]) sectionScores[sec] = [];
-          sectionScores[sec].push({
-            score: entry.score,
-            updatedAt: entry.updatedAt || ''
-          });
-        }
-      } catch(e) {}
-
-      var skillDisplayNames = {
-        'reading': 'Reading',
-        'listening': 'Listening',
-        'writing': 'Writing',
-        'speaking': 'Speaking'
-      };
+      // Collect skill scores via ScoreCalculator
+      var skillTotals = {}; // { skill: { scale, count } }
+      if (typeof ScoreCalculator !== 'undefined') {
+        (exams || []).forEach(function(exam) {
+          if (exam.status !== 'available') return;
+          try {
+            var scores = ScoreCalculator.getAllSkillScores(exam.id);
+            scores.forEach(function(s) {
+              if (s.raw <= 0) return;
+              if (!skillTotals[s.skill]) skillTotals[s.skill] = { scale: 0, count: 0 };
+              skillTotals[s.skill].scale += s.scale;
+              skillTotals[s.skill].count++;
+            });
+          } catch(e) {}
+        });
+      }
 
       var skillColors = {
-        'reading': '#3b82f6',
-        'listening': '#f59e0b',
-        'writing': '#10b981',
-        'speaking': '#ef4444'
+        'Reading': '#3b82f6',
+        'Use of English': '#8b5cf6',
+        'Writing': '#10b981',
+        'Listening': '#f59e0b',
+        'Speaking': '#ef4444'
       };
 
-      // Always show all sections — use dash when no data
-      var barsHtml = '';
-      sections.forEach(function(sec) {
-        var entries = sectionScores[sec];
-        var color = skillColors[sec] || '#3b82f6';
-        var name = skillDisplayNames[sec] || sec;
-        if (entries && entries.length > 0) {
-          // Sort by updatedAt desc, take latest
-          entries.sort(function(a, b) { return b.updatedAt.localeCompare(a.updatedAt); });
-          var latest = entries[0];
-          var pct = Math.round(Math.max(2, Math.min(100, latest.score)));
-          barsHtml +=
-            '<div class="bento-grade-bar-row">' +
-              '<div class="bento-grade-skill">' + name + '</div>' +
-              '<div class="bento-grade-track">' +
-                '<div class="bento-grade-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
-              '</div>' +
-              '<div class="bento-grade-score">' + pct + '%</div>' +
-            '</div>';
-        } else {
-          barsHtml +=
-            '<div class="bento-grade-bar-row">' +
-              '<div class="bento-grade-skill">' + name + '</div>' +
-              '<div class="bento-grade-track">' +
-                '<div class="bento-grade-fill" style="width:0%;background:' + color + '"></div>' +
-              '</div>' +
-              '<div class="bento-grade-score" style="opacity:0.5">' + noScore + '</div>' +
-            '</div>';
+      var allSkills = ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
+      var slides = [];
+
+      allSkills.forEach(function(skill) {
+        var d = skillTotals[skill];
+        var color = skillColors[skill] || '#5a2818';
+        if (d && d.count > 0) {
+          var avgScale = Math.round(d.scale / d.count);
+          var gradeInfo = (typeof ScoreCalculator !== 'undefined') ? ScoreCalculator.getGradeInfo(avgScale, level) : { cefr: '–' };
+          slides.push(
+            '<div class="grade-carousel-slide" style="display:flex;color:' + color + '">' +
+              '<div class="grade-carousel-skill" style="color:' + color + ';opacity:0.75">' + skill + '</div>' +
+              '<div class="grade-carousel-raw" style="color:' + color + '">' + avgScale + '</div>' +
+              '<div class="grade-carousel-cefr" style="color:' + color + '">' + (gradeInfo.cefr || '–') + '</div>' +
+            '</div>'
+          );
         }
       });
 
-      var hasAnyData = sections.some(function(s) { return sectionScores[s] && sectionScores[s].length > 0; });
-      var subtitle = hasAnyData
-        ? '<div style="text-align:center;font-size:0.78rem;opacity:0.7;margin-bottom:6px;">' + t('latestScores', 'Latest registered scores') + '</div>'
-        : '<div style="text-align:center;font-size:0.78rem;opacity:0.7;margin-bottom:6px;">' + t('completeForPerformance', 'Complete exercises to see your performance here!') + '</div>';
+      var slidesHtml = '';
+      if (slides.length === 0) {
+        slidesHtml = '<div class="grade-carousel-slide" style="display:flex;opacity:0.6">' +
+          '<div class="grade-carousel-raw" style="font-size:1.6rem;">–</div>' +
+          '<div class="grade-carousel-skill">' + t('completeForPerformance', 'Complete exercises to see results') + '</div>' +
+        '</div>';
+      } else {
+        slides.forEach(function(s, idx) {
+          slidesHtml += s.replace('display:flex', idx === 0 ? 'display:flex' : 'display:none');
+        });
+      }
 
-      return '<div class="sidebar-widget-pastel sw-grade">' +
+      var totalSlides = slides.length || 1;
+
+      return '<div class="sidebar-widget-pastel sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '">' +
         '<div class="sidebar-widget-pastel-title">' + t('gradeTracker', 'Current Level') + ' · ' + level + '</div>' +
-        subtitle +
-        '<div class="bento-grade-bars">' + barsHtml + '</div>' +
+        '<div class="grade-carousel-viewport">' + slidesHtml + '</div>' +
+        '<div class="grade-carousel-dots"></div>' +
       '</div>';
     },
 

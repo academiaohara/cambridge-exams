@@ -780,6 +780,11 @@
     closeResultsModal: function() {
       var overlay = document.getElementById('results-modal-overlay');
       if (overlay) overlay.style.display = 'none';
+    },
+
+    getGradeInfo: function(overall, examType) {
+      if (!conversionData[examType]) return { result: 'Below Level', cefr: '–' };
+      return getGradeInfo(overall, examType);
     }
   };
 })();
