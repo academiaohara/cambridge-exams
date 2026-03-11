@@ -1027,8 +1027,8 @@
 
 .dashboard-left-sidebar,
 .dashboard-right-sidebar {
-  position: sticky;
-  top: 80px;
+  position: relative;
+  top: 20px;
   max-height: calc(100vh - 96px);
   overflow-y: auto;
   scrollbar-width: none; /* Firefox */
