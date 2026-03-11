@@ -531,8 +531,25 @@
 
     _toggleUnit: function(el) {
       var lessons = el.querySelector('.sidebar-unit-lessons');
-      if (lessons) {
-        lessons.style.display = lessons.style.display === 'none' ? 'flex' : 'none';
+      if (!lessons || !el.parentNode) return;
+      var isExpanding = lessons.style.display === 'none';
+
+      // Collapse all other units first
+      var allItems = el.parentNode.querySelectorAll('.sidebar-unit-item');
+      for (var i = 0; i < allItems.length; i++) {
+        if (allItems[i] === el) continue;
+        var otherLessons = allItems[i].querySelector('.sidebar-unit-lessons');
+        if (otherLessons) otherLessons.style.display = 'none';
+        allItems[i].classList.remove('expanded');
+      }
+
+      // Toggle the clicked unit
+      if (isExpanding) {
+        lessons.style.display = 'flex';
+        el.classList.add('expanded');
+      } else {
+        lessons.style.display = 'none';
+        el.classList.remove('expanded');
       }
     },
 
