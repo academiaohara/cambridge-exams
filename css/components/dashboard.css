@@ -1091,18 +1091,19 @@
 }
 
 .grade-carousel-cefr {
-  font-size: 1rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.85;
-  margin-top: 2px;
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  line-height: 1.1;
+  text-align: center;
 }
 
 .grade-carousel-raw {
-  font-size: 3rem;
-  font-weight: 900;
+  font-size: 1.2rem;
+  font-weight: 700;
   line-height: 1.1;
+  text-align: center;
 }
 
 .grade-carousel-skill {
