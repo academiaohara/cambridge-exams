@@ -981,60 +981,37 @@ Has dicho
 /* Day Streak widget */
 
 .sw-streak {
-
-background: linear-gradient(135deg, #4E95D9, #A6CAEC);
-
+background: #A6CAEC;
 color: white;
-
 display: flex;
-
 flex-direction: column;
-
 min-height: 120px;
-
 }
 
 
 .sw-streak .sidebar-widget-pastel-title {
-
 color: white;
-
 text-align: center;
-
 width: 100%;
-
 }
 
 
 .sw-streak-flame {
-
 display: block;
-
 text-align: center;
-
 font-size: 2rem;
-
 flex: 1;
-
 }
 
 
 .sw-streak-count {
-
 display: block;
-
 font-family: 'Mileast', sans-serif;
-
 text-align: right;
-
 font-size: 2rem;
-
 font-weight: 900;
-
 color: white;
-
 align-self: flex-end;
-
 }
 
 
