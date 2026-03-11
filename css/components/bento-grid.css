@@ -1,4 +1,4 @@
-/* css/components/bento-grid.css — Premium Bento Grid dashboard */
+/* css/components/bento-grid.css — Redesigned Bento Grid dashboard */
 
 :root {
   --oxford-blue: #2D2E5F;
@@ -14,25 +14,36 @@
   --bento-radius: 20px;
   --bento-shadow: 0 2px 10px rgba(45, 46, 95, 0.05);
   --bento-hover-shadow: 0 4px 18px rgba(45, 46, 95, 0.09);
+  /* Pastel card palette */
+  --card-summit: #e8a87c;
+  --card-ascent: #f0d24a;
+  --card-quicksteps: #a8e6a3;
+  --card-basecamp: #b8b8e8;
+  --card-weakspot: #b8e8d0;
+  --card-checkpoint: #f5c0d0;
+  --card-streak-bg: #c5d5e8;
+  --card-calendar-bg: #c8e8c8;
+  --card-grade-bg: #e0a878;
+  --card-calc-bg: #c8c0e0;
 }
 
 /* ── Grid wrapper ── */
 .bento-grid {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 28px;
+  gap: 14px;
   animation: slideDown 0.4s ease-out;
 }
 
 /* ── Base card ── */
 .bento-card {
-  background: rgba(255, 255, 255, 0.98);
   border-radius: var(--bento-radius);
   padding: 20px 24px;
-  box-shadow: var(--bento-shadow);
-  border: 1px solid rgba(45, 46, 95, 0.04);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
 }
 
 .bento-card:hover {
@@ -40,125 +51,247 @@
   box-shadow: var(--bento-hover-shadow);
 }
 
-/* ── Row 1: Top row (Arena · Practice · Streak) ── */
+/* ── Bento card titles — bold uppercase style ── */
+.bento-card-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.bento-card-desc {
+  font-size: 0.78rem;
+  opacity: 0.85;
+  margin-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.bento-card-extra {
+  font-size: 0.72rem;
+  opacity: 0.7;
+  margin-top: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Row 1: Top row (Summit · Ascent) ── */
 .bento-top-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto;
   gap: 14px;
 }
 
-/* ── Row 2: Learning row (Lessons · Micro-Learning) ── */
+/* ── Row 2: Learning row (Quicksteps · Basecamp) ── */
 .bento-learning-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: 14px;
 }
 
-/* ── Study Mode Cards ── */
-.bento-mode-arena,
-.bento-mode-micro,
-.bento-mode-practice {
+/* ── SUMMIT card (exam mode) ── */
+.bento-card-summit {
+  background: var(--card-summit);
+  color: #5c3a1e;
   cursor: pointer;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.bento-mode-arena {
-  background: linear-gradient(135deg, #fff0ee 0%, #FFB8AD 100%);
-  color: #7a3028;
+.bento-card-summit .bento-card-title {
+  color: #3d5a28;
 }
 
-.bento-mode-micro {
-  background: linear-gradient(135deg, #e6f7f5 0%, #b2e8e0 100%);
-  color: #0e5d52;
-}
-
-.bento-mode-practice {
-  background: linear-gradient(135deg, #fff8e6 0%, #FFD28E 100%);
-  color: #7a5a1a;
-}
-
-/* Abstract animal decorations on mode cards */
-.bento-mode-arena::before {
+/* Mountain SVG illustration */
+.bento-card-summit::after {
   content: '';
   position: absolute;
-  bottom: -8px;
-  right: -4px;
-  width: 90px;
-  height: 90px;
-  opacity: 0.18;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='35' r='20' fill='%237a3028'/%3E%3Cpolygon points='30,60 50,40 70,60' fill='%237a3028'/%3E%3Cpolygon points='35,55 25,80 45,80' fill='%237a3028'/%3E%3Cpolygon points='65,55 55,80 75,80' fill='%237a3028'/%3E%3Ccircle cx='44' cy='30' r='3' fill='%23fff'/%3E%3Ccircle cx='56' cy='30' r='3' fill='%23fff'/%3E%3Cpolygon points='40,15 50,5 60,15' fill='%237a3028'/%3E%3C/svg%3E");
+  bottom: 0;
+  right: 10px;
+  width: 200px;
+  height: 160px;
+  opacity: 0.30;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 160'%3E%3Cpolygon points='100,10 40,140 160,140' fill='%23c47848' stroke='none'/%3E%3Cpolygon points='100,10 80,60 120,60' fill='%23f0d8c0' stroke='none'/%3E%3Cpolygon points='60,90 30,150 90,150' fill='%23b06838' stroke='none'/%3E%3Cpolygon points='150,80 120,150 180,150' fill='%23b06838' stroke='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom right;
+  pointer-events: none;
+}
+
+/* ── ASCENT card (practice mode) ── */
+.bento-card-ascent {
+  background: var(--card-ascent);
+  color: #6b5a10;
+  cursor: pointer;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.bento-card-ascent .bento-card-title {
+  color: #2e5688;
+}
+
+/* Butterflies SVG illustration */
+.bento-card-ascent::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 130px;
+  height: 110px;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130 110'%3E%3Cg transform='translate(30,20) rotate(-10)'%3E%3Cellipse cx='0' cy='-12' rx='14' ry='10' fill='%23967020'/%3E%3Cellipse cx='0' cy='12' rx='14' ry='10' fill='%23967020'/%3E%3Cellipse cx='-5' cy='-8' rx='10' ry='8' fill='%23b89030'/%3E%3Cellipse cx='-5' cy='8' rx='10' ry='8' fill='%23b89030'/%3E%3Crect x='-1' y='-18' width='2' height='36' rx='1' fill='%23705010'/%3E%3C/g%3E%3Cg transform='translate(80,50) rotate(15)'%3E%3Cellipse cx='0' cy='-14' rx='16' ry='12' fill='%23967020'/%3E%3Cellipse cx='0' cy='14' rx='16' ry='12' fill='%23967020'/%3E%3Cellipse cx='-6' cy='-10' rx='12' ry='9' fill='%23b89030'/%3E%3Cellipse cx='-6' cy='10' rx='12' ry='9' fill='%23b89030'/%3E%3Crect x='-1' y='-20' width='2' height='40' rx='1' fill='%23705010'/%3E%3C/g%3E%3Cg transform='translate(55,10) rotate(5) scale(0.6)'%3E%3Cellipse cx='0' cy='-12' rx='14' ry='10' fill='%23a88028'/%3E%3Cellipse cx='0' cy='12' rx='14' ry='10' fill='%23a88028'/%3E%3Crect x='-1' y='-18' width='2' height='36' rx='1' fill='%23705010'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
   pointer-events: none;
 }
 
-.bento-mode-practice::before {
+/* ── QUICKSTEPS card (micro-learning) ── */
+.bento-card-quicksteps {
+  background: var(--card-quicksteps);
+  color: #2a5c2a;
+  cursor: pointer;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.bento-card-quicksteps .bento-card-title {
+  color: #1a5080;
+}
+
+/* Paw prints SVG illustration */
+.bento-card-quicksteps::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  right: 2px;
-  width: 80px;
-  height: 80px;
-  opacity: 0.16;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='55' rx='28' ry='22' fill='%237a5a1a'/%3E%3Ccircle cx='50' cy='30' r='16' fill='%237a5a1a'/%3E%3Cpolygon points='50,18 46,10 54,10' fill='%237a5a1a'/%3E%3Ccircle cx='44' cy='27' r='2.5' fill='%23fff'/%3E%3Ccircle cx='56' cy='27' r='2.5' fill='%23fff'/%3E%3Cpolygon points='48,33 50,36 52,33' fill='%23fff'/%3E%3Cellipse cx='30' cy='50' rx='16' ry='6' transform='rotate(-30 30 50)' fill='%237a5a1a'/%3E%3Cellipse cx='70' cy='50' rx='16' ry='6' transform='rotate(30 70 50)' fill='%237a5a1a'/%3E%3C/svg%3E");
+  top: 15px;
+  left: 10px;
+  width: 150px;
+  height: 130px;
+  opacity: 0.25;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 130'%3E%3Cg fill='%23387838'%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3Ccircle cx='55' cy='25' r='8'/%3E%3Ccircle cx='20' cy='55' r='6'/%3E%3Ccircle cx='45' cy='52' r='6'/%3E%3Cellipse cx='38' cy='42' rx='10' ry='8'/%3E%3C/g%3E%3Cg fill='%23387838' transform='translate(60,40)'%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3Ccircle cx='55' cy='25' r='8'/%3E%3Ccircle cx='20' cy='55' r='6'/%3E%3Ccircle cx='45' cy='52' r='6'/%3E%3Cellipse cx='38' cy='42' rx='10' ry='8'/%3E%3C/g%3E%3Cg fill='%23387838' transform='translate(10,70) scale(0.7)'%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3Ccircle cx='55' cy='25' r='8'/%3E%3Cellipse cx='38' cy='42' rx='10' ry='8'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
   pointer-events: none;
 }
 
-.bento-mode-micro::before {
+/* ── BASECAMP card (lessons) ── */
+.bento-card-basecamp {
+  background: var(--card-basecamp);
+  color: #3a3a6a;
+  cursor: pointer;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.bento-card-basecamp .bento-card-title {
+  color: #2a3a7a;
+}
+
+/* Forest/Trees SVG illustration */
+.bento-card-basecamp::after {
   content: '';
   position: absolute;
-  bottom: -6px;
-  right: 0;
-  width: 85px;
-  height: 85px;
-  opacity: 0.16;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='22' fill='%230e5d52'/%3E%3Cellipse cx='50' cy='75' rx='18' ry='12' fill='%230e5d52'/%3E%3Ccircle cx='42' cy='36' r='3' fill='%23fff'/%3E%3Ccircle cx='58' cy='36' r='3' fill='%23fff'/%3E%3Cpath d='M44 46 Q50 52 56 46' stroke='%23fff' stroke-width='2' fill='none'/%3E%3Cellipse cx='28' cy='35' rx='10' ry='16' fill='%230e5d52'/%3E%3Cellipse cx='72' cy='35' rx='10' ry='16' fill='%230e5d52'/%3E%3C/svg%3E");
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 140px;
+  opacity: 0.25;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 140'%3E%3Cpolygon points='60,10 30,80 90,80' fill='%235858a0'/%3E%3Cpolygon points='60,35 40,80 80,80' fill='%236868b0'/%3E%3Crect x='55' y='80' width='10' height='20' fill='%234848a0'/%3E%3Cpolygon points='110,25 80,90 140,90' fill='%235858a0'/%3E%3Cpolygon points='110,50 90,90 130,90' fill='%236868b0'/%3E%3Crect x='105' y='90' width='10' height='20' fill='%234848a0'/%3E%3Cpolygon points='155,20 125,85 185,85' fill='%235858a0'/%3E%3Cpolygon points='155,40 140,85 170,85' fill='%236868b0'/%3E%3Crect x='150' y='85' width='10' height='20' fill='%234848a0'/%3E%3Cellipse cx='100' cy='130' rx='90' ry='15' fill='%236060b0' opacity='0.3'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: bottom center;
   pointer-events: none;
 }
 
-.bento-mode-active::after {
-  content: '✓';
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(0,0,0,0.08);
-  border-radius: 50%;
-  width: 22px;
-  height: 22px;
+/* ── WEAK SPOT card (recommended exercise) ── */
+.bento-card-weakspot {
+  background: var(--card-weakspot);
+  color: #2a5848;
+  cursor: pointer;
+  min-height: 70px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 900;
-  line-height: 22px;
 }
 
-.bento-mode-icon {
-  font-size: 1.8rem;
-  margin-bottom: 6px;
+.bento-card-weakspot .bento-card-title {
+  color: #1a4878;
 }
 
-.bento-mode-title {
-  font-size: 1rem;
-  font-weight: 800;
-  margin-bottom: 4px;
+/* Target/bullseye SVG illustration */
+.bento-card-weakspot::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  opacity: 0.30;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='28' fill='none' stroke='%23307850' stroke-width='3'/%3E%3Ccircle cx='30' cy='30' r='20' fill='none' stroke='%23307850' stroke-width='3'/%3E%3Ccircle cx='30' cy='30' r='12' fill='none' stroke='%23307850' stroke-width='3'/%3E%3Ccircle cx='30' cy='30' r='4' fill='%23307850'/%3E%3Cline x1='30' y1='2' x2='30' y2='12' stroke='%23307850' stroke-width='2'/%3E%3Cline x1='30' y1='48' x2='30' y2='58' stroke='%23307850' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
 }
 
-.bento-mode-desc {
-  font-size: 0.75rem;
-  opacity: 0.85;
-  margin-bottom: 6px;
+/* ── CHECKPOINT card (next lesson) ── */
+.bento-card-checkpoint {
+  background: var(--card-checkpoint);
+  color: #6a2848;
+  cursor: pointer;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
 }
 
-.bento-mode-tests {
-  font-size: 0.72rem;
-  opacity: 0.75;
+.bento-card-checkpoint .bento-card-title {
+  color: #a83070;
+}
+
+/* Pushpin SVG illustration */
+.bento-card-checkpoint::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  opacity: 0.30;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Cpath d='M25 5 L30 20 L40 22 L28 32 L30 45 L25 38 L20 45 L22 32 L10 22 L20 20 Z' fill='%23c06090'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+
+/* ── Bento card inner content ── */
+.bento-card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.bento-card-inner .bento-rec-info {
+  flex: 1;
+}
+
+/* ── Bento center wrapper (white container) ── */
+.bento-center-wrapper {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 4px 24px rgba(45, 46, 95, 0.08);
 }
 
 /* ── Attempts badge ── */
@@ -166,6 +299,8 @@
   margin: 6px 0 4px;
   font-size: 0.82rem;
   font-weight: 700;
+  position: relative;
+  z-index: 1;
 }
 
 .bento-attempts-exhausted {
@@ -178,84 +313,7 @@
   padding: 2px 6px;
 }
 
-/* ── Streak Card (in top row) ── */
-.bento-streak-card {
-  background: linear-gradient(135deg, #eeeaff, #d8d0f0);
-  color: #2D2E5F;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 4px;
-  padding: 20px 18px;
-}
-
-.bento-streak-fire {
-  font-size: 2.4rem;
-  animation: fireFlicker 1.5s ease-in-out infinite;
-  line-height: 1;
-}
-
-.bento-streak-number {
-  font-size: 2.8rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.bento-streak-label {
-  font-size: 0.78rem;
-  opacity: 0.85;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.bento-streak-status {
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 20px;
-  margin-top: 4px;
-}
-
-.bento-streak-safe {
-  background: rgba(16, 185, 129, 0.15);
-  color: #065f46;
-}
-
-.bento-streak-risk {
-  background: rgba(239, 68, 68, 0.15);
-  color: #991b1b;
-  animation: pulse 1.2s ease-in-out infinite;
-}
-
-.bento-streak-best {
-  font-size: 0.72rem;
-  opacity: 0.7;
-  margin-top: 4px;
-}
-
-/* ── Lessons Card ── */
-.bento-lessons-card {
-  background: linear-gradient(135deg, #e8f0ff 0%, #d0ddf8 100%);
-  color: #2D2E5F;
-  cursor: pointer;
-  text-align: center;
-  position: relative;
-}
-
-.bento-lessons-badge {
-  display: inline-block;
-  margin-top: 8px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  background: rgba(45, 46, 95, 0.1);
-  padding: 2px 10px;
-  border-radius: 20px;
-  letter-spacing: 0.04em;
-}
-
-/* ── Row 3: Recommended Exercise ── */
+/* ── Recommended Exercise (full-width) ── */
 .bento-recommended-row {
   /* full-width single card */
 }
@@ -336,7 +394,7 @@
   margin-top: 8px;
 }
 
-/* ── Row 4: Grade Tracker ── */
+/* ── Grade Tracker (center) ── */
 .bento-grade-row {
   /* full-width single card */
 }
@@ -707,18 +765,246 @@
   opacity: 0.85;
 }
 
+/* ── Left Sidebar: Level badge ── */
+.sidebar-level-badge {
+  background: rgba(200, 218, 240, 0.6);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.sidebar-level-badge-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #5a8ac0;
+}
+
+.sidebar-level-badge-code {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #5a8ac0;
+  line-height: 1.1;
+}
+
+/* ── Left Sidebar: Unit Timeline ── */
+.sidebar-unit-timeline {
+  position: relative;
+  padding-left: 22px;
+  margin-top: 8px;
+}
+
+.sidebar-unit-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: #78b0e0;
+}
+
+.sidebar-unit-item {
+  position: relative;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.sidebar-unit-item:hover {
+  opacity: 0.8;
+}
+
+.sidebar-unit-dot {
+  position: absolute;
+  left: -18px;
+  top: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #78b0e0;
+  border: 2px solid #78b0e0;
+  z-index: 1;
+}
+
+.sidebar-unit-dot.unit-open {
+  background: white;
+  border: 2px solid #78b0e0;
+}
+
+.sidebar-unit-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #3a4a6a;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sidebar-unit-lessons {
+  margin-top: 6px;
+  margin-left: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-lesson-item {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #5a7a9a;
+  padding: 5px 12px;
+  border: 1.5px solid #78b0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-lesson-item:hover {
+  background: rgba(120, 176, 224, 0.15);
+  color: #2a4a6a;
+}
+
+/* ── Right Sidebar: Pastel widget cards ── */
+.sidebar-widget-pastel {
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-widget-pastel-title {
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+/* Day Streak widget */
+.sw-streak {
+  background: var(--card-streak-bg);
+  color: #3a4a68;
+}
+
+.sw-streak .sidebar-widget-pastel-title {
+  color: #2a4060;
+}
+
+.sw-streak-flame {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  font-size: 3.5rem;
+  opacity: 0.25;
+  color: #5a88c0;
+}
+
+.sw-streak-count {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #48a858;
+  position: relative;
+  z-index: 1;
+  text-align: right;
+}
+
+/* Calendar widget */
+.sw-calendar {
+  background: var(--card-calendar-bg);
+  color: #2a5828;
+}
+
+.sw-calendar .sidebar-widget-pastel-title {
+  color: #2a5828;
+}
+
+.sw-calendar-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.sw-calendar-day {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.5);
+  color: #48a858;
+}
+
+.sw-calendar-day.active {
+  background: #48a858;
+  color: white;
+}
+
+/* Grade Tracker widget */
+.sw-grade {
+  background: var(--card-grade-bg);
+  color: #5a3420;
+}
+
+.sw-grade .sidebar-widget-pastel-title {
+  color: #5a3420;
+}
+
+.sw-grade-raw {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #7a3820;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.sw-grade-cefr {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #5a2818;
+  text-align: center;
+  line-height: 1.1;
+  position: relative;
+  z-index: 1;
+}
+
+.sw-grade-skill {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #7a3820;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Calculator widget */
+.sw-calculator {
+  background: var(--card-calc-bg);
+  color: #3a3a6a;
+  cursor: pointer;
+}
+
+.sw-calculator .sidebar-widget-pastel-title {
+  color: #3a3a6a;
+  text-align: center;
+}
+
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .bento-top-row {
     grid-template-columns: 1fr;
     gap: 10px;
-  }
-
-  .bento-streak-card {
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 14px;
-    text-align: left;
   }
 
   .bento-learning-row {
@@ -744,6 +1030,21 @@
     grid-row: auto;
     width: 100%;
     margin-top: 8px;
+  }
+
+  .bento-card-summit,
+  .bento-card-ascent {
+    min-height: 140px;
+  }
+
+  .bento-card-quicksteps,
+  .bento-card-basecamp {
+    min-height: 130px;
+  }
+
+  .bento-center-wrapper {
+    padding: 14px;
+    border-radius: 18px;
   }
 }
 
