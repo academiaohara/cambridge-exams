@@ -777,7 +777,7 @@
 .sidebar-level-badge {
   background: rgba(200, 218, 240, 0.6);
   border-radius: 16px;
-  padding: 16px;
+  padding: 8px 10px;
   text-align: center;
   margin-bottom: 12px;
 }
@@ -785,7 +785,7 @@
 .sidebar-level-badge-label {
   font-family: 'Mileast', sans-serif;
   font-style: italic;
-  font-size: 0.72rem;
+  font-size: 1.1rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -795,7 +795,7 @@
 .sidebar-level-badge-code {
   font-family: 'Mileast', sans-serif;
   font-style: normal;
-  font-size: 2.4rem;
+  font-size: 3.5rem;
   font-weight: 900;
   color: #5a8ac0;
   line-height: 1.1;

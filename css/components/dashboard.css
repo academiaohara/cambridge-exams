@@ -1052,6 +1052,9 @@
   box-shadow: 0 4px 20px rgba(45, 46, 95, 0.08);
   border: 1px solid rgba(45, 46, 95, 0.08);
   margin-bottom: 16px;
+  position: sticky;
+  top: 80px;
+  z-index: 10;
 }
 
 .sidebar-widget-title {
