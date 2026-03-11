@@ -17,7 +17,6 @@
         rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
         rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
         rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
-        rightSidebarContent += BentoGrid._buildCalculatorSidebarHtml();
         var nextLesson = BentoGrid._findNextLesson(exams);
         if (nextLesson) {
           rightSidebarContent += BentoGrid._buildNextLessonSidebarHtml(nextLesson);
@@ -31,7 +30,7 @@
             '<div id="bento-grid-container"></div>' +
           '</div>' +
         '</div>' +
-        '<div class="dashboard-right-sidebar">' + rightSidebarContent + '</div>' +
+        '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
       '</div>';
 
       content.innerHTML = html;
@@ -84,7 +83,6 @@
         rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
         rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
         rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
-        rightSidebarContent += BentoGrid._buildCalculatorSidebarHtml();
       }
 
       var html = '<div class="dashboard-layout">' +
@@ -93,7 +91,7 @@
           subpageHeader +
           '<div class="exams-container">' + examListHtml + '</div>' +
         '</div>' +
-        '<div class="dashboard-right-sidebar">' + rightSidebarContent + '</div>' +
+        '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
       '</div>';
 
       content.innerHTML = html;

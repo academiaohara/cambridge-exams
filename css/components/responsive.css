@@ -4,7 +4,10 @@
    DESKTOP DEFAULTS - nav group is transparent
    ============================================ */
 .header-nav-group {
-  display: contents;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
 }
 
 /* ============================================
@@ -162,6 +165,13 @@
 
   .header-mode-btn {
     flex: 1;
+    justify-content: center;
+    min-height: 44px;
+    font-size: 0.85rem;
+  }
+
+  .header-calc-btn {
+    width: 100%;
     justify-content: center;
     min-height: 44px;
     font-size: 0.85rem;

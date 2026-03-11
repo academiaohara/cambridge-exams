@@ -925,30 +925,72 @@
   color: #2a5828;
 }
 
+.sw-calendar-month-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #3a6838;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
 .sw-calendar-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
   position: relative;
   z-index: 1;
 }
 
+.sw-cal-header {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #3a6838;
+  text-align: center;
+  padding: 2px 0 4px;
+  text-transform: uppercase;
+}
+
+.sw-cal-empty {
+  /* spacer cell */
+}
+
 .sw-calendar-day {
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
+  aspect-ratio: 1;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.72rem;
+  flex-direction: column;
+  font-size: 0.65rem;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.45);
   color: #48a858;
+  position: relative;
+  line-height: 1.1;
+  padding: 1px;
 }
 
-.sw-calendar-day.active {
+.sw-calendar-day.today {
+  background: rgba(255, 255, 255, 0.85);
+  color: #2a5828;
+  box-shadow: 0 0 0 1.5px #48a858;
+}
+
+.sw-calendar-day.trained {
   background: #48a858;
   color: white;
+}
+
+.sw-calendar-day.trained.today {
+  background: #2a7a38;
+  box-shadow: 0 0 0 2px #1a5828;
+}
+
+.sw-cal-footstep {
+  font-size: 0.55rem;
+  line-height: 1;
+  display: block;
 }
 
 /* Grade Tracker widget */
