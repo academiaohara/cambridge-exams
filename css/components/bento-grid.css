@@ -1134,6 +1134,14 @@ align-self: flex-end;
   z-index: 1;
 }
 
+.sw-grade .grade-carousel-dot {
+  background: rgba(90, 52, 32, 0.25);
+}
+
+.sw-grade .grade-carousel-dot.active {
+  background: #5a3420;
+}
+
 /* Calculator widget */
 .sw-calculator {
   background: var(--card-calc-bg);
