@@ -15,6 +15,7 @@
       if (typeof BentoGrid !== 'undefined') {
         leftSidebarContent = BentoGrid._buildLevelSelectorSidebarHtml();
         rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
+        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
         rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
         rightSidebarContent += BentoGrid._buildCalculatorSidebarHtml();
         var nextLesson = BentoGrid._findNextLesson(exams);
@@ -26,7 +27,9 @@
       var html = '<div class="dashboard-layout">' +
         '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
         '<div class="dashboard-center">' +
-          '<div id="bento-grid-container"></div>' +
+          '<div class="bento-center-wrapper">' +
+            '<div id="bento-grid-container"></div>' +
+          '</div>' +
         '</div>' +
         '<div class="dashboard-right-sidebar">' + rightSidebarContent + '</div>' +
       '</div>';
@@ -79,6 +82,7 @@
       var rightSidebarContent = '';
       if (typeof BentoGrid !== 'undefined') {
         rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
+        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
         rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
         rightSidebarContent += BentoGrid._buildCalculatorSidebarHtml();
       }
