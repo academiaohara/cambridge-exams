@@ -456,11 +456,32 @@
       });
       html += '<div class="level-selector-options level-selector-collapsed">' + optionsHtml + '</div>';
 
-      // Unit timeline
+      // Unit timeline — always show at least 6 units with placeholder lessons
       html += '<div class="sidebar-unit-timeline">';
+
+      var minUnits = 6;
+      // Build unit list: use real exams, pad to minUnits with placeholders
+      var units = [];
       exams.forEach(function(exam, idx) {
-        var examNum = exam.number || (idx + 1);
-        var sections = exam.sections || {};
+        units.push({
+          id: exam.id,
+          number: exam.number || (idx + 1),
+          sections: exam.sections || {}
+        });
+      });
+      for (var u = units.length + 1; u <= minUnits; u++) {
+        units.push({ id: 'Unit' + u, number: u, sections: {} });
+      }
+
+      // Placeholder lesson names per unit (temporary until Basecamp content is ready)
+      var placeholderLessons = [
+        'Vocabulary & Collocations',
+        'Grammar Focus',
+        'Practice & Review'
+      ];
+
+      units.forEach(function(unit) {
+        var sections = unit.sections;
         var hasCompleted = false;
         var hasInProgress = false;
         ['reading', 'listening', 'writing', 'speaking'].forEach(function(sec) {
@@ -470,23 +491,19 @@
           }
         });
 
-        var dotClass = hasInProgress ? 'unit-open' : '';
-        html += '<div class="sidebar-unit-item" data-exam-id="' + exam.id + '" onclick="BentoGrid._toggleUnit(this)">' +
+        var dotClass = hasCompleted ? 'unit-completed' : (hasInProgress ? 'unit-open' : '');
+        html += '<div class="sidebar-unit-item" data-exam-id="' + unit.id + '" onclick="BentoGrid._toggleUnit(this)">' +
           '<div class="sidebar-unit-dot ' + dotClass + '"></div>' +
-          '<div class="sidebar-unit-label">' + t('unit', 'Unit') + ' ' + examNum + '</div>';
+          '<div class="sidebar-unit-label">' + t('unit', 'Unit') + ' ' + unit.number + '</div>';
 
-        // Expandable section (shown if in progress)
-        if (hasInProgress || hasCompleted) {
-          html += '<div class="sidebar-unit-lessons" style="display:' + (hasInProgress ? 'flex' : 'none') + '">';
-          ['reading', 'listening', 'writing', 'speaking'].forEach(function(sec) {
-            if (sections[sec] && sections[sec].total > 0) {
-              html += '<div class="sidebar-lesson-item" tabindex="0" onclick="event.stopPropagation(); Dashboard.renderSubpage(\'practice\')" onkeydown="if(event.key===\'Enter\'){event.stopPropagation(); Dashboard.renderSubpage(\'practice\')}">' +
-                BentoGrid._capitalize(sec) +
-              '</div>';
-            }
-          });
-          html += '</div>';
-        }
+        // Expandable lessons section (always present, hidden by default)
+        html += '<div class="sidebar-unit-lessons" style="display:none">';
+        placeholderLessons.forEach(function(lessonName) {
+          html += '<div class="sidebar-lesson-item" tabindex="0" onclick="event.stopPropagation(); Dashboard.renderSubpage(\'practice\')" onkeydown="if(event.key===\'Enter\'){event.stopPropagation(); Dashboard.renderSubpage(\'practice\')}">' +
+            '<i class="fas fa-circle"></i>' + lessonName +
+          '</div>';
+        });
+        html += '</div>';
 
         html += '</div>';
       });
