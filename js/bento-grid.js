@@ -353,15 +353,6 @@
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
-      var lastActivity = streak ? streak.lastActivityDate : null;
-
-      var today = new Date();
-      var lastDate = lastActivity ? new Date(lastActivity) : null;
-      var firstStreakDate = null;
-      if (lastDate && streakCount > 0) {
-        firstStreakDate = new Date(lastDate);
-        firstStreakDate.setDate(lastDate.getDate() - (streakCount - 1));
-      }
 
       // Show current streak days as numbered items
       var daysHtml = '<div class="sw-calendar-grid">';
@@ -393,7 +384,7 @@
       // "YOU ARE STUDYING" header + level badge
       var html = '<div class="sidebar-widget" style="background:transparent;box-shadow:none;border:none;padding:0;">' +
         '<div style="font-size:0.78rem;font-weight:700;color:#5a7a9a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">' + t('youAreStudying', 'You are studying') + '</div>' +
-        '<div class="sidebar-level-badge" onclick="BentoGrid.toggleLevelDropdown()" style="cursor:pointer">' +
+        '<div class="sidebar-level-badge" onclick="BentoGrid.toggleLevelDropdown()" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid.toggleLevelDropdown()}" role="button" tabindex="0" aria-expanded="false" style="cursor:pointer">' +
           '<div class="sidebar-level-badge-label">' + t('level', 'Level') + '</div>' +
           '<div class="sidebar-level-badge-code">' + currentLevel + '</div>' +
         '</div>';
@@ -433,7 +424,7 @@
           html += '<div class="sidebar-unit-lessons" style="display:' + (hasInProgress ? 'flex' : 'none') + '">';
           ['reading', 'listening', 'writing', 'speaking'].forEach(function(sec) {
             if (sections[sec] && sections[sec].total > 0) {
-              html += '<div class="sidebar-lesson-item" onclick="event.stopPropagation(); Dashboard.renderSubpage(\'practice\')">' +
+              html += '<div class="sidebar-lesson-item" tabindex="0" onclick="event.stopPropagation(); Dashboard.renderSubpage(\'practice\')" onkeydown="if(event.key===\'Enter\'){event.stopPropagation(); Dashboard.renderSubpage(\'practice\')}">' +
                 BentoGrid._capitalize(sec) +
               '</div>';
             }
@@ -451,14 +442,17 @@
 
     toggleLevelDropdown: function() {
       var options = document.querySelector('.level-selector-options');
+      var badge = document.querySelector('.sidebar-level-badge');
       if (!options) return;
       var isCollapsed = options.classList.contains('level-selector-collapsed');
       if (isCollapsed) {
         options.classList.remove('level-selector-collapsed');
         options.classList.add('level-selector-expanded');
+        if (badge) badge.setAttribute('aria-expanded', 'true');
       } else {
         options.classList.add('level-selector-collapsed');
         options.classList.remove('level-selector-expanded');
+        if (badge) badge.setAttribute('aria-expanded', 'false');
       }
     },
 
