@@ -799,7 +799,8 @@
   margin-top: 12px;
 }
 
-/* Line segments between dots — never extend beyond first/last circle */
+/* Line segments between dots — never extend beyond first/last circle.
+   16px = dot vertical center from item top: padding(6) + margin-top(4) + dot-radius(6). */
 .sidebar-unit-item:not(:last-child)::after {
   content: '';
   position: absolute;
