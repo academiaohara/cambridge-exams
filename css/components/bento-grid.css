@@ -53,7 +53,7 @@
 
 /* ── Bento card titles — bold uppercase style ── */
 .bento-card-title {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Mileast', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -63,6 +63,8 @@
 }
 
 .bento-card-desc {
+  font-family: 'Mileast', sans-serif;
+  font-style: italic;
   font-size: 0.78rem;
   opacity: 0.85;
   margin-top: 4px;
@@ -71,6 +73,8 @@
 }
 
 .bento-card-extra {
+  font-family: 'Mileast', sans-serif;
+  font-style: italic;
   font-size: 0.72rem;
   opacity: 0.7;
   margin-top: 6px;
