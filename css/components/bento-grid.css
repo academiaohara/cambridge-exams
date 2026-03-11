@@ -796,77 +796,98 @@
 /* ── Left Sidebar: Unit Timeline ── */
 .sidebar-unit-timeline {
   position: relative;
-  padding-left: 22px;
-  margin-top: 8px;
+  padding-left: 24px;
+  margin-top: 12px;
 }
 
 .sidebar-unit-timeline::before {
   content: '';
   position: absolute;
-  left: 8px;
-  top: 10px;
-  bottom: 10px;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
   width: 2px;
-  background: #78b0e0;
+  background: linear-gradient(180deg, #78b0e0 0%, #a8d4f0 100%);
+  border-radius: 1px;
 }
 
 .sidebar-unit-item {
   position: relative;
-  padding: 8px 0;
+  padding: 6px 0;
   cursor: pointer;
   transition: opacity 0.2s;
 }
 
 .sidebar-unit-item:hover {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .sidebar-unit-dot {
   position: absolute;
-  left: -18px;
-  top: 12px;
+  left: -20px;
+  top: 10px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: #78b0e0;
-  border: 2px solid #78b0e0;
+  border: 2.5px solid #78b0e0;
   z-index: 1;
+  transition: all 0.2s ease;
+}
+
+.sidebar-unit-item:hover .sidebar-unit-dot {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 3px rgba(120, 176, 224, 0.2);
 }
 
 .sidebar-unit-dot.unit-open {
   background: white;
-  border: 2px solid #78b0e0;
+  border-color: #5a9fd4;
+  box-shadow: 0 0 0 3px rgba(90, 159, 212, 0.15);
+}
+
+.sidebar-unit-dot.unit-completed {
+  background: #1E9D8E;
+  border-color: #1E9D8E;
 }
 
 .sidebar-unit-label {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: #3a4a6a;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
 .sidebar-unit-lessons {
-  margin-top: 6px;
-  margin-left: 4px;
+  margin-top: 4px;
+  margin-left: 2px;
+  padding-left: 8px;
+  border-left: 1.5px solid rgba(120, 176, 224, 0.25);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .sidebar-lesson-item {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 500;
   color: #5a7a9a;
-  padding: 5px 12px;
-  border: 1.5px solid #78b0e0;
-  border-radius: 8px;
+  padding: 4px 10px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sidebar-lesson-item i {
+  font-size: 0.6rem;
+  opacity: 0.5;
 }
 
 .sidebar-lesson-item:hover {
-  background: rgba(120, 176, 224, 0.15);
+  background: rgba(120, 176, 224, 0.12);
   color: #2a4a6a;
 }
 
