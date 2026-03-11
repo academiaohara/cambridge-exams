@@ -200,13 +200,11 @@
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var completedParts = lesson.completedParts || 0;
       var totalParts = lesson.totalParts || 1;
-      var sectionIcon = { reading: '📖', listening: '🎧', writing: '✍️', speaking: '🎤' };
-      var icon = sectionIcon[lesson.section] || '📚';
 
       return '<div class="bento-card bento-card-checkpoint" onclick="Exercise.openPart(\'' + this._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')">' +
         '<div class="bento-card-inner">' +
           '<div class="bento-card-title">Checkpoint</div>' +
-          '<div class="bento-card-desc">' + icon + ' ' + this._escapeHTML(lesson.examId) + ' — ' + this._capitalize(lesson.section) + ' ' + t('part', 'Part') + ' ' + lesson.part + ' (' + completedParts + '/' + totalParts + ')</div>' +
+          '<div class="bento-card-desc">' + this._escapeHTML(lesson.examId) + ' — ' + this._capitalize(lesson.section) + ' ' + t('part', 'Part') + ' ' + lesson.part + ' (' + completedParts + '/' + totalParts + ')</div>' +
         '</div>' +
       '</div>';
     },
@@ -327,7 +325,7 @@
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       return '<div class="sidebar-widget-pastel sw-streak" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
         '<div class="sidebar-widget-pastel-title" style="text-align:center">' + t('dayStreak', 'Day Streak') + '</div>' +
-        '<div class="sw-streak-flame" style="text-align:center;display:block"><i class="fas fa-fire"></i></div>' +
+        '<div class="sw-streak-flame" style="text-align:center;display:block"></div>' +
         '<div class="sw-streak-count">' + streakCount + '</div>' +
       '</div>';
     },
@@ -399,7 +397,6 @@
         if (isToday) cls += ' today';
         daysCells += '<div class="' + cls + '">' +
           '<span class="sw-cal-day-num">' + i + '</span>' +
-          (isTrained ? '<span class="sw-cal-day-check">✓</span>' : '') +
         '</div>';
       }
 
@@ -595,28 +592,19 @@
         });
       }
 
-      var skillColors = {
-        'Reading': '#3b82f6',
-        'Use of English': '#8b5cf6',
-        'Writing': '#10b981',
-        'Listening': '#f59e0b',
-        'Speaking': '#ef4444'
-      };
-
       var allSkills = ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
       var slides = [];
 
       allSkills.forEach(function(skill) {
         var d = skillTotals[skill];
-        var color = skillColors[skill] || '#5a2818';
         if (d && d.count > 0) {
           var avgScale = Math.round(d.scale / d.count);
           var gradeInfo = (typeof ScoreCalculator !== 'undefined') ? ScoreCalculator.getGradeInfo(avgScale, level) : { cefr: '–' };
           slides.push(
-            '<div class="grade-carousel-slide" style="display:flex;color:' + color + '">' +
-              '<div class="grade-carousel-skill" style="color:' + color + ';opacity:0.75">' + skill + '</div>' +
-              '<div class="grade-carousel-raw" style="color:' + color + '">' + avgScale + '</div>' +
-              '<div class="grade-carousel-cefr" style="color:' + color + '">' + (gradeInfo.cefr || '–') + '</div>' +
+            '<div class="grade-carousel-slide" style="display:flex">' +
+              '<div class="grade-carousel-raw">' + avgScale + '</div>' +
+              '<div class="grade-carousel-cefr">' + (gradeInfo.cefr || '–') + '</div>' +
+              '<div class="grade-carousel-skill-label">' + skill + '</div>' +
             '</div>'
           );
         }
@@ -626,7 +614,7 @@
       if (slides.length === 0) {
         slidesHtml = '<div class="grade-carousel-slide" style="display:flex;opacity:0.6">' +
           '<div class="grade-carousel-raw" style="font-size:1.6rem;">–</div>' +
-          '<div class="grade-carousel-skill">' + t('completeForPerformance', 'Complete exercises to see results') + '</div>' +
+          '<div class="grade-carousel-skill-label">' + t('completeForPerformance', 'Complete exercises to see results') + '</div>' +
         '</div>';
       } else {
         slides.forEach(function(s, idx) {
@@ -637,7 +625,7 @@
       var totalSlides = slides.length || 1;
 
       return '<div class="sidebar-widget-pastel sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '">' +
-        '<div class="sidebar-widget-pastel-title">' + t('gradeTracker', 'Current Level') + ' · ' + level + '</div>' +
+        '<div class="sidebar-widget-pastel-title">' + t('gradeTracker', 'Grade Tracker') + '</div>' +
         '<div class="grade-carousel-viewport">' + slidesHtml + '</div>' +
         '<div class="grade-carousel-dots"></div>' +
       '</div>';
