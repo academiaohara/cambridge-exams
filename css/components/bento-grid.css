@@ -109,7 +109,7 @@
 }
 
 .bento-card-summit .bento-card-title {
-  color: #3d5a28;
+  color: #80350E;
 }
 
 /* Mountain SVG illustration */
@@ -140,7 +140,11 @@
 }
 
 .bento-card-ascent .bento-card-title {
-  color: #2e5688;
+  color: #826900;
+}
+
+.bento-card-ascent .bento-card-inner {
+  text-align: right;
 }
 
 /* Butterflies SVG illustration */
@@ -170,7 +174,7 @@
 }
 
 .bento-card-quicksteps .bento-card-title {
-  color: #1a5080;
+  color: #55B333;
 }
 
 /* Paw prints SVG illustration */
@@ -200,7 +204,7 @@
 }
 
 .bento-card-basecamp .bento-card-title {
-  color: #2a3a7a;
+  color: #6E7DEE;
 }
 
 /* Forest/Trees SVG illustration */
@@ -222,7 +226,7 @@
 
 /* ── WEAK SPOT card (recommended exercise) ── */
 .bento-card-weakspot {
-  background: var(--card-weakspot);
+  background: #D0E8FC;
   color: #2a5848;
   cursor: pointer;
   min-height: 70px;
@@ -231,7 +235,7 @@
 }
 
 .bento-card-weakspot .bento-card-title {
-  color: #1a4878;
+  color: #4E95D9;
 }
 
 /* Target/bullseye SVG illustration */
@@ -779,6 +783,8 @@
 }
 
 .sidebar-level-badge-label {
+  font-family: 'Mileast', sans-serif;
+  font-style: italic;
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -787,20 +793,55 @@
 }
 
 .sidebar-level-badge-code {
+  font-family: 'Mileast', sans-serif;
+  font-style: normal;
   font-size: 2.4rem;
   font-weight: 900;
   color: #5a8ac0;
   line-height: 1.1;
 }
 
+/* ── Level selector per-level colors ── */
+.level-selector-option[data-level="A2"] {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border-color: #4caf50;
+}
+
+.level-selector-option[data-level="B1"] {
+  background: #fff3e0;
+  color: #bf360c;
+  border-color: #ff9800;
+}
+
+.level-selector-option[data-level="B2"] {
+  background: #e3f2fd;
+  color: #0d47a1;
+  border-color: #2196f3;
+}
+
+.level-selector-option[data-level="C1"] {
+  background: #ffffff;
+  color: #104862;
+  border-color: #46B1E1;
+}
+
+.level-selector-option[data-level="C2"] {
+  background: #f3e5f5;
+  color: #4a148c;
+  border-color: #9c27b0;
+}
+
 /* ── Left Sidebar: Unit Timeline ── */
 .sidebar-unit-timeline {
   position: relative;
   margin-top: 12px;
+  padding-left: 16px;
 }
 
 /* Line segments between dots — never extend beyond first/last circle.
-   16px = dot vertical center from item top: padding(6) + margin-top(4) + dot-radius(6). */
+   16px padding-left + 6px half-dot - 2px half-line = 20px from timeline left edge,
+   but since we have padding-left:16px the absolute left is relative to item: 6px-2px=4px. */
 .sidebar-unit-item:not(:last-child)::after {
   content: '';
   position: absolute;
@@ -830,7 +871,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 6px 0;
+  padding: 12px 0;
   cursor: pointer;
   transition: opacity 0.2s;
 }
@@ -884,6 +925,8 @@
   font-weight: 700;
   color: #3a4a6a;
   letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
 }
 
 .sidebar-unit-lessons {
@@ -899,19 +942,12 @@
   font-size: 0.82rem;
   font-weight: 600;
   color: #1a7fbf;
-  padding: 8px 16px;
-  border-radius: 25px;
-  border: 2px solid #1a9fd4;
-  background: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.7);
   cursor: pointer;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.sidebar-lesson-item i {
-  display: none;
 }
 
 .sidebar-lesson-item:hover {
@@ -939,30 +975,33 @@
 
 /* Day Streak widget */
 .sw-streak {
-  background: var(--card-streak-bg);
-  color: #3a4a68;
+  background: linear-gradient(135deg, #4E95D9, #A6CAEC);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 120px;
 }
 
 .sw-streak .sidebar-widget-pastel-title {
-  color: #2a4060;
+  color: white;
+  text-align: center;
+  width: 100%;
 }
 
 .sw-streak-flame {
-  position: absolute;
-  bottom: 10px;
-  right: 14px;
-  font-size: 3.5rem;
-  opacity: 0.25;
-  color: #5a88c0;
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  flex: 1;
 }
 
 .sw-streak-count {
-  font-size: 2.4rem;
-  font-weight: 900;
-  color: #48a858;
-  position: relative;
-  z-index: 1;
+  display: block;
   text-align: right;
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  align-self: flex-end;
 }
 
 /* Calendar widget */
@@ -1005,42 +1044,48 @@
   /* spacer cell */
 }
 
-.sw-calendar-day {
+.sw-cal-day {
+  position: relative;
   aspect-ratio: 1;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 0.65rem;
-  font-weight: 700;
+  border-radius: 6px;
   background: rgba(255, 255, 255, 0.45);
   color: #48a858;
-  position: relative;
-  line-height: 1.1;
-  padding: 1px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 3px;
 }
 
-.sw-calendar-day.today {
+.sw-cal-day-num {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sw-cal-day-check {
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.sw-cal-day.today {
   background: rgba(255, 255, 255, 0.85);
   color: #2a5828;
   box-shadow: 0 0 0 1.5px #48a858;
 }
 
-.sw-calendar-day.trained {
+.sw-cal-day.sw-cal-done {
   background: #48a858;
   color: white;
 }
 
-.sw-calendar-day.trained.today {
+.sw-cal-day.sw-cal-done.today {
   background: #2a7a38;
   box-shadow: 0 0 0 2px #1a5828;
-}
-
-.sw-cal-footstep {
-  font-size: 0.55rem;
-  line-height: 1;
-  display: block;
 }
 
 /* Grade Tracker widget */

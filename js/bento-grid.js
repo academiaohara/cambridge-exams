@@ -30,39 +30,19 @@
     },
 
     _renderTopRow: function(exams) {
-      var availableCount = exams.filter(function(e) { return e.status === 'available'; }).length;
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
-
-      // Exam session attempts
-      var examAttempts = '';
-      if (typeof ExamSession !== 'undefined') {
-        var remaining = ExamSession.getRemaining(null);
-        var used = ExamSession.getAttempts(null);
-        examAttempts = '<div class="bento-attempts">' +
-          '<span class="bento-attempts-used">' + used + '</span>' +
-          '<span class="bento-attempts-sep">/</span>' +
-          '<span class="bento-attempts-max">5</span>' +
-          '<span class="bento-attempts-label"> ' + t('todayLabel', 'today') + '</span>' +
-          (remaining === 0 ? '<div class="bento-attempts-exhausted">' + t('lockedLabel', 'Locked') + ' 🔒</div>' : '') +
-        '</div>';
-      }
-
       return '<div class="bento-top-row">' +
 
         '<div class="bento-card bento-card-summit" onclick="BentoGrid.selectMode(\'exam\')">' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Summit</div>' +
-            '<div class="bento-card-desc">' + t('timedExamMode', 'Timed exam mode') + '</div>' +
-            examAttempts +
-            '<div class="bento-card-extra">' + availableCount + ' ' + t('testsCount', 'tests') + '</div>' +
+            '<div class="bento-card-desc">Test Simulation</div>' +
           '</div>' +
         '</div>' +
 
         '<div class="bento-card bento-card-ascent" onclick="BentoGrid.selectMode(\'practice\')">' +
-          '<div class="bento-card-inner">' +
+          '<div class="bento-card-inner" style="text-align:right">' +
             '<div class="bento-card-title">Ascent</div>' +
-            '<div class="bento-card-desc">' + t('noLimitsSafeSpace', 'No limits. Safe space.') + '</div>' +
-            '<div class="bento-card-extra">' + availableCount + ' ' + t('testsCount', 'tests') + '</div>' +
+            '<div class="bento-card-desc">Test Practice</div>' +
           '</div>' +
         '</div>' +
 
@@ -70,22 +50,19 @@
     },
 
     _renderLearningRow: function() {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       return '<div class="bento-learning-row">' +
 
         '<div class="bento-card bento-card-quicksteps" onclick="BentoGrid.openMicroLearning()">' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Quicksteps</div>' +
-            '<div class="bento-card-desc">' + t('quickCards', 'Quick cards. Scroll style.') + '</div>' +
-            '<div class="bento-card-extra">' + t('vocabTransformations', 'Vocab · Transformations · MC') + '</div>' +
+            '<div class="bento-card-desc">Fast Exercises</div>' +
           '</div>' +
         '</div>' +
 
         '<div class="bento-card bento-card-basecamp" onclick="BentoGrid.openLessons()">' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Basecamp</div>' +
-            '<div class="bento-card-desc">' + t('studyCurriculum', 'Study the curriculum at your own pace') + '</div>' +
-            '<div class="bento-card-extra">' + t('comingSoon', 'Coming Soon') + '</div>' +
+            '<div class="bento-card-desc">Learning Camp</div>' +
           '</div>' +
         '</div>' +
 
@@ -343,8 +320,8 @@
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       return '<div class="sidebar-widget-pastel sw-streak" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
-        '<div class="sidebar-widget-pastel-title">' + t('dayStreak', 'Day Streak') + '</div>' +
-        '<div class="sw-streak-flame"><i class="fas fa-fire"></i></div>' +
+        '<div class="sidebar-widget-pastel-title" style="text-align:center">' + t('dayStreak', 'Day Streak') + '</div>' +
+        '<div class="sw-streak-flame" style="text-align:center;display:block"><i class="fas fa-fire"></i></div>' +
         '<div class="sw-streak-count">' + streakCount + '</div>' +
       '</div>';
     },
@@ -411,10 +388,13 @@
         var dateStr = year + '-' + p2(month + 1) + '-' + p2(i);
         var isTrained = !!trainedDates[dateStr];
         var isToday = (i === todayDay);
-        var cls = 'sw-calendar-day';
-        if (isTrained) cls += ' trained';
+        var cls = 'sw-cal-day';
+        if (isTrained) cls += ' sw-cal-done';
         if (isToday) cls += ' today';
-        daysCells += '<div class="' + cls + '">' + i + (isTrained ? '<span class="sw-cal-footstep">&#x1F43E;</span>' : '') + '</div>';
+        daysCells += '<div class="' + cls + '">' +
+          '<span class="sw-cal-day-num">' + i + '</span>' +
+          (isTrained ? '<span class="sw-cal-day-check">✓</span>' : '') +
+        '</div>';
       }
 
       return '<div class="sidebar-widget-pastel sw-calendar" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
@@ -435,14 +415,24 @@
         { code: 'C2', icon: 'fas fa-crown', label: 'C2 Proficiency' }
       ];
 
+      // Level-specific badge colors
+      var levelColors = {
+        'C1': { bg: '#ffffff', label: '#104862', code: '#46B1E1' },
+        'A2': { bg: '#e8f5e9', label: '#1b5e20', code: '#4caf50' },
+        'B1': { bg: '#fff3e0', label: '#bf360c', code: '#ff9800' },
+        'B2': { bg: '#e3f2fd', label: '#0d47a1', code: '#2196f3' },
+        'C2': { bg: '#f3e5f5', label: '#4a148c', code: '#9c27b0' }
+      };
+      var lc = levelColors[currentLevel] || levelColors['C1'];
+
       var exams = window.EXAMS_DATA[currentLevel] || [];
 
       // "YOU ARE STUDYING" header + level badge
       var html = '<div class="sidebar-widget" style="background:transparent;box-shadow:none;border:none;padding:0;">' +
-        '<div style="font-size:0.78rem;font-weight:700;color:#5a7a9a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">' + t('youAreStudying', 'You are studying') + '</div>' +
-        '<div class="sidebar-level-badge" onclick="BentoGrid.toggleLevelDropdown()" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid.toggleLevelDropdown()}" role="button" tabindex="0" aria-expanded="false" style="cursor:pointer">' +
-          '<div class="sidebar-level-badge-label">' + t('level', 'Level') + '</div>' +
-          '<div class="sidebar-level-badge-code">' + currentLevel + '</div>' +
+        '<div style="font-size:0.78rem;font-weight:700;color:#5a7a9a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;text-align:center;">' + t('youAreStudying', 'You are studying') + '</div>' +
+        '<div class="sidebar-level-badge" data-level="' + currentLevel + '" onclick="BentoGrid.toggleLevelDropdown()" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid.toggleLevelDropdown()}" role="button" tabindex="0" aria-expanded="false" style="cursor:pointer;background:' + lc.bg + '">' +
+          '<div class="sidebar-level-badge-label" style="color:' + lc.label + '">' + t('level', 'Level') + '</div>' +
+          '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + currentLevel + '</div>' +
         '</div>';
 
       // Level dropdown (hidden by default)
@@ -473,13 +463,6 @@
         units.push({ id: 'placeholder-unit-' + u, number: u, sections: {} });
       }
 
-      // Placeholder lesson names per unit (temporary until Basecamp content is ready)
-      var placeholderLessons = [
-        'Vocabulary & Collocations',
-        'Grammar Focus',
-        'Practice & Review'
-      ];
-
       units.forEach(function(unit) {
         var sections = unit.sections;
         var hasCompleted = false;
@@ -499,11 +482,11 @@
 
         // Expandable lessons section (always present, hidden by default)
         html += '<div class="sidebar-unit-lessons" style="display:none">';
-        placeholderLessons.forEach(function(lessonName) {
-          html += '<div class="sidebar-lesson-item" tabindex="0" onclick="event.stopPropagation(); Dashboard.renderSubpage(\'practice\')" onkeydown="if(event.key===\'Enter\'){event.stopPropagation(); Dashboard.renderSubpage(\'practice\')}">' +
-            '<i class="fas fa-circle"></i>' + lessonName +
+        for (var li = 1; li <= 3; li++) {
+          html += '<div class="sidebar-lesson-item" tabindex="0" onclick="event.stopPropagation(); Dashboard.renderSubpage(\'practice\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.stopPropagation(); Dashboard.renderSubpage(\'practice\')}">' +
+            'Lesson ' + li +
           '</div>';
-        });
+        }
         html += '</div>';
 
         html += '</div>'; // close sidebar-unit-content
@@ -586,71 +569,80 @@
     },
 
     _buildGradeTrackerSidebarHtml: function(exams) {
-      if (typeof ScoreCalculator === 'undefined') return '';
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
-      var skillTotals = {};
-      var examCount = 0;
-      exams.forEach(function(exam) {
-        if (exam.status !== 'available') return;
-        try {
-          var scores = ScoreCalculator.getAllSkillScores(exam.id);
-          var hasData = scores.some(function(s) { return s.raw > 0; });
-          if (!hasData) return;
-          examCount++;
-          scores.forEach(function(s) {
-            if (!skillTotals[s.skill]) skillTotals[s.skill] = { raw: 0, maxRaw: 0, scale: 0, count: 0 };
-            skillTotals[s.skill].raw += s.raw;
-            skillTotals[s.skill].maxRaw += s.maxRaw;
-            skillTotals[s.skill].scale += s.scale;
-            skillTotals[s.skill].count++;
+      var level = AppState.currentLevel || 'C1';
+
+      // Collect scores from localStorage directly
+      var sectionScores = {}; // { 'reading': [{score, updatedAt}, ...], ... }
+      var sections = ['reading', 'listening', 'writing', 'speaking'];
+
+      try {
+        for (var i = 0; i < localStorage.length; i++) {
+          var k = localStorage.key(i);
+          if (!k || !k.startsWith('cambridge_')) continue;
+          var raw = localStorage.getItem(k);
+          if (!raw) continue;
+          var entry;
+          try { entry = JSON.parse(raw); } catch(e) { continue; }
+          if (!entry.answersChecked) continue;
+          if (entry.level !== level) continue;
+          if (entry.score === null || entry.score === undefined) continue;
+          var sec = entry.section;
+          if (sections.indexOf(sec) === -1) continue;
+          if (!sectionScores[sec]) sectionScores[sec] = [];
+          sectionScores[sec].push({
+            score: entry.score,
+            updatedAt: entry.updatedAt || ''
           });
-        } catch (e) { /* skip */ }
-      });
-      var skillNames = Object.keys(skillTotals);
+        }
+      } catch(e) {}
 
-      // CEFR level from scale score
-      function getCefrFromScale(scale) {
-        if (scale >= 200) return 'C2';
-        if (scale >= 180) return 'C1';
-        if (scale >= 160) return 'B2';
-        if (scale >= 140) return 'B1';
-        if (scale >= 120) return 'A2';
-        if (scale >= 100) return 'A1';
-        return '—';
-      }
+      var skillDisplayNames = {
+        'reading': 'Reading',
+        'listening': 'Listening',
+        'writing': 'Writing',
+        'speaking': 'Speaking'
+      };
 
-      if (skillNames.length === 0) {
+      var skillColors = {
+        'reading': '#3b82f6',
+        'listening': '#f59e0b',
+        'writing': '#10b981',
+        'speaking': '#ef4444'
+      };
+
+      var hasAnyData = sections.some(function(s) { return sectionScores[s] && sectionScores[s].length > 0; });
+
+      if (!hasAnyData) {
         return '<div class="sidebar-widget-pastel sw-grade">' +
           '<div class="sidebar-widget-pastel-title">' + t('gradeTracker', 'Grade Tracker') + '</div>' +
           '<div style="text-align:center;font-size:0.85rem;opacity:0.8;">' + t('completeForPerformance', 'Complete exercises to see your performance here!') + '</div>' +
         '</div>';
       }
 
-      // Show first skill as featured slide (carousel kept internally)
-      var firstSkill = skillNames[0];
-      var d = skillTotals[firstSkill];
-      var avgRaw = d.count > 0 ? Math.round(d.raw / d.count) : 0;
-      var avgScale = d.count > 0 ? Math.round(d.scale / d.count) : 0;
-      var cefr = getCefrFromScale(avgScale);
-
-      var slidesHtml = '';
-      skillNames.forEach(function(skill, idx) {
-        var sd = skillTotals[skill];
-        var sRaw = sd.count > 0 ? Math.round(sd.raw / sd.count) : 0;
-        var sScale = sd.count > 0 ? Math.round(sd.scale / sd.count) : 0;
-        var sCefr = getCefrFromScale(sScale);
-        slidesHtml +=
-          '<div class="grade-carousel-slide" data-slide="' + idx + '" style="display:' + (idx === 0 ? 'flex' : 'none') + '">' +
-            '<div class="sw-grade-raw">' + sRaw + '</div>' +
-            '<div class="sw-grade-cefr">' + sCefr + '</div>' +
-            '<div class="sw-grade-skill">' + skill + '</div>' +
+      var barsHtml = '';
+      sections.forEach(function(sec) {
+        var entries = sectionScores[sec];
+        if (!entries || entries.length === 0) return;
+        // Sort by updatedAt desc, take latest
+        entries.sort(function(a, b) { return b.updatedAt.localeCompare(a.updatedAt); });
+        var latest = entries[0];
+        var pct = Math.round(Math.max(2, Math.min(100, latest.score)));
+        var color = skillColors[sec] || '#3b82f6';
+        var name = skillDisplayNames[sec] || sec;
+        barsHtml +=
+          '<div class="bento-grade-bar-row">' +
+            '<div class="bento-grade-skill">' + name + '</div>' +
+            '<div class="bento-grade-track">' +
+              '<div class="bento-grade-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
+            '</div>' +
+            '<div class="bento-grade-score">' + pct + '%</div>' +
           '</div>';
       });
 
-      return '<div class="sidebar-widget-pastel sw-grade grade-tracker-carousel-widget" data-total-slides="' + skillNames.length + '">' +
+      return '<div class="sidebar-widget-pastel sw-grade">' +
         '<div class="sidebar-widget-pastel-title">' + t('gradeTracker', 'Grade Tracker') + '</div>' +
-        '<div class="grade-carousel-viewport">' + slidesHtml + '</div>' +
-        '<div class="grade-carousel-dots"></div>' +
+        '<div class="bento-grade-bars">' + barsHtml + '</div>' +
       '</div>';
     },
 
