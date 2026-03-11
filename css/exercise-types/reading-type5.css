@@ -82,11 +82,11 @@
 
 .reading-type5-option:hover:not(.disabled) {
   background: #ede9fe;
-  border-color: var(--secondary);
+  border-color: var(--primary-light);
 }
 
 .reading-type5-option input[type="radio"] {
-  accent-color: var(--secondary);
+  accent-color: var(--primary);
   width: 18px;
   height: 18px;
   flex-shrink: 0;

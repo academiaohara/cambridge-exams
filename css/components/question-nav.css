@@ -263,13 +263,13 @@
 }
 
 .qnav-opt-btn:hover:not(.disabled) {
-  background: var(--secondary);
+  background: var(--primary-light);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(45, 46, 95, 0.3);
 }
 
 .qnav-opt-btn.selected {
-  background: var(--secondary);
+  background: var(--primary-light);
   box-shadow: 0 2px 8px rgba(45, 46, 95, 0.35);
 }
 
