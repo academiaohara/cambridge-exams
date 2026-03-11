@@ -55,6 +55,56 @@
       this._pending = true;
     },
 
+    /**
+     * Download all user_progress rows from Supabase and populate localStorage.
+     * Cloud entries are only written when no newer local entry exists.
+     */
+    restoreFromCloud: async function () {
+      var client = Auth && Auth._client;
+      var user = Auth && Auth.getUser();
+      if (!client || !user) { return; }
+
+      try {
+        var result = await client
+          .from('user_progress')
+          .select('*')
+          .eq('user_id', user.id);
+        if (result.error || !result.data) { return; }
+
+        result.data.forEach(function (row) {
+          var key = 'cambridge_' + row.mode + '_' + row.level + '_' + row.exam_id + '_' + row.section + '_' + row.part;
+          try {
+            var existing = localStorage.getItem(key);
+            if (existing) {
+              var local = JSON.parse(existing);
+              // Keep the local entry if it is newer
+              if (local.updatedAt && row.completed_at && new Date(local.updatedAt) >= new Date(row.completed_at)) {
+                return;
+              }
+            }
+          } catch (e) { /* overwrite corrupt data */ }
+
+          var entry = {
+            mode: row.mode,
+            level: row.level,
+            examId: row.exam_id,
+            section: row.section,
+            part: row.part,
+            answers: row.answers || {},
+            score: row.score,
+            answersChecked: row.score !== null && row.score !== undefined,
+            updatedAt: row.completed_at || new Date().toISOString(),
+            synced: true
+          };
+          try {
+            localStorage.setItem(key, JSON.stringify(entry));
+          } catch (e) { /* quota exceeded */ }
+        });
+      } catch (e) {
+        console.warn('[SyncManager] restoreFromCloud error:', e);
+      }
+    },
+
     // ── internal sync ────────────────────────────────────────────────
     _sync: async function () {
       const client = Auth && Auth._client;

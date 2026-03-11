@@ -116,6 +116,19 @@
         await UserProfile.loadOrCreate(user);
       }
 
+      // Restore cloud data to localStorage before starting the sync interval
+      if (typeof SyncManager !== 'undefined') {
+        await SyncManager.restoreFromCloud();
+      }
+      if (typeof StreakManager !== 'undefined') {
+        await StreakManager.restoreFromCloud();
+      }
+
+      // Refresh exam statuses from the (now-updated) localStorage
+      if (typeof App !== 'undefined' && App.restoreExamStatuses) {
+        App.restoreExamStatuses();
+      }
+
       // Kick off sync manager
       if (typeof SyncManager !== 'undefined') {
         SyncManager.start();

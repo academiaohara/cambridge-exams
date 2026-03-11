@@ -116,6 +116,8 @@
     _renderGradeTracker: function(exams) {
       if (typeof ScoreCalculator === 'undefined') return '';
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var noScore = t('noScoreYet', '–');
+      var levelData = AppState.currentLevel || 'C1';
 
       var skillTotals = {};
       var examCount = 0;
@@ -137,23 +139,12 @@
         } catch (e) { /* skip */ }
       });
 
-      var skillNames = Object.keys(skillTotals);
-
-      if (skillNames.length === 0) {
-        return '<div class="bento-grade-row">' +
-          '<div class="bento-card bento-grade-tracker">' +
-            '<div class="bento-grade-title">📊 ' + t('gradeTracker', 'Grade Tracker') + '</div>' +
-            '<div class="bento-grade-empty">' + t('completeForPerformance', 'Complete exercises to see your performance here!') + '</div>' +
-          '</div>' +
-        '</div>';
-      }
-
-      var levelData = AppState.currentLevel || 'C1';
       var scaleBounds = { A2: [82, 140], B1: [102, 160], B2: [122, 180], C1: [142, 200], C2: [162, 220] };
       var bounds = scaleBounds[levelData] || [142, 200];
       var scaleMin = bounds[0];
       var scaleMax = bounds[1];
 
+      var allSkills = ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
       var skillColors = {
         'Reading': '#3b82f6',
         'Use of English': '#8b5cf6',
@@ -163,27 +154,42 @@
       };
 
       var barsHtml = '';
-      skillNames.forEach(function(skill) {
+      allSkills.forEach(function(skill) {
         var d = skillTotals[skill];
-        var avgScale = d.count > 0 ? Math.round(d.scale / d.count) : scaleMin;
-        var pct = Math.round(((avgScale - scaleMin) / (scaleMax - scaleMin)) * 100);
-        pct = Math.max(2, Math.min(100, pct));
         var color = skillColors[skill] || '#3b82f6';
-        barsHtml +=
-          '<div class="bento-grade-bar-row">' +
-            '<div class="bento-grade-skill">' + skill + '</div>' +
-            '<div class="bento-grade-track">' +
-              '<div class="bento-grade-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
-            '</div>' +
-            '<div class="bento-grade-score">' + avgScale + '</div>' +
-          '</div>';
+        if (d && d.count > 0) {
+          var avgScale = Math.round(d.scale / d.count);
+          var pct = Math.round(((avgScale - scaleMin) / (scaleMax - scaleMin)) * 100);
+          pct = Math.max(2, Math.min(100, pct));
+          barsHtml +=
+            '<div class="bento-grade-bar-row">' +
+              '<div class="bento-grade-skill">' + skill + '</div>' +
+              '<div class="bento-grade-track">' +
+                '<div class="bento-grade-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
+              '</div>' +
+              '<div class="bento-grade-score">' + avgScale + '</div>' +
+            '</div>';
+        } else {
+          barsHtml +=
+            '<div class="bento-grade-bar-row">' +
+              '<div class="bento-grade-skill">' + skill + '</div>' +
+              '<div class="bento-grade-track">' +
+                '<div class="bento-grade-fill" style="width:0%;background:' + color + '"></div>' +
+              '</div>' +
+              '<div class="bento-grade-score" style="opacity:0.5">' + noScore + '</div>' +
+            '</div>';
+        }
       });
+
+      var subtitleText = examCount > 0
+        ? t('avgAcross', 'Avg. across') + ' ' + examCount + ' ' + t('examsLabel', 'exams') + ' · ' + t('scaleLabel', 'Scale') + ' ' + scaleMin + '–' + scaleMax
+        : t('latestScores', 'Latest registered scores');
 
       return '<div class="bento-grade-row">' +
         '<div class="bento-card bento-grade-tracker">' +
           '<div class="bento-grade-header">' +
-            '<div class="bento-grade-title">📊 ' + t('gradeTracker', 'Grade Tracker') + '</div>' +
-            '<div class="bento-grade-subtitle">' + t('avgAcross', 'Avg. across') + ' ' + examCount + ' ' + t('examsLabel', 'exams') + ' · ' + t('scaleLabel', 'Scale') + ' ' + scaleMin + '–' + scaleMax + '</div>' +
+            '<div class="bento-grade-title">📊 ' + t('gradeTracker', 'Current Level') + ' · ' + levelData + '</div>' +
+            '<div class="bento-grade-subtitle">' + subtitleText + '</div>' +
           '</div>' +
           '<div class="bento-grade-bars">' + barsHtml + '</div>' +
         '</div>' +
@@ -571,6 +577,7 @@
     _buildGradeTrackerSidebarHtml: function(exams) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var level = AppState.currentLevel || 'C1';
+      var noScore = t('noScoreYet', '–');
 
       // Collect scores from localStorage directly
       var sectionScores = {}; // { 'reading': [{score, updatedAt}, ...], ... }
@@ -611,37 +618,45 @@
         'speaking': '#ef4444'
       };
 
-      var hasAnyData = sections.some(function(s) { return sectionScores[s] && sectionScores[s].length > 0; });
-
-      if (!hasAnyData) {
-        return '<div class="sidebar-widget-pastel sw-grade">' +
-          '<div class="sidebar-widget-pastel-title">' + t('gradeTracker', 'Grade Tracker') + '</div>' +
-          '<div style="text-align:center;font-size:0.85rem;opacity:0.8;">' + t('completeForPerformance', 'Complete exercises to see your performance here!') + '</div>' +
-        '</div>';
-      }
-
+      // Always show all sections — use dash when no data
       var barsHtml = '';
       sections.forEach(function(sec) {
         var entries = sectionScores[sec];
-        if (!entries || entries.length === 0) return;
-        // Sort by updatedAt desc, take latest
-        entries.sort(function(a, b) { return b.updatedAt.localeCompare(a.updatedAt); });
-        var latest = entries[0];
-        var pct = Math.round(Math.max(2, Math.min(100, latest.score)));
         var color = skillColors[sec] || '#3b82f6';
         var name = skillDisplayNames[sec] || sec;
-        barsHtml +=
-          '<div class="bento-grade-bar-row">' +
-            '<div class="bento-grade-skill">' + name + '</div>' +
-            '<div class="bento-grade-track">' +
-              '<div class="bento-grade-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
-            '</div>' +
-            '<div class="bento-grade-score">' + pct + '%</div>' +
-          '</div>';
+        if (entries && entries.length > 0) {
+          // Sort by updatedAt desc, take latest
+          entries.sort(function(a, b) { return b.updatedAt.localeCompare(a.updatedAt); });
+          var latest = entries[0];
+          var pct = Math.round(Math.max(2, Math.min(100, latest.score)));
+          barsHtml +=
+            '<div class="bento-grade-bar-row">' +
+              '<div class="bento-grade-skill">' + name + '</div>' +
+              '<div class="bento-grade-track">' +
+                '<div class="bento-grade-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
+              '</div>' +
+              '<div class="bento-grade-score">' + pct + '%</div>' +
+            '</div>';
+        } else {
+          barsHtml +=
+            '<div class="bento-grade-bar-row">' +
+              '<div class="bento-grade-skill">' + name + '</div>' +
+              '<div class="bento-grade-track">' +
+                '<div class="bento-grade-fill" style="width:0%;background:' + color + '"></div>' +
+              '</div>' +
+              '<div class="bento-grade-score" style="opacity:0.5">' + noScore + '</div>' +
+            '</div>';
+        }
       });
 
+      var hasAnyData = sections.some(function(s) { return sectionScores[s] && sectionScores[s].length > 0; });
+      var subtitle = hasAnyData
+        ? '<div style="text-align:center;font-size:0.78rem;opacity:0.7;margin-bottom:6px;">' + t('latestScores', 'Latest registered scores') + '</div>'
+        : '<div style="text-align:center;font-size:0.78rem;opacity:0.7;margin-bottom:6px;">' + t('completeForPerformance', 'Complete exercises to see your performance here!') + '</div>';
+
       return '<div class="sidebar-widget-pastel sw-grade">' +
-        '<div class="sidebar-widget-pastel-title">' + t('gradeTracker', 'Grade Tracker') + '</div>' +
+        '<div class="sidebar-widget-pastel-title">' + t('gradeTracker', 'Current Level') + ' · ' + level + '</div>' +
+        subtitle +
         '<div class="bento-grade-bars">' + barsHtml + '</div>' +
       '</div>';
     },

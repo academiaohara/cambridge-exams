@@ -30,6 +30,61 @@
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
       } catch (e) { /* ignore */ }
+      this._syncToCloud();
+    },
+
+    /** Push streak data to Supabase user_streaks table. */
+    _syncToCloud: async function() {
+      var client = (typeof Auth !== 'undefined') && Auth._client;
+      var user = (typeof Auth !== 'undefined') && Auth.getUser();
+      if (!client || !user || !this.data) { return; }
+      try {
+        await client
+          .from('user_streaks')
+          .upsert({
+            user_id: user.id,
+            current_streak: this.data.currentStreak || 0,
+            longest_streak: this.data.longestStreak || 0,
+            last_activity: this.data.lastActivityDate || null,
+            total_days_active: this.data.totalDaysActive || 0,
+            updated_at: new Date().toISOString()
+          })
+          .select();
+      } catch (e) {
+        console.warn('[StreakManager] cloud sync error:', e);
+      }
+    },
+
+    /** Restore streak data from Supabase (cloud wins if ahead). */
+    restoreFromCloud: async function() {
+      var client = (typeof Auth !== 'undefined') && Auth._client;
+      var user = (typeof Auth !== 'undefined') && Auth.getUser();
+      if (!client || !user) { return; }
+      try {
+        var result = await client
+          .from('user_streaks')
+          .select('*')
+          .eq('user_id', user.id)
+          .single();
+        if (result.error || !result.data) { return; }
+        var cloud = result.data;
+        var local = this.data || this._load();
+        // Merge: take whichever has the longer streak / more days
+        if ((cloud.current_streak || 0) > (local.currentStreak || 0) ||
+            (cloud.total_days_active || 0) > (local.totalDaysActive || 0)) {
+          this.data = {
+            currentStreak: cloud.current_streak || 0,
+            longestStreak: Math.max(cloud.longest_streak || 0, local.longestStreak || 0),
+            lastActivityDate: cloud.last_activity || local.lastActivityDate,
+            totalDaysActive: Math.max(cloud.total_days_active || 0, local.totalDaysActive || 0),
+            practicedToday: local.practicedToday
+          };
+          this._checkAndUpdate();
+          try { localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data)); } catch(e) {}
+        }
+      } catch (e) {
+        console.warn('[StreakManager] restoreFromCloud error:', e);
+      }
     },
 
     _today: function() {
