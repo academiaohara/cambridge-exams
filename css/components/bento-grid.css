@@ -975,19 +975,17 @@
 }
 
 /* Day Streak widget */
-/* Contenedor principal */
-Has dicho
-
-/* Day Streak widget */
 
 .sw-streak {
-background: #A6CAEC;
 color: white;
 display: flex;
 flex-direction: column;
 min-height: 120px;
 }
 
+.sidebar-widget-pastel .sw-streak{
+background: #A6CAEC;
+}
 
 .sw-streak .sidebar-widget-pastel-title {
 color: white;
@@ -995,14 +993,12 @@ text-align: center;
 width: 100%;
 }
 
-
 .sw-streak-flame {
 display: block;
 text-align: center;
 font-size: 2rem;
 flex: 1;
 }
-
 
 .sw-streak-count {
 display: block;
@@ -1013,7 +1009,6 @@ font-weight: 900;
 color: white;
 align-self: flex-end;
 }
-
 
 
 /* Calendar widget */
