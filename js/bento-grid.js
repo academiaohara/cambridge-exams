@@ -470,7 +470,7 @@
         });
       });
       for (var u = units.length + 1; u <= minUnits; u++) {
-        units.push({ id: 'Unit' + u, number: u, sections: {} });
+        units.push({ id: 'placeholder-unit-' + u, number: u, sections: {} });
       }
 
       // Placeholder lesson names per unit (temporary until Basecamp content is ready)
