@@ -975,34 +975,58 @@
 }
 
 /* Day Streak widget */
+/* Contenedor principal */
 .sw-streak {
-  background: linear-gradient(135deg, #4E95D9, #A6CAEC);
-  color: white;
+  background-color: #A6CAEC; /* Azul claro del fondo */
+  border-radius: 35px;       /* Esquinas muy redondeadas como la imagen */
+  padding: 20px;
+  width: 320px; 
+  height: 200px;
   display: flex;
   flex-direction: column;
-  min-height: 120px;
+  box-sizing: border-box;
+  font-family: 'Mileast', sans-serif; /* Aplicamos tu fuente aquí */
 }
 
-.sw-streak .sidebar-widget-pastel-title {
-  color: white;
+/* Título superior */
+.sw-streak-title {
+  color: #2C5E9E;            /* Azul oscuro */
   text-align: center;
-  width: 100%;
-}
-
-.sw-streak-flame {
-  display: block;
-  text-align: center;
-  font-size: 2rem;
-  flex: 1;
-}
-
-.sw-streak-count {
-  display: block;
-  text-align: right;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 900;
-  color: white;
-  align-self: flex-end;
+  letter-spacing: 1px;
+}
+
+/* Cuerpo que contiene llama y número */
+.sw-streak-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  position: relative;
+}
+
+/* Icono de llama central */
+.sw-streak-flame {
+  color: #4E95D9;            /* Azul medio */
+  width: 85px;
+  height: 85px;
+}
+
+.sw-streak-flame svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Contador en la esquina inferior derecha */
+.sw-streak-count {
+  color: #5B9BD5;            /* Azul del número */
+  font-size: 2.5rem;
+  font-weight: 900;
+  align-self: flex-end;      /* Lo empuja a la derecha */
+  line-height: 1;
+  margin-top: -10px;         /* Ajuste fino de posición */
 }
 
 /* Calendar widget */
