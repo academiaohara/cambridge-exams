@@ -353,18 +353,74 @@
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
+      var lastActivityDate = streak ? streak.lastActivityDate : null;
+      var locale = (typeof AppState !== 'undefined' && AppState.currentLanguage) ? AppState.currentLanguage : 'es';
 
-      // Show current streak days as numbered items
-      var daysHtml = '<div class="sw-calendar-grid">';
-      var count = Math.max(streakCount, 1);
-      for (var i = 1; i <= count; i++) {
-        daysHtml += '<div class="sw-calendar-day active">' + i + '</div>';
+      // Compute trained dates from current streak window
+      var trainedDates = {};
+      if (lastActivityDate && streakCount > 0) {
+        var lastDate = new Date(lastActivityDate);
+        for (var s = 0; s < streakCount; s++) {
+          var td = new Date(lastDate);
+          td.setDate(lastDate.getDate() - s);
+          trainedDates[td.toISOString().slice(0, 10)] = true;
+        }
       }
-      daysHtml += '</div>';
+
+      // Current month info
+      var now = new Date();
+      var year = now.getFullYear();
+      var month = now.getMonth();
+      var daysInMonth = new Date(year, month + 1, 0).getDate();
+      var todayDay = now.getDate();
+
+      // First weekday of month (Mon-first: 0=Mon, 6=Sun)
+      var firstDow = new Date(year, month, 1).getDay();
+      var firstDayMon = (firstDow === 0) ? 6 : firstDow - 1;
+
+      // Locale-aware month label
+      var monthLabel = new Date(year, month, 1).toLocaleDateString(locale, { month: 'long', year: 'numeric' });
+      monthLabel = monthLabel.charAt(0).toUpperCase() + monthLabel.slice(1);
+
+      // Locale-aware narrow weekday initials (Mon-first)
+      // 2024-01-01 was a Monday — use it as anchor for Mon…Sun
+      var dayInitials = [];
+      for (var di = 0; di < 7; di++) {
+        var anchor = new Date(2024, 0, 1 + di);
+        dayInitials.push(anchor.toLocaleDateString(locale, { weekday: 'narrow' }).toUpperCase());
+      }
+
+      // Day-of-week header row
+      var headerHtml = '';
+      dayInitials.forEach(function(initial) {
+        headerHtml += '<div class="sw-cal-header">' + initial + '</div>';
+      });
+
+      // Pad single digit to two-character string
+      function p2(n) { return n < 10 ? '0' + n : '' + n; }
+
+      // Empty cells before first day
+      var emptyCells = '';
+      for (var e = 0; e < firstDayMon; e++) {
+        emptyCells += '<div class="sw-cal-empty"></div>';
+      }
+
+      // Day cells
+      var daysCells = '';
+      for (var i = 1; i <= daysInMonth; i++) {
+        var dateStr = year + '-' + p2(month + 1) + '-' + p2(i);
+        var isTrained = !!trainedDates[dateStr];
+        var isToday = (i === todayDay);
+        var cls = 'sw-calendar-day';
+        if (isTrained) cls += ' trained';
+        if (isToday) cls += ' today';
+        daysCells += '<div class="' + cls + '">' + i + (isTrained ? '<span class="sw-cal-footstep">&#x1F43E;</span>' : '') + '</div>';
+      }
 
       return '<div class="sidebar-widget-pastel sw-calendar" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
         '<div class="sidebar-widget-pastel-title">' + t('calendar', 'Calendar') + '</div>' +
-        daysHtml +
+        '<div class="sw-calendar-month-label">' + monthLabel + '</div>' +
+        '<div class="sw-calendar-grid">' + headerHtml + emptyCells + daysCells + '</div>' +
       '</div>';
     },
 

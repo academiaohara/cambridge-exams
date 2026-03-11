@@ -1029,6 +1029,15 @@
 .dashboard-right-sidebar {
   position: sticky;
   top: 80px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.dashboard-left-sidebar::-webkit-scrollbar,
+.dashboard-right-sidebar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .dashboard-center {
