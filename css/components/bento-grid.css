@@ -977,18 +977,15 @@
 /* Day Streak widget */
 
 .sw-streak {
-color: white;
+background: #A6CAEC;
+color: #4E95D9;
 display: flex;
 flex-direction: column;
 min-height: 120px;
 }
 
-.sidebar-widget-pastel .sw-streak{
-background: #A6CAEC;
-}
-
 .sw-streak .sidebar-widget-pastel-title {
-color: white;
+color: #4E95D9;
 text-align: center;
 width: 100%;
 }
@@ -1006,7 +1003,7 @@ font-family: 'Mileast', sans-serif;
 text-align: right;
 font-size: 2rem;
 font-weight: 900;
-color: white;
+color: #4E95D9;
 align-self: flex-end;
 }
 
