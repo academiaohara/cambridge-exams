@@ -581,9 +581,8 @@
 
     _buildCalculatorSidebarHtml: function() {
       if (typeof ScoreCalculator === 'undefined') return '';
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
-      return '<div class="sidebar-widget-pastel sw-calculator" onclick="openScoreCalculator()">' +
-        '<div class="sidebar-widget-pastel-title">' + t('scoreCalculator', 'Calculator') + '</div>' +
+      return '<div class="sidebar-widget-pastel sw-calculator" onclick="openScoreCalculator()" aria-label="Open Score Calculator">' +
+        '<span class="material-symbols-outlined sw-calculator-icon">calculate</span>' +
       '</div>';
     },
 
@@ -616,10 +615,11 @@
         var hasData = d && d.count > 0;
         var avgScale = hasData ? Math.round(d.scale / d.count) : 0;
         var gradeInfo = (hasData && typeof ScoreCalculator !== 'undefined') ? ScoreCalculator.getGradeInfo(avgScale, level) : { cefr: '–' };
+        var cefrText = gradeInfo.cefr || '–';
         slides.push(
           '<div class="grade-carousel-slide" style="display:flex">' +
             '<div class="grade-carousel-raw">' + (hasData ? avgScale : '–') + '</div>' +
-            '<div class="grade-carousel-cefr">' + (gradeInfo.cefr || '–') + '</div>' +
+            '<div class="grade-carousel-cefr' + (cefrText === '–' ? ' grade-carousel-cefr-dash' : '') + '">' + cefrText + '</div>' +
             '<div class="grade-carousel-skill-label"><span>' + skill + '</span></div>' +
           '</div>'
         );
