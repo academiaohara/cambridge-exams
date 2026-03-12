@@ -75,8 +75,26 @@
       }
     },
 
-    /** Sign out the current user. */
+    /** Continue as guest without signing in. */
+    continueAsGuest: function () {
+      AppState.isGuest = true;
+      AppState.isAuthenticated = false;
+      AppState.isPremium = false;
+      AppState.currentUser = null;
+      this._hideAuthModal();
+    },
+
+    /** Sign out the current user (or exit guest mode). */
     signOut: async function () {
+      if (AppState.isGuest) {
+        AppState.isGuest = false;
+        AppState.isAuthenticated = false;
+        AppState.currentUser = null;
+        this._removeUserWidget();
+        this._showAuthModal();
+        if (typeof Dashboard !== 'undefined') { Dashboard.render(); }
+        return;
+      }
       if (!this._client) { return; }
       const { error } = await this._client.auth.signOut();
       if (error) { console.error('[Auth] signOut error:', error.message); }

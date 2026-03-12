@@ -42,6 +42,8 @@
     // Auth state
     isAuthenticated: false,
     currentUser: null,
+    isGuest: false,
+    isPremium: false,
     // Streak state (managed by StreakManager)
     streak: {
       currentStreak: 0,

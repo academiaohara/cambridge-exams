@@ -148,6 +148,57 @@
   text-decoration: underline;
 }
 
+/* ── Auth divider ────────────────────────────────────────────────────────── */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: var(--text-light);
+  font-size: 0.82rem;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+/* ── Guest sign-in button ────────────────────────────────────────────────── */
+.auth-guest-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 20px;
+  background: transparent;
+  border: 2px dashed #cbd5e1;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-medium);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.auth-guest-btn:hover {
+  border-color: var(--secondary);
+  color: var(--secondary);
+  background: rgba(30, 157, 142, 0.04);
+}
+.auth-guest-btn i {
+  font-size: 1rem;
+}
+
+/* ── Guest note ──────────────────────────────────────────────────────────── */
+.auth-guest-note {
+  margin-top: 10px;
+  color: var(--text-light);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
 /* ── Header user widget ─────────────────────────────────────────────────── */
 .user-widget {
   display: flex;
