@@ -140,7 +140,7 @@
     
     startFullSection: async function(examId, section) {
       // Guest gate: block writing and speaking for guest users
-      if (AppState.isGuest && !AppState.isAuthenticated && (section === 'writing' || section === 'speaking')) {
+      if (AppState.isGuest && (section === 'writing' || section === 'speaking')) {
         if (typeof Dashboard !== 'undefined') Dashboard.showGuestGate();
         return;
       }
@@ -192,7 +192,7 @@
     
     openPart: async function(examId, section, part) {
       // Guest gate: block writing and speaking for guest users
-      if (AppState.isGuest && !AppState.isAuthenticated && (section === 'writing' || section === 'speaking')) {
+      if (AppState.isGuest && (section === 'writing' || section === 'speaking')) {
         if (typeof Dashboard !== 'undefined') Dashboard.showGuestGate();
         return;
       }

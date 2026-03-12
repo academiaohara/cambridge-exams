@@ -65,7 +65,7 @@
         '</div>' +
       '</div>';
 
-      var isGuest = AppState.isGuest && !AppState.isAuthenticated;
+      var isGuest = AppState.isGuest;
 
       // Premium upgrade banner for guest users
       var premiumBannerHtml = '';
@@ -173,7 +173,7 @@
     renderSection: function(exam, sectionKey) {
       const section = exam.sections[sectionKey];
       const isExamMode = AppState.currentMode === 'exam';
-      const isGuest = AppState.isGuest && !AppState.isAuthenticated;
+      const isGuest = AppState.isGuest;
       const isGuestLocked = isGuest && (sectionKey === 'writing' || sectionKey === 'speaking');
       var lockedBadge = isGuestLocked
         ? '<span class="guest-locked-badge"><i class="fas fa-lock"></i> ' + (I18n.t('signInRequired') || 'Sign in required') + '</span>'
