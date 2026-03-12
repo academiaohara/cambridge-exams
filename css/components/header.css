@@ -127,8 +127,8 @@
 .header-calc-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 16px;
+  justify-content: center;
+  padding: 7px 10px;
   border-radius: 40px;
   border: 2px solid rgba(45, 46, 95, 0.10);
   background: rgba(45, 46, 95, 0.04);
@@ -146,6 +146,8 @@
   transform: translateY(-1px);
 }
 
-.header-calc-btn i {
+.header-calc-btn i,
+.header-calc-btn .material-symbols-outlined {
   color: #1E9D8E;
+  font-size: 1.3rem;
 }
