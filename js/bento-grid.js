@@ -609,24 +609,23 @@
 
       allSkills.forEach(function(skill) {
         var d = skillTotals[skill];
-        if (d && d.count > 0) {
-          var avgScale = Math.round(d.scale / d.count);
-          var gradeInfo = (typeof ScoreCalculator !== 'undefined') ? ScoreCalculator.getGradeInfo(avgScale, level) : { cefr: '–' };
-          slides.push(
-            '<div class="grade-carousel-slide" style="display:flex">' +
-              '<div class="grade-carousel-raw">' + avgScale + '</div>' +
-              '<div class="grade-carousel-cefr">' + (gradeInfo.cefr || '–') + '</div>' +
-              '<div class="grade-carousel-skill-label">' + skill + '</div>' +
-            '</div>'
-          );
-        }
+        var hasData = d && d.count > 0;
+        var avgScale = hasData ? Math.round(d.scale / d.count) : 0;
+        var gradeInfo = (hasData && typeof ScoreCalculator !== 'undefined') ? ScoreCalculator.getGradeInfo(avgScale, level) : { cefr: '–' };
+        slides.push(
+          '<div class="grade-carousel-slide" style="display:flex">' +
+            '<div class="grade-carousel-raw">' + (hasData ? avgScale : '–') + '</div>' +
+            '<div class="grade-carousel-cefr">' + (gradeInfo.cefr || '–') + '</div>' +
+            '<div class="grade-carousel-skill-label"><span>' + skill + '</span></div>' +
+          '</div>'
+        );
       });
 
       var slidesHtml = '';
       if (slides.length === 0) {
         slidesHtml = '<div class="grade-carousel-slide" style="display:flex;opacity:0.6">' +
           '<div class="grade-carousel-raw" style="font-size:1.6rem;">–</div>' +
-          '<div class="grade-carousel-skill-label">' + t('completeForPerformance', 'Complete exercises to see results') + '</div>' +
+          '<div class="grade-carousel-skill-label"><span>' + t('completeForPerformance', 'Complete exercises to see results') + '</span></div>' +
         '</div>';
       } else {
         slides.forEach(function(s, idx) {
