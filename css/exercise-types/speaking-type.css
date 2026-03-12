@@ -70,6 +70,7 @@
 /* ── Featured area (big speaker) ── */
 .speaking-stage-featured {
   flex: 1 1 0;
+  max-width: 60%;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -142,11 +143,11 @@
   gap: 1rem;
   z-index: 2;
   justify-content: flex-end;
-  flex-shrink: 0;
+  flex: 0 0 180px;
 }
 
 .speaking-stage-card {
-  width: 140px;
+  width: 180px;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
@@ -195,12 +196,17 @@
 
 /* Card avatar area */
 .speaking-stage-card-avatar {
-  width: 60px;
-  height: 60px;
+  width: 68px;
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #fff;
+  overflow: hidden;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
 }
 .speaking-card-icon {
   width: 54px;
@@ -210,21 +216,23 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 50%;
 }
 
-/* Card label — bottom-left */
+/* Card label */
 .speaking-stage-card-label {
-  font-weight: 800;
-  font-size: 0.75rem;
+  font-weight: 700;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  text-align: left;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  background: rgba(0,0,0,0.15);
+  text-align: center;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.22);
+  color: #fff;
   width: 100%;
-  align-self: flex-start;
+  align-self: center;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 /* Card speaking indicator */
@@ -487,10 +495,11 @@
   .speaking-stage-scene { min-height: 300px; padding: 1rem; }
   .speaking-stage-featured { min-height: 220px; }
   .speaking-featured-avatar { width: 180px; height: 180px; max-width: 180px; max-height: 180px; }
-  .speaking-stage-card { width: 110px; padding: 0.75rem 0.5rem 0.4rem; }
-  .speaking-stage-card-avatar { width: 44px; height: 44px; }
+  .speaking-stage-card { width: 140px; padding: 0.75rem 0.5rem 0.4rem; }
+  .speaking-stage-cards { flex: 0 0 140px; }
+  .speaking-stage-card-avatar { width: 50px; height: 50px; }
   .speaking-card-icon { width: 40px; height: 40px; }
-  .speaking-stage-card-label { font-size: 0.65rem; }
+  .speaking-stage-card-label { font-size: 0.68rem; }
   .speaking-stage-featured-label { font-size: 0.75rem; padding: 0.25rem 0.8rem; }
   .speaking-chat-msg { max-width: 92%; }
   .speaking-criteria-list { gap: 0.5rem; }
