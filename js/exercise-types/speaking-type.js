@@ -10,6 +10,37 @@
     partner: '<svg viewBox="0 0 80 80" class="speaking-avatar-svg"><circle cx="40" cy="30" r="16" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/><circle cx="34" cy="28" r="1.8" fill="#f59e0b"/><circle cx="46" cy="28" r="1.8" fill="#f59e0b"/><path d="M35 35 Q40 39 45 35" stroke="#f59e0b" stroke-width="1.5" fill="none" stroke-linecap="round"/><rect x="18" y="50" width="44" height="24" rx="12" fill="#f59e0b"/><path d="M28 18 Q40 6 52 18" stroke="#f59e0b" stroke-width="2" fill="none"/></svg>'
   };
 
+  // ── Large examiner silhouette SVG (woman with ponytail, matching reference) ──
+  var EXAMINER_SILHOUETTE = '<svg viewBox="0 0 400 420" class="speaking-examiner-svg">' +
+    '<ellipse cx="200" cy="370" rx="150" ry="70" fill="#1a1a2e"/>' +
+    '<circle cx="200" cy="180" r="80" fill="#1a1a2e"/>' +
+    '<path d="M140 160 Q130 100 160 80 Q200 50 240 80 Q270 100 260 160" fill="#1a1a2e"/>' +
+    '<path d="M255 120 Q290 100 310 140 Q320 170 300 180 L260 160" fill="#1a1a2e"/>' +
+    '<path d="M150 200 C120 220 100 280 90 350 Q90 380 200 400 Q310 380 310 350 C300 280 280 220 250 200" fill="#1a1a2e"/>' +
+    '<path d="M155 175 Q200 210 245 175" stroke="#c4b5fd" stroke-width="3" fill="none" stroke-linecap="round"/>' +
+    '<path d="M140 155 Q135 120 155 105 Q180 85 200 85 Q220 85 245 105 Q265 120 260 155" stroke="#c4b5fd" stroke-width="3" fill="none"/>' +
+  '</svg>';
+
+  // ── Person icon SVG for candidate cards ──
+  var CARD_PERSON_ICON = '<svg viewBox="0 0 80 80" class="speaking-card-icon"><circle cx="40" cy="28" r="14" fill="currentColor"/><ellipse cx="40" cy="64" rx="22" ry="16" fill="currentColor"/></svg>';
+
+  // ── Animal avatar system (prepared for assets/images/animals/) ──
+  var ANIMAL_IMAGES = []; // Will be populated when images are uploaded to Assets/images/animals/
+
+  function _getAnimalAvatarHTML(role) {
+    // Check if animal images are available
+    if (ANIMAL_IMAGES.length > 0) {
+      var profile = (typeof UserProfile !== 'undefined') ? UserProfile._profile : null;
+      if (role === 'candidate' && profile && profile.animal_avatar) {
+        return '<img src="Assets/images/animals/' + profile.animal_avatar + '" alt="" class="speaking-animal-avatar">';
+      }
+      var randomAnimal = ANIMAL_IMAGES[Math.floor(Math.random() * ANIMAL_IMAGES.length)];
+      return '<img src="Assets/images/animals/' + randomAnimal + '" alt="" class="speaking-animal-avatar">';
+    }
+    // Fallback: person icon silhouette
+    return CARD_PERSON_ICON;
+  }
+
   var ROLE_COLORS = { examiner: '#6366f1', candidate: '#22c55e', partner: '#f59e0b' };
 
   function t(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : (fb || key); }
@@ -132,21 +163,42 @@
       this._updateView();
     },
 
-    // ── Video-call view ──
+    // ── Video-call view (stage layout matching reference design) ──
 
     _buildVideoCallView: function() {
       var self = this;
-      var tiles = this._participants.map(function(role) {
-        return '<div class="speaking-vc-tile" data-role="' + role + '">' +
-          '<div class="speaking-vc-avatar">' + AVATARS[role] + '</div>' +
-          '<div class="speaking-vc-name">' + roleName(role) + '</div>' +
-          '<div class="speaking-vc-indicator"></div>' +
-        '</div>';
-      }).join('');
+      var userName = t('you', 'You');
+      var profile = (typeof UserProfile !== 'undefined') ? UserProfile._profile : null;
+      if (profile && profile.full_name) {
+        userName = profile.full_name.split(' ')[0];
+      }
 
-      return '<div class="speaking-videocall">' +
-        '<div class="speaking-vc-grid" data-count="' + this._participants.length + '">' +
-          tiles +
+      // Build candidate cards on the right side
+      var candidateCards = '';
+      this._participants.forEach(function(role) {
+        if (role === 'examiner') return;
+        var cardColor = role === 'candidate' ? 'gold' : 'blue';
+        var label = role === 'candidate' ? userName : t('candidate2', 'Candidate 2');
+        candidateCards +=
+          '<div class="speaking-stage-card speaking-stage-card--' + cardColor + '" data-role="' + role + '">' +
+            '<div class="speaking-stage-card-avatar">' +
+              _getAnimalAvatarHTML(role) +
+            '</div>' +
+            '<div class="speaking-stage-card-label">' + label + '</div>' +
+            '<div class="speaking-vc-indicator"></div>' +
+          '</div>';
+      });
+
+      return '<div class="speaking-videocall speaking-stage">' +
+        '<div class="speaking-stage-scene">' +
+          '<div class="speaking-stage-examiner" data-role="examiner">' +
+            EXAMINER_SILHOUETTE +
+            '<div class="speaking-stage-examiner-label">' + t('examiner', 'Examiner') + '</div>' +
+            '<div class="speaking-vc-indicator"></div>' +
+          '</div>' +
+          '<div class="speaking-stage-cards">' +
+            candidateCards +
+          '</div>' +
         '</div>' +
         '<div class="speaking-vc-status" id="speaking-vc-status"></div>' +
         this._buildControls() +
@@ -682,23 +734,18 @@
     },
 
     _updateView: function() {
-      // Update video-call tiles
-      var tiles = document.querySelectorAll('.speaking-vc-tile');
+      // Update stage elements (examiner + candidate cards)
+      var stageElements = document.querySelectorAll('[data-role]');
       var active = this._activeSpeaker;
-      var participantCount = this._participants.length;
-      tiles.forEach(function(tile) {
-        var role = tile.getAttribute('data-role');
+      stageElements.forEach(function(el) {
+        var role = el.getAttribute('data-role');
         if (role === active) {
-          tile.classList.add('speaking-vc-tile--active');
-          tile.classList.remove('speaking-vc-tile--small');
-        } else if (active) {
-          tile.classList.remove('speaking-vc-tile--active');
-          tile.classList.add('speaking-vc-tile--small');
+          el.classList.add('speaking-stage--speaking');
         } else {
-          tile.classList.remove('speaking-vc-tile--active', 'speaking-vc-tile--small');
+          el.classList.remove('speaking-stage--speaking');
         }
         // Update indicator
-        var indicator = tile.querySelector('.speaking-vc-indicator');
+        var indicator = el.querySelector('.speaking-vc-indicator');
         if (indicator) {
           if (role === active) {
             indicator.innerHTML = '<span class="speaking-pulse"></span> ' + t('speakingNow', 'Speaking...');

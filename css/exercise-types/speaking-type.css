@@ -46,94 +46,159 @@
 .speaking-toggle-btn:hover:not(.active) { color: var(--text-dark); }
 
 /* ══════════════════════════════════════
-   VIDEO-CALL VIEW
+   VIDEO-CALL VIEW (Stage layout)
    ══════════════════════════════════════ */
 .speaking-videocall {
-  background: #1e1e2e;
-  border-radius: 12px;
+  background: #c4b5fd;
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
 }
 
-/* Tile grid */
-.speaking-vc-grid {
-  display: grid;
-  gap: 8px;
-  padding: 12px;
-  min-height: 320px;
-  transition: all 0.4s ease;
-}
-.speaking-vc-grid[data-count="2"] { grid-template-columns: 1fr 1fr; }
-.speaking-vc-grid[data-count="3"] { grid-template-columns: 1fr 1fr 1fr; }
-
-/* When there's an active speaker, use specific layout */
-.speaking-vc-grid:has(.speaking-vc-tile--active) {
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
+/* Stage scene — holds examiner + candidate cards */
+.speaking-stage-scene {
   position: relative;
+  min-height: 380px;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  overflow: hidden;
 }
 
-/* Participant tile */
-.speaking-vc-tile {
+/* ── Examiner silhouette (large, center-left) ── */
+.speaking-stage-examiner {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-radius: 10px;
-  padding: 1.5rem 1rem;
-  background: #2a2a3e;
-  transition: all 0.4s ease;
+  justify-content: flex-end;
   position: relative;
-  min-height: 140px;
+  z-index: 1;
+  transition: filter 0.3s;
 }
-
-/* Active speaker: takes most space */
-.speaking-vc-tile--active {
-  background: #32324a;
-  box-shadow: 0 0 0 2px rgba(99,102,241,0.5);
-  min-height: 200px;
-  order: -1;
+.speaking-examiner-svg {
+  width: 280px;
+  height: 300px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
 }
-.speaking-vc-tile--active .speaking-vc-avatar { width: 90px; height: 90px; }
-.speaking-vc-tile--active .speaking-vc-name { font-size: 1rem; }
-
-/* Small tiles (non-active when someone else is speaking) */
-.speaking-vc-tile--small {
-  position: absolute;
-  width: 100px;
-  min-height: 80px;
-  padding: 0.5rem;
-  z-index: 2;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  border: 2px solid #3a3a50;
-}
-/* Position small tiles in top-right corner stacked */
-.speaking-vc-tile--small:nth-child(2) { top: 16px; right: 16px; }
-.speaking-vc-tile--small:nth-child(3) { top: 16px; right: 130px; }
-.speaking-vc-tile--small:first-child { top: 16px; right: 16px; }
-
-.speaking-vc-tile--small .speaking-vc-avatar { width: 40px; height: 40px; }
-.speaking-vc-tile--small .speaking-vc-name { font-size: 0.7rem; }
-.speaking-vc-tile--small .speaking-vc-indicator { font-size: 0.65rem; }
-
-/* Avatar */
-.speaking-vc-avatar {
-  width: 70px; height: 70px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  background: #3a3a50;
-  transition: all 0.3s;
-}
-.speaking-avatar-svg { width: 100%; height: 100%; }
-
-/* Name label */
-.speaking-vc-name {
-  color: #e2e8f0;
+.speaking-stage-examiner-label {
+  background: rgba(75, 75, 100, 0.75);
+  color: #fff;
+  font-weight: 800;
   font-size: 0.85rem;
-  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 1.2rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+.speaking-stage-examiner .speaking-vc-indicator {
+  color: #fff;
+  font-size: 0.8rem;
+  min-height: 1.5em;
+  margin-top: 0.3rem;
+}
+.speaking-stage-examiner.speaking-stage--speaking {
+  filter: drop-shadow(0 0 16px rgba(99,102,241,0.5));
+}
+
+/* ── Candidate cards (right side, stacked) ── */
+.speaking-stage-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 2;
+  margin-left: auto;
+  align-self: center;
+}
+
+.speaking-stage-card {
+  width: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.75rem 0.5rem;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s, transform 0.3s;
+  background-image: url('../../Assets/images/fondospeaker.png');
+  background-size: cover;
+  background-position: center;
+}
+.speaking-stage-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  z-index: 0;
+}
+.speaking-stage-card > * { position: relative; z-index: 1; }
+
+/* Gold card (user / candidate) */
+.speaking-stage-card--gold::before {
+  background: rgba(202, 138, 4, 0.75);
+}
+.speaking-stage-card--gold {
+  border: 2px solid #ca8a04;
+  color: #1a1a2e;
+}
+
+/* Blue card (partner / candidate 2) */
+.speaking-stage-card--blue::before {
+  background: rgba(129, 140, 248, 0.70);
+}
+.speaking-stage-card--blue {
+  border: 2px solid #818cf8;
+  color: #1a1a2e;
+}
+
+/* Card avatar area */
+.speaking-stage-card-avatar {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.speaking-card-icon {
+  width: 54px;
+  height: 54px;
+}
+.speaking-animal-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Card label */
+.speaking-stage-card-label {
+  font-weight: 800;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   text-align: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.15);
+  width: 100%;
+}
+
+/* Card speaking indicator */
+.speaking-stage-card .speaking-vc-indicator {
+  font-size: 0.7rem;
+  color: #1a1a2e;
+  min-height: 1.3em;
+  margin-top: 0.25rem;
+}
+
+/* Active speaking glow */
+.speaking-stage-card.speaking-stage--speaking {
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.6), 0 4px 20px rgba(0,0,0,0.3);
+  transform: scale(1.04);
 }
 
 /* Speaking indicator */
@@ -163,11 +228,12 @@
   padding: 0.5rem 1rem;
   text-align: center;
   font-size: 0.8rem;
-  color: #94a3b8;
-  border-top: 1px solid #3a3a50;
+  color: #4b5563;
+  border-top: 1px solid rgba(99,102,241,0.2);
   min-height: 2rem;
+  background: rgba(196, 181, 253, 0.3);
 }
-.speaking-vc-status--yours { color: #22c55e; font-weight: 600; }
+.speaking-vc-status--yours { color: #16a34a; font-weight: 600; }
 
 /* ══════════════════════════════════════
    CHAT VIEW
@@ -267,8 +333,8 @@
   display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
 }
 .speaking-videocall .speaking-controls {
-  border-top: 1px solid #3a3a50;
-  background: #1e1e2e;
+  border-top: 1px solid rgba(99,102,241,0.3);
+  background: rgba(30, 30, 46, 0.85);
 }
 .speaking-chat .speaking-controls {
   border-top: 1px solid var(--border-light);
@@ -307,8 +373,8 @@
   color: var(--text-dark);
 }
 .speaking-videocall .speaking-text-input {
-  background: #2a2a3e;
-  border-color: #3a3a50;
+  background: rgba(42, 42, 62, 0.9);
+  border-color: rgba(99,102,241,0.4);
   color: #e2e8f0;
 }
 .speaking-text-input:focus { border-color: var(--primary); }
@@ -355,7 +421,7 @@
   display: flex; align-items: center; gap: 0.4rem;
   padding: 0.5rem 0;
 }
-.speaking-videocall .speaking-ended-msg { color: #94a3b8; }
+.speaking-videocall .speaking-ended-msg { color: #e2e8f0; }
 
 /* Skip button */
 .speaking-skip-row { width: 100%; text-align: center; }
@@ -370,18 +436,20 @@
   cursor: pointer;
   transition: all 0.2s;
 }
-.speaking-videocall .speaking-skip-btn { border-color: #3a3a50; color: #94a3b8; }
+.speaking-videocall .speaking-skip-btn { border-color: rgba(255,255,255,0.3); color: #e2e8f0; }
 .speaking-skip-btn:hover { background: rgba(0,0,0,0.05); }
 
 /* ══════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════ */
 @media (max-width: 768px) {
-  .speaking-vc-grid[data-count="3"] { grid-template-columns: 1fr 1fr; }
-  .speaking-vc-tile--active .speaking-vc-avatar { width: 70px; height: 70px; }
-  .speaking-vc-tile--small { width: 80px; }
-  .speaking-vc-tile--small .speaking-vc-avatar { width: 32px; height: 32px; }
-  .speaking-vc-tile--small:nth-child(3) { right: 108px; }
+  .speaking-stage-scene { min-height: 300px; padding: 1rem; }
+  .speaking-examiner-svg { width: 180px; height: 200px; }
+  .speaking-stage-card { width: 110px; padding: 0.75rem 0.5rem 0.4rem; }
+  .speaking-stage-card-avatar { width: 44px; height: 44px; }
+  .speaking-card-icon { width: 40px; height: 40px; }
+  .speaking-stage-card-label { font-size: 0.65rem; }
+  .speaking-stage-examiner-label { font-size: 0.75rem; padding: 0.25rem 0.8rem; }
   .speaking-chat-msg { max-width: 92%; }
   .speaking-criteria-list { gap: 0.5rem; }
   .speaking-criterion { flex-wrap: wrap; }
