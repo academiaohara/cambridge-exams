@@ -54,13 +54,13 @@
 
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var modeConfig = mode === 'exam'
-        ? { icon: '⏱️', title: t('theArena', 'The Arena'), subtitle: t('timedExamMode', 'Timed exam mode') }
-        : { icon: '🛡️', title: t('practiceMode', 'Practice'), subtitle: t('noLimitsSafeSpace', 'No limits. Safe space.') };
+        ? { title: t('theArena', 'The Arena'), subtitle: t('timedExamMode', 'Timed exam mode') }
+        : { title: t('practiceMode', 'Practice'), subtitle: t('noLimitsSafeSpace', 'No limits. Safe space.') };
 
       var subpageHeader = '<div class="subpage-header">' +
-        '<button class="subpage-back-btn" onclick="history.back()">← ' + t('backToDashboard', 'Back') + '</button>' +
+        '<button class="subpage-back-btn" onclick="history.back()">' + t('backToDashboard', 'Back') + '</button>' +
         '<div>' +
-          '<div class="subpage-title">' + modeConfig.icon + ' ' + modeConfig.title + '</div>' +
+          '<div class="subpage-title">' + modeConfig.title + '</div>' +
           '<div class="subpage-subtitle">' + modeConfig.subtitle + '</div>' +
         '</div>' +
       '</div>';

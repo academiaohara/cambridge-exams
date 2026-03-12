@@ -348,9 +348,9 @@
           '<div class="dashboard-center">' +
             '<div class="qs-chooser-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()">← ' + t('back', 'Back') + '</button>' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
                 '<div>' +
-                  '<div class="subpage-title">⚡ ' + t('quicksteps', 'Quicksteps') + '</div>' +
+                  '<div class="subpage-title">' + t('quicksteps', 'Quicksteps') + '</div>' +
                   '<div class="subpage-subtitle">' + t('quickstepsSubtitle', 'Choose a category to start practicing') + '</div>' +
                 '</div>' +
               '</div>' +
@@ -962,9 +962,9 @@
           '<div class="dashboard-center">' +
             '<div class="grade-evolution-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()">← ' + t('back', 'Back') + '</button>' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
                 '<div>' +
-                  '<div class="subpage-title">📈 ' + t('gradeEvolution', 'Grade Evolution') + '</div>' +
+                  '<div class="subpage-title">' + t('gradeEvolution', 'Grade Evolution') + '</div>' +
                   '<div class="subpage-subtitle">' + level + ' · ' + t('gradeEvolutionSubtitle', 'Track your progress across exams') + '</div>' +
                 '</div>' +
               '</div>' +
