@@ -70,6 +70,10 @@
           if (typeof UserProfile !== 'undefined') UserProfile.renderProfileSection();
         } else if (state.view === 'premium') {
           if (typeof UserProfile !== 'undefined') UserProfile.renderPremiumSection();
+        } else if (state.view === 'gradeEvolution') {
+          if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution();
+        } else if (state.view === 'quicksteps') {
+          if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
         }
       });
       

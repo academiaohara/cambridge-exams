@@ -302,8 +302,8 @@
     },
 
     openQuickstepsChooser: function() {
-      var existing = document.querySelector('.qs-chooser-overlay');
-      if (existing) existing.remove();
+      var content = document.getElementById('main-content');
+      if (!content) return;
 
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
 
@@ -328,24 +328,20 @@
         '</button>';
       });
 
-      var el = document.createElement('div');
-      el.className = 'qs-chooser-overlay';
-      el.innerHTML =
-        '<div class="qs-chooser-modal">' +
-          '<div class="qs-chooser-header">' +
-            '<h2>⚡ ' + t('quicksteps', 'Quicksteps') + '</h2>' +
-            '<button class="qs-chooser-close" onclick="this.closest(\'.qs-chooser-overlay\').remove()">✕</button>' +
+      content.innerHTML =
+        '<div class="qs-chooser-section">' +
+          '<div class="qs-chooser-section-header">' +
+            '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + t('back', 'Back') + '</button>' +
           '</div>' +
-          '<div class="qs-chooser-body">' + buttonsHtml + '</div>' +
+          '<div class="qs-chooser-card">' +
+            '<h2>⚡ ' + t('quicksteps', 'Quicksteps') + '</h2>' +
+            '<div class="qs-chooser-body">' + buttonsHtml + '</div>' +
+          '</div>' +
         '</div>';
-      document.body.appendChild(el);
-      el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
+      history.pushState({ view: 'quicksteps' }, '');
     },
 
     _startQuicksteps: function(category) {
-      var overlay = document.querySelector('.qs-chooser-overlay');
-      if (overlay) overlay.remove();
-
       if (typeof MicroLearning !== 'undefined') {
         MicroLearning._selectedCategory = category;
         MicroLearning.open();
@@ -823,8 +819,8 @@
 
     // ── Grade Evolution Section ──────────────────────────────────────────
     openGradeEvolution: function() {
-      var existing = document.querySelector('.grade-evolution-overlay');
-      if (existing) existing.remove();
+      var content = document.getElementById('main-content');
+      if (!content) return;
 
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var level = AppState.currentLevel || 'C1';
@@ -914,18 +910,17 @@
       }
       bodyHtml += '</div>';
 
-      var el = document.createElement('div');
-      el.className = 'grade-evolution-overlay';
-      el.innerHTML =
-        '<div class="grade-evolution-modal">' +
-          '<div class="grade-evolution-header">' +
-            '<h2>📈 ' + t('gradeEvolution', 'Grade Evolution') + ' · ' + level + '</h2>' +
-            '<button class="grade-evolution-close" onclick="this.closest(\'.grade-evolution-overlay\').remove()">✕</button>' +
+      content.innerHTML =
+        '<div class="grade-evolution-section">' +
+          '<div class="grade-evolution-section-header">' +
+            '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + t('back', 'Back') + '</button>' +
           '</div>' +
-          '<div class="grade-evolution-body">' + bodyHtml + '</div>' +
+          '<div class="grade-evolution-card">' +
+            '<h2>📈 ' + t('gradeEvolution', 'Grade Evolution') + ' · ' + level + '</h2>' +
+            '<div class="grade-evolution-body">' + bodyHtml + '</div>' +
+          '</div>' +
         '</div>';
-      document.body.appendChild(el);
-      el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
+      history.pushState({ view: 'gradeEvolution' }, '');
     }
   };
 })();
