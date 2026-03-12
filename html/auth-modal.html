@@ -1,6 +1,6 @@
 <!-- html/auth-modal.html -->
 <!-- Reference snippet — the actual markup is inlined in index.html -->
-<div id="auth-modal-overlay" class="auth-modal-overlay" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="auth-title">
+<div id="auth-modal-overlay" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="auth-title">
   <div class="auth-modal-card">
 
     <!-- Brand icon -->
@@ -29,6 +29,18 @@
       </svg>
       Sign in with Google
     </button>
+
+    <!-- Divider -->
+    <div class="auth-divider"><span data-i18n="or">or</span></div>
+
+    <!-- Guest button -->
+    <button id="auth-guest-btn" class="auth-guest-btn" onclick="Auth.continueAsGuest()" type="button">
+      <i class="fas fa-user-clock"></i>
+      <span data-i18n="continueAsGuest">Continue without signing in</span>
+    </button>
+    <div class="auth-guest-note" data-i18n="guestLimitations">
+      Free access to the first exam (writing &amp; speaking locked)
+    </div>
 
     <!-- Loader (shown while OAuth is processing) -->
     <div id="auth-loader">
