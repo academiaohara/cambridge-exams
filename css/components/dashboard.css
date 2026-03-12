@@ -1028,15 +1028,27 @@
 .dashboard-left-sidebar,
 .dashboard-right-sidebar {
   position: relative;
-  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   overflow-y: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
 }
 
+.dashboard-right-sidebar {
+  top: 20px;
+}
+
 .dashboard-left-sidebar::-webkit-scrollbar,
 .dashboard-right-sidebar::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
+}
+
+.dashboard-left-sidebar > *,
+.dashboard-right-sidebar > * {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .dashboard-center {
