@@ -240,18 +240,18 @@ content: '';
 
 /* WeakSpot PNG illustration */
 .bento-card-weakspot::after {
-  content: '';
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
-  opacity: 0.45;
-  background-image: url('../../Assets/images/WeakSpot.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  pointer-events: none;
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 140px;
+    height: 140px;
+    opacity: 1;
+    background-image: url(../../Assets/images/WeakSpot.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
 }
 
 /* ── CHECKPOINT card (next lesson) ── */
@@ -270,18 +270,18 @@ content: '';
 
 /* Checkpoint PNG illustration */
 .bento-card-checkpoint::after {
-  content: '';
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  opacity: 0.45;
-  background-image: url('../../Assets/images/checkpoint.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  pointer-events: none;
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 56%;
+    transform: translateY(-50%);
+    width: 90px;
+    height: 90px;
+    opacity: 1;
+    background-image: url(../../Assets/images/checkpoint.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
 }
 
 
