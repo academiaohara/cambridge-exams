@@ -383,4 +383,118 @@
   .speaking-vc-tile--small .speaking-vc-avatar { width: 32px; height: 32px; }
   .speaking-vc-tile--small:nth-child(3) { right: 108px; }
   .speaking-chat-msg { max-width: 92%; }
+  .speaking-criteria-list { gap: 0.5rem; }
+  .speaking-criterion { flex-wrap: wrap; }
+  .speaking-criterion-label { min-width: 100%; }
 }
+
+/* ══════════════════════════════════════
+   SCORE CARD & EVALUATION
+   ══════════════════════════════════════ */
+
+.speaking-eval-loading {
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  padding: 2rem;
+  color: var(--primary);
+  font-size: 0.95rem; font-weight: 600;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.speaking-score-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  animation: speaking-msg-in 0.3s ease-out;
+}
+
+.speaking-score-header {
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+
+.speaking-score-total {
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  border-radius: 10px;
+  background: #f1f5f9;
+}
+.speaking-score-number {
+  font-size: 2.5rem; font-weight: 800;
+  line-height: 1;
+}
+.speaking-score-max {
+  font-size: 1.1rem; font-weight: 500;
+  color: var(--text-medium);
+  margin-left: 0.15rem;
+}
+.speaking-total-good { background: #dcfce7; }
+.speaking-total-good .speaking-score-number { color: #16a34a; }
+.speaking-total-average { background: #fef9c3; }
+.speaking-total-average .speaking-score-number { color: #ca8a04; }
+.speaking-total-low { background: #fef2f2; }
+.speaking-total-low .speaking-score-number { color: #dc2626; }
+
+.speaking-criteria-list {
+  display: flex; flex-direction: column; gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.speaking-criterion {
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.speaking-criterion-label {
+  min-width: 150px;
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--text-dark);
+}
+.speaking-criterion-bar-wrap {
+  flex: 1;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.speaking-criterion-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+.speaking-bar-good { background: #22c55e; }
+.speaking-bar-average { background: #eab308; }
+.speaking-bar-low { background: #ef4444; }
+
+.speaking-criterion-score {
+  min-width: 48px;
+  text-align: right;
+  font-size: 0.82rem; font-weight: 700;
+  color: var(--text-dark);
+}
+
+.speaking-feedback-section {
+  border-top: 1px solid var(--border-light);
+  padding-top: 1rem;
+}
+.speaking-feedback-block {
+  margin-bottom: 1rem;
+}
+.speaking-feedback-block h4 {
+  font-size: 0.9rem; font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 0.4rem 0;
+}
+.speaking-feedback-block p {
+  font-size: 0.85rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+  margin: 0;
+}
+.speaking-strengths h4 { color: #16a34a; }
+.speaking-improvements h4 { color: #ca8a04; }

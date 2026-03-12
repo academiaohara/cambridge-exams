@@ -33,6 +33,9 @@
     _conversationEnded: false,
     _activeSpeaker: null,
     _synthesis: window.speechSynthesis || null,
+    _pendingTranscript: '',
+    _evaluating: false,
+    _evaluated: false,
 
     // ── Public API ──
 
@@ -53,6 +56,9 @@
       this._activeSpeaker = null;
       this._isRecording = false;
       this._viewMode = 'videocall';
+      this._pendingTranscript = '';
+      this._evaluating = false;
+      this._evaluated = false;
 
       var task = content.task || content.questions?.[0]?.task || '';
       var images = content.questions?.[0]?.images || [];
@@ -91,7 +97,13 @@
       this._bindEvents();
     },
 
-    checkAnswers: function() { return 0; },
+    checkAnswers: function() {
+      // End conversation if still going
+      if (!this._conversationEnded) {
+        this._endConversation();
+      }
+      return AppState.currentPartScore || 0;
+    },
 
     // ── Mode toggle ──
 
@@ -258,9 +270,7 @@
     _processCurrentTurn: function() {
       var self = this;
       if (this._scriptIndex >= this._script.length) {
-        this._conversationEnded = true;
-        this._activeSpeaker = null;
-        this._refreshView();
+        this._endConversation();
         return;
       }
 
@@ -351,28 +361,39 @@
       this._recognition = new SpeechRecognition();
       this._recognition.lang = 'en-GB';
       this._recognition.interimResults = true;
-      this._recognition.continuous = false;
+      this._recognition.continuous = true;
+
+      this._pendingTranscript = '';
+      var finalTranscript = '';
 
       this._recognition.onresult = function(event) {
-        var transcript = '';
+        var interim = '';
         for (var i = event.resultIndex; i < event.results.length; i++) {
-          transcript += event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            finalTranscript += event.results[i][0].transcript + ' ';
+          } else {
+            interim += event.results[i][0].transcript;
+          }
         }
+        self._pendingTranscript = finalTranscript + interim;
         var input = document.getElementById('speaking-text-input');
-        if (input) input.value = transcript;
+        if (input) input.value = self._pendingTranscript;
       };
 
       this._recognition.onend = function() {
+        // In continuous mode, the recognition may stop unexpectedly;
+        // if we're still supposed to be recording, restart it
+        if (self._isRecording && !self._conversationEnded) {
+          try { self._recognition.start(); } catch(e) {}
+          return;
+        }
         self._isRecording = false;
         self._updateMicButton();
-        // Auto-send if we got text
-        var input = document.getElementById('speaking-text-input');
-        if (input && input.value.trim()) {
-          self._sendTextInput();
-        }
       };
 
-      this._recognition.onerror = function() {
+      this._recognition.onerror = function(e) {
+        // 'no-speech' and 'aborted' are non-fatal in continuous mode
+        if (e.error === 'no-speech' || e.error === 'aborted') return;
         self._isRecording = false;
         self._updateMicButton();
       };
@@ -383,11 +404,16 @@
     },
 
     _stopRecording: function() {
-      if (this._recognition) {
-        this._recognition.stop();
-      }
       this._isRecording = false;
+      if (this._recognition) {
+        try { this._recognition.stop(); } catch(e) {}
+      }
       this._updateMicButton();
+      // Auto-send the accumulated transcript
+      var input = document.getElementById('speaking-text-input');
+      if (input && input.value.trim()) {
+        this._sendTextInput();
+      }
     },
 
     _updateMicButton: function() {
@@ -400,6 +426,243 @@
         btn.classList.remove('speaking-mic-recording');
         btn.innerHTML = '<i class="fas fa-microphone"></i>';
       }
+    },
+
+    // ── End conversation and evaluate ──
+
+    _endConversation: function() {
+      if (this._conversationEnded) return;
+      this._conversationEnded = true;
+      this._activeSpeaker = null;
+      if (this._isRecording) {
+        this._isRecording = false;
+        if (this._recognition) {
+          try { this._recognition.stop(); } catch(e) {}
+        }
+        // Save any pending transcript before ending
+        var input = document.getElementById('speaking-text-input');
+        if (input && input.value.trim()) {
+          this._messages.push({ role: 'candidate', text: input.value.trim() });
+        }
+      }
+      if (this._synthesis) {
+        this._synthesis.cancel();
+      }
+      // Save transcripts to answers
+      this._saveTranscripts();
+      this._refreshView();
+      // Start AI evaluation
+      this._collectAndEvaluate();
+    },
+
+    _saveTranscripts: function() {
+      if (!AppState.currentExercise) return;
+      AppState.currentExercise.answers = AppState.currentExercise.answers || {};
+      var transcripts = this._messages
+        .filter(function(m) { return m.role === 'candidate'; })
+        .map(function(m) { return m.text; })
+        .filter(function(t) { return t && t !== '...'; });
+      AppState.currentExercise.answers._transcripts = transcripts;
+      AppState.currentExercise.answers._allMessages = this._messages;
+      Exercise.savePartState();
+    },
+
+    _collectAndEvaluate: async function() {
+      if (this._evaluating || this._evaluated) return;
+      this._evaluating = true;
+
+      var transcripts = this._messages
+        .filter(function(m) { return m.role === 'candidate'; })
+        .map(function(m) { return m.text; })
+        .filter(function(t) { return t && t !== '...'; });
+
+      // If no meaningful transcripts, show empty result
+      if (!transcripts.length || transcripts.join(' ').trim().length < 5) {
+        this._evaluating = false;
+        this._evaluated = true;
+        this._showScoreCard(null);
+        return;
+      }
+
+      this._showEvaluationLoading();
+
+      try {
+        var res = await fetch('/api/speaking', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            transcripts: transcripts,
+            allMessages: this._messages,
+            partType: AppState.currentPart,
+            examLevel: AppState.currentLevel || 'C1'
+          })
+        });
+        var data = await res.json();
+        if (!data.error && data.evaluation) {
+          var score = this._parseScore(data.evaluation);
+          AppState.currentPartScore = score;
+          if (AppState.currentExercise) {
+            AppState.currentExercise.answers._aiFeedback = data.evaluation;
+            AppState.currentExercise.answers._speakingScore = score;
+          }
+          Exercise.savePartState();
+          Timer.updateScoreDisplay();
+          this._showScoreCard(data.evaluation);
+        } else {
+          this._showScoreCard(null);
+        }
+      } catch(e) {
+        console.error('Speaking evaluation error:', e);
+        this._showScoreCard(null);
+      }
+
+      this._evaluating = false;
+      this._evaluated = true;
+    },
+
+    _parseScore: function(evaluation) {
+      if (!evaluation) return 0;
+      // Try to find "Total: XX/75" pattern
+      var m = evaluation.match(/Total[:\s]*(\d+(?:\.\d+)?)\s*\/\s*75/i);
+      if (m) return Math.round(parseFloat(m[1]));
+      // Fallback: try to sum individual criteria
+      var total = 0;
+      var criteria = [
+        /Grammatical\s*Resource[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i,
+        /Lexical\s*Resource[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i,
+        /Discourse\s*Management[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i,
+        /Pronunciation[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i,
+        /Interactive\s*Communication[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i,
+        /Global\s*Achievement[:\s]*(\d+(?:\.\d+)?)\s*\/\s*25/i
+      ];
+      var found = false;
+      criteria.forEach(function(re) {
+        var match = evaluation.match(re);
+        if (match) {
+          total += parseFloat(match[1]);
+          found = true;
+        }
+      });
+      return found ? Math.round(total) : 0;
+    },
+
+    _showEvaluationLoading: function() {
+      var scoreArea = document.getElementById('speaking-score-area');
+      if (!scoreArea) {
+        var wrapper = document.querySelector('.speaking-type-wrapper');
+        if (!wrapper) return;
+        scoreArea = document.createElement('div');
+        scoreArea.id = 'speaking-score-area';
+        wrapper.appendChild(scoreArea);
+      }
+      scoreArea.innerHTML =
+        '<div class="speaking-eval-loading">' +
+          '<i class="fas fa-spinner fa-spin"></i> ' +
+          t('evaluatingSpeaking', 'Evaluating your speaking performance...') +
+        '</div>';
+    },
+
+    _showScoreCard: function(evaluation) {
+      var scoreArea = document.getElementById('speaking-score-area');
+      if (!scoreArea) {
+        var wrapper = document.querySelector('.speaking-type-wrapper');
+        if (!wrapper) return;
+        scoreArea = document.createElement('div');
+        scoreArea.id = 'speaking-score-area';
+        wrapper.appendChild(scoreArea);
+      }
+
+      if (!evaluation) {
+        scoreArea.innerHTML =
+          '<div class="speaking-score-card">' +
+            '<div class="speaking-score-header">' +
+              '<i class="fas fa-microphone-slash"></i> ' +
+              t('noSpeakingData', 'No speaking data to evaluate') +
+            '</div>' +
+          '</div>';
+        return;
+      }
+
+      // Parse criteria from the evaluation
+      var criteriaData = [
+        { key: 'grammaticalResource', label: t('grammaticalResource', 'Grammatical Resource'), max: 10, regex: /Grammatical\s*Resource[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
+        { key: 'lexicalResource', label: t('lexicalResource', 'Lexical Resource'), max: 10, regex: /Lexical\s*Resource[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
+        { key: 'discourseManagement', label: t('discourseManagement', 'Discourse Management'), max: 10, regex: /Discourse\s*Management[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
+        { key: 'pronunciation', label: t('pronunciation', 'Pronunciation'), max: 10, regex: /Pronunciation[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
+        { key: 'interactiveCommunication', label: t('interactiveCommunication', 'Interactive Communication'), max: 10, regex: /Interactive\s*Communication[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
+        { key: 'globalAchievement', label: t('globalAchievement', 'Global Achievement'), max: 25, regex: /Global\s*Achievement[:\s]*(\d+(?:\.\d+)?)\s*\/\s*25/i }
+      ];
+
+      var total = 0;
+      var criteriaHTML = '';
+      criteriaData.forEach(function(c) {
+        var match = evaluation.match(c.regex);
+        var score = match ? parseFloat(match[1]) : 0;
+        total += score;
+        var pct = Math.round((score / c.max) * 100);
+        var barClass = pct >= 70 ? 'good' : (pct >= 40 ? 'average' : 'low');
+        criteriaHTML +=
+          '<div class="speaking-criterion">' +
+            '<div class="speaking-criterion-label">' + c.label + '</div>' +
+            '<div class="speaking-criterion-bar-wrap">' +
+              '<div class="speaking-criterion-bar speaking-bar-' + barClass + '" style="width:' + pct + '%"></div>' +
+            '</div>' +
+            '<div class="speaking-criterion-score">' + score + '/' + c.max + '</div>' +
+          '</div>';
+      });
+
+      total = Math.round(total);
+
+      // Extract feedback section
+      var feedbackMatch = evaluation.match(/📝\s*DETAILED\s*FEEDBACK([\s\S]*?)(?=✅|⚠️|$)/i);
+      var feedback = feedbackMatch ? feedbackMatch[1].trim() : '';
+      var strengthsMatch = evaluation.match(/✅\s*STRENGTHS([\s\S]*?)(?=⚠️|$)/i);
+      var strengths = strengthsMatch ? strengthsMatch[1].trim() : '';
+      var improvementsMatch = evaluation.match(/⚠️\s*AREAS\s*FOR\s*IMPROVEMENT([\s\S]*?)$/i);
+      var improvements = improvementsMatch ? improvementsMatch[1].trim() : '';
+
+      var totalPct = Math.round((total / 75) * 100);
+      var gradeClass = totalPct >= 70 ? 'good' : (totalPct >= 40 ? 'average' : 'low');
+
+      var html =
+        '<div class="speaking-score-card">' +
+          '<div class="speaking-score-header">' +
+            '<i class="fas fa-chart-bar"></i> ' +
+            t('speakingAssessment', 'Speaking Assessment') +
+          '</div>' +
+          '<div class="speaking-score-total speaking-total-' + gradeClass + '">' +
+            '<span class="speaking-score-number">' + total + '</span>' +
+            '<span class="speaking-score-max">/ 75</span>' +
+          '</div>' +
+          '<div class="speaking-criteria-list">' +
+            criteriaHTML +
+          '</div>';
+
+      if (feedback || strengths || improvements) {
+        html += '<div class="speaking-feedback-section">';
+        if (feedback) {
+          html += '<div class="speaking-feedback-block">' +
+            '<h4>📝 ' + t('detailedFeedback', 'Detailed Feedback') + '</h4>' +
+            '<p>' + feedback.replace(/\n/g, '<br>') + '</p>' +
+          '</div>';
+        }
+        if (strengths) {
+          html += '<div class="speaking-feedback-block speaking-strengths">' +
+            '<h4>✅ ' + t('strengths', 'Strengths') + '</h4>' +
+            '<p>' + strengths.replace(/\n/g, '<br>') + '</p>' +
+          '</div>';
+        }
+        if (improvements) {
+          html += '<div class="speaking-feedback-block speaking-improvements">' +
+            '<h4>⚠️ ' + t('areasForImprovement', 'Areas for Improvement') + '</h4>' +
+            '<p>' + improvements.replace(/\n/g, '<br>') + '</p>' +
+          '</div>';
+        }
+        html += '</div>';
+      }
+
+      html += '</div>';
+      scoreArea.innerHTML = html;
     },
 
     // ── View updates ──

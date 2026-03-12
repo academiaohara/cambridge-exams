@@ -488,6 +488,7 @@
       
       var totalParts = exam.sections[section].total;
       var isWriting = section === 'writing';
+      var isSpeaking = section === 'speaking';
       var sectionKey = examId + '_' + section;
       if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
       
@@ -502,6 +503,8 @@
         } else if (!savedState.answersChecked) {
           if (isWriting) {
             await this._evaluateWritingPart(examId, section, i, savedState);
+          } else if (isSpeaking) {
+            await this._evaluateSpeakingPart(examId, section, i, savedState);
           } else {
             await this._checkNonWritingPart(examId, section, i, savedState);
           }
@@ -637,6 +640,52 @@
         AppState.sectionScores[sectionKey][part] = score;
       } catch(e) {
         console.error('Error evaluating writing part ' + part + ':', e);
+      }
+    },
+    
+    _evaluateSpeakingPart: async function(examId, section, part, savedState) {
+      try {
+        var answers = Object.assign({}, savedState.answers || {});
+        var score = 0;
+        
+        var transcripts = answers._transcripts || [];
+        var allMessages = answers._allMessages || [];
+        
+        // If already evaluated (score stored in answers), use that
+        if (answers._speakingScore !== undefined) {
+          score = answers._speakingScore;
+        } else if (transcripts.length && transcripts.join(' ').trim().length >= 5) {
+          // Call AI evaluation
+          try {
+            var res = await fetch('/api/speaking', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                transcripts: transcripts,
+                allMessages: allMessages,
+                partType: part,
+                examLevel: AppState.currentLevel || 'C1'
+              })
+            });
+            var data = await res.json();
+            if (!data.error && data.evaluation) {
+              // Parse score from evaluation
+              var m = data.evaluation.match(/Total[:\s]*(\d+(?:\.\d+)?)\s*\/\s*75/i);
+              score = m ? Math.round(parseFloat(m[1])) : 0;
+              answers._aiFeedback = data.evaluation;
+              answers._speakingScore = score;
+            }
+          } catch(aiErr) { console.error('AI speaking eval error part ' + part + ':', aiErr); }
+        }
+        
+        var key = this.getStorageKey(examId, section, part);
+        try { localStorage.setItem(key, JSON.stringify(Object.assign({}, savedState, { answers: answers, answersChecked: true, partScore: score }))); } catch(e) {}
+        
+        var sectionKey = examId + '_' + section;
+        if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+        AppState.sectionScores[sectionKey][part] = score;
+      } catch(e) {
+        console.error('Error evaluating speaking part ' + part + ':', e);
       }
     },
     
