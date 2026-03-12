@@ -1037,7 +1037,7 @@
 }
 
 .dashboard-right-sidebar {
-  top: 20px;
+  top: 0px;
 }
 
 .dashboard-left-sidebar::-webkit-scrollbar,
@@ -1064,7 +1064,7 @@
   border: 1px solid rgba(45, 46, 95, 0.08);
   margin-bottom: 16px;
   position: sticky;
-  top: 80px;
+  top: 10px;
   z-index: 10;
 }
 
