@@ -274,7 +274,7 @@
       var color = ROLE_COLORS[role] || '#6366f1';
       return '<div class="speaking-chat-msg speaking-chat-msg--' + align + '">' +
         '<div class="speaking-chat-avatar" style="background:' + color + '">' +
-          AVATARS[role] +
+          _getAnimalAvatarHTML(role, 'speaking-chat-animal-avatar') +
         '</div>' +
         '<div class="speaking-chat-content">' +
           '<span class="speaking-chat-name">' + roleName(role) + '</span>' +
