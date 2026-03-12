@@ -34,6 +34,7 @@
     _activeSpeaker: null,
     _synthesis: window.speechSynthesis || null,
     _pendingTranscript: '',
+    _finalTranscript: '',
     _evaluating: false,
     _evaluated: false,
 
@@ -57,6 +58,7 @@
       this._isRecording = false;
       this._viewMode = 'videocall';
       this._pendingTranscript = '';
+      this._finalTranscript = '';
       this._evaluating = false;
       this._evaluated = false;
 
@@ -364,18 +366,18 @@
       this._recognition.continuous = true;
 
       this._pendingTranscript = '';
-      var finalTranscript = '';
+      this._finalTranscript = '';
 
       this._recognition.onresult = function(event) {
         var interim = '';
         for (var i = event.resultIndex; i < event.results.length; i++) {
           if (event.results[i].isFinal) {
-            finalTranscript += event.results[i][0].transcript + ' ';
+            self._finalTranscript += event.results[i][0].transcript + ' ';
           } else {
             interim += event.results[i][0].transcript;
           }
         }
-        self._pendingTranscript = finalTranscript + interim;
+        self._pendingTranscript = self._finalTranscript + interim;
         var input = document.getElementById('speaking-text-input');
         if (input) input.value = self._pendingTranscript;
       };

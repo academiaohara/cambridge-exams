@@ -369,7 +369,7 @@
       var scores = Object.values(AppState.sectionScores[sectionKey]);
       if (!scores.length) return 0;
       // Speaking: use average since each part is assessed on the full 75-mark scale
-      if (sectionKey.indexOf('_speaking') !== -1) {
+      if (sectionKey.includes('_speaking') && scores.length > 0) {
         return Math.round(scores.reduce(function(sum, score) { return sum + score; }, 0) / scores.length);
       }
       return scores.reduce(function(sum, score) { return sum + score; }, 0);
