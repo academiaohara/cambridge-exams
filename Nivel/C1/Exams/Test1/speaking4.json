@@ -9,6 +9,20 @@
       { "number": 1, "question": "Do you think success means different things to different people?" },
       { "number": 2, "question": "How has the idea of a successful career changed in recent years?" },
       { "number": 3, "question": "Is it possible to be successful without being happy in your work?" }
+    ],
+    "participants": ["examiner", "candidate", "partner"],
+    "script": [
+      { "role": "examiner", "text": "Now I'd like to ask you some questions related to the topic of careers and success." },
+      { "role": "examiner", "text": "Do you think success means different things to different people?" },
+      { "role": "candidate" },
+      { "role": "partner", "text": "I definitely agree that success is subjective. For some people it's about money, while for others it's about personal fulfillment or making a difference in the world." },
+      { "role": "examiner", "text": "How has the idea of a successful career changed in recent years?" },
+      { "role": "partner", "text": "I think nowadays people value work-life balance much more. The idea of working long hours just to climb the corporate ladder is less appealing to younger generations." },
+      { "role": "candidate" },
+      { "role": "examiner", "text": "Is it possible to be successful without being happy in your work?" },
+      { "role": "candidate" },
+      { "role": "partner", "text": "Well, I suppose you can achieve external markers of success without enjoying your work, but I think true success includes being satisfied with what you do." },
+      { "role": "examiner", "text": "Thank you both. That's the end of the speaking test." }
     ]
   }
 }
