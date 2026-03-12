@@ -23,7 +23,7 @@
   --card-checkpoint: #f5c0d0;
   --card-streak-bg: #c5d5e8;
   --card-calendar-bg: #c8e8c8;
-  --card-grade-bg: #e0a878;
+  --card-grade-bg: #f19d6d;
   --card-calc-bg: #c8c0e0;
 }
 
@@ -1075,15 +1075,22 @@ color: #4E95D9;
 /* Grade Tracker widget */
 .sw-grade {
   background: var(--card-grade-bg);
-  color: #5a3420;
+  color: #632e13;
+  border-radius: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 0;
+  justify-content: space-between;
+  padding: 30px 0 0 0;
+  overflow: hidden;
+  font-family: 'Georgia', serif;
 }
 
 .sw-grade .sidebar-widget-pastel-title {
-  color: #5a3420;
+  color: #632e13;
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
   text-align: center;
   width: 100%;
 }
@@ -1091,46 +1098,85 @@ color: #4E95D9;
 .sw-grade .grade-carousel-viewport {
   flex: 1;
   display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+}
+
+.sw-grade .grade-carousel-slide {
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: 80px;
+  position: relative;
 }
 
 .sw-grade .grade-carousel-raw {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #7a3820;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fbe0d1;
 }
 
 .sw-grade .grade-carousel-cefr {
-  font-size: 3.5rem;
+  font-size: 7rem;
   font-weight: 900;
-  color: #5a2818;
+  color: #632e13;
   font-family: 'Georgia', 'Times New Roman', serif;
-  font-style: italic;
-  line-height: 1.1;
+  line-height: 1;
+  margin: -15px 0 0 0;
 }
 
 .sw-grade .grade-carousel-skill-label {
-  font-size: 0.82rem;
-  font-weight: 800;
-  color: #fff;
-  text-align: center;
+  width: 100%;
+  height: 80px;
+  background-color: #e87633;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fbe0d1;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background: rgba(160, 80, 40, 0.45);
-  padding: 8px 0;
-  width: calc(100% + 40px);
-  margin-left: -20px;
-  margin-top: 8px;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Arc effect on the footer */
+.sw-grade .grade-carousel-skill-label::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: -10%;
+  width: 120%;
+  height: 100px;
+  background-color: #e87633;
+  border-radius: 50%;
+}
+
+.sw-grade .grade-carousel-skill-label span {
+  position: relative;
+  z-index: 1;
 }
 
 .sw-grade .grade-carousel-dot {
-  background: rgba(90, 52, 32, 0.25);
+  background: rgba(99, 46, 19, 0.25);
 }
 
 .sw-grade .grade-carousel-dot.active {
-  background: #5a3420;
+  background: #632e13;
+}
+
+.sw-grade .grade-carousel-dots {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 90px;
 }
 
 /* Calculator widget */
