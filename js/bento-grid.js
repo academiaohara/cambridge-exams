@@ -449,7 +449,19 @@
       });
       html += '<div class="level-selector-options level-selector-collapsed">' + optionsHtml + '</div>';
 
-      // Widget: Continue Basecamp (lesson in progress)
+      // Widget: Next Exam in progress (moved from right sidebar)
+      var nextLesson = BentoGrid._findNextLesson(exams);
+      if (nextLesson) {
+        html += BentoGrid._buildNextLessonLeftHtml(nextLesson);
+      }
+
+      html += '</div>';
+      return html;
+    },
+
+    _buildContinueBasecampHtml: function(exams) {
+      var self = this;
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var nextLesson = BentoGrid._findNextLesson(exams);
       var sectionIcons = { reading: '📖', listening: '🎧', writing: '✍️', speaking: '🎤' };
 
@@ -458,7 +470,7 @@
         var completedParts = nextLesson.completedParts || 0;
         var totalParts = nextLesson.totalParts || 1;
         var pct = Math.round((completedParts / totalParts) * 100);
-        html += '<div class="sw-left-widget sw-continue-basecamp" onclick="Exercise.openPart(\'' + self._escapeHTML(nextLesson.examId) + '\', \'' + self._escapeHTML(nextLesson.section) + '\', ' + parseInt(nextLesson.part, 10) + ')" style="cursor:pointer">' +
+        return '<div class="sw-left-widget sw-continue-basecamp" onclick="Exercise.openPart(\'' + self._escapeHTML(nextLesson.examId) + '\', \'' + self._escapeHTML(nextLesson.section) + '\', ' + parseInt(nextLesson.part, 10) + ')" style="cursor:pointer">' +
           '<div class="sw-left-widget-label">' + t('continueBasecamp', 'Continue') + '</div>' +
           '<div class="sw-left-widget-row">' +
             '<span class="sw-left-widget-icon">' + icon + '</span>' +
@@ -471,7 +483,7 @@
           '<div class="sw-left-widget-pct">' + completedParts + '/' + totalParts + ' ' + t('parts', 'parts') + '</div>' +
         '</div>';
       } else {
-        html += '<div class="sw-left-widget sw-continue-basecamp" onclick="BentoGrid.openLessons()" style="cursor:pointer">' +
+        return '<div class="sw-left-widget sw-continue-basecamp" onclick="BentoGrid.openLessons()" style="cursor:pointer">' +
           '<div class="sw-left-widget-label">' + t('basecamp', 'Basecamp') + '</div>' +
           '<div class="sw-left-widget-row">' +
             '<span class="sw-left-widget-icon">🏕️</span>' +
@@ -482,14 +494,6 @@
           '</div>' +
         '</div>';
       }
-
-      // Widget: Next Exam in progress (moved from right sidebar)
-      if (nextLesson) {
-        html += BentoGrid._buildNextLessonLeftHtml(nextLesson);
-      }
-
-      html += '</div>';
-      return html;
     },
 
     toggleLevelDropdown: function() {

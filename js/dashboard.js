@@ -14,9 +14,10 @@
       var rightSidebarContent = '';
       if (typeof BentoGrid !== 'undefined') {
         leftSidebarContent = BentoGrid._buildLevelSelectorSidebarHtml();
-        rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
+        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+        rightSidebarContent = BentoGrid._buildContinueBasecampHtml(exams);
+        rightSidebarContent += BentoGrid._buildStreakSidebarHtml();
         rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
-        rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
       }
 
       var html = '<div class="dashboard-layout">' +
@@ -74,11 +75,14 @@
       });
 
       var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      if (typeof BentoGrid !== 'undefined') {
+        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+      }
       var rightSidebarContent = '';
       if (typeof BentoGrid !== 'undefined') {
-        rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
+        rightSidebarContent = BentoGrid._buildContinueBasecampHtml(exams);
+        rightSidebarContent += BentoGrid._buildStreakSidebarHtml();
         rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
-        rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
       }
 
       var html = '<div class="dashboard-layout">' +
