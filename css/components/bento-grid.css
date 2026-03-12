@@ -987,18 +987,18 @@ min-height: 120px;
 }
 
 .sw-streak::after {
-  content: '';
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
-  width: 90px;
-  height: 90px;
-  opacity: 0.20;
-  background-image: url('../../Assets/images/streak.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom right;
-  pointer-events: none;
+    content: '';
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+    width: 90px;
+    height: 90px;
+    opacity: 1;
+    background-image: url(../../Assets/images/streak.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom right;
+    pointer-events: none;
 }
 
 .sw-streak .sidebar-widget-pastel-title {
