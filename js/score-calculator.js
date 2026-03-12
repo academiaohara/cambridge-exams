@@ -60,7 +60,8 @@
         { min: 200, label: "Grade A", cefr: "C2" },
         { min: 193, label: "Grade B", cefr: "C1" },
         { min: 180, label: "Grade C", cefr: "C1" },
-        { min: 160, label: "Level B2", cefr: "B2" }
+        { min: 160, label: "Level B2", cefr: "B2" },
+        { min: 142, label: "Level B1", cefr: "B1" }
       ]
     },
     "C2": {
