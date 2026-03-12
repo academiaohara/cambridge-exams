@@ -24,18 +24,48 @@
   // ── Person icon SVG for candidate cards ──
   var CARD_PERSON_ICON = '<svg viewBox="0 0 80 80" class="speaking-card-icon"><circle cx="40" cy="28" r="14" fill="currentColor"/><ellipse cx="40" cy="64" rx="22" ry="16" fill="currentColor"/></svg>';
 
-  // ── Animal avatar system (prepared for assets/images/animals/) ──
-  var ANIMAL_IMAGES = []; // Will be populated when images are uploaded to Assets/images/animals/
+  // ── Animal avatar system ──
+  var ANIMAL_IMAGES = [
+    'Aguila.png', 'Camaleon.png', 'Delfín.png', 'Elefante.png', 'Gato.png',
+    'Koala.png', 'Lechuza.png', 'Leon.png', 'Lobo.png', 'Loro.png',
+    'Mono.png', 'OsoPolar.png', 'Zorro.png', 'perro.png', 'rinoceronte.png'
+  ];
 
-  function _getAnimalAvatarHTML(role) {
-    // Check if animal images are available
-    if (ANIMAL_IMAGES.length > 0) {
-      var profile = (typeof UserProfile !== 'undefined') ? UserProfile._profile : null;
-      if (role === 'candidate' && profile && profile.animal_avatar && profile.animal_avatar.length > 0) {
-        return '<img src="Assets/images/animals/' + profile.animal_avatar + '" alt="" class="speaking-animal-avatar">';
-      }
-      var randomAnimal = ANIMAL_IMAGES[Math.floor(Math.random() * ANIMAL_IMAGES.length)];
-      return '<img src="Assets/images/animals/' + randomAnimal + '" alt="" class="speaking-animal-avatar">';
+  // Stable avatar assignments per session (role -> filename)
+  var _avatarAssignments = {};
+
+  function _assignAvatars(participants) {
+    if (Object.keys(_avatarAssignments).length > 0) return; // already assigned
+    var used = [];
+    var profile = (typeof UserProfile !== 'undefined') ? UserProfile._profile : null;
+
+    // Assign user's profile avatar first
+    if (profile && profile.animal_avatar && ANIMAL_IMAGES.indexOf(profile.animal_avatar) !== -1) {
+      _avatarAssignments['candidate'] = profile.animal_avatar;
+      used.push(profile.animal_avatar);
+    } else {
+      // Pick a random one for the user
+      var idx = Math.floor(Math.random() * ANIMAL_IMAGES.length);
+      _avatarAssignments['candidate'] = ANIMAL_IMAGES[idx];
+      used.push(ANIMAL_IMAGES[idx]);
+    }
+
+    // Assign avatars to other participants
+    participants.forEach(function(role) {
+      if (role === 'candidate' || _avatarAssignments[role]) return;
+      var available = ANIMAL_IMAGES.filter(function(img) { return used.indexOf(img) === -1; });
+      if (available.length === 0) available = ANIMAL_IMAGES; // fallback
+      var pick = available[Math.floor(Math.random() * available.length)];
+      _avatarAssignments[role] = pick;
+      used.push(pick);
+    });
+  }
+
+  function _getAnimalAvatarHTML(role, cssClass) {
+    var cls = cssClass || 'speaking-animal-avatar';
+    var img = _avatarAssignments[role];
+    if (img) {
+      return '<img src="Assets/images/Animals/' + img + '" alt="" class="' + cls + '">';
     }
     // Fallback: person icon silhouette
     return CARD_PERSON_ICON;
@@ -92,6 +122,10 @@
       this._finalTranscript = '';
       this._evaluating = false;
       this._evaluated = false;
+
+      // Assign animal avatars for this session
+      _avatarAssignments = {};
+      _assignAvatars(this._participants);
 
       var task = content.task || content.questions?.[0]?.task || '';
       var images = content.questions?.[0]?.images || [];
@@ -163,7 +197,7 @@
       this._updateView();
     },
 
-    // ── Video-call view (stage layout matching reference design) ──
+    // ── Video-call view (stage layout with speaker swap) ──
 
     _buildVideoCallView: function() {
       var self = this;
@@ -173,13 +207,31 @@
         userName = profile.full_name.split(' ')[0];
       }
 
-      // Build candidate cards on the right side
-      var candidateCards = '';
+      // Determine who is featured (big) vs thumbnails (small)
+      var featuredRole = this._activeSpeaker || 'examiner';
+      var featuredLabel = featuredRole === 'candidate' ? userName
+        : featuredRole === 'examiner' ? t('examiner', 'Examiner')
+        : t('candidate2', 'Candidate 2');
+
+      // Build featured (big) area with animal avatar
+      var featuredHTML =
+        '<div class="speaking-stage-featured" data-role="' + featuredRole + '">' +
+          '<div class="speaking-stage-featured-avatar">' +
+            _getAnimalAvatarHTML(featuredRole, 'speaking-featured-avatar') +
+          '</div>' +
+          '<div class="speaking-stage-featured-label">' + featuredLabel + '</div>' +
+          '<div class="speaking-vc-indicator"></div>' +
+        '</div>';
+
+      // Build thumbnail cards for non-featured participants
+      var thumbnailCards = '';
       this._participants.forEach(function(role) {
-        if (role === 'examiner') return;
-        var cardColor = role === 'candidate' ? 'gold' : 'blue';
-        var label = role === 'candidate' ? userName : t('candidate2', 'Candidate 2');
-        candidateCards +=
+        if (role === featuredRole) return;
+        var cardColor = role === 'candidate' ? 'gold' : (role === 'examiner' ? 'examiner' : 'blue');
+        var label = role === 'candidate' ? userName
+          : role === 'examiner' ? t('examiner', 'Examiner')
+          : t('candidate2', 'Candidate 2');
+        thumbnailCards +=
           '<div class="speaking-stage-card speaking-stage-card--' + cardColor + '" data-role="' + role + '">' +
             '<div class="speaking-stage-card-avatar">' +
               _getAnimalAvatarHTML(role) +
@@ -191,13 +243,9 @@
 
       return '<div class="speaking-videocall speaking-stage">' +
         '<div class="speaking-stage-scene">' +
-          '<div class="speaking-stage-examiner" data-role="examiner">' +
-            EXAMINER_SILHOUETTE +
-            '<div class="speaking-stage-examiner-label">' + t('examiner', 'Examiner') + '</div>' +
-            '<div class="speaking-vc-indicator"></div>' +
-          '</div>' +
+          featuredHTML +
           '<div class="speaking-stage-cards">' +
-            candidateCards +
+            thumbnailCards +
           '</div>' +
         '</div>' +
         '<div class="speaking-vc-status" id="speaking-vc-status"></div>' +

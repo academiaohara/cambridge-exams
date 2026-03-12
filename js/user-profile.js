@@ -7,8 +7,12 @@
     _profile: null,
     _panelOpen: false,
 
-    // ── Animal avatar list (prepared for Assets/images/animals/) ──
-    ANIMAL_AVATARS: [], // Will be populated when images are uploaded
+    // ── Animal avatar list ──
+    ANIMAL_AVATARS: [
+      'Aguila.png', 'Camaleon.png', 'Delfín.png', 'Elefante.png', 'Gato.png',
+      'Koala.png', 'Lechuza.png', 'Leon.png', 'Lobo.png', 'Loro.png',
+      'Mono.png', 'OsoPolar.png', 'Zorro.png', 'perro.png', 'rinoceronte.png'
+    ],
 
     getRandomAnimalAvatar: function () {
       if (this.ANIMAL_AVATARS.length === 0) return null;
@@ -168,12 +172,18 @@
       var panel = document.createElement('div');
       panel.id = 'user-profile-panel';
       panel.className = 'user-profile-panel';
+
+      var animalAvatar = profile.animal_avatar;
+      var panelAvatarHtml = animalAvatar
+        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" style="border-radius:50%;width:100%;height:100%;object-fit:cover">'
+        : avatarUrl
+          ? '<img src="' + avatarUrl + '" alt="' + name + '">'
+          : '<span class="profile-initials-large">' + initials + '</span>';
+
       panel.innerHTML =
         '<div class="profile-panel-header">' +
           '<div class="profile-avatar-large">' +
-          (avatarUrl
-            ? '<img src="' + avatarUrl + '" alt="' + name + '">'
-            : '<span class="profile-initials-large">' + initials + '</span>') +
+          panelAvatarHtml +
           '</div>' +
           '<div class="profile-info">' +
             '<div class="profile-name">' + name + '</div>' +
@@ -242,6 +252,18 @@
       }
     },
 
+    // ── Select animal avatar ──────────────────────────────────────────
+    _selectAnimalAvatar: async function (filename) {
+      // Update locally
+      if (this._profile) {
+        this._profile.animal_avatar = filename;
+      }
+      // Update in Supabase
+      await this.updateProfile({ animal_avatar: filename });
+      // Re-render profile section to show selection
+      this.renderProfileSection();
+    },
+
     // ── Full Profile Section (rendered inside main-content) ────────────
     renderProfileSection: function () {
       var content = document.getElementById('main-content');
@@ -262,9 +284,22 @@
         ? '<div class="profile-section-sub-badge premium"><i class="fas fa-crown"></i> Premium</div>'
         : '<div class="profile-section-sub-badge free"><i class="fas fa-user"></i> ' + t('freePlan', 'Free Plan') + '</div>';
 
-      var avatarHtml = avatarUrl
-        ? '<img src="' + avatarUrl + '" alt="' + name + '">'
-        : '<span class="profile-initials-large">' + initials + '</span>';
+      var animalAvatar = profile.animal_avatar;
+      var avatarHtml = animalAvatar
+        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" style="border-radius:50%;width:100%;height:100%;object-fit:cover">'
+        : avatarUrl
+          ? '<img src="' + avatarUrl + '" alt="' + name + '">'
+          : '<span class="profile-initials-large">' + initials + '</span>';
+
+      // Build animal avatar selection grid
+      var animalGrid = '';
+      this.ANIMAL_AVATARS.forEach(function (img) {
+        var selected = (img === animalAvatar) ? ' animal-avatar-selected' : '';
+        var label = img.replace('.png', '').replace('.jpg', '');
+        animalGrid += '<div class="animal-avatar-option' + selected + '" onclick="UserProfile._selectAnimalAvatar(\'' + img + '\')" title="' + label + '">' +
+          '<img src="Assets/images/Animals/' + img + '" alt="' + label + '">' +
+        '</div>';
+      });
 
       var levels = ['A2', 'B1', 'B2', 'C1', 'C2'];
       var languages = [
@@ -302,6 +337,16 @@
           (isGuest
             ? '<button class="premium-plan-btn primary" style="max-width:220px" onclick="Auth._showAuthModal()"><i class="fas fa-sign-in-alt"></i> ' + t('signIn', 'Sign in') + '</button>'
             : '') +
+        '</div>' +
+
+        '<div class="profile-section-card">' +
+          '<h3>🐾 ' + t('profilePicture', 'Profile Picture') + '</h3>' +
+          '<p style="color:var(--text-medium);font-size:0.88rem;margin:0 0 14px">' +
+            t('chooseAnimal', 'Choose your animal avatar') +
+          '</p>' +
+          '<div class="animal-avatar-grid">' +
+            animalGrid +
+          '</div>' +
         '</div>' +
 
         '<div class="profile-section-card">' +
