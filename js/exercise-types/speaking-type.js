@@ -31,7 +31,7 @@
     // Check if animal images are available
     if (ANIMAL_IMAGES.length > 0) {
       var profile = (typeof UserProfile !== 'undefined') ? UserProfile._profile : null;
-      if (role === 'candidate' && profile && profile.animal_avatar) {
+      if (role === 'candidate' && profile && profile.animal_avatar && profile.animal_avatar.length > 0) {
         return '<img src="Assets/images/animals/' + profile.animal_avatar + '" alt="" class="speaking-animal-avatar">';
       }
       var randomAnimal = ANIMAL_IMAGES[Math.floor(Math.random() * ANIMAL_IMAGES.length)];

@@ -11,7 +11,7 @@
     ANIMAL_AVATARS: [], // Will be populated when images are uploaded
 
     getRandomAnimalAvatar: function () {
-      if (this.ANIMAL_AVATARS.length === 0) return '';
+      if (this.ANIMAL_AVATARS.length === 0) return null;
       return this.ANIMAL_AVATARS[Math.floor(Math.random() * this.ANIMAL_AVATARS.length)];
     },
 
