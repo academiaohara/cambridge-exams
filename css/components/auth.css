@@ -570,6 +570,14 @@
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
 }
 
+/* Animal avatar displayed in profile/header as circle */
+.animal-avatar-circle {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ── Premium plans section ───────────────────────────────────────────── */
 .premium-plans-section {
   max-width: 900px;

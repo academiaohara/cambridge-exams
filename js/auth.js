@@ -233,7 +233,7 @@
       };
 
       var widgetAvatarHtml = animalAvatar
-        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" style="border-radius:50%;width:100%;height:100%;object-fit:cover">'
+        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
         : avatarUrl
           ? '<img src="' + avatarUrl + '" alt="' + name + '">'
           : '<span class="user-avatar-initials">' + initials + '</span>';

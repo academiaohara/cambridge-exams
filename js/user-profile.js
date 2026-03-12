@@ -175,7 +175,7 @@
 
       var animalAvatar = profile.animal_avatar;
       var panelAvatarHtml = animalAvatar
-        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" style="border-radius:50%;width:100%;height:100%;object-fit:cover">'
+        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
         : avatarUrl
           ? '<img src="' + avatarUrl + '" alt="' + name + '">'
           : '<span class="profile-initials-large">' + initials + '</span>';
@@ -286,7 +286,7 @@
 
       var animalAvatar = profile.animal_avatar;
       var avatarHtml = animalAvatar
-        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" style="border-radius:50%;width:100%;height:100%;object-fit:cover">'
+        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
         : avatarUrl
           ? '<img src="' + avatarUrl + '" alt="' + name + '">'
           : '<span class="profile-initials-large">' + initials + '</span>';
