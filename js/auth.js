@@ -222,6 +222,7 @@
       const avatarUrl = (user.user_metadata && user.user_metadata.avatar_url) || '';
       const name = (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name)) || user.email || 'User';
       const initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
+      const animalAvatar = (typeof UserProfile !== 'undefined' && UserProfile._profile && UserProfile._profile.animal_avatar) ? UserProfile._profile.animal_avatar : null;
 
       const widget = document.createElement('div');
       widget.id = 'user-widget';
@@ -231,11 +232,15 @@
         if (typeof UserProfile !== 'undefined') { UserProfile.togglePanel(); }
       };
 
+      var widgetAvatarHtml = animalAvatar
+        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
+        : avatarUrl
+          ? '<img src="' + avatarUrl + '" alt="' + name + '">'
+          : '<span class="user-avatar-initials">' + initials + '</span>';
+
       widget.innerHTML =
         '<div class="user-avatar">' +
-        (avatarUrl
-          ? '<img src="' + avatarUrl + '" alt="' + name + '">'
-          : '<span class="user-avatar-initials">' + initials + '</span>') +
+        widgetAvatarHtml +
         '</div>' +
         '<span class="user-name">' + name.split(' ')[0] + '</span>';
 
