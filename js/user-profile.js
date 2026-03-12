@@ -7,6 +7,14 @@
     _profile: null,
     _panelOpen: false,
 
+    // ── Animal avatar list (prepared for Assets/images/animals/) ──
+    ANIMAL_AVATARS: [], // Will be populated when images are uploaded
+
+    getRandomAnimalAvatar: function () {
+      if (this.ANIMAL_AVATARS.length === 0) return null;
+      return this.ANIMAL_AVATARS[Math.floor(Math.random() * this.ANIMAL_AVATARS.length)];
+    },
+
     // ── load or create profile ────────────────────────────────────────
     loadOrCreate: async function (user) {
       const client = Auth._client;
@@ -20,11 +28,13 @@
 
       if (error && error.code === 'PGRST116') {
         // Row not found — create profile
+        const animalAvatar = this.getRandomAnimalAvatar();
         const newProfile = {
           id: user.id,
           email: user.email,
           full_name: (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name)) || '',
           avatar_url: (user.user_metadata && user.user_metadata.avatar_url) || '',
+          animal_avatar: animalAvatar,
           preferred_level: AppState.currentLevel || 'C1',
           preferred_mode: AppState.currentMode || 'practice',
           preferred_language: AppState.currentLanguage || 'es'
