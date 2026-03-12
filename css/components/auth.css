@@ -667,53 +667,30 @@
   cursor: default;
 }
 
-/* ── Grade Evolution Section ─────────────────────────────────────────── */
-.grade-evolution-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9990;
-  background: rgba(45, 46, 95, 0.55);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+/* ── Grade Evolution Section (rendered in main-content) ──────────────── */
+.grade-evolution-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.grade-evolution-section-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  animation: fadeIn 0.2s ease;
+  gap: 12px;
+  margin-bottom: 24px;
 }
-.grade-evolution-modal {
+.grade-evolution-card {
   background: #fff;
   border-radius: 20px;
-  width: 95%;
-  max-width: 700px;
-  max-height: 85vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 40px rgba(45, 46, 95, 0.15);
-  animation: authCardIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+  box-shadow: 0 2px 12px rgba(45,46,95,0.06);
+  padding: 28px;
+  margin-bottom: 20px;
 }
-.grade-evolution-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 12px;
-  border-bottom: 1px solid #f1f5f9;
-}
-.grade-evolution-header h2 {
+.grade-evolution-card h2 {
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-dark);
-  margin: 0;
-}
-.grade-evolution-close {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  color: var(--text-medium);
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
-}
-.grade-evolution-close:hover {
-  background: #f1f5f9;
+  margin: 0 0 20px;
 }
 .grade-evolution-body {
   padding: 20px 24px 28px;
@@ -790,53 +767,30 @@
   margin-bottom: 12px;
 }
 
-/* ── Quicksteps Category Chooser ─────────────────────────────────────── */
-.qs-chooser-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9990;
-  background: rgba(45, 46, 95, 0.55);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+/* ── Quicksteps Category Chooser (rendered in main-content) ──────────── */
+.qs-chooser-section {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.qs-chooser-section-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  animation: fadeIn 0.2s ease;
+  gap: 12px;
+  margin-bottom: 24px;
 }
-.qs-chooser-modal {
+.qs-chooser-card {
   background: #fff;
   border-radius: 20px;
-  width: 95%;
-  max-width: 460px;
-  max-height: 85vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 40px rgba(45, 46, 95, 0.15);
-  animation: authCardIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+  box-shadow: 0 2px 12px rgba(45,46,95,0.06);
+  padding: 28px;
+  margin-bottom: 20px;
 }
-.qs-chooser-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px 12px;
-  border-bottom: 1px solid #f1f5f9;
-}
-.qs-chooser-header h2 {
+.qs-chooser-card h2 {
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-dark);
-  margin: 0;
-}
-.qs-chooser-close {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  color: var(--text-medium);
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
-}
-.qs-chooser-close:hover {
-  background: #f1f5f9;
+  margin: 0 0 20px;
 }
 .qs-chooser-body {
   padding: 16px 24px 24px;
