@@ -1130,6 +1130,10 @@ color: #4E95D9;
   margin: 0px 10px 0 0;
 }
 
+.sw-grade .grade-carousel-cefr.grade-carousel-cefr-dash {
+  margin: 0;
+}
+
 .sw-grade .grade-carousel-skill-label {
   width: 100%;
   height: 30px;
@@ -1185,11 +1189,14 @@ color: #4E95D9;
   background: var(--card-calc-bg);
   color: #3a3a6a;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.sw-calculator .sidebar-widget-pastel-title {
+.sw-calculator-icon {
+  font-size: 2.4rem;
   color: #3a3a6a;
-  text-align: center;
 }
 
 /* ── Responsive ── */
