@@ -60,6 +60,11 @@
       // Auto-save current answers
       Exercise.savePartState();
       
+      // End speaking exercise if active
+      if (AppState.currentSection === 'speaking' && window.SpeakingType && typeof SpeakingType._endConversation === 'function') {
+        SpeakingType._endConversation();
+      }
+      
       // Auto-check answers
       if (!AppState.answersChecked) {
         ExerciseHandlers.checkAnswers();

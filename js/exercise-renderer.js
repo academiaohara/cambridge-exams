@@ -359,15 +359,20 @@
         return [1, 2].reduce((sum, part) => sum + (CONFIG.PART_TYPES[`writing${part}`]?.total || 0), 0);
       }
       if (section === 'speaking') {
-        return [1, 2, 3, 4].reduce((sum, part) => sum + (CONFIG.PART_TYPES[`speaking${part}`]?.total || 0), 0);
+        return 75;
       }
       return 0;
     },
     
     getSectionRunningTotal: function(sectionKey) {
       if (!AppState.sectionScores[sectionKey]) return 0;
-      return Object.values(AppState.sectionScores[sectionKey])
-        .reduce((sum, score) => sum + score, 0);
+      var scores = Object.values(AppState.sectionScores[sectionKey]);
+      if (!scores.length) return 0;
+      // Speaking: use average since each part is assessed on the full 75-mark scale
+      if (sectionKey.includes('_speaking') && scores.length > 0) {
+        return Math.round(scores.reduce(function(sum, score) { return sum + score; }, 0) / scores.length);
+      }
+      return scores.reduce(function(sum, score) { return sum + score; }, 0);
     },
     
     renderTextsCards: function(exercise, partConfig) {

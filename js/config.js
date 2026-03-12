@@ -130,9 +130,9 @@
     writing2: { type: 'choice', inputMode: 'textarea', total: 20 },
     
     // Speaking
-    speaking1: { type: 'interview', inputMode: 'script', total: 1 },
-    speaking2: { type: 'long-turn', inputMode: 'script', total: 2 },
-    speaking3: { type: 'collaborative', inputMode: 'script', total: 1 },
-    speaking4: { type: 'discussion', inputMode: 'script', total: 1 }
+    speaking1: { type: 'interview', inputMode: 'script', total: 75 },
+    speaking2: { type: 'long-turn', inputMode: 'script', total: 75 },
+    speaking3: { type: 'collaborative', inputMode: 'script', total: 75 },
+    speaking4: { type: 'discussion', inputMode: 'script', total: 75 }
   };
 })();

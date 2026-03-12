@@ -120,7 +120,11 @@
         'cross-text-matching': window.ReadingType6,
         'gapped-text': window.ReadingType7,
         'multiple-matching': window.ReadingType8,
-        'dual-matching': window.ListeningType4
+        'dual-matching': window.ListeningType4,
+        'interview': window.SpeakingType,
+        'long-turn': window.SpeakingType,
+        'collaborative': window.SpeakingType,
+        'discussion': window.SpeakingType
       };
       return typeMap[type];
     },
