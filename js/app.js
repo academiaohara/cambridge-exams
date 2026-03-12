@@ -66,6 +66,10 @@
           Dashboard.renderSubpage(state.mode);
         } else if (state.view === 'exercise' && state.examId && state.section && state.part) {
           Exercise.openPart(state.examId, state.section, state.part);
+        } else if (state.view === 'profile') {
+          if (typeof UserProfile !== 'undefined') UserProfile.renderProfileSection();
+        } else if (state.view === 'premium') {
+          if (typeof UserProfile !== 'undefined') UserProfile.renderPremiumSection();
         }
       });
       

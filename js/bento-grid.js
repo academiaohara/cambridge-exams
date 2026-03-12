@@ -298,13 +298,75 @@
     },
 
     openMicroLearning: function() {
+      BentoGrid.openQuickstepsChooser();
+    },
+
+    openQuickstepsChooser: function() {
+      var existing = document.querySelector('.qs-chooser-overlay');
+      if (existing) existing.remove();
+
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+
+      var categories = [
+        { id: 'all', icon: '⚡', name: t('allExercises', 'All Exercises'), desc: t('allExercisesDesc', 'Mixed practice from all categories') },
+        { id: 'definitions', icon: '📖', name: t('definitions', 'Definitions'), desc: t('definitionsDesc', 'Vocabulary and word meaning exercises') },
+        { id: 'pronunciation', icon: '🗣️', name: t('pronunciation', 'Pronunciation'), desc: t('pronunciationDesc', 'Practice correct word pronunciation') },
+        { id: 'phrasal_verbs', icon: '🔗', name: t('phrasalVerbs', 'Phrasal Verbs'), desc: t('phrasalVerbsDesc', 'Common phrasal verb exercises') },
+        { id: 'mini_listening', icon: '🎧', name: t('miniListening', 'Mini-Listening'), desc: t('miniListeningDesc', 'Short audio comprehension tasks') },
+        { id: 'mini_reading', icon: '📝', name: t('miniReading', 'Mini-Reading'), desc: t('miniReadingDesc', 'Quick reading comprehension tasks') },
+        { id: 'transformations', icon: '🔄', name: t('transformations', 'Transformations'), desc: t('transformationsDesc', 'Key word transformation practice') }
+      ];
+
+      var buttonsHtml = '';
+      categories.forEach(function(cat) {
+        buttonsHtml += '<button class="qs-category-btn" onclick="BentoGrid._startQuicksteps(\'' + cat.id + '\')">' +
+          '<span class="qs-category-icon">' + cat.icon + '</span>' +
+          '<div class="qs-category-info">' +
+            '<div class="qs-category-name">' + cat.name + '</div>' +
+            '<div class="qs-category-desc">' + cat.desc + '</div>' +
+          '</div>' +
+        '</button>';
+      });
+
+      var el = document.createElement('div');
+      el.className = 'qs-chooser-overlay';
+      el.innerHTML =
+        '<div class="qs-chooser-modal">' +
+          '<div class="qs-chooser-header">' +
+            '<h2>⚡ ' + t('quicksteps', 'Quicksteps') + '</h2>' +
+            '<button class="qs-chooser-close" onclick="this.closest(\'.qs-chooser-overlay\').remove()">✕</button>' +
+          '</div>' +
+          '<div class="qs-chooser-body">' + buttonsHtml + '</div>' +
+        '</div>';
+      document.body.appendChild(el);
+      el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
+    },
+
+    _startQuicksteps: function(category) {
+      var overlay = document.querySelector('.qs-chooser-overlay');
+      if (overlay) overlay.remove();
+
       if (typeof MicroLearning !== 'undefined') {
+        MicroLearning._selectedCategory = category;
         MicroLearning.open();
       }
     },
 
     openLessons: function() {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+      var nextLesson = BentoGrid._findNextLesson(exams);
+
+      // If there's a lesson in progress, open it directly
+      if (nextLesson) {
+        if (typeof Exercise !== 'undefined') {
+          Exercise.openPart(nextLesson.examId, nextLesson.section, nextLesson.part);
+        }
+        return;
+      }
+
+      // Otherwise show placeholder modal
       var el = document.createElement('div');
       el.className = 'bento-generic-modal-overlay';
       el.innerHTML =
@@ -639,7 +701,7 @@
 
       var totalSlides = slides.length || 1;
 
-      return '<div class="sidebar-widget-pastel sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '">' +
+      return '<div class="sidebar-widget-pastel sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '" onclick="BentoGrid.openGradeEvolution()" style="cursor:pointer">' +
         '<div class="sidebar-widget-pastel-title">' + t('gradeTracker', 'Grade Tracker') + '</div>' +
         '<div class="grade-carousel-viewport">' + slidesHtml + '</div>' +
         '<div class="grade-carousel-dots"></div>' +
@@ -754,6 +816,113 @@
           '</div>' +
           '<div class="bento-streak-modal-section">' + t('last28Days', 'Last 28 days') + '</div>' +
           calHtml +
+        '</div>';
+      document.body.appendChild(el);
+      el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
+    },
+
+    // ── Grade Evolution Section ──────────────────────────────────────────
+    openGradeEvolution: function() {
+      var existing = document.querySelector('.grade-evolution-overlay');
+      if (existing) existing.remove();
+
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+
+      var allSkills = ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
+      var skillColors = {
+        'Reading': '#3b82f6',
+        'Use of English': '#8b5cf6',
+        'Writing': '#10b981',
+        'Listening': '#f59e0b',
+        'Speaking': '#ef4444'
+      };
+
+      var scaleBounds = { A2: [82, 140], B1: [102, 160], B2: [122, 180], C1: [142, 200], C2: [162, 220] };
+      var bounds = scaleBounds[level] || [142, 200];
+      var scaleMin = bounds[0];
+      var scaleMax = bounds[1];
+
+      // Gather per-exam skill scores
+      var examScores = []; // [{ examId, skills: { skill: scaleScore } }]
+      exams.forEach(function(exam) {
+        if (exam.status !== 'available' || typeof ScoreCalculator === 'undefined') return;
+        try {
+          var scores = ScoreCalculator.getAllSkillScores(exam.id);
+          var hasData = scores.some(function(s) { return s.raw > 0; });
+          if (!hasData) return;
+          var entry = { examId: exam.id, skills: {} };
+          scores.forEach(function(s) {
+            entry.skills[s.skill] = s.scale;
+          });
+          examScores.push(entry);
+        } catch (e) { /* skip */ }
+      });
+
+      // Per-skill evolution bars
+      var bodyHtml = '';
+      allSkills.forEach(function(skill) {
+        var color = skillColors[skill] || '#3b82f6';
+        var hasSkillData = examScores.some(function(e) { return e.skills[skill] > 0; });
+
+        bodyHtml += '<div class="grade-evo-skill-section">' +
+          '<div class="grade-evo-skill-title"><span class="grade-evo-skill-dot" style="background:' + color + '"></span> ' + skill + '</div>';
+
+        if (!hasSkillData) {
+          bodyHtml += '<div class="grade-evo-no-data">' + t('noDataYet', 'No data yet — complete exercises to see your progress') + '</div>';
+        } else {
+          bodyHtml += '<div class="grade-evo-bars">';
+          examScores.forEach(function(entry) {
+            var score = entry.skills[skill] || 0;
+            if (score <= 0) return;
+            var pct = Math.round(((score - scaleMin) / (scaleMax - scaleMin)) * 100);
+            pct = Math.max(5, Math.min(100, pct));
+            bodyHtml += '<div class="grade-evo-bar-col">' +
+              '<div class="grade-evo-bar-score">' + score + '</div>' +
+              '<div class="grade-evo-bar" style="height:' + pct + '%;background:' + color + '"></div>' +
+              '<div class="grade-evo-bar-label">' + entry.examId.replace('Test', 'T') + '</div>' +
+            '</div>';
+          });
+          bodyHtml += '</div>';
+        }
+        bodyHtml += '</div>';
+      });
+
+      // Global average bar
+      bodyHtml += '<div class="grade-evo-global-section">' +
+        '<div class="grade-evo-global-title">📊 ' + t('globalAverage', 'Global Average') + '</div>';
+      if (examScores.length === 0) {
+        bodyHtml += '<div class="grade-evo-no-data">' + t('noDataYet', 'No data yet — complete exercises to see your progress') + '</div>';
+      } else {
+        bodyHtml += '<div class="grade-evo-bars">';
+        examScores.forEach(function(entry) {
+          var skills = Object.keys(entry.skills);
+          var total = 0; var count = 0;
+          skills.forEach(function(sk) { if (entry.skills[sk] > 0) { total += entry.skills[sk]; count++; } });
+          var avg = count > 0 ? Math.round(total / count) : 0;
+          if (avg <= 0) return;
+          var pct = Math.round(((avg - scaleMin) / (scaleMax - scaleMin)) * 100);
+          pct = Math.max(5, Math.min(100, pct));
+          bodyHtml += '<div class="grade-evo-bar-col">' +
+            '<div class="grade-evo-bar-score">' + avg + '</div>' +
+            '<div class="grade-evo-bar" style="height:' + pct + '%;background:var(--primary)"></div>' +
+            '<div class="grade-evo-bar-label">' + entry.examId.replace('Test', 'T') + '</div>' +
+          '</div>';
+        });
+        bodyHtml += '</div>';
+      }
+      bodyHtml += '</div>';
+
+      var el = document.createElement('div');
+      el.className = 'grade-evolution-overlay';
+      el.innerHTML =
+        '<div class="grade-evolution-modal">' +
+          '<div class="grade-evolution-header">' +
+            '<h2>📈 ' + t('gradeEvolution', 'Grade Evolution') + ' · ' + level + '</h2>' +
+            '<button class="grade-evolution-close" onclick="this.closest(\'.grade-evolution-overlay\').remove()">✕</button>' +
+          '</div>' +
+          '<div class="grade-evolution-body">' + bodyHtml + '</div>' +
         '</div>';
       document.body.appendChild(el);
       el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
