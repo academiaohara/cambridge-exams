@@ -306,6 +306,8 @@
       if (!content) return;
 
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
 
       var categories = [
         { id: 'all', icon: '⚡', name: t('allExercises', 'All Exercises'), desc: t('allExercisesDesc', 'Mixed practice from all categories') },
@@ -328,16 +330,39 @@
         '</button>';
       });
 
+      // Build sidebars like main dashboard
+      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      if (typeof BentoGrid !== 'undefined') {
+        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+      }
+      var rightSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined') {
+        rightSidebarContent = BentoGrid._buildContinueBasecampHtml(exams);
+        rightSidebarContent += BentoGrid._buildStreakSidebarHtml();
+        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
+      }
+
       content.innerHTML =
-        '<div class="qs-chooser-section">' +
-          '<div class="qs-chooser-section-header">' +
-            '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + t('back', 'Back') + '</button>' +
+        '<div class="dashboard-layout">' +
+          '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+          '<div class="dashboard-center">' +
+            '<div class="qs-chooser-section">' +
+              '<div class="subpage-header">' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()">← ' + t('back', 'Back') + '</button>' +
+                '<div>' +
+                  '<div class="subpage-title">⚡ ' + t('quicksteps', 'Quicksteps') + '</div>' +
+                  '<div class="subpage-subtitle">' + t('quickstepsSubtitle', 'Choose a category to start practicing') + '</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="qs-chooser-grid">' + buttonsHtml + '</div>' +
+            '</div>' +
           '</div>' +
-          '<div class="qs-chooser-card">' +
-            '<h2>⚡ ' + t('quicksteps', 'Quicksteps') + '</h2>' +
-            '<div class="qs-chooser-body">' + buttonsHtml + '</div>' +
-          '</div>' +
+          '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
         '</div>';
+
+      if (typeof BentoGrid !== 'undefined') {
+        BentoGrid._startGradeCarousel();
+      }
       history.pushState({ view: 'quicksteps' }, '');
     },
 
@@ -834,6 +859,13 @@
         'Listening': '#f59e0b',
         'Speaking': '#ef4444'
       };
+      var skillIcons = {
+        'Reading': '📖',
+        'Use of English': '✏️',
+        'Writing': '✍️',
+        'Listening': '🎧',
+        'Speaking': '🎤'
+      };
 
       var scaleBounds = { A2: [82, 140], B1: [102, 160], B2: [122, 180], C1: [142, 200], C2: [162, 220] };
       var bounds = scaleBounds[level] || [142, 200];
@@ -856,17 +888,18 @@
         } catch (e) { /* skip */ }
       });
 
-      // Per-skill evolution bars
-      var bodyHtml = '';
+      // Per-skill evolution cards
+      var bodyHtml = '<div class="grade-evo-skills-grid">';
       allSkills.forEach(function(skill) {
         var color = skillColors[skill] || '#3b82f6';
+        var icon = skillIcons[skill] || '📊';
         var hasSkillData = examScores.some(function(e) { return e.skills[skill] > 0; });
 
-        bodyHtml += '<div class="grade-evo-skill-section">' +
-          '<div class="grade-evo-skill-title"><span class="grade-evo-skill-dot" style="background:' + color + '"></span> ' + skill + '</div>';
+        bodyHtml += '<div class="grade-evo-skill-card">' +
+          '<div class="grade-evo-skill-title"><span class="grade-evo-skill-icon">' + icon + '</span><span class="grade-evo-skill-dot" style="background:' + color + '"></span> ' + skill + '</div>';
 
         if (!hasSkillData) {
-          bodyHtml += '<div class="grade-evo-no-data">' + t('noDataYet', 'No data yet — complete exercises to see your progress') + '</div>';
+          bodyHtml += '<div class="grade-evo-no-data"><i class="fas fa-chart-bar"></i> ' + t('noDataYet', 'No data yet — complete exercises to see your progress') + '</div>';
         } else {
           bodyHtml += '<div class="grade-evo-bars">';
           examScores.forEach(function(entry) {
@@ -884,14 +917,15 @@
         }
         bodyHtml += '</div>';
       });
+      bodyHtml += '</div>';
 
-      // Global average bar
+      // Global average section
       bodyHtml += '<div class="grade-evo-global-section">' +
         '<div class="grade-evo-global-title">📊 ' + t('globalAverage', 'Global Average') + '</div>';
       if (examScores.length === 0) {
-        bodyHtml += '<div class="grade-evo-no-data">' + t('noDataYet', 'No data yet — complete exercises to see your progress') + '</div>';
+        bodyHtml += '<div class="grade-evo-no-data"><i class="fas fa-chart-bar"></i> ' + t('noDataYet', 'No data yet — complete exercises to see your progress') + '</div>';
       } else {
-        bodyHtml += '<div class="grade-evo-bars">';
+        bodyHtml += '<div class="grade-evo-bars grade-evo-bars-global">';
         examScores.forEach(function(entry) {
           var skills = Object.keys(entry.skills);
           var total = 0; var count = 0;
@@ -910,16 +944,39 @@
       }
       bodyHtml += '</div>';
 
+      // Build sidebars like main dashboard
+      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      if (typeof BentoGrid !== 'undefined') {
+        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+      }
+      var rightSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined') {
+        rightSidebarContent = BentoGrid._buildContinueBasecampHtml(exams);
+        rightSidebarContent += BentoGrid._buildStreakSidebarHtml();
+        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
+      }
+
       content.innerHTML =
-        '<div class="grade-evolution-section">' +
-          '<div class="grade-evolution-section-header">' +
-            '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + t('back', 'Back') + '</button>' +
+        '<div class="dashboard-layout">' +
+          '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+          '<div class="dashboard-center">' +
+            '<div class="grade-evolution-section">' +
+              '<div class="subpage-header">' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()">← ' + t('back', 'Back') + '</button>' +
+                '<div>' +
+                  '<div class="subpage-title">📈 ' + t('gradeEvolution', 'Grade Evolution') + '</div>' +
+                  '<div class="subpage-subtitle">' + level + ' · ' + t('gradeEvolutionSubtitle', 'Track your progress across exams') + '</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="grade-evolution-body">' + bodyHtml + '</div>' +
+            '</div>' +
           '</div>' +
-          '<div class="grade-evolution-card">' +
-            '<h2>📈 ' + t('gradeEvolution', 'Grade Evolution') + ' · ' + level + '</h2>' +
-            '<div class="grade-evolution-body">' + bodyHtml + '</div>' +
-          '</div>' +
+          '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
         '</div>';
+
+      if (typeof BentoGrid !== 'undefined') {
+        BentoGrid._startGradeCarousel();
+      }
       history.pushState({ view: 'gradeEvolution' }, '');
     }
   };
