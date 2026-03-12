@@ -325,7 +325,7 @@
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       return '<div class="sidebar-widget-pastel sw-streak" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
         '<div class="sidebar-widget-pastel-title" style="text-align:center">' + t('dayStreak', 'Day Streak') + '</div>' +
-        '<div class="sw-streak-flame" style="text-align:center;display:block"></div>' +
+        '<div class="sw-streak-flame"><img src="Assets/images/streak.png" alt="" /></div>' +
         '<div class="sw-streak-count">' + streakCount + '</div>' +
       '</div>';
     },
