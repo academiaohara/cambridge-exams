@@ -185,6 +185,12 @@
           '</div>' +
         '</div>' +
         '<div class="profile-sync-status" id="profile-sync-status"></div>' +
+        '<button class="premium-plan-btn primary" style="margin:8px 20px;width:calc(100% - 40px)" onclick="UserProfile.closePanel(); UserProfile.renderProfileSection()">' +
+          '<i class="fas fa-user-circle"></i> View Full Profile' +
+        '</button>' +
+        '<button class="premium-plan-btn outline" style="margin:4px 20px;width:calc(100% - 40px)" onclick="UserProfile.closePanel(); UserProfile.renderPremiumSection()">' +
+          '<i class="fas fa-crown"></i> View Plans' +
+        '</button>' +
         '<button class="profile-signout-btn" onclick="Auth.signOut()">' +
           '<i class="fas fa-sign-out-alt"></i> Sign out' +
         '</button>';
@@ -224,6 +230,160 @@
           setTimeout(function () { if (statusEl) { statusEl.textContent = ''; statusEl.className = 'profile-sync-status'; } }, 2000);
         }
       }
+    },
+
+    // ── Full Profile Section (rendered inside main-content) ────────────
+    renderProfileSection: function () {
+      var content = document.getElementById('main-content');
+      if (!content) return;
+
+      var t = function (key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
+      var user = Auth.getUser();
+      var profile = this._profile || {};
+      var isGuest = AppState.isGuest;
+
+      var name = profile.full_name || (user && (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name))) || (user && user.email) || t('guest', 'Guest');
+      var email = profile.email || (user && user.email) || '';
+      var avatarUrl = profile.avatar_url || (user && user.user_metadata && user.user_metadata.avatar_url) || '';
+      var initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
+
+      var isPremium = AppState.isPremium;
+      var subBadge = isPremium
+        ? '<div class="profile-section-sub-badge premium"><i class="fas fa-crown"></i> Premium</div>'
+        : '<div class="profile-section-sub-badge free"><i class="fas fa-user"></i> ' + t('freePlan', 'Free Plan') + '</div>';
+
+      var avatarHtml = avatarUrl
+        ? '<img src="' + avatarUrl + '" alt="' + name + '">'
+        : '<span class="profile-initials-large">' + initials + '</span>';
+
+      var levels = ['A2', 'B1', 'B2', 'C1', 'C2'];
+      var languages = [
+        { code: 'es', label: 'Español' }, { code: 'en', label: 'English' },
+        { code: 'fr', label: 'Français' }, { code: 'de', label: 'Deutsch' },
+        { code: 'it', label: 'Italiano' }, { code: 'pt', label: 'Português' }
+      ];
+
+      function levelOptions(current) {
+        return levels.map(function (l) {
+          return '<option value="' + l + '"' + (l === current ? ' selected' : '') + '>' + l + '</option>';
+        }).join('');
+      }
+      function langOptions(current) {
+        return languages.map(function (l) {
+          return '<option value="' + l.code + '"' + (l.code === current ? ' selected' : '') + '>' + l.label + '</option>';
+        }).join('');
+      }
+
+      var html = '<div class="profile-section">' +
+        '<div class="profile-section-header">' +
+          '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + t('back', 'Back') + '</button>' +
+          '<h2>' + t('myProfile', 'My Profile') + '</h2>' +
+        '</div>' +
+
+        '<div class="profile-section-card">' +
+          '<div class="profile-section-avatar-row">' +
+            '<div class="profile-section-avatar">' + avatarHtml + '</div>' +
+            '<div class="profile-section-info">' +
+              '<div class="profile-name">' + name + '</div>' +
+              '<div class="profile-email">' + email + '</div>' +
+              subBadge +
+            '</div>' +
+          '</div>' +
+          (isGuest
+            ? '<button class="premium-plan-btn primary" style="max-width:220px" onclick="Auth._showAuthModal()"><i class="fas fa-sign-in-alt"></i> ' + t('signIn', 'Sign in') + '</button>'
+            : '') +
+        '</div>' +
+
+        '<div class="profile-section-card">' +
+          '<h3>⚙️ ' + t('preferences', 'Preferences') + '</h3>' +
+          '<div class="profile-prefs">' +
+            '<div class="pref-row"><label>' + t('level', 'Level') + '</label>' +
+              '<select id="pref-level" onchange="UserProfile._onPrefChange()">' + levelOptions(profile.preferred_level || AppState.currentLevel) + '</select></div>' +
+            '<div class="pref-row"><label>' + t('language', 'Language') + '</label>' +
+              '<select id="pref-language" onchange="UserProfile._onPrefChange()">' + langOptions(profile.preferred_language || AppState.currentLanguage) + '</select></div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="profile-section-card">' +
+          '<h3>👑 ' + t('subscription', 'Subscription') + '</h3>' +
+          '<p style="color:var(--text-medium);font-size:0.88rem;margin:0 0 14px">' +
+            (isPremium
+              ? t('premiumActive', 'You have an active Premium subscription with full access to all features.')
+              : t('freeDesc', 'You are on the free plan. Upgrade to unlock all exams and AI features.')) +
+          '</p>' +
+          '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '" onclick="' + (isPremium ? '' : 'UserProfile.renderPremiumSection()') + '">' +
+            (isPremium ? '✓ ' + t('currentPlan', 'Current Plan') + ': Premium' : '<i class="fas fa-crown"></i> ' + t('viewPlans', 'View Plans')) +
+          '</button>' +
+        '</div>' +
+
+        (!isGuest
+          ? '<div class="profile-section-card" style="text-align:center;">' +
+              '<button class="profile-signout-btn" onclick="Auth.signOut()"><i class="fas fa-sign-out-alt"></i> ' + t('signOut', 'Sign out') + '</button>' +
+            '</div>'
+          : '') +
+
+      '</div>';
+
+      content.innerHTML = html;
+      history.pushState({ view: 'profile' }, '');
+    },
+
+    // ── Premium Plans Section (rendered inside main-content) ───────────
+    renderPremiumSection: function () {
+      var content = document.getElementById('main-content');
+      if (!content) return;
+
+      var t = function (key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
+      var isPremium = AppState.isPremium;
+
+      var html = '<div class="premium-plans-section">' +
+        '<div class="profile-section-header">' +
+          '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + t('back', 'Back') + '</button>' +
+        '</div>' +
+
+        '<div class="premium-plans-header">' +
+          '<h2>👑 ' + t('choosePlan', 'Choose your Plan') + '</h2>' +
+          '<p>' + t('premiumSubtitle', 'Unlock the full Cambridge Exams experience') + '</p>' +
+        '</div>' +
+
+        '<div class="premium-plans-grid">' +
+
+          '<div class="premium-plan-card' + (!isPremium ? ' current' : '') + '">' +
+            (!isPremium ? '<div class="premium-plan-badge">' + t('currentPlan', 'Current Plan') + '</div>' : '') +
+            '<div class="premium-plan-icon">📚</div>' +
+            '<div class="premium-plan-name">' + t('freePlan', 'Free') + '</div>' +
+            '<div class="premium-plan-price">€0 <span>/ ' + t('month', 'month') + '</span></div>' +
+            '<ul class="premium-plan-features">' +
+              '<li><i class="fas fa-check"></i> ' + t('freeFeature1', 'Access to first exam') + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + t('freeFeature2', 'Reading & Listening exercises') + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + t('freeFeature3', 'Score calculator') + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + t('freeFeature4', 'Micro-learning mode') + '</li>' +
+            '</ul>' +
+            '<button class="premium-plan-btn ' + (!isPremium ? 'current-plan' : 'outline') + '">' + (!isPremium ? '✓ ' + t('currentPlan', 'Current Plan') : t('freePlan', 'Free')) + '</button>' +
+          '</div>' +
+
+          '<div class="premium-plan-card' + (isPremium ? ' current' : ' recommended') + '">' +
+            (isPremium
+              ? '<div class="premium-plan-badge">' + t('currentPlan', 'Current Plan') + '</div>'
+              : '<div class="premium-plan-badge">' + t('recommended', 'Recommended') + '</div>') +
+            '<div class="premium-plan-icon">👑</div>' +
+            '<div class="premium-plan-name">Premium</div>' +
+            '<div class="premium-plan-price">€9.99 <span>/ ' + t('month', 'month') + '</span></div>' +
+            '<ul class="premium-plan-features">' +
+              '<li><i class="fas fa-check"></i> ' + t('premFeature1', 'All exams unlocked') + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + t('premFeature2', 'AI writing evaluation') + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + t('premFeature3', 'Speaking exercises') + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + t('premFeature4', 'Progress sync across devices') + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + t('premFeature5', 'Detailed grade analytics') + '</li>' +
+            '</ul>' +
+            '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '">' + (isPremium ? '✓ ' + t('currentPlan', 'Current Plan') : t('getPremium', 'Get Premium')) + '</button>' +
+          '</div>' +
+
+        '</div>' +
+      '</div>';
+
+      content.innerHTML = html;
+      history.pushState({ view: 'premium' }, '');
     }
   };
 })();

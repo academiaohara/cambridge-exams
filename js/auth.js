@@ -86,6 +86,7 @@
       AppState.isPremium = false;
       AppState.currentUser = null;
       this._hideAuthModal();
+      this.renderSignInButton();
       if (typeof Dashboard !== 'undefined') { Dashboard.render(); }
     },
 
@@ -134,6 +135,9 @@
       AppState.currentUser = user;
       AppState.isAuthenticated = true;
       AppState.isGuest = false;
+
+      // Remove guest sign-in button
+      this._removeSignInButton();
 
       // Load/create profile in Supabase then render header widget
       if (typeof UserProfile !== 'undefined') {
@@ -211,6 +215,7 @@
     // ── header user widget ───────────────────────────────────────────
     _renderUserWidget: function (user) {
       this._removeUserWidget();
+      this._removeSignInButton();
       const navGroup = document.getElementById('headerNavGroup');
       if (!navGroup) { return; }
 
@@ -239,6 +244,27 @@
 
     _removeUserWidget: function () {
       const existing = document.getElementById('user-widget');
+      if (existing) { existing.remove(); }
+    },
+
+    // ── header sign-in button for guests ─────────────────────────────
+    renderSignInButton: function () {
+      this._removeSignInButton();
+      if (AppState.isAuthenticated) { return; }
+      const navGroup = document.getElementById('headerNavGroup');
+      if (!navGroup) { return; }
+
+      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
+      var btn = document.createElement('button');
+      btn.id = 'header-signin-btn';
+      btn.className = 'header-signin-btn';
+      btn.onclick = function () { Auth._showAuthModal(); };
+      btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span>' + t('signIn', 'Sign in') + '</span>';
+      navGroup.appendChild(btn);
+    },
+
+    _removeSignInButton: function () {
+      var existing = document.getElementById('header-signin-btn');
       if (existing) { existing.remove(); }
     }
   };
