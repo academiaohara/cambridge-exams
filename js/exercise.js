@@ -139,6 +139,12 @@
     },
     
     startFullSection: async function(examId, section) {
+      // Guest gate: block writing and speaking for guest users
+      if (AppState.isGuest && (section === 'writing' || section === 'speaking')) {
+        if (typeof Dashboard !== 'undefined') Dashboard.showGuestGate();
+        return;
+      }
+
       var self = this;
       
       if (AppState.currentMode === 'exam') {
@@ -185,6 +191,12 @@
     },
     
     openPart: async function(examId, section, part) {
+      // Guest gate: block writing and speaking for guest users
+      if (AppState.isGuest && (section === 'writing' || section === 'speaking')) {
+        if (typeof Dashboard !== 'undefined') Dashboard.showGuestGate();
+        return;
+      }
+
       const content = document.getElementById('main-content');
       if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
       AppState.currentSection = section;

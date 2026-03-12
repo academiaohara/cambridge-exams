@@ -28,7 +28,11 @@
     /** Verify existing session on page load and wire up real-time listener. */
     init: async function () {
       if (!this._client) { this.initClient(); }
-      if (!this._client) { return; }
+      if (!this._client) {
+        // Supabase not available — show auth modal so user can continue as guest
+        this._showAuthModal();
+        return;
+      }
 
       // Restore session from localStorage (Supabase does this automatically)
       const { data } = await this._client.auth.getSession();
@@ -75,8 +79,27 @@
       }
     },
 
-    /** Sign out the current user. */
+    /** Continue as guest without signing in. */
+    continueAsGuest: function () {
+      AppState.isGuest = true;
+      AppState.isAuthenticated = false;
+      AppState.isPremium = false;
+      AppState.currentUser = null;
+      this._hideAuthModal();
+      if (typeof Dashboard !== 'undefined') { Dashboard.render(); }
+    },
+
+    /** Sign out the current user (or exit guest mode). */
     signOut: async function () {
+      if (AppState.isGuest) {
+        AppState.isGuest = false;
+        AppState.isAuthenticated = false;
+        AppState.currentUser = null;
+        this._removeUserWidget();
+        this._showAuthModal();
+        if (typeof Dashboard !== 'undefined') { Dashboard.render(); }
+        return;
+      }
       if (!this._client) { return; }
       const { error } = await this._client.auth.signOut();
       if (error) { console.error('[Auth] signOut error:', error.message); }
@@ -110,6 +133,7 @@
       // Update global auth state
       AppState.currentUser = user;
       AppState.isAuthenticated = true;
+      AppState.isGuest = false;
 
       // Load/create profile in Supabase then render header widget
       if (typeof UserProfile !== 'undefined') {
@@ -136,6 +160,9 @@
 
       // Render user widget in header
       this._renderUserWidget(user);
+
+      // Re-render dashboard to remove any guest restrictions
+      if (typeof Dashboard !== 'undefined') { Dashboard.render(); }
     },
 
     _onSignOut: function () {
