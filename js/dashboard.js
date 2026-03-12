@@ -17,10 +17,6 @@
         rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
         rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
         rightSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
-        var nextLesson = BentoGrid._findNextLesson(exams);
-        if (nextLesson) {
-          rightSidebarContent += BentoGrid._buildNextLessonSidebarHtml(nextLesson);
-        }
       }
 
       var html = '<div class="dashboard-layout">' +

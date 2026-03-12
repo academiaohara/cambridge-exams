@@ -407,6 +407,7 @@
     },
 
     _buildLevelSelectorSidebarHtml: function() {
+      var self = this;
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var currentLevel = AppState.currentLevel || 'C1';
       var levels = [
@@ -448,53 +449,44 @@
       });
       html += '<div class="level-selector-options level-selector-collapsed">' + optionsHtml + '</div>';
 
-      // Unit timeline — always show at least 6 units with placeholder lessons
-      html += '<div class="sidebar-unit-timeline">';
+      // Widget: Continue Basecamp (lesson in progress)
+      var nextLesson = BentoGrid._findNextLesson(exams);
+      var sectionIcons = { reading: '📖', listening: '🎧', writing: '✍️', speaking: '🎤' };
 
-      var minUnits = 6;
-      // Build unit list: use real exams, pad to minUnits with placeholders
-      var units = [];
-      exams.forEach(function(exam, idx) {
-        units.push({
-          id: exam.id,
-          number: exam.number || (idx + 1),
-          sections: exam.sections || {}
-        });
-      });
-      for (var u = units.length + 1; u <= minUnits; u++) {
-        units.push({ id: 'placeholder-unit-' + u, number: u, sections: {} });
+      if (nextLesson) {
+        var icon = sectionIcons[nextLesson.section] || '📚';
+        var completedParts = nextLesson.completedParts || 0;
+        var totalParts = nextLesson.totalParts || 1;
+        var pct = Math.round((completedParts / totalParts) * 100);
+        html += '<div class="sw-left-widget sw-continue-basecamp" onclick="Exercise.openPart(\'' + self._escapeHTML(nextLesson.examId) + '\', \'' + self._escapeHTML(nextLesson.section) + '\', ' + parseInt(nextLesson.part, 10) + ')" style="cursor:pointer">' +
+          '<div class="sw-left-widget-label">' + t('continueBasecamp', 'Continue') + '</div>' +
+          '<div class="sw-left-widget-row">' +
+            '<span class="sw-left-widget-icon">' + icon + '</span>' +
+            '<div class="sw-left-widget-info">' +
+              '<div class="sw-left-widget-title">' + self._escapeHTML(nextLesson.examId) + '</div>' +
+              '<div class="sw-left-widget-sub">' + self._capitalize(nextLesson.section) + ' · ' + t('part', 'Part') + ' ' + nextLesson.part + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="sw-left-progress-track"><div class="sw-left-progress-fill" style="width:' + pct + '%"></div></div>' +
+          '<div class="sw-left-widget-pct">' + completedParts + '/' + totalParts + ' ' + t('parts', 'parts') + '</div>' +
+        '</div>';
+      } else {
+        html += '<div class="sw-left-widget sw-continue-basecamp" onclick="BentoGrid.openLessons()" style="cursor:pointer">' +
+          '<div class="sw-left-widget-label">' + t('basecamp', 'Basecamp') + '</div>' +
+          '<div class="sw-left-widget-row">' +
+            '<span class="sw-left-widget-icon">🏕️</span>' +
+            '<div class="sw-left-widget-info">' +
+              '<div class="sw-left-widget-title">' + t('startLearning', 'Start Learning') + '</div>' +
+              '<div class="sw-left-widget-sub">' + t('lessonsAvailable', 'Lessons available') + '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
       }
 
-      units.forEach(function(unit) {
-        var sections = unit.sections;
-        var hasCompleted = false;
-        var hasInProgress = false;
-        ['reading', 'listening', 'writing', 'speaking'].forEach(function(sec) {
-          if (sections[sec]) {
-            if (sections[sec].completed && sections[sec].completed.length > 0) hasCompleted = true;
-            if (sections[sec].inProgress && sections[sec].inProgress.length > 0) hasInProgress = true;
-          }
-        });
-
-        var dotClass = hasCompleted ? 'unit-completed' : (hasInProgress ? 'unit-open' : '');
-        html += '<div class="sidebar-unit-item" data-exam-id="' + unit.id + '" onclick="BentoGrid._toggleUnit(this)">' +
-          '<div class="sidebar-unit-dot ' + dotClass + '"></div>' +
-          '<div class="sidebar-unit-content">' +
-          '<div class="sidebar-unit-label">' + t('unit', 'Unit') + ' ' + unit.number + '</div>';
-
-        // Expandable lessons section (always present, hidden by default)
-        html += '<div class="sidebar-unit-lessons" style="display:none">';
-        for (var li = 1; li <= 3; li++) {
-          html += '<div class="sidebar-lesson-item" tabindex="0" onclick="event.stopPropagation(); Dashboard.renderSubpage(\'practice\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.stopPropagation(); Dashboard.renderSubpage(\'practice\')}">' +
-            'Lesson ' + li +
-          '</div>';
-        }
-        html += '</div>';
-
-        html += '</div>'; // close sidebar-unit-content
-        html += '</div>'; // close sidebar-unit-item
-      });
-      html += '</div>';
+      // Widget: Next Exam in progress (moved from right sidebar)
+      if (nextLesson) {
+        html += BentoGrid._buildNextLessonLeftHtml(nextLesson);
+      }
 
       html += '</div>';
       return html;
@@ -552,6 +544,27 @@
       } else if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
         Dashboard.filterByLevel(level);
       }
+    },
+
+    _buildNextLessonLeftHtml: function(lesson) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var sectionIcon = { reading: '📖', listening: '🎧', writing: '✍️', speaking: '🎤' };
+      var icon = sectionIcon[lesson.section] || '📚';
+      var completedParts = lesson.completedParts || 0;
+      var totalParts = lesson.totalParts || 1;
+      var pct = Math.round((completedParts / totalParts) * 100);
+      var self = this;
+      return '<div class="sw-left-widget sw-next-exam" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + self._escapeHTML(lesson.section) + '\', ' + parseInt(lesson.part, 10) + ')" style="cursor:pointer">' +
+        '<div class="sw-left-widget-label">' + t('nextExam', 'Next Exam') + '</div>' +
+        '<div class="sw-left-widget-row">' +
+          '<span class="sw-left-widget-icon">' + icon + '</span>' +
+          '<div class="sw-left-widget-info">' +
+            '<div class="sw-left-widget-title">' + self._escapeHTML(lesson.examId) + '</div>' +
+            '<div class="sw-left-widget-sub">' + self._capitalize(lesson.section) + ' · ' + t('part', 'Part') + ' ' + lesson.part + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="sw-left-progress-track"><div class="sw-left-progress-fill" style="width:' + pct + '%"></div></div>' +
+      '</div>';
     },
 
     _buildMicroLearningSidebarHtml: function() {

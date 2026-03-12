@@ -834,128 +834,103 @@ content: '';
   border-color: #9c27b0;
 }
 
-/* ── Left Sidebar: Unit Timeline ── */
-.sidebar-unit-timeline {
+/* ── Left Sidebar: Continue widgets ── */
+.sw-left-widget {
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-top: 10px;
   position: relative;
-  margin-top: 12px;
-  padding-left: 16px;
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-/* Line segments between dots — never extend beyond first/last circle.
-   16px padding-left + 6px half-dot - 2px half-line = 20px from timeline left edge,
-   but since we have padding-left:16px the absolute left is relative to item: 6px-2px=4px. */
-.sidebar-unit-item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 16px;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, #78b0e0 0%, #a8d4f0 100%);
-  border-radius: 2px;
-  pointer-events: none;
+.sw-left-widget:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 46, 95, 0.12);
 }
 
-.sidebar-unit-item:not(:first-child)::before {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 0;
-  height: 16px;
-  width: 4px;
-  background: linear-gradient(180deg, #78b0e0 0%, #a8d4f0 100%);
-  border-radius: 2px;
-  pointer-events: none;
+/* "Continue Basecamp" — tono azul-claro como la paleta del proyecto */
+.sw-continue-basecamp {
+  background: linear-gradient(135deg, #ddeeff 0%, #c8e0f8 100%);
+  color: #1a4a7a;
 }
 
-.sidebar-unit-item {
-  position: relative;
+/* "Next Exam" — tono coral/amber para diferenciarlo */
+.sw-next-exam {
+  background: linear-gradient(135deg, #fde8d8 0%, #f8d4b8 100%);
+  color: #7a3a10;
+}
+
+.sw-left-widget-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.65;
+  margin-bottom: 8px;
+}
+
+.sw-left-widget-row {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px 0;
-  cursor: pointer;
-  transition: opacity 0.2s;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.sidebar-unit-item:hover {
-  opacity: 0.85;
+.sw-left-widget-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
-.sidebar-unit-content {
+.sw-left-widget-info {
   flex: 1;
   min-width: 0;
 }
 
-.sidebar-unit-dot {
-  position: relative;
-  flex-shrink: 0;
-  margin-top: 4px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #78b0e0;
-  border: 2.5px solid #78b0e0;
-  z-index: 1;
-  transition: all 0.2s ease;
+.sw-left-widget-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
 }
 
-.sidebar-unit-item:hover .sidebar-unit-dot {
-  transform: scale(1.15);
-  box-shadow: 0 0 0 3px rgba(120, 176, 224, 0.2);
+.sw-left-widget-sub {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 2px;
 }
 
-.sidebar-unit-dot.unit-open {
-  background: white;
-  border-color: #5a9fd4;
-  box-shadow: 0 0 0 3px rgba(90, 159, 212, 0.15);
+.sw-left-progress-track {
+  height: 5px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 6px;
 }
 
-.sidebar-unit-item.expanded .sidebar-unit-dot {
-  background: white;
-  border-color: #1a9fd4;
-  box-shadow: none;
+.sw-left-progress-fill {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 99px;
+  transition: width 0.6s ease;
 }
 
-.sidebar-unit-dot.unit-completed {
-  background: #1E9D8E;
-  border-color: #1E9D8E;
+.sw-continue-basecamp .sw-left-progress-fill {
+  background: #1a7abf;
 }
 
-.sidebar-unit-label {
-  font-size: 0.82rem;
+.sw-next-exam .sw-left-progress-fill {
+  background: #c05020;
+}
+
+.sw-left-widget-pct {
+  font-size: 0.72rem;
   font-weight: 700;
-  color: #3a4a6a;
-  letter-spacing: 0.02em;
-  display: flex;
-  align-items: center;
-}
-
-.sidebar-unit-lessons {
-  margin-top: 6px;
-  margin-left: 0;
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.sidebar-lesson-item {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #1a7fbf;
-  padding: 5px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(0,0,0,0.08);
-  background: rgba(255,255,255,0.7);
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-}
-
-.sidebar-lesson-item:hover {
-  background: rgba(26, 159, 212, 0.08);
-  color: #1a6fa0;
-  box-shadow: 0 2px 8px rgba(26, 159, 212, 0.15);
+  opacity: 0.65;
+  text-align: right;
 }
 
 /* ── Right Sidebar: Pastel widget cards ── */
