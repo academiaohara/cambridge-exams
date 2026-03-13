@@ -9,10 +9,8 @@
 
     // ── Profile avatar list ──
     ANIMAL_AVATARS: [
-      'Alex.jpg', 'Ana.jpg', 'Andres.jpg', 'Anna.png', 'Carlos.jpg',
-      'Daniel.png', 'Elena.jpg', 'Emma.jpg', 'Hugo.jpg', 'Javier.jpg',
-      'Laura.jpg', 'Lauren.jpg', 'Lucas.jpg', 'Marta.jpg', 'Miguel.jpg',
-      'Patricia.jpg', 'Sara.jpg', 'Smith.jpg', 'Sofía.jpg'
+      'Anna.png', 'Carlos.png', 'Elena.png', 'Fatima.png',
+      'Kenji.png', 'Pierre.png', 'Sofía.png'
     ],
 
     getRandomAnimalAvatar: function () {

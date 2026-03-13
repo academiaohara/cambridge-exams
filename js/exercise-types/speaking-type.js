@@ -26,14 +26,12 @@
 
   // ── Profile avatar system ──
   var ANIMAL_IMAGES = [
-    'Alex.jpg', 'Ana.jpg', 'Andres.jpg', 'Anna.png', 'Carlos.jpg',
-    'Daniel.png', 'Elena.jpg', 'Emma.jpg', 'Hugo.jpg', 'Javier.jpg',
-    'Laura.jpg', 'Lauren.jpg', 'Lucas.jpg', 'Marta.jpg', 'Miguel.jpg',
-    'Patricia.jpg', 'Sara.jpg', 'Smith.jpg', 'Sofía.jpg'
+    'Anna.png', 'Carlos.png', 'Elena.png', 'Fatima.png',
+    'Kenji.png', 'Pierre.png', 'Sofía.png'
   ];
 
   var EXAMINER_IMAGES = [
-    'Laura.png', 'Michael.png', 'Rachel.png'
+    'John.png'
   ];
 
   // Stable avatar assignments per session (role -> filename)
