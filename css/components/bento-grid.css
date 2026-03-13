@@ -163,12 +163,12 @@
 
 /* Ascent PNG illustration */
 .bento-card-ascent::after {
-    content: '';
+content: '';
     position: absolute;
-    bottom: -40px;
-    right: 10px;
-    width: 200px;
-    height: 240px;
+    bottom: -60px;
+    right: -10px;
+    width: 250px;
+    height: 280px;
     opacity: 1;
     background-image: url(../../Assets/images/Ascent.png);
     background-repeat: no-repeat;
