@@ -95,21 +95,26 @@
 }
 .speaking-stage-featured > * { position: relative; z-index: 1; }
 .speaking-stage-featured-avatar {
+  --avatar-circle-size: 280px;
+  --avatar-img-size: 280px;
+  width: var(--avatar-circle-size);
+  height: var(--avatar-circle-size);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
-}
-.speaking-featured-avatar {
-  width: 280px;
-  height: 280px;
-  max-width: 280px;
-  max-height: 280px;
-  object-fit: contain;
   border-radius: 50%;
+  overflow: hidden;
   border: 4px solid #fff;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
   background: white;
+  flex-shrink: 0;
+}
+.speaking-featured-avatar {
+  width: var(--avatar-img-size);
+  height: var(--avatar-img-size);
+  min-width: var(--avatar-img-size);
+  min-height: var(--avatar-img-size);
+  object-fit: cover;
 }
 .speaking-stage-featured-label {
   background: rgba(75, 75, 100, 0.75);
@@ -198,8 +203,10 @@
 
 /* Card avatar area */
 .speaking-stage-card-avatar {
-  width: 68px;
-  height: 68px;
+  --avatar-circle-size: 68px;
+  --avatar-img-size: 68px;
+  width: var(--avatar-circle-size);
+  height: var(--avatar-circle-size);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -215,10 +222,11 @@
   height: 54px;
 }
 .speaking-animal-avatar {
-  width: 100%;
-  height: 100%;
+  width: var(--avatar-img-size, 100%);
+  height: var(--avatar-img-size, 100%);
+  min-width: var(--avatar-img-size, 100%);
+  min-height: var(--avatar-img-size, 100%);
   object-fit: cover;
-  border-radius: 50%;
 }
 
 /* Card label */
@@ -326,14 +334,20 @@
 
 /* Chat avatar circle */
 .speaking-chat-avatar {
-  width: 36px; height: 36px;
+  --avatar-circle-size: 36px;
+  --avatar-img-size: 36px;
+  width: var(--avatar-circle-size); height: var(--avatar-circle-size);
   border-radius: 50%;
   flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
 .speaking-chat-avatar .speaking-avatar-svg { width: 100%; height: 100%; }
-.speaking-chat-animal-avatar { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.speaking-chat-animal-avatar {
+  width: var(--avatar-img-size); height: var(--avatar-img-size);
+  min-width: var(--avatar-img-size); min-height: var(--avatar-img-size);
+  object-fit: cover;
+}
 
 /* Chat content */
 .speaking-chat-content { display: flex; flex-direction: column; gap: 2px; }
@@ -497,10 +511,10 @@
 @media (max-width: 768px) {
   .speaking-stage-scene { min-height: 300px; padding: 0.5rem; }
   .speaking-stage-featured { min-height: 220px; }
-  .speaking-featured-avatar { width: 180px; height: 180px; max-width: 180px; max-height: 180px; }
+  .speaking-stage-featured-avatar { --avatar-circle-size: 180px; --avatar-img-size: 180px; }
   .speaking-stage-card { width: 140px; padding: 0.5rem; }
   .speaking-stage-cards { flex: 0 0 140px; }
-  .speaking-stage-card-avatar { width: 50px; height: 50px; }
+  .speaking-stage-card-avatar { --avatar-circle-size: 50px; --avatar-img-size: 50px; }
   .speaking-card-icon { width: 40px; height: 40px; }
   .speaking-stage-card-label { font-size: 0.65rem; }
   .speaking-stage-featured-label { font-size: 0.75rem; padding: 0.25rem 0.8rem; }
