@@ -98,13 +98,13 @@
           try { localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data)); } catch(e) {}
         } else {
           // Local is ahead but still merge activeDates from cloud
-          var cloudDates2 = Array.isArray(cloud.active_dates) ? cloud.active_dates : [];
-          var localDates2 = Array.isArray(local.activeDates) ? local.activeDates : [];
-          if (cloudDates2.length > 0) {
-            var mergedSet2 = {};
-            localDates2.forEach(function(d) { mergedSet2[d] = true; });
-            cloudDates2.forEach(function(d) { mergedSet2[d] = true; });
-            this.data.activeDates = Object.keys(mergedSet2).sort();
+          var extraCloudDates = Array.isArray(cloud.active_dates) ? cloud.active_dates : [];
+          var existingLocalDates = Array.isArray(local.activeDates) ? local.activeDates : [];
+          if (extraCloudDates.length > 0) {
+            var dateSet = {};
+            existingLocalDates.forEach(function(d) { dateSet[d] = true; });
+            extraCloudDates.forEach(function(d) { dateSet[d] = true; });
+            this.data.activeDates = Object.keys(dateSet).sort();
             try { localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data)); } catch(e) {}
           }
         }
