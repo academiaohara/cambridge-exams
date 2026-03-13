@@ -44,7 +44,7 @@
 .auth-brand-icon {
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: none;
   border-radius: 18px;
   display: flex;
   align-items: center;
@@ -53,6 +53,14 @@
   font-size: 1.8rem;
   color: #fff;
   box-shadow: 0 4px 12px rgba(45, 46, 95, 0.2);
+  overflow: hidden;
+}
+
+.auth-brand-icon img {
+  width: 64px;
+  height: 64px;
+  display: block;
+  border-radius: 18px;
 }
 
 .auth-modal-card h2 {

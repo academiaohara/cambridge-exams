@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#F4F7FF">
-    <title>Cambridge Exams</title>
+    <title>ExamPeak</title>
     
     <!-- Supabase JS Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -205,9 +205,9 @@
         <header class="main-header">
             <div class="header-container">
                 <div class="logo" onclick="loadDashboard()">
-                    <i class="fas fa-book-open"></i>
+                    <img src="Assets/images/logo.svg" class="logo-icon" alt="ExamPeak logo">
                     <div class="logo-text">
-                        Cambridge Exams
+                        ExamPeak
                     </div>
                 </div>
                 
@@ -301,10 +301,10 @@
         <div id="auth-modal-overlay" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="auth-title">
           <div class="auth-modal-card">
             <div class="auth-brand-icon">
-              <i class="fas fa-book-open"></i>
+              <img src="Assets/images/logo.svg" alt="ExamPeak logo">
             </div>
             <h2 id="auth-title">Sign in to continue</h2>
-            <p>Access your Cambridge Exams practice dashboard</p>
+            <p>Access your ExamPeak practice dashboard</p>
             <button id="auth-google-btn" class="auth-google-btn" onclick="Auth.signInWithGoogle()" type="button">
               <svg class="auth-google-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
                 <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
@@ -375,7 +375,7 @@
             <div class="footer-container">
                 <div class="footer-grid">
                     <div class="footer-col">
-                        <h4><i class="fas fa-info-circle"></i> Cambridge Exams</h4>
+                        <h4><i class="fas fa-info-circle"></i> ExamPeak</h4>
                         <ul>
                             <li><a href="#"><i class="fas fa-question-circle"></i> Acerca de</a></li>
                             <li><a href="#"><i class="fas fa-envelope"></i> Contacto</a></li>
@@ -393,7 +393,7 @@
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p>&copy; 2024 Cambridge Exams Practice. Todos los derechos reservados.</p>
+                    <p>&copy; 2024 ExamPeak. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>
