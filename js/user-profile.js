@@ -47,8 +47,16 @@
           .select()
           .single();
         this._profile = created || newProfile;
+        // Cache animal avatar in localStorage
+        if (this._profile && this._profile.animal_avatar) {
+          try { localStorage.setItem('cambridge_animal_avatar', this._profile.animal_avatar); } catch (e) { /* ignore */ }
+        }
       } else if (!error && data) {
         this._profile = data;
+        // Cache animal avatar in localStorage
+        if (data.animal_avatar) {
+          try { localStorage.setItem('cambridge_animal_avatar', data.animal_avatar); } catch (e) { /* ignore */ }
+        }
         // Sync preferences to local state
         this._applyPreferences(data);
       }
@@ -256,6 +264,8 @@
       if (this._profile) {
         this._profile.animal_avatar = filename;
       }
+      // Cache in localStorage so it persists across reloads even if Supabase is slow
+      try { localStorage.setItem('cambridge_animal_avatar', filename); } catch (e) { /* ignore */ }
       // Update in Supabase
       await this.updateProfile({ animal_avatar: filename });
       // Refresh the header widget to show the new avatar

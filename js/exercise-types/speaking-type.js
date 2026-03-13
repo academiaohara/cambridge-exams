@@ -38,9 +38,12 @@
     var profile = (typeof UserProfile !== 'undefined') ? UserProfile._profile : null;
 
     // Assign user's profile avatar first
-    if (profile && profile.animal_avatar && ANIMAL_IMAGES.indexOf(profile.animal_avatar) !== -1) {
-      _avatarAssignments['candidate'] = profile.animal_avatar;
-      used.push(profile.animal_avatar);
+    var cachedAvatar = null;
+    try { cachedAvatar = localStorage.getItem('cambridge_animal_avatar') || null; } catch (e) { /* ignore */ }
+    var userAvatar = (profile && profile.animal_avatar) ? profile.animal_avatar : cachedAvatar;
+    if (userAvatar && ANIMAL_IMAGES.indexOf(userAvatar) !== -1) {
+      _avatarAssignments['candidate'] = userAvatar;
+      used.push(userAvatar);
     } else {
       // Pick a random one for the user
       var idx = Math.floor(Math.random() * ANIMAL_IMAGES.length);

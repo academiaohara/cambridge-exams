@@ -222,7 +222,11 @@
       const avatarUrl = (user.user_metadata && user.user_metadata.avatar_url) || '';
       const name = (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name)) || user.email || 'User';
       const initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
-      const animalAvatar = (typeof UserProfile !== 'undefined' && UserProfile._profile && UserProfile._profile.animal_avatar) ? UserProfile._profile.animal_avatar : null;
+      var animalAvatar = (typeof UserProfile !== 'undefined' && UserProfile._profile && UserProfile._profile.animal_avatar) ? UserProfile._profile.animal_avatar : null;
+      // Fallback: check localStorage cache if profile hasn't loaded yet
+      if (!animalAvatar) {
+        try { animalAvatar = localStorage.getItem('cambridge_animal_avatar') || null; } catch (e) { /* ignore */ }
+      }
 
       const widget = document.createElement('div');
       widget.id = 'user-widget';

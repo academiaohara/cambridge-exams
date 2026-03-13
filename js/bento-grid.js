@@ -58,7 +58,7 @@
 
         '<div class="bento-card bento-card-basecamp" onclick="BentoGrid.openLessons()">' +
           '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Learning Camp</div>' +
+            '<div class="bento-card-title">Learning Time</div>' +
           '</div>' +
         '</div>' +
 
@@ -411,19 +411,12 @@
     _buildCalendarSidebarHtml: function() {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
-      var streakCount = streak ? (streak.currentStreak || 0) : 0;
-      var lastActivityDate = streak ? streak.lastActivityDate : null;
       var locale = (typeof AppState !== 'undefined' && AppState.currentLanguage) ? AppState.currentLanguage : 'es';
 
-      // Compute trained dates from current streak window
+      // Use activeDates array for accurate calendar display
       var trainedDates = {};
-      if (lastActivityDate && streakCount > 0) {
-        var lastDate = new Date(lastActivityDate);
-        for (var s = 0; s < streakCount; s++) {
-          var td = new Date(lastDate);
-          td.setDate(lastDate.getDate() - s);
-          trainedDates[td.toISOString().slice(0, 10)] = true;
-        }
+      if (streak && Array.isArray(streak.activeDates)) {
+        streak.activeDates.forEach(function(d) { trainedDates[d] = true; });
       }
 
       // Current month info
@@ -786,22 +779,19 @@
       var streakBest = streak ? (streak.longestStreak || 0) : 0;
       var totalDays = streak ? (streak.totalDaysActive || 0) : 0;
       var practicedToday = streak ? streak.practicedToday : false;
-      var lastActivity = streak ? streak.lastActivityDate : null;
 
-      // Build last 28-day calendar approximation based on current streak
+      // Build last 28-day calendar from activeDates
       var today = new Date();
       var calDays = [];
-      var lastDate = lastActivity ? new Date(lastActivity) : null;
-      var firstStreakDate = null;
-      if (lastDate && streakCount > 0) {
-        firstStreakDate = new Date(lastDate);
-        firstStreakDate.setDate(lastDate.getDate() - (streakCount - 1));
+      var activeDatesSet = {};
+      if (streak && Array.isArray(streak.activeDates)) {
+        streak.activeDates.forEach(function(d) { activeDatesSet[d] = true; });
       }
       for (var i = 27; i >= 0; i--) {
         var d = new Date(today);
         d.setDate(today.getDate() - i);
         var dateStr = d.toISOString().slice(0, 10);
-        var isActive = !!(firstStreakDate && lastDate && d >= firstStreakDate && d <= lastDate);
+        var isActive = !!activeDatesSet[dateStr];
         calDays.push({ date: dateStr, active: isActive });
       }
 
