@@ -570,6 +570,61 @@
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
 }
 
+/* Avatar grid container (shown on click) */
+.animal-avatar-grid-container {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Edit hint overlay on profile avatar */
+.profile-section-avatar {
+  position: relative;
+}
+.profile-avatar-edit-hint {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary, #6366f1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+/* Avatar grid pagination */
+.animal-avatar-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 0.88rem;
+  color: var(--text-medium);
+}
+.animal-avatar-page-btn {
+  background: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  color: var(--text-dark);
+  transition: background 0.15s;
+}
+.animal-avatar-page-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+.animal-avatar-page-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
 /* Animal avatar displayed in profile/header as circle */
 .animal-avatar-circle {
   width: var(--avatar-img-size, 100%);

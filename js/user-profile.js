@@ -9,9 +9,7 @@
 
     // ── Animal avatar list ──
     ANIMAL_AVATARS: [
-      'Aguila.png', 'Camaleon.png', 'Delfín.png', 'Elefante.png', 'Gato.png',
-      'Koala.png', 'Lechuza.png', 'Leon.png', 'Lobo.png', 'Loro.png',
-      'Mono.png', 'OsoPolar.png', 'Zorro.png', 'perro.png', 'rinoceronte.png'
+      'Gato.png', 'perro.png', 'cocodrilo.png'
     ],
 
     getRandomAnimalAvatar: function () {
@@ -260,8 +258,88 @@
       }
       // Update in Supabase
       await this.updateProfile({ animal_avatar: filename });
+      // Refresh the header widget to show the new avatar
+      if (typeof Auth !== 'undefined' && Auth._renderUserWidget) {
+        var user = Auth.getUser();
+        if (user) {
+          Auth._renderUserWidget(user);
+        }
+      }
+      // Force re-render the panel so it picks up the new avatar
+      var existingPanel = document.getElementById('user-profile-panel');
+      if (existingPanel) { existingPanel.remove(); }
       // Re-render profile section to show selection
       this.renderProfileSection();
+    },
+
+    // ── Avatar grid toggle and pagination ─────────────────────────────
+    _avatarGridPage: 0,
+
+    _toggleAvatarGrid: function () {
+      var container = document.getElementById('animal-avatar-grid-container');
+      if (!container) return;
+      if (container.style.display === 'none') {
+        this._avatarGridPage = 0;
+        this._renderAvatarGridPage();
+        container.style.display = 'block';
+      } else {
+        container.style.display = 'none';
+      }
+    },
+
+    _renderAvatarGridPage: function () {
+      var container = document.getElementById('animal-avatar-grid-container');
+      if (!container) return;
+
+      var t = function (key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
+      var perPage = 16;
+      var page = this._avatarGridPage || 0;
+      var all = this.ANIMAL_AVATARS;
+      var totalPages = Math.ceil(all.length / perPage);
+      var start = page * perPage;
+      var pageItems = all.slice(start, start + perPage);
+      var animalAvatar = (this._profile && this._profile.animal_avatar) || '';
+
+      var gridHtml = '';
+      pageItems.forEach(function (img) {
+        var selected = (img === animalAvatar) ? ' animal-avatar-selected' : '';
+        var label = img.replace('.png', '').replace('.jpg', '');
+        gridHtml += '<div class="animal-avatar-option' + selected + '" onclick="UserProfile._selectAnimalAvatar(\'' + img + '\')" title="' + label + '">' +
+          '<img src="Assets/images/Animals/' + img + '" alt="' + label + '">' +
+        '</div>';
+      });
+
+      var paginationHtml = '';
+      if (totalPages > 1) {
+        paginationHtml = '<div class="animal-avatar-pagination">' +
+          '<button class="animal-avatar-page-btn" ' + (page <= 0 ? 'disabled' : '') + ' onclick="UserProfile._avatarGridPrev()"><i class="fas fa-chevron-left"></i></button>' +
+          '<span>' + (page + 1) + ' / ' + totalPages + '</span>' +
+          '<button class="animal-avatar-page-btn" ' + (page >= totalPages - 1 ? 'disabled' : '') + ' onclick="UserProfile._avatarGridNext()"><i class="fas fa-chevron-right"></i></button>' +
+        '</div>';
+      }
+
+      container.innerHTML =
+        '<p style="color:var(--text-medium);font-size:0.88rem;margin:0 0 14px">' +
+          t('chooseAnimal', 'Choose your animal avatar') +
+        '</p>' +
+        '<div class="animal-avatar-grid">' + gridHtml + '</div>' +
+        paginationHtml;
+    },
+
+    _avatarGridPrev: function () {
+      if (this._avatarGridPage > 0) {
+        this._avatarGridPage--;
+        this._renderAvatarGridPage();
+      }
+    },
+
+    _avatarGridNext: function () {
+      var perPage = 16;
+      var totalPages = Math.ceil(this.ANIMAL_AVATARS.length / perPage);
+      if (this._avatarGridPage < totalPages - 1) {
+        this._avatarGridPage++;
+        this._renderAvatarGridPage();
+      }
     },
 
     // ── Full Profile Section (rendered inside main-content) ────────────
@@ -291,16 +369,6 @@
           ? '<img src="' + avatarUrl + '" alt="' + name + '">'
           : '<span class="profile-initials-large">' + initials + '</span>';
 
-      // Build animal avatar selection grid
-      var animalGrid = '';
-      this.ANIMAL_AVATARS.forEach(function (img) {
-        var selected = (img === animalAvatar) ? ' animal-avatar-selected' : '';
-        var label = img.replace('.png', '').replace('.jpg', '');
-        animalGrid += '<div class="animal-avatar-option' + selected + '" onclick="UserProfile._selectAnimalAvatar(\'' + img + '\')" title="' + label + '">' +
-          '<img src="Assets/images/Animals/' + img + '" alt="' + label + '">' +
-        '</div>';
-      });
-
       var levels = ['A2', 'B1', 'B2', 'C1', 'C2'];
       var languages = [
         { code: 'es', label: 'Español' }, { code: 'en', label: 'English' },
@@ -327,7 +395,9 @@
 
         '<div class="profile-section-card">' +
           '<div class="profile-section-avatar-row">' +
-            '<div class="profile-section-avatar">' + avatarHtml + '</div>' +
+            '<div class="profile-section-avatar" onclick="UserProfile._toggleAvatarGrid()" onkeypress="if(event.key===\'Enter\')UserProfile._toggleAvatarGrid()" tabindex="0" role="button" style="cursor:pointer" title="' + t('chooseAnimal', 'Choose your animal avatar') + '">' + avatarHtml +
+              '<div class="profile-avatar-edit-hint"><i class="fas fa-camera"></i></div>' +
+            '</div>' +
             '<div class="profile-section-info">' +
               '<div class="profile-name">' + name + '</div>' +
               '<div class="profile-email">' + email + '</div>' +
@@ -337,16 +407,7 @@
           (isGuest
             ? '<button class="premium-plan-btn primary" style="max-width:220px" onclick="Auth._showAuthModal()"><i class="fas fa-sign-in-alt"></i> ' + t('signIn', 'Sign in') + '</button>'
             : '') +
-        '</div>' +
-
-        '<div class="profile-section-card">' +
-          '<h3>🐾 ' + t('profilePicture', 'Profile Picture') + '</h3>' +
-          '<p style="color:var(--text-medium);font-size:0.88rem;margin:0 0 14px">' +
-            t('chooseAnimal', 'Choose your animal avatar') +
-          '</p>' +
-          '<div class="animal-avatar-grid">' +
-            animalGrid +
-          '</div>' +
+          '<div id="animal-avatar-grid-container" class="animal-avatar-grid-container" style="display:none;"></div>' +
         '</div>' +
 
         '<div class="profile-section-card">' +
