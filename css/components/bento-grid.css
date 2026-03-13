@@ -114,12 +114,12 @@
 
 /* Summit PNG illustration */
 .bento-card-summit::after {
-    content: '';
+content: '';
     position: absolute;
-    bottom: -40px;
-    right: 10px;
-    width: 200px;
-    height: 240px;
+    bottom: -30px;
+    right: -10px;
+    width: 240px;
+    height: 300px;
     opacity: 1;
     background-image: url(../../Assets/images/Summit.png);
     background-repeat: no-repeat;
@@ -165,10 +165,10 @@
 .bento-card-ascent::after {
 content: '';
     position: absolute;
-    bottom: -60px;
-    right: -10px;
-    width: 250px;
-    height: 280px;
+    bottom: -80px;
+    right: -20px;
+    width: 300px;
+    height: 300px;
     opacity: 1;
     background-image: url(../../Assets/images/Ascent.png);
     background-repeat: no-repeat;
@@ -194,12 +194,12 @@ content: '';
 
 /* Quicksteps PNG illustration */
 .bento-card-quicksteps::after {
-    content: '';
+content: '';
     position: absolute;
-    bottom: -60px;
-    right: 10px;
-    width: 300px;
-    height: 300px;
+    bottom: -110px;
+    right: -20px;
+    width: 320px;
+    height: 320px;
     opacity: 1;
     background-image: url(../../Assets/images/quicksteps.png);
     background-repeat: no-repeat;
@@ -227,10 +227,10 @@ content: '';
 .bento-card-basecamp::after {
 content: '';
     position: absolute;
-    bottom: -50px;
-    right: 10px;
-    width: 340px;
-    height: 280px;
+    bottom: -60px;
+    right: 15px;
+    width: 270px;
+    height: 270px;
     opacity: 1;
     background-image: url(../../Assets/images/Basecamp.png);
     background-repeat: no-repeat;
@@ -255,13 +255,13 @@ content: '';
 
 /* WeakSpot PNG illustration */
 .bento-card-weakspot::after {
-    content: '';
+content: '';
     position: absolute;
-    right: 0px;
+    right: -120px;
     top: 48%;
-    transform: translateY(-50%);
-    width: 130px;
-    height: 130px;
+    transform: translateY(-55%);
+    width: 280px;
+    height: 280px;
     opacity: 1;
     background-image: url(../../Assets/images/WeakSpot.png);
     background-repeat: no-repeat;
@@ -289,9 +289,9 @@ content: '';
     position: absolute;
     right: 5px;
     top: 56%;
-    transform: translateY(-50%);
+    transform: translateY(-55%);
     width: 120px;
-    height: 120px;
+    height: 110px;
     opacity: 1;
     background-image: url(../../Assets/images/checkpoint.png);
     background-repeat: no-repeat;
