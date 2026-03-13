@@ -105,7 +105,7 @@
   min-height: 180px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .bento-card-summit .bento-card-title {
@@ -116,7 +116,7 @@
 .bento-card-summit::after {
   content: '';
   position: absolute;
-  bottom: -15px;
+  bottom: 0;
   right: 10px;
   width: 280px;
   height: 300px;
@@ -136,30 +136,27 @@
   min-height: 180px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .bento-card-ascent .bento-card-title {
   color: #826900;
 }
 
-.bento-card-ascent .bento-card-inner {
-  text-align: right;
-}
-
 /* Ascent PNG illustration */
 .bento-card-ascent::after {
-content: '';
-    position: absolute;
-    top: 10px;
-    left: -20px;
-    width: 320px;
-    height: 260px;
-    opacity: 0.7;
-    background-image: url(../../Assets/images/Ascent.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    pointer-events: none;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 320px;
+  height: 260px;
+  opacity: 0.7;
+  background-image: url(../../Assets/images/Ascent.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom right;
+  pointer-events: none;
 }
 
 /* ── QUICKSTEPS card (micro-learning) ── */
@@ -170,7 +167,7 @@ content: '';
   min-height: 170px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .bento-card-quicksteps .bento-card-title {
@@ -179,17 +176,18 @@ content: '';
 
 /* Quicksteps PNG illustration */
 .bento-card-quicksteps::after {
-content: '';
-    position: absolute;
-    top: 0px;
-    left: 160px;
-    width: 180px;
-    height: 180px;
-    opacity: 0.70;
-    background-image: url(../../Assets/images/quicksteps.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    pointer-events: none;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 180px;
+  height: 180px;
+  opacity: 0.70;
+  background-image: url(../../Assets/images/quicksteps.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom right;
+  pointer-events: none;
 }
 
 /* ── BASECAMP card (lessons) ── */
@@ -209,19 +207,18 @@ content: '';
 
 /* Basecamp PNG illustration */
 .bento-card-basecamp::after {
-    content: '';
-    position: absolute;
-    bottom: 10px;
-    left: 60%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 240px;
-    opacity: 0.7;
-    background-image: url(../../Assets/images/Basecamp.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom center;
-    pointer-events: none;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 300px;
+  height: 240px;
+  opacity: 0.7;
+  background-image: url(../../Assets/images/Basecamp.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom right;
+  pointer-events: none;
 }
 
 /* ── WEAK SPOT card (recommended exercise) ── */

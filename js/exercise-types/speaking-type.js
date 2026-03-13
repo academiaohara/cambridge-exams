@@ -26,9 +26,7 @@
 
   // ── Animal avatar system ──
   var ANIMAL_IMAGES = [
-    'Aguila.png', 'Camaleon.png', 'Delfín.png', 'Elefante.png', 'Gato.png',
-    'Koala.png', 'Lechuza.png', 'Leon.png', 'Lobo.png', 'Loro.png',
-    'Mono.png', 'OsoPolar.png', 'Zorro.png', 'perro.png', 'rinoceronte.png'
+    'Gato.png', 'perro.png', 'cocodrilo.png'
   ];
 
   // Stable avatar assignments per session (role -> filename)

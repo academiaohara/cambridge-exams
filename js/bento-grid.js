@@ -34,15 +34,13 @@
 
         '<div class="bento-card bento-card-summit" onclick="BentoGrid.selectMode(\'exam\')">' +
           '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Summit</div>' +
-            '<div class="bento-card-desc">Test Simulation</div>' +
+            '<div class="bento-card-title">Test Simulation</div>' +
           '</div>' +
         '</div>' +
 
         '<div class="bento-card bento-card-ascent" onclick="BentoGrid.selectMode(\'practice\')">' +
-          '<div class="bento-card-inner" style="text-align:right">' +
-            '<div class="bento-card-title">Ascent</div>' +
-            '<div class="bento-card-desc">Test Practice</div>' +
+          '<div class="bento-card-inner">' +
+            '<div class="bento-card-title">Test Practice</div>' +
           '</div>' +
         '</div>' +
 
@@ -54,15 +52,13 @@
 
         '<div class="bento-card bento-card-quicksteps" onclick="BentoGrid.openMicroLearning()">' +
           '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Quicksteps</div>' +
-            '<div class="bento-card-desc">Fast Exercises</div>' +
+            '<div class="bento-card-title">Fast Exercises</div>' +
           '</div>' +
         '</div>' +
 
         '<div class="bento-card bento-card-basecamp" onclick="BentoGrid.openLessons()">' +
           '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Basecamp</div>' +
-            '<div class="bento-card-desc">Learning Camp</div>' +
+            '<div class="bento-card-title">Learning Camp</div>' +
           '</div>' +
         '</div>' +
 
