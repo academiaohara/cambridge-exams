@@ -24,9 +24,16 @@
   // ── Person icon SVG for candidate cards ──
   var CARD_PERSON_ICON = '<svg viewBox="0 0 80 80" class="speaking-card-icon"><circle cx="40" cy="28" r="14" fill="currentColor"/><ellipse cx="40" cy="64" rx="22" ry="16" fill="currentColor"/></svg>';
 
-  // ── Animal avatar system ──
+  // ── Profile avatar system ──
   var ANIMAL_IMAGES = [
-    'Gato.png', 'perro.png', 'cocodrilo.png'
+    'Alex.jpg', 'Ana.jpg', 'Andres.jpg', 'Anna.png', 'Carlos.jpg',
+    'Daniel.png', 'Elena.jpg', 'Emma.jpg', 'Hugo.jpg', 'Javier.jpg',
+    'Laura.jpg', 'Lauren.jpg', 'Lucas.jpg', 'Marta.jpg', 'Miguel.jpg',
+    'Patricia.jpg', 'Sara.jpg', 'Smith.jpg', 'Sofía.jpg'
+  ];
+
+  var EXAMINER_IMAGES = [
+    'Laura.png', 'Michael.png', 'Rachel.png'
   ];
 
   // Stable avatar assignments per session (role -> filename)
@@ -34,7 +41,7 @@
 
   function _assignAvatars(participants) {
     if (Object.keys(_avatarAssignments).length > 0) return; // already assigned
-    var used = [];
+    var usedProfiles = [];
     var profile = (typeof UserProfile !== 'undefined') ? UserProfile._profile : null;
 
     // Assign user's profile avatar first
@@ -42,23 +49,45 @@
     try { cachedAvatar = localStorage.getItem('cambridge_animal_avatar') || null; } catch (e) { /* ignore */ }
     var userAvatar = (profile && profile.animal_avatar) ? profile.animal_avatar : cachedAvatar;
     if (userAvatar && ANIMAL_IMAGES.indexOf(userAvatar) !== -1) {
-      _avatarAssignments['candidate'] = userAvatar;
-      used.push(userAvatar);
+      _avatarAssignments['candidate'] = 'Assets/images/Profiles/' + userAvatar;
+      usedProfiles.push(userAvatar);
     } else {
-      // Pick a random one for the user
-      var idx = Math.floor(Math.random() * ANIMAL_IMAGES.length);
-      _avatarAssignments['candidate'] = ANIMAL_IMAGES[idx];
-      used.push(ANIMAL_IMAGES[idx]);
+      // If user kept their original Google photo, use it
+      var googlePhoto = (profile && profile.avatar_url) ? profile.avatar_url : null;
+      if (!googlePhoto) {
+        var user = (typeof Auth !== 'undefined') ? Auth.getUser() : null;
+        if (user && user.user_metadata && user.user_metadata.avatar_url) {
+          googlePhoto = user.user_metadata.avatar_url;
+        }
+      }
+      if (googlePhoto) {
+        _avatarAssignments['candidate'] = googlePhoto;
+      } else {
+        var idx = Math.floor(Math.random() * ANIMAL_IMAGES.length);
+        _avatarAssignments['candidate'] = 'Assets/images/Profiles/' + ANIMAL_IMAGES[idx];
+        usedProfiles.push(ANIMAL_IMAGES[idx]);
+      }
     }
 
     // Assign avatars to other participants
+    var usedExaminers = [];
     participants.forEach(function(role) {
       if (role === 'candidate' || _avatarAssignments[role]) return;
-      var available = ANIMAL_IMAGES.filter(function(img) { return used.indexOf(img) === -1; });
-      if (available.length === 0) available = ANIMAL_IMAGES; // fallback
-      var pick = available[Math.floor(Math.random() * available.length)];
-      _avatarAssignments[role] = pick;
-      used.push(pick);
+      if (role === 'examiner') {
+        // Examiner uses images from Profiles/Examiner/
+        var availEx = EXAMINER_IMAGES.filter(function(img) { return usedExaminers.indexOf(img) === -1; });
+        if (availEx.length === 0) availEx = EXAMINER_IMAGES;
+        var pickEx = availEx[Math.floor(Math.random() * availEx.length)];
+        _avatarAssignments[role] = 'Assets/images/Profiles/Examiner/' + pickEx;
+        usedExaminers.push(pickEx);
+      } else {
+        // Partner uses images from Profiles/
+        var available = ANIMAL_IMAGES.filter(function(img) { return usedProfiles.indexOf(img) === -1; });
+        if (available.length === 0) available = ANIMAL_IMAGES;
+        var pick = available[Math.floor(Math.random() * available.length)];
+        _avatarAssignments[role] = 'Assets/images/Profiles/' + pick;
+        usedProfiles.push(pick);
+      }
     });
   }
 
@@ -66,7 +95,7 @@
     var cls = cssClass || 'speaking-animal-avatar';
     var img = _avatarAssignments[role];
     if (img) {
-      return '<img src="Assets/images/Animals/' + img + '" alt="" class="' + cls + '">';
+      return '<img src="' + img + '" alt="" class="' + cls + '">';
     }
     // Fallback: person icon silhouette
     return CARD_PERSON_ICON;
