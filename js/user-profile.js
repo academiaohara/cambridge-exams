@@ -259,9 +259,11 @@
       // Update in Supabase
       await this.updateProfile({ animal_avatar: filename });
       // Refresh the header widget to show the new avatar
-      var user = Auth.getUser();
-      if (user && typeof Auth !== 'undefined' && Auth._renderUserWidget) {
-        Auth._renderUserWidget(user);
+      if (typeof Auth !== 'undefined' && Auth._renderUserWidget) {
+        var user = Auth.getUser();
+        if (user) {
+          Auth._renderUserWidget(user);
+        }
       }
       // Force re-render the panel so it picks up the new avatar
       var existingPanel = document.getElementById('user-profile-panel');
@@ -393,7 +395,7 @@
 
         '<div class="profile-section-card">' +
           '<div class="profile-section-avatar-row">' +
-            '<div class="profile-section-avatar" onclick="UserProfile._toggleAvatarGrid()" style="cursor:pointer" title="' + t('chooseAnimal', 'Choose your animal avatar') + '">' + avatarHtml +
+            '<div class="profile-section-avatar" onclick="UserProfile._toggleAvatarGrid()" onkeypress="if(event.key===\'Enter\')UserProfile._toggleAvatarGrid()" tabindex="0" role="button" style="cursor:pointer" title="' + t('chooseAnimal', 'Choose your animal avatar') + '">' + avatarHtml +
               '<div class="profile-avatar-edit-hint"><i class="fas fa-camera"></i></div>' +
             '</div>' +
             '<div class="profile-section-info">' +
