@@ -306,7 +306,7 @@
             '<i class="fas fa-paper-plane"></i>' +
           '</button>' +
         '</div>' +
-        (isMine ? '<div class="speaking-your-turn"><i class="fas fa-hand-point-right"></i> ' + t('yourTurn', 'Your turn') + '</div>' : '') +
+        (isMine ? '<div class="speaking-your-turn">' + t('yourTurn', 'Your turn') + '</div>' : '') +
         (!isMine && !this._conversationEnded ? '<div class="speaking-skip-row"><button class="speaking-skip-btn" id="speaking-skip-btn" style="display:none">' + t('skipTurn', 'Skip turn') + '</button></div>' : '') +
       '</div>';
     },
@@ -812,7 +812,7 @@
         if (this._conversationEnded) {
           status.innerHTML = '<i class="fas fa-check-circle"></i> ' + t('conversationEnded', 'Ended');
         } else if (current && current.role === 'candidate') {
-          status.innerHTML = '<i class="fas fa-hand-point-right"></i> ' + t('waitingForYou', 'Waiting for your response');
+          status.innerHTML = t('waitingForYou', 'Waiting for your response');
           status.className = 'speaking-vc-status speaking-vc-status--yours';
         } else if (active) {
           status.innerHTML = '<i class="fas fa-volume-up"></i> ' + roleName(active) + ' — ' + t('speakingNow', 'Speaking...');
