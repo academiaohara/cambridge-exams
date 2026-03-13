@@ -128,6 +128,23 @@
     pointer-events: none;
 }
 
+/* Ground effect for illustration cards */
+.bento-card-summit::before,
+.bento-card-ascent::before,
+.bento-card-quicksteps::before,
+.bento-card-basecamp::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: linear-gradient(to top, rgba(0,0,0,0.12) 0%, transparent 100%);
+    border-radius: 0 0 var(--bento-radius) var(--bento-radius);
+    pointer-events: none;
+    z-index: 0;
+}
+
 /* ── ASCENT card (practice mode) ── */
 .bento-card-ascent {
   background: var(--card-ascent);
@@ -979,18 +996,20 @@ color: #215F9A;
 font-size: 1.2rem;
 text-align: center;
 width: 100%;
+margin-bottom: 2px;
 }
 
 .sw-streak-count {
 display: flex;
-align-items: center;
+align-items: flex-start;
 justify-content: center;
-flex: 1;
 font-family: 'Mileast', sans-serif;
 text-align: center;
-font-size: 3.5rem;
+font-size: 4.5rem;
 font-weight: 900;
 color: #4E95D9;
+line-height: 1;
+margin-top: -2px;
 }
 
 
