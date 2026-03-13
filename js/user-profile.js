@@ -7,9 +7,12 @@
     _profile: null,
     _panelOpen: false,
 
-    // ── Animal avatar list ──
+    // ── Profile avatar list ──
     ANIMAL_AVATARS: [
-      'Gato.png', 'perro.png', 'cocodrilo.png'
+      'Alex.jpg', 'Ana.jpg', 'Andres.jpg', 'Anna.png', 'Carlos.jpg',
+      'Daniel.png', 'Elena.jpg', 'Emma.jpg', 'Hugo.jpg', 'Javier.jpg',
+      'Laura.jpg', 'Lauren.jpg', 'Lucas.jpg', 'Marta.jpg', 'Miguel.jpg',
+      'Patricia.jpg', 'Sara.jpg', 'Smith.jpg', 'Sofía.jpg'
     ],
 
     getRandomAnimalAvatar: function () {
@@ -181,7 +184,7 @@
 
       var animalAvatar = profile.animal_avatar;
       var panelAvatarHtml = animalAvatar
-        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
+        ? '<img src="Assets/images/Profiles/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
         : avatarUrl
           ? '<img src="' + avatarUrl + '" alt="' + name + '">'
           : '<span class="profile-initials-large">' + initials + '</span>';
@@ -315,7 +318,7 @@
         var selected = (img === animalAvatar) ? ' animal-avatar-selected' : '';
         var label = img.replace('.png', '').replace('.jpg', '');
         gridHtml += '<div class="animal-avatar-option' + selected + '" onclick="UserProfile._selectAnimalAvatar(\'' + img + '\')" title="' + label + '">' +
-          '<img src="Assets/images/Animals/' + img + '" alt="' + label + '">' +
+          '<img src="Assets/images/Profiles/' + img + '" alt="' + label + '">' +
         '</div>';
       });
 
@@ -330,7 +333,7 @@
 
       container.innerHTML =
         '<p style="color:var(--text-medium);font-size:0.88rem;margin:0 0 14px">' +
-          t('chooseAnimal', 'Choose your animal avatar') +
+          t('chooseAnimal', 'Choose your profile photo') +
         '</p>' +
         '<div class="animal-avatar-grid">' + gridHtml + '</div>' +
         paginationHtml;
@@ -374,7 +377,7 @@
 
       var animalAvatar = profile.animal_avatar;
       var avatarHtml = animalAvatar
-        ? '<img src="Assets/images/Animals/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
+        ? '<img src="Assets/images/Profiles/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
         : avatarUrl
           ? '<img src="' + avatarUrl + '" alt="' + name + '">'
           : '<span class="profile-initials-large">' + initials + '</span>';
@@ -405,7 +408,7 @@
 
         '<div class="profile-section-card">' +
           '<div class="profile-section-avatar-row">' +
-            '<div class="profile-section-avatar" onclick="UserProfile._toggleAvatarGrid()" onkeypress="if(event.key===\'Enter\')UserProfile._toggleAvatarGrid()" tabindex="0" role="button" style="cursor:pointer" title="' + t('chooseAnimal', 'Choose your animal avatar') + '">' + avatarHtml +
+            '<div class="profile-section-avatar" onclick="UserProfile._toggleAvatarGrid()" onkeypress="if(event.key===\'Enter\')UserProfile._toggleAvatarGrid()" tabindex="0" role="button" style="cursor:pointer" title="' + t('chooseAnimal', 'Choose your profile photo') + '">' + avatarHtml +
               '<div class="profile-avatar-edit-hint"><i class="fas fa-camera"></i></div>' +
             '</div>' +
             '<div class="profile-section-info">' +
