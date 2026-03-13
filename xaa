@@ -1,0 +1,376 @@
+// js/bento-grid.js
+// Premium Bento Grid dashboard sections rendered above the exam list
+
+(function() {
+  window.BentoGrid = {
+    render: function(container) {
+      if (!container) return;
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+      var nextLesson = this._findNextLesson(exams);
+
+      var html = '<div class="bento-grid">';
+
+      // Row 1: Arena · Practice
+      html += this._renderTopRow(exams);
+
+      // Row 2: Lessons · Micro-Learning
+      html += this._renderLearningRow();
+
+      // Row 3: Recommended Exercise
+      html += this._renderRecommendedExercise(exams);
+
+      // Row 4 (optional): Next in-progress lesson
+      if (nextLesson) {
+        html += this._renderNextLesson(nextLesson);
+      }
+
+      html += '</div>';
+      container.innerHTML = html;
+    },
+
+    _renderTopRow: function(exams) {
+      return '<div class="bento-top-row">' +
+
+        '<div class="bento-card bento-card-summit" onclick="BentoGrid.selectMode(\'exam\')">' +
+          '<div class="bento-card-inner">' +
+            '<div class="bento-card-title">Summit</div>' +
+            '<div class="bento-card-desc">Test Simulation</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="bento-card bento-card-ascent" onclick="BentoGrid.selectMode(\'practice\')">' +
+          '<div class="bento-card-inner" style="text-align:right">' +
+            '<div class="bento-card-title">Ascent</div>' +
+            '<div class="bento-card-desc">Test Practice</div>' +
+          '</div>' +
+        '</div>' +
+
+      '</div>';
+    },
+
+    _renderLearningRow: function() {
+      return '<div class="bento-learning-row">' +
+
+        '<div class="bento-card bento-card-quicksteps" onclick="BentoGrid.openMicroLearning()">' +
+          '<div class="bento-card-inner">' +
+            '<div class="bento-card-title">Quicksteps</div>' +
+            '<div class="bento-card-desc">Fast Exercises</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="bento-card bento-card-basecamp" onclick="BentoGrid.openLessons()">' +
+          '<div class="bento-card-inner">' +
+            '<div class="bento-card-title">Basecamp</div>' +
+            '<div class="bento-card-desc">Learning Camp</div>' +
+          '</div>' +
+        '</div>' +
+
+      '</div>';
+    },
+
+    _renderRecommendedExercise: function(exams) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var weak = this._getWeakTopic(exams);
+
+      // If no score data yet, suggest first incomplete part
+      if (!weak) {
+        for (var i = 0; i < exams.length; i++) {
+          if (exams[i].status !== 'available') continue;
+          var secData = exams[i].sections && exams[i].sections['reading'];
+          if (secData && secData.total > 0) {
+            var firstPart = 1;
+            for (var p = 1; p <= secData.total; p++) {
+              if (!secData.completed || secData.completed.indexOf(p) === -1) {
+                firstPart = p;
+                break;
+              }
+            }
+            weak = { examId: exams[i].id, section: 'reading', part: firstPart, ratio: null };
+            break;
+          }
+        }
+      }
+
+      if (!weak) {
+        return '<div class="bento-card bento-card-weakspot">' +
+          '<div class="bento-card-inner">' +
+            '<div class="bento-card-title">Weak Spot</div>' +
+            '<div class="bento-card-desc">' + t('completeForRecommendations', 'Complete some exercises to get personalised recommendations!') + '</div>' +
+          '</div>' +
+        '</div>';
+      }
+
+      var scoreHtml = weak.ratio !== null
+        ? ' · ' + Math.round(weak.ratio * 100) + '%'
+        : '';
+
+      return '<div class="bento-card bento-card-weakspot" onclick="Exercise.openPart(\'' + this._escapeHTML(weak.examId) + '\', \'' + weak.section + '\', ' + (weak.part || 1) + ')">' +
+        '<div class="bento-card-inner">' +
+          '<div class="bento-card-title">Weak Spot</div>' +
+          '<div class="bento-card-desc">' + this._escapeHTML(weak.examId) + ' — ' + this._capitalize(weak.section) + (weak.part ? ' ' + t('part', 'Part') + ' ' + weak.part : '') + scoreHtml + '</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _renderGradeTracker: function(exams) {
+      if (typeof ScoreCalculator === 'undefined') return '';
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var noScore = t('noScoreYet', '–');
+      var levelData = AppState.currentLevel || 'C1';
+
+      var skillTotals = {};
+      var examCount = 0;
+
+      exams.forEach(function(exam) {
+        if (exam.status !== 'available') return;
+        try {
+          var scores = ScoreCalculator.getAllSkillScores(exam.id);
+          var hasData = scores.some(function(s) { return s.raw > 0; });
+          if (!hasData) return;
+          examCount++;
+          scores.forEach(function(s) {
+            if (!skillTotals[s.skill]) skillTotals[s.skill] = { raw: 0, maxRaw: 0, scale: 0, count: 0 };
+            skillTotals[s.skill].raw += s.raw;
+            skillTotals[s.skill].maxRaw += s.maxRaw;
+            skillTotals[s.skill].scale += s.scale;
+            skillTotals[s.skill].count++;
+          });
+        } catch (e) { /* skip */ }
+      });
+
+      var scaleBounds = { A2: [82, 140], B1: [102, 160], B2: [122, 180], C1: [142, 200], C2: [162, 220] };
+      var bounds = scaleBounds[levelData] || [142, 200];
+      var scaleMin = bounds[0];
+      var scaleMax = bounds[1];
+
+      var allSkills = ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
+      var skillColors = {
+        'Reading': '#3b82f6',
+        'Use of English': '#8b5cf6',
+        'Writing': '#10b981',
+        'Listening': '#f59e0b',
+        'Speaking': '#ef4444'
+      };
+
+      var barsHtml = '';
+      allSkills.forEach(function(skill) {
+        var d = skillTotals[skill];
+        var color = skillColors[skill] || '#3b82f6';
+        if (d && d.count > 0) {
+          var avgScale = Math.round(d.scale / d.count);
+          var pct = Math.round(((avgScale - scaleMin) / (scaleMax - scaleMin)) * 100);
+          pct = Math.max(2, Math.min(100, pct));
+          barsHtml +=
+            '<div class="bento-grade-bar-row">' +
+              '<div class="bento-grade-skill">' + skill + '</div>' +
+              '<div class="bento-grade-track">' +
+                '<div class="bento-grade-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
+              '</div>' +
+              '<div class="bento-grade-score">' + avgScale + '</div>' +
+            '</div>';
+        } else {
+          barsHtml +=
+            '<div class="bento-grade-bar-row">' +
+              '<div class="bento-grade-skill">' + skill + '</div>' +
+              '<div class="bento-grade-track">' +
+                '<div class="bento-grade-fill" style="width:0%;background:' + color + '"></div>' +
+              '</div>' +
+              '<div class="bento-grade-score" style="opacity:0.5">' + noScore + '</div>' +
+            '</div>';
+        }
+      });
+
+      var subtitleText = examCount > 0
+        ? t('avgAcross', 'Avg. across') + ' ' + examCount + ' ' + t('examsLabel', 'exams') + ' · ' + t('scaleLabel', 'Scale') + ' ' + scaleMin + '–' + scaleMax
+        : t('latestScores', 'Latest registered scores');
+
+      return '<div class="bento-grade-row">' +
+        '<div class="bento-card bento-grade-tracker">' +
+          '<div class="bento-grade-header">' +
+            '<div class="bento-grade-title">📊 ' + t('gradeTracker', 'Current Level') + ' · ' + levelData + '</div>' +
+            '<div class="bento-grade-subtitle">' + subtitleText + '</div>' +
+          '</div>' +
+          '<div class="bento-grade-bars">' + barsHtml + '</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _renderNextLesson: function(lesson) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var completedParts = lesson.completedParts || 0;
+      var totalParts = lesson.totalParts || 1;
+
+      return '<div class="bento-card bento-card-checkpoint" onclick="Exercise.openPart(\'' + this._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')">' +
+        '<div class="bento-card-inner">' +
+          '<div class="bento-card-title">Checkpoint</div>' +
+          '<div class="bento-card-desc">' + this._escapeHTML(lesson.examId) + ' — ' + this._capitalize(lesson.section) + ' ' + t('part', 'Part') + ' ' + lesson.part + ' (' + completedParts + '/' + totalParts + ')</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _getWeakTopic: function(exams) {
+      if (typeof ScoreCalculator === 'undefined') return null;
+      var worstRatio = 1.1;
+      var worstItem = null;
+
+      exams.forEach(function(exam) {
+        if (exam.status !== 'available') return;
+        var sections = ['reading', 'listening', 'writing', 'speaking'];
+        sections.forEach(function(sec) {
+          var secData = exam.sections && exam.sections[sec];
+          if (!secData || !secData.completed || secData.completed.length === 0) return;
+          try {
+            var skillScores = ScoreCalculator.getSkillScoresForSection(exam.id, sec);
+            skillScores.forEach(function(s) {
+              if (s.maxRaw > 0) {
+                var ratio = s.raw / s.maxRaw;
+                if (ratio < worstRatio) {
+                  worstRatio = ratio;
+                  worstItem = { examId: exam.id, section: sec, part: null, ratio: ratio };
+                }
+              }
+            });
+          } catch (e) { /* skip */ }
+        });
+      });
+
+      return worstItem;
+    },
+
+    _findNextLesson: function(exams) {
+      for (var i = 0; i < exams.length; i++) {
+        var exam = exams[i];
+        if (exam.status !== 'available') continue;
+        var sections = ['reading', 'listening', 'writing', 'speaking'];
+        for (var j = 0; j < sections.length; j++) {
+          var sec = sections[j];
+          var sectionData = exam.sections && exam.sections[sec];
+          if (!sectionData) continue;
+          var inProgress = sectionData.inProgress || [];
+          if (inProgress.length > 0) {
+            return {
+              examId: exam.id,
+              section: sec,
+              part: inProgress[0],
+              completedParts: (sectionData.completed || []).length,
+              totalParts: sectionData.total || 1
+            };
+          }
+        }
+      }
+      return null;
+    },
+
+    _getUserName: function() {
+      if (AppState.currentUser) {
+        return AppState.currentUser.user_metadata?.full_name ||
+               AppState.currentUser.user_metadata?.name ||
+               AppState.currentUser.email?.split('@')[0] ||
+               null;
+      }
+      return null;
+    },
+
+    _capitalize: function(str) {
+      if (!str) return '';
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    },
+
+    _escapeHTML: function(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    },
+
+    selectMode: function(mode) {
+      if (typeof Dashboard !== 'undefined' && Dashboard.renderSubpage) {
+        history.pushState({ view: 'subpage', mode: mode }, '');
+        Dashboard.renderSubpage(mode);
+      } else if (typeof Dashboard !== 'undefined' && Dashboard.setMode) {
+        Dashboard.setMode(mode);
+      }
+      if (typeof App !== 'undefined' && App.updateHeaderModeButtons) {
+        App.updateHeaderModeButtons();
+      }
+    },
+
+    openMicroLearning: function() {
+      BentoGrid.openQuickstepsChooser();
+    },
+
+    openQuickstepsChooser: function() {
+      var content = document.getElementById('main-content');
+      if (!content) return;
+
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+
+      var categories = [
+        { id: 'all', icon: '⚡', name: t('allExercises', 'All Exercises'), desc: t('allExercisesDesc', 'Mixed practice from all categories') },
+        { id: 'definitions', icon: '📖', name: t('definitions', 'Definitions'), desc: t('definitionsDesc', 'Vocabulary and word meaning exercises') },
+        { id: 'pronunciation', icon: '🗣️', name: t('pronunciation', 'Pronunciation'), desc: t('pronunciationDesc', 'Practice correct word pronunciation') },
+        { id: 'phrasal_verbs', icon: '🔗', name: t('phrasalVerbs', 'Phrasal Verbs'), desc: t('phrasalVerbsDesc', 'Common phrasal verb exercises') },
+        { id: 'mini_listening', icon: '🎧', name: t('miniListening', 'Mini-Listening'), desc: t('miniListeningDesc', 'Short audio comprehension tasks') },
+        { id: 'mini_reading', icon: '📝', name: t('miniReading', 'Mini-Reading'), desc: t('miniReadingDesc', 'Quick reading comprehension tasks') },
+        { id: 'transformations', icon: '🔄', name: t('transformations', 'Transformations'), desc: t('transformationsDesc', 'Key word transformation practice') }
+      ];
+
+      var buttonsHtml = '';
+      categories.forEach(function(cat) {
+        buttonsHtml += '<button class="qs-category-btn" onclick="BentoGrid._startQuicksteps(\'' + cat.id + '\')">' +
+          '<span class="qs-category-icon">' + cat.icon + '</span>' +
+          '<div class="qs-category-info">' +
+            '<div class="qs-category-name">' + cat.name + '</div>' +
+            '<div class="qs-category-desc">' + cat.desc + '</div>' +
+          '</div>' +
+        '</button>';
+      });
+
+      // Build sidebars like main dashboard
+      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      if (typeof BentoGrid !== 'undefined') {
+        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+      }
+      var rightSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined') {
+        rightSidebarContent = BentoGrid._buildContinueBasecampHtml(exams);
+        rightSidebarContent += BentoGrid._buildStreakSidebarHtml();
+        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
+      }
+
+      content.innerHTML =
+        '<div class="dashboard-layout">' +
+          '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+          '<div class="dashboard-center">' +
+            '<div class="qs-chooser-section">' +
+              '<div class="subpage-header">' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
+                '<div>' +
+                  '<div class="subpage-title">' + t('quicksteps', 'Quicksteps') + '</div>' +
+                  '<div class="subpage-subtitle">' + t('quickstepsSubtitle', 'Choose a category to start practicing') + '</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="qs-chooser-grid">' + buttonsHtml + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
+        '</div>';
+
+      if (typeof BentoGrid !== 'undefined') {
+        BentoGrid._startGradeCarousel();
+      }
+      history.pushState({ view: 'quicksteps' }, '');
+    },
+
+    _startQuicksteps: function(category) {
+      if (typeof MicroLearning !== 'undefined') {
+        MicroLearning._selectedCategory = category;
+        MicroLearning.open();
+      }
+    },
+
+    openLessons: function() {
