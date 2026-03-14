@@ -57,33 +57,35 @@
         }
       }
       
-      // Set the initial history entry to dashboard at '/'
-      // Non-dashboard views will push their own entries on top
-      history.replaceState({ view: 'dashboard' }, '', '/');
-      
       // Render the view indicated by the URL
       if (initialState.view === 'exercise' && initialState.examId && initialState.section && initialState.part) {
+        history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         Exercise.openPart(initialState.examId, initialState.section, initialState.part);
       } else if (initialState.view === 'subpage' && initialState.mode) {
         Dashboard.renderSubpage(initialState.mode);
-        // renderSubpage does not push state itself, so push it here
-        history.pushState(initialState, '', Router.stateToPath(initialState));
+        // renderSubpage does not push state itself, so replace initial entry
+        history.replaceState(initialState, '', Router.stateToPath(initialState));
       } else if (initialState.view === 'profile') {
+        history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof UserProfile !== 'undefined') UserProfile.renderProfileSection();
       } else if (initialState.view === 'premium') {
+        history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof UserProfile !== 'undefined') UserProfile.renderPremiumSection();
       } else if (initialState.view === 'gradeEvolution') {
+        history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution();
       } else if (initialState.view === 'quicksteps') {
+        history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
       } else {
         // Default: dashboard
         Dashboard.render();
+        history.replaceState({ view: 'dashboard' }, '', '/');
       }
       
       // Update header mode buttons

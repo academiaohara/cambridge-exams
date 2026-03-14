@@ -17,7 +17,7 @@
           return '/' + (state.mode || 'practice');
 
         case 'exercise':
-          var level = (AppState.currentLevel || 'C1').toLowerCase();
+          var level = (state.level || AppState.currentLevel || 'C1').toLowerCase();
           var test = (state.examId || 'Test1').replace('Test', 'test-');
           var section = state.section || 'reading';
           var part = state.part || 1;
