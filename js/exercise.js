@@ -36,7 +36,9 @@
         answers: AppState.currentExercise ? AppState.currentExercise.answers : {},
         answersChecked: AppState.answersChecked,
         partScore: AppState.currentPartScore || 0,
-        elapsedSeconds: AppState.elapsedSeconds || 0
+        elapsedSeconds: AppState.elapsedSeconds || 0,
+        examFullMode: AppState.examFullMode,
+        examCurrentSectionIndex: AppState.examCurrentSectionIndex || 0
       };
       try { localStorage.setItem(key, JSON.stringify(data)); } catch(e) { console.warn('Could not save state:', e); }
     },
@@ -217,6 +219,13 @@
       if (savedState) {
         AppState.answersChecked = savedState.answersChecked || false;
         AppState.currentPartScore = savedState.partScore || 0;
+        // Restore exam full mode so footer buttons render correctly after page reload
+        if (typeof savedState.examFullMode !== 'undefined') {
+          AppState.examFullMode = savedState.examFullMode;
+        }
+        if (typeof savedState.examCurrentSectionIndex !== 'undefined') {
+          AppState.examCurrentSectionIndex = savedState.examCurrentSectionIndex;
+        }
         // Restore section score
         const sectionKey = `${examId}_${section}`;
         if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
@@ -241,7 +250,29 @@
       const baseUrl = CONFIG.EXERCISES_URL.replace('Nivel/C1/Exams/', `Nivel/${AppState.currentLevel}/Exams/`);
       const targetUrl = `${baseUrl}${examId}/${fileName}`;
       
-      content.innerHTML = `<div class="loading-exercise"><i class="fas fa-spinner fa-spin"></i><h3>${I18n.t('loading')}</h3><p>Test ${examId} - ${section} - ${I18n.t('part')} ${part}</p></div>`;
+      const loadingExam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === examId);
+      const loadingTotalParts = loadingExam?.sections[section]?.total || 1;
+      const loadingIsExamMode = AppState.currentMode === 'exam';
+      let loadingFooterHTML = '';
+      if (!loadingIsExamMode) {
+        loadingFooterHTML += `<button class="btn-check" disabled><span data-i18n="checkAnswers">${I18n.t('checkAnswers')}</span></button>`;
+        loadingFooterHTML += `<button class="btn-reset" disabled><i class="fas fa-redo-alt"></i> <span data-i18n="reset">${I18n.t('reset')}</span></button>`;
+      }
+      if (part > 1 && (!loadingIsExamMode || AppState.examFullMode)) {
+        loadingFooterHTML += `<button class="btn-prev" disabled><i class="fas fa-chevron-left"></i> <span data-i18n="previous">${I18n.t('previous')}</span></button>`;
+      }
+      if (part < loadingTotalParts) {
+        loadingFooterHTML += `<button class="btn-next" disabled><span data-i18n="next">${I18n.t('next')}</span> <i class="fas fa-chevron-right"></i></button>`;
+      } else if (AppState.examFullMode) {
+        loadingFooterHTML += `<button class="btn-next btn-finish-section" disabled><span data-i18n="finishSection">${I18n.t('finishSection')}</span> <i class="fas fa-check"></i></button>`;
+      }
+      const safeSection = Utils.getSectionTitle ? Utils.getSectionTitle(section) : section;
+      const safePart = parseInt(part, 10);
+      content.innerHTML = `
+        <div class="exercise-container">
+          <div class="loading-exercise"><i class="fas fa-spinner fa-spin"></i><h3>${I18n.t('loading')}</h3><p>${safeSection} - ${I18n.t('part')} ${safePart}</p></div>
+          <div class="exercise-footer">${loadingFooterHTML}</div>
+        </div>`;
       
       try {
         const response = await Utils.fetchWithNoCache(targetUrl);
