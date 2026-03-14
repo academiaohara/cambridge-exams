@@ -1,0 +1,140 @@
+{
+  "level": "B1",
+  "lesson": 1,
+  "title": "Relationships",
+  "description": "Phrasal verbs about personal relationships and social interactions",
+  "points": [
+    {
+      "id": "B1-L1-P1",
+      "type": "explanation",
+      "phrasalVerb": "get along with",
+      "definition": "To have a friendly relationship with someone",
+      "grammar": "Inseparable | Transitive",
+      "examples": [
+        {
+          "english": "I get along with all my colleagues.",
+          "audio": "get-along-ex1.mp3"
+        },
+        {
+          "english": "Do you get along with your neighbours?",
+          "audio": "get-along-ex2.mp3"
+        }
+      ],
+      "notes": "Also 'get on with' (more British). The opposite is 'not get along with'."
+    },
+    {
+      "id": "B1-L1-P2",
+      "type": "explanation",
+      "phrasalVerb": "fall out with",
+      "definition": "To have an argument and stop being friendly with someone",
+      "grammar": "Inseparable | Transitive",
+      "examples": [
+        {
+          "english": "She fell out with her best friend over money.",
+          "audio": "fall-out-ex1.mp3"
+        },
+        {
+          "english": "Have you ever fallen out with a family member?",
+          "audio": "fall-out-ex2.mp3"
+        }
+      ],
+      "notes": "Often followed by 'with' + person and 'over' + reason."
+    },
+    {
+      "id": "B1-L1-P3",
+      "type": "explanation",
+      "phrasalVerb": "make up",
+      "definition": "To become friends again after a disagreement",
+      "grammar": "Inseparable | Intransitive (in this meaning)",
+      "examples": [
+        {
+          "english": "They argued last week but made up the next day.",
+          "audio": "make-up-ex1.mp3"
+        },
+        {
+          "english": "Life is too short. You should make up with her.",
+          "audio": "make-up-ex2.mp3"
+        }
+      ],
+      "notes": "Multiple meanings! Also: 'make up a story' (invent), 'make up your mind' (decide), 'make up' (apply cosmetics)."
+    },
+    {
+      "id": "B1-L1-P4",
+      "type": "explanation",
+      "phrasalVerb": "look up to",
+      "definition": "To admire and respect someone",
+      "grammar": "Inseparable | Transitive",
+      "examples": [
+        {
+          "english": "Many children look up to their parents.",
+          "audio": "look-up-to-ex1.mp3"
+        },
+        {
+          "english": "Who do you look up to in your life?",
+          "audio": "look-up-to-ex2.mp3"
+        }
+      ],
+      "notes": "The opposite is 'look down on' (to think you are better than someone)."
+    },
+    {
+      "id": "B1-L1-P5",
+      "type": "exercises",
+      "title": "Practice: Relationships",
+      "description": "Complete the exercises with get along with, fall out with, make up, and look up to",
+      "questions": [
+        {
+          "id": "ex-B1-L1-1",
+          "type": "fill-blank",
+          "sentence": "My sister and I had a big argument, but we ______ ______ (became friends again) the next day.",
+          "answer": "made up",
+          "options": ["made up", "fell out", "got along", "looked up"],
+          "feedback": "Correct! 'Made up' means they became friends again after the argument."
+        },
+        {
+          "id": "ex-B1-L1-2",
+          "type": "fill-blank",
+          "sentence": "I really ______ ______ ______ (admire) my grandmother. She's an amazing person.",
+          "answer": "look up to",
+          "options": ["look up to", "get along with", "fall out with", "make up with"],
+          "feedback": "'Look up to' means to admire and respect someone."
+        },
+        {
+          "id": "ex-B1-L1-3",
+          "type": "multiple-choice",
+          "question": "Tom and his brother ______ over who should get the family house.",
+          "options": [
+            "got along",
+            "fell out",
+            "made up",
+            "looked up"
+          ],
+          "correct_answer": 1,
+          "feedback": "'Fell out' means they had an argument. 'Fell out over' tells us the reason."
+        },
+        {
+          "id": "ex-B1-L1-4",
+          "type": "choose-particle",
+          "sentence": "Do you get ______ with your new flatmate?",
+          "correct_particle": "along",
+          "options": ["along", "up", "out", "in"],
+          "feedback": "'Get along with' means to have a good relationship with someone."
+        },
+        {
+          "id": "ex-B1-L1-5",
+          "type": "dialogue",
+          "context": "A: I heard you and Jake aren't talking anymore. B: Yeah, we ______ ______ last month. But I think we'll ______ ______ soon.",
+          "answer": "fell out / make up",
+          "feedback": "'Fell out' = had an argument. 'Make up' = become friends again."
+        },
+        {
+          "id": "ex-B1-L1-6",
+          "type": "reorder",
+          "scrambled_words": ["with", "gets", "she", "along", "everyone"],
+          "answer": "She gets along with everyone",
+          "feedback": "Perfect: 'She gets along with everyone' - she's friendly with all people."
+        }
+      ]
+    }
+  ],
+  "next_lesson": "level-B1/lesson-2-technology.json"
+}

@@ -1,0 +1,140 @@
+{
+  "level": "A2",
+  "lesson": 2,
+  "title": "Home",
+  "description": "Phrasal verbs about home and household activities",
+  "points": [
+    {
+      "id": "A2-L2-P1",
+      "type": "explanation",
+      "phrasalVerb": "turn on",
+      "definition": "To make a device, machine, or system start working",
+      "grammar": "Separable | Transitive",
+      "examples": [
+        {
+          "english": "Can you turn on the TV?",
+          "audio": "turn-on-ex1.mp3"
+        },
+        {
+          "english": "Turn it on, please. I want to watch the news.",
+          "audio": "turn-on-ex2.mp3"
+        }
+      ],
+      "notes": "Separable: 'Turn the TV on' or 'Turn on the TV'. With pronouns, MUST separate: 'Turn it on' (NOT 'turn on it')."
+    },
+    {
+      "id": "A2-L2-P2",
+      "type": "explanation",
+      "phrasalVerb": "turn off",
+      "definition": "To make a device, machine, or system stop working",
+      "grammar": "Separable | Transitive",
+      "examples": [
+        {
+          "english": "Please turn off the lights before you leave.",
+          "audio": "turn-off-ex1.mp3"
+        },
+        {
+          "english": "Don't forget to turn the oven off!",
+          "audio": "turn-off-ex2.mp3"
+        }
+      ],
+      "notes": "Opposite of 'turn on'. Same separable rules apply."
+    },
+    {
+      "id": "A2-L2-P3",
+      "type": "explanation",
+      "phrasalVerb": "pick up",
+      "definition": "To lift something from a surface using your hands",
+      "grammar": "Separable | Transitive",
+      "examples": [
+        {
+          "english": "Can you pick up that book from the floor?",
+          "audio": "pick-up-ex1.mp3"
+        },
+        {
+          "english": "She picked up the phone and called her mum.",
+          "audio": "pick-up-ex2.mp3"
+        }
+      ],
+      "notes": "Also means to collect someone: 'I'll pick you up at 8'."
+    },
+    {
+      "id": "A2-L2-P4",
+      "type": "explanation",
+      "phrasalVerb": "put away",
+      "definition": "To put something back in its proper place",
+      "grammar": "Separable | Transitive",
+      "examples": [
+        {
+          "english": "Please put away your toys before dinner.",
+          "audio": "put-away-ex1.mp3"
+        },
+        {
+          "english": "I need to put the dishes away.",
+          "audio": "put-away-ex2.mp3"
+        }
+      ],
+      "notes": "Commonly used by parents with children. Keep things tidy!"
+    },
+    {
+      "id": "A2-L2-P5",
+      "type": "exercises",
+      "title": "Practice: Home",
+      "description": "Complete the exercises with turn on, turn off, pick up, and put away",
+      "questions": [
+        {
+          "id": "ex-A2-L2-1",
+          "type": "fill-blank",
+          "sentence": "It's cold in here. Can you ______ ______ the heating?",
+          "answer": "turn on",
+          "options": ["turn on", "turn off", "pick up", "put away"],
+          "feedback": "Correct! 'Turn on' means to activate a device or system."
+        },
+        {
+          "id": "ex-A2-L2-2",
+          "type": "choose-particle",
+          "sentence": "I dropped my keys. Can you pick them ______?",
+          "correct_particle": "up",
+          "options": ["up", "down", "on", "off"],
+          "feedback": "Yes! 'Pick up' means to lift something from a surface."
+        },
+        {
+          "id": "ex-A2-L2-3",
+          "type": "pronoun-exercise",
+          "original_sentence": "Turn off the radio.",
+          "instruction": "Now replace 'the radio' with the pronoun 'it'.",
+          "answer": "Turn it off",
+          "feedback": "With pronouns, separable phrasal verbs MUST separate: 'Turn it off'."
+        },
+        {
+          "id": "ex-A2-L2-4",
+          "type": "multiple-choice",
+          "question": "Which sentence is correct?",
+          "options": [
+            "Turn off it.",
+            "Turn it off.",
+            "Off turn it.",
+            "It turn off."
+          ],
+          "correct_answer": 1,
+          "feedback": "With pronouns, the object goes between the verb and particle: 'Turn it off'."
+        },
+        {
+          "id": "ex-A2-L2-5",
+          "type": "reorder",
+          "scrambled_words": ["away", "put", "your", "please", "clothes"],
+          "answer": "Please put your clothes away",
+          "feedback": "Great! 'Put away' your clothes means to tidy them up."
+        },
+        {
+          "id": "ex-A2-L2-6",
+          "type": "dialogue",
+          "context": "A: It's very dark in this room. B: Let me ______ ______ the lights.",
+          "answer": "turn on",
+          "feedback": "Perfect! 'Turn on the lights' to make the room brighter."
+        }
+      ]
+    }
+  ],
+  "next_lesson": "level-A2/lesson-3-movement.json"
+}

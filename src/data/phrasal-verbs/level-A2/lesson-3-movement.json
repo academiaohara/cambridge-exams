@@ -1,0 +1,158 @@
+{
+  "level": "A2",
+  "lesson": 3,
+  "title": "Movement",
+  "description": "Phrasal verbs about coming, going, and moving around",
+  "points": [
+    {
+      "id": "A2-L3-P1",
+      "type": "explanation",
+      "phrasalVerb": "come in",
+      "definition": "To enter a room, building, or space",
+      "grammar": "Inseparable | Intransitive",
+      "examples": [
+        {
+          "english": "Come in! The door is open.",
+          "audio": "come-in-ex1.mp3"
+        },
+        {
+          "english": "She came in and sat down quietly.",
+          "audio": "come-in-ex2.mp3"
+        }
+      ],
+      "notes": "Very common greeting when someone knocks at the door."
+    },
+    {
+      "id": "A2-L3-P2",
+      "type": "explanation",
+      "phrasalVerb": "go out",
+      "definition": "To leave your home for social activities or entertainment",
+      "grammar": "Inseparable | Intransitive",
+      "examples": [
+        {
+          "english": "We go out every Friday night.",
+          "audio": "go-out-ex1.mp3"
+        },
+        {
+          "english": "Do you want to go out for dinner tonight?",
+          "audio": "go-out-ex2.mp3"
+        }
+      ],
+      "notes": "Can also mean to leave any place: 'Go out of the room'."
+    },
+    {
+      "id": "A2-L3-P3",
+      "type": "explanation",
+      "phrasalVerb": "get in",
+      "definition": "To enter a vehicle (car, taxi)",
+      "grammar": "Inseparable | Intransitive",
+      "examples": [
+        {
+          "english": "Get in the car. We're late!",
+          "audio": "get-in-ex1.mp3"
+        },
+        {
+          "english": "The taxi arrived and we got in.",
+          "audio": "get-in-ex2.mp3"
+        }
+      ],
+      "notes": "Use 'get in' for small vehicles (car, taxi). Use 'get on' for large vehicles (bus, train, plane)."
+    },
+    {
+      "id": "A2-L3-P4",
+      "type": "explanation",
+      "phrasalVerb": "get out",
+      "definition": "To leave a vehicle (car, taxi)",
+      "grammar": "Inseparable | Intransitive",
+      "examples": [
+        {
+          "english": "We got out of the taxi at the station.",
+          "audio": "get-out-ex1.mp3"
+        },
+        {
+          "english": "Get out of the car slowly.",
+          "audio": "get-out-ex2.mp3"
+        }
+      ],
+      "notes": "Opposite of 'get in'. Use 'get off' for buses, trains, planes."
+    },
+    {
+      "id": "A2-L3-P5",
+      "type": "explanation",
+      "phrasalVerb": "come back",
+      "definition": "To return to a place",
+      "grammar": "Inseparable | Intransitive",
+      "examples": [
+        {
+          "english": "What time will you come back?",
+          "audio": "come-back-ex1.mp3"
+        },
+        {
+          "english": "She came back from holiday last week.",
+          "audio": "come-back-ex2.mp3"
+        }
+      ],
+      "notes": "Similar to 'go back' but 'come back' implies returning to the speaker's location."
+    },
+    {
+      "id": "A2-L3-P6",
+      "type": "exercises",
+      "title": "Practice: Movement",
+      "description": "Complete the exercises with come in, go out, get in, get out, and come back",
+      "questions": [
+        {
+          "id": "ex-A2-L3-1",
+          "type": "fill-blank",
+          "sentence": "The taxi is here. Let's ______ ______!",
+          "answer": "get in",
+          "options": ["get in", "get out", "come in", "go out"],
+          "feedback": "Correct! 'Get in' is used for entering small vehicles."
+        },
+        {
+          "id": "ex-A2-L3-2",
+          "type": "fill-blank",
+          "sentence": "It's a beautiful evening. Let's ______ ______ for a walk.",
+          "answer": "go out",
+          "options": ["come in", "go out", "get in", "come back"],
+          "feedback": "Great! 'Go out' means to leave home for an activity."
+        },
+        {
+          "id": "ex-A2-L3-3",
+          "type": "multiple-choice",
+          "question": "You use 'get in' for which type of vehicle?",
+          "options": [
+            "Bus and train",
+            "Car and taxi",
+            "Plane and boat",
+            "All vehicles"
+          ],
+          "correct_answer": 1,
+          "feedback": "Right! Use 'get in/out' for small vehicles, 'get on/off' for large ones."
+        },
+        {
+          "id": "ex-A2-L3-4",
+          "type": "choose-particle",
+          "sentence": "Please come ______, the meeting is about to start.",
+          "correct_particle": "in",
+          "options": ["in", "out", "back", "off"],
+          "feedback": "'Come in' means to enter a room or building."
+        },
+        {
+          "id": "ex-A2-L3-5",
+          "type": "dialogue",
+          "context": "A: Where's your sister? B: She went out, but she'll ______ ______ soon.",
+          "answer": "come back",
+          "feedback": "Correct! 'Come back' means to return to a place."
+        },
+        {
+          "id": "ex-A2-L3-6",
+          "type": "reorder",
+          "scrambled_words": ["out", "got", "she", "car", "the", "of"],
+          "answer": "She got out of the car",
+          "feedback": "Perfect: 'She got out of the car'."
+        }
+      ]
+    }
+  ],
+  "next_lesson": "level-A2/review-lessons-1-3.json"
+}

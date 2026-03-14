@@ -1,0 +1,95 @@
+{
+  "level": "A2",
+  "type": "review",
+  "title": "Review: Lessons 1-3",
+  "description": "Mix of phrasal verbs from Daily Routine, Home, and Movement",
+  "lessons_reviewed": [1, 2, 3],
+  "points": [
+    {
+      "id": "A2-REVIEW-1",
+      "type": "exercises",
+      "title": "Review Challenge",
+      "description": "Test yourself with 10 mixed questions from Lessons 1-3",
+      "questions": [
+        {
+          "id": "rev-A2-1",
+          "type": "fill-blank",
+          "sentence": "Please ______ ______ (lift from the floor) that piece of paper.",
+          "answer": "pick up",
+          "options": ["pick up", "put away", "get up", "turn on"],
+          "feedback": "Correct! 'Pick up' means to lift something from a surface."
+        },
+        {
+          "id": "rev-A2-2",
+          "type": "fill-blank",
+          "sentence": "I ______ ______ (left my bed) at 6 am to catch the early train.",
+          "answer": "got up",
+          "options": ["woke up", "got up", "got in", "came back"],
+          "feedback": "'Got up' means you left the bed. 'Woke up' just means you opened your eyes."
+        },
+        {
+          "id": "rev-A2-3",
+          "type": "choose-particle",
+          "sentence": "The music is too loud. Can you turn it ______?",
+          "correct_particle": "down",
+          "options": ["up", "down", "off", "on"],
+          "feedback": "Yes! 'Turn down' means to reduce volume."
+        },
+        {
+          "id": "rev-A2-4",
+          "type": "multiple-choice",
+          "question": "Which phrasal verb means 'to enter a car'?",
+          "options": ["get on", "get in", "come in", "go in"],
+          "correct_answer": 1,
+          "feedback": "Correct! Use 'get in' for small vehicles like cars and taxis."
+        },
+        {
+          "id": "rev-A2-5",
+          "type": "pronoun-exercise",
+          "original_sentence": "Pick up the books.",
+          "instruction": "Replace 'the books' with 'them'.",
+          "answer": "Pick them up",
+          "feedback": "With pronouns, the object goes between the verb and particle: 'Pick them up'."
+        },
+        {
+          "id": "rev-A2-6",
+          "type": "dialogue",
+          "context": "A: I'm so tired. I've been working all day. B: Why don't you ______ ______ on the sofa?",
+          "answer": "lie down",
+          "feedback": "'Lie down' is perfect when you need a rest."
+        },
+        {
+          "id": "rev-A2-7",
+          "type": "fill-blank",
+          "sentence": "When you finish playing, please ______ ______ (put back) your toys.",
+          "answer": "put away",
+          "options": ["put away", "pick up", "turn off", "get out"],
+          "feedback": "'Put away' means to return something to its proper place."
+        },
+        {
+          "id": "rev-A2-8",
+          "type": "reorder",
+          "scrambled_words": ["back", "came", "she", "midnight", "at"],
+          "answer": "She came back at midnight",
+          "feedback": "Perfect: 'She came back at midnight'."
+        },
+        {
+          "id": "rev-A2-9",
+          "type": "choose-particle",
+          "sentence": "It's raining. Let's not go ______ today.",
+          "correct_particle": "out",
+          "options": ["in", "out", "up", "back"],
+          "feedback": "'Go out' means to leave the house. 'Let's not go out' = let's stay home."
+        },
+        {
+          "id": "rev-A2-10",
+          "type": "multiple-choice",
+          "question": "What's the opposite of 'turn on'?",
+          "options": ["turn up", "turn down", "turn off", "turn out"],
+          "correct_answer": 2,
+          "feedback": "'Turn off' is the opposite of 'turn on'. 'Turn up' and 'turn down' are for volume."
+        }
+      ]
+    }
+  ]
+}

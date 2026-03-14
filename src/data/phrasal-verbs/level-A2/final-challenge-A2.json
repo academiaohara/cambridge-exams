@@ -1,0 +1,198 @@
+{
+  "level": "A2",
+  "type": "final-challenge",
+  "title": "A2 Final Challenge",
+  "description": "Complete all 20 questions to unlock B1 level",
+  "time_limit": 10,
+  "min_score_to_pass": 80,
+  "points": [
+    {
+      "id": "A2-FINAL-1",
+      "type": "exercises",
+      "title": "A2 Mastery Test",
+      "description": "Prove your mastery of A2 phrasal verbs",
+      "questions": [
+        {
+          "id": "final-A2-1",
+          "type": "multiple-choice",
+          "question": "Which phrasal verb means 'to stop sleeping'?",
+          "options": ["get up", "wake up", "lie down", "come back"],
+          "correct_answer": 1,
+          "feedback": "Correct! 'Wake up' means to stop sleeping."
+        },
+        {
+          "id": "final-A2-2",
+          "type": "fill-blank",
+          "sentence": "Can you ______ ______ the lights? I can't see anything.",
+          "answer": "turn on",
+          "options": ["turn on", "turn off", "pick up", "put away"],
+          "feedback": "'Turn on' means to activate a device."
+        },
+        {
+          "id": "final-A2-3",
+          "type": "choose-particle",
+          "sentence": "We got ______ the taxi at the airport.",
+          "correct_particle": "out of",
+          "options": ["in", "out of", "on", "off"],
+          "feedback": "'Get out of' is used for leaving small vehicles."
+        },
+        {
+          "id": "final-A2-4",
+          "type": "pronoun-exercise",
+          "original_sentence": "Put away the dishes.",
+          "instruction": "Replace 'the dishes' with 'them'.",
+          "answer": "Put them away",
+          "feedback": "Separable verbs split with pronouns: 'Put them away'."
+        },
+        {
+          "id": "final-A2-5",
+          "type": "fill-blank",
+          "sentence": "The children ______ ______ (left the house) to play in the garden.",
+          "answer": "went out",
+          "options": ["went out", "came in", "got in", "woke up"],
+          "feedback": "'Went out' (past of 'go out') means to leave a place."
+        },
+        {
+          "id": "final-A2-6",
+          "type": "multiple-choice",
+          "question": "Which sentence uses a pronoun correctly with a separable phrasal verb?",
+          "options": [
+            "Turn off it.",
+            "Turn it off.",
+            "Off it turn.",
+            "It off turn."
+          ],
+          "correct_answer": 1,
+          "feedback": "Pronouns must go between the verb and particle: 'Turn it off'."
+        },
+        {
+          "id": "final-A2-7",
+          "type": "reorder",
+          "scrambled_words": ["up", "woke", "he", "early", "very"],
+          "answer": "He woke up very early",
+          "feedback": "Perfect: 'He woke up very early'."
+        },
+        {
+          "id": "final-A2-8",
+          "type": "dialogue",
+          "context": "A: Someone's knocking at the door. B: ______ ______! It's open!",
+          "answer": "Come in",
+          "feedback": "'Come in' is a friendly way to invite someone to enter."
+        },
+        {
+          "id": "final-A2-9",
+          "type": "fill-blank",
+          "sentence": "I usually ______ ______ (leave bed) at 7, but today I slept in.",
+          "answer": "get up",
+          "options": ["get up", "wake up", "lie down", "go out"],
+          "feedback": "'Get up' means to leave your bed."
+        },
+        {
+          "id": "final-A2-10",
+          "type": "choose-particle",
+          "sentence": "Please put your coat ______. It's on the floor.",
+          "correct_particle": "away",
+          "options": ["on", "off", "away", "up"],
+          "feedback": "'Put away' means to put something in its proper place."
+        },
+        {
+          "id": "final-A2-11",
+          "type": "multiple-choice",
+          "question": "'Get in' is used with which type of transport?",
+          "options": [
+            "Bus",
+            "Car",
+            "Train",
+            "Plane"
+          ],
+          "correct_answer": 1,
+          "feedback": "'Get in' for small vehicles (car, taxi). 'Get on' for large ones (bus, train, plane)."
+        },
+        {
+          "id": "final-A2-12",
+          "type": "fill-blank",
+          "sentence": "Don't forget to ______ ______ the computer before you leave.",
+          "answer": "turn off",
+          "options": ["turn on", "turn off", "pick up", "get in"],
+          "feedback": "'Turn off' means to make a device stop working."
+        },
+        {
+          "id": "final-A2-13",
+          "type": "dialogue",
+          "context": "A: I dropped my pen. B: I'll ______ it ______ for you.",
+          "answer": "pick it up",
+          "feedback": "With a pronoun, the object goes between verb and particle: 'pick it up'."
+        },
+        {
+          "id": "final-A2-14",
+          "type": "reorder",
+          "scrambled_words": ["for", "let's", "a", "break", "have"],
+          "answer": "Let's have a break for",
+          "feedback": "'Let's have a break' - time to rest!"
+        },
+        {
+          "id": "final-A2-15",
+          "type": "multiple-choice",
+          "question": "What does 'come back' mean?",
+          "options": [
+            "To enter a room",
+            "To leave a place",
+            "To return to a place",
+            "To move backwards"
+          ],
+          "correct_answer": 2,
+          "feedback": "'Come back' means to return to a place."
+        },
+        {
+          "id": "final-A2-16",
+          "type": "fill-blank",
+          "sentence": "I feel dizzy. I need to ______ ______ (rest horizontally).",
+          "answer": "lie down",
+          "options": ["lie down", "get up", "wake up", "go out"],
+          "feedback": "'Lie down' means to put yourself in a horizontal position to rest."
+        },
+        {
+          "id": "final-A2-17",
+          "type": "choose-particle",
+          "sentence": "What time did you come ______ from school?",
+          "correct_particle": "back",
+          "options": ["in", "out", "back", "up"],
+          "feedback": "'Come back' means to return."
+        },
+        {
+          "id": "final-A2-18",
+          "type": "pronoun-exercise",
+          "original_sentence": "Turn on the computer.",
+          "instruction": "Replace 'the computer' with 'it'.",
+          "answer": "Turn it on",
+          "feedback": "Separable verbs must split with pronouns: 'Turn it on'."
+        },
+        {
+          "id": "final-A2-19",
+          "type": "fill-blank",
+          "sentence": "She ______ ______ (entered) the room and said hello to everyone.",
+          "answer": "came in",
+          "options": ["came in", "went out", "got in", "came back"],
+          "feedback": "'Came in' (past of 'come in') means to enter a room."
+        },
+        {
+          "id": "final-A2-20",
+          "type": "multiple-choice",
+          "question": "Which of these phrasal verbs is INSEPARABLE?",
+          "options": [
+            "turn on",
+            "pick up",
+            "put away",
+            "get up"
+          ],
+          "correct_answer": 3,
+          "feedback": "'Get up' is inseparable and intransitive - it doesn't take an object."
+        }
+      ]
+    }
+  ],
+  "reward": {
+    "badge": "A2-Phrasal-Master",
+    "unlocks": "level-B1"
+  }
+}

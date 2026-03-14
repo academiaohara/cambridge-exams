@@ -1,0 +1,140 @@
+{
+  "level": "A2",
+  "lesson": 1,
+  "title": "Daily Routine",
+  "description": "Basic phrasal verbs to talk about your everyday life",
+  "points": [
+    {
+      "id": "A2-L1-P1",
+      "type": "explanation",
+      "phrasalVerb": "get up",
+      "definition": "To leave your bed after sleeping",
+      "grammar": "Inseparable | Intransitive",
+      "examples": [
+        {
+          "english": "I get up at 7 every morning.",
+          "audio": "get-up-ex1.mp3"
+        },
+        {
+          "english": "What time do you get up on weekends?",
+          "audio": "get-up-ex2.mp3"
+        }
+      ],
+      "notes": "Very common in daily conversations. No object needed."
+    },
+    {
+      "id": "A2-L1-P2",
+      "type": "explanation",
+      "phrasalVerb": "wake up",
+      "definition": "To stop sleeping",
+      "grammar": "Separable | Transitive/Intransitive",
+      "examples": [
+        {
+          "english": "I woke up late today.",
+          "audio": "wake-up-ex1.mp3"
+        },
+        {
+          "english": "The baby always wakes up at night.",
+          "audio": "wake-up-ex2.mp3"
+        }
+      ],
+      "notes": "Difference from get up: wake up = open your eyes, get up = leave the bed."
+    },
+    {
+      "id": "A2-L1-P3",
+      "type": "explanation",
+      "phrasalVerb": "lie down",
+      "definition": "To put yourself in a horizontal position, usually to rest",
+      "grammar": "Inseparable | Intransitive",
+      "examples": [
+        {
+          "english": "I need to lie down for a while.",
+          "audio": "lie-down-ex1.mp3"
+        },
+        {
+          "english": "The doctor told me to lie down and relax.",
+          "audio": "lie-down-ex2.mp3"
+        }
+      ],
+      "notes": "Often used when tired or sick."
+    },
+    {
+      "id": "A2-L1-P4",
+      "type": "explanation",
+      "phrasalVerb": "have a break",
+      "definition": "To stop working or doing something for a short time",
+      "grammar": "Inseparable | Transitive",
+      "examples": [
+        {
+          "english": "Let's have a break and get some coffee.",
+          "audio": "have-break-ex1.mp3"
+        },
+        {
+          "english": "We've been studying for two hours. Time to have a break!",
+          "audio": "have-break-ex2.mp3"
+        }
+      ],
+      "notes": "British English. In US English, 'take a break' is more common."
+    },
+    {
+      "id": "A2-L1-P5",
+      "type": "exercises",
+      "title": "Practice: Daily Routine",
+      "description": "Complete the exercises with get up, wake up, lie down, and have a break",
+      "questions": [
+        {
+          "id": "ex-A2-L1-1",
+          "type": "fill-blank",
+          "sentence": "I'm very tired. I want to ______ ______ (stop sleeping) late tomorrow.",
+          "answer": "wake up",
+          "options": ["get up", "wake up", "stand up", "sit down"],
+          "feedback": "Correct! 'Wake up' means to stop sleeping."
+        },
+        {
+          "id": "ex-A2-L1-2",
+          "type": "choose-particle",
+          "sentence": "Please turn the light ______. It's too dark.",
+          "correct_particle": "on",
+          "options": ["on", "off", "up", "down"],
+          "feedback": "Good! 'Turn on' means to make something start working."
+        },
+        {
+          "id": "ex-A2-L1-3",
+          "type": "reorder",
+          "scrambled_words": ["up", "get", "I", "7", "at"],
+          "answer": "I get up at 7",
+          "feedback": "Perfect: 'I get up at 7'"
+        },
+        {
+          "id": "ex-A2-L1-4",
+          "type": "dialogue",
+          "context": "A: You look tired. B: Yes, I need to ______ ______ for 10 minutes.",
+          "answer": "lie down",
+          "feedback": "Great! 'Lie down' is perfect when you need to rest."
+        },
+        {
+          "id": "ex-A2-L1-5",
+          "type": "multiple-choice",
+          "question": "What's the difference between 'wake up' and 'get up'?",
+          "options": [
+            "They mean exactly the same thing",
+            "Wake up = stop sleeping, get up = leave the bed",
+            "Wake up = leave the bed, get up = stop sleeping",
+            "Wake up is for objects, get up is for people"
+          ],
+          "correct_answer": 1,
+          "feedback": "Exactly! Wake up = open your eyes, get up = leave the bed."
+        },
+        {
+          "id": "ex-A2-L1-6",
+          "type": "pronoun-exercise",
+          "original_sentence": "Turn off the TV.",
+          "instruction": "Now replace 'the TV' with the pronoun 'it'.",
+          "answer": "Turn it off",
+          "feedback": "Important! With pronouns, separable phrasal verbs MUST separate: 'Turn it off' (not 'turn off it')."
+        }
+      ]
+    }
+  ],
+  "next_lesson": "level-A2/lesson-2-home.json"
+}
