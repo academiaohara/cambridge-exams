@@ -1,5 +1,8 @@
 // js/router.js
 (function() {
+  var VALID_LEVELS = ['a2', 'b1', 'b2', 'c1', 'c2'];
+  var VALID_SECTIONS = ['reading', 'listening', 'writing', 'speaking'];
+
   window.Router = {
     /**
      * Convert a history state object into a URL path.
@@ -8,6 +11,8 @@
      */
     /**
      * Map internal mode name to URL prefix.
+     * @param {string} mode - 'practice' or 'exam'
+     * @returns {string} URL prefix ('testpractice' or 'testsimulation')
      */
     _modePrefix: function(mode) {
       return (mode || 'practice') === 'exam' ? 'testsimulation' : 'testpractice';
@@ -99,14 +104,12 @@
           return { view: 'subpage', mode: mode };
         }
         // Exercise: /testpractice/{level}/{test-N}/{section}/{part}
-        var validLevels = ['a2', 'b1', 'b2', 'c1', 'c2'];
-        var validSections = ['reading', 'listening', 'writing', 'speaking'];
-        if (segments.length >= 5 && validLevels.indexOf(segments[1].toLowerCase()) !== -1) {
+        if (segments.length >= 5 && VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1) {
           var level   = segments[1].toUpperCase();
           var examId  = segments[2].replace('test-', 'Test');
           var section = segments[3].toLowerCase();
           var part    = parseInt(segments[4], 10);
-          if (validSections.indexOf(section) !== -1 && !isNaN(part) && part >= 1) {
+          if (VALID_SECTIONS.indexOf(section) !== -1 && !isNaN(part) && part >= 1) {
             return { view: 'exercise', level: level, examId: examId, section: section, part: part, mode: mode };
           }
         }
@@ -139,16 +142,13 @@
       }
 
       // ── Legacy exercise routes: /{level}/{test-N}/{section}/{part} ──
-      var legacyValidLevels = ['a2', 'b1', 'b2', 'c1', 'c2'];
-      var legacyValidSections = ['reading', 'listening', 'writing', 'speaking'];
-
-      if (legacyValidLevels.indexOf(first) !== -1 && segments.length >= 4) {
+      if (VALID_LEVELS.indexOf(first) !== -1 && segments.length >= 4) {
         var legLevel   = first.toUpperCase();
         var legExamId  = segments[1].replace('test-', 'Test');
         var legSection = segments[2].toLowerCase();
         var legPart    = parseInt(segments[3], 10);
 
-        if (legacyValidSections.indexOf(legSection) !== -1 && !isNaN(legPart) && legPart >= 1) {
+        if (VALID_SECTIONS.indexOf(legSection) !== -1 && !isNaN(legPart) && legPart >= 1) {
           return { view: 'exercise', level: legLevel, examId: legExamId, section: legSection, part: legPart };
         }
       }
