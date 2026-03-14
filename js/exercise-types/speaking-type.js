@@ -93,8 +93,10 @@
     return null;
   }
 
-  // Stable avatar assignments per session (role -> filename)
+  // Stable avatar assignments per speaking section (role -> filename)
+  // Persisted across parts so the same examiner is kept for all 4 exercises
   var _avatarAssignments = {};
+  var _avatarSection = null; // tracks which section the assignments belong to
 
   function _assignAvatars(participants) {
     if (Object.keys(_avatarAssignments).length > 0) return; // already assigned
@@ -182,6 +184,8 @@
     _finalTranscript: '',
     _evaluating: false,
     _evaluated: false,
+    _speakingTimerInterval: null,
+    _speakingElapsed: 0,
 
     // ── Public API ──
 
@@ -206,9 +210,15 @@
       this._finalTranscript = '';
       this._evaluating = false;
       this._evaluated = false;
+      this._stopSpeakingTimer();
+      this._speakingElapsed = 0;
 
-      // Assign animal avatars for this session
-      _avatarAssignments = {};
+      // Assign animal avatars — keep the same examiner across all speaking parts
+      var currentSection = AppState.currentSection || 'speaking';
+      if (_avatarSection !== currentSection) {
+        _avatarAssignments = {};
+        _avatarSection = currentSection;
+      }
       _assignAvatars(this._participants);
 
       var task = content.task || content.questions?.[0]?.task || '';
@@ -325,8 +335,22 @@
           '</div>';
       });
 
+      // Build speaking timer (countdown shown in stage)
+      var timerHTML = '';
+      if (this._conversationStarted && !this._conversationEnded) {
+        var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+        var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
+        var mins = Math.floor(remaining / 60);
+        var secs = remaining % 60;
+        var timeStr = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+        timerHTML = '<div class="speaking-stage-timer" id="speaking-stage-timer">' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + timeStr + '</span>' +
+        '</div>';
+      }
+
       return '<div class="speaking-videocall speaking-stage">' +
         '<div class="speaking-stage-scene">' +
+          timerHTML +
           featuredHTML +
           '<div class="speaking-stage-cards">' +
             thumbnailCards +
@@ -389,6 +413,9 @@
           '<button class="speaking-send-btn" id="speaking-send-btn"' + (isMine ? '' : ' disabled') + '>' +
             '<i class="fas fa-paper-plane"></i>' +
           '</button>' +
+          '<button class="speaking-end-btn" id="speaking-end-btn" title="' + t('endConversation', 'End conversation') + '">' +
+            '<i class="fas fa-phone-slash"></i>' +
+          '</button>' +
         '</div>' +
         (isMine ? '<div class="speaking-your-turn">' + t('yourTurn', 'Your turn') + '</div>' : '') +
         (!isMine && !this._conversationEnded ? '<div class="speaking-skip-row"><button class="speaking-skip-btn" id="speaking-skip-btn" style="display:none">' + t('skipTurn', 'Skip turn') + '</button></div>' : '') +
@@ -441,6 +468,11 @@
       if (skipBtn) {
         skipBtn.onclick = function() { self._skipTurn(); };
       }
+
+      var endBtn = document.getElementById('speaking-end-btn');
+      if (endBtn) {
+        endBtn.onclick = function() { self._endConversation(); };
+      }
     },
 
     // ── Conversation flow ──
@@ -449,8 +481,44 @@
       this._conversationStarted = true;
       this._scriptIndex = 0;
       this._messages = [];
+      // Start the speaking countdown timer
+      this._startSpeakingTimer();
       this._refreshView();
       this._processCurrentTurn();
+    },
+
+    _startSpeakingTimer: function() {
+      var self = this;
+      if (this._speakingTimerInterval) clearInterval(this._speakingTimerInterval);
+      this._speakingElapsed = 0;
+      var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+      this._speakingTimerInterval = setInterval(function() {
+        self._speakingElapsed++;
+        var display = document.getElementById('speaking-timer-display');
+        if (display) {
+          var remaining = Math.max(0, totalSeconds - self._speakingElapsed);
+          var mins = Math.floor(remaining / 60);
+          var secs = remaining % 60;
+          display.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+          // Color coding
+          var timerEl = document.getElementById('speaking-stage-timer');
+          if (timerEl) {
+            timerEl.classList.remove('speaking-timer-warning', 'speaking-timer-danger');
+            if (remaining <= 30) timerEl.classList.add('speaking-timer-danger');
+            else if (remaining <= 60) timerEl.classList.add('speaking-timer-warning');
+          }
+        }
+        if (self._speakingElapsed >= totalSeconds) {
+          self._endConversation();
+        }
+      }, 1000);
+    },
+
+    _stopSpeakingTimer: function() {
+      if (this._speakingTimerInterval) {
+        clearInterval(this._speakingTimerInterval);
+        this._speakingTimerInterval = null;
+      }
     },
 
     _processCurrentTurn: function() {
@@ -623,6 +691,8 @@
       if (this._conversationEnded) return;
       this._conversationEnded = true;
       this._activeSpeaker = null;
+      // Stop the speaking countdown timer
+      this._stopSpeakingTimer();
       if (this._isRecording) {
         this._isRecording = false;
         if (this._recognition) {
@@ -923,6 +993,23 @@
           }, 3000);
         }
       }
+    },
+
+    // ── Cleanup: stop all audio/recording when navigating away ──
+
+    cleanup: function() {
+      this._stopSpeakingTimer();
+      if (this._isRecording) {
+        this._isRecording = false;
+        if (this._recognition) {
+          try { this._recognition.stop(); } catch(e) {}
+        }
+      }
+      if (this._synthesis) {
+        this._synthesis.cancel();
+      }
+      this._conversationEnded = true;
+      this._activeSpeaker = null;
     }
   };
 })();

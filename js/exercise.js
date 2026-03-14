@@ -191,6 +191,11 @@
     },
     
     openPart: async function(examId, section, part) {
+      // Cleanup speaking if navigating away from a speaking exercise
+      if (window.SpeakingType && typeof SpeakingType.cleanup === 'function') {
+        SpeakingType.cleanup();
+      }
+
       // Guest gate: block writing and speaking for guest users
       if (AppState.isGuest && (section === 'writing' || section === 'speaking')) {
         if (typeof Dashboard !== 'undefined') Dashboard.showGuestGate();
@@ -821,6 +826,11 @@
       Modal.closeOptionsModal();
       if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
       
+      // Cleanup speaking audio/recording before closing
+      if (window.SpeakingType && typeof SpeakingType.cleanup === 'function') {
+        SpeakingType.cleanup();
+      }
+
       if (Timer.timerInterval) {
         clearInterval(Timer.timerInterval);
         Timer.timerInterval = null;

@@ -299,6 +299,44 @@
 }
 .speaking-vc-status--yours { color: #cbd5e1; font-weight: 600; }
 
+/* Stage countdown timer */
+.speaking-stage-timer {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 10;
+  display: flex; align-items: center; gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #e2e8f0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  backdrop-filter: blur(4px);
+}
+.speaking-stage-timer i { font-size: 0.75rem; opacity: 0.8; }
+.speaking-timer-warning { color: #fbbf24; }
+.speaking-timer-danger { color: #ef4444; animation: speaking-timer-blink 1s ease-in-out infinite; }
+@keyframes speaking-timer-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* End conversation button */
+.speaking-end-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px;
+  border: none; border-radius: 50%;
+  background: #ef4444;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.speaking-end-btn:hover { background: #dc2626; transform: scale(1.1); }
+
 /* ══════════════════════════════════════
    CHAT VIEW
    ══════════════════════════════════════ */
