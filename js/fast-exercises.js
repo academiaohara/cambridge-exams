@@ -68,6 +68,14 @@
       return true;
     },
 
+    _isLessonComplete: function(categoryId, levelId, lessonId, lessonPoints) {
+      if (!lessonPoints || lessonPoints.length === 0) return true;
+      for (var pi = 0; pi < lessonPoints.length; pi++) {
+        if (!this._isPointComplete(categoryId, levelId, lessonId, pi)) return false;
+      }
+      return true;
+    },
+
     _isLevelUnlocked: function(categoryId, levelId, levelsData) {
       if (!levelsData) return false;
       var level = null;
@@ -76,6 +84,14 @@
       }
       if (!level) return false;
       if (!level.requiredToUnlock) return true;
+
+      // Unlock all levels up to the student's current study level
+      var LEVEL_ORDER = ['A2', 'B1', 'B2', 'C1', 'C2'];
+      var studentLevel = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
+      var studentIdx = LEVEL_ORDER.indexOf(studentLevel);
+      var thisIdx = LEVEL_ORDER.indexOf(levelId);
+      if (studentIdx >= 0 && thisIdx >= 0 && thisIdx <= studentIdx) return true;
+
       return this._isLevelComplete(categoryId, level.requiredToUnlock, levelsData);
     },
 
@@ -377,6 +393,14 @@
         var lessonComplete = true;
         var lessonStarted = false;
 
+        // Check if previous lesson is complete (inter-lesson locking)
+        var prevLessonComplete = true;
+        if (li > 0) {
+          var prevLesson = level.lessons[li - 1];
+          prevLessonComplete = self._isLessonComplete(catMeta.id, activeLevel, prevLesson.id, prevLesson.points);
+        }
+        var lessonLocked = !prevLessonComplete;
+
         // Check lesson status
         if (lesson.points) {
           for (var pi = 0; pi < lesson.points.length; pi++) {
@@ -388,10 +412,11 @@
           }
         }
 
-        var lessonClass = lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending');
+        var lessonClass = lessonLocked ? 'fe-lesson-locked' : (lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending'));
 
         html += '<div class="fe-map-lesson ' + lessonClass + '">' +
           '<div class="fe-map-lesson-title">' +
+            (lessonLocked ? '<span class="fe-map-lesson-lock">' + _mi('lock') + '</span>' : '') +
             '<span class="fe-map-lesson-num">' + t('lesson', 'Lesson') + ' ' + (li + 1) + '</span>' +
             '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
           '</div>' +
@@ -402,15 +427,30 @@
             var point = lesson.points[pi];
             var isDone = self._isPointComplete(catMeta.id, activeLevel, lesson.id, pi);
 
-            // Determine if this point is accessible (all previous points must be done)
-            var isAccessible = true;
-            if (pi > 0) {
+            // Determine if this point is accessible (all previous points must be done AND lesson not locked)
+            var isAccessible = !lessonLocked;
+            if (isAccessible && pi > 0) {
               for (var prev = 0; prev < pi; prev++) {
                 if (!self._isPointComplete(catMeta.id, activeLevel, lesson.id, prev)) {
                   isAccessible = false;
                   break;
                 }
               }
+            }
+
+            // Review points render as rows (styled like fe-level-item)
+            if (point.type === 'review') {
+              var reviewStateClass = isDone ? 'fe-level-active' : (isAccessible ? 'fe-level-unlocked' : 'fe-level-locked');
+              var reviewIcon = isDone ? _mi('check_circle') : (isAccessible ? _mi('rate_review') : _mi('lock'));
+              var reviewOnclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + activeLevel + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
+              html += '<div class="fe-review-row fe-level-item ' + reviewStateClass + '" ' + reviewOnclick + '>' +
+                '<span class="fe-level-icon">' + reviewIcon + '</span>' +
+                '<div class="fe-level-label">' +
+                  '<span class="fe-level-name">' + self._escapeHTML(point.label || t('review', 'Review')) + '</span>' +
+                  '<span class="fe-level-pct">' + (isDone ? t('completed', 'Completed') : (isAccessible ? t('available', 'Available') : t('locked', 'Locked'))) + '</span>' +
+                '</div>' +
+              '</div>';
+              continue;
             }
 
             var dotClass = 'fe-dot';
@@ -421,9 +461,6 @@
             } else if (point.type === 'exercise') {
               dotClass += ' fe-dot-exercise';
               dotIcon = isDone ? _mi('check') : _mi('fitness_center');
-            } else if (point.type === 'review') {
-              dotClass += ' fe-dot-review';
-              dotIcon = isDone ? _mi('check') : _mi('rate_review');
             } else if (point.type === 'trophy') {
               dotClass += ' fe-dot-trophy';
               dotIcon = isDone ? _mi('check') : _mi('emoji_events');
@@ -435,7 +472,7 @@
             var onclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + activeLevel + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
             var tooltip = self._escapeHTML(point.label || '');
 
-            html += (pi > 0 ? '<div class="fe-map-line ' + (point.type === 'review' ? 'fe-line-review' : '') + '"></div>' : '') +
+            html += (pi > 0 ? '<div class="fe-map-line"></div>' : '') +
               '<div class="' + dotClass + '" ' + onclick + ' title="' + tooltip + '">' +
                 '<span class="fe-dot-icon">' + dotIcon + '</span>' +
               '</div>';
@@ -901,9 +938,15 @@
         // Next point in same lesson
         this.openPoint(categoryId, levelId, lessonId, nextPointIndex);
       } else if (currentLessonIdx + 1 < level.lessons.length) {
-        // Next lesson
-        var nextLesson = level.lessons[currentLessonIdx + 1];
-        this.openPoint(categoryId, levelId, nextLesson.id, 0);
+        // Only advance to next lesson if current lesson is fully complete
+        var currentComplete = this._isLessonComplete(categoryId, levelId, lesson.id, lesson.points);
+        if (currentComplete) {
+          var nextLesson = level.lessons[currentLessonIdx + 1];
+          this.openPoint(categoryId, levelId, nextLesson.id, 0);
+        } else {
+          // Current lesson not fully complete - go back to map
+          this.openCategory(categoryId);
+        }
       } else {
         // Level complete - go back to map
         this.openCategory(categoryId);

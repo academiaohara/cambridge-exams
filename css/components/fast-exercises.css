@@ -259,6 +259,17 @@
 .fe-map-lesson.fe-lesson-pending {
   border-left: 4px solid rgba(45, 46, 95, 0.1);
 }
+.fe-map-lesson.fe-lesson-locked {
+  border-left: 4px solid rgba(45, 46, 95, 0.08);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.fe-map-lesson-lock {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-medium, #64748b);
+  font-size: 0.95rem;
+}
 .fe-map-lesson-title {
   display: flex;
   align-items: center;
@@ -285,6 +296,24 @@
   gap: 0;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+/* Review row - full-width row inside the points row */
+.fe-review-row {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  background: rgba(245, 158, 11, 0.04);
+}
+.fe-review-row.fe-level-active {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.fe-review-row .fe-level-icon {
+  color: #f59e0b;
+}
+.fe-review-row.fe-level-active .fe-level-icon {
+  color: #10b981;
 }
 
 /* Map connector between lessons */

@@ -379,19 +379,8 @@
 
     openLessons: function() {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
-      var level = AppState.currentLevel || 'C1';
-      var exams = window.EXAMS_DATA[level] || [];
-      var nextLesson = BentoGrid._findNextLesson(exams);
 
-      // If there's a lesson in progress, open it directly
-      if (nextLesson) {
-        if (typeof Exercise !== 'undefined') {
-          Exercise.openPart(nextLesson.examId, nextLesson.section, nextLesson.part);
-        }
-        return;
-      }
-
-      // Otherwise show placeholder modal
+      // Always show "coming soon" placeholder modal
       var el = document.createElement('div');
       el.className = 'bento-generic-modal-overlay';
       el.innerHTML =
@@ -399,7 +388,7 @@
           '<button class="bento-generic-modal-close" onclick="this.closest(\'.bento-generic-modal-overlay\').remove()">✕</button>' +
           '<div class="bento-generic-modal-icon"><span class="material-symbols-outlined">auto_stories</span></div>' +
           '<div class="bento-generic-modal-title">' + t('lessonsCurriculum', 'Lessons &amp; Curriculum') + '</div>' +
-          '<div class="bento-generic-modal-text">' + t('lessonsComingDesc', 'The structured curriculum section is on its way! For now, practise with the exam sections below.') + '</div>' +
+          '<div class="bento-generic-modal-text">' + t('lessonsComingDesc', 'The structured curriculum section is on its way! Stay tuned — it will be available soon.') + '</div>' +
           '<button class="bento-generic-modal-btn" onclick="this.closest(\'.bento-generic-modal-overlay\').remove()">' + t('gotIt', 'Got it') + '</button>' +
         '</div>';
       document.body.appendChild(el);

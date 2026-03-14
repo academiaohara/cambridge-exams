@@ -31,13 +31,9 @@
         }
       });
       
-      // Cargar idioma guardado
-      const savedLanguage = localStorage.getItem('preferred_language') || 'es';
-      await I18n.loadLanguage(savedLanguage);
-      I18n.updateSelectedFlag(savedLanguage);
-      
-      // Inicializar eventos de dropdown
-      I18n.initClickOutside();
+      // Always load English
+      await I18n.loadLanguage('en');
+      localStorage.setItem('preferred_language', 'en');
 
       await this.syncExamsFromFolders();
       
