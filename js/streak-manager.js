@@ -197,7 +197,12 @@
     _showCelebration: function(streak) {
       var el = document.getElementById('streak-celebration');
       if (!el) return;
-      el.textContent = '🎉 ' + streak + ' day streak!';
+      el.innerHTML = '';
+      var iconSpan = document.createElement('span');
+      iconSpan.className = 'material-symbols-outlined';
+      iconSpan.textContent = 'celebration';
+      el.appendChild(iconSpan);
+      el.appendChild(document.createTextNode(' ' + streak + ' day streak!'));
       el.classList.add('streak-celebrate-anim');
       el.style.display = 'block';
       setTimeout(function() {
@@ -236,13 +241,13 @@
       var atRisk = this.isAtRisk();
       var statusClass = d.practicedToday ? 'streak-safe' : (atRisk ? 'streak-risk' : '');
       var statusText = d.practicedToday
-        ? '<span class="streak-status streak-safe">✅ Streak safe!</span>'
+        ? '<span class="streak-status streak-safe"><span class="material-symbols-outlined">check_circle</span> Streak safe!</span>'
         : (atRisk
-          ? '<span class="streak-status streak-risk">⚠️ Streak at risk!</span>'
+          ? '<span class="streak-status streak-risk"><span class="material-symbols-outlined">warning</span> Streak at risk!</span>'
           : '');
 
       return '<div class="streak-widget ' + statusClass + '">' +
-        '<div class="streak-fire">🔥</div>' +
+        '<div class="streak-fire"><span class="material-symbols-outlined">local_fire_department</span></div>' +
         '<div class="streak-info">' +
           '<div class="streak-count">' + streak + '</div>' +
           '<div class="streak-label">' + (streak === 1 ? 'day streak' : 'days streak') + '</div>' +

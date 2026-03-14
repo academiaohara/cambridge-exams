@@ -4,12 +4,14 @@
 (function() {
   var STORAGE_KEY = 'cambridge_fast_exercises';
   var CATEGORIES = [
-    { id: 'phrasal-verbs', icon: '📘', name: 'Phrasal Verbs', color: '#3b82f6' },
-    { id: 'collocations', icon: '📚', name: 'Collocations', color: '#8b5cf6' },
-    { id: 'vocabulary', icon: '📖', name: 'Vocabulary', color: '#10b981' },
-    { id: 'idioms', icon: '🗣️', name: 'Idioms', color: '#f59e0b' },
-    { id: 'business-english', icon: '💼', name: 'Business English', color: '#ef4444' }
+    { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6' },
+    { id: 'collocations', icon: 'library_books', name: 'Collocations', color: '#8b5cf6' },
+    { id: 'vocabulary', icon: 'menu_book', name: 'Vocabulary', color: '#10b981' },
+    { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' },
+    { id: 'business-english', icon: 'business_center', name: 'Business English', color: '#ef4444' }
   ];
+
+  function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
   window.FastExercises = {
     _cache: {},
@@ -178,7 +180,7 @@
 
         categoryCards += '<div class="fe-category-card" style="--cat-color: ' + cat.color + '" onclick="FastExercises.openCategory(\'' + cat.id + '\')">' +
           '<div class="fe-category-card-header">' +
-            '<span class="fe-category-icon">' + cat.icon + '</span>' +
+            '<span class="fe-category-icon">' + _mi(cat.icon) + '</span>' +
             '<div class="fe-category-info">' +
               '<div class="fe-category-name">' + this._escapeHTML(cat.name) + '</div>' +
               '<div class="fe-category-stats">' + totalPoints + ' ' + t('items', 'items') + '</div>' +
@@ -213,7 +215,7 @@
               '<div class="subpage-header">' +
                 '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
                 '<div>' +
-                  '<div class="subpage-title">⚡ ' + t('fastExercises', 'Fast Exercises') + '</div>' +
+                  '<div class="subpage-title">' + _mi('bolt') + ' ' + t('fastExercises', 'Fast Exercises') + '</div>' +
                   '<div class="subpage-subtitle">' + t('fastExercisesSubtitle', 'Choose a category and start your learning path') + '</div>' +
                 '</div>' +
               '</div>' +
@@ -226,7 +228,8 @@
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
       }
-      history.pushState({ view: 'fastExercises' }, '');
+      var feState = { view: 'fastExercises' };
+      history.pushState(feState, '', Router.stateToPath(feState));
     },
 
     // ── INDIVIDUAL CATEGORY VIEW ─────────────────────────────────────────
@@ -276,7 +279,7 @@
               '<div class="subpage-header">' +
                 '<button class="subpage-back-btn" onclick="FastExercises.openCategories()">' + t('back', 'Back') + '</button>' +
                 '<div>' +
-                  '<div class="subpage-title">' + catMeta.icon + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
+                  '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
                   '<div class="subpage-subtitle">' + t('levelProgress', 'Level Progress') + ' — ' + activeLevel + '</div>' +
                 '</div>' +
               '</div>' +
@@ -287,7 +290,8 @@
           '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightWidget + '</div>' +
         '</div>';
 
-      history.pushState({ view: 'fastExerciseCategory', categoryId: categoryId }, '');
+      var catState = { view: 'fastExerciseCategory', categoryId: categoryId };
+      history.pushState(catState, '', Router.stateToPath(catState));
     },
 
     // ── LEFT WIDGET ──────────────────────────────────────────────────────
@@ -305,7 +309,7 @@
         var lvPct = this._getLevelPercent(catMeta.id, lv.id, data.levels);
 
         var stateClass = isActive ? 'fe-level-active' : (isUnlocked ? 'fe-level-unlocked' : 'fe-level-locked');
-        var icon = isComplete ? '✅' : (isUnlocked ? '○' : '🔒');
+        var icon = isComplete ? _mi('check_circle') : (isUnlocked ? _mi('radio_button_unchecked') : _mi('lock'));
         var onclick = isUnlocked ? 'onclick="FastExercises._switchLevel(\'' + catMeta.id + '\', \'' + lv.id + '\')"' : '';
 
         levelsHtml += '<div class="fe-level-item ' + stateClass + '" ' + onclick + '>' +
@@ -333,7 +337,7 @@
 
       return '<div class="sidebar-widget fe-info-widget" style="--cat-color:' + catMeta.color + '">' +
         '<div class="fe-info-header">' +
-          '<span class="fe-info-icon">' + catMeta.icon + '</span>' +
+          '<span class="fe-info-icon">' + _mi(catMeta.icon) + '</span>' +
           '<div>' +
             '<div class="fe-info-title">' + this._escapeHTML(catMeta.name) + '</div>' +
             '<div class="fe-info-subtitle">' + t('level', 'Level') + ': ' + activeLevel + '</div>' +
@@ -413,16 +417,16 @@
             var dotIcon = '';
             if (point.type === 'explanation') {
               dotClass += ' fe-dot-explanation';
-              dotIcon = isDone ? '✓' : '○';
+              dotIcon = isDone ? _mi('check') : _mi('article');
             } else if (point.type === 'exercise') {
               dotClass += ' fe-dot-exercise';
-              dotIcon = isDone ? '✓' : '●';
+              dotIcon = isDone ? _mi('check') : _mi('fitness_center');
             } else if (point.type === 'review') {
               dotClass += ' fe-dot-review';
-              dotIcon = isDone ? '✓' : '═';
+              dotIcon = isDone ? _mi('check') : _mi('rate_review');
             } else if (point.type === 'trophy') {
               dotClass += ' fe-dot-trophy';
-              dotIcon = isDone ? '🏆' : '★';
+              dotIcon = isDone ? _mi('check') : _mi('emoji_events');
             }
 
             if (isDone) dotClass += ' fe-dot-done';
@@ -450,10 +454,10 @@
 
       // Legend
       html += '<div class="fe-map-legend">' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-explanation fe-dot-mini">○</span> ' + t('explanation', 'Explanation') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-exercise fe-dot-mini">●</span> ' + t('exercise', 'Exercise') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-review fe-dot-mini">═</span> ' + t('review', 'Review') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-trophy fe-dot-mini">★</span> ' + t('challenge', 'Challenge') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-explanation fe-dot-mini">' + _mi('article') + '</span> ' + t('explanation', 'Explanation') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-exercise fe-dot-mini">' + _mi('fitness_center') + '</span> ' + t('exercise', 'Exercise') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-review fe-dot-mini">' + _mi('rate_review') + '</span> ' + t('review', 'Review') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-trophy fe-dot-mini">' + _mi('emoji_events') + '</span> ' + t('challenge', 'Challenge') + '</span>' +
       '</div>';
 
       return html;
@@ -488,7 +492,7 @@
       }
 
       return '<div class="sidebar-widget fe-review-widget">' +
-        '<div class="fe-review-title">🔄 ' + t('quickReview', 'Quick Review') + '</div>' +
+        '<div class="fe-review-title">' + _mi('sync') + ' ' + t('quickReview', 'Quick Review') + '</div>' +
         '<div class="fe-review-subtitle">' + t('mixerForCategory', 'Mixer for') + ' ' + this._escapeHTML(catMeta.name) + '</div>' +
         '<div class="fe-mixer-levels">' + levelsCheckboxes + '</div>' +
         '<button class="fe-review-btn" onclick="FastExercises._startQuickReview(\'' + catMeta.id + '\')" style="background:' + catMeta.color + '">' +
@@ -632,7 +636,7 @@
               '</div>' +
             '</div>' +
             '<div class="fe-point-card">' +
-              '<div class="fe-point-icon">' + (pointType === 'trophy' ? '🏆' : '📝') + '</div>' +
+              '<div class="fe-point-icon">' + (pointType === 'trophy' ? _mi('emoji_events') : _mi('description')) + '</div>' +
               '<div class="fe-point-message">' + t('contentComingSoon', 'Detailed content coming soon! Point marked as complete.') + '</div>' +
               '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#3b82f6') + '">' +
                 t('next', 'Next') + ' →' +
@@ -656,7 +660,8 @@
         this._renderExercisePoint(content, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
       }
 
-      history.pushState({ view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex }, '');
+      var pointState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
+      history.pushState(pointState, '', Router.stateToPath(pointState));
     },
 
     // ── RENDER EXPLANATION POINT ─────────────────────────────────────────
@@ -681,7 +686,7 @@
           });
         }
         relatedHtml = '<div class="fe-explanation-related">' +
-          '<h4>🔗 ' + self._escapeHTML(ct.relatedVerb) + '</h4>' +
+          '<h4>' + _mi('link') + ' ' + self._escapeHTML(ct.relatedVerb) + '</h4>' +
           '<p>' + self._escapeHTML(ct.relatedDefinition || '') + '</p>' +
           (relExamples ? '<ul class="fe-example-list">' + relExamples + '</ul>' : '') +
         '</div>';
@@ -699,7 +704,7 @@
           '<div class="fe-explanation-card" style="--cat-color:' + catMeta.color + '">' +
             '<div class="fe-explanation-verb">' + self._escapeHTML(ct.phrasalVerb || point.label) + '</div>' +
             '<div class="fe-explanation-def">' + self._escapeHTML(ct.definition || '') + '</div>' +
-            (examplesHtml ? '<div class="fe-explanation-examples"><h4>💡 ' + t('examples', 'Examples') + '</h4><ul class="fe-example-list">' + examplesHtml + '</ul></div>' : '') +
+            (examplesHtml ? '<div class="fe-explanation-examples"><h4>' + _mi('lightbulb') + ' ' + t('examples', 'Examples') + '</h4><ul class="fe-example-list">' + examplesHtml + '</ul></div>' : '') +
             relatedHtml +
             '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + catMeta.color + '">' +
               t('gotItNext', 'Got it! Next') + ' →' +
@@ -728,7 +733,7 @@
               '</div>' +
             '</div>' +
             '<div class="fe-point-card">' +
-              '<div class="fe-point-icon">' + (point.type === 'trophy' ? '🏆' : '✅') + '</div>' +
+              '<div class="fe-point-icon">' + (point.type === 'trophy' ? _mi('emoji_events') : _mi('check_circle')) + '</div>' +
               '<div class="fe-point-message">' + t('exerciseComingSoon', 'Exercises for this section coming soon! Point marked as complete.') + '</div>' +
               '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + catMeta.color + '">' +
                 t('next', 'Next') + ' →' +
@@ -772,7 +777,7 @@
               questionsHtml +
             '</div>' +
             '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
-              '<div class="fe-quiz-complete-icon">🎉</div>' +
+              '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
               '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
               '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + catMeta.color + '">' +
                 t('next', 'Next') + ' →' +
@@ -815,10 +820,12 @@
         var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
         if (isCorrect) {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-correct';
-          feedbackEl.textContent = '✅ ' + t('correct', 'Correct') + '!';
+          feedbackEl.textContent = '';
+          feedbackEl.innerHTML = _mi('check_circle') + ' ' + t('correct', 'Correct') + '!';
         } else {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
-          feedbackEl.textContent = '❌ ' + t('correctAnswerIs', 'The correct answer is') + ' ' + correctAnswer;
+          feedbackEl.textContent = '';
+          feedbackEl.innerHTML = _mi('cancel') + ' ' + t('correctAnswerIs', 'The correct answer is') + ' ' + correctAnswer;
         }
         feedbackEl.style.display = 'block';
       }

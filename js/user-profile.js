@@ -249,10 +249,20 @@
       var result = await this.updateProfile(updates);
       if (statusEl) {
         if (!result || result.error) {
-          statusEl.textContent = '⚠ Could not save';
+          statusEl.textContent = '';
+          var warnIcon = document.createElement('span');
+          warnIcon.className = 'material-symbols-outlined';
+          warnIcon.textContent = 'warning';
+          statusEl.appendChild(warnIcon);
+          statusEl.appendChild(document.createTextNode(' Could not save'));
           statusEl.className = 'profile-sync-status error';
         } else {
-          statusEl.textContent = '✓ Saved';
+          statusEl.textContent = '';
+          var okIcon = document.createElement('span');
+          okIcon.className = 'material-symbols-outlined';
+          okIcon.textContent = 'check_circle';
+          statusEl.appendChild(okIcon);
+          statusEl.appendChild(document.createTextNode(' Saved'));
           statusEl.className = 'profile-sync-status saved';
           setTimeout(function () { if (statusEl) { statusEl.textContent = ''; statusEl.className = 'profile-sync-status'; } }, 2000);
         }
@@ -418,7 +428,7 @@
         '</div>' +
 
         '<div class="profile-section-card">' +
-          '<h3>⚙️ ' + t('preferences', 'Preferences') + '</h3>' +
+          '<h3><span class="material-symbols-outlined">settings</span> ' + t('preferences', 'Preferences') + '</h3>' +
           '<div class="profile-prefs">' +
             '<div class="pref-row"><label>' + t('level', 'Level') + '</label>' +
               '<select id="pref-level" onchange="UserProfile._onPrefChange()">' + levelOptions(profile.preferred_level || AppState.currentLevel) + '</select></div>' +
@@ -428,14 +438,14 @@
         '</div>' +
 
         '<div class="profile-section-card">' +
-          '<h3>👑 ' + t('subscription', 'Subscription') + '</h3>' +
+          '<h3><span class="material-symbols-outlined">workspace_premium</span> ' + t('subscription', 'Subscription') + '</h3>' +
           '<p style="color:var(--text-medium);font-size:0.88rem;margin:0 0 14px">' +
             (isPremium
               ? t('premiumActive', 'You have an active Premium subscription with full access to all features.')
               : t('freeDesc', 'You are on the free plan. Upgrade to unlock all exams and AI features.')) +
           '</p>' +
           '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '" onclick="' + (isPremium ? '' : 'UserProfile.renderPremiumSection()') + '">' +
-            (isPremium ? '✓ ' + t('currentPlan', 'Current Plan') + ': Premium' : '<i class="fas fa-crown"></i> ' + t('viewPlans', 'View Plans')) +
+            (isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + t('currentPlan', 'Current Plan') + ': Premium' : '<i class="fas fa-crown"></i> ' + t('viewPlans', 'View Plans')) +
           '</button>' +
         '</div>' +
 
@@ -466,7 +476,7 @@
         '</div>' +
 
         '<div class="premium-plans-header">' +
-          '<h2>👑 ' + t('choosePlan', 'Choose your Plan') + '</h2>' +
+          '<h2><span class="material-symbols-outlined">workspace_premium</span> ' + t('choosePlan', 'Choose your Plan') + '</h2>' +
           '<p>' + t('premiumSubtitle', 'Unlock the full Cambridge Exams experience') + '</p>' +
         '</div>' +
 
@@ -474,7 +484,7 @@
 
           '<div class="premium-plan-card' + (!isPremium ? ' current' : '') + '">' +
             (!isPremium ? '<div class="premium-plan-badge">' + t('currentPlan', 'Current Plan') + '</div>' : '') +
-            '<div class="premium-plan-icon">📚</div>' +
+            '<div class="premium-plan-icon"><span class="material-symbols-outlined">auto_stories</span></div>' +
             '<div class="premium-plan-name">' + t('freePlan', 'Free') + '</div>' +
             '<div class="premium-plan-price">€0 <span>/ ' + t('month', 'month') + '</span></div>' +
             '<ul class="premium-plan-features">' +
@@ -483,14 +493,14 @@
               '<li><i class="fas fa-check"></i> ' + t('freeFeature3', 'Score calculator') + '</li>' +
               '<li><i class="fas fa-check"></i> ' + t('freeFeature4', 'Micro-learning mode') + '</li>' +
             '</ul>' +
-            '<button class="premium-plan-btn ' + (!isPremium ? 'current-plan' : 'outline') + '">' + (!isPremium ? '✓ ' + t('currentPlan', 'Current Plan') : t('freePlan', 'Free')) + '</button>' +
+            '<button class="premium-plan-btn ' + (!isPremium ? 'current-plan' : 'outline') + '">' + (!isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + t('currentPlan', 'Current Plan') : t('freePlan', 'Free')) + '</button>' +
           '</div>' +
 
           '<div class="premium-plan-card' + (isPremium ? ' current' : ' recommended') + '">' +
             (isPremium
               ? '<div class="premium-plan-badge">' + t('currentPlan', 'Current Plan') + '</div>'
               : '<div class="premium-plan-badge">' + t('recommended', 'Recommended') + '</div>') +
-            '<div class="premium-plan-icon">👑</div>' +
+            '<div class="premium-plan-icon"><span class="material-symbols-outlined">workspace_premium</span></div>' +
             '<div class="premium-plan-name">Premium</div>' +
             '<div class="premium-plan-price">€9.99 <span>/ ' + t('month', 'month') + '</span></div>' +
             '<ul class="premium-plan-features">' +
@@ -500,7 +510,7 @@
               '<li><i class="fas fa-check"></i> ' + t('premFeature4', 'Progress sync across devices') + '</li>' +
               '<li><i class="fas fa-check"></i> ' + t('premFeature5', 'Detailed grade analytics') + '</li>' +
             '</ul>' +
-            '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '">' + (isPremium ? '✓ ' + t('currentPlan', 'Current Plan') : t('getPremium', 'Get Premium')) + '</button>' +
+            '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '">' + (isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + t('currentPlan', 'Current Plan') : t('getPremium', 'Get Premium')) + '</button>' +
           '</div>' +
 
         '</div>' +

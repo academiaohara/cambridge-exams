@@ -82,6 +82,18 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
+      } else if (initialState.view === 'fastExercises') {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof FastExercises !== 'undefined') FastExercises.openCategories();
+      } else if (initialState.view === 'fastExerciseCategory' && initialState.categoryId) {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof FastExercises !== 'undefined') FastExercises.openCategory(initialState.categoryId);
+      } else if (initialState.view === 'fastExercisePoint' && initialState.categoryId && initialState.levelId && initialState.lessonId && typeof initialState.pointIndex !== 'undefined') {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof FastExercises !== 'undefined') FastExercises.openPoint(initialState.categoryId, initialState.levelId, initialState.lessonId, initialState.pointIndex);
       } else {
         // Default: dashboard
         Dashboard.render();

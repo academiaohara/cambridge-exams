@@ -312,7 +312,7 @@
     _renderPremiumBanner: function() {
       var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
       return '<div class="premium-banner">' +
-        '<div class="premium-banner-icon">👑</div>' +
+        '<div class="premium-banner-icon"><span class="material-symbols-outlined">workspace_premium</span></div>' +
         '<div class="premium-banner-text">' +
           '<div class="premium-banner-title">' + t('premiumTitle', 'Upgrade to Premium') + '</div>' +
           '<div class="premium-banner-desc">' + t('premiumDesc', 'Get full access to all exams, writing evaluation with AI, and speaking exercises.') + '</div>' +
@@ -347,7 +347,7 @@
       overlay.className = 'guest-gate-overlay';
       overlay.innerHTML =
         '<div class="guest-gate-card">' +
-          '<div class="guest-gate-icon">🔒</div>' +
+          '<div class="guest-gate-icon"><span class="material-symbols-outlined">lock</span></div>' +
           '<h3>' + t('guestGateTitle', 'Sign in to unlock') + '</h3>' +
           '<p>' + t('guestGateDesc', 'Sign in with Google to access all exams, writing and speaking exercises, and save your progress in the cloud.') + '</p>' +
           '<div class="guest-gate-btns">' +

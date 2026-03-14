@@ -328,9 +328,15 @@
     },
 
     _formatFeedback: function(text) {
+      var iconMap = { '📊': 'bar_chart', '📝': 'edit_note', '✅': 'check_circle', '⚠️': 'warning' };
       return text
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/^(📊 SCORES|📝 DETAILED FEEDBACK|✅ STRENGTHS|⚠️ AREAS FOR IMPROVEMENT)/gm, '<h5 class="writing-feedback-heading">$1</h5>')
+        .replace(/^(📊 SCORES|📝 DETAILED FEEDBACK|✅ STRENGTHS|⚠️ AREAS FOR IMPROVEMENT)/gm, function(m) {
+          var emoji = m.match(/^[^\s]+/)[0];
+          var label = m.replace(/^[^\s]+\s*/, '');
+          var icon = iconMap[emoji] || 'description';
+          return '<h5 class="writing-feedback-heading"><span class="material-symbols-outlined">' + icon + '</span> ' + label + '</h5>';
+        })
         .replace(/^• (.+)/gm, '<div class="writing-score-line">$1</div>')
         .replace(/\n/g, '<br>');
     },

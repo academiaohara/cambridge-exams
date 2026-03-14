@@ -136,7 +136,7 @@
           '<button class="ml-close-btn" onclick="MicroLearning.close()" aria-label="Close micro-learning">' +
             '<i class="fas fa-times"></i>' +
           '</button>' +
-          '<div class="ml-title">⚡ Micro-Learning</div>' +
+          '<div class="ml-title"><span class="material-symbols-outlined">bolt</span> Micro-Learning</div>' +
           '<div class="ml-progress-text" id="ml-progress-text">1/' + this.cards.length + '</div>' +
         '</div>' +
         '<div class="ml-progress-bar-wrapper">' +
@@ -242,10 +242,10 @@
       if (feedbackEl) {
         if (isCorrect) {
           feedbackEl.className = 'ml-feedback ml-feedback-correct';
-          feedbackEl.innerHTML = '✅ Correct! ' + (card.explanation || '');
+          feedbackEl.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Correct! ' + (card.explanation || '');
         } else {
           feedbackEl.className = 'ml-feedback ml-feedback-wrong';
-          feedbackEl.innerHTML = '❌ The correct answer is <strong>' + card.correct + '</strong>. ' + (card.explanation || '');
+          feedbackEl.innerHTML = '<span class="material-symbols-outlined">cancel</span> The correct answer is <strong>' + card.correct + '</strong>. ' + (card.explanation || '');
           this._vibrate();
         }
         feedbackEl.style.display = 'block';
@@ -275,10 +275,10 @@
       if (feedbackEl) {
         if (isCorrect) {
           feedbackEl.className = 'ml-feedback ml-feedback-correct';
-          feedbackEl.innerHTML = '✅ Correct! ' + (card.explanation || '');
+          feedbackEl.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Correct! ' + (card.explanation || '');
         } else {
           feedbackEl.className = 'ml-feedback ml-feedback-wrong';
-          feedbackEl.innerHTML = '❌ Expected: <strong>' + card.answer + '</strong>. ' + (card.explanation || '');
+          feedbackEl.innerHTML = '<span class="material-symbols-outlined">cancel</span> Expected: <strong>' + card.answer + '</strong>. ' + (card.explanation || '');
           this._vibrate();
         }
         feedbackEl.style.display = 'block';
@@ -343,7 +343,7 @@
       }
 
       slot.innerHTML = '<div class="ml-complete">' +
-        '<div class="ml-complete-icon">🎉</div>' +
+        '<div class="ml-complete-icon"><span class="material-symbols-outlined">celebration</span></div>' +
         '<div class="ml-complete-title">Session Complete!</div>' +
         '<div class="ml-complete-score">' + correct + '/' + total + ' correct</div>' +
         '<div class="ml-complete-pct">' + pct + '%</div>' +
