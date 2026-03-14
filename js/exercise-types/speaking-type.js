@@ -846,6 +846,7 @@
       return escaped
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/\*/g, '')
         .replace(/^(Grammatical\s*Resource|Lexical\s*Resource|Discourse\s*Management|Pronunciation|Interactive\s*Communication|Global\s*Achievement):/gm,
           '<div class="speaking-feedback-criterion-title"><span class="material-symbols-outlined">chevron_right</span> <strong>$1</strong></div>')
         .replace(/^- (.+)/gm, '<div class="speaking-feedback-list-item"><span class="material-symbols-outlined speaking-feedback-list-icon">arrow_right</span> $1</div>')
