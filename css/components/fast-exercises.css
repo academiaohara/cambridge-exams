@@ -259,6 +259,17 @@
 .fe-map-lesson.fe-lesson-pending {
   border-left: 4px solid rgba(45, 46, 95, 0.1);
 }
+.fe-map-lesson.fe-lesson-locked {
+  border-left: 4px solid rgba(45, 46, 95, 0.08);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.fe-map-lesson-lock {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-medium, #64748b);
+  font-size: 0.95rem;
+}
 .fe-map-lesson-title {
   display: flex;
   align-items: center;
@@ -285,6 +296,24 @@
   gap: 0;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+/* Review row - full-width row inside the points row */
+.fe-review-row {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  background: rgba(245, 158, 11, 0.04);
+}
+.fe-review-row.fe-level-active {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.fe-review-row .fe-level-icon {
+  color: #f59e0b;
+}
+.fe-review-row.fe-level-active .fe-level-icon {
+  color: #10b981;
 }
 
 /* Map connector between lessons */
@@ -782,4 +811,37 @@
   .fe-bottom-breadcrumb {
     text-align: center;
   }
+}
+
+/* ── Learning Time Coming Soon Banner ─────────────────────────────────── */
+.lt-coming-soon-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(59, 130, 246, 0.08));
+  border: 1px solid rgba(139, 92, 246, 0.18);
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+.lt-coming-soon-banner > .material-symbols-outlined {
+  font-size: 2rem;
+  color: #8b5cf6;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.lt-coming-soon-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lt-coming-soon-text strong {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #8b5cf6;
+}
+.lt-coming-soon-text span {
+  font-size: 0.88rem;
+  color: var(--text-medium, #64748b);
+  line-height: 1.5;
 }

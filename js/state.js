@@ -26,7 +26,7 @@
     elapsedSeconds: 0,
     currentNoteRange: null,
     selectedNoteColor: '#fef08a',
-    currentLanguage: 'es',
+    currentLanguage: 'en',
     answersChecked: false,
     translations: {},
     tipsData: {},

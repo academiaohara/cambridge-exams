@@ -378,32 +378,90 @@
     },
 
     openLessons: function() {
+      var content = document.getElementById('main-content');
+      if (!content) return;
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var level = AppState.currentLevel || 'C1';
-      var exams = window.EXAMS_DATA[level] || [];
-      var nextLesson = BentoGrid._findNextLesson(exams);
 
-      // If there's a lesson in progress, open it directly
-      if (nextLesson) {
-        if (typeof Exercise !== 'undefined') {
-          Exercise.openPart(nextLesson.examId, nextLesson.section, nextLesson.part);
+      // Define placeholder curriculum sections for the learning time view
+      var sections = [
+        { icon: 'menu_book', name: 'Reading', lessons: ['Skimming & Scanning', 'Multiple Choice Strategy', 'Gapped Text Techniques', 'Multiple Matching'] },
+        { icon: 'headphones', name: 'Listening', lessons: ['Note-Taking Skills', 'Multiple Choice Listening', 'Sentence Completion', 'Speaker Matching'] },
+        { icon: 'edit_note', name: 'Writing', lessons: ['Essay Structure', 'Formal Letters', 'Reports & Reviews', 'Creative Writing'] },
+        { icon: 'record_voice_over', name: 'Speaking', lessons: ['Interview Techniques', 'Long Turn Practice', 'Collaborative Task', 'Discussion Skills'] },
+        { icon: 'spellcheck', name: 'Use of English', lessons: ['Open Cloze', 'Word Formation', 'Key Word Transformation', 'Multiple Choice Cloze'] }
+      ];
+
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+
+      // Build the lesson map (similar to fast exercises progression map)
+      var mapHtml = '<div class="fe-map-container">';
+
+      // Coming soon banner
+      mapHtml += '<div class="lt-coming-soon-banner">' +
+        _mi('schedule') +
+        '<div class="lt-coming-soon-text">' +
+          '<strong>' + t('comingSoon', 'Coming Soon') + '</strong>' +
+          '<span>' + t('learningTimeComingDesc', 'The Learning Time curriculum is under development. Structured lessons with explanations, exercises, and progress tracking will be available here soon.') + '</span>' +
+        '</div>' +
+      '</div>';
+
+      for (var si = 0; si < sections.length; si++) {
+        var section = sections[si];
+
+        mapHtml += '<div class="fe-map-lesson fe-lesson-locked">' +
+          '<div class="fe-map-lesson-title">' +
+            '<span class="fe-map-lesson-lock">' + _mi('lock') + '</span>' +
+            '<span class="fe-map-lesson-num">' + t('section', 'Section') + ' ' + (si + 1) + '</span>' +
+            '<span class="fe-map-lesson-name">' + _mi(section.icon) + ' ' + section.name + '</span>' +
+          '</div>' +
+          '<div class="fe-map-points-row">';
+
+        for (var li = 0; li < section.lessons.length; li++) {
+          // Render each lesson as a row item (like review rows)
+          mapHtml += '<div class="fe-review-row fe-level-item fe-level-locked">' +
+            '<span class="fe-level-icon">' + _mi('lock') + '</span>' +
+            '<div class="fe-level-label">' +
+              '<span class="fe-level-name">' + section.lessons[li] + '</span>' +
+              '<span class="fe-level-pct">' + t('comingSoon', 'Coming Soon') + '</span>' +
+            '</div>' +
+          '</div>';
         }
-        return;
+
+        mapHtml += '</div></div>';
+
+        if (si < sections.length - 1) {
+          mapHtml += '<div class="fe-map-connector"></div>';
+        }
       }
 
-      // Otherwise show placeholder modal
-      var el = document.createElement('div');
-      el.className = 'bento-generic-modal-overlay';
-      el.innerHTML =
-        '<div class="bento-generic-modal">' +
-          '<button class="bento-generic-modal-close" onclick="this.closest(\'.bento-generic-modal-overlay\').remove()">✕</button>' +
-          '<div class="bento-generic-modal-icon"><span class="material-symbols-outlined">auto_stories</span></div>' +
-          '<div class="bento-generic-modal-title">' + t('lessonsCurriculum', 'Lessons &amp; Curriculum') + '</div>' +
-          '<div class="bento-generic-modal-text">' + t('lessonsComingDesc', 'The structured curriculum section is on its way! For now, practise with the exam sections below.') + '</div>' +
-          '<button class="bento-generic-modal-btn" onclick="this.closest(\'.bento-generic-modal-overlay\').remove()">' + t('gotIt', 'Got it') + '</button>' +
+      mapHtml += '</div>';
+
+      // Build sidebars
+      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      var rightSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined') {
+        rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
+        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
+      }
+
+      content.innerHTML =
+        '<div class="dashboard-layout">' +
+          '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+          '<div class="dashboard-center">' +
+            '<div class="fe-section">' +
+              '<div class="subpage-header">' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
+                '<div>' +
+                  '<div class="subpage-title">' + _mi('auto_stories') + ' Learning Time</div>' +
+                  '<div class="subpage-subtitle">' + t('structuredLessons', 'Structured lessons for') + ' ' + level + '</div>' +
+                '</div>' +
+              '</div>' +
+              mapHtml +
+            '</div>' +
+          '</div>' +
+          '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
         '</div>';
-      document.body.appendChild(el);
-      el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
     },
 
     _buildStreakSidebarHtml: function() {
@@ -540,40 +598,19 @@
     },
 
     _buildContinueBasecampHtml: function(exams) {
-      var self = this;
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
-      var nextLesson = BentoGrid._findNextLesson(exams);
-      var sectionIcons = { reading: 'menu_book', listening: 'headphones', writing: 'edit_note', speaking: 'record_voice_over' };
 
-      if (nextLesson) {
-        var icon = sectionIcons[nextLesson.section] || 'auto_stories';
-        var completedParts = nextLesson.completedParts || 0;
-        var totalParts = nextLesson.totalParts || 1;
-        var pct = Math.round((completedParts / totalParts) * 100);
-        return '<div class="sw-left-widget sw-continue-basecamp" onclick="Exercise.openPart(\'' + self._escapeHTML(nextLesson.examId) + '\', \'' + self._escapeHTML(nextLesson.section) + '\', ' + parseInt(nextLesson.part, 10) + ')" style="cursor:pointer">' +
-          '<div class="sw-left-widget-label">' + t('continueBasecamp', 'Continue') + '</div>' +
-          '<div class="sw-left-widget-row">' +
-            '<span class="sw-left-widget-icon"><span class="material-symbols-outlined">' + icon + '</span></span>' +
-            '<div class="sw-left-widget-info">' +
-              '<div class="sw-left-widget-title">' + self._escapeHTML(nextLesson.examId) + '</div>' +
-              '<div class="sw-left-widget-sub">' + self._capitalize(nextLesson.section) + ' · ' + t('part', 'Part') + ' ' + nextLesson.part + '</div>' +
-            '</div>' +
+      // Always point to the Learning Time page (coming soon)
+      return '<div class="sw-left-widget sw-continue-basecamp" onclick="BentoGrid.openLessons()" style="cursor:pointer">' +
+        '<div class="sw-left-widget-label">' + t('learningTime', 'Learning Time') + '</div>' +
+        '<div class="sw-left-widget-row">' +
+          '<span class="sw-left-widget-icon"><span class="material-symbols-outlined">auto_stories</span></span>' +
+          '<div class="sw-left-widget-info">' +
+            '<div class="sw-left-widget-title">' + t('comingSoon', 'Coming Soon') + '</div>' +
+            '<div class="sw-left-widget-sub">' + t('structuredLessons', 'Structured lessons') + '</div>' +
           '</div>' +
-          '<div class="sw-left-progress-track"><div class="sw-left-progress-fill" style="width:' + pct + '%"></div></div>' +
-          '<div class="sw-left-widget-pct">' + completedParts + '/' + totalParts + ' ' + t('parts', 'parts') + '</div>' +
-        '</div>';
-      } else {
-        return '<div class="sw-left-widget sw-continue-basecamp" onclick="BentoGrid.openLessons()" style="cursor:pointer">' +
-          '<div class="sw-left-widget-label">' + t('basecamp', 'Basecamp') + '</div>' +
-          '<div class="sw-left-widget-row">' +
-            '<span class="sw-left-widget-icon"><span class="material-symbols-outlined">landscape</span></span>' +
-            '<div class="sw-left-widget-info">' +
-              '<div class="sw-left-widget-title">' + t('startLearning', 'Start Learning') + '</div>' +
-              '<div class="sw-left-widget-sub">' + t('lessonsAvailable', 'Lessons available') + '</div>' +
-            '</div>' +
-          '</div>' +
-        '</div>';
-      }
+        '</div>' +
+      '</div>';
     },
 
     toggleLevelDropdown: function() {
