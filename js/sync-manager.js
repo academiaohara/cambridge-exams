@@ -191,11 +191,21 @@
         el.className = 'sync-status syncing';
         el.style.display = 'inline-flex';
       } else if (state === 'synced') {
-        el.textContent = '✓ Synced';
+        el.textContent = '';
+        var syncIcon = document.createElement('span');
+        syncIcon.className = 'material-symbols-outlined';
+        syncIcon.textContent = 'check_circle';
+        el.appendChild(syncIcon);
+        el.appendChild(document.createTextNode(' Synced'));
         el.className = 'sync-status synced';
         el.style.display = 'inline-flex';
       } else if (state === 'error') {
-        el.textContent = '⚠ Sync failed';
+        el.textContent = '';
+        var errIcon = document.createElement('span');
+        errIcon.className = 'material-symbols-outlined';
+        errIcon.textContent = 'warning';
+        el.appendChild(errIcon);
+        el.appendChild(document.createTextNode(' Sync failed'));
         el.className = 'sync-status error';
         el.style.display = 'inline-flex';
       } else {
