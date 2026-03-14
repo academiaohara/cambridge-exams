@@ -582,10 +582,20 @@
       }
       if (!level || !level.lessons) return;
 
-      // Find first incomplete point
+      // Find first incomplete point (respecting inter-lesson locking)
       for (var li = 0; li < level.lessons.length; li++) {
         var lesson = level.lessons[li];
         if (!lesson.points) continue;
+
+        // Check if this lesson is locked (previous lesson must be complete)
+        if (li > 0) {
+          var prevLesson = level.lessons[li - 1];
+          if (!this._isLessonComplete(categoryId, levelId, prevLesson.id, prevLesson.points)) {
+            // Previous lesson not complete - can't continue here
+            break;
+          }
+        }
+
         for (var pi = 0; pi < lesson.points.length; pi++) {
           if (!this._isPointComplete(categoryId, levelId, lesson.id, pi)) {
             this.openPoint(categoryId, levelId, lesson.id, pi);
