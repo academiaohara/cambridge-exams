@@ -326,7 +326,7 @@
         var selected = (img === animalAvatar) ? ' animal-avatar-selected' : '';
         var label = img.replace('.png', '').replace('.jpg', '');
         gridHtml += '<div class="animal-avatar-option' + selected + '" onclick="UserProfile._selectAnimalAvatar(\'' + img + '\')" title="' + label + '">' +
-          '<img src="Assets/images/Profiles/' + img + '" alt="' + label + '">' +
+          '<img src="/Assets/images/Profiles/' + img + '" alt="' + label + '">' +
         '</div>';
       });
 

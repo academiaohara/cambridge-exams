@@ -102,11 +102,11 @@
   };
   
   // URLs base (relative paths for GitHub Pages)
-  window.CONFIG.EXERCISES_URL = `Nivel/C1/Exams/`;
-  window.CONFIG.LANG_BASE_URL = `lang/`;
-  window.CONFIG.TIPS_BASE_URL = `tips/`;
-  window.CONFIG.JS_BASE_URL = `js/`;
-  window.CONFIG.CSS_BASE_URL = `css/`;
+  window.CONFIG.EXERCISES_URL = `/Nivel/C1/Exams/`;
+  window.CONFIG.LANG_BASE_URL = `/lang/`;
+  window.CONFIG.TIPS_BASE_URL = `/tips/`;
+  window.CONFIG.JS_BASE_URL = `/js/`;
+  window.CONFIG.CSS_BASE_URL = `/css/`;
   // Configuración de tipos de ejercicios
   window.CONFIG.PART_TYPES = {
     // Reading & Use of English
