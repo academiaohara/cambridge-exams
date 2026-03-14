@@ -44,14 +44,50 @@
       // Restore completed/inProgress statuses from localStorage
       this.restoreExamStatuses();
       
-      // Renderizar dashboard
-      Dashboard.render();
+      // ── URL-based deep-link routing ──────────────────────────
+      var initialState = Router.pathToState();
+      
+      // If the URL points to an exercise with a specific level, apply it
+      if (initialState.level) {
+        AppState.currentLevel = initialState.level;
+        // Re-sync for the target level if it changed
+        if (initialState.level !== savedLevel) {
+          await this.syncExamsFromFolders();
+          this.restoreExamStatuses();
+        }
+      }
+      
+      // Set the initial history entry to dashboard at '/'
+      // Non-dashboard views will push their own entries on top
+      history.replaceState({ view: 'dashboard' }, '', '/');
+      
+      // Render the view indicated by the URL
+      if (initialState.view === 'exercise' && initialState.examId && initialState.section && initialState.part) {
+        Dashboard.render();
+        Exercise.openPart(initialState.examId, initialState.section, initialState.part);
+      } else if (initialState.view === 'subpage' && initialState.mode) {
+        Dashboard.renderSubpage(initialState.mode);
+        // renderSubpage does not push state itself, so push it here
+        history.pushState(initialState, '', Router.stateToPath(initialState));
+      } else if (initialState.view === 'profile') {
+        Dashboard.render();
+        if (typeof UserProfile !== 'undefined') UserProfile.renderProfileSection();
+      } else if (initialState.view === 'premium') {
+        Dashboard.render();
+        if (typeof UserProfile !== 'undefined') UserProfile.renderPremiumSection();
+      } else if (initialState.view === 'gradeEvolution') {
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution();
+      } else if (initialState.view === 'quicksteps') {
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
+      } else {
+        // Default: dashboard
+        Dashboard.render();
+      }
       
       // Update header mode buttons
       this.updateHeaderModeButtons();
-      
-      // Set initial history state
-      history.replaceState({ view: 'dashboard' }, '');
       
       // Handle browser back/forward buttons
       window.addEventListener('popstate', function(e) {
@@ -65,6 +101,7 @@
         } else if (state.view === 'subpage' && state.mode) {
           Dashboard.renderSubpage(state.mode);
         } else if (state.view === 'exercise' && state.examId && state.section && state.part) {
+          if (state.level) AppState.currentLevel = state.level;
           Exercise.openPart(state.examId, state.section, state.part);
         } else if (state.view === 'profile') {
           if (typeof UserProfile !== 'undefined') UserProfile.renderProfileSection();

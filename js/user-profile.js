@@ -448,7 +448,8 @@
       '</div>';
 
       content.innerHTML = html;
-      history.pushState({ view: 'profile' }, '');
+      var profState = { view: 'profile' };
+      history.pushState(profState, '', Router.stateToPath(profState));
     },
 
     // ── Premium Plans Section (rendered inside main-content) ───────────
@@ -506,7 +507,8 @@
       '</div>';
 
       content.innerHTML = html;
-      history.pushState({ view: 'premium' }, '');
+      var premState = { view: 'premium' };
+      history.pushState(premState, '', Router.stateToPath(premState));
     }
   };
 })();

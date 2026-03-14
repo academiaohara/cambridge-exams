@@ -283,7 +283,8 @@
 
     selectMode: function(mode) {
       if (typeof Dashboard !== 'undefined' && Dashboard.renderSubpage) {
-        history.pushState({ view: 'subpage', mode: mode }, '');
+        var modeState = { view: 'subpage', mode: mode };
+        history.pushState(modeState, '', Router.stateToPath(modeState));
         Dashboard.renderSubpage(mode);
       } else if (typeof Dashboard !== 'undefined' && Dashboard.setMode) {
         Dashboard.setMode(mode);
@@ -359,7 +360,8 @@
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
       }
-      history.pushState({ view: 'quicksteps' }, '');
+      var qsState = { view: 'quicksteps' };
+      history.pushState(qsState, '', Router.stateToPath(qsState));
     },
 
     _startQuicksteps: function(category) {
@@ -963,7 +965,8 @@
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
       }
-      history.pushState({ view: 'gradeEvolution' }, '');
+      var geState = { view: 'gradeEvolution' };
+      history.pushState(geState, '', Router.stateToPath(geState));
     }
   };
 })();
