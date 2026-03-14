@@ -90,11 +90,11 @@
       overlay.className = 'wv-modal-overlay';
       overlay.innerHTML =
         '<div class="wv-modal-dialog">' +
-          '<div class="wv-modal-icon">⏰</div>' +
+          '<div class="wv-modal-icon"><span class="material-symbols-outlined">alarm</span></div>' +
           '<h4 class="wv-modal-title">Daily Limit Reached</h4>' +
           '<p>You have used all <strong>5 daily attempts</strong> for full exams.</p>' +
           '<p>Come back tomorrow! Resets in: <span class="exam-blocked-timer">' + timeStr + '</span></p>' +
-          '<p class="wv-modal-note">💡 You can still use <strong>Practice Mode</strong> or <strong>Micro-Learning</strong> without limits.</p>' +
+          '<p class="wv-modal-note"><span class="material-symbols-outlined">lightbulb</span> You can still use <strong>Practice Mode</strong> or <strong>Micro-Learning</strong> without limits.</p>' +
           '<div class="wv-modal-actions">' +
             '<button class="wv-modal-btn wv-modal-btn-primary" id="exam-blocked-ok">Got it</button>' +
           '</div>' +

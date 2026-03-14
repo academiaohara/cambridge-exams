@@ -910,19 +910,19 @@
         html += '<div class="speaking-feedback-section">';
         if (feedback) {
           html += '<div class="speaking-feedback-block">' +
-            '<h4>📝 ' + t('detailedFeedback', 'Detailed Feedback') + '</h4>' +
+            '<h4><span class="material-symbols-outlined">edit_note</span> ' + t('detailedFeedback', 'Detailed Feedback') + '</h4>' +
             '<p>' + feedback.replace(/\n/g, '<br>') + '</p>' +
           '</div>';
         }
         if (strengths) {
           html += '<div class="speaking-feedback-block speaking-strengths">' +
-            '<h4>✅ ' + t('strengths', 'Strengths') + '</h4>' +
+            '<h4><span class="material-symbols-outlined">check_circle</span> ' + t('strengths', 'Strengths') + '</h4>' +
             '<p>' + strengths.replace(/\n/g, '<br>') + '</p>' +
           '</div>';
         }
         if (improvements) {
           html += '<div class="speaking-feedback-block speaking-improvements">' +
-            '<h4>⚠️ ' + t('areasForImprovement', 'Areas for Improvement') + '</h4>' +
+            '<h4><span class="material-symbols-outlined">warning</span> ' + t('areasForImprovement', 'Areas for Improvement') + '</h4>' +
             '<p>' + improvements.replace(/\n/g, '<br>') + '</p>' +
           '</div>';
         }

@@ -35,6 +35,17 @@
         case 'quicksteps':
           return '/quicksteps';
 
+        case 'fastExercises':
+          return '/fast-exercises';
+
+        case 'fastExerciseCategory':
+          return '/fast-exercises/' + (state.categoryId || '');
+
+        case 'fastExercisePoint':
+          return '/fast-exercises/' + (state.categoryId || '') + '/' +
+            (state.levelId || '') + '/' + (state.lessonId || '') + '/' +
+            (typeof state.pointIndex !== 'undefined' ? state.pointIndex : 0);
+
         default:
           return '/';
       }
@@ -68,6 +79,30 @@
       if (first === 'premium')                            return { view: 'premium' };
       if (first === 'stats')                              return { view: 'gradeEvolution' };
       if (first === 'quicksteps')                         return { view: 'quicksteps' };
+
+      // ── Fast Exercises routes ──────────────────────
+      if (first === 'fast-exercises') {
+        if (segments.length === 1) {
+          return { view: 'fastExercises' };
+        }
+        if (segments.length === 2) {
+          return { view: 'fastExerciseCategory', categoryId: segments[1] };
+        }
+        if (segments.length >= 5) {
+          var pointIdx = parseInt(segments[4], 10);
+          if (!isNaN(pointIdx) && pointIdx >= 0) {
+            return {
+              view: 'fastExercisePoint',
+              categoryId: segments[1],
+              levelId: segments[2],
+              lessonId: segments[3],
+              pointIndex: pointIdx
+            };
+          }
+        }
+        // Fallback for fast-exercises with unrecognised sub-path
+        return { view: 'fastExercises' };
+      }
 
       // ── Exercise routes: /{level}/{test-N}/{section}/{part} ──
       var validLevels = ['a2', 'b1', 'b2', 'c1', 'c2'];
