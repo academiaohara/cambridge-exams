@@ -222,11 +222,6 @@
       const avatarUrl = (user.user_metadata && user.user_metadata.avatar_url) || '';
       const name = (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name)) || user.email || 'User';
       const initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
-      var animalAvatar = (typeof UserProfile !== 'undefined' && UserProfile._profile && UserProfile._profile.animal_avatar) ? UserProfile._profile.animal_avatar : null;
-      // Fallback: check localStorage cache if profile hasn't loaded yet
-      if (!animalAvatar) {
-        try { animalAvatar = localStorage.getItem('cambridge_animal_avatar') || null; } catch (e) { /* ignore */ }
-      }
 
       const widget = document.createElement('div');
       widget.id = 'user-widget';
@@ -236,11 +231,10 @@
         if (typeof UserProfile !== 'undefined') { UserProfile.togglePanel(); }
       };
 
-      var widgetAvatarHtml = animalAvatar
-        ? '<img src="Assets/images/Profiles/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
-        : avatarUrl
-          ? '<img src="' + avatarUrl + '" alt="' + name + '">'
-          : '<span class="user-avatar-initials">' + initials + '</span>';
+      // Always use Google profile photo
+      var widgetAvatarHtml = avatarUrl
+        ? '<img src="' + avatarUrl + '" alt="' + name + '">'
+        : '<span class="user-avatar-initials">' + initials + '</span>';
 
       widget.innerHTML =
         '<div class="user-avatar">' +

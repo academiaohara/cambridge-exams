@@ -25,14 +25,73 @@
   var CARD_PERSON_ICON = '<svg viewBox="0 0 80 80" class="speaking-card-icon"><circle cx="40" cy="28" r="14" fill="currentColor"/><ellipse cx="40" cy="64" rx="22" ry="16" fill="currentColor"/></svg>';
 
   // ── Profile avatar system ──
+  // Images for speaking partners (Assets/images/Profiles/)
   var ANIMAL_IMAGES = [
-    'Anna.png', 'Carlos.png', 'Elena.png', 'Fatima.png',
-    'Kenji.png', 'Pierre.png', 'Sofía.png'
+    'Aisha.png', 'Alex.png', 'Anna.png', 'Carla.png', 'Carlos.png',
+    'Daniel.png', 'Elena.png', 'Emma.png', 'Fatima.png', 'Jack.png',
+    'Javier.png', 'Kenji.png', 'Lucas.png', 'Lucia.png', 'Malik.png',
+    'Mateo.png', 'Pierre.png', 'Priya.png', 'Sofia.png', 'Sofía.png'
   ];
 
+  // Images for examiners (Assets/images/Profiles/Examiner/)
   var EXAMINER_IMAGES = [
-    'John.png'
+    'John.png', 'Michael.png', 'Sarah.png'
   ];
+
+  // Gender map for voice selection: 'f' = female, 'm' = male
+  var AVATAR_GENDER = {
+    'Aisha.png': 'f', 'Alex.png': 'm', 'Anna.png': 'f', 'Carla.png': 'f',
+    'Carlos.png': 'm', 'Daniel.png': 'm', 'Elena.png': 'f', 'Emma.png': 'f',
+    'Fatima.png': 'f', 'Jack.png': 'm', 'Javier.png': 'm', 'Kenji.png': 'm',
+    'Lucas.png': 'm', 'Lucia.png': 'f', 'Malik.png': 'm', 'Mateo.png': 'm',
+    'Pierre.png': 'm', 'Priya.png': 'f', 'Sofia.png': 'f', 'Sofía.png': 'f',
+    'John.png': 'm', 'Michael.png': 'm', 'Sarah.png': 'f'
+  };
+
+  // Cached voices for TTS
+  var _cachedVoices = { male: null, female: null, loaded: false };
+
+  function _loadVoices() {
+    if (_cachedVoices.loaded) return;
+    var synth = window.speechSynthesis;
+    if (!synth) return;
+    var voices = synth.getVoices();
+    if (!voices || voices.length === 0) return;
+    // Prefer en-GB voices, fallback to any en voice
+    var enVoices = voices.filter(function(v) { return v.lang && v.lang.indexOf('en') === 0; });
+    if (enVoices.length === 0) enVoices = voices;
+    // Try to find gendered voices by name heuristics
+    var female = null, male = null;
+    enVoices.forEach(function(v) {
+      var n = v.name.toLowerCase();
+      if (!female && (/female|woman|fiona|samantha|karen|moira|tessa|victoria|kate|serena|martha|hazel/.test(n))) female = v;
+      if (!male && (/\bmale\b|man\b|daniel|james|thomas|george|oliver|fred|lee|rishi|aaron/.test(n))) male = v;
+    });
+    // Fallback: if only one found, use different voices by index
+    if (!female && !male && enVoices.length >= 2) {
+      female = enVoices[0];
+      male = enVoices[1];
+    } else if (!female && male) {
+      female = enVoices.find(function(v) { return v !== male; }) || male;
+    } else if (female && !male) {
+      male = enVoices.find(function(v) { return v !== female; }) || female;
+    }
+    _cachedVoices.male = male;
+    _cachedVoices.female = female;
+    _cachedVoices.loaded = true;
+  }
+
+  function _getVoiceForRole(role) {
+    _loadVoices();
+    var assignment = _avatarAssignments[role];
+    if (!assignment) return null;
+    // Extract filename from path
+    var filename = assignment.split('/').pop();
+    var gender = AVATAR_GENDER[filename];
+    if (gender === 'f') return _cachedVoices.female;
+    if (gender === 'm') return _cachedVoices.male;
+    return null;
+  }
 
   // Stable avatar assignments per session (role -> filename)
   var _avatarAssignments = {};
@@ -40,34 +99,25 @@
   function _assignAvatars(participants) {
     if (Object.keys(_avatarAssignments).length > 0) return; // already assigned
     var usedProfiles = [];
-    var profile = (typeof UserProfile !== 'undefined') ? UserProfile._profile : null;
 
-    // Assign user's profile avatar first
-    var cachedAvatar = null;
-    try { cachedAvatar = localStorage.getItem('cambridge_animal_avatar') || null; } catch (e) { /* ignore */ }
-    var userAvatar = (profile && profile.animal_avatar) ? profile.animal_avatar : cachedAvatar;
-    if (userAvatar && ANIMAL_IMAGES.indexOf(userAvatar) !== -1) {
-      _avatarAssignments['candidate'] = 'Assets/images/Profiles/' + userAvatar;
-      usedProfiles.push(userAvatar);
-    } else {
-      // If user kept their original Google photo, use it
-      var googlePhoto = (profile && profile.avatar_url) ? profile.avatar_url : null;
-      if (!googlePhoto) {
-        var user = (typeof Auth !== 'undefined') ? Auth.getUser() : null;
-        if (user && user.user_metadata && user.user_metadata.avatar_url) {
-          googlePhoto = user.user_metadata.avatar_url;
-        }
-      }
-      if (googlePhoto) {
-        _avatarAssignments['candidate'] = googlePhoto;
-      } else {
-        var idx = Math.floor(Math.random() * ANIMAL_IMAGES.length);
-        _avatarAssignments['candidate'] = 'Assets/images/Profiles/' + ANIMAL_IMAGES[idx];
-        usedProfiles.push(ANIMAL_IMAGES[idx]);
+    // Candidate always uses their Google profile photo
+    var googlePhoto = null;
+    var profile = (typeof UserProfile !== 'undefined') ? UserProfile._profile : null;
+    if (profile && profile.avatar_url) {
+      googlePhoto = profile.avatar_url;
+    }
+    if (!googlePhoto) {
+      var user = (typeof Auth !== 'undefined') ? Auth.getUser() : null;
+      if (user && user.user_metadata && user.user_metadata.avatar_url) {
+        googlePhoto = user.user_metadata.avatar_url;
       }
     }
+    if (googlePhoto) {
+      _avatarAssignments['candidate'] = googlePhoto;
+    }
+    // If no Google photo, candidate will use fallback silhouette (no avatar assigned)
 
-    // Assign avatars to other participants
+    // Assign avatars to other participants (partners & examiners)
     var usedExaminers = [];
     participants.forEach(function(role) {
       if (role === 'candidate' || _avatarAssignments[role]) return;
@@ -87,6 +137,12 @@
         usedProfiles.push(pick);
       }
     });
+
+    // Pre-load voices for TTS gender matching
+    if (window.speechSynthesis) {
+      _loadVoices();
+      window.speechSynthesis.onvoiceschanged = function() { _cachedVoices.loaded = false; _loadVoices(); };
+    }
   }
 
   function _getAnimalAvatarHTML(role, cssClass) {
@@ -420,7 +476,7 @@
       this._messages.push({ role: turn.role, text: text });
 
       if (this._synthesis && text) {
-        this._speakText(text, function() {
+        this._speakText(text, turn.role, function() {
           self._scriptIndex++;
           self._processCurrentTurn();
         });
@@ -436,13 +492,16 @@
       this._refreshView();
     },
 
-    _speakText: function(text, cb) {
+    _speakText: function(text, role, cb) {
       if (!this._synthesis) { if (cb) cb(); return; }
       // Cancel any ongoing speech
       this._synthesis.cancel();
       var utter = new SpeechSynthesisUtterance(text);
       utter.lang = 'en-GB';
       utter.rate = 0.95;
+      // Select voice matching the avatar's gender
+      var voice = _getVoiceForRole(role);
+      if (voice) utter.voice = voice;
       utter.onend = function() { if (cb) cb(); };
       utter.onerror = function() { if (cb) cb(); };
       this._synthesis.speak(utter);

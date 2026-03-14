@@ -7,10 +7,12 @@
     _profile: null,
     _panelOpen: false,
 
-    // ── Profile avatar list ──
+    // ── Profile avatar list (used for speaking partners & examiners) ──
     ANIMAL_AVATARS: [
-      'Anna.png', 'Carlos.png', 'Elena.png', 'Fatima.png',
-      'Kenji.png', 'Pierre.png', 'Sofía.png'
+      'Aisha.png', 'Alex.png', 'Anna.png', 'Carla.png', 'Carlos.png',
+      'Daniel.png', 'Elena.png', 'Emma.png', 'Fatima.png', 'Jack.png',
+      'Javier.png', 'Kenji.png', 'Lucas.png', 'Lucia.png', 'Malik.png',
+      'Mateo.png', 'Pierre.png', 'Priya.png', 'Sofia.png', 'Sofía.png'
     ],
 
     getRandomAnimalAvatar: function () {
@@ -180,12 +182,10 @@
       panel.id = 'user-profile-panel';
       panel.className = 'user-profile-panel';
 
-      var animalAvatar = profile.animal_avatar;
-      var panelAvatarHtml = animalAvatar
-        ? '<img src="Assets/images/Profiles/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
-        : avatarUrl
-          ? '<img src="' + avatarUrl + '" alt="' + name + '">'
-          : '<span class="profile-initials-large">' + initials + '</span>';
+      // Always use Google profile photo for user display
+      var panelAvatarHtml = avatarUrl
+        ? '<img src="' + avatarUrl + '" alt="' + name + '">'
+        : '<span class="profile-initials-large">' + initials + '</span>';
 
       panel.innerHTML =
         '<div class="profile-panel-header">' +
@@ -373,12 +373,10 @@
         ? '<div class="profile-section-sub-badge premium"><i class="fas fa-crown"></i> Premium</div>'
         : '<div class="profile-section-sub-badge free"><i class="fas fa-user"></i> ' + t('freePlan', 'Free Plan') + '</div>';
 
-      var animalAvatar = profile.animal_avatar;
-      var avatarHtml = animalAvatar
-        ? '<img src="Assets/images/Profiles/' + animalAvatar + '" alt="' + name + '" class="animal-avatar-circle">'
-        : avatarUrl
-          ? '<img src="' + avatarUrl + '" alt="' + name + '">'
-          : '<span class="profile-initials-large">' + initials + '</span>';
+      // Always use Google profile photo for user display
+      var avatarHtml = avatarUrl
+        ? '<img src="' + avatarUrl + '" alt="' + name + '">'
+        : '<span class="profile-initials-large">' + initials + '</span>';
 
       var levels = ['A2', 'B1', 'B2', 'C1', 'C2'];
       var languages = [
@@ -406,8 +404,7 @@
 
         '<div class="profile-section-card">' +
           '<div class="profile-section-avatar-row">' +
-            '<div class="profile-section-avatar" onclick="UserProfile._toggleAvatarGrid()" onkeypress="if(event.key===\'Enter\')UserProfile._toggleAvatarGrid()" tabindex="0" role="button" style="cursor:pointer" title="' + t('chooseAnimal', 'Choose your profile photo') + '">' + avatarHtml +
-              '<div class="profile-avatar-edit-hint"><i class="fas fa-camera"></i></div>' +
+            '<div class="profile-section-avatar">' + avatarHtml +
             '</div>' +
             '<div class="profile-section-info">' +
               '<div class="profile-name">' + name + '</div>' +
@@ -418,7 +415,6 @@
           (isGuest
             ? '<button class="premium-plan-btn primary" style="max-width:220px" onclick="Auth._showAuthModal()"><i class="fas fa-sign-in-alt"></i> ' + t('signIn', 'Sign in') + '</button>'
             : '') +
-          '<div id="animal-avatar-grid-container" class="animal-avatar-grid-container" style="display:none;"></div>' +
         '</div>' +
 
         '<div class="profile-section-card">' +
