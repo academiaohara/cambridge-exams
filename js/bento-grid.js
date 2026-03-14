@@ -835,7 +835,7 @@
       for (var i = 27; i >= 0; i--) {
         var d = new Date(today);
         d.setDate(today.getDate() - i);
-        var dateStr = d.toISOString().slice(0, 10);
+        var dateStr = StreakManager._formatLocalDate(d);
         var isActive = !!activeDatesSet[dateStr];
         calDays.push({ date: dateStr, active: isActive });
       }
