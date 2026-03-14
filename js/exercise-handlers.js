@@ -549,7 +549,7 @@
     },
     
     
-    resetExercise: function() {
+    resetExercise: async function() {
       // Prevent reset in exam mode
       if (AppState.currentMode === 'exam') return;
       
@@ -593,7 +593,7 @@
       // Re-render exercise for types that use new gap design
       const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'gapped-text', 'multiple-matching'];
       if (reRenderTypes.includes(partConfig.type)) {
-        ExerciseRenderer.render(
+        await ExerciseRenderer.render(
           AppState.currentExercise,
           AppState.currentExamId,
           AppState.currentSection,

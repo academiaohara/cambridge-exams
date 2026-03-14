@@ -1,18 +1,18 @@
 // js/exercise-renderer.js
 (function() {
   window.ExerciseRenderer = {
-    render: function(exercise, examId, section, part) {
+    render: async function(exercise, examId, section, part) {
       const content = document.getElementById('main-content');
       const partConfig = CONFIG.PART_TYPES[section === 'reading' ? part : `${section}${part}`] || CONFIG.PART_TYPES[1];
       
       // Cargar CSS y JS específicos del tipo de ejercicio
       Utils.loadExerciseTypeCSS(partConfig.type);
-      Utils.loadExerciseTypeJS(partConfig.type);
+      var jsPromises = [Utils.loadExerciseTypeJS(partConfig.type)];
       
       // Cargar CSS/JS adicional para secciones de listening
       if (section === 'listening') {
         Utils.loadExerciseTypeCSS('listening-' + part);
-        Utils.loadExerciseTypeJS('listening-' + part);
+        jsPromises.push(Utils.loadExerciseTypeJS('listening-' + part));
       }
       
       const paragraphs = exercise.content.text ? exercise.content.text.split('||') : [];
@@ -287,10 +287,9 @@
       
       content.innerHTML = html;
       
-      // Inicializar listeners específicos después de renderizar
-      setTimeout(() => {
-        this.initTypeSpecificListeners(partConfig.type);
-      }, 100);
+      // Wait for exercise-type JS to load, then initialize type-specific listeners
+      await Promise.all(jsPromises);
+      this.initTypeSpecificListeners(partConfig.type);
     },
     
     processEvidenceMarkers: function(text) {

@@ -300,32 +300,30 @@
           AppState.elapsedSeconds = savedState ? (savedState.elapsedSeconds || 0) : 0;
         }
         
-        ExerciseRenderer.render(exercise, examId, section, part);
+        await ExerciseRenderer.render(exercise, examId, section, part);
         
-        setTimeout(() => {
-          this.restoreSavedAnswers();
-          if (AppState.answersChecked) {
-            const partConfig = CONFIG.PART_TYPES[
-              section === 'reading' ? part : `${section}${part}`
-            ];
-            // Re-run answer checking to restore visual marks
-            const typeChecker = ExerciseHandlers.getTypeChecker(partConfig.type);
-            if (typeChecker && typeof typeChecker.checkAnswers === 'function') {
-              typeChecker.checkAnswers();
-            } else {
-              const questions = AppState.currentExercise.content.questions || [];
-              questions.forEach(q => {
-                const userAnswer = AppState.currentExercise.answers[q.number];
-                const isCorrect = Utils.compareAnswers(userAnswer, q.correct, partConfig.type);
-                ExerciseHandlers.markAnswerVisual(q.number, userAnswer, q.correct, isCorrect, partConfig);
-              });
-            }
-            ExerciseHandlers.disableAllInputs(partConfig);
-            const checkBtn = document.querySelector('.btn-check');
-            if (checkBtn) checkBtn.disabled = true;
-            Timer.updateScoreDisplay();
+        this.restoreSavedAnswers();
+        if (AppState.answersChecked) {
+          const partConfig = CONFIG.PART_TYPES[
+            section === 'reading' ? part : `${section}${part}`
+          ];
+          // Re-run answer checking to restore visual marks
+          const typeChecker = ExerciseHandlers.getTypeChecker(partConfig.type);
+          if (typeChecker && typeof typeChecker.checkAnswers === 'function') {
+            typeChecker.checkAnswers();
+          } else {
+            const questions = AppState.currentExercise.content.questions || [];
+            questions.forEach(q => {
+              const userAnswer = AppState.currentExercise.answers[q.number];
+              const isCorrect = Utils.compareAnswers(userAnswer, q.correct, partConfig.type);
+              ExerciseHandlers.markAnswerVisual(q.number, userAnswer, q.correct, isCorrect, partConfig);
+            });
           }
-        }, 100);
+          ExerciseHandlers.disableAllInputs(partConfig);
+          const checkBtn = document.querySelector('.btn-check');
+          if (checkBtn) checkBtn.disabled = true;
+          Timer.updateScoreDisplay();
+        }
         
         Timer.startTimer();
         
@@ -359,58 +357,56 @@
         `${AppState.currentSection}${AppState.currentPart}`
       ];
       
-      setTimeout(() => {
-        Object.entries(AppState.currentExercise.answers).forEach(([qNum, answer]) => {
-          if (qNum === '0') return;
-          
-          const question = AppState.currentExercise.content.questions?.find(q => q.number === parseInt(qNum));
-          if (!question) return;
-          
-          switch(partConfig.type) {
-            case 'multiple-choice':
-            case 'cross-text-matching':
-            case 'multiple-matching':
-              const option = question.options?.find(opt => opt.startsWith(answer));
-              if (option) {
-                const text = option.substring(2).trim();
-                const answerSpan = document.getElementById(`answer-${qNum}`);
-                if (answerSpan) {
-                  answerSpan.innerHTML = `<span class="gap-number">${qNum})</span> <span class="gap-text">${text}</span>`;
-                  const gapBox = answerSpan.closest('.gap-box');
-                  if (gapBox) gapBox.classList.add('answered');
-                }
-              }
-              break;
-              
-            case 'open-cloze':
-            case 'word-formation':
-            case 'sentence-completion':
-              const input = document.querySelector(`input[data-question="${qNum}"]`);
-              if (input) input.value = answer;
-              break;
-              
-            case 'transformations':
-              const transformationInput = document.querySelector(`input[data-question="${qNum}"]`);
-              if (transformationInput) {
-                transformationInput.value = answer;
-                if (typeof ReadingType4 !== 'undefined') ReadingType4.resizeInput(transformationInput);
-              }
-              break;
-              
-            case 'multiple-choice-text':
-              const radio = document.querySelector(`input[name="q${qNum}"][value="${answer}"]`);
-              if (radio) radio.checked = true;
-              break;
-              
-            case 'gapped-text':
-              const select = document.querySelector(`select[data-question="${qNum}"]`);
-              if (select) select.value = answer;
-              break;
-          }
-        });
+      Object.entries(AppState.currentExercise.answers).forEach(([qNum, answer]) => {
+        if (qNum === '0') return;
         
-        Timer.updateScoreDisplay();
-      }, 100);
+        const question = AppState.currentExercise.content.questions?.find(q => q.number === parseInt(qNum));
+        if (!question) return;
+        
+        switch(partConfig.type) {
+          case 'multiple-choice':
+          case 'cross-text-matching':
+          case 'multiple-matching':
+            const option = question.options?.find(opt => opt.startsWith(answer));
+            if (option) {
+              const text = option.substring(2).trim();
+              const answerSpan = document.getElementById(`answer-${qNum}`);
+              if (answerSpan) {
+                answerSpan.innerHTML = `<span class="gap-number">${qNum})</span> <span class="gap-text">${text}</span>`;
+                const gapBox = answerSpan.closest('.gap-box');
+                if (gapBox) gapBox.classList.add('answered');
+              }
+            }
+            break;
+            
+          case 'open-cloze':
+          case 'word-formation':
+          case 'sentence-completion':
+            const input = document.querySelector(`input[data-question="${qNum}"]`);
+            if (input) input.value = answer;
+            break;
+            
+          case 'transformations':
+            const transformationInput = document.querySelector(`input[data-question="${qNum}"]`);
+            if (transformationInput) {
+              transformationInput.value = answer;
+              if (typeof ReadingType4 !== 'undefined') ReadingType4.resizeInput(transformationInput);
+            }
+            break;
+            
+          case 'multiple-choice-text':
+            const radio = document.querySelector(`input[name="q${qNum}"][value="${answer}"]`);
+            if (radio) radio.checked = true;
+            break;
+            
+          case 'gapped-text':
+            const select = document.querySelector(`select[data-question="${qNum}"]`);
+            if (select) select.value = answer;
+            break;
+        }
+      });
+      
+      Timer.updateScoreDisplay();
     },
     
     goToNextPart: async function() {
