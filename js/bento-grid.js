@@ -294,7 +294,11 @@
     },
 
     openMicroLearning: function() {
-      BentoGrid.openQuickstepsChooser();
+      if (typeof FastExercises !== 'undefined') {
+        FastExercises.openCategories();
+      } else {
+        BentoGrid.openQuickstepsChooser();
+      }
     },
 
     openQuickstepsChooser: function() {

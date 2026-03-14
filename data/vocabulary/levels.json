@@ -1,0 +1,44 @@
+{
+  "category": "vocabulary",
+  "name": "Vocabulary",
+  "icon": "📖",
+  "color": "#10b981",
+  "levels": [
+    {
+      "id": "A2",
+      "name": "A2 – Elementary",
+      "requiredToUnlock": null,
+      "totalLessons": 5,
+      "lessons": [
+        { "id": "lesson-1", "title": "Home & Family", "points": [
+          { "type": "explanation", "label": "Household items" },
+          { "type": "exercise", "label": "Practice: Home vocab" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-2", "title": "Food & Drink", "points": [
+          { "type": "explanation", "label": "Common food items" },
+          { "type": "exercise", "label": "Practice: Food vocab" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-3", "title": "Travel & Transport", "points": [
+          { "type": "explanation", "label": "Getting around" },
+          { "type": "exercise", "label": "Practice: Travel vocab" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-4", "title": "Weather & Nature", "points": [
+          { "type": "explanation", "label": "Describing weather" },
+          { "type": "exercise", "label": "Practice: Weather vocab" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-5", "title": "Final Challenge: A2", "points": [
+          { "type": "exercise", "label": "Mixed review" },
+          { "type": "trophy", "label": "A2 Final Challenge" }
+        ]}
+      ]
+    },
+    { "id": "B1", "name": "B1 – Intermediate", "requiredToUnlock": "A2", "totalLessons": 5, "lessons": [] },
+    { "id": "B2", "name": "B2 – Upper Intermediate", "requiredToUnlock": "B1", "totalLessons": 5, "lessons": [] },
+    { "id": "C1", "name": "C1 – Advanced", "requiredToUnlock": "B2", "totalLessons": 5, "lessons": [] },
+    { "id": "C2", "name": "C2 – Proficiency", "requiredToUnlock": "C1", "totalLessons": 5, "lessons": [] }
+  ]
+}
