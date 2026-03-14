@@ -137,14 +137,14 @@
         var availEx = EXAMINER_IMAGES.filter(function(img) { return usedExaminers.indexOf(img) === -1; });
         if (availEx.length === 0) availEx = EXAMINER_IMAGES;
         var pickEx = availEx[Math.floor(Math.random() * availEx.length)];
-        assigns[role] = 'Assets/images/Profiles/Examiner/' + pickEx;
+        assigns[role] = '/Assets/images/Profiles/Examiner/' + pickEx;
         usedExaminers.push(pickEx);
       } else {
         // Partner uses images from Profiles/
         var available = ANIMAL_IMAGES.filter(function(img) { return usedProfiles.indexOf(img) === -1; });
         if (available.length === 0) available = ANIMAL_IMAGES;
         var pick = available[Math.floor(Math.random() * available.length)];
-        assigns[role] = 'Assets/images/Profiles/' + pick;
+        assigns[role] = '/Assets/images/Profiles/' + pick;
         usedProfiles.push(pick);
       }
     });
@@ -532,6 +532,7 @@
 
     _processCurrentTurn: function() {
       var self = this;
+      if (this._conversationEnded) return;
       if (this._scriptIndex >= this._script.length) {
         this._endConversation();
         return;
