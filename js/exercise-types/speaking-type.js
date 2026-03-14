@@ -221,6 +221,12 @@
       this._stopSpeakingTimer();
       this._speakingElapsed = 0;
 
+      // Check for previously saved evaluation
+      var savedEvaluation = null;
+      if (exercise.answers && exercise.answers._aiFeedback) {
+        savedEvaluation = exercise.answers._aiFeedback;
+      }
+
       // Assign animal avatars — keep the same examiner across all speaking parts
       var currentSection = AppState.currentSection || 'speaking';
       if (window._speakingAvatarState.section !== currentSection) {
@@ -264,6 +270,14 @@
       if (explBtn) explBtn.style.display = 'none';
 
       this._bindEvents();
+
+      // If there's a saved evaluation, show the score card from the last attempt
+      if (savedEvaluation) {
+        this._conversationEnded = true;
+        this._evaluated = true;
+        this._refreshView();
+        this._showScoreCard(savedEvaluation);
+      }
     },
 
     checkAnswers: function() {
@@ -377,7 +391,21 @@
         return self._buildChatBubble(m.role, m.text);
       }).join('');
 
+      // Build timer for chat mode
+      var timerHTML = '';
+      if (this._conversationStarted && !this._conversationEnded) {
+        var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+        var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
+        var mins = Math.floor(remaining / 60);
+        var secs = remaining % 60;
+        var timeStr = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+        timerHTML = '<div class="speaking-chat-timer" id="speaking-chat-timer">' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + timeStr + '</span>' +
+        '</div>';
+      }
+
       return '<div class="speaking-chat">' +
+        timerHTML +
         '<div class="speaking-chat-history" id="speaking-chat-history">' +
           (messagesHTML || '<div class="speaking-type-start-msg"><i class="fas fa-comments"></i> ' + t('conversationStarted', 'The conversation has started') + '</div>') +
         '</div>' +
@@ -425,7 +453,7 @@
             '<i class="fas fa-phone-slash"></i>' +
           '</button>' +
         '</div>' +
-        (isMine ? '<div class="speaking-your-turn">' + t('yourTurn', 'Your turn') + '</div>' : '') +
+        (isMine ? '<div class="speaking-your-turn" id="speaking-turn-indicator"><i class="fas fa-microphone"></i> ' + t('pressMicToSpeak', 'Press the microphone button to speak') + '</div>' : '') +
         (!isMine && !this._conversationEnded ? '<div class="speaking-skip-row"><button class="speaking-skip-btn" id="speaking-skip-btn" style="display:none">' + t('skipTurn', 'Skip turn') + '</button></div>' : '') +
       '</div>';
     },
@@ -508,8 +536,8 @@
           var mins = Math.floor(remaining / 60);
           var secs = remaining % 60;
           display.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
-          // Color coding
-          var timerEl = document.getElementById('speaking-stage-timer');
+          // Color coding for both videocall and chat timers
+          var timerEl = document.getElementById('speaking-stage-timer') || document.getElementById('speaking-chat-timer');
           if (timerEl) {
             timerEl.classList.remove('speaking-timer-warning', 'speaking-timer-danger');
             if (remaining <= 30) timerEl.classList.add('speaking-timer-danger');
@@ -685,12 +713,19 @@
     _updateMicButton: function() {
       var btn = document.getElementById('speaking-mic-btn');
       if (!btn) return;
+      var indicator = document.getElementById('speaking-turn-indicator');
       if (this._isRecording) {
         btn.classList.add('speaking-mic-recording');
         btn.innerHTML = '<i class="fas fa-stop"></i>';
+        if (indicator) {
+          indicator.innerHTML = '<span class="speaking-pulse"></span> ' + t('speakingNow', 'Speaking...');
+        }
       } else {
         btn.classList.remove('speaking-mic-recording');
         btn.innerHTML = '<i class="fas fa-microphone"></i>';
+        if (indicator) {
+          indicator.innerHTML = '<i class="fas fa-microphone"></i> ' + t('pressMicToSpeak', 'Press the microphone button to speak');
+        }
       }
     },
 
