@@ -246,7 +246,7 @@
                 } <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
               </div>
               <div class="exercise-info-right">
-                <div class="exercise-timer" id="exercise-timer">
+                <div class="exercise-timer" id="exercise-timer"${section === 'speaking' ? ' style="display:none"' : ''}>
                   <i class="fas fa-hourglass-half"></i>
                   <span id="timer-display">${
                     (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])

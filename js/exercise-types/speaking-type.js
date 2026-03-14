@@ -83,7 +83,7 @@
 
   function _getVoiceForRole(role) {
     _loadVoices();
-    var assignment = _avatarAssignments[role];
+    var assignment = _getAssignments()[role];
     if (!assignment) return null;
     // Extract filename from path
     var filename = assignment.split('/').pop();
@@ -93,11 +93,22 @@
     return null;
   }
 
-  // Stable avatar assignments per session (role -> filename)
-  var _avatarAssignments = {};
+  // Stable avatar assignments per speaking section (role -> filename)
+  // Persisted across parts so the same examiner is kept for all 4 exercises.
+  // Stored on window because the IIFE re-executes when different speaking types
+  // (interview, long-turn, collaborative, discussion) load the same file.
+  if (!window._speakingAvatarState) {
+    window._speakingAvatarState = { assignments: {}, section: null };
+  }
+
+  // Helper to always get the current assignments object
+  function _getAssignments() {
+    return window._speakingAvatarState.assignments;
+  }
 
   function _assignAvatars(participants) {
-    if (Object.keys(_avatarAssignments).length > 0) return; // already assigned
+    var assigns = _getAssignments();
+    if (Object.keys(assigns).length > 0) return; // already assigned
     var usedProfiles = [];
 
     // Candidate always uses their Google profile photo
@@ -113,27 +124,27 @@
       }
     }
     if (googlePhoto) {
-      _avatarAssignments['candidate'] = googlePhoto;
+      assigns['candidate'] = googlePhoto;
     }
     // If no Google photo, candidate will use fallback silhouette (no avatar assigned)
 
     // Assign avatars to other participants (partners & examiners)
     var usedExaminers = [];
     participants.forEach(function(role) {
-      if (role === 'candidate' || _avatarAssignments[role]) return;
+      if (role === 'candidate' || assigns[role]) return;
       if (role === 'examiner') {
         // Examiner uses images from Profiles/Examiner/
         var availEx = EXAMINER_IMAGES.filter(function(img) { return usedExaminers.indexOf(img) === -1; });
         if (availEx.length === 0) availEx = EXAMINER_IMAGES;
         var pickEx = availEx[Math.floor(Math.random() * availEx.length)];
-        _avatarAssignments[role] = 'Assets/images/Profiles/Examiner/' + pickEx;
+        assigns[role] = 'Assets/images/Profiles/Examiner/' + pickEx;
         usedExaminers.push(pickEx);
       } else {
         // Partner uses images from Profiles/
         var available = ANIMAL_IMAGES.filter(function(img) { return usedProfiles.indexOf(img) === -1; });
         if (available.length === 0) available = ANIMAL_IMAGES;
         var pick = available[Math.floor(Math.random() * available.length)];
-        _avatarAssignments[role] = 'Assets/images/Profiles/' + pick;
+        assigns[role] = 'Assets/images/Profiles/' + pick;
         usedProfiles.push(pick);
       }
     });
@@ -147,7 +158,7 @@
 
   function _getAnimalAvatarHTML(role, cssClass) {
     var cls = cssClass || 'speaking-animal-avatar';
-    var img = _avatarAssignments[role];
+    var img = _getAssignments()[role];
     if (img) {
       return '<img src="' + img + '" alt="" class="' + cls + '">';
     }
@@ -182,6 +193,8 @@
     _finalTranscript: '',
     _evaluating: false,
     _evaluated: false,
+    _speakingTimerInterval: null,
+    _speakingElapsed: 0,
 
     // ── Public API ──
 
@@ -206,9 +219,15 @@
       this._finalTranscript = '';
       this._evaluating = false;
       this._evaluated = false;
+      this._stopSpeakingTimer();
+      this._speakingElapsed = 0;
 
-      // Assign animal avatars for this session
-      _avatarAssignments = {};
+      // Assign animal avatars — keep the same examiner across all speaking parts
+      var currentSection = AppState.currentSection || 'speaking';
+      if (window._speakingAvatarState.section !== currentSection) {
+        window._speakingAvatarState.assignments = {};
+        window._speakingAvatarState.section = currentSection;
+      }
       _assignAvatars(this._participants);
 
       var task = content.task || content.questions?.[0]?.task || '';
@@ -325,8 +344,22 @@
           '</div>';
       });
 
+      // Build speaking timer (countdown shown in stage)
+      var timerHTML = '';
+      if (this._conversationStarted && !this._conversationEnded) {
+        var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+        var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
+        var mins = Math.floor(remaining / 60);
+        var secs = remaining % 60;
+        var timeStr = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+        timerHTML = '<div class="speaking-stage-timer" id="speaking-stage-timer">' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + timeStr + '</span>' +
+        '</div>';
+      }
+
       return '<div class="speaking-videocall speaking-stage">' +
         '<div class="speaking-stage-scene">' +
+          timerHTML +
           featuredHTML +
           '<div class="speaking-stage-cards">' +
             thumbnailCards +
@@ -389,6 +422,9 @@
           '<button class="speaking-send-btn" id="speaking-send-btn"' + (isMine ? '' : ' disabled') + '>' +
             '<i class="fas fa-paper-plane"></i>' +
           '</button>' +
+          '<button class="speaking-end-btn" id="speaking-end-btn" title="' + t('endConversation', 'End conversation') + '">' +
+            '<i class="fas fa-phone-slash"></i>' +
+          '</button>' +
         '</div>' +
         (isMine ? '<div class="speaking-your-turn">' + t('yourTurn', 'Your turn') + '</div>' : '') +
         (!isMine && !this._conversationEnded ? '<div class="speaking-skip-row"><button class="speaking-skip-btn" id="speaking-skip-btn" style="display:none">' + t('skipTurn', 'Skip turn') + '</button></div>' : '') +
@@ -441,6 +477,11 @@
       if (skipBtn) {
         skipBtn.onclick = function() { self._skipTurn(); };
       }
+
+      var endBtn = document.getElementById('speaking-end-btn');
+      if (endBtn) {
+        endBtn.onclick = function() { self._endConversation(); };
+      }
     },
 
     // ── Conversation flow ──
@@ -449,8 +490,44 @@
       this._conversationStarted = true;
       this._scriptIndex = 0;
       this._messages = [];
+      // Start the speaking countdown timer
+      this._startSpeakingTimer();
       this._refreshView();
       this._processCurrentTurn();
+    },
+
+    _startSpeakingTimer: function() {
+      var self = this;
+      if (this._speakingTimerInterval) clearInterval(this._speakingTimerInterval);
+      this._speakingElapsed = 0;
+      var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+      this._speakingTimerInterval = setInterval(function() {
+        self._speakingElapsed++;
+        var display = document.getElementById('speaking-timer-display');
+        if (display) {
+          var remaining = Math.max(0, totalSeconds - self._speakingElapsed);
+          var mins = Math.floor(remaining / 60);
+          var secs = remaining % 60;
+          display.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+          // Color coding
+          var timerEl = document.getElementById('speaking-stage-timer');
+          if (timerEl) {
+            timerEl.classList.remove('speaking-timer-warning', 'speaking-timer-danger');
+            if (remaining <= 30) timerEl.classList.add('speaking-timer-danger');
+            else if (remaining <= 60) timerEl.classList.add('speaking-timer-warning');
+          }
+        }
+        if (self._speakingElapsed >= totalSeconds) {
+          self._endConversation();
+        }
+      }, 1000);
+    },
+
+    _stopSpeakingTimer: function() {
+      if (this._speakingTimerInterval) {
+        clearInterval(this._speakingTimerInterval);
+        this._speakingTimerInterval = null;
+      }
     },
 
     _processCurrentTurn: function() {
@@ -623,6 +700,8 @@
       if (this._conversationEnded) return;
       this._conversationEnded = true;
       this._activeSpeaker = null;
+      // Stop the speaking countdown timer
+      this._stopSpeakingTimer();
       if (this._isRecording) {
         this._isRecording = false;
         if (this._recognition) {
@@ -923,6 +1002,23 @@
           }, 3000);
         }
       }
+    },
+
+    // ── Cleanup: stop all audio/recording when navigating away ──
+
+    cleanup: function() {
+      this._stopSpeakingTimer();
+      if (this._isRecording) {
+        this._isRecording = false;
+        if (this._recognition) {
+          try { this._recognition.stop(); } catch(e) {}
+        }
+      }
+      if (this._synthesis) {
+        this._synthesis.cancel();
+      }
+      this._conversationEnded = true;
+      this._activeSpeaker = null;
     }
   };
 })();

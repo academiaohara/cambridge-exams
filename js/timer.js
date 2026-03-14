@@ -12,6 +12,9 @@
     startTimer: function() {
       if (this.timerInterval) clearInterval(this.timerInterval);
       
+      // Speaking uses its own in-stage timer — skip the global timer
+      if (AppState.currentSection === 'speaking') return;
+      
       this.updateTimerDisplay();
       this.updateTimerColor();
       
