@@ -812,13 +812,13 @@
 
       // Show feedback
       if (feedbackEl) {
+        var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
         if (isCorrect) {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-correct';
-          feedbackEl.innerHTML = '✅ Correct!';
+          feedbackEl.textContent = '✅ ' + t('correct', 'Correct') + '!';
         } else {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
-          // Get explanation from data
-          feedbackEl.innerHTML = '❌ The correct answer is <strong>' + correctAnswer + '</strong>';
+          feedbackEl.textContent = '❌ ' + t('correctAnswerIs', 'The correct answer is') + ' ' + correctAnswer;
         }
         feedbackEl.style.display = 'block';
       }
