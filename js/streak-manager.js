@@ -113,8 +113,14 @@
       }
     },
 
+    _formatLocalDate: function(d) {
+      var mm = d.getMonth() + 1;
+      var dd = d.getDate();
+      return d.getFullYear() + '-' + (mm < 10 ? '0' : '') + mm + '-' + (dd < 10 ? '0' : '') + dd;
+    },
+
     _today: function() {
-      return new Date().toISOString().slice(0, 10);
+      return this._formatLocalDate(new Date());
     },
 
     _checkAndUpdate: function() {
@@ -178,7 +184,7 @@
         // Keep only last 90 days to avoid unbounded growth
         var cutoff = new Date();
         cutoff.setDate(cutoff.getDate() - 90);
-        var cutoffStr = cutoff.toISOString().slice(0, 10);
+        var cutoffStr = this._formatLocalDate(cutoff);
         this.data.activeDates = this.data.activeDates.filter(function(d) { return d >= cutoffStr; });
       }
 
