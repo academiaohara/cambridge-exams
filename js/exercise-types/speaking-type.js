@@ -825,7 +825,7 @@
       }
       scoreArea.innerHTML =
         '<div class="speaking-eval-loading">' +
-          '<i class="fas fa-spinner fa-spin"></i> ' +
+          '<span class="material-symbols-outlined speaking-eval-spinner">progress_activity</span> ' +
           t('evaluatingSpeaking', 'Evaluating your speaking performance...') +
         '</div>';
     },
@@ -844,18 +844,21 @@
     _formatFeedbackContent: function(text) {
       var escaped = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       return escaped
-        .replace(/^(Grammatical\s*Resource|Lexical\s*Resource|Discourse\s*Management|Pronunciation|Interactive\s*Communication):/gm,
-          '<div class="speaking-feedback-criterion-title"><i class="fas fa-angle-right"></i> <strong>$1</strong></div>')
-        .replace(/^- (.+)/gm, '<div class="speaking-feedback-list-item"><i class="fas fa-chevron-right speaking-feedback-list-icon"></i> $1</div>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/\*/g, '')
+        .replace(/^(Grammatical\s*Resource|Lexical\s*Resource|Discourse\s*Management|Pronunciation|Interactive\s*Communication|Global\s*Achievement):/gm,
+          '<div class="speaking-feedback-criterion-title"><span class="material-symbols-outlined">chevron_right</span> <strong>$1</strong></div>')
+        .replace(/^- (.+)/gm, '<div class="speaking-feedback-list-item"><span class="material-symbols-outlined speaking-feedback-list-icon">arrow_right</span> $1</div>')
         .replace(/\n/g, '<br>');
     },
 
     _buildFeedbackTabs: function(sections) {
       var self = this;
       var tabs = [
-        { id: 'detailed', icon: 'fa-comment-dots', label: t('detailedFeedback', 'Detailed Feedback'), content: sections.detailed },
-        { id: 'strengths', icon: 'fa-check-circle', label: t('strengths', 'Strengths'), content: sections.strengths },
-        { id: 'improvements', icon: 'fa-exclamation-triangle', label: t('areasForImprovement', 'Areas for Improvement'), content: sections.improvements }
+        { id: 'detailed', icon: 'chat', label: t('detailedFeedback', 'Detailed Feedback'), content: sections.detailed },
+        { id: 'strengths', icon: 'check_circle', label: t('strengths', 'Strengths'), content: sections.strengths },
+        { id: 'improvements', icon: 'warning', label: t('areasForImprovement', 'Areas for Improvement'), content: sections.improvements }
       ].filter(function(tab) { return tab.content; });
 
       if (!tabs.length) return '';
@@ -864,7 +867,7 @@
       html += '<div class="speaking-feedback-tab-buttons">';
       tabs.forEach(function(tab, i) {
         html += '<button class="speaking-feedback-tab-btn' + (i === 0 ? ' active' : '') + '" data-tab="' + tab.id + '" onclick="SpeakingType.switchFeedbackTab(\'' + tab.id + '\')">' +
-          '<i class="fas ' + tab.icon + '"></i> ' + tab.label +
+          '<span class="material-symbols-outlined">' + tab.icon + '</span> ' + tab.label +
         '</button>';
       });
       html += '</div>';
@@ -942,7 +945,7 @@
           partNav +
           '<div class="speaking-score-card">' +
             '<div class="speaking-score-header">' +
-              '<i class="fas fa-microphone-slash"></i> ' +
+              '<span class="material-symbols-outlined">mic_off</span> ' +
               t('noSpeakingData', 'No speaking data to evaluate') +
             '</div>' +
           '</div>';
@@ -989,7 +992,7 @@
         partNav +
         '<div class="speaking-score-card">' +
           '<div class="speaking-score-header">' +
-            '<i class="fas fa-chart-bar"></i> ' +
+            '<span class="material-symbols-outlined">bar_chart</span> ' +
             t('speakingAssessment', 'Speaking Assessment') +
           '</div>' +
           '<div class="speaking-score-total speaking-total-' + gradeClass + '">' +
