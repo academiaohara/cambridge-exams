@@ -309,7 +309,7 @@
         var lvPct = this._getLevelPercent(catMeta.id, lv.id, data.levels);
 
         var stateClass = isActive ? 'fe-level-active' : (isUnlocked ? 'fe-level-unlocked' : 'fe-level-locked');
-        var icon = isComplete ? _mi('check_circle') : (isUnlocked ? '○' : _mi('lock'));
+        var icon = isComplete ? _mi('check_circle') : (isUnlocked ? _mi('radio_button_unchecked') : _mi('lock'));
         var onclick = isUnlocked ? 'onclick="FastExercises._switchLevel(\'' + catMeta.id + '\', \'' + lv.id + '\')"' : '';
 
         levelsHtml += '<div class="fe-level-item ' + stateClass + '" ' + onclick + '>' +
@@ -417,16 +417,16 @@
             var dotIcon = '';
             if (point.type === 'explanation') {
               dotClass += ' fe-dot-explanation';
-              dotIcon = isDone ? '✓' : '○';
+              dotIcon = isDone ? _mi('check') : _mi('article');
             } else if (point.type === 'exercise') {
               dotClass += ' fe-dot-exercise';
-              dotIcon = isDone ? '✓' : '●';
+              dotIcon = isDone ? _mi('check') : _mi('fitness_center');
             } else if (point.type === 'review') {
               dotClass += ' fe-dot-review';
-              dotIcon = isDone ? '✓' : '═';
+              dotIcon = isDone ? _mi('check') : _mi('rate_review');
             } else if (point.type === 'trophy') {
               dotClass += ' fe-dot-trophy';
-              dotIcon = isDone ? '✓' : _mi('emoji_events');
+              dotIcon = isDone ? _mi('check') : _mi('emoji_events');
             }
 
             if (isDone) dotClass += ' fe-dot-done';
@@ -454,10 +454,10 @@
 
       // Legend
       html += '<div class="fe-map-legend">' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-explanation fe-dot-mini">○</span> ' + t('explanation', 'Explanation') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-exercise fe-dot-mini">●</span> ' + t('exercise', 'Exercise') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-review fe-dot-mini">═</span> ' + t('review', 'Review') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-trophy fe-dot-mini">★</span> ' + t('challenge', 'Challenge') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-explanation fe-dot-mini">' + _mi('article') + '</span> ' + t('explanation', 'Explanation') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-exercise fe-dot-mini">' + _mi('fitness_center') + '</span> ' + t('exercise', 'Exercise') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-review fe-dot-mini">' + _mi('rate_review') + '</span> ' + t('review', 'Review') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-trophy fe-dot-mini">' + _mi('emoji_events') + '</span> ' + t('challenge', 'Challenge') + '</span>' +
       '</div>';
 
       return html;

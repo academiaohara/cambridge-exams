@@ -250,11 +250,19 @@
       if (statusEl) {
         if (!result || result.error) {
           statusEl.textContent = '';
-          statusEl.innerHTML = '<span class="material-symbols-outlined">warning</span> Could not save';
+          var warnIcon = document.createElement('span');
+          warnIcon.className = 'material-symbols-outlined';
+          warnIcon.textContent = 'warning';
+          statusEl.appendChild(warnIcon);
+          statusEl.appendChild(document.createTextNode(' Could not save'));
           statusEl.className = 'profile-sync-status error';
         } else {
           statusEl.textContent = '';
-          statusEl.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Saved';
+          var okIcon = document.createElement('span');
+          okIcon.className = 'material-symbols-outlined';
+          okIcon.textContent = 'check_circle';
+          statusEl.appendChild(okIcon);
+          statusEl.appendChild(document.createTextNode(' Saved'));
           statusEl.className = 'profile-sync-status saved';
           setTimeout(function () { if (statusEl) { statusEl.textContent = ''; statusEl.className = 'profile-sync-status'; } }, 2000);
         }
