@@ -797,3 +797,28 @@
   font-size: 0.75rem;
   color: var(--primary);
 }
+
+/* Spinner animation for loading icon */
+.speaking-eval-spinner {
+  animation: speaking-spin 1s linear infinite;
+}
+@keyframes speaking-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Colored feedback tab panels */
+#panel-sf-strengths .speaking-feedback-list-item {
+  border-left-color: #22c55e;
+  background: #f0fdf4;
+}
+#panel-sf-strengths .speaking-feedback-list-icon {
+  color: #16a34a;
+}
+#panel-sf-improvements .speaking-feedback-list-item {
+  border-left-color: #f59e0b;
+  background: #fffbeb;
+}
+#panel-sf-improvements .speaking-feedback-list-icon {
+  color: #d97706;
+}
