@@ -108,7 +108,6 @@
 
   function _assignAvatars(participants) {
     var assigns = _getAssignments();
-    if (Object.keys(assigns).length > 0) return; // already assigned
     var usedProfiles = [];
 
     // Candidate always uses their Google profile photo
