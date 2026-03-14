@@ -7,7 +7,7 @@
       
       // Cargar CSS y JS específicos del tipo de ejercicio
       Utils.loadExerciseTypeCSS(partConfig.type);
-      var jsPromises = [Utils.loadExerciseTypeJS(partConfig.type)];
+      const jsPromises = [Utils.loadExerciseTypeJS(partConfig.type)];
       
       // Cargar CSS/JS adicional para secciones de listening
       if (section === 'listening') {
