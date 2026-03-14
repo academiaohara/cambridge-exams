@@ -358,7 +358,7 @@
         
         Timer.startTimer();
         
-        var exState = { view: 'exercise', examId: examId, section: section, part: part, level: AppState.currentLevel };
+        var exState = { view: 'exercise', examId: examId, section: section, part: part, level: AppState.currentLevel, mode: AppState.currentMode };
         history.pushState(exState, '', Router.stateToPath(exState));
         
       } catch (error) {

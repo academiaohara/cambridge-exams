@@ -53,6 +53,12 @@
         }
       }
       
+      // If the URL indicates a mode, apply it
+      if (initialState.mode) {
+        AppState.currentMode = initialState.mode;
+        localStorage.setItem('preferred_mode', initialState.mode);
+      }
+      
       // Render the view indicated by the URL
       if (initialState.view === 'exercise' && initialState.examId && initialState.section && initialState.part) {
         history.replaceState({ view: 'dashboard' }, '', '/');
@@ -112,6 +118,10 @@
           Dashboard.renderSubpage(state.mode);
         } else if (state.view === 'exercise' && state.examId && state.section && state.part) {
           if (state.level) AppState.currentLevel = state.level;
+          if (state.mode) {
+            AppState.currentMode = state.mode;
+            localStorage.setItem('preferred_mode', state.mode);
+          }
           Exercise.openPart(state.examId, state.section, state.part);
         } else if (state.view === 'profile') {
           if (typeof UserProfile !== 'undefined') UserProfile.renderProfileSection();
