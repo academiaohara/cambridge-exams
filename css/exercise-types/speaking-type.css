@@ -348,7 +348,27 @@
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
+  position: relative;
 }
+
+/* Timer in chat mode */
+.speaking-chat .speaking-chat-timer {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 10;
+  display: flex; align-items: center; gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-medium);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.speaking-chat-timer i { font-size: 0.7rem; opacity: 0.7; }
+.speaking-chat-timer.speaking-timer-warning { color: #d97706; }
+.speaking-chat-timer.speaking-timer-danger { color: #ef4444; animation: speaking-timer-blink 1s ease-in-out infinite; }
 
 .speaking-chat-history {
   min-height: 300px;
@@ -683,6 +703,11 @@
   background: #eff6ff;
 }
 .speaking-part-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+.speaking-part-btn.active:hover:not(:disabled) {
   background: var(--primary);
   border-color: var(--primary);
   color: var(--white);
