@@ -53,21 +53,23 @@
       const fileInfo = window.CONFIG?.EXERCISE_TYPE_FILES?.[type];
       if (!fileInfo || !fileInfo.js) {
         console.warn(`⚠️ No hay JS definido para el tipo: ${type}`);
-        return;
+        return Promise.resolve();
       }
       
       const jsId = `js-${type}`;
       if (document.getElementById(jsId)) {
         console.log(`✅ JS ya cargado para tipo: ${type}`);
-        return;
+        return Promise.resolve();
       }
       
-      const script = document.createElement('script');
-      script.id = jsId;
-      script.src = `${window.CONFIG.JS_BASE_URL}exercise-types/${fileInfo.js}`;
-      script.onload = () => console.log(`📦 JS cargado: ${fileInfo.js}`);
-      script.onerror = () => console.error(`❌ Error cargando JS: ${fileInfo.js}`);
-      document.body.appendChild(script);
+      return new Promise(function(resolve) {
+        const script = document.createElement('script');
+        script.id = jsId;
+        script.src = `${window.CONFIG.JS_BASE_URL}exercise-types/${fileInfo.js}`;
+        script.onload = function() { console.log(`📦 JS cargado: ${fileInfo.js}`); resolve(); };
+        script.onerror = function() { console.error(`❌ Error cargando JS: ${fileInfo.js}`); resolve(); };
+        document.body.appendChild(script);
+      });
     },
     
     // NUEVO: Cargar CSS base que antes estaba en components
