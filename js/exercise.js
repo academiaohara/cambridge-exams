@@ -329,7 +329,8 @@
         
         Timer.startTimer();
         
-        history.pushState({ view: 'exercise', examId: examId, section: section, part: part }, '');
+        var exState = { view: 'exercise', examId: examId, section: section, part: part, level: AppState.currentLevel };
+        history.pushState(exState, '', Router.stateToPath(exState));
         
       } catch (error) {
         console.error('❌ Error crítico:', error);
@@ -860,7 +861,8 @@
       App.restoreExamStatuses();
       Dashboard.render(returnToExamId);
       if (!opts.skipHistory) {
-        history.pushState({ view: 'dashboard' }, '');
+        var dashState = { view: 'dashboard' };
+        history.pushState(dashState, '', Router.stateToPath(dashState));
       }
     },
     
