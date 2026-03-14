@@ -830,7 +830,101 @@
         '</div>';
     },
 
-    _showScoreCard: function(evaluation) {
+    _parseFeedbackSections: function(evaluation) {
+      var sections = { detailed: '', strengths: '', improvements: '' };
+      var feedbackMatch = evaluation.match(/📝\s*DETAILED\s*FEEDBACK([\s\S]*?)(?=✅|⚠️|$)/i);
+      if (feedbackMatch) sections.detailed = feedbackMatch[1].trim();
+      var strengthsMatch = evaluation.match(/✅\s*STRENGTHS([\s\S]*?)(?=⚠️|$)/i);
+      if (strengthsMatch) sections.strengths = strengthsMatch[1].trim();
+      var improvementsMatch = evaluation.match(/⚠️\s*AREAS\s*FOR\s*IMPROVEMENT([\s\S]*?)$/i);
+      if (improvementsMatch) sections.improvements = improvementsMatch[1].trim();
+      return sections;
+    },
+
+    _formatFeedbackContent: function(text) {
+      var escaped = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return escaped
+        .replace(/^(Grammatical\s*Resource|Lexical\s*Resource|Discourse\s*Management|Pronunciation|Interactive\s*Communication):/gm,
+          '<div class="speaking-feedback-criterion-title"><i class="fas fa-angle-right"></i> <strong>$1</strong></div>')
+        .replace(/^- (.+)/gm, '<div class="speaking-feedback-list-item"><i class="fas fa-chevron-right speaking-feedback-list-icon"></i> $1</div>')
+        .replace(/\n/g, '<br>');
+    },
+
+    _buildFeedbackTabs: function(sections) {
+      var self = this;
+      var tabs = [
+        { id: 'detailed', icon: 'fa-comment-dots', label: t('detailedFeedback', 'Detailed Feedback'), content: sections.detailed },
+        { id: 'strengths', icon: 'fa-check-circle', label: t('strengths', 'Strengths'), content: sections.strengths },
+        { id: 'improvements', icon: 'fa-exclamation-triangle', label: t('areasForImprovement', 'Areas for Improvement'), content: sections.improvements }
+      ].filter(function(tab) { return tab.content; });
+
+      if (!tabs.length) return '';
+
+      var html = '<div class="speaking-feedback-tabs">';
+      html += '<div class="speaking-feedback-tab-buttons">';
+      tabs.forEach(function(tab, i) {
+        html += '<button class="speaking-feedback-tab-btn' + (i === 0 ? ' active' : '') + '" data-tab="' + tab.id + '" onclick="SpeakingType.switchFeedbackTab(\'' + tab.id + '\')">' +
+          '<i class="fas ' + tab.icon + '"></i> ' + tab.label +
+        '</button>';
+      });
+      html += '</div>';
+      tabs.forEach(function(tab, i) {
+        html += '<div class="speaking-feedback-tab-panel' + (i === 0 ? ' active' : '') + '" id="panel-sf-' + tab.id + '">' +
+          '<div class="speaking-ai-feedback">' + self._formatFeedbackContent(tab.content) + '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+      return html;
+    },
+
+    switchFeedbackTab: function(tabId) {
+      document.querySelectorAll('.speaking-feedback-tab-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.tab === tabId);
+      });
+      document.querySelectorAll('.speaking-feedback-tab-panel').forEach(function(panel) {
+        panel.classList.toggle('active', panel.id === 'panel-sf-' + tabId);
+      });
+    },
+
+    switchPartEvaluation: function(partNum) {
+      var savedState = (typeof Exercise !== 'undefined' && AppState.currentExamId)
+        ? Exercise.loadPartState(AppState.currentExamId, AppState.currentSection || 'speaking', partNum)
+        : null;
+      var evaluation = savedState && savedState.answers ? (savedState.answers._aiFeedback || null) : null;
+      this._showScoreCard(evaluation, partNum);
+    },
+
+    _buildPartNav: function(activePart) {
+      var partLabels = [
+        t('speakingPartInterview', 'Interview'),
+        t('speakingPartLongTurn', 'Long Turn'),
+        t('speakingPartCollaborative', 'Collaborative'),
+        t('speakingPartDiscussion', 'Discussion')
+      ];
+      var examId = AppState.currentExamId;
+      var section = AppState.currentSection || 'speaking';
+      var html = '<div class="speaking-part-nav">';
+      for (var i = 1; i <= 4; i++) {
+        var partState = (typeof Exercise !== 'undefined' && examId)
+          ? Exercise.loadPartState(examId, section, i) : null;
+        var hasEval = !!(partState && partState.answers && partState.answers._aiFeedback);
+        // The current part in AppState can be viewed even before its evaluation is complete
+        var isCurrentPart = (i === (AppState.currentPart || 1));
+        var isActive = (i === activePart);
+        // A button is enabled if the part has a saved evaluation, or is the part currently in progress
+        var available = hasEval || isCurrentPart;
+        html += '<button class="speaking-part-btn' + (isActive ? ' active' : '') + (available ? '' : ' speaking-part-btn--pending') + '"' +
+          (available ? '' : ' disabled') +
+          ' onclick="SpeakingType.switchPartEvaluation(' + i + ')">' +
+          '<span class="speaking-part-btn-num">' + t('part', 'Part') + ' ' + i + '</span>' +
+          '<span class="speaking-part-btn-label">' + partLabels[i - 1] + '</span>' +
+        '</button>';
+      }
+      html += '</div>';
+      return html;
+    },
+
+    _showScoreCard: function(evaluation, displayPart) {
       var scoreArea = document.getElementById('speaking-score-area');
       if (!scoreArea) {
         var wrapper = document.querySelector('.speaking-type-wrapper');
@@ -840,8 +934,12 @@
         wrapper.appendChild(scoreArea);
       }
 
+      var activePart = displayPart || AppState.currentPart || 1;
+      var partNav = this._buildPartNav(activePart);
+
       if (!evaluation) {
         scoreArea.innerHTML =
+          partNav +
           '<div class="speaking-score-card">' +
             '<div class="speaking-score-header">' +
               '<i class="fas fa-microphone-slash"></i> ' +
@@ -881,18 +979,14 @@
 
       total = Math.round(total);
 
-      // Extract feedback section
-      var feedbackMatch = evaluation.match(/📝\s*DETAILED\s*FEEDBACK([\s\S]*?)(?=✅|⚠️|$)/i);
-      var feedback = feedbackMatch ? feedbackMatch[1].trim() : '';
-      var strengthsMatch = evaluation.match(/✅\s*STRENGTHS([\s\S]*?)(?=⚠️|$)/i);
-      var strengths = strengthsMatch ? strengthsMatch[1].trim() : '';
-      var improvementsMatch = evaluation.match(/⚠️\s*AREAS\s*FOR\s*IMPROVEMENT([\s\S]*?)$/i);
-      var improvements = improvementsMatch ? improvementsMatch[1].trim() : '';
-
       var totalPct = Math.round((total / 75) * 100);
       var gradeClass = totalPct >= 70 ? 'good' : (totalPct >= 40 ? 'average' : 'low');
 
+      var sections = this._parseFeedbackSections(evaluation);
+      var feedbackTabsHTML = this._buildFeedbackTabs(sections);
+
       var html =
+        partNav +
         '<div class="speaking-score-card">' +
           '<div class="speaking-score-header">' +
             '<i class="fas fa-chart-bar"></i> ' +
@@ -904,32 +998,10 @@
           '</div>' +
           '<div class="speaking-criteria-list">' +
             criteriaHTML +
-          '</div>';
+          '</div>' +
+          (feedbackTabsHTML ? '<div class="speaking-feedback-section">' + feedbackTabsHTML + '</div>' : '') +
+        '</div>';
 
-      if (feedback || strengths || improvements) {
-        html += '<div class="speaking-feedback-section">';
-        if (feedback) {
-          html += '<div class="speaking-feedback-block">' +
-            '<h4><span class="material-symbols-outlined">edit_note</span> ' + t('detailedFeedback', 'Detailed Feedback') + '</h4>' +
-            '<p>' + feedback.replace(/\n/g, '<br>') + '</p>' +
-          '</div>';
-        }
-        if (strengths) {
-          html += '<div class="speaking-feedback-block speaking-strengths">' +
-            '<h4><span class="material-symbols-outlined">check_circle</span> ' + t('strengths', 'Strengths') + '</h4>' +
-            '<p>' + strengths.replace(/\n/g, '<br>') + '</p>' +
-          '</div>';
-        }
-        if (improvements) {
-          html += '<div class="speaking-feedback-block speaking-improvements">' +
-            '<h4><span class="material-symbols-outlined">warning</span> ' + t('areasForImprovement', 'Areas for Improvement') + '</h4>' +
-            '<p>' + improvements.replace(/\n/g, '<br>') + '</p>' +
-          '</div>';
-        }
-        html += '</div>';
-      }
-
-      html += '</div>';
       scoreArea.innerHTML = html;
     },
 
