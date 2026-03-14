@@ -1,0 +1,338 @@
+{
+  "category": "phrasal-verbs",
+  "name": "Phrasal Verbs",
+  "icon": "📘",
+  "color": "#3b82f6",
+  "levels": [
+    {
+      "id": "A2",
+      "name": "A2 – Elementary",
+      "requiredToUnlock": null,
+      "totalLessons": 5,
+      "lessons": [
+        {
+          "id": "lesson-1",
+          "title": "Movement & Direction",
+          "points": [
+            { "type": "explanation", "label": "go on / go back" },
+            { "type": "explanation", "label": "come in / come out" },
+            { "type": "exercise", "label": "Practice: Movement" },
+            { "type": "explanation", "label": "get up / get off" },
+            { "type": "exercise", "label": "Quiz: Direction verbs" },
+            { "type": "review", "label": "Review: Lesson 1" }
+          ]
+        },
+        {
+          "id": "lesson-2",
+          "title": "Daily Routines",
+          "points": [
+            { "type": "explanation", "label": "wake up / get up" },
+            { "type": "explanation", "label": "put on / take off" },
+            { "type": "exercise", "label": "Practice: Routines" },
+            { "type": "explanation", "label": "turn on / turn off" },
+            { "type": "exercise", "label": "Quiz: Daily verbs" },
+            { "type": "review", "label": "Review: Lesson 2" }
+          ]
+        },
+        {
+          "id": "lesson-3",
+          "title": "Communication",
+          "points": [
+            { "type": "explanation", "label": "pick up / hang up" },
+            { "type": "explanation", "label": "call back / speak up" },
+            { "type": "exercise", "label": "Practice: Phone calls" },
+            { "type": "explanation", "label": "write down / look up" },
+            { "type": "exercise", "label": "Quiz: Communication" },
+            { "type": "review", "label": "Review: Lesson 3" }
+          ]
+        },
+        {
+          "id": "lesson-4",
+          "title": "Social Interactions",
+          "points": [
+            { "type": "explanation", "label": "sit down / stand up" },
+            { "type": "explanation", "label": "come along / join in" },
+            { "type": "exercise", "label": "Practice: Social verbs" },
+            { "type": "explanation", "label": "ask for / give back" },
+            { "type": "exercise", "label": "Quiz: Interactions" },
+            { "type": "review", "label": "Review: Lesson 4" }
+          ]
+        },
+        {
+          "id": "lesson-5",
+          "title": "Final Challenge: A2",
+          "points": [
+            { "type": "exercise", "label": "Mixed review" },
+            { "type": "exercise", "label": "Speed round" },
+            { "type": "exercise", "label": "Context gaps" },
+            { "type": "trophy", "label": "A2 Final Challenge" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "name": "B1 – Intermediate",
+      "requiredToUnlock": "A2",
+      "totalLessons": 5,
+      "lessons": [
+        {
+          "id": "lesson-1",
+          "title": "Work & Career",
+          "points": [
+            { "type": "explanation", "label": "take on / carry out" },
+            { "type": "explanation", "label": "set up / bring about" },
+            { "type": "exercise", "label": "Practice: Work verbs" },
+            { "type": "explanation", "label": "deal with / run out" },
+            { "type": "exercise", "label": "Quiz: Career" },
+            { "type": "review", "label": "Review: Lesson 1" }
+          ]
+        },
+        {
+          "id": "lesson-2",
+          "title": "Relationships",
+          "points": [
+            { "type": "explanation", "label": "get along / fall out" },
+            { "type": "explanation", "label": "make up / break up" },
+            { "type": "exercise", "label": "Practice: Relationships" },
+            { "type": "explanation", "label": "look after / grow up" },
+            { "type": "exercise", "label": "Quiz: People" },
+            { "type": "review", "label": "Review: Lesson 2" }
+          ]
+        },
+        {
+          "id": "lesson-3",
+          "title": "Problem Solving",
+          "points": [
+            { "type": "explanation", "label": "figure out / work out" },
+            { "type": "explanation", "label": "sort out / point out" },
+            { "type": "exercise", "label": "Practice: Solving" },
+            { "type": "explanation", "label": "come up with / put up with" },
+            { "type": "exercise", "label": "Quiz: Problems" },
+            { "type": "review", "label": "Review: Lesson 3" }
+          ]
+        },
+        {
+          "id": "lesson-4",
+          "title": "Travel & Experiences",
+          "points": [
+            { "type": "explanation", "label": "check in / set off" },
+            { "type": "explanation", "label": "pick up / drop off" },
+            { "type": "exercise", "label": "Practice: Travel" },
+            { "type": "explanation", "label": "get around / look around" },
+            { "type": "exercise", "label": "Quiz: Experiences" },
+            { "type": "review", "label": "Review: Lesson 4" }
+          ]
+        },
+        {
+          "id": "lesson-5",
+          "title": "Final Challenge: B1",
+          "points": [
+            { "type": "exercise", "label": "Mixed review" },
+            { "type": "exercise", "label": "Speed round" },
+            { "type": "exercise", "label": "Context gaps" },
+            { "type": "trophy", "label": "B1 Final Challenge" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "name": "B2 – Upper Intermediate",
+      "requiredToUnlock": "B1",
+      "totalLessons": 5,
+      "lessons": [
+        {
+          "id": "lesson-1",
+          "title": "Abstract & Formal",
+          "points": [
+            { "type": "explanation", "label": "account for / bring up" },
+            { "type": "explanation", "label": "come across / cut down" },
+            { "type": "exercise", "label": "Practice: Formal verbs" },
+            { "type": "explanation", "label": "draw up / fall through" },
+            { "type": "exercise", "label": "Quiz: Abstract meaning" },
+            { "type": "review", "label": "Review: Lesson 1" }
+          ]
+        },
+        {
+          "id": "lesson-2",
+          "title": "Opinions & Arguments",
+          "points": [
+            { "type": "explanation", "label": "back up / stand for" },
+            { "type": "explanation", "label": "rule out / take back" },
+            { "type": "exercise", "label": "Practice: Arguments" },
+            { "type": "explanation", "label": "hold on / give in" },
+            { "type": "exercise", "label": "Quiz: Opinions" },
+            { "type": "review", "label": "Review: Lesson 2" }
+          ]
+        },
+        {
+          "id": "lesson-3",
+          "title": "Change & Development",
+          "points": [
+            { "type": "explanation", "label": "break down / build up" },
+            { "type": "explanation", "label": "phase out / bring in" },
+            { "type": "exercise", "label": "Practice: Change" },
+            { "type": "explanation", "label": "turn around / step up" },
+            { "type": "exercise", "label": "Quiz: Development" },
+            { "type": "review", "label": "Review: Lesson 3" }
+          ]
+        },
+        {
+          "id": "lesson-4",
+          "title": "Information & Research",
+          "points": [
+            { "type": "explanation", "label": "look into / find out" },
+            { "type": "explanation", "label": "narrow down / sum up" },
+            { "type": "exercise", "label": "Practice: Research" },
+            { "type": "explanation", "label": "go through / set out" },
+            { "type": "exercise", "label": "Quiz: Information" },
+            { "type": "review", "label": "Review: Lesson 4" }
+          ]
+        },
+        {
+          "id": "lesson-5",
+          "title": "Final Challenge: B2",
+          "points": [
+            { "type": "exercise", "label": "Mixed review" },
+            { "type": "exercise", "label": "Speed round" },
+            { "type": "exercise", "label": "Context gaps" },
+            { "type": "trophy", "label": "B2 Final Challenge" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "name": "C1 – Advanced",
+      "requiredToUnlock": "B2",
+      "totalLessons": 5,
+      "lessons": [
+        {
+          "id": "lesson-1",
+          "title": "Nuance & Precision",
+          "points": [
+            { "type": "explanation", "label": "latch onto / pan out" },
+            { "type": "explanation", "label": "cotton on / hash out" },
+            { "type": "exercise", "label": "Practice: Nuance" },
+            { "type": "explanation", "label": "tease out / hone in" },
+            { "type": "exercise", "label": "Quiz: Precision" },
+            { "type": "review", "label": "Review: Lesson 1" }
+          ]
+        },
+        {
+          "id": "lesson-2",
+          "title": "Persuasion & Influence",
+          "points": [
+            { "type": "explanation", "label": "win over / talk into" },
+            { "type": "explanation", "label": "play down / ramp up" },
+            { "type": "exercise", "label": "Practice: Persuasion" },
+            { "type": "explanation", "label": "fend off / ward off" },
+            { "type": "exercise", "label": "Quiz: Influence" },
+            { "type": "review", "label": "Review: Lesson 2" }
+          ]
+        },
+        {
+          "id": "lesson-3",
+          "title": "Complex Situations",
+          "points": [
+            { "type": "explanation", "label": "factor in / iron out" },
+            { "type": "explanation", "label": "thrash out / weigh up" },
+            { "type": "exercise", "label": "Practice: Complex" },
+            { "type": "explanation", "label": "mull over / spell out" },
+            { "type": "exercise", "label": "Quiz: Situations" },
+            { "type": "review", "label": "Review: Lesson 3" }
+          ]
+        },
+        {
+          "id": "lesson-4",
+          "title": "Academic & Professional",
+          "points": [
+            { "type": "explanation", "label": "flesh out / map out" },
+            { "type": "explanation", "label": "reel off / zero in" },
+            { "type": "exercise", "label": "Practice: Academic" },
+            { "type": "explanation", "label": "touch on / dwell on" },
+            { "type": "exercise", "label": "Quiz: Professional" },
+            { "type": "review", "label": "Review: Lesson 4" }
+          ]
+        },
+        {
+          "id": "lesson-5",
+          "title": "Final Challenge: C1",
+          "points": [
+            { "type": "exercise", "label": "Mixed review" },
+            { "type": "exercise", "label": "Speed round" },
+            { "type": "exercise", "label": "Context gaps" },
+            { "type": "trophy", "label": "C1 Final Challenge" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "name": "C2 – Proficiency",
+      "requiredToUnlock": "C1",
+      "totalLessons": 5,
+      "lessons": [
+        {
+          "id": "lesson-1",
+          "title": "Idiomatic Mastery",
+          "points": [
+            { "type": "explanation", "label": "bank on / bail out" },
+            { "type": "explanation", "label": "fritter away / stave off" },
+            { "type": "exercise", "label": "Practice: Idiomatic" },
+            { "type": "explanation", "label": "eke out / while away" },
+            { "type": "exercise", "label": "Quiz: Mastery" },
+            { "type": "review", "label": "Review: Lesson 1" }
+          ]
+        },
+        {
+          "id": "lesson-2",
+          "title": "Literary & Formal Register",
+          "points": [
+            { "type": "explanation", "label": "hark back / mete out" },
+            { "type": "explanation", "label": "rake up / own up" },
+            { "type": "exercise", "label": "Practice: Literary" },
+            { "type": "explanation", "label": "peter out / eke out" },
+            { "type": "exercise", "label": "Quiz: Register" },
+            { "type": "review", "label": "Review: Lesson 2" }
+          ]
+        },
+        {
+          "id": "lesson-3",
+          "title": "Creative Expression",
+          "points": [
+            { "type": "explanation", "label": "conjure up / dream up" },
+            { "type": "explanation", "label": "rustle up / cobble together" },
+            { "type": "exercise", "label": "Practice: Creative" },
+            { "type": "explanation", "label": "toy with / dally with" },
+            { "type": "exercise", "label": "Quiz: Expression" },
+            { "type": "review", "label": "Review: Lesson 3" }
+          ]
+        },
+        {
+          "id": "lesson-4",
+          "title": "Rare & Archaic",
+          "points": [
+            { "type": "explanation", "label": "foist on / palm off" },
+            { "type": "explanation", "label": "welsh on / whittle down" },
+            { "type": "exercise", "label": "Practice: Rare verbs" },
+            { "type": "explanation", "label": "dole out / ferret out" },
+            { "type": "exercise", "label": "Quiz: Archaic" },
+            { "type": "review", "label": "Review: Lesson 4" }
+          ]
+        },
+        {
+          "id": "lesson-5",
+          "title": "Final Challenge: C2",
+          "points": [
+            { "type": "exercise", "label": "Mixed review" },
+            { "type": "exercise", "label": "Speed round" },
+            { "type": "exercise", "label": "Context gaps" },
+            { "type": "trophy", "label": "C2 Final Challenge" }
+          ]
+        }
+      ]
+    }
+  ]
+}

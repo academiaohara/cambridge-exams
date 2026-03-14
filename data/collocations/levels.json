@@ -1,0 +1,44 @@
+{
+  "category": "collocations",
+  "name": "Collocations",
+  "icon": "📚",
+  "color": "#8b5cf6",
+  "levels": [
+    {
+      "id": "A2",
+      "name": "A2 – Elementary",
+      "requiredToUnlock": null,
+      "totalLessons": 5,
+      "lessons": [
+        { "id": "lesson-1", "title": "Make & Do", "points": [
+          { "type": "explanation", "label": "make a mistake / do homework" },
+          { "type": "exercise", "label": "Practice: Make vs Do" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-2", "title": "Have & Take", "points": [
+          { "type": "explanation", "label": "have breakfast / take a break" },
+          { "type": "exercise", "label": "Practice: Have vs Take" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-3", "title": "Get & Give", "points": [
+          { "type": "explanation", "label": "get ready / give advice" },
+          { "type": "exercise", "label": "Practice: Get vs Give" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-4", "title": "Go & Come", "points": [
+          { "type": "explanation", "label": "go shopping / come first" },
+          { "type": "exercise", "label": "Practice: Go vs Come" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-5", "title": "Final Challenge: A2", "points": [
+          { "type": "exercise", "label": "Mixed review" },
+          { "type": "trophy", "label": "A2 Final Challenge" }
+        ]}
+      ]
+    },
+    { "id": "B1", "name": "B1 – Intermediate", "requiredToUnlock": "A2", "totalLessons": 5, "lessons": [] },
+    { "id": "B2", "name": "B2 – Upper Intermediate", "requiredToUnlock": "B1", "totalLessons": 5, "lessons": [] },
+    { "id": "C1", "name": "C1 – Advanced", "requiredToUnlock": "B2", "totalLessons": 5, "lessons": [] },
+    { "id": "C2", "name": "C2 – Proficiency", "requiredToUnlock": "C1", "totalLessons": 5, "lessons": [] }
+  ]
+}

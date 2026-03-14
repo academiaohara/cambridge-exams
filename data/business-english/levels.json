@@ -1,0 +1,44 @@
+{
+  "category": "business-english",
+  "name": "Business English",
+  "icon": "💼",
+  "color": "#ef4444",
+  "levels": [
+    {
+      "id": "A2",
+      "name": "A2 – Elementary",
+      "requiredToUnlock": null,
+      "totalLessons": 5,
+      "lessons": [
+        { "id": "lesson-1", "title": "Office Basics", "points": [
+          { "type": "explanation", "label": "Common office vocabulary" },
+          { "type": "exercise", "label": "Practice: Office terms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-2", "title": "Emails & Messages", "points": [
+          { "type": "explanation", "label": "Formal greetings" },
+          { "type": "exercise", "label": "Practice: Email writing" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-3", "title": "Meetings", "points": [
+          { "type": "explanation", "label": "Meeting vocabulary" },
+          { "type": "exercise", "label": "Practice: Meetings" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-4", "title": "Phone Calls", "points": [
+          { "type": "explanation", "label": "Telephone language" },
+          { "type": "exercise", "label": "Practice: Phone calls" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-5", "title": "Final Challenge: A2", "points": [
+          { "type": "exercise", "label": "Mixed review" },
+          { "type": "trophy", "label": "A2 Final Challenge" }
+        ]}
+      ]
+    },
+    { "id": "B1", "name": "B1 – Intermediate", "requiredToUnlock": "A2", "totalLessons": 5, "lessons": [] },
+    { "id": "B2", "name": "B2 – Upper Intermediate", "requiredToUnlock": "B1", "totalLessons": 5, "lessons": [] },
+    { "id": "C1", "name": "C1 – Advanced", "requiredToUnlock": "B2", "totalLessons": 5, "lessons": [] },
+    { "id": "C2", "name": "C2 – Proficiency", "requiredToUnlock": "C1", "totalLessons": 5, "lessons": [] }
+  ]
+}

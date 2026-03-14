@@ -113,6 +113,12 @@
           if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution();
         } else if (state.view === 'quicksteps') {
           if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
+        } else if (state.view === 'fastExercises') {
+          if (typeof FastExercises !== 'undefined') FastExercises.openCategories();
+        } else if (state.view === 'fastExerciseCategory' && state.categoryId) {
+          if (typeof FastExercises !== 'undefined') FastExercises.openCategory(state.categoryId);
+        } else if (state.view === 'fastExercisePoint' && state.categoryId && state.levelId && state.lessonId && typeof state.pointIndex !== 'undefined') {
+          if (typeof FastExercises !== 'undefined') FastExercises.openPoint(state.categoryId, state.levelId, state.lessonId, state.pointIndex);
         }
       });
       

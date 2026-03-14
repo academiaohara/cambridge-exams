@@ -1,0 +1,44 @@
+{
+  "category": "idioms",
+  "name": "Idioms",
+  "icon": "🗣️",
+  "color": "#f59e0b",
+  "levels": [
+    {
+      "id": "A2",
+      "name": "A2 – Elementary",
+      "requiredToUnlock": null,
+      "totalLessons": 5,
+      "lessons": [
+        { "id": "lesson-1", "title": "Common Idioms", "points": [
+          { "type": "explanation", "label": "Break a leg / Piece of cake" },
+          { "type": "exercise", "label": "Practice: Easy idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-2", "title": "Animal Idioms", "points": [
+          { "type": "explanation", "label": "Let the cat out / Raining cats and dogs" },
+          { "type": "exercise", "label": "Practice: Animal idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-3", "title": "Body Idioms", "points": [
+          { "type": "explanation", "label": "Keep an eye on / Cold feet" },
+          { "type": "exercise", "label": "Practice: Body idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-4", "title": "Time Idioms", "points": [
+          { "type": "explanation", "label": "In the nick of time / Once in a blue moon" },
+          { "type": "exercise", "label": "Practice: Time idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-5", "title": "Final Challenge: A2", "points": [
+          { "type": "exercise", "label": "Mixed review" },
+          { "type": "trophy", "label": "A2 Final Challenge" }
+        ]}
+      ]
+    },
+    { "id": "B1", "name": "B1 – Intermediate", "requiredToUnlock": "A2", "totalLessons": 5, "lessons": [] },
+    { "id": "B2", "name": "B2 – Upper Intermediate", "requiredToUnlock": "B1", "totalLessons": 5, "lessons": [] },
+    { "id": "C1", "name": "C1 – Advanced", "requiredToUnlock": "B2", "totalLessons": 5, "lessons": [] },
+    { "id": "C2", "name": "C2 – Proficiency", "requiredToUnlock": "C1", "totalLessons": 5, "lessons": [] }
+  ]
+}
