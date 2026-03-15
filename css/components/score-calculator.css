@@ -581,33 +581,7 @@
 
 /* Arrow triangle removed – score badge is now a full-width rectangle */
 
-/* ── Responsive ── */
-@media (max-width: 600px) {
-  .cb-result-boxes {
-    flex-direction: row;
-    gap: 8px;
-  }
 
-  .cb-result-value {
-    font-size: 1.1rem;
-  }
-
-  .cb-column-cefr { width: 40px; }
-
-  .cb-column-scale { width: 44px; }
-
-  .cb-column-grades { width: 60px; }
-
-  .cb-column-skill { min-width: 40px; }
-
-  .cb-chart-columns { gap: 4px; }
-
-  .cb-cefr-label { font-size: 0.85rem; }
-  .cb-score-badge span { font-size: 0.65rem; padding: 0 4px; height: 22px; }
-
-  .cb-raw-label { min-width: 90px; font-size: 0.75rem; }
-  .cb-raw-value { min-width: 50px; font-size: 0.8rem; }
-}
 
 /* ── Chart area (Score Calculator page) ── */
 .chart-area {
@@ -768,58 +742,4 @@
   color: var(--primary);
 }
 
-/* ── Responsive ── */
-@media (max-width: 600px) {
-  .score-calculator {
-    padding: 12px;
-  }
 
-  .sc-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .sc-header h2 {
-    font-size: 1.2rem;
-  }
-
-  .sc-inputs {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .result-header {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .result-header .box {
-    width: 100%;
-  }
-
-  .chart-column {
-    min-width: 50px;
-  }
-
-  .chart-columns {
-    gap: 6px;
-  }
-
-  .chart-col-label {
-    font-size: 0.55rem;
-  }
-
-  .arrow-marker {
-    font-size: 0.6rem;
-    height: 22px;
-    padding: 0 6px;
-  }
-
-  .arrow-marker::before {
-    border-top-width: 11px;
-    border-bottom-width: 11px;
-    border-left-width: 8px;
-    right: -8px;
-  }
-}

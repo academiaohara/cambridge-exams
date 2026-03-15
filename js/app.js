@@ -298,39 +298,6 @@
     ScoreCalculator.render();
   };
   
-  // Mobile menu toggle
-  window.toggleMobileMenu = function() {
-    const navGroup = document.getElementById('headerNavGroup');
-    const icon = document.getElementById('mobileMenuIcon');
-    if (navGroup && icon) {
-      navGroup.classList.toggle('show');
-      icon.className = navGroup.classList.contains('show') ? 'fas fa-times' : 'fas fa-bars';
-    }
-  };
-  
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function(e) {
-    const navGroup = document.getElementById('headerNavGroup');
-    const toggle = document.getElementById('mobileMenuToggle');
-    if (navGroup && toggle && navGroup.classList.contains('show')) {
-      if (!navGroup.contains(e.target) && !toggle.contains(e.target)) {
-        navGroup.classList.remove('show');
-        const icon = document.getElementById('mobileMenuIcon');
-        if (icon) icon.className = 'fas fa-bars';
-      }
-    }
-  });
-  
-  // Close mobile menu on level selection
-  var origFilterByLevel = App.filterByLevel;
-  window.filterByLevel = function(level) {
-    origFilterByLevel.call(App, level);
-    var navGroup = document.getElementById('headerNavGroup');
-    var icon = document.getElementById('mobileMenuIcon');
-    if (navGroup) { navGroup.classList.remove('show'); }
-    if (icon) { icon.className = 'fas fa-bars'; }
-  };
-  
   // Inicializar cuando el DOM esté listo
   document.addEventListener('DOMContentLoaded', () => App.init());
 })();

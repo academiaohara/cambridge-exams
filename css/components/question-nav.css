@@ -286,15 +286,4 @@
   opacity: 0.85;
 }
 
-@media (max-width: 600px) {
-  .question-nav-panel {
-    max-height: 65vh;
-    padding: 16px 16px 24px;
-  }
 
-  .question-nav-cell {
-    min-width: 32px;
-    height: 32px;
-    font-size: 0.8rem;
-  }
-}

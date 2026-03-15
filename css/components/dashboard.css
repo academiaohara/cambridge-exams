@@ -973,46 +973,7 @@
   text-align: right;
 }
 
-@media (max-width: 600px) {
-  .results-modal-content {
-    padding: 14px;
-    border-radius: 16px;
-  }
 
-  .results-modal-header h3 {
-    font-size: 1.1rem;
-  }
-
-  .exam-results-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
-  }
-
-  .section-results-btn {
-    width: 28px;
-    height: 28px;
-    font-size: 0.9rem;
-  }
-
-  .mode-toggle {
-    flex-direction: row;
-  }
-
-  .mode-btn {
-    padding: 8px 12px;
-    font-size: 0.85rem;
-  }
-
-  .section-complete-screen {
-    padding: 32px 20px;
-    margin: 20px auto;
-  }
-
-  .confirm-dialog {
-    padding: 20px;
-  }
-}
 
 /* ── Dashboard 3-column layout (Duolingo-style) ── */
 .dashboard-layout {
@@ -1343,29 +1304,7 @@
   opacity: 1;
 }
 
-@media (max-width: 1100px) {
-  .dashboard-layout {
-    grid-template-columns: 1fr;
-  }
-  .dashboard-left-sidebar,
-  .dashboard-right-sidebar {
-    position: static;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .dashboard-left-sidebar .sidebar-widget,
-  .dashboard-right-sidebar .sidebar-widget {
-    margin-bottom: 0;
-  }
-}
 
-@media (max-width: 600px) {
-  .dashboard-left-sidebar,
-  .dashboard-right-sidebar {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ── Guest locked section ─────────────────────────────────────────────── */
 .exam-section.guest-locked {
