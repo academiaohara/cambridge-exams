@@ -36,11 +36,7 @@
   align-items: start;
 }
 
-@media (max-width: 768px) {
-  .listening-type4-tasks {
-    grid-template-columns: 1fr;
-  }
-}
+
 
 .listening-type4-task {
   background: var(--white);

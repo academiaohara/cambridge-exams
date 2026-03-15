@@ -152,13 +152,4 @@
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
 }
 
-/* Responsive para móviles */
-@media (max-width: 768px) {
-  .exercise-footer {
-    flex-direction: column;
-  }
-  
-  .exercise-footer button {
-    width: 100%;
-  }
-}
+

@@ -568,24 +568,7 @@
 .speaking-videocall .speaking-skip-btn { border-color: rgba(255,255,255,0.3); color: #e2e8f0; }
 .speaking-skip-btn:hover { background: rgba(0,0,0,0.05); }
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════ */
-@media (max-width: 768px) {
-  .speaking-stage-scene { min-height: 300px; padding: 0.5rem; }
-  .speaking-stage-featured { min-height: 220px; }
-  .speaking-stage-featured-avatar { --avatar-circle-size: 180px; --avatar-img-size: 180px; }
-  .speaking-stage-card { width: 140px; padding: 0.5rem; }
-  .speaking-stage-cards { flex: 0 0 140px; }
-  .speaking-stage-card-avatar { --avatar-circle-size: 50px; --avatar-img-size: 50px; }
-  .speaking-card-icon { width: 40px; height: 40px; }
-  .speaking-stage-card-label { font-size: 0.65rem; }
-  .speaking-stage-featured-label { font-size: 0.75rem; padding: 0.25rem 0.8rem; }
-  .speaking-chat-msg { max-width: 92%; }
-  .speaking-criteria-list { gap: 0.5rem; }
-  .speaking-criterion { flex-wrap: wrap; }
-  .speaking-criterion-label { min-width: 100%; }
-}
+
 
 /* ══════════════════════════════════════
    SCORE CARD & EVALUATION

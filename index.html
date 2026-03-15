@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#F4F7FF">
     <title>ExamPeak</title>
     
@@ -202,6 +199,85 @@
     </style>
 </head>
 <body>
+    <!-- Mobile-only screen: shown on small screens instead of the app -->
+    <div id="mobile-only-screen">
+        <div class="mobile-only-content">
+            <img src="Assets/images/logo.svg" class="mobile-only-logo" alt="ExamPeak logo">
+            <h1 class="mobile-only-title">ExamPeak</h1>
+            <div class="mobile-only-badge">
+                <span class="material-symbols-outlined">desktop_windows</span>
+                Desktop Only
+            </div>
+            <p class="mobile-only-subtitle">ExamPeak is currently only available on desktop computers. We're working on bringing the mobile experience to you soon!</p>
+
+            <div class="mobile-only-features">
+                <h2>What you'll find on desktop</h2>
+                <div class="mobile-only-feature-list">
+                    <div class="mobile-only-feature">
+                        <span class="material-symbols-outlined">quiz</span>
+                        <div>
+                            <strong>Test Simulation</strong>
+                            <p>Full Cambridge exam simulations with real timing and conditions</p>
+                        </div>
+                    </div>
+                    <div class="mobile-only-feature">
+                        <span class="material-symbols-outlined">school</span>
+                        <div>
+                            <strong>Test Practice</strong>
+                            <p>Practice individual sections and parts at your own pace</p>
+                        </div>
+                    </div>
+                    <div class="mobile-only-feature">
+                        <span class="material-symbols-outlined">bolt</span>
+                        <div>
+                            <strong>Fast Exercises</strong>
+                            <p>Quick micro-learning exercises for phrasal verbs, collocations, vocabulary &amp; more</p>
+                        </div>
+                    </div>
+                    <div class="mobile-only-feature">
+                        <span class="material-symbols-outlined">record_voice_over</span>
+                        <div>
+                            <strong>AI Speaking Practice</strong>
+                            <p>Interactive speaking exercises with AI-powered conversation and feedback</p>
+                        </div>
+                    </div>
+                    <div class="mobile-only-feature">
+                        <span class="material-symbols-outlined">edit_note</span>
+                        <div>
+                            <strong>Writing Validator</strong>
+                            <p>AI-assisted writing evaluation with detailed scoring and tips</p>
+                        </div>
+                    </div>
+                    <div class="mobile-only-feature">
+                        <span class="material-symbols-outlined">trending_up</span>
+                        <div>
+                            <strong>Grade Tracker</strong>
+                            <p>Track your progress across all levels (A2–C2) with detailed skill breakdowns</p>
+                        </div>
+                    </div>
+                    <div class="mobile-only-feature">
+                        <span class="material-symbols-outlined">local_fire_department</span>
+                        <div>
+                            <strong>Day Streak</strong>
+                            <p>Stay motivated with daily practice streaks and a study calendar</p>
+                        </div>
+                    </div>
+                    <div class="mobile-only-feature">
+                        <span class="material-symbols-outlined">target</span>
+                        <div>
+                            <strong>Weak Spot Analysis</strong>
+                            <p>AI-powered recommendations based on your performance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-only-footer">
+                <p>Open <strong>exampeak.com</strong> on your computer to get started</p>
+            </div>
+        </div>
+    </div>
+
     <div id="app">
         <!-- Header -->
         <header class="main-header">
@@ -212,11 +288,6 @@
                         ExamPeak
                     </div>
                 </div>
-                
-                
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()" aria-label="Menu">
-                    <i class="fas fa-bars" id="mobileMenuIcon"></i>
-                </button>
                 
                 <div class="header-nav-group" id="headerNavGroup">
                 
@@ -330,29 +401,6 @@
             </div>
         </footer>
 
-        <!-- iOS-style bottom tab bar (mobile only — desktop hides via CSS) -->
-        <nav class="ios-tab-bar" id="iosTabBar" aria-label="Level navigation">
-            <button class="ios-tab-item level-btn" data-level="A2" onclick="filterByLevel('A2')" aria-label="A2">
-                <i class="fas fa-seedling"></i>
-                <span>A2</span>
-            </button>
-            <button class="ios-tab-item level-btn" data-level="B1" onclick="filterByLevel('B1')" aria-label="B1">
-                <i class="fas fa-book-reader"></i>
-                <span>B1</span>
-            </button>
-            <button class="ios-tab-item level-btn" data-level="B2" onclick="filterByLevel('B2')" aria-label="B2">
-                <i class="fas fa-graduation-cap"></i>
-                <span>B2</span>
-            </button>
-            <button class="ios-tab-item level-btn" data-level="C1" onclick="filterByLevel('C1')" aria-label="C1">
-                <i class="fas fa-award"></i>
-                <span>C1</span>
-            </button>
-            <button class="ios-tab-item level-btn" data-level="C2" onclick="filterByLevel('C2')" aria-label="C2">
-                <i class="fas fa-crown"></i>
-                <span>C2</span>
-            </button>
-        </nav>
     </div>
 
     <!-- Scripts en orden correcto -->

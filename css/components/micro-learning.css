@@ -33,17 +33,7 @@
   animation: bounceIn 0.4s ease-out;
 }
 
-@media (max-width: 520px) {
-  .ml-container {
-    border-radius: 0;
-    max-height: 100dvh;
-  }
 
-  .ml-overlay {
-    align-items: stretch;
-    justify-content: stretch;
-  }
-}
 
 /* ── Header ── */
 .ml-header {

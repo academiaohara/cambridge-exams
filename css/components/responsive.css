@@ -1,7 +1,7 @@
 /* css/components/responsive.css */
 
 /* ============================================
-   DESKTOP DEFAULTS - nav group is transparent
+   DESKTOP DEFAULTS
    ============================================ */
 .header-nav-group {
   display: flex;
@@ -11,927 +11,161 @@
 }
 
 /* ============================================
-   MOBILE MENU TOGGLE - Hidden on desktop
+   MOBILE-ONLY SCREEN
+   Shown on screens smaller than 768px.
+   Hides the main app and displays a message
+   with features list.
    ============================================ */
-.mobile-menu-toggle {
+#mobile-only-screen {
   display: none;
-  background: rgba(45, 46, 95, 0.08);
-  border: 1px solid rgba(45, 46, 95, 0.15);
-  color: var(--text-dark);
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  -webkit-tap-highlight-color: transparent;
 }
 
-.mobile-menu-toggle:active {
-  background: rgba(45, 46, 95, 0.15);
-}
-
-/* ============================================
-   TABLET BREAKPOINT (1024px)
-   ============================================ */
-@media (max-width: 1024px) {
-  .exercise-footer {
-    flex-wrap: wrap;
-  }
-
-  .btn-check,
-  .btn-explanations,
-  .btn-reset,
-  .btn-prev,
-  .btn-next {
-    flex: 1 1 calc(50% - 8px);
-  }
-
-  .transformation-gap {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .transformation-input {
-    width: 100%;
-  }
-}
-
-/* ============================================
-   MOBILE BREAKPOINT (768px)
-   ============================================ */
 @media (max-width: 768px) {
-  /* --- Global mobile adjustments --- */
-  html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  body {
-    -webkit-tap-highlight-color: transparent;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-
-  .app-container {
-    padding: 12px 12px 0;
-  }
-
-  /* --- Mobile header with hamburger menu --- */
-  .mobile-menu-toggle {
+  #mobile-only-screen {
     display: flex;
-  }
-
-  .header-container {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .main-header {
-    padding: 10px 16px;
-    padding-top: calc(10px + env(safe-area-inset-top, 0px));
-  }
-
-  .logo i {
-    font-size: 1.5rem;
-    padding: 8px;
-    border-radius: 12px;
-  }
-
-  .logo-text {
-    font-size: 1.3rem;
-  }
-
-  .logo-text span {
-    font-size: 0.75rem;
-  }
-
-  /* Collapsible navigation group */
-  .header-nav-group {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 12px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(45, 46, 95, 0.1);
-    order: 3;
-  }
-
-  .header-nav-group.show {
-    display: flex;
-    animation: mobileMenuSlide 0.25s ease-out;
-  }
-
-  @keyframes mobileMenuSlide {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .level-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: linear-gradient(135deg, #F4F7FF 0%, #e8ecf4 100%);
     justify-content: center;
-    gap: 8px;
-    overflow-x: auto;
+    align-items: flex-start;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    flex-wrap: nowrap;
-    padding-bottom: 4px;
   }
 
-  .level-nav::-webkit-scrollbar {
-    display: none;
+  #app {
+    display: none !important;
   }
 
-  .level-btn {
-    flex: 0 0 auto;
-    padding: 10px 16px;
-    font-size: 0.85rem;
-    min-height: 44px;
-    white-space: nowrap;
-  }
-
-  .language-selector-wrapper {
+  .mobile-only-content {
     width: 100%;
+    max-width: 480px;
+    padding: 48px 24px 40px;
+    text-align: center;
   }
 
-  .header-mode-nav {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .header-mode-btn {
-    flex: 1;
-    justify-content: center;
-    min-height: 44px;
-    font-size: 0.85rem;
-  }
-
-  .header-calc-btn {
-    width: 100%;
-    justify-content: center;
-    min-height: 44px;
-    font-size: 0.85rem;
-  }
-
-  .language-selector-btn {
-    justify-content: center;
-    min-height: 44px;
-  }
-
-  .language-dropdown {
-    left: 0;
-    right: 0;
-    min-width: auto;
-    max-height: 300px;
-  }
-
-  .language-option {
-    min-height: 48px;
-  }
-
-  /* --- Dashboard mobile --- */
-  .exam-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 16px;
-  }
-
-  .exam-header-left {
-    width: 100%;
-  }
-
-  .exam-progress-badge {
-    align-self: flex-start;
-  }
-
-  .exam-content.show {
-    padding: 12px;
-  }
-
-  .exam-section {
-    padding: 16px;
-  }
-
-  .section-header {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .section-play {
-    margin-left: 0;
-    order: -1;
-    margin-bottom: 0;
-    width: 44px;
-    height: 44px;
-  }
-
-  .section-results-btn {
-    width: 44px;
-    height: 44px;
-    order: -1;
-  }
-
-  .exam-results-btn {
-    margin-left: 0;
-    margin-right: 0;
-    align-self: flex-start;
-  }
-
-  .section-progress {
-    margin-left: auto;
-  }
-
-  .section-parts {
-    justify-content: flex-start;
-    gap: 10px;
-  }
-
-  .part-number {
-    width: 44px;
-    height: 44px;
-    font-size: 1rem;
-    border-radius: 14px;
-  }
-
-  /* --- Exercise view mobile --- */
-  .exercise-container {
-    padding: 16px 12px;
-    border-radius: 20px;
-    margin-bottom: 24px;
-    border-width: 2px;
-  }
-
-  .exercise-header {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .exercise-header-right {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .exercise-toolbar {
-    width: auto;
-    justify-content: flex-end;
-  }
-
-  .btn-exit {
-    position: static;
-    width: 44px;
-    height: 44px;
-  }
-
-  .btn-cambridge-score {
-    width: 36px;
-    height: 36px;
-    font-size: 0.9rem;
-  }
-
-  .exercise-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 10px 14px;
-    border-radius: 12px;
-  }
-
-  .exercise-info-left {
-    width: 100%;
-    justify-content: space-between;
-    font-size: 0.85rem;
-  }
-
-  .exercise-info-right {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .exercise-description {
-    padding: 10px 14px;
-    font-size: 0.9rem;
+  .mobile-only-logo {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(45, 46, 95, 0.12);
     margin-bottom: 16px;
   }
 
-  .reading-text-enhanced {
-    padding: 16px;
-    font-size: 0.95rem;
-    line-height: 1.8;
-    border-radius: 14px;
+  .mobile-only-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #2D2E5F;
+    margin: 0 0 16px;
   }
 
-  /* --- Tools mobile --- */
-  .exercise-page-wrapper {
-    flex-direction: column;
-  }
-
-  .tools-sidebar {
-    margin: 16px -12px -12px -12px;
-    border-radius: 0 0 17px 17px;
-  }
-
-  .sidebar-rail {
-    padding: 8px 12px;
-    gap: 4px;
-  }
-
-  .sidebar-tool-btn {
-    width: 34px;
-    height: 34px;
-    font-size: 0.85rem;
-  }
-
-  .sidebar-tool-btn .tool-label {
-    display: none;
-  }
-
-  .tools-sidebar .active-tool-content {
-    padding: 12px 14px;
-  }
-
-  /* --- Modal mobile (full-width bottom sheet) --- */
-  .modal-content {
-    width: 100%;
-    max-width: 100%;
-    padding: 20px 16px;
-    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-    border-radius: 20px 20px 0 0;
-  }
-
-  .options-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .opt-btn {
-    padding: 16px;
-    font-size: 1rem;
-    min-height: 52px;
-    border-radius: 14px;
-  }
-
-  .opt-btn:active {
-    transform: scale(0.97);
-  }
-
-  /* --- Notes & dictionary mobile --- */
-  .note-creator-footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .dict-header-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  /* --- Exercise footer mobile --- */
-  .exercise-footer {
-    flex-direction: column;
-    gap: 8px;
-    padding: 16px 0 0;
-  }
-
-  .exercise-footer button {
-    min-height: 48px;
-    font-size: 0.95rem;
-    border-radius: 14px;
-  }
-
-  .btn-check,
-  .btn-explanations,
-  .btn-reset,
-  .btn-prev,
-  .btn-next {
-    width: 100%;
-  }
-
-  /* --- No exams state mobile --- */
-  .no-exams {
-    padding: 40px 20px;
-    border-radius: 20px;
-  }
-
-  .no-exams i {
-    font-size: 4rem;
-  }
-
-  .no-exams h3 {
-    font-size: 1.5rem;
-  }
-
-  .no-exams p {
-    font-size: 1rem;
-    padding: 6px 16px;
-  }
-
-  /* --- Footer mobile --- */
-  .main-footer {
-    padding: 30px 16px 16px;
-    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    margin-bottom: 24px;
-  }
-
-  .footer-col h4 {
-    font-size: 1rem;
-    margin-bottom: 12px;
-  }
-
-  .footer-col ul li {
-    margin-bottom: 8px;
-  }
-
-  .footer-col ul li a {
-    min-height: 44px;
-    display: flex;
+  .mobile-only-badge {
+    display: inline-flex;
     align-items: center;
-  }
-
-  .footer-bottom {
-    padding-top: 16px;
-  }
-
-  .footer-bottom p {
-    font-size: 0.8rem;
-  }
-
-  /* --- Gaps mobile --- */
-  .radio-gap {
-    padding: 14px;
-  }
-
-  .radio-option {
-    padding: 10px 14px;
-    min-height: 44px;
-    border-radius: 10px;
-  }
-
-  .gap-input {
-    min-height: 40px;
-    font-size: 0.9rem;
-    padding: 6px 10px;
-  }
-
-  /* --- Reading Types mobile --- */
-  .reading-type6-container,
-  .reading-type7-container,
-  .reading-type8-container {
-    padding: 12px;
-  }
-
-  .reading-type6-text-card,
-  .reading-type8-text-card {
-    padding: 14px;
-  }
-
-  .reading-type6-text-content,
-  .reading-type8-text-content {
-    font-size: 0.9rem;
-  }
-
-  .reading-type6-question,
-  .reading-type8-question {
-    padding: 12px;
-    gap: 10px;
-  }
-
-  .reading-type6-question-text,
-  .reading-type8-question-text {
-    font-size: 0.9rem;
-    min-width: 0;
-  }
-
-  .reading-type7-paragraphs {
-    padding: 14px;
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .reading-type7-options {
-    padding: 12px 14px;
-  }
-
-  .reading-type7-paragraph-item {
-    padding: 12px 14px;
-    font-size: 0.85rem;
-    min-height: 44px;
-  }
-
-  /* --- Toggle view buttons mobile --- */
-  .toggle-view-header {
-    justify-content: flex-start;
     gap: 6px;
-  }
-
-  .toggle-view-btn {
-    font-size: 0.8rem;
-    padding: 8px 14px;
-    min-height: 40px;
-    border-radius: 20px;
-  }
-
-  /* --- Content section header mobile --- */
-  .content-section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 12px 14px;
-  }
-
-  .content-title-block {
-    width: 100%;
-  }
-
-  .content-section-header .toggle-view-header {
-    width: 100%;
-  }
-
-  /* --- Part navigation row mobile --- */
-  .part-nav-row {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    flex-wrap: nowrap;
-    padding-bottom: 4px;
-  }
-
-  .part-nav-row::-webkit-scrollbar {
-    display: none;
-  }
-
-  .part-nav-cell {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
-  }
-
-  /* --- Explanations mobile --- */
-  .explanations-section {
-    padding: 16px;
-    border-radius: 14px;
-  }
-
-  .explanation-item {
-    padding: 10px 12px;
+    background: linear-gradient(135deg, #2D2E5F, #1E9D8E);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-family: 'Nunito', sans-serif;
     font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 20px;
   }
 
-  .explanations-panel {
-    padding: 16px;
-    border-radius: 14px;
-  }
-
-  .explanation-card {
-    padding: 12px;
-  }
-
-  .explanation-card-options {
-    padding-left: 0;
-  }
-
-  .explanation-card-text {
-    padding-left: 0;
-  }
-}
-
-/* ============================================
-   SMALL MOBILE BREAKPOINT (480px)
-   ============================================ */
-@media (max-width: 480px) {
-  .app-container {
-    padding: 8px 8px 0;
-  }
-
-  .main-header {
-    padding: 8px 12px;
-    padding-top: calc(8px + env(safe-area-inset-top, 0px));
-  }
-
-  .logo i {
-    font-size: 1.3rem;
-    padding: 7px;
-    border-radius: 10px;
-  }
-
-  .logo-text {
-    font-size: 1.15rem;
-  }
-
-  .logo-text span {
-    font-size: 0.7rem;
-  }
-
-  .level-btn {
-    padding: 8px 12px;
-    font-size: 0.8rem;
-    gap: 4px;
-  }
-
-  .exam-item {
-    border-radius: 16px;
-  }
-
-  .exam-header {
-    padding: 14px 12px;
-  }
-
-  .exam-number {
-    font-size: 1.5rem;
-  }
-
-  .exam-title {
+  .mobile-only-badge .material-symbols-outlined {
     font-size: 1.1rem;
   }
 
-  .exam-subtitle {
-    font-size: 0.8rem;
-  }
-
-  .exam-content.show {
-    padding: 10px;
-  }
-
-  .exam-section {
-    padding: 14px 12px;
-    border-radius: 14px;
-  }
-
-  .part-number {
-    width: 42px;
-    height: 42px;
+  .mobile-only-subtitle {
+    font-family: 'Nunito', sans-serif;
     font-size: 0.95rem;
-  }
-
-  .exercise-container {
-    padding: 14px 10px;
-    border-radius: 16px;
-  }
-
-  .exercise-title h2 {
-    font-size: 1.15rem;
-  }
-
-  .exercise-badge {
-    font-size: 0.75rem;
-  }
-
-  .gap-box {
-    min-width: 60px;
-    font-size: 0.8rem;
-    padding: 6px 10px;
-  }
-
-  .gap-box .gap-number {
-    font-size: 0.75rem;
-  }
-
-  .gap-input {
-    width: 80px;
-    font-size: 0.85rem;
-    padding: 6px 8px;
-  }
-
-  .transformation-gap {
-    padding: 8px;
-    border-radius: 10px;
-  }
-
-  .transformation-keywords {
-    font-size: 0.75rem;
-    padding: 3px 8px;
-  }
-
-  .transformation-input {
-    width: 100%;
-  }
-
-  .paragraph-select {
-    min-width: 130px;
-    font-size: 0.8rem;
-    padding: 8px 10px;
-    min-height: 40px;
-  }
-
-  /* Reading Type 6 & 8 questions - small mobile */
-  .reading-type6-question,
-  .reading-type8-question {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-  }
-
-  .reading-type6-text-card,
-  .reading-type8-text-card {
-    padding: 12px;
-  }
-
-  .reading-type6-text-content,
-  .reading-type8-text-content {
-    font-size: 0.85rem;
+    color: #4a4b7c;
     line-height: 1.6;
+    margin: 0 0 32px;
+    padding: 0 8px;
   }
 
-  /* Reading Type 7 - small mobile */
-  .reading-type7-paragraphs {
-    padding: 12px;
-    font-size: 0.9rem;
+  .mobile-only-features {
+    text-align: left;
   }
 
-  .reading-type7-paragraph-item {
-    font-size: 0.8rem;
+  .mobile-only-features h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2D2E5F;
+    margin: 0 0 16px;
+    text-align: center;
   }
 
-  .gap-box.gap-box-small {
-    min-width: 30px;
-    font-size: 0.8rem;
+  .mobile-only-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
-  /* Modal - full width on small mobile */
-  .modal-content {
-    padding: 16px 12px;
-    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  .mobile-only-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: white;
+    padding: 14px 16px;
+    border-radius: 14px;
+    box-shadow: 0 1px 4px rgba(45, 46, 95, 0.06);
   }
 
-  .opt-btn {
-    padding: 14px;
-    font-size: 0.95rem;
-  }
-
-  /* Exercise footer small mobile */
-  .exercise-footer button {
-    min-height: 46px;
-    font-size: 0.9rem;
-  }
-
-  /* Loading / error states */
-  .loading-exercise,
-  .error-message {
-    padding: 40px 16px;
-    border-radius: 20px;
-  }
-
-  .loading-exercise i,
-  .error-message i {
-    font-size: 2.5rem;
-  }
-
-  .loading-exercise h3,
-  .error-message h3 {
-    font-size: 1.2rem;
-  }
-
-  .no-exams {
-    padding: 30px 16px;
-    border-radius: 16px;
-  }
-
-  .no-exams i {
-    font-size: 3.5rem;
-  }
-
-  .no-exams h3 {
+  .mobile-only-feature > .material-symbols-outlined {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(30, 157, 142, 0.12), rgba(45, 46, 95, 0.08));
+    border-radius: 10px;
+    color: #1E9D8E;
     font-size: 1.3rem;
   }
-}
 
-/* ============================================
-   TOUCH DEVICE OPTIMIZATIONS
-   ============================================ */
-@media (hover: none) and (pointer: coarse) {
-  /* Replace hover effects with active/tap states for touch devices */
-  .level-btn:hover {
-    transform: none;
-    background: rgba(255, 255, 255, 0.1);
+  .mobile-only-feature div {
+    flex: 1;
+    min-width: 0;
   }
 
-  .level-btn:active {
-    background: rgba(255, 255, 255, 0.25);
-    transform: scale(0.96);
+  .mobile-only-feature strong {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #2D2E5F;
+    margin-bottom: 2px;
   }
 
-  .level-btn.active:active {
-    transform: scale(0.96);
+  .mobile-only-feature p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+    color: #7b7ca0;
+    line-height: 1.4;
+    margin: 0;
   }
 
-  .exam-header:hover {
-    filter: none;
+  .mobile-only-footer {
+    margin-top: 32px;
+    padding: 16px;
+    background: rgba(45, 46, 95, 0.04);
+    border-radius: 12px;
   }
 
-  .exam-header:active {
-    filter: brightness(0.95);
+  .mobile-only-footer p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    color: #4a4b7c;
+    margin: 0;
   }
 
-  .part-number:hover {
-    transform: none;
-  }
-
-  .part-number:active {
-    transform: scale(0.92);
-  }
-
-  .gap-box:hover:not(.checked) {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .gap-box:active:not(.checked) {
-    transform: scale(0.97);
-    box-shadow: 0 1px 4px rgba(79, 70, 229, 0.2);
-  }
-
-  .opt-btn:hover {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .opt-btn:active {
-    transform: scale(0.97);
-    background: var(--secondary);
-  }
-
-  .btn-exit:hover {
-    transform: none;
-  }
-
-  .btn-exit:active {
-    background: #fee2e2;
-    color: var(--incorrect);
-  }
-
-  .btn-check:hover:not(:disabled) {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .btn-check:active:not(:disabled) {
-    transform: scale(0.97);
-  }
-
-  .btn-explanations:hover,
-  .btn-reset:hover,
-  .btn-prev:hover,
-  .btn-next:hover {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .btn-explanations:active,
-  .btn-reset:active,
-  .btn-prev:active,
-  .btn-next:active {
-    transform: scale(0.97);
-  }
-
-  .section-play:hover {
-    transform: none;
-  }
-
-  .section-play:active {
-    transform: scale(0.9);
-  }
-
-  .sidebar-tool-btn:active {
-    opacity: 0.8;
-  }
-
-  .toggle-view-btn:active {
-    opacity: 0.8;
-  }
-
-  .footer-col ul li a:hover {
-    transform: none;
-  }
-
-  .footer-col ul li a:active {
-    opacity: 0.7;
-  }
-
-  .btn-back:hover {
-    transform: none;
-    box-shadow: none;
-  }
-
-  .btn-back:active {
-    transform: scale(0.97);
-  }
-
-  /* Prevent text selection on interactive elements */
-  .gap-box,
-  .part-number,
-  .level-btn,
-  .opt-btn,
-  .section-play {
-    -webkit-user-select: none;
-    user-select: none;
+  .mobile-only-footer strong {
+    color: #1E9D8E;
   }
 }
