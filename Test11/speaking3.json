@@ -1,0 +1,18 @@
+{
+  "title": "Speaking - Part 3",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "...",
+  "content": {
+    "task": "Discuss the pros and cons of these energy sources for the future, then decide which two should receive the most government funding.",
+    "options": ["Solar and wind power", "Nuclear energy", "Hydrogen fuel", "Hydroelectric dams", "Natural gas"],
+    "participants": ["examiner", "candidate", "partner"],
+    "script": [
+      { "role": "examiner", "text": "Please talk together about the advantages and disadvantages of these different energy sources." },
+      { "role": "partner", "text": "" },
+      { "role": "candidate", "text": "" },
+      { "role": "examiner", "text": "Now decide which two energy sources are the most vital for our future energy security." }
+    ]
+  }
+}

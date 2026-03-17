@@ -1,0 +1,40 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 4,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "12A",
+        "candidate": "Candidate A",
+        "topic": "Urban environments",
+        "instructions": "Compare two of the pictures, and say what the people might find attractive about living in these places and what the drawbacks might be.",
+        "images": [
+          { "label": "A", "url": "https://listeninggenerator.b-cdn.net/test12_1a.jpg", "description": "A futuristic cityscape with skyscrapers and busy multi-level traffic systems." },
+          { "label": "B", "url": "https://listeninggenerator.b-cdn.net/test12_1b.jpg", "description": "A historic European street with cobblestones, old architecture, and small cafes." },
+          { "label": "C", "url": "https://listeninggenerator.b-cdn.net/test12_1c.jpg", "description": "A quiet residential suburb with detached houses and wide, empty roads." }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which of these places would you prefer to live in? (Why?)"
+        }
+      },
+      {
+        "id": "12B",
+        "candidate": "Candidate B",
+        "topic": "Learning about history",
+        "instructions": "Compare two of the pictures, and say what the people are learning about the past and why they might have chosen that method.",
+        "images": [
+          { "label": "D", "url": "https://listeninggenerator.b-cdn.net/test12_1d.jpg", "description": "A group of tourists listening to a guide at an ancient archaeological site or ruins." },
+          { "label": "E", "url": "https://listeninggenerator.b-cdn.net/test12_1e.jpg", "description": "A person using a virtual reality headset to experience a historical event in 3D." },
+          { "label": "F", "url": "https://listeninggenerator.b-cdn.net/test12_1f.jpg", "description": "A researcher looking at old, delicate manuscripts in a quiet library archive." }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which method of learning about history do you think is most effective? (Why?)"
+        }
+      }
+    ]
+  }
+}

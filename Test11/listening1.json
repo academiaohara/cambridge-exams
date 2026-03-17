@@ -1,0 +1,206 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1 – 6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two people discussing their experiences with urban gardening.",
+      "voices": {
+        "man": "en-GB-ElliotNeural",
+        "woman": "en-GB-HollieNeural"
+      },
+      "audio_script": "Woman: My balcony is officially overgrown! I think I overdid it with the tomato plants this year. Man: Better that than a sterile concrete slab. [1]I’ve found that even just ten minutes of pruning in the morning sets me up for the day[/1]. Woman: Absolutely. It’s that connection to something living, isn't it? Though [2]I must admit I’ve struggled with the ethical dilemma of what to do about the aphids[/2]. Man: Oh, just use a bit of soapy water. It’s hardly chemical warfare. Woman: I know, but I hate the thought of killing anything. I’ve even started apologizing to the weeds as I pull them out. Man: You’re far too soft, Hollie. I’m quite ruthless with my window box. Survival of the fittest! Woman: Well, I like to think of my balcony as a sanctuary for all creatures, even the annoying ones.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "My balcony is officially overgrown! I think I overdid it with the tomato plants this year."
+        },
+        {
+          "speaker": "man",
+          "text": "Better that than a sterile concrete slab. I’ve found that even just ten minutes of pruning in the morning sets me up for the day."
+        },
+        {
+          "speaker": "woman",
+          "text": "Absolutely. It’s that connection to something living, isn't it? Though I must admit I’ve struggled with the ethical dilemma of what to do about the aphids."
+        },
+        {
+          "speaker": "man",
+          "text": "Oh, just use a bit of soapy water. It’s hardly chemical warfare."
+        },
+        {
+          "speaker": "woman",
+          "text": "I know, but I hate the thought of killing anything. I’ve even started apologizing to the weeds as I pull them out."
+        },
+        {
+          "speaker": "man",
+          "text": "You’re far too soft, Hollie. I’m quite ruthless with my window box. Survival of the fittest!"
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I like to think of my balcony as a sanctuary for all creatures, even the annoying ones."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the main benefit the man gets from gardening?",
+          "options": {
+            "A": "Fresh produce for his meals.",
+            "B": "A psychological boost in the morning.",
+            "C": "A sense of accomplishment from hard work."
+          },
+          "answer": "B",
+          "explanation": "He says pruning 'sets me up for the day', which refers to a positive mental or psychological start."
+        },
+        {
+          "number": 2,
+          "question": "The woman mentions aphids to illustrate her...",
+          "options": {
+            "A": "lack of technical knowledge about pests.",
+            "B": "reluctance to cause harm to living things.",
+            "C": "frustration with the climate in her city."
+          },
+          "answer": "B",
+          "explanation": "She describes her 'ethical dilemma' and says she hates 'the thought of killing anything'."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two professionals discussing the concept of 'unlimited holiday' policies.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Did you see that tech company in Bristol has introduced 'unlimited annual leave'? Woman: I did. [3]It sounds great on paper, but in practice, people often end up taking less time off[/3] than if they had a fixed allowance. Man: Why is that? Surely the freedom is a good thing? Woman: [4]Because there’s no clear benchmark, everyone’s looking at each other to see what’s 'socially acceptable'[/4]. Nobody wants to be the one who looks lazy. Man: I see. So it actually increases peer pressure rather than reducing stress. Woman: Exactly. And without a formal 'use it or lose it' policy, the work just keeps piling up until you feel you can't afford to leave your desk. Man: That’s a shame. I always thought it sounded like the ultimate perk. Woman: It’s a clever branding exercise for the company, but for the staff, it’s a bit of a double-edged sword.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you see that tech company in Bristol has introduced 'unlimited annual leave'?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I did. It sounds great on paper, but in practice, people often end up taking less time off than if they had a fixed allowance."
+        },
+        {
+          "speaker": "man",
+          "text": "Why is that? Surely the freedom is a good thing?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Because there’s no clear benchmark, everyone’s looking at each other to see what’s 'socially acceptable'. Nobody wants to be the one who looks lazy."
+        },
+        {
+          "speaker": "man",
+          "text": "I see. So it actually increases peer pressure rather than reducing stress."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. And without a formal 'use it or lose it' policy, the work just keeps piling up until you feel you can't afford to leave your desk."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s a shame. I always thought it sounded like the ultimate perk."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a clever branding exercise for the company, but for the staff, it’s a bit of a double-edged sword."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What is the woman's main observation about 'unlimited leave'?",
+          "options": {
+            "A": "It leads to a significant increase in absenteeism.",
+            "B": "It results in employees working more than before.",
+            "C": "It is often used as an excuse to cut salaries."
+          },
+          "answer": "B",
+          "explanation": "She says people end up taking 'less time off', which implies they are working more."
+        },
+        {
+          "number": 4,
+          "question": "According to the woman, why do employees hesitate to take holiday under this policy?",
+          "options": {
+            "A": "They fear their projects will be reassigned.",
+            "B": "They are uncertain about the expectations of their peers.",
+            "C": "They are too busy with their daily responsibilities."
+          },
+          "answer": "B",
+          "explanation": "She mentions there is 'no clear benchmark' and people look at each other to see what is 'socially acceptable', referring to peer expectations."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people in Ireland, Emily and Connor, discussing a new art installation in their town.",
+      "voices": {
+        "man": "en-IE-ConnorNeural",
+        "woman": "en-IE-EmilyNeural"
+      },
+      "audio_script": "Man: So, Emily, what do you make of the new sculpture in the town square? Woman: To be honest, Connor, [5]I find it a bit jarring against the traditional architecture of the surrounding buildings[/5]. It’s a bit too 'industrial' for my taste. Man: Really? I love the contrast. [6]I think it’s exactly what the town needs to show we’re looking forward, not just backward[/6]. Woman: I suppose. But couldn't they have chosen something a bit more... organic? It looks like a pile of scrap metal from a distance. Man: That’s the point! It’s a tribute to the town’s manufacturing heritage, just reimagined for the modern age. Woman: Well, I’m glad someone appreciates it. I just hope they didn't spend too much of the council's budget on it. Man: I think it’s an investment in our cultural identity, and you can't really put a price on that.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, Emily, what do you make of the new sculpture in the town square?"
+        },
+        {
+          "speaker": "woman",
+          "text": "To be honest, Emily, I find it a bit jarring against the traditional architecture of the surrounding buildings. It’s a bit too 'industrial' for my taste."
+        },
+        {
+          "speaker": "man",
+          "text": "Really? I love the contrast. I think it’s exactly what the town needs to show we’re looking forward, not just backward."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suppose. But couldn't they have chosen something a bit more... organic? It looks like a pile of scrap metal from a distance."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s the point! It’s a tribute to the town’s manufacturing heritage, just reimagined for the modern age."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I’m glad someone appreciates it. I just hope they didn't spend too much of the council's budget on it."
+        },
+        {
+          "speaker": "man",
+          "text": "I think it’s an investment in our cultural identity, and you can't really put a price on that."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What is the woman's main objection to the sculpture?",
+          "options": {
+            "A": "Its excessive size and weight.",
+            "B": "Its lack of connection to the local area.",
+            "C": "Its visual incompatibility with its environment."
+          },
+          "answer": "C",
+          "explanation": "She uses the word 'jarring' (clashing) against the 'traditional architecture', indicating a visual mismatch."
+        },
+        {
+          "number": 6,
+          "question": "What does the man believe the sculpture represents for the town?",
+          "options": {
+            "A": "A commitment to environmental sustainability.",
+            "B": "A progressive and future-oriented outlook.",
+            "C": "A rejection of the town's industrial past."
+          },
+          "answer": "B",
+          "explanation": "He says it shows the town is 'looking forward, not just backward', which is a C1 way of saying progressive/future-oriented."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_Test%2011.mp3"
+}
