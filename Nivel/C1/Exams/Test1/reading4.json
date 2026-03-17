@@ -1,0 +1,78 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "I'm sure it was a surprise to you when you won the lottery.",
+        "keyWord": "BEEN",
+        "beforeGap": "You",
+        "afterGap": "surprised when you won the lottery.",
+        "routes": [
+          { "p1": "must", "p2": "have been (very/highly)" },
+          { "p1": "must", "p2": "have been quite" }
+        ]
+      },
+      {
+        "number": 26,
+        "firstSentence": "The company is said to be on the verge of bankruptcy.",
+        "keyWord": "RUMOUR",
+        "beforeGap": "There",
+        "afterGap": "the company is about to go bankrupt.",
+        "routes": [
+          { "p1": "is a", "p2": "rumour (that)" },
+          { "p1": "is a", "p2": "widespread rumour (that)" }
+        ]
+      },
+      {
+        "number": 27,
+        "firstSentence": "It was only because of his help that I passed the exam.",
+        "keyWord": "BUT",
+        "beforeGap": "I would not have passed the exam",
+        "afterGap": "help.",
+        "routes": [
+          { "p1": "but", "p2": "for his" },
+          { "p1": "but", "p2": "for the help he gave" }
+        ]
+      },
+      {
+        "number": 28,
+        "firstSentence": "They will likely cancel the outdoor concert if it keeps raining.",
+        "keyWord": "PROBABILITY",
+        "beforeGap": "There is",
+        "afterGap": "the outdoor concert will be cancelled.",
+        "routes": [
+          { "p1": "every", "p2": "probability (that)" },
+          { "p1": "a high", "p2": "probability (that)" },
+          { "p1": "a strong", "p2": "probability (that)" }
+        ]
+      },
+      {
+        "number": 29,
+        "firstSentence": "I regret not studying harder for the final test.",
+        "keyWord": "WISH",
+        "beforeGap": "I",
+        "afterGap": "harder for the final test.",
+        "routes": [
+          { "p1": "wish (that)", "p2": "I had studied" },
+          { "p1": "wish", "p2": "I'd studied" }
+        ]
+      },
+      {
+        "number": 30,
+        "firstSentence": "They are going to demolish the old factory next month.",
+        "keyWord": "PULLED",
+        "beforeGap": "The old factory is",
+        "afterGap": "next month.",
+        "routes": [
+          { "p1": "going to", "p2": "be pulled down" },
+          { "p1": "due to", "p2": "be pulled down" }
+        ]
+      }
+    ]
+  }
+}

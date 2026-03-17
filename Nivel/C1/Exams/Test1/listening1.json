@@ -1,0 +1,194 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1 – 6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two colleagues, a manager and a senior executive, discussing a recent corporate restructuring.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Well, Sonia, the dust has finally settled on the departmental merger. I must say, [1]the lack of transparency during the transition was quite disconcerting for my team[/1]. Woman: I take your point, Ryan, but the board felt a rapid rollout was essential to prevent productivity slumping. Man: Perhaps, but it’s thrown up issues with role overlap that we’re still unpicking. Woman: That’s to be expected. However, [2]what really strikes me is how the junior staff have taken the initiative despite the ambiguity[/2]. They've really stepped up. Man: I agree, their resilience was the silver lining. But moving forward, we can't just rely on their goodwill. We need a concrete hierarchy. Woman: Absolutely. We’re drafting a revised organizational chart as we speak to clarify those blurred lines.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Well, Sonia, the dust has finally settled on the departmental merger. I must say, the lack of transparency during the transition was quite disconcerting for my team."
+        },
+        {
+          "speaker": "woman",
+          "text": "I take your point, Ryan, but the board felt a rapid rollout was essential to prevent productivity slumping."
+        },
+        {
+          "speaker": "man",
+          "text": "Perhaps, but it’s thrown up issues with role overlap that we’re still unpicking."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s to be expected. However, what really strikes me is how the junior staff have taken the initiative despite the ambiguity. They've really stepped up."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, their resilience was the silver lining. But moving forward, we can't just rely on their goodwill. We need a concrete hierarchy."
+        },
+        {
+          "speaker": "woman",
+          "text": "Absolutely. We’re drafting a revised organizational chart as we speak to clarify those blurred lines."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the man's main complaint about the restructuring process?",
+          "options": {
+            "A": "The speed at which the changes were implemented.",
+            "B": "The way information was withheld from the staff.",
+            "C": "The resulting confusion regarding job descriptions."
+          },
+          "answer": "B",
+          "explanation": "The man mentions that the 'lack of transparency' (evidence [1]) was disconcerting, referring to the poor communication during the shift."
+        },
+        {
+          "number": 2,
+          "question": "What has the woman been particularly impressed by?",
+          "options": {
+            "A": "The board's decisive leadership during the crisis.",
+            "B": "The speed with which new hierarchies were established.",
+            "C": "The proactive attitude shown by less experienced employees."
+          },
+          "answer": "C",
+          "explanation": "She notes that 'junior staff have taken the initiative' (evidence [2]), showing she was impressed by their proactivity."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a documentary they both watched regarding urban farming.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: So, did you catch that documentary on vertical farming last night? Man: I did. [1]I found the presenter’s cynical tone regarding traditional agriculture a bit hard to swallow, to be honest[/1]. Woman: Really? I thought she was just being realistic about the environmental toll. Though, I must admit, [2]the segment on the energy costs of LED lighting made me question if it's actually a sustainable alternative[/2] at all. Man: Exactly! It’s all well and good growing lettuce in a basement, but the carbon footprint of the electricity used is astronomical. Woman: Still, the tech is fascinating. If they could power it all through renewables, it would be a game changer for inner cities. Man: Possibly, but I’m still not convinced it'll ever be more than a niche hobby for the wealthy. Woman: Well, it’s early days. The industry is still finding its feet.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "So, did you catch that documentary on vertical farming last night?"
+        },
+        {
+          "speaker": "man",
+          "text": "I did. I found the presenter’s cynical tone regarding traditional agriculture a bit hard to swallow, to be honest."
+        },
+        {
+          "speaker": "woman",
+          "text": "Really? I thought she was just being realistic about the environmental toll. Though, I must admit, the segment on the energy costs of LED lighting made me question if it's actually a sustainable alternative at all."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly! It’s all well and good growing lettuce in a basement, but the carbon footprint of the electricity used is astronomical."
+        },
+        {
+          "speaker": "woman",
+          "text": "Still, the tech is fascinating. If they could power it all through renewables, it would be a game changer for inner cities."
+        },
+        {
+          "speaker": "man",
+          "text": "Possibly, but I’m still not convinced it'll ever be more than a niche hobby for the wealthy."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, it’s early days. The industry is still finding its feet."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What did the man dislike about the documentary?",
+          "options": {
+            "A": "The biased attitude of the person hosting it.",
+            "B": "The lack of focus on traditional farming methods.",
+            "C": "The unrealistic solutions proposed for urban areas."
+          },
+          "answer": "A",
+          "explanation": "He says the 'presenter’s cynical tone' (evidence [1]) was 'hard to swallow', indicating he found the host biased or unpleasant."
+        },
+        {
+          "number": 4,
+          "question": "What is the woman's current reservation about vertical farming?",
+          "options": {
+            "A": "The limited variety of crops that can be grown.",
+            "B": "The high prices of the final products.",
+            "C": "The amount of power required to maintain the systems."
+          },
+          "answer": "C",
+          "explanation": "She mentions that 'energy costs of LED lighting' (evidence [2]) made her doubt its sustainability."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two university students from Ireland discussing their upcoming final year project.",
+      "voices": {
+        "man": "en-IE-ConnorNeural",
+        "woman": "en-IE-EmilyNeural"
+      },
+      "audio_script": "Man: I’m starting to panic a bit about the dissertation topic, Emily. I’ve been plodding through the literature, but nothing’s clicking. Woman: Don't let it get to you, Connor. [1]It’s often a case of just picking a thread and seeing where it leads[/1], rather than waiting for a 'eureka' moment. Man: Easy for you to say! You’ve already got your data sources lined up. I’m worried my focus is too broad. Woman: Well, my supervisor did warn me that [2]I might have been overly ambitious with the number of interviews I’ve planned[/2]. I might have to scale it back if I want to finish by May. Man: Actually, that makes me feel slightly better. I thought I was the only one struggling with the scope. Woman: Far from it. Half the class is in the same boat, honestly. We just need to keep chipping away at it.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’m starting to panic a bit about the dissertation topic, Emily. I’ve been plodding through the literature, but nothing’s clicking."
+        },
+        {
+          "speaker": "woman",
+          "text": "Don't let it get to you, Connor. It’s often a case of just picking a thread and seeing where it leads, rather than waiting for a 'eureka' moment."
+        },
+        {
+          "speaker": "man",
+          "text": "Easy for you to say! You’ve already got your data sources lined up. I’m worried my focus is too broad."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, my supervisor did warn me that I might have been overly ambitious with the number of interviews I’ve planned. I might have to scale it back if I want to finish by May."
+        },
+        {
+          "speaker": "man",
+          "text": "Actually, that makes me feel slightly better. I thought I was the only one struggling with the scope."
+        },
+        {
+          "speaker": "woman",
+          "text": "Far from it. Half the class is in the same boat, honestly. We just need to keep chipping away at it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What advice does the woman give the man regarding his dissertation?",
+          "options": {
+            "A": "To wait for a truly original idea to emerge.",
+            "B": "To start writing even if the direction is unclear.",
+            "C": "To narrow down his research focus immediately."
+          },
+          "answer": "B",
+          "explanation": "She suggests 'picking a thread and seeing where it leads' (evidence [1]) instead of waiting for a perfect moment, implying he should just start."
+        },
+        {
+          "number": 6,
+          "question": "What does the woman admit about her own project?",
+          "options": {
+            "A": "She is struggling to find enough participants for her research.",
+            "B": "She has underestimated the time needed for data analysis.",
+            "C": "She may have set herself an unrealistic workload."
+          },
+          "answer": "C",
+          "explanation": "She admits she was 'overly ambitious with the number of interviews' (evidence [2]), which means her workload is currently too high."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_Test%201.mp3"
+}

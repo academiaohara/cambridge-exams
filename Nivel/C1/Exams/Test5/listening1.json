@@ -1,0 +1,202 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1 – 6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two people discussing a new organic supermarket that has opened in their area.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you been to that new 'Green-Earth' market yet? Woman: I popped in yesterday, actually. [1]The layout is beautiful, but the prices are eye-watering[/1]. I mean, four pounds for a punnet of strawberries? Man: I know, it’s a bit steep. But they are locally sourced and completely pesticide-free. You’re paying for the quality, I suppose. Woman: I’m all for supporting local farmers, but I can't justify doing my weekly shop there. [2]It feels more like a boutique than a supermarket[/2]. Man: True, it’s definitely targeted at a certain demographic. But I must say, the sourdough I bought was the best I've ever had. Woman: Oh, their bakery section is dangerous! I went in for milk and came out with a gourmet hamper. Man: That’s how they get you. Everything looks so appetising you end up overspending without realizing it.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you been to that new 'Green-Earth' market yet?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I popped in yesterday, actually. The layout is beautiful, but the prices are eye-watering. I mean, four pounds for a punnet of strawberries?"
+        },
+        {
+          "speaker": "man",
+          "text": "I know, it’s a bit steep. But they are locally sourced and completely pesticide-free. You’re paying for the quality, I suppose."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’m all for supporting local farmers, but I can't justify doing my weekly shop there. It feels more like a boutique than a supermarket."
+        },
+        {
+          "speaker": "man",
+          "text": "True, it’s definitely targeted at a certain demographic. But I must say, the sourdough I bought was the best I've ever had."
+        },
+        {
+          "speaker": "woman",
+          "text": "Oh, their bakery section is dangerous! I went in for milk and came out with a gourmet hamper."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s how they get you. Everything looks so appetising you end up overspending without realizing it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What was the woman's first impression of the shop?",
+          "options": {
+            "A": "She was impressed by the wide variety of products.",
+            "B": "She was put off by the excessive cost of items.",
+            "C": "She found the store's organization confusing."
+          },
+          "answer": "B",
+          "explanation": "She describes the prices as 'eye-watering', which is a C1 idiom for extremely expensive."
+        },
+        {
+          "number": 2,
+          "question": "The woman compares the supermarket to a 'boutique' to suggest that...",
+          "options": {
+            "A": "it is too small for her needs.",
+            "B": "it lacks the range of a standard grocery store.",
+            "C": "it prioritises style and exclusivity over practicality."
+          },
+          "answer": "C",
+          "explanation": "Calling a supermarket a 'boutique' implies it's more about a high-end experience/aesthetic than being a practical place for a weekly shop."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two coworkers, a man and a woman, talking about a colleague who has just retired.",
+      "voices": {
+        "man": "en-GB-AlfieNeural",
+        "woman": "en-GB-BellaNeural"
+      },
+      "audio_script": "Man: It’s going to be strange not having Arthur around the office anymore, isn't it? Woman: Definitely. He was like the institutional memory of this place. [3]Whenever there was a technical glitch that nobody could solve, he’d have it fixed in minutes[/3]. Man: I know. He had such a wealth of experience. Though I won't miss his endless stories about 'how things were in the seventies'. Woman: [4]Oh, I found those quite charming! It gave us a bit of perspective on how much the industry has evolved[/4]. Man: I guess. But sometimes I just wanted to get my coffee and go back to my desk without a twenty-minute history lesson. Woman: You’re so impatient! Anyway, the retirement party was a nice touch. I think he was genuinely moved by the gift. Man: He was. Though I’m not sure he’ll actually use that digital camera we got him. He’s a bit of a technophobe outside of work.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "It’s going to be strange not having Arthur around the office anymore, isn't it?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely. He was like the institutional memory of this place. Whenever there was a technical glitch that nobody could solve, he’d have it fixed in minutes."
+        },
+        {
+          "speaker": "man",
+          "text": "I know. He had such a wealth of experience. Though I won't miss his endless stories about 'how things were in the seventies'."
+        },
+        {
+          "speaker": "woman",
+          "text": "Oh, I found those quite charming! It gave us a bit of perspective on how much the industry has evolved."
+        },
+        {
+          "speaker": "man",
+          "text": "I guess. But sometimes I just wanted to get my coffee and go back to my desk without a twenty-minute history lesson."
+        },
+        {
+          "speaker": "woman",
+          "text": "You’re so impatient! Anyway, the retirement party was a nice touch. I think he was genuinely moved by the gift."
+        },
+        {
+          "speaker": "man",
+          "text": "He was. Though I’m not sure he’ll actually use that digital camera we got him. He’s a bit of a technophobe outside of work."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman highlights Arthur's ability to...",
+          "options": {
+            "A": "mentor younger members of staff.",
+            "B": "resolve complex technical issues quickly.",
+            "C": "remember every client's name."
+          },
+          "answer": "B",
+          "explanation": "She says he'd have technical glitches 'fixed in minutes' when nobody else could solve them."
+        },
+        {
+          "number": 4,
+          "question": "How did the woman feel about Arthur's anecdotes?",
+          "options": {
+            "A": "She found them a waste of valuable working time.",
+            "B": "She appreciated the historical context they provided.",
+            "C": "She felt they were often repetitive and dull."
+          },
+          "answer": "B",
+          "explanation": "She calls them 'charming' and says they gave 'perspective on how much the industry has evolved'."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing their approach to planning a holiday.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: I’ve finally booked the flights for our trip to Japan! Now I just need to map out every single day's itinerary. Man: Every day? [5]Can't we just leave some things to chance?[/5] Part of the fun is discovering things spontaneously. Woman: In a country where we don't speak the language? I’d rather have a plan and not need it than be stuck in a train station with no idea where to go. Man: I'm not saying we shouldn't have a rough idea, but [6]scheduling every hour feels more like a military operation than a holiday[/6]. Woman: It’s not about being rigid; it’s about efficiency. There’s so much to see, and I don't want to waste time debating where to eat when we're already starving. Man: I see your point, but I think there’s a middle ground. How about we book the main attractions and leave the afternoons free? Woman: I suppose I could live with that. As long as we have a list of potential options for the 'free' time.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’ve finally booked the flights for our trip to Japan! Now I just need to map out every single day's itinerary."
+        },
+        {
+          "speaker": "man",
+          "text": "Every day? Can't we just leave some things to chance? Part of the fun is discovering things spontaneously."
+        },
+        {
+          "speaker": "woman",
+          "text": "In a country where we don't speak the language? I’d rather have a plan and not need it than be stuck in a train station with no idea where to go."
+        },
+        {
+          "speaker": "man",
+          "text": "I'm not saying we shouldn't have a rough idea, but scheduling every hour feels more like a military operation than a holiday."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s not about being rigid; it’s about efficiency. There’s so much to see, and I don't want to waste time debating where to eat when we're already starving."
+        },
+        {
+          "speaker": "man",
+          "text": "I see your point, but I think there’s a middle ground. How about we book the main attractions and leave the afternoons free?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suppose I could live with that. As long as we have a list of potential options for the 'free' time."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "The man expresses a preference for...",
+          "options": {
+            "A": "careful preparation in foreign countries.",
+            "B": "spontaneity during their travels.",
+            "C": "visiting fewer places in more detail."
+          },
+          "answer": "B",
+          "explanation": "He asks 'Can't we just leave some things to chance?' and talks about 'discovering things spontaneously'."
+        },
+        {
+          "number": 6,
+          "question": "What is the man's main objection to a detailed itinerary?",
+          "options": {
+            "A": "It would be too expensive to execute.",
+            "B": "It takes away the relaxation of a holiday.",
+            "C": "It is impossible to follow in a country like Japan."
+          },
+          "answer": "B",
+          "explanation": "He compares it to a 'military operation', implying it's too structured and stressful for a holiday."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_Test%205.mp3"
+}

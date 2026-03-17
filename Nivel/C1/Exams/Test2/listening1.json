@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1 – 6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two sociologists, a man and a woman, discussing the psychological effects of noise pollution in cities.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-AdaMultilingualNeural"
+      },
+      "audio_script": "Man: I was reading that new study on 'urban irritability'. It seems the constant hum of traffic is doing more than just keeping us awake; it’s actually eroding social trust. Woman: [1]I’m not surprised. When you're constantly on edge due to auditory overstimulation, you're far less likely to engage in small talk with a neighbor or help a stranger[/1]. Man: Exactly. It’s like we develop this protective 'shell' of indifference just to cope. Woman: [2]The real issue is that planners treat noise as a nuisance rather than a health hazard[/2]. They'll put up a few trees and call it 'mitigation'. Man: It needs a much more radical approach—pedestrianization on a scale we haven't seen yet. Woman: I agree, but try selling that to the delivery logistics lobby.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I was reading that new study on 'urban irritability'. It seems the constant hum of traffic is doing more than just keeping us awake; it’s actually eroding social trust."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’m not surprised. When you're constantly on edge due to auditory overstimulation, you're far less likely to engage in small talk with a neighbor or help a stranger."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. It’s like we develop this protective 'shell' of indifference just to cope."
+        },
+        {
+          "speaker": "woman",
+          "text": "The real issue is that planners treat noise as a nuisance rather than a health hazard. They'll put up a few trees and call it 'mitigation'."
+        },
+        {
+          "speaker": "man",
+          "text": "It needs a much more radical approach—pedestrianization on a scale we haven't seen yet."
+        },
+        {
+          "speaker": "woman",
+          "text": "I agree, but try selling that to the delivery logistics lobby."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The woman believes that excessive city noise leads to...",
+          "options": {
+            "A": "a decline in civic cooperation.",
+            "B": "an increase in physical altercations.",
+            "C": "a misunderstanding of local regulations."
+          },
+          "answer": "A",
+          "explanation": "She mentions that people are 'far less likely to... help a stranger', which points to a decline in cooperative/civic behavior."
+        },
+        {
+          "number": 2,
+          "question": "What is the woman's criticism of urban planners?",
+          "options": {
+            "A": "They prioritize aesthetics over functionality.",
+            "B": "They fail to recognize the severity of the problem.",
+            "C": "They are too influenced by the transport industry."
+          },
+          "answer": "B",
+          "explanation": "She states they treat noise as a 'nuisance' (minor annoyance) rather than a 'health hazard', showing they underestimate its severity."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends discussing a new investment app that uses game-like features.",
+      "voices": {
+        "man": "en-GB-OliverNeural",
+        "woman": "en-GB-OliviaNeural"
+      },
+      "audio_script": "Woman: I’ve just downloaded that 'QuestInvest' app. It’s actually making finance fun for once! Man: [3]I’m a bit wary of that whole 'gamification' of the stock market[/3]. It encourages people to treat serious financial decisions like they’re playing a video game. Woman: But it makes it so much more accessible! I’ve learned more about ETFs in three days than I did in three years of reading newspapers. Man: [4]The danger is that it trivializes the risks involved[/4]. The confetti and digital trophies you get for making a trade don't exactly scream 'caution'. Woman: I think you’re overreacting. It’s just a modern way of engaging a younger audience. Man: I hope so, but I fear we’re going to see a lot of people losing money they can't afford to lose because it felt like a game.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’ve just downloaded that 'QuestInvest' app. It’s actually making finance fun for once!"
+        },
+        {
+          "speaker": "man",
+          "text": "I’m a bit wary of that whole 'gamification' of the stock market. It encourages people to treat serious financial decisions like they’re playing a video game."
+        },
+        {
+          "speaker": "woman",
+          "text": "But it makes it so much more accessible! I’ve learned more about ETFs in three days than I did in three years of reading newspapers."
+        },
+        {
+          "speaker": "man",
+          "text": "The danger is that it trivializes the risks involved. The confetti and digital trophies you get for making a trade don't exactly scream 'caution'."
+        },
+        {
+          "speaker": "woman",
+          "text": "I think you’re overreacting. It’s just a modern way of engaging a younger audience."
+        },
+        {
+          "speaker": "man",
+          "text": "I hope so, but I fear we’re going to see a lot of people losing money they can't afford to lose because it felt like a game."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The man expresses skepticism about the app because it...",
+          "options": {
+            "A": "lacks the necessary educational content.",
+            "B": "promotes an overly casual attitude toward money.",
+            "C": "is designed only for expert investors."
+          },
+          "answer": "B",
+          "explanation": "He says it encourages people to treat 'serious financial decisions' like a 'video game', implying a casual attitude."
+        },
+        {
+          "number": 4,
+          "question": "What specific concern does the man have about the app's interface?",
+          "options": {
+            "A": "It obscures the actual cost of trading fees.",
+            "B": "It uses visual rewards to mask potential dangers.",
+            "C": "It is too complex for the average user to navigate."
+          },
+          "answer": "B",
+          "explanation": "He mentions 'confetti and digital trophies' as things that 'trivialize the risks', masking the danger."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two friends, Connor and Emily, talking about the trend of 'remaking' old films and TV shows.",
+      "voices": {
+        "man": "en-IE-ConnorNeural",
+        "woman": "en-IE-EmilyNeural"
+      },
+      "audio_script": "Man: I see they’re rebooting that 90s sci-fi series again. Does Hollywood have any original ideas left? Woman: [5]I think it’s less about a lack of creativity and more about risk aversion[/5]. Studios would rather bet on a known 'brand' than something unproven. Man: It’s a shame. Part of the joy of cinema is being surprised. Woman: True, but [6]there’s also a deep-seated comfort in seeing familiar characters reimagined[/6]. Especially with the state of the world right now, nostalgia is a powerful drug. Man: I get the appeal, but I find most of these remakes just lack the soul of the originals. Woman: Maybe, but as long as they keep breaking box office records, they aren't going to stop.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I see they’re rebooting that 90s sci-fi series again. Does Hollywood have any original ideas left?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I think it’s less about a lack of creativity and more about risk aversion. Studios would rather bet on a known 'brand' than something unproven."
+        },
+        {
+          "speaker": "man",
+          "text": "It’s a shame. Part of the joy of cinema is being surprised."
+        },
+        {
+          "speaker": "woman",
+          "text": "True, but there’s also a deep-seated comfort in seeing familiar characters reimagined. Especially with the state of the world right now, nostalgia is a powerful drug."
+        },
+        {
+          "speaker": "man",
+          "text": "I get the appeal, but I find most of these remakes just lack the soul of the originals."
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe, but as long as they keep breaking box office records, they aren't going to stop."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the woman identify as the primary reason for the frequency of reboots?",
+          "options": {
+            "A": "A genuine shortage of talented scriptwriters.",
+            "B": "A desire to avoid financial uncertainty.",
+            "C": "A demand from audiences for longer storylines."
+          },
+          "answer": "B",
+          "explanation": "She mentions 'risk aversion' and betting on a 'known brand' rather than 'something unproven', which is about financial safety."
+        },
+        {
+          "number": 6,
+          "question": "According to the woman, why are audiences drawn to these remakes?",
+          "options": {
+            "A": "They offer a sense of emotional security.",
+            "B": "They are technically superior to the originals.",
+            "C": "They provide a more diverse range of perspectives."
+          },
+          "answer": "A",
+          "explanation": "She speaks of 'deep-seated comfort' and 'nostalgia', which are forms of emotional security/well-being."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_Test%202.mp3"
+}

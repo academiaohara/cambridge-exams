@@ -1,0 +1,202 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1 – 6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two colleagues, a man and a woman, discussing a professional development course.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-AdaMultilingualNeural"
+      },
+      "audio_script": "Woman: So, how are you finding the leadership seminar? Man: Honestly? [1]It’s a bit of a mixed bag. The theory is sound enough, I suppose, but the delivery is incredibly dry.[/1] I find my mind wandering after the first twenty minutes. Woman: That's a pity. I've heard the facilitator is quite a big name in the industry. Man: He might be, but he spends half the time name-dropping and the other half reminiscing about his early days. It’s hardly the cutting-edge insight I was promised. Woman: Well, [2]the networking aspect alone should make it worth your while, shouldn't it?[/2] Everyone who’s anyone in project management is there. Man: I guess so, though I’ve always found those forced interactions a bit awkward. Still, I did have an interesting chat with someone from the Birmingham office during the coffee break. Woman: See? That’s where the real value lies, not in the PowerPoint slides.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, how are you finding the leadership seminar?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Honestly? It’s a bit of a mixed bag. The theory is sound enough, I suppose, but the delivery is incredibly dry. I find my mind wandering after the first twenty minutes."
+        },
+        {
+          "speaker": "man",
+          "text": "That's a pity. I've heard the facilitator is quite a big name in the industry."
+        },
+        {
+          "speaker": "woman",
+          "text": "He might be, but he spends half the time name-dropping and the other half reminiscing about his early days. It’s hardly the cutting-edge insight I was promised."
+        },
+        {
+          "speaker": "man",
+          "text": "Well, the networking aspect alone should make it worth your while, shouldn't it? Everyone who’s anyone in project management is there."
+        },
+        {
+          "speaker": "woman",
+          "text": "I guess so, though I’ve always found those forced interactions a bit awkward. Still, I did have an interesting chat with someone from the Birmingham office during the coffee break."
+        },
+        {
+          "speaker": "woman",
+          "text": "See? That’s where the real value lies, not in the PowerPoint slides."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the man's main criticism of the seminar?",
+          "options": {
+            "A": "The theoretical content is outdated.",
+            "B": "The presentation style is unengaging.",
+            "C": "The facilitator is inexperienced."
+          },
+          "answer": "B",
+          "explanation": "He says the 'delivery is incredibly dry' and his 'mind wanders', indicating a lack of engagement with the style."
+        },
+        {
+          "number": 2,
+          "question": "The woman suggests that the man should focus on...",
+          "options": {
+            "A": "the credentials of the facilitator.",
+            "B": "the quality of the course materials.",
+            "C": "the opportunities for professional connection."
+          },
+          "answer": "C",
+          "explanation": "She mentions the 'networking aspect' and implies that meeting people is 'where the real value lies'."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends from Ireland, Emily and Connor, talking about their city's new bike-sharing scheme.",
+      "voices": {
+        "man": "en-IE-ConnorNeural",
+        "woman": "en-IE-EmilyNeural"
+      },
+      "audio_script": "Man: Have you tried those new city bikes yet, Emily? Woman: I have, actually. Though I must say, [3]the app is a bit of a nightmare to navigate when you're in a hurry[/3]. It took me ages just to unlock the thing. Man: Really? I found it quite intuitive. Mind you, the bikes themselves are a bit heavy, aren't they? Trying to get up the hill by the cathedral was a proper workout. Woman: Tell me about it! But [4]it’s brilliant not having to worry about your own bike getting pinched[/4] while you're in the shops. Man: That’s a fair point. And it’s definitely cheaper than getting the bus into the centre every day. Woman: It is, though I think they need more docking stations out in the suburbs. If you don't live within a mile of the clock tower, you're out of luck. Man: True, it’s early days yet, I suppose.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you tried those new city bikes yet, Emily?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I have, actually. Though I must say, the app is a bit of a nightmare to navigate when you're in a hurry. It took me ages just to unlock the thing."
+        },
+        {
+          "speaker": "man",
+          "text": "Really? I found it quite intuitive. Mind you, the bikes themselves are a bit heavy, aren't they? Trying to get up the hill by the cathedral was a proper workout."
+        },
+        {
+          "speaker": "woman",
+          "text": "Tell me about it! But it’s brilliant not having to worry about your own bike getting pinched while you're in the shops."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s a fair point. And it’s definitely cheaper than getting the bus into the centre every day."
+        },
+        {
+          "speaker": "woman",
+          "text": "It is, though I think they need more docking stations out in the suburbs. If you don't live within a mile of the clock tower, you're out of luck."
+        },
+        {
+          "speaker": "man",
+          "text": "True, it’s early days yet, I suppose."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What was Emily's experience with the system's software?",
+          "options": {
+            "A": "She found it exceptionally user-friendly.",
+            "B": "She struggled to use it efficiently.",
+            "C": "It failed to work on her specific device."
+          },
+          "answer": "B",
+          "explanation": "She calls the app a 'nightmare to navigate' and says it 'took ages' to unlock the bike."
+        },
+        {
+          "number": 4,
+          "question": "What do both speakers agree is a significant advantage of the scheme?",
+          "options": {
+            "A": "The physical health benefits of cycling.",
+            "B": "The low cost compared to public transport.",
+            "C": "The reduction in security concerns for cyclists."
+          },
+          "answer": "C",
+          "explanation": "Emily mentions not worrying about the bike 'getting pinched' (stolen), and Connor agrees it is a 'fair point'."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two young adults discussing their experiences with remote work.",
+      "voices": {
+        "man": "en-GB-OllieMultilingualNeural",
+        "woman": "en-GB-MiaNeural"
+      },
+      "audio_script": "Man: I don't know about you, Mia, but I'm starting to find working from my kitchen table a bit soul-destroying. Woman: Really? I’m the opposite. I feel like [5]I’ve reclaimed hours of my life now that the commute is out of the window[/5]. I’m much more productive. Man: I get that, but [6]I find the boundaries between 'home' and 'work' are just completely blurred now[/6]. I’m checking emails at 9 PM because the laptop is just... there. Woman: You have to be disciplined! I set a hard 'power-off' time at 5:30. Man: I wish it were that simple. My boss seems to think 'remote' means 'available 24/7'. Woman: That’s a management issue, not a remote work issue. Maybe you should have a word? Man: Perhaps. I just miss the office banter, you know? The kitchen table doesn't have much of a personality.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I don't know about you, Mia, but I'm starting to find working from my kitchen table a bit soul-destroying."
+        },
+        {
+          "speaker": "woman",
+          "text": "Really? I’m the opposite. I feel like I’ve reclaimed hours of my life now that the commute is out of the window. I’m much more productive."
+        },
+        {
+          "speaker": "man",
+          "text": "I get that, but I find the boundaries between 'home' and 'work' are just completely blurred now. I’m checking emails at 9 PM because the laptop is just... there."
+        },
+        {
+          "speaker": "woman",
+          "text": "You have to be disciplined! I set a hard 'power-off' time at 5:30."
+        },
+        {
+          "speaker": "man",
+          "text": "I wish it were that simple. My boss seems to think 'remote' means 'available 24/7'."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s a management issue, not a remote work issue. Maybe you should have a word?"
+        },
+        {
+          "speaker": "man",
+          "text": "Perhaps. I just miss the office banter, you know? The kitchen table doesn't have much of a personality."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the woman prefer working from home?",
+          "options": {
+            "A": "She enjoys the silence of her home environment.",
+            "B": "She has more free time due to less travel.",
+            "C": "She feels more comfortable in a domestic setting."
+          },
+          "answer": "B",
+          "explanation": "She mentions she has 'reclaimed hours' of her life because the 'commute is out of the window'."
+        },
+        {
+          "number": 6,
+          "question": "What is the man's main difficulty with the current arrangement?",
+          "options": {
+            "A": "He finds it hard to separate his professional and private life.",
+            "B": "He lacks the necessary equipment to work effectively.",
+            "C": "He is unable to complete his tasks on time."
+          },
+          "answer": "A",
+          "explanation": "He explicitly states the boundaries are 'completely blurred' and he finds himself working late because his work is always present."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_Test%203.mp3"
+}

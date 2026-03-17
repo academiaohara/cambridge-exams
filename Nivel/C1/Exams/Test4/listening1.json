@@ -1,0 +1,210 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1 – 6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "instructions": "You will hear three different extracts. For questions 1 – 6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends, a man and a woman, talking about a recent visit to a modern art gallery.",
+      "voices": {
+        "man": "en-GB-ElliotNeural",
+        "woman": "en-GB-HollieNeural"
+      },
+      "audio_script": "Woman: Well, that was... certainly an experience. I’m still trying to process that room with the flickering lightbulbs. Man: Oh, come on, Hollie! [1]It was a profound commentary on the transience of human existence[/1]. Didn't you feel the tension? Woman: Honestly? I just felt like I was in a hardware store with a faulty circuit. I think some of these artists are just seeing how much they can get away with. Man: [2]That’s a bit cynical, isn't it?[/2] Art is meant to provoke a reaction, and it clearly succeeded with you. Woman: A headache isn't the kind of reaction I usually look for in a gallery. I prefer something that shows a bit of technical mastery, you know? Something that didn't look like it was assembled in five minutes. Man: But the concept is the mastery! The execution is secondary to the idea behind it. Woman: I suppose. But I think I’ll stick to the Impressionists next time.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Well, that was... certainly an experience. I’m still trying to process that room with the flickering lightbulbs."
+        },
+        {
+          "speaker": "man",
+          "text": "Oh, come on, Hollie! It was a profound commentary on the transience of human existence. Didn't you feel the tension?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Honestly? I just felt like I was in a hardware store with a faulty circuit. I think some of these artists are just seeing how much they can get away with."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s a bit cynical, isn't it? Art is meant to provoke a reaction, and it clearly succeeded with you."
+        },
+        {
+          "speaker": "woman",
+          "text": "A headache isn't the kind of reaction I usually look for in a gallery. I prefer something that shows a bit of technical mastery, you know? Something that didn't look like it was assembled in five minutes."
+        },
+        {
+          "speaker": "man",
+          "text": "But the concept is the mastery! The execution is secondary to the idea behind it."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suppose. But I think I’ll stick to the Impressionists next time."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The man interprets the lightbulb exhibit as...",
+          "options": {
+            "A": "a demonstration of electrical engineering.",
+            "B": "a reflection on the temporary nature of life.",
+            "C": "a critique of modern consumerism."
+          },
+          "answer": "B",
+          "explanation": "He uses the phrase 'transience of human existence', which is a direct synonym for the temporary nature of life."
+        },
+        {
+          "number": 2,
+          "question": "How does the man react to the woman's opinion?",
+          "options": {
+            "A": "He agrees that the exhibit was poorly constructed.",
+            "B": "He suggests she is being overly skeptical.",
+            "C": "He admits he also found the exhibit confusing."
+          },
+          "answer": "B",
+          "explanation": "He asks 'That's a bit cynical, isn't it?', indicating he finds her view too dismissive or skeptical."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two professionals discussing a recent corporate merger.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: The news of the merger has certainly sent shockwaves through the department. Woman: It was inevitable, really. We couldn't keep competing with the tech giants on our own. Man: I suppose, but [3]I’m concerned about the clash of corporate cultures[/3]. They’re very 'top-down', whereas we’ve always been more collaborative. Woman: [4]That’s a valid point, and I suspect there will be some friction in the early stages[/4] of the integration. But look at the resources they bring to the table. Man: Oh, the R&D budget is impressive, no doubt. I just hope our core values don't get lost in the shuffle. Woman: We'll have to be proactive. If we can demonstrate that our approach leads to better results, they might even adopt some of our practices. Man: I admire your optimism, Sonia. I just see a lot of 'restructuring' on the horizon, which is usually code for something else. Woman: Let's not jump to conclusions yet.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "The news of the merger has certainly sent shockwaves through the department."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was inevitable, really. We couldn't keep competing with the tech giants on our own."
+        },
+        {
+          "speaker": "man",
+          "text": "I suppose, but I’m concerned about the clash of corporate cultures. They’re very 'top-down', whereas we’ve always been more collaborative."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s a valid point, and I suspect there will be some friction in the early stages of the integration. But look at the resources they bring to the table."
+        },
+        {
+          "speaker": "man",
+          "text": "Oh, the R&D budget is impressive, no doubt. I just hope our core values don't get lost in the shuffle."
+        },
+        {
+          "speaker": "woman",
+          "text": "We'll have to be proactive. If we can demonstrate that our approach leads to better results, they might even adopt some of our practices."
+        },
+        {
+          "speaker": "man",
+          "text": "I admire your optimism, Sonia. I just see a lot of 'restructuring' on the horizon, which is usually code for something else."
+        },
+        {
+          "speaker": "woman",
+          "text": "Let's not jump to conclusions yet."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What is the man's primary worry regarding the merger?",
+          "options": {
+            "A": "A reduction in the research budget.",
+            "B": "Incompatibility between the two companies' management styles.",
+            "C": "The possibility of a hostile takeover by a tech giant."
+          },
+          "answer": "B",
+          "explanation": "He mentions the 'clash of corporate cultures', comparing their 'top-down' approach with his company's 'collaborative' style."
+        },
+        {
+          "number": 4,
+          "question": "What does the woman concede about the upcoming integration?",
+          "options": {
+            "A": "It will likely involve initial conflict.",
+            "B": "It is unlikely to be successful in the long term.",
+            "C": "It will result in immediate job losses."
+          },
+          "answer": "A",
+          "explanation": "She agrees there will be 'some friction in the early stages', which is an advanced way of saying conflict or disagreement."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two students talking about their elective history course.",
+      "voices": {
+        "man": "en-GB-OliverNeural",
+        "woman": "en-GB-OliviaNeural"
+      },
+      "audio_script": "Man: How did you find the lecture on the Industrial Revolution? Woman: To be honest, [5]I found the lecturer's focus on economic statistics a bit narrow[/5]. I was hoping for more on the social impact. Man: I actually thought the data provided a really solid foundation. It’s hard to understand the social changes without seeing the numbers first. Woman: Maybe, but it was so dry! I struggled to keep my eyes open by the end. Man: Really? [6]I was fascinated by the way he linked the growth of the textile industry to the expansion of the canal network[/6]. It made perfect sense. Woman: Well, I’m glad one of us enjoyed it. I just felt it lacked a human element. It was all about output and GDP, rather than the people living through it. Man: I think next week's seminar is specifically on urban living conditions, so you might find that more up your street. Woman: I hope so, otherwise this is going to be a long term.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How did you find the lecture on the Industrial Revolution?"
+        },
+        {
+          "speaker": "woman",
+          "text": "To be honest, I found the lecturer's focus on economic statistics a bit narrow. I was hoping for more on the social impact."
+        },
+        {
+          "speaker": "man",
+          "text": "I actually thought the data provided a really solid foundation. It’s hard to understand the social changes without seeing the numbers first."
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe, but it was so dry! I struggled to keep my eyes open by the end."
+        },
+        {
+          "speaker": "man",
+          "text": "Really? I was fascinated by the way he linked the growth of the textile industry to the expansion of the canal network. It made perfect sense."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I’m glad one of us enjoyed it. I just felt it lacked a human element. It was all about output and GDP, rather than the people living through it."
+        },
+        {
+          "speaker": "man",
+          "text": "I think next week's seminar is specifically on urban living conditions, so you might find that more up your street."
+        },
+        {
+          "speaker": "woman",
+          "text": "I hope so, otherwise this is going to be a long term."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman's problem with the lecture?",
+          "options": {
+            "A": "She found the lecturer's voice irritating.",
+            "B": "She felt the scope of the material was too limited.",
+            "C": "She thought the information was factually incorrect."
+          },
+          "answer": "B",
+          "explanation": "She describes the focus on statistics as 'a bit narrow', indicating it didn't cover enough breadth (specifically social impact)."
+        },
+        {
+          "number": 6,
+          "question": "The man was particularly impressed by the lecturer's ability to...",
+          "options": {
+            "A": "explain complex economic theories simply.",
+            "B": "make predictions about future industrial trends.",
+            "C": "demonstrate the relationship between different sectors."
+          },
+          "answer": "C",
+          "explanation": "He mentions the link between the 'textile industry' and the 'canal network', showing how different sectors connected."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_Test%204.mp3"
+}
