@@ -302,6 +302,13 @@
           });
         }
         
+        // Normalize reading6/reading8: questions nested inside content.texts → content.questions
+        if (exercise.content && exercise.content.texts && !exercise.content.questions &&
+            exercise.content.texts.questions) {
+          exercise.content.questions = exercise.content.texts.questions;
+          delete exercise.content.texts.questions;
+        }
+
         if (!exercise.content) {
           throw new Error('El archivo JSON no tiene la estructura correcta');
         }

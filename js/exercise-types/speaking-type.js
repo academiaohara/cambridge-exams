@@ -238,6 +238,9 @@
       var task = content.task || content.questions?.[0]?.task || '';
       var images = content.questions?.[0]?.images || [];
       var options = content.options || [];
+      if (!options.length && content.questions && content.questions.length) {
+        options = content.questions.map(function(q) { return (q && q.question) ? q.question : q; });
+      }
 
       var imagesHTML = images.map(function(src) { return '<img class="speaking-type-image" src="' + src + '" alt="">'; }).join('');
       var optionsHTML = options.length

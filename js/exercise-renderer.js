@@ -382,6 +382,7 @@
       let html = '<div class="' + typePrefix + '-texts">';
       Object.entries(texts).forEach(function(entry) {
         var key = entry[0], text = entry[1];
+        if (typeof text !== 'string') return;
         html += '<div class="' + typePrefix + '-text-card">';
         html += '<span class="' + typePrefix + '-text-label">' + key + '</span>';
         html += '<div class="' + typePrefix + '-text-content">' + self.processEvidenceMarkers(text) + '</div>';
