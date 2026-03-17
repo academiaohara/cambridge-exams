@@ -1,0 +1,40 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 4,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "10A",
+        "candidate": "Candidate A",
+        "topic": "People in nature",
+        "instructions": "Compare two of the pictures, and say what the people might be enjoying about being in nature and how it might affect their mood.",
+        "images": [
+          { "label": "A", "url": "https://listeninggenerator.b-cdn.net/test10_1a.jpg", "description": "A solitary hiker standing on a mountain peak, looking out over a sea of clouds." },
+          { "label": "B", "url": "https://listeninggenerator.b-cdn.net/test10_1b.jpg", "description": "A family having a picnic in a sunny park with large green trees in the background." },
+          { "label": "C", "url": "https://listeninggenerator.b-cdn.net/test10_1c.jpg", "description": "A person sitting on a beach at sunset, watching the waves come in." }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Who do you think is getting the most benefit from the experience? (Why?)"
+        }
+      },
+      {
+        "id": "10B",
+        "candidate": "Candidate B",
+        "topic": "Public performances",
+        "instructions": "Compare two of the pictures, and say why the people might be performing in public and how they might be feeling.",
+        "images": [
+          { "label": "D", "url": "https://listeninggenerator.b-cdn.net/test10_1d.jpg", "description": "A street musician playing a violin for passersby in a busy city square." },
+          { "label": "E", "url": "https://listeninggenerator.b-cdn.net/test10_1e.jpg", "description": "A troupe of actors performing an open-air theater play in a park." },
+          { "label": "F", "url": "https://listeninggenerator.b-cdn.net/test10_1f.jpg", "description": "A professional dancer performing on a grand stage with dramatic lighting." }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which performance do you think requires the most courage? (Why?)"
+        }
+      }
+    ]
+  }
+}
