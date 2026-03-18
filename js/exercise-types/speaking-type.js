@@ -48,8 +48,11 @@
     'John.png': 'm', 'Michael.png': 'm', 'Sarah.png': 'f'
   };
 
-  // Cached voices for TTS
-  var _cachedVoices = { male: null, female: null, loaded: false };
+  // Cached voices for TTS — multiple voices per gender to avoid repetition between roles
+  var _cachedVoices = { male: [], female: [], loaded: false };
+
+  // Role-to-voice-index map: ensures examiner and partner use different voices
+  var ROLE_VOICE_INDEX = { examiner: 0, partner: 1, candidate: 2 };
 
   function _loadVoices() {
     if (_cachedVoices.loaded) return;
@@ -60,24 +63,26 @@
     // Prefer en-GB voices, fallback to any en voice
     var enVoices = voices.filter(function(v) { return v.lang && v.lang.indexOf('en') === 0; });
     if (enVoices.length === 0) enVoices = voices;
-    // Try to find gendered voices by name heuristics
-    var female = null, male = null;
+    // Collect gendered voices by name heuristics
+    var females = [], males = [], used = [];
     enVoices.forEach(function(v) {
       var n = v.name.toLowerCase();
-      if (!female && (/female|woman|fiona|samantha|karen|moira|tessa|victoria|kate|serena|martha|hazel/.test(n))) female = v;
-      if (!male && (/\bmale\b|man\b|daniel|james|thomas|george|oliver|fred|lee|rishi|aaron/.test(n))) male = v;
+      if (/female|woman|fiona|samantha|karen|moira|tessa|victoria|kate|serena|martha|hazel/.test(n)) {
+        females.push(v); used.push(v);
+      } else if (/\bmale\b|man\b|daniel|james|thomas|george|oliver|fred|lee|rishi|aaron/.test(n)) {
+        males.push(v); used.push(v);
+      }
     });
-    // Fallback: if only one found, use different voices by index
-    if (!female && !male && enVoices.length >= 2) {
-      female = enVoices[0];
-      male = enVoices[1];
-    } else if (!female && male) {
-      female = enVoices.find(function(v) { return v !== male; }) || male;
-    } else if (female && !male) {
-      male = enVoices.find(function(v) { return v !== female; }) || female;
-    }
-    _cachedVoices.male = male;
-    _cachedVoices.female = female;
+    // Fill remaining voices (unclassified en voices) evenly to reach at least 3 per gender
+    var others = enVoices.filter(function(v) { return used.indexOf(v) === -1; });
+    var oi = 0;
+    while (females.length < 3 && oi < others.length) { females.push(others[oi++]); }
+    while (males.length < 3 && oi < others.length) { males.push(others[oi++]); }
+    // Final fallback: ensure at least one voice per gender (arrays may alias, but only voice objects are read, never mutated)
+    if (females.length === 0 && males.length > 0) females = males.slice();
+    if (males.length === 0 && females.length > 0) males = females.slice();
+    _cachedVoices.female = females;
+    _cachedVoices.male = males;
     _cachedVoices.loaded = true;
   }
 
@@ -88,9 +93,10 @@
     // Extract filename from path
     var filename = assignment.split('/').pop();
     var gender = AVATAR_GENDER[filename];
-    if (gender === 'f') return _cachedVoices.female;
-    if (gender === 'm') return _cachedVoices.male;
-    return null;
+    // Use role-based index so examiner and partner use different voices even within same gender
+    var idx = ROLE_VOICE_INDEX[role] || 0;
+    var voiceList = (gender === 'f') ? _cachedVoices.female : (gender === 'm') ? _cachedVoices.male : [];
+    return (voiceList[idx] !== undefined ? voiceList[idx] : voiceList[0]) || null;
   }
 
   // Stable avatar assignments per speaking section (role -> filename)
@@ -220,6 +226,8 @@
     _collaborativeMode: false,
     _collaborativeOptions: [],
     _collaborativeTask: '',
+    // AI partner for speaking3/4
+    _hasAIPartner: false,
 
     // ── Public API ──
 
@@ -271,6 +279,9 @@
       this._collaborativeMode = !!(content.options && content.options.length && content.script && !this._longTurnMode);
       this._collaborativeOptions = content.options || [];
       this._collaborativeTask = content.task || '';
+
+      // AI partner is needed for speaking3 (collaborative) and speaking4 (discussion with partner)
+      this._hasAIPartner = !this._longTurnMode && this._participants.indexOf('partner') >= 0;
 
       // Check for previously saved evaluation
       var savedEvaluation = null;
@@ -782,20 +793,27 @@
         return;
       }
 
+      // Collaborative/discussion partner (AI) turn: generate response via API
+      if (this._hasAIPartner && turn.role === 'partner' && !turn.text) {
+        this._activeSpeaker = 'partner';
+        this._refreshView();
+        this._generateAndPlayCollaborativeTurn(turn);
+        return;
+      }
+
       // Examiner or partner with pre-set text: auto-play
       this._activeSpeaker = turn.role;
-      // Auto-switch to options mode when the examiner introduces the collaborative task
-      if (this._collaborativeMode && turn.showOptions) {
-        this._switchMode('options');
-      } else {
-        this._refreshView();
-      }
+      this._refreshView();
 
       // Use text-to-speech if available
       var text = turn.text || '';
       this._messages.push({ role: turn.role, text: text });
 
       var afterSpeech = function() {
+        // Switch to options mode AFTER the examiner finishes the first showOptions turn
+        if (self._collaborativeMode && turn.showOptions) {
+          self._switchMode('options');
+        }
         self._scriptIndex++;
         self._processCurrentTurn();
       };
@@ -917,6 +935,58 @@
       })
       .catch(function(err) {
         console.error('Partner generation error:', err);
+        self._isAIGenerating = false;
+        self._showAIThinking(false);
+        turn.text = '...';
+        self._messages.push({ role: 'partner', text: '...' });
+        self._scriptIndex++;
+        self._processCurrentTurn();
+      });
+    },
+
+    // ── AI partner response generation for speaking3 (collaborative) and speaking4 (discussion) ──
+
+    _generateAndPlayCollaborativeTurn: function(turn) {
+      var self = this;
+      this._isAIGenerating = true;
+      this._showAIThinking(true);
+
+      var mode = this._collaborativeMode ? 'collaborative' : 'discussion';
+
+      fetch('/api/speaking-partner', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: this._messages,
+          mode: mode,
+          task: this._collaborativeTask,
+          options: this._collaborativeOptions,
+          examLevel: AppState.currentLevel || 'C1'
+        })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        self._isAIGenerating = false;
+        self._showAIThinking(false);
+        var responseText = data.response || '...';
+        turn.text = responseText;
+        self._messages.push({ role: 'partner', text: responseText });
+        self._refreshView();
+        if (self._synthesis && responseText) {
+          self._speakText(responseText, 'partner', function() {
+            self._scriptIndex++;
+            self._processCurrentTurn();
+          });
+        } else {
+          var delay = Math.max(1500, responseText.length * 40);
+          setTimeout(function() {
+            self._scriptIndex++;
+            self._processCurrentTurn();
+          }, delay);
+        }
+      })
+      .catch(function(err) {
+        console.error('Collaborative partner generation error:', err);
         self._isAIGenerating = false;
         self._showAIThinking(false);
         turn.text = '...';

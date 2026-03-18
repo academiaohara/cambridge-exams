@@ -3,12 +3,38 @@ import fetch from "node-fetch";
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
-  const { messages, taskInstructions, imageDescriptions, isMainTurn, followUpQuestion, examLevel } = req.body;
+  const { messages, taskInstructions, imageDescriptions, isMainTurn, followUpQuestion, examLevel, mode, task, options } = req.body;
   const level = examLevel || "C1";
   const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
 
   let systemPrompt;
-  if (isMainTurn) {
+  if (mode === 'collaborative') {
+    const recentContext = (messages || []).slice(-8)
+      .map(m => `${m.role.toUpperCase()}: ${m.text || ""}`)
+      .join("\n");
+    const optionsList = (options || []).map((o, i) => `${i + 1}. ${o}`).join("\n");
+    systemPrompt = `You are a ${level} level English language learner in a Cambridge C1 Speaking exam (Part 3: Collaborative Task). You are having a discussion with another candidate about a set of options.
+
+TASK: ${task || "Discuss the options and reach a decision together."}
+
+OPTIONS:
+${optionsList || "The various options presented."}
+
+RECENT CONVERSATION:
+${recentContext}
+
+Generate a natural, engaged contribution of 40-80 words. Express an opinion about one or more options, build on what was already said, ask your partner's view, or help move the discussion forward. Use ${level}-level vocabulary and discourse markers. Sound spontaneous and collaborative. Output only the spoken text with no meta-commentary.`;
+  } else if (mode === 'discussion') {
+    const recentContext = (messages || []).slice(-6)
+      .map(m => `${m.role.toUpperCase()}: ${m.text || ""}`)
+      .join("\n");
+    systemPrompt = `You are a ${level} level English language learner in a Cambridge C1 Speaking exam (Part 4: Discussion). The examiner is asking questions on a topic and you are discussing with another candidate.
+
+RECENT CONVERSATION:
+${recentContext}
+
+Generate a natural, thoughtful response of 40-80 words. Develop an opinion, use examples or reasons, and engage genuinely with the topic. Use ${level}-level vocabulary and grammar. Sound natural and spontaneous. Output only the spoken text with no meta-commentary.`;
+  } else if (isMainTurn) {
     systemPrompt = `You are a ${level} level English language learner in a Cambridge Speaking exam (Part 2 Long Turn). Your task is to compare two of three photographs and address the task question.
 
 TASK: ${taskInstructions || "Compare two of the pictures."}
