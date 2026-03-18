@@ -1,0 +1,39 @@
+{
+  "type": "part3",
+  "title": "Part 3 – Collaborative Task (C1 Cambridge)",
+  "description": "Evalúa la gestión de la interacción: ¿has invitado a tu compañero a hablar o has monopolizado la conversación?",
+  "prompt": "Actúa como un examinador oficial del Cambridge C1 Advanced (CAE). Evalúa mi intervención en la Parte 3 (Collaborative Task) según los criterios oficiales de Cambridge: Grammar and Vocabulary, Discourse Management, Pronunciation e Interactive Communication. Puntúa cada criterio del 1 al 5. Verifica si he invitado a mi compañero a participar (correcto) o si he monopolizado la conversación (incorrecto). Identifica las muletillas que he usado y sugiéreme alternativas C1. Después, dame 5 expresiones de nivel C1 que encajen con lo que he dicho. Aquí está mi intervención: [PEGA TU TEXTO]",
+  "criteria": [
+    {
+      "name": "Grammar and Vocabulary",
+      "description": "Uso de vocabulario de negociación, acuerdo y desacuerdo, y estructuras de opinión sofisticadas."
+    },
+    {
+      "name": "Discourse Management",
+      "description": "Capacidad de organizar y desarrollar la discusión colaborativa, aportando ideas y respondiendo a las del compañero."
+    },
+    {
+      "name": "Pronunciation",
+      "description": "Claridad y naturalidad al interactuar en tiempo real con el compañero."
+    },
+    {
+      "name": "Interactive Communication",
+      "description": "Habilidad clave: invitar al compañero a participar, responder a sus ideas y gestionar los turnos de palabra."
+    }
+  ],
+  "tips": [
+    "Invita siempre a tu compañero: 'What do you think about...?', 'I'd be curious to hear your view on...', 'Don't you think that...?'",
+    "Muestra acuerdo matizado: 'I see where you're coming from, though I'd argue that...', 'That's a valid point, and to build on that...'",
+    "Muestra desacuerdo educado: 'I'm not entirely convinced that...', 'I'd take a slightly different view on that...'",
+    "Gestiona el tiempo: 'Perhaps we should consider...', 'We might want to move on to...', 'Shall we try to reach a decision?'",
+    "Usa expresiones para reformular: 'In other words...', 'What I mean to say is...', 'To put it another way...'"
+  ],
+  "speakingFeatures": {
+    "partNumber": 3,
+    "duration": "2 minutes (discussion) + 1 minute (decision)",
+    "focus": "Collaborative discussion and negotiation with a partner",
+    "examinerRole": "Sets up the task and monitors; may intervene to keep the discussion on track",
+    "keyFunctions": ["negotiating", "agreeing", "disagreeing", "turn-taking", "inviting opinions"],
+    "commonMistake": "Monopolizing the conversation without inviting the partner to contribute"
+  }
+}

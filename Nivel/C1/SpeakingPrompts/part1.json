@@ -1,0 +1,38 @@
+{
+  "type": "part1",
+  "title": "Part 1 – Interview (C1 Cambridge)",
+  "description": "Evalúa una respuesta a las preguntas personales del examinador en la Parte 1 del Speaking C1 Advanced.",
+  "prompt": "Actúa como un examinador oficial del Cambridge C1 Advanced (CAE). Evalúa mi respuesta a la Parte 1 (Interview) según los criterios oficiales de Cambridge: Grammar and Vocabulary, Discourse Management, Pronunciation e Interactive Communication. Puntúa cada criterio del 1 al 5. Identifica las muletillas que he usado y sugiéreme alternativas C1. Después, dame 5 expresiones de nivel C1 que encajen con lo que he dicho. Aquí está mi respuesta: [PEGA TU TEXTO]",
+  "criteria": [
+    {
+      "name": "Grammar and Vocabulary",
+      "description": "Uso de estructuras gramaticales variadas y precisas, junto con vocabulario sofisticado y apropiado para el nivel C1."
+    },
+    {
+      "name": "Discourse Management",
+      "description": "Capacidad de producir respuestas coherentes, fluidas y bien organizadas, usando conectores y marcadores del discurso apropiados."
+    },
+    {
+      "name": "Pronunciation",
+      "description": "Claridad, fluidez e inteligibilidad del habla, incluyendo entonación, acento y ritmo adecuados."
+    },
+    {
+      "name": "Interactive Communication",
+      "description": "Capacidad de iniciar, mantener y desarrollar la interacción respondiendo de forma natural y relevante."
+    }
+  ],
+  "tips": [
+    "Amplía tus respuestas con ejemplos y justificaciones: 'For instance...', 'This is particularly evident when...'",
+    "Usa estructuras condicionales avanzadas: 'Were I to choose...', 'Had I known...'",
+    "Evita respuestas monosilábicas. Desarrolla siempre tus ideas con at least 4-5 sentences.",
+    "Demuestra rango lexical con sinónimos sofisticados: en lugar de 'important', usa 'paramount', 'pivotal', 'indispensable'.",
+    "Añade matices con adverbios de grado: 'remarkably', 'arguably', 'undeniably', 'to a considerable extent'"
+  ],
+  "speakingFeatures": {
+    "partNumber": 1,
+    "duration": "2 minutes",
+    "focus": "Personal information, opinions, and experiences",
+    "examinerRole": "Asks questions about the candidate's background, interests, opinions, and future plans",
+    "keyFunctions": ["describing", "expressing opinions", "giving information"]
+  }
+}

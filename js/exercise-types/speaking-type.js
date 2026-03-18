@@ -1335,13 +1335,21 @@
     },
 
     _parseFeedbackSections: function(evaluation) {
-      var sections = { detailed: '', strengths: '', improvements: '' };
-      var feedbackMatch = evaluation.match(/📝\s*DETAILED\s*FEEDBACK([\s\S]*?)(?=✅|⚠️|$)/i);
+      var sections = { detailed: '', strengths: '', improvements: '', fillers: '', upgradeList: '', speculationCheck: '', interactiveCheck: '' };
+      var feedbackMatch = evaluation.match(/📝\s*DETAILED\s*FEEDBACK([\s\S]*?)(?=✅|⚠️|🔍|📈|🎯|💬|$)/i);
       if (feedbackMatch) sections.detailed = feedbackMatch[1].trim();
-      var strengthsMatch = evaluation.match(/✅\s*STRENGTHS([\s\S]*?)(?=⚠️|$)/i);
+      var strengthsMatch = evaluation.match(/✅\s*STRENGTHS([\s\S]*?)(?=⚠️|🔍|📈|🎯|💬|$)/i);
       if (strengthsMatch) sections.strengths = strengthsMatch[1].trim();
-      var improvementsMatch = evaluation.match(/⚠️\s*AREAS\s*FOR\s*IMPROVEMENT([\s\S]*?)$/i);
+      var improvementsMatch = evaluation.match(/⚠️\s*AREAS\s*FOR\s*IMPROVEMENT([\s\S]*?)(?=🔍|📈|🎯|💬|$)/i);
       if (improvementsMatch) sections.improvements = improvementsMatch[1].trim();
+      var fillersMatch = evaluation.match(/🔍\s*FILLERS\s*(?:&|AND)\s*VAGUE\s*LANGUAGE([\s\S]*?)(?=📈|🎯|💬|$)/i);
+      if (fillersMatch) sections.fillers = fillersMatch[1].trim();
+      var upgradeMatch = evaluation.match(/📈\s*THE\s*UPGRADE\s*LIST([\s\S]*?)(?=🎯|💬|$)/i);
+      if (upgradeMatch) sections.upgradeList = upgradeMatch[1].trim();
+      var speculationMatch = evaluation.match(/🎯\s*SPECULATION\s*CHECK([\s\S]*?)(?=💬|$)/i);
+      if (speculationMatch) sections.speculationCheck = speculationMatch[1].trim();
+      var interactiveMatch = evaluation.match(/💬\s*INTERACTIVE\s*CHECK([\s\S]*?)$/i);
+      if (interactiveMatch) sections.interactiveCheck = interactiveMatch[1].trim();
       return sections;
     },
 
@@ -1362,7 +1370,11 @@
       var tabs = [
         { id: 'detailed', icon: 'chat', label: t('detailedFeedback', 'Detailed Feedback'), content: sections.detailed },
         { id: 'strengths', icon: 'check_circle', label: t('strengths', 'Strengths'), content: sections.strengths },
-        { id: 'improvements', icon: 'warning', label: t('areasForImprovement', 'Areas for Improvement'), content: sections.improvements }
+        { id: 'improvements', icon: 'warning', label: t('areasForImprovement', 'Areas for Improvement'), content: sections.improvements },
+        { id: 'fillers', icon: 'text_fields', label: t('fillersVagueLanguage', 'Fillers & Vague Language'), content: sections.fillers },
+        { id: 'upgradeList', icon: 'trending_up', label: t('upgradeList', 'Upgrade List'), content: sections.upgradeList },
+        { id: 'speculationCheck', icon: 'psychology', label: t('speculationCheck', 'Speculation Check'), content: sections.speculationCheck },
+        { id: 'interactiveCheck', icon: 'group', label: t('interactiveCheck', 'Interactive Check'), content: sections.interactiveCheck }
       ].filter(function(tab) { return tab.content; });
 
       if (!tabs.length) return '';
