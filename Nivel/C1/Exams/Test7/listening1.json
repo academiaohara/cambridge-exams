@@ -1,0 +1,202 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1 – 6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two people discussing the impact of social media on journalism.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: It’s incredible how quickly a story breaks now, isn't it? Minutes after an event, it’s all over the internet. Woman: It is, but [1]I’m increasingly wary of the lack of editorial oversight in these 'citizen journalist' posts[/1]. Accuracy often takes a backseat to speed. Man: True, but traditional outlets can be just as biased, often sitting on a story to fit a political narrative. At least with social media, you get the raw data. Woman: But [2]is it really 'data' if it's just a ten-second clip without any context?[/2] It’s so easy to misinterpret what’s actually happening. Man: I agree context is key. But you can't deny that social media has democratised the news. We aren't just passive consumers anymore. Woman: Democratised, perhaps. But it’s also created a minefield of misinformation that’s becoming nearly impossible to navigate.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "It’s incredible how quickly a story breaks now, isn't it? Minutes after an event, it’s all over the internet."
+        },
+        {
+          "speaker": "woman",
+          "text": "It is, but I’m increasingly wary of the lack of editorial oversight in these 'citizen journalist' posts. Accuracy often takes a backseat to speed."
+        },
+        {
+          "speaker": "man",
+          "text": "True, but traditional outlets can be just as biased, often sitting on a story to fit a political narrative. At least with social media, you get the raw data."
+        },
+        {
+          "speaker": "woman",
+          "text": "But is it really 'data' if it's just a ten-second clip without any context? It’s so easy to misinterpret what’s actually happening."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree context is key. But you can't deny that social media has democratised the news. We aren't just passive consumers anymore."
+        },
+        {
+          "speaker": "woman",
+          "text": "Democratised, perhaps. But it’s also created a minefield of misinformation that’s becoming nearly impossible to navigate."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The woman is concerned that modern news reporting...",
+          "options": {
+            "A": "is becoming too expensive to produce.",
+            "B": "prioritises being first over being correct.",
+            "C": "is controlled by too few political interests."
+          },
+          "answer": "B",
+          "explanation": "She states 'accuracy often takes a backseat to speed', meaning speed is more important than being right."
+        },
+        {
+          "number": 2,
+          "question": "Why does the woman question the 'raw data' mentioned by the man?",
+          "options": {
+            "A": "It is often deliberately falsified by experts.",
+            "B": "It is too difficult for the average person to understand.",
+            "C": "It can be misleading without a broader explanation."
+          },
+          "answer": "C",
+          "explanation": "She asks if clips without context can be considered data, noting they are 'easy to misinterpret'."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends, a man and a woman, talking about a 'zero-waste' lifestyle.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: I’ve finally managed to go a whole month without buying anything in plastic packaging! Man: That’s impressive, Libby. I tried it for a week and [3]the sheer amount of pre-planning required was exhausting[/3]. I felt like I was spending my whole life in specialty shops. Woman: It does take a bit of getting used to, but you eventually find a rhythm. And it’s so much more satisfying than just tossing things in the bin. Man: I don't doubt it. But [4]don't you think the premium you pay for those bulk-buy stores is a bit prohibitive?[/4] Not everyone can afford to save the planet. Woman: Actually, I’ve found that because I’m not buying processed convenience food, my overall grocery bill has actually gone down. Man: Really? That’s surprising. I always assumed it would be the other way around. Woman: You just have to buy in season and be prepared to cook from scratch. It’s a lifestyle shift, for sure.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’ve finally managed to go a whole month without buying anything in plastic packaging!"
+        },
+        {
+          "speaker": "man",
+          "text": "That’s impressive, Libby. I tried it for a week and the sheer amount of pre-planning required was exhausting. I felt like I was spending my whole life in specialty shops."
+        },
+        {
+          "speaker": "woman",
+          "text": "It does take a bit of getting used to, but you eventually find a rhythm. And it’s so much more satisfying than just tossing things in the bin."
+        },
+        {
+          "speaker": "man",
+          "text": "I don't doubt it. But don't you think the premium you pay for those bulk-buy stores is a bit prohibitive? Not everyone can afford to save the planet."
+        },
+        {
+          "speaker": "woman",
+          "text": "Actually, I’ve found that because I’m not buying processed convenience food, my overall grocery bill has actually gone down."
+        },
+        {
+          "speaker": "man",
+          "text": "Really? That’s surprising. I always assumed it would be the other way around."
+        },
+        {
+          "speaker": "woman",
+          "text": "You just have to buy in season and be prepared to cook from scratch. It’s a lifestyle shift, for sure."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What did the man find most difficult about his attempt at a zero-waste lifestyle?",
+          "options": {
+            "A": "The lack of variety in the products available.",
+            "B": "The time needed to organise his shopping.",
+            "C": "The social pressure from his peers."
+          },
+          "answer": "B",
+          "explanation": "He says the 'sheer amount of pre-planning required was exhausting', which refers to the time and effort of organization."
+        },
+        {
+          "number": 4,
+          "question": "What is the man's assumption about 'zero-waste' shopping?",
+          "options": {
+            "A": "It is only suitable for people living in large cities.",
+            "B": "It results in a lower quality of food.",
+            "C": "It is a more expensive way to live."
+          },
+          "answer": "C",
+          "explanation": "He mentions the 'premium' (extra cost) and says 'not everyone can afford' it, suggesting he thinks it's expensive."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two students, a man and a woman, discussing their upcoming graduation.",
+      "voices": {
+        "man": "en-GB-AlfieNeural",
+        "woman": "en-GB-BellaNeural"
+      },
+      "audio_script": "Man: Can you believe we’re actually finishing next month? It feels like we only started last week. Woman: I know! I’m [5]terrified of the prospect of entering the job market right now[/5], though. Everything seems so precarious. Man: Tell me about it. But at least we've got our degrees. That has to count for something, right? Woman: I hope so. But sometimes I feel like [6]the skills we've learned are already becoming obsolete with all this new tech[/6]. Man: You’re being too hard on yourself. The critical thinking and research skills are universal. They’ll never go out of style. Woman: I suppose. I’m just worried I’ll end up in a role that has nothing to do with what I studied. Man: Most people do! It’s about the journey, Bella. We’ve grown so much as people, and that’s what really matters. Woman: Spoken like someone who already has an internship lined up!",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Can you believe we’re actually finishing next month? It feels like we only started last week."
+        },
+        {
+          "speaker": "woman",
+          "text": "I know! I’m terrified of the prospect of entering the job market right now, though. Everything seems so precarious."
+        },
+        {
+          "speaker": "man",
+          "text": "Tell me about it. But at least we've got our degrees. That has to count for something, right?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I hope so. But sometimes I feel like the skills we've learned are already becoming obsolete with all this new tech."
+        },
+        {
+          "speaker": "man",
+          "text": "You’re being too hard on yourself. The critical thinking and research skills are universal. They’ll never go out of style."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suppose. I’m just worried I’ll end up in a role that has nothing to do with what I studied."
+        },
+        {
+          "speaker": "man",
+          "text": "Most people do! It’s about the journey, Bella. We’ve grown so much as people, and that’s what really matters."
+        },
+        {
+          "speaker": "woman",
+          "text": "Spoken like someone who already has an internship lined up!"
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "How does the woman feel about the immediate future?",
+          "options": {
+            "A": "Optimistic about the opportunities available.",
+            "B": "Indifferent to the outcome of her applications.",
+            "C": "Anxious about the economic climate."
+          },
+          "answer": "C",
+          "explanation": "She says she is 'terrified' because everything seems 'precarious' (unstable/dangerous), indicating anxiety about the economy."
+        },
+        {
+          "number": 6,
+          "question": "What specific concern does the woman have about her university education?",
+          "options": {
+            "A": "The curriculum was too focused on theory.",
+            "B": "The knowledge she gained is rapidly dating.",
+            "C": "The university didn't provide enough career support."
+          },
+          "answer": "B",
+          "explanation": "She says her skills are 'becoming obsolete' (no longer useful/dated) due to new technology."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_Test%207.mp3"
+}

@@ -1,0 +1,40 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 4,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "8A",
+        "candidate": "Candidate A",
+        "topic": "Dealing with challenges",
+        "instructions": "Compare two of the pictures, and say what challenges the people are facing and how they might be coping with them.",
+        "images": [
+          { "label": "A", "url": "https://listeninggenerator.b-cdn.net/test8_1a.jpg", "description": "A person trying to assemble a very complex piece of flat-pack furniture with an instruction manual." },
+          { "label": "B", "url": "https://listeninggenerator.b-cdn.net/test8_1b.jpg", "description": "A public speaker standing on a stage behind a lectern, looking out at a huge audience." },
+          { "label": "C", "url": "https://listeninggenerator.b-cdn.net/test8_1c.jpg", "description": "A commuter trying to navigate a city street during a blizzard or very heavy snowstorm." }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which of these situations requires the most patience? (Why?)"
+        }
+      },
+      {
+        "id": "8B",
+        "candidate": "Candidate B",
+        "topic": "Traveling in different ways",
+        "instructions": "Compare two of the pictures, and say why the people might have chosen these modes of transport and what the advantages/disadvantages are.",
+        "images": [
+          { "label": "D", "url": "https://listeninggenerator.b-cdn.net/test8_1d.jpg", "description": "A person cycling along a quiet, sunny country road with panniers on their bike." },
+          { "label": "E", "url": "https://listeninggenerator.b-cdn.net/test8_1e.jpg", "description": "Passengers sitting in the luxurious first-class cabin of a long-haul flight." },
+          { "label": "F", "url": "https://listeninggenerator.b-cdn.net/test8_1f.jpg", "description": "A group of people taking a small ferry or boat to reach a remote island." }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which of these journeys would you find most appealing? (Why?)"
+        }
+      }
+    ]
+  }
+}

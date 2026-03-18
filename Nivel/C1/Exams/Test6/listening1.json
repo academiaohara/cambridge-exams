@@ -1,0 +1,198 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1 – 6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new fitness trend called 'Primal Movement'.",
+      "voices": {
+        "man": "en-GB-ElliotNeural",
+        "woman": "en-GB-HollieNeural"
+      },
+      "audio_script": "Man: So, I saw you crawling across the park like a lizard this morning. Taking up 'Primal Movement', are we? Woman: Don't knock it until you've tried it! [1]It’s actually much more cognitively demanding than just mindlessly pounding the treadmill[/1]. You have to be so aware of your coordination. Man: I don't doubt it, but it looks a bit... well, eccentric for a public space. I think I’ll stick to my weightlifting. Woman: That’s the thing, though. Weightlifting is so linear. This is all about functional mobility. [2]I’ve noticed a massive difference in my lower back pain since I started[/2], which years of traditional gym work never touched. Man: Fair enough. I suppose if it works, the social embarrassment is a small price to pay. Woman: Exactly. Besides, once you get into the flow, you stop caring about who’s watching anyway.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, I saw you crawling across the park like a lizard this morning. Taking up 'Primal Movement', are we?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Don't knock it until you've tried it! It’s actually much more cognitively demanding than just mindlessly pounding the treadmill. You have to be so aware of your coordination."
+        },
+        {
+          "speaker": "man",
+          "text": "I don't doubt it, but it looks a bit... well, eccentric for a public space. I think I’ll stick to my weightlifting."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s the thing, though. Weightlifting is so linear. This is all about functional mobility. I’ve noticed a massive difference in my lower back pain since I started, which years of traditional gym work never touched."
+        },
+        {
+          "speaker": "man",
+          "text": "Fair enough. I suppose if it works, the social embarrassment is a small price to pay."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. Besides, once you get into the flow, you stop caring about who’s watching anyway."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the woman find particularly beneficial about this type of exercise?",
+          "options": {
+            "A": "It is less physically exhausting than running.",
+            "B": "It requires a high level of mental engagement.",
+            "C": "It is easier to perform in a social setting."
+          },
+          "answer": "B",
+          "explanation": "She describes it as 'cognitively demanding', implying that it challenges the brain/mind more than traditional cardio."
+        },
+        {
+          "number": 2,
+          "question": "The woman mentions her back pain to demonstrate that the exercise...",
+          "options": {
+            "A": "is safer than lifting heavy weights.",
+            "B": "is more effective than her previous routines.",
+            "C": "should only be done under professional supervision."
+          },
+          "answer": "B",
+          "explanation": "She notes a 'massive difference' that 'traditional gym work never touched', showing its superior effectiveness for her condition."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two professionals, a man and a woman, discussing the use of AI in their industry.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-AdaMultilingualNeural"
+      },
+      "audio_script": "Man: I’m starting to think our latest software update is more trouble than it’s worth. The AI suggestions for the layouts are just... bizarre. Woman: Really? [3]I’ve found it quite liberating to have a starting point that isn't my own biased habit[/3]. It throws up combinations I’d never have considered. Man: But it lacks any sense of brand identity. It’s technically proficient but emotionally hollow. Woman: Well, [4]it’s not meant to replace us, but to act as a springboard[/4]. You still have to apply the finishing touches. Man: I worry that clients will start to wonder why they’re paying our fees if a machine is doing the heavy lifting. Woman: On the contrary, it allows us to spend more time on the high-level strategy rather than the grunt work. It’s about shifting our value proposition. Man: I hope you're right, but I can't help feeling a bit redundant lately.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’m starting to think our latest software update is more trouble than it’s worth. The AI suggestions for the layouts are just... bizarre."
+        },
+        {
+          "speaker": "woman",
+          "text": "Really? I’ve found it quite liberating to have a starting point that isn't my own biased habit. It throws up combinations I’d never have considered."
+        },
+        {
+          "speaker": "man",
+          "text": "But it lacks any sense of brand identity. It’s technically proficient but emotionally hollow."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, it’s not meant to replace us, but to act as a springboard. You still have to apply the finishing touches."
+        },
+        {
+          "speaker": "man",
+          "text": "I worry that clients will start to wonder why they’re paying our fees if a machine is doing the heavy lifting."
+        },
+        {
+          "speaker": "woman",
+          "text": "On the contrary, it allows us to spend more time on the high-level strategy rather than the grunt work. It’s about shifting our value proposition."
+        },
+        {
+          "speaker": "man",
+          "text": "I hope you're right, but I can't help feeling a bit redundant lately."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What does the woman appreciate about the new software?",
+          "options": {
+            "A": "It matches the brand identity perfectly.",
+            "B": "It helps her overcome her own creative patterns.",
+            "C": "It is much faster than previous versions."
+          },
+          "answer": "B",
+          "explanation": "She mentions it is 'liberating' because the starting point isn't her 'own biased habit', allowing for new combinations."
+        },
+        {
+          "number": 4,
+          "question": "In the woman's view, the role of AI in their work is to...",
+          "options": {
+            "A": "take over the strategic planning of projects.",
+            "B": "provide an initial basis for further development.",
+            "C": "increase the fees they can charge to clients."
+          },
+          "answer": "B",
+          "explanation": "She uses the metaphor of a 'springboard', meaning something that provides a start for further action."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two friends from Ireland, Emily and Connor, discussing a recent documentary about urban planning.",
+      "voices": {
+        "man": "en-IE-ConnorNeural",
+        "woman": "en-IE-EmilyNeural"
+      },
+      "audio_script": "Woman: Did you see that documentary last night about '15-minute cities'? Man: I did. It’s a compelling concept, but [5]I think they glossed over the logistical nightmare of retrofitting older European cities[/5]. Woman: I thought the same. It’s all well and good for new developments, but how do you move a hospital or a major industrial zone? Man: Exactly. However, [6]the section on reclaiming street space for pedestrians was quite eye-opening[/6]. The transformation of those plazas in Paris was incredible. Woman: It was, though I wonder if it would go down as well here. People are very attached to their cars, aren't they? Man: True, there'd be an uproar if they tried to pedestrianise the main thoroughfare tomorrow. But the documentary made a strong case for the long-term health benefits. Woman: It did. It’s just getting people to see past the immediate inconvenience that’s the hard part.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you see that documentary last night about '15-minute cities'?"
+        },
+        {
+          "speaker": "man",
+          "text": "I did. It’s a compelling concept, but I think they glossed over the logistical nightmare of retrofitting older European cities."
+        },
+        {
+          "speaker": "woman",
+          "text": "I thought the same. It’s all well and good for new developments, but how do you move a hospital or a major industrial zone?"
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. However, the section on reclaiming street space for pedestrians was quite eye-opening. The transformation of those plazas in Paris was incredible."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was, though I wonder if it would go down as well here. People are very attached to their cars, aren't they?"
+        },
+        {
+          "speaker": "man",
+          "text": "True, there'd be an uproar if they tried to pedestrianise the main thoroughfare tomorrow. But the documentary made a strong case for the long-term health benefits."
+        },
+        {
+          "speaker": "woman",
+          "text": "It did. It’s just getting people to see past the immediate inconvenience that’s the hard part."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the man's main criticism of the documentary?",
+          "options": {
+            "A": "It focused too much on historical architecture.",
+            "B": "It underestimated the difficulty of adapting existing infrastructure.",
+            "C": "It failed to provide examples from outside Europe."
+          },
+          "answer": "B",
+          "explanation": "He says they 'glossed over the logistical nightmare of retrofitting', which means to treat a complex problem as if it were simple."
+        },
+        {
+          "number": 6,
+          "question": "Which aspect of the documentary did the man find particularly impressive?",
+          "options": {
+            "A": "The health statistics provided by experts.",
+            "B": "The interviews with Parisian city officials.",
+            "C": "The visual evidence of successful urban changes."
+          },
+          "answer": "C",
+          "explanation": "He describes the section on 'reclaiming street space' and the 'transformation' of Paris as 'eye-opening'."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_Test%206.mp3"
+}
