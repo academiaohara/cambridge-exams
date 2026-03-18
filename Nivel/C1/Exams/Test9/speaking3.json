@@ -1,18 +1,40 @@
 {
   "title": "Speaking - Part 3",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 1.5,
   "totalQuestions": 6,
-  "description": "...",
+  "description": "Discuss the options shown with your partner for about two minutes, then decide together which two would be most effective.",
   "content": {
     "task": "Discuss how the following factors have affected the way we form friendships today, then decide which has had the most significant impact.",
-    "options": ["Mobile apps", "Workplace environment", "Social clubs and hobbies", "Shared living spaces", "Travel experiences"],
-    "participants": ["examiner", "candidate", "partner"],
+    "options": [
+      "Mobile apps",
+      "Workplace environment",
+      "Social clubs and hobbies",
+      "Shared living spaces",
+      "Travel experiences"
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Talk together about how these factors influence our social circles." },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" },
-      { "role": "examiner", "text": "Now decide which factor has changed our friendships the most in recent years." }
+      {
+        "role": "examiner",
+        "text": "Talk together about how these factors influence our social circles."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now decide which factor has changed our friendships the most in recent years."
+      }
     ]
   }
 }

@@ -1,20 +1,39 @@
 {
   "title": "Speaking - Part 4",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 2.5,
   "totalQuestions": 6,
-  "description": "...",
+  "description": "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
   "content": {
     "task": "Discussion on global cooperation and individual energy use.",
     "questions": [
-      { "number": 1, "question": "Can countries ever truly agree on global climate targets?" },
-      { "number": 2, "question": "How much should individuals change their lifestyle to save energy?" }
+      {
+        "number": 1,
+        "question": "Can countries ever truly agree on global climate targets?"
+      },
+      {
+        "number": 2,
+        "question": "How much should individuals change their lifestyle to save energy?"
+      }
     ],
-    "participants": ["examiner", "candidate", "partner"],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Is it realistic to expect the world to stop using fossil fuels completely?" },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" }
+      {
+        "role": "examiner",
+        "text": "Is it realistic to expect the world to stop using fossil fuels completely?"
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      }
     ]
   }
 }

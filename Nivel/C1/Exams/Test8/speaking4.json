@@ -1,20 +1,39 @@
 {
   "title": "Speaking - Part 4",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 2.5,
   "totalQuestions": 6,
-  "description": "...",
+  "description": "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
   "content": {
     "task": "Discussion on migration and urban planning.",
     "questions": [
-      { "number": 1, "question": "Why are so many people moving from the countryside to big cities?" },
-      { "number": 2, "question": "What can governments do to make rural areas more attractive to young professionals?" }
+      {
+        "number": 1,
+        "question": "Why are so many people moving from the countryside to big cities?"
+      },
+      {
+        "number": 2,
+        "question": "What can governments do to make rural areas more attractive to young professionals?"
+      }
     ],
-    "participants": ["examiner", "candidate", "partner"],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Do you think cities will become too crowded to be livable in the future?" },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" }
+      {
+        "role": "examiner",
+        "text": "Do you think cities will become too crowded to be livable in the future?"
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      }
     ]
   }
 }
