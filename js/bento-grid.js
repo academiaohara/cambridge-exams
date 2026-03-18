@@ -572,7 +572,7 @@
 
       // "YOU ARE STUDYING" header + level badge
       var html = '<div class="sidebar-widget" style="background:transparent;box-shadow:none;border:none;padding:0;">' +
-        '<div style="font-size:0.78rem;font-weight:700;color:#5a7a9a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;text-align:center;">' + t('youAreStudying', 'You are studying') + '</div>' +
+        '<div style="font-size:0.78rem;font-weight:700;color:#5a7a9a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;text-align:center;">' + t('You are studying', 'You are studying') + '</div>' +
         '<div class="sidebar-level-badge" data-level="' + currentLevel + '" onclick="BentoGrid.toggleLevelDropdown()" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid.toggleLevelDropdown()}" role="button" tabindex="0" aria-expanded="false" style="cursor:pointer;background:' + lc.bg + '">' +
           '<div class="sidebar-level-badge-label" style="color:' + lc.label + '">' + t('level', 'Level') + '</div>' +
           '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + currentLevel + '</div>' +
@@ -580,7 +580,7 @@
 
       // Level dropdown (hidden by default) — carousel style
       html += '<div class="level-selector-options level-selector-collapsed" id="level-selector-options-panel">' +
-        '<div class="level-selector-changing-to">' + t('youAreChangingTo', 'You are changing to:') + '</div>' +
+        '<div class="level-selector-changing-to">' + t('You are changing to:', 'You are changing to:') + '</div>' +
         '<div class="level-selector-carousel">' +
           '<button class="level-selector-arrow" onclick="event.stopPropagation(); BentoGrid.navigateLevelSelector(-1)" aria-label="Previous level">' +
             '<span class="material-symbols-outlined">chevron_left</span>' +
