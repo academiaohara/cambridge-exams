@@ -1,0 +1,38 @@
+{
+  "type": "essay",
+  "title": "Essay (C1 Cambridge)",
+  "description": "Evalúa y mejora un Essay al nivel C1 Advanced según los criterios oficiales de Cambridge.",
+  "prompt": "Actúa como un examinador del Cambridge C1 Advanced. Evalúa este Essay según los criterios oficiales (Content, Communicative Achievement, Organisation, Language). Proporciona una nota de 1 a 5 por cada sección. Después, reescribe el texto usando conectores más sofisticados (ej. inversiones, pasivas impersonales) y vocabulario C2 para que suene más académico. Aquí está mi texto: [PEGA TU TEXTO]",
+  "criteria": [
+    {
+      "name": "Content",
+      "description": "El texto responde a la tarea y aborda todos los puntos requeridos con ideas relevantes y desarrolladas."
+    },
+    {
+      "name": "Communicative Achievement",
+      "description": "El texto usa el registro formal apropiado y logra el propósito comunicativo de forma convincente."
+    },
+    {
+      "name": "Organisation",
+      "description": "El texto está bien estructurado con introducción, desarrollo y conclusión claros, usando conectores cohesivos."
+    },
+    {
+      "name": "Language",
+      "description": "Uso de vocabulario y estructuras gramaticales variadas y precisas propias del nivel C1/C2."
+    }
+  ],
+  "tips": [
+    "Usa inversiones para añadir énfasis: 'Not only does this affect...', 'Rarely have we seen...'",
+    "Emplea pasivas impersonales para sonar más académico: 'It is widely acknowledged that...', 'It has been argued that...'",
+    "Varía los conectores: 'Furthermore', 'Nevertheless', 'Notwithstanding', 'In spite of this'",
+    "Utiliza nominalizaciones: en lugar de 'people are educated', escribe 'the education of the population'",
+    "Incluye vocabulario sofisticado: 'exacerbate', 'mitigate', 'proliferate', 'alleviate'"
+  ],
+  "wordLimit": "220-260 words",
+  "structure": {
+    "introduction": "Introduce el tema y presenta los dos puntos que vas a discutir.",
+    "bodyParagraph1": "Desarrolla el primer argumento con ejemplos y análisis.",
+    "bodyParagraph2": "Desarrolla el segundo argumento, considerando puntos de vista opuestos.",
+    "conclusion": "Resume ambos argumentos y expresa tu opinión razonada."
+  }
+}
