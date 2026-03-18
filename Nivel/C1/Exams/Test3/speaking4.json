@@ -1,20 +1,39 @@
 {
   "title": "Speaking - Part 4",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 2.5,
   "totalQuestions": 6,
   "description": "...",
   "content": {
     "task": "Questions on digital literacy and human connection.",
     "questions": [
-      { "number": 1, "question": "Is it easier or harder to make 'real' friends in the digital age?" },
-      { "number": 2, "question": "Do you think governments should regulate what can be posted on social media?" }
+      {
+        "number": 1,
+        "question": "Is it easier or harder to make 'real' friends in the digital age?"
+      },
+      {
+        "number": 2,
+        "question": "Do you think governments should regulate what can be posted on social media?"
+      }
     ],
-    "participants": ["examiner", "candidate", "partner"],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Some say social media makes us feel more lonely. What is your view?" },
-      { "role": "candidate", "text": "" },
-      { "role": "partner", "text": "" }
+      {
+        "role": "examiner",
+        "text": "Some say social media makes us feel more lonely. What is your view?"
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "partner",
+        "text": ""
+      }
     ]
   }
 }

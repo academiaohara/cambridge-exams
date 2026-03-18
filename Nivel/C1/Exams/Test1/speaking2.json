@@ -1,6 +1,6 @@
 {
   "title": "Speaking - Part 2",
-  "time": 4,
+  "time": 1.5,
   "totalQuestions": 2,
   "description": "Compare the photographs and answer the questions.",
   "content": {
@@ -11,9 +11,21 @@
         "topic": "Doing things accurately",
         "instructions": "Compare two of the pictures, say why it might be important for the people to do these things accurately, and how difficult being accurate might be for them.",
         "images": [
-          { "label": "A", "url": "https://listeninggenerator.b-cdn.net/test1_1a.jpg", "description": "A scientist or lab technician in a white coat using a precision pipette to move liquid between glass tubes in a laboratory setting." },
-          { "label": "B", "url": "https://listeninggenerator.b-cdn.net/test1_1b.jpg", "description": "A pastry chef meticulously placing small, delicate decorations onto a high-end gourmet cake with extreme focus." },
-          { "label": "C", "url": "https://listeninggenerator.b-cdn.net/test1_1c.jpg", "description": "A watchmaker or precision engineer using specialized tools to handle tiny gears and springs inside a mechanical watch." }
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test1_1a.jpg",
+            "description": "A scientist or lab technician in a white coat using a precision pipette to move liquid between glass tubes in a laboratory setting."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test1_1b.jpg",
+            "description": "A pastry chef meticulously placing small, delicate decorations onto a high-end gourmet cake with extreme focus."
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test1_1c.jpg",
+            "description": "A watchmaker or precision engineer using specialized tools to handle tiny gears and springs inside a mechanical watch."
+          }
         ],
         "followUp": {
           "recipient": "Candidate B",
@@ -26,9 +38,21 @@
         "topic": "Spending leisure time with water",
         "instructions": "Compare two of the pictures, say how the people might have prepared for these activities and how they might be feeling.",
         "images": [
-          { "label": "D", "url": "https://listeninggenerator.b-cdn.net/test1_1d.jpg", "description": "A group of people wearing helmets and life jackets, white-water rafting through intense rapids on a river." },
-          { "label": "E", "url": "https://listeninggenerator.b-cdn.net/test1_1e.jpg", "description": "A person relaxing peacefully in an outdoor thermal pool or hot spring with steam rising from the water." },
-          { "label": "F", "url": "https://listeninggenerator.b-cdn.net/test1_1f.jpg", "description": "A scuba diver swimming underwater near a vibrant coral reef, surrounded by small tropical fish." }
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test1_1d.jpg",
+            "description": "A group of people wearing helmets and life jackets, white-water rafting through intense rapids on a river."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test1_1e.jpg",
+            "description": "A person relaxing peacefully in an outdoor thermal pool or hot spring with steam rising from the water."
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test1_1f.jpg",
+            "description": "A scuba diver swimming underwater near a vibrant coral reef, surrounded by small tropical fish."
+          }
         ],
         "followUp": {
           "recipient": "Candidate A",

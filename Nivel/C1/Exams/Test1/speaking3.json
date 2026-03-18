@@ -1,7 +1,7 @@
 {
   "title": "Speaking - Part 3",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 1.5,
   "totalQuestions": 6,
   "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
   "content": {
@@ -14,20 +14,60 @@
       "Increasing taxes on plastic packaging"
     ],
     "followUp": "Now decide which two measures would be the most effective for long-term change.",
-    "participants": ["examiner", "candidate", "partner"],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Now, I’d like you to talk about something together for about two minutes. Here are some environmental measures for cities." },
-      { "role": "examiner", "text": "First, discuss how effective each one is, and then decide which two are the most practical. You have two minutes." },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" },
-      { "role": "examiner", "text": "Now decide which two factors would be most effective." },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" },
-      { "role": "examiner", "text": "Thank you." }
+      {
+        "role": "examiner",
+        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some environmental measures for cities."
+      },
+      {
+        "role": "examiner",
+        "text": "First, discuss how effective each one is, and then decide which two are the most practical. You have two minutes."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now decide which two factors would be most effective."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Thank you."
+      }
     ]
   }
 }

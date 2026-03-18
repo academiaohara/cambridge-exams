@@ -1,6 +1,6 @@
 {
   "title": "Speaking - Part 2",
-  "time": 4,
+  "time": 1.5,
   "totalQuestions": 2,
   "description": "Compare the photographs and answer the questions.",
   "content": {
@@ -11,9 +11,21 @@
         "topic": "The end of a long day",
         "instructions": "Compare two of the pictures, say why the people might have chosen to do these activities to relax at the end of a long day, and what they might be thinking about.",
         "images": [
-          { "label": "A", "url": "https://listeninggenerator.b-cdn.net/test3_1a.jpg", "description": "A person sitting in a comfortable armchair by a window, quietly reading a physical book as the sun sets." },
-          { "label": "B", "url": "https://listeninggenerator.b-cdn.net/test3_1b.jpg", "description": "A person in athletic wear jogging through a quiet street or park during the twilight hours to de-stress." },
-          { "label": "C", "url": "https://listeninggenerator.b-cdn.net/test3_1c.jpg", "description": "A person lying back on a sofa in a dimly lit living room, holding a remote and watching a movie on a large screen." }
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test3_1a.jpg",
+            "description": "A person sitting in a comfortable armchair by a window, quietly reading a physical book as the sun sets."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test3_1b.jpg",
+            "description": "A person in athletic wear jogging through a quiet street or park during the twilight hours to de-stress."
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test3_1c.jpg",
+            "description": "A person lying back on a sofa in a dimly lit living room, holding a remote and watching a movie on a large screen."
+          }
         ],
         "followUp": {
           "recipient": "Candidate B",
@@ -26,9 +38,21 @@
         "topic": "People singing",
         "instructions": "Compare two of the pictures, say why the people might be singing in these different situations, and how they might be feeling.",
         "images": [
-          { "label": "D", "url": "https://listeninggenerator.b-cdn.net/test3_1d.jpg", "description": "A lead singer of a band performing under bright stage lights, singing passionately into a microphone for a crowd." },
-          { "label": "E", "url": "https://listeninggenerator.b-cdn.net/test3_1e.jpg", "description": "A large group of people in a choir, dressed formally and singing together in a hall or cathedral." },
-          { "label": "F", "url": "https://listeninggenerator.b-cdn.net/test3_1f.jpg", "description": "A person singing alone in their car or kitchen, looking joyful and unselfconscious as they sing along to music." }
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test3_1d.jpg",
+            "description": "A lead singer of a band performing under bright stage lights, singing passionately into a microphone for a crowd."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test3_1e.jpg",
+            "description": "A large group of people in a choir, dressed formally and singing together in a hall or cathedral."
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test3_1f.jpg",
+            "description": "A person singing alone in their car or kitchen, looking joyful and unselfconscious as they sing along to music."
+          }
         ],
         "followUp": {
           "recipient": "Candidate A",

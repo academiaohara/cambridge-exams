@@ -1,20 +1,48 @@
 {
   "title": "Speaking - Part 3",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 1.5,
   "totalQuestions": 6,
   "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
   "content": {
     "task": "Discuss how the rise of online shopping has affected these aspects of local communities, then decide which two changes are the most concerning.",
-    "options": ["High street diversity", "Local employment", "Social interaction", "Traffic and delivery emissions", "Price competition"],
-    "participants": ["examiner", "candidate", "partner"],
+    "options": [
+      "High street diversity",
+      "Local employment",
+      "Social interaction",
+      "Traffic and delivery emissions",
+      "Price competition"
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Now, I’d like you to talk about something together for about two minutes. Here are some consequences of the shift to online shopping." },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" },
-      { "role": "examiner", "text": "Now decide which two consequences are the most worrying for the future of our towns." },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" }
+      {
+        "role": "examiner",
+        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some consequences of the shift to online shopping."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now decide which two consequences are the most worrying for the future of our towns."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      }
     ]
   }
 }

@@ -1,18 +1,40 @@
 {
   "title": "Speaking - Part 3",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 1.5,
   "totalQuestions": 6,
   "description": "You are going to read a magazine article about an intellectual process known as critical thinking...",
   "content": {
     "task": "Discuss how museums and art galleries should adapt to attract younger generations, then decide which two ideas would be most effective.",
-    "options": ["Interactive digital displays", "Free entry for students", "Social media 'photo-friendly' zones", "Late-night music events", "Virtual reality tours"],
-    "participants": ["examiner", "candidate", "partner"],
+    "options": [
+      "Interactive digital displays",
+      "Free entry for students",
+      "Social media 'photo-friendly' zones",
+      "Late-night music events",
+      "Virtual reality tours"
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Please discuss these ideas for making museums more appealing to young people." },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" },
-      { "role": "examiner", "text": "Now decide which two would have the biggest impact on attendance." }
+      {
+        "role": "examiner",
+        "text": "Please discuss these ideas for making museums more appealing to young people."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now decide which two would have the biggest impact on attendance."
+      }
     ]
   }
 }

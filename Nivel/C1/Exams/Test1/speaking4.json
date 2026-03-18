@@ -1,29 +1,75 @@
 {
   "title": "Speaking - Part 4",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 2.5,
   "totalQuestions": 6,
   "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
   "content": {
     "task": "The examiner will ask questions related to environmental responsibility and individual vs. government action.",
     "questions": [
-      { "number": 1, "question": "Do you think individuals can really make a difference, or is it up to governments?" },
-      { "number": 2, "question": "Some people say that protecting the environment is a luxury for rich countries. What is your opinion?" },
-      { "number": 3, "question": "How do you think our daily habits will have changed in twenty years' time?" }
+      {
+        "number": 1,
+        "question": "Do you think individuals can really make a difference, or is it up to governments?"
+      },
+      {
+        "number": 2,
+        "question": "Some people say that protecting the environment is a luxury for rich countries. What is your opinion?"
+      },
+      {
+        "number": 3,
+        "question": "How do you think our daily habits will have changed in twenty years' time?"
+      }
     ],
-    "participants": ["examiner", "candidate", "partner"],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Now I'd like to ask you some questions related to the environment." },
-      { "role": "examiner", "text": "Do you think individuals can really make a difference, or is it up to governments?" },
-      { "role": "candidate", "text": "" },
-      { "role": "partner", "text": "" },
-      { "role": "examiner", "text": "Some people say that protecting the environment is a luxury for rich countries. What is your opinion?" },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" },
-      { "role": "examiner", "text": "How do you think our daily habits will have changed in twenty years' time?" },
-      { "role": "candidate", "text": "" },
-      { "role": "partner", "text": "" },
-      { "role": "examiner", "text": "Thank you. That's the end of the speaking test." }
+      {
+        "role": "examiner",
+        "text": "Now I'd like to ask you some questions related to the environment."
+      },
+      {
+        "role": "examiner",
+        "text": "Do you think individuals can really make a difference, or is it up to governments?"
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Some people say that protecting the environment is a luxury for rich countries. What is your opinion?"
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "How do you think our daily habits will have changed in twenty years' time?"
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Thank you. That's the end of the speaking test."
+      }
     ]
   }
 }

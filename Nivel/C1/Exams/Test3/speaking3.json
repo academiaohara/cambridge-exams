@@ -1,18 +1,40 @@
 {
   "title": "Speaking - Part 3",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 1.5,
   "totalQuestions": 6,
   "description": "You are going to read a magazine article about an intellectual process known as critical thinking...",
   "content": {
     "task": "Discuss how social media platforms have influenced the following aspects of society, then decide which has had the most negative impact.",
-    "options": ["Personal privacy", "Political debate", "Self-esteem", "Spreading news", "Marketing and business"],
-    "participants": ["examiner", "candidate", "partner"],
+    "options": [
+      "Personal privacy",
+      "Political debate",
+      "Self-esteem",
+      "Spreading news",
+      "Marketing and business"
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Talk together about the influence of social media on these areas." },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" },
-      { "role": "examiner", "text": "Now decide which one has seen the most negative change due to these platforms." }
+      {
+        "role": "examiner",
+        "text": "Talk together about the influence of social media on these areas."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now decide which one has seen the most negative change due to these platforms."
+      }
     ]
   }
 }
