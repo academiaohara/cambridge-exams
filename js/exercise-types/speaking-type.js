@@ -776,7 +776,7 @@
         // The candidate (user or AI) describes the photos
         script.push({
           role: candRole,
-          text: candRole === 'partner' ? '' : '',   // empty = needs input (user) or AI gen
+          text: '',   // empty = needs input (user) or AI gen
           taskIndex: taskIdx,
           showImagesOnStart: true   // signal to auto-switch to images mode
         });
@@ -792,7 +792,7 @@
           });
           script.push({
             role: followUpRole,
-            text: followUpRole === 'partner' ? '' : '',
+            text: '',   // empty = needs input (user) or AI gen
             taskIndex: taskIdx,
             isFollowUp: true
           });
