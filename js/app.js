@@ -203,7 +203,7 @@
     },
     
     loadDashboard: function() {
-      Exercise.closeExercise();
+      Exercise.closeExercise({ forceDashboard: true });
     },
     
     syncExamsFromFolders: async function() {
