@@ -896,7 +896,7 @@
       
       App.restoreExamStatuses();
       var closingMode = AppState.currentMode;
-      if (closingMode === 'practice' || closingMode === 'exam') {
+      if (!opts.forceDashboard && (closingMode === 'practice' || closingMode === 'exam')) {
         Dashboard.renderSubpage(closingMode, returnToExamId);
         if (!opts.skipHistory) {
           var subpageState = { view: 'subpage', mode: closingMode, expandExamId: returnToExamId };
