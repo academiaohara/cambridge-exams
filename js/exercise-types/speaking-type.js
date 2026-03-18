@@ -187,7 +187,7 @@
   }
 
   window.SpeakingType = {
-    _viewMode: 'videocall',  // 'videocall' | 'chat' | 'images'
+    _viewMode: 'videocall',  // 'videocall' | 'chat' | 'images' | 'options'
     _scriptIndex: 0,
     _script: [],
     _participants: [],
@@ -216,6 +216,10 @@
     _aiCandidateLabel: null,     // 'A' or 'B' — which label the AI candidate has
     _userCandidateLabel: null,   // 'A' or 'B' — which label the human user has
     _isAIGenerating: false,
+    // Collaborative (speaking3) state
+    _collaborativeMode: false,
+    _collaborativeOptions: [],
+    _collaborativeTask: '',
 
     // ── Public API ──
 
@@ -263,6 +267,11 @@
         this._script = this._buildLongTurnScript(this._longTurnTasks, this._aiCandidateLabel);
       }
 
+      // Detect collaborative mode (speaking3: has options + script, no tasks)
+      this._collaborativeMode = !!(content.options && content.options.length && content.script && !this._longTurnMode);
+      this._collaborativeOptions = content.options || [];
+      this._collaborativeTask = content.task || '';
+
       // Check for previously saved evaluation
       var savedEvaluation = null;
       if (exercise.answers && exercise.answers._aiFeedback) {
@@ -277,29 +286,10 @@
       }
       _assignAvatars(this._participants);
 
-      // For interview mode (phases), skip the task section (questions are for the examiner)
+      // For interview, long-turn, collaborative and script-based modes skip the task prompt
+      // (interview: handled by examiner script; long-turn: shown in images view;
+      //  collaborative speaking3: shown in dedicated Options view; speaking4: examiner info only)
       var taskHTML = '';
-      if (!this._interviewMode) {
-        var task = content.task || content.questions?.[0]?.task || '';
-        var images = content.questions?.[0]?.images || [];
-        var options = content.options || [];
-        if (!options.length && content.questions && content.questions.length) {
-          options = content.questions.map(function(q) { return (q && q.question) ? q.question : q; });
-        }
-        var imagesHTML = images.map(function(src) { return '<img class="speaking-type-image" src="' + src + '" alt="">'; }).join('');
-        var optionsHTML = options.length
-          ? '<ul class="speaking-type-options">' + options.map(function(o) { return '<li>' + o + '</li>'; }).join('') + '</ul>'
-          : '';
-        if (task || options.length || images.length) {
-          taskHTML =
-            '<div class="speaking-type-task">' +
-              '<h3><i class="fas fa-comments"></i> ' + (exercise.title || t('startSpeaking', 'Speaking')) + '</h3>' +
-              '<p class="speaking-type-task-text">' + task + '</p>' +
-              optionsHTML +
-              (imagesHTML ? '<div class="speaking-type-images">' + imagesHTML + '</div>' : '') +
-            '</div>';
-        }
-      }
 
       var html =
         '<div class="speaking-type-wrapper">' +
@@ -350,6 +340,9 @@
       if (this._longTurnMode) {
         base += '<button class="speaking-toggle-btn" data-mode="images"><i class="fas fa-images"></i> ' + t('imagesMode', 'Images') + '</button>';
       }
+      if (this._collaborativeMode) {
+        base += '<button class="speaking-toggle-btn" data-mode="options"><i class="fas fa-th-list"></i> ' + t('optionsMode', 'Options') + '</button>';
+      }
       return base + '</div>';
     },
 
@@ -366,6 +359,8 @@
         sim.innerHTML = this._buildChatView();
       } else if (mode === 'images') {
         sim.innerHTML = this._buildImagesView();
+      } else if (mode === 'options') {
+        sim.innerHTML = this._buildOptionsView();
       }
       this._bindSimulationEvents();
       this._updateView();
@@ -504,6 +499,21 @@
           '</div>'
         : '';
 
+      // Candidate task selector tabs (switch between Candidate A and B photos)
+      var taskSelectorHTML = '';
+      if (this._longTurnTasks.length > 1) {
+        taskSelectorHTML = '<div class="speaking-img-task-selector">';
+        this._longTurnTasks.forEach(function(task, i) {
+          var label = task.candidate || ('Task ' + (i + 1));
+          var isActive = i === self._longTurnTaskIndex;
+          taskSelectorHTML += '<button class="speaking-img-task-btn' + (isActive ? ' active' : '') + '" ' +
+            'onclick="SpeakingType.switchLongTurnTask(' + i + ')">' +
+            '<i class="fas fa-images"></i> ' + label +
+          '</button>';
+        });
+        taskSelectorHTML += '</div>';
+      }
+
       // Build timer
       var timerHTML = '';
       if (this._conversationStarted && !this._conversationEnded) {
@@ -519,11 +529,58 @@
 
       return '<div class="speaking-images-view">' +
         timerHTML +
+        taskSelectorHTML +
         instructionsHTML +
         '<div class="speaking-images-grid">' + imagesHTML + '</div>' +
         this._buildControls() +
       '</div>';
     },
+
+    // Switch between long-turn tasks (Candidate A / Candidate B photos)
+    switchLongTurnTask: function(taskIndex) {
+      if (taskIndex >= 0 && taskIndex < this._longTurnTasks.length) {
+        this._longTurnTaskIndex = taskIndex;
+        this._switchMode('images');
+      }
+    },
+
+    // ── Options view (collaborative task panels for speaking3) ──
+
+    _buildOptionsView: function() {
+      var self = this;
+
+      // Build timer
+      var timerHTML = '';
+      if (this._conversationStarted && !this._conversationEnded) {
+        var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+        var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
+        var mins = Math.floor(remaining / 60);
+        var secs = remaining % 60;
+        var timeStr = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+        timerHTML = '<div class="speaking-chat-timer speaking-options-timer" id="speaking-chat-timer">' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + timeStr + '</span>' +
+        '</div>';
+      }
+
+      var taskHTML = this._collaborativeTask
+        ? '<p class="speaking-options-task">' + this._collaborativeTask + '</p>'
+        : '';
+
+      var optionsHTML = this._collaborativeOptions.map(function(option, i) {
+        return '<div class="speaking-options-card">' +
+          '<div class="speaking-options-card-num">' + (i + 1) + '</div>' +
+          '<div class="speaking-options-card-text">' + option + '</div>' +
+        '</div>';
+      }).join('');
+
+      return '<div class="speaking-options-view">' +
+        timerHTML +
+        (taskHTML ? '<div class="speaking-options-header">' + taskHTML + '</div>' : '') +
+        '<div class="speaking-options-grid">' + optionsHTML + '</div>' +
+        this._buildControls() +
+      '</div>';
+    },
+
 
     _buildChatBubble: function(role, text) {
       var align = role === 'candidate' ? 'right' : 'left';
@@ -727,7 +784,12 @@
 
       // Examiner or partner with pre-set text: auto-play
       this._activeSpeaker = turn.role;
-      this._refreshView();
+      // Auto-switch to options mode when the examiner introduces the collaborative task
+      if (this._collaborativeMode && turn.showOptions) {
+        this._switchMode('options');
+      } else {
+        this._refreshView();
+      }
 
       // Use text-to-speech if available
       var text = turn.text || '';
@@ -1389,6 +1451,8 @@
         sim.innerHTML = this._buildVideoCallView();
       } else if (this._viewMode === 'images') {
         sim.innerHTML = this._buildImagesView();
+      } else if (this._viewMode === 'options') {
+        sim.innerHTML = this._buildOptionsView();
       } else {
         sim.innerHTML = this._buildChatView();
       }

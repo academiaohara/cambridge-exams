@@ -3,7 +3,7 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "You are going to read a magazine article about an intellectual process known as critical thinking...",
+  "description": "Discuss the options shown with your partner for about two minutes, then decide together which two would be most effective.",
   "content": {
     "task": "Discuss how the shift to remote work affects these areas of life, then decide which two are the most challenging for companies to manage.",
     "options": [
@@ -21,7 +21,8 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Please discuss how working from home affects these different aspects of professional life."
+        "text": "Please discuss how working from home affects these different aspects of professional life.",
+        "showOptions": true
       },
       {
         "role": "partner",

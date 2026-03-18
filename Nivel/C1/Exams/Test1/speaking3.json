@@ -3,7 +3,7 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "description": "Discuss the options shown with your partner for about two minutes, then decide together which two would be most effective.",
   "content": {
     "task": "Look at the following options for reducing environmental impact in cities. Discuss how effective each one would be, then decide which two are the most practical to implement.",
     "options": [
@@ -22,7 +22,8 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some environmental measures for cities."
+        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some environmental measures for cities.",
+        "showOptions": true
       },
       {
         "role": "examiner",
