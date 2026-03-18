@@ -1,20 +1,48 @@
 {
   "title": "Speaking - Part 3",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 1.5,
   "totalQuestions": 6,
-  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "description": "Discuss the options shown with your partner for about two minutes, then decide together which two would be most effective.",
   "content": {
     "task": "Discuss how the way we consume news has changed with these sources, then decide which two are the most reliable in the modern world.",
-    "options": ["Traditional newspapers", "Television news", "Social media feeds", "Independent podcasts", "Citizen journalism"],
-    "participants": ["examiner", "candidate", "partner"],
+    "options": [
+      "Traditional newspapers",
+      "Television news",
+      "Social media feeds",
+      "Independent podcasts",
+      "Citizen journalism"
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Now, I’d like you to talk about something together for about two minutes. Here are some ways people get their news today." },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" },
-      { "role": "examiner", "text": "Now decide which two sources you think are the most reliable for staying informed." },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" }
+      {
+        "role": "examiner",
+        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some ways people get their news today."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now decide which two sources you think are the most reliable for staying informed."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      }
     ]
   }
 }
