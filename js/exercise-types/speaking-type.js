@@ -194,6 +194,9 @@
     _evaluated: false,
     _speakingTimerInterval: null,
     _speakingElapsed: 0,
+    _interviewMode: false,    // true when using AI-driven phase-based interview
+    _interviewPhases: null,   // phases array from content
+    _interviewAiFetching: false, // true while waiting for AI examiner question
 
     // ── Public API ──
 
@@ -220,6 +223,11 @@
       this._evaluated = false;
       this._stopSpeakingTimer();
       this._speakingElapsed = 0;
+      this._interviewAiFetching = false;
+
+      // Detect phase-based interview mode
+      this._interviewMode = !!(content.phases && content.phases.length);
+      this._interviewPhases = content.phases || null;
 
       // Check for previously saved evaluation
       var savedEvaluation = null;
@@ -235,26 +243,33 @@
       }
       _assignAvatars(this._participants);
 
-      var task = content.task || content.questions?.[0]?.task || '';
-      var images = content.questions?.[0]?.images || [];
-      var options = content.options || [];
-      if (!options.length && content.questions && content.questions.length) {
-        options = content.questions.map(function(q) { return (q && q.question) ? q.question : q; });
+      // For interview mode (phases), skip the task section (questions are for the examiner)
+      var taskHTML = '';
+      if (!this._interviewMode) {
+        var task = content.task || content.questions?.[0]?.task || '';
+        var images = content.questions?.[0]?.images || [];
+        var options = content.options || [];
+        if (!options.length && content.questions && content.questions.length) {
+          options = content.questions.map(function(q) { return (q && q.question) ? q.question : q; });
+        }
+        var imagesHTML = images.map(function(src) { return '<img class="speaking-type-image" src="' + src + '" alt="">'; }).join('');
+        var optionsHTML = options.length
+          ? '<ul class="speaking-type-options">' + options.map(function(o) { return '<li>' + o + '</li>'; }).join('') + '</ul>'
+          : '';
+        if (task || options.length || images.length) {
+          taskHTML =
+            '<div class="speaking-type-task">' +
+              '<h3><i class="fas fa-comments"></i> ' + (exercise.title || t('startSpeaking', 'Speaking')) + '</h3>' +
+              '<p class="speaking-type-task-text">' + task + '</p>' +
+              optionsHTML +
+              (imagesHTML ? '<div class="speaking-type-images">' + imagesHTML + '</div>' : '') +
+            '</div>';
+        }
       }
-
-      var imagesHTML = images.map(function(src) { return '<img class="speaking-type-image" src="' + src + '" alt="">'; }).join('');
-      var optionsHTML = options.length
-        ? '<ul class="speaking-type-options">' + options.map(function(o) { return '<li>' + o + '</li>'; }).join('') + '</ul>'
-        : '';
 
       var html =
         '<div class="speaking-type-wrapper">' +
-          '<div class="speaking-type-task">' +
-            '<h3><i class="fas fa-comments"></i> ' + (exercise.title || t('startSpeaking', 'Speaking')) + '</h3>' +
-            '<p class="speaking-type-task-text">' + task + '</p>' +
-            optionsHTML +
-            (imagesHTML ? '<div class="speaking-type-images">' + imagesHTML + '</div>' : '') +
-          '</div>' +
+          taskHTML +
           this._buildModeToggle() +
           '<div id="speaking-simulation">' +
             this._buildVideoCallView() +
@@ -441,6 +456,12 @@
       if (this._conversationEnded) {
         return '<div class="speaking-controls"><div class="speaking-ended-msg"><i class="fas fa-check-circle"></i> ' + t('conversationEnded', 'The conversation has ended') + '</div></div>';
       }
+      // Interview mode: show loading indicator while AI is fetching next question
+      if (this._interviewMode && this._interviewAiFetching) {
+        return '<div class="speaking-controls">' +
+          '<div class="speaking-ai-thinking"><span class="material-symbols-outlined speaking-eval-spinner">progress_activity</span> ' + t('examinerThinking', 'The examiner is thinking...') + '</div>' +
+        '</div>';
+      }
       var current = this._script[this._scriptIndex];
       var isMine = current && current.role === 'candidate';
       return '<div class="speaking-controls">' +
@@ -563,6 +584,17 @@
     _processCurrentTurn: function() {
       var self = this;
       if (this._conversationEnded) return;
+
+      // Interview mode: fetch next examiner question from AI when script is exhausted
+      if (this._interviewMode && this._scriptIndex >= this._script.length) {
+        // Only fetch if last message was from candidate (or no messages yet)
+        var lastMsg = this._messages[this._messages.length - 1];
+        if (!lastMsg || lastMsg.role === 'candidate') {
+          this._fetchNextInterviewQuestion();
+        }
+        return;
+      }
+
       if (this._scriptIndex >= this._script.length) {
         this._endConversation();
         return;
@@ -598,6 +630,46 @@
       }
 
       this._refreshView();
+    },
+
+    _fetchNextInterviewQuestion: async function() {
+      if (this._conversationEnded || this._interviewAiFetching) return;
+      this._interviewAiFetching = true;
+      this._activeSpeaker = 'examiner';
+      this._refreshView();
+
+      try {
+        var res = await fetch('/api/speaking-interview', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: this._messages,
+            phases: this._interviewPhases,
+            examLevel: AppState.currentLevel || 'C1'
+          })
+        });
+        if (!res.ok) {
+          throw new Error('HTTP ' + res.status);
+        }
+        var data = await res.json();
+        this._interviewAiFetching = false;
+
+        if (this._conversationEnded) return;
+
+        if (data.end || data.error || !data.question) {
+          this._endConversation();
+          return;
+        }
+
+        // Append examiner question + candidate turn to script
+        this._script.push({ role: 'examiner', text: data.question });
+        this._script.push({ role: 'candidate', text: '' });
+        this._processCurrentTurn();
+      } catch(e) {
+        console.error('Speaking interview error:', e);
+        this._interviewAiFetching = false;
+        if (!this._conversationEnded) this._endConversation();
+      }
     },
 
     _speakText: function(text, role, cb) {
@@ -1131,6 +1203,7 @@
         this._synthesis.cancel();
       }
       this._conversationEnded = true;
+      this._interviewAiFetching = false;
       this._activeSpeaker = null;
     }
   };

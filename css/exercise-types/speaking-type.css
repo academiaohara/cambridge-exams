@@ -815,6 +815,15 @@
   to { transform: rotate(360deg); }
 }
 
+/* AI thinking indicator for interview mode */
+.speaking-ai-thinking {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  color: var(--primary);
+  font-size: 0.9rem; font-weight: 500;
+  font-style: italic;
+}
+
 /* Colored feedback tab panels */
 #panel-sf-strengths .speaking-feedback-list-item {
   border-left-color: #22c55e;
