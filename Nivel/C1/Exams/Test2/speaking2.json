@@ -1,6 +1,6 @@
 {
   "title": "Speaking - Part 2",
-  "time": 4,
+  "time": 1.5,
   "totalQuestions": 2,
   "description": "Compare the photographs and answer the questions.",
   "content": {
@@ -11,9 +11,21 @@
         "topic": "People sleeping",
         "instructions": "Compare two of the pictures, say why the people might be sleeping in these different places, and what might wake them up.",
         "images": [
-          { "label": "A", "url": "https://listeninggenerator.b-cdn.net/test2_1a.jpg", "description": "An exhausted passenger sleeping upright on a train or bus, leaning their head against the window or seat." },
-          { "label": "B", "url": "https://listeninggenerator.b-cdn.net/test2_1b.jpg", "description": "A camper sleeping inside a small tent in a forest, visible through the unzipped entrance of the tent." },
-          { "label": "C", "url": "https://listeninggenerator.b-cdn.net/test2_1c.jpg", "description": "A young child or toddler sleeping deeply and comfortably in a clean, soft bed with blankets at home." }
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test2_1a.jpg",
+            "description": "An exhausted passenger sleeping upright on a train or bus, leaning their head against the window or seat."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test2_1b.jpg",
+            "description": "A camper sleeping inside a small tent in a forest, visible through the unzipped entrance of the tent."
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test2_1c.jpg",
+            "description": "A young child or toddler sleeping deeply and comfortably in a clean, soft bed with blankets at home."
+          }
         ],
         "followUp": {
           "recipient": "Candidate B",
@@ -26,9 +38,21 @@
         "topic": "Taking photos",
         "instructions": "Compare two of the pictures, say why the people might be taking the photos in these situations, and how patient the photographers need to be.",
         "images": [
-          { "label": "D", "url": "https://listeninggenerator.b-cdn.net/test2_1d.jpg", "description": "A wildlife photographer camouflaged in nature, using a very large professional telephoto lens to photograph a bird." },
-          { "label": "E", "url": "https://listeninggenerator.b-cdn.net/test2_1e.jpg", "description": "A tourist standing in a crowded public square taking a photo of a famous historical monument with a smartphone." },
-          { "label": "F", "url": "https://listeninggenerator.b-cdn.net/test2_1f.jpg", "description": "A person at a social gathering or wedding taking a group photo of friends laughing and posing together." }
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test2_1d.jpg",
+            "description": "A wildlife photographer camouflaged in nature, using a very large professional telephoto lens to photograph a bird."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test2_1e.jpg",
+            "description": "A tourist standing in a crowded public square taking a photo of a famous historical monument with a smartphone."
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test2_1f.jpg",
+            "description": "A person at a social gathering or wedding taking a group photo of friends laughing and posing together."
+          }
         ],
         "followUp": {
           "recipient": "Candidate A",

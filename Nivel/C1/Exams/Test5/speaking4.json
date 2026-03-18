@@ -1,20 +1,39 @@
 {
   "title": "Speaking - Part 4",
   "type": "multiple-choice-text",
-  "time": 15,
+  "time": 2.5,
   "totalQuestions": 6,
   "description": "...",
   "content": {
     "task": "Discussion on the value of art and history.",
     "questions": [
-      { "number": 1, "question": "Should public money be spent on art when there are other social problems to solve?" },
-      { "number": 2, "question": "Is digital art as valuable as a physical painting in a museum?" }
+      {
+        "number": 1,
+        "question": "Should public money be spent on art when there are other social problems to solve?"
+      },
+      {
+        "number": 2,
+        "question": "Is digital art as valuable as a physical painting in a museum?"
+      }
     ],
-    "participants": ["examiner", "candidate", "partner"],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
     "script": [
-      { "role": "examiner", "text": "Is it important for a country to preserve its historical artifacts, even if it's expensive?" },
-      { "role": "partner", "text": "" },
-      { "role": "candidate", "text": "" }
+      {
+        "role": "examiner",
+        "text": "Is it important for a country to preserve its historical artifacts, even if it's expensive?"
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      }
     ]
   }
 }
