@@ -3,6 +3,13 @@
 
 (function() {
   var _levelSelectorPreviewIdx = 0;
+  var _levelColors = {
+    'C1': { bg: '#ffffff', label: '#104862', code: '#46B1E1' },
+    'A2': { bg: '#e8f5e9', label: '#1b5e20', code: '#4caf50' },
+    'B1': { bg: '#fff3e0', label: '#bf360c', code: '#ff9800' },
+    'B2': { bg: '#e3f2fd', label: '#0d47a1', code: '#2196f3' },
+    'C2': { bg: '#f3e5f5', label: '#4a148c', code: '#9c27b0' }
+  };
 
   window.BentoGrid = {
     render: function(container) {
@@ -559,14 +566,7 @@
       ];
 
       // Level-specific badge colors
-      var levelColors = {
-        'C1': { bg: '#ffffff', label: '#104862', code: '#46B1E1' },
-        'A2': { bg: '#e8f5e9', label: '#1b5e20', code: '#4caf50' },
-        'B1': { bg: '#fff3e0', label: '#bf360c', code: '#ff9800' },
-        'B2': { bg: '#e3f2fd', label: '#0d47a1', code: '#2196f3' },
-        'C2': { bg: '#f3e5f5', label: '#4a148c', code: '#9c27b0' }
-      };
-      var lc = levelColors[currentLevel] || levelColors['C1'];
+      var lc = _levelColors[currentLevel] || _levelColors['C1'];
 
       var exams = window.EXAMS_DATA[currentLevel] || [];
 
@@ -579,7 +579,6 @@
         '</div>';
 
       // Level dropdown (hidden by default) — carousel style
-      var otherLevels = levels.filter(function(l) { return l.code !== currentLevel; });
       html += '<div class="level-selector-options level-selector-collapsed" id="level-selector-options-panel">' +
         '<div class="level-selector-changing-to">' + t('youAreChangingTo', 'You are changing to:') + '</div>' +
         '<div class="level-selector-carousel">' +
@@ -653,14 +652,7 @@
       if (_levelSelectorPreviewIdx < 0) _levelSelectorPreviewIdx = otherLevels.length - 1;
       if (_levelSelectorPreviewIdx >= otherLevels.length) _levelSelectorPreviewIdx = 0;
       var lvl = otherLevels[_levelSelectorPreviewIdx];
-      var levelColors = {
-        'C1': { bg: '#ffffff', label: '#104862', code: '#46B1E1' },
-        'A2': { bg: '#e8f5e9', label: '#1b5e20', code: '#4caf50' },
-        'B1': { bg: '#fff3e0', label: '#bf360c', code: '#ff9800' },
-        'B2': { bg: '#e3f2fd', label: '#0d47a1', code: '#2196f3' },
-        'C2': { bg: '#f3e5f5', label: '#4a148c', code: '#9c27b0' }
-      };
-      var lc = levelColors[lvl] || levelColors['C1'];
+      var lc = _levelColors[lvl] || _levelColors['C1'];
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       badgeContainer.innerHTML =
         '<div class="sidebar-level-badge level-selector-preview-badge" data-level="' + lvl + '" ' +

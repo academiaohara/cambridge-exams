@@ -206,10 +206,22 @@
 
     _onPrefChange: async function () {
       var level = document.getElementById('pref-level');
+      var newLevel = level ? level.value : AppState.currentLevel;
       var updates = {
-        preferred_level: level ? level.value : AppState.currentLevel
+        preferred_level: newLevel
       };
       var statusEl = document.getElementById('profile-sync-status');
+      var client = Auth && Auth._client;
+      var user = Auth && Auth.getUser && Auth.getUser();
+      if (!client || !user) {
+        // Guest mode: just apply locally and sync dashboard
+        AppState.currentLevel = newLevel;
+        try { localStorage.setItem('preferred_level', newLevel); } catch (e) {}
+        if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
+          Dashboard.filterByLevel(newLevel);
+        }
+        return;
+      }
       if (statusEl) { statusEl.textContent = 'Saving…'; statusEl.className = 'profile-sync-status syncing'; }
       var result = await this.updateProfile(updates);
       if (statusEl) {
@@ -230,12 +242,11 @@
           statusEl.appendChild(document.createTextNode(' Saved'));
           statusEl.className = 'profile-sync-status saved';
           setTimeout(function () { if (statusEl) { statusEl.textContent = ''; statusEl.className = 'profile-sync-status'; } }, 2000);
+          // Sync level change to dashboard after successful save
+          if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
+            Dashboard.filterByLevel(newLevel);
+          }
         }
-      }
-      // Sync level change to dashboard
-      var newLevel = level ? level.value : AppState.currentLevel;
-      if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
-        Dashboard.filterByLevel(newLevel);
       }
     },
 
