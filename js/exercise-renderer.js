@@ -319,8 +319,8 @@
           
           if (gapHtml) {
             let regex;
-            if (partConfig.type === 'open-cloze') {
-              // For open-cloze, also remove the answer word that follows the gap marker
+            if (partConfig.type === 'open-cloze' || (partConfig.type === 'word-formation' && isExample)) {
+              // For open-cloze and word-formation example (0), remove the answer word that follows the gap marker
               regex = new RegExp(`\\(${qNum}\\)\\s+\\S+`, 'g');
             } else {
               regex = new RegExp(`\\(${qNum}\\)`, 'g');
@@ -384,8 +384,20 @@
         var key = entry[0], text = entry[1];
         if (typeof text !== 'string') return;
         html += '<div class="' + typePrefix + '-text-card">';
-        html += '<span class="' + typePrefix + '-text-label">' + key + '</span>';
-        html += '<div class="' + typePrefix + '-text-content">' + self.processEvidenceMarkers(text) + '</div>';
+        // For type8 (multiple-matching), extract ### Title from first line
+        if (typePrefix === 'reading-type8' && text.startsWith('### ')) {
+          var firstNewline = text.indexOf('\n');
+          var titleLine = firstNewline !== -1 ? text.substring(4, firstNewline) : text.substring(4);
+          var bodyText = firstNewline !== -1 ? text.substring(firstNewline + 1) : '';
+          html += '<div class="reading-type8-text-header">';
+          html += '<span class="reading-type8-text-label">' + key + '</span>';
+          html += '<strong class="reading-type8-text-title">' + titleLine + '</strong>';
+          html += '</div>';
+          html += '<div class="' + typePrefix + '-text-content">' + self.processEvidenceMarkers(bodyText) + '</div>';
+        } else {
+          html += '<span class="' + typePrefix + '-text-label">' + key + '</span>';
+          html += '<div class="' + typePrefix + '-text-content">' + self.processEvidenceMarkers(text) + '</div>';
+        }
         html += '</div>';
       });
       html += '</div>';

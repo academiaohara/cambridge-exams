@@ -895,10 +895,19 @@
       AppState.explanationActiveQuestion = null;
       
       App.restoreExamStatuses();
-      Dashboard.render(returnToExamId);
-      if (!opts.skipHistory) {
-        var dashState = { view: 'dashboard' };
-        history.pushState(dashState, '', Router.stateToPath(dashState));
+      var closingMode = AppState.currentMode;
+      if (closingMode === 'practice' || closingMode === 'exam') {
+        Dashboard.renderSubpage(closingMode, returnToExamId);
+        if (!opts.skipHistory) {
+          var subpageState = { view: 'subpage', mode: closingMode, expandExamId: returnToExamId };
+          history.pushState(subpageState, '', Router.stateToPath(subpageState));
+        }
+      } else {
+        Dashboard.render(returnToExamId);
+        if (!opts.skipHistory) {
+          var dashState = { view: 'dashboard' };
+          history.pushState(dashState, '', Router.stateToPath(dashState));
+        }
       }
     },
     

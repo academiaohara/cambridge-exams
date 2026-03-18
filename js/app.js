@@ -115,7 +115,7 @@
             Dashboard.render();
           }
         } else if (state.view === 'subpage' && state.mode) {
-          Dashboard.renderSubpage(state.mode);
+          Dashboard.renderSubpage(state.mode, state.expandExamId || null);
         } else if (state.view === 'exercise' && state.examId && state.section && state.part) {
           if (state.level) AppState.currentLevel = state.level;
           if (state.mode) {
