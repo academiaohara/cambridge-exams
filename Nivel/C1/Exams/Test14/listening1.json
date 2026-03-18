@@ -1,0 +1,186 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1 – 6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two people discussing the benefits of 'binaural beats' for concentration.",
+      "voices": {
+        "man": "en-GB-AlfieNeural",
+        "woman": "en-GB-BellaNeural"
+      },
+      "audio_script": "Man: I’ve started listening to these 'binaural beats' while I study. It’s supposed to sync your brain waves. Woman: [1]I tried that during my finals, but I found the constant humming a bit too intrusive[/1] to actually focus. Man: Really? I find it helps block out the background noise of the library perfectly. Woman: [2]There’s still a lot of debate in the scientific community about whether it’s just a placebo effect[/2], you know. Man: Even if it is, if I feel like I’m concentrating better, does it really matter? Woman: I suppose not. But I’ll stick to my classical music. It’s a bit more melodious at least.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve started listening to these 'binaural beats' while I study. It’s supposed to sync your brain waves."
+        },
+        {
+          "speaker": "woman",
+          "text": "I tried that during my finals, but I found the constant humming a bit too intrusive to actually focus."
+        },
+        {
+          "speaker": "man",
+          "text": "Really? I find it helps block out the background noise of the library perfectly."
+        },
+        {
+          "speaker": "woman",
+          "text": "There’s still a lot of debate in the scientific community about whether it’s just a placebo effect, you know."
+        },
+        {
+          "speaker": "man",
+          "text": "Even if it is, if I feel like I’m concentrating better, does it really matter?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suppose not. But I’ll stick to my classical music. It’s a bit more melodious at least."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What was the woman's personal experience with binaural beats?",
+          "options": {
+            "A": "She found them more effective than music.",
+            "B": "She was distracted by the nature of the sound.",
+            "C": "She was unable to hear them properly."
+          },
+          "answer": "B",
+          "explanation": "She describes the 'constant humming' as 'too intrusive', which means it was distracting/annoying."
+        },
+        {
+          "number": 2,
+          "question": "What point does the woman make about the technology?",
+          "options": {
+            "A": "Its benefits have been conclusively proven.",
+            "B": "It is potentially harmful to long-term hearing.",
+            "C": "Its actual efficacy is currently unverified."
+          },
+          "answer": "C",
+          "explanation": "She mentions a 'debate' about whether it is a 'placebo effect', implying the actual scientific efficacy is not yet certain."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends, Connor and Emily, discussing a local 'repair café'.",
+      "voices": {
+        "man": "en-IE-ConnorNeural",
+        "woman": "en-IE-EmilyNeural"
+      },
+      "audio_script": "Man: I finally got my old record player fixed at that repair café in the community centre. Woman: [3]It’s a brilliant initiative, isn't it? It’s so much more sustainable than just buying new electronics[/3]. Man: It is, though I was a bit embarrassed when it turned out the 'broken' part was just a loose wire I could have fixed myself. Woman: [4]The volunteers there are great, though—they actually show you how to do it so you're better prepared next time[/4]. Man: That was the best part. It’s not just a service; it’s like a mini-workshop. Woman: Exactly. We need more of that kind of community-led skill sharing.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I finally got my old record player fixed at that repair café in the community centre."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a brilliant initiative, isn't it? It’s so much more sustainable than just buying new electronics."
+        },
+        {
+          "speaker": "man",
+          "text": "It is, though I was a bit embarrassed when it turned out the 'broken' part was just a loose wire I could have fixed myself."
+        },
+        {
+          "speaker": "woman",
+          "text": "The volunteers there are great, though—they actually show you how to do it so you're better prepared next time."
+        },
+        {
+          "speaker": "man",
+          "text": "That was the best part. It’s not just a service; it’s like a mini-workshop."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. We need more of that kind of community-led skill sharing."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What do both speakers agree is a major advantage of the repair café?",
+          "options": {
+            "A": "The professional quality of the repairs.",
+            "B": "The positive environmental impact.",
+            "C": "The low cost of the spare parts."
+          },
+          "answer": "B",
+          "explanation": "Emily calls it 'sustainable' (environmentally friendly) and Connor agrees ('It is')."
+        },
+        {
+          "number": 4,
+          "question": "What particular aspect of the café did the man find valuable?",
+          "options": {
+            "A": "The opportunity to acquire new practical skills.",
+            "B": "The social atmosphere of the community centre.",
+            "C": "The speed at which his device was repaired."
+          },
+          "answer": "A",
+          "explanation": "He calls it a 'mini-workshop' where they 'show you how to do it', referring to skill acquisition."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing the importance of 'soft skills' in the modern workplace.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: I see the new management trainee program is focusing heavily on emotional intelligence this year. Woman: About time! [5]You can teach anyone to use a software package, but you can't easily teach someone how to handle a difficult client[/5]. Man: I agree, though [6]I worry that some of the 'empathy training' exercises are becoming a bit box-ticking[/6]. They feel a bit performative. Woman: I know what you mean. But at least the conversation is happening. In the past, those 'human' elements were completely ignored. Man: True. It’s definitely a shift in the right direction, even if the execution is sometimes a bit clumsy.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I see the new management trainee program is focusing heavily on emotional intelligence this year."
+        },
+        {
+          "speaker": "woman",
+          "text": "About time! You can teach anyone to use a software package, but you can't easily teach someone how to handle a difficult client."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, though I worry that some of the 'empathy training' exercises are becoming a bit box-ticking. They feel a bit performative."
+        },
+        {
+          "speaker": "woman",
+          "text": "I know what you mean. But at least the conversation is happening. In the past, those 'human' elements were completely ignored."
+        },
+        {
+          "speaker": "man",
+          "text": "True. It’s definitely a shift in the right direction, even if the execution is sometimes a bit clumsy."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "The woman believes that interpersonal skills are...",
+          "options": {
+            "A": "less relevant in technical industries.",
+            "B": "more difficult to acquire than technical ones.",
+            "C": "best learned through direct observation."
+          },
+          "answer": "B",
+          "explanation": "She says you can teach software (technical) easily, but not how to handle a difficult client (interpersonal), implying the latter is harder to teach/acquire."
+        },
+        {
+          "number": 6,
+          "question": "What is the man's concern about the current approach to training?",
+          "options": {
+            "A": "It is too expensive for small companies.",
+            "B": "It lacks a practical, real-world application.",
+            "C": "It may be lacking in genuine sincerity."
+          },
+          "answer": "C",
+          "explanation": "He calls it 'box-ticking' and 'performative', suggesting it isn't sincere or deeply felt."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_Test%2014.mp3"
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "The company's success is due to its innovative marketing strategy.",
+        "keyWord": "PUT",
+        "beforeGap": "The company's success can",
+        "afterGap": "its innovative marketing strategy.",
+        "routes": [
+          { "p1": "be", "p2": "put down to" }
+        ]
+      },
+      {
+        "number": 26,
+        "firstSentence": "I didn't have enough money, so I couldn't buy the tickets.",
+        "keyWord": "ABLE",
+        "beforeGap": "If I had had enough money, I",
+        "afterGap": "to buy the tickets.",
+        "routes": [
+          { "p1": "would", "p2": "have been able" },
+          { "p1": "might", "p2": "have been able" }
+        ]
+      },
+      {
+        "number": 27,
+        "firstSentence": "He never suspected that his friends were planning a surprise party.",
+        "keyWord": "DID",
+        "beforeGap": "At no",
+        "afterGap": "that his friends were planning a surprise party.",
+        "routes": [
+          { "p1": "time", "p2": "did he suspect" },
+          { "p1": "point", "p2": "did he suspect" }
+        ]
+      },
+      {
+        "number": 28,
+        "firstSentence": "It is said that the bridge was built in the 17th century.",
+        "keyWord": "TO",
+        "beforeGap": "The bridge is",
+        "afterGap": "built in the 17th century.",
+        "routes": [
+          { "p1": "said", "p2": "to have been" }
+        ]
+      },
+      {
+        "number": 29,
+        "firstSentence": "I'd prefer you to stay at home tonight.",
+        "keyWord": "RATHER",
+        "beforeGap": "I",
+        "afterGap": "at home tonight.",
+        "routes": [
+          { "p1": "would ('d)", "p2": "rather you stayed" }
+        ]
+      },
+      {
+        "number": 30,
+        "firstSentence": "He was so exhausted that he fell asleep in the meeting.",
+        "keyWord": "WAS",
+        "beforeGap": "Such",
+        "afterGap": "that he fell asleep in the meeting.",
+        "routes": [
+          { "p1": "was", "p2": "his exhaustion" },
+          { "p1": "was", "p2": "his level of exhaustion" }
+        ]
+      }
+    ]
+  }
+}

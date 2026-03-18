@@ -1,0 +1,40 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 4,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "15A",
+        "candidate": "Candidate A",
+        "topic": "Memorable moments",
+        "instructions": "Compare two of the pictures, and say why these moments might be memorable and how the people might be feeling.",
+        "images": [
+          { "label": "A", "url": "https://listeninggenerator.b-cdn.net/test15_1a.jpg", "description": "A winner of a race crossing the finish line with their arms raised in triumph." },
+          { "label": "B", "url": "https://listeninggenerator.b-cdn.net/test15_1b.jpg", "description": "A family seeing each other for the first time in a busy airport arrivals hall." },
+          { "label": "C", "url": "https://listeninggenerator.b-cdn.net/test15_1c.jpg", "description": "An actor or musician taking a final bow on stage at the end of a performance." }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which of these moments do you think is the most emotional? (Why?)"
+        }
+      },
+      {
+        "id": "15B",
+        "candidate": "Candidate B",
+        "topic": "Looking at art",
+        "instructions": "Compare two of the pictures, and say why the people might have chosen to see art in these ways and what they are getting out of the experience.",
+        "images": [
+          { "label": "D", "url": "https://listeninggenerator.b-cdn.net/test15_1d.jpg", "description": "A solitary person looking at a huge, modern painting in a minimalist white art gallery." },
+          { "label": "E", "url": "https://listeninggenerator.b-cdn.net/test15_1e.jpg", "description": "A crowd of people in a street looking at a large, colorful piece of graffiti or mural art." },
+          { "label": "F", "url": "https://listeninggenerator.b-cdn.net/test15_1f.jpg", "description": "Children in a museum interacting with a digital, light-based art installation." }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which way of experiencing art do you find most interesting? (Why?)"
+        }
+      }
+    ]
+  }
+}
