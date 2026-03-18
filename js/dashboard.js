@@ -43,7 +43,8 @@
       }
     },
 
-    renderSubpage: function(mode, expandExamId) {
+    // keepPage: if true, do not reset pagination to page 1
+    renderSubpage: function(mode, expandExamId, keepPage) {
       AppState.currentMode = mode;
       localStorage.setItem('preferred_mode', mode);
       if (typeof App !== 'undefined') App.restoreExamStatuses();
@@ -57,11 +58,11 @@
 
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var modeConfig = mode === 'exam'
-        ? { title: t('theArena', 'The Arena'), subtitle: t('timedExamMode', 'Timed exam mode') }
-        : { title: t('practiceMode', 'Practice'), subtitle: t('noLimitsSafeSpace', 'No limits. Safe space.') };
+        ? { title: t('testSimulation', 'Test Simulation'), subtitle: t('timedExamMode', 'Timed exam mode') }
+        : { title: t('testPractice', 'Test Practice'), subtitle: t('noLimitsSafeSpace', 'No limits. Safe space.') };
 
       var subpageHeader = '<div class="subpage-header">' +
-        '<button class="subpage-back-btn" onclick="history.back()">' + t('backToDashboard', 'Back') + '</button>' +
+        '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('backToDashboard', 'Back') + '</button>' +
         '<div>' +
           '<div class="subpage-title">' + modeConfig.title + '</div>' +
           '<div class="subpage-subtitle">' + modeConfig.subtitle + '</div>' +
@@ -83,7 +84,7 @@
         if (expandIdx !== -1) {
           subpageCurrentPage = Math.floor(expandIdx / TESTS_PER_PAGE) + 1;
         }
-      } else {
+      } else if (!keepPage) {
         subpageCurrentPage = 1;
       }
       if (subpageCurrentPage < 1) subpageCurrentPage = 1;
@@ -145,7 +146,7 @@
 
     goToSubpagePage: function(page, mode) {
       subpageCurrentPage = page;
-      this.renderSubpage(mode || AppState.currentMode);
+      this.renderSubpage(mode || AppState.currentMode, null, true);
     },
     
     renderComingSoonExam: function(exam) {
