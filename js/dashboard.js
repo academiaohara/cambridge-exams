@@ -322,7 +322,9 @@
         // Clear section scores
         var scoreKey = examId + '_' + sectionKey;
         if (AppState.sectionScores[scoreKey]) delete AppState.sectionScores[scoreKey];
-        self.render(examId);
+        var scrollY = window.scrollY;
+        self.renderSubpage(AppState.currentMode || 'practice', examId, true);
+        window.scrollTo(0, scrollY);
       });
     },
     
@@ -342,7 +344,9 @@
           var scoreKey = examId + '_' + sectionKey;
           if (AppState.sectionScores[scoreKey]) delete AppState.sectionScores[scoreKey];
         });
-        self.render(examId);
+        var scrollY = window.scrollY;
+        self.renderSubpage(AppState.currentMode || 'practice', examId, true);
+        window.scrollTo(0, scrollY);
       });
     },
 
