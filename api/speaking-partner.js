@@ -1,0 +1,69 @@
+import fetch from "node-fetch";
+
+export default async function handler(req, res) {
+  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+
+  const { messages, taskInstructions, imageDescriptions, isMainTurn, followUpQuestion, examLevel } = req.body;
+  const level = examLevel || "C1";
+  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
+
+  let systemPrompt;
+  if (isMainTurn) {
+    systemPrompt = `You are a ${level} level English language learner in a Cambridge Speaking exam (Part 2 Long Turn). Your task is to compare two of three photographs and address the task question.
+
+TASK: ${taskInstructions || "Compare two of the pictures."}
+
+PHOTOS (descriptions for context):
+${imageDescriptions || "Three photographs."}
+
+Generate a realistic, natural spoken response of about 120-150 words (roughly one minute of speech). Compare at least two of the photos, addressing the task question. Use ${level}-level vocabulary and grammar. Sound natural and spontaneous — include discourse markers, hedging language, and coherent comparisons. Vary your opening; don't always start the same way. Output only the spoken text with no meta-commentary.`;
+  } else {
+    const recentContext = (messages || []).slice(-6)
+      .map(m => `${m.role.toUpperCase()}: ${m.text || ""}`)
+      .join("\n");
+    systemPrompt = `You are a ${level} level English language learner in a Cambridge Speaking exam. The examiner has asked you a brief follow-up question about photographs your partner just described. Give a short, natural 2-4 sentence response (20-40 words). Do not repeat the question. Sound genuine.
+
+QUESTION: ${followUpQuestion || "What do you think?"}
+
+PHOTOS CONTEXT:
+${imageDescriptions || ""}
+
+RECENT CONVERSATION:
+${recentContext}
+
+Output only the spoken text.`;
+  }
+
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model,
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: "Generate the candidate's spoken response now." }
+        ],
+        max_tokens: 350,
+        temperature: 0.8,
+      }),
+    });
+
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.error?.message || `OpenAI API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const content = data.choices?.[0]?.message?.content?.trim();
+    if (!content) throw new Error("Empty response from OpenAI");
+
+    return res.status(200).json({ response: content });
+  } catch (err) {
+    console.error("Speaking partner error:", err);
+    return res.status(500).json({ error: "Error generating partner response" });
+  }
+}

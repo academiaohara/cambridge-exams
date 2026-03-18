@@ -171,19 +171,30 @@
 
   function roleName(role) {
     if (role === 'examiner') return t('examiner', 'Examiner');
-    if (role === 'candidate') return t('you', 'You');
-    if (role === 'partner') return t('partnerName', 'Partner');
+    if (role === 'candidate') {
+      if (window.SpeakingType && window.SpeakingType._longTurnMode && window.SpeakingType._userCandidateLabel) {
+        return t('you', 'You') + ' (Cand. ' + window.SpeakingType._userCandidateLabel + ')';
+      }
+      return t('you', 'You');
+    }
+    if (role === 'partner') {
+      if (window.SpeakingType && window.SpeakingType._longTurnMode && window.SpeakingType._aiCandidateLabel) {
+        return 'Candidate ' + window.SpeakingType._aiCandidateLabel + ' (AI)';
+      }
+      return t('partnerName', 'Partner');
+    }
     return role;
   }
 
   window.SpeakingType = {
-    _viewMode: 'videocall',  // 'videocall' | 'chat'
+    _viewMode: 'videocall',  // 'videocall' | 'chat' | 'images'
     _scriptIndex: 0,
     _script: [],
     _participants: [],
     _messages: [],           // {role, text}
     _recognition: null,
     _isRecording: false,
+    _isTyping: false,        // user has typed in the text input
     _conversationStarted: false,
     _conversationEnded: false,
     _activeSpeaker: null,
@@ -198,6 +209,13 @@
     _interviewPhases: null,   // phases array from content
     _interviewPhaseIndex: 0,  // current phase index (0-based)
     _interviewLastQuestionIdx: -1, // last question index used within current phase
+    // Long-turn (speaking2) state
+    _longTurnMode: false,
+    _longTurnTasks: [],
+    _longTurnTaskIndex: 0,
+    _aiCandidateLabel: null,     // 'A' or 'B' — which label the AI candidate has
+    _userCandidateLabel: null,   // 'A' or 'B' — which label the human user has
+    _isAIGenerating: false,
 
     // ── Public API ──
 
@@ -224,12 +242,26 @@
       this._evaluated = false;
       this._stopSpeakingTimer();
       this._speakingElapsed = 0;
+      this._isTyping = false;
 
       // Detect phase-based interview mode
       this._interviewMode = !!(content.phases && content.phases.length);
       this._interviewPhases = content.phases || null;
       this._interviewPhaseIndex = 0;
       this._interviewLastQuestionIdx = -1;
+
+      // Detect long-turn mode (speaking2 with tasks array)
+      this._longTurnMode = !!(content.tasks && content.tasks.length);
+      this._longTurnTasks = content.tasks || [];
+      this._longTurnTaskIndex = 0;
+      this._isAIGenerating = false;
+      if (this._longTurnMode) {
+        // Randomly assign AI as Candidate A or B; user is the other
+        this._aiCandidateLabel = Math.random() < 0.5 ? 'A' : 'B';
+        this._userCandidateLabel = this._aiCandidateLabel === 'A' ? 'B' : 'A';
+        this._participants = ['examiner', 'candidate', 'partner'];
+        this._script = this._buildLongTurnScript(this._longTurnTasks, this._aiCandidateLabel);
+      }
 
       // Check for previously saved evaluation
       var savedEvaluation = null;
@@ -311,10 +343,14 @@
     // ── Mode toggle ──
 
     _buildModeToggle: function() {
-      return '<div class="speaking-mode-toggle">' +
+      var base =
+        '<div class="speaking-mode-toggle">' +
         '<button class="speaking-toggle-btn active" data-mode="videocall"><i class="fas fa-video"></i> ' + t('videoCallMode', 'Video Call') + '</button>' +
-        '<button class="speaking-toggle-btn" data-mode="chat"><i class="fas fa-comments"></i> ' + t('chatMode', 'Chat') + '</button>' +
-      '</div>';
+        '<button class="speaking-toggle-btn" data-mode="chat"><i class="fas fa-comments"></i> ' + t('chatMode', 'Chat') + '</button>';
+      if (this._longTurnMode) {
+        base += '<button class="speaking-toggle-btn" data-mode="images"><i class="fas fa-images"></i> ' + t('imagesMode', 'Images') + '</button>';
+      }
+      return base + '</div>';
     },
 
     _switchMode: function(mode) {
@@ -326,8 +362,10 @@
       if (!sim) return;
       if (mode === 'videocall') {
         sim.innerHTML = this._buildVideoCallView();
-      } else {
+      } else if (mode === 'chat') {
         sim.innerHTML = this._buildChatView();
+      } else if (mode === 'images') {
+        sim.innerHTML = this._buildImagesView();
       }
       this._bindSimulationEvents();
       this._updateView();
@@ -342,12 +380,19 @@
       if (profile && profile.full_name) {
         userName = profile.full_name.split(' ')[0];
       }
+      // In long-turn mode, append the candidate label
+      var candidateDisplayName = this._longTurnMode && this._userCandidateLabel
+        ? userName + ' (Cand. ' + this._userCandidateLabel + ')'
+        : userName;
+      var partnerDisplayName = this._longTurnMode && this._aiCandidateLabel
+        ? 'Candidate ' + this._aiCandidateLabel + ' (AI)'
+        : t('candidate2', 'Candidate 2');
 
       // Determine who is featured (big) vs thumbnails (small)
       var featuredRole = this._activeSpeaker || 'examiner';
-      var featuredLabel = featuredRole === 'candidate' ? userName
+      var featuredLabel = featuredRole === 'candidate' ? candidateDisplayName
         : featuredRole === 'examiner' ? t('examiner', 'Examiner')
-        : t('candidate2', 'Candidate 2');
+        : partnerDisplayName;
 
       // Build featured (big) area with animal avatar
       var featuredHTML =
@@ -364,9 +409,9 @@
       this._participants.forEach(function(role) {
         if (role === featuredRole) return;
         var cardColor = role === 'candidate' ? 'gold' : (role === 'examiner' ? 'examiner' : 'blue');
-        var label = role === 'candidate' ? userName
+        var label = role === 'candidate' ? candidateDisplayName
           : role === 'examiner' ? t('examiner', 'Examiner')
-          : t('candidate2', 'Candidate 2');
+          : partnerDisplayName;
         thumbnailCards +=
           '<div class="speaking-stage-card speaking-stage-card--' + cardColor + '" data-role="' + role + '">' +
             '<div class="speaking-stage-card-avatar">' +
@@ -429,6 +474,53 @@
         '<div class="speaking-chat-history" id="speaking-chat-history">' +
           (messagesHTML || '<div class="speaking-type-start-msg"><i class="fas fa-comments"></i> ' + t('conversationStarted', 'The conversation has started') + '</div>') +
         '</div>' +
+        this._buildControls() +
+      '</div>';
+    },
+
+    // ── Images view (long-turn photo panels) ──
+
+    _buildImagesView: function() {
+      var self = this;
+      var task = this._longTurnTasks[this._longTurnTaskIndex];
+      var imagesHTML = '';
+      if (task && task.images) {
+        imagesHTML = task.images.map(function(img) {
+          return '<div class="speaking-img-card">' +
+            '<img src="' + img.url + '" alt="Photo ' + img.label + '" class="speaking-img-main" loading="lazy">' +
+            '<div class="speaking-img-label">Photo ' + img.label + '</div>' +
+          '</div>';
+        }).join('');
+      }
+      var candidateLabel = task ? task.candidate : '';
+      var topicLabel = task ? task.topic : '';
+      var instructionsHTML = task
+        ? '<div class="speaking-img-instructions">' +
+            '<div class="speaking-img-instructions-header">' +
+              '<span class="speaking-img-candidate-badge">' + candidateLabel + '</span>' +
+              '<span class="speaking-img-topic">' + topicLabel + '</span>' +
+            '</div>' +
+            '<p>' + task.instructions + '</p>' +
+          '</div>'
+        : '';
+
+      // Build timer
+      var timerHTML = '';
+      if (this._conversationStarted && !this._conversationEnded) {
+        var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+        var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
+        var mins = Math.floor(remaining / 60);
+        var secs = remaining % 60;
+        var timeStr = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+        timerHTML = '<div class="speaking-chat-timer speaking-images-timer" id="speaking-chat-timer">' +
+          '<i class="fas fa-hourglass-half"></i> <span id="speaking-timer-display">' + timeStr + '</span>' +
+        '</div>';
+      }
+
+      return '<div class="speaking-images-view">' +
+        timerHTML +
+        instructionsHTML +
+        '<div class="speaking-images-grid">' + imagesHTML + '</div>' +
         this._buildControls() +
       '</div>';
     },
@@ -516,6 +608,10 @@
 
       var textInput = document.getElementById('speaking-text-input');
       if (textInput) {
+        textInput.oninput = function() {
+          // Start the speaking timer when the user begins typing their response
+          self._isTyping = textInput.value.trim().length > 0;
+        };
         textInput.onkeydown = function(e) {
           if (e.key === 'Enter') { self._sendTextInput(); }
         };
@@ -550,7 +646,8 @@
       this._speakingElapsed = 0;
       var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
       this._speakingTimerInterval = setInterval(function() {
-        if (self._isRecording) self._speakingElapsed++;
+        // Count when recording via mic OR when the user is typing a text response
+        if (self._isRecording || self._isTyping) self._speakingElapsed++;
         var display = document.getElementById('speaking-timer-display');
         if (display) {
           var remaining = Math.max(0, totalSeconds - self._speakingElapsed);
@@ -598,13 +695,37 @@
       }
 
       var turn = this._script[this._scriptIndex];
+
+      // Update long-turn task index when a task-tagged turn is reached
+      if (this._longTurnMode && turn.taskIndex !== undefined) {
+        this._longTurnTaskIndex = turn.taskIndex;
+      }
+
       if (turn.role === 'candidate') {
         this._activeSpeaker = 'candidate';
-        this._refreshView();
+        // Auto-switch to images mode for the photo-description main turn
+        if (this._longTurnMode && turn.showImagesOnStart) {
+          this._switchMode('images');
+        } else {
+          this._refreshView();
+        }
         return;
       }
 
-      // Examiner or partner: auto-play
+      // Long-turn partner (AI) turn: generate response via API
+      if (this._longTurnMode && turn.role === 'partner' && !turn.text) {
+        this._activeSpeaker = 'partner';
+        // Auto-switch to images mode if this is a main photo description turn
+        if (turn.showImagesOnStart) {
+          this._switchMode('images');
+        } else {
+          this._refreshView();
+        }
+        this._generateAndPlayPartnerTurn(turn);
+        return;
+      }
+
+      // Examiner or partner with pre-set text: auto-play
       this._activeSpeaker = turn.role;
       this._refreshView();
 
@@ -612,21 +733,155 @@
       var text = turn.text || '';
       this._messages.push({ role: turn.role, text: text });
 
+      var afterSpeech = function() {
+        self._scriptIndex++;
+        self._processCurrentTurn();
+      };
+
       if (this._synthesis && text) {
-        this._speakText(text, turn.role, function() {
-          self._scriptIndex++;
-          self._processCurrentTurn();
-        });
+        this._speakText(text, turn.role, afterSpeech);
       } else {
         // Fallback: wait proportional to text length
         var delay = Math.max(1500, text.length * 40);
-        setTimeout(function() {
-          self._scriptIndex++;
-          self._processCurrentTurn();
-        }, delay);
+        setTimeout(afterSpeech, delay);
       }
 
       this._refreshView();
+    },
+
+    // ── Long-turn script builder ──
+
+    _buildLongTurnScript: function(tasks, aiLabel) {
+      var script = [];
+      var userLabel = aiLabel === 'A' ? 'B' : 'A';
+
+      // Opening by examiner
+      script.push({
+        role: 'examiner',
+        text: "In this part of the test, I'm going to give each of you three photographs. I'd like you to talk about your photographs on your own for about a minute, and also to answer a brief question about your partner's photographs."
+      });
+
+      tasks.forEach(function(task, taskIdx) {
+        // Determine candidate label from task data (e.g. "Candidate A")
+        var candLabel = (task.candidate || '').includes('A') ? 'A' : 'B';
+        var candRole = candLabel === userLabel ? 'candidate' : 'partner';
+
+        // Examiner introduces the task
+        script.push({
+          role: 'examiner',
+          text: 'Now, Candidate ' + candLabel + ', here are your photographs. They show ' + (task.topic || 'the following scenes') + '. ' + task.instructions,
+          taskIndex: taskIdx
+        });
+
+        // The candidate (user or AI) describes the photos
+        script.push({
+          role: candRole,
+          text: '',   // empty = needs input (user) or AI gen
+          taskIndex: taskIdx,
+          showImagesOnStart: true   // signal to auto-switch to images mode
+        });
+
+        // Examiner asks the follow-up of the other candidate
+        if (task.followUp) {
+          var followUpLabel = (task.followUp.recipient || '').includes('A') ? 'A' : 'B';
+          var followUpRole = followUpLabel === userLabel ? 'candidate' : 'partner';
+          script.push({
+            role: 'examiner',
+            text: 'Thank you. Candidate ' + followUpLabel + ', ' + task.followUp.question,
+            taskIndex: taskIdx
+          });
+          script.push({
+            role: followUpRole,
+            text: '',   // empty = needs input (user) or AI gen
+            taskIndex: taskIdx,
+            isFollowUp: true
+          });
+          script.push({
+            role: 'examiner',
+            text: 'Thank you.'
+          });
+        }
+      });
+
+      return script;
+    },
+
+    // ── AI partner response generation ──
+
+    _generateAndPlayPartnerTurn: function(turn) {
+      var self = this;
+      this._isAIGenerating = true;
+      this._showAIThinking(true);
+
+      var task = this._longTurnTasks[this._longTurnTaskIndex];
+      var imageDescriptions = task ? task.images.map(function(img) {
+        return img.label + ': ' + img.description;
+      }).join('\n') : '';
+
+      var followUpQuestion = (turn.isFollowUp && task && task.followUp) ? task.followUp.question : '';
+
+      fetch('/api/speaking-partner', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: this._messages,
+          taskInstructions: task ? task.instructions : '',
+          imageDescriptions: imageDescriptions,
+          isMainTurn: !turn.isFollowUp,
+          followUpQuestion: followUpQuestion,
+          examLevel: AppState.currentLevel || 'C1'
+        })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        self._isAIGenerating = false;
+        self._showAIThinking(false);
+        var responseText = data.response || '...';
+        turn.text = responseText;
+        self._messages.push({ role: 'partner', text: responseText });
+        self._refreshView();
+        if (self._synthesis && responseText) {
+          self._speakText(responseText, 'partner', function() {
+            self._scriptIndex++;
+            self._processCurrentTurn();
+          });
+        } else {
+          var delay = Math.max(1500, responseText.length * 40);
+          setTimeout(function() {
+            self._scriptIndex++;
+            self._processCurrentTurn();
+          }, delay);
+        }
+      })
+      .catch(function(err) {
+        console.error('Partner generation error:', err);
+        self._isAIGenerating = false;
+        self._showAIThinking(false);
+        turn.text = '...';
+        self._messages.push({ role: 'partner', text: '...' });
+        self._scriptIndex++;
+        self._processCurrentTurn();
+      });
+    },
+
+    _showAIThinking: function(show) {
+      var thinkEl = document.getElementById('speaking-ai-thinking');
+      if (show) {
+        if (!thinkEl) {
+          // Inject thinking indicator into the controls area
+          var controls = document.querySelector('.speaking-controls');
+          if (controls) {
+            var div = document.createElement('div');
+            div.id = 'speaking-ai-thinking';
+            div.className = 'speaking-ai-thinking';
+            div.innerHTML = '<span class="material-symbols-outlined speaking-eval-spinner">progress_activity</span> ' +
+              t('aiThinking', 'Candidate is thinking...');
+            controls.appendChild(div);
+          }
+        }
+      } else {
+        if (thinkEl) thinkEl.remove();
+      }
     },
 
     _selectNextInterviewQuestion: function() {
@@ -697,7 +952,9 @@
       var current = this._script[this._scriptIndex];
       if (!current || current.role !== 'candidate') return;
 
+      this._isTyping = false;  // Stop the typing timer
       this._messages.push({ role: 'candidate', text: input.value.trim() });
+      input.value = '';
       this._scriptIndex++;
       this._refreshView();
       this._processCurrentTurn();
@@ -706,6 +963,7 @@
     _skipTurn: function() {
       var current = this._script[this._scriptIndex];
       if (!current || current.role !== 'candidate') return;
+      this._isTyping = false;
       this._messages.push({ role: 'candidate', text: '...' });
       this._scriptIndex++;
       this._refreshView();
@@ -1129,6 +1387,8 @@
       if (!sim) return;
       if (this._viewMode === 'videocall') {
         sim.innerHTML = this._buildVideoCallView();
+      } else if (this._viewMode === 'images') {
+        sim.innerHTML = this._buildImagesView();
       } else {
         sim.innerHTML = this._buildChatView();
       }
@@ -1197,6 +1457,7 @@
 
     cleanup: function() {
       this._stopSpeakingTimer();
+      this._isTyping = false;
       if (this._isRecording) {
         this._isRecording = false;
         if (this._recognition) {
