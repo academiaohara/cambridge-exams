@@ -1280,6 +1280,55 @@
   overflow: hidden;
 }
 
+.level-selector-changing-to {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #5a7a9a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.level-selector-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.level-selector-carousel .sidebar-level-badge {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.level-selector-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #5a7a9a;
+  padding: 4px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.level-selector-arrow:hover {
+  background: rgba(45, 46, 95, 0.1);
+  color: #2D2E5F;
+}
+
+.level-selector-arrow .material-symbols-outlined {
+  font-size: 1.6rem;
+}
+
+.level-selector-preview-badge {
+  transition: background 0.2s, color 0.2s;
+}
+
 .level-selector-options.level-selector-collapsed {
   max-height: 0;
   opacity: 0;

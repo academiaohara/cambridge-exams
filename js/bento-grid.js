@@ -2,6 +2,8 @@
 // Premium Bento Grid dashboard sections rendered above the exam list
 
 (function() {
+  var _levelSelectorPreviewIdx = 0;
+
   window.BentoGrid = {
     render: function(container) {
       if (!container) return;
@@ -576,16 +578,20 @@
           '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + currentLevel + '</div>' +
         '</div>';
 
-      // Level dropdown (hidden by default)
-      var optionsHtml = '';
-      levels.forEach(function(l) {
-        if (l.code === currentLevel) return;
-        optionsHtml += '<button class="level-selector-option" ' +
-          'data-level="' + l.code + '" onclick="event.stopPropagation(); BentoGrid.changeLevel(\'' + l.code + '\')">' +
-          '<i class="' + l.icon + '"></i> ' + l.label +
-        '</button>';
-      });
-      html += '<div class="level-selector-options level-selector-collapsed">' + optionsHtml + '</div>';
+      // Level dropdown (hidden by default) — carousel style
+      var otherLevels = levels.filter(function(l) { return l.code !== currentLevel; });
+      html += '<div class="level-selector-options level-selector-collapsed" id="level-selector-options-panel">' +
+        '<div class="level-selector-changing-to">' + t('youAreChangingTo', 'You are changing to:') + '</div>' +
+        '<div class="level-selector-carousel">' +
+          '<button class="level-selector-arrow" onclick="event.stopPropagation(); BentoGrid.navigateLevelSelector(-1)" aria-label="Previous level">' +
+            '<span class="material-symbols-outlined">chevron_left</span>' +
+          '</button>' +
+          '<div id="level-selector-carousel-badge"></div>' +
+          '<button class="level-selector-arrow" onclick="event.stopPropagation(); BentoGrid.navigateLevelSelector(1)" aria-label="Next level">' +
+            '<span class="material-symbols-outlined">chevron_right</span>' +
+          '</button>' +
+        '</div>' +
+      '</div>';
 
       // Widget: Next Exam in progress (moved from right sidebar)
       var nextLesson = BentoGrid._findNextLesson(exams);
@@ -614,7 +620,8 @@
     },
 
     toggleLevelDropdown: function() {
-      var options = document.querySelector('.level-selector-options');
+      var options = document.getElementById('level-selector-options-panel') ||
+                    document.querySelector('.level-selector-options');
       var badge = document.querySelector('.sidebar-level-badge');
       if (!options) return;
       var isCollapsed = options.classList.contains('level-selector-collapsed');
@@ -622,11 +629,51 @@
         options.classList.remove('level-selector-collapsed');
         options.classList.add('level-selector-expanded');
         if (badge) badge.setAttribute('aria-expanded', 'true');
+        // Initialize carousel at index 0
+        _levelSelectorPreviewIdx = 0;
+        this._updateCarouselBadge();
       } else {
         options.classList.add('level-selector-collapsed');
         options.classList.remove('level-selector-expanded');
         if (badge) badge.setAttribute('aria-expanded', 'false');
       }
+    },
+
+    _getOtherLevels: function() {
+      var currentLevel = AppState.currentLevel || 'C1';
+      var levels = ['A2', 'B1', 'B2', 'C1', 'C2'];
+      return levels.filter(function(l) { return l !== currentLevel; });
+    },
+
+    _updateCarouselBadge: function() {
+      var badgeContainer = document.getElementById('level-selector-carousel-badge');
+      if (!badgeContainer) return;
+      var otherLevels = this._getOtherLevels();
+      if (!otherLevels.length) return;
+      if (_levelSelectorPreviewIdx < 0) _levelSelectorPreviewIdx = otherLevels.length - 1;
+      if (_levelSelectorPreviewIdx >= otherLevels.length) _levelSelectorPreviewIdx = 0;
+      var lvl = otherLevels[_levelSelectorPreviewIdx];
+      var levelColors = {
+        'C1': { bg: '#ffffff', label: '#104862', code: '#46B1E1' },
+        'A2': { bg: '#e8f5e9', label: '#1b5e20', code: '#4caf50' },
+        'B1': { bg: '#fff3e0', label: '#bf360c', code: '#ff9800' },
+        'B2': { bg: '#e3f2fd', label: '#0d47a1', code: '#2196f3' },
+        'C2': { bg: '#f3e5f5', label: '#4a148c', code: '#9c27b0' }
+      };
+      var lc = levelColors[lvl] || levelColors['C1'];
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      badgeContainer.innerHTML =
+        '<div class="sidebar-level-badge level-selector-preview-badge" data-level="' + lvl + '" ' +
+          'onclick="event.stopPropagation(); BentoGrid.changeLevel(\'' + lvl + '\')" ' +
+          'role="button" tabindex="0" style="cursor:pointer;background:' + lc.bg + '">' +
+          '<div class="sidebar-level-badge-label" style="color:' + lc.label + '">' + t('level', 'Level') + '</div>' +
+          '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + lvl + '</div>' +
+        '</div>';
+    },
+
+    navigateLevelSelector: function(dir) {
+      _levelSelectorPreviewIdx += dir;
+      this._updateCarouselBadge();
     },
 
     _toggleUnit: function(el) {
@@ -655,7 +702,8 @@
 
     changeLevel: function(level) {
       // Collapse the dropdown before changing level
-      var options = document.querySelector('.level-selector-options');
+      var options = document.getElementById('level-selector-options-panel') ||
+                    document.querySelector('.level-selector-options');
       if (options) {
         options.classList.add('level-selector-collapsed');
         options.classList.remove('level-selector-expanded');
@@ -664,6 +712,10 @@
         filterByLevel(level);
       } else if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
         Dashboard.filterByLevel(level);
+      }
+      // Sync level with user profile
+      if (typeof UserProfile !== 'undefined' && UserProfile.updateProfile) {
+        UserProfile.updateProfile({ preferred_level: level });
       }
     },
 

@@ -152,29 +152,10 @@
       var initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
 
       var levels = ['A2', 'B1', 'B2', 'C1', 'C2'];
-      var languages = [
-        { code: 'es', label: 'Español' }, { code: 'en', label: 'English' },
-        { code: 'fr', label: 'Français' }, { code: 'de', label: 'Deutsch' },
-        { code: 'it', label: 'Italiano' }, { code: 'pt', label: 'Português' }
-      ];
-      var modes = [
-        { value: 'practice', label: 'Practice' },
-        { value: 'exam', label: 'Exam' }
-      ];
 
       function levelOptions(current) {
         return levels.map(function (l) {
           return '<option value="' + l + '"' + (l === current ? ' selected' : '') + '>' + l + '</option>';
-        }).join('');
-      }
-      function langOptions(current) {
-        return languages.map(function (l) {
-          return '<option value="' + l.code + '"' + (l.code === current ? ' selected' : '') + '>' + l.label + '</option>';
-        }).join('');
-      }
-      function modeOptions(current) {
-        return modes.map(function (m) {
-          return '<option value="' + m.value + '"' + (m.value === current ? ' selected' : '') + '>' + m.label + '</option>';
         }).join('');
       }
 
@@ -202,14 +183,6 @@
             '<label>Level</label>' +
             '<select id="pref-level" onchange="UserProfile._onPrefChange()">' + levelOptions(profile.preferred_level || AppState.currentLevel) + '</select>' +
           '</div>' +
-          '<div class="pref-row">' +
-            '<label>Language</label>' +
-            '<select id="pref-language" onchange="UserProfile._onPrefChange()">' + langOptions(profile.preferred_language || AppState.currentLanguage) + '</select>' +
-          '</div>' +
-          '<div class="pref-row">' +
-            '<label>Mode</label>' +
-            '<select id="pref-mode" onchange="UserProfile._onPrefChange()">' + modeOptions(profile.preferred_mode || AppState.currentMode) + '</select>' +
-          '</div>' +
         '</div>' +
         '<div class="profile-sync-status" id="profile-sync-status"></div>' +
         '<button class="premium-plan-btn primary" style="margin:8px 20px;width:calc(100% - 40px)" onclick="UserProfile.closePanel(); UserProfile.renderProfileSection()">' +
@@ -228,21 +201,13 @@
     _refreshPanelValues: function () {
       var profile = this._profile || {};
       var lvl = document.getElementById('pref-level');
-      var lang = document.getElementById('pref-language');
-      var mode = document.getElementById('pref-mode');
       if (lvl) { lvl.value = profile.preferred_level || AppState.currentLevel; }
-      if (lang) { lang.value = profile.preferred_language || AppState.currentLanguage; }
-      if (mode) { mode.value = profile.preferred_mode || AppState.currentMode; }
     },
 
     _onPrefChange: async function () {
       var level = document.getElementById('pref-level');
-      var lang = document.getElementById('pref-language');
-      var mode = document.getElementById('pref-mode');
       var updates = {
-        preferred_level: level ? level.value : AppState.currentLevel,
-        preferred_language: lang ? lang.value : AppState.currentLanguage,
-        preferred_mode: mode ? mode.value : AppState.currentMode
+        preferred_level: level ? level.value : AppState.currentLevel
       };
       var statusEl = document.getElementById('profile-sync-status');
       if (statusEl) { statusEl.textContent = 'Saving…'; statusEl.className = 'profile-sync-status syncing'; }
@@ -266,6 +231,11 @@
           statusEl.className = 'profile-sync-status saved';
           setTimeout(function () { if (statusEl) { statusEl.textContent = ''; statusEl.className = 'profile-sync-status'; } }, 2000);
         }
+      }
+      // Sync level change to dashboard
+      var newLevel = level ? level.value : AppState.currentLevel;
+      if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
+        Dashboard.filterByLevel(newLevel);
       }
     },
 
@@ -389,20 +359,10 @@
         : '<span class="profile-initials-large">' + initials + '</span>';
 
       var levels = ['A2', 'B1', 'B2', 'C1', 'C2'];
-      var languages = [
-        { code: 'es', label: 'Español' }, { code: 'en', label: 'English' },
-        { code: 'fr', label: 'Français' }, { code: 'de', label: 'Deutsch' },
-        { code: 'it', label: 'Italiano' }, { code: 'pt', label: 'Português' }
-      ];
 
       function levelOptions(current) {
         return levels.map(function (l) {
           return '<option value="' + l + '"' + (l === current ? ' selected' : '') + '>' + l + '</option>';
-        }).join('');
-      }
-      function langOptions(current) {
-        return languages.map(function (l) {
-          return '<option value="' + l.code + '"' + (l.code === current ? ' selected' : '') + '>' + l.label + '</option>';
         }).join('');
       }
 
@@ -432,8 +392,6 @@
           '<div class="profile-prefs">' +
             '<div class="pref-row"><label>' + t('level', 'Level') + '</label>' +
               '<select id="pref-level" onchange="UserProfile._onPrefChange()">' + levelOptions(profile.preferred_level || AppState.currentLevel) + '</select></div>' +
-            '<div class="pref-row"><label>' + t('language', 'Language') + '</label>' +
-              '<select id="pref-language" onchange="UserProfile._onPrefChange()">' + langOptions(profile.preferred_language || AppState.currentLanguage) + '</select></div>' +
           '</div>' +
         '</div>' +
 
