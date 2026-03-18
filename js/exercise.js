@@ -206,6 +206,8 @@
 
       const content = document.getElementById('main-content');
       if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
+      if (window.Modal && typeof Modal.closeOptionsModal === 'function') Modal.closeOptionsModal();
+      if (window.ScoreCalculator && typeof ScoreCalculator.closeResultsModal === 'function') ScoreCalculator.closeResultsModal();
       AppState.currentSection = section;
       AppState.currentPart = part;
       AppState.currentExamId = examId;
