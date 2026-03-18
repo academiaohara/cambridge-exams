@@ -641,6 +641,7 @@
       // Search for the next question: always pick from indices strictly after
       // the last used index within the current phase. When the current phase is
       // exhausted, advance to the next phase and reset the index.
+      // Special rule: the very first question of phase 1 is always index 0 (fixed).
       var question = null;
       while (this._interviewPhaseIndex < phases.length) {
         var phase = phases[this._interviewPhaseIndex];
@@ -651,8 +652,10 @@
           available.push(i);
         }
         if (available.length > 0) {
-          // Pick randomly from the remaining subsequent questions in this phase
-          var pick = available[Math.floor(Math.random() * available.length)];
+          // First question of the first phase is always the first available one (fixed opening question)
+          var pick = (this._interviewPhaseIndex === 0 && this._interviewLastQuestionIdx === -1)
+            ? available[0]
+            : available[Math.floor(Math.random() * available.length)];
           this._interviewLastQuestionIdx = pick;
           question = questions[pick];
           break;
