@@ -3,7 +3,7 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "You are going to read a magazine article about an intellectual process known as critical thinking...",
+  "description": "Discuss the options shown with your partner for about two minutes, then decide together which two would be most effective.",
   "content": {
     "task": "Discuss how museums and art galleries should adapt to attract younger generations, then decide which two ideas would be most effective.",
     "options": [
@@ -21,7 +21,8 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Please discuss these ideas for making museums more appealing to young people."
+        "text": "Please discuss these ideas for making museums more appealing to young people.",
+        "showOptions": true
       },
       {
         "role": "partner",

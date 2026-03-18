@@ -3,7 +3,7 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "description": "Discuss the options shown with your partner for about two minutes, then decide together which two would be most effective.",
   "content": {
     "task": "Discuss how the rise of online shopping has affected these aspects of local communities, then decide which two changes are the most concerning.",
     "options": [
@@ -21,7 +21,8 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some consequences of the shift to online shopping."
+        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some consequences of the shift to online shopping.",
+        "showOptions": true
       },
       {
         "role": "partner",

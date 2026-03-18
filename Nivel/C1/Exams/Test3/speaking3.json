@@ -3,7 +3,7 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "You are going to read a magazine article about an intellectual process known as critical thinking...",
+  "description": "Discuss the options shown with your partner for about two minutes, then decide together which two would be most effective.",
   "content": {
     "task": "Discuss how social media platforms have influenced the following aspects of society, then decide which has had the most negative impact.",
     "options": [
@@ -21,7 +21,8 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Talk together about the influence of social media on these areas."
+        "text": "Talk together about the influence of social media on these areas.",
+        "showOptions": true
       },
       {
         "role": "partner",
