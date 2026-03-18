@@ -1,5 +1,8 @@
 // js/dashboard.js
 (function() {
+  var subpageCurrentPage = 1;
+  var TESTS_PER_PAGE = 5;
+
   window.Dashboard = {
     render: function(expandExamId) {
       const content = document.getElementById('main-content');
@@ -40,7 +43,7 @@
       }
     },
 
-    renderSubpage: function(mode) {
+    renderSubpage: function(mode, expandExamId) {
       AppState.currentMode = mode;
       localStorage.setItem('preferred_mode', mode);
       if (typeof App !== 'undefined') App.restoreExamStatuses();
@@ -73,16 +76,44 @@
         premiumBannerHtml = this._renderPremiumBanner();
       }
 
+      // Pagination: find which page contains the expandExamId if provided
+      var totalPages = Math.ceil(exams.length / TESTS_PER_PAGE);
+      if (expandExamId) {
+        var expandIdx = exams.findIndex(function(e) { return e.id === expandExamId; });
+        if (expandIdx !== -1) {
+          subpageCurrentPage = Math.floor(expandIdx / TESTS_PER_PAGE) + 1;
+        }
+      } else {
+        subpageCurrentPage = 1;
+      }
+      if (subpageCurrentPage < 1) subpageCurrentPage = 1;
+      if (subpageCurrentPage > totalPages) subpageCurrentPage = totalPages || 1;
+
+      var pageStart = (subpageCurrentPage - 1) * TESTS_PER_PAGE;
+      var pageExams = exams.slice(pageStart, pageStart + TESTS_PER_PAGE);
+
       let examListHtml = '';
-      exams.forEach((exam, idx) => {
+      pageExams.forEach(function(exam, idx) {
+        var globalIdx = pageStart + idx;
         if (exam.status === 'coming_soon') {
-          examListHtml += this.renderComingSoonExam(exam);
-        } else if (isGuest && idx > 0) {
-          examListHtml += this._renderGuestLockedExam(exam);
+          examListHtml += Dashboard.renderComingSoonExam(exam);
+        } else if (isGuest && globalIdx > 0) {
+          examListHtml += Dashboard._renderGuestLockedExam(exam);
         } else {
-          examListHtml += this.renderAvailableExam(exam, null);
+          examListHtml += Dashboard.renderAvailableExam(exam, expandExamId);
         }
       });
+
+      // Pagination controls
+      var paginationHtml = '';
+      if (totalPages > 1) {
+        paginationHtml = '<div class="subpage-pagination">';
+        for (var p = 1; p <= totalPages; p++) {
+          var activeClass = p === subpageCurrentPage ? ' active' : '';
+          paginationHtml += '<button class="pagination-btn' + activeClass + '" onclick="Dashboard.goToSubpagePage(' + p + ', \'' + mode + '\')">' + p + '</button>';
+        }
+        paginationHtml += '</div>';
+      }
 
       var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
       if (typeof BentoGrid !== 'undefined') {
@@ -101,6 +132,7 @@
           subpageHeader +
           premiumBannerHtml +
           '<div class="exams-container">' + examListHtml + '</div>' +
+          paginationHtml +
         '</div>' +
         '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
       '</div>';
@@ -109,6 +141,11 @@
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
       }
+    },
+
+    goToSubpagePage: function(page, mode) {
+      subpageCurrentPage = page;
+      this.renderSubpage(mode || AppState.currentMode);
     },
     
     renderComingSoonExam: function(exam) {
@@ -223,6 +260,7 @@
     filterByLevel: function(level) {
       AppState.currentLevel = level;
       localStorage.setItem('preferred_level', level);
+      subpageCurrentPage = 1;
       
       document.querySelectorAll('.level-btn').forEach(btn => {
         btn.classList.remove('active');
