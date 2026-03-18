@@ -194,9 +194,10 @@
     _evaluated: false,
     _speakingTimerInterval: null,
     _speakingElapsed: 0,
-    _interviewMode: false,    // true when using AI-driven phase-based interview
+    _interviewMode: false,    // true when using phase-based interview
     _interviewPhases: null,   // phases array from content
-    _interviewAiFetching: false, // true while waiting for AI examiner question
+    _interviewPhaseIndex: 0,  // current phase index (0-based)
+    _interviewLastQuestionIdx: -1, // last question index used within current phase
 
     // ── Public API ──
 
@@ -223,11 +224,12 @@
       this._evaluated = false;
       this._stopSpeakingTimer();
       this._speakingElapsed = 0;
-      this._interviewAiFetching = false;
 
       // Detect phase-based interview mode
       this._interviewMode = !!(content.phases && content.phases.length);
       this._interviewPhases = content.phases || null;
+      this._interviewPhaseIndex = 0;
+      this._interviewLastQuestionIdx = -1;
 
       // Check for previously saved evaluation
       var savedEvaluation = null;
@@ -456,12 +458,7 @@
       if (this._conversationEnded) {
         return '<div class="speaking-controls"><div class="speaking-ended-msg"><i class="fas fa-check-circle"></i> ' + t('conversationEnded', 'The conversation has ended') + '</div></div>';
       }
-      // Interview mode: show loading indicator while AI is fetching next question
-      if (this._interviewMode && this._interviewAiFetching) {
-        return '<div class="speaking-controls">' +
-          '<div class="speaking-ai-thinking"><span class="material-symbols-outlined speaking-eval-spinner">progress_activity</span> ' + t('examinerThinking', 'The examiner is thinking...') + '</div>' +
-        '</div>';
-      }
+      // (no AI fetching in interview mode — questions are selected locally)
       var current = this._script[this._scriptIndex];
       var isMine = current && current.role === 'candidate';
       return '<div class="speaking-controls">' +
@@ -553,7 +550,7 @@
       this._speakingElapsed = 0;
       var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
       this._speakingTimerInterval = setInterval(function() {
-        self._speakingElapsed++;
+        if (self._isRecording) self._speakingElapsed++;
         var display = document.getElementById('speaking-timer-display');
         if (display) {
           var remaining = Math.max(0, totalSeconds - self._speakingElapsed);
@@ -585,12 +582,12 @@
       var self = this;
       if (this._conversationEnded) return;
 
-      // Interview mode: fetch next examiner question from AI when script is exhausted
+      // Interview mode: select next question locally when script is exhausted
       if (this._interviewMode && this._scriptIndex >= this._script.length) {
-        // Only fetch if last message was from candidate (or no messages yet)
+        // Only proceed if last message was from candidate (or no messages yet)
         var lastMsg = this._messages[this._messages.length - 1];
         if (!lastMsg || lastMsg.role === 'candidate') {
-          this._fetchNextInterviewQuestion();
+          this._selectNextInterviewQuestion();
         }
         return;
       }
@@ -632,44 +629,48 @@
       this._refreshView();
     },
 
-    _fetchNextInterviewQuestion: async function() {
-      if (this._conversationEnded || this._interviewAiFetching) return;
-      this._interviewAiFetching = true;
-      this._activeSpeaker = 'examiner';
-      this._refreshView();
+    _selectNextInterviewQuestion: function() {
+      if (this._conversationEnded) return;
 
-      try {
-        var res = await fetch('/api/speaking-interview', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            messages: this._messages,
-            phases: this._interviewPhases,
-            examLevel: AppState.currentLevel || 'C1'
-          })
-        });
-        if (!res.ok) {
-          throw new Error('HTTP ' + res.status);
-        }
-        var data = await res.json();
-        this._interviewAiFetching = false;
-
-        if (this._conversationEnded) return;
-
-        if (data.end || data.error || !data.question) {
-          this._endConversation();
-          return;
-        }
-
-        // Append examiner question + candidate turn to script
-        this._script.push({ role: 'examiner', text: data.question });
-        this._script.push({ role: 'candidate', text: '' });
-        this._processCurrentTurn();
-      } catch(e) {
-        console.error('Speaking interview error:', e);
-        this._interviewAiFetching = false;
-        if (!this._conversationEnded) this._endConversation();
+      var phases = this._interviewPhases;
+      if (!phases || !phases.length) {
+        this._endConversation();
+        return;
       }
+
+      // Search for the next question: always pick from indices strictly after
+      // the last used index within the current phase. When the current phase is
+      // exhausted, advance to the next phase and reset the index.
+      var question = null;
+      while (this._interviewPhaseIndex < phases.length) {
+        var phase = phases[this._interviewPhaseIndex];
+        var questions = phase.questions || [];
+        // Collect indices strictly after the last used index in this phase
+        var available = [];
+        for (var i = this._interviewLastQuestionIdx + 1; i < questions.length; i++) {
+          available.push(i);
+        }
+        if (available.length > 0) {
+          // Pick randomly from the remaining subsequent questions in this phase
+          var pick = available[Math.floor(Math.random() * available.length)];
+          this._interviewLastQuestionIdx = pick;
+          question = questions[pick];
+          break;
+        }
+        // No more questions in this phase — move to the next
+        this._interviewPhaseIndex++;
+        this._interviewLastQuestionIdx = -1;
+      }
+
+      if (!question) {
+        this._endConversation();
+        return;
+      }
+
+      // Append examiner question + candidate turn to script
+      this._script.push({ role: 'examiner', text: question });
+      this._script.push({ role: 'candidate', text: '' });
+      this._processCurrentTurn();
     },
 
     _speakText: function(text, role, cb) {
@@ -1203,7 +1204,6 @@
         this._synthesis.cancel();
       }
       this._conversationEnded = true;
-      this._interviewAiFetching = false;
       this._activeSpeaker = null;
     }
   };
