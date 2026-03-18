@@ -1,0 +1,35 @@
+{
+  "title": "Speaking AI Prompts - C1 Advanced",
+  "description": "Prompts para evaluar y mejorar el Speaking al estilo Cambridge C1 Advanced usando inteligencia artificial.",
+  "level": "C1",
+  "types": [
+    {
+      "id": "part1",
+      "title": "Part 1 – Interview",
+      "file": "part1.json",
+      "description": "Evalúa una respuesta a las preguntas del examinador sobre ti mismo, tus opiniones y experiencias.",
+      "icon": "record_voice_over"
+    },
+    {
+      "id": "part2",
+      "title": "Part 2 – Long Turn",
+      "file": "part2.json",
+      "description": "Analiza si has especulado sobre las fotos o solo las has descrito, y mejora tu vocabulario C1.",
+      "icon": "photo_library"
+    },
+    {
+      "id": "part3",
+      "title": "Part 3 – Collaborative Task",
+      "file": "part3.json",
+      "description": "Evalúa si has gestionado la interacción correctamente, invitando a tu compañero a participar.",
+      "icon": "group"
+    },
+    {
+      "id": "part4",
+      "title": "Part 4 – Discussion",
+      "file": "part4.json",
+      "description": "Analiza la profundidad y sofisticación de tus respuestas en la discusión con el examinador.",
+      "icon": "forum"
+    }
+  ]
+}

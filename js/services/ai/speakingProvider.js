@@ -109,7 +109,19 @@ Global Achievement:
 [List 2-3 specific strengths with examples from the transcript]
 
 ⚠️ AREAS FOR IMPROVEMENT
-[List 2-4 specific areas to improve with concrete suggestions]`
+[List 2-4 specific areas to improve with concrete suggestions]
+
+🔍 FILLERS & VAGUE LANGUAGE
+[Identify any simple fillers or vague language used (e.g., "like", "ehh", "umm", "stuff", "things", "kind of", "sort of", "you know"). For each one found, suggest a natural C1-level alternative (e.g., "What I mean to say is...", "To put it another way...", "That is to say...", "What springs to mind is...", "In other words..."). If no significant fillers were detected in the transcript, state this positively.]
+
+📈 THE UPGRADE LIST
+[List exactly 5 C1/C2 expressions or phrases that would have fitted naturally into what the candidate said. For each one, briefly note in which part of their response they could have used it and why it would enhance their score.]${partType === 2 ? `
+
+🎯 SPECULATION CHECK
+[Assess whether the candidate speculated about feelings, motivations, and situations in the photographs (correct approach) or merely described what they could see literally (incorrect approach). Quote specific examples from the transcript. If they speculated well, confirm this with examples. If they only described, give 2 examples of how they could have rephrased their descriptions as speculations using modal verbs such as "must be", "could be experiencing", "might suggest", "appears to be", "seems as though".]` : ''}${partType === 3 ? `
+
+💬 INTERACTIVE CHECK
+[Assess whether the candidate invited their partner to speak and managed turn-taking effectively (correct approach) or monopolised the conversation (incorrect approach). Quote specific examples from the transcript. Count or estimate how many times they used inviting phrases (e.g., "What do you think?", "I'd be curious to hear your view on...", "Don't you think that...?"). If they did not invite the partner to speak, provide 3 example phrases they could have used.]` : ''}`
         },
         {
           role: "user",
