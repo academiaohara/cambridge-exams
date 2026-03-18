@@ -1,6 +1,26 @@
 // js/exercise.js
 (function() {
   window.Exercise = {
+    _exerciseDefaults: null,
+    _exerciseDefaultsLevel: null,
+
+    _loadExerciseDefaults: async function() {
+      const level = AppState.currentLevel || 'C1';
+      if (this._exerciseDefaults !== null && this._exerciseDefaultsLevel === level) {
+        return this._exerciseDefaults;
+      }
+      try {
+        const url = `/Nivel/${level}/exercise-defaults.json`;
+        const response = await Utils.fetchWithNoCache(url);
+        this._exerciseDefaults = await response.json();
+        this._exerciseDefaultsLevel = level;
+      } catch(e) {
+        this._exerciseDefaults = {};
+        this._exerciseDefaultsLevel = level;
+      }
+      return this._exerciseDefaults;
+    },
+
     getStorageKey: function(examId, section, part) {
       return `cambridge_${AppState.currentMode}_${AppState.currentLevel}_${examId}_${section}_${part}`;
     },
@@ -313,6 +333,14 @@
 
         if (!exercise.content) {
           throw new Error('El archivo JSON no tiene la estructura correcta');
+        }
+
+        // Apply shared defaults for time and description from exercise-defaults.json
+        const defaults = await this._loadExerciseDefaults();
+        const defaultKey = section + part;
+        if (defaults[defaultKey]) {
+          if (defaults[defaultKey].time !== undefined) exercise.time = defaults[defaultKey].time;
+          if (defaults[defaultKey].description !== undefined) exercise.description = defaults[defaultKey].description;
         }
         
         AppState.currentExercise = exercise;
