@@ -1,0 +1,35 @@
+{
+  "title": "Writing AI Prompts - C1 Advanced",
+  "description": "Prompts para evaluar y mejorar textos de Writing al estilo Cambridge C1 Advanced usando inteligencia artificial.",
+  "level": "C1",
+  "types": [
+    {
+      "id": "essay",
+      "title": "Essay",
+      "file": "essay.json",
+      "description": "Evalúa y mejora un Essay según los criterios oficiales de Cambridge C1 (Content, Communicative Achievement, Organisation, Language).",
+      "icon": "edit_note"
+    },
+    {
+      "id": "report",
+      "title": "Report",
+      "file": "report.json",
+      "description": "Revisa un Report asegurando tono objetivo, encabezados adecuados y recomendaciones sólidas.",
+      "icon": "assignment"
+    },
+    {
+      "id": "proposal",
+      "title": "Proposal",
+      "file": "proposal.json",
+      "description": "Evalúa una Proposal potenciando la persuasión, los verbos modales y los 'power verbs'.",
+      "icon": "lightbulb"
+    },
+    {
+      "id": "review",
+      "title": "Review",
+      "file": "review.json",
+      "description": "Analiza una Review enriqueciendo el vocabulario descriptivo y la opinión crítica.",
+      "icon": "rate_review"
+    }
+  ]
+}

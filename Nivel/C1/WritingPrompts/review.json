@@ -1,0 +1,38 @@
+{
+  "type": "review",
+  "title": "Review (C1 Cambridge)",
+  "description": "Evalúa y mejora una Review al nivel C1 Advanced enriqueciendo el vocabulario descriptivo y equilibrando análisis con opinión crítica.",
+  "prompt": "Actúa como un crítico cultural. Analiza esta Review buscando adjetivos repetitivos o simples (como 'good', 'interesting', 'nice'). Sustitúyelos por adjetivos de nivel C1/C2 que evoquen emociones. Asegúrate de que mi opinión crítica sea clara y no solo un resumen. Texto: [PEGA TU TEXTO]",
+  "criteria": [
+    {
+      "name": "Content",
+      "description": "La reseña proporciona información relevante (descripción, análisis y recomendación) sin limitarse a resumir."
+    },
+    {
+      "name": "Communicative Achievement",
+      "description": "El tono es atractivo e informativo, con una voz crítica clara y una recomendación dirigida al lector."
+    },
+    {
+      "name": "Organisation",
+      "description": "La reseña fluye de forma lógica desde la introducción hasta la conclusión con recomendación final."
+    },
+    {
+      "name": "Language",
+      "description": "Uso de adjetivos evocadores, lenguaje descriptivo rico y variedad de estructuras para expresar opinión."
+    }
+  ],
+  "tips": [
+    "Reemplaza adjetivos simples por equivalentes C1/C2: 'good' → 'outstanding/compelling/remarkable', 'bad' → 'disappointing/underwhelming/lackluster', 'interesting' → 'thought-provoking/captivating/enthralling', 'nice' → 'delightful/charming/exquisite'",
+    "Añade opinión crítica con estructuras sofisticadas: 'What struck me most was...', 'One cannot help but notice...', 'The real strength lies in...'",
+    "Incluye una recomendación clara y matizada: 'This would appeal to those who...', 'Essential viewing/reading for...'",
+    "Equilibra los puntos positivos con los negativos para que la reseña sea creíble",
+    "Usa lenguaje figurativo cuando sea apropiado: 'The narrative weaves together...', 'The performance breathes life into...'"
+  ],
+  "wordLimit": "220-260 words",
+  "structure": {
+    "introduction": "Presenta brevemente el objeto de la reseña y crea expectativa.",
+    "description": "Describe los aspectos principales sin revelar demasiado.",
+    "evaluation": "Analiza los puntos fuertes y débiles con criterio.",
+    "conclusion": "Emite una recomendación clara al lector objetivo."
+  }
+}

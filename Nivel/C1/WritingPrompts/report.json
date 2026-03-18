@@ -1,0 +1,38 @@
+{
+  "type": "report",
+  "title": "Report (C1 Cambridge)",
+  "description": "Evalúa y mejora un Report al nivel C1 Advanced asegurando tono objetivo, estructura formal y recomendaciones sólidas.",
+  "prompt": "Actúa como un editor profesional. Revisa este Report asegurándote de que el tono sea totalmente objetivo y formal. Comprueba que los encabezados sean adecuados. Cambia las frases en primera persona ('I think', 'I saw') por estructuras pasivas o nominalizaciones. Propón mejoras para las recomendaciones finales. Texto: [PEGA TU TEXTO]",
+  "criteria": [
+    {
+      "name": "Content",
+      "description": "El informe aborda todos los puntos de la tarea con información relevante y bien seleccionada."
+    },
+    {
+      "name": "Communicative Achievement",
+      "description": "El tono es formal e impersonal, adecuado para un informe profesional o académico."
+    },
+    {
+      "name": "Organisation",
+      "description": "El informe usa encabezados claros, párrafos bien diferenciados y una sección de recomendaciones al final."
+    },
+    {
+      "name": "Language",
+      "description": "Uso de lenguaje técnico, nominalizaciones y estructuras pasivas para mantener la objetividad."
+    }
+  ],
+  "tips": [
+    "Usa encabezados claros: 'Introduction', 'Findings', 'Conclusions', 'Recommendations'",
+    "Sustituye frases en primera persona al presentar hallazgos por pasivas: 'I found' → 'It was found that...'; las recomendaciones pueden mantener formas como 'It is recommended that...' o 'Steps should be taken to...'",
+    "Emplea nominalizaciones: 'We recommend' → 'It is recommended that...'",
+    "Incluye datos concretos y evidencia para respaldar tus conclusiones",
+    "Las recomendaciones deben ser específicas y usar estructuras modales: 'It would be advisable to...', 'Steps should be taken to...'"
+  ],
+  "wordLimit": "220-260 words",
+  "structure": {
+    "introduction": "Indica el propósito del informe y las fuentes de información.",
+    "findings": "Presenta los hallazgos de forma objetiva usando encabezados.",
+    "conclusions": "Resume las implicaciones de los hallazgos.",
+    "recommendations": "Propone medidas concretas basadas en las conclusiones."
+  }
+}
