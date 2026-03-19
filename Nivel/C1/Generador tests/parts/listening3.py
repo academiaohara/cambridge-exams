@@ -184,13 +184,44 @@ def get_ai_content(api_key, test_id):
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
-            {"role": "system", "content": "You are a Cambridge exam expert."},
+            {"role": "system", "content": (
+                "You are a Cambridge exam expert. "
+                "CRITICAL: The 'audio_script' field MUST contain at least 500 words. "
+                "Count every word before returning. If the audio_script is under 500 words, expand it before outputting."
+            )},
             {"role": "user", "content": prompt}
         ],
         response_format={"type": "json_object"}
     )
 
     return json.loads(response.choices[0].message.content)
+
+# ==========================
+# EXPANSIÓN DE CONTENIDO
+# ==========================
+
+def _expand_listening3(client, content, min_words=450):
+    """Expands the interview audio_script without regenerating the full JSON."""
+    audio_script = content.get("extracts", [{}])[0].get("audio_script", "")
+    current_count = count_words(audio_script)
+    expand_prompt = (
+        f"The interview audio_script is too short ({current_count} words, minimum required: {min_words}). "
+        f"Expand it by adding more detail and elaboration to existing exchanges. "
+        f"Keep ALL existing answer markers (e.g. [15]...[/15]) exactly in place. "
+        f"Do NOT add markers to the dialogue array. "
+        f"Do NOT change the questions, answers, or any other field. "
+        f"Return the COMPLETE original JSON with only the 'audio_script' field expanded.\n\n"
+        f"Full JSON to patch:\n{json.dumps(content)}"
+    )
+    resp = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "You are a Cambridge exam expert. Output valid JSON only."},
+            {"role": "user", "content": expand_prompt}
+        ],
+        response_format={"type": "json_object"}
+    )
+    return json.loads(resp.choices[0].message.content)
 
 # ==========================
 # FUNCIÓN PRINCIPAL
@@ -205,18 +236,23 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
 
     if not audio_only:
         print(f"🤖 Generando contenido AI para Listening 3 (Entrevista)...")
-        max_attempts = 3
+        MAX_ATTEMPTS = 5
+        client = OpenAI(api_key=api_key)
         content = None
-        for attempt in range(1, max_attempts + 1):
-            content = get_ai_content(api_key, test_id)
+        word_count = 0
+        for attempt in range(1, MAX_ATTEMPTS + 1):
+            if attempt <= 3:
+                content = get_ai_content(api_key, test_id)
+            else:
+                content = _expand_listening3(client, content, MIN_WORDS)
             audio_script = content.get("extracts", [{}])[0].get("audio_script", "")
             word_count = count_words(audio_script)
             if word_count >= MIN_WORDS:
                 break
-            if attempt < max_attempts:
-                print(f"⚠️ Intento {attempt}: Solo {word_count} palabras en el audio_script (mínimo {MIN_WORDS}). Regenerando...")
+            if attempt < MAX_ATTEMPTS:
+                print(f"⚠️ Intento {attempt}: Solo {word_count} palabras en el audio_script (mínimo {MIN_WORDS}). {'Regenerando' if attempt < 3 else 'Expandiendo'}...")
             else:
-                print(f"⚠️ Texto corto tras {max_attempts} intentos ({word_count} palabras). Guardando de todas formas.")
+                print(f"⚠️ Texto corto tras {MAX_ATTEMPTS} intentos ({word_count} palabras). Guardando de todas formas.")
         
         # Verificación y limpieza adicional de marcadores en el diálogo
         for extract in content["extracts"]:

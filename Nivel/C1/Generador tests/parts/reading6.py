@@ -70,12 +70,43 @@ def get_ai_content(api_key, test_id):
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
-            {"role": "system", "content": "You are a Cambridge C1 exam expert. You only output valid JSON."},
+            {"role": "system", "content": (
+            "You are a Cambridge C1 exam expert. You only output valid JSON. "
+            "CRITICAL: Each writer's text (A, B, C, D) MUST contain at least 125 words. "
+            "Count every word before returning. If any text is under 125 words, expand it before outputting."
+        )},
             {"role": "user", "content": prompt}
         ],
         response_format={"type": "json_object"}
     )
     return json.loads(response.choices[0].message.content)
+
+# ==========================
+# EXPANSIÓN DE CONTENIDO
+# ==========================
+
+def _expand_reading6(client, data, min_per_text=125):
+    """Expands writer texts that are below min_per_text words."""
+    texts = data.get("content", {}).get("texts", {})
+    short = {k: v for k, v in texts.items() if count_words(v) < min_per_text}
+    if not short:
+        return data
+    expand_prompt = (
+        f"The following writer texts are too short (each needs ≥{min_per_text} words). "
+        f"Expand ONLY these texts in place, keeping the same tone, topic, and embedded evidence markers (e.g. [37]...[/37]). "
+        f"Return the COMPLETE original JSON with only these texts replaced:\n\n"
+        f"Short texts to expand: {json.dumps(short)}\n\n"
+        f"Full JSON to patch:\n{json.dumps(data)}"
+    )
+    resp = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "You are a Cambridge C1 exam expert. Output valid JSON only."},
+            {"role": "user", "content": expand_prompt}
+        ],
+        response_format={"type": "json_object"}
+    )
+    return json.loads(resp.choices[0].message.content)
 
 # ==========================
 # FUNCIÓN PRINCIPAL
@@ -92,19 +123,23 @@ def generate(test_id, output_path, api_key, json_only=True, *args, **kwargs):
     print(f"⚖️ Generando contenido AI para Reading Part 6 (Test {test_id})...")
     
     try:
-        max_attempts = 3
+        MAX_ATTEMPTS = 5
+        client = OpenAI(api_key=api_key)
         data = None
         word_count = 0
-        for attempt in range(1, max_attempts + 1):
-            data = get_ai_content(api_key, test_id)
+        for attempt in range(1, MAX_ATTEMPTS + 1):
+            if attempt <= 3:
+                data = get_ai_content(api_key, test_id)
+            else:
+                data = _expand_reading6(client, data)
             texts = data.get("content", {}).get("texts", {})
             word_count = sum(count_words(texts.get(letter, "")) for letter in ["A", "B", "C", "D"])
             if word_count >= MIN_WORDS_TOTAL:
                 break
-            if attempt < max_attempts:
-                print(f"⚠️ Intento {attempt}: Solo {word_count} palabras en total (mínimo {MIN_WORDS_TOTAL}). Regenerando...")
+            if attempt < MAX_ATTEMPTS:
+                print(f"⚠️ Intento {attempt}: Solo {word_count} palabras en total (mínimo {MIN_WORDS_TOTAL}). {'Regenerando' if attempt < 3 else 'Expandiendo'}...")
             else:
-                print(f"⚠️ Texto corto tras {max_attempts} intentos ({word_count} palabras). Guardando de todas formas.")
+                print(f"⚠️ Texto corto tras {MAX_ATTEMPTS} intentos ({word_count} palabras). Guardando de todas formas.")
 
         # Guardar el archivo
         with open(json_file, "w", encoding="utf-8") as f:

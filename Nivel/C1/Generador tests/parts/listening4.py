@@ -157,10 +157,46 @@ STRICT RULES:
 
     response = client.chat.completions.create(
         model="gpt-4o",
-        messages=[{"role": "system", "content": "You are a Cambridge exam expert specializing in CAE listening tasks."}, {"role": "user", "content": prompt}],
+        messages=[{"role": "system", "content": (
+            "You are a Cambridge exam expert specializing in CAE listening tasks. "
+            "CRITICAL: Each speaker's segment in 'audio_script' MUST contain at least 100 words. "
+            "Count every word before returning. If any speaker segment is under 100 words, expand it before outputting."
+        )}, {"role": "user", "content": prompt}],
         response_format={"type": "json_object"}
     )
     return json.loads(response.choices[0].message.content)
+
+# ==========================
+# EXPANSIÓN DE CONTENIDO
+# ==========================
+
+def _expand_listening4(client, content, min_words=90):
+    """Expands short speaker segments in the audio_script."""
+    script = content.get("audio_script", "")
+    segments = [s.strip() for s in script.split("||") if s.strip()]
+    short_segs = [(i + 1, seg) for i, seg in enumerate(segments) if count_words(seg) < min_words]
+    if not short_segs:
+        return content
+    short_desc = "\n".join(
+        f"Speaker {i} ({count_words(seg)} words): {seg}" for i, seg in short_segs
+    )
+    expand_prompt = (
+        f"The following speaker segments in the audio_script are too short (each needs ≥{min_words} words). "
+        f"Expand ONLY these segments, keeping the same voice, topic, and embedded [N]…[/N] markers. "
+        f"Return the COMPLETE original JSON with the expanded segments merged back into audio_script "
+        f"(speakers still separated by ' || '):\n\n"
+        f"Short segments:\n{short_desc}\n\n"
+        f"Full JSON:\n{json.dumps(content)}"
+    )
+    resp = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "You are a Cambridge exam expert. Output valid JSON only."},
+            {"role": "user", "content": expand_prompt}
+        ],
+        response_format={"type": "json_object"}
+    )
+    return json.loads(resp.choices[0].message.content)
 
 # ==========================
 # FUNCIÓN PRINCIPAL
@@ -176,10 +212,14 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     # 1. Crear JSON
     if not audio_only:
         print(f"🤖 Generando contenido AI para Listening 4 (Matching)...")
-        max_attempts = 3
+        MAX_ATTEMPTS = 5
+        client = OpenAI(api_key=api_key)
         content = None
-        for attempt in range(1, max_attempts + 1):
-            content = get_ai_content(api_key, test_id)
+        for attempt in range(1, MAX_ATTEMPTS + 1):
+            if attempt <= 3:
+                content = get_ai_content(api_key, test_id)
+            else:
+                content = _expand_listening4(client, content, MIN_WORDS_PER_SPEAKER)
             audio_script = content.get("audio_script", "")
             # Divide per speaker and check word counts
             segments = [s.strip() for s in audio_script.split("||") if s.strip()]
@@ -187,10 +227,10 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
             short = [i + 1 for i, c in enumerate(counts) if c < MIN_WORDS_PER_SPEAKER]
             if not short:
                 break
-            if attempt < max_attempts:
-                print(f"⚠️ Intento {attempt}: Speaker(s) {short} con pocas palabras (mínimo {MIN_WORDS_PER_SPEAKER} c/u). Regenerando...")
+            if attempt < MAX_ATTEMPTS:
+                print(f"⚠️ Intento {attempt}: Speaker(s) {short} con pocas palabras (mínimo {MIN_WORDS_PER_SPEAKER} c/u). {'Regenerando' if attempt < 3 else 'Expandiendo'}...")
             else:
-                print(f"⚠️ Texto corto tras {max_attempts} intentos. Guardando de todas formas.")
+                print(f"⚠️ Texto corto tras {MAX_ATTEMPTS} intentos. Guardando de todas formas.")
         topic = content.get("topic", "people talking about a shared experience")
         data = {
             "title": content.get("title", "Listening - Part 4"),
