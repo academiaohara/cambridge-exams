@@ -28,6 +28,15 @@ BUNNY_PULL_ZONE = os.getenv("BUNNY_PULL_ZONE", "listeninggenerator")
 NARRATOR_DIR = os.getenv("NARRATOR_DIR", r"C:\Users\34717\Desktop\Examenes página\C1\Narrador")
 
 # ==========================
+# UTILIDADES
+# ==========================
+
+def count_words(text):
+    """Cuenta las palabras de un texto ignorando marcadores de examen."""
+    clean = re.sub(r'\[/?[\d\w]+\]', ' ', text)
+    return len(clean.split())
+
+# ==========================
 # UTILIDADES DE AUDIO
 # ==========================
 
@@ -102,7 +111,7 @@ SCHEMA (return exactly this JSON structure, fully populated):
   "title": "Listening - Part 4: [Topic]",
   "topic": "[brief description of common theme, e.g. 'people who gave up corporate careers to start organic farms']",
   "voices": {json.dumps(voices)},
-  "audio_script": "Speaker 1: [Full 100–150 word monologue. Embed [21]answer evidence[/21] and [26]answer evidence[/26] in the text.] || Speaker 2: [Full 100–150 word monologue with [22]...[/22] and [27]...[/27]] || Speaker 3: [Full 100–150 word monologue with [23]...[/23] and [28]...[/28]] || Speaker 4: [Full 100–150 word monologue with [24]...[/24] and [29]...[/29]] || Speaker 5: [Full 100–150 word monologue with [25]...[/25] and [30]...[/30]]",
+  "audio_script": "Speaker 1: [Full monologue. MANDATORY: approximately 100 words (min 90, max 150). Embed [21]answer evidence[/21] and [26]answer evidence[/26] in the text.] || Speaker 2: [Full monologue ~100 words with [22]...[/22] and [27]...[/27]] || Speaker 3: [Full monologue ~100 words with [23]...[/23] and [28]...[/28]] || Speaker 4: [Full monologue ~100 words with [24]...[/24] and [29]...[/29]] || Speaker 5: [Full monologue ~100 words with [25]...[/25] and [30]...[/30]]",
   "task1": {{
     "title": "Task One",
     "instruction": "For questions 21–25, choose from the list (A–H) [angle 1 description, e.g. 'why each speaker decided to make a change'].",
@@ -137,7 +146,7 @@ SCHEMA (return exactly this JSON structure, fully populated):
 
 STRICT RULES:
 1. Choose an engaging, cohesive theme where 5 different people share related but varied experiences (e.g. people who changed careers, people who moved abroad, people who started a creative business). Do NOT use farming/agriculture (used in Test 1).
-2. Each speaker's monologue must be 100–150 words — substantial and natural-sounding, not a brief summary. Each speaker must have a distinct voice and perspective.
+2. CRITICAL — WORD COUNT: Each speaker's monologue MUST be approximately 100 words (minimum 90, maximum 150) — substantial and natural-sounding, not a brief summary. Each speaker must have a distinct voice and perspective. Count carefully. This requirement is NON-NEGOTIABLE.
 3. audio_script: All 5 speakers joined by ' || ' (space-pipe-pipe-space). Each segment starts with 'Speaker N: '. Markers [21]–[25] are task1 answers; markers [26]–[30] are task2 answers. Each marker pair wraps the exact phrase(s) evidencing the answer (e.g. 'I found [21]the isolation deeply unsettling[/21]').
 4. Task 1 and Task 2 must have DIFFERENT angles (e.g. Task 1 = motivation for the change, Task 2 = biggest challenge faced).
 5. Each task must have exactly 8 options (A–H). Not all options are used — include 3 distractors per task. Answer letters must be spread across A–H (avoid clustering).
@@ -157,6 +166,8 @@ STRICT RULES:
 # FUNCIÓN PRINCIPAL
 # ==========================
 
+MIN_WORDS_PER_SPEAKER = 90
+
 def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     speech_config = get_speech_config()
     json_file = output_path / f"listening4.json"
@@ -165,7 +176,21 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     # 1. Crear JSON
     if not audio_only:
         print(f"🤖 Generando contenido AI para Listening 4 (Matching)...")
-        content = get_ai_content(api_key, test_id)
+        max_attempts = 3
+        content = None
+        for attempt in range(1, max_attempts + 1):
+            content = get_ai_content(api_key, test_id)
+            audio_script = content.get("audio_script", "")
+            # Divide per speaker and check word counts
+            segments = [s.strip() for s in audio_script.split("||") if s.strip()]
+            counts = [count_words(seg) for seg in segments]
+            short = [i + 1 for i, c in enumerate(counts) if c < MIN_WORDS_PER_SPEAKER]
+            if not short:
+                break
+            if attempt < max_attempts:
+                print(f"⚠️ Intento {attempt}: Speaker(s) {short} con pocas palabras (mínimo {MIN_WORDS_PER_SPEAKER} c/u). Regenerando...")
+            else:
+                print(f"⚠️ Texto corto tras {max_attempts} intentos. Guardando de todas formas.")
         topic = content.get("topic", "people talking about a shared experience")
         data = {
             "title": content.get("title", "Listening - Part 4"),

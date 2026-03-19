@@ -28,6 +28,15 @@ BUNNY_PULL_ZONE = os.getenv("BUNNY_PULL_ZONE", "listeninggenerator")
 NARRATOR_DIR = os.getenv("NARRATOR_DIR", r"C:\Users\34717\Desktop\Examenes página\C1\Narrador")
 
 # ==========================
+# UTILIDADES
+# ==========================
+
+def count_words(text):
+    """Cuenta las palabras de un texto ignorando marcadores de examen."""
+    clean = re.sub(r'\[/?[\d\w]+\]', ' ', text)
+    return len(clean.split())
+
+# ==========================
 # UTILIDADES DE AUDIO
 # ==========================
 
@@ -99,7 +108,7 @@ SCHEMA:
       "id": 1,
       "context": "Brief spoken context statement, e.g. 'Emma Clarke talks about her experience working on a conservation project.'",
       "voices": {{"emma": "{voice}"}},
-      "audio_script": "Full monologue 350–450 words. Mark each answer in situ: [7]answer1[/7], [8]answer2[/8]… through [14]answer8[/14]. The answer must be a short phrase (1–4 words) that fits naturally into the gap sentence.",
+      "audio_script": "Full monologue. MANDATORY: approximately 500 words (minimum 450, maximum 550). Mark each answer in situ: [7]answer1[/7], [8]answer2[/8]… through [14]answer8[/14]. The answer must be a short phrase (1–4 words) that fits naturally into the gap sentence.",
       "dialogue": [
         {{"speaker": "emma", "text": "Full monologue text with no markers – clean TTS input."}}
       ],
@@ -125,7 +134,8 @@ STRICT RULES:
 4. Questions use the "question" field (the sentence with the gap), NOT "sentence".
 5. Each gap sentence must make grammatical sense on its own when the answer is inserted.
 6. Answers appear in the audio in QUESTION ORDER (7 → 14).
-7. Voice: {voice}.
+7. CRITICAL — WORD COUNT: The "audio_script" field MUST be approximately 500 words (minimum 450). Count carefully before returning. Do NOT submit fewer than 450 words. This requirement is NON-NEGOTIABLE. Write a rich, detailed monologue.
+8. Voice: {voice}.
 """
     
     response = client.chat.completions.create(
@@ -139,6 +149,8 @@ STRICT RULES:
 # FUNCIÓN PRINCIPAL
 # ==========================
 
+MIN_WORDS = 450
+
 def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     speech_config = get_speech_config()
     json_file = output_path / f"listening2.json"
@@ -147,7 +159,18 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     # 1. Crear JSON
     if not audio_only:
         print(f"🤖 Generando contenido AI para Listening 2...")
-        content = get_ai_content(api_key, test_id)
+        max_attempts = 3
+        content = None
+        for attempt in range(1, max_attempts + 1):
+            content = get_ai_content(api_key, test_id)
+            audio_script = content.get("extracts", [{}])[0].get("audio_script", "")
+            word_count = count_words(audio_script)
+            if word_count >= MIN_WORDS:
+                break
+            if attempt < max_attempts:
+                print(f"⚠️ Intento {attempt}: Solo {word_count} palabras en el monólogo (mínimo {MIN_WORDS}). Regenerando...")
+            else:
+                print(f"⚠️ Texto corto tras {max_attempts} intentos ({word_count} palabras). Guardando de todas formas.")
         data = {
             "title": "Listening Part 2",
             "time": 15,

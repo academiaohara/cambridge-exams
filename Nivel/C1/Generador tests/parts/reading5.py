@@ -4,6 +4,16 @@ from pathlib import Path
 from openai import OpenAI
 
 # ==========================
+# UTILIDADES
+# ==========================
+
+def count_words(text):
+    """Cuenta las palabras de un texto ignorando marcadores de examen."""
+    import re
+    clean = re.sub(r'\[/?[\d\w]+\]', ' ', text)
+    return len(clean.split())
+
+# ==========================
 # GENERACIÓN DE CONTENIDO (AI)
 # = :========================
 
@@ -27,7 +37,7 @@ def get_ai_content(api_key, test_id):
       "content": {{
         "title": "Article headline",
         "subtitle": "Optional subheading",
-        "text": "Engaging article 680–720 words. Enclose each question's key evidence in [31]…[/31] through [36]…[/36]. Use || for paragraph breaks.",
+        "text": "Engaging article. MANDATORY: between 500 and 550 words. Enclose each question's key evidence in [31]…[/31] through [36]…[/36]. Use || for paragraph breaks.",
         "questions": [
           {{
             "number": 31,
@@ -43,7 +53,7 @@ def get_ai_content(api_key, test_id):
     CONTENT RULES:
     1. Topic: memory science, language acquisition, sport psychology, technology ethics, or philosophy.
        Avoid: deep work, cognitive focus, or creativity (used in previous tests).
-    2. Length: 680-720 words. High-level C1 vocabulary and varied structures.
+    2. CRITICAL — WORD COUNT: The "text" field MUST contain between 500 and 550 words. Count carefully before returning. Do NOT submit fewer than 500 words. This requirement is NON-NEGOTIABLE. Write full, detailed paragraphs.
     3. Question types MUST vary: 
        - At least one about author's attitude/tone.
        - At least one about meaning in context (a specific word or phrase).
@@ -66,6 +76,8 @@ def get_ai_content(api_key, test_id):
 # FUNCIÓN PRINCIPAL
 # ==========================
 
+MIN_WORDS = 480
+
 def generate(test_id, output_path, api_key, json_only=True, *args, **kwargs):
     """
     Genera el archivo JSON para la Parte 5 de Reading (Multiple Choice Text).
@@ -75,13 +87,24 @@ def generate(test_id, output_path, api_key, json_only=True, *args, **kwargs):
     print(f"📖 Generando contenido AI para Reading Part 5 (Test {test_id})...")
     
     try:
-        data = get_ai_content(api_key, test_id)
-        
+        max_attempts = 3
+        data = None
+        word_count = 0
+        for attempt in range(1, max_attempts + 1):
+            data = get_ai_content(api_key, test_id)
+            word_count = count_words(data.get("content", {}).get("text", ""))
+            if word_count >= MIN_WORDS:
+                break
+            if attempt < max_attempts:
+                print(f"⚠️ Intento {attempt}: Solo {word_count} palabras (mínimo {MIN_WORDS}). Regenerando...")
+            else:
+                print(f"⚠️ Texto corto tras {max_attempts} intentos ({word_count} palabras). Guardando de todas formas.")
+
         # Guardar el archivo
         with open(json_file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
             
-        print(f"✅ Archivo generado: {json_file.name}")
+        print(f"✅ Archivo generado: {json_file.name} ({word_count} palabras)")
         
     except Exception as e:
         print(f"❌ Error generando Reading 5: {e}")
