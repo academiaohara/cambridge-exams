@@ -1,0 +1,63 @@
+{
+    "title": "Speaking – Part 2: Long Turn",
+    "type": "multiple-choice-text",
+    "time": 2,
+    "totalQuestions": 2,
+    "description": "Each candidate compares two of three photographs and answers two questions about them. You have about one minute. Then your partner answers a brief question.",
+    "content": {
+        "tasks": [
+            {
+                "id": "2A",
+                "candidate": "Candidate A",
+                "topic": "Facing a challenge",
+                "instructions": "Compare two of the photographs and say what challenge the people might be facing and how they might be feeling.",
+                "mainQuestion": "What challenge might the people be facing, and how might they be feeling?",
+                "followUpQuestion": "Which situation would you find most challenging?",
+                "followUpRecipient": "Candidate B",
+                "images": [
+                    {
+                        "label": "a",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_a.jpg",
+                        "description": "A young man hiking on a steep mountain trail, looking at a map and appearing concerned, with a stormy sky above."
+                    },
+                    {
+                        "label": "b",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_b.jpg",
+                        "description": "A middle-aged woman in an urban setting, holding a bicycle with a flat tire, surrounded by heavy traffic, looking exasperated."
+                    },
+                    {
+                        "label": "c",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_c.jpg",
+                        "description": "A group of teenagers attempting to set up a large tent in a windy field, struggling to keep it upright, their faces showing determination."
+                    }
+                ]
+            },
+            {
+                "id": "2B",
+                "candidate": "Candidate B",
+                "topic": "Making a decision",
+                "instructions": "Compare two of the photographs and say what decision the people might be making and what factors they might be considering.",
+                "mainQuestion": "What decision might the people be making, and what factors might they be considering?",
+                "followUpQuestion": "Which decision would be hardest for you to make?",
+                "followUpRecipient": "Candidate A",
+                "images": [
+                    {
+                        "label": "d",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_d.jpg",
+                        "description": "A couple in a modern kitchen discussing over a laptop and a catalogue, possibly deciding on new home appliances."
+                    },
+                    {
+                        "label": "e",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_e.jpg",
+                        "description": "A senior man in a bookstore, surrounded by books, contemplating which book to buy, with a thoughtful expression."
+                    },
+                    {
+                        "label": "f",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_f.jpg",
+                        "description": "A young woman sitting at a café table with two different job offer letters in front of her, looking deep in thought."
+                    }
+                ]
+            }
+        ]
+    }
+}
