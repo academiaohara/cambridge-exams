@@ -1,0 +1,38 @@
+{
+  "type": "email",
+  "title": "Email/Letter (C1 Cambridge)",
+  "description": "Evalúa y mejora un Email o Letter asegurando registro adecuado (formal o informal), claridad y buena organización.",
+  "prompt": "Actúa como un editor profesional. Revisa este Email/Letter asegurándote de que el registro sea adecuado (formal o informal según la tarea). Comprueba que responde a todos los puntos, mejora la claridad y corrige saludos y despedidas. Ajusta el tono y vocabulario según el destinatario. Texto: [PEGA TU TEXTO]",
+  "criteria": [
+    {
+      "name": "Content",
+      "description": "El texto responde a todos los puntos de la tarea de forma clara y completa."
+    },
+    {
+      "name": "Communicative Achievement",
+      "description": "El tono es adecuado (formal o informal) según el destinatario y el propósito."
+    },
+    {
+      "name": "Organisation",
+      "description": "El texto está bien organizado con párrafos claros, saludo y despedida adecuados."
+    },
+    {
+      "name": "Language",
+      "description": "Uso adecuado de expresiones formales o informales, con variedad y precisión."
+    }
+  ],
+  "tips": [
+    "Formal: usa 'Dear Sir/Madam' y despedidas como 'Yours faithfully'",
+    "Informal: usa 'Hi/Hello' y despedidas como 'Best wishes'",
+    "Responde a TODOS los puntos del enunciado",
+    "Usa conectores (Firstly, এছ, By the way, Anyway…)",
+    "Mantén coherencia en el registro (no mezclar formal e informal)"
+  ],
+  "wordLimit": "220-260 words",
+  "structure": {
+    "opening": "Saludo adecuado según el registro.",
+    "introduction": "Motivo del mensaje.",
+    "main_body": "Desarrollo de los puntos requeridos.",
+    "closing": "Frase final + despedida adecuada."
+  }
+}
