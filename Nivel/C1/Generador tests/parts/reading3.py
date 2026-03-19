@@ -4,6 +4,16 @@ from pathlib import Path
 from openai import OpenAI
 
 # ==========================
+# UTILIDADES
+# ==========================
+
+def count_words(text):
+    """Cuenta las palabras de un texto ignorando marcadores de examen."""
+    import re
+    clean = re.sub(r'\[/?[\d\w]+\]', ' ', text)
+    return len(clean.split())
+
+# ==========================
 # GENERACIÓN DE CONTENIDO (AI)
 # ==========================
 
@@ -26,7 +36,7 @@ def get_ai_content(api_key, test_id):
       "totalQuestions": 8,
       "content": {{
         "articleTitle": "Short headline",
-        "text": "Continuous passage ~180 words. Mark gaps as (0), (17)–(24). After each gap line, append the base word in CAPITALS in parentheses, e.g. '(17) TEND'. Use || for paragraph breaks.",
+        "text": "Continuous passage. MANDATORY: exactly 150 words. Mark gaps as (0), (17)–(24) inline with NO underscores. After each gap line, append the base word in CAPITALS in parentheses, e.g. '(17) TEND'. Use || for paragraph breaks.",
         "example": {{
             "text": "First sentence with (0) gap.", 
             "correct": "TRADITIONALLY", 
@@ -53,7 +63,9 @@ def get_ai_content(api_key, test_id):
     3. Mix parts of speech: Include nouns, adjectives, adverbs, and verbs.
     4. Mandatory: Include at least ONE negative prefix (e.g., 'misunderstanding', 'irrelevant').
     5. Each answer is exactly ONE word.
-    6. Return valid JSON only."""
+    6. CRITICAL — WORD COUNT: The "text" field MUST contain exactly 150 words. Count carefully before returning. Do NOT submit fewer than 150 words. This requirement is NON-NEGOTIABLE.
+    7. Gap format: write gaps as (17), (18)… with NO underscores, dashes or blank lines around the number.
+    8. Return valid JSON only."""
 
     response = client.chat.completions.create(
         model="gpt-4o",
@@ -69,6 +81,8 @@ def get_ai_content(api_key, test_id):
 # FUNCIÓN PRINCIPAL
 # ==========================
 
+MIN_WORDS = 130
+
 def generate(test_id, output_path, api_key, json_only=True, *args, **kwargs):
     """
     Genera el archivo JSON para la Parte 3 de Reading (Word Formation).
@@ -78,13 +92,24 @@ def generate(test_id, output_path, api_key, json_only=True, *args, **kwargs):
     print(f"🏗️ Generando contenido AI para Reading Part 3 (Test {test_id})...")
     
     try:
-        data = get_ai_content(api_key, test_id)
-        
+        max_attempts = 3
+        data = None
+        word_count = 0
+        for attempt in range(1, max_attempts + 1):
+            data = get_ai_content(api_key, test_id)
+            word_count = count_words(data.get("content", {}).get("text", ""))
+            if word_count >= MIN_WORDS:
+                break
+            if attempt < max_attempts:
+                print(f"⚠️ Intento {attempt}: Solo {word_count} palabras (mínimo {MIN_WORDS}). Regenerando...")
+            else:
+                print(f"⚠️ Texto corto tras {max_attempts} intentos ({word_count} palabras). Guardando de todas formas.")
+
         # Guardar el archivo
         with open(json_file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
             
-        print(f"✅ Archivo generado: {json_file.name}")
+        print(f"✅ Archivo generado: {json_file.name} ({word_count} palabras)")
         
     except Exception as e:
         print(f"❌ Error generando Reading 3: {e}")

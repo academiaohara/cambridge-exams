@@ -4,6 +4,18 @@ from pathlib import Path
 from openai import OpenAI
 
 # ==========================
+# UTILIDADES
+# ==========================
+
+def count_words(text):
+    """Cuenta las palabras de un texto ignorando marcadores de examen y separadores de párrafo."""
+    import re
+    clean = re.sub(r'\[/?[\d\w]+\]', ' ', text)
+    clean = re.sub(r'\|\|\(\d+\)\|\|', ' ', clean)   # Elimina ||(41)|| etc.
+    clean = re.sub(r'\|\|', ' ', clean)
+    return len(clean.split())
+
+# ==========================
 # GENERACIÓN DE CONTENIDO (AI)
 # ==========================
 
@@ -26,11 +38,15 @@ def get_ai_content(api_key, test_id):
       "totalQuestions": 6,
       "content": {{
         "articleTitle": "Article headline",
-        "text": "Main article ~600 words with 6 gaps marked [41] [42] [43] [44] [45] [46]. Use || for paragraph breaks.",
+        "text": "Main article body. MANDATORY: exactly 400 words (do NOT count the gap markers). Mark each removed paragraph with ||(41)||, ||(42)||, ||(43)||, ||(44)||, ||(45)||, ||(46)|| at the paragraph boundary. Use || for regular paragraph breaks (not containing a gap). The number inside the marker indicates the gap number. Example structure: 'First paragraph text. ||(41)|| Second paragraph text continues here. ||(42)|| Third paragraph...'",
         "paragraphs": {{
-          "A": "Removed paragraph A ~70 words. Contains [41]linking phrase[/41] or evidence markers.",
-          "B": "...", "C": "...", "D": "...", "E": "...", "F": "...", 
-          "G": "Extra/distractor paragraph ~70 words. Thematically related but incorrect for ALL six gaps."
+          "A": "Removed paragraph A. MANDATORY: approximately 50 words. Contains [41]key linking phrase[/41] that proves it belongs at gap 41.",
+          "B": "Removed paragraph B ~50 words. Contains [42]evidence[/42] or [43]evidence[/43] etc.",
+          "C": "~50 words.",
+          "D": "~50 words.",
+          "E": "~50 words.",
+          "F": "~50 words.",
+          "G": "Extra/distractor paragraph ~50 words. Thematically related but incorrect for ALL six gaps."
         }},
         "questions": [
           {{
@@ -45,13 +61,17 @@ def get_ai_content(api_key, test_id):
     CONTENT RULES:
     1. Topic: history, biography, science, travel, or culture. 
        Avoid: underwater archaeology (used in Test 1).
-    2. Cohesion devices are MANDATORY at each gap: 
+    2. CRITICAL — WORD COUNT: The "text" field (main article body) MUST be exactly 400 words, NOT counting the gap markers like ||(41)||. Count the prose words only. This is NON-NEGOTIABLE.
+    3. Each removed paragraph (A–F) MUST be approximately 50 words. Paragraph G (distractor) also ~50 words.
+    4. Gap format in the main text: ||(41)||, ||(42)||… at the paragraph boundary where the paragraph was removed. Do NOT use [41] or plain (41) alone in the main text.
+    5. Evidence markers in the removed paragraphs (A–G): use properly closed tags [41]key phrase[/41], [42]key phrase[/42]… The opening tag and closing tag MUST both be present.
+    6. Cohesion devices are MANDATORY at each gap: 
        - Pronoun reference (it, they, this, these).
        - Lexical chains (repeating a concept with different words).
        - Discourse markers (However, As a result, In contrast).
-    3. Paragraph G must be a distractor: it must seem to fit the topic but fail the local cohesion check of every gap.
-    4. Explanations must explicitly mention the grammatical or lexical link that justifies the answer.
-    5. Return valid JSON only."""
+    7. Paragraph G must be a distractor: it must seem to fit the topic but fail the local cohesion check of every gap.
+    8. Explanations must explicitly mention the grammatical or lexical link that justifies the answer.
+    9. Return valid JSON only."""
 
     response = client.chat.completions.create(
         model="gpt-4o",
@@ -67,6 +87,8 @@ def get_ai_content(api_key, test_id):
 # FUNCIÓN PRINCIPAL
 # ==========================
 
+MIN_WORDS_MAIN = 350
+
 def generate(test_id, output_path, api_key, json_only=True, *args, **kwargs):
     """
     Genera el archivo JSON para la Parte 7 de Reading (Gapped Text).
@@ -76,13 +98,24 @@ def generate(test_id, output_path, api_key, json_only=True, *args, **kwargs):
     print(f"🧩 Generando contenido AI para Reading Part 7 (Test {test_id})...")
     
     try:
-        data = get_ai_content(api_key, test_id)
-        
+        max_attempts = 3
+        data = None
+        word_count = 0
+        for attempt in range(1, max_attempts + 1):
+            data = get_ai_content(api_key, test_id)
+            word_count = count_words(data.get("content", {}).get("text", ""))
+            if word_count >= MIN_WORDS_MAIN:
+                break
+            if attempt < max_attempts:
+                print(f"⚠️ Intento {attempt}: Solo {word_count} palabras en el texto principal (mínimo {MIN_WORDS_MAIN}). Regenerando...")
+            else:
+                print(f"⚠️ Texto corto tras {max_attempts} intentos ({word_count} palabras). Guardando de todas formas.")
+
         # Guardar el archivo
         with open(json_file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
             
-        print(f"✅ Archivo generado: {json_file.name}")
+        print(f"✅ Archivo generado: {json_file.name} ({word_count} palabras en texto principal)")
         
     except Exception as e:
         print(f"❌ Error generando Reading 7: {e}")

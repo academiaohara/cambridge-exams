@@ -28,6 +28,15 @@ BUNNY_PULL_ZONE = os.getenv("BUNNY_PULL_ZONE", "listeninggenerator")
 NARRATOR_DIR = os.getenv("NARRATOR_DIR", r"C:\Users\34717\Desktop\Examenes página\C1\Narrador")
 
 # ==========================
+# UTILIDADES
+# ==========================
+
+def count_words(text):
+    """Cuenta las palabras de un texto ignorando marcadores de examen."""
+    clean = re.sub(r'\[/?[\d\w]+\]', ' ', text)
+    return len(clean.split())
+
+# ==========================
 # UTILIDADES DE AUDIO
 # ==========================
 
@@ -129,7 +138,7 @@ def get_ai_content(api_key, test_id):
         "context": "An interview with [Guest1 Name] and [Guest2 Name] discussing [topic].",
         "voices": {{"interviewer": "en-GB-RyanNeural", "john": "en-GB-SoniaNeural", "meredith": "en-GB-LibbyNeural"}},
 
-        "audio_script": "FULL TRANSCRIPT REQUIRED: Write the COMPLETE interview (400–500 words) as a continuous script, including EVERYTHING that is said by interviewer and both guests. This must be a clean readable transcript (not bullet points, not summaries). Use paragraph breaks with \\n\\n when a new speaker talks. Insert answer evidence markers exactly like [15]...[/15] through [20]...[/20] around the relevant phrases in the transcript.",
+        "audio_script": "FULL TRANSCRIPT REQUIRED: Write the COMPLETE interview (minimum 500 words, target 500–550) as a continuous script, including EVERYTHING that is said by interviewer and both guests. This must be a clean readable transcript (not bullet points, not summaries). Use paragraph breaks with \\n\\n when a new speaker talks. Insert answer evidence markers exactly like [15]...[/15] through [20]...[/20] around the relevant phrases in the transcript.",
 
         "dialogue": [
             {{"speaker": "interviewer", "text": "Opening question addressing both guests. NO MARKERS HERE."}},
@@ -165,10 +174,10 @@ def get_ai_content(api_key, test_id):
     5. Questions must test inference, attitude, reference, meaning.
     6. Dialogue: 11–13 turns total.
     7. Questions must follow the order of the dialogue.
-    8. CRITICAL: The "audio_script" MUST be the FULL transcript of the interview (400–500 words), NOT a summary.
+    8. CRITICAL — WORD COUNT: The "audio_script" MUST be the FULL transcript of the interview with a minimum of 500 words. NOT a summary. Count carefully before returning. This requirement is NON-NEGOTIABLE.
     9. CRITICAL: The "audio_script" must MATCH the dialogue content (same ideas, just written as a continuous transcript).
     10. CRITICAL: Include ALL answer markers [15]...[/15] to [20]...[/20] in the transcript only (NOT in dialogue).
-    11. Do NOT shorten or simplify the audio_script.
+    11. Do NOT shorten or simplify the audio_script. Write rich, detailed exchanges.
     12. Avoid Test 1 topic (collecting/collections).
     """
 
@@ -187,6 +196,8 @@ def get_ai_content(api_key, test_id):
 # FUNCIÓN PRINCIPAL
 # ==========================
 
+MIN_WORDS = 450
+
 def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     speech_config = get_speech_config()
     json_file = output_path / f"listening3.json"
@@ -194,7 +205,18 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
 
     if not audio_only:
         print(f"🤖 Generando contenido AI para Listening 3 (Entrevista)...")
-        content = get_ai_content(api_key, test_id)
+        max_attempts = 3
+        content = None
+        for attempt in range(1, max_attempts + 1):
+            content = get_ai_content(api_key, test_id)
+            audio_script = content.get("extracts", [{}])[0].get("audio_script", "")
+            word_count = count_words(audio_script)
+            if word_count >= MIN_WORDS:
+                break
+            if attempt < max_attempts:
+                print(f"⚠️ Intento {attempt}: Solo {word_count} palabras en el audio_script (mínimo {MIN_WORDS}). Regenerando...")
+            else:
+                print(f"⚠️ Texto corto tras {max_attempts} intentos ({word_count} palabras). Guardando de todas formas.")
         
         # Verificación y limpieza adicional de marcadores en el diálogo
         for extract in content["extracts"]:

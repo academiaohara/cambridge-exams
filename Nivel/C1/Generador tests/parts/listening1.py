@@ -29,6 +29,15 @@ BUNNY_PULL_ZONE = os.getenv("BUNNY_PULL_ZONE", "listeninggenerator")
 NARRATOR_DIR = os.getenv("NARRATOR_DIR", r"C:\Users\34717\Desktop\Examenes página\C1\Narrador")
 
 # ==========================
+# UTILIDADES
+# ==========================
+
+def count_words(text):
+    """Cuenta las palabras de un texto ignorando marcadores de examen."""
+    clean = re.sub(r'\[/?[\d\w]+\]', ' ', text)
+    return len(clean.split())
+
+# ==========================
 # UTILIDADES DE AUDIO
 # ==========================
 
@@ -107,7 +116,7 @@ SCHEMA (return exactly this structure, fully populated):
       "id": 1,
       "context": "Setting description read aloud, e.g. 'You hear two colleagues discussing a project deadline.'",
       "voices": {json.dumps(vp[0])},
-      "audio_script": "Full dialogue text. Wrap the key phrase that proves Q1 in [1]...[/1] and Q2 in [2]...[/2]. Use || for paragraph breaks within a turn.",
+      "audio_script": "Full dialogue text. MANDATORY: between 100 and 150 words. Wrap the key phrase that proves Q1 in [1]...[/1] and Q2 in [2]...[/2]. Use || for paragraph breaks within a turn.",
       "dialogue": [
         {{"speaker": "man",   "text": "First speaker turn (no markers)."}},
         {{"speaker": "woman", "text": "Second speaker turn."}},
@@ -135,7 +144,7 @@ SCHEMA (return exactly this structure, fully populated):
       "id": 2,
       "context": "...",
       "voices": {json.dumps(vp[1])},
-      "audio_script": "...[3]...[/3]...[4]...[/4]...",
+      "audio_script": "Full dialogue. MANDATORY: between 100 and 150 words. ...[3]...[/3]...[4]...[/4]...",
       "dialogue": [],
       "questions": [
         {{"number": 3, "question": "...", "options": {{"A": "...", "B": "...", "C": "..."}}, "answer": "C", "explanation": "..."}},
@@ -146,7 +155,7 @@ SCHEMA (return exactly this structure, fully populated):
       "id": 3,
       "context": "...",
       "voices": {json.dumps(vp[2])},
-      "audio_script": "...[5]...[/5]...[6]...[/6]...",
+      "audio_script": "Full dialogue. MANDATORY: between 100 and 150 words. ...[5]...[/5]...[6]...[/6]...",
       "dialogue": [],
       "questions": [
         {{"number": 5, "question": "...", "options": {{"A": "...", "B": "...", "C": "..."}}, "answer": "B", "explanation": "..."}},
@@ -158,7 +167,7 @@ SCHEMA (return exactly this structure, fully populated):
 
 STRICT RULES:
 1. Three DIFFERENT settings – vary: workplace, leisure, academic, domestic, social, professional.
-2. Each dialogue: 120–170 words, minimum 5 turns, natural register (contractions, hedging, fillers).
+2. CRITICAL — WORD COUNT: Each extract's "audio_script" MUST be between 100 and 150 words. Count carefully. Do NOT submit fewer than 100 words per extract. This requirement is NON-NEGOTIABLE. Each dialogue must have minimum 5 turns with natural register (contractions, hedging, fillers).
 3. Questions test INFERENCE or ATTITUDE, not literal recall.
 4. All three options must be plausible; only one is unambiguously correct.
 5. The dialogue array must perfectly match audio_script (one entry per turn, speaker = "man" or "woman").
@@ -178,6 +187,8 @@ STRICT RULES:
 # FUNCIÓN PRINCIPAL
 # ==========================
 
+MIN_WORDS_PER_EXTRACT = 90
+
 def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     speech_config = get_speech_config()
     json_file = output_path / f"listening1.json"
@@ -186,7 +197,19 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     # 1. Crear JSON
     if not audio_only:
         print(f"🤖 Generando contenido AI para Listening 1...")
-        content = get_ai_content(api_key, test_id)
+        max_attempts = 3
+        content = None
+        for attempt in range(1, max_attempts + 1):
+            content = get_ai_content(api_key, test_id)
+            extracts = content.get("extracts", [])
+            counts = [count_words(e.get("audio_script", "")) for e in extracts]
+            if all(c >= MIN_WORDS_PER_EXTRACT for c in counts):
+                break
+            short = [i + 1 for i, c in enumerate(counts) if c < MIN_WORDS_PER_EXTRACT]
+            if attempt < max_attempts:
+                print(f"⚠️ Intento {attempt}: Extracto(s) {short} con pocas palabras (mínimo {MIN_WORDS_PER_EXTRACT} c/u). Regenerando...")
+            else:
+                print(f"⚠️ Texto corto tras {max_attempts} intentos. Guardando de todas formas.")
         data = {
             "title": f"Listening Part 1",
             "time": 15,
