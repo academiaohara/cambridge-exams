@@ -4,6 +4,9 @@
 (function() {
   window.ReadingType4 = {
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
+      if (qNum === 0) {
+        return this._renderExample(question);
+      }
       const beforeGap = question.beforeGap || '';
       const afterGap = question.afterGap || '';
       
@@ -37,6 +40,28 @@
             ${beforeGap} ${gapHTML} ${afterGap}
           </div>
           ${answersPanel}
+        </div>
+      `;
+    },
+
+    _renderExample: function(question) {
+      const beforeGap = question.beforeGap || '';
+      const afterGap = question.afterGap || '';
+      const routes = question.routes || [];
+      const answer = routes[0] ? (((routes[0].p1 || '') + ' ' + (routes[0].p2 || '')).trim()) : '';
+      const exampleLabel = window.I18n ? I18n.t('example') : 'Example';
+      return `
+        <div class="reading-type4-question reading-type4-example">
+          <div class="reading-type4-example-label">${exampleLabel} (0)</div>
+          <div class="reading-type4-original">
+            <span class="reading-type4-number">0.</span> ${question.firstSentence}
+          </div>
+          <div class="reading-type4-keyword-line">
+            <span class="reading-type4-keyword">${question.keyWord}</span>
+          </div>
+          <div class="reading-type4-second">
+            ${beforeGap} <span class="reading-type4-inline-wrap reading-type4-correct"><input type="text" class="reading-type4-inline-input reading-type4-correct" value="${answer}" disabled></span> ${afterGap}
+          </div>
         </div>
       `;
     },
