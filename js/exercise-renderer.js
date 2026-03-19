@@ -535,7 +535,7 @@
       var processScript = function(script) {
         var escaped = escapeHtml(script);
         var withMarkers = self.processEvidenceMarkers(escaped);
-        return withMarkers.replace(/\n/g, '<br>');
+        return withMarkers.replace(/(\|\||\n)/g, '<br>');
       };
 
       if (exercise.content.extracts && exercise.content.extracts.length > 0) {

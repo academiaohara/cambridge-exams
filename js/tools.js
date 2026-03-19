@@ -626,7 +626,7 @@
         html += '<span class="transcript-extract-number">' + _escapeHtml(extract.id) + '</span>';
         html += '<span>' + _escapeHtml(extract.context) + '</span>';
         html += '</div>';
-        html += '<div class="transcript-text">' + _escapeHtml(extract.audio_script).replace(/\n/g, '<br>') + '</div>';
+        html += '<div class="transcript-text">' + _escapeHtml(extract.audio_script).replace(/(\|\||\n)/g, '<br>') + '</div>';
         html += '</div>';
       });
       
