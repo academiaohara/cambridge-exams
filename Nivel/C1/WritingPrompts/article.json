@@ -1,0 +1,38 @@
+{
+  "type": "article",
+  "title": "Article (C1 Cambridge)",
+  "description": "Evalúa y mejora un Article asegurando estilo atractivo, tono adecuado al lector y buena organización.",
+  "prompt": "Actúa como un editor profesional. Revisa este Article asegurándote de que tenga un título atractivo, un tono adecuado (semi-formal o informal según el contexto) y que enganche al lector. Mejora la introducción para captar atención y revisa que haya variedad de vocabulario y recursos retóricos (preguntas, ejemplos, opiniones). Texto: [PEGA TU TEXTO]",
+  "criteria": [
+    {
+      "name": "Content",
+      "description": "El artículo responde completamente a la tarea con ideas relevantes e interesantes."
+    },
+    {
+      "name": "Communicative Achievement",
+      "description": "El tono es adecuado para el público objetivo (revista, blog, etc.) y mantiene al lector interesado."
+    },
+    {
+      "name": "Organisation",
+      "description": "El texto tiene un título atractivo, una introducción clara, párrafos bien estructurados y una conclusión eficaz."
+    },
+    {
+      "name": "Language",
+      "description": "Uso de lenguaje variado, expresiones idiomáticas y recursos retóricos para atraer al lector."
+    }
+  ],
+  "tips": [
+    "Incluye un título llamativo",
+    "Empieza con una pregunta, anécdota o dato sorprendente",
+    "Usa un tono cercano y directo (puedes usar 'you')",
+    "Varía el vocabulario y evita repeticiones",
+    "Termina con una idea final interesante o reflexión"
+  ],
+  "wordLimit": "220-260 words",
+  "structure": {
+    "title": "Debe ser atractivo y relacionado con el tema.",
+    "introduction": "Engancha al lector y presenta el tema.",
+    "main_body": "Desarrolla ideas principales con ejemplos y opiniones.",
+    "conclusion": "Cierra el artículo con una reflexión o pregunta final."
+  }
+}
