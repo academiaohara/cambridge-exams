@@ -74,9 +74,11 @@ def upload_to_bunny(file_path):
 # GENERACIÓN DE CONTENIDO (AI)
 # ==========================
 
-def get_ai_content(api_key):
+def get_ai_content(api_key, test_id):
     client = OpenAI(api_key=api_key)
-    prompt = f"""Generate listening2.json for Cambridge CAE Test {test_num}.
+    audio_url = ""
+    voice = "en-GB-SoniaNeural"
+    prompt = f"""Generate listening2.json for Cambridge CAE Test {test_id}.
 
 SCHEMA:
 {{
@@ -140,10 +142,9 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     # 1. Crear JSON
     if not audio_only:
         print(f"🤖 Generando contenido AI para Listening 2...")
-        content = get_ai_content(api_key)
+        content = get_ai_content(api_key, test_id)
         data = {
             "title": "Listening Part 2",
-            "type": "sentence-completion",
             "time": 15,
             "totalQuestions": 8,
             "description": "You will hear a talk about... For questions 7 – 14, complete the sentences with a word or short phrase.",

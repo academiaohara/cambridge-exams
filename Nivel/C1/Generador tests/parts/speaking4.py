@@ -5,7 +5,7 @@ from openai import OpenAI
 
 def get_ai_content(api_key, test_id):
     client = OpenAI(api_key=api_key)
-    prompt = f"""Generate speaking4.json for Cambridge CAE Test {test_num}.
+    prompt = f"""Generate speaking4.json for Cambridge CAE Test {test_id}.
 
 SCHEMA:
 {{
