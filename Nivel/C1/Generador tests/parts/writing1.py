@@ -11,12 +11,12 @@ def get_ai_content(api_key, test_id):
     client = OpenAI(api_key=api_key)
     
     # Aplicando tus CONTENT RULES y SCHEMA para Writing Part 1
-    prompt = f"""Generate writing1.json for Cambridge CAE Test {test_num}.
+    prompt = f"""Generate writing1.json for Cambridge CAE Test {test_id}.
 
 SCHEMA:
 {{
-  "id": "Test{test_num}-writing-1",
-  "examId": "Test{test_num}",
+  "id": "Test{test_id}-writing-1",
+  "examId": "Test{test_id}",
   "section": "writing",
   "part": 1,
   "type": "essay",

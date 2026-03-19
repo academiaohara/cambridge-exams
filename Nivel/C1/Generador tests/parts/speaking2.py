@@ -8,7 +8,7 @@ def get_ai_content(api_key, test_id, bunny_url):
     # Helper para las URLs de imágenes según tu estructura
     def img_url(label): return f"{bunny_url}/test{test_id}_{label}.jpg"
 
-    prompt = f"""Generate speaking2.json for Cambridge CAE Test {test_num}.
+    prompt = f"""Generate speaking2.json for Cambridge CAE Test {test_id}.
 
 SCHEMA:
 {{
@@ -70,7 +70,10 @@ CONTENT RULES:
     )
     return json.loads(response.choices[0].message.content)
 
-def generate(test_id, output_path, api_key, bunny_url, *args, **kwargs):
+def generate(test_id, output_path, api_key, bunny_url=None, *args, **kwargs):
+    if bunny_url is None:
+        bunny_pull_zone = os.getenv("BUNNY_PULL_ZONE", "listeninggenerator")
+        bunny_url = f"https://{bunny_pull_zone}.b-cdn.net"
     json_file = output_path / f"test_{test_id}_speaking2.json"
     try:
         data = get_ai_content(api_key, test_id, bunny_url)
