@@ -80,6 +80,9 @@ def get_ai_content(api_key, test_id):
     voice = "en-GB-SoniaNeural"
     prompt = f"""Generate listening2.json for Cambridge CAE Test {test_id}.
 
+The speaker must be a named individual with a first name (e.g. "Emma", "Thomas", "Rachel").
+Use that first name (lowercase) as the key in "voices" and as the "speaker" value in the dialogue array.
+
 SCHEMA:
 {{
   "exam_part": 2,
@@ -87,40 +90,42 @@ SCHEMA:
   "type": "sentence-completion",
   "time": 15,
   "totalQuestions": 8,
-  "description": "You will hear [speaker description, e.g. 'a marine biologist giving a talk about deep-sea exploration']. Complete the sentences 7–14.",
-  "instructions": "For questions 7–14, complete the sentences with a word or short phrase.",
+  "description": "You will hear [full description, e.g. 'a student called Emma Clarke talking about her experience working on a conservation project']. For questions 7 – 14, complete the sentences with a word or short phrase.",
+  "instructions": "You will hear [same description as above]. For questions 7 – 14, complete the sentences with a word or short phrase.",
   "duration_minutes": 10,
   "audio_source": "{audio_url}",
   "extracts": [
     {{
       "id": 1,
-      "context": "Brief spoken context statement e.g. 'You will hear a marine biologist…'",
-      "voices": {{"speaker": "{voice}"}},
-      "audio_script": "Full monologue 320–380 words. Mark each answer in situ: [7]answer1[/7], [8]answer2[/8]… through [14]answer8[/14]. The answer must be a short phrase (1–4 words) that fits naturally into the gap sentence.",
+      "context": "Brief spoken context statement, e.g. 'Emma Clarke talks about her experience working on a conservation project.'",
+      "voices": {{"emma": "{voice}"}},
+      "audio_script": "Full monologue 350–450 words. Mark each answer in situ: [7]answer1[/7], [8]answer2[/8]… through [14]answer8[/14]. The answer must be a short phrase (1–4 words) that fits naturally into the gap sentence.",
       "dialogue": [
-        {{"speaker": "speaker", "text": "Full monologue text with no markers – clean TTS input."}}
+        {{"speaker": "emma", "text": "Full monologue text with no markers – clean TTS input."}}
       ],
       "questions": [
-        {{"number": 7,  "sentence": "The speaker first became interested in [topic] when she was [7]___[/7].", "answer": "phrase that fits the gap", "explanation": "The answer is evidenced by [7]…[/7] in the script."}},
-        {{"number": 8,  "sentence": "...", "answer": "...", "explanation": "..."}},
-        {{"number": 9,  "sentence": "...", "answer": "...", "explanation": "..."}},
-        {{"number": 10, "sentence": "...", "answer": "...", "explanation": "..."}},
-        {{"number": 11, "sentence": "...", "answer": "...", "explanation": "..."}},
-        {{"number": 12, "sentence": "...", "answer": "...", "explanation": "..."}},
-        {{"number": 13, "sentence": "...", "answer": "...", "explanation": "..."}},
-        {{"number": 14, "sentence": "...", "answer": "...", "explanation": "..."}}
+        {{"number": 7,  "question": "Emma first became interested in [topic] when she was [7]___[/7].", "answer": "phrase that fits the gap", "explanation": "The answer is evidenced by [7]…[/7] in the script."}},
+        {{"number": 8,  "question": "...", "answer": "...", "explanation": "..."}},
+        {{"number": 9,  "question": "...", "answer": "...", "explanation": "..."}},
+        {{"number": 10, "question": "...", "answer": "...", "explanation": "..."}},
+        {{"number": 11, "question": "...", "answer": "...", "explanation": "..."}},
+        {{"number": 12, "question": "...", "answer": "...", "explanation": "..."}},
+        {{"number": 13, "question": "...", "answer": "...", "explanation": "..."}},
+        {{"number": 14, "question": "...", "answer": "...", "explanation": "..."}}
       ]
     }}
   ]
 }}
 
 STRICT RULES:
-1. Monologue topic: an expert speaking about their profession or area of research.
+1. Monologue topic: a named individual speaking about a personal experience or area of expertise.
    Forbidden topics: digital detox, productivity apps, climate activism (overused in previous tests).
-2. Gap answers must be factual short phrases – NOT full sentences.
-3. Each gap sentence must make grammatical sense on its own when the answer is inserted.
-4. Answers appear in the audio in QUESTION ORDER (7 → 14).
-5. Voice: {voice}.
+2. The "voices" key and the "speaker" value in "dialogue" must both be the speaker's first name in lowercase (e.g. "emma", "thomas"). Do NOT use "speaker" as the key.
+3. Gap answers must be factual short phrases – NOT full sentences.
+4. Questions use the "question" field (the sentence with the gap), NOT "sentence".
+5. Each gap sentence must make grammatical sense on its own when the answer is inserted.
+6. Answers appear in the audio in QUESTION ORDER (7 → 14).
+7. Voice: {voice}.
 """
     
     response = client.chat.completions.create(
