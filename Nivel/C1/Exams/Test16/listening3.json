@@ -1,143 +1,147 @@
 {
-    "title": "Listening - Part 3",
-    "time": 15,
-    "totalQuestions": 6,
-    "description": "You will hear an interview with John and Meredith about sustainable urban development. For questions 15–20, choose the answer (A, B, C or D) which fits best.",
-    "exam_part": 3,
-    "type": "multiple-choice-text",
-    "instructions": "For questions 15–20, choose the answer (A, B, C or D) which fits best.",
-    "duration_minutes": 12,
-    "audio_source": "https://listeninggenerator.b-cdn.net/test_16_listening3.mp3",
-    "extracts": [
+  "exam_part": 3,
+  "title": "Listening - Part 3: Journalism and AI",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear an interview with two journalists, Alistair and Fiona, discussing the impact of artificial intelligence on their profession. For questions 15–20, choose the answer (A, B, C or D) which fits best.",
+  "duration_minutes": 12,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening3_test16.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "An interview with Alistair and Fiona regarding the ethical and professional challenges of AI in the newsroom.",
+      "voices": {
+        "interviewer": "en-GB-LibbyNeural",
+        "alistair": "en-GB-RyanNeural",
+        "fiona": "en-IE-EmilyNeural"
+      },
+      "audio_script": "Interviewer: Welcome. Today we’re discussing the seismic shifts in the media landscape. Joining me are Alistair, a veteran foreign correspondent, and Fiona, a digital editor for a national daily. Alistair, many are calling AI the 'death knell' of investigative reporting. Do you share that grim outlook?\n\nAlistair: It’s easy to get swept up in the doomsday rhetoric. However, if we look back at the arrival of the internet, we heard the same prophecies of doom. [15]What I find frustrating is the assumption that a machine can replicate the sheer doggedness required for an investigation. An algorithm can process a leak of a million documents in seconds, which is undeniably useful, but it cannot sit in a dimly lit café and build trust with a whistleblower. It lacks the intuition to know when a source is holding back out of fear rather than deceit. [/15] So, while it’s a powerful tool for data crunching, the 'human' element of sniffing out a story remains, in my view, entirely safe from automation.\n\nInterviewer: Fiona, as someone managing a digital newsroom, surely you see the efficiency gains as a positive?\n\nFiona: Efficiency is a double-edged sword. Yes, we use automated systems for routine financial reports or sports scores, which frees up my staff for more complex features. [16]But there’s a subtle, more insidious danger in the way AI prioritizes engagement. We’re seeing a trend where 'news' is being shaped by what the algorithm predicts will go viral. This creates a feedback loop where nuance is sacrificed for outrage, because that’s what the machine has learned generates clicks. [/16] My concern isn't that robots will write the news, but that they will dictate what qualifies as news in the first place, leading to a narrower, more polarized public discourse.\n\nInterviewer: Alistair, you’ve recently written about the 'dilution' of the profession. Is that a result of these new tools?\n\nAlistair: Partly. [17]What worries me is the blurring of the line between a curated piece of journalism and a generative summary. When readers can't distinguish between an article that took three months of boots-on-the-ground research and a two-second AI compilation of existing web content, the value of the 'brand' of journalism starts to evaporate. [/17] We are moving toward a world where 'information' is free and abundant, but 'truth' is becoming increasingly expensive and rare. If we don't find a way to verify and label human-generated content, we risk a total collapse of public trust.\n\nInterviewer: Fiona, Alistair mentioned trust. How does a digital-first paper maintain that when deepfakes and AI-generated misinformation are everywhere?\n\nFiona: It’s an arms race, frankly. [18]We’ve had to invest heavily in verification tech, but more importantly, we’ve doubled down on transparency. We now provide 'provenance' links for our major scoops—showing the raw footage, the interview transcripts, and the data sets. It’s no longer enough to say 'trust us because we’re a famous newspaper.' We have to show our homework. [/18] Paradoxically, AI might actually force us to become better, more transparent journalists because the stakes for being wrong have never been higher.\n\nInterviewer: Alistair, what about the younger generation entering the field? Should they be worried?\n\nAlistair: [19]They should be adaptable. The era of the specialist who only writes about one niche is probably over. The next generation needs to be 'AI-literate'—not necessarily coders, but they must understand the biases of the tools they use. My fear is for the entry-level roles. Those junior reporting jobs where you’d learn the ropes by covering local council meetings are being automated. [/19] We’re losing the 'training ground' for future greats, and that’s a structural problem for the industry that I don't think we've solved yet.\n\nInterviewer: Fiona, final thoughts on the future of the newsroom?\n\nFiona: [20]I believe we will see a return to 'slow journalism.' Just as the rise of fast food led to a movement for artisanal, slow-cooked meals, the deluge of AI-generated content will create a premium market for deep, slow, human-centric storytelling. [/20] People will eventually crave the perspective of someone who has actually 'been there,' and they will be willing to pay for that authenticity.\n\nInterviewer: Alistair, Fiona, a fascinating discussion. Thank you.",
+      "dialogue": [
         {
-            "id": 1,
-            "context": "An interview with John and Meredith discussing sustainable urban development.",
-            "voices": {
-                "interviewer": "en-GB-RyanNeural",
-                "john": "en-GB-SoniaNeural",
-                "meredith": "en-GB-LibbyNeural"
-            },
-            "audio_script": "Interviewer: Welcome to today's programme where we delve into the fascinating topic of sustainable urban development. I'm joined by two experts in the field: John, an urban planner, and Meredith, an environmental economist. Thank you both for being here. [15]So, to start us off, John, could you tell us why you believe sustainable urban development is critical in today's world?[/15]\n\nJohn: Thank you for having us. The modern world is rapidly urbanizing, and by 2050, it's estimated that two-thirds of the global population will live in cities. This increases the pressure on resources and infrastructure quite significantly. Sustainable urban development is vital because it ensures that as we expand our urban environments, we don't compromise the ability of future generations to meet their needs. Cities are huge contributors to greenhouse gas emissions, and thus, rethinking how they are developed can make a substantial impact on global environmental health.\n\nMeredith: Absolutely, John. Another crucial aspect is the social dimension. Sustainable urban development isn't just about the environment. It's also about making cities inclusive and equitable for all. Many cities grapple with challenges such as inadequate housing, congestion, and pollution. By planning sustainably, we aim to create urban spaces where everyone has access to resources and opportunities, irrespective of their socio-economic status.\n\nInterviewer: Meredith, building on what you've just mentioned, could you elaborate on the economic benefits of pursuing sustainable urban practices?\n\nMeredith: Sure. Economically, sustainable urban development can lead to significant gains. Investment in energy-efficient infrastructure, for example, usually results in fewer costs over time due to reduced energy consumption. [16]Moreover, creating green spaces and pedestrian-friendly areas can boost local economies by attracting tourism and encouraging local businesses.[/16] It’s about creating a virtuous cycle where improving the quality of urban life drives economic growth.\n\nInterviewer: Very interesting points. Now, John, how do you address the concerns of those who argue that sustainable development is too expensive or unrealistic for rapidly growing cities?\n\nJohn: That's a common misconception. While upfront costs can be high, the long-term savings and benefits often outweigh those initial expenses. Sustainable practices can be implemented incrementally, starting with the most critical areas. [17]Plus, many international organisations and governments now offer financial incentives and grants to support such initiatives.[/17] The real challenge is changing the mindset and policies that prioritize short-term gains over long-term sustainability.\n\nInterviewer: Meredith, could you share an example of a city that has successfully implemented sustainable urban practices?\n\nMeredith: Certainly, one exemplary city is Copenhagen. They've managed to integrate extensive cycling routes which significantly reduce vehicle reliance. They’ve also invested heavily in renewable energy sources. [18]Their approach has not only improved air quality but also enhanced public health and reduced congestion.[/18] Other cities are now looking to Copenhagen as a model for sustainable urban living.\n\nInterviewer: John, what role do you think technological innovations play in helping cities become more sustainable?\n\nJohn: Technology is a game-changer in urban development. Smart city technologies, like sensors for waste management and traffic control, can drastically improve efficiency in city operations. [19]Furthermore, digital tools enable better planning and management, ensuring resources are used effectively.[/19] However, it's crucial that technology is integrated thoughtfully, without sidelining human-centric considerations.\n\nInterviewer: Meredith, any final thoughts on the importance of community involvement in sustainable urban planning?\n\nMeredith: Community involvement is paramount. Residents should be seen not just as beneficiaries, but active participants in the planning process. When people feel a sense of ownership over their environment, they're more likely to engage in and support sustainable practices. [20]It's a collaborative effort, and cities must foster open dialogues with their citizens to address local challenges efficiently.[/20] Collaboration enhances the resilience and adaptability of urban spaces.\n\nJohn: Agreed. Sustainable development is a shared responsibility, and each city will have its unique path based on its cultural and social context.",
-            "dialogue": [
-                {
-                    "speaker": "interviewer",
-                    "text": "Opening question addressing both guests. NO MARKERS HERE."
-                },
-                {
-                    "speaker": "john",
-                    "text": "Answer (60–80 words). NO MARKERS HERE."
-                },
-                {
-                    "speaker": "meredith",
-                    "text": "Adding their perspective. NO MARKERS HERE."
-                },
-                {
-                    "speaker": "interviewer",
-                    "text": "Follow-up question to one guest. NO MARKERS HERE."
-                },
-                {
-                    "speaker": "meredith",
-                    "text": "Detailed answer. NO MARKERS HERE."
-                },
-                {
-                    "speaker": "interviewer",
-                    "text": "Question to the other guest. NO MARKERS HERE."
-                },
-                {
-                    "speaker": "john",
-                    "text": "Answer. NO MARKERS HERE."
-                },
-                {
-                    "speaker": "interviewer",
-                    "text": "Question. NO MARKERS HERE."
-                },
-                {
-                    "speaker": "meredith",
-                    "text": "Answer. NO MARKERS HERE."
-                },
-                {
-                    "speaker": "interviewer",
-                    "text": "Question. NO MARKERS HERE."
-                },
-                {
-                    "speaker": "john",
-                    "text": "Closing answer. NO MARKERS HERE."
-                }
-            ],
-            "questions": [
-                {
-                    "number": 15,
-                    "question": "Why does John believe sustainable urban development is crucial?",
-                    "options": [
-                        "A) It reduces the global population",
-                        "B) It helps future generations meet their needs",
-                        "C) It reduces urban population",
-                        "D) It solely focuses on environmental health"
-                    ],
-                    "correct": "B",
-                    "explanation": "John emphasizes the importance of not compromising the needs of future generations."
-                },
-                {
-                    "number": 16,
-                    "question": "What economic benefit does Meredith mention?",
-                    "options": [
-                        "A) Increased costs over time",
-                        "B) Decrease in local economic activity",
-                        "C) Boost to local economies through green spaces",
-                        "D) Reduction in tourism"
-                    ],
-                    "correct": "C",
-                    "explanation": "Meredith talks about economic gains from investments in green spaces and local business boosts."
-                },
-                {
-                    "number": 17,
-                    "question": "What does John say is a challenge in implementing sustainable practices?",
-                    "options": [
-                        "A) Lack of ideas",
-                        "B) Insufficient international support",
-                        "C) High initial costs",
-                        "D) Short-term focus in policies"
-                    ],
-                    "correct": "D",
-                    "explanation": "John highlights the challenge of policies focused on short-term rather than long-term sustainability."
-                },
-                {
-                    "number": 18,
-                    "question": "How has Copenhagen successfully implemented sustainable practices according to Meredith?",
-                    "options": [
-                        "A) By removing cycling routes",
-                        "B) By integrating cycling routes",
-                        "C) By increasing vehicle reliance",
-                        "D) By buying more vehicles"
-                    ],
-                    "correct": "B",
-                    "explanation": "Meredith mentions Copenhagen's extensive cycling routes and renewable energy investments."
-                },
-                {
-                    "number": 19,
-                    "question": "What is a role of technological innovations mentioned by John?",
-                    "options": [
-                        "A) They replace human interaction",
-                        "B) They complicate city operations",
-                        "C) They are unnecessary",
-                        "D) They improve efficiency in city operations"
-                    ],
-                    "correct": "D",
-                    "explanation": "John discusses how technology, like smart city innovations, can improve city efficiency."
-                },
-                {
-                    "number": 20,
-                    "question": "According to Meredith, what is important about community involvement?",
-                    "options": [
-                        "A) Community members should be passive",
-                        "B) Residents shouldn’t participate in planning",
-                        "C) Fostering open dialogues with citizens",
-                        "D) Ignoring cultural contexts"
-                    ],
-                    "correct": "C",
-                    "explanation": "Meredith stresses the importance of engaging residents as active participants in planning."
-                }
-            ]
+          "speaker": "interviewer",
+          "text": "Welcome. Today we’re discussing the seismic shifts in the media landscape. Joining me are Alistair, a veteran foreign correspondent, and Fiona, a digital editor for a national daily. Alistair, many are calling AI the 'death knell' of investigative reporting. Do you share that grim outlook?"
+        },
+        {
+          "speaker": "alistair",
+          "text": "It’s easy to get swept up in the doomsday rhetoric. However, if we look back at the arrival of the internet, we heard the same prophecies of doom. What I find frustrating is the assumption that a machine can replicate the sheer doggedness required for an investigation. An algorithm can process a leak of a million documents in seconds, which is undeniably useful, but it cannot sit in a dimly lit café and build trust with a whistleblower. It lacks the intuition to know when a source is holding back out of fear rather than deceit. So, while it’s a powerful tool for data crunching, the 'human' element of sniffing out a story remains, in my view, entirely safe from automation."
+        },
+        {
+          "speaker": "fiona",
+          "text": "Efficiency is a double-edged sword. Yes, we use automated systems for routine financial reports or sports scores, which frees up my staff for more complex features. But there’s a subtle, more insidious danger in the way AI prioritizes engagement. We’re seeing a trend where 'news' is being shaped by what the algorithm predicts will go viral. This creates a feedback loop where nuance is sacrificed for outrage, because that’s what the machine has learned generates clicks. My concern isn't that robots will write the news, but that they will dictate what qualifies as news in the first place, leading to a narrower, more polarized public discourse."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Alistair, you’ve recently written about the 'dilution' of the profession. Is that a result of these new tools?"
+        },
+        {
+          "speaker": "alistair",
+          "text": "Partly. What worries me is the blurring of the line between a curated piece of journalism and a generative summary. When readers can't distinguish between an article that took three months of boots-on-the-ground research and a two-second AI compilation of existing web content, the value of the 'brand' of journalism starts to evaporate. We are moving toward a world where 'information' is free and abundant, but 'truth' is becoming increasingly expensive and rare. If we don't find a way to verify and label human-generated content, we risk a total collapse of public trust."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Fiona, Alistair mentioned trust. How does a digital-first paper maintain that when deepfakes and AI-generated misinformation are everywhere?"
+        },
+        {
+          "speaker": "fiona",
+          "text": "It’s an arms race, frankly. We’ve had to invest heavily in verification tech, but more importantly, we’ve doubled down on transparency. We now provide 'provenance' links for our major scoops—showing the raw footage, the interview transcripts, and the data sets. It’s no longer enough to say 'trust us because we’re a famous newspaper.' We have to show our homework. Paradoxically, AI might actually force us to become better, more transparent journalists because the stakes for being wrong have never been higher."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Alistair, what about the younger generation entering the field? Should they be worried?"
+        },
+        {
+          "speaker": "alistair",
+          "text": "They should be adaptable. The era of the specialist who only writes about one niche is probably over. The next generation needs to be 'AI-literate'—not necessarily coders, but they must understand the biases of the tools they use. My fear is for the entry-level roles. Those junior reporting jobs where you’d learn the ropes by covering local council meetings are being automated. We’re losing the 'training ground' for future greats, and that’s a structural problem for the industry that I don't think we've solved yet."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Fiona, final thoughts on the future of the newsroom?"
+        },
+        {
+          "speaker": "fiona",
+          "text": "I believe we will see a return to 'slow journalism.' Just as the rise of fast food led to a movement for artisanal, slow-cooked meals, the deluge of AI-generated content will create a premium market for deep, slow, human-centric storytelling. People will eventually crave the perspective of someone who has actually 'been there,' and they will be willing to pay for that authenticity."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Alistair, Fiona, a fascinating discussion. Thank you."
         }
-    ]
+      ],
+      "questions": [
+        {
+          "number": 15,
+          "question": "Alistair believes that investigative journalism is secure because AI",
+          "options": [
+            "A) cannot analyze large data leaks effectively.",
+            "B) lacks the personal intuition needed to handle sources.",
+            "C) is too expensive for most newsrooms to implement.",
+            "D) tends to produce inaccurate financial reports."
+          ],
+          "correct": "B",
+          "explanation": "Alistair argues that AI cannot build trust with whistleblowers or sense when a source is fearful, which are essential 'human' elements."
+        },
+        {
+          "number": 16,
+          "question": "What is Fiona’s main concern regarding AI and news engagement?",
+          "options": [
+            "A) It will make digital editors redundant.",
+            "B) It encourages a focus on sensationalism over complexity.",
+            "C) It is unable to predict which stories will become popular.",
+            "D) It primarily promotes local stories over international news."
+          ],
+          "correct": "B",
+          "explanation": "Fiona notes that algorithms prioritize 'outrage' and 'clicks' over nuance, shaping the news based on viral potential."
+        },
+        {
+          "number": 17,
+          "question": "When discussing the 'dilution' of journalism, Alistair points out that",
+          "options": [
+            "A) information is becoming too difficult for the public to access.",
+            "B) readers prefer AI summaries to long-form articles.",
+            "C) the distinction between research and compilation is disappearing.",
+            "D) big brands are no longer interested in investigative work."
+          ],
+          "correct": "C",
+          "explanation": "He worries that readers can't distinguish between 'boots-on-the-ground' research and AI compilations, devaluing the journalistic brand."
+        },
+        {
+          "number": 18,
+          "question": "Fiona suggests that the rise of deepfakes has led her newspaper to",
+          "options": [
+            "A) stop publishing controversial scoops.",
+            "B) rely solely on historical data for their reporting.",
+            "C) use AI to generate their own verification software.",
+            "D) provide evidence of their reporting process to the public."
+          ],
+          "correct": "D",
+          "explanation": "She mentions providing 'provenance' links and 'showing their homework' to maintain trust through transparency."
+        },
+        {
+          "number": 19,
+          "question": "What is Alistair's fear for the future generation of journalists?",
+          "options": [
+            "A) They will need to spend years learning how to code.",
+            "B) There are fewer opportunities to learn basic skills on the job.",
+            "C) They are becoming too specialized in narrow niches.",
+            "D) They are overly skeptical of helpful new technologies."
+          ],
+          "correct": "B",
+          "explanation": "Alistair laments the automation of 'junior reporting jobs' which served as the essential 'training ground' for the profession."
+        },
+        {
+          "number": 20,
+          "question": "Fiona compares the future of journalism to the 'slow food' movement to imply that",
+          "options": [
+            "A) quality reporting will become a luxury product.",
+            "B) journalism will eventually become a non-profit industry.",
+            "C) the public will lose interest in international affairs.",
+            "D) fast-paced digital news will eventually disappear."
+          ],
+          "correct": "A",
+          "explanation": "She suggests that there will be a 'premium market' for authentic, human-centric storytelling as a reaction to AI-generated content."
+        }
+      ]
+    }
+  ]
 }
