@@ -88,70 +88,67 @@ def upload_to_bunny(file_path):
 
 def get_ai_content(api_key, test_id):
     client = OpenAI(api_key=api_key)
-    audio_url = ""
     voices = {
         "Speaker 1": "en-GB-RyanNeural",
-        "Speaker 2": "en-GB-SoniaNeural",
+        "Speaker 2": "en-GB-LibbyNeural",
         "Speaker 3": "en-US-GuyNeural",
         "Speaker 4": "en-US-JennyNeural",
-        "Speaker 5": "en-GB-RyanNeural",
+        "Speaker 5": "en-AU-NatashaNeural",
     }
-    prompt = f"""Generate listening3.json for Cambridge CAE Test {test_id}.
+    prompt = f"""Generate content for Cambridge CAE Listening Part 4 Test {test_id}.
 
-SCHEMA:
+SCHEMA (return exactly this JSON structure, fully populated):
 {{
-  "exam_part": 3,
-  "title": "Listening - Part 3",
-  "type": "multiple-choice-text",
-  "time": 15,
-  "totalQuestions": 6,
-  "description": "You will hear an interview with [guest description]. For questions 15–20, choose the answer (A, B, C or D) which fits best.",
-  "instructions": "For questions 15–20, choose the answer (A, B, C or D) which fits best.",
-  "duration_minutes": 12,
-  "audio_source": "{audio_url}",
-  "extracts": [
-    {{
-      "id": 1,
-      "context": "You hear an interview with [Name], a [profession].",
-      "voices": {json.dumps(voices)},
-      "audio_script": "Full interview 480–560 words. Mark answer evidence: [15]...[/15] through [20]...[/20]. Use || for paragraph breaks within a long turn.",
-      "dialogue": [
-        {{"speaker": "interviewer", "text": "Opening question."}},
-        {{"speaker": "guest",       "text": "Long answer (80–100 words)."}},
-        {{"speaker": "interviewer", "text": "Follow-up question."}},
-        {{"speaker": "guest",       "text": "Answer."}},
-        {{"speaker": "interviewer", "text": "Another question."}},
-        {{"speaker": "guest",       "text": "Answer."}},
-        {{"speaker": "interviewer", "text": "Question."}},
-        {{"speaker": "guest",       "text": "Answer."}},
-        {{"speaker": "interviewer", "text": "Question."}},
-        {{"speaker": "guest",       "text": "Answer."}},
-        {{"speaker": "interviewer", "text": "Final question."}},
-        {{"speaker": "guest",       "text": "Closing answer."}}
-      ],
-      "questions": [
-        {{"number": 15, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "C", "explanation": "..."}},
-        {{"number": 16, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "A", "explanation": "..."}},
-        {{"number": 17, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "D", "explanation": "..."}},
-        {{"number": 18, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "B", "explanation": "..."}},
-        {{"number": 19, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "A", "explanation": "..."}},
-        {{"number": 20, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "C", "explanation": "..."}}
-      ]
+  "title": "Listening - Part 4: [Topic]",
+  "topic": "[brief description of common theme, e.g. 'people who gave up corporate careers to start organic farms']",
+  "voices": {json.dumps(voices)},
+  "audio_script": "Speaker 1: [Full 100–150 word monologue. Embed [21]answer evidence[/21] and [26]answer evidence[/26] in the text.] || Speaker 2: [Full 100–150 word monologue with [22]...[/22] and [27]...[/27]] || Speaker 3: [Full 100–150 word monologue with [23]...[/23] and [28]...[/28]] || Speaker 4: [Full 100–150 word monologue with [24]...[/24] and [29]...[/29]] || Speaker 5: [Full 100–150 word monologue with [25]...[/25] and [30]...[/30]]",
+  "task1": {{
+    "title": "Task One",
+    "instruction": "For questions 21–25, choose from the list (A–H) [angle 1 description, e.g. 'why each speaker decided to make a change'].",
+    "questions": [
+      {{"number": 21, "speaker": "Speaker 1", "correct": "E", "explanation": "..."}},
+      {{"number": 22, "speaker": "Speaker 2", "correct": "G", "explanation": "..."}},
+      {{"number": 23, "speaker": "Speaker 3", "correct": "B", "explanation": "..."}},
+      {{"number": 24, "speaker": "Speaker 4", "correct": "D", "explanation": "..."}},
+      {{"number": 25, "speaker": "Speaker 5", "correct": "A", "explanation": "..."}}
+    ],
+    "options": {{
+      "A": "...", "B": "...", "C": "...", "D": "...",
+      "E": "...", "F": "...", "G": "...", "H": "..."
     }}
-  ]
+  }},
+  "task2": {{
+    "title": "Task Two",
+    "instruction": "For questions 26–30, choose from the list (A–H) [angle 2 description, e.g. 'what each speaker finds most rewarding about their new life'].",
+    "questions": [
+      {{"number": 26, "speaker": "Speaker 1", "correct": "C", "explanation": "..."}},
+      {{"number": 27, "speaker": "Speaker 2", "correct": "H", "explanation": "..."}},
+      {{"number": 28, "speaker": "Speaker 3", "correct": "F", "explanation": "..."}},
+      {{"number": 29, "speaker": "Speaker 4", "correct": "B", "explanation": "..."}},
+      {{"number": 30, "speaker": "Speaker 5", "correct": "G", "explanation": "..."}}
+    ],
+    "options": {{
+      "A": "...", "B": "...", "C": "...", "D": "...",
+      "E": "...", "F": "...", "G": "...", "H": "..."
+    }}
+  }}
 }}
 
 STRICT RULES:
-1. Guest must be a real-sounding professional in an interesting field (e.g. palaeontologist, forensic architect, wildlife sound recorder, urban planner).
-2. 6 questions (15–20), 4 options each (A–D). Questions test: inference, attitude, reference, meaning in context.
-3. Dialogue must be realistic: interviewer asks open questions; guest gives detailed, naturally-paced answers.
-4. Questions follow the ORDER of the dialogue (Q15 relates to early dialogue, Q20 to late).
-5. Avoid Test 1 guest type (entrepreneur). Voices: {json.dumps(voices)}.
+1. Choose an engaging, cohesive theme where 5 different people share related but varied experiences (e.g. people who changed careers, people who moved abroad, people who started a creative business). Do NOT use farming/agriculture (used in Test 1).
+2. Each speaker's monologue must be 100–150 words — substantial and natural-sounding, not a brief summary. Each speaker must have a distinct voice and perspective.
+3. audio_script: All 5 speakers joined by ' || ' (space-pipe-pipe-space). Each segment starts with 'Speaker N: '. Markers [21]–[25] are task1 answers; markers [26]–[30] are task2 answers. Each marker pair wraps the exact phrase(s) evidencing the answer (e.g. 'I found [21]the isolation deeply unsettling[/21]').
+4. Task 1 and Task 2 must have DIFFERENT angles (e.g. Task 1 = motivation for the change, Task 2 = biggest challenge faced).
+5. Each task must have exactly 8 options (A–H). Not all options are used — include 3 distractors per task. Answer letters must be spread across A–H (avoid clustering).
+6. Speaker-to-question mapping: Q21=Speaker 1, Q22=Speaker 2, Q23=Speaker 3, Q24=Speaker 4, Q25=Speaker 5 (same for task2: Q26=Speaker 1, Q27=Speaker 2, Q28=Speaker 3, Q29=Speaker 4, Q30=Speaker 5).
+7. Voices are already defined as {json.dumps(voices)} — do not change them.
+8. Avoid reusing the farming/agriculture theme from Test 1.
 """
-    
+
     response = client.chat.completions.create(
         model="gpt-4o",
-        messages=[{"role": "system", "content": "You are a Cambridge exam expert."}, {"role": "user", "content": prompt}],
+        messages=[{"role": "system", "content": "You are a Cambridge exam expert specializing in CAE listening tasks."}, {"role": "user", "content": prompt}],
         response_format={"type": "json_object"}
     )
     return json.loads(response.choices[0].message.content)
@@ -169,12 +166,19 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     if not audio_only:
         print(f"🤖 Generando contenido AI para Listening 4 (Matching)...")
         content = get_ai_content(api_key, test_id)
+        topic = content.get("topic", "people talking about a shared experience")
         data = {
-            "title": "Listening Part 4",
-            "time": 20,
+            "title": content.get("title", "Listening - Part 4"),
+            "audioUrl": "",
+            "time": 10,
             "totalQuestions": 10,
-            "description": "You will hear five short extracts in which people are talking about... While you listen you must complete two tasks.",
-            "content": content
+            "description": f"You will hear five short extracts in which {topic}. You must complete two tasks while listening.",
+            "content": {
+                "voices": content["voices"],
+                "audio_script": content["audio_script"],
+                "task1": content["task1"],
+                "task2": content["task2"],
+            }
         }
         with open(json_file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
@@ -232,7 +236,7 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     
     if not no_upload:
         url = upload_to_bunny(audio_file)
-        data["audio_source"] = url
+        data["audioUrl"] = url
         with open(json_file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
         
