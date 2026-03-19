@@ -10,7 +10,7 @@ def get_test_folders(base_path, start, end):
     """
     test_folders = []
     for i in range(start, end + 1):
-        folder_name = f"test{i}"
+        folder_name = f"Test{i}"
         folder_path = os.path.join(base_path, folder_name)
         if os.path.exists(folder_path) and os.path.isdir(folder_path):
             test_folders.append(folder_path)
@@ -18,7 +18,7 @@ def get_test_folders(base_path, start, end):
             print(f"⚠️  Advertencia: No se encuentra la carpeta {folder_path}")
     return test_folders
 
-def run_generator(test_folder, generator_script, part_num, global_script_dir, narrator_dir):
+def run_generator(test_folder, generator_script, part_num, global_script_dir, narrator_dir, credentials):
     """
     Ejecuta un generador específico en la carpeta del test
     """
@@ -45,9 +45,14 @@ def run_generator(test_folder, generator_script, part_num, global_script_dir, na
         print(f"📄 Usando: {json_file}")
         print(f"🎤 Narrador: {narrator_dir}")
         
-        # Establecer variable de entorno para que los generadores puedan encontrar el Narrador
+        # Establecer variables de entorno para los generadores
         env = os.environ.copy()
         env['NARRATOR_DIR'] = narrator_dir
+        env['AZURE_SPEECH_KEY'] = credentials['azure_key']
+        env['AZURE_REGION'] = credentials['azure_region']
+        env['BUNNY_API_KEY'] = credentials['bunny_key']
+        env['BUNNY_STORAGE_ZONE'] = credentials['bunny_storage']
+        env['BUNNY_PULL_ZONE'] = credentials['bunny_pull']
         
         result = subprocess.run(
             [sys.executable, script_path],
@@ -85,6 +90,9 @@ def run_generator(test_folder, generator_script, part_num, global_script_dir, na
         os.chdir(original_dir)
 
 def main():
+    # Directorio donde están los scripts generadores (donde está este script)
+    global_script_dir = os.path.dirname(os.path.abspath(__file__))
+
     # Configurar argumentos de línea de comandos
     parser = argparse.ArgumentParser(
         description='Generador automático de listening tests (Partes 1-4)'
@@ -109,34 +117,85 @@ def main():
         '--path',
         type=str,
         default='.',
-        help='Ruta base donde están las carpetas test[numero] y Narrador. Por defecto: directorio actual'
+        help='Ruta base donde están las carpetas Test[numero]. Por defecto: directorio actual'
     )
-    
+    parser.add_argument(
+        '--narrator',
+        type=str,
+        default=os.path.join(global_script_dir, "Narrador"),
+        help='Ruta a la carpeta Narrador con los archivos de audio. Por defecto: Narrador/ junto a este script'
+    )
+    parser.add_argument(
+        '--azure-key',
+        type=str,
+        default=os.environ.get('AZURE_SPEECH_KEY', ''),
+        help='Azure Speech API Key (también se puede pasar como variable de entorno AZURE_SPEECH_KEY)'
+    )
+    parser.add_argument(
+        '--azure-region',
+        type=str,
+        default=os.environ.get('AZURE_REGION', 'westeurope'),
+        help='Azure región (por defecto: westeurope)'
+    )
+    parser.add_argument(
+        '--bunny-key',
+        type=str,
+        default=os.environ.get('BUNNY_API_KEY', ''),
+        help='BunnyCDN API Key (también se puede pasar como variable de entorno BUNNY_API_KEY)'
+    )
+    parser.add_argument(
+        '--bunny-storage',
+        type=str,
+        default=os.environ.get('BUNNY_STORAGE_ZONE', 'audios-examen'),
+        help='BunnyCDN Storage Zone (por defecto: audios-examen)'
+    )
+    parser.add_argument(
+        '--bunny-pull',
+        type=str,
+        default=os.environ.get('BUNNY_PULL_ZONE', 'listeninggenerator'),
+        help='BunnyCDN Pull Zone (por defecto: listeninggenerator)'
+    )
+
     args = parser.parse_args()
-    
+
     # Obtener directorio base
     base_path = os.path.abspath(args.path)
-    
+
+    # Validar credenciales
+    if not args.azure_key:
+        print("❌ Error: Falta la clave de Azure Speech.")
+        print("   Usa --azure-key TU_CLAVE o define la variable de entorno AZURE_SPEECH_KEY")
+        return
+    if not args.bunny_key:
+        print("❌ Error: Falta la clave de BunnyCDN.")
+        print("   Usa --bunny-key TU_CLAVE o define la variable de entorno BUNNY_API_KEY")
+        return
+
+    credentials = {
+        'azure_key': args.azure_key,
+        'azure_region': args.azure_region,
+        'bunny_key': args.bunny_key,
+        'bunny_storage': args.bunny_storage,
+        'bunny_pull': args.bunny_pull,
+    }
+
     # Verificar que existe la carpeta Narrador
-    narrator_dir = os.path.join(base_path, "Narrador")
+    narrator_dir = os.path.abspath(args.narrator)
     if not os.path.exists(narrator_dir) or not os.path.isdir(narrator_dir):
         print(f"❌ Error: No se encuentra la carpeta Narrador en {narrator_dir}")
-        print("   Asegúrate de que existe la subcarpeta 'Narrador' con los archivos de audio")
+        print("   Usa --narrator /ruta/a/Narrador para especificar la ruta")
         return
-    
-    # Directorio donde están los scripts generadores (donde está este script)
-    global_script_dir = os.path.dirname(os.path.abspath(__file__))
-    
+
     # Parsear qué partes generar
     parts_to_generate = [p.strip() for p in args.parts.split(',')]
-    
+
     # Validar partes
     valid_parts = ['1', '2', '3', '4']
     for part in parts_to_generate:
         if part not in valid_parts:
             print(f"❌ Error: Parte {part} no válida. Las partes válidas son: 1,2,3,4")
             return
-    
+
     # Mapeo de scripts (todos en el mismo directorio que este script)
     generator_scripts = {
         '1': 'generador_listening1.py',
@@ -144,23 +203,23 @@ def main():
         '3': 'generador_listening3.py',
         '4': 'generador_listening4.py'
     }
-    
+
     # Verificar que existen los scripts en el directorio global
     missing_scripts = []
     for part in parts_to_generate:
         script_path = os.path.join(global_script_dir, generator_scripts[part])
         if not os.path.exists(script_path):
             missing_scripts.append(generator_scripts[part])
-    
+
     if missing_scripts:
         print(f"❌ Error: No se encuentran los siguientes scripts en {global_script_dir}:")
         for script in missing_scripts:
             print(f"   - {script}")
         return
-    
+
     # Obtener carpetas de test
     test_folders = get_test_folders(base_path, args.start, args.end)
-    
+
     if not test_folders:
         print(f"❌ No se encontraron carpetas de test en el rango {args.start}-{args.end}")
         print(f"   Buscando en: {base_path}")
@@ -199,7 +258,8 @@ def main():
                 script_name, 
                 part_num,
                 global_script_dir,
-                narrator_dir
+                narrator_dir,
+                credentials
             )
             
             if not success:
