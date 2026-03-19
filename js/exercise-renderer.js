@@ -605,6 +605,10 @@
         html += ReadingType4._renderShowAllBtn();
       }
 
+      if (exercise.content.example && typeof window.ReadingType4 !== 'undefined') {
+        html += ReadingType4.renderQuestion(exercise.content.example, 0, false, '');
+      }
+
       questions.forEach(q => {
         if (typeof window.ReadingType4 !== 'undefined') {
           html += ReadingType4.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');

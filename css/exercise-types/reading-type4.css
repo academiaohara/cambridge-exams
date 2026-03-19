@@ -211,6 +211,30 @@
   font-style: italic;
 }
 
+/* ===== Example question (0) ===== */
+.reading-type4-example {
+  border-color: #bbf7d0;
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+}
+
+.reading-type4-example-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #059669;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.reading-type4-example .reading-type4-number {
+  color: #059669;
+}
+
+.reading-type4-example .reading-type4-original {
+  background: #d1fae5;
+  border-left-color: #059669;
+}
+
 /* ===== Show all answers button ===== */
 .reading-type4-show-all-row {
   display: flex;

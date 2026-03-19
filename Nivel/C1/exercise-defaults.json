@@ -13,7 +13,18 @@
   },
   "reading4": {
     "time": 10,
-    "description": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0)."
+    "description": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+    "example": {
+      "number": 0,
+      "firstSentence": "I'm sure it was difficult for you to finish the project on time.",
+      "keyWord": "HAD",
+      "beforeGap": "You",
+      "afterGap": "difficulty finishing the project on time.",
+      "routes": [
+        { "p1": "must", "p2": "have had" },
+        { "p1": "must", "p2": "have had some" }
+      ]
+    }
   },
   "reading5": {
     "time": 15,

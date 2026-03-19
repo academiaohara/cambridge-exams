@@ -341,6 +341,9 @@
         if (defaults[defaultKey]) {
           if (defaults[defaultKey].time !== undefined) exercise.time = defaults[defaultKey].time;
           if (defaults[defaultKey].description !== undefined) exercise.description = defaults[defaultKey].description;
+          if (defaults[defaultKey].example !== undefined && !exercise.content.example) {
+            exercise.content.example = defaults[defaultKey].example;
+          }
         }
         
         AppState.currentExercise = exercise;
@@ -350,6 +353,9 @@
         
         if (exercise.content.example && exercise.content.example.correct) {
           AppState.currentExercise.answers[0] = exercise.content.example.correct;
+        } else if (exercise.content.example && exercise.content.example.routes && exercise.content.example.routes[0]) {
+          const r = exercise.content.example.routes[0];
+          AppState.currentExercise.answers[0] = ((r.p1 || '') + ' ' + (r.p2 || '')).trim();
         }
         
         // Restore saved answers from localStorage
