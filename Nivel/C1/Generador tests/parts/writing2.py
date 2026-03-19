@@ -33,12 +33,43 @@ def get_ai_content(api_key, test_id):
        - Goal: Complain, apply, or provide feedback clearly.
 
     SCHEMA:
-    (Usa el SCHEMA de tus instrucciones previas, asegurando que cada 'task' tenga su 'type' y 'modelAnswer' siguiendo estas guías).
+    {{
+      "title": "Writing - Part 2: Exercise 1",
+      "time": 45,
+      "totalQuestions": 1,
+      "description": "Choose one of the following writing tasks and write your answer in 220-260 words.",
+      "content": {{
+        "tasks": [
+          {{
+            "id": "task_type_1",
+            "title": "Genre Name (e.g. Report)",
+            "type": "Genre Name",
+            "prompt": "Full task prompt ~40 words describing the writing scenario.",
+            "modelAnswer": "~250 word model answer in the correct genre format and register."
+          }},
+          {{
+            "id": "task_type_2",
+            "title": "Genre Name (e.g. Letter)",
+            "type": "Genre Name",
+            "prompt": "Full task prompt ~40 words.",
+            "modelAnswer": "~250 word model answer."
+          }},
+          {{
+            "id": "task_type_3",
+            "title": "Genre Name (e.g. Review)",
+            "type": "Genre Name",
+            "prompt": "Full task prompt ~40 words.",
+            "modelAnswer": "~250 word model answer."
+          }}
+        ]
+      }}
+    }}
 
     CONTENT RULES:
     1. Topics must be C1 level (e.g., "The impact of tourism on local craftspeople", "Evaluating a new productivity software").
     2. Model answers must be ~250 words with advanced grammar (Inversion, Passive, Modals).
-    3. Return valid JSON only."""
+    3. Each task must have a unique id (e.g. "report_1", "letter_1", "review_1").
+    4. Return valid JSON only."""
 
     response = client.chat.completions.create(
         model="gpt-4o",

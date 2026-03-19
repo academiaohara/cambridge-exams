@@ -15,36 +15,30 @@ def get_ai_content(api_key, test_id):
 
 SCHEMA:
 {{
-  "id": "Test{test_id}-writing-1",
-  "examId": "Test{test_id}",
-  "section": "writing",
-  "part": 1,
-  "type": "essay",
-  "title": "Writing – Part 1: Essay",
-  "description": "Your class has attended a [lecture/panel discussion/seminar] on [TOPIC]. Write an essay for your tutor, discussing two of the points in your notes and explaining which you think is more important, giving reasons for your opinion.",
+  "title": "Writing - Part 1: [TOPIC TITLE]",
   "time": 45,
   "totalQuestions": 1,
+  "description": "Your class has attended a [lecture/panel discussion/seminar] on [TOPIC]. Write an essay for your tutor, discussing two of the points in your notes and explaining which you think is more important, giving reasons for your opinion.",
   "content": {{
     "question": "Write an essay discussing two of the methods in your notes. You should explain which method is more important, giving reasons for your opinion. You may, if you wish, make use of the opinions expressed during the discussion, but you should use your own words as far as possible.",
     "notes": {{
-      "topic": "[TOPIC]",
       "methods": [
         "Method/approach 1 – specific and actionable",
         "Method/approach 2 – contrasting angle",
         "Method/approach 3 – alternative perspective"
       ],
-      "discussionOpinions": [
+      "opinions": [
         "Opinion A from the discussion (direct speech style, ~15 words).",
         "Opinion B (~15 words).",
         "Opinion C (~15 words)."
       ]
     }},
     "wordLimit": "220-260 words",
-    "assessment": {{
-      "content":      "Discusses exactly 2 of the 3 methods; argues for one being more important.",
-      "organisation": "Clear intro, 2 body paragraphs, conclusion; logical connectives.",
-      "language":     "C1 range: complex sentences, hedging language, academic vocabulary.",
-      "register":     "Formal/semi-formal throughout."
+    "structure": {{
+      "introduction": "Introduce the topic and the two methods you will discuss.",
+      "bodyParagraph1": "Discuss the first method and its impact.",
+      "bodyParagraph2": "Discuss the second method and its effectiveness.",
+      "conclusion": "Evaluate both and state which is more effective."
     }},
     "modelAnswer": "Full model essay ~250 words. Formal register. Intro that paraphrases the task. Two body paragraphs each opening with a clear topic sentence, developing the argument with an example or supporting point, and linking to the opposing method. Conclusion that clearly states which method is more important and why. Uses cohesive devices: 'Although…', 'While it is true that…', 'On the other hand…', 'Perhaps the most significant factor is…', 'Ultimately…'."
   }}
