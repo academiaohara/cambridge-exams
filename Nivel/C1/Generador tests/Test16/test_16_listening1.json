@@ -1,0 +1,182 @@
+{
+    "title": "Listening - Part 1",
+    "time": 15,
+    "totalQuestions": 6,
+    "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+    "exam_part": 1,
+    "type": "multiple-choice-text",
+    "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+    "duration_minutes": 10,
+    "audio_source": "https://listeninggenerator.b-cdn.net/test_16_listening1.mp3",
+    "extracts": [
+        {
+            "id": 1,
+            "context": "You hear two colleagues discussing the upcoming company conference.",
+            "voices": {
+                "man": "en-GB-RyanNeural",
+                "woman": "en-GB-SoniaNeural"
+            },
+            "audio_script": "MAN: So, about the company conference next week, are we all set for the presentations? || WOMAN: Yes, mostly. I'm just worried about the tech setup. Isn't it a bit too risky to rely on the Wi-Fi there? || MAN: That's a fair point. [1]I think we should have a backup plan in case it goes down.[/1] || WOMAN: Definitely. I already talked to IT, and they're coming up with some solutions. But we'll need to be flexible, I suppose. || MAN: Good thinking. [2]It's also crucial that we rehearse thoroughly this time.[/2]",
+            "dialogue": [
+                {
+                    "speaker": "man",
+                    "text": "So, about the company conference next week, are we all set for the presentations?"
+                },
+                {
+                    "speaker": "woman",
+                    "text": "Yes, mostly. I'm just worried about the tech setup. Isn't it a bit too risky to rely on the Wi-Fi there?"
+                },
+                {
+                    "speaker": "man",
+                    "text": "That's a fair point. I think we should have a backup plan in case it goes down."
+                },
+                {
+                    "speaker": "woman",
+                    "text": "Definitely. I already talked to IT, and they're coming up with some solutions. But we'll need to be flexible, I suppose."
+                },
+                {
+                    "speaker": "man",
+                    "text": "Good thinking. It's also crucial that we rehearse thoroughly this time."
+                }
+            ],
+            "questions": [
+                {
+                    "number": 1,
+                    "question": "What is the man's main concern about the project?",
+                    "options": {
+                        "A": "The timing of the conference.",
+                        "B": "The reliability of the Wi-Fi.",
+                        "C": "The number of attendees."
+                    },
+                    "answer": "B",
+                    "explanation": "B is supported by [1]I think we should have a backup plan in case it goes down.[/1] because he mentions a potential issue with the Wi-Fi."
+                },
+                {
+                    "number": 2,
+                    "question": "The woman implies that she...",
+                    "options": {
+                        "A": "has already taken steps to address the issue.",
+                        "B": "is not very concerned about potential problems.",
+                        "C": "will manage everything alone."
+                    },
+                    "answer": "A",
+                    "explanation": "A is implied by [2]I already talked to IT, and they're coming up with some solutions.[/2]"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "context": "You hear a student and a tutor discussing the student's essay.",
+            "voices": {
+                "man": "en-US-GuyNeural",
+                "woman": "en-US-JennyNeural"
+            },
+            "audio_script": "WOMAN: Your essay is quite fascinating, but there are a few areas where it could be improved. || MAN: Oh, thanks! What do you think needs the most work? || WOMAN: Well, [3]the introduction could be stronger.[/3] It seems a bit vague. How about grounding it with a specific example? || MAN: Ah, I see what you mean. I'll revisit that section. || WOMAN: Great. And don't forget to tighten up your references, [4]they're a bit scattered.[/4] || MAN: Sure, I'll get on that right away.",
+            "dialogue": [
+                {
+                    "speaker": "woman",
+                    "text": "Your essay is quite fascinating, but there are a few areas where it could be improved."
+                },
+                {
+                    "speaker": "man",
+                    "text": "Oh, thanks! What do you think needs the most work?"
+                },
+                {
+                    "speaker": "woman",
+                    "text": "Well, the introduction could be stronger. It seems a bit vague. How about grounding it with a specific example?"
+                },
+                {
+                    "speaker": "man",
+                    "text": "Ah, I see what you mean. I'll revisit that section."
+                },
+                {
+                    "speaker": "woman",
+                    "text": "Great. And don't forget to tighten up your references, they're a bit scattered."
+                },
+                {
+                    "speaker": "man",
+                    "text": "Sure, I'll get on that right away."
+                }
+            ],
+            "questions": [
+                {
+                    "number": 3,
+                    "question": "What does the woman suggest about the introduction?",
+                    "options": {
+                        "A": "It is too detailed.",
+                        "B": "It is too technical.",
+                        "C": "It lacks clarity."
+                    },
+                    "answer": "C",
+                    "explanation": "C is suggested by [3]the introduction could be stronger. It seems a bit vague.[/3]"
+                },
+                {
+                    "number": 4,
+                    "question": "The student is advised to...",
+                    "options": {
+                        "A": "improve his referencing.",
+                        "B": "add more examples throughout.",
+                        "C": "make the essay longer."
+                    },
+                    "answer": "A",
+                    "explanation": "A is advised based on [4]don't forget to tighten up your references, they're a bit scattered.[/4]"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "context": "You hear two friends debating whether to join a local sports club.",
+            "voices": {
+                "man": "en-GB-RyanNeural",
+                "woman": "en-GB-SoniaNeural"
+            },
+            "audio_script": "MAN: Are you still keen on joining the new sports club? || WOMAN: I'm not so sure now. [5]The fees are higher than I expected.[/5] || MAN: True, but think about the benefits. Networking, facilities... and we always said we'd get fitter, right? || WOMAN: Yeah, for sure. But what if we don't have the time to go regularly? That'd be a waste. || MAN: I suppose. [6]But maybe committing financially will motivate us?[/6]",
+            "dialogue": [
+                {
+                    "speaker": "man",
+                    "text": "Are you still keen on joining the new sports club?"
+                },
+                {
+                    "speaker": "woman",
+                    "text": "I'm not so sure now. The fees are higher than I expected."
+                },
+                {
+                    "speaker": "man",
+                    "text": "True, but think about the benefits. Networking, facilities... and we always said we'd get fitter, right?"
+                },
+                {
+                    "speaker": "woman",
+                    "text": "Yeah, for sure. But what if we don't have the time to go regularly? That'd be a waste."
+                },
+                {
+                    "speaker": "man",
+                    "text": "I suppose. But maybe committing financially will motivate us?"
+                }
+            ],
+            "questions": [
+                {
+                    "number": 5,
+                    "question": "What is the woman's main hesitation about joining the club?",
+                    "options": {
+                        "A": "The location of the club.",
+                        "B": "The cost involved.",
+                        "C": "The club's opening hours."
+                    },
+                    "answer": "B",
+                    "explanation": "B is her main concern as evident from [5]The fees are higher than I expected.[/5]"
+                },
+                {
+                    "number": 6,
+                    "question": "Why does the man think they should join the club?",
+                    "options": {
+                        "A": "They have lots of free time.",
+                        "B": "It will guarantee fitness improvement.",
+                        "C": "A financial commitment might encourage attendance."
+                    },
+                    "answer": "C",
+                    "explanation": "C is implied by [6]maybe committing financially will motivate us?[/6]"
+                }
+            ]
+        }
+    ]
+}

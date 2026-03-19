@@ -1,0 +1,63 @@
+{
+    "title": "Speaking – Part 2: Long Turn",
+    "type": "multiple-choice-text",
+    "time": 2,
+    "totalQuestions": 2,
+    "description": "Each candidate compares two of three photographs and answers two questions about them. You have about one minute. Then your partner answers a brief question.",
+    "content": {
+        "tasks": [
+            {
+                "id": "2A",
+                "candidate": "Candidate A",
+                "topic": "Adapting to new environments",
+                "instructions": "Compare two of the photographs and say what challenge the people might be facing and how they might be feeling.",
+                "mainQuestion": "What challenge might the people be facing, and how might they be feeling?",
+                "followUpQuestion": "Which situation would you find most challenging?",
+                "followUpRecipient": "Candidate B",
+                "images": [
+                    {
+                        "label": "a",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_a.jpg",
+                        "description": "A young Asian woman in an airport terminal looking at departure screens, surrounded by busy travelers with suitcases."
+                    },
+                    {
+                        "label": "b",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_b.jpg",
+                        "description": "An elderly couple unpacking boxes in a new apartment, filled with scattered moving supplies and an unfurnished living room."
+                    },
+                    {
+                        "label": "c",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_c.jpg",
+                        "description": "A group of teenagers in a summer camp, setting up tents in a wooded area under a cloudy sky."
+                    }
+                ]
+            },
+            {
+                "id": "2B",
+                "candidate": "Candidate B",
+                "topic": "Balancing responsibilities",
+                "instructions": "Compare two of the photographs and say what decision the people might be making and what factors they might be considering.",
+                "mainQuestion": "What decision might the people be making, and what factors might they be considering?",
+                "followUpQuestion": "Which decision would be hardest for you to make?",
+                "followUpRecipient": "Candidate A",
+                "images": [
+                    {
+                        "label": "d",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_d.jpg",
+                        "description": "A middle-aged businessman on a video call in a home office, with a toddler playing on the floor beside him."
+                    },
+                    {
+                        "label": "e",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_e.jpg",
+                        "description": "A young mother in a grocery store looking at nutrition labels with a sleeping baby in a stroller next to her."
+                    },
+                    {
+                        "label": "f",
+                        "url": "https://listeninggenerator.b-cdn.net/test16_f.jpg",
+                        "description": "A college student with a laptop at a crowded cafe, surrounded by textbooks, appearing focused and slightly stressed."
+                    }
+                ]
+            }
+        ]
+    }
+}
