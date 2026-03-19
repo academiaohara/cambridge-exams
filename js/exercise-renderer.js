@@ -711,7 +711,7 @@
         case 'transformations':
           // Initialize auto-resize for all transformation inputs that have existing answers
           setTimeout(function() {
-            document.querySelectorAll('.reading-type4-inline-input:not([disabled])').forEach(function(inp) {
+            document.querySelectorAll('.reading-type4-inline-input').forEach(function(inp) {
               if (inp.value && typeof ReadingType4 !== 'undefined') ReadingType4.resizeInput(inp);
             });
           }, 50);

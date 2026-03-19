@@ -223,6 +223,7 @@
           const colorClass = isCorrect ? 'reading-type4-correct' : isPartial ? 'reading-type4-partial' : 'reading-type4-incorrect';
           input.classList.add(colorClass);
           input.disabled = true;
+          this.resizeInput(input);
           if (!isCorrect) {
             const secondDiv = input.closest('.reading-type4-second');
             // Remove any leftover correction text elements
