@@ -1,0 +1,126 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "{audio_url}",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing an immersive art exhibition they have just visited.",
+      "voices": ["en-GB-RyanNeural", "en-GB-SoniaNeural"],
+      "audio_script": "Man: So, what did you think of the 'Neon Dreams' exhibit? I found the sensory overload a bit much at first. It felt like every wall was shouting at me. || Woman: I get that. It wasn't exactly subtle, was it? But honestly, I think [1]the way they integrated the ambient soundscapes with the pulsating visuals really elevated it beyond just being a typical 'selfie gallery'[/1]. || Man: True, though I felt the ticket price was a bit steep for a forty-minute experience. I expected more historical context about the artists behind the movement. || Woman: I see where you're coming from, but I think the point was the sensory experience itself, not a history lesson. [2]I was pleasantly surprised that it didn't feel as crowded as the online reviews suggested[/2], which made it much more intimate than I’d hoped. || Man: Fair point. At least we didn't have to queue for an hour in the rain.",
+      "dialogue": [
+        {"speaker": "man", "text": "So, what did you think of the 'Neon Dreams' exhibit? I found the sensory overload a bit much at first. It felt like every wall was shouting at me."},
+        {"speaker": "woman", "text": "I get that. It wasn't exactly subtle, was it? But honestly, I think the way they integrated the ambient soundscapes with the pulsating visuals really elevated it beyond just being a typical 'selfie gallery'."},
+        {"speaker": "man", "text": "True, though I felt the ticket price was a bit steep for a forty-minute experience. I expected more historical context about the artists behind the movement."},
+        {"speaker": "woman", "text": "I see where you're coming from, but I think the point was the sensory experience itself, not a history lesson. I was pleasantly surprised that it didn't feel as crowded as the online reviews suggested, which made it much more intimate than I’d hoped."},
+        {"speaker": "man", "text": "Fair point. At least we didn't have to queue for an hour in the rain."}
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What did the woman like most about the exhibition?",
+          "options": {
+            "A": "the historical background provided",
+            "B": "the fusion of different artistic media",
+            "C": "the opportunity to take unique photographs"
+          },
+          "answer": "B",
+          "explanation": "B is supported by [1] because she mentions the integration of soundscapes and visuals as a key highlight."
+        },
+        {
+          "number": 2,
+          "question": "Regarding the venue, the woman was impressed by",
+          "options": {
+            "A": "the efficiency of the entry system.",
+            "B": "the spaciousness of the display rooms.",
+            "C": "the limited number of other visitors."
+          },
+          "answer": "C",
+          "explanation": "C is correct as she notes [2] it 'didn't feel as crowded' as expected, making it more intimate."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two university students talking about a guest lecture they attended on deep-sea biology.",
+      "voices": ["en-GB-LibbyNeural", "en-GB-ThomasNeural"],
+      "audio_script": "Woman: That lecture on deep-sea bioluminescence was fascinating, don't you think? Professor Aris certainly knows his stuff and has a real passion for the subject. || Man: He’s brilliant, but I struggled to stay focused during the technical breakdown of the chemical reactions. It felt like he assumed we were all post-doctoral researchers. || Woman: [3]I actually appreciated that he didn't talk down to us[/3]. It’s refreshing to be genuinely challenged in a seminar rather than just hearing the same introductory material over and over again. It keeps us on our toes. || Man: I suppose. I did find the high-definition footage of the Anglerfish absolutely incredible, though. || Woman: Absolutely. [4]I’m just worried that I won’t be able to replicate his specific data analysis for our upcoming assignment[/4]—it looked incredibly complex and I missed some of the steps. || Man: Don't worry, we can head to the library archives together and figure it out.",
+      "dialogue": [
+        {"speaker": "woman", "text": "That lecture on deep-sea bioluminescence was fascinating, don't you think? Professor Aris certainly knows his stuff and has a real passion for the subject."},
+        {"speaker": "man", "text": "He’s brilliant, but I struggled to stay focused during the technical breakdown of the chemical reactions. It felt like he assumed we were all post-doctoral researchers."},
+        {"speaker": "woman", "text": "I actually appreciated that he didn't talk down to us. It’s refreshing to be genuinely challenged in a seminar rather than just hearing the same introductory material over and over again. It keeps us on our toes."},
+        {"speaker": "man", "text": "I suppose. I did find the high-definition footage of the Anglerfish absolutely incredible, though."},
+        {"speaker": "woman", "text": "Absolutely. I’m just worried that I won’t be able to replicate his specific data analysis for our upcoming assignment—it looked incredibly complex and I missed some of the steps."},
+        {"speaker": "man", "text": "Don't worry, we can head to the library archives together and figure it out."}
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What was the woman's reaction to the complexity of the lecture?",
+          "options": {
+            "A": "She felt it was inappropriately targeted.",
+            "B": "She welcomed the intellectual rigor.",
+            "C": "She found the chemical explanations tedious."
+          },
+          "answer": "B",
+          "explanation": "B is supported by [3] where she says she 'appreciated that he didn't talk down to us' and found being 'genuinely challenged' refreshing."
+        },
+        {
+          "number": 4,
+          "question": "The woman expresses concern about her ability to",
+          "options": {
+            "A": "apply a particular methodology to her own work.",
+            "B": "remember the specific details of the visual aids.",
+            "C": "access the necessary research papers in the library."
+          },
+          "answer": "A",
+          "explanation": "A is correct because in [4] she worries about her ability to 'replicate his specific data analysis'."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear a couple discussing a hiking trip they have just completed.",
+      "voices": ["en-GB-MaisieNeural", "en-GB-ElliotNeural"],
+      "audio_script": "Woman: I’m still a bit sore from that climb yesterday, but the panoramic view from the summit was worth every single blister. It was breathtaking. || Man: It was stunning. I’m glad we took the northern trail, even if it was considerably steeper. The other route looked far too busy with groups of tourists. || Woman: Definitely. [5]What struck me most, though, was how poorly some of the other hikers we passed were equipped[/5] for such an environment. I saw one group in flip-flops! || Man: People really underestimate how quickly the weather changes up there. I’m just glad we brought the extra layers and waterproofs. || Woman: Me too. [6]I’m already thinking about where we should head next month, maybe somewhere coastal for a change of pace? Something involving more sand and less incline.[/6] || Man: That sounds like a wonderful plan. As long as it’s a bit flatter than yesterday!",
+      "dialogue": [
+        {"speaker": "woman", "text": "I’m still a bit sore from that climb yesterday, but the panoramic view from the summit was worth every single blister. It was breathtaking."},
+        {"speaker": "man", "text": "It was stunning. I’m glad we took the northern trail, even if it was considerably steeper. The other route looked far too busy with groups of tourists."},
+        {"speaker": "woman", "text": "Definitely. What struck me most, though, was how poorly some of the other hikers we passed were equipped for such an environment. I saw one group in flip-flops!"},
+        {"speaker": "man", "text": "People really underestimate how quickly the weather changes up there. I’m just glad we brought the extra layers and waterproofs."},
+        {"speaker": "woman", "text": "Me too. I’m already thinking about where we should head next month, maybe somewhere coastal for a change of pace? Something involving more sand and less incline."},
+        {"speaker": "man", "text": "That sounds like a wonderful plan. As long as it’s a bit flatter than yesterday!"}
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What did the woman find particularly notable during the hike?",
+          "options": {
+            "A": "the sudden changes in the weather conditions",
+            "B": "the irresponsible behavior of some people",
+            "C": "the physical difficulty of the northern trail"
+          },
+          "answer": "B",
+          "explanation": "B is supported by [5] where she comments on hikers being 'poorly equipped' for the environment."
+        },
+        {
+          "number": 6,
+          "question": "What does the woman suggest for their next trip?",
+          "options": {
+            "A": "returning to the same area to try a different route",
+            "B": "taking a break from physical activity altogether",
+            "C": "choosing a location with a different topography"
+          },
+          "answer": "C",
+          "explanation": "C is correct as she suggests [6] a coastal trip with 'less incline' for a change of pace."
+        }
+      ]
+    }
+  ]
+}
