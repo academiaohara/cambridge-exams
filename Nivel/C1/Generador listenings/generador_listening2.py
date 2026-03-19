@@ -269,11 +269,53 @@ if __name__ == "__main__":
     print("="*60)
     print("🎧 GENERADOR LISTENING PARTE 2")
     print("="*60)
-    print("⚠️  Este script está diseñado para ser llamado desde generador_global.py")
-    print("⚠️  Las credenciales deben configurarse mediante configure_credentials()")
-    
-    # Ejemplo de uso si se ejecuta directamente (para pruebas)
-    if not AZURE_KEY:
-        print("\n🔧 Modo de prueba - Configura credenciales manualmente:")
-        # Aquí puedes poner credenciales de prueba si lo ejecutas directamente
-        # configure_credentials("tu_key", "westeurope", "tu_bunny_key", "audios-examen", "listeninggenerator")
+
+    # Leer credenciales desde variables de entorno
+    azure_key = os.environ.get('AZURE_SPEECH_KEY', '')
+    azure_region = os.environ.get('AZURE_REGION', 'westeurope')
+    bunny_key = os.environ.get('BUNNY_API_KEY', '')
+    bunny_storage = os.environ.get('BUNNY_STORAGE_ZONE', 'audios-examen')
+    bunny_pull = os.environ.get('BUNNY_PULL_ZONE', 'listeninggenerator')
+
+    if not azure_key or not bunny_key:
+        print("❌ Error: Faltan credenciales. Configura las variables de entorno:")
+        print("   AZURE_SPEECH_KEY=tu_clave_azure")
+        print("   BUNNY_API_KEY=tu_clave_bunny")
+        import sys
+        sys.exit(1)
+
+    configure_credentials(azure_key, azure_region, bunny_key, bunny_storage, bunny_pull)
+
+    # Generar el audio
+    output_path, data, json_path = build_listening()
+
+    if output_path and data:
+        # Subida a Bunny
+        print("\n📤 Subiendo a BunnyCDN...")
+        bunny_url = upload_to_bunny(output_path)
+
+        if bunny_url:
+            print(f"🔗 URL en Bunny: {bunny_url}")
+
+            # Actualizar JSON
+            data["audio_source"] = bunny_url
+            with open(json_path, "w", encoding="utf8") as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            print(f"📝 JSON actualizado: {json_path}")
+
+            # Borrar archivo MP3 local
+            try:
+                os.remove(output_path)
+                print(f"🗑️ Archivo MP3 local eliminado: {os.path.basename(output_path)}")
+            except Exception as e:
+                print(f"⚠️ No se pudo eliminar el archivo local: {e}")
+
+            print("\n✨ Proceso completado exitosamente!")
+        else:
+            print("\n❌ Error en la subida a Bunny. El archivo MP3 se mantiene local.")
+            import sys
+            sys.exit(1)
+    else:
+        print("\n❌ Error en la generación del audio.")
+        import sys
+        sys.exit(1)

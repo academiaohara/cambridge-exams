@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 import requests
 import azure.cognitiveservices.speech as speechsdk
 from pydub import AudioSegment
@@ -37,10 +38,32 @@ REPEAT_GAP = 5000
 AFTER_REPEAT = 5000
 BETWEEN_LINES = 400
 
-speech_config = speechsdk.SpeechConfig(
-    subscription=AZURE_KEY,
-    region=AZURE_REGION
-)
+speech_config = None
+
+# ==========================
+# FUNCIÓN PARA CONFIGURAR CREDENCIALES
+# ==========================
+
+def configure_credentials(azure_key, azure_region, bunny_api_key, bunny_storage_zone, bunny_pull_zone):
+    """Configura las credenciales desde el script global"""
+    global AZURE_KEY, AZURE_REGION, BUNNY_API_KEY, BUNNY_STORAGE_ZONE, BUNNY_PULL_ZONE
+    global BUNNY_UPLOAD_URL, BUNNY_PUBLIC_URL, speech_config
+
+    AZURE_KEY = azure_key
+    AZURE_REGION = azure_region
+    BUNNY_API_KEY = bunny_api_key
+    BUNNY_STORAGE_ZONE = bunny_storage_zone
+    BUNNY_PULL_ZONE = bunny_pull_zone
+
+    BUNNY_UPLOAD_URL = f"https://storage.bunnycdn.com/{BUNNY_STORAGE_ZONE}"
+    BUNNY_PUBLIC_URL = f"https://{BUNNY_PULL_ZONE}.b-cdn.net"
+
+    speech_config = speechsdk.SpeechConfig(
+        subscription=AZURE_KEY,
+        region=AZURE_REGION
+    )
+
+    print("✅ Credenciales configuradas correctamente para Parte 1")
 
 # ==========================
 # BUNNY UPLOAD
@@ -94,6 +117,9 @@ def make_beep(duration_ms=500, freq=880, volume_db=-10):
 # ==========================
  
 def generate_tts(text, voice, filename):
+    if not speech_config:
+        raise RuntimeError("Error: Credenciales no configuradas. Llama a configure_credentials primero.")
+
     # Limpiar el texto de marcadores como [1], [/1], etc.
     clean_text = re.sub(r'\[\/?\d+\]', '', text)
     
@@ -102,7 +128,7 @@ def generate_tts(text, voice, filename):
     
     # Detectar idioma (ej. en-GB) desde el nombre de la voz
     lang = "-".join(voice.split("-")[:2])
- 
+
     audio_config = speechsdk.audio.AudioOutputConfig(filename=filename)
     synthesizer = speechsdk.SpeechSynthesizer(
         speech_config=speech_config, 
@@ -140,27 +166,10 @@ def generate_tts(text, voice, filename):
 # ==========================
  
 def generate_dialogue_audio(extract):
-    voices_list = extract["voices"]  # Esto es una lista: ["en-GB-RyanNeural", "en-GB-SoniaNeural"]
+    voices_map = extract["voices"]  # Diccionario: {"man": "en-GB-RyanNeural", "woman": "en-GB-SoniaNeural"}
     dialogue = extract["dialogue"]
     
-    # Crear un mapeo de speakers a voces basado en el orden de aparición
-    speaker_to_voice = {}
-    speakers_found = set()
-    
-    for line in dialogue:
-        speaker = line["speaker"]
-        if speaker not in speakers_found:
-            # Asignar la siguiente voz disponible en la lista
-            voice_index = len(speakers_found)
-            if voice_index < len(voices_list):
-                speaker_to_voice[speaker] = voices_list[voice_index]
-                speakers_found.add(speaker)
-            else:
-                # Si hay más speakers que voces, usar la última voz disponible
-                speaker_to_voice[speaker] = voices_list[-1]
-                print(f"⚠️  Advertencia: No hay voz específica para {speaker}, usando {voices_list[-1]}")
-    
-    print(f"📊 Mapeo de voces: {speaker_to_voice}")
+    print(f"📊 Mapeo de voces: {voices_map}")
     
     final_audio = AudioSegment.silent(duration=0)
     temp_files = []  # Lista para llevar registro de archivos temporales
@@ -168,7 +177,12 @@ def generate_dialogue_audio(extract):
     for line in dialogue:
         speaker = line["speaker"]
         text = line["text"]
-        voice = speaker_to_voice[speaker]
+        voice = voices_map.get(speaker)
+
+        if not voice:
+            # Si no hay voz específica para este speaker, usar la primera disponible
+            voice = list(voices_map.values())[0]
+            print(f"⚠️  Advertencia: No hay voz específica para {speaker}, usando {voice}")
         
         temp_file = f"temp_line_{int(time.time()*1000)}_{speaker}.wav"
         temp_files.append(temp_file)
@@ -204,19 +218,24 @@ def generate_dialogue_audio(extract):
 # ==========================
  
 def build_listening():
+    # Verificar que las credenciales están configuradas
+    if not speech_config:
+        print("❌ Error: Credenciales no configuradas. Llama a configure_credentials primero.")
+        return None, None, None
+
     # Buscar el JSON en la carpeta actual (debería ser una carpeta testX)
     json_filename = "listening1.json"
     if not os.path.exists(json_filename):
         print(f"❌ Error: No se encuentra {json_filename} en {os.getcwd()}")
-        return None, None
+        return None, None, None
     
     with open(json_filename, encoding="utf8") as f:
         data = json.load(f)
- 
+
     folder_name = os.path.basename(os.getcwd())
     filename = f"listening1_{folder_name}.mp3"
     output_path = os.path.join(os.getcwd(), filename)
- 
+
     print(f"🎵 Generando audio para: {folder_name}")
     print(f"📁 Usando narrador de: {NARRATOR_DIR}")
     
@@ -224,7 +243,7 @@ def build_listening():
     intro_path = os.path.join(NARRATOR_DIR, INTRO)
     if not os.path.exists(intro_path):
         print(f"❌ Error: No se encuentra {intro_path}")
-        return None, None
+        return None, None, None
     
     # Cargar Intro
     print("🔄 Cargando intro...")
@@ -295,33 +314,50 @@ if __name__ == "__main__":
     print("="*60)
     print("🎧 GENERADOR LISTENING PARTE 1")
     print("="*60)
-    
+
+    # Leer credenciales desde variables de entorno
+    azure_key = os.environ.get('AZURE_SPEECH_KEY', '')
+    azure_region = os.environ.get('AZURE_REGION', 'westeurope')
+    bunny_key = os.environ.get('BUNNY_API_KEY', '')
+    bunny_storage = os.environ.get('BUNNY_STORAGE_ZONE', 'audios-examen')
+    bunny_pull = os.environ.get('BUNNY_PULL_ZONE', 'listeninggenerator')
+
+    if not azure_key or not bunny_key:
+        print("❌ Error: Faltan credenciales. Configura las variables de entorno:")
+        print("   AZURE_SPEECH_KEY=tu_clave_azure")
+        print("   BUNNY_API_KEY=tu_clave_bunny")
+        sys.exit(1)
+
+    configure_credentials(azure_key, azure_region, bunny_key, bunny_storage, bunny_pull)
+
     # Generar el audio
     output_path, data, json_filename = build_listening()
-    
+
     if output_path and data:
         # Subida a Bunny
         print("\n📤 Subiendo a BunnyCDN...")
         bunny_url = upload_to_bunny(output_path)
-        
+
         if bunny_url:
             print(f"🔗 URL en Bunny: {bunny_url}")
-            
+
             # Actualizar JSON
             data["audio_source"] = bunny_url
             with open(json_filename, "w", encoding="utf8") as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
             print(f"📝 JSON actualizado: {json_filename}")
-            
+
             # Borrar archivo MP3 local
             try:
                 os.remove(output_path)
                 print(f"🗑️ Archivo MP3 local eliminado: {os.path.basename(output_path)}")
             except Exception as e:
                 print(f"⚠️ No se pudo eliminar el archivo local: {e}")
-            
+
             print("\n✨ Proceso completado exitosamente!")
         else:
             print("\n❌ Error en la subida a Bunny. El archivo MP3 se mantiene local.")
+            sys.exit(1)
     else:
         print("\n❌ Error en la generación del audio.")
+        sys.exit(1)
