@@ -158,7 +158,7 @@ SCHEMA (return exactly this structure, fully populated):
 
 STRICT RULES:
 1. Three DIFFERENT settings – vary: workplace, leisure, academic, domestic, social, professional.
-2. Each dialogue: 150–200 words, minimum 5 turns, natural register (contractions, hedging, fillers).
+2. Each dialogue: 120–170 words, minimum 5 turns, natural register (contractions, hedging, fillers).
 3. Questions test INFERENCE or ATTITUDE, not literal recall.
 4. All three options must be plausible; only one is unambiguously correct.
 5. The dialogue array must perfectly match audio_script (one entry per turn, speaker = "man" or "woman").

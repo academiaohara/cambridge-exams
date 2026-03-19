@@ -89,8 +89,11 @@ def upload_to_bunny(file_path):
 def get_ai_content(api_key, test_id):
     client = OpenAI(api_key=api_key)
     audio_url = ""
-    voices = {"interviewer": "en-GB-RyanNeural", "guest": "en-GB-SoniaNeural"}
+    voices = {"interviewer": "en-GB-RyanNeural", "guest1": "en-GB-SoniaNeural", "guest2": "en-GB-LibbyNeural"}
     prompt = f"""Generate listening3.json for Cambridge CAE Test {test_id}.
+
+The interview features TWO guests (not one). Both guests must have realistic first names (e.g. "John" and "Meredith").
+Use their first names in lowercase as the keys in "voices" and as "speaker" values in the dialogue array.
 
 SCHEMA:
 {{
@@ -99,48 +102,50 @@ SCHEMA:
   "type": "multiple-choice-text",
   "time": 15,
   "totalQuestions": 6,
-  "description": "You will hear an interview with [guest description]. For questions 15–20, choose the answer (A, B, C or D) which fits best.",
+  "description": "You will hear an interview with [Guest1 Name] and [Guest2 Name] about [topic]. For questions 15–20, choose the answer (A, B, C or D) which fits best.",
   "instructions": "For questions 15–20, choose the answer (A, B, C or D) which fits best.",
   "duration_minutes": 12,
   "audio_source": "{audio_url}",
   "extracts": [
     {{
       "id": 1,
-      "context": "You hear an interview with [Name], a [profession].",
-      "voices": {json.dumps(voices)},
-      "audio_script": "Full interview 480–560 words. Mark answer evidence: [15]...[/15] through [20]...[/20]. Use || for paragraph breaks within a long turn.",
+      "context": "An interview with [Guest1 Name] and [Guest2 Name] discussing [topic].",
+      "voices": {{"interviewer": "en-GB-RyanNeural", "john": "en-GB-SoniaNeural", "meredith": "en-GB-LibbyNeural"}},
+      "audio_script": "Full interview 400–500 words. Mark answer evidence: [15]...[/15] through [20]...[/20]. Use \\n\\n for paragraph breaks within a long turn.",
       "dialogue": [
-        {{"speaker": "interviewer", "text": "Opening question."}},
-        {{"speaker": "guest",       "text": "Long answer (80–100 words)."}},
-        {{"speaker": "interviewer", "text": "Follow-up question."}},
-        {{"speaker": "guest",       "text": "Answer."}},
-        {{"speaker": "interviewer", "text": "Another question."}},
-        {{"speaker": "guest",       "text": "Answer."}},
+        {{"speaker": "interviewer", "text": "Opening question addressing both guests."}},
+        {{"speaker": "john",        "text": "Answer (60–80 words)."}},
+        {{"speaker": "meredith",    "text": "Adding their perspective."}},
+        {{"speaker": "interviewer", "text": "Follow-up question to one guest."}},
+        {{"speaker": "meredith",    "text": "Detailed answer."}},
+        {{"speaker": "interviewer", "text": "Question to the other guest."}},
+        {{"speaker": "john",        "text": "Answer."}},
         {{"speaker": "interviewer", "text": "Question."}},
-        {{"speaker": "guest",       "text": "Answer."}},
+        {{"speaker": "meredith",    "text": "Answer."}},
         {{"speaker": "interviewer", "text": "Question."}},
-        {{"speaker": "guest",       "text": "Answer."}},
-        {{"speaker": "interviewer", "text": "Final question."}},
-        {{"speaker": "guest",       "text": "Closing answer."}}
+        {{"speaker": "john",        "text": "Closing answer."}}
       ],
       "questions": [
-        {{"number": 15, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "C", "explanation": "..."}},
-        {{"number": 16, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "A", "explanation": "..."}},
-        {{"number": 17, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "D", "explanation": "..."}},
-        {{"number": 18, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "B", "explanation": "..."}},
-        {{"number": 19, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "A", "explanation": "..."}},
-        {{"number": 20, "question": "...", "options": {{"A": "...", "B": "...", "C": "...", "D": "..."}}, "answer": "C", "explanation": "..."}}
+        {{"number": 15, "question": "...", "options": ["A) ...", "B) ...", "C) ...", "D) ..."], "correct": "C", "explanation": "..."}},
+        {{"number": 16, "question": "...", "options": ["A) ...", "B) ...", "C) ...", "D) ..."], "correct": "A", "explanation": "..."}},
+        {{"number": 17, "question": "...", "options": ["A) ...", "B) ...", "C) ...", "D) ..."], "correct": "D", "explanation": "..."}},
+        {{"number": 18, "question": "...", "options": ["A) ...", "B) ...", "C) ...", "D) ..."], "correct": "B", "explanation": "..."}},
+        {{"number": 19, "question": "...", "options": ["A) ...", "B) ...", "C) ...", "D) ..."], "correct": "A", "explanation": "..."}},
+        {{"number": 20, "question": "...", "options": ["A) ...", "B) ...", "C) ...", "D) ..."], "correct": "C", "explanation": "..."}}
       ]
     }}
   ]
 }}
 
 STRICT RULES:
-1. Guest must be a real-sounding professional in an interesting field (e.g. palaeontologist, forensic architect, wildlife sound recorder, urban planner).
-2. 6 questions (15–20), 4 options each (A–D). Questions test: inference, attitude, reference, meaning in context.
-3. Dialogue must be realistic: interviewer asks open questions; guest gives detailed, naturally-paced answers.
-4. Questions follow the ORDER of the dialogue (Q15 relates to early dialogue, Q20 to late).
-5. Avoid Test 1 guest type (entrepreneur). Voices: {json.dumps(voices)}.
+1. TWO guests, both real-sounding professionals in an interesting shared field (e.g. two authors of a book, two scientists in the same discipline, two co-founders of a project).
+2. Give each guest a realistic first name. Use those names (lowercase) as keys in "voices" and as "speaker" values. Do NOT use "guest", "guest1", or "guest2".
+3. Voices: interviewer → "en-GB-RyanNeural"; assign two different British/Irish voices for the guests.
+4. 6 questions (15–20), 4 options each. Options must be an ARRAY of strings in the format ["A) text", "B) text", "C) text", "D) text"]. Use "correct" (not "answer") for the correct letter.
+5. Questions test: inference, attitude, reference, meaning in context.
+6. Dialogue: 11–13 turns total. Interviewer asks open questions; both guests contribute answers across the interview.
+7. Questions follow the ORDER of the dialogue (Q15 relates to early dialogue, Q20 to late).
+8. Avoid Test 1 topic (collecting/collections).
 """
     response = client.chat.completions.create(
         model="gpt-4o",
