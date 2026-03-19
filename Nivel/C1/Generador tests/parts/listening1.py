@@ -178,10 +178,46 @@ STRICT RULES:
     
     response = client.chat.completions.create(
         model="gpt-4o",
-        messages=[{"role": "system", "content": "You are a Cambridge exam expert."}, {"role": "user", "content": prompt}],
+        messages=[{"role": "system", "content": (
+            "You are a Cambridge exam expert. "
+            "CRITICAL: Each extract's 'audio_script' MUST contain at least 100 words. "
+            "Count every word before returning. If any audio_script is under 100 words, expand it before outputting."
+        )}, {"role": "user", "content": prompt}],
         response_format={"type": "json_object"}
     )
     return json.loads(response.choices[0].message.content)
+
+# ==========================
+# EXPANSIÓN DE CONTENIDO
+# ==========================
+
+def _expand_listening1(client, content, min_words=90):
+    """Expands short extract audio_scripts without regenerating the full JSON."""
+    extracts = content.get("extracts", [])
+    short_ids = [e["id"] for e in extracts if count_words(e.get("audio_script", "")) < min_words]
+    if not short_ids:
+        return content
+    short_info = {
+        str(e["id"]): e["audio_script"]
+        for e in extracts if e["id"] in short_ids
+    }
+    expand_prompt = (
+        f"The following extract audio_scripts are too short (each needs ≥{min_words} words). "
+        f"Expand ONLY these audio_scripts, keeping the same setting, speakers, and embedded [N]…[/N] markers. "
+        f"Also update the matching 'dialogue' turns to reflect the expanded content. "
+        f"Return the COMPLETE original JSON with only the short extracts expanded:\n\n"
+        f"Short extract IDs and scripts: {json.dumps(short_info)}\n\n"
+        f"Full JSON:\n{json.dumps(content)}"
+    )
+    resp = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "You are a Cambridge exam expert. Output valid JSON only."},
+            {"role": "user", "content": expand_prompt}
+        ],
+        response_format={"type": "json_object"}
+    )
+    return json.loads(resp.choices[0].message.content)
 
 # ==========================
 # FUNCIÓN PRINCIPAL
@@ -197,19 +233,23 @@ def generate(test_id, output_path, api_key, json_only, audio_only, no_upload):
     # 1. Crear JSON
     if not audio_only:
         print(f"🤖 Generando contenido AI para Listening 1...")
-        max_attempts = 3
+        MAX_ATTEMPTS = 5
+        client = OpenAI(api_key=api_key)
         content = None
-        for attempt in range(1, max_attempts + 1):
-            content = get_ai_content(api_key, test_id)
+        for attempt in range(1, MAX_ATTEMPTS + 1):
+            if attempt <= 3:
+                content = get_ai_content(api_key, test_id)
+            else:
+                content = _expand_listening1(client, content, MIN_WORDS_PER_EXTRACT)
             extracts = content.get("extracts", [])
             counts = [count_words(e.get("audio_script", "")) for e in extracts]
             if all(c >= MIN_WORDS_PER_EXTRACT for c in counts):
                 break
             short = [i + 1 for i, c in enumerate(counts) if c < MIN_WORDS_PER_EXTRACT]
-            if attempt < max_attempts:
-                print(f"⚠️ Intento {attempt}: Extracto(s) {short} con pocas palabras (mínimo {MIN_WORDS_PER_EXTRACT} c/u). Regenerando...")
+            if attempt < MAX_ATTEMPTS:
+                print(f"⚠️ Intento {attempt}: Extracto(s) {short} con pocas palabras (mínimo {MIN_WORDS_PER_EXTRACT} c/u). {'Regenerando' if attempt < 3 else 'Expandiendo'}...")
             else:
-                print(f"⚠️ Texto corto tras {max_attempts} intentos. Guardando de todas formas.")
+                print(f"⚠️ Texto corto tras {MAX_ATTEMPTS} intentos. Guardando de todas formas.")
         data = {
             "title": f"Listening Part 1",
             "time": 15,
