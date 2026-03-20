@@ -1,0 +1,182 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test18.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends, a man and a woman, discussing their experience at a recently opened restaurant.",
+      "voices": [
+        "en-GB-ElliotNeural",
+        "en-GB-OliviaNeural"
+      ],
+      "audio_script": "Man: Well, that was... interesting. I’m not sure the fusion concept really worked for me. Kimchi on a pizza is a bold choice, but I don't think I'd order it again. || Woman: Really? [1]I actually thought the experimentation with flavours was quite refreshing, even if it didn't always hit the mark[/1]. It’s better than another bland chain restaurant. || Man: Fair point. But the service was agonizingly slow. We waited forty minutes for our starters! || Woman: True, but I think they’re just finding their feet in the first few weeks. [2]What really put me off, though, was the noise level—I could barely hear what you were saying over that deafening background music[/2]. It made the whole meal feel rushed and stressful. || Man: Agreed. I prefer a slightly more intimate atmosphere.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Well, that was... interesting. I’m not sure the fusion concept really worked for me. Kimchi on a pizza is a bold choice, but I don't think I'd order it again."
+        },
+        {
+          "speaker": "woman",
+          "text": "Really? I actually thought the experimentation with flavours was quite refreshing, even if it didn't always hit the mark. It’s better than another bland chain restaurant."
+        },
+        {
+          "speaker": "man",
+          "text": "Fair point. But the service was agonizingly slow. We waited forty minutes for our starters!"
+        },
+        {
+          "speaker": "woman",
+          "text": "True, but I think they’re just finding their feet in the first few weeks. What really put me off, though, was the noise level—I could barely hear what you were saying over that deafening background music. It made the whole meal feel rushed and stressful."
+        },
+        {
+          "speaker": "man",
+          "text": "Agreed. I prefer a slightly more intimate atmosphere."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Regarding the food, the woman liked",
+          "options": {
+            "A": "the consistency of the menu items.",
+            "B": "the novelty of the combinations.",
+            "C": "the traditional cooking methods used."
+          },
+          "answer": "B",
+          "explanation": "B is correct because she says the experimentation was refreshing, which refers to the novelty [1]."
+        },
+        {
+          "number": 2,
+          "question": "What did the woman find most distracting during the meal?",
+          "options": {
+            "A": "the unprofessional behavior of the staff",
+            "B": "the quality of the interior decoration",
+            "C": "the excessive volume of the music"
+          },
+          "answer": "C",
+          "explanation": "C is supported by her statement that the noise level was deafening [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two students talking about a presentation they have to give for their environmental science class.",
+      "voices": [
+        "en-GB-AbbiNeural",
+        "en-GB-EthanNeural"
+      ],
+      "audio_script": "Woman: I’m starting to panic about this microplastics presentation. There’s just too much data to cover in ten minutes! We’re never going to get through it all. || Man: Don't worry. [3]I think the key is to be ruthless and strip it back to the absolute essentials[/3]. If we just focus on the impact on local marine life, it’ll be much tighter and more impactful. || Woman: Good point. But I’m also worried about the Q&A session. Professor Davies loves to ask obscure questions just to see if we trip up. || Man: Maybe, but if we structure our main argument clearly enough, it’ll show we’ve done our research. [4]I’m more concerned that our visual aids aren't engaging enough[/4]; all these black and white graphs look so dull. || Woman: Okay, let's spend the afternoon reworking the slides and making them more colorful.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’m starting to panic about this microplastics presentation. There’s just too much data to cover in ten minutes! We’re never going to get through it all."
+        },
+        {
+          "speaker": "man",
+          "text": "Don't worry. I think the key is to be ruthless and strip it back to the absolute essentials. If we just focus on the impact on local marine life, it’ll be much tighter and more impactful."
+        },
+        {
+          "speaker": "woman",
+          "text": "Good point. But I’m also worried about the Q&A session. Professor Davies loves to ask obscure questions just to see if we trip up."
+        },
+        {
+          "speaker": "man",
+          "text": "Maybe, but if we structure our main argument clearly enough, it’ll show we’ve done our research. I’m more concerned that our visual aids aren't engaging enough; all these black and white graphs look so dull."
+        },
+        {
+          "speaker": "woman",
+          "text": "Okay, let's spend the afternoon reworking the slides and making them more colorful."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What advice does the man give the woman about the presentation?",
+          "options": {
+            "A": "to include more specific data points",
+            "B": "to narrow down the scope of their topic",
+            "C": "to practice the timing more carefully"
+          },
+          "answer": "B",
+          "explanation": "B is supported by his suggestion to 'strip it back to the absolute essentials' and focus on local marine life [3]."
+        },
+        {
+          "number": 4,
+          "question": "What is the man's main worry?",
+          "options": {
+            "A": "the difficulty of the subject matter",
+            "B": "the likely questions from the professor",
+            "C": "the lack of impact of the visual materials"
+          },
+          "answer": "C",
+          "explanation": "C is correct as he directly states he is concerned that their 'visual aids aren't engaging enough' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two colleagues discussing a recent company training session they both attended.",
+      "voices": [
+        "en-GB-SoniaNeural",
+        "en-GB-RyanNeural"
+      ],
+      "audio_script": "Woman: So, how did you find the workshop on 'Effective Time Management'? I thought some of the practical exercises were surprisingly useful. || Man: Yes, the prioritization matrix was a real eye-opener. But honestly, [5]I found the facilitator’s over-enthusiastic delivery a bit grating after an hour[/5]. It felt like she was trying too hard to sell us something we already knew. || Woman: I see your point. It was a bit relentless. But still, the core principles were sound. Do you think you'll actually implement any of the new strategies? || Man: I’ll try. But the real issue isn't knowing *how* to manage my time; it’s finding the time *to* manage it! Our current workload is just impossible. || Woman: Exactly. [6]I think the management team really missed an opportunity to address the underlying cultural problems that lead to burnout[/6] in the first place, rather than just telling us to make more lists. || Man: Absolutely. It felt like a plaster on a broken leg.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "So, how did you find the workshop on 'Effective Time Management'? I thought some of the practical exercises were surprisingly useful."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, the prioritization matrix was a real eye-opener. But honestly, I found the facilitator’s over-enthusiastic delivery a bit grating after an hour. It felt like she was trying too hard to sell us something we already knew."
+        },
+        {
+          "speaker": "woman",
+          "text": "I see your point. It was a bit relentless. But still, the core principles were sound. Do you think you'll actually implement any of the new strategies?"
+        },
+        {
+          "speaker": "man",
+          "text": "I’ll try. But the real issue isn't knowing *how* to manage my time; it’s finding the time *to* manage it! Our current workload is just impossible."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. I think the management team really missed an opportunity to address the underlying cultural problems that lead to burnout in the first place, rather than just telling us to make more lists."
+        },
+        {
+          "speaker": "man",
+          "text": "Absolutely. It felt like a plaster on a broken leg."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the man’s reaction to the workshop facilitator?",
+          "options": {
+            "A": "He found her delivery confusing.",
+            "B": "He thought she lacked expert knowledge.",
+            "C": "He was irritated by her excessively positive tone."
+          },
+          "answer": "C",
+          "explanation": "C is supported by his comment that he found her 'over-enthusiastic delivery a bit grating' [5]."
+        },
+        {
+          "number": 6,
+          "question": "What does the woman criticize about the company’s approach?",
+          "options": {
+            "A": "the choice of topics covered in the training",
+            "B": "the failure to tackle core systemic issues",
+            "C": "the quality of the practical tools provided"
+          },
+          "answer": "B",
+          "explanation": "B is supported by her statement that they 'missed an opportunity to address the underlying cultural problems' [6]."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test29.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new premium subscription to a music streaming service.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I finally upgraded to the 'Hi-Fi' tier on my music app. The difference in sound clarity is actually quite startling. || Woman: [1]I’m still not convinced the average ear can tell the difference[/1], especially when you're just using standard earbuds on a noisy bus. || Man: You need proper headphones to appreciate it. But I agree, it’s a luxury. || Woman: [2]What I do like, though, is the new 'offline mode' for high-res files[/2]. It’s great for when I’m travelling through areas with patchy signal. || Man: Definitely. It saves a lot of frustration. Though I think they could make the interface a bit less cluttered. || Woman: True, it takes way too many clicks just to find my downloaded playlists lately.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I finally upgraded to the 'Hi-Fi' tier on my music app. The difference in sound clarity is actually quite startling."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’m still not convinced the average ear can tell the difference, especially when you're just using standard earbuds on a noisy bus."
+        },
+        {
+          "speaker": "man",
+          "text": "You need proper headphones to appreciate it. But I agree, it’s a luxury."
+        },
+        {
+          "speaker": "woman",
+          "text": "What I do like, though, is the new 'offline mode' for high-res files. It’s great for when I’m travelling through areas with patchy signal."
+        },
+        {
+          "speaker": "man",
+          "text": "Definitely. It saves a lot of frustration. Though I think they could make the interface a bit less cluttered."
+        },
+        {
+          "speaker": "woman",
+          "text": "True, it takes way too many clicks just to find my downloaded playlists lately."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The woman expresses skepticism regarding",
+          "options": {
+            "A": "the value of the audio improvements.",
+            "B": "the reliability of the streaming app.",
+            "C": "the cost of the premium subscription."
+          },
+          "answer": "A",
+          "explanation": "She isn't convinced that the 'average ear' can notice the change in quality [1]."
+        },
+        {
+          "number": 2,
+          "question": "What feature of the service does the woman find particularly useful?",
+          "options": {
+            "A": "the personalized music recommendations",
+            "B": "the ability to access content without internet",
+            "C": "the streamlined design of the user interface"
+          },
+          "answer": "B",
+          "explanation": "She praises the 'offline mode' for when signal is 'patchy' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a professional development seminar they attended.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: That session on 'Time Blocking' was quite a revelation. I’ve already cleared my Tuesday morning for deep work. || Woman: It was okay. But [3]I suspect the speaker was a bit out of touch with how reactive our roles actually are[/3]. We can't just ignore the phones for four hours. || Man: I suppose it depends on the department. It seemed to work for the dev team. || Woman: [4]I was disappointed that there wasn't more time for the Q&A at the end[/4]. I had a specific question about managing shared calendars that never got answered. || Man: I agree. He talked for twenty minutes longer than he was supposed to. || Woman: Exactly. It’s a bit ironic for a time-management expert to run over his own schedule.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "That session on 'Time Blocking' was quite a revelation. I’ve already cleared my Tuesday morning for deep work."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was okay. But I suspect the speaker was a bit out of touch with how reactive our roles actually are. We can't just ignore the phones for four hours."
+        },
+        {
+          "speaker": "man",
+          "text": "I suppose it depends on the department. It seemed to work for the dev team."
+        },
+        {
+          "speaker": "woman",
+          "text": "I was disappointed that there wasn't more time for the Q&A at the end. I had a specific question about managing shared calendars that never got answered."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. He talked for twenty minutes longer than he was supposed to."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a bit ironic for a time-management expert to run over his own schedule."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman suggests that the seminar's advice was",
+          "options": {
+            "A": "too basic for senior employees.",
+            "B": "impractical for her specific job.",
+            "C": "poorly explained by the speaker."
+          },
+          "answer": "B",
+          "explanation": "She feels the speaker didn't realize how 'reactive' (requiring quick responses) her role is [3]."
+        },
+        {
+          "number": 4,
+          "question": "Both speakers agree that the seminar",
+          "options": {
+            "A": "lacked sufficient opportunities for participation.",
+            "B": "was held in an unsuitable location.",
+            "C": "covered too many different topics."
+          },
+          "answer": "A",
+          "explanation": "They both highlight that the Q&A session was cut short because the speaker ran over [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new local bakery.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: Have you tried the sourdough from 'The Crust'? It’s definitely the best in the neighbourhood. || Woman: It is good. But [5]I found the queuing system a bit chaotic[/5]. There was no clear line and people were just hovering around the counter. || Man: It’s a bit of a victim of its own success, I think. They weren't prepared for the crowds. || Woman: [6]I did appreciate that they’ve kept the prices quite reasonable[/6], though, especially compared to that fancy place by the station. || Man: I agree. It feels like a proper community shop rather than a tourist trap. || Woman: Definitely. I’ll just make sure to go a bit earlier next time to avoid the mid-morning rush.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you tried the sourdough from 'The Crust'? It’s definitely the best in the neighbourhood."
+        },
+        {
+          "speaker": "woman",
+          "text": "It is good. But I found the queuing system a bit chaotic. There was no clear line and people were just hovering around the counter."
+        },
+        {
+          "speaker": "man",
+          "text": "It’s a bit of a victim of its own success, I think. They weren't prepared for the crowds."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did appreciate that they’ve kept the prices quite reasonable, though, especially compared to that fancy place by the station."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It feels like a proper community shop rather than a tourist trap."
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely. I’ll just make sure to go a bit earlier next time to avoid the mid-morning rush."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What did the woman dislike about her visit to the bakery?",
+          "options": {
+            "A": "the quality of the customer service",
+            "B": "the lack of organization in the shop",
+            "C": "the limited range of products available"
+          },
+          "answer": "B",
+          "explanation": "She describes the 'queuing system' as 'chaotic' with no clear line [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the bakery's",
+          "options": {
+            "A": "speed of service.",
+            "B": "affordability.",
+            "C": "interior design."
+          },
+          "answer": "B",
+          "explanation": "They both agree that the prices are 'reasonable' and not like a 'tourist trap' [6]."
+        }
+      ]
+    }
+  ]
+}

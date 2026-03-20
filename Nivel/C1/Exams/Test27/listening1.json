@@ -1,0 +1,186 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test27.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new meditation app.",
+      "voices": [
+        "en-GB-SoniaNeural",
+        "en-GB-RyanNeural"
+      ],
+      "audio_script": "Woman: I’ve been using 'Zen-Mind' for a week and I actually feel much less frazzled by the evening. || Man: I tried it, but [1]I found the constant 'achievement badges' you earn a bit counterproductive[/1]. It felt like it was turning relaxation into a competitive sport. || Woman: I see what you mean. I just ignore that part. [2]What I really appreciate is the huge variety of ambient background sounds they offer[/2]. Most apps just have 'rain' or 'forest', but this has everything from 'busy library' to 'underwater'. || Man: True, the soundscapes are high quality. I just wish the subscription fee wasn't so steep for what it is. || Woman: It is expensive, but for me, the improved sleep quality makes it worth every penny.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’ve been using 'Zen-Mind' for a week and I actually feel much less frazzled by the evening."
+        },
+        {
+          "speaker": "man",
+          "text": "I tried it, but I found the constant 'achievement badges' you earn a bit counterproductive. It felt like it was turning relaxation into a competitive sport."
+        },
+        {
+          "speaker": "woman",
+          "text": "I see what you mean. I just ignore that part. What I really appreciate is the huge variety of ambient background sounds they offer. Most apps just have 'rain' or 'forest', but this has everything from 'busy library' to 'underwater'."
+        },
+        {
+          "speaker": "man",
+          "text": "True, the soundscapes are high quality. I just wish the subscription fee wasn't so steep for what it is."
+        },
+        {
+          "speaker": "woman",
+          "text": "It is expensive, but for me, the improved sleep quality makes it worth every penny."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the man's main criticism of the app?",
+          "options": {
+            "A": "the complexity of the interface",
+            "B": "the gamified approach to meditation",
+            "C": "the poor quality of the guided sessions"
+          },
+          "answer": "B",
+          "explanation": "He finds the 'achievement badges' counterproductive as they make it feel like a 'competitive sport' [1]."
+        },
+        {
+          "number": 2,
+          "question": "The woman particularly likes the app because of",
+          "options": {
+            "A": "the range of auditory environments.",
+            "B": "the effectiveness of the sleep tracking.",
+            "C": "the competitive elements it includes."
+          },
+          "answer": "A",
+          "explanation": "She praises the 'huge variety of ambient background sounds' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a change in the company's remote work policy.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-AbbiNeural"
+      ],
+      "audio_script": "Man: So, the CEO wants us all back in the office three days a week starting next month. What's your take? || Woman: [3]I suspect the real reason is that they’re worried about the long-term lease on this building sitting empty[/3], rather than any actual drop in our productivity. || Man: That would make sense. It’s a lot of wasted rent. But I’m worried about the impact on our team's morale. || Woman: [4]I’ve noticed that our most junior staff are really struggling without the spontaneous learning that happens when we’re all together[/4]. You can't really replicate that on a video call. || Man: That's a fair point. It’s hard to mentor someone through a screen. || Woman: Exactly. It might be an unpopular move, but for the sake of the new starters, it’s probably necessary.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, the CEO wants us all back in the office three days a week starting next month. What's your take?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect the real reason is that they’re worried about the long-term lease on this building sitting empty, rather than any actual drop in our productivity."
+        },
+        {
+          "speaker": "man",
+          "text": "That would make sense. It’s a lot of wasted rent. But I’m worried about the impact on our team's morale."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that our most junior staff are really struggling without the spontaneous learning that happens when we’re all together. You can't really replicate that on a video call."
+        },
+        {
+          "speaker": "man",
+          "text": "That's a fair point. It’s hard to mentor someone through a screen."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It might be an unpopular move, but for the sake of the new starters, it’s probably necessary."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "Why does the woman believe the policy has been changed?",
+          "options": {
+            "A": "to address a decline in staff output",
+            "B": "to justify the cost of the office space",
+            "C": "to improve communication with clients"
+          },
+          "answer": "B",
+          "explanation": "She suspects the reason is the 'long-term lease on this building sitting empty' [3]."
+        },
+        {
+          "number": 4,
+          "question": "The woman suggests that returning to the office will specifically benefit",
+          "options": {
+            "A": "the company's financial performance.",
+            "B": "the mental health of the senior managers.",
+            "C": "the professional development of newer employees."
+          },
+          "answer": "C",
+          "explanation": "She notes that 'junior staff' benefit from 'spontaneous learning' that happens in person [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new science-fiction film.",
+      "voices": [
+        "en-GB-ThomasNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: I finally saw 'Nebula Dawn' last night. The visual effects were staggering, especially the scenes on the ice planet. || Woman: They were impressive. But [5]I found the plot a bit too derivative of earlier classics in the genre[/5]. It felt like I’d seen it all before in 'Interstellar' or 'Blade Runner'. || Man: I see what you mean. It didn't break much new ground narratively. || Woman: [6]I just wish the lead actor had been given a bit more emotional depth to work with[/6]. His performance felt a bit one-dimensional, even during the climactic scenes. || Man: I agree. It felt like they spent ninety percent of the budget on the CGI and forgot to hire a decent scriptwriter. || Woman: Exactly. It’s a beautiful film to look at, but it didn't leave much of a lasting impression.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I finally saw 'Nebula Dawn' last night. The visual effects were staggering, especially the scenes on the ice planet."
+        },
+        {
+          "speaker": "woman",
+          "text": "They were impressive. But I found the plot a bit too derivative of earlier classics in the genre. It felt like I’d seen it all before in 'Interstellar' or 'Blade Runner'."
+        },
+        {
+          "speaker": "man",
+          "text": "I see what you mean. It didn't break much new ground narratively."
+        },
+        {
+          "speaker": "woman",
+          "text": "I just wish the lead actor had been given a bit more emotional depth to work with. His performance felt a bit one-dimensional, even during the climactic scenes."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It felt like they spent ninety percent of the budget on the CGI and forgot to hire a decent scriptwriter."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a beautiful film to look at, but it didn't leave much of a lasting impression."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman's main issue with the film?",
+          "options": {
+            "A": "the slow pacing of the story",
+            "B": "the lack of originality in the script",
+            "C": "the poor quality of the visual effects"
+          },
+          "answer": "B",
+          "explanation": "She found the plot 'too derivative' of earlier classics [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers agree that the film",
+          "options": {
+            "A": "failed to develop its characters effectively.",
+            "B": "was too long for the amount of content.",
+            "C": "should have used less computer-generated imagery."
+          },
+          "answer": "A",
+          "explanation": "They agree the lead actor's performance was 'one-dimensional' and they 'forgot to hire a decent scriptwriter' [6]."
+        }
+      ]
+    }
+  ]
+}

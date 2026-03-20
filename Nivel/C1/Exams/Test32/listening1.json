@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test32.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new co-working space in their city.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I’ve started using that 'Hub-360' space near the station. It’s got a much better vibe than my home office. || Woman: [1]I was impressed by the ergonomics of the workstations[/1]. It’s the first time I haven’t had a backache after a long day of coding. || Man: The chairs are top-tier. But [2]I found the booking system for the meeting rooms to be a bit of a nightmare[/2]. It kept crashing right when I needed to confirm a client call. || Woman: I had the same issue! It’s surprisingly glitchy for a tech-focused space. || Man: Exactly. For the price of the monthly pass, you’d expect the software to actually work. || Woman: Hopefully they’ll patch it soon, otherwise people will just head back to the local café.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve started using that 'Hub-360' space near the station. It’s got a much better vibe than my home office."
+        },
+        {
+          "speaker": "woman",
+          "text": "I was impressed by the ergonomics of the workstations. It’s the first time I haven’t had a backache after a long day of coding."
+        },
+        {
+          "speaker": "man",
+          "text": "The chairs are top-tier. But I found the booking system for the meeting rooms to be a bit of a nightmare. It kept crashing right when I needed to confirm a client call."
+        },
+        {
+          "speaker": "woman",
+          "text": "I had the same issue! It’s surprisingly glitchy for a tech-focused space."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. For the price of the monthly pass, you’d expect the software to actually work."
+        },
+        {
+          "speaker": "woman",
+          "text": "Hopefully they’ll patch it soon, otherwise people will just head back to the local café."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the woman like most about the co-working space?",
+          "options": {
+            "A": "the social atmosphere",
+            "B": "the quality of the furniture",
+            "C": "the central location"
+          },
+          "answer": "B",
+          "explanation": "She praises the 'ergonomics of the workstations' and mentions her back doesn't ache [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers agree that the facility's digital interface is",
+          "options": {
+            "A": "unnecessarily complicated.",
+            "B": "technically unreliable.",
+            "C": "expensive to access."
+          },
+          "answer": "B",
+          "explanation": "They both complain about the booking system 'crashing' and being 'glitchy' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a new mental health initiative at work.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: It’s good to see the company finally offering free counselling sessions. It shows they care about more than just the bottom line. || Woman: [3]I suspect it’s a bit of a defensive move to reduce the number of staff taking long-term sick leave[/3], to be honest. || Man: Maybe, but the effect is the same. People get the support they need. || Woman: [4]I’ve noticed that the 'quiet room' they’ve designated is right next to the noisy lift shaft[/4], which seems to defeat the purpose. || Man: I agree. It’s hard to meditate when you can hear the machinery clunking every two minutes. || Woman: It’s a well-intentioned idea, but it feels like it was planned by someone who’s never actually tried to relax in this office.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "It’s good to see the company finally offering free counselling sessions. It shows they care about more than just the bottom line."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect it’s a bit of a defensive move to reduce the number of staff taking long-term sick leave, to be honest."
+        },
+        {
+          "speaker": "man",
+          "text": "Maybe, but the effect is the same. People get the support they need."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that the 'quiet room' they’ve designated is right next to the noisy lift shaft, which seems to defeat the purpose."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s hard to meditate when you can hear the machinery clunking every two minutes."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a well-intentioned idea, but it feels like it was planned by someone who’s never actually tried to relax in this office."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the initiative was primarily driven by",
+          "options": {
+            "A": "a genuine concern for employee welfare.",
+            "B": "a desire to improve the firm's efficiency.",
+            "C": "pressure from external regulatory bodies."
+          },
+          "answer": "B",
+          "explanation": "She thinks it's a move to 'reduce the number of staff taking long-term sick leave' [3]."
+        },
+        {
+          "number": 4,
+          "question": "What practical issue do both speakers identify?",
+          "options": {
+            "A": "the lack of available counselling slots",
+            "B": "the inappropriate location of a new facility",
+            "C": "the poor quality of the meditation sessions"
+          },
+          "answer": "B",
+          "explanation": "They both agree the 'quiet room' is too noisy because it's next to the 'lift shaft' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two friends discussing a new documentary about the history of the internet.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: That film about the early days of the web was fascinating. I’d forgotten how clunky those first websites were! || Woman: [5]I appreciated how they highlighted the contributions of the lesser-known pioneers[/5], rather than just focusing on the big names like Bill Gates. || Man: I agree. It gave a much fairer picture of how collaborative the whole process was. || Woman: [6]I did think the soundtrack was a bit overbearing, though[/6]. That dramatic music during the 'browser wars' section was a bit much. || Man: It was a bit 'theatrical', I suppose. But overall, it was a very solid piece of filmmaking. || Woman: Definitely. It’s rare to find a tech documentary that’s actually accessible to people who aren't engineers.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "That film about the early days of the web was fascinating. I’d forgotten how clunky those first websites were!"
+        },
+        {
+          "speaker": "woman",
+          "text": "I appreciated how they highlighted the contributions of the lesser-known pioneers, rather than just focusing on the big names like Bill Gates."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It gave a much fairer picture of how collaborative the whole process was."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did think the soundtrack was a bit overbearing, though. That dramatic music during the 'browser wars' section was a bit much."
+        },
+        {
+          "speaker": "man",
+          "text": "It was a bit 'theatrical', I suppose. But overall, it was a very solid piece of filmmaking."
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely. It’s rare to find a tech documentary that’s actually accessible to people who aren't engineers."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What did the woman value about the documentary?",
+          "options": {
+            "A": "the high quality of the archival footage",
+            "B": "the recognition of overlooked individuals",
+            "C": "the clear explanation of technical terms"
+          },
+          "answer": "B",
+          "explanation": "She liked that they 'highlighted the contributions of the lesser-known pioneers' [5]."
+        },
+        {
+          "number": 6,
+          "question": "The woman's reaction to the music in the film was that",
+          "options": {
+            "A": "it was inappropriately dramatic.",
+            "B": "it helped to maintain the pacing.",
+            "C": "it was too repetitive."
+          },
+          "answer": "A",
+          "explanation": "She calls the soundtrack 'overbearing' and the music 'a bit much' [6]."
+        }
+      ]
+    }
+  ]
+}

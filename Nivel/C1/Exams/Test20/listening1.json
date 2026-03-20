@@ -1,0 +1,182 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test20.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends, a man and a woman, talking about a news story regarding a robotic chef.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: Did you see that clip of the robotic kitchen? It can apparently replicate a Michelin-star souffle perfectly every single time. || Woman: I did. It’s technically impressive, I suppose, but [1]I can't help feeling that it strips the soul out of the dining experience[/1]. Cooking is about intuition and flair, isn't it? || Man: I think you’re being a bit nostalgic. If I’m paying top whack for a meal, I want consistency. I don't care if a human or a machine seasoned the soup, as long as it’s spot on. || Woman: But where’s the room for happy accidents? Some of the best dishes in history were mistakes. [2]What really worries me, though, is how this will affect the career path for aspiring young chefs[/2]. If the entry-level prep work is automated, how do they learn the basics? || Man: They’ll just have to adapt and focus on the creative side from day one.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you see that clip of the robotic kitchen? It can apparently replicate a Michelin-star souffle perfectly every single time."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did. It’s technically impressive, I suppose, but I can't help feeling that it strips the soul out of the dining experience. Cooking is about intuition and flair, isn't it?"
+        },
+        {
+          "speaker": "man",
+          "text": "I think you’re being a bit nostalgic. If I’m paying top whack for a meal, I want consistency. I don't care if a human or a machine seasoned the soup, as long as it’s spot on."
+        },
+        {
+          "speaker": "woman",
+          "text": "But where’s the room for happy accidents? Some of the best dishes in history were mistakes. What really worries me, though, is how this will affect the career path for aspiring young chefs. If the entry-level prep work is automated, how do they learn the basics?"
+        },
+        {
+          "speaker": "man",
+          "text": "They’ll just have to adapt and focus on the creative side from day one."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The woman’s initial reaction to the robotic chef is one of",
+          "options": {
+            "A": "admiration for the technological advancement.",
+            "B": "scepticism about the quality of the output.",
+            "C": "concern regarding the loss of the human element."
+          },
+          "answer": "C",
+          "explanation": "C is correct as she mentions it 'strips the soul out of the dining experience' [1]."
+        },
+        {
+          "number": 2,
+          "question": "The woman expresses a specific fear about",
+          "options": {
+            "A": "the potential for technical malfunctions in kitchens.",
+            "B": "the impact on training opportunities for newcomers.",
+            "C": "the rising costs of eating at high-end restaurants."
+          },
+          "answer": "B",
+          "explanation": "B is supported by her concern about how this will affect the 'career path for aspiring young chefs' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two people discussing the benefits of a 'digital detox' weekend they both attended.",
+      "voices": [
+        "en-GB-Ollie:DragonHDLatestNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: I have to admit, handing over my smartphone at the gate was more traumatic than I’d anticipated. I felt like I’d lost a limb for the first six hours! || Woman: [3]I think that just highlights how much of an unhealthy crutch those devices have become for us[/3]. I was actually surprised by how quickly I stopped reaching for my pocket. || Man: Me too, eventually. The silence was quite profound. || Woman: It was. But [4]the most revealing part for me was realizing how much of my day is usually spent on mindless scrolling[/4] rather than actually engaging with my surroundings. I read two whole books this weekend! || Man: I managed to finish that painting I started three years ago. It’s made me rethink my evening routine entirely. || Woman: Absolutely. I’m definitely going to implement a 'no-screens' rule after 8 PM from now on.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I have to admit, handing over my smartphone at the gate was more traumatic than I’d anticipated. I felt like I’d lost a limb for the first six hours!"
+        },
+        {
+          "speaker": "woman",
+          "text": "I think that just highlights how much of an unhealthy crutch those devices have become for us. I was actually surprised by how quickly I stopped reaching for my pocket."
+        },
+        {
+          "speaker": "man",
+          "text": "Me too, eventually. The silence was quite profound."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was. But the most revealing part for me was realizing how much of my day is usually spent on mindless scrolling rather than actually engaging with my surroundings. I read two whole books this weekend!"
+        },
+        {
+          "speaker": "man",
+          "text": "I managed to finish that painting I started three years ago. It’s made me rethink my evening routine entirely."
+        },
+        {
+          "speaker": "woman",
+          "text": "Absolutely. I’m definitely going to implement a 'no-screens' rule after 8 PM from now on."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What point does the woman make about her relationship with technology?",
+          "options": {
+            "A": "She was shocked by her initial resistance to the rules.",
+            "B": "She acknowledged her excessive dependence on it.",
+            "C": "She found the physical absence of her phone stressful."
+          },
+          "answer": "B",
+          "explanation": "B is correct because she describes devices as an 'unhealthy crutch' [3]."
+        },
+        {
+          "number": 4,
+          "question": "The woman found the weekend particularly useful for",
+          "options": {
+            "A": "reconnecting with her creative hobbies.",
+            "B": "improving her long-term sleeping patterns.",
+            "C": "identifying her unproductive habits."
+          },
+          "answer": "C",
+          "explanation": "C is supported by her realization of how much time she spent on 'mindless scrolling' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two colleagues discussing a public speaking seminar they recently attended.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: That seminar on body language was quite eye-opening. I never realized how much my nervous pacing was undermining my authority during presentations. || Woman: It was helpful, [5]though I did feel the speaker’s emphasis on 'power poses' was a bit gimmicky[/5]. I’m not sure standing like a superhero really translates to a boardroom setting. || Man: I see your point, it was a bit over the top. However, the section on vocal projection was brilliant. || Woman: I agree. [6]I just wish there had been more opportunity for peer-to-peer feedback[/6], rather than just listening to the expert's anecdotes. We only got to practice once! || Man: True, another hour of role-playing would have been beneficial. I’ll mention that in the feedback form we have to submit tonight.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "That seminar on body language was quite eye-opening. I never realized how much my nervous pacing was undermining my authority during presentations."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was helpful, though I did feel the speaker’s emphasis on 'power poses' was a bit gimmicky. I’m not sure standing like a superhero really translates to a boardroom setting."
+        },
+        {
+          "speaker": "man",
+          "text": "I see your point, it was a bit over the top. However, the section on vocal projection was brilliant."
+        },
+        {
+          "speaker": "woman",
+          "text": "I agree. I just wish there had been more opportunity for peer-to-peer feedback, rather than just listening to the expert's anecdotes. We only got to practice once!"
+        },
+        {
+          "speaker": "man",
+          "text": "True, another hour of role-playing would have been beneficial. I’ll mention that in the feedback form we have to submit tonight."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What is the woman's opinion of the techniques described in the seminar?",
+          "options": {
+            "A": "She found them too complex to implement.",
+            "B": "She questioned their practical relevance.",
+            "C": "She thought they were remarkably innovative."
+          },
+          "answer": "B",
+          "explanation": "B is correct as she describes the 'power poses' as 'gimmicky' and doubts they translate to a boardroom [5]."
+        },
+        {
+          "number": 6,
+          "question": "Regarding the seminar's structure, the woman was unhappy with",
+          "options": {
+            "A": "the length of the expert’s presentation.",
+            "B": "the insufficient time for practical application.",
+            "C": "the lack of clear learning objectives."
+          },
+          "answer": "B",
+          "explanation": "B is supported by her wish for 'more opportunity for peer-to-peer feedback' and only getting to 'practice once' [6]."
+        }
+      ]
+    }
+  ]
+}

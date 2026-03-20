@@ -1,0 +1,186 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test17.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends, a man and a woman, discussing a new community gardening project.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I went past the old allotments today. It’s amazing how that derelict patch has been transformed into a proper urban oasis. || Woman: It is, isn't it? I was skeptical when they first announced the plan, thinking it would just become a target for vandals. || Man: I know what you mean, but [1]what really stands out to me is how it’s managed to bridge the gap between the different generations in the neighbourhood[/1]. You see teenagers helping retirees with their heavy lifting. || Woman: Exactly. It’s created a genuine sense of belonging that was missing before. My only slight niggle is that [2]the application process for a private plot is needlessly convoluted[/2]. It shouldn't take six months to get a bit of soil to plant some carrots. || Man: True, but I suppose demand has just skyrocketed since they opened the café area.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I went past the old allotments today. It’s amazing how that derelict patch has been transformed into a proper urban oasis."
+        },
+        {
+          "speaker": "woman",
+          "text": "I was skeptical when they first announced the plan, thinking it would just become a target for vandals."
+        },
+        {
+          "speaker": "man",
+          "text": "I know what you mean, but what really stands out to me is how it’s managed to bridge the gap between the different generations in the neighbourhood. You see teenagers helping retirees with their heavy lifting."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s created a genuine sense of belonging that was missing before. My only slight niggle is that the application process for a private plot is needlessly convoluted. It shouldn't take six months to get a bit of soil to plant some carrots."
+        },
+        {
+          "speaker": "man",
+          "text": "True, but I suppose demand has just skyrocketed since they opened the café area."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the man find most impressive about the project?",
+          "options": {
+            "A": "the aesthetic transformation of the area",
+            "B": "the level of social cohesion it has fostered",
+            "C": "the resilience of the plants in an urban setting"
+          },
+          "answer": "B",
+          "explanation": "B is correct because he emphasizes how it has 'bridged the gap' between different generations [1]."
+        },
+        {
+          "number": 2,
+          "question": "The woman expresses dissatisfaction with",
+          "options": {
+            "A": "the security measures in place.",
+            "B": "the lack of space for new members.",
+            "C": "the administrative procedures."
+          },
+          "answer": "C",
+          "explanation": "C is supported by her comment that the application process is 'needlessly convoluted' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two freelance designers discussing the impact of remote working on their creativity.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: Do you ever find that working from your spare room just... kills your spark? I miss the spontaneous kitchen chats we used to have at the agency. || Woman: Honestly? I’m the opposite. I found the constant 'collaboration' in the office a massive distraction. [3]I’ve discovered that having total control over my environment allows me to reach a state of flow that was impossible before[/3]. || Man: I envy that. I just end up staring at the fridge when I’m stuck on a brief. || Woman: Maybe you need a change of scenery. I go to that new library hub twice a week. || Man: I tried that, but I found the silence even more unnerving! [4]I’ve come to realise that I actually rely on the background buzz of a busy office to keep my momentum going[/4]. Without it, I just procrastinate. || Woman: Well, they do say extroverts feed off other people's energy.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Do you ever find that working from your spare room just... kills your spark? I miss the spontaneous kitchen chats we used to have at the agency."
+        },
+        {
+          "speaker": "woman",
+          "text": "Honestly? I’m the opposite. I found the constant 'collaboration' in the office a massive distraction. I’ve discovered that having total control over my environment allows me to reach a state of flow that was impossible before."
+        },
+        {
+          "speaker": "man",
+          "text": "I envy that. I just end up staring at the fridge when I’m stuck on a brief."
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe you need a change of scenery. I go to that new library hub twice a week."
+        },
+        {
+          "speaker": "man",
+          "text": "I tried that, but I found the silence even more unnerving! I’ve come to realise that I actually rely on the background buzz of a busy office to keep my momentum going. Without it, I just procrastinate."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, they do say extroverts feed off other people's energy."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes that working from home has",
+          "options": {
+            "A": "made her more reliant on digital collaboration tools.",
+            "B": "enhanced her ability to concentrate deeply.",
+            "C": "forced her to be more disciplined with her time."
+          },
+          "answer": "B",
+          "explanation": "B is supported by [3] as she mentions reaching a 'state of flow' due to controlling her environment."
+        },
+        {
+          "number": 4,
+          "question": "What has the man recently discovered about himself?",
+          "options": {
+            "A": "He works best when there is some ambient noise.",
+            "B": "He finds academic environments too restrictive.",
+            "C": "He is more productive when he works alone."
+          },
+          "answer": "A",
+          "explanation": "A is correct because he states he 'relies on the background buzz' to maintain his momentum [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a travel documentary they both watched.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: Did you catch that documentary about the Silk Road last night? The cinematography was out of this world. || Woman: I did. The drone shots of the mountains were spectacular, I'll give it that. But [5]I found the presenter’s tendency to dramatise every minor setback rather grating after a while[/5]. It felt a bit staged. || Man: Really? I thought it added a bit of tension. Though I agree, the scene where they 'nearly' ran out of fuel felt a bit convenient for the camera. || Woman: Exactly. It’s a shame because the historical insights were top-notch. [6]I just wish they’d focused more on the local residents' perspectives instead of the presenter's personal journey[/6]. || Man: I see your point. It did feel a bit like a vanity project at times, but it’s still better than most of the travel junk on TV these days. || Woman: True, the production values alone made it watchable.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you catch that documentary about the Silk Road last night? The cinematography was out of this world."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did. The drone shots of the mountains were spectacular, I'll give it that. But I found the presenter’s tendency to dramatise every minor setback rather grating after a while. It felt a bit staged."
+        },
+        {
+          "speaker": "man",
+          "text": "Really? I thought it added a bit of tension. Though I agree, the scene where they 'nearly' ran out of fuel felt a bit convenient for the camera."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a shame because the historical insights were top-notch. I just wish they’d focused more on the local residents' perspectives instead of the presenter's personal journey."
+        },
+        {
+          "speaker": "man",
+          "text": "I see your point. It did feel a bit like a vanity project at times, but it’s still better than most of the travel junk on TV these days."
+        },
+        {
+          "speaker": "woman",
+          "text": "True, the production values alone made it watchable."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman’s main criticism of the documentary?",
+          "options": {
+            "A": "the poor quality of the historical research",
+            "B": "the over-reliance on high-tech filming techniques",
+            "C": "the exaggerated narrative style of the host"
+          },
+          "answer": "C",
+          "explanation": "C is supported by [5] where she describes the presenter's dramatization as 'grating'."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers agree that the film would have benefited from",
+          "options": {
+            "A": "a more authentic approach to the challenges faced.",
+            "B": "a greater emphasis on the indigenous population.",
+            "C": "a shorter running time to maintain the pacing."
+          },
+          "answer": "A",
+          "explanation": "A is correct because both agree some scenes felt 'staged' or 'convenient for the camera' [6]."
+        }
+      ]
+    }
+  ]
+}

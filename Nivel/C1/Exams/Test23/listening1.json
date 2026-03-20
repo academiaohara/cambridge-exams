@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test23.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two business consultants discussing a company’s recent rebranding exercise.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: So, what’s your take on the new logo for 'Astra-Corp'? Personally, I think the minimalist approach makes them look a bit... anonymous. || Woman: I see what you mean. It’s a far cry from the classic emblem they’d used for thirty years. But [1]I suspect the primary goal wasn't actually to appeal to the existing customer base, but to signal a shift toward digital-first services[/1]. || Man: Perhaps, but the social media backlash has been pretty brutal. Long-term fans feel alienated. || Woman: That’s typical of any major change. [2]What I find more problematic is the choice of colour palette—it’s so muted that it practically disappears on a mobile screen[/2], which contradicts the whole 'digital-first' strategy. || Man: Exactly. It’s like they prioritised the aesthetic of the boardroom over the reality of the user interface. || Woman: A classic case of style over substance, unfortunately.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, what’s your take on the new logo for 'Astra-Corp'? Personally, I think the minimalist approach makes them look a bit... anonymous."
+        },
+        {
+          "speaker": "woman",
+          "text": "I see what you mean. It’s a far cry from the classic emblem they’d used for thirty years. But I suspect the primary goal wasn't actually to appeal to the existing customer base, but to signal a shift toward digital-first services."
+        },
+        {
+          "speaker": "man",
+          "text": "Perhaps, but the social media backlash has been pretty brutal. Long-term fans feel alienated."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s typical of any major change. What I find more problematic is the choice of colour palette—it’s so muted that it practically disappears on a mobile screen, which contradicts the whole 'digital-first' strategy."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. It’s like they prioritised the aesthetic of the boardroom over the reality of the user interface."
+        },
+        {
+          "speaker": "woman",
+          "text": "A classic case of style over substance, unfortunately."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The woman believes the rebranding was intended to",
+          "options": {
+            "A": "modernise the company's public image.",
+            "B": "attract a younger demographic of users.",
+            "C": "communicate a change in the firm's direction."
+          },
+          "answer": "C",
+          "explanation": "C is supported by her statement that the goal was to 'signal a shift toward digital-first services' [1]."
+        },
+        {
+          "number": 2,
+          "question": "What is the woman's main criticism of the new design?",
+          "options": {
+            "A": "It is too similar to the branding of rival companies.",
+            "B": "It fails to consider practical viewing requirements.",
+            "C": "It is unlikely to be memorable for the average consumer."
+          },
+          "answer": "B",
+          "explanation": "B is correct as she mentions the colours make it 'disappear on a mobile screen', making it impractical [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends discussing a podcast about the future of space exploration.",
+      "voices": [
+        "en-GB-SoniaNeural",
+        "en-GB-ThomasNeural"
+      ],
+      "audio_script": "Woman: That last episode about colonising Mars was fascinating, though I’m still not convinced it’ll happen in our lifetime. || Man: I think the technology is closer than we think. [3]What really struck me, though, was the interviewer’s insistence on the moral implications of taking our problems to another planet[/3]. It made me rethink the whole 'Plan B for Earth' argument. || Woman: I agree. It felt a bit arrogant to assume we can just start fresh somewhere else without fixing things here first. || Man: Exactly. But [4]I felt the guest speaker was a bit evasive when asked about the funding for such a mission[/4]. He kept talking about 'global cooperation' without naming a single actual sponsor. || Woman: Well, at that level of expenditure, I suppose it’s all very sensitive. But you’re right, it did make his grand vision feel a bit like a pipe dream. || Man: It’s a shame, because his scientific data was incredibly robust.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "That last episode about colonising Mars was fascinating, though I’m still not convinced it’ll happen in our lifetime."
+        },
+        {
+          "speaker": "man",
+          "text": "I think the technology is closer than we think. What really struck me, though, was the interviewer’s insistence on the moral implications of taking our problems to another planet. It made me rethink the whole 'Plan B for Earth' argument."
+        },
+        {
+          "speaker": "woman",
+          "text": "I agree. It felt a bit arrogant to assume we can just start fresh somewhere else without fixing things here first."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. But I felt the guest speaker was a bit evasive when asked about the funding for such a mission. He kept talking about 'global cooperation' without naming a single actual sponsor."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, at that level of expenditure, I suppose it’s all very sensitive. But you’re right, it did make his grand vision feel a bit like a pipe dream."
+        },
+        {
+          "speaker": "man",
+          "text": "It’s a shame, because his scientific data was incredibly robust."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What aspect of the podcast did the man find most thought-provoking?",
+          "options": {
+            "A": "the predicted timeline for Mars colonization",
+            "B": "the ethical concerns raised by the host",
+            "C": "the innovative nature of the science discussed"
+          },
+          "answer": "B",
+          "explanation": "B is correct because he highlights the 'moral implications' mentioned by the interviewer [3]."
+        },
+        {
+          "number": 4,
+          "question": "What was the man’s opinion of the guest speaker?",
+          "options": {
+            "A": "He was unimpressed by the speaker's lack of data.",
+            "B": "He thought the speaker was overly idealistic.",
+            "C": "He found the speaker's financial transparency lacking."
+          },
+          "answer": "C",
+          "explanation": "C is supported by his comment that the speaker was 'evasive when asked about the funding' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing their experience at a weekend 'slow-living' retreat.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: I have to admit, I feel more rejuvenated than I have in years. That two-day digital ban was exactly what I needed. || Woman: Me too. [5]I was particularly impressed by the workshops on artisan bread-making[/5]. There’s something so meditative about working with your hands, isn't there? It’s the perfect antidote to a desk job. || Man: Definitely. I’m actually planning to bake my own loaves every Sunday now. || Woman: [6]I just wish the schedule had been a bit less rigid[/6]. It felt slightly ironic that a 'slow-living' retreat had us rushing from one session to the next with only ten-minute breaks. || Man: I know! I barely had time to sit by the lake and actually, you know, live slowly. || Woman: Exactly. They could have cut one of the lectures and just let us breathe for an hour.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I have to admit, I feel more rejuvenated than I have in years. That two-day digital ban was exactly what I needed."
+        },
+        {
+          "speaker": "woman",
+          "text": "Me too. I was particularly impressed by the workshops on artisan bread-making. There’s something so meditative about working with your hands, isn't there? It’s the perfect antidote to a desk job."
+        },
+        {
+          "speaker": "man",
+          "text": "Definitely. I’m actually planning to bake my own loaves every Sunday now."
+        },
+        {
+          "speaker": "woman",
+          "text": "I just wish the schedule had been a bit less rigid. It felt slightly ironic that a 'slow-living' retreat had us rushing from one session to the next with only ten-minute breaks."
+        },
+        {
+          "speaker": "man",
+          "text": "I know! I barely had time to sit by the lake and actually, you know, live slowly."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. They could have cut one of the lectures and just let us breathe for an hour."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What did the woman value most about the retreat?",
+          "options": {
+            "A": "the opportunity to learn a practical skill",
+            "B": "the break from her professional responsibilities",
+            "C": "the high quality of the food provided"
+          },
+          "answer": "A",
+          "explanation": "A is correct because she mentions being 'particularly impressed' by the bread-making workshops [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers agreed that the retreat",
+          "options": {
+            "A": "was poorly organized for beginners.",
+            "B": "had an unnecessarily packed agenda.",
+            "C": "failed to provide enough social interaction."
+          },
+          "answer": "B",
+          "explanation": "B is supported by their complaints about the 'rigid schedule' and 'rushing from one session to the next' [6]."
+        }
+      ]
+    }
+  ]
+}

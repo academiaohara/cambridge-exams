@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test31.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new smart home thermostat they’ve installed.",
+      "voices": [
+        "en-GB-RyanNeural",
+        "en-GB-SoniaNeural"
+      ],
+      "audio_script": "Man: I’m finally getting the hang of the 'Smart-Temp' system. It’s great being able to turn the heating on from my phone. || Woman: It’s convenient. But [1]I’ve found the 'auto-learn' feature a bit unpredictable[/1]. It kept turning the heating off when I was still in the living room just because I wasn't moving much. || Man: I had the same issue! I ended up just setting a manual schedule. || Woman: [2]I was pleasantly surprised by the detailed energy reports it generates, though[/2]. It’s helped me identify which rooms are losing the most heat. || Man: I agree, the data is very eye-opening. Though the unit itself is a bit of an eyesore on the wall. || Woman: It is a bit clunky, but I suppose functionality comes first in this case.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’m finally getting the hang of the 'Smart-Temp' system. It’s great being able to turn the heating on from my phone."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s convenient. But I’ve found the 'auto-learn' feature a bit unpredictable. It kept turning the heating off when I was still in the living room just because I wasn't moving much."
+        },
+        {
+          "speaker": "man",
+          "text": "I had the same issue! I ended up just setting a manual schedule."
+        },
+        {
+          "speaker": "woman",
+          "text": "I was pleasantly surprised by the detailed energy reports it generates, though. It’s helped me identify which rooms are losing the most heat."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, the data is very eye-opening. Though the unit itself is a bit of an eyesore on the wall."
+        },
+        {
+          "speaker": "woman",
+          "text": "It is a bit clunky, but I suppose functionality comes first in this case."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The woman complains that the thermostat's automated feature",
+          "options": {
+            "A": "is too difficult to program.",
+            "B": "fails to detect her presence accurately.",
+            "C": "uses more energy than the manual setting."
+          },
+          "answer": "B",
+          "explanation": "She notes it turned off while she was in the room because she 'wasn't moving much' [1]."
+        },
+        {
+          "number": 2,
+          "question": "What did the woman find most beneficial about the device?",
+          "options": {
+            "A": "its aesthetic design",
+            "B": "the information it provides on heat loss",
+            "C": "the ease of the mobile interface"
+          },
+          "answer": "B",
+          "explanation": "She was surprised by the 'energy reports' that help identify heat loss in rooms [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a new city-wide car-pooling initiative.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-AbbiNeural"
+      ],
+      "audio_script": "Man: So, are you going to sign up for the 'Commute-Share' scheme? It’s supposed to cut traffic in half. || Woman: [3]I suspect it’ll be a struggle to find people whose schedules actually align with mine[/3]. I often have to stay late at short notice. || Man: That is the tricky part. But the app is meant to handle flexible timings. || Woman: [4]I’ve heard that the designated car-pool lanes are already becoming as congested as the regular ones[/4], which seems to defeat the purpose. || Man: I agree. If everyone switches, the advantage disappears unless they increase the number of lanes. || Woman: Exactly. It’s a good idea in theory, but the infrastructure just isn't there to support it properly yet.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, are you going to sign up for the 'Commute-Share' scheme? It’s supposed to cut traffic in half."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect it’ll be a struggle to find people whose schedules actually align with mine. I often have to stay late at short notice."
+        },
+        {
+          "speaker": "man",
+          "text": "That is the tricky part. But the app is meant to handle flexible timings."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve heard that the designated car-pool lanes are already becoming as congested as the regular ones, which seems to defeat the purpose."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. If everyone switches, the advantage disappears unless they increase the number of lanes."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a good idea in theory, but the infrastructure just isn't there to support it properly yet."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman is hesitant to join the scheme because of",
+          "options": {
+            "A": "safety concerns regarding the other drivers.",
+            "B": "the unpredictability of her working hours.",
+            "C": "the high cost of the monthly membership."
+          },
+          "answer": "B",
+          "explanation": "She fears it's hard to find people when she has to 'stay late at short notice' [3]."
+        },
+        {
+          "number": 4,
+          "question": "Both speakers agree that the initiative's effectiveness is limited by",
+          "options": {
+            "A": "the lack of people willing to participate.",
+            "B": "the poor quality of the mobile application.",
+            "C": "the current state of the road system."
+          },
+          "answer": "C",
+          "explanation": "They agree that the 'lanes are already becoming congested' and 'infrastructure isn't there' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a recently opened boutique hotel.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I stayed at the 'Lighthouse Inn' last weekend. The views of the coast from the bedroom were incredible. || Woman: [5]I found the service in the restaurant to be a bit overly formal and stiff[/5], which didn't really fit the seaside vibe. || Man: I see what you mean. It felt a bit like they were trying too hard to be 'high-end'. || Woman: [6]I did think the soundproofing in the rooms was exceptionally good, though[/6]. I couldn't hear the storm outside at all. || Man: I agree, it was very peaceful. Though I was a bit surprised they didn't have any tea-making facilities in the room. || Woman: That is a basic oversight for a hotel at that price point. You’d think a kettle wouldn't be too much to ask for.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I stayed at the 'Lighthouse Inn' last weekend. The views of the coast from the bedroom were incredible."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the service in the restaurant to be a bit overly formal and stiff, which didn't really fit the seaside vibe."
+        },
+        {
+          "speaker": "man",
+          "text": "I see what you mean. It felt a bit like they were trying too hard to be 'high-end'."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did think the soundproofing in the rooms was exceptionally good, though. I couldn't hear the storm outside at all."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, it was very peaceful. Though I was a bit surprised they didn't have any tea-making facilities in the room."
+        },
+        {
+          "speaker": "woman",
+          "text": "That is a basic oversight for a hotel at that price point. You’d think a kettle wouldn't be too much to ask for."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What did the woman find disappointing about her experience?",
+          "options": {
+            "A": "the quality of the food provided",
+            "B": "the attitude of the waiting staff",
+            "C": "the location of the hotel restaurant"
+          },
+          "answer": "B",
+          "explanation": "She found the service 'overly formal and stiff', which didn't fit the vibe [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the hotel's",
+          "options": {
+            "A": "environmental insulation.",
+            "B": "range of room amenities.",
+            "C": "proximity to local attractions."
+          },
+          "answer": "A",
+          "explanation": "They both agree that the 'soundproofing' (insulation) was exceptionally good and peaceful [6]."
+        }
+      ]
+    }
+  ]
+}

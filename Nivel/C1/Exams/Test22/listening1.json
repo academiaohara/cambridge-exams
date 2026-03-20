@@ -1,0 +1,186 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test22.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends, a man and a woman, discussing a new language-learning app they have been using.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I’ve been using that new 'LingoFlow' app for my Italian, but I’m not sure about the gamification side of it. I spend more time worrying about my 'streak' than actually learning verbs. || Woman: I know what you mean. It can feel a bit like a chore if you’re just doing it to stay on the leaderboard. However, [1]I’ve found that the speech recognition software is leagues ahead of anything else I’ve tried[/1]. It actually picks up on my terrible accent! || Man: True, that part is impressive. But I find the vocabulary a bit... random? I’ve learned how to say 'the owl eats a lemon', but I still can't order a coffee properly. || Woman: [2]I think the creators have prioritised engagement over practical utility[/2], which is a shame. It’s fun for ten minutes, but I’m not sure it’ll ever get me to a professional level of fluency. || Man: Exactly. It’s great for a holiday, but not for a career move.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve been using that new 'LingoFlow' app for my Italian, but I’m not sure about the gamification side of it. I spend more time worrying about my 'streak' than actually learning verbs."
+        },
+        {
+          "speaker": "woman",
+          "text": "I know what you mean. It can feel a bit like a chore if you’re just doing it to stay on the leaderboard. However, I’ve found that the speech recognition software is leagues ahead of anything else I’ve tried. It actually picks up on my terrible accent!"
+        },
+        {
+          "speaker": "man",
+          "text": "True, that part is impressive. But I find the vocabulary a bit... random? I’ve learned how to say 'the owl eats a lemon', but I still can't order a coffee properly."
+        },
+        {
+          "speaker": "woman",
+          "text": "I think the creators have prioritised engagement over practical utility, which is a shame. It’s fun for ten minutes, but I’m not sure it’ll ever get me to a professional level of fluency."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. It’s great for a holiday, but not for a career move."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the woman particularly like about the app?",
+          "options": {
+            "A": "the competitive nature of the leaderboard",
+            "B": "the accuracy of the pronunciation feedback",
+            "C": "the wide range of vocabulary covered"
+          },
+          "answer": "B",
+          "explanation": "B is correct because she praises the 'speech recognition software' for picking up on her accent [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers agree that the app's main weakness is",
+          "options": {
+            "A": "its lack of focus on real-world communication.",
+            "B": "the repetitive nature of the exercises.",
+            "C": "the technical bugs in the software."
+          },
+          "answer": "A",
+          "explanation": "A is supported by their discussion on learning 'random' phrases instead of 'practical utility' like ordering coffee [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues discussing a conference on artificial intelligence they recently attended.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: That keynote speech on the ethics of AI was pretty heavy, wasn't it? I didn't expect to be questioning my own job security before lunch. || Woman: It was sobering. But [3]what I found most interesting was the panel discussion on the 'creative' capabilities of these models[/3]. They showcased some AI-generated music that was indistinguishable from a human composer. || Man: I’m still a bit skeptical about that. It lacks the emotional depth that comes from lived experience, surely? || Woman: Maybe, but the audience couldn't tell the difference in the blind test. [4]My main frustration with the event, though, was how much time was spent on theoretical futures[/4] rather than showing us tools we can actually use in the office today. || Man: I agree. It was all very visionary, but I could have done with a few more 'how-to' sessions. || Woman: Exactly. I left with a lot of big ideas but no practical steps.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "That keynote speech on the ethics of AI was pretty heavy, wasn't it? I didn't expect to be questioning my own job security before lunch."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was sobering. But what I found most interesting was the panel discussion on the 'creative' capabilities of these models. They showcased some AI-generated music that was indistinguishable from a human composer."
+        },
+        {
+          "speaker": "man",
+          "text": "I’m still a bit skeptical about that. It lacks the emotional depth that comes from lived experience, surely?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe, but the audience couldn't tell the difference in the blind test. My main frustration with the event, though, was how much time was spent on theoretical futures rather than showing us tools we can actually use in the office today."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It was all very visionary, but I could have done with a few more 'how-to' sessions."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. I left with a lot of big ideas but no practical steps."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What did the woman find particularly noteworthy about the conference?",
+          "options": {
+            "A": "the warnings about future job losses",
+            "B": "the quality of machine-produced artistic work",
+            "C": "the level of audience participation in debates"
+          },
+          "answer": "B",
+          "explanation": "B is supported by her comments on AI music being 'indistinguishable' from human compositions [3]."
+        },
+        {
+          "number": 4,
+          "question": "The speakers both felt that the conference",
+          "options": {
+            "A": "was too pessimistic about the future of AI.",
+            "B": "overestimated the current capabilities of the technology.",
+            "C": "failed to provide enough actionable information."
+          },
+          "answer": "C",
+          "explanation": "C is correct as both speakers complain about the lack of 'tools we can use' or 'how-to' sessions [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people, a man and a woman, talking about a plan to build a new shopping mall in their town.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-OliviaNeural"
+      ],
+      "audio_script": "Man: So, the council has finally given the green light for the 'Riverside Plaza'. I suppose it'll bring some much-needed jobs to the area. || Woman: That’s the official line, anyway. But [5]I’m more worried about what it will do to the character of our town centre[/5]. All those independent boutiques will be priced out by the big chains. || Man: It’s a valid concern. But isn't the current High Street looking a bit tired? A modern development might draw more people back into town. || Woman: Or it’ll just draw them away from the historic quarter. [6]I just wish the design wasn't so... generic[/6]. It looks like a giant glass box that could be in any city in the world. || Man: I agree it’s not exactly groundbreaking architecture. But I suppose they’ve gone for functionality over form to keep the costs down. || Woman: It’s a missed opportunity to build something truly iconic.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, the council has finally given the green light for the 'Riverside Plaza'. I suppose it'll bring some much-needed jobs to the area."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s the official line, anyway. But I’m more worried about what it will do to the character of our town centre. All those independent boutiques will be priced out by the big chains."
+        },
+        {
+          "speaker": "man",
+          "text": "It’s a valid concern. But isn't the current High Street looking a bit tired? A modern development might draw more people back into town."
+        },
+        {
+          "speaker": "woman",
+          "text": "Or it’ll just draw them away from the historic quarter. I just wish the design wasn't so... generic. It looks like a giant glass box that could be in any city in the world."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree it’s not exactly groundbreaking architecture. But I suppose they’ve gone for functionality over form to keep the costs down."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a missed opportunity to build something truly iconic."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What is the woman’s primary objection to the new mall?",
+          "options": {
+            "A": "the potential for increased traffic congestion",
+            "B": "the negative impact on local businesses",
+            "C": "the loss of green space by the river"
+          },
+          "answer": "B",
+          "explanation": "B is supported by her fear that 'independent boutiques will be priced out' [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers agree that the proposed building",
+          "options": {
+            "A": "is unlikely to be completed on schedule.",
+            "B": "will be too expensive to maintain in the long term.",
+            "C": "lacks a distinctive visual identity."
+          },
+          "answer": "C",
+          "explanation": "C is correct because they both describe the design as 'generic' or 'not exactly groundbreaking' [6]."
+        }
+      ]
+    }
+  ]
+}

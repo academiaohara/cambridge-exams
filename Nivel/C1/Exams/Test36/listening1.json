@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test36.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends talking about a local theatre production they just saw.",
+      "voices": [
+        "en-GB-SoniaNeural",
+        "en-GB-RyanNeural"
+      ],
+      "audio_script": "Woman: That was quite an intense performance of 'Macbeth'. I’m still a bit shaken! || Man: [1]I found the modern setting with the business suits and smartphones a bit distracting[/1], to be honest. It didn't really mesh with the dialogue for me. || Woman: I see what you mean. It was a bold choice. || Man: [2]What I really admired, though, was the way they used the lighting to create a sense of unease[/2]. Those long shadows on the stage were very effective. || Woman: I agree. It was atmospheric without being over-the-top. || Man: Exactly. It’s just a shame the lead actor’s voice was a bit thin. He got drowned out by the sound effects a few times.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "That was quite an intense performance of 'Macbeth'. I’m still a bit shaken!"
+        },
+        {
+          "speaker": "man",
+          "text": "I found the modern setting with the business suits and smartphones a bit distracting, to be honest. It didn't really mesh with the dialogue for me."
+        },
+        {
+          "speaker": "woman",
+          "text": "I see what you mean. It was a bold choice."
+        },
+        {
+          "speaker": "man",
+          "text": "What I really admired, though, was the way they used the lighting to create a sense of unease. Those long shadows on the stage were very effective."
+        },
+        {
+          "speaker": "woman",
+          "text": "I agree. It was atmospheric without being over-the-top."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. It’s just a shame the lead actor’s voice was a bit thin. He got drowned out by the sound effects a few times."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The man disliked the play because",
+          "options": {
+            "A": "the actors lacked stage presence.",
+            "B": "the contemporary updates felt out of place.",
+            "C": "the sound quality was consistently poor."
+          },
+          "answer": "B",
+          "explanation": "He found the 'modern setting' (suits and smartphones) distracting and felt it didn't 'mesh with the dialogue' [1]."
+        },
+        {
+          "number": 2,
+          "question": "What aspect of the production did the man find successful?",
+          "options": {
+            "A": "the innovative use of props",
+            "B": "the visual mood created by the lighting",
+            "C": "the emotional range of the lead performer"
+          },
+          "answer": "B",
+          "explanation": "He admired how the lighting created a 'sense of unease' through 'long shadows' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues discussing a new 'unlimited holiday' policy at their firm.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-AbbiNeural"
+      ],
+      "audio_script": "Man: So, the new holiday policy is live. It’s pretty revolutionary for a law firm, isn't it? || Woman: [3]I suspect people will actually end up taking less time off because they’re worried about appearing less committed than their peers[/3]. || Man: That's a classic psychological trap. I’m already feeling guilty about my week in Spain. || Woman: [4]I’ve noticed that management hasn't provided any clear guidelines on how to handle urgent client work during absences[/4]. It’s all a bit vague. || Man: I agree. It’s fine in theory, but without a proper system for coverage, it’s just going to lead to more stress. || Woman: Exactly. It sounds great in a recruitment brochure, but the reality is much more complicated.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, the new holiday policy is live. It’s pretty revolutionary for a law firm, isn't it?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect people will actually end up taking less time off because they’re worried about appearing less committed than their peers."
+        },
+        {
+          "speaker": "man",
+          "text": "That's a classic psychological trap. I’m already feeling guilty about my week in Spain."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that management hasn't provided any clear guidelines on how to handle urgent client work during absences. It’s all a bit vague."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s fine in theory, but without a proper system for coverage, it’s just going to lead to more stress."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It sounds great in a recruitment brochure, but the reality is much more complicated."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the new policy might lead to",
+          "options": {
+            "A": "a decrease in the quality of client service.",
+            "B": "employees feeling pressured to avoid taking leave.",
+            "C": "a significant increase in administrative costs."
+          },
+          "answer": "B",
+          "explanation": "She thinks people will take less time off because they don't want to appear 'less committed' [3]."
+        },
+        {
+          "number": 4,
+          "question": "What is the speakers' main concern regarding the policy?",
+          "options": {
+            "A": "the potential for staff to abuse the system",
+            "B": "the lack of a practical framework for implementation",
+            "C": "the negative impact on the company's reputation"
+          },
+          "answer": "B",
+          "explanation": "They both agree that the lack of 'clear guidelines' and a 'system for coverage' makes it problematic [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a recently published biography of a famous scientist.",
+      "voices": [
+        "en-GB-ThomasNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: I’ve just finished that new book on Marie Curie. It’s a real page-turner for a biography. || Woman: [5]I found the author's habit of imagining the subject's private thoughts a bit off-putting[/5]. It felt more like historical fiction at times. || Man: I see your point. It did take some liberties with the internal dialogue. || Woman: [6]I did appreciate the way it contextualized her work within the social limitations of the time[/6], though. It really highlighted how much she had to overcome. || Man: I agree. The research into the academic politics of 19th-century Paris was top-notch. || Woman: Exactly. It’s a very thorough piece of historical research, even if the narrative style is a bit unconventional.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve just finished that new book on Marie Curie. It’s a real page-turner for a biography."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the author's habit of imagining the subject's private thoughts a bit off-putting. It felt more like historical fiction at times."
+        },
+        {
+          "speaker": "man",
+          "text": "I see your point. It did take some liberties with the internal dialogue."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did appreciate the way it contextualized her work within the social limitations of the time, though. It really highlighted how much she had to overcome."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. The research into the academic politics of 19th-century Paris was top-notch."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a very thorough piece of historical research, even if the narrative style is a bit unconventional."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman's main criticism of the biography?",
+          "options": {
+            "A": "the lack of focus on scientific achievements",
+            "B": "the inclusion of speculative personal details",
+            "C": "the poor quality of the primary sources"
+          },
+          "answer": "B",
+          "explanation": "She disliked the author 'imagining the subject's private thoughts' [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the author's",
+          "options": {
+            "A": "portrayal of the social environment.",
+            "B": "vibrant and engaging writing style.",
+            "C": "use of newly discovered letters."
+          },
+          "answer": "A",
+          "explanation": "They both highlight the research into 'social limitations' and 'academic politics' as being top-notch [6]."
+        }
+      ]
+    }
+  ]
+}

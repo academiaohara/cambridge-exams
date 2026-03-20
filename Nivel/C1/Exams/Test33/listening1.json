@@ -1,0 +1,186 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test33.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends talking about a new plant-based restaurant.",
+      "voices": [
+        "en-GB-SoniaNeural",
+        "en-GB-RyanNeural"
+      ],
+      "audio_script": "Woman: I finally went to 'The Green Leaf' last night. The cashew-nut cheese was surprisingly convincing! || Man: [1]I found the menu a bit limited, to be honest[/1]. If you don't like mushrooms, you’re basically left with a salad. || Woman: I see your point, but [2]I was really impressed by how knowledgeable the servers were about cross-contamination[/2]. They could tell me exactly where every ingredient was sourced. || Man: I agree, the service was top-notch. Though I wish the room wasn't so echoes. It was hard to hear you across the table. || Woman: It’s that minimalist 'industrial' look. It looks great, but it’s terrible for a quiet conversation.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I finally went to 'The Green Leaf' last night. The cashew-nut cheese was surprisingly convincing!"
+        },
+        {
+          "speaker": "man",
+          "text": "I found the menu a bit limited, to be honest. If you don't like mushrooms, you’re basically left with a salad."
+        },
+        {
+          "speaker": "woman",
+          "text": "I see your point, but I was really impressed by how knowledgeable the servers were about cross-contamination. They could tell me exactly where every ingredient was sourced."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, the service was top-notch. Though I wish the room wasn't so echoes. It was hard to hear you across the table."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s that minimalist 'industrial' look. It looks great, but it’s terrible for a quiet conversation."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the man's main criticism of the restaurant?",
+          "options": {
+            "A": "the quality of the ingredients",
+            "B": "the lack of choice in the dishes",
+            "C": "the high price of the meals"
+          },
+          "answer": "B",
+          "explanation": "He finds the menu 'a bit limited' and notes that mushroom-haters have few options [1]."
+        },
+        {
+          "number": 2,
+          "question": "The woman liked the restaurant because",
+          "options": {
+            "A": "of the staff's expertise in food safety.",
+            "B": "of the modern interior design.",
+            "C": "the atmosphere was conducive to talking."
+          },
+          "answer": "A",
+          "explanation": "She was impressed by how the servers knew about 'cross-contamination' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues discussing a professional networking event they attended.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-AbbiNeural"
+      ],
+      "audio_script": "Man: That 'Business-Mixer' was a bit of a whirlwind, wasn't it? I’ve run out of business cards. || Woman: [3]I suspect most people were only there to pitch their own services rather than actually listen to anyone else[/3]. || Man: It did feel a bit transactional. I didn't have a single conversation that wasn't a sales pitch. || Woman: [4]What really stood out to me was the poor choice of venue[/4]. Trying to network in a dark basement with loud music was just ridiculous. || Man: I agree. I spent most of the night shouting into people's ears and still didn't catch their names. || Woman: Exactly. If you want people to talk, you have to provide an environment where they actually can.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "That 'Business-Mixer' was a bit of a whirlwind, wasn't it? I’ve run out of business cards."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect most people were only there to pitch their own services rather than actually listen to anyone else."
+        },
+        {
+          "speaker": "man",
+          "text": "It did feel a bit transactional. I didn't have a single conversation that wasn't a sales pitch."
+        },
+        {
+          "speaker": "woman",
+          "text": "What really stood out to me was the poor choice of venue. Trying to network in a dark basement with loud music was just ridiculous."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. I spent most of the night shouting into people's ears and still didn't catch their names."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. If you want people to talk, you have to provide an environment where they actually can."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman suggests that the participants at the event were",
+          "options": {
+            "A": "not sufficiently experienced in their fields.",
+            "B": "unwilling to engage in meaningful dialogue.",
+            "C": "too focused on socializing rather than working."
+          },
+          "answer": "B",
+          "explanation": "She thinks people were there to 'pitch' rather than 'listen to anyone else' [3]."
+        },
+        {
+          "number": 4,
+          "question": "Both speakers agree that the event was",
+          "options": {
+            "A": "held in an inappropriate setting.",
+            "B": "too long for the amount of content.",
+            "C": "lacking in proper organization."
+          },
+          "answer": "A",
+          "explanation": "They both criticize the 'poor choice of venue' and the loud music in the basement [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new mobile game that uses augmented reality (AR).",
+      "voices": [
+        "en-GB-ThomasNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: I’ve been playing 'City-Quest' on my commute. It’s a great way to discover hidden history while you walk. || Woman: [5]I found the AR overlays a bit clunky and slow to load[/5], especially when the signal wasn't great. || Man: I had the same issue. It’s a bit frustrating when the 'ghost' you’re supposed to find doesn't appear for three minutes. || Woman: [6]I did appreciate the quality of the historical research, though[/6]. The facts they’ve included are genuinely obscure and interesting. || Man: I agree. It feels like a lot of care went into the writing, even if the tech isn't quite there yet. || Woman: It’s a nice concept. I just hope they optimize the performance in the next update.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve been playing 'City-Quest' on my commute. It’s a great way to discover hidden history while you walk."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the AR overlays a bit clunky and slow to load, especially when the signal wasn't great."
+        },
+        {
+          "speaker": "man",
+          "text": "I had the same issue. It’s a bit frustrating when the 'ghost' you’re supposed to find doesn't appear for three minutes."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did appreciate the quality of the historical research, though. The facts they’ve included are genuinely obscure and interesting."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It feels like a lot of care went into the writing, even if the tech isn't quite there yet."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a nice concept. I just hope they optimize the performance in the next update."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman's main issue with the game?",
+          "options": {
+            "A": "the difficulty of the puzzles",
+            "B": "the technical performance of the software",
+            "C": "the lack of interesting characters"
+          },
+          "answer": "B",
+          "explanation": "She found the AR overlays 'clunky and slow to load' [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the game's",
+          "options": {
+            "A": "educational content.",
+            "B": "battery-saving design.",
+            "C": "multiplayer features."
+          },
+          "answer": "A",
+          "explanation": "They both praise the 'quality of the historical research' and the care in the 'writing' [6]."
+        }
+      ]
+    }
+  ]
+}

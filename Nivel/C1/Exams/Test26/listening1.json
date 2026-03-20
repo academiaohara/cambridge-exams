@@ -1,0 +1,182 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test26.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a local historical exhibition.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I went to the town hall yesterday to see the 'Victorian Origins' display. It’s quite a comprehensive collection they’ve put together. || Woman: I enjoyed it too. [1]What I found most compelling was the section on the development of the local railway system[/1]. It really showed how the town transformed overnight. || Man: It was informative, but [2]I found the lack of interactive elements for younger visitors a bit of a missed opportunity[/2]. It was mostly just long walls of text. || Woman: True, it felt a bit old-fashioned in its presentation. My kids were bored within ten minutes, despite the interesting subject matter. || Man: Exactly. A few digital screens would have gone a long way in making it more engaging for a modern audience.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I went to the town hall yesterday to see the 'Victorian Origins' display. It’s quite a comprehensive collection they’ve put together."
+        },
+        {
+          "speaker": "woman",
+          "text": "I enjoyed it too. What I found most compelling was the section on the development of the local railway system. It really showed how the town transformed overnight."
+        },
+        {
+          "speaker": "man",
+          "text": "It was informative, but I found the lack of interactive elements for younger visitors a bit of a missed opportunity. It was mostly just long walls of text."
+        },
+        {
+          "speaker": "woman",
+          "text": "True, it felt a bit old-fashioned in its presentation. My kids were bored within ten minutes, despite the interesting subject matter."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. A few digital screens would have gone a long way in making it more engaging for a modern audience."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What part of the exhibition did the woman find most interesting?",
+          "options": {
+            "A": "the display of Victorian clothing",
+            "B": "the impact of transport on the town",
+            "C": "the personal stories of factory workers"
+          },
+          "answer": "B",
+          "explanation": "She states that the development of the railway system was 'most compelling' [1]."
+        },
+        {
+          "number": 2,
+          "question": "The man suggests that the exhibition",
+          "options": {
+            "A": "contained several historical inaccuracies.",
+            "B": "was too small for the number of visitors.",
+            "C": "failed to cater for a diverse age group."
+          },
+          "answer": "C",
+          "explanation": "He mentions the lack of interactive elements for 'younger visitors' as a missed opportunity [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a new office recycling policy.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: Have you seen the new multi-coloured bins in the canteen? Management is getting serious about our zero-waste targets. || Woman: It’s a good initiative. But [3]I suspect the main motivation is to cut down on the rising costs of commercial waste disposal[/3]. || Man: Perhaps, but the environmental benefit is still there. I’m just finding the new sorting system a bit confusing. || Woman: [4]I’ve already noticed that people are putting food waste in the paper bin[/4], which ruins the whole batch for recycling anyway. It’s a bit frustrating. || Man: I agree. We need much clearer signage on the bins themselves. || Woman: Or maybe a quick training session. Without proper education, it’s just a box-ticking exercise for the company.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you seen the new multi-coloured bins in the canteen? Management is getting serious about our zero-waste targets."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a good initiative. But I suspect the main motivation is to cut down on the rising costs of commercial waste disposal."
+        },
+        {
+          "speaker": "man",
+          "text": "Perhaps, but the environmental benefit is still there. I’m just finding the new sorting system a bit confusing."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve already noticed that people are putting food waste in the paper bin, which ruins the whole batch for recycling anyway. It’s a bit frustrating."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. We need much clearer signage on the bins themselves."
+        },
+        {
+          "speaker": "woman",
+          "text": "Or maybe a quick training session. Without proper education, it’s just a box-ticking exercise for the company."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the new policy was introduced primarily to",
+          "options": {
+            "A": "improve the company's public reputation.",
+            "B": "reduce the firm's operational expenses.",
+            "C": "comply with new government regulations."
+          },
+          "answer": "B",
+          "explanation": "She suspects the motive is to 'cut down on the rising costs' of waste disposal [3]."
+        },
+        {
+          "number": 4,
+          "question": "What problem does the woman identify with the current situation?",
+          "options": {
+            "A": "the bins being emptied too infrequently",
+            "B": "the incorrect use of the recycling facilities",
+            "C": "the lack of space for the new bins"
+          },
+          "answer": "B",
+          "explanation": "She notes that people are putting 'food waste in the paper bin' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new mobile phone they have both bought.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: So, how are you getting on with the new 'Titan' smartphone? I’m still blown away by the camera quality. || Woman: The photos are stunning. But [5]I’ve found the facial recognition feature to be quite temperamental[/5], especially in low light. It takes me three tries just to unlock my phone. || Man: Really? I haven't had that issue. I was more concerned about the battery life, but it seems to hold up quite well. || Woman: [6]I just wish the manufacturers hadn't removed the headphone jack[/6]. I’m fed up with having to remember a separate adapter every time I want to use my good earphones. || Man: I agree, it’s a bit of an inconvenience. They’re basically forcing us all to go wireless whether we like it or not.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, how are you getting on with the new 'Titan' smartphone? I’m still blown away by the camera quality."
+        },
+        {
+          "speaker": "woman",
+          "text": "The photos are stunning. But I’ve found the facial recognition feature to be quite temperamental, especially in low light. It takes me three tries just to unlock my phone."
+        },
+        {
+          "speaker": "man",
+          "text": "Really? I haven't had that issue. I was more concerned about the battery life, but it seems to hold up quite well."
+        },
+        {
+          "speaker": "woman",
+          "text": "I just wish the manufacturers hadn't removed the headphone jack. I’m fed up with having to remember a separate adapter every time I want to use my good earphones."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, it’s a bit of an inconvenience. They’re basically forcing us all to go wireless whether we like it or not."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "The woman expresses disappointment with the phone's",
+          "options": {
+            "A": "biometric security system.",
+            "B": "performance in dark conditions.",
+            "C": "overall battery longevity."
+          },
+          "answer": "A",
+          "explanation": "She describes the facial recognition (biometric) feature as 'temperamental' [5]."
+        },
+        {
+          "number": 6,
+          "question": "What design choice do both speakers disagree with?",
+          "options": {
+            "A": "the size of the screen display",
+            "B": "the lack of a physical port for audio",
+            "C": "the placement of the charging socket"
+          },
+          "answer": "B",
+          "explanation": "They both complain about the removal of the 'headphone jack' [6]."
+        }
+      ]
+    }
+  ]
+}

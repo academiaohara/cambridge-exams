@@ -1,0 +1,178 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test25.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two people, a man and a woman, discussing a new architectural project in their city.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: I finally saw the plans for the new library complex. It’s certainly a departure from the traditional stone buildings in that part of town. || Woman: It’s bold, I’ll give it that. But [1]I can't help feeling that the sheer scale of the glass facade will overwhelm the surrounding square[/1]. It feels a bit like a giant mirror reflecting everything but having no character of its own. || Man: I see your point. Though the architects claim the transparency is meant to symbolise 'open access to knowledge'. || Woman: That sounds like marketing speak to me. [2]What really bothers me is the lack of green space in the final draft[/2]. They’ve replaced the original community garden with a concrete plaza that’ll be a heat trap in the summer. || Man: True, that’s a significant loss. I suppose they prioritised ease of maintenance over environmental benefits.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I finally saw the plans for the new library complex. It’s certainly a departure from the traditional stone buildings in that part of town."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s bold, I’ll give it that. But I can't help feeling that the sheer scale of the glass facade will overwhelm the surrounding square. It feels a bit like a giant mirror reflecting everything but having no character of its own."
+        },
+        {
+          "speaker": "man",
+          "text": "I see your point. Though the architects claim the transparency is meant to symbolise 'open access to knowledge'."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds like marketing speak to me. What really bothers me is the lack of green space in the final draft. They’ve replaced the original community garden with a concrete plaza that’ll be a heat trap in the summer."
+        },
+        {
+          "speaker": "man",
+          "text": "True, that’s a significant loss. I suppose they prioritised ease of maintenance over environmental benefits."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the woman's opinion of the library's design?",
+          "options": {
+            "A": "It is too similar to other modern buildings.",
+            "B": "It lacks a unique identity.",
+            "C": "It is inappropriately small for its location."
+          },
+          "answer": "B",
+          "explanation": "B is correct as she describes it as 'having no character of its own' and just reflecting its surroundings [1]."
+        },
+        {
+          "number": 2,
+          "question": "The woman is particularly unhappy about",
+          "options": {
+            "A": "the cost of the materials being used.",
+            "B": "the removal of a local amenity.",
+            "C": "the symbolic meaning of the architecture."
+          },
+          "answer": "B",
+          "explanation": "B is supported by her concern about the 'lack of green space' and the replacement of the 'community garden' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues, a man and a woman, talking about a recent work trip to a trade fair.",
+      "voices": [
+        "en-GB-ThomasNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: That trade fair was exhausting. I think I’ve seen enough brochures to last me a lifetime. || Woman: It was intense. But [3]I found the networking event on the second night surprisingly productive[/3]. I managed to have a long chat with the head of procurement from that German firm we’ve been trying to land. || Man: That’s a result! I spent most of that night stuck in a corner discussing logistics software. || Woman: Well, it’s all about being in the right place at the right time. [4]My only complaint was the venue itself[/4]; the acoustics were so bad I could barely hear the keynote speakers, and the air conditioning was practically non-existent. || Man: I agree. I think they tried to pack too many exhibitors into a space that wasn't designed for it. It felt quite claustrophobic at times.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "That trade fair was exhausting. I think I’ve seen enough brochures to last me a lifetime."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was intense. But I found the networking event on the second night surprisingly productive. I managed to have a long chat with the head of procurement from that German firm we’ve been trying to land."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s a result! I spent most of that night stuck in a corner discussing logistics software."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, it’s all about being in the right place at the right time. My only complaint was the venue itself; the acoustics were so bad I could barely hear the keynote speakers, and the air conditioning was practically non-existent."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. I think they tried to pack too many exhibitors into a space that wasn't designed for it. It felt quite claustrophobic at times."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman feels that the trip was worthwhile because",
+          "options": {
+            "A": "she learned about new industry trends.",
+            "B": "she made a valuable business connection.",
+            "C": "she was able to distribute a lot of promotional material."
+          },
+          "answer": "B",
+          "explanation": "B is correct because she mentions having a productive chat with the 'head of procurement' from a target firm [3]."
+        },
+        {
+          "number": 4,
+          "question": "What did the speakers agree was a problem at the event?",
+          "options": {
+            "A": "the lack of high-quality speakers",
+            "B": "the poor choice of location",
+            "C": "the disorganized schedule"
+          },
+          "answer": "B",
+          "explanation": "B is supported by their complaints about the 'venue itself', the 'acoustics', and it being 'claustrophobic' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two friends discussing a new documentary about the history of the internet.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-SoniaNeural"
+      ],
+      "audio_script": "Man: Did you see that documentary on the origins of the web? I thought the archive footage from the nineties was brilliant. || Woman: It was nostalgic. [5]What I appreciated most was how it highlighted the collaborative spirit of the early pioneers[/5]. It wasn't just about the technology; it was about the ideal of free information for everyone. || Man: True, it’s a far cry from the commercialised platform it’s become today. || Woman: [6]I just felt the final segment on future trends was a bit pessimistic[/6]. They focused almost entirely on data privacy and cybercrime, without mentioning any of the potential for positive social change. || Man: I see where you’re coming from, but I suppose those are the most pressing issues right now. It was a bit of a wake-up call, if anything.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you see that documentary on the origins of the web? I thought the archive footage from the nineties was brilliant."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was nostalgic. What I appreciated most was how it highlighted the collaborative spirit of the early pioneers. It wasn't just about the technology; it was about the ideal of free information for everyone."
+        },
+        {
+          "speaker": "man",
+          "text": "True, it’s a far cry from the commercialised platform it’s become today."
+        },
+        {
+          "speaker": "woman",
+          "text": "I just felt the final segment on future trends was a bit pessimistic. They focused almost entirely on data privacy and cybercrime, without mentioning any of the potential for positive social change."
+        },
+        {
+          "speaker": "man",
+          "text": "I see where you’re coming from, but I suppose those are the most pressing issues right now. It was a bit of a wake-up call, if anything."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What did the woman find most impressive about the documentary?",
+          "options": {
+            "A": "the quality of the historical research",
+            "B": " the focus on the human cooperation involved",
+            "C": "the explanation of the technological breakthroughs"
+          },
+          "answer": "B",
+          "explanation": "B is correct as she highlights the 'collaborative spirit of the early pioneers' [5]."
+        },
+        {
+          "number": 6,
+          "question": "What was the woman’s reaction to the end of the film?",
+          "options": {
+            "A": "She felt it lacked balance.",
+            "B": "She found it confusing.",
+            "C": "She thought it was overly optimistic."
+          },
+          "answer": "A",
+          "explanation": "A is supported by her comment that the final segment was 'pessimistic' and focused only on negative aspects like cybercrime [6]."
+        }
+      ]
+    }
+  ]
+}

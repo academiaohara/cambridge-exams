@@ -1,0 +1,186 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test19.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends, a man and a woman, discussing a photography exhibition they've just visited.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: I have to say, those black-and-white landscapes were incredibly atmospheric. The way the light hit the ridges in the desert was just stunning. || Woman: They were technically proficient, I’ll give you that. But [1]I couldn't help feeling that the collection lacked a cohesive narrative[/1]. It felt more like a random assortment of 'greatest hits' than a thought-provoking study. || Man: I see your point. It did jump around a bit between continents without much explanation. || Woman: Exactly. And [2]I was really hoping for some insight into the environmental impact on those regions[/2], especially given the photographer’s reputation for activism, but that was strangely absent. || Man: Maybe he wanted the images to speak for themselves? Though a bit of commentary wouldn't have gone amiss to ground the work.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I have to say, those black-and-white landscapes were incredibly atmospheric. The way the light hit the ridges in the desert was just stunning."
+        },
+        {
+          "speaker": "woman",
+          "text": "They were technically proficient, I’ll give you that. But I couldn't help feeling that the collection lacked a cohesive narrative. It felt more like a random assortment of 'greatest hits' than a thought-provoking study."
+        },
+        {
+          "speaker": "man",
+          "text": "I see your point. It did jump around a bit between continents without much explanation."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. And I was really hoping for some insight into the environmental impact on those regions, especially given the photographer’s reputation for activism, but that was strangely absent."
+        },
+        {
+          "speaker": "man",
+          "text": "Maybe he wanted the images to speak for themselves? Though a bit of commentary wouldn't have gone amiss to ground the work."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the woman's main criticism of the exhibition?",
+          "options": {
+            "A": "The technical quality of the prints was inconsistent.",
+            "B": "The selection of photos felt disconnected.",
+            "C": "The subject matter was too repetitive."
+          },
+          "answer": "B",
+          "explanation": "B is correct because she states the collection 'lacked a cohesive narrative' and felt like a 'random assortment' [1]."
+        },
+        {
+          "number": 2,
+          "question": "The woman was disappointed because the exhibition failed to",
+          "options": {
+            "A": "provide information on the photographer's techniques.",
+            "B": "explain the historical context of the locations.",
+            "C": "address specific ecological concerns."
+          },
+          "answer": "C",
+          "explanation": "C is supported by her comment about hoping for 'insight into the environmental impact' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues discussing a proposal to change the company's core working hours.",
+      "voices": [
+        "en-GB-ThomasNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: Have you seen the memo about the proposed 10-to-4 core hours? Management seems to think it’ll boost morale by allowing for better work-life balance. || Woman: [3]I suspect it’s more about reducing overhead costs by having fewer people in the building during peak energy times[/3], if I’m being honest. Morale is just the convenient excuse. || Man: That’s a bit cynical! Personally, I’d love the extra hour in the morning to avoid the worst of the commute. || Woman: It sounds great on paper, but [4]my concern is that it’ll lead to an even more fragmented workflow[/4]. We already struggle to get everyone in the same room for meetings as it is. || Man: I suppose so. But maybe it’ll just force us to be more efficient with the time we do have together. || Woman: We’ll see. I’m just worried the 'flexibility' will eventually translate into longer evening emails.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you seen the memo about the proposed 10-to-4 core hours? Management seems to think it’ll boost morale by allowing for better work-life balance."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect it’s more about reducing overhead costs by having fewer people in the building during peak energy times, if I’m being honest. Morale is just the convenient excuse."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s a bit cynical! Personally, I’d love the extra hour in the morning to avoid the worst of the commute."
+        },
+        {
+          "speaker": "woman",
+          "text": "It sounds great on paper, but my concern is that it’ll lead to an even more fragmented workflow. We already struggle to get everyone in the same room for meetings as it is."
+        },
+        {
+          "speaker": "man",
+          "text": "I suppose so. But maybe it’ll just force us to be more efficient with the time we do have together."
+        },
+        {
+          "speaker": "woman",
+          "text": "We’ll see. I’m just worried the 'flexibility' will eventually translate into longer evening emails."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What is the woman's opinion on the reason behind the proposal?",
+          "options": {
+            "A": "She believes it is a genuine attempt to help staff.",
+            "B": "She thinks it is driven by financial considerations.",
+            "C": "She views it as a response to recent staff feedback."
+          },
+          "answer": "B",
+          "explanation": "B is correct because she suspects the move is 'about reducing overhead costs' [3]."
+        },
+        {
+          "number": 4,
+          "question": "The woman is worried that the new hours will",
+          "options": {
+            "A": "negatively affect team coordination.",
+            "B": "increase the total number of hours worked.",
+            "ed": "make the morning commute more difficult."
+          },
+          "answer": "A",
+          "explanation": "A is supported by her worry about a 'fragmented workflow' and the difficulty of arranging meetings [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two university researchers discussing the challenges of securing funding for their project.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: I’ve just heard back from the grant committee. It’s another rejection, I’m afraid. They said our methodology was sound, but the 'immediate societal impact' wasn't clear enough. || Woman: That’s so frustrating! [5]It’s as if they don't value fundamental research unless it has a commercial application within six months[/5]. Science doesn't always work like that. || Man: I know. They’re prioritising short-term wins over long-term discovery. || Woman: Exactly. However, [6]I’ve been looking into a private foundation that specifically supports niche projects like ours[/6]. They’re less focused on marketability and more on innovative thinking. || Man: Really? That sounds promising. We’d probably have to rewrite the entire abstract to fit their criteria, though. || Woman: It’s worth the effort if it means we can finally get the lab equipment we need.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve just heard back from the grant committee. It’s another rejection, I’m afraid. They said our methodology was sound, but the 'immediate societal impact' wasn't clear enough."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s so frustrating! It’s as if they don't value fundamental research unless it has a commercial application within six months. Science doesn't always work like that."
+        },
+        {
+          "speaker": "man",
+          "text": "I know. They’re prioritising short-term wins over long-term discovery."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. However, I’ve been looking into a private foundation that specifically supports niche projects like ours. They’re less focused on marketability and more on innovative thinking."
+        },
+        {
+          "speaker": "man",
+          "text": "Really? That sounds promising. We’d probably have to rewrite the entire abstract to fit their criteria, though."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s worth the effort if it means we can finally get the lab equipment we need."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What is the woman’s attitude towards the grant committee’s decision?",
+          "options": {
+            "A": "She accepts that their project lacks practical value.",
+            "B": "She is annoyed by their narrow focus on profitability.",
+            "C": "She is surprised by their lack of interest in the methodology."
+          },
+          "answer": "B",
+          "explanation": "B is correct because she criticizes them for only valuing research with 'commercial application' [5]."
+        },
+        {
+          "number": 6,
+          "question": "What does the woman propose as a next step?",
+          "options": {
+            "A": "modifying the project to make it more marketable",
+            "B": "seeking support from an alternative source",
+            "C": "appealing the committee's final decision"
+          },
+          "answer": "B",
+          "explanation": "B is supported by her mention of finding a 'private foundation' that supports niche projects [6]."
+        }
+      ]
+    }
+  ]
+}

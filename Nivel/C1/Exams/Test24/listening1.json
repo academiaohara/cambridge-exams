@@ -1,0 +1,186 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test24.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two colleagues discussing a professional development course they are considering.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: So, are you going to sign up for that 'Leadership in the Digital Age' seminar? The brochure makes it sound like the holy grail of management training. || Woman: I’m on the fence. It’s a significant investment, both in terms of time and the departmental budget. || Man: True, but [1]what really draws me to it is the calibre of the guest speakers they’ve lined up[/1]. Having the former CEO of that tech giant giving a workshop is a rare opportunity. || Woman: I see your point. However, [2]I’m slightly concerned that the curriculum seems a bit light on actual data analysis[/2]. It’s all very well talking about 'vision' and 'culture', but I need something I can quantify. || Man: I suppose it depends on what you’re looking for. I’m more interested in the networking side of things, to be honest. || Woman: Well, if you’re going for the contacts, it’s probably worth it. I might look for something more technical.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, are you going to sign up for that 'Leadership in the Digital Age' seminar? The brochure makes it sound like the holy grail of management training."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’m on the fence. It’s a significant investment, both in terms of time and the departmental budget."
+        },
+        {
+          "speaker": "man",
+          "text": "True, but what really draws me to it is the calibre of the guest speakers they’ve lined up. Having the former CEO of that tech giant giving a workshop is a rare opportunity."
+        },
+        {
+          "speaker": "woman",
+          "text": "I see your point. However, I’m slightly concerned that the curriculum seems a bit light on actual data analysis. It’s all very well talking about 'vision' and 'culture', but I need something I can quantify."
+        },
+        {
+          "speaker": "man",
+          "text": "I suppose it depends on what you’re looking for. I’m more interested in the networking side of things, to be honest."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, if you’re going for the contacts, it’s probably worth it. I might look for something more technical."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the man's primary reason for wanting to attend the seminar?",
+          "options": {
+            "A": "to improve his practical management skills",
+            "B": "to learn from highly experienced individuals",
+            "C": "to enhance his CV for future promotions"
+          },
+          "answer": "B",
+          "explanation": "B is correct because he emphasizes the 'calibre of the guest speakers' as the main draw [1]."
+        },
+        {
+          "number": 2,
+          "question": "The woman expresses doubt about the seminar's",
+          "options": {
+            "A": "relevance to her current role.",
+            "B": "overall value for money.",
+            "C": "lack of focus on measurable skills."
+          },
+          "answer": "C",
+          "explanation": "C is supported by her concern that the course is 'light on actual data analysis' and too focused on abstract concepts [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends discussing a new video game that has become a global phenomenon.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I finally sat down and played 'Neon Frontier' last night. I can see why everyone is obsessed with the world-building; it’s incredibly detailed. || Woman: It’s gorgeous, isn't it? But [3]I found the core gameplay loop a bit repetitive after the first few hours[/3]. It’s basically just running errands for non-player characters. || Man: I actually find that quite relaxing! It’s the perfect way to unwind after a stressful day. Plus, the soundtrack is phenomenal. || Woman: True, the music is a highlight. But [4]don't you think the ending felt a bit rushed?[/4] It’s like they spent years on the first two acts and then realized they had to finish the story in a weekend. || Man: I agree, it did leave a few too many loose ends. I suspect they’re holding back the resolution for a paid expansion pack later this year. || Woman: Typical. I’d rather have a complete experience from the start.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I finally sat down and played 'Neon Frontier' last night. I can see why everyone is obsessed with the world-building; it’s incredibly detailed."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s gorgeous, isn't it? But I found the core gameplay loop a bit repetitive after the first few hours. It’s basically just running errands for non-player characters."
+        },
+        {
+          "speaker": "man",
+          "text": "I actually find that quite relaxing! It’s the perfect way to unwind after a stressful day. Plus, the soundtrack is phenomenal."
+        },
+        {
+          "speaker": "woman",
+          "text": "True, the music is a highlight. But don't you think the ending felt a bit rushed? It’s like they spent years on the first two acts and then realized they had to finish the story in a weekend."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, it did leave a few too many loose ends. I suspect they’re holding back the resolution for a paid expansion pack later this year."
+        },
+        {
+          "speaker": "woman",
+          "text": "Typical. I’d rather have a complete experience from the start."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What was the woman's opinion of the gameplay?",
+          "options": {
+            "A": "She found it unnecessarily complex.",
+            "B": "She thought it lacked variety.",
+            "C": "She felt it was too difficult for beginners."
+          },
+          "answer": "B",
+          "explanation": "B is supported by her comment that the gameplay loop was 'repetitive' [3]."
+        },
+        {
+          "number": 4,
+          "question": "Both speakers agree that the game's conclusion",
+          "options": {
+            "A": "was intentionally confusing.",
+            "B": "failed to provide a satisfying wrap-up.",
+            "C": "was the most technically impressive part."
+          },
+          "answer": "B",
+          "explanation": "B is correct because both agree the ending felt 'rushed' and left 'too many loose ends' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a museum exhibition about the history of fashion.",
+      "voices": [
+        "en-GB-SoniaNeural",
+        "en-GB-RyanNeural"
+      ],
+      "audio_script": "Woman: That exhibition on Victorian formal wear was fascinating. The level of craftsmanship in those corsets was staggering, even if the actual garments looked incredibly painful to wear. || Man: It was eye-opening. [5]What struck me was how much social status was dictated by the sheer impracticality of the clothing[/5]. If you can't lift your arms, you’re clearly not doing manual labour. || Woman: Exactly. It’s a visual shorthand for class. But [6]I was a bit disappointed that the exhibition didn't explore the lives of the people who actually made the clothes[/6]. It was all about the wearers, not the makers. || Man: That’s a fair point. A few stories from the sweatshops would have provided some much-needed perspective on the human cost of that 'elegance'. || Woman: It felt a bit like they were glorifying the past without acknowledging the reality of the production.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "That exhibition on Victorian formal wear was fascinating. The level of craftsmanship in those corsets was staggering, even if the actual garments looked incredibly painful to wear."
+        },
+        {
+          "speaker": "man",
+          "text": "It was eye-opening. What struck me was how much social status was dictated by the sheer impracticality of the clothing. If you can't lift your arms, you’re clearly not doing manual labour."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a visual shorthand for class. But I was a bit disappointed that the exhibition didn't explore the lives of the people who actually made the clothes. It was all about the wearers, not the makers."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s a fair point. A few stories from the sweatshops would have provided some much-needed perspective on the human cost of that 'elegance'."
+        },
+        {
+          "speaker": "woman",
+          "text": "It felt a bit like they were glorifying the past without acknowledging the reality of the production."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What did the man find most interesting about the clothing on display?",
+          "options": {
+            "A": "the materials used in their construction",
+            "B": "the way they reflected societal hierarchies",
+            "C": "the evolution of style over the century"
+          },
+          "answer": "B",
+          "explanation": "B is supported by his observation that status was linked to the 'impracticality of the clothing' [5]."
+        },
+        {
+          "number": 6,
+          "question": "What was the woman's main criticism of the exhibition?",
+          "options": {
+            "A": "It lacked a critical view of the garment industry.",
+            "B": "It was too focused on one specific historical period.",
+            "C": "The displays were poorly lit and hard to see."
+          },
+          "answer": "A",
+          "explanation": "A is correct because she was disappointed that it 'didn't explore the lives of the people who actually made the clothes' [6]."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test28.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new recipe box subscription they’ve tried.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: So, did you manage to cook that sea bass recipe from the 'Chef-Box'? It looked quite fancy in the photo. || Woman: It was delicious. But [1]I found the estimated prep time on the recipe card to be wildly optimistic[/1]. It said fifteen minutes, but I was still chopping veg half an hour later. || Man: I had the same issue with the risotto! I think they assume we all have professional knife skills. || Woman: [2]What I really appreciated, though, was the lack of food waste[/2]. It was so satisfying only having exactly the amount of spices I actually needed for the dish. || Man: True, it beats having six half-empty jars of obscure herbs at the back of the cupboard. || Woman: Exactly. It’s a bit pricey, but for a special occasion, it’s worth the convenience.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, did you manage to cook that sea bass recipe from the 'Chef-Box'? It looked quite fancy in the photo."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was delicious. But I found the estimated prep time on the recipe card to be wildly optimistic. It said fifteen minutes, but I was still chopping veg half an hour later."
+        },
+        {
+          "speaker": "man",
+          "text": "I had the same issue with the risotto! I think they assume we all have professional knife skills."
+        },
+        {
+          "speaker": "woman",
+          "text": "What I really appreciated, though, was the lack of food waste. It was so satisfying only having exactly the amount of spices I actually needed for the dish."
+        },
+        {
+          "speaker": "man",
+          "text": "True, it beats having six half-empty jars of obscure herbs at the back of the cupboard."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a bit pricey, but for a special occasion, it’s worth the convenience."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What did the woman find frustrating about the recipe box?",
+          "options": {
+            "A": "the difficulty of the cooking techniques",
+            "B": "the inaccuracy of the timing instructions",
+            "C": "the poor quality of the fresh ingredients"
+          },
+          "answer": "B",
+          "explanation": "She found the estimated prep time to be 'wildly optimistic' and much shorter than reality [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers liked the service because it",
+          "options": {
+            "A": "introduced them to new flavors.",
+            "B": "was more affordable than eating out.",
+            "C": "prevented the accumulation of unused items."
+          },
+          "answer": "C",
+          "explanation": "They both highlight the benefit of not having 'food waste' or 'half-empty jars' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a city's new cycle-lane infrastructure.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: I finally tried the new segregated cycle path to the office today. It’s a bit of a detour, but I felt much safer. || Woman: [3]I suspect the council is only doing it to meet their green targets[/3], rather than actually listening to what local commuters need. || Man: Why do you say that? It seems like a step in the right direction. || Woman: [4]The way the lanes just abruptly end at the busiest roundabouts is a major safety flaw[/4]. It’s as if they ran out of paint halfway through the project. || Man: I agree, it is a bit of a shock when you’re suddenly thrown back into traffic. || Woman: Exactly. It needs to be a continuous network, not just a few disjointed stretches of blue tarmac. || Man: Let’s hope they finish the rest of it soon.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I finally tried the new segregated cycle path to the office today. It’s a bit of a detour, but I felt much safer."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect the council is only doing it to meet their green targets, rather than actually listening to what local commuters need."
+        },
+        {
+          "speaker": "man",
+          "text": "Why do you say that? It seems like a step in the right direction."
+        },
+        {
+          "speaker": "woman",
+          "text": "The way the lanes just abruptly end at the busiest roundabouts is a major safety flaw. It’s as if they ran out of paint halfway through the project."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, it is a bit of a shock when you’re suddenly thrown back into traffic."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It needs to be a continuous network, not just a few disjointed stretches of blue tarmac."
+        },
+        {
+          "speaker": "man",
+          "text": "Let’s hope they finish the rest of it soon."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What is the woman's opinion of the council's motivation?",
+          "options": {
+            "A": "They are trying to reduce traffic congestion.",
+            "B": "They are prioritizing political goals over practical ones.",
+            "C": "They are responding to pressure from local cyclists."
+          },
+          "answer": "B",
+          "explanation": "She suspects they are doing it 'to meet their green targets' rather than helping commuters [3]."
+        },
+        {
+          "number": 4,
+          "question": "What is the main problem identifyed with the new lanes?",
+          "options": {
+            "A": "They are not wide enough for cargo bikes.",
+            "B": "They are poorly lit at night.",
+            "C": "They lack a consistent connection."
+          },
+          "answer": "C",
+          "explanation": "She notes that the lanes 'abruptly end' and are 'disjointed' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two friends discussing a new museum of modern art.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: That exhibition on abstract expressionism was quite a challenge! I’m still not sure what that pile of bricks was supposed to represent. || Woman: [5]I found the lack of descriptive labels near the artworks quite pretentious[/5]. Not all of us have a degree in art history. || Man: I agree. A bit of context would have helped me appreciate it more. || Woman: [6]What really stood out, though, was the architecture of the building itself[/6]. That spiral staircase in the atrium is a masterpiece. || Man: It was stunning. I think I spent more time taking photos of the ceiling than the actual paintings. || Woman: It’s a shame when the building outshines the collection, but it’s definitely worth the visit just for the views from the roof terrace.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "That exhibition on abstract expressionism was quite a challenge! I’m still not sure what that pile of bricks was supposed to represent."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the lack of descriptive labels near the artworks quite pretentious. Not all of us have a degree in art history."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. A bit of context would have helped me appreciate it more."
+        },
+        {
+          "speaker": "woman",
+          "text": "What really stood out, though, was the architecture of the building itself. That spiral staircase in the atrium is a masterpiece."
+        },
+        {
+          "speaker": "man",
+          "text": "It was stunning. I think I spent more time taking photos of the ceiling than the actual paintings."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a shame when the building outshines the collection, but it’s definitely worth the visit just for the views from the roof terrace."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "The woman suggests that the museum",
+          "options": {
+            "A": "is too small for the collection.",
+            "B": "lacks sufficient information for the public.",
+            "C": "is overpriced for a local attraction."
+          },
+          "answer": "B",
+          "explanation": "She finds the 'lack of descriptive labels' pretentious and unhelpful [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were particularly impressed by",
+          "options": {
+            "A": "the quality of the paintings.",
+            "B": " the expertise of the museum guides.",
+            "C": "the physical design of the venue."
+          },
+          "answer": "C",
+          "explanation": "They both praise the 'architecture of the building' and the 'spiral staircase' [6]."
+        }
+      ]
+    }
+  ]
+}

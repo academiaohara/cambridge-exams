@@ -1,0 +1,111 @@
+{
+  "title": "Listening - Part 4: Extreme Sports Enthusiasts",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "topic": "five people talking about why they took up an extreme sport and its impact on them",
+  "content": {
+    "voices": {
+      "Speaker 1": "en-GB-NoahNeural",
+      "Speaker 2": "en-GB-OliviaNeural",
+      "Speaker 3": "en-GB-AlfieNeural",
+      "Speaker 4": "en-GB-BellaNeural",
+      "Speaker 5": "en-GB-ElliotNeural"
+    },
+    "audio_script": "Speaker 1: I’d reached a point in my career where everything felt predictable and safe. [21]I desperately needed something that would push me out of my comfort zone and test my limits[/21], so I signed up for a skydiving course. The first jump was terrifying, but it changed my perspective entirely. Now, I find that [26]the minor stresses of daily life simply don't bother me anymore[/26]. When you've faced a four-thousand-foot drop, a difficult meeting at work or a traffic jam seems completely insignificant. It’s given me a profound sense of inner calm that I never expected to find in such a high-adrenaline activity. || Speaker 2: My doctor suggested I find a way to manage my stress levels, but traditional meditation just wasn't working for me. [22]A friend suggested big-wave surfing as a way to force myself to stay in the present moment[/22]. It worked instantly. You can’t think about your taxes when a wall of water is chasing you. The most surprising benefit, however, has been social. [27]I’ve developed an incredibly strong bond with a group of fellow surfers who are now my closest friends[/27]. We rely on each other for safety in the water, and that level of trust has translated into a supportive community on dry land as well. || Speaker 3: I was always the 'clumsy' kid in school, and I grew up believing I had no physical coordination. [23]I took up rock climbing primarily to prove to myself that I could master a complex physical skill[/23]. It was a slow process, but reaching that first summit was a revelation. It wasn't just about the height; [28]it was the massive boost in self-confidence that affected every other area of my life[/28]. Suddenly, I felt capable of tackling intellectual and social challenges that I would have previously avoided. It turns out I wasn't clumsy; I just hadn't found the right challenge. || Speaker 4: Working in a high-pressure corporate environment, I felt like I was losing my sense of identity. [24]I started ultra-marathon running because I wanted to reclaim a part of myself that wasn't defined by my job title[/24]. Out on the trails, I’m just a runner. The physical toll is high, of course, but [29]the real reward has been the mental resilience I’ve built up during those long, lonely hours of training[/29]. I’ve learned that the mind usually gives up long before the body does, and applying that persistence to my professional life has made me much more effective and less prone to burnout. || Speaker 5: I’d always been fascinated by the ocean, but a fear of deep water held me back for years. [25]I eventually decided to try free-diving specifically to confront and overcome this lifelong phobia[/25]. Learning to hold my breath and descend into the blue was a spiritual experience. What I value most now is [30]the extraordinary sense of physical and mental discipline I've had to develop to stay safe[/30]. It requires a level of focus and control over your own physiology that is almost meditative. It’s transformed how I approach any difficult task; I just breathe and stay focused on the immediate moment.",
+    "task1": {
+      "title": "Task One",
+      "instruction": "For questions 21–25, choose from the list (A–H) why each speaker took up their particular sport.",
+      "questions": [
+        {
+          "number": 21,
+          "speaker": "Speaker 1",
+          "correct": "E",
+          "explanation": "Speaker 1 mentions needing to be pushed out of his comfort zone and testing his limits."
+        },
+        {
+          "number": 22,
+          "speaker": "Speaker 2",
+          "correct": "C",
+          "explanation": "Speaker 2 mentions using the sport to force herself to stay in the present moment for stress management."
+        },
+        {
+          "number": 23,
+          "speaker": "Speaker 3",
+          "correct": "H",
+          "explanation": "Speaker 3 wanted to prove he could master a physical skill despite being told he was clumsy."
+        },
+        {
+          "number": 24,
+          "speaker": "Speaker 4",
+          "correct": "A",
+          "explanation": "Speaker 4 wanted to reclaim an identity not defined by her corporate job."
+        },
+        {
+          "number": 25,
+          "speaker": "Speaker 5",
+          "correct": "F",
+          "explanation": "Speaker 5 tried the sport specifically to confront and overcome a lifelong fear of water."
+        }
+      ],
+      "options": {
+        "A": "to regain a sense of personal identity",
+        "B": "to follow a family tradition",
+        "C": "to improve their ability to concentrate",
+        "D": "to recover from a physical injury",
+        "E": "to seek a new personal challenge",
+        "F": "to face a long-standing phobia",
+        "G": "to prepare for a professional role",
+        "H": "to disprove a negative self-perception"
+      }
+    },
+    "task2": {
+      "title": "Task Two",
+      "instruction": "For questions 26–30, choose from the list (A–H) what each speaker finds most rewarding about their experience.",
+      "questions": [
+        {
+          "number": 26,
+          "speaker": "Speaker 1",
+          "correct": "B",
+          "explanation": "Speaker 1 finds that daily stresses no longer bother him after experiencing the drop."
+        },
+        {
+          "number": 27,
+          "speaker": "Speaker 2",
+          "correct": "G",
+          "explanation": "Speaker 2 highlights the strong bonds and supportive community she found with fellow surfers."
+        },
+        {
+          "number": 28,
+          "speaker": "Speaker 3",
+          "correct": "D",
+          "explanation": "Speaker 3 notes a massive boost in self-confidence that affected all areas of his life."
+        },
+        {
+          "number": 29,
+          "speaker": "Speaker 4",
+          "correct": "F",
+          "explanation": "Speaker 4 values the mental resilience built during long training hours."
+        },
+        {
+          "number": 30,
+          "speaker": "Speaker 5",
+          "correct": "A",
+          "explanation": "Speaker 5 values the physical and mental discipline required to stay safe."
+        }
+      ],
+      "options": {
+        "A": "the development of self-control",
+        "B": "a more balanced perspective on stress",
+        "C": "the opportunity to travel extensively",
+        "D": "an increase in general self-assurance",
+        "E": "a change in their physical appearance",
+        "F": "greater psychological toughness",
+        "G": "the formation of meaningful friendships",
+        "H": "the recognition received from others"
+      }
+    }
+  },
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening4_test17.mp3"
+}

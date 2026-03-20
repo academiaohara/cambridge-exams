@@ -1,0 +1,182 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test21.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two colleagues, a man and a woman, talking about a new office layout.",
+      "voices": [
+        "en-GB-RyanNeural",
+        "en-GB-SoniaNeural"
+      ],
+      "audio_script": "Man: So, what’s your verdict on the new 'hot-desking' arrangement? I’m struggling to find a spot near a window most mornings. || Woman: It’s definitely a change. I think [1]the intention was to break down the silos between departments, but in reality, people just end up sitting with the same three colleagues every day anyway[/1]. || Man: Exactly. It’s a bit of a psychological battle for the best monitors too. I miss having my own drawer for my headphones and spare tea bags. || Woman: I know what you mean. However, [2]I have noticed a significant uptick in the amount of incidental information I pick up just by being in different zones[/2]. I actually solved a budget issue yesterday just by overhearing the marketing team. || Man: I suppose that’s a plus, though I’d trade it for a bit more peace and quiet and a dedicated desk any day.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, what’s your verdict on the new 'hot-desking' arrangement? I’m struggling to find a spot near a window most mornings."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s definitely a change. I think the intention was to break down the silos between departments, but in reality, people just end up sitting with the same three colleagues every day anyway."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. It’s a bit of a psychological battle for the best monitors too. I miss having my own drawer for my headphones and spare tea bags."
+        },
+        {
+          "speaker": "woman",
+          "text": "I know what you mean. However, I have noticed a significant uptick in the amount of incidental information I pick up just by being in different zones. I actually solved a budget issue yesterday just by overhearing the marketing team."
+        },
+        {
+          "speaker": "man",
+          "text": "I suppose that’s a plus, though I’d trade it for a bit more peace and quiet and a dedicated desk any day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The woman suggests that the new office layout has",
+          "options": {
+            "A": "failed to achieve its primary social objective.",
+            "B": "led to an increase in workplace conflict.",
+            "C": "improved the overall aesthetic of the building."
+          },
+          "answer": "A",
+          "explanation": "A is correct because she notes that despite the aim to 'break down silos', people still stick to their usual groups [1]."
+        },
+        {
+          "number": 2,
+          "question": "What does the woman see as a benefit of the new system?",
+          "options": {
+            "A": "a more organized physical workspace",
+            "B": "the acquisition of useful knowledge by chance",
+            "C": "better communication within her own team"
+          },
+          "answer": "B",
+          "explanation": "B is supported by her comment about picking up 'incidental information' from other departments [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two people discussing a local council's decision to ban cars from the city centre.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-AbbiNeural"
+      ],
+      "audio_script": "Man: Have you heard? They’re finally pedestrianising the whole High Street. About time, if you ask me. It’ll make the air much cleaner. || Woman: It’s a nice idea in principle, but [3]I’m concerned about the knock-on effect for the elderly residents who rely on the bus stops that are being moved[/3] half a mile away. It’s not very inclusive. || Man: They’ve promised a shuttle service, though. Surely that’ll mitigate the problem? || Woman: We’ll see. Usually, those services are underfunded and unreliable. [4]What really grinds my gears is that they haven't simultaneousy improved the cycle path network[/4]. If you want people out of cars, you have to give them a safe alternative, not just block the road. || Man: True. It does feel like they’ve done the easy part of the job without thinking about the infrastructure.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you heard? They’re finally pedestrianising the whole High Street. About time, if you ask me. It’ll make the air much cleaner."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a nice idea in principle, but I’m concerned about the knock-on effect for the elderly residents who rely on the bus stops that are being moved half a mile away. It’s not very inclusive."
+        },
+        {
+          "speaker": "man",
+          "text": "They’ve promised a shuttle service, though. Surely that’ll mitigate the problem?"
+        },
+        {
+          "speaker": "woman",
+          "text": "We’ll see. Usually, those services are underfunded and unreliable. What really grinds my gears is that they haven't simultaneousy improved the cycle path network. If you want people out of cars, you have to give them a safe alternative, not just block the road."
+        },
+        {
+          "speaker": "man",
+          "text": "True. It does feel like they’ve done the easy part of the job without thinking about the infrastructure."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman is worried that the plan will",
+          "options": {
+            "A": "harm the local economy by discouraging shoppers.",
+            "B": "be poorly received by the general public.",
+            "C": "disadvantage certain vulnerable groups."
+          },
+          "answer": "C",
+          "explanation": "C is supported by her concern for elderly residents who rely on specific bus stops [3]."
+        },
+        {
+          "number": 4,
+          "question": "The woman criticizes the council for",
+          "options": {
+            "A": "ignoring the needs of cyclists.",
+            "B": "failing to provide a comprehensive solution.",
+            "C": "underestimating the cost of the project."
+          },
+          "answer": "B",
+          "explanation": "B is correct because she argues they haven't provided 'safe alternatives' like cycle paths alongside the car ban [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two friends talking about a book they have both read.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: I finally finished that thriller you recommended. I have to say, the twist at the end caught me completely off guard. || Woman: I thought it might! It’s rare to find an author who can pull that off without it feeling forced. || Man: [5]I found the middle section a bit of a slog, though[/5]. I felt like there were several chapters that didn't really move the plot forward. || Woman: I agree, it could have used a tighter edit. But [6]what stayed with me was the way the author handled the protagonist’s psychological decline[/6]. It felt painfully authentic, almost uncomfortable to read at times. || Man: Exactly. It made the final reveal much more impactful because you’d become so invested in his perspective, however skewed it was. || Woman: Definitely. It’s one of those books that you need to discuss with someone as soon as you close it.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I finally finished that thriller you recommended. I have to say, the twist at the end caught me completely off guard."
+        },
+        {
+          "speaker": "woman",
+          "text": "I thought it might! It’s rare to find an author who can pull that off without it feeling forced."
+        },
+        {
+          "speaker": "man",
+          "text": "I found the middle section a bit of a slog, though. I felt like there were several chapters that didn't really move the plot forward."
+        },
+        {
+          "speaker": "woman",
+          "text": "I agree, it could have used a tighter edit. But what stayed with me was the way the author handled the protagonist’s psychological decline. It felt painfully authentic, almost uncomfortable to read at times."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. It made the final reveal much more impactful because you’d become so invested in his perspective, however skewed it was."
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely. It’s one of those books that you need to discuss with someone as soon as you close it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "The man’s main criticism of the book relates to",
+          "options": {
+            "A": "the pacing of the narrative.",
+            "B": "the predictability of the ending.",
+            "C": "the lack of character development."
+          },
+          "answer": "A",
+          "explanation": "A is correct because he mentions the middle section was a 'slog' and didn't move the plot forward [5]."
+        },
+        {
+          "number": 6,
+          "question": "What did the woman find most impressive about the writing?",
+          "options": {
+            "A": "the use of descriptive language",
+            "B": "the portrayal of a character's mental state",
+            "C": "the complex structure of the mystery"
+          },
+          "answer": "B",
+          "explanation": "B is supported by her praise for the 'authenticity' of the protagonist’s 'psychological decline' [6]."
+        }
+      ]
+    }
+  ]
+}

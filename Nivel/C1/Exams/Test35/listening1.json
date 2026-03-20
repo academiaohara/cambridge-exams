@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test35.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new language-learning app they are using.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: How are you finding 'Lingo-Leap'? I’ve finally mastered the past tense in Italian. || Woman: [1]I’m finding the speech recognition software a bit hit-and-miss[/1]. It keeps telling me my pronunciation is wrong even when I’m mimicking the audio exactly. || Man: I had the same issue! I think it struggles with background noise. || Woman: [2]What I do like, though, is the focus on practical, everyday phrases[/2]. I feel like I could actually order a coffee or ask for directions now. || Man: I agree. It’s much better than those old courses that started with 'the apple is on the table'. || Woman: Exactly. It’s a bit more relevant to real life, which keeps me motivated to practice every morning.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How are you finding 'Lingo-Leap'? I’ve finally mastered the past tense in Italian."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’m finding the speech recognition software a bit hit-and-miss. It keeps telling me my pronunciation is wrong even when I’m mimicking the audio exactly."
+        },
+        {
+          "speaker": "man",
+          "text": "I had the same issue! I think it struggles with background noise."
+        },
+        {
+          "speaker": "woman",
+          "text": "What I do like, though, is the focus on practical, everyday phrases. I feel like I could actually order a coffee or ask for directions now."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s much better than those old courses that started with 'the apple is on the table'."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a bit more relevant to real life, which keeps me motivated to practice every morning."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The woman is frustrated with the app because",
+          "options": {
+            "A": "the grammar explanations are too complex.",
+            "B": "the voice analysis tool is unreliable.",
+            "C": "the audio quality of the native speakers is poor."
+          },
+          "answer": "B",
+          "explanation": "She describes the speech recognition as 'hit-and-miss' and says it corrects her incorrectly [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers agree that the app's strength lies in its",
+          "options": {
+            "A": "social features and leaderboards.",
+            "B": "comprehensive vocabulary lists.",
+            "C": "use of functional language."
+          },
+          "answer": "C",
+          "explanation": "They both praise the focus on 'practical, everyday phrases' and 'real life' relevance [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a professional conference held online.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: That virtual summit was surprisingly well-organized. I didn't experience a single technical glitch. || Woman: [3]I suspect the organizers were playing it safe by pre-recording all the main keynote speeches[/3], which took away the excitement of a live event. || Man: That would explain why there were no delays. But I missed the live interaction. || Woman: [4]I’ve noticed that the 'breakout rooms' for networking were far too large to be effective[/4]. You can't have a meaningful conversation with fifty people at once. || Man: I agree. It just became a shouting match or complete silence. || Woman: Exactly. If they do it again next year, they really need to cap those groups at five or six people.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "That virtual summit was surprisingly well-organized. I didn't experience a single technical glitch."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect the organizers were playing it safe by pre-recording all the main keynote speeches, which took away the excitement of a live event."
+        },
+        {
+          "speaker": "man",
+          "text": "That would explain why there were no delays. But I missed the live interaction."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that the 'breakout rooms' for networking were far too large to be effective. You can't have a meaningful conversation with fifty people at once."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It just became a shouting match or complete silence."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. If they do it again next year, they really need to cap those groups at five or six people."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the conference lacked spontaneity because",
+          "options": {
+            "A": "the speakers were not well-prepared.",
+            "B": "the sessions were not broadcast in real-time.",
+            "C": "the audience was not allowed to ask questions."
+          },
+          "answer": "B",
+          "explanation": "She mentions the speeches were 'pre-recorded', which took away the 'excitement of a live event' [3]."
+        },
+        {
+          "number": 4,
+          "question": "What is the speakers' shared opinion on the networking sessions?",
+          "options": {
+            "A": "The time allocated was insufficient.",
+            "B": "The group sizes were unmanageable.",
+            "C": "The topics discussed were irrelevant."
+          },
+          "answer": "B",
+          "explanation": "They both agree that having fifty people in a 'breakout room' was 'far too large to be effective' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new brand of eco-friendly household cleaners.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: I’ve been using those refillable cleaning sprays from 'Pure-Home'. They actually smell quite nice for a change. || Woman: [5]I found the initial cost of the glass bottles to be a bit steep[/5], even if the refill sachets are cheap later on. || Man: It’s an investment, I suppose. But they do look better on the counter than plastic ones. || Woman: [6]I did appreciate that the products actually work on tough stains[/6]. Usually, 'natural' cleaners are a bit useless against grease, but these were surprisingly effective. || Man: I agree. I was skeptical, but the kitchen degreaser is a game-changer. || Woman: It’s good to find a brand that doesn't compromise on performance just to be environmentally friendly.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve been using those refillable cleaning sprays from 'Pure-Home'. They actually smell quite nice for a change."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the initial cost of the glass bottles to be a bit steep, even if the refill sachets are cheap later on."
+        },
+        {
+          "speaker": "man",
+          "text": "It’s an investment, I suppose. But they do look better on the counter than plastic ones."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did appreciate that the products actually work on tough stains. Usually, 'natural' cleaners are a bit useless against grease, but these were surprisingly effective."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. I was skeptical, but the kitchen degreaser is a game-changer."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s good to find a brand that doesn't compromise on performance just to be environmentally friendly."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman's main reservation about the cleaning products?",
+          "options": {
+            "A": "the difficulty of the refill process",
+            "B": "the high price of the starting kit",
+            "C": "the limited variety of scents"
+          },
+          "answer": "B",
+          "explanation": "She found the 'initial cost of the glass bottles to be a bit steep' [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the brand's",
+          "options": {
+            "A": "cleaning power.",
+            "B": "recycling incentives.",
+            "C": "minimalist packaging."
+          },
+          "answer": "A",
+          "explanation": "They both highlight that the products 'actually work on tough stains' and are 'surprisingly effective' [6]."
+        }
+      ]
+    }
+  ]
+}

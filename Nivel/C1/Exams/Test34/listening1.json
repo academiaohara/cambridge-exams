@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test34.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new city museum of science.",
+      "voices": [
+        "en-GB-RyanNeural",
+        "en-GB-SoniaNeural"
+      ],
+      "audio_script": "Man: I finally took the kids to the new 'Discovery Centre'. They loved the robot lab. || Woman: [1]I found the entrance fee a bit hard to justify[/1], to be honest. It’s nearly double what the old museum used to charge. || Man: It is pricey. But I suppose you’re paying for the high-tech exhibits. || Woman: [2]What I really appreciated, though, was the clarity of the explanations[/2]. Even the really complex physics concepts were broken down into language a six-year-old could grasp. || Man: I agree. It didn't feel like they were talking down to the visitors. || Woman: Exactly. It’s a great educational resource, if you can afford to get through the door.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I finally took the kids to the new 'Discovery Centre'. They loved the robot lab."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the entrance fee a bit hard to justify, to be honest. It’s nearly double what the old museum used to charge."
+        },
+        {
+          "speaker": "man",
+          "text": "It is pricey. But I suppose you’re paying for the high-tech exhibits."
+        },
+        {
+          "speaker": "woman",
+          "text": "What I really appreciated, though, was the clarity of the explanations. Even the really complex physics concepts were broken down into language a six-year-old could grasp."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It didn't feel like they were talking down to the visitors."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a great educational resource, if you can afford to get through the door."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the woman find disappointing about the museum?",
+          "options": {
+            "A": "the lack of interactive displays",
+            "B": "the cost of admission",
+            "C": "the location of the building"
+          },
+          "answer": "B",
+          "explanation": "She finds the entrance fee 'hard to justify' and mentions it's double the old price [1]."
+        },
+        {
+          "number": 2,
+          "question": "What did the woman value most about the exhibits?",
+          "options": {
+            "A": "the advanced level of the technology",
+            "B": "the accessible nature of the information",
+            "C": "the variety of the topics covered"
+          },
+          "answer": "B",
+          "explanation": "She praises the 'clarity of the explanations' for complex physics [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a change in their company's email policy.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-AbbiNeural"
+      ],
+      "audio_script": "Man: So, no more internal emails on Fridays. Management wants us to 'talk more'. What's your take? || Woman: [3]I suspect it will actually lead to more frequent and unnecessary meetings[/3], which is the last thing we need. || Man: That's a worry. I usually use Friday to clear my inbox for the following week. || Woman: [4]I’ve noticed that people are already starting to use instant messaging apps instead[/4], so the volume of digital noise hasn't really changed. || Man: I agree. It’s just shifted from one platform to another. || Woman: Exactly. If they wanted to reduce distractions, they should have just told us to stop copying everyone into every single message.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, no more internal emails on Fridays. Management wants us to 'talk more'. What's your take?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect it will actually lead to more frequent and unnecessary meetings, which is the last thing we need."
+        },
+        {
+          "speaker": "man",
+          "text": "That's a worry. I usually use Friday to clear my inbox for the following week."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that people are already starting to use instant messaging apps instead, so the volume of digital noise hasn't really changed."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s just shifted from one platform to another."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. If they wanted to reduce distractions, they should have just told us to stop copying everyone into every single message."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the new policy will result in",
+          "options": {
+            "A": "a decrease in overall productivity.",
+            "B": "an increase in alternative forms of disruption.",
+            "C": "a decline in the quality of team communication."
+          },
+          "answer": "B",
+          "explanation": "She fears it will lead to 'more frequent and unnecessary meetings' [3]."
+        },
+        {
+          "number": 4,
+          "question": "What has the woman observed since the policy was introduced?",
+          "options": {
+            "A": "staff being more collaborative in person",
+            "B": "a transition to different communication tools",
+            "C": "a reduction in the time spent on digital tasks"
+          },
+          "answer": "B",
+          "explanation": "She notes people are using 'instant messaging apps instead' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new local park that has recently opened.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I took the dog to the new 'West-Side Park' this morning. It’s great to have some green space so close to the city. || Woman: [5]I found the lack of shaded areas a bit problematic[/5], especially in this heat. There are hardly any mature trees. || Man: I agree, it’s a bit exposed. I suppose it’ll take ten years for the new ones to grow. || Woman: [6]I did think the playground equipment was exceptionally well-designed, though[/6]. It’s much safer than the old wooden structures in the town centre. || Man: I agree, it’s very modern. I just wish they’d included a small café area so parents could get a coffee while the kids play. || Woman: That would have been a nice touch, but at least there’s a water fountain.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I took the dog to the new 'West-Side Park' this morning. It’s great to have some green space so close to the city."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the lack of shaded areas a bit problematic, especially in this heat. There are hardly any mature trees."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, it’s a bit exposed. I suppose it’ll take ten years for the new ones to grow."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did think the playground equipment was exceptionally well-designed, though. It’s much safer than the old wooden structures in the town centre."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, it’s very modern. I just wish they’d included a small café area so parents could get a coffee while the kids play."
+        },
+        {
+          "speaker": "woman",
+          "text": "That would have been a nice touch, but at least there’s a water fountain."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What is the woman's main criticism of the park?",
+          "options": {
+            "A": "the distance from the local housing",
+            "B": "the inadequate protection from the sun",
+            "C": "the poor quality of the walking paths"
+          },
+          "answer": "B",
+          "explanation": "She complains about the 'lack of shaded areas' and the absence of mature trees [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the park's",
+          "options": {
+            "A": "recreational facilities for children.",
+            "B": "availability of refreshment options.",
+            "C": "commitment to environmental preservation."
+          },
+          "answer": "A",
+          "explanation": "They both praise the 'well-designed' and 'safe' playground equipment [6]."
+        }
+      ]
+    }
+  ]
+}
