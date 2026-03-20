@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test39.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new space-themed movie.",
+      "voices": [
+        "en-GB-SoniaNeural",
+        "en-GB-RyanNeural"
+      ],
+      "audio_script": "Woman: So, did 'Final Frontier' live up to the hype? I thought the cinematography was breathtaking. || Man: [1]I found the plot to be a bit predictable, to be honest[/1]. You could see the 'twist' coming from the first ten minutes. || Woman: I see what you mean. It followed the usual sci-fi tropes. || Man: [2]What I really liked, though, was the accurate representation of zero-gravity physics[/2]. It was much more realistic than the usual blockbuster stuff. || Woman: I agree. It made the action scenes much more tense and believable. || Man: Exactly. It’s just a shame the dialogue was so cliché-ridden at times.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "So, did 'Final Frontier' live up to the hype? I thought the cinematography was breathtaking."
+        },
+        {
+          "speaker": "man",
+          "text": "I found the plot to be a bit predictable, to be honest. You could see the 'twist' coming from the first ten minutes."
+        },
+        {
+          "speaker": "woman",
+          "text": "I see what you mean. It followed the usual sci-fi tropes."
+        },
+        {
+          "speaker": "man",
+          "text": "What I really liked, though, was the accurate representation of zero-gravity physics. It was much more realistic than the usual blockbuster stuff."
+        },
+        {
+          "speaker": "woman",
+          "text": "I agree. It made the action scenes much more tense and believable."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. It’s just a shame the dialogue was so cliché-ridden at times."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the man's main criticism of the film?",
+          "options": {
+            "A": "the lack of scientific realism",
+            "B": "the lack of originality in the story",
+            "C": "the poor quality of the visual effects"
+          },
+          "answer": "B",
+          "explanation": "He found the plot 'predictable' and the twist obvious [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers admired the film's",
+          "options": {
+            "A": "complex character development.",
+            "B": "realistic depiction of space conditions.",
+            "C": "fast-paced narrative style."
+          },
+          "answer": "B",
+          "explanation": "They both praise the 'accurate representation of zero-gravity physics' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a change in their company's flexible working policy.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-AbbiNeural"
+      ],
+      "audio_script": "Man: So, we have to be in the office at least four days a week now. What’s your take? || Woman: [3]I suspect the board is worried about 'culture' when they’re actually just trying to justify the rent on this building[/3]. || Man: It does feel a bit forced. I’m much more productive at home without the interruptions. || Woman: [4]I’ve noticed that people are already starting to look for jobs at firms with better remote-work options[/4]. We’re going to lose some good talent. || Man: I agree. It’s a very backward-looking move for a modern company. || Woman: Exactly. It’s a shame they don't trust us to manage our own schedules after two years of doing it successfully.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, we have to be in the office at least four days a week now. What’s your take?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect the board is worried about 'culture' when they’re actually just trying to justify the rent on this building."
+        },
+        {
+          "speaker": "man",
+          "text": "It does feel a bit forced. I’m much more productive at home without the interruptions."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that people are already starting to look for jobs at firms with better remote-work options. We’re going to lose some good talent."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s a very backward-looking move for a modern company."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a shame they don't trust us to manage our own schedules after two years of doing it successfully."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the new policy was motivated by",
+          "options": {
+            "A": "a desire to improve team collaboration.",
+            "B": "financial considerations regarding the office space.",
+            "C": "pressure from the company's major clients."
+          },
+          "answer": "B",
+          "explanation": "She thinks they are trying to 'justify the rent on this building' [3]."
+        },
+        {
+          "number": 4,
+          "question": "What negative impact of the policy has the woman observed?",
+          "options": {
+            "A": "a decrease in the quality of work produced",
+            "B": "a rise in the number of staff resignations",
+            "C": "an increase in conflict between departments"
+          },
+          "answer": "B",
+          "explanation": "She notes people are 'looking for jobs at firms with better remote-work options' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new brand of smart-home light bulbs.",
+      "voices": [
+        "en-GB-ThomasNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: I’ve just installed those 'Hue-Plus' bulbs. It’s great being able to change the mood with a voice command. || Woman: [5]I found the initial setup to be incredibly frustrating[/5]. The app kept losing connection with the bridge for no reason. || Man: I had the same issue! I nearly gave up and sent them back. || Woman: [6]I did think the range of colours was exceptionally good, though[/6]. The 'sunset' preset is actually quite relaxing. || Man: I agree. It’s a lot better than the harsh white light from my old bulbs. || Woman: It’s a nice luxury. I just wish the tech was a bit more reliable for the price they charge.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve just installed those 'Hue-Plus' bulbs. It’s great being able to change the mood with a voice command."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the initial setup to be incredibly frustrating. The app kept losing connection with the bridge for no reason."
+        },
+        {
+          "speaker": "man",
+          "text": "I had the same issue! I nearly gave up and sent them back."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did think the range of colours was exceptionally good, though. The 'sunset' preset is actually quite relaxing."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s a lot better than the harsh white light from my old bulbs."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a nice luxury. I just wish the tech was a bit more reliable for the price they charge."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman's main issue with the light bulbs?",
+          "options": {
+            "A": "the high cost of the electricity used",
+            "B": "the difficulty of the installation process",
+            "C": "the limited variety of brightness settings"
+          },
+          "answer": "B",
+          "explanation": "She found the 'initial setup to be incredibly frustrating' due to connection issues [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the bulbs'",
+          "options": {
+            "A": "energy-saving capabilities.",
+            "B": "aesthetic lighting options.",
+            "C": "integration with other appliances."
+          },
+          "answer": "B",
+          "explanation": "They both praise the 'range of colours' and the relaxing 'presets' [6]."
+        }
+      ]
+    }
+  ]
+}

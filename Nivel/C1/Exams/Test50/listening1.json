@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test50.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new premium music streaming service.",
+      "voices": [
+        "en-GB-SoniaNeural",
+        "en-GB-RyanNeural"
+      ],
+      "audio_script": "Woman: So, did you notice the difference with the 'Hi-Fi' audio? || Man: [1]I found the mobile app to be quite clunky and slow compared to the standard version[/1], to be honest. It took forever to load my playlists. || Woman: I see what you mean. It’s a bit resource-heavy. || Man: [2]What I really liked, though, was the depth of the sound on my home speakers[/2]. You can really hear the individual instruments in a way you can't with compressed files. || Woman: I agree. The audio fidelity is definitely a step up. || Man: Exactly. It’s a great service for audiophiles, as long as you have a fast enough internet connection to handle the data.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "So, did you notice the difference with the 'Hi-Fi' audio?"
+        },
+        {
+          "speaker": "man",
+          "text": "I found the mobile app to be quite clunky and slow compared to the standard version, to be honest. It took forever to load my playlists."
+        },
+        {
+          "speaker": "woman",
+          "text": "I see what you mean. It’s a bit resource-heavy."
+        },
+        {
+          "speaker": "man",
+          "text": "What I really liked, though, was the depth of the sound on my home speakers. You can really hear the individual instruments in a way you can't with compressed files."
+        },
+        {
+          "speaker": "woman",
+          "text": "I agree. The audio fidelity is definitely a step up."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. It’s a great service, as long as you have a fast enough internet connection to handle the data."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the man's main criticism of the service?",
+          "options": {
+            "A": "the high cost of the monthly subscription",
+            "B": "the poor performance of the mobile software",
+            "C": "the limited variety of the music library"
+          },
+          "answer": "B",
+          "explanation": "He finds the mobile app 'clunky and slow' compared to the standard version [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers admired the service's",
+          "options": {
+            "A": "original curated content.",
+            "B": "superior sound reproduction.",
+            "C": "social sharing capabilities."
+          },
+          "answer": "B",
+          "explanation": "They both praise the 'depth of the sound' and the 'audio fidelity' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a change in the company's travel policy.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-AbbiNeural"
+      ],
+      "audio_script": "Man: So, no more business class for flights under six hours. What’s your take? || Woman: [3]I suspect the finance team is just trying to hit their quarterly targets rather than thinking about employee fatigue[/3]. || Man: It is a bit of a blow. Arriving at a meeting after a budget flight is never ideal. || Woman: [4]I’ve noticed that people are already starting to delay important trips because they don't want to travel in economy[/4], which could hurt our client relationships. || Man: I agree. It’s a very short-sighted move for a global company. || Woman: Exactly. If they want us to be at our best, they should provide us with the right conditions to do our jobs properly.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, no more business class for flights under six hours. What’s your take?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect the finance team is just trying to hit their quarterly targets rather than thinking about employee fatigue."
+        },
+        {
+          "speaker": "man",
+          "text": "It is a bit of a blow. Arriving at a meeting after a budget flight is never ideal."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that people are already starting to delay important trips because they don't want to travel in economy, which could hurt our client relationships."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s a very short-sighted move for a global company."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. If they want us to be at our best, they should provide us with the right conditions to do our jobs properly."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the new policy was motivated by",
+          "options": {
+            "A": "a desire to reduce the company's carbon footprint.",
+            "B": "immediate financial objectives.",
+            "C": "a need to standardise travel across departments."
+          },
+          "answer": "B",
+          "explanation": "She thinks the finance team is trying to 'hit their quarterly targets' [3]."
+        },
+        {
+          "number": 4,
+          "question": "What negative impact of the policy has the woman observed?",
+          "options": {
+            "A": "a decrease in the quality of work produced on trips",
+            "B": "a reluctance among staff to travel for work",
+            "C": "an increase in the number of travel-related complaints"
+          },
+          "answer": "B",
+          "explanation": "She notes people are 'delaying important trips' because they don't want to fly economy [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new smart thermostat they’ve had installed.",
+      "voices": [
+        "en-GB-ThomasNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: I’ve just put in the 'Eco-Temp'. It’s great being able to turn the heating on from the train. || Woman: [5]I found the initial 'learning' phase to be incredibly annoying[/5], to be honest. It kept turning the heating off while I was still in the house. || Man: I had the same issue! I nearly went back to my old manual dial. || Woman: [6]I did think the energy-usage reports were very eye-opening, though[/6]. I never realized how much power we were wasting in the evenings. || Man: I agree. It definitely makes you more conscious of your habits. || Woman: It’s a clever piece of tech. I just wish it was a bit smarter at actually knowing when I’m at home.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve just put in the 'Eco-Temp'. It’s great being able to turn the heating on from the train."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the initial 'learning' phase to be incredibly annoying, to be honest. It kept turning the heating off while I was still in the house."
+        },
+        {
+          "speaker": "man",
+          "text": "I had the same issue! I nearly went back to my old manual dial."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did think the energy-usage reports were very eye-opening, though. I never realized how much power we were wasting in the evenings."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It definitely makes you more conscious of your habits."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a clever piece of tech. I just wish it was a bit smarter at actually knowing when I’m at home."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman's main issue with the thermostat?",
+          "options": {
+            "A": "the high cost of the monthly subscription",
+            "B": "the inaccuracy of the presence detection",
+            "C": "the difficulty of the physical installation"
+          },
+          "answer": "B",
+          "explanation": "She finds it 'annoying' that it turned off the heating while she was 'still in the house' [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the device's",
+          "options": {
+            "A": "speed of heating.",
+            "B": "informative data feedback.",
+            "C": "aesthetic and modern design."
+          },
+          "answer": "B",
+          "explanation": "They both praise the 'energy-usage reports' and how it makes you 'more conscious of your habits' [6]."
+        }
+      ]
+    }
+  ]
+}

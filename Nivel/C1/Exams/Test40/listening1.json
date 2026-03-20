@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test40.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new brand of subscription-based meal kits.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I’ve been trying 'Chef-Box' this month. It’s certainly saved me a lot of time on grocery shopping. || Woman: [1]I found the amount of plastic packaging in each box to be quite shocking[/1], to be honest. It felt like everything was individually wrapped in film. || Man: I agree. It’s a bit hard to square with their 'eco-friendly' branding. || Woman: [2]What I really liked, though, was the variety of the recipes[/2]. I would never have thought of making a Moroccan tagine on a Tuesday night. || Man: I agree. It’s definitely expanded my cooking repertoire. || Woman: Exactly. It’s a great way to try new things, I just wish they’d figure out a more sustainable way to ship the ingredients.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve been trying 'Chef-Box' this month. It’s certainly saved me a lot of time on grocery shopping."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the amount of plastic packaging in each box to be quite shocking, to be honest. It felt like everything was individually wrapped in film."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s a bit hard to square with their 'eco-friendly' branding."
+        },
+        {
+          "speaker": "woman",
+          "text": "What I really liked, though, was the variety of the recipes. I would never have thought of making a Moroccan tagine on a Tuesday night."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s definitely expanded my cooking repertoire."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a great way to try new things, I just wish they’d figure out a more sustainable way to ship the ingredients."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The woman is critical of the service because of",
+          "options": {
+            "A": "the high cost of the weekly subscription.",
+            "B": "the excessive use of non-recyclable materials.",
+            "C": "the limited time given to prepare the meals."
+          },
+          "answer": "B",
+          "explanation": "She mentions being 'shocked' by the amount of plastic packaging used [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers agree that the meal kits have",
+          "options": {
+            "A": "improved their nutritional habits.",
+            "B": "broadened their culinary skills.",
+            "C": "simplified their social lives."
+          },
+          "answer": "B",
+          "explanation": "They both highlight the 'variety of recipes' and that it 'expanded their cooking repertoire' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a professional development workshop on 'Active Listening'.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: That workshop was a bit more challenging than I expected. I never realized how much I interrupt people! || Woman: [3]I suspect the trainer was a bit too focused on the theory rather than giving us practical tools for the office[/3]. || Man: It was a bit 'academic', I suppose. But the roleplay was useful. || Woman: [4]I was disappointed that we didn't get a chance to discuss how to handle difficult clients specifically[/4]. That was what I really needed. || Man: I agree. It was all a bit too general to be immediately useful. || Woman: Exactly. It’s a fine skill to have, but I’m not sure I’ve come away with anything I can actually use in my team meeting tomorrow.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "That workshop was a bit more challenging than I expected. I never realized how much I interrupt people!"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect the trainer was a bit too focused on the theory rather than giving us practical tools for the office."
+        },
+        {
+          "speaker": "man",
+          "text": "It was a bit 'academic', I suppose. But the roleplay was useful."
+        },
+        {
+          "speaker": "woman",
+          "text": "I was disappointed that we didn't get a chance to discuss how to handle difficult clients specifically. That was what I really needed."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It was all a bit too general to be immediately useful."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a fine skill to have, but I’m not sure I’ve come away with anything I can actually use in my team meeting tomorrow."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman suggests that the workshop was",
+          "options": {
+            "A": "too basic for her level of experience.",
+            "B": "insufficiently applied to work scenarios.",
+            "C": "too focused on personal communication."
+          },
+          "answer": "B",
+          "explanation": "She thinks it was too 'focused on theory' rather than 'practical tools for the office' [3]."
+        },
+        {
+          "number": 4,
+          "question": "Both speakers agree that the session was lacking in",
+          "options": {
+            "A": "opportunities for group interaction.",
+            "B": "content that addressed specific challenges.",
+            "C": "clear objectives from the start."
+          },
+          "answer": "B",
+          "explanation": "They both feel it was 'too general' and missed 'specific challenges' like handling difficult clients [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new local bakery specializing in sourdough.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: Have you tried the olive loaf from 'The Rise'? It’s absolutely delicious. || Woman: [5]I found the staff to be a bit dismissive when I asked about gluten-free options[/5], to be honest. They weren't very helpful at all. || Man: I see what you mean. They are a bit 'purist' about their bread. || Woman: [6]I did appreciate the open-plan kitchen, though[/6]. It was fascinating to watch them kneading the dough while you wait. || Man: I agree. It adds a real sense of authenticity to the place. || Woman: Definitely. I just wish the service was as warm as the ovens.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you tried the olive loaf from 'The Rise'? It’s absolutely delicious."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the staff to be a bit dismissive when I asked about gluten-free options, to be honest. They weren't very helpful at all."
+        },
+        {
+          "speaker": "man",
+          "text": "I see what you mean. They are a bit 'purist' about their bread."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did appreciate the open-plan kitchen, though. It was fascinating to watch them kneading the dough while you wait."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It adds a real sense of authenticity to the place."
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely. I just wish the service was as warm as the ovens."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What did the woman dislike about her visit to the bakery?",
+          "options": {
+            "A": "the quality of the baked goods",
+            "B": "the unhelpful attitude of the employees",
+            "C": "the high price of the specialty loaves"
+          },
+          "answer": "B",
+          "explanation": "She describes the staff as 'dismissive' and 'not very helpful' when she had a question [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the bakery's",
+          "options": {
+            "A": "transparent production process.",
+            "B": "diverse range of dietary options.",
+            "C": "commitment to local sourcing."
+          },
+          "answer": "A",
+          "explanation": "They both praise the 'open-plan kitchen' where you can watch the bread being made [6]."
+        }
+      ]
+    }
+  ]
+}

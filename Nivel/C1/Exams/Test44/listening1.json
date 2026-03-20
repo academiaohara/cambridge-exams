@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test44.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new city-wide bike-sharing scheme.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I’ve finally signed up for 'City-Cycles'. It’s much cheaper than the bus for my commute. || Woman: [1]I found the app's GPS to be quite unreliable at times[/1], to be honest. It said there were five bikes available at the station near my office, but when I got there, it was empty. || Man: I had the same issue! It’s a bit of a gamble. || Woman: [2]What I really appreciated, though, was the build quality of the bikes[/2]. They feel much more robust than those flimsy ones they had in the previous scheme. || Man: I agree. They handle the potholes on the high street quite well. || Woman: Exactly. It’s a step in the right direction, provided they can fix the technical glitches with the docking stations.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve finally signed up for 'City-Cycles'. It’s much cheaper than the bus for my commute."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the app's GPS to be quite unreliable at times, to be honest. It said there were five bikes available at the station near my office, but when I got there, it was empty."
+        },
+        {
+          "speaker": "man",
+          "text": "I had the same issue! It’s a bit of a gamble."
+        },
+        {
+          "speaker": "woman",
+          "text": "What I really appreciated, though, was the build quality of the bikes. They feel much more robust than those flimsy ones they had in the previous scheme."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. They handle the potholes on the high street quite well."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a step in the right direction, provided they can fix the technical glitches with the docking stations."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the woman's main complaint about the bike-sharing scheme?",
+          "options": {
+            "A": "the high cost of the monthly subscription",
+            "B": "the inaccuracy of the real-time information",
+            "C": "the poor maintenance of the bicycles"
+          },
+          "answer": "B",
+          "explanation": "She mentions the app's GPS is 'unreliable' and gave incorrect information about bike availability [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers are impressed by the bicycles'",
+          "options": {
+            "A": "safety features in traffic.",
+            "B": "durability and sturdiness.",
+            "C": "integrated navigation systems."
+          },
+          "answer": "B",
+          "explanation": "They both praise the 'build quality' and that they feel 'robust' compared to previous models [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a new productivity technique called 'time-blocking'.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: I’ve started using 'time-blocking' for my daily tasks. It’s really helped me focus on my deep work. || Woman: [3]I suspect it only works if you have total control over your schedule[/3], which is impossible in this office with all the 'urgent' requests. || Man: It is a challenge. I’ve had to start ignoring my emails for two hours a day. || Woman: [4]I’ve noticed that it can make you quite rigid and less willing to help colleagues[/4] because you’re so focused on your 'block'. || Man: I agree. It can feel a bit antisocial at times. || Woman: Exactly. It’s a good tool for freelancers, perhaps, but it’s a bit hard to implement in a collaborative team environment.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve started using 'time-blocking' for my daily tasks. It’s really helped me focus on my deep work."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect it only works if you have total control over your schedule, which is impossible in this office with all the 'urgent' requests."
+        },
+        {
+          "speaker": "man",
+          "text": "It is a challenge. I’ve had to start ignoring my emails for two hours a day."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that it can make you quite rigid and less willing to help colleagues because you’re so focused on your 'block'."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It can feel a bit antisocial at times."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a good tool for freelancers, perhaps, but it’s a bit hard to implement in a collaborative team environment."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the technique is difficult to use in their office because",
+          "options": {
+            "A": "of the high volume of unexpected demands.",
+            "B": "the management does not support it.",
+            "C": "the software they use is incompatible."
+          },
+          "answer": "A",
+          "explanation": "She mentions it's impossible due to all the 'urgent' requests they receive [3]."
+        },
+        {
+          "number": 4,
+          "question": "What negative social effect of the technique do both speakers identify?",
+          "options": {
+            "A": "It increases competition between team members.",
+            "B": "It discourages spontaneous cooperation.",
+            "C": "It leads to more frequent workplace conflicts."
+          },
+          "answer": "B",
+          "explanation": "They agree it makes people 'less willing to help colleagues' and feels 'antisocial' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a recently published travel book about Japan.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: I’ve just finished 'Neon and Zen'. It’s a fascinating look at the contrasts in Japanese culture. || Woman: [5]I found the author's focus on really expensive luxury hotels a bit alienating[/5], to be honest. It’s not exactly a guide for the average traveller. || Man: I see your point. It was a bit 'high-end'. || Woman: [6]I did appreciate the quality of the photography, though[/6]. The shots of the rural shrines were absolutely stunning. || Man: I agree. It’s worth buying just for the visuals alone. || Woman: Definitely. It’s a beautiful coffee-table book, even if the travel advice is a bit out of reach for most of us.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve just finished 'Neon and Zen'. It’s a fascinating look at the contrasts in Japanese culture."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the author's focus on really expensive luxury hotels a bit alienating, to be honest. It’s not exactly a guide for the average traveller."
+        },
+        {
+          "speaker": "man",
+          "text": "I see what you mean. It was a bit 'high-end'."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did appreciate the quality of the photography, though. The shots of the rural shrines were absolutely stunning."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s worth buying just for the visuals alone."
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely. It’s a beautiful coffee-table book, even if the travel advice is a bit out of reach for most of us."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman's main criticism of the book?",
+          "options": {
+            "A": "the lack of historical context",
+            "B": "the elitist nature of the recommendations",
+            "C": "the poor quality of the translation"
+          },
+          "answer": "B",
+          "explanation": "She found the focus on 'luxury hotels' to be 'alienating' and 'high-end' [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the book's",
+          "options": {
+            "A": "detailed maps.",
+            "B": "visual appeal.",
+            "C": "original writing style."
+          },
+          "answer": "B",
+          "explanation": "They both praise the 'quality of the photography' and the 'visuals' [6]."
+        }
+      ]
+    }
+  ]
+}

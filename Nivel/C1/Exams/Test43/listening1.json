@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test43.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new city museum dedicated to local history.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I finally visited the 'Old-Town' museum. The recreation of the victorian street was incredibly detailed. || Woman: [1]I found the way they used wax figures a bit unsettling[/1], to be honest. They looked a bit too much like real people frozen in time. || Man: I see what you mean. It was a bit 'uncanny valley'. || Woman: [2]What I really appreciated, though, was the way they’ve integrated local stories into the larger historical events[/2]. It made it feel much more personal. || Man: I agree. It wasn't just dates and battles; it was about the actual people who lived here. || Woman: Exactly. It’s a great way to engage kids in history, as long as they aren't spooked by the shopkeeper in the corner.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I finally visited the 'Old-Town' museum. The recreation of the victorian street was incredibly detailed."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the way they used wax figures a bit unsettling, to be honest. They looked a bit too much like real people frozen in time."
+        },
+        {
+          "speaker": "man",
+          "text": "I see what you mean. It was a bit 'uncanny valley'."
+        },
+        {
+          "speaker": "woman",
+          "text": "What I really appreciated, though, was the way they’ve integrated local stories into the larger historical events. It made it feel much more personal."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It wasn't just dates and battles; it was about the actual people who lived here."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a great way to engage kids in history, as long as they aren't spooked by the shopkeeper in the corner."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "The woman expresses some discomfort regarding",
+          "options": {
+            "A": "the dark lighting in the exhibits.",
+            "B": "the realism of the displays.",
+            "C": "the small size of the museum."
+          },
+          "answer": "B",
+          "explanation": "She finds the wax figures 'unsettling' because they look 'too much like real people' [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers liked the museum's focus on",
+          "options": {
+            "A": "major military conflicts.",
+            "B": "individual human experiences.",
+            "C": "famous local celebrities."
+          },
+          "answer": "B",
+          "explanation": "They both appreciate the 'local stories' and that it was 'about the actual people' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a new digital security policy at their company.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: So, we have to change our passwords every thirty days now. It seems a bit excessive, doesn't it? || Woman: [3]I suspect the IT department is just following some generic industry standard rather than assessing our actual risks[/3]. || Man: It is a bit of a hassle. I’m running out of creative names for my dog. || Woman: [4]I’ve noticed that people are already starting to write their passwords on post-it notes[/4] because they can't remember them, which actually makes things less secure. || Man: I agree. It’s a classic case of security measures backfiring. || Woman: Exactly. If they want us to be safe, they should just provide us with a proper password manager instead of making us memorise random strings of numbers.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, we have to change our passwords every thirty days now. It seems a bit excessive, doesn't it?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect the IT department is just following some generic industry standard rather than assessing our actual risks."
+        },
+        {
+          "speaker": "man",
+          "text": "It is a bit of a hassle. I’m running out of creative names for my dog."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that people are already starting to write their passwords on post-it notes because they can't remember them, which actually makes things less secure."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s a classic case of security measures backfiring."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. If they want us to be safe, they should just provide us with a proper password manager instead of making us memorise random strings of numbers."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the new policy was",
+          "options": {
+            "A": "poorly explained to the staff.",
+            "B": "implemented without careful thought.",
+            "C": "too expensive to maintain."
+          },
+          "answer": "B",
+          "explanation": "She thinks IT is just following a 'generic standard' without 'assessing actual risks' [3]."
+        },
+        {
+          "number": 4,
+          "question": "What unintended consequence of the policy has the woman noticed?",
+          "options": {
+            "A": "a decrease in the speed of logging in",
+            "B": "a rise in risky storage practices",
+            "C": "a decline in team morale"
+          },
+          "answer": "B",
+          "explanation": "She notes people are writing passwords on 'post-it notes' to remember them [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new local bakery specializing in artisan donuts.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: I finally tried the 'Glaze-Gallery' yesterday. That lavender and lemon donut was a revelation! || Woman: [5]I found the queuing system to be a bit chaotic[/5], to be honest. There was no clear line and the staff didn't seem to know who was next. || Man: I agree, it’s a bit of a victim of its own success. || Woman: [6]I did appreciate the quality of the ingredients, though[/6]. You can really tell they use fresh fruit instead of those artificial syrups. || Man: I agree. It makes a huge difference to the flavour. || Woman: Definitely. I’ll just make sure to go on a weekday morning next time to avoid the weekend madness.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I finally tried the 'Glaze-Gallery' yesterday. That lavender and lemon donut was a revelation!"
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the queuing system to be a bit chaotic, to be honest. There was no clear line and the staff didn't seem to know who was next."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, it’s a bit of a victim of its own success."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did appreciate the quality of the ingredients, though. You can really tell they use fresh fruit instead of those artificial syrups."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It makes a huge difference to the flavour."
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely. I’ll just make sure to go on a weekday morning next time to avoid the weekend madness."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What did the woman find annoying about her visit to the bakery?",
+          "options": {
+            "A": "the high price of the individual items",
+            "B": "the lack of organization in the shop",
+            "C": "the limited range of flavors available"
+          },
+          "answer": "B",
+          "explanation": "She finds the 'queuing system' chaotic with no clear line [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the bakery's",
+          "options": {
+            "A": "speed of service.",
+            "B": "authenticity of the components.",
+            "C": "modern branding style."
+          },
+          "answer": "B",
+          "explanation": "They both praise the 'quality of the ingredients' and the use of 'fresh fruit' [6]."
+        }
+      ]
+    }
+  ]
+}

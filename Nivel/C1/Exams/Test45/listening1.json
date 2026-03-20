@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test45.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends talking about a new virtual reality (VR) exhibition at a local art gallery.",
+      "voices": [
+        "en-GB-SoniaNeural",
+        "en-GB-RyanNeural"
+      ],
+      "audio_script": "Woman: That VR show at the Tate was mind-blowing! I felt like I was actually inside the paintings. || Man: [1]I found the headset to be quite heavy and uncomfortable after twenty minutes[/1], to be honest. It gave me a bit of a headache. || Woman: I see what you mean. They aren't the lightest devices. || Man: [2]What I really liked, though, was the way they used the 360-degree sound[/2]. Hearing the brushstrokes behind you was a nice touch. || Woman: I agree. It made the whole experience much more immersive. || Man: Exactly. It’s a great way to experience art, as long as you don't mind feeling like you’re wearing a helmet.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "That VR show at the Tate was mind-blowing! I felt like I was actually inside the paintings."
+        },
+        {
+          "speaker": "man",
+          "text": "I found the headset to be quite heavy and uncomfortable after twenty minutes, to be honest. It gave me a bit of a headache."
+        },
+        {
+          "speaker": "woman",
+          "text": "I see what you mean. They aren't the lightest devices."
+        },
+        {
+          "speaker": "man",
+          "text": "What I really liked, though, was the way they used the 360-degree sound. Hearing the brushstrokes behind you was a nice touch."
+        },
+        {
+          "speaker": "woman",
+          "text": "I agree. It made the whole experience much more immersive."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. It’s a great way to experience art, as long as you don't mind feeling like you’re wearing a helmet."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the man's main criticism of the exhibition?",
+          "options": {
+            "A": "the poor quality of the digital art",
+            "B": "the physical discomfort caused by the equipment",
+            "C": "the high price of the entry ticket"
+          },
+          "answer": "B",
+          "explanation": "He found the headset 'heavy and uncomfortable' and it gave him a headache [1]."
+        },
+        {
+          "number": 2,
+          "question": "What aspect of the production did the man find successful?",
+          "options": {
+            "A": "the clarity of the narration",
+            "B": "the spatial audio engineering",
+            "C": "the ease of navigation in the virtual space"
+          },
+          "answer": "B",
+          "explanation": "He admired the '360-degree sound' and hearing brushstrokes 'behind' him [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a change in the office layout to 'hot-desking'.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-AbbiNeural"
+      ],
+      "audio_script": "Man: So, no more permanent desks. How are you finding 'hot-desking' so far? || Woman: [3]I suspect the management is just trying to save money on floor space rather than encouraging 'flexibility'[/3]. || Man: It is a bit of a pain having to carry everything in a locker every day. || Woman: [4]I’ve noticed that people are starting to arrive earlier and earlier just to 'reserve' their favourite spots[/4], which defeats the whole purpose. || Man: I agree. It’s become a bit of a competition at 8 AM. || Woman: Exactly. If they want us to be more collaborative, they should have given us more meeting rooms instead of taking away our personal space.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, no more permanent desks. How are you finding 'hot-desking' so far?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect the management is just trying to save money on floor space rather than encouraging 'flexibility'."
+        },
+        {
+          "speaker": "man",
+          "text": "It is a bit of a pain having to carry everything in a locker every day."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that people are starting to arrive earlier and earlier just to 'reserve' their favourite spots, which defeats the whole purpose."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s become a bit of a competition at 8 AM."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. If they want us to be more collaborative, they should have given us more meeting rooms instead of taking away our personal space."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the new policy was motivated by",
+          "options": {
+            "A": "a desire to modernise the company's image.",
+            "B": "financial considerations regarding the workspace.",
+            "C": "a need to improve cross-departmental communication."
+          },
+          "answer": "B",
+          "explanation": "She thinks management is trying to 'save money on floor space' [3]."
+        },
+        {
+          "number": 4,
+          "question": "What behavior have both speakers observed since the change?",
+          "options": {
+            "A": "an increase in staff working from home",
+            "B": "a more competitive atmosphere in the mornings",
+            "C": "a decline in the cleanliness of the desks"
+          },
+          "answer": "B",
+          "explanation": "They both note that people are arriving earlier to reserve spots, creating a 'competition at 8 AM' [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a new mobile game that uses GPS for treasure hunting.",
+      "voices": [
+        "en-GB-ThomasNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: I’ve been playing 'Geo-Quest' all weekend. It’s a great way to get some steps in. || Woman: [5]I found the micro-transactions for 'energy' to be a bit excessive[/5], to be honest. You can only play for fifteen minutes before it asks for money. || Man: I had the same issue! It’s a bit of a 'pay-to-win' system. || Woman: [6]I did appreciate the educational facts about local landmarks, though[/6]. I never knew that fountain was built in 1850. || Man: I agree. It’s a very clever way to teach people about their own city. || Woman: Definitely. It’s a fun app, I just wish they’d be a bit more generous with the free playtime.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve been playing 'Geo-Quest' all weekend. It’s a great way to get some steps in."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the micro-transactions for 'energy' to be a bit excessive, to be honest. You can only play for fifteen minutes before it asks for money."
+        },
+        {
+          "speaker": "man",
+          "text": "I had the same issue! It’s a bit of a 'pay-to-win' system."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did appreciate the educational facts about local landmarks, though. I never knew that fountain was built in 1850."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s a very clever way to teach people about their own city."
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely. It’s a fun app, I just wish they’d be a bit more generous with the free playtime."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman's main issue with the mobile game?",
+          "options": {
+            "A": "the difficulty of finding the treasures",
+            "B": "the high cost of progressing in the game",
+            "C": "the poor quality of the graphics"
+          },
+          "answer": "B",
+          "explanation": "She mentions 'excessive' micro-transactions and being asked for money after 15 minutes [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the game's",
+          "options": {
+            "A": "health-tracking features.",
+            "B": "informative content.",
+            "C": "multiplayer capabilities."
+          },
+          "answer": "B",
+          "explanation": "They both praise the 'educational facts about local landmarks' [6]."
+        }
+      ]
+    }
+  ]
+}

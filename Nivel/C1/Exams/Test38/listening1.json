@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test38.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new digital detox retreat they attended.",
+      "voices": [
+        "en-GB-AlfieNeural",
+        "en-GB-BellaNeural"
+      ],
+      "audio_script": "Man: I’m still feeling remarkably calm after that weekend without my phone. || Woman: [1]I found the mandatory silence during meals a bit forced[/1], to be honest. It felt a bit performative rather than actually relaxing. || Man: I see what you mean. It was a bit intense. || Woman: [2]What I really appreciated, though, was the guided nature walk[/2]. It was so nice to actually look at the trees instead of taking photos of them. || Man: I agree. It made me realize how much of life I view through a lens. || Woman: Exactly. It’s a great way to reset your habits, even if some of the rules were a bit over-the-top.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’m still feeling remarkably calm after that weekend without my phone."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the mandatory silence during meals a bit forced, to be honest. It felt a bit performative rather than actually relaxing."
+        },
+        {
+          "speaker": "man",
+          "text": "I see what you mean. It was a bit intense."
+        },
+        {
+          "speaker": "woman",
+          "text": "What I really appreciated, though, was the guided nature walk. It was so nice to actually look at the trees instead of taking photos of them."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It made me realize how much of life I view through a lens."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a great way to reset your habits, even if some of the rules were a bit over-the-top."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What did the woman dislike about the retreat?",
+          "options": {
+            "A": "the lack of social interaction",
+            "B": "the artificiality of certain activities",
+            "C": "the poor quality of the facilities"
+          },
+          "answer": "B",
+          "explanation": "She describes the mandatory silence as 'forced' and 'performative' [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers agree that the retreat helped them to",
+          "options": {
+            "A": "improve their photography skills.",
+            "B": "reconnect with the physical world.",
+            "C": "form new friendships."
+          },
+          "answer": "B",
+          "explanation": "They both highlight the value of looking at nature directly rather than through a phone lens [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a new project management tool.",
+      "voices": [
+        "en-GB-NoahNeural",
+        "en-GB-HollieNeural"
+      ],
+      "audio_script": "Man: So, how are you finding 'Task-Master'? I think the Gantt charts are quite helpful for visualizing the timeline. || Woman: [3]I suspect the interface was designed by someone who’s never actually managed a complex project[/3]. It’s far too cluttered. || Man: It does take a while to find anything. But the automated reminders are a lifesaver. || Woman: [4]I’ve noticed that it’s actually taking me longer to update my tasks than it is to actually do them[/4], which is quite frustrating. || Man: I agree. It’s a bit of an administrative burden. || Woman: Exactly. If a tool doesn't save you time, then what’s the point of using it in the first place?",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, how are you finding 'Task-Master'? I think the Gantt charts are quite helpful for visualizing the timeline."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect the interface was designed by someone who’s never actually managed a complex project. It’s far too cluttered."
+        },
+        {
+          "speaker": "man",
+          "text": "It does take a while to find anything. But the automated reminders are a lifesaver."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that it’s actually taking me longer to update my tasks than it is to actually do them, which is quite frustrating."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s a bit of an administrative burden."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. If a tool doesn't save you time, then what’s the point of using it in the first place?"
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the software is",
+          "options": {
+            "A": "too basic for her team's requirements.",
+            "B": "poorly organized from a user perspective.",
+            "C": "too expensive for the features it offers."
+          },
+          "answer": "B",
+          "explanation": "She thinks it's 'far too cluttered' and designed by someone 'who's never managed a project' [3]."
+        },
+        {
+          "number": 4,
+          "question": "What is the speakers' main complaint about the tool?",
+          "options": {
+            "A": "the lack of integration with other apps",
+            "B": "the excessive amount of time it requires",
+            "C": "the inaccuracy of the progress reports"
+          },
+          "answer": "B",
+          "explanation": "They agree it's an 'administrative burden' that takes longer to update than the work itself [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a recently opened community garden.",
+      "voices": [
+        "en-GB-EthanNeural",
+        "en-GB-LibbyNeural"
+      ],
+      "audio_script": "Man: I went down to the 'Green-Patch' yesterday. It’s amazing what they’ve done with that old abandoned lot. || Woman: [5]I found the scheduling for the communal tools to be a bit unorganized[/5]. There was no trowel left when I arrived. || Man: I agree, it’s a bit of a free-for-all at the moment. || Woman: [6]I did appreciate the sense of community spirit, though[/6]. I’ve met more of my neighbours in the last week than in the last three years. || Man: I agree. It’s a very welcoming space. || Woman: Definitely. I’ll just bring my own equipment next time to avoid the frustration at the shed.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I went down to the 'Green-Patch' yesterday. It’s amazing what they’ve done with that old abandoned lot."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the scheduling for the communal tools to be a bit unorganized. There was no trowel left when I arrived."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree, it’s a bit of a free-for-all at the moment."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did appreciate the sense of community spirit, though. I’ve met more of my neighbours in the last week than in the last three years."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It’s a very welcoming space."
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely. I’ll just bring my own equipment next time to avoid the frustration at the shed."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What did the woman find annoying about her visit?",
+          "options": {
+            "A": "the poor condition of the plants",
+            "B": "the lack of available equipment",
+            "C": "the noisy environment in the park"
+          },
+          "answer": "B",
+          "explanation": "She notes that 'there was no trowel left' and the tool shed was 'unorganized' [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the garden's",
+          "options": {
+            "A": "variety of organic produce.",
+            "B": "socially inclusive atmosphere.",
+            "C": "modern architectural features."
+          },
+          "answer": "B",
+          "explanation": "They both praise the 'sense of community spirit' and the 'welcoming space' [6]."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "exam_part": 3,
+  "title": "Listening - Part 3: Algorithms in the Courtroom",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear an interview with a legal expert, Sonia, and a software engineer, Thomas, about the use of AI in sentencing and parole. For questions 15–20, choose the answer (A, B, C or D) which fits best.",
+  "duration_minutes": 12,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening3_test38.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "An interview regarding 'predictive policing,' algorithmic bias, and whether a machine can ever be truly impartial.",
+      "voices": {
+        "interviewer": "en-GB-RyanNeural",
+        "sonia": "en-GB-SoniaNeural",
+        "thomas": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Interviewer: Can a machine deliver justice? Algorithms are already helping judges decide who stays in jail and who goes free. Sonia, is this a more 'objective' way to run a legal system?\n\nSonia: [15] That’s the sales pitch, but the reality is more complex. We like to think math is neutral, but algorithms are trained on historical data. [/15] If the past is biased—for example, if certain neighborhoods were over-policed—the AI will simply 'bake' those prejudices into its predictions. It doesn't eliminate bias; it just hides it behind a screen of code.\n\nInterviewer: Thomas, you build these systems. Is it possible to 'clean' the data to make it fair?\n\nThomas: [16] We try, but you can't easily remove 'proxy variables.' For instance, if you remove 'race' from the data, the AI might still use 'postcode' or 'income level' as a proxy for it. [/16] However, there’s an advantage: humans are notoriously inconsistent. Studies show judges give harsher sentences before lunch when they are hungry. An algorithm doesn't have a 'blood sugar level.' It provides a baseline of consistency that humans lack.\n\nInterviewer: Sonia, what happens to 'accountability' when a machine makes a mistake?\n\nSonia: [17] That is the 'black box' problem. Many of these systems are proprietary, meaning the defense lawyers aren't allowed to see how the software reached its conclusion. [/17] How can you appeal a decision if the logic is a corporate secret? Justice requires transparency, and currently, the 'right to an explanation' is being threatened by automation.\n\nInterviewer: Thomas, could AI actually help lawyers instead of just replacing them?\n\nThomas: [18] Absolutely. It’s brilliant at 'discovery'—searching through millions of documents for a single piece of evidence. What used to take a team of junior lawyers months now takes seconds. [/18] It frees up humans to focus on the 'moral' and 'emotional' aspects of a case, which an AI simply cannot grasp.\n\nInterviewer: Sonia, will we ever see a 'robot judge'?\n\nSonia: [19] For small claims, like a parking ticket or a simple contract dispute, perhaps. But for anything involving human liberty, we need 'empathy.' [/19] A machine can follow a rule, but it can't understand the 'why' behind a crime or the possibility of redemption. Justice isn't just a calculation; it’s a human judgment.\n\nInterviewer: Final thoughts, Thomas? Is the law ready for this?\n\nThomas: [20] The law is always ten years behind the technology. We need new regulations that force companies to prove their algorithms aren't discriminatory before they are used in a courtroom. [/20]\n\nInterviewer: Sonia, Thomas, thank you.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Can a machine deliver justice? Algorithms are already helping judges decide who stays in jail and who goes free. Sonia, is this a more 'objective' way to run a legal system?"
+        },
+        {
+          "speaker": "sonia",
+          "text": "That’s the sales pitch, but the reality is more complex. We like to think math is neutral, but algorithms are trained on historical data. If the past is biased—for example, if certain neighborhoods were over-policed—the AI will simply 'bake' those prejudices into its predictions. It doesn't eliminate bias; it just hides it behind a screen of code."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Thomas, you build these systems. Is it possible to 'clean' the data to make it fair?"
+        },
+        {
+          "speaker": "thomas",
+          "text": "We try, but you can't easily remove 'proxy variables.' For instance, if you remove 'race' from the data, the AI might still use 'postcode' or 'income level' as a proxy for it. However, there’s an advantage: humans are notoriously inconsistent. Studies show judges give harsher sentences before lunch when they are hungry. An algorithm doesn't have a 'blood sugar level.' It provides a baseline of consistency that humans lack."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Sonia, what happens to 'accountability' when a machine makes a mistake?"
+        },
+        {
+          "speaker": "sonia",
+          "text": "That is the 'black box' problem. Many of these systems are proprietary, meaning the defense lawyers aren't allowed to see how the software reached its conclusion. How can you appeal a decision if the logic is a corporate secret? Justice requires transparency, and currently, the 'right to an explanation' is being threatened by automation."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Thomas, could AI actually help lawyers instead of just replacing them?"
+        },
+        {
+          "speaker": "thomas",
+          "text": "Absolutely. It’s brilliant at 'discovery'—searching through millions of documents for a single piece of evidence. What used to take a team of junior lawyers months now takes seconds. It frees up humans to focus on the 'moral' and 'emotional' aspects of a case, which an AI simply cannot grasp."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Sonia, will we ever see a 'robot judge'?"
+        },
+        {
+          "speaker": "sonia",
+          "text": "For small claims, like a parking ticket or a simple contract dispute, perhaps. But for anything involving human liberty, we need 'empathy.' A machine can follow a rule, but it can't understand the 'why' behind a crime or the possibility of redemption. Justice isn't just a calculation; it’s a human judgment."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Final thoughts, Thomas? Is the law ready for this?"
+        },
+        {
+          "speaker": "thomas",
+          "text": "The law is always ten years behind the technology. We need new regulations that force companies to prove their algorithms aren't discriminatory before they are used in a courtroom."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "Sonia, Thomas, thank you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 15,
+          "question": "Sonia suggests that AI in the legal system",
+          "options": [
+            "A) is completely free from any form of human prejudice.",
+            "B) uses mathematical logic to correct historical errors.",
+            "C) can actually reinforce existing biases found in old data.",
+            "D) is only useful for predicting future crimes in wealthy areas."
+          ],
+          "correct": "C",
+          "explanation": "She explains that AI 'bakes' historical prejudices into its predictions because it is trained on biased past data."
+        },
+        {
+          "number": 16,
+          "question": "According to Thomas, what is one benefit of using AI in sentencing?",
+          "options": [
+            "A) It is much cheaper than paying a human judge.",
+            "B) It does not suffer from biological inconsistencies like hunger.",
+            "C) It can perfectly identify a person's race and background.",
+            "D) It makes the legal process more exciting for the public."
+          ],
+          "correct": "B",
+          "explanation": "He mentions that unlike humans, an algorithm doesn't have a 'blood sugar level' and provides a 'baseline of consistency'."
+        },
+        {
+          "number": 17,
+          "question": "The 'black box' problem refers to",
+          "options": [
+            "A) the physical containers where legal documents are stored.",
+            "B) software that is so complex that no human can understand it.",
+            "C) the lack of transparency in how proprietary AI makes decisions.",
+            "D) a type of digital evidence that is impossible to delete."
+          ],
+          "correct": "C",
+          "explanation": "Sonia states that because systems are proprietary, lawyers can't see how the software reached its conclusion."
+        },
+        {
+          "number": 18,
+          "question": "Thomas argues that AI is particularly good at",
+          "options": [
+            "A) understanding the emotional reasons behind a crime.",
+            "B) searching through vast amounts of text for specific information.",
+            "C) deciding if a person is truly sorry for their actions.",
+            "D) replacing the need for any human intervention in the law."
+          ],
+          "correct": "B",
+          "explanation": "He says it is 'brilliant at discovery'—searching millions of documents in seconds."
+        },
+        {
+          "number": 19,
+          "question": "Sonia believes that 'robot judges' should only be used for",
+          "options": [
+            "A) serious crimes that involve long prison sentences.",
+            "B) cases where the defendant has no legal representation.",
+            "C) minor legal matters that do not involve human liberty.",
+            "D) situations where human empathy is not allowed."
+          ],
+          "correct": "C",
+          "explanation": "She suggests them for 'small claims' like parking tickets but not for matters involving liberty."
+        },
+        {
+          "number": 20,
+          "question": "Thomas's final point is that",
+          "options": [
+            "A) the law should never be influenced by technology.",
+            "B) current regulations are perfectly adequate for AI.",
+            "C) new rules are needed to ensure algorithms are fair.",
+            "D) software companies should run the legal system."
+          ],
+          "correct": "C",
+          "explanation": "He calls for new regulations that force companies to prove their algorithms aren't discriminatory."
+        }
+      ]
+    }
+  ]
+}

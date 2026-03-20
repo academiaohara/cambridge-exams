@@ -1,0 +1,190 @@
+{
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-text",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best.",
+  "instructions": "You will hear three different extracts. For questions 1–6, choose the answer (A, B or C) which fits best according to what you hear. There are two questions for each extract.",
+  "duration_minutes": 10,
+  "audio_source": "https://listeninggenerator.b-cdn.net/listening1_test42.mp3",
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two friends discussing a new historical podcast they’ve been listening to.",
+      "voices": [
+        "en-GB-SoniaNeural",
+        "en-GB-RyanNeural"
+      ],
+      "audio_script": "Woman: Have you heard the latest episode of 'Past-Perfect'? The one about the Great Fire of London was gripping. || Man: [1]I found the host's habit of using modern slang a bit jarring[/1], to be honest. It didn't really fit the historical theme. || Woman: I see what you mean. It was a bit too 'informal' at times. || Man: [2]What I really liked, though, was the use of immersive sound effects[/2]. You could almost feel the heat of the flames. || Woman: I agree. The production value is top-notch. || Man: Exactly. It’s a great way to learn about history, as long as you can ignore the constant 'Gen-Z' references.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you heard the latest episode of 'Past-Perfect'? The one about the Great Fire of London was gripping."
+        },
+        {
+          "speaker": "man",
+          "text": "I found the host's habit of using modern slang a bit jarring, to be honest. It didn't really fit the historical theme."
+        },
+        {
+          "speaker": "woman",
+          "text": "I see what you mean. It was a bit too 'informal' at times."
+        },
+        {
+          "speaker": "man",
+          "text": "What I really liked, though, was the use of immersive sound effects. You could almost feel the heat of the flames."
+        },
+        {
+          "speaker": "woman",
+          "text": "I agree. The production value is top-notch."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. It’s a great way to learn about history, as long as you can ignore the constant 'Gen-Z' references."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the man's main criticism of the podcast?",
+          "options": {
+            "A": "the inaccuracy of the facts presented",
+            "B": "the linguistic style of the presenter",
+            "C": "the poor audio quality of the recording"
+          },
+          "answer": "B",
+          "explanation": "He finds the host's 'modern slang' and 'Gen-Z references' to be jarring [1]."
+        },
+        {
+          "number": 2,
+          "question": "Both speakers admired the podcast's",
+          "options": {
+            "A": "originality of the subject matter.",
+            "B": "technical audio engineering.",
+            "C": "pacing of the story-telling."
+          },
+          "answer": "B",
+          "explanation": "They both praise the 'immersive sound effects' and 'production value' [2]."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues talking about a new city-centre parking scheme.",
+      "voices": [
+        "en-GB-OliverNeural",
+        "en-GB-AbbiNeural"
+      ],
+      "audio_script": "Man: So, the new 'Green-Zone' parking is active. Have you managed to find a spot yet? || Woman: [3]I suspect the city council is just using 'environmentalism' as a cover to increase the price of parking tickets[/3]. || Man: It is remarkably expensive now. I’ve started taking the bus. || Woman: [4]I’ve noticed that the new charging stations for electric cars are often blocked by regular vehicles[/4], which seems a bit poorly managed. || Man: I agree. If they don't enforce the rules, the whole system falls apart. || Woman: Exactly. It’s a nice idea in theory, but it’s becoming more of a headache for commuters than a benefit for the planet.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, the new 'Green-Zone' parking is active. Have you managed to find a spot yet?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I suspect the city council is just using 'environmentalism' as a cover to increase the price of parking tickets."
+        },
+        {
+          "speaker": "man",
+          "text": "It is remarkably expensive now. I’ve started taking the bus."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve noticed that the new charging stations for electric cars are often blocked by regular vehicles, which seems a bit poorly managed."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. If they don't enforce the rules, the whole system falls apart."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. It’s a nice idea in theory, but it’s becoming more of a headache for commuters than a benefit for the planet."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "The woman believes the parking scheme was motivated by",
+          "options": {
+            "A": "a genuine desire to reduce pollution.",
+            "B": "a need to generate more revenue.",
+            "C": "pressure from local residents."
+          },
+          "answer": "B",
+          "explanation": "She thinks 'environmentalism' is a cover to 'increase the price of parking tickets' [3]."
+        },
+        {
+          "number": 4,
+          "question": "What practical issue do both speakers identify with the scheme?",
+          "options": {
+            "A": "the lack of available parking spaces",
+            "B": "the poor maintenance of the machines",
+            "C": "the ineffective regulation of the area"
+          },
+          "answer": "C",
+          "explanation": "They both note that charging stations are blocked and rules aren't enforced [4]."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear two people discussing a recently released documentary about artificial intelligence.",
+      "voices": [
+        "en-GB-ThomasNeural",
+        "en-GB-Ada:DragonHDLatestNeural"
+      ],
+      "audio_script": "Man: I watched 'The Silicone Mind' last night. It was quite a terrifying look at where we’re heading. || Woman: [5]I found the constant fast-paced editing and dramatic music a bit exhausting[/5], to be honest. It felt like it was trying to scare me rather than inform me. || Man: I see your point. It was a bit sensationalist. || Woman: [6]I did appreciate the interviews with the actual researchers, though[/6]. They gave a much more balanced view than the narrator did. || Man: I agree. Their perspective was much more grounded in reality. || Woman: Definitely. It’s worth watching for their insights, even if the rest of the film is a bit 'Hollywood'.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I watched 'The Silicone Mind' last night. It was quite a terrifying look at where we’re heading."
+        },
+        {
+          "speaker": "woman",
+          "text": "I found the constant fast-paced editing and dramatic music a bit exhausting, to be honest. It felt like it was trying to scare me rather than inform me."
+        },
+        {
+          "speaker": "man",
+          "text": "I see your point. It was a bit sensationalist."
+        },
+        {
+          "speaker": "woman",
+          "text": "I did appreciate the interviews with the actual researchers, though. They gave a much more balanced view than the narrator did."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. Their perspective was much more grounded in reality."
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely. It’s worth watching for their insights, even if the rest of the film is a bit 'Hollywood'."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What was the woman's main issue with the documentary?",
+          "options": {
+            "A": "the lack of current information",
+            "B": "the manipulative nature of the style",
+            "C": "the poor quality of the animation"
+          },
+          "answer": "B",
+          "explanation": "She finds the editing and music 'exhausting' and feels it's 'trying to scare me' rather than inform [5]."
+        },
+        {
+          "number": 6,
+          "question": "Both speakers were impressed by the film's",
+          "options": {
+            "A": "use of expert testimony.",
+            "B": "visionary predictions.",
+            "C": "clarity of the narration."
+          },
+          "answer": "A",
+          "explanation": "They both highlight the value and balance of the 'interviews with the actual researchers' [6]."
+        }
+      ]
+    }
+  ]
+}
