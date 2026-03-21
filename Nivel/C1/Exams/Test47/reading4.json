@@ -1,0 +1,79 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "The company is having a professional translate the document.",
+        "keyWord": "TRANSLATED",
+        "beforeGap": "The company is",
+        "afterGap": "by a professional.",
+        "routes": [
+          { "p1": "having", "p2": "the document translated" }
+        ],
+        "explanation": "Tests causative 'have something done'."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘Don't go too near the edge,’ the guide told the tourists.",
+        "keyWord": "WARNED",
+        "beforeGap": "The guide",
+        "afterGap": "too near the edge.",
+        "routes": [
+          { "p1": "warned", "p2": "the tourists not to go" }
+        ],
+        "explanation": "Tests reporting verbs with negative infinitives."
+      },
+      {
+        "number": 27,
+        "firstSentence": "I'm sorry I didn't learn to play the piano when I was a child.",
+        "keyWord": "WISH",
+        "beforeGap": "I",
+        "afterGap": "the piano when I was a child.",
+        "routes": [
+          { "p1": "wish", "p2": "I had learned to play" },
+          { "p1": "wish", "p2": "I'd learned to play" }
+        ],
+        "explanation": "Tests 'wish' + past perfect for past regrets."
+      },
+      {
+        "number": 28,
+        "firstSentence": "Perhaps they didn't see the email until this morning.",
+        "keyWord": "MIGHT",
+        "beforeGap": "They",
+        "afterGap": "the email until this morning.",
+        "routes": [
+          { "p1": "might", "p2": "not have seen" }
+        ],
+        "explanation": "Tests modal perfect for past possibility."
+      },
+      {
+        "number": 29,
+        "firstSentence": "I only realized my mistake after I had sent the letter.",
+        "keyWord": "DID",
+        "beforeGap": "Only after sending the letter",
+        "afterGap": "my mistake.",
+        "routes": [
+          { "p1": "did", "p2": "I realize" },
+          { "p1": "did", "p2": "I realise" }
+        ],
+        "explanation": "Tests inversion with 'Only after'."
+      },
+      {
+        "number": 30,
+        "firstSentence": "The exercise was so difficult that I couldn't finish it.",
+        "keyWord": "SUCH",
+        "beforeGap": "It",
+        "afterGap": "that I couldn't finish it.",
+        "routes": [
+          { "p1": "was", "p2": "such a difficult exercise" }
+        ],
+        "explanation": "Tests 'such' + adjective + noun structure."
+      }
+    ]
+  }
+}

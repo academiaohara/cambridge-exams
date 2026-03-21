@@ -1,0 +1,80 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "A local builder is going to repair our roof next week.",
+        "keyWord": "HAVE",
+        "beforeGap": "We are going",
+        "afterGap": "by a local builder next week.",
+        "routes": [
+          { "p1": "to", "p2": "have our roof repaired" }
+        ],
+        "explanation": "Tests causative 'have something done'."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘You should avoid eating too much junk food,’ said the doctor.",
+        "keyWord": "ADVISED",
+        "beforeGap": "The doctor",
+        "afterGap": "eating too much junk food.",
+        "routes": [
+          { "p1": "advised", "p2": "me to avoid" },
+          { "p1": "advised", "p2": "against" }
+        ],
+        "explanation": "Tests reporting verbs with infinitive or prepositional gerund structures."
+      },
+      {
+        "number": 27,
+        "firstSentence": "I'm sorry I didn't see you at the party.",
+        "keyWord": "WISH",
+        "beforeGap": "I",
+        "afterGap": "you at the party.",
+        "routes": [
+          { "p1": "wish", "p2": "I had seen" },
+          { "p1": "wish", "p2": "I'd seen" }
+        ],
+        "explanation": "Tests 'wish' + past perfect for past regrets."
+      },
+      {
+        "number": 28,
+        "firstSentence": "It is possible that the cat was trapped in the garage.",
+        "keyWord": "MIGHT",
+        "beforeGap": "The cat",
+        "afterGap": "in the garage.",
+        "routes": [
+          { "p1": "might", "p2": "have been trapped" }
+        ],
+        "explanation": "Tests modal perfect passive for past possibility."
+      },
+      {
+        "number": 29,
+        "firstSentence": "I didn't realize my phone was missing until I got home.",
+        "keyWord": "DID",
+        "beforeGap": "Only after getting home",
+        "afterGap": "my phone was missing.",
+        "routes": [
+          { "p1": "did", "p2": "I realize" },
+          { "p1": "did", "p2": "I realise" }
+        ],
+        "explanation": "Tests inversion with 'Only after'."
+      },
+      {
+        "number": 30,
+        "firstSentence": "The match was so exciting that I didn't want it to end.",
+        "keyWord": "SUCH",
+        "beforeGap": "It was",
+        "afterGap": "that I didn't want it to end.",
+        "routes": [
+          { "p1": "such", "p2": "an exciting match" }
+        ],
+        "explanation": "Tests 'such + (a/an) + adjective + noun' for emphasis."
+      }
+    ]
+  }
+}
