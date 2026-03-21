@@ -1,0 +1,80 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "The company is believed to be facing serious financial difficulties.",
+        "keyWord": "THAT",
+        "beforeGap": "It",
+        "afterGap": "the company is facing serious financial difficulties.",
+        "routes": [
+          { "p1": "is", "p2": "widely believed that" },
+          { "p1": "is", "p2": "generally believed that" }
+        ],
+        "explanation": "Tests the impersonal passive construction 'It is believed that'."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘I'll take you to the airport if you like,’ said my brother.",
+        "keyWord": "OFFERED",
+        "beforeGap": "My brother",
+        "afterGap": "to the airport.",
+        "routes": [
+          { "p1": "offered", "p2": "to drive me" },
+          { "p1": "offered", "p2": "to take me" }
+        ],
+        "explanation": "Tests reporting verbs with infinitive structures."
+      },
+      {
+        "number": 27,
+        "firstSentence": "I didn't go to the party, so I didn't meet her.",
+        "keyWord": "WOULD",
+        "beforeGap": "If I had gone to the party, I",
+        "afterGap": "her.",
+        "routes": [
+          { "p1": "would", "p2": "have met" }
+        ],
+        "explanation": "Tests third conditional for hypothetical past outcomes."
+      },
+      {
+        "number": 28,
+        "firstSentence": "I'm sure it was a huge surprise to you when you won.",
+        "keyWord": "BEEN",
+        "beforeGap": "You",
+        "afterGap": "surprised when you won.",
+        "routes": [
+          { "p1": "must", "p2": "have been very" },
+          { "p1": "must", "p2": "have been quite" }
+        ],
+        "explanation": "Tests modal perfect for certain past deduction."
+      },
+      {
+        "number": 29,
+        "firstSentence": "He had never before been so happy.",
+        "keyWord": "NEVER",
+        "beforeGap": "At no",
+        "afterGap": "been so happy.",
+        "routes": [
+          { "p1": "time", "p2": "had he ever" }
+        ],
+        "explanation": "Tests inversion with negative time expressions (At no time)."
+      },
+      {
+        "number": 30,
+        "firstSentence": "It is much more difficult to learn Chinese than I expected.",
+        "keyWord": "NEARLY",
+        "beforeGap": "Learning Chinese is",
+        "afterGap": "as I expected.",
+        "routes": [
+          { "p1": "not", "p2": "nearly as easy" }
+        ],
+        "explanation": "Tests negative comparison using 'not nearly as... as'."
+      }
+    ]
+  }
+}

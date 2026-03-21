@@ -1,0 +1,80 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "Our car is being serviced by the mechanic right now.",
+        "keyWord": "HAVING",
+        "beforeGap": "We",
+        "afterGap": "by the mechanic right now.",
+        "routes": [
+          { "p1": "are", "p2": "having our car serviced" }
+        ],
+        "explanation": "Tests causative 'have something done' in the present continuous."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘You should take up a sport,’ my friend said to me.",
+        "keyWord": "ADVISED",
+        "beforeGap": "My friend",
+        "afterGap": "a sport.",
+        "routes": [
+          { "p1": "advised", "p2": "me to take up" }
+        ],
+        "explanation": "Tests reporting verbs with object + to-infinitive."
+      },
+      {
+        "number": 27,
+        "firstSentence": "I'm sorry I didn't tell you the truth.",
+        "keyWord": "WISH",
+        "beforeGap": "I",
+        "afterGap": "the truth.",
+        "routes": [
+          { "p1": "wish", "p2": "I had told you" },
+          { "p1": "wish", "p2": "I'd told you" }
+        ],
+        "explanation": "Tests 'wish' + past perfect to express regret about a past situation."
+      },
+      {
+        "number": 28,
+        "firstSentence": "It was possible that they didn't get the message.",
+        "keyWord": "MIGHT",
+        "beforeGap": "They",
+        "afterGap": "the message.",
+        "routes": [
+          { "p1": "might", "p2": "not have received" },
+          { "p1": "might", "p2": "not have got" }
+        ],
+        "explanation": "Tests modal perfect for negative possibility in the past."
+      },
+      {
+        "number": 29,
+        "firstSentence": "I didn't realize it was so late until the lights went out.",
+        "keyWord": "ONLY",
+        "beforeGap": "It",
+        "afterGap": "the lights went out that I realized it was so late.",
+        "routes": [
+          { "p1": "was", "p2": "only when" }
+        ],
+        "explanation": "Tests focusing 'It was only when...' structure."
+      },
+      {
+        "number": 30,
+        "firstSentence": "The restaurant was too crowded for us to find a table.",
+        "keyWord": "ENOUGH",
+        "beforeGap": "There",
+        "afterGap": "for us to find a table.",
+        "routes": [
+          { "p1": "was", "p2": "not enough room" },
+          { "p1": "were", "p2": "not enough tables" }
+        ],
+        "explanation": "Tests 'enough' vs 'too' with nouns/adjectives."
+      }
+    ]
+  }
+}

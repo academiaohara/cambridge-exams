@@ -1,0 +1,79 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "They will announce the results at the end of the week.",
+        "keyWord": "BE",
+        "beforeGap": "The results",
+        "afterGap": "at the end of the week.",
+        "routes": [
+          { "p1": "will", "p2": "be announced" }
+        ],
+        "explanation": "Tests future passive."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘You should take more exercise,’ the doctor told me.",
+        "keyWord": "ADVISED",
+        "beforeGap": "The doctor",
+        "afterGap": "more exercise.",
+        "routes": [
+          { "p1": "advised", "p2": "me to take" }
+        ],
+        "explanation": "Tests reporting verb + object + infinitive."
+      },
+      {
+        "number": 27,
+        "firstSentence": "The only way to get there on time is to take a taxi.",
+        "keyWord": "UNLESS",
+        "beforeGap": "You won't get there on time",
+        "afterGap": "a taxi.",
+        "routes": [
+          { "p1": "unless", "p2": "you take" }
+        ],
+        "explanation": "Tests conditional meaning with 'unless'."
+      },
+      {
+        "number": 28,
+        "firstSentence": "I'm certain he was very tired after the long journey.",
+        "keyWord": "MUST",
+        "beforeGap": "He",
+        "afterGap": "very tired after the long journey.",
+        "routes": [
+          { "p1": "must", "p2": "have been" }
+        ],
+        "explanation": "Tests modal perfect for positive deduction."
+      },
+      {
+        "number": 29,
+        "firstSentence": "I didn't realize my mistake until I saw the results.",
+        "keyWord": "DID",
+        "beforeGap": "Only when I saw the results",
+        "afterGap": "my mistake.",
+        "routes": [
+          { "p1": "did", "p2": "I realize" },
+          { "p1": "did", "p2": "I realise" }
+        ],
+        "explanation": "Tests inversion with 'Only when'."
+      },
+      {
+        "number": 30,
+        "firstSentence": "It was so hot that we decided to stay indoors.",
+        "keyWord": "SUCH",
+        "beforeGap": "It",
+        "afterGap": "that we decided to stay indoors.",
+        "routes": [
+          { "p1": "was", "p2": "such a hot day" },
+          { "p1": "was", "p2": "such hot weather" }
+        ],
+        "explanation": "Tests 'such' with adjective and noun for emphasis."
+      }
+    ]
+  }
+}
