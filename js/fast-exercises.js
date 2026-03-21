@@ -18,6 +18,8 @@
     _currentLevel: null,
     _currentLesson: null,
     _currentPointIndex: 0,
+    _pvSelectedChip: null,
+    _pvDragContext: null,
 
     // ── Progress Storage ─────────────────────────────────────────────────
     _getProgress: function() {
@@ -471,6 +473,21 @@
             } else if (point.type === 'trophy') {
               dotClass += ' fe-dot-trophy';
               dotIcon = isDone ? _mi('check') : _mi('emoji_events');
+            } else if (point.type === 'pv-gallery') {
+              dotClass += ' fe-dot-pv-gallery';
+              dotIcon = isDone ? _mi('check') : _mi('collections_bookmark');
+            } else if (point.type === 'pv-fill-in') {
+              dotClass += ' fe-dot-pv-fill-in';
+              dotIcon = isDone ? _mi('check') : _mi('edit');
+            } else if (point.type === 'pv-conversations') {
+              dotClass += ' fe-dot-pv-conv';
+              dotIcon = isDone ? _mi('check') : _mi('forum');
+            } else if (point.type === 'pv-conversation-drag') {
+              dotClass += ' fe-dot-pv-drag';
+              dotIcon = isDone ? _mi('check') : _mi('drag_indicator');
+            } else if (point.type === 'pv-mixed') {
+              dotClass += ' fe-dot-pv-mixed';
+              dotIcon = isDone ? _mi('check') : _mi('shuffle');
             }
 
             if (isDone) dotClass += ' fe-dot-done';
@@ -498,9 +515,13 @@
 
       // Legend
       html += '<div class="fe-map-legend">' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-gallery fe-dot-mini">' + _mi('collections_bookmark') + '</span> ' + t('gallery', 'Gallery') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-fill-in fe-dot-mini">' + _mi('edit') + '</span> ' + t('fillIn', 'Fill In') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-conv fe-dot-mini">' + _mi('forum') + '</span> ' + t('conversations', 'Conversations') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini">' + _mi('drag_indicator') + '</span> ' + t('dragDrop', 'Drag & Drop') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini">' + _mi('shuffle') + '</span> ' + t('mixed', 'Mixed') + '</span>' +
         '<span class="fe-legend-item"><span class="fe-dot fe-dot-explanation fe-dot-mini">' + _mi('article') + '</span> ' + t('explanation', 'Explanation') + '</span>' +
         '<span class="fe-legend-item"><span class="fe-dot fe-dot-exercise fe-dot-mini">' + _mi('fitness_center') + '</span> ' + t('exercise', 'Exercise') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-review fe-dot-mini">' + _mi('rate_review') + '</span> ' + t('review', 'Review') + '</span>' +
         '<span class="fe-legend-item"><span class="fe-dot fe-dot-trophy fe-dot-mini">' + _mi('emoji_events') + '</span> ' + t('challenge', 'Challenge') + '</span>' +
       '</div>';
 
@@ -712,6 +733,16 @@
         this._renderExercisePoint(content, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
       } else if (point.type === 'trophy') {
         this._renderExercisePoint(content, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
+      } else if (point.type === 'pv-gallery') {
+        this._renderPvGallery(content, lessonData, catMeta, levelId, lessonId, lessonData.title, pointIndex);
+      } else if (point.type === 'pv-fill-in') {
+        this._renderPvFillIn(content, lessonData, catMeta, levelId, lessonId, lessonData.title, pointIndex);
+      } else if (point.type === 'pv-conversations') {
+        this._renderPvConversations(content, lessonData, catMeta, levelId, lessonId, lessonData.title, pointIndex);
+      } else if (point.type === 'pv-conversation-drag') {
+        this._renderPvConversationDrag(content, lessonData, catMeta, levelId, lessonId, lessonData.title, pointIndex);
+      } else if (point.type === 'pv-mixed') {
+        this._renderPvMixed(content, lessonData, catMeta, levelId, lessonId, lessonData.title, pointIndex);
       }
 
       var pointState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
@@ -919,6 +950,617 @@
           if (typeof StreakManager !== 'undefined') {
             StreakManager.recordActivity();
           }
+        } else {
+          self._showQuizQuestion(qIndex + 1);
+        }
+      }, isCorrect ? 800 : 1800);
+    },
+
+    // ── NAVIGATION HELPERS ───────────────────────────────────────────────
+    _completeAndNext: function(categoryId, levelId, lessonId, pointIndex) {
+      this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
+      this._nextPoint(categoryId, levelId, lessonId, pointIndex);
+    },
+
+    // ── PV GALLERY (Point 1) ─────────────────────────────────────────────
+    _renderPvGallery: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var self = this;
+      var pvs = (lessonData && lessonData.phrasalVerbs) || [];
+
+      if (pvs.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button></div></div>';
+        return;
+      }
+
+      var cardsHtml = '';
+      pvs.forEach(function(pv, idx) {
+        var examplesHtml = '';
+        (pv.examples || []).forEach(function(ex) {
+          examplesHtml += '<li>' + self._escapeHTML(ex) + '</li>';
+        });
+        cardsHtml += '<div class="pv-gallery-card" style="--cat-color:' + catMeta.color + '">' +
+          '<div class="pv-gallery-verb">' + self._escapeHTML(pv.verb) + '</div>' +
+          '<div class="pv-gallery-def">' + self._escapeHTML(pv.definition || '') + '</div>' +
+          (examplesHtml ? '<ul class="pv-gallery-examples">' + examplesHtml + '</ul>' : '') +
+          '<div class="pv-gallery-num">' + (idx + 1) + ' / ' + pvs.length + '</div>' +
+        '</div>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view">' +
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
+            '<div>' +
+              '<div class="subpage-title">' + _mi('collections_bookmark') + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
+              '<div class="subpage-subtitle">' + levelId + ' · ' + t('phrasalVerbGallery', 'Phrasal Verb Gallery') + ' · ' + pvs.length + ' ' + t('verbs', 'verbs') + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="pv-gallery-container">' +
+            cardsHtml +
+            '<div class="pv-gallery-footer">' +
+              '<p class="pv-gallery-scroll-hint">' + _mi('swipe') + ' ' + t('scrollToSeeAll', 'Scroll to see all phrasal verbs in this lesson.') + '</p>' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+                t('gotItNext', 'Got it! Next') + ' →' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+    },
+
+    // ── PV FILL-IN EXERCISES (Point 2) ───────────────────────────────────
+    _renderPvFillIn: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var self = this;
+      var exercises = (lessonData && lessonData.fillInExercises) || [];
+
+      if (exercises.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button></div></div>';
+        return;
+      }
+
+      var questionsHtml = '';
+      exercises.forEach(function(ex, qi) {
+        var inputHtml = '';
+        if (ex.type === 'multiple-choice') {
+          var optHtml = '';
+          (ex.options || []).forEach(function(opt) {
+            optHtml += '<button class="fe-quiz-option" data-question="pf' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerPvFillIn(this,' + qi + ',\'' + self._escapeHTML((ex.correct || '').replace(/'/g, "\\'")) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')">' + self._escapeHTML(opt) + '</button>';
+          });
+          inputHtml = '<div class="fe-quiz-options">' + optHtml + '</div>';
+        } else if (ex.type === 'write-verb') {
+          inputHtml = '<div class="pv-write-row">' +
+            (ex.hint ? '<span class="pv-write-hint">' + self._escapeHTML(ex.hint) + '</span>' : '') +
+            '<input type="text" class="pv-write-input" id="pv-write-' + qi + '" placeholder="' + t('typeVerb', 'Type the verb…') + '" />' +
+            '<button class="pv-write-btn" onclick="FastExercises._checkPvWriteVerb(' + qi + ',\'' + self._escapeHTML((ex.correct || '').replace(/'/g, "\\'")) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('check', 'Check') + '</button>' +
+          '</div>';
+        }
+
+        questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
+          '<div class="fe-quiz-num">' + t('question', 'Question') + ' ' + (qi + 1) + '/' + exercises.length + '</div>' +
+          '<div class="fe-quiz-sentence pv-fillin-sentence">' + self._escapeHTML(ex.sentence || '') + '</div>' +
+          inputHtml +
+          '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
+        '</div>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view">' +
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
+            '<div>' +
+              '<div class="subpage-title">' + _mi('edit') + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
+              '<div class="subpage-subtitle">' + levelId + ' · ' + t('fillInTheGaps', 'Fill in the Gaps') + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
+            '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
+            '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
+              questionsHtml +
+            '</div>' +
+            '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
+              '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
+              '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      this._showQuizQuestion(0);
+    },
+
+    _answerPvFillIn: function(btn, qIndex, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
+      var chosen = btn.getAttribute('data-answer');
+      var isCorrect = chosen.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+      this._processPvFillInAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
+      var buttons = document.querySelectorAll('[data-question="pf' + qIndex + '"]');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+        if (buttons[i].getAttribute('data-answer').trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+          buttons[i].classList.add('fe-quiz-correct');
+        }
+        if (buttons[i] === btn && !isCorrect) {
+          buttons[i].classList.add('fe-quiz-wrong');
+        }
+      }
+    },
+
+    _checkPvWriteVerb: function(qIndex, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
+      var input = document.getElementById('pv-write-' + qIndex);
+      if (!input) return;
+      var typed = input.value.trim().toLowerCase();
+      var correct = correctAnswer.trim().toLowerCase();
+      var isCorrect = typed === correct;
+      input.disabled = true;
+      input.classList.add(isCorrect ? 'pv-write-correct' : 'pv-write-wrong');
+      var btn = input.parentElement && input.parentElement.querySelector('.pv-write-btn');
+      if (btn) btn.disabled = true;
+      this._processPvFillInAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
+    },
+
+    _processPvFillInAnswer: function(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var self = this;
+      var feedbackEl = document.getElementById('fe-quiz-feedback-' + qIndex);
+      var questionsContainer = document.getElementById('fe-quiz-questions');
+
+      if (feedbackEl) {
+        if (isCorrect) {
+          feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-correct';
+          feedbackEl.innerHTML = _mi('check_circle') + ' ' + t('correct', 'Correct') + '!';
+        } else {
+          feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
+          feedbackEl.innerHTML = _mi('cancel') + ' ' + t('correctAnswerIs', 'The correct answer is') + ' <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
+        }
+        feedbackEl.style.display = 'block';
+      }
+
+      var answered = parseInt(questionsContainer.getAttribute('data-answered')) + 1;
+      var correct = parseInt(questionsContainer.getAttribute('data-correct')) + (isCorrect ? 1 : 0);
+      var total = parseInt(questionsContainer.getAttribute('data-total'));
+      questionsContainer.setAttribute('data-answered', answered);
+      questionsContainer.setAttribute('data-correct', correct);
+
+      var progressFill = document.getElementById('fe-quiz-progress-fill');
+      if (progressFill) progressFill.style.width = Math.round((answered / total) * 100) + '%';
+
+      setTimeout(function() {
+        if (answered >= total) {
+          self._markPointComplete(categoryId, levelId, lessonId, pointIndex);
+          var completeSection = document.getElementById('fe-quiz-complete');
+          var completeText = document.getElementById('fe-quiz-complete-text');
+          if (completeSection && completeText) {
+            completeText.textContent = correct + '/' + total + ' ' + t('correct', 'correct') + '!';
+            completeSection.style.display = 'block';
+          }
+          var qs = document.querySelectorAll('.fe-quiz-question');
+          for (var i = 0; i < qs.length; i++) qs[i].style.display = 'none';
+          if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+        } else {
+          self._showQuizQuestion(qIndex + 1);
+        }
+      }, isCorrect ? 800 : 1800);
+    },
+
+    // ── PV CONVERSATIONS (Point 3) ───────────────────────────────────────
+    _renderPvConversations: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var self = this;
+      var convs = (lessonData && lessonData.conversations) || [];
+
+      if (convs.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button></div></div>';
+        return;
+      }
+
+      var convsHtml = '';
+      convs.forEach(function(conv, ci) {
+        var linesHtml = '';
+        var speakers = {};
+        var speakerIdx = 0;
+        (conv.lines || []).forEach(function(line) {
+          if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
+          var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
+          // Render [verb] as bold highlighted text
+          var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, '<strong class="pv-highlight">$1</strong>');
+          linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
+            '<div class="pv-conv-avatar">' + self._escapeHTML((line.speaker || '').charAt(0)) + '</div>' +
+            '<div class="pv-conv-bubble">' +
+              '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
+              '<span class="pv-conv-text">' + text + '</span>' +
+            '</div>' +
+          '</div>';
+        });
+        convsHtml += '<div class="pv-conv-block">' +
+          '<div class="pv-conv-title">' + _mi('forum') + ' ' + self._escapeHTML(conv.title || '') + '</div>' +
+          '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+        '</div>';
+        if (ci < convs.length - 1) convsHtml += '<div class="pv-conv-separator"></div>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view">' +
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
+            '<div>' +
+              '<div class="subpage-title">' + _mi('forum') + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
+              '<div class="subpage-subtitle">' + levelId + ' · ' + t('realConversations', 'Real Conversations') + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="pv-conversations-container">' +
+            convsHtml +
+            '<div class="pv-conv-footer">' +
+              '<p class="pv-conv-hint">' + _mi('info') + ' ' + t('pvHighlightHint', 'Phrasal verbs are highlighted in bold. Read carefully before the next exercise.') + '</p>' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+                t('readyNext', 'Ready! Next') + ' →' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+    },
+
+    // ── PV CONVERSATION DRAG (Point 4) ───────────────────────────────────
+    _renderPvConversationDrag: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var self = this;
+      var convs = (lessonData && lessonData.conversations) || [];
+      var pvs = (lessonData && lessonData.phrasalVerbs) || [];
+
+      if (convs.length === 0 || pvs.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button></div></div>';
+        return;
+      }
+
+      // Extract all gaps from conversations
+      var totalGaps = 0;
+      var gapVerbs = {};
+      convs.forEach(function(conv) {
+        (conv.lines || []).forEach(function(line) {
+          var matches = line.text.match(/\[([^\]]+)\]/g);
+          if (matches) {
+            matches.forEach(function(m) {
+              var verb = m.replace(/[\[\]]/g, '');
+              gapVerbs[verb] = (gapVerbs[verb] || 0) + 1;
+              totalGaps++;
+            });
+          }
+        });
+      });
+
+      // Build chip list (unique verbs; repeat chips for multiple uses)
+      var chipsList = [];
+      Object.keys(gapVerbs).forEach(function(verb) {
+        for (var n = 0; n < gapVerbs[verb]; n++) chipsList.push(verb);
+      });
+      // Shuffle chips
+      chipsList = chipsList.sort(function() { return Math.random() - 0.5; });
+
+      var gapCounter = 0;
+      var convsHtml = '';
+      convs.forEach(function(conv, ci) {
+        var linesHtml = '';
+        var speakers = {};
+        var speakerIdx = 0;
+        (conv.lines || []).forEach(function(line) {
+          if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
+          var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
+          // Replace [verb] with drop zones
+          var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, verb) {
+            var gid = 'pv-gap-' + gapCounter;
+            gapCounter++;
+            return '<span class="pv-drop-zone" id="' + gid + '" data-verb="' + self._escapeHTML(verb) + '" data-filled="false" onclick="FastExercises._pvGapClick(\'' + gid + '\')" ondragover="event.preventDefault()" ondrop="FastExercises._pvDrop(event,\'' + gid + '\')">' +
+              '<span class="pv-drop-placeholder">_____</span>' +
+            '</span>';
+          });
+          linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
+            '<div class="pv-conv-avatar">' + self._escapeHTML((line.speaker || '').charAt(0)) + '</div>' +
+            '<div class="pv-conv-bubble">' +
+              '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
+              '<span class="pv-conv-text">' + text + '</span>' +
+            '</div>' +
+          '</div>';
+        });
+        convsHtml += '<div class="pv-conv-block">' +
+          '<div class="pv-conv-title">' + _mi('forum') + ' ' + self._escapeHTML(conv.title || '') + '</div>' +
+          '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+        '</div>';
+        if (ci < convs.length - 1) convsHtml += '<div class="pv-conv-separator"></div>';
+      });
+
+      var chipsHtml = '';
+      chipsList.forEach(function(verb, i) {
+        chipsHtml += '<span class="pv-chip" id="pv-chip-' + i + '" draggable="true" data-verb="' + self._escapeHTML(verb) + '" data-chip-id="' + i + '" onclick="FastExercises._pvChipClick(' + i + ')" ondragstart="FastExercises._pvDragStart(event,' + i + ')">' +
+          self._escapeHTML(verb) +
+        '</span>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view">' +
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
+            '<div>' +
+              '<div class="subpage-title">' + _mi('drag_indicator') + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
+              '<div class="subpage-subtitle">' + levelId + ' · ' + t('completeConversations', 'Complete the Conversations') + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="pv-drag-container">' +
+            '<p class="pv-drag-instruction">' + _mi('drag_indicator') + ' ' + t('dragInstruction', 'Drag each phrasal verb to the correct gap, or tap a chip and then tap a gap.') + '</p>' +
+            convsHtml +
+            '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
+              '<div class="pv-chips-title">' + t('phrasalVerbs', 'Phrasal Verbs') + ':</div>' +
+              '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
+            '</div>' +
+            '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
+              '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
+              '<div class="pv-drag-result-text" id="pv-drag-result-text"></div>' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      // Store context for drag handlers
+      this._pvDragContext = { categoryId: catMeta.id, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex, catColor: catMeta.color };
+    },
+
+    _pvDragStart: function(event, chipId) {
+      event.dataTransfer.setData('text/plain', String(chipId));
+      this._pvSelectedChip = chipId;
+      var chip = document.getElementById('pv-chip-' + chipId);
+      if (chip) chip.classList.add('pv-chip-dragging');
+    },
+
+    _pvDrop: function(event, gapId) {
+      event.preventDefault();
+      var chipId = parseInt(event.dataTransfer.getData('text/plain'));
+      this._pvFillGap(gapId, chipId);
+    },
+
+    _pvChipClick: function(chipId) {
+      // Toggle selection
+      if (this._pvSelectedChip === chipId) {
+        this._pvSelectedChip = null;
+        document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected'); });
+        return;
+      }
+      document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected', 'pv-chip-dragging'); });
+      this._pvSelectedChip = chipId;
+      var chip = document.getElementById('pv-chip-' + chipId);
+      if (chip) chip.classList.add('pv-chip-selected');
+    },
+
+    _pvGapClick: function(gapId) {
+      if (this._pvSelectedChip !== null && this._pvSelectedChip !== undefined) {
+        this._pvFillGap(gapId, this._pvSelectedChip);
+        this._pvSelectedChip = null;
+        document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected', 'pv-chip-dragging'); });
+      }
+    },
+
+    _pvFillGap: function(gapId, chipId) {
+      var gap = document.getElementById(gapId);
+      var chip = document.getElementById('pv-chip-' + chipId);
+      if (!gap || !chip || chip.classList.contains('pv-chip-used')) return;
+      if (gap.getAttribute('data-filled') === 'true') return;
+
+      var verbFromChip = chip.getAttribute('data-verb');
+      var correctVerb = gap.getAttribute('data-verb');
+      var isCorrect = verbFromChip.trim().toLowerCase() === correctVerb.trim().toLowerCase();
+
+      // Fill the gap
+      gap.setAttribute('data-filled', 'true');
+      gap.innerHTML = '<span class="pv-drop-filled ' + (isCorrect ? 'pv-drop-correct' : 'pv-drop-wrong') + '">' + this._escapeHTML(verbFromChip) + '</span>';
+      if (!isCorrect) {
+        gap.setAttribute('data-filled', 'false'); // Allow re-drop
+        var self = this;
+        setTimeout(function() {
+          gap.innerHTML = '<span class="pv-drop-placeholder">_____</span>';
+          gap.setAttribute('data-filled', 'false');
+        }, 1200);
+        return;
+      }
+
+      // Mark chip as used
+      chip.classList.add('pv-chip-used');
+      chip.draggable = false;
+
+      // Check completion
+      var panel = document.getElementById('pv-chips-panel');
+      if (panel) {
+        var total = parseInt(panel.getAttribute('data-total-gaps'));
+        var filled = parseInt(panel.getAttribute('data-filled')) + 1;
+        panel.setAttribute('data-filled', filled);
+        if (filled >= total) {
+          var ctx = this._pvDragContext;
+          if (ctx) this._markPointComplete(ctx.categoryId, ctx.levelId, ctx.lessonId, ctx.pointIndex);
+          var result = document.getElementById('pv-drag-result');
+          var resultText = document.getElementById('pv-drag-result-text');
+          if (result && resultText) {
+            var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+            resultText.textContent = t('allCorrect', 'All correct! Well done!');
+            result.style.display = 'flex';
+          }
+          if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+        }
+      }
+    },
+
+    // ── PV MIXED PRACTICE (Point 5) ──────────────────────────────────────
+    _renderPvMixed: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var self = this;
+      var fillIns = (lessonData && lessonData.fillInExercises) || [];
+      var convs   = (lessonData && lessonData.conversations) || [];
+
+      // Build mixed list: take up to 4 fill-in exercises (every other one)
+      var mixed = [];
+      for (var fi = 0; fi < fillIns.length && mixed.length < 4; fi += 2) {
+        mixed.push({ kind: 'fillin', data: fillIns[fi] });
+      }
+      // Add drag gaps extracted from conversation lines (up to 4)
+      var gapCount = 0;
+      convs.forEach(function(conv) {
+        (conv.lines || []).forEach(function(line) {
+          if (gapCount >= 4) return;
+          var m = line.text.match(/\[([^\]]+)\]/);
+          if (m) {
+            var verb = m[1];
+            var rawSentence = line.text.replace(/\[([^\]]+)\]/g, '_____');
+            mixed.push({ kind: 'drag-single', data: { sentence: rawSentence, correct: verb, speaker: line.speaker } });
+            gapCount++;
+          }
+        });
+      });
+
+      // Shuffle mixed array
+      mixed = mixed.sort(function() { return Math.random() - 0.5; });
+
+      if (mixed.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button></div></div>';
+        return;
+      }
+
+      // Build all PV verbs list for chips in drag questions
+      var allVerbs = (lessonData.phrasalVerbs || []).map(function(p) { return p.verb; });
+
+      var questionsHtml = '';
+      mixed.forEach(function(item, qi) {
+        var inputHtml = '';
+        if (item.kind === 'fillin') {
+          var ex = item.data;
+          if (ex.type === 'multiple-choice') {
+            var optHtml = '';
+            (ex.options || []).forEach(function(opt) {
+              optHtml += '<button class="fe-quiz-option" data-question="pm' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerPvMixed(this,' + qi + ',\'' + self._escapeHTML((ex.correct || '').replace(/'/g, "\\'")) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ',\'fillin\')">' + self._escapeHTML(opt) + '</button>';
+            });
+            inputHtml = '<div class="fe-quiz-options">' + optHtml + '</div>';
+          } else if (ex.type === 'write-verb') {
+            inputHtml = '<div class="pv-write-row">' +
+              (ex.hint ? '<span class="pv-write-hint">' + self._escapeHTML(ex.hint) + '</span>' : '') +
+              '<input type="text" class="pv-write-input" id="pv-mx-write-' + qi + '" placeholder="' + t('typeVerb', 'Type the verb…') + '" />' +
+              '<button class="pv-write-btn" onclick="FastExercises._checkPvMixedWrite(' + qi + ',\'' + self._escapeHTML((ex.correct || '').replace(/'/g, "\\'")) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('check', 'Check') + '</button>' +
+            '</div>';
+          }
+          questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
+            '<div class="fe-quiz-num">' + t('question', 'Question') + ' ' + (qi + 1) + '/' + mixed.length + '</div>' +
+            '<div class="fe-quiz-sentence pv-fillin-sentence">' + self._escapeHTML(ex.sentence || '') + '</div>' +
+            inputHtml +
+            '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
+          '</div>';
+        } else if (item.kind === 'drag-single') {
+          var ds = item.data;
+          // Show 4 options: the correct verb + 3 random distractors
+          var distractors = allVerbs.filter(function(v) { return v !== ds.correct; }).sort(function() { return Math.random() - 0.5; }).slice(0, 3);
+          var opts = [ds.correct].concat(distractors).sort(function() { return Math.random() - 0.5; });
+          var optHtml = '';
+          opts.forEach(function(opt) {
+            optHtml += '<button class="fe-quiz-option" data-question="pm' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerPvMixed(this,' + qi + ',\'' + self._escapeHTML((ds.correct || '').replace(/'/g, "\\'")) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ',\'conv\')">' + self._escapeHTML(opt) + '</button>';
+          });
+          questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
+            '<div class="fe-quiz-num">' + t('question', 'Question') + ' ' + (qi + 1) + '/' + mixed.length + '</div>' +
+            '<div class="pv-mx-conv-label">' + _mi('forum') + ' ' + self._escapeHTML(ds.speaker || '') + ':</div>' +
+            '<div class="fe-quiz-sentence pv-fillin-sentence">' + self._escapeHTML(ds.sentence || '') + '</div>' +
+            '<div class="fe-quiz-options">' + optHtml + '</div>' +
+            '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
+          '</div>';
+        }
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view">' +
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
+            '<div>' +
+              '<div class="subpage-title">' + _mi('shuffle') + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
+              '<div class="subpage-subtitle">' + levelId + ' · ' + t('mixedPractice', 'Mixed Practice') + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
+            '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
+            '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + mixed.length + '" data-answered="0" data-correct="0">' +
+              questionsHtml +
+            '</div>' +
+            '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
+              '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
+              '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      this._showQuizQuestion(0);
+    },
+
+    _answerPvMixed: function(btn, qIndex, correctAnswer, categoryId, levelId, lessonId, pointIndex, kind) {
+      var chosen = btn.getAttribute('data-answer');
+      var isCorrect = chosen.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+      var buttons = document.querySelectorAll('[data-question="pm' + qIndex + '"]');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+        if (buttons[i].getAttribute('data-answer').trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+          buttons[i].classList.add('fe-quiz-correct');
+        }
+        if (buttons[i] === btn && !isCorrect) {
+          buttons[i].classList.add('fe-quiz-wrong');
+        }
+      }
+      this._processPvMixedAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
+    },
+
+    _checkPvMixedWrite: function(qIndex, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
+      var input = document.getElementById('pv-mx-write-' + qIndex);
+      if (!input) return;
+      var typed = input.value.trim().toLowerCase();
+      var isCorrect = typed === correctAnswer.trim().toLowerCase();
+      input.disabled = true;
+      input.classList.add(isCorrect ? 'pv-write-correct' : 'pv-write-wrong');
+      var btn = input.parentElement && input.parentElement.querySelector('.pv-write-btn');
+      if (btn) btn.disabled = true;
+      this._processPvMixedAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
+    },
+
+    _processPvMixedAnswer: function(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var self = this;
+      var feedbackEl = document.getElementById('fe-quiz-feedback-' + qIndex);
+      var questionsContainer = document.getElementById('fe-quiz-questions');
+
+      if (feedbackEl) {
+        if (isCorrect) {
+          feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-correct';
+          feedbackEl.innerHTML = _mi('check_circle') + ' ' + t('correct', 'Correct') + '!';
+        } else {
+          feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
+          feedbackEl.innerHTML = _mi('cancel') + ' ' + t('correctAnswerIs', 'The correct answer is') + ' <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
+        }
+        feedbackEl.style.display = 'block';
+      }
+
+      var answered = parseInt(questionsContainer.getAttribute('data-answered')) + 1;
+      var correct  = parseInt(questionsContainer.getAttribute('data-correct')) + (isCorrect ? 1 : 0);
+      var total    = parseInt(questionsContainer.getAttribute('data-total'));
+      questionsContainer.setAttribute('data-answered', answered);
+      questionsContainer.setAttribute('data-correct', correct);
+
+      var progressFill = document.getElementById('fe-quiz-progress-fill');
+      if (progressFill) progressFill.style.width = Math.round((answered / total) * 100) + '%';
+
+      setTimeout(function() {
+        if (answered >= total) {
+          self._markPointComplete(categoryId, levelId, lessonId, pointIndex);
+          var completeSection = document.getElementById('fe-quiz-complete');
+          var completeText = document.getElementById('fe-quiz-complete-text');
+          if (completeSection && completeText) {
+            completeText.textContent = correct + '/' + total + ' ' + t('correct', 'correct') + '!';
+            completeSection.style.display = 'block';
+          }
+          var qs = document.querySelectorAll('.fe-quiz-question');
+          for (var i = 0; i < qs.length; i++) qs[i].style.display = 'none';
+          if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
         } else {
           self._showQuizQuestion(qIndex + 1);
         }

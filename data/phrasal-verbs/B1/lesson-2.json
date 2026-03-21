@@ -1,0 +1,144 @@
+{
+  "lessonId": "lesson-2",
+  "level": "B1",
+  "category": "phrasal-verbs",
+  "title": "Relationships",
+  "phrasalVerbs": [
+    {
+      "verb": "get along",
+      "definition": "To have a friendly relationship with someone.",
+      "examples": [
+        "Do you get along with your new colleagues?",
+        "My sister and I get along really well.",
+        "It's hard to get along with people who are always negative."
+      ]
+    },
+    {
+      "verb": "fall out",
+      "definition": "To have an argument and stop being friendly with someone.",
+      "examples": [
+        "They fell out over a misunderstanding about money.",
+        "I fell out with my best friend last year, but we made up.",
+        "It's common for siblings to fall out when they're young."
+      ]
+    },
+    {
+      "verb": "make up",
+      "definition": "To become friendly with someone again after an argument.",
+      "examples": [
+        "They argued on Monday but made up by Wednesday.",
+        "It's important to make up after a fight.",
+        "Have you made up with your brother yet?"
+      ]
+    },
+    {
+      "verb": "break up",
+      "definition": "To end a romantic relationship.",
+      "examples": [
+        "They broke up after three years together.",
+        "She's upset because she just broke up with her boyfriend.",
+        "It's never easy to break up with someone you care about."
+      ]
+    },
+    {
+      "verb": "look after",
+      "definition": "To take care of someone or something.",
+      "examples": [
+        "Can you look after my cat while I'm on holiday?",
+        "She looks after her elderly parents every weekend.",
+        "It's important to look after your mental health."
+      ]
+    },
+    {
+      "verb": "grow up",
+      "definition": "To develop from a child to an adult; figuratively, to behave maturely.",
+      "examples": [
+        "She grew up in a small town in the south.",
+        "Where did you grow up?",
+        "Oh, grow up! Stop arguing about such a small thing."
+      ]
+    }
+  ],
+  "fillInExercises": [
+    {
+      "type": "multiple-choice",
+      "sentence": "Do you ___ well with your new flatmates?",
+      "options": ["get along", "fall out", "break up", "look after"],
+      "correct": "get along",
+      "explanation": "'Get along' means to have a friendly relationship."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "They ___ out over something silly and stopped talking for a week.",
+      "hint": "_ out",
+      "correct": "fell",
+      "explanation": "'Fall out' (past: fell out) means to have an argument and stop being friends."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "After their big argument, it took them a week to ___.",
+      "options": ["make up", "grow up", "break up", "fall out"],
+      "correct": "make up",
+      "explanation": "'Make up' means to become friends again after a disagreement."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "They ___ up after five years together — it was a shock to everyone.",
+      "hint": "_ up",
+      "correct": "broke",
+      "explanation": "'Break up' (past: broke up) means to end a romantic relationship."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "Could you ___ my dog for a few days while I'm travelling?",
+      "options": ["look after", "get along", "make up", "fall out"],
+      "correct": "look after",
+      "explanation": "'Look after' means to take care of someone or something."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "She ___ up in a small village near the coast.",
+      "hint": "_ up",
+      "correct": "grew",
+      "explanation": "'Grow up' (past: grew up) means to develop from child to adult."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "He always ___ with everyone — he's so easygoing.",
+      "options": ["gets along", "falls out", "breaks up", "grows up"],
+      "correct": "gets along",
+      "explanation": "'Get along' means to have good relationships."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "Stop fighting and ___ up — you're both adults!",
+      "hint": "_ up",
+      "correct": "grow",
+      "explanation": "'Grow up' figuratively means to behave in a mature way."
+    }
+  ],
+  "conversations": [
+    {
+      "title": "Friend Drama",
+      "lines": [
+        { "speaker": "Chloe", "text": "You look upset. Is everything OK?" },
+        { "speaker": "Mia",   "text": "Not really. I [fall out] with Sarah over something stupid." },
+        { "speaker": "Chloe", "text": "You two usually [get along] so well. Have you tried to [make up]?" },
+        { "speaker": "Mia",   "text": "I tried, but she's not responding. I don't know how to [deal with] it." },
+        { "speaker": "Chloe", "text": "You need to [look after] yourself first — you look really stressed." },
+        { "speaker": "Mia",   "text": "You're right. We just need to [grow up] and stop fighting over small things." }
+      ]
+    },
+    {
+      "title": "A Difficult Conversation",
+      "lines": [
+        { "speaker": "Jake",  "text": "Did you hear? Tom and Lisa [break up] last week." },
+        { "speaker": "Emily", "text": "Really? They always seemed to [get along] so well. What happened?" },
+        { "speaker": "Jake",  "text": "I heard they [fall out] about where to live after university." },
+        { "speaker": "Emily", "text": "That's sad. I hope they [make up] eventually — they were close friends." },
+        { "speaker": "Jake",  "text": "Lisa [look after] Tom a lot when he was ill. It'd be a shame to lose that." },
+        { "speaker": "Emily", "text": "Sometimes people just need time to [grow up] and see what matters." }
+      ]
+    }
+  ]
+}

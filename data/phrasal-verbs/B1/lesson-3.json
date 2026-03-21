@@ -1,0 +1,144 @@
+{
+  "lessonId": "lesson-3",
+  "level": "B1",
+  "category": "phrasal-verbs",
+  "title": "Problem Solving",
+  "phrasalVerbs": [
+    {
+      "verb": "figure out",
+      "definition": "To find the answer to a problem by thinking carefully.",
+      "examples": [
+        "I can't figure out how this software works.",
+        "She figured out the solution in just five minutes.",
+        "We need to figure out what went wrong."
+      ]
+    },
+    {
+      "verb": "work out",
+      "definition": "To find the answer to something or develop a plan; also to exercise.",
+      "examples": [
+        "Can you work out how much we owe?",
+        "Everything worked out well in the end.",
+        "We need to work out a plan before the meeting."
+      ]
+    },
+    {
+      "verb": "sort out",
+      "definition": "To solve a problem or deal with a situation.",
+      "examples": [
+        "We need to sort out this misunderstanding immediately.",
+        "Can you sort out the IT issue by 3 PM?",
+        "She sorted out the problem with the supplier."
+      ]
+    },
+    {
+      "verb": "point out",
+      "definition": "To draw attention to something; to indicate or mention.",
+      "examples": [
+        "She pointed out an error in my report.",
+        "Can you point out which bag is yours?",
+        "I'd like to point out that the deadline is tomorrow."
+      ]
+    },
+    {
+      "verb": "come up with",
+      "definition": "To produce or suggest an idea, plan, or solution.",
+      "examples": [
+        "Who came up with this brilliant idea?",
+        "We need to come up with a plan quickly.",
+        "She came up with a creative solution to the problem."
+      ]
+    },
+    {
+      "verb": "put up with",
+      "definition": "To tolerate or accept something unpleasant without complaining.",
+      "examples": [
+        "I can't put up with this noise any longer.",
+        "She has put up with a lot of stress this year.",
+        "How do you put up with such a difficult boss?"
+      ]
+    }
+  ],
+  "fillInExercises": [
+    {
+      "type": "multiple-choice",
+      "sentence": "I can't ___ why the app keeps crashing. It's really frustrating.",
+      "options": ["figure out", "put up with", "sort out", "come up with"],
+      "correct": "figure out",
+      "explanation": "'Figure out' means to find the answer to something by thinking."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "We need to ___ out a plan before the client meeting on Friday.",
+      "hint": "_ out",
+      "correct": "work",
+      "explanation": "'Work out' means to develop or figure out a plan."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "The technician will ___ the internet issue before the end of the day.",
+      "options": ["sort out", "come up with", "point out", "figure out"],
+      "correct": "sort out",
+      "explanation": "'Sort out' means to solve a problem or deal with a situation."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "She ___ out a mistake in the contract that could have cost us money.",
+      "hint": "_ out",
+      "correct": "pointed",
+      "explanation": "'Point out' (past: pointed out) means to draw attention to something."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "We need someone to ___ a new marketing idea for the campaign.",
+      "options": ["come up with", "put up with", "work out", "sort out"],
+      "correct": "come up with",
+      "explanation": "'Come up with' means to produce or think of an idea."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "I refuse to ___ up with rude behaviour from customers.",
+      "hint": "_ up with",
+      "correct": "put",
+      "explanation": "'Put up with' means to tolerate something unpleasant."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "Everything ___ well in the end — the project was a success.",
+      "options": ["worked out", "figured out", "sorted out", "pointed out"],
+      "correct": "worked out",
+      "explanation": "'Work out' also means that something ended satisfactorily."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "Could you ___ out which option is cheaper? I'm confused.",
+      "hint": "_ out",
+      "correct": "figure",
+      "explanation": "'Figure out' means to understand or calculate something."
+    }
+  ],
+  "conversations": [
+    {
+      "title": "Technical Problems",
+      "lines": [
+        { "speaker": "Ben",  "text": "I can't [figure out] why the system keeps crashing." },
+        { "speaker": "Hana", "text": "Let me have a look. I think I can [work out] what's causing it." },
+        { "speaker": "Ben",  "text": "I've been [put up with] this issue for a whole week." },
+        { "speaker": "Hana", "text": "Let me [point out] the error in the code — it's right here." },
+        { "speaker": "Ben",  "text": "Who [come up with] this method? It's completely wrong." },
+        { "speaker": "Hana", "text": "I'll [sort out] the whole thing. Give me 20 minutes." }
+      ]
+    },
+    {
+      "title": "Planning a Group Project",
+      "lines": [
+        { "speaker": "Sara",  "text": "We need to [come up with] an idea for the presentation by Friday." },
+        { "speaker": "Matt",  "text": "I've been trying to [figure out] a good topic. How about AI?" },
+        { "speaker": "Sara",  "text": "Love it. Can we [work out] who does which part?" },
+        { "speaker": "Matt",  "text": "Sure. But I want to [point out] that we only have three days." },
+        { "speaker": "Sara",  "text": "I know. We'll have to [put up with] some late nights this week." },
+        { "speaker": "Matt",  "text": "It'll all [sort out] in the end if we stay organised." }
+      ]
+    }
+  ]
+}

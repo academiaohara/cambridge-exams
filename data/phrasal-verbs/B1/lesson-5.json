@@ -1,0 +1,144 @@
+{
+  "lessonId": "lesson-5",
+  "level": "B1",
+  "category": "phrasal-verbs",
+  "title": "Final Challenge: B1",
+  "phrasalVerbs": [
+    {
+      "verb": "take on",
+      "definition": "To accept responsibility, a task, or hire new staff.",
+      "examples": [
+        "She took on an extra shift to earn more money.",
+        "The firm is taking on ten interns this summer.",
+        "Don't take on more work than you can handle."
+      ]
+    },
+    {
+      "verb": "get along",
+      "definition": "To have a friendly relationship with someone.",
+      "examples": [
+        "I get along really well with my new team.",
+        "It's hard to get along with people who never listen.",
+        "Do your kids get along well at school?"
+      ]
+    },
+    {
+      "verb": "figure out",
+      "definition": "To understand or find the answer to something.",
+      "examples": [
+        "Can you figure out what's wrong with the printer?",
+        "I finally figured out how to use this app.",
+        "We need to figure out our next steps quickly."
+      ]
+    },
+    {
+      "verb": "check in",
+      "definition": "To register arrival at a hotel, airport, or event.",
+      "examples": [
+        "We checked in to the hotel at 2 PM.",
+        "Please check in before boarding the plane.",
+        "You should check in 90 minutes before the flight."
+      ]
+    },
+    {
+      "verb": "come up with",
+      "definition": "To think of or produce an idea or solution.",
+      "examples": [
+        "The team came up with a brilliant new idea.",
+        "Can you come up with a better plan?",
+        "Who came up with this recipe? It's delicious!"
+      ]
+    },
+    {
+      "verb": "look after",
+      "definition": "To take care of someone or something.",
+      "examples": [
+        "Could you look after my plants while I'm away?",
+        "She looks after three children under the age of five.",
+        "It's important to look after your health."
+      ]
+    }
+  ],
+  "fillInExercises": [
+    {
+      "type": "multiple-choice",
+      "sentence": "We need to ___ a solution to this problem before tomorrow's meeting.",
+      "options": ["come up with", "look after", "check in", "take on"],
+      "correct": "come up with",
+      "explanation": "'Come up with' means to think of or produce an idea or solution."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "Could you ___ after my dog this weekend? I'm going away.",
+      "hint": "_ after",
+      "correct": "look",
+      "explanation": "'Look after' means to care for someone or something."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "He's great at his job because he ___ well with everyone.",
+      "options": ["gets along", "takes on", "figures out", "checks in"],
+      "correct": "gets along",
+      "explanation": "'Get along' means to have a good relationship."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "Guests are expected to ___ in before 12 noon on the day of departure.",
+      "hint": "_ in",
+      "correct": "check",
+      "explanation": "'Check in' means to register at a hotel or airport."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "The department will ___ five new members of staff next month.",
+      "options": ["take on", "figure out", "come up with", "get along"],
+      "correct": "take on",
+      "explanation": "'Take on' means to hire or accept new responsibilities."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "She couldn't ___ out why the project had failed.",
+      "hint": "_ out",
+      "correct": "figure",
+      "explanation": "'Figure out' means to understand or find the reason for something."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "Can you ___ my bike while I'm in hospital? I don't want it stolen.",
+      "options": ["look after", "take on", "check in", "come up with"],
+      "correct": "look after",
+      "explanation": "'Look after' means to keep something safe and in good condition."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "The engineer quickly ___ up with a temporary fix for the broken pipe.",
+      "hint": "_ up with",
+      "correct": "came",
+      "explanation": "'Come up with' (past: came up with) means to produce a solution."
+    }
+  ],
+  "conversations": [
+    {
+      "title": "The Big Project",
+      "lines": [
+        { "speaker": "Nadia", "text": "I still can't [figure out] why the client rejected our proposal." },
+        { "speaker": "Tom",   "text": "Maybe we need to [come up with] a completely different approach?" },
+        { "speaker": "Nadia", "text": "I agree. We should also [take on] someone with experience in this area." },
+        { "speaker": "Tom",   "text": "I'll [look after] the existing clients so they don't worry in the meantime." },
+        { "speaker": "Nadia", "text": "Perfect. Let's [check in] with the director tomorrow morning." },
+        { "speaker": "Tom",   "text": "If we [get along] well with him, I'm sure we'll find a way forward." }
+      ]
+    },
+    {
+      "title": "Weekend Away",
+      "lines": [
+        { "speaker": "Sam",  "text": "We need to [check in] to the hotel by 4. Should we set off now?" },
+        { "speaker": "Jess", "text": "In a second. I'm trying to [figure out] the best route." },
+        { "speaker": "Sam",  "text": "Good thinking. Can you [look after] this bag while I go to the shop?" },
+        { "speaker": "Jess", "text": "Of course. Did you [come up with] a plan for the weekend?" },
+        { "speaker": "Sam",  "text": "Yes! And I really [get along] well with the family who runs the guesthouse." },
+        { "speaker": "Jess", "text": "Lovely! I'm happy to [take on] the role of tour guide for Saturday." }
+      ]
+    }
+  ]
+}
