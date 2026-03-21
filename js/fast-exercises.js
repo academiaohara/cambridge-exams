@@ -1,14 +1,13 @@
 // js/fast-exercises.js
-// Multi-category Fast Exercises system with vertical progression maps
+// Multi-category Fast Learning system with vertical progression maps
 
 (function() {
   var STORAGE_KEY = 'cambridge_fast_exercises';
   var CATEGORIES = [
-    { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6' },
-    { id: 'collocations', icon: 'library_books', name: 'Collocations', color: '#8b5cf6' },
     { id: 'vocabulary', icon: 'menu_book', name: 'Vocabulary', color: '#10b981' },
-    { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' },
-    { id: 'business-english', icon: 'business_center', name: 'Business English', color: '#ef4444' }
+    { id: 'collocations', icon: 'library_books', name: 'Collocations', color: '#8b5cf6' },
+    { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6' },
+    { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' }
   ];
 
   function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
@@ -231,8 +230,8 @@
               '<div class="subpage-header">' +
                 '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
                 '<div>' +
-                  '<div class="subpage-title">' + _mi('bolt') + ' ' + t('fastExercises', 'Fast Exercises') + '</div>' +
-                  '<div class="subpage-subtitle">' + t('fastExercisesSubtitle', 'Choose a category and start your learning path') + '</div>' +
+                  '<div class="subpage-title">' + _mi('bolt') + ' ' + t('fastLearning', 'Fast Learning') + '</div>' +
+                  '<div class="subpage-subtitle">' + t('fastLearningSubtitle', 'Choose a category and start your learning path') + '</div>' +
                 '</div>' +
               '</div>' +
               '<div class="fe-categories-grid">' + categoryCards + '</div>' +
@@ -270,9 +269,17 @@
       }
       if (!catMeta) return;
 
-      // Determine active level
+      // Determine active level (validate stored level exists in data)
       var catProg = this._getCategoryProgress(categoryId);
-      var activeLevel = catProg.activeLevel || 'A2';
+      var storedLevel = catProg.activeLevel;
+      var firstLevelId = (data.levels && data.levels.length > 0) ? data.levels[0].id : 'A2';
+      var levelExists = false;
+      if (storedLevel) {
+        for (var i = 0; i < data.levels.length; i++) {
+          if (data.levels[i].id === storedLevel) { levelExists = true; break; }
+        }
+      }
+      var activeLevel = levelExists ? storedLevel : firstLevelId;
       this._currentLevel = activeLevel;
 
       // ── LEFT WIDGET: Category Info + Level Selector ──
