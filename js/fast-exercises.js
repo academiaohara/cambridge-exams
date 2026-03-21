@@ -308,10 +308,11 @@
             '<div class="fe-section">' +
               '<div class="subpage-header">' +
                 '<button class="subpage-back-btn" onclick="FastExercises.openCategories()">' + t('back', 'Back') + '</button>' +
-                '<div>' +
+                '<div class="subpage-header-titles">' +
                   '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
                   '<div class="subpage-subtitle">' + t('levelProgress', 'Level Progress') + ' — ' + activeLevel + '</div>' +
                 '</div>' +
+                (categoryId === 'phrasal-verbs' ? '<button class="subpage-info-btn" onclick="FastExercises._showPvInfoModal()" title="' + t('whatArePhrasalVerbs', 'What are phrasal verbs?') + '">' + _mi('info') + '</button>' : '') +
               '</div>' +
               centerMap +
             '</div>' +
@@ -384,7 +385,72 @@
         '<div class="fe-info-stats">' +
           '<div class="fe-info-stat">' + totalDone + '/' + totalAll + ' ' + t('items', 'items') + '</div>' +
         '</div>' +
+        '<button class="fe-reset-level-btn" onclick="FastExercises._confirmResetLevel(\'' + catMeta.id + '\', \'' + activeLevel + '\')">' +
+          _mi('restart_alt') + ' ' + t('resetLevel', 'Reset Level') +
+        '</button>' +
       '</div>';
+    },
+
+    // ── RESET LEVEL ──────────────────────────────────────────────────────
+    _confirmResetLevel: function(categoryId, levelId) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var msg = t('resetLevelConfirm', 'Reset all progress for level ') + levelId + '?';
+      if (!confirm(msg)) return;
+      this._resetLevel(categoryId, levelId);
+    },
+
+    _resetLevel: function(categoryId, levelId) {
+      var progress = this._getProgress();
+      if (!progress[categoryId]) return;
+      var cp = progress[categoryId].completedPoints || {};
+      var prefix = levelId + '/';
+      Object.keys(cp).forEach(function(key) {
+        if (key.indexOf(prefix) === 0) delete cp[key];
+      });
+      this._saveProgress(progress);
+      this.openCategory(categoryId);
+    },
+
+    // ── PHRASAL VERBS INFO MODAL ─────────────────────────────────────────
+    _showPvInfoModal: function() {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var existing = document.getElementById('pv-info-modal');
+      if (existing) { existing.remove(); return; }
+
+      var modal = document.createElement('div');
+      modal.id = 'pv-info-modal';
+      modal.className = 'pv-info-modal-overlay';
+      modal.innerHTML =
+        '<div class="pv-info-modal-box">' +
+          '<div class="pv-info-modal-header">' +
+            '<span class="pv-info-modal-icon">' + '<span class="material-symbols-outlined">auto_stories</span>' + '</span>' +
+            '<h2 class="pv-info-modal-title">' + t('whatArePhrasalVerbs', 'What are Phrasal Verbs?') + '</h2>' +
+            '<button class="pv-info-modal-close" onclick="document.getElementById(\'pv-info-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="pv-info-modal-body">' +
+            '<p>' + t('pvInfoP1', 'A <strong>phrasal verb</strong> is a combination of a verb and one or more particles (a preposition, an adverb, or both) that together create a new meaning different from the original verb.') + '</p>' +
+            '<p class="pv-info-example"><span class="material-symbols-outlined">format_quote</span> <em>' + t('pvInfoEx1', '"Turn off the lights." — <strong>turn off</strong> = switch off (not just "turn")') + '</em></p>' +
+            '<p>' + t('pvInfoP2', 'Phrasal verbs are extremely common in everyday English — both spoken and written. Native speakers use them constantly in conversations, emails, and texts.') + '</p>' +
+            '<p>' + t('pvInfoP3', '<strong>Why are they important?</strong> Understanding phrasal verbs will help you:') + '</p>' +
+            '<ul class="pv-info-list">' +
+              '<li>' + t('pvInfoL1', 'Sound more natural and fluent') + '</li>' +
+              '<li>' + t('pvInfoL2', 'Understand native speakers better') + '</li>' +
+              '<li>' + t('pvInfoL3', 'Score higher in reading and listening exams') + '</li>' +
+              '<li>' + t('pvInfoL4', 'Express yourself more precisely in writing') + '</li>' +
+            '</ul>' +
+            '<p>' + t('pvInfoP4', '<strong>How to learn them:</strong> Each lesson in this section introduces a group of related phrasal verbs. You will read them in context, practise filling in gaps, and test yourself with mixed exercises.') + '</p>' +
+          '</div>' +
+          '<div class="pv-info-modal-footer">' +
+            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-info-modal\').remove()">' + t('gotIt', 'Got it!') + '</button>' +
+          '</div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
+      document.body.appendChild(modal);
     },
 
     // ── CENTER MAP ───────────────────────────────────────────────────────
@@ -407,13 +473,8 @@
         var lessonComplete = true;
         var lessonStarted = false;
 
-        // Check if previous lesson is complete (inter-lesson locking)
-        var prevLessonComplete = true;
-        if (li > 0) {
-          var prevLesson = level.lessons[li - 1];
-          prevLessonComplete = self._isLessonComplete(catMeta.id, activeLevel, prevLesson.id, prevLesson.points);
-        }
-        var lessonLocked = !prevLessonComplete;
+        // Lessons are never locked — all are freely accessible
+        var lessonLocked = false;
 
         // Check lesson status
         if (lesson.points) {
@@ -430,7 +491,6 @@
 
         html += '<div class="fe-map-lesson ' + lessonClass + '">' +
           '<div class="fe-map-lesson-title">' +
-            (lessonLocked ? '<span class="fe-map-lesson-lock">' + _mi('lock') + '</span>' : '') +
             '<span class="fe-map-lesson-num">' + t('lesson', 'Lesson') + ' ' + (li + 1) + '</span>' +
             '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
           '</div>' +
@@ -441,9 +501,11 @@
             var point = lesson.points[pi];
             var isDone = self._isPointComplete(catMeta.id, activeLevel, lesson.id, pi);
 
-            // Determine if this point is accessible (all previous points must be done AND lesson not locked)
-            var isAccessible = !lessonLocked;
-            if (isAccessible && pi > 0) {
+            // All points are freely accessible, EXCEPT the last pv-mixed which
+            // requires all previous points in the lesson to be done first.
+            var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1);
+            var isAccessible = true;
+            if (isLastPvMixed) {
               for (var prev = 0; prev < pi; prev++) {
                 if (!self._isPointComplete(catMeta.id, activeLevel, lesson.id, prev)) {
                   isAccessible = false;
@@ -518,16 +580,13 @@
 
       html += '</div>';
 
-      // Legend
+      // Legend (only PV-relevant dot types)
       html += '<div class="fe-map-legend">' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-gallery fe-dot-mini">' + _mi('collections_bookmark') + '</span> ' + t('gallery', 'Gallery') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-fill-in fe-dot-mini">' + _mi('edit') + '</span> ' + t('fillIn', 'Fill In') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-conv fe-dot-mini">' + _mi('forum') + '</span> ' + t('conversations', 'Conversations') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini">' + _mi('drag_indicator') + '</span> ' + t('dragDrop', 'Drag & Drop') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini">' + _mi('shuffle') + '</span> ' + t('mixed', 'Mixed') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-explanation fe-dot-mini">' + _mi('article') + '</span> ' + t('explanation', 'Explanation') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-exercise fe-dot-mini">' + _mi('fitness_center') + '</span> ' + t('exercise', 'Exercise') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-trophy fe-dot-mini">' + _mi('emoji_events') + '</span> ' + t('challenge', 'Challenge') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-gallery fe-dot-mini fe-dot-outline">' + _mi('collections_bookmark') + '</span> ' + t('gallery', 'Gallery') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-fill-in fe-dot-mini fe-dot-outline">' + _mi('edit') + '</span> ' + t('fillIn', 'Fill In') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-conv fe-dot-mini fe-dot-outline">' + _mi('forum') + '</span> ' + t('conversations', 'Conversations') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini fe-dot-outline">' + _mi('drag_indicator') + '</span> ' + t('dragDrop', 'Drag & Drop') + '</span>' +
+        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini fe-dot-outline">' + _mi('shuffle') + '</span> ' + t('mixed', 'Mixed') + '</span>' +
       '</div>';
 
       return html;
@@ -615,22 +674,25 @@
       }
       if (!level || !level.lessons) return;
 
-      // Find first incomplete point (respecting inter-lesson locking)
+      // Find first incomplete accessible point across all lessons.
+      // All points are free except the last pv-mixed in each lesson,
+      // which requires all prior points in the lesson to be done.
       for (var li = 0; li < level.lessons.length; li++) {
         var lesson = level.lessons[li];
         if (!lesson.points) continue;
 
-        // Check if this lesson is locked (previous lesson must be complete)
-        if (li > 0) {
-          var prevLesson = level.lessons[li - 1];
-          if (!this._isLessonComplete(categoryId, levelId, prevLesson.id, prevLesson.points)) {
-            // Previous lesson not complete - can't continue here
-            break;
-          }
-        }
-
         for (var pi = 0; pi < lesson.points.length; pi++) {
           if (!this._isPointComplete(categoryId, levelId, lesson.id, pi)) {
+            // Skip locked pv-mixed (last point) if not all prior done
+            var point = lesson.points[pi];
+            var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1);
+            if (isLastPvMixed) {
+              var allPriorDone = true;
+              for (var prev = 0; prev < pi; prev++) {
+                if (!this._isPointComplete(categoryId, levelId, lesson.id, prev)) { allPriorDone = false; break; }
+              }
+              if (!allPriorDone) continue;
+            }
             this.openPoint(categoryId, levelId, lesson.id, pi);
             return;
           }
@@ -1012,13 +1074,14 @@
         return;
       }
 
+      // Build cards HTML (all cards, shown/hidden via JS)
       var cardsHtml = '';
       pvs.forEach(function(pv, idx) {
         var examplesHtml = '';
         (pv.examples || []).forEach(function(ex) {
           examplesHtml += '<li>' + self._escapeHTML(ex) + '</li>';
         });
-        cardsHtml += '<div class="pv-gallery-card" style="--cat-color:' + catMeta.color + '">' +
+        cardsHtml += '<div class="pv-gallery-card pv-gallery-card-single' + (idx === 0 ? ' pv-gallery-card-active' : '') + '" data-idx="' + idx + '" style="--cat-color:' + catMeta.color + '">' +
           '<div class="pv-gallery-verb">' + self._escapeHTML(pv.verb) + '</div>' +
           '<div class="pv-gallery-def">' + self._escapeHTML(pv.definition || '') + '</div>' +
           (examplesHtml ? '<ul class="pv-gallery-examples">' + examplesHtml + '</ul>' : '') +
@@ -1026,25 +1089,64 @@
         '</div>';
       });
 
+      // Build nav dots HTML
+      var dotsHtml = '';
+      pvs.forEach(function(pv, idx) {
+        dotsHtml += '<div class="pv-gallery-nav-dot' + (idx === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + idx + '" title="' + self._escapeHTML(pv.verb) + '" onclick="FastExercises._pvGalleryGoTo(' + idx + ')"></div>';
+      });
+
       container.innerHTML =
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
             '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
-            '<div>' +
-              '<div class="subpage-title">' + _mi('collections_bookmark') + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
+            '<div class="subpage-header-titles">' +
+              '<div class="subpage-title">' + '<span class="material-symbols-outlined">collections_bookmark</span>' + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + t('phrasalVerbGallery', 'Phrasal Verb Gallery') + ' · ' + pvs.length + ' ' + t('verbs', 'verbs') + '</div>' +
             '</div>' +
           '</div>' +
-          '<div class="pv-gallery-container">' +
-            cardsHtml +
-            '<div class="pv-gallery-footer">' +
-              '<p class="pv-gallery-scroll-hint">' + _mi('swipe') + ' ' + t('scrollToSeeAll', 'Scroll to see all phrasal verbs in this lesson.') + '</p>' +
-              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-                t('gotItNext', 'Got it! Next') + ' →' +
-              '</button>' +
+          '<div class="pv-gallery-single-wrap">' +
+            '<div class="pv-gallery-cards-area" id="pv-gallery-cards">' +
+              cardsHtml +
+            '</div>' +
+            '<div class="pv-gallery-nav-col" id="pv-gallery-nav">' +
+              dotsHtml +
             '</div>' +
           '</div>' +
+          '<div class="pv-gallery-footer">' +
+            '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+              t('gotItNext', 'Got it! Next') + ' →' +
+            '</button>' +
+          '</div>' +
         '</div>';
+
+      // Attach wheel scroll handler
+      var cardsArea = document.getElementById('pv-gallery-cards');
+      if (cardsArea) {
+        cardsArea.addEventListener('wheel', function(e) {
+          e.preventDefault();
+          var current = FastExercises._pvGalleryCurrentIdx || 0;
+          if (e.deltaY > 0) FastExercises._pvGalleryGoTo(current + 1);
+          else FastExercises._pvGalleryGoTo(current - 1);
+        }, { passive: false });
+      }
+      this._pvGalleryCurrentIdx = 0;
+      this._pvGalleryTotal = pvs.length;
+    },
+
+    _pvGalleryGoTo: function(idx) {
+      var total = this._pvGalleryTotal || 0;
+      if (total === 0) return;
+      idx = Math.max(0, Math.min(total - 1, idx));
+      this._pvGalleryCurrentIdx = idx;
+
+      var cards = document.querySelectorAll('.pv-gallery-card-single');
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].classList.toggle('pv-gallery-card-active', parseInt(cards[i].getAttribute('data-idx')) === idx);
+      }
+      var dots = document.querySelectorAll('#pv-gallery-nav .pv-gallery-nav-dot');
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx')) === idx);
+      }
     },
 
     // ── PV FILL-IN EXERCISES (Point 2) ───────────────────────────────────
@@ -1088,8 +1190,8 @@
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
             '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
-            '<div>' +
-              '<div class="subpage-title">' + _mi('edit') + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
+            '<div class="subpage-header-titles">' +
+              '<div class="subpage-title"><span class="material-symbols-outlined">edit</span> ' + self._escapeHTML(lessonTitle || '') + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + t('fillInTheGaps', 'Fill in the Gaps') + '</div>' +
             '</div>' +
           '</div>' +
@@ -1202,7 +1304,6 @@
         (conv.lines || []).forEach(function(line) {
           if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
           var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
-          // Render [verb] as bold highlighted text
           var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, '<strong class="pv-highlight">$1</strong>');
           linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
             '<div class="pv-conv-avatar">' + self._escapeHTML((line.speaker || '').charAt(0)) + '</div>' +
@@ -1212,32 +1313,71 @@
             '</div>' +
           '</div>';
         });
-        convsHtml += '<div class="pv-conv-block">' +
-          '<div class="pv-conv-title">' + _mi('forum') + ' ' + self._escapeHTML(conv.title || '') + '</div>' +
+        convsHtml += '<div class="pv-conv-block pv-conv-slide' + (ci === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + ci + '">' +
+          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span> ' + self._escapeHTML(conv.title || '') + '</div>' +
           '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
         '</div>';
-        if (ci < convs.length - 1) convsHtml += '<div class="pv-conv-separator"></div>';
+      });
+
+      // Nav dots for conversations
+      var convDotsHtml = '';
+      convs.forEach(function(conv, ci) {
+        convDotsHtml += '<div class="pv-gallery-nav-dot' + (ci === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + ci + '" title="' + self._escapeHTML(conv.title || ('Conversation ' + (ci + 1))) + '" onclick="FastExercises._pvConvGoTo(' + ci + ')"></div>';
       });
 
       container.innerHTML =
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
             '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
-            '<div>' +
-              '<div class="subpage-title">' + _mi('forum') + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
+            '<div class="subpage-header-titles">' +
+              '<div class="subpage-title"><span class="material-symbols-outlined">forum</span> ' + self._escapeHTML(lessonTitle || '') + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + t('realConversations', 'Real Conversations') + '</div>' +
             '</div>' +
           '</div>' +
-          '<div class="pv-conversations-container">' +
-            convsHtml +
-            '<div class="pv-conv-footer">' +
-              '<p class="pv-conv-hint">' + _mi('info') + ' ' + t('pvHighlightHint', 'Phrasal verbs are highlighted in bold. Read carefully before the next exercise.') + '</p>' +
-              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-                t('readyNext', 'Ready! Next') + ' →' +
-              '</button>' +
+          '<div class="pv-gallery-single-wrap">' +
+            '<div class="pv-conversations-slides" id="pv-conv-slides">' +
+              convsHtml +
+            '</div>' +
+            '<div class="pv-gallery-nav-col" id="pv-conv-nav">' +
+              convDotsHtml +
             '</div>' +
           '</div>' +
+          '<div class="pv-conv-footer">' +
+            '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + t('pvHighlightHint', 'Phrasal verbs are highlighted in bold. Read carefully before the next exercise.') + '</p>' +
+            '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+              t('readyNext', 'Ready! Next') + ' →' +
+            '</button>' +
+          '</div>' +
         '</div>';
+
+      // Attach wheel scroll handler
+      var slidesArea = document.getElementById('pv-conv-slides');
+      if (slidesArea) {
+        slidesArea.addEventListener('wheel', function(e) {
+          e.preventDefault();
+          var current = FastExercises._pvConvCurrentIdx || 0;
+          if (e.deltaY > 0) FastExercises._pvConvGoTo(current + 1);
+          else FastExercises._pvConvGoTo(current - 1);
+        }, { passive: false });
+      }
+      this._pvConvCurrentIdx = 0;
+      this._pvConvTotal = convs.length;
+    },
+
+    _pvConvGoTo: function(idx) {
+      var total = this._pvConvTotal || 0;
+      if (total === 0) return;
+      idx = Math.max(0, Math.min(total - 1, idx));
+      this._pvConvCurrentIdx = idx;
+
+      var slides = document.querySelectorAll('.pv-conv-slide');
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].classList.toggle('pv-conv-slide-active', parseInt(slides[i].getAttribute('data-idx')) === idx);
+      }
+      var dots = document.querySelectorAll('#pv-conv-nav .pv-gallery-nav-dot');
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx')) === idx);
+      }
     },
 
     // ── PV CONVERSATION DRAG (Point 4) ───────────────────────────────────
@@ -1320,8 +1460,8 @@
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
             '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
-            '<div>' +
-              '<div class="subpage-title">' + _mi('drag_indicator') + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
+            '<div class="subpage-header-titles">' +
+              '<div class="subpage-title"><span class="material-symbols-outlined">drag_indicator</span> ' + self._escapeHTML(lessonTitle || '') + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + t('completeConversations', 'Complete the Conversations') + '</div>' +
             '</div>' +
           '</div>' +
@@ -1512,8 +1652,8 @@
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
             '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
-            '<div>' +
-              '<div class="subpage-title">' + _mi('shuffle') + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
+            '<div class="subpage-header-titles">' +
+              '<div class="subpage-title"><span class="material-symbols-outlined">shuffle</span> ' + self._escapeHTML(lessonTitle || '') + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + t('mixedPractice', 'Mixed Practice') + '</div>' +
             '</div>' +
           '</div>' +
@@ -1635,15 +1775,9 @@
         // Next point in same lesson
         this.openPoint(categoryId, levelId, lessonId, nextPointIndex);
       } else if (currentLessonIdx + 1 < level.lessons.length) {
-        // Only advance to next lesson if current lesson is fully complete
-        var currentComplete = this._isLessonComplete(categoryId, levelId, lesson.id, lesson.points);
-        if (currentComplete) {
-          var nextLesson = level.lessons[currentLessonIdx + 1];
-          this.openPoint(categoryId, levelId, nextLesson.id, 0);
-        } else {
-          // Current lesson not fully complete - go back to map
-          this.openCategory(categoryId);
-        }
+        // Go to first point of next lesson (no lesson locking)
+        var nextLesson = level.lessons[currentLessonIdx + 1];
+        this.openPoint(categoryId, levelId, nextLesson.id, 0);
       } else {
         // Level complete - go back to map
         this.openCategory(categoryId);
