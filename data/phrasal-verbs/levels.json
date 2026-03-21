@@ -37,62 +37,409 @@
     {
       "id": "B1",
       "name": "B1 – Intermediate",
-      "requiredToUnlock": "A2",
-      "totalLessons": 5,
+      "requiredToUnlock": null,
+      "totalLessons": 13,
       "lessons": [
         {
           "id": "lesson-1",
-          "title": "Work & Career",
+          "title": "Relationships & Social Life",
           "points": [
-            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
-            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
-            { "type": "pv-conversations",      "label": "Real Conversations" },
-            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
-            { "type": "pv-mixed",              "label": "Mixed Practice" }
+            {
+              "type": "explanation",
+              "label": "ask out / break up"
+            },
+            {
+              "type": "explanation",
+              "label": "come round / hang out"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Relationships"
+            },
+            {
+              "type": "explanation",
+              "label": "meet up / take after"
+            },
+            {
+              "type": "explanation",
+              "label": "take out"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Social Life"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 1"
+            }
           ]
         },
         {
           "id": "lesson-2",
-          "title": "Relationships",
+          "title": "Feelings, Moods & States",
           "points": [
-            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
-            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
-            { "type": "pv-conversations",      "label": "Real Conversations" },
-            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
-            { "type": "pv-mixed",              "label": "Mixed Practice" }
+            {
+              "type": "explanation",
+              "label": "brighten up / wind down"
+            },
+            {
+              "type": "explanation",
+              "label": "end up / turn into"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Feelings"
+            },
+            {
+              "type": "explanation",
+              "label": "laze around / mess about/around"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Moods & States"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 2"
+            }
           ]
         },
         {
           "id": "lesson-3",
-          "title": "Problem Solving",
+          "title": "Communication & Information",
           "points": [
-            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
-            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
-            { "type": "pv-conversations",      "label": "Real Conversations" },
-            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
-            { "type": "pv-mixed",              "label": "Mixed Practice" }
+            {
+              "type": "explanation",
+              "label": "check out / come across"
+            },
+            {
+              "type": "explanation",
+              "label": "come out / get through (to)"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Communication"
+            },
+            {
+              "type": "explanation",
+              "label": "pass on / take down"
+            },
+            {
+              "type": "explanation",
+              "label": "set down / talk over"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Information"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 3"
+            }
           ]
         },
         {
           "id": "lesson-4",
-          "title": "Travel & Experiences",
+          "title": "Thinking & Problem Solving",
           "points": [
-            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
-            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
-            { "type": "pv-conversations",      "label": "Real Conversations" },
-            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
-            { "type": "pv-mixed",              "label": "Mixed Practice" }
+            {
+              "type": "explanation",
+              "label": "come up with / figure out"
+            },
+            {
+              "type": "explanation",
+              "label": "mess up / mix up"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Problem Solving"
+            },
+            {
+              "type": "explanation",
+              "label": "think over"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Decisions"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 4"
+            }
           ]
         },
         {
           "id": "lesson-5",
-          "title": "Final Challenge: B1",
+          "title": "Work & Study Skills",
           "points": [
-            { "type": "pv-gallery",           "label": "B1 Vocabulary Review" },
-            { "type": "pv-fill-in",            "label": "Challenge: Fill in the Gaps" },
-            { "type": "pv-conversations",      "label": "B1 Conversations" },
-            { "type": "pv-conversation-drag",  "label": "Challenge: Drag & Drop" },
-            { "type": "pv-mixed",              "label": "B1 Final Mixed Test" }
+            {
+              "type": "explanation",
+              "label": "brush up / read up"
+            },
+            {
+              "type": "explanation",
+              "label": "keep up / make up"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Work Skills"
+            },
+            {
+              "type": "explanation",
+              "label": "pick up / take off"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Study & Career"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 5"
+            }
+          ]
+        },
+        {
+          "id": "lesson-6",
+          "title": "Technology & Computers",
+          "points": [
+            {
+              "type": "explanation",
+              "label": "back up / key in"
+            },
+            {
+              "type": "explanation",
+              "label": "set up / switch on/off"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Technology"
+            },
+            {
+              "type": "explanation",
+              "label": "test out"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Digital Life"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 6"
+            }
+          ]
+        },
+        {
+          "id": "lesson-7",
+          "title": "Home & Living",
+          "points": [
+            {
+              "type": "explanation",
+              "label": "move in / move out"
+            },
+            {
+              "type": "explanation",
+              "label": "lock up / open up"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Home Life"
+            },
+            {
+              "type": "explanation",
+              "label": "put up / throw out"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Living Spaces"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 7"
+            }
+          ]
+        },
+        {
+          "id": "lesson-8",
+          "title": "DIY & Building",
+          "points": [
+            {
+              "type": "explanation",
+              "label": "put up / knock down"
+            },
+            {
+              "type": "explanation",
+              "label": "put in / set up"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: DIY"
+            },
+            {
+              "type": "explanation",
+              "label": "put together / cut out"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Building & Making"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 8"
+            }
+          ]
+        },
+        {
+          "id": "lesson-9",
+          "title": "Clothes & Appearance",
+          "points": [
+            {
+              "type": "explanation",
+              "label": "change into / change out of"
+            },
+            {
+              "type": "explanation",
+              "label": "do up / smarten up"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Clothes"
+            },
+            {
+              "type": "explanation",
+              "label": "go together / stand out"
+            },
+            {
+              "type": "explanation",
+              "label": "wear out"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Appearance"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 9"
+            }
+          ]
+        },
+        {
+          "id": "lesson-10",
+          "title": "Movement & Encounters",
+          "points": [
+            {
+              "type": "explanation",
+              "label": "bump into / get into"
+            },
+            {
+              "type": "explanation",
+              "label": "fall behind / crowd around"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Movement"
+            },
+            {
+              "type": "explanation",
+              "label": "step aside"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Encounters"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 10"
+            }
+          ]
+        },
+        {
+          "id": "lesson-11",
+          "title": "Travel & Journeys",
+          "points": [
+            {
+              "type": "explanation",
+              "label": "go off / stop off"
+            },
+            {
+              "type": "explanation",
+              "label": "move on / move over"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Travel"
+            },
+            {
+              "type": "explanation",
+              "label": "pull over"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Journeys"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 11"
+            }
+          ]
+        },
+        {
+          "id": "lesson-12",
+          "title": "Food, Cooking & Temperature",
+          "points": [
+            {
+              "type": "explanation",
+              "label": "heat up / cool down"
+            },
+            {
+              "type": "explanation",
+              "label": "warm up / dry up"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Cooking"
+            },
+            {
+              "type": "explanation",
+              "label": "water down"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Food & Temperature"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 12"
+            }
+          ]
+        },
+        {
+          "id": "lesson-13",
+          "title": "Numbers, Money & Resources",
+          "points": [
+            {
+              "type": "explanation",
+              "label": "add up to / take away"
+            },
+            {
+              "type": "explanation",
+              "label": "pay back / use up"
+            },
+            {
+              "type": "exercise",
+              "label": "Practice: Numbers & Money"
+            },
+            {
+              "type": "explanation",
+              "label": "tip up"
+            },
+            {
+              "type": "exercise",
+              "label": "Quiz: Resources"
+            },
+            {
+              "type": "review",
+              "label": "Review: Lesson 13"
+            }
           ]
         }
       ]
