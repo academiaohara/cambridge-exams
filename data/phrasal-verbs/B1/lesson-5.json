@@ -72,7 +72,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I need to ___ ___ on my German before the business trip.",
-      "options": ["brush up", "read up", "keep up", "take on"],
+      "options": [
+        "brush up",
+        "read up",
+        "keep up",
+        "take on"
+      ],
       "correct": "brush up",
       "explanation": "'Brush up on' means to practise and improve your existing skills."
     },
@@ -86,7 +91,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I missed two days of work, so I have to ___ ___ the time.",
-      "options": ["make up", "pick up", "brush up", "take off"],
+      "options": [
+        "make up",
+        "pick up",
+        "brush up",
+        "take off"
+      ],
       "correct": "make up",
       "explanation": "'Make up' means to work extra time to compensate for missed hours."
     },
@@ -100,7 +110,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Before the interview, I ___ ___ on the company's history.",
-      "options": ["read up", "brushed up", "picked up", "kept up"],
+      "options": [
+        "read up",
+        "brushed up",
+        "picked up",
+        "kept up"
+      ],
       "correct": "read up",
       "explanation": "'Read up on' means to research a topic by reading about it."
     },
@@ -114,7 +129,12 @@
     {
       "type": "multiple-choice",
       "sentence": "She ___ ___ more work than she could handle.",
-      "options": ["took on", "made up", "kept up", "picked up"],
+      "options": [
+        "took on",
+        "made up",
+        "kept up",
+        "picked up"
+      ],
       "correct": "took on",
       "explanation": "'Take on' means to accept work or responsibility."
     },
@@ -130,23 +150,59 @@
     {
       "title": "Starting a New Job",
       "lines": [
-        { "speaker": "Sophie", "text": "How's the new job going? Are you [keeping up] with everything?" },
-        { "speaker": "Alex", "text": "It's intense! I've [taken on] a lot of responsibility." },
-        { "speaker": "Sophie", "text": "Have you had to [read up on] any new topics?" },
-        { "speaker": "Alex", "text": "Yes, I've been [brushing up on] my project management skills." },
-        { "speaker": "Sophie", "text": "At least you're [picking up] new things quickly." },
-        { "speaker": "Alex", "text": "True, but I haven't been able to [take off] any time yet." }
+        {
+          "speaker": "Sophie",
+          "text": "How's the new job going? Are you [keep up] with everything?"
+        },
+        {
+          "speaker": "Alex",
+          "text": "It's intense! I've [take on] a lot of responsibility."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Have you had to [read up (on/about)] any new topics?"
+        },
+        {
+          "speaker": "Alex",
+          "text": "Yes, I've been [brush up (on)] my project management skills."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "At least you're [pick up] new things quickly."
+        },
+        {
+          "speaker": "Alex",
+          "text": "True, but I haven't been able to [take off] any time yet."
+        }
       ]
     },
     {
       "title": "Preparing for an Exam",
       "lines": [
-        { "speaker": "Carlos", "text": "I need to [brush up on] chemistry before the exam." },
-        { "speaker": "Fatima", "text": "Me too! Let's [read up on] the difficult chapters together." },
-        { "speaker": "Carlos", "text": "Good idea. I can barely [keep up] with the course material." },
-        { "speaker": "Fatima", "text": "Don't worry. You'll [pick up] the concepts with more practice." },
-        { "speaker": "Carlos", "text": "I missed a lecture, so I have to [make up] that content too." },
-        { "speaker": "Fatima", "text": "Once exams are over, we should [take off] a few days to relax!" }
+        {
+          "speaker": "Carlos",
+          "text": "I need to [brush up (on)] chemistry before the exam."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Me too! Let's [read up (on/about)] the difficult chapters together."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Good idea. I can barely [keep up] with the course material."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Don't worry. You'll [pick up] the concepts with more practice."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "I missed a lecture, so I have to [make up] that content too."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Once exams are over, we should [take off] a few days to relax!"
+        }
       ]
     }
   ]

@@ -45,7 +45,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The CEO has been ___ the company's innovative approach to attract venture capital.",
-      "options": ["building up", "buying off", "drumming up", "buying out"],
+      "options": [
+        "building up",
+        "buying off",
+        "drumming up",
+        "buying out"
+      ],
       "correct": "building up",
       "explanation": "'Build up' means to promote something positively to impress others."
     },
@@ -59,7 +64,12 @@
     {
       "type": "multiple-choice",
       "sentence": "When the partnership dissolved, one founder had to ___ the other to maintain control.",
-      "options": ["buy out", "buy off", "build up", "drum up"],
+      "options": [
+        "buy out",
+        "buy off",
+        "build up",
+        "drum up"
+      ],
       "correct": "buy out",
       "explanation": "'Buy out' means to purchase a partner's share to gain full ownership."
     },
@@ -73,7 +83,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Critics suggested that the positive media coverage was designed to ___ the stock price.",
-      "options": ["build up", "drum up", "buy out", "buy off"],
+      "options": [
+        "build up",
+        "drum up",
+        "buy out",
+        "buy off"
+      ],
       "correct": "build up",
       "explanation": "'Build up' refers to promoting something to create a positive impression."
     },
@@ -87,7 +102,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The sales team was struggling to ___ new clients in such a saturated market.",
-      "options": ["drum up", "build up", "buy off", "buy out"],
+      "options": [
+        "drum up",
+        "build up",
+        "buy off",
+        "buy out"
+      ],
       "correct": "drum up",
       "explanation": "'Drum up' means to try to generate business or support."
     },
@@ -103,23 +123,59 @@
     {
       "title": "Strategic Business Discussion",
       "lines": [
-        { "speaker": "Emma", "text": "Have you heard? The board is considering a proposal to [buy out] our main competitor." },
-        { "speaker": "James", "text": "That's ambitious. They'll need to [build up] substantial investor confidence first." },
-        { "speaker": "Emma", "text": "Apparently, they've already started [drumming up] support among the major shareholders." },
-        { "speaker": "James", "text": "I hope they're not trying to [buy off] anyone to push this through." },
-        { "speaker": "Emma", "text": "The legal team assures me everything is above board. They've been [building up] the case for months." },
-        { "speaker": "James", "text": "Still, if the deal falls through, it could damage our reputation after all this [building up]." }
+        {
+          "speaker": "Emma",
+          "text": "Have you heard? The board is considering a proposal to [buy out] our main competitor."
+        },
+        {
+          "speaker": "James",
+          "text": "That's ambitious. They'll need to [build up] substantial investor confidence first."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Apparently, they've already started [drum up] support among the major shareholders."
+        },
+        {
+          "speaker": "James",
+          "text": "I hope they're not trying to [buy off] anyone to push this through."
+        },
+        {
+          "speaker": "Emma",
+          "text": "The legal team assures me everything is above board. They've been [build up] the case for months."
+        },
+        {
+          "speaker": "James",
+          "text": "Still, if the deal falls through, it could damage our reputation after all this [build up]."
+        }
       ]
     },
     {
       "title": "Partnership Negotiations",
       "lines": [
-        { "speaker": "Carlos", "text": "I've decided to [buy out] my business partner. Our visions have diverged completely." },
-        { "speaker": "Priya", "text": "That's a significant decision. Have you [drummed up] enough capital for the acquisition?" },
-        { "speaker": "Carlos", "text": "The bank has been [building up] to approve the loan. I'm cautiously optimistic." },
-        { "speaker": "Priya", "text": "Just ensure there's no perception that you're trying to [buy off] anyone in the process." },
-        { "speaker": "Carlos", "text": "Absolutely. I want this transition to be entirely transparent and professional." },
-        { "speaker": "Priya", "text": "Once you've [bought out] the partnership, we can [drum up] new investment together." }
+        {
+          "speaker": "Carlos",
+          "text": "I've decided to [buy out] my business partner. Our visions have diverged completely."
+        },
+        {
+          "speaker": "Priya",
+          "text": "That's a significant decision. Have you [drum up] enough capital for the acquisition?"
+        },
+        {
+          "speaker": "Carlos",
+          "text": "The bank has been [build up] to approve the loan. I'm cautiously optimistic."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Just ensure there's no perception that you're trying to [buy off] anyone in the process."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Absolutely. I want this transition to be entirely transparent and professional."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Once you've [buy out] the partnership, we can [drum up] new investment together."
+        }
       ]
     }
   ]

@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The company is ___ a new line of electric vehicles next year.",
-      "options": ["bringing out", "building up", "buying up", "closing up"],
+      "options": [
+        "bringing out",
+        "building up",
+        "buying up",
+        "closing up"
+      ],
       "correct": "bringing out",
       "explanation": "'Bring out' means to produce and release a new product."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Investors are ___ real estate across the country.",
-      "options": ["buying up", "bringing out", "kicking off", "carrying over"],
+      "options": [
+        "buying up",
+        "bringing out",
+        "kicking off",
+        "carrying over"
+      ],
       "correct": "buying up",
       "explanation": "'Buy up' means to purchase large amounts of something."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The event will ___ with a welcome reception.",
-      "options": ["kick off", "close up", "build up", "bring out"],
+      "options": [
+        "kick off",
+        "close up",
+        "build up",
+        "bring out"
+      ],
       "correct": "kick off",
       "explanation": "'Kick off' means to begin or start something."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Competition ___ the best in creative teams.",
-      "options": ["brings out", "buys up", "kicks off", "closes up"],
+      "options": [
+        "brings out",
+        "buys up",
+        "kicks off",
+        "closes up"
+      ],
       "correct": "brings out",
       "explanation": "'Bring out' can also mean to reveal or show a quality."
     },
@@ -121,23 +141,59 @@
     {
       "title": "Business Strategy Meeting",
       "lines": [
-        { "speaker": "Chen", "text": "Let's [kick off] with last quarter's performance review." },
-        { "speaker": "Maria", "text": "Good idea. We've really [built up] our market share this year." },
-        { "speaker": "Chen", "text": "Yes, and we're [bringing out] two new products next month." },
-        { "speaker": "Maria", "text": "I've heard competitors are [buying up] smaller firms in our sector." },
-        { "speaker": "Chen", "text": "We should discuss whether to [carry over] any budget surplus." },
-        { "speaker": "Maria", "text": "Let's finish by five—I need to [close up] the branch office today." }
+        {
+          "speaker": "Chen",
+          "text": "Let's [kick off (with)] last quarter's performance review."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Good idea. We've really [build up] our market share this year."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Yes, and we're [bring out] two new products next month."
+        },
+        {
+          "speaker": "Maria",
+          "text": "I've heard competitors are [buy up] smaller firms in our sector."
+        },
+        {
+          "speaker": "Chen",
+          "text": "We should discuss whether to [carry over] any budget surplus."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Let's finish by five—I need to [close up] the branch office today."
+        }
       ]
     },
     {
       "title": "Product Launch Planning",
       "lines": [
-        { "speaker": "Oliver", "text": "When are we [bringing out] the new software version?" },
-        { "speaker": "Clara", "text": "We're hoping to [kick off] beta testing in two weeks." },
-        { "speaker": "Oliver", "text": "We've [built up] a lot of anticipation among our users." },
-        { "speaker": "Clara", "text": "Some investors have been [buying up] shares ahead of the launch." },
-        { "speaker": "Oliver", "text": "That's positive. Can we [carry over] the momentum into Q4?" },
-        { "speaker": "Clara", "text": "If we plan carefully. Now let's [close up] this meeting and get to work." }
+        {
+          "speaker": "Oliver",
+          "text": "When are we [bring out] the new software version?"
+        },
+        {
+          "speaker": "Clara",
+          "text": "We're hoping to [kick off (with)] beta testing in two weeks."
+        },
+        {
+          "speaker": "Oliver",
+          "text": "We've [build up] a lot of anticipation among our users."
+        },
+        {
+          "speaker": "Clara",
+          "text": "Some investors have been [buy up] shares ahead of the launch."
+        },
+        {
+          "speaker": "Oliver",
+          "text": "That's positive. Can we [carry over] the momentum into Q4?"
+        },
+        {
+          "speaker": "Clara",
+          "text": "If we plan carefully. Now let's [close up] this meeting and get to work."
+        }
       ]
     }
   ]

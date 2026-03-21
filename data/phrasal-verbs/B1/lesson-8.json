@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "She ___ ___ shapes from coloured paper for the decoration.",
-      "options": ["cut out", "put in", "set up", "knocked down"],
+      "options": [
+        "cut out",
+        "put in",
+        "set up",
+        "knocked down"
+      ],
       "correct": "cut out",
       "explanation": "'Cut out' means to remove by cutting."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "We're having a new bathroom ___ ___ next week.",
-      "options": ["put in", "put up", "set up", "cut out"],
+      "options": [
+        "put in",
+        "put up",
+        "set up",
+        "cut out"
+      ],
       "correct": "put in",
       "explanation": "'Put in' means to install equipment or fixtures."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The neighbours ___ ___ a new fence last weekend.",
-      "options": ["put up", "set up", "cut out", "put in"],
+      "options": [
+        "put up",
+        "set up",
+        "cut out",
+        "put in"
+      ],
       "correct": "put up",
       "explanation": "'Put up' means to build a structure like a fence or wall."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "They ___ ___ the old factory to make way for new houses.",
-      "options": ["tore down", "put in", "put together", "set up"],
+      "options": [
+        "tore down",
+        "put in",
+        "put together",
+        "set up"
+      ],
       "correct": "tore down",
       "explanation": "'Tear down' means to destroy or demolish a building."
     },
@@ -121,24 +141,63 @@
     {
       "title": "Home Renovation",
       "lines": [
-        { "speaker": "James", "text": "We're finally going to [put in] a new kitchen!" },
-        { "speaker": "Sarah", "text": "That's exciting! Are you going to [knock down] any walls?" },
-        { "speaker": "James", "text": "Yes, we'll [tear down] the wall between the kitchen and dining room." },
-        { "speaker": "Sarah", "text": "Nice! Will you [put up] new cabinets yourself?" },
-        { "speaker": "James", "text": "I'll try. Last time I [put together] a bookshelf, it took ages." },
-        { "speaker": "Sarah", "text": "Ha! Just make sure to [cut out] the measurements correctly." }
+        {
+          "speaker": "James",
+          "text": "We're finally going to [put in] a new kitchen!"
+        },
+        {
+          "speaker": "Sarah",
+          "text": "That's exciting! Are you going to [knock/pull/tear down] any walls?"
+        },
+        {
+          "speaker": "James",
+          "text": "Yes, we'll [knock/pull/tear down] the wall between the kitchen and dining room."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "Nice! Will you [put up] new cabinets yourself?"
+        },
+        {
+          "speaker": "James",
+          "text": "I'll try. Last time I [put together] a bookshelf, it took ages."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "Ha! Just make sure to [cut out] the measurements correctly."
+        }
       ]
     },
     {
       "title": "Garden Project",
       "lines": [
-        { "speaker": "Carlos", "text": "I want to [put up] a new garden shed this weekend." },
-        { "speaker": "Fatima", "text": "That sounds like a big job. First, you'll need to [set up] the base." },
-        { "speaker": "Carlos", "text": "Right. And I'll have to [pull down] the old one first." },
-        { "speaker": "Fatima", "text": "Do you need to [cut out] any panels for windows?" },
-        { "speaker": "Carlos", "text": "Yes, I'll [cut out] spaces for two windows." },
-        { "speaker": "Fatima", "text": "Once you [put together] the frame, I can help with the roof." },
-        { "speaker": "Carlos", "text": "Perfect! We might even [put in] electricity later." }
+        {
+          "speaker": "Carlos",
+          "text": "I want to [put up] a new garden shed this weekend."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "That sounds like a big job. First, you'll need to [set up] the base."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Right. And I'll have to [knock/pull/tear down] the old one first."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Do you need to [cut out] any panels for windows?"
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Yes, I'll [cut out] spaces for two windows."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Once you [put together] the frame, I can help with the roof."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Perfect! We might even [put in] electricity later."
+        }
       ]
     }
   ]

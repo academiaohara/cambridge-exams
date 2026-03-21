@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The experimental data ___ the theoretical predictions made earlier.",
-      "options": ["bore out", "drew on", "fleshed out", "ironed out"],
+      "options": [
+        "bore out",
+        "drew on",
+        "fleshed out",
+        "ironed out"
+      ],
       "correct": "bore out",
       "explanation": "'Bear out' means to prove or confirm that something is true."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The concept is sound, but we need to ___ the operational details.",
-      "options": ["flesh out", "bear out", "pin down", "round off"],
+      "options": [
+        "flesh out",
+        "bear out",
+        "pin down",
+        "round off"
+      ],
       "correct": "flesh out",
       "explanation": "'Flesh out' means to add more details to develop an idea fully."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I've been trying to ___ her ___ on a commitment date for months.",
-      "options": ["pin down", "bear out", "flesh out", "round off"],
+      "options": [
+        "pin down",
+        "bear out",
+        "flesh out",
+        "round off"
+      ],
       "correct": "pin down",
       "explanation": "'Pin down' means to get someone to commit to specifics or a decision."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The longitudinal study has ___ the correlation between these variables.",
-      "options": ["borne out", "drawn on", "pinned down", "rounded off"],
+      "options": [
+        "borne out",
+        "drawn on",
+        "pinned down",
+        "rounded off"
+      ],
       "correct": "borne out",
       "explanation": "'Bear out' means to confirm or substantiate something with evidence."
     },
@@ -121,24 +141,63 @@
     {
       "title": "Research Collaboration",
       "lines": [
-        { "speaker": "Emma", "text": "The preliminary results seem promising. Have they [borne out] your original hypothesis?" },
-        { "speaker": "Carlos", "text": "Largely, yes. I've been [drawing on] data from three separate longitudinal studies." },
-        { "speaker": "Emma", "text": "Excellent. You'll need to [flesh out] the methodology section before peer review." },
-        { "speaker": "Carlos", "text": "Agreed. I also need to [iron out] some statistical inconsistencies in the appendix." },
-        { "speaker": "Emma", "text": "Have you been able to [pin down] a publication timeline with the journal editor?" },
-        { "speaker": "Carlos", "text": "Not yet, but I hope to [round off] the revisions by the end of the month." }
+        {
+          "speaker": "Emma",
+          "text": "The preliminary results seem promising. Have they [bear out] your original hypothesis?"
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Largely, yes. I've been [draw on] data from three separate longitudinal studies."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Excellent. You'll need to [flesh out] the methodology section before peer review."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Agreed. I also need to [iron out] some statistical inconsistencies in the appendix."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Have you been able to [pin down] a publication timeline with the journal editor?"
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Not yet, but I hope to [round off] the revisions by the end of the month."
+        }
       ]
     },
     {
       "title": "Project Management Meeting",
       "lines": [
-        { "speaker": "Sophie", "text": "We need to [flesh out] the implementation roadmap before the stakeholder presentation." },
-        { "speaker": "Alex", "text": "I can [draw on] similar projects I managed to provide realistic timelines." },
-        { "speaker": "Sophie", "text": "Good. We also need to [iron out] the budget allocation discrepancies." },
-        { "speaker": "Alex", "text": "I've been trying to [pin down] the finance department, but they're being evasive." },
-        { "speaker": "Sophie", "text": "The pilot phase has [borne out] our concerns about resource constraints." },
-        { "speaker": "Alex", "text": "Let's [round off] this meeting with clear action items for everyone." },
-        { "speaker": "Sophie", "text": "Agreed. [Drawing on] lessons learned will be essential for phase two." }
+        {
+          "speaker": "Sophie",
+          "text": "We need to [flesh out] the implementation roadmap before the stakeholder presentation."
+        },
+        {
+          "speaker": "Alex",
+          "text": "I can [draw on] similar projects I managed to provide realistic timelines."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Good. We also need to [iron out] the budget allocation discrepancies."
+        },
+        {
+          "speaker": "Alex",
+          "text": "I've been trying to [pin down] the finance department, but they're being evasive."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "The pilot phase has [bear out] our concerns about resource constraints."
+        },
+        {
+          "speaker": "Alex",
+          "text": "Let's [round off] this meeting with clear action items for everyone."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Agreed. [draw on] lessons learned will be essential for phase two."
+        }
       ]
     }
   ]

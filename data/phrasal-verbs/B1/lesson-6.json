@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Remember to ___ ___ your documents before closing the program.",
-      "options": ["back up", "key in", "set up", "switch on"],
+      "options": [
+        "back up",
+        "key in",
+        "set up",
+        "switch on"
+      ],
       "correct": "back up",
       "explanation": "'Back up' means to make a copy of data for safety."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The IT department will ___ ___ the new computers tomorrow.",
-      "options": ["set up", "back up", "test out", "switch off"],
+      "options": [
+        "set up",
+        "back up",
+        "test out",
+        "switch off"
+      ],
       "correct": "set up",
       "explanation": "'Set up' means to make equipment ready for use."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Let's ___ ___ the new printer before we buy more.",
-      "options": ["test out", "set up", "back up", "key in"],
+      "options": [
+        "test out",
+        "set up",
+        "back up",
+        "key in"
+      ],
       "correct": "test out",
       "explanation": "'Test out' means to try something to see if it works correctly."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I always ___ ___ my photos to an external hard drive.",
-      "options": ["back up", "set up", "key in", "test out"],
+      "options": [
+        "back up",
+        "set up",
+        "key in",
+        "test out"
+      ],
       "correct": "back up",
       "explanation": "'Back up' means to create a copy of your data."
     },
@@ -112,23 +132,59 @@
     {
       "title": "New Computer Setup",
       "lines": [
-        { "speaker": "Dan", "text": "I just got a new laptop. Can you help me [set up] the software?" },
-        { "speaker": "Priya", "text": "Sure! First, [switch on] the computer and wait for it to start." },
-        { "speaker": "Dan", "text": "Done. Now what? I need to [key in] something." },
-        { "speaker": "Priya", "text": "Yes, [key in] your email to create an account." },
-        { "speaker": "Dan", "text": "Great. Should I also [back up] my old files to this computer?" },
-        { "speaker": "Priya", "text": "Definitely! Let's [test out] the transfer speed first." }
+        {
+          "speaker": "Dan",
+          "text": "I just got a new laptop. Can you help me [set up] the software?"
+        },
+        {
+          "speaker": "Priya",
+          "text": "Sure! First, [switch on/off] the computer and wait for it to start."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Done. Now what? I need to [key in] something."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Yes, [key in] your email to create an account."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Great. Should I also [back up] my old files to this computer?"
+        },
+        {
+          "speaker": "Priya",
+          "text": "Definitely! Let's [test out] the transfer speed first."
+        }
       ]
     },
     {
       "title": "IT Support",
       "lines": [
-        { "speaker": "Chen", "text": "My computer won't start. I've tried to [switch it on] but nothing happens." },
-        { "speaker": "Maria", "text": "Have you tried [switching it off] and on again?" },
-        { "speaker": "Chen", "text": "Yes, multiple times. I hope I didn't lose my work. I forgot to [back up] my files." },
-        { "speaker": "Maria", "text": "Let me [test out] a different power cable." },
-        { "speaker": "Chen", "text": "Thanks. Do I need to [key in] my password again after this?" },
-        { "speaker": "Maria", "text": "Yes, once we [set up] the connection, you'll need to log in again." }
+        {
+          "speaker": "Chen",
+          "text": "My computer won't start. I've tried to [switch on/off] it but nothing happens."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Have you tried [switch on/off] it and on again?"
+        },
+        {
+          "speaker": "Chen",
+          "text": "Yes, multiple times. I hope I didn't lose my work. I forgot to [back up] my files."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Let me [test out] a different power cable."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Thanks. Do I need to [key in] my password again after this?"
+        },
+        {
+          "speaker": "Maria",
+          "text": "Yes, once we [set up] the connection, you'll need to log in again."
+        }
       ]
     }
   ]

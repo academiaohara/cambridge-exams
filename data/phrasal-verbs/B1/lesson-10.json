@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I ___ ___ my old teacher at the shopping centre yesterday.",
-      "options": ["bumped into", "crowded around", "fell behind", "moved over"],
+      "options": [
+        "bumped into",
+        "crowded around",
+        "fell behind",
+        "moved over"
+      ],
       "correct": "bumped into",
       "explanation": "'Bump into' means to meet someone unexpectedly."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Don't ___ ___! We need to stay with the group.",
-      "options": ["fall behind", "bump into", "move over", "get into"],
+      "options": [
+        "fall behind",
+        "bump into",
+        "move over",
+        "get into"
+      ],
       "correct": "fall behind",
       "explanation": "'Fall behind' means to move slower than others and end up behind them."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Could you ___ ___ a bit? I need more space.",
-      "options": ["move over", "bump into", "crowd around", "fall behind"],
+      "options": [
+        "move over",
+        "bump into",
+        "crowd around",
+        "fall behind"
+      ],
       "correct": "move over",
       "explanation": "'Move over' means to change position to make room for someone."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The bus ___ ___ the station at 3 p.m.",
-      "options": ["gets into", "bumps into", "falls behind", "crowds around"],
+      "options": [
+        "gets into",
+        "bumps into",
+        "falls behind",
+        "crowds around"
+      ],
       "correct": "gets into",
       "explanation": "'Get into' means to arrive at a destination."
     },
@@ -112,23 +132,59 @@
     {
       "title": "At the Train Station",
       "lines": [
-        { "speaker": "Sophie", "text": "What time does your train [get into] Manchester?" },
-        { "speaker": "Alex", "text": "It should [get into] the station around 4 p.m." },
-        { "speaker": "Sophie", "text": "Can you [move over] so I can see the departure board?" },
-        { "speaker": "Alex", "text": "Sure! Oh look, people are [crowding around] that platform." },
-        { "speaker": "Sophie", "text": "Probably a delay. Try not to [fall behind] when we run for the train." },
-        { "speaker": "Alex", "text": "I won't! Oh, I just [bumped into] my old colleague over there!" }
+        {
+          "speaker": "Sophie",
+          "text": "What time does your train [get into] Manchester?"
+        },
+        {
+          "speaker": "Alex",
+          "text": "It should [get into] the station around 4 p.m."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Can you [move over] so I can see the departure board?"
+        },
+        {
+          "speaker": "Alex",
+          "text": "Sure! Oh look, people are [crowd around] that platform."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Probably a delay. Try not to [fall behind] when we run for the train."
+        },
+        {
+          "speaker": "Alex",
+          "text": "I won't! Oh, I just [bump into] my old colleague over there!"
+        }
       ]
     },
     {
       "title": "A Busy Event",
       "lines": [
-        { "speaker": "Chen", "text": "This concert is so crowded! People are [crowding around] the stage." },
-        { "speaker": "Fatima", "text": "Can we [move over] to get a better view?" },
-        { "speaker": "Chen", "text": "Let's try. Just don't [fall behind]—I don't want to lose you." },
-        { "speaker": "Fatima", "text": "Okay. Oh no, I just [bumped into] someone! Sorry!" },
-        { "speaker": "Chen", "text": "Be careful! What time does the last bus [get into] our area?" },
-        { "speaker": "Fatima", "text": "Around midnight. We should leave before the crowd [bumps into] us on the way out." }
+        {
+          "speaker": "Chen",
+          "text": "This concert is so crowded! People are [crowd around] the stage."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Can we [move over] to get a better view?"
+        },
+        {
+          "speaker": "Chen",
+          "text": "Let's try. Just don't [fall behind]—I don't want to lose you."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Okay. Oh no, I just [bump into] someone! Sorry!"
+        },
+        {
+          "speaker": "Chen",
+          "text": "Be careful! What time does the last bus [get into] our area?"
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Around midnight. We should leave before the crowd [bump into] us on the way out."
+        }
       ]
     }
   ]

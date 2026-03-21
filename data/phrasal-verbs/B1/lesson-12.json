@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Be careful! The coffee is very hot. Let it ___ ___.",
-      "options": ["cool down", "heat up", "warm up", "dry up"],
+      "options": [
+        "cool down",
+        "heat up",
+        "warm up",
+        "dry up"
+      ],
       "correct": "cool down",
       "explanation": "'Cool down' means to become less hot."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Can you ___ ___ the pizza in the microwave?",
-      "options": ["heat up", "cool down", "water down", "dry up"],
+      "options": [
+        "heat up",
+        "cool down",
+        "water down",
+        "dry up"
+      ],
       "correct": "heat up",
       "explanation": "'Heat up' means to make something hot."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "This sauce is too thick. I need to ___ it ___.",
-      "options": ["water down", "heat up", "cool down", "dry up"],
+      "options": [
+        "water down",
+        "heat up",
+        "cool down",
+        "dry up"
+      ],
       "correct": "water down",
       "explanation": "'Water down' means to dilute by adding water."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The athletes need to ___ ___ before the match.",
-      "options": ["warm up", "heat up", "dry up", "cool down"],
+      "options": [
+        "warm up",
+        "heat up",
+        "dry up",
+        "cool down"
+      ],
       "correct": "warm up",
       "explanation": "'Warm up' also means to prepare for exercise."
     },
@@ -112,24 +132,63 @@
     {
       "title": "In the Kitchen",
       "lines": [
-        { "speaker": "Sophie", "text": "Can you [heat up] the soup while I make the salad?" },
-        { "speaker": "Miguel", "text": "Sure! Should I also [warm up] the bread?" },
-        { "speaker": "Sophie", "text": "Yes, please. But let the soup [cool down] a bit before serving." },
-        { "speaker": "Miguel", "text": "Okay. This juice seems strong—should I [water it down]?" },
-        { "speaker": "Sophie", "text": "Yes, add some water. Leave the herbs on the counter to [dry up]." },
-        { "speaker": "Miguel", "text": "Got it! Dinner will be ready soon." }
+        {
+          "speaker": "Sophie",
+          "text": "Can you [heat up] the soup while I make the salad?"
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Sure! Should I also [warm up] the bread?"
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Yes, please. But let the soup [cool down] a bit before serving."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Okay. This juice seems strong—should I [water down] it?"
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Yes, add some water. Leave the herbs on the counter to [dry up]."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Got it! Dinner will be ready soon."
+        }
       ]
     },
     {
       "title": "Hot Weather",
       "lines": [
-        { "speaker": "Chen", "text": "It's so hot today! I need to [cool down] with something cold." },
-        { "speaker": "Fatima", "text": "Me too. Let me [warm up] some iced tea for us." },
-        { "speaker": "Chen", "text": "You mean [heat up]? We want it cold, not hot!" },
-        { "speaker": "Fatima", "text": "Ha! You're right. I'll just [water down] the lemonade instead." },
-        { "speaker": "Chen", "text": "Perfect. The garden is really [drying up] in this heat." },
-        { "speaker": "Fatima", "text": "True. Let's wait until the evening when it [cools down] to water the plants." },
-        { "speaker": "Chen", "text": "Good idea. The weather should [cool down] after sunset." }
+        {
+          "speaker": "Chen",
+          "text": "It's so hot today! I need to [cool down] with something cold."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Me too. Let me [warm up] some iced tea for us."
+        },
+        {
+          "speaker": "Chen",
+          "text": "You mean [heat up]? We want it cold, not hot!"
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Ha! You're right. I'll just [water down] the lemonade instead."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Perfect. The garden is really [dry up] in this heat."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "True. Let's wait until the evening when it [cool down] to water the plants."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Good idea. The weather should [cool down] after sunset."
+        }
       ]
     }
   ]

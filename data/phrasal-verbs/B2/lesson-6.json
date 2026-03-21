@@ -72,7 +72,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The new mayor ___ after a closely contested election.",
-      "options": ["got in", "knocked off", "set out", "stepped aside"],
+      "options": [
+        "got in",
+        "knocked off",
+        "set out",
+        "stepped aside"
+      ],
       "correct": "got in",
       "explanation": "'Get in' means to be elected to a position."
     },
@@ -86,7 +91,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The construction crew ___ at sunset every day.",
-      "options": ["knock off", "press on", "take on", "get in"],
+      "options": [
+        "knock off",
+        "press on",
+        "take on",
+        "get in"
+      ],
       "correct": "knock off",
       "explanation": "'Knock off' means to stop working for the day."
     },
@@ -100,7 +110,12 @@
     {
       "type": "multiple-choice",
       "sentence": "She ___ to become the youngest CEO in the company's history.",
-      "options": ["set out", "stepped aside", "knocked off", "got in"],
+      "options": [
+        "set out",
+        "stepped aside",
+        "knocked off",
+        "got in"
+      ],
       "correct": "set out",
       "explanation": "'Set out' means to start working towards a goal."
     },
@@ -114,7 +129,12 @@
     {
       "type": "multiple-choice",
       "sentence": "We're ___ three new interns this summer.",
-      "options": ["taking on", "pressing ahead", "setting out", "getting off"],
+      "options": [
+        "taking on",
+        "pressing ahead",
+        "setting out",
+        "getting off"
+      ],
       "correct": "taking on",
       "explanation": "'Take on' means to employ someone or accept responsibility."
     },
@@ -130,23 +150,59 @@
     {
       "title": "Political Discussion",
       "lines": [
-        { "speaker": "Miguel", "text": "Do you think the independent candidate will [get in]?" },
-        { "speaker": "Sophie", "text": "It's possible. The current leader might [step aside] soon." },
-        { "speaker": "Miguel", "text": "The opposition has [set out] to win back public trust." },
-        { "speaker": "Sophie", "text": "They're [pressing ahead] despite low poll numbers." },
-        { "speaker": "Miguel", "text": "Well, I'm going to [knock off] now and watch the debate." },
-        { "speaker": "Sophie", "text": "Lucky you—I don't [get off] until eight tonight." }
+        {
+          "speaker": "Miguel",
+          "text": "Do you think the independent candidate will [get in]?"
+        },
+        {
+          "speaker": "Sophie",
+          "text": "It's possible. The current leader might [step aside] soon."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "The opposition has [set out] to win back public trust."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "They're [press ahead/on (with)] despite low poll numbers."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Well, I'm going to [knock off] now and watch the debate."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Lucky you—I don't [get off] until eight tonight."
+        }
       ]
     },
     {
       "title": "New Job Responsibilities",
       "lines": [
-        { "speaker": "Alex", "text": "I heard the department is [taking on] new staff." },
-        { "speaker": "Fatima", "text": "Yes, we're [setting out] to expand operations significantly." },
-        { "speaker": "Alex", "text": "That means we'll need to [press on] with training programmes." },
-        { "speaker": "Fatima", "text": "The previous manager [stepped aside] last month, you know." },
-        { "speaker": "Alex", "text": "I know. What time do you [knock off] today?" },
-        { "speaker": "Fatima", "text": "I'm hoping to [get off] by six if I finish this report." }
+        {
+          "speaker": "Alex",
+          "text": "I heard the department is [take on] new staff."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Yes, we're [set out] to expand operations significantly."
+        },
+        {
+          "speaker": "Alex",
+          "text": "That means we'll need to [press ahead/on (with)] training programmes."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "The previous manager [step aside] last month, you know."
+        },
+        {
+          "speaker": "Alex",
+          "text": "I know. What time do you [knock off] today?"
+        },
+        {
+          "speaker": "Fatima",
+          "text": "I'm hoping to [get off] by six if I finish this report."
+        }
       ]
     }
   ]

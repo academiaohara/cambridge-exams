@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The new social media platform ___ very quickly among teenagers.",
-      "options": ["caught on", "made out", "mulled over", "pieced together"],
+      "options": [
+        "caught on",
+        "made out",
+        "mulled over",
+        "pieced together"
+      ],
       "correct": "caught on",
       "explanation": "'Catch on' means to become popular or fashionable."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I couldn't ___ what the sign said from this distance.",
-      "options": ["make out", "catch on", "mull over", "cotton on"],
+      "options": [
+        "make out",
+        "catch on",
+        "mull over",
+        "cotton on"
+      ],
       "correct": "make out",
       "explanation": "'Make out' means to see or understand something with difficulty."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The historian ___ the story from old letters and documents.",
-      "options": ["pieced together", "caught on", "made out", "cottoned on"],
+      "options": [
+        "pieced together",
+        "caught on",
+        "made out",
+        "cottoned on"
+      ],
       "correct": "pieced together",
       "explanation": "'Piece together' means to understand something by combining separate information."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "He ___ that he knew nothing about it, but I didn't believe him.",
-      "options": ["made out", "mulled over", "pieced together", "caught on"],
+      "options": [
+        "made out",
+        "mulled over",
+        "pieced together",
+        "caught on"
+      ],
       "correct": "made out",
       "explanation": "'Make out' can mean to suggest or imply something."
     },
@@ -112,22 +132,55 @@
     {
       "title": "Understanding the Mystery",
       "lines": [
-        { "speaker": "Alex", "text": "Have you managed to [piece together] what happened at the event?" },
-        { "speaker": "Fatima", "text": "Not entirely. I couldn't [make out] most of the audio recording." },
-        { "speaker": "Alex", "text": "It took me a while to [cotton on] to what the witnesses were saying." },
-        { "speaker": "Fatima", "text": "I've been [mulling over] the inconsistencies in their stories." },
-        { "speaker": "Alex", "text": "Once the pattern [catches on] in your mind, everything makes sense." },
-        { "speaker": "Fatima", "text": "Let me [mull over] this some more before we draw any conclusions." }
+        {
+          "speaker": "Alex",
+          "text": "Have you managed to [piece together] what happened at the event?"
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Not entirely. I couldn't [make out] most of the audio recording."
+        },
+        {
+          "speaker": "Alex",
+          "text": "It took me a while to [cotton on] to what the witnesses were saying."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "I've been [mull over] the inconsistencies in their stories."
+        },
+        {
+          "speaker": "Alex",
+          "text": "Once the pattern [catch on] in your mind, everything makes sense."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Let me [mull over] this some more before we draw any conclusions."
+        }
       ]
     },
     {
       "title": "New Technology Trends",
       "lines": [
-        { "speaker": "Chen", "text": "This new app has really [caught on] with our target audience." },
-        { "speaker": "Maria", "text": "I didn't understand it at first, but I eventually [cottoned on]." },
-        { "speaker": "Chen", "text": "Some users [made out] that it was difficult to use initially." },
-        { "speaker": "Maria", "text": "We [pieced together] user feedback to improve the interface." },
-        { "speaker": "Chen", "text": "Good. Let's [mull over] the next update before launching." }
+        {
+          "speaker": "Chen",
+          "text": "This new app has really [catch on] with our target audience."
+        },
+        {
+          "speaker": "Maria",
+          "text": "I didn't understand it at first, but I eventually [cotton on]."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Some users [make out] that it was difficult to use initially."
+        },
+        {
+          "speaker": "Maria",
+          "text": "We [piece together] user feedback to improve the interface."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Good. Let's [mull over] the next update before launching."
+        }
       ]
     }
   ]

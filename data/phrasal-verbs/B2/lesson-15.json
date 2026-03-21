@@ -72,7 +72,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The doctor recommended that he ___ processed foods.",
-      "options": ["cut out", "go off", "fade away", "liven up"],
+      "options": [
+        "cut out",
+        "go off",
+        "fade away",
+        "liven up"
+      ],
       "correct": "cut out",
       "explanation": "'Cut out' means to stop consuming something unhealthy."
     },
@@ -86,7 +91,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The gloomy weather has really been ___ me ___.",
-      "options": ["getting down", "going off", "livening up", "summing up"],
+      "options": [
+        "getting down",
+        "going off",
+        "livening up",
+        "summing up"
+      ],
       "correct": "getting down",
       "explanation": "'Get down' means to make someone feel sad or depressed."
     },
@@ -100,7 +110,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Let's add some decorations to ___ this room.",
-      "options": ["liven up", "cut out", "while away", "fade away"],
+      "options": [
+        "liven up",
+        "cut out",
+        "while away",
+        "fade away"
+      ],
       "correct": "liven up",
       "explanation": "'Liven up' means to make something more interesting or exciting."
     },
@@ -114,7 +129,12 @@
     {
       "type": "multiple-choice",
       "sentence": "They ___ the afternoon at the café, chatting and people-watching.",
-      "options": ["whiled away", "cut out", "got down", "faded away"],
+      "options": [
+        "whiled away",
+        "cut out",
+        "got down",
+        "faded away"
+      ],
       "correct": "whiled away",
       "explanation": "'While away' means to spend time in a relaxed, leisurely manner."
     },
@@ -130,23 +150,59 @@
     {
       "title": "Health Changes",
       "lines": [
-        { "speaker": "Priya", "text": "I've decided to [cut out] junk food from my diet." },
-        { "speaker": "Dan", "text": "Good idea. Have you [gone off] any particular foods?" },
-        { "speaker": "Priya", "text": "Yes, I've [gone off] pizza—it used to be my favourite." },
-        { "speaker": "Dan", "text": "Don't let the cravings [get you down]. They'll [fade away]." },
-        { "speaker": "Priya", "text": "I'm trying to [summon up] the motivation to exercise more." },
-        { "speaker": "Dan", "text": "That should [liven up] your energy levels too." }
+        {
+          "speaker": "Priya",
+          "text": "I've decided to [cut out] junk food from my diet."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Good idea. Have you [go off] any particular foods?"
+        },
+        {
+          "speaker": "Priya",
+          "text": "Yes, I've [go off] pizza—it used to be my favourite."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Don't let the cravings [get down] you. They'll [fade away]."
+        },
+        {
+          "speaker": "Priya",
+          "text": "I'm trying to [summon up] the motivation to exercise more."
+        },
+        {
+          "speaker": "Dan",
+          "text": "That should [liven up] your energy levels too."
+        }
       ]
     },
     {
       "title": "Relaxing Weekend",
       "lines": [
-        { "speaker": "Miguel", "text": "How do you plan to spend the holiday?" },
-        { "speaker": "Sophie", "text": "I'm just going to [while away] the time at the cottage." },
-        { "speaker": "Miguel", "text": "Sounds peaceful. The city noise can really [get you down]." },
-        { "speaker": "Sophie", "text": "Exactly. I hope my stress will [fade away] by the river." },
-        { "speaker": "Miguel", "text": "Will anything [liven up] the evenings there?" },
-        { "speaker": "Sophie", "text": "Maybe I'll [summon up] the energy for some hiking." }
+        {
+          "speaker": "Miguel",
+          "text": "How do you plan to spend the holiday?"
+        },
+        {
+          "speaker": "Sophie",
+          "text": "I'm just going to [while away] the time at the cottage."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Sounds peaceful. The city noise can really [get down] you."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Exactly. I hope my stress will [fade away] by the river."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Will anything [liven up] the evenings there?"
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Maybe I'll [summon up] the energy for some hiking."
+        }
       ]
     }
   ]

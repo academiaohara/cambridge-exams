@@ -81,7 +81,12 @@
     {
       "type": "multiple-choice",
       "sentence": "All the small purchases ___ a surprisingly large amount.",
-      "options": ["add up to", "cancel out", "mount up", "pay out"],
+      "options": [
+        "add up to",
+        "cancel out",
+        "mount up",
+        "pay out"
+      ],
       "correct": "add up to",
       "explanation": "'Add up to' means to amount to a total."
     },
@@ -95,7 +100,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The department has ___ impressive sales figures this quarter.",
-      "options": ["clocked up", "clubbed together", "cut back", "tided over"],
+      "options": [
+        "clocked up",
+        "clubbed together",
+        "cut back",
+        "tided over"
+      ],
       "correct": "clocked up",
       "explanation": "'Clock up' means to achieve or accumulate a particular amount."
     },
@@ -109,7 +119,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Due to the recession, we've had to ___ on non-essential expenses.",
-      "options": ["cut back", "pay out", "clock up", "add up to"],
+      "options": [
+        "cut back",
+        "pay out",
+        "clock up",
+        "add up to"
+      ],
       "correct": "cut back",
       "explanation": "'Cut back on' means to reduce spending or consumption."
     },
@@ -123,7 +138,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The insurance company finally ___ the full claim amount.",
-      "options": ["paid out", "cut back", "cancelled out", "clubbed together"],
+      "options": [
+        "paid out",
+        "cut back",
+        "cancelled out",
+        "clubbed together"
+      ],
       "correct": "paid out",
       "explanation": "'Pay out' means to give out money, usually a large sum."
     },
@@ -139,23 +159,59 @@
     {
       "title": "Budget Planning",
       "lines": [
-        { "speaker": "Priya", "text": "Our monthly expenses [add up to] more than we earn." },
-        { "speaker": "Dan", "text": "We need to [cut back on] dining out and subscriptions." },
-        { "speaker": "Priya", "text": "The credit card debts are really starting to [mount up]." },
-        { "speaker": "Dan", "text": "Could we ask your parents to [tide us over] for a month?" },
-        { "speaker": "Priya", "text": "Possibly. We've already [paid out] so much on unexpected repairs." },
-        { "speaker": "Dan", "text": "The savings have been [cancelled out] by all these extra costs." }
+        {
+          "speaker": "Priya",
+          "text": "Our monthly expenses [add up to] more than we earn."
+        },
+        {
+          "speaker": "Dan",
+          "text": "We need to [cut back (on)] dining out and subscriptions."
+        },
+        {
+          "speaker": "Priya",
+          "text": "The credit card debts are really starting to [mount up]."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Could we ask your parents to [tide over] us for a month?"
+        },
+        {
+          "speaker": "Priya",
+          "text": "Possibly. We've already [pay out] so much on unexpected repairs."
+        },
+        {
+          "speaker": "Dan",
+          "text": "The savings have been [cancel out] by all these extra costs."
+        }
       ]
     },
     {
       "title": "Office Collection",
       "lines": [
-        { "speaker": "Miguel", "text": "Shall we [club together] for Sarah's leaving gift?" },
-        { "speaker": "Sophie", "text": "Good idea. How much would each contribution [add up to]?" },
-        { "speaker": "Miguel", "text": "If ten people contribute, we'd have enough to [pay out] for something nice." },
-        { "speaker": "Sophie", "text": "I've [clocked up] quite a few expenses this month, though." },
-        { "speaker": "Miguel", "text": "Don't worry—a small amount will [tide] the collection [over]." },
-        { "speaker": "Sophie", "text": "Alright. I'll try not to [cut back] on this particular expense." }
+        {
+          "speaker": "Miguel",
+          "text": "Shall we [club together] for Sarah's leaving gift?"
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Good idea. How much would each contribution [add up to]?"
+        },
+        {
+          "speaker": "Miguel",
+          "text": "If ten people contribute, we'd have enough to [pay out] for something nice."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "I've [clock up] quite a few expenses this month, though."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Don't worry—a small amount will [tide over] the collection."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Alright. I'll try not to [cut back (on)] this particular expense."
+        }
       ]
     }
   ]

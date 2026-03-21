@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The data ___ his hypothesis about climate patterns.",
-      "options": ["backs up", "centres around", "blends in", "goes in for"],
+      "options": [
+        "backs up",
+        "centres around",
+        "blends in",
+        "goes in for"
+      ],
       "correct": "backs up",
       "explanation": "'Back up' means to support or confirm something."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The debate ___ the question of taxation.",
-      "options": ["centred around", "backed up", "singled out", "went astray"],
+      "options": [
+        "centred around",
+        "backed up",
+        "singled out",
+        "went astray"
+      ],
       "correct": "centred around",
       "explanation": "'Centre around' means to have as the main focus."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "She doesn't ___ competitive activities.",
-      "options": ["go in for", "blend in", "single out", "back up"],
+      "options": [
+        "go in for",
+        "blend in",
+        "single out",
+        "back up"
+      ],
       "correct": "go in for",
       "explanation": "'Go in for' means to enjoy or choose to do something."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Will the other team members ___ your proposal?",
-      "options": ["back up", "centre around", "blend in", "go astray"],
+      "options": [
+        "back up",
+        "centre around",
+        "blend in",
+        "go astray"
+      ],
       "correct": "back up",
       "explanation": "'Back up' means to support someone's position."
     },
@@ -121,23 +141,59 @@
     {
       "title": "Research Discussion",
       "lines": [
-        { "speaker": "Emma", "text": "My thesis [centres around] the impact of social media on society." },
-        { "speaker": "James", "text": "Do you have evidence to [back up] your arguments?" },
-        { "speaker": "Emma", "text": "Yes, but some of my data [went astray] during the transfer." },
-        { "speaker": "James", "text": "My supervisor [singled out] my methodology for criticism." },
-        { "speaker": "Emma", "text": "Don't worry—not everyone [goes in for] that approach." },
-        { "speaker": "James", "text": "Your research style doesn't [blend in] with traditional methods anyway." }
+        {
+          "speaker": "Emma",
+          "text": "My thesis [centre around] the impact of social media on society."
+        },
+        {
+          "speaker": "James",
+          "text": "Do you have evidence to [back up] your arguments?"
+        },
+        {
+          "speaker": "Emma",
+          "text": "Yes, but some of my data [go astray] during the transfer."
+        },
+        {
+          "speaker": "James",
+          "text": "My supervisor [single out] my methodology for criticism."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Don't worry—not everyone [go in for] that approach."
+        },
+        {
+          "speaker": "James",
+          "text": "Your research style doesn't [blend in] with traditional methods anyway."
+        }
       ]
     },
     {
       "title": "New Employee Orientation",
       "lines": [
-        { "speaker": "Priya", "text": "How can I [blend in] better with the team here?" },
-        { "speaker": "Dan", "text": "Just [go in for] the team activities—people will warm up to you." },
-        { "speaker": "Priya", "text": "I hope I don't get [singled out] as the new person." },
-        { "speaker": "Dan", "text": "Our culture [centres around] collaboration, not competition." },
-        { "speaker": "Priya", "text": "That's reassuring. Will you [back me up] in meetings?" },
-        { "speaker": "Dan", "text": "Absolutely. Don't let your confidence [go astray]!" }
+        {
+          "speaker": "Priya",
+          "text": "How can I [blend in] better with the team here?"
+        },
+        {
+          "speaker": "Dan",
+          "text": "Just [go in for] the team activities—people will warm up to you."
+        },
+        {
+          "speaker": "Priya",
+          "text": "I hope I don't get [single out] as the new person."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Our culture [centre around] collaboration, not competition."
+        },
+        {
+          "speaker": "Priya",
+          "text": "That's reassuring. Will you [back up] me in meetings?"
+        },
+        {
+          "speaker": "Dan",
+          "text": "Absolutely. Don't let your confidence [go astray]!"
+        }
       ]
     }
   ]

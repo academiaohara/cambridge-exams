@@ -72,7 +72,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The new trade deal will ___ exciting opportunities for exporters.",
-      "options": ["open up", "phase out", "run down", "wind down"],
+      "options": [
+        "open up",
+        "phase out",
+        "run down",
+        "wind down"
+      ],
       "correct": "open up",
       "explanation": "'Open up' means to create new opportunities or make things accessible."
     },
@@ -86,7 +91,12 @@
     {
       "type": "multiple-choice",
       "sentence": "We need to ___ a team of experts to handle the project.",
-      "options": ["put together", "take over", "wind down", "write off"],
+      "options": [
+        "put together",
+        "take over",
+        "wind down",
+        "write off"
+      ],
       "correct": "put together",
       "explanation": "'Put together' means to assemble or organise something."
     },
@@ -100,7 +110,12 @@
     {
       "type": "multiple-choice",
       "sentence": "A multinational corporation has ___ the local brewery.",
-      "options": ["taken over", "put together", "phased out", "opened up"],
+      "options": [
+        "taken over",
+        "put together",
+        "phased out",
+        "opened up"
+      ],
       "correct": "taken over",
       "explanation": "'Take over' means to gain control of something."
     },
@@ -114,7 +129,12 @@
     {
       "type": "multiple-choice",
       "sentence": "After the flood, the insurance company ___ my car.",
-      "options": ["wrote off", "took over", "put together", "opened up"],
+      "options": [
+        "wrote off",
+        "took over",
+        "put together",
+        "opened up"
+      ],
       "correct": "wrote off",
       "explanation": "'Write off' means to declare something as a total loss."
     },
@@ -130,23 +150,59 @@
     {
       "title": "Corporate Restructuring",
       "lines": [
-        { "speaker": "Emma", "text": "I've heard the board is [winding down] the overseas division." },
-        { "speaker": "James", "text": "Yes, and they're [phasing out] several product lines too." },
-        { "speaker": "Emma", "text": "Do you think another company will [take over] those operations?" },
-        { "speaker": "James", "text": "Possibly. The division has been [run down] for years now." },
-        { "speaker": "Emma", "text": "We should [put together] a proposal for restructuring." },
-        { "speaker": "James", "text": "Agreed. This crisis could [open up] opportunities for us." }
+        {
+          "speaker": "Emma",
+          "text": "I've heard the board is [wind down] the overseas division."
+        },
+        {
+          "speaker": "James",
+          "text": "Yes, and they're [phase out] several product lines too."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Do you think another company will [take over] those operations?"
+        },
+        {
+          "speaker": "James",
+          "text": "Possibly. The division has been [run down] for years now."
+        },
+        {
+          "speaker": "Emma",
+          "text": "We should [put together] a proposal for restructuring."
+        },
+        {
+          "speaker": "James",
+          "text": "Agreed. This crisis could [open up] opportunities for us."
+        }
       ]
     },
     {
       "title": "Insurance Claim Discussion",
       "lines": [
-        { "speaker": "Sarah", "text": "The insurance company has [written off] my car completely." },
-        { "speaker": "Carlos", "text": "That's unfortunate. Have they [put together] a settlement offer?" },
-        { "speaker": "Sarah", "text": "Not yet. The whole process is [winding down] very slowly." },
-        { "speaker": "Carlos", "text": "They've been [phasing out] quick settlements lately." },
-        { "speaker": "Sarah", "text": "A new management team [took over] recently." },
-        { "speaker": "Carlos", "text": "That might [open up] different options for negotiation." }
+        {
+          "speaker": "Sarah",
+          "text": "The insurance company has [write off] my car completely."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "That's unfortunate. Have they [put together] a settlement offer?"
+        },
+        {
+          "speaker": "Sarah",
+          "text": "Not yet. The whole process is [wind down] very slowly."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "They've been [phase out] quick settlements lately."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "A new management team [take over] recently."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "That might [open up] different options for negotiation."
+        }
       ]
     }
   ]

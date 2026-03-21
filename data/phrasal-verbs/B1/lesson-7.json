@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Don't forget to ___ ___ before you go on holiday.",
-      "options": ["lock up", "move in", "throw out", "put up"],
+      "options": [
+        "lock up",
+        "move in",
+        "throw out",
+        "put up"
+      ],
       "correct": "lock up",
       "explanation": "'Lock up' means to secure a building by locking doors and windows."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The old tenants ___ ___ last week.",
-      "options": ["moved out", "locked up", "opened up", "threw out"],
+      "options": [
+        "moved out",
+        "locked up",
+        "opened up",
+        "threw out"
+      ],
       "correct": "moved out",
       "explanation": "'Move out' means to leave the place where you live."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "We can ___ you ___ for the weekend if you like.",
-      "options": ["put up", "lock up", "move in", "throw out"],
+      "options": [
+        "put up",
+        "lock up",
+        "move in",
+        "throw out"
+      ],
       "correct": "put up",
       "explanation": "'Put up' means to let someone stay at your home."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "She ___ ___ of her apartment when she got a job abroad.",
-      "options": ["moved out", "locked up", "put up", "opened up"],
+      "options": [
+        "moved out",
+        "locked up",
+        "put up",
+        "opened up"
+      ],
       "correct": "moved out",
       "explanation": "'Move out' means to leave a residence permanently."
     },
@@ -121,24 +141,63 @@
     {
       "title": "Moving Day",
       "lines": [
-        { "speaker": "Sophie", "text": "Are you excited to [move in] to your new apartment?" },
-        { "speaker": "Alex", "text": "Yes! The old tenants [moved out] just yesterday." },
-        { "speaker": "Sophie", "text": "Do you need help [throwing out] any old stuff?" },
-        { "speaker": "Alex", "text": "That would be great! I have boxes of things to [throw out]." },
-        { "speaker": "Sophie", "text": "My mum said she can [put you up] if you need a place to stay tonight." },
-        { "speaker": "Alex", "text": "That's so kind! I'll just [lock up] my current place and head over." }
+        {
+          "speaker": "Sophie",
+          "text": "Are you excited to [move in (with)] to your new apartment?"
+        },
+        {
+          "speaker": "Alex",
+          "text": "Yes! The old tenants [move out] just yesterday."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Do you need help [throw out] any old stuff?"
+        },
+        {
+          "speaker": "Alex",
+          "text": "That would be great! I have boxes of things to [throw out]."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "My mum said she can [put up] you if you need a place to stay tonight."
+        },
+        {
+          "speaker": "Alex",
+          "text": "That's so kind! I'll just [lock up] my current place and head over."
+        }
       ]
     },
     {
       "title": "House Sitting",
       "lines": [
-        { "speaker": "Miguel", "text": "Thanks for house-sitting while we're away. Remember to [lock up] every night." },
-        { "speaker": "Emma", "text": "Of course! What time should I [open up] in the morning?" },
-        { "speaker": "Miguel", "text": "Around 8 a.m. is fine. The cleaners [moved out] some furniture yesterday." },
-        { "speaker": "Emma", "text": "Should I [throw out] anything while I'm here?" },
-        { "speaker": "Miguel", "text": "Yes, please [throw out] the newspapers by the door." },
-        { "speaker": "Emma", "text": "No problem. And if anyone needs a place to stay, can I [put them up]?" },
-        { "speaker": "Miguel", "text": "As long as you trust them, that's fine!" }
+        {
+          "speaker": "Miguel",
+          "text": "Thanks for house-sitting while we're away. Remember to [lock up] every night."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Of course! What time should I [open up] in the morning?"
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Around 8 a.m. is fine. The cleaners [move out] some furniture yesterday."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Should I [throw out] anything while I'm here?"
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Yes, please [throw out] the newspapers by the door."
+        },
+        {
+          "speaker": "Emma",
+          "text": "No problem. And if anyone needs a place to stay, can I [put up] them?"
+        },
+        {
+          "speaker": "Miguel",
+          "text": "As long as you trust them, that's fine!"
+        }
       ]
     }
   ]

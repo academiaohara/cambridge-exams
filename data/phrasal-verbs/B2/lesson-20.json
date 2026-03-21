@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "After verifying the sources, all the information ___.",
-      "options": ["checked out", "followed up", "hit upon", "sought out"],
+      "options": [
+        "checked out",
+        "followed up",
+        "hit upon",
+        "sought out"
+      ],
       "correct": "checked out",
       "explanation": "'Check out' means to be verified as true."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "News of the merger ___ quickly in the industry.",
-      "options": ["got around", "checked out", "hit upon", "lay ahead"],
+      "options": [
+        "got around",
+        "checked out",
+        "hit upon",
+        "lay ahead"
+      ],
       "correct": "got around",
       "explanation": "'Get around' means for news to spread widely."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Many challenges ___ for the new government.",
-      "options": ["lie ahead", "check out", "follow up", "get around"],
+      "options": [
+        "lie ahead",
+        "check out",
+        "follow up",
+        "get around"
+      ],
       "correct": "lie ahead",
       "explanation": "'Lie ahead' means to be waiting in the future."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "She ___ a brilliant solution while brainstorming.",
-      "options": ["hit upon", "followed up", "checked out", "got around"],
+      "options": [
+        "hit upon",
+        "followed up",
+        "checked out",
+        "got around"
+      ],
       "correct": "hit upon",
       "explanation": "'Hit upon' means to suddenly think of an idea."
     },
@@ -121,23 +141,59 @@
     {
       "title": "Research Project",
       "lines": [
-        { "speaker": "Oliver", "text": "Did the statistics in the report [check out]?" },
-        { "speaker": "Clara", "text": "Yes, but we need to [follow up] on some inconsistencies." },
-        { "speaker": "Oliver", "text": "I [hit upon] an interesting pattern in the data yesterday." },
-        { "speaker": "Clara", "text": "That's exciting! What challenges [lie ahead] for the project?" },
-        { "speaker": "Oliver", "text": "We need to [seek out] more participants for the study." },
-        { "speaker": "Clara", "text": "Word will [get around] once we publish the preliminary findings." }
+        {
+          "speaker": "Oliver",
+          "text": "Did the statistics in the report [check out]?"
+        },
+        {
+          "speaker": "Clara",
+          "text": "Yes, but we need to [follow up] on some inconsistencies."
+        },
+        {
+          "speaker": "Oliver",
+          "text": "I [hit upon] an interesting pattern in the data yesterday."
+        },
+        {
+          "speaker": "Clara",
+          "text": "That's exciting! What challenges [lie ahead] for the project?"
+        },
+        {
+          "speaker": "Oliver",
+          "text": "We need to [seek out] more participants for the study."
+        },
+        {
+          "speaker": "Clara",
+          "text": "Word will [get (a)round] once we publish the preliminary findings."
+        }
       ]
     },
     {
       "title": "Career Planning",
       "lines": [
-        { "speaker": "Alex", "text": "Have you thought about what [lies ahead] after graduation?" },
-        { "speaker": "Fatima", "text": "I'm trying to [seek out] opportunities in research." },
-        { "speaker": "Alex", "text": "Make sure the companies you apply to [check out] well." },
-        { "speaker": "Fatima", "text": "Good advice. I should [follow up] on some contacts I made." },
-        { "speaker": "Alex", "text": "Have you [hit upon] any promising leads?" },
-        { "speaker": "Fatima", "text": "A few. Word [got around] that they're hiring in my field." }
+        {
+          "speaker": "Alex",
+          "text": "Have you thought about what [lie ahead] after graduation?"
+        },
+        {
+          "speaker": "Fatima",
+          "text": "I'm trying to [seek out] opportunities in research."
+        },
+        {
+          "speaker": "Alex",
+          "text": "Make sure the companies you apply to [check out] well."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Good advice. I should [follow up] on some contacts I made."
+        },
+        {
+          "speaker": "Alex",
+          "text": "Have you [hit upon] any promising leads?"
+        },
+        {
+          "speaker": "Fatima",
+          "text": "A few. Word [get (a)round] that they're hiring in my field."
+        }
       ]
     }
   ]

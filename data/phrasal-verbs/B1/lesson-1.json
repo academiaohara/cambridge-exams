@@ -72,7 +72,12 @@
     {
       "type": "multiple-choice",
       "sentence": "He's been wanting to ___ her ___ for weeks, but he's too shy.",
-      "options": ["ask out", "break up", "hang out", "meet up"],
+      "options": [
+        "ask out",
+        "break up",
+        "hang out",
+        "meet up"
+      ],
       "correct": "ask out",
       "explanation": "'Ask out' means to invite someone on a date."
     },
@@ -86,7 +91,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Why don't you ___ ___ this weekend? We can watch a movie.",
-      "options": ["come round", "break up", "take after", "ask out"],
+      "options": [
+        "come round",
+        "break up",
+        "take after",
+        "ask out"
+      ],
       "correct": "come round",
       "explanation": "'Come round' means to visit someone at their home."
     },
@@ -100,7 +110,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Let's ___ ___ at the café around noon.",
-      "options": ["meet up", "hang out", "come round", "take out"],
+      "options": [
+        "meet up",
+        "hang out",
+        "come round",
+        "take out"
+      ],
       "correct": "meet up",
       "explanation": "'Meet up' means to come together with someone as planned."
     },
@@ -114,7 +129,12 @@
     {
       "type": "multiple-choice",
       "sentence": "He ___ her ___ to celebrate their anniversary.",
-      "options": ["took out", "hung out", "met up", "came round"],
+      "options": [
+        "took out",
+        "hung out",
+        "met up",
+        "came round"
+      ],
       "correct": "took out",
       "explanation": "'Take out' means to take someone to a restaurant or cinema and usually pay."
     },
@@ -130,23 +150,59 @@
     {
       "title": "Catching Up with a Friend",
       "lines": [
-        { "speaker": "Emma", "text": "Hey! Do you want to [come round] later? I'm baking cookies." },
-        { "speaker": "James", "text": "Sure! I haven't [hung out] with anyone all week." },
-        { "speaker": "Emma", "text": "Great! By the way, did you hear that Lisa and Tom [broke up]?" },
-        { "speaker": "James", "text": "Really? That's a shame. They seemed so happy when they [met up] at the party." },
-        { "speaker": "Emma", "text": "I know. But I think Mark might [ask her out] soon." },
-        { "speaker": "James", "text": "He should [take her out] somewhere nice to cheer her up." }
+        {
+          "speaker": "Emma",
+          "text": "Hey! Do you want to [come round] later? I'm baking cookies."
+        },
+        {
+          "speaker": "James",
+          "text": "Sure! I haven't [hang out] with anyone all week."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Great! By the way, did you hear that Lisa and Tom [break up]?"
+        },
+        {
+          "speaker": "James",
+          "text": "Really? That's a shame. They seemed so happy when they [meet up] at the party."
+        },
+        {
+          "speaker": "Emma",
+          "text": "I know. But I think Mark might [ask out] her soon."
+        },
+        {
+          "speaker": "James",
+          "text": "He should [take out] her somewhere nice to cheer her up."
+        }
       ]
     },
     {
       "title": "Family Resemblance",
       "lines": [
-        { "speaker": "Sarah", "text": "Your daughter is so kind. She really [takes after] you." },
-        { "speaker": "Carlos", "text": "Thanks! People say she [takes after] my mother more." },
-        { "speaker": "Sarah", "text": "Speaking of family, should we [meet up] with your parents this Sunday?" },
-        { "speaker": "Carlos", "text": "Good idea. They could [come round] to our place for lunch." },
-        { "speaker": "Sarah", "text": "Or we could [take them out] to that new Italian restaurant." },
-        { "speaker": "Carlos", "text": "Perfect. We haven't [hung out] with them in ages." }
+        {
+          "speaker": "Sarah",
+          "text": "Your daughter is so kind. She really [take after] you."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Thanks! People say she [take after] my mother more."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "Speaking of family, should we [meet up] with your parents this Sunday?"
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Good idea. They could [come round] to our place for lunch."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "Or we could [take out] them to that new Italian restaurant."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Perfect. We haven't [hang out] with them in ages."
+        }
       ]
     }
   ]

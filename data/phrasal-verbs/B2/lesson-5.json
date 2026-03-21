@@ -72,7 +72,12 @@
     {
       "type": "multiple-choice",
       "sentence": "She didn't hesitate and just ___ right away.",
-      "options": ["dived in", "fell behind", "opted out", "laid off"],
+      "options": [
+        "dived in",
+        "fell behind",
+        "opted out",
+        "laid off"
+      ],
       "correct": "dived in",
       "explanation": "'Dive in' means to start something enthusiastically and immediately."
     },
@@ -86,7 +91,12 @@
     {
       "type": "multiple-choice",
       "sentence": "It's time to ___ and focus on your dissertation.",
-      "options": ["knuckle down", "opt out", "dive in", "put in"],
+      "options": [
+        "knuckle down",
+        "opt out",
+        "dive in",
+        "put in"
+      ],
       "correct": "knuckle down",
       "explanation": "'Knuckle down' means to start working hard."
     },
@@ -100,7 +110,12 @@
     {
       "type": "multiple-choice",
       "sentence": "You can ___ of the newsletter subscription at any time.",
-      "options": ["opt out", "fall behind", "put in", "swot up"],
+      "options": [
+        "opt out",
+        "fall behind",
+        "put in",
+        "swot up"
+      ],
       "correct": "opt out",
       "explanation": "'Opt out' means to choose not to participate in something."
     },
@@ -114,7 +129,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I need to ___ on the new software before the training session.",
-      "options": ["swot up", "dive in", "knuckle down", "opt out"],
+      "options": [
+        "swot up",
+        "dive in",
+        "knuckle down",
+        "opt out"
+      ],
       "correct": "swot up",
       "explanation": "'Swot up on' means to study something intensively."
     },
@@ -130,23 +150,59 @@
     {
       "title": "Workplace Challenges",
       "lines": [
-        { "speaker": "Sarah", "text": "I heard the company might [lay off] some staff next month." },
-        { "speaker": "Carlos", "text": "That's concerning. We should [knuckle down] and prove our value." },
-        { "speaker": "Sarah", "text": "I've been [putting in] extra hours to stay ahead of deadlines." },
-        { "speaker": "Carlos", "text": "Good idea. We can't afford to [fall behind] our colleagues." },
-        { "speaker": "Sarah", "text": "Should we [swot up on] the new systems they're implementing?" },
-        { "speaker": "Carlos", "text": "Definitely. Let's [dive in] and become experts before everyone else." }
+        {
+          "speaker": "Sarah",
+          "text": "I heard the company might [lay off] some staff next month."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "That's concerning. We should [knuckle down] and prove our value."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "I've been [put in] extra hours to stay ahead of deadlines."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Good idea. We can't afford to [fall behind] our colleagues."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "Should we [swot up (on)] the new systems they're implementing?"
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Definitely. Let's [dive in] and become experts before everyone else."
+        }
       ]
     },
     {
       "title": "Career Decisions",
       "lines": [
-        { "speaker": "Priya", "text": "I'm thinking of [opting out of] the company's share scheme." },
-        { "speaker": "Dan", "text": "Really? You should [swot up on] the benefits before deciding." },
-        { "speaker": "Priya", "text": "I know, but I've [fallen behind] on my savings recently." },
-        { "speaker": "Dan", "text": "Maybe you need to [knuckle down] and create a budget." },
-        { "speaker": "Priya", "text": "You're right. I'll [put in] more effort to manage my finances." },
-        { "speaker": "Dan", "text": "Don't just [dive in] though—plan it carefully first." }
+        {
+          "speaker": "Priya",
+          "text": "I'm thinking of [opt out (of)] the company's share scheme."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Really? You should [swot up (on)] the benefits before deciding."
+        },
+        {
+          "speaker": "Priya",
+          "text": "I know, but I've [fall behind] on my savings recently."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Maybe you need to [knuckle down] and create a budget."
+        },
+        {
+          "speaker": "Priya",
+          "text": "You're right. I'll [put in] more effort to manage my finances."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Don't just [dive in] though—plan it carefully first."
+        }
       ]
     }
   ]

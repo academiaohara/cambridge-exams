@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Residents ___ their windows to protect against the hurricane.",
-      "options": ["boarded up", "took apart", "propped up", "broke down"],
+      "options": [
+        "boarded up",
+        "took apart",
+        "propped up",
+        "broke down"
+      ],
       "correct": "boarded up",
       "explanation": "'Board up' means to cover with wooden boards."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The new management ___ with the old dress code.",
-      "options": ["did away", "took apart", "boarded up", "propped up"],
+      "options": [
+        "did away",
+        "took apart",
+        "boarded up",
+        "propped up"
+      ],
       "correct": "did away",
       "explanation": "'Do away with' means to abolish or eliminate."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The engineer ___ the machine to locate the fault.",
-      "options": ["took apart", "boarded up", "broke down", "did away with"],
+      "options": [
+        "took apart",
+        "boarded up",
+        "broke down",
+        "did away with"
+      ],
       "correct": "took apart",
       "explanation": "'Take apart' means to disassemble into pieces."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Can you ___ the budget figures for the committee?",
-      "options": ["break down", "do away with", "prop up", "take apart"],
+      "options": [
+        "break down",
+        "do away with",
+        "prop up",
+        "take apart"
+      ],
       "correct": "break down",
       "explanation": "'Break down' means to present in separate components."
     },
@@ -121,23 +141,59 @@
     {
       "title": "Storm Preparation",
       "lines": [
-        { "speaker": "Sarah", "text": "We need to [board up] all the ground floor windows." },
-        { "speaker": "Carlos", "text": "I'll [prop up] the garden fence so it doesn't blow over." },
-        { "speaker": "Sarah", "text": "Should we [take down] the satellite dish too?" },
-        { "speaker": "Carlos", "text": "Yes, and [break down] the temporary shelter outside." },
-        { "speaker": "Sarah", "text": "Let's [do away with] anything that could become a projectile." },
-        { "speaker": "Carlos", "text": "I'll [take apart] the patio furniture and store it safely." }
+        {
+          "speaker": "Sarah",
+          "text": "We need to [board up] all the ground floor windows."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "I'll [prop up] the garden fence so it doesn't blow over."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "Should we [take down] the satellite dish too?"
+        },
+        {
+          "speaker": "Carlos",
+          "text": "Yes, and [break down] the temporary shelter outside."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "Let's [do away with] anything that could become a projectile."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "I'll [take apart] the patio furniture and store it safely."
+        }
       ]
     },
     {
       "title": "Business Restructuring",
       "lines": [
-        { "speaker": "Priya", "text": "Management wants to [do away with] the traditional reporting structure." },
-        { "speaker": "Dan", "text": "They'll need to [break down] the new system clearly for everyone." },
-        { "speaker": "Priya", "text": "We might have to [take apart] the existing processes completely." },
-        { "speaker": "Dan", "text": "The subsidies were [propping up] unprofitable departments." },
-        { "speaker": "Priya", "text": "They've already [taken down] the old organisational charts." },
-        { "speaker": "Dan", "text": "Some offices will be [boarded up] as we consolidate locations." }
+        {
+          "speaker": "Priya",
+          "text": "Management wants to [do away with] the traditional reporting structure."
+        },
+        {
+          "speaker": "Dan",
+          "text": "They'll need to [break down] the new system clearly for everyone."
+        },
+        {
+          "speaker": "Priya",
+          "text": "We might have to [take apart] the existing processes completely."
+        },
+        {
+          "speaker": "Dan",
+          "text": "The subsidies were [prop up] unprofitable departments."
+        },
+        {
+          "speaker": "Priya",
+          "text": "They've already [take down] the old organisational charts."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Some offices will be [board up] as we consolidate locations."
+        }
       ]
     }
   ]

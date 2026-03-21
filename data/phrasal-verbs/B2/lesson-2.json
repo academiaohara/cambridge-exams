@@ -72,7 +72,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The child was reprimanded for ___ to her mother.",
-      "options": ["answering back", "speaking out", "shouting down", "sounding out"],
+      "options": [
+        "answering back",
+        "speaking out",
+        "shouting down",
+        "sounding out"
+      ],
       "correct": "answering back",
       "explanation": "'Answer back' means to reply rudely to someone with authority."
     },
@@ -86,7 +91,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The angry crowd ___ the speaker before he could finish.",
-      "options": ["shouted down", "talked round", "sounded out", "answered back"],
+      "options": [
+        "shouted down",
+        "talked round",
+        "sounded out",
+        "answered back"
+      ],
       "correct": "shouted down",
       "explanation": "'Shout down' means to drown out someone's voice by shouting."
     },
@@ -100,7 +110,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Many activists ___ against social injustice.",
-      "options": ["speak out", "talk down to", "answer back", "talk round"],
+      "options": [
+        "speak out",
+        "talk down to",
+        "answer back",
+        "talk round"
+      ],
       "correct": "speak out",
       "explanation": "'Speak out' means to publicly state your opinion, often against something."
     },
@@ -114,7 +129,12 @@
     {
       "type": "multiple-choice",
       "sentence": "After much discussion, she finally ___ him ___ to her way of thinking.",
-      "options": ["talked round", "shouted down", "put across", "sounded out"],
+      "options": [
+        "talked round",
+        "shouted down",
+        "put across",
+        "sounded out"
+      ],
       "correct": "talked round",
       "explanation": "'Talk round' means to persuade someone to agree with you."
     },
@@ -130,23 +150,59 @@
     {
       "title": "Office Disagreement",
       "lines": [
-        { "speaker": "Priya", "text": "Did you see how he [talked down to] everyone in the meeting?" },
-        { "speaker": "Dan", "text": "Yes, and when someone tried to [speak out], they were [shouted down]." },
-        { "speaker": "Priya", "text": "That's not acceptable. We need to [put across] our concerns to HR." },
-        { "speaker": "Dan", "text": "I'll [sound out] a few colleagues first to see if they feel the same." },
-        { "speaker": "Priya", "text": "Good idea. But don't [answer back] if he confronts you directly." },
-        { "speaker": "Dan", "text": "I'll try to [talk round] the team to support us in the next meeting." }
+        {
+          "speaker": "Priya",
+          "text": "Did you see how he [talk down to] everyone in the meeting?"
+        },
+        {
+          "speaker": "Dan",
+          "text": "Yes, and when someone tried to [speak out], they were [shout down]."
+        },
+        {
+          "speaker": "Priya",
+          "text": "That's not acceptable. We need to [put across/over] our concerns to HR."
+        },
+        {
+          "speaker": "Dan",
+          "text": "I'll [sound out] a few colleagues first to see if they feel the same."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Good idea. But don't [answer back] if he confronts you directly."
+        },
+        {
+          "speaker": "Dan",
+          "text": "I'll try to [talk round] the team to support us in the next meeting."
+        }
       ]
     },
     {
       "title": "Persuading the Committee",
       "lines": [
-        { "speaker": "Miguel", "text": "I've been trying to [talk round] the committee for weeks now." },
-        { "speaker": "Sophie", "text": "Have you [sounded out] individual members privately?" },
-        { "speaker": "Miguel", "text": "Yes, but some of them [talked down to] me as if I were inexperienced." },
-        { "speaker": "Sophie", "text": "Don't let that discourage you from [speaking out] about your ideas." },
-        { "speaker": "Miguel", "text": "You're right. I need to [put across] my proposal more convincingly." },
-        { "speaker": "Sophie", "text": "And whatever you do, don't [answer back] defensively if they criticise you." }
+        {
+          "speaker": "Miguel",
+          "text": "I've been trying to [talk round] the committee for weeks now."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Have you [sound out] individual members privately?"
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Yes, but some of them [talk down to] me as if I were inexperienced."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Don't let that discourage you from [speak out] about your ideas."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "You're right. I need to [put across/over] my proposal more convincingly."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "And whatever you do, don't [answer back] defensively if they criticise you."
+        }
       ]
     }
   ]

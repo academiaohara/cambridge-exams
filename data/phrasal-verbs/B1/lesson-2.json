@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Her mood ___ ___ as soon as she saw her friends.",
-      "options": ["brightened up", "wound down", "ended up", "turned into"],
+      "options": [
+        "brightened up",
+        "wound down",
+        "ended up",
+        "turned into"
+      ],
       "correct": "brightened up",
       "explanation": "'Brighten up' means to start looking or feeling happier."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I spent the weekend ___ ___ at home.",
-      "options": ["lazing around", "winding down", "messing around", "brightening up"],
+      "options": [
+        "lazing around",
+        "winding down",
+        "messing around",
+        "brightening up"
+      ],
       "correct": "lazing around",
       "explanation": "'Laze around' means to relax and do nothing."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The small argument ___ ___ a big fight.",
-      "options": ["turned into", "ended up", "brightened up", "wound down"],
+      "options": [
+        "turned into",
+        "ended up",
+        "brightened up",
+        "wound down"
+      ],
       "correct": "turned into",
       "explanation": "'Turn into' means to change into something different."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Some colourful paintings would ___ ___ your office.",
-      "options": ["brighten up", "wind down", "turn into", "end up"],
+      "options": [
+        "brighten up",
+        "wind down",
+        "turn into",
+        "end up"
+      ],
       "correct": "brighten up",
       "explanation": "'Brighten up' can mean to add more colour or light to something."
     },
@@ -121,24 +141,63 @@
     {
       "title": "Weekend Plans",
       "lines": [
-        { "speaker": "Priya", "text": "What did you do on Sunday? I just [lazed around] all day." },
-        { "speaker": "Dan", "text": "Me too! I needed to [wind down] after such a busy week." },
-        { "speaker": "Priya", "text": "The weather [brightened up] in the afternoon though." },
-        { "speaker": "Dan", "text": "I know! But I was too relaxed to go out. I [ended up] watching movies." },
-        { "speaker": "Priya", "text": "Ha! My lazy day almost [turned into] a cleaning marathon." },
-        { "speaker": "Dan", "text": "Almost? Did you [mess around] instead?" },
-        { "speaker": "Priya", "text": "Exactly! I was [messing about] with my guitar the whole time." }
+        {
+          "speaker": "Priya",
+          "text": "What did you do on Sunday? I just [laze around] all day."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Me too! I needed to [wind down] after such a busy week."
+        },
+        {
+          "speaker": "Priya",
+          "text": "The weather [brighten up] in the afternoon though."
+        },
+        {
+          "speaker": "Dan",
+          "text": "I know! But I was too relaxed to go out. I [end up] watching movies."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Ha! My lazy day almost [turn into] a cleaning marathon."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Almost? Did you [mess about/around] instead?"
+        },
+        {
+          "speaker": "Priya",
+          "text": "Exactly! I was [mess about/around] with my guitar the whole time."
+        }
       ]
     },
     {
       "title": "After a Stressful Day",
       "lines": [
-        { "speaker": "Miguel", "text": "I really need to [wind down] after today." },
-        { "speaker": "Sophie", "text": "What happened? You don't look very [brightened up]." },
-        { "speaker": "Miguel", "text": "A simple task [turned into] a complete disaster at work." },
-        { "speaker": "Sophie", "text": "Oh no! How did you [end up] in that situation?" },
-        { "speaker": "Miguel", "text": "I was [messing around] with a new system and broke something." },
-        { "speaker": "Sophie", "text": "Let's go for a walk. It'll help you [brighten up]." }
+        {
+          "speaker": "Miguel",
+          "text": "I really need to [wind down] after today."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "What happened? You don't look very [brighten up]."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "A simple task [turn into] a complete disaster at work."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Oh no! How did you [end up] in that situation?"
+        },
+        {
+          "speaker": "Miguel",
+          "text": "I was [mess about/around] with a new system and broke something."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Let's go for a walk. It'll help you [brighten up]."
+        }
       ]
     }
   ]

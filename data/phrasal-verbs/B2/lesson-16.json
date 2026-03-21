@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The authorities ___ the area after the accident.",
-      "options": ["cordoned off", "spread out", "slipped away", "held back"],
+      "options": [
+        "cordoned off",
+        "spread out",
+        "slipped away",
+        "held back"
+      ],
       "correct": "cordoned off",
       "explanation": "'Cordon off' means to restrict access to an area."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Quick action ___ a potential crisis.",
-      "options": ["headed off", "spread out", "cordoned off", "slipped away"],
+      "options": [
+        "headed off",
+        "spread out",
+        "cordoned off",
+        "slipped away"
+      ],
       "correct": "headed off",
       "explanation": "'Head off' means to prevent something from happening."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "She ___ from the boring meeting without anyone noticing.",
-      "options": ["slipped away", "spread out", "headed off", "held back"],
+      "options": [
+        "slipped away",
+        "spread out",
+        "headed off",
+        "held back"
+      ],
       "correct": "slipped away",
       "explanation": "'Slip away' means to leave quietly and secretly."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Don't let self-doubt ___ you from achieving your goals.",
-      "options": ["hold back", "head off", "slip away", "cordon off"],
+      "options": [
+        "hold back",
+        "head off",
+        "slip away",
+        "cordon off"
+      ],
       "correct": "hold back",
       "explanation": "'Hold back' means to prevent or restrain."
     },
@@ -121,23 +141,59 @@
     {
       "title": "Crime Scene Investigation",
       "lines": [
-        { "speaker": "Alex", "text": "The police have [cordoned off] the entire block." },
-        { "speaker": "Fatima", "text": "They need to [head off] any curious onlookers." },
-        { "speaker": "Alex", "text": "The officers have [spread out] to search for evidence." },
-        { "speaker": "Fatima", "text": "Let's hope the suspect didn't [slip away] already." },
-        { "speaker": "Alex", "text": "They're trying to [hold back] the media too." },
-        { "speaker": "Fatima", "text": "We should leave before someone [creeps up on] us here." }
+        {
+          "speaker": "Alex",
+          "text": "The police have [cordon off] the entire block."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "They need to [head off] any curious onlookers."
+        },
+        {
+          "speaker": "Alex",
+          "text": "The officers have [spread out] to search for evidence."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Let's hope the suspect didn't [slip away] already."
+        },
+        {
+          "speaker": "Alex",
+          "text": "They're trying to [hold back] the media too."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "We should leave before someone [creep up on] us here."
+        }
       ]
     },
     {
       "title": "Surprise Party Planning",
       "lines": [
-        { "speaker": "Chen", "text": "Make sure Tom doesn't [slip away] before we're ready." },
-        { "speaker": "Maria", "text": "I'll [head off] any suspicions he might have." },
-        { "speaker": "Chen", "text": "Everyone should [spread out] around the room." },
-        { "speaker": "Maria", "text": "We can [creep up on] him when he enters." },
-        { "speaker": "Chen", "text": "Try to [hold back] your excitement until he arrives." },
-        { "speaker": "Maria", "text": "Should we [cordon off] the back entrance just in case?" }
+        {
+          "speaker": "Chen",
+          "text": "Make sure Tom doesn't [slip away] before we're ready."
+        },
+        {
+          "speaker": "Maria",
+          "text": "I'll [head off] any suspicions he might have."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Everyone should [spread out] around the room."
+        },
+        {
+          "speaker": "Maria",
+          "text": "We can [creep up on] him when he enters."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Try to [hold back] your excitement until he arrives."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Should we [cordon off] the back entrance just in case?"
+        }
       ]
     }
   ]
