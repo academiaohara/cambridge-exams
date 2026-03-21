@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "26A",
+        "candidate": "Candidate A",
+        "topic": "Volunteering abroad",
+        "instructions": "Compare two of the pictures, and say what might motivate people to volunteer abroad and what challenges they might face.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test26_1a.jpg",
+            "description": "A young woman building a wooden house in a rural African village, surrounded by local children watching and smiling"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test26_1b.jpg",
+            "description": "A group of volunteers teaching English in a makeshift outdoor classroom in Southeast Asia, writing on a portable chalkboard"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test26_1c.jpg",
+            "description": "A medical volunteer examining a patient in a remote mountain clinic, using basic equipment in a simple room"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which of these volunteer experiences do you think would be most personally rewarding, and why?"
+        }
+      },
+      {
+        "id": "26B",
+        "candidate": "Candidate B",
+        "topic": "Cultural exchange programmes",
+        "instructions": "Compare two of the pictures, and say what participants might learn from cultural exchange programmes and how the experience might change them.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test26_1d.jpg",
+            "description": "A group of international students sharing a meal together, each person bringing food from their home country, arranged on a long communal table"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test26_1e.jpg",
+            "description": "A teenager living with a host family in Japan, wearing a school uniform and walking to school with her host siblings"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test26_1f.jpg",
+            "description": "Students from different countries taking part in a language exchange lesson, working in pairs and looking at each other's worksheets"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think cultural exchange programmes should be more widely available? Why or why not?"
+        }
+      }
+    ]
+  }
+}

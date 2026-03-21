@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "37A",
+        "candidate": "Candidate A",
+        "topic": "Competitive sports",
+        "instructions": "Compare two of the pictures, and say what the benefits and drawbacks of competitive sport might be and what drives people to compete.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test37_1a.jpg",
+            "description": "A sprinter bursting through the finish line tape at a major athletics event, arms raised in triumph while rivals trail behind"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test37_1b.jpg",
+            "description": "Two chess players facing each other across a board at a tournament, both leaning forward with intense concentration under bright spotlights"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test37_1c.jpg",
+            "description": "Young footballers shaking hands after a match, one team visibly elated and the other dejected, a coach looking on"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think the pressure of competitive sport is beneficial or harmful for young athletes? Why?"
+        }
+      },
+      {
+        "id": "37B",
+        "candidate": "Candidate B",
+        "topic": "Recreational and non-competitive sport",
+        "instructions": "Compare two of the pictures, and say what benefits recreational sport brings to people's lives and how it differs from competitive sport.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test37_1d.jpg",
+            "description": "A group of middle-aged friends doing an early morning park run, chatting and laughing as they jog through a misty park"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test37_1e.jpg",
+            "description": "A yoga class in a bright studio, participants of various ages and body types following the instructor in a relaxed, focused atmosphere"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test37_1f.jpg",
+            "description": "Children splashing around in a community swimming pool during an informal swimming session, with no race or competition taking place"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think it matters whether sport is competitive or recreational, as long as people are physically active?"
+        }
+      }
+    ]
+  }
+}

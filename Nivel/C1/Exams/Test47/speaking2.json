@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "47A",
+        "candidate": "Candidate A",
+        "topic": "Robots in factories",
+        "instructions": "Compare two of the pictures, and say what the benefits and concerns about automation in manufacturing might be and how it affects workers.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test47_1a.jpg",
+            "description": "A fully automated car assembly line with robotic arms welding and assembling vehicles with no human workers visible in the immediate area"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test47_1b.jpg",
+            "description": "A worker monitoring a large automated packaging machine in a food factory, checking a screen of data while robots handle the physical work"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test47_1c.jpg",
+            "description": "A group of factory workers being retrained on new automated machinery, a trainer showing them how to operate a touch-screen control panel"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think automation in manufacturing is primarily a threat or an opportunity for workers? What is your reasoning?"
+        }
+      },
+      {
+        "id": "47B",
+        "candidate": "Candidate B",
+        "topic": "AI in service industries",
+        "instructions": "Compare two of the pictures, and say what the potential benefits and drawbacks of artificial intelligence in the service sector might be.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test47_1d.jpg",
+            "description": "A customer interacting with an AI-powered service robot in a hotel lobby, the robot providing directions and answering questions from a screen"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test47_1e.jpg",
+            "description": "A bank employee helping a customer at a desk, with a note on the wall advertising an AI chatbot service as an alternative"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test47_1f.jpg",
+            "description": "A person speaking with a virtual AI assistant on a smartphone, clearly asking for advice while sitting in a quiet café"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think AI customer service can ever fully replace human interaction, or are there situations where a human is always necessary?"
+        }
+      }
+    ]
+  }
+}

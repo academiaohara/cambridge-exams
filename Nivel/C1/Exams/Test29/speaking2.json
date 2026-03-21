@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "29A",
+        "candidate": "Candidate A",
+        "topic": "People reading in libraries",
+        "instructions": "Compare two of the pictures, and say what people might value about reading and libraries and how reading habits might differ across generations.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test29_1a.jpg",
+            "description": "A child sitting cross-legged on a colourful bean bag in a school library, completely absorbed in a large illustrated storybook"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test29_1b.jpg",
+            "description": "A university student surrounded by towering stacks of academic books in a grand library, taking handwritten notes with intense concentration"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test29_1c.jpg",
+            "description": "An elderly man sitting in an armchair by a window in a public library, reading a broadsheet newspaper with a cup of tea beside him"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think physical libraries are still relevant in the digital age? Why or why not?"
+        }
+      },
+      {
+        "id": "29B",
+        "candidate": "Candidate B",
+        "topic": "Digital reading and e-books",
+        "instructions": "Compare two of the pictures, and say what the advantages and disadvantages of digital reading might be compared to physical books.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test29_1d.jpg",
+            "description": "A commuter on a busy train reading from a sleek e-reader, surrounded by other passengers who are scrolling on their phones"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test29_1e.jpg",
+            "description": "A person in bed reading from a tablet in a dimly lit room, the screen casting a faint blue glow on their face"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test29_1f.jpg",
+            "description": "A child and parent sharing a digital storybook on a large screen, the child pointing excitedly at the animated illustrations"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you prefer reading physical books or digital ones, and what do you think each format offers that the other cannot?"
+        }
+      }
+    ]
+  }
+}

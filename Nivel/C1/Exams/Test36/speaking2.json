@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "36A",
+        "candidate": "Candidate A",
+        "topic": "Museums and cultural heritage",
+        "instructions": "Compare two of the pictures, and say what role museums play in society and how people's engagement with cultural heritage might differ.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test36_1a.jpg",
+            "description": "A family with young children looking up in awe at a towering dinosaur skeleton in a natural history museum, the children pointing excitedly"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test36_1b.jpg",
+            "description": "A solo visitor standing quietly in front of a famous painting in an art gallery, studying it closely with a contemplative expression"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test36_1c.jpg",
+            "description": "A school group on a guided tour of an archaeological museum, a teacher pointing at ancient artefacts displayed in a glass case"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think museums should be free for everyone to enter? What are the arguments for and against?"
+        }
+      },
+      {
+        "id": "36B",
+        "candidate": "Candidate B",
+        "topic": "Preserving historic buildings",
+        "instructions": "Compare two of the pictures, and say what challenges are involved in preserving historic buildings and why it might be important.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test36_1d.jpg",
+            "description": "Restoration workers carefully cleaning the stone facade of a centuries-old cathedral, using specialist equipment and scaffolding"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test36_1e.jpg",
+            "description": "A crumbling historic mansion surrounded by overgrown gardens, with broken windows and a weathered sign declaring it a protected heritage site"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test36_1f.jpg",
+            "description": "A modern glass office building built immediately next to a Georgian terrace, creating a striking architectural contrast on the city street"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "When a historic building is very expensive to maintain, should it be demolished to make way for something new? What factors should be considered?"
+        }
+      }
+    ]
+  }
+}

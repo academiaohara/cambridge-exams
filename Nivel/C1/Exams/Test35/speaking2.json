@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "35A",
+        "candidate": "Candidate A",
+        "topic": "Journalism and news reporting",
+        "instructions": "Compare two of the pictures, and say what challenges journalists face in reporting the news and what qualities make good journalism.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test35_1a.jpg",
+            "description": "A war correspondent in a flak jacket reporting live from a conflict zone, holding a microphone with smoke and ruins visible behind them"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test35_1b.jpg",
+            "description": "A journalist interviewing a politician outside a government building, holding a recorder while a camera crew films the exchange"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test35_1c.jpg",
+            "description": "An investigative journalist in a newspaper office late at night, surrounded by printed documents and sticky notes, working intensely on a story"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "What qualities do you think are most important for a journalist to have, and why?"
+        }
+      },
+      {
+        "id": "35B",
+        "candidate": "Candidate B",
+        "topic": "Fake news and online information",
+        "instructions": "Compare two of the pictures, and say what the dangers of misinformation online might be and how people can protect themselves from it.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test35_1d.jpg",
+            "description": "A screenshot of a social media feed showing a sensational headline being shared thousands of times, with no credible source listed"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test35_1e.jpg",
+            "description": "A fact-checker at a computer desk carefully analysing an article, with multiple browser tabs open comparing different sources"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test35_1f.jpg",
+            "description": "A person looking alarmed as they read news on their phone, surrounded by friends who are gesturing and talking, clearly discussing the story"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think social media companies have a responsibility to remove fake news from their platforms? What are the challenges in doing this?"
+        }
+      }
+    ]
+  }
+}

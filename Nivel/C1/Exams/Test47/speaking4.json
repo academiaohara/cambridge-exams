@@ -1,0 +1,43 @@
+{
+  "title": "Speaking - Part 4",
+  "type": "multiple-choice-text",
+  "time": 2.5,
+  "totalQuestions": 6,
+  "description": "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
+  "content": {
+    "task": "Discussion on automation and the future of jobs.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Do you think artificial intelligence and automation will ultimately create more jobs than they destroy, or is mass unemployment inevitable?"
+      },
+      {
+        "number": 2,
+        "question": "What responsibilities do governments and companies have to workers whose jobs are replaced by automation?"
+      }
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
+    "script": [
+      {
+        "role": "examiner",
+        "text": "Do you think artificial intelligence and automation will ultimately create more jobs than they destroy, or is mass unemployment inevitable?"
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Thank you. That is the end of the test."
+      }
+    ]
+  }
+}
