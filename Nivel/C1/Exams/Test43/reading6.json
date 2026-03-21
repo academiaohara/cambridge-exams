@@ -7,36 +7,56 @@
   "content": {
     "title": "AI and the Future of the Justice System",
     "texts": {
-      "A": "The integration of AI into judicial sentencing is a logical step toward eliminating human bias. Judges, being human, are subject to fatigue, personal prejudices, and 'analysis paralysis.' An algorithm, trained on vast datasets of legal precedents, offers a level of consistency that a courtroom has never seen. This is not about replacing the judge, but about providing a 'mathematical anchor' for fairness. While some fear the 'black box' of AI, I believe the real danger is the 'black box' of the human mind, which is far harder to audit than a line of code.",
-      "B": "The idea that algorithms are 'neutral' is a dangerous fallacy. AI models are trained on historical data, which means they often codify and amplify existing systemic inequalities. If the past was biased, the AI will be biased, but with a veneer of scientific authority that makes it harder to challenge. We are essentially automating injustice. A judge's role is not just to apply a formula, but to understand the unique human context and the potential for redemption—qualities that a machine, by definition, lacks.",
-      "C": "I share the view that human judges are fallible, but the solution is not to hand over the gavel to a corporation. Most legal AI is proprietary, meaning the public cannot see how decisions are being made. I agree that AI could be a useful tool for administrative tasks—organizing evidence or checking for procedural errors—but it should never be used to determine a person's liberty. However, I disagree that 'human context' is always a benefit; often, it is exactly where the most harmful biases creep into the system.",
-      "D": "The debate over AI in law focuses too much on 'sentencing' and not enough on 'access.' The real revolution will be in providing low-cost legal advice to those who cannot afford a lawyer. AI can democratize justice by helping people navigate complex bureaucracies. While I share the skepticism regarding the transparency of these systems, I believe that with strict open-source requirements, we can create an AI that is more accountable than any human committee. The focus should be on the 'explainability' of the code, not on banning the technology.",
+      "A": "The integration of AI into judicial sentencing is a logical step toward eliminating human bias. Judges, being human, are subject to fatigue, personal prejudices, and 'analysis paralysis.' [37]An algorithm, trained on vast datasets of legal precedents, offers a level of consistency that a courtroom has never seen.[/37] This is not about replacing the judge, but about providing a 'mathematical anchor' for fairness. [39]While some fear the 'black box' of AI, I believe the real danger is the 'black box' of the human mind, which is far harder to audit than a line of code.[/39]",
+      "B": "The idea that algorithms are 'neutral' is a dangerous fallacy. [37]AI models are trained on historical data, which means they often codify and amplify existing systemic inequalities.[/37] If the past was biased, the AI will be biased, but with a veneer of scientific authority that makes it harder to challenge. We are essentially automating injustice. [40]A judge's role is not just to apply a formula, but to understand the unique human context and the potential for redemption—qualities that a machine, by definition, lacks.[/40]",
+      "C": "[39]I share the view that human judges are fallible, but the solution is not to hand over the gavel to a corporation.[/39] [38]Most legal AI is proprietary, meaning the public cannot see how decisions are being made.[/38] I agree that AI could be a useful tool for administrative tasks—organizing evidence or checking for procedural errors—but it should never be used to determine a person's liberty. However, [40]I disagree that 'human context' is always a benefit; often, it is exactly where the most harmful biases creep into the system.[/40]",
+      "D": "The debate over AI in law focuses too much on 'sentencing' and not enough on 'access.' The real revolution will be in providing low-cost legal advice to those who cannot afford a lawyer. AI can democratize justice by helping people navigate complex bureaucracies. [38]While I share the skepticism regarding the transparency of these systems, I believe that with strict open-source requirements, we can create an AI that is more accountable than any human committee.[/38] The focus should be on the 'explainability' of the code, not on banning the technology.",
       "questions": [
         {
           "number": 37,
           "question": "Which expert has a different view from A on whether AI increases fairness in sentencing?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "B",
           "explanation": "Expert A argues AI offers a 'mathematical anchor' for fairness and eliminates bias. Expert B argues AI 'codifies and amplifies' existing inequalities, effectively 'automating injustice.'"
         },
         {
           "number": 38,
           "question": "Which expert shares C's concern about the lack of transparency in current legal AI systems?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "D",
           "explanation": "Expert C mentions that most legal AI is 'proprietary' and hidden. Expert D also 'shares the skepticism regarding the transparency of these systems' and calls for open-source requirements."
         },
         {
           "number": 39,
           "question": "Which expert expresses a similar view to A regarding the inherent flaws of human judgment?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "C",
           "explanation": "Expert A speaks of the 'black box' of the human mind and personal prejudices. Expert C also 'shares the view that human judges are fallible' and that human context is where 'harmful biases creep in.'"
         },
         {
           "number": 40,
           "question": "Which expert has a different view from B on whether the unique 'human context' is an essential part of justice?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "C",
           "explanation": "Expert B believes a judge must 'understand the unique human context' for justice. Expert C disagrees, stating that 'human context' is often where harmful biases enter the system."
         }
