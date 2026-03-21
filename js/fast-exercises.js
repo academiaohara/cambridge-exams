@@ -177,7 +177,12 @@
       return div.innerHTML;
     },
 
-    // ── MAIN CATEGORIES VIEW ─────────────────────────────────────────────
+    // Escape a string for safe embedding in a JS single-quoted string literal
+    _jsStr: function(str) {
+      return (str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    },
+
+
     openCategories: async function() {
       var content = document.getElementById('main-content');
       if (!content) return;
@@ -676,30 +681,77 @@
       var lessonData = await this._loadLessonData(categoryId, levelId, lessonId);
       var catData = await this._loadCategoryData(categoryId);
 
-      if (!lessonData || !lessonData.points || !lessonData.points[pointIndex]) {
-        // No detailed lesson data - mark complete and show simple view
-        this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
-
-        // Get point info from levels.json
-        var pointLabel = 'Point ' + (pointIndex + 1);
-        var pointType = 'explanation';
-        if (catData && catData.levels) {
-          for (var i = 0; i < catData.levels.length; i++) {
-            if (catData.levels[i].id === levelId && catData.levels[i].lessons) {
-              for (var j = 0; j < catData.levels[i].lessons.length; j++) {
-                if (catData.levels[i].lessons[j].id === lessonId && catData.levels[i].lessons[j].points) {
-                  var pt = catData.levels[i].lessons[j].points[pointIndex];
-                  if (pt) { pointLabel = pt.label; pointType = pt.type; }
+      // Get point metadata from levels.json
+      var pointLabel = 'Point ' + (pointIndex + 1);
+      var pointType = 'explanation';
+      var lessonTitle = lessonId;
+      if (catData && catData.levels) {
+        for (var i = 0; i < catData.levels.length; i++) {
+          if (catData.levels[i].id === levelId && catData.levels[i].lessons) {
+            for (var j = 0; j < catData.levels[i].lessons.length; j++) {
+              var lsn = catData.levels[i].lessons[j];
+              if (lsn.id === lessonId) {
+                lessonTitle = lsn.title || lessonId;
+                if (lsn.points && lsn.points[pointIndex]) {
+                  pointLabel = lsn.points[pointIndex].label || pointLabel;
+                  pointType  = lsn.points[pointIndex].type  || pointType;
                 }
               }
             }
           }
         }
+      }
 
-        var catMeta = null;
-        for (var c = 0; c < CATEGORIES.length; c++) {
-          if (CATEGORIES[c].id === categoryId) { catMeta = CATEGORIES[c]; break; }
+      var catMeta = null;
+      for (var c = 0; c < CATEGORIES.length; c++) {
+        if (CATEGORIES[c].id === categoryId) { catMeta = CATEGORIES[c]; break; }
+      }
+
+      // ── New PV point types (read from lesson-level fields) ──────────────
+      var pvTypes = ['pv-gallery', 'pv-fill-in', 'pv-conversations', 'pv-conversation-drag', 'pv-mixed'];
+      if (pvTypes.indexOf(pointType) !== -1) {
+        if (!lessonData || (!lessonData.phrasalVerbs && !lessonData.fillInExercises && !lessonData.conversations)) {
+          // Data file not available yet
+          this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
+          content.innerHTML =
+            '<div class="fe-point-view">' +
+              '<div class="subpage-header">' +
+                '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')">' + t('back', 'Back') + '</button>' +
+                '<div>' +
+                  '<div class="subpage-title">' + self._escapeHTML(pointLabel) + '</div>' +
+                  '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle) + '</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="fe-point-card">' +
+                '<div class="fe-point-icon">' + _mi('description') + '</div>' +
+                '<div class="fe-point-message">' + t('contentComingSoon', 'Detailed content coming soon! Point marked as complete.') + '</div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#3b82f6') + '">' +
+                  t('next', 'Next') + ' →' +
+                '</button>' +
+              '</div>' +
+            '</div>';
+          return;
         }
+        if (pointType === 'pv-gallery') {
+          this._renderPvGallery(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+        } else if (pointType === 'pv-fill-in') {
+          this._renderPvFillIn(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+        } else if (pointType === 'pv-conversations') {
+          this._renderPvConversations(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+        } else if (pointType === 'pv-conversation-drag') {
+          this._renderPvConversationDrag(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+        } else if (pointType === 'pv-mixed') {
+          this._renderPvMixed(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+        }
+        var pvState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
+        history.pushState(pvState, '', Router.stateToPath(pvState));
+        return;
+      }
+
+      // ── Legacy point types (read from lesson JSON's points array) ────────
+      if (!lessonData || !lessonData.points || !lessonData.points[pointIndex]) {
+        // No detailed lesson data - mark complete and show simple view
+        this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
 
         content.innerHTML =
           '<div class="fe-point-view">' +
@@ -722,10 +774,6 @@
       }
 
       var point = lessonData.points[pointIndex];
-      var catMeta = null;
-      for (var c = 0; c < CATEGORIES.length; c++) {
-        if (CATEGORIES[c].id === categoryId) { catMeta = CATEGORIES[c]; break; }
-      }
 
       if (point.type === 'explanation') {
         this._renderExplanationPoint(content, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
@@ -733,16 +781,6 @@
         this._renderExercisePoint(content, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
       } else if (point.type === 'trophy') {
         this._renderExercisePoint(content, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
-      } else if (point.type === 'pv-gallery') {
-        this._renderPvGallery(content, lessonData, catMeta, levelId, lessonId, lessonData.title, pointIndex);
-      } else if (point.type === 'pv-fill-in') {
-        this._renderPvFillIn(content, lessonData, catMeta, levelId, lessonId, lessonData.title, pointIndex);
-      } else if (point.type === 'pv-conversations') {
-        this._renderPvConversations(content, lessonData, catMeta, levelId, lessonId, lessonData.title, pointIndex);
-      } else if (point.type === 'pv-conversation-drag') {
-        this._renderPvConversationDrag(content, lessonData, catMeta, levelId, lessonId, lessonData.title, pointIndex);
-      } else if (point.type === 'pv-mixed') {
-        this._renderPvMixed(content, lessonData, catMeta, levelId, lessonId, lessonData.title, pointIndex);
       }
 
       var pointState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
@@ -1027,14 +1065,14 @@
         if (ex.type === 'multiple-choice') {
           var optHtml = '';
           (ex.options || []).forEach(function(opt) {
-            optHtml += '<button class="fe-quiz-option" data-question="pf' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerPvFillIn(this,' + qi + ',\'' + self._escapeHTML((ex.correct || '').replace(/'/g, "\\'")) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')">' + self._escapeHTML(opt) + '</button>';
+            optHtml += '<button class="fe-quiz-option" data-question="pf' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerPvFillIn(this,' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')">' + self._escapeHTML(opt) + '</button>';
           });
           inputHtml = '<div class="fe-quiz-options">' + optHtml + '</div>';
         } else if (ex.type === 'write-verb') {
           inputHtml = '<div class="pv-write-row">' +
             (ex.hint ? '<span class="pv-write-hint">' + self._escapeHTML(ex.hint) + '</span>' : '') +
             '<input type="text" class="pv-write-input" id="pv-write-' + qi + '" placeholder="' + t('typeVerb', 'Type the verb…') + '" />' +
-            '<button class="pv-write-btn" onclick="FastExercises._checkPvWriteVerb(' + qi + ',\'' + self._escapeHTML((ex.correct || '').replace(/'/g, "\\'")) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('check', 'Check') + '</button>' +
+            '<button class="pv-write-btn" onclick="FastExercises._checkPvWriteVerb(' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('check', 'Check') + '</button>' +
           '</div>';
         }
 
@@ -1435,14 +1473,14 @@
           if (ex.type === 'multiple-choice') {
             var optHtml = '';
             (ex.options || []).forEach(function(opt) {
-              optHtml += '<button class="fe-quiz-option" data-question="pm' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerPvMixed(this,' + qi + ',\'' + self._escapeHTML((ex.correct || '').replace(/'/g, "\\'")) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ',\'fillin\')">' + self._escapeHTML(opt) + '</button>';
+              optHtml += '<button class="fe-quiz-option" data-question="pm' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerPvMixed(this,' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ',\'fillin\')">' + self._escapeHTML(opt) + '</button>';
             });
             inputHtml = '<div class="fe-quiz-options">' + optHtml + '</div>';
           } else if (ex.type === 'write-verb') {
             inputHtml = '<div class="pv-write-row">' +
               (ex.hint ? '<span class="pv-write-hint">' + self._escapeHTML(ex.hint) + '</span>' : '') +
               '<input type="text" class="pv-write-input" id="pv-mx-write-' + qi + '" placeholder="' + t('typeVerb', 'Type the verb…') + '" />' +
-              '<button class="pv-write-btn" onclick="FastExercises._checkPvMixedWrite(' + qi + ',\'' + self._escapeHTML((ex.correct || '').replace(/'/g, "\\'")) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('check', 'Check') + '</button>' +
+              '<button class="pv-write-btn" onclick="FastExercises._checkPvMixedWrite(' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('check', 'Check') + '</button>' +
             '</div>';
           }
           questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
@@ -1458,7 +1496,7 @@
           var opts = [ds.correct].concat(distractors).sort(function() { return Math.random() - 0.5; });
           var optHtml = '';
           opts.forEach(function(opt) {
-            optHtml += '<button class="fe-quiz-option" data-question="pm' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerPvMixed(this,' + qi + ',\'' + self._escapeHTML((ds.correct || '').replace(/'/g, "\\'")) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ',\'conv\')">' + self._escapeHTML(opt) + '</button>';
+            optHtml += '<button class="fe-quiz-option" data-question="pm' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerPvMixed(this,' + qi + ',\'' + self._jsStr(ds.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ',\'conv\')">' + self._escapeHTML(opt) + '</button>';
           });
           questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
             '<div class="fe-quiz-num">' + t('question', 'Question') + ' ' + (qi + 1) + '/' + mixed.length + '</div>' +
