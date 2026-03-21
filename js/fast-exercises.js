@@ -20,6 +20,8 @@
     _currentPointIndex: 0,
     _pvSelectedChip: null,
     _pvDragContext: null,
+    _currentMapPage: 0,
+    _currentPvVerbs: [],
 
     // ── Progress Storage ─────────────────────────────────────────────────
     _getProgress: function() {
@@ -298,8 +300,20 @@
       // ── RIGHT WIDGET: Quick Review Mixer ──
       var rightWidget = this._buildQuickReviewWidget(catMeta, data);
 
-      // ── BOTTOM: Progress bar ──
+      // ── PROGRESS BAR ──
       var bottomBar = this._buildBottomProgressBar(catMeta, data, activeLevel);
+
+      // ── LEGEND (PV only) ──
+      var legendHtml = '';
+      if (categoryId === 'phrasal-verbs') {
+        legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-gallery fe-dot-mini fe-dot-outline">' + _mi('collections_bookmark') + '</span> ' + t('gallery', 'Gallery') + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-fill-in fe-dot-mini fe-dot-outline">' + _mi('edit') + '</span> ' + t('fillIn', 'Fill In') + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-conv fe-dot-mini fe-dot-outline">' + _mi('forum') + '</span> ' + t('conversations', 'Conversations') + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini fe-dot-outline">' + _mi('drag_indicator') + '</span> ' + t('dragDrop', 'Drag & Drop') + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini fe-dot-outline">' + _mi('shuffle') + '</span> ' + t('mixed', 'Mixed') + '</span>' +
+        '</div>';
+      }
 
       content.innerHTML =
         '<div class="dashboard-layout">' +
@@ -314,9 +328,10 @@
                 '</div>' +
                 (categoryId === 'phrasal-verbs' ? '<button class="subpage-info-btn" onclick="FastExercises._showPvInfoModal()" title="' + t('whatArePhrasalVerbs', 'What are phrasal verbs?') + '">' + _mi('info') + '</button>' : '') +
               '</div>' +
+              bottomBar +
+              legendHtml +
               centerMap +
             '</div>' +
-            bottomBar +
           '</div>' +
           '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightWidget + '</div>' +
         '</div>';
@@ -457,6 +472,7 @@
     _buildProgressionMap: function(catMeta, data, activeLevel) {
       var self = this;
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var LESSONS_PER_PAGE = 4;
 
       var level = null;
       for (var i = 0; i < data.levels.length; i++) {
@@ -466,130 +482,200 @@
         return '<div class="fe-map-empty">' + t('noLessonsAvailable', 'No lessons available for this level yet.') + '</div>';
       }
 
-      var html = '<div class="fe-map-container">';
+      var totalLessons = level.lessons.length;
+      var totalPages = Math.ceil(totalLessons / LESSONS_PER_PAGE);
 
-      for (var li = 0; li < level.lessons.length; li++) {
-        var lesson = level.lessons[li];
-        var lessonComplete = true;
-        var lessonStarted = false;
-
-        // Lessons are never locked — all are freely accessible
-        var lessonLocked = false;
-
-        // Check lesson status
-        if (lesson.points) {
-          for (var pi = 0; pi < lesson.points.length; pi++) {
-            if (!self._isPointComplete(catMeta.id, activeLevel, lesson.id, pi)) {
-              lessonComplete = false;
-            } else {
-              lessonStarted = true;
+      // Find page containing the first incomplete lesson
+      var firstIncompleteLessonIdx = totalLessons - 1;
+      var foundIncomplete = false;
+      for (var si = 0; si < level.lessons.length; si++) {
+        var sl = level.lessons[si];
+        if (sl.points) {
+          for (var spi = 0; spi < sl.points.length; spi++) {
+            if (!self._isPointComplete(catMeta.id, activeLevel, sl.id, spi)) {
+              firstIncompleteLessonIdx = si;
+              foundIncomplete = true;
+              break;
             }
           }
         }
+        if (foundIncomplete) break;
+      }
+      var initialPage = Math.floor(firstIncompleteLessonIdx / LESSONS_PER_PAGE);
+      this._currentMapPage = initialPage;
 
-        var lessonClass = lessonLocked ? 'fe-lesson-locked' : (lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending'));
+      var html = '<div class="fe-map-outer' + (totalPages <= 1 ? ' fe-map-single-page' : '') + '">';
 
-        html += '<div class="fe-map-lesson ' + lessonClass + '">' +
-          '<div class="fe-map-lesson-title">' +
-            '<span class="fe-map-lesson-num">' + t('lesson', 'Lesson') + ' ' + (li + 1) + '</span>' +
-            '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
-          '</div>' +
-          '<div class="fe-map-points-row">';
-
-        if (lesson.points) {
-          for (var pi = 0; pi < lesson.points.length; pi++) {
-            var point = lesson.points[pi];
-            var isDone = self._isPointComplete(catMeta.id, activeLevel, lesson.id, pi);
-
-            // All points are freely accessible, EXCEPT the last pv-mixed which
-            // requires all previous points in the lesson to be done first.
-            var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1);
-            var isAccessible = true;
-            if (isLastPvMixed) {
-              for (var prev = 0; prev < pi; prev++) {
-                if (!self._isPointComplete(catMeta.id, activeLevel, lesson.id, prev)) {
-                  isAccessible = false;
-                  break;
-                }
-              }
-            }
-
-            // Review points render as rows (styled like fe-level-item)
-            if (point.type === 'review') {
-              var reviewStateClass = isDone ? 'fe-level-active' : (isAccessible ? 'fe-level-unlocked' : 'fe-level-locked');
-              var reviewIcon = isDone ? _mi('check_circle') : (isAccessible ? _mi('rate_review') : _mi('lock'));
-              var reviewOnclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + activeLevel + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
-              html += '<div class="fe-review-row fe-level-item ' + reviewStateClass + '" ' + reviewOnclick + '>' +
-                '<span class="fe-level-icon">' + reviewIcon + '</span>' +
-                '<div class="fe-level-label">' +
-                  '<span class="fe-level-name">' + self._escapeHTML(point.label || t('review', 'Review')) + '</span>' +
-                  '<span class="fe-level-pct">' + (isDone ? t('completed', 'Completed') : (isAccessible ? t('available', 'Available') : t('locked', 'Locked'))) + '</span>' +
-                '</div>' +
-              '</div>';
-              continue;
-            }
-
-            var dotClass = 'fe-dot';
-            var dotIcon = '';
-            if (point.type === 'explanation') {
-              dotClass += ' fe-dot-explanation';
-              dotIcon = isDone ? _mi('check') : _mi('article');
-            } else if (point.type === 'exercise') {
-              dotClass += ' fe-dot-exercise';
-              dotIcon = isDone ? _mi('check') : _mi('fitness_center');
-            } else if (point.type === 'trophy') {
-              dotClass += ' fe-dot-trophy';
-              dotIcon = isDone ? _mi('check') : _mi('emoji_events');
-            } else if (point.type === 'pv-gallery') {
-              dotClass += ' fe-dot-pv-gallery';
-              dotIcon = isDone ? _mi('check') : _mi('collections_bookmark');
-            } else if (point.type === 'pv-fill-in') {
-              dotClass += ' fe-dot-pv-fill-in';
-              dotIcon = isDone ? _mi('check') : _mi('edit');
-            } else if (point.type === 'pv-conversations') {
-              dotClass += ' fe-dot-pv-conv';
-              dotIcon = isDone ? _mi('check') : _mi('forum');
-            } else if (point.type === 'pv-conversation-drag') {
-              dotClass += ' fe-dot-pv-drag';
-              dotIcon = isDone ? _mi('check') : _mi('drag_indicator');
-            } else if (point.type === 'pv-mixed') {
-              dotClass += ' fe-dot-pv-mixed';
-              dotIcon = isDone ? _mi('check') : _mi('shuffle');
-            }
-
-            if (isDone) dotClass += ' fe-dot-done';
-            else if (!isAccessible) dotClass += ' fe-dot-locked';
-
-            var onclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + activeLevel + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
-            var tooltip = self._escapeHTML(point.label || '');
-
-            html += (pi > 0 ? '<div class="fe-map-line"></div>' : '') +
-              '<div class="' + dotClass + '" ' + onclick + ' title="' + tooltip + '">' +
-                '<span class="fe-dot-icon">' + dotIcon + '</span>' +
-              '</div>';
-          }
+      // Navigation dots sidebar (only for multi-page)
+      if (totalPages > 1) {
+        html += '<div class="fe-map-page-dots" id="fe-map-page-dots">';
+        for (var p = 0; p < totalPages; p++) {
+          var startL = p * LESSONS_PER_PAGE + 1;
+          var endL = Math.min((p + 1) * LESSONS_PER_PAGE, totalLessons);
+          html += '<div class="fe-map-page-dot' + (p === initialPage ? ' fe-map-page-dot-active' : '') + '" data-page="' + p + '" onclick="FastExercises._goToMapPage(' + p + ')" title="' + t('lessons', 'Lessons') + ' ' + startL + '\u2013' + endL + '"></div>';
         }
-
-        html += '</div></div>';
-
-        // Connector between lessons
-        if (li < level.lessons.length - 1) {
-          html += '<div class="fe-map-connector"></div>';
-        }
+        html += '</div>';
       }
 
-      html += '</div>';
+      html += '<div class="fe-map-main">';
 
-      // Legend (only PV-relevant dot types)
-      html += '<div class="fe-map-legend">' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-gallery fe-dot-mini fe-dot-outline">' + _mi('collections_bookmark') + '</span> ' + t('gallery', 'Gallery') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-fill-in fe-dot-mini fe-dot-outline">' + _mi('edit') + '</span> ' + t('fillIn', 'Fill In') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-conv fe-dot-mini fe-dot-outline">' + _mi('forum') + '</span> ' + t('conversations', 'Conversations') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini fe-dot-outline">' + _mi('drag_indicator') + '</span> ' + t('dragDrop', 'Drag & Drop') + '</span>' +
-        '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini fe-dot-outline">' + _mi('shuffle') + '</span> ' + t('mixed', 'Mixed') + '</span>' +
-      '</div>';
+      // Up arrow
+      if (totalPages > 1) {
+        html += '<button class="fe-map-arrow-btn fe-map-arrow-up" id="fe-map-arrow-up" onclick="FastExercises._goToMapPage(FastExercises._currentMapPage - 1)"' + (initialPage === 0 ? ' style="visibility:hidden"' : '') + '>' + _mi('expand_less') + '</button>';
+      }
+
+      // Pages
+      for (var p = 0; p < totalPages; p++) {
+        html += '<div class="fe-map-page' + (p === initialPage ? ' fe-map-page-active' : '') + '" data-page="' + p + '">';
+        html += '<div class="fe-map-container">';
+        var lessonStart = p * LESSONS_PER_PAGE;
+        var lessonEnd = Math.min((p + 1) * LESSONS_PER_PAGE, totalLessons);
+
+        for (var li = lessonStart; li < lessonEnd; li++) {
+          var lesson = level.lessons[li];
+          var lessonComplete = true;
+          var lessonStarted = false;
+          var lessonLocked = false;
+
+          if (lesson.points) {
+            for (var pi = 0; pi < lesson.points.length; pi++) {
+              if (!self._isPointComplete(catMeta.id, activeLevel, lesson.id, pi)) {
+                lessonComplete = false;
+              } else {
+                lessonStarted = true;
+              }
+            }
+          }
+
+          var lessonClass = lessonLocked ? 'fe-lesson-locked' : (lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending'));
+
+          html += '<div class="fe-map-lesson ' + lessonClass + '">' +
+            '<div class="fe-map-lesson-title">' +
+              '<span class="fe-map-lesson-num">' + t('lesson', 'Lesson') + ' ' + (li + 1) + '</span>' +
+              '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
+            '</div>' +
+            '<div class="fe-map-points-row">';
+
+          if (lesson.points) {
+            for (var pi = 0; pi < lesson.points.length; pi++) {
+              var point = lesson.points[pi];
+              var isDone = self._isPointComplete(catMeta.id, activeLevel, lesson.id, pi);
+
+              var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1);
+              var isAccessible = true;
+              if (isLastPvMixed) {
+                for (var prev = 0; prev < pi; prev++) {
+                  if (!self._isPointComplete(catMeta.id, activeLevel, lesson.id, prev)) {
+                    isAccessible = false;
+                    break;
+                  }
+                }
+              }
+
+              // Review points render as rows
+              if (point.type === 'review') {
+                var reviewStateClass = isDone ? 'fe-level-active' : (isAccessible ? 'fe-level-unlocked' : 'fe-level-locked');
+                var reviewIcon = isDone ? _mi('check_circle') : (isAccessible ? _mi('rate_review') : _mi('lock'));
+                var reviewOnclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + activeLevel + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
+                html += '<div class="fe-review-row fe-level-item ' + reviewStateClass + '" ' + reviewOnclick + '>' +
+                  '<span class="fe-level-icon">' + reviewIcon + '</span>' +
+                  '<div class="fe-level-label">' +
+                    '<span class="fe-level-name">' + self._escapeHTML(point.label || t('review', 'Review')) + '</span>' +
+                    '<span class="fe-level-pct">' + (isDone ? t('completed', 'Completed') : (isAccessible ? t('available', 'Available') : t('locked', 'Locked'))) + '</span>' +
+                  '</div>' +
+                '</div>';
+                continue;
+              }
+
+              var dotClass = 'fe-dot';
+              var dotIcon = '';
+              if (point.type === 'explanation') {
+                dotClass += ' fe-dot-explanation';
+                dotIcon = isDone ? _mi('check') : _mi('article');
+              } else if (point.type === 'exercise') {
+                dotClass += ' fe-dot-exercise';
+                dotIcon = isDone ? _mi('check') : _mi('fitness_center');
+              } else if (point.type === 'trophy') {
+                dotClass += ' fe-dot-trophy';
+                dotIcon = isDone ? _mi('check') : _mi('emoji_events');
+              } else if (point.type === 'pv-gallery') {
+                dotClass += ' fe-dot-pv-gallery';
+                dotIcon = isDone ? _mi('check') : _mi('collections_bookmark');
+              } else if (point.type === 'pv-fill-in') {
+                dotClass += ' fe-dot-pv-fill-in';
+                dotIcon = isDone ? _mi('check') : _mi('edit');
+              } else if (point.type === 'pv-conversations') {
+                dotClass += ' fe-dot-pv-conv';
+                dotIcon = isDone ? _mi('check') : _mi('forum');
+              } else if (point.type === 'pv-conversation-drag') {
+                dotClass += ' fe-dot-pv-drag';
+                dotIcon = isDone ? _mi('check') : _mi('drag_indicator');
+              } else if (point.type === 'pv-mixed') {
+                dotClass += ' fe-dot-pv-mixed';
+                dotIcon = isDone ? _mi('check') : _mi('shuffle');
+              }
+
+              if (isDone) {
+                dotClass += ' fe-dot-done';
+              } else if (!isAccessible) {
+                dotClass += ' fe-dot-locked';
+              } else {
+                dotClass += ' fe-dot-outline';
+              }
+
+              var onclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + activeLevel + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
+              var tooltip = self._escapeHTML(point.label || '');
+
+              html += (pi > 0 ? '<div class="fe-map-line"></div>' : '') +
+                '<div class="' + dotClass + '" ' + onclick + ' title="' + tooltip + '">' +
+                  '<span class="fe-dot-icon">' + dotIcon + '</span>' +
+                '</div>';
+            }
+          }
+
+          html += '</div></div>';
+
+          if (li < lessonEnd - 1) {
+            html += '<div class="fe-map-connector"></div>';
+          }
+        }
+
+        html += '</div>'; // fe-map-container
+        html += '</div>'; // fe-map-page
+      }
+
+      // Down arrow
+      if (totalPages > 1) {
+        html += '<button class="fe-map-arrow-btn fe-map-arrow-down" id="fe-map-arrow-down" onclick="FastExercises._goToMapPage(FastExercises._currentMapPage + 1)"' + (initialPage === totalPages - 1 ? ' style="visibility:hidden"' : '') + '>' + _mi('expand_more') + '</button>';
+      }
+
+      html += '</div>'; // fe-map-main
+      html += '</div>'; // fe-map-outer
 
       return html;
+    },
+
+    // ── MAP PAGE NAVIGATION ───────────────────────────────────────────────
+    _goToMapPage: function(pageIdx) {
+      var pages = document.querySelectorAll('.fe-map-page');
+      var totalPages = pages.length;
+      if (totalPages === 0) return;
+      pageIdx = Math.max(0, Math.min(totalPages - 1, pageIdx));
+      this._currentMapPage = pageIdx;
+
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.toggle('fe-map-page-active', parseInt(pages[i].getAttribute('data-page')) === pageIdx);
+      }
+
+      var dots = document.querySelectorAll('.fe-map-page-dot');
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('fe-map-page-dot-active', parseInt(dots[i].getAttribute('data-page')) === pageIdx);
+      }
+
+      var upArrow = document.getElementById('fe-map-arrow-up');
+      var downArrow = document.getElementById('fe-map-arrow-down');
+      if (upArrow) upArrow.style.visibility = pageIdx === 0 ? 'hidden' : 'visible';
+      if (downArrow) downArrow.style.visibility = pageIdx === totalPages - 1 ? 'hidden' : 'visible';
     },
 
     // ── RIGHT WIDGET ─────────────────────────────────────────────────────
@@ -788,7 +874,7 @@
                 '<div class="fe-point-icon">' + _mi('description') + '</div>' +
                 '<div class="fe-point-message">' + t('contentComingSoon', 'Detailed content coming soon! Point marked as complete.') + '</div>' +
                 '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#3b82f6') + '">' +
-                  t('next', 'Next') + ' →' +
+                  t('next', 'Next') + '' +
                 '</button>' +
               '</div>' +
             '</div>';
@@ -828,7 +914,7 @@
               '<div class="fe-point-icon">' + (pointType === 'trophy' ? _mi('emoji_events') : _mi('description')) + '</div>' +
               '<div class="fe-point-message">' + t('contentComingSoon', 'Detailed content coming soon! Point marked as complete.') + '</div>' +
               '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#3b82f6') + '">' +
-                t('next', 'Next') + ' →' +
+                t('next', 'Next') + '' +
               '</button>' +
             '</div>' +
           '</div>';
@@ -892,7 +978,7 @@
             (examplesHtml ? '<div class="fe-explanation-examples"><h4>' + _mi('lightbulb') + ' ' + t('examples', 'Examples') + '</h4><ul class="fe-example-list">' + examplesHtml + '</ul></div>' : '') +
             relatedHtml +
             '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-              t('gotItNext', 'Got it! Next') + ' →' +
+              t('gotItNext', 'Got it! Next') + '' +
             '</button>' +
           '</div>' +
         '</div>';
@@ -921,7 +1007,7 @@
               '<div class="fe-point-icon">' + (point.type === 'trophy' ? _mi('emoji_events') : _mi('check_circle')) + '</div>' +
               '<div class="fe-point-message">' + t('exerciseComingSoon', 'Exercises for this section coming soon! Point marked as complete.') + '</div>' +
               '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-                t('next', 'Next') + ' →' +
+                t('next', 'Next') + '' +
               '</button>' +
             '</div>' +
           '</div>';
@@ -965,7 +1051,7 @@
               '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
               '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
               '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-                t('next', 'Next') + ' →' +
+                t('next', 'Next') + '' +
               '</button>' +
             '</div>' +
           '</div>' +
@@ -1070,7 +1156,7 @@
 
       if (pvs.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button></div></div>';
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button></div></div>';
         return;
       }
 
@@ -1114,7 +1200,7 @@
           '</div>' +
           '<div class="pv-gallery-footer">' +
             '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-              t('gotItNext', 'Got it! Next') + ' →' +
+              t('gotItNext', 'Got it! Next') + '' +
             '</button>' +
           '</div>' +
         '</div>';
@@ -1157,7 +1243,7 @@
 
       if (exercises.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button></div></div>';
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button></div></div>';
         return;
       }
 
@@ -1203,7 +1289,7 @@
             '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
               '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
               '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
-              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button>' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -1290,9 +1376,12 @@
       var self = this;
       var convs = (lessonData && lessonData.conversations) || [];
 
+      // Store phrasal verbs for popup lookup
+      this._currentPvVerbs = (lessonData && lessonData.phrasalVerbs) || [];
+
       if (convs.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button></div></div>';
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button></div></div>';
         return;
       }
 
@@ -1304,9 +1393,11 @@
         (conv.lines || []).forEach(function(line) {
           if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
           var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
-          var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, '<strong class="pv-highlight">$1</strong>');
+          var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, verb) {
+            return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showPvVerbPopup(\'' + self._jsStr(verb) + '\')" title="' + self._escapeHTML(verb) + '">' + verb + '</strong>';
+          });
           linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
-            '<div class="pv-conv-avatar">' + self._escapeHTML((line.speaker || '').charAt(0)) + '</div>' +
+            self._getAvatarHtml(line.speaker) +
             '<div class="pv-conv-bubble">' +
               '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
               '<span class="pv-conv-text">' + text + '</span>' +
@@ -1343,9 +1434,9 @@
             '</div>' +
           '</div>' +
           '<div class="pv-conv-footer">' +
-            '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + t('pvHighlightHint', 'Phrasal verbs are highlighted in bold. Read carefully before the next exercise.') + '</p>' +
+            '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + t('pvHighlightHint', 'Phrasal verbs are highlighted in bold. Click a highlighted verb to see its definition.') + '</p>' +
             '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-              t('readyNext', 'Ready! Next') + ' →' +
+              t('readyNext', 'Ready! Next') +
             '</button>' +
           '</div>' +
         '</div>';
@@ -1389,7 +1480,7 @@
 
       if (convs.length === 0 || pvs.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button></div></div>';
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button></div></div>';
         return;
       }
 
@@ -1435,7 +1526,7 @@
             '</span>';
           });
           linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
-            '<div class="pv-conv-avatar">' + self._escapeHTML((line.speaker || '').charAt(0)) + '</div>' +
+            self._getAvatarHtml(line.speaker) +
             '<div class="pv-conv-bubble">' +
               '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
               '<span class="pv-conv-text">' + text + '</span>' +
@@ -1475,7 +1566,7 @@
             '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
               '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
               '<div class="pv-drag-result-text" id="pv-drag-result-text"></div>' +
-              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button>' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -1598,7 +1689,7 @@
 
       if (mixed.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button></div></div>';
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button></div></div>';
         return;
       }
 
@@ -1665,7 +1756,7 @@
             '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
               '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
               '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
-              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + ' →</button>' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -1782,6 +1873,69 @@
         // Level complete - go back to map
         this.openCategory(categoryId);
       }
+    },
+
+    // ── PROFILE AVATAR HELPER ────────────────────────────────────────────
+    _getAvatarHtml: function(speakerName) {
+      var PROFILES = ['Aisha','Alex','Anna','Carla','Carlos','Daniel','Elena','Emma',
+        'Fatima','Jack','Javier','Kenji','Lucas','Lucia','Malik','Mateo','Pierre',
+        'Priya','Sofia'];
+      var lname = (speakerName || '').toLowerCase();
+      var matched = null;
+      for (var i = 0; i < PROFILES.length; i++) {
+        if (PROFILES[i].toLowerCase() === lname) { matched = PROFILES[i]; break; }
+      }
+      var initial = (speakerName || '').charAt(0).toUpperCase() || '?';
+      if (matched) {
+        return '<div class="pv-conv-avatar pv-avatar-has-photo" data-initial="' + initial + '">' +
+          '<img class="pv-avatar-img" src="Assets/images/Profiles/' + matched + '.png" ' +
+          'onerror="this.parentNode.classList.remove(\'pv-avatar-has-photo\')" />' +
+          initial +
+        '</div>';
+      }
+      return '<div class="pv-conv-avatar">' + initial + '</div>';
+    },
+
+    // ── PV VERB POPUP ────────────────────────────────────────────────────
+    _showPvVerbPopup: function(verbText) {
+      var verbs = this._currentPvVerbs || [];
+      var pv = null;
+      var lv = (verbText || '').trim().toLowerCase();
+      for (var i = 0; i < verbs.length; i++) {
+        if (verbs[i].verb && verbs[i].verb.trim().toLowerCase() === lv) {
+          pv = verbs[i];
+          break;
+        }
+      }
+      if (!pv) return;
+
+      var existing = document.getElementById('pv-verb-popup');
+      if (existing) existing.remove();
+
+      var popup = document.createElement('div');
+      popup.id = 'pv-verb-popup';
+      popup.className = 'pv-verb-popup-overlay';
+
+      var examplesHtml = '';
+      (pv.examples || []).forEach(function(ex) {
+        examplesHtml += '<li>' + FastExercises._escapeHTML(ex) + '</li>';
+      });
+
+      popup.innerHTML =
+        '<div class="pv-verb-popup-card">' +
+          '<button class="pv-verb-popup-close" onclick="document.getElementById(\'pv-verb-popup\').remove()">' +
+            '<span class="material-symbols-outlined">close</span>' +
+          '</button>' +
+          '<div class="pv-verb-popup-verb">' + FastExercises._escapeHTML(pv.verb || '') + '</div>' +
+          '<div class="pv-verb-popup-def">' + FastExercises._escapeHTML(pv.definition || '') + '</div>' +
+          (examplesHtml ? '<ul class="pv-verb-popup-examples">' + examplesHtml + '</ul>' : '') +
+        '</div>';
+
+      popup.addEventListener('click', function(e) {
+        if (e.target === popup) popup.remove();
+      });
+
+      document.body.appendChild(popup);
     }
   };
 })();
