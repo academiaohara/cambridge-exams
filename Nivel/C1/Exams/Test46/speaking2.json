@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "46A",
+        "candidate": "Candidate A",
+        "topic": "People celebrating traditions",
+        "instructions": "Compare two of the pictures, and say what role traditional celebrations play in people's lives and how these traditions might be changing.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test46_1a.jpg",
+            "description": "A multi-generational family gathered around a large table for a traditional feast, dressed in smart clothes and raising glasses in a toast"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test46_1b.jpg",
+            "description": "Participants in traditional dress performing a folk dance in a town square during a local festival, a crowd of onlookers clapping along"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test46_1c.jpg",
+            "description": "A religious ceremony in a place of worship, candles lit and people bowing their heads in prayer, traditional decorations adorning the space"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think it is important for younger generations to keep traditional celebrations alive, or should traditions naturally evolve and change?"
+        }
+      },
+      {
+        "id": "46B",
+        "candidate": "Candidate B",
+        "topic": "Cultural festivals",
+        "instructions": "Compare two of the pictures, and say what cultural festivals contribute to communities and society and what challenges they might face.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test46_1d.jpg",
+            "description": "A massive outdoor music and arts festival with tens of thousands of people on a sprawling site, stages lit up and crowds dancing"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test46_1e.jpg",
+            "description": "A colourful street parade celebrating a cultural community's heritage, floats decorated with traditional motifs moving through cheering crowds"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test46_1f.jpg",
+            "description": "A small community food festival in a village square, local families at stalls selling traditional homemade dishes to visitors"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think large commercial festivals have lost touch with the cultural traditions they are meant to celebrate? What do you think?"
+        }
+      }
+    ]
+  }
+}

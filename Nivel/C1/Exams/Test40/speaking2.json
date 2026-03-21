@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "40A",
+        "candidate": "Candidate A",
+        "topic": "Languages and language learning",
+        "instructions": "Compare two of the pictures, and say what motivates people to learn new languages and what benefits multilingualism brings.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test40_1a.jpg",
+            "description": "A student sitting at a desk surrounded by language textbooks, vocabulary flashcards and a notebook full of handwritten grammar notes"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test40_1b.jpg",
+            "description": "A traveller navigating a busy market in Morocco, attempting to communicate in Arabic with a stall holder, both gesturing and laughing"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test40_1c.jpg",
+            "description": "A language exchange café where pairs of people are sitting across tables, each teaching the other their native language with visible enthusiasm"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "What do you think is the most effective way to learn a new language, and why?"
+        }
+      },
+      {
+        "id": "40B",
+        "candidate": "Candidate B",
+        "topic": "Bilingual education",
+        "instructions": "Compare two of the pictures, and say what the advantages and challenges of bilingual education might be for students and their families.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test40_1d.jpg",
+            "description": "A primary school teacher conducting a science lesson entirely in a second language, using visual aids to help young students understand"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test40_1e.jpg",
+            "description": "Children in a bilingual school playground switching effortlessly between two languages as they play, a teacher observing with a smile"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test40_1f.jpg",
+            "description": "Parents attending an information evening at a bilingual school, listening carefully and taking notes as a teacher explains the curriculum"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think all children should be educated in more than one language from an early age? What are the arguments for and against?"
+        }
+      }
+    ]
+  }
+}

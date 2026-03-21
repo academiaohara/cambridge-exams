@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "44A",
+        "candidate": "Candidate A",
+        "topic": "Rural poverty",
+        "instructions": "Compare two of the pictures, and say what causes and effects of rural poverty these images suggest and what challenges people living in rural poverty face.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test44_1a.jpg",
+            "description": "A family in a remote rural village living in a simple thatched dwelling, with no electricity visible, children playing outside in dusty conditions"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test44_1b.jpg",
+            "description": "A rural school with overcrowded classrooms, children sharing textbooks and sitting on the floor, a teacher writing on a cracked blackboard"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test44_1c.jpg",
+            "description": "A farmer inspecting withered crops on a smallholding, looking worried as a dry field stretches behind them with no signs of rain"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "What do you think are the most significant barriers preventing people in rural poverty from improving their situation?"
+        }
+      },
+      {
+        "id": "44B",
+        "candidate": "Candidate B",
+        "topic": "Urban homelessness",
+        "instructions": "Compare two of the pictures, and say what factors contribute to urban homelessness and what society could do to address the problem.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test44_1d.jpg",
+            "description": "A homeless person sleeping on a city pavement in a sleeping bag, passers-by walking past without making eye contact"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test44_1e.jpg",
+            "description": "Volunteers distributing hot food and blankets to homeless people outside a soup kitchen on a winter evening, people queuing gratefully"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test44_1f.jpg",
+            "description": "A social worker meeting with a formerly homeless individual in a clean, sparse flat, going through paperwork to help them access support services"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think homelessness is primarily a result of personal circumstances or systemic social failures? Why?"
+        }
+      }
+    ]
+  }
+}

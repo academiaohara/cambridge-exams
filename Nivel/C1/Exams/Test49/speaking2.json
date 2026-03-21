@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "49A",
+        "candidate": "Candidate A",
+        "topic": "Conflicts and peacekeeping",
+        "instructions": "Compare two of the pictures, and say what the human impact of armed conflict might be and what role peacekeeping forces play.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test49_1a.jpg",
+            "description": "UN peacekeeping soldiers in blue helmets distributing aid to civilians in a conflict-affected town, children watching cautiously from a distance"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test49_1b.jpg",
+            "description": "Journalists and camera crews filming destruction in a war-torn city, ruined buildings and rubble filling the background"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test49_1c.jpg",
+            "description": "Refugees crossing a border on foot, carrying all their possessions, officials processing papers at a makeshift border crossing"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think international peacekeeping missions are generally effective? What factors influence their success or failure?"
+        }
+      },
+      {
+        "id": "49B",
+        "candidate": "Candidate B",
+        "topic": "Diplomacy and international relations",
+        "instructions": "Compare two of the pictures, and say what the role of diplomacy is in resolving conflicts and building international cooperation.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test49_1d.jpg",
+            "description": "World leaders seated around a large oval table at an international summit, interpreters in booths behind glass panels translating the discussions"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test49_1e.jpg",
+            "description": "Two ambassadors shaking hands at a formal treaty-signing ceremony, surrounded by officials and journalists in a grand diplomatic chamber"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test49_1f.jpg",
+            "description": "A negotiator at a whiteboard mediating between two groups seated on opposite sides of a conference table, all parties looking tense but engaged"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think diplomacy and negotiation can ultimately resolve any conflict, or are some disputes beyond peaceful resolution?"
+        }
+      }
+    ]
+  }
+}

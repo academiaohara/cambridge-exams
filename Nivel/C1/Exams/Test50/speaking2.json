@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "50A",
+        "candidate": "Candidate A",
+        "topic": "Wildlife conservation",
+        "instructions": "Compare two of the pictures, and say what challenges wildlife conservation faces and what motivates people to protect endangered species.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test50_1a.jpg",
+            "description": "A wildlife ranger monitoring a tranquilised elephant as vets remove an illegal poaching snare, a helicopter visible in the background"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test50_1b.jpg",
+            "description": "A marine biologist in full scuba gear attaching a tracking tag to a sea turtle beneath the surface of a coral reef"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test50_1c.jpg",
+            "description": "Conservation volunteers releasing captive-bred birds of prey back into a moorland habitat, the birds spreading their wings in the open air"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think zoos and captive breeding programmes are an effective way to protect endangered species? What are the arguments for and against?"
+        }
+      },
+      {
+        "id": "50B",
+        "candidate": "Candidate B",
+        "topic": "Biodiversity and endangered species",
+        "instructions": "Compare two of the pictures, and say what the consequences of biodiversity loss might be and how human activity threatens or protects natural habitats.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test50_1d.jpg",
+            "description": "Aerial view of a vast area of rainforest that has been clear-cut for agriculture, a sharp line between dense green jungle and barren brown earth"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test50_1e.jpg",
+            "description": "A display in a natural history museum dedicated to extinct animals, including a life-size model of a dodo and a thylacine, visitors looking sombre"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test50_1f.jpg",
+            "description": "School children in a nature reserve identifying wildflowers and insects with a guide, recording their findings in illustrated notebooks"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think individuals or governments are more responsible for protecting biodiversity? What actions should each take?"
+        }
+      }
+    ]
+  }
+}

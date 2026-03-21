@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "34A",
+        "candidate": "Candidate A",
+        "topic": "Public transport",
+        "instructions": "Compare two of the pictures, and say what the advantages and disadvantages of public transport might be and how people's experiences of it differ.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test34_1a.jpg",
+            "description": "A packed underground train during rush hour, passengers standing shoulder to shoulder and holding overhead rails, looking tired and impatient"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test34_1b.jpg",
+            "description": "A modern light rail tram gliding smoothly through a city street, passengers seated comfortably looking out of wide panoramic windows"
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test34_1c.jpg",
+            "description": "A rural bus stopping at a remote village, an elderly woman climbing aboard with shopping bags while the driver helps her"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "What improvements do you think are most urgently needed in public transport systems in your country?"
+        }
+      },
+      {
+        "id": "34B",
+        "candidate": "Candidate B",
+        "topic": "Cars and cycling in cities",
+        "instructions": "Compare two of the pictures, and say what the advantages and disadvantages of cars and cycling are for urban residents and the city environment.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test34_1d.jpg",
+            "description": "A long traffic jam on a city motorway, cars bumper to bumper with exhaust fumes visible in the air and frustrated drivers visible through windscreens"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test34_1e.jpg",
+            "description": "A busy cycling lane in Amsterdam, full of commuters of all ages cycling confidently alongside each other, separate from car traffic"
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test34_1f.jpg",
+            "description": "A person on an electric scooter weaving through a pedestrian area, attracting disapproving looks from walkers on the pavement"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think cities should do more to discourage car use? What measures might be effective?"
+        }
+      }
+    ]
+  }
+}
