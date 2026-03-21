@@ -1,0 +1,136 @@
+{
+  "lessonId": "lesson-12",
+  "level": "B1",
+  "category": "phrasal-verbs",
+  "title": "Food, Cooking & Temperature",
+  "phrasalVerbs": [
+    {
+      "verb": "cool down",
+      "definition": "To become cooler or make something cooler.",
+      "examples": [
+        "Let the soup cool down before you eat it.",
+        "We went swimming to cool down after the long walk.",
+        "The weather is finally starting to cool down."
+      ]
+    },
+    {
+      "verb": "dry up",
+      "definition": "If something dries up or is dried up, all the water comes out of it.",
+      "examples": [
+        "The river dried up during the summer drought.",
+        "Leave the dishes to dry up on the rack.",
+        "The puddles dried up quickly in the hot sun."
+      ]
+    },
+    {
+      "verb": "heat up",
+      "definition": "To make something hot; to become hot.",
+      "examples": [
+        "Can you heat up the leftovers for dinner?",
+        "The room started to heat up when we turned on the heater.",
+        "Heat up the oil before adding the vegetables."
+      ]
+    },
+    {
+      "verb": "warm up",
+      "definition": "To make food warm again; to prepare for a sport or activity by doing gentle exercises.",
+      "examples": [
+        "I'll warm up some soup for lunch.",
+        "Athletes always warm up before a competition.",
+        "Can you warm up the milk for the baby?"
+      ]
+    },
+    {
+      "verb": "water down",
+      "definition": "To add water to a drink or liquid in order to make it less strong; to dilute.",
+      "examples": [
+        "This juice is too sweet—I need to water it down.",
+        "The bartender watered down the drinks.",
+        "Don't water down the sauce too much."
+      ]
+    }
+  ],
+  "fillInExercises": [
+    {
+      "type": "multiple-choice",
+      "sentence": "Be careful! The coffee is very hot. Let it ___ ___.",
+      "options": ["cool down", "heat up", "warm up", "dry up"],
+      "correct": "cool down",
+      "explanation": "'Cool down' means to become less hot."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "The plants ___ up because we forgot to water them.",
+      "hint": "_ up",
+      "correct": "dried",
+      "explanation": "'Dry up' means to lose all moisture."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "Can you ___ ___ the pizza in the microwave?",
+      "options": ["heat up", "cool down", "water down", "dry up"],
+      "correct": "heat up",
+      "explanation": "'Heat up' means to make something hot."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "I'll ___ up some pasta from yesterday for dinner.",
+      "hint": "_ up",
+      "correct": "warm",
+      "explanation": "'Warm up' means to make food warm again."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "This sauce is too thick. I need to ___ it ___.",
+      "options": ["water down", "heat up", "cool down", "dry up"],
+      "correct": "water down",
+      "explanation": "'Water down' means to dilute by adding water."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "It's too hot outside. I need to ___ down with a cold drink.",
+      "hint": "_ down",
+      "correct": "cool",
+      "explanation": "'Cool down' means to become cooler."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "The athletes need to ___ ___ before the match.",
+      "options": ["warm up", "heat up", "dry up", "cool down"],
+      "correct": "warm up",
+      "explanation": "'Warm up' also means to prepare for exercise."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "___ up the oven to 200 degrees before baking.",
+      "hint": "_ up",
+      "correct": "Heat",
+      "explanation": "'Heat up' means to make something hot."
+    }
+  ],
+  "conversations": [
+    {
+      "title": "In the Kitchen",
+      "lines": [
+        { "speaker": "Sophie", "text": "Can you [heat up] the soup while I make the salad?" },
+        { "speaker": "Miguel", "text": "Sure! Should I also [warm up] the bread?" },
+        { "speaker": "Sophie", "text": "Yes, please. But let the soup [cool down] a bit before serving." },
+        { "speaker": "Miguel", "text": "Okay. This juice seems strong—should I [water it down]?" },
+        { "speaker": "Sophie", "text": "Yes, add some water. Leave the herbs on the counter to [dry up]." },
+        { "speaker": "Miguel", "text": "Got it! Dinner will be ready soon." }
+      ]
+    },
+    {
+      "title": "Hot Weather",
+      "lines": [
+        { "speaker": "Chen", "text": "It's so hot today! I need to [cool down] with something cold." },
+        { "speaker": "Fatima", "text": "Me too. Let me [warm up] some iced tea for us." },
+        { "speaker": "Chen", "text": "You mean [heat up]? We want it cold, not hot!" },
+        { "speaker": "Fatima", "text": "Ha! You're right. I'll just [water down] the lemonade instead." },
+        { "speaker": "Chen", "text": "Perfect. The garden is really [drying up] in this heat." },
+        { "speaker": "Fatima", "text": "True. Let's wait until the evening when it [cools down] to water the plants." },
+        { "speaker": "Chen", "text": "Good idea. The weather should [cool down] after sunset." }
+      ]
+    }
+  ]
+}
