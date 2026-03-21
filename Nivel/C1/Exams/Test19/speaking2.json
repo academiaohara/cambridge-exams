@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "19A",
+        "candidate": "Candidate A",
+        "topic": "Types of holiday",
+        "instructions": "Compare two of the pictures, and say what the people might enjoy about their holidays and what kind of person might choose each type.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test19_1a.jpg",
+            "description": "A family relaxing on a tropical beach, with clear blue sea and palm trees."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test19_1b.jpg",
+            "description": "A couple walking through a historic city, exploring old architecture and narrow streets."
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test19_1c.jpg",
+            "description": "A group of friends trekking through dramatic mountain scenery with backpacks."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which type of holiday do you think is the most rewarding? (Why?)"
+        }
+      },
+      {
+        "id": "19B",
+        "candidate": "Candidate B",
+        "topic": "Ways of travelling",
+        "instructions": "Compare two of the pictures, and say what might attract people to travel in these ways and what the advantages and disadvantages might be.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test19_1d.jpg",
+            "description": "Passengers relaxing in comfortable seats on a modern high-speed train."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test19_1e.jpg",
+            "description": "A group of young backpackers with large rucksacks waiting at an airport terminal."
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test19_1f.jpg",
+            "description": "A couple driving a campervan along a winding coastal road with stunning views."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which form of transport do you think is the best for long holiday journeys? (Why?)"
+        }
+      }
+    ]
+  }
+}
