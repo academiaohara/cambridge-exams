@@ -151,7 +151,7 @@
       var avatarUrl = profile.avatar_url || (user && user.user_metadata && user.user_metadata.avatar_url) || '';
       var initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
 
-      var levels = ['A2', 'B1', 'B2', 'C1', 'C2'];
+      var levels = ['B1', 'B2', 'C1', 'C2'];
 
       function levelOptions(current) {
         return levels.map(function (l) {
@@ -369,7 +369,7 @@
         ? '<img src="' + avatarUrl + '" alt="' + name + '">'
         : '<span class="profile-initials-large">' + initials + '</span>';
 
-      var levels = ['A2', 'B1', 'B2', 'C1', 'C2'];
+      var levels = ['B1', 'B2', 'C1', 'C2'];
 
       function levelOptions(current) {
         return levels.map(function (l) {

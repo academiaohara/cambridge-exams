@@ -145,7 +145,6 @@
     // Obtener nombre del nivel
     getLevelName: function(level) {
       const levelNames = {
-        'A2': 'A2 Key',
         'B1': 'B1 Preliminary',
         'B2': 'B2 First',
         'C1': 'C1 Advanced',

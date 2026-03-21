@@ -1,6 +1,6 @@
 // js/router.js
 (function() {
-  var VALID_LEVELS = ['a2', 'b1', 'b2', 'c1', 'c2'];
+  var VALID_LEVELS = ['b1', 'b2', 'c1', 'c2'];
   var VALID_SECTIONS = ['reading', 'listening', 'writing', 'speaking'];
 
   window.Router = {
