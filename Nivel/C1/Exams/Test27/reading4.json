@@ -1,0 +1,79 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "The city council is going to build a new library.",
+        "keyWord": "BUILT",
+        "beforeGap": "A new library is",
+        "afterGap": "by the city council.",
+        "routes": [
+          { "p1": "going", "p2": "to be built" }
+        ],
+        "explanation": "Tests future passive voice."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘I'll pay you back on Friday,’ he said to me.",
+        "keyWord": "PROMISED",
+        "beforeGap": "He",
+        "afterGap": "on Friday.",
+        "routes": [
+          { "p1": "promised", "p2": "to pay me back" }
+        ],
+        "explanation": "Tests reporting verbs with infinitive structures."
+      },
+      {
+        "number": 27,
+        "firstSentence": "If you don't start saving now, you won't be able to afford a holiday.",
+        "keyWord": "UNLESS",
+        "beforeGap": "You won't be able to afford a holiday",
+        "afterGap": "saving now.",
+        "routes": [
+          { "p1": "unless", "p2": "you start" }
+        ],
+        "explanation": "Tests 'unless' in first conditional contexts."
+      },
+      {
+        "number": 28,
+        "firstSentence": "I am certain that the flight was cancelled due to the fog.",
+        "keyWord": "MUST",
+        "beforeGap": "The flight",
+        "afterGap": "due to the fog.",
+        "routes": [
+          { "p1": "must", "p2": "have been cancelled" }
+        ],
+        "explanation": "Tests modal perfect passive for logical deduction."
+      },
+      {
+        "number": 29,
+        "firstSentence": "I only realized I’d forgotten my wallet when I reached the checkout.",
+        "keyWord": "DID",
+        "beforeGap": "Only when I reached the checkout",
+        "afterGap": "I’d forgotten my wallet.",
+        "routes": [
+          { "p1": "did", "p2": "I realize (that)" },
+          { "p1": "did", "p2": "I realise (that)" }
+        ],
+        "explanation": "Tests inversion with 'Only when'."
+      },
+      {
+        "number": 30,
+        "firstSentence": "The test was too difficult for me to complete in time.",
+        "keyWord": "ENOUGH",
+        "beforeGap": "The test",
+        "afterGap": "for me to complete in time.",
+        "routes": [
+          { "p1": "was", "p2": "not easy enough" },
+          { "p1": "wasn't", "p2": "easy enough" }
+        ],
+        "explanation": "Tests 'enough' vs 'too' with adjectives."
+      }
+    ]
+  }
+}

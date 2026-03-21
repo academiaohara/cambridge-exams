@@ -1,0 +1,80 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "The gardener is cutting the grass for us this afternoon.",
+        "keyWord": "HAVING",
+        "beforeGap": "We",
+        "afterGap": "this afternoon.",
+        "routes": [
+          { "p1": "are", "p2": "having the grass cut" }
+        ],
+        "explanation": "Tests causative 'have something done'."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘I'm sorry I didn't help you with your homework,’ said Sam.",
+        "keyWord": "NOT",
+        "beforeGap": "Sam apologised",
+        "afterGap": "me with my homework.",
+        "routes": [
+          { "p1": "for", "p2": "not helping" }
+        ],
+        "explanation": "Tests reporting verbs with negative gerunds."
+      },
+      {
+        "number": 27,
+        "firstSentence": "I really regret not buying that house when I had the chance.",
+        "keyWord": "WISH",
+        "beforeGap": "I",
+        "afterGap": "that house when I had the chance.",
+        "routes": [
+          { "p1": "wish", "p2": "I had bought" },
+          { "p1": "wish", "p2": "I'd bought" }
+        ],
+        "explanation": "Tests 'wish' + past perfect for past regret."
+      },
+      {
+        "number": 28,
+        "firstSentence": "It is possible that the letter got lost in the mail.",
+        "keyWord": "MAY",
+        "beforeGap": "The letter",
+        "afterGap": "lost in the mail.",
+        "routes": [
+          { "p1": "may", "p2": "have been" },
+          { "p1": "may", "p2": "have got" }
+        ],
+        "explanation": "Tests modal perfect for possibility (may have + past participle)."
+      },
+      {
+        "number": 29,
+        "firstSentence": "I didn't realize my mistake until the following day.",
+        "keyWord": "REALISE",
+        "beforeGap": "Not until the following day",
+        "afterGap": "my mistake.",
+        "routes": [
+          { "p1": "did", "p2": "I realise" },
+          { "p1": "did", "p2": "I realize" }
+        ],
+        "explanation": "Tests inversion with 'Not until'."
+      },
+      {
+        "number": 30,
+        "firstSentence": "This car is much more expensive than the one I saw yesterday.",
+        "keyWord": "AS",
+        "beforeGap": "The car I saw yesterday was",
+        "afterGap": "this one.",
+        "routes": [
+          { "p1": "not", "p2": "nearly as expensive as" }
+        ],
+        "explanation": "Tests comparison using 'not nearly as... as'."
+      }
+    ]
+  }
+}

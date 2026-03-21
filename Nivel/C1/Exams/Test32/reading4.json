@@ -1,0 +1,80 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "They are going to renovate the old library next year.",
+        "keyWord": "HAVE",
+        "beforeGap": "The city council plans",
+        "afterGap": "next year.",
+        "routes": [
+          { "p1": "to", "p2": "have the old library renovated" }
+        ],
+        "explanation": "Tests causative 'have something done'."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘I'll help you with the project,’ said David.",
+        "keyWord": "OFFERED",
+        "beforeGap": "David",
+        "afterGap": "with the project.",
+        "routes": [
+          { "p1": "offered", "p2": "to help me" },
+          { "p1": "offered", "p2": "to give me a hand" }
+        ],
+        "explanation": "Tests reporting verbs followed by an infinitive."
+      },
+      {
+        "number": 27,
+        "firstSentence": "I didn't listen to her, so I made a huge mistake.",
+        "keyWord": "IF",
+        "beforeGap": "I wouldn't have made a huge mistake",
+        "afterGap": "to her.",
+        "routes": [
+          { "p1": "if", "p2": "I had listened" },
+          { "p1": "if", "p2": "I'd listened" }
+        ],
+        "explanation": "Tests third conditional for past hypothetical situations."
+      },
+      {
+        "number": 28,
+        "firstSentence": "I'm certain they were very disappointed by the results.",
+        "keyWord": "MUST",
+        "beforeGap": "They",
+        "afterGap": "by the results.",
+        "routes": [
+          { "p1": "must", "p2": "have been very disappointed" }
+        ],
+        "explanation": "Tests modal perfect for certain deduction in the past."
+      },
+      {
+        "number": 29,
+        "firstSentence": "You should never reveal your password to anyone.",
+        "keyWord": "CIRCUMSTANCES",
+        "beforeGap": "Under",
+        "afterGap": "reveal your password to anyone.",
+        "routes": [
+          { "p1": "no", "p2": "circumstances should you" }
+        ],
+        "explanation": "Tests inversion with negative prepositional phrases (Under no circumstances)."
+      },
+      {
+        "number": 30,
+        "firstSentence": "It's too cold to go swimming today.",
+        "keyWord": "WARM",
+        "beforeGap": "It is",
+        "afterGap": "to go swimming today.",
+        "routes": [
+          { "p1": "not", "p2": "warm enough" },
+          { "p1": "n't", "p2": "warm enough" }
+        ],
+        "explanation": "Tests 'not + adjective + enough' as an alternative to 'too + adjective'."
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "Test2-reading-5-1",
+  "examId": "Test2",
+  "section": "reading",
+  "part": 5,
+  "type": "multiple-choice-text",
+  "title": "Reading and Use of English – Part 5",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "content": {
+    "title": "The Ethical Frontier of Autonomous Systems",
+    "subtitle": "Navigating the moral landscape of artificial intelligence and machine decision-making.",
+    "text": "As autonomous systems transition from controlled laboratory environments to the chaotic unpredictability of public roads and hospitals, the conversation has shifted from technical feasibility to moral accountability. We are no longer asking if a machine *can* drive, but how it *should* behave when faced with an unavoidable accident. [31] Traditional ethics, often based on human intuition and split-second emotional responses, find themselves at odds with the cold, calculated logic required by an algorithmic framework. [/31] This tension is not merely academic; it represents a fundamental challenge in how we codify human values into a language that a processor can execute without ambiguity. || One of the primary hurdles is the 'Black Box' problem—the reality that deep learning models often reach conclusions through paths that are opaque even to their creators. [32] If an AI-driven medical diagnostic tool recommends a high-risk surgery, the surgeon and the patient are often left without a traceable rationale, creating a 'responsibility gap' that threatens the very foundation of informed consent. [/32] This lack of transparency has led to a growing movement for 'Explainable AI' (XAI), which demands that systems be designed to provide a human-understandable justification for every significant output. Without this, the integration of AI into sensitive sectors could lead to a steady erosion of public trust. || The debate frequently circles back to the 'Trolley Problem,' a thought experiment where one must choose between two tragic outcomes. Critics argue that these scenarios are too rare to be relevant, but proponents suggest they are essential stress tests for a system's underlying moral compass. [33] The danger is not that a car will frequently face such a choice, but that the biases of the programmers—often subconscious—will become embedded as universal laws within the software. [/33] If a system is taught to prioritize the safety of its occupants above all else, it may inadvertently adopt a 'predatory' logic that endangers pedestrians, reflecting a utilitarianism that many societies find deeply unsettling. || [34] Furthermore, the author suggests that the pursuit of perfectly ethical AI might be a 'Sisyphus task'—an endless struggle against an impossible goal. [/34] Morality is not a static set of rules; it is a culturally dependent, evolving consensus. What is considered ethical in a collectivist society may be viewed as a violation of individual rights in a more liberal one. Expecting a single global standard for machine ethics is arguably naive, yet the borderless nature of technology demands a degree of harmonization to prevent a 'moral patchwork' that complicates international trade and safety standards. || To address these issues, some experts advocate for 'Human-in-the-Loop' systems, where the AI handles the data-heavy processing while leaving the final, value-laden decisions to a human supervisor. [35] While this offers a safety net, it also introduces 'automation bias,' where the human begins to trust the machine's speed so much that their own critical faculties begin to wither. [/35] It is a delicate equilibrium: use the machine too much, and we lose our agency; use it too little, and we fail to capitalize on the very efficiency that makes the technology valuable. || Ultimately, the ethics of AI are a mirror held up to ourselves. [36] The writer concludes that the real difficulty is not in teaching machines right from wrong, but in reaching a human agreement on what those terms actually mean in a digital context. [/36] As we delegate more of our world to autonomous agents, we are forced to confront the inconsistencies in our own moral logic. The code we write for our machines may, in the end, be the clearest statement of who we are—and who we wish to become.",
+    "questions": [
+      {
+        "number": 31,
+        "question": "In the first paragraph, what does the writer suggest about traditional ethics?",
+        "options": [
+          "A) They are more reliable than algorithmic logic in emergency situations.",
+          "B) They are difficult to translate into the precise requirements of programming.",
+          "C) They have been completely replaced by new digital moral frameworks.",
+          "D) They are primarily concerned with technical feasibility rather than outcomes."
+        ],
+        "correct": "B",
+        "explanation": "B is supported by [31], which mentions the tension between 'human intuition' and the 'calculated logic' of algorithms. A is an opinion not expressed as fact. C is too extreme. D confuses the two topics mentioned."
+      },
+      {
+        "number": 32,
+        "question": "The writer uses the example of a medical diagnostic tool to illustrate...",
+        "options": [
+          "A) the superiority of AI in identifying complex health conditions.",
+          "B) the potential for AI to reduce the workload of modern surgeons.",
+          "C) the legal complications of performing high-risk surgeries.",
+          "D) the problem of making decisions without a clear logical trail."
+        ],
+        "correct": "D",
+        "explanation": "D is supported by [32] and the mention of the 'responsibility gap' and 'traceable rationale.' A and B are positive views not focused on in this paragraph. C is a side effect, not the primary point about the 'Black Box'."
+      },
+      {
+        "number": 33,
+        "question": "What is the author's main concern regarding the 'Trolley Problem' and AI?",
+        "options": [
+          "A) That cars will be forced to make these choices on a daily basis.",
+          "B) That the scenarios are too unrealistic to provide any useful data.",
+          "C) That programmers may unintentionally instill their own prejudices into the code.",
+          "D) That pedestrians will refuse to use roads where autonomous cars are present."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [33], which highlights the 'biases of the programmers' becoming 'embedded as universal laws.' A and B are arguments the author mentions but then moves past. D is not mentioned."
+      },
+      {
+        "number": 34,
+        "question": "The phrase 'Sisyphus task' in the fourth paragraph implies that...",
+        "options": [
+          "A) the goal of creating ethical AI is noble but physically exhausting.",
+          "B) ethical standards are changing so fast that technology cannot keep up.",
+          "C) finding a universal moral code for AI is an unending and perhaps impossible effort.",
+          "D) only a global government can successfully regulate autonomous systems."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [34] and the explanation that morality is a 'culturally dependent, evolving consensus.' A misinterprets the metaphor as physical. B is a factor, but C is the overarching meaning. D is not suggested."
+      },
+      {
+        "number": 35,
+        "question": "What does the author suggest about 'Human-in-the-Loop' systems?",
+        "options": [
+          "A) They are the only way to ensure 100% safety in autonomous driving.",
+          "B) They can lead to a decrease in the human supervisor's own analytical skills.",
+          "C) They are too slow to be effective in fast-moving medical environments.",
+          "D) They are currently rejected by most technology experts."
+        ],
+        "correct": "B",
+        "explanation": "B is supported by [35] and the mention of 'automation bias' where 'critical faculties begin to wither.' A is too certain. C and D are not stated in the text."
+      },
+      {
+        "number": 36,
+        "question": "Which of the following best summarizes the writer's conclusion?",
+        "options": [
+          "A) We must stop developing AI until a global moral consensus is reached.",
+          "B) Machines will eventually develop a more consistent morality than humans.",
+          "C) The challenge of AI ethics lies in our own lack of moral clarity.",
+          "D) The technical side of AI development is now secondary to the legal side."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [36], stating the difficulty is 'reaching a human agreement on what those terms actually mean.' A is too radical. B and D are not the final message."
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "Test4-reading-5-1",
+  "examId": "Test4",
+  "section": "reading",
+  "part": 5,
+  "type": "multiple-choice-text",
+  "title": "Reading and Use of English – Part 5",
+  "time": 15,
+  "totalQuestions": 6,
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text. Mark your answers on the separate answer sheet.",
+  "content": {
+    "title": "The Quantum Leap of Computation",
+    "subtitle": "Navigating the ethical and practical boundaries of the next digital revolution.",
+    "text": "The transition from classical to quantum computing is often described as a mere upgrade in speed, akin to moving from a bicycle to a jet engine. However, this analogy fails to capture the fundamental shift in logic that quantum mechanics introduces. While classical bits are binary—existing as either a zero or a one—quantum bits, or qubits, exist in a state of superposition. [31] This allows a quantum computer to explore a vast multidimensional space of possibilities simultaneously, solving problems that would take today’s most powerful supercomputers millennia to crack. [/31] It is not just a faster way of calculating; it is a different way of 'knowing' the world, processing information through the lens of probability rather than certainty. || One of the most immediate applications of this technology lies in the field of molecular simulation. Current computers struggle to map the complex interactions within a single protein, let alone a new drug compound. [32] Quantum systems, by mirroring the subatomic behavior of the molecules they simulate, could revolutionize medicine, allowing us to design 'bespoke' treatments for diseases that have eluded us for centuries. [/32] However, this power is a double-edged sword. The same processing capability that can unlock life-saving cures can also render our current cryptographic standards obsolete. The 'RSA' encryption that protects everything from personal emails to global financial markets is based on the difficulty of factoring large numbers—a task that a sufficiently powerful quantum computer could perform in minutes. || [33] The author expresses a sense of 'existential urgency' regarding the development of post-quantum cryptography. [/33] We are currently in a race against time, a period known as 'Y2Q,' where the goal is to secure our digital infrastructure before the first 'cryptographically relevant' quantum computer is built. The danger is not just in future attacks, but in 'harvest now, decrypt later' strategies, where adversaries intercept and store encrypted data today, waiting for the technology to mature so they can unlock it tomorrow. This creates a paradox where our past secrets are at the mercy of future innovations. || Beyond security, the ethics of quantum supremacy remain murky. As with any transformative technology, there is a risk that it will exacerbate existing global inequalities. [34] The immense cost and specialized knowledge required to build and maintain these systems mean that the 'quantum divide' could be far wider than the digital divide of the late 20th century. [/34] If only a handful of nations or corporations possess the ability to optimize global supply chains, crack encryption, or simulate materials, the balance of power could shift in ways that are difficult to regulate. The concentration of such immense 'cognitive power' in a few hands is a prospect that many political scientists find deeply concerning. || [35] Some critics, however, argue that we are currently in a 'quantum winter'—a period of over-inflated expectations followed by inevitable disappointment. [/35] The technical hurdles are indeed formidable. Qubits are notoriously unstable, prone to 'decoherence' where the slightest vibration or temperature change causes them to lose their quantum state. Maintaining the near-absolute zero temperatures required for these machines is an engineering nightmare. There is a possibility that the 'quantum advantage' may remain restricted to a very narrow set of niche problems, failing to deliver the broad societal transformation promised by tech evangelists. || Ultimately, the quantum revolution is as much a philosophical challenge as it is a technical one. [36] The writer concludes that we must prepare for a world where our traditional concepts of privacy and digital certainty no longer apply. [/36] It forces us to move away from a deterministic view of technology and toward one that embraces uncertainty and complexity. Whether quantum computing becomes the ultimate tool for human progress or a catalyst for global instability depends on our ability to develop a global ethical framework that keeps pace with the speed of the qubits. The race is on, and the stakes could not be higher.",
+    "questions": [
+      {
+        "number": 31,
+        "question": "In the first paragraph, the author suggests that quantum computing...",
+        "options": [
+          "A) is primarily a faster version of the binary systems we use today.",
+          "B) uses a logic that is fundamentally different from classical computation.",
+          "C) will eventually make the use of supercomputers unnecessary for most tasks.",
+          "D) is limited by the fact that it can only process one possibility at a time."
+        ],
+        "correct": "B",
+        "explanation": "B is supported by [31], noting it explores a 'vast multidimensional space... simultaneously' and moves away from 'certainty.' A is explicitly called a 'failure' of an analogy. D is the opposite of superposition."
+      },
+      {
+        "number": 32,
+        "question": "According to the second paragraph, quantum systems are uniquely suited for medicine because...",
+        "options": [
+          "A) they can store the medical records of every person on Earth.",
+          "B) they operate at the same subatomic level as the molecules they are modeling.",
+          "C) they are more affordable to operate than current laboratory equipment.",
+          "D) they can automatically perform high-risk surgeries without human error."
+        ],
+        "correct": "B",
+        "explanation": "B is supported by [32] and the mention of 'mirroring the subatomic behavior.' A, C, and D are not mentioned or are contradicted by the text's mention of 'immense cost'."
+      },
+      {
+        "number": 33,
+        "question": "What is the author's main concern regarding 'Y2Q'?",
+        "options": [
+          "A) That people will stop using email due to fear of future decryption.",
+          "B) That current data may be stolen now to be opened in the future.",
+          "C) That financial markets will collapse as soon as the technology is built.",
+          "D) That the transition to new encryption will be too expensive for most nations."
+        ],
+        "correct": "B",
+        "explanation": "B is supported by [33] and the 'harvest now, decrypt later' strategy. A and C are potential outcomes but not the specific mechanism of Y2Q mentioned. D is discussed later in the text but not as the primary 'existential urgency'."
+      },
+      {
+        "number": 34,
+        "question": "The 'quantum divide' mentioned in the fourth paragraph refers to...",
+        "options": [
+          "A) the gap between the speed of a qubit and a classical bit.",
+          "B) the conflict between different nations over quantum regulations.",
+          "C) the potential for a small group to control a disproportionate amount of power.",
+          "D) the difficulty of translating quantum data into human-readable information."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [34] and the mention of 'concentration of such immense cognitive power in a few hands.' A and D are technical rather than social. B is a result of the divide, not the divide itself."
+      },
+      {
+        "number": 35,
+        "question": "What is the 'quantum winter' described in the fifth paragraph?",
+        "options": [
+          "A) A period where extreme cold is needed to keep computers running.",
+          "B) A time when the public loses interest in science and technology.",
+          "C) A phase where the actual results of a technology fail to meet the hype.",
+          "D) The technical process of losing a quantum state due to vibrations."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [35] and the mention of 'over-inflated expectations followed by inevitable disappointment.' A is a physical requirement, but 'winter' is a metaphor for a lack of progress/funding. D is 'decoherence'."
+      },
+      {
+        "number": 36,
+        "question": "In the final paragraph, the writer implies that the future of quantum technology...",
+        "options": [
+          "A) is entirely dependent on the engineering ability to solve 'decoherence'.",
+          "B) will be determined by whether we can create international moral standards.",
+          "C) will lead to a more deterministic and certain view of the digital world.",
+          "D) is likely to result in the total disappearance of personal privacy."
+        ],
+        "correct": "B",
+        "explanation": "B is supported by [36] and the need for a 'global ethical framework.' A is a technical hurdle, but the conclusion is philosophical. C is the opposite of the author's point. D is a danger mentioned, but the conclusion focuses on preparation and framework."
+      }
+    ]
+  }
+}

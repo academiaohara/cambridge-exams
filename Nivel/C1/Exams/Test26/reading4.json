@@ -1,0 +1,81 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "A local decorator is painting the exterior of our house.",
+        "keyWord": "HAVING",
+        "beforeGap": "We",
+        "afterGap": "by a local decorator.",
+        "routes": [
+          { "p1": "are", "p2": "having our house painted" },
+          { "p1": "are", "p2": "having the house exterior painted" }
+        ],
+        "explanation": "Tests causative 'have something done' in the present continuous."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘You should avoid eating too much sugar,’ the nutritionist said.",
+        "keyWord": "ADVISED",
+        "beforeGap": "The nutritionist",
+        "afterGap": "too much sugar.",
+        "routes": [
+          { "p1": "advised", "p2": "me to avoid eating" },
+          { "p1": "advised", "p2": "against eating" }
+        ],
+        "explanation": "Tests reporting verbs with 'to-infinitive' or 'against + gerund'."
+      },
+      {
+        "number": 27,
+        "firstSentence": "I regret not visiting my grandmother more often when I was younger.",
+        "keyWord": "WISH",
+        "beforeGap": "I",
+        "afterGap": "my grandmother more often when I was younger.",
+        "routes": [
+          { "p1": "wish", "p2": "I had visited" },
+          { "p1": "wish", "p2": "I'd visited" }
+        ],
+        "explanation": "Tests 'wish' + past perfect for past regrets."
+      },
+      {
+        "number": 28,
+        "firstSentence": "It was possible for the document to be lost in the post.",
+        "keyWord": "COULD",
+        "beforeGap": "The document",
+        "afterGap": "lost in the post.",
+        "routes": [
+          { "p1": "could", "p2": "have been" }
+        ],
+        "explanation": "Tests modal perfect passive (could have been + past participle)."
+      },
+      {
+        "number": 29,
+        "firstSentence": "She never once offered to help with the housework.",
+        "keyWord": "DID",
+        "beforeGap": "Not",
+        "afterGap": "to help with the housework.",
+        "routes": [
+          { "p1": "once", "p2": "did she offer" }
+        ],
+        "explanation": "Tests negative inversion (Not once + auxiliary + subject + verb)."
+      },
+      {
+        "number": 30,
+        "firstSentence": "The museum was much more interesting than I had anticipated.",
+        "keyWord": "AS",
+        "beforeGap": "The museum was",
+        "afterGap": "I had anticipated.",
+        "routes": [
+          { "p1": "not", "p2": "nearly as boring as" },
+          { "p1": "nothing", "p2": "like as dull as" }
+        ],
+        "explanation": "Tests negative comparison with emphasis."
+      }
+    ]
+  }
+}

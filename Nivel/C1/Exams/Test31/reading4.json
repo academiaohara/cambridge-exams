@@ -1,0 +1,80 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "They think that the building was abandoned over fifty years ago.",
+        "keyWord": "THOUGHT",
+        "beforeGap": "The building",
+        "afterGap": "abandoned over fifty years ago.",
+        "routes": [
+          { "p1": "is", "p2": "thought to have been" }
+        ],
+        "explanation": "Tests complex passive with perfect infinitive (is thought to have + been)."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘I'm sorry I didn't get back to you sooner,’ said the manager.",
+        "keyWord": "NOT",
+        "beforeGap": "The manager",
+        "afterGap": "back to me sooner.",
+        "routes": [
+          { "p1": "apologised", "p2": "for not getting" },
+          { "p1": "apologized", "p2": "for not getting" }
+        ],
+        "explanation": "Tests reporting verb 'apologise' + preposition 'for' + negative gerund."
+      },
+      {
+        "number": 27,
+        "firstSentence": "The match was cancelled because it rained heavily.",
+        "keyWord": "BUT",
+        "beforeGap": "The match",
+        "afterGap": "the heavy rain.",
+        "routes": [
+          { "p1": "would", "p2": "have gone ahead but for" },
+          { "p1": "would", "p2": "not have been cancelled but for" }
+        ],
+        "explanation": "Tests conditional meaning using 'but for' (meaning 'if it hadn't been for')."
+      },
+      {
+        "number": 28,
+        "firstSentence": "I'm sure that the car didn't just disappear on its own.",
+        "keyWord": "CAN'T",
+        "beforeGap": "The car",
+        "afterGap": "on its own.",
+        "routes": [
+          { "p1": "can't", "p2": "have just disappeared" }
+        ],
+        "explanation": "Tests modal perfect for negative deduction in the past."
+      },
+      {
+        "number": 29,
+        "firstSentence": "He had only just arrived at the office when the alarm went off.",
+        "keyWord": "HAD",
+        "beforeGap": "Hardly",
+        "afterGap": "at the office when the alarm went off.",
+        "routes": [
+          { "p1": "had", "p2": "he arrived" }
+        ],
+        "explanation": "Tests inversion with the restrictive adverb 'Hardly'."
+      },
+      {
+        "number": 30,
+        "firstSentence": "I haven't seen a movie as good as this one for a long time.",
+        "keyWord": "SINCE",
+        "beforeGap": "It is a long time",
+        "afterGap": "such a good movie.",
+        "routes": [
+          { "p1": "since", "p2": "I have seen" },
+          { "p1": "since", "p2": "I last saw" }
+        ],
+        "explanation": "Tests 'It is [time] since...' structures with present perfect or past simple."
+      }
+    ]
+  }
+}
