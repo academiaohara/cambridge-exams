@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "23A",
+        "candidate": "Candidate A",
+        "topic": "Live entertainment",
+        "instructions": "Compare two of the pictures, and say why people might choose to attend these events and what they might get out of the experience.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test23_1a.jpg",
+            "description": "A full cinema audience watching an action film in the dark, some with popcorn."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test23_1b.jpg",
+            "description": "A huge crowd at an outdoor music festival, with colourful lights and a stage in the background."
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test23_1c.jpg",
+            "description": "Fans cheering enthusiastically in a packed sports stadium during an exciting match."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which type of live entertainment do you think is the most popular with young people today? (Why?)"
+        }
+      },
+      {
+        "id": "23B",
+        "candidate": "Candidate B",
+        "topic": "Ways of consuming media",
+        "instructions": "Compare two of the pictures, and say how media consumption has changed and what might motivate people to consume media in these different ways.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test23_1d.jpg",
+            "description": "A young person lying on a sofa watching a TV series on a laptop alone late at night."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test23_1e.jpg",
+            "description": "An older couple each reading different printed newspapers at a breakfast table."
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test23_1f.jpg",
+            "description": "A commuter on a train listening to a podcast through wireless earphones."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which way of consuming media do you think will still be common in twenty years' time? (Why?)"
+        }
+      }
+    ]
+  }
+}

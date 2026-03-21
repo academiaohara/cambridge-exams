@@ -1,0 +1,64 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1.5,
+  "totalQuestions": 2,
+  "description": "Compare the photographs and answer the questions.",
+  "content": {
+    "tasks": [
+      {
+        "id": "17A",
+        "candidate": "Candidate A",
+        "topic": "Staying active",
+        "instructions": "Compare two of the pictures, and say why the people might have chosen these forms of exercise and what they might enjoy about them.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test17_1a.jpg",
+            "description": "A person running through a park in a city on a sunny morning."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test17_1b.jpg",
+            "description": "A group of people in a bright gym studio taking part in an energetic fitness class."
+          },
+          {
+            "label": "C",
+            "url": "https://listeninggenerator.b-cdn.net/test17_1c.jpg",
+            "description": "An elderly person practising yoga poses in a peaceful outdoor setting at sunrise."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which activity do you think has the most benefits for a person's overall health? (Why?)"
+        }
+      },
+      {
+        "id": "17B",
+        "candidate": "Candidate B",
+        "topic": "Relaxation and rest",
+        "instructions": "Compare two of the pictures, and say how these activities help people to relax and why someone might choose each one.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test17_1d.jpg",
+            "description": "A person sitting in a cosy armchair reading a book beside a fireplace."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test17_1e.jpg",
+            "description": "A group of friends having a picnic in a sunny countryside meadow."
+          },
+          {
+            "label": "F",
+            "url": "https://listeninggenerator.b-cdn.net/test17_1f.jpg",
+            "description": "A person lying face down on a massage table in a tranquil spa."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which of these activities do you think is the most effective way to reduce stress? (Why?)"
+        }
+      }
+    ]
+  }
+}
