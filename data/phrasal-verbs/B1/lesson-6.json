@@ -1,0 +1,135 @@
+{
+  "lessonId": "lesson-6",
+  "level": "B1",
+  "category": "phrasal-verbs",
+  "title": "Technology & Computers",
+  "phrasalVerbs": [
+    {
+      "verb": "back up",
+      "definition": "To make a copy of information on your computer.",
+      "examples": [
+        "Make sure to back up your files regularly.",
+        "I back up all my photos to the cloud.",
+        "Have you backed up your work before updating the software?"
+      ]
+    },
+    {
+      "verb": "key in",
+      "definition": "To put information into a computer or other electronic machine using keys or a keyboard.",
+      "examples": [
+        "Key in your password to access the system.",
+        "She keyed in the customer's details carefully.",
+        "Please key in the code shown on the screen."
+      ]
+    },
+    {
+      "verb": "set up",
+      "definition": "To make a piece of equipment ready for use.",
+      "examples": [
+        "It took me an hour to set up the new printer.",
+        "Can you help me set up my email account?",
+        "The technician will set up the network tomorrow."
+      ]
+    },
+    {
+      "verb": "switch on/off",
+      "definition": "To start or stop a machine, light, etc. working.",
+      "examples": [
+        "Switch on the computer and wait for it to load.",
+        "Don't forget to switch off the lights before leaving.",
+        "She switched on the TV to watch the news."
+      ]
+    },
+    {
+      "verb": "test out",
+      "definition": "To try using something such as a machine or product to find out whether it works correctly or is satisfactory.",
+      "examples": [
+        "We need to test out the new software before launching it.",
+        "I'm testing out a new app for learning languages.",
+        "Let's test out the camera before the event."
+      ]
+    }
+  ],
+  "fillInExercises": [
+    {
+      "type": "multiple-choice",
+      "sentence": "Remember to ___ ___ your documents before closing the program.",
+      "options": ["back up", "key in", "set up", "switch on"],
+      "correct": "back up",
+      "explanation": "'Back up' means to make a copy of data for safety."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "Please ___ in your username and password.",
+      "hint": "_ in",
+      "correct": "key",
+      "explanation": "'Key in' means to type information using a keyboard."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "The IT department will ___ ___ the new computers tomorrow.",
+      "options": ["set up", "back up", "test out", "switch off"],
+      "correct": "set up",
+      "explanation": "'Set up' means to make equipment ready for use."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "___ on the monitor and check if it's working.",
+      "hint": "_ on",
+      "correct": "Switch",
+      "explanation": "'Switch on' means to turn on a device."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "Let's ___ ___ the new printer before we buy more.",
+      "options": ["test out", "set up", "back up", "key in"],
+      "correct": "test out",
+      "explanation": "'Test out' means to try something to see if it works correctly."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "Don't forget to ___ off the computer when you leave.",
+      "hint": "_ off",
+      "correct": "switch",
+      "explanation": "'Switch off' means to turn off a machine or device."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "I always ___ ___ my photos to an external hard drive.",
+      "options": ["back up", "set up", "key in", "test out"],
+      "correct": "back up",
+      "explanation": "'Back up' means to create a copy of your data."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "I spent the morning ___ up my new laptop.",
+      "hint": "_ up",
+      "correct": "setting",
+      "explanation": "'Set up' means to prepare equipment for use."
+    }
+  ],
+  "conversations": [
+    {
+      "title": "New Computer Setup",
+      "lines": [
+        { "speaker": "Dan", "text": "I just got a new laptop. Can you help me [set up] the software?" },
+        { "speaker": "Priya", "text": "Sure! First, [switch on] the computer and wait for it to start." },
+        { "speaker": "Dan", "text": "Done. Now what? I need to [key in] something." },
+        { "speaker": "Priya", "text": "Yes, [key in] your email to create an account." },
+        { "speaker": "Dan", "text": "Great. Should I also [back up] my old files to this computer?" },
+        { "speaker": "Priya", "text": "Definitely! Let's [test out] the transfer speed first." }
+      ]
+    },
+    {
+      "title": "IT Support",
+      "lines": [
+        { "speaker": "Chen", "text": "My computer won't start. I've tried to [switch it on] but nothing happens." },
+        { "speaker": "Maria", "text": "Have you tried [switching it off] and on again?" },
+        { "speaker": "Chen", "text": "Yes, multiple times. I hope I didn't lose my work. I forgot to [back up] my files." },
+        { "speaker": "Maria", "text": "Let me [test out] a different power cable." },
+        { "speaker": "Chen", "text": "Thanks. Do I need to [key in] my password again after this?" },
+        { "speaker": "Maria", "text": "Yes, once we [set up] the connection, you'll need to log in again." }
+      ]
+    }
+  ]
+}
