@@ -1,0 +1,144 @@
+{
+  "lessonId": "lesson-4",
+  "level": "B1",
+  "category": "phrasal-verbs",
+  "title": "Travel & Experiences",
+  "phrasalVerbs": [
+    {
+      "verb": "check in",
+      "definition": "To register your arrival at a hotel, airport, or event.",
+      "examples": [
+        "We need to check in at the hotel by 3 PM.",
+        "Please check in at the airport at least two hours before your flight.",
+        "You can check in online to save time."
+      ]
+    },
+    {
+      "verb": "set off",
+      "definition": "To start a journey.",
+      "examples": [
+        "We set off early to avoid the traffic.",
+        "What time are you setting off tomorrow morning?",
+        "They set off on their road trip at sunrise."
+      ]
+    },
+    {
+      "verb": "pick up",
+      "definition": "To collect someone or something from a place; also to learn something informally.",
+      "examples": [
+        "Can you pick me up from the airport at 6?",
+        "She picked up a few words of French during her trip.",
+        "I'll pick up some souvenirs for the family."
+      ]
+    },
+    {
+      "verb": "drop off",
+      "definition": "To take someone or something to a place and leave them or it there.",
+      "examples": [
+        "Can you drop me off near the train station?",
+        "I'll drop off your luggage at the hotel.",
+        "She dropped off the hire car before catching her flight."
+      ]
+    },
+    {
+      "verb": "get around",
+      "definition": "To travel from place to place, especially in a new city.",
+      "examples": [
+        "It's easy to get around the city by metro.",
+        "How did you get around without a car?",
+        "The best way to get around is by bike."
+      ]
+    },
+    {
+      "verb": "look around",
+      "definition": "To explore a place by walking and observing.",
+      "examples": [
+        "We spent the morning looking around the old town.",
+        "Do you want to look around the museum first?",
+        "I love to look around local markets when I travel."
+      ]
+    }
+  ],
+  "fillInExercises": [
+    {
+      "type": "multiple-choice",
+      "sentence": "We need to ___ at the airport three hours before the flight.",
+      "options": ["check in", "set off", "drop off", "get around"],
+      "correct": "check in",
+      "explanation": "'Check in' means to register your arrival at an airport or hotel."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "We ___ off at 5 AM to beat the morning traffic.",
+      "hint": "_ off",
+      "correct": "set",
+      "explanation": "'Set off' (past: set off) means to start a journey."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "Can you ___ me from the station? My train arrives at 8.",
+      "options": ["pick up", "drop off", "look around", "check in"],
+      "correct": "pick up",
+      "explanation": "'Pick up' means to collect someone from a location."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "She ___ off her rental car at the airport before boarding.",
+      "hint": "_ off",
+      "correct": "dropped",
+      "explanation": "'Drop off' (past: dropped off) means to leave something or someone somewhere."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "It's easy to ___ Rome on foot — everything is close together.",
+      "options": ["get around", "set off", "check in", "pick up"],
+      "correct": "get around",
+      "explanation": "'Get around' means to travel from place to place in a city."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "We spent two hours ___ around the old quarter before lunch.",
+      "hint": "_ around",
+      "correct": "looking",
+      "explanation": "'Look around' means to explore a place by walking and observing."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "She ___ some Spanish while backpacking through South America.",
+      "options": ["picked up", "set off", "dropped off", "got around"],
+      "correct": "picked up",
+      "explanation": "'Pick up' also means to learn something informally."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "What time do you plan to ___ off on your road trip?",
+      "hint": "_ off",
+      "correct": "set",
+      "explanation": "'Set off' means to begin a journey."
+    }
+  ],
+  "conversations": [
+    {
+      "title": "Airport Reunion",
+      "lines": [
+        { "speaker": "Raj",   "text": "I'm landing soon. Can you [pick up] me from Terminal 2?" },
+        { "speaker": "Lucy",  "text": "Of course! Have you [check in] your luggage already?" },
+        { "speaker": "Raj",   "text": "Yes — I had to [drop off] my bag at the desk though." },
+        { "speaker": "Lucy",  "text": "OK. I'll [set off] as soon as I finish this call." },
+        { "speaker": "Raj",   "text": "I can't wait to [look around] the city — it's been years!" },
+        { "speaker": "Lucy",  "text": "I'll show you how to [get around] by tram. It's really easy." }
+      ]
+    },
+    {
+      "title": "Planning a City Break",
+      "lines": [
+        { "speaker": "Clara", "text": "I want to [set off] really early on Saturday to avoid the crowds." },
+        { "speaker": "David", "text": "Good idea. We can [check in] to the hotel by noon if we leave at 7." },
+        { "speaker": "Clara", "text": "Then we can [look around] the market district in the afternoon." },
+        { "speaker": "David", "text": "It's easy to [get around] by bike there — I already checked." },
+        { "speaker": "Clara", "text": "Great. I'll [drop off] the keys to my neighbour before we go." },
+        { "speaker": "David", "text": "And I'll [pick up] some snacks for the journey. It's a 3-hour drive." }
+      ]
+    }
+  ]
+}

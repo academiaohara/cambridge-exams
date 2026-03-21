@@ -5,6 +5,36 @@
   "color": "#3b82f6",
   "levels": [
     {
+      "id": "A2",
+      "name": "A2 – Elementary",
+      "requiredToUnlock": null,
+      "totalLessons": 2,
+      "lessons": [
+        {
+          "id": "lesson-1",
+          "title": "Movement & Direction",
+          "points": [
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
+          ]
+        },
+        {
+          "id": "lesson-2",
+          "title": "Daily Routines",
+          "points": [
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
+          ]
+        }
+      ]
+    },
+    {
       "id": "B1",
       "name": "B1 – Intermediate",
       "requiredToUnlock": null,
@@ -424,142 +454,55 @@
           "id": "lesson-1",
           "title": "Abstract & Formal",
           "points": [
-            {
-              "type": "explanation",
-              "label": "account for / bring up"
-            },
-            {
-              "type": "explanation",
-              "label": "come across / cut down"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Formal verbs"
-            },
-            {
-              "type": "explanation",
-              "label": "draw up / fall through"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Abstract meaning"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 1"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-2",
           "title": "Opinions & Arguments",
           "points": [
-            {
-              "type": "explanation",
-              "label": "back up / stand for"
-            },
-            {
-              "type": "explanation",
-              "label": "rule out / take back"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Arguments"
-            },
-            {
-              "type": "explanation",
-              "label": "hold on / give in"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Opinions"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 2"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-3",
           "title": "Change & Development",
           "points": [
-            {
-              "type": "explanation",
-              "label": "break down / build up"
-            },
-            {
-              "type": "explanation",
-              "label": "phase out / bring in"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Change"
-            },
-            {
-              "type": "explanation",
-              "label": "turn around / step up"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Development"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 3"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-4",
           "title": "Information & Research",
           "points": [
-            {
-              "type": "explanation",
-              "label": "look into / find out"
-            },
-            {
-              "type": "explanation",
-              "label": "narrow down / sum up"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Research"
-            },
-            {
-              "type": "explanation",
-              "label": "go through / set out"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Information"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 4"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-5",
           "title": "Final Challenge: B2",
           "points": [
-            {
-              "type": "exercise",
-              "label": "Mixed review"
-            },
-            {
-              "type": "exercise",
-              "label": "Speed round"
-            },
-            {
-              "type": "exercise",
-              "label": "Context gaps"
-            },
-            {
-              "type": "trophy",
-              "label": "B2 Final Challenge"
-            }
+            { "type": "pv-gallery",           "label": "B2 Vocabulary Review" },
+            { "type": "pv-fill-in",            "label": "Challenge: Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "B2 Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Challenge: Drag & Drop" },
+            { "type": "pv-mixed",              "label": "B2 Final Mixed Test" }
           ]
         }
       ]
@@ -574,142 +517,55 @@
           "id": "lesson-1",
           "title": "Nuance & Precision",
           "points": [
-            {
-              "type": "explanation",
-              "label": "latch onto / pan out"
-            },
-            {
-              "type": "explanation",
-              "label": "cotton on / hash out"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Nuance"
-            },
-            {
-              "type": "explanation",
-              "label": "tease out / hone in"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Precision"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 1"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-2",
           "title": "Persuasion & Influence",
           "points": [
-            {
-              "type": "explanation",
-              "label": "win over / talk into"
-            },
-            {
-              "type": "explanation",
-              "label": "play down / ramp up"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Persuasion"
-            },
-            {
-              "type": "explanation",
-              "label": "fend off / ward off"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Influence"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 2"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-3",
           "title": "Complex Situations",
           "points": [
-            {
-              "type": "explanation",
-              "label": "factor in / iron out"
-            },
-            {
-              "type": "explanation",
-              "label": "thrash out / weigh up"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Complex"
-            },
-            {
-              "type": "explanation",
-              "label": "mull over / spell out"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Situations"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 3"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-4",
           "title": "Academic & Professional",
           "points": [
-            {
-              "type": "explanation",
-              "label": "flesh out / map out"
-            },
-            {
-              "type": "explanation",
-              "label": "reel off / zero in"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Academic"
-            },
-            {
-              "type": "explanation",
-              "label": "touch on / dwell on"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Professional"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 4"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-5",
           "title": "Final Challenge: C1",
           "points": [
-            {
-              "type": "exercise",
-              "label": "Mixed review"
-            },
-            {
-              "type": "exercise",
-              "label": "Speed round"
-            },
-            {
-              "type": "exercise",
-              "label": "Context gaps"
-            },
-            {
-              "type": "trophy",
-              "label": "C1 Final Challenge"
-            }
+            { "type": "pv-gallery",           "label": "C1 Vocabulary Review" },
+            { "type": "pv-fill-in",            "label": "Challenge: Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "C1 Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Challenge: Drag & Drop" },
+            { "type": "pv-mixed",              "label": "C1 Final Mixed Test" }
           ]
         }
       ]
@@ -724,142 +580,55 @@
           "id": "lesson-1",
           "title": "Idiomatic Mastery",
           "points": [
-            {
-              "type": "explanation",
-              "label": "bank on / bail out"
-            },
-            {
-              "type": "explanation",
-              "label": "fritter away / stave off"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Idiomatic"
-            },
-            {
-              "type": "explanation",
-              "label": "eke out / while away"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Mastery"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 1"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-2",
           "title": "Literary & Formal Register",
           "points": [
-            {
-              "type": "explanation",
-              "label": "hark back / mete out"
-            },
-            {
-              "type": "explanation",
-              "label": "rake up / own up"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Literary"
-            },
-            {
-              "type": "explanation",
-              "label": "peter out / eke out"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Register"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 2"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-3",
           "title": "Creative Expression",
           "points": [
-            {
-              "type": "explanation",
-              "label": "conjure up / dream up"
-            },
-            {
-              "type": "explanation",
-              "label": "rustle up / cobble together"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Creative"
-            },
-            {
-              "type": "explanation",
-              "label": "toy with / dally with"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Expression"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 3"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-4",
           "title": "Rare & Archaic",
           "points": [
-            {
-              "type": "explanation",
-              "label": "foist on / palm off"
-            },
-            {
-              "type": "explanation",
-              "label": "welsh on / whittle down"
-            },
-            {
-              "type": "exercise",
-              "label": "Practice: Rare verbs"
-            },
-            {
-              "type": "explanation",
-              "label": "dole out / ferret out"
-            },
-            {
-              "type": "exercise",
-              "label": "Quiz: Archaic"
-            },
-            {
-              "type": "review",
-              "label": "Review: Lesson 4"
-            }
+            { "type": "pv-gallery",           "label": "Phrasal Verb Gallery" },
+            { "type": "pv-fill-in",            "label": "Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "Real Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Complete the Conversations" },
+            { "type": "pv-mixed",              "label": "Mixed Practice" }
           ]
         },
         {
           "id": "lesson-5",
           "title": "Final Challenge: C2",
           "points": [
-            {
-              "type": "exercise",
-              "label": "Mixed review"
-            },
-            {
-              "type": "exercise",
-              "label": "Speed round"
-            },
-            {
-              "type": "exercise",
-              "label": "Context gaps"
-            },
-            {
-              "type": "trophy",
-              "label": "C2 Final Challenge"
-            }
+            { "type": "pv-gallery",           "label": "C2 Vocabulary Review" },
+            { "type": "pv-fill-in",            "label": "Challenge: Fill in the Gaps" },
+            { "type": "pv-conversations",      "label": "C2 Conversations" },
+            { "type": "pv-conversation-drag",  "label": "Challenge: Drag & Drop" },
+            { "type": "pv-mixed",              "label": "C2 Final Mixed Test" }
           ]
         }
       ]

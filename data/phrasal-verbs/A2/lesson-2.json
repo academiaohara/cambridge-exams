@@ -3,177 +3,198 @@
   "level": "A2",
   "category": "phrasal-verbs",
   "title": "Daily Routines",
-  "points": [
+  "phrasalVerbs": [
     {
-      "type": "explanation",
-      "label": "wake up / get up",
-      "content": {
-        "phrasalVerb": "wake up",
-        "definition": "To stop sleeping or to cause someone to stop sleeping.",
-        "examples": [
-          "I always wake up before my alarm.",
-          "Can you wake me up at 7?",
-          "The noise woke up the baby."
-        ],
-        "relatedVerb": "get up",
-        "relatedDefinition": "To get out of bed after waking up.",
-        "relatedExamples": [
-          "I woke up at 6 but didn't get up until 7.",
-          "Get up, it's time for school!",
-          "She gets up early to exercise."
-        ]
-      }
+      "verb": "wake up",
+      "definition": "To stop sleeping, or to cause someone to stop sleeping.",
+      "examples": [
+        "I always wake up before my alarm rings.",
+        "Can you wake me up at 7 tomorrow?",
+        "The loud noise woke up the baby."
+      ]
     },
     {
-      "type": "explanation",
-      "label": "put on / take off",
-      "content": {
-        "phrasalVerb": "put on",
-        "definition": "To place clothes on your body or to turn on a device.",
-        "examples": [
-          "Put on your coat, it's cold outside.",
-          "She put on her glasses to read.",
-          "Can you put on some music?"
-        ],
-        "relatedVerb": "take off",
-        "relatedDefinition": "To remove clothes from your body or to leave the ground (plane).",
-        "relatedExamples": [
-          "Take off your shoes before entering.",
-          "The plane took off on time.",
-          "He took off his hat inside the building."
-        ]
-      }
+      "verb": "get up",
+      "definition": "To get out of bed after waking up.",
+      "examples": [
+        "I woke up at 6 but didn't get up until 7.",
+        "Get up — it's time for school!",
+        "She gets up early to go for a run."
+      ]
     },
     {
-      "type": "exercise",
-      "label": "Practice: Routines",
-      "content": {
-        "instructions": "Choose the correct phrasal verb for each sentence.",
-        "questions": [
-          {
-            "number": 1,
-            "sentence": "I ___ at 6 AM every day, but stay in bed until 6:30.",
-            "options": ["A wake up", "B get up", "C put on", "D take off"],
-            "correct": "A",
-            "explanation": "'Wake up' means to stop sleeping; 'get up' is to leave bed."
-          },
-          {
-            "number": 2,
-            "sentence": "It's raining! You should ___ a jacket.",
-            "options": ["A take off", "B wake up", "C put on", "D get up"],
-            "correct": "C",
-            "explanation": "'Put on' means to place clothing on your body."
-          },
-          {
-            "number": 3,
-            "sentence": "Please ___ your shoes at the door.",
-            "options": ["A put on", "B take off", "C wake up", "D get up"],
-            "correct": "B",
-            "explanation": "'Take off' means to remove clothing."
-          },
-          {
-            "number": 4,
-            "sentence": "On Saturdays I don't ___ until noon.",
-            "options": ["A wake up", "B get up", "C put on", "D take off"],
-            "correct": "B",
-            "explanation": "'Get up' means to get out of bed."
-          }
-        ]
-      }
+      "verb": "put on",
+      "definition": "To place clothing on your body, or to start a device or music.",
+      "examples": [
+        "Put on your coat — it's cold outside.",
+        "She put on her glasses to read the menu.",
+        "Can you put on some music while we cook?"
+      ]
     },
     {
-      "type": "explanation",
-      "label": "turn on / turn off",
-      "content": {
-        "phrasalVerb": "turn on",
-        "definition": "To start a machine, light, or device.",
-        "examples": [
-          "Turn on the TV, the match is starting.",
-          "Can you turn on the heater? It's cold.",
-          "She turned on her laptop to check emails."
-        ],
-        "relatedVerb": "turn off",
-        "relatedDefinition": "To stop a machine, light, or device.",
-        "relatedExamples": [
-          "Turn off the lights when you leave.",
-          "Don't forget to turn off the oven!",
-          "He turned off his phone during the meeting."
-        ]
-      }
+      "verb": "take off",
+      "definition": "To remove clothing from your body; or (for a plane) to leave the ground.",
+      "examples": [
+        "Take off your shoes before coming inside.",
+        "The plane took off on time.",
+        "He took off his hat when he entered the building."
+      ]
     },
     {
-      "type": "exercise",
-      "label": "Quiz: Daily verbs",
-      "content": {
-        "instructions": "Complete each sentence with the correct phrasal verb.",
-        "questions": [
-          {
-            "number": 1,
-            "sentence": "It's dark in here. Can you ___ the lights?",
-            "options": ["A turn on", "B turn off", "C put on", "D take off"],
-            "correct": "A",
-            "explanation": "'Turn on' means to start a device or light."
-          },
-          {
-            "number": 2,
-            "sentence": "Please ___ the TV, I'm trying to study.",
-            "options": ["A turn on", "B turn off", "C wake up", "D get up"],
-            "correct": "B",
-            "explanation": "'Turn off' means to stop a device."
-          },
-          {
-            "number": 3,
-            "sentence": "The alarm clock ___ me ___ every morning at 7.",
-            "options": ["A turns...on", "B puts...on", "C wakes...up", "D takes...off"],
-            "correct": "C",
-            "explanation": "'Wake up' can be separated: 'wakes me up'."
-          },
-          {
-            "number": 4,
-            "sentence": "It's warm inside, you can ___ your scarf.",
-            "options": ["A put on", "B turn on", "C wake up", "D take off"],
-            "correct": "D",
-            "explanation": "'Take off' means to remove clothing."
-          }
-        ]
-      }
+      "verb": "turn on",
+      "definition": "To start a machine, light, or device.",
+      "examples": [
+        "Turn on the TV — the match is starting.",
+        "Can you turn on the heater? It's freezing in here.",
+        "She turned on her laptop to check her emails."
+      ]
     },
     {
-      "type": "review",
-      "label": "Review: Lesson 2",
-      "content": {
-        "instructions": "Final review of all daily routine phrasal verbs.",
-        "questions": [
-          {
-            "number": 1,
-            "sentence": "My neighbour's dog ___ me ___ at 5 AM.",
-            "options": ["A woke...up", "B got...up", "C put...on", "D turned...on"],
-            "correct": "A",
-            "explanation": "'Wake up' (separable) means to cause to stop sleeping."
-          },
-          {
-            "number": 2,
-            "sentence": "Don't forget to ___ the stove before leaving.",
-            "options": ["A turn on", "B turn off", "C put on", "D take off"],
-            "correct": "B",
-            "explanation": "'Turn off' the stove means to switch it off for safety."
-          },
-          {
-            "number": 3,
-            "sentence": "She ___ her running shoes and went for a jog.",
-            "options": ["A took off", "B turned on", "C put on", "D woke up"],
-            "correct": "C",
-            "explanation": "'Put on' means to wear or place on one's body."
-          },
-          {
-            "number": 4,
-            "sentence": "On holidays, I like to ___ late and relax.",
-            "options": ["A get up", "B wake up", "C turn on", "D put on"],
-            "correct": "A",
-            "explanation": "'Get up late' means to leave bed late, implying relaxation."
-          }
-        ]
-      }
+      "verb": "turn off",
+      "definition": "To stop a machine, light, or device.",
+      "examples": [
+        "Turn off the lights when you leave the room.",
+        "Don't forget to turn off the oven!",
+        "He turned off his phone during the film."
+      ]
+    }
+  ],
+  "fillInExercises": [
+    {
+      "type": "multiple-choice",
+      "sentence": "I always ___ at 6 AM, but I stay in bed for another 30 minutes.",
+      "options": [
+        "wake up",
+        "get up",
+        "put on",
+        "turn on"
+      ],
+      "correct": "wake up",
+      "explanation": "'Wake up' means to stop sleeping. 'Get up' is to leave the bed."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "It's raining! You should ___ on a jacket before going out.",
+      "hint": "_ on",
+      "correct": "put",
+      "explanation": "'Put on' means to wear or place clothing on your body."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "Please ___ your shoes at the door — the floor is clean.",
+      "options": [
+        "take off",
+        "put on",
+        "turn off",
+        "wake up"
+      ],
+      "correct": "take off",
+      "explanation": "'Take off' means to remove clothing."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "It's dark in here. Can you ___ on the lamp?",
+      "hint": "_ on",
+      "correct": "turn",
+      "explanation": "'Turn on' means to start a device or light."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "Don't forget to ___ the stove before you leave the kitchen.",
+      "options": [
+        "turn off",
+        "turn on",
+        "take off",
+        "get up"
+      ],
+      "correct": "turn off",
+      "explanation": "'Turn off' means to stop a device."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "The noise from the street ___ me up at 5 AM.",
+      "hint": "woke _ up",
+      "correct": "woke",
+      "explanation": "'Wake up' (past: woke up) can be separated: 'woke me up'."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "On Saturdays, I like to stay in bed late and not ___ until noon.",
+      "options": [
+        "get up",
+        "wake up",
+        "put on",
+        "turn on"
+      ],
+      "correct": "get up",
+      "explanation": "'Get up' means to leave the bed."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "The flight ___ off two hours late because of bad weather.",
+      "hint": "_ off",
+      "correct": "took",
+      "explanation": "'Take off' (past: took off) also means for a plane to leave the ground."
+    }
+  ],
+  "conversations": [
+    {
+      "title": "A Rushed Morning",
+      "lines": [
+        {
+          "speaker": "Mum",
+          "text": "Jake, [wake up]! It's already 7:30!"
+        },
+        {
+          "speaker": "Jake",
+          "text": "Ugh… I don't want to [get up] yet."
+        },
+        {
+          "speaker": "Mum",
+          "text": "[Put on] your uniform and come down quickly."
+        },
+        {
+          "speaker": "Jake",
+          "text": "OK. Should I [turn off] the TV? I left it on all night."
+        },
+        {
+          "speaker": "Mum",
+          "text": "Yes! And [take off] those pyjamas — now!"
+        },
+        {
+          "speaker": "Jake",
+          "text": "Fine. Can you [turn on] the kettle? I need a hot drink."
+        }
+      ]
+    },
+    {
+      "title": "Getting Ready for a Trip",
+      "lines": [
+        {
+          "speaker": "Anna",
+          "text": "Did you [wake up] early this morning? The taxi is at 6."
+        },
+        {
+          "speaker": "Leo",
+          "text": "I [get up] at 5 every day — no problem there."
+        },
+        {
+          "speaker": "Anna",
+          "text": "Good. I need to [turn off] all the appliances before we leave."
+        },
+        {
+          "speaker": "Leo",
+          "text": "[Put on] your warm coat — it's cold at the airport at this hour."
+        },
+        {
+          "speaker": "Anna",
+          "text": "Right. And remember to [take off] your jacket once we board the plane."
+        },
+        {
+          "speaker": "Leo",
+          "text": "Let me [turn on] some music for the journey — it will make time fly!"
+        }
+      ]
     }
   ]
 }

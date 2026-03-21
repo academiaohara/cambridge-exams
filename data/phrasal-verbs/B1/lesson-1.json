@@ -1,0 +1,143 @@
+{
+  "lessonId": "lesson-1",
+  "level": "B1",
+  "category": "phrasal-verbs",
+  "title": "Work & Career",
+  "phrasalVerbs": [
+    {
+      "verb": "take on",
+      "definition": "To accept a job, responsibility, or challenge.",
+      "examples": [
+        "She decided to take on the new project despite her busy schedule.",
+        "The company is taking on ten new employees this month.",
+        "Don't take on too much work — you'll get stressed."
+      ]
+    },
+    {
+      "verb": "carry out",
+      "definition": "To do or complete a task or plan.",
+      "examples": [
+        "The team carried out a detailed review of the project.",
+        "Engineers will carry out the repairs next week.",
+        "It's important to carry out your duties carefully."
+      ]
+    },
+    {
+      "verb": "set up",
+      "definition": "To establish or start something, such as a business or system.",
+      "examples": [
+        "He set up his own company at the age of 25.",
+        "Can you set up a meeting for Thursday afternoon?",
+        "They set up a new office in the city centre."
+      ]
+    },
+    {
+      "verb": "bring about",
+      "definition": "To cause something to happen.",
+      "examples": [
+        "The new manager brought about many positive changes.",
+        "Technology has brought about a revolution in communication.",
+        "What can we do to bring about better working conditions?"
+      ]
+    },
+    {
+      "verb": "deal with",
+      "definition": "To handle or manage a problem, situation, or person.",
+      "examples": [
+        "I need to deal with this complaint before the end of the day.",
+        "She's very good at dealing with difficult clients.",
+        "How do you deal with stress at work?"
+      ]
+    },
+    {
+      "verb": "run out",
+      "definition": "To use all of something so that there is none left; also, to have no more time.",
+      "examples": [
+        "We've run out of printer paper — can you order more?",
+        "Hurry up! We're running out of time.",
+        "The project ran out of funding before it was finished."
+      ]
+    }
+  ],
+  "fillInExercises": [
+    {
+      "type": "multiple-choice",
+      "sentence": "Our manager decided to ___ a new marketing strategy this quarter.",
+      "options": ["carry out", "run out", "bring about", "set up"],
+      "correct": "carry out",
+      "explanation": "'Carry out' means to complete or perform a task or plan."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "She ___ up her own bakery after years of working for someone else.",
+      "hint": "_ up",
+      "correct": "set",
+      "explanation": "'Set up' means to establish or start something."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "The new CEO ___ many changes that improved employee satisfaction.",
+      "options": ["brought about", "ran out", "took on", "dealt with"],
+      "correct": "brought about",
+      "explanation": "'Bring about' means to cause something to happen."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "He's great at ___ with difficult situations calmly and professionally.",
+      "hint": "dealing _ with",
+      "correct": "dealing",
+      "explanation": "'Deal with' means to handle a situation or problem."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "We've ___ of coffee in the office kitchen. Can someone buy more?",
+      "options": ["run out", "taken on", "set up", "carried out"],
+      "correct": "run out",
+      "explanation": "'Run out (of)' means to have no more of something left."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "The company decided to ___ on 20 new graduates this summer.",
+      "hint": "_ on",
+      "correct": "take",
+      "explanation": "'Take on' means to hire or accept someone or something."
+    },
+    {
+      "type": "multiple-choice",
+      "sentence": "How do you usually ___ stress when you have a busy deadline?",
+      "options": ["deal with", "set up", "run out", "take on"],
+      "correct": "deal with",
+      "explanation": "'Deal with' means to manage or handle something."
+    },
+    {
+      "type": "write-verb",
+      "sentence": "We need to ___ out all the safety checks before the factory opens.",
+      "hint": "_ out",
+      "correct": "carry",
+      "explanation": "'Carry out' means to perform or complete a task."
+    }
+  ],
+  "conversations": [
+    {
+      "title": "At the Office",
+      "lines": [
+        { "speaker": "James", "text": "Have you heard? The company wants to [take on] fifteen new developers." },
+        { "speaker": "Emma",  "text": "Really? I heard they also want to [set up] a new office in Madrid." },
+        { "speaker": "James", "text": "Yes! The director wants to [bring about] some big changes this year." },
+        { "speaker": "Emma",  "text": "That's a lot to [deal with]. I hope they don't [run out] of budget." },
+        { "speaker": "James", "text": "Meanwhile, we still need to [carry out] the quarterly review." }
+      ]
+    },
+    {
+      "title": "Job Interview Preparation",
+      "lines": [
+        { "speaker": "Priya", "text": "My interview is tomorrow and I might [run out] of things to say." },
+        { "speaker": "Dan",   "text": "Don't worry! Talk about how you [deal with] challenges at work." },
+        { "speaker": "Priya", "text": "I can mention the project where I helped [set up] the new system." },
+        { "speaker": "Dan",   "text": "And explain how you [take on] extra responsibilities without being asked." },
+        { "speaker": "Priya", "text": "I also [bring about] some cost savings — I should mention that." },
+        { "speaker": "Dan",   "text": "Exactly! Just [carry out] the interview as a normal conversation." }
+      ]
+    }
+  ]
+}
