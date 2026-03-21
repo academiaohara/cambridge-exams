@@ -7,36 +7,56 @@
   "content": {
     "title": "The Rise of Citizen Science",
     "texts": {
-      "A": "The democratization of research through citizen science is a double-edged sword. While it allows for data collection on a scale previously unimaginable, the lack of rigorous academic training among volunteers often leads to inconsistent results. We are seeing a proliferation of 'junk data' that requires professional scientists to spend more time cleaning databases than conducting original analysis. Enthusiastic amateurs are no substitute for the precision of a controlled laboratory environment, and we should be wary of replacing institutional expertise with crowd-sourced observations.",
-      "B": "The gatekeeping of scientific knowledge is a relic of the past. Citizen science projects, from tracking bird migrations to classifying galaxies, have proven that the collective eye is often sharper than that of a single specialist. The sheer volume of eyeballs compensates for any minor individual errors. Furthermore, involving the public in the scientific process fosters a scientifically literate society that is more likely to support environmental and research funding. It is not about replacing experts, but about building a more powerful, distributed network of discovery.",
-      "C": "I share the view that the quality of data provided by non-professionals is the primary hurdle for the credibility of citizen science. However, the solution is not to exclude the public, but to improve the digital interfaces they use. By implementing 'algorithmic verification,' we can filter out anomalies in real-time. I disagree that this is a distraction for professionals; rather, it is an essential evolution of the scientific method in the big-data era. The real value lies in the long-term engagement of local communities in the health of their own ecosystems.",
-      "D": "The focus on 'data accuracy' is a red herring. The most significant contribution of citizen science is not the data itself, but the political pressure it generates. When thousands of people observe the decline of a local species, they become a formidable force for policy change that no academic paper can replicate. I agree that we must be careful not to devalue the role of the trained specialist, but we must also recognize that 'perfect' data is useless if it sits in a drawer while the planet burns. Science must step out of the ivory tower and into the streets.",
+      "A": "The democratization of research through citizen science is a double-edged sword. While it allows for data collection on a scale previously unimaginable, the lack of rigorous academic training among volunteers often leads to inconsistent results. [37]We are seeing a proliferation of 'junk data' that requires professional scientists to spend more time cleaning databases than conducting original analysis.[/37] Enthusiastic amateurs are no substitute for the precision of a controlled laboratory environment, and [38]we should be wary of replacing institutional expertise with crowd-sourced observations.[/38]",
+      "B": "The gatekeeping of scientific knowledge is a relic of the past. [40]Citizen science projects, from tracking bird migrations to classifying galaxies, have proven that the collective eye is often sharper than that of a single specialist.[/40] [37]The sheer volume of eyeballs compensates for any minor individual errors.[/37] Furthermore, involving the public in the scientific process fosters a scientifically literate society that is more likely to support environmental and research funding. [39]It is not about replacing experts, but about building a more powerful, distributed network of discovery.[/39]",
+      "C": "I share the view that the quality of data provided by non-professionals is the primary hurdle for the credibility of citizen science. However, the solution is not to exclude the public, but to improve the digital interfaces they use. [39]By implementing 'algorithmic verification,' we can filter out anomalies in real-time.[/39] I disagree that this is a distraction for professionals; rather, it is an essential evolution of the scientific method in the big-data era. The real value lies in the long-term engagement of local communities in the health of their own ecosystems.",
+      "D": "The focus on 'data accuracy' is a red herring. [40]The most significant contribution of citizen science is not the data itself, but the political pressure it generates.[/40] When thousands of people observe the decline of a local species, they become a formidable force for policy change that no academic paper can replicate. [38]I agree that we must be careful not to devalue the role of the trained specialist[/38], but we must also recognize that 'perfect' data is useless if it sits in a drawer while the planet burns. Science must step out of the ivory tower and into the streets.",
       "questions": [
         {
           "number": 37,
           "question": "Which expert has a different view from B on the reliability of data collected by the public?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "A",
           "explanation": "Expert B argues that the 'collective eye' is sharp and volume compensates for errors. Expert A, however, claims it leads to 'inconsistent results' and 'junk data.'"
         },
         {
           "number": 38,
           "question": "Which expert shares A's concern about the potential devaluation of professional expertise?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "D",
           "explanation": "Expert A warns against replacing 'institutional expertise' with amateurs. Expert D also agrees that we must 'not devalue the role of the trained specialist.'"
         },
         {
           "number": 39,
           "question": "Which expert expresses a similar opinion to C regarding the need for technological solutions to manage crowd-sourced data?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "B",
           "explanation": "Expert C suggests 'algorithmic verification' and better interfaces. Expert B similarly points to the 'distributed network' and the 'digital' classification of things like galaxies as a successful evolution."
         },
         {
           "number": 40,
           "question": "Which expert has a different view from D on the primary goal of involving citizens in science?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "B",
           "explanation": "Expert D says the 'data itself' is not the point, but rather 'political pressure.' Expert B disagrees, focusing instead on the scientific value of the 'distributed network of discovery' and the 'collective eye' for data."
         }
