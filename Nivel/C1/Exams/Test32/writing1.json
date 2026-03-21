@@ -1,0 +1,25 @@
+{
+  "title": "Writing - Part 1: AI in Healthcare",
+  "time": 45,
+  "totalQuestions": 1,
+  "description": "Your class has listened to a lecture on the growing role of artificial intelligence in healthcare and the implications for patients and medical professionals.",
+  "content": {
+    "question": "Write an essay discussing two of the considerations in your notes. You should explain which consideration you think is most important, giving reasons for your opinion.",
+    "notes": {
+      "considerations": ["Diagnostic accuracy", "Patient data privacy", "Impact on medical professionals"],
+      "opinions": [
+        "AI-powered diagnostic tools have demonstrated the ability to detect conditions such as cancer with greater accuracy than human specialists in controlled studies.",
+        "The vast quantities of personal health data required to train AI systems raise serious concerns about consent, security and potential misuse.",
+        "While AI may automate routine tasks, it risks devaluing clinical expertise and fundamentally altering the doctor-patient relationship."
+      ]
+    },
+    "wordLimit": "220-260 words",
+    "structure": {
+      "introduction": "Introduce the integration of AI into healthcare and outline the two considerations you will examine.",
+      "bodyParagraph1": "Discuss the first consideration (e.g. diagnostic accuracy), exploring both its benefits and any limitations.",
+      "bodyParagraph2": "Discuss the second consideration (e.g. patient data privacy), explaining why you regard it as the most important issue.",
+      "conclusion": "Summarise your arguments and state clearly which consideration demands most urgent attention."
+    },
+    "modelAnswer": "The integration of artificial intelligence into healthcare promises to transform medicine in profound ways, yet it simultaneously raises critical questions that society must address carefully. Two of the most significant considerations are the potential for improved diagnostic accuracy and the serious risks posed to patient data privacy.\n\nAI diagnostic tools have produced remarkable results in clinical trials, outperforming human specialists in identifying conditions such as diabetic retinopathy and certain forms of cancer. The ability to analyse thousands of medical images within seconds and flag anomalies that might elude even experienced clinicians represents a genuinely transformative advance. For healthcare systems under pressure, such efficiency gains could prove invaluable in reducing diagnostic delays and ultimately saving lives.\n\nNevertheless, the issue of patient data privacy is, in my view, the most pressing concern. AI systems require enormous datasets of sensitive health information to function effectively, and the processes of collecting, storing and sharing this data are fraught with risk. Breaches in medical databases can expose highly personal information, while the commercial incentives of technology companies may not always align with patients' best interests. Furthermore, questions surrounding informed consent — particularly regarding how data is used beyond its original purpose — remain insufficiently resolved in most jurisdictions.\n\nIn conclusion, while the diagnostic capabilities of AI offer genuinely exciting prospects for medicine, protecting the privacy of the patients whose data underpins these systems must be the paramount concern. Without robust regulatory frameworks and transparent governance, public trust in healthcare AI will be impossible to sustain."
+  }
+}
