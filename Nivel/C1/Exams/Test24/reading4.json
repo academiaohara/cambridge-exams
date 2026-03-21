@@ -1,0 +1,79 @@
+{
+  "title": "Reading and Use of English - Part 4",
+  "type": "transformations",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given. Here is an example (0).",
+  "content": {
+    "questions": [
+      {
+        "number": 25,
+        "firstSentence": "They will deliver the furniture tomorrow afternoon.",
+        "keyWord": "BE",
+        "beforeGap": "The furniture",
+        "afterGap": "tomorrow afternoon.",
+        "routes": [
+          { "p1": "will", "p2": "be delivered" },
+          { "p1": "is", "p2": "going to be delivered" }
+        ],
+        "explanation": "Tests simple future passive."
+      },
+      {
+        "number": 26,
+        "firstSentence": "‘I'll pay for the coffee,’ said Mark.",
+        "keyWord": "INSISTED",
+        "beforeGap": "Mark",
+        "afterGap": "for the coffee.",
+        "routes": [
+          { "p1": "insisted", "p2": "on paying" }
+        ],
+        "explanation": "Tests reporting verb 'insist' + preposition 'on' + gerund."
+      },
+      {
+        "number": 27,
+        "firstSentence": "If you don't take your umbrella, you'll get wet.",
+        "keyWord": "UNLESS",
+        "beforeGap": "You'll get wet",
+        "afterGap": "your umbrella.",
+        "routes": [
+          { "p1": "unless", "p2": "you take" }
+        ],
+        "explanation": "Tests 'unless' in first conditional structures."
+      },
+      {
+        "number": 28,
+        "firstSentence": "I am sure they were very happy to see you.",
+        "keyWord": "MUST",
+        "beforeGap": "They",
+        "afterGap": "happy to see you.",
+        "routes": [
+          { "p1": "must", "p2": "have been very" },
+          { "p1": "must", "p2": "have been quite" }
+        ],
+        "explanation": "Tests modal perfect for certain past deduction."
+      },
+      {
+        "number": 29,
+        "firstSentence": "I didn't know about the party until I arrived at the office.",
+        "keyWord": "ONLY",
+        "beforeGap": "It",
+        "afterGap": "I arrived at the office that I knew about the party.",
+        "routes": [
+          { "p1": "was", "p2": "only when" }
+        ],
+        "explanation": "Tests cleft sentences (It was only when...)."
+      },
+      {
+        "number": 30,
+        "firstSentence": "I find it hard to understand his accent.",
+        "keyWord": "DIFFICULTY",
+        "beforeGap": "I have",
+        "afterGap": "his accent.",
+        "routes": [
+          { "p1": "difficulty", "p2": "(in) understanding" }
+        ],
+        "explanation": "Tests the phrase 'have difficulty (in) + -ing'."
+      }
+    ]
+  }
+}

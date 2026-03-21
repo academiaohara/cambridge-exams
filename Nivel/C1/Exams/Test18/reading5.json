@@ -1,0 +1,90 @@
+{
+  "id": "Test6-reading-5-3",
+  "examId": "Test6",
+  "section": "reading",
+  "part": 5,
+  "type": "multiple-choice-text",
+  "title": "Reading and Use of English – Part 5",
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text.",
+  "time": 15,
+  "totalQuestions": 6,
+  "content": {
+    "title": "The Transparency Paradox: Privacy in the Age of Data",
+    "subtitle": "Why the demand for convenience is eroding the foundations of personal autonomy.",
+    "text": "In the digital economy, personal data has often been described as the 'new oil.' However, unlike oil, which is a finite resource, data is infinite and grows more valuable the more it is interconnected. [31] Most users operate under a 'privacy paradox': they express deep concern about their personal information being harvested, yet they continue to exchange that same data for the minor conveniences of free apps and targeted discounts. [/31] This trade-off is rarely a conscious decision but rather the result of 'choice architecture' designed to nudge users toward the least private options. || The ethical implications of this harvesting extend far beyond annoying advertisements. Algorithms now play a significant role in determining creditworthiness, insurance premiums, and even job prospects. [32] When these systems are fed biased or incomplete data, they create 'feedback loops' that can reinforce social inequalities under the guise of mathematical objectivity. [/32] If an algorithm decides a person is a high-risk borrower based on their zip code or social connections, that person is denied the very tools needed to improve their situation, further entrenching the original data point. || [33] The term 'surveillance capitalism' was coined to describe this new economic order where human experience is used as free raw material for hidden commercial practices. [/33] In this model, the goal is not just to predict our behavior, but to influence it. By subtly altering the information we see in our news feeds, platforms can nudge our emotions and political leanings. We have moved from a world where we use technology to a world where technology is used to 'user' us. This shift represents a fundamental challenge to the concept of free will. || [34] The author’s attitude toward current data regulations, such as GDPR, is one of weary disappointment. [/34] While these laws were intended to empower the individual, they have often resulted in 'consent fatigue.' Users are so overwhelmed by cookie banners and complex privacy policies that they simply click 'accept all' without a second thought. This creates a facade of consent that protects corporations more than it protects citizens. True transparency would require a radical simplification of how data usage is communicated. || To reclaim autonomy, some advocates suggest 'data sovereignty,' where individuals have legal ownership of their digital footprint. [35] While this sounds appealing in theory, the practical implementation is a logistical nightmare, as it is nearly impossible to untangle one person's data from the vast web of social and commercial interactions. [/35] A more viable path may be the development of 'data trusts'—independent bodies that manage data on behalf of groups of citizens, ensuring it is only used for the public good and according to strict ethical guidelines. || Ultimately, the future of privacy will not be determined by technology, but by politics. [36] We must decide whether we want a society that treats people as sets of data points to be optimized, or as autonomous individuals with a right to a private life. [/36] As the boundaries between the physical and digital worlds continue to blur, our ability to keep secrets may become our most precious human right. The ghost in the machine is us, and it is time we took control of our own reflection.",
+    "questions": [
+      {
+        "number": 31,
+        "question": "The 'privacy paradox' mentioned in the first paragraph refers to the fact that people...",
+        "options": [
+          "A) claim to value privacy but behave in ways that compromise it.",
+          "B) prefer targeted discounts over the security of their data.",
+          "C) are unaware that their data is being harvested by free apps.",
+          "D) make conscious decisions to trade their autonomy for convenience."
+        ],
+        "correct": "A",
+        "explanation": "A is supported by [31], noting users 'express deep concern' but 'continue to exchange' their data."
+      },
+      {
+        "number": 32,
+        "question": "What is the danger of 'feedback loops' in algorithms, according to the second paragraph?",
+        "options": [
+          "A) They make mathematical predictions less objective.",
+          "B) They help individuals improve their financial situation faster.",
+          "C) They can make existing social divisions permanent.",
+          "D) They prevent companies from collecting historical data."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [32], stating these loops 'reinforce social inequalities' and further entrench them."
+      },
+      {
+        "number": 33,
+        "question": "What does the author suggest about 'surveillance capitalism' in the third paragraph?",
+        "options": [
+          "A) Its primary purpose is to improve the user experience of technology.",
+          "B) It allows users to have more control over their news feeds.",
+          "C) it focuses on manipulating human behavior rather than just predicting it.",
+          "D) It is a necessary evolution of the modern economic order."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [33], which explains the goal is 'not just to predict our behavior, but to influence it.'"
+      },
+      {
+        "number": 34,
+        "question": "How does the author feel about current data protection laws like GDPR?",
+        "options": [
+          "A) He is impressed by their success in empowering individuals.",
+          "B) He thinks they have made corporations too vulnerable.",
+          "C) He believes they have failed because they overwhelm the user.",
+          "D) He is optimistic that they will lead to radical transparency."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [34], which describes his 'weary disappointment' and the 'consent fatigue' these laws cause."
+      },
+      {
+        "number": 35,
+        "question": "What is the author's view on 'data sovereignty'?",
+        "options": [
+          "A) It is the only practical solution to the privacy problem.",
+          "B) It is a theoretical idea that is too difficult to put into practice.",
+          "C) It is a logistical nightmare because people don't want to own their data.",
+          "D) It should be replaced by 'data trusts' which are managed by corporations."
+        ],
+        "correct": "B",
+        "explanation": "B is supported by [35], stating implementation is a 'logistical nightmare' because it's impossible to 'untangle' data."
+      },
+      {
+        "number": 36,
+        "question": "In the final paragraph, the writer argues that the future of privacy depends on...",
+        "options": [
+          "A) the development of more sophisticated encryption technology.",
+          "B) a political decision about the status of individuals in society.",
+          "C) the ability of machines to optimize human behavior.",
+          "D) blurring the boundaries between the physical and digital worlds."
+        ],
+        "correct": "B",
+        "explanation": "B is supported by [36], stating that privacy 'will not be determined by technology, but by politics.'"
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "Test7-reading-5-1",
+  "examId": "Test7",
+  "section": "reading",
+  "part": 5,
+  "type": "multiple-choice-text",
+  "title": "Reading and Use of English – Part 5",
+  "description": "You are going to read a magazine article about an intellectual process known as critical thinking. For questions 31 – 36, choose the answer (A, B, C or D) which you think fits best according to the text.",
+  "time": 15,
+  "totalQuestions": 6,
+  "content": {
+    "title": "The Turing Trap: Defining Human Intelligence",
+    "subtitle": "Why mimicking conversation is not the same as possessing a mind.",
+    "text": "For decades, the benchmark for artificial intelligence was the Turing Test—a scenario where a machine attempts to pass as human through text-based conversation. If a human evaluator could not distinguish the machine from a person, the machine was deemed 'intelligent.' However, as large language models achieve this feat with ease, philosophers are questioning whether we have been measuring the wrong thing entirely. [31] The ability to manipulate symbols and predict the next word in a sequence is a feat of statistics, not necessarily a sign of sentience or understanding. [/31] We are discovering that linguistic fluency can exist in a vacuum, devoid of the lived experience that characterizes human thought. || This brings us to the distinction between 'narrow' and 'general' intelligence. Narrow AI excels at specific tasks, like playing chess or diagnosing skin cancer, often surpassing human capabilities. Yet, these systems are brittle; they cannot apply the logic of one domain to another. [32] Human intelligence is defined by its plasticity—our ability to navigate ambiguity, form analogies, and make moral judgments based on a complex web of social values. [/32] A machine might calculate the most efficient route for a self-driving car, but it cannot contemplate the philosophical 'why' of the journey. || One of the most famous arguments against machine sentience is John Searle’s 'Chinese Room' thought experiment. [33] Searle imagines a person inside a room following a massive rulebook to respond to Chinese characters slipped under the door. To an observer outside, the person appears to speak Chinese, yet the person inside understands nothing; they are merely following instructions. [/33] This suggests that syntax—the grammar and structure—is not sufficient for semantics, which is the actual meaning. Modern AI, no matter how convincing, may simply be a more sophisticated version of that room, operating on high-speed pattern recognition without a glimmer of true comprehension. || [34] The author’s tone regarding the future of 'AGI' (Artificial General Intelligence) is one of measured caution. [/34] There is a tendency in the tech world to assume that more data and more processing power will inevitably lead to a 'spark' of consciousness. But intelligence might not be an emergent property of scale. It may require embodiment—the experience of existing in a physical body that can feel, suffer, and interact with the world in real-time. Without a nervous system or a stake in its own survival, an AI lacks the 'existential friction' that shapes human cognition. || [35] The term 'stochastic parrot' has been used by some researchers to describe current AI models. [/35] It implies that these systems are merely repeating fragments of the vast internet they were trained on, without any internal model of reality. While this term is controversial, it highlights the risk of over-attributing human-like qualities to a tool. We are prone to anthropomorphism, seeing intent and emotion where there is only an optimization of probabilities. || Ultimately, the rise of AI is forcing us to redefine what makes us unique. [36] If logic and language can be automated, then the core of human intelligence may reside in our capacity for empathy, creativity, and the ability to ask questions that have no objective answer. [/36] Our value lies not in our efficiency, but in our messy, unpredictable, and deeply felt engagement with existence.",
+    "questions": [
+      {
+        "number": 31,
+        "question": "In the first paragraph, the writer suggests that modern AI...",
+        "options": [
+          "A) has finally proven that the Turing Test is the best measure of intelligence.",
+          "B) possesses a level of sentience that was previously unexpected.",
+          "C) uses statistical prediction rather than genuine comprehension.",
+          "D) is unable to achieve linguistic fluency in most scenarios."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [31], which states that manipulating symbols is a 'feat of statistics, not necessarily a sign of sentience.'"
+      },
+      {
+        "number": 32,
+        "question": "According to the second paragraph, what is a key difference between human and artificial intelligence?",
+        "options": [
+          "A) Artificial intelligence is better at navigating ambiguous situations.",
+          "B) Human intelligence is limited to specific domains like chess.",
+          "C) Humans have the capacity to apply logic across different areas of life.",
+          "D) Machines are more capable of making complex moral judgments."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [32], which defines human intelligence by its 'plasticity' and ability to 'navigate ambiguity' and form analogies."
+      },
+      {
+        "number": 33,
+        "question": "The writer uses the 'Chinese Room' experiment to illustrate that...",
+        "options": [
+          "A) speaking a language is the same as understanding it.",
+          "B) following rules is a higher form of intelligence than pattern recognition.",
+          "C) structural correctness does not guarantee an understanding of meaning.",
+          "D) computers will eventually learn semantics through better instructions."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [33], arguing that 'syntax... is not sufficient for semantics' (actual meaning)."
+      },
+      {
+        "number": 34,
+        "question": "What is the author's attitude toward the idea that AI will become conscious as it scales up?",
+        "options": [
+          "A) He is certain that more data will eventually lead to a spark of consciousness.",
+          "B) He is skeptical that consciousness is simply a result of more processing power.",
+          "C) He believes that embodiment is an unnecessary requirement for intelligence.",
+          "D) He is optimistic that AGI will be achieved within the next decade."
+        ],
+        "correct": "B",
+        "explanation": "B is supported by [34], which notes 'measured caution' and suggests intelligence may not be an 'emergent property of scale.'"
+      },
+      {
+        "number": 35,
+        "question": "The term 'stochastic parrot' is used in the text to describe...",
+        "options": [
+          "A) the way AI models create an internal model of reality.",
+          "B) the tendency of humans to see emotions in machines.",
+          "C) AI systems that repeat data without truly understanding it.",
+          "D) a controversial new method for training large language models."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [35], implying these systems repeat fragments of training data 'without any internal model of reality.'"
+      },
+      {
+        "number": 36,
+        "question": "In the final paragraph, the writer concludes that human uniqueness may be found in...",
+        "options": [
+          "A) our ability to perform logical tasks more efficiently than machines.",
+          "B) the automation of our language and creative processes.",
+          "C) our capacity for subjective experiences and unsolvable questions.",
+          "D) the objective answers we provide to complex problems."
+        ],
+        "correct": "C",
+        "explanation": "C is supported by [36], pointing toward 'empathy, creativity, and the ability to ask questions that have no objective answer.'"
+      }
+    ]
+  }
+}
