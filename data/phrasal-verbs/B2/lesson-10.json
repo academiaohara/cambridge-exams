@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "What ___ the company's remarkable turnaround?",
-      "options": ["brought about", "took off", "stood out", "got through"],
+      "options": [
+        "brought about",
+        "took off",
+        "stood out",
+        "got through"
+      ],
       "correct": "brought about",
       "explanation": "'Bring about' means to cause something to happen."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "How did your presentation ___ with the clients?",
-      "options": ["go down", "stand out", "take off", "scrape through"],
+      "options": [
+        "go down",
+        "stand out",
+        "take off",
+        "scrape through"
+      ],
       "correct": "go down",
       "explanation": "'Go down' describes how something is received by others."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Her creative ideas ___ during the brainstorming session.",
-      "options": ["stood out", "took off", "went down", "brought about"],
+      "options": [
+        "stood out",
+        "took off",
+        "went down",
+        "brought about"
+      ],
       "correct": "stood out",
       "explanation": "'Stand out' means to be noticeably better than others."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The new regulations ___ major changes in the industry.",
-      "options": ["brought about", "scraped through", "went down", "stood out"],
+      "options": [
+        "brought about",
+        "scraped through",
+        "went down",
+        "stood out"
+      ],
       "correct": "brought about",
       "explanation": "'Bring about' means to cause changes to happen."
     },
@@ -121,23 +141,59 @@
     {
       "title": "Startup Success Story",
       "lines": [
-        { "speaker": "Chen", "text": "Your app really [took off] after the last update!" },
-        { "speaker": "Maria", "text": "Yes, the new features [brought about] a huge increase in users." },
-        { "speaker": "Chen", "text": "How did the redesign [go down] with existing customers?" },
-        { "speaker": "Maria", "text": "Surprisingly well. Positive reviews really [stood out]." },
-        { "speaker": "Chen", "text": "And you [got through] all those technical problems too." },
-        { "speaker": "Maria", "text": "Barely! We [scraped through] some tight deadlines." }
+        {
+          "speaker": "Chen",
+          "text": "Your app really [take off] after the last update!"
+        },
+        {
+          "speaker": "Maria",
+          "text": "Yes, the new features [bring about] a huge increase in users."
+        },
+        {
+          "speaker": "Chen",
+          "text": "How did the redesign [go down (well/badly)] with existing customers?"
+        },
+        {
+          "speaker": "Maria",
+          "text": "Surprisingly well. Positive reviews really [stand out]."
+        },
+        {
+          "speaker": "Chen",
+          "text": "And you [get through] all those technical problems too."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Barely! We [scrape through] some tight deadlines."
+        }
       ]
     },
     {
       "title": "Career Advancement",
       "lines": [
-        { "speaker": "Oliver", "text": "What [brought about] your decision to change careers?" },
-        { "speaker": "Clara", "text": "I wanted to [stand out] in a more creative field." },
-        { "speaker": "Oliver", "text": "And your freelance business has really [taken off]!" },
-        { "speaker": "Clara", "text": "It wasn't easy. I [scraped through] the first year financially." },
-        { "speaker": "Oliver", "text": "How did your family [go down] with the career change?" },
-        { "speaker": "Clara", "text": "They were supportive. They helped me [get through] the tough times." }
+        {
+          "speaker": "Oliver",
+          "text": "What [bring about] your decision to change careers?"
+        },
+        {
+          "speaker": "Clara",
+          "text": "I wanted to [stand out] in a more creative field."
+        },
+        {
+          "speaker": "Oliver",
+          "text": "And your freelance business has really [take off]!"
+        },
+        {
+          "speaker": "Clara",
+          "text": "It wasn't easy. I [scrape through] the first year financially."
+        },
+        {
+          "speaker": "Oliver",
+          "text": "How did your family [go down (well/badly)] with the career change?"
+        },
+        {
+          "speaker": "Clara",
+          "text": "They were supportive. They helped me [get through] the tough times."
+        }
       ]
     }
   ]

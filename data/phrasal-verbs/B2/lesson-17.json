@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "We ___ the living room furniture to make it feel different.",
-      "options": ["changed around", "did up", "made into", "touched up"],
+      "options": [
+        "changed around",
+        "did up",
+        "made into",
+        "touched up"
+      ],
       "correct": "changed around",
       "explanation": "'Change around' means to rearrange things."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Volunteers ___ the community centre before the opening.",
-      "options": ["fixed up", "made over", "changed around", "touched up"],
+      "options": [
+        "fixed up",
+        "made over",
+        "changed around",
+        "touched up"
+      ],
       "correct": "fixed up",
       "explanation": "'Fix up' means to repair and improve something."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The TV show ___ ordinary people into stunning celebrities.",
-      "options": ["made over", "did up", "touched up", "fixed up"],
+      "options": [
+        "made over",
+        "did up",
+        "touched up",
+        "fixed up"
+      ],
       "correct": "made over",
       "explanation": "'Make over' means to transform someone's appearance."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The old barn was ___ a charming wedding venue.",
-      "options": ["made into", "changed around", "done up", "fixed up"],
+      "options": [
+        "made into",
+        "changed around",
+        "done up",
+        "fixed up"
+      ],
       "correct": "made into",
       "explanation": "'Make into' means to convert into something different."
     },
@@ -121,23 +141,59 @@
     {
       "title": "Home Renovation",
       "lines": [
-        { "speaker": "Oliver", "text": "We've decided to [do up] the house before selling it." },
-        { "speaker": "Clara", "text": "Good idea. Will you [change around] the layout as well?" },
-        { "speaker": "Oliver", "text": "Yes, and we'll [fix up] the garden too." },
-        { "speaker": "Clara", "text": "The garage could be [made into] an extra bedroom." },
-        { "speaker": "Oliver", "text": "That would really [make over] the whole property." },
-        { "speaker": "Clara", "text": "Just [touch up] the paintwork and it'll look perfect." }
+        {
+          "speaker": "Oliver",
+          "text": "We've decided to [do up] the house before selling it."
+        },
+        {
+          "speaker": "Clara",
+          "text": "Good idea. Will you [change around] the layout as well?"
+        },
+        {
+          "speaker": "Oliver",
+          "text": "Yes, and we'll [fix up] the garden too."
+        },
+        {
+          "speaker": "Clara",
+          "text": "The garage could be [make into] an extra bedroom."
+        },
+        {
+          "speaker": "Oliver",
+          "text": "That would really [make over] the whole property."
+        },
+        {
+          "speaker": "Clara",
+          "text": "Just [touch up] the paintwork and it'll look perfect."
+        }
       ]
     },
     {
       "title": "Office Redesign",
       "lines": [
-        { "speaker": "Emma", "text": "Management wants to [make over] the entire office floor." },
-        { "speaker": "James", "text": "Are they going to [change around] the desks?" },
-        { "speaker": "Emma", "text": "Yes, and the storage room will be [made into] a meeting space." },
-        { "speaker": "James", "text": "Someone needs to [fix up] the kitchen area too." },
-        { "speaker": "Emma", "text": "They're [doing up] the reception as the first priority." },
-        { "speaker": "James", "text": "I'll [touch up] my desk area before the big reveal." }
+        {
+          "speaker": "Emma",
+          "text": "Management wants to [make over] the entire office floor."
+        },
+        {
+          "speaker": "James",
+          "text": "Are they going to [change around] the desks?"
+        },
+        {
+          "speaker": "Emma",
+          "text": "Yes, and the storage room will be [make into] a meeting space."
+        },
+        {
+          "speaker": "James",
+          "text": "Someone needs to [fix up] the kitchen area too."
+        },
+        {
+          "speaker": "Emma",
+          "text": "They're [do up] the reception as the first priority."
+        },
+        {
+          "speaker": "James",
+          "text": "I'll [touch up] my desk area before the big reveal."
+        }
       ]
     }
   ]

@@ -72,7 +72,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I need to ___ ___ something warmer before we go outside.",
-      "options": ["change into", "change out of", "do up", "stand out"],
+      "options": [
+        "change into",
+        "change out of",
+        "do up",
+        "stand out"
+      ],
       "correct": "change into",
       "explanation": "'Change into' means to put on different clothes."
     },
@@ -86,7 +91,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Can you help me ___ ___ this zipper? It's stuck.",
-      "options": ["do up", "wear out", "stand out", "smarten up"],
+      "options": [
+        "do up",
+        "wear out",
+        "stand out",
+        "smarten up"
+      ],
       "correct": "do up",
       "explanation": "'Do up' means to fasten something like a button or zipper."
     },
@@ -100,7 +110,12 @@
     {
       "type": "multiple-choice",
       "sentence": "You should ___ ___ a bit before meeting the clients.",
-      "options": ["smarten up", "stand out", "change into", "wear out"],
+      "options": [
+        "smarten up",
+        "stand out",
+        "change into",
+        "wear out"
+      ],
       "correct": "smarten up",
       "explanation": "'Smarten up' means to make yourself look tidier and more presentable."
     },
@@ -114,7 +129,12 @@
     {
       "type": "multiple-choice",
       "sentence": "These shoes are completely ___ ___. I need new ones.",
-      "options": ["worn out", "done up", "smartened up", "changed into"],
+      "options": [
+        "worn out",
+        "done up",
+        "smartened up",
+        "changed into"
+      ],
       "correct": "worn out",
       "explanation": "'Worn out' means used so much that something is no longer good."
     },
@@ -130,24 +150,63 @@
     {
       "title": "Getting Ready for a Party",
       "lines": [
-        { "speaker": "Emma", "text": "I need to [change out of] these work clothes before the party." },
-        { "speaker": "Dan", "text": "Good idea. You should [change into] that blue dress—it really [stands out]!" },
-        { "speaker": "Emma", "text": "Do you think the blue shoes [go together] with it?" },
-        { "speaker": "Dan", "text": "Absolutely! They match perfectly." },
-        { "speaker": "Emma", "text": "Great. Can you [do up] this necklace for me?" },
-        { "speaker": "Dan", "text": "Sure! You've really [smartened up]—you look fantastic." }
+        {
+          "speaker": "Emma",
+          "text": "I need to [change out of] these work clothes before the party."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Good idea. You should [change into] that blue dress—it really [stand out]!"
+        },
+        {
+          "speaker": "Emma",
+          "text": "Do you think the blue shoes [go together] with it?"
+        },
+        {
+          "speaker": "Dan",
+          "text": "Absolutely! They match perfectly."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Great. Can you [do up] this necklace for me?"
+        },
+        {
+          "speaker": "Dan",
+          "text": "Sure! You've really [smarten up]—you look fantastic."
+        }
       ]
     },
     {
       "title": "Shopping for New Clothes",
       "lines": [
-        { "speaker": "Priya", "text": "I've completely [worn out] my favourite trainers." },
-        { "speaker": "Miguel", "text": "Let's go shopping then! You need something that [stands out]." },
-        { "speaker": "Priya", "text": "I want something that [goes together] with my new jacket." },
-        { "speaker": "Miguel", "text": "How about these white ones? They'd help you [smarten up] your look." },
-        { "speaker": "Priya", "text": "I like them! Let me [change into] them to try them on." },
-        { "speaker": "Miguel", "text": "Good idea. Make sure you can easily [do up] the laces." },
-        { "speaker": "Priya", "text": "Perfect fit! I'll [change out of] them and buy them." }
+        {
+          "speaker": "Priya",
+          "text": "I've completely [wear out] my favourite trainers."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Let's go shopping then! You need something that [stand out]."
+        },
+        {
+          "speaker": "Priya",
+          "text": "I want something that [go together] with my new jacket."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "How about these white ones? They'd help you [smarten up] your look."
+        },
+        {
+          "speaker": "Priya",
+          "text": "I like them! Let me [change into] them to try them on."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Good idea. Make sure you can easily [do up] the laces."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Perfect fit! I'll [change out of] them and buy them."
+        }
       ]
     }
   ]

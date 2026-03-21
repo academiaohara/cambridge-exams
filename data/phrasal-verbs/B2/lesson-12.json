@@ -90,7 +90,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Despite public pressure, the minister refused to ___.",
-      "options": ["back down", "give in", "crack down", "lash out"],
+      "options": [
+        "back down",
+        "give in",
+        "crack down",
+        "lash out"
+      ],
       "correct": "back down",
       "explanation": "'Back down' means to withdraw from a position under pressure."
     },
@@ -104,7 +109,12 @@
     {
       "type": "multiple-choice",
       "sentence": "After a long dispute, the union finally ___ to management's terms.",
-      "options": ["gave in", "backed down", "hit back", "stood up to"],
+      "options": [
+        "gave in",
+        "backed down",
+        "hit back",
+        "stood up to"
+      ],
       "correct": "gave in",
       "explanation": "'Give in' means to accept defeat or stop resisting."
     },
@@ -118,7 +128,12 @@
     {
       "type": "multiple-choice",
       "sentence": "When confronted, he ___ at everyone in the room.",
-      "options": ["lashed out", "picked on", "gave in", "backed down"],
+      "options": [
+        "lashed out",
+        "picked on",
+        "gave in",
+        "backed down"
+      ],
       "correct": "lashed out",
       "explanation": "'Lash out' means to react angrily or attack suddenly."
     },
@@ -132,7 +147,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Why do they always ___ the quietest person in the group?",
-      "options": ["pick on", "lock up", "crack down", "back down"],
+      "options": [
+        "pick on",
+        "lock up",
+        "crack down",
+        "back down"
+      ],
       "correct": "pick on",
       "explanation": "'Pick on' means to repeatedly target someone unfairly."
     },
@@ -148,23 +168,59 @@
     {
       "title": "Workplace Bullying",
       "lines": [
-        { "speaker": "Priya", "text": "I feel like my supervisor is constantly [picking on] me." },
-        { "speaker": "Dan", "text": "You shouldn't let anyone [push you around] like that." },
-        { "speaker": "Priya", "text": "I tried to [stand up to] her, but she just [lashed out] at me." },
-        { "speaker": "Dan", "text": "Don't [give in]. HR should [crack down on] this behaviour." },
-        { "speaker": "Priya", "text": "I hope they don't expect me to [back down]." },
-        { "speaker": "Dan", "text": "If she [hits back] unfairly, document everything." }
+        {
+          "speaker": "Priya",
+          "text": "I feel like my supervisor is constantly [pick on] me."
+        },
+        {
+          "speaker": "Dan",
+          "text": "You shouldn't let anyone [push around] you like that."
+        },
+        {
+          "speaker": "Priya",
+          "text": "I tried to [stand up to] her, but she just [lash out] at me."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Don't [give in]. HR should [crack down (on)] this behaviour."
+        },
+        {
+          "speaker": "Priya",
+          "text": "I hope they don't expect me to [back down]."
+        },
+        {
+          "speaker": "Dan",
+          "text": "If she [hit back] unfairly, document everything."
+        }
       ]
     },
     {
       "title": "Political Debate",
       "lines": [
-        { "speaker": "Miguel", "text": "The opposition [hit back] hard during the debate." },
-        { "speaker": "Sophie", "text": "Yes, but the prime minister refused to [back down]." },
-        { "speaker": "Miguel", "text": "He's promised to [crack down on] corruption." },
-        { "speaker": "Sophie", "text": "Critics say he's just [picking on] political rivals." },
-        { "speaker": "Miguel", "text": "The public wants leaders who [stand up to] powerful interests." },
-        { "speaker": "Sophie", "text": "Let's hope no one [lashes out] and escalates the tensions." }
+        {
+          "speaker": "Miguel",
+          "text": "The opposition [hit back] hard during the debate."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Yes, but the prime minister refused to [back down]."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "He's promised to [crack down (on)] corruption."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Critics say he's just [pick on] political rivals."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "The public wants leaders who [stand up to] powerful interests."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Let's hope no one [lash out] and escalates the tensions."
+        }
       ]
     }
   ]

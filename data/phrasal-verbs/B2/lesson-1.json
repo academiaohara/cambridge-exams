@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "In her nervousness, she ___ the answer before the question was finished.",
-      "options": ["blurted out", "came out", "let on", "got across"],
+      "options": [
+        "blurted out",
+        "came out",
+        "let on",
+        "got across"
+      ],
       "correct": "blurted out",
       "explanation": "'Blurt out' means to say something suddenly without thinking, often due to nervousness."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The speaker used several examples to ___ his main point.",
-      "options": ["get across", "come out with", "blurt out", "let on"],
+      "options": [
+        "get across",
+        "come out with",
+        "blurt out",
+        "let on"
+      ],
       "correct": "get across",
       "explanation": "'Get across' means to communicate an idea so others understand it."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "He suddenly ___ an observation that left everyone speechless.",
-      "options": ["came out with", "got across", "blurted out", "let on"],
+      "options": [
+        "came out with",
+        "got across",
+        "blurted out",
+        "let on"
+      ],
       "correct": "came out with",
       "explanation": "'Come out with' means to say something unexpected that surprises people."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Her criticism didn't ___ the way she had intended it to.",
-      "options": ["come out", "let on", "get across", "blurt out"],
+      "options": [
+        "come out",
+        "let on",
+        "get across",
+        "blurt out"
+      ],
       "correct": "come out",
       "explanation": "'Come out' describes how something is expressed or perceived."
     },
@@ -112,22 +132,55 @@
     {
       "title": "The Accidental Revelation",
       "lines": [
-        { "speaker": "Emma", "text": "I can't believe I [blurted out] the news about the promotion!" },
-        { "speaker": "James", "text": "What happened? How did it [come out]?" },
-        { "speaker": "Emma", "text": "I was so excited that I just [came out with] it during lunch." },
-        { "speaker": "James", "text": "Did you [let on] that you knew before the official announcement?" },
-        { "speaker": "Emma", "text": "Unfortunately, yes. I couldn't [get across] that I hadn't meant to reveal it." },
-        { "speaker": "James", "text": "Well, at least try not to [let on] that you feel guilty about it." }
+        {
+          "speaker": "Emma",
+          "text": "I can't believe I [blurt out] the news about the promotion!"
+        },
+        {
+          "speaker": "James",
+          "text": "What happened? How did it [come out]?"
+        },
+        {
+          "speaker": "Emma",
+          "text": "I was so excited that I just [come out with] it during lunch."
+        },
+        {
+          "speaker": "James",
+          "text": "Did you [let on] that you knew before the official announcement?"
+        },
+        {
+          "speaker": "Emma",
+          "text": "Unfortunately, yes. I couldn't [get across] that I hadn't meant to reveal it."
+        },
+        {
+          "speaker": "James",
+          "text": "Well, at least try not to [let on] that you feel guilty about it."
+        }
       ]
     },
     {
       "title": "Presentation Feedback",
       "lines": [
-        { "speaker": "Sarah", "text": "How did you think my presentation [came out]?" },
-        { "speaker": "Carlos", "text": "You definitely [got across] the key points effectively." },
-        { "speaker": "Sarah", "text": "I nearly [blurted out] the wrong statistics at one point." },
-        { "speaker": "Carlos", "text": "I noticed, but you recovered well. It didn't [let on] that you were nervous." },
-        { "speaker": "Sarah", "text": "Thanks! I'll try to [get across] the financial data more clearly next time." }
+        {
+          "speaker": "Sarah",
+          "text": "How did you think my presentation [come out]?"
+        },
+        {
+          "speaker": "Carlos",
+          "text": "You definitely [get across] the key points effectively."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "I nearly [blurt out] the wrong statistics at one point."
+        },
+        {
+          "speaker": "Carlos",
+          "text": "I noticed, but you recovered well. It didn't [let on] that you were nervous."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "Thanks! I'll try to [get across] the financial data more clearly next time."
+        }
       ]
     }
   ]

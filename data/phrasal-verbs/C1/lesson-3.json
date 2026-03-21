@@ -45,7 +45,12 @@
     {
       "type": "multiple-choice",
       "sentence": "While browsing the antique shop, I ___ a rare first edition worth thousands.",
-      "options": ["chanced upon", "took in", "talked round", "creased up"],
+      "options": [
+        "chanced upon",
+        "took in",
+        "talked round",
+        "creased up"
+      ],
       "correct": "chanced upon",
       "explanation": "'Chance upon' means to find something unexpectedly by accident."
     },
@@ -59,7 +64,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Experienced investors should be wary of being ___ by promises of guaranteed returns.",
-      "options": ["taken in", "chanced upon", "talked round", "creased up"],
+      "options": [
+        "taken in",
+        "chanced upon",
+        "talked round",
+        "creased up"
+      ],
       "correct": "taken in",
       "explanation": "'Take in' (in this context) means to be deceived or tricked."
     },
@@ -73,7 +83,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I ___ an old photograph of my grandparents while clearing out the attic.",
-      "options": ["chanced upon", "took in", "creased up", "talked round"],
+      "options": [
+        "chanced upon",
+        "took in",
+        "creased up",
+        "talked round"
+      ],
       "correct": "chanced upon",
       "explanation": "'Chance upon' means to discover something by accident."
     },
@@ -87,7 +102,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Her sardonic wit had the entire dinner party ___ within minutes.",
-      "options": ["creasing up", "chancing upon", "taking in", "talking round"],
+      "options": [
+        "creasing up",
+        "chancing upon",
+        "taking in",
+        "talking round"
+      ],
       "correct": "creasing up",
       "explanation": "'Crease up' means to cause someone to laugh intensely."
     },
@@ -103,24 +123,63 @@
     {
       "title": "Unexpected Discovery",
       "lines": [
-        { "speaker": "Sophie", "text": "You'll never believe what I [chanced upon] at the estate sale yesterday." },
-        { "speaker": "Dan", "text": "What? Don't keep me in suspense—tell me!" },
-        { "speaker": "Sophie", "text": "An original manuscript! Though I hope I haven't been [taken in] by a clever fake." },
-        { "speaker": "Dan", "text": "That would be quite embarrassing. Have you had it authenticated?" },
-        { "speaker": "Sophie", "text": "The appraiser was [talking round] the question of value, which makes me nervous." },
-        { "speaker": "Dan", "text": "At least the story [creased up] everyone at the office when you told them!" }
+        {
+          "speaker": "Sophie",
+          "text": "You'll never believe what I [chance upon] at the estate sale yesterday."
+        },
+        {
+          "speaker": "Dan",
+          "text": "What? Don't keep me in suspense—tell me!"
+        },
+        {
+          "speaker": "Sophie",
+          "text": "An original manuscript! Though I hope I haven't been [take in] by a clever fake."
+        },
+        {
+          "speaker": "Dan",
+          "text": "That would be quite embarrassing. Have you had it authenticated?"
+        },
+        {
+          "speaker": "Sophie",
+          "text": "The appraiser was [talk round] the question of value, which makes me nervous."
+        },
+        {
+          "speaker": "Dan",
+          "text": "At least the story [crease up] everyone at the office when you told them!"
+        }
       ]
     },
     {
       "title": "Cautionary Tale",
       "lines": [
-        { "speaker": "Priya", "text": "My uncle was completely [taken in] by an investment scam last year." },
-        { "speaker": "James", "text": "That's terrible. How did he [chance upon] these fraudsters in the first place?" },
-        { "speaker": "Priya", "text": "He met them at a networking event. They were very persuasive." },
-        { "speaker": "James", "text": "These con artists are skilled at [talking round] difficult questions." },
-        { "speaker": "Priya", "text": "Now he can finally [crease up] about it, though at the time it was devastating." },
-        { "speaker": "James", "text": "Don't be too hard on him—anyone can be [taken in] by a sophisticated scheme." },
-        { "speaker": "Priya", "text": "True. We've all [chanced upon] situations that tested our judgment." }
+        {
+          "speaker": "Priya",
+          "text": "My uncle was completely [take in] by an investment scam last year."
+        },
+        {
+          "speaker": "James",
+          "text": "That's terrible. How did he [chance upon] these fraudsters in the first place?"
+        },
+        {
+          "speaker": "Priya",
+          "text": "He met them at a networking event. They were very persuasive."
+        },
+        {
+          "speaker": "James",
+          "text": "These con artists are skilled at [talk round] difficult questions."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Now he can finally [crease up] about it, though at the time it was devastating."
+        },
+        {
+          "speaker": "James",
+          "text": "Don't be too hard on him—anyone can be [take in] by a sophisticated scheme."
+        },
+        {
+          "speaker": "Priya",
+          "text": "True. We've all [chance upon] situations that tested our judgment."
+        }
       ]
     }
   ]

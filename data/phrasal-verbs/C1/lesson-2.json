@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The coalition agreement merely ___ the fundamental differences between the parties.",
-      "options": ["papered over", "propped up", "set down", "watered down"],
+      "options": [
+        "papered over",
+        "propped up",
+        "set down",
+        "watered down"
+      ],
       "correct": "papered over",
       "explanation": "'Paper over' means to hide problems rather than solve them properly."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The new charter ___ clear protocols for democratic transitions of power.",
-      "options": ["sets down", "papers over", "props up", "writes off"],
+      "options": [
+        "sets down",
+        "papers over",
+        "props up",
+        "writes off"
+      ],
       "correct": "sets down",
       "explanation": "'Set down' means to officially establish rules or procedures."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "It's too early to ___ the opposition movement—they've shown remarkable resilience.",
-      "options": ["write off", "paper over", "prop up", "set down"],
+      "options": [
+        "write off",
+        "paper over",
+        "prop up",
+        "set down"
+      ],
       "correct": "write off",
       "explanation": "'Write off' means to dismiss something as unlikely to succeed."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The treaty ___ specific obligations for all signatory nations.",
-      "options": ["sets down", "waters down", "papers over", "props up"],
+      "options": [
+        "sets down",
+        "waters down",
+        "papers over",
+        "props up"
+      ],
       "correct": "sets down",
       "explanation": "'Set down' means to formally establish requirements or rules."
     },
@@ -112,23 +132,59 @@
     {
       "title": "Political Analysis Discussion",
       "lines": [
-        { "speaker": "Sarah", "text": "The new economic policy seems to [paper over] the real issues facing working families." },
-        { "speaker": "Miguel", "text": "I agree. They're just [propping up] an unsustainable system rather than reforming it." },
-        { "speaker": "Sarah", "text": "And the guidelines [set down] in the legislation are far too vague to be effective." },
-        { "speaker": "Miguel", "text": "The original draft was much stronger, but it was [watered down] during committee." },
-        { "speaker": "Sarah", "text": "Some commentators have already [written off] any chance of meaningful change." },
-        { "speaker": "Miguel", "text": "Perhaps, but it's too soon to [write off] the reform advocates completely." }
+        {
+          "speaker": "Sarah",
+          "text": "The new economic policy seems to [paper over] the real issues facing working families."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "I agree. They're just [prop up] an unsustainable system rather than reforming it."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "And the guidelines [set down] in the legislation are far too vague to be effective."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "The original draft was much stronger, but it was [water down] during committee."
+        },
+        {
+          "speaker": "Sarah",
+          "text": "Some commentators have already [write off] any chance of meaningful change."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Perhaps, but it's too soon to [write off] the reform advocates completely."
+        }
       ]
     },
     {
       "title": "International Relations Seminar",
       "lines": [
-        { "speaker": "Fatima", "text": "The peace accord [sets down] a framework, but critics say it just [papers over] ethnic tensions." },
-        { "speaker": "Alex", "text": "Western nations have been [propping up] the current administration for strategic reasons." },
-        { "speaker": "Fatima", "text": "Meanwhile, the human rights provisions have been [watered down] to almost nothing." },
-        { "speaker": "Alex", "text": "Many NGOs have [written off] the treaty as ineffective before it even takes effect." },
-        { "speaker": "Fatima", "text": "Still, any agreement that [sets down] basic principles is better than continued conflict." },
-        { "speaker": "Alex", "text": "True, though [papering over] differences rarely leads to lasting stability." }
+        {
+          "speaker": "Fatima",
+          "text": "The peace accord [set down] a framework, but critics say it just [paper over] ethnic tensions."
+        },
+        {
+          "speaker": "Alex",
+          "text": "Western nations have been [prop up] the current administration for strategic reasons."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Meanwhile, the human rights provisions have been [water down] to almost nothing."
+        },
+        {
+          "speaker": "Alex",
+          "text": "Many NGOs have [write off] the treaty as ineffective before it even takes effect."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Still, any agreement that [set down] basic principles is better than continued conflict."
+        },
+        {
+          "speaker": "Alex",
+          "text": "True, though [paper over] differences rarely leads to lasting stability."
+        }
       ]
     }
   ]

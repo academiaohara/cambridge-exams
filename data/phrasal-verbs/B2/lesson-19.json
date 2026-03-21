@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Many species of wildlife are in danger of ___.",
-      "options": ["dying out", "drying up", "digging up", "springing up"],
+      "options": [
+        "dying out",
+        "drying up",
+        "digging up",
+        "springing up"
+      ],
       "correct": "dying out",
       "explanation": "'Die out' means to become extinct or disappear."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Funding for the project has completely ___.",
-      "options": ["dried up", "died out", "killed off", "sprung up"],
+      "options": [
+        "dried up",
+        "died out",
+        "killed off",
+        "sprung up"
+      ],
       "correct": "dried up",
       "explanation": "'Dry up' means to stop being available."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "New tech startups are ___ everywhere in the city.",
-      "options": ["springing up", "dying out", "drying up", "digging up"],
+      "options": [
+        "springing up",
+        "dying out",
+        "drying up",
+        "digging up"
+      ],
       "correct": "springing up",
       "explanation": "'Spring up' means to appear suddenly and rapidly."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Pesticides have ___ many beneficial insects.",
-      "options": ["killed off", "dried up", "dug up", "sprung up"],
+      "options": [
+        "killed off",
+        "dried up",
+        "dug up",
+        "sprung up"
+      ],
       "correct": "killed off",
       "explanation": "'Kill off' means to destroy or eliminate."
     },
@@ -112,23 +132,59 @@
     {
       "title": "Environmental Concerns",
       "lines": [
-        { "speaker": "Miguel", "text": "Many endangered species are [dying out] due to habitat loss." },
-        { "speaker": "Sophie", "text": "And pollution is [killing off] marine life at an alarming rate." },
-        { "speaker": "Miguel", "text": "The local river has almost completely [dried up] this summer." },
-        { "speaker": "Sophie", "text": "Activists have [dug up] evidence of illegal dumping nearby." },
-        { "speaker": "Miguel", "text": "Hopefully, conservation groups will [spring up] to address this." },
-        { "speaker": "Sophie", "text": "Before more species [die out], we need urgent action." }
+        {
+          "speaker": "Miguel",
+          "text": "Many endangered species are [die out] due to habitat loss."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "And pollution is [kill off] marine life at an alarming rate."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "The local river has almost completely [dry up] this summer."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Activists have [dig up] evidence of illegal dumping nearby."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "Hopefully, conservation groups will [spring up] to address this."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Before more species [die out], we need urgent action."
+        }
       ]
     },
     {
       "title": "Urban Development",
       "lines": [
-        { "speaker": "Chen", "text": "New apartment blocks are [springing up] everywhere." },
-        { "speaker": "Maria", "text": "The character of the old neighbourhood is [dying out]." },
-        { "speaker": "Chen", "text": "Funding for preservation projects has [dried up]." },
-        { "speaker": "Maria", "text": "Construction has [killed off] the local wildlife." },
-        { "speaker": "Chen", "text": "Historians have [dug up] protests from a century ago about this." },
-        { "speaker": "Maria", "text": "Some things never change—concerns keep [springing up]." }
+        {
+          "speaker": "Chen",
+          "text": "New apartment blocks are [spring up] everywhere."
+        },
+        {
+          "speaker": "Maria",
+          "text": "The character of the old neighbourhood is [die out]."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Funding for preservation projects has [dry up]."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Construction has [kill off] the local wildlife."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Historians have [dig up] protests from a century ago about this."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Some things never change—concerns keep [spring up]."
+        }
       ]
     }
   ]

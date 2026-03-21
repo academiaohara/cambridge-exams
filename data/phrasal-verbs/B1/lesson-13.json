@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The expenses ___ ___ ___ over £1,000 this month.",
-      "options": ["add up to", "pay back", "use up", "take away"],
+      "options": [
+        "add up to",
+        "pay back",
+        "use up",
+        "take away"
+      ],
       "correct": "add up to",
       "explanation": "'Add up to' means separate amounts form a total."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "If you ___ ___ 15 from 50, you get 35.",
-      "options": ["take away", "add up to", "pay back", "use up"],
+      "options": [
+        "take away",
+        "add up to",
+        "pay back",
+        "use up"
+      ],
       "correct": "take away",
       "explanation": "'Take away' means to subtract one number from another."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "We've ___ ___ all the printer paper.",
-      "options": ["used up", "added up to", "paid back", "tipped up"],
+      "options": [
+        "used up",
+        "added up to",
+        "paid back",
+        "tipped up"
+      ],
       "correct": "used up",
       "explanation": "'Use up' means to consume all of a resource."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Don't worry, I'll ___ ___ the £20 I borrowed.",
-      "options": ["pay back", "use up", "take away", "tip up"],
+      "options": [
+        "pay back",
+        "use up",
+        "take away",
+        "tip up"
+      ],
       "correct": "pay back",
       "explanation": "'Pay back' means to return money that was borrowed."
     },
@@ -112,24 +132,63 @@
     {
       "title": "Managing Money",
       "lines": [
-        { "speaker": "Alex", "text": "My expenses this month [add up to] a lot more than usual." },
-        { "speaker": "Emma", "text": "I know the feeling. Did you [pay back] the money you borrowed from Sarah?" },
-        { "speaker": "Alex", "text": "Yes, I [paid her back] last week. But now I've [used up] most of my savings." },
-        { "speaker": "Emma", "text": "If you [take away] the rent, how much do you have left?" },
-        { "speaker": "Alex", "text": "Not much. I really need to budget better." },
-        { "speaker": "Emma", "text": "Maybe [tip up] your piggy bank and see if there's anything inside!" }
+        {
+          "speaker": "Alex",
+          "text": "My expenses this month [add up to] a lot more than usual."
+        },
+        {
+          "speaker": "Emma",
+          "text": "I know the feeling. Did you [pay back] the money you borrowed from Sarah?"
+        },
+        {
+          "speaker": "Alex",
+          "text": "Yes, I [pay back] her last week. But now I've [use up] most of my savings."
+        },
+        {
+          "speaker": "Emma",
+          "text": "If you [take away] the rent, how much do you have left?"
+        },
+        {
+          "speaker": "Alex",
+          "text": "Not much. I really need to budget better."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Maybe [tip up] your piggy bank and see if there's anything inside!"
+        }
       ]
     },
     {
       "title": "At the Office",
       "lines": [
-        { "speaker": "Dan", "text": "Have we [used up] all the office supplies already?" },
-        { "speaker": "Priya", "text": "Yes, the costs [add up to] quite a bit every month." },
-        { "speaker": "Dan", "text": "We need to order more paper. Don't [use up] the last pack." },
-        { "speaker": "Priya", "text": "I'll [tip up] the storage box and see what we have left." },
-        { "speaker": "Dan", "text": "Good idea. If you [take away] what we don't need, we'll save money." },
-        { "speaker": "Priya", "text": "Also, remember the company will [pay back] any personal expenses." },
-        { "speaker": "Dan", "text": "Great! All my receipts [add up to] about £150 this quarter." }
+        {
+          "speaker": "Dan",
+          "text": "Have we [use up] all the office supplies already?"
+        },
+        {
+          "speaker": "Priya",
+          "text": "Yes, the costs [add up to] quite a bit every month."
+        },
+        {
+          "speaker": "Dan",
+          "text": "We need to order more paper. Don't [use up] the last pack."
+        },
+        {
+          "speaker": "Priya",
+          "text": "I'll [tip up] the storage box and see what we have left."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Good idea. If you [take away] what we don't need, we'll save money."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Also, remember the company will [pay back] any personal expenses."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Great! All my receipts [add up to] about £150 this quarter."
+        }
       ]
     }
   ]

@@ -63,7 +63,12 @@
     {
       "type": "multiple-choice",
       "sentence": "It took years for him to ___ the loss of his job.",
-      "options": ["get over", "move on", "take in", "throw out"],
+      "options": [
+        "get over",
+        "move on",
+        "take in",
+        "throw out"
+      ],
       "correct": "get over",
       "explanation": "'Get over' means to recover from a negative experience."
     },
@@ -77,7 +82,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Let's ___ to the next topic in our discussion.",
-      "options": ["move on", "take in", "get over", "ward off"],
+      "options": [
+        "move on",
+        "take in",
+        "get over",
+        "ward off"
+      ],
       "correct": "move on",
       "explanation": "'Move on' means to proceed to something different."
     },
@@ -91,7 +101,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The court ___ the lawsuit on technical grounds.",
-      "options": ["threw out", "warded off", "moved on", "got over"],
+      "options": [
+        "threw out",
+        "warded off",
+        "moved on",
+        "got over"
+      ],
       "correct": "threw out",
       "explanation": "'Throw out' means to reject or dismiss something."
     },
@@ -105,7 +120,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I can't seem to ___ that you need to study harder.",
-      "options": ["get through to", "move on from", "take in", "throw out"],
+      "options": [
+        "get through to",
+        "move on from",
+        "take in",
+        "throw out"
+      ],
       "correct": "get through to",
       "explanation": "'Get through to' means to make someone understand."
     },
@@ -121,23 +141,59 @@
     {
       "title": "Dealing with Setbacks",
       "lines": [
-        { "speaker": "Miguel", "text": "I'm finding it hard to [get over] the project failure." },
-        { "speaker": "Sophie", "text": "You need to [move on] and focus on new opportunities." },
-        { "speaker": "Miguel", "text": "It's difficult to [take in] how quickly things went wrong." },
-        { "speaker": "Sophie", "text": "The committee [threw out] your proposal, but that happens to everyone." },
-        { "speaker": "Miguel", "text": "How do I [get through to] them that my idea had merit?" },
-        { "speaker": "Sophie", "text": "Focus on [warding off] negativity and try again next time." }
+        {
+          "speaker": "Miguel",
+          "text": "I'm finding it hard to [get over] the project failure."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "You need to [move on] and focus on new opportunities."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "It's difficult to [take in] how quickly things went wrong."
+        },
+        {
+          "speaker": "Sophie",
+          "text": "The committee [throw out] your proposal, but that happens to everyone."
+        },
+        {
+          "speaker": "Miguel",
+          "text": "How do I [get through (to)] them that my idea had merit?"
+        },
+        {
+          "speaker": "Sophie",
+          "text": "Focus on [ward off] negativity and try again next time."
+        }
       ]
     },
     {
       "title": "Medical Consultation",
       "lines": [
-        { "speaker": "Chen", "text": "There's a lot of information here to [take in]." },
-        { "speaker": "Maria", "text": "Take your time to [get over] the initial shock." },
-        { "speaker": "Chen", "text": "What can I do to [ward off] any complications?" },
-        { "speaker": "Maria", "text": "Follow the treatment plan carefully—I know it's hard to [get through to] patients sometimes." },
-        { "speaker": "Chen", "text": "I understand. I need to [move on] and focus on recovery." },
-        { "speaker": "Maria", "text": "That's the right attitude. Don't let fear [throw out] your progress." }
+        {
+          "speaker": "Chen",
+          "text": "There's a lot of information here to [take in]."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Take your time to [get over] the initial shock."
+        },
+        {
+          "speaker": "Chen",
+          "text": "What can I do to [ward off] any complications?"
+        },
+        {
+          "speaker": "Maria",
+          "text": "Follow the treatment plan carefully—I know it's hard to [get through (to)] patients sometimes."
+        },
+        {
+          "speaker": "Chen",
+          "text": "I understand. I need to [move on] and focus on recovery."
+        },
+        {
+          "speaker": "Maria",
+          "text": "That's the right attitude. Don't let fear [throw out] your progress."
+        }
       ]
     }
   ]

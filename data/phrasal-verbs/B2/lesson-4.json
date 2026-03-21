@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I ___ his irritability ___ lack of sleep.",
-      "options": ["put down to", "thought up", "sized up", "puzzled out"],
+      "options": [
+        "put down to",
+        "thought up",
+        "sized up",
+        "puzzled out"
+      ],
       "correct": "put down to",
       "explanation": "'Put down to' means to attribute something to a particular cause."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The manager quickly ___ the job applicants during the interviews.",
-      "options": ["sized up", "put down to", "thought through", "puzzled out"],
+      "options": [
+        "sized up",
+        "put down to",
+        "thought through",
+        "puzzled out"
+      ],
       "correct": "sized up",
       "explanation": "'Size up' means to form an opinion about someone or something."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "She ___ a brilliant solution to the technical problem.",
-      "options": ["thought up", "put down to", "sized up", "puzzled out"],
+      "options": [
+        "thought up",
+        "put down to",
+        "sized up",
+        "puzzled out"
+      ],
       "correct": "thought up",
       "explanation": "'Think up' means to invent or create an idea or solution."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Have you ___ all the potential risks of this investment?",
-      "options": ["thought through", "thought up", "puzzled out", "sized up"],
+      "options": [
+        "thought through",
+        "thought up",
+        "puzzled out",
+        "sized up"
+      ],
       "correct": "thought through",
       "explanation": "'Think through' means to consider all aspects carefully."
     },
@@ -112,23 +132,59 @@
     {
       "title": "Analysing the Problem",
       "lines": [
-        { "speaker": "Oliver", "text": "I've been trying to [puzzle out] why the experiment failed." },
-        { "speaker": "Clara", "text": "Have you [thought through] all the variables involved?" },
-        { "speaker": "Oliver", "text": "Yes, and I initially [put it down to] equipment malfunction." },
-        { "speaker": "Clara", "text": "Let me [size up] the data before we draw conclusions." },
-        { "speaker": "Oliver", "text": "Meanwhile, I'll try to [think up] alternative explanations." },
-        { "speaker": "Clara", "text": "Good. We need to [think through] every possibility thoroughly." }
+        {
+          "speaker": "Oliver",
+          "text": "I've been trying to [puzzle out] why the experiment failed."
+        },
+        {
+          "speaker": "Clara",
+          "text": "Have you [think through] all the variables involved?"
+        },
+        {
+          "speaker": "Oliver",
+          "text": "Yes, and I initially [put down to] it equipment malfunction."
+        },
+        {
+          "speaker": "Clara",
+          "text": "Let me [size up] the data before we draw conclusions."
+        },
+        {
+          "speaker": "Oliver",
+          "text": "Meanwhile, I'll try to [think up] alternative explanations."
+        },
+        {
+          "speaker": "Clara",
+          "text": "Good. We need to [think through] every possibility thoroughly."
+        }
       ]
     },
     {
       "title": "Job Interview Preparation",
       "lines": [
-        { "speaker": "Emma", "text": "How do you [size up] your chances for the interview?" },
-        { "speaker": "James", "text": "I've [thought through] all the potential questions carefully." },
-        { "speaker": "Emma", "text": "Have you [thought up] responses for difficult scenarios?" },
-        { "speaker": "James", "text": "Yes, but I'm still trying to [puzzle out] how to explain the career gap." },
-        { "speaker": "Emma", "text": "You could [put it down to] personal development and travel." },
-        { "speaker": "James", "text": "That's smart. I hadn't [thought up] that angle." }
+        {
+          "speaker": "Emma",
+          "text": "How do you [size up] your chances for the interview?"
+        },
+        {
+          "speaker": "James",
+          "text": "I've [think through] all the potential questions carefully."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Have you [think up] responses for difficult scenarios?"
+        },
+        {
+          "speaker": "James",
+          "text": "Yes, but I'm still trying to [puzzle out] how to explain the career gap."
+        },
+        {
+          "speaker": "Emma",
+          "text": "You could [put down to] it personal development and travel."
+        },
+        {
+          "speaker": "James",
+          "text": "That's smart. I hadn't [think up] that angle."
+        }
       ]
     }
   ]

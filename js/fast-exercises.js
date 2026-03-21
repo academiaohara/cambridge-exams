@@ -1484,60 +1484,69 @@
         return;
       }
 
-      // Extract all gaps from conversations
-      var totalGaps = 0;
+      // Store full context including all conversations
+      this._pvDragContext = {
+        categoryId: catMeta.id, levelId: levelId, lessonId: lessonId,
+        pointIndex: pointIndex, catColor: catMeta.color,
+        convs: convs, currentConvIdx: 0, container: container,
+        lessonTitle: lessonTitle, catMeta: catMeta, lessonData: lessonData
+      };
+
+      // Render the first conversation
+      this._pvDragRenderConv(container, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+    },
+
+    _pvDragRenderConv: function(container, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var self = this;
+      var ctx = this._pvDragContext;
+      var convs = ctx.convs;
+      var convIdx = ctx.currentConvIdx;
+      var conv = convs[convIdx];
+      var totalConvs = convs.length;
+
+      // Extract gaps from this conversation only
       var gapVerbs = {};
-      convs.forEach(function(conv) {
-        (conv.lines || []).forEach(function(line) {
-          var matches = line.text.match(/\[([^\]]+)\]/g);
-          if (matches) {
-            matches.forEach(function(m) {
-              var verb = m.replace(/[\[\]]/g, '');
-              gapVerbs[verb] = (gapVerbs[verb] || 0) + 1;
-              totalGaps++;
-            });
-          }
-        });
+      var totalGaps = 0;
+      (conv.lines || []).forEach(function(line) {
+        var matches = line.text.match(/\[([^\]]+)\]/g);
+        if (matches) {
+          matches.forEach(function(m) {
+            var verb = m.replace(/[\[\]]/g, '');
+            gapVerbs[verb] = (gapVerbs[verb] || 0) + 1;
+            totalGaps++;
+          });
+        }
       });
 
-      // Build chip list (unique verbs; repeat chips for multiple uses)
+      // Build chip list for this conversation
       var chipsList = [];
       Object.keys(gapVerbs).forEach(function(verb) {
         for (var n = 0; n < gapVerbs[verb]; n++) chipsList.push(verb);
       });
-      // Shuffle chips
       chipsList = chipsList.sort(function() { return Math.random() - 0.5; });
 
       var gapCounter = 0;
-      var convsHtml = '';
-      convs.forEach(function(conv, ci) {
-        var linesHtml = '';
-        var speakers = {};
-        var speakerIdx = 0;
-        (conv.lines || []).forEach(function(line) {
-          if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
-          var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
-          // Replace [verb] with drop zones
-          var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, verb) {
-            var gid = 'pv-gap-' + gapCounter;
-            gapCounter++;
-            return '<span class="pv-drop-zone" id="' + gid + '" data-verb="' + self._escapeHTML(verb) + '" data-filled="false" onclick="FastExercises._pvGapClick(\'' + gid + '\')" ondragover="event.preventDefault()" ondrop="FastExercises._pvDrop(event,\'' + gid + '\')">' +
-              '<span class="pv-drop-placeholder">_____</span>' +
-            '</span>';
-          });
-          linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
-            self._getAvatarHtml(line.speaker) +
-            '<div class="pv-conv-bubble">' +
-              '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
-              '<span class="pv-conv-text">' + text + '</span>' +
-            '</div>' +
-          '</div>';
+      var speakers = {};
+      var speakerIdx = 0;
+      var linesHtml = '';
+      (conv.lines || []).forEach(function(line) {
+        if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
+        var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
+        var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, verb) {
+          var gid = 'pv-gap-' + gapCounter;
+          gapCounter++;
+          return '<span class="pv-drop-zone" id="' + gid + '" data-verb="' + self._escapeHTML(verb) + '" data-filled="false" onclick="FastExercises._pvGapClick(\'' + gid + '\')" ondragover="event.preventDefault()" ondrop="FastExercises._pvDrop(event,\'' + gid + '\')">' +
+            '<span class="pv-drop-placeholder">_____</span>' +
+          '</span>';
         });
-        convsHtml += '<div class="pv-conv-block">' +
-          '<div class="pv-conv-title">' + _mi('forum') + ' ' + self._escapeHTML(conv.title || '') + '</div>' +
-          '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+        linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
+          self._getAvatarHtml(line.speaker) +
+          '<div class="pv-conv-bubble">' +
+            '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
+            '<span class="pv-conv-text">' + text + '</span>' +
+          '</div>' +
         '</div>';
-        if (ci < convs.length - 1) convsHtml += '<div class="pv-conv-separator"></div>';
       });
 
       var chipsHtml = '';
@@ -1546,6 +1555,11 @@
           self._escapeHTML(verb) +
         '</span>';
       });
+
+      // Progress indicator: "Conversation 1 / 2"
+      var progressHtml = totalConvs > 1
+        ? '<div class="pv-drag-conv-progress">' + t('conversation', 'Conversation') + ' ' + (convIdx + 1) + ' / ' + totalConvs + '</div>'
+        : '';
 
       container.innerHTML =
         '<div class="fe-point-view">' +
@@ -1557,8 +1571,12 @@
             '</div>' +
           '</div>' +
           '<div class="pv-drag-container">' +
+            progressHtml +
             '<p class="pv-drag-instruction">' + _mi('drag_indicator') + ' ' + t('dragInstruction', 'Drag each phrasal verb to the correct gap, or tap a chip and then tap a gap.') + '</p>' +
-            convsHtml +
+            '<div class="pv-conv-block">' +
+              '<div class="pv-conv-title">' + _mi('forum') + ' ' + self._escapeHTML(conv.title || '') + '</div>' +
+              '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+            '</div>' +
             '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
               '<div class="pv-chips-title">' + t('phrasalVerbs', 'Phrasal Verbs') + ':</div>' +
               '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
@@ -1566,13 +1584,23 @@
             '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
               '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
               '<div class="pv-drag-result-text" id="pv-drag-result-text"></div>' +
-              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>' +
+              (convIdx + 1 < totalConvs
+                ? '<button class="fe-point-next-btn" onclick="FastExercises._pvDragNextConv()" style="background:' + catMeta.color + '">' + t('nextConversation', 'Next Conversation') + '</button>'
+                : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>'
+              ) +
             '</div>' +
           '</div>' +
         '</div>';
 
-      // Store context for drag handlers
-      this._pvDragContext = { categoryId: catMeta.id, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex, catColor: catMeta.color };
+      // Update context for drag handlers
+      this._pvDragContext.totalGaps = totalGaps;
+    },
+
+    _pvDragNextConv: function() {
+      var ctx = this._pvDragContext;
+      if (!ctx) return;
+      ctx.currentConvIdx++;
+      this._pvDragRenderConv(ctx.container, ctx.catMeta, ctx.levelId, ctx.lessonId, ctx.lessonTitle, ctx.pointIndex);
     },
 
     _pvDragStart: function(event, chipId) {
@@ -1617,7 +1645,10 @@
 
       var verbFromChip = chip.getAttribute('data-verb');
       var correctVerb = gap.getAttribute('data-verb');
-      var isCorrect = verbFromChip.trim().toLowerCase() === correctVerb.trim().toLowerCase();
+      // Normalize both sides: strip optional parenthetical parts for comparison
+      var normChip = verbFromChip.trim().toLowerCase().replace(/\s*\([^)]*\)/g, '').replace(/\(a\)/g,'').replace(/\s+/g,' ').trim();
+      var normGap  = correctVerb.trim().toLowerCase().replace(/\s*\([^)]*\)/g, '').replace(/\(a\)/g,'').replace(/\s+/g,' ').trim();
+      var isCorrect = verbFromChip.trim().toLowerCase() === correctVerb.trim().toLowerCase() || normChip === normGap;
 
       // Fill the gap
       gap.setAttribute('data-filled', 'true');
@@ -1644,7 +1675,10 @@
         panel.setAttribute('data-filled', filled);
         if (filled >= total) {
           var ctx = this._pvDragContext;
-          if (ctx) this._markPointComplete(ctx.categoryId, ctx.levelId, ctx.lessonId, ctx.pointIndex);
+          var convs = ctx && ctx.convs;
+          var isLastConv = !convs || (ctx.currentConvIdx + 1 >= convs.length);
+          // Only mark point complete when the last conversation is done
+          if (ctx && isLastConv) this._markPointComplete(ctx.categoryId, ctx.levelId, ctx.lessonId, ctx.pointIndex);
           var result = document.getElementById('pv-drag-result');
           var resultText = document.getElementById('pv-drag-result-text');
           if (result && resultText) {
@@ -1652,7 +1686,7 @@
             resultText.textContent = t('allCorrect', 'All correct! Well done!');
             result.style.display = 'flex';
           }
-          if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+          if (isLastConv && typeof StreakManager !== 'undefined') StreakManager.recordActivity();
         }
       }
     },
@@ -1877,9 +1911,10 @@
 
     // ── PROFILE AVATAR HELPER ────────────────────────────────────────────
     _getAvatarHtml: function(speakerName) {
-      var PROFILES = ['Aisha','Alex','Anna','Carla','Carlos','Daniel','Elena','Emma',
-        'Fatima','Jack','Javier','Kenji','Lucas','Lucia','Malik','Mateo','Pierre',
-        'Priya','Sofia'];
+      var PROFILES = ['Aisha','Alex','Anna','Carla','Carlos','Chen','Clara','Dan',
+        'Daniel','Elena','Emma','Fatima','Jack','James','Javier','Kenji','Lucas',
+        'Lucia','Malik','Maria','Mateo','Miguel','Oliver','Pierre','Priya',
+        'Sarah','Sofia','Sophie'];
       var lname = (speakerName || '').toLowerCase();
       var matched = null;
       for (var i = 0; i < PROFILES.length; i++) {
@@ -1897,14 +1932,40 @@
     },
 
     // ── PV VERB POPUP ────────────────────────────────────────────────────
+    _normalizePvVerb: function(s) {
+      // Normalize a verb string for flexible matching:
+      // strip optional parenthetical parts and whitespace
+      return (s || '').trim().toLowerCase()
+        .replace(/\s*\([^)]*\)/g, '')   // remove (optional)
+        .replace(/\(a\)/g, '')           // remove (a) in come (a)round
+        .replace(/\s+/g, ' ')
+        .trim();
+    },
     _showPvVerbPopup: function(verbText) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var verbs = this._currentPvVerbs || [];
       var pv = null;
       var lv = (verbText || '').trim().toLowerCase();
+      var lvNorm = this._normalizePvVerb(lv);
+
       for (var i = 0; i < verbs.length; i++) {
-        if (verbs[i].verb && verbs[i].verb.trim().toLowerCase() === lv) {
-          pv = verbs[i];
-          break;
+        if (!verbs[i].verb) continue;
+        var vl = verbs[i].verb.trim().toLowerCase();
+        // 1. Exact match
+        if (vl === lv) { pv = verbs[i]; break; }
+        // 2. Match after stripping parens from both sides
+        var vlNorm = this._normalizePvVerb(vl);
+        if (vlNorm === lvNorm && lvNorm.length > 0) { pv = verbs[i]; break; }
+        // 3. Match any slash alternative: "switch on/off" contains "on" or "off"
+        if (vl.indexOf('/') !== -1) {
+          var vlParts = vl.replace(/\s*\([^)]*\)/g, '').split('/');
+          // First word + each alternative
+          var firstWord = vlParts[0].trim().split(' ')[0];
+          for (var j = 0; j < vlParts.length; j++) {
+            var alt = (firstWord + ' ' + vlParts[j].trim().split(' ').slice(-1)[0]).trim();
+            if (alt === lvNorm) { pv = verbs[i]; break; }
+          }
+          if (pv) break;
         }
       }
       if (!pv) return;
@@ -1926,6 +1987,7 @@
           '<button class="pv-verb-popup-close" onclick="document.getElementById(\'pv-verb-popup\').remove()">' +
             '<span class="material-symbols-outlined">close</span>' +
           '</button>' +
+          '<div class="pv-verb-popup-badge">' + t('phrasalVerb', 'Phrasal Verb') + '</div>' +
           '<div class="pv-verb-popup-verb">' + FastExercises._escapeHTML(pv.verb || '') + '</div>' +
           '<div class="pv-verb-popup-def">' + FastExercises._escapeHTML(pv.definition || '') + '</div>' +
           (examplesHtml ? '<ul class="pv-verb-popup-examples">' + examplesHtml + '</ul>' : '') +

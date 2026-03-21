@@ -72,7 +72,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Can you ___ ___ this document for any errors?",
-      "options": ["check out", "pass on", "take down", "talk over"],
+      "options": [
+        "check out",
+        "pass on",
+        "take down",
+        "talk over"
+      ],
       "correct": "check out",
       "explanation": "'Check out' means to examine something to make sure it's correct."
     },
@@ -86,7 +91,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The movie ___ ___ last Friday.",
-      "options": ["came out", "got through", "checked out", "passed on"],
+      "options": [
+        "came out",
+        "got through",
+        "checked out",
+        "passed on"
+      ],
       "correct": "came out",
       "explanation": "'Come out' means to become available."
     },
@@ -100,7 +110,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Please ___ ___ my congratulations to your sister.",
-      "options": ["pass on", "take down", "talk over", "come across"],
+      "options": [
+        "pass on",
+        "take down",
+        "talk over",
+        "come across"
+      ],
       "correct": "pass on",
       "explanation": "'Pass on' means to give a message from one person to another."
     },
@@ -114,7 +129,12 @@
     {
       "type": "multiple-choice",
       "sentence": "We need to ___ ___ the budget before the meeting.",
-      "options": ["talk over", "check out", "pass on", "come out"],
+      "options": [
+        "talk over",
+        "check out",
+        "pass on",
+        "come out"
+      ],
       "correct": "talk over",
       "explanation": "'Talk over' means to discuss a problem or plan."
     },
@@ -130,24 +150,63 @@
     {
       "title": "Office Communication",
       "lines": [
-        { "speaker": "Alex", "text": "Did you manage to [get through] to the supplier?" },
-        { "speaker": "Fatima", "text": "Yes, finally! I [took down] all the delivery details." },
-        { "speaker": "Alex", "text": "Great. Can you [pass on] the information to the warehouse?" },
-        { "speaker": "Fatima", "text": "Sure. I also [came across] some old invoices we need to [check out]." },
-        { "speaker": "Alex", "text": "Let's [talk over] the invoice issue after lunch." },
-        { "speaker": "Fatima", "text": "Perfect. The new ordering system [comes out] next month, so this might get easier." }
+        {
+          "speaker": "Alex",
+          "text": "Did you manage to [get through (to)] the supplier?"
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Yes, finally! I [take down] all the delivery details."
+        },
+        {
+          "speaker": "Alex",
+          "text": "Great. Can you [pass on] the information to the warehouse?"
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Sure. I also [come across] some old invoices we need to [check out]."
+        },
+        {
+          "speaker": "Alex",
+          "text": "Let's [talk over] the invoice issue after lunch."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "Perfect. The new ordering system [come out] next month, so this might get easier."
+        }
       ]
     },
     {
       "title": "Sharing News",
       "lines": [
-        { "speaker": "Chen", "text": "I [came across] some interesting news today." },
-        { "speaker": "Maria", "text": "Really? [Pass on] the details! What is it?" },
-        { "speaker": "Chen", "text": "A new study [came out] about learning languages." },
-        { "speaker": "Maria", "text": "I'd love to [check out] the full report." },
-        { "speaker": "Chen", "text": "I'll [take down] the link and send it to you." },
-        { "speaker": "Maria", "text": "Thanks! We should [talk over] what we find later." },
-        { "speaker": "Chen", "text": "Let me know when you [get through] reading it!" }
+        {
+          "speaker": "Chen",
+          "text": "I [come across] some interesting news today."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Really? [pass on] the details! What is it?"
+        },
+        {
+          "speaker": "Chen",
+          "text": "A new study [come out] about learning languages."
+        },
+        {
+          "speaker": "Maria",
+          "text": "I'd love to [check out] the full report."
+        },
+        {
+          "speaker": "Chen",
+          "text": "I'll [take down] the link and send it to you."
+        },
+        {
+          "speaker": "Maria",
+          "text": "Thanks! We should [talk over] what we find later."
+        },
+        {
+          "speaker": "Chen",
+          "text": "Let me know when you [get through (to)] reading it!"
+        }
       ]
     }
   ]

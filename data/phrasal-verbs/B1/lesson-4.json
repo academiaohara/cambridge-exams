@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "We need to ___ ___ ___ a plan for the project.",
-      "options": ["come up with", "figure out", "mix up", "think over"],
+      "options": [
+        "come up with",
+        "figure out",
+        "mix up",
+        "think over"
+      ],
       "correct": "come up with",
       "explanation": "'Come up with' means to think of an idea or plan."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I completely ___ ___ the presentation. I forgot half of it.",
-      "options": ["messed up", "mixed up", "thought over", "came up with"],
+      "options": [
+        "messed up",
+        "mixed up",
+        "thought over",
+        "came up with"
+      ],
       "correct": "messed up",
       "explanation": "'Mess up' means to make a mistake or do something badly."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Let me ___ ___ your proposal before I give you an answer.",
-      "options": ["think over", "mess up", "figure out", "mix up"],
+      "options": [
+        "think over",
+        "mess up",
+        "figure out",
+        "mix up"
+      ],
       "correct": "think over",
       "explanation": "'Think over' means to consider something carefully."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "It took me ages to ___ ___ the answer to the riddle.",
-      "options": ["figure out", "come up with", "mess up", "think over"],
+      "options": [
+        "figure out",
+        "come up with",
+        "mess up",
+        "think over"
+      ],
       "correct": "figure out",
       "explanation": "'Figure out' means to solve or understand something."
     },
@@ -112,23 +132,59 @@
     {
       "title": "Solving a Work Problem",
       "lines": [
-        { "speaker": "James", "text": "We have a big issue with the budget. Can you help me [figure out] what went wrong?" },
-        { "speaker": "Emma", "text": "Sure. Let me [think over] the numbers first." },
-        { "speaker": "James", "text": "I think someone [messed up] the calculations." },
-        { "speaker": "Emma", "text": "Actually, I [mixed up] two of the spreadsheets yesterday. That might be it." },
-        { "speaker": "James", "text": "No worries. Let's [come up with] a way to fix it." },
-        { "speaker": "Emma", "text": "I'll [figure out] the correct totals by this afternoon." }
+        {
+          "speaker": "James",
+          "text": "We have a big issue with the budget. Can you help me [figure out] what went wrong?"
+        },
+        {
+          "speaker": "Emma",
+          "text": "Sure. Let me [think over] the numbers first."
+        },
+        {
+          "speaker": "James",
+          "text": "I think someone [mess up] the calculations."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Actually, I [mix up] two of the spreadsheets yesterday. That might be it."
+        },
+        {
+          "speaker": "James",
+          "text": "No worries. Let's [come up with] a way to fix it."
+        },
+        {
+          "speaker": "Emma",
+          "text": "I'll [figure out] the correct totals by this afternoon."
+        }
       ]
     },
     {
       "title": "Making a Decision",
       "lines": [
-        { "speaker": "Priya", "text": "Have you [thought over] which job offer to accept?" },
-        { "speaker": "Dan", "text": "Not yet. I can't [figure out] which one is better for me." },
-        { "speaker": "Priya", "text": "Don't worry. You won't [mess up] this decision if you take your time." },
-        { "speaker": "Dan", "text": "I just don't want to [mix up] my priorities." },
-        { "speaker": "Priya", "text": "Maybe you can [come up with] a list of pros and cons?" },
-        { "speaker": "Dan", "text": "That's a good idea. Let me [think it over] this weekend." }
+        {
+          "speaker": "Priya",
+          "text": "Have you [think over] which job offer to accept?"
+        },
+        {
+          "speaker": "Dan",
+          "text": "Not yet. I can't [figure out] which one is better for me."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Don't worry. You won't [mess up] this decision if you take your time."
+        },
+        {
+          "speaker": "Dan",
+          "text": "I just don't want to [mix up] my priorities."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Maybe you can [come up with] a list of pros and cons?"
+        },
+        {
+          "speaker": "Dan",
+          "text": "That's a good idea. Let me [think over] it this weekend."
+        }
       ]
     }
   ]

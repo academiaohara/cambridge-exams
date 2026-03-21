@@ -72,7 +72,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Several unexpected issues ___ during the project.",
-      "options": ["cropped up", "piled up", "messed up", "slipped up"],
+      "options": [
+        "cropped up",
+        "piled up",
+        "messed up",
+        "slipped up"
+      ],
       "correct": "cropped up",
       "explanation": "'Crop up' means to appear unexpectedly."
     },
@@ -86,7 +91,12 @@
     {
       "type": "multiple-choice",
       "sentence": "Unread emails have been ___ in my inbox all week.",
-      "options": ["piling up", "cropping up", "playing up", "slipping up"],
+      "options": [
+        "piling up",
+        "cropping up",
+        "playing up",
+        "slipping up"
+      ],
       "correct": "piling up",
       "explanation": "'Pile up' means to accumulate in large quantities."
     },
@@ -100,7 +110,12 @@
     {
       "type": "multiple-choice",
       "sentence": "I ___ and revealed the surprise party by accident.",
-      "options": ["slipped up", "cropped up", "stored up", "piled up"],
+      "options": [
+        "slipped up",
+        "cropped up",
+        "stored up",
+        "piled up"
+      ],
       "correct": "slipped up",
       "explanation": "'Slip up' means to make a careless mistake."
     },
@@ -114,7 +129,12 @@
     {
       "type": "multiple-choice",
       "sentence": "By ignoring the warnings, they're ___ trouble for the future.",
-      "options": ["storing up", "messing up", "piling up", "playing up"],
+      "options": [
+        "storing up",
+        "messing up",
+        "piling up",
+        "playing up"
+      ],
       "correct": "storing up",
       "explanation": "'Store up' means to create future problems."
     },
@@ -130,23 +150,59 @@
     {
       "title": "Work Overload",
       "lines": [
-        { "speaker": "Alex", "text": "I'm completely [snowed under] with deadlines this week." },
-        { "speaker": "Fatima", "text": "I know what you mean. Tasks keep [piling up] on my desk too." },
-        { "speaker": "Alex", "text": "A technical issue [cropped up] this morning that delayed everything." },
-        { "speaker": "Fatima", "text": "The printer has been [playing up] as well—terrible timing!" },
-        { "speaker": "Alex", "text": "I [slipped up] on a client email yesterday too." },
-        { "speaker": "Fatima", "text": "We're [storing up] problems by taking on too much work." }
+        {
+          "speaker": "Alex",
+          "text": "I'm completely [snow under] with deadlines this week."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "I know what you mean. Tasks keep [pile up] on my desk too."
+        },
+        {
+          "speaker": "Alex",
+          "text": "A technical issue [crop up] this morning that delayed everything."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "The printer has been [play up] as well—terrible timing!"
+        },
+        {
+          "speaker": "Alex",
+          "text": "I [slip up] on a client email yesterday too."
+        },
+        {
+          "speaker": "Fatima",
+          "text": "We're [store up] problems by taking on too much work."
+        }
       ]
     },
     {
       "title": "Family Challenges",
       "lines": [
-        { "speaker": "Emma", "text": "The kids have been [playing up] all weekend." },
-        { "speaker": "James", "text": "And domestic chores have been [piling up] as a result." },
-        { "speaker": "Emma", "text": "Something always seems to [crop up] when we make plans." },
-        { "speaker": "James", "text": "I [messed up] the booking for the restaurant too." },
-        { "speaker": "Emma", "text": "Don't worry—everyone [slips up] sometimes." },
-        { "speaker": "James", "text": "We can't keep [storing up] these household tasks forever though." }
+        {
+          "speaker": "Emma",
+          "text": "The kids have been [play up] all weekend."
+        },
+        {
+          "speaker": "James",
+          "text": "And domestic chores have been [pile up] as a result."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Something always seems to [crop up] when we make plans."
+        },
+        {
+          "speaker": "James",
+          "text": "I [mess up] the booking for the restaurant too."
+        },
+        {
+          "speaker": "Emma",
+          "text": "Don't worry—everyone [slip up] sometimes."
+        },
+        {
+          "speaker": "James",
+          "text": "We can't keep [store up] these household tasks forever though."
+        }
       ]
     }
   ]
