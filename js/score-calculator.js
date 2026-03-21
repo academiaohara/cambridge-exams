@@ -142,7 +142,6 @@
           <div class="sc-selector">
             <label for="examSelector">${I18n.t('examLevel') || 'Exam Level'}:</label>
             <select id="examSelector" onchange="ScoreCalculator.onExamChange()">
-              <option value="A2" ${examType === 'A2' ? 'selected' : ''}>A2 Key</option>
               <option value="B1" ${examType === 'B1' ? 'selected' : ''}>B1 Preliminary</option>
               <option value="B2" ${examType === 'B2' ? 'selected' : ''}>B2 First</option>
               <option value="C1" ${examType === 'C1' ? 'selected' : ''}>C1 Advanced</option>

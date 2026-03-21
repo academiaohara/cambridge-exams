@@ -2,7 +2,6 @@
 (function() {
   // Datos de los exámenes
   window.EXAMS_DATA = {
-    A2: [],
     B1: [],
     B2: [],
     C1: [],

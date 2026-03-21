@@ -5,7 +5,6 @@
   var _levelSelectorPreviewIdx = 0;
   var _levelColors = {
     'C1': { bg: '#ffffff', label: '#104862', code: '#46B1E1' },
-    'A2': { bg: '#e8f5e9', label: '#1b5e20', code: '#4caf50' },
     'B1': { bg: '#fff3e0', label: '#bf360c', code: '#ff9800' },
     'B2': { bg: '#e3f2fd', label: '#0d47a1', code: '#2196f3' },
     'C2': { bg: '#f3e5f5', label: '#4a148c', code: '#9c27b0' }
@@ -558,7 +557,6 @@
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var currentLevel = AppState.currentLevel || 'C1';
       var levels = [
-        { code: 'A2', icon: 'fas fa-seedling', label: 'A2 Key' },
         { code: 'B1', icon: 'fas fa-book-reader', label: 'B1 Preliminary' },
         { code: 'B2', icon: 'fas fa-graduation-cap', label: 'B2 First' },
         { code: 'C1', icon: 'fas fa-award', label: 'C1 Advanced' },
@@ -640,7 +638,7 @@
 
     _getOtherLevels: function() {
       var currentLevel = AppState.currentLevel || 'C1';
-      var levels = ['A2', 'B1', 'B2', 'C1', 'C2'];
+      var levels = ['B1', 'B2', 'C1', 'C2'];
       return levels.filter(function(l) { return l !== currentLevel; });
     },
 

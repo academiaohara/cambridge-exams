@@ -32,12 +32,12 @@
 
     _getCategoryProgress: function(categoryId) {
       var progress = this._getProgress();
-      return progress[categoryId] || { completedPoints: {}, activeLevel: 'A2' };
+      return progress[categoryId] || { completedPoints: {}, activeLevel: 'B1' };
     },
 
     _markPointComplete: function(categoryId, levelId, lessonId, pointIndex) {
       var progress = this._getProgress();
-      if (!progress[categoryId]) progress[categoryId] = { completedPoints: {}, activeLevel: 'A2' };
+      if (!progress[categoryId]) progress[categoryId] = { completedPoints: {}, activeLevel: 'B1' };
       var key = levelId + '/' + lessonId + '/' + pointIndex;
       progress[categoryId].completedPoints[key] = true;
       this._saveProgress(progress);
@@ -85,7 +85,7 @@
       if (!level.requiredToUnlock) return true;
 
       // Unlock all levels up to the student's current study level
-      var LEVEL_ORDER = ['A2', 'B1', 'B2', 'C1', 'C2'];
+      var LEVEL_ORDER = ['B1', 'B2', 'C1', 'C2'];
       var studentLevel = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
       var studentIdx = LEVEL_ORDER.indexOf(studentLevel);
       var thisIdx = LEVEL_ORDER.indexOf(levelId);
@@ -272,7 +272,7 @@
       // Determine active level (validate stored level exists in data)
       var catProg = this._getCategoryProgress(categoryId);
       var storedLevel = catProg.activeLevel;
-      var firstLevelId = (data.levels && data.levels.length > 0) ? data.levels[0].id : 'A2';
+      var firstLevelId = (data.levels && data.levels.length > 0) ? data.levels[0].id : 'B1';
       var levelExists = false;
       if (storedLevel) {
         for (var i = 0; i < data.levels.length; i++) {
@@ -572,7 +572,7 @@
     // ── SWITCH LEVEL ─────────────────────────────────────────────────────
     _switchLevel: function(categoryId, levelId) {
       var progress = this._getProgress();
-      if (!progress[categoryId]) progress[categoryId] = { completedPoints: {}, activeLevel: 'A2' };
+      if (!progress[categoryId]) progress[categoryId] = { completedPoints: {}, activeLevel: 'B1' };
       progress[categoryId].activeLevel = levelId;
       this._saveProgress(progress);
       this.openCategory(categoryId);
