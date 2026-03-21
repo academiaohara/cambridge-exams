@@ -54,7 +54,12 @@
     {
       "type": "multiple-choice",
       "sentence": "She ___ ___ early this morning to catch the first train.",
-      "options": ["went off", "pulled over", "moved on", "stopped off"],
+      "options": [
+        "went off",
+        "pulled over",
+        "moved on",
+        "stopped off"
+      ],
       "correct": "went off",
       "explanation": "'Go off' means to leave for a particular purpose."
     },
@@ -68,7 +73,12 @@
     {
       "type": "multiple-choice",
       "sentence": "The taxi driver ___ ___ by the hotel entrance.",
-      "options": ["pulled over", "went off", "stepped aside", "stopped off"],
+      "options": [
+        "pulled over",
+        "went off",
+        "stepped aside",
+        "stopped off"
+      ],
       "correct": "pulled over",
       "explanation": "'Pull over' means to stop a vehicle by the side of the road."
     },
@@ -82,7 +92,12 @@
     {
       "type": "multiple-choice",
       "sentence": "We ___ ___ at a petrol station to fill up the tank.",
-      "options": ["stopped off", "went off", "pulled over", "moved on"],
+      "options": [
+        "stopped off",
+        "went off",
+        "pulled over",
+        "moved on"
+      ],
       "correct": "stopped off",
       "explanation": "'Stop off' means to make a brief visit somewhere during a journey."
     },
@@ -96,7 +111,12 @@
     {
       "type": "multiple-choice",
       "sentence": "After two hours at the museum, we decided to ___ ___.",
-      "options": ["move on", "go off", "pull over", "step aside"],
+      "options": [
+        "move on",
+        "go off",
+        "pull over",
+        "step aside"
+      ],
       "correct": "move on",
       "explanation": "'Move on' means to leave and continue to somewhere else."
     },
@@ -112,23 +132,59 @@
     {
       "title": "Road Trip",
       "lines": [
-        { "speaker": "James", "text": "Should we [stop off] somewhere for coffee?" },
-        { "speaker": "Maria", "text": "Good idea! Let's [pull over] at the next service station." },
-        { "speaker": "James", "text": "We should [move on] quickly though—it's getting late." },
-        { "speaker": "Maria", "text": "True. What time did you [go off] this morning?" },
-        { "speaker": "James", "text": "Around 6 a.m. Can you [step aside] so I can reach my bag?" },
-        { "speaker": "Maria", "text": "Sure! Let me know when you want me to [pull over] again." }
+        {
+          "speaker": "James",
+          "text": "Should we [stop off|stop off] somewhere for coffee?"
+        },
+        {
+          "speaker": "Maria",
+          "text": "Good idea! Let's [pull over|pull over] at the next service station."
+        },
+        {
+          "speaker": "James",
+          "text": "We should [move on|move on] quickly though—it's getting late."
+        },
+        {
+          "speaker": "Maria",
+          "text": "True. What time did you [go off|go off] this morning?"
+        },
+        {
+          "speaker": "James",
+          "text": "Around 6 a.m. Can you [step aside|step aside] so I can reach my bag?"
+        },
+        {
+          "speaker": "Maria",
+          "text": "Sure! Let me know when you want me to [pull over|pull over] again."
+        }
       ]
     },
     {
       "title": "At the Airport",
       "lines": [
-        { "speaker": "Dan", "text": "What time do we need to [go off] to the gate?" },
-        { "speaker": "Priya", "text": "In about 20 minutes. We should [move on] from this lounge." },
-        { "speaker": "Dan", "text": "Can we [stop off] at the duty-free shop first?" },
-        { "speaker": "Priya", "text": "Okay, but be quick. Please [step aside] so those passengers can get through." },
-        { "speaker": "Dan", "text": "Done! Let's [go off] before they call our boarding." },
-        { "speaker": "Priya", "text": "Perfect. After we land, we can [stop off] in the city before the hotel." }
+        {
+          "speaker": "Dan",
+          "text": "What time do we need to [go off|go off] to the gate?"
+        },
+        {
+          "speaker": "Priya",
+          "text": "In about 20 minutes. We should [move on|move on] from this lounge."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Can we [stop off|stop off] at the duty-free shop first?"
+        },
+        {
+          "speaker": "Priya",
+          "text": "Okay, but be quick. Please [step aside|step aside] so those passengers can get through."
+        },
+        {
+          "speaker": "Dan",
+          "text": "Done! Let's [go off|go off] before they call our boarding."
+        },
+        {
+          "speaker": "Priya",
+          "text": "Perfect. After we land, we can [stop off|stop off] in the city before the hotel."
+        }
       ]
     }
   ]
