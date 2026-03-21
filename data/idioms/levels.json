@@ -5,40 +5,136 @@
   "color": "#f59e0b",
   "levels": [
     {
-      "id": "A2",
-      "name": "A2 – Elementary",
+      "id": "B1",
+      "name": "B1 – Intermediate",
       "requiredToUnlock": null,
-      "totalLessons": 5,
+      "totalLessons": 3,
       "lessons": [
-        { "id": "lesson-1", "title": "Common Idioms", "points": [
-          { "type": "explanation", "label": "Break a leg / Piece of cake" },
-          { "type": "exercise", "label": "Practice: Easy idioms" },
+        { "id": "lesson-1", "title": "Very Basic Idioms", "points": [
+          { "type": "explanation", "label": "once in a while / in a hurry" },
+          { "type": "explanation", "label": "at the moment / on time" },
+          { "type": "exercise", "label": "Practice: Basic idioms" },
           { "type": "review", "label": "Review" }
         ]},
-        { "id": "lesson-2", "title": "Animal Idioms", "points": [
-          { "type": "explanation", "label": "Let the cat out / Raining cats and dogs" },
-          { "type": "exercise", "label": "Practice: Animal idioms" },
+        { "id": "lesson-2", "title": "Simple Everyday Idioms", "points": [
+          { "type": "explanation", "label": "by the way / on your own" },
+          { "type": "explanation", "label": "in the end / at last" },
+          { "type": "exercise", "label": "Practice: Everyday idioms" },
           { "type": "review", "label": "Review" }
         ]},
-        { "id": "lesson-3", "title": "Body Idioms", "points": [
-          { "type": "explanation", "label": "Keep an eye on / Cold feet" },
-          { "type": "exercise", "label": "Practice: Body idioms" },
-          { "type": "review", "label": "Review" }
-        ]},
-        { "id": "lesson-4", "title": "Time Idioms", "points": [
-          { "type": "explanation", "label": "In the nick of time / Once in a blue moon" },
-          { "type": "exercise", "label": "Practice: Time idioms" },
-          { "type": "review", "label": "Review" }
-        ]},
-        { "id": "lesson-5", "title": "Final Challenge: A2", "points": [
+        { "id": "lesson-3", "title": "Final Challenge: B1", "points": [
           { "type": "exercise", "label": "Mixed review" },
-          { "type": "trophy", "label": "A2 Final Challenge" }
+          { "type": "trophy", "label": "B1 Final Challenge" }
         ]}
       ]
     },
-    { "id": "B1", "name": "B1 – Intermediate", "requiredToUnlock": "A2", "totalLessons": 5, "lessons": [] },
-    { "id": "B2", "name": "B2 – Upper Intermediate", "requiredToUnlock": "B1", "totalLessons": 5, "lessons": [] },
-    { "id": "C1", "name": "C1 – Advanced", "requiredToUnlock": "B2", "totalLessons": 5, "lessons": [] },
-    { "id": "C2", "name": "C2 – Proficiency", "requiredToUnlock": "C1", "totalLessons": 5, "lessons": [] }
+    {
+      "id": "B2",
+      "name": "B2 – Upper Intermediate",
+      "requiredToUnlock": "B1",
+      "totalLessons": 5,
+      "lessons": [
+        { "id": "lesson-1", "title": "Social Idioms", "points": [
+          { "type": "explanation", "label": "break the ice / get the ball rolling" },
+          { "type": "explanation", "label": "see eye to eye / clear the air" },
+          { "type": "exercise", "label": "Practice: Social idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-2", "title": "Effort & Work", "points": [
+          { "type": "explanation", "label": "go the extra mile / pull your weight" },
+          { "type": "explanation", "label": "bite the bullet / burn the midnight oil" },
+          { "type": "exercise", "label": "Practice: Work idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-3", "title": "Success & Failure", "points": [
+          { "type": "explanation", "label": "miss the boat / make or break" },
+          { "type": "explanation", "label": "be on the right track / hit a wall" },
+          { "type": "exercise", "label": "Practice: Success idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-4", "title": "Opinions & Arguments", "points": [
+          { "type": "explanation", "label": "sit on the fence / have a point" },
+          { "type": "explanation", "label": "get the wrong end of the stick / think outside the box" },
+          { "type": "exercise", "label": "Practice: Opinion idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-5", "title": "Final Challenge: B2", "points": [
+          { "type": "exercise", "label": "Mixed review" },
+          { "type": "trophy", "label": "B2 Final Challenge" }
+        ]}
+      ]
+    },
+    {
+      "id": "C1",
+      "name": "C1 – Advanced",
+      "requiredToUnlock": "B2",
+      "totalLessons": 5,
+      "lessons": [
+        { "id": "lesson-1", "title": "Precision & Accuracy", "points": [
+          { "type": "explanation", "label": "hit the nail on the head / cut to the chase" },
+          { "type": "explanation", "label": "get to the bottom of / put your finger on it" },
+          { "type": "exercise", "label": "Practice: Precision idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-2", "title": "Complex Situations", "points": [
+          { "type": "explanation", "label": "bite off more than you can chew / between a rock and a hard place" },
+          { "type": "explanation", "label": "open a can of worms / muddy the waters" },
+          { "type": "exercise", "label": "Practice: Complex idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-3", "title": "People & Character", "points": [
+          { "type": "explanation", "label": "wear your heart on your sleeve / have a thick skin" },
+          { "type": "explanation", "label": "be set in your ways / have an axe to grind" },
+          { "type": "exercise", "label": "Practice: Character idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-4", "title": "Real Use Contexts", "points": [
+          { "type": "explanation", "label": "read between the lines / take with a pinch of salt" },
+          { "type": "explanation", "label": "ring a bell / be on the tip of your tongue" },
+          { "type": "exercise", "label": "Practice: Context idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-5", "title": "Final Challenge: C1", "points": [
+          { "type": "exercise", "label": "Mixed review" },
+          { "type": "trophy", "label": "C1 Final Challenge" }
+        ]}
+      ]
+    },
+    {
+      "id": "C2",
+      "name": "C2 – Proficiency",
+      "requiredToUnlock": "C1",
+      "totalLessons": 5,
+      "lessons": [
+        { "id": "lesson-1", "title": "Rare & Literary", "points": [
+          { "type": "explanation", "label": "sow the seeds of discord / cast pearls before swine" },
+          { "type": "explanation", "label": "gild the lily / cut the Gordian knot" },
+          { "type": "exercise", "label": "Practice: Rare idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-2", "title": "Cultural References", "points": [
+          { "type": "explanation", "label": "burn your bridges / cross the Rubicon" },
+          { "type": "explanation", "label": "meet your Waterloo / a Pyrrhic victory" },
+          { "type": "exercise", "label": "Practice: Cultural idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-3", "title": "Nuanced Expression", "points": [
+          { "type": "explanation", "label": "damn with faint praise / protest too much" },
+          { "type": "explanation", "label": "be hoist by your own petard / play fast and loose" },
+          { "type": "exercise", "label": "Practice: Nuanced idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-4", "title": "Archaic & Formal", "points": [
+          { "type": "explanation", "label": "hold sway / wield influence" },
+          { "type": "explanation", "label": "bring to bear / brook no argument" },
+          { "type": "exercise", "label": "Practice: Archaic idioms" },
+          { "type": "review", "label": "Review" }
+        ]},
+        { "id": "lesson-5", "title": "Final Challenge: C2", "points": [
+          { "type": "exercise", "label": "Mixed review" },
+          { "type": "trophy", "label": "C2 Final Challenge" }
+        ]}
+      ]
+    }
   ]
 }

@@ -61,13 +61,13 @@
 
         '<div class="bento-card bento-card-quicksteps" onclick="BentoGrid.openMicroLearning()">' +
           '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Fast Exercises</div>' +
+            '<div class="bento-card-title">Fast Learning</div>' +
           '</div>' +
         '</div>' +
 
         '<div class="bento-card bento-card-basecamp" onclick="BentoGrid.openLessons()">' +
           '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Learning Time</div>' +
+            '<div class="bento-card-title">Course</div>' +
           '</div>' +
         '</div>' +
 
@@ -411,7 +411,7 @@
         _mi('schedule') +
         '<div class="lt-coming-soon-text">' +
           '<strong>' + t('comingSoon', 'Coming Soon') + '</strong>' +
-          '<span>' + t('learningTimeComingDesc', 'The Learning Time curriculum is under development. Structured lessons with explanations, exercises, and progress tracking will be available here soon.') + '</span>' +
+          '<span>' + t('courseComingDesc', 'The Course curriculum is under development. Structured lessons with explanations, exercises, and progress tracking will be available here soon.') + '</span>' +
         '</div>' +
       '</div>';
 
@@ -462,7 +462,7 @@
               '<div class="subpage-header">' +
                 '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
                 '<div>' +
-                  '<div class="subpage-title">' + _mi('auto_stories') + ' Learning Time</div>' +
+                  '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
                   '<div class="subpage-subtitle">' + t('structuredLessons', 'Structured lessons for') + ' ' + level + '</div>' +
                 '</div>' +
               '</div>' +
@@ -605,9 +605,9 @@
     _buildContinueBasecampHtml: function(exams) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
 
-      // Always point to the Learning Time page (coming soon)
+      // Always point to the Course page (coming soon)
       return '<div class="sw-left-widget sw-continue-basecamp" onclick="BentoGrid.openLessons()" style="cursor:pointer">' +
-        '<div class="sw-left-widget-label">' + t('learningTime', 'Learning Time') + '</div>' +
+        '<div class="sw-left-widget-label">' + t('course', 'Course') + '</div>' +
         '<div class="sw-left-widget-row">' +
           '<span class="sw-left-widget-icon"><span class="material-symbols-outlined">auto_stories</span></span>' +
           '<div class="sw-left-widget-info">' +
