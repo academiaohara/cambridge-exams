@@ -7,7 +7,7 @@
   "content": {
     "title": "The Ethics of Facial Recognition Technology",
     "texts": {
-      "A": "The deployment of facial recognition in public spaces is an unacceptable infringement on the right to anonymity. Unlike a physical ID, your face cannot be left at home. This technology turns every citizen into a permanent suspect, tracked by invisible algorithms [37]. While proponents argue it aids in catching criminals, the cost to our civil liberties is far too high. We are sleepwalking into a surveillance state where the 'chilling effect' on free assembly and protest will be irreversible. A total ban on its use by law enforcement is the only way to protect the democratic fabric of our society.",
+      "A": "The deployment of facial recognition in public spaces is an unacceptable infringement on the right to anonymity. Unlike a physical ID, your face cannot be left at home. This technology turns every citizen into a permanent suspect, tracked by invisible algorithms [37]. While proponents argue it aids in catching criminals, the cost to our civil liberties is far too high. We are sleepwalking into a surveillance state where the 'chilling effect' on free assembly and protest will be irreversible. [38]A total ban on its use by law enforcement is the only way to protect the democratic fabric of our society.[/38]",
       "B": "Facial recognition is a powerful tool for public safety that has been unfairly demonized. In an era of globalized threats, the ability to identify known dangerous individuals in a crowd is a vital necessity [40]. I disagree with the notion that it inherently destroys privacy; rather, it modernizes it. When used with strict judicial oversight, it is no different from any other forensic tool. The focus should be on 'algorithmic auditing' to ensure accuracy across all demographics [39], not on banning a technology that can prevent tragedies before they occur.",
       "C": "I share the view that the 'black box' nature of these algorithms is a major concern, as they often exhibit significant racial and gender bias [39]. However, I disagree that a total ban is the solution. We should implement a 'moratorium'—a temporary halt—until international standards for data protection and accuracy are established. I also share the concern about the 'chilling effect' on public life [37], but I believe that with clear 'no-go zones' for the technology, we can balance security with the freedom of the streets.",
       "D": "The real danger of facial recognition is not just the surveillance, but the 'predictive policing' it enables. When combined with big data, it attempts to judge a person's intent before they have even acted. I share the view that this technology is currently a threat to public safety due to its technical flaws [40]. However, we must recognize that the private sector's use of this tech—in our phones and banks—is already ubiquitous. The focus must be on 'data sovereignty,' giving individuals the power to opt-out and delete their biometric templates from any database [38].",
@@ -15,28 +15,48 @@
         {
           "number": 37,
           "question": "Which expert shares A's concern about the 'chilling effect' of facial recognition on public behavior?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "C",
           "explanation": "Expert A mentions the 'chilling effect' on free assembly. Expert C explicitly states: 'I also share the concern about the chilling effect on public life.'"
         },
         {
           "number": 38,
           "question": "Which expert has a different view from D on the best way to handle personal biometric data?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "A",
           "explanation": "Expert D suggests 'data sovereignty' and 'opt-out' options. Expert A, however, argues for a 'total ban,' implying that individual control is insufficient to prevent the surveillance state."
         },
         {
           "number": 39,
           "question": "Which expert expresses a similar view to B regarding the need for technical accuracy and auditing?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "C",
           "explanation": "Expert B calls for 'algorithmic auditing' to ensure accuracy. Expert C also notes that algorithms 'often exhibit significant... bias' and calls for standards of accuracy."
         },
         {
           "number": 40,
           "question": "Which expert has a different view from B on the current reliability or necessity of the technology for law enforcement?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "D",
           "explanation": "Expert B calls it a 'vital necessity.' Expert D argues it is 'currently a threat to public safety due to its technical flaws.'"
         }

@@ -10,7 +10,7 @@
   "totalQuestions": 6,
   "content": {
     "articleTitle": "The Iron Heart: The Age of Steam",
-    "text": "The Industrial Revolution was not sparked by a single invention, but by a series of technical breakthroughs that fundamentally changed how we use energy. At the center of this transformation was the steam engine. Before its arrival, human industry was limited by the strength of muscles, the flow of rivers, and the unpredictability of the wind. ||(41)|| The first practical steam-powered device was the 'atmospheric engine' invented by Thomas Newcomen in 1712. It was a massive, inefficient machine designed for one specific purpose: pumping water out of deep coal mines. While it was slow and consumed enormous amounts of fuel, it allowed miners to reach depths that were previously unreachable due to flooding. ||(42)|| This inefficiency was the problem that James Watt set out to solve in the 1760s. While repairing a Newcomen model, he realized that a huge amount of energy was being wasted by cooling and reheating the cylinder during every stroke. His solution was the 'separate condenser,' which allowed the main cylinder to remain hot at all times. ||(43)|| With this newfound efficiency, the steam engine moved from the mines into the factories. It was no longer just a pump; it became a universal power source. By converting the back-and-forth motion of the piston into rotary motion, Watt enabled the engine to drive the looms of textile mills and the hammers of iron foundries. ||(44)|| This transition from water to steam power meant that factories no longer had to be located near fast-flowing rivers in remote valleys. They could be built in the heart of growing cities, close to labor and transport hubs. The urban landscape was forever changed as the skyline began to fill with the brick chimneys of the steam-powered age. ||(45)|| However, the most visible impact of steam was in the world of transport. The development of high-pressure engines allowed for smaller, more powerful machines that could be mounted on wheels. In 1829, George Stephenson’s 'Rocket' proved that the steam locomotive was the future of travel, effectively shrinking the world and connecting distant cities in a matter of hours. ||(46)|| Today, while the puffing chimneys of the 19th century are gone, the legacy of steam remains. Over 90% of the world's electricity is still generated using steam turbines, whether fueled by coal, gas, or nuclear power. The iron heart of the Industrial Revolution is still beating, hidden within the high-tech infrastructure of the 21st century.",
+    "text": "The Industrial Revolution was not sparked by a single invention, but by a series of technical breakthroughs that fundamentally changed how we use energy. At the center of this transformation was the steam engine. Before its arrival, human industry was limited by the strength of muscles, the flow of rivers, and the unpredictability of the wind. ||(41)|| [41]The first practical steam-powered device was the 'atmospheric engine' invented by Thomas Newcomen in 1712[/41]. It was a massive, inefficient machine designed for one specific purpose: pumping water out of deep coal mines. While it was slow and consumed enormous amounts of fuel, it allowed miners to reach depths that were previously unreachable due to flooding. ||(42)|| [42]This inefficiency was the problem that James Watt set out to solve in the 1760s[/42]. While repairing a Newcomen model, he realized that a huge amount of energy was being wasted by cooling and reheating the cylinder during every stroke. His solution was the 'separate condenser,' which allowed the main cylinder to remain hot at all times. ||(43)|| [43]With this newfound efficiency, the steam engine moved from the mines into the factories[/43]. It was no longer just a pump; it became a universal power source. By converting the back-and-forth motion of the piston into rotary motion, Watt enabled the engine to drive the looms of textile mills and the hammers of iron foundries. ||(44)|| [44]This transition from water to steam power meant that factories no longer had to be located near fast-flowing rivers in remote valleys[/44]. They could be built in the heart of growing cities, close to labor and transport hubs. The urban landscape was forever changed as the skyline began to fill with the brick chimneys of the steam-powered age. ||(45)|| [45]However, the most visible impact of steam was in the world of transport[/45]. The development of high-pressure engines allowed for smaller, more powerful machines that could be mounted on wheels. In 1829, George Stephenson’s 'Rocket' proved that the steam locomotive was the future of travel, effectively shrinking the world and connecting distant cities in a matter of hours. ||(46)|| [46]Today, while the puffing chimneys of the 19th century are gone, the legacy of steam remains[/46]. Over 90% of the world's electricity is still generated using steam turbines, whether fueled by coal, gas, or nuclear power. The iron heart of the Industrial Revolution is still beating, hidden within the high-tech infrastructure of the 21st century.",
     "paragraphs": {
       "A": "Indeed, [41] these natural power sources [/41] were geographically fixed and often unreliable. A drought could stop a waterwheel, and a calm day could leave a windmill motionless. The steam engine offered the first truly portable and consistent source of power in human history.",
       "B": "However, [42] the Newcomen engine had a major flaw [/42]. Because the cylinder had to be cooled with water to create a vacuum after every single movement, it lost nearly 90% of its thermal energy, making it too expensive to run anywhere except directly at the coal mine.",
@@ -21,12 +21,36 @@
       "G": "Many [47] early inventors feared [/47] that high-pressure steam was too dangerous for public use. They worried that the boilers would explode, a fear that was occasionally justified by tragic accidents, leading to the first government safety regulations for industrial machinery."
     },
     "questions": [
-      { "number": 41, "correct": "A", "explanation": "A refers to 'these natural power sources' (muscles, rivers, wind) and explains why the steam engine was a superior alternative." },
-      { "number": 42, "correct": "B", "explanation": "B identifies the 'major flaw' of the Newcomen engine, which provides the context for James Watt's solution mentioned in the following paragraph." },
-      { "number": 43, "correct": "C", "explanation": "C refers to the 'breakthrough in thermal management' (Watt's separate condenser) and explains its impact on the machine's versatility." },
-      { "number": 44, "correct": "D", "explanation": "D links the engine's move into factories to the specific 'impact on the textile industry' and the birth of the factory system." },
-      { "number": 45, "correct": "E", "explanation": "E discusses the 'social consequences' of building factories in cities, following the text's description of changing urban landscapes." },
-      { "number": 46, "correct": "F", "explanation": "F refers to the 'revolution in mobility' initiated by locomotives like the 'Rocket' and extends the concept to the impact on 'steamships'." }
+      {
+        "number": 41,
+        "correct": "A",
+        "explanation": "A refers to 'these natural power sources' (muscles, rivers, wind) and explains why the steam engine was a superior alternative."
+      },
+      {
+        "number": 42,
+        "correct": "B",
+        "explanation": "B identifies the 'major flaw' of the Newcomen engine, which provides the context for James Watt's solution mentioned in the following paragraph."
+      },
+      {
+        "number": 43,
+        "correct": "C",
+        "explanation": "C refers to the 'breakthrough in thermal management' (Watt's separate condenser) and explains its impact on the machine's versatility."
+      },
+      {
+        "number": 44,
+        "correct": "D",
+        "explanation": "D links the engine's move into factories to the specific 'impact on the textile industry' and the birth of the factory system."
+      },
+      {
+        "number": 45,
+        "correct": "E",
+        "explanation": "E discusses the 'social consequences' of building factories in cities, following the text's description of changing urban landscapes."
+      },
+      {
+        "number": 46,
+        "correct": "F",
+        "explanation": "F refers to the 'revolution in mobility' initiated by locomotives like the 'Rocket' and extends the concept to the impact on 'steamships'."
+      }
     ]
   }
 }

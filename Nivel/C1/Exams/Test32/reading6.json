@@ -7,36 +7,56 @@
   "content": {
     "title": "The Commercialization of DNA Testing",
     "texts": {
-      "A": "The rise of direct-to-consumer genetic testing is a privacy nightmare disguised as a voyage of self-discovery. When you hand over your DNA to a private corporation, you are not just compromising your own data, but that of your relatives who never consented to the test. These databases are a goldmine for insurance companies and law enforcement, and no amount of 'anonymization' can truly protect the unique blueprint of a human being. We are selling our most intimate biological secrets for the price of a novelty ancestry report.",
-      "B": "Genetic testing has revolutionized our understanding of health and heritage, empowering individuals to take a proactive role in their own wellbeing. By identifying predispositions to certain conditions, users can make lifestyle changes that save lives. The privacy concerns are largely overblown; most companies have strict protocols and only share data with researchers when explicit consent is given. To block this technology would be to deny millions of people access to life-saving information and a deeper connection to their ancestral history.",
-      "C": "I agree that the health insights provided by these tests are a significant benefit, but we must address the 'biological determinism' they promote. A 2% predisposition to a disease is not a destiny, yet many users experience unnecessary anxiety or make radical medical decisions based on misunderstood data. I share the view that the lack of regulation regarding secondary data use is a major flaw. We need a 'Genetic Bill of Rights' that ensures our DNA cannot be used against us by employers or insurers, regardless of the fine print on a website.",
-      "D": "The most troubling aspect of the DNA testing boom is the commodification of identity. Identity is a social and cultural construct, not a percentage in a tube. By reducing ourselves to '40% Scandinavian' or '10% West African,' we are reinforcing old racial categories that have no basis in modern science. While I share the concern about law enforcement access to these databases, I believe the real harm is the way these tests distract us from the lived reality of our communities. We are looking into the past to avoid the complexities of the present.",
+      "A": "[37]The rise of direct-to-consumer genetic testing is a privacy nightmare disguised as a voyage of self-discovery.[/37] [38]When you hand over your DNA to a private corporation, you are not just compromising your own data, but that of your relatives who never consented to the test.[/38] [39]These databases are a goldmine for insurance companies and law enforcement, and no amount of 'anonymization' can truly protect the unique blueprint of a human being.[/39] We are selling our most intimate biological secrets for the price of a novelty ancestry report.",
+      "B": "Genetic testing has revolutionized our understanding of health and heritage, empowering individuals to take a proactive role in their own wellbeing. By identifying predispositions to certain conditions, users can make lifestyle changes that save lives. [37]The privacy concerns are largely overblown; most companies have strict protocols and only share data with researchers when explicit consent is given.[/37] To block this technology would be to deny millions of people access to life-saving information and a deeper connection to their ancestral history.",
+      "C": "[40]I agree that the health insights provided by these tests are a significant benefit, but we must address the 'biological determinism' they promote.[/40] A 2% predisposition to a disease is not a destiny, yet many users experience unnecessary anxiety or make radical medical decisions based on misunderstood data. I share the view that the lack of regulation regarding secondary data use is a major flaw. [38]We need a 'Genetic Bill of Rights' that ensures our DNA cannot be used against us by employers or insurers, regardless of the fine print on a website.[/38]",
+      "D": "The most troubling aspect of the DNA testing boom is the commodification of identity. Identity is a social and cultural construct, not a percentage in a tube. By reducing ourselves to '40% Scandinavian' or '10% West African,' we are reinforcing old racial categories that have no basis in modern science. [39]While I share the concern about law enforcement access to these databases, I believe the real harm is the way these tests distract us from the lived reality of our communities.[/39] [40]We are looking into the past to avoid the complexities of the present.[/40]",
       "questions": [
         {
           "number": 37,
           "question": "Which expert has a different view from B on the severity of the privacy risks associated with DNA testing?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "A",
           "explanation": "Expert B says privacy concerns are 'largely overblown.' Expert A calls it a 'privacy nightmare' and says 'no amount of anonymization' can protect the data."
         },
         {
           "number": 38,
           "question": "Which expert shares A's opinion about the potential for third-party organizations (like insurers) to exploit genetic data?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "C",
           "explanation": "Expert A mentions these databases are a 'goldmine for insurance companies.' Expert C also warns that DNA could be 'used against us by employers or insurers.'"
         },
         {
           "number": 39,
           "question": "Which expert expresses a similar view to D regarding the misuse of genetic data by the authorities?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "A",
           "explanation": "Expert D shares the concern about 'law enforcement access to these databases.' Expert A also explicitly lists 'law enforcement' as one of the groups for whom these databases are a goldmine."
         },
         {
           "number": 40,
           "question": "Which expert has a different view from C on the primary value of the health information these tests provide?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "D",
           "explanation": "Expert C believes the health insights are a 'significant benefit.' Expert D, however, argues that the focus on such data is a 'distraction' from 'lived reality' and reinforces problematic categories."
         }

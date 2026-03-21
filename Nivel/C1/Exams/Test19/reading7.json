@@ -10,7 +10,7 @@
   "totalQuestions": 6,
   "content": {
     "articleTitle": "The Long Road to Machine Intelligence",
-    "text": "The dream of creating an artificial mind is not a product of the computer age; it stretches back to the clockwork automatons of the 18th century. However, the scientific birth of Artificial Intelligence (AI) is usually traced to a 1956 workshop at Dartmouth College. There, a small group of mathematicians and logicians proposed that every aspect of learning or intelligence could, in principle, be so precisely described that a machine could be made to simulate it. ||(41)|| This period of unbridled optimism, however, was short-lived. By the 1970s, it became clear that the early researchers had grossly underestimated the complexity of human cognition. Language translation, which they thought would be solved in a few years, proved to be an insurmountable hurdle for the limited processing power of the era. ||(42)|| This era of stagnation, often called the 'AI Winter,' saw a dramatic withdrawal of government funding. Critics argued that the field was more science fiction than science, and many researchers moved into more 'practical' areas like database management or traditional software engineering. The dream of a thinking machine seemed to be dead. ||(43)|| Unlike the 'top-down' approach of the past, where programmers tried to write complex rules for every possible scenario, this new method focused on 'bottom-up' learning. By using neural networks inspired by the human brain, computers could now be trained on massive datasets to recognize patterns for themselves. ||(44)|| The results were transformative. Suddenly, machines were not just following instructions; they were identifying faces in photos, translating languages with surprising accuracy, and even beating world champions at complex games like Go. This leap was made possible by the simultaneous explosion of digital data and the development of specialized high-speed processors. ||(45)|| Concerns about algorithmic bias, the displacement of jobs, and the lack of transparency in 'black box' models have become central to the public discourse. The question is no longer whether we can create intelligent machines, but whether we can ensure they remain aligned with human values and safety. ||(46)|| Whether AI becomes a tool for unprecedented human flourishing or a source of societal destabilization remains to be seen. What is certain is that we have crossed a threshold from which there is no turning back. The machine is no longer just a tool; it has become a partner in the evolution of our civilization.",
+    "text": "The dream of creating an artificial mind is not a product of the computer age; it stretches back to the clockwork automatons of the 18th century. However, the scientific birth of Artificial Intelligence (AI) is usually traced to a 1956 workshop at Dartmouth College. There, a small group of mathematicians and logicians proposed that every aspect of learning or intelligence could, in principle, be so precisely described that a machine could be made to simulate it. ||(41)|| [41]This period of unbridled optimism, however, was short-lived[/41]. By the 1970s, it became clear that the early researchers had grossly underestimated the complexity of human cognition. Language translation, which they thought would be solved in a few years, proved to be an insurmountable hurdle for the limited processing power of the era. ||(42)|| [42]This era of stagnation, often called the 'AI Winter,' saw a dramatic withdrawal of government funding[/42]. Critics argued that the field was more science fiction than science, and many researchers moved into more 'practical' areas like database management or traditional software engineering. The dream of a thinking machine seemed to be dead. ||(43)|| [43]Unlike the 'top-down' approach of the past, where programmers tried to write complex rules for every possible scenario, this new method focused on 'bottom-up' learning[/43]. By using neural networks inspired by the human brain, computers could now be trained on massive datasets to recognize patterns for themselves. ||(44)|| [44]The results were transformative[/44]. Suddenly, machines were not just following instructions; they were identifying faces in photos, translating languages with surprising accuracy, and even beating world champions at complex games like Go. This leap was made possible by the simultaneous explosion of digital data and the development of specialized high-speed processors. ||(45)|| [45]Concerns about algorithmic bias, the displacement of jobs, and the lack of transparency in 'black box' models have become central to the public discourse[/45]. The question is no longer whether we can create intelligent machines, but whether we can ensure they remain aligned with human values and safety. ||(46)|| [46]Whether AI becomes a tool for unprecedented human flourishing or a source of societal destabilization remains to be seen[/46]. What is certain is that we have crossed a threshold from which there is no turning back. The machine is no longer just a tool; it has become a partner in the evolution of our civilization.",
     "paragraphs": {
       "A": "These [41] early pioneers were convinced [/41] that a 'General AI'—a machine capable of performing any intellectual task a human could—was only a generation away. They predicted that by the turn of the century, computers would be our peers in every sense of the word.",
       "B": "This [42] lack of progress led to a collapse in confidence [/42]. As the high-profile projects failed to deliver on their grand promises, the initial enthusiasm turned into skepticism, and the field entered a long period of decline and obscurity.",
@@ -21,12 +21,36 @@
       "G": "In [47] contrast to these digital systems [/47], the human brain operates on much less energy. A computer requires a massive power grid to perform complex calculations, while the biological mind can solve even more intricate problems using only about twenty watts of power."
     },
     "questions": [
-      { "number": 41, "correct": "A", "explanation": "A refers to the 'early pioneers' from the Dartmouth workshop and their 'General AI' predictions, which fits the 'unbridled optimism' mentioned in the text." },
-      { "number": 42, "correct": "B", "explanation": "B describes the 'lack of progress' and 'collapse in confidence' caused by the failures in language translation mentioned before the gap, leading into the 'AI Winter'." },
-      { "number": 43, "correct": "C", "explanation": "C identifies the 'breakthrough' in the late 2000s that ended the AI Winter and introduces the 'Deep Learning' approach mentioned in the next paragraph." },
-      { "number": 44, "correct": "D", "explanation": "D explains the process of 'feeding systems millions of examples', which is the practical application of the 'neural networks' and 'massive datasets' mentioned in the text." },
-      { "number": 45, "correct": "E", "explanation": "E introduces the 'new set of anxieties' (ethical implications) that follow the 'transformative results' and 'rapid advancement' described before the gap." },
-      { "number": 46, "correct": "F", "explanation": "F links the 'ongoing debates' and 'concerns' about bias to the need for 'regulatory frameworks' mentioned in the final part of the article." }
+      {
+        "number": 41,
+        "correct": "A",
+        "explanation": "A refers to the 'early pioneers' from the Dartmouth workshop and their 'General AI' predictions, which fits the 'unbridled optimism' mentioned in the text."
+      },
+      {
+        "number": 42,
+        "correct": "B",
+        "explanation": "B describes the 'lack of progress' and 'collapse in confidence' caused by the failures in language translation mentioned before the gap, leading into the 'AI Winter'."
+      },
+      {
+        "number": 43,
+        "correct": "C",
+        "explanation": "C identifies the 'breakthrough' in the late 2000s that ended the AI Winter and introduces the 'Deep Learning' approach mentioned in the next paragraph."
+      },
+      {
+        "number": 44,
+        "correct": "D",
+        "explanation": "D explains the process of 'feeding systems millions of examples', which is the practical application of the 'neural networks' and 'massive datasets' mentioned in the text."
+      },
+      {
+        "number": 45,
+        "correct": "E",
+        "explanation": "E introduces the 'new set of anxieties' (ethical implications) that follow the 'transformative results' and 'rapid advancement' described before the gap."
+      },
+      {
+        "number": 46,
+        "correct": "F",
+        "explanation": "F links the 'ongoing debates' and 'concerns' about bias to the need for 'regulatory frameworks' mentioned in the final part of the article."
+      }
     ]
   }
 }
