@@ -806,18 +806,277 @@
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Map dots for new PV point types ─────────────────────────────────── */
-.fe-dot-pv-gallery  { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
-.fe-dot-pv-fill-in  { background: linear-gradient(135deg, #8b5cf6, #ec4899); }
-.fe-dot-pv-conv     { background: linear-gradient(135deg, #10b981, #059669); }
-.fe-dot-pv-drag     { background: linear-gradient(135deg, #f59e0b, #ef4444); }
-.fe-dot-pv-mixed    { background: linear-gradient(135deg, #6366f1, #3b82f6); }
+/* Default: solid gradient fill (for the map dots) */
+.fe-dot-pv-gallery  { background: linear-gradient(135deg, #3b82f6, #06b6d4); color: #fff; }
+.fe-dot-pv-fill-in  { background: linear-gradient(135deg, #8b5cf6, #ec4899); color: #fff; }
+.fe-dot-pv-conv     { background: linear-gradient(135deg, #10b981, #059669); color: #fff; }
+.fe-dot-pv-drag     { background: linear-gradient(135deg, #f59e0b, #ef4444); color: #fff; }
+.fe-dot-pv-mixed    { background: linear-gradient(135deg, #6366f1, #3b82f6); color: #fff; }
 
-/* ── POINT 1: Phrasal Verb Gallery ───────────────────────────────────── */
-.pv-gallery-container {
+/* Outline style for legend mini-dots: white bg, colored border, icon in border color */
+.fe-dot-outline.fe-dot-pv-gallery  { background: #fff; border-color: #3b82f6; color: #3b82f6; overflow: hidden; }
+.fe-dot-outline.fe-dot-pv-fill-in  { background: #fff; border-color: #8b5cf6; color: #8b5cf6; overflow: hidden; }
+.fe-dot-outline.fe-dot-pv-conv     { background: #fff; border-color: #10b981; color: #10b981; overflow: hidden; }
+.fe-dot-outline.fe-dot-pv-drag     { background: #fff; border-color: #f59e0b; color: #f59e0b; overflow: hidden; }
+.fe-dot-outline.fe-dot-pv-mixed    { background: #fff; border-color: #6366f1; color: #6366f1; overflow: hidden; }
+.fe-dot-outline { border-width: 2px; border-style: solid; }
+.fe-dot-outline .material-symbols-outlined { font-size: 0.65rem; }
+
+/* ── Subpage header alignment ─────────────────────────────────────────── */
+.subpage-header-titles { flex: 1; min-width: 0; }
+.subpage-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.subpage-title .material-symbols-outlined { font-size: 1.2rem; flex-shrink: 0; }
+
+.subpage-info-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(45, 46, 95, 0.14);
+  background: rgba(45, 46, 95, 0.04);
+  color: var(--text-medium, #64748b);
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.subpage-info-btn:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+.subpage-info-btn .material-symbols-outlined { font-size: 1.2rem; }
+
+/* ── Reset level button ───────────────────────────────────────────────── */
+.fe-reset-level-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 14px;
+  margin-top: 10px;
+  border: 1.5px solid rgba(239, 68, 68, 0.25);
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.06);
+  color: #ef4444;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.fe-reset-level-btn:hover {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+.fe-reset-level-btn .material-symbols-outlined { font-size: 1rem; }
+
+/* ── PV Info Modal ────────────────────────────────────────────────────── */
+.pv-info-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+.pv-info-modal-box {
+  background: #fff;
+  border-radius: 24px;
+  max-width: 560px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.2);
+  overflow: hidden;
+  animation: pvModalIn 0.25s ease;
+}
+@keyframes pvModalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.pv-info-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+}
+.pv-info-modal-icon .material-symbols-outlined {
+  font-size: 1.6rem;
+  color: #3b82f6;
+}
+.pv-info-modal-title {
+  flex: 1;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+  margin: 0;
+}
+.pv-info-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(45, 46, 95, 0.06);
+  color: var(--text-medium, #64748b);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.pv-info-modal-close:hover { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+.pv-info-modal-close .material-symbols-outlined { font-size: 1.1rem; }
+.pv-info-modal-body {
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 16px 0 24px;
+  gap: 12px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.pv-info-modal-body p {
+  font-size: 0.93rem;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.65;
+  margin: 0;
+}
+.pv-info-example {
+  background: rgba(59, 130, 246, 0.07);
+  border-left: 3px solid #3b82f6;
+  border-radius: 0 10px 10px 0;
+  padding: 10px 14px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+}
+.pv-info-example .material-symbols-outlined { font-size: 1rem; color: #3b82f6; flex-shrink: 0; margin-top: 2px; }
+.pv-info-list {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pv-info-list li {
+  font-size: 0.9rem;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.5;
+}
+.pv-info-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(45, 46, 95, 0.08);
+  display: flex;
+  justify-content: flex-end;
+}
+.pv-info-modal-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 14px;
+  background: #3b82f6;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: filter 0.2s;
+  font-family: inherit;
+}
+.pv-info-modal-btn:hover { filter: brightness(1.1); }
+
+/* ── POINT 1: Phrasal Verb Gallery (single-card mode) ─────────────────── */
+.pv-gallery-single-wrap {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 0 8px;
+}
+
+.pv-gallery-cards-area {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.pv-gallery-card-single {
+  display: none;
+  background: #fff;
+  border-radius: 20px;
+  border: 2px solid var(--cat-color, #3b82f6);
+  padding: 28px 28px 38px;
+  box-shadow: 0 4px 18px rgba(45, 46, 95, 0.09);
+  position: relative;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.pv-gallery-card-single.pv-gallery-card-active {
+  display: block;
+  animation: pvCardIn 0.2s ease;
+}
+@keyframes pvCardIn {
+  from { opacity: 0.4; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Gallery / Conversation nav dots column ───────────────────────────── */
+.pv-gallery-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+  flex-shrink: 0;
+}
+
+.pv-gallery-nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(45, 46, 95, 0.15);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.pv-gallery-nav-dot:hover {
+  background: rgba(45, 46, 95, 0.3);
+  transform: scale(1.25);
+}
+.pv-gallery-nav-dot:hover::after {
+  content: attr(title);
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(15, 23, 42, 0.85);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
+.pv-gallery-nav-dot-active {
+  background: var(--cat-color, #3b82f6) !important;
+  transform: scale(1.2);
+}
+
+/* ── Conversations slides ─────────────────────────────────────────────── */
+.pv-conversations-slides {
+  flex: 1;
+  min-width: 0;
+}
+.pv-conv-slide { display: none; }
+.pv-conv-slide.pv-conv-slide-active {
+  display: block;
+  animation: pvCardIn 0.2s ease;
 }
 
 .pv-gallery-card {
