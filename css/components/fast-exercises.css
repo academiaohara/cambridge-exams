@@ -1808,7 +1808,6 @@
 
 .pv-sidebar-back {
   flex: 1;
-  min-width: 0;
   justify-content: center;
   font-size: 0.75rem;
   padding: 5px 8px;
@@ -1859,7 +1858,7 @@
 
 .pv-sidebar-lesson-info-text {
   flex: 1;
-  min-width: 0;
+  min-width: 0; /* allow flex shrink so info button always fits */
 }
 
 .pv-sidebar-lesson-name {

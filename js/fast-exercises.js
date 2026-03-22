@@ -1253,6 +1253,7 @@
     _showPvLessonInfoModal: function(lessonTitle, levelId) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
+      // Toggle: if already open, clicking the info button closes it
       var existing = document.getElementById('pv-lesson-info-modal');
       if (existing) { existing.remove(); return; }
 
