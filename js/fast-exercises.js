@@ -445,17 +445,21 @@
             '</button>' +
           '</div>' +
           '<div class="pv-info-modal-body">' +
-            '<p>' + t('pvInfoP1', 'A <strong>phrasal verb</strong> is a combination of a verb and one or more particles (a preposition, an adverb, or both) that together create a new meaning different from the original verb.') + '</p>' +
-            '<p class="pv-info-example"><span class="material-symbols-outlined">format_quote</span> <em>' + t('pvInfoEx1', '"Turn off the lights." — <strong>turn off</strong> = switch off (not just "turn")') + '</em></p>' +
-            '<p>' + t('pvInfoP2', 'Phrasal verbs are extremely common in everyday English — both spoken and written. Native speakers use them constantly in conversations, emails, and texts.') + '</p>' +
-            '<p>' + t('pvInfoP3', '<strong>Why are they important?</strong> Understanding phrasal verbs will help you:') + '</p>' +
+            '<p>' + t('pvInfoP1', 'Phrasal verbs are combinations of a verb and one or two particles (a preposition or an adverb) that together create a meaning different from the original verb.') + '</p>' +
+            '<p>' + t('pvInfoP2', 'For example:') + '</p>' +
             '<ul class="pv-info-list">' +
-              '<li>' + t('pvInfoL1', 'Sound more natural and fluent') + '</li>' +
-              '<li>' + t('pvInfoL2', 'Understand native speakers better') + '</li>' +
-              '<li>' + t('pvInfoL3', 'Score higher in reading and listening exams') + '</li>' +
-              '<li>' + t('pvInfoL4', 'Express yourself more precisely in writing') + '</li>' +
+              '<li>' + t('pvInfoEx1', '<em>look</em> (to see) → <em>look after</em> (to take care of)') + '</li>' +
+              '<li>' + t('pvInfoEx2', '<em>get</em> (to obtain) → <em>get along</em> (to have a good relationship)') + '</li>' +
             '</ul>' +
-            '<p>' + t('pvInfoP4', '<strong>How to learn them:</strong> Each lesson in this section introduces a group of related phrasal verbs. You will read them in context, practise filling in gaps, and test yourself with mixed exercises.') + '</p>' +
+            '<p>' + t('pvInfoP3', '👉 The key point is that their meaning is often <strong>not literal</strong>, so they need to be learned as a whole.') + '</p>' +
+            '<p>' + t('pvInfoP4', '<strong>Why are they important?</strong>') + '</p>' +
+            '<p>' + t('pvInfoP5', 'Phrasal verbs are very common in everyday English and frequently appear in Cambridge exams. Learning them will help you:') + '</p>' +
+            '<ul class="pv-info-list">' +
+              '<li>' + t('pvInfoL1', 'Understand real-life conversations') + '</li>' +
+              '<li>' + t('pvInfoL2', 'Sound more natural when speaking') + '</li>' +
+              '<li>' + t('pvInfoL3', 'Improve your exam performance') + '</li>' +
+            '</ul>' +
+            '<p>' + t('pvInfoTip', '<strong>Tip 💡</strong> Try to learn them with examples and in context, not as isolated words.') + '</p>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
             '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-info-modal\').remove()">' + t('gotIt', 'Got it!') + '</button>' +
