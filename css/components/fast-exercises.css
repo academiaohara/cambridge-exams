@@ -1193,6 +1193,44 @@
 }
 .pv-info-modal-btn:hover { filter: brightness(1.1); }
 
+/* ── PV Lesson Info Modal ────────────────────────────────────────────── */
+.pv-lesson-info-level {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-medium, #64748b);
+  margin-bottom: 12px !important;
+}
+.pv-lesson-info-level .material-symbols-outlined { font-size: 1rem; }
+
+.pv-lesson-info-verbs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pv-lesson-info-verb {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 10px;
+  border-left: 3px solid rgba(59, 130, 246, 0.3);
+}
+
+.pv-lesson-info-verb strong {
+  font-size: 0.9rem;
+  color: var(--text-dark, #0f172a);
+}
+
+.pv-lesson-info-verb span {
+  font-size: 0.82rem;
+  color: var(--text-medium, #64748b);
+  line-height: 1.4;
+}
+
 /* ── POINT 1: Phrasal Verb Gallery (single-card mode) ─────────────────── */
 .pv-gallery-single-wrap {
   display: flex;
@@ -1444,6 +1482,21 @@
   font-weight: 800;
 }
 .pv-conv-title .material-symbols-outlined { font-size: 1.1rem; }
+
+.pv-conv-title-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.pv-conv-num {
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 2px 8px;
+  flex-shrink: 0;
+}
 
 .pv-conv-dialogue {
   padding: 16px 14px;
@@ -1711,7 +1764,7 @@
 }
 
 .pv-point-sidebar {
-  width: 148px;
+  width: 190px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -1725,20 +1778,87 @@
   top: 16px;
   max-height: calc(100vh - 32px);
   overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.22s ease, padding 0.22s ease;
+}
+
+.pv-point-sidebar.pv-sidebar-collapsed {
+  width: 44px;
+  padding: 14px 6px;
+  gap: 8px;
+}
+
+.pv-point-sidebar.pv-sidebar-collapsed .pv-sidebar-content {
+  display: none;
+}
+
+.pv-point-sidebar.pv-sidebar-collapsed .pv-sidebar-back {
+  display: none;
+}
+
+.pv-point-sidebar.pv-sidebar-collapsed .pv-sidebar-top-row {
+  justify-content: center;
+}
+
+.pv-sidebar-top-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .pv-sidebar-back {
-  width: 100%;
+  flex: 1;
   justify-content: center;
-  font-size: 0.82rem;
-  padding: 7px 10px;
+  font-size: 0.75rem;
+  padding: 5px 8px;
+}
+
+.pv-sidebar-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 1px solid rgba(45, 46, 95, 0.15);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.pv-sidebar-collapse-btn:hover {
+  background: rgba(45, 46, 95, 0.08);
+}
+
+.pv-sidebar-collapse-btn .material-symbols-outlined {
+  font-size: 1.05rem;
+  color: var(--text-medium, #64748b);
+}
+
+.pv-sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .pv-sidebar-lesson-info {
-  text-align: center;
   padding: 8px 4px;
   border-top: 1px solid rgba(45, 46, 95, 0.08);
   border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+}
+
+.pv-sidebar-lesson-info-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.pv-sidebar-lesson-info-text {
+  flex: 1;
+  min-width: 0; /* allow flex shrink so info button always fits */
 }
 
 .pv-sidebar-lesson-name {
@@ -1753,6 +1873,40 @@
   font-size: 0.7rem;
   color: var(--text-medium, #64748b);
   margin-top: 2px;
+}
+
+.pv-sidebar-info-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  transition: background 0.2s;
+  margin-top: 1px;
+}
+
+.pv-sidebar-info-btn:hover {
+  background: rgba(45, 46, 95, 0.08);
+}
+
+.pv-sidebar-info-btn .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--text-medium, #64748b);
+}
+
+.pv-sidebar-exercise-desc {
+  font-size: 0.7rem;
+  color: var(--text-medium, #64748b);
+  line-height: 1.4;
+  padding: 6px 4px 2px;
+  border-top: 1px solid rgba(45, 46, 95, 0.08);
+  text-align: center;
 }
 
 .pv-sidebar-points {
@@ -1857,7 +2011,7 @@
     gap: 12px;
   }
   .pv-point-sidebar {
-    width: 100%;
+    width: 100% !important;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
@@ -1865,14 +2019,27 @@
     max-height: none;
     gap: 8px;
     padding: 10px 12px;
+    overflow-x: visible;
+  }
+  .pv-point-sidebar.pv-sidebar-collapsed .pv-sidebar-content {
+    display: none;
+  }
+  .pv-sidebar-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    flex: 1;
+    gap: 8px;
   }
   .pv-sidebar-lesson-info {
     flex: 1;
-    text-align: left;
     border-top: none;
     border-bottom: none;
     border-left: 1px solid rgba(45, 46, 95, 0.08);
     padding: 0 0 0 10px;
+  }
+  .pv-sidebar-exercise-desc {
+    display: none;
   }
   .pv-sidebar-points {
     flex-direction: row;
@@ -1885,6 +2052,7 @@
   }
   .pv-sidebar-back {
     width: auto;
+    flex: none;
   }
   .pv-sidebar-point-dot:hover:not(.pv-sidebar-point-active):not(.pv-sidebar-point-locked)::after {
     left: 50%;
