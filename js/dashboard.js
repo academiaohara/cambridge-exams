@@ -2,6 +2,8 @@
 (function() {
   var subpageCurrentPage = 1;
   var TESTS_PER_PAGE = 5;
+  var subpageView = 'byTest';       // 'byTest' | 'bySection'
+  var subpageSectionKey = null;     // null = tiles view; 'reading' | 'listening' | 'writing' | 'speaking'
 
   window.Dashboard = {
     render: function(expandExamId) {
@@ -77,43 +79,71 @@
         premiumBannerHtml = this._renderPremiumBanner();
       }
 
-      // Pagination: find which page contains the expandExamId if provided
-      var totalPages = Math.ceil(exams.length / TESTS_PER_PAGE);
-      if (expandExamId) {
-        var expandIdx = exams.findIndex(function(e) { return e.id === expandExamId; });
-        if (expandIdx !== -1) {
-          subpageCurrentPage = Math.floor(expandIdx / TESTS_PER_PAGE) + 1;
-        }
-      } else if (!keepPage) {
-        subpageCurrentPage = 1;
+      // View toggle (only in practice mode)
+      var viewToggleHtml = '';
+      if (mode !== 'exam') {
+        var byTestActive = subpageView === 'byTest' ? ' active' : '';
+        var bySectionActive = subpageView === 'bySection' ? ' active' : '';
+        viewToggleHtml =
+          '<div class="subpage-view-toggle">' +
+            '<button class="subpage-view-btn' + byTestActive + '" onclick="Dashboard.setSubpageView(\'byTest\', \'' + mode + '\')">' +
+              '<i class="fas fa-list"></i> ' + t('byTest', 'By Test') +
+            '</button>' +
+            '<button class="subpage-view-btn' + bySectionActive + '" onclick="Dashboard.setSubpageView(\'bySection\', \'' + mode + '\')">' +
+              '<span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">category</span> ' + t('byExerciseType', 'By Exercise Type') +
+            '</button>' +
+          '</div>';
       }
-      if (subpageCurrentPage < 1) subpageCurrentPage = 1;
-      if (subpageCurrentPage > totalPages) subpageCurrentPage = totalPages || 1;
 
-      var pageStart = (subpageCurrentPage - 1) * TESTS_PER_PAGE;
-      var pageExams = exams.slice(pageStart, pageStart + TESTS_PER_PAGE);
+      // Main content area depends on active view
+      var mainContentHtml = '';
+      if (mode === 'exam' || subpageView === 'byTest') {
+        // ── By Test view (existing behaviour) ───────────────────────────
+        var totalPages = Math.ceil(exams.length / TESTS_PER_PAGE);
+        if (expandExamId) {
+          var expandIdx = exams.findIndex(function(e) { return e.id === expandExamId; });
+          if (expandIdx !== -1) {
+            subpageCurrentPage = Math.floor(expandIdx / TESTS_PER_PAGE) + 1;
+          }
+        } else if (!keepPage) {
+          subpageCurrentPage = 1;
+        }
+        if (subpageCurrentPage < 1) subpageCurrentPage = 1;
+        if (subpageCurrentPage > totalPages) subpageCurrentPage = totalPages || 1;
 
-      let examListHtml = '';
-      pageExams.forEach(function(exam, idx) {
-        var globalIdx = pageStart + idx;
-        if (exam.status === 'coming_soon') {
-          examListHtml += Dashboard.renderComingSoonExam(exam);
-        } else if (isGuest && globalIdx > 0) {
-          examListHtml += Dashboard._renderGuestLockedExam(exam);
+        var pageStart = (subpageCurrentPage - 1) * TESTS_PER_PAGE;
+        var pageExams = exams.slice(pageStart, pageStart + TESTS_PER_PAGE);
+
+        var examListHtml = '';
+        pageExams.forEach(function(exam, idx) {
+          var globalIdx = pageStart + idx;
+          if (exam.status === 'coming_soon') {
+            examListHtml += Dashboard.renderComingSoonExam(exam);
+          } else if (isGuest && globalIdx > 0) {
+            examListHtml += Dashboard._renderGuestLockedExam(exam);
+          } else {
+            examListHtml += Dashboard.renderAvailableExam(exam, expandExamId);
+          }
+        });
+
+        var paginationHtml = '';
+        if (totalPages > 1) {
+          paginationHtml = '<div class="subpage-pagination">';
+          for (var p = 1; p <= totalPages; p++) {
+            var activeClass = p === subpageCurrentPage ? ' active' : '';
+            paginationHtml += '<button class="pagination-btn' + activeClass + '" onclick="Dashboard.goToSubpagePage(' + p + ', \'' + mode + '\')">' + p + '</button>';
+          }
+          paginationHtml += '</div>';
+        }
+
+        mainContentHtml = '<div class="exams-container">' + examListHtml + '</div>' + paginationHtml;
+      } else {
+        // ── By Section view ──────────────────────────────────────────────
+        if (subpageSectionKey) {
+          mainContentHtml = this._renderSectionExerciseList(exams, subpageSectionKey, isGuest, t);
         } else {
-          examListHtml += Dashboard.renderAvailableExam(exam, expandExamId);
+          mainContentHtml = this._renderBySectionTiles(t);
         }
-      });
-
-      // Pagination controls
-      var paginationHtml = '';
-      if (totalPages > 1) {
-        paginationHtml = '<div class="subpage-pagination">';
-        for (var p = 1; p <= totalPages; p++) {
-          var activeClass = p === subpageCurrentPage ? ' active' : '';
-          paginationHtml += '<button class="pagination-btn' + activeClass + '" onclick="Dashboard.goToSubpagePage(' + p + ', \'' + mode + '\')">' + p + '</button>';
-        }
-        paginationHtml += '</div>';
       }
 
       var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
@@ -132,8 +162,8 @@
         '<div class="dashboard-center">' +
           subpageHeader +
           premiumBannerHtml +
-          '<div class="exams-container">' + examListHtml + '</div>' +
-          paginationHtml +
+          viewToggleHtml +
+          mainContentHtml +
         '</div>' +
         '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
       '</div>';
@@ -147,6 +177,153 @@
     goToSubpagePage: function(page, mode) {
       subpageCurrentPage = page;
       this.renderSubpage(mode || AppState.currentMode, null, true);
+    },
+
+    setSubpageView: function(view, mode) {
+      subpageView = view;
+      subpageSectionKey = null;
+      subpageCurrentPage = 1;
+      this.renderSubpage(mode || AppState.currentMode, null, false);
+    },
+
+    goToSectionView: function(sectionKey, mode) {
+      subpageSectionKey = sectionKey;
+      this.renderSubpage(mode || AppState.currentMode, null, true);
+    },
+
+    backToSectionTiles: function(mode) {
+      subpageSectionKey = null;
+      this.renderSubpage(mode || AppState.currentMode, null, true);
+    },
+
+    // ── By-Section tiles ────────────────────────────────────────────────
+    _renderBySectionTiles: function(t) {
+      var mode = AppState.currentMode || 'practice';
+      var sections = [
+        { key: 'reading',   icon: 'menu_book',        label: t('reading', 'Reading') },
+        { key: 'listening', icon: 'headphones',        label: t('listening', 'Listening') },
+        { key: 'writing',   icon: 'edit_note',         label: t('writing', 'Writing') },
+        { key: 'speaking',  icon: 'record_voice_over', label: t('speaking', 'Speaking') }
+      ];
+      var html = '<div class="section-type-tiles">';
+      sections.forEach(function(s) {
+        html +=
+          '<div class="section-type-tile ' + s.key + '" onclick="Dashboard.goToSectionView(\'' + s.key + '\', \'' + mode + '\')">' +
+            '<span class="material-symbols-outlined section-type-tile-icon">' + s.icon + '</span>' +
+            '<span class="section-type-tile-label">' + s.label + '</span>' +
+            '<i class="fas fa-chevron-right section-type-tile-arrow"></i>' +
+          '</div>';
+      });
+      html += '</div>';
+      return html;
+    },
+
+    // ── Section exercise list (all tests for one section type) ──────────
+    _renderSectionExerciseList: function(exams, sectionKey, isGuest, t) {
+      var mode = AppState.currentMode || 'practice';
+      var html =
+        '<div class="section-ex-header">' +
+          '<button class="section-ex-back-btn" onclick="Dashboard.backToSectionTiles(\'' + mode + '\')">' +
+            '<i class="fas fa-arrow-left"></i>' +
+          '</button>' +
+          '<span class="material-symbols-outlined section-icon ' + sectionKey + '">' + Utils.getMaterialIcon(sectionKey) + '</span>' +
+          '<span class="section-ex-title">' + t(sectionKey, sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)) + '</span>' +
+        '</div>' +
+        '<div class="exams-container">';
+
+      exams.forEach(function(exam, idx) {
+        if (exam.status === 'coming_soon') {
+          html += Dashboard._renderSectionExComingSoon(exam);
+        } else if (isGuest && idx > 0) {
+          html += Dashboard._renderSectionExGuestLocked(exam, sectionKey);
+        } else {
+          html += Dashboard._renderSectionExItem(exam, sectionKey, isGuest);
+        }
+      });
+
+      html += '</div>';
+      return html;
+    },
+
+    _renderSectionExComingSoon: function(exam) {
+      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
+      return '<div class="exam-item">' +
+        '<div class="exam-header">' +
+          '<div class="exam-header-left">' +
+            '<span class="exam-number">' + exam.number + '</span>' +
+            '<div>' +
+              '<div class="exam-title">Test ' + exam.number + '</div>' +
+              '<div class="exam-subtitle">' + t('soon', 'Coming soon') + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="exam-progress-badge"><i class="fas fa-clock"></i> ' + t('soon', 'Coming soon') + '</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _renderSectionExGuestLocked: function(exam, sectionKey) {
+      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
+      return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
+        '<div class="exam-header">' +
+          '<div class="exam-header-left">' +
+            '<span class="exam-number">' + exam.number + '</span>' +
+            '<div>' +
+              '<div class="exam-title">Test ' + exam.number + '</div>' +
+              '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + t('signInToAccess', 'Sign in to access') + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="exam-progress-badge"><i class="fas fa-lock"></i> ' + t('premiumBtn', 'Upgrade') + '</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _renderSectionExItem: function(exam, sectionKey, isGuest) {
+      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
+      var section = exam.sections[sectionKey];
+      if (!section) return '';
+
+      var isGuestLocked = isGuest && (sectionKey === 'writing' || sectionKey === 'speaking');
+      if (isGuestLocked) {
+        return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
+          '<div class="exam-header">' +
+            '<div class="exam-header-left">' +
+              '<span class="exam-number">' + exam.number + '</span>' +
+              '<div>' +
+                '<div class="exam-title">Test ' + exam.number + '</div>' +
+                '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + t('signInRequired', 'Sign in required') + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="exam-progress-badge"><i class="fas fa-lock"></i></div>' +
+          '</div>' +
+        '</div>';
+      }
+
+      var html =
+        '<div class="exam-item section-ex-item">' +
+          '<div class="section-ex-item-header">' +
+            '<span class="exam-number">' + exam.number + '</span>' +
+            '<div class="section-ex-item-info">' +
+              '<div class="exam-title">Test ' + exam.number + '</div>' +
+              '<span class="section-progress">' + section.completed.length + '/' + section.total + '</span>' +
+            '</div>' +
+            '<button class="section-play" onclick="event.stopPropagation(); Exercise.startFullSection(\'' + exam.id + '\', \'' + sectionKey + '\')" title="' + (t('start', 'Start') || 'Start') + '">' +
+              '<i class="fas fa-play"></i>' +
+            '</button>' +
+            '<button class="section-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showSectionResults(\'' + exam.id + '\', \'' + sectionKey + '\')" title="' + (t('sectionResults', 'Section Results') || 'Section Results') + '">' +
+              '<i class="fas fa-chart-bar"></i>' +
+            '</button>' +
+          '</div>' +
+          '<div class="section-parts">';
+
+      for (var i = 1; i <= section.total; i++) {
+        var statusClass = '';
+        if (section.completed.includes(i)) statusClass = 'completed';
+        else if (section.inProgress.includes(i)) statusClass = 'in-progress';
+        html += '<span class="part-number ' + statusClass + '" onclick="event.stopPropagation(); Exercise.openPart(\'' + exam.id + '\', \'' + sectionKey + '\', ' + i + ')">' + i + '</span>';
+      }
+
+      html += '</div></div>';
+      return html;
     },
     
     renderComingSoonExam: function(exam) {
