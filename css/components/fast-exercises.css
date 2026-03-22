@@ -1700,3 +1700,195 @@
   .pv-write-input { max-width: 100%; }
   .pv-chips-list { gap: 8px; }
 }
+
+/* ── PV Point Layout: sidebar + main ─────────────────────────────────── */
+.fe-point-view.pv-point-layout {
+  max-width: 1060px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+}
+
+.pv-point-sidebar {
+  width: 148px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  padding: 14px 10px;
+  box-shadow: 0 4px 20px rgba(45, 46, 95, 0.08);
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+.pv-sidebar-back {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.82rem;
+  padding: 7px 10px;
+}
+
+.pv-sidebar-lesson-info {
+  text-align: center;
+  padding: 8px 4px;
+  border-top: 1px solid rgba(45, 46, 95, 0.08);
+  border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+}
+
+.pv-sidebar-lesson-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.pv-sidebar-level-label {
+  font-size: 0.7rem;
+  color: var(--text-medium, #64748b);
+  margin-top: 2px;
+}
+
+.pv-sidebar-points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+}
+
+.pv-sidebar-point-dot {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(45, 46, 95, 0.06);
+  border: 2px solid rgba(45, 46, 95, 0.12);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.pv-sidebar-point-dot .material-symbols-outlined {
+  font-size: 1.1rem;
+  color: var(--text-medium, #64748b);
+}
+
+.pv-sidebar-point-dot:hover:not(.pv-sidebar-point-active):not(.pv-sidebar-point-locked) {
+  background: rgba(45, 46, 95, 0.1);
+  border-color: rgba(45, 46, 95, 0.25);
+  transform: scale(1.08);
+}
+
+.pv-sidebar-point-dot:hover:not(.pv-sidebar-point-active):not(.pv-sidebar-point-locked)::after {
+  content: attr(title);
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(15, 23, 42, 0.85);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.pv-sidebar-point-active {
+  background: var(--dot-color, #3b82f6);
+  border-color: var(--dot-color, #3b82f6);
+  cursor: default;
+  box-shadow: 0 3px 10px rgba(59, 130, 246, 0.35);
+}
+
+.pv-sidebar-point-active .material-symbols-outlined {
+  color: #fff;
+}
+
+.pv-sidebar-point-done {
+  background: #10b981;
+  border-color: #10b981;
+  cursor: pointer;
+}
+
+.pv-sidebar-point-done .material-symbols-outlined {
+  color: #fff;
+}
+
+.pv-sidebar-point-locked {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pv-sidebar-connector {
+  width: 2px;
+  height: 8px;
+  background: rgba(45, 46, 95, 0.12);
+  align-self: center;
+}
+
+.pv-point-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remove padding override for pv-gallery-single-wrap inside pv-point-main */
+.pv-point-main .pv-gallery-single-wrap {
+  padding-top: 0;
+}
+
+/* ── Responsive: stack vertically on small screens ────────────────────── */
+@media (max-width: 640px) {
+  .fe-point-view.pv-point-layout {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pv-point-sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    position: static;
+    max-height: none;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+  .pv-sidebar-lesson-info {
+    flex: 1;
+    text-align: left;
+    border-top: none;
+    border-bottom: none;
+    border-left: 1px solid rgba(45, 46, 95, 0.08);
+    padding: 0 0 0 10px;
+  }
+  .pv-sidebar-points {
+    flex-direction: row;
+    gap: 6px;
+    padding: 0;
+  }
+  .pv-sidebar-connector {
+    width: 8px;
+    height: 2px;
+  }
+  .pv-sidebar-back {
+    width: auto;
+  }
+  .pv-sidebar-point-dot:hover:not(.pv-sidebar-point-active):not(.pv-sidebar-point-locked)::after {
+    left: 50%;
+    top: calc(100% + 8px);
+    transform: translateX(-50%);
+  }
+}

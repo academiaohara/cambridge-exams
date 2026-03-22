@@ -833,6 +833,7 @@
       var pointLabel = 'Point ' + (pointIndex + 1);
       var pointType = 'explanation';
       var lessonTitle = lessonId;
+      var lessonPoints = [];
       if (catData && catData.levels) {
         for (var i = 0; i < catData.levels.length; i++) {
           if (catData.levels[i].id === levelId && catData.levels[i].lessons) {
@@ -840,6 +841,7 @@
               var lsn = catData.levels[i].lessons[j];
               if (lsn.id === lessonId) {
                 lessonTitle = lsn.title || lessonId;
+                lessonPoints = lsn.points || [];
                 if (lsn.points && lsn.points[pointIndex]) {
                   pointLabel = lsn.points[pointIndex].label || pointLabel;
                   pointType  = lsn.points[pointIndex].type  || pointType;
@@ -881,15 +883,15 @@
           return;
         }
         if (pointType === 'pv-gallery') {
-          this._renderPvGallery(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+          this._renderPvGallery(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'pv-fill-in') {
-          this._renderPvFillIn(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+          this._renderPvFillIn(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'pv-conversations') {
-          this._renderPvConversations(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+          this._renderPvConversations(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'pv-conversation-drag') {
-          this._renderPvConversationDrag(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+          this._renderPvConversationDrag(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'pv-mixed') {
-          this._renderPvMixed(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+          this._renderPvMixed(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
         var pvState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
         history.pushState(pvState, '', Router.stateToPath(pvState));
@@ -1148,8 +1150,73 @@
       this._nextPoint(categoryId, levelId, lessonId, pointIndex);
     },
 
+    // ── PV SIDEBAR BUILDER ───────────────────────────────────────────────
+    _buildPvSidebarHtml: function(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var self = this;
+
+      var pvIconMap = {
+        'pv-gallery':           'collections_bookmark',
+        'pv-fill-in':           'edit',
+        'pv-conversations':     'forum',
+        'pv-conversation-drag': 'drag_indicator',
+        'pv-mixed':             'shuffle'
+      };
+
+      var dotsHtml = '';
+      if (lessonPoints && lessonPoints.length > 0) {
+        lessonPoints.forEach(function(pt, pi) {
+          var isDone   = self._isPointComplete(catMeta.id, levelId, lessonId, pi);
+          var isActive = (pi === pointIndex);
+
+          // pv-mixed locked until all previous points are done
+          var isAccessible = true;
+          if (pt.type === 'pv-mixed' && pi === lessonPoints.length - 1) {
+            for (var prev = 0; prev < pi; prev++) {
+              if (!self._isPointComplete(catMeta.id, levelId, lessonId, prev)) {
+                isAccessible = false;
+                break;
+              }
+            }
+          }
+
+          var icon = isDone ? 'check' : (pvIconMap[pt.type] || 'circle');
+          var cls = 'pv-sidebar-point-dot';
+          if (isActive)          cls += ' pv-sidebar-point-active';
+          else if (isDone)       cls += ' pv-sidebar-point-done';
+          else if (!isAccessible) cls += ' pv-sidebar-point-locked';
+
+          var onclick = '';
+          if (!isActive && (isDone || isAccessible)) {
+            onclick = 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pi + ')"';
+          }
+
+          // Use the category color for the active dot
+          var style = isActive ? 'style="--dot-color:' + catMeta.color + '"' : '';
+
+          if (pi > 0) {
+            dotsHtml += '<div class="pv-sidebar-connector"></div>';
+          }
+          dotsHtml += '<div class="' + cls + '" ' + onclick + ' ' + style + ' title="' + self._escapeHTML(pt.label || '') + '">' +
+            '<span class="material-symbols-outlined">' + icon + '</span>' +
+          '</div>';
+        });
+      }
+
+      return '<div class="pv-point-sidebar">' +
+        '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
+          '<span class="material-symbols-outlined">arrow_back</span> ' + t('back', 'Back') +
+        '</button>' +
+        '<div class="pv-sidebar-lesson-info">' +
+          '<div class="pv-sidebar-lesson-name">' + self._escapeHTML(lessonTitle || '') + '</div>' +
+          '<div class="pv-sidebar-level-label">' + self._escapeHTML(levelId || '') + '</div>' +
+        '</div>' +
+        '<div class="pv-sidebar-points">' + dotsHtml + '</div>' +
+      '</div>';
+    },
+
     // ── PV GALLERY (Point 1) ─────────────────────────────────────────────
-    _renderPvGallery: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+    _renderPvGallery: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var pvs = (lessonData && lessonData.phrasalVerbs) || [];
@@ -1182,26 +1249,22 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view">' +
-          '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
-            '<div class="subpage-header-titles">' +
-              '<div class="subpage-title">' + '<span class="material-symbols-outlined">collections_bookmark</span>' + ' ' + self._escapeHTML(lessonTitle || '') + '</div>' +
-              '<div class="subpage-subtitle">' + levelId + ' · ' + t('phrasalVerbGallery', 'Phrasal Verb Gallery') + ' · ' + pvs.length + ' ' + t('verbs', 'verbs') + '</div>' +
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="pv-gallery-single-wrap">' +
+              '<div class="pv-gallery-cards-area" id="pv-gallery-cards">' +
+                cardsHtml +
+              '</div>' +
+              '<div class="pv-gallery-nav-col" id="pv-gallery-nav">' +
+                dotsHtml +
+              '</div>' +
             '</div>' +
-          '</div>' +
-          '<div class="pv-gallery-single-wrap">' +
-            '<div class="pv-gallery-cards-area" id="pv-gallery-cards">' +
-              cardsHtml +
+            '<div class="pv-gallery-footer">' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+                t('gotItNext', 'Got it! Next') + '' +
+              '</button>' +
             '</div>' +
-            '<div class="pv-gallery-nav-col" id="pv-gallery-nav">' +
-              dotsHtml +
-            '</div>' +
-          '</div>' +
-          '<div class="pv-gallery-footer">' +
-            '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-              t('gotItNext', 'Got it! Next') + '' +
-            '</button>' +
           '</div>' +
         '</div>';
 
@@ -1236,7 +1299,7 @@
     },
 
     // ── PV FILL-IN EXERCISES (Point 2) ───────────────────────────────────
-    _renderPvFillIn: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+    _renderPvFillIn: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var exercises = (lessonData && lessonData.fillInExercises) || [];
@@ -1273,23 +1336,19 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view">' +
-          '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
-            '<div class="subpage-header-titles">' +
-              '<div class="subpage-title"><span class="material-symbols-outlined">edit</span> ' + self._escapeHTML(lessonTitle || '') + '</div>' +
-              '<div class="subpage-subtitle">' + levelId + ' · ' + t('fillInTheGaps', 'Fill in the Gaps') + '</div>' +
-            '</div>' +
-          '</div>' +
-          '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
-            '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
-            '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
-              questionsHtml +
-            '</div>' +
-            '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
-              '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
-              '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
-              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>' +
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
+              '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
+              '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
+                questionsHtml +
+              '</div>' +
+              '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
+                '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
+                '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>' +
+              '</div>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -1371,7 +1430,7 @@
     },
 
     // ── PV CONVERSATIONS (Point 3) ───────────────────────────────────────
-    _renderPvConversations: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+    _renderPvConversations: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var convs = (lessonData && lessonData.conversations) || [];
@@ -1421,27 +1480,23 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view">' +
-          '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
-            '<div class="subpage-header-titles">' +
-              '<div class="subpage-title"><span class="material-symbols-outlined">forum</span> ' + self._escapeHTML(lessonTitle || '') + '</div>' +
-              '<div class="subpage-subtitle">' + levelId + ' · ' + t('realConversations', 'Real Conversations') + '</div>' +
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="pv-gallery-single-wrap">' +
+              '<div class="pv-conversations-slides" id="pv-conv-slides">' +
+                convsHtml +
+              '</div>' +
+              '<div class="pv-gallery-nav-col" id="pv-conv-nav">' +
+                convDotsHtml +
+              '</div>' +
             '</div>' +
-          '</div>' +
-          '<div class="pv-gallery-single-wrap">' +
-            '<div class="pv-conversations-slides" id="pv-conv-slides">' +
-              convsHtml +
+            '<div class="pv-conv-footer">' +
+              '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + t('pvHighlightHint', 'Phrasal verbs are highlighted in bold. Click a highlighted verb to see its definition.') + '</p>' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+                t('readyNext', 'Ready! Next') +
+              '</button>' +
             '</div>' +
-            '<div class="pv-gallery-nav-col" id="pv-conv-nav">' +
-              convDotsHtml +
-            '</div>' +
-          '</div>' +
-          '<div class="pv-conv-footer">' +
-            '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + t('pvHighlightHint', 'Phrasal verbs are highlighted in bold. Click a highlighted verb to see its definition.') + '</p>' +
-            '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-              t('readyNext', 'Ready! Next') +
-            '</button>' +
           '</div>' +
         '</div>';
 
@@ -1476,7 +1531,7 @@
     },
 
     // ── PV CONVERSATION DRAG (Point 4) ───────────────────────────────────
-    _renderPvConversationDrag: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+    _renderPvConversationDrag: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var convs = (lessonData && lessonData.conversations) || [];
@@ -1493,7 +1548,8 @@
         categoryId: catMeta.id, levelId: levelId, lessonId: lessonId,
         pointIndex: pointIndex, catColor: catMeta.color,
         convs: convs, currentConvIdx: 0, container: container,
-        lessonTitle: lessonTitle, catMeta: catMeta, lessonData: lessonData
+        lessonTitle: lessonTitle, catMeta: catMeta, lessonData: lessonData,
+        lessonPoints: lessonPoints
       };
 
       // Render the first conversation
@@ -1573,32 +1629,28 @@
         : '';
 
       container.innerHTML =
-        '<div class="fe-point-view">' +
-          '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
-            '<div class="subpage-header-titles">' +
-              '<div class="subpage-title"><span class="material-symbols-outlined">drag_indicator</span> ' + self._escapeHTML(lessonTitle || '') + '</div>' +
-              '<div class="subpage-subtitle">' + levelId + ' · ' + t('completeConversations', 'Complete the Conversations') + '</div>' +
-            '</div>' +
-          '</div>' +
-          '<div class="pv-drag-container">' +
-            progressHtml +
-            '<p class="pv-drag-instruction">' + _mi('drag_indicator') + ' ' + t('dragInstruction', 'Drag each phrasal verb to the correct gap, or tap a chip and then tap a gap.') + '</p>' +
-            '<div class="pv-conv-block">' +
-              '<div class="pv-conv-title">' + _mi('forum') + ' ' + self._escapeHTML(conv.title || '') + '</div>' +
-              '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
-            '</div>' +
-            '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
-              '<div class="pv-chips-title">' + t('phrasalVerbs', 'Phrasal Verbs') + ':</div>' +
-              '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
-            '</div>' +
-            '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
-              '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
-              '<div class="pv-drag-result-text" id="pv-drag-result-text"></div>' +
-              (convIdx + 1 < totalConvs
-                ? '<button class="fe-point-next-btn" onclick="FastExercises._pvDragNextConv()" style="background:' + catMeta.color + '">' + t('nextConversation', 'Next Conversation') + '</button>'
-                : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>'
-              ) +
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="pv-drag-container">' +
+              progressHtml +
+              '<p class="pv-drag-instruction">' + _mi('drag_indicator') + ' ' + t('dragInstruction', 'Drag each phrasal verb to the correct gap, or tap a chip and then tap a gap.') + '</p>' +
+              '<div class="pv-conv-block">' +
+                '<div class="pv-conv-title">' + _mi('forum') + ' ' + self._escapeHTML(conv.title || '') + '</div>' +
+                '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+              '</div>' +
+              '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
+                '<div class="pv-chips-title">' + t('phrasalVerbs', 'Phrasal Verbs') + ':</div>' +
+                '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
+              '</div>' +
+              '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
+                '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
+                '<div class="pv-drag-result-text" id="pv-drag-result-text"></div>' +
+                (convIdx + 1 < totalConvs
+                  ? '<button class="fe-point-next-btn" onclick="FastExercises._pvDragNextConv()" style="background:' + catMeta.color + '">' + t('nextConversation', 'Next Conversation') + '</button>'
+                  : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>'
+                ) +
+              '</div>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -1704,7 +1756,7 @@
     },
 
     // ── PV MIXED PRACTICE (Point 5) ──────────────────────────────────────
-    _renderPvMixed: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+    _renderPvMixed: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var fillIns = (lessonData && lessonData.fillInExercises) || [];
@@ -1789,23 +1841,19 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view">' +
-          '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
-            '<div class="subpage-header-titles">' +
-              '<div class="subpage-title"><span class="material-symbols-outlined">shuffle</span> ' + self._escapeHTML(lessonTitle || '') + '</div>' +
-              '<div class="subpage-subtitle">' + levelId + ' · ' + t('mixedPractice', 'Mixed Practice') + '</div>' +
-            '</div>' +
-          '</div>' +
-          '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
-            '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
-            '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + mixed.length + '" data-answered="0" data-correct="0">' +
-              questionsHtml +
-            '</div>' +
-            '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
-              '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
-              '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
-              '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>' +
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
+              '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
+              '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + mixed.length + '" data-answered="0" data-correct="0">' +
+                questionsHtml +
+              '</div>' +
+              '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
+                '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
+                '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>' +
+              '</div>' +
             '</div>' +
           '</div>' +
         '</div>';
