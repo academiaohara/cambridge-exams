@@ -2179,11 +2179,11 @@
       this._wfCardCurrentIdx = idx;
       var cards = document.querySelectorAll('.wf-card');
       for (var i = 0; i < cards.length; i++) {
-        cards[i].classList.toggle('wf-card-active', parseInt(cards[i].getAttribute('data-idx')) === idx);
+        cards[i].classList.toggle('wf-card-active', parseInt(cards[i].getAttribute('data-idx'), 10) === idx);
       }
       var dots = document.querySelectorAll('#wf-gallery-nav .pv-gallery-nav-dot');
       for (var i = 0; i < dots.length; i++) {
-        dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx')) === idx);
+        dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx'), 10) === idx);
       }
     },
 
@@ -2359,7 +2359,7 @@
             '<p>Word formation is a key part of Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). It tests your ability to transform words to fit a sentence grammatically and meaningfully.</p>' +
             '<p><strong>Tip 💡</strong></p>' +
             '<p>Learn root words together with their most common derivatives. Pay attention to whether you need a noun, adjective, verb or adverb in context.</p>' +
-            '<p><a class="wf-info-dict-link" onclick="FastExercises._showWfDictionary(); document.getElementById(\'wf-info-modal\').remove();" href="#">' + _mi('search') + ' Open the Word Formation Dictionary</a></p>' +
+            '<p><button class="wf-info-dict-link" onclick="FastExercises._showWfDictionary(); document.getElementById(\'wf-info-modal\').remove();">' + _mi('search') + ' Open the Word Formation Dictionary</button></p>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
             '<button class="pv-info-modal-btn" onclick="document.getElementById(\'wf-info-modal\').remove()" style="background:#e11d48">Got it!</button>' +
