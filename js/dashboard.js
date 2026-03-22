@@ -4,12 +4,16 @@
   var TESTS_PER_PAGE = 5;
   var subpageView = 'byTest';       // 'byTest' | 'bySection'
   var subpageSectionKey = null;     // null = tiles view; 'reading' | 'listening' | 'writing' | 'speaking'
+  var sectionCurrentPage = 1;
+  var SECTION_ITEMS_PER_PAGE = 4;
 
   window.Dashboard = {
     render: function(expandExamId) {
       const content = document.getElementById('main-content');
       if (!content) return;
       if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
+      AppState.currentView = 'dashboard';
+      if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
       
       const level = AppState.currentLevel || 'C1';
       const exams = window.EXAMS_DATA[level] || [];
@@ -48,6 +52,7 @@
     // keepPage: if true, do not reset pagination to page 1
     renderSubpage: function(mode, expandExamId, keepPage) {
       AppState.currentMode = mode;
+      AppState.currentView = 'subpage';
       localStorage.setItem('preferred_mode', mode);
       if (typeof App !== 'undefined') App.restoreExamStatuses();
 
@@ -172,6 +177,7 @@
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
       }
+      if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
     },
 
     goToSubpagePage: function(page, mode) {
@@ -188,11 +194,18 @@
 
     goToSectionView: function(sectionKey, mode) {
       subpageSectionKey = sectionKey;
+      sectionCurrentPage = 1;
       this.renderSubpage(mode || AppState.currentMode, null, true);
     },
 
     backToSectionTiles: function(mode) {
       subpageSectionKey = null;
+      sectionCurrentPage = 1;
+      this.renderSubpage(mode || AppState.currentMode, null, true);
+    },
+
+    goToSectionPage: function(page, mode) {
+      sectionCurrentPage = page;
       this.renderSubpage(mode || AppState.currentMode, null, true);
     },
 
@@ -218,9 +231,17 @@
       return html;
     },
 
-    // ── Section exercise list (all tests for one section type) ──────────
+    // ── Section exercise list (paginated by section type) ──────────
     _renderSectionExerciseList: function(exams, sectionKey, isGuest, t) {
       var mode = AppState.currentMode || 'practice';
+
+      // Pagination
+      var totalPages = Math.ceil(exams.length / SECTION_ITEMS_PER_PAGE);
+      if (sectionCurrentPage < 1) sectionCurrentPage = 1;
+      if (sectionCurrentPage > totalPages) sectionCurrentPage = totalPages || 1;
+      var pageStart = (sectionCurrentPage - 1) * SECTION_ITEMS_PER_PAGE;
+      var pageExams = exams.slice(pageStart, pageStart + SECTION_ITEMS_PER_PAGE);
+
       var html =
         '<div class="section-ex-header">' +
           '<button class="section-ex-back-btn" onclick="Dashboard.backToSectionTiles(\'' + mode + '\')">' +
@@ -231,10 +252,11 @@
         '</div>' +
         '<div class="exams-container">';
 
-      exams.forEach(function(exam, idx) {
+      pageExams.forEach(function(exam, idx) {
+        var globalIdx = pageStart + idx;
         if (exam.status === 'coming_soon') {
           html += Dashboard._renderSectionExComingSoon(exam);
-        } else if (isGuest && idx > 0) {
+        } else if (isGuest && globalIdx > 0) {
           html += Dashboard._renderSectionExGuestLocked(exam, sectionKey);
         } else {
           html += Dashboard._renderSectionExItem(exam, sectionKey, isGuest);
@@ -242,6 +264,16 @@
       });
 
       html += '</div>';
+
+      if (totalPages > 1) {
+        html += '<div class="subpage-pagination">';
+        for (var p = 1; p <= totalPages; p++) {
+          var activeClass = p === sectionCurrentPage ? ' active' : '';
+          html += '<button class="pagination-btn' + activeClass + '" onclick="Dashboard.goToSectionPage(' + p + ', \'' + mode + '\')">' + p + '</button>';
+        }
+        html += '</div>';
+      }
+
       return html;
     },
 
