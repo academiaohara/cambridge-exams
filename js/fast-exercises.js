@@ -1163,6 +1163,14 @@
         'pv-mixed':             'shuffle'
       };
 
+      var pvDescriptions = {
+        'pv-gallery':           t('pvGalleryDesc', 'Read and learn the phrasal verbs for this lesson.'),
+        'pv-fill-in':           t('pvFillInDesc', 'Choose or write the correct phrasal verb for each sentence.'),
+        'pv-conversations':     t('pvConvsDesc', 'Read the conversations. Tap highlighted verbs to see their definition.'),
+        'pv-conversation-drag': t('pvDragDesc', 'Drag each phrasal verb to the correct gap in the conversation.'),
+        'pv-mixed':             t('pvMixedDesc', 'Mixed practice: test yourself with questions from the whole lesson.')
+      };
+
       var dotsHtml = '';
       if (lessonPoints && lessonPoints.length > 0) {
         lessonPoints.forEach(function(pt, pi) {
@@ -1203,22 +1211,91 @@
         });
       }
 
-      return '<div class="pv-point-sidebar">' +
-        '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
-          '<span class="material-symbols-outlined">arrow_back</span> ' + t('back', 'Back') +
-        '</button>' +
-        '<div class="pv-sidebar-lesson-info">' +
-          '<div class="pv-sidebar-lesson-name">' + self._escapeHTML(lessonTitle || '') + '</div>' +
-          '<div class="pv-sidebar-level-label">' + self._escapeHTML(levelId || '') + '</div>' +
+      var currentPointType = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex].type : '';
+      var exerciseDesc = pvDescriptions[currentPointType] || '';
+
+      return '<div class="pv-point-sidebar" id="pv-point-sidebar">' +
+        '<div class="pv-sidebar-top-row">' +
+          '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
+            t('back', 'Back') +
+          '</button>' +
+          '<button class="pv-sidebar-collapse-btn" id="pv-sidebar-toggle" title="' + t('collapse', 'Collapse') + '" onclick="FastExercises._pvToggleSidebar()">' +
+            '<span class="material-symbols-outlined pv-sidebar-toggle-icon">chevron_left</span>' +
+          '</button>' +
         '</div>' +
-        '<div class="pv-sidebar-points">' + dotsHtml + '</div>' +
+        '<div class="pv-sidebar-content" id="pv-sidebar-content">' +
+          '<div class="pv-sidebar-lesson-info">' +
+            '<div class="pv-sidebar-lesson-info-header">' +
+              '<div class="pv-sidebar-lesson-info-text">' +
+                '<div class="pv-sidebar-lesson-name">' + self._escapeHTML(lessonTitle || '') + '</div>' +
+                '<div class="pv-sidebar-level-label">' + self._escapeHTML(levelId || '') + '</div>' +
+              '</div>' +
+              '<button class="pv-sidebar-info-btn" title="' + t('lessonInfo', 'Lesson info') + '" onclick="FastExercises._showPvLessonInfoModal(\'' + self._jsStr(lessonTitle) + '\',\'' + self._jsStr(levelId) + '\')">' +
+                '<span class="material-symbols-outlined">info</span>' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="pv-sidebar-points">' + dotsHtml + '</div>' +
+          (exerciseDesc ? '<div class="pv-sidebar-exercise-desc">' + exerciseDesc + '</div>' : '') +
+        '</div>' +
       '</div>';
+    },
+
+    _pvToggleSidebar: function() {
+      var sidebar = document.getElementById('pv-point-sidebar');
+      var icon = document.querySelector('#pv-sidebar-toggle .pv-sidebar-toggle-icon');
+      if (!sidebar) return;
+      var isCollapsed = sidebar.classList.contains('pv-sidebar-collapsed');
+      sidebar.classList.toggle('pv-sidebar-collapsed', !isCollapsed);
+      if (icon) icon.textContent = isCollapsed ? 'chevron_left' : 'chevron_right';
+    },
+
+    _showPvLessonInfoModal: function(lessonTitle, levelId) {
+      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
+      var self = this;
+      var existing = document.getElementById('pv-lesson-info-modal');
+      if (existing) { existing.remove(); return; }
+
+      var pvs = (this._currentLessonData && this._currentLessonData.phrasalVerbs) || [];
+      var verbsHtml = '';
+      pvs.forEach(function(pv) {
+        verbsHtml +=
+          '<div class="pv-lesson-info-verb">' +
+            '<strong>' + self._escapeHTML(pv.verb) + '</strong>' +
+            '<span>' + self._escapeHTML(pv.definition || '') + '</span>' +
+          '</div>';
+      });
+
+      var modal = document.createElement('div');
+      modal.id = 'pv-lesson-info-modal';
+      modal.className = 'pv-info-modal-overlay';
+      modal.innerHTML =
+        '<div class="pv-info-modal-box">' +
+          '<div class="pv-info-modal-header">' +
+            '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">school</span></span>' +
+            '<h2 class="pv-info-modal-title">' + self._escapeHTML(lessonTitle || '') + '</h2>' +
+            '<button class="pv-info-modal-close" onclick="document.getElementById(\'pv-lesson-info-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="pv-info-modal-body">' +
+            '<p class="pv-lesson-info-level"><span class="material-symbols-outlined">label</span> ' + self._escapeHTML(levelId || '') + '</p>' +
+            (verbsHtml ? '<div class="pv-lesson-info-verbs">' + verbsHtml + '</div>' : '') +
+          '</div>' +
+          '<div class="pv-info-modal-footer">' +
+            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-lesson-info-modal\').remove()">' + t('gotIt', 'Got it!') + '</button>' +
+          '</div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) { if (e.target === modal) modal.remove(); });
+      document.body.appendChild(modal);
     },
 
     // ── PV GALLERY (Point 1) ─────────────────────────────────────────────
     _renderPvGallery: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
+      this._currentLessonData = lessonData;
       var pvs = (lessonData && lessonData.phrasalVerbs) || [];
 
       if (pvs.length === 0) {
@@ -1302,6 +1379,7 @@
     _renderPvFillIn: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
+      this._currentLessonData = lessonData;
       var exercises = (lessonData && lessonData.fillInExercises) || [];
 
       if (exercises.length === 0) {
@@ -1435,7 +1513,8 @@
       var self = this;
       var convs = (lessonData && lessonData.conversations) || [];
 
-      // Store phrasal verbs for popup lookup
+      // Store lesson data and phrasal verbs for popup lookup
+      this._currentLessonData = lessonData;
       this._currentPvVerbs = (lessonData && lessonData.phrasalVerbs) || [];
 
       if (convs.length === 0) {
@@ -1444,6 +1523,7 @@
         return;
       }
 
+      var totalConvs = convs.length;
       var convsHtml = '';
       convs.forEach(function(conv, ci) {
         var linesHtml = '';
@@ -1467,8 +1547,9 @@
             '</div>' +
           '</div>';
         });
+        var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (ci + 1) + '/' + totalConvs + '</span>' : '';
         convsHtml += '<div class="pv-conv-block pv-conv-slide' + (ci === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + ci + '">' +
-          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span> ' + self._escapeHTML(conv.title || '') + '</div>' +
+          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
           '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
         '</div>';
       });
@@ -1534,6 +1615,7 @@
     _renderPvConversationDrag: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
+      this._currentLessonData = lessonData;
       var convs = (lessonData && lessonData.conversations) || [];
       var pvs = (lessonData && lessonData.phrasalVerbs) || [];
 
@@ -1623,20 +1705,16 @@
         '</span>';
       });
 
-      // Progress indicator: "Conversation 1 / 2"
-      var progressHtml = totalConvs > 1
-        ? '<div class="pv-drag-conv-progress">' + t('conversation', 'Conversation') + ' ' + (convIdx + 1) + ' / ' + totalConvs + '</div>'
-        : '';
+      var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (convIdx + 1) + '/' + totalConvs + '</span>' : '';
 
       container.innerHTML =
         '<div class="fe-point-view pv-point-layout">' +
           this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints) +
           '<div class="pv-point-main">' +
             '<div class="pv-drag-container">' +
-              progressHtml +
               '<p class="pv-drag-instruction">' + _mi('drag_indicator') + ' ' + t('dragInstruction', 'Drag each phrasal verb to the correct gap, or tap a chip and then tap a gap.') + '</p>' +
               '<div class="pv-conv-block">' +
-                '<div class="pv-conv-title">' + _mi('forum') + ' ' + self._escapeHTML(conv.title || '') + '</div>' +
+                '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
                 '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
               '</div>' +
               '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
@@ -1759,6 +1837,7 @@
     _renderPvMixed: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
+      this._currentLessonData = lessonData;
       var fillIns = (lessonData && lessonData.fillInExercises) || [];
       var convs   = (lessonData && lessonData.conversations) || [];
 
