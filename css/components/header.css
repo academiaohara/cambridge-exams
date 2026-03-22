@@ -129,6 +129,66 @@
   line-height: 1;
 }
 
+/* ── Header quick navigation ── */
+.header-quick-nav {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.header-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 13px;
+  border-radius: 40px;
+  border: 2px solid transparent;
+  background: transparent;
+  color: var(--text-medium);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.header-nav-btn:hover {
+  background: rgba(45, 46, 95, 0.06);
+  border-color: rgba(45, 46, 95, 0.12);
+  color: var(--text-dark);
+  transform: translateY(-1px);
+}
+
+.header-nav-btn.active {
+  background: linear-gradient(135deg, #2D2E5F, #1E9D8E);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 3px 12px rgba(45, 46, 95, 0.18);
+}
+
+.header-nav-btn .material-symbols-outlined {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+@media (max-width: 960px) {
+  .header-nav-label {
+    display: none;
+  }
+
+  .header-nav-btn {
+    padding: 7px 9px;
+  }
+}
+
+@media (max-width: 560px) {
+  .header-quick-nav {
+    display: none;
+  }
+}
+
 /* ── Header calculator button ── */
 .header-calc-btn {
   display: flex;
