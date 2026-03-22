@@ -1,60 +1,122 @@
 /* css/components/footer.css */
+
+/* ── Footer stripe bar (moved from header) ── */
+.footer-stripe-bar {
+  height: 12px;
+  background: linear-gradient(
+    to bottom,
+    #CD1025 0%, #CD1025 33.33%,
+    #FFFFFF 33.33%, #FFFFFF 66.66%,
+    #002A7E 66.66%, #002A7E 100%
+  );
+}
+
+/* ── Main footer – British Mod aesthetic ── */
 .main-footer {
-  background: rgba(45, 46, 95, 0.04);
-  border-top: 1px solid rgba(45, 46, 95, 0.06);
-  padding: 24px 24px 24px;
-  color: var(--text-dark);
+  background: #002A7E;
+  border-top: none;
+  padding: 0;
+  color: #fff;
   margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mod target watermark */
+.main-footer::before {
+  content: '';
+  position: absolute;
+  right: -80px;
+  bottom: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #CD1025 0%, #CD1025 30%,
+    #FFFFFF 30%, #FFFFFF 50%,
+    #002A7E 50%, #002A7E 65%,
+    rgba(255,255,255,0.06) 65%
+  );
+  opacity: 0.18;
+  pointer-events: none;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 24px 0;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
 .footer-col h4 {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #CD1025;
+}
+
+.footer-col h4 i {
+  color: #CD1025;
 }
 
 .footer-col ul {
   list-style: none;
-  padding-left: 10px;
+  padding-left: 0;
 }
 
 .footer-col ul li {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .footer-col ul li a {
-  color: var(--text-medium);
+  color: rgba(255, 255, 255, 0.72);
   text-decoration: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
   transition: all 0.2s;
 }
 
+.footer-col ul li a i {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+  width: 14px;
+  text-align: center;
+}
+
 .footer-col ul li a:hover {
-  color: #1E9D8E;
-  transform: translateX(5px);
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+.footer-col ul li a:hover i {
+  color: #CD1025;
 }
 
 .footer-bottom {
   text-align: center;
-  padding-top: 24px;
-  border-top: 1px solid rgba(45, 46, 95, 0.06);
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.04em;
 }
 
 /* AÑADIR AL FINAL DE footer.css */
