@@ -1761,7 +1761,7 @@
   border-radius: 20px;
   padding: 14px 10px;
   box-shadow: 0 4px 20px rgba(45, 46, 95, 0.08);
-  position: sticky;
+  position: static;
   top: 0;
   max-height: calc(100vh - 32px);
   overflow-y: auto;
