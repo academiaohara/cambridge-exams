@@ -30,7 +30,6 @@
           btn.classList.add('active');
         }
       });
-      
 
       await this.syncExamsFromFolders();
       
