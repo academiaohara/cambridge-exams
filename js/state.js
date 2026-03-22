@@ -32,6 +32,7 @@
     sectionScores: {},
     currentPartScore: 0,
     currentMode: 'practice',
+    currentView: 'dashboard',
     examFullMode: false,
     examSectionsOrder: ['reading', 'listening', 'writing', 'speaking'],
     examCurrentSectionIndex: 0,
