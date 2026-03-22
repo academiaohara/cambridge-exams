@@ -1223,6 +1223,9 @@
             '<span class="material-symbols-outlined pv-sidebar-toggle-icon">chevron_left</span>' +
           '</button>' +
         '</div>' +
+        '<button class="pv-sidebar-exit-btn" title="' + t('back', 'Back') + '" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
+          '<span class="material-symbols-outlined">close</span>' +
+        '</button>' +
         '<div class="pv-sidebar-content" id="pv-sidebar-content">' +
           '<div class="pv-sidebar-lesson-info">' +
             '<div class="pv-sidebar-lesson-info-header">' +
@@ -1230,9 +1233,6 @@
                 '<div class="pv-sidebar-lesson-name">' + self._escapeHTML(lessonTitle || '') + '</div>' +
                 '<div class="pv-sidebar-level-label">' + self._escapeHTML(levelId || '') + '</div>' +
               '</div>' +
-              '<button class="pv-sidebar-info-btn" title="' + t('lessonInfo', 'Lesson info') + '" onclick="FastExercises._showPvLessonInfoModal(\'' + self._jsStr(lessonTitle) + '\',\'' + self._jsStr(levelId) + '\')">' +
-                '<span class="material-symbols-outlined">info</span>' +
-              '</button>' +
             '</div>' +
           '</div>' +
           '<div class="pv-sidebar-points">' + dotsHtml + '</div>' +
@@ -1713,7 +1713,6 @@
           this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints) +
           '<div class="pv-point-main">' +
             '<div class="pv-drag-container">' +
-              '<p class="pv-drag-instruction">' + _mi('drag_indicator') + ' ' + t('dragInstruction', 'Drag each phrasal verb to the correct gap, or tap a chip and then tap a gap.') + '</p>' +
               '<div class="pv-conv-block">' +
                 '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
                 '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
