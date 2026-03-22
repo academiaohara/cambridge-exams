@@ -285,6 +285,29 @@
                     <img src="Assets/images/logo.svg" class="logo-icon" alt="ExamPeak logo">
                 </a>
                 
+                <nav class="header-quick-nav" id="headerQuickNav">
+                    <button class="header-nav-btn" onclick="loadDashboard()" data-view="dashboard" title="Home">
+                        <span class="material-symbols-outlined">home</span>
+                        <span class="header-nav-label">Home</span>
+                    </button>
+                    <button class="header-nav-btn" data-mode="practice" onclick="BentoGrid.selectMode('practice')" title="Test Practice">
+                        <span class="material-symbols-outlined">edit_note</span>
+                        <span class="header-nav-label">Practice</span>
+                    </button>
+                    <button class="header-nav-btn" data-mode="exam" onclick="BentoGrid.selectMode('exam')" title="Test Simulation">
+                        <span class="material-symbols-outlined">assignment</span>
+                        <span class="header-nav-label">Simulation</span>
+                    </button>
+                    <button class="header-nav-btn" onclick="BentoGrid.openMicroLearning()" title="Fast Learning">
+                        <span class="material-symbols-outlined">bolt</span>
+                        <span class="header-nav-label">Fast Learning</span>
+                    </button>
+                    <button class="header-nav-btn" onclick="BentoGrid.openLessons()" title="Course">
+                        <span class="material-symbols-outlined">auto_stories</span>
+                        <span class="header-nav-label">Course</span>
+                    </button>
+                </nav>
+
                 <div class="header-nav-group" id="headerNavGroup">
                 
                 <button class="header-calc-btn" onclick="openScoreCalculator()" title="Score Calculator">

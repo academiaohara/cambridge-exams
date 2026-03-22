@@ -189,7 +189,7 @@
     
     updateHeaderModeButtons: function() {
       var mode = AppState.currentMode || 'practice';
-      document.querySelectorAll('.header-mode-btn').forEach(function(btn) {
+      document.querySelectorAll('.header-mode-btn, .header-nav-btn[data-mode]').forEach(function(btn) {
         if (btn.getAttribute('data-mode') === mode) {
           btn.classList.add('active');
         } else {
