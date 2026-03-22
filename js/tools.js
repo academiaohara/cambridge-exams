@@ -68,12 +68,12 @@
       var titleEl = document.getElementById('sidebar-panel-title');
       if (titleEl) {
         var titles = {
-          notes: I18n.t('highlight'),
-          freenotes: I18n.t('notes'),
-          dict: I18n.t('dictionary'),
-          translate: I18n.t('translate'),
-          tips: I18n.t('tips'),
-          transcript: I18n.t('transcript')
+          notes: 'HIGHLIGHT',
+          freenotes: 'NOTES',
+          dict: 'DICTIONARY',
+          translate: 'TRANSLATE',
+          tips: 'TIPS',
+          transcript: 'TRANSCRIPT'
         };
         titleEl.textContent = titles[AppState.activeTool] || '';
       }
@@ -98,20 +98,20 @@
           this.renderDictSearch();
           break;
         case 'translate':
-          container.innerHTML = '<p class="placeholder-text">' + I18n.t('selectPhrase') + '</p>';
+          container.innerHTML = '<p class="placeholder-text">' + 'Select any phrase to translate.' + '</p>';
           break;
         case 'tips':
           if (AppState.currentSection) {
             this.showTips(AppState.currentSection);
           } else {
-            container.innerHTML = '<p class="placeholder-text">' + I18n.t('activateTool') + '</p>';
+            container.innerHTML = '<p class="placeholder-text">' + 'Activate a tool to see details here.' + '</p>';
           }
           break;
         case 'transcript':
           this.renderTranscript();
           break;
         default:
-          container.innerHTML = '<p class="placeholder-text">' + I18n.t('activateTool') + '</p>';
+          container.innerHTML = '<p class="placeholder-text">' + 'Activate a tool to see details here.' + '</p>';
       }
     },
 
@@ -132,7 +132,7 @@
       row.className = 'tool-toggle-row';
       row.id = 'tool-toggle-row';
       row.innerHTML =
-        '<span class="tool-toggle-label">' + (I18n.t('autoDetect') || 'Auto-detect') + '</span>' +
+        '<span class="tool-toggle-label">' + ('Auto-detect') + '</span>' +
         '<label class="tool-toggle-switch">' +
           '<input type="checkbox" id="tool-selection-toggle" ' + (AppState.toolSelectionEnabled ? 'checked' : '') + ' onchange="Tools.toggleToolSelection(this.checked)">' +
           '<span class="tool-toggle-slider"></span>' +
@@ -151,12 +151,12 @@
       container.innerHTML = '<div class="dict-search-wrapper">' +
         '<div class="dict-search-box">' +
           '<i class="fas fa-search"></i>' +
-          '<input type="text" id="dict-search-input" placeholder="' + (I18n.t('typeWordPlaceholder') || 'Type a word or phrasal verb...') + '">' +
+          '<input type="text" id="dict-search-input" placeholder="' + ('Type a word or phrasal verb...') + '">' +
           '<button class="dict-search-go" onclick="Tools.searchFromInput()">' +
             '<i class="fas fa-arrow-right"></i>' +
           '</button>' +
         '</div>' +
-        '<p class="dict-help-text">' + I18n.t('selectWord') + '</p>' +
+        '<p class="dict-help-text">' + 'Select a word or phrasal verb to see its definition.' + '</p>' +
       '</div>';
       var input = document.getElementById('dict-search-input');
       if (input) {
@@ -190,7 +190,7 @@
     
     saveNote: function() {
       if (AppState.notes.length >= MAX_HIGHLIGHTS) {
-        alert(I18n.t('maxHighlightsReached'));
+        alert('You have reached the limit of 20 highlights.');
         return;
       }
       const commentInput = document.getElementById('note-input-field');
@@ -214,7 +214,7 @@
           AppState.notes.push({
             id: noteId,
             text: originalText,
-            comment: comment || I18n.t('noComment'),
+            comment: comment || 'No comment',
             color: AppState.selectedNoteColor,
             element: span
           });
@@ -264,7 +264,7 @@
 
       // Notes carousel (one note at a time)
       if (AppState.notes.length === 0) {
-        html += '<p class="empty-msg">' + I18n.t('noHighlights') + '</p>';
+        html += '<p class="empty-msg">' + 'No highlights yet. Select text and create one.' + '</p>';
       } else {
         const idx = AppState.notesIndex;
         const n = AppState.notes[idx];
@@ -274,7 +274,7 @@
             '<button class="notes-nav-btn" onclick="Tools.prevNote()" ' + (total <= 1 ? 'disabled' : '') + '>' +
               '<i class="fas fa-chevron-left"></i>' +
             '</button>' +
-            '<span class="notes-nav-counter">' + (idx + 1) + ' ' + I18n.t('noteOf') + ' ' + total + '</span>' +
+            '<span class="notes-nav-counter">' + (idx + 1) + ' ' + 'of' + ' ' + total + '</span>' +
             '<button class="notes-nav-btn" onclick="Tools.nextNote()" ' + (total <= 1 ? 'disabled' : '') + '>' +
               '<i class="fas fa-chevron-right"></i>' +
             '</button>' +
@@ -293,10 +293,10 @@
       html += `
         <div id="note-creator" class="note-creator-card" style="display:none;">
           <div class="note-creator-header">
-            <span data-i18n="highlightText">${I18n.t('highlightText')}</span> "<span id="selected-phrase-display"></span>"
+            <span data-i18n="highlightText">Highlight</span> "<span id="selected-phrase-display"></span>"
           </div>
           <div class="note-input-wrapper">
-            <input type="text" id="note-input-field" maxlength="${MAX_HIGHLIGHT_COMMENT}" data-i18n-placeholder="addNote" placeholder="${I18n.t('addNote')}">
+            <input type="text" id="note-input-field" maxlength="${MAX_HIGHLIGHT_COMMENT}" data-i18n-placeholder="addNote" placeholder="Add a note (optional)...">
             <span class="char-counter" id="note-char-counter">0 / ${MAX_HIGHLIGHT_COMMENT}</span>
           </div>
           <div class="note-creator-footer">
@@ -307,8 +307,8 @@
               <span class="color-dot pink" data-color="#fbcfe8" onclick="Tools.setNoteColor('#fbcfe8', this)"></span>
             </div>
             <div class="note-actions">
-              <button class="btn-cancel" onclick="Tools.hideNoteCreator()"><span data-i18n="cancel">${I18n.t('cancel')}</span></button>
-              <button class="btn-confirm" onclick="Tools.saveNote()"><span data-i18n="confirm">${I18n.t('confirm')}</span></button>
+              <button class="btn-cancel" onclick="Tools.hideNoteCreator()"><span data-i18n="cancel">Cancel</span></button>
+              <button class="btn-confirm" onclick="Tools.saveNote()"><span data-i18n="confirm">Confirm</span></button>
             </div>
           </div>
         </div>
@@ -334,7 +334,7 @@
 
       let notesCarouselHTML = '';
       if (total === 0) {
-        notesCarouselHTML = '<p class="empty-msg fn-empty-msg">' + I18n.t('noNotes') + '</p>';
+        notesCarouselHTML = '<p class="empty-msg fn-empty-msg">' + 'No notes yet. Write one above.' + '</p>';
       } else {
         notesCarouselHTML =
           '<div class="notes-carousel fn-carousel">' +
@@ -342,14 +342,14 @@
               '<button class="notes-nav-btn" onclick="Tools.prevFreeNote()" ' + (total <= 1 ? 'disabled' : '') + '>' +
                 '<i class="fas fa-chevron-left"></i>' +
               '</button>' +
-              '<span class="notes-nav-counter">' + (idx + 1) + ' ' + I18n.t('noteOf') + ' ' + total + '</span>' +
+              '<span class="notes-nav-counter">' + (idx + 1) + ' ' + 'of' + ' ' + total + '</span>' +
               '<button class="notes-nav-btn" onclick="Tools.nextFreeNote()" ' + (total <= 1 ? 'disabled' : '') + '>' +
                 '<i class="fas fa-chevron-right"></i>' +
               '</button>' +
             '</div>' +
             '<div class="fn-note-display">' +
               '<span class="fn-note-text">' + _escapeHtml(currentNote) + '</span>' +
-              '<button class="note-delete" onclick="Tools.deleteFreeNote(' + idx + ')" title="' + I18n.t('deleteNote') + '">&times;</button>' +
+              '<button class="note-delete" onclick="Tools.deleteFreeNote(' + idx + ')" title="' + 'Delete' + '">&times;</button>' +
             '</div>' +
           '</div>';
       }
@@ -357,10 +357,10 @@
       container.innerHTML =
         '<div class="free-notes-container">' +
           '<div class="fn-input-wrapper" id="fn-input-wrapper">' +
-            '<textarea id="fn-input" class="fn-input fn-input-small" maxlength="' + MAX_FREE_NOTE + '" placeholder="' + I18n.t('addNewNote') + '"></textarea>' +
+            '<textarea id="fn-input" class="fn-input fn-input-small" maxlength="' + MAX_FREE_NOTE + '" placeholder="' + 'Write a note...' + '"></textarea>' +
             '<div class="fn-input-controls" id="fn-input-controls" style="display:none;">' +
               '<span class="char-counter" id="fn-char-counter">0 / ' + MAX_FREE_NOTE + '</span>' +
-              '<button class="btn-confirm fn-save-btn" onclick="Tools.saveFreeNote()">' + I18n.t('saveNote') + '</button>' +
+              '<button class="btn-confirm fn-save-btn" onclick="Tools.saveFreeNote()">' + 'Save' + '</button>' +
             '</div>' +
           '</div>' +
           notesCarouselHTML +
@@ -405,7 +405,7 @@
 
       if (!Array.isArray(AppState.freeNotes)) AppState.freeNotes = [];
       if (AppState.freeNotes.length >= MAX_NOTES) {
-        alert(I18n.t('maxNotesReached'));
+        alert('You have reached the limit of 30 notes.');
         return;
       }
       AppState.freeNotes.push(text);
@@ -440,7 +440,7 @@
       const searchBoxHTML = '<div class="dict-search-wrapper">' +
         '<div class="dict-search-box">' +
           '<i class="fas fa-search"></i>' +
-          '<input type="text" id="dict-search-input" placeholder="' + (I18n.t('typeWordPlaceholder') || 'Type a word or phrasal verb...') + '" value="' + texto.replace(/"/g, '&quot;') + '">' +
+          '<input type="text" id="dict-search-input" placeholder="' + ('Type a word or phrasal verb...') + '" value="' + texto.replace(/"/g, '&quot;') + '">' +
           '<button class="dict-search-go" onclick="Tools.searchFromInput()">' +
             '<i class="fas fa-arrow-right"></i>' +
           '</button>' +
@@ -448,7 +448,7 @@
       '</div>';
 
       if (requestId !== _toolRequestId) return;
-      areaHerramientas.innerHTML = searchBoxHTML + '<p class="loading-mini"><i class="fas fa-spinner fa-spin"></i> ' + I18n.t('loading') + '...</p>';
+      areaHerramientas.innerHTML = searchBoxHTML + '<p class="loading-mini"><i class="fas fa-spinner fa-spin"></i> ' + 'Loading exercise...' + '...</p>';
       var searchInput = document.getElementById('dict-search-input');
       if (searchInput) {
         searchInput.addEventListener('keydown', function(e) {
@@ -478,7 +478,7 @@
             return;
           }
           if (requestId !== _toolRequestId) return;
-          areaHerramientas.innerHTML = searchBoxHTML + '<p class="dict-not-found">' + I18n.t('noDefinition') + ' "' + query + '".</p>';
+          areaHerramientas.innerHTML = searchBoxHTML + '<p class="dict-not-found">' + 'No definition found for' + ' "' + query + '".</p>';
           var searchInput2 = document.getElementById('dict-search-input');
           if (searchInput2) {
             searchInput2.addEventListener('keydown', function(e) {
@@ -541,7 +541,7 @@
       } catch (error) {
         if (requestId !== _toolRequestId) return;
         console.error('Error en diccionario:', error);
-        areaHerramientas.innerHTML = searchBoxHTML + '<p>' + I18n.t('errorDict') + '</p>';
+        areaHerramientas.innerHTML = searchBoxHTML + '<p>' + 'Error connecting to dictionary.' + '</p>';
         var searchInput4 = document.getElementById('dict-search-input');
         if (searchInput4) {
           searchInput4.addEventListener('keydown', function(e) {
@@ -556,33 +556,11 @@
       const areaHerramientas = document.getElementById('active-tool-content');
 
       if (requestId !== _toolRequestId) return;
-      areaHerramientas.innerHTML = '<p class="loading-mini">' + I18n.t('loading') + '...</p>';
+      areaHerramientas.innerHTML = '<p class="loading-mini">' + 'Loading exercise...' + '...</p>';
       
       try {
         let langPair = 'en|es';
-        let translateLabel = I18n.t('translateFrom');
-        
-        switch(AppState.currentLanguage) {
-          case 'es':
-            langPair = 'en|es';
-            translateLabel = I18n.t('translateFrom');
-            break;
-          case 'en':
-            langPair = 'es|en';
-            translateLabel = I18n.t('translateTo');
-            break;
-          case 'fr':
-            langPair = 'en|fr';
-            translateLabel = I18n.t('translateFR');
-            break;
-          case 'pt':
-            langPair = 'en|pt';
-            translateLabel = I18n.t('translatePT');
-            break;
-          default:
-            langPair = 'en|es';
-            translateLabel = I18n.t('translateFrom');
-        }
+        let translateLabel = 'ENG → SPA';
         
         const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(texto)}&langpair=${langPair}`);
         const data = await res.json();
@@ -600,7 +578,7 @@
       } catch (e) {
         if (requestId !== _toolRequestId) return;
         console.error('Error en traducción:', e);
-        areaHerramientas.innerHTML = '<p>' + I18n.t('errorTranslate') + '</p>';
+        areaHerramientas.innerHTML = '<p>' + 'Translation error. Please try again.' + '</p>';
       }
     },
     
@@ -614,7 +592,7 @@
       var extracts = exercise && exercise.content ? exercise.content.extracts || [] : [];
       
       if (extracts.length === 0) {
-        container.innerHTML = '<p class="placeholder-text">' + I18n.t('activateTool') + '</p>';
+        container.innerHTML = '<p class="placeholder-text">' + 'Activate a tool to see details here.' + '</p>';
         return;
       }
       
@@ -637,7 +615,7 @@
     showTips: async function(section) {
       const requestId = ++_toolRequestId;
       const container = document.getElementById('active-tool-content');
-      container.innerHTML = '<p class="loading-mini"><i class="fas fa-spinner fa-spin"></i> ' + I18n.t('loading') + '...</p>';
+      container.innerHTML = '<p class="loading-mini"><i class="fas fa-spinner fa-spin"></i> ' + 'Loading exercise...' + '...</p>';
       
       try {
         const tipFile = {

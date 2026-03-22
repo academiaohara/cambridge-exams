@@ -142,7 +142,7 @@
       } else if (type === 'multiple-matching') {
         inner = this._buildPart8(question, qNum, isChecked, userAnswer);
       }
-      var titleText = showHeaderQuestion ? qNum : I18n.t('question') + ' ' + qNum;
+      var titleText = showHeaderQuestion ? qNum : 'Question' + ' ' + qNum;
       var headerQuestion = showHeaderQuestion
         ? '<span class="qnav-question-text qnav-question-text-header">' + this._escapeHtml(question.question) + '</span>'
         : '';

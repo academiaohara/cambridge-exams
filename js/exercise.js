@@ -121,7 +121,7 @@
       });
       
       if (hasSaved) {
-        Dashboard.showConfirmDialog(I18n.t('confirmStartExam'), function() {
+        Dashboard.showConfirmDialog('Starting a new exam will delete your previous attempt. Continue?', function() {
           // Clear all previous progress
           ['reading', 'listening', 'writing', 'speaking'].forEach(function(section) {
             var sectionData = exam.sections[section];
@@ -183,7 +183,7 @@
         }
         
         if (hasSaved) {
-          Dashboard.showConfirmDialog(I18n.t('confirmStartExam'), function() {
+          Dashboard.showConfirmDialog('Starting a new exam will delete your previous attempt. Continue?', function() {
             // Clear previous attempt for this section
             if (exam && exam.sections[section]) {
               for (var i = 1; i <= exam.sections[section].total; i++) {
@@ -277,22 +277,22 @@
       const loadingIsExamMode = AppState.currentMode === 'exam';
       let loadingFooterHTML = '';
       if (!loadingIsExamMode) {
-        loadingFooterHTML += `<button class="btn-check" disabled><span data-i18n="checkAnswers">${I18n.t('checkAnswers')}</span></button>`;
-        loadingFooterHTML += `<button class="btn-reset" disabled><i class="fas fa-redo-alt"></i> <span data-i18n="reset">${I18n.t('reset')}</span></button>`;
+        loadingFooterHTML += `<button class="btn-check" disabled><span data-i18n="checkAnswers">Check answers</span></button>`;
+        loadingFooterHTML += `<button class="btn-reset" disabled><i class="fas fa-redo-alt"></i> <span data-i18n="reset">Reset</span></button>`;
       }
       if (part > 1 && (!loadingIsExamMode || AppState.examFullMode)) {
-        loadingFooterHTML += `<button class="btn-prev" disabled><i class="fas fa-chevron-left"></i> <span data-i18n="previous">${I18n.t('previous')}</span></button>`;
+        loadingFooterHTML += `<button class="btn-prev" disabled><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
       }
       if (part < loadingTotalParts) {
-        loadingFooterHTML += `<button class="btn-next" disabled><span data-i18n="next">${I18n.t('next')}</span> <i class="fas fa-chevron-right"></i></button>`;
+        loadingFooterHTML += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
       } else if (AppState.examFullMode) {
-        loadingFooterHTML += `<button class="btn-next btn-finish-section" disabled><span data-i18n="finishSection">${I18n.t('finishSection')}</span> <i class="fas fa-check"></i></button>`;
+        loadingFooterHTML += `<button class="btn-next btn-finish-section" disabled><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
       }
       const safeSection = Utils.getSectionTitle ? Utils.getSectionTitle(section) : section;
       const safePart = parseInt(part, 10);
       content.innerHTML = `
         <div class="exercise-container">
-          <div class="loading-exercise"><i class="fas fa-spinner fa-spin"></i><h3>${I18n.t('loading')}</h3><p>${safeSection} - ${I18n.t('part')} ${safePart}</p></div>
+          <div class="loading-exercise"><i class="fas fa-spinner fa-spin"></i><h3>Loading exercise...</h3><p>${safeSection} - Part ${safePart}</p></div>
           <div class="exercise-footer">${loadingFooterHTML}</div>
         </div>`;
       
@@ -547,7 +547,7 @@
       content.innerHTML = `
         <div class="section-complete-screen">
           <div class="section-complete-icon"><i class="fas fa-spinner fa-spin"></i></div>
-          <h2>${I18n.t('calculatingResults')}</h2>
+          <h2>Calculating results...</h2>
         </div>
       `;
       
@@ -769,7 +769,8 @@
       var sectionKey = examId + '_' + section;
       var sectionScore = ExerciseRenderer.getSectionRunningTotal(sectionKey);
       var sectionTotal = ExerciseRenderer.getSectionTotalQuestions(section);
-      var sectionName = I18n.t(section) || section;
+      var sectionLabels = { reading: 'Reading', listening: 'Listening', writing: 'Writing', speaking: 'Speaking' };
+      var sectionName = sectionLabels[section] || section;
       
       var currentIdx = AppState.examSectionsOrder.indexOf(section);
       var nextSection = null;
@@ -777,7 +778,7 @@
         nextSection = AppState.examSectionsOrder[currentIdx + 1];
       }
       
-      var nextSectionName = nextSection ? (I18n.t(nextSection) || nextSection) : '';
+      var nextSectionName = nextSection ? (sectionLabels[nextSection] || nextSection) : '';
       
       var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
       var totalParts = (exam && exam.sections[section] && exam.sections[section].total) || 1;
@@ -794,10 +795,10 @@
         
         partsHTML += `
           <div class="section-complete-part-row">
-            <span class="section-complete-part-name">${I18n.t('part')} ${i}</span>
+            <span class="section-complete-part-name">Part ${i}</span>
             <span class="section-complete-part-score">${partScore}/${partTotal}</span>
             <button class="btn-review-part" onclick="Exercise.openPart('${examId}', '${section}', ${i})">
-              <i class="fas fa-eye"></i> ${I18n.t('reviewAnswers')}
+              <i class="fas fa-eye"></i> Review Answers
             </button>
           </div>
         `;
@@ -808,9 +809,9 @@
       var html = `
         <div class="section-complete-screen">
           <div class="section-complete-icon"><i class="fas fa-check-circle"></i></div>
-          <h2>${I18n.t('sectionComplete')} ${sectionName}!</h2>
+          <h2>You have completed ${sectionName}!</h2>
           <div class="section-complete-score">
-            <span class="section-complete-label">${I18n.t('sectionScore')}:</span>
+            <span class="section-complete-label">Your score for this section:</span>
             <span class="section-complete-value">${sectionScore} / ${sectionTotal}</span>
           </div>
           <div class="section-complete-parts-breakdown">
@@ -821,17 +822,17 @@
       
       if (nextSection) {
         html += `<button class="btn-next-section" onclick="Exercise.continueToNextSection('${examId}', '${nextSection}')">
-          ${I18n.t('continueToNext')} ${nextSectionName} <i class="fas fa-chevron-right"></i>
+          Continue to ${nextSectionName} <i class="fas fa-chevron-right"></i>
         </button>`;
       } else {
         html += `<button class="btn-final-results" onclick="Exercise.showFinalResults('${examId}')">
-          <i class="fas fa-trophy"></i> ${I18n.t('viewFinalResults')}
+          <i class="fas fa-trophy"></i> View Final Results
         </button>`;
       }
       
       html += `
             <button class="btn-back-dashboard" onclick="Exercise.closeExercise()">
-              <i class="fas fa-home"></i> ${I18n.t('backToDashboard')}
+              <i class="fas fa-home"></i> Back
             </button>
           </div>
         </div>
@@ -858,7 +859,8 @@
         var sectionKey = examId + '_' + section;
         var score = ExerciseRenderer.getSectionRunningTotal(sectionKey);
         var total = ExerciseRenderer.getSectionTotalQuestions(section);
-        var sectionName = I18n.t(section) || section;
+        var sectionLabels2 = { reading: 'Reading', listening: 'Listening', writing: 'Writing', speaking: 'Speaking' };
+        var sectionName = sectionLabels2[section] || section;
         totalScore += score;
         totalQuestions += total;
         sectionsHTML += `
@@ -872,18 +874,18 @@
       var html = `
         <div class="section-complete-screen">
           <div class="section-complete-icon final"><i class="fas fa-trophy"></i></div>
-          <h2>${I18n.t('examFinished')}</h2>
-          <p>${I18n.t('examFinishedDesc')}</p>
+          <h2>Exam Finished!</h2>
+          <p>You have completed all sections.</p>
           <div class="final-results-breakdown">
             ${sectionsHTML}
           </div>
           <div class="section-complete-score final-total">
-            <span class="section-complete-label">${I18n.t('finalScore')}:</span>
+            <span class="section-complete-label">Final Score:</span>
             <span class="section-complete-value">${totalScore} / ${totalQuestions}</span>
           </div>
           <div class="section-complete-actions">
             <button class="btn-back-dashboard" onclick="Exercise.closeExercise()">
-              <i class="fas fa-home"></i> ${I18n.t('backToDashboard')}
+              <i class="fas fa-home"></i> Back
             </button>
           </div>
         </div>

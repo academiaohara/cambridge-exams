@@ -256,13 +256,11 @@
       if (AppState.isAuthenticated) { return; }
       const navGroup = document.getElementById('headerNavGroup');
       if (!navGroup) { return; }
-
-      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
-      var btn = document.createElement('button');
+var btn = document.createElement('button');
       btn.id = 'header-signin-btn';
       btn.className = 'header-signin-btn';
       btn.onclick = function () { Auth._showAuthModal(); };
-      btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span>' + t('signIn', 'Sign in') + '</span>';
+      btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span>' + 'Sign in' + '</span>';
       navGroup.appendChild(btn);
     },
 

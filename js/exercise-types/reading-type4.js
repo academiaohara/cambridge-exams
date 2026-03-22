@@ -49,7 +49,7 @@
       const afterGap = question.afterGap || '';
       const routes = question.routes || [];
       const answer = routes[0] ? (((routes[0].p1 || '') + ' ' + (routes[0].p2 || '')).trim()) : '';
-      const exampleLabel = window.I18n ? I18n.t('example') : 'Example';
+      const exampleLabel = 'Example';
       return `
         <div class="reading-type4-question reading-type4-example">
           <div class="reading-type4-example-label">${exampleLabel} (0)</div>
@@ -81,7 +81,7 @@
     },
 
     _renderShowAllBtn: function() {
-      const showLabel = window.I18n ? I18n.t('showAllAnswers') : 'See all the right possible answers';
+      const showLabel = 'See all the right possible answers';
       return `<div class="reading-type4-show-all-row">` +
         `<button class="reading-type4-show-all-btn" onclick="ReadingType4.toggleAllAnswers(this)" data-showing="false">` +
         `<i class="fas fa-eye"></i> <span>${showLabel}</span>` +
@@ -94,11 +94,11 @@
       if (!isShowing) {
         panels.forEach(function(p) { p.style.display = 'block'; });
         btn.dataset.showing = 'true';
-        btn.innerHTML = '<i class="fas fa-eye-slash"></i> <span>' + (window.I18n ? I18n.t('hideAllAnswers') : 'Hide all the right possible answers') + '</span>';
+        btn.innerHTML = '<i class="fas fa-eye-slash"></i> <span>' + 'Hide all the right possible answers' + '</span>';
       } else {
         panels.forEach(function(p) { p.style.display = 'none'; });
         btn.dataset.showing = 'false';
-        btn.innerHTML = '<i class="fas fa-eye"></i> <span>' + (window.I18n ? I18n.t('showAllAnswers') : 'See all the right possible answers') + '</span>';
+        btn.innerHTML = '<i class="fas fa-eye"></i> <span>' + ('See all the right possible answers') + '</span>';
       }
     },
     

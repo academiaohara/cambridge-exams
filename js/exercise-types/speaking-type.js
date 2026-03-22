@@ -172,22 +172,19 @@
   }
 
   var ROLE_COLORS = { examiner: '#6366f1', candidate: '#22c55e', partner: '#f59e0b' };
-
-  function t(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : (fb || key); }
-
-  function roleName(role) {
-    if (role === 'examiner') return t('examiner', 'Examiner');
+function roleName(role) {
+    if (role === 'examiner') return 'Examiner';
     if (role === 'candidate') {
       if (window.SpeakingType && window.SpeakingType._longTurnMode && window.SpeakingType._userCandidateLabel) {
-        return t('you', 'You') + ' (Cand. ' + window.SpeakingType._userCandidateLabel + ')';
+        return 'You' + ' (Cand. ' + window.SpeakingType._userCandidateLabel + ')';
       }
-      return t('you', 'You');
+      return 'You';
     }
     if (role === 'partner') {
       if (window.SpeakingType && window.SpeakingType._longTurnMode && window.SpeakingType._aiCandidateLabel) {
         return 'Candidate ' + window.SpeakingType._aiCandidateLabel + ' (AI)';
       }
-      return t('partnerName', 'Partner');
+      return 'Partner';
     }
     return role;
   }
@@ -346,13 +343,13 @@
     _buildModeToggle: function() {
       var base =
         '<div class="speaking-mode-toggle">' +
-        '<button class="speaking-toggle-btn active" data-mode="videocall"><i class="fas fa-video"></i> ' + t('videoCallMode', 'Video Call') + '</button>' +
-        '<button class="speaking-toggle-btn" data-mode="chat"><i class="fas fa-comments"></i> ' + t('chatMode', 'Chat') + '</button>';
+        '<button class="speaking-toggle-btn active" data-mode="videocall"><i class="fas fa-video"></i> ' + 'Video Call' + '</button>' +
+        '<button class="speaking-toggle-btn" data-mode="chat"><i class="fas fa-comments"></i> ' + 'Chat' + '</button>';
       if (this._longTurnMode) {
-        base += '<button class="speaking-toggle-btn" data-mode="images"><i class="fas fa-images"></i> ' + t('imagesMode', 'Images') + '</button>';
+        base += '<button class="speaking-toggle-btn" data-mode="images"><i class="fas fa-images"></i> ' + 'Images' + '</button>';
       }
       if (this._collaborativeMode) {
-        base += '<button class="speaking-toggle-btn" data-mode="options"><i class="fas fa-th-list"></i> ' + t('optionsMode', 'Options') + '</button>';
+        base += '<button class="speaking-toggle-btn" data-mode="options"><i class="fas fa-th-list"></i> ' + 'Options' + '</button>';
       }
       return base + '</div>';
     },
@@ -381,7 +378,7 @@
 
     _buildVideoCallView: function() {
       var self = this;
-      var userName = t('you', 'You');
+      var userName = 'You';
       var profile = (typeof UserProfile !== 'undefined') ? UserProfile._profile : null;
       if (profile && profile.full_name) {
         userName = profile.full_name.split(' ')[0];
@@ -392,12 +389,12 @@
         : userName;
       var partnerDisplayName = this._longTurnMode && this._aiCandidateLabel
         ? 'Candidate ' + this._aiCandidateLabel + ' (AI)'
-        : t('candidate2', 'Candidate 2');
+        : 'Candidate 2';
 
       // Determine who is featured (big) vs thumbnails (small)
       var featuredRole = this._activeSpeaker || 'examiner';
       var featuredLabel = featuredRole === 'candidate' ? candidateDisplayName
-        : featuredRole === 'examiner' ? t('examiner', 'Examiner')
+        : featuredRole === 'examiner' ? 'Examiner'
         : partnerDisplayName;
 
       // Build featured (big) area with animal avatar
@@ -416,7 +413,7 @@
         if (role === featuredRole) return;
         var cardColor = role === 'candidate' ? 'gold' : (role === 'examiner' ? 'examiner' : 'blue');
         var label = role === 'candidate' ? candidateDisplayName
-          : role === 'examiner' ? t('examiner', 'Examiner')
+          : role === 'examiner' ? 'Examiner'
           : partnerDisplayName;
         thumbnailCards +=
           '<div class="speaking-stage-card speaking-stage-card--' + cardColor + '" data-role="' + role + '">' +
@@ -478,7 +475,7 @@
       return '<div class="speaking-chat">' +
         timerHTML +
         '<div class="speaking-chat-history" id="speaking-chat-history">' +
-          (messagesHTML || '<div class="speaking-type-start-msg"><i class="fas fa-comments"></i> ' + t('conversationStarted', 'The conversation has started') + '</div>') +
+          (messagesHTML || '<div class="speaking-type-start-msg"><i class="fas fa-comments"></i> ' + 'The conversation has started' + '</div>') +
         '</div>' +
         this._buildControls() +
       '</div>';
@@ -612,30 +609,30 @@
     _buildControls: function() {
       if (!this._conversationStarted) {
         return '<div class="speaking-controls">' +
-          '<button class="speaking-start-btn" id="speaking-start-btn"><i class="fas fa-play"></i> ' + t('startConversation', 'Start conversation') + '</button>' +
+          '<button class="speaking-start-btn" id="speaking-start-btn"><i class="fas fa-play"></i> ' + 'Start conversation' + '</button>' +
         '</div>';
       }
       if (this._conversationEnded) {
-        return '<div class="speaking-controls"><div class="speaking-ended-msg"><i class="fas fa-check-circle"></i> ' + t('conversationEnded', 'The conversation has ended') + '</div></div>';
+        return '<div class="speaking-controls"><div class="speaking-ended-msg"><i class="fas fa-check-circle"></i> ' + 'The conversation has ended' + '</div></div>';
       }
       // (no AI fetching in interview mode — questions are selected locally)
       var current = this._script[this._scriptIndex];
       var isMine = current && current.role === 'candidate';
       return '<div class="speaking-controls">' +
         '<div class="speaking-input-row' + (isMine ? '' : ' speaking-input-disabled') + '">' +
-          '<input type="text" class="speaking-text-input" id="speaking-text-input" placeholder="' + t('typeResponse', 'Type your response...') + '"' + (isMine ? '' : ' disabled') + '>' +
-          '<button class="speaking-mic-btn" id="speaking-mic-btn"' + (isMine ? '' : ' disabled') + ' title="' + t('tapToSpeak', 'Tap to speak') + '">' +
+          '<input type="text" class="speaking-text-input" id="speaking-text-input" placeholder="' + 'Type your response...' + '"' + (isMine ? '' : ' disabled') + '>' +
+          '<button class="speaking-mic-btn" id="speaking-mic-btn"' + (isMine ? '' : ' disabled') + ' title="' + 'Tap to speak' + '">' +
             '<i class="fas fa-microphone"></i>' +
           '</button>' +
           '<button class="speaking-send-btn" id="speaking-send-btn"' + (isMine ? '' : ' disabled') + '>' +
             '<i class="fas fa-paper-plane"></i>' +
           '</button>' +
-          '<button class="speaking-end-btn" id="speaking-end-btn" title="' + t('endConversation', 'End conversation') + '">' +
+          '<button class="speaking-end-btn" id="speaking-end-btn" title="' + 'End conversation' + '">' +
             '<i class="fas fa-phone-slash"></i>' +
           '</button>' +
         '</div>' +
-        (isMine ? '<div class="speaking-your-turn" id="speaking-turn-indicator"><i class="fas fa-microphone"></i> ' + t('pressMicToSpeak', 'Press the microphone button to speak') + '</div>' : '') +
-        (!isMine && !this._conversationEnded ? '<div class="speaking-skip-row"><button class="speaking-skip-btn" id="speaking-skip-btn" style="display:none">' + t('skipTurn', 'Skip turn') + '</button></div>' : '') +
+        (isMine ? '<div class="speaking-your-turn" id="speaking-turn-indicator"><i class="fas fa-microphone"></i> ' + 'Press the microphone button to speak' + '</div>' : '') +
+        (!isMine && !this._conversationEnded ? '<div class="speaking-skip-row"><button class="speaking-skip-btn" id="speaking-skip-btn" style="display:none">' + 'Skip turn' + '</button></div>' : '') +
       '</div>';
     },
 
@@ -1007,7 +1004,7 @@
             div.id = 'speaking-ai-thinking';
             div.className = 'speaking-ai-thinking';
             div.innerHTML = '<span class="material-symbols-outlined speaking-eval-spinner">progress_activity</span> ' +
-              t('aiThinking', 'Candidate is thinking...');
+              'Candidate is thinking...';
             controls.appendChild(div);
           }
         }
@@ -1117,7 +1114,7 @@
       var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SpeechRecognition) {
         var input = document.getElementById('speaking-text-input');
-        if (input) input.placeholder = t('speechNotSupported', 'Speech not supported');
+        if (input) input.placeholder = 'Speech not supported';
         return;
       }
 
@@ -1187,13 +1184,13 @@
         btn.classList.add('speaking-mic-recording');
         btn.innerHTML = '<i class="fas fa-stop"></i>';
         if (indicator) {
-          indicator.innerHTML = '<span class="speaking-pulse"></span> ' + t('speakingNow', 'Speaking...');
+          indicator.innerHTML = '<span class="speaking-pulse"></span> ' + 'Speaking...';
         }
       } else {
         btn.classList.remove('speaking-mic-recording');
         btn.innerHTML = '<i class="fas fa-microphone"></i>';
         if (indicator) {
-          indicator.innerHTML = '<i class="fas fa-microphone"></i> ' + t('pressMicToSpeak', 'Press the microphone button to speak');
+          indicator.innerHTML = '<i class="fas fa-microphone"></i> ' + 'Press the microphone button to speak';
         }
       }
     },
@@ -1330,7 +1327,7 @@
       scoreArea.innerHTML =
         '<div class="speaking-eval-loading">' +
           '<span class="material-symbols-outlined speaking-eval-spinner">progress_activity</span> ' +
-          t('evaluatingSpeaking', 'Evaluating your speaking performance...') +
+          'Evaluating your speaking performance...' +
         '</div>';
     },
 
@@ -1368,13 +1365,13 @@
     _buildFeedbackTabs: function(sections) {
       var self = this;
       var tabs = [
-        { id: 'detailed', icon: 'chat', label: t('detailedFeedback', 'Detailed Feedback'), content: sections.detailed },
-        { id: 'strengths', icon: 'check_circle', label: t('strengths', 'Strengths'), content: sections.strengths },
-        { id: 'improvements', icon: 'warning', label: t('areasForImprovement', 'Areas for Improvement'), content: sections.improvements },
-        { id: 'fillers', icon: 'text_fields', label: t('fillersVagueLanguage', 'Fillers & Vague Language'), content: sections.fillers },
-        { id: 'upgradeList', icon: 'trending_up', label: t('upgradeList', 'Upgrade List'), content: sections.upgradeList },
-        { id: 'speculationCheck', icon: 'psychology', label: t('speculationCheck', 'Speculation Check'), content: sections.speculationCheck },
-        { id: 'interactiveCheck', icon: 'group', label: t('interactiveCheck', 'Interactive Check'), content: sections.interactiveCheck }
+        { id: 'detailed', icon: 'chat', label: 'Detailed Feedback', content: sections.detailed },
+        { id: 'strengths', icon: 'check_circle', label: 'Strengths', content: sections.strengths },
+        { id: 'improvements', icon: 'warning', label: 'Areas for Improvement', content: sections.improvements },
+        { id: 'fillers', icon: 'text_fields', label: 'Fillers & Vague Language', content: sections.fillers },
+        { id: 'upgradeList', icon: 'trending_up', label: 'Upgrade List', content: sections.upgradeList },
+        { id: 'speculationCheck', icon: 'psychology', label: 'Speculation Check', content: sections.speculationCheck },
+        { id: 'interactiveCheck', icon: 'group', label: 'Interactive Check', content: sections.interactiveCheck }
       ].filter(function(tab) { return tab.content; });
 
       if (!tabs.length) return '';
@@ -1415,10 +1412,10 @@
 
     _buildPartNav: function(activePart) {
       var partLabels = [
-        t('speakingPartInterview', 'Interview'),
-        t('speakingPartLongTurn', 'Long Turn'),
-        t('speakingPartCollaborative', 'Collaborative'),
-        t('speakingPartDiscussion', 'Discussion')
+        'Interview',
+        'Long Turn',
+        'Collaborative',
+        'Discussion'
       ];
       var examId = AppState.currentExamId;
       var section = AppState.currentSection || 'speaking';
@@ -1435,7 +1432,7 @@
         html += '<button class="speaking-part-btn' + (isActive ? ' active' : '') + (available ? '' : ' speaking-part-btn--pending') + '"' +
           (available ? '' : ' disabled') +
           ' onclick="SpeakingType.switchPartEvaluation(' + i + ')">' +
-          '<span class="speaking-part-btn-num">' + t('part', 'Part') + ' ' + i + '</span>' +
+          '<span class="speaking-part-btn-num">' + 'Part' + ' ' + i + '</span>' +
           '<span class="speaking-part-btn-label">' + partLabels[i - 1] + '</span>' +
         '</button>';
       }
@@ -1462,7 +1459,7 @@
           '<div class="speaking-score-card">' +
             '<div class="speaking-score-header">' +
               '<span class="material-symbols-outlined">mic_off</span> ' +
-              t('noSpeakingData', 'No speaking data to evaluate') +
+              'No speaking data to evaluate' +
             '</div>' +
           '</div>';
         return;
@@ -1470,12 +1467,12 @@
 
       // Parse criteria from the evaluation
       var criteriaData = [
-        { key: 'grammaticalResource', label: t('grammaticalResource', 'Grammatical Resource'), max: 10, regex: /Grammatical\s*Resource[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
-        { key: 'lexicalResource', label: t('lexicalResource', 'Lexical Resource'), max: 10, regex: /Lexical\s*Resource[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
-        { key: 'discourseManagement', label: t('discourseManagement', 'Discourse Management'), max: 10, regex: /Discourse\s*Management[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
-        { key: 'pronunciation', label: t('pronunciation', 'Pronunciation'), max: 10, regex: /Pronunciation[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
-        { key: 'interactiveCommunication', label: t('interactiveCommunication', 'Interactive Communication'), max: 10, regex: /Interactive\s*Communication[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
-        { key: 'globalAchievement', label: t('globalAchievement', 'Global Achievement'), max: 25, regex: /Global\s*Achievement[:\s]*(\d+(?:\.\d+)?)\s*\/\s*25/i }
+        { key: 'grammaticalResource', label: 'Grammatical Resource', max: 10, regex: /Grammatical\s*Resource[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
+        { key: 'lexicalResource', label: 'Lexical Resource', max: 10, regex: /Lexical\s*Resource[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
+        { key: 'discourseManagement', label: 'Discourse Management', max: 10, regex: /Discourse\s*Management[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
+        { key: 'pronunciation', label: 'Pronunciation', max: 10, regex: /Pronunciation[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
+        { key: 'interactiveCommunication', label: 'Interactive Communication', max: 10, regex: /Interactive\s*Communication[:\s]*(\d+(?:\.\d+)?)\s*\/\s*10/i },
+        { key: 'globalAchievement', label: 'Global Achievement', max: 25, regex: /Global\s*Achievement[:\s]*(\d+(?:\.\d+)?)\s*\/\s*25/i }
       ];
 
       var total = 0;
@@ -1509,7 +1506,7 @@
         '<div class="speaking-score-card">' +
           '<div class="speaking-score-header">' +
             '<span class="material-symbols-outlined">bar_chart</span> ' +
-            t('speakingAssessment', 'Speaking Assessment') +
+            'Speaking Assessment' +
           '</div>' +
           '<div class="speaking-score-total speaking-total-' + gradeClass + '">' +
             '<span class="speaking-score-number">' + total + '</span>' +
@@ -1557,7 +1554,7 @@
         var indicator = el.querySelector('.speaking-vc-indicator');
         if (indicator) {
           if (role === active) {
-            indicator.innerHTML = '<span class="speaking-pulse"></span> ' + t('speakingNow', 'Speaking...');
+            indicator.innerHTML = '<span class="speaking-pulse"></span> ' + 'Speaking...';
             indicator.classList.add('speaking-vc-indicator--active');
           } else {
             indicator.innerHTML = '';
@@ -1571,12 +1568,12 @@
       if (status) {
         var current = this._script[this._scriptIndex];
         if (this._conversationEnded) {
-          status.innerHTML = '<i class="fas fa-check-circle"></i> ' + t('conversationEnded', 'Ended');
+          status.innerHTML = '<i class="fas fa-check-circle"></i> ' + 'Ended';
         } else if (current && current.role === 'candidate') {
-          status.innerHTML = t('waitingForYou', 'Waiting for your response');
+          status.innerHTML = 'Waiting for your response';
           status.className = 'speaking-vc-status speaking-vc-status--yours';
         } else if (active) {
-          status.innerHTML = '<i class="fas fa-volume-up"></i> ' + roleName(active) + ' — ' + t('speakingNow', 'Speaking...');
+          status.innerHTML = '<i class="fas fa-volume-up"></i> ' + roleName(active) + ' — ' + 'Speaking...';
           status.className = 'speaking-vc-status';
         }
       }

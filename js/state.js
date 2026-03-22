@@ -27,7 +27,6 @@
     selectedNoteColor: '#fef08a',
     currentLanguage: 'en',
     answersChecked: false,
-    translations: {},
     tipsData: {},
     sectionScores: {},
     currentPartScore: 0,

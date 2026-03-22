@@ -60,7 +60,7 @@
       html += '<span class="reading-type3-word-badge">' + question.word + '</span>';
       html += '</div>';
       html += '<div class="reading-type3-modal-actions">';
-      html += '<button class="opt-btn" onclick="ReadingType3.submitAnswer(' + qNum + ')">' + I18n.t('confirm') + '</button>';
+      html += '<button class="opt-btn" onclick="ReadingType3.submitAnswer(' + qNum + ')">' + 'Confirm' + '</button>';
       html += '</div>';
       
       body.innerHTML = html;

@@ -42,7 +42,7 @@
           animal_avatar: animalAvatar,
           preferred_level: AppState.currentLevel || 'C1',
           preferred_mode: AppState.currentMode || 'practice',
-          preferred_language: AppState.currentLanguage || 'es'
+          preferred_language: 'en'
         };
         const { data: created } = await client
           .from('profiles')
@@ -75,7 +75,6 @@
         try { localStorage.setItem('preferred_mode', profile.preferred_mode); } catch (e) {}
       }
       if (profile.preferred_language) {
-        AppState.currentLanguage = profile.preferred_language;
         try { localStorage.setItem('preferred_language', profile.preferred_language); } catch (e) {}
       }
     },
@@ -292,9 +291,7 @@
     _renderAvatarGridPage: function () {
       var container = document.getElementById('animal-avatar-grid-container');
       if (!container) return;
-
-      var t = function (key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
-      var perPage = 16;
+var perPage = 16;
       var page = this._avatarGridPage || 0;
       var all = this.ANIMAL_AVATARS;
       var totalPages = Math.ceil(all.length / perPage);
@@ -322,7 +319,7 @@
 
       container.innerHTML =
         '<p style="color:var(--text-medium);font-size:0.88rem;margin:0 0 14px">' +
-          t('chooseAnimal', 'Choose your profile photo') +
+          'Choose your profile photo' +
         '</p>' +
         '<div class="animal-avatar-grid">' + gridHtml + '</div>' +
         paginationHtml;
@@ -348,13 +345,11 @@
     renderProfileSection: function () {
       var content = document.getElementById('main-content');
       if (!content) return;
-
-      var t = function (key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
-      var user = Auth.getUser();
+var user = Auth.getUser();
       var profile = this._profile || {};
       var isGuest = AppState.isGuest;
 
-      var name = profile.full_name || (user && (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name))) || (user && user.email) || t('guest', 'Guest');
+      var name = profile.full_name || (user && (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name))) || (user && user.email) || 'Guest';
       var email = profile.email || (user && user.email) || '';
       var avatarUrl = profile.avatar_url || (user && user.user_metadata && user.user_metadata.avatar_url) || '';
       var initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
@@ -362,7 +357,7 @@
       var isPremium = AppState.isPremium;
       var subBadge = isPremium
         ? '<div class="profile-section-sub-badge premium"><i class="fas fa-crown"></i> Premium</div>'
-        : '<div class="profile-section-sub-badge free"><i class="fas fa-user"></i> ' + t('freePlan', 'Free Plan') + '</div>';
+        : '<div class="profile-section-sub-badge free"><i class="fas fa-user"></i> ' + 'Free Plan' + '</div>';
 
       // Always use Google profile photo for user display
       var avatarHtml = avatarUrl
@@ -379,8 +374,8 @@
 
       var html = '<div class="profile-section">' +
         '<div class="profile-section-header">' +
-          '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + t('back', 'Back') + '</button>' +
-          '<h2>' + t('myProfile', 'My Profile') + '</h2>' +
+          '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + 'Back' + '</button>' +
+          '<h2>' + 'My Profile' + '</h2>' +
         '</div>' +
 
         '<div class="profile-section-card">' +
@@ -394,33 +389,33 @@
             '</div>' +
           '</div>' +
           (isGuest
-            ? '<button class="premium-plan-btn primary" style="max-width:220px" onclick="Auth._showAuthModal()"><i class="fas fa-sign-in-alt"></i> ' + t('signIn', 'Sign in') + '</button>'
+            ? '<button class="premium-plan-btn primary" style="max-width:220px" onclick="Auth._showAuthModal()"><i class="fas fa-sign-in-alt"></i> ' + 'Sign in' + '</button>'
             : '') +
         '</div>' +
 
         '<div class="profile-section-card">' +
-          '<h3><span class="material-symbols-outlined">settings</span> ' + t('preferences', 'Preferences') + '</h3>' +
+          '<h3><span class="material-symbols-outlined">settings</span> ' + 'Preferences' + '</h3>' +
           '<div class="profile-prefs">' +
-            '<div class="pref-row"><label>' + t('level', 'Level') + '</label>' +
+            '<div class="pref-row"><label>' + 'Level' + '</label>' +
               '<select id="pref-level" onchange="UserProfile._onPrefChange()">' + levelOptions(profile.preferred_level || AppState.currentLevel) + '</select></div>' +
           '</div>' +
         '</div>' +
 
         '<div class="profile-section-card">' +
-          '<h3><span class="material-symbols-outlined">workspace_premium</span> ' + t('subscription', 'Subscription') + '</h3>' +
+          '<h3><span class="material-symbols-outlined">workspace_premium</span> ' + 'Subscription' + '</h3>' +
           '<p style="color:var(--text-medium);font-size:0.88rem;margin:0 0 14px">' +
             (isPremium
-              ? t('premiumActive', 'You have an active Premium subscription with full access to all features.')
-              : t('freeDesc', 'You are on the free plan. Upgrade to unlock all exams and AI features.')) +
+              ? 'You have an active Premium subscription with full access to all features.'
+              : 'You are on the free plan. Upgrade to unlock all exams and AI features.') +
           '</p>' +
           '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '" onclick="' + (isPremium ? '' : 'UserProfile.renderPremiumSection()') + '">' +
-            (isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + t('currentPlan', 'Current Plan') + ': Premium' : '<i class="fas fa-crown"></i> ' + t('viewPlans', 'View Plans')) +
+            (isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + 'Current Plan' + ': Premium' : '<i class="fas fa-crown"></i> ' + 'View Plans') +
           '</button>' +
         '</div>' +
 
         (!isGuest
           ? '<div class="profile-section-card" style="text-align:center;">' +
-              '<button class="profile-signout-btn" onclick="Auth.signOut()"><i class="fas fa-sign-out-alt"></i> ' + t('signOut', 'Sign out') + '</button>' +
+              '<button class="profile-signout-btn" onclick="Auth.signOut()"><i class="fas fa-sign-out-alt"></i> ' + 'Sign out' + '</button>' +
             '</div>'
           : '') +
 
@@ -435,51 +430,49 @@
     renderPremiumSection: function () {
       var content = document.getElementById('main-content');
       if (!content) return;
-
-      var t = function (key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
-      var isPremium = AppState.isPremium;
+var isPremium = AppState.isPremium;
 
       var html = '<div class="premium-plans-section">' +
         '<div class="profile-section-header">' +
-          '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + t('back', 'Back') + '</button>' +
+          '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + 'Back' + '</button>' +
         '</div>' +
 
         '<div class="premium-plans-header">' +
-          '<h2><span class="material-symbols-outlined">workspace_premium</span> ' + t('choosePlan', 'Choose your Plan') + '</h2>' +
-          '<p>' + t('premiumSubtitle', 'Unlock the full Cambridge Exams experience') + '</p>' +
+          '<h2><span class="material-symbols-outlined">workspace_premium</span> ' + 'Choose your Plan' + '</h2>' +
+          '<p>' + 'Unlock the full Cambridge Exams experience' + '</p>' +
         '</div>' +
 
         '<div class="premium-plans-grid">' +
 
           '<div class="premium-plan-card' + (!isPremium ? ' current' : '') + '">' +
-            (!isPremium ? '<div class="premium-plan-badge">' + t('currentPlan', 'Current Plan') + '</div>' : '') +
+            (!isPremium ? '<div class="premium-plan-badge">' + 'Current Plan' + '</div>' : '') +
             '<div class="premium-plan-icon"><span class="material-symbols-outlined">auto_stories</span></div>' +
-            '<div class="premium-plan-name">' + t('freePlan', 'Free') + '</div>' +
-            '<div class="premium-plan-price">€0 <span>/ ' + t('month', 'month') + '</span></div>' +
+            '<div class="premium-plan-name">' + 'Free' + '</div>' +
+            '<div class="premium-plan-price">€0 <span>/ ' + 'month' + '</span></div>' +
             '<ul class="premium-plan-features">' +
-              '<li><i class="fas fa-check"></i> ' + t('freeFeature1', 'Access to first exam') + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + t('freeFeature2', 'Reading & Listening exercises') + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + t('freeFeature3', 'Score calculator') + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + t('freeFeature4', 'Micro-learning mode') + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + 'Access to first exam' + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + 'Reading & Listening exercises' + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + 'Score calculator' + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + 'Micro-learning mode' + '</li>' +
             '</ul>' +
-            '<button class="premium-plan-btn ' + (!isPremium ? 'current-plan' : 'outline') + '">' + (!isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + t('currentPlan', 'Current Plan') : t('freePlan', 'Free')) + '</button>' +
+            '<button class="premium-plan-btn ' + (!isPremium ? 'current-plan' : 'outline') + '">' + (!isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + 'Current Plan' : 'Free') + '</button>' +
           '</div>' +
 
           '<div class="premium-plan-card' + (isPremium ? ' current' : ' recommended') + '">' +
             (isPremium
-              ? '<div class="premium-plan-badge">' + t('currentPlan', 'Current Plan') + '</div>'
-              : '<div class="premium-plan-badge">' + t('recommended', 'Recommended') + '</div>') +
+              ? '<div class="premium-plan-badge">' + 'Current Plan' + '</div>'
+              : '<div class="premium-plan-badge">' + 'Recommended' + '</div>') +
             '<div class="premium-plan-icon"><span class="material-symbols-outlined">workspace_premium</span></div>' +
             '<div class="premium-plan-name">Premium</div>' +
-            '<div class="premium-plan-price">€9.99 <span>/ ' + t('month', 'month') + '</span></div>' +
+            '<div class="premium-plan-price">€9.99 <span>/ ' + 'month' + '</span></div>' +
             '<ul class="premium-plan-features">' +
-              '<li><i class="fas fa-check"></i> ' + t('premFeature1', 'All exams unlocked') + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + t('premFeature2', 'AI writing evaluation') + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + t('premFeature3', 'Speaking exercises') + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + t('premFeature4', 'Progress sync across devices') + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + t('premFeature5', 'Detailed grade analytics') + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + 'All exams unlocked' + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + 'AI writing evaluation' + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + 'Speaking exercises' + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + 'Progress sync across devices' + '</li>' +
+              '<li><i class="fas fa-check"></i> ' + 'Detailed grade analytics' + '</li>' +
             '</ul>' +
-            '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '">' + (isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + t('currentPlan', 'Current Plan') : t('getPremium', 'Get Premium')) + '</button>' +
+            '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '">' + (isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + 'Current Plan' : 'Get Premium') + '</button>' +
           '</div>' +
 
         '</div>' +
