@@ -5,7 +5,7 @@
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#F4F7FF">
-    <title>ExamPeak</title>
+    <title>EngagEd</title>
     
     <!-- Supabase JS Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -280,7 +280,7 @@
         <header class="main-header">
             <div class="header-container">
                 <a class="logo" href="/" onclick="event.preventDefault(); loadDashboard()">
-                    <img src="Assets/images/logo.svg" class="logo-icon" alt="ExamPeak logo">
+                    <img src="Assets/images/logo.svg" class="logo-icon" alt="EngagEd logo">
                 </a>
                 
                 <nav class="header-quick-nav" id="headerQuickNav">
@@ -315,16 +315,17 @@
                 <!-- Language selector removed: English only -->
                 </div>
             </div>
+            <div class="header-stripe-bar"></div>
         </header>
 
         <!-- Auth Modal Overlay -->
         <div id="auth-modal-overlay" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="auth-title">
           <div class="auth-modal-card">
             <div class="auth-brand-icon">
-              <img src="Assets/images/logo.svg" alt="ExamPeak logo">
+              <img src="Assets/images/logo.svg" alt="EngagEd logo">
             </div>
             <h2 id="auth-title">Sign in to continue</h2>
-            <p>Access your ExamPeak practice dashboard</p>
+            <p>Access your EngagEd practice dashboard</p>
             <button id="auth-google-btn" class="auth-google-btn" onclick="Auth.signInWithGoogle()" type="button">
               <svg class="auth-google-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
                 <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
@@ -395,26 +396,36 @@
             <div class="footer-container">
                 <div class="footer-grid">
                     <div class="footer-col">
-                        <h4><i class="fas fa-info-circle"></i> ExamPeak</h4>
+                        <h4><i class="fas fa-info-circle"></i> EngagEd</h4>
                         <ul>
-                            <li><a href="#"><i class="fas fa-question-circle"></i> Acerca de</a></li>
-                            <li><a href="#"><i class="fas fa-envelope"></i> Contacto</a></li>
-                            <li><a href="#"><i class="fas fa-shield-alt"></i> Privacidad</a></li>
+                            <li><a href="#"><i class="fas fa-question-circle"></i> About</a></li>
+                            <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                            <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy</a></li>
+                            <li><a href="#"><i class="fas fa-question"></i> FAQ</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4><i class="fas fa-cog"></i> Recursos</h4>
+                        <h4><i class="fas fa-book-open"></i> Dictionaries</h4>
+                        <ul>
+                            <li><a href="#" onclick="FastExercises._showWfDictionary(); return false;"><i class="fas fa-spell-check"></i> <span>Word Formation Dictionary</span></a></li>
+                            <li><a href="#" onclick="Tools.switchTool('dictionary'); return false;"><i class="fas fa-book"></i> <span>General Dictionary</span></a></li>
+                            <li><a href="#"><i class="fas fa-exchange-alt"></i> <span>Phrasal Verbs Dictionary</span></a></li>
+                            <li><a href="#"><i class="fas fa-comment-dots"></i> <span>Idioms Dictionary</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4><i class="fas fa-graduation-cap"></i> Exam</h4>
                         <ul>
                             <li><a href="#" onclick="openScoreCalculator(); return false;"><i class="fas fa-chart-line"></i> <span>Score Calculator</span></a></li>
-                            <li><a href="#" onclick="FastExercises._showWfDictionary(); return false;"><i class="fas fa-spell-check"></i> <span>Word Formation Dictionary</span></a></li>
-                            <li><a href="#"><i class="fas fa-book"></i> Guías de estudio</a></li>
-                            <li><a href="#"><i class="fas fa-video"></i> Tutoriales</a></li>
-                            <li><a href="#"><i class="fas fa-question"></i> FAQ</a></li>
+                            <li><a href="#"><i class="fas fa-book-reader"></i> <span>Reading Tips</span></a></li>
+                            <li><a href="#"><i class="fas fa-pen"></i> <span>Writing Tips</span></a></li>
+                            <li><a href="#"><i class="fas fa-microphone"></i> <span>Speaking Tips</span></a></li>
+                            <li><a href="#"><i class="fas fa-headphones"></i> <span>Listening Tips</span></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p>&copy; 2024 ExamPeak. Todos los derechos reservados.</p>
+                    <p>&copy; 2024 EngagEd. All rights reserved.</p>
                 </div>
             </div>
         </footer>

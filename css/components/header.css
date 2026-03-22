@@ -2,11 +2,21 @@
 .main-header {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(45, 46, 95, 0.06);
-  padding: 16px 24px;
+  border-bottom: none;
+  padding: 16px 24px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+.header-stripe-bar {
+  height: 12px;
+  background: linear-gradient(
+    to bottom,
+    #CD1025 0%, #CD1025 33.33%,
+    #FFFFFF 33.33%, #FFFFFF 66.66%,
+    #002A7E 66.66%, #002A7E 100%
+  );
 }
 
 .header-container {
