@@ -1394,9 +1394,10 @@
           if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
           var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
           var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, inner) {
-            var pipeIdx = inner.indexOf('|');
-            var displayVerb = pipeIdx !== -1 ? inner.slice(0, pipeIdx) : inner;
-            var lookupVerb = pipeIdx !== -1 ? inner.slice(pipeIdx + 1) : inner;
+            var sepIdx = inner.indexOf('|');
+            if (sepIdx === -1) sepIdx = inner.indexOf('/');
+            var displayVerb = sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
+            var lookupVerb = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
             return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showPvVerbPopup(\'' + self._jsStr(lookupVerb) + '\')" title="' + self._escapeHTML(displayVerb) + '">' + displayVerb + '</strong>';
           });
           linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
@@ -1515,7 +1516,10 @@
         var matches = line.text.match(/\[([^\]]+)\]/g);
         if (matches) {
           matches.forEach(function(m) {
-            var verb = m.replace(/[\[\]]/g, '');
+            var inner = m.replace(/[\[\]]/g, '');
+            var sepIdx = inner.indexOf('|');
+            if (sepIdx === -1) sepIdx = inner.indexOf('/');
+            var verb = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
             gapVerbs[verb] = (gapVerbs[verb] || 0) + 1;
             totalGaps++;
           });
@@ -1536,10 +1540,14 @@
       (conv.lines || []).forEach(function(line) {
         if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
         var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
-        var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, verb) {
+        var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, inner) {
+          var sepIdx = inner.indexOf('|');
+          if (sepIdx === -1) sepIdx = inner.indexOf('/');
+          var displayForm = sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
+          var phrasalVerb = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
           var gid = 'pv-gap-' + gapCounter;
           gapCounter++;
-          return '<span class="pv-drop-zone" id="' + gid + '" data-verb="' + self._escapeHTML(verb) + '" data-filled="false" onclick="FastExercises._pvGapClick(\'' + gid + '\')" ondragover="event.preventDefault()" ondrop="FastExercises._pvDrop(event,\'' + gid + '\')">' +
+          return '<span class="pv-drop-zone" id="' + gid + '" data-verb="' + self._escapeHTML(phrasalVerb) + '" data-display="' + self._escapeHTML(displayForm) + '" data-filled="false" onclick="FastExercises._pvGapClick(\'' + gid + '\')" ondragover="event.preventDefault()" ondrop="FastExercises._pvDrop(event,\'' + gid + '\')">' +
             '<span class="pv-drop-placeholder">_____</span>' +
           '</span>';
         });
@@ -1653,9 +1661,10 @@
       var normGap  = correctVerb.trim().toLowerCase().replace(/\s*\([^)]*\)/g, '').replace(/\(a\)/g,'').replace(/\s+/g,' ').trim();
       var isCorrect = verbFromChip.trim().toLowerCase() === correctVerb.trim().toLowerCase() || normChip === normGap;
 
-      // Fill the gap
+      // Fill the gap: show conjugated display form when correct, chip verb when wrong
+      var displayText = isCorrect ? (gap.getAttribute('data-display') || verbFromChip) : verbFromChip;
       gap.setAttribute('data-filled', 'true');
-      gap.innerHTML = '<span class="pv-drop-filled ' + (isCorrect ? 'pv-drop-correct' : 'pv-drop-wrong') + '">' + this._escapeHTML(verbFromChip) + '</span>';
+      gap.innerHTML = '<span class="pv-drop-filled ' + (isCorrect ? 'pv-drop-correct' : 'pv-drop-wrong') + '">' + this._escapeHTML(displayText) + '</span>';
       if (!isCorrect) {
         gap.setAttribute('data-filled', 'false'); // Allow re-drop
         var self = this;
@@ -1713,9 +1722,12 @@
           if (gapCount >= 4) return;
           var m = line.text.match(/\[([^\]]+)\]/);
           if (m) {
-            var verb = m[1];
+            var inner = m[1];
+            var sepIdx = inner.indexOf('|');
+            if (sepIdx === -1) sepIdx = inner.indexOf('/');
+            var phrasalVerb = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
             var rawSentence = line.text.replace(/\[([^\]]+)\]/g, '_____');
-            mixed.push({ kind: 'drag-single', data: { sentence: rawSentence, correct: verb, speaker: line.speaker } });
+            mixed.push({ kind: 'drag-single', data: { sentence: rawSentence, correct: phrasalVerb, speaker: line.speaker } });
             gapCount++;
           }
         });
