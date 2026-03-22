@@ -62,7 +62,8 @@
 
       const level = AppState.currentLevel || 'C1';
       const exams = window.EXAMS_DATA[level] || [];
-var modeConfig = mode === 'exam'
+
+      var modeConfig = mode === 'exam'
         ? { title: 'Test Simulation', subtitle: 'Timed exam mode' }
         : { title: 'Test Practice', subtitle: 'No limits. Safe space.' };
 
@@ -276,7 +277,7 @@ var modeConfig = mode === 'exam'
     },
 
     _renderSectionExComingSoon: function(exam) {
-return '<div class="exam-item">' +
+      return '<div class="exam-item">' +
         '<div class="exam-header">' +
           '<div class="exam-header-left">' +
             '<span class="exam-number">' + exam.number + '</span>' +
@@ -291,7 +292,7 @@ return '<div class="exam-item">' +
     },
 
     _renderSectionExGuestLocked: function(exam, sectionKey) {
-return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
+      return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
         '<div class="exam-header">' +
           '<div class="exam-header-left">' +
             '<span class="exam-number">' + exam.number + '</span>' +
@@ -306,7 +307,7 @@ return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGat
     },
 
     _renderSectionExItem: function(exam, sectionKey, isGuest) {
-var section = exam.sections[sectionKey];
+      var section = exam.sections[sectionKey];
       if (!section) return '';
 
       var isGuestLocked = isGuest && (sectionKey === 'writing' || sectionKey === 'speaking');
@@ -557,7 +558,7 @@ var section = exam.sections[sectionKey];
     // ── Guest / Premium helpers ──────────────────────────────────────────
 
     _renderPremiumBanner: function() {
-return '<div class="premium-banner">' +
+      return '<div class="premium-banner">' +
         '<div class="premium-banner-icon"><span class="material-symbols-outlined">workspace_premium</span></div>' +
         '<div class="premium-banner-text">' +
           '<div class="premium-banner-title">' + 'Upgrade to Premium' + '</div>' +
@@ -570,7 +571,7 @@ return '<div class="premium-banner">' +
     },
 
     _renderGuestLockedExam: function(exam) {
-return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
+      return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
         '<div class="exam-header">' +
           '<div class="exam-header-left">' +
             '<span class="exam-number">' + exam.number + '</span>' +
@@ -586,7 +587,7 @@ return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGat
 
     showGuestGate: function() {
       if (document.getElementById('guest-gate-overlay')) return;
-var overlay = document.createElement('div');
+      var overlay = document.createElement('div');
       overlay.id = 'guest-gate-overlay';
       overlay.className = 'guest-gate-overlay';
       overlay.innerHTML =

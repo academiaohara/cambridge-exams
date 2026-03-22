@@ -74,7 +74,7 @@
     },
 
     _renderRecommendedExercise: function(exams) {
-var weak = this._getWeakTopic(exams);
+      var weak = this._getWeakTopic(exams);
 
       // If no score data yet, suggest first incomplete part
       if (!weak) {
@@ -118,7 +118,7 @@ var weak = this._getWeakTopic(exams);
 
     _renderGradeTracker: function(exams) {
       if (typeof ScoreCalculator === 'undefined') return '';
-var noScore = '–';
+      var noScore = '–';
       var levelData = AppState.currentLevel || 'C1';
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
 
@@ -200,7 +200,7 @@ var noScore = '–';
     },
 
     _renderNextLesson: function(lesson) {
-var completedParts = lesson.completedParts || 0;
+      var completedParts = lesson.completedParts || 0;
       var totalParts = lesson.totalParts || 1;
 
       return '<div class="bento-card bento-card-checkpoint" onclick="Exercise.openPart(\'' + this._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')">' +
@@ -311,7 +311,8 @@ var completedParts = lesson.completedParts || 0;
     openQuickstepsChooser: function() {
       var content = document.getElementById('main-content');
       if (!content) return;
-var level = AppState.currentLevel || 'C1';
+
+      var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
 
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
@@ -383,7 +384,7 @@ var level = AppState.currentLevel || 'C1';
     openLessons: function() {
       var content = document.getElementById('main-content');
       if (!content) return;
-var level = AppState.currentLevel || 'C1';
+      var level = AppState.currentLevel || 'C1';
 
       // Define placeholder curriculum sections for the learning time view
       var sections = [
@@ -467,7 +468,7 @@ var level = AppState.currentLevel || 'C1';
     },
 
     _buildStreakSidebarHtml: function() {
-var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
+      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       return '<div class="sidebar-widget-pastel sw-streak" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
         '<div class="sidebar-widget-pastel-title" style="text-align:center">' + 'Day Streak' + '</div>' +
@@ -476,7 +477,7 @@ var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() 
     },
 
     _buildCalendarSidebarHtml: function() {
-var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
+      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var locale = 'en';
 
       // Use activeDates array for accurate calendar display
@@ -546,7 +547,7 @@ var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() 
 
     _buildLevelSelectorSidebarHtml: function() {
       var self = this;
-var currentLevel = AppState.currentLevel || 'C1';
+      var currentLevel = AppState.currentLevel || 'C1';
       var levels = [
         { code: 'B1', icon: 'fas fa-book-reader', label: 'B1 Preliminary' },
         { code: 'B2', icon: 'fas fa-graduation-cap', label: 'B2 First' },
@@ -592,7 +593,8 @@ var currentLevel = AppState.currentLevel || 'C1';
     },
 
     _buildContinueBasecampHtml: function(exams) {
-// Always point to the Course page (coming soon)
+
+      // Always point to the Course page (coming soon)
       return '<div class="sw-left-widget sw-continue-basecamp" onclick="BentoGrid.openLessons()" style="cursor:pointer">' +
         '<div class="sw-left-widget-label">' + 'Course' + '</div>' +
         '<div class="sw-left-widget-row">' +
@@ -640,7 +642,7 @@ var currentLevel = AppState.currentLevel || 'C1';
       if (_levelSelectorPreviewIdx >= otherLevels.length) _levelSelectorPreviewIdx = 0;
       var lvl = otherLevels[_levelSelectorPreviewIdx];
       var lc = _levelColors[lvl] || _levelColors['C1'];
-badgeContainer.innerHTML =
+      badgeContainer.innerHTML =
         '<div class="sidebar-level-badge level-selector-preview-badge" data-level="' + lvl + '" ' +
           'onclick="event.stopPropagation(); BentoGrid.changeLevel(\'' + lvl + '\')" ' +
           'role="button" tabindex="0" style="cursor:pointer;background:' + lc.bg + '">' +
@@ -698,7 +700,7 @@ badgeContainer.innerHTML =
     },
 
     _buildNextLessonLeftHtml: function(lesson) {
-var sectionIcon = { reading: 'menu_book', listening: 'headphones', writing: 'edit_note', speaking: 'record_voice_over' };
+      var sectionIcon = { reading: 'menu_book', listening: 'headphones', writing: 'edit_note', speaking: 'record_voice_over' };
       var icon = sectionIcon[lesson.section] || 'auto_stories';
       var completedParts = lesson.completedParts || 0;
       var totalParts = lesson.totalParts || 1;
@@ -733,7 +735,7 @@ var sectionIcon = { reading: 'menu_book', listening: 'headphones', writing: 'edi
     },
 
     _buildGradeTrackerSidebarHtml: function(exams) {
-var level = AppState.currentLevel || 'C1';
+      var level = AppState.currentLevel || 'C1';
 
       // Collect skill scores via ScoreCalculator
       var skillTotals = {}; // { skill: { scale, count } }
@@ -827,7 +829,7 @@ var level = AppState.currentLevel || 'C1';
     },
 
     _buildNextLessonSidebarHtml: function(lesson) {
-var completedParts = lesson.completedParts || 0;
+      var completedParts = lesson.completedParts || 0;
       var totalParts = lesson.totalParts || 1;
       var sectionIcon = { reading: 'menu_book', listening: 'headphones', writing: 'edit_note', speaking: 'record_voice_over' };
       var icon = sectionIcon[lesson.section] || 'auto_stories';
@@ -845,7 +847,7 @@ var completedParts = lesson.completedParts || 0;
     },
 
     openStreakSection: function() {
-var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
+      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       var streakBest = streak ? (streak.longestStreak || 0) : 0;
       var totalDays = streak ? (streak.totalDaysActive || 0) : 0;
@@ -903,7 +905,8 @@ var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() 
     openGradeEvolution: function() {
       var content = document.getElementById('main-content');
       if (!content) return;
-var level = AppState.currentLevel || 'C1';
+
+      var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
 
       var allSkills = ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];

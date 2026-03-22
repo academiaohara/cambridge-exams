@@ -256,7 +256,8 @@
       if (AppState.isAuthenticated) { return; }
       const navGroup = document.getElementById('headerNavGroup');
       if (!navGroup) { return; }
-var btn = document.createElement('button');
+
+      var btn = document.createElement('button');
       btn.id = 'header-signin-btn';
       btn.className = 'header-signin-btn';
       btn.onclick = function () { Auth._showAuthModal(); };

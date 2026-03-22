@@ -188,7 +188,8 @@
     openCategories: async function() {
       var content = document.getElementById('main-content');
       if (!content) return;
-// Show loading state
+
+      // Show loading state
       content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
 
       // Load all category data
@@ -258,7 +259,7 @@
     openCategory: async function(categoryId) {
       var content = document.getElementById('main-content');
       if (!content) return;
-var self = this;
+      var self = this;
       this._currentCategory = categoryId;
 
       content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
@@ -339,7 +340,7 @@ var self = this;
 
     // ── LEFT WIDGET ──────────────────────────────────────────────────────
     _buildCategoryInfoWidget: function(catMeta, data, activeLevel) {
-var self = this;
+      var self = this;
       var catPct = this._getCategoryPercent(catMeta.id, data.levels);
 
       var levelsHtml = '';
@@ -404,7 +405,7 @@ var self = this;
 
     // ── RESET LEVEL ──────────────────────────────────────────────────────
     _confirmResetLevel: function(categoryId, levelId) {
-var msg = 'Reset all progress for level ' + levelId + '?';
+      var msg = 'Reset all progress for level ' + levelId + '?';
       if (!confirm(msg)) return;
       this._resetLevel(categoryId, levelId);
     },
@@ -423,7 +424,7 @@ var msg = 'Reset all progress for level ' + levelId + '?';
 
     // ── PHRASAL VERBS INFO MODAL ─────────────────────────────────────────
     _showPvInfoModal: function() {
-var existing = document.getElementById('pv-info-modal');
+      var existing = document.getElementById('pv-info-modal');
       if (existing) { existing.remove(); return; }
 
       var modal = document.createElement('div');
@@ -471,7 +472,7 @@ var existing = document.getElementById('pv-info-modal');
     // ── CENTER MAP ───────────────────────────────────────────────────────
     _buildProgressionMap: function(catMeta, data, activeLevel) {
       var self = this;
-var LESSONS_PER_PAGE = 4;
+      var LESSONS_PER_PAGE = 4;
 
       var level = null;
       for (var i = 0; i < data.levels.length; i++) {
@@ -679,7 +680,7 @@ var LESSONS_PER_PAGE = 4;
 
     // ── RIGHT WIDGET ─────────────────────────────────────────────────────
     _buildQuickReviewWidget: function(catMeta, data) {
-var self = this;
+      var self = this;
 
       // Level checkboxes for mixer
       var levelsCheckboxes = '';
@@ -719,7 +720,7 @@ var self = this;
 
     // ── BOTTOM BAR ───────────────────────────────────────────────────────
     _buildBottomProgressBar: function(catMeta, data, activeLevel) {
-var lvPct = this._getLevelPercent(catMeta.id, activeLevel, data.levels);
+      var lvPct = this._getLevelPercent(catMeta.id, activeLevel, data.levels);
 
       return '<div class="fe-bottom-bar">' +
         '<div class="fe-bottom-breadcrumb">' +
@@ -813,7 +814,7 @@ var lvPct = this._getLevelPercent(catMeta.id, activeLevel, data.levels);
     openPoint: async function(categoryId, levelId, lessonId, pointIndex) {
       var content = document.getElementById('main-content');
       if (!content) return;
-var self = this;
+      var self = this;
 
       this._currentCategory = categoryId;
       this._currentLevel = levelId;
@@ -935,7 +936,7 @@ var self = this;
 
     // ── RENDER EXPLANATION POINT ─────────────────────────────────────────
     _renderExplanationPoint: function(container, point, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
-var self = this;
+      var self = this;
       var ct = point.content || {};
 
       var examplesHtml = '';
@@ -983,7 +984,7 @@ var self = this;
 
     // ── RENDER EXERCISE POINT ────────────────────────────────────────────
     _renderExercisePoint: function(container, point, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
-var self = this;
+      var self = this;
       var ct = point.content || {};
       var questions = ct.questions || [];
 
@@ -1084,7 +1085,7 @@ var self = this;
 
       // Show feedback
       if (feedbackEl) {
-if (isCorrect) {
+        if (isCorrect) {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-correct';
           feedbackEl.textContent = '';
           feedbackEl.innerHTML = _mi('check_circle') + ' ' + 'Correct' + '!';
@@ -1118,7 +1119,7 @@ if (isCorrect) {
           var completeSection = document.getElementById('fe-quiz-complete');
           var completeText = document.getElementById('fe-quiz-complete-text');
           if (completeSection && completeText) {
-completeText.textContent = correct + '/' + total + ' ' + 'correct' + '!';
+            completeText.textContent = correct + '/' + total + ' ' + 'correct' + '!';
             completeSection.style.display = 'block';
           }
           // Hide last question
@@ -1144,7 +1145,7 @@ completeText.textContent = correct + '/' + total + ' ' + 'correct' + '!';
 
     // ── PV SIDEBAR BUILDER ───────────────────────────────────────────────
     _buildPvSidebarHtml: function(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-var self = this;
+      var self = this;
 
       var pvIconMap = {
         'pv-gallery':           'collections_bookmark',
@@ -1242,7 +1243,7 @@ var self = this;
     },
 
     _showPvLessonInfoModal: function(lessonTitle, levelId) {
-var self = this;
+      var self = this;
       // Toggle: if already open, clicking the info button closes it
       var existing = document.getElementById('pv-lesson-info-modal');
       if (existing) { existing.remove(); return; }
@@ -1284,7 +1285,7 @@ var self = this;
 
     // ── PV GALLERY (Point 1) ─────────────────────────────────────────────
     _renderPvGallery: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-var self = this;
+      var self = this;
       this._currentLessonData = lessonData;
       var pvs = (lessonData && lessonData.phrasalVerbs) || [];
 
@@ -1367,7 +1368,7 @@ var self = this;
 
     // ── PV FILL-IN EXERCISES (Point 2) ───────────────────────────────────
     _renderPvFillIn: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-var self = this;
+      var self = this;
       this._currentLessonData = lessonData;
       var exercises = (lessonData && lessonData.fillInExercises) || [];
 
@@ -1453,7 +1454,7 @@ var self = this;
     },
 
     _processPvFillInAnswer: function(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
-var self = this;
+      var self = this;
       var feedbackEl = document.getElementById('fe-quiz-feedback-' + qIndex);
       var questionsContainer = document.getElementById('fe-quiz-questions');
 
@@ -1497,7 +1498,7 @@ var self = this;
 
     // ── PV CONVERSATIONS (Point 3) ───────────────────────────────────────
     _renderPvConversations: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-var self = this;
+      var self = this;
       var convs = (lessonData && lessonData.conversations) || [];
 
       // Store lesson data and phrasal verbs for popup lookup
@@ -1600,7 +1601,7 @@ var self = this;
 
     // ── PV CONVERSATION DRAG (Point 4) ───────────────────────────────────
     _renderPvConversationDrag: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-var self = this;
+      var self = this;
       this._currentLessonData = lessonData;
       var convs = (lessonData && lessonData.conversations) || [];
       var pvs = (lessonData && lessonData.phrasalVerbs) || [];
@@ -1625,7 +1626,7 @@ var self = this;
     },
 
     _pvDragRenderConv: function(container, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
-var self = this;
+      var self = this;
       var ctx = this._pvDragContext;
       var convs = ctx.convs;
       var convIdx = ctx.currentConvIdx;
@@ -1808,7 +1809,7 @@ var self = this;
           var result = document.getElementById('pv-drag-result');
           var resultText = document.getElementById('pv-drag-result-text');
           if (result && resultText) {
-resultText.textContent = 'All correct! Well done!';
+            resultText.textContent = 'All correct! Well done!';
             result.style.display = 'flex';
           }
           if (isLastConv && typeof StreakManager !== 'undefined') StreakManager.recordActivity();
@@ -1818,7 +1819,7 @@ resultText.textContent = 'All correct! Well done!';
 
     // ── PV MIXED PRACTICE (Point 5) ──────────────────────────────────────
     _renderPvMixed: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-var self = this;
+      var self = this;
       this._currentLessonData = lessonData;
       var fillIns = (lessonData && lessonData.fillInExercises) || [];
       var convs   = (lessonData && lessonData.conversations) || [];
@@ -1951,7 +1952,7 @@ var self = this;
     },
 
     _processPvMixedAnswer: function(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
-var self = this;
+      var self = this;
       var feedbackEl = document.getElementById('fe-quiz-feedback-' + qIndex);
       var questionsContainer = document.getElementById('fe-quiz-questions');
 
@@ -2065,7 +2066,7 @@ var self = this;
         .trim();
     },
     _showPvVerbPopup: function(verbText) {
-var verbs = this._currentPvVerbs || [];
+      var verbs = this._currentPvVerbs || [];
       var pv = null;
       var lv = (verbText || '').trim().toLowerCase();
       var lvNorm = this._normalizePvVerb(lv);

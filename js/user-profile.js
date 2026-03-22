@@ -291,7 +291,8 @@
     _renderAvatarGridPage: function () {
       var container = document.getElementById('animal-avatar-grid-container');
       if (!container) return;
-var perPage = 16;
+
+      var perPage = 16;
       var page = this._avatarGridPage || 0;
       var all = this.ANIMAL_AVATARS;
       var totalPages = Math.ceil(all.length / perPage);
@@ -345,7 +346,8 @@ var perPage = 16;
     renderProfileSection: function () {
       var content = document.getElementById('main-content');
       if (!content) return;
-var user = Auth.getUser();
+
+      var user = Auth.getUser();
       var profile = this._profile || {};
       var isGuest = AppState.isGuest;
 
@@ -430,7 +432,8 @@ var user = Auth.getUser();
     renderPremiumSection: function () {
       var content = document.getElementById('main-content');
       if (!content) return;
-var isPremium = AppState.isPremium;
+
+      var isPremium = AppState.isPremium;
 
       var html = '<div class="premium-plans-section">' +
         '<div class="profile-section-header">' +
