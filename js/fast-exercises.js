@@ -1393,8 +1393,11 @@
         (conv.lines || []).forEach(function(line) {
           if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
           var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
-          var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, verb) {
-            return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showPvVerbPopup(\'' + self._jsStr(verb) + '\')" title="' + self._escapeHTML(verb) + '">' + verb + '</strong>';
+          var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, inner) {
+            var pipeIdx = inner.indexOf('|');
+            var displayVerb = pipeIdx !== -1 ? inner.slice(0, pipeIdx) : inner;
+            var lookupVerb = pipeIdx !== -1 ? inner.slice(pipeIdx + 1) : inner;
+            return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showPvVerbPopup(\'' + self._jsStr(lookupVerb) + '\')" title="' + self._escapeHTML(displayVerb) + '">' + displayVerb + '</strong>';
           });
           linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
             self._getAvatarHtml(line.speaker) +
