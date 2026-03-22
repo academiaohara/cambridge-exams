@@ -30,10 +30,6 @@
           btn.classList.add('active');
         }
       });
-      
-      // Always load English
-      await I18n.loadLanguage('en');
-      localStorage.setItem('preferred_language', 'en');
 
       await this.syncExamsFromFolders();
       
@@ -172,21 +168,6 @@
       });
     },
     
-    setLanguage: async function(lang) {
-      await I18n.loadLanguage(lang);
-      I18n.updateSelectedFlag(lang);
-      
-      document.getElementById('languageDropdown').classList.remove('show');
-      localStorage.setItem('preferred_language', lang);
-      
-      if (AppState.currentExercise) {
-        await Exercise.reRenderCurrentExercise();
-      } else {
-        Dashboard.render();
-      }
-      this.updateHeaderModeButtons();
-    },
-    
     updateHeaderModeButtons: function() {
       var mode = AppState.currentView === 'subpage' ? AppState.currentMode : null;
       document.querySelectorAll('.header-mode-btn, .header-nav-btn[data-mode]').forEach(function(btn) {
@@ -289,10 +270,8 @@
   };
   
   // Exponer funciones globales necesarias
-  window.setLanguage = App.setLanguage;
   window.filterByLevel = App.filterByLevel;
   window.loadDashboard = App.loadDashboard;
-  window.toggleLanguageDropdown = I18n.toggleDropdown;
   window.openScoreCalculator = function() {
     if (AppState.currentExercise) Exercise.closeExercise();
     ScoreCalculator.render();

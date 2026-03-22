@@ -63,13 +63,12 @@
       const level = AppState.currentLevel || 'C1';
       const exams = window.EXAMS_DATA[level] || [];
 
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var modeConfig = mode === 'exam'
-        ? { title: t('testSimulation', 'Test Simulation'), subtitle: t('timedExamMode', 'Timed exam mode') }
-        : { title: t('testPractice', 'Test Practice'), subtitle: t('noLimitsSafeSpace', 'No limits. Safe space.') };
+        ? { title: 'Test Simulation', subtitle: 'Timed exam mode' }
+        : { title: 'Test Practice', subtitle: 'No limits. Safe space.' };
 
       var subpageHeader = '<div class="subpage-header">' +
-        '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('backToDashboard', 'Back') + '</button>' +
+        '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
         '<div>' +
           '<div class="subpage-title">' + modeConfig.title + '</div>' +
           '<div class="subpage-subtitle">' + modeConfig.subtitle + '</div>' +
@@ -92,10 +91,10 @@
         viewToggleHtml =
           '<div class="subpage-view-toggle">' +
             '<button class="subpage-view-btn' + byTestActive + '" onclick="Dashboard.setSubpageView(\'byTest\', \'' + mode + '\')">' +
-              '<i class="fas fa-list"></i> ' + t('byTest', 'By Test') +
+              '<i class="fas fa-list"></i> ' + 'By Test' +
             '</button>' +
             '<button class="subpage-view-btn' + bySectionActive + '" onclick="Dashboard.setSubpageView(\'bySection\', \'' + mode + '\')">' +
-              '<span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">category</span> ' + t('byExerciseType', 'By Exercise Type') +
+              '<span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">category</span> ' + 'By Exercise Type' +
             '</button>' +
           '</div>';
       }
@@ -213,10 +212,10 @@
     _renderBySectionTiles: function(t) {
       var mode = AppState.currentMode || 'practice';
       var sections = [
-        { key: 'reading',   icon: 'menu_book',        label: t('reading', 'Reading') },
-        { key: 'listening', icon: 'headphones',        label: t('listening', 'Listening') },
-        { key: 'writing',   icon: 'edit_note',         label: t('writing', 'Writing') },
-        { key: 'speaking',  icon: 'record_voice_over', label: t('speaking', 'Speaking') }
+        { key: 'reading',   icon: 'menu_book',        label: 'Reading' },
+        { key: 'listening', icon: 'headphones',        label: 'Listening' },
+        { key: 'writing',   icon: 'edit_note',         label: 'Writing' },
+        { key: 'speaking',  icon: 'record_voice_over', label: 'Speaking' }
       ];
       var html = '<div class="section-type-tiles">';
       sections.forEach(function(s) {
@@ -278,39 +277,36 @@
     },
 
     _renderSectionExComingSoon: function(exam) {
-      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
       return '<div class="exam-item">' +
         '<div class="exam-header">' +
           '<div class="exam-header-left">' +
             '<span class="exam-number">' + exam.number + '</span>' +
             '<div>' +
               '<div class="exam-title">Test ' + exam.number + '</div>' +
-              '<div class="exam-subtitle">' + t('soon', 'Coming soon') + '</div>' +
+              '<div class="exam-subtitle">' + 'Coming soon' + '</div>' +
             '</div>' +
           '</div>' +
-          '<div class="exam-progress-badge"><i class="fas fa-clock"></i> ' + t('soon', 'Coming soon') + '</div>' +
+          '<div class="exam-progress-badge"><i class="fas fa-clock"></i> ' + 'Coming soon' + '</div>' +
         '</div>' +
       '</div>';
     },
 
     _renderSectionExGuestLocked: function(exam, sectionKey) {
-      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
       return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
         '<div class="exam-header">' +
           '<div class="exam-header-left">' +
             '<span class="exam-number">' + exam.number + '</span>' +
             '<div>' +
               '<div class="exam-title">Test ' + exam.number + '</div>' +
-              '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + t('signInToAccess', 'Sign in to access') + '</div>' +
+              '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + 'Sign in to access' + '</div>' +
             '</div>' +
           '</div>' +
-          '<div class="exam-progress-badge"><i class="fas fa-lock"></i> ' + t('premiumBtn', 'Upgrade') + '</div>' +
+          '<div class="exam-progress-badge"><i class="fas fa-lock"></i> ' + 'Upgrade' + '</div>' +
         '</div>' +
       '</div>';
     },
 
     _renderSectionExItem: function(exam, sectionKey, isGuest) {
-      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
       var section = exam.sections[sectionKey];
       if (!section) return '';
 
@@ -322,7 +318,7 @@
               '<span class="exam-number">' + exam.number + '</span>' +
               '<div>' +
                 '<div class="exam-title">Test ' + exam.number + '</div>' +
-                '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + t('signInRequired', 'Sign in required') + '</div>' +
+                '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + 'Sign in required' + '</div>' +
               '</div>' +
             '</div>' +
             '<div class="exam-progress-badge"><i class="fas fa-lock"></i></div>' +
@@ -338,10 +334,10 @@
               '<div class="exam-title">Test ' + exam.number + '</div>' +
               '<span class="section-progress">' + section.completed.length + '/' + section.total + '</span>' +
             '</div>' +
-            '<button class="section-play" onclick="event.stopPropagation(); Exercise.startFullSection(\'' + exam.id + '\', \'' + sectionKey + '\')" title="' + (t('start', 'Start') || 'Start') + '">' +
+            '<button class="section-play" onclick="event.stopPropagation(); Exercise.startFullSection(\'' + exam.id + '\', \'' + sectionKey + '\')" title="' + ('Start' || 'Start') + '">' +
               '<i class="fas fa-play"></i>' +
             '</button>' +
-            '<button class="section-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showSectionResults(\'' + exam.id + '\', \'' + sectionKey + '\')" title="' + (t('sectionResults', 'Section Results') || 'Section Results') + '">' +
+            '<button class="section-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showSectionResults(\'' + exam.id + '\', \'' + sectionKey + '\')" title="' + ('Section Results' || 'Section Results') + '">' +
               '<i class="fas fa-chart-bar"></i>' +
             '</button>' +
           '</div>' +
@@ -366,11 +362,11 @@
               <span class="exam-number">${exam.number}</span>
               <div>
                 <div class="exam-title">Test ${exam.number}</div>
-                <div class="exam-subtitle">${I18n.t('soon')}</div>
+                <div class="exam-subtitle">Coming soon</div>
               </div>
             </div>
             <div class="exam-progress-badge">
-              <i class="fas fa-clock"></i> ${I18n.t('soon')}
+              <i class="fas fa-clock"></i> Coming soon
             </div>
           </div>
         </div>
@@ -386,16 +382,16 @@
               <span class="exam-number">${exam.number}</span>
               <div>
                 <div class="exam-title">Test ${exam.number}</div>
-                <div class="exam-subtitle">${I18n.t('availableExercises')}</div>
+                <div class="exam-subtitle">Available exercises</div>
               </div>
             </div>
-            ${AppState.currentMode === 'exam' ? `<button class="exam-play-btn" onclick="event.stopPropagation(); Exercise.startFullExam('${exam.id}')" title="${I18n.t('startExam') || 'Start Exam'}">
+            ${AppState.currentMode === 'exam' ? `<button class="exam-play-btn" onclick="event.stopPropagation(); Exercise.startFullExam('${exam.id}')" title="Start Exam">
               <i class="fas fa-play"></i>
             </button>` : ''}
-            <button class="exam-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showOverallResults('${exam.id}')" title="${I18n.t('overallResults') || 'Overall Results'}">
+            <button class="exam-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showOverallResults('${exam.id}')" title="Overall Results">
               <i class="fas fa-chart-bar"></i>
             </button>
-            <button class="dashboard-reset-btn reset-test-btn" onclick="event.stopPropagation(); Dashboard.resetTest('${exam.id}')" title="${I18n.t('resetTest')}">
+            <button class="dashboard-reset-btn reset-test-btn" onclick="event.stopPropagation(); Dashboard.resetTest('${exam.id}')" title="Reset test">
               <i class="fas fa-redo-alt"></i>
             </button>
             <i class="fas fa-chevron-down exam-arrow"></i>
@@ -423,7 +419,7 @@
       const isGuest = AppState.isGuest;
       const isGuestLocked = isGuest && (sectionKey === 'writing' || sectionKey === 'speaking');
       var lockedBadge = isGuestLocked
-        ? '<span class="guest-locked-badge"><i class="fas fa-lock"></i> ' + (I18n.t('signInRequired') || 'Sign in required') + '</span>'
+        ? '<span class="guest-locked-badge"><i class="fas fa-lock"></i> ' + ('Sign in required') + '</span>'
         : '';
       let html = `
         <div class="exam-section${isGuestLocked ? ' guest-locked' : ''}"${isGuestLocked ? ' onclick="Dashboard.showGuestGate()"' : ''}>
@@ -433,7 +429,7 @@
             <button class="section-play" onclick="event.stopPropagation(); Exercise.startFullSection('${exam.id}', '${sectionKey}')">
               <i class="fas fa-play"></i>
             </button>
-            <button class="section-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showSectionResults('${exam.id}', '${sectionKey}')" title="${I18n.t('sectionResults') || 'Section Results'}">
+            <button class="section-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showSectionResults('${exam.id}', '${sectionKey}')" title="Section Results">
               <i class="fas fa-chart-bar"></i>
             </button>
             <span class="section-progress">${section.completed.length}/${section.total}</span>
@@ -447,14 +443,14 @@
         else if (section.inProgress.includes(i)) statusClass = 'in-progress';
         
         if (isExamMode && !section.completed.includes(i)) {
-          html += `<span class="part-number ${statusClass} exam-locked" title="${I18n.t('completeExamFirst') || 'Complete the exam first'}">${i}</span>`;
+          html += `<span class="part-number ${statusClass} exam-locked" title="Complete the exam to view corrections">${i}</span>`;
         } else {
           html += `<span class="part-number ${statusClass}" onclick="event.stopPropagation(); Exercise.openPart('${exam.id}', '${sectionKey}', ${i})">${i}</span>`;
         }
       }
       
       html += `</div>
-          <button class="reset-section-corner-btn" onclick="event.stopPropagation(); Dashboard.resetSection('${exam.id}', '${sectionKey}')" title="${I18n.t('resetSection')}">
+          <button class="reset-section-corner-btn" onclick="event.stopPropagation(); Dashboard.resetSection('${exam.id}', '${sectionKey}')" title="Reset section">
             <i class="fas fa-redo-alt"></i>
           </button>
         </div>`;
@@ -497,8 +493,8 @@
         <div class="confirm-dialog">
           <p>${message}</p>
           <div class="confirm-dialog-buttons">
-            <button class="confirm-dialog-btn confirm-cancel">${I18n.t('cancel')}</button>
-            <button class="confirm-dialog-btn confirm-ok">${I18n.t('confirm')}</button>
+            <button class="confirm-dialog-btn confirm-cancel">Cancel</button>
+            <button class="confirm-dialog-btn confirm-ok">Confirm</button>
           </div>
         </div>
       `;
@@ -518,7 +514,7 @@
     
     resetSection: function(examId, sectionKey) {
       var self = this;
-      this.showConfirmDialog(I18n.t('confirmResetSection'), function() {
+      this.showConfirmDialog('Are you sure you want to reset this section? All your answers will be lost.', function() {
         var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
         if (!exam) return;
         var sectionData = exam.sections[sectionKey];
@@ -539,7 +535,7 @@
     
     resetTest: function(examId) {
       var self = this;
-      this.showConfirmDialog(I18n.t('confirmResetTest'), function() {
+      this.showConfirmDialog('Are you sure you want to reset this entire test? All your answers will be lost.', function() {
         var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
         if (!exam) return;
         ['reading', 'listening', 'writing', 'speaking'].forEach(function(sectionKey) {
@@ -562,49 +558,46 @@
     // ── Guest / Premium helpers ──────────────────────────────────────────
 
     _renderPremiumBanner: function() {
-      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
       return '<div class="premium-banner">' +
         '<div class="premium-banner-icon"><span class="material-symbols-outlined">workspace_premium</span></div>' +
         '<div class="premium-banner-text">' +
-          '<div class="premium-banner-title">' + t('premiumTitle', 'Upgrade to Premium') + '</div>' +
-          '<div class="premium-banner-desc">' + t('premiumDesc', 'Get full access to all exams, writing evaluation with AI, and speaking exercises.') + '</div>' +
+          '<div class="premium-banner-title">' + 'Upgrade to Premium' + '</div>' +
+          '<div class="premium-banner-desc">' + 'Get full access to all exams, writing evaluation with AI, and speaking exercises.' + '</div>' +
         '</div>' +
         '<button class="premium-banner-btn" onclick="Dashboard.showGuestGate()">' +
-          '<i class="fas fa-crown"></i> ' + t('premiumBtn', 'Upgrade') +
+          '<i class="fas fa-crown"></i> ' + 'Upgrade' +
         '</button>' +
       '</div>';
     },
 
     _renderGuestLockedExam: function(exam) {
-      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
       return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
         '<div class="exam-header">' +
           '<div class="exam-header-left">' +
             '<span class="exam-number">' + exam.number + '</span>' +
             '<div>' +
               '<div class="exam-title">Test ' + exam.number + '</div>' +
-              '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + t('signInToAccess', 'Sign in to access') + '</div>' +
+              '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + 'Sign in to access' + '</div>' +
             '</div>' +
           '</div>' +
-          '<div class="exam-progress-badge"><i class="fas fa-lock"></i> ' + t('premiumBtn', 'Upgrade') + '</div>' +
+          '<div class="exam-progress-badge"><i class="fas fa-lock"></i> ' + 'Upgrade' + '</div>' +
         '</div>' +
       '</div>';
     },
 
     showGuestGate: function() {
       if (document.getElementById('guest-gate-overlay')) return;
-      var t = function(key, fb) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fb; };
       var overlay = document.createElement('div');
       overlay.id = 'guest-gate-overlay';
       overlay.className = 'guest-gate-overlay';
       overlay.innerHTML =
         '<div class="guest-gate-card">' +
           '<div class="guest-gate-icon"><span class="material-symbols-outlined">lock</span></div>' +
-          '<h3>' + t('guestGateTitle', 'Sign in to unlock') + '</h3>' +
-          '<p>' + t('guestGateDesc', 'Sign in with Google to access all exams, writing and speaking exercises, and save your progress in the cloud.') + '</p>' +
+          '<h3>' + 'Sign in to unlock' + '</h3>' +
+          '<p>' + 'Sign in with Google to access all exams, writing and speaking exercises, and save your progress in the cloud.' + '</p>' +
           '<div class="guest-gate-btns">' +
-            '<button class="btn-gate-signin" onclick="Dashboard.closeGuestGate(); Auth._showAuthModal();"><i class="fas fa-sign-in-alt"></i> ' + t('signInWithGoogle', 'Sign in with Google') + '</button>' +
-            '<button class="btn-gate-close" onclick="Dashboard.closeGuestGate()">' + t('cancel', 'Cancel') + '</button>' +
+            '<button class="btn-gate-signin" onclick="Dashboard.closeGuestGate(); Auth._showAuthModal();"><i class="fas fa-sign-in-alt"></i> ' + 'Sign in with Google' + '</button>' +
+            '<button class="btn-gate-close" onclick="Dashboard.closeGuestGate()">' + 'Cancel' + '</button>' +
           '</div>' +
         '</div>';
       overlay.addEventListener('click', function(e) {

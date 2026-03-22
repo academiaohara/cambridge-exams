@@ -134,13 +134,13 @@
         <div class="score-calculator">
           <div class="sc-header">
             <button class="btn-back" onclick="loadDashboard()">
-              <i class="fas fa-arrow-left"></i> ${I18n.t('backToDashboard') || 'Back'}
+              <i class="fas fa-arrow-left"></i> Back
             </button>
-            <h2><i class="fas fa-calculator"></i> ${I18n.t('scoreCalculator') || 'Score Calculator'}</h2>
+            <h2><i class="fas fa-calculator"></i> Score Calculator</h2>
           </div>
 
           <div class="sc-selector">
-            <label for="examSelector">${I18n.t('examLevel') || 'Exam Level'}:</label>
+            <label for="examSelector">Exam Level:</label>
             <select id="examSelector" onchange="ScoreCalculator.onExamChange()">
               <option value="B1" ${examType === 'B1' ? 'selected' : ''}>B1 Preliminary</option>
               <option value="B2" ${examType === 'B2' ? 'selected' : ''}>B2 First</option>
@@ -152,7 +152,7 @@
           <div id="dynamicInputs" class="sc-inputs"></div>
 
           <button class="sc-calculate-btn" onclick="ScoreCalculator.calculateExam()">
-            <i class="fas fa-chart-bar"></i> ${I18n.t('calculateScoreBtn') || 'Calculate Score'}
+            <i class="fas fa-chart-bar"></i> Calculate Score
           </button>
 
           <div class="statement-of-results" id="statementOfResults" style="display:none;"></div>
@@ -596,8 +596,8 @@
       var chartMode = d.chartMode;
 
       var title = sectionKey
-        ? (I18n.t('sectionResults') || 'Section Results') + ' — ' + sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)
-        : (I18n.t('overallResults') || 'Overall Results');
+        ? ('Section Results') + ' — ' + sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)
+        : ('Overall Results');
 
       var grades = conversionData[examType].grades;
 

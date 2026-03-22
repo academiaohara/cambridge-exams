@@ -86,7 +86,7 @@
         var selectHTML = '<select class="' + selectClass + '" data-key="' + key + '"' +
             (isChecked ? ' disabled' : '') +
             ' onchange="ListeningType4.handleSelect(' + taskNum + ', ' + q.number + ', this.value)">' +
-            '<option value="">' + I18n.t('chooseOption') + '</option>' +
+            '<option value="">' + 'Choose option' + '</option>' +
             optSelectHTML +
           '</select>';
 
@@ -94,19 +94,19 @@
         if (isIncorrect) {
           selectHTML = '<span class="listening-type4-answer-wrapper">' +
             selectHTML +
-            '<span class="listening-type4-correct-tooltip">' + I18n.t('correctAnswer') + ': ' + q.correct + '</span>' +
+            '<span class="listening-type4-correct-tooltip">' + 'Correct answer' + ': ' + q.correct + '</span>' +
           '</span>';
         }
 
         return '<div class="listening-type4-question">' +
-          '<span class="listening-type4-speaker-label">' + I18n.t('speaker') + ' ' + q.speaker.replace('Speaker ', '') + '</span>' +
+          '<span class="listening-type4-speaker-label">' + 'Speaker' + ' ' + q.speaker.replace('Speaker ', '') + '</span>' +
           '<span class="listening-type4-q-number">' + q.number + '</span>' +
           selectHTML +
         '</div>';
       }).join('');
 
       return '<div class="listening-type4-task">' +
-        '<h4 class="listening-type4-task-title">' + I18n.t('task' + taskNum) + '</h4>' +
+        '<h4 class="listening-type4-task-title">' + ('Task ' + taskNum) + '</h4>' +
         '<p class="listening-type4-instruction">' + task.instruction + '</p>' +
         '<div class="listening-type4-options-list">' + optionsHTML + '</div>' +
         '<div class="listening-type4-questions">' + questionsHTML + '</div>' +

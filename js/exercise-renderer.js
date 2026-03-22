@@ -57,13 +57,14 @@
         questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
         
         const secondToggleI18nKey = partConfig.type === 'gapped-text' ? 'paragraphOptions' : 'showQuestions';
-        const secondToggleLabel = I18n.t(secondToggleI18nKey);
+        const i18nMap = { showQuestions: 'Questions', paragraphOptions: 'Paragraph Options', showText: 'Text' };
+        const secondToggleLabel = i18nMap[secondToggleI18nKey] || secondToggleI18nKey;
         const isReadingPart5to8 = section === 'reading' && part >= 5;
         const showExplanationBtn = isReadingPart5to8;
         toggleHTML = `
           <div class="toggle-view-header">
             <button class="toggle-view-btn active" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
-              <i class="fas fa-file-alt"></i> <span data-i18n="showText">${I18n.t('showText')}</span>
+              <i class="fas fa-file-alt"></i> <span data-i18n="showText">Text</span>
             </button>
             <button class="toggle-view-btn" id="toggle-questions-btn" onclick="ExerciseRenderer.toggleView('questions')">
               <i class="fas fa-question-circle"></i> <span data-i18n="${secondToggleI18nKey}">${secondToggleLabel}</span>
@@ -72,7 +73,7 @@
             <button class="toggle-view-btn btn-explanation-mode" id="toggle-explanation-btn"
                     style="${AppState.answersChecked ? '' : 'display:none'}"
                     onclick="ExerciseHandlers.toggleExplanationMode()">
-              <i class="fas fa-lightbulb"></i> <span data-i18n="explanation">${I18n.t('explanation') || 'Explanation'}</span>
+              <i class="fas fa-lightbulb"></i> <span data-i18n="explanation">Explanation</span>
             </button>
             ` : ''}
           </div>
@@ -104,16 +105,16 @@
         toggleHTML = `
           <div class="toggle-view-header">
             <button class="toggle-view-btn active" id="toggle-questions-btn" onclick="ExerciseRenderer.toggleView('questions')">
-              <i class="fas fa-question-circle"></i> <span data-i18n="showQuestions">${I18n.t('showQuestions')}</span>
+              <i class="fas fa-question-circle"></i> <span data-i18n="showQuestions">Questions</span>
             </button>
             <button class="toggle-view-btn" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
-              <i class="fas fa-file-audio"></i> <span data-i18n="transcript">${I18n.t('transcript')}</span>
+              <i class="fas fa-file-audio"></i> <span data-i18n="transcript">TRANSCRIPT</span>
             </button>
             ${!isExamMode ? `
             <button class="toggle-view-btn btn-explanation-mode" id="toggle-explanation-btn"
                     style="${AppState.answersChecked ? '' : 'display:none'}"
                     onclick="ExerciseHandlers.toggleExplanationMode()">
-              <i class="fas fa-lightbulb"></i> <span data-i18n="explanation">${I18n.t('explanation') || 'Explanation'}</span>
+              <i class="fas fa-lightbulb"></i> <span data-i18n="explanation">Explanation</span>
             </button>
             ` : ''}
           </div>
@@ -148,7 +149,7 @@
           </div>
         `;
       } else if (section !== 'reading' && section !== 'writing' && section !== 'listening' && section !== 'speaking') {
-        const contentTitle = exercise.title || I18n.t('exercise');
+        const contentTitle = exercise.title || 'Exercise';
         const contentSubtitle = exercise.content?.subtitle || exercise.description || '';
         contentHeaderHTML = `
           <div class="content-section-header">
@@ -183,26 +184,26 @@
                 </button>
               </div>
               <div id="active-tool-content" class="active-tool-content">
-                <p class="placeholder-text" data-i18n="activateTool">${I18n.t('activateTool')}</p>
+                <p class="placeholder-text" data-i18n="activateTool">Activate a tool to see details here.</p>
               </div>
             </div>
             <div class="sidebar-rail">
               <div class="sidebar-tools-list">
-                <button class="sidebar-tool-btn" id="tab-notes" onclick="Tools.switchTool('notes')" data-tooltip="${I18n.t('highlight')}">
-                  <i class="fas fa-highlighter"></i><span class="tool-label">${I18n.t('highlight')}</span>
+                <button class="sidebar-tool-btn" id="tab-notes" onclick="Tools.switchTool('notes')" data-tooltip="HIGHLIGHT">
+                  <i class="fas fa-highlighter"></i><span class="tool-label">HIGHLIGHT</span>
                 </button>
-                <button class="sidebar-tool-btn" id="tab-freenotes" onclick="Tools.switchTool('freenotes')" data-tooltip="${I18n.t('notes')}">
-                  <i class="fas fa-sticky-note"></i><span class="tool-label">${I18n.t('notes')}</span>
+                <button class="sidebar-tool-btn" id="tab-freenotes" onclick="Tools.switchTool('freenotes')" data-tooltip="NOTES">
+                  <i class="fas fa-sticky-note"></i><span class="tool-label">NOTES</span>
                 </button>
                 ${!isExamMode ? `
-                <button class="sidebar-tool-btn" id="tab-dict" onclick="Tools.switchTool('dict')" data-tooltip="${I18n.t('dictionary')}">
-                  <i class="fas fa-book"></i><span class="tool-label">${I18n.t('dictionary')}</span>
+                <button class="sidebar-tool-btn" id="tab-dict" onclick="Tools.switchTool('dict')" data-tooltip="DICTIONARY">
+                  <i class="fas fa-book"></i><span class="tool-label">DICTIONARY</span>
                 </button>
-                <button class="sidebar-tool-btn" id="tab-translate" onclick="Tools.switchTool('translate')" data-tooltip="${I18n.t('translate')}">
-                  <i class="fas fa-language"></i><span class="tool-label">${I18n.t('translate')}</span>
+                <button class="sidebar-tool-btn" id="tab-translate" onclick="Tools.switchTool('translate')" data-tooltip="TRANSLATE">
+                  <i class="fas fa-language"></i><span class="tool-label">TRANSLATE</span>
                 </button>
-                <button class="sidebar-tool-btn" id="tab-tips" onclick="Tools.switchTool('tips')" data-tooltip="${I18n.t('tips')}">
-                  <i class="fas fa-lightbulb"></i><span class="tool-label">${I18n.t('tips')}</span>
+                <button class="sidebar-tool-btn" id="tab-tips" onclick="Tools.switchTool('tips')" data-tooltip="TIPS">
+                  <i class="fas fa-lightbulb"></i><span class="tool-label">TIPS</span>
                 </button>
                 ` : ''}
               </div>
@@ -216,17 +217,17 @@
             <div class="exercise-header">
               <div class="exercise-title">
                 <h2>${levelName} - ${sectionTitle}</h2>
-                <div class="exercise-subtitle" data-i18n="part">${I18n.t('part')} ${part} ${I18n.t('of')} ${totalParts}</div>
-                <span class="exercise-badge">${exercise.title || I18n.t('exercise')}</span>
-                ${AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> ${I18n.t('examModeActive')}</span>` : ''}
+                <div class="exercise-subtitle" data-i18n="part">Part ${part} of ${totalParts}</div>
+                <span class="exercise-badge">${exercise.title || 'Exercise'}</span>
+                ${AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> Exam Mode</span>` : ''}
               </div>
               <div class="exercise-header-right">
                 <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
                 <div class="exercise-toolbar">
-                  <button class="btn-cambridge-score" onclick="ScoreCalculator.showLiveSectionResults()" title="${I18n.t('cambridgeScore') || 'Cambridge Score'}">
+                  <button class="btn-cambridge-score" onclick="ScoreCalculator.showLiveSectionResults()" title="Cambridge Score">
                     <i class="fas fa-chart-bar"></i>
                   </button>
-                  <button class="btn-cambridge-score btn-cambridge-overall" onclick="ScoreCalculator.showLiveOverallResults()" title="${I18n.t('overallResults') || 'Overall Results'}">
+                  <button class="btn-cambridge-score btn-cambridge-overall" onclick="ScoreCalculator.showLiveOverallResults()" title="Overall Results">
                     <i class="fas fa-chart-line"></i>
                   </button>
                   <button class="btn-exit" onclick="Exercise.closeExercise()">
@@ -243,7 +244,7 @@
                   (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
                     ? CONFIG.SECTION_TIMES[section]
                     : (exercise.time || '10')
-                } <span data-i18n="minutes">${I18n.t('minutes')}</span></span>
+                } <span data-i18n="minutes">min</span></span>
               </div>
               <div class="exercise-info-right">
                 <div class="exercise-timer" id="exercise-timer"${section === 'speaking' ? ' style="display:none"' : ''}>
@@ -418,7 +419,7 @@
       if (partConfig.type === 'gapped-text' && exercise.content.paragraphs) {
         var self = this;
         html += '<div class="reading-type7-options">';
-        html += '<h4><i class="fas fa-list"></i> ' + I18n.t('paragraphOptions') + '</h4>';
+        html += '<h4><i class="fas fa-list"></i> ' + 'Paragraph Options' + '</h4>';
         html += '<div class="reading-type7-paragraph-list">';
         Object.entries(exercise.content.paragraphs).forEach(function(entry) {
           const key = entry[0], text = entry[1];
@@ -826,7 +827,7 @@
         return `
           <div class="example-container simple">
             <div class="example-title">
-              <i class="fas fa-lightbulb"></i> <span data-i18n="example">${I18n.t('example')}</span>:
+              <i class="fas fa-lightbulb"></i> <span data-i18n="example">Example</span>:
             </div>
             <div class="example-options-row">
               ${optionsHTML}
@@ -839,7 +840,7 @@
         return `
           <div class="example-container simple">
             <div class="example-title">
-              <i class="fas fa-lightbulb"></i> <span data-i18n="example">${I18n.t('example')}</span>:
+              <i class="fas fa-lightbulb"></i> <span data-i18n="example">Example</span>:
             </div>
             <div class="example-text">
               <strong>0</strong> <strong>${exampleData.correct || ''}</strong>
@@ -853,7 +854,7 @@
         return `
           <div class="example-container simple">
             <div class="example-title">
-              <i class="fas fa-lightbulb"></i> <span data-i18n="example">${I18n.t('example')}</span>:
+              <i class="fas fa-lightbulb"></i> <span data-i18n="example">Example</span>:
             </div>
             <div class="example-text">
               <strong>(0)</strong> <strong>${exampleData.correct || ''}</strong>${wordHint}
@@ -865,7 +866,7 @@
       return `
         <div class="example-container simple">
           <div class="example-title">
-            <i class="fas fa-lightbulb"></i> <span data-i18n="example">${I18n.t('example')}</span>:
+            <i class="fas fa-lightbulb"></i> <span data-i18n="example">Example</span>:
           </div>
           <div class="example-text">
             ${exampleData.text || ''} <strong>${exampleData.correct || ''}</strong>
@@ -886,13 +887,13 @@
       
       let explanations = `
         <div class="explanations-section" id="explanations-section" style="display: none;" lang="en">
-          <h3><i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span></h3>
+          <h3><i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span></h3>
       `;
       
       allQuestions.forEach(q => {
         explanations += `
           <div class="explanation-item" data-question="${q.number}">
-            <strong>${q.number}.</strong> — ${q.explanation || I18n.t('noExplanation')}
+            <strong>${q.number}.</strong> — ${q.explanation || 'No explanation available'}
           </div>
         `;
       });
@@ -910,7 +911,7 @@
       if (questions.length === 0) return '';
 
       var html = '<div class="explanations-panel" id="explanations-panel" style="display:none" lang="en">';
-      html += '<h3><i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">' + (I18n.t('showExplanations') || 'Explanations') + '</span></h3>';
+      html += '<h3><i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">' + ('Show explanations') + '</span></h3>';
 
       questions.forEach(function(q) {
         html += '<div class="explanation-card" data-qnum="' + q.number + '" onclick="ExerciseHandlers.selectExplanationQuestion(' + q.number + ')">';
@@ -936,7 +937,7 @@
       if (!isExamMode) {
         footer += `
           <button class="btn-check" onclick="ExerciseHandlers.checkAnswers()" ${AppState.answersChecked ? 'disabled' : ''}>
-            <span data-i18n="checkAnswers">${I18n.t('checkAnswers')}</span>
+            <span data-i18n="checkAnswers">Check answers</span>
           </button>
         `;
 
@@ -947,34 +948,34 @@
         if (isReading && part !== 4 && part < 5) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
-            <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
+            <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span>
           </button>
           `;
         } else if (!isReading && !isListening) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()">
-            <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">${I18n.t('showExplanations')}</span>
+            <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span>
           </button>
           `;
         }
 
         footer += `
           <button class="btn-reset" onclick="ExerciseHandlers.resetExercise()">
-            <i class="fas fa-redo-alt"></i> <span data-i18n="reset">${I18n.t('reset')}</span>
+            <i class="fas fa-redo-alt"></i> <span data-i18n="reset">Reset</span>
           </button>
         `;
       }
       
       // Allow going back in both practice mode and exam full mode
       if (part > 1 && (!isExamMode || AppState.examFullMode)) {
-        footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">${I18n.t('previous')}</span></button>`;
+        footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
       }
       
       if (part < totalParts) {
-        footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">${I18n.t('next')}</span> <i class="fas fa-chevron-right"></i></button>`;
+        footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
       } else if (AppState.examFullMode) {
         // Last part of a section in exam full mode: show "Finish Section" button
-        footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span data-i18n="finishSection">${I18n.t('finishSection')}</span> <i class="fas fa-check"></i></button>`;
+        footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
       }
       
       return footer;
@@ -994,7 +995,7 @@
         if (isActive) cellClass += ' active';
         if (isCompleted) cellClass += ' completed';
         
-        cells += `<button class="${cellClass}" data-part="${i}" onclick="Exercise.openPart('${examId}', '${section}', ${i})" title="${I18n.t('part')} ${i}">
+        cells += `<button class="${cellClass}" data-part="${i}" onclick="Exercise.openPart('${examId}', '${section}', ${i})" title="Part ${i}">
           ${i}
         </button>`;
       }
@@ -1004,17 +1005,17 @@
     
     getDefaultDescription: function(partConfig) {
       const descriptions = {
-        'multiple-choice': I18n.t('multipleChoiceDesc'),
-        'open-cloze': I18n.t('openClozeDesc'),
-        'word-formation': I18n.t('wordFormationDesc'),
-        'transformations': I18n.t('transformationsDesc'),
-        'multiple-choice-text': I18n.t('multipleChoiceTextDesc'),
-        'cross-text-matching': I18n.t('crossTextDesc'),
-        'gapped-text': I18n.t('gappedTextDesc'),
-        'multiple-matching': I18n.t('multipleMatchingDesc'),
-        'sentence-completion': I18n.t('sentenceCompletionDesc')
+        'multiple-choice': 'Choose the correct word for each gap.',
+        'open-cloze': 'Write one word in each gap.',
+        'word-formation': 'Use the word in capitals to form a new word.',
+        'transformations': 'Key word transformation practice',
+        'multiple-choice-text': 'Read the text and choose the best answer.',
+        'cross-text-matching': 'Read the texts and match the questions.',
+        'gapped-text': 'Choose which paragraph fits each gap.',
+        'multiple-matching': 'Match the questions to the correct section.',
+        'sentence-completion': 'Complete the sentences with the missing information.'
       };
-      return descriptions[partConfig.type] || I18n.t('defaultDesc');
+      return descriptions[partConfig.type] || 'Complete the exercise.';
     },
     
     getDescriptionKey: function(partConfig) {

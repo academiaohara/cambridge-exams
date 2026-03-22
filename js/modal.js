@@ -15,8 +15,8 @@
       
       body.innerHTML = `
         <div class="modal-header">
-          <h3>${I18n.t('question')} ${qNum}</h3>
-          <p>${I18n.t('selectOption')}</p>
+          <h3>Question ${qNum}</h3>
+          <p>Select an option</p>
         </div>
         <div class="options-grid">
           ${question.options.map(opt => {

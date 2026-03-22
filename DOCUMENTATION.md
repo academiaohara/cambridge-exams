@@ -13,13 +13,12 @@
 5. [Archivos JavaScript — Roles y Responsabilidades](#5-archivos-javascript--roles-y-responsabilidades)
 6. [Esquemas de Datos JSON](#6-esquemas-de-datos-json)
 7. [Tipos de Ejercicio](#7-tipos-de-ejercicio)
-8. [Sistema de Internacionalización (i18n)](#8-sistema-de-internacionalización-i18n)
-9. [Persistencia con localStorage](#9-persistencia-con-localstorage)
-10. [Herramientas de Estudio](#10-herramientas-de-estudio)
-11. [Estilos CSS](#11-estilos-css)
-12. [Cómo Añadir Contenido Nuevo](#12-cómo-añadir-contenido-nuevo)
-13. [Cómo Ejecutar el Proyecto Localmente](#13-cómo-ejecutar-el-proyecto-localmente)
-14. [Versión Actual y Historial de Cambios](#14-versión-actual-e-historial-de-cambios)
+8. [Persistencia con localStorage](#8-persistencia-con-localstorage)
+9. [Herramientas de Estudio](#9-herramientas-de-estudio)
+10. [Estilos CSS](#10-estilos-css)
+11. [Cómo Añadir Contenido Nuevo](#11-cómo-añadir-contenido-nuevo)
+12. [Cómo Ejecutar el Proyecto Localmente](#12-cómo-ejecutar-el-proyecto-localmente)
+13. [Versión Actual y Historial de Cambios](#13-versión-actual-e-historial-de-cambios)
 
 ---
 
@@ -81,7 +80,6 @@ cambridge-exams/
 │   ├── exercise-renderer.js      # Genera el HTML del ejercicio a partir del JSON
 │   ├── exercise-handlers.js      # Event listeners y lógica de verificación de respuestas
 │   ├── timer.js                  # Cronómetro y cálculo de puntuación
-│   ├── i18n.js                   # Carga de traducciones y cambio de idioma
 │   ├── modal.js                  # Diálogos modales para opciones de múltiple elección
 │   ├── tools.js                  # Diccionario, traductor, subrayador, notas, tips
 │   ├── utils.js                  # Fetch con caché-buster, carga dinámica CSS/JS, comparación de respuestas
@@ -160,8 +158,7 @@ cambridge-exams/
 ```
 DOMContentLoaded
   └─ App.init()
-       ├─ Recupera nivel y idioma guardados en localStorage
-       ├─ I18n.loadLanguage(lang) — carga el JSON de traducción correcto
+       ├─ Recupera nivel guardado en localStorage
        ├─ App.syncExamsFromFolders() — detecta tests disponibles con HEAD requests
        └─ Dashboard.render() — muestra la pantalla principal
 ```
@@ -267,13 +264,6 @@ Expone `window.CONFIG` con:
 - `Timer.updateScoreDisplay()` — actualiza el contador de respuestas correctas visible
 - Cambia la clase CSS del timer a `warning` (>300 s) o `danger` (>600 s)
 
-### `js/i18n.js` — Internacionalización
-
-- `I18n.loadLanguage(lang)` — fetch de `lang/{lang}.json` y almacena en `AppState.translations`
-- `I18n.t(key)` — devuelve la cadena traducida para la clave dada
-- `I18n.updateSelectedFlag(lang)` — actualiza la bandera y el nombre de idioma en la UI
-- `I18n.toggleDropdown()` / `initClickOutside()` — gestión del desplegable de idioma
-
 ### `js/modal.js` — Diálogos Modales
 
 - `Modal.showOptionsModal(questionNumber, options, currentAnswer)` — muestra las opciones de una pregunta de selección múltiple
@@ -347,26 +337,7 @@ Expone `window.CONFIG` con:
 - `content.audio_script` — para ejercicios de listening
 - `content.images` — URLs de imágenes para speaking
 
-### 6.2 Esquema de Traducción (`lang/{lang}.json`)
-
-Objeto plano con pares `"clave": "traducción"`. Las claves más importantes:
-
-| Clave | Uso |
-|---|---|
-| `loading` | Mensaje de carga |
-| `checkAnswers` | Botón verificar respuestas |
-| `part` | Etiqueta "Parte" |
-| `correct` | Etiqueta de puntuación |
-| `noExams` | Mensaje sin exámenes |
-| `tips` | Etiqueta de tips |
-| `dictionary` | Etiqueta del diccionario |
-| `translate` | Etiqueta del traductor |
-| `notes` | Etiqueta de notas |
-| `next` / `previous` | Navegación entre partes |
-
-Para añadir una nueva clave de traducción, agregarla en **todos** los 12 archivos de `lang/`.
-
-### 6.3 Esquema de Tips (`tips/{section}.json`)
+### 6.2 Esquema de Tips (`tips/{section}.json`)
 
 ```json
 {
@@ -504,17 +475,7 @@ Mapea cada parte del examen a su configuración de renderizado. Las partes de Re
 
 ---
 
-## 8. Sistema de Internacionalización (i18n)
-
-- Al cargar la app, `App.init()` llama a `I18n.loadLanguage(lang)` que hace fetch de `lang/{lang}.json`.
-- Las traducciones se almacenan en `AppState.translations`.
-- `I18n.t('key')` devuelve `AppState.translations[key]` o la propia clave si no existe.
-- Los elementos del DOM con `data-i18n="key"` se actualizan automáticamente al cambiar de idioma.
-- Al cambiar idioma durante un ejercicio activo, `App.setLanguage()` llama a `Exercise.reRenderCurrentExercise()` para regenerar el HTML con el nuevo idioma.
-
----
-
-## 9. Persistencia con localStorage
+## 8. Persistencia con localStorage
 
 ### Claves de localStorage
 
@@ -538,7 +499,7 @@ Mapea cada parte del examen a su configuración de renderizado. Las partes de Re
 
 ---
 
-## 10. Herramientas de Estudio
+## 9. Herramientas de Estudio
 
 Las herramientas se muestran en el panel lateral derecho durante el ejercicio. Solo una puede estar activa a la vez (`AppState.activeTool`).
 
@@ -552,7 +513,7 @@ Las herramientas se muestran en el panel lateral derecho durante el ejercicio. S
 
 ---
 
-## 11. Estilos CSS
+## 10. Estilos CSS
 
 - `index.html` contiene el bloque `<style>` con las variables CSS globales (colores, sombras, radio de bordes).
 - `css/imports.css` importa todos los archivos CSS de componentes.
@@ -562,7 +523,7 @@ Las herramientas se muestran en el panel lateral derecho durante el ejercicio. S
 
 ---
 
-## 12. Cómo Añadir Contenido Nuevo
+## 11. Cómo Añadir Contenido Nuevo
 
 ### Añadir un nuevo test (p.ej. Test2 para C1)
 
@@ -587,13 +548,6 @@ Las herramientas se muestran en el panel lateral derecho durante el ejercicio. S
 3. Verificar que `EXAMS_DATA` en `state.js` incluya la clave `B2: []`.
 4. El nivel aparecerá automáticamente en los botones de filtro del header.
 
-### Añadir una traducción nueva
-
-1. Añadir la clave y valor en `lang/es.json` (español base).
-2. Copiar la clave en los otros 11 archivos de `lang/` con la traducción correspondiente.
-3. Usar `I18n.t('nuevaClave')` en el HTML o JS donde sea necesario.
-4. Para actualización dinámica al cambiar idioma, añadir `data-i18n="nuevaClave"` al elemento HTML.
-
 ### Añadir un nuevo tipo de ejercicio
 
 1. Crear `js/exercise-types/nuevo-tipo.js` con la lógica del tipo.
@@ -604,7 +558,7 @@ Las herramientas se muestran en el panel lateral derecho durante el ejercicio. S
 
 ---
 
-## 13. Cómo Ejecutar el Proyecto Localmente
+## 12. Cómo Ejecutar el Proyecto Localmente
 
 ```bash
 # Opción 1 — Python HTTP server (recomendado, evita problemas de CORS)
@@ -642,7 +596,7 @@ console.log(AppState.currentExercise);
 
 ---
 
-## 14. Versión Actual e Historial de Cambios
+## 13. Versión Actual e Historial de Cambios
 
 **Versión actual:** `3.2.0` (definida en `js/config.js` como `CONFIG.APP_VERSION`; actualiza esa constante y la tabla de abajo de forma sincronizada al lanzar una nueva versión)
 

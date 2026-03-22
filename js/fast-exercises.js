@@ -188,7 +188,6 @@
     openCategories: async function() {
       var content = document.getElementById('main-content');
       if (!content) return;
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
 
       // Show loading state
       content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
@@ -200,21 +199,21 @@
         var data = await this._loadCategoryData(cat.id);
         var pct = data ? this._getCategoryPercent(cat.id, data.levels) : 0;
         var totalPoints = data ? this._getTotalPoints(data.levels) : 0;
-        var btnLabel = pct > 0 ? t('continue', 'Continue') : t('start', 'Start');
+        var btnLabel = pct > 0 ? 'Continue' : 'Start';
 
         categoryCards += '<div class="fe-category-card" style="--cat-color: ' + cat.color + '" onclick="FastExercises.openCategory(\'' + cat.id + '\')">' +
           '<div class="fe-category-card-header">' +
             '<span class="fe-category-icon">' + _mi(cat.icon) + '</span>' +
             '<div class="fe-category-info">' +
               '<div class="fe-category-name">' + this._escapeHTML(cat.name) + '</div>' +
-              '<div class="fe-category-stats">' + totalPoints + ' ' + t('items', 'items') + '</div>' +
+              '<div class="fe-category-stats">' + totalPoints + ' ' + 'items' + '</div>' +
             '</div>' +
           '</div>' +
           '<div class="fe-category-progress">' +
             '<div class="fe-progress-bar-bg">' +
               '<div class="fe-progress-bar-fill" style="width:' + pct + '%; background:' + cat.color + '"></div>' +
             '</div>' +
-            '<span class="fe-progress-text">' + pct + '% ' + t('complete', 'complete') + '</span>' +
+            '<span class="fe-progress-text">' + pct + '% ' + 'complete' + '</span>' +
           '</div>' +
           '<button class="fe-category-btn" style="background:' + cat.color + '">' + btnLabel + '</button>' +
         '</div>';
@@ -237,10 +236,10 @@
           '<div class="dashboard-center">' +
             '<div class="fe-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
                 '<div>' +
-                  '<div class="subpage-title">' + _mi('bolt') + ' ' + t('fastLearning', 'Fast Learning') + '</div>' +
-                  '<div class="subpage-subtitle">' + t('fastLearningSubtitle', 'Choose a category and start your learning path') + '</div>' +
+                  '<div class="subpage-title">' + _mi('bolt') + ' ' + 'Fast Learning' + '</div>' +
+                  '<div class="subpage-subtitle">' + 'Choose a category and start your learning path' + '</div>' +
                 '</div>' +
               '</div>' +
               '<div class="fe-categories-grid">' + categoryCards + '</div>' +
@@ -260,7 +259,6 @@
     openCategory: async function(categoryId) {
       var content = document.getElementById('main-content');
       if (!content) return;
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       this._currentCategory = categoryId;
 
@@ -307,11 +305,11 @@
       var legendHtml = '';
       if (categoryId === 'phrasal-verbs') {
         legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-gallery fe-dot-mini fe-dot-outline">' + _mi('collections_bookmark') + '</span> ' + t('gallery', 'Gallery') + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-fill-in fe-dot-mini fe-dot-outline">' + _mi('edit') + '</span> ' + t('fillIn', 'Fill In') + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-conv fe-dot-mini fe-dot-outline">' + _mi('forum') + '</span> ' + t('conversations', 'Conversations') + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini fe-dot-outline">' + _mi('drag_indicator') + '</span> ' + t('dragDrop', 'Drag & Drop') + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini fe-dot-outline">' + _mi('shuffle') + '</span> ' + t('mixed', 'Mixed') + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-gallery fe-dot-mini fe-dot-outline">' + _mi('collections_bookmark') + '</span> ' + 'Gallery' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-fill-in fe-dot-mini fe-dot-outline">' + _mi('edit') + '</span> ' + 'Fill In' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-conv fe-dot-mini fe-dot-outline">' + _mi('forum') + '</span> ' + 'Conversations' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini fe-dot-outline">' + _mi('drag_indicator') + '</span> ' + 'Drag & Drop' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini fe-dot-outline">' + _mi('shuffle') + '</span> ' + 'Mixed' + '</span>' +
         '</div>';
       }
 
@@ -321,12 +319,12 @@
           '<div class="dashboard-center">' +
             '<div class="fe-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="FastExercises.openCategories()">' + t('back', 'Back') + '</button>' +
+                '<button class="subpage-back-btn" onclick="FastExercises.openCategories()">' + 'Back' + '</button>' +
                 '<div class="subpage-header-titles">' +
                   '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
-                  '<div class="subpage-subtitle">' + t('levelProgress', 'Level Progress') + ' — ' + activeLevel + '</div>' +
+                  '<div class="subpage-subtitle">' + 'Level Progress' + ' — ' + activeLevel + '</div>' +
                 '</div>' +
-                (categoryId === 'phrasal-verbs' ? '<button class="subpage-info-btn" onclick="FastExercises._showPvInfoModal()" title="' + t('whatArePhrasalVerbs', 'What are phrasal verbs?') + '">' + _mi('info') + '</button>' : '') +
+                (categoryId === 'phrasal-verbs' ? '<button class="subpage-info-btn" onclick="FastExercises._showPvInfoModal()" title="' + 'What are phrasal verbs?' + '">' + _mi('info') + '</button>' : '') +
               '</div>' +
               bottomBar +
               legendHtml +
@@ -342,7 +340,6 @@
 
     // ── LEFT WIDGET ──────────────────────────────────────────────────────
     _buildCategoryInfoWidget: function(catMeta, data, activeLevel) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var catPct = this._getCategoryPercent(catMeta.id, data.levels);
 
@@ -362,7 +359,7 @@
           '<span class="fe-level-icon">' + icon + '</span>' +
           '<div class="fe-level-label">' +
             '<span class="fe-level-name">' + lv.id + '</span>' +
-            (isUnlocked ? '<span class="fe-level-pct">' + lvPct + '%</span>' : '<span class="fe-level-pct">' + t('locked', 'Locked') + '</span>') +
+            (isUnlocked ? '<span class="fe-level-pct">' + lvPct + '%</span>' : '<span class="fe-level-pct">' + 'Locked' + '</span>') +
           '</div>' +
         '</div>';
       }
@@ -386,30 +383,29 @@
           '<span class="fe-info-icon">' + _mi(catMeta.icon) + '</span>' +
           '<div>' +
             '<div class="fe-info-title">' + this._escapeHTML(catMeta.name) + '</div>' +
-            '<div class="fe-info-subtitle">' + t('level', 'Level') + ': ' + activeLevel + '</div>' +
+            '<div class="fe-info-subtitle">' + 'Level' + ': ' + activeLevel + '</div>' +
           '</div>' +
         '</div>' +
         '<div class="fe-info-progress-wrap">' +
           '<div class="fe-progress-bar-bg">' +
             '<div class="fe-progress-bar-fill" style="width:' + catPct + '%; background:' + catMeta.color + '"></div>' +
           '</div>' +
-          '<div class="fe-info-progress-text">' + catPct + '% ' + t('complete', 'complete') + '</div>' +
+          '<div class="fe-info-progress-text">' + catPct + '% ' + 'complete' + '</div>' +
         '</div>' +
-        '<div class="fe-level-selector-title">' + t('levels', 'Levels') + '</div>' +
+        '<div class="fe-level-selector-title">' + 'Levels' + '</div>' +
         '<div class="fe-level-selector">' + levelsHtml + '</div>' +
         '<div class="fe-info-stats">' +
-          '<div class="fe-info-stat">' + totalDone + '/' + totalAll + ' ' + t('items', 'items') + '</div>' +
+          '<div class="fe-info-stat">' + totalDone + '/' + totalAll + ' ' + 'items' + '</div>' +
         '</div>' +
         '<button class="fe-reset-level-btn" onclick="FastExercises._confirmResetLevel(\'' + catMeta.id + '\', \'' + activeLevel + '\')">' +
-          _mi('restart_alt') + ' ' + t('resetLevel', 'Reset Level') +
+          _mi('restart_alt') + ' ' + 'Reset Level' +
         '</button>' +
       '</div>';
     },
 
     // ── RESET LEVEL ──────────────────────────────────────────────────────
     _confirmResetLevel: function(categoryId, levelId) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
-      var msg = t('resetLevelConfirm', 'Reset all progress for level ') + levelId + '?';
+      var msg = 'Reset all progress for level ' + levelId + '?';
       if (!confirm(msg)) return;
       this._resetLevel(categoryId, levelId);
     },
@@ -428,7 +424,6 @@
 
     // ── PHRASAL VERBS INFO MODAL ─────────────────────────────────────────
     _showPvInfoModal: function() {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var existing = document.getElementById('pv-info-modal');
       if (existing) { existing.remove(); return; }
 
@@ -439,32 +434,32 @@
         '<div class="pv-info-modal-box">' +
           '<div class="pv-info-modal-header">' +
             '<span class="pv-info-modal-icon">' + '<span class="material-symbols-outlined">auto_stories</span>' + '</span>' +
-            '<h2 class="pv-info-modal-title">' + t('whatArePhrasalVerbs', 'What are Phrasal Verbs') + '</h2>' +
+            '<h2 class="pv-info-modal-title">' + 'What are Phrasal Verbs' + '</h2>' +
             '<button class="pv-info-modal-close" onclick="document.getElementById(\'pv-info-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
           '<div class="pv-info-modal-body">' +
-            '<p><strong>' + t('pvInfoH1', 'What are phrasal verbs?') + '</strong></p>' +
-            '<p>' + t('pvInfoP1', 'Phrasal verbs are combinations of a verb and one or two particles (a preposition or an adverb) that together create a meaning different from the original verb.') + '</p>' +
-            '<p>' + t('pvInfoP2', 'For example:') + '</p>' +
+            '<p><strong>' + 'What are phrasal verbs?' + '</strong></p>' +
+            '<p>' + 'Phrasal verbs are combinations of a verb and one or two particles (a preposition or an adverb) that together create a meaning different from the original verb.' + '</p>' +
+            '<p>' + 'For example:' + '</p>' +
             '<ul class="pv-info-list">' +
-              '<li>' + t('pvInfoEx1', '<em>look</em> (to see) → <em>look after</em> (to take care of)') + '</li>' +
-              '<li>' + t('pvInfoEx2', '<em>get</em> (to obtain) → <em>get along</em> (to have a good relationship)') + '</li>' +
+              '<li>' + '<em>look</em> (to see) → <em>look after</em> (to take care of)' + '</li>' +
+              '<li>' + '<em>get</em> (to obtain) → <em>get along</em> (to have a good relationship)' + '</li>' +
             '</ul>' +
-            '<p>' + t('pvInfoP3', '👉 The key point is that their meaning is often <strong>not literal</strong>, so they need to be learned as a whole.') + '</p>' +
-            '<p><strong>' + t('pvInfoP4', 'Why are they important?') + '</strong></p>' +
-            '<p>' + t('pvInfoP5', 'Phrasal verbs are very common in everyday English and frequently appear in Cambridge exams. Learning them will help you:') + '</p>' +
+            '<p>' + '👉 The key point is that their meaning is often <strong>not literal</strong>, so they need to be learned as a whole.' + '</p>' +
+            '<p><strong>' + 'Why are they important?' + '</strong></p>' +
+            '<p>' + 'Phrasal verbs are very common in everyday English and frequently appear in Cambridge exams. Learning them will help you:' + '</p>' +
             '<ul class="pv-info-list">' +
-              '<li>' + t('pvInfoL1', 'Understand real-life conversations') + '</li>' +
-              '<li>' + t('pvInfoL2', 'Sound more natural when speaking') + '</li>' +
-              '<li>' + t('pvInfoL3', 'Improve your exam performance') + '</li>' +
+              '<li>' + 'Understand real-life conversations' + '</li>' +
+              '<li>' + 'Sound more natural when speaking' + '</li>' +
+              '<li>' + 'Improve your exam performance' + '</li>' +
             '</ul>' +
-            '<p><strong>' + t('pvInfoTipTitle', 'Tip 💡') + '</strong></p>' +
-            '<p>' + t('pvInfoTipBody', 'Try to learn them with examples and in context, not as isolated words.') + '</p>' +
+            '<p><strong>' + 'Tip 💡' + '</strong></p>' +
+            '<p>' + 'Try to learn them with examples and in context, not as isolated words.' + '</p>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
-            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-info-modal\').remove()">' + t('gotIt', 'Got it!') + '</button>' +
+            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-info-modal\').remove()">' + 'Got it!' + '</button>' +
           '</div>' +
         '</div>';
 
@@ -477,7 +472,6 @@
     // ── CENTER MAP ───────────────────────────────────────────────────────
     _buildProgressionMap: function(catMeta, data, activeLevel) {
       var self = this;
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var LESSONS_PER_PAGE = 4;
 
       var level = null;
@@ -485,7 +479,7 @@
         if (data.levels[i].id === activeLevel) { level = data.levels[i]; break; }
       }
       if (!level || !level.lessons || level.lessons.length === 0) {
-        return '<div class="fe-map-empty">' + t('noLessonsAvailable', 'No lessons available for this level yet.') + '</div>';
+        return '<div class="fe-map-empty">' + 'No lessons available for this level yet.' + '</div>';
       }
 
       var totalLessons = level.lessons.length;
@@ -518,7 +512,7 @@
         for (var p = 0; p < totalPages; p++) {
           var startL = p * LESSONS_PER_PAGE + 1;
           var endL = Math.min((p + 1) * LESSONS_PER_PAGE, totalLessons);
-          html += '<div class="fe-map-page-dot' + (p === initialPage ? ' fe-map-page-dot-active' : '') + '" data-page="' + p + '" onclick="FastExercises._goToMapPage(' + p + ')" title="' + t('lessons', 'Lessons') + ' ' + startL + '\u2013' + endL + '"></div>';
+          html += '<div class="fe-map-page-dot' + (p === initialPage ? ' fe-map-page-dot-active' : '') + '" data-page="' + p + '" onclick="FastExercises._goToMapPage(' + p + ')" title="' + 'Lessons' + ' ' + startL + '\u2013' + endL + '"></div>';
         }
         html += '</div>';
       }
@@ -557,7 +551,7 @@
 
           html += '<div class="fe-map-lesson ' + lessonClass + '">' +
             '<div class="fe-map-lesson-title">' +
-              '<span class="fe-map-lesson-num">' + t('lesson', 'Lesson') + ' ' + (li + 1) + '</span>' +
+              '<span class="fe-map-lesson-num">' + 'Lesson' + ' ' + (li + 1) + '</span>' +
               '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
             '</div>' +
             '<div class="fe-map-points-row">';
@@ -586,8 +580,8 @@
                 html += '<div class="fe-review-row fe-level-item ' + reviewStateClass + '" ' + reviewOnclick + '>' +
                   '<span class="fe-level-icon">' + reviewIcon + '</span>' +
                   '<div class="fe-level-label">' +
-                    '<span class="fe-level-name">' + self._escapeHTML(point.label || t('review', 'Review')) + '</span>' +
-                    '<span class="fe-level-pct">' + (isDone ? t('completed', 'Completed') : (isAccessible ? t('available', 'Available') : t('locked', 'Locked'))) + '</span>' +
+                    '<span class="fe-level-name">' + self._escapeHTML(point.label || 'Review') + '</span>' +
+                    '<span class="fe-level-pct">' + (isDone ? 'Completed' : (isAccessible ? 'Available' : 'Locked')) + '</span>' +
                   '</div>' +
                 '</div>';
                 continue;
@@ -686,7 +680,6 @@
 
     // ── RIGHT WIDGET ─────────────────────────────────────────────────────
     _buildQuickReviewWidget: function(catMeta, data) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
 
       // Level checkboxes for mixer
@@ -709,25 +702,24 @@
           mistakesHtml += '<div class="fe-mistake-item">' + self._escapeHTML(mistakes[m]) + '</div>';
         }
       } else {
-        mistakesHtml = '<div class="fe-no-mistakes">' + t('noMistakesYet', 'No mistakes yet — keep practicing!') + '</div>';
+        mistakesHtml = '<div class="fe-no-mistakes">' + 'No mistakes yet — keep practicing!' + '</div>';
       }
 
       return '<div class="sidebar-widget fe-review-widget">' +
-        '<div class="fe-review-title">' + _mi('sync') + ' ' + t('quickReview', 'Quick Review') + '</div>' +
-        '<div class="fe-review-subtitle">' + t('mixerForCategory', 'Mixer for') + ' ' + this._escapeHTML(catMeta.name) + '</div>' +
+        '<div class="fe-review-title">' + _mi('sync') + ' ' + 'Quick Review' + '</div>' +
+        '<div class="fe-review-subtitle">' + 'Mixer for' + ' ' + this._escapeHTML(catMeta.name) + '</div>' +
         '<div class="fe-mixer-levels">' + levelsCheckboxes + '</div>' +
         '<button class="fe-review-btn" onclick="FastExercises._startQuickReview(\'' + catMeta.id + '\')" style="background:' + catMeta.color + '">' +
-          t('startReview', 'Start Review') +
+          'Start Review' +
         '</button>' +
         '<div class="fe-review-divider"></div>' +
-        '<div class="fe-mistakes-title">' + t('recentMistakes', 'Recent Mistakes') + '</div>' +
+        '<div class="fe-mistakes-title">' + 'Recent Mistakes' + '</div>' +
         '<div class="fe-mistakes-list">' + mistakesHtml + '</div>' +
       '</div>';
     },
 
     // ── BOTTOM BAR ───────────────────────────────────────────────────────
     _buildBottomProgressBar: function(catMeta, data, activeLevel) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var lvPct = this._getLevelPercent(catMeta.id, activeLevel, data.levels);
 
       return '<div class="fe-bottom-bar">' +
@@ -741,7 +733,7 @@
           '<span class="fe-bottom-pct">' + lvPct + '%</span>' +
         '</div>' +
         '<button class="fe-bottom-continue-btn" onclick="FastExercises._continueCategory(\'' + catMeta.id + '\', \'' + activeLevel + '\')" style="background:' + catMeta.color + '">' +
-          t('continue', 'Continue') +
+          'Continue' +
         '</button>' +
       '</div>';
     },
@@ -822,7 +814,6 @@
     openPoint: async function(categoryId, levelId, lessonId, pointIndex) {
       var content = document.getElementById('main-content');
       if (!content) return;
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
 
       this._currentCategory = categoryId;
@@ -872,7 +863,7 @@
           content.innerHTML =
             '<div class="fe-point-view">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')">' + t('back', 'Back') + '</button>' +
+                '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')">' + 'Back' + '</button>' +
                 '<div>' +
                   '<div class="subpage-title">' + self._escapeHTML(pointLabel) + '</div>' +
                   '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle) + '</div>' +
@@ -880,9 +871,9 @@
               '</div>' +
               '<div class="fe-point-card">' +
                 '<div class="fe-point-icon">' + _mi('description') + '</div>' +
-                '<div class="fe-point-message">' + t('contentComingSoon', 'Detailed content coming soon! Point marked as complete.') + '</div>' +
+                '<div class="fe-point-message">' + 'Detailed content coming soon! Point marked as complete.' + '</div>' +
                 '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#3b82f6') + '">' +
-                  t('next', 'Next') + '' +
+                  'Next' + '' +
                 '</button>' +
               '</div>' +
             '</div>';
@@ -912,7 +903,7 @@
         content.innerHTML =
           '<div class="fe-point-view">' +
             '<div class="subpage-header">' +
-              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')">' + t('back', 'Back') + '</button>' +
+              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')">' + 'Back' + '</button>' +
               '<div>' +
                 '<div class="subpage-title">' + self._escapeHTML(pointLabel) + '</div>' +
                 '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonId) + '</div>' +
@@ -920,9 +911,9 @@
             '</div>' +
             '<div class="fe-point-card">' +
               '<div class="fe-point-icon">' + (pointType === 'trophy' ? _mi('emoji_events') : _mi('description')) + '</div>' +
-              '<div class="fe-point-message">' + t('contentComingSoon', 'Detailed content coming soon! Point marked as complete.') + '</div>' +
+              '<div class="fe-point-message">' + 'Detailed content coming soon! Point marked as complete.' + '</div>' +
               '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#3b82f6') + '">' +
-                t('next', 'Next') + '' +
+                'Next' + '' +
               '</button>' +
             '</div>' +
           '</div>';
@@ -945,7 +936,6 @@
 
     // ── RENDER EXPLANATION POINT ─────────────────────────────────────────
     _renderExplanationPoint: function(container, point, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var ct = point.content || {};
 
@@ -974,7 +964,7 @@
       container.innerHTML =
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
             '<div>' +
               '<div class="subpage-title">' + self._escapeHTML(point.label) + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
@@ -983,10 +973,10 @@
           '<div class="fe-explanation-card" style="--cat-color:' + catMeta.color + '">' +
             '<div class="fe-explanation-verb">' + self._escapeHTML(ct.phrasalVerb || point.label) + '</div>' +
             '<div class="fe-explanation-def">' + self._escapeHTML(ct.definition || '') + '</div>' +
-            (examplesHtml ? '<div class="fe-explanation-examples"><h4>' + _mi('lightbulb') + ' ' + t('examples', 'Examples') + '</h4><ul class="fe-example-list">' + examplesHtml + '</ul></div>' : '') +
+            (examplesHtml ? '<div class="fe-explanation-examples"><h4>' + _mi('lightbulb') + ' ' + 'Examples' + '</h4><ul class="fe-example-list">' + examplesHtml + '</ul></div>' : '') +
             relatedHtml +
             '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-              t('gotItNext', 'Got it! Next') + '' +
+              'Got it! Next' + '' +
             '</button>' +
           '</div>' +
         '</div>';
@@ -994,7 +984,6 @@
 
     // ── RENDER EXERCISE POINT ────────────────────────────────────────────
     _renderExercisePoint: function(container, point, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var ct = point.content || {};
       var questions = ct.questions || [];
@@ -1005,7 +994,7 @@
         container.innerHTML =
           '<div class="fe-point-view">' +
             '<div class="subpage-header">' +
-              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
+              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
               '<div>' +
                 '<div class="subpage-title">' + self._escapeHTML(point.label) + '</div>' +
                 '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
@@ -1013,9 +1002,9 @@
             '</div>' +
             '<div class="fe-point-card">' +
               '<div class="fe-point-icon">' + (point.type === 'trophy' ? _mi('emoji_events') : _mi('check_circle')) + '</div>' +
-              '<div class="fe-point-message">' + t('exerciseComingSoon', 'Exercises for this section coming soon! Point marked as complete.') + '</div>' +
+              '<div class="fe-point-message">' + 'Exercises for this section coming soon! Point marked as complete.' + '</div>' +
               '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-                t('next', 'Next') + '' +
+                'Next' + '' +
               '</button>' +
             '</div>' +
           '</div>';
@@ -1032,7 +1021,7 @@
         });
 
         questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
-          '<div class="fe-quiz-num">' + t('question', 'Question') + ' ' + (qi + 1) + '/' + questions.length + '</div>' +
+          '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + questions.length + '</div>' +
           '<div class="fe-quiz-sentence">' + self._escapeHTML(q.sentence || '') + '</div>' +
           '<div class="fe-quiz-options">' + optionsHtml + '</div>' +
           '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
@@ -1042,7 +1031,7 @@
       container.innerHTML =
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + t('back', 'Back') + '</button>' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
             '<div>' +
               '<div class="subpage-title">' + self._escapeHTML(point.label) + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + ' · ' + (ct.instructions || '') + '</div>' +
@@ -1059,7 +1048,7 @@
               '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
               '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
               '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-                t('next', 'Next') + '' +
+                'Next' + '' +
               '</button>' +
             '</div>' +
           '</div>' +
@@ -1096,15 +1085,14 @@
 
       // Show feedback
       if (feedbackEl) {
-        var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
         if (isCorrect) {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-correct';
           feedbackEl.textContent = '';
-          feedbackEl.innerHTML = _mi('check_circle') + ' ' + t('correct', 'Correct') + '!';
+          feedbackEl.innerHTML = _mi('check_circle') + ' ' + 'Correct' + '!';
         } else {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
           feedbackEl.textContent = '';
-          feedbackEl.innerHTML = _mi('cancel') + ' ' + t('correctAnswerIs', 'The correct answer is') + ' ' + correctAnswer;
+          feedbackEl.innerHTML = _mi('cancel') + ' ' + 'The correct answer is' + ' ' + correctAnswer;
         }
         feedbackEl.style.display = 'block';
       }
@@ -1131,8 +1119,7 @@
           var completeSection = document.getElementById('fe-quiz-complete');
           var completeText = document.getElementById('fe-quiz-complete-text');
           if (completeSection && completeText) {
-            var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
-            completeText.textContent = correct + '/' + total + ' ' + t('correct', 'correct') + '!';
+            completeText.textContent = correct + '/' + total + ' ' + 'correct' + '!';
             completeSection.style.display = 'block';
           }
           // Hide last question
@@ -1158,7 +1145,6 @@
 
     // ── PV SIDEBAR BUILDER ───────────────────────────────────────────────
     _buildPvSidebarHtml: function(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
 
       var pvIconMap = {
@@ -1170,11 +1156,11 @@
       };
 
       var pvDescriptions = {
-        'pv-gallery':           t('pvGalleryDesc', 'Read and learn the phrasal verbs for this lesson.'),
-        'pv-fill-in':           t('pvFillInDesc', 'Choose or write the correct phrasal verb for each sentence.'),
-        'pv-conversations':     t('pvConvsDesc', 'Read the conversations. Tap highlighted verbs to see their definition.'),
-        'pv-conversation-drag': t('pvDragDesc', 'Drag each phrasal verb to the correct gap in the conversation.'),
-        'pv-mixed':             t('pvMixedDesc', 'Mixed practice: test yourself with questions from the whole lesson.')
+        'pv-gallery':           'Read and learn the phrasal verbs for this lesson.',
+        'pv-fill-in':           'Choose or write the correct phrasal verb for each sentence.',
+        'pv-conversations':     'Read the conversations. Tap highlighted verbs to see their definition.',
+        'pv-conversation-drag': 'Drag each phrasal verb to the correct gap in the conversation.',
+        'pv-mixed':             'Mixed practice: test yourself with questions from the whole lesson.'
       };
 
       var dotsHtml = '';
@@ -1223,13 +1209,13 @@
       return '<div class="pv-point-sidebar" id="pv-point-sidebar">' +
         '<div class="pv-sidebar-top-row">' +
           '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
-            t('back', 'Back') +
+            'Back' +
           '</button>' +
-          '<button class="pv-sidebar-collapse-btn" id="pv-sidebar-toggle" title="' + t('collapse', 'Collapse') + '" onclick="FastExercises._pvToggleSidebar()">' +
+          '<button class="pv-sidebar-collapse-btn" id="pv-sidebar-toggle" title="' + 'Collapse' + '" onclick="FastExercises._pvToggleSidebar()">' +
             '<span class="material-symbols-outlined pv-sidebar-toggle-icon">chevron_left</span>' +
           '</button>' +
         '</div>' +
-        '<button class="pv-sidebar-exit-btn" title="' + t('back', 'Back') + '" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
+        '<button class="pv-sidebar-exit-btn" title="' + 'Back' + '" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
           '<span class="material-symbols-outlined">close</span>' +
         '</button>' +
         '<div class="pv-sidebar-content" id="pv-sidebar-content">' +
@@ -1257,7 +1243,6 @@
     },
 
     _showPvLessonInfoModal: function(lessonTitle, levelId) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       // Toggle: if already open, clicking the info button closes it
       var existing = document.getElementById('pv-lesson-info-modal');
@@ -1290,7 +1275,7 @@
             (verbsHtml ? '<div class="pv-lesson-info-verbs">' + verbsHtml + '</div>' : '') +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
-            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-lesson-info-modal\').remove()">' + t('gotIt', 'Got it!') + '</button>' +
+            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-lesson-info-modal\').remove()">' + 'Got it!' + '</button>' +
           '</div>' +
         '</div>';
 
@@ -1300,14 +1285,13 @@
 
     // ── PV GALLERY (Point 1) ─────────────────────────────────────────────
     _renderPvGallery: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       this._currentLessonData = lessonData;
       var pvs = (lessonData && lessonData.phrasalVerbs) || [];
 
       if (pvs.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button></div></div>';
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
         return;
       }
 
@@ -1346,7 +1330,7 @@
             '</div>' +
             '<div class="pv-gallery-footer">' +
               '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-                t('gotItNext', 'Got it! Next') + '' +
+                'Got it! Next' + '' +
               '</button>' +
             '</div>' +
           '</div>' +
@@ -1384,14 +1368,13 @@
 
     // ── PV FILL-IN EXERCISES (Point 2) ───────────────────────────────────
     _renderPvFillIn: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       this._currentLessonData = lessonData;
       var exercises = (lessonData && lessonData.fillInExercises) || [];
 
       if (exercises.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button></div></div>';
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
         return;
       }
 
@@ -1407,13 +1390,13 @@
         } else if (ex.type === 'write-verb') {
           inputHtml = '<div class="pv-write-row">' +
             (ex.hint ? '<span class="pv-write-hint">' + self._escapeHTML(ex.hint) + '</span>' : '') +
-            '<input type="text" class="pv-write-input" id="pv-write-' + qi + '" placeholder="' + t('typeVerb', 'Type the verb…') + '" />' +
-            '<button class="pv-write-btn" onclick="FastExercises._checkPvWriteVerb(' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('check', 'Check') + '</button>' +
+            '<input type="text" class="pv-write-input" id="pv-write-' + qi + '" placeholder="' + 'Type the verb…' + '" />' +
+            '<button class="pv-write-btn" onclick="FastExercises._checkPvWriteVerb(' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Check' + '</button>' +
           '</div>';
         }
 
         questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
-          '<div class="fe-quiz-num">' + t('question', 'Question') + ' ' + (qi + 1) + '/' + exercises.length + '</div>' +
+          '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + exercises.length + '</div>' +
           '<div class="fe-quiz-sentence pv-fillin-sentence">' + self._escapeHTML(ex.sentence || '') + '</div>' +
           inputHtml +
           '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
@@ -1432,7 +1415,7 @@
               '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
                 '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
                 '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
-                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -1471,7 +1454,6 @@
     },
 
     _processPvFillInAnswer: function(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var feedbackEl = document.getElementById('fe-quiz-feedback-' + qIndex);
       var questionsContainer = document.getElementById('fe-quiz-questions');
@@ -1479,10 +1461,10 @@
       if (feedbackEl) {
         if (isCorrect) {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-correct';
-          feedbackEl.innerHTML = _mi('check_circle') + ' ' + t('correct', 'Correct') + '!';
+          feedbackEl.innerHTML = _mi('check_circle') + ' ' + 'Correct' + '!';
         } else {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
-          feedbackEl.innerHTML = _mi('cancel') + ' ' + t('correctAnswerIs', 'The correct answer is') + ' <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
+          feedbackEl.innerHTML = _mi('cancel') + ' ' + 'The correct answer is' + ' <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
         }
         feedbackEl.style.display = 'block';
       }
@@ -1502,7 +1484,7 @@
           var completeSection = document.getElementById('fe-quiz-complete');
           var completeText = document.getElementById('fe-quiz-complete-text');
           if (completeSection && completeText) {
-            completeText.textContent = correct + '/' + total + ' ' + t('correct', 'correct') + '!';
+            completeText.textContent = correct + '/' + total + ' ' + 'correct' + '!';
             completeSection.style.display = 'block';
           }
           var qs = document.querySelectorAll('.fe-quiz-question');
@@ -1516,7 +1498,6 @@
 
     // ── PV CONVERSATIONS (Point 3) ───────────────────────────────────────
     _renderPvConversations: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var convs = (lessonData && lessonData.conversations) || [];
 
@@ -1526,7 +1507,7 @@
 
       if (convs.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button></div></div>';
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
         return;
       }
 
@@ -1580,9 +1561,9 @@
               '</div>' +
             '</div>' +
             '<div class="pv-conv-footer">' +
-              '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + t('pvHighlightHint', 'Phrasal verbs are highlighted in bold. Click a highlighted verb to see its definition.') + '</p>' +
+              '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + 'Phrasal verbs are highlighted in bold. Click a highlighted verb to see its definition.' + '</p>' +
               '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
-                t('readyNext', 'Ready! Next') +
+                'Ready! Next' +
               '</button>' +
             '</div>' +
           '</div>' +
@@ -1620,7 +1601,6 @@
 
     // ── PV CONVERSATION DRAG (Point 4) ───────────────────────────────────
     _renderPvConversationDrag: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       this._currentLessonData = lessonData;
       var convs = (lessonData && lessonData.conversations) || [];
@@ -1628,7 +1608,7 @@
 
       if (convs.length === 0 || pvs.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button></div></div>';
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
         return;
       }
 
@@ -1646,7 +1626,6 @@
     },
 
     _pvDragRenderConv: function(container, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var ctx = this._pvDragContext;
       var convs = ctx.convs;
@@ -1724,15 +1703,15 @@
                 '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
               '</div>' +
               '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
-                '<div class="pv-chips-title">' + t('phrasalVerbs', 'Phrasal Verbs') + ':</div>' +
+                '<div class="pv-chips-title">' + 'Phrasal Verbs' + ':</div>' +
                 '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
               '</div>' +
               '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
                 '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
                 '<div class="pv-drag-result-text" id="pv-drag-result-text"></div>' +
                 (convIdx + 1 < totalConvs
-                  ? '<button class="fe-point-next-btn" onclick="FastExercises._pvDragNextConv()" style="background:' + catMeta.color + '">' + t('nextConversation', 'Next Conversation') + '</button>'
-                  : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>'
+                  ? '<button class="fe-point-next-btn" onclick="FastExercises._pvDragNextConv()" style="background:' + catMeta.color + '">' + 'Next Conversation' + '</button>'
+                  : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
                 ) +
               '</div>' +
             '</div>' +
@@ -1830,8 +1809,7 @@
           var result = document.getElementById('pv-drag-result');
           var resultText = document.getElementById('pv-drag-result-text');
           if (result && resultText) {
-            var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
-            resultText.textContent = t('allCorrect', 'All correct! Well done!');
+            resultText.textContent = 'All correct! Well done!';
             result.style.display = 'flex';
           }
           if (isLastConv && typeof StreakManager !== 'undefined') StreakManager.recordActivity();
@@ -1841,7 +1819,6 @@
 
     // ── PV MIXED PRACTICE (Point 5) ──────────────────────────────────────
     _renderPvMixed: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       this._currentLessonData = lessonData;
       var fillIns = (lessonData && lessonData.fillInExercises) || [];
@@ -1875,7 +1852,7 @@
 
       if (mixed.length === 0) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + t('contentComingSoon', 'Content coming soon!') + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button></div></div>';
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
         return;
       }
 
@@ -1896,12 +1873,12 @@
           } else if (ex.type === 'write-verb') {
             inputHtml = '<div class="pv-write-row">' +
               (ex.hint ? '<span class="pv-write-hint">' + self._escapeHTML(ex.hint) + '</span>' : '') +
-              '<input type="text" class="pv-write-input" id="pv-mx-write-' + qi + '" placeholder="' + t('typeVerb', 'Type the verb…') + '" />' +
-              '<button class="pv-write-btn" onclick="FastExercises._checkPvMixedWrite(' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('check', 'Check') + '</button>' +
+              '<input type="text" class="pv-write-input" id="pv-mx-write-' + qi + '" placeholder="' + 'Type the verb…' + '" />' +
+              '<button class="pv-write-btn" onclick="FastExercises._checkPvMixedWrite(' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Check' + '</button>' +
             '</div>';
           }
           questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
-            '<div class="fe-quiz-num">' + t('question', 'Question') + ' ' + (qi + 1) + '/' + mixed.length + '</div>' +
+            '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + mixed.length + '</div>' +
             '<div class="fe-quiz-sentence pv-fillin-sentence">' + self._escapeHTML(ex.sentence || '') + '</div>' +
             inputHtml +
             '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
@@ -1916,7 +1893,7 @@
             optHtml += '<button class="fe-quiz-option" data-question="pm' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerPvMixed(this,' + qi + ',\'' + self._jsStr(ds.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ',\'conv\')">' + self._escapeHTML(opt) + '</button>';
           });
           questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
-            '<div class="fe-quiz-num">' + t('question', 'Question') + ' ' + (qi + 1) + '/' + mixed.length + '</div>' +
+            '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + mixed.length + '</div>' +
             '<div class="pv-mx-conv-label">' + _mi('forum') + ' ' + self._escapeHTML(ds.speaker || '') + ':</div>' +
             '<div class="fe-quiz-sentence pv-fillin-sentence">' + self._escapeHTML(ds.sentence || '') + '</div>' +
             '<div class="fe-quiz-options">' + optHtml + '</div>' +
@@ -1937,7 +1914,7 @@
               '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
                 '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
                 '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
-                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + t('next', 'Next') + '</button>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -1975,7 +1952,6 @@
     },
 
     _processPvMixedAnswer: function(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var self = this;
       var feedbackEl = document.getElementById('fe-quiz-feedback-' + qIndex);
       var questionsContainer = document.getElementById('fe-quiz-questions');
@@ -1983,10 +1959,10 @@
       if (feedbackEl) {
         if (isCorrect) {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-correct';
-          feedbackEl.innerHTML = _mi('check_circle') + ' ' + t('correct', 'Correct') + '!';
+          feedbackEl.innerHTML = _mi('check_circle') + ' ' + 'Correct' + '!';
         } else {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
-          feedbackEl.innerHTML = _mi('cancel') + ' ' + t('correctAnswerIs', 'The correct answer is') + ' <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
+          feedbackEl.innerHTML = _mi('cancel') + ' ' + 'The correct answer is' + ' <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
         }
         feedbackEl.style.display = 'block';
       }
@@ -2006,7 +1982,7 @@
           var completeSection = document.getElementById('fe-quiz-complete');
           var completeText = document.getElementById('fe-quiz-complete-text');
           if (completeSection && completeText) {
-            completeText.textContent = correct + '/' + total + ' ' + t('correct', 'correct') + '!';
+            completeText.textContent = correct + '/' + total + ' ' + 'correct' + '!';
             completeSection.style.display = 'block';
           }
           var qs = document.querySelectorAll('.fe-quiz-question');
@@ -2090,7 +2066,6 @@
         .trim();
     },
     _showPvVerbPopup: function(verbText) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var verbs = this._currentPvVerbs || [];
       var pv = null;
       var lv = (verbText || '').trim().toLowerCase();
@@ -2135,7 +2110,7 @@
           '<button class="pv-verb-popup-close" onclick="document.getElementById(\'pv-verb-popup\').remove()">' +
             '<span class="material-symbols-outlined">close</span>' +
           '</button>' +
-          '<div class="pv-verb-popup-badge">' + t('phrasalVerb', 'Phrasal Verb') + '</div>' +
+          '<div class="pv-verb-popup-badge">' + 'Phrasal Verb' + '</div>' +
           '<div class="pv-verb-popup-verb">' + FastExercises._escapeHTML(pv.verb || '') + '</div>' +
           '<div class="pv-verb-popup-def">' + FastExercises._escapeHTML(pv.definition || '') + '</div>' +
           (examplesHtml ? '<ul class="pv-verb-popup-examples">' + examplesHtml + '</ul>' : '') +

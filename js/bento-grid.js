@@ -74,7 +74,6 @@
     },
 
     _renderRecommendedExercise: function(exams) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var weak = this._getWeakTopic(exams);
 
       // If no score data yet, suggest first incomplete part
@@ -100,7 +99,7 @@
         return '<div class="bento-card bento-card-weakspot">' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Weak Spot</div>' +
-            '<div class="bento-card-desc">' + t('completeForRecommendations', 'Complete some exercises to get personalised recommendations!') + '</div>' +
+            '<div class="bento-card-desc">' + 'Complete some exercises to get personalised recommendations!' + '</div>' +
           '</div>' +
         '</div>';
       }
@@ -112,15 +111,14 @@
       return '<div class="bento-card bento-card-weakspot" onclick="Exercise.openPart(\'' + this._escapeHTML(weak.examId) + '\', \'' + weak.section + '\', ' + (weak.part || 1) + ')">' +
         '<div class="bento-card-inner">' +
           '<div class="bento-card-title">Weak Spot</div>' +
-          '<div class="bento-card-desc">' + this._escapeHTML(weak.examId) + ' — ' + this._capitalize(weak.section) + (weak.part ? ' ' + t('part', 'Part') + ' ' + weak.part : '') + scoreHtml + '</div>' +
+          '<div class="bento-card-desc">' + this._escapeHTML(weak.examId) + ' — ' + this._capitalize(weak.section) + (weak.part ? ' ' + 'Part' + ' ' + weak.part : '') + scoreHtml + '</div>' +
         '</div>' +
       '</div>';
     },
 
     _renderGradeTracker: function(exams) {
       if (typeof ScoreCalculator === 'undefined') return '';
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
-      var noScore = t('noScoreYet', '–');
+      var noScore = '–';
       var levelData = AppState.currentLevel || 'C1';
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
 
@@ -187,13 +185,13 @@
       });
 
       var subtitleText = examCount > 0
-        ? t('avgAcross', 'Avg. across') + ' ' + examCount + ' ' + t('examsLabel', 'exams') + ' · ' + t('scaleLabel', 'Scale') + ' ' + scaleMin + '–' + scaleMax
-        : t('latestScores', 'Latest registered scores');
+        ? 'Avg. across' + ' ' + examCount + ' ' + 'exams' + ' · ' + 'Scale' + ' ' + scaleMin + '–' + scaleMax
+        : 'Latest registered scores';
 
       return '<div class="bento-grade-row">' +
         '<div class="bento-card bento-grade-tracker">' +
           '<div class="bento-grade-header">' +
-            '<div class="bento-grade-title">' + _mi('bar_chart') + ' ' + t('gradeTracker', 'Current Level') + ' · ' + levelData + '</div>' +
+            '<div class="bento-grade-title">' + _mi('bar_chart') + ' ' + 'Current Level' + ' · ' + levelData + '</div>' +
             '<div class="bento-grade-subtitle">' + subtitleText + '</div>' +
           '</div>' +
           '<div class="bento-grade-bars">' + barsHtml + '</div>' +
@@ -202,14 +200,13 @@
     },
 
     _renderNextLesson: function(lesson) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var completedParts = lesson.completedParts || 0;
       var totalParts = lesson.totalParts || 1;
 
       return '<div class="bento-card bento-card-checkpoint" onclick="Exercise.openPart(\'' + this._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')">' +
         '<div class="bento-card-inner">' +
           '<div class="bento-card-title">Checkpoint</div>' +
-          '<div class="bento-card-desc">' + this._escapeHTML(lesson.examId) + ' — ' + this._capitalize(lesson.section) + ' ' + t('part', 'Part') + ' ' + lesson.part + ' (' + completedParts + '/' + totalParts + ')</div>' +
+          '<div class="bento-card-desc">' + this._escapeHTML(lesson.examId) + ' — ' + this._capitalize(lesson.section) + ' ' + 'Part' + ' ' + lesson.part + ' (' + completedParts + '/' + totalParts + ')</div>' +
         '</div>' +
       '</div>';
     },
@@ -315,19 +312,18 @@
       var content = document.getElementById('main-content');
       if (!content) return;
 
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
 
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var categories = [
-        { id: 'all', icon: 'bolt', name: t('allExercises', 'All Exercises'), desc: t('allExercisesDesc', 'Mixed practice from all categories') },
-        { id: 'definitions', icon: 'menu_book', name: t('definitions', 'Definitions'), desc: t('definitionsDesc', 'Vocabulary and word meaning exercises') },
-        { id: 'pronunciation', icon: 'record_voice_over', name: t('pronunciation', 'Pronunciation'), desc: t('pronunciationDesc', 'Practice correct word pronunciation') },
-        { id: 'phrasal_verbs', icon: 'link', name: t('phrasalVerbs', 'Phrasal Verbs'), desc: t('phrasalVerbsDesc', 'Common phrasal verb exercises') },
-        { id: 'mini_listening', icon: 'headphones', name: t('miniListening', 'Mini-Listening'), desc: t('miniListeningDesc', 'Short audio comprehension tasks') },
-        { id: 'mini_reading', icon: 'edit_note', name: t('miniReading', 'Mini-Reading'), desc: t('miniReadingDesc', 'Quick reading comprehension tasks') },
-        { id: 'transformations', icon: 'sync', name: t('transformations', 'Transformations'), desc: t('transformationsDesc', 'Key word transformation practice') }
+        { id: 'all', icon: 'bolt', name: 'All Exercises', desc: 'Mixed practice from all categories' },
+        { id: 'definitions', icon: 'menu_book', name: 'Definitions', desc: 'Vocabulary and word meaning exercises' },
+        { id: 'pronunciation', icon: 'record_voice_over', name: 'Pronunciation', desc: 'Practice correct word pronunciation' },
+        { id: 'phrasal_verbs', icon: 'link', name: 'Phrasal Verbs', desc: 'Common phrasal verb exercises' },
+        { id: 'mini_listening', icon: 'headphones', name: 'Mini-Listening', desc: 'Short audio comprehension tasks' },
+        { id: 'mini_reading', icon: 'edit_note', name: 'Mini-Reading', desc: 'Quick reading comprehension tasks' },
+        { id: 'transformations', icon: 'sync', name: 'Transformations', desc: 'Key word transformation practice' }
       ];
 
       var buttonsHtml = '';
@@ -359,10 +355,10 @@
           '<div class="dashboard-center">' +
             '<div class="qs-chooser-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
                 '<div>' +
-                  '<div class="subpage-title">' + t('quicksteps', 'Quicksteps') + '</div>' +
-                  '<div class="subpage-subtitle">' + t('quickstepsSubtitle', 'Choose a category to start practicing') + '</div>' +
+                  '<div class="subpage-title">' + 'Quicksteps' + '</div>' +
+                  '<div class="subpage-subtitle">' + 'Choose a category to start practicing' + '</div>' +
                 '</div>' +
               '</div>' +
               '<div class="qs-chooser-grid">' + buttonsHtml + '</div>' +
@@ -388,7 +384,6 @@
     openLessons: function() {
       var content = document.getElementById('main-content');
       if (!content) return;
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var level = AppState.currentLevel || 'C1';
 
       // Define placeholder curriculum sections for the learning time view
@@ -409,8 +404,8 @@
       mapHtml += '<div class="lt-coming-soon-banner">' +
         _mi('schedule') +
         '<div class="lt-coming-soon-text">' +
-          '<strong>' + t('comingSoon', 'Coming Soon') + '</strong>' +
-          '<span>' + t('courseComingDesc', 'The Course curriculum is under development. Structured lessons with explanations, exercises, and progress tracking will be available here soon.') + '</span>' +
+          '<strong>' + 'Coming Soon' + '</strong>' +
+          '<span>' + 'The Course curriculum is under development. Structured lessons with explanations, exercises, and progress tracking will be available here soon.' + '</span>' +
         '</div>' +
       '</div>';
 
@@ -420,7 +415,7 @@
         mapHtml += '<div class="fe-map-lesson fe-lesson-locked">' +
           '<div class="fe-map-lesson-title">' +
             '<span class="fe-map-lesson-lock">' + _mi('lock') + '</span>' +
-            '<span class="fe-map-lesson-num">' + t('section', 'Section') + ' ' + (si + 1) + '</span>' +
+            '<span class="fe-map-lesson-num">' + 'Section' + ' ' + (si + 1) + '</span>' +
             '<span class="fe-map-lesson-name">' + _mi(section.icon) + ' ' + section.name + '</span>' +
           '</div>' +
           '<div class="fe-map-points-row">';
@@ -431,7 +426,7 @@
             '<span class="fe-level-icon">' + _mi('lock') + '</span>' +
             '<div class="fe-level-label">' +
               '<span class="fe-level-name">' + section.lessons[li] + '</span>' +
-              '<span class="fe-level-pct">' + t('comingSoon', 'Coming Soon') + '</span>' +
+              '<span class="fe-level-pct">' + 'Coming Soon' + '</span>' +
             '</div>' +
           '</div>';
         }
@@ -459,10 +454,10 @@
           '<div class="dashboard-center">' +
             '<div class="fe-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
                 '<div>' +
                   '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
-                  '<div class="subpage-subtitle">' + t('structuredLessons', 'Structured lessons for') + ' ' + level + '</div>' +
+                  '<div class="subpage-subtitle">' + 'Structured lessons for' + ' ' + level + '</div>' +
                 '</div>' +
               '</div>' +
               mapHtml +
@@ -473,19 +468,17 @@
     },
 
     _buildStreakSidebarHtml: function() {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       return '<div class="sidebar-widget-pastel sw-streak" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
-        '<div class="sidebar-widget-pastel-title" style="text-align:center">' + t('dayStreak', 'Day Streak') + '</div>' +
+        '<div class="sidebar-widget-pastel-title" style="text-align:center">' + 'Day Streak' + '</div>' +
         '<div class="sw-streak-count">' + streakCount + '</div>' +
       '</div>';
     },
 
     _buildCalendarSidebarHtml: function() {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
-      var locale = (typeof AppState !== 'undefined' && AppState.currentLanguage) ? AppState.currentLanguage : 'es';
+      var locale = 'en';
 
       // Use activeDates array for accurate calendar display
       var trainedDates = {};
@@ -546,7 +539,7 @@
       }
 
       return '<div class="sidebar-widget-pastel sw-calendar" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
-        '<div class="sidebar-widget-pastel-title">' + t('calendar', 'Calendar') + '</div>' +
+        '<div class="sidebar-widget-pastel-title">' + 'Calendar' + '</div>' +
         '<div class="sw-calendar-month-label">' + monthLabel + '</div>' +
         '<div class="sw-calendar-grid">' + headerHtml + emptyCells + daysCells + '</div>' +
       '</div>';
@@ -554,7 +547,6 @@
 
     _buildLevelSelectorSidebarHtml: function() {
       var self = this;
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var currentLevel = AppState.currentLevel || 'C1';
       var levels = [
         { code: 'B1', icon: 'fas fa-book-reader', label: 'B1 Preliminary' },
@@ -570,15 +562,15 @@
 
       // "YOU ARE STUDYING" header + level badge
       var html = '<div class="sidebar-widget" style="background:transparent;box-shadow:none;border:none;padding:0;">' +
-        '<div style="font-size:0.78rem;font-weight:700;color:#5a7a9a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;text-align:center;">' + t('You are studying', 'You are studying') + '</div>' +
+        '<div style="font-size:0.78rem;font-weight:700;color:#5a7a9a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;text-align:center;">' + 'You are studying' + '</div>' +
         '<div class="sidebar-level-badge" data-level="' + currentLevel + '" onclick="BentoGrid.toggleLevelDropdown()" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid.toggleLevelDropdown()}" role="button" tabindex="0" aria-expanded="false" style="cursor:pointer;background:' + lc.bg + '">' +
-          '<div class="sidebar-level-badge-label" style="color:' + lc.label + '">' + t('level', 'Level') + '</div>' +
+          '<div class="sidebar-level-badge-label" style="color:' + lc.label + '">' + 'Level' + '</div>' +
           '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + currentLevel + '</div>' +
         '</div>';
 
       // Level dropdown (hidden by default) — carousel style
       html += '<div class="level-selector-options level-selector-collapsed" id="level-selector-options-panel">' +
-        '<div class="level-selector-changing-to">' + t('You are changing to:', 'You are changing to:') + '</div>' +
+        '<div class="level-selector-changing-to">' + 'You are changing to:' + '</div>' +
         '<div class="level-selector-carousel">' +
           '<button class="level-selector-arrow" onclick="event.stopPropagation(); BentoGrid.navigateLevelSelector(-1)" aria-label="Previous level">' +
             '<span class="material-symbols-outlined">chevron_left</span>' +
@@ -601,16 +593,15 @@
     },
 
     _buildContinueBasecampHtml: function(exams) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
 
       // Always point to the Course page (coming soon)
       return '<div class="sw-left-widget sw-continue-basecamp" onclick="BentoGrid.openLessons()" style="cursor:pointer">' +
-        '<div class="sw-left-widget-label">' + t('course', 'Course') + '</div>' +
+        '<div class="sw-left-widget-label">' + 'Course' + '</div>' +
         '<div class="sw-left-widget-row">' +
           '<span class="sw-left-widget-icon"><span class="material-symbols-outlined">auto_stories</span></span>' +
           '<div class="sw-left-widget-info">' +
-            '<div class="sw-left-widget-title">' + t('comingSoon', 'Coming Soon') + '</div>' +
-            '<div class="sw-left-widget-sub">' + t('structuredLessons', 'Structured lessons') + '</div>' +
+            '<div class="sw-left-widget-title">' + 'Coming Soon' + '</div>' +
+            '<div class="sw-left-widget-sub">' + 'Structured lessons' + '</div>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -651,12 +642,11 @@
       if (_levelSelectorPreviewIdx >= otherLevels.length) _levelSelectorPreviewIdx = 0;
       var lvl = otherLevels[_levelSelectorPreviewIdx];
       var lc = _levelColors[lvl] || _levelColors['C1'];
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       badgeContainer.innerHTML =
         '<div class="sidebar-level-badge level-selector-preview-badge" data-level="' + lvl + '" ' +
           'onclick="event.stopPropagation(); BentoGrid.changeLevel(\'' + lvl + '\')" ' +
           'role="button" tabindex="0" style="cursor:pointer;background:' + lc.bg + '">' +
-          '<div class="sidebar-level-badge-label" style="color:' + lc.label + '">' + t('level', 'Level') + '</div>' +
+          '<div class="sidebar-level-badge-label" style="color:' + lc.label + '">' + 'Level' + '</div>' +
           '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + lvl + '</div>' +
         '</div>';
     },
@@ -710,7 +700,6 @@
     },
 
     _buildNextLessonLeftHtml: function(lesson) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var sectionIcon = { reading: 'menu_book', listening: 'headphones', writing: 'edit_note', speaking: 'record_voice_over' };
       var icon = sectionIcon[lesson.section] || 'auto_stories';
       var completedParts = lesson.completedParts || 0;
@@ -718,12 +707,12 @@
       var pct = Math.round((completedParts / totalParts) * 100);
       var self = this;
       return '<div class="sw-left-widget sw-next-exam" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + self._escapeHTML(lesson.section) + '\', ' + parseInt(lesson.part, 10) + ')" style="cursor:pointer">' +
-        '<div class="sw-left-widget-label">' + t('nextExam', 'Next Exam') + '</div>' +
+        '<div class="sw-left-widget-label">' + 'Next Exam' + '</div>' +
         '<div class="sw-left-widget-row">' +
           '<span class="sw-left-widget-icon"><span class="material-symbols-outlined">' + icon + '</span></span>' +
           '<div class="sw-left-widget-info">' +
             '<div class="sw-left-widget-title">' + self._escapeHTML(lesson.examId) + '</div>' +
-            '<div class="sw-left-widget-sub">' + self._capitalize(lesson.section) + ' · ' + t('part', 'Part') + ' ' + lesson.part + '</div>' +
+            '<div class="sw-left-widget-sub">' + self._capitalize(lesson.section) + ' · ' + 'Part' + ' ' + lesson.part + '</div>' +
           '</div>' +
         '</div>' +
         '<div class="sw-left-progress-track"><div class="sw-left-progress-fill" style="width:' + pct + '%"></div></div>' +
@@ -732,9 +721,9 @@
 
     _buildMicroLearningSidebarHtml: function() {
       return '<div class="sidebar-widget" onclick="BentoGrid.openMicroLearning()" style="cursor:pointer">' +
-        '<div class="sidebar-widget-title"><span class="material-symbols-outlined">smartphone</span> ' + (typeof I18n !== 'undefined' ? I18n.t('microLearning') : 'Micro-Learning') + '</div>' +
-        '<div style="color:#64748b;font-size:0.85rem;margin-bottom:12px;">' + (typeof I18n !== 'undefined' ? I18n.t('vocabTransformations') : 'Vocab · Transformations · MC') + '</div>' +
-        '<button class="bento-resume-btn" style="width:100%;justify-content:center;" onclick="event.stopPropagation();BentoGrid.openMicroLearning()">' + (typeof I18n !== 'undefined' ? I18n.t('startArrow') : 'Start →') + '</button>' +
+        '<div class="sidebar-widget-title"><span class="material-symbols-outlined">smartphone</span> ' + 'Micro-Learning' + '</div>' +
+        '<div style="color:#64748b;font-size:0.85rem;margin-bottom:12px;">' + 'Vocab · Transformations · MC' + '</div>' +
+        '<button class="bento-resume-btn" style="width:100%;justify-content:center;" onclick="event.stopPropagation();BentoGrid.openMicroLearning()">' + 'Start →' + '</button>' +
       '</div>';
     },
 
@@ -746,7 +735,6 @@
     },
 
     _buildGradeTrackerSidebarHtml: function(exams) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var level = AppState.currentLevel || 'C1';
 
       // Collect skill scores via ScoreCalculator
@@ -788,7 +776,7 @@
       if (slides.length === 0) {
         slidesHtml = '<div class="grade-carousel-slide" style="display:flex;opacity:0.6">' +
           '<div class="grade-carousel-raw" style="font-size:1.6rem;">–</div>' +
-          '<div class="grade-carousel-skill-label"><span>' + t('completeForPerformance', 'Complete exercises to see results') + '</span></div>' +
+          '<div class="grade-carousel-skill-label"><span>' + 'Complete exercises to see results' + '</span></div>' +
         '</div>';
       } else {
         slides.forEach(function(s, idx) {
@@ -799,7 +787,7 @@
       var totalSlides = slides.length || 1;
 
       return '<div class="sidebar-widget-pastel sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '" onclick="BentoGrid.openGradeEvolution()" style="cursor:pointer">' +
-        '<div class="sidebar-widget-pastel-title">' + t('gradeTracker', 'Grade Tracker') + '</div>' +
+        '<div class="sidebar-widget-pastel-title">' + 'Grade Tracker' + '</div>' +
         '<div class="grade-carousel-viewport">' + slidesHtml + '</div>' +
         '<div class="grade-carousel-dots"></div>' +
       '</div>';
@@ -841,26 +829,24 @@
     },
 
     _buildNextLessonSidebarHtml: function(lesson) {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var completedParts = lesson.completedParts || 0;
       var totalParts = lesson.totalParts || 1;
       var sectionIcon = { reading: 'menu_book', listening: 'headphones', writing: 'edit_note', speaking: 'record_voice_over' };
       var icon = sectionIcon[lesson.section] || 'auto_stories';
       var self = this;
       return '<div class="sidebar-widget" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')" style="cursor:pointer">' +
-        '<div class="sidebar-widget-title"><span class="material-symbols-outlined">push_pin</span> ' + t('nextUp', 'Next Up') + '</div>' +
+        '<div class="sidebar-widget-title"><span class="material-symbols-outlined">push_pin</span> ' + 'Next Up' + '</div>' +
         '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">' +
           '<span style="font-size:1.5rem;"><span class="material-symbols-outlined">' + icon + '</span></span>' +
           '<div>' +
             '<div style="font-weight:700;font-size:0.9rem;color:#0f172a;">' + self._escapeHTML(lesson.examId) + ' — ' + self._capitalize(lesson.section) + '</div>' +
-            '<div style="color:#64748b;font-size:0.8rem;">' + t('part', 'Part') + ' ' + lesson.part + ' (' + completedParts + '/' + totalParts + ')</div>' +
+            '<div style="color:#64748b;font-size:0.8rem;">' + 'Part' + ' ' + lesson.part + ' (' + completedParts + '/' + totalParts + ')</div>' +
           '</div>' +
         '</div>' +
       '</div>';
     },
 
     openStreakSection: function() {
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       var streakBest = streak ? (streak.longestStreak || 0) : 0;
@@ -889,9 +875,9 @@
       calHtml += '</div>';
 
       var statusHtml = practicedToday
-        ? '<div class="bento-streak-modal-status bento-streak-safe"><span class="material-symbols-outlined">check_circle</span> ' + t('streakSafeToday', 'Streak safe today!') + '</div>'
+        ? '<div class="bento-streak-modal-status bento-streak-safe"><span class="material-symbols-outlined">check_circle</span> ' + 'Streak safe today!' + '</div>'
         : (StreakManager && StreakManager.isAtRisk()
-          ? '<div class="bento-streak-modal-status bento-streak-risk"><span class="material-symbols-outlined">warning</span> ' + t('practiceNowStreak', 'Practice now to keep your streak!') + '</div>'
+          ? '<div class="bento-streak-modal-status bento-streak-risk"><span class="material-symbols-outlined">warning</span> ' + 'Practice now to keep your streak!' + '</div>'
           : '<div class="bento-streak-modal-status">' + t('startTodayStreak', 'Start today\'s practice to build your streak') + '</div>');
 
       var el = document.createElement('div');
@@ -901,14 +887,14 @@
           '<button class="bento-streak-modal-close" onclick="this.closest(\'.bento-streak-modal-overlay\').remove()">✕</button>' +
           '<div class="bento-streak-modal-fire"><span class="material-symbols-outlined">local_fire_department</span></div>' +
           '<div class="bento-streak-modal-count">' + streakCount + '</div>' +
-          '<div class="bento-streak-modal-label">' + t('dayStreakLower', 'day streak') + '</div>' +
+          '<div class="bento-streak-modal-label">' + 'day streak' + '</div>' +
           statusHtml +
           '<div class="bento-streak-modal-stats">' +
-            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + streakBest + '</div><div class="bento-streak-stat-lbl">' + t('bestStreak', 'Best') + '</div></div>' +
-            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + totalDays + '</div><div class="bento-streak-stat-lbl">' + t('totalDaysLabel', 'Total Days') + '</div></div>' +
-            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + (practicedToday ? '<span class="material-symbols-outlined">check_circle</span>' : '<span class="material-symbols-outlined">cancel</span>') + '</div><div class="bento-streak-stat-lbl">' + t('todayLabel', 'Today') + '</div></div>' +
+            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + streakBest + '</div><div class="bento-streak-stat-lbl">' + 'Best' + '</div></div>' +
+            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + totalDays + '</div><div class="bento-streak-stat-lbl">' + 'Total Days' + '</div></div>' +
+            '<div class="bento-streak-stat"><div class="bento-streak-stat-val">' + (practicedToday ? '<span class="material-symbols-outlined">check_circle</span>' : '<span class="material-symbols-outlined">cancel</span>') + '</div><div class="bento-streak-stat-lbl">' + 'Today' + '</div></div>' +
           '</div>' +
-          '<div class="bento-streak-modal-section">' + t('last28Days', 'Last 28 days') + '</div>' +
+          '<div class="bento-streak-modal-section">' + 'Last 28 days' + '</div>' +
           calHtml +
         '</div>';
       document.body.appendChild(el);
@@ -920,7 +906,6 @@
       var content = document.getElementById('main-content');
       if (!content) return;
 
-      var t = function(key, fallback) { return (typeof I18n !== 'undefined') ? I18n.t(key) : fallback; };
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
 
@@ -972,7 +957,7 @@
           '<div class="grade-evo-skill-title"><span class="grade-evo-skill-icon"><span class="material-symbols-outlined">' + icon + '</span></span><span class="grade-evo-skill-dot" style="background:' + color + '"></span> ' + skill + '</div>';
 
         if (!hasSkillData) {
-          bodyHtml += '<div class="grade-evo-no-data"><i class="fas fa-chart-bar"></i> ' + t('noDataYet', 'No data yet — complete exercises to see your progress') + '</div>';
+          bodyHtml += '<div class="grade-evo-no-data"><i class="fas fa-chart-bar"></i> ' + 'No data yet — complete exercises to see your progress' + '</div>';
         } else {
           bodyHtml += '<div class="grade-evo-bars">';
           examScores.forEach(function(entry) {
@@ -994,9 +979,9 @@
 
       // Global average section
       bodyHtml += '<div class="grade-evo-global-section">' +
-        '<div class="grade-evo-global-title"><span class="material-symbols-outlined">bar_chart</span> ' + t('globalAverage', 'Global Average') + '</div>';
+        '<div class="grade-evo-global-title"><span class="material-symbols-outlined">bar_chart</span> ' + 'Global Average' + '</div>';
       if (examScores.length === 0) {
-        bodyHtml += '<div class="grade-evo-no-data"><i class="fas fa-chart-bar"></i> ' + t('noDataYet', 'No data yet — complete exercises to see your progress') + '</div>';
+        bodyHtml += '<div class="grade-evo-no-data"><i class="fas fa-chart-bar"></i> ' + 'No data yet — complete exercises to see your progress' + '</div>';
       } else {
         bodyHtml += '<div class="grade-evo-bars grade-evo-bars-global">';
         examScores.forEach(function(entry) {
@@ -1035,10 +1020,10 @@
           '<div class="dashboard-center">' +
             '<div class="grade-evolution-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()">' + t('back', 'Back') + '</button>' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
                 '<div>' +
-                  '<div class="subpage-title">' + t('gradeEvolution', 'Grade Evolution') + '</div>' +
-                  '<div class="subpage-subtitle">' + level + ' · ' + t('gradeEvolutionSubtitle', 'Track your progress across exams') + '</div>' +
+                  '<div class="subpage-title">' + 'Grade Evolution' + '</div>' +
+                  '<div class="subpage-subtitle">' + level + ' · ' + 'Track your progress across exams' + '</div>' +
                 '</div>' +
               '</div>' +
               '<div class="grade-evolution-body">' + bodyHtml + '</div>' +

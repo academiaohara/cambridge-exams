@@ -29,7 +29,7 @@
       const html = `
         <div class="writing-type2-wrapper">
           <div class="writing-type2-select-section">
-            <h3><i class="fas fa-tasks"></i> ${I18n.t('selectTask')}</h3>
+            <h3><i class="fas fa-tasks"></i> Select a task</h3>
             <div class="writing-type2-tasks-list">
               ${tasksHTML}
             </div>
@@ -37,25 +37,25 @@
           <div class="writing-type2-writing-section" id="writing-type2-writing-area" style="display:none;">
             <textarea class="writing-type2-textarea writing-textarea"
                       lang="en" spellcheck="true"
-                      placeholder="${I18n.t('writeEssay')}..."
+                      placeholder="Write your essay..."
                       oninput="WritingType2.handleInput(this.value)"></textarea>
             <div class="writing-corrected-text" id="writing-type2-corrected" style="display:none;"></div>
             <div class="writing-type2-footer-row">
               <div class="writing-type2-word-count">
-                <span id="writing-type2-count">0</span> ${I18n.t('wordsWritten')}
+                <span id="writing-type2-count">0</span> words written
               </div>
-              <button class="btn-copy-clipboard" onclick="WritingType2.copyToClipboard()" title="${I18n.t('copyClipboard')}">
-                <i class="fas fa-copy"></i> ${I18n.t('copyClipboard')}
+              <button class="btn-copy-clipboard" onclick="WritingType2.copyToClipboard()" title="Copy to clipboard">
+                <i class="fas fa-copy"></i> Copy to clipboard
               </button>
             </div>
             <div class="writing-type2-actions">
               ${AppState.currentMode !== 'exam' ? `<button class="btn-evaluate-ai" id="writing-type2-evaluate-btn" onclick="WritingType2.evaluateWithAI()">
-                <i class="fas fa-robot"></i> ${I18n.t('evaluateAI')}
+                <i class="fas fa-robot"></i> Evaluate with AI
               </button>` : ''}
             </div>
             <div class="writing-inline-msg" id="writing-type2-msg" style="display:none;"></div>
             <div class="writing-type2-ai-results" id="writing-type2-ai-results" style="display:none;">
-              <h4><i class="fas fa-star"></i> ${I18n.t('aiEvaluation')}</h4>
+              <h4><i class="fas fa-star"></i> AI Evaluation</h4>
               <div id="writing-type2-ai-content"></div>
             </div>
           </div>
@@ -174,13 +174,13 @@
     copyToClipboard: function() {
       const essay = AppState.currentExercise.answers?.[this.selectedTaskId] || '';
       if (!essay.trim()) {
-        this._showMsg(I18n.t('writeEssay'));
+        this._showMsg('Write your essay');
         return;
       }
       navigator.clipboard.writeText(essay).then(() => {
-        this._showMsg(I18n.t('copiedClipboard'));
+        this._showMsg('Copied to clipboard!');
       }).catch(() => {
-        this._showMsg(I18n.t('copyError'));
+        this._showMsg('Could not copy to clipboard');
       });
     },
 
@@ -239,13 +239,13 @@
 
     evaluateWithAI: function() {
       if (!this.selectedTaskId) {
-        this._showMsg(I18n.t('selectTask'));
+        this._showMsg('Select a task');
         return;
       }
 
       const essay = AppState.currentExercise.answers?.[this.selectedTaskId] || '';
       if (!essay.trim()) {
-        this._showMsg(I18n.t('writeEssay'));
+        this._showMsg('Write your essay');
         return;
       }
 
@@ -264,7 +264,7 @@
       const resultsDiv = document.getElementById('writing-type2-ai-results');
       const contentDiv = document.getElementById('writing-type2-ai-content');
       if (resultsDiv) resultsDiv.style.display = 'block';
-      if (contentDiv) contentDiv.innerHTML = `<div class="writing-ai-loading"><i class="fas fa-spinner fa-spin"></i> ${I18n.t('evaluating')}</div>`;
+      if (contentDiv) contentDiv.innerHTML = `<div class="writing-ai-loading"><i class="fas fa-spinner fa-spin"></i> Evaluating...</div>`;
 
       // Disable textarea and evaluate button during evaluation
       const textarea = document.querySelector('.writing-type2-textarea');
@@ -302,7 +302,7 @@
           if (contentDiv) contentDiv.innerHTML = this._buildFeedbackTabs(feedbackText, 'type2');
         })
         .catch(() => {
-          if (contentDiv) contentDiv.textContent = I18n.t('aiError');
+          if (contentDiv) contentDiv.textContent = 'Error connecting to AI service.';
           // Re-enable on error
           if (textarea) { textarea.disabled = false; textarea.style.display = ''; }
           if (evalBtn) evalBtn.disabled = false;
@@ -351,11 +351,11 @@
       const modelAnswer = this._getModelAnswer();
 
       const tabs = [
-        { id: 'scores', icon: 'fa-chart-bar', label: I18n.t('feedbackScores'), content: sections.scores },
-        { id: 'detailed', icon: 'fa-comment-dots', label: I18n.t('feedbackDetailed'), content: sections.detailed },
-        { id: 'strengths', icon: 'fa-check-circle', label: I18n.t('feedbackStrengths'), content: sections.strengths },
-        { id: 'improvements', icon: 'fa-exclamation-triangle', label: I18n.t('feedbackImprovements'), content: sections.improvements },
-        { id: 'ideal', icon: 'fa-star', label: I18n.t('feedbackIdealResponse'), content: modelAnswer }
+        { id: 'scores', icon: 'fa-chart-bar', label: 'Scores', content: sections.scores },
+        { id: 'detailed', icon: 'fa-comment-dots', label: 'Feedback', content: sections.detailed },
+        { id: 'strengths', icon: 'fa-check-circle', label: 'Strengths', content: sections.strengths },
+        { id: 'improvements', icon: 'fa-exclamation-triangle', label: 'Improvements', content: sections.improvements },
+        { id: 'ideal', icon: 'fa-star', label: 'Ideal Response', content: modelAnswer }
       ].filter(t => t.content);
 
       if (!tabs.length) return '<div class="writing-ai-feedback">' + text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>') + '</div>';

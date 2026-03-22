@@ -36,7 +36,7 @@
       const overlay = document.getElementById('exercise-modal-overlay');
       const body = document.getElementById('modal-body');
       
-      let html = `<div class="modal-header"><h3>${I18n.t('question')} ${qNum}</h3><p>${I18n.t('selectOption')}</p></div>`;
+      let html = `<div class="modal-header"><h3>Question ${qNum}</h3><p>Select an option</p></div>`;
       html += '<div class="options-grid">';
       
       question.options.forEach(opt => {
