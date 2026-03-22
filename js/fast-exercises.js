@@ -7,7 +7,8 @@
     { id: 'vocabulary', icon: 'menu_book', name: 'Vocabulary', color: '#10b981' },
     { id: 'collocations', icon: 'library_books', name: 'Collocations', color: '#8b5cf6' },
     { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6' },
-    { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' }
+    { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' },
+    { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' }
   ];
 
   function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
@@ -311,6 +312,12 @@
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini fe-dot-outline">' + _mi('drag_indicator') + '</span> ' + 'Drag & Drop' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini fe-dot-outline">' + _mi('shuffle') + '</span> ' + 'Mixed' + '</span>' +
         '</div>';
+      } else if (categoryId === 'word-formation') {
+        legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-explanation fe-dot-mini fe-dot-outline">' + _mi('school') + '</span> ' + 'Explanation' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-multiple-choice fe-dot-mini fe-dot-outline">' + _mi('rule') + '</span> ' + 'Multiple Choice' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-transform fe-dot-mini fe-dot-outline">' + _mi('transform') + '</span> ' + 'Transformation' + '</span>' +
+        '</div>';
       }
 
       content.innerHTML =
@@ -325,6 +332,7 @@
                   '<div class="subpage-subtitle">' + 'Level Progress' + ' — ' + activeLevel + '</div>' +
                 '</div>' +
                 (categoryId === 'phrasal-verbs' ? '<button class="subpage-info-btn" onclick="FastExercises._showPvInfoModal()" title="' + 'What are phrasal verbs?' + '">' + _mi('info') + '</button>' : '') +
+                (categoryId === 'word-formation' ? '<button class="subpage-info-btn" onclick="FastExercises._showWfInfoModal()" title="' + 'What is word formation?' + '">' + _mi('info') + '</button>' : '') +
               '</div>' +
               bottomBar +
               legendHtml +
@@ -613,6 +621,15 @@
               } else if (point.type === 'pv-mixed') {
                 dotClass += ' fe-dot-pv-mixed';
                 dotIcon = isDone ? _mi('check') : _mi('shuffle');
+              } else if (point.type === 'wf-explanation') {
+                dotClass += ' fe-dot-wf-explanation';
+                dotIcon = isDone ? _mi('check') : _mi('school');
+              } else if (point.type === 'wf-multiple-choice') {
+                dotClass += ' fe-dot-wf-multiple-choice';
+                dotIcon = isDone ? _mi('check') : _mi('rule');
+              } else if (point.type === 'wf-transform') {
+                dotClass += ' fe-dot-wf-transform';
+                dotIcon = isDone ? _mi('check') : _mi('transform');
               }
 
               if (isDone) {
@@ -856,8 +873,7 @@
 
       // ── New PV point types (read from lesson-level fields) ──────────────
       var pvTypes = ['pv-gallery', 'pv-fill-in', 'pv-conversations', 'pv-conversation-drag', 'pv-mixed'];
-      if (pvTypes.indexOf(pointType) !== -1) {
-        if (!lessonData || (!lessonData.phrasalVerbs && !lessonData.fillInExercises && !lessonData.conversations)) {
+      if (pvTypes.indexOf(pointType) !== -1) {        if (!lessonData || (!lessonData.phrasalVerbs && !lessonData.fillInExercises && !lessonData.conversations)) {
           // Data file not available yet
           this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
           content.innerHTML =
@@ -895,7 +911,31 @@
         return;
       }
 
-      // ── Legacy point types (read from lesson JSON's points array) ────────
+      // ── Word Formation point types ──────────────────────────────────────
+      var wfTypes = ['wf-explanation', 'wf-multiple-choice', 'wf-transform'];
+      if (wfTypes.indexOf(pointType) !== -1) {
+        if (!lessonData || (!lessonData.wordForms && !lessonData.multipleChoiceExercises && !lessonData.transformExercises)) {
+          this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
+          content.innerHTML =
+            '<div class="fe-point-view">' +
+              '<div class="fe-point-card">' +
+                '<div class="fe-point-message">' + 'Content coming soon!' + '</div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#e11d48') + '">' + 'Next' + '</button>' +
+              '</div>' +
+            '</div>';
+          return;
+        }
+        if (pointType === 'wf-explanation') {
+          this._renderWfExplanation(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        } else if (pointType === 'wf-multiple-choice') {
+          this._renderWfMultipleChoice(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        } else if (pointType === 'wf-transform') {
+          this._renderWfTransform(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        }
+        var wfState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
+        history.pushState(wfState, '', Router.stateToPath(wfState));
+        return;
+      }
       if (!lessonData || !lessonData.points || !lessonData.points[pointIndex]) {
         // No detailed lesson data - mark complete and show simple view
         this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
@@ -1152,7 +1192,10 @@
         'pv-fill-in':           'edit',
         'pv-conversations':     'forum',
         'pv-conversation-drag': 'drag_indicator',
-        'pv-mixed':             'shuffle'
+        'pv-mixed':             'shuffle',
+        'wf-explanation':       'school',
+        'wf-multiple-choice':   'rule',
+        'wf-transform':         'transform'
       };
 
       var pvDescriptions = {
@@ -1160,7 +1203,10 @@
         'pv-fill-in':           'Choose or write the correct phrasal verb for each sentence.',
         'pv-conversations':     'Read the conversations. Tap highlighted verbs to see their definition.',
         'pv-conversation-drag': 'Drag each phrasal verb to the correct gap in the conversation.',
-        'pv-mixed':             'Mixed practice: test yourself with questions from the whole lesson.'
+        'pv-mixed':             'Mixed practice: test yourself with questions from the whole lesson.',
+        'wf-explanation':       'Learn the transformation rule with examples and word cards.',
+        'wf-multiple-choice':   'Choose the correct derived form for each sentence.',
+        'wf-transform':         'Write the correct form of the root word in CAPITALS.'
       };
 
       var dotsHtml = '';
@@ -2034,6 +2080,416 @@
     },
 
     // ── PROFILE AVATAR HELPER ────────────────────────────────────────────
+    // ── WORD FORMATION: EXPLANATION (Point 1) ────────────────────────────
+    _renderWfExplanation: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var self = this;
+      var explanation = (lessonData && lessonData.explanation) || {};
+      var wordForms = (lessonData && lessonData.wordForms) || [];
+      var groups = explanation.groups || [];
+
+      // Build rule header
+      var ruleHtml = '';
+      if (explanation.rule) {
+        ruleHtml = '<div class="wf-exp-rule">' + self._escapeHTML(explanation.rule) + '</div>';
+      }
+
+      // Build suffix groups
+      var groupsHtml = '';
+      groups.forEach(function(group) {
+        var examplesHtml = '';
+        (group.examples || []).forEach(function(ex) {
+          examplesHtml +=
+            '<div class="wf-exp-example">' +
+              '<span class="wf-exp-base">' + self._escapeHTML(ex.base) + '</span>' +
+              '<span class="wf-exp-arrow">→</span>' +
+              '<span class="wf-exp-derived" style="color:' + catMeta.color + '">' + self._escapeHTML(ex.derived) + '</span>' +
+              '<span class="wf-exp-def">' + self._escapeHTML(ex.definition || '') + '</span>' +
+            '</div>';
+        });
+        groupsHtml +=
+          '<div class="wf-exp-group">' +
+            '<div class="wf-exp-suffix" style="background:' + catMeta.color + '">' + self._escapeHTML(group.suffix || '') + '</div>' +
+            (group.note ? '<div class="wf-exp-note">' + self._escapeHTML(group.note) + '</div>' : '') +
+            '<div class="wf-exp-examples">' + examplesHtml + '</div>' +
+          '</div>';
+      });
+
+      // Build word forms cards
+      var cardsHtml = '';
+      wordForms.forEach(function(wf, idx) {
+        cardsHtml +=
+          '<div class="wf-card' + (idx === 0 ? ' wf-card-active' : '') + '" data-idx="' + idx + '" style="--cat-color:' + catMeta.color + '">' +
+            '<div class="wf-card-badge">' + self._escapeHTML(wf.type || '') + '</div>' +
+            '<div class="wf-card-pair">' +
+              '<span class="wf-card-base">' + self._escapeHTML(wf.base || '') + '</span>' +
+              '<span class="wf-card-arrow">→</span>' +
+              '<span class="wf-card-derived" style="color:' + catMeta.color + '">' + self._escapeHTML(wf.derived || '') + '</span>' +
+            '</div>' +
+            '<div class="wf-card-definition">' + self._escapeHTML(wf.definition || '') + '</div>' +
+            (wf.example ? '<div class="wf-card-example">&ldquo;' + self._escapeHTML(wf.example) + '&rdquo;</div>' : '') +
+            '<div class="wf-card-num">' + (idx + 1) + ' / ' + wordForms.length + '</div>' +
+          '</div>';
+      });
+
+      var dotsHtml = '';
+      wordForms.forEach(function(wf, idx) {
+        dotsHtml += '<div class="pv-gallery-nav-dot' + (idx === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + idx + '" title="' + self._escapeHTML(wf.base + ' → ' + wf.derived) + '" onclick="FastExercises._wfCardGoTo(' + idx + ')"></div>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="wf-explanation-wrap">' +
+              (groups.length > 0 ?
+                '<div class="wf-exp-panel">' + ruleHtml + groupsHtml + '</div>' : '') +
+              (wordForms.length > 0 ?
+                '<div class="pv-gallery-single-wrap">' +
+                  '<div class="wf-exp-cards-label">' + _mi('style') + ' <span>' + 'Word Cards' + '</span></div>' +
+                  '<div class="pv-gallery-cards-area" id="wf-gallery-cards">' + cardsHtml + '</div>' +
+                  '<div class="pv-gallery-nav-col" id="wf-gallery-nav">' + dotsHtml + '</div>' +
+                '</div>' : '') +
+            '</div>' +
+            '<div class="pv-gallery-footer">' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+                'Got it! Next' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      // Attach wheel scroll handler
+      var cardsArea = document.getElementById('wf-gallery-cards');
+      if (cardsArea) {
+        cardsArea.addEventListener('wheel', function(e) {
+          e.preventDefault();
+          var current = FastExercises._wfCardCurrentIdx || 0;
+          if (e.deltaY > 0) FastExercises._wfCardGoTo(current + 1);
+          else FastExercises._wfCardGoTo(current - 1);
+        }, { passive: false });
+      }
+      this._wfCardCurrentIdx = 0;
+      this._wfCardTotal = wordForms.length;
+    },
+
+    _wfCardGoTo: function(idx) {
+      var total = this._wfCardTotal || 0;
+      if (total === 0) return;
+      idx = Math.max(0, Math.min(total - 1, idx));
+      this._wfCardCurrentIdx = idx;
+      var cards = document.querySelectorAll('.wf-card');
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].classList.toggle('wf-card-active', parseInt(cards[i].getAttribute('data-idx'), 10) === idx);
+      }
+      var dots = document.querySelectorAll('#wf-gallery-nav .pv-gallery-nav-dot');
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx'), 10) === idx);
+      }
+    },
+
+    // ── WORD FORMATION: MULTIPLE CHOICE (Point 2) ────────────────────────
+    _renderWfMultipleChoice: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var self = this;
+      var exercises = (lessonData && lessonData.multipleChoiceExercises) || [];
+
+      if (exercises.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
+        return;
+      }
+
+      var questionsHtml = '';
+      exercises.forEach(function(ex, qi) {
+        var optHtml = '';
+        (ex.options || []).forEach(function(opt) {
+          optHtml += '<button class="fe-quiz-option" data-question="wfmc' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerWfMC(this,' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')">' + self._escapeHTML(opt) + '</button>';
+        });
+        questionsHtml +=
+          '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
+            '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + exercises.length + '</div>' +
+            '<div class="wf-mc-root-label">' + _mi('text_fields') + ' ' + 'Root word: ' + '<strong>' + self._escapeHTML(ex.root || '') + '</strong></div>' +
+            '<div class="fe-quiz-sentence pv-fillin-sentence">' + self._escapeHTML(ex.sentence || '') + '</div>' +
+            '<div class="fe-quiz-options">' + optHtml + '</div>' +
+            '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
+          '</div>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
+              '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
+              '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
+                questionsHtml +
+              '</div>' +
+              '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
+                '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
+                '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      this._showQuizQuestion(0);
+    },
+
+    _answerWfMC: function(btn, qIndex, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
+      var chosen = btn.getAttribute('data-answer');
+      var isCorrect = chosen.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+      this._processPvFillInAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
+      var buttons = document.querySelectorAll('[data-question="wfmc' + qIndex + '"]');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+        if (buttons[i].getAttribute('data-answer').trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+          buttons[i].classList.add('fe-quiz-correct');
+        }
+        if (buttons[i] === btn && !isCorrect) {
+          buttons[i].classList.add('fe-quiz-wrong');
+        }
+      }
+    },
+
+    // ── WORD FORMATION: TRANSFORM (Point 3) ─────────────────────────────
+    _renderWfTransform: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var self = this;
+      var exercises = (lessonData && lessonData.transformExercises) || [];
+
+      if (exercises.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
+        return;
+      }
+
+      var questionsHtml = '';
+      exercises.forEach(function(ex, qi) {
+        questionsHtml +=
+          '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
+            '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + exercises.length + '</div>' +
+            '<div class="wf-transform-sentence">' + self._escapeHTML(ex.sentence || '') + '</div>' +
+            '<div class="wf-transform-root-row">' +
+              _mi('text_fields') + ' ' +
+              '<span class="wf-transform-root-word">' + self._escapeHTML(ex.root || '') + '</span>' +
+            '</div>' +
+            '<div class="pv-write-row">' +
+              '<input type="text" class="pv-write-input wf-transform-input" id="wf-tr-' + qi + '" placeholder="' + 'Type the correct form…' + '" />' +
+              '<button class="pv-write-btn" onclick="FastExercises._checkWfTransform(' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Check' + '</button>' +
+            '</div>' +
+            '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
+          '</div>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
+              '<div class="wf-transform-header">' +
+                _mi('transform') + ' <span>' + 'Word Transformation' + '</span>' +
+                '<span class="wf-transform-hint">' + 'Write the correct form of the word in CAPITALS' + '</span>' +
+              '</div>' +
+              '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
+              '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
+                questionsHtml +
+              '</div>' +
+              '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
+                '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
+                '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      this._showQuizQuestion(0);
+
+      // Allow Enter key in inputs
+      var inputs = container.querySelectorAll('.wf-transform-input');
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            var btn = e.target.parentElement && e.target.parentElement.querySelector('.pv-write-btn');
+            if (btn && !btn.disabled) btn.click();
+          }
+        });
+      }
+    },
+
+    _checkWfTransform: function(qIndex, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
+      var input = document.getElementById('wf-tr-' + qIndex);
+      if (!input) return;
+      var typed = input.value.trim().toLowerCase();
+      var correct = correctAnswer.trim().toLowerCase();
+      var isCorrect = typed === correct;
+      input.disabled = true;
+      input.classList.add(isCorrect ? 'pv-write-correct' : 'pv-write-wrong');
+      var btn = input.parentElement && input.parentElement.querySelector('.pv-write-btn');
+      if (btn) btn.disabled = true;
+      this._processPvFillInAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
+    },
+
+    // ── WORD FORMATION INFO MODAL ────────────────────────────────────────
+    _showWfInfoModal: function() {
+      var existing = document.getElementById('wf-info-modal');
+      if (existing) { existing.remove(); return; }
+
+      var modal = document.createElement('div');
+      modal.id = 'wf-info-modal';
+      modal.className = 'pv-info-modal-overlay';
+      modal.innerHTML =
+        '<div class="pv-info-modal-box">' +
+          '<div class="pv-info-modal-header">' +
+            '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">text_fields</span></span>' +
+            '<h2 class="pv-info-modal-title">What is Word Formation?</h2>' +
+          '</div>' +
+          '<button class="pv-info-modal-close" onclick="document.getElementById(\'wf-info-modal\').remove()">' +
+            '<span class="material-symbols-outlined">close</span>' +
+          '</button>' +
+          '<div class="pv-info-modal-body">' +
+            '<p><strong>What is word formation?</strong></p>' +
+            '<p>Word formation is the process of creating new words by adding prefixes or suffixes to a base (root) word, or by combining words.</p>' +
+            '<p><strong>For example:</strong></p>' +
+            '<ul class="pv-info-list">' +
+              '<li><em>act</em> → <em>action</em> (suffix <strong>-ion</strong>)</li>' +
+              '<li><em>happy</em> → <em>unhappy</em> (prefix <strong>un-</strong>)</li>' +
+              '<li><em>use</em> → <em>useful</em> → <em>usefulness</em> (multiple suffixes)</li>' +
+            '</ul>' +
+            '<p><strong>Why is it important?</strong></p>' +
+            '<p>Word formation is a key part of Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). It tests your ability to transform words to fit a sentence grammatically and meaningfully.</p>' +
+            '<p><strong>Tip 💡</strong></p>' +
+            '<p>Learn root words together with their most common derivatives. Pay attention to whether you need a noun, adjective, verb or adverb in context.</p>' +
+            '<p><button class="wf-info-dict-link" onclick="FastExercises._showWfDictionary(); document.getElementById(\'wf-info-modal\').remove();">' + _mi('search') + ' Open the Word Formation Dictionary</button></p>' +
+          '</div>' +
+          '<div class="pv-info-modal-footer">' +
+            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'wf-info-modal\').remove()" style="background:#e11d48">Got it!</button>' +
+          '</div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
+      document.body.appendChild(modal);
+    },
+
+    // ── WORD FORMATION DICTIONARY ─────────────────────────────────────────
+    _wfDictCache: null,
+
+    _showWfDictionary: async function() {
+      var existing = document.getElementById('wf-dict-modal');
+      if (existing) { existing.remove(); return; }
+
+      // Load dictionary data
+      if (!this._wfDictCache) {
+        try {
+          var r = await fetch('data/word-formation/dictionary.json');
+          if (r.ok) this._wfDictCache = await r.json();
+        } catch (e) {}
+      }
+      var entries = (this._wfDictCache && this._wfDictCache.entries) || [];
+
+      var modal = document.createElement('div');
+      modal.id = 'wf-dict-modal';
+      modal.className = 'wf-dict-overlay';
+      modal.innerHTML =
+        '<div class="wf-dict-box">' +
+          '<div class="wf-dict-header">' +
+            '<span class="wf-dict-icon">' + _mi('menu_book') + '</span>' +
+            '<h2 class="wf-dict-title">Word Formation Dictionary</h2>' +
+            '<button class="wf-dict-close" onclick="document.getElementById(\'wf-dict-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="wf-dict-search-row">' +
+            '<span class="wf-dict-search-icon">' + _mi('search') + '</span>' +
+            '<input type="text" class="wf-dict-search" id="wf-dict-search" placeholder="Search root word or derived form…" oninput="FastExercises._filterWfDict(this.value)" />' +
+            '<select class="wf-dict-level-filter" id="wf-dict-level" onchange="FastExercises._filterWfDict(document.getElementById(\'wf-dict-search\').value)">' +
+              '<option value="">All Levels</option>' +
+              '<option value="B1">B1</option>' +
+              '<option value="B2">B2</option>' +
+              '<option value="C1">C1</option>' +
+            '</select>' +
+          '</div>' +
+          '<div class="wf-dict-count" id="wf-dict-count">' + entries.length + ' entries</div>' +
+          '<div class="wf-dict-results" id="wf-dict-results"></div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
+      document.body.appendChild(modal);
+
+      // Store entries for filtering
+      this._wfDictEntries = entries;
+      this._renderWfDictResults('', '');
+
+      // Focus search
+      setTimeout(function() {
+        var searchEl = document.getElementById('wf-dict-search');
+        if (searchEl) searchEl.focus();
+      }, 100);
+    },
+
+    _filterWfDict: function(query) {
+      var levelFilter = (document.getElementById('wf-dict-level') || {}).value || '';
+      this._renderWfDictResults(query || '', levelFilter);
+    },
+
+    _renderWfDictResults: function(query, levelFilter) {
+      var self = this;
+      var entries = this._wfDictEntries || [];
+      var q = (query || '').toLowerCase().trim();
+
+      var filtered = entries.filter(function(e) {
+        var matchLevel = !levelFilter || e.level === levelFilter;
+        if (!matchLevel) return false;
+        if (!q) return true;
+        return (e.base || '').toLowerCase().indexOf(q) !== -1 ||
+               (e.derived || '').toLowerCase().indexOf(q) !== -1;
+      });
+
+      var resultsEl = document.getElementById('wf-dict-results');
+      var countEl = document.getElementById('wf-dict-count');
+      if (!resultsEl) return;
+
+      if (countEl) countEl.textContent = filtered.length + ' entries' + (q || levelFilter ? ' (filtered)' : '');
+
+      if (filtered.length === 0) {
+        resultsEl.innerHTML = '<div class="wf-dict-empty">' + _mi('search_off') + '<p>No results found</p></div>';
+        return;
+      }
+
+      // Group by base word
+      var groups = {};
+      var groupOrder = [];
+      filtered.forEach(function(e) {
+        if (!groups[e.base]) { groups[e.base] = []; groupOrder.push(e.base); }
+        groups[e.base].push(e);
+      });
+
+      var html = '';
+      groupOrder.forEach(function(base) {
+        var group = groups[base];
+        var derivedHtml = '';
+        group.forEach(function(e) {
+          derivedHtml +=
+            '<div class="wf-dict-form">' +
+              '<span class="wf-dict-derived">' + self._escapeHTML(e.derived) + '</span>' +
+              '<span class="wf-dict-type">' + self._escapeHTML(e.type) + '</span>' +
+              '<span class="wf-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
+              '<span class="wf-dict-level-badge wf-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+            '</div>';
+        });
+        html +=
+          '<div class="wf-dict-entry">' +
+            '<div class="wf-dict-base">' + self._escapeHTML(base) + '</div>' +
+            '<div class="wf-dict-forms">' + derivedHtml + '</div>' +
+          '</div>';
+      });
+
+      resultsEl.innerHTML = html;
+    },
+
     _getAvatarHtml: function(speakerName) {
       var PROFILES = ['Aisha','Alex','Anna','Carla','Carlos','Chen','Clara','Dan',
         'Daniel','Elena','Emma','Fatima','Jack','James','Javier','Kenji','Lucas',

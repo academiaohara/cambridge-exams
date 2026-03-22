@@ -1,0 +1,225 @@
+{
+  "lessonId": "lesson-3",
+  "level": "B1",
+  "category": "word-formation",
+  "title": "Prefixes: un-, re-, dis-",
+  "explanation": {
+    "rule": "Prefixes are added to the beginning of words to change or reverse their meaning.",
+    "groups": [
+      {
+        "suffix": "dis-",
+        "note": "Gives the opposite meaning or shows reversal",
+        "examples": [
+          {
+            "base": "appear",
+            "derived": "disappear",
+            "definition": "to stop being visible"
+          },
+          {
+            "base": "agree",
+            "derived": "disagree",
+            "definition": "to have a different opinion"
+          }
+        ]
+      },
+      {
+        "suffix": "re-",
+        "note": "Means 'again' — doing something a second time",
+        "examples": [
+          {
+            "base": "do",
+            "derived": "redo",
+            "definition": "to do again"
+          },
+          {
+            "base": "place",
+            "derived": "replace",
+            "definition": "to put something back or substitute"
+          }
+        ]
+      },
+      {
+        "suffix": "un-",
+        "note": "Means 'not' or reverses the meaning",
+        "examples": [
+          {
+            "base": "employ",
+            "derived": "unemployed",
+            "definition": "without paid work"
+          },
+          {
+            "base": "believe",
+            "derived": "unbelievable",
+            "definition": "extremely surprising; hard to believe"
+          }
+        ]
+      }
+    ]
+  },
+  "wordForms": [
+    {
+      "base": "appear",
+      "derived": "disappear",
+      "type": "prefix dis-",
+      "definition": "to stop being visible",
+      "example": "The magician made the coin disappear in an instant.",
+      "rootDefinition": "to become visible or to arrive"
+    },
+    {
+      "base": "change",
+      "derived": "exchange",
+      "type": "prefix ex-",
+      "definition": "to give something and receive something else in return",
+      "example": "They decided to exchange phone numbers after the meeting.",
+      "rootDefinition": "to make or become different"
+    },
+    {
+      "base": "do",
+      "derived": "redo",
+      "type": "prefix re-",
+      "definition": "to do something again",
+      "example": "The teacher asked her to redo the exercise more carefully.",
+      "rootDefinition": "to perform an action or task"
+    },
+    {
+      "base": "place",
+      "derived": "replace",
+      "type": "prefix re-",
+      "definition": "to put something back or substitute with something new",
+      "example": "We need to replace the broken window before winter.",
+      "rootDefinition": "a particular position or area"
+    },
+    {
+      "base": "believe",
+      "derived": "unbelievable",
+      "type": "prefix un- + suffix -able",
+      "definition": "extremely surprising or impressive",
+      "example": "The scenery at the top of the mountain was unbelievable.",
+      "rootDefinition": "to feel certain that something is true"
+    },
+    {
+      "base": "employ",
+      "derived": "unemployed",
+      "type": "prefix un- + suffix -ed",
+      "definition": "not having paid work",
+      "example": "He has been unemployed since the factory closed.",
+      "rootDefinition": "to pay someone to do work"
+    },
+    {
+      "base": "employ",
+      "derived": "unemployment",
+      "type": "prefix un- + suffix -ment",
+      "definition": "the state of not having paid work",
+      "example": "The government is trying to reduce youth unemployment.",
+      "rootDefinition": "to pay someone to do work"
+    },
+    {
+      "base": "weigh",
+      "derived": "overweight",
+      "type": "prefix over- + suffix -t",
+      "definition": "heavier than what is considered healthy or normal",
+      "example": "The doctor said the patient was slightly overweight.",
+      "rootDefinition": "to measure the heaviness of something"
+    }
+  ],
+  "multipleChoiceExercises": [
+    {
+      "sentence": "The suspect seemed to ___ into the crowd and was never found.",
+      "root": "appear",
+      "correct": "disappear",
+      "options": [
+        "disappear",
+        "reappear",
+        "appearing",
+        "appeared"
+      ]
+    },
+    {
+      "sentence": "The students had to ___ the faulty calculation from scratch.",
+      "root": "do",
+      "correct": "redo",
+      "options": [
+        "redo",
+        "undo",
+        "doing",
+        "redone"
+      ]
+    },
+    {
+      "sentence": "The old light bulbs need to be ___ with energy-saving ones.",
+      "root": "place",
+      "correct": "replaced",
+      "options": [
+        "replaced",
+        "replaceable",
+        "replacing",
+        "replacement"
+      ]
+    },
+    {
+      "sentence": "The result of the match was absolutely ___.",
+      "root": "believe",
+      "correct": "unbelievable",
+      "options": [
+        "unbelievable",
+        "believable",
+        "disbelieving",
+        "unbelievably"
+      ]
+    },
+    {
+      "sentence": "He has been ___ for six months and is struggling financially.",
+      "root": "employ",
+      "correct": "unemployed",
+      "options": [
+        "unemployed",
+        "unemployment",
+        "unemployable",
+        "underemployed"
+      ]
+    },
+    {
+      "sentence": "We could ___ tokens for prizes at the end of the event.",
+      "root": "change",
+      "correct": "exchange",
+      "options": [
+        "exchange",
+        "change",
+        "rechange",
+        "changed"
+      ]
+    }
+  ],
+  "transformExercises": [
+    {
+      "sentence": "After the storm, the rainbow seemed to ___ just as suddenly. (APPEAR)",
+      "root": "APPEAR",
+      "correct": "disappear"
+    },
+    {
+      "sentence": "The teacher told him to ___ the test because his answers were rushed. (DO)",
+      "root": "DO",
+      "correct": "redo"
+    },
+    {
+      "sentence": "We need to ___ the old equipment before the season starts. (PLACE)",
+      "root": "PLACE",
+      "correct": "replace"
+    },
+    {
+      "sentence": "The view from the summit was absolutely ___. (BELIEVE)",
+      "root": "BELIEVE",
+      "correct": "unbelievable"
+    },
+    {
+      "sentence": "High levels of ___ can cause serious problems for society. (EMPLOY)",
+      "root": "EMPLOY",
+      "correct": "unemployment"
+    },
+    {
+      "sentence": "Students had the opportunity to ___ their books at the library fair. (CHANGE)",
+      "root": "CHANGE",
+      "correct": "exchange"
+    }
+  ]
+}
