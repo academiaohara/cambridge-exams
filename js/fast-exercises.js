@@ -465,6 +465,7 @@
             '</ul>' +
             '<p><strong>' + 'Tip 💡' + '</strong></p>' +
             '<p>' + 'Try to learn them with examples and in context, not as isolated words.' + '</p>' +
+            '<p><button class="pv-info-dict-link" onclick="FastExercises._showPvDictionary(); document.getElementById(\'pv-info-modal\').remove();">' + _mi('search') + ' Open the Phrasal Verbs Dictionary</button></p>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
             '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-info-modal\').remove()">' + 'Got it!' + '</button>' +
@@ -2484,6 +2485,132 @@
           '<div class="wf-dict-entry">' +
             '<div class="wf-dict-base">' + self._escapeHTML(base) + '</div>' +
             '<div class="wf-dict-forms">' + derivedHtml + '</div>' +
+          '</div>';
+      });
+
+      resultsEl.innerHTML = html;
+    },
+
+    _showPvDictionary: async function() {
+      var existing = document.getElementById('pv-dict-modal');
+      if (existing) { existing.remove(); return; }
+
+      // Load dictionary data
+      if (!this._pvDictCache) {
+        try {
+          var r = await fetch('data/phrasal-verbs/dictionary.json');
+          if (r.ok) this._pvDictCache = await r.json();
+        } catch (e) {}
+      }
+      var entries = (this._pvDictCache && this._pvDictCache.entries) || [];
+
+      var modal = document.createElement('div');
+      modal.id = 'pv-dict-modal';
+      modal.className = 'pv-dict-overlay';
+      modal.innerHTML =
+        '<div class="pv-dict-box">' +
+          '<div class="pv-dict-header">' +
+            '<span class="pv-dict-icon">' + _mi('menu_book') + '</span>' +
+            '<h2 class="pv-dict-title">Phrasal Verbs Dictionary</h2>' +
+            '<button class="pv-dict-close" onclick="document.getElementById(\'pv-dict-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="pv-dict-search-row">' +
+            '<span class="pv-dict-search-icon">' + _mi('search') + '</span>' +
+            '<input type="text" class="pv-dict-search" id="pv-dict-search" placeholder="Search phrasal verb or keyword…" oninput="FastExercises._filterPvDict(this.value)" />' +
+            '<select class="pv-dict-level-filter" id="pv-dict-level" onchange="FastExercises._filterPvDict(document.getElementById(\'pv-dict-search\').value)">' +
+              '<option value="">All Levels</option>' +
+              '<option value="B1">B1</option>' +
+              '<option value="B2">B2</option>' +
+              '<option value="C1">C1</option>' +
+            '</select>' +
+          '</div>' +
+          '<div class="pv-dict-count" id="pv-dict-count">' + entries.length + ' entries</div>' +
+          '<div class="pv-dict-results" id="pv-dict-results"></div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
+      document.body.appendChild(modal);
+
+      // Store entries for filtering
+      this._pvDictEntries = entries;
+      this._renderPvDictResults('', '');
+
+      // Focus search
+      setTimeout(function() {
+        var searchEl = document.getElementById('pv-dict-search');
+        if (searchEl) searchEl.focus();
+      }, 100);
+    },
+
+    _filterPvDict: function(query) {
+      var levelFilter = (document.getElementById('pv-dict-level') || {}).value || '';
+      this._renderPvDictResults(query || '', levelFilter);
+    },
+
+    _renderPvDictResults: function(query, levelFilter) {
+      var self = this;
+      var entries = this._pvDictEntries || [];
+      var q = (query || '').toLowerCase().trim();
+
+      var filtered = entries.filter(function(e) {
+        var matchLevel = !levelFilter || e.level === levelFilter;
+        if (!matchLevel) return false;
+        if (!q) return true;
+        return (e.verb || '').toLowerCase().indexOf(q) !== -1 ||
+               (e.definition || '').toLowerCase().indexOf(q) !== -1;
+      });
+
+      var resultsEl = document.getElementById('pv-dict-results');
+      var countEl = document.getElementById('pv-dict-count');
+      if (!resultsEl) return;
+
+      if (countEl) countEl.textContent = filtered.length + ' entries' + (q || levelFilter ? ' (filtered)' : '');
+
+      if (filtered.length === 0) {
+        resultsEl.innerHTML = '<div class="pv-dict-empty">' + _mi('search_off') + '<p>No results found</p></div>';
+        return;
+      }
+
+      // Group by main verb (first word)
+      var groups = {};
+      var groupOrder = [];
+      filtered.forEach(function(e) {
+        var mainVerb = (e.verb || '').split(' ')[0];
+        if (!groups[mainVerb]) { groups[mainVerb] = []; groupOrder.push(mainVerb); }
+        groups[mainVerb].push(e);
+      });
+
+      var html = '';
+      groupOrder.forEach(function(mainVerb) {
+        var group = groups[mainVerb];
+        var verbsHtml = '';
+        group.forEach(function(e) {
+          var examplesHtml = '';
+          if (e.examples && e.examples.length) {
+            examplesHtml = '<ul class="pv-dict-examples">' +
+              e.examples.map(function(ex) {
+                return '<li>' + self._escapeHTML(ex) + '</li>';
+              }).join('') +
+            '</ul>';
+          }
+          verbsHtml +=
+            '<div class="pv-dict-form">' +
+              '<div class="pv-dict-form-top">' +
+                '<span class="pv-dict-verb">' + self._escapeHTML(e.verb) + '</span>' +
+                '<span class="pv-dict-level-badge pv-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+              '</div>' +
+              '<span class="pv-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
+              examplesHtml +
+            '</div>';
+        });
+        html +=
+          '<div class="pv-dict-entry">' +
+            '<div class="pv-dict-base">' + self._escapeHTML(mainVerb) + '</div>' +
+            '<div class="pv-dict-forms">' + verbsHtml + '</div>' +
           '</div>';
       });
 
