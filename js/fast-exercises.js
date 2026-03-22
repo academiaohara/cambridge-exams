@@ -439,12 +439,13 @@
         '<div class="pv-info-modal-box">' +
           '<div class="pv-info-modal-header">' +
             '<span class="pv-info-modal-icon">' + '<span class="material-symbols-outlined">auto_stories</span>' + '</span>' +
-            '<h2 class="pv-info-modal-title">' + t('whatArePhrasalVerbs', 'What are Phrasal Verbs?') + '</h2>' +
+            '<h2 class="pv-info-modal-title">' + t('whatArePhrasalVerbs', 'What are Phrasal Verbs') + '</h2>' +
             '<button class="pv-info-modal-close" onclick="document.getElementById(\'pv-info-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
           '<div class="pv-info-modal-body">' +
+            '<p><strong>' + t('pvInfoH1', 'What are phrasal verbs?') + '</strong></p>' +
             '<p>' + t('pvInfoP1', 'Phrasal verbs are combinations of a verb and one or two particles (a preposition or an adverb) that together create a meaning different from the original verb.') + '</p>' +
             '<p>' + t('pvInfoP2', 'For example:') + '</p>' +
             '<ul class="pv-info-list">' +
@@ -452,14 +453,15 @@
               '<li>' + t('pvInfoEx2', '<em>get</em> (to obtain) → <em>get along</em> (to have a good relationship)') + '</li>' +
             '</ul>' +
             '<p>' + t('pvInfoP3', '👉 The key point is that their meaning is often <strong>not literal</strong>, so they need to be learned as a whole.') + '</p>' +
-            '<p>' + t('pvInfoP4', '<strong>Why are they important?</strong>') + '</p>' +
+            '<p><strong>' + t('pvInfoP4', 'Why are they important?') + '</strong></p>' +
             '<p>' + t('pvInfoP5', 'Phrasal verbs are very common in everyday English and frequently appear in Cambridge exams. Learning them will help you:') + '</p>' +
             '<ul class="pv-info-list">' +
               '<li>' + t('pvInfoL1', 'Understand real-life conversations') + '</li>' +
               '<li>' + t('pvInfoL2', 'Sound more natural when speaking') + '</li>' +
               '<li>' + t('pvInfoL3', 'Improve your exam performance') + '</li>' +
             '</ul>' +
-            '<p>' + t('pvInfoTip', '<strong>Tip 💡</strong> Try to learn them with examples and in context, not as isolated words.') + '</p>' +
+            '<p><strong>' + t('pvInfoTipTitle', 'Tip 💡') + '</strong></p>' +
+            '<p>' + t('pvInfoTipBody', 'Try to learn them with examples and in context, not as isolated words.') + '</p>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
             '<button class="pv-info-modal-btn" onclick="document.getElementById(\'pv-info-modal\').remove()">' + t('gotIt', 'Got it!') + '</button>' +
