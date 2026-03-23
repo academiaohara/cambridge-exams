@@ -1629,21 +1629,23 @@
           this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints) +
           '<div class="pv-point-main">' +
             '<div class="pv-drag-container">' +
-              '<div class="pv-conv-block">' +
-                '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
-                '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+              '<div class="pv-drag-main">' +
+                '<div class="pv-conv-block">' +
+                  '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
+                  '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+                '</div>' +
+                '<div class="pv-drag-result" id="id-drag-result" style="display:none;">' +
+                  '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
+                  '<div class="pv-drag-result-text" id="id-drag-result-text"></div>' +
+                  (convIdx + 1 < totalConvs
+                    ? '<button class="fe-point-next-btn" onclick="FastExercises._idDragNextConv()" style="background:' + catMeta.color + '">' + 'Next Conversation' + '</button>'
+                    : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
+                  ) +
+                '</div>' +
               '</div>' +
               '<div class="pv-chips-panel" id="id-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
                 '<div class="pv-chips-title">' + 'Idioms' + ':</div>' +
                 '<div class="pv-chips-list" id="id-chips-list">' + chipsHtml + '</div>' +
-              '</div>' +
-              '<div class="pv-drag-result" id="id-drag-result" style="display:none;">' +
-                '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
-                '<div class="pv-drag-result-text" id="id-drag-result-text"></div>' +
-                (convIdx + 1 < totalConvs
-                  ? '<button class="fe-point-next-btn" onclick="FastExercises._idDragNextConv()" style="background:' + catMeta.color + '">' + 'Next Conversation' + '</button>'
-                  : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
-                ) +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -2424,21 +2426,23 @@
           this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints) +
           '<div class="pv-point-main">' +
             '<div class="pv-drag-container">' +
-              '<div class="pv-conv-block">' +
-                '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
-                '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+              '<div class="pv-drag-main">' +
+                '<div class="pv-conv-block">' +
+                  '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
+                  '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+                '</div>' +
+                '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
+                  '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
+                  '<div class="pv-drag-result-text" id="pv-drag-result-text"></div>' +
+                  (convIdx + 1 < totalConvs
+                    ? '<button class="fe-point-next-btn" onclick="FastExercises._pvDragNextConv()" style="background:' + catMeta.color + '">' + 'Next Conversation' + '</button>'
+                    : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
+                  ) +
+                '</div>' +
               '</div>' +
               '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
                 '<div class="pv-chips-title">' + 'Phrasal Verbs' + ':</div>' +
                 '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
-              '</div>' +
-              '<div class="pv-drag-result" id="pv-drag-result" style="display:none;">' +
-                '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
-                '<div class="pv-drag-result-text" id="pv-drag-result-text"></div>' +
-                (convIdx + 1 < totalConvs
-                  ? '<button class="fe-point-next-btn" onclick="FastExercises._pvDragNextConv()" style="background:' + catMeta.color + '">' + 'Next Conversation' + '</button>'
-                  : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
-                ) +
               '</div>' +
             '</div>' +
           '</div>' +
