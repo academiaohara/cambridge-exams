@@ -22,31 +22,51 @@
   overflow: hidden;
 }
 
-.footer-deco-left,
-.footer-deco-right {
+/* ── Footer decorative image wrappers ── */
+:root {
+  --footer-container-max-width: 1200px;
+  --footer-container-padding: 24px;
+}
+
+.footer-deco-left-wrap,
+.footer-deco-right-wrap {
   position: absolute;
   bottom: 0;
-  height: 100%;
+  top: 0;
   max-height: 180px;
-  width: auto;
+  overflow: hidden;
   pointer-events: none;
   user-select: none;
+  /* Span from the viewport edge to the start of the centered footer-container */
+  width: max(0px, calc(50% - var(--footer-container-max-width) / 2 + var(--footer-container-padding)));
+}
+
+.footer-deco-left-wrap {
+  left: 0;
+}
+
+.footer-deco-right-wrap {
+  right: 0;
 }
 
 .footer-deco-left {
-  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   object-position: left bottom;
 }
 
 .footer-deco-right {
-  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   object-position: right bottom;
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: var(--footer-container-max-width);
   margin: 0 auto;
-  padding: 40px 24px 0;
+  padding: 40px var(--footer-container-padding) 0;
 }
 
 .footer-grid {
