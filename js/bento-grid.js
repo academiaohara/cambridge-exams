@@ -919,8 +919,8 @@
         'Total': '#6366f1'
       };
 
-      var scaleBounds = { A2: [82, 140], B1: [102, 160], B2: [122, 180], C1: [142, 200], C2: [162, 220] };
-      var bounds = scaleBounds[level] || [142, 200];
+      var scaleBounds = { A2: [80, 140], B1: [100, 160], B2: [120, 190], C1: [140, 210], C2: [160, 230] };
+      var bounds = scaleBounds[level] || [140, 210];
       var scaleMin = bounds[0];
       var scaleMax = bounds[1];
 
@@ -996,22 +996,27 @@
 
       var self = this;
 
-      // SVG dimensions
-      var svgW = 640, svgH = 320;
-      var marginL = 48, marginR = 12, marginT = 16, marginB = 32;
-      var chartW = svgW - marginL - marginR;
+      // SVG dimensions – include a grades-column on the right
+      var svgW = 700, svgH = 320;
+      var gradeColW = 62;  // width of the grade-labels column
+      var gradeColGap = 8; // gap between chart area and grade column
+      var marginL = 48, marginR = 8, marginT = 20, marginB = 32;
+      var chartW = svgW - marginL - marginR - gradeColW - gradeColGap;
       var chartH = svgH - marginT - marginB;
       var scoreRange = scaleMax - scaleMin;
       var axisBottom = marginT + chartH;
+      var gradeColX = marginL + chartW + gradeColGap; // X start of grade column
 
       function scoreToY(score) {
         return marginT + chartH - ((score - scaleMin) / scoreRange) * chartH;
       }
 
       var n = examScores.length;
+      // Add horizontal inner padding so dots never sit on the chart edge
+      var pointPadX = n > 1 ? Math.min(28, chartW * 0.07) : 0;
       function indexToX(i) {
         if (n <= 1) return marginL + chartW / 2;
-        return marginL + (i / (n - 1)) * chartW;
+        return marginL + pointPadX + (i / (n - 1)) * (chartW - 2 * pointPadX);
       }
 
       // Catmull-Rom spline → cubic bezier path (smooth curves through all points)
@@ -1049,18 +1054,29 @@
       });
       svg += '</defs>';
 
-      // Grade band backgrounds and boundary dashed lines
+      // Grade band backgrounds (chart area) + grade labels column (outside chart)
       var bandPalette = ['#22c55e', '#84cc16', '#eab308', '#f97316', '#ef4444'];
+      // Grade column header
+      svg += '<text x="' + (gradeColX + gradeColW / 2) + '" y="' + (marginT - 5) + '" text-anchor="middle" font-size="8" fill="#94a3b8" font-weight="600" font-family="inherit">Grade</text>';
       gradeBands.forEach(function(band, i) {
         var topScore = i === 0 ? scaleMax : gradeBands[i - 1].min;
         var y1 = scoreToY(topScore);
         var y2 = scoreToY(band.min);
-        svg += '<rect x="' + marginL + '" y="' + y1 + '" width="' + chartW + '" height="' + (y2 - y1) + '" fill="' + bandPalette[i % bandPalette.length] + '" opacity="0.07"/>';
-        // Band label inside the stripe
-        svg += '<text x="' + (marginL + 6) + '" y="' + (y1 + 11) + '" font-size="9" fill="' + bandPalette[i % bandPalette.length] + '" opacity="0.85" font-weight="700" font-family="inherit">' + self._escapeHTML(band.label) + '</text>';
-        // Dashed boundary line
-        svg += '<line x1="' + marginL + '" y1="' + y2 + '" x2="' + (marginL + chartW) + '" y2="' + y2 + '" stroke="#94a3b8" stroke-dasharray="4,3" stroke-width="0.75" opacity="0.45"/>';
+        var bandH = y2 - y1;
+        var color = bandPalette[i % bandPalette.length];
+        // Subtle background stripe in chart area
+        svg += '<rect x="' + marginL + '" y="' + y1 + '" width="' + chartW + '" height="' + bandH + '" fill="' + color + '" opacity="0.07"/>';
+        // Dashed boundary line spanning chart + gap + grade column
+        svg += '<line x1="' + marginL + '" y1="' + y2 + '" x2="' + (gradeColX + gradeColW) + '" y2="' + y2 + '" stroke="#94a3b8" stroke-dasharray="4,3" stroke-width="0.75" opacity="0.4"/>';
+        // Grade column: colored band rect
+        svg += '<rect x="' + gradeColX + '" y="' + y1 + '" width="' + gradeColW + '" height="' + bandH + '" fill="' + color + '" opacity="0.14" rx="3"/>';
+        // Label centered in grade band (skip if too short)
+        if (bandH >= 12) {
+          svg += '<text x="' + (gradeColX + gradeColW / 2) + '" y="' + ((y1 + y2) / 2 + 3.5) + '" text-anchor="middle" font-size="9" fill="' + color + '" opacity="0.9" font-weight="700" font-family="inherit">' + self._escapeHTML(band.label) + '</text>';
+        }
       });
+      // Top dashed line at scaleMax spanning chart + grade column
+      svg += '<line x1="' + marginL + '" y1="' + marginT + '" x2="' + (gradeColX + gradeColW) + '" y2="' + marginT + '" stroke="#94a3b8" stroke-dasharray="4,3" stroke-width="0.75" opacity="0.4"/>';
 
       // Light horizontal grid lines and Y-axis labels (every 10 score points)
       for (var score = scaleMin; score <= scaleMax; score += 10) {
@@ -1085,6 +1101,7 @@
       // Axis borders
       svg += '<line x1="' + marginL + '" y1="' + marginT + '" x2="' + marginL + '" y2="' + axisBottom + '" stroke="#cbd5e1" stroke-width="1.5"/>';
       svg += '<line x1="' + marginL + '" y1="' + axisBottom + '" x2="' + (marginL + chartW) + '" y2="' + axisBottom + '" stroke="#cbd5e1" stroke-width="1.5"/>';
+      svg += '<line x1="' + (marginL + chartW) + '" y1="' + marginT + '" x2="' + (marginL + chartW) + '" y2="' + axisBottom + '" stroke="#cbd5e1" stroke-width="1"/>';
 
       // Data series inside clip region
       svg += '<g clip-path="url(#ge-clip)">';
