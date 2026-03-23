@@ -26,6 +26,10 @@
     _pvDragContext: null,
     _currentMapPage: 0,
     _currentPvVerbs: [],
+    _quickReviewCurrent: null,
+    _quickReviewAll: null,
+    _quickReviewCategory: null,
+    _quickReviewLevel: null,
 
     // ── Progress Storage ─────────────────────────────────────────────────
     _getProgress: function() {
@@ -307,7 +311,7 @@
       }
 
       // ── RIGHT WIDGET: Quick Review Mixer ──
-      var rightWidget = this._buildQuickReviewWidget(catMeta, data);
+      var rightWidget = this._buildQuickReviewWidget(catMeta, data, activeLevel);
 
       // ── PROGRESS BAR ──
       var bottomBar = this._buildBottomProgressBar(catMeta, data, activeLevel);
@@ -873,42 +877,13 @@
     },
 
     // ── RIGHT WIDGET ─────────────────────────────────────────────────────
-    _buildQuickReviewWidget: function(catMeta, data) {
-      var self = this;
-
-      // Level checkboxes for mixer
-      var levelsCheckboxes = '';
-      for (var i = 0; i < data.levels.length; i++) {
-        var lv = data.levels[i];
-        var isUnlocked = this._isLevelUnlocked(catMeta.id, lv.id, data.levels);
-        levelsCheckboxes += '<label class="fe-mixer-level ' + (!isUnlocked ? 'fe-mixer-level-disabled' : '') + '">' +
-          '<input type="checkbox" value="' + lv.id + '" ' + (isUnlocked ? 'checked' : 'disabled') + ' class="fe-mixer-checkbox" />' +
-          ' ' + lv.id +
-        '</label>';
-      }
-
-      // Recent mistakes (from progress data)
-      var catProg = this._getCategoryProgress(catMeta.id);
-      var mistakes = catProg.recentMistakes || [];
-      var mistakesHtml = '';
-      if (mistakes.length > 0) {
-        for (var m = 0; m < Math.min(mistakes.length, 5); m++) {
-          mistakesHtml += '<div class="fe-mistake-item">' + self._escapeHTML(mistakes[m]) + '</div>';
-        }
-      } else {
-        mistakesHtml = '<div class="fe-no-mistakes">' + 'No mistakes yet — keep practicing!' + '</div>';
-      }
-
+    _buildQuickReviewWidget: function(catMeta, data, activeLevel) {
       return '<div class="sidebar-widget fe-review-widget">' +
-        '<div class="fe-review-title">' + _mi('sync') + ' ' + 'Quick Review' + '</div>' +
-        '<div class="fe-review-subtitle">' + 'Mixer for' + ' ' + this._escapeHTML(catMeta.name) + '</div>' +
-        '<div class="fe-mixer-levels">' + levelsCheckboxes + '</div>' +
-        '<button class="fe-review-btn" onclick="FastExercises._startQuickReview(\'' + catMeta.id + '\')" style="background:' + catMeta.color + '">' +
-          'Start Review' +
+        '<div class="fe-review-title">' + _mi('quiz') + '<span>Quick Review</span></div>' +
+        '<div class="fe-review-subtitle">' + 'Random exercises from' + ' ' + this._escapeHTML(catMeta.name) + ' · ' + activeLevel + '</div>' +
+        '<button class="fe-review-btn" onclick="FastExercises._startQuickReview(\'' + catMeta.id + '\', \'' + activeLevel + '\')" style="background:' + catMeta.color + '">' +
+          _mi('shuffle') + ' Start Quick Review' +
         '</button>' +
-        '<div class="fe-review-divider"></div>' +
-        '<div class="fe-mistakes-title">' + 'Recent Mistakes' + '</div>' +
-        '<div class="fe-mistakes-list">' + mistakesHtml + '</div>' +
       '</div>';
     },
 
@@ -988,21 +963,296 @@
       }
     },
 
-    // ── QUICK REVIEW MIXER ───────────────────────────────────────────────
-    _startQuickReview: function(categoryId) {
-      // Gather checked levels
-      var checkboxes = document.querySelectorAll('.fe-mixer-checkbox:checked');
-      var selectedLevels = [];
-      for (var i = 0; i < checkboxes.length; i++) {
-        selectedLevels.push(checkboxes[i].value);
-      }
-      if (selectedLevels.length === 0) return;
+    // ── QUICK REVIEW ─────────────────────────────────────────────────────
+    _startQuickReview: async function(categoryId, activeLevel) {
+      var content = document.getElementById('main-content');
+      if (!content) return;
+      var self = this;
 
-      // Launch micro-learning with category filter
-      if (typeof MicroLearning !== 'undefined') {
-        MicroLearning._selectedCategory = categoryId === 'phrasal-verbs' ? 'phrasal_verbs' : categoryId;
-        MicroLearning.open();
+      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+
+      var catMeta = null;
+      for (var c = 0; c < CATEGORIES.length; c++) {
+        if (CATEGORIES[c].id === categoryId) { catMeta = CATEGORIES[c]; break; }
       }
+      if (!catMeta) return;
+
+      var data = await this._loadCategoryData(categoryId);
+      if (!data) return;
+
+      var level = null;
+      for (var i = 0; i < data.levels.length; i++) {
+        if (data.levels[i].id === activeLevel) { level = data.levels[i]; break; }
+      }
+      if (!level || !level.lessons) return;
+
+      // Load all lesson data in parallel
+      var lessonDataMap = {};
+      await Promise.all(level.lessons.map(async function(lesson) {
+        var ld = await self._loadLessonData(categoryId, activeLevel, lesson.id);
+        lessonDataMap[lesson.id] = ld;
+      }));
+
+      // Extract exercises from last point of each lesson
+      var allExercises = [];
+      level.lessons.forEach(function(lesson) {
+        var ld = lessonDataMap[lesson.id];
+        if (!ld) return;
+        var exs = self._extractQuickReviewExercises(ld, categoryId);
+        allExercises = allExercises.concat(exs);
+      });
+
+      // Shuffle and pick up to 10
+      allExercises = allExercises.sort(function() { return Math.random() - 0.5; });
+      var selected = allExercises.slice(0, 10);
+
+      if (selected.length === 0) {
+        content.innerHTML =
+          '<div class="fe-point-view">' +
+            '<div class="subpage-header">' +
+              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')">' + 'Back' + '</button>' +
+              '<div class="subpage-header-titles">' +
+                '<div class="subpage-title">' + _mi('quiz') + ' Quick Review</div>' +
+                '<div class="subpage-subtitle">' + self._escapeHTML(catMeta.name) + ' · ' + activeLevel + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
+              '<div class="fe-quiz-complete-section" style="display:block;">' +
+                '<div class="fe-quiz-complete-icon">' + _mi('info') + '</div>' +
+                '<div class="fe-quiz-complete-text">No exercises available for this level yet.</div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" style="background:' + catMeta.color + '">Back to Map</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+        return;
+      }
+
+      this._renderQuickReview(content, selected, catMeta, activeLevel, allExercises);
+    },
+
+    // ── EXTRACT EXERCISES FOR QUICK REVIEW ───────────────────────────────
+    _extractQuickReviewExercises: function(lessonData, categoryId) {
+      var exercises = [];
+
+      if (categoryId === 'phrasal-verbs') {
+        var allVerbs = (lessonData.phrasalVerbs || []).map(function(p) { return p.verb; });
+        // Multiple-choice fill-in exercises
+        (lessonData.fillInExercises || []).forEach(function(ex) {
+          if (ex.type === 'multiple-choice') {
+            exercises.push({ sentence: ex.sentence, options: ex.options, correct: ex.correct, type: 'mcq' });
+          }
+        });
+        // Conversation gap exercises
+        (lessonData.conversations || []).forEach(function(conv) {
+          (conv.lines || []).forEach(function(line) {
+            var m = line.text.match(/\[([^\]]+)\]/);
+            if (m) {
+              var inner = m[1];
+              var sepIdx = inner.indexOf('|');
+              if (sepIdx === -1) sepIdx = inner.indexOf('/');
+              var pv = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
+              var sentence = line.text.replace(/\[([^\]]+)\]/g, '_____');
+              var distractors = allVerbs.filter(function(v) { return v !== pv; }).sort(function() { return Math.random() - 0.5; }).slice(0, 3);
+              var opts = [pv].concat(distractors).sort(function() { return Math.random() - 0.5; });
+              exercises.push({ sentence: sentence, options: opts, correct: pv, type: 'mcq' });
+            }
+          });
+        });
+
+      } else if (categoryId === 'idioms') {
+        (lessonData.quizExercises || []).forEach(function(ex) {
+          if (ex.type === 'match-meaning') {
+            (ex.pairs || []).forEach(function(pair, pi) {
+              var distractors = (ex.pairs || []).filter(function(p, i) { return i !== pi; }).map(function(p) { return p.meaning; });
+              var opts = [pair.meaning].concat(distractors.sort(function() { return Math.random() - 0.5; }).slice(0, 3)).sort(function() { return Math.random() - 0.5; });
+              exercises.push({ sentence: 'What does "' + pair.idiom + '" mean?', options: opts, correct: pair.meaning, type: 'mcq' });
+            });
+          } else if (ex.type === 'complete-sentence' || ex.type === 'select-situation') {
+            var correct = typeof ex.correct === 'number' ? (ex.options || [])[ex.correct] : ex.correct;
+            exercises.push({ sentence: ex.sentence || ex.question || '', options: ex.options || [], correct: correct, type: 'mcq' });
+          }
+        });
+
+      } else if (categoryId === 'word-formation') {
+        (lessonData.transformExercises || []).forEach(function(ex) {
+          exercises.push({ sentence: ex.sentence, correct: ex.correct, type: 'write', hint: ex.root, options: [] });
+        });
+      }
+
+      return exercises;
+    },
+
+    // ── RENDER QUICK REVIEW INTERFACE ─────────────────────────────────────
+    _renderQuickReview: function(container, exercises, catMeta, activeLevel, allExercises) {
+      var self = this;
+
+      var questionsHtml = '';
+      exercises.forEach(function(q, qi) {
+        var inputHtml = '';
+        if (q.type === 'mcq') {
+          var optHtml = '';
+          (q.options || []).forEach(function(opt) {
+            optHtml += '<button class="fe-quiz-option" data-question="qr' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerQuickReview(this,' + qi + ',\'' + self._jsStr(q.correct) + '\')">' + self._escapeHTML(opt) + '</button>';
+          });
+          inputHtml = '<div class="fe-quiz-options">' + optHtml + '</div>';
+        } else if (q.type === 'write') {
+          inputHtml =
+            '<div class="pv-write-row">' +
+              '<input type="text" class="pv-write-input wf-transform-input" id="qr-write-' + qi + '" placeholder="Type the correct form…" />' +
+              '<button class="pv-write-btn" onclick="FastExercises._checkQuickReviewWrite(' + qi + ',\'' + self._jsStr(q.correct) + '\')" style="background:' + catMeta.color + '">Check</button>' +
+            '</div>';
+        }
+
+        questionsHtml +=
+          '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
+            '<div class="fe-quiz-num">Question ' + (qi + 1) + '/' + exercises.length + '</div>' +
+            (q.hint ? '<div class="wf-transform-root-row">' + _mi('text_fields') + ' <span class="wf-transform-root-word">' + self._escapeHTML(q.hint) + '</span></div>' : '') +
+            '<div class="fe-quiz-sentence' + (q.type === 'write' ? ' wf-transform-sentence' : '') + '">' + self._escapeHTML(q.sentence || '') + '</div>' +
+            inputHtml +
+            '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
+          '</div>';
+      });
+
+      // Store state for repeat/new round
+      this._quickReviewCurrent = exercises;
+      this._quickReviewAll = allExercises;
+      this._quickReviewCategory = catMeta.id;
+      this._quickReviewLevel = activeLevel;
+
+      container.innerHTML =
+        '<div class="fe-point-view">' +
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
+            '<div class="subpage-header-titles">' +
+              '<div class="subpage-title">' + _mi('quiz') + ' Quick Review</div>' +
+              '<div class="subpage-subtitle">' + self._escapeHTML(catMeta.name) + ' · ' + activeLevel + ' · ' + exercises.length + ' exercises</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
+            '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
+            '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
+              questionsHtml +
+            '</div>' +
+            '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
+              '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
+              '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
+              '<div class="fe-qr-complete-actions">' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._quickReviewNewRound()" style="background:' + catMeta.color + '">' + _mi('shuffle') + ' New Review</button>' +
+                '<button class="fe-point-next-btn fe-qr-repeat-btn" onclick="FastExercises._quickReviewRepeat()" style="background:' + catMeta.color + '">' + _mi('replay') + ' Repeat</button>' +
+                '<button class="fe-qr-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + _mi('arrow_back') + ' Back to Map</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      this._showQuizQuestion(0);
+
+      // Allow Enter key for write inputs
+      var inputs = container.querySelectorAll('.wf-transform-input');
+      for (var i = 0; i < inputs.length; i++) {
+        (function(idx) {
+          inputs[idx].addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+              var btn = e.target.parentElement && e.target.parentElement.querySelector('.pv-write-btn');
+              if (btn && !btn.disabled) btn.click();
+            }
+          });
+        })(i);
+      }
+    },
+
+    _answerQuickReview: function(btn, qIndex, correctAnswer) {
+      var chosen = btn.getAttribute('data-answer');
+      var isCorrect = chosen.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+      var buttons = document.querySelectorAll('[data-question="qr' + qIndex + '"]');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+        if (buttons[i].getAttribute('data-answer').trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+          buttons[i].classList.add('fe-quiz-correct');
+        }
+        if (buttons[i] === btn && !isCorrect) {
+          buttons[i].classList.add('fe-quiz-wrong');
+        }
+      }
+      this._processQuickReviewAnswer(qIndex, isCorrect, correctAnswer);
+    },
+
+    _checkQuickReviewWrite: function(qIndex, correctAnswer) {
+      var input = document.getElementById('qr-write-' + qIndex);
+      if (!input) return;
+      var typed = input.value.trim().toLowerCase();
+      var isCorrect = typed === correctAnswer.trim().toLowerCase();
+      input.disabled = true;
+      input.classList.add(isCorrect ? 'pv-write-correct' : 'pv-write-wrong');
+      var btn = input.parentElement && input.parentElement.querySelector('.pv-write-btn');
+      if (btn) btn.disabled = true;
+      this._processQuickReviewAnswer(qIndex, isCorrect, correctAnswer);
+    },
+
+    _processQuickReviewAnswer: function(qIndex, isCorrect, correctAnswer) {
+      var self = this;
+      var feedbackEl = document.getElementById('fe-quiz-feedback-' + qIndex);
+      var questionsContainer = document.getElementById('fe-quiz-questions');
+
+      if (feedbackEl) {
+        if (isCorrect) {
+          feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-correct';
+          feedbackEl.innerHTML = _mi('check_circle') + ' Correct!';
+        } else {
+          feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
+          feedbackEl.innerHTML = _mi('cancel') + ' The correct answer is <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
+        }
+        feedbackEl.style.display = 'block';
+      }
+
+      var answered = parseInt(questionsContainer.getAttribute('data-answered')) + 1;
+      var correct  = parseInt(questionsContainer.getAttribute('data-correct')) + (isCorrect ? 1 : 0);
+      var total    = parseInt(questionsContainer.getAttribute('data-total'));
+      questionsContainer.setAttribute('data-answered', answered);
+      questionsContainer.setAttribute('data-correct', correct);
+
+      var progressFill = document.getElementById('fe-quiz-progress-fill');
+      if (progressFill) progressFill.style.width = Math.round((answered / total) * 100) + '%';
+
+      setTimeout(function() {
+        if (answered >= total) {
+          var completeSection = document.getElementById('fe-quiz-complete');
+          var completeText = document.getElementById('fe-quiz-complete-text');
+          if (completeSection && completeText) {
+            completeText.textContent = correct + '/' + total + ' correct!';
+            completeSection.style.display = 'block';
+          }
+          var qs = document.querySelectorAll('.fe-quiz-question');
+          for (var i = 0; i < qs.length; i++) qs[i].style.display = 'none';
+          if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+        } else {
+          self._showQuizQuestion(qIndex + 1);
+        }
+      }, isCorrect ? 800 : 1800);
+    },
+
+    _quickReviewNewRound: function() {
+      var content = document.getElementById('main-content');
+      if (!content || !this._quickReviewAll || !this._quickReviewCategory) return;
+      var catMeta = null;
+      for (var c = 0; c < CATEGORIES.length; c++) {
+        if (CATEGORIES[c].id === this._quickReviewCategory) { catMeta = CATEGORIES[c]; break; }
+      }
+      if (!catMeta) return;
+      var shuffled = this._quickReviewAll.slice().sort(function() { return Math.random() - 0.5; });
+      var selected = shuffled.slice(0, 10);
+      this._renderQuickReview(content, selected, catMeta, this._quickReviewLevel, this._quickReviewAll);
+    },
+
+    _quickReviewRepeat: function() {
+      var content = document.getElementById('main-content');
+      if (!content || !this._quickReviewCurrent || !this._quickReviewCategory) return;
+      var catMeta = null;
+      for (var c = 0; c < CATEGORIES.length; c++) {
+        if (CATEGORIES[c].id === this._quickReviewCategory) { catMeta = CATEGORIES[c]; break; }
+      }
+      if (!catMeta) return;
+      this._renderQuickReview(content, this._quickReviewCurrent, catMeta, this._quickReviewLevel, this._quickReviewAll);
     },
 
     // ── OPEN INDIVIDUAL POINT ────────────────────────────────────────────
