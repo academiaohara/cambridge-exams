@@ -8,7 +8,7 @@
       "id": "B1",
       "name": "B1 – Intermediate",
       "requiredToUnlock": null,
-      "totalLessons": 3,
+      "totalLessons": 4,
       "lessons": [
         { "id": "lesson-1", "title": "Very Basic Idioms", "points": [
           { "type": "id-gallery",           "label": "once in a while / in a hurry" },
@@ -24,6 +24,13 @@
           { "type": "id-conversation-drag", "label": "Drag: Everyday idioms" },
           { "type": "id-quiz",              "label": "Quiz: Everyday idioms" }
         ]},
+        { "id": "lesson-4", "title": "Home & Everyday Life", "points": [
+          { "type": "id-gallery",           "label": "fifty-fifty / home sweet home" },
+          { "type": "id-fill-in",           "label": "Fill in: Home idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Home idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Home idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Home idioms" }
+        ]},
         { "id": "lesson-3", "title": "Final Challenge: B1", "points": [
           { "type": "id-quiz",   "label": "Mixed review" },
           { "type": "id-trophy", "label": "B1 Final Challenge" }
@@ -34,7 +41,7 @@
       "id": "B2",
       "name": "B2 – Upper Intermediate",
       "requiredToUnlock": "B1",
-      "totalLessons": 5,
+      "totalLessons": 14,
       "lessons": [
         { "id": "lesson-1", "title": "Social Idioms", "points": [
           { "type": "id-gallery",           "label": "break the ice / get the ball rolling" },
@@ -65,7 +72,67 @@
           { "type": "id-quiz",              "label": "Quiz: Opinion idioms" }
         ]},
         { "id": "lesson-5", "title": "Final Challenge: B2", "points": [
-          { "type": "id-quiz",   "label": "Mixed review" },
+          { "type": "id-quiz",   "label": "Mixed review (lessons 1–4)" },
+          { "type": "id-trophy", "label": "B2 Challenge (Part 1)" }
+        ]},
+        { "id": "lesson-6", "title": "Place & Distance", "points": [
+          { "type": "id-gallery",           "label": "a drop in the ocean / a home from home" },
+          { "type": "id-fill-in",           "label": "Fill in: Place idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Place idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Place idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Place idioms" }
+        ]},
+        { "id": "lesson-7", "title": "Time & Opportunity", "points": [
+          { "type": "id-gallery",           "label": "a stitch in time / out of the blue" },
+          { "type": "id-fill-in",           "label": "Fill in: Time idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Time idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Time idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Time idioms" }
+        ]},
+        { "id": "lesson-8", "title": "Feelings & Reactions", "points": [
+          { "type": "id-gallery",           "label": "fly off the handle / let off steam" },
+          { "type": "id-fill-in",           "label": "Fill in: Feelings idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Feelings idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Feelings idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Feelings idioms" }
+        ]},
+        { "id": "lesson-9", "title": "Social Life & People", "points": [
+          { "type": "id-gallery",           "label": "life and soul of the party / like two peas in a pod" },
+          { "type": "id-fill-in",           "label": "Fill in: Social life idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Social life idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Social life idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Social life idioms" }
+        ]},
+        { "id": "lesson-10", "title": "Money & Work", "points": [
+          { "type": "id-gallery",           "label": "break even / red tape" },
+          { "type": "id-fill-in",           "label": "Fill in: Money idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Money idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Money idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Money idioms" }
+        ]},
+        { "id": "lesson-11", "title": "Secrets, Info & Communication", "points": [
+          { "type": "id-gallery",           "label": "on the grapevine / keep sth under your hat" },
+          { "type": "id-fill-in",           "label": "Fill in: Communication idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Communication idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Communication idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Communication idioms" }
+        ]},
+        { "id": "lesson-12", "title": "Behaviour & Decisions", "points": [
+          { "type": "id-gallery",           "label": "on a whim / turn over a new leaf" },
+          { "type": "id-fill-in",           "label": "Fill in: Behaviour idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Behaviour idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Behaviour idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Behaviour idioms" }
+        ]},
+        { "id": "lesson-13", "title": "Relaxation & Environment", "points": [
+          { "type": "id-gallery",           "label": "all mod cons / concrete jungle" },
+          { "type": "id-fill-in",           "label": "Fill in: Environment idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Environment idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Environment idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Environment idioms" }
+        ]},
+        { "id": "lesson-14", "title": "Final Challenge: B2 (Advanced)", "points": [
+          { "type": "id-quiz",   "label": "Mixed review (lessons 6–13)" },
           { "type": "id-trophy", "label": "B2 Final Challenge" }
         ]}
       ]
@@ -74,7 +141,7 @@
       "id": "C1",
       "name": "C1 – Advanced",
       "requiredToUnlock": "B2",
-      "totalLessons": 5,
+      "totalLessons": 9,
       "lessons": [
         { "id": "lesson-1", "title": "Precision & Accuracy", "points": [
           { "type": "id-gallery",           "label": "hit the nail on the head / cut to the chase" },
@@ -105,7 +172,32 @@
           { "type": "id-quiz",              "label": "Quiz: Context idioms" }
         ]},
         { "id": "lesson-5", "title": "Final Challenge: C1", "points": [
-          { "type": "id-quiz",   "label": "Mixed review" },
+          { "type": "id-quiz",   "label": "Mixed review (lessons 1–4)" },
+          { "type": "id-trophy", "label": "C1 Challenge (Part 1)" }
+        ]},
+        { "id": "lesson-6", "title": "Law, Justice & Power", "points": [
+          { "type": "id-gallery",           "label": "an act of God / take the law into your own hands" },
+          { "type": "id-fill-in",           "label": "Fill in: Law idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Law idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Law idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Law idioms" }
+        ]},
+        { "id": "lesson-7", "title": "Language & Thinking", "points": [
+          { "type": "id-gallery",           "label": "split hairs / reinvent the wheel" },
+          { "type": "id-fill-in",           "label": "Fill in: Language idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Language idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Language idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Language idioms" }
+        ]},
+        { "id": "lesson-8", "title": "Life, Place & Time", "points": [
+          { "type": "id-gallery",           "label": "in the sticks / lock, stock and barrel" },
+          { "type": "id-fill-in",           "label": "Fill in: Life & Place idioms" },
+          { "type": "id-conversations",     "label": "Conversations: Life & Place idioms" },
+          { "type": "id-conversation-drag", "label": "Drag: Life & Place idioms" },
+          { "type": "id-quiz",              "label": "Quiz: Life & Place idioms" }
+        ]},
+        { "id": "lesson-9", "title": "Final Challenge: C1 (Advanced)", "points": [
+          { "type": "id-quiz",   "label": "Mixed review (lessons 6–8)" },
           { "type": "id-trophy", "label": "C1 Final Challenge" }
         ]}
       ]
