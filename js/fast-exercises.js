@@ -4324,7 +4324,7 @@
       var html = '';
       filtered.forEach(function(e) {
         html +=
-          '<div class="vocab-dict-entry">' +
+          '<div class="vocab-dict-entry vocab-entry-' + (e.level || '').toLowerCase() + '">' +
             '<div class="vocab-dict-word-row">' +
               '<span class="vocab-dict-word">' + self._escapeHTML(e.word) + '</span>' +
               '<span class="vocab-dict-level-badge vocab-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
