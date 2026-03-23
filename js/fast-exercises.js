@@ -2145,7 +2145,6 @@
                 '<div class="wf-exp-panel">' + ruleHtml + groupsHtml + '</div>' : '') +
               (wordForms.length > 0 ?
                 '<div class="pv-gallery-single-wrap">' +
-                  '<div class="wf-exp-cards-label">' + _mi('style') + ' <span>' + 'Word Cards' + '</span></div>' +
                   '<div class="pv-gallery-cards-area" id="wf-gallery-cards">' + cardsHtml + '</div>' +
                   '<div class="pv-gallery-nav-col" id="wf-gallery-nav">' + dotsHtml + '</div>' +
                 '</div>' : '') +
@@ -2342,10 +2341,10 @@
           '<div class="pv-info-modal-header">' +
             '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">text_fields</span></span>' +
             '<h2 class="pv-info-modal-title">What is Word Formation?</h2>' +
+            '<button class="pv-info-modal-close" onclick="document.getElementById(\'wf-info-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
           '</div>' +
-          '<button class="pv-info-modal-close" onclick="document.getElementById(\'wf-info-modal\').remove()">' +
-            '<span class="material-symbols-outlined">close</span>' +
-          '</button>' +
           '<div class="pv-info-modal-body">' +
             '<p><strong>What is word formation?</strong></p>' +
             '<p>Word formation is the process of creating new words by adding prefixes or suffixes to a base (root) word, or by combining words.</p>' +

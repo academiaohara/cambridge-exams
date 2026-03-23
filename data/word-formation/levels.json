@@ -8,11 +8,29 @@
       "id": "B1",
       "name": "B1 – Intermediate",
       "requiredToUnlock": null,
-      "totalLessons": 3,
+      "totalLessons": 4,
       "lessons": [
         {
           "id": "lesson-1",
-          "title": "Noun Suffixes: -ion & -ment",
+          "title": "Noun Suffixes: -ion",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-1b",
+          "title": "Noun Suffixes: -ment",
           "points": [
             {
               "type": "wf-explanation",
