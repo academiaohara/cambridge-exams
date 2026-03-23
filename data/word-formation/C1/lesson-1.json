@@ -2,70 +2,38 @@
   "lessonId": "lesson-1",
   "level": "C1",
   "category": "word-formation",
-  "title": "Advanced Nouns: -ism, -ist, -ness",
+  "title": "Advanced Noun Suffix: -ism",
   "explanation": {
-    "rule": "These suffixes form nouns expressing beliefs and ideologies (-ism), people who follow them (-ist), or abstract qualities (-ness).",
+    "rule": "The suffix -ism forms nouns denoting a belief, ideology, system, movement, or characteristic quality. It typically attaches to nouns (nation → nationalism) or adjectives (real → realism). Many -ism words have a corresponding -ist form for a person who holds that belief.",
     "groups": [
       {
         "suffix": "-ism",
-        "note": "Refers to a belief, theory, or practice",
+        "note": "Expresses a doctrine, ideology, system of practice, or artistic movement. Often paired with -ist (a person) and -ic/-istic (an adjective).",
         "examples": [
           {
-            "base": "human",
-            "derived": "humanism",
-            "definition": "a philosophy centred on human values and reason"
+            "base": "capital",
+            "derived": "capitalism",
+            "definition": "an economic system based on private ownership and profit"
           },
           {
-            "base": "conserve",
-            "derived": "conservatism",
-            "definition": "opposition to change; traditional values"
+            "base": "nation",
+            "derived": "nationalism",
+            "definition": "strong devotion to and promotion of one's own country"
           },
           {
-            "base": "ideal",
-            "derived": "idealism",
-            "definition": "the pursuit of noble or perfect goals"
-          }
-        ]
-      },
-      {
-        "suffix": "-ist",
-        "note": "Refers to a person who holds a belief or practices an art",
-        "examples": [
-          {
-            "base": "human",
-            "derived": "humanist",
-            "definition": "an advocate of humanism"
+            "base": "symbol",
+            "derived": "symbolism",
+            "definition": "the use of symbols to convey hidden or deeper meanings"
           },
           {
-            "base": "ideal",
-            "derived": "idealist",
-            "definition": "a person guided by ideals rather than practical considerations"
+            "base": "critic",
+            "derived": "criticism",
+            "definition": "the analysis and judgement of something, especially literature or art"
           },
           {
-            "base": "individual",
-            "derived": "individualist",
-            "definition": "a person who acts independently"
-          }
-        ]
-      },
-      {
-        "suffix": "-ness / -lessness",
-        "note": "Forms abstract nouns from adjectives describing a quality or state",
-        "examples": [
-          {
-            "base": "art",
-            "derived": "artfulness",
-            "definition": "skill in achieving something cleverly"
-          },
-          {
-            "base": "art",
-            "derived": "artlessness",
-            "definition": "natural simplicity and sincerity"
-          },
-          {
-            "base": "mean",
-            "derived": "meaninglessness",
-            "definition": "the state of having no meaning or purpose"
+            "base": "real",
+            "derived": "realism",
+            "definition": "acceptance of things as they are, without idealisation"
           }
         ]
       }
@@ -73,200 +41,149 @@
   },
   "wordForms": [
     {
-      "base": "human",
-      "derived": "humanism",
+      "base": "critic",
+      "derived": "criticism",
       "type": "suffix -ism",
-      "definition": "a philosophy centred on human values, reason, and dignity",
-      "example": "Humanism places human welfare at the centre of ethical thinking.",
-      "rootDefinition": "of, relating to, or characteristic of people"
+      "definition": "the expression of disapproval, or the analytical evaluation of artistic or intellectual work",
+      "example": "The government faced widespread criticism for its handling of the economic crisis.",
+      "rootDefinition": "a person who evaluates and judges the quality of something"
     },
     {
-      "base": "human",
-      "derived": "humanist",
-      "type": "suffix -ist",
-      "definition": "an advocate or follower of humanism",
-      "example": "As a humanist, she believed in secular ethics over religious doctrine.",
-      "rootDefinition": "of, relating to, or characteristic of people"
-    },
-    {
-      "base": "conserve",
-      "derived": "conservatism",
+      "base": "journal",
+      "derived": "journalism",
       "type": "suffix -ism",
-      "definition": "a tendency to oppose change; belief in traditional values",
-      "example": "Political conservatism often favours gradual rather than radical change.",
-      "rootDefinition": "to protect or preserve from loss or harm"
+      "definition": "the profession of gathering, writing, and publishing news and current affairs",
+      "example": "She built a distinguished career in investigative journalism over three decades.",
+      "rootDefinition": "a daily record of events; a periodical or newspaper"
     },
     {
-      "base": "ideal",
-      "derived": "idealism",
+      "base": "optimist",
+      "derived": "optimism",
       "type": "suffix -ism",
-      "definition": "the belief in and pursuit of noble or perfect principles",
-      "example": "The young politician's idealism inspired many voters.",
-      "rootDefinition": "a perfect example; a standard of excellence"
+      "definition": "a disposition to be hopeful and confident about the future",
+      "example": "Despite the setbacks, the team's optimism remained remarkably high.",
+      "rootDefinition": "a person who tends to expect positive outcomes"
     },
     {
-      "base": "ideal",
-      "derived": "idealist",
-      "type": "suffix -ist",
-      "definition": "a person guided by ideals rather than realistic thinking",
-      "example": "She was called an idealist for believing peace was achievable.",
-      "rootDefinition": "a perfect example; a standard of excellence"
+      "base": "pessimist",
+      "derived": "pessimism",
+      "type": "suffix -ism",
+      "definition": "a tendency to see the negative aspects of situations and expect the worst",
+      "example": "His pessimism about the negotiations proved unfounded when a deal was reached.",
+      "rootDefinition": "a person who tends to expect the worst outcome"
     },
     {
-      "base": "individual",
-      "derived": "individualist",
-      "type": "suffix -ist",
-      "definition": "a person who is independent and self-reliant",
-      "example": "He was a true individualist who refused to follow trends.",
-      "rootDefinition": "a single person, considered separately from a group"
+      "base": "real",
+      "derived": "realism",
+      "type": "suffix -ism",
+      "definition": "the acceptance of a situation as it is, with a willingness to deal with it pragmatically",
+      "example": "Political realism requires leaders to prioritise national interest over ideology.",
+      "rootDefinition": "actually existing or occurring, not imagined or idealised"
     },
     {
-      "base": "individual",
-      "derived": "individuality",
-      "type": "suffix -ity",
-      "definition": "the quality of being different from others",
-      "example": "The school encouraged pupils to express their individuality.",
-      "rootDefinition": "a single person, considered separately from a group"
+      "base": "race",
+      "derived": "racism",
+      "type": "suffix -ism",
+      "definition": "prejudice, discrimination, or antagonism against people of a different race or ethnicity",
+      "example": "The new legislation was intended to address systemic racism in hiring practices.",
+      "rootDefinition": "a grouping of people defined by shared ancestry, ethnicity, or physical traits"
     },
     {
-      "base": "art",
-      "derived": "artfulness",
-      "type": "suffix -ness",
-      "definition": "cleverness and skill in achieving something",
-      "example": "The artfulness of his argument left his opponents with nothing to say.",
-      "rootDefinition": "the expression of creativity and imagination"
+      "base": "capital",
+      "derived": "capitalism",
+      "type": "suffix -ism",
+      "definition": "an economic and political system in which trade, industry, and property are privately owned",
+      "example": "Proponents of capitalism argue that free markets stimulate innovation.",
+      "rootDefinition": "wealth in the form of money or assets used to generate more wealth"
     },
     {
-      "base": "art",
-      "derived": "artlessness",
-      "type": "suffix -lessness",
-      "definition": "natural simplicity; lack of cunning",
-      "example": "The child's artlessness was charming and refreshing.",
-      "rootDefinition": "the expression of creativity and imagination"
+      "base": "nation",
+      "derived": "nationalism",
+      "type": "suffix -ism",
+      "definition": "strong identification with and advocacy for one's own nation, often at the expense of others",
+      "example": "A resurgence of nationalism disrupted the fragile post-war alliances.",
+      "rootDefinition": "a large community sharing a common language, culture, history, or territory"
     },
     {
-      "base": "mean",
-      "derived": "meaninglessness",
-      "type": "suffix -lessness",
-      "definition": "the state of having no meaning or purpose",
-      "example": "He felt a sense of meaninglessness after losing his job.",
-      "rootDefinition": "to express or represent something"
+      "base": "terror",
+      "derived": "terrorism",
+      "type": "suffix -ism",
+      "definition": "the systematic use of violence and intimidation, especially against civilians, to achieve political goals",
+      "example": "Counter-terrorism units were deployed across major cities ahead of the summit.",
+      "rootDefinition": "extreme fear; a cause of intense dread"
     },
     {
-      "base": "class",
-      "derived": "classlessness",
-      "type": "suffix -lessness",
-      "definition": "the absence of social class divisions",
-      "example": "Some argue that pop culture promotes a sense of classlessness.",
-      "rootDefinition": "a group of people with similar social or economic status"
-    },
-    {
-      "base": "rest",
-      "derived": "restlessness",
-      "type": "suffix -lessness",
-      "definition": "the state of being unable to rest or keep still",
-      "example": "His restlessness made it hard to concentrate during the lesson.",
-      "rootDefinition": "to relax or stop working for a period"
+      "base": "symbol",
+      "derived": "symbolism",
+      "type": "suffix -ism",
+      "definition": "the use of symbols to represent abstract ideas or qualities, especially in literature or art",
+      "example": "The symbolism of the dove as a sign of peace is recognised across cultures.",
+      "rootDefinition": "a mark, sign, or object used to represent something else"
     }
   ],
   "multipleChoiceExercises": [
     {
-      "sentence": "Her political views reflected a deep commitment to ___.",
-      "root": "ideal",
-      "correct": "idealism",
-      "options": [
-        "idealism",
-        "idealist",
-        "idealise",
-        "idealistic"
-      ]
+      "sentence": "The scholar's literary ___ of the poem revealed layers of political meaning.",
+      "root": "critic",
+      "correct": "criticism",
+      "options": ["criticism", "critical", "critic", "criticise"]
     },
     {
-      "sentence": "As a confirmed ___, she preferred to work independently on all projects.",
-      "root": "individual",
-      "correct": "individualist",
-      "options": [
-        "individualist",
-        "individualism",
-        "individuality",
-        "individually"
-      ]
+      "sentence": "A wave of ___ swept through the region as elections approached.",
+      "root": "nation",
+      "correct": "nationalism",
+      "options": ["nationalism", "nationality", "nationalist", "nationally"]
     },
     {
-      "sentence": "The ___ of his philosophical views was what made him stand out.",
-      "root": "individual",
-      "correct": "individuality",
-      "options": [
-        "individuality",
-        "individualism",
-        "individualist",
-        "individual"
-      ]
+      "sentence": "Her ___ was infectious; everyone left the meeting feeling energised.",
+      "root": "optimist",
+      "correct": "optimism",
+      "options": ["optimism", "optimist", "optimistic", "optimally"]
     },
     {
-      "sentence": "The ___ of the new era contrasted with the rigid hierarchies of the past.",
-      "root": "class",
-      "correct": "classlessness",
-      "options": [
-        "classlessness",
-        "classless",
-        "classic",
-        "classify"
-      ]
+      "sentence": "The novel is dense with ___, using water throughout to represent renewal.",
+      "root": "symbol",
+      "correct": "symbolism",
+      "options": ["symbolism", "symbolic", "symbolise", "symbol"]
     },
     {
-      "sentence": "She was moved by the ___ of the child's paintings.",
-      "root": "art",
-      "correct": "artlessness",
-      "options": [
-        "artlessness",
-        "artfulness",
-        "artistry",
-        "artless"
-      ]
+      "sentence": "Investigative ___ remains crucial to democratic accountability.",
+      "root": "journal",
+      "correct": "journalism",
+      "options": ["journalism", "journalist", "journalistic", "journal"]
     },
     {
-      "sentence": "The professor's lecture touched on ___ as an alternative to religious belief.",
-      "root": "human",
-      "correct": "humanism",
-      "options": [
-        "humanism",
-        "humanist",
-        "humanity",
-        "humanly"
-      ]
+      "sentence": "Many economists credit ___ with lifting millions out of poverty.",
+      "root": "capital",
+      "correct": "capitalism",
+      "options": ["capitalism", "capitalist", "capital", "capitalise"]
     }
   ],
   "transformExercises": [
     {
-      "sentence": "She approached the problem with great ___, finding a clever solution. (ART)",
-      "root": "ART",
-      "correct": "artfulness"
+      "sentence": "Her ___ carried the team through even the most challenging periods. (OPTIMIST)",
+      "root": "OPTIMIST",
+      "correct": "optimism"
     },
     {
-      "sentence": "His commitment to ___ meant he always acted on principles rather than profit. (IDEAL)",
-      "root": "IDEAL",
-      "correct": "idealism"
+      "sentence": "The essay attracted sharp academic ___ for its unsubstantiated claims. (CRITIC)",
+      "root": "CRITIC",
+      "correct": "criticism"
     },
     {
-      "sentence": "The philosopher was a well-known ___ who believed in rational ethics. (HUMAN)",
-      "root": "HUMAN",
-      "correct": "humanist"
+      "sentence": "The surge in ___ across the continent reshaped diplomatic relationships. (NATION)",
+      "root": "NATION",
+      "correct": "nationalism"
     },
     {
-      "sentence": "Growing ___ among the students led to disruption in several classes. (REST)",
-      "root": "REST",
-      "correct": "restlessness"
+      "sentence": "The government introduced new measures to combat domestic ___. (TERROR)",
+      "root": "TERROR",
+      "correct": "terrorism"
     },
     {
-      "sentence": "The architect prized ___ in design, avoiding unnecessary decoration. (ART)",
-      "root": "ART",
-      "correct": "artlessness"
-    },
-    {
-      "sentence": "The ___ of modern life often causes people to search for deeper purpose. (MEAN)",
-      "root": "MEAN",
-      "correct": "meaninglessness"
+      "sentence": "The artist's use of ___ gave the work a profound emotional depth. (SYMBOL)",
+      "root": "SYMBOL",
+      "correct": "symbolism"
     }
   ]
 }

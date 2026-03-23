@@ -2,55 +2,38 @@
   "lessonId": "lesson-3",
   "level": "B1",
   "category": "word-formation",
-  "title": "Prefixes: un-, re-, dis-",
+  "title": "Prefix: un-",
   "explanation": {
-    "rule": "Prefixes are added to the beginning of words to change or reverse their meaning.",
+    "rule": "The prefix un- is added to the beginning of adjectives and verbs to give the opposite or negative meaning.",
     "groups": [
       {
-        "suffix": "dis-",
-        "note": "Gives the opposite meaning or shows reversal",
-        "examples": [
-          {
-            "base": "appear",
-            "derived": "disappear",
-            "definition": "to stop being visible"
-          },
-          {
-            "base": "agree",
-            "derived": "disagree",
-            "definition": "to have a different opinion"
-          }
-        ]
-      },
-      {
-        "suffix": "re-",
-        "note": "Means 'again' — doing something a second time",
-        "examples": [
-          {
-            "base": "do",
-            "derived": "redo",
-            "definition": "to do again"
-          },
-          {
-            "base": "place",
-            "derived": "replace",
-            "definition": "to put something back or substitute"
-          }
-        ]
-      },
-      {
         "suffix": "un-",
-        "note": "Means 'not' or reverses the meaning",
+        "note": "Added to adjectives to mean 'not'. It can also reverse the meaning of a verb (unlock, undo). Simply place un- before the base word with no spelling changes.",
         "examples": [
           {
-            "base": "employ",
-            "derived": "unemployed",
-            "definition": "without paid work"
+            "base": "happy",
+            "derived": "unhappy",
+            "definition": "not happy; feeling sad or dissatisfied"
           },
           {
-            "base": "believe",
-            "derived": "unbelievable",
-            "definition": "extremely surprising; hard to believe"
+            "base": "usual",
+            "derived": "unusual",
+            "definition": "not usual; different from what is normal"
+          },
+          {
+            "base": "expected",
+            "derived": "unexpected",
+            "definition": "not expected; happening without warning"
+          },
+          {
+            "base": "fair",
+            "derived": "unfair",
+            "definition": "not fair; not treating people equally"
+          },
+          {
+            "base": "reliable",
+            "derived": "unreliable",
+            "definition": "not reliable; cannot be trusted or depended on"
           }
         ]
       }
@@ -58,168 +41,179 @@
   },
   "wordForms": [
     {
-      "base": "appear",
-      "derived": "disappear",
-      "type": "prefix dis-",
-      "definition": "to stop being visible",
-      "example": "The magician made the coin disappear in an instant.",
-      "rootDefinition": "to become visible or to arrive"
+      "base": "happy",
+      "derived": "unhappy",
+      "type": "prefix un-",
+      "definition": "not happy; feeling sad or dissatisfied",
+      "example": "She was unhappy with the results of the exam.",
+      "rootDefinition": "feeling or showing pleasure or contentment"
     },
     {
-      "base": "change",
-      "derived": "exchange",
-      "type": "prefix ex-",
-      "definition": "to give something and receive something else in return",
-      "example": "They decided to exchange phone numbers after the meeting.",
-      "rootDefinition": "to make or become different"
+      "base": "able",
+      "derived": "unable",
+      "type": "prefix un-",
+      "definition": "not able; lacking the skill or opportunity to do something",
+      "example": "He was unable to attend the meeting due to illness.",
+      "rootDefinition": "having the skill or opportunity to do something"
     },
     {
-      "base": "do",
-      "derived": "redo",
-      "type": "prefix re-",
-      "definition": "to do something again",
-      "example": "The teacher asked her to redo the exercise more carefully.",
-      "rootDefinition": "to perform an action or task"
+      "base": "usual",
+      "derived": "unusual",
+      "type": "prefix un-",
+      "definition": "not usual; different from what is normal or expected",
+      "example": "It is unusual to see snow here in April.",
+      "rootDefinition": "happening regularly or in the normal way"
     },
     {
-      "base": "place",
-      "derived": "replace",
-      "type": "prefix re-",
-      "definition": "to put something back or substitute with something new",
-      "example": "We need to replace the broken window before winter.",
-      "rootDefinition": "a particular position or area"
+      "base": "expected",
+      "derived": "unexpected",
+      "type": "prefix un-",
+      "definition": "not expected; happening without warning or preparation",
+      "example": "The good news came as a completely unexpected surprise.",
+      "rootDefinition": "thought likely or planned to happen"
     },
     {
-      "base": "believe",
-      "derived": "unbelievable",
-      "type": "prefix un- + suffix -able",
-      "definition": "extremely surprising or impressive",
-      "example": "The scenery at the top of the mountain was unbelievable.",
-      "rootDefinition": "to feel certain that something is true"
+      "base": "comfortable",
+      "derived": "uncomfortable",
+      "type": "prefix un-",
+      "definition": "not comfortable; causing physical or emotional discomfort",
+      "example": "The long flight was uncomfortable without a window seat.",
+      "rootDefinition": "providing physical ease and relaxation"
     },
     {
-      "base": "employ",
-      "derived": "unemployed",
-      "type": "prefix un- + suffix -ed",
-      "definition": "not having paid work",
-      "example": "He has been unemployed since the factory closed.",
-      "rootDefinition": "to pay someone to do work"
+      "base": "known",
+      "derived": "unknown",
+      "type": "prefix un-",
+      "definition": "not known; not familiar or identified",
+      "example": "The artist was unknown outside her home country.",
+      "rootDefinition": "familiar or identified by others"
     },
     {
-      "base": "employ",
-      "derived": "unemployment",
-      "type": "prefix un- + suffix -ment",
-      "definition": "the state of not having paid work",
-      "example": "The government is trying to reduce youth unemployment.",
-      "rootDefinition": "to pay someone to do work"
+      "base": "fair",
+      "derived": "unfair",
+      "type": "prefix un-",
+      "definition": "not fair; not treating people equally or justly",
+      "example": "The students thought the exam marking was unfair.",
+      "rootDefinition": "treating people equally and according to the rules"
     },
     {
-      "base": "weigh",
-      "derived": "overweight",
-      "type": "prefix over- + suffix -t",
-      "definition": "heavier than what is considered healthy or normal",
-      "example": "The doctor said the patient was slightly overweight.",
-      "rootDefinition": "to measure the heaviness of something"
+      "base": "kind",
+      "derived": "unkind",
+      "type": "prefix un-",
+      "definition": "not kind; somewhat cruel or inconsiderate",
+      "example": "It was unkind to make fun of his mistake in front of everyone.",
+      "rootDefinition": "friendly, generous, and considerate"
+    },
+    {
+      "base": "necessary",
+      "derived": "unnecessary",
+      "type": "prefix un-",
+      "definition": "not necessary; not needed",
+      "example": "Please avoid unnecessary delays in submitting the report.",
+      "rootDefinition": "needed or required for a purpose"
+    },
+    {
+      "base": "reliable",
+      "derived": "unreliable",
+      "type": "prefix un-",
+      "definition": "not reliable; cannot be trusted to work properly or be on time",
+      "example": "The old bus service was unreliable and always late.",
+      "rootDefinition": "consistently good in quality; able to be trusted"
     }
   ],
   "multipleChoiceExercises": [
     {
-      "sentence": "The suspect seemed to ___ into the crowd and was never found.",
-      "root": "appear",
-      "correct": "disappear",
+      "sentence": "She was ___ with the quality of the meal and asked to speak to the manager.",
+      "root": "happy",
+      "correct": "unhappy",
       "options": [
-        "disappear",
-        "reappear",
-        "appearing",
-        "appeared"
+        "unhappy",
+        "happy",
+        "happiness",
+        "unhappily"
       ]
     },
     {
-      "sentence": "The students had to ___ the faulty calculation from scratch.",
-      "root": "do",
-      "correct": "redo",
+      "sentence": "Due to heavy traffic, he was ___ to reach the airport on time.",
+      "root": "able",
+      "correct": "unable",
       "options": [
-        "redo",
-        "undo",
-        "doing",
-        "redone"
+        "unable",
+        "able",
+        "ability",
+        "ably"
       ]
     },
     {
-      "sentence": "The old light bulbs need to be ___ with energy-saving ones.",
-      "root": "place",
-      "correct": "replaced",
+      "sentence": "It is quite ___ to find a café open at six in the morning in this town.",
+      "root": "usual",
+      "correct": "unusual",
       "options": [
-        "replaced",
-        "replaceable",
-        "replacing",
-        "replacement"
+        "unusual",
+        "usual",
+        "unusually",
+        "usually"
       ]
     },
     {
-      "sentence": "The result of the match was absolutely ___.",
-      "root": "believe",
-      "correct": "unbelievable",
+      "sentence": "The news of her promotion was completely ___ by her colleagues.",
+      "root": "expected",
+      "correct": "unexpected",
       "options": [
-        "unbelievable",
-        "believable",
-        "disbelieving",
-        "unbelievably"
+        "unexpected",
+        "expected",
+        "expectation",
+        "unexpectedly"
       ]
     },
     {
-      "sentence": "He has been ___ for six months and is struggling financially.",
-      "root": "employ",
-      "correct": "unemployed",
+      "sentence": "The hard plastic chair was ___ to sit on for three hours.",
+      "root": "comfortable",
+      "correct": "uncomfortable",
       "options": [
-        "unemployed",
-        "unemployment",
-        "unemployable",
-        "underemployed"
+        "uncomfortable",
+        "comfortable",
+        "comfortably",
+        "discomfort"
       ]
     },
     {
-      "sentence": "We could ___ tokens for prizes at the end of the event.",
-      "root": "change",
-      "correct": "exchange",
+      "sentence": "It was ___ to laugh at him when he made a simple mistake.",
+      "root": "kind",
+      "correct": "unkind",
       "options": [
-        "exchange",
-        "change",
-        "rechange",
-        "changed"
+        "unkind",
+        "kind",
+        "kindness",
+        "unkindly"
       ]
     }
   ],
   "transformExercises": [
     {
-      "sentence": "After the storm, the rainbow seemed to ___ just as suddenly. (APPEAR)",
-      "root": "APPEAR",
-      "correct": "disappear"
+      "sentence": "She looked ___ when she heard she had failed the test. (HAPPY)",
+      "root": "HAPPY",
+      "correct": "unhappy"
     },
     {
-      "sentence": "The teacher told him to ___ the test because his answers were rushed. (DO)",
-      "root": "DO",
-      "correct": "redo"
+      "sentence": "The weather in March is always ___ — you never know what to expect. (USUAL)",
+      "root": "USUAL",
+      "correct": "unusual"
     },
     {
-      "sentence": "We need to ___ the old equipment before the season starts. (PLACE)",
-      "root": "PLACE",
-      "correct": "replace"
+      "sentence": "The bus was so ___ that we decided to walk instead. (RELIABLE)",
+      "root": "RELIABLE",
+      "correct": "unreliable"
     },
     {
-      "sentence": "The view from the summit was absolutely ___. (BELIEVE)",
-      "root": "BELIEVE",
-      "correct": "unbelievable"
+      "sentence": "The new rule seemed ___ to many of the students in the class. (FAIR)",
+      "root": "FAIR",
+      "correct": "unfair"
     },
     {
-      "sentence": "High levels of ___ can cause serious problems for society. (EMPLOY)",
-      "root": "EMPLOY",
-      "correct": "unemployment"
-    },
-    {
-      "sentence": "Students had the opportunity to ___ their books at the library fair. (CHANGE)",
-      "root": "CHANGE",
-      "correct": "exchange"
+      "sentence": "Winning the award was completely ___ — nobody had predicted it. (EXPECTED)",
+      "root": "EXPECTED",
+      "correct": "unexpected"
     }
   ]
 }

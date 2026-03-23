@@ -3306,6 +3306,148 @@
       resultsEl.innerHTML = html;
     },
 
+    // ── GENERAL DICTIONARY ────────────────────────────────────────────────
+    _gdRequestId: 0,
+
+    _showGeneralDictionary: function(initialWord) {
+      var existing = document.getElementById('gd-dict-modal');
+      if (existing) { existing.remove(); return; }
+
+      var modal = document.createElement('div');
+      modal.id = 'gd-dict-modal';
+      modal.className = 'gd-dict-overlay';
+      modal.innerHTML =
+        '<div class="gd-dict-box">' +
+          '<div class="gd-dict-header">' +
+            '<span class="gd-dict-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
+            '<h2 class="gd-dict-title">General Dictionary</h2>' +
+            '<button class="gd-dict-close" onclick="document.getElementById(\'gd-dict-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="gd-dict-search-row">' +
+            '<span class="gd-dict-search-icon"><span class="material-symbols-outlined">search</span></span>' +
+            '<input type="text" class="gd-dict-search" id="gd-dict-search" placeholder="Type a word or phrasal verb…" />' +
+            '<button class="gd-dict-search-btn" onclick="FastExercises._searchGeneralDict(document.getElementById(\'gd-dict-search\').value)">Search</button>' +
+          '</div>' +
+          '<div class="gd-dict-body" id="gd-dict-body">' +
+            '<div class="gd-dict-placeholder">' +
+              '<span class="material-symbols-outlined">auto_stories</span>' +
+              '<p>Type a word above to look it up.</p>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
+      document.body.appendChild(modal);
+
+      var input = document.getElementById('gd-dict-search');
+      if (input) {
+        input.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') FastExercises._searchGeneralDict(input.value);
+        });
+        if (initialWord) {
+          input.value = initialWord;
+          FastExercises._searchGeneralDict(initialWord);
+        } else {
+          input.focus();
+        }
+      }
+    },
+
+    _searchGeneralDict: async function(texto) {
+      var body = document.getElementById('gd-dict-body');
+      if (!body) return;
+
+      var query = (texto || '').trim().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '');
+      if (!query) return;
+
+      var requestId = ++this._gdRequestId;
+
+      body.innerHTML = '<div class="gd-dict-loading"><i class="fas fa-spinner fa-spin"></i> Looking up…</div>';
+
+      try {
+        var response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(query));
+        var data = await response.json();
+
+        if (data.title === 'No Definitions Found' && query.indexOf(' ') !== -1) {
+          var hyphenated = query.replace(/ /g, '-');
+          response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(hyphenated));
+          data = await response.json();
+        }
+
+        if (data.title === 'No Definitions Found') {
+          var words = query.split(' ');
+          if (words.length > 1) {
+            if (requestId !== this._gdRequestId) return;
+            this._searchGeneralDict(words[0]);
+            return;
+          }
+          if (requestId !== this._gdRequestId) return;
+          body.innerHTML = '<p class="gd-dict-not-found">No definition found for "' + this._escapeHTML(query) + '".</p>';
+          return;
+        }
+
+        if (requestId !== this._gdRequestId) return;
+
+        var info = data[0];
+        var allMeaningsHTML = '';
+        var synonymsList = [];
+
+        info.meanings.forEach(function(meaning) {
+          var defs = meaning.definitions.slice(0, 2);
+          defs.forEach(function(def) {
+            var exHtml = def.example
+              ? '<div class="gd-dict-example">"' + FastExercises._escapeHTML(def.example) + '"</div>'
+              : '';
+            allMeaningsHTML +=
+              '<div class="gd-dict-meaning">' +
+                '<span class="gd-dict-pos">' + FastExercises._escapeHTML(meaning.partOfSpeech) + '</span>' +
+                '<p class="gd-dict-definition">' + FastExercises._escapeHTML(def.definition) + '</p>' +
+                exHtml +
+              '</div>';
+          });
+          if (meaning.synonyms && meaning.synonyms.length > 0) {
+            synonymsList = synonymsList.concat(meaning.synonyms);
+          }
+        });
+
+        var synonyms = [];
+        var seen = {};
+        synonymsList.forEach(function(s) {
+          if (!seen[s]) { seen[s] = true; synonyms.push(s); }
+        });
+        synonyms = synonyms.slice(0, 6);
+
+        var synonymsHTML = synonyms.length
+          ? '<div class="gd-dict-synonyms">' +
+              synonyms.map(function(s) {
+                var safeS = JSON.stringify(s);
+                return '<span class="gd-dict-tag-pill" onclick="FastExercises._searchGeneralDict(' +
+                  safeS + '); document.getElementById(\'gd-dict-search\').value=' +
+                  safeS + '">' + FastExercises._escapeHTML(s) + '</span>';
+              }).join('') +
+            '</div>'
+          : '';
+
+        body.innerHTML =
+          '<div class="gd-dict-result">' +
+            '<div class="gd-dict-word-row">' +
+              '<span class="gd-dict-word">' + FastExercises._escapeHTML(info.word) + '</span>' +
+              '<span class="gd-dict-phonetic">' + FastExercises._escapeHTML(info.phonetic || '') + '</span>' +
+            '</div>' +
+            allMeaningsHTML +
+            synonymsHTML +
+          '</div>';
+
+      } catch (err) {
+        if (requestId !== this._gdRequestId) return;
+        body.innerHTML = '<p class="gd-dict-not-found">Error connecting to dictionary. Please try again.</p>';
+      }
+    },
+
     _showIdDictionary: async function() {
       var existing = document.getElementById('id-dict-modal');
       if (existing) { existing.remove(); return; }

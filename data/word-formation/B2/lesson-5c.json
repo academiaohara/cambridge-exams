@@ -1,0 +1,155 @@
+{
+  "lessonId": "lesson-5c",
+  "level": "B2",
+  "category": "word-formation",
+  "title": "Prefix: under-",
+  "explanation": {
+    "rule": "The prefix under- is added to verbs and adjectives to mean 'too little', 'below a normal level', or 'insufficiently'. It contrasts with over- and often suggests inadequacy or insufficient effort.",
+    "groups": [
+      {
+        "suffix": "under-",
+        "note": "Means 'too little', 'below standard', or 'insufficiently'; often implies that something is not receiving enough attention, money, or effort",
+        "examples": [
+          {"base": "pay", "derived": "underpaid", "definition": "receiving less money than is fair or deserved"},
+          {"base": "estimate", "derived": "underestimate", "definition": "to think something is smaller, less important, or less difficult than it really is"},
+          {"base": "mine", "derived": "undermine", "definition": "to gradually weaken or damage something"},
+          {"base": "privileged", "derived": "underprivileged", "definition": "lacking the advantages and opportunities that others in society have"},
+          {"base": "state", "derived": "understate", "definition": "to describe something as less important or serious than it really is"}
+        ]
+      }
+    ]
+  },
+  "wordForms": [
+    {
+      "base": "pay",
+      "derived": "underpaid",
+      "type": "prefix under-",
+      "definition": "receiving less money than is fair for the work done",
+      "example": "Many workers in the care sector are significantly underpaid.",
+      "rootDefinition": "to give money in exchange for goods or work"
+    },
+    {
+      "base": "prepare",
+      "derived": "underprepared",
+      "type": "prefix under-",
+      "definition": "not having prepared sufficiently for something",
+      "example": "He went into the interview feeling underprepared and nervous.",
+      "rootDefinition": "to make ready for a future event or task"
+    },
+    {
+      "base": "estimate",
+      "derived": "underestimate",
+      "type": "prefix under-",
+      "definition": "to think something is smaller, less important, or less difficult than it really is",
+      "example": "Don't underestimate how much time this project will take.",
+      "rootDefinition": "to form an approximate judgement about size, value, or amount"
+    },
+    {
+      "base": "perform",
+      "derived": "underperform",
+      "type": "prefix under-",
+      "definition": "to perform less well than expected or required",
+      "example": "The team underperformed in the second half and lost the match.",
+      "rootDefinition": "to carry out a task, duty, or action"
+    },
+    {
+      "base": "mine",
+      "derived": "undermine",
+      "type": "prefix under-",
+      "definition": "to gradually weaken or damage something such as authority or confidence",
+      "example": "Constant criticism can undermine a person's self-confidence.",
+      "rootDefinition": "to dig beneath; to hollow out from below"
+    },
+    {
+      "base": "privileged",
+      "derived": "underprivileged",
+      "type": "prefix under-",
+      "definition": "not having the same advantages, opportunities, or standard of living as others in society",
+      "example": "The charity provides support for underprivileged children in rural areas.",
+      "rootDefinition": "having special advantages, rights, or benefits"
+    },
+    {
+      "base": "state",
+      "derived": "understate",
+      "type": "prefix under-",
+      "definition": "to describe something as less important or serious than it really is",
+      "example": "The report tended to understate the scale of the environmental damage.",
+      "rootDefinition": "to express or describe in words"
+    },
+    {
+      "base": "value",
+      "derived": "undervalue",
+      "type": "prefix under-",
+      "definition": "to fail to recognise or appreciate the true worth or importance of something",
+      "example": "Many employees feel that their contributions are undervalued by management.",
+      "rootDefinition": "the importance or worth assigned to something"
+    },
+    {
+      "base": "qualified",
+      "derived": "underqualified",
+      "type": "prefix under-",
+      "definition": "not having enough qualifications or experience for a particular job or task",
+      "example": "She felt underqualified for the senior management position.",
+      "rootDefinition": "having the required training, skills, or experience for something"
+    }
+  ],
+  "multipleChoiceExercises": [
+    {
+      "sentence": "Many workers in the sector are severely ___ for the hours they put in.",
+      "root": "pay",
+      "correct": "underpaid",
+      "options": ["underpaid", "overpaid", "repaid", "paid"]
+    },
+    {
+      "sentence": "The research team ___ how long the project would take to complete.",
+      "root": "estimate",
+      "correct": "underestimated",
+      "options": ["underestimated", "overestimated", "estimated", "reassessed"]
+    },
+    {
+      "sentence": "She felt ___ for the senior management role and hesitated to apply.",
+      "root": "qualified",
+      "correct": "underqualified",
+      "options": ["underqualified", "overqualified", "unqualified", "qualified"]
+    },
+    {
+      "sentence": "Repeated delays are beginning to ___ confidence in the project team.",
+      "root": "mine",
+      "correct": "undermine",
+      "options": ["undermine", "overmine", "understate", "undervalue"]
+    },
+    {
+      "sentence": "The official figures ___ the true number of people affected by the crisis.",
+      "root": "state",
+      "correct": "understate",
+      "options": ["understate", "overstate", "restate", "state"]
+    }
+  ],
+  "transformExercises": [
+    {
+      "sentence": "Workers in that industry are routinely ___ despite long and difficult hours. (PAY)",
+      "root": "PAY",
+      "correct": "underpaid"
+    },
+    {
+      "sentence": "He ___ the amount of revision needed and failed the final exam. (ESTIMATE)",
+      "root": "ESTIMATE",
+      "correct": "underestimated"
+    },
+    {
+      "sentence": "The whole squad ___ in the first half and the coach was furious. (PERFORM)",
+      "root": "PERFORM",
+      "correct": "underperformed"
+    },
+    {
+      "sentence": "The company's assets were significantly ___ in the annual report. (VALUE)",
+      "root": "VALUE",
+      "correct": "undervalued"
+    },
+    {
+      "sentence": "The programme was created to support ___ young people in the community. (PRIVILEGED)",
+      "root": "PRIVILEGED",
+      "correct": "underprivileged"
+    }
+  ]
+}
