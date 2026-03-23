@@ -1012,7 +1012,7 @@
       }
 
       var n = examScores.length;
-      // Add horizontal inner padding so dots never sit on the chart edge
+      // Add horizontal inner padding so dots never sit on the chart edge (accounts for dot radius + visual breathing room)
       var pointPadX = n > 1 ? Math.min(28, chartW * 0.07) : 0;
       function indexToX(i) {
         if (n <= 1) return marginL + chartW / 2;
