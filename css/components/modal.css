@@ -68,11 +68,13 @@
 }
 
 .modal-header p {
-  color: var(--text-light);
-  font-size: 0.85rem;
+  color: #2d2e5f;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 600;
+  font-weight: 900;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .modal-header-row {
