@@ -3639,12 +3639,11 @@
 
 /* 3D card scene */
 .vocab-fc-scene {
-  perspective: 1000px;
+  perspective: 1200px;
   cursor: pointer;
   width: 100%;
   min-height: 240px;
   position: relative;
-  overflow: hidden;
 }
 .vocab-fc-card {
   width: 100%;
@@ -3652,6 +3651,7 @@
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center center;
 }
 .vocab-fc-card-flipped {
   transform: rotateY(180deg);
