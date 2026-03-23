@@ -37,12 +37,14 @@
 
     _getCategoryProgress: function(categoryId) {
       var progress = this._getProgress();
-      return progress[categoryId] || { completedPoints: {}, activeLevel: 'B1' };
+      var defaultLevel = categoryId === 'vocabulary' ? 'A2' : 'B1';
+      return progress[categoryId] || { completedPoints: {}, activeLevel: defaultLevel };
     },
 
     _markPointComplete: function(categoryId, levelId, lessonId, pointIndex) {
       var progress = this._getProgress();
-      if (!progress[categoryId]) progress[categoryId] = { completedPoints: {}, activeLevel: 'B1' };
+      var defaultLevel = categoryId === 'vocabulary' ? 'A2' : 'B1';
+      if (!progress[categoryId]) progress[categoryId] = { completedPoints: {}, activeLevel: defaultLevel };
       var key = levelId + '/' + lessonId + '/' + pointIndex;
       progress[categoryId].completedPoints[key] = true;
       this._saveProgress(progress);
@@ -90,7 +92,7 @@
       if (!level.requiredToUnlock) return true;
 
       // Unlock all levels up to the student's current study level
-      var LEVEL_ORDER = ['B1', 'B2', 'C1', 'C2'];
+      var LEVEL_ORDER = ['A2', 'B1', 'B2', 'C1', 'C2'];
       var studentLevel = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
       var studentIdx = LEVEL_ORDER.indexOf(studentLevel);
       var thisIdx = LEVEL_ORDER.indexOf(levelId);
@@ -318,13 +320,9 @@
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-multiple-choice fe-dot-mini fe-dot-outline">' + _mi('rule') + '</span> ' + 'Multiple Choice' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-transform fe-dot-mini fe-dot-outline">' + _mi('transform') + '</span> ' + 'Transformation' + '</span>' +
         '</div>';
-      } else if (categoryId === 'idioms') {
+      } else if (categoryId === 'vocabulary') {
         legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-id-gallery fe-dot-mini fe-dot-outline">' + _mi('collections_bookmark') + '</span> ' + 'Gallery' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-id-fill-in fe-dot-mini fe-dot-outline">' + _mi('edit') + '</span> ' + 'Fill In' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-id-conv fe-dot-mini fe-dot-outline">' + _mi('forum') + '</span> ' + 'Conversations' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-id-drag fe-dot-mini fe-dot-outline">' + _mi('drag_indicator') + '</span> ' + 'Drag & Drop' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-id-quiz fe-dot-mini fe-dot-outline">' + _mi('quiz') + '</span> ' + 'Quiz' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-vocab-flashcards fe-dot-mini fe-dot-outline">' + _mi('style') + '</span> ' + 'Flashcards' + '</span>' +
         '</div>';
       }
 
@@ -658,6 +656,9 @@
               } else if (point.type === 'id-trophy') {
                 dotClass += ' fe-dot-trophy';
                 dotIcon = isDone ? _mi('check') : _mi('emoji_events');
+              } else if (point.type === 'vocab-flashcards') {
+                dotClass += ' fe-dot-vocab-flashcards';
+                dotIcon = isDone ? _mi('check') : _mi('style');
               }
 
               if (isDone) {
@@ -1011,6 +1012,26 @@
         history.pushState(idState, '', Router.stateToPath(idState));
         return;
       }
+
+      // ── Vocabulary Flashcards ───────────────────────────────────────────
+      if (pointType === 'vocab-flashcards') {
+        if (!lessonData || !lessonData.words || lessonData.words.length === 0) {
+          this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
+          content.innerHTML =
+            '<div class="fe-point-view">' +
+              '<div class="fe-point-card">' +
+                '<div class="fe-point-message">' + 'Content coming soon!' + '</div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#10b981') + '">' + 'Next' + '</button>' +
+              '</div>' +
+            '</div>';
+          return;
+        }
+        this._renderVocabFlashcards(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        var vocabState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
+        history.pushState(vocabState, '', Router.stateToPath(vocabState));
+        return;
+      }
+
       if (!lessonData || !lessonData.points || !lessonData.points[pointIndex]) {
         // No detailed lesson data - mark complete and show simple view
         this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
@@ -3736,6 +3757,246 @@
       });
 
       document.body.appendChild(popup);
+    },
+
+    // ── VOCABULARY FLASHCARD HELPERS ─────────────────────────────────────
+    _vocabLearnedKey: 'cambridge_vocab_flashcards',
+
+    _getVocabLearned: function(levelId, lessonId) {
+      try {
+        var data = JSON.parse(localStorage.getItem(this._vocabLearnedKey)) || {};
+        return data[levelId + '/' + lessonId] || [];
+      } catch (e) { return []; }
+    },
+
+    _saveVocabLearned: function(levelId, lessonId, learnedWords) {
+      try {
+        var data = JSON.parse(localStorage.getItem(this._vocabLearnedKey)) || {};
+        data[levelId + '/' + lessonId] = learnedWords;
+        localStorage.setItem(this._vocabLearnedKey, JSON.stringify(data));
+      } catch (e) {}
+    },
+
+    // ── VOCABULARY FLASHCARDS RENDERER ───────────────────────────────────
+    _renderVocabFlashcards: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var self = this;
+      var allWords = lessonData.words || [];
+      var color = (catMeta && catMeta.color) ? catMeta.color : '#10b981';
+
+      // Load already-learned words from storage
+      var learnedWords = self._getVocabLearned(levelId, lessonId);
+      var totalWords = allWords.length;
+      var learnedCount = learnedWords.length;
+
+      // Build the deck: words not yet learned
+      var remaining = allWords.filter(function(w) {
+        return learnedWords.indexOf(w.word) === -1;
+      });
+
+      // If all words learned, show completion screen
+      if (remaining.length === 0) {
+        self._showVocabFlashcardsComplete(container, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, totalWords, color);
+        return;
+      }
+
+      // Take a batch of max 15 words
+      var BATCH_SIZE = 15;
+      var batchWords = remaining.slice(0, BATCH_SIZE);
+
+      // Build the flashcard session UI
+      self._startVocabFlashcardSession(container, batchWords, allWords, learnedWords, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, color);
+    },
+
+    _startVocabFlashcardSession: function(container, batchWords, allWords, learnedWords, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, color) {
+      var self = this;
+      var totalWords = allWords.length;
+
+      // Session state for each card: { word, definition, example, state: 'fresh'|'needs-retry'|'neutral' }
+      var deck = batchWords.map(function(w) {
+        return { word: w.word, definition: w.definition, example: w.example, state: 'fresh' };
+      });
+
+      var sessionLearned = []; // Words learned in this session
+      var currentIndex = 0;
+      var isFlipped = false;
+
+      function renderCard() {
+        if (deck.length === 0) {
+          // Batch complete
+          var newLearnedWords = learnedWords.concat(sessionLearned);
+          self._saveVocabLearned(levelId, lessonId, newLearnedWords);
+
+          if (newLearnedWords.length >= allWords.length) {
+            // All words learned – mark point complete
+            self._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+            self._showVocabFlashcardsComplete(container, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, totalWords, color);
+          } else {
+            self._showVocabBatchResults(container, sessionLearned.length, newLearnedWords.length, totalWords, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, color);
+          }
+          return;
+        }
+
+        var card = deck[0];
+        isFlipped = false;
+        var currentLearned = learnedWords.length + sessionLearned.length;
+
+        var stateHtml = '';
+        if (card.state === 'needs-retry') {
+          stateHtml = '<div class="vocab-fc-card-state vocab-fc-state-retry"><span class="material-symbols-outlined">replay</span> Try again</div>';
+        } else if (card.state === 'neutral') {
+          stateHtml = '<div class="vocab-fc-card-state vocab-fc-state-neutral"><span class="material-symbols-outlined">hourglass_empty</span> Almost there</div>';
+        }
+
+        container.innerHTML =
+          '<div class="vocab-fc-wrapper">' +
+            '<div class="subpage-header">' +
+              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
+              '<div>' +
+                '<div class="subpage-title"><span class="material-symbols-outlined">style</span> ' + self._escapeHTML(lessonTitle) + '</div>' +
+                '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(catMeta.name || 'Vocabulary') + '</div>' +
+              '</div>' +
+            '</div>' +
+
+            '<div class="vocab-fc-progress-bar-wrap">' +
+              '<div class="vocab-fc-progress-label">Learned: <strong>' + currentLearned + '</strong> / ' + totalWords + '</div>' +
+              '<div class="vocab-fc-progress-track">' +
+                '<div class="vocab-fc-progress-fill" style="width:' + Math.round((currentLearned / totalWords) * 100) + '%; background:' + color + '"></div>' +
+              '</div>' +
+              '<div class="vocab-fc-batch-label">' + deck.length + ' card' + (deck.length !== 1 ? 's' : '') + ' remaining in batch</div>' +
+            '</div>' +
+
+            '<div class="vocab-fc-scene" id="vocab-fc-scene" onclick="vocabFcFlip()">' +
+              '<div class="vocab-fc-card" id="vocab-fc-card">' +
+                '<div class="vocab-fc-card-front" style="--card-color:' + color + '">' +
+                  stateHtml +
+                  '<div class="vocab-fc-word">' + self._escapeHTML(card.word) + '</div>' +
+                  '<div class="vocab-fc-flip-hint"><span class="material-symbols-outlined">touch_app</span> Tap to reveal</div>' +
+                '</div>' +
+                '<div class="vocab-fc-card-back" style="--card-color:' + color + '">' +
+                  stateHtml +
+                  '<div class="vocab-fc-back-word">' + self._escapeHTML(card.word) + '</div>' +
+                  '<div class="vocab-fc-definition">' + self._escapeHTML(card.definition) + '</div>' +
+                  '<div class="vocab-fc-example">&ldquo;' + self._escapeHTML(card.example) + '&rdquo;</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+
+            '<div class="vocab-fc-actions" id="vocab-fc-actions">' +
+              '<button class="vocab-fc-btn vocab-fc-wrong" onclick="vocabFcAnswer(false)">' +
+                '<span class="material-symbols-outlined">close</span> Wrong' +
+              '</button>' +
+              '<button class="vocab-fc-btn vocab-fc-correct" onclick="vocabFcAnswer(true)">' +
+                '<span class="material-symbols-outlined">check</span> Correct' +
+              '</button>' +
+            '</div>' +
+          '</div>';
+
+        // Initially hide action buttons
+        var actionsEl = document.getElementById('vocab-fc-actions');
+        if (actionsEl) actionsEl.style.display = 'none';
+      }
+
+      // Expose handlers to global scope for inline onclick
+      window.vocabFcFlip = function() {
+        if (isFlipped) return; // Already flipped
+        isFlipped = true;
+        var cardEl = document.getElementById('vocab-fc-card');
+        if (cardEl) cardEl.classList.add('vocab-fc-card-flipped');
+        var actionsEl = document.getElementById('vocab-fc-actions');
+        if (actionsEl) actionsEl.style.display = 'flex';
+        var sceneEl = document.getElementById('vocab-fc-scene');
+        if (sceneEl) {
+          sceneEl.style.cursor = 'default';
+          sceneEl.style.pointerEvents = 'none'; // Prevent scene from blocking buttons
+        }
+      };
+
+      window.vocabFcAnswer = function(correct) {
+        if (!isFlipped) return; // Must flip first
+        var card = deck.shift(); // Remove from front
+
+        if (correct) {
+          if (card.state === 'fresh' || card.state === 'neutral') {
+            // Learned!
+            sessionLearned.push(card.word);
+          } else if (card.state === 'needs-retry') {
+            // Was wrong → now correct → becomes neutral, goes near end of deck
+            card.state = 'neutral';
+            var insertPos = deck.length > 2 ? deck.length - 2 : deck.length;
+            deck.splice(insertPos, 0, card);
+          }
+        } else {
+          // Wrong: goes to end of deck as needs-retry
+          card.state = 'needs-retry';
+          deck.push(card);
+        }
+
+        renderCard();
+      };
+
+      renderCard();
+    },
+
+    _showVocabBatchResults: function(container, batchLearned, totalLearned, totalWords, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, color) {
+      var self = this;
+      var remaining = totalWords - totalLearned;
+
+      container.innerHTML =
+        '<div class="vocab-fc-wrapper vocab-fc-results">' +
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
+            '<div>' +
+              '<div class="subpage-title"><span class="material-symbols-outlined">style</span> ' + self._escapeHTML(lessonTitle) + '</div>' +
+              '<div class="subpage-subtitle">' + levelId + ' · Batch Complete' + '</div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="vocab-fc-results-card" style="--card-color:' + color + '">' +
+            '<div class="vocab-fc-results-icon"><span class="material-symbols-outlined" style="color:' + color + '">check_circle</span></div>' +
+            '<div class="vocab-fc-results-title">Batch Complete!</div>' +
+            '<div class="vocab-fc-results-stats">' +
+              '<div class="vocab-fc-stat"><span class="vocab-fc-stat-num" style="color:' + color + '">' + totalLearned + '</span><span class="vocab-fc-stat-label">/ ' + totalWords + ' learned</span></div>' +
+              '<div class="vocab-fc-stat"><span class="vocab-fc-stat-num" style="color:#f59e0b">' + remaining + '</span><span class="vocab-fc-stat-label">remaining</span></div>' +
+            '</div>' +
+            '<div class="vocab-fc-results-progress-track">' +
+              '<div class="vocab-fc-results-progress-fill" style="width:' + Math.round((totalLearned / totalWords) * 100) + '%; background:' + color + '"></div>' +
+            '</div>' +
+            '<div class="vocab-fc-results-msg">' + (batchLearned > 0 ? 'You learned ' + batchLearned + ' new word' + (batchLearned !== 1 ? 's' : '') + ' this round!' : 'Keep practising — you\'ll get them!') + '</div>' +
+            '<button class="vocab-fc-next-batch-btn" onclick="FastExercises.openPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + color + '">' +
+              '<span class="material-symbols-outlined">arrow_forward</span> Continue' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+    },
+
+    _showVocabFlashcardsComplete: function(container, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, totalWords, color) {
+      var self = this;
+
+      container.innerHTML =
+        '<div class="vocab-fc-wrapper vocab-fc-results">' +
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
+            '<div>' +
+              '<div class="subpage-title"><span class="material-symbols-outlined">style</span> ' + self._escapeHTML(lessonTitle) + '</div>' +
+              '<div class="subpage-subtitle">' + levelId + ' · Lesson Complete!' + '</div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="vocab-fc-results-card vocab-fc-complete-card" style="--card-color:' + color + '">' +
+            '<div class="vocab-fc-results-icon"><span class="material-symbols-outlined" style="color:' + color + '">emoji_events</span></div>' +
+            '<div class="vocab-fc-results-title">Lesson Complete! 🎉</div>' +
+            '<div class="vocab-fc-results-stats">' +
+              '<div class="vocab-fc-stat"><span class="vocab-fc-stat-num" style="color:' + color + '">' + totalWords + '</span><span class="vocab-fc-stat-label">words mastered</span></div>' +
+            '</div>' +
+            '<div class="vocab-fc-results-progress-track">' +
+              '<div class="vocab-fc-results-progress-fill" style="width:100%; background:' + color + '"></div>' +
+            '</div>' +
+            '<div class="vocab-fc-results-msg">You\'ve mastered all the words in this lesson. Keep it up!</div>' +
+            '<button class="vocab-fc-next-batch-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + color + '">' +
+              '<span class="material-symbols-outlined">arrow_forward</span> Next Lesson' +
+            '</button>' +
+          '</div>' +
+        '</div>';
     }
   };
 })();

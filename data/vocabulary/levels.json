@@ -5,9 +5,57 @@
   "color": "#10b981",
   "levels": [
     {
+      "id": "A2",
+      "name": "A2 – Elementary",
+      "requiredToUnlock": null,
+      "totalLessons": 4,
+      "lessons": [
+        {
+          "id": "lesson-1",
+          "title": "Technology & Study",
+          "points": [
+            {
+              "type": "vocab-flashcards",
+              "label": "Flashcards"
+            }
+          ]
+        },
+        {
+          "id": "lesson-2",
+          "title": "Movement & Actions",
+          "points": [
+            {
+              "type": "vocab-flashcards",
+              "label": "Flashcards"
+            }
+          ]
+        },
+        {
+          "id": "lesson-3",
+          "title": "Time, Values & Behaviour",
+          "points": [
+            {
+              "type": "vocab-flashcards",
+              "label": "Flashcards"
+            }
+          ]
+        },
+        {
+          "id": "lesson-4",
+          "title": "Places, Nature & Objects",
+          "points": [
+            {
+              "type": "vocab-flashcards",
+              "label": "Flashcards"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "B1",
       "name": "B1 – Intermediate",
-      "requiredToUnlock": null,
+      "requiredToUnlock": "A2",
       "totalLessons": 5,
       "lessons": []
     },
