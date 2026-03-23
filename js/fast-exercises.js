@@ -356,6 +356,7 @@
                 (categoryId === 'phrasal-verbs' ? '<button class="subpage-info-btn" onclick="FastExercises._showPvInfoModal()" title="' + 'What are phrasal verbs?' + '">' + _mi('info') + '</button>' : '') +
                 (categoryId === 'word-formation' ? '<button class="subpage-info-btn" onclick="FastExercises._showWfInfoModal()" title="' + 'What is word formation?' + '">' + _mi('info') + '</button>' : '') +
                 (categoryId === 'collocations' ? '<button class="subpage-info-btn" onclick="FastExercises._showCollocInfoModal()" title="' + 'What are collocations?' + '">' + _mi('info') + '</button>' : '') +
+                (categoryId === 'idioms' ? '<button class="subpage-info-btn" onclick="FastExercises._showIdInfoModal()" title="' + 'What are idioms?' + '">' + _mi('info') + '</button>' : '') +
               '</div>' +
               bottomBar +
               legendHtml +
@@ -3697,6 +3698,49 @@
           '</div>' +
           '<div class="pv-info-modal-footer">' +
             '<button class="pv-info-modal-btn" onclick="document.getElementById(\'colloc-info-modal\').remove()" style="background:#8b5cf6">Got it!</button>' +
+          '</div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
+      document.body.appendChild(modal);
+    },
+
+    // ── IDIOMS INFO MODAL ────────────────────────────────────────────────
+    _showIdInfoModal: function() {
+      var existing = document.getElementById('id-info-modal');
+      if (existing) { existing.remove(); return; }
+
+      var modal = document.createElement('div');
+      modal.id = 'id-info-modal';
+      modal.className = 'pv-info-modal-overlay';
+      modal.innerHTML =
+        '<div class="pv-info-modal-box">' +
+          '<div class="pv-info-modal-header">' +
+            '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">record_voice_over</span></span>' +
+            '<h2 class="pv-info-modal-title">What are Idioms?</h2>' +
+            '<button class="pv-info-modal-close" onclick="document.getElementById(\'id-info-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="pv-info-modal-body">' +
+            '<p><strong>What are idioms?</strong></p>' +
+            '<p>Idioms are fixed expressions whose meaning cannot be deduced from the literal meaning of the individual words. They are a key part of natural, fluent English.</p>' +
+            '<p><strong>For example:</strong></p>' +
+            '<ul class="pv-info-list">' +
+              '<li><em>break the ice</em> → to make people feel more relaxed in a social situation</li>' +
+              '<li><em>hit the nail on the head</em> → to describe exactly what is causing a problem</li>' +
+              '<li><em>under the weather</em> → to feel slightly ill</li>' +
+            '</ul>' +
+            '<p><strong>Why are they important?</strong></p>' +
+            '<p>Idioms appear frequently in Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). Using them correctly will help you sound more natural and score higher in Speaking and Writing.</p>' +
+            '<p><strong>Tip 💡</strong></p>' +
+            '<p>Learn idioms in context — pay attention to the situation in which they are used, not just their meaning.</p>' +
+            '<p><button class="wf-info-dict-link" onclick="FastExercises._showIdDictionary(); document.getElementById(\'id-info-modal\').remove();" style="background:#f59e0b">' + _mi('search') + ' Open the Idioms Dictionary</button></p>' +
+          '</div>' +
+          '<div class="pv-info-modal-footer">' +
+            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'id-info-modal\').remove()" style="background:#f59e0b">Got it!</button>' +
           '</div>' +
         '</div>';
 
