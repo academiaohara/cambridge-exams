@@ -2,13 +2,12 @@
   "lessonId": "lesson-4",
   "level": "B2",
   "category": "word-formation",
-  "title": "Negative Prefixes: un-, dis-, in-, im-",
+  "title": "Negative Prefix: un-",
   "explanation": {
-    "rule": "Negative prefixes are added to the beginning of words to create opposite or negative meanings.",
+    "rule": "Negative prefixes are added to the beginning of words to create opposite or negative meanings. The prefix un- is the most common negative prefix in English.",
     "groups": [
       {
-        "suffix": "un-",
-        "note": "The most common negative prefix in English",
+        "note": "Added to adjectives and some verbs to give the opposite meaning. It is the most widely used negative prefix and works with a large range of adjectives.",
         "examples": [
           {
             "base": "available",
@@ -16,58 +15,27 @@
             "definition": "not able to be used or reached"
           },
           {
-            "base": "avoid",
-            "derived": "unavoidable",
-            "definition": "impossible to prevent"
+            "base": "fair",
+            "derived": "unfair",
+            "definition": "not treating people equally or in a just way"
           },
           {
-            "base": "attach",
-            "derived": "unattached",
-            "definition": "not connected; not in a relationship"
+            "base": "reliable",
+            "derived": "unreliable",
+            "definition": "not able to be trusted or depended on"
+          },
+          {
+            "base": "expected",
+            "derived": "unexpected",
+            "definition": "not anticipated; surprising"
+          },
+          {
+            "base": "certain",
+            "derived": "uncertain",
+            "definition": "not sure; not clearly known"
           }
-        ]
-      },
-      {
-        "suffix": "dis-",
-        "note": "Creates opposite meaning, especially for verbs and some nouns",
-        "examples": [
-          {
-            "base": "approve",
-            "derived": "disapprove",
-            "definition": "to have an unfavourable opinion"
-          },
-          {
-            "base": "connect",
-            "derived": "disconnect",
-            "definition": "to separate or break a connection"
-          },
-          {
-            "base": "associate",
-            "derived": "dissociate",
-            "definition": "to separate oneself from"
-          }
-        ]
-      },
-      {
-        "suffix": "in- / im- / ir- / il-",
-        "note": "in- before most consonants; im- before b/m/p; ir- before r; il- before l",
-        "examples": [
-          {
-            "base": "capable",
-            "derived": "incapable",
-            "definition": "not able to do something"
-          },
-          {
-            "base": "possible",
-            "derived": "impossible",
-            "definition": "not able to happen or be done"
-          },
-          {
-            "base": "responsible",
-            "derived": "irresponsible",
-            "definition": "not showing care; reckless"
-          }
-        ]
+        ],
+        "suffix": "un-"
       }
     ]
   },
@@ -76,97 +44,81 @@
       "base": "available",
       "derived": "unavailable",
       "type": "prefix un-",
-      "definition": "not able to be used or reached",
+      "definition": "not able to be used, obtained, or reached",
       "example": "The manager was unavailable for comment.",
       "rootDefinition": "ready or able to be used or obtained"
     },
     {
-      "base": "avoid",
+      "base": "avoidable",
       "derived": "unavoidable",
-      "type": "prefix un- + suffix -able",
+      "type": "prefix un-",
       "definition": "impossible to prevent; inevitable",
-      "example": "Some delays are unavoidable during major building works.",
-      "rootDefinition": "to stay away from or not do something"
+      "example": "Some delays during the building works were unavoidable.",
+      "rootDefinition": "able to be prevented or kept away from"
     },
     {
-      "base": "approve",
-      "derived": "disapprove",
-      "type": "prefix dis-",
-      "definition": "to have an unfavourable opinion about something",
-      "example": "Her parents disapprove of her choice of career.",
-      "rootDefinition": "to agree with or accept something officially"
+      "base": "certain",
+      "derived": "uncertain",
+      "type": "prefix un-",
+      "definition": "not sure; not clearly known or established",
+      "example": "The outcome of the vote remains uncertain.",
+      "rootDefinition": "known for sure; definite"
     },
     {
-      "base": "connect",
-      "derived": "disconnect",
-      "type": "prefix dis-",
-      "definition": "to break the connection between two things",
-      "example": "Please disconnect the cable before switching off the device.",
-      "rootDefinition": "to join or link together"
+      "base": "comfortable",
+      "derived": "uncomfortable",
+      "type": "prefix un-",
+      "definition": "causing physical or emotional discomfort",
+      "example": "She felt uncomfortable answering personal questions.",
+      "rootDefinition": "giving a feeling of physical ease and relaxation"
     },
     {
-      "base": "content",
-      "derived": "discontent",
-      "type": "prefix dis-",
-      "definition": "a feeling of dissatisfaction",
-      "example": "The discontent among workers led to a strike.",
-      "rootDefinition": "satisfied and happy with a situation"
+      "base": "expected",
+      "derived": "unexpected",
+      "type": "prefix un-",
+      "definition": "not anticipated; happening as a surprise",
+      "example": "The announcement came as a completely unexpected shock.",
+      "rootDefinition": "thought likely or anticipated to happen"
     },
     {
-      "base": "capable",
-      "derived": "incapable",
-      "type": "prefix in-",
-      "definition": "not able to do something",
-      "example": "He seemed incapable of making a decision under pressure.",
-      "rootDefinition": "having the ability or skill to do something"
+      "base": "fair",
+      "derived": "unfair",
+      "type": "prefix un-",
+      "definition": "not treating people equally; unjust",
+      "example": "Many employees felt the new policy was deeply unfair.",
+      "rootDefinition": "treating people equally; just and reasonable"
     },
     {
-      "base": "adequate",
-      "derived": "inadequate",
-      "type": "prefix in-",
-      "definition": "not enough or not good enough",
-      "example": "The safety measures were completely inadequate.",
-      "rootDefinition": "enough in quantity or quality"
+      "base": "helpful",
+      "derived": "unhelpful",
+      "type": "prefix un-",
+      "definition": "not giving useful assistance or support",
+      "example": "The customer service assistant was rude and unhelpful.",
+      "rootDefinition": "making it easier to do something; useful"
     },
     {
-      "base": "depend",
-      "derived": "independent",
-      "type": "prefix in-",
-      "definition": "not relying on others; free from control",
-      "example": "She became financially independent after landing her first job.",
-      "rootDefinition": "to rely on someone or something"
+      "base": "likely",
+      "derived": "unlikely",
+      "type": "prefix un-",
+      "definition": "probably not going to happen",
+      "example": "It is unlikely that the project will finish on time.",
+      "rootDefinition": "probable; having a good chance of happening"
     },
     {
-      "base": "destroy",
-      "derived": "indestructible",
-      "type": "prefix in- + suffix -ible",
-      "definition": "impossible to destroy",
-      "example": "This material is virtually indestructible under normal conditions.",
-      "rootDefinition": "to completely ruin or end something"
+      "base": "necessary",
+      "derived": "unnecessary",
+      "type": "prefix un-",
+      "definition": "not needed; more than is required",
+      "example": "Please avoid making unnecessary noise in the library.",
+      "rootDefinition": "needed or essential"
     },
     {
-      "base": "decide",
-      "derived": "indecisive",
-      "type": "prefix in- + suffix -ive",
-      "definition": "unable to make decisions quickly",
-      "example": "His indecisive manner frustrated the rest of the team.",
-      "rootDefinition": "to make a choice"
-    },
-    {
-      "base": "mobile",
-      "derived": "immobile",
-      "type": "prefix im-",
-      "definition": "not able to move",
-      "example": "After the accident, he was completely immobile for three weeks.",
-      "rootDefinition": "able to move or be moved"
-    },
-    {
-      "base": "moral",
-      "derived": "immoral",
-      "type": "prefix im-",
-      "definition": "not following accepted moral standards",
-      "example": "The journalist claimed the business practices were immoral.",
-      "rootDefinition": "relating to principles of right and wrong"
+      "base": "reliable",
+      "derived": "unreliable",
+      "type": "prefix un-",
+      "definition": "not able to be trusted or depended on",
+      "example": "The old bus service was unreliable and frequently late.",
+      "rootDefinition": "consistently good and able to be trusted"
     }
   ],
   "multipleChoiceExercises": [
@@ -177,24 +129,13 @@
       "options": [
         "unavailable",
         "available",
-        "unavailability",
+        "availability",
         "unavoidable"
       ]
     },
     {
-      "sentence": "Her parents ___ of her decision to drop out of university.",
-      "root": "approve",
-      "correct": "disapproved",
-      "options": [
-        "disapproved",
-        "approved",
-        "disapproval",
-        "disapproving"
-      ]
-    },
-    {
       "sentence": "Some noise during construction is, unfortunately, ___.",
-      "root": "avoid",
+      "root": "avoidable",
       "correct": "unavoidable",
       "options": [
         "unavoidable",
@@ -204,69 +145,75 @@
       ]
     },
     {
-      "sentence": "The new assistant seemed completely ___ of working under pressure.",
-      "root": "capable",
-      "correct": "incapable",
+      "sentence": "The weather forecast for the weekend is still ___.",
+      "root": "certain",
+      "correct": "uncertain",
       "options": [
-        "incapable",
-        "capable",
-        "capability",
-        "capably"
+        "uncertain",
+        "certain",
+        "certainty",
+        "uncertainty"
       ]
     },
     {
-      "sentence": "The referee's decision was seen as completely ___ by the fans.",
-      "root": "decide",
-      "correct": "indecisive",
+      "sentence": "Many workers considered the new pay cuts completely ___.",
+      "root": "fair",
+      "correct": "unfair",
       "options": [
-        "indecisive",
-        "decisive",
-        "decision",
-        "decided"
+        "unfair",
+        "fair",
+        "fairly",
+        "unfairly"
       ]
     },
     {
-      "sentence": "Growing ___ among staff led the CEO to call a meeting.",
-      "root": "content",
-      "correct": "discontent",
+      "sentence": "It is ___ that the results will be announced before Friday.",
+      "root": "likely",
+      "correct": "unlikely",
       "options": [
-        "discontent",
-        "content",
-        "contented",
-        "contentment"
+        "unlikely",
+        "likely",
+        "likelihood",
+        "likeliness"
+      ]
+    },
+    {
+      "sentence": "He apologised for causing ___ stress during the handover.",
+      "root": "necessary",
+      "correct": "unnecessary",
+      "options": [
+        "unnecessary",
+        "necessary",
+        "necessity",
+        "necessarily"
       ]
     }
   ],
   "transformExercises": [
-    {
-      "sentence": "The company's tactics were widely seen as ___. (MORAL)",
-      "root": "MORAL",
-      "correct": "immoral"
-    },
     {
       "sentence": "The roads were ___ during the flooding. (AVAILABLE)",
       "root": "AVAILABLE",
       "correct": "unavailable"
     },
     {
-      "sentence": "Students who are ___ should ask their teacher for guidance. (DEPEND)",
-      "root": "DEPEND",
-      "correct": "independent"
-    },
-    {
-      "sentence": "They had to ___ the internet router to fix the problem. (CONNECT)",
-      "root": "CONNECT",
-      "correct": "disconnect"
-    },
-    {
-      "sentence": "The funding provided was simply ___ for the scale of the project. (ADEQUATE)",
-      "root": "ADEQUATE",
-      "correct": "inadequate"
-    },
-    {
       "sentence": "Some risks are ___ in a competitive business environment. (AVOID)",
       "root": "AVOID",
       "correct": "unavoidable"
+    },
+    {
+      "sentence": "The website was ___ and kept crashing at critical moments. (RELIABLE)",
+      "root": "RELIABLE",
+      "correct": "unreliable"
+    },
+    {
+      "sentence": "He found the long silence at the dinner table very ___. (COMFORTABLE)",
+      "root": "COMFORTABLE",
+      "correct": "uncomfortable"
+    },
+    {
+      "sentence": "The success of the small local team was completely ___. (EXPECT)",
+      "root": "EXPECT",
+      "correct": "unexpected"
     }
   ]
 }

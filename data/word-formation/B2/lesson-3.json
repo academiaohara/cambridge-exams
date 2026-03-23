@@ -2,13 +2,13 @@
   "lessonId": "lesson-3",
   "level": "B2",
   "category": "word-formation",
-  "title": "Adverbs: -ly, -ally, -ably",
+  "title": "Adverb Suffix: -ly",
   "explanation": {
-    "rule": "Adverbs modify verbs, adjectives, or other adverbs to describe how, when, or to what extent something happens.",
+    "rule": "Adding -ly to an adjective forms an adverb that describes how, when, or to what extent something happens.",
     "groups": [
       {
         "suffix": "-ly",
-        "note": "The most common adverb suffix, added to many adjectives",
+        "note": "The most common adverb suffix in English, added directly to most adjectives",
         "examples": [
           {
             "base": "effective",
@@ -18,44 +18,22 @@
           {
             "base": "patient",
             "derived": "patiently",
-            "definition": "in a calm way, without rushing"
+            "definition": "in a calm way, without rushing or complaining"
           },
           {
-            "base": "individual",
-            "derived": "individually",
-            "definition": "separately; one by one"
-          }
-        ]
-      },
-      {
-        "suffix": "-ally",
-        "note": "Used when the adjective ends in -ic or -al",
-        "examples": [
-          {
-            "base": "magic",
-            "derived": "magically",
-            "definition": "as if by magic"
+            "base": "significant",
+            "derived": "significantly",
+            "definition": "in a way that is important or noticeable"
           },
           {
             "base": "gradual",
             "derived": "gradually",
-            "definition": "slowly, over a period of time"
-          }
-        ]
-      },
-      {
-        "suffix": "-ably / -ibly",
-        "note": "Derived from -able / -ible adjectives",
-        "examples": [
-          {
-            "base": "consider",
-            "derived": "considerably",
-            "definition": "by a large amount or degree"
+            "definition": "slowly, in small stages over time"
           },
           {
-            "base": "admire",
-            "derived": "admirably",
-            "definition": "in a way that deserves respect"
+            "base": "particular",
+            "derived": "particularly",
+            "definition": "especially; more than usual"
           }
         ]
       }
@@ -76,15 +54,15 @@
       "type": "suffix -ly",
       "definition": "in every way; totally",
       "example": "I completely forgot about the appointment.",
-      "rootDefinition": "having all parts; finished"
+      "rootDefinition": "having all parts; fully finished"
     },
     {
-      "base": "effect",
+      "base": "effective",
       "derived": "effectively",
       "type": "suffix -ly",
       "definition": "in a way that produces the intended result",
       "example": "She managed the project effectively despite limited resources.",
-      "rootDefinition": "producing the desired result"
+      "rootDefinition": "producing the desired or intended result"
     },
     {
       "base": "ideal",
@@ -92,7 +70,7 @@
       "type": "suffix -ly",
       "definition": "in the best possible way; perfectly",
       "example": "Ideally, we would have more time to prepare.",
-      "rootDefinition": "perfect in every way"
+      "rootDefinition": "perfect in every way; most suitable"
     },
     {
       "base": "individual",
@@ -103,12 +81,28 @@
       "rootDefinition": "single; separate from others"
     },
     {
+      "base": "particular",
+      "derived": "particularly",
+      "type": "suffix -ly",
+      "definition": "to a greater extent than usual; especially",
+      "example": "The food was particularly good at that restaurant.",
+      "rootDefinition": "especially; specifically"
+    },
+    {
+      "base": "significant",
+      "derived": "significantly",
+      "type": "suffix -ly",
+      "definition": "in a way that is important or noticeable",
+      "example": "The new law significantly changed working conditions.",
+      "rootDefinition": "important or large enough to be noticed"
+    },
+    {
       "base": "patient",
       "derived": "patiently",
       "type": "suffix -ly",
-      "definition": "in a calm way, without complaining",
+      "definition": "in a calm way, without complaining or rushing",
       "example": "She waited patiently in the queue for over an hour.",
-      "rootDefinition": "able to wait without getting annoyed"
+      "rootDefinition": "able to wait calmly without getting annoyed"
     },
     {
       "base": "gradual",
@@ -124,42 +118,21 @@
       "type": "suffix -ly",
       "definition": "without relying on others",
       "example": "Students are expected to work independently on this project.",
-      "rootDefinition": "not relying on others"
-    },
-    {
-      "base": "particular",
-      "derived": "particularly",
-      "type": "suffix -ly",
-      "definition": "to a greater extent than usual; especially",
-      "example": "The food was particularly good at that restaurant.",
-      "rootDefinition": "especially or specifically"
-    },
-    {
-      "base": "significant",
-      "derived": "significantly",
-      "type": "suffix -ly",
-      "definition": "in a way that is important or noticeable",
-      "example": "The new law significantly changed working conditions.",
-      "rootDefinition": "important or large enough to be noticed"
-    },
-    {
-      "base": "admire",
-      "derived": "admirably",
-      "type": "suffix -ably",
-      "definition": "in a way that deserves respect and praise",
-      "example": "She handled the difficult situation admirably.",
-      "rootDefinition": "to regard with respect and approval"
-    },
-    {
-      "base": "consider",
-      "derived": "considerably",
-      "type": "suffix -ably",
-      "definition": "by a large amount; much",
-      "example": "The journey took considerably longer than expected.",
-      "rootDefinition": "to think carefully about"
+      "rootDefinition": "not relying on others; free from control"
     }
   ],
   "multipleChoiceExercises": [
+    {
+      "sentence": "She spoke ___ and everyone in the room understood her point.",
+      "root": "effective",
+      "correct": "effectively",
+      "options": [
+        "effectively",
+        "effective",
+        "effecting",
+        "effectiveness"
+      ]
+    },
     {
       "sentence": "The disease spread ___ over the next few weeks.",
       "root": "gradual",
@@ -172,18 +145,7 @@
       ]
     },
     {
-      "sentence": "She spoke ___ and everyone in the room understood her point.",
-      "root": "effect",
-      "correct": "effectively",
-      "options": [
-        "effectively",
-        "effective",
-        "effecting",
-        "effectful"
-      ]
-    },
-    {
-      "sentence": "The team worked ___ on each section of the report.",
+      "sentence": "Each applicant was interviewed ___ by a panel of three judges.",
       "root": "individual",
       "correct": "individually",
       "options": [
@@ -216,22 +178,22 @@
       ]
     },
     {
-      "sentence": "The project took ___ more time than originally planned.",
-      "root": "consider",
-      "correct": "considerably",
+      "sentence": "The children were not ___ supervised during the event.",
+      "root": "adequate",
+      "correct": "adequately",
       "options": [
-        "considerably",
-        "considerable",
-        "considering",
-        "consideration"
+        "adequately",
+        "adequate",
+        "adequacy",
+        "inadequately"
       ]
     }
   ],
   "transformExercises": [
     {
-      "sentence": "She ___ accepted the award on behalf of the whole team. (ADMIRE)",
-      "root": "ADMIRE",
-      "correct": "admirably"
+      "sentence": "___, the company would relocate its headquarters to a bigger city. (IDEAL)",
+      "root": "IDEAL",
+      "correct": "Ideally"
     },
     {
       "sentence": "The economy has ___ improved since last year. (GRADUAL)",
@@ -252,11 +214,6 @@
       "sentence": "The work was ___ done to a very high standard. (COMPLETE)",
       "root": "COMPLETE",
       "correct": "completely"
-    },
-    {
-      "sentence": "___, the company would relocate its headquarters to a bigger city. (IDEAL)",
-      "root": "IDEAL",
-      "correct": "Ideally"
     }
   ]
 }
