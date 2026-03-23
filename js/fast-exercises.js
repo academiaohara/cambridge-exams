@@ -3544,6 +3544,104 @@
       resultsEl.innerHTML = html;
     },
 
+    // ── VOCABULARY DICTIONARY ─────────────────────────────────────────────
+    _showVocabDictionary: async function() {
+      var existing = document.getElementById('vocab-dict-modal');
+      if (existing) { existing.remove(); return; }
+
+      if (!this._vocabDictCache) {
+        try {
+          var r = await fetch('data/vocabulary/dictionary.json');
+          if (r.ok) this._vocabDictCache = await r.json();
+        } catch (e) {}
+      }
+      var entries = (this._vocabDictCache && this._vocabDictCache.entries) || [];
+
+      var modal = document.createElement('div');
+      modal.id = 'vocab-dict-modal';
+      modal.className = 'vocab-dict-overlay';
+      modal.innerHTML =
+        '<div class="vocab-dict-box">' +
+          '<div class="vocab-dict-header">' +
+            '<span class="vocab-dict-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
+            '<h2 class="vocab-dict-title">Vocabulary Dictionary</h2>' +
+            '<button class="vocab-dict-close" onclick="document.getElementById(\'vocab-dict-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="vocab-dict-search-row">' +
+            '<span class="vocab-dict-search-icon"><span class="material-symbols-outlined">search</span></span>' +
+            '<input type="text" class="vocab-dict-search" id="vocab-dict-search" placeholder="Search word or definition…" oninput="FastExercises._filterVocabDict(this.value)" />' +
+            '<select class="vocab-dict-level-filter" id="vocab-dict-level" onchange="FastExercises._filterVocabDict(document.getElementById(\'vocab-dict-search\').value)">' +
+              '<option value="">All Levels</option>' +
+              '<option value="A2">A2</option>' +
+              '<option value="B1">B1</option>' +
+              '<option value="B2">B2</option>' +
+              '<option value="C1">C1</option>' +
+            '</select>' +
+          '</div>' +
+          '<div class="vocab-dict-count" id="vocab-dict-count">' + entries.length + ' entries</div>' +
+          '<div class="vocab-dict-results" id="vocab-dict-results"></div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
+      document.body.appendChild(modal);
+
+      this._vocabDictEntries = entries;
+      this._renderVocabDictResults('', '');
+
+      setTimeout(function() {
+        var searchEl = document.getElementById('vocab-dict-search');
+        if (searchEl) searchEl.focus();
+      }, 100);
+    },
+
+    _filterVocabDict: function(query) {
+      var levelFilter = (document.getElementById('vocab-dict-level') || {}).value || '';
+      this._renderVocabDictResults(query || '', levelFilter);
+    },
+
+    _renderVocabDictResults: function(query, levelFilter) {
+      var self = this;
+      var entries = this._vocabDictEntries || [];
+      var q = (query || '').toLowerCase().trim();
+
+      var filtered = entries.filter(function(e) {
+        var matchLevel = !levelFilter || e.level === levelFilter;
+        if (!matchLevel) return false;
+        if (!q) return true;
+        return (e.word || '').toLowerCase().indexOf(q) !== -1 ||
+               (e.definition || '').toLowerCase().indexOf(q) !== -1;
+      });
+
+      var resultsEl = document.getElementById('vocab-dict-results');
+      var countEl = document.getElementById('vocab-dict-count');
+      if (!resultsEl) return;
+
+      if (countEl) countEl.textContent = filtered.length + ' entries' + (q || levelFilter ? ' (filtered)' : '');
+
+      if (filtered.length === 0) {
+        resultsEl.innerHTML = '<div class="vocab-dict-empty"><span class="material-symbols-outlined">search_off</span><p>No results found</p></div>';
+        return;
+      }
+
+      var html = '';
+      filtered.forEach(function(e) {
+        html +=
+          '<div class="vocab-dict-entry">' +
+            '<div class="vocab-dict-word-row">' +
+              '<span class="vocab-dict-word">' + self._escapeHTML(e.word) + '</span>' +
+              '<span class="vocab-dict-level-badge vocab-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+            '</div>' +
+            '<span class="vocab-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
+          '</div>';
+      });
+
+      resultsEl.innerHTML = html;
+    },
+
     _getAvatarHtml: function(speakerName) {
       var PROFILES = ['Aisha','Alex','Anna','Carla','Carlos','Chen','Clara','Dan',
         'Daniel','Elena','Emma','Fatima','Jack','James','Javier','Kenji','Lucas',
