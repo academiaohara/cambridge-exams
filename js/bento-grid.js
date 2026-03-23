@@ -1002,6 +1002,7 @@
       var chartW = svgW - marginL - marginR;
       var chartH = svgH - marginT - marginB;
       var scoreRange = scaleMax - scaleMin;
+      var axisBottom = marginT + chartH;
 
       function scoreToY(score) {
         return marginT + chartH - ((score - scaleMin) / scoreRange) * chartH;
@@ -1013,8 +1014,34 @@
         return marginL + (i / (n - 1)) * chartW;
       }
 
+      // Catmull-Rom spline → cubic bezier path (smooth curves through all points)
+      function smoothLinePath(pts) {
+        if (pts.length === 1) return 'M' + pts[0].x + ',' + pts[0].y;
+        var d = 'M' + pts[0].x + ',' + pts[0].y;
+        for (var i = 0; i < pts.length - 1; i++) {
+          var p0 = pts[Math.max(i - 1, 0)];
+          var p1 = pts[i];
+          var p2 = pts[i + 1];
+          var p3 = pts[Math.min(i + 2, pts.length - 1)];
+          var cp1x = (p1.x + (p2.x - p0.x) / 6).toFixed(2);
+          var cp1y = (p1.y + (p2.y - p0.y) / 6).toFixed(2);
+          var cp2x = (p2.x - (p3.x - p1.x) / 6).toFixed(2);
+          var cp2y = (p2.y - (p3.y - p1.y) / 6).toFixed(2);
+          d += ' C' + cp1x + ',' + cp1y + ' ' + cp2x + ',' + cp2y + ' ' + p2.x + ',' + p2.y;
+        }
+        return d;
+      }
+
       var svg = '<svg class="ge-chart-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" xmlns="http://www.w3.org/2000/svg">';
-      svg += '<defs><clipPath id="ge-clip"><rect x="' + marginL + '" y="' + marginT + '" width="' + chartW + '" height="' + chartH + '"/></clipPath></defs>';
+
+      // Defs: clip path + gradient fill for Total series
+      svg += '<defs>';
+      svg += '<clipPath id="ge-clip"><rect x="' + marginL + '" y="' + marginT + '" width="' + chartW + '" height="' + chartH + '"/></clipPath>';
+      svg += '<linearGradient id="ge-grad-Total" x1="0" y1="0" x2="0" y2="1">';
+      svg += '<stop offset="0%" stop-color="' + (skillColors['Total'] || '#6366f1') + '" stop-opacity="0.22"/>';
+      svg += '<stop offset="100%" stop-color="' + (skillColors['Total'] || '#6366f1') + '" stop-opacity="0"/>';
+      svg += '</linearGradient>';
+      svg += '</defs>';
 
       // Grade band backgrounds and boundary dashed lines
       var bandPalette = ['#22c55e', '#84cc16', '#eab308', '#f97316', '#ef4444'];
@@ -1029,26 +1056,33 @@
         svg += '<line x1="' + marginL + '" y1="' + y2 + '" x2="' + (marginL + chartW) + '" y2="' + y2 + '" stroke="#94a3b8" stroke-dasharray="4,3" stroke-width="0.75" opacity="0.45"/>';
       });
 
-      // Light grid lines and Y-axis labels (every 10 score points)
+      // Light horizontal grid lines and Y-axis labels (every 10 score points)
       for (var score = scaleMin; score <= scaleMax; score += 10) {
         var gy = scoreToY(score);
         svg += '<line x1="' + marginL + '" y1="' + gy + '" x2="' + (marginL + chartW) + '" y2="' + gy + '" stroke="#e2e8f0" stroke-width="0.6"/>';
         svg += '<text x="' + (marginL - 5) + '" y="' + (gy + 3.5) + '" text-anchor="end" font-size="9" fill="#94a3b8" font-family="inherit">' + score + '</text>';
       }
 
-      // X-axis labels (exam ids)
+      // Vertical grid lines at each exam X position
       examScores.forEach(function(entry, i) {
         var x = indexToX(i);
-        svg += '<text x="' + x + '" y="' + (svgH - 8) + '" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="inherit">' + self._escapeHTML(entry.examId.replace('Test', 'T')) + '</text>';
+        svg += '<line x1="' + x + '" y1="' + marginT + '" x2="' + x + '" y2="' + axisBottom + '" stroke="#e2e8f0" stroke-width="0.5" opacity="0.8"/>';
+      });
+
+      // X-axis tick marks and labels (exam ids)
+      examScores.forEach(function(entry, i) {
+        var x = indexToX(i);
+        svg += '<line x1="' + x + '" y1="' + axisBottom + '" x2="' + x + '" y2="' + (axisBottom + 4) + '" stroke="#cbd5e1" stroke-width="1"/>';
+        svg += '<text x="' + x + '" y="' + (svgH - 6) + '" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="inherit">' + self._escapeHTML(entry.examId.replace('Test', 'T')) + '</text>';
       });
 
       // Axis borders
-      svg += '<line x1="' + marginL + '" y1="' + marginT + '" x2="' + marginL + '" y2="' + (marginT + chartH) + '" stroke="#cbd5e1" stroke-width="1.5"/>';
-      svg += '<line x1="' + marginL + '" y1="' + (marginT + chartH) + '" x2="' + (marginL + chartW) + '" y2="' + (marginT + chartH) + '" stroke="#cbd5e1" stroke-width="1.5"/>';
+      svg += '<line x1="' + marginL + '" y1="' + marginT + '" x2="' + marginL + '" y2="' + axisBottom + '" stroke="#cbd5e1" stroke-width="1.5"/>';
+      svg += '<line x1="' + marginL + '" y1="' + axisBottom + '" x2="' + (marginL + chartW) + '" y2="' + axisBottom + '" stroke="#cbd5e1" stroke-width="1.5"/>';
 
       // Data series inside clip region
-      svg += '<g clip-path="url(#ge-clip)">';
       var seriesList = allSkills.concat(['Total']);
+      svg += '<g clip-path="url(#ge-clip)">';
       seriesList.forEach(function(skill) {
         var color = skillColors[skill] || '#6366f1';
         var isTotal = skill === 'Total';
@@ -1072,15 +1106,27 @@
         if (points.length === 0) return;
 
         var sid = 'ge-series-' + skill.replace(/[\s/]+/g, '-');
+        var safeSkill = self._escapeHTML(skill);
         svg += '<g id="' + sid + '">';
+
         if (points.length > 1) {
-          var poly = points.map(function(p) { return p.x + ',' + p.y; }).join(' ');
-          svg += '<polyline points="' + poly + '" fill="none" stroke="' + color + '" stroke-width="' + (isTotal ? 2.5 : 1.75) + '"' + (isTotal ? ' stroke-dasharray="7,4"' : '') + ' opacity="0.8"/>';
+          var linePath = smoothLinePath(points);
+          // Gradient area fill for Total series
+          if (isTotal) {
+            var areaPath = linePath + ' L' + points[points.length - 1].x + ',' + axisBottom + ' L' + points[0].x + ',' + axisBottom + ' Z';
+            svg += '<path d="' + areaPath + '" fill="url(#ge-grad-Total)" stroke="none"/>';
+          }
+          // Smooth bezier line
+          svg += '<path d="' + linePath + '" fill="none" stroke="' + color + '" stroke-width="' + (isTotal ? 2.5 : 1.75) + '"' + (isTotal ? ' stroke-dasharray="7,4"' : '') + ' opacity="0.85" stroke-linejoin="round" stroke-linecap="round"/>';
         }
+
+        // Dots with interactive tooltip via data attributes
         points.forEach(function(p) {
-          svg += '<circle cx="' + p.x + '" cy="' + p.y + '" r="' + (isTotal ? 5.5 : 4.5) + '" fill="' + color + '" stroke="white" stroke-width="2">';
-          svg += '<title>' + self._escapeHTML(skill) + ': ' + p.score + ' (' + self._escapeHTML(p.label) + ')</title>';
-          svg += '</circle>';
+          var tipText = safeSkill + ': ' + p.score + ' (' + self._escapeHTML(p.label) + ')';
+          svg += '<circle cx="' + p.x + '" cy="' + p.y + '" r="' + (isTotal ? 5.5 : 4.5) + '" fill="' + color + '" stroke="white" stroke-width="2"' +
+            ' data-ge-tip="' + tipText + '" data-ge-color="' + color + '"' +
+            ' onmouseenter="BentoGrid._showGeTip(event,this)" onmouseleave="BentoGrid._hideGeTip()"' +
+            ' style="cursor:pointer"/>';
         });
         svg += '</g>';
       });
@@ -1113,6 +1159,34 @@
         el.style.display = '';
         btn.classList.add('active');
       }
+    },
+
+    _showGeTip: function(evt, el) {
+      var tip = document.getElementById('ge-tip');
+      if (!tip) {
+        tip = document.createElement('div');
+        tip.id = 'ge-tip';
+        tip.className = 'ge-tip';
+        document.body.appendChild(tip);
+      }
+      var text = el.getAttribute('data-ge-tip') || '';
+      var color = el.getAttribute('data-ge-color') || '#6366f1';
+      tip.style.setProperty('--ge-tip-color', color);
+      tip.textContent = text;
+      tip.style.display = 'block';
+      var tipW = tip.offsetWidth;
+      var tipH = tip.offsetHeight;
+      var x = evt.clientX + 14;
+      var y = evt.clientY - 36;
+      if (x + tipW > window.innerWidth - 8) { x = evt.clientX - tipW - 14; }
+      if (y < 8) { y = evt.clientY + 10; }
+      tip.style.left = x + 'px';
+      tip.style.top = y + 'px';
+    },
+
+    _hideGeTip: function() {
+      var tip = document.getElementById('ge-tip');
+      if (tip) tip.style.display = 'none';
     }
   };
 })();
