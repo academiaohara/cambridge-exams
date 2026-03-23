@@ -318,6 +318,14 @@
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-multiple-choice fe-dot-mini fe-dot-outline">' + _mi('rule') + '</span> ' + 'Multiple Choice' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-transform fe-dot-mini fe-dot-outline">' + _mi('transform') + '</span> ' + 'Transformation' + '</span>' +
         '</div>';
+      } else if (categoryId === 'idioms') {
+        legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-id-gallery fe-dot-mini fe-dot-outline">' + _mi('collections_bookmark') + '</span> ' + 'Gallery' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-id-fill-in fe-dot-mini fe-dot-outline">' + _mi('edit') + '</span> ' + 'Fill In' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-id-conv fe-dot-mini fe-dot-outline">' + _mi('forum') + '</span> ' + 'Conversations' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-id-drag fe-dot-mini fe-dot-outline">' + _mi('drag_indicator') + '</span> ' + 'Drag & Drop' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-id-quiz fe-dot-mini fe-dot-outline">' + _mi('quiz') + '</span> ' + 'Quiz' + '</span>' +
+        '</div>';
       }
 
       content.innerHTML =
@@ -570,7 +578,8 @@
               var point = lesson.points[pi];
               var isDone = self._isPointComplete(catMeta.id, activeLevel, lesson.id, pi);
 
-              var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1);
+              var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1) ||
+                                  (point.type === 'id-quiz' && pi === lesson.points.length - 1);
               var isAccessible = true;
               if (isLastPvMixed) {
                 for (var prev = 0; prev < pi; prev++) {
@@ -631,6 +640,24 @@
               } else if (point.type === 'wf-transform') {
                 dotClass += ' fe-dot-wf-transform';
                 dotIcon = isDone ? _mi('check') : _mi('transform');
+              } else if (point.type === 'id-gallery') {
+                dotClass += ' fe-dot-id-gallery';
+                dotIcon = isDone ? _mi('check') : _mi('collections_bookmark');
+              } else if (point.type === 'id-fill-in') {
+                dotClass += ' fe-dot-id-fill-in';
+                dotIcon = isDone ? _mi('check') : _mi('edit');
+              } else if (point.type === 'id-conversations') {
+                dotClass += ' fe-dot-id-conv';
+                dotIcon = isDone ? _mi('check') : _mi('forum');
+              } else if (point.type === 'id-conversation-drag') {
+                dotClass += ' fe-dot-id-drag';
+                dotIcon = isDone ? _mi('check') : _mi('drag_indicator');
+              } else if (point.type === 'id-quiz') {
+                dotClass += ' fe-dot-id-quiz';
+                dotIcon = isDone ? _mi('check') : _mi('quiz');
+              } else if (point.type === 'id-trophy') {
+                dotClass += ' fe-dot-trophy';
+                dotIcon = isDone ? _mi('check') : _mi('emoji_events');
               }
 
               if (isDone) {
@@ -787,7 +814,8 @@
           if (!this._isPointComplete(categoryId, levelId, lesson.id, pi)) {
             // Skip locked pv-mixed (last point) if not all prior done
             var point = lesson.points[pi];
-            var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1);
+            var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1) ||
+                                 (point.type === 'id-quiz' && pi === lesson.points.length - 1);
             if (isLastPvMixed) {
               var allPriorDone = true;
               for (var prev = 0; prev < pi; prev++) {
@@ -935,6 +963,52 @@
         }
         var wfState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
         history.pushState(wfState, '', Router.stateToPath(wfState));
+        return;
+      }
+
+      // ── Idioms point types ──────────────────────────────────────────────
+      var idTypes = ['id-gallery', 'id-fill-in', 'id-conversations', 'id-conversation-drag', 'id-quiz', 'id-trophy'];
+      if (idTypes.indexOf(pointType) !== -1) {
+        if (pointType === 'id-trophy') {
+          this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
+          content.innerHTML =
+            '<div class="fe-point-view">' +
+              '<div class="fe-point-card">' +
+                '<div class="fe-point-icon">' + _mi('emoji_events') + '</div>' +
+                '<div class="fe-point-message">' + '🏆 Congratulations! You\'ve completed all ' + levelId + ' Idioms lessons!' + '</div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" style="background:' + (catMeta ? catMeta.color : '#f59e0b') + '">' +
+                  'Back to Map' +
+                '</button>' +
+              '</div>' +
+            '</div>';
+          var trophyState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
+          history.pushState(trophyState, '', Router.stateToPath(trophyState));
+          return;
+        }
+        if (!lessonData || (!lessonData.idioms && !lessonData.fillInExercises && !lessonData.conversations && !lessonData.quizExercises)) {
+          this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
+          content.innerHTML =
+            '<div class="fe-point-view">' +
+              '<div class="fe-point-card">' +
+                '<div class="fe-point-message">' + 'Content coming soon!' + '</div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#f59e0b') + '">' + 'Next' + '</button>' +
+              '</div>' +
+            '</div>';
+          return;
+        }
+        if (pointType === 'id-gallery') {
+          this._renderIdGallery(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        } else if (pointType === 'id-fill-in') {
+          this._renderIdFillIn(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        } else if (pointType === 'id-conversations') {
+          this._renderIdConversations(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        } else if (pointType === 'id-conversation-drag') {
+          this._renderIdConversationDrag(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        } else if (pointType === 'id-quiz') {
+          this._renderIdQuiz(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        }
+        var idState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
+        history.pushState(idState, '', Router.stateToPath(idState));
         return;
       }
       if (!lessonData || !lessonData.points || !lessonData.points[pointIndex]) {
@@ -1184,6 +1258,599 @@
       this._nextPoint(categoryId, levelId, lessonId, pointIndex);
     },
 
+    // ── IDIOMS: GALLERY (Point 1) ─────────────────────────────────────────
+    _renderIdGallery: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var self = this;
+      this._currentLessonData = lessonData;
+      var idioms = (lessonData && lessonData.idioms) || [];
+
+      if (idioms.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
+        return;
+      }
+
+      var cardsHtml = '';
+      idioms.forEach(function(id, idx) {
+        var examplesHtml = '';
+        (id.examples || []).forEach(function(ex) {
+          examplesHtml += '<li>' + self._escapeHTML(ex) + '</li>';
+        });
+        cardsHtml += '<div class="pv-gallery-card pv-gallery-card-single' + (idx === 0 ? ' pv-gallery-card-active' : '') + '" data-idx="' + idx + '" style="--cat-color:' + catMeta.color + '">' +
+          '<div class="pv-gallery-verb id-gallery-idiom">' + self._escapeHTML(id.idiom) + '</div>' +
+          '<div class="pv-gallery-def">' + self._escapeHTML(id.definition || '') + '</div>' +
+          (examplesHtml ? '<ul class="pv-gallery-examples">' + examplesHtml + '</ul>' : '') +
+          (id.usageTip ? '<div class="id-gallery-tip"><span class="material-symbols-outlined">lightbulb</span>' + self._escapeHTML(id.usageTip) + '</div>' : '') +
+          '<div class="pv-gallery-num">' + (idx + 1) + ' / ' + idioms.length + '</div>' +
+        '</div>';
+      });
+
+      var dotsHtml = '';
+      idioms.forEach(function(id, idx) {
+        dotsHtml += '<div class="pv-gallery-nav-dot' + (idx === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + idx + '" title="' + self._escapeHTML(id.idiom) + '" onclick="FastExercises._idGalleryGoTo(' + idx + ')"></div>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="pv-gallery-single-wrap">' +
+              '<div class="pv-gallery-cards-area" id="id-gallery-cards">' +
+                cardsHtml +
+              '</div>' +
+              '<div class="pv-gallery-nav-col" id="id-gallery-nav">' +
+                dotsHtml +
+              '</div>' +
+            '</div>' +
+            '<div class="pv-gallery-footer">' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+                'Got it! Next' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      var cardsArea = document.getElementById('id-gallery-cards');
+      if (cardsArea) {
+        cardsArea.addEventListener('wheel', function(e) {
+          e.preventDefault();
+          var current = FastExercises._idGalleryCurrentIdx || 0;
+          if (e.deltaY > 0) FastExercises._idGalleryGoTo(current + 1);
+          else FastExercises._idGalleryGoTo(current - 1);
+        }, { passive: false });
+      }
+      this._idGalleryCurrentIdx = 0;
+      this._idGalleryTotal = idioms.length;
+    },
+
+    _idGalleryGoTo: function(idx) {
+      var total = this._idGalleryTotal || 0;
+      if (total === 0) return;
+      idx = Math.max(0, Math.min(total - 1, idx));
+      this._idGalleryCurrentIdx = idx;
+      var cards = document.querySelectorAll('#id-gallery-cards .pv-gallery-card-single');
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].classList.toggle('pv-gallery-card-active', parseInt(cards[i].getAttribute('data-idx')) === idx);
+      }
+      var dots = document.querySelectorAll('#id-gallery-nav .pv-gallery-nav-dot');
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx')) === idx);
+      }
+    },
+
+    // ── IDIOMS: FILL-IN EXERCISES (Point 2) ───────────────────────────────
+    _renderIdFillIn: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var self = this;
+      this._currentLessonData = lessonData;
+      var exercises = (lessonData && lessonData.fillInExercises) || [];
+
+      if (exercises.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
+        return;
+      }
+
+      var questionsHtml = '';
+      exercises.forEach(function(ex, qi) {
+        var optHtml = '';
+        (ex.options || []).forEach(function(opt) {
+          optHtml += '<button class="fe-quiz-option" data-question="id-fi' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerIdFillIn(this,' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')">' + self._escapeHTML(opt) + '</button>';
+        });
+        questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
+          '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + exercises.length + '</div>' +
+          '<div class="fe-quiz-sentence pv-fillin-sentence">' + self._escapeHTML(ex.sentence || '') + '</div>' +
+          '<div class="fe-quiz-options">' + optHtml + '</div>' +
+          '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
+        '</div>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
+              '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
+              '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
+                questionsHtml +
+              '</div>' +
+              '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
+                '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
+                '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      this._showQuizQuestion(0);
+    },
+
+    _answerIdFillIn: function(btn, qIndex, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
+      var chosen = btn.getAttribute('data-answer');
+      var isCorrect = chosen.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+      var buttons = document.querySelectorAll('[data-question="id-fi' + qIndex + '"]');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+        if (buttons[i].getAttribute('data-answer').trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+          buttons[i].classList.add('fe-quiz-correct');
+        }
+        if (buttons[i] === btn && !isCorrect) {
+          buttons[i].classList.add('fe-quiz-wrong');
+        }
+      }
+      this._processPvFillInAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
+    },
+
+    // ── IDIOMS: CONVERSATIONS (Point 3) ───────────────────────────────────
+    _renderIdConversations: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var self = this;
+      var convs = (lessonData && lessonData.conversations) || [];
+      this._currentLessonData = lessonData;
+      this._currentIdIdioms = (lessonData && lessonData.idioms) || [];
+
+      if (convs.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
+        return;
+      }
+
+      var totalConvs = convs.length;
+      var convsHtml = '';
+      convs.forEach(function(conv, ci) {
+        var linesHtml = '';
+        var speakers = {};
+        var speakerIdx = 0;
+        (conv.lines || []).forEach(function(line) {
+          if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
+          var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
+          var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, inner) {
+            var sepIdx = inner.indexOf('|');
+            if (sepIdx === -1) sepIdx = inner.indexOf('/');
+            var displayIdiom = sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
+            var lookupIdiom = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
+            return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showIdIdiomPopup(\'' + self._jsStr(lookupIdiom) + '\')" title="' + self._escapeHTML(displayIdiom) + '">' + displayIdiom + '</strong>';
+          });
+          linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
+            self._getAvatarHtml(line.speaker) +
+            '<div class="pv-conv-bubble">' +
+              '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
+              '<span class="pv-conv-text">' + text + '</span>' +
+            '</div>' +
+          '</div>';
+        });
+        var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (ci + 1) + '/' + totalConvs + '</span>' : '';
+        convsHtml += '<div class="pv-conv-block pv-conv-slide' + (ci === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + ci + '">' +
+          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
+          '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+        '</div>';
+      });
+
+      var convDotsHtml = '';
+      convs.forEach(function(conv, ci) {
+        convDotsHtml += '<div class="pv-gallery-nav-dot' + (ci === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + ci + '" title="' + self._escapeHTML(conv.title || ('Conversation ' + (ci + 1))) + '" onclick="FastExercises._idConvGoTo(' + ci + ')"></div>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="pv-gallery-single-wrap">' +
+              '<div class="pv-conversations-slides" id="id-conv-slides">' +
+                convsHtml +
+              '</div>' +
+              '<div class="pv-gallery-nav-col" id="id-conv-nav">' +
+                convDotsHtml +
+              '</div>' +
+            '</div>' +
+            '<div class="pv-conv-footer">' +
+              '<p class="pv-conv-hint"><span class="material-symbols-outlined">info</span> ' + 'Idioms are highlighted in bold. Click a highlighted idiom to see its meaning.' + '</p>' +
+              '<button class="fe-point-next-btn" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+                'Ready! Next' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      var slidesArea = document.getElementById('id-conv-slides');
+      if (slidesArea) {
+        slidesArea.addEventListener('wheel', function(e) {
+          e.preventDefault();
+          var current = FastExercises._idConvCurrentIdx || 0;
+          if (e.deltaY > 0) FastExercises._idConvGoTo(current + 1);
+          else FastExercises._idConvGoTo(current - 1);
+        }, { passive: false });
+      }
+      this._idConvCurrentIdx = 0;
+      this._idConvTotal = convs.length;
+    },
+
+    _idConvGoTo: function(idx) {
+      var total = this._idConvTotal || 0;
+      if (total === 0) return;
+      idx = Math.max(0, Math.min(total - 1, idx));
+      this._idConvCurrentIdx = idx;
+      var slides = document.querySelectorAll('.pv-conv-slide');
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].classList.toggle('pv-conv-slide-active', parseInt(slides[i].getAttribute('data-idx')) === idx);
+      }
+      var dots = document.querySelectorAll('#id-conv-nav .pv-gallery-nav-dot');
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx')) === idx);
+      }
+    },
+
+    _showIdIdiomPopup: function(idiomText) {
+      var existing = document.getElementById('id-idiom-popup');
+      if (existing) existing.remove();
+
+      var idioms = this._currentIdIdioms || (this._currentLessonData && this._currentLessonData.idioms) || [];
+      var found = null;
+      var normLookup = idiomText.trim().toLowerCase();
+      for (var i = 0; i < idioms.length; i++) {
+        if ((idioms[i].idiom || '').trim().toLowerCase() === normLookup) { found = idioms[i]; break; }
+      }
+      if (!found) return;
+
+      var examplesHtml = '';
+      (found.examples || []).forEach(function(ex) {
+        examplesHtml += '<li>' + FastExercises._escapeHTML(ex) + '</li>';
+      });
+
+      var popup = document.createElement('div');
+      popup.id = 'id-idiom-popup';
+      popup.className = 'pv-verb-popup-overlay';
+      popup.innerHTML =
+        '<div class="pv-verb-popup-card">' +
+          '<button class="pv-verb-popup-close" onclick="document.getElementById(\'id-idiom-popup\').remove()">' +
+            '<span class="material-symbols-outlined">close</span>' +
+          '</button>' +
+          '<div class="pv-verb-popup-badge" style="background:#f59e0b">Idiom</div>' +
+          '<div class="pv-verb-popup-verb">' + FastExercises._escapeHTML(found.idiom || '') + '</div>' +
+          '<div class="pv-verb-popup-def">' + FastExercises._escapeHTML(found.definition || '') + '</div>' +
+          (examplesHtml ? '<ul class="pv-verb-popup-examples">' + examplesHtml + '</ul>' : '') +
+          (found.usageTip ? '<div class="id-gallery-tip"><span class="material-symbols-outlined">lightbulb</span>' + FastExercises._escapeHTML(found.usageTip) + '</div>' : '') +
+        '</div>';
+      popup.addEventListener('click', function(e) { if (e.target === popup) popup.remove(); });
+      document.body.appendChild(popup);
+    },
+
+    // ── IDIOMS: CONVERSATION DRAG (Point 4) ───────────────────────────────
+    _renderIdConversationDrag: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var self = this;
+      this._currentLessonData = lessonData;
+      var convs = (lessonData && lessonData.conversations) || [];
+      var idioms = (lessonData && lessonData.idioms) || [];
+
+      if (convs.length === 0 || idioms.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
+        return;
+      }
+
+      this._idDragContext = {
+        categoryId: catMeta.id, levelId: levelId, lessonId: lessonId,
+        pointIndex: pointIndex, catColor: catMeta.color,
+        convs: convs, currentConvIdx: 0, container: container,
+        lessonTitle: lessonTitle, catMeta: catMeta, lessonData: lessonData,
+        lessonPoints: lessonPoints
+      };
+
+      this._idDragRenderConv(container, catMeta, levelId, lessonId, lessonTitle, pointIndex);
+    },
+
+    _idDragRenderConv: function(container, catMeta, levelId, lessonId, lessonTitle, pointIndex) {
+      var self = this;
+      var ctx = this._idDragContext;
+      var convs = ctx.convs;
+      var convIdx = ctx.currentConvIdx;
+      var conv = convs[convIdx];
+      var totalConvs = convs.length;
+
+      var gapIdioms = {};
+      var totalGaps = 0;
+      (conv.lines || []).forEach(function(line) {
+        var matches = line.text.match(/\[([^\]]+)\]/g);
+        if (matches) {
+          matches.forEach(function(m) {
+            var inner = m.replace(/[\[\]]/g, '');
+            var sepIdx = inner.indexOf('|');
+            if (sepIdx === -1) sepIdx = inner.indexOf('/');
+            var idiom = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
+            gapIdioms[idiom] = (gapIdioms[idiom] || 0) + 1;
+            totalGaps++;
+          });
+        }
+      });
+
+      var chipsList = [];
+      Object.keys(gapIdioms).forEach(function(idiom) {
+        for (var n = 0; n < gapIdioms[idiom]; n++) chipsList.push(idiom);
+      });
+      chipsList = chipsList.sort(function() { return Math.random() - 0.5; });
+
+      var gapCounter = 0;
+      var speakers = {};
+      var speakerIdx = 0;
+      var linesHtml = '';
+      (conv.lines || []).forEach(function(line) {
+        if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
+        var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
+        var text = self._escapeHTML(line.text).replace(/\[([^\]]+)\]/g, function(match, inner) {
+          var sepIdx = inner.indexOf('|');
+          if (sepIdx === -1) sepIdx = inner.indexOf('/');
+          var displayForm = sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
+          var idiomKey = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
+          var gid = 'id-gap-' + gapCounter;
+          gapCounter++;
+          return '<span class="pv-drop-zone" id="' + gid + '" data-verb="' + self._escapeHTML(idiomKey) + '" data-display="' + self._escapeHTML(displayForm) + '" data-filled="false" onclick="FastExercises._idGapClick(\'' + gid + '\')" ondragover="event.preventDefault()" ondrop="FastExercises._idDrop(event,\'' + gid + '\')">' +
+            '<span class="pv-drop-placeholder">_____</span>' +
+          '</span>';
+        });
+        linesHtml += '<div class="pv-conv-line pv-conv-' + side + '">' +
+          self._getAvatarHtml(line.speaker) +
+          '<div class="pv-conv-bubble">' +
+            '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
+            '<span class="pv-conv-text">' + text + '</span>' +
+          '</div>' +
+        '</div>';
+      });
+
+      var chipsHtml = '';
+      chipsList.forEach(function(idiom, i) {
+        chipsHtml += '<span class="pv-chip" id="id-chip-' + i + '" draggable="true" data-verb="' + self._escapeHTML(idiom) + '" data-chip-id="' + i + '" onclick="FastExercises._idChipClick(' + i + ')" ondragstart="FastExercises._idDragStart(event,' + i + ')">' +
+          self._escapeHTML(idiom) +
+        '</span>';
+      });
+
+      var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (convIdx + 1) + '/' + totalConvs + '</span>' : '';
+
+      container.innerHTML =
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="pv-drag-container">' +
+              '<div class="pv-conv-block">' +
+                '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
+                '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+              '</div>' +
+              '<div class="pv-chips-panel" id="id-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
+                '<div class="pv-chips-title">' + 'Idioms' + ':</div>' +
+                '<div class="pv-chips-list" id="id-chips-list">' + chipsHtml + '</div>' +
+              '</div>' +
+              '<div class="pv-drag-result" id="id-drag-result" style="display:none;">' +
+                '<div class="pv-drag-result-icon">' + _mi('celebration') + '</div>' +
+                '<div class="pv-drag-result-text" id="id-drag-result-text"></div>' +
+                (convIdx + 1 < totalConvs
+                  ? '<button class="fe-point-next-btn" onclick="FastExercises._idDragNextConv()" style="background:' + catMeta.color + '">' + 'Next Conversation' + '</button>'
+                  : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
+                ) +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      this._idDragContext.totalGaps = totalGaps;
+    },
+
+    _idDragNextConv: function() {
+      var ctx = this._idDragContext;
+      if (!ctx) return;
+      ctx.currentConvIdx++;
+      this._idDragRenderConv(ctx.container, ctx.catMeta, ctx.levelId, ctx.lessonId, ctx.lessonTitle, ctx.pointIndex);
+    },
+
+    _idDragStart: function(event, chipId) {
+      event.dataTransfer.setData('text/plain', String(chipId));
+      this._idSelectedChip = chipId;
+      var chip = document.getElementById('id-chip-' + chipId);
+      if (chip) chip.classList.add('pv-chip-dragging');
+    },
+
+    _idDrop: function(event, gapId) {
+      event.preventDefault();
+      var chipId = parseInt(event.dataTransfer.getData('text/plain'));
+      this._idFillGap(gapId, chipId);
+    },
+
+    _idChipClick: function(chipId) {
+      if (this._idSelectedChip === chipId) {
+        this._idSelectedChip = null;
+        document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected'); });
+        return;
+      }
+      document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected', 'pv-chip-dragging'); });
+      this._idSelectedChip = chipId;
+      var chip = document.getElementById('id-chip-' + chipId);
+      if (chip) chip.classList.add('pv-chip-selected');
+    },
+
+    _idGapClick: function(gapId) {
+      if (this._idSelectedChip !== null && this._idSelectedChip !== undefined) {
+        this._idFillGap(gapId, this._idSelectedChip);
+        this._idSelectedChip = null;
+        document.querySelectorAll('.pv-chip').forEach(function(c) { c.classList.remove('pv-chip-selected', 'pv-chip-dragging'); });
+      }
+    },
+
+    _idFillGap: function(gapId, chipId) {
+      var gap = document.getElementById(gapId);
+      var chip = document.getElementById('id-chip-' + chipId);
+      if (!gap || !chip || chip.classList.contains('pv-chip-used')) return;
+      if (gap.getAttribute('data-filled') === 'true') return;
+
+      var verbFromChip = chip.getAttribute('data-verb');
+      var correctVerb = gap.getAttribute('data-verb');
+      var normChip = verbFromChip.trim().toLowerCase();
+      var normGap  = correctVerb.trim().toLowerCase();
+      var isCorrect = normChip === normGap;
+
+      var displayText = isCorrect ? (gap.getAttribute('data-display') || verbFromChip) : verbFromChip;
+      gap.setAttribute('data-filled', 'true');
+      gap.innerHTML = '<span class="pv-drop-filled ' + (isCorrect ? 'pv-drop-correct' : 'pv-drop-wrong') + '">' + this._escapeHTML(displayText) + '</span>';
+      if (!isCorrect) {
+        gap.setAttribute('data-filled', 'false');
+        var self = this;
+        setTimeout(function() {
+          gap.innerHTML = '<span class="pv-drop-placeholder">_____</span>';
+          gap.setAttribute('data-filled', 'false');
+        }, 1200);
+        return;
+      }
+
+      chip.classList.add('pv-chip-used');
+      chip.draggable = false;
+
+      var panel = document.getElementById('id-chips-panel');
+      if (panel) {
+        var total = parseInt(panel.getAttribute('data-total-gaps'));
+        var filled = parseInt(panel.getAttribute('data-filled')) + 1;
+        panel.setAttribute('data-filled', filled);
+        if (filled >= total) {
+          var ctx = this._idDragContext;
+          var convs = ctx && ctx.convs;
+          var isLastConv = !convs || (ctx.currentConvIdx + 1 >= convs.length);
+          if (ctx && isLastConv) this._markPointComplete(ctx.categoryId, ctx.levelId, ctx.lessonId, ctx.pointIndex);
+          var result = document.getElementById('id-drag-result');
+          var resultText = document.getElementById('id-drag-result-text');
+          if (result && resultText) {
+            resultText.textContent = 'All correct! Well done!';
+            result.style.display = 'flex';
+          }
+          if (isLastConv && typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+        }
+      }
+    },
+
+    // ── IDIOMS: QUIZ (Point 5) ─────────────────────────────────────────────
+    _renderIdQuiz: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+      var self = this;
+      this._currentLessonData = lessonData;
+      var quizExercises = (lessonData && lessonData.quizExercises) || [];
+
+      if (quizExercises.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
+        return;
+      }
+
+      // Flatten quiz exercises: expand match-meaning into individual pairs
+      var questions = [];
+      quizExercises.forEach(function(ex) {
+        if (ex.type === 'match-meaning') {
+          // Convert to a multiple-choice question: for each idiom, choose the meaning
+          (ex.pairs || []).forEach(function(pair, pi) {
+            var distractorMeanings = (ex.pairs || []).filter(function(p, i) { return i !== pi; }).map(function(p) { return p.meaning; });
+            var opts = [pair.meaning].concat(distractorMeanings.sort(function() { return Math.random() - 0.5; }).slice(0, 3)).sort(function() { return Math.random() - 0.5; });
+            questions.push({
+              type: 'match-meaning',
+              sentence: 'What does "' + pair.idiom + '" mean?',
+              options: opts,
+              correct: pair.meaning,
+              explanation: '"' + pair.idiom + '" means: ' + pair.meaning
+            });
+          });
+        } else if (ex.type === 'complete-sentence') {
+          questions.push({
+            type: 'complete-sentence',
+            sentence: ex.sentence,
+            options: ex.options || [],
+            correct: ex.correct,
+            explanation: ex.explanation || ''
+          });
+        } else if (ex.type === 'select-situation') {
+          questions.push({
+            type: 'select-situation',
+            sentence: (ex.question || ('In which situation would you use "' + (ex.idiom || '') + '"?')),
+            options: ex.options || [],
+            correct: typeof ex.correct === 'number' ? (ex.options || [])[ex.correct] : ex.correct,
+            explanation: ex.explanation || ''
+          });
+        }
+      });
+
+      if (questions.length === 0) {
+        this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
+        container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
+        return;
+      }
+
+      var questionsHtml = '';
+      questions.forEach(function(q, qi) {
+        var qTypeLabel = '';
+        if (q.type === 'match-meaning') qTypeLabel = '<span class="id-quiz-type-badge id-quiz-type-match">' + _mi('swap_horiz') + ' Match Meaning</span>';
+        else if (q.type === 'complete-sentence') qTypeLabel = '<span class="id-quiz-type-badge id-quiz-type-complete">' + _mi('edit') + ' Complete</span>';
+        else if (q.type === 'select-situation') qTypeLabel = '<span class="id-quiz-type-badge id-quiz-type-situation">' + _mi('psychology') + ' Situation</span>';
+
+        var optHtml = '';
+        (q.options || []).forEach(function(opt) {
+          optHtml += '<button class="fe-quiz-option" data-question="id-qz' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerIdQuiz(this,' + qi + ',\'' + self._jsStr(q.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')">' + self._escapeHTML(opt) + '</button>';
+        });
+
+        questionsHtml += '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
+          '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + questions.length + ' ' + qTypeLabel + '</div>' +
+          '<div class="fe-quiz-sentence pv-fillin-sentence">' + self._escapeHTML(q.sentence || '') + '</div>' +
+          '<div class="fe-quiz-options">' + optHtml + '</div>' +
+          '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
+        '</div>';
+      });
+
+      container.innerHTML =
+        '<div class="fe-point-view pv-point-layout">' +
+          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
+          '<div class="pv-point-main">' +
+            '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
+              '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
+              '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + questions.length + '" data-answered="0" data-correct="0">' +
+                questionsHtml +
+              '</div>' +
+              '<div class="fe-quiz-complete-section" id="fe-quiz-complete" style="display:none;">' +
+                '<div class="fe-quiz-complete-icon">' + _mi('celebration') + '</div>' +
+                '<div class="fe-quiz-complete-text" id="fe-quiz-complete-text"></div>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      this._showQuizQuestion(0);
+    },
+
+    _answerIdQuiz: function(btn, qIndex, correctAnswer, categoryId, levelId, lessonId, pointIndex) {
+      var chosen = btn.getAttribute('data-answer');
+      var isCorrect = chosen.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+      var buttons = document.querySelectorAll('[data-question="id-qz' + qIndex + '"]');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+        if (buttons[i].getAttribute('data-answer').trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+          buttons[i].classList.add('fe-quiz-correct');
+        }
+        if (buttons[i] === btn && !isCorrect) {
+          buttons[i].classList.add('fe-quiz-wrong');
+        }
+      }
+      this._processPvFillInAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
+    },
+
     // ── PV SIDEBAR BUILDER ───────────────────────────────────────────────
     _buildPvSidebarHtml: function(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var self = this;
@@ -1196,7 +1863,13 @@
         'pv-mixed':             'shuffle',
         'wf-explanation':       'school',
         'wf-multiple-choice':   'rule',
-        'wf-transform':         'transform'
+        'wf-transform':         'transform',
+        'id-gallery':           'collections_bookmark',
+        'id-fill-in':           'edit',
+        'id-conversations':     'forum',
+        'id-conversation-drag': 'drag_indicator',
+        'id-quiz':              'quiz',
+        'id-trophy':            'emoji_events'
       };
 
       var pvDescriptions = {
@@ -1207,7 +1880,13 @@
         'pv-mixed':             'Mixed practice: test yourself with questions from the whole lesson.',
         'wf-explanation':       'Learn the transformation rule with examples and word cards.',
         'wf-multiple-choice':   'Choose the correct derived form for each sentence.',
-        'wf-transform':         'Write the correct form of the root word in CAPITALS.'
+        'wf-transform':         'Write the correct form of the root word in CAPITALS.',
+        'id-gallery':           'Read and learn the idioms for this lesson.',
+        'id-fill-in':           'Choose the correct idiom to complete each sentence.',
+        'id-conversations':     'Read the conversations. Click highlighted idioms to see their meaning.',
+        'id-conversation-drag': 'Drag each idiom to the correct gap in the conversation.',
+        'id-quiz':              'Quiz: test yourself with different question types.',
+        'id-trophy':            'Congratulations! You have completed this level.'
       };
 
       var dotsHtml = '';
@@ -1216,9 +1895,9 @@
           var isDone   = self._isPointComplete(catMeta.id, levelId, lessonId, pi);
           var isActive = (pi === pointIndex);
 
-          // pv-mixed locked until all previous points are done
+          // pv-mixed / id-quiz locked until all previous points are done
           var isAccessible = true;
-          if (pt.type === 'pv-mixed' && pi === lessonPoints.length - 1) {
+          if ((pt.type === 'pv-mixed' || pt.type === 'id-quiz') && pi === lessonPoints.length - 1) {
             for (var prev = 0; prev < pi; prev++) {
               if (!self._isPointComplete(catMeta.id, levelId, lessonId, prev)) {
                 isAccessible = false;
