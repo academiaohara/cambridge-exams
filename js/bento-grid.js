@@ -1034,13 +1034,19 @@
 
       var svg = '<svg class="ge-chart-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" xmlns="http://www.w3.org/2000/svg">';
 
-      // Defs: clip path + gradient fill for Total series
+      // Defs: clip path + per-series gradient fills
       svg += '<defs>';
       svg += '<clipPath id="ge-clip"><rect x="' + marginL + '" y="' + marginT + '" width="' + chartW + '" height="' + chartH + '"/></clipPath>';
-      svg += '<linearGradient id="ge-grad-Total" x1="0" y1="0" x2="0" y2="1">';
-      svg += '<stop offset="0%" stop-color="' + (skillColors['Total'] || '#6366f1') + '" stop-opacity="0.22"/>';
-      svg += '<stop offset="100%" stop-color="' + (skillColors['Total'] || '#6366f1') + '" stop-opacity="0"/>';
-      svg += '</linearGradient>';
+      var seriesList = allSkills.concat(['Total']);
+      seriesList.forEach(function(skill) {
+        var color = skillColors[skill] || '#6366f1';
+        var isTotal = skill === 'Total';
+        var gid = 'ge-grad-' + skill.replace(/[\s/]+/g, '-');
+        svg += '<linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1">';
+        svg += '<stop offset="0%" stop-color="' + color + '" stop-opacity="' + (isTotal ? '0.22' : '0.10') + '"/>';
+        svg += '<stop offset="100%" stop-color="' + color + '" stop-opacity="0"/>';
+        svg += '</linearGradient>';
+      });
       svg += '</defs>';
 
       // Grade band backgrounds and boundary dashed lines
@@ -1081,11 +1087,11 @@
       svg += '<line x1="' + marginL + '" y1="' + axisBottom + '" x2="' + (marginL + chartW) + '" y2="' + axisBottom + '" stroke="#cbd5e1" stroke-width="1.5"/>';
 
       // Data series inside clip region
-      var seriesList = allSkills.concat(['Total']);
       svg += '<g clip-path="url(#ge-clip)">';
       seriesList.forEach(function(skill) {
         var color = skillColors[skill] || '#6366f1';
         var isTotal = skill === 'Total';
+        var gid = 'ge-grad-' + skill.replace(/[\s/]+/g, '-');
 
         var points = [];
         examScores.forEach(function(entry, i) {
@@ -1111,11 +1117,9 @@
 
         if (points.length > 1) {
           var linePath = smoothLinePath(points);
-          // Gradient area fill for Total series
-          if (isTotal) {
-            var areaPath = linePath + ' L' + points[points.length - 1].x + ',' + axisBottom + ' L' + points[0].x + ',' + axisBottom + ' Z';
-            svg += '<path d="' + areaPath + '" fill="url(#ge-grad-Total)" stroke="none"/>';
-          }
+          // Gradient area fill under the curve
+          var areaPath = linePath + ' L' + points[points.length - 1].x + ',' + axisBottom + ' L' + points[0].x + ',' + axisBottom + ' Z';
+          svg += '<path d="' + areaPath + '" fill="url(#' + gid + ')" stroke="none"/>';
           // Smooth bezier line
           svg += '<path d="' + linePath + '" fill="none" stroke="' + color + '" stroke-width="' + (isTotal ? 2.5 : 1.75) + '"' + (isTotal ? ' stroke-dasharray="7,4"' : '') + ' opacity="0.85" stroke-linejoin="round" stroke-linecap="round"/>';
         }
