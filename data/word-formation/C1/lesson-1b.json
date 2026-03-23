@@ -67,7 +67,7 @@
     {
       "base": "music",
       "derived": "musician",
-      "type": "suffix -ian",
+      "type": "suffix -ist (variant: -ian)",
       "definition": "a person who plays a musical instrument or composes music professionally",
       "example": "The musician had performed in concert halls across four continents.",
       "rootDefinition": "vocal or instrumental sounds combined to produce beauty and expression"
@@ -126,37 +126,67 @@
       "sentence": "The human rights ___ was awarded an international prize for her work.",
       "root": "active",
       "correct": "activist",
-      "options": ["activist", "activity", "active", "activation"]
+      "options": [
+        "activist",
+        "activity",
+        "active",
+        "activation"
+      ]
     },
     {
       "sentence": "The doctor recommended seeing a ___ before undergoing any further treatment.",
       "root": "special",
       "correct": "specialist",
-      "options": ["specialist", "speciality", "special", "specialise"]
+      "options": [
+        "specialist",
+        "speciality",
+        "special",
+        "specialise"
+      ]
     },
     {
       "sentence": "The ___ refused to romanticise the situation and insisted on addressing the facts.",
       "root": "real",
       "correct": "realist",
-      "options": ["realist", "realism", "realistic", "reality"]
+      "options": [
+        "realist",
+        "realism",
+        "realistic",
+        "reality"
+      ]
     },
     {
       "sentence": "The ___ movement demanded a separate parliament for the region.",
       "root": "nation",
       "correct": "nationalist",
-      "options": ["nationalist", "nationalism", "national", "nationality"]
+      "options": [
+        "nationalist",
+        "nationalism",
+        "national",
+        "nationality"
+      ]
     },
     {
       "sentence": "An accomplished ___, she had recorded five albums before the age of thirty.",
       "root": "music",
       "correct": "musician",
-      "options": ["musician", "musical", "music", "musicality"]
+      "options": [
+        "musician",
+        "musical",
+        "music",
+        "musicality"
+      ]
     },
     {
       "sentence": "The ___ presented her findings at the annual conference on climate change.",
       "root": "science",
       "correct": "scientist",
-      "options": ["scientist", "scientific", "science", "scientifically"]
+      "options": [
+        "scientist",
+        "scientific",
+        "science",
+        "scientifically"
+      ]
     }
   ],
   "transformExercises": [
