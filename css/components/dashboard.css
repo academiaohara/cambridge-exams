@@ -524,66 +524,10 @@
   background: white;
   border-radius: 16px;
   padding: 20px;
+  padding-top: 0;
   box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
-}
-
-/* Abstract animal decorations for exam sections */
-.exam-section:nth-child(1)::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 80px;
-  height: 80px;
-  opacity: 0.06;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='24' fill='%238b5cf6'/%3E%3Cpolygon points='35,60 50,45 65,60' fill='%238b5cf6'/%3E%3Cpolygon points='38,58 28,82 48,82' fill='%238b5cf6'/%3E%3Cpolygon points='62,58 52,82 72,82' fill='%238b5cf6'/%3E%3Ccircle cx='43' cy='35' r='3.5' fill='%23fff'/%3E%3Ccircle cx='57' cy='35' r='3.5' fill='%23fff'/%3E%3Cpolygon points='38,18 50,6 62,18' fill='%238b5cf6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  pointer-events: none;
-}
-
-.exam-section:nth-child(2)::after {
-  content: '';
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  width: 75px;
-  height: 75px;
-  opacity: 0.06;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='45' r='20' fill='%23f97316'/%3E%3Cellipse cx='50' cy='75' rx='16' ry='10' fill='%23f97316'/%3E%3Ccircle cx='43' cy='42' r='3' fill='%23fff'/%3E%3Ccircle cx='57' cy='42' r='3' fill='%23fff'/%3E%3Cpath d='M44 50 Q50 55 56 50' stroke='%23fff' stroke-width='2' fill='none'/%3E%3Cellipse cx='30' cy='40' rx='8' ry='14' fill='%23f97316'/%3E%3Cellipse cx='70' cy='40' rx='8' ry='14' fill='%23f97316'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  pointer-events: none;
-}
-
-.exam-section:nth-child(3)::after {
-  content: '';
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  width: 75px;
-  height: 75px;
-  opacity: 0.06;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='55' rx='28' ry='22' fill='%2310b981'/%3E%3Ccircle cx='50' cy='30' r='16' fill='%2310b981'/%3E%3Cpolygon points='50,18 46,10 54,10' fill='%2310b981'/%3E%3Ccircle cx='44' cy='27' r='2.5' fill='%23fff'/%3E%3Ccircle cx='56' cy='27' r='2.5' fill='%23fff'/%3E%3Cpolygon points='48,33 50,36 52,33' fill='%23fff'/%3E%3Cellipse cx='30' cy='50' rx='16' ry='6' transform='rotate(-30 30 50)' fill='%2310b981'/%3E%3Cellipse cx='70' cy='50' rx='16' ry='6' transform='rotate(30 70 50)' fill='%2310b981'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  pointer-events: none;
-}
-
-.exam-section:nth-child(4)::after {
-  content: '';
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  width: 75px;
-  height: 75px;
-  opacity: 0.06;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='22' fill='%23ec4899'/%3E%3Cellipse cx='50' cy='72' rx='20' ry='15' fill='%23ec4899'/%3E%3Ccircle cx='42' cy='34' r='3' fill='%23fff'/%3E%3Ccircle cx='58' cy='34' r='3' fill='%23fff'/%3E%3Cpath d='M45 42 Q50 46 55 42' stroke='%23fff' stroke-width='2' fill='none'/%3E%3Cpath d='M28 30 Q22 15 35 22' stroke='%23ec4899' stroke-width='4' fill='none'/%3E%3Cpath d='M72 30 Q78 15 65 22' stroke='%23ec4899' stroke-width='4' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  pointer-events: none;
 }
 
 .reset-section-corner-btn {
