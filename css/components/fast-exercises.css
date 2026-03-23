@@ -2556,6 +2556,215 @@
 .wf-info-dict-link .material-symbols-outlined { font-size: 1rem; }
 
 /* ═══════════════════════════════════════════════════════════════════════
+   COLLOCATIONS – Info dict link
+   ═══════════════════════════════════════════════════════════════════════ */
+.colloc-info-dict-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #8b5cf6;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+.colloc-info-dict-link:hover { text-decoration: underline; }
+.colloc-info-dict-link .material-symbols-outlined { font-size: 1rem; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   COLLOCATIONS – Dictionary Modal
+   ═══════════════════════════════════════════════════════════════════════ */
+.colloc-dict-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: pvFadeIn 0.18s ease;
+}
+
+.colloc-dict-box {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.2);
+  width: 100%;
+  max-width: 680px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.colloc-dict-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+  flex-shrink: 0;
+}
+
+.colloc-dict-icon .material-symbols-outlined {
+  font-size: 1.4rem;
+  color: #8b5cf6;
+}
+
+.colloc-dict-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+  flex: 1;
+  margin: 0;
+}
+
+.colloc-dict-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  color: var(--text-medium, #64748b);
+  display: flex;
+  align-items: center;
+  transition: background 0.15s;
+}
+.colloc-dict-close:hover { background: rgba(139, 92, 246, 0.08); color: #8b5cf6; }
+
+.colloc-dict-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px 8px;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.07);
+}
+
+.colloc-dict-search-icon .material-symbols-outlined {
+  font-size: 1.1rem;
+  color: var(--text-medium, #94a3b8);
+  flex-shrink: 0;
+}
+
+.colloc-dict-search {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1.5px solid rgba(45, 46, 95, 0.15);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.colloc-dict-search:focus { border-color: #8b5cf6; }
+
+.colloc-dict-level-filter {
+  padding: 9px 12px;
+  border: 1.5px solid rgba(45, 46, 95, 0.15);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  background: #fff;
+  color: var(--text-dark, #0f172a);
+  transition: border-color 0.2s;
+}
+.colloc-dict-level-filter:focus { border-color: #8b5cf6; }
+
+.colloc-dict-count {
+  font-size: 0.8rem;
+  color: var(--text-medium, #94a3b8);
+  padding: 4px 18px 0;
+  flex-shrink: 0;
+}
+
+.colloc-dict-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.colloc-dict-entry {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(45, 46, 95, 0.07);
+  transition: box-shadow 0.15s;
+}
+.colloc-dict-entry:hover { box-shadow: 0 3px 12px rgba(139, 92, 246, 0.09); }
+
+.colloc-dict-base {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid rgba(139, 92, 246, 0.2);
+}
+
+.colloc-dict-forms {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.colloc-dict-form {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 0.88rem;
+}
+
+.colloc-dict-phrase {
+  font-weight: 700;
+  color: #8b5cf6;
+  min-width: 140px;
+}
+
+.colloc-dict-def {
+  color: var(--text-medium, #64748b);
+  font-style: italic;
+  flex: 1;
+}
+
+.colloc-dict-level-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  border-radius: 6px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+.colloc-level-a1 { background: #f0fdf4; color: #166534; }
+.colloc-level-a2 { background: #dcfce7; color: #166534; }
+.colloc-level-b1 { background: #dcfce7; color: #166534; }
+.colloc-level-b2 { background: #dbeafe; color: #1e40af; }
+.colloc-level-c1 { background: #ede9fe; color: #4c1d95; }
+
+.colloc-dict-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 40px 20px;
+  color: var(--text-medium, #94a3b8);
+}
+.colloc-dict-empty .material-symbols-outlined { font-size: 2rem; }
+.colloc-dict-empty p { margin: 0; font-size: 0.95rem; }
+
+/* ═══════════════════════════════════════════════════════════════════════
    PHRASAL VERBS – Dictionary Modal
    ═══════════════════════════════════════════════════════════════════════ */
 .pv-dict-overlay {
