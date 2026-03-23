@@ -6,8 +6,7 @@
   var CATEGORIES = [
     { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6' },
     { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' },
-    { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' },
-    { id: 'collocations', icon: 'format_quote', name: 'Collocations', color: '#8b5cf6' }
+    { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' }
   ];
 
   // Vocabulary flashcard constants
