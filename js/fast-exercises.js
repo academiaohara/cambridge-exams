@@ -4,8 +4,6 @@
 (function() {
   var STORAGE_KEY = 'cambridge_fast_exercises';
   var CATEGORIES = [
-    { id: 'vocabulary', icon: 'menu_book', name: 'Vocabulary', color: '#10b981' },
-    { id: 'collocations', icon: 'library_books', name: 'Collocations', color: '#8b5cf6' },
     { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6' },
     { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' },
     { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' }
