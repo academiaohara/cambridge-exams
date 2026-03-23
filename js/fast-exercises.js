@@ -2409,6 +2409,13 @@
               '<option value="B2">B2</option>' +
               '<option value="C1">C1</option>' +
             '</select>' +
+            '<select class="wf-dict-type-filter" id="wf-dict-type-filter" onchange="FastExercises._filterWfDict(document.getElementById(\'wf-dict-search\').value)">' +
+              '<option value="">All Types</option>' +
+              '<option value="noun">Noun</option>' +
+              '<option value="verb">Verb</option>' +
+              '<option value="adjective">Adjective</option>' +
+              '<option value="adverb">Adverb</option>' +
+            '</select>' +
           '</div>' +
           '<div class="wf-dict-count" id="wf-dict-count">' + entries.length + ' entries</div>' +
           '<div class="wf-dict-results" id="wf-dict-results"></div>' +
@@ -2421,7 +2428,7 @@
 
       // Store entries for filtering
       this._wfDictEntries = entries;
-      this._renderWfDictResults('', '');
+      this._renderWfDictResults('', '', '');
 
       // Focus search
       setTimeout(function() {
@@ -2432,10 +2439,11 @@
 
     _filterWfDict: function(query) {
       var levelFilter = (document.getElementById('wf-dict-level') || {}).value || '';
-      this._renderWfDictResults(query || '', levelFilter);
+      var typeFilter = (document.getElementById('wf-dict-type-filter') || {}).value || '';
+      this._renderWfDictResults(query || '', levelFilter, typeFilter);
     },
 
-    _renderWfDictResults: function(query, levelFilter) {
+    _renderWfDictResults: function(query, levelFilter, typeFilter) {
       var self = this;
       var entries = this._wfDictEntries || [];
       var q = (query || '').toLowerCase().trim();
@@ -2443,6 +2451,8 @@
       var filtered = entries.filter(function(e) {
         var matchLevel = !levelFilter || e.level === levelFilter;
         if (!matchLevel) return false;
+        var matchType = !typeFilter || e.wordType === typeFilter;
+        if (!matchType) return false;
         if (!q) return true;
         return (e.base || '').toLowerCase().indexOf(q) !== -1 ||
                (e.derived || '').toLowerCase().indexOf(q) !== -1;
@@ -2452,7 +2462,7 @@
       var countEl = document.getElementById('wf-dict-count');
       if (!resultsEl) return;
 
-      if (countEl) countEl.textContent = filtered.length + ' entries' + (q || levelFilter ? ' (filtered)' : '');
+      if (countEl) countEl.textContent = filtered.length + ' entries' + (q || levelFilter || typeFilter ? ' (filtered)' : '');
 
       if (filtered.length === 0) {
         resultsEl.innerHTML = '<div class="wf-dict-empty">' + _mi('search_off') + '<p>No results found</p></div>';
@@ -2472,10 +2482,11 @@
         var group = groups[base];
         var derivedHtml = '';
         group.forEach(function(e) {
+          var wt = e.wordType || '';
           derivedHtml +=
             '<div class="wf-dict-form">' +
               '<span class="wf-dict-derived">' + self._escapeHTML(e.derived) + '</span>' +
-              '<span class="wf-dict-type">' + self._escapeHTML(e.type) + '</span>' +
+              '<span class="wf-dict-type wf-type-' + self._escapeHTML(wt) + '">' + self._escapeHTML(wt) + '</span>' +
               '<span class="wf-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
               '<span class="wf-dict-level-badge wf-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
             '</div>';
