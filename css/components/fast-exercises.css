@@ -2508,6 +2508,240 @@
 .wf-info-dict-link .material-symbols-outlined { font-size: 1rem; }
 
 /* ═══════════════════════════════════════════════════════════════════════
+   PHRASAL VERBS – Dictionary Modal
+   ═══════════════════════════════════════════════════════════════════════ */
+.pv-dict-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: pvFadeIn 0.18s ease;
+}
+
+.pv-dict-box {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.2);
+  width: 100%;
+  max-width: 680px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pv-dict-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+  flex-shrink: 0;
+}
+
+.pv-dict-icon .material-symbols-outlined {
+  font-size: 1.4rem;
+  color: #3b82f6;
+}
+
+.pv-dict-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+  flex: 1;
+  margin: 0;
+}
+
+.pv-dict-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  color: var(--text-medium, #64748b);
+  display: flex;
+  align-items: center;
+  transition: background 0.15s;
+}
+.pv-dict-close:hover { background: rgba(59, 130, 246, 0.08); color: #3b82f6; }
+
+.pv-dict-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px 8px;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.07);
+}
+
+.pv-dict-search-icon .material-symbols-outlined {
+  font-size: 1.1rem;
+  color: var(--text-medium, #94a3b8);
+  flex-shrink: 0;
+}
+
+.pv-dict-search {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1.5px solid rgba(45, 46, 95, 0.15);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.pv-dict-search:focus { border-color: #3b82f6; }
+
+.pv-dict-level-filter {
+  padding: 9px 12px;
+  border: 1.5px solid rgba(45, 46, 95, 0.15);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  background: #fff;
+  color: var(--text-dark, #0f172a);
+  transition: border-color 0.2s;
+}
+.pv-dict-level-filter:focus { border-color: #3b82f6; }
+
+.pv-dict-count {
+  font-size: 0.8rem;
+  color: var(--text-medium, #94a3b8);
+  padding: 4px 18px 0;
+  flex-shrink: 0;
+}
+
+.pv-dict-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pv-dict-entry {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(45, 46, 95, 0.07);
+  transition: box-shadow 0.15s;
+}
+.pv-dict-entry:hover { box-shadow: 0 3px 12px rgba(59, 130, 246, 0.12); }
+
+.pv-dict-base {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid rgba(59, 130, 246, 0.2);
+}
+
+.pv-dict-forms {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pv-dict-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.88rem;
+}
+
+.pv-dict-form-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pv-dict-verb {
+  font-weight: 700;
+  color: #3b82f6;
+  font-size: 0.95rem;
+}
+
+.pv-dict-def {
+  color: var(--text-medium, #64748b);
+  font-style: italic;
+}
+
+.pv-dict-examples {
+  margin: 4px 0 0 0;
+  padding-left: 16px;
+  list-style: disc;
+  color: var(--text-dark, #0f172a);
+  font-style: normal;
+  font-size: 0.83rem;
+  opacity: 0.75;
+}
+.pv-dict-examples li { margin-bottom: 2px; }
+
+.pv-dict-level-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  border-radius: 6px;
+  padding: 2px 7px;
+}
+.pv-level-b1 { background: #dcfce7; color: #166534; }
+.pv-level-b2 { background: #dbeafe; color: #1e40af; }
+.pv-level-c1 { background: #ede9fe; color: #4c1d95; }
+
+.pv-dict-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 40px 20px;
+  color: var(--text-medium, #94a3b8);
+}
+.pv-dict-empty .material-symbols-outlined { font-size: 2rem; }
+.pv-dict-empty p { margin: 0; font-size: 0.95rem; }
+
+/* PV info dict link */
+.pv-info-dict-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #3b82f6;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+.pv-info-dict-link:hover { text-decoration: underline; }
+.pv-info-dict-link .material-symbols-outlined { font-size: 1rem; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PHRASAL VERBS – Dictionary Responsive
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .pv-dict-box {
+    max-height: 95vh;
+    border-radius: 18px;
+  }
+  .pv-dict-search-row {
+    flex-wrap: wrap;
+  }
+  .pv-dict-search {
+    width: 100%;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
    WORD FORMATION – Responsive
    ═══════════════════════════════════════════════════════════════════════ */
 @media (max-width: 640px) {
