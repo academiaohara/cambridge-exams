@@ -3486,6 +3486,27 @@
 /* Dot type for progression map */
 .fe-dot-vocab-flashcards { background: #10b981; }
 
+/* ── VOCAB FLASHCARD LAYOUT (sidebar + main) ─────────────────────────── */
+.vocab-fc-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 0;
+  min-height: 0;
+}
+
+.vocab-fc-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right sidebar: reuse pv-point-sidebar, override direction cue */
+.vocab-fc-sidebar-right {
+  order: 2; /* sidebar on the right */
+}
+
 .vocab-fc-wrapper {
   display: flex;
   flex-direction: column;
@@ -3493,6 +3514,96 @@
   max-width: 560px;
   margin: 0 auto;
   padding: 0 8px 32px;
+  width: 100%;
+}
+
+/* ── PILL PROGRESS INDICATOR ─────────────────────────────────────────── */
+.vocab-fc-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px 4px 2px;
+}
+
+.vocab-fc-pill {
+  height: 9px;
+  flex: 1;
+  min-width: 14px;
+  max-width: 44px;
+  border-radius: 999px;
+  transition: background 0.3s ease, outline 0.2s ease;
+}
+
+/* States */
+.vocab-fc-pill-pending   { background: #d1d5db; }
+.vocab-fc-pill-failed    { background: #ef4444; }
+.vocab-fc-pill-recovering { background: #3b82f6; }
+.vocab-fc-pill-correct   { background: #10b981; }
+
+/* Current card indicator */
+.vocab-fc-pill-current {
+  background: transparent !important;
+  outline: 2px solid #374151;
+  outline-offset: 1px;
+}
+
+/* ── SIDEBAR LESSON LIST ─────────────────────────────────────────────── */
+.vocab-fc-sidebar-lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.vocab-fc-sidebar-lesson {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.vocab-fc-sidebar-lesson:hover {
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.vocab-fc-sidebar-lesson-active {
+  cursor: default;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.vocab-fc-sidebar-lesson-icon {
+  font-size: 0.9rem !important;
+  flex-shrink: 0;
+  color: #10b981;
+}
+
+.vocab-fc-sidebar-lesson-title {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.3;
+}
+
+.vocab-fc-sidebar-lesson-active .vocab-fc-sidebar-lesson-title {
+  color: #10b981;
+}
+
+.vocab-fc-sidebar-lesson-progress .vocab-fc-sidebar-lesson-icon {
+  color: #10b981;
+}
+
+/* Responsive: on small screens stack vertically */
+@media (max-width: 640px) {
+  .vocab-fc-layout {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+  .vocab-fc-sidebar-right {
+    width: 100% !important;
+  }
 }
 
 /* Progress bar area */
@@ -3528,7 +3639,7 @@
 
 /* 3D card scene */
 .vocab-fc-scene {
-  perspective: 1000px;
+  perspective: 1200px;
   cursor: pointer;
   width: 100%;
   min-height: 240px;
@@ -3540,6 +3651,7 @@
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center center;
 }
 .vocab-fc-card-flipped {
   transform: rotateY(180deg);
