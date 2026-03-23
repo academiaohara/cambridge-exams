@@ -8,11 +8,11 @@
       "id": "B1",
       "name": "B1 – Intermediate",
       "requiredToUnlock": null,
-      "totalLessons": 4,
+      "totalLessons": 8,
       "lessons": [
         {
           "id": "lesson-1",
-          "title": "Noun Suffixes: -ion",
+          "title": "Noun Suffix: -ion",
           "points": [
             {
               "type": "wf-explanation",
@@ -30,7 +30,7 @@
         },
         {
           "id": "lesson-1b",
-          "title": "Noun Suffixes: -ment",
+          "title": "Noun Suffix: -ment",
           "points": [
             {
               "type": "wf-explanation",
@@ -48,7 +48,43 @@
         },
         {
           "id": "lesson-2",
-          "title": "Adjectives & Adverbs: -ful, -less, -ly",
+          "title": "Adjective Suffix: -ful",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-2b",
+          "title": "Adjective Suffix: -less",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-2c",
+          "title": "Adverb Suffix: -ly",
           "points": [
             {
               "type": "wf-explanation",
@@ -66,7 +102,43 @@
         },
         {
           "id": "lesson-3",
-          "title": "Prefixes: un-, re-, dis-",
+          "title": "Prefix: un-",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-3b",
+          "title": "Prefix: re-",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-3c",
+          "title": "Prefix: dis-",
           "points": [
             {
               "type": "wf-explanation",
@@ -88,11 +160,47 @@
       "id": "B2",
       "name": "B2 – Upper Intermediate",
       "requiredToUnlock": "B1",
-      "totalLessons": 5,
+      "totalLessons": 17,
       "lessons": [
         {
           "id": "lesson-1",
-          "title": "Noun Suffixes: -ation, -ity, -ance",
+          "title": "Noun Suffix: -ation",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-1b",
+          "title": "Noun Suffix: -ity",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-1c",
+          "title": "Noun Suffix: -ance / -ence",
           "points": [
             {
               "type": "wf-explanation",
@@ -110,7 +218,43 @@
         },
         {
           "id": "lesson-2",
-          "title": "Adjective Suffixes: -ive, -al, -ous",
+          "title": "Adjective Suffix: -ive",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-2b",
+          "title": "Adjective Suffix: -al",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-2c",
+          "title": "Adjective Suffix: -ous",
           "points": [
             {
               "type": "wf-explanation",
@@ -128,7 +272,43 @@
         },
         {
           "id": "lesson-3",
-          "title": "Adverbs: -ly, -ally, -ably",
+          "title": "Adverb Suffix: -ly",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-3b",
+          "title": "Adverb Suffix: -ally",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-3c",
+          "title": "Adverb Suffix: -ably / -ibly",
           "points": [
             {
               "type": "wf-explanation",
@@ -146,7 +326,61 @@
         },
         {
           "id": "lesson-4",
-          "title": "Negative Prefixes: un-, dis-, in-, im-",
+          "title": "Negative Prefix: un-",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-4b",
+          "title": "Negative Prefix: dis-",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-4c",
+          "title": "Negative Prefix: in-",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-4d",
+          "title": "Negative Prefix: im-",
           "points": [
             {
               "type": "wf-explanation",
@@ -164,7 +398,61 @@
         },
         {
           "id": "lesson-5",
-          "title": "More Prefixes: re-, over-, under-, out-",
+          "title": "Prefix: re-",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-5b",
+          "title": "Prefix: over-",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-5c",
+          "title": "Prefix: under-",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-5d",
+          "title": "Prefix: out-",
           "points": [
             {
               "type": "wf-explanation",
@@ -186,11 +474,47 @@
       "id": "C1",
       "name": "C1 – Advanced",
       "requiredToUnlock": "B2",
-      "totalLessons": 3,
+      "totalLessons": 5,
       "lessons": [
         {
           "id": "lesson-1",
-          "title": "Advanced Nouns: -ism, -ist, -ness",
+          "title": "Advanced Noun Suffix: -ism",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-1b",
+          "title": "Advanced Noun Suffix: -ist",
+          "points": [
+            {
+              "type": "wf-explanation",
+              "label": "How It Works"
+            },
+            {
+              "type": "wf-multiple-choice",
+              "label": "Choose the Right Form"
+            },
+            {
+              "type": "wf-transform",
+              "label": "Word Transformation"
+            }
+          ]
+        },
+        {
+          "id": "lesson-1c",
+          "title": "Advanced Noun Suffix: -ness",
           "points": [
             {
               "type": "wf-explanation",
@@ -208,7 +532,7 @@
         },
         {
           "id": "lesson-2",
-          "title": "Complex Combinations: un-+able, mis-, compound",
+          "title": "Complex Combinations",
           "points": [
             {
               "type": "wf-explanation",
