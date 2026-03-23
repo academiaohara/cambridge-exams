@@ -22,24 +22,25 @@
   overflow: hidden;
 }
 
-/* Mod target watermark */
-.main-footer::before {
-  content: '';
+.footer-deco-left,
+.footer-deco-right {
   position: absolute;
-  right: -80px;
-  bottom: -80px;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    #CD1025 0%, #CD1025 30%,
-    #FFFFFF 30%, #FFFFFF 50%,
-    #002A7E 50%, #002A7E 65%,
-    rgba(255,255,255,0.06) 65%
-  );
-  opacity: 0.18;
+  bottom: 0;
+  height: 100%;
+  max-height: 180px;
+  width: auto;
   pointer-events: none;
+  user-select: none;
+}
+
+.footer-deco-left {
+  left: 0;
+  object-position: left bottom;
+}
+
+.footer-deco-right {
+  right: 0;
+  object-position: right bottom;
 }
 
 .footer-container {
