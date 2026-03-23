@@ -7,7 +7,12 @@
     {
       "type": "complete-sentence",
       "sentence": "I'm really busy ___ – can we talk later this afternoon?",
-      "options": ["at the moment", "on time", "in the end", "the other day"],
+      "options": [
+        "at the moment",
+        "on time",
+        "in the end",
+        "the other day"
+      ],
       "correct": "at the moment",
       "explanation": "'At the moment' means right now, currently."
     },
@@ -26,7 +31,12 @@
     {
       "type": "complete-sentence",
       "sentence": "My grandfather still writes letters to his old friends ___.",
-      "options": ["from time to time", "on time", "at last", "in a hurry"],
+      "options": [
+        "from time to time",
+        "on time",
+        "at last",
+        "in a hurry"
+      ],
       "correct": "from time to time",
       "explanation": "'From time to time' means occasionally, at irregular intervals."
     },
@@ -45,7 +55,12 @@
     {
       "type": "complete-sentence",
       "sentence": "He tried to fix the computer ___ but eventually had to call a technician.",
-      "options": ["on his own", "at last", "by the way", "in a hurry"],
+      "options": [
+        "on his own",
+        "at last",
+        "by the way",
+        "in a hurry"
+      ],
       "correct": "on his own",
       "explanation": "'On his own' means without help from anyone else."
     },
@@ -64,7 +79,12 @@
     {
       "type": "complete-sentence",
       "sentence": "___, you couldn't park anywhere near the stadium on match days.",
-      "options": ["The other day", "At last", "On time", "For the time being"],
+      "options": [
+        "The other day",
+        "At last",
+        "On time",
+        "For the time being"
+      ],
       "correct": "The other day",
       "explanation": "'The other day' refers to a recent past day without specifying exactly when."
     },
@@ -79,6 +99,42 @@
       ],
       "correct": 1,
       "explanation": "'At last' is used when something happens after a long wait, often expressing relief."
+    },
+    {
+      "type": "complete-sentence",
+      "sentence": "They decided to pay for the holiday ___. Each person contributed exactly the same amount.",
+      "options": [
+        "fifty-fifty",
+        "under the weather",
+        "at the moment",
+        "on time"
+      ],
+      "correct": "fifty-fifty",
+      "explanation": "'Fifty-fifty' means divided equally between two people or parties."
+    },
+    {
+      "type": "select-situation",
+      "idiom": "home sweet home",
+      "question": "When would you most naturally say 'home sweet home'?",
+      "options": [
+        "When you are booking a hotel for a holiday.",
+        "When you arrive back at your own home after being away.",
+        "When you are helping a friend move into a new flat."
+      ],
+      "correct": 1,
+      "explanation": "'Home sweet home' expresses happiness or relief at returning to your own home."
+    },
+    {
+      "type": "select-situation",
+      "idiom": "make yourself at home",
+      "question": "Which situation best fits the phrase 'make yourself at home'?",
+      "options": [
+        "A guest arrives at your house and you want them to feel comfortable and relaxed.",
+        "You are telling someone to clean and tidy their living room.",
+        "You are asking someone to leave your house quickly."
+      ],
+      "correct": 0,
+      "explanation": "'Make yourself at home' is a hospitable phrase used to make guests feel welcome and at ease."
     }
   ]
 }
