@@ -11,6 +11,11 @@
     { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' }
   ];
 
+  // Vocabulary flashcard constants
+  var VOCAB_BATCH_SIZE = 15;   // Cards shown per session
+  var VOCAB_MAX_STREAK = 10;   // Cap on consecutive-correct streak per word
+  var VOCAB_RETRY_POS = 2;     // How far from front a bad card is reinserted (near top)
+
   function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
   window.FastExercises = {
@@ -295,8 +300,13 @@
       // ── LEFT WIDGET: Category Info + Level Selector ──
       var leftWidget = this._buildCategoryInfoWidget(catMeta, data, activeLevel);
 
-      // ── CENTER: Vertical Progression Map ──
-      var centerMap = this._buildProgressionMap(catMeta, data, activeLevel);
+      // ── CENTER: Vertical Progression Map / Topic List (vocabulary) ──
+      var centerMap;
+      if (categoryId === 'vocabulary') {
+        centerMap = await self._buildVocabTopicList(catMeta, data, activeLevel);
+      } else {
+        centerMap = self._buildProgressionMap(catMeta, data, activeLevel);
+      }
 
       // ── RIGHT WIDGET: Quick Review Mixer ──
       var rightWidget = this._buildQuickReviewWidget(catMeta, data);
@@ -321,9 +331,7 @@
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-transform fe-dot-mini fe-dot-outline">' + _mi('transform') + '</span> ' + 'Transformation' + '</span>' +
         '</div>';
       } else if (categoryId === 'vocabulary') {
-        legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-vocab-flashcards fe-dot-mini fe-dot-outline">' + _mi('style') + '</span> ' + 'Flashcards' + '</span>' +
-        '</div>';
+        legendHtml = '';
       }
 
       content.innerHTML =
@@ -722,6 +730,135 @@
       var downArrow = document.getElementById('fe-map-arrow-down');
       if (upArrow) upArrow.style.visibility = pageIdx === 0 ? 'hidden' : 'visible';
       if (downArrow) downArrow.style.visibility = pageIdx === totalPages - 1 ? 'hidden' : 'visible';
+    },
+
+    // ── VOCABULARY TOPIC LIST ─────────────────────────────────────────────
+    _buildVocabTopicList: async function(catMeta, data, activeLevel) {
+      var self = this;
+      var level = null;
+      for (var i = 0; i < data.levels.length; i++) {
+        if (data.levels[i].id === activeLevel) { level = data.levels[i]; break; }
+      }
+      if (!level || !level.lessons || level.lessons.length === 0) {
+        return '<div class="fe-map-empty">No topics available for this level yet.</div>';
+      }
+
+      // Load all lesson data in parallel to get word counts
+      var lessonDataMap = {};
+      await Promise.all(level.lessons.map(async function(lesson) {
+        var ld = await self._loadLessonData('vocabulary', activeLevel, lesson.id);
+        lessonDataMap[lesson.id] = ld;
+      }));
+
+      var html = '<div class="vocab-topic-list">';
+      for (var li = 0; li < level.lessons.length; li++) {
+        var lesson = level.lessons[li];
+        var ld = lessonDataMap[lesson.id];
+        var totalWords = ld && ld.words ? ld.words.length : 0;
+        var streaks = self._getVocabStreaks(activeLevel, lesson.id);
+        var learnedCount = 0;
+        Object.keys(streaks).forEach(function(w) { if ((streaks[w] || 0) > 0) learnedCount++; });
+        var hasReview = learnedCount > 0;
+        var hasLearn = learnedCount < totalWords;
+        var progressPct = totalWords > 0 ? Math.round(learnedCount / totalWords * 100) : 0;
+
+        html += '<div class="vocab-topic-row">' +
+          '<div class="vocab-topic-info">' +
+            '<div class="vocab-topic-name">' + self._escapeHTML(lesson.title) + '</div>' +
+            '<div class="vocab-topic-stats">' +
+              '<span class="vocab-topic-count">' + learnedCount + ' / ' + totalWords + '</span> learned' +
+            '</div>' +
+            '<div class="vocab-topic-bar">' +
+              '<div class="vocab-topic-bar-fill" style="width:' + progressPct + '%; background:' + catMeta.color + '"></div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="vocab-topic-btns">' +
+            '<button class="vocab-topic-btn vocab-topic-review-btn' + (!hasReview ? ' vocab-topic-btn-disabled' : '') + '" ' +
+              (hasReview ? 'onclick="FastExercises._openVocabSession(\'' + activeLevel + '\',\'' + lesson.id + '\',\'review\')"' : 'disabled') + '>' +
+              _mi('replay') + '<span>Review</span>' +
+            '</button>' +
+            '<button class="vocab-topic-btn vocab-topic-learn-btn' + (!hasLearn ? ' vocab-topic-btn-disabled' : '') + '" ' +
+              (hasLearn ? 'onclick="FastExercises._openVocabSession(\'' + activeLevel + '\',\'' + lesson.id + '\',\'learn\')"' : 'disabled') + '>' +
+              _mi('school') + '<span>Learn</span>' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+      }
+      html += '</div>';
+      return html;
+    },
+
+    // ── OPEN VOCABULARY SESSION ───────────────────────────────────────────
+    _openVocabSession: async function(levelId, lessonId, mode) {
+      var self = this;
+      var content = document.getElementById('main-content');
+      if (!content) return;
+
+      var catMeta = null;
+      for (var i = 0; i < CATEGORIES.length; i++) {
+        if (CATEGORIES[i].id === 'vocabulary') { catMeta = CATEGORIES[i]; break; }
+      }
+
+      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+
+      var lessonData = await this._loadLessonData('vocabulary', levelId, lessonId);
+      if (!lessonData || !lessonData.words || lessonData.words.length === 0) {
+        content.innerHTML = '<div class="fe-error">No words available.</div>';
+        return;
+      }
+
+      var allWords = lessonData.words;
+      var streaks = this._getVocabStreaks(levelId, lessonId);
+      var lessonTitle = lessonData.title || lessonId;
+      var color = catMeta ? catMeta.color : '#10b981';
+
+      // Filter words by mode
+      var filteredWords;
+      if (mode === 'review') {
+        filteredWords = allWords.filter(function(w) { return (streaks[w.word] || 0) > 0; });
+        // Weakest words first (lowest streak)
+        filteredWords.sort(function(a, b) { return (streaks[a.word] || 0) - (streaks[b.word] || 0); });
+      } else {
+        filteredWords = allWords.filter(function(w) { return (streaks[w.word] || 0) === 0; });
+      }
+
+      if (filteredWords.length === 0) {
+        var emptyIcon = mode === 'review' ? 'info' : 'emoji_events';
+        var emptyTitle = mode === 'review' ? 'Nothing to review yet!' : 'All words learned!';
+        var emptyMsg = mode === 'review' ? 'Learn some words first, then come back to review them.' : 'You\'ve learned all the words in this topic. Try reviewing them!';
+        content.innerHTML =
+          '<div class="vocab-fc-wrapper">' +
+            '<div class="subpage-header">' +
+              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'vocabulary\')">' + 'Back' + '</button>' +
+              '<div>' +
+                '<div class="subpage-title"><span class="material-symbols-outlined">style</span> ' + self._escapeHTML(lessonTitle) + '</div>' +
+                '<div class="subpage-subtitle">' + levelId + ' · ' + (mode === 'review' ? 'Review' : 'Learn') + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="vocab-fc-results-card" style="--card-color:' + color + '">' +
+              '<div class="vocab-fc-results-icon"><span class="material-symbols-outlined" style="color:' + color + '">' + emptyIcon + '</span></div>' +
+              '<div class="vocab-fc-results-title">' + emptyTitle + '</div>' +
+              '<div class="vocab-fc-results-msg">' + emptyMsg + '</div>' +
+              '<button class="vocab-fc-next-batch-btn" onclick="FastExercises.openCategory(\'vocabulary\')" style="background:' + color + '">' +
+                '<span class="material-symbols-outlined">arrow_back</span> Back to Topics' +
+              '</button>' +
+            '</div>' +
+          '</div>';
+        return;
+      }
+
+      var BATCH_SIZE = VOCAB_BATCH_SIZE;
+      var batchWords = filteredWords.slice(0, BATCH_SIZE);
+
+      this._currentCategory = 'vocabulary';
+      this._currentLevel = levelId;
+
+      var wrapper = document.createElement('div');
+      wrapper.className = 'fe-section';
+      content.innerHTML = '';
+      content.appendChild(wrapper);
+
+      this._startVocabFlashcardSession(wrapper, batchWords, allWords, streaks, catMeta, levelId, lessonId, lessonTitle, mode, null, null, color);
     },
 
     // ── RIGHT WIDGET ─────────────────────────────────────────────────────
@@ -3760,20 +3897,20 @@
     },
 
     // ── VOCABULARY FLASHCARD HELPERS ─────────────────────────────────────
-    _vocabLearnedKey: 'cambridge_vocab_flashcards',
+    _vocabStreaksKey: 'cambridge_vocab_streaks',
 
-    _getVocabLearned: function(levelId, lessonId) {
+    _getVocabStreaks: function(levelId, lessonId) {
       try {
-        var data = JSON.parse(localStorage.getItem(this._vocabLearnedKey)) || {};
-        return data[levelId + '/' + lessonId] || [];
-      } catch (e) { return []; }
+        var data = JSON.parse(localStorage.getItem(this._vocabStreaksKey)) || {};
+        return data[levelId + '/' + lessonId] || {};
+      } catch (e) { return {}; }
     },
 
-    _saveVocabLearned: function(levelId, lessonId, learnedWords) {
+    _saveVocabStreaks: function(levelId, lessonId, streaks) {
       try {
-        var data = JSON.parse(localStorage.getItem(this._vocabLearnedKey)) || {};
-        data[levelId + '/' + lessonId] = learnedWords;
-        localStorage.setItem(this._vocabLearnedKey, JSON.stringify(data));
+        var data = JSON.parse(localStorage.getItem(this._vocabStreaksKey)) || {};
+        data[levelId + '/' + lessonId] = streaks;
+        localStorage.setItem(this._vocabStreaksKey, JSON.stringify(data));
       } catch (e) {}
     },
 
@@ -3783,14 +3920,13 @@
       var allWords = lessonData.words || [];
       var color = (catMeta && catMeta.color) ? catMeta.color : '#10b981';
 
-      // Load already-learned words from storage
-      var learnedWords = self._getVocabLearned(levelId, lessonId);
+      // Load word streaks from storage
+      var streaks = self._getVocabStreaks(levelId, lessonId);
       var totalWords = allWords.length;
-      var learnedCount = learnedWords.length;
 
-      // Build the deck: words not yet learned
+      // Build the deck: words not yet learned (streak === 0)
       var remaining = allWords.filter(function(w) {
-        return learnedWords.indexOf(w.word) === -1;
+        return (streaks[w.word] || 0) === 0;
       });
 
       // If all words learned, show completion screen
@@ -3799,46 +3935,70 @@
         return;
       }
 
-      // Take a batch of max 15 words
-      var BATCH_SIZE = 15;
-      var batchWords = remaining.slice(0, BATCH_SIZE);
+      // Take a batch of max VOCAB_BATCH_SIZE words
+      var batchWords = remaining.slice(0, VOCAB_BATCH_SIZE);
 
       // Build the flashcard session UI
-      self._startVocabFlashcardSession(container, batchWords, allWords, learnedWords, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, color);
+      self._startVocabFlashcardSession(container, batchWords, allWords, streaks, catMeta, levelId, lessonId, lessonTitle, 'learn', pointIndex, lessonPoints, color);
     },
 
-    _startVocabFlashcardSession: function(container, batchWords, allWords, learnedWords, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, color) {
+    _startVocabFlashcardSession: function(container, batchWords, allWords, streaks, catMeta, levelId, lessonId, lessonTitle, mode, pointIndex, lessonPoints, color) {
       var self = this;
       var totalWords = allWords.length;
 
-      // Session state for each card: { word, definition, example, state: 'fresh'|'needs-retry'|'neutral' }
+      // Pre-compute how many words are already learned (streak > 0) at session start
+      var learnedAtStart = allWords.filter(function(w) { return (streaks[w.word] || 0) > 0; }).length;
+
+      // Session state: { word, definition, example, streak, state: 'fresh'|'needs-retry'|'neutral', hadBad }
       var deck = batchWords.map(function(w) {
-        return { word: w.word, definition: w.definition, example: w.example, state: 'fresh' };
+        return { word: w.word, definition: w.definition, example: w.example, streak: streaks[w.word] || 0, state: 'fresh', hadBad: false };
       });
 
-      var sessionLearned = []; // Words learned in this session
-      var currentIndex = 0;
+      var sessionLearned = []; // Words removed from deck (answered Good in 'fresh' or 'neutral' state)
       var isFlipped = false;
+
+      function currentLearnedCount() {
+        // Count existing learned + newly learned in session (words that were streak=0 and now answered Good)
+        var newlyLearned = sessionLearned.filter(function(w) { return (streaks[w] || 0) === 0; }).length;
+        return learnedAtStart + newlyLearned;
+      }
 
       function renderCard() {
         if (deck.length === 0) {
-          // Batch complete
-          var newLearnedWords = learnedWords.concat(sessionLearned);
-          self._saveVocabLearned(levelId, lessonId, newLearnedWords);
+          // Session complete — compute and save updated streaks
+          var updatedStreaks = {};
+          Object.keys(streaks).forEach(function(w) { updatedStreaks[w] = streaks[w]; });
 
-          if (newLearnedWords.length >= allWords.length) {
-            // All words learned – mark point complete
-            self._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-            self._showVocabFlashcardsComplete(container, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, totalWords, color);
-          } else {
-            self._showVocabBatchResults(container, sessionLearned.length, newLearnedWords.length, totalWords, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, color);
+          // Update streaks based on session results:
+          // - Answered Good without any Bad: streak++
+          // - Had a Bad answer at any point: reset streak to 0
+          sessionLearned.forEach(function(word) {
+            if (self._sessionHadBad && self._sessionHadBad[word]) {
+              // Had at least one bad answer — reset streak
+              updatedStreaks[word] = 0;
+            } else {
+              // Clean Good answer: increment streak
+              updatedStreaks[word] = Math.min(VOCAB_MAX_STREAK, (updatedStreaks[word] || 0) + 1);
+            }
+          });
+          self._sessionHadBad = null;
+
+          self._saveVocabStreaks(levelId, lessonId, updatedStreaks);
+
+          var newLearnedCount = allWords.filter(function(w) { return (updatedStreaks[w.word] || 0) > 0; }).length;
+
+          // Mark point complete if all words are learned
+          if (newLearnedCount >= totalWords) {
+            self._markPointComplete(catMeta.id, levelId, lessonId, pointIndex !== null ? pointIndex : 0);
           }
+
+          self._showVocabSessionResults(container, sessionLearned.length, newLearnedCount, totalWords, catMeta, levelId, lessonId, lessonTitle, mode, pointIndex, lessonPoints, color);
           return;
         }
 
         var card = deck[0];
         isFlipped = false;
-        var currentLearned = learnedWords.length + sessionLearned.length;
+        var currentLearned = currentLearnedCount();
 
         var stateHtml = '';
         if (card.state === 'needs-retry') {
@@ -3847,13 +4007,18 @@
           stateHtml = '<div class="vocab-fc-card-state vocab-fc-state-neutral"><span class="material-symbols-outlined">hourglass_empty</span> Almost there</div>';
         }
 
+        var streakBadge = '';
+        if (card.streak > 0) {
+          streakBadge = '<div class="vocab-fc-streak-badge"><span class="material-symbols-outlined">bolt</span>' + card.streak + '</div>';
+        }
+
         container.innerHTML =
           '<div class="vocab-fc-wrapper">' +
             '<div class="subpage-header">' +
               '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
               '<div>' +
                 '<div class="subpage-title"><span class="material-symbols-outlined">style</span> ' + self._escapeHTML(lessonTitle) + '</div>' +
-                '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(catMeta.name || 'Vocabulary') + '</div>' +
+                '<div class="subpage-subtitle">' + levelId + ' · ' + (mode === 'review' ? 'Review' : 'Learn') + '</div>' +
               '</div>' +
             '</div>' +
 
@@ -3869,6 +4034,7 @@
               '<div class="vocab-fc-card" id="vocab-fc-card">' +
                 '<div class="vocab-fc-card-front" style="--card-color:' + color + '">' +
                   stateHtml +
+                  streakBadge +
                   '<div class="vocab-fc-word">' + self._escapeHTML(card.word) + '</div>' +
                   '<div class="vocab-fc-flip-hint"><span class="material-symbols-outlined">touch_app</span> Tap to reveal</div>' +
                 '</div>' +
@@ -3882,11 +4048,11 @@
             '</div>' +
 
             '<div class="vocab-fc-actions" id="vocab-fc-actions">' +
-              '<button class="vocab-fc-btn vocab-fc-wrong" onclick="vocabFcAnswer(false)">' +
-                '<span class="material-symbols-outlined">close</span> Wrong' +
+              '<button class="vocab-fc-btn vocab-fc-bad" onclick="vocabFcAnswer(false)">' +
+                '<span class="material-symbols-outlined">thumb_down</span> Bad' +
               '</button>' +
-              '<button class="vocab-fc-btn vocab-fc-correct" onclick="vocabFcAnswer(true)">' +
-                '<span class="material-symbols-outlined">check</span> Correct' +
+              '<button class="vocab-fc-btn vocab-fc-good" onclick="vocabFcAnswer(true)">' +
+                '<span class="material-symbols-outlined">thumb_up</span> Good' +
               '</button>' +
             '</div>' +
           '</div>';
@@ -3895,6 +4061,9 @@
         var actionsEl = document.getElementById('vocab-fc-actions');
         if (actionsEl) actionsEl.style.display = 'none';
       }
+
+      // Session-level bad tracking (accessible from renderCard's session end logic)
+      self._sessionHadBad = {};
 
       // Expose handlers to global scope for inline onclick
       window.vocabFcFlip = function() {
@@ -3911,24 +4080,27 @@
         }
       };
 
-      window.vocabFcAnswer = function(correct) {
+      window.vocabFcAnswer = function(good) {
         if (!isFlipped) return; // Must flip first
         var card = deck.shift(); // Remove from front
 
-        if (correct) {
+        if (good) {
           if (card.state === 'fresh' || card.state === 'neutral') {
-            // Learned!
+            // Answered Good — remove from deck, mark as learned in session
             sessionLearned.push(card.word);
           } else if (card.state === 'needs-retry') {
-            // Was wrong → now correct → becomes neutral, goes near end of deck
+            // Was Bad → now Good → becomes neutral, goes near end of deck
             card.state = 'neutral';
             var insertPos = deck.length > 2 ? deck.length - 2 : deck.length;
             deck.splice(insertPos, 0, card);
           }
         } else {
-          // Wrong: goes to end of deck as needs-retry
+          // Bad: mark this word and push near the FRONT of the deck (sube para arriba)
           card.state = 'needs-retry';
-          deck.push(card);
+          card.hadBad = true;
+          self._sessionHadBad[card.word] = true;
+          var retryPos = Math.min(VOCAB_RETRY_POS, deck.length);
+          deck.splice(retryPos, 0, card);
         }
 
         renderCard();
@@ -3937,9 +4109,19 @@
       renderCard();
     },
 
-    _showVocabBatchResults: function(container, batchLearned, totalLearned, totalWords, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, color) {
+    _showVocabSessionResults: function(container, batchLearned, totalLearned, totalWords, catMeta, levelId, lessonId, lessonTitle, mode, pointIndex, lessonPoints, color) {
       var self = this;
+      var allDone = totalLearned >= totalWords;
       var remaining = totalWords - totalLearned;
+
+      var continueBtn = '';
+      if (!allDone) {
+        var nextMode = mode === 'review' ? 'review' : 'learn';
+        continueBtn =
+          '<button class="vocab-fc-next-batch-btn" onclick="FastExercises._openVocabSession(\'' + levelId + '\',\'' + lessonId + '\',\'' + nextMode + '\')" style="background:' + color + '">' +
+            '<span class="material-symbols-outlined">arrow_forward</span> Continue' +
+          '</button>';
+      }
 
       container.innerHTML =
         '<div class="vocab-fc-wrapper vocab-fc-results">' +
@@ -3947,23 +4129,24 @@
             '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
             '<div>' +
               '<div class="subpage-title"><span class="material-symbols-outlined">style</span> ' + self._escapeHTML(lessonTitle) + '</div>' +
-              '<div class="subpage-subtitle">' + levelId + ' · Batch Complete' + '</div>' +
+              '<div class="subpage-subtitle">' + levelId + ' · ' + (allDone ? 'Topic Complete!' : 'Batch Complete') + '</div>' +
             '</div>' +
           '</div>' +
 
-          '<div class="vocab-fc-results-card" style="--card-color:' + color + '">' +
-            '<div class="vocab-fc-results-icon"><span class="material-symbols-outlined" style="color:' + color + '">check_circle</span></div>' +
-            '<div class="vocab-fc-results-title">Batch Complete!</div>' +
+          '<div class="vocab-fc-results-card' + (allDone ? ' vocab-fc-complete-card' : '') + '" style="--card-color:' + color + '">' +
+            '<div class="vocab-fc-results-icon"><span class="material-symbols-outlined" style="color:' + color + '">' + (allDone ? 'emoji_events' : 'check_circle') + '</span></div>' +
+            '<div class="vocab-fc-results-title">' + (allDone ? 'Topic Complete! 🎉' : 'Batch Complete!') + '</div>' +
             '<div class="vocab-fc-results-stats">' +
               '<div class="vocab-fc-stat"><span class="vocab-fc-stat-num" style="color:' + color + '">' + totalLearned + '</span><span class="vocab-fc-stat-label">/ ' + totalWords + ' learned</span></div>' +
-              '<div class="vocab-fc-stat"><span class="vocab-fc-stat-num" style="color:#f59e0b">' + remaining + '</span><span class="vocab-fc-stat-label">remaining</span></div>' +
+              (!allDone ? '<div class="vocab-fc-stat"><span class="vocab-fc-stat-num" style="color:#f59e0b">' + remaining + '</span><span class="vocab-fc-stat-label">remaining</span></div>' : '') +
             '</div>' +
             '<div class="vocab-fc-results-progress-track">' +
               '<div class="vocab-fc-results-progress-fill" style="width:' + Math.round((totalLearned / totalWords) * 100) + '%; background:' + color + '"></div>' +
             '</div>' +
-            '<div class="vocab-fc-results-msg">' + (batchLearned > 0 ? 'You learned ' + batchLearned + ' new word' + (batchLearned !== 1 ? 's' : '') + ' this round!' : 'Keep practising — you\'ll get them!') + '</div>' +
-            '<button class="vocab-fc-next-batch-btn" onclick="FastExercises.openPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + color + '">' +
-              '<span class="material-symbols-outlined">arrow_forward</span> Continue' +
+            '<div class="vocab-fc-results-msg">' + (batchLearned > 0 ? 'You got ' + batchLearned + ' word' + (batchLearned !== 1 ? 's' : '') + ' right this session!' : 'Keep practising — you\'ll get them!') + '</div>' +
+            continueBtn +
+            '<button class="vocab-fc-next-batch-btn vocab-fc-back-topics-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" style="background:#64748b">' +
+              '<span class="material-symbols-outlined">arrow_back</span> Back to Topics' +
             '</button>' +
           '</div>' +
         '</div>';
@@ -3978,22 +4161,22 @@
             '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
             '<div>' +
               '<div class="subpage-title"><span class="material-symbols-outlined">style</span> ' + self._escapeHTML(lessonTitle) + '</div>' +
-              '<div class="subpage-subtitle">' + levelId + ' · Lesson Complete!' + '</div>' +
+              '<div class="subpage-subtitle">' + levelId + ' · Topic Complete!' + '</div>' +
             '</div>' +
           '</div>' +
 
           '<div class="vocab-fc-results-card vocab-fc-complete-card" style="--card-color:' + color + '">' +
             '<div class="vocab-fc-results-icon"><span class="material-symbols-outlined" style="color:' + color + '">emoji_events</span></div>' +
-            '<div class="vocab-fc-results-title">Lesson Complete! 🎉</div>' +
+            '<div class="vocab-fc-results-title">Topic Complete! 🎉</div>' +
             '<div class="vocab-fc-results-stats">' +
               '<div class="vocab-fc-stat"><span class="vocab-fc-stat-num" style="color:' + color + '">' + totalWords + '</span><span class="vocab-fc-stat-label">words mastered</span></div>' +
             '</div>' +
             '<div class="vocab-fc-results-progress-track">' +
               '<div class="vocab-fc-results-progress-fill" style="width:100%; background:' + color + '"></div>' +
             '</div>' +
-            '<div class="vocab-fc-results-msg">You\'ve mastered all the words in this lesson. Keep it up!</div>' +
-            '<button class="vocab-fc-next-batch-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + color + '">' +
-              '<span class="material-symbols-outlined">arrow_forward</span> Next Lesson' +
+            '<div class="vocab-fc-results-msg">You\'ve mastered all the words in this topic. Keep it up!</div>' +
+            '<button class="vocab-fc-next-batch-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" style="background:' + color + '">' +
+              '<span class="material-symbols-outlined">arrow_back</span> Back to Topics' +
             '</button>' +
           '</div>' +
         '</div>';
