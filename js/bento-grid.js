@@ -915,20 +915,22 @@
         'Use of English': '#8b5cf6',
         'Writing': '#10b981',
         'Listening': '#f59e0b',
-        'Speaking': '#ef4444'
-      };
-      var skillIcons = {
-        'Reading': 'menu_book',
-        'Use of English': 'edit',
-        'Writing': 'edit_note',
-        'Listening': 'headphones',
-        'Speaking': 'record_voice_over'
+        'Speaking': '#ef4444',
+        'Total': '#6366f1'
       };
 
       var scaleBounds = { A2: [82, 140], B1: [102, 160], B2: [122, 180], C1: [142, 200], C2: [162, 220] };
       var bounds = scaleBounds[level] || [142, 200];
       var scaleMin = bounds[0];
       var scaleMax = bounds[1];
+
+      var gradeBandsByLevel = {
+        'A2': [{ min: 120, label: 'Grade A' }, { min: 110, label: 'Grade B' }, { min: 100, label: 'Grade C' }, { min: 82, label: 'Level A1' }],
+        'B1': [{ min: 140, label: 'Grade A' }, { min: 133, label: 'Grade B' }, { min: 120, label: 'Grade C' }, { min: 102, label: 'Level A2' }],
+        'B2': [{ min: 180, label: 'Grade A' }, { min: 173, label: 'Grade B' }, { min: 160, label: 'Grade C' }, { min: 140, label: 'Level B1' }],
+        'C1': [{ min: 200, label: 'Grade A' }, { min: 193, label: 'Grade B' }, { min: 180, label: 'Grade C' }, { min: 160, label: 'Level B2' }, { min: 142, label: 'Level B1' }],
+        'C2': [{ min: 220, label: 'Grade A' }, { min: 213, label: 'Grade B' }, { min: 200, label: 'Grade C' }, { min: 180, label: 'Level C1' }]
+      };
 
       // Gather per-exam skill scores
       var examScores = []; // [{ examId, skills: { skill: scaleScore } }]
@@ -946,61 +948,7 @@
         } catch (e) { /* skip */ }
       });
 
-      // Per-skill evolution cards
-      var bodyHtml = '<div class="grade-evo-skills-grid">';
-      allSkills.forEach(function(skill) {
-        var color = skillColors[skill] || '#3b82f6';
-        var icon = skillIcons[skill] || 'bar_chart';
-        var hasSkillData = examScores.some(function(e) { return e.skills[skill] > 0; });
-
-        bodyHtml += '<div class="grade-evo-skill-card">' +
-          '<div class="grade-evo-skill-title"><span class="grade-evo-skill-icon"><span class="material-symbols-outlined">' + icon + '</span></span><span class="grade-evo-skill-dot" style="background:' + color + '"></span> ' + skill + '</div>';
-
-        if (!hasSkillData) {
-          bodyHtml += '<div class="grade-evo-no-data"><i class="fas fa-chart-bar"></i> ' + 'No data yet — complete exercises to see your progress' + '</div>';
-        } else {
-          bodyHtml += '<div class="grade-evo-bars">';
-          examScores.forEach(function(entry) {
-            var score = entry.skills[skill] || 0;
-            if (score <= 0) return;
-            var pct = Math.round(((score - scaleMin) / (scaleMax - scaleMin)) * 100);
-            pct = Math.max(5, Math.min(100, pct));
-            bodyHtml += '<div class="grade-evo-bar-col">' +
-              '<div class="grade-evo-bar-score">' + score + '</div>' +
-              '<div class="grade-evo-bar" style="height:' + pct + '%;background:' + color + '"></div>' +
-              '<div class="grade-evo-bar-label">' + entry.examId.replace('Test', 'T') + '</div>' +
-            '</div>';
-          });
-          bodyHtml += '</div>';
-        }
-        bodyHtml += '</div>';
-      });
-      bodyHtml += '</div>';
-
-      // Global average section
-      bodyHtml += '<div class="grade-evo-global-section">' +
-        '<div class="grade-evo-global-title"><span class="material-symbols-outlined">bar_chart</span> ' + 'Global Average' + '</div>';
-      if (examScores.length === 0) {
-        bodyHtml += '<div class="grade-evo-no-data"><i class="fas fa-chart-bar"></i> ' + 'No data yet — complete exercises to see your progress' + '</div>';
-      } else {
-        bodyHtml += '<div class="grade-evo-bars grade-evo-bars-global">';
-        examScores.forEach(function(entry) {
-          var skills = Object.keys(entry.skills);
-          var total = 0; var count = 0;
-          skills.forEach(function(sk) { if (entry.skills[sk] > 0) { total += entry.skills[sk]; count++; } });
-          var avg = count > 0 ? Math.round(total / count) : 0;
-          if (avg <= 0) return;
-          var pct = Math.round(((avg - scaleMin) / (scaleMax - scaleMin)) * 100);
-          pct = Math.max(5, Math.min(100, pct));
-          bodyHtml += '<div class="grade-evo-bar-col">' +
-            '<div class="grade-evo-bar-score">' + avg + '</div>' +
-            '<div class="grade-evo-bar" style="height:' + pct + '%;background:var(--primary)"></div>' +
-            '<div class="grade-evo-bar-label">' + entry.examId.replace('Test', 'T') + '</div>' +
-          '</div>';
-        });
-        bodyHtml += '</div>';
-      }
-      bodyHtml += '</div>';
+      var bodyHtml = BentoGrid._buildGradeEvoChart(examScores, allSkills, skillColors, gradeBandsByLevel[level] || [], scaleMin, scaleMax);
 
       // Build sidebars like main dashboard
       var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
@@ -1037,6 +985,134 @@
       }
       var geState = { view: 'gradeEvolution' };
       history.pushState(geState, '', Router.stateToPath(geState));
+    },
+
+    _buildGradeEvoChart: function(examScores, allSkills, skillColors, gradeBands, scaleMin, scaleMax) {
+      if (examScores.length === 0) {
+        return '<div class="ge-chart-card">' +
+          '<div class="grade-evo-no-data"><i class="fas fa-chart-line"></i> ' + 'No data yet — complete exams to see your progress' + '</div>' +
+        '</div>';
+      }
+
+      var self = this;
+
+      // SVG dimensions
+      var svgW = 640, svgH = 320;
+      var marginL = 48, marginR = 12, marginT = 16, marginB = 32;
+      var chartW = svgW - marginL - marginR;
+      var chartH = svgH - marginT - marginB;
+      var scoreRange = scaleMax - scaleMin;
+
+      function scoreToY(score) {
+        return marginT + chartH - ((score - scaleMin) / scoreRange) * chartH;
+      }
+
+      var n = examScores.length;
+      function indexToX(i) {
+        if (n <= 1) return marginL + chartW / 2;
+        return marginL + (i / (n - 1)) * chartW;
+      }
+
+      var svg = '<svg class="ge-chart-svg" viewBox="0 0 ' + svgW + ' ' + svgH + '" xmlns="http://www.w3.org/2000/svg">';
+      svg += '<defs><clipPath id="ge-clip"><rect x="' + marginL + '" y="' + marginT + '" width="' + chartW + '" height="' + chartH + '"/></clipPath></defs>';
+
+      // Grade band backgrounds and boundary dashed lines
+      var bandPalette = ['#22c55e', '#84cc16', '#eab308', '#f97316', '#ef4444'];
+      gradeBands.forEach(function(band, i) {
+        var topScore = i === 0 ? scaleMax : gradeBands[i - 1].min;
+        var y1 = scoreToY(topScore);
+        var y2 = scoreToY(band.min);
+        svg += '<rect x="' + marginL + '" y="' + y1 + '" width="' + chartW + '" height="' + (y2 - y1) + '" fill="' + bandPalette[i % bandPalette.length] + '" opacity="0.07"/>';
+        // Band label inside the stripe
+        svg += '<text x="' + (marginL + 6) + '" y="' + (y1 + 11) + '" font-size="9" fill="' + bandPalette[i % bandPalette.length] + '" opacity="0.85" font-weight="700" font-family="inherit">' + self._escapeHTML(band.label) + '</text>';
+        // Dashed boundary line
+        svg += '<line x1="' + marginL + '" y1="' + y2 + '" x2="' + (marginL + chartW) + '" y2="' + y2 + '" stroke="#94a3b8" stroke-dasharray="4,3" stroke-width="0.75" opacity="0.45"/>';
+      });
+
+      // Light grid lines and Y-axis labels (every 10 score points)
+      for (var score = scaleMin; score <= scaleMax; score += 10) {
+        var gy = scoreToY(score);
+        svg += '<line x1="' + marginL + '" y1="' + gy + '" x2="' + (marginL + chartW) + '" y2="' + gy + '" stroke="#e2e8f0" stroke-width="0.6"/>';
+        svg += '<text x="' + (marginL - 5) + '" y="' + (gy + 3.5) + '" text-anchor="end" font-size="9" fill="#94a3b8" font-family="inherit">' + score + '</text>';
+      }
+
+      // X-axis labels (exam ids)
+      examScores.forEach(function(entry, i) {
+        var x = indexToX(i);
+        svg += '<text x="' + x + '" y="' + (svgH - 8) + '" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="inherit">' + self._escapeHTML(entry.examId.replace('Test', 'T')) + '</text>';
+      });
+
+      // Axis borders
+      svg += '<line x1="' + marginL + '" y1="' + marginT + '" x2="' + marginL + '" y2="' + (marginT + chartH) + '" stroke="#cbd5e1" stroke-width="1.5"/>';
+      svg += '<line x1="' + marginL + '" y1="' + (marginT + chartH) + '" x2="' + (marginL + chartW) + '" y2="' + (marginT + chartH) + '" stroke="#cbd5e1" stroke-width="1.5"/>';
+
+      // Data series inside clip region
+      svg += '<g clip-path="url(#ge-clip)">';
+      var seriesList = allSkills.concat(['Total']);
+      seriesList.forEach(function(skill) {
+        var color = skillColors[skill] || '#6366f1';
+        var isTotal = skill === 'Total';
+
+        var points = [];
+        examScores.forEach(function(entry, i) {
+          var sc;
+          if (isTotal) {
+            var sks = Object.keys(entry.skills);
+            var tot = 0; var cnt = 0;
+            sks.forEach(function(sk) { if (entry.skills[sk] > 0) { tot += entry.skills[sk]; cnt++; } });
+            sc = cnt > 0 ? Math.round(tot / cnt) : 0;
+          } else {
+            sc = entry.skills[skill] || 0;
+          }
+          if (sc > 0) {
+            points.push({ x: indexToX(i), y: scoreToY(sc), score: sc, label: entry.examId.replace('Test', 'T') });
+          }
+        });
+
+        if (points.length === 0) return;
+
+        var sid = 'ge-series-' + skill.replace(/[\s/]+/g, '-');
+        svg += '<g id="' + sid + '">';
+        if (points.length > 1) {
+          var poly = points.map(function(p) { return p.x + ',' + p.y; }).join(' ');
+          svg += '<polyline points="' + poly + '" fill="none" stroke="' + color + '" stroke-width="' + (isTotal ? 2.5 : 1.75) + '"' + (isTotal ? ' stroke-dasharray="7,4"' : '') + ' opacity="0.8"/>';
+        }
+        points.forEach(function(p) {
+          svg += '<circle cx="' + p.x + '" cy="' + p.y + '" r="' + (isTotal ? 5.5 : 4.5) + '" fill="' + color + '" stroke="white" stroke-width="2">';
+          svg += '<title>' + self._escapeHTML(skill) + ': ' + p.score + ' (' + self._escapeHTML(p.label) + ')</title>';
+          svg += '</circle>';
+        });
+        svg += '</g>';
+      });
+      svg += '</g>';
+      svg += '</svg>';
+
+      // Horizontal legend
+      var legendHtml = '<div class="ge-legend">';
+      seriesList.forEach(function(skill) {
+        var color = skillColors[skill] || '#6366f1';
+        var sid = 'ge-series-' + skill.replace(/[\s/]+/g, '-');
+        var isTotal = skill === 'Total';
+        legendHtml += '<button class="ge-legend-btn active" data-series="' + sid + '" onclick="BentoGrid.toggleGradeEvoSeries(\'' + sid + '\', this)" style="--ge-color:' + color + '">' +
+          '<span class="ge-legend-dot' + (isTotal ? ' ge-legend-dash' : '') + '" style="background:' + color + '"></span>' +
+          '<span>' + self._escapeHTML(skill) + '</span>' +
+        '</button>';
+      });
+      legendHtml += '</div>';
+
+      return '<div class="ge-chart-card">' + svg + legendHtml + '</div>';
+    },
+
+    toggleGradeEvoSeries: function(seriesId, btn) {
+      var el = document.getElementById(seriesId);
+      if (!el) return;
+      if (btn.classList.contains('active')) {
+        el.style.display = 'none';
+        btn.classList.remove('active');
+      } else {
+        el.style.display = '';
+        btn.classList.add('active');
+      }
     }
   };
 })();
