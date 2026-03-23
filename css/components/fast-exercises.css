@@ -433,6 +433,9 @@
   /* inherits sidebar-widget */
 }
 .fe-review-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 1rem;
   font-weight: 800;
   color: var(--text-dark, #0f172a);
@@ -442,35 +445,6 @@
   font-size: 0.82rem;
   color: var(--text-medium, #64748b);
   margin-bottom: 14px;
-}
-.fe-mixer-levels {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-.fe-mixer-level {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-dark, #0f172a);
-  cursor: pointer;
-  padding: 4px 10px;
-  border-radius: 8px;
-  background: rgba(45, 46, 95, 0.04);
-  transition: all 0.2s;
-}
-.fe-mixer-level:hover {
-  background: rgba(45, 46, 95, 0.08);
-}
-.fe-mixer-level-disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-.fe-mixer-checkbox {
-  accent-color: var(--primary, #3b82f6);
 }
 .fe-review-btn {
   width: 100%;
@@ -482,37 +456,49 @@
   font-size: 0.88rem;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 .fe-review-btn:hover {
   filter: brightness(1.1);
 }
-.fe-review-divider {
-  height: 1px;
-  background: rgba(45, 46, 95, 0.08);
-  margin: 14px 0;
-}
-.fe-mistakes-title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-dark, #0f172a);
-  margin-bottom: 8px;
-}
-.fe-mistakes-list {
+.fe-qr-complete-actions {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+.fe-qr-complete-actions .fe-point-next-btn {
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 6px;
 }
-.fe-mistake-item {
-  font-size: 0.8rem;
-  color: #ef4444;
-  padding: 6px 10px;
-  background: rgba(239, 68, 68, 0.06);
-  border-radius: 8px;
-}
-.fe-no-mistakes {
-  font-size: 0.8rem;
+.fe-qr-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 24px;
+  border: 2px solid rgba(45, 46, 95, 0.15);
+  border-radius: 14px;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--text-medium, #64748b);
-  font-style: italic;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  max-width: 280px;
+}
+.fe-qr-back-btn:hover {
+  border-color: rgba(45, 46, 95, 0.3);
+  color: var(--text-dark, #0f172a);
 }
 
 /* ── Bottom Progress Bar ──────────────────────────────────────────────── */
