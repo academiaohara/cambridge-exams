@@ -2,13 +2,13 @@
   "lessonId": "lesson-1",
   "level": "B2",
   "category": "word-formation",
-  "title": "Noun Suffixes: -ation, -ity, -ance",
+  "title": "Noun Suffix: -ation",
   "explanation": {
-    "rule": "These noun suffixes are very common in academic and formal English. They often derive from verbs or adjectives.",
+    "rule": "The suffix -ation (and its variants -tion, -ion) is added to verbs to form nouns describing a process, state, or result. It is extremely common in academic and formal English.",
     "groups": [
       {
         "suffix": "-ation / -tion",
-        "note": "Added to verbs to form nouns describing a process or result",
+        "note": "Added to verbs to form nouns. The base verb sometimes changes spelling (e.g. educate → education, prepare → preparation).",
         "examples": [
           {
             "base": "adapt",
@@ -18,49 +18,22 @@
           {
             "base": "admire",
             "derived": "admiration",
-            "definition": "a feeling of respect and approval"
+            "definition": "a feeling of great respect and approval"
           },
           {
-            "base": "dominate",
-            "derived": "domination",
-            "definition": "control or power over others"
-          }
-        ]
-      },
-      {
-        "suffix": "-ity",
-        "note": "Added to adjectives to form nouns expressing a state or quality",
-        "examples": [
-          {
-            "base": "capable",
-            "derived": "capability",
-            "definition": "the ability to do something"
+            "base": "motivate",
+            "derived": "motivation",
+            "definition": "a reason or desire that causes someone to act"
           },
           {
-            "base": "mature",
-            "derived": "maturity",
-            "definition": "the state of being fully developed"
+            "base": "communicate",
+            "derived": "communication",
+            "definition": "the exchange of information or ideas"
           },
           {
-            "base": "diverse",
-            "derived": "diversity",
-            "definition": "the state of having great variety"
-          }
-        ]
-      },
-      {
-        "suffix": "-ance / -ence",
-        "note": "Added to verbs or adjectives to form nouns",
-        "examples": [
-          {
-            "base": "avoid",
-            "derived": "avoidance",
-            "definition": "the act of avoiding something"
-          },
-          {
-            "base": "persist",
-            "derived": "persistence",
-            "definition": "the quality of continuing despite difficulty"
+            "base": "prepare",
+            "derived": "preparation",
+            "definition": "the process of getting ready for something"
           }
         ]
       }
@@ -72,101 +45,85 @@
       "derived": "adaptation",
       "type": "suffix -ation",
       "definition": "the process of changing to suit a new situation",
-      "example": "The film is an adaptation of a bestselling novel.",
+      "example": "The film is a brilliant adaptation of the original novel.",
       "rootDefinition": "to change in order to deal with new conditions"
     },
     {
       "base": "admire",
       "derived": "admiration",
       "type": "suffix -ation",
-      "definition": "a feeling of respect and approval",
-      "example": "She looked at the painting with great admiration.",
+      "definition": "a feeling of great respect and approval",
+      "example": "She gazed at the painting with deep admiration.",
       "rootDefinition": "to respect and approve of someone or something"
     },
     {
-      "base": "alter",
-      "derived": "alteration",
+      "base": "motivate",
+      "derived": "motivation",
       "type": "suffix -ation",
-      "definition": "the process of changing something",
-      "example": "The dress needed a small alteration before the wedding.",
-      "rootDefinition": "to make something different"
+      "definition": "a reason or desire that causes someone to act",
+      "example": "His main motivation for studying abroad was to improve his language skills.",
+      "rootDefinition": "to give someone a reason or desire to do something"
     },
     {
-      "base": "associate",
-      "derived": "association",
+      "base": "communicate",
+      "derived": "communication",
       "type": "suffix -ation",
-      "definition": "a group of people with shared interests",
-      "example": "She joined the local residents' association.",
-      "rootDefinition": "to connect two things in your mind"
+      "definition": "the exchange of information, news, or ideas",
+      "example": "Good communication is essential in any successful team.",
+      "rootDefinition": "to share or exchange information with others"
     },
     {
-      "base": "dominate",
-      "derived": "domination",
+      "base": "organise",
+      "derived": "organisation",
       "type": "suffix -ation",
-      "definition": "control or power over others",
-      "example": "The company's domination of the market worried regulators.",
-      "rootDefinition": "to have power and control over others"
+      "definition": "the act of arranging things systematically, or a structured group",
+      "example": "The organisation of the conference took several months.",
+      "rootDefinition": "to arrange or plan something in a systematic way"
+    },
+    {
+      "base": "educate",
+      "derived": "education",
+      "type": "suffix -ation",
+      "definition": "the process of teaching and learning",
+      "example": "A good education opens many doors in life.",
+      "rootDefinition": "to teach someone over a period of time"
+    },
+    {
+      "base": "examine",
+      "derived": "examination",
+      "type": "suffix -ation",
+      "definition": "a formal test of knowledge or skill",
+      "example": "She studied hard before the final examination.",
+      "rootDefinition": "to look at or test something carefully"
     },
     {
       "base": "imagine",
       "derived": "imagination",
       "type": "suffix -ation",
-      "definition": "the ability to form mental images or ideas",
+      "definition": "the ability to form new ideas or mental images",
       "example": "Children have a wonderful imagination.",
       "rootDefinition": "to form a picture or idea in your mind"
     },
     {
-      "base": "capable",
-      "derived": "capability",
-      "type": "suffix -ity",
-      "definition": "the ability to do something",
-      "example": "The new software has the capability to process large files.",
-      "rootDefinition": "able to do something"
+      "base": "concentrate",
+      "derived": "concentration",
+      "type": "suffix -ation",
+      "definition": "the ability to focus attention on one thing",
+      "example": "Loud music affects her concentration while studying.",
+      "rootDefinition": "to give all your attention to something"
     },
     {
-      "base": "mature",
-      "derived": "maturity",
-      "type": "suffix -ity",
-      "definition": "the state of being fully developed",
-      "example": "She showed great maturity in handling the difficult situation.",
-      "rootDefinition": "to be fully grown or developed"
-    },
-    {
-      "base": "available",
-      "derived": "availability",
-      "type": "suffix -ity",
-      "definition": "the state of being available or ready to use",
-      "example": "Please check the availability of the hotel rooms online.",
-      "rootDefinition": "ready or able to be used or obtained"
-    },
-    {
-      "base": "avoid",
-      "derived": "avoidance",
-      "type": "suffix -ance",
-      "definition": "the act of keeping away from something",
-      "example": "Tax avoidance is legal, but tax evasion is not.",
-      "rootDefinition": "to stay away from or not do something"
-    },
-    {
-      "base": "brilliant",
-      "derived": "brilliance",
-      "type": "suffix -ance",
-      "definition": "exceptional intelligence or brightness",
-      "example": "The scientist's brilliance was recognised worldwide.",
-      "rootDefinition": "very clever or talented"
-    },
-    {
-      "base": "persist",
-      "derived": "persistence",
-      "type": "suffix -ence",
-      "definition": "the quality of continuing despite difficulties",
-      "example": "Her persistence paid off when she finally got the job.",
-      "rootDefinition": "to continue doing something despite problems"
+      "base": "prepare",
+      "derived": "preparation",
+      "type": "suffix -ation",
+      "definition": "the process of getting ready for something",
+      "example": "Preparation is key to a successful presentation.",
+      "rootDefinition": "to make something or someone ready"
     }
   ],
   "multipleChoiceExercises": [
     {
-      "sentence": "The film is a brilliant ___ of the classic novel.",
+      "sentence": "The film is a brilliant ___ of the bestselling novel.",
       "root": "adapt",
       "correct": "adaptation",
       "options": [
@@ -177,91 +134,86 @@
       ]
     },
     {
-      "sentence": "Her ___ for art led her to study at a famous college.",
-      "root": "admire",
-      "correct": "admiration",
+      "sentence": "Good ___ skills are vital in any professional environment.",
+      "root": "communicate",
+      "correct": "communication",
       "options": [
-        "admiration",
-        "admirable",
-        "admiringly",
-        "admiring"
+        "communication",
+        "communicative",
+        "communicating",
+        "communicated"
       ]
     },
     {
-      "sentence": "The dress required only a small ___ to fit her perfectly.",
-      "root": "alter",
-      "correct": "alteration",
+      "sentence": "Her ___ for volunteering was a genuine desire to help others.",
+      "root": "motivate",
+      "correct": "motivation",
       "options": [
-        "alteration",
-        "alternate",
-        "alternating",
-        "altered"
+        "motivation",
+        "motivated",
+        "motivational",
+        "motivating"
       ]
     },
     {
-      "sentence": "The ___ of flights is limited during the holiday period.",
-      "root": "available",
-      "correct": "availability",
+      "sentence": "She passed the ___ with the highest mark in her class.",
+      "root": "examine",
+      "correct": "examination",
       "options": [
-        "availability",
-        "available",
-        "unavailable",
-        "availably"
+        "examination",
+        "examine",
+        "examining",
+        "examinable"
       ]
     },
     {
-      "sentence": "It was his ___ that helped him succeed despite many setbacks.",
-      "root": "persist",
-      "correct": "persistence",
+      "sentence": "Thorough ___ before an interview increases your chances of success.",
+      "root": "prepare",
+      "correct": "preparation",
       "options": [
-        "persistence",
-        "persistent",
-        "persistently",
-        "persisting"
+        "preparation",
+        "preparatory",
+        "prepared",
+        "preparing"
       ]
     },
     {
-      "sentence": "The young player showed impressive ___ for someone her age.",
-      "root": "mature",
-      "correct": "maturity",
+      "sentence": "The ___ of the annual festival requires careful planning.",
+      "root": "organise",
+      "correct": "organisation",
       "options": [
-        "maturity",
-        "mature",
-        "maturely",
-        "maturing"
+        "organisation",
+        "organising",
+        "organisational",
+        "organised"
       ]
     }
   ],
   "transformExercises": [
     {
-      "sentence": "The ___ of the novel into a screenplay took two years. (ADAPT)",
+      "sentence": "The ___ of the novel into a film took over two years. (ADAPT)",
       "root": "ADAPT",
       "correct": "adaptation"
     },
     {
-      "sentence": "He was full of ___ for his mentor's dedication. (ADMIRE)",
+      "sentence": "He expressed great ___ for his mentor's dedication. (ADMIRE)",
       "root": "ADMIRE",
       "correct": "admiration"
     },
     {
-      "sentence": "The ___ of resources is critical in emergency planning. (AVAILABLE)",
-      "root": "AVAILABLE",
-      "correct": "availability"
-    },
-    {
-      "sentence": "The team's ___ of the market gave them a huge advantage. (DOMINATE)",
-      "root": "DOMINATE",
-      "correct": "domination"
-    },
-    {
-      "sentence": "Creative ___ is a skill that employers value greatly. (IMAGINE)",
+      "sentence": "Creative ___ is a skill that employers look for in candidates. (IMAGINE)",
       "root": "IMAGINE",
       "correct": "imagination"
     },
     {
-      "sentence": "Her ___ in the face of rejection inspired everyone around her. (PERSIST)",
-      "root": "PERSIST",
-      "correct": "persistence"
+      "sentence": "Loud noise in the library disturbs students' ___. (CONCENTRATE)",
+      "root": "CONCENTRATE",
+      "correct": "concentration"
+    },
+    {
+      "sentence": "Effective ___ between departments reduces misunderstandings. (COMMUNICATE)",
+      "root": "COMMUNICATE",
+      "correct": "communication"
     }
   ]
 }
