@@ -3412,6 +3412,9 @@
                 '<p class="gd-dict-definition">' + FastExercises._escapeHTML(def.definition) + '</p>' +
                 exHtml +
               '</div>';
+            if (def.synonyms && def.synonyms.length > 0) {
+              synonymsList = synonymsList.concat(def.synonyms);
+            }
           });
           if (meaning.synonyms && meaning.synonyms.length > 0) {
             synonymsList = synonymsList.concat(meaning.synonyms);
