@@ -6,7 +6,8 @@
   var CATEGORIES = [
     { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6' },
     { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' },
-    { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' }
+    { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' },
+    { id: 'collocations', icon: 'format_quote', name: 'Collocations', color: '#8b5cf6' }
   ];
 
   // Vocabulary flashcard constants
@@ -328,6 +329,12 @@
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-multiple-choice fe-dot-mini fe-dot-outline">' + _mi('rule') + '</span> ' + 'Multiple Choice' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-transform fe-dot-mini fe-dot-outline">' + _mi('transform') + '</span> ' + 'Transformation' + '</span>' +
         '</div>';
+      } else if (categoryId === 'collocations') {
+        legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-explanation fe-dot-mini fe-dot-outline">' + _mi('school') + '</span> ' + 'Explanation' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-exercise fe-dot-mini fe-dot-outline">' + _mi('rule') + '</span> ' + 'Exercise' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-review fe-dot-mini fe-dot-outline">' + _mi('replay') + '</span> ' + 'Review' + '</span>' +
+        '</div>';
       } else if (categoryId === 'vocabulary') {
         legendHtml = '';
       }
@@ -345,6 +352,7 @@
                 '</div>' +
                 (categoryId === 'phrasal-verbs' ? '<button class="subpage-info-btn" onclick="FastExercises._showPvInfoModal()" title="' + 'What are phrasal verbs?' + '">' + _mi('info') + '</button>' : '') +
                 (categoryId === 'word-formation' ? '<button class="subpage-info-btn" onclick="FastExercises._showWfInfoModal()" title="' + 'What is word formation?' + '">' + _mi('info') + '</button>' : '') +
+                (categoryId === 'collocations' ? '<button class="subpage-info-btn" onclick="FastExercises._showCollocInfoModal()" title="' + 'What are collocations?' + '">' + _mi('info') + '</button>' : '') +
               '</div>' +
               bottomBar +
               legendHtml +
@@ -3400,6 +3408,170 @@
           '<div class="wf-dict-entry">' +
             '<div class="wf-dict-base">' + self._escapeHTML(base) + '</div>' +
             '<div class="wf-dict-forms">' + derivedHtml + '</div>' +
+          '</div>';
+      });
+
+      resultsEl.innerHTML = html;
+    },
+
+    // ── COLLOCATIONS INFO MODAL ───────────────────────────────────────────
+    _showCollocInfoModal: function() {
+      var existing = document.getElementById('colloc-info-modal');
+      if (existing) { existing.remove(); return; }
+
+      var modal = document.createElement('div');
+      modal.id = 'colloc-info-modal';
+      modal.className = 'pv-info-modal-overlay';
+      modal.innerHTML =
+        '<div class="pv-info-modal-box">' +
+          '<div class="pv-info-modal-header">' +
+            '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">format_quote</span></span>' +
+            '<h2 class="pv-info-modal-title">What are Collocations?</h2>' +
+            '<button class="pv-info-modal-close" onclick="document.getElementById(\'colloc-info-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="pv-info-modal-body">' +
+            '<p><strong>What are collocations?</strong></p>' +
+            '<p>Collocations are words that naturally go together in English. They are combinations of words — phrases and patterns — that native speakers use habitually.</p>' +
+            '<p><strong>For example:</strong></p>' +
+            '<ul class="pv-info-list">' +
+              '<li><em>make</em> a decision (not <em>do</em> a decision)</li>' +
+              '<li><em>take</em> into account / <em>give</em> an account of</li>' +
+              '<li><em>act</em> on sb\'s advice / <em>act</em> in good faith</li>' +
+            '</ul>' +
+            '<p><strong>Why is it important?</strong></p>' +
+            '<p>Knowing collocations, fixed phrases, and common patterns is essential for Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). They help you sound natural and achieve higher marks in Use of English and Writing.</p>' +
+            '<p><strong>Tip 💡</strong></p>' +
+            '<p>Learn collocations in context, not in isolation. Notice which verbs go with which nouns, and which prepositions follow key words.</p>' +
+            '<p><button class="colloc-info-dict-link" onclick="FastExercises._showCollocDictionary(); document.getElementById(\'colloc-info-modal\').remove();">' + _mi('search') + ' Open the Collocations Dictionary</button></p>' +
+          '</div>' +
+          '<div class="pv-info-modal-footer">' +
+            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'colloc-info-modal\').remove()" style="background:#8b5cf6">Got it!</button>' +
+          '</div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
+      document.body.appendChild(modal);
+    },
+
+    // ── COLLOCATIONS DICTIONARY ───────────────────────────────────────────
+    _collocDictCache: null,
+
+    _showCollocDictionary: async function() {
+      var existing = document.getElementById('colloc-dict-modal');
+      if (existing) { existing.remove(); return; }
+
+      // Load dictionary data
+      if (!this._collocDictCache) {
+        try {
+          var r = await fetch('data/collocations/dictionary.json');
+          if (r.ok) this._collocDictCache = await r.json();
+        } catch (e) {}
+      }
+      var entries = (this._collocDictCache && this._collocDictCache.entries) || [];
+
+      var modal = document.createElement('div');
+      modal.id = 'colloc-dict-modal';
+      modal.className = 'colloc-dict-overlay';
+      modal.innerHTML =
+        '<div class="colloc-dict-box">' +
+          '<div class="colloc-dict-header">' +
+            '<span class="colloc-dict-icon">' + _mi('menu_book') + '</span>' +
+            '<h2 class="colloc-dict-title">Collocations Dictionary</h2>' +
+            '<button class="colloc-dict-close" onclick="document.getElementById(\'colloc-dict-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="colloc-dict-search-row">' +
+            '<span class="colloc-dict-search-icon">' + _mi('search') + '</span>' +
+            '<input type="text" class="colloc-dict-search" id="colloc-dict-search" placeholder="Search word or phrase…" oninput="FastExercises._filterCollocDict(this.value)" />' +
+            '<select class="colloc-dict-level-filter" id="colloc-dict-level" onchange="FastExercises._filterCollocDict(document.getElementById(\'colloc-dict-search\').value)">' +
+              '<option value="">All Levels</option>' +
+              '<option value="A1">A1</option>' +
+              '<option value="A2">A2</option>' +
+              '<option value="B1">B1</option>' +
+              '<option value="B2">B2</option>' +
+              '<option value="C1">C1</option>' +
+            '</select>' +
+          '</div>' +
+          '<div class="colloc-dict-count" id="colloc-dict-count">' + entries.length + ' entries</div>' +
+          '<div class="colloc-dict-results" id="colloc-dict-results"></div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
+      document.body.appendChild(modal);
+
+      // Store entries for filtering
+      this._collocDictEntries = entries;
+      this._renderCollocDictResults('', '');
+
+      // Focus search
+      setTimeout(function() {
+        var searchEl = document.getElementById('colloc-dict-search');
+        if (searchEl) searchEl.focus();
+      }, 100);
+    },
+
+    _filterCollocDict: function(query) {
+      var levelFilter = (document.getElementById('colloc-dict-level') || {}).value || '';
+      this._renderCollocDictResults(query || '', levelFilter);
+    },
+
+    _renderCollocDictResults: function(query, levelFilter) {
+      var self = this;
+      var entries = this._collocDictEntries || [];
+      var q = (query || '').toLowerCase().trim();
+
+      var filtered = entries.filter(function(e) {
+        var matchLevel = !levelFilter || e.level === levelFilter;
+        if (!matchLevel) return false;
+        if (!q) return true;
+        return (e.word || '').toLowerCase().indexOf(q) !== -1 ||
+               (e.phrase || '').toLowerCase().indexOf(q) !== -1 ||
+               (e.definition || '').toLowerCase().indexOf(q) !== -1;
+      });
+
+      var resultsEl = document.getElementById('colloc-dict-results');
+      var countEl = document.getElementById('colloc-dict-count');
+      if (!resultsEl) return;
+
+      if (countEl) countEl.textContent = filtered.length + ' entries' + (q || levelFilter ? ' (filtered)' : '');
+
+      if (filtered.length === 0) {
+        resultsEl.innerHTML = '<div class="colloc-dict-empty">' + _mi('search_off') + '<p>No results found</p></div>';
+        return;
+      }
+
+      // Group by base word
+      var groups = {};
+      var groupOrder = [];
+      filtered.forEach(function(e) {
+        var key = (e.word || '').toLowerCase();
+        if (!groups[key]) { groups[key] = []; groupOrder.push(key); }
+        groups[key].push(e);
+      });
+
+      var html = '';
+      groupOrder.forEach(function(key) {
+        var group = groups[key];
+        var phrasesHtml = '';
+        group.forEach(function(e) {
+          phrasesHtml +=
+            '<div class="colloc-dict-form">' +
+              '<span class="colloc-dict-phrase">' + self._escapeHTML(e.phrase) + '</span>' +
+              '<span class="colloc-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
+              '<span class="colloc-dict-level-badge colloc-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+            '</div>';
+        });
+        html +=
+          '<div class="colloc-dict-entry">' +
+            '<div class="colloc-dict-base">' + self._escapeHTML(group[0].word) + '</div>' +
+            '<div class="colloc-dict-forms">' + phrasesHtml + '</div>' +
           '</div>';
       });
 
