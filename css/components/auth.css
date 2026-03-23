@@ -833,6 +833,22 @@
   display: inline-block;
   flex-shrink: 0;
 }
+/* ── Grade Evolution floating tooltip ───────────────────────────────── */
+.ge-tip {
+  position: fixed;
+  background: rgba(15, 23, 42, 0.9);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--ge-tip-color, #6366f1);
+}
 
 /* ── Quicksteps Category Chooser (rendered in main-content) ──────────── */
 .qs-chooser-section {
