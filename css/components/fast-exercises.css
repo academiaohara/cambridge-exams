@@ -2398,6 +2398,20 @@
 }
 .wf-dict-level-filter:focus { border-color: #e11d48; }
 
+.wf-dict-type-filter {
+  padding: 9px 12px;
+  border: 1.5px solid rgba(45, 46, 95, 0.15);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  background: #fff;
+  color: var(--text-dark, #0f172a);
+  transition: border-color 0.2s;
+}
+.wf-dict-type-filter:focus { border-color: #e11d48; }
+
 .wf-dict-count {
   font-size: 0.8rem;
   color: var(--text-medium, #94a3b8);
@@ -2455,12 +2469,17 @@
 .wf-dict-type {
   font-size: 0.78rem;
   color: #fff;
-  background: rgba(225, 29, 72, 0.75);
+  background: rgba(100, 116, 139, 0.7);
   border-radius: 8px;
   padding: 1px 7px;
   font-weight: 600;
   white-space: nowrap;
+  text-transform: capitalize;
 }
+.wf-type-noun    { background: rgba(59, 130, 246, 0.8); }
+.wf-type-verb    { background: rgba(34, 197, 94, 0.8); }
+.wf-type-adjective { background: rgba(147, 51, 234, 0.8); }
+.wf-type-adverb  { background: rgba(249, 115, 22, 0.8); }
 
 .wf-dict-def {
   color: var(--text-medium, #64748b);
