@@ -2,18 +2,18 @@
   "lessonId": "lesson-2",
   "level": "B1",
   "category": "word-formation",
-  "title": "Adjectives & Adverbs: -ful, -less, -ly",
+  "title": "Adjective Suffix: -ful",
   "explanation": {
-    "rule": "Suffixes like -ful, -less, and -ly change nouns or adjectives into new words that describe qualities or manner.",
+    "rule": "The suffix -ful is added to nouns to form adjectives meaning 'having' or 'full of' a particular quality.",
     "groups": [
       {
-        "suffix": "-ful / -less",
-        "note": "Added to nouns to form adjectives meaning 'having' (-ful) or 'without' (-less)",
+        "suffix": "-ful",
+        "note": "Added to nouns to form adjectives meaning 'having' or 'full of' a quality. Note: nouns ending in -y change to -i before -ful (beauty → beautiful).",
         "examples": [
           {
             "base": "power",
             "derived": "powerful",
-            "definition": "having great power"
+            "definition": "having great power or strength"
           },
           {
             "base": "use",
@@ -21,46 +21,19 @@
             "definition": "helpful or having a practical purpose"
           },
           {
-            "base": "use",
-            "derived": "useless",
-            "definition": "not helpful; having no practical purpose"
-          }
-        ]
-      },
-      {
-        "suffix": "-ly",
-        "note": "Added to adjectives to form adverbs describing how something is done",
-        "examples": [
-          {
-            "base": "brief",
-            "derived": "briefly",
-            "definition": "in a short way"
+            "base": "care",
+            "derived": "careful",
+            "definition": "giving attention to avoid mistakes or danger"
           },
           {
-            "base": "hard",
-            "derived": "hardly",
-            "definition": "scarcely or barely"
+            "base": "help",
+            "derived": "helpful",
+            "definition": "willing to assist; providing useful support"
           },
           {
-            "base": "high",
-            "derived": "highly",
-            "definition": "to a high degree; very much"
-          }
-        ]
-      },
-      {
-        "suffix": "-able / -ible",
-        "note": "Added to verbs to form adjectives meaning 'can be done'",
-        "examples": [
-          {
-            "base": "reason",
-            "derived": "reasonable",
-            "definition": "fair and sensible"
-          },
-          {
-            "base": "value",
-            "derived": "valuable",
-            "definition": "worth a lot; very useful"
+            "base": "beauty",
+            "derived": "beautiful",
+            "definition": "very attractive or pleasing to the senses"
           }
         ]
       }
@@ -72,7 +45,7 @@
       "derived": "powerful",
       "type": "suffix -ful",
       "definition": "having great power or strength",
-      "example": "The country needs a powerful leader in these difficult times.",
+      "example": "The country needs a powerful leader in difficult times.",
       "rootDefinition": "the ability to control or influence people or things"
     },
     {
@@ -81,92 +54,76 @@
       "type": "suffix -ful",
       "definition": "helpful or having a practical purpose",
       "example": "This guidebook is really useful for first-time visitors.",
-      "rootDefinition": "to do something with a tool or method"
+      "rootDefinition": "to employ something for a purpose"
     },
     {
-      "base": "hand",
-      "derived": "handful",
+      "base": "care",
+      "derived": "careful",
       "type": "suffix -ful",
-      "definition": "a small number or as much as a hand can hold",
-      "example": "Only a handful of students passed the advanced exam.",
-      "rootDefinition": "the end part of the arm below the wrist"
+      "definition": "giving attention to avoid mistakes or danger",
+      "example": "Be careful when crossing the road at night.",
+      "rootDefinition": "attention given to avoid mistakes or danger"
     },
     {
-      "base": "use",
-      "derived": "useless",
-      "type": "suffix -less",
-      "definition": "not helpful; having no practical value",
-      "example": "Without electricity, the device is completely useless.",
-      "rootDefinition": "to do something with a tool or method"
+      "base": "help",
+      "derived": "helpful",
+      "type": "suffix -ful",
+      "definition": "willing to assist; providing useful support",
+      "example": "The customer service team was very helpful.",
+      "rootDefinition": "assistance given to someone"
     },
     {
-      "base": "act",
-      "derived": "active",
-      "type": "suffix -ive",
-      "definition": "energetic and involved in activity",
-      "example": "She leads a very active lifestyle and goes to the gym daily.",
-      "rootDefinition": "to do something or perform a role"
+      "base": "beauty",
+      "derived": "beautiful",
+      "type": "suffix -ful",
+      "definition": "very attractive or pleasing to the senses",
+      "example": "They got married on a beautiful summer evening.",
+      "rootDefinition": "the quality of being very attractive or pleasing"
     },
     {
-      "base": "act",
-      "derived": "actively",
-      "type": "suffix -ly",
-      "definition": "in an energetic or engaged way",
-      "example": "He is actively looking for a new job.",
-      "rootDefinition": "to do something or perform a role"
+      "base": "harm",
+      "derived": "harmful",
+      "type": "suffix -ful",
+      "definition": "causing damage or injury",
+      "example": "Smoking is harmful to your health.",
+      "rootDefinition": "physical injury or damage to something"
     },
     {
-      "base": "brief",
-      "derived": "briefly",
-      "type": "suffix -ly",
-      "definition": "for a short time or in few words",
-      "example": "She briefly mentioned her new project at the meeting.",
-      "rootDefinition": "lasting a short time or using few words"
+      "base": "grate",
+      "derived": "grateful",
+      "type": "suffix -ful",
+      "definition": "feeling or showing thanks for something received",
+      "example": "I am truly grateful for all your support.",
+      "rootDefinition": "a feeling of thankfulness"
     },
     {
-      "base": "deep",
-      "derived": "deeply",
-      "type": "suffix -ly",
-      "definition": "very much; to a great extent",
-      "example": "He was deeply moved by the documentary.",
-      "rootDefinition": "extending far down from the surface"
+      "base": "fear",
+      "derived": "fearful",
+      "type": "suffix -ful",
+      "definition": "feeling afraid or full of worry",
+      "example": "She was fearful of making another mistake.",
+      "rootDefinition": "an unpleasant feeling caused by danger or threat"
     },
     {
-      "base": "hard",
-      "derived": "hardly",
-      "type": "suffix -ly",
-      "definition": "scarcely or almost not at all",
-      "example": "I could hardly hear the speaker from the back row.",
-      "rootDefinition": "with a lot of effort or force"
+      "base": "peace",
+      "derived": "peaceful",
+      "type": "suffix -ful",
+      "definition": "quiet, calm, and without conflict",
+      "example": "The village was a peaceful place to retire.",
+      "rootDefinition": "a state of calm and freedom from conflict"
     },
     {
-      "base": "high",
-      "derived": "highly",
-      "type": "suffix -ly",
-      "definition": "to a great degree; very much",
-      "example": "She is highly regarded by her colleagues.",
-      "rootDefinition": "at a great distance above the ground"
-    },
-    {
-      "base": "reason",
-      "derived": "reasonable",
-      "type": "suffix -able",
-      "definition": "fair, practical, and sensible",
-      "example": "The price seemed reasonable for the quality of the meal.",
-      "rootDefinition": "a cause or explanation for something"
-    },
-    {
-      "base": "value",
-      "derived": "valuable",
-      "type": "suffix -able",
-      "definition": "worth a lot of money or very useful",
-      "example": "Her experience in the field is extremely valuable.",
-      "rootDefinition": "the importance or worth of something"
+      "base": "wonder",
+      "derived": "wonderful",
+      "type": "suffix -ful",
+      "definition": "extremely good or impressive",
+      "example": "We had a wonderful time on our holiday.",
+      "rootDefinition": "a feeling of surprise and admiration"
     }
   ],
   "multipleChoiceExercises": [
     {
-      "sentence": "The new manager is ___ and has changed everything for the better.",
+      "sentence": "The new engine is very ___ and can run for hours without stopping.",
       "root": "power",
       "correct": "powerful",
       "options": [
@@ -177,91 +134,86 @@
       ]
     },
     {
-      "sentence": "The instructions were so complicated they were completely ___.",
-      "root": "use",
-      "correct": "useless",
+      "sentence": "Always be ___ when using sharp tools in the kitchen.",
+      "root": "care",
+      "correct": "careful",
       "options": [
-        "useless",
-        "useful",
-        "using",
-        "usefully"
+        "careful",
+        "careless",
+        "carelessly",
+        "caring"
       ]
     },
     {
-      "sentence": "Could you ___ describe what happened at the meeting?",
-      "root": "brief",
-      "correct": "briefly",
+      "sentence": "The staff at the hotel were extremely ___ during our stay.",
+      "root": "help",
+      "correct": "helpful",
       "options": [
-        "briefly",
-        "briefing",
-        "briefed",
-        "briefer"
+        "helpful",
+        "helpless",
+        "helping",
+        "helpfully"
       ]
     },
     {
-      "sentence": "He was ___ disappointed when he heard the news.",
-      "root": "deep",
-      "correct": "deeply",
+      "sentence": "Too much sun exposure can be ___ to your skin.",
+      "root": "harm",
+      "correct": "harmful",
       "options": [
-        "deeply",
-        "deepened",
-        "depth",
-        "deeper"
+        "harmful",
+        "harmless",
+        "harming",
+        "harmed"
       ]
     },
     {
-      "sentence": "That was a very ___ answer – you clearly understand the topic.",
-      "root": "reason",
-      "correct": "reasonable",
+      "sentence": "The view from the top of the hill was absolutely ___.",
+      "root": "beauty",
+      "correct": "beautiful",
       "options": [
-        "reasonable",
-        "reasoning",
-        "reasonably",
-        "reasoned"
+        "beautiful",
+        "beautify",
+        "beautifully",
+        "beautified"
       ]
     },
     {
-      "sentence": "The old painting turned out to be extremely ___.",
-      "root": "value",
-      "correct": "valuable",
+      "sentence": "We spent a ___ evening by the lake watching the sunset.",
+      "root": "peace",
+      "correct": "peaceful",
       "options": [
-        "valuable",
-        "valuing",
-        "valuation",
-        "valued"
+        "peaceful",
+        "peacefully",
+        "peacefulness",
+        "unpeaceful"
       ]
     }
   ],
   "transformExercises": [
     {
-      "sentence": "The earthquake was a very ___ reminder of nature's force. (POWER)",
+      "sentence": "The storm was so ___ that it knocked down several trees. (POWER)",
       "root": "POWER",
       "correct": "powerful"
     },
     {
-      "sentence": "She found the dictionary app incredibly ___ for her studies. (USE)",
+      "sentence": "She was deeply ___ for the help she received from her neighbours. (GRATE)",
+      "root": "GRATE",
+      "correct": "grateful"
+    },
+    {
+      "sentence": "Please be ___ not to spill anything on the new carpet. (CARE)",
+      "root": "CARE",
+      "correct": "careful"
+    },
+    {
+      "sentence": "The countryside looked ___ after the spring rain. (WONDER)",
+      "root": "WONDER",
+      "correct": "wonderful"
+    },
+    {
+      "sentence": "This app is very ___ for organising your daily schedule. (USE)",
       "root": "USE",
       "correct": "useful"
-    },
-    {
-      "sentence": "The speaker was so nervous she could ___ speak. (HARD)",
-      "root": "HARD",
-      "correct": "hardly"
-    },
-    {
-      "sentence": "He is ___ respected in the scientific community. (HIGH)",
-      "root": "HIGH",
-      "correct": "highly"
-    },
-    {
-      "sentence": "They were both ___ affected by the loss of their home. (DEEP)",
-      "root": "DEEP",
-      "correct": "deeply"
-    },
-    {
-      "sentence": "Your feedback has been ___ in shaping our new approach. (VALUE)",
-      "root": "VALUE",
-      "correct": "valuable"
     }
   ]
 }
