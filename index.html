@@ -308,6 +308,41 @@
 
                 <div class="header-nav-group" id="headerNavGroup">
                 
+                <div class="header-dict-dropdown">
+                    <button class="header-dict-btn" title="Dictionaries">
+                        <span class="material-symbols-outlined">menu_book</span>
+                        <span class="header-dict-label">Dictionaries</span>
+                        <span class="material-symbols-outlined header-dict-arrow">expand_more</span>
+                    </button>
+                    <div class="header-dict-menu">
+                        <button class="header-dict-menu-item" onclick="FastExercises._showGeneralDictionary()">
+                            <span class="material-symbols-outlined" style="color:#6366f1">book</span>
+                            General Dictionary
+                        </button>
+                        <button class="header-dict-menu-item" onclick="FastExercises._showVocabDictionary()">
+                            <span class="material-symbols-outlined" style="color:#0ea5e9">book_2</span>
+                            Vocabulary Dictionary
+                        </button>
+                        <div class="header-dict-menu-divider"></div>
+                        <button class="header-dict-menu-item" onclick="FastExercises._showWfDictionary()">
+                            <span class="material-symbols-outlined" style="color:#e11d48">text_fields</span>
+                            Word Formation
+                        </button>
+                        <button class="header-dict-menu-item" onclick="FastExercises._showPvDictionary()">
+                            <span class="material-symbols-outlined" style="color:#3b82f6">auto_stories</span>
+                            Phrasal Verbs
+                        </button>
+                        <button class="header-dict-menu-item" onclick="FastExercises._showIdDictionary()">
+                            <span class="material-symbols-outlined" style="color:#f59e0b">record_voice_over</span>
+                            Idioms
+                        </button>
+                        <button class="header-dict-menu-item" onclick="FastExercises._showCollocDictionary()">
+                            <span class="material-symbols-outlined" style="color:#8b5cf6">format_quote</span>
+                            Collocations
+                        </button>
+                    </div>
+                </div>
+
                 <button class="header-calc-btn" onclick="openScoreCalculator()" title="Score Calculator">
                     <span class="material-symbols-outlined">calculate</span>
                 </button>

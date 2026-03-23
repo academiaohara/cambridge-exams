@@ -3,7 +3,7 @@
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   border-bottom: none;
-  padding: 16px 24px 0;
+  padding: 16px 24px 12px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -226,4 +226,108 @@
 .header-calc-btn .material-symbols-outlined {
   color: #1E9D8E;
   font-size: 1.3rem;
+}
+
+/* ── Header dictionaries dropdown ── */
+.header-dict-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.header-dict-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border-radius: 40px;
+  border: 2px solid rgba(45, 46, 95, 0.10);
+  background: rgba(45, 46, 95, 0.04);
+  color: var(--text-medium);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+
+.header-dict-btn .material-symbols-outlined {
+  font-size: 1.2rem;
+  color: #1E9D8E;
+}
+
+.header-dict-btn .header-dict-arrow {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  transition: transform 0.2s;
+}
+
+.header-dict-dropdown:hover .header-dict-btn {
+  background: rgba(45, 46, 95, 0.08);
+  border-color: rgba(45, 46, 95, 0.18);
+  color: var(--text-dark);
+  transform: translateY(-1px);
+}
+
+.header-dict-dropdown:hover .header-dict-arrow {
+  transform: rotate(180deg);
+}
+
+.header-dict-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.14);
+  min-width: 230px;
+  padding: 6px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  z-index: 1100;
+  border: 1px solid rgba(45, 46, 95, 0.08);
+}
+
+.header-dict-dropdown:hover .header-dict-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header-dict-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark, #0f172a);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.header-dict-menu-item:hover {
+  background: rgba(45, 46, 95, 0.05);
+}
+
+.header-dict-menu-item .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
+.header-dict-menu-divider {
+  height: 1px;
+  background: rgba(45, 46, 95, 0.07);
+  margin: 4px 12px;
+}
+
+@media (max-width: 560px) {
+  .header-dict-label {
+    display: none;
+  }
 }
