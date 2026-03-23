@@ -11,6 +11,11 @@
     { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' }
   ];
 
+  // Vocabulary flashcard constants
+  var VOCAB_BATCH_SIZE = 15;   // Cards shown per session
+  var VOCAB_MAX_STREAK = 10;   // Cap on consecutive-correct streak per word
+  var VOCAB_RETRY_POS = 2;     // How far from front a bad card is reinserted (near top)
+
   function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
   window.FastExercises = {
@@ -842,7 +847,7 @@
         return;
       }
 
-      var BATCH_SIZE = 15;
+      var BATCH_SIZE = VOCAB_BATCH_SIZE;
       var batchWords = filteredWords.slice(0, BATCH_SIZE);
 
       this._currentCategory = 'vocabulary';
@@ -3930,9 +3935,8 @@
         return;
       }
 
-      // Take a batch of max 15 words
-      var BATCH_SIZE = 15;
-      var batchWords = remaining.slice(0, BATCH_SIZE);
+      // Take a batch of max VOCAB_BATCH_SIZE words
+      var batchWords = remaining.slice(0, VOCAB_BATCH_SIZE);
 
       // Build the flashcard session UI
       self._startVocabFlashcardSession(container, batchWords, allWords, streaks, catMeta, levelId, lessonId, lessonTitle, 'learn', pointIndex, lessonPoints, color);
@@ -3974,7 +3978,7 @@
               updatedStreaks[word] = 0;
             } else {
               // Clean Good answer: increment streak
-              updatedStreaks[word] = Math.min(10, (updatedStreaks[word] || 0) + 1);
+              updatedStreaks[word] = Math.min(VOCAB_MAX_STREAK, (updatedStreaks[word] || 0) + 1);
             }
           });
           self._sessionHadBad = null;
@@ -4095,7 +4099,7 @@
           card.state = 'needs-retry';
           card.hadBad = true;
           self._sessionHadBad[card.word] = true;
-          var retryPos = Math.min(2, deck.length);
+          var retryPos = Math.min(VOCAB_RETRY_POS, deck.length);
           deck.splice(retryPos, 0, card);
         }
 
