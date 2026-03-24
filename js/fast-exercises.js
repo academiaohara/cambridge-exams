@@ -4118,10 +4118,10 @@
         var synonymsHTML = synonyms.length
           ? '<div class="gd-dict-synonyms">' +
               synonyms.map(function(s) {
-                var safeS = JSON.stringify(s);
-                return '<span class="gd-dict-tag-pill" onclick="FastExercises._searchGeneralDict(' +
-                  safeS + '); document.getElementById(\'gd-dict-search\').value=' +
-                  safeS + '">' + FastExercises._escapeHTML(s) + '</span>';
+                var safeS = FastExercises._jsStr(s);
+                return '<span class="gd-dict-tag-pill" onclick="FastExercises._searchGeneralDict(\'' +
+                  safeS + '\'); document.getElementById(\'gd-dict-search\').value=\'' +
+                  safeS + '\'">' + FastExercises._escapeHTML(s) + '</span>';
               }).join('') +
             '</div>'
           : '';
