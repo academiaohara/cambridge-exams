@@ -56,8 +56,9 @@
         
         questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
         
-        const secondToggleI18nKey = partConfig.type === 'gapped-text' ? 'paragraphOptions' : 'showQuestions';
-        const i18nMap = { showQuestions: 'Questions', paragraphOptions: 'Paragraph Options', showText: 'Text' };
+        const isGappedSentenceMode = partConfig.type === 'gapped-text' && this._isGappedSentenceMode(exercise);
+        const secondToggleI18nKey = partConfig.type === 'gapped-text' ? (isGappedSentenceMode ? 'sentenceOptions' : 'paragraphOptions') : 'showQuestions';
+        const i18nMap = { showQuestions: 'Questions', paragraphOptions: 'Paragraph Options', sentenceOptions: 'Sentence Options', showText: 'Text' };
         const secondToggleLabel = i18nMap[secondToggleI18nKey] || secondToggleI18nKey;
         const isReadingPart5to8 = section === 'reading' && part >= 5;
         const showExplanationBtn = isReadingPart5to8;
@@ -305,6 +306,12 @@
         const gapMatches = para.match(/\((\d+)\)/g) || [];
         const gapNumbers = gapMatches.map(match => parseInt(match.replace(/[()]/g, '')));
         
+        // For gapped-text: detect if this paragraph segment contains an isolated gap (C1 style)
+        // or inline gaps within surrounding text (B2 style)
+        const isIsolatedGap = partConfig.type === 'gapped-text' && gapNumbers.length > 0 &&
+          para.trim().match(/^\(\d+\)$/);
+        const isInlineGapContext = partConfig.type === 'gapped-text' && gapNumbers.length > 0 && !isIsolatedGap;
+        
         let paraProcessed = para;
         
         gapNumbers.forEach(qNum => {
@@ -313,7 +320,7 @@
           
           let gapHtml = '';
           if (question) {
-            gapHtml = this.renderGapByType(question, qNum, partConfig);
+            gapHtml = this.renderGapByType(question, qNum, partConfig, isInlineGapContext);
           } else if (isExample && exercise.content.example) {
             gapHtml = this.renderExample(exercise.content.example, qNum, partConfig);
           }
@@ -333,10 +340,8 @@
         // Process evidence markers [n]...[/n]
         paraProcessed = this.processEvidenceMarkers(paraProcessed);
         
-        // For gapped-text (Part 7), use a div wrapper for gap-only paragraphs to allow block display
-        const isGappedTextGap = partConfig.type === 'gapped-text' && gapNumbers.length > 0 &&
-          para.trim().match(/^\(\d+\)$/);
-        if (isGappedTextGap) {
+        // For gapped-text (Part 7 / C1), use a div wrapper for isolated gap paragraphs to allow block display
+        if (isIsolatedGap) {
           html += `<div class="reading-type7-gap-para">${paraProcessed}</div>`;
         } else {
           html += `<p>${paraProcessed}</p>`;
@@ -415,11 +420,12 @@
       
       let html = '';
       
-      // For gapped-text (Part 7), show paragraph options A-G
+      // For gapped-text (Part 7), show paragraph/sentence options A-G
       if (partConfig.type === 'gapped-text' && exercise.content.paragraphs) {
         var self = this;
+        const isSentenceMode = this._isGappedSentenceMode(exercise);
         html += '<div class="reading-type7-options">';
-        html += '<h4><i class="fas fa-list"></i> ' + 'Paragraph Options' + '</h4>';
+        html += '<h4><i class="fas fa-list"></i> ' + (isSentenceMode ? 'Sentence Options' : 'Paragraph Options') + '</h4>';
         html += '<div class="reading-type7-paragraph-list">';
         Object.entries(exercise.content.paragraphs).forEach(function(entry) {
           const key = entry[0], text = entry[1];
@@ -634,7 +640,7 @@
       return html;
     },
     
-    renderGapByType: function(question, qNum, partConfig) {
+    renderGapByType: function(question, qNum, partConfig, isInline) {
       const userAnswer = AppState.currentExercise?.answers?.[qNum] || '';
       const isChecked = AppState.answersChecked;
       
@@ -685,7 +691,7 @@
           
         case 'gapped-text':
           if (typeof window.ReadingType7 !== 'undefined') {
-            return ReadingType7.renderGap(question, qNum, isChecked, userAnswer);
+            return ReadingType7.renderGap(question, qNum, isChecked, userAnswer, isInline);
           }
           break;
           
@@ -1008,6 +1014,15 @@
       return `<div class="part-nav-row">${cells}</div>`;
     },
     
+    _isGappedSentenceMode: function(exercise) {
+      // Returns true when gaps are inline sentences within paragraphs (B2 Part 6),
+      // vs false when gaps are isolated paragraph-level blocks (C1 Part 7).
+      // An isolated gap is a text segment (split by ||) that contains only "(N)".
+      if (!exercise.content || !exercise.content.text) return false;
+      var segments = exercise.content.text.split('||');
+      return !segments.some(function(seg) { return !!seg.trim().match(/^\(\d+\)$/); });
+    },
+
     getDefaultDescription: function(partConfig) {
       const descriptions = {
         'multiple-choice': 'Choose the correct word for each gap.',

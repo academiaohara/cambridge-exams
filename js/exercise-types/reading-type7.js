@@ -3,7 +3,7 @@
 
 (function() {
   window.ReadingType7 = {
-    renderGap: function(question, qNum, isChecked, userAnswer) {
+    renderGap: function(question, qNum, isChecked, userAnswer, isInline) {
       if (qNum === 0) {
         return `
           <span class="reading-type7-gap">
@@ -12,6 +12,8 @@
         `;
       }
       const paragraphs = AppState.currentExercise.content.paragraphs || {};
+      const inlineClass = isInline ? ' reading-type7-gap--inline' : '';
+      const inlineAttr = isInline ? ' data-inline="true"' : '';
       
       if (isChecked) {
         const isCorrect = this.isAnswerCorrect(question, userAnswer);
@@ -19,7 +21,7 @@
         const pillClass = isCorrect ? 'reading-type7-gap-pill correct' : 'reading-type7-gap-pill incorrect';
         const circleColor = isCorrect ? '#065f46' : '#ef4444';
 
-        let html = `<span class="reading-type7-gap" data-qnum="${qNum}">`;
+        let html = `<span class="reading-type7-gap${inlineClass}" data-qnum="${qNum}"${inlineAttr}>`;
         html += `<span class="reading-type7-gap-check-row"${!isCorrect ? ` data-correct="✓ ${question.correct}"` : ''}>`;
         html += `<span class="${pillClass}">`;
         html += `<span class="reading-type7-gap-num">${qNum}</span>`;
@@ -45,7 +47,7 @@
       const paraText = userAnswer ? (paragraphs[userAnswer] || '') : '';
       
       return `
-        <span class="reading-type7-gap" data-qnum="${qNum}">
+        <span class="reading-type7-gap${inlineClass}" data-qnum="${qNum}"${inlineAttr}>
           <span class="reading-type7-gap-pill${userAnswer ? ' has-value' : ''}"
                 onclick="ReadingType7.openSelectModal(${qNum})">
             <span class="reading-type7-gap-num">${qNum}</span>
@@ -127,8 +129,9 @@
       const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
       const gap = document.querySelector(`.reading-type7-gap[data-qnum="${qNum}"]`);
       if (gap && question) {
+        const isInline = gap.dataset.inline === 'true';
         const isChecked = AppState.answersChecked;
-        gap.outerHTML = ReadingType7.renderGap(question, qNum, isChecked, value);
+        gap.outerHTML = ReadingType7.renderGap(question, qNum, isChecked, value, isInline);
       }
       
       Timer.updateScoreDisplay();
@@ -247,7 +250,8 @@
         // Update gap display to show checked state with pill design
         const gap = document.querySelector(`.reading-type7-gap[data-qnum="${q.number}"]`);
         if (gap) {
-          gap.outerHTML = ReadingType7.renderGap(q, q.number, true, userAnswer || '');
+          const isInline = gap.dataset.inline === 'true';
+          gap.outerHTML = ReadingType7.renderGap(q, q.number, true, userAnswer || '', isInline);
         }
       });
       
