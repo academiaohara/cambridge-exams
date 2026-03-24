@@ -809,6 +809,11 @@
         return '';
       }
       
+      // For transformations (reading4), the example is already rendered inside renderTransformationQuestions
+      if (partConfig.type === 'transformations') {
+        return '';
+      }
+      
       // For multiple-choice type, show simplified inline example
       if (partConfig.type === 'multiple-choice' && exampleData.options) {
         const correctOption = exampleData.options.find(opt => opt.startsWith(exampleData.correct + ')'));
