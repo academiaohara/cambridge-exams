@@ -395,3 +395,50 @@
 .reading-type7-gap-para {
   margin: 4px 0;
 }
+
+/* ===== Inline sentence gap mode (B2 Part 6) ===== */
+/* Gaps appear within paragraph text, not as block separators */
+.reading-type7-gap--inline {
+  display: inline;
+  margin: 0;
+}
+
+.reading-type7-gap--inline .reading-type7-gap-pill {
+  vertical-align: middle;
+}
+
+.reading-type7-gap--inline .reading-type7-gap-check-row {
+  display: inline-flex;
+  margin-bottom: 0;
+}
+
+.reading-type7-gap--inline .reading-type7-selected-text {
+  display: inline;
+  margin-top: 0;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.reading-type7-gap--inline .reading-type7-answer-block {
+  display: inline;
+  padding: 2px 6px;
+  border-width: 0 0 2px 0;
+  border-radius: 0;
+  margin-top: 0;
+}
+
+.reading-type7-gap--inline .reading-type7-answer-block.correct {
+  background: transparent;
+  border-color: var(--correct);
+}
+
+.reading-type7-gap--inline .reading-type7-answer-block.correct.rt7-explanation,
+.reading-type7-gap--inline .reading-type7-explanation-block {
+  background: transparent;
+  border-color: #f97316;
+}
+
+.reading-type7-gap--inline .reading-type7-answer-block.incorrect {
+  background: transparent;
+  border-color: var(--incorrect);
+}
