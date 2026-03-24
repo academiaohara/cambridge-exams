@@ -4070,12 +4070,18 @@
         }
 
         if (data.title === 'No Definitions Found') {
-          var words = query.split(' ');
-          if (words.length > 1) {
-            if (requestId !== this._gdRequestId) return;
-            this._searchGeneralDict(words[0]);
-            return;
+          // Fall back to AI-powered dictionary for comprehensive coverage
+          var aiResponse = await fetch('/api/dictionary', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ word: query })
+          });
+          if (aiResponse.ok) {
+            data = await aiResponse.json();
           }
+        }
+
+        if (!Array.isArray(data) || data.length === 0 || (data.title && data.title === 'No Definitions Found')) {
           if (requestId !== this._gdRequestId) return;
           body.innerHTML = '<p class="gd-dict-not-found">No definition found for "' + this._escapeHTML(query) + '".</p>';
           return;
