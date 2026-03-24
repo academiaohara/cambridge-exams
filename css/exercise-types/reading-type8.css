@@ -32,14 +32,18 @@
 }
 
 .reading-type8-text-label {
-  display: inline-block;
-  background: var(--reading);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
   color: white;
-  padding: 4px 14px;
-  border-radius: 30px;
+  border-radius: 50%;
   font-weight: 700;
   font-size: 0.95rem;
   flex-shrink: 0;
+  margin-right: 8px;
 }
 
 .reading-type8-text-title {

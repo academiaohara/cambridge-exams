@@ -111,7 +111,9 @@
   window.CONFIG.LEVEL_PART_TYPES = {
     B2: {
       // B2 Part 6 is Gapped Text (fill gaps with phrases), not Cross-text Matching
-      6: { type: 'gapped-text', inputMode: 'select', total: 6, maxMarks: 12 }
+      6: { type: 'gapped-text', inputMode: 'select', total: 6, maxMarks: 12 },
+      // B2 Part 7 is Multiple Matching (like C1 Part 8), not Gapped Text
+      7: { type: 'multiple-matching', inputMode: 'modal', total: 10 }
     }
   };
 
