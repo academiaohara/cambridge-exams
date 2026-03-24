@@ -144,9 +144,9 @@
       } else {
         // ── By Section view ──────────────────────────────────────────────
         if (subpageSectionKey) {
-          mainContentHtml = this._renderSectionExerciseList(exams, subpageSectionKey, isGuest, t);
+          mainContentHtml = this._renderSectionExerciseList(exams, subpageSectionKey, isGuest);
         } else {
-          mainContentHtml = this._renderBySectionTiles(t);
+          mainContentHtml = this._renderBySectionTiles();
         }
       }
 
@@ -209,7 +209,7 @@
     },
 
     // ── By-Section tiles ────────────────────────────────────────────────
-    _renderBySectionTiles: function(t) {
+    _renderBySectionTiles: function() {
       var mode = AppState.currentMode || 'practice';
       var sections = [
         { key: 'reading',   icon: 'menu_book',        label: 'Reading' },
@@ -231,7 +231,7 @@
     },
 
     // ── Section exercise list (paginated by section type) ──────────
-    _renderSectionExerciseList: function(exams, sectionKey, isGuest, t) {
+    _renderSectionExerciseList: function(exams, sectionKey, isGuest) {
       var mode = AppState.currentMode || 'practice';
 
       // Pagination
@@ -247,7 +247,7 @@
             '<i class="fas fa-arrow-left"></i>' +
           '</button>' +
           '<span class="material-symbols-outlined section-icon ' + sectionKey + '">' + Utils.getMaterialIcon(sectionKey) + '</span>' +
-          '<span class="section-ex-title">' + t(sectionKey, sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)) + '</span>' +
+          '<span class="section-ex-title">' + sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1) + '</span>' +
         '</div>' +
         '<div class="exams-container">';
 
