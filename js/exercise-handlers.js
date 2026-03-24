@@ -24,10 +24,7 @@
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       
       AppState.answersChecked = true;
-      const partConfig = CONFIG.PART_TYPES[
-        AppState.currentSection === 'reading' ? AppState.currentPart : 
-        `${AppState.currentSection}${AppState.currentPart}`
-      ];
+      const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       
       let correct = 0;
       const questions = AppState.currentExercise.content.questions || [];
@@ -251,7 +248,7 @@
     toggleExplanationMode: function() {
       AppState.explanationMode = !AppState.explanationMode;
       const btn = document.getElementById('toggle-explanation-btn');
-      const partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
+      const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       const isPart7 = partConfig && partConfig.type === 'gapped-text';
       const isListening = AppState.currentSection === 'listening';
 
@@ -344,7 +341,7 @@
     selectExplanationQuestion: function(qNum) {
       if (!AppState.explanationMode) return;
       // Part 7: all explanations shown at once, no individual selection
-      const partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
+      const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       if (partConfig && partConfig.type === 'gapped-text') return;
 
       AppState.explanationActiveQuestion = qNum;
@@ -451,7 +448,7 @@
       }
 
       // Determine part type for layout
-      var partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? AppState.currentPart : AppState.currentSection + AppState.currentPart];
+      var partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       var partType = partConfig ? partConfig.type : '';
 
       var html = '<span class="eq-number">' + qNum + '</span>';
@@ -553,10 +550,7 @@
       // Prevent reset in exam mode
       if (AppState.currentMode === 'exam') return;
       
-      const partConfig = CONFIG.PART_TYPES[
-        AppState.currentSection === 'reading' ? AppState.currentPart : 
-        `${AppState.currentSection}${AppState.currentPart}`
-      ];
+      const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       
       // Subtract current part's score from section total before reset
       const sectionKey = `${AppState.currentExamId}_${AppState.currentSection}`;

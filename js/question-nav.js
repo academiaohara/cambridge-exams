@@ -33,7 +33,7 @@
       const isChecked = AppState.answersChecked;
       const userAnswer = (AppState.currentExercise.answers || {})[qNum] || '';
       const part = AppState.currentPart;
-      const partConfig = CONFIG.PART_TYPES[AppState.currentSection === 'reading' ? part : AppState.currentSection + part];
+      const partConfig = CONFIG.getPartConfig(AppState.currentSection, part);
 
       body.innerHTML = this._buildContent(question, qNum, isChecked, userAnswer, partConfig);
       overlay.style.display = 'flex';

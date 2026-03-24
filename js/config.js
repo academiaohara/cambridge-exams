@@ -107,6 +107,14 @@
   window.CONFIG.JS_BASE_URL = `/js/`;
   window.CONFIG.CSS_BASE_URL = `/css/`;
   // Configuración de tipos de ejercicios
+  // Level-specific part type overrides (keys match AppState.currentLevel)
+  window.CONFIG.LEVEL_PART_TYPES = {
+    B2: {
+      // B2 Part 6 is Gapped Text (fill gaps with phrases), not Cross-text Matching
+      6: { type: 'gapped-text', inputMode: 'select', total: 6, maxMarks: 12 }
+    }
+  };
+
   window.CONFIG.PART_TYPES = {
     // Reading & Use of English
     1: { type: 'multiple-choice', inputMode: 'modal', total: 8 },
@@ -133,5 +141,13 @@
     speaking2: { type: 'long-turn', inputMode: 'script', total: 75 },
     speaking3: { type: 'collaborative', inputMode: 'script', total: 75 },
     speaking4: { type: 'discussion', inputMode: 'script', total: 75 }
+  };
+
+  // Helper: get part config respecting level-specific overrides
+  window.CONFIG.getPartConfig = function(section, part) {
+    var level = (typeof AppState !== 'undefined') ? AppState.currentLevel : null;
+    var levelOverrides = level && window.CONFIG.LEVEL_PART_TYPES ? (window.CONFIG.LEVEL_PART_TYPES[level] || {}) : {};
+    var key = section === 'reading' ? part : section + part;
+    return (section === 'reading' && levelOverrides[part]) || window.CONFIG.PART_TYPES[key] || window.CONFIG.PART_TYPES[1];
   };
 })();

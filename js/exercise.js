@@ -378,9 +378,7 @@
         
         this.restoreSavedAnswers();
         if (AppState.answersChecked) {
-          const partConfig = CONFIG.PART_TYPES[
-            section === 'reading' ? part : `${section}${part}`
-          ];
+          const partConfig = CONFIG.getPartConfig(section, part);
           // Re-run answer checking to restore visual marks
           const typeChecker = ExerciseHandlers.getTypeChecker(partConfig.type);
           if (typeChecker && typeof typeChecker.checkAnswers === 'function') {
@@ -426,10 +424,7 @@
     
     restoreSavedAnswers: function() {
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
-      const partConfig = CONFIG.PART_TYPES[
-        AppState.currentSection === 'reading' ? AppState.currentPart : 
-        `${AppState.currentSection}${AppState.currentPart}`
-      ];
+      const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       
       Object.entries(AppState.currentExercise.answers).forEach(([qNum, answer]) => {
         if (qNum === '0') return;
@@ -618,8 +613,7 @@
         }
         
         var questions = (exercise.content && exercise.content.questions) || [];
-        var partKey = section === 'reading' ? part : section + part;
-        var partConfig = CONFIG.PART_TYPES[partKey];
+        var partConfig = CONFIG.getPartConfig(section, part);
         
         var score = 0;
         var answers = savedState.answers || {};
@@ -789,8 +783,7 @@
         var partScore = (AppState.sectionScores[sectionKey] && AppState.sectionScores[sectionKey][i]) !== undefined
           ? AppState.sectionScores[sectionKey][i]
           : (partState ? (partState.partScore || 0) : 0);
-        var partKey = section === 'reading' ? i : section + i;
-        var partConfig = CONFIG.PART_TYPES[partKey];
+        var partConfig = CONFIG.getPartConfig(section, i);
         var partTotal = partConfig ? (partConfig.maxMarks || partConfig.total) : 0;
         
         partsHTML += `

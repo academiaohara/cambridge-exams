@@ -3,7 +3,8 @@
   window.ExerciseRenderer = {
     render: async function(exercise, examId, section, part) {
       const content = document.getElementById('main-content');
-      const partConfig = CONFIG.PART_TYPES[section === 'reading' ? part : `${section}${part}`] || CONFIG.PART_TYPES[1];
+      const partKey = section === 'reading' ? part : `${section}${part}`;
+      const partConfig = CONFIG.getPartConfig(section, part);
       
       // Cargar CSS y JS específicos del tipo de ejercicio
       Utils.loadExerciseTypeCSS(partConfig.type);
@@ -348,7 +349,7 @@
     getSectionTotalQuestions: function(section) {
       if (section === 'reading') {
         return [1, 2, 3, 4, 5, 6, 7, 8].reduce((sum, part) => {
-          const cfg = CONFIG.PART_TYPES[part];
+          const cfg = CONFIG.getPartConfig(section, part);
           return sum + (cfg ? (cfg.maxMarks || cfg.total || 0) : 0);
         }, 0);
       }
