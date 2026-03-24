@@ -9,22 +9,107 @@
   "totalQuestions": 8,
   "description": "For questions 1–8, read the text below and choose which answer (A, B, C or D) best completes each gap.",
   "content": {
-    "text": "The psychology of colour (0) deals with how different colours affect human emotions and behaviour. Research has shown that colours can have a significant (1) impact on our mood and decision-making. For example, red is often (2) associated with energy and excitement, which is why it is frequently used in advertising. Blue, (3) on the other hand, tends to create feelings of calm and trust. This knowledge is (4) put to use by businesses when designing their logos and marketing materials. Interior designers also (5) take into account the psychological effects of colour when choosing paint and furnishings. Warm colours like orange and yellow can make a room feel more welcoming, while cooler shades may (6) give off a sense of professionalism. Hospitals often use green because it is believed to (7) bring about feelings of healing and relaxation. Understanding colour psychology can help us make better choices in our daily lives, whether we are decorating our homes or (8) picking out clothes to wear.",
+    "text": "The psychology of colour (0) with how different colours affect human emotions and behaviour. Research has shown that colours can have a significant (1) on our mood and decision-making. For example, red is often (2) with energy and excitement, which is why it is frequently used in advertising. Blue, (3) the other hand, tends to create feelings of calm and trust. This knowledge is (4) to use by businesses when designing their logos and marketing materials. Interior designers also (5) into account the psychological effects of colour when choosing paint and furnishings. Warm colours like orange and yellow can make a room feel more welcoming, while cooler shades may (6) off a sense of professionalism. Hospitals often use green because it is believed to (7) about feelings of healing and relaxation. Understanding colour psychology can help us make better choices in our daily lives, whether we are decorating our homes or (8) out clothes to wear.",
     "example": {
       "number": 0,
-      "options": ["A) works", "B) deals", "C) handles", "D) manages"],
+      "options": [
+        "A) works",
+        "B) deals",
+        "C) handles",
+        "D) manages"
+      ],
       "correct": "B",
       "explanation": "'Deals with' es la expresión correcta para indicar que algo trata sobre un tema."
     },
     "questions": [
-      {"number": 1, "options": ["A) impression", "B) effect", "C) impact", "D) influence"], "correct": "C", "explanation": "'Have an impact on' es la colocación correcta para indicar un efecto significativo."},
-      {"number": 2, "options": ["A) connected", "B) linked", "C) related", "D) associated"], "correct": "D", "explanation": "'Associated with' es la expresión correcta para conectar ideas o conceptos."},
-      {"number": 3, "options": ["A) on the other hand", "B) in contrast to", "C) as opposed", "D) differently from"], "correct": "A", "explanation": "'On the other hand' introduce una idea contrastante."},
-      {"number": 4, "options": ["A) set to work", "B) put to use", "C) brought to action", "D) taken to practice"], "correct": "B", "explanation": "'Put to use' significa utilizar algo de manera práctica."},
-      {"number": 5, "options": ["A) bring into account", "B) put into account", "C) take into account", "D) get into account"], "correct": "C", "explanation": "'Take into account' significa considerar o tener en cuenta algo."},
-      {"number": 6, "options": ["A) give off", "B) put out", "C) send away", "D) throw out"], "correct": "A", "explanation": "'Give off' significa emitir o transmitir una sensación o impresión."},
-      {"number": 7, "options": ["A) carry out", "B) bring about", "C) set off", "D) turn up"], "correct": "B", "explanation": "'Bring about' significa causar o provocar algo."},
-      {"number": 8, "options": ["A) choosing out", "B) selecting up", "C) picking out", "D) taking out"], "correct": "C", "explanation": "'Picking out' significa elegir o seleccionar algo entre varias opciones."}
+      {
+        "number": 1,
+        "options": [
+          "A) impression",
+          "B) effect",
+          "C) impact",
+          "D) influence"
+        ],
+        "correct": "C",
+        "explanation": "'Have an impact on' es la colocación correcta para indicar un efecto significativo."
+      },
+      {
+        "number": 2,
+        "options": [
+          "A) connected",
+          "B) linked",
+          "C) related",
+          "D) associated"
+        ],
+        "correct": "D",
+        "explanation": "'Associated with' es la expresión correcta para conectar ideas o conceptos."
+      },
+      {
+        "number": 3,
+        "options": [
+          "A) on the other hand",
+          "B) in contrast to",
+          "C) as opposed",
+          "D) differently from"
+        ],
+        "correct": "A",
+        "explanation": "'On the other hand' introduce una idea contrastante."
+      },
+      {
+        "number": 4,
+        "options": [
+          "A) set to work",
+          "B) put to use",
+          "C) brought to action",
+          "D) taken to practice"
+        ],
+        "correct": "B",
+        "explanation": "'Put to use' significa utilizar algo de manera práctica."
+      },
+      {
+        "number": 5,
+        "options": [
+          "A) bring into account",
+          "B) put into account",
+          "C) take into account",
+          "D) get into account"
+        ],
+        "correct": "C",
+        "explanation": "'Take into account' significa considerar o tener en cuenta algo."
+      },
+      {
+        "number": 6,
+        "options": [
+          "A) give off",
+          "B) put out",
+          "C) send away",
+          "D) throw out"
+        ],
+        "correct": "A",
+        "explanation": "'Give off' significa emitir o transmitir una sensación o impresión."
+      },
+      {
+        "number": 7,
+        "options": [
+          "A) carry out",
+          "B) bring about",
+          "C) set off",
+          "D) turn up"
+        ],
+        "correct": "B",
+        "explanation": "'Bring about' significa causar o provocar algo."
+      },
+      {
+        "number": 8,
+        "options": [
+          "A) choosing out",
+          "B) selecting up",
+          "C) picking out",
+          "D) taking out"
+        ],
+        "correct": "C",
+        "explanation": "'Picking out' significa elegir o seleccionar algo entre varias opciones."
+      }
     ]
   }
 }

@@ -9,22 +9,107 @@
   "totalQuestions": 8,
   "description": "For questions 1–8, read the text below and choose which answer (A, B, C or D) best completes each gap.",
   "content": {
-    "text": "The dream of human flight (0) goes back thousands of years, but it was not until the early 20th century that it became a reality. The Wright brothers are (1) credited with making the first powered flight in 1903. Their achievement (2) paved the way for rapid developments in aviation technology. During the First World War, aircraft were (3) put to use for military purposes, which accelerated their development. Commercial aviation (4) took off in the 1920s, making travel across continents possible for the first time. Pilots became celebrities, and long-distance flights (5) captured the public's imagination. Jet engines, introduced after the Second World War, (6) brought about a revolution in air travel. Today, millions of passengers (7) rely on aircraft to travel for business and leisure. Despite concerns about environmental impact, the aviation industry continues to grow as engineers (8) work on developing more sustainable technologies for the future.",
+    "text": "The dream of human flight (0) back thousands of years, but it was not until the early 20th century that it became a reality. The Wright brothers are (1) with making the first powered flight in 1903. Their achievement (2) the way for rapid developments in aviation technology. During the First World War, aircraft were (3) to use for military purposes, which accelerated their development. Commercial aviation (4) off in the 1920s, making travel across continents possible for the first time. Pilots became celebrities, and long-distance flights (5) the public's imagination. Jet engines, introduced after the Second World War, (6) about a revolution in air travel. Today, millions of passengers (7) on aircraft to travel for business and leisure. Despite concerns about environmental impact, the aviation industry continues to grow as engineers (8) on developing more sustainable technologies for the future.",
     "example": {
       "number": 0,
-      "options": ["A) dates", "B) goes", "C) traces", "D) reaches"],
+      "options": [
+        "A) dates",
+        "B) goes",
+        "C) traces",
+        "D) reaches"
+      ],
       "correct": "B",
       "explanation": "'Goes back' es la expresión correcta para indicar que algo se remonta en el tiempo."
     },
     "questions": [
-      {"number": 1, "options": ["A) praised", "B) honoured", "C) credited", "D) rewarded"], "correct": "C", "explanation": "'Credited with' significa reconocer a alguien por un logro."},
-      {"number": 2, "options": ["A) made the path", "B) cleared the road", "C) opened the route", "D) paved the way"], "correct": "D", "explanation": "'Paved the way for' es la expresión idiomática para facilitar desarrollos futuros."},
-      {"number": 3, "options": ["A) set to work", "B) put to use", "C) brought to action", "D) taken to service"], "correct": "B", "explanation": "'Put to use' significa utilizar algo para un propósito específico."},
-      {"number": 4, "options": ["A) took off", "B) set off", "C) went off", "D) lifted off"], "correct": "A", "explanation": "'Took off' significa despegar o empezar a tener éxito."},
-      {"number": 5, "options": ["A) caught", "B) grabbed", "C) captured", "D) seized"], "correct": "C", "explanation": "'Captured the imagination' es la colocación correcta para fascinar al público."},
-      {"number": 6, "options": ["A) carried out", "B) brought about", "C) set up", "D) turned over"], "correct": "B", "explanation": "'Brought about' significa causar o provocar un cambio importante."},
-      {"number": 7, "options": ["A) depend on", "B) count on", "C) rely on", "D) rest on"], "correct": "C", "explanation": "'Rely on' es la expresión más común para depender de algo."},
-      {"number": 8, "options": ["A) work on", "B) try on", "C) keep on", "D) carry on"], "correct": "A", "explanation": "'Work on' significa trabajar en el desarrollo de algo."}
+      {
+        "number": 1,
+        "options": [
+          "A) praised",
+          "B) honoured",
+          "C) credited",
+          "D) rewarded"
+        ],
+        "correct": "C",
+        "explanation": "'Credited with' significa reconocer a alguien por un logro."
+      },
+      {
+        "number": 2,
+        "options": [
+          "A) made the path",
+          "B) cleared the road",
+          "C) opened the route",
+          "D) paved the way"
+        ],
+        "correct": "D",
+        "explanation": "'Paved the way for' es la expresión idiomática para facilitar desarrollos futuros."
+      },
+      {
+        "number": 3,
+        "options": [
+          "A) set to work",
+          "B) put to use",
+          "C) brought to action",
+          "D) taken to service"
+        ],
+        "correct": "B",
+        "explanation": "'Put to use' significa utilizar algo para un propósito específico."
+      },
+      {
+        "number": 4,
+        "options": [
+          "A) took off",
+          "B) set off",
+          "C) went off",
+          "D) lifted off"
+        ],
+        "correct": "A",
+        "explanation": "'Took off' significa despegar o empezar a tener éxito."
+      },
+      {
+        "number": 5,
+        "options": [
+          "A) caught",
+          "B) grabbed",
+          "C) captured",
+          "D) seized"
+        ],
+        "correct": "C",
+        "explanation": "'Captured the imagination' es la colocación correcta para fascinar al público."
+      },
+      {
+        "number": 6,
+        "options": [
+          "A) carried out",
+          "B) brought about",
+          "C) set up",
+          "D) turned over"
+        ],
+        "correct": "B",
+        "explanation": "'Brought about' significa causar o provocar un cambio importante."
+      },
+      {
+        "number": 7,
+        "options": [
+          "A) depend on",
+          "B) count on",
+          "C) rely on",
+          "D) rest on"
+        ],
+        "correct": "C",
+        "explanation": "'Rely on' es la expresión más común para depender de algo."
+      },
+      {
+        "number": 8,
+        "options": [
+          "A) work on",
+          "B) try on",
+          "C) keep on",
+          "D) carry on"
+        ],
+        "correct": "A",
+        "explanation": "'Work on' significa trabajar en el desarrollo de algo."
+      }
     ]
   }
 }
