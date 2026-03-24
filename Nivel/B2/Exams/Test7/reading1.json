@@ -9,22 +9,107 @@
   "totalQuestions": 8,
   "description": "For questions 1–8, read the text below and choose which answer (A, B, C or D) best completes each gap.",
   "content": {
-    "text": "The Amazon rainforest is often (0) referred to as 'the lungs of the Earth' because it produces approximately twenty percent of the world's oxygen. This vast ecosystem (1) covers an area of over five million square kilometres and is home to an astonishing variety of wildlife. Scientists believe that one in ten known species on Earth (2) lives in the Amazon. (3) However, this precious habitat is under serious threat from deforestation. Every year, thousands of hectares of forest are (4) cut down to make way for agriculture and cattle ranching. Environmental groups have been (5) calling for stricter regulations to protect the remaining forest. Indigenous communities, who have lived in harmony with the forest for centuries, are also (6) speaking out against the destruction of their homeland. Many experts argue that preserving the Amazon is essential in the (7) fight against climate change. (8) Without urgent action, we risk losing one of the most biodiverse regions on the planet forever.",
+    "text": "The Amazon rainforest is often (0) to as 'the lungs of the Earth' because it produces approximately twenty percent of the world's oxygen. This vast ecosystem (1) an area of over five million square kilometres and is home to an astonishing variety of wildlife. Scientists believe that one in ten known species on Earth (2) in the Amazon. (3) this precious habitat is under serious threat from deforestation. Every year, thousands of hectares of forest are (4) down to make way for agriculture and cattle ranching. Environmental groups have been (5) for stricter regulations to protect the remaining forest. Indigenous communities, who have lived in harmony with the forest for centuries, are also (6) out against the destruction of their homeland. Many experts argue that preserving the Amazon is essential in the (7) against climate change. (8) urgent action, we risk losing one of the most biodiverse regions on the planet forever.",
     "example": {
       "number": 0,
-      "options": ["A) called", "B) referred", "C) named", "D) known"],
+      "options": [
+        "A) called",
+        "B) referred",
+        "C) named",
+        "D) known"
+      ],
       "correct": "B",
       "explanation": "'Referred to as' es la expresión correcta para indicar cómo se denomina algo comúnmente."
     },
     "questions": [
-      {"number": 1, "options": ["A) fills", "B) covers", "C) spreads", "D) takes"], "correct": "B", "explanation": "'Covers an area' es la colocación correcta para indicar extensión geográfica."},
-      {"number": 2, "options": ["A) lives", "B) stays", "C) remains", "D) exists"], "correct": "A", "explanation": "'Lives in' es el verbo natural para indicar dónde habitan las especies."},
-      {"number": 3, "options": ["A) Although", "B) Despite", "C) However", "D) Nevertheless"], "correct": "C", "explanation": "'However' introduce un contraste y va seguido de coma al principio de frase."},
-      {"number": 4, "options": ["A) put", "B) cut", "C) torn", "D) knocked"], "correct": "B", "explanation": "'Cut down' es el phrasal verb correcto para talar árboles."},
-      {"number": 5, "options": ["A) asking", "B) demanding", "C) calling", "D) requesting"], "correct": "C", "explanation": "'Calling for' es el phrasal verb adecuado para exigir o pedir públicamente."},
-      {"number": 6, "options": ["A) speaking out", "B) speaking up", "C) speaking off", "D) speaking on"], "correct": "A", "explanation": "'Speaking out against' significa expresar públicamente oposición a algo."},
-      {"number": 7, "options": ["A) battle", "B) fight", "C) war", "D) struggle"], "correct": "B", "explanation": "'The fight against' es la colocación más natural para la lucha contra un problema."},
-      {"number": 8, "options": ["A) Unless", "B) Without", "C) Except", "D) Apart"], "correct": "B", "explanation": "'Without' indica la ausencia de algo necesario para evitar un resultado negativo."}
+      {
+        "number": 1,
+        "options": [
+          "A) fills",
+          "B) covers",
+          "C) spreads",
+          "D) takes"
+        ],
+        "correct": "B",
+        "explanation": "'Covers an area' es la colocación correcta para indicar extensión geográfica."
+      },
+      {
+        "number": 2,
+        "options": [
+          "A) lives",
+          "B) stays",
+          "C) remains",
+          "D) exists"
+        ],
+        "correct": "A",
+        "explanation": "'Lives in' es el verbo natural para indicar dónde habitan las especies."
+      },
+      {
+        "number": 3,
+        "options": [
+          "A) Although",
+          "B) Despite",
+          "C) However",
+          "D) Nevertheless"
+        ],
+        "correct": "C",
+        "explanation": "'However' introduce un contraste y va seguido de coma al principio de frase."
+      },
+      {
+        "number": 4,
+        "options": [
+          "A) put",
+          "B) cut",
+          "C) torn",
+          "D) knocked"
+        ],
+        "correct": "B",
+        "explanation": "'Cut down' es el phrasal verb correcto para talar árboles."
+      },
+      {
+        "number": 5,
+        "options": [
+          "A) asking",
+          "B) demanding",
+          "C) calling",
+          "D) requesting"
+        ],
+        "correct": "C",
+        "explanation": "'Calling for' es el phrasal verb adecuado para exigir o pedir públicamente."
+      },
+      {
+        "number": 6,
+        "options": [
+          "A) speaking out",
+          "B) speaking up",
+          "C) speaking off",
+          "D) speaking on"
+        ],
+        "correct": "A",
+        "explanation": "'Speaking out against' significa expresar públicamente oposición a algo."
+      },
+      {
+        "number": 7,
+        "options": [
+          "A) battle",
+          "B) fight",
+          "C) war",
+          "D) struggle"
+        ],
+        "correct": "B",
+        "explanation": "'The fight against' es la colocación más natural para la lucha contra un problema."
+      },
+      {
+        "number": 8,
+        "options": [
+          "A) Unless",
+          "B) Without",
+          "C) Except",
+          "D) Apart"
+        ],
+        "correct": "B",
+        "explanation": "'Without' indica la ausencia de algo necesario para evitar un resultado negativo."
+      }
     ]
   }
 }

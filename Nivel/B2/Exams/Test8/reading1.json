@@ -9,22 +9,107 @@
   "totalQuestions": 8,
   "description": "For questions 1–8, read the text below and choose which answer (A, B, C or D) best completes each gap.",
   "content": {
-    "text": "Fast fashion refers to the rapid production of inexpensive clothing that (0) keeps up with the latest trends. While this business model has made fashionable clothes more (1) accessible to consumers, it has also created serious environmental problems. The fashion industry is now responsible (2) for approximately ten percent of global carbon emissions. (3) Moreover, the production of synthetic fabrics releases harmful microplastics into our oceans. Many fast fashion items are worn only a few times before being (4) thrown away, contributing to growing mountains of textile waste. In recent years, consumers have become increasingly (5) aware of these issues. Some shoppers are now choosing to buy second-hand clothing or to (6) opt for more sustainable brands. Fashion companies are also (7) under pressure to change their practices. Several major retailers have (8) launched initiatives to recycle old garments and reduce their environmental footprint. However, critics argue that these efforts are merely a drop in the ocean compared to what is truly needed.",
+    "text": "Fast fashion refers to the rapid production of inexpensive clothing that (0) up with the latest trends. While this business model has made fashionable clothes more (1) to consumers, it has also created serious environmental problems. The fashion industry is now responsible (2) approximately ten percent of global carbon emissions. (3) the production of synthetic fabrics releases harmful microplastics into our oceans. Many fast fashion items are worn only a few times before being (4) away, contributing to growing mountains of textile waste. In recent years, consumers have become increasingly (5) of these issues. Some shoppers are now choosing to buy second-hand clothing or to (6) for more sustainable brands. Fashion companies are also (7) pressure to change their practices. Several major retailers have (8) initiatives to recycle old garments and reduce their environmental footprint. However, critics argue that these efforts are merely a drop in the ocean compared to what is truly needed.",
     "example": {
       "number": 0,
-      "options": ["A) stays", "B) keeps", "C) remains", "D) holds"],
+      "options": [
+        "A) stays",
+        "B) keeps",
+        "C) remains",
+        "D) holds"
+      ],
       "correct": "B",
       "explanation": "'Keeps up with' es el phrasal verb correcto para seguir el ritmo de algo."
     },
     "questions": [
-      {"number": 1, "options": ["A) available", "B) reachable", "C) accessible", "D) obtainable"], "correct": "C", "explanation": "'Accessible to' es la colocación correcta para indicar que algo está al alcance de alguien."},
-      {"number": 2, "options": ["A) for", "B) of", "C) to", "D) with"], "correct": "A", "explanation": "'Responsible for' es la preposición correcta después de 'responsible'."},
-      {"number": 3, "options": ["A) However", "B) Therefore", "C) Moreover", "D) Although"], "correct": "C", "explanation": "'Moreover' añade información adicional que refuerza el argumento anterior."},
-      {"number": 4, "options": ["A) put", "B) thrown", "C) cast", "D) tossed"], "correct": "B", "explanation": "'Thrown away' es el phrasal verb más común para tirar algo a la basura."},
-      {"number": 5, "options": ["A) conscious", "B) aware", "C) familiar", "D) informed"], "correct": "B", "explanation": "'Aware of' es la expresión correcta para indicar conocimiento de un problema."},
-      {"number": 6, "options": ["A) choose", "B) select", "C) opt", "D) pick"], "correct": "C", "explanation": "'Opt for' es el phrasal verb correcto para elegir una opción entre varias."},
-      {"number": 7, "options": ["A) beneath", "B) below", "C) under", "D) down"], "correct": "C", "explanation": "'Under pressure' es la expresión fija que significa estar presionado."},
-      {"number": 8, "options": ["A) started", "B) opened", "C) begun", "D) launched"], "correct": "D", "explanation": "'Launched initiatives' es la colocación correcta para poner en marcha programas o campañas."}
+      {
+        "number": 1,
+        "options": [
+          "A) available",
+          "B) reachable",
+          "C) accessible",
+          "D) obtainable"
+        ],
+        "correct": "C",
+        "explanation": "'Accessible to' es la colocación correcta para indicar que algo está al alcance de alguien."
+      },
+      {
+        "number": 2,
+        "options": [
+          "A) for",
+          "B) of",
+          "C) to",
+          "D) with"
+        ],
+        "correct": "A",
+        "explanation": "'Responsible for' es la preposición correcta después de 'responsible'."
+      },
+      {
+        "number": 3,
+        "options": [
+          "A) However",
+          "B) Therefore",
+          "C) Moreover",
+          "D) Although"
+        ],
+        "correct": "C",
+        "explanation": "'Moreover' añade información adicional que refuerza el argumento anterior."
+      },
+      {
+        "number": 4,
+        "options": [
+          "A) put",
+          "B) thrown",
+          "C) cast",
+          "D) tossed"
+        ],
+        "correct": "B",
+        "explanation": "'Thrown away' es el phrasal verb más común para tirar algo a la basura."
+      },
+      {
+        "number": 5,
+        "options": [
+          "A) conscious",
+          "B) aware",
+          "C) familiar",
+          "D) informed"
+        ],
+        "correct": "B",
+        "explanation": "'Aware of' es la expresión correcta para indicar conocimiento de un problema."
+      },
+      {
+        "number": 6,
+        "options": [
+          "A) choose",
+          "B) select",
+          "C) opt",
+          "D) pick"
+        ],
+        "correct": "C",
+        "explanation": "'Opt for' es el phrasal verb correcto para elegir una opción entre varias."
+      },
+      {
+        "number": 7,
+        "options": [
+          "A) beneath",
+          "B) below",
+          "C) under",
+          "D) down"
+        ],
+        "correct": "C",
+        "explanation": "'Under pressure' es la expresión fija que significa estar presionado."
+      },
+      {
+        "number": 8,
+        "options": [
+          "A) started",
+          "B) opened",
+          "C) begun",
+          "D) launched"
+        ],
+        "correct": "D",
+        "explanation": "'Launched initiatives' es la colocación correcta para poner en marcha programas o campañas."
+      }
     ]
   }
 }

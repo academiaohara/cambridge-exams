@@ -9,22 +9,107 @@
   "totalQuestions": 8,
   "description": "For questions 1–8, read the text below and choose which answer (A, B, C or D) best completes each gap.",
   "content": {
-    "text": "Modern libraries have (0) undergone a remarkable transformation in recent decades. While they still (1) serve as places to borrow books, they now offer much more to their communities. Many libraries have (2) branched out into digital services, providing access to e-books, online databases, and streaming platforms. Computer facilities and free internet access help (3) bridge the digital divide for those who cannot afford technology at home. Libraries have also (4) taken on the role of community centres, hosting events, workshops, and exhibitions. Some have even (5) set aside spaces for co-working and small business development. Librarians are no longer just keepers of books; they now (6) act as guides helping people navigate the vast world of information. Despite predictions that the internet would make libraries obsolete, they have (7) proved to be more resilient than expected. By constantly adapting to changing needs, libraries continue to (8) play a vital role in education and community life around the world.",
+    "text": "Modern libraries have (0) a remarkable transformation in recent decades. While they still (1) as places to borrow books, they now offer much more to their communities. Many libraries have (2) out into digital services, providing access to e-books, online databases, and streaming platforms. Computer facilities and free internet access help (3) the digital divide for those who cannot afford technology at home. Libraries have also (4) on the role of community centres, hosting events, workshops, and exhibitions. Some have even (5) aside spaces for co-working and small business development. Librarians are no longer just keepers of books; they now (6) as guides helping people navigate the vast world of information. Despite predictions that the internet would make libraries obsolete, they have (7) to be more resilient than expected. By constantly adapting to changing needs, libraries continue to (8) a vital role in education and community life around the world.",
     "example": {
       "number": 0,
-      "options": ["A) experienced", "B) undertaken", "C) undergone", "D) passed"],
+      "options": [
+        "A) experienced",
+        "B) undertaken",
+        "C) undergone",
+        "D) passed"
+      ],
       "correct": "C",
       "explanation": "'Undergone' es el verbo correcto para indicar que algo ha experimentado un cambio."
     },
     "questions": [
-      {"number": 1, "options": ["A) work", "B) serve", "C) function", "D) operate"], "correct": "B", "explanation": "'Serve as' es la expresión correcta para indicar la función de algo."},
-      {"number": 2, "options": ["A) spread out", "B) branched out", "C) reached out", "D) stretched out"], "correct": "B", "explanation": "'Branched out into' significa expandirse hacia nuevas áreas o actividades."},
-      {"number": 3, "options": ["A) cross", "B) close", "C) bridge", "D) fill"], "correct": "C", "explanation": "'Bridge the divide' es la expresión fija para reducir diferencias."},
-      {"number": 4, "options": ["A) put on", "B) taken on", "C) held on", "D) kept on"], "correct": "B", "explanation": "'Taken on' significa asumir una nueva función o responsabilidad."},
-      {"number": 5, "options": ["A) put aside", "B) laid aside", "C) set aside", "D) left aside"], "correct": "C", "explanation": "'Set aside' significa reservar algo para un propósito específico."},
-      {"number": 6, "options": ["A) act as", "B) work like", "C) behave as", "D) perform like"], "correct": "A", "explanation": "'Act as' es la expresión correcta para indicar que alguien desempeña un papel."},
-      {"number": 7, "options": ["A) shown", "B) turned", "C) resulted", "D) proved"], "correct": "D", "explanation": "'Proved to be' significa demostrar ser algo con el tiempo."},
-      {"number": 8, "options": ["A) do", "B) make", "C) have", "D) play"], "correct": "D", "explanation": "'Play a role' es la expresión fija para tener importancia en algo."}
+      {
+        "number": 1,
+        "options": [
+          "A) work",
+          "B) serve",
+          "C) function",
+          "D) operate"
+        ],
+        "correct": "B",
+        "explanation": "'Serve as' es la expresión correcta para indicar la función de algo."
+      },
+      {
+        "number": 2,
+        "options": [
+          "A) spread out",
+          "B) branched out",
+          "C) reached out",
+          "D) stretched out"
+        ],
+        "correct": "B",
+        "explanation": "'Branched out into' significa expandirse hacia nuevas áreas o actividades."
+      },
+      {
+        "number": 3,
+        "options": [
+          "A) cross",
+          "B) close",
+          "C) bridge",
+          "D) fill"
+        ],
+        "correct": "C",
+        "explanation": "'Bridge the divide' es la expresión fija para reducir diferencias."
+      },
+      {
+        "number": 4,
+        "options": [
+          "A) put on",
+          "B) taken on",
+          "C) held on",
+          "D) kept on"
+        ],
+        "correct": "B",
+        "explanation": "'Taken on' significa asumir una nueva función o responsabilidad."
+      },
+      {
+        "number": 5,
+        "options": [
+          "A) put aside",
+          "B) laid aside",
+          "C) set aside",
+          "D) left aside"
+        ],
+        "correct": "C",
+        "explanation": "'Set aside' significa reservar algo para un propósito específico."
+      },
+      {
+        "number": 6,
+        "options": [
+          "A) act as",
+          "B) work like",
+          "C) behave as",
+          "D) perform like"
+        ],
+        "correct": "A",
+        "explanation": "'Act as' es la expresión correcta para indicar que alguien desempeña un papel."
+      },
+      {
+        "number": 7,
+        "options": [
+          "A) shown",
+          "B) turned",
+          "C) resulted",
+          "D) proved"
+        ],
+        "correct": "D",
+        "explanation": "'Proved to be' significa demostrar ser algo con el tiempo."
+      },
+      {
+        "number": 8,
+        "options": [
+          "A) do",
+          "B) make",
+          "C) have",
+          "D) play"
+        ],
+        "correct": "D",
+        "explanation": "'Play a role' es la expresión fija para tener importancia en algo."
+      }
     ]
   }
 }

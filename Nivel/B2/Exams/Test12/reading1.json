@@ -9,22 +9,107 @@
   "totalQuestions": 8,
   "description": "For questions 1–8, read the text below and choose which answer (A, B, C or D) best completes each gap.",
   "content": {
-    "text": "Urban gardening has (0) gained popularity in cities worldwide as people seek to reconnect with nature. Growing vegetables and herbs in small spaces (1) enables city dwellers to enjoy fresh produce without relying entirely on supermarkets. Community gardens have (2) sprung up in neighbourhoods where residents share plots of land and gardening responsibilities. These green spaces not only provide food but also (3) contribute to mental wellbeing by offering a peaceful escape from urban stress. Many people find that tending to plants helps them (4) cope with the pressures of modern life. Rooftop gardens and vertical farming are innovative solutions that (5) make the most of limited space in densely populated areas. Local authorities have started to (6) take notice of these initiatives and are now providing support for urban agriculture projects. Schools are also (7) getting involved by teaching children how to grow their own food. The movement shows no signs of slowing down, as more people (8) come to appreciate the benefits of growing plants in the city.",
+    "text": "Urban gardening has (0) popularity in cities worldwide as people seek to reconnect with nature. Growing vegetables and herbs in small spaces (1) city dwellers to enjoy fresh produce without relying entirely on supermarkets. Community gardens have (2) up in neighbourhoods where residents share plots of land and gardening responsibilities. These green spaces not only provide food but also (3) to mental wellbeing by offering a peaceful escape from urban stress. Many people find that tending to plants helps them (4) with the pressures of modern life. Rooftop gardens and vertical farming are innovative solutions that (5) the most of limited space in densely populated areas. Local authorities have started to (6) notice of these initiatives and are now providing support for urban agriculture projects. Schools are also (7) involved by teaching children how to grow their own food. The movement shows no signs of slowing down, as more people (8) to appreciate the benefits of growing plants in the city.",
     "example": {
       "number": 0,
-      "options": ["A) earned", "B) won", "C) gained", "D) achieved"],
+      "options": [
+        "A) earned",
+        "B) won",
+        "C) gained",
+        "D) achieved"
+      ],
       "correct": "C",
       "explanation": "'Gained popularity' es la colocación correcta para indicar que algo se ha vuelto más popular."
     },
     "questions": [
-      {"number": 1, "options": ["A) allows", "B) permits", "C) enables", "D) lets"], "correct": "C", "explanation": "'Enables' es el verbo formal que indica dar la capacidad de hacer algo."},
-      {"number": 2, "options": ["A) come up", "B) sprung up", "C) grown up", "D) turned up"], "correct": "B", "explanation": "'Sprung up' indica que algo ha aparecido rápidamente en varios lugares."},
-      {"number": 3, "options": ["A) add", "B) donate", "C) contribute", "D) provide"], "correct": "C", "explanation": "'Contribute to' es la expresión correcta para indicar que algo ayuda a algo."},
-      {"number": 4, "options": ["A) deal", "B) cope", "C) manage", "D) handle"], "correct": "B", "explanation": "'Cope with' es el phrasal verb correcto para manejar situaciones difíciles."},
-      {"number": 5, "options": ["A) do the best", "B) take the most", "C) get the best", "D) make the most"], "correct": "D", "explanation": "'Make the most of' significa aprovechar al máximo algo."},
-      {"number": 6, "options": ["A) take notice", "B) pay attention", "C) give regard", "D) make awareness"], "correct": "A", "explanation": "'Take notice of' es la expresión fija que significa prestar atención a algo."},
-      {"number": 7, "options": ["A) becoming involved", "B) getting involved", "C) being involved", "D) going involved"], "correct": "B", "explanation": "'Getting involved' es la expresión correcta para participar en algo."},
-      {"number": 8, "options": ["A) get", "B) grow", "C) come", "D) go"], "correct": "C", "explanation": "'Come to appreciate' indica llegar a valorar algo gradualmente."}
+      {
+        "number": 1,
+        "options": [
+          "A) allows",
+          "B) permits",
+          "C) enables",
+          "D) lets"
+        ],
+        "correct": "C",
+        "explanation": "'Enables' es el verbo formal que indica dar la capacidad de hacer algo."
+      },
+      {
+        "number": 2,
+        "options": [
+          "A) come up",
+          "B) sprung up",
+          "C) grown up",
+          "D) turned up"
+        ],
+        "correct": "B",
+        "explanation": "'Sprung up' indica que algo ha aparecido rápidamente en varios lugares."
+      },
+      {
+        "number": 3,
+        "options": [
+          "A) add",
+          "B) donate",
+          "C) contribute",
+          "D) provide"
+        ],
+        "correct": "C",
+        "explanation": "'Contribute to' es la expresión correcta para indicar que algo ayuda a algo."
+      },
+      {
+        "number": 4,
+        "options": [
+          "A) deal",
+          "B) cope",
+          "C) manage",
+          "D) handle"
+        ],
+        "correct": "B",
+        "explanation": "'Cope with' es el phrasal verb correcto para manejar situaciones difíciles."
+      },
+      {
+        "number": 5,
+        "options": [
+          "A) do the best",
+          "B) take the most",
+          "C) get the best",
+          "D) make the most"
+        ],
+        "correct": "D",
+        "explanation": "'Make the most of' significa aprovechar al máximo algo."
+      },
+      {
+        "number": 6,
+        "options": [
+          "A) take notice",
+          "B) pay attention",
+          "C) give regard",
+          "D) make awareness"
+        ],
+        "correct": "A",
+        "explanation": "'Take notice of' es la expresión fija que significa prestar atención a algo."
+      },
+      {
+        "number": 7,
+        "options": [
+          "A) becoming involved",
+          "B) getting involved",
+          "C) being involved",
+          "D) going involved"
+        ],
+        "correct": "B",
+        "explanation": "'Getting involved' es la expresión correcta para participar en algo."
+      },
+      {
+        "number": 8,
+        "options": [
+          "A) get",
+          "B) grow",
+          "C) come",
+          "D) go"
+        ],
+        "correct": "C",
+        "explanation": "'Come to appreciate' indica llegar a valorar algo gradualmente."
+      }
     ]
   }
 }

@@ -9,22 +9,107 @@
   "totalQuestions": 8,
   "description": "For questions 1–8, read the text below and choose which answer (A, B, C or D) best completes each gap.",
   "content": {
-    "text": "The words commonly used by Londoners to (0) refer to the black London taxi, their most famous (1) mode of transport, does, in fact, have international origins. The official name for the London taxi is 'hackney carriage', a term which comes from the French word 'hacquenee', meaning a general-purpose carriage that could be hired. The first hackney carriages (2) appeared during the (3) reign of Queen Elizabeth I. These horse-drawn carriages belonged to wealthy aristocrats, who hired them out to less well-off (4) members of the gentry. 'Cab', a shortened form of another French word, 'cabriolet', was the name given to the faster, two-wheeled carriages that were introduced from France during the nineteenth century. (5) Even the word 'taxi' has a European dimension too. The 'taximeter' was an instrument invented by a German, Wilhelm Bruhn, in 1891. This machine (6) put an end to debates about the cost of a cab ride as it measured the distance travelled and the time taken of all (7) journeys, allowing the driver to (8) charge the customer an accurate fare.",
+    "text": "The words commonly used by Londoners to (0) to the black London taxi, their most famous (1) of transport, does, in fact, have international origins. The official name for the London taxi is 'hackney carriage', a term which comes from the French word 'hacquenee', meaning a general-purpose carriage that could be hired. The first hackney carriages (2) during the (3) of Queen Elizabeth I. These horse-drawn carriages belonged to wealthy aristocrats, who hired them out to less well-off (4) of the gentry. 'Cab', a shortened form of another French word, 'cabriolet', was the name given to the faster, two-wheeled carriages that were introduced from France during the nineteenth century. (5) the word 'taxi' has a European dimension too. The 'taximeter' was an instrument invented by a German, Wilhelm Bruhn, in 1891. This machine (6) an end to debates about the cost of a cab ride as it measured the distance travelled and the time taken of all (7) allowing the driver to (8) the customer an accurate fare.",
     "example": {
       "number": 0,
-      "options": ["A) mention", "B) refer", "C) talk", "D) specify"],
+      "options": [
+        "A) mention",
+        "B) refer",
+        "C) talk",
+        "D) specify"
+      ],
       "correct": "B",
       "explanation": "'Refer to' es el verbo adecuado para indicar cómo se nombra o menciona algo."
     },
     "questions": [
-      {"number": 1, "options": ["A) system", "B) style", "C) mode", "D) manner"], "correct": "C", "explanation": "La expresión fija es 'mode of transport', que significa 'medio de transporte'."},
-      {"number": 2, "options": ["A) appeared", "B) showed", "C) arose", "D) surfaced"], "correct": "A", "explanation": "'Appeared' es el verbo natural para indicar que algo empezó a existir o usarse."},
-      {"number": 3, "options": ["A) command", "B) control", "C) regime", "D) reign"], "correct": "D", "explanation": "Se usa 'reign' para referirse al periodo en que un monarca gobierna."},
-      {"number": 4, "options": ["A) parts", "B) agents", "C) members", "D) individuals"], "correct": "C", "explanation": "La expresión correcta es 'members of the gentry', un grupo social concreto."},
-      {"number": 5, "options": ["A) Even", "B) Still", "C) Like", "D) Since"], "correct": "A", "explanation": "'Even' introduce información adicional sorprendente: también la palabra 'taxi' tiene origen europeo."},
-      {"number": 6, "options": ["A) put", "B) made", "C) set", "D) left"], "correct": "A", "explanation": "La expresión fija es 'put an end to', que significa 'poner fin a'."},
-      {"number": 7, "options": ["A) tours", "B) voyages", "C) travels", "D) journeys"], "correct": "D", "explanation": "'Journeys' es la palabra adecuada para desplazamientos cortos como los de taxi."},
-      {"number": 8, "options": ["A) earn", "B) charge", "C) cost", "D) credit"], "correct": "B", "explanation": "Los conductores 'charge' a los clientes, es decir, les cobran una tarifa."}
+      {
+        "number": 1,
+        "options": [
+          "A) system",
+          "B) style",
+          "C) mode",
+          "D) manner"
+        ],
+        "correct": "C",
+        "explanation": "La expresión fija es 'mode of transport', que significa 'medio de transporte'."
+      },
+      {
+        "number": 2,
+        "options": [
+          "A) appeared",
+          "B) showed",
+          "C) arose",
+          "D) surfaced"
+        ],
+        "correct": "A",
+        "explanation": "'Appeared' es el verbo natural para indicar que algo empezó a existir o usarse."
+      },
+      {
+        "number": 3,
+        "options": [
+          "A) command",
+          "B) control",
+          "C) regime",
+          "D) reign"
+        ],
+        "correct": "D",
+        "explanation": "Se usa 'reign' para referirse al periodo en que un monarca gobierna."
+      },
+      {
+        "number": 4,
+        "options": [
+          "A) parts",
+          "B) agents",
+          "C) members",
+          "D) individuals"
+        ],
+        "correct": "C",
+        "explanation": "La expresión correcta es 'members of the gentry', un grupo social concreto."
+      },
+      {
+        "number": 5,
+        "options": [
+          "A) Even",
+          "B) Still",
+          "C) Like",
+          "D) Since"
+        ],
+        "correct": "A",
+        "explanation": "'Even' introduce información adicional sorprendente: también la palabra 'taxi' tiene origen europeo."
+      },
+      {
+        "number": 6,
+        "options": [
+          "A) put",
+          "B) made",
+          "C) set",
+          "D) left"
+        ],
+        "correct": "A",
+        "explanation": "La expresión fija es 'put an end to', que significa 'poner fin a'."
+      },
+      {
+        "number": 7,
+        "options": [
+          "A) tours",
+          "B) voyages",
+          "C) travels",
+          "D) journeys"
+        ],
+        "correct": "D",
+        "explanation": "'Journeys' es la palabra adecuada para desplazamientos cortos como los de taxi."
+      },
+      {
+        "number": 8,
+        "options": [
+          "A) earn",
+          "B) charge",
+          "C) cost",
+          "D) credit"
+        ],
+        "correct": "B",
+        "explanation": "Los conductores 'charge' a los clientes, es decir, les cobran una tarifa."
+      }
     ]
   }
 }
