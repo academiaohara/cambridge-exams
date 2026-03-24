@@ -16,14 +16,16 @@
       const defaultWordLimit = level === 'B2' ? '140-190' : '220-260';
       const wordLimit = exercise.content.wordLimit || defaultWordLimit;
       const savedAnswer = exercise.answers?.[1] || '';
+      const notesHtml = this._buildNotesHtml(exercise.content.notes);
 
       const html = `
         <div class="writing-type1-wrapper">
           <div class="writing-type1-prompt">
             <h3><i class="fas fa-pencil-alt"></i> Write your essay</h3>
             <p class="writing-type1-question">${question}</p>
+            ${notesHtml}
             <div class="writing-type1-word-limit">
-              <i class="fas fa-info-circle"></i> ${wordLimit} words written
+              <i class="fas fa-info-circle"></i> ${wordLimit} words
             </div>
           </div>
           <textarea class="writing-type1-textarea writing-textarea"
@@ -89,6 +91,43 @@
         const feedbackText = savedFeedback.replace(/✏️\s*CORRECTED TEXT\s*\n[\s\S]*?(?=\n📝\s*DETAILED FEEDBACK|\n✅|\n⚠️|$)/i, '');
         if (contentDiv) contentDiv.innerHTML = this._buildFeedbackTabs(feedbackText, 'type1');
       }
+    },
+
+    _buildNotesHtml: function(notes) {
+      if (!notes || typeof notes !== 'object') return '';
+      const topicKey = Object.keys(notes).find(k => k !== 'opinions');
+      const topicItems = topicKey ? (notes[topicKey] || []) : [];
+      const opinions = notes.opinions || [];
+      if (!topicItems.length && !opinions.length) return '';
+
+      const label = topicKey
+        ? topicKey.charAt(0).toUpperCase() + topicKey.slice(1)
+        : '';
+
+      let html = '<div class="writing-type1-notes">';
+
+      if (topicItems.length) {
+        html += `<div class="writing-type1-notes-section">
+          <span class="writing-type1-notes-label">${label}:</span>
+          <ul class="writing-type1-notes-list">`;
+        topicItems.forEach(item => {
+          html += `<li>${item}</li>`;
+        });
+        html += '</ul></div>';
+      }
+
+      if (opinions.length) {
+        html += `<div class="writing-type1-notes-section">
+          <span class="writing-type1-notes-label">Opinions:</span>
+          <ul class="writing-type1-notes-list">`;
+        opinions.forEach(op => {
+          html += `<li>${op}</li>`;
+        });
+        html += '</ul></div>';
+      }
+
+      html += '</div>';
+      return html;
     },
 
     _updateCount: function(text) {
