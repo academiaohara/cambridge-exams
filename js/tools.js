@@ -463,20 +463,26 @@
         let response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(query));
         let data = await response.json();
 
-        // If full query not found, try replacing spaces with %20 as hyphenated form
+        // If full query not found, try replacing spaces with hyphen
         if (data.title === "No Definitions Found" && query.indexOf(' ') !== -1) {
           var hyphenated = query.replace(/ /g, '-');
           response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(hyphenated));
           data = await response.json();
         }
 
-        // If still not found and multi-word, try first word as fallback
+        // If still not found, fall back to AI-powered dictionary for comprehensive coverage
         if (data.title === "No Definitions Found") {
-          var palabras = query.split(' ');
-          if (palabras.length > 1) {
-            this.buscarEnDiccionario(palabras[0]);
-            return;
+          var aiResponse = await fetch('/api/dictionary', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ word: query })
+          });
+          if (aiResponse.ok) {
+            data = await aiResponse.json();
           }
+        }
+
+        if (!Array.isArray(data) || data.length === 0 || (data.title && data.title === "No Definitions Found")) {
           if (requestId !== _toolRequestId) return;
           areaHerramientas.innerHTML = searchBoxHTML + '<p class="dict-not-found">' + 'No definition found for' + ' "' + query + '".</p>';
           var searchInput2 = document.getElementById('dict-search-input');
