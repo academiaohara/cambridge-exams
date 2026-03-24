@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "18A",
+        "candidate": "Candidate A",
+        "topic": "People using technology",
+        "instructions": "Compare the two photographs and say how technology is affecting each person's life and what benefits or drawbacks each situation might have.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test18_1a.jpg",
+            "description": "A teenager scrolling through a smartphone while sitting alone in a café."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test18_1b.jpg",
+            "description": "An elderly person receiving help from a family member to use a tablet computer."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which group of people do you think benefits the most from modern technology? (Why?)"
+        }
+      },
+      {
+        "id": "18B",
+        "candidate": "Candidate B",
+        "topic": "Technology in education",
+        "instructions": "Compare the two photographs and say how the learning experience differs and what advantages and disadvantages each method might have.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test18_1d.jpg",
+            "description": "Students sitting in rows in a traditional classroom listening to a teacher at a chalkboard."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test18_1e.jpg",
+            "description": "Children in a modern classroom using individual laptops to complete a task."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which approach to education do you think is the most effective for students? (Why?)"
+        }
+      }
+    ]
+  }
+}

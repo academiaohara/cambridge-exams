@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "27A",
+        "candidate": "Candidate A",
+        "topic": "Working in a team",
+        "instructions": "Compare the two photographs and say what the advantages and disadvantages of different working styles might be and how they affect productivity.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test27_1a.jpg",
+            "description": "A diverse team of professionals around a large conference table, engaged in a lively brainstorming session with notes and laptops in front of them"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test27_1b.jpg",
+            "description": "Two colleagues standing at a whiteboard covered in diagrams, clearly debating an idea with animated expressions"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which of these work situations do you think leads to the best outcomes, and why?"
+        }
+      },
+      {
+        "id": "27B",
+        "candidate": "Candidate B",
+        "topic": "Leadership styles",
+        "instructions": "Compare the two photographs and say what kind of leader each person appears to be and what qualities make an effective leader.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test27_1d.jpg",
+            "description": "A manager giving a confident, energetic presentation to a large audience in a modern auditorium, using bold visuals on a big screen"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test27_1e.jpg",
+            "description": "A team leader sitting informally with staff members in a circle, listening attentively to someone speaking, with a relaxed and open posture"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think leadership is a skill that can be learned, or do people have to be born with it?"
+        }
+      }
+    ]
+  }
+}

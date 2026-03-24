@@ -1,0 +1,49 @@
+{
+  "title": "Speaking - Part 3",
+  "type": "multiple-choice-text",
+  "time": 1.5,
+  "totalQuestions": 6,
+  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "content": {
+    "task": "Discuss the advantages of living in these different environments, then decide which one offers a better quality of life for a family with children.",
+    "options": [
+      "Smart cities",
+      "Quiet rural villages",
+      "Suburban neighborhoods",
+      "Coastal towns",
+      "Eco-communities"
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
+    "script": [
+      {
+        "role": "examiner",
+        "text": "Please talk together about the benefits of living in these different types of locations.",
+        "showOptions": true
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now decide which one is the best environment for raising a family."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      }
+    ]
+  }
+}

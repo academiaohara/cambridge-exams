@@ -1,0 +1,49 @@
+{
+  "title": "Speaking - Part 3",
+  "type": "multiple-choice-text",
+  "time": 1.5,
+  "totalQuestions": 6,
+  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "content": {
+    "task": "Discuss the potential benefits of space exploration for humanity, then decide which two justify the high financial cost.",
+    "options": [
+      "Scientific discovery",
+      "Mining rare minerals",
+      "Searching for life",
+      "Space tourism",
+      "Satellite technology"
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
+    "script": [
+      {
+        "role": "examiner",
+        "text": "Talk together about the various reasons why humans explore space.",
+        "showOptions": true
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now decide which two benefits are the most important for the future of our planet."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      }
+    ]
+  }
+}

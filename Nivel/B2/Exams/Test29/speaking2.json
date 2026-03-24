@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "43A",
+        "candidate": "Candidate A",
+        "topic": "Protests and activism",
+        "instructions": "Compare the two photographs and say what motivates people to take part in protests and activism and what effects their actions might have.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test43_1a.jpg",
+            "description": "Thousands of protesters marching through a city centre, carrying colourful placards demanding climate action, chanting with passionate energy"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test43_1b.jpg",
+            "description": "Climate activists blocking a busy road by sitting down in the street, cars backed up behind them as police officers look on from a distance"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think civil disobedience is ever a justified way to draw attention to an important cause? Why or why not?"
+        }
+      },
+      {
+        "id": "43B",
+        "candidate": "Candidate B",
+        "topic": "Voting and political participation",
+        "instructions": "Compare the two photographs and say what influences people's willingness to vote and participate in politics and why civic engagement matters.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test43_1d.jpg",
+            "description": "A long queue of voters outside a polling station on election day, people of all ages waiting patiently to cast their votes"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test43_1e.jpg",
+            "description": "A young person attending a political debate at a university, taking notes as candidates argue their cases on a stage"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think young people are less interested in voting and politics today, or have they simply found different ways to engage politically?"
+        }
+      }
+    ]
+  }
+}

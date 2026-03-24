@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "1A",
+        "candidate": "Candidate A",
+        "topic": "Doing things accurately",
+        "instructions": "Compare the two photographs and say why it might be important for the people to do these things accurately, and how difficult being accurate might be for them.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test1_1a.jpg",
+            "description": "A scientist or lab technician in a white coat using a precision pipette to move liquid between glass tubes in a laboratory setting."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test1_1b.jpg",
+            "description": "A pastry chef meticulously placing small, delicate decorations onto a high-end gourmet cake with extreme focus."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "In which activity do you think being accurate might matter the least? (Why?)"
+        }
+      },
+      {
+        "id": "1B",
+        "candidate": "Candidate B",
+        "topic": "Spending leisure time with water",
+        "instructions": "Compare the two photographs and say how the people might have prepared for these activities and how they might be feeling.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test1_1d.jpg",
+            "description": "A group of people wearing helmets and life jackets, white-water rafting through intense rapids on a river."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test1_1e.jpg",
+            "description": "A person relaxing peacefully in an outdoor thermal pool or hot spring with steam rising from the water."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which experience do you think will be the most memorable? (Why?)"
+        }
+      }
+    ]
+  }
+}

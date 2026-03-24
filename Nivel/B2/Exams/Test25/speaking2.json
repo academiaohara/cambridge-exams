@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "39A",
+        "candidate": "Candidate A",
+        "topic": "Healthcare workers and hospitals",
+        "instructions": "Compare the two photographs and say what pressures healthcare workers face and what qualities are essential for working in the medical field.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test39_1a.jpg",
+            "description": "A surgeon and their team in full protective gear performing a complex operation in a brightly lit theatre, all focused with precise movements"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test39_1b.jpg",
+            "description": "A nurse comforting an elderly patient in a hospital ward, holding their hand and speaking gently while the patient looks relieved"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "What do you think are the greatest pressures faced by healthcare workers today, and how can society better support them?"
+        }
+      },
+      {
+        "id": "39B",
+        "candidate": "Candidate B",
+        "topic": "Alternative medicine",
+        "instructions": "Compare the two photographs and say what might attract people to alternative medicine and what the potential risks and benefits might be.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test39_1d.jpg",
+            "description": "A therapist performing acupuncture on a relaxed patient lying face-down on a treatment table in a calm, softly lit clinic"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test39_1e.jpg",
+            "description": "A herbalist arranging rows of dried plant remedies and tinctures in a wooden cabinet, a customer looking on with curiosity"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think alternative medicine can be a valuable complement to conventional healthcare, or should people rely solely on evidence-based medicine?"
+        }
+      }
+    ]
+  }
+}

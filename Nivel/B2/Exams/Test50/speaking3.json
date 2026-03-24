@@ -1,0 +1,49 @@
+{
+  "title": "Speaking - Part 3",
+  "type": "multiple-choice-text",
+  "time": 1.5,
+  "totalQuestions": 6,
+  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "content": {
+    "task": "Discuss how AI is affecting these different sectors of society, then decide which one will undergo the most radical change.",
+    "options": [
+      "Healthcare diagnosis",
+      "Customer service",
+      "Autonomous transport",
+      "Creative writing",
+      "Financial services"
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
+    "script": [
+      {
+        "role": "examiner",
+        "text": "Please talk together about how artificial intelligence is being used in these different areas.",
+        "showOptions": true
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now decide which of these sectors will be most unrecognizable in ten years due to AI."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "48A",
+        "candidate": "Candidate A",
+        "topic": "Extreme sports and risk-taking",
+        "instructions": "Compare the two photographs and say what motivates people to take part in extreme sports and what the risks and rewards of these activities might be.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test48_1a.jpg",
+            "description": "A skydiver in freefall, arms spread wide against a backdrop of clouds and patchwork fields thousands of metres below, looking exhilarated"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test48_1b.jpg",
+            "description": "A rock climber without a rope soloing a sheer vertical cliff face, fingers gripping a tiny hold with intense concentration"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think people have the right to take dangerous risks for personal enjoyment, even if it means others may have to rescue them?"
+        }
+      },
+      {
+        "id": "48B",
+        "candidate": "Candidate B",
+        "topic": "Pushing personal limits",
+        "instructions": "Compare the two photographs and say what drives people to push their personal limits and what they might gain from these experiences.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test48_1d.jpg",
+            "description": "A marathon runner crossing the finish line in a city race, completely exhausted but with tears of joy and overwhelming relief on their face"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test48_1e.jpg",
+            "description": "A person completing their first public speech, visibly nervous but standing tall at a lectern in front of a large audience"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think overcoming personal challenges and taking risks is essential for personal growth? Can you think of examples?"
+        }
+      }
+    ]
+  }
+}

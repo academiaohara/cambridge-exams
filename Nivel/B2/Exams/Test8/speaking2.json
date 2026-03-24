@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "22A",
+        "candidate": "Candidate A",
+        "topic": "Environmental challenges",
+        "instructions": "Compare the two photographs and say what has caused these environmental problems and what effects they might have on both people and the natural world.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test22_1a.jpg",
+            "description": "Workers in protective suits cleaning up a large oil spill on a rocky coastline."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test22_1b.jpg",
+            "description": "An aerial view of a vast area of deforested land with smoke rising from burning trees."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which environmental challenge do you think is the most urgent to address? (Why?)"
+        }
+      },
+      {
+        "id": "22B",
+        "candidate": "Candidate B",
+        "topic": "People and nature",
+        "instructions": "Compare the two photographs and say why these people might have chosen to spend time in nature and what they might gain from the experience.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test22_1d.jpg",
+            "description": "A group of volunteers of different ages planting young trees in a local park."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test22_1e.jpg",
+            "description": "A family hiking along a trail through a dense, sunlit national forest."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which activity do you think is the most valuable for developing people's connection with nature? (Why?)"
+        }
+      }
+    ]
+  }
+}

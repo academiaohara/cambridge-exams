@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "20A",
+        "candidate": "Candidate A",
+        "topic": "Preparing food",
+        "instructions": "Compare the two photographs and say what people might enjoy about preparing food in these ways and what is important to each person.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test20_1a.jpg",
+            "description": "A professional chef carefully preparing fresh ingredients in a restaurant kitchen."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test20_1b.jpg",
+            "description": "A family cooking together in a home kitchen, with children helping to stir and mix."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which approach to food preparation do you think is most important to encourage in modern life? (Why?)"
+        }
+      },
+      {
+        "id": "20B",
+        "candidate": "Candidate B",
+        "topic": "Eating experiences",
+        "instructions": "Compare the two photographs and say what makes these eating experiences special and how the people might be feeling.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test20_1d.jpg",
+            "description": "People eating street food from small stalls at a lively, bustling outdoor night market."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test20_1e.jpg",
+            "description": "A couple having a romantic dinner at an elegantly decorated, dimly lit restaurant."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which type of eating experience do you find the most enjoyable? (Why?)"
+        }
+      }
+    ]
+  }
+}

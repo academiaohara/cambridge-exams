@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "9A",
+        "candidate": "Candidate A",
+        "topic": "Working together",
+        "instructions": "Compare the two photographs and say how important cooperation is in these situations and what might happen if the people don't work together.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test9_1a.jpg",
+            "description": "A team of medical professionals, including surgeons and nurses, performing a complex operation in a theater."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test9_1b.jpg",
+            "description": "Two people together assembling a large tent on a windy day at a campsite."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "In which situation is communication most critical? (Why?)"
+        }
+      },
+      {
+        "id": "9B",
+        "candidate": "Candidate B",
+        "topic": "Different types of markets",
+        "instructions": "Compare the two photographs and say why people might choose to shop in these places and what the atmosphere might be like.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test9_1d.jpg",
+            "description": "A traditional outdoor food market with colorful stalls selling fresh fruits and vegetables."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test9_1e.jpg",
+            "description": "A high-end, luxury fashion boutique with minimalist decor and very few customers."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which of these shopping experiences do you find most appealing? (Why?)"
+        }
+      }
+    ]
+  }
+}

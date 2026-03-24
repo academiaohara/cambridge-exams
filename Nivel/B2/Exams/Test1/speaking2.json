@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "15A",
+        "candidate": "Candidate A",
+        "topic": "Memorable moments",
+        "instructions": "Compare the two photographs and say why these moments might be memorable and how the people might be feeling.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test15_1a.jpg",
+            "description": "A winner of a race crossing the finish line with their arms raised in triumph."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test15_1b.jpg",
+            "description": "A family seeing each other for the first time in a busy airport arrivals hall."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which of these moments do you think is the most emotional? (Why?)"
+        }
+      },
+      {
+        "id": "15B",
+        "candidate": "Candidate B",
+        "topic": "Looking at art",
+        "instructions": "Compare the two photographs and say why the people might have chosen to see art in these ways and what they are getting out of the experience.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test15_1d.jpg",
+            "description": "A solitary person looking at a huge, modern painting in a minimalist white art gallery."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test15_1e.jpg",
+            "description": "A crowd of people in a street looking at a large, colorful piece of graffiti or mural art."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which way of experiencing art do you find most interesting? (Why?)"
+        }
+      }
+    ]
+  }
+}
