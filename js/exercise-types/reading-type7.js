@@ -125,13 +125,30 @@
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = value;
       
-      // Update the gap display in place
+      // Update the gap display in the text section
       const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
       const gap = document.querySelector(`.reading-type7-gap[data-qnum="${qNum}"]`);
       if (gap && question) {
         const isInline = gap.dataset.inline === 'true';
         const isChecked = AppState.answersChecked;
         gap.outerHTML = ReadingType7.renderGap(question, qNum, isChecked, value, isInline);
+      }
+      
+      // Also update the gap box in the toggle questions section
+      const answerSpan = document.getElementById('answer-' + qNum);
+      if (answerSpan) {
+        const gapTextSpan = answerSpan.querySelector('.gap-text');
+        if (gapTextSpan) {
+          gapTextSpan.textContent = value;
+        } else {
+          const span = document.createElement('span');
+          span.className = 'gap-text';
+          span.textContent = value;
+          answerSpan.innerHTML = '';
+          answerSpan.appendChild(span);
+        }
+        const gapBox = answerSpan.closest('.gap-box');
+        if (gapBox) gapBox.classList.add('answered');
       }
       
       Timer.updateScoreDisplay();
@@ -247,11 +264,27 @@
         const isCorrect = this.isAnswerCorrect(q, userAnswer);
         if (isCorrect) correct += 2;
         
-        // Update gap display to show checked state with pill design
+        // Update gap display in the text section (pill design)
         const gap = document.querySelector(`.reading-type7-gap[data-qnum="${q.number}"]`);
         if (gap) {
           const isInline = gap.dataset.inline === 'true';
           gap.outerHTML = ReadingType7.renderGap(q, q.number, true, userAnswer || '', isInline);
+        }
+        
+        // Also update the gap box in the toggle questions section (reading-type8-question format)
+        const answerSpan = document.getElementById('answer-' + q.number);
+        if (answerSpan) {
+          const gapBox = answerSpan.closest('.gap-box');
+          if (gapBox) {
+            gapBox.classList.add('checked');
+            if (userAnswer) {
+              gapBox.classList.add(isCorrect ? 'correct' : 'incorrect');
+              if (!isCorrect) {
+                gapBox.setAttribute('data-correct', '✓ ' + q.correct);
+              }
+            }
+            gapBox.onclick = null;
+          }
         }
       });
       

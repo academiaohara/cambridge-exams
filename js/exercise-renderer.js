@@ -5,15 +5,23 @@
       const content = document.getElementById('main-content');
       const partConfig = CONFIG.getPartConfig(section, part);
       
-      // Cargar CSS y JS específicos del tipo de ejercicio
-      Utils.loadExerciseTypeCSS(partConfig.type);
+      // Cargar CSS y JS específicos del tipo de ejercicio (esperar ambos antes de renderizar)
+      const cssPromises = [Utils.loadExerciseTypeCSS(partConfig.type)];
       const jsPromises = [Utils.loadExerciseTypeJS(partConfig.type)];
       
       // Cargar CSS/JS adicional para secciones de listening
       if (section === 'listening') {
-        Utils.loadExerciseTypeCSS('listening-' + part);
+        cssPromises.push(Utils.loadExerciseTypeCSS('listening-' + part));
         jsPromises.push(Utils.loadExerciseTypeJS('listening-' + part));
       }
+      
+      // gapped-text toggle questions section uses reading-type8 CSS classes
+      if (partConfig.type === 'gapped-text') {
+        cssPromises.push(Utils.loadExerciseTypeCSS('multiple-matching'));
+      }
+      
+      // Esperar CSS y JS antes de construir el HTML dependiente del tipo
+      await Promise.all([...cssPromises, ...jsPromises]);
       
       const paragraphs = exercise.content.text ? exercise.content.text.split('||') : [];
       let paragraphsHTML = this.renderParagraphs(paragraphs, exercise, partConfig);
@@ -56,9 +64,8 @@
         
         questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
         
-        const isGappedSentenceMode = partConfig.type === 'gapped-text' && this._isGappedSentenceMode(exercise);
-        const secondToggleI18nKey = partConfig.type === 'gapped-text' ? (isGappedSentenceMode ? 'sentenceOptions' : 'paragraphOptions') : 'showQuestions';
-        const i18nMap = { showQuestions: 'Questions', paragraphOptions: 'Paragraph Options', sentenceOptions: 'Sentence Options', showText: 'Text' };
+        const secondToggleI18nKey = 'showQuestions';
+        const i18nMap = { showQuestions: 'Questions', showText: 'Text' };
         const secondToggleLabel = i18nMap[secondToggleI18nKey] || secondToggleI18nKey;
         const isReadingPart5to8 = section === 'reading' && part >= 5;
         const showExplanationBtn = isReadingPart5to8;
@@ -289,8 +296,7 @@
       
       content.innerHTML = html;
       
-      // Wait for exercise-type JS to load, then initialize type-specific listeners
-      await Promise.all(jsPromises);
+      // Initialize type-specific listeners (JS already loaded above)
       this.initTypeSpecificListeners(partConfig.type);
     },
     
@@ -420,18 +426,31 @@
       
       let html = '';
       
-      // For gapped-text (Part 7), show paragraph/sentence options A-G
-      if (partConfig.type === 'gapped-text' && exercise.content.paragraphs) {
-        var self = this;
-        const isSentenceMode = this._isGappedSentenceMode(exercise);
-        html += '<div class="reading-type7-options">';
-        html += '<h4><i class="fas fa-list"></i> ' + (isSentenceMode ? 'Sentence Options' : 'Paragraph Options') + '</h4>';
-        html += '<div class="reading-type7-paragraph-list">';
-        Object.entries(exercise.content.paragraphs).forEach(function(entry) {
-          const key = entry[0], text = entry[1];
-          html += '<div class="reading-type7-paragraph-row"><span class="reading-type7-paragraph-label">' + key + '</span><div class="reading-type7-paragraph-item">' + self.processEvidenceMarkers(text) + '</div></div>';
+      // For gapped-text (Part 6/7), show questions in reading-type8-question card format
+      if (partConfig.type === 'gapped-text') {
+        html += '<div class="reading-type8-questions">';
+        questions.forEach(function(q) {
+          var qNum = q.number;
+          var ua = userAnswer[qNum] || '';
+          var btnCls = 'gap-box gap-box-small';
+          if (ua) btnCls += ' answered';
+          if (isChecked) {
+            btnCls += ' checked';
+            if (ua) btnCls += ua === q.correct ? ' correct' : ' incorrect';
+          }
+          var correctAttr = (isChecked && ua && ua !== q.correct) ? 'data-correct="✓ ' + q.correct + '"' : '';
+          var onclickAttr = !isChecked ? 'onclick="ReadingType7.openSelectModal(' + qNum + ')"' : '';
+          var displayText = ua || '.........';
+          html += '<div class="reading-type8-question">';
+          html += '<span class="gap-container">';
+          html += '<span class="gap-number-outside">' + qNum + ')</span>';
+          html += '<span class="' + btnCls + '" ' + correctAttr + ' ' + onclickAttr + '>';
+          html += '<span class="gap-answer" id="answer-' + qNum + '"><span class="gap-text">' + displayText + '</span></span>';
+          html += '</span>';
+          html += '</span>';
+          html += '</div>';
         });
-        html += '</div></div>';
+        html += '</div>';
         return html;
       }
       
@@ -480,8 +499,17 @@
       const isChecked = AppState.answersChecked;
       let cells = '';
       if (isPart7) {
-        Object.keys(paragraphs).forEach(function(key) {
-          cells += '<button class="question-nav-cell" onclick="QuestionNav.openParagraph(\'' + escapeJsString(key) + '\')">' + escapeHtml(key) + '</button>';
+        questions.forEach(function(q) {
+          const qNum = q.number;
+          const answer = answers[qNum];
+          let cls = 'question-nav-cell';
+          if (isChecked) {
+            if (answer) cls += answer === q.correct ? ' correct' : ' incorrect';
+            else cls += ' unanswered-checked';
+          } else if (answer) {
+            cls += ' answered';
+          }
+          cells += '<button class="' + cls + '" data-qnum="' + qNum + '" onclick="QuestionNav.openQuestion(' + qNum + ')">' + qNum + '</button>';
         });
         return '<div class="question-nav-row" id="question-nav-row">' + cells + '</div>';
       }

@@ -30,22 +30,24 @@
       const fileInfo = window.CONFIG?.EXERCISE_TYPE_FILES?.[type];
       if (!fileInfo || !fileInfo.css) {
         console.warn(`⚠️ No hay CSS definido para el tipo: ${type}`);
-        return;
+        return Promise.resolve();
       }
       
       const cssId = `css-${type}`;
       if (document.getElementById(cssId)) {
         console.log(`✅ CSS ya cargado para tipo: ${type}`);
-        return;
+        return Promise.resolve();
       }
       
-      const link = document.createElement('link');
-      link.id = cssId;
-      link.rel = 'stylesheet';
-      link.href = `${window.CONFIG.CSS_BASE_URL}exercise-types/${fileInfo.css}`;
-      link.onload = () => console.log(`🎨 CSS cargado: ${fileInfo.css}`);
-      link.onerror = () => console.error(`❌ Error cargando CSS: ${fileInfo.css}`);
-      document.head.appendChild(link);
+      return new Promise(function(resolve) {
+        const link = document.createElement('link');
+        link.id = cssId;
+        link.rel = 'stylesheet';
+        link.href = `${window.CONFIG.CSS_BASE_URL}exercise-types/${fileInfo.css}`;
+        link.onload = function() { console.log(`🎨 CSS cargado: ${fileInfo.css}`); resolve(); };
+        link.onerror = function() { console.error(`❌ Error cargando CSS: ${fileInfo.css}`); resolve(); };
+        document.head.appendChild(link);
+      });
     },
     
     // Cargar JS específico del tipo de ejercicio
