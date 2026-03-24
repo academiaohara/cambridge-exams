@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following ways of strengthening democracy and civic engagement, then decide which two are most important.",
-    "options": [
-      "Making voting compulsory for all eligible citizens",
-      "Lowering the voting age to sixteen",
-      "Improving political education in schools",
-      "Making it easier to vote through digital and postal voting",
-      "Holding politicians more accountable through independent oversight"
+    "centralQuestion": "How can democracy and civic engagement be strengthened?",
+    "suggestions": [
+      "Compulsory voting",
+      "Civic education in schools",
+      "Online voting systems",
+      "Greater local government power",
+      "More transparency from politicians"
     ],
+    "decisionTask": "Now decide which two measures would be most effective at strengthening democracy.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now decide which two are most important.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how democracy and civic engagement can be strengthened.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some ideas related to democracy and civic engagement. Discuss the following ways of strengthening democracy and civic engagement, then decide which two are most important. You have about two minutes for this, so don't worry if I stop you. Please speak so that we can hear you."
+        "text": "Now you have about a minute to decide which two measures are most effective."
       },
       {
         "role": "partner",

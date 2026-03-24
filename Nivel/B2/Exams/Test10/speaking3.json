@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following initiatives that governments could introduce to reduce inequality in society, then decide which two would be the most effective.",
-    "options": [
+    "centralQuestion": "How could governments reduce inequality in society?",
+    "suggestions": [
+      "Progressive taxation",
+      "Better access to education",
       "Higher minimum wage",
-      "Universal basic income",
-      "Free childcare for all",
-      "More social housing",
-      "Equal access to quality education"
+      "Affordable housing schemes",
+      "Free healthcare"
     ],
+    "decisionTask": "Now decide which two initiatives would be the most effective at reducing inequality.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some initiatives that governments could introduce to reduce inequality in society.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how governments could reduce inequality.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now decide which two initiatives would most effectively reduce inequality in society."
+        "text": "Now you have about a minute to decide which two initiatives would be most effective."
       },
       {
         "role": "partner",

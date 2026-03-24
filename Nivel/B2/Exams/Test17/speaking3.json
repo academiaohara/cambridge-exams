@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following aspects of raising children today, then decide which two are the most important priorities for parents and society.",
-    "options": [
-      "Encouraging physical activity and outdoor play",
-      "Developing digital literacy and responsible technology use",
-      "Building strong social and emotional skills",
-      "Providing access to quality education",
-      "Teaching resilience and independence from an early age"
+    "centralQuestion": "What are the biggest challenges of raising children today?",
+    "suggestions": [
+      "Managing screen time",
+      "Financial pressures",
+      "Balancing work and family",
+      "Online safety",
+      "Educational expectations"
     ],
+    "decisionTask": "Now decide which two challenges are the most difficult for parents to manage.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now decide which two are the most important priorities for parents and society.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about the challenges of raising children today.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some ideas related to childhood and parenting. Discuss the following aspects of raising children today, then decide which two are the most important priorities for parents and society. You have about two minutes for this, so don't worry if I stop you. Please speak so that we can hear you."
+        "text": "Now you have about a minute to decide which two challenges are the most difficult."
       },
       {
         "role": "partner",

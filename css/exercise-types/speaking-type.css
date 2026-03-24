@@ -1070,3 +1070,111 @@
 @media (max-width: 600px) {
   .speaking-options-grid { grid-template-columns: 1fr; }
 }
+
+/* ══════════════════════════════════════
+   B2 SPIDER DIAGRAM VIEW (speaking3)
+   Central question + surrounding suggestions
+   ══════════════════════════════════════ */
+.speaking-spider-view {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.speaking-spider-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem 1.25rem 0.5rem;
+  gap: 1rem;
+}
+
+.speaking-spider-center {
+  background: var(--primary);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.9rem 1.4rem;
+  border-radius: 50px;
+  max-width: 85%;
+  line-height: 1.45;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  position: relative;
+}
+
+.speaking-spider-center::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--primary);
+}
+
+.speaking-spider-suggestions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  width: 100%;
+  padding-top: 0.25rem;
+}
+
+.speaking-spider-suggestion {
+  background: #f0f4ff;
+  border: 1.5px solid #c7d2fe;
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-align: center;
+  line-height: 1.4;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.speaking-spider-suggestion:hover {
+  border-color: var(--primary);
+  background: #e0e7ff;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+}
+
+/* Last suggestion card spans full width when count is odd */
+.speaking-spider-suggestions .speaking-spider-suggestion:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.speaking-spider-decision-wrap {
+  padding: 0.6rem 1.25rem 0.75rem;
+  border-top: 1px solid var(--border-light);
+  background: #fffbeb;
+}
+
+.speaking-spider-decision {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #92400e;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+
+.speaking-spider-decision i {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: #d97706;
+}
+
+@media (max-width: 500px) {
+  .speaking-spider-suggestions { grid-template-columns: 1fr; }
+  .speaking-spider-suggestions .speaking-spider-suggestion:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+  .speaking-spider-center { max-width: 100%; font-size: 0.88rem; }
+}

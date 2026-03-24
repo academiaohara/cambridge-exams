@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following measures that governments could take to improve public health, then decide which two would be the most effective.",
-    "options": [
-      "Free gym memberships",
-      "Health education in schools",
-      "Taxing unhealthy food",
-      "Reducing working hours",
-      "Improving urban green spaces"
+    "centralQuestion": "How can governments improve public health?",
+    "suggestions": [
+      "Funding healthcare research",
+      "Promoting healthy lifestyles",
+      "Reducing air pollution",
+      "Improving mental health services",
+      "Regulating unhealthy foods"
     ],
+    "decisionTask": "Now decide which two measures would be the most effective for improving public health.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some measures governments could take to improve public health.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how governments could improve public health.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now decide which two measures would be the most effective in improving people's health."
+        "text": "Now you have about a minute to decide which two measures would be the most effective."
       },
       {
         "role": "partner",

@@ -223,6 +223,8 @@ function roleName(role) {
     _collaborativeMode: false,
     _collaborativeOptions: [],
     _collaborativeTask: '',
+    _centralQuestion: '',      // B2 spider-diagram central question (if present)
+    _decisionTask: '',         // B2 decision instruction
     // AI partner for speaking3/4
     _hasAIPartner: false,
 
@@ -272,10 +274,14 @@ function roleName(role) {
         this._script = this._buildLongTurnScript(this._longTurnTasks, this._aiCandidateLabel);
       }
 
-      // Detect collaborative mode (speaking3: has options + script, no tasks)
-      this._collaborativeMode = !!(content.options && content.options.length && content.script && !this._longTurnMode);
-      this._collaborativeOptions = content.options || [];
+      // Detect collaborative mode (speaking3: has options/suggestions + script, no tasks)
+      // B2 format uses centralQuestion + suggestions; C1 format uses task + options
+      var hasOptions = !!(content.options && content.options.length) || !!(content.suggestions && content.suggestions.length);
+      this._collaborativeMode = !!(hasOptions && content.script && !this._longTurnMode);
+      this._collaborativeOptions = content.suggestions || content.options || [];
       this._collaborativeTask = content.task || '';
+      this._centralQuestion = content.centralQuestion || '';
+      this._decisionTask = content.decisionTask || '';
 
       // AI partner is needed for speaking3 (collaborative) and speaking4 (discussion with partner)
       this._hasAIPartner = !this._longTurnMode && this._participants.indexOf('partner') >= 0;
@@ -553,6 +559,8 @@ function roleName(role) {
     },
 
     // ── Options view (collaborative task panels for speaking3) ──
+    // B2 format: spider diagram with centralQuestion in center + suggestions around it
+    // C1 format: task header + numbered option cards
 
     _buildOptionsView: function() {
       var self = this;
@@ -570,6 +578,28 @@ function roleName(role) {
         '</div>';
       }
 
+      // B2 spider diagram layout
+      if (this._centralQuestion) {
+        var suggestionsHTML = this._collaborativeOptions.map(function(suggestion) {
+          return '<div class="speaking-spider-suggestion">' + suggestion + '</div>';
+        }).join('');
+
+        var decisionHTML = this._decisionTask
+          ? '<div class="speaking-spider-decision"><i class="fas fa-comments"></i> ' + this._decisionTask + '</div>'
+          : '';
+
+        return '<div class="speaking-options-view speaking-spider-view">' +
+          timerHTML +
+          '<div class="speaking-spider-layout">' +
+            '<div class="speaking-spider-center">' + this._centralQuestion + '</div>' +
+            '<div class="speaking-spider-suggestions">' + suggestionsHTML + '</div>' +
+          '</div>' +
+          (decisionHTML ? '<div class="speaking-spider-decision-wrap">' + decisionHTML + '</div>' : '') +
+          this._buildControls() +
+        '</div>';
+      }
+
+      // C1 task + options layout (legacy)
       var taskHTML = this._collaborativeTask
         ? '<p class="speaking-options-task">' + this._collaborativeTask + '</p>'
         : '';
@@ -956,7 +986,7 @@ function roleName(role) {
         body: JSON.stringify({
           messages: this._messages,
           mode: mode,
-          task: this._collaborativeTask,
+          task: this._centralQuestion || this._collaborativeTask,
           options: this._collaborativeOptions,
           examLevel: AppState.currentLevel || 'C1'
         })

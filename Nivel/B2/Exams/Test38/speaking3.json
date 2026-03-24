@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss how the shift to remote work affects these areas of life, then decide which two are the most challenging for companies to manage.",
-    "options": [
-      "Employee mental health",
-      "Team collaboration",
-      "Professional boundaries",
-      "Office rental costs",
+    "centralQuestion": "How has remote working changed people's lives?",
+    "suggestions": [
+      "Work-life balance",
+      "Productivity and focus",
+      "Social connections",
+      "Commuting and cost of living",
       "Career progression"
     ],
+    "decisionTask": "Now decide which two aspects of life have been most affected by the shift to remote work.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Please discuss how working from home affects these different aspects of professional life.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how remote working has changed people's lives.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now decide which two aspects are the hardest for employers to get right."
+        "text": "Now you have about a minute to decide which two aspects have been most affected."
       },
       {
         "role": "partner",

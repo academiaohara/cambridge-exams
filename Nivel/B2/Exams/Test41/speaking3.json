@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss how museums and art galleries should adapt to attract younger generations, then decide which two ideas would be most effective.",
-    "options": [
-      "Interactive digital displays",
-      "Free entry for students",
-      "Social media 'photo-friendly' zones",
-      "Late-night music events",
-      "Virtual reality tours"
+    "centralQuestion": "How should museums and art galleries adapt for younger generations?",
+    "suggestions": [
+      "Interactive digital exhibits",
+      "Social media engagement",
+      "Free or reduced entry",
+      "Collaborating with schools",
+      "Evening and weekend events"
     ],
+    "decisionTask": "Now decide which two changes would be most effective at attracting younger visitors.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Please discuss these ideas for making museums more appealing to young people.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how museums and art galleries should adapt for younger generations.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now decide which two would have the biggest impact on attendance."
+        "text": "Now you have about a minute to decide which two changes would be most effective."
       },
       {
         "role": "partner",

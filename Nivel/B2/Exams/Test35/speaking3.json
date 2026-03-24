@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following ways of promoting peace and reducing international conflict, then decide which two are most important.",
-    "options": [
-      "Strengthening international organisations like the United Nations",
-      "Promoting trade and economic interdependence between nations",
-      "Investing in education and cross-cultural understanding",
-      "Supporting disarmament and arms control agreements",
-      "Addressing poverty and inequality as root causes of conflict"
+    "centralQuestion": "How can peace and international cooperation be promoted?",
+    "suggestions": [
+      "Diplomacy and dialogue",
+      "International trade",
+      "Cultural exchange",
+      "Peacekeeping missions",
+      "Global institutions like the UN"
     ],
+    "decisionTask": "Now decide which two approaches are the most effective at promoting peace.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now decide which two are most important.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how peace and international cooperation can be promoted.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some ideas related to war, peace and international cooperation. Discuss the following ways of promoting peace and reducing international conflict, then decide which two are most important. You have about two minutes for this, so don't worry if I stop you. Please speak so that we can hear you."
+        "text": "Now you have about a minute to decide which two approaches are most effective."
       },
       {
         "role": "partner",

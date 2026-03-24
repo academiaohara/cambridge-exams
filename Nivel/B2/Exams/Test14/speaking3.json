@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following ways of supporting an ageing population, then decide which two would be most effective for society as a whole.",
-    "options": [
-      "Expanding state-funded care homes",
-      "Encouraging family caregiving with financial support",
-      "Investing in assistive technology",
-      "Raising the retirement age gradually",
-      "Promoting community support networks"
+    "centralQuestion": "How can society better support an ageing population?",
+    "suggestions": [
+      "Improving pension schemes",
+      "Building more care homes",
+      "Encouraging intergenerational programmes",
+      "Adapting public spaces",
+      "Training more healthcare workers"
     ],
+    "decisionTask": "Now decide which two measures are the most important for supporting older people.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now decide which two would be most effective for society as a whole.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how society can better support an ageing population.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some ideas related to ageing population and society. Discuss the following ways of supporting an ageing population, then decide which two would be most effective for society as a whole. You have about two minutes for this, so don't worry if I stop you. Please speak so that we can hear you."
+        "text": "Now you have about a minute to decide which two measures are the most important."
       },
       {
         "role": "partner",

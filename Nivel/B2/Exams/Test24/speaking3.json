@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following policies for managing migration and promoting integration, then decide which two would be most effective.",
-    "options": [
-      "Providing comprehensive language and cultural orientation programmes",
-      "Creating pathways to employment for skilled migrants",
-      "Investing in multicultural education in schools",
-      "Ensuring equal legal rights and protections for migrants",
-      "Building community centres and social spaces for diverse groups"
+    "centralQuestion": "How can governments manage migration and promote integration?",
+    "suggestions": [
+      "Language learning support",
+      "Employment programmes",
+      "Cultural awareness campaigns",
+      "Affordable housing for newcomers",
+      "Community integration events"
     ],
+    "decisionTask": "Now decide which two policies would be the most effective at helping migrants integrate.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now decide which two would be most effective.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how governments can manage migration and promote integration.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some ideas related to migration and cultural diversity. Discuss the following policies for managing migration and promoting integration, then decide which two would be most effective. You have about two minutes for this, so don't worry if I stop you. Please speak so that we can hear you."
+        "text": "Now you have about a minute to decide which two policies would be most effective."
       },
       {
         "role": "partner",
