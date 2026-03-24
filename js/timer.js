@@ -136,10 +136,7 @@
       let correct = 0;
       const questions = AppState.currentExercise.content.questions || [];
       const total = questions.length;
-      const partConfig = CONFIG.PART_TYPES[
-        AppState.currentSection === 'reading' ? AppState.currentPart : 
-        `${AppState.currentSection}${AppState.currentPart}`
-      ];
+      const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       
       const isWritingOrSpeaking = AppState.currentSection === 'writing' || AppState.currentSection === 'speaking';
       const isMultiMarkPart = partConfig && partConfig.maxMarks && partConfig.maxMarks > partConfig.total;
