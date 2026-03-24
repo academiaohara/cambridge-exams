@@ -13,16 +13,66 @@
       "D": "### Chloe, 18, Student\n[52]I'm planning to study biology at university.[/52] [43]Watching documentaries about space and nature inspired me.[/43] [44]I hope to become a scientist one day.[/44]"
     },
     "questions": [
-      { "number": 43, "question": "was inspired by documentaries about science", "correct": "D", "explanation": "Chloe was inspired by documentaries about space and nature." },
-      { "number": 44, "question": "used to take apart gadgets as a child", "correct": "A", "explanation": "Lucas took apart gadgets as a child to see inside." },
-      { "number": 45, "question": "finds it rewarding to inspire curiosity in others", "correct": "A", "explanation": "Lucas enjoys seeing his students become curious about the world." },
-      { "number": 46, "question": "studies plant growth professionally", "correct": "B", "explanation": "Anna's job involves studying plants and their growth." },
-      { "number": 47, "question": "enjoys making discoveries in the lab", "correct": "B", "explanation": "Anna loves spending time in the lab making new discoveries." },
-      { "number": 48, "question": "accepts that experiments sometimes fail", "correct": "B", "explanation": "Anna says experiments don't always go as planned, but that's part of science." },
-      { "number": 49, "question": "applies science to solve practical problems", "correct": "C", "explanation": "Ben uses science every day to solve real-world problems." },
-      { "number": 50, "question": "is motivated by designing helpful machines", "correct": "C", "explanation": "Ben is motivated by designing machines that help people." },
-      { "number": 51, "question": "believes science is vital for progress", "correct": "C", "explanation": "Ben thinks science is essential for progress." },
-      { "number": 52, "question": "plans to study biology at university", "correct": "D", "explanation": "Chloe is planning to study biology at university." }
+      {
+        "number": 43,
+        "question": "was inspired by documentaries about science?",
+        "correct": "D",
+        "explanation": "Chloe was inspired by documentaries about space and nature."
+      },
+      {
+        "number": 44,
+        "question": "used to take apart gadgets as a child?",
+        "correct": "A",
+        "explanation": "Lucas took apart gadgets as a child to see inside."
+      },
+      {
+        "number": 45,
+        "question": "finds it rewarding to inspire curiosity in others?",
+        "correct": "A",
+        "explanation": "Lucas enjoys seeing his students become curious about the world."
+      },
+      {
+        "number": 46,
+        "question": "studies plant growth professionally?",
+        "correct": "B",
+        "explanation": "Anna's job involves studying plants and their growth."
+      },
+      {
+        "number": 47,
+        "question": "enjoys making discoveries in the lab?",
+        "correct": "B",
+        "explanation": "Anna loves spending time in the lab making new discoveries."
+      },
+      {
+        "number": 48,
+        "question": "accepts that experiments sometimes fail?",
+        "correct": "B",
+        "explanation": "Anna says experiments don't always go as planned, but that's part of science."
+      },
+      {
+        "number": 49,
+        "question": "applies science to solve practical problems?",
+        "correct": "C",
+        "explanation": "Ben uses science every day to solve real-world problems."
+      },
+      {
+        "number": 50,
+        "question": "is motivated by designing helpful machines?",
+        "correct": "C",
+        "explanation": "Ben is motivated by designing machines that help people."
+      },
+      {
+        "number": 51,
+        "question": "believes science is vital for progress?",
+        "correct": "C",
+        "explanation": "Ben thinks science is essential for progress."
+      },
+      {
+        "number": 52,
+        "question": "plans to study biology at university?",
+        "correct": "D",
+        "explanation": "Chloe is planning to study biology at university."
+      }
     ]
   }
 }
