@@ -12,7 +12,9 @@
       if (!container) return;
 
       const question = exercise.content.question || '';
-      const wordLimit = exercise.content.wordLimit || '220-260';
+      const level = (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1';
+      const defaultWordLimit = level === 'B2' ? '140-190' : '220-260';
+      const wordLimit = exercise.content.wordLimit || defaultWordLimit;
       const savedAnswer = exercise.answers?.[1] || '';
 
       const html = `

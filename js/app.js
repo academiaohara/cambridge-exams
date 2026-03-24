@@ -189,11 +189,16 @@
     
     syncExamsFromFolders: async function() {
       const levels = Object.keys(EXAMS_DATA || {});
-      const sectionTemplate = {
-        reading: { name: 'READING & USE OF ENGLISH', icon: 'book-open', total: 8, completed: [], inProgress: [] },
-        listening: { name: 'LISTENING', icon: 'headphones', total: 4, completed: [], inProgress: [] },
-        writing: { name: 'WRITING', icon: 'pen', total: 2, completed: [], inProgress: [] },
-        speaking: { name: 'SPEAKING', icon: 'microphone', total: 4, completed: [], inProgress: [] }
+      const getSectionTemplate = function(level) {
+        var readingTotal = level === 'B2' ? 7 : 8;
+        var readingLabel = level === 'B2' ? 'Reading 1-7' : 'Reading 1-8';
+        return {
+          reading: { name: 'READING & USE OF ENGLISH', icon: 'book-open', total: readingTotal, completed: [], inProgress: [] },
+          listening: { name: 'LISTENING', icon: 'headphones', total: 4, completed: [], inProgress: [] },
+          writing: { name: 'WRITING', icon: 'pen', total: 2, completed: [], inProgress: [] },
+          speaking: { name: 'SPEAKING', icon: 'microphone', total: 4, completed: [], inProgress: [] },
+          _progressStr: `Ejercicios disponibles: ${readingLabel}, Listening 1-4, Writing 1-2, Speaking 1-4`
+        };
       };
       
       await Promise.all(levels.map(async level => {
@@ -201,6 +206,9 @@
           acc[exam.id] = exam;
           return acc;
         }, {});
+        const sectionTemplate = getSectionTemplate(level);
+        const progressStr = sectionTemplate._progressStr;
+        delete sectionTemplate._progressStr;
         
         // Try to load index.json catalog for this level first
         let indexData = null;
@@ -229,7 +237,7 @@
               status: testEntry.status || 'available',
               progress: testEntry.status === 'coming_soon'
                 ? 'Próximamente'
-                : 'Ejercicios disponibles: Reading 1-8, Listening 1-4, Writing 1-2, Speaking 1-4',
+                : progressStr,
               sections: prev?.sections || JSON.parse(JSON.stringify(sectionTemplate))
             };
           });
@@ -257,7 +265,7 @@
               number: i,
               title: `Test ${i}`,
               status: 'available',
-              progress: 'Ejercicios disponibles: Reading 1-8, Listening 1-4, Writing 1-2, Speaking 1-4',
+              progress: progressStr,
               sections: prev?.sections || JSON.parse(JSON.stringify(sectionTemplate))
             });
             i++;
