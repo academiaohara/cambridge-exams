@@ -3,7 +3,6 @@
   window.ExerciseRenderer = {
     render: async function(exercise, examId, section, part) {
       const content = document.getElementById('main-content');
-      const partKey = section === 'reading' ? part : `${section}${part}`;
       const partConfig = CONFIG.getPartConfig(section, part);
       
       // Cargar CSS y JS específicos del tipo de ejercicio
