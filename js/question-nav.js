@@ -203,6 +203,12 @@
     _buildPart7: function(question, qNum, isChecked, userAnswer) {
       var paragraphs = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.paragraphs) || {};
       var keys = Object.keys(paragraphs);
+      // Collect letters already used by other questions
+      var usedLetters = new Set();
+      var answers = (AppState.currentExercise && AppState.currentExercise.answers) || {};
+      Object.keys(answers).forEach(function(n) {
+        if (parseInt(n, 10) !== qNum && answers[n]) usedLetters.add(answers[n]);
+      });
       var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
       keys.forEach(function(key) {
         var isSelected = userAnswer === key;
@@ -212,6 +218,7 @@
           cls += ' disabled';
         } else {
           if (isSelected) cls += ' selected';
+          else if (usedLetters.has(key)) cls += ' used';
         }
         var onclick = isChecked ? '' : 'onclick="QuestionNav.answerPart7(' + qNum + ', \'' + key + '\')"';
         html += '<button class="' + cls + '" ' + onclick + '>' + key + '</button>';
