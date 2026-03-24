@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "33A",
+        "candidate": "Candidate A",
+        "topic": "Charity work and fundraising",
+        "instructions": "Compare the two photographs and say what motivates people to do charity work and what impact their efforts might have on the community.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test33_1a.jpg",
+            "description": "A group of volunteers sorting through donated food at a food bank, working efficiently in a large warehouse lined with shelves"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test33_1b.jpg",
+            "description": "Participants in a charity fun run wearing matching T-shirts, cheering and high-fiving spectators along a busy city street"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which of these fundraising or volunteering activities do you think is most effective, and why?"
+        }
+      },
+      {
+        "id": "33B",
+        "candidate": "Candidate B",
+        "topic": "Non-profit organisations",
+        "instructions": "Compare the two photographs and say what role non-profit organisations play in society and what challenges they might face.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test33_1d.jpg",
+            "description": "Staff members of an international charity giving a press conference to announce a new humanitarian project, with journalists taking notes"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test33_1e.jpg",
+            "description": "A small local charity office with a skeleton staff, volunteers answering phones and stuffing envelopes in a modest, cluttered room"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think large international charities or small local organisations do more good? What are the arguments for each?"
+        }
+      }
+    ]
+  }
+}

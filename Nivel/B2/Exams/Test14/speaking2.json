@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "28A",
+        "candidate": "Candidate A",
+        "topic": "Elderly people and technology",
+        "instructions": "Compare the two photographs and say what difficulties elderly people might face with technology and what benefits it could bring to their lives.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test28_1a.jpg",
+            "description": "An elderly woman squinting at a smartphone screen, looking confused while a younger person tries to explain how to use it"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test28_1b.jpg",
+            "description": "An older man happily video-calling his grandchildren on a tablet, with a big smile on his face and family photos visible on the shelf behind him"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "What do you think is the most important way technology can improve the lives of elderly people?"
+        }
+      },
+      {
+        "id": "28B",
+        "candidate": "Candidate B",
+        "topic": "Intergenerational activities",
+        "instructions": "Compare the two photographs and say what benefits intergenerational activities might have for both young and old participants.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test28_1d.jpg",
+            "description": "A teenage boy teaching an elderly woman how to play a video game, both laughing as she struggles with the controller"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test28_1e.jpg",
+            "description": "An older man and a young girl gardening together in a community allotment, the man guiding her hands to plant seeds"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think modern society does enough to bridge the gap between generations? Why or why not?"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "7A",
+        "candidate": "Candidate A",
+        "topic": "Taking a break",
+        "instructions": "Compare the two photographs and say why the people might need a break and how the break might help them.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test7_1a.jpg",
+            "description": "A tired office worker sitting at a desk with their eyes closed and a coffee cup nearby."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test7_1b.jpg",
+            "description": "A mountain climber sitting on a rock, looking out over a vast valley to rest."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Who do you think needs the break the most? (Why?)"
+        }
+      },
+      {
+        "id": "7B",
+        "candidate": "Candidate B",
+        "topic": "Expressing creativity",
+        "instructions": "Compare the two photographs and say what the people are enjoying about being creative and how difficult it might be to achieve the results they want.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test7_1d.jpg",
+            "description": "An artist in a messy studio painting a large, colorful abstract canvas."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test7_1e.jpg",
+            "description": "A young person at home recording a podcast or music using a professional microphone and laptop."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "In which situation is the person likely to feel the most satisfied? (Why?)"
+        }
+      }
+    ]
+  }
+}

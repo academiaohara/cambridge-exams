@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "11A",
+        "candidate": "Candidate A",
+        "topic": "Modern technology",
+        "instructions": "Compare the two photographs and say how the technology is helping the people and what might be the disadvantages of relying on it.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test11_1a.jpg",
+            "description": "A person using a GPS or map app on their smartphone to find their way in a foreign city."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test11_1b.jpg",
+            "description": "A student using an e-reader or tablet to study in a cafe, with many digital books open."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "In which situation is technology most indispensable? (Why?)"
+        }
+      },
+      {
+        "id": "11B",
+        "candidate": "Candidate B",
+        "topic": "Special celebrations",
+        "instructions": "Compare the two photographs and say why these celebrations are important to the people and how they might have prepared for them.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test11_1d.jpg",
+            "description": "A graduation ceremony with students in caps and gowns throwing their hats in the air."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test11_1e.jpg",
+            "description": "A large, traditional family wedding with many guests at a long dinner table."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which of these celebrations do you think is the most significant milestone? (Why?)"
+        }
+      }
+    ]
+  }
+}

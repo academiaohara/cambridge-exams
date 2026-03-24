@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "24A",
+        "candidate": "Candidate A",
+        "topic": "Community involvement",
+        "instructions": "Compare the two photographs and say what motivates people to get involved in these activities and what benefits they might bring to the community.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test24_1a.jpg",
+            "description": "People of different ages working together in a community garden, planting and watering vegetables."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test24_1b.jpg",
+            "description": "Volunteers serving hot meals to people queuing at a homeless shelter."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which type of community activity do you think has the most positive impact on society? (Why?)"
+        }
+      },
+      {
+        "id": "24B",
+        "candidate": "Candidate B",
+        "topic": "Urban and rural life",
+        "instructions": "Compare the two photographs and say what the advantages and disadvantages of each lifestyle might be and who might choose to live there.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test24_1d.jpg",
+            "description": "A crowded city street at rush hour, full of traffic, pedestrians and tall buildings."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test24_1e.jpg",
+            "description": "A peaceful village with traditional stone houses set in a quiet, green rural landscape."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which type of environment do you think is the best place to raise a family? (Why?)"
+        }
+      }
+    ]
+  }
+}

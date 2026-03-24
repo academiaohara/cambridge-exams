@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "12A",
+        "candidate": "Candidate A",
+        "topic": "Urban environments",
+        "instructions": "Compare the two photographs and say what the people might find attractive about living in these places and what the drawbacks might be.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test12_1a.jpg",
+            "description": "A futuristic cityscape with skyscrapers and busy multi-level traffic systems."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test12_1b.jpg",
+            "description": "A historic European street with cobblestones, old architecture, and small cafes."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which of these places would you prefer to live in? (Why?)"
+        }
+      },
+      {
+        "id": "12B",
+        "candidate": "Candidate B",
+        "topic": "Learning about history",
+        "instructions": "Compare the two photographs and say what the people are learning about the past and why they might have chosen that method.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test12_1d.jpg",
+            "description": "A group of tourists listening to a guide at an ancient archaeological site or ruins."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test12_1e.jpg",
+            "description": "A person using a virtual reality headset to experience a historical event in 3D."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which method of learning about history do you think is most effective? (Why?)"
+        }
+      }
+    ]
+  }
+}

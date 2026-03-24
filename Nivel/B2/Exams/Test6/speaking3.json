@@ -1,0 +1,49 @@
+{
+  "title": "Speaking - Part 3",
+  "type": "multiple-choice-text",
+  "time": 1.5,
+  "totalQuestions": 6,
+  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "content": {
+    "task": "Discuss the following factors that influence people's food choices, then decide which two have the greatest influence on what people eat today.",
+    "options": [
+      "Health concerns",
+      "Environmental impact",
+      "Cost",
+      "Cultural tradition",
+      "Convenience"
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
+    "script": [
+      {
+        "role": "examiner",
+        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some factors that can influence people's food choices.",
+        "showOptions": true
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now decide which two factors have the greatest influence on what people choose to eat today."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      }
+    ]
+  }
+}

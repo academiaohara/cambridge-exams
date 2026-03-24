@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "31A",
+        "candidate": "Candidate A",
+        "topic": "Children playing outdoors",
+        "instructions": "Compare the two photographs and say what benefits outdoor play might have for children's development and what concerns parents might have.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test31_1a.jpg",
+            "description": "A group of children playing a boisterous game of football on a grassy park, their faces flushed and muddy with excitement"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test31_1b.jpg",
+            "description": "Two children building an elaborate den out of branches and leaves in a woodland area, working together with focused expressions"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think children today have less opportunity for outdoor play than previous generations? Why might that be?"
+        }
+      },
+      {
+        "id": "31B",
+        "candidate": "Candidate B",
+        "topic": "Children using screens",
+        "instructions": "Compare the two photographs and say what the potential benefits and risks of screen time might be for children and how parents might manage it.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test31_1d.jpg",
+            "description": "A young child sitting very close to a large TV screen, completely transfixed by a cartoon, in a darkened living room"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test31_1e.jpg",
+            "description": "A child using an educational tablet app with colourful interactive activities, guided by a parent sitting beside them"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Should parents limit their children's screen time strictly, or do you think children can regulate themselves? Why?"
+        }
+      }
+    ]
+  }
+}

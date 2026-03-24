@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "41A",
+        "candidate": "Candidate A",
+        "topic": "Water scarcity",
+        "instructions": "Compare the two photographs and say what causes water scarcity and what impact it has on people's daily lives and livelihoods.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test41_1a.jpg",
+            "description": "Women and children in a dry, arid region walking long distances carrying large yellow containers to collect water from a distant source"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test41_1b.jpg",
+            "description": "A cracked and dried-out riverbed with almost no water remaining, dead fish visible on the parched ground and withered vegetation on the banks"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "What do you think are the most urgent measures needed to address water scarcity globally?"
+        }
+      },
+      {
+        "id": "41B",
+        "candidate": "Candidate B",
+        "topic": "Recycling and waste management",
+        "instructions": "Compare the two photographs and say what challenges people face in managing waste effectively and what role recycling plays in protecting the environment.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test41_1d.jpg",
+            "description": "A worker at a recycling plant sorting through a conveyor belt of mixed plastic, glass and metal items, wearing protective gloves and a high-vis vest"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test41_1e.jpg",
+            "description": "A coastal clean-up volunteer collecting plastic bottles and bags from a polluted beach, with a large overflowing bin bag beside them"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Do you think individual recycling efforts make a significant difference, or is the responsibility mainly with governments and industry?"
+        }
+      }
+    ]
+  }
+}

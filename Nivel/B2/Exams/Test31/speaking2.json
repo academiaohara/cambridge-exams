@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "45A",
+        "candidate": "Candidate A",
+        "topic": "Remote communities",
+        "instructions": "Compare the two photographs and say what the advantages and disadvantages of living in a remote community might be and what challenges people there face.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test45_1a.jpg",
+            "description": "A small indigenous community in a densely forested region, houses built on stilts above a river, with wooden boats as the main form of transport"
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test45_1b.jpg",
+            "description": "A tiny Arctic settlement surrounded by snow and ice, a handful of colourful wooden houses visible against a vast white landscape"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Do you think remote communities should be encouraged to modernise and connect with mainstream society, or should their way of life be protected?"
+        }
+      },
+      {
+        "id": "45B",
+        "candidate": "Candidate B",
+        "topic": "Aid workers in developing regions",
+        "instructions": "Compare the two photographs and say what motivates people to work in international development and what impact their work might have.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test45_1d.jpg",
+            "description": "An aid worker installing a solar-powered water pump in a rural African village, surrounded by local residents watching with curiosity and interest"
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test45_1e.jpg",
+            "description": "A relief worker distributing emergency food rations to a crowd of displaced people, working methodically and calmly under difficult conditions"
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "What do you think are the greatest challenges for international aid workers, and how can aid organisations work more effectively?"
+        }
+      }
+    ]
+  }
+}

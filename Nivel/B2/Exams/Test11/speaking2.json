@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "25A",
+        "candidate": "Candidate A",
+        "topic": "Scientific research",
+        "instructions": "Compare the two photographs and say what the scientists or engineers might be trying to achieve and what challenges they might face in their work.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test25_1a.jpg",
+            "description": "Scientists in white lab coats examining samples under microscopes in a research laboratory."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test25_1b.jpg",
+            "description": "A medical researcher looking at complex data and graphs on multiple computer screens."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which type of scientific work do you think is the most important for society? (Why?)"
+        }
+      },
+      {
+        "id": "25B",
+        "candidate": "Candidate B",
+        "topic": "Modern innovations",
+        "instructions": "Compare the two photographs and say how these innovations might be changing everyday life and what further developments might be possible.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test25_1d.jpg",
+            "description": "An electric car being charged at a public charging station in a city car park."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test25_1e.jpg",
+            "description": "People in a busy shopping centre interacting with a humanoid robot assistant."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which of these innovations do you think will have the greatest impact on our lives over the next twenty years? (Why?)"
+        }
+      }
+    ]
+  }
+}

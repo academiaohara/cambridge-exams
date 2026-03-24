@@ -1,0 +1,49 @@
+{
+  "title": "Speaking - Part 3",
+  "type": "multiple-choice-text",
+  "time": 1.5,
+  "totalQuestions": 6,
+  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "content": {
+    "task": "Discuss the following values that sport can teach, then decide which two are most important for young people's development.",
+    "options": [
+      "Teamwork and cooperation",
+      "Resilience and learning from failure",
+      "Respect for rules and fair play",
+      "Self-discipline and goal-setting",
+      "Healthy lifestyle habits"
+    ],
+    "participants": [
+      "examiner",
+      "candidate",
+      "partner"
+    ],
+    "script": [
+      {
+        "role": "examiner",
+        "text": "Now decide which two are most important for young people's development.",
+        "showOptions": true
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
+        "role": "examiner",
+        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some ideas related to sport, competition and values. Discuss the following values that sport can teach, then decide which two are most important for young people's development. You have about two minutes for this, so don't worry if I stop you. Please speak so that we can hear you."
+      },
+      {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      }
+    ]
+  }
+}

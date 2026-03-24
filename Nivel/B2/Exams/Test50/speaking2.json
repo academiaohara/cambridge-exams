@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "14A",
+        "candidate": "Candidate A",
+        "topic": "Using their hands",
+        "instructions": "Compare the two photographs and say how much skill is involved in these activities and why the people might find them satisfying.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test14_1a.jpg",
+            "description": "A potter shaping a clay bowl on a spinning pottery wheel."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test14_1b.jpg",
+            "description": "A surgeon's hands performing a delicate operation using robotic tools."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which of these tasks requires the most years of training? (Why?)"
+        }
+      },
+      {
+        "id": "14B",
+        "candidate": "Candidate B",
+        "topic": "Different ways of eating",
+        "instructions": "Compare the two photographs and say what the advantages of eating in these ways are and how the people might be feeling.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test14_1d.jpg",
+            "description": "A person eating a quick sandwich while working at their computer desk."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test14_1e.jpg",
+            "description": "A group of friends having a large, lively outdoor dinner party with many dishes."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "In which situation is it easiest to enjoy the food? (Why?)"
+        }
+      }
+    ]
+  }
+}

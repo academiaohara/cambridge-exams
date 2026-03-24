@@ -1,0 +1,54 @@
+{
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Compare the two photographs and answer the question. You have about one minute.",
+  "content": {
+    "tasks": [
+      {
+        "id": "6A",
+        "candidate": "Candidate A",
+        "topic": "Competitive situations",
+        "instructions": "Compare the two photographs and say how the people might be feeling and what they might have done to prepare for these competitions.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/test6_1a.jpg",
+            "description": "Two professional chess players sitting in silence, staring intensely at the board in a tournament."
+          },
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/test6_1b.jpg",
+            "description": "Young children at a school sports day, running a race with parents cheering in the background."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Which of these competitions do you think is the most stressful? (Why?)"
+        }
+      },
+      {
+        "id": "6B",
+        "candidate": "Candidate B",
+        "topic": "Protecting the environment",
+        "instructions": "Compare the two photographs and say how effective these actions might be and how they might benefit the local community.",
+        "images": [
+          {
+            "label": "D",
+            "url": "https://listeninggenerator.b-cdn.net/test6_1d.jpg",
+            "description": "A large group of volunteers picking up plastic waste and trash from a beach."
+          },
+          {
+            "label": "E",
+            "url": "https://listeninggenerator.b-cdn.net/test6_1e.jpg",
+            "description": "A person installing solar panels on the roof of a residential house."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Which action do you think has the most significant long-term impact? (Why?)"
+        }
+      }
+    ]
+  }
+}
