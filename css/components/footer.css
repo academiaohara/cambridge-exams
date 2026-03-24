@@ -52,6 +52,14 @@
     user-select: none;
 }
 
+/* Hide decorative footer images when zoom exceeds 110% to prevent overlapping text */
+@media (min-resolution: 1.1dppx) {
+    .footer-deco-left,
+    .footer-deco-right {
+        display: none;
+    }
+}
+
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
