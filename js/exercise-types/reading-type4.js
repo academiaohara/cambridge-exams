@@ -49,6 +49,7 @@
       const afterGap = question.afterGap || '';
       const routes = question.routes || [];
       const answer = routes[0] ? (((routes[0].p1 || '') + ' ' + (routes[0].p2 || '')).trim()) : '';
+      const escapedAnswer = String(answer).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       const exampleLabel = 'Example';
       return `
         <div class="reading-type4-question reading-type4-example">
@@ -60,7 +61,7 @@
             <span class="reading-type4-keyword">${question.keyWord}</span>
           </div>
           <div class="reading-type4-second">
-            ${beforeGap} <span class="reading-type4-inline-wrap reading-type4-correct"><input type="text" class="reading-type4-inline-input reading-type4-correct" value="${answer}" disabled></span> ${afterGap}
+            ${beforeGap} <span class="reading-type4-inline-wrap reading-type4-correct"><span class="reading-type4-inline-answer reading-type4-correct">${escapedAnswer}</span></span> ${afterGap}
           </div>
         </div>
       `;
