@@ -3138,6 +3138,23 @@
 }
 .id-dict-entry:hover { box-shadow: 0 3px 12px rgba(16, 185, 129, 0.12); }
 
+/* Level-specific card styles */
+.id-entry-b1 { background: #f0fdf4; border-color: rgba(16, 185, 129, 0.2); }
+.id-entry-b1:hover { box-shadow: 0 3px 12px rgba(16, 185, 129, 0.15); }
+.id-entry-b1 .id-dict-idiom { color: #065f46; }
+
+.id-entry-b2 { background: #eff6ff; border-color: rgba(59, 130, 246, 0.25); }
+.id-entry-b2:hover { box-shadow: 0 3px 12px rgba(59, 130, 246, 0.12); }
+.id-entry-b2 .id-dict-idiom { color: #1e3a8a; }
+
+.id-entry-c1 { background: #faf5ff; border-color: rgba(139, 92, 246, 0.25); }
+.id-entry-c1:hover { box-shadow: 0 3px 12px rgba(139, 92, 246, 0.12); }
+.id-entry-c1 .id-dict-idiom { color: #4c1d95; }
+
+.id-entry-c2 { background: #fff1f2; border-color: rgba(225, 29, 72, 0.25); }
+.id-entry-c2:hover { box-shadow: 0 3px 12px rgba(225, 29, 72, 0.12); }
+.id-entry-c2 .id-dict-idiom { color: #881337; }
+
 .id-dict-idiom-row {
   display: flex;
   align-items: center;

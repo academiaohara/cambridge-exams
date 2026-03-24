@@ -4226,7 +4226,7 @@
       var html = '';
       filtered.forEach(function(e) {
         html +=
-          '<div class="id-dict-entry">' +
+          '<div class="id-dict-entry id-entry-' + (e.level || '').toLowerCase() + '">' +
             '<div class="id-dict-idiom-row">' +
               '<span class="id-dict-idiom">' + self._escapeHTML(e.idiom) + '</span>' +
               '<span class="id-dict-level-badge id-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
