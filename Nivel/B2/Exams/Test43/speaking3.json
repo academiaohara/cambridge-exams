@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss how the way we consume news has changed with these sources, then decide which two are the most reliable in the modern world.",
-    "options": [
-      "Traditional newspapers",
-      "Television news",
+    "centralQuestion": "How has the way we consume news changed?",
+    "suggestions": [
+      "24-hour news channels",
+      "Online news websites",
       "Social media feeds",
-      "Independent podcasts",
-      "Citizen journalism"
+      "Podcasts and audio news",
+      "Traditional newspapers"
     ],
+    "decisionTask": "Now decide which two news sources have had the greatest impact on how people stay informed.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some ways people get their news today.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how the way we consume news has changed.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now decide which two sources you think are the most reliable for staying informed."
+        "text": "Now you have about a minute to decide which two sources have had the greatest impact."
       },
       {
         "role": "partner",

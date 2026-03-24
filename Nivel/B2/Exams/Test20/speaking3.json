@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following ways of improving urban mobility and reducing traffic congestion, then decide which two would be most effective.",
-    "options": [
-      "Expanding and subsidising public transport networks",
-      "Introducing congestion charges for city centres",
-      "Creating more dedicated cycling infrastructure",
-      "Promoting carpooling and shared mobility apps",
-      "Restricting private car access to city centres"
+    "centralQuestion": "How can cities improve transport and reduce traffic?",
+    "suggestions": [
+      "Expanding public transport",
+      "Creating cycling lanes",
+      "Congestion charges",
+      "Promoting car sharing",
+      "Car-free zones"
     ],
+    "decisionTask": "Now decide which two measures would be the most effective at reducing traffic congestion.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now decide which two would be most effective.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how cities can improve transport and reduce traffic.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some ideas related to urban mobility and transport policy. Discuss the following ways of improving urban mobility and reducing traffic congestion, then decide which two would be most effective. You have about two minutes for this, so don't worry if I stop you. Please speak so that we can hear you."
+        "text": "Now you have about a minute to decide which two measures would be most effective."
       },
       {
         "role": "partner",

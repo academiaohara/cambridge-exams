@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss how the following developments have changed the world of art, then decide which two are the most positive for artists.",
-    "options": [
-      "Digital painting software",
-      "NFTs and blockchain",
-      "Social media galleries",
-      "AI-generated images",
-      "Online art auctions"
+    "centralQuestion": "How have recent developments changed the world of art?",
+    "suggestions": [
+      "Digital and AI-generated art",
+      "NFTs and online art sales",
+      "Street art and urban culture",
+      "Global social movements",
+      "Streaming and virtual exhibitions"
     ],
+    "decisionTask": "Now decide which two developments have had the greatest impact on the art world.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some modern developments in the art world.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how recent developments have changed the world of art.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now decide which two developments offer the best opportunities for artists today."
+        "text": "Now you have about a minute to decide which two developments have had the greatest impact."
       },
       {
         "role": "partner",

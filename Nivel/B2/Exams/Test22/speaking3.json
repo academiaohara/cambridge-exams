@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following ways of preserving and promoting cultural heritage, then decide which two are most important for future generations.",
-    "options": [
-      "Restoring and maintaining historic buildings and monuments",
-      "Digitising and making cultural collections freely available online",
-      "Teaching local history and heritage in schools",
-      "Supporting traditional crafts, arts and cultural practices",
-      "Protecting archaeological sites from commercial development"
+    "centralQuestion": "How can cultural heritage be preserved and promoted?",
+    "suggestions": [
+      "Government funding for heritage sites",
+      "Cultural education in schools",
+      "Tourism campaigns",
+      "Digital archives",
+      "Community events"
     ],
+    "decisionTask": "Now decide which two ways are the most effective at preserving and promoting cultural heritage.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now decide which two are most important for future generations.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how cultural heritage can be preserved and promoted.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some ideas related to heritage, culture and identity. Discuss the following ways of preserving and promoting cultural heritage, then decide which two are most important for future generations. You have about two minutes for this, so don't worry if I stop you. Please speak so that we can hear you."
+        "text": "Now you have about a minute to decide which two ways are most effective."
       },
       {
         "role": "partner",

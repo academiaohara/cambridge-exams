@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the influence of the following factors on the fashion industry today, then decide which two are the most important for achieving sustainability.",
-    "options": [
-      "Fast fashion brands",
-      "Second-hand shopping",
-      "Eco-friendly materials",
-      "Influencer marketing",
-      "Clothing repair services"
+    "centralQuestion": "What influences the fashion industry today?",
+    "suggestions": [
+      "Social media influencers",
+      "Celebrity culture",
+      "Environmental concerns",
+      "Cultural diversity",
+      "Fast fashion and affordability"
     ],
+    "decisionTask": "Now decide which two factors have the greatest influence on the fashion industry.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some aspects of the modern fashion industry.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about what influences the fashion industry today.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now decide which two factors would have the biggest impact on making fashion more environmentally friendly."
+        "text": "Now you have about a minute to decide which two factors are the most influential."
       },
       {
         "role": "partner",

@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss what factors are most important for encouraging children to take up sports, then decide which two are the most influential.",
-    "options": [
-      "Famous role models",
-      "School facilities",
-      "Supportive parents",
-      "Fun and games focus",
-      "Local community clubs"
+    "centralQuestion": "What encourages children to take up and stay in sport?",
+    "suggestions": [
+      "Access to local facilities",
+      "Positive role models",
+      "School sport programmes",
+      "Affordable club membership",
+      "Fun and social atmosphere"
     ],
+    "decisionTask": "Now decide which two factors are the most important for encouraging children to stay in sport.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Talk together about what makes children want to participate in sports.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about what encourages children to take up sport.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now decide which two factors are the most important for long-term participation."
+        "text": "Now you have about a minute to decide which two factors are the most important."
       },
       {
         "role": "partner",

@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss how social media platforms have influenced the following aspects of society, then decide which has had the most negative impact.",
-    "options": [
-      "Personal privacy",
-      "Political debate",
-      "Self-esteem",
-      "Spreading news",
-      "Marketing and business"
+    "centralQuestion": "How have social media platforms changed society?",
+    "suggestions": [
+      "Political activism and awareness",
+      "Mental health and self-image",
+      "News and information sharing",
+      "Personal relationships",
+      "Business and marketing"
     ],
+    "decisionTask": "Now decide which two areas of society have been most significantly changed by social media.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Talk together about the influence of social media on these areas.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how social media has changed society.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now decide which one has seen the most negative change due to these platforms."
+        "text": "Now you have about a minute to decide which two changes have been most significant."
       },
       {
         "role": "partner",

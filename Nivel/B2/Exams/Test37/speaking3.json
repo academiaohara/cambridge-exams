@@ -3,17 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Look at the following options for reducing environmental impact in cities. Discuss how effective each one would be, then decide which two are the most practical to implement.",
-    "options": [
+    "centralQuestion": "How can cities reduce their environmental impact?",
+    "suggestions": [
       "Improving public transport",
       "Creating more green spaces",
-      "Pedestrianizing city centers",
+      "Pedestrianising city centres",
       "Implementing recycling schemes",
       "Increasing taxes on plastic packaging"
     ],
-    "followUp": "Now decide which two measures would be the most effective for long-term change.",
+    "decisionTask": "Now decide which two measures would be the most effective for long-term environmental change.",
     "participants": [
       "examiner",
       "candidate",
@@ -22,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some environmental measures for cities.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how cities can reduce their environmental impact.",
         "showOptions": true
       },
       {
@@ -34,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "First, discuss how effective each one is, and then decide which two are the most practical. You have two minutes."
+        "text": "Now you have about a minute to decide which two measures would be most effective."
       },
       {
         "role": "partner",

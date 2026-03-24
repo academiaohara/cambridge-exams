@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following ways in which businesses and individuals can contribute to social responsibility, then decide which two are most important.",
-    "options": [
-      "Corporate donation programmes for charities",
-      "Employee volunteering initiatives during work hours",
-      "Ethical sourcing and supply chain transparency",
-      "Supporting local community development projects",
-      "Reducing environmental impact through sustainable business practices"
+    "centralQuestion": "How can businesses and individuals contribute to charity?",
+    "suggestions": [
+      "Donating money",
+      "Volunteering time",
+      "Corporate social responsibility",
+      "Fundraising events",
+      "Raising awareness on social media"
     ],
+    "decisionTask": "Now decide which two ways of contributing to charity are the most valuable.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now decide which two are most important.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how businesses and individuals can contribute to charity.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some ideas related to charities and social responsibility. Discuss the following ways in which businesses and individuals can contribute to social responsibility, then decide which two are most important. You have about two minutes for this, so don't worry if I stop you. Please speak so that we can hear you."
+        "text": "Now you have about a minute to decide which two ways are the most valuable."
       },
       {
         "role": "partner",

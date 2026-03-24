@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss the following aspects of risk and courage in people's lives, then decide which two are most important for personal development.",
-    "options": [
-      "Taking physical risks to overcome fear and build confidence",
-      "Pursuing ambitious career goals despite uncertainty",
-      "Standing up for what you believe in, even when unpopular",
-      "Embracing new experiences and stepping outside your comfort zone",
-      "Taking financial risks to start a business or make a change"
+    "centralQuestion": "What role does risk and courage play in people's lives?",
+    "suggestions": [
+      "Pursuing career changes",
+      "Starting a business",
+      "Moving abroad",
+      "Taking up extreme sports",
+      "Standing up for beliefs"
     ],
+    "decisionTask": "Now decide which two situations require the most courage in modern life.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now decide which two are most important for personal development.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about the role of risk and courage in people's lives.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now, I'd like you to talk about something together for about two minutes. Here are some ideas related to risk, courage and personal development. Discuss the following aspects of risk and courage in people's lives, then decide which two are most important for personal development. You have about two minutes for this, so don't worry if I stop you. Please speak so that we can hear you."
+        "text": "Now you have about a minute to decide which two situations require the most courage."
       },
       {
         "role": "partner",

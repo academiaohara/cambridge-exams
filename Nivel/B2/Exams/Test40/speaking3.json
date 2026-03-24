@@ -3,16 +3,17 @@
   "type": "multiple-choice-text",
   "time": 1.5,
   "totalQuestions": 6,
-  "description": "Discuss the options with your partner for about two minutes, then decide together which two are the most important.",
+  "description": "Look at the question and the ideas around it. Discuss each idea with your partner for about two minutes, then decide together which two are the most important.",
   "content": {
-    "task": "Discuss how the rise of online shopping has affected these aspects of local communities, then decide which two changes are the most concerning.",
-    "options": [
-      "High street diversity",
-      "Local employment",
-      "Social interaction",
-      "Traffic and delivery emissions",
-      "Price competition"
+    "centralQuestion": "How has online shopping affected local communities?",
+    "suggestions": [
+      "High street shops closing",
+      "Local jobs and economy",
+      "Delivery traffic and pollution",
+      "Access to products",
+      "Community social spaces"
     ],
+    "decisionTask": "Now decide which two effects of online shopping have been the most damaging to local communities.",
     "participants": [
       "examiner",
       "candidate",
@@ -21,7 +22,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "Now, I’d like you to talk about something together for about two minutes. Here are some consequences of the shift to online shopping.",
+        "text": "I'd like you to look at this question and these ideas, and talk together about how online shopping has affected local communities.",
         "showOptions": true
       },
       {
@@ -33,8 +34,16 @@
         "text": ""
       },
       {
+        "role": "partner",
+        "text": ""
+      },
+      {
+        "role": "candidate",
+        "text": ""
+      },
+      {
         "role": "examiner",
-        "text": "Now decide which two consequences are the most worrying for the future of our towns."
+        "text": "Now you have about a minute to decide which two effects have been the most significant."
       },
       {
         "role": "partner",
