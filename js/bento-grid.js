@@ -551,8 +551,7 @@
       var levels = [
         { code: 'B1', icon: 'fas fa-book-reader', label: 'B1 Preliminary' },
         { code: 'B2', icon: 'fas fa-graduation-cap', label: 'B2 First' },
-        { code: 'C1', icon: 'fas fa-award', label: 'C1 Advanced' },
-        { code: 'C2', icon: 'fas fa-crown', label: 'C2 Proficiency' }
+        { code: 'C1', icon: 'fas fa-award', label: 'C1 Advanced' }
       ];
 
       // Level-specific badge colors
@@ -629,7 +628,7 @@
 
     _getOtherLevels: function() {
       var currentLevel = AppState.currentLevel || 'C1';
-      var levels = ['B1', 'B2', 'C1', 'C2'];
+      var levels = ['B1', 'B2', 'C1'];
       return levels.filter(function(l) { return l !== currentLevel; });
     },
 

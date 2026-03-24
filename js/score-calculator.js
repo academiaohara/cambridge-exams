@@ -145,7 +145,6 @@
               <option value="B1" ${examType === 'B1' ? 'selected' : ''}>B1 Preliminary</option>
               <option value="B2" ${examType === 'B2' ? 'selected' : ''}>B2 First</option>
               <option value="C1" ${examType === 'C1' ? 'selected' : ''}>C1 Advanced</option>
-              <option value="C2" ${examType === 'C2' ? 'selected' : ''}>C2 Proficiency</option>
             </select>
           </div>
 
@@ -338,21 +337,24 @@
 
       if (sectionKey === 'reading') {
         if (hasUoE) {
-          // Parts 2-4 → Use of English (8+8+12 = 28 marks)
+          // B2: Parts 1-4 → Use of English; Parts 5-7 → Reading
+          // C1: Parts 2-4 → Use of English; Parts 1, 5-8 → Reading
+          var isB2 = examType === 'B2';
+          var uoeParts = isB2 ? [1, 2, 3, 4] : [2, 3, 4];
+          var readPartsList = isB2 ? [5, 6, 7] : [1, 5, 6, 7, 8];
+
           var uoeRaw = 0; var uoeMax = 0;
-          for (var p = 2; p <= 4; p++) {
+          uoeParts.forEach(function(p) {
             uoeRaw += self.getStoredSectionScore(examId, 'reading', p);
             var cfg = CONFIG.PART_TYPES[p];
             uoeMax += cfg ? (cfg.maxMarks || cfg.total || 0) : 0;
-          }
+          });
           var uoeTableMax = data.tables['Use of English'][data.tables['Use of English'].length-1][0];
           var uoeNormalized = uoeMax > 0 ? Math.round(uoeRaw / uoeMax * uoeTableMax) : 0;
           results.push({ skill: 'Use of English', raw: uoeRaw, maxRaw: uoeMax, scale: getScaleScore(uoeNormalized, data.tables['Use of English']) });
 
-          // Parts 1, 5-8 → Reading (8+12+8+12+10 = 50 marks)
           var readRaw = 0; var readMax = 0;
-          var readParts = [1, 5, 6, 7, 8];
-          readParts.forEach(function(p2) {
+          readPartsList.forEach(function(p2) {
             readRaw += self.getStoredSectionScore(examId, 'reading', p2);
             var cfg2 = CONFIG.PART_TYPES[p2];
             readMax += cfg2 ? (cfg2.maxMarks || cfg2.total || 0) : 0;

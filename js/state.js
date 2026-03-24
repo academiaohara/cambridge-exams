@@ -4,8 +4,7 @@
   window.EXAMS_DATA = {
     B1: [],
     B2: [],
-    C1: [],
-    C2: []
+    C1: []
   };
   
   // Estado global de la aplicación
