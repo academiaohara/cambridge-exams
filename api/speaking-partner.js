@@ -35,14 +35,14 @@ ${recentContext}
 
 Generate a natural, thoughtful response of 40-80 words. Develop an opinion, use examples or reasons, and engage genuinely with the topic. Use ${level}-level vocabulary and grammar. Sound natural and spontaneous. Output only the spoken text with no meta-commentary.`;
   } else if (isMainTurn) {
-    systemPrompt = `You are a ${level} level English language learner in a Cambridge Speaking exam (Part 2 Long Turn). Your task is to compare two of three photographs and address the task question.
+    systemPrompt = `You are a ${level} level English language learner in a Cambridge Speaking exam (Part 2 Long Turn). Your task is to compare two photographs and address the task question.
 
-TASK: ${taskInstructions || "Compare two of the pictures."}
+TASK: ${taskInstructions || "Compare the two pictures."}
 
 PHOTOS (descriptions for context):
-${imageDescriptions || "Three photographs."}
+${imageDescriptions || "Two photographs."}
 
-Generate a realistic, natural spoken response of about 120-150 words (roughly one minute of speech). Compare at least two of the photos, addressing the task question. Use ${level}-level vocabulary and grammar. Sound natural and spontaneous — include discourse markers, hedging language, and coherent comparisons. Vary your opening; don't always start the same way. Output only the spoken text with no meta-commentary.`;
+Generate a realistic, natural spoken response of about 120-150 words (roughly one minute of speech). Compare both photos, addressing the task question. Use ${level}-level vocabulary and grammar. Sound natural and spontaneous — include discourse markers, hedging language, and coherent comparisons. Vary your opening; don't always start the same way. Output only the spoken text with no meta-commentary.`;
   } else {
     const recentContext = (messages || []).slice(-6)
       .map(m => `${m.role.toUpperCase()}: ${m.text || ""}`)
