@@ -22,6 +22,9 @@
       // Row 1: Arena · Practice
       html += this._renderTopRow(exams);
 
+      // Row 1b: Random Mix
+      html += this._renderMixedRow(exams);
+
       // Row 2: Lessons · Micro-Learning
       html += this._renderLearningRow();
 
@@ -53,6 +56,32 @@
         '</div>' +
 
       '</div>';
+    },
+
+    _renderMixedRow: function(exams) {
+      var availableCount = (exams || []).filter(function(e) { return e.status === 'available'; }).length;
+      var disabled = availableCount === 0;
+      var clickAttr = disabled ? '' : ' onclick="BentoGrid.startMixedTest()"';
+      var descText = disabled
+        ? 'No tests available yet'
+        : 'Mix exercises from ' + availableCount + ' tests — speaking 3 & 4 always from the same test';
+      return '<div class="bento-mixed-row">' +
+        '<div class="bento-card bento-card-mixed' + (disabled ? ' disabled' : '') + '"' + clickAttr + '>' +
+          '<div class="bento-card-inner">' +
+            '<div class="bento-card-title">' +
+              '<span class="material-symbols-outlined" style="vertical-align:middle;font-size:1.4rem;margin-right:6px">shuffle</span>' +
+              'Random Mix' +
+            '</div>' +
+            '<div class="bento-card-desc">' + descText + '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    startMixedTest: function() {
+      if (window.MixedTest) {
+        MixedTest.start();
+      }
     },
 
     _renderLearningRow: function() {

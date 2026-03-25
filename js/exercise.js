@@ -273,17 +273,21 @@
       const targetUrl = `${baseUrl}${examId}/${fileName}`;
       
       const loadingExam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === examId);
-      const loadingTotalParts = loadingExam?.sections[section]?.total || 1;
+      const loadingIsMixed = window.MixedTest && MixedTest.isActive();
+      const loadingTotalParts = loadingIsMixed
+        ? AppState.mixedTestPlan.length
+        : (loadingExam?.sections[section]?.total || 1);
+      const loadingDisplayPart = loadingIsMixed ? AppState.mixedTestCurrentIndex + 1 : part;
       const loadingIsExamMode = AppState.currentMode === 'exam';
       let loadingFooterHTML = '';
       if (!loadingIsExamMode) {
         loadingFooterHTML += `<button class="btn-check" disabled><span data-i18n="checkAnswers">Check answers</span></button>`;
         loadingFooterHTML += `<button class="btn-reset" disabled><i class="fas fa-redo-alt"></i> <span data-i18n="reset">Reset</span></button>`;
       }
-      if (part > 1 && (!loadingIsExamMode || AppState.examFullMode)) {
+      if (loadingDisplayPart > 1 && (!loadingIsExamMode || AppState.examFullMode)) {
         loadingFooterHTML += `<button class="btn-prev" disabled><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
       }
-      if (part < loadingTotalParts) {
+      if (loadingDisplayPart < loadingTotalParts) {
         loadingFooterHTML += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
       } else if (AppState.examFullMode) {
         loadingFooterHTML += `<button class="btn-next btn-finish-section" disabled><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
@@ -479,6 +483,12 @@
     },
     
     goToNextPart: async function() {
+      // Mixed-test mode: delegate to MixedTest navigator
+      if (window.MixedTest && MixedTest.isActive()) {
+        MixedTest.goToNext();
+        return;
+      }
+
       if (!AppState.currentSection || !AppState.currentPart || !AppState.currentExamId) return;
       
       // Save current state to localStorage before moving
@@ -504,6 +514,12 @@
     },
     
     goToPrevPart: async function() {
+      // Mixed-test mode: delegate to MixedTest navigator
+      if (window.MixedTest && MixedTest.isActive()) {
+        MixedTest.goToPrev();
+        return;
+      }
+
       if (!AppState.currentSection || !AppState.currentPart || !AppState.currentExamId) return;
       
       // Save current state to localStorage before moving
@@ -900,6 +916,11 @@
       if (Timer.timerInterval) {
         clearInterval(Timer.timerInterval);
         Timer.timerInterval = null;
+      }
+
+      // Clear any active mixed-test session
+      if (window.MixedTest && MixedTest.isActive()) {
+        MixedTest.clear();
       }
       
       // Remember which exam was open so we can expand it in the dashboard

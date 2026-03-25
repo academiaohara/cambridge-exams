@@ -142,7 +142,14 @@
       const sectionTitle = Utils.getSectionTitle(section);
       const levelName = Utils.getLevelName(AppState.currentLevel);
       const exam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === examId);
-      const totalParts = exam?.sections[section]?.total || 1;
+
+      // In mixed-test mode, use plan position as navigation context
+      const isMixed = window.MixedTest && MixedTest.isActive();
+      const totalParts = isMixed
+        ? AppState.mixedTestPlan.length
+        : (exam?.sections[section]?.total || 1);
+      const displayPart = isMixed ? AppState.mixedTestCurrentIndex + 1 : part;
+
       const sectionTotalQuestions = this.getSectionTotalQuestions(section);
       
       const partTotal = (section === 'writing' || section === 'speaking') ? partConfig.total : (partConfig.maxMarks || exercise.totalQuestions || partConfig.total);
@@ -175,7 +182,9 @@
       const displayTotal = this.getSectionRunningTotal(sectionKey);
       
       // Build part navigation cells
-      const partNavHTML = this.renderPartNavigation(section, part, totalParts, examId);
+      const partNavHTML = isMixed
+        ? this.renderMixedTestProgress()
+        : this.renderPartNavigation(section, part, totalParts, examId);
       
       // Build tools bar HTML (not for writing/speaking)
       const showTools = section !== 'writing' && section !== 'speaking';
@@ -224,10 +233,10 @@
           <div class="exercise-container">
             <div class="exercise-header">
               <div class="exercise-title">
-                <h2>${levelName} - ${sectionTitle}</h2>
-                <div class="exercise-subtitle" data-i18n="part">Part ${part} of ${totalParts}</div>
+                <h2>${levelName} - ${isMixed ? 'Random Mix' : sectionTitle}</h2>
+                <div class="exercise-subtitle" data-i18n="part">${isMixed ? 'Exercise ' + displayPart + ' of ' + totalParts : 'Part ' + part + ' of ' + totalParts}</div>
                 <span class="exercise-badge">${exercise.title || 'Exercise'}</span>
-                ${AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> Exam Mode</span>` : ''}
+                ${isMixed ? `<span class="mixed-mode-badge"><span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">shuffle</span> Random Mix</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> Exam Mode</span>` : '')}
               </div>
               <div class="exercise-header-right">
                 <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
@@ -288,7 +297,7 @@
             ${(needsToggle || hasTranscript) ? this.renderExplanationsPanel(exercise, partConfig) : ''}
             
             <div class="exercise-footer">
-              ${this.renderExerciseFooter(part, totalParts)}
+              ${this.renderExerciseFooter(displayPart, totalParts)}
             </div>
             ${toolsBarHTML}
           </div>
@@ -971,6 +980,8 @@
       var isExamMode = AppState.currentMode === 'exam';
       var isReading = AppState.currentSection === 'reading';
       var isListening = AppState.currentSection === 'listening';
+      // In mixed mode, use actual section part for content-based conditions (explanations)
+      var actualPart = AppState.currentPart || part;
       let footer = '';
       
       if (!isExamMode) {
@@ -984,7 +995,10 @@
         // Reading part 4: never show (broken); reading parts 5-8: explanation button is in toggle-view-header
         // Listening: explanation button is now in toggle-view-header
         // all other sections: always show in practice mode
-        if (isReading && part !== 4 && part < 5) {
+        // Reading parts 1–3: show explanations button (part 4 is excluded because
+        // key-word transformations don't have auto-explanations; parts 5–8 have
+        // their explanation button in the toggle-view-header instead).
+        if (isReading && actualPart > 0 && actualPart < 4) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span>
@@ -1015,9 +1029,26 @@
       } else if (AppState.examFullMode) {
         // Last part of a section in exam full mode: show "Finish Section" button
         footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
+      } else if (window.MixedTest && MixedTest.isActive() &&
+                 AppState.mixedTestCurrentIndex >= AppState.mixedTestPlan.length - 1) {
+        // Last exercise in a mixed-test plan
+        footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span>Finish Mix</span> <i class="fas fa-check"></i></button>`;
       }
       
       return footer;
+    },
+
+    /** Compact progress strip shown in the exercise-info bar during a mixed session. */
+    renderMixedTestProgress: function() {
+      if (!window.MixedTest || !MixedTest.isActive()) return '';
+      var plan = AppState.mixedTestPlan;
+      var idx  = AppState.mixedTestCurrentIndex;
+      var pct  = Math.round(((idx + 1) / plan.length) * 100);
+      var label = MixedTest.getProgressLabel();
+      return '<div class="mixed-progress-bar" title="' + label + '">' +
+        '<div class="mixed-progress-fill" style="width:' + pct + '%"></div>' +
+        '<span class="mixed-progress-label">' + label + '</span>' +
+      '</div>';
     },
     
     renderPartNavigation: function(section, currentPart, totalParts, examId) {
