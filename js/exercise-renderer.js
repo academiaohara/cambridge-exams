@@ -367,7 +367,9 @@
     
     getSectionTotalQuestions: function(section) {
       if (section === 'reading') {
-        return [1, 2, 3, 4, 5, 6, 7, 8].reduce((sum, part) => {
+        var level = (typeof AppState !== 'undefined') ? AppState.currentLevel : 'C1';
+        var readingParts = level === 'B2' ? [1,2,3,4,5,6,7] : [1,2,3,4,5,6,7,8];
+        return readingParts.reduce((sum, part) => {
           const cfg = CONFIG.getPartConfig(section, part);
           return sum + (cfg ? (cfg.maxMarks || cfg.total || 0) : 0);
         }, 0);
@@ -1043,19 +1045,25 @@
       if (!window.MixedTest || !MixedTest.isActive()) return '';
       var plan = AppState.mixedTestPlan;
       var idx  = AppState.mixedTestCurrentIndex;
-      var completedSet = MixedTest.getCompletedSet();
+      var currentItem = plan[idx];
+      if (!currentItem) return '';
+      var currentSection = currentItem.section;
+      var level = AppState.currentLevel || 'C1';
 
       var cells = '';
-      plan.forEach(function(item, i) {
-        var isActive    = i === idx;
-        var isCompleted = completedSet.has(i);
-        var cellClass   = 'part-nav-cell';
+      for (var i = 0; i < plan.length; i++) {
+        var item = plan[i];
+        if (item.section !== currentSection) continue;
+        var isActive = i === idx;
+        var exam = window.EXAMS_DATA && EXAMS_DATA[level] ? EXAMS_DATA[level].find(function(e) { return e.id === item.examId; }) : null;
+        var isCompleted = exam ? ((exam.sections[item.section] && exam.sections[item.section].completed || []).includes(item.part)) : false;
+        var cellClass = 'part-nav-cell';
         if (isActive)    cellClass += ' active';
         if (isCompleted) cellClass += ' completed';
         var sectionLabel = item.section.charAt(0).toUpperCase() + item.section.slice(1);
         var tooltip = sectionLabel + ' ' + item.part;
-        cells += '<button class="' + cellClass + '" title="' + tooltip + '" onclick="MixedTest.startAtIndex(' + i + ')">' + (i + 1) + '</button>';
-      });
+        cells += '<button class="' + cellClass + '" data-plan-index="' + i + '" title="' + tooltip + '" onclick="MixedTest.startAtIndex(' + i + ')">' + item.part + '</button>';
+      }
 
       return '<div class="part-nav-row">' + cells + '</div>';
     },

@@ -309,7 +309,9 @@
 
     getSectionMaxRaw: function(section) {
       if (section === 'reading') {
-        return [1,2,3,4,5,6,7,8].reduce(function(s,p){
+        var level = (typeof AppState !== 'undefined') ? AppState.currentLevel : 'C1';
+        var parts = level === 'B2' ? [1,2,3,4,5,6,7] : [1,2,3,4,5,6,7,8];
+        return parts.reduce(function(s,p){
           var cfg = CONFIG.getPartConfig('reading', p);
           return s + (cfg ? (cfg.maxMarks || cfg.total || 0) : 0);
         }, 0);

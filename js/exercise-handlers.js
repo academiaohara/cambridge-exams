@@ -94,6 +94,19 @@
     },
     
     updatePartNavigation: function() {
+      if (window.MixedTest && MixedTest.isActive()) {
+        const plan = AppState.mixedTestPlan;
+        const level = AppState.currentLevel || 'C1';
+        document.querySelectorAll('.part-nav-cell[data-plan-index]').forEach(cell => {
+          const planIdx = parseInt(cell.getAttribute('data-plan-index'));
+          const item = plan && plan[planIdx];
+          if (!item) return;
+          const exam = EXAMS_DATA[level]?.find(e => e.id === item.examId);
+          const isCompleted = exam ? (exam.sections[item.section]?.completed || []).includes(item.part) : false;
+          if (isCompleted) cell.classList.add('completed');
+        });
+        return;
+      }
       const exam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === AppState.currentExamId);
       if (!exam) return;
       const completedParts = exam.sections[AppState.currentSection]?.completed || [];
