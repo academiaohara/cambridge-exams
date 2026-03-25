@@ -1832,3 +1832,42 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
+
+/* ── Random Test card ── */
+.random-test-item {
+  border-left: 3px solid #8b5cf6;
+}
+
+.exam-number-random {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  opacity: 0.85;
+  color: #8b5cf6;
+}
+
+.random-test-btn-generate {
+  background: rgba(139, 92, 246, 0.12) !important;
+  color: #8b5cf6 !important;
+}
+
+.random-test-btn-generate:hover {
+  background: rgba(139, 92, 246, 0.25) !important;
+}
+
+.random-test-btn-repeat {
+  background: rgba(59, 130, 246, 0.1) !important;
+  color: #3b82f6 !important;
+}
+
+.random-test-btn-repeat:hover {
+  background: rgba(59, 130, 246, 0.22) !important;
+}
+
+.random-test-empty {
+  padding: 16px 20px;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-style: italic;
+}

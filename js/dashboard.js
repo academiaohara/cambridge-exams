@@ -140,7 +140,7 @@
           paginationHtml += '</div>';
         }
 
-        mainContentHtml = '<div class="exams-container">' + examListHtml + '</div>' + paginationHtml;
+        mainContentHtml = Dashboard._renderRandomTestCard(mode) + '<div class="exams-container">' + examListHtml + '</div>' + paginationHtml;
       } else {
         // ── By Section view ──────────────────────────────────────────────
         if (subpageSectionKey) {
@@ -354,6 +354,90 @@
       return html;
     },
     
+    // ── Random Test card (always shown at top of test list) ──────────────
+    _renderRandomTestCard: function(mode) {
+      var plan         = window.MixedTest ? MixedTest.getStoredPlan() : null;
+      var completedSet = window.MixedTest ? MixedTest.getCompletedSet() : new Set();
+      var hasPlan      = Array.isArray(plan) && plan.length > 0;
+
+      var html =
+        '<div class="exam-item random-test-item">' +
+          '<div class="exam-header" onclick="Dashboard.toggleExam(this)">' +
+            '<div class="exam-header-left">' +
+              '<span class="exam-number exam-number-random">' +
+                '<span class="material-symbols-outlined" style="font-size:1.1rem;line-height:1">shuffle</span>' +
+              '</span>' +
+              '<div>' +
+                '<div class="exam-title">Random Test</div>' +
+                '<div class="exam-subtitle">' + (hasPlan ? 'Exercises from available tests' : 'No test generated yet') + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<button class="exam-play-btn random-test-btn-generate" ' +
+              'onclick="event.stopPropagation(); MixedTest.generateNew()" ' +
+              'title="Generate a new random test">' +
+              '<span class="material-symbols-outlined" style="font-size:1.1rem">shuffle</span>' +
+            '</button>' +
+            (hasPlan
+              ? '<button class="exam-play-btn random-test-btn-repeat" ' +
+                  'onclick="event.stopPropagation(); MixedTest.restart()" ' +
+                  'title="Repeat this random test">' +
+                  '<i class="fas fa-redo-alt"></i>' +
+                '</button>'
+              : '') +
+            '<i class="fas fa-chevron-down exam-arrow"></i>' +
+          '</div>' +
+          '<div class="exam-content">' +
+            '<div class="exam-sections">' +
+              (hasPlan
+                ? this._renderRandomTestSections(plan, completedSet)
+                : '<div class="random-test-empty">Click <span class="material-symbols-outlined" style="font-size:0.9rem;vertical-align:middle">shuffle</span> to generate a Random Test</div>') +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      return html;
+    },
+
+    _renderRandomTestSections: function(plan, completedSet) {
+      var sections = ['reading', 'listening', 'writing', 'speaking'];
+      var html = '';
+
+      sections.forEach(function(sectionKey) {
+        var items = [];
+        plan.forEach(function(item, idx) {
+          if (item.section === sectionKey) items.push({ item: item, idx: idx });
+        });
+        if (!items.length) return;
+
+        var completedCount = items.filter(function(o) { return completedSet.has(o.idx); }).length;
+
+        html +=
+          '<div class="exam-section">' +
+            '<div class="section-header">' +
+              '<span class="material-symbols-outlined section-icon ' + sectionKey + '">' +
+                Utils.getMaterialIcon(sectionKey) +
+              '</span>' +
+              '<h4>' + sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1) + '</h4>' +
+              '<span class="section-progress">' + completedCount + '/' + items.length + '</span>' +
+            '</div>' +
+            '<div class="section-parts">';
+
+        items.forEach(function(o) {
+          var statusClass = completedSet.has(o.idx) ? 'completed' : '';
+          html +=
+            '<span class="part-number ' + statusClass + '" ' +
+              'onclick="event.stopPropagation(); MixedTest.startAtIndex(' + o.idx + ')" ' +
+              'title="' + o.item.examId + ' · ' + sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1) + ' Part ' + o.item.part + '">' +
+              o.item.part +
+            '</span>';
+        });
+
+        html += '</div></div>';
+      });
+
+      return html;
+    },
+
     renderComingSoonExam: function(exam) {
       return `
         <div class="exam-item">

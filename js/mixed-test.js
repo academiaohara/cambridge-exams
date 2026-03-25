@@ -4,6 +4,9 @@
 // the same source test because they are thematically linked.
 
 (function () {
+  var _PLAN_KEY      = 'cambridge_mixed_plan';
+  var _COMPLETED_KEY = 'cambridge_mixed_completed';
+
   // ── helpers ──────────────────────────────────────────────────────────────
 
   function _shuffle(arr) {
@@ -25,6 +28,26 @@
     return (window.EXAMS_DATA[level] || []).filter(function (e) {
       return e.status === 'available';
     });
+  }
+
+  function _loadPlan() {
+    try {
+      var stored = localStorage.getItem(_PLAN_KEY);
+      return stored ? JSON.parse(stored) : null;
+    } catch (e) { return null; }
+  }
+
+  function _loadCompleted() {
+    try {
+      var stored = localStorage.getItem(_COMPLETED_KEY);
+      return stored ? new Set(JSON.parse(stored)) : new Set();
+    } catch (e) { return new Set(); }
+  }
+
+  function _saveCompleted(set) {
+    try {
+      localStorage.setItem(_COMPLETED_KEY, JSON.stringify(Array.from(set)));
+    } catch (e) { /* ignore */ }
   }
 
   // ── public API ────────────────────────────────────────────────────────────
@@ -86,8 +109,25 @@
       return Array.isArray(AppState.mixedTestPlan) && AppState.mixedTestPlan.length > 0;
     },
 
-    /** Start a brand-new mixed test session. */
-    start: function () {
+    /** Returns the stored plan (from AppState or localStorage). */
+    getStoredPlan: function () {
+      return AppState.mixedTestPlan || _loadPlan();
+    },
+
+    /** Returns a Set of completed plan-item indices. */
+    getCompletedSet: function () {
+      return _loadCompleted();
+    },
+
+    /** Mark a specific plan-item index as completed. */
+    markItemComplete: function (index) {
+      var set = _loadCompleted();
+      set.add(index);
+      _saveCompleted(set);
+    },
+
+    /** Generate a brand-new random test and start it immediately. */
+    generateNew: function () {
       var plan = this.generatePlan();
       if (plan.length === 0) {
         alert('No tests available yet. Please check back later.');
@@ -97,12 +137,39 @@
       AppState.mixedTestCurrentIndex = 0;
       AppState.currentMode = 'practice';
 
-      // Persist so a page reload can resume
-      try {
-        localStorage.setItem('cambridge_mixed_plan', JSON.stringify(plan));
-      } catch (e) { /* ignore */ }
+      try { localStorage.setItem(_PLAN_KEY, JSON.stringify(plan)); } catch (e) { /* ignore */ }
+      try { localStorage.setItem(_COMPLETED_KEY, JSON.stringify([])); } catch (e) { /* ignore */ }
 
       this._openCurrent();
+    },
+
+    /** Keep the existing plan but reset progress and start from the beginning. */
+    restart: function () {
+      var plan = AppState.mixedTestPlan || _loadPlan();
+      if (!plan || !plan.length) { this.generateNew(); return; }
+      AppState.mixedTestPlan = plan;
+      AppState.mixedTestCurrentIndex = 0;
+      AppState.currentMode = 'practice';
+
+      try { localStorage.setItem(_COMPLETED_KEY, JSON.stringify([])); } catch (e) { /* ignore */ }
+
+      this._openCurrent();
+    },
+
+    /** Start (or resume) the plan at a specific index. */
+    startAtIndex: function (index) {
+      var plan = AppState.mixedTestPlan || _loadPlan();
+      if (!plan || !plan.length) { this.generateNew(); return; }
+      AppState.mixedTestPlan = plan;
+      AppState.mixedTestCurrentIndex = Math.max(0, Math.min(index, plan.length - 1));
+      AppState.currentMode = 'practice';
+
+      this._openCurrent();
+    },
+
+    /** Start a brand-new mixed test session (alias kept for back-compat). */
+    start: function () {
+      this.generateNew();
     },
 
     /** Open the exercise at the current index of the plan. */
@@ -116,6 +183,7 @@
     /** Navigate to the next exercise in the plan. */
     goToNext: function () {
       if (!this.isActive()) return;
+      this.markItemComplete(AppState.mixedTestCurrentIndex);
       Exercise.savePartState();
       AppState.mixedTestCurrentIndex++;
       if (AppState.mixedTestCurrentIndex >= AppState.mixedTestPlan.length) {
@@ -137,33 +205,41 @@
 
     /** Called when the user reaches the end of the plan. */
     finish: function () {
+      if (plan) {
+        var allDone = new Set(Array.from({ length: plan.length }, function(_, i) { return i; }));
+        _saveCompleted(allDone);
+      }
       AppState.mixedTestPlan = null;
       AppState.mixedTestCurrentIndex = 0;
-      try { localStorage.removeItem('cambridge_mixed_plan'); } catch (e) { /* ignore */ }
+      // Plan remains in localStorage — generated earlier via generateNew()
       this._showFinishScreen();
     },
 
-    /** Clear state without showing a finish screen (e.g., user exits mid-session). */
+    /** Clear active session state without showing a finish screen (e.g., user exits mid-session).
+     *  The plan and completion data are kept in localStorage so the card stays visible. */
     clear: function () {
       AppState.mixedTestPlan = null;
       AppState.mixedTestCurrentIndex = 0;
-      try { localStorage.removeItem('cambridge_mixed_plan'); } catch (e) { /* ignore */ }
     },
 
     _showFinishScreen: function () {
       var content = document.getElementById('main-content');
       if (!content) { loadDashboard(); return; }
+      var mode = AppState.currentMode || 'practice';
       content.innerHTML =
         '<div class="mixed-test-finish">' +
           '<div class="mixed-test-finish-icon"><span class="material-symbols-outlined">celebration</span></div>' +
           '<h2>Congratulations!</h2>' +
-          '<p>You have completed your Random Mix session.<br>All exercises have been saved to your progress.</p>' +
+          '<p>You have completed your Random Test session.<br>All exercises have been saved to your progress.</p>' +
           '<div class="mixed-test-finish-btns">' +
-            '<button class="btn-mixed-again" onclick="MixedTest.start()">' +
-              '<span class="material-symbols-outlined">shuffle</span> New Random Mix' +
+            '<button class="btn-mixed-again" onclick="MixedTest.generateNew()">' +
+              '<span class="material-symbols-outlined">shuffle</span> New Random Test' +
             '</button>' +
-            '<button class="btn-mixed-home" onclick="Exercise.closeExercise()">' +
-              '<i class="fas fa-home"></i> Back to Home' +
+            '<button class="btn-mixed-again" onclick="MixedTest.restart()">' +
+              '<i class="fas fa-redo-alt"></i> Repeat This Test' +
+            '</button>' +
+            '<button class="btn-mixed-home" onclick="Dashboard.renderSubpage(\'' + mode + '\')">' +
+              '<i class="fas fa-arrow-left"></i> Back to Tests' +
             '</button>' +
           '</div>' +
         '</div>';
