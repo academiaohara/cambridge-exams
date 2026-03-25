@@ -985,27 +985,19 @@
     },
     
     markPartCompleted: function(examId, section, part) {
-      if (window.MixedTest && MixedTest.isActive()) {
-        // Still record streak activity even in mixed mode
-        if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
-        return;
-      }
-      const exam = EXAMS_DATA[AppState.currentLevel].find(e => e.id === examId);
+      const exam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === examId);
       if (exam && exam.status === 'available') {
-        if (!exam.sections[section].completed.includes(part)) {
+        if (exam.sections[section] && !exam.sections[section].completed.includes(part)) {
           exam.sections[section].completed.push(part);
-          
-          const inProgressIndex = exam.sections[section].inProgress.indexOf(part);
-          if (inProgressIndex > -1) {
-            exam.sections[section].inProgress.splice(inProgressIndex, 1);
-          }
-
-          // Record streak activity when a part is completed
-          if (typeof StreakManager !== 'undefined') {
-            StreakManager.recordActivity();
+          if (!window.MixedTest || !MixedTest.isActive()) {
+            const inProgressIndex = exam.sections[section].inProgress.indexOf(part);
+            if (inProgressIndex > -1) {
+              exam.sections[section].inProgress.splice(inProgressIndex, 1);
+            }
           }
         }
       }
+      if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
     }
   };
 })();
