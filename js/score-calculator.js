@@ -34,8 +34,8 @@
     "B2": {
       skills: ["Reading", "Use of English", "Writing", "Listening", "Speaking"],
       tables: {
-        "Reading": [[10, 122], [16, 140], [24, 160], [37, 180]],
-        "Use of English": [[7, 122], [11, 140], [18, 160], [24, 180]],
+        "Reading": [[11, 122], [18, 140], [27, 160], [42, 180]],
+        "Use of English": [[8, 122], [13, 140], [21, 160], [28, 180]],
         "Writing": [[10, 122], [16, 140], [24, 160], [34, 180]],
         "Listening": [[8, 122], [12, 140], [18, 160], [27, 180]],
         "Speaking": [[14, 122], [24, 140], [36, 160], [54, 180]]
@@ -351,7 +351,9 @@
           });
           var uoeTableMax = data.tables['Use of English'][data.tables['Use of English'].length-1][0];
           var uoeNormalized = uoeMax > 0 ? Math.round(uoeRaw / uoeMax * uoeTableMax) : 0;
-          results.push({ skill: 'Use of English', raw: uoeRaw, maxRaw: uoeMax, scale: getScaleScore(uoeNormalized, data.tables['Use of English']) });
+          var uoeDisplayRaw = isB2 ? uoeNormalized : uoeRaw;
+          var uoeDisplayMax = isB2 ? uoeTableMax : uoeMax;
+          results.push({ skill: 'Use of English', raw: uoeDisplayRaw, maxRaw: uoeDisplayMax, scale: getScaleScore(uoeNormalized, data.tables['Use of English']) });
 
           var readRaw = 0; var readMax = 0;
           readPartsList.forEach(function(p2) {
@@ -361,7 +363,9 @@
           });
           var readTableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
           var readNormalized = readMax > 0 ? Math.round(readRaw / readMax * readTableMax) : 0;
-          results.push({ skill: 'Reading', raw: readRaw, maxRaw: readMax, scale: getScaleScore(readNormalized, data.tables['Reading']) });
+          var readDisplayRaw = isB2 ? readNormalized : readRaw;
+          var readDisplayMax = isB2 ? readTableMax : readMax;
+          results.push({ skill: 'Reading', raw: readDisplayRaw, maxRaw: readDisplayMax, scale: getScaleScore(readNormalized, data.tables['Reading']) });
         } else {
           // A2/B1: All parts → Reading
           var rawTotal = 0; var maxTotal = 0;
@@ -453,28 +457,35 @@
 
       if (sectionKey === 'reading') {
         if (hasUoE) {
-          // Parts 2-4 → Use of English (8+8+12 = 28 marks)
+          // B2: Parts 1-4 → Use of English; Parts 5-7 → Reading
+          // C1: Parts 2-4 → Use of English; Parts 1, 5-8 → Reading
+          var isB2 = examType === 'B2';
+          var uoeParts = isB2 ? [1, 2, 3, 4] : [2, 3, 4];
+          var readPartsList = isB2 ? [5, 6, 7] : [1, 5, 6, 7, 8];
+
           var uoeRaw = 0; var uoeMax = 0;
-          for (var p = 2; p <= 4; p++) {
+          uoeParts.forEach(function(p) {
             uoeRaw += self.getLiveSectionScore(examId, 'reading', p);
             var cfg = CONFIG.getPartConfig('reading', p);
             uoeMax += cfg ? (cfg.maxMarks || cfg.total || 0) : 0;
-          }
+          });
           var uoeTableMax = data.tables['Use of English'][data.tables['Use of English'].length-1][0];
           var uoeNormalized = uoeMax > 0 ? Math.round(uoeRaw / uoeMax * uoeTableMax) : 0;
-          results.push({ skill: 'Use of English', raw: uoeRaw, maxRaw: uoeMax, scale: getScaleScore(uoeNormalized, data.tables['Use of English']) });
+          var uoeDisplayRaw = isB2 ? uoeNormalized : uoeRaw;
+          var uoeDisplayMax = isB2 ? uoeTableMax : uoeMax;
+          results.push({ skill: 'Use of English', raw: uoeDisplayRaw, maxRaw: uoeDisplayMax, scale: getScaleScore(uoeNormalized, data.tables['Use of English']) });
 
-          // Parts 1, 5-8 → Reading (8+12+8+12+10 = 50 marks)
           var readRaw = 0; var readMax = 0;
-          var readParts = [1, 5, 6, 7, 8];
-          readParts.forEach(function(p2) {
+          readPartsList.forEach(function(p2) {
             readRaw += self.getLiveSectionScore(examId, 'reading', p2);
             var cfg2 = CONFIG.getPartConfig('reading', p2);
             readMax += cfg2 ? (cfg2.maxMarks || cfg2.total || 0) : 0;
           });
           var readTableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
           var readNormalized = readMax > 0 ? Math.round(readRaw / readMax * readTableMax) : 0;
-          results.push({ skill: 'Reading', raw: readRaw, maxRaw: readMax, scale: getScaleScore(readNormalized, data.tables['Reading']) });
+          var readDisplayRaw = isB2 ? readNormalized : readRaw;
+          var readDisplayMax = isB2 ? readTableMax : readMax;
+          results.push({ skill: 'Reading', raw: readDisplayRaw, maxRaw: readDisplayMax, scale: getScaleScore(readNormalized, data.tables['Reading']) });
         } else {
           var rawTotal = 0; var maxTotal = 0;
           for (var p3 = 1; p3 <= 8; p3++) {
