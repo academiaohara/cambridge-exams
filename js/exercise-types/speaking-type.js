@@ -541,11 +541,14 @@ function roleName(role) {
         '</div>';
       }
 
+      var imageCount = task && task.images ? task.images.length : 0;
+      var gridClass = 'speaking-images-grid' + (imageCount === 2 ? ' speaking-images-grid--two' : '');
+
       return '<div class="speaking-images-view">' +
         timerHTML +
         taskSelectorHTML +
         instructionsHTML +
-        '<div class="speaking-images-grid">' + imagesHTML + '</div>' +
+        '<div class="' + gridClass + '">' + imagesHTML + '</div>' +
         this._buildControls() +
       '</div>';
     },
