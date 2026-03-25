@@ -22,9 +22,6 @@
       // Row 1: Arena · Practice
       html += this._renderTopRow(exams);
 
-      // Row 1b: Random Mix
-      html += this._renderMixedRow(exams);
-
       // Row 2: Lessons · Micro-Learning
       html += this._renderLearningRow();
 

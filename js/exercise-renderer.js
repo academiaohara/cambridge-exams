@@ -233,10 +233,10 @@
           <div class="exercise-container">
             <div class="exercise-header">
               <div class="exercise-title">
-                <h2>${levelName} - ${isMixed ? 'Random Mix' : sectionTitle}</h2>
+                <h2>${levelName} - ${isMixed ? 'Random Test' : sectionTitle}</h2>
                 <div class="exercise-subtitle" data-i18n="part">${isMixed ? 'Exercise ' + displayPart + ' of ' + totalParts : 'Part ' + part + ' of ' + totalParts}</div>
                 <span class="exercise-badge">${exercise.title || 'Exercise'}</span>
-                ${isMixed ? `<span class="mixed-mode-badge"><span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">shuffle</span> Random Mix</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> Exam Mode</span>` : '')}
+                ${isMixed ? `<span class="mixed-mode-badge"><span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">shuffle</span> Random Test</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> Exam Mode</span>` : '')}
               </div>
               <div class="exercise-header-right">
                 <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
@@ -1032,7 +1032,7 @@
       } else if (window.MixedTest && MixedTest.isActive() &&
                  AppState.mixedTestCurrentIndex >= AppState.mixedTestPlan.length - 1) {
         // Last exercise in a mixed-test plan
-        footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span>Finish Mix</span> <i class="fas fa-check"></i></button>`;
+        footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span>Finish Test</span> <i class="fas fa-check"></i></button>`;
       }
       
       return footer;
