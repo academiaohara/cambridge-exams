@@ -1211,3 +1211,30 @@ margin-top: -2px;
 }
 
 
+
+/* ── MIXED (Random Mix) row ── */
+.bento-mixed-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.bento-card-mixed {
+  background: linear-gradient(135deg, #e0f0ff 0%, #d8e8ff 60%, #ddd8ff 100%);
+  color: #2a3a6a;
+  cursor: pointer;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.bento-card-mixed .bento-card-title {
+  color: #2a3a9a;
+  display: flex;
+  align-items: center;
+}
+
+.bento-card-mixed.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

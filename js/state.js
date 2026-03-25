@@ -52,6 +52,9 @@
     // Exam attempts (managed by ExamSession)
     examAttempts: {},
     // Writing validation flags
-    writingValidationEnabled: true
+    writingValidationEnabled: true,
+    // Mixed-test plan (null when not active)
+    mixedTestPlan: null,
+    mixedTestCurrentIndex: 0
   };
 })();
