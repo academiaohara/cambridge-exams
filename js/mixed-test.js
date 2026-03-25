@@ -161,6 +161,10 @@
       var plan = AppState.mixedTestPlan || _loadPlan();
       if (!plan || !plan.length) { this.generateNew(); return; }
       AppState.mixedTestPlan = plan;
+      // Save state of current exercise before navigating away
+      if (typeof Exercise !== 'undefined' && typeof Exercise.savePartState === 'function') {
+        Exercise.savePartState();
+      }
       AppState.mixedTestCurrentIndex = Math.max(0, Math.min(index, plan.length - 1));
       AppState.currentMode = 'practice';
 
@@ -247,7 +251,7 @@
 
     /**
      * Returns a human-readable label for the current mixed exercise position,
-     * e.g. "Exercise 5 / 17  ·  Reading Part 3  (Test12)"
+     * e.g. "Reading\u00a03\u00a0·\u00a05/17"
      */
     getProgressLabel: function () {
       if (!this.isActive()) return '';
@@ -256,9 +260,7 @@
       var item = plan[idx];
       if (!item) return '';
       var sectionLabel = item.section.charAt(0).toUpperCase() + item.section.slice(1);
-      return 'Exercise ' + (idx + 1) + ' / ' + plan.length +
-             '\u00a0\u00b7\u00a0' + sectionLabel + ' Part ' + item.part +
-             '\u00a0(' + item.examId + ')';
+      return sectionLabel + ' ' + item.part + '\u00a0\u00b7\u00a0' + (idx + 1) + '/' + plan.length;
     }
   };
 })();

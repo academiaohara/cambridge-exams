@@ -1038,17 +1038,26 @@
       return footer;
     },
 
-    /** Compact progress strip shown in the exercise-info bar during a mixed session. */
+    /** Navigation cells for mixed-test mode (same style as normal part-nav-row). */
     renderMixedTestProgress: function() {
       if (!window.MixedTest || !MixedTest.isActive()) return '';
       var plan = AppState.mixedTestPlan;
       var idx  = AppState.mixedTestCurrentIndex;
-      var pct  = Math.round(((idx + 1) / plan.length) * 100);
-      var label = MixedTest.getProgressLabel();
-      return '<div class="mixed-progress-bar" title="' + label + '">' +
-        '<div class="mixed-progress-fill" style="width:' + pct + '%"></div>' +
-        '<span class="mixed-progress-label">' + label + '</span>' +
-      '</div>';
+      var completedSet = MixedTest.getCompletedSet();
+
+      var cells = '';
+      plan.forEach(function(item, i) {
+        var isActive    = i === idx;
+        var isCompleted = completedSet.has(i);
+        var cellClass   = 'part-nav-cell';
+        if (isActive)    cellClass += ' active';
+        if (isCompleted) cellClass += ' completed';
+        var sectionLabel = item.section.charAt(0).toUpperCase() + item.section.slice(1);
+        var tooltip = sectionLabel + ' ' + item.part;
+        cells += '<button class="' + cellClass + '" title="' + tooltip + '" onclick="MixedTest.startAtIndex(' + i + ')">' + (i + 1) + '</button>';
+      });
+
+      return '<div class="part-nav-row">' + cells + '</div>';
     },
     
     renderPartNavigation: function(section, currentPart, totalParts, examId) {

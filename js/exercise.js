@@ -22,7 +22,8 @@
     },
 
     getStorageKey: function(examId, section, part) {
-      return `cambridge_${AppState.currentMode}_${AppState.currentLevel}_${examId}_${section}_${part}`;
+      var modePrefix = (window.MixedTest && MixedTest.isActive()) ? 'mixed' : AppState.currentMode;
+      return `cambridge_${modePrefix}_${AppState.currentLevel}_${examId}_${section}_${part}`;
     },
     
     getSectionTimerKey: function(examId, section) {
@@ -919,12 +920,15 @@
       }
 
       // Clear any active mixed-test session
-      if (window.MixedTest && MixedTest.isActive()) {
+      var wasMixedTest = window.MixedTest && MixedTest.isActive();
+      if (wasMixedTest) {
         MixedTest.clear();
       }
       
-      // Remember which exam was open so we can expand it in the dashboard
-      var returnToExamId = AppState.currentExamId;
+      // Remember which exam was open so we can expand it in the dashboard.
+      // When exiting a mixed test pass null so renderSubpage resets to page 1
+      // (passing null with keepPage=false triggers subpageCurrentPage = 1).
+      var returnToExamId = wasMixedTest ? null : AppState.currentExamId;
       
       AppState.currentExercise = null;
       AppState.currentSection = null;
@@ -962,6 +966,7 @@
     },
     
     markPartInProgress: function(examId, section, part) {
+      if (window.MixedTest && MixedTest.isActive()) return;
       const exam = EXAMS_DATA[AppState.currentLevel].find(e => e.id === examId);
       if (exam && exam.status === 'available') {
         if (!exam.sections[section].completed.includes(part)) {
@@ -980,6 +985,11 @@
     },
     
     markPartCompleted: function(examId, section, part) {
+      if (window.MixedTest && MixedTest.isActive()) {
+        // Still record streak activity even in mixed mode
+        if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+        return;
+      }
       const exam = EXAMS_DATA[AppState.currentLevel].find(e => e.id === examId);
       if (exam && exam.status === 'available') {
         if (!exam.sections[section].completed.includes(part)) {
