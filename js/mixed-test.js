@@ -156,7 +156,7 @@
       content.innerHTML =
         '<div class="mixed-test-finish">' +
           '<div class="mixed-test-finish-icon"><span class="material-symbols-outlined">celebration</span></div>' +
-          '<h2>¡Enhorabuena!</h2>' +
+          '<h2>Congratulations!</h2>' +
           '<p>You have completed your Random Mix session.<br>All exercises have been saved to your progress.</p>' +
           '<div class="mixed-test-finish-btns">' +
             '<button class="btn-mixed-again" onclick="MixedTest.start()">' +

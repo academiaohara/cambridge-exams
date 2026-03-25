@@ -995,7 +995,10 @@
         // Reading part 4: never show (broken); reading parts 5-8: explanation button is in toggle-view-header
         // Listening: explanation button is now in toggle-view-header
         // all other sections: always show in practice mode
-        if (isReading && actualPart !== 4 && actualPart < 5) {
+        // Reading parts 1–3: show explanations button (part 4 is excluded because
+        // key-word transformations don't have auto-explanations; parts 5–8 have
+        // their explanation button in the toggle-view-header instead).
+        if (isReading && actualPart > 0 && actualPart < 4) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span>
