@@ -414,34 +414,18 @@
 
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
-      // Build sidebars
-      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
-      var rightSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined') {
-        rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
-        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
-      }
-
-      var headerHtml =
-        '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="loadDashboard()">Back</button>' +
-          '<div>' +
-            '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
-            '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
-          '</div>' +
-        '</div>';
-
-      // Render initial layout with loading spinner
+      // Render initial layout with loading spinners in both sidebars
       content.innerHTML =
         '<div class="dashboard-layout">' +
-          '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+          '<div class="dashboard-left-sidebar" id="courseLeftSidebar">' +
+            '<div class="fe-loading"><div class="fe-spinner"></div></div>' +
+          '</div>' +
           '<div class="dashboard-center">' +
             '<div class="fe-section" id="courseCenterSection">' +
-              headerHtml +
               '<div class="fe-loading"><div class="fe-spinner"></div></div>' +
             '</div>' +
           '</div>' +
-          '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
+          '<div class="dashboard-right-sidebar" id="dashboardRightSidebar"></div>' +
         '</div>';
 
       // Try to fetch index.json for this level
@@ -451,8 +435,9 @@
         if (r.ok) indexData = await r.json();
       } catch(e) { /* no index available */ }
 
+      var leftSidebar = document.getElementById('courseLeftSidebar');
       var centerSection = document.getElementById('courseCenterSection');
-      if (!centerSection) return;
+      if (!leftSidebar || !centerSection) return;
 
       if (indexData && indexData.items && indexData.items.length > 0) {
         // Group items by block and store for block switching
@@ -470,12 +455,33 @@
         BentoGrid._courseBlocks = blocks;
         BentoGrid._courseBlockOrder = blockOrder;
         BentoGrid._courseLevel = level;
+        BentoGrid._courseIndexData = indexData;
+
+        // Left sidebar: course navigation
+        leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(indexData, level, null);
 
         // Default to first block (Block 1)
         var defaultBlock = blockOrder[0] || '1';
+        var headerHtml =
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="loadDashboard()">Back</button>' +
+            '<div>' +
+              '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
+              '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
+            '</div>' +
+          '</div>';
         centerSection.innerHTML = headerHtml + BentoGrid._renderCourseBlockView(defaultBlock);
       } else {
         // Fallback: no index available for this level
+        leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(null, level, null);
+        var headerHtml =
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="loadDashboard()">Back</button>' +
+            '<div>' +
+              '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
+              '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
+            '</div>' +
+          '</div>';
         centerSection.innerHTML = headerHtml +
           '<div class="fe-map-container">' +
           '<div class="lt-coming-soon-banner">' +
@@ -511,27 +517,10 @@
       var self = this;
       var level = BentoGrid._courseLevel || 'C1';
       var blocks = BentoGrid._courseBlocks || {};
-      var blockOrder = BentoGrid._courseBlockOrder || [];
 
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
-      // Block tabs
-      var tabsHtml = '<div class="cu-block-tabs">';
-      blockOrder.forEach(function(bk) {
-        var isActive = bk === activeBlockKey;
-        var hasAvailable = (blocks[bk] || []).some(function(i) { return i.status === 'available'; });
-        var label = bk !== 'misc' ? 'Block ' + bk : 'Other';
-        if (!hasAvailable) {
-          var tabClass = 'cu-block-tab cu-block-tab-locked' + (isActive ? ' cu-block-tab-active' : '');
-          tabsHtml += '<div class="' + tabClass + '" title="Coming soon">' + _mi('lock') + ' ' + label + '</div>';
-        } else {
-          var tabClass = 'cu-block-tab' + (isActive ? ' cu-block-tab-active' : '');
-          tabsHtml += '<button class="' + tabClass + '" onclick="BentoGrid._selectCourseBlock(\'' + bk + '\')">' + label + '</button>';
-        }
-      });
-      tabsHtml += '</div>';
-
-      // Unit cards for the active block
+      // Unit cards for the active block (no block tabs — navigation is in the left sidebar)
       var items = blocks[activeBlockKey] || [];
       var cardsHtml = '<div class="cu-unit-cards">';
 
@@ -573,7 +562,7 @@
 
       cardsHtml += '</div>';
 
-      return '<div class="cu-course-view">' + tabsHtml + cardsHtml + '</div>';
+      return '<div class="cu-course-view">' + cardsHtml + '</div>';
     },
 
     openCourseUnit: async function(unitId, filePath) {
@@ -585,25 +574,55 @@
 
       var centerSection = content.querySelector('#courseCenterSection');
       if (!centerSection) {
-        // Re-render layout if navigated directly
-        var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
-        var rightSidebarContent = '';
-        if (typeof BentoGrid !== 'undefined') {
-          rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
-          rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
-        }
+        // Re-render layout if navigated directly — use course-specific sidebars
         content.innerHTML =
           '<div class="dashboard-layout">' +
-            '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+            '<div class="dashboard-left-sidebar" id="courseLeftSidebar">' +
+              '<div class="fe-loading"><div class="fe-spinner"></div></div>' +
+            '</div>' +
             '<div class="dashboard-center">' +
               '<div class="fe-section" id="courseCenterSection"></div>' +
             '</div>' +
-            '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
+            '<div class="dashboard-right-sidebar" id="dashboardRightSidebar"></div>' +
           '</div>';
         centerSection = document.getElementById('courseCenterSection');
+        // Load index.json to build navigation sidebar
+        var leftSidebar = document.getElementById('courseLeftSidebar');
+        if (leftSidebar && !BentoGrid._courseIndexData) {
+          try {
+            var ri = await fetch('data/Course/' + level + '/index.json');
+            if (ri.ok) {
+              var idxData = await ri.json();
+              if (idxData && idxData.items) {
+                var blocks = {}, blockOrder = [];
+                idxData.items.forEach(function(item) {
+                  var bk = item.block != null ? String(item.block) : 'misc';
+                  if (!blocks[bk]) { blocks[bk] = []; blockOrder.push(bk); }
+                  blocks[bk].push(item);
+                });
+                BentoGrid._courseBlocks = blocks;
+                BentoGrid._courseBlockOrder = blockOrder;
+                BentoGrid._courseLevel = level;
+                BentoGrid._courseIndexData = idxData;
+                leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(idxData, level, unitId);
+              }
+            }
+          } catch(e) { /* index not available */ }
+          if (leftSidebar.querySelector('.fe-spinner')) {
+            leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(null, level, unitId);
+          }
+        } else if (leftSidebar) {
+          leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(BentoGrid._courseIndexData || null, level, unitId);
+        }
+      } else {
+        // Update left sidebar to highlight the newly active unit
+        var leftSidebar = document.getElementById('courseLeftSidebar');
+        if (leftSidebar && BentoGrid._courseIndexData) {
+          leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(BentoGrid._courseIndexData, level, unitId);
+        }
       }
 
-      // Show loading
+      // Show loading in center
       centerSection.innerHTML =
         '<div class="subpage-header">' +
           '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()">Back</button>' +
@@ -628,6 +647,12 @@
           '</div>' +
           '<div class="fe-error">Could not load unit content.</div>';
         return;
+      }
+
+      // Update right sidebar with learning roadmap for this unit
+      var rightSidebar = document.getElementById('dashboardRightSidebar');
+      if (rightSidebar) {
+        rightSidebar.innerHTML = BentoGrid._buildCourseRoadmapSidebarHtml(unitData);
       }
 
       var html =
@@ -660,9 +685,9 @@
       function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
       var html = '';
 
-      (data.sections || []).forEach(function(section) {
+      (data.sections || []).forEach(function(section, idx) {
         if (section.type === 'theory') {
-          html += '<div class="cu-section cu-theory">' +
+          html += '<div class="cu-section cu-theory" id="cu-sec-' + idx + '">' +
             '<div class="cu-section-title">' + _mi('menu_book') + ' ' + self._escapeHTML(section.title) + '</div>' +
             '<div class="cu-theory-body">';
 
@@ -686,7 +711,7 @@
           html += '</div></div>';
 
         } else if (section.type === 'exercise') {
-          html += '<div class="cu-section cu-exercise">' +
+          html += '<div class="cu-section cu-exercise" id="cu-sec-' + idx + '">' +
             '<div class="cu-section-title">' + _mi('edit_note') + ' ' + self._escapeHTML(section.title) + '</div>';
 
           if (section.instructions) {
@@ -710,10 +735,11 @@
       function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
       var html = '';
       var sections = data.sections || {};
+      var sectionIndex = 0;
 
       // Topic vocabulary
       if (sections.topic_vocabulary) {
-        html += '<div class="cu-section cu-vocab">' +
+        html += '<div class="cu-section cu-vocab" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('translate') + ' Topic Vocabulary</div>';
         Object.keys(sections.topic_vocabulary).forEach(function(topic) {
           var words = sections.topic_vocabulary[topic];
@@ -734,7 +760,7 @@
 
       // Phrasal verbs
       if (sections.phrasal_verbs && sections.phrasal_verbs.length) {
-        html += '<div class="cu-section cu-pv">' +
+        html += '<div class="cu-section cu-pv" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('format_list_bulleted') + ' Phrasal Verbs</div>' +
           '<div class="cu-pv-list">';
         sections.phrasal_verbs.forEach(function(pv) {
@@ -748,7 +774,7 @@
 
       // Collocations
       if (sections.collocations_patterns && Object.keys(sections.collocations_patterns).length) {
-        html += '<div class="cu-section cu-collocations">' +
+        html += '<div class="cu-section cu-collocations" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('link') + ' Collocations & Patterns</div>' +
           '<div class="cu-coll-list">';
         Object.keys(sections.collocations_patterns).forEach(function(word) {
@@ -764,7 +790,7 @@
 
       // Idioms
       if (sections.idioms && sections.idioms.length) {
-        html += '<div class="cu-section cu-idioms">' +
+        html += '<div class="cu-section cu-idioms" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('lightbulb') + ' Idioms</div>' +
           '<div class="cu-pv-list">';
         sections.idioms.forEach(function(idiom) {
@@ -778,7 +804,7 @@
 
       // Word formation
       if (sections.word_formation && sections.word_formation.length) {
-        html += '<div class="cu-section cu-wf">' +
+        html += '<div class="cu-section cu-wf" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('spellcheck') + ' Word Formation</div>' +
           '<div class="cu-pv-list">';
         sections.word_formation.forEach(function(wf) {
@@ -797,7 +823,7 @@
 
       // Exercises
       if (sections.exercises && Object.keys(sections.exercises).length) {
-        html += '<div class="cu-section cu-exercise">' +
+        html += '<div class="cu-section cu-exercise" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('edit_note') + ' Exercises</div>';
         Object.keys(sections.exercises).forEach(function(key) {
           var ex = sections.exercises[key];
@@ -825,9 +851,9 @@
       function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
       var html = '';
 
-      (data.sections || []).forEach(function(section) {
+      (data.sections || []).forEach(function(section, idx) {
         if (section.type === 'exercise') {
-          html += '<div class="cu-section cu-exercise">' +
+          html += '<div class="cu-section cu-exercise" id="cu-sec-' + idx + '">' +
             '<div class="cu-section-title">' + _mi('quiz') + ' ' + self._escapeHTML(section.title) + '</div>';
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
@@ -931,6 +957,177 @@
       var siblings = document.querySelectorAll('.cu-option-btn[data-group="' + group + '"]');
       siblings.forEach(function(s) { s.classList.remove('cu-option-selected'); });
       btn.classList.add('cu-option-selected');
+    },
+
+    // ── Course Navigation Sidebar (left) ─────────────────────────────────
+    _buildCourseNavSidebarHtml: function(indexData, level, activeItemId) {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+
+      var html = '<div class="course-nav-sidebar">';
+      html += '<div class="course-nav-header">' +
+        '<button class="course-nav-back-btn" onclick="loadDashboard()">' + _mi('arrow_back') + '</button>' +
+        '<div class="course-nav-title">' + _mi('auto_stories') + ' Course</div>' +
+      '</div>';
+
+      if (!indexData || !indexData.items) {
+        html += '<div class="course-nav-empty">No course data available.</div>';
+        html += '</div>';
+        return html;
+      }
+
+      // Group items by block
+      var blocks = {};
+      var blockOrder = [];
+      indexData.items.forEach(function(item) {
+        var bk = item.block != null ? String(item.block) : 'misc';
+        if (!blocks[bk]) { blocks[bk] = []; blockOrder.push(bk); }
+        blocks[bk].push(item);
+      });
+
+      html += '<div class="course-nav-blocks">';
+
+      blockOrder.forEach(function(bk) {
+        var items = blocks[bk] || [];
+        var hasAvailable = items.some(function(i) { return i.status === 'available'; });
+        var hasActive = items.some(function(i) { return i.id === activeItemId; });
+        var isOpen = hasActive || bk === blockOrder[0];
+        var label = bk !== 'misc' ? 'Block ' + bk : 'Other';
+
+        html += '<div class="course-nav-block" id="cnb-' + bk + '">';
+
+        if (!hasAvailable) {
+          html += '<div class="course-nav-block-hdr cnb-locked">' +
+            '<span class="cnb-lock-icon">' + _mi('lock') + '</span>' +
+            '<span class="cnb-label">' + label + '</span>' +
+          '</div>';
+        } else {
+          html += '<div class="course-nav-block-hdr cnb-available' + (hasActive ? ' cnb-has-active' : '') + '" ' +
+            'onclick="BentoGrid._toggleCourseNavBlock(\'' + bk + '\')">' +
+            '<span class="cnb-label">' + label + '</span>' +
+            '<span class="material-symbols-outlined cnb-arrow">' + (isOpen ? 'expand_less' : 'expand_more') + '</span>' +
+          '</div>';
+
+          html += '<div class="course-nav-items" id="cni-' + bk + '" style="display:' + (isOpen ? 'flex' : 'none') + '">';
+
+          items.forEach(function(item) {
+            var typeIcon = item.type === 'grammar' ? 'menu_book' :
+                           item.type === 'vocabulary' ? 'translate' :
+                           item.type === 'review' ? 'quiz' : 'school';
+            var isActive = item.id === activeItemId;
+            var isAvail = item.status === 'available';
+
+            // Shorten display title
+            var shortTitle = item.title;
+            if (item.type === 'grammar' || item.type === 'vocabulary') {
+              var colonIdx = shortTitle.indexOf(':');
+              if (colonIdx !== -1) shortTitle = shortTitle.slice(colonIdx + 1).trim();
+            } else if (item.type === 'review') {
+              var dashIdx = shortTitle.indexOf('—');
+              if (dashIdx !== -1) shortTitle = shortTitle.slice(0, dashIdx).trim();
+            }
+
+            if (isAvail) {
+              html += '<div class="course-nav-item cni-available' + (isActive ? ' cni-active' : '') + '" ' +
+                'onclick="BentoGrid.openCourseUnit(\'' + item.id + '\', \'data/Course/' + level + '/' + item.file + '\')">' +
+                '<span class="cni-icon">' + _mi(typeIcon) + '</span>' +
+                '<span class="cni-text">' + self._escapeHTML(shortTitle) + '</span>' +
+              '</div>';
+            } else {
+              html += '<div class="course-nav-item cni-locked">' +
+                '<span class="cni-icon">' + _mi('lock') + '</span>' +
+                '<span class="cni-text">' + self._escapeHTML(shortTitle) + '</span>' +
+              '</div>';
+            }
+          });
+
+          html += '</div>'; // .course-nav-items
+        }
+
+        html += '</div>'; // .course-nav-block
+      });
+
+      html += '</div>'; // .course-nav-blocks
+      html += '</div>'; // .course-nav-sidebar
+      return html;
+    },
+
+    _toggleCourseNavBlock: function(bk) {
+      var items = document.getElementById('cni-' + bk);
+      var arrow = document.querySelector('#cnb-' + bk + ' .cnb-arrow');
+      if (!items) return;
+      var isOpen = items.style.display !== 'none';
+      items.style.display = isOpen ? 'none' : 'flex';
+      if (arrow) arrow.textContent = isOpen ? 'expand_more' : 'expand_less';
+    },
+
+    // ── Course Learning Roadmap Sidebar (right) ───────────────────────────
+    _buildCourseRoadmapSidebarHtml: function(unitData) {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+
+      if (!unitData) return '';
+
+      var html = '<div class="course-roadmap-widget">';
+      html += '<div class="course-roadmap-heading">' + _mi('map') + ' Learning Roadmap</div>';
+
+      if (unitData.unitTitle) {
+        html += '<div class="course-roadmap-unit-title">' + self._escapeHTML(unitData.unitTitle) + '</div>';
+      }
+
+      if (unitData.type === 'grammar') {
+        (unitData.sections || []).forEach(function(sec, idx) {
+          var isTheory = sec.type === 'theory';
+          var icon = isTheory ? 'menu_book' : 'edit_note';
+          var cls = isTheory ? 'crm-theory' : 'crm-exercise';
+          html += '<button class="course-roadmap-item ' + cls + '" onclick="BentoGrid._scrollToCuSection(' + idx + ')">' +
+            '<span class="crm-icon">' + _mi(icon) + '</span>' +
+            '<span class="crm-text">' + self._escapeHTML(sec.title || '') + '</span>' +
+          '</button>';
+        });
+
+      } else if (unitData.type === 'vocabulary') {
+        var secs = unitData.sections || {};
+        var sectionIndex = 0;
+        var vocabMap = [
+          { key: 'topic_vocabulary', icon: 'translate', label: 'Topic Vocabulary' },
+          { key: 'phrasal_verbs', icon: 'format_list_bulleted', label: 'Phrasal Verbs' },
+          { key: 'collocations_patterns', icon: 'link', label: 'Collocations & Patterns' },
+          { key: 'idioms', icon: 'lightbulb', label: 'Idioms' },
+          { key: 'word_formation', icon: 'spellcheck', label: 'Word Formation' },
+          { key: 'exercises', icon: 'edit_note', label: 'Exercises' }
+        ];
+        vocabMap.forEach(function(vs) {
+          var hasContent = secs[vs.key] && (
+            Array.isArray(secs[vs.key]) ? secs[vs.key].length > 0 : Object.keys(secs[vs.key]).length > 0
+          );
+          if (hasContent) {
+            var si = sectionIndex++;
+            html += '<button class="course-roadmap-item crm-vocab" onclick="BentoGrid._scrollToCuSection(' + si + ')">' +
+              '<span class="crm-icon">' + _mi(vs.icon) + '</span>' +
+              '<span class="crm-text">' + vs.label + '</span>' +
+            '</button>';
+          }
+        });
+
+      } else if (unitData.type === 'review') {
+        (unitData.sections || []).forEach(function(sec, idx) {
+          html += '<button class="course-roadmap-item crm-exercise" onclick="BentoGrid._scrollToCuSection(' + idx + ')">' +
+            '<span class="crm-icon">' + _mi('quiz') + '</span>' +
+            '<span class="crm-text">' + self._escapeHTML(sec.title || '') + '</span>' +
+          '</button>';
+        });
+      }
+
+      html += '</div>'; // .course-roadmap-widget
+      return html;
+    },
+
+    _scrollToCuSection: function(idx) {
+      var el = document.getElementById('cu-sec-' + idx);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     },
 
     _buildStreakSidebarHtml: function() {
