@@ -4939,3 +4939,499 @@
 .course-nav-back-btn .material-symbols-outlined {
   font-size: 1.1rem;
 }
+
+/* ── Course Overview (all blocks roadmap) ──────────────────────────────── */
+.cu-overview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 32px;
+}
+
+/* Overall progress bar */
+.cu-overview-progress-bar-wrap {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(45, 46, 95, 0.08);
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 16px rgba(45, 46, 95, 0.06);
+}
+
+.cu-overview-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.cu-overview-progress-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #2D2E5F;
+}
+
+.cu-overview-progress-label .material-symbols-outlined {
+  font-size: 1rem;
+  color: #46B1E1;
+}
+
+.cu-overview-progress-pct {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #3b82f6;
+}
+
+.cu-overview-progress-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(45, 46, 95, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cu-overview-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #46B1E1);
+  border-radius: 8px;
+  transition: width 0.4s ease;
+  min-width: 0;
+}
+
+.cu-overview-progress-sub {
+  font-size: 0.78rem;
+  color: var(--text-medium, #64748b);
+  margin-top: 6px;
+}
+
+/* Block cards grid */
+.cu-blocks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+/* Block card */
+.cu-block-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1.5px solid rgba(45, 46, 95, 0.09);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 14px rgba(45, 46, 95, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.15s, transform 0.12s;
+}
+
+.cu-block-card-available:hover,
+.cu-block-card-in-progress:hover {
+  box-shadow: 0 8px 24px rgba(45, 46, 95, 0.12);
+  transform: translateY(-2px);
+}
+
+.cu-block-card-locked {
+  opacity: 0.6;
+}
+
+.cu-block-card-done {
+  border-color: rgba(16, 185, 129, 0.25);
+  background: rgba(240, 253, 247, 0.9);
+}
+
+.cu-block-card-in-progress {
+  border-color: rgba(59, 130, 246, 0.2);
+  background: rgba(239, 246, 255, 0.9);
+}
+
+/* Block card header */
+.cu-block-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cu-block-num {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #2D2E5F;
+}
+
+/* Status badges */
+.cu-block-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cu-badge-available {
+  background: rgba(59, 130, 246, 0.1);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.cu-badge-progress {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.cu-badge-done {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.cu-badge-locked {
+  background: rgba(148, 163, 184, 0.12);
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.cu-block-badge .material-symbols-outlined {
+  font-size: 0.85rem;
+}
+
+/* Unit rows within block card */
+.cu-block-units {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cu-block-unit-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  transition: background 0.12s;
+}
+
+.cu-block-unit-available {
+  cursor: pointer;
+  color: var(--text-dark, #0f172a);
+  background: rgba(45, 46, 95, 0.03);
+  border: 1px solid rgba(45, 46, 95, 0.06);
+}
+
+.cu-block-unit-available:hover {
+  background: rgba(59, 130, 246, 0.07);
+  border-color: rgba(59, 130, 246, 0.18);
+}
+
+.cu-block-unit-locked {
+  color: var(--text-light, #94a3b8);
+  background: rgba(45, 46, 95, 0.02);
+  border: 1px solid transparent;
+}
+
+.cu-bur-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cu-bur-icon .material-symbols-outlined {
+  font-size: 0.95rem;
+}
+
+.cu-bur-text {
+  flex: 1;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.cu-bur-done {
+  display: flex;
+  align-items: center;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.cu-bur-done .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.cu-bur-arrow {
+  display: flex;
+  align-items: center;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.cu-bur-arrow .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+/* Review row */
+.cu-block-review-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 2px;
+  transition: background 0.12s;
+}
+
+.cu-block-review-available {
+  cursor: pointer;
+  color: #92400e;
+  background: rgba(245, 158, 11, 0.07);
+  border: 1.5px solid rgba(245, 158, 11, 0.2);
+}
+
+.cu-block-review-available:hover {
+  background: rgba(245, 158, 11, 0.13);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.cu-block-review-locked {
+  color: var(--text-light, #94a3b8);
+  background: rgba(45, 46, 95, 0.02);
+  border: 1px solid transparent;
+}
+
+.cu-brr-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cu-brr-icon .material-symbols-outlined {
+  font-size: 0.95rem;
+  color: #f59e0b;
+}
+
+.cu-block-review-locked .cu-brr-icon .material-symbols-outlined {
+  color: #94a3b8;
+}
+
+.cu-brr-text {
+  flex: 1;
+  font-size: 0.8rem;
+}
+
+.cu-brr-done {
+  display: flex;
+  align-items: center;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.cu-brr-done .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.cu-brr-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: #f59e0b;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.cu-brr-badge-locked {
+  background: rgba(148, 163, 184, 0.2);
+  color: #94a3b8;
+}
+
+/* Block-level progress bar */
+.cu-block-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.cu-block-progress-track {
+  flex: 1;
+  height: 5px;
+  background: rgba(45, 46, 95, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cu-block-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #46B1E1);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+  min-width: 0;
+}
+
+.cu-block-card-done .cu-block-progress-fill {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.cu-block-progress-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-medium, #64748b);
+  white-space: nowrap;
+  min-width: 28px;
+  text-align: right;
+}
+
+/* Progress indicator in sidebar nav */
+.cnb-pct {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 1px 6px;
+  border-radius: 10px;
+  margin-right: 2px;
+}
+
+.cni-check {
+  display: flex;
+  align-items: center;
+  color: #10b981;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.cni-check .material-symbols-outlined {
+  font-size: 0.9rem;
+}
+
+.cni-done {
+  color: var(--text-medium, #64748b);
+}
+
+/* Unit card done state */
+.cu-unit-card-done {
+  border-color: rgba(16, 185, 129, 0.25);
+  background: rgba(240, 253, 247, 0.95);
+}
+
+.cu-unit-card-done-badge {
+  display: flex;
+  align-items: center;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.cu-unit-card-done-badge .material-symbols-outlined {
+  font-size: 1.3rem;
+}
+
+/* Review unit evaluation banner */
+.cu-review-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.06));
+  border: 1.5px solid rgba(245, 158, 11, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.08);
+}
+
+.cu-review-banner-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(245, 158, 11, 0.12);
+  flex-shrink: 0;
+}
+
+.cu-review-banner-icon .material-symbols-outlined {
+  font-size: 1.7rem;
+  color: #d97706;
+}
+
+.cu-review-banner-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.cu-review-banner-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #d97706;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 3px;
+}
+
+.cu-review-banner-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #2D2E5F;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.cu-review-banner-covers {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: #92400e;
+  font-style: italic;
+}
+
+.cu-review-banner-covers .material-symbols-outlined {
+  font-size: 0.9rem;
+  color: #f59e0b;
+}
+
+.cu-review-banner-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 8px 14px;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.cu-review-stat-num {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #d97706;
+  line-height: 1;
+}
+
+.cu-review-stat-lbl {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .cu-blocks-grid { grid-template-columns: 1fr; }
+  .cu-review-banner { flex-wrap: wrap; }
+  .cu-review-banner-stat { width: 100%; flex-direction: row; gap: 8px; justify-content: center; }
+}
+
+.cu-block-card-header[onclick]:hover {
+  opacity: 0.85;
+}
