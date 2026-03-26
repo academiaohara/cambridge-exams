@@ -4540,6 +4540,27 @@
   flex-shrink: 0;
 }
 
+.fe-rs-score.fe-rs-score-pending {
+  color: #94a3b8;
+  background: rgba(45, 46, 95, 0.06);
+}
+
+.fe-rs-total-score {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  border-radius: 10px;
+  padding: 2px 8px;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.fe-rs-total-score.fe-rs-score-pending {
+  color: #94a3b8;
+  background: rgba(45, 46, 95, 0.06);
+}
+
 /* Roadmap collapsible groups */
 .crm-block-label {
   font-size: 0.72rem;
@@ -4554,6 +4575,8 @@
 
 .crm-group {
   margin-bottom: 4px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .crm-group-hdr {
@@ -5324,9 +5347,25 @@
   flex: 1;
 }
 
+.cu-unit-section .fe-map-lesson {
+  flex-wrap: nowrap;
+}
+
+.cu-unit-section .fe-map-lesson .fe-map-lesson-num {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-dark, #0f172a);
+}
+
+.cu-unit-section .fe-map-lesson .fe-map-points-row {
+  gap: 10px;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
 .cu-unit-section .fe-map-lesson .fe-dot-section-marker {
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   border-width: 2px;
 }
 
