@@ -407,64 +407,12 @@
       }
     },
 
-    openLessons: function() {
+    openLessons: async function() {
       var content = document.getElementById('main-content');
       if (!content) return;
       var level = AppState.currentLevel || 'C1';
 
-      // Define placeholder curriculum sections for the learning time view
-      var sections = [
-        { icon: 'menu_book', name: 'Reading', lessons: ['Skimming & Scanning', 'Multiple Choice Strategy', 'Gapped Text Techniques', 'Multiple Matching'] },
-        { icon: 'headphones', name: 'Listening', lessons: ['Note-Taking Skills', 'Multiple Choice Listening', 'Sentence Completion', 'Speaker Matching'] },
-        { icon: 'edit_note', name: 'Writing', lessons: ['Essay Structure', 'Formal Letters', 'Reports & Reviews', 'Creative Writing'] },
-        { icon: 'record_voice_over', name: 'Speaking', lessons: ['Interview Techniques', 'Long Turn Practice', 'Collaborative Task', 'Discussion Skills'] },
-        { icon: 'spellcheck', name: 'Use of English', lessons: ['Open Cloze', 'Word Formation', 'Key Word Transformation', 'Multiple Choice Cloze'] }
-      ];
-
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
-
-      // Build the lesson map (similar to fast exercises progression map)
-      var mapHtml = '<div class="fe-map-container">';
-
-      // Coming soon banner
-      mapHtml += '<div class="lt-coming-soon-banner">' +
-        _mi('schedule') +
-        '<div class="lt-coming-soon-text">' +
-          '<strong>' + 'Coming Soon' + '</strong>' +
-          '<span>' + 'The Course curriculum is under development. Structured lessons with explanations, exercises, and progress tracking will be available here soon.' + '</span>' +
-        '</div>' +
-      '</div>';
-
-      for (var si = 0; si < sections.length; si++) {
-        var section = sections[si];
-
-        mapHtml += '<div class="fe-map-lesson fe-lesson-locked">' +
-          '<div class="fe-map-lesson-title">' +
-            '<span class="fe-map-lesson-lock">' + _mi('lock') + '</span>' +
-            '<span class="fe-map-lesson-num">' + 'Section' + ' ' + (si + 1) + '</span>' +
-            '<span class="fe-map-lesson-name">' + _mi(section.icon) + ' ' + section.name + '</span>' +
-          '</div>' +
-          '<div class="fe-map-points-row">';
-
-        for (var li = 0; li < section.lessons.length; li++) {
-          // Render each lesson as a row item (like review rows)
-          mapHtml += '<div class="fe-review-row fe-level-item fe-level-locked">' +
-            '<span class="fe-level-icon">' + _mi('lock') + '</span>' +
-            '<div class="fe-level-label">' +
-              '<span class="fe-level-name">' + section.lessons[li] + '</span>' +
-              '<span class="fe-level-pct">' + 'Coming Soon' + '</span>' +
-            '</div>' +
-          '</div>';
-        }
-
-        mapHtml += '</div></div>';
-
-        if (si < sections.length - 1) {
-          mapHtml += '<div class="fe-map-connector"></div>';
-        }
-      }
-
-      mapHtml += '</div>';
 
       // Build sidebars
       var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
@@ -474,23 +422,395 @@
         rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
       }
 
+      var headerHtml =
+        '<div class="subpage-header">' +
+          '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
+          '<div>' +
+            '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
+            '<div class="subpage-subtitle">' + 'Structured lessons for' + ' ' + level + '</div>' +
+          '</div>' +
+        '</div>';
+
+      // Render initial layout with loading spinner
       content.innerHTML =
         '<div class="dashboard-layout">' +
           '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
           '<div class="dashboard-center">' +
-            '<div class="fe-section">' +
-              '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
-                '<div>' +
-                  '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
-                  '<div class="subpage-subtitle">' + 'Structured lessons for' + ' ' + level + '</div>' +
-                '</div>' +
-              '</div>' +
-              mapHtml +
+            '<div class="fe-section" id="courseCenterSection">' +
+              headerHtml +
+              '<div class="fe-loading"><div class="fe-spinner"></div></div>' +
             '</div>' +
           '</div>' +
           '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
         '</div>';
+
+      // Try to fetch index.json for this level
+      var indexData = null;
+      try {
+        var r = await fetch('data/Course/' + level + '/index.json');
+        if (r.ok) indexData = await r.json();
+      } catch(e) { /* no index available */ }
+
+      var centerSection = document.getElementById('courseCenterSection');
+      if (!centerSection) return;
+
+      var mapHtml = '<div class="fe-map-container">';
+
+      if (indexData && indexData.items && indexData.items.length > 0) {
+        // Group items by block
+        var blocks = {};
+        var blockOrder = [];
+        indexData.items.forEach(function(item) {
+          var blockKey = item.block != null ? String(item.block) : 'misc';
+          if (!blocks[blockKey]) {
+            blocks[blockKey] = [];
+            blockOrder.push(blockKey);
+          }
+          blocks[blockKey].push(item);
+        });
+
+        blockOrder.forEach(function(blockKey, bi) {
+          var items = blocks[blockKey];
+          var hasAvailable = items.some(function(i) { return i.status === 'available'; });
+          var lessonClass = hasAvailable ? 'fe-map-lesson fe-lesson-active' : 'fe-map-lesson fe-lesson-locked';
+          var blockLabel = blockKey !== 'misc' ? 'Block ' + blockKey : '';
+
+          mapHtml += '<div class="' + lessonClass + '">';
+          if (blockLabel) {
+            mapHtml += '<div class="fe-map-lesson-title">' +
+              '<span class="fe-map-lesson-num">' + blockLabel + '</span>' +
+            '</div>';
+          }
+          mapHtml += '<div class="fe-map-points-row">';
+
+          items.forEach(function(item) {
+            var isAvailable = item.status === 'available';
+            var typeIcon = item.type === 'grammar' ? 'menu_book' :
+                           item.type === 'vocabulary' ? 'translate' :
+                           item.type === 'review' ? 'quiz' :
+                           item.type === 'progress_test' ? 'assignment' : 'school';
+            var typeColor = item.type === 'grammar' ? '#3b82f6' :
+                            item.type === 'vocabulary' ? '#10b981' :
+                            item.type === 'review' ? '#f59e0b' : '#6366f1';
+
+            if (isAvailable) {
+              mapHtml += '<div class="fe-review-row fe-level-item fe-level-unlocked" style="cursor:pointer" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'data/Course/' + level + '/' + item.file + '\')">' +
+                '<span class="fe-level-icon" style="color:' + typeColor + '">' + _mi(typeIcon) + '</span>' +
+                '<div class="fe-level-label">' +
+                  '<span class="fe-level-name">' + item.title + '</span>' +
+                  '<span class="fe-level-pct" style="color:' + typeColor + '">' + _mi('chevron_right') + '</span>' +
+                '</div>' +
+              '</div>';
+            } else {
+              mapHtml += '<div class="fe-review-row fe-level-item fe-level-locked">' +
+                '<span class="fe-level-icon">' + _mi('lock') + '</span>' +
+                '<div class="fe-level-label">' +
+                  '<span class="fe-level-name">' + item.title + '</span>' +
+                  '<span class="fe-level-pct">Coming Soon</span>' +
+                '</div>' +
+              '</div>';
+            }
+          });
+
+          mapHtml += '</div></div>';
+
+          if (bi < blockOrder.length - 1) {
+            mapHtml += '<div class="fe-map-connector"></div>';
+          }
+        });
+      } else {
+        // Fallback: no index available for this level
+        mapHtml += '<div class="lt-coming-soon-banner">' +
+          _mi('schedule') +
+          '<div class="lt-coming-soon-text">' +
+            '<strong>' + 'Coming Soon' + '</strong>' +
+            '<span>' + 'The Course curriculum is under development. Structured lessons with explanations, exercises, and progress tracking will be available here soon.' + '</span>' +
+          '</div>' +
+        '</div>';
+      }
+
+      mapHtml += '</div>';
+
+      centerSection.innerHTML = headerHtml + mapHtml;
+    },
+
+    openCourseUnit: async function(unitId, filePath) {
+      var content = document.getElementById('main-content');
+      if (!content) return;
+      var level = AppState.currentLevel || 'C1';
+
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+
+      var centerSection = content.querySelector('#courseCenterSection');
+      if (!centerSection) {
+        // Re-render layout if navigated directly
+        var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+        var rightSidebarContent = '';
+        if (typeof BentoGrid !== 'undefined') {
+          rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
+          rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
+        }
+        content.innerHTML =
+          '<div class="dashboard-layout">' +
+            '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+            '<div class="dashboard-center">' +
+              '<div class="fe-section" id="courseCenterSection"></div>' +
+            '</div>' +
+            '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
+          '</div>';
+        centerSection = document.getElementById('courseCenterSection');
+      }
+
+      // Show loading
+      centerSection.innerHTML =
+        '<div class="subpage-header">' +
+          '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()">Back</button>' +
+          '<div>' +
+            '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
+            '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+
+      var unitData = null;
+      try {
+        var r = await fetch(filePath);
+        if (r.ok) unitData = await r.json();
+      } catch(e) { /* failed */ }
+
+      if (!unitData) {
+        centerSection.innerHTML =
+          '<div class="subpage-header">' +
+            '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()">Back</button>' +
+            '<div><div class="subpage-title">' + _mi('auto_stories') + ' Course</div></div>' +
+          '</div>' +
+          '<div class="fe-error">Could not load unit content.</div>';
+        return;
+      }
+
+      var html =
+        '<div class="subpage-header">' +
+          '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()">Back</button>' +
+          '<div>' +
+            '<div class="subpage-title">' + _mi('auto_stories') + ' ' + (unitData.unitTitle || '') + '</div>' +
+            '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="course-unit-content">';
+
+      if (unitData.type === 'grammar') {
+        html += BentoGrid._renderGrammarUnit(unitData);
+      } else if (unitData.type === 'vocabulary') {
+        html += BentoGrid._renderVocabUnit(unitData);
+      } else if (unitData.type === 'review') {
+        html += BentoGrid._renderReviewUnit(unitData);
+      } else {
+        html += '<div class="fe-error">Unknown unit type.</div>';
+      }
+
+      html += '</div>';
+      centerSection.innerHTML = html;
+    },
+
+    _renderGrammarUnit: function(data) {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+      var html = '';
+
+      (data.sections || []).forEach(function(section) {
+        if (section.type === 'theory') {
+          html += '<div class="cu-section cu-theory">' +
+            '<div class="cu-section-title">' + _mi('menu_book') + ' ' + self._escapeHTML(section.title) + '</div>' +
+            '<div class="cu-theory-body">';
+
+          (section.content || []).forEach(function(block) {
+            if (block.subtitle) {
+              html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
+            }
+            if (block.description) {
+              html += '<div class="cu-theory-desc">' + _bold(block.description) + '</div>';
+            }
+            var listItems = block.items || block.examples || [];
+            if (listItems.length) {
+              html += '<ul class="cu-theory-list">';
+              listItems.forEach(function(item) {
+                html += '<li>' + _bold(item) + '</li>';
+              });
+              html += '</ul>';
+            }
+          });
+
+          html += '</div></div>';
+
+        } else if (section.type === 'exercise') {
+          html += '<div class="cu-section cu-exercise">' +
+            '<div class="cu-section-title">' + _mi('edit_note') + ' ' + self._escapeHTML(section.title) + '</div>';
+
+          if (section.instructions) {
+            html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
+          }
+
+          html += '<div class="cu-ex-items">';
+          (section.items || []).forEach(function(item, idx) {
+            html += '<div class="cu-ex-item">' +
+              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + _bold(item.sentence || '') + '</div>' +
+              '<button class="cu-answer-btn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">Show Answer</button>' +
+              '<div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div>' +
+            '</div>';
+          });
+          html += '</div></div>';
+        }
+      });
+
+      return html || '<div class="fe-error">No content available.</div>';
+    },
+
+    _renderVocabUnit: function(data) {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+      var html = '';
+      var sections = data.sections || {};
+
+      // Topic vocabulary
+      if (sections.topic_vocabulary) {
+        html += '<div class="cu-section cu-vocab">' +
+          '<div class="cu-section-title">' + _mi('translate') + ' Topic Vocabulary</div>';
+        Object.keys(sections.topic_vocabulary).forEach(function(topic) {
+          var words = sections.topic_vocabulary[topic];
+          html += '<div class="cu-vocab-group">' +
+            '<div class="cu-vocab-group-title">' + self._escapeHTML(topic.charAt(0).toUpperCase() + topic.slice(1).replace(/_/g, ' ')) + '</div>' +
+            '<div class="cu-vocab-words">';
+          words.forEach(function(w) {
+            html += '<div class="cu-vocab-word">' +
+              '<span class="cu-word">' + self._escapeHTML(w.word) + '</span>' +
+              '<span class="cu-pos">' + self._escapeHTML(w.part_of_speech || '') + '</span>' +
+              (w.variant ? '<span class="cu-variant">(' + self._escapeHTML(w.variant) + ')</span>' : '') +
+            '</div>';
+          });
+          html += '</div></div>';
+        });
+        html += '</div>';
+      }
+
+      // Phrasal verbs
+      if (sections.phrasal_verbs && sections.phrasal_verbs.length) {
+        html += '<div class="cu-section cu-pv">' +
+          '<div class="cu-section-title">' + _mi('format_list_bulleted') + ' Phrasal Verbs</div>' +
+          '<div class="cu-pv-list">';
+        sections.phrasal_verbs.forEach(function(pv) {
+          html += '<div class="cu-pv-item">' +
+            '<span class="cu-pv-verb">' + self._escapeHTML(pv.verb) + '</span>' +
+            '<span class="cu-pv-meaning">' + self._escapeHTML(pv.meaning) + '</span>' +
+          '</div>';
+        });
+        html += '</div></div>';
+      }
+
+      // Collocations
+      if (sections.collocations_patterns && Object.keys(sections.collocations_patterns).length) {
+        html += '<div class="cu-section cu-collocations">' +
+          '<div class="cu-section-title">' + _mi('link') + ' Collocations & Patterns</div>' +
+          '<div class="cu-coll-list">';
+        Object.keys(sections.collocations_patterns).forEach(function(word) {
+          var patterns = sections.collocations_patterns[word];
+          var patternsText = Array.isArray(patterns) ? patterns.join(', ') : String(patterns);
+          html += '<div class="cu-coll-item">' +
+            '<span class="cu-coll-word">' + self._escapeHTML(word) + '</span>' +
+            '<span class="cu-coll-patterns">' + self._escapeHTML(patternsText) + '</span>' +
+          '</div>';
+        });
+        html += '</div></div>';
+      }
+
+      // Idioms
+      if (sections.idioms && sections.idioms.length) {
+        html += '<div class="cu-section cu-idioms">' +
+          '<div class="cu-section-title">' + _mi('lightbulb') + ' Idioms</div>' +
+          '<div class="cu-pv-list">';
+        sections.idioms.forEach(function(idiom) {
+          html += '<div class="cu-pv-item">' +
+            '<span class="cu-pv-verb">' + self._escapeHTML(idiom.idiom) + '</span>' +
+            '<span class="cu-pv-meaning">' + self._escapeHTML(idiom.meaning) + '</span>' +
+          '</div>';
+        });
+        html += '</div></div>';
+      }
+
+      // Word formation
+      if (sections.word_formation && sections.word_formation.length) {
+        html += '<div class="cu-section cu-wf">' +
+          '<div class="cu-section-title">' + _mi('spellcheck') + ' Word Formation</div>' +
+          '<div class="cu-pv-list">';
+        sections.word_formation.forEach(function(wf) {
+          var forms = [];
+          if (wf.noun) forms.push('n: ' + (Array.isArray(wf.noun) ? wf.noun.join(', ') : wf.noun));
+          if (wf.verb) forms.push('v: ' + (Array.isArray(wf.verb) ? wf.verb.join(', ') : wf.verb));
+          if (wf.adjective) forms.push('adj: ' + (Array.isArray(wf.adjective) ? wf.adjective.join(', ') : wf.adjective));
+          if (wf.adverb) forms.push('adv: ' + (Array.isArray(wf.adverb) ? wf.adverb.join(', ') : wf.adverb));
+          html += '<div class="cu-pv-item">' +
+            '<span class="cu-pv-verb">' + self._escapeHTML(wf.base || wf.root || '') + '</span>' +
+            '<span class="cu-pv-meaning">' + self._escapeHTML(forms.join(' · ')) + '</span>' +
+          '</div>';
+        });
+        html += '</div></div>';
+      }
+
+      // Exercises
+      if (sections.exercises && Object.keys(sections.exercises).length) {
+        html += '<div class="cu-section cu-exercise">' +
+          '<div class="cu-section-title">' + _mi('edit_note') + ' Exercises</div>';
+        Object.keys(sections.exercises).forEach(function(key) {
+          var ex = sections.exercises[key];
+          html += '<div class="cu-ex-sub">' +
+            '<div class="cu-ex-subtitle">Exercise ' + self._escapeHTML(key) + ': ' + self._escapeHTML(ex.title || '') + '</div>';
+          if (ex.instructions) html += '<div class="cu-ex-instructions">' + _bold(ex.instructions) + '</div>';
+          if (ex.words && ex.words.length) {
+            html += '<div class="cu-ex-wordbank"><strong>Word bank:</strong> ' + ex.words.map(function(w) { return self._escapeHTML(w); }).join(', ') + '</div>';
+          }
+          html += '<div class="cu-ex-items">';
+          (ex.questions || []).forEach(function(q, idx) {
+            html += '<div class="cu-ex-item">' +
+              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + _bold(q.sentence || '') + '</div>' +
+              '<button class="cu-answer-btn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">Show Answer</button>' +
+              '<div class="cu-answer" style="display:none">' + self._escapeHTML(q.answer || '') + '</div>' +
+            '</div>';
+          });
+          html += '</div></div>';
+        });
+        html += '</div>';
+      }
+
+      return html || '<div class="fe-error">No content available.</div>';
+    },
+
+    _renderReviewUnit: function(data) {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+      var html = '';
+
+      (data.sections || []).forEach(function(section) {
+        if (section.type === 'exercise') {
+          html += '<div class="cu-section cu-exercise">' +
+            '<div class="cu-section-title">' + _mi('quiz') + ' ' + self._escapeHTML(section.title) + '</div>';
+          if (section.instructions) {
+            html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
+          }
+          html += '<div class="cu-ex-items">';
+          (section.items || []).forEach(function(item, idx) {
+            html += '<div class="cu-ex-item">' +
+              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + _bold(item.sentence || '') + '</div>' +
+              '<button class="cu-answer-btn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">Show Answer</button>' +
+              '<div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div>' +
+            '</div>';
+          });
+          html += '</div></div>';
+        }
+      });
+
+      return html || '<div class="fe-error">No content available.</div>';
     },
 
     _buildStreakSidebarHtml: function() {
