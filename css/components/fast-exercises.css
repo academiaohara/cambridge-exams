@@ -4666,3 +4666,276 @@
   .cu-pv-verb { min-width: 120px; }
   .cu-coll-word { min-width: 90px; }
 }
+
+/* ── Course Navigation Sidebar (left) ───────────────────────────────── */
+.course-nav-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.course-nav-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px 10px;
+  border-bottom: 2px solid rgba(45, 46, 95, 0.08);
+  margin-bottom: 6px;
+}
+
+.course-nav-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #2D2E5F;
+  letter-spacing: 0.01em;
+}
+
+.course-nav-title .material-symbols-outlined {
+  font-size: 1.2rem;
+  color: #46B1E1;
+}
+
+.course-nav-empty {
+  padding: 12px 14px;
+  font-size: 0.85rem;
+  color: var(--text-light, #94a3b8);
+}
+
+.course-nav-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px 0;
+}
+
+.course-nav-block {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.course-nav-block-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.cnb-available {
+  cursor: pointer;
+  color: #2D2E5F;
+  background: rgba(45, 46, 95, 0.04);
+}
+
+.cnb-available:hover {
+  background: rgba(45, 46, 95, 0.09);
+}
+
+.cnb-has-active {
+  background: rgba(70, 177, 225, 0.1);
+  color: #104862;
+}
+
+.cnb-locked {
+  cursor: default;
+  color: var(--text-light, #94a3b8);
+  opacity: 0.7;
+  gap: 6px;
+}
+
+.cnb-lock-icon {
+  display: flex;
+  align-items: center;
+}
+
+.cnb-lock-icon .material-symbols-outlined,
+.cnb-arrow {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.cnb-label {
+  flex: 1;
+}
+
+.course-nav-items {
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px 4px 4px 10px;
+}
+
+.course-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  transition: background 0.12s;
+}
+
+.cni-available {
+  cursor: pointer;
+  color: var(--text-dark, #0f172a);
+}
+
+.cni-available:hover {
+  background: rgba(59, 130, 246, 0.07);
+  color: #2563eb;
+}
+
+.cni-active {
+  background: rgba(59, 130, 246, 0.13);
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+.cni-active:hover {
+  background: rgba(59, 130, 246, 0.18);
+}
+
+.cni-locked {
+  color: var(--text-light, #94a3b8);
+  opacity: 0.65;
+}
+
+.cni-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cni-icon .material-symbols-outlined {
+  font-size: 0.9rem;
+}
+
+.cni-text {
+  flex: 1;
+  line-height: 1.35;
+}
+
+/* ── Course Learning Roadmap Sidebar (right) ─────────────────────────── */
+.course-roadmap-widget {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(45, 46, 95, 0.09);
+  border-radius: 16px;
+  padding: 16px 14px;
+  box-shadow: 0 4px 16px rgba(45, 46, 95, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.course-roadmap-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #5a7a9a;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 4px;
+}
+
+.course-roadmap-heading .material-symbols-outlined {
+  font-size: 1rem;
+  color: #46B1E1;
+}
+
+.course-roadmap-unit-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #2D2E5F;
+  margin-bottom: 6px;
+  padding-bottom: 8px;
+  border-bottom: 1.5px solid rgba(45, 46, 95, 0.08);
+  line-height: 1.4;
+}
+
+.course-roadmap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  background: rgba(45, 46, 95, 0.03);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-dark, #0f172a);
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.35;
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+  width: 100%;
+  font-family: inherit;
+}
+
+.course-roadmap-item:hover {
+  background: rgba(59, 130, 246, 0.07);
+  border-color: rgba(59, 130, 246, 0.2);
+  color: #2563eb;
+}
+
+.crm-theory {
+  border-left: 3px solid #3b82f6;
+}
+
+.crm-exercise {
+  border-left: 3px solid #8b5cf6;
+}
+
+.crm-vocab {
+  border-left: 3px solid #10b981;
+}
+
+.crm-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.crm-icon .material-symbols-outlined {
+  font-size: 0.95rem;
+}
+
+.crm-theory .crm-icon .material-symbols-outlined { color: #3b82f6; }
+.crm-exercise .crm-icon .material-symbols-outlined { color: #8b5cf6; }
+.crm-vocab .crm-icon .material-symbols-outlined { color: #10b981; }
+
+.crm-text {
+  flex: 1;
+}
+
+.course-nav-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(45, 46, 95, 0.15);
+  background: rgba(45, 46, 95, 0.04);
+  color: var(--text-medium, #64748b);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.course-nav-back-btn:hover {
+  background: rgba(45, 46, 95, 0.1);
+  color: #2D2E5F;
+}
+
+.course-nav-back-btn .material-symbols-outlined {
+  font-size: 1.1rem;
+}
