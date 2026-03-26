@@ -36,45 +36,46 @@ Aunque sería posible agrupar los dos temas de un bloque en una sola página (13
 
 | Bloque | Unidad | Tipo | Tema | Fichero | Estado |
 |--------|--------|------|------|---------|--------|
-| 1 | 1 | Grammar | Present Time | Unit1.json | ✅ Hecho |
-| 1 | 2 | Vocabulary | Thinking and Learning | Unit2.json | ✅ Hecho |
-| 1 | – | Review | Block 1 Review | Review1.json | ✅ Hecho |
-| 2 | 3 | Grammar | Past Time | Unit3.json | ⏳ Pendiente |
-| 2 | 4 | Vocabulary | The Natural World | Unit4.json | ⏳ Pendiente |
-| 2 | – | Review | Block 2 Review | Review2.json | ⏳ Pendiente |
-| 3 | 5 | Grammar | Future Forms | Unit5.json | ⏳ Pendiente |
-| 3 | 6 | Vocabulary | The Media | Unit6.json | ⏳ Pendiente |
-| 3 | – | Review | Block 3 Review | Review3.json | ⏳ Pendiente |
-| 4 | 7 | Grammar | Modals and Semi-Modals | Unit7.json | ⏳ Pendiente |
-| 4 | 8 | Vocabulary | Work and Career | Unit8.json | ⏳ Pendiente |
-| 4 | – | Review | Block 4 Review | Review4.json | ⏳ Pendiente |
-| 5 | 9 | Grammar | The Passive | Unit9.json | ⏳ Pendiente |
-| 5 | 10 | Vocabulary | Health and the Body | Unit10.json | ⏳ Pendiente |
-| 5 | – | Review | Block 5 Review | Review5.json | ⏳ Pendiente |
+| 1 | 1 | Grammar | Present time | Unit1.json | ✅ Hecho |
+| 1 | 2 | Vocabulary | Thinking and learning | Unit2.json | ✅ Hecho |
+| 1 | – | Review | Units 1 and 2 | Review1.json | ✅ Hecho |
+| 2 | 3 | Grammar | Past time | Unit3.json | ⏳ Pendiente |
+| 2 | 4 | Vocabulary | Change and technology | Unit4.json | ⏳ Pendiente |
+| 2 | – | Review | Units 3 and 4 | Review2.json | ⏳ Pendiente |
+| 3 | 5 | Grammar | Future time | Unit5.json | ⏳ Pendiente |
+| 3 | 6 | Vocabulary | Time and work | Unit6.json | ⏳ Pendiente |
+| 3 | – | Review | Units 5 and 6 | Review3.json | ⏳ Pendiente |
+| 4 | 7 | Grammar | Passives and causatives | Unit7.json | ⏳ Pendiente |
+| 4 | 8 | Vocabulary | Movement and transport | Unit8.json | ⏳ Pendiente |
+| 4 | – | Review | Units 7 and 8 | Review4.json | ⏳ Pendiente |
+| 5 | 9 | Grammar | Modals and semi-modals | Unit9.json | ⏳ Pendiente |
+| 5 | 10 | Vocabulary | Communication and the media | Unit10.json | ⏳ Pendiente |
+| 5 | – | Review | Units 9 and 10 | Review5.json | ⏳ Pendiente |
 | 6 | 11 | Grammar | Conditionals | Unit11.json | ⏳ Pendiente |
-| 6 | 12 | Vocabulary | Society and Change | Unit12.json | ⏳ Pendiente |
-| 6 | – | Review | Block 6 Review | Review6.json | ⏳ Pendiente |
-| 7 | 13 | Grammar | Reported Speech | Unit13.json | ⏳ Pendiente |
-| 7 | 14 | Vocabulary | Science and Technology | Unit14.json | ⏳ Pendiente |
-| 7 | – | Review | Block 7 Review | Review7.json | ⏳ Pendiente |
-| 8 | 15 | Grammar | Relative Clauses | Unit15.json | ⏳ Pendiente |
-| 8 | 16 | Vocabulary | The Arts | Unit16.json | ⏳ Pendiente |
-| 8 | – | Review | Block 8 Review | Review8.json | ⏳ Pendiente |
-| 9 | 17 | Grammar | Comparison | Unit17.json | ⏳ Pendiente |
-| 9 | 18 | Vocabulary | Travel and Transport | Unit18.json | ⏳ Pendiente |
-| 9 | – | Review | Block 9 Review | Review9.json | ⏳ Pendiente |
-| 10 | 19 | Grammar | Emphasis and Fronting | Unit19.json | ⏳ Pendiente |
-| 10 | 20 | Vocabulary | Education | Unit20.json | ⏳ Pendiente |
-| 10 | – | Review | Block 10 Review | Review10.json | ⏳ Pendiente |
-| 11 | 21 | Grammar | Gerunds and Infinitives | Unit21.json | ⏳ Pendiente |
-| 11 | 22 | Vocabulary | Money and Business | Unit22.json | ⏳ Pendiente |
-| 11 | – | Review | Block 11 Review | Review11.json | ⏳ Pendiente |
-| 12 | 23 | Grammar | Articles and Determiners | Unit23.json | ⏳ Pendiente |
-| 12 | 24 | Vocabulary | Crime and Law | Unit24.json | ⏳ Pendiente |
-| 12 | – | Review | Block 12 Review | Review12.json | ⏳ Pendiente |
-| 13 | 25 | Grammar | Linking Words and Cohesion | Unit25.json | ⏳ Pendiente |
-| 13 | 26 | Vocabulary | Environment and Global Issues | Unit26.json | ⏳ Pendiente |
-| 13 | – | Review | Block 13 Review | Review13.json | ⏳ Pendiente |
+| 6 | 12 | Vocabulary | Chance and nature | Unit12.json | ⏳ Pendiente |
+| 6 | – | Review | Units 11 and 12 | Review6.json | ⏳ Pendiente |
+| – | – | Progress Test | Units 1–12 | ProgressTest1.json | ⏳ Pendiente |
+| 7 | 13 | Grammar | Unreal time | Unit13.json | ⏳ Pendiente |
+| 7 | 14 | Vocabulary | Quantity and money | Unit14.json | ⏳ Pendiente |
+| 7 | – | Review | Units 13 and 14 | Review7.json | ⏳ Pendiente |
+| 8 | 15 | Grammar | Adjectives and adverbs | Unit15.json | ⏳ Pendiente |
+| 8 | 16 | Vocabulary | Materials and the built environment | Unit16.json | ⏳ Pendiente |
+| 8 | – | Review | Units 15 and 16 | Review8.json | ⏳ Pendiente |
+| 9 | 17 | Grammar | Clauses | Unit17.json | ⏳ Pendiente |
+| 9 | 18 | Vocabulary | Reactions and health | Unit18.json | ⏳ Pendiente |
+| 9 | – | Review | Units 17 and 18 | Review9.json | ⏳ Pendiente |
+| 10 | 19 | Grammar | Complex sentences | Unit19.json | ⏳ Pendiente |
+| 10 | 20 | Vocabulary | Power and social issues | Unit20.json | ⏳ Pendiente |
+| 10 | – | Review | Units 19 and 20 | Review10.json | ⏳ Pendiente |
+| 11 | 21 | Grammar | Noun phrases | Unit21.json | ⏳ Pendiente |
+| 11 | 22 | Vocabulary | Quality and the arts | Unit22.json | ⏳ Pendiente |
+| 11 | – | Review | Units 21 and 22 | Review11.json | ⏳ Pendiente |
+| 12 | 23 | Grammar | Verbal complements | Unit23.json | ⏳ Pendiente |
+| 12 | 24 | Vocabulary | Relationships and people | Unit24.json | ⏳ Pendiente |
+| 12 | – | Review | Units 23 and 24 | Review12.json | ⏳ Pendiente |
+| 13 | 25 | Grammar | Reporting | Unit25.json | ⏳ Pendiente |
+| 13 | 26 | Vocabulary | Preference and leisure activities | Unit26.json | ⏳ Pendiente |
+| 13 | – | Review | Units 25 and 26 | Review13.json | ⏳ Pendiente |
 
 ---
 
