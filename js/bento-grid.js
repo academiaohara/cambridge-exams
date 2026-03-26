@@ -613,28 +613,29 @@
     },
 
     _renderGrammarUnit: function(data) {
+      var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
       var html = '';
-      var answerIdx = 0;
 
       (data.sections || []).forEach(function(section) {
         if (section.type === 'theory') {
           html += '<div class="cu-section cu-theory">' +
-            '<div class="cu-section-title">' + _mi('menu_book') + ' ' + section.title + '</div>' +
+            '<div class="cu-section-title">' + _mi('menu_book') + ' ' + self._escapeHTML(section.title) + '</div>' +
             '<div class="cu-theory-body">';
 
           (section.content || []).forEach(function(block) {
             if (block.subtitle) {
-              html += '<div class="cu-theory-subtitle">' + block.subtitle + '</div>';
+              html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
             }
             if (block.description) {
-              html += '<div class="cu-theory-desc">' + block.description + '</div>';
+              html += '<div class="cu-theory-desc">' + _bold(block.description) + '</div>';
             }
             var listItems = block.items || block.examples || [];
             if (listItems.length) {
               html += '<ul class="cu-theory-list">';
               listItems.forEach(function(item) {
-                html += '<li>' + item.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>') + '</li>';
+                html += '<li>' + _bold(item) + '</li>';
               });
               html += '</ul>';
             }
@@ -644,20 +645,18 @@
 
         } else if (section.type === 'exercise') {
           html += '<div class="cu-section cu-exercise">' +
-            '<div class="cu-section-title">' + _mi('edit_note') + ' ' + section.title + '</div>';
+            '<div class="cu-section-title">' + _mi('edit_note') + ' ' + self._escapeHTML(section.title) + '</div>';
 
           if (section.instructions) {
-            html += '<div class="cu-ex-instructions">' + section.instructions + '</div>';
+            html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
           }
 
           html += '<div class="cu-ex-items">';
           (section.items || []).forEach(function(item, idx) {
-            var aidx = answerIdx++;
-            var sentence = (item.sentence || '').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
             html += '<div class="cu-ex-item">' +
-              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + sentence + '</div>' +
+              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + _bold(item.sentence || '') + '</div>' +
               '<button class="cu-answer-btn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">Show Answer</button>' +
-              '<div class="cu-answer" style="display:none">' + (item.answer || '') + '</div>' +
+              '<div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div>' +
             '</div>';
           });
           html += '</div></div>';
@@ -668,7 +667,9 @@
     },
 
     _renderVocabUnit: function(data) {
+      var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
       var html = '';
       var sections = data.sections || {};
 
@@ -679,13 +680,13 @@
         Object.keys(sections.topic_vocabulary).forEach(function(topic) {
           var words = sections.topic_vocabulary[topic];
           html += '<div class="cu-vocab-group">' +
-            '<div class="cu-vocab-group-title">' + topic.charAt(0).toUpperCase() + topic.slice(1).replace(/_/g, ' ') + '</div>' +
+            '<div class="cu-vocab-group-title">' + self._escapeHTML(topic.charAt(0).toUpperCase() + topic.slice(1).replace(/_/g, ' ')) + '</div>' +
             '<div class="cu-vocab-words">';
           words.forEach(function(w) {
             html += '<div class="cu-vocab-word">' +
-              '<span class="cu-word">' + w.word + '</span>' +
-              '<span class="cu-pos">' + (w.part_of_speech || '') + '</span>' +
-              (w.variant ? '<span class="cu-variant">(' + w.variant + ')</span>' : '') +
+              '<span class="cu-word">' + self._escapeHTML(w.word) + '</span>' +
+              '<span class="cu-pos">' + self._escapeHTML(w.part_of_speech || '') + '</span>' +
+              (w.variant ? '<span class="cu-variant">(' + self._escapeHTML(w.variant) + ')</span>' : '') +
             '</div>';
           });
           html += '</div></div>';
@@ -700,8 +701,8 @@
           '<div class="cu-pv-list">';
         sections.phrasal_verbs.forEach(function(pv) {
           html += '<div class="cu-pv-item">' +
-            '<span class="cu-pv-verb">' + pv.verb + '</span>' +
-            '<span class="cu-pv-meaning">' + pv.meaning + '</span>' +
+            '<span class="cu-pv-verb">' + self._escapeHTML(pv.verb) + '</span>' +
+            '<span class="cu-pv-meaning">' + self._escapeHTML(pv.meaning) + '</span>' +
           '</div>';
         });
         html += '</div></div>';
@@ -714,9 +715,10 @@
           '<div class="cu-coll-list">';
         Object.keys(sections.collocations_patterns).forEach(function(word) {
           var patterns = sections.collocations_patterns[word];
+          var patternsText = Array.isArray(patterns) ? patterns.join(', ') : String(patterns);
           html += '<div class="cu-coll-item">' +
-            '<span class="cu-coll-word">' + word + '</span>' +
-            '<span class="cu-coll-patterns">' + (Array.isArray(patterns) ? patterns.join(', ') : patterns) + '</span>' +
+            '<span class="cu-coll-word">' + self._escapeHTML(word) + '</span>' +
+            '<span class="cu-coll-patterns">' + self._escapeHTML(patternsText) + '</span>' +
           '</div>';
         });
         html += '</div></div>';
@@ -729,8 +731,8 @@
           '<div class="cu-pv-list">';
         sections.idioms.forEach(function(idiom) {
           html += '<div class="cu-pv-item">' +
-            '<span class="cu-pv-verb">' + idiom.idiom + '</span>' +
-            '<span class="cu-pv-meaning">' + idiom.meaning + '</span>' +
+            '<span class="cu-pv-verb">' + self._escapeHTML(idiom.idiom) + '</span>' +
+            '<span class="cu-pv-meaning">' + self._escapeHTML(idiom.meaning) + '</span>' +
           '</div>';
         });
         html += '</div></div>';
@@ -748,8 +750,8 @@
           if (wf.adjective) forms.push('adj: ' + (Array.isArray(wf.adjective) ? wf.adjective.join(', ') : wf.adjective));
           if (wf.adverb) forms.push('adv: ' + (Array.isArray(wf.adverb) ? wf.adverb.join(', ') : wf.adverb));
           html += '<div class="cu-pv-item">' +
-            '<span class="cu-pv-verb">' + (wf.base || wf.root || '') + '</span>' +
-            '<span class="cu-pv-meaning">' + forms.join(' · ') + '</span>' +
+            '<span class="cu-pv-verb">' + self._escapeHTML(wf.base || wf.root || '') + '</span>' +
+            '<span class="cu-pv-meaning">' + self._escapeHTML(forms.join(' · ')) + '</span>' +
           '</div>';
         });
         html += '</div></div>';
@@ -762,18 +764,17 @@
         Object.keys(sections.exercises).forEach(function(key) {
           var ex = sections.exercises[key];
           html += '<div class="cu-ex-sub">' +
-            '<div class="cu-ex-subtitle">Exercise ' + key + ': ' + (ex.title || '') + '</div>';
-          if (ex.instructions) html += '<div class="cu-ex-instructions">' + ex.instructions + '</div>';
+            '<div class="cu-ex-subtitle">Exercise ' + self._escapeHTML(key) + ': ' + self._escapeHTML(ex.title || '') + '</div>';
+          if (ex.instructions) html += '<div class="cu-ex-instructions">' + _bold(ex.instructions) + '</div>';
           if (ex.words && ex.words.length) {
-            html += '<div class="cu-ex-wordbank"><strong>Word bank:</strong> ' + ex.words.join(', ') + '</div>';
+            html += '<div class="cu-ex-wordbank"><strong>Word bank:</strong> ' + ex.words.map(function(w) { return self._escapeHTML(w); }).join(', ') + '</div>';
           }
           html += '<div class="cu-ex-items">';
           (ex.questions || []).forEach(function(q, idx) {
-            var sentence = (q.sentence || '').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
             html += '<div class="cu-ex-item">' +
-              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + sentence + '</div>' +
+              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + _bold(q.sentence || '') + '</div>' +
               '<button class="cu-answer-btn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">Show Answer</button>' +
-              '<div class="cu-answer" style="display:none">' + (q.answer || '') + '</div>' +
+              '<div class="cu-answer" style="display:none">' + self._escapeHTML(q.answer || '') + '</div>' +
             '</div>';
           });
           html += '</div></div>';
@@ -785,23 +786,24 @@
     },
 
     _renderReviewUnit: function(data) {
+      var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
       var html = '';
 
       (data.sections || []).forEach(function(section) {
         if (section.type === 'exercise') {
           html += '<div class="cu-section cu-exercise">' +
-            '<div class="cu-section-title">' + _mi('quiz') + ' ' + section.title + '</div>';
+            '<div class="cu-section-title">' + _mi('quiz') + ' ' + self._escapeHTML(section.title) + '</div>';
           if (section.instructions) {
-            html += '<div class="cu-ex-instructions">' + section.instructions + '</div>';
+            html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
           }
           html += '<div class="cu-ex-items">';
           (section.items || []).forEach(function(item, idx) {
-            var sentence = (item.sentence || '').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
             html += '<div class="cu-ex-item">' +
-              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + sentence + '</div>' +
+              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + _bold(item.sentence || '') + '</div>' +
               '<button class="cu-answer-btn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">Show Answer</button>' +
-              '<div class="cu-answer" style="display:none">' + (item.answer || '') + '</div>' +
+              '<div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div>' +
             '</div>';
           });
           html += '</div></div>';
