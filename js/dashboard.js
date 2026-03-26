@@ -6,8 +6,80 @@
   var subpageSectionKey = null;     // null = tiles view; 'reading' | 'listening' | 'writing' | 'speaking'
   var sectionCurrentPage = 1;
   var SECTION_ITEMS_PER_PAGE = 4;
+  var leftSidebarCollapsed = false;
+  var rightSidebarCollapsed = false;
+
+  try {
+    leftSidebarCollapsed = localStorage.getItem('cambridge_dashboard_sidebar_left') === '1';
+    rightSidebarCollapsed = localStorage.getItem('cambridge_dashboard_sidebar_right') === '1';
+  } catch (e) {}
 
   window.Dashboard = {
+    _renderSidebarShell: function(side, shellId, contentId, contentHtml) {
+      var isLeft = side === 'left';
+      var isCollapsed = isLeft ? leftSidebarCollapsed : rightSidebarCollapsed;
+      var icon = isLeft
+        ? (isCollapsed ? 'chevron_right' : 'chevron_left')
+        : (isCollapsed ? 'chevron_left' : 'chevron_right');
+      var label = isCollapsed
+        ? (isLeft ? 'Open left sidebar' : 'Open right sidebar')
+        : (isLeft ? 'Collapse left sidebar' : 'Collapse right sidebar');
+
+      return '<div class="dashboard-' + side + '-sidebar dashboard-sidebar-shell' + (isCollapsed ? ' is-collapsed' : '') + '" id="' + shellId + '">' +
+        '<button class="dashboard-sidebar-toggle dashboard-sidebar-toggle-' + side + '" type="button" onclick="Dashboard.toggleSidebar(\'' + side + '\')" aria-label="' + label + '" title="' + label + '">' +
+          '<span class="material-symbols-outlined">' + icon + '</span>' +
+        '</button>' +
+        '<div class="dashboard-sidebar-content" id="' + contentId + '">' + (contentHtml || '') + '</div>' +
+      '</div>';
+    },
+
+    _applySidebarState: function() {
+      document.querySelectorAll('.dashboard-sidebar-shell').forEach(function(shell) {
+        var isLeft = shell.classList.contains('dashboard-left-sidebar');
+        var isCollapsed = isLeft ? leftSidebarCollapsed : rightSidebarCollapsed;
+        shell.classList.toggle('is-collapsed', isCollapsed);
+
+        var toggle = shell.querySelector('.dashboard-sidebar-toggle');
+        if (toggle) {
+          var label = isCollapsed
+            ? (isLeft ? 'Open left sidebar' : 'Open right sidebar')
+            : (isLeft ? 'Collapse left sidebar' : 'Collapse right sidebar');
+          var icon = isLeft
+            ? (isCollapsed ? 'chevron_right' : 'chevron_left')
+            : (isCollapsed ? 'chevron_left' : 'chevron_right');
+          toggle.setAttribute('aria-label', label);
+          toggle.setAttribute('title', label);
+          var iconEl = toggle.querySelector('.material-symbols-outlined');
+          if (iconEl) iconEl.textContent = icon;
+        }
+      });
+
+      document.querySelectorAll('.dashboard-layout').forEach(function(layout) {
+        var hasLeft = !!layout.querySelector('.dashboard-left-sidebar');
+        var hasRight = !!layout.querySelector('.dashboard-right-sidebar');
+        if (!hasLeft && !hasRight) return;
+        if (hasLeft && hasRight) {
+          layout.style.gridTemplateColumns =
+            (leftSidebarCollapsed ? '52px' : '260px') + ' minmax(0, 1fr) ' + (rightSidebarCollapsed ? '52px' : '260px');
+        } else if (hasLeft) {
+          layout.style.gridTemplateColumns = (leftSidebarCollapsed ? '52px' : '260px') + ' minmax(0, 1fr)';
+        } else if (hasRight) {
+          layout.style.gridTemplateColumns = 'minmax(0, 1fr) ' + (rightSidebarCollapsed ? '52px' : '260px');
+        }
+      });
+    },
+
+    toggleSidebar: function(side) {
+      if (side === 'left') {
+        leftSidebarCollapsed = !leftSidebarCollapsed;
+        try { localStorage.setItem('cambridge_dashboard_sidebar_left', leftSidebarCollapsed ? '1' : '0'); } catch (e) {}
+      } else {
+        rightSidebarCollapsed = !rightSidebarCollapsed;
+        try { localStorage.setItem('cambridge_dashboard_sidebar_right', rightSidebarCollapsed ? '1' : '0'); } catch (e) {}
+      }
+      this._applySidebarState();
+    },
+
     render: function(expandExamId) {
       const content = document.getElementById('main-content');
       if (!content) return;
@@ -30,16 +102,17 @@
       }
 
       var html = '<div class="dashboard-layout">' +
-        '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+        this._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent) +
         '<div class="dashboard-center">' +
           '<div class="bento-center-wrapper">' +
             '<div id="bento-grid-container"></div>' +
           '</div>' +
         '</div>' +
-        '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
+        this._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent) +
       '</div>';
 
       content.innerHTML = html;
+      this._applySidebarState();
 
       // Render bento grid into its container after DOM is updated
       if (typeof BentoGrid !== 'undefined') {
@@ -162,17 +235,18 @@
       }
 
       var html = '<div class="dashboard-layout">' +
-        '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+        this._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent) +
         '<div class="dashboard-center">' +
           subpageHeader +
           premiumBannerHtml +
           viewToggleHtml +
           mainContentHtml +
         '</div>' +
-        '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
+        this._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent) +
       '</div>';
 
       content.innerHTML = html;
+      this._applySidebarState();
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
       }

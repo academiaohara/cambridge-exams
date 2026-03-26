@@ -242,7 +242,9 @@
 
       content.innerHTML =
         '<div class="dashboard-layout">' +
-          '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
+            : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
           '<div class="dashboard-center">' +
             '<div class="fe-section">' +
               '<div class="subpage-header">' +
@@ -252,12 +254,15 @@
                   '<div class="subpage-subtitle">' + 'Choose a category and start your learning path' + '</div>' +
                 '</div>' +
               '</div>' +
-              '<div class="fe-categories-grid">' + categoryCards + '</div>' +
+                '<div class="fe-categories-grid">' + categoryCards + '</div>' +
+              '</div>' +
             '</div>' +
-          '</div>' +
-          '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
+            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>') +
         '</div>';
 
+      if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
       }
@@ -344,7 +349,9 @@
 
       content.innerHTML =
         '<div class="dashboard-layout">' +
-          '<div class="dashboard-left-sidebar">' + leftWidget + '</div>' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftWidget)
+            : '<div class="dashboard-left-sidebar">' + leftWidget + '</div>') +
           '<div class="dashboard-center">' +
             '<div class="fe-section">' +
               '<div class="subpage-header">' +
@@ -363,9 +370,12 @@
               centerMap +
             '</div>' +
           '</div>' +
-          '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightWidget + '</div>' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightWidget)
+            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightWidget + '</div>') +
         '</div>';
 
+      if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       var catState = { view: 'fastExerciseCategory', categoryId: categoryId };
       history.pushState(catState, '', Router.stateToPath(catState));
     },
