@@ -939,10 +939,62 @@
   overflow-y: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
+  min-width: 0;
 }
 
 .dashboard-right-sidebar {
   top: 0px;
+}
+
+.dashboard-sidebar-shell {
+  transition: width 0.2s ease;
+}
+
+.dashboard-sidebar-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  border: 1px solid rgba(45, 46, 95, 0.1);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text-medium);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(45, 46, 95, 0.08);
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.dashboard-sidebar-toggle:hover {
+  background: #fff;
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.dashboard-sidebar-toggle .material-symbols-outlined {
+  font-size: 1.2rem;
+}
+
+.dashboard-sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.dashboard-sidebar-shell.is-collapsed {
+  overflow: visible;
+  gap: 0;
+}
+
+.dashboard-sidebar-shell.is-collapsed .dashboard-sidebar-content {
+  display: none;
+}
+
+.dashboard-sidebar-shell.is-collapsed .dashboard-sidebar-toggle {
+  position: sticky;
+  top: 10px;
 }
 
 .dashboard-left-sidebar::-webkit-scrollbar,
