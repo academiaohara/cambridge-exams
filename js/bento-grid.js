@@ -575,7 +575,6 @@
               'onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + unitPath + '\', 0)">' +
               '<div class="fe-map-lesson-title">' +
                 '<span class="fe-map-lesson-num">' + theoryLabel + '</span>' +
-                '<span class="fe-map-lesson-name">' + theoryName + '</span>' +
               '</div>' +
               '<div class="fe-map-points-row">' +
                 '<div class="fe-dot ' + dotClass + '" title="' + theoryLabel + '">' +
@@ -587,7 +586,6 @@
               'onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + unitPath + '\', \'exercises\')">' +
               '<div class="fe-map-lesson-title">' +
                 '<span class="fe-map-lesson-num">Exercises</span>' +
-                '<span class="fe-map-lesson-name">Practice</span>' +
               '</div>' +
               '<div class="fe-map-points-row">' +
                 '<div class="fe-dot ' + (isDone ? 'fe-dot-done' : 'fe-dot-outline fe-dot-exercise') + '" title="Exercises">' +
@@ -626,19 +624,28 @@
         '</div>';
 
         if (isAvail) {
-          html +=
-            '<div class="fe-map-lesson ' + (isDone ? 'fe-lesson-complete' : 'fe-lesson-pending') + '" style="cursor:pointer" ' +
-              'onclick="BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\')">' +
-              '<div class="fe-map-lesson-title">' +
-                '<span class="fe-map-lesson-num">Review</span>' +
-                '<span class="fe-map-lesson-name">Mixed Exercises</span>' +
-              '</div>' +
-              '<div class="fe-map-points-row">' +
-                '<div class="fe-dot ' + (isDone ? 'fe-dot-done' : 'fe-dot-outline fe-dot-review') + '" title="Review">' +
-                  '<span class="fe-dot-icon">' + _mi('quiz') + '</span>' +
-                '</div>' +
-              '</div>' +
-            '</div>';
+          var reviewSectionDefs = [
+            { letter: 'A', name: 'Word Formation' },
+            { letter: 'B', name: 'Key Word Transformation' },
+            { letter: 'C', name: 'Idioms & Collocations' },
+            { letter: 'D', name: 'Phrasal Verbs' },
+            { letter: 'E', name: 'Multiple Choice' }
+          ];
+          var reviewAnsweredData = BentoGrid._getReviewAnswered(level);
+          html += '<div class="fe-map-lesson ' + (isDone ? 'fe-lesson-complete' : 'fe-lesson-pending') + '">' +
+            '<div class="fe-map-lesson-title">' +
+              '<span class="fe-map-lesson-num">Review</span>' +
+            '</div>' +
+            '<div class="fe-map-review-slots">';
+          reviewSectionDefs.forEach(function(sec, idx) {
+            var answered = reviewAnsweredData[reviewItem.id + '_' + idx] || 0;
+            html += '<button class="fe-review-slot" onclick="BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\', ' + idx + ')">' +
+              '<span class="fe-rs-letter">' + sec.letter + '</span>' +
+              '<span class="fe-rs-name">' + self._escapeHTML(sec.name) + '</span>' +
+              (answered > 0 ? '<span class="fe-rs-score">' + answered + '</span>' : '') +
+            '</button>';
+          });
+          html += '</div></div>';
         } else {
           html +=
             '<div class="fe-map-lesson fe-lesson-locked">' +
@@ -746,11 +753,12 @@
 
       // Mark this unit as opened/visited in progress tracking
       BentoGrid._markCourseUnitOpened(level, unitId);
+      BentoGrid._currentUnitId = unitId;
 
       // Update right sidebar with learning roadmap for this unit
       var rightSidebar = document.getElementById('dashboardRightSidebar');
       if (rightSidebar) {
-        rightSidebar.innerHTML = BentoGrid._buildCourseRoadmapSidebarHtml(unitData);
+        rightSidebar.innerHTML = BentoGrid._buildCourseRoadmapSidebarHtml(unitData, unitId);
       }
 
       var blockNum = null;
@@ -820,22 +828,75 @@
             '<div class="cu-section-title">' + _mi('menu_book') + ' ' + self._escapeHTML(section.title) + '</div>' +
             '<div class="cu-theory-body">';
 
-          (section.content || []).forEach(function(block) {
+          var content = section.content || [];
+          var contentIdx = 0;
+          while (contentIdx < content.length) {
+            var block = content[contentIdx];
+            var nextBlock = content[contentIdx + 1];
+
+            // Pair "Uses" + "Examples" as a 2-column table
+            if (block.subtitle === 'Uses' && nextBlock && nextBlock.subtitle === 'Examples') {
+              var uses = block.items || [];
+              var examples = nextBlock.items || nextBlock.examples || [];
+              html += '<table class="cu-uses-examples-table">' +
+                '<thead><tr><th class="cu-ue-head">Use</th><th class="cu-ue-head">Example</th></tr></thead>' +
+                '<tbody>';
+              var maxLen = Math.max(uses.length, examples.length);
+              for (var r = 0; r < maxLen; r++) {
+                html += '<tr class="cu-ue-row">' +
+                  '<td class="cu-ue-use">' + (uses[r] ? self._escapeHTML(uses[r]) : '') + '</td>' +
+                  '<td class="cu-ue-example">' + (examples[r] ? _bold(examples[r]) : '') + '</td>' +
+                '</tr>';
+              }
+              html += '</tbody></table>';
+              contentIdx += 2;
+              continue;
+            }
+
+            // "Common words and phrases" as chips
+            if (block.subtitle === 'Common words and phrases') {
+              html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
+              html += '<div class="cu-theory-chips">';
+              (block.items || []).forEach(function(item) {
+                html += '<span class="cu-theory-chip">' + self._escapeHTML(item) + '</span>';
+              });
+              html += '</div>';
+              contentIdx++;
+              continue;
+            }
+
+            // Default rendering
             if (block.subtitle) {
               html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
             }
             if (block.description) {
               html += '<div class="cu-theory-desc">' + _bold(block.description) + '</div>';
             }
-            var listItems = block.items || block.examples || [];
-            if (listItems.length) {
-              html += '<ul class="cu-theory-list">';
-              listItems.forEach(function(item) {
-                html += '<li>' + _bold(item) + '</li>';
+            // Categories (e.g. stative verbs grouped by type)
+            if (block.categories && block.categories.length) {
+              html += '<div class="cu-theory-categories">';
+              block.categories.forEach(function(cat) {
+                html += '<div class="cu-theory-cat-row">' +
+                  '<span class="cu-theory-cat-name">' + self._escapeHTML(cat.name) + '</span>' +
+                  '<span class="cu-theory-chips">';
+                (cat.verbs || []).forEach(function(v) {
+                  html += '<span class="cu-theory-chip">' + self._escapeHTML(v) + '</span>';
+                });
+                html += '</span></div>';
               });
-              html += '</ul>';
+              html += '</div>';
+            } else {
+              var listItems = block.items || block.examples || [];
+              if (listItems.length) {
+                html += '<ul class="cu-theory-list">';
+                listItems.forEach(function(item) {
+                  html += '<li>' + _bold(item) + '</li>';
+                });
+                html += '</ul>';
+              }
             }
-          });
+            contentIdx++;
+          }
 
           html += '</div></div>';
 
@@ -1010,16 +1071,20 @@
         '</div>' +
       '</div>';
 
-      (data.sections || []).forEach(function(section, idx) {
+      (data.sections || []).forEach(function(section, sectionIdx) {
         if (section.type === 'exercise') {
-          html += '<div class="cu-section cu-exercise" id="cu-sec-' + idx + '">' +
+          html += '<div class="cu-section cu-exercise" id="cu-sec-' + sectionIdx + '">' +
             '<div class="cu-section-title">' + _mi('quiz') + ' ' + self._escapeHTML(section.title) + '</div>';
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
           }
           html += '<div class="cu-ex-items">';
-          (section.items || []).forEach(function(item, idx) {
-            html += self._renderCourseExItem(item, idx, 'rv-' + section.title.replace(/\W+/g, '') + '-' + idx);
+          var reviewUnitId = BentoGrid._currentUnitId || '';
+          (section.items || []).forEach(function(item, iIdx) {
+            var trackCb = reviewUnitId
+              ? 'BentoGrid._trackReviewItem(\'' + reviewUnitId + '\',' + sectionIdx + ')'
+              : '';
+            html += self._renderCourseExItem(item, iIdx, 'rv-' + section.title.replace(/\W+/g, '') + '-' + iIdx, trackCb);
           });
           html += '</div></div>';
         }
@@ -1030,7 +1095,7 @@
 
     // --- Interactive exercise item helpers ---
 
-    _renderCourseExItem: function(item, idx, idBase) {
+    _renderCourseExItem: function(item, idx, idBase, trackCallback) {
       var self = this;
       var sentence = item.sentence || '';
       var answer = item.answer || '';
@@ -1039,13 +1104,16 @@
       var sentenceHtml = self._renderCourseExSentence(sentence, inputId);
       var showAnswerId = 'cuans-' + idBase;
 
+      var trackJs = trackCallback ? ('if(showing){' + trackCallback + ';}') : '';
       return '<div class="cu-ex-item">' +
         '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + sentenceHtml + '</div>' +
         '<div class="cu-ex-foot">' +
           '<button class="cu-answer-btn" onclick="' +
             'var el=document.getElementById(\'' + showAnswerId + '\');' +
-            'if(el){el.style.display=el.style.display===\'none\'?\'block\':\'none\';}' +
-            'this.textContent=document.getElementById(\'' + showAnswerId + '\').style.display===\'none\'?\'Show Answer\':\'Hide Answer\';' +
+            'var showing=el.style.display===\'none\';' +
+            'el.style.display=showing?\'block\':\'none\';' +
+            'this.textContent=showing?\'Hide Answer\':\'Show Answer\';' +
+            trackJs +
           '">Show Answer</button>' +
           '<div class="cu-answer" id="' + showAnswerId + '" style="display:none">' + self._escapeHTML(answer) + '</div>' +
         '</div>' +
@@ -1131,6 +1199,23 @@
       try {
         localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog));
       } catch(e) {}
+    },
+
+    _trackReviewItem: function(unitId, sectionIdx) {
+      var level = BentoGrid._courseLevel || 'C1';
+      try {
+        var key = 'cambridge_review_answers_' + level;
+        var data = JSON.parse(localStorage.getItem(key) || '{}');
+        var skey = unitId + '_' + sectionIdx;
+        data[skey] = (data[skey] || 0) + 1;
+        localStorage.setItem(key, JSON.stringify(data));
+      } catch(e) {}
+    },
+
+    _getReviewAnswered: function(level) {
+      try {
+        return JSON.parse(localStorage.getItem('cambridge_review_answers_' + level) || '{}');
+      } catch(e) { return {}; }
     },
 
     // ── Course Overview (all blocks roadmap) ─────────────────────────────
@@ -1384,34 +1469,104 @@
       if (arrow) arrow.textContent = isOpen ? 'expand_more' : 'expand_less';
     },
 
+    _toggleCrmGroup: function(itemId) {
+      var items = document.getElementById('crm-group-items-' + itemId);
+      var arrow = document.getElementById('crm-arrow-' + itemId);
+      if (!items) return;
+      var isOpen = items.style.display !== 'none';
+      items.style.display = isOpen ? 'none' : '';
+      if (arrow) arrow.textContent = isOpen ? 'expand_more' : 'expand_less';
+    },
+
     // ── Course Learning Roadmap Sidebar (right) ───────────────────────────
-    _buildCourseRoadmapSidebarHtml: function(unitData) {
+    _buildCourseRoadmapSidebarHtml: function(unitData, unitId) {
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
       if (!unitData) return '';
 
+      var level = BentoGrid._courseLevel || 'C1';
       var html = '<div class="course-roadmap-widget">';
       html += '<div class="course-roadmap-heading">' + _mi('map') + ' Learning Roadmap</div>';
 
-      if (unitData.unitTitle) {
-        html += '<div class="course-roadmap-unit-title">' + self._escapeHTML(unitData.unitTitle) + '</div>';
+      // Find block context
+      var blockKey = null;
+      var blockItems = [];
+      if (unitId && BentoGrid._courseIndexData) {
+        var foundItem = (BentoGrid._courseIndexData.items || []).find(function(i) { return i.id === unitId; });
+        if (foundItem && foundItem.block != null) {
+          blockKey = String(foundItem.block);
+          blockItems = (BentoGrid._courseBlocks || {})[blockKey] || [];
+        }
       }
 
+      if (blockItems.length === 0) {
+        // Fallback: flat list for the current unit
+        if (unitData.unitTitle) {
+          html += '<div class="course-roadmap-unit-title">' + self._escapeHTML(unitData.unitTitle) + '</div>';
+        }
+        html += self._buildCrmSectionItems(unitData, 0);
+        html += '</div>';
+        return html;
+      }
+
+      html += '<div class="crm-block-label">Block ' + self._escapeHTML(blockKey) + '</div>';
+
+      blockItems.forEach(function(item) {
+        var isCurrent = item.id === unitId;
+        var typeIcon = item.type === 'grammar' ? 'menu_book' :
+                       item.type === 'vocabulary' ? 'translate' :
+                       item.type === 'review' ? 'quiz' : 'school';
+        var itemPath = 'data/Course/' + level + '/' + item.file;
+        var shortTitle = item.title;
+        var colonIdx = shortTitle.indexOf(':');
+        if (colonIdx !== -1 && item.type !== 'review') shortTitle = shortTitle.slice(colonIdx + 1).trim();
+        var isAvail = item.status === 'available';
+
+        if (isCurrent) {
+          html += '<div class="crm-group crm-group-open">';
+          html += '<div class="crm-group-hdr crm-current-hdr" onclick="BentoGrid._toggleCrmGroup(\'' + item.id + '\')">' +
+            '<span class="crm-group-icon">' + _mi(typeIcon) + '</span>' +
+            '<span class="crm-group-title">' + self._escapeHTML(shortTitle) + '</span>' +
+            '<span class="material-symbols-outlined crm-group-arrow" id="crm-arrow-' + item.id + '">expand_less</span>' +
+          '</div>';
+          html += '<div class="crm-group-items" id="crm-group-items-' + item.id + '">';
+          html += self._buildCrmSectionItems(unitData, 0);
+          html += '</div>';
+          html += '</div>';
+        } else if (isAvail) {
+          html += '<div class="crm-group">';
+          html += '<button class="crm-group-hdr crm-other-hdr" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + itemPath + '\')">' +
+            '<span class="crm-group-icon">' + _mi(typeIcon) + '</span>' +
+            '<span class="crm-group-title">' + self._escapeHTML(shortTitle) + '</span>' +
+            '<span class="material-symbols-outlined crm-group-arrow">chevron_right</span>' +
+          '</button>';
+          html += '</div>';
+        }
+      });
+
+      html += '</div>'; // .course-roadmap-widget
+      return html;
+    },
+
+    _buildCrmSectionItems: function(unitData, startIndex) {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      var html = '';
+      var idx = startIndex;
+
       if (unitData.type === 'grammar') {
-        (unitData.sections || []).forEach(function(sec, idx) {
+        (unitData.sections || []).forEach(function(sec, i) {
           var isTheory = sec.type === 'theory';
           var icon = isTheory ? 'menu_book' : 'edit_note';
           var cls = isTheory ? 'crm-theory' : 'crm-exercise';
-          html += '<button class="course-roadmap-item ' + cls + '" onclick="BentoGrid._scrollToCuSection(' + idx + ')">' +
+          html += '<button class="course-roadmap-item ' + cls + '" id="crm-item-' + i + '" onclick="BentoGrid._scrollToCuSection(' + i + ')">' +
             '<span class="crm-icon">' + _mi(icon) + '</span>' +
             '<span class="crm-text">' + self._escapeHTML(sec.title || '') + '</span>' +
           '</button>';
         });
-
       } else if (unitData.type === 'vocabulary') {
         var secs = unitData.sections || {};
-        var sectionIndex = 0;
         var vocabMap = [
           { key: 'topic_vocabulary', icon: 'translate', label: 'Topic Vocabulary' },
           { key: 'phrasal_verbs', icon: 'format_list_bulleted', label: 'Phrasal Verbs' },
@@ -1420,29 +1575,27 @@
           { key: 'word_formation', icon: 'spellcheck', label: 'Word Formation' },
           { key: 'exercises', icon: 'edit_note', label: 'Exercises' }
         ];
+        var sectionIndex = 0;
         vocabMap.forEach(function(vs) {
           var hasContent = secs[vs.key] && (
             Array.isArray(secs[vs.key]) ? secs[vs.key].length > 0 : Object.keys(secs[vs.key]).length > 0
           );
           if (hasContent) {
-            var si = sectionIndex++;
-            html += '<button class="course-roadmap-item crm-vocab" onclick="BentoGrid._scrollToCuSection(' + si + ')">' +
+            var i = sectionIndex++;
+            html += '<button class="course-roadmap-item crm-vocab" id="crm-item-' + i + '" onclick="BentoGrid._scrollToCuSection(' + i + ')">' +
               '<span class="crm-icon">' + _mi(vs.icon) + '</span>' +
               '<span class="crm-text">' + vs.label + '</span>' +
             '</button>';
           }
         });
-
       } else if (unitData.type === 'review') {
-        (unitData.sections || []).forEach(function(sec, idx) {
-          html += '<button class="course-roadmap-item crm-exercise" onclick="BentoGrid._scrollToCuSection(' + idx + ')">' +
+        (unitData.sections || []).forEach(function(sec, i) {
+          html += '<button class="course-roadmap-item crm-exercise" id="crm-item-' + i + '" onclick="BentoGrid._scrollToCuSection(' + i + ')">' +
             '<span class="crm-icon">' + _mi('quiz') + '</span>' +
             '<span class="crm-text">' + self._escapeHTML(sec.title || '') + '</span>' +
           '</button>';
         });
       }
-
-      html += '</div>'; // .course-roadmap-widget
       return html;
     },
 
@@ -1461,6 +1614,22 @@
 
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
+      // Build dots navigation bar above all sections
+      var dotsHtml = '<div class="cu-dots-nav" id="cu-dots-nav">';
+      for (var d = 0; d < total; d++) {
+        var sec = sections[d];
+        var isTheory = sec.classList.contains('cu-theory');
+        var dotTypeClass = isTheory ? 'cu-dot-theory' : 'cu-dot-exercise';
+        var activeClass = d === startIdx ? ' cu-dot-active' : '';
+        var titleEl = sec.querySelector('.cu-section-title');
+        var titleText = titleEl ? titleEl.textContent.trim().replace(/"/g, '&quot;') : String(d + 1);
+        dotsHtml += '<button class="cu-dot-nav ' + dotTypeClass + activeClass + '" ' +
+          'onclick="BentoGrid._showCuSection(' + d + ')" ' +
+          'title="' + titleText + '">' + (d + 1) + '</button>';
+      }
+      dotsHtml += '</div>';
+      container.insertAdjacentHTML('afterbegin', dotsHtml);
+
       sections.forEach(function(sec, idx) {
         sec.style.display = (idx === startIdx) ? '' : 'none';
 
@@ -1471,7 +1640,6 @@
         } else {
           navHtml += '<span></span>';
         }
-        navHtml += '<span class="cu-section-counter">' + (idx + 1) + ' / ' + total + '</span>';
         if (idx < total - 1) {
           navHtml += '<button class="cu-nav-btn cu-nav-next" onclick="BentoGrid._showCuSection(' + (idx + 1) + ')">' +
             'Next ' + _mi('arrow_forward') + '</button>';
@@ -1492,6 +1660,11 @@
       sections.forEach(function(sec, i) {
         sec.style.display = (i === idx) ? '' : 'none';
       });
+      // Sync active dot
+      var dots = container.querySelectorAll('.cu-dot-nav');
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('cu-dot-active', i === idx);
+      });
       var center = document.querySelector('.dashboard-center');
       if (center) center.scrollTop = 0;
       BentoGrid._updateRoadmapActiveItem(idx);
@@ -1500,10 +1673,19 @@
     _updateRoadmapActiveItem: function(idx) {
       var widget = document.querySelector('.course-roadmap-widget');
       if (!widget) return;
-      var items = widget.querySelectorAll('.course-roadmap-item');
-      items.forEach(function(item, i) {
-        item.classList.toggle('crm-active', i === idx);
+      // Remove active from all items
+      widget.querySelectorAll('.course-roadmap-item').forEach(function(item) {
+        item.classList.remove('crm-active');
       });
+      // Prefer ID-based lookup (new structure)
+      var activeItem = widget.querySelector('#crm-item-' + idx);
+      if (activeItem) {
+        activeItem.classList.add('crm-active');
+      } else {
+        // Fallback: index-based
+        var items = widget.querySelectorAll('.course-roadmap-item');
+        if (items[idx]) items[idx].classList.add('crm-active');
+      }
     },
 
     _buildStreakSidebarHtml: function() {
