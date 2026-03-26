@@ -1308,7 +1308,7 @@
 
     _resetCourseUnit: function(unitId) {
       var level = BentoGrid._courseLevel || 'C1';
-      if (!confirm('¿Reiniciar esta unidad? Se borrará tu progreso en ella.')) return;
+      if (!confirm('Restart this unit? Your progress will be cleared.')) return;
       var prog = BentoGrid._getCourseProgress(level);
       delete prog[unitId];
       try { localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog)); } catch(e) {}
@@ -1325,7 +1325,7 @@
 
     _resetCourseBlock: function(blockKey) {
       var level = BentoGrid._courseLevel || 'C1';
-      if (!confirm('¿Reiniciar el bloque ' + blockKey + '? Se borrará tu progreso en todas sus unidades.')) return;
+      if (!confirm('Restart Block ' + blockKey + '? Progress for all units in this block will be cleared.')) return;
       var items = (BentoGrid._courseBlocks || {})[blockKey] || [];
       var prog = BentoGrid._getCourseProgress(level);
       var secProg = BentoGrid._getCourseSectionProgress(level);
@@ -1508,7 +1508,7 @@
 
         var headerOnClick = hasAvailable ? ' onclick="BentoGrid._selectCourseBlock(\'' + bk + '\')" style="cursor:pointer"' : '';
         var resetBlockOverviewBtn = (hasAvailable && doneCount > 0)
-          ? '<button class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseBlock(\'' + bk + '\')" title="Reiniciar bloque">' + _mi('restart_alt') + '</button>'
+          ? '<button class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseBlock(\'' + bk + '\')" title="Restart block">' + _mi('restart_alt') + '</button>'
           : '';
         html += '<div class="cu-block-card-header"' + headerOnClick + '>' +
           '<span class="cu-block-num">Block ' + bk + '</span>' +
@@ -1529,7 +1529,7 @@
 
           if (isAvail) {
             var resetUnitOverviewBtn = isDone
-              ? '<button class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseUnit(\'' + item.id + '\')" title="Reiniciar unidad">' + _mi('restart_alt') + '</button>'
+              ? '<button class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseUnit(\'' + item.id + '\')" title="Restart unit">' + _mi('restart_alt') + '</button>'
               : '';
             html += '<div class="cu-block-unit-row cu-block-unit-available" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'data/Course/' + level + '/' + item.file + '\')">' +
               '<span class="cu-bur-icon" style="color:' + typeColor + '">' + _mi(typeIcon) + '</span>' +
