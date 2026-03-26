@@ -494,7 +494,7 @@
                             item.type === 'review' ? '#f59e0b' : '#6366f1';
 
             if (isAvailable) {
-              mapHtml += '<div class="fe-review-row fe-level-item fe-level-unlocked" style="cursor:pointer" onclick="BentoGrid.openCourseUnit(' + JSON.stringify(item.id) + ',' + JSON.stringify('data/Course/' + level + '/' + item.file) + ')">' +
+              mapHtml += '<div class="fe-review-row fe-level-item fe-level-unlocked" style="cursor:pointer" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'data/Course/' + level + '/' + item.file + '\')">' +
                 '<span class="fe-level-icon" style="color:' + typeColor + '">' + _mi(typeIcon) + '</span>' +
                 '<div class="fe-level-label">' +
                   '<span class="fe-level-name">' + item.title + '</span>' +
