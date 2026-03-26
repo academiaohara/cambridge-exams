@@ -2,10 +2,12 @@
   "block": 1,
   "type": "review",
   "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "totalPoints": 50,
   "sections": [
     {
       "type": "exercise",
       "title": "A: Word Formation",
+      "scoring": { "pointsPerItem": 2, "maxScore": 10 },
       "instructions": "Use the word given in capitals to form a word that fits in the space.",
       "items": [
         {
@@ -33,6 +35,7 @@
     {
       "type": "exercise",
       "title": "B: Key Word Transformation",
+      "scoring": { "pointsPerItem": 2, "maxScore": 16 },
       "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
       "items": [
         {
@@ -72,6 +75,7 @@
     {
       "type": "exercise",
       "title": "C: Idioms / Collocations",
+      "scoring": { "pointsPerItem": 1, "maxScore": 8 },
       "instructions": "Write one word in each gap.",
       "items": [
         { "sentence": "You really have to have your ………………… about you when driving through Birmingham.", "answer": "wits" },
@@ -87,6 +91,7 @@
     {
       "type": "exercise",
       "title": "D: Phrasal Verbs / Expressions",
+      "scoring": { "pointsPerItem": 1, "maxScore": 8 },
       "instructions": "Circle the correct word.",
       "items": [
         { "sentence": "We’re still trying to part / piece / set together exactly what went wrong.", "answer": "piece" },
@@ -102,6 +107,7 @@
     {
       "type": "exercise",
       "title": "E: Multiple Choice",
+      "scoring": { "pointsPerItem": 1, "maxScore": 8 },
       "instructions": "Choose the correct answer.",
       "items": [
         {

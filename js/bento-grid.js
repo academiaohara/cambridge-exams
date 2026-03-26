@@ -630,24 +630,33 @@
 
         if (isAvail) {
           var reviewSectionDefs = [
-            { letter: 'A', name: 'Word Formation' },
-            { letter: 'B', name: 'Key Word Transformation' },
-            { letter: 'C', name: 'Idioms & Collocations' },
-            { letter: 'D', name: 'Phrasal Verbs' },
-            { letter: 'E', name: 'Multiple Choice' }
+            { letter: 'A', name: 'Word Formation', maxScore: 10 },
+            { letter: 'B', name: 'Key Word Transformation', maxScore: 16 },
+            { letter: 'C', name: 'Idioms & Collocations', maxScore: 8 },
+            { letter: 'D', name: 'Phrasal Verbs', maxScore: 8 },
+            { letter: 'E', name: 'Multiple Choice', maxScore: 8 }
           ];
+          var reviewTotalMax = 50;
           var reviewAnsweredData = BentoGrid._getReviewAnswered(level);
+          var totalEarned = 0;
+          reviewSectionDefs.forEach(function(sec, idx) {
+            totalEarned += reviewAnsweredData[reviewItem.id + '_' + idx] || 0;
+          });
+          totalEarned = Math.min(totalEarned, reviewTotalMax);
           html += '<div class="fe-map-lesson ' + (isDone ? 'fe-lesson-complete' : 'fe-lesson-pending') + '">' +
             '<div class="fe-map-lesson-title">' +
               '<span class="fe-map-lesson-num">Review</span>' +
+              '<span class="fe-rs-total-score' + (totalEarned === 0 ? ' fe-rs-score-pending' : '') + '">' + (totalEarned > 0 ? totalEarned : '–') + '/' + reviewTotalMax + '</span>' +
             '</div>' +
             '<div class="fe-map-review-slots">';
           reviewSectionDefs.forEach(function(sec, idx) {
-            var answered = reviewAnsweredData[reviewItem.id + '_' + idx] || 0;
+            var earned = reviewAnsweredData[reviewItem.id + '_' + idx] || 0;
+            var isPending = earned === 0;
+            var scoreLabel = (earned > 0 ? Math.min(earned, sec.maxScore) : '–') + '/' + sec.maxScore;
             html += '<button class="fe-review-slot" onclick="BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\', ' + idx + ')">' +
               '<span class="fe-rs-letter">' + sec.letter + '</span>' +
               '<span class="fe-rs-name">' + self._escapeHTML(sec.name) + '</span>' +
-              (answered > 0 ? '<span class="fe-rs-score">' + answered + '</span>' : '') +
+              '<span class="fe-rs-score' + (isPending ? ' fe-rs-score-pending' : '') + '">' + scoreLabel + '</span>' +
             '</button>';
           });
           html += '</div></div>';
@@ -1103,9 +1112,10 @@
           }
           html += '<div class="cu-ex-items">';
           var reviewUnitId = BentoGrid._currentUnitId || '';
+          var pointsPerItem = (section.scoring && section.scoring.pointsPerItem) || 1;
           (section.items || []).forEach(function(item, iIdx) {
             var trackCb = reviewUnitId
-              ? 'BentoGrid._trackReviewItem(\'' + reviewUnitId + '\',' + sectionIdx + ')'
+              ? 'BentoGrid._trackReviewItem(\'' + reviewUnitId + '\',' + sectionIdx + ',' + pointsPerItem + ')'
               : '';
             html += self._renderCourseExItem(item, iIdx, 'rv-' + section.title.replace(/\W+/g, '') + '-' + iIdx, trackCb);
           });
@@ -1322,13 +1332,13 @@
       return label;
     },
 
-    _trackReviewItem: function(unitId, sectionIdx) {
+    _trackReviewItem: function(unitId, sectionIdx, pts) {
       var level = BentoGrid._courseLevel || 'C1';
       try {
         var key = 'cambridge_review_answers_' + level;
         var data = JSON.parse(localStorage.getItem(key) || '{}');
         var skey = unitId + '_' + sectionIdx;
-        data[skey] = (data[skey] || 0) + 1;
+        data[skey] = (data[skey] || 0) + (pts || 1);
         localStorage.setItem(key, JSON.stringify(data));
       } catch(e) {}
     },
