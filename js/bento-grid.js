@@ -424,10 +424,10 @@
 
       var headerHtml =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
+          '<button class="subpage-back-btn" onclick="loadDashboard()">Back</button>' +
           '<div>' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
-            '<div class="subpage-subtitle">' + 'Structured lessons for' + ' ' + level + '</div>' +
+            '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
           '</div>' +
         '</div>';
 
@@ -454,10 +454,8 @@
       var centerSection = document.getElementById('courseCenterSection');
       if (!centerSection) return;
 
-      var mapHtml = '<div class="fe-map-container">';
-
       if (indexData && indexData.items && indexData.items.length > 0) {
-        // Group items by block
+        // Group items by block and store for block switching
         var blocks = {};
         var blockOrder = [];
         indexData.items.forEach(function(item) {
@@ -469,69 +467,113 @@
           blocks[blockKey].push(item);
         });
 
-        blockOrder.forEach(function(blockKey, bi) {
-          var items = blocks[blockKey];
-          var hasAvailable = items.some(function(i) { return i.status === 'available'; });
-          var lessonClass = hasAvailable ? 'fe-map-lesson fe-lesson-active' : 'fe-map-lesson fe-lesson-locked';
-          var blockLabel = blockKey !== 'misc' ? 'Block ' + blockKey : '';
+        BentoGrid._courseBlocks = blocks;
+        BentoGrid._courseBlockOrder = blockOrder;
+        BentoGrid._courseLevel = level;
 
-          mapHtml += '<div class="' + lessonClass + '">';
-          if (blockLabel) {
-            mapHtml += '<div class="fe-map-lesson-title">' +
-              '<span class="fe-map-lesson-num">' + blockLabel + '</span>' +
-            '</div>';
-          }
-          mapHtml += '<div class="fe-map-points-row">';
-
-          items.forEach(function(item) {
-            var isAvailable = item.status === 'available';
-            var typeIcon = item.type === 'grammar' ? 'menu_book' :
-                           item.type === 'vocabulary' ? 'translate' :
-                           item.type === 'review' ? 'quiz' :
-                           item.type === 'progress_test' ? 'assignment' : 'school';
-            var typeColor = item.type === 'grammar' ? '#3b82f6' :
-                            item.type === 'vocabulary' ? '#10b981' :
-                            item.type === 'review' ? '#f59e0b' : '#6366f1';
-
-            if (isAvailable) {
-              mapHtml += '<div class="fe-review-row fe-level-item fe-level-unlocked" style="cursor:pointer" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'data/Course/' + level + '/' + item.file + '\')">' +
-                '<span class="fe-level-icon" style="color:' + typeColor + '">' + _mi(typeIcon) + '</span>' +
-                '<div class="fe-level-label">' +
-                  '<span class="fe-level-name">' + item.title + '</span>' +
-                  '<span class="fe-level-pct" style="color:' + typeColor + '">' + _mi('chevron_right') + '</span>' +
-                '</div>' +
-              '</div>';
-            } else {
-              mapHtml += '<div class="fe-review-row fe-level-item fe-level-locked">' +
-                '<span class="fe-level-icon">' + _mi('lock') + '</span>' +
-                '<div class="fe-level-label">' +
-                  '<span class="fe-level-name">' + item.title + '</span>' +
-                  '<span class="fe-level-pct">Coming Soon</span>' +
-                '</div>' +
-              '</div>';
-            }
-          });
-
-          mapHtml += '</div></div>';
-
-          if (bi < blockOrder.length - 1) {
-            mapHtml += '<div class="fe-map-connector"></div>';
-          }
-        });
+        // Default to first block (Block 1)
+        var defaultBlock = blockOrder[0] || '1';
+        centerSection.innerHTML = headerHtml + BentoGrid._renderCourseBlockView(defaultBlock);
       } else {
         // Fallback: no index available for this level
-        mapHtml += '<div class="lt-coming-soon-banner">' +
-          _mi('schedule') +
-          '<div class="lt-coming-soon-text">' +
-            '<strong>' + 'Coming Soon' + '</strong>' +
-            '<span>' + 'The Course curriculum is under development. Structured lessons with explanations, exercises, and progress tracking will be available here soon.' + '</span>' +
+        centerSection.innerHTML = headerHtml +
+          '<div class="fe-map-container">' +
+          '<div class="lt-coming-soon-banner">' +
+            _mi('schedule') +
+            '<div class="lt-coming-soon-text">' +
+              '<strong>Coming Soon</strong>' +
+              '<span>The Course curriculum is under development. Structured lessons with explanations, exercises, and progress tracking will be available here soon.</span>' +
+            '</div>' +
+          '</div>' +
+          '</div>';
+      }
+    },
+
+    _selectCourseBlock: function(blockKey) {
+      var centerSection = document.getElementById('courseCenterSection');
+      if (!centerSection || !BentoGrid._courseBlocks) return;
+
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      var level = BentoGrid._courseLevel || 'C1';
+      var headerHtml =
+        '<div class="subpage-header">' +
+          '<button class="subpage-back-btn" onclick="loadDashboard()">Back</button>' +
+          '<div>' +
+            '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
+            '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
           '</div>' +
         '</div>';
-      }
 
-      mapHtml += '</div>';
+      centerSection.innerHTML = headerHtml + BentoGrid._renderCourseBlockView(blockKey);
+    },
 
-      centerSection.innerHTML = headerHtml + mapHtml;
+    _renderCourseBlockView: function(activeBlockKey) {
+      var self = this;
+      var level = BentoGrid._courseLevel || 'C1';
+      var blocks = BentoGrid._courseBlocks || {};
+      var blockOrder = BentoGrid._courseBlockOrder || [];
+
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+
+      // Block tabs
+      var tabsHtml = '<div class="cu-block-tabs">';
+      blockOrder.forEach(function(bk) {
+        var isActive = bk === activeBlockKey;
+        var hasAvailable = (blocks[bk] || []).some(function(i) { return i.status === 'available'; });
+        var label = bk !== 'misc' ? 'Block ' + bk : 'Other';
+        if (!hasAvailable) {
+          var tabClass = 'cu-block-tab cu-block-tab-locked' + (isActive ? ' cu-block-tab-active' : '');
+          tabsHtml += '<div class="' + tabClass + '" title="Coming soon">' + _mi('lock') + ' ' + label + '</div>';
+        } else {
+          var tabClass = 'cu-block-tab' + (isActive ? ' cu-block-tab-active' : '');
+          tabsHtml += '<button class="' + tabClass + '" onclick="BentoGrid._selectCourseBlock(\'' + bk + '\')">' + label + '</button>';
+        }
+      });
+      tabsHtml += '</div>';
+
+      // Unit cards for the active block
+      var items = blocks[activeBlockKey] || [];
+      var cardsHtml = '<div class="cu-unit-cards">';
+
+      items.forEach(function(item) {
+        var isAvailable = item.status === 'available';
+        var typeIcon = item.type === 'grammar' ? 'menu_book' :
+                       item.type === 'vocabulary' ? 'translate' :
+                       item.type === 'review' ? 'quiz' :
+                       item.type === 'progress_test' ? 'assignment' : 'school';
+        var typeColor = item.type === 'grammar' ? '#3b82f6' :
+                        item.type === 'vocabulary' ? '#10b981' :
+                        item.type === 'review' ? '#f59e0b' : '#6366f1';
+        var typeLabel = item.type === 'grammar' ? 'Grammar' :
+                        item.type === 'vocabulary' ? 'Vocabulary' :
+                        item.type === 'review' ? 'Review' :
+                        item.type === 'progress_test' ? 'Progress Test' : 'Unit';
+
+        if (isAvailable) {
+          cardsHtml +=
+            '<div class="cu-unit-card cu-unit-card-available" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'data/Course/' + level + '/' + item.file + '\')">' +
+              '<div class="cu-unit-card-icon" style="color:' + typeColor + '">' + _mi(typeIcon) + '</div>' +
+              '<div class="cu-unit-card-body">' +
+                '<div class="cu-unit-card-label" style="color:' + typeColor + '">' + typeLabel + '</div>' +
+                '<div class="cu-unit-card-title">' + self._escapeHTML(item.title) + '</div>' +
+              '</div>' +
+              '<div class="cu-unit-card-arrow">' + _mi('chevron_right') + '</div>' +
+            '</div>';
+        } else {
+          cardsHtml +=
+            '<div class="cu-unit-card cu-unit-card-locked">' +
+              '<div class="cu-unit-card-icon">' + _mi('lock') + '</div>' +
+              '<div class="cu-unit-card-body">' +
+                '<div class="cu-unit-card-label">Coming Soon</div>' +
+                '<div class="cu-unit-card-title">' + self._escapeHTML(item.title) + '</div>' +
+              '</div>' +
+            '</div>';
+        }
+      });
+
+      cardsHtml += '</div>';
+
+      return '<div class="cu-course-view">' + tabsHtml + cardsHtml + '</div>';
     },
 
     openCourseUnit: async function(unitId, filePath) {
@@ -653,11 +695,7 @@
 
           html += '<div class="cu-ex-items">';
           (section.items || []).forEach(function(item, idx) {
-            html += '<div class="cu-ex-item">' +
-              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + _bold(item.sentence || '') + '</div>' +
-              '<button class="cu-answer-btn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">Show Answer</button>' +
-              '<div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div>' +
-            '</div>';
+            html += self._renderCourseExItem(item, idx, 'gr-' + section.title.replace(/\W+/g, '') + '-' + idx);
           });
           html += '</div></div>';
         }
@@ -771,11 +809,7 @@
           }
           html += '<div class="cu-ex-items">';
           (ex.questions || []).forEach(function(q, idx) {
-            html += '<div class="cu-ex-item">' +
-              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + _bold(q.sentence || '') + '</div>' +
-              '<button class="cu-answer-btn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">Show Answer</button>' +
-              '<div class="cu-answer" style="display:none">' + self._escapeHTML(q.answer || '') + '</div>' +
-            '</div>';
+            html += self._renderCourseExItem(q, idx, 'vc-' + key.replace(/\W+/g, '') + '-' + idx);
           });
           html += '</div></div>';
         });
@@ -800,17 +834,103 @@
           }
           html += '<div class="cu-ex-items">';
           (section.items || []).forEach(function(item, idx) {
-            html += '<div class="cu-ex-item">' +
-              '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + _bold(item.sentence || '') + '</div>' +
-              '<button class="cu-answer-btn" onclick="this.nextElementSibling.style.display=\'block\';this.style.display=\'none\'">Show Answer</button>' +
-              '<div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div>' +
-            '</div>';
+            html += self._renderCourseExItem(item, idx, 'rv-' + section.title.replace(/\W+/g, '') + '-' + idx);
           });
           html += '</div></div>';
         }
       });
 
       return html || '<div class="fe-error">No content available.</div>';
+    },
+
+    // --- Interactive exercise item helpers ---
+
+    _renderCourseExItem: function(item, idx, idBase) {
+      var self = this;
+      var sentence = item.sentence || '';
+      var answer = item.answer || '';
+      var inputId = 'cuex-' + idBase;
+
+      var sentenceHtml = self._renderCourseExSentence(sentence, inputId);
+      var showAnswerId = 'cuans-' + idBase;
+
+      return '<div class="cu-ex-item">' +
+        '<div class="cu-ex-sentence">' + (idx + 1) + '. ' + sentenceHtml + '</div>' +
+        '<div class="cu-ex-foot">' +
+          '<button class="cu-answer-btn" onclick="' +
+            'var el=document.getElementById(\'' + showAnswerId + '\');' +
+            'if(el){el.style.display=el.style.display===\'none\'?\'block\':\'none\';}' +
+            'this.textContent=document.getElementById(\'' + showAnswerId + '\').style.display===\'none\'?\'Show Answer\':\'Hide Answer\';' +
+          '">Show Answer</button>' +
+          '<div class="cu-answer" id="' + showAnswerId + '" style="display:none">' + self._escapeHTML(answer) + '</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _renderCourseExSentence: function(sentence, inputIdBase) {
+      var self = this;
+      // Tokenise sentence into: plain text, gap markers, bold+option patterns, plain bold
+      var parts = [];
+      var tokenRegex = /([.…]{5,}|\*\*[^*]+\*\*)/g;
+      var lastIndex = 0;
+      var match;
+      while ((match = tokenRegex.exec(sentence)) !== null) {
+        if (match.index > lastIndex) {
+          parts.push({ type: 'text', val: sentence.slice(lastIndex, match.index) });
+        }
+        var m = match[0];
+        if (m.charAt(0) === '*') {
+          // Bold marker
+          var inner = m.slice(2, -2);
+          if (inner.indexOf('/') !== -1) {
+            parts.push({ type: 'options', parts: inner.split(/\s*\/\s*/) });
+          } else {
+            parts.push({ type: 'bold', val: inner });
+          }
+        } else {
+          parts.push({ type: 'gap' });
+        }
+        lastIndex = match.index + m.length;
+      }
+      if (lastIndex < sentence.length) {
+        parts.push({ type: 'text', val: sentence.slice(lastIndex) });
+      }
+
+      // Check if there are any interactive elements
+      var hasInteractive = parts.some(function(p) { return p.type === 'gap' || p.type === 'options'; });
+
+      // If no gaps or options detected, add a standalone answer input at the end
+      if (!hasInteractive) {
+        parts.push({ type: 'standalone' });
+      }
+
+      var gapCount = 0;
+      var optCount = 0;
+      return parts.map(function(p) {
+        if (p.type === 'text') {
+          return self._escapeHTML(p.val);
+        } else if (p.type === 'bold') {
+          return '<strong>' + self._escapeHTML(p.val) + '</strong>';
+        } else if (p.type === 'gap') {
+          return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="...">';
+        } else if (p.type === 'options') {
+          var oId = inputIdBase + '_o' + (optCount++);
+          return p.parts.map(function(opt) {
+            return '<button class="cu-option-btn" data-group="' + oId + '" onclick="BentoGrid._selectCourseOption(this)" type="button">' + self._escapeHTML(opt.trim()) + '</button>';
+          }).join('');
+        } else if (p.type === 'standalone') {
+          return '<br><input type="text" class="cu-gap-input cu-gap-standalone" placeholder="Your answer...">';
+        }
+        return '';
+      }).join('');
+    },
+
+    _selectCourseOption: function(btn) {
+      var group = btn.getAttribute('data-group');
+      if (!group) return;
+      var siblings = document.querySelectorAll('.cu-option-btn[data-group="' + group + '"]');
+      siblings.forEach(function(s) { s.classList.remove('cu-option-selected'); });
+      btn.classList.add('cu-option-selected');
     },
 
     _buildStreakSidebarHtml: function() {
