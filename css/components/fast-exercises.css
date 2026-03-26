@@ -4447,9 +4447,9 @@
   padding: 3px 10px;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #2D2E5F;
-  background: rgba(45, 46, 95, 0.07);
-  border: 1px solid rgba(45, 46, 95, 0.15);
+  color: #1d4ed8;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
   border-radius: 20px;
   line-height: 1.5;
 }
@@ -4464,9 +4464,8 @@
 
 .cu-theory-cat-row {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .cu-theory-cat-name {
@@ -4475,9 +4474,125 @@
   color: #3b82f6;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  min-width: 120px;
-  padding-top: 4px;
+  padding-top: 2px;
+}
+
+/* US vs UK comparison block */
+.cu-usuk-block {
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 4px 0 6px;
+}
+
+.cu-usuk-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(59, 130, 246, 0.08);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.cu-usuk-col-head {
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #2D2E5F;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cu-usuk-col-head:first-child {
+  border-right: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.cu-usuk-flag {
+  font-size: 1rem;
+}
+
+.cu-usuk-note {
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  color: var(--text-medium, #64748b);
+  font-style: italic;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+  background: rgba(255,255,255,0.6);
+}
+
+.cu-usuk-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.cu-usuk-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.06);
+}
+
+.cu-usuk-row:last-child {
+  border-bottom: none;
+}
+
+.cu-usuk-row-full {
+  grid-template-columns: 1fr;
+}
+
+.cu-usuk-cell {
+  padding: 7px 12px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-dark, #0f172a);
+}
+
+.cu-usuk-us {
+  border-right: 1px solid rgba(45, 46, 95, 0.06);
+  background: rgba(239, 68, 68, 0.03);
+}
+
+.cu-usuk-uk {
+  background: rgba(59, 130, 246, 0.03);
+}
+
+/* Restart buttons */
+.cu-reset-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-medium, #64748b);
+  background: rgba(45, 46, 95, 0.05);
+  border: 1px solid rgba(45, 46, 95, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
   flex-shrink: 0;
+  margin-left: auto;
+}
+
+.cu-reset-btn:hover {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #dc2626;
+}
+
+.cu-reset-btn .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.cu-reset-btn-sm {
+  padding: 3px 6px;
+  font-size: 0.75rem;
+}
+
+.cu-reset-btn-sm .material-symbols-outlined {
+  font-size: 0.9rem;
 }
 
 /* Review section slots in block view */
