@@ -829,10 +829,10 @@
             '<div class="cu-theory-body">';
 
           var content = section.content || [];
-          var ci = 0;
-          while (ci < content.length) {
-            var block = content[ci];
-            var nextBlock = content[ci + 1];
+          var contentIdx = 0;
+          while (contentIdx < content.length) {
+            var block = content[contentIdx];
+            var nextBlock = content[contentIdx + 1];
 
             // Pair "Uses" + "Examples" as a 2-column table
             if (block.subtitle === 'Uses' && nextBlock && nextBlock.subtitle === 'Examples') {
@@ -849,7 +849,7 @@
                 '</tr>';
               }
               html += '</tbody></table>';
-              ci += 2;
+              contentIdx += 2;
               continue;
             }
 
@@ -861,7 +861,7 @@
                 html += '<span class="cu-theory-chip">' + self._escapeHTML(item) + '</span>';
               });
               html += '</div>';
-              ci++;
+              contentIdx++;
               continue;
             }
 
@@ -895,7 +895,7 @@
                 html += '</ul>';
               }
             }
-            ci++;
+            contentIdx++;
           }
 
           html += '</div></div>';
@@ -1575,13 +1575,13 @@
           { key: 'word_formation', icon: 'spellcheck', label: 'Word Formation' },
           { key: 'exercises', icon: 'edit_note', label: 'Exercises' }
         ];
-        var si = 0;
+        var sectionIndex = 0;
         vocabMap.forEach(function(vs) {
           var hasContent = secs[vs.key] && (
             Array.isArray(secs[vs.key]) ? secs[vs.key].length > 0 : Object.keys(secs[vs.key]).length > 0
           );
           if (hasContent) {
-            var i = si++;
+            var i = sectionIndex++;
             html += '<button class="course-roadmap-item crm-vocab" id="crm-item-' + i + '" onclick="BentoGrid._scrollToCuSection(' + i + ')">' +
               '<span class="crm-icon">' + _mi(vs.icon) + '</span>' +
               '<span class="crm-text">' + vs.label + '</span>' +
