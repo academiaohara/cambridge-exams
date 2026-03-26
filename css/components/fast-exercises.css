@@ -4481,6 +4481,15 @@
 }
 
 /* Review section slots in block view */
+.fe-map-review-block {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.fe-map-review-block .fe-map-review-slots {
+  width: 100%;
+}
+
 .fe-map-review-slots {
   display: flex;
   flex-direction: column;

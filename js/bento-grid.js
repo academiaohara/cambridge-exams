@@ -643,7 +643,7 @@
             totalEarned += reviewAnsweredData[reviewItem.id + '_' + idx] || 0;
           });
           totalEarned = Math.min(totalEarned, reviewTotalMax);
-          html += '<div class="fe-map-lesson ' + (isDone ? 'fe-lesson-complete' : 'fe-lesson-pending') + '">' +
+          html += '<div class="fe-map-lesson fe-map-review-block ' + (isDone ? 'fe-lesson-complete' : 'fe-lesson-pending') + '">' +
             '<div class="fe-map-lesson-title">' +
               '<span class="fe-map-lesson-num">Review</span>' +
               '<span class="fe-rs-total-score' + (totalEarned === 0 ? ' fe-rs-score-pending' : '') + '">' + (totalEarned > 0 ? totalEarned : '–') + '/' + reviewTotalMax + '</span>' +
@@ -783,8 +783,6 @@
       BentoGrid._courseUnitMeta = BentoGrid._courseUnitMeta || {};
       BentoGrid._courseUnitMeta[unitId] = BentoGrid._extractCourseUnitMeta(unitData);
 
-      // Mark this unit as opened/visited in progress tracking
-      BentoGrid._markCourseUnitOpened(level, unitId);
       BentoGrid._currentUnitId = unitId;
 
       // Update right sidebar with learning roadmap for this unit
@@ -1249,6 +1247,19 @@
       try {
         localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(prog));
       } catch(e) {}
+    },
+
+    _checkCourseUnitAllDone: function(level, unitId) {
+      if (!unitId) return;
+      var container = document.querySelector('.course-unit-content');
+      if (!container) return;
+      var total = container.querySelectorAll('.cu-section').length;
+      if (total === 0) return;
+      var prog = BentoGrid._getCourseSectionProgress(level);
+      var unitProg = prog[unitId] || {};
+      var visitedCount = Object.keys(unitProg).filter(function(k) { return unitProg[k]; }).length;
+      if (visitedCount < total) return;
+      BentoGrid._markCourseUnitOpened(level, unitId);
     },
 
     _extractCourseUnitMeta: function(unitData) {
@@ -1781,6 +1792,7 @@
       });
 
       BentoGrid._markCourseSectionVisited(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId, startIdx);
+      BentoGrid._checkCourseUnitAllDone(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId);
       BentoGrid._updateRoadmapActiveItem(startIdx);
     },
 
@@ -1799,6 +1811,7 @@
       var center = document.querySelector('.dashboard-center');
       if (center) center.scrollTop = 0;
       BentoGrid._markCourseSectionVisited(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId, idx);
+      BentoGrid._checkCourseUnitAllDone(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId);
       BentoGrid._updateRoadmapActiveItem(idx);
     },
 
