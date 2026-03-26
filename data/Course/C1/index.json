@@ -1,0 +1,62 @@
+{
+  "level": "C1",
+  "name": "C1 Advanced",
+  "totalUnits": 26,
+  "totalBlocks": 13,
+  "totalReviews": 13,
+  "items": [
+    { "id": "Unit1",      "type": "grammar",    "block": 1,  "unit": 1,  "title": "Unit 1 — Grammar: Present time",                        "file": "Unit1.json",      "status": "available" },
+    { "id": "Unit2",      "type": "vocabulary",  "block": 1,  "unit": 2,  "title": "Unit 2 — Vocabulary: Thinking and learning",             "file": "Unit2.json",      "status": "available" },
+    { "id": "Review1",    "type": "review",      "block": 1,              "title": "Review 1 — Units 1 and 2",                               "file": "Review1.json",    "status": "available" },
+
+    { "id": "Unit3",      "type": "grammar",    "block": 2,  "unit": 3,  "title": "Unit 3 — Grammar: Past time",                           "file": "Unit3.json",      "status": "coming_soon" },
+    { "id": "Unit4",      "type": "vocabulary",  "block": 2,  "unit": 4,  "title": "Unit 4 — Vocabulary: Change and technology",             "file": "Unit4.json",      "status": "coming_soon" },
+    { "id": "Review2",    "type": "review",      "block": 2,              "title": "Review 2 — Units 3 and 4",                               "file": "Review2.json",    "status": "coming_soon" },
+
+    { "id": "Unit5",      "type": "grammar",    "block": 3,  "unit": 5,  "title": "Unit 5 — Grammar: Future time",                         "file": "Unit5.json",      "status": "coming_soon" },
+    { "id": "Unit6",      "type": "vocabulary",  "block": 3,  "unit": 6,  "title": "Unit 6 — Vocabulary: Time and work",                     "file": "Unit6.json",      "status": "coming_soon" },
+    { "id": "Review3",    "type": "review",      "block": 3,              "title": "Review 3 — Units 5 and 6",                               "file": "Review3.json",    "status": "coming_soon" },
+
+    { "id": "Unit7",      "type": "grammar",    "block": 4,  "unit": 7,  "title": "Unit 7 — Grammar: Passives and causatives",              "file": "Unit7.json",      "status": "coming_soon" },
+    { "id": "Unit8",      "type": "vocabulary",  "block": 4,  "unit": 8,  "title": "Unit 8 — Vocabulary: Movement and transport",            "file": "Unit8.json",      "status": "coming_soon" },
+    { "id": "Review4",    "type": "review",      "block": 4,              "title": "Review 4 — Units 7 and 8",                               "file": "Review4.json",    "status": "coming_soon" },
+
+    { "id": "Unit9",      "type": "grammar",    "block": 5,  "unit": 9,  "title": "Unit 9 — Grammar: Modals and semi-modals",               "file": "Unit9.json",      "status": "coming_soon" },
+    { "id": "Unit10",     "type": "vocabulary",  "block": 5,  "unit": 10, "title": "Unit 10 — Vocabulary: Communication and the media",      "file": "Unit10.json",     "status": "coming_soon" },
+    { "id": "Review5",    "type": "review",      "block": 5,              "title": "Review 5 — Units 9 and 10",                              "file": "Review5.json",    "status": "coming_soon" },
+
+    { "id": "Unit11",     "type": "grammar",    "block": 6,  "unit": 11, "title": "Unit 11 — Grammar: Conditionals",                       "file": "Unit11.json",     "status": "coming_soon" },
+    { "id": "Unit12",     "type": "vocabulary",  "block": 6,  "unit": 12, "title": "Unit 12 — Vocabulary: Chance and nature",                "file": "Unit12.json",     "status": "coming_soon" },
+    { "id": "Review6",    "type": "review",      "block": 6,              "title": "Review 6 — Units 11 and 12",                             "file": "Review6.json",    "status": "coming_soon" },
+
+    { "id": "ProgressTest1", "type": "progress_test",                     "title": "Progress Test 1 — Units 1–12",                           "file": "ProgressTest1.json", "status": "coming_soon" },
+
+    { "id": "Unit13",     "type": "grammar",    "block": 7,  "unit": 13, "title": "Unit 13 — Grammar: Unreal time",                        "file": "Unit13.json",     "status": "coming_soon" },
+    { "id": "Unit14",     "type": "vocabulary",  "block": 7,  "unit": 14, "title": "Unit 14 — Vocabulary: Quantity and money",               "file": "Unit14.json",     "status": "coming_soon" },
+    { "id": "Review7",    "type": "review",      "block": 7,              "title": "Review 7 — Units 13 and 14",                             "file": "Review7.json",    "status": "coming_soon" },
+
+    { "id": "Unit15",     "type": "grammar",    "block": 8,  "unit": 15, "title": "Unit 15 — Grammar: Adjectives and adverbs",              "file": "Unit15.json",     "status": "coming_soon" },
+    { "id": "Unit16",     "type": "vocabulary",  "block": 8,  "unit": 16, "title": "Unit 16 — Vocabulary: Materials and the built environment", "file": "Unit16.json",   "status": "coming_soon" },
+    { "id": "Review8",    "type": "review",      "block": 8,              "title": "Review 8 — Units 15 and 16",                             "file": "Review8.json",    "status": "coming_soon" },
+
+    { "id": "Unit17",     "type": "grammar",    "block": 9,  "unit": 17, "title": "Unit 17 — Grammar: Clauses",                            "file": "Unit17.json",     "status": "coming_soon" },
+    { "id": "Unit18",     "type": "vocabulary",  "block": 9,  "unit": 18, "title": "Unit 18 — Vocabulary: Reactions and health",             "file": "Unit18.json",     "status": "coming_soon" },
+    { "id": "Review9",    "type": "review",      "block": 9,              "title": "Review 9 — Units 17 and 18",                             "file": "Review9.json",    "status": "coming_soon" },
+
+    { "id": "Unit19",     "type": "grammar",    "block": 10, "unit": 19, "title": "Unit 19 — Grammar: Complex sentences",                   "file": "Unit19.json",     "status": "coming_soon" },
+    { "id": "Unit20",     "type": "vocabulary",  "block": 10, "unit": 20, "title": "Unit 20 — Vocabulary: Power and social issues",          "file": "Unit20.json",     "status": "coming_soon" },
+    { "id": "Review10",   "type": "review",      "block": 10,             "title": "Review 10 — Units 19 and 20",                            "file": "Review10.json",   "status": "coming_soon" },
+
+    { "id": "Unit21",     "type": "grammar",    "block": 11, "unit": 21, "title": "Unit 21 — Grammar: Noun phrases",                       "file": "Unit21.json",     "status": "coming_soon" },
+    { "id": "Unit22",     "type": "vocabulary",  "block": 11, "unit": 22, "title": "Unit 22 — Vocabulary: Quality and the arts",             "file": "Unit22.json",     "status": "coming_soon" },
+    { "id": "Review11",   "type": "review",      "block": 11,             "title": "Review 11 — Units 21 and 22",                            "file": "Review11.json",   "status": "coming_soon" },
+
+    { "id": "Unit23",     "type": "grammar",    "block": 12, "unit": 23, "title": "Unit 23 — Grammar: Verbal complements",                  "file": "Unit23.json",     "status": "coming_soon" },
+    { "id": "Unit24",     "type": "vocabulary",  "block": 12, "unit": 24, "title": "Unit 24 — Vocabulary: Relationships and people",         "file": "Unit24.json",     "status": "coming_soon" },
+    { "id": "Review12",   "type": "review",      "block": 12,             "title": "Review 12 — Units 23 and 24",                            "file": "Review12.json",   "status": "coming_soon" },
+
+    { "id": "Unit25",     "type": "grammar",    "block": 13, "unit": 25, "title": "Unit 25 — Grammar: Reporting",                          "file": "Unit25.json",     "status": "coming_soon" },
+    { "id": "Unit26",     "type": "vocabulary",  "block": 13, "unit": 26, "title": "Unit 26 — Vocabulary: Preference and leisure activities", "file": "Unit26.json",    "status": "coming_soon" },
+    { "id": "Review13",   "type": "review",      "block": 13,             "title": "Review 13 — Units 25 and 26",                            "file": "Review13.json",   "status": "coming_soon" }
+  ]
+}
