@@ -4207,3 +4207,262 @@
   .vocab-topic-btns { width: 100%; }
   .vocab-topic-btn { flex: 1; justify-content: center; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   COURSE UNIT CONTENT VIEWER
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.course-unit-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 32px;
+}
+
+/* Section card */
+.cu-section {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(45, 46, 95, 0.08);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 16px rgba(45, 46, 95, 0.06);
+}
+
+.cu-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-dark, #0f172a);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(45, 46, 95, 0.07);
+}
+.cu-section-title .material-symbols-outlined {
+  font-size: 1.15rem;
+  color: #3b82f6;
+}
+.cu-theory .cu-section-title .material-symbols-outlined { color: #3b82f6; }
+.cu-exercise .cu-section-title .material-symbols-outlined { color: #8b5cf6; }
+.cu-vocab .cu-section-title .material-symbols-outlined { color: #10b981; }
+.cu-pv .cu-section-title .material-symbols-outlined { color: #f59e0b; }
+.cu-collocations .cu-section-title .material-symbols-outlined { color: #6366f1; }
+.cu-idioms .cu-section-title .material-symbols-outlined { color: #ec4899; }
+.cu-wf .cu-section-title .material-symbols-outlined { color: #ef4444; }
+
+/* Theory body */
+.cu-theory-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cu-theory-subtitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #3b82f6;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 6px;
+}
+.cu-theory-desc {
+  font-size: 0.9rem;
+  color: var(--text-medium, #64748b);
+  font-style: italic;
+}
+.cu-theory-list {
+  margin: 4px 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cu-theory-list li {
+  font-size: 0.88rem;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.55;
+}
+
+/* Exercise sections */
+.cu-ex-instructions {
+  font-size: 0.88rem;
+  color: var(--text-medium, #64748b);
+  font-style: italic;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(139, 92, 246, 0.05);
+  border-radius: 8px;
+}
+.cu-ex-wordbank {
+  font-size: 0.85rem;
+  color: var(--text-medium, #64748b);
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  background: rgba(59, 130, 246, 0.06);
+  border-radius: 8px;
+}
+.cu-ex-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cu-ex-sub {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.07);
+}
+.cu-ex-sub:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.cu-ex-subtitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-dark, #0f172a);
+  margin-bottom: 8px;
+}
+.cu-ex-item {
+  padding: 10px 14px;
+  background: rgba(45, 46, 95, 0.025);
+  border-radius: 10px;
+  border: 1px solid rgba(45, 46, 95, 0.06);
+}
+.cu-ex-sentence {
+  font-size: 0.88rem;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+.cu-answer-btn {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 8px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cu-answer-btn:hover {
+  background: rgba(59, 130, 246, 0.15);
+}
+.cu-answer {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-top: 6px;
+  padding: 6px 10px;
+  background: rgba(16, 185, 129, 0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* Vocabulary words */
+.cu-vocab-group {
+  margin-bottom: 16px;
+}
+.cu-vocab-group-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #10b981;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+.cu-vocab-words {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px;
+}
+.cu-vocab-word {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgba(16, 185, 129, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.12);
+}
+.cu-word {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-dark, #0f172a);
+}
+.cu-pos {
+  font-size: 0.75rem;
+  color: var(--text-medium, #64748b);
+  font-style: italic;
+}
+.cu-variant {
+  font-size: 0.72rem;
+  color: var(--text-medium, #64748b);
+}
+
+/* Phrasal verbs / idioms list */
+.cu-pv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cu-pv-item {
+  display: flex;
+  gap: 12px;
+  padding: 8px 12px;
+  background: rgba(245, 158, 11, 0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(245, 158, 11, 0.12);
+  align-items: flex-start;
+}
+.cu-idioms .cu-pv-item {
+  background: rgba(236, 72, 153, 0.04);
+  border-color: rgba(236, 72, 153, 0.12);
+}
+.cu-pv-verb {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-dark, #0f172a);
+  min-width: 160px;
+  flex-shrink: 0;
+}
+.cu-pv-meaning {
+  font-size: 0.85rem;
+  color: var(--text-medium, #64748b);
+  line-height: 1.5;
+}
+
+/* Collocations */
+.cu-coll-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cu-coll-item {
+  display: flex;
+  gap: 12px;
+  padding: 6px 12px;
+  background: rgba(99, 102, 241, 0.04);
+  border-radius: 8px;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  align-items: flex-start;
+}
+.cu-coll-word {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #6366f1;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+.cu-coll-patterns {
+  font-size: 0.84rem;
+  color: var(--text-medium, #64748b);
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .cu-section { padding: 14px 14px; }
+  .cu-vocab-words { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .cu-pv-verb { min-width: 120px; }
+  .cu-coll-word { min-width: 90px; }
+}
