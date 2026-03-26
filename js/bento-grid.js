@@ -1982,7 +1982,10 @@
     _checkCuExSection: function(sectionId) {
       var sec = document.getElementById(sectionId);
       if (!sec) return;
+      var totalItems = 0;
+      var correctItems = 0;
       sec.querySelectorAll('.cu-ex-item').forEach(function(item) {
+        totalItems++;
         var answer = (item.getAttribute('data-answer') || '').trim();
         var answerParts = answer.split(/,\s*/);
         var inputs = item.querySelectorAll('.cu-gap-input');
@@ -2016,12 +2019,37 @@
             if (!matched) allCorrect = false;
           }
         });
+        if (allCorrect) correctItems++;
         // Show answer div for incorrect items
         var ansDiv = item.querySelector('.cu-answer');
         if (ansDiv && !allCorrect) ansDiv.style.display = 'block';
       });
       var checkBtn = sec.querySelector('.cu-check-btn');
       if (checkBtn) checkBtn.disabled = true;
+      // Show score summary panel
+      if (totalItems > 0) {
+        var existing = sec.querySelector('.cu-ex-score-summary');
+        if (existing) existing.remove();
+        var pct = Math.round((correctItems / totalItems) * 100);
+        var isGood = pct >= 70;
+        var summary = document.createElement('div');
+        summary.className = 'cu-ex-score-summary ' + (isGood ? 'cu-ex-score-good' : 'cu-ex-score-review');
+        summary.setAttribute('role', 'status');
+        summary.setAttribute('aria-live', 'polite');
+        var emojiLabel = isGood ? '(celebration)' : '(hint)';
+        var scoreText = correctItems + '/' + totalItems + ' correct';
+        var feedbackText = isGood ? '¡Muy bien!' : 'Review the highlighted answers above.';
+        summary.innerHTML =
+          '<span aria-hidden="true">' + (isGood ? '🎉' : '💡') + '</span>' +
+          '<span class="visually-hidden">' + emojiLabel + ' </span>' +
+          scoreText + ' — ' + feedbackText;
+        var footer = sec.querySelector('.cu-ex-footer');
+        if (footer) {
+          footer.parentNode.insertBefore(summary, footer.nextSibling);
+        } else {
+          sec.appendChild(summary);
+        }
+      }
     },
 
     _showAllCuAnswers: function(sectionId) {
