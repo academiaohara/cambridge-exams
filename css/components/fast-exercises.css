@@ -6836,8 +6836,9 @@
 
 .cu-mc-passage-gap-slot {
   display: inline-block;
-  min-width: 70px;
-  padding: 1px 10px;
+  min-width: 90px;
+  min-height: 30px;
+  padding: 5px 12px;
   border-radius: 10px;
   background: #f1f5f9;
   border: 1.5px dashed #94a3b8;
@@ -6846,6 +6847,8 @@
   color: #64748b;
   text-align: center;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
+  vertical-align: middle;
+  line-height: 1.4;
 }
 
 .cu-mc-passage-gap-slot.cu-mc-passage-gap-filled {
@@ -6877,10 +6880,51 @@
 }
 
 .cu-mc-passage-gap.cu-mc-passage-gap-incorrect .cu-mc-passage-gap-slot {
-  background: #fef2f2;
-  border-color: #ef4444;
+  background: #fff7ed;
+  border-color: #f97316;
   border-style: solid;
-  color: #b91c1c;
+  color: #c2410c;
+}
+
+/* Show-correct state: correct answers in blue (used by "Show answers" toggle and "Correct answers" view) */
+.cu-mc-passage-gap.cu-mc-passage-gap-show-correct .cu-mc-passage-gap-slot {
+  background: #e0f2fe;
+  border-color: #38bdf8;
+  border-style: solid;
+  color: #0369a1;
+  font-weight: 700;
+}
+
+/* View-toggle buttons added after check (Your answers / Correct answers) */
+.cu-mc-passage-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.cu-mc-passage-view-btn .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.cu-mc-passage-view-btn:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: #1e293b;
+}
+
+.cu-mc-passage-view-btn.cu-mc-passage-view-active {
+  background: #0369a1;
+  color: #fff;
+  border-color: #0369a1;
 }
 
 /* ── Two-column matching exercise ────────────────────────────────────── */

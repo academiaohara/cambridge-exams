@@ -16,8 +16,8 @@
 .modal-content {
   background: var(--modal-bg);
   width: 90%;
-  max-width: 800px;
-  padding: 30px;
+  max-width: 480px;
+  padding: 20px 24px;
   border-radius: 20px 20px 0 0;
   position: relative;
   border: 1px solid var(--border-light);
@@ -53,23 +53,23 @@
 }
 
 .modal-header {
-  margin-bottom: 20px;
-  padding-bottom: 15px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
   border-bottom: 2px solid transparent;
   border-image: linear-gradient(90deg, var(--primary), var(--secondary)) 1;
 }
 
 .modal-header h3 {
   color: var(--text-dark);
-  margin-bottom: 5px;
-  font-size: 1.3rem;
+  margin-bottom: 4px;
+  font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: -0.3px;
 }
 
 .modal-header p {
   color: #2d2e5f;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 900;
@@ -100,17 +100,17 @@
 .options-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 10px;
 }
 
 .opt-btn {
   background: var(--primary);
   color: white;
   border: none;
-  padding: 18px;
+  padding: 12px 10px;
   border-radius: 10px;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s;
