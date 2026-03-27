@@ -6510,6 +6510,53 @@
   .cu-review-banner-stat { width: 100%; flex-direction: row; gap: 8px; justify-content: center; }
 }
 
+/* ── Review total score bar ─────────────────────────────────────────── */
+.cu-review-total-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1.5px solid rgba(245, 158, 11, 0.25);
+  border-radius: 12px;
+  margin: 8px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #92400e;
+}
+
+.cu-review-total-score .material-symbols-outlined {
+  font-size: 1.1rem;
+  color: #d97706;
+}
+
+.cu-review-total-label {
+  color: #92400e;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cu-review-total-val {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #d97706;
+}
+
+.cu-review-total-max {
+  font-size: 0.88rem;
+  color: #78350f;
+  font-weight: 600;
+}
+
+.cu-review-total-pct {
+  font-size: 0.85rem;
+  color: #92400e;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
 .cu-block-card-header[onclick]:hover {
   opacity: 0.85;
 }
@@ -6663,11 +6710,11 @@
 
 .cu-kwtrans-keyword {
   display: inline-block;
-  padding: 3px 14px;
+  padding: 2px 10px;
   background: #1d4ed8;
   color: #fff;
   font-weight: 800;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: 0.04em;

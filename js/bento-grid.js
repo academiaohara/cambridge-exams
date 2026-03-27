@@ -3,7 +3,7 @@
 
 (function() {
   var _levelSelectorPreviewIdx = 0;
-  var CU_PAGE_SIZE = 6; // max items per page in paginated course exercises
+  var CU_PAGE_SIZE = 4; // max items per page in paginated course exercises (balanced 4+4 for 8-item sections)
   var CU_MC_BLANK = '<span class="cu-mc-blank">&#9135;&#9135;&#9135;&#9135;&#9135;</span>';
   var _levelColors = {
     'C1': { bg: '#ffffff', label: '#104862', code: '#46B1E1' },
@@ -1964,8 +1964,44 @@
         }
       }
 
-      // Check if there are any interactive elements
+      // Post-process: capture trailing (HINT) text into the preceding hint-gap pill
+      // e.g. "(1) ...... (EXPLAIN)" → pill with num=1, input, hint="EXPLAIN" all together
+      for (var pi = 0; pi < parts.length - 1; pi++) {
+        if (parts[pi].type === 'hint-gap' && parts[pi].hint === null) {
+          var nextPart = parts[pi + 1];
+          if (nextPart.type === 'text') {
+            var trailingHintMatch = nextPart.val.match(/^\s*\(([^)]+)\)([\s\S]*)/);
+            if (trailingHintMatch) {
+              parts[pi].hint = trailingHintMatch[1].trim();
+              var remainder = trailingHintMatch[2];
+              if (remainder) {
+                parts[pi + 1] = { type: 'text', val: remainder };
+              } else {
+                parts.splice(pi + 1, 1);
+              }
+            }
+          }
+        }
+      }
+
+      // Post-process: when no interactive elements and there is a bold word, convert it
+      // to an inline hint-gap pill (hint = bold word + input together), as in Exercise F
+      // style error-correction where the incorrect bold word acts as the hint.
       var hasInteractive = parts.some(function(p) {
+        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-wf' || p.type === 'options';
+      });
+      if (!hasInteractive) {
+        for (var bpi = 0; bpi < parts.length; bpi++) {
+          if (parts[bpi].type === 'bold') {
+            parts[bpi] = { type: 'hint-gap', num: null, hint: parts[bpi].val };
+            hasInteractive = true;
+            break;
+          }
+        }
+      }
+
+      // Check if there are any interactive elements (re-evaluate after post-processing)
+      hasInteractive = parts.some(function(p) {
         return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-wf' || p.type === 'options';
       });
 
