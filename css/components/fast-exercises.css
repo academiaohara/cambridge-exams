@@ -4585,6 +4585,12 @@
   background: rgba(255,255,255,0.6);
 }
 
+.cu-usuk-note-mid {
+  margin-top: 6px;
+  border-top: 1px solid rgba(59, 130, 246, 0.1);
+  border-bottom: none;
+}
+
 .cu-usuk-rows {
   display: flex;
   flex-direction: column;
@@ -5261,6 +5267,11 @@
   font-size: 0.8rem;
   color: #3b82f6;
   font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cu-ex-page-more:hover {
+  background: rgba(59, 130, 246, 0.12);
 }
 .cu-ex-page-more .material-symbols-outlined {
   font-size: 1rem;

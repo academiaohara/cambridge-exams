@@ -923,6 +923,11 @@
               if (usukExamples.length) {
                 html += '<div class="cu-usuk-rows">';
                 usukExamples.forEach(function(ex) {
+                  // Inline note object
+                  if (ex && typeof ex === 'object' && ex.note) {
+                    html += '<div class="cu-usuk-note cu-usuk-note-mid">' + _bold(ex.note) + '</div>';
+                    return;
+                  }
                   // Split "US: … UK: …" into two parts
                   var usMatch = ex.match(/^US:\s*(.*?)\s+UK:\s*(.*)$/i);
                   if (usMatch) {
@@ -1196,11 +1201,11 @@
     _renderCuExFooter: function(secId) {
       return '<div class="cu-ex-footer">' +
         '<button class="cu-check-btn" onclick="BentoGrid._checkCuExSection(\'' + secId + '\')">' +
-          '<span class="material-symbols-outlined">check_circle</span> Corregir</button>' +
-        '<button class="cu-show-all-btn" onclick="BentoGrid._showAllCuAnswers(\'' + secId + '\')">' +
-          '<span class="material-symbols-outlined">visibility</span> Mostrar respuestas</button>' +
+          '<span class="material-symbols-outlined">check_circle</span> Check</button>' +
+        '<button class="cu-show-all-btn" onclick="BentoGrid._toggleCuAnswers(\'' + secId + '\')">' +
+          '<span class="material-symbols-outlined">visibility</span> Show answers</button>' +
         '<button class="cu-retry-btn" onclick="BentoGrid._resetCuExSection(\'' + secId + '\')" style="display:none">' +
-          '<span class="material-symbols-outlined">replay</span> Repetir</button>' +
+          '<span class="material-symbols-outlined">replay</span> Retry</button>' +
         '</div>';
     },
 
@@ -1215,6 +1220,14 @@
       if (checkBtn) checkBtn.disabled = false;
       var retryBtn = sec.querySelector('.cu-retry-btn');
       if (retryBtn) retryBtn.style.display = 'none';
+      // Reset show/hide answers button
+      var showBtn = sec.querySelector('.cu-show-all-btn');
+      if (showBtn) {
+        var showIcon = showBtn.querySelector('.material-symbols-outlined');
+        if (showIcon) showIcon.textContent = 'visibility';
+        var textNode = showBtn.lastChild;
+        if (textNode && textNode.nodeType === 3) textNode.textContent = ' Show answers';
+      }
       // Reset text inputs
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) {
         input.value = '';
@@ -1280,9 +1293,9 @@
         });
         if (pageIdx < pages.length - 1) {
           var remaining = pages.length - pageIdx - 1;
-          html += '<div class="cu-ex-page-more">' +
+          html += '<button class="cu-ex-page-more" type="button" onclick="BentoGrid._cuExGoToPage(\'' + secId + '\',' + (pageIdx + 1) + ')">' +
             '<span class="material-symbols-outlined">expand_circle_down</span> ' +
-            remaining + ' parte' + (remaining > 1 ? 's' : '') + ' más</div>';
+            remaining + ' more part' + (remaining > 1 ? 's' : '') + '</button>';
         }
         html += '</div>';
       });
@@ -1345,7 +1358,14 @@
       var m;
       while ((m = parenRegex.exec(text)) !== null) {
         result += self._escapeHTML(text.slice(lastIdx, m.index));
-        result += '<span class="cu-hint-word">(' + self._escapeHTML(m[1]) + ')</span>';
+        var inner = m[1];
+        if (/^\d+$/.test(inner.trim())) {
+          // Number — render as bold, no box
+          result += '<strong>' + self._escapeHTML(inner) + '</strong>';
+        } else {
+          // Word hint — render without parentheses
+          result += '<span class="cu-hint-word">' + self._escapeHTML(inner) + '</span>';
+        }
         lastIdx = m.index + m[0].length;
       }
       result += self._escapeHTML(text.slice(lastIdx));
@@ -2141,6 +2161,30 @@
     _checkCuExSection: function(sectionId) {
       var sec = document.getElementById(sectionId);
       if (!sec) return;
+
+      // Detect unanswered questions (empty inputs with no option selected)
+      var unanswered = [];
+      sec.querySelectorAll('.cu-ex-item').forEach(function(item, idx) {
+        var inputs = item.querySelectorAll('.cu-gap-input');
+        var optGroups = {};
+        item.querySelectorAll('.cu-option-btn').forEach(function(btn) {
+          var g = btn.getAttribute('data-group');
+          if (g) { if (!optGroups[g]) optGroups[g] = []; optGroups[g].push(btn); }
+        });
+        var isEmpty = true;
+        inputs.forEach(function(inp) { if ((inp.value || '').trim() !== '') isEmpty = false; });
+        Object.keys(optGroups).forEach(function(g) {
+          if (optGroups[g].some(function(b) { return b.classList.contains('cu-option-selected'); })) isEmpty = false;
+        });
+        if (inputs.length === 0 && Object.keys(optGroups).length === 0) isEmpty = false;
+        if (isEmpty) unanswered.push(idx + 1);
+      });
+
+      if (unanswered.length > 0) {
+        var msg = 'Questions ' + unanswered.join(', ') + (unanswered.length === 1 ? ' has' : ' have') + ' not been answered. Check anyway?';
+        if (!confirm(msg)) return;
+      }
+
       var totalItems = 0;
       var correctItems = 0;
       sec.querySelectorAll('.cu-ex-item').forEach(function(item) {
@@ -2241,6 +2285,32 @@
           footer.parentNode.insertBefore(summary, footer.nextSibling);
         } else {
           sec.appendChild(summary);
+        }
+      }
+    },
+
+    _toggleCuAnswers: function(sectionId) {
+      var sec = document.getElementById(sectionId);
+      if (!sec) return;
+      var btn = sec.querySelector('.cu-show-all-btn');
+      var icon = btn ? btn.querySelector('.material-symbols-outlined') : null;
+      var anyHidden = false;
+      sec.querySelectorAll('.cu-answer').forEach(function(div) {
+        if (div.style.display === 'none' || div.style.display === '') anyHidden = true;
+      });
+      if (anyHidden) {
+        sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'block'; });
+        if (icon) icon.textContent = 'visibility_off';
+        if (btn) {
+          var textNode = btn.lastChild;
+          if (textNode && textNode.nodeType === 3) textNode.textContent = ' Hide answers';
+        }
+      } else {
+        sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'none'; });
+        if (icon) icon.textContent = 'visibility';
+        if (btn) {
+          var textNode = btn.lastChild;
+          if (textNode && textNode.nodeType === 3) textNode.textContent = ' Show answers';
         }
       }
     },
