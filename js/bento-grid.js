@@ -1329,9 +1329,13 @@
         input.classList.remove('cu-input-correct', 'cu-input-incorrect', 'cu-input-show-correct');
         input.removeAttribute('data-student-value');
         input.removeAttribute('data-correct-value');
+        input.removeAttribute('data-saved-value');
+        BentoGrid._resizeCuInput(input);
       });
       // Remove per-item toggle buttons
       sec.querySelectorAll('.cu-item-toggle-btn').forEach(function(btn) { btn.remove(); });
+      // Remove matching view toggle button
+      sec.querySelectorAll('.cu-match-view-btn').forEach(function(btn) { btn.remove(); });
       // Reset option buttons (inline word-choice and MC)
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) {
         btn.disabled = false;
@@ -1339,6 +1343,8 @@
       });
       // Hide answer divs
       sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'none'; });
+      // Reset show-answers state
+      sec.setAttribute('data-answers-showing', 'false');
       // Reset yn (yes/no) buttons
       sec.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
         btn.disabled = false;
@@ -1359,10 +1365,38 @@
         var gapNum = parseInt(gap.getAttribute('data-gap-num') || '0');
         if (secId && BentoGrid._cuMcPassageAnswers[secId]) delete BentoGrid._cuMcPassageAnswers[secId][gapNum];
       });
-      // Reset matching exercise
-      sec.querySelectorAll('.cu-match-item').forEach(function(item) {
-        item.classList.remove('cu-match-correct', 'cu-match-incorrect');
-      });
+      // Reset matching exercise: re-sort right column to A–G order and re-enable drag
+      var matchExercise = sec.querySelector('.cu-match-exercise');
+      if (matchExercise) {
+        matchExercise.querySelectorAll('.cu-match-item').forEach(function(item) {
+          item.classList.remove('cu-match-correct', 'cu-match-incorrect');
+        });
+        matchExercise.removeAttribute('data-student-letters');
+        matchExercise.removeAttribute('data-saved-letters');
+        // Collect all right items and sort alphabetically
+        var allRightItems = [];
+        matchExercise.querySelectorAll('.cu-match-row').forEach(function(row) {
+          var ri = row.querySelector('.cu-match-right-cell > .cu-match-right-item');
+          if (ri) allRightItems.push(ri);
+        });
+        allRightItems.sort(function(a, b) {
+          var la = a.getAttribute('data-letter') || '';
+          var lb = b.getAttribute('data-letter') || '';
+          return la < lb ? -1 : la > lb ? 1 : 0;
+        });
+        var rows = matchExercise.querySelectorAll('.cu-match-row');
+        rows.forEach(function(row, idx) {
+          var rightCell = row.querySelector('.cu-match-right-cell');
+          if (rightCell && allRightItems[idx]) {
+            rightCell.appendChild(allRightItems[idx]);
+          }
+        });
+        // Re-enable drag
+        matchExercise.querySelectorAll('.cu-match-right-item').forEach(function(item) {
+          item.setAttribute('draggable', 'true');
+          item.style.cursor = '';
+        });
+      }
       // Reset word-bank used state
       sec.querySelectorAll('.cu-wordbank-item').forEach(function(item) {
         item.classList.remove('cu-wordbank-used');
@@ -1448,7 +1482,7 @@
         sentences.forEach(function(sent, sIdx) {
           var gapId = syncGroup + '-g' + sIdx;
           var sentHtml = self._escapeHTML(sent).replace(/……+|\.{5,}/g, function() {
-            return '<input type="text" id="' + gapId + '" class="cu-gap-input cu-sync-input" data-sync-group="' + syncGroup + '" placeholder="..." oninput="BentoGrid._syncInputGroup(this)">';
+            return '<input type="text" id="' + gapId + '" class="cu-gap-input cu-sync-input" data-sync-group="' + syncGroup + '" placeholder="..." oninput="BentoGrid._syncInputGroup(this);BentoGrid._resizeCuInput(this)">';
           });
           html += '<div class="cu-sync-sentence">' + sentHtml + '</div>';
         });
@@ -1464,7 +1498,10 @@
       if (!group) return;
       var val = input.value;
       document.querySelectorAll('.cu-sync-input[data-sync-group="' + group + '"]').forEach(function(inp) {
-        if (inp !== input) inp.value = val;
+        if (inp !== input) {
+          inp.value = val;
+          BentoGrid._resizeCuInput(inp);
+        }
       });
     },
 
@@ -1489,7 +1526,7 @@
           return '<span class="cu-wf-gap-wrap">' +
             '<span class="cu-hint-pill">' +
               '<span class="cu-hint-pill-num">' + num + '</span>' +
-              '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '">' +
+              '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '" oninput="BentoGrid._resizeCuInput(this)">' +
               '<span class="cu-hint-pill-word cu-wf-pill-word">' + word + '</span>' +
             '</span>' +
           '</span>';
@@ -1597,20 +1634,14 @@
         var ending = boldMatch ? (boldMatch[3] || '').trim() : '';
         return { num: idx + 1, letter: letter, beginning: beginning, ending: ending, answer: q.answer || '' };
       });
-      // Shuffle the right-column items
+      // Sort right-column items alphabetically A→G (never shuffled)
       var rightItems = items.map(function(it) { return { letter: it.letter, ending: it.ending }; });
-      // Simple rotation-based shuffle: rotate by half the length + 1 to avoid trivial order
-      var shuffled = rightItems.slice();
-      var offset = Math.floor(shuffled.length / 2) + 1;
-      for (var i = 0; i < offset; i++) {
-        var last = shuffled.pop();
-        shuffled.unshift(last);
-      }
+      rightItems.sort(function(a, b) { return a.letter < b.letter ? -1 : a.letter > b.letter ? 1 : 0; });
       var html = '<div class="cu-match-exercise" data-sec-id="' + secId + '">';
       // Table layout: each row contains a left item and a right item so heights stay aligned
       html += '<table class="cu-match-table"><tbody>';
       items.forEach(function(it, idx) {
-        var shuffledItem = shuffled[idx];
+        var rightItem = rightItems[idx];
         html += '<tr class="cu-match-row">' +
           '<td class="cu-match-left-cell">' +
             '<div class="cu-match-item cu-match-left-item" data-num="' + it.num + '">' +
@@ -1619,13 +1650,13 @@
             '</div>' +
           '</td>' +
           '<td class="cu-match-right-cell">' +
-            '<div class="cu-match-item cu-match-right-item" data-letter="' + shuffledItem.letter + '" draggable="true" ' +
+            '<div class="cu-match-item cu-match-right-item" data-letter="' + rightItem.letter + '" draggable="true" ' +
               'ondragstart="BentoGrid._matchDragStart(event)" ' +
               'ondragover="BentoGrid._matchDragOver(event)" ' +
               'ondrop="BentoGrid._matchDrop(event)" ' +
               'ondragend="BentoGrid._matchDragEnd(event)">' +
-              '<span class="cu-match-letter">' + shuffledItem.letter + '</span>' +
-              '<span class="cu-match-text">' + self._escapeHTML(shuffledItem.ending) + '</span>' +
+              '<span class="cu-match-letter">' + rightItem.letter + '</span>' +
+              '<span class="cu-match-text">' + self._escapeHTML(rightItem.ending) + '</span>' +
             '</div>' +
           '</td>' +
         '</tr>';
@@ -2024,12 +2055,12 @@
         } else if (p.type === 'bold') {
           return '<strong>' + self._escapeHTML(p.val) + '</strong>';
         } else if (p.type === 'gap') {
-          return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="...">';
+          return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">';
         } else if (p.type === 'gap-wf') {
           // Word-formation gap: input + word-badge together
           var gId = inputIdBase + '_g' + (gapCount++);
           return '<span class="cu-hint-pill">' +
-            '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="...">' +
+            '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">' +
             '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(p.wfWord) + '</span>' +
             '</span>';
         } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
@@ -2038,7 +2069,7 @@
           if (p.num) {
             pillHtml += '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>';
           }
-          pillHtml += '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="...">';
+          pillHtml += '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">';
           if (p.hint) {
             pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(p.hint) + '</span>';
           }
@@ -2050,7 +2081,7 @@
             return '<button class="cu-option-btn" data-group="' + oId + '" onclick="BentoGrid._selectCourseOption(this)" type="button">' + self._escapeHTML(opt.trim()) + '</button>';
           }).join('<span class="cu-option-sep">/</span>');
         } else if (p.type === 'standalone') {
-          return '<br><input type="text" class="cu-gap-input cu-gap-standalone" placeholder="Your answer...">';
+          return '<br><input type="text" class="cu-gap-input cu-gap-standalone" placeholder="Your answer..." oninput="BentoGrid._resizeCuInput(this)">';
         }
         return '';
       }).join('');
@@ -2065,7 +2096,31 @@
       btn.classList.add('cu-option-selected');
     },
 
-    // ── Custom confirm dialog (replaces browser confirm()) ───────────────
+    // Auto-resize a course gap input to fit its content (like test inputs)
+    _resizeCuInput: function(input) {
+      var minWidth = 80;
+      var span = document.getElementById('cu-resize-span');
+      if (!span) {
+        span = document.createElement('span');
+        span.id = 'cu-resize-span';
+        span.style.cssText = 'visibility:hidden;position:absolute;white-space:pre;pointer-events:none;font-size:0.9rem;';
+        document.body.appendChild(span);
+      }
+      span.style.font = window.getComputedStyle(input).font;
+      span.textContent = input.value || input.placeholder || '';
+      var newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 28);
+      input.style.width = newWidth + 'px';
+    },
+
+    // Resize all cu-gap-input elements inside a section
+    _resizeAllCuInputs: function(sec) {
+      if (!sec) return;
+      sec.querySelectorAll('.cu-gap-input').forEach(function(inp) {
+        BentoGrid._resizeCuInput(inp);
+      });
+    },
+
+
     _cuConfirm: function(message, onConfirm) {
       // Remove any existing confirm overlay
       var existing = document.getElementById('cu-confirm-overlay');
@@ -2781,6 +2836,8 @@
         BentoGrid._checkCourseUnitAllDone(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId);
       }
       BentoGrid._updateRoadmapActiveItem(startIdx);
+      // Resize inputs in the initial section
+      if (startSec) BentoGrid._resizeAllCuInputs(startSec);
     },
 
     _showCuSection: function(idx) {
@@ -2804,6 +2861,8 @@
         BentoGrid._checkCourseUnitAllDone(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId);
       }
       BentoGrid._updateRoadmapActiveItem(idx);
+      // Resize inputs in the newly visible section
+      if (targetSec) BentoGrid._resizeAllCuInputs(targetSec);
       // Update URL to reflect the current section
       if (BentoGrid._currentUnitId && BentoGrid._currentBlockKey && BentoGrid._currentUnitFilePath) {
         var secState = { view: 'courseUnit', blockKey: BentoGrid._currentBlockKey, unitId: BentoGrid._currentUnitId, filePath: BentoGrid._currentUnitFilePath, sectionIdx: idx };
@@ -2949,6 +3008,13 @@
         matchExercise.querySelectorAll('.cu-match-answers span').forEach(function(sp) {
           answerMap[sp.getAttribute('data-num')] = sp.getAttribute('data-letter');
         });
+        // Save student's arrangement before any toggling
+        var studentLetters = [];
+        matchExercise.querySelectorAll('.cu-match-row').forEach(function(row) {
+          var ri = row.querySelector('.cu-match-right-item');
+          studentLetters.push(ri ? ri.getAttribute('data-letter') : '');
+        });
+        matchExercise.setAttribute('data-student-letters', JSON.stringify(studentLetters));
         // Table layout: each .cu-match-row has a left and right item
         matchExercise.querySelectorAll('.cu-match-row').forEach(function(row, idx) {
           totalItems++;
@@ -2962,6 +3028,24 @@
           if (rightItem) rightItem.classList.add(ok ? 'cu-match-correct' : 'cu-match-incorrect');
           if (ok) correctItems++;
         });
+        // Disable drag after checking
+        matchExercise.querySelectorAll('.cu-match-right-item').forEach(function(item) {
+          item.setAttribute('draggable', 'false');
+          item.style.cursor = 'default';
+        });
+        // Add view-toggle button to the footer
+        var footer = sec.querySelector('.cu-ex-footer');
+        if (footer && !footer.querySelector('.cu-match-view-btn')) {
+          var viewBtn = document.createElement('button');
+          viewBtn.type = 'button';
+          viewBtn.className = 'cu-match-view-btn';
+          viewBtn.setAttribute('data-mode', 'student');
+          viewBtn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> See correct order';
+          (function(capturedMatch) {
+            viewBtn.addEventListener('click', function() { BentoGrid._toggleMatchView(capturedMatch, this); });
+          })(matchExercise);
+          footer.appendChild(viewBtn);
+        }
       }
       sec.querySelectorAll('.cu-ex-item:not(.cu-yn-item)').forEach(function(item) {
         totalItems++;
@@ -3192,23 +3276,179 @@
       if (!sec) return;
       var btn = sec.querySelector('.cu-show-all-btn');
       var icon = btn ? btn.querySelector('.material-symbols-outlined') : null;
-      var anyHidden = false;
-      sec.querySelectorAll('.cu-answer').forEach(function(div) {
-        if (div.style.display === 'none' || div.style.display === '') anyHidden = true;
-      });
-      if (anyHidden) {
-        sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'block'; });
+      var isShowing = sec.getAttribute('data-answers-showing') === 'true';
+
+      if (!isShowing) {
+        // Show answers: fill inputs with correct values, mark correct options/yn
+        sec.setAttribute('data-answers-showing', 'true');
         if (icon) icon.textContent = 'visibility_off';
         if (btn) {
           var textNode = btn.lastChild;
           if (textNode && textNode.nodeType === 3) textNode.textContent = ' Hide answers';
         }
+
+        // Text inputs from cu-ex-items
+        sec.querySelectorAll('.cu-ex-item, .cu-sync-item').forEach(function(item) {
+          var answer = (item.getAttribute('data-answer') || '').trim();
+          var answerParts = answer.split(/,\s*/);
+          var isSyncItem = item.classList.contains('cu-sync-item');
+          var rawInputs = item.querySelectorAll('.cu-gap-input');
+          var inputs;
+          if (isSyncItem) {
+            var seenGroups = {};
+            var dedupedInputs = [];
+            rawInputs.forEach(function(inp) {
+              var g = inp.getAttribute('data-sync-group') || '__';
+              if (!seenGroups[g]) { seenGroups[g] = true; dedupedInputs.push(inp); }
+            });
+            inputs = dedupedInputs;
+          } else {
+            inputs = Array.prototype.slice.call(rawInputs);
+          }
+          inputs.forEach(function(inp, i) {
+            inp.setAttribute('data-saved-value', inp.value);
+            var correctRaw = (answerParts[i] || answerParts[0] || '').trim();
+            var correctDisplay = correctRaw.split(/\s*\/\s*/)[0].trim();
+            inp.value = correctDisplay;
+            inp.classList.add('cu-input-show-correct');
+            BentoGrid._resizeCuInput(inp);
+            // For sync items, propagate to all siblings
+            if (isSyncItem) {
+              var syncGroup = inp.getAttribute('data-sync-group');
+              if (syncGroup) {
+                item.querySelectorAll('.cu-sync-input[data-sync-group="' + syncGroup + '"]').forEach(function(syncInp) {
+                  if (syncInp !== inp) {
+                    syncInp.setAttribute('data-saved-value', syncInp.value);
+                    syncInp.value = correctDisplay;
+                    syncInp.classList.add('cu-input-show-correct');
+                    BentoGrid._resizeCuInput(syncInp);
+                  }
+                });
+              }
+            }
+          });
+          // Inline option buttons (word-choice)
+          var optGroups = {};
+          item.querySelectorAll('.cu-option-btn:not(.cu-mc-option)').forEach(function(b) {
+            var g = b.getAttribute('data-group');
+            if (g) { if (!optGroups[g]) optGroups[g] = []; optGroups[g].push(b); }
+          });
+          Object.keys(optGroups).forEach(function(gId) {
+            optGroups[gId].forEach(function(b) {
+              var bText = b.textContent.trim().toLowerCase();
+              if (answerParts.some(function(ap) { return ap.trim().toLowerCase() === bText; })) {
+                b.classList.add('cu-option-correct-reveal');
+              }
+            });
+          });
+          // MC option buttons
+          var mcGroups = {};
+          item.querySelectorAll('.cu-option-btn.cu-mc-option').forEach(function(b) {
+            var g = b.getAttribute('data-group');
+            if (g) { if (!mcGroups[g]) mcGroups[g] = []; mcGroups[g].push(b); }
+          });
+          Object.keys(mcGroups).forEach(function(gId) {
+            mcGroups[gId].forEach(function(b) {
+              var bLetter = (b.getAttribute('data-mc-letter') || '').trim().toUpperCase();
+              if (answerParts.some(function(ap) { return ap.trim().toUpperCase() === bLetter; })) {
+                b.classList.add('cu-option-correct-reveal');
+              }
+            });
+          });
+          // YN buttons
+          var ynAnswer = (item.getAttribute('data-answer') || '').trim().toUpperCase();
+          var ynGroups = {};
+          item.querySelectorAll('.cu-yn-btn').forEach(function(b) {
+            var g = b.getAttribute('data-group');
+            if (g) { if (!ynGroups[g]) ynGroups[g] = []; ynGroups[g].push(b); }
+          });
+          Object.keys(ynGroups).forEach(function(gId) {
+            ynGroups[gId].forEach(function(b) {
+              if ((b.getAttribute('data-yn') || '').toUpperCase() === ynAnswer) {
+                b.classList.add('cu-yn-correct-reveal');
+              }
+            });
+          });
+        });
+
+        // Passage inputs (data-passage-num)
+        sec.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(inp) {
+          var correct = (inp.getAttribute('data-answer') || '').split(/\s*\/\s*/)[0].trim();
+          inp.setAttribute('data-saved-value', inp.value);
+          inp.value = correct;
+          inp.classList.add('cu-input-show-correct');
+          BentoGrid._resizeCuInput(inp);
+        });
+
+        // Matching exercise: show correct order
+        var matchExercise = sec.querySelector('.cu-match-exercise');
+        if (matchExercise) {
+          var currentLetters = [];
+          matchExercise.querySelectorAll('.cu-match-row').forEach(function(row) {
+            var ri = row.querySelector('.cu-match-right-item');
+            currentLetters.push(ri ? ri.getAttribute('data-letter') : '');
+          });
+          matchExercise.setAttribute('data-saved-letters', JSON.stringify(currentLetters));
+          var answerMap = {};
+          matchExercise.querySelectorAll('.cu-match-answers span').forEach(function(sp) {
+            answerMap[sp.getAttribute('data-num')] = sp.getAttribute('data-letter');
+          });
+          var rightItemsByLetter = {};
+          matchExercise.querySelectorAll('.cu-match-right-item').forEach(function(item) {
+            rightItemsByLetter[item.getAttribute('data-letter')] = item;
+          });
+          matchExercise.querySelectorAll('.cu-match-row').forEach(function(row) {
+            var leftItem = row.querySelector('.cu-match-left-item');
+            var num = leftItem ? leftItem.getAttribute('data-num') : '';
+            var correctLetter = answerMap[num];
+            var rightCell = row.querySelector('.cu-match-right-cell');
+            if (correctLetter && rightItemsByLetter[correctLetter] && rightCell) {
+              rightCell.appendChild(rightItemsByLetter[correctLetter]);
+            }
+          });
+        }
+
       } else {
-        sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'none'; });
+        // Hide answers: restore original values
+        sec.setAttribute('data-answers-showing', 'false');
         if (icon) icon.textContent = 'visibility';
         if (btn) {
           var textNode = btn.lastChild;
           if (textNode && textNode.nodeType === 3) textNode.textContent = ' Show answers';
+        }
+
+        sec.querySelectorAll('.cu-gap-input').forEach(function(inp) {
+          var saved = inp.getAttribute('data-saved-value');
+          if (saved !== null) {
+            inp.value = saved;
+            inp.removeAttribute('data-saved-value');
+          }
+          inp.classList.remove('cu-input-show-correct');
+          BentoGrid._resizeCuInput(inp);
+        });
+        sec.querySelectorAll('.cu-option-btn').forEach(function(b) {
+          b.classList.remove('cu-option-correct-reveal');
+        });
+        sec.querySelectorAll('.cu-yn-btn').forEach(function(b) {
+          b.classList.remove('cu-yn-correct-reveal');
+        });
+
+        // Restore matching exercise to saved order
+        var matchExercise = sec.querySelector('.cu-match-exercise');
+        if (matchExercise) {
+          var savedLetters = JSON.parse(matchExercise.getAttribute('data-saved-letters') || '[]');
+          var rightItemsByLetter = {};
+          matchExercise.querySelectorAll('.cu-match-right-item').forEach(function(item) {
+            rightItemsByLetter[item.getAttribute('data-letter')] = item;
+          });
+          matchExercise.querySelectorAll('.cu-match-row').forEach(function(row, idx) {
+            var rightCell = row.querySelector('.cu-match-right-cell');
+            var letter = savedLetters[idx];
+            if (letter && rightItemsByLetter[letter] && rightCell) {
+              rightCell.appendChild(rightItemsByLetter[letter]);
+            }
+          });
+          matchExercise.removeAttribute('data-saved-letters');
         }
       }
     },
@@ -3219,7 +3459,7 @@
       sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'block'; });
     },
 
-    // Toggle per-item answer: switches input values between student answer and correct answer
+
     _toggleCuItemAnswer: function(btn, item) {
       var mode = btn.getAttribute('data-mode');
       var newMode = mode === 'student' ? 'correct' : 'student';
@@ -3235,6 +3475,7 @@
           inp.classList.remove('cu-input-show-correct');
           inp.classList.add('cu-input-incorrect');
         }
+        BentoGrid._resizeCuInput(inp);
       });
       if (newMode === 'correct') {
         btn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> Show your answer';
@@ -3243,8 +3484,62 @@
       }
     },
 
+    // Toggle matching exercise between student's arrangement and correct order
+    _toggleMatchView: function(matchExercise, btn) {
+      var mode = btn.getAttribute('data-mode');
+      var answerMap = {};
+      matchExercise.querySelectorAll('.cu-match-answers span').forEach(function(sp) {
+        answerMap[sp.getAttribute('data-num')] = sp.getAttribute('data-letter');
+      });
+      // Collect all right items by letter
+      var rightItemsByLetter = {};
+      matchExercise.querySelectorAll('.cu-match-right-item').forEach(function(item) {
+        rightItemsByLetter[item.getAttribute('data-letter')] = item;
+      });
+      if (mode === 'student') {
+        // Switch to correct view: show proper A→G alignment
+        matchExercise.querySelectorAll('.cu-match-row').forEach(function(row) {
+          var leftItem = row.querySelector('.cu-match-left-item');
+          var num = leftItem ? leftItem.getAttribute('data-num') : '';
+          var correctLetter = answerMap[num];
+          var rightCell = row.querySelector('.cu-match-right-cell');
+          if (correctLetter && rightItemsByLetter[correctLetter] && rightCell) {
+            rightCell.appendChild(rightItemsByLetter[correctLetter]);
+          }
+        });
+        // Remove feedback colours in correct view
+        matchExercise.querySelectorAll('.cu-match-item').forEach(function(item) {
+          item.classList.remove('cu-match-correct', 'cu-match-incorrect');
+        });
+        btn.setAttribute('data-mode', 'correct');
+        btn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> See your answer';
+      } else {
+        // Switch back to student view
+        var studentLetters = JSON.parse(matchExercise.getAttribute('data-student-letters') || '[]');
+        matchExercise.querySelectorAll('.cu-match-row').forEach(function(row, idx) {
+          var rightCell = row.querySelector('.cu-match-right-cell');
+          var letter = studentLetters[idx];
+          if (letter && rightItemsByLetter[letter] && rightCell) {
+            rightCell.appendChild(rightItemsByLetter[letter]);
+          }
+        });
+        // Restore feedback classes
+        matchExercise.querySelectorAll('.cu-match-row').forEach(function(row) {
+          var leftItem = row.querySelector('.cu-match-left-item');
+          var rightItem = row.querySelector('.cu-match-right-item');
+          var num = leftItem ? leftItem.getAttribute('data-num') : '';
+          var correctLetter = answerMap[num] || '';
+          var givenLetter = rightItem ? rightItem.getAttribute('data-letter') : '';
+          var ok = givenLetter === correctLetter;
+          if (leftItem) { leftItem.classList.toggle('cu-match-correct', ok); leftItem.classList.toggle('cu-match-incorrect', !ok); }
+          if (rightItem) { rightItem.classList.toggle('cu-match-correct', ok); rightItem.classList.toggle('cu-match-incorrect', !ok); }
+        });
+        btn.setAttribute('data-mode', 'student');
+        btn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> See correct order';
+      }
+    },
+
     _updateRoadmapActiveItem: function(idx) {
-      var widget = document.querySelector('.course-roadmap-widget');
       if (!widget) return;
       // Remove active from all items
       widget.querySelectorAll('.course-roadmap-item').forEach(function(item) {
