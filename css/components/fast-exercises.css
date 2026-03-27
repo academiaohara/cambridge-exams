@@ -5419,6 +5419,13 @@
   color: #78350f !important;
   animation: feShake 0.4s ease;
 }
+/* Show correct answer in input (toggle mode) */
+.cu-gap-input.cu-input-show-correct {
+  border-color: #2563eb !important;
+  background: rgba(37, 99, 235, 0.07) !important;
+  color: #1e3a8a !important;
+  animation: feBounceIn 0.3s ease;
+}
 .cu-gap-standalone {
   width: 100%;
   max-width: 380px;
@@ -5481,6 +5488,14 @@
   border-color: #d97706 !important;
   color: #fff !important;
   animation: feShake 0.4s ease;
+}
+/* Correct answer reveal — the option the student should have chosen */
+.cu-option-correct-reveal {
+  background: rgba(5, 150, 105, 0.12) !important;
+  border: 2px solid #059669 !important;
+  color: #065f46 !important;
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.22) !important;
+  animation: feBounceIn 0.35s ease;
 }
 
 /* Footer row: answer reveal only (no button per item) */
@@ -5614,6 +5629,39 @@
   border-radius: 8px;
   border: 1.5px solid rgba(5, 150, 105, 0.2);
   animation: feSlideIn 0.25s ease;
+}
+
+/* Per-item answer toggle button (shown after checking when answer is wrong) */
+.cu-item-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1d4ed8;
+  background: rgba(37, 99, 235, 0.07);
+  border: 1.5px solid rgba(37, 99, 235, 0.25);
+  border-radius: 8px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  margin-top: 6px;
+  font-family: inherit;
+}
+.cu-item-toggle-btn:hover {
+  background: rgba(37, 99, 235, 0.13);
+}
+.cu-item-toggle-btn .material-symbols-outlined {
+  font-size: 1rem;
+  vertical-align: middle;
+}
+.cu-item-toggle-btn[data-mode="correct"] {
+  color: #065f46;
+  background: rgba(5, 150, 105, 0.08);
+  border-color: rgba(5, 150, 105, 0.28);
+}
+.cu-item-toggle-btn[data-mode="correct"]:hover {
+  background: rgba(5, 150, 105, 0.14);
 }
 
 /* Vocabulary words */
@@ -6683,6 +6731,15 @@
   border-color: #ef4444;
   background: #fef2f2;
   color: #b91c1c;
+}
+
+/* Correct answer reveal for YN — the button the student should have chosen */
+.cu-yn-btn.cu-yn-correct-reveal {
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.1);
+  color: #065f46;
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.22);
+  animation: feBounceIn 0.35s ease;
 }
 
 /* ── Key Word Transformation (reading4 style) ───────────────────────── */
