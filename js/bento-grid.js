@@ -1053,9 +1053,9 @@
         html += '</div>';
       }
 
-      // Phrasal verbs
+      // Phrasal verbs — add cu-vocab class so dots-nav counts it as a content section (number)
       if (sections.phrasal_verbs && sections.phrasal_verbs.length) {
-        html += '<div class="cu-section cu-pv" id="cu-sec-' + (sectionIndex++) + '">' +
+        html += '<div class="cu-section cu-pv cu-vocab" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('format_list_bulleted') + ' Phrasal Verbs</div>' +
           '<div class="cu-pv-list">';
         sections.phrasal_verbs.forEach(function(pv) {
@@ -1067,9 +1067,9 @@
         html += '</div></div>';
       }
 
-      // Collocations
+      // Collocations — add cu-vocab class so dots-nav counts it as a content section (number)
       if (sections.collocations_patterns && Object.keys(sections.collocations_patterns).length) {
-        html += '<div class="cu-section cu-collocations" id="cu-sec-' + (sectionIndex++) + '">' +
+        html += '<div class="cu-section cu-collocations cu-vocab" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('link') + ' Collocations & Patterns</div>' +
           '<div class="cu-coll-list">';
         Object.keys(sections.collocations_patterns).forEach(function(word) {
@@ -1083,9 +1083,9 @@
         html += '</div></div>';
       }
 
-      // Idioms
+      // Idioms — add cu-vocab class so dots-nav counts it as a content section (number)
       if (sections.idioms && sections.idioms.length) {
-        html += '<div class="cu-section cu-idioms" id="cu-sec-' + (sectionIndex++) + '">' +
+        html += '<div class="cu-section cu-idioms cu-vocab" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('lightbulb') + ' Idioms</div>' +
           '<div class="cu-pv-list">';
         sections.idioms.forEach(function(idiom) {
@@ -1097,21 +1097,35 @@
         html += '</div></div>';
       }
 
-      // Word formation
+      // Word formation — add cu-vocab class so dots-nav counts it as a content section (number)
       if (sections.word_formation && sections.word_formation.length) {
-        html += '<div class="cu-section cu-wf" id="cu-sec-' + (sectionIndex++) + '">' +
+        html += '<div class="cu-section cu-wf cu-vocab" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('spellcheck') + ' Word Formation</div>' +
-          '<div class="cu-pv-list">';
+          '<div class="cu-wf-list">';
+        // Chip colours cycle: blue, green, purple, rose, amber
+        var wfChipColors = ['#1d4ed8', '#059669', '#7c3aed', '#be185d', '#d97706'];
         sections.word_formation.forEach(function(wf) {
-          var forms = [];
-          if (wf.noun) forms.push('n: ' + (Array.isArray(wf.noun) ? wf.noun.join(', ') : wf.noun));
-          if (wf.verb) forms.push('v: ' + (Array.isArray(wf.verb) ? wf.verb.join(', ') : wf.verb));
-          if (wf.adjective) forms.push('adj: ' + (Array.isArray(wf.adjective) ? wf.adjective.join(', ') : wf.adjective));
-          if (wf.adverb) forms.push('adv: ' + (Array.isArray(wf.adverb) ? wf.adverb.join(', ') : wf.adverb));
-          html += '<div class="cu-pv-item">' +
-            '<span class="cu-pv-verb">' + self._escapeHTML(wf.base || wf.root || '') + '</span>' +
-            '<span class="cu-pv-meaning">' + self._escapeHTML(forms.join(' · ')) + '</span>' +
-          '</div>';
+          var base = wf.base || wf.root || '';
+          var derivatives = wf.derivatives || [];
+          // Fallback: build from noun/verb/adjective/adverb fields if no derivatives array
+          if (!derivatives.length) {
+            var parts = [];
+            if (wf.noun) parts = parts.concat(Array.isArray(wf.noun) ? wf.noun : [wf.noun]);
+            if (wf.verb) parts = parts.concat(Array.isArray(wf.verb) ? wf.verb : [wf.verb]);
+            if (wf.adjective) parts = parts.concat(Array.isArray(wf.adjective) ? wf.adjective : [wf.adjective]);
+            if (wf.adverb) parts = parts.concat(Array.isArray(wf.adverb) ? wf.adverb : [wf.adverb]);
+            derivatives = parts;
+          }
+          html += '<div class="cu-wf-item">' +
+            '<span class="cu-wf-base">' + self._escapeHTML(base) + '</span>' +
+            '<div class="cu-theory-chips cu-wf-chips">';
+          derivatives.forEach(function(d, di) {
+            var color = wfChipColors[di % wfChipColors.length];
+            var bg = color + '18';
+            var border = color + '40';
+            html += '<span class="cu-theory-chip cu-wf-chip" style="color:' + color + ';background:' + bg + ';border-color:' + border + '">' + self._escapeHTML(d) + '</span>';
+          });
+          html += '</div></div>';
         });
         html += '</div></div>';
       }
@@ -1121,16 +1135,44 @@
         Object.keys(sections.exercises).forEach(function(key) {
           var ex = sections.exercises[key];
           var secId = 'cu-sec-' + sectionIndex;
+          var idBase = 'vc-' + key.replace(/\W+/g, '');
           html += '<div class="cu-section cu-exercise" id="' + secId + '">' +
             '<div class="cu-section-title">' + _mi('edit_note') + ' Exercise ' + self._escapeHTML(key) + ': ' + self._escapeHTML(ex.title || '') + '</div>';
           if (ex.instructions) html += '<div class="cu-ex-instructions">' + _bold(ex.instructions) + '</div>';
           html += self._renderCuWordBank(ex.words);
           var questions = ex.questions || [];
-          var hasInteractive = questions.some(function(q) { return self._itemHasInteractive(q); });
-          html += '<div class="cu-ex-items">';
-          html += self._renderCuExItemsList(questions, 'vc-' + key.replace(/\W+/g, ''), secId);
-          html += '</div>';
-          if (hasInteractive) html += self._renderCuExFooter(secId);
+
+          if (ex.type === 'yn') {
+            // Yes / No exercise (e.g. Exercise N, G)
+            html += '<div class="cu-ex-items">';
+            html += self._renderCuYnItems(questions, idBase, secId);
+            html += '</div>';
+            if (questions.length) html += self._renderCuExFooter(secId);
+          } else if (ex.type === 'matching') {
+            // Two-column matching with drag-to-swap (e.g. Exercise E)
+            html += self._renderCuMatchingExercise(questions, idBase, secId);
+          } else if (ex.type === 'kwtrans') {
+            // Key-word transformation (reading4 style) (e.g. Exercise K)
+            html += '<div class="cu-ex-items">';
+            html += self._renderCuKwtransItems(questions, idBase, secId);
+            html += '</div>';
+            if (questions.length) html += self._renderCuExFooter(secId);
+          } else if (ex.type === 'sync') {
+            // One-word-for-three-sentences with synced inputs (e.g. Exercise I)
+            html += '<div class="cu-ex-items">';
+            html += self._renderCuSyncItems(questions, idBase, secId);
+            html += '</div>';
+            if (questions.length) html += self._renderCuExFooter(secId);
+          } else if (ex.passage) {
+            // Passage-based word formation (e.g. Exercise O)
+            html += self._renderCuPassageExercise(ex, idBase, secId);
+          } else {
+            var hasInteractive = questions.some(function(q) { return self._itemHasInteractive(q); });
+            html += '<div class="cu-ex-items">';
+            html += self._renderCuExItemsList(questions, idBase, secId);
+            html += '</div>';
+            if (hasInteractive) html += self._renderCuExFooter(secId);
+          }
           html += '</div>';
           sectionIndex++;
         });
@@ -1262,11 +1304,253 @@
       });
       // Hide answer divs
       sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'none'; });
-      // Reset word-bank used state
-      sec.querySelectorAll('.cu-wordbank-item').forEach(function(item) {
-        item.classList.remove('cu-wordbank-used');
+      // Reset yn (yes/no) buttons
+      sec.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
+        btn.disabled = false;
+        btn.classList.remove('cu-yn-selected', 'cu-yn-correct', 'cu-yn-incorrect');
+      });
+      // Reset matching exercise
+      var matchRight = sec.querySelector('.cu-match-right');
+      if (matchRight) {
+        // Shuffle was applied – re-render is handled by retry button reload
+        sec.querySelectorAll('.cu-match-item').forEach(function(item) {
+          item.classList.remove('cu-match-correct', 'cu-match-incorrect');
+        });
+      }
+    },
+
+    // --- Yes/No exercise renderer ---
+    _renderCuYnItems: function(questions, idBase, secId) {
+      var self = this;
+      if (!questions || !questions.length) return '';
+      var html = '';
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+      questions.forEach(function(item, idx) {
+        var iId = idBase + '-yn-' + idx;
+        html += '<div class="cu-ex-item cu-yn-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
+          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          '<div class="cu-ex-sentence">' + _bold(item.sentence || '') + '</div>' +
+          '<div class="cu-yn-buttons">' +
+            '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">YES</button>' +
+            '<button class="cu-yn-btn cu-yn-no" data-group="' + iId + '" data-yn="NO" onclick="BentoGrid._selectCuYn(this)" type="button">NO</button>' +
+          '</div>' +
+          '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div></div>' +
+        '</div>';
+      });
+      return html;
+    },
+
+    _selectCuYn: function(btn) {
+      if (btn.disabled) return;
+      var group = btn.getAttribute('data-group');
+      if (!group) return;
+      var siblings = document.querySelectorAll('.cu-yn-btn[data-group="' + group + '"]');
+      siblings.forEach(function(s) { s.classList.remove('cu-yn-selected'); });
+      btn.classList.add('cu-yn-selected');
+    },
+
+    // --- Key Word Transformation exercise renderer (reading4 style) ---
+    _renderCuKwtransItems: function(questions, idBase, secId) {
+      var self = this;
+      if (!questions || !questions.length) return '';
+      var html = '';
+      questions.forEach(function(item, idx) {
+        var iId = idBase + '-kw-' + idx;
+        var sentence = item.sentence || '';
+        var nlIdx = sentence.indexOf('\n');
+        var sentA = nlIdx !== -1 ? sentence.slice(0, nlIdx) : sentence;
+        var sentB = nlIdx !== -1 ? sentence.slice(nlIdx + 1) : '';
+        // Extract keyword from **keyword** in sentB
+        var keyword = '';
+        var keywordMatch = sentB.match(/^\*\*([^*]+)\*\*\s*/);
+        if (keywordMatch) {
+          keyword = keywordMatch[1];
+          sentB = sentB.slice(keywordMatch[0].length);
+        }
+        html += '<div class="cu-ex-item cu-kwtrans-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
+          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          '<div class="cu-kwtrans-block">' +
+            '<div class="cu-kwtrans-original">' + self._escapeHTML(sentA) + '</div>' +
+            (keyword ? '<div class="cu-kwtrans-keyword-row"><span class="cu-kwtrans-keyword">' + self._escapeHTML(keyword) + '</span></div>' : '') +
+            '<div class="cu-kwtrans-second">' + self._renderCourseExSentenceParts(sentB, iId) + '</div>' +
+          '</div>' +
+          '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div></div>' +
+        '</div>';
+      });
+      return html;
+    },
+
+    // --- Sync-input exercise renderer (one word for 3 sentences) ---
+    _renderCuSyncItems: function(questions, idBase, secId) {
+      var self = this;
+      if (!questions || !questions.length) return '';
+      var html = '';
+      questions.forEach(function(item, idx) {
+        var syncGroup = idBase + '-sync-' + idx;
+        var sentences = (item.sentence || '').split('\n');
+        html += '<div class="cu-ex-item cu-sync-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
+          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          '<div class="cu-sync-sentences">';
+        sentences.forEach(function(sent, sIdx) {
+          var gapId = syncGroup + '-g' + sIdx;
+          var sentHtml = self._escapeHTML(sent).replace(/……+|\.{5,}/g, function() {
+            return '<input type="text" id="' + gapId + '" class="cu-gap-input cu-sync-input" data-sync-group="' + syncGroup + '" placeholder="..." oninput="BentoGrid._syncInputGroup(this)">';
+          });
+          html += '<div class="cu-sync-sentence">' + sentHtml + '</div>';
+        });
+        html += '</div>' +
+          '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div></div>' +
+        '</div>';
+      });
+      return html;
+    },
+
+    _syncInputGroup: function(input) {
+      var group = input.getAttribute('data-sync-group');
+      if (!group) return;
+      var val = input.value;
+      document.querySelectorAll('.cu-sync-input[data-sync-group="' + group + '"]').forEach(function(inp) {
+        if (inp !== input) inp.value = val;
       });
     },
+
+    // --- Passage-based word formation renderer (exercise O style) ---
+    _renderCuPassageExercise: function(ex, idBase, secId) {
+      var self = this;
+      var passage = ex.passage || '';
+      var questions = ex.questions || [];
+      // Build a map from gap number to word
+      var wordMap = {};
+      questions.forEach(function(q, qi) {
+        // Extract number from sentence like "The …(1)… (CONCEIVE)..."
+        var numMatch = (q.sentence || '').match(/…\((\d+)\)…/);
+        var wordMatch = (q.sentence || '').match(/\(([A-Z]+)\)/);
+        if (numMatch && wordMatch) wordMap[parseInt(numMatch[1])] = wordMatch[1];
+      });
+      // Render passage: replace …(N)… (WORD) patterns with inline gap+badge widgets
+      var passageHtml = self._escapeHTML(passage).replace(
+        /…\((\d+)\)…\s*\(([A-Z]+)\)/g,
+        function(_, num, word) {
+          var gId = idBase + '-p' + num;
+          return '<span class="cu-wf-gap-wrap">' +
+            '<span class="cu-hint-pill">' +
+              '<span class="cu-hint-pill-num">' + num + '</span>' +
+              '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." data-wf-num="' + num + '">' +
+              '<span class="cu-hint-pill-word">' + word + '</span>' +
+            '</span>' +
+          '</span>';
+        }
+      );
+      var html = '<div class="cu-passage-text">' + passageHtml + '</div>';
+      html += '<div class="cu-ex-items" style="display:none">';
+      questions.forEach(function(q, qi) {
+        html += '<div class="cu-ex-item" data-answer="' + self._escapeHTML(q.answer || '') + '"></div>';
+      });
+      html += '</div>';
+      if (questions.length) html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    // --- Two-column matching exercise renderer ---
+    _renderCuMatchingExercise: function(questions, idBase, secId) {
+      var self = this;
+      if (!questions || !questions.length) return '';
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+      // Extract beginnings and endings from sentence data
+      var items = questions.map(function(q, idx) {
+        var sentence = q.sentence || '';
+        var boldMatch = sentence.match(/^(.*?)\s*\*\*([A-Z])\*\*\s*(.*)?$/);
+        var beginning = boldMatch ? boldMatch[1].trim() : sentence;
+        var letter = boldMatch ? boldMatch[2] : String.fromCharCode(65 + idx);
+        var ending = boldMatch ? (boldMatch[3] || '').trim() : '';
+        return { num: idx + 1, letter: letter, beginning: beginning, ending: ending, answer: q.answer || '' };
+      });
+      // Shuffle the right-column items
+      var rightItems = items.map(function(it) { return { letter: it.letter, ending: it.ending }; });
+      // Fisher-Yates shuffle (with fixed seed from items count for reproducibility)
+      var shuffled = rightItems.slice();
+      for (var i = shuffled.length - 1; i > 0; i--) {
+        var j = (i * 7 + 3) % (i + 1); // deterministic shuffle
+        var tmp = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = tmp;
+      }
+      var html = '<div class="cu-match-exercise" data-sec-id="' + secId + '">';
+      html += '<div class="cu-match-columns">';
+      // Left column (numbered beginnings – fixed)
+      html += '<div class="cu-match-left">';
+      items.forEach(function(it) {
+        html += '<div class="cu-match-item cu-match-left-item" data-num="' + it.num + '">' +
+          '<span class="cu-match-num">' + it.num + '</span>' +
+          '<span class="cu-match-text">' + self._escapeHTML(it.beginning) + '</span>' +
+        '</div>';
+      });
+      html += '</div>';
+      // Right column (lettered endings – draggable, shuffled)
+      html += '<div class="cu-match-right" id="' + idBase + '-right">';
+      shuffled.forEach(function(it, si) {
+        html += '<div class="cu-match-item cu-match-right-item" data-letter="' + it.letter + '" draggable="true" ' +
+          'ondragstart="BentoGrid._matchDragStart(event)" ' +
+          'ondragover="BentoGrid._matchDragOver(event)" ' +
+          'ondrop="BentoGrid._matchDrop(event)" ' +
+          'ondragend="BentoGrid._matchDragEnd(event)">' +
+          '<span class="cu-match-letter">' + it.letter + '</span>' +
+          '<span class="cu-match-text">' + self._escapeHTML(it.ending) + '</span>' +
+        '</div>';
+      });
+      html += '</div>';
+      html += '</div>';
+      // Hidden answer data
+      html += '<div class="cu-match-answers" style="display:none">';
+      items.forEach(function(it) {
+        html += '<span data-num="' + it.num + '" data-letter="' + it.letter + '"></span>';
+      });
+      html += '</div>';
+      html += self._renderCuExFooter(secId);
+      html += '</div>';
+      return html;
+    },
+
+    _matchDragStart: function(e) {
+      var el = e.currentTarget || e.target;
+      el.classList.add('cu-match-dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', el.getAttribute('data-letter') || '');
+      BentoGrid._matchDragSrc = el;
+    },
+
+    _matchDragOver: function(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      var target = (e.currentTarget || e.target).closest('.cu-match-right-item');
+      if (target && target !== BentoGrid._matchDragSrc) {
+        target.classList.add('cu-match-drag-over');
+      }
+    },
+
+    _matchDragEnd: function(e) {
+      var el = e.currentTarget || e.target;
+      el.classList.remove('cu-match-dragging');
+      document.querySelectorAll('.cu-match-drag-over').forEach(function(el) { el.classList.remove('cu-match-drag-over'); });
+      BentoGrid._matchDragSrc = null;
+    },
+
+    _matchDrop: function(e) {
+      e.preventDefault();
+      var target = (e.currentTarget || e.target).closest('.cu-match-right-item');
+      var src = BentoGrid._matchDragSrc;
+      if (!target || !src || target === src) return;
+      // Swap positions in DOM
+      var parent = target.parentNode;
+      var srcNext = src.nextSibling;
+      if (srcNext === target) {
+        parent.insertBefore(src, target.nextSibling);
+      } else {
+        parent.insertBefore(src, target);
+        parent.insertBefore(target, srcNext);
+      }
+      target.classList.remove('cu-match-drag-over');
+    },
+
+    _matchDragSrc: null,
 
     _cuExGoToPage: function(sectionId, pageIdx) {
       var sec = document.getElementById(sectionId);
@@ -1374,8 +1658,10 @@
     _renderCourseExMCItem: function(sentence, options, inputId) {
       var self = this;
       var oGroupId = inputId + '_mc';
-      // Replace gap markers with a visual blank
-      var sentenceHtml = self._formatTextWithHints(sentence).replace(/\.{5,}|[…]{3,}/g, CU_MC_BLANK);
+      // Replace gap markers with an interactive pill that updates when an option is selected
+      var sentenceHtml = self._formatTextWithHints(sentence).replace(/[…]{3,}|\.{5,}/g, function() {
+        return '<span class="cu-mc-gap-pill" id="' + oGroupId + '-pill">' + CU_MC_BLANK + '</span>';
+      });
       var optHtml = '<div class="cu-mc-options">';
       options.forEach(function(opt) {
         var trimmed = opt.trim();
@@ -1383,11 +1669,33 @@
         var text = self._escapeHTML(trimmed.slice(1).trim());
         optHtml += '<button class="cu-option-btn cu-mc-option" data-group="' + oGroupId +
           '" data-mc-letter="' + letter +
-          '" onclick="BentoGrid._selectCourseOption(this)" type="button">' +
+          '" data-mc-text="' + text +
+          '" data-pill-id="' + oGroupId + '-pill' +
+          '" onclick="BentoGrid._selectMcOption(this)" type="button">' +
           '<span class="cu-mc-letter">' + letter + '</span>' + text + '</button>';
       });
       optHtml += '</div>';
       return sentenceHtml + optHtml;
+    },
+
+    _selectMcOption: function(btn) {
+      if (btn.disabled) return;
+      var group = btn.getAttribute('data-group');
+      if (!group) return;
+      var siblings = document.querySelectorAll('.cu-option-btn[data-group="' + group + '"]');
+      siblings.forEach(function(s) { s.classList.remove('cu-option-selected'); });
+      btn.classList.add('cu-option-selected');
+      // Update the gap pill in the sentence
+      var pillId = btn.getAttribute('data-pill-id');
+      var text = btn.getAttribute('data-mc-text') || '';
+      if (pillId) {
+        var pill = document.getElementById(pillId);
+        if (pill) {
+          pill.textContent = '';
+          pill.classList.add('cu-mc-gap-pill-filled');
+          pill.textContent = text || btn.getAttribute('data-mc-letter') || '';
+        }
+      }
     },
 
     _formatTextWithHints: function(text) {
@@ -1468,7 +1776,14 @@
         if (match[2] !== undefined) {
           // Pattern A: (optional-number) (hint) gap
           var pillNumber = match[1] ? match[1].replace(/[()]/g, '').trim() : null;
-          parts.push({ type: 'hint-gap', num: pillNumber, hint: match[2].trim() });
+          var hintText = match[2].trim();
+          // If the "hint" is a pure number, treat it as the pill number (not a word hint)
+          // This fixes sentences like "(1) ……………" where (1) is the gap label
+          if (!pillNumber && /^\d+$/.test(hintText)) {
+            parts.push({ type: 'hint-gap', num: hintText, hint: null });
+          } else {
+            parts.push({ type: 'hint-gap', num: pillNumber, hint: hintText });
+          }
         } else if (match[3] !== undefined) {
           // Pattern B: gap (hint)
           parts.push({ type: 'gap-hint', hint: match[3].trim() });
@@ -1489,9 +1804,28 @@
         parts.push({ type: 'text', val: sentence.slice(lastIndex) });
       }
 
+      // Post-process: if the last part is a bold ALL-CAPS word (word-formation hint)
+      // and there's a gap somewhere before it, move the badge to be right after the last gap
+      var lastPart = parts[parts.length - 1];
+      if (lastPart && lastPart.type === 'bold' && /^[A-Z]{2,}$/.test(lastPart.val)) {
+        // Find last gap index
+        var lastGapIdx = -1;
+        for (var pi = parts.length - 2; pi >= 0; pi--) {
+          if (parts[pi].type === 'gap' || parts[pi].type === 'hint-gap' || parts[pi].type === 'gap-hint') {
+            lastGapIdx = pi;
+            break;
+          }
+        }
+        if (lastGapIdx !== -1) {
+          // Remove the bold from end, attach as wf-badge on the gap
+          var wfWord = parts.pop().val;
+          parts[lastGapIdx] = { type: 'gap-wf', wfWord: wfWord };
+        }
+      }
+
       // Check if there are any interactive elements
       var hasInteractive = parts.some(function(p) {
-        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'options';
+        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-wf' || p.type === 'options';
       });
 
       // If no gaps or options detected, add a standalone answer input at the end
@@ -1509,6 +1843,13 @@
           return '<strong>' + self._escapeHTML(p.val) + '</strong>';
         } else if (p.type === 'gap') {
           return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="...">';
+        } else if (p.type === 'gap-wf') {
+          // Word-formation gap: input + word-badge together
+          var gId = inputIdBase + '_g' + (gapCount++);
+          return '<span class="cu-hint-pill">' +
+            '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="...">' +
+            '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(p.wfWord) + '</span>' +
+            '</span>';
         } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
           var gId = inputIdBase + '_g' + (gapCount++);
           var pillHtml = '<span class="cu-hint-pill">';
@@ -1516,7 +1857,9 @@
             pillHtml += '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>';
           }
           pillHtml += '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="...">';
-          pillHtml += '<span class="cu-hint-pill-word">' + self._escapeHTML(p.hint) + '</span>';
+          if (p.hint) {
+            pillHtml += '<span class="cu-hint-pill-word">' + self._escapeHTML(p.hint) + '</span>';
+          }
           pillHtml += '</span>';
           return pillHtml;
         } else if (p.type === 'options') {
@@ -1540,7 +1883,35 @@
       btn.classList.add('cu-option-selected');
     },
 
-    // ── Popstate helpers for course navigation ───────────────────────────
+    // ── Custom confirm dialog (replaces browser confirm()) ───────────────
+    _cuConfirm: function(message, onConfirm) {
+      // Remove any existing confirm overlay
+      var existing = document.getElementById('cu-confirm-overlay');
+      if (existing) existing.remove();
+      var overlay = document.createElement('div');
+      overlay.id = 'cu-confirm-overlay';
+      overlay.className = 'cu-confirm-overlay';
+      var escapedMsg = message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      overlay.innerHTML =
+        '<div class="cu-confirm-dialog">' +
+          '<div class="cu-confirm-message">' + escapedMsg + '</div>' +
+          '<div class="cu-confirm-buttons">' +
+            '<button class="cu-confirm-btn cu-confirm-cancel" type="button">Cancel</button>' +
+            '<button class="cu-confirm-btn cu-confirm-ok" type="button">OK</button>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(overlay);
+      overlay.querySelector('.cu-confirm-cancel').addEventListener('click', function() {
+        overlay.remove();
+      });
+      overlay.querySelector('.cu-confirm-ok').addEventListener('click', function() {
+        overlay.remove();
+        if (typeof onConfirm === 'function') onConfirm();
+      });
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) overlay.remove();
+      });
+    },
     _popstateCourseBlock: async function(blockKey) {
       // Ensure course data is loaded, then select the block
       if (!BentoGrid._courseBlocks) {
@@ -1613,34 +1984,36 @@
 
     _resetCourseUnit: function(unitId) {
       var level = BentoGrid._courseLevel || 'C1';
-      if (!confirm('Restart this unit? Your progress will be cleared.')) return;
-      var prog = BentoGrid._getCourseProgress(level);
-      delete prog[unitId];
-      try { localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog)); } catch(e) {}
-      var secProg = BentoGrid._getCourseSectionProgress(level);
-      delete secProg[unitId];
-      try { localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(secProg)); } catch(e) {}
-      // Reopen the unit fresh
-      var foundItem = BentoGrid._courseIndexData && BentoGrid._courseIndexData.items &&
-        BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
-      if (foundItem) {
-        BentoGrid.openCourseUnit(unitId, 'data/Course/' + level + '/' + foundItem.file);
-      }
+      BentoGrid._cuConfirm('Restart this unit? Your progress will be cleared.', function() {
+        var prog = BentoGrid._getCourseProgress(level);
+        delete prog[unitId];
+        try { localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog)); } catch(e) {}
+        var secProg = BentoGrid._getCourseSectionProgress(level);
+        delete secProg[unitId];
+        try { localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(secProg)); } catch(e) {}
+        // Reopen the unit fresh
+        var foundItem = BentoGrid._courseIndexData && BentoGrid._courseIndexData.items &&
+          BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
+        if (foundItem) {
+          BentoGrid.openCourseUnit(unitId, 'data/Course/' + level + '/' + foundItem.file);
+        }
+      });
     },
 
     _resetCourseBlock: function(blockKey) {
       var level = BentoGrid._courseLevel || 'C1';
-      if (!confirm('Restart Block ' + blockKey + '? Progress for all units in this block will be cleared.')) return;
-      var items = (BentoGrid._courseBlocks || {})[blockKey] || [];
-      var prog = BentoGrid._getCourseProgress(level);
-      var secProg = BentoGrid._getCourseSectionProgress(level);
-      items.forEach(function(item) {
-        delete prog[item.id];
-        delete secProg[item.id];
+      BentoGrid._cuConfirm('Restart Block ' + blockKey + '? Progress for all units in this block will be cleared.', function() {
+        var items = (BentoGrid._courseBlocks || {})[blockKey] || [];
+        var prog = BentoGrid._getCourseProgress(level);
+        var secProg = BentoGrid._getCourseSectionProgress(level);
+        items.forEach(function(item) {
+          delete prog[item.id];
+          delete secProg[item.id];
+        });
+        try { localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog)); } catch(e) {}
+        try { localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(secProg)); } catch(e) {}
+        BentoGrid._selectCourseBlock(blockKey);
       });
-      try { localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog)); } catch(e) {}
-      try { localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(secProg)); } catch(e) {}
-      BentoGrid._selectCourseBlock(blockKey);
     },
 
     _extractCourseUnitMeta: function(unitData) {
@@ -2275,7 +2648,7 @@
       var sec = document.getElementById(sectionId);
       if (!sec) return;
 
-      // Detect unanswered questions (empty inputs with no option selected)
+      // Detect unanswered questions (empty inputs with no option/yn-btn selected)
       var unanswered = [];
       sec.querySelectorAll('.cu-ex-item').forEach(function(item, idx) {
         var inputs = item.querySelectorAll('.cu-gap-input');
@@ -2284,23 +2657,88 @@
           var g = btn.getAttribute('data-group');
           if (g) { if (!optGroups[g]) optGroups[g] = []; optGroups[g].push(btn); }
         });
+        var ynGroups = {};
+        item.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
+          var g = btn.getAttribute('data-group');
+          if (g) { if (!ynGroups[g]) ynGroups[g] = []; ynGroups[g].push(btn); }
+        });
         var isEmpty = true;
         inputs.forEach(function(inp) { if ((inp.value || '').trim() !== '') isEmpty = false; });
         Object.keys(optGroups).forEach(function(g) {
           if (optGroups[g].some(function(b) { return b.classList.contains('cu-option-selected'); })) isEmpty = false;
         });
-        if (inputs.length === 0 && Object.keys(optGroups).length === 0) isEmpty = false;
+        Object.keys(ynGroups).forEach(function(g) {
+          if (ynGroups[g].some(function(b) { return b.classList.contains('cu-yn-selected'); })) isEmpty = false;
+        });
+        var hasAnyInput = inputs.length > 0 || Object.keys(optGroups).length > 0 || Object.keys(ynGroups).length > 0;
+        if (!hasAnyInput) isEmpty = false;
         if (isEmpty) unanswered.push(idx + 1);
       });
 
       if (unanswered.length > 0) {
         var msg = 'Questions ' + unanswered.join(', ') + (unanswered.length === 1 ? ' has' : ' have') + ' not been answered. Check anyway?';
-        if (!confirm(msg)) return;
+        BentoGrid._cuConfirm(msg, function() { BentoGrid._doCheckCuExSection(sec); });
+        return;
       }
 
+      BentoGrid._doCheckCuExSection(sec);
+    },
+
+    _doCheckCuExSection: function(sec) {
       var totalItems = 0;
       var correctItems = 0;
-      sec.querySelectorAll('.cu-ex-item').forEach(function(item) {
+      // Handle yn-items
+      sec.querySelectorAll('.cu-yn-item').forEach(function(item) {
+        totalItems++;
+        var answer = (item.getAttribute('data-answer') || '').trim().toUpperCase();
+        var selected = item.querySelector('.cu-yn-btn.cu-yn-selected');
+        var ynGroups = {};
+        item.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
+          var g = btn.getAttribute('data-group');
+          if (g) { if (!ynGroups[g]) ynGroups[g] = []; ynGroups[g].push(btn); }
+        });
+        Object.keys(ynGroups).forEach(function(g) {
+          var btns = ynGroups[g];
+          btns.forEach(function(b) { b.classList.remove('cu-yn-correct', 'cu-yn-incorrect'); b.disabled = true; });
+        });
+        if (selected) {
+          var given = (selected.getAttribute('data-yn') || '').toUpperCase();
+          var ok = given === answer;
+          selected.classList.add(ok ? 'cu-yn-correct' : 'cu-yn-incorrect');
+          if (ok) correctItems++;
+        } else {
+          correctItems--; // already not counted
+          totalItems--; // skip unanswered
+          totalItems++; // restore but no correct
+        }
+        var ansDiv = item.querySelector('.cu-answer');
+        if (ansDiv && selected) {
+          var given2 = (selected.getAttribute('data-yn') || '').toUpperCase();
+          if (given2 !== answer) ansDiv.style.display = 'block';
+        }
+      });
+      // Handle matching exercise
+      var matchExercise = sec.querySelector('.cu-match-exercise');
+      if (matchExercise) {
+        var answerMap = {};
+        matchExercise.querySelectorAll('.cu-match-answers span').forEach(function(sp) {
+          answerMap[sp.getAttribute('data-num')] = sp.getAttribute('data-letter');
+        });
+        var rightItems = matchExercise.querySelectorAll('.cu-match-right .cu-match-right-item');
+        var leftItems = matchExercise.querySelectorAll('.cu-match-left .cu-match-left-item');
+        leftItems.forEach(function(leftItem, idx) {
+          totalItems++;
+          var num = leftItem.getAttribute('data-num') || String(idx + 1);
+          var correctLetter = answerMap[num] || '';
+          var rightItem = rightItems[idx];
+          var givenLetter = rightItem ? rightItem.getAttribute('data-letter') : '';
+          var ok = givenLetter === correctLetter;
+          if (leftItem) leftItem.classList.add(ok ? 'cu-match-correct' : 'cu-match-incorrect');
+          if (rightItem) rightItem.classList.add(ok ? 'cu-match-correct' : 'cu-match-incorrect');
+          if (ok) correctItems++;
+        });
+      }
+      sec.querySelectorAll('.cu-ex-item:not(.cu-yn-item)').forEach(function(item) {
         totalItems++;
         var answer = (item.getAttribute('data-answer') || '').trim();
         var answerParts = answer.split(/,\s*/);
