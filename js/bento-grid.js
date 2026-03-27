@@ -315,6 +315,11 @@
         .replace(/"/g, '&quot;');
     },
 
+    // Extract display text from an MC option string like "A special" or "A. special"
+    _getCuMcOptionText: function(optionStr) {
+      return (optionStr || '').slice(1).replace(/^[.)\s]+/, '').trim();
+    },
+
     selectMode: function(mode) {
       if (typeof Dashboard !== 'undefined' && Dashboard.renderSubpage) {
         var modeState = { view: 'subpage', mode: mode };
@@ -1600,7 +1605,7 @@
       html += '<div class="options-grid">';
       qData.options.forEach(function(opt) {
         var letter = opt.charAt(0).toUpperCase();
-        var text = BentoGrid._escapeHTML(opt.slice(1).replace(/^[.)\s]+/, '').trim());
+        var text = BentoGrid._escapeHTML(BentoGrid._getCuMcOptionText(opt));
         html += '<button class="opt-btn" onclick="BentoGrid._selectCuMcAnswer(\'' + secId + '\',' + gapNum + ',\'' + letter + '\',\'' + text.replace(/'/g, "\\'") + '\')">' + text + '</button>';
       });
       html += '</div>';
@@ -2962,9 +2967,9 @@
           // Resolve option texts for view toggling
           var qData = (BentoGrid._cuMcPassageData[secId] || {})[gapNum];
           var correctOpt = qData ? qData.options.find(function(o) { return o.charAt(0).toUpperCase() === expected; }) : null;
-          var correctText = correctOpt ? correctOpt.slice(1).replace(/^[.)\s]+/, '').trim() : expected;
+          var correctText = correctOpt ? BentoGrid._getCuMcOptionText(correctOpt) : expected;
           var studentOpt = (given && qData) ? qData.options.find(function(o) { return o.charAt(0).toUpperCase() === given; }) : null;
-          var studentText = studentOpt ? studentOpt.slice(1).replace(/^[.)\s]+/, '').trim() : '';
+          var studentText = studentOpt ? BentoGrid._getCuMcOptionText(studentOpt) : '';
           gap.setAttribute('data-correct-text', correctText);
           gap.setAttribute('data-student-text', studentText);
 
@@ -3470,7 +3475,7 @@
           var expected = (gap.getAttribute('data-answer') || '').trim().toUpperCase();
           var qData = (BentoGrid._cuMcPassageData[secId] || {})[gapNum];
           var correctOpt = qData ? qData.options.find(function(o) { return o.charAt(0).toUpperCase() === expected; }) : null;
-          var correctText = correctOpt ? correctOpt.slice(1).replace(/^[.)\s]+/, '').trim() : expected;
+          var correctText = correctOpt ? BentoGrid._getCuMcOptionText(correctOpt) : expected;
           var slot = gap.querySelector('.cu-mc-passage-gap-slot');
           // Save current state
           gap.setAttribute('data-saved-gap-classes', gap.classList.toString());
@@ -3531,19 +3536,16 @@
 
         // Restore MC passage gaps to their saved state
         sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
-          var savedClasses = gap.getAttribute('data-saved-gap-classes');
           var slot = gap.querySelector('.cu-mc-passage-gap-slot');
-          var savedSlotText = gap.getAttribute('data-saved-slot-text');
-          var savedSlotClass = gap.getAttribute('data-saved-slot-class');
-          if (savedClasses !== null) {
-            gap.className = savedClasses;
+          if (gap.hasAttribute('data-saved-gap-classes')) {
+            gap.className = gap.getAttribute('data-saved-gap-classes');
             gap.removeAttribute('data-saved-gap-classes');
           } else {
             gap.classList.remove('cu-mc-passage-gap-show-correct');
           }
           if (slot) {
-            if (savedSlotText !== null) slot.textContent = savedSlotText;
-            if (savedSlotClass !== null) slot.className = savedSlotClass;
+            if (gap.hasAttribute('data-saved-slot-text')) slot.textContent = gap.getAttribute('data-saved-slot-text');
+            if (gap.hasAttribute('data-saved-slot-class')) slot.className = gap.getAttribute('data-saved-slot-class');
           }
           gap.removeAttribute('data-saved-slot-text');
           gap.removeAttribute('data-saved-slot-class');
