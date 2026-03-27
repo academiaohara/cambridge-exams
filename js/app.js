@@ -92,6 +92,18 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof FastExercises !== 'undefined') FastExercises.openPoint(initialState.categoryId, initialState.levelId, initialState.lessonId, initialState.pointIndex);
+      } else if (initialState.view === 'course') {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons();
+      } else if (initialState.view === 'courseBlock' && initialState.blockKey) {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseBlock(initialState.blockKey);
+      } else if (initialState.view === 'courseUnit' && initialState.unitId) {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseUnit(initialState);
       } else {
         // Default: dashboard
         Dashboard.render();
@@ -133,6 +145,15 @@
           if (typeof FastExercises !== 'undefined') FastExercises.openCategory(state.categoryId);
         } else if (state.view === 'fastExercisePoint' && state.categoryId && state.levelId && state.lessonId && typeof state.pointIndex !== 'undefined') {
           if (typeof FastExercises !== 'undefined') FastExercises.openPoint(state.categoryId, state.levelId, state.lessonId, state.pointIndex);
+        } else if (state.view === 'course') {
+          if (state.level) AppState.currentLevel = state.level;
+          if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons();
+        } else if (state.view === 'courseBlock' && state.blockKey) {
+          if (state.level) AppState.currentLevel = state.level;
+          if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseBlock(state.blockKey);
+        } else if (state.view === 'courseUnit' && state.unitId) {
+          if (state.level) AppState.currentLevel = state.level;
+          if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseUnit(state);
         }
       });
       
