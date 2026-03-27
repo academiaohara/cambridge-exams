@@ -1438,8 +1438,26 @@
     _renderCourseExSentenceParts: function(sentence, inputIdBase, noStandalone) {
       var self = this;
       // Tokenise sentence into: plain text, gap markers, bold+option patterns, plain bold
+      // Compound patterns (hint+gap pill) are matched first so they take priority:
+      //   Pattern A: optional (number)  (hint)  gap_marker  → dark pill with [num] [input] [hint]
+      //   Pattern B: gap_marker  (hint)             → dark pill with [input] [hint]
       var parts = [];
-      var tokenRegex = /([.…]{5,}|\*\*[^*]+\*\*)/g;
+      // Individual sub-patterns:
+      //   numParen    – optional number-only parens like "(1) "
+      //   hintParen   – hint text in parens like "(you)" or "(I / just)"
+      //   gapMarker   – five or more dots/ellipsis characters
+      //   boldMarker  – text enclosed in **double asterisks**
+      var numParen   = '(\\(\\d+\\)\\s+)?';
+      var hintParen  = '\\(([^)]+)\\)';
+      var gapMarker  = '[.\\u2026]{5,}';
+      var boldMarker = '\\*\\*[^*]+\\*\\*';
+      var tokenRegex = new RegExp(
+        numParen + hintParen + '\\s*' + gapMarker +    // Pattern A: (num?) (hint) gap
+        '|' + gapMarker + '\\s*' + hintParen +         // Pattern B: gap (hint)
+        '|' + gapMarker +                              // Simple gap
+        '|' + boldMarker,                              // Bold text
+        'g'
+      );
       var lastIndex = 0;
       var match;
       while ((match = tokenRegex.exec(sentence)) !== null) {
@@ -1447,7 +1465,14 @@
           parts.push({ type: 'text', val: sentence.slice(lastIndex, match.index) });
         }
         var m = match[0];
-        if (m.charAt(0) === '*') {
+        if (match[2] !== undefined) {
+          // Pattern A: (optional-number) (hint) gap
+          var pillNumber = match[1] ? match[1].replace(/[()]/g, '').trim() : null;
+          parts.push({ type: 'hint-gap', num: pillNumber, hint: match[2].trim() });
+        } else if (match[3] !== undefined) {
+          // Pattern B: gap (hint)
+          parts.push({ type: 'gap-hint', hint: match[3].trim() });
+        } else if (m.charAt(0) === '*') {
           // Bold marker
           var inner = m.slice(2, -2);
           if (inner.indexOf('/') !== -1) {
@@ -1465,7 +1490,9 @@
       }
 
       // Check if there are any interactive elements
-      var hasInteractive = parts.some(function(p) { return p.type === 'gap' || p.type === 'options'; });
+      var hasInteractive = parts.some(function(p) {
+        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'options';
+      });
 
       // If no gaps or options detected, add a standalone answer input at the end
       // (noStandalone=true is used for KWT sentence A which is a reference-only sentence)
@@ -1482,6 +1509,16 @@
           return '<strong>' + self._escapeHTML(p.val) + '</strong>';
         } else if (p.type === 'gap') {
           return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="...">';
+        } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
+          var gId = inputIdBase + '_g' + (gapCount++);
+          var pillHtml = '<span class="cu-hint-pill">';
+          if (p.num) {
+            pillHtml += '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>';
+          }
+          pillHtml += '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="...">';
+          pillHtml += '<span class="cu-hint-pill-word">' + self._escapeHTML(p.hint) + '</span>';
+          pillHtml += '</span>';
+          return pillHtml;
         } else if (p.type === 'options') {
           var oId = inputIdBase + '_o' + (optCount++);
           return p.parts.map(function(opt) {

@@ -5111,6 +5111,47 @@
   vertical-align: baseline;
 }
 
+/* Dark pill for gap + hint combinations (e.g. "1 [____] you") */
+.cu-hint-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: #104862;
+  border-radius: 999px;
+  padding: 3px 14px 3px 10px;
+  vertical-align: middle;
+  margin: 2px 3px;
+}
+.cu-hint-pill-num {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.cu-hint-pill-input {
+  border-radius: 999px !important;
+  border: 2px solid rgba(255, 255, 255, 0.35) !important;
+  background: #fff !important;
+  box-shadow: inset 0 1px 3px rgba(16, 72, 98, 0.18) !important;
+  color: var(--text-dark, #0f172a) !important;
+  padding: 4px 14px !important;
+  width: 130px !important;
+  min-width: 80px !important;
+}
+.cu-hint-pill-input:focus {
+  border-color: rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25), inset 0 1px 3px rgba(16, 72, 98, 0.18) !important;
+  outline: none;
+}
+.cu-hint-pill-word {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
 /* Key Word Transformation two-sentence layout */
 .cu-ex-num-badge {
   position: absolute;
