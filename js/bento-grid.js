@@ -1220,6 +1220,12 @@
         }
       }
 
+      // Compute total possible points across all exercise sections
+      var totalMaxItems = 0;
+      (data.sections || []).forEach(function(s) {
+        if (s.type === 'exercise') totalMaxItems += (s.items || []).length;
+      });
+
       html += '<div class="cu-review-banner">' +
         '<div class="cu-review-banner-icon">' + _mi('quiz') + '</div>' +
         '<div class="cu-review-banner-body">' +
@@ -1231,20 +1237,25 @@
           '<span class="cu-review-stat-num">' + (data.sections || []).length + '</span>' +
           '<span class="cu-review-stat-lbl">Sections</span>' +
         '</div>' +
+      '</div>' +
+      '<div class="cu-review-total-score" id="cu-review-total-score" style="display:none">' +
+        '<span class="material-symbols-outlined">star</span>' +
+        '<span class="cu-review-total-label">Total:</span>' +
+        '<span class="cu-review-total-val" id="cu-review-total-val">0</span>' +
+        '<span class="cu-review-total-max">/ ' + totalMaxItems + '</span>' +
+        '<span class="cu-review-total-pct" id="cu-review-total-pct"></span>' +
       '</div>';
 
       (data.sections || []).forEach(function(section, sectionIdx) {
         if (section.type === 'exercise') {
           var rvSecId = 'cu-sec-' + sectionIdx;
-          html += '<div class="cu-section cu-exercise" id="' + rvSecId + '">' +
+          var rvItems = section.items || [];
+          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvItems.length + '">' +
             '<div class="cu-section-title">' + _mi('quiz') + ' ' + self._escapeHTML(section.title) + '</div>';
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
           }
           html += '<div class="cu-ex-items">';
-          var reviewUnitId = BentoGrid._currentUnitId || '';
-          var pointsPerItem = (section.scoring && section.scoring.pointsPerItem) || 1;
-          var rvItems = section.items || [];
           var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
           html += self._renderCuExItemsList(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
           html += '</div>';
@@ -1294,6 +1305,9 @@
       // Remove score summary
       var summary = sec.querySelector('.cu-ex-score-summary');
       if (summary) summary.remove();
+      // Clear stored result data for total score
+      sec.removeAttribute('data-correct-items');
+      sec.removeAttribute('data-total-items');
       // Re-enable check button, hide retry button
       var checkBtn = sec.querySelector('.cu-check-btn');
       if (checkBtn) checkBtn.disabled = false;
@@ -1348,6 +1362,8 @@
       sec.querySelectorAll('.cu-wordbank-item').forEach(function(item) {
         item.classList.remove('cu-wordbank-used');
       });
+      // Refresh total review score panel
+      BentoGrid._updateReviewTotalScore();
     },
 
     // --- Yes/No exercise renderer ---
@@ -1838,16 +1854,24 @@
     _renderCourseExSentence: function(sentence, inputIdBase) {
       var self = this;
 
-      // Key Word Transformation: two sentences separated by \n → show A / B rows
+      // Key Word Transformation: two sentences separated by \n → show A / keyword / B rows
       var nlIdx = sentence.indexOf('\n');
       if (nlIdx !== -1) {
         var sentA = sentence.slice(0, nlIdx);
         var sentB = sentence.slice(nlIdx + 1);
+        // Extract **keyword** from the end of sentA (e.g. "...decision. **account**")
+        var keyword = '';
+        var kwMatch = sentA.match(/\s*\*\*([^*]+)\*\*\s*$/);
+        if (kwMatch) {
+          keyword = kwMatch[1];
+          sentA = sentA.slice(0, kwMatch.index).trim();
+        }
         return '<div class="cu-ex-kwtrans">' +
           '<div class="cu-ex-kwtrans-row">' +
             '<span class="cu-ex-kwtrans-label">A</span>' +
             '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(sentA, inputIdBase, true) + '</div>' +
           '</div>' +
+          (keyword ? '<div class="cu-kwtrans-keyword-row"><span class="cu-kwtrans-keyword">' + self._escapeHTML(keyword) + '</span></div>' : '') +
           '<div class="cu-ex-kwtrans-row">' +
             '<span class="cu-ex-kwtrans-label">B</span>' +
             '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(sentB, inputIdBase) + '</div>' +
@@ -1975,7 +1999,7 @@
           }
           pillHtml += '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="...">';
           if (p.hint) {
-            pillHtml += '<span class="cu-hint-pill-word">' + self._escapeHTML(p.hint) + '</span>';
+            pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(p.hint) + '</span>';
           }
           pillHtml += '</span>';
           return pillHtml;
@@ -1983,7 +2007,7 @@
           var oId = inputIdBase + '_o' + (optCount++);
           return p.parts.map(function(opt) {
             return '<button class="cu-option-btn" data-group="' + oId + '" onclick="BentoGrid._selectCourseOption(this)" type="button">' + self._escapeHTML(opt.trim()) + '</button>';
-          }).join('');
+          }).join('<span class="cu-option-sep">/</span>');
         } else if (p.type === 'standalone') {
           return '<br><input type="text" class="cu-gap-input cu-gap-standalone" placeholder="Your answer...">';
         }
@@ -3019,7 +3043,34 @@
         } else {
           sec.appendChild(summary);
         }
+        // Store result on the section element for total score tracking
+        sec.setAttribute('data-correct-items', correctItems);
+        sec.setAttribute('data-total-items', totalItems);
+        // Update total review score if this is a review section
+        BentoGrid._updateReviewTotalScore();
       }
+    },
+
+    _updateReviewTotalScore: function() {
+      var totalPanel = document.getElementById('cu-review-total-score');
+      if (!totalPanel) return;
+      var totalCorrect = 0;
+      var totalMax = 0;
+      var checkedSections = 0;
+      document.querySelectorAll('.cu-review-section').forEach(function(sec) {
+        var c = parseInt(sec.getAttribute('data-correct-items') || '-1');
+        var m = parseInt(sec.getAttribute('data-total-items') || '0');
+        if (c >= 0 && m > 0) { totalCorrect += c; totalMax += m; checkedSections++; }
+      });
+      if (totalMax === 0) { totalPanel.style.display = 'none'; return; }
+      var valEl = document.getElementById('cu-review-total-val');
+      var pctEl = document.getElementById('cu-review-total-pct');
+      if (valEl) valEl.textContent = totalCorrect;
+      if (pctEl) {
+        var pct = Math.round((totalCorrect / totalMax) * 100);
+        pctEl.textContent = '(' + pct + '%)';
+      }
+      totalPanel.style.display = '';
     },
 
     _toggleCuAnswers: function(sectionId) {

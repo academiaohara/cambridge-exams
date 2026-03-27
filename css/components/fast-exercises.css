@@ -5138,8 +5138,8 @@
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .cu-hint-pill:focus-within {
-  border-color: #1E9D8E;
-  box-shadow: 0 0 0 3px rgba(30, 157, 142, 0.12);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
 .cu-hint-pill-num {
   color: #475569;
@@ -5165,16 +5165,16 @@
   font-weight: 500;
 }
 .cu-hint-pill-input:focus {
-  border-color: #1E9D8E !important;
+  border-color: #3b82f6 !important;
   box-shadow: none !important;
   outline: none;
 }
 .cu-hint-pill-word {
-  color: #1E9D8E;
+  color: #6d28d9;
   font-weight: 700;
   font-size: 0.78rem;
   flex-shrink: 0;
-  background: rgba(30, 157, 142, 0.1);
+  background: rgba(124, 58, 237, 0.1);
   border-radius: 10px;
   padding: 1px 8px;
   line-height: 1.5;
