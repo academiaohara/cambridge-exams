@@ -1102,8 +1102,14 @@
         html += '<div class="cu-section cu-wf cu-vocab" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('spellcheck') + ' Word Formation</div>' +
           '<div class="cu-wf-list">';
-        // Chip colours cycle: blue, green, purple, rose, amber
-        var wfChipColors = ['#1d4ed8', '#059669', '#7c3aed', '#be185d', '#d97706'];
+        // Chip colour definitions as explicit rgba values to avoid hex-alpha concatenation issues
+        var wfChipDefs = [
+          { text: '#1d4ed8', bg: 'rgba(29,78,216,0.08)',  border: 'rgba(29,78,216,0.25)'  },
+          { text: '#059669', bg: 'rgba(5,150,105,0.08)',  border: 'rgba(5,150,105,0.25)'  },
+          { text: '#7c3aed', bg: 'rgba(124,58,237,0.08)', border: 'rgba(124,58,237,0.25)' },
+          { text: '#be185d', bg: 'rgba(190,24,93,0.08)',  border: 'rgba(190,24,93,0.25)'  },
+          { text: '#d97706', bg: 'rgba(217,119,6,0.08)',  border: 'rgba(217,119,6,0.25)'  }
+        ];
         sections.word_formation.forEach(function(wf) {
           var base = wf.base || wf.root || '';
           var derivatives = wf.derivatives || [];
@@ -1120,10 +1126,8 @@
             '<span class="cu-wf-base">' + self._escapeHTML(base) + '</span>' +
             '<div class="cu-theory-chips cu-wf-chips">';
           derivatives.forEach(function(d, di) {
-            var color = wfChipColors[di % wfChipColors.length];
-            var bg = color + '18';
-            var border = color + '40';
-            html += '<span class="cu-theory-chip cu-wf-chip" style="color:' + color + ';background:' + bg + ';border-color:' + border + '">' + self._escapeHTML(d) + '</span>';
+            var chip = wfChipDefs[di % wfChipDefs.length];
+            html += '<span class="cu-theory-chip cu-wf-chip" style="color:' + chip.text + ';background:' + chip.bg + ';border-color:' + chip.border + '">' + self._escapeHTML(d) + '</span>';
           });
           html += '</div></div>';
         });
@@ -1309,14 +1313,19 @@
         btn.disabled = false;
         btn.classList.remove('cu-yn-selected', 'cu-yn-correct', 'cu-yn-incorrect');
       });
+      // Reset MC gap pills
+      sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
+        pill.classList.remove('cu-mc-gap-pill-filled');
+        pill.innerHTML = CU_MC_BLANK;
+      });
       // Reset matching exercise
-      var matchRight = sec.querySelector('.cu-match-right');
-      if (matchRight) {
-        // Shuffle was applied – re-render is handled by retry button reload
-        sec.querySelectorAll('.cu-match-item').forEach(function(item) {
-          item.classList.remove('cu-match-correct', 'cu-match-incorrect');
-        });
-      }
+      sec.querySelectorAll('.cu-match-item').forEach(function(item) {
+        item.classList.remove('cu-match-correct', 'cu-match-incorrect');
+      });
+      // Reset word-bank used state
+      sec.querySelectorAll('.cu-wordbank-item').forEach(function(item) {
+        item.classList.remove('cu-wordbank-used');
+      });
     },
 
     // --- Yes/No exercise renderer ---
@@ -1419,34 +1428,31 @@
       var self = this;
       var passage = ex.passage || '';
       var questions = ex.questions || [];
-      // Build a map from gap number to word
-      var wordMap = {};
-      questions.forEach(function(q, qi) {
-        // Extract number from sentence like "The …(1)… (CONCEIVE)..."
+      // Build a map from gap number to correct answer
+      var answerMap = {};
+      questions.forEach(function(q) {
         var numMatch = (q.sentence || '').match(/…\((\d+)\)…/);
-        var wordMatch = (q.sentence || '').match(/\(([A-Z]+)\)/);
-        if (numMatch && wordMatch) wordMap[parseInt(numMatch[1])] = wordMatch[1];
+        if (numMatch) answerMap[parseInt(numMatch[1])] = q.answer || '';
       });
-      // Render passage: replace …(N)… (WORD) patterns with inline gap+badge widgets
+      // Render passage: replace …(N)… (WORD) patterns with inline gap+badge widgets.
+      // Each gap input carries data-answer for scoring.
       var passageHtml = self._escapeHTML(passage).replace(
         /…\((\d+)\)…\s*\(([A-Z]+)\)/g,
         function(_, num, word) {
           var gId = idBase + '-p' + num;
+          var ans = self._escapeHTML(answerMap[parseInt(num)] || '');
           return '<span class="cu-wf-gap-wrap">' +
             '<span class="cu-hint-pill">' +
               '<span class="cu-hint-pill-num">' + num + '</span>' +
-              '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." data-wf-num="' + num + '">' +
-              '<span class="cu-hint-pill-word">' + word + '</span>' +
+              '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '">' +
+              '<span class="cu-hint-pill-word cu-wf-pill-word">' + word + '</span>' +
             '</span>' +
           '</span>';
         }
       );
-      var html = '<div class="cu-passage-text">' + passageHtml + '</div>';
-      html += '<div class="cu-ex-items" style="display:none">';
-      questions.forEach(function(q, qi) {
-        html += '<div class="cu-ex-item" data-answer="' + self._escapeHTML(q.answer || '') + '"></div>';
-      });
-      html += '</div>';
+      var html = '<div class="cu-passage-exercise" id="' + idBase + '-passage">' +
+        '<div class="cu-passage-text">' + passageHtml + '</div>' +
+        '</div>';
       if (questions.length) html += self._renderCuExFooter(secId);
       return html;
     },
@@ -1467,11 +1473,13 @@
       });
       // Shuffle the right-column items
       var rightItems = items.map(function(it) { return { letter: it.letter, ending: it.ending }; });
-      // Fisher-Yates shuffle (with fixed seed from items count for reproducibility)
+      // Fisher-Yates shuffle – rotate by 2 positions to ensure items are clearly out of original order
       var shuffled = rightItems.slice();
-      for (var i = shuffled.length - 1; i > 0; i--) {
-        var j = (i * 7 + 3) % (i + 1); // deterministic shuffle
-        var tmp = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = tmp;
+      // Simple rotation-based shuffle: rotate by half the length + 1 to avoid trivial order
+      var offset = Math.floor(shuffled.length / 2) + 1;
+      for (var i = 0; i < offset; i++) {
+        var last = shuffled.pop();
+        shuffled.unshift(last);
       }
       var html = '<div class="cu-match-exercise" data-sec-id="' + secId + '">';
       html += '<div class="cu-match-columns">';
@@ -1658,10 +1666,15 @@
     _renderCourseExMCItem: function(sentence, options, inputId) {
       var self = this;
       var oGroupId = inputId + '_mc';
-      // Replace gap markers with an interactive pill that updates when an option is selected
+      // Replace gap markers with interactive pills that update when an option is selected.
+      // Each gap gets a unique ID with a counter suffix to satisfy the uniqueness constraint.
+      var pillCounter = 0;
       var sentenceHtml = self._formatTextWithHints(sentence).replace(/[…]{3,}|\.{5,}/g, function() {
-        return '<span class="cu-mc-gap-pill" id="' + oGroupId + '-pill">' + CU_MC_BLANK + '</span>';
+        var pillId = oGroupId + '-pill' + pillCounter++;
+        return '<span class="cu-mc-gap-pill" id="' + pillId + '">' + CU_MC_BLANK + '</span>';
       });
+      // All options point to the first pill (counter resets per sentence, single gap expected for MC)
+      var firstPillId = oGroupId + '-pill0';
       var optHtml = '<div class="cu-mc-options">';
       options.forEach(function(opt) {
         var trimmed = opt.trim();
@@ -1670,7 +1683,7 @@
         optHtml += '<button class="cu-option-btn cu-mc-option" data-group="' + oGroupId +
           '" data-mc-letter="' + letter +
           '" data-mc-text="' + text +
-          '" data-pill-id="' + oGroupId + '-pill' +
+          '" data-pill-id="' + firstPillId +
           '" onclick="BentoGrid._selectMcOption(this)" type="button">' +
           '<span class="cu-mc-letter">' + letter + '</span>' + text + '</button>';
       });
@@ -1777,8 +1790,10 @@
           // Pattern A: (optional-number) (hint) gap
           var pillNumber = match[1] ? match[1].replace(/[()]/g, '').trim() : null;
           var hintText = match[2].trim();
-          // If the "hint" is a pure number, treat it as the pill number (not a word hint)
-          // This fixes sentences like "(1) ……………" where (1) is the gap label
+          // If the "hint" is a pure number, treat it as the pill number (not a word hint badge).
+          // This handles sentences like "It's (1) …………… my principles" where Pattern A matches
+          // with numParen empty and hintParen="(1)", which would otherwise render as [input][1]
+          // (number after input). Converting to num=1, hint=null gives [1][input] (correct order).
           if (!pillNumber && /^\d+$/.test(hintText)) {
             parts.push({ type: 'hint-gap', num: hintText, hint: null });
           } else {
@@ -1891,7 +1906,8 @@
       var overlay = document.createElement('div');
       overlay.id = 'cu-confirm-overlay';
       overlay.className = 'cu-confirm-overlay';
-      var escapedMsg = message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      // Use _escapeHTML for consistent, thorough HTML escaping
+      var escapedMsg = BentoGrid._escapeHTML(message);
       overlay.innerHTML =
         '<div class="cu-confirm-dialog">' +
           '<div class="cu-confirm-message">' + escapedMsg + '</div>' +
@@ -2687,6 +2703,21 @@
     _doCheckCuExSection: function(sec) {
       var totalItems = 0;
       var correctItems = 0;
+      // Handle passage exercises (word formation passage like Exercise O)
+      sec.querySelectorAll('.cu-passage-exercise').forEach(function(passageEl) {
+        passageEl.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(input) {
+          totalItems++;
+          var expected = (input.getAttribute('data-answer') || '').trim().toLowerCase();
+          var given = (input.value || '').trim().toLowerCase();
+          var alts = expected.split(/\s*\/\s*/);
+          var filled = given !== '';
+          var ok = filled && alts.some(function(a) { return given === a.trim(); });
+          input.classList.remove('cu-input-correct', 'cu-input-incorrect');
+          if (filled) input.classList.add(ok ? 'cu-input-correct' : 'cu-input-incorrect');
+          if (ok) correctItems++;
+          input.disabled = true;
+        });
+      });
       // Handle yn-items
       sec.querySelectorAll('.cu-yn-item').forEach(function(item) {
         totalItems++;
@@ -2706,15 +2737,12 @@
           var ok = given === answer;
           selected.classList.add(ok ? 'cu-yn-correct' : 'cu-yn-incorrect');
           if (ok) correctItems++;
-        } else {
-          correctItems--; // already not counted
-          totalItems--; // skip unanswered
-          totalItems++; // restore but no correct
         }
+        // If nothing selected, the item was unanswered: count as incorrect (correctItems stays same)
         var ansDiv = item.querySelector('.cu-answer');
         if (ansDiv && selected) {
-          var given2 = (selected.getAttribute('data-yn') || '').toUpperCase();
-          if (given2 !== answer) ansDiv.style.display = 'block';
+          var givenForDisplay = (selected.getAttribute('data-yn') || '').toUpperCase();
+          if (givenForDisplay !== answer) ansDiv.style.display = 'block';
         }
       });
       // Handle matching exercise
@@ -2742,7 +2770,22 @@
         totalItems++;
         var answer = (item.getAttribute('data-answer') || '').trim();
         var answerParts = answer.split(/,\s*/);
-        var inputs = item.querySelectorAll('.cu-gap-input');
+        // For sync-items, only check one representative input (all are synced to the same value)
+        var isSyncItem = item.classList.contains('cu-sync-item');
+        var rawInputs = item.querySelectorAll('.cu-gap-input');
+        var inputs;
+        if (isSyncItem) {
+          // Deduplicate: only take the first input from each sync group
+          var seenGroups = {};
+          var dedupedInputs = [];
+          rawInputs.forEach(function(inp) {
+            var g = inp.getAttribute('data-sync-group') || '__no_group__';
+            if (!seenGroups[g]) { seenGroups[g] = true; dedupedInputs.push(inp); }
+          });
+          inputs = dedupedInputs;
+        } else {
+          inputs = Array.prototype.slice.call(rawInputs);
+        }
         // Separate inline option groups from MC option groups
         var optGroups = {};
         var mcGroups = {};
@@ -2765,8 +2808,20 @@
           var alts = expected.split(/\s*\/\s*/);
           var filled = given !== '';
           var ok = filled && alts.some(function(a) { return given === a.trim(); });
-          input.classList.remove('cu-input-correct', 'cu-input-incorrect');
-          if (filled) input.classList.add(ok ? 'cu-input-correct' : 'cu-input-incorrect');
+          // For sync items, apply visual feedback to all inputs in the group
+          if (isSyncItem) {
+            var group = input.getAttribute('data-sync-group');
+            var allInGroup = group
+              ? item.querySelectorAll('.cu-sync-input[data-sync-group="' + group + '"]')
+              : [input];
+            allInGroup.forEach(function(inp) {
+              inp.classList.remove('cu-input-correct', 'cu-input-incorrect');
+              if (filled) inp.classList.add(ok ? 'cu-input-correct' : 'cu-input-incorrect');
+            });
+          } else {
+            input.classList.remove('cu-input-correct', 'cu-input-incorrect');
+            if (filled) input.classList.add(ok ? 'cu-input-correct' : 'cu-input-incorrect');
+          }
           if (!ok) allCorrect = false;
           partIdx++;
         });
