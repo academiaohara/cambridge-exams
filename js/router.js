@@ -59,6 +59,19 @@
             (state.levelId || '') + '/' + (state.lessonId || '') + '/' +
             (typeof state.pointIndex !== 'undefined' ? state.pointIndex : 0);
 
+        case 'course':
+          return '/course';
+
+        case 'courseBlock':
+          return '/course/block-' + (state.blockKey || '1');
+
+        case 'courseUnit':
+          var cuPath = '/course/block-' + (state.blockKey || '1') + '/' + (state.unitId || '');
+          if (typeof state.sectionIdx !== 'undefined' && state.sectionIdx !== null) {
+            cuPath += '/' + state.sectionIdx;
+          }
+          return cuPath;
+
         default:
           return '/';
       }
@@ -139,6 +152,29 @@
         }
         // Fallback for fast-exercises with unrecognised sub-path
         return { view: 'fastExercises' };
+      }
+
+      // ── Course routes ──────────────────────────────
+      if (first === 'course') {
+        if (segments.length === 1) {
+          return { view: 'course' };
+        }
+        if (segments.length >= 2 && segments[1].indexOf('block-') === 0) {
+          var blockKey = segments[1].replace('block-', '');
+          if (segments.length === 2) {
+            return { view: 'courseBlock', blockKey: blockKey };
+          }
+          if (segments.length >= 3) {
+            var courseUnitId = segments[2];
+            var courseUnitState = { view: 'courseUnit', blockKey: blockKey, unitId: courseUnitId };
+            if (segments.length >= 4) {
+              var sIdx = parseInt(segments[3], 10);
+              if (!isNaN(sIdx)) courseUnitState.sectionIdx = sIdx;
+            }
+            return courseUnitState;
+          }
+        }
+        return { view: 'course' };
       }
 
       // ── Legacy exercise routes: /{level}/{test-N}/{section}/{part} ──
