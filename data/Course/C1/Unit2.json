@@ -7,187 +7,822 @@
   "sections": {
     "topic_vocabulary": {
       "thinking": [
-        { "word": "assess", "part_of_speech": "v" },
-        { "word": "assume", "part_of_speech": "v" },
-        { "word": "baffle", "part_of_speech": "v" },
-        { "word": "biased", "part_of_speech": "adj" },
-        { "word": "concentrate", "part_of_speech": "v" },
-        { "word": "consider", "part_of_speech": "v" },
-        { "word": "contemplate", "part_of_speech": "v" },
-        { "word": "cynical", "part_of_speech": "adj" },
-        { "word": "deduce", "part_of_speech": "v" },
-        { "word": "deliberate", "part_of_speech": "v" },
-        { "word": "dilemma", "part_of_speech": "n" },
-        { "word": "discriminate", "part_of_speech": "v" },
-        { "word": "dubious", "part_of_speech": "adj" },
-        { "word": "estimate", "part_of_speech": "v, n" },
-        { "word": "faith", "part_of_speech": "n" },
-        { "word": "gather", "part_of_speech": "v" },
-        { "word": "genius", "part_of_speech": "n" },
-        { "word": "grasp", "part_of_speech": "v" },
-        { "word": "guesswork", "part_of_speech": "n" },
-        { "word": "hunch", "part_of_speech": "n" },
-        { "word": "ideology", "part_of_speech": "n" },
-        { "word": "ingenious", "part_of_speech": "adj" },
-        { "word": "inspiration", "part_of_speech": "n" },
-        { "word": "intuition", "part_of_speech": "n" },
-        { "word": "justify", "part_of_speech": "v" },
-        { "word": "naïve", "part_of_speech": "adj" },
-        { "word": "notion", "part_of_speech": "n" },
-        { "word": "optimistic", "part_of_speech": "adj" },
-        { "word": "paradox", "part_of_speech": "n" },
-        { "word": "pessimistic", "part_of_speech": "adj" },
-        { "word": "plausible", "part_of_speech": "adj" },
-        { "word": "ponder", "part_of_speech": "v" },
-        { "word": "prejudiced", "part_of_speech": "adj" },
-        { "word": "presume", "part_of_speech": "v" },
-        { "word": "query", "part_of_speech": "v, n" },
-        { "word": "reckon", "part_of_speech": "v" },
-        { "word": "reflect", "part_of_speech": "v" },
-        { "word": "sceptical", "part_of_speech": "adj", "variant": "skeptical" },
-        { "word": "speculate", "part_of_speech": "v" },
-        { "word": "suppose", "part_of_speech": "v" }
+        {
+          "word": "assess",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "assume",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "baffle",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "biased",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "concentrate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "consider",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "contemplate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "cynical",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "deduce",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "deliberate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "dilemma",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "discriminate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "dubious",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "estimate",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "faith",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "gather",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "genius",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "grasp",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "guesswork",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "hunch",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "ideology",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "ingenious",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "inspiration",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "intuition",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "justify",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "naïve",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "notion",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "optimistic",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "paradox",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "pessimistic",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "plausible",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "ponder",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "prejudiced",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "presume",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "query",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "reckon",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "reflect",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "sceptical",
+          "part_of_speech": "adj",
+          "variant": "skeptical"
+        },
+        {
+          "word": "speculate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "suppose",
+          "part_of_speech": "v"
+        }
       ],
       "learning": [
-        { "word": "academic", "part_of_speech": "n, adj" },
-        { "word": "conscientious", "part_of_speech": "adj" },
-        { "word": "cram", "part_of_speech": "v" },
-        { "word": "curriculum", "part_of_speech": "n" },
-        { "word": "distance learning", "part_of_speech": "n phr" },
-        { "word": "graduate", "part_of_speech": "v, n" },
-        { "word": "ignorant", "part_of_speech": "adj" },
-        { "word": "inattentive", "part_of_speech": "adj" },
-        { "word": "intellectual", "part_of_speech": "n, adj" },
-        { "word": "intelligent", "part_of_speech": "adj" },
-        { "word": "intensive", "part_of_speech": "adj" },
-        { "word": "knowledgeable", "part_of_speech": "adj" },
-        { "word": "lecture", "part_of_speech": "v, n" },
-        { "word": "mock exam", "part_of_speech": "n phr" },
-        { "word": "plagiarise", "part_of_speech": "v" },
-        { "word": "self-study", "part_of_speech": "n" },
-        { "word": "seminar", "part_of_speech": "n" },
-        { "word": "special needs", "part_of_speech": "n phr" },
-        { "word": "tuition", "part_of_speech": "n" },
-        { "word": "tutorial", "part_of_speech": "n" }
+        {
+          "word": "academic",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "conscientious",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "cram",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "curriculum",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "distance learning",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "graduate",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "ignorant",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "inattentive",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "intellectual",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "intelligent",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "intensive",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "knowledgeable",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "lecture",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "mock exam",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "plagiarise",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "self-study",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "seminar",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "special needs",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "tuition",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "tutorial",
+          "part_of_speech": "n"
+        }
       ]
     },
     "phrasal_verbs": [
-      { "verb": "brush up (on)", "meaning": "practise and improve your skills or knowledge of something" },
-      { "verb": "come (a)round (to)", "meaning": "change your opinion or decision because someone has persuaded you to agree with them" },
-      { "verb": "come up with", "meaning": "think of something such as an idea or a plan" },
-      { "verb": "face up to", "meaning": "accept something and try to deal with it" },
-      { "verb": "figure out", "meaning": "be able to understand something or solve a problem; understand what someone is like" },
-      { "verb": "hit upon", "meaning": "suddenly have an idea; discover something by chance" },
-      { "verb": "make out", "meaning": "see, hear or understand someone or something with difficulty; suggest, imply" },
-      { "verb": "mull over", "meaning": "think carefully about something over a period of time" },
-      { "verb": "piece together", "meaning": "learn the truth about something by considering all the separate bits of information" },
-      { "verb": "puzzle out", "meaning": "solve a confusing or complicated problem by thinking carefully about it" },
-      { "verb": "read up (on/about)", "meaning": "get information on a particular subject by reading a lot about it" },
-      { "verb": "swot up (on)", "meaning": "study something very hard, especially for an examination" },
-      { "verb": "take in", "meaning": "understand and remember something; accept something as real or true; trick someone" },
-      { "verb": "think over", "meaning": "consider a problem or decision carefully" },
-      { "verb": "think through", "meaning": "consider the facts about something in an organised and thorough way" },
-      { "verb": "think up", "meaning": "invent or imagine something, especially an excuse" }
+      {
+        "verb": "brush up (on)",
+        "meaning": "practise and improve your skills or knowledge of something"
+      },
+      {
+        "verb": "come (a)round (to)",
+        "meaning": "change your opinion or decision because someone has persuaded you to agree with them"
+      },
+      {
+        "verb": "come up with",
+        "meaning": "think of something such as an idea or a plan"
+      },
+      {
+        "verb": "face up to",
+        "meaning": "accept something and try to deal with it"
+      },
+      {
+        "verb": "figure out",
+        "meaning": "be able to understand something or solve a problem; understand what someone is like"
+      },
+      {
+        "verb": "hit upon",
+        "meaning": "suddenly have an idea; discover something by chance"
+      },
+      {
+        "verb": "make out",
+        "meaning": "see, hear or understand someone or something with difficulty; suggest, imply"
+      },
+      {
+        "verb": "mull over",
+        "meaning": "think carefully about something over a period of time"
+      },
+      {
+        "verb": "piece together",
+        "meaning": "learn the truth about something by considering all the separate bits of information"
+      },
+      {
+        "verb": "puzzle out",
+        "meaning": "solve a confusing or complicated problem by thinking carefully about it"
+      },
+      {
+        "verb": "read up (on/about)",
+        "meaning": "get information on a particular subject by reading a lot about it"
+      },
+      {
+        "verb": "swot up (on)",
+        "meaning": "study something very hard, especially for an examination"
+      },
+      {
+        "verb": "take in",
+        "meaning": "understand and remember something; accept something as real or true; trick someone"
+      },
+      {
+        "verb": "think over",
+        "meaning": "consider a problem or decision carefully"
+      },
+      {
+        "verb": "think through",
+        "meaning": "consider the facts about something in an organised and thorough way"
+      },
+      {
+        "verb": "think up",
+        "meaning": "invent or imagine something, especially an excuse"
+      }
     ],
     "collocations_patterns": {
-      "account": ["account for", "(give) an account of", "take into account", "take account of", "on account of", "by all accounts", "on sb's account"],
-      "associate": ["associate with"],
-      "balance": ["(hang) in the balance", "strike a balance", "upset/alter/redress the balance", "balance between/of", "on balance", "off balance"],
-      "basis": ["basis for", "on a daily/temporary/etc basis", "on the basis of/that"],
-      "belief": ["express belief(s)", "belief in/that", "contrary to popular belief", "beyond belief", "in the belief that", "popular/widely held/widespread/firm/strong/growing belief"],
-      "brain": ["pick sb's brain(s)", "rack your brain(s)", "the brains behind", "brainless", "brainchild (of)", "brainstorm", "brainwash", "brainwave"],
-      "conclusion": ["bring sth to a conclusion", "come to / arrive at / reach a conclusion", "jump/leap to conclusions", "in conclusion", "conclusion of", "logical conclusion", "foregone conclusion"],
-      "consideration": ["take into consideration", "give consideration to", "show consideration for", "under consideration", "for sb's consideration", "out of consideration for"],
-      "doubt": ["doubt that", "have your doubts about", "cast doubt on", "raise doubts", "in doubt", "doubt as to / about", "beyond (any) doubt", "(a) reasonable doubt", "without a doubt", "open to doubt"],
-      "dream": ["dream of/about/that", "have a dream", "a dream to", "beyond your wildest dreams", "a dream come true", "in your dreams", "like a dream"],
-      "focus": ["focus on", "the focus of/for", "in focus", "out of focus", "focus group", "main/primary/major focus"],
-      "impression": ["have/give the (false) impression that", "do an impression (of)", "create/make an impression (on sb)", "under the impression that", "first impressions"],
-      "mental": ["make a mental note (of/about)", "mental arithmetic", "mental illness", "mental age", "mental health"],
-      "mind": ["make up your mind", "cross/slip your mind", "have/bear in mind", "have a one-track mind", "take your mind off", "bring to mind", "in two minds about", "on your mind", "state of mind", "narrow/broad/open/absent-minded"],
-      "misapprehension": ["under the misapprehension that"],
-      "perspective": ["put into perspective", "from another / a different / sb's / etc perspective", "from the perspective of", "in perspective", "out of perspective", "a sense of perspective"],
-      "principle": ["have principles", "stand by / stick to your principles", "principle of sth", "principle that", "in principle", "a matter / an issue of principle", "against sb's principles", "set of principles"],
-      "question": ["beg the question", "raise the question (of)", "a/no question of", "in question", "out of the question", "without question", "beyond question", "some question over / as to / about", "awkward question"],
-      "sense": ["sense that", "see sense", "make sense (of)", "have the sense to", "come to your senses", "a sense of", "in a/one sense", "common sense"],
-      "side": ["side with sb", "take sides", "see both sides (of an argument)", "look on the bright side", "on the plus/minus side", "by sb's side", "on sb's side", "on either side (of)"],
-      "straight": ["set/put sb straight about", "set/put the record straight", "get/come straight to the point", "get sth straight", "think/see straight", "straight talking", "straight answer"],
-      "view": ["view sth as", "take the view that", "take a dim/poor view of", "come into view", "in view of", "with a view to", "view on/about/that", "in sb's view", "viewpoint", "point of view"]
+      "account": [
+        "account for",
+        "(give) an account of",
+        "take into account",
+        "take account of",
+        "on account of",
+        "by all accounts",
+        "on sb's account"
+      ],
+      "associate": [
+        "associate with"
+      ],
+      "balance": [
+        "(hang) in the balance",
+        "strike a balance",
+        "upset/alter/redress the balance",
+        "balance between/of",
+        "on balance",
+        "off balance"
+      ],
+      "basis": [
+        "basis for",
+        "on a daily/temporary/etc basis",
+        "on the basis of/that"
+      ],
+      "belief": [
+        "express belief(s)",
+        "belief in/that",
+        "contrary to popular belief",
+        "beyond belief",
+        "in the belief that",
+        "popular/widely held/widespread/firm/strong/growing belief"
+      ],
+      "brain": [
+        "pick sb's brain(s)",
+        "rack your brain(s)",
+        "the brains behind",
+        "brainless",
+        "brainchild (of)",
+        "brainstorm",
+        "brainwash",
+        "brainwave"
+      ],
+      "conclusion": [
+        "bring sth to a conclusion",
+        "come to / arrive at / reach a conclusion",
+        "jump/leap to conclusions",
+        "in conclusion",
+        "conclusion of",
+        "logical conclusion",
+        "foregone conclusion"
+      ],
+      "consideration": [
+        "take into consideration",
+        "give consideration to",
+        "show consideration for",
+        "under consideration",
+        "for sb's consideration",
+        "out of consideration for"
+      ],
+      "doubt": [
+        "doubt that",
+        "have your doubts about",
+        "cast doubt on",
+        "raise doubts",
+        "in doubt",
+        "doubt as to / about",
+        "beyond (any) doubt",
+        "(a) reasonable doubt",
+        "without a doubt",
+        "open to doubt"
+      ],
+      "dream": [
+        "dream of/about/that",
+        "have a dream",
+        "a dream to",
+        "beyond your wildest dreams",
+        "a dream come true",
+        "in your dreams",
+        "like a dream"
+      ],
+      "focus": [
+        "focus on",
+        "the focus of/for",
+        "in focus",
+        "out of focus",
+        "focus group",
+        "main/primary/major focus"
+      ],
+      "impression": [
+        "have/give the (false) impression that",
+        "do an impression (of)",
+        "create/make an impression (on sb)",
+        "under the impression that",
+        "first impressions"
+      ],
+      "mental": [
+        "make a mental note (of/about)",
+        "mental arithmetic",
+        "mental illness",
+        "mental age",
+        "mental health"
+      ],
+      "mind": [
+        "make up your mind",
+        "cross/slip your mind",
+        "have/bear in mind",
+        "have a one-track mind",
+        "take your mind off",
+        "bring to mind",
+        "in two minds about",
+        "on your mind",
+        "state of mind",
+        "narrow/broad/open/absent-minded"
+      ],
+      "misapprehension": [
+        "under the misapprehension that"
+      ],
+      "perspective": [
+        "put into perspective",
+        "from another / a different / sb's / etc perspective",
+        "from the perspective of",
+        "in perspective",
+        "out of perspective",
+        "a sense of perspective"
+      ],
+      "principle": [
+        "have principles",
+        "stand by / stick to your principles",
+        "principle of sth",
+        "principle that",
+        "in principle",
+        "a matter / an issue of principle",
+        "against sb's principles",
+        "set of principles"
+      ],
+      "question": [
+        "beg the question",
+        "raise the question (of)",
+        "a/no question of",
+        "in question",
+        "out of the question",
+        "without question",
+        "beyond question",
+        "some question over / as to / about",
+        "awkward question"
+      ],
+      "sense": [
+        "sense that",
+        "see sense",
+        "make sense (of)",
+        "have the sense to",
+        "come to your senses",
+        "a sense of",
+        "in a/one sense",
+        "common sense"
+      ],
+      "side": [
+        "side with sb",
+        "take sides",
+        "see both sides (of an argument)",
+        "look on the bright side",
+        "on the plus/minus side",
+        "by sb's side",
+        "on sb's side",
+        "on either side (of)"
+      ],
+      "straight": [
+        "set/put sb straight about",
+        "set/put the record straight",
+        "get/come straight to the point",
+        "get sth straight",
+        "think/see straight",
+        "straight talking",
+        "straight answer"
+      ],
+      "view": [
+        "view sth as",
+        "take the view that",
+        "take a dim/poor view of",
+        "come into view",
+        "in view of",
+        "with a view to",
+        "view on/about/that",
+        "in sb's view",
+        "viewpoint",
+        "point of view"
+      ]
     },
     "idioms": [
-      { "idiom": "go to your head", "meaning": "if success goes to your head, it makes you think that you are better or more important than you really are" },
-      { "idiom": "have your wits about you", "meaning": "be able to think quickly and make sensible decisions" },
-      { "idiom": "in the dark (about)", "meaning": "not knowing very much about something, because other people are keeping it secret from you" },
-      { "idiom": "know what's what", "meaning": "know the important facts or the real situation" },
-      { "idiom": "not have a leg to stand on", "meaning": "not have any way of proving that you are right about something" },
-      { "idiom": "not see the wood for the trees", "meaning": "used for saying that someone cannot understand what is important because they are thinking too much about small details" },
-      { "idiom": "put two and two together", "meaning": "guess what is happening or what something means based on what you have seen or heard" },
-      { "idiom": "quick/slow on the uptake", "meaning": "taking a very short/long time to understand or realise something" },
-      { "idiom": "ring a bell", "meaning": "sound familiar" },
-      { "idiom": "round the bend", "meaning": "crazy, mad" },
-      { "idiom": "split hairs", "meaning": "argue or worry about very small details or differences that are not important" },
-      { "idiom": "take stock (of)", "meaning": "spend some time thinking about the situation you are in before you decide what to do next" }
+      {
+        "idiom": "go to your head",
+        "meaning": "if success goes to your head, it makes you think that you are better or more important than you really are"
+      },
+      {
+        "idiom": "have your wits about you",
+        "meaning": "be able to think quickly and make sensible decisions"
+      },
+      {
+        "idiom": "in the dark (about)",
+        "meaning": "not knowing very much about something, because other people are keeping it secret from you"
+      },
+      {
+        "idiom": "know what's what",
+        "meaning": "know the important facts or the real situation"
+      },
+      {
+        "idiom": "not have a leg to stand on",
+        "meaning": "not have any way of proving that you are right about something"
+      },
+      {
+        "idiom": "not see the wood for the trees",
+        "meaning": "used for saying that someone cannot understand what is important because they are thinking too much about small details"
+      },
+      {
+        "idiom": "put two and two together",
+        "meaning": "guess what is happening or what something means based on what you have seen or heard"
+      },
+      {
+        "idiom": "quick/slow on the uptake",
+        "meaning": "taking a very short/long time to understand or realise something"
+      },
+      {
+        "idiom": "ring a bell",
+        "meaning": "sound familiar"
+      },
+      {
+        "idiom": "round the bend",
+        "meaning": "crazy, mad"
+      },
+      {
+        "idiom": "split hairs",
+        "meaning": "argue or worry about very small details or differences that are not important"
+      },
+      {
+        "idiom": "take stock (of)",
+        "meaning": "spend some time thinking about the situation you are in before you decide what to do next"
+      }
     ],
     "word_formation": [
-      { "base": "assume", "derivatives": ["assumption", "assuming", "unassuming", "assumed"] },
-      { "base": "believe", "derivatives": ["disbelieve", "belief", "disbelief", "(un)believer", "(un)believable", "disbelieving", "unbelievably"] },
-      { "base": "brilliant", "derivatives": ["brilliance", "brilliantly"] },
-      { "base": "conceive", "derivatives": ["conceptualise", "concept", "conception", "conceptual", "(in)conceivable", "(in)conceivably"] },
-      { "base": "confuse", "derivatives": ["confusion", "confused", "confusing(ly)"] },
-      { "base": "convince", "derivatives": ["conviction", "(un)convinced", "(un)convincing(ly)"] },
-      { "base": "decide", "derivatives": ["decision", "decider", "decisiveness", "deciding", "(in)decisively(ly)"] },
-      { "base": "define", "derivatives": ["definition", "defined", "definitively(ly)", "(in)definitely(ly)"] },
-      { "base": "doubt", "derivatives": ["doubter", "doubtful(ly)", "undoubted(ly)", "doubtless"] },
-      { "base": "explain", "derivatives": ["explanation", "explanatory", "unexplained", "(in)explicable", "inexplicably"] },
-      { "base": "imagine", "derivatives": ["imagination", "imaginings", "imaginary", "(un)imaginatively(ly)"] }
+      {
+        "base": "assume",
+        "derivatives": [
+          "assumption",
+          "assuming",
+          "unassuming",
+          "assumed"
+        ]
+      },
+      {
+        "base": "believe",
+        "derivatives": [
+          "disbelieve",
+          "belief",
+          "disbelief",
+          "(un)believer",
+          "(un)believable",
+          "disbelieving",
+          "unbelievably"
+        ]
+      },
+      {
+        "base": "brilliant",
+        "derivatives": [
+          "brilliance",
+          "brilliantly"
+        ]
+      },
+      {
+        "base": "conceive",
+        "derivatives": [
+          "conceptualise",
+          "concept",
+          "conception",
+          "conceptual",
+          "(in)conceivable",
+          "(in)conceivably"
+        ]
+      },
+      {
+        "base": "confuse",
+        "derivatives": [
+          "confusion",
+          "confused",
+          "confusing(ly)"
+        ]
+      },
+      {
+        "base": "convince",
+        "derivatives": [
+          "conviction",
+          "(un)convinced",
+          "(un)convincing(ly)"
+        ]
+      },
+      {
+        "base": "decide",
+        "derivatives": [
+          "decision",
+          "decider",
+          "decisiveness",
+          "deciding",
+          "(in)decisively(ly)"
+        ]
+      },
+      {
+        "base": "define",
+        "derivatives": [
+          "definition",
+          "defined",
+          "definitively(ly)",
+          "(in)definitely(ly)"
+        ]
+      },
+      {
+        "base": "doubt",
+        "derivatives": [
+          "doubter",
+          "doubtful(ly)",
+          "undoubted(ly)",
+          "doubtless"
+        ]
+      },
+      {
+        "base": "explain",
+        "derivatives": [
+          "explanation",
+          "explanatory",
+          "unexplained",
+          "(in)explicable",
+          "inexplicably"
+        ]
+      },
+      {
+        "base": "imagine",
+        "derivatives": [
+          "imagination",
+          "imaginings",
+          "imaginary",
+          "(un)imaginatively(ly)"
+        ]
+      }
     ],
     "exercises": {
       "A": {
         "title": "Circle the correct word",
         "instructions": "Circle the correct word.",
         "questions": [
-          { "sentence": "Don't be so **optimistic / pessimistic**. Everything's going to be fine, you'll see!", "answer": "pessimistic" },
-          { "sentence": "Most newspapers are usually **biased / prejudiced** towards a certain political outlook.", "answer": "biased" },
-          { "sentence": "I'm slightly **dubious / cynical** about whether Sean's idea is going to work.", "answer": "dubious" },
-          { "sentence": "To suggest that it's possible to create a society without crime is a little **naïve / sceptical**, isn't it?", "answer": "naïve" },
-          { "sentence": "The only **ingenious / plausible** explanation I can think of is that Jenna got the dates wrong.", "answer": "plausible" },
-          { "sentence": "Please don't **baffle / discriminate** me with loads of technical terminology. Use plain, simple English!", "answer": "baffle" },
-          { "sentence": "It's not always easy to **assume / assess** someone's suitability for a job just by talking to them in a short interview.", "answer": "assess" },
-          { "sentence": "How can the government **justify / speculate** spending so much on the armed forces?", "answer": "justify" },
-          { "sentence": "Looking at the damage, I would **estimate / deduce** that the painting will cost at least €2,000 to restore properly.", "answer": "estimate" },
-          { "sentence": "I don't think you should **reflect / presume** that lots of people are going to help you with this project.", "answer": "presume" }
+          {
+            "sentence": "Don't be so **optimistic / pessimistic**. Everything's going to be fine, you'll see!",
+            "answer": "pessimistic"
+          },
+          {
+            "sentence": "Most newspapers are usually **biased / prejudiced** towards a certain political outlook.",
+            "answer": "biased"
+          },
+          {
+            "sentence": "I'm slightly **dubious / cynical** about whether Sean's idea is going to work.",
+            "answer": "dubious"
+          },
+          {
+            "sentence": "To suggest that it's possible to create a society without crime is a little **naïve / sceptical**, isn't it?",
+            "answer": "naïve"
+          },
+          {
+            "sentence": "The only **ingenious / plausible** explanation I can think of is that Jenna got the dates wrong.",
+            "answer": "plausible"
+          },
+          {
+            "sentence": "Please don't **baffle / discriminate** me with loads of technical terminology. Use plain, simple English!",
+            "answer": "baffle"
+          },
+          {
+            "sentence": "It's not always easy to **assume / assess** someone's suitability for a job just by talking to them in a short interview.",
+            "answer": "assess"
+          },
+          {
+            "sentence": "How can the government **justify / speculate** spending so much on the armed forces?",
+            "answer": "justify"
+          },
+          {
+            "sentence": "Looking at the damage, I would **estimate / deduce** that the painting will cost at least €2,000 to restore properly.",
+            "answer": "estimate"
+          },
+          {
+            "sentence": "I don't think you should **reflect / presume** that lots of people are going to help you with this project.",
+            "answer": "presume"
+          }
         ]
       },
       "B": {
         "title": "Complete using the correct form of the words",
         "instructions": "Complete using the correct form of the words in the box. More than one word might fit in each gap, but try to use all the words.",
-        "words": ["concentrate", "consider", "contemplate", "deliberate", "gather", "grasp", "ponder", "reckon", "suppose"],
+        "words": [
+          "concentrate",
+          "consider",
+          "contemplate",
+          "deliberate",
+          "gather",
+          "grasp",
+          "ponder",
+          "reckon",
+          "suppose"
+        ],
         "questions": [
-          { "sentence": "It took me quite a long time to …………… what the aim of the game was.", "answer": "grasp" },
-          { "sentence": "The jury are still ……………, but they're expected to reach a verdict soon.", "answer": "deliberating" },
-          { "sentence": "I …………… from your tutor that you're thinking of changing course.", "answer": "gather" },
-          { "sentence": "You really have to …………… very hard when you are doing calligraphy.", "answer": "concentrate" },
-          { "sentence": "I'm seriously …………… asking for a pay rise tomorrow.", "answer": "considering / contemplating" },
-          { "sentence": "How long do you …………… it'll take to get to Manchester?", "answer": "reckon / suppose" },
-          { "sentence": "I don't …………… I could borrow your lecture notes this weekend, could I?", "answer": "suppose" },
-          { "sentence": "If you've ever …………… the question 'Why does the universe bother to exist?', then this is the book for you.", "answer": "pondered / considered / contemplated" },
-          { "sentence": "Let's not even …………… the possibility of failure.", "answer": "contemplate / consider" }
+          {
+            "sentence": "It took me quite a long time to …………… what the aim of the game was.",
+            "answer": "grasp"
+          },
+          {
+            "sentence": "The jury are still ……………, but they're expected to reach a verdict soon.",
+            "answer": "deliberating"
+          },
+          {
+            "sentence": "I …………… from your tutor that you're thinking of changing course.",
+            "answer": "gather"
+          },
+          {
+            "sentence": "You really have to …………… very hard when you are doing calligraphy.",
+            "answer": "concentrate"
+          },
+          {
+            "sentence": "I'm seriously …………… asking for a pay rise tomorrow.",
+            "answer": "considering / contemplating"
+          },
+          {
+            "sentence": "How long do you …………… it'll take to get to Manchester?",
+            "answer": "reckon / suppose"
+          },
+          {
+            "sentence": "I don't …………… I could borrow your lecture notes this weekend, could I?",
+            "answer": "suppose"
+          },
+          {
+            "sentence": "If you've ever …………… the question 'Why does the universe bother to exist?', then this is the book for you.",
+            "answer": "pondered / considered / contemplated"
+          },
+          {
+            "sentence": "Let's not even …………… the possibility of failure.",
+            "answer": "contemplate / consider"
+          }
         ]
       },
       "C": {
         "title": "Correct the wrong words in bold",
         "instructions": "Each of the words in bold is in the wrong sentence. Write the correct words on the lines.",
         "questions": [
-          { "sentence": "I'm in a real **hunch** because I've been invited to two parties on Saturday and I don't know which one to go to.", "answer": "dilemma" },
-          { "sentence": "Dave said he's got complete **guesswork** in us, and thinks we're going to do a great job.", "answer": "faith" },
-          { "sentence": "Sarah's a/an **intuition** when it comes to astrophysics, but she's not very practical in everyday things.", "answer": "genius" },
-          { "sentence": "You often need to use a little educated **notion** when you're starting a cryptic crossword.", "answer": "guesswork" },
-          { "sentence": "I've got a/an **ideology** that someone in this office is going to get promoted soon.", "answer": "hunch" },
-          { "sentence": "Communism and capitalism are very different types of **dilemma**.", "answer": "ideology" },
-          { "sentence": "Who gave you the **faith** for the main character in the book?", "answer": "inspiration" },
-          { "sentence": "Detective Tucker had absolutely no evidence that Roddard was involved, but all his **paradox** told him that he was.", "answer": "intuition" },
-          { "sentence": "I've got a small **inspiration** about the exam syllabus. Should I talk to Mrs Jacobs about it?", "answer": "notion" },
-          { "sentence": "Paying mothers a salary to raise their children is an interesting **genius**.", "answer": "idea" },
-          { "sentence": "The fact that more people would come here if the place wasn't so crowded is a real **idea**.", "answer": "paradox" }
+          {
+            "sentence": "I'm in a real **hunch** because I've been invited to two parties on Saturday and I don't know which one to go to.",
+            "answer": "dilemma"
+          },
+          {
+            "sentence": "Dave said he's got complete **guesswork** in us, and thinks we're going to do a great job.",
+            "answer": "faith"
+          },
+          {
+            "sentence": "Sarah's a/an **intuition** when it comes to astrophysics, but she's not very practical in everyday things.",
+            "answer": "genius"
+          },
+          {
+            "sentence": "You often need to use a little educated **notion** when you're starting a cryptic crossword.",
+            "answer": "guesswork"
+          },
+          {
+            "sentence": "I've got a/an **ideology** that someone in this office is going to get promoted soon.",
+            "answer": "hunch"
+          },
+          {
+            "sentence": "Communism and capitalism are very different types of **dilemma**.",
+            "answer": "ideology"
+          },
+          {
+            "sentence": "Who gave you the **faith** for the main character in the book?",
+            "answer": "inspiration"
+          },
+          {
+            "sentence": "Detective Tucker had absolutely no evidence that Roddard was involved, but all his **paradox** told him that he was.",
+            "answer": "intuition"
+          },
+          {
+            "sentence": "I've got a small **inspiration** about the exam syllabus. Should I talk to Mrs Jacobs about it?",
+            "answer": "notion"
+          },
+          {
+            "sentence": "Paying mothers a salary to raise their children is an interesting **genius**.",
+            "answer": "idea"
+          },
+          {
+            "sentence": "The fact that more people would come here if the place wasn't so crowded is a real **idea**.",
+            "answer": "paradox"
+          }
+        ],
+        "words": [
+          "dilemma",
+          "faith",
+          "genius",
+          "guesswork",
+          "hunch",
+          "idea",
+          "ideology",
+          "inspiration",
+          "intuition",
+          "notion",
+          "paradox"
         ]
       },
       "D": {
@@ -197,52 +832,102 @@
         "questions": [
           {
             "sentence": "The system only views the weakest learners as having (1) ...... needs.",
-            "options": ["A educational", "B general", "C special", "D additional"],
+            "options": [
+              "A educational",
+              "B general",
+              "C special",
+              "D additional"
+            ],
             "answer": "C"
           },
           {
             "sentence": "The brightest and most (2) ...... students are not encouraged to develop to their full potential.",
-            "options": ["A academic", "B clever", "C gifted", "D intelligent"],
+            "options": [
+              "A academic",
+              "B clever",
+              "C gifted",
+              "D intelligent"
+            ],
             "answer": "D"
           },
           {
             "sentence": "My fifteen-year-old daughter, for example, has just spent the last month or so (3) ...... for exams.",
-            "options": ["A cramming", "B revising", "C preparing", "D studying"],
+            "options": [
+              "A cramming",
+              "B revising",
+              "C preparing",
+              "D studying"
+            ],
             "answer": "A"
           },
           {
             "sentence": "These aren't even real, important exams. They're just (4) ...... exams.",
-            "options": ["A trial", "B mock", "C practice", "D false"],
+            "options": [
+              "A trial",
+              "B mock",
+              "C practice",
+              "D false"
+            ],
             "answer": "B"
           },
           {
             "sentence": "Is the work she's been doing really going to make her more (5) ...... about her subjects?",
-            "options": ["A knowledgeable", "B informed", "C educated", "D intellectual"],
+            "options": [
+              "A knowledgeable",
+              "B informed",
+              "C educated",
+              "D intellectual"
+            ],
             "answer": "A"
           },
           {
             "sentence": "Thirdly, the standard (6) ...... doesn't give students any tuition in developing practical skills.",
-            "options": ["A programme", "B syllabus", "C timetable", "D curriculum"],
+            "options": [
+              "A programme",
+              "B syllabus",
+              "C timetable",
+              "D curriculum"
+            ],
             "answer": "D"
           },
           {
             "sentence": "The standard curriculum doesn't give students any (7) ...... in developing practical work-related, living and social skills.",
-            "options": ["A education", "B guidance", "C tuition", "D instruction"],
+            "options": [
+              "A education",
+              "B guidance",
+              "C tuition",
+              "D instruction"
+            ],
             "answer": "C"
           },
           {
             "sentence": "How many students know the difference between (8) ...... someone else's work and making good use of someone else's ideas?",
-            "options": ["A borrowing", "B copying", "C plagiarising", "D stealing"],
+            "options": [
+              "A borrowing",
+              "B copying",
+              "C plagiarising",
+              "D stealing"
+            ],
             "answer": "C"
           },
           {
             "sentence": "How many of them are really able to go about (9) ...... – a skill that's essential at university?",
-            "options": ["A private study", "B home learning", "C independent study", "D self-study"],
+            "options": [
+              "A private study",
+              "B home learning",
+              "C independent study",
+              "D self-study"
+            ],
             "answer": "D"
           },
           {
             "sentence": "Indeed, how many students (10) ...... from university totally unable to spell even simple English words correctly?",
-            "options": ["A complete", "B graduate", "C leave", "D finish"],
+            "options": [
+              "A complete",
+              "B graduate",
+              "C leave",
+              "D finish"
+            ],
             "answer": "B"
           }
         ]
@@ -251,49 +936,190 @@
         "title": "Match to make sentences",
         "instructions": "Match the sentence beginnings (1–7) with the correct endings (A–G).",
         "questions": [
-          { "sentence": "I'm going to have to mull this **D** over for a while before I make a final decision.", "answer": "D – over for a while before I make a final decision." },
-          { "sentence": "Detectives are still trying to piece **A** together exactly what happened that evening.", "answer": "A – together exactly what happened that evening." },
-          { "sentence": "It took him a very long time to take **B** in the fact that he'd never see her again.", "answer": "B – in the fact that he'd never see her again." },
-          { "sentence": "Tell us how you hit **G** upon such a great idea for a website.", "answer": "G – upon such a great idea for a website." },
-          { "sentence": "It took us ages to figure **F** out how to get everyone to the sports centre without Phil knowing.", "answer": "F – out how to get everyone to the sports centre without Phil knowing." },
-          { "sentence": "I've just thought **C** up a brilliant excuse to tell Rachel.", "answer": "C – up a brilliant excuse to tell Rachel." },
-          { "sentence": "I'm not sure we've thought **E** this through properly yet.", "answer": "E – this through properly yet." }
-        ]
+          {
+            "sentence": "I'm going to have to mull this **D** over for a while before I make a final decision.",
+            "answer": "D – over for a while before I make a final decision."
+          },
+          {
+            "sentence": "Detectives are still trying to piece **A** together exactly what happened that evening.",
+            "answer": "A – together exactly what happened that evening."
+          },
+          {
+            "sentence": "It took him a very long time to take **B** in the fact that he'd never see her again.",
+            "answer": "B – in the fact that he'd never see her again."
+          },
+          {
+            "sentence": "Tell us how you hit **G** upon such a great idea for a website.",
+            "answer": "G – upon such a great idea for a website."
+          },
+          {
+            "sentence": "It took us ages to figure **F** out how to get everyone to the sports centre without Phil knowing.",
+            "answer": "F – out how to get everyone to the sports centre without Phil knowing."
+          },
+          {
+            "sentence": "I've just thought **C** up a brilliant excuse to tell Rachel.",
+            "answer": "C – up a brilliant excuse to tell Rachel."
+          },
+          {
+            "sentence": "I'm not sure we've thought **E** this through properly yet.",
+            "answer": "E – this through properly yet."
+          }
+        ],
+        "type": "matching"
       },
       "F": {
         "title": "Write one word in each gap (phrasal verbs)",
         "instructions": "Write one word in each gap so that each second sentence has a similar meaning to the first sentence.",
         "questions": [
-          { "sentence": "I need to consider your offer very carefully before I make a decision.\nI need to …………… over your offer very carefully before I make a decision.", "answer": "mull" },
-          { "sentence": "Lee had the brilliant idea of booking a clown for the end-of-term party.\nLee came …………… with the brilliant idea of booking a clown for the end-of-term party.", "answer": "up" },
-          { "sentence": "It's time you realised that you've got responsibilities now.\nIt's time you faced …………… to the fact that you've got responsibilities now.", "answer": "up" },
-          { "sentence": "I'm going to have to improve my spoken German before I go to Munich.\nI'm going to have to brush …………… on my spoken German before I go to Munich.", "answer": "up" },
-          { "sentence": "I didn't like the idea at first but now I do.\nI didn't like the idea at first but I've …………… round to it now.", "answer": "come" },
-          { "sentence": "It's a general knowledge quiz so you can't do any revision for it.\nThere's nothing to swot …………… on as it's a general knowledge quiz.", "answer": "up" },
-          { "sentence": "We were right at the back of the hall so I couldn't hear what the speaker was saying.\nI was unable to …………… out what the speaker was saying because we were right at the back of the hall.", "answer": "make" },
-          { "sentence": "We finally thought of a way to get the band into the hotel without the press knowing.\nWe finally puzzled …………… a way to get the band into the hotel without the press knowing.", "answer": "out" },
-          { "sentence": "I've found out a lot of information about the history of English language teaching recently.\nI've been …………… up on the history of English language teaching recently.", "answer": "reading" }
+          {
+            "sentence": "I need to consider your offer very carefully before I make a decision.\nI need to …………… over your offer very carefully before I make a decision.",
+            "answer": "mull"
+          },
+          {
+            "sentence": "Lee had the brilliant idea of booking a clown for the end-of-term party.\nLee came …………… with the brilliant idea of booking a clown for the end-of-term party.",
+            "answer": "up"
+          },
+          {
+            "sentence": "It's time you realised that you've got responsibilities now.\nIt's time you faced …………… to the fact that you've got responsibilities now.",
+            "answer": "up"
+          },
+          {
+            "sentence": "I'm going to have to improve my spoken German before I go to Munich.\nI'm going to have to brush …………… on my spoken German before I go to Munich.",
+            "answer": "up"
+          },
+          {
+            "sentence": "I didn't like the idea at first but now I do.\nI didn't like the idea at first but I've …………… round to it now.",
+            "answer": "come"
+          },
+          {
+            "sentence": "It's a general knowledge quiz so you can't do any revision for it.\nThere's nothing to swot …………… on as it's a general knowledge quiz.",
+            "answer": "up"
+          },
+          {
+            "sentence": "We were right at the back of the hall so I couldn't hear what the speaker was saying.\nI was unable to …………… out what the speaker was saying because we were right at the back of the hall.",
+            "answer": "make"
+          },
+          {
+            "sentence": "We finally thought of a way to get the band into the hotel without the press knowing.\nWe finally puzzled …………… a way to get the band into the hotel without the press knowing.",
+            "answer": "out"
+          },
+          {
+            "sentence": "I've found out a lot of information about the history of English language teaching recently.\nI've been …………… up on the history of English language teaching recently.",
+            "answer": "reading"
+          }
+        ]
+      },
+      "G": {
+        "title": "Phrasal verbs with out",
+        "type": "yn",
+        "instructions": "Phrasal verbs with out, such as puzzle out, are often connected to the idea of finding information. Which of these phrasal verbs with out are also connected to this idea?",
+        "questions": [
+          {
+            "sentence": "Did you **find out** what time the parents' meeting is?",
+            "answer": "YES"
+          },
+          {
+            "sentence": "I've been **checking out** whether it's better to go by ferry or plane.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "Susie reckons she's **sussed out** a great way to get into the club for free.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "We all **piled out** into the playground.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "I can't **figure out** how to change my password.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "The band were completely **drowned out** by all the screaming fans.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "I'm going to **sound** Bob **out** about his investing in the company.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "Two essays really do **stand out** from the rest.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "Jan's good at keeping secrets, so you'll have to **worm** it **out** of her!",
+            "answer": "YES"
+          },
+          {
+            "sentence": "None of us could **fathom out** why the experiment wasn't working.",
+            "answer": "YES"
+          }
         ]
       },
       "H": {
         "title": "Write one word in each gap (collocations)",
         "instructions": "Write one word in each gap.",
         "questions": [
-          { "sentence": "Jim seems to be …………… the misapprehension that tomorrow's a holiday. It isn't.", "answer": "under" },
-          { "sentence": "These findings cast doubt …………… previous research done in this field.", "answer": "on" },
-          { "sentence": "This photo's a little …………… of focus, but you can still see their faces.", "answer": "out" },
-          { "sentence": "Look …………… the bright side – it's nearly the end of term.", "answer": "on" },
-          { "sentence": "I'm not against animal testing …………… principle.", "answer": "in" },
-          { "sentence": "I think I'll always associate this song …………… our holiday in Majorca.", "answer": "with" },
-          { "sentence": "You have to bear …………… mind that there'll be quite a few children there.", "answer": "in" },
-          { "sentence": "Where did Susan's belief …………… reincarnation come from?", "answer": "in" },
-          { "sentence": "Dad said that my borrowing the car tonight was …………… of the question.", "answer": "out" },
-          { "sentence": "Hearing the news about Caroline put my small problems …………… perspective.", "answer": "into" },
-          { "sentence": "What's the best course of action from your point …………… view?", "answer": "of" },
-          { "sentence": "You were hired …………… the basis that you would be able to work on Sundays.", "answer": "on" },
-          { "sentence": "…………… balance, I think the government's doing a reasonable job.", "answer": "On" },
-          { "sentence": "We haven't taken Julie's thoughts …………… account at all.", "answer": "into" },
-          { "sentence": "…………… conclusion, I'd like to thank everyone who supported me during the early years.", "answer": "In" }
+          {
+            "sentence": "Jim seems to be …………… the misapprehension that tomorrow's a holiday. It isn't.",
+            "answer": "under"
+          },
+          {
+            "sentence": "These findings cast doubt …………… previous research done in this field.",
+            "answer": "on"
+          },
+          {
+            "sentence": "This photo's a little …………… of focus, but you can still see their faces.",
+            "answer": "out"
+          },
+          {
+            "sentence": "Look …………… the bright side – it's nearly the end of term.",
+            "answer": "on"
+          },
+          {
+            "sentence": "I'm not against animal testing …………… principle.",
+            "answer": "in"
+          },
+          {
+            "sentence": "I think I'll always associate this song …………… our holiday in Majorca.",
+            "answer": "with"
+          },
+          {
+            "sentence": "You have to bear …………… mind that there'll be quite a few children there.",
+            "answer": "in"
+          },
+          {
+            "sentence": "Where did Susan's belief …………… reincarnation come from?",
+            "answer": "in"
+          },
+          {
+            "sentence": "Dad said that my borrowing the car tonight was …………… of the question.",
+            "answer": "out"
+          },
+          {
+            "sentence": "Hearing the news about Caroline put my small problems …………… perspective.",
+            "answer": "into"
+          },
+          {
+            "sentence": "What's the best course of action from your point …………… view?",
+            "answer": "of"
+          },
+          {
+            "sentence": "You were hired …………… the basis that you would be able to work on Sundays.",
+            "answer": "on"
+          },
+          {
+            "sentence": "…………… balance, I think the government's doing a reasonable job.",
+            "answer": "On"
+          },
+          {
+            "sentence": "We haven't taken Julie's thoughts …………… account at all.",
+            "answer": "into"
+          },
+          {
+            "sentence": "…………… conclusion, I'd like to thank everyone who supported me during the early years.",
+            "answer": "In"
+          }
         ]
       },
       "I": {
@@ -328,7 +1154,8 @@
             "sentence": "Motorists should always show …………… for pedestrians crossing the street at a zebra crossing.\nI'll give some …………… to your proposals and get back to you.\nWe stupidly didn't take changes in interest rates into …………… when we got a mortgage for our house.",
             "answer": "consideration"
           }
-        ]
+        ],
+        "type": "sync"
       },
       "J": {
         "title": "Write one word in each gap (text)",
@@ -344,81 +1171,243 @@
         "title": "Key word transformation",
         "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
         "questions": [
-          { "sentence": "I never thought that we'd have legal problems.\n**occurred** It …………………………………………… that we'd have legal problems.", "answer": "never occurred to me" },
-          { "sentence": "I've decided that teaching is not the right profession for me.\n**conclusion** I've …………………………………………… that teaching is not the right profession for me.", "answer": "come to the conclusion" },
-          { "sentence": "Could you tell me where you were last night, Mr Johnson?\n**account** Could you …………………………………………… your whereabouts last night, Mr Johnson?", "answer": "give an account of" },
-          { "sentence": "The journalist pretended that she was a parent of one of the children.\n**false** The journalist …………………………………………… that she was a parent of one of the children.", "answer": "gave a false impression" },
-          { "sentence": "You have to use logic and lateral thinking in equal measure in this job.\n**strike** You have to …………………………………………… logic and lateral thinking in this job.", "answer": "strike a balance between" },
-          { "sentence": "I didn't tell Angie because I didn't want to hurt Eddie's feelings.\n**consideration** I didn't tell Angie …………………………………………… Eddie's feelings.", "answer": "out of consideration for" },
-          { "sentence": "Elizabeth studied English literature for a long time.\n**spent** Elizabeth …………………………………………… English literature.", "answer": "spent her time studying" },
-          { "sentence": "The teacher told us that the exam would be difficult.\n**warned** The teacher …………………………………………… the exam would be difficult.", "answer": "warned us that" }
-        ]
+          {
+            "sentence": "I never thought that we'd have legal problems.\n**occurred** It …………………………………………… that we'd have legal problems.",
+            "answer": "never occurred to me"
+          },
+          {
+            "sentence": "I've decided that teaching is not the right profession for me.\n**conclusion** I've …………………………………………… that teaching is not the right profession for me.",
+            "answer": "come to the conclusion"
+          },
+          {
+            "sentence": "Could you tell me where you were last night, Mr Johnson?\n**account** Could you …………………………………………… your whereabouts last night, Mr Johnson?",
+            "answer": "give an account of"
+          },
+          {
+            "sentence": "The journalist pretended that she was a parent of one of the children.\n**false** The journalist …………………………………………… that she was a parent of one of the children.",
+            "answer": "gave a false impression"
+          },
+          {
+            "sentence": "You have to use logic and lateral thinking in equal measure in this job.\n**strike** You have to …………………………………………… logic and lateral thinking in this job.",
+            "answer": "strike a balance between"
+          },
+          {
+            "sentence": "I didn't tell Angie because I didn't want to hurt Eddie's feelings.\n**consideration** I didn't tell Angie …………………………………………… Eddie's feelings.",
+            "answer": "out of consideration for"
+          },
+          {
+            "sentence": "Elizabeth studied English literature for a long time.\n**spent** Elizabeth …………………………………………… English literature.",
+            "answer": "spent her time studying"
+          },
+          {
+            "sentence": "The teacher told us that the exam would be difficult.\n**warned** The teacher …………………………………………… the exam would be difficult.",
+            "answer": "warned us that"
+          }
+        ],
+        "type": "kwtrans"
       },
       "L": {
         "title": "Complete idioms",
         "instructions": "Complete using the words in the box.",
-        "words": ["bell", "bend", "dark", "hairs", "head", "leg", "stock", "two", "uptake", "what", "wits", "wood"],
+        "words": [
+          "bell",
+          "bend",
+          "dark",
+          "hairs",
+          "head",
+          "leg",
+          "stock",
+          "two",
+          "uptake",
+          "what",
+          "wits",
+          "wood"
+        ],
         "questions": [
-          { "sentence": "The name Alan Hickson rings a ……………, but I can't place him.", "answer": "bell" },
-          { "sentence": "Stop wasting time splitting …………… and look at the big picture.", "answer": "hairs" },
-          { "sentence": "Ask Simon about the sales targets. He always knows what's ……………", "answer": "what" },
-          { "sentence": "You've got to have your …………… about you to succeed in advertising.", "answer": "wits" },
-          { "sentence": "Don't let success go to your ……………, will you?", "answer": "head" },
-          { "sentence": "No one told us that Diana was leaving, but we all put two and …………… together.", "answer": "two" },
-          { "sentence": "I'm going to go round the …………… if they don't turn that music down soon.", "answer": "bend" },
-          { "sentence": "Let's take …………… of the situation before we make a final decision.", "answer": "stock" },
-          { "sentence": "How did they manage to keep me completely in the …………… about this for so long?", "answer": "dark" },
-          { "sentence": "The problem with Jane is that sometimes she can't see the …………… for the trees.", "answer": "wood" },
-          { "sentence": "It took Dan a long time to understand what was going on. He's usually quicker on the …………… than that, isn't he?", "answer": "uptake" },
-          { "sentence": "Frankly, you're completely wrong and you haven't got a …………… to stand on.", "answer": "leg" }
+          {
+            "sentence": "The name Alan Hickson rings a ……………, but I can't place him.",
+            "answer": "bell"
+          },
+          {
+            "sentence": "Stop wasting time splitting …………… and look at the big picture.",
+            "answer": "hairs"
+          },
+          {
+            "sentence": "Ask Simon about the sales targets. He always knows what's ……………",
+            "answer": "what"
+          },
+          {
+            "sentence": "You've got to have your …………… about you to succeed in advertising.",
+            "answer": "wits"
+          },
+          {
+            "sentence": "Don't let success go to your ……………, will you?",
+            "answer": "head"
+          },
+          {
+            "sentence": "No one told us that Diana was leaving, but we all put two and …………… together.",
+            "answer": "two"
+          },
+          {
+            "sentence": "I'm going to go round the …………… if they don't turn that music down soon.",
+            "answer": "bend"
+          },
+          {
+            "sentence": "Let's take …………… of the situation before we make a final decision.",
+            "answer": "stock"
+          },
+          {
+            "sentence": "How did they manage to keep me completely in the …………… about this for so long?",
+            "answer": "dark"
+          },
+          {
+            "sentence": "The problem with Jane is that sometimes she can't see the …………… for the trees.",
+            "answer": "wood"
+          },
+          {
+            "sentence": "It took Dan a long time to understand what was going on. He's usually quicker on the …………… than that, isn't he?",
+            "answer": "uptake"
+          },
+          {
+            "sentence": "Frankly, you're completely wrong and you haven't got a …………… to stand on.",
+            "answer": "leg"
+          }
         ]
       },
       "M": {
         "title": "Word formation",
         "instructions": "Complete the sentences by changing the form of the word in capitals.",
         "questions": [
-          { "sentence": "There was quite a bit of …………… because the examiner handed out the wrong exam papers. **CONFUSE**", "answer": "confusion" },
-          { "sentence": "You're acting completely ……………. Just calm down and pull yourself together. **RATIONAL**", "answer": "irrationally" },
-          { "sentence": "Einstein's …………… went unnoticed at school. **BRILLIANT**", "answer": "brilliance" },
-          { "sentence": "This is generally considered to be the …………… guide to Australia. **DEFINE**", "answer": "definitive" },
-          { "sentence": "It's absolutely …………… why the council decided to close down the youth club. **EXPLAIN**", "answer": "inexplicable" },
-          { "sentence": "I just stood there and listened in …………… as Ben told me the news. **BELIEVE**", "answer": "disbelief" },
-          { "sentence": "Greg's …………… to say the least, so I wouldn't ask him to choose a hotel. **DECIDE**", "answer": "indecisive" },
-          { "sentence": "Many children create …………… friends to talk to. **IMAGINE**", "answer": "imaginary" },
-          { "sentence": "He was found not guilty by reason of …………… and so was sent to a mental institution rather than prison. **SANE**", "answer": "insanity" },
-          { "sentence": "Your argument is ……………. Just because you want me to be a doctor doesn't mean I want to be one. **LOGIC**", "answer": "illogical" }
+          {
+            "sentence": "There was quite a bit of …………… because the examiner handed out the wrong exam papers. **CONFUSE**",
+            "answer": "confusion"
+          },
+          {
+            "sentence": "You're acting completely ……………. Just calm down and pull yourself together. **RATIONAL**",
+            "answer": "irrationally"
+          },
+          {
+            "sentence": "Einstein's …………… went unnoticed at school. **BRILLIANT**",
+            "answer": "brilliance"
+          },
+          {
+            "sentence": "This is generally considered to be the …………… guide to Australia. **DEFINE**",
+            "answer": "definitive"
+          },
+          {
+            "sentence": "It's absolutely …………… why the council decided to close down the youth club. **EXPLAIN**",
+            "answer": "inexplicable"
+          },
+          {
+            "sentence": "I just stood there and listened in …………… as Ben told me the news. **BELIEVE**",
+            "answer": "disbelief"
+          },
+          {
+            "sentence": "Greg's …………… to say the least, so I wouldn't ask him to choose a hotel. **DECIDE**",
+            "answer": "indecisive"
+          },
+          {
+            "sentence": "Many children create …………… friends to talk to. **IMAGINE**",
+            "answer": "imaginary"
+          },
+          {
+            "sentence": "He was found not guilty by reason of …………… and so was sent to a mental institution rather than prison. **SANE**",
+            "answer": "insanity"
+          },
+          {
+            "sentence": "Your argument is ……………. Just because you want me to be a doctor doesn't mean I want to be one. **LOGIC**",
+            "answer": "illogical"
+          }
         ]
       },
       "N": {
         "title": "Negative prefixes with il-",
         "instructions": "The prefix il-, as in illogical, is often used to make a positive word negative. Which of the words in bold in the following sentences are negative forms of positive words? Write YES or NO.",
         "questions": [
-          { "sentence": "Doctors' handwriting is usually **illegible**.", "answer": "YES" },
-          { "sentence": "There's a beautiful **illustration** on page six.", "answer": "NO" },
-          { "sentence": "People who are **illiterate** may need some help filling in forms.", "answer": "YES" },
-          { "sentence": "She had an **illustrious** career as a local politician.", "answer": "NO" },
-          { "sentence": "It's a totally **illiberal** law that's just going to restrict our freedoms further.", "answer": "YES" },
-          { "sentence": "Several senior politicians have resigned over the **illegality** of the war.", "answer": "YES" },
-          { "sentence": "**Illegitimate** children were given very little social recognition in the past.", "answer": "YES" },
-          { "sentence": "The magician didn't really cut his assistant in two – it was only an **illusion**.", "answer": "NO" },
-          { "sentence": "The lights **illuminated** the building beautifully at night.", "answer": "NO" }
-        ]
+          {
+            "sentence": "Doctors' handwriting is usually **illegible**.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "There's a beautiful **illustration** on page six.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "People who are **illiterate** may need some help filling in forms.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "She had an **illustrious** career as a local politician.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "It's a totally **illiberal** law that's just going to restrict our freedoms further.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "Several senior politicians have resigned over the **illegality** of the war.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "**Illegitimate** children were given very little social recognition in the past.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "The magician didn't really cut his assistant in two – it was only an **illusion**.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "The lights **illuminated** the building beautifully at night.",
+            "answer": "NO"
+          }
+        ],
+        "type": "yn"
       },
       "O": {
         "title": "Word formation (Rhetoric text)",
         "instructions": "Complete the text by writing the correct form of each word in capitals.",
         "passage": "The …(1)… (CONCEIVE) of 'rhetoric', or effective public speaking, dates back thousands of years. The underlying …(2)… (ASSUME) behind rhetoric is that how you present an argument can greatly influence whether people are persuaded by you or not. There is …(3)… (DOUBT) plenty of evidence to support this idea – it's practically …(4)… (THINK), for example, for a successful politician to be a poor communicator – but is it just a question of style winning over substance? Certainly, it is often said of politicians that they talk complete …(5)… (SENSE) but what they say they say with such …(6)… (CONVINCE) that we tend to believe them, at least when they're in opposition. On the other hand, …(7)… (WISE) and knowledge are of little value if you cannot communicate them effectively to your peers or to the next generation. It is the combination of clear …(8)… (REASON), sound …(9)… (JUDGE) and effective presentation and communication skills that defines true rhetoric. A true rhetorician should always come across as knowledgeable, and never as …(10)… (OPINION) or ignorant.",
         "questions": [
-          { "sentence": "The …(1)… (CONCEIVE) of 'rhetoric', or effective public speaking, dates back thousands of years.", "answer": "conception" },
-          { "sentence": "The underlying …(2)… (ASSUME) behind rhetoric is that how you present an argument can greatly influence whether people are persuaded by you or not.", "answer": "assumption" },
-          { "sentence": "There is …(3)… (DOUBT) plenty of evidence to support this idea.", "answer": "undoubtedly" },
-          { "sentence": "It's practically …(4)… (THINK), for example, for a successful politician to be a poor communicator.", "answer": "unthinkable" },
-          { "sentence": "It is often said of politicians that they talk complete …(5)… (SENSE).", "answer": "nonsense" },
-          { "sentence": "They say it with such …(6)… (CONVINCE) that we tend to believe them.", "answer": "conviction" },
-          { "sentence": "…(7)… (WISE) and knowledge are of little value if you cannot communicate them effectively.", "answer": "wisdom" },
-          { "sentence": "It is the combination of clear …(8)… (REASON), sound judgement and effective presentation skills.", "answer": "reasoning" },
-          { "sentence": "It is the combination of clear reasoning, sound …(9)… (JUDGE) and effective presentation and communication skills.", "answer": "judgement" },
-          { "sentence": "A true rhetorician should never come across as …(10)… (OPINION) or ignorant.", "answer": "opinionated" }
+          {
+            "sentence": "The …(1)… (CONCEIVE) of 'rhetoric', or effective public speaking, dates back thousands of years.",
+            "answer": "conception"
+          },
+          {
+            "sentence": "The underlying …(2)… (ASSUME) behind rhetoric is that how you present an argument can greatly influence whether people are persuaded by you or not.",
+            "answer": "assumption"
+          },
+          {
+            "sentence": "There is …(3)… (DOUBT) plenty of evidence to support this idea.",
+            "answer": "undoubtedly"
+          },
+          {
+            "sentence": "It's practically …(4)… (THINK), for example, for a successful politician to be a poor communicator.",
+            "answer": "unthinkable"
+          },
+          {
+            "sentence": "It is often said of politicians that they talk complete …(5)… (SENSE).",
+            "answer": "nonsense"
+          },
+          {
+            "sentence": "They say it with such …(6)… (CONVINCE) that we tend to believe them.",
+            "answer": "conviction"
+          },
+          {
+            "sentence": "…(7)… (WISE) and knowledge are of little value if you cannot communicate them effectively.",
+            "answer": "wisdom"
+          },
+          {
+            "sentence": "It is the combination of clear …(8)… (REASON), sound judgement and effective presentation skills.",
+            "answer": "reasoning"
+          },
+          {
+            "sentence": "It is the combination of clear reasoning, sound …(9)… (JUDGE) and effective presentation and communication skills.",
+            "answer": "judgement"
+          },
+          {
+            "sentence": "A true rhetorician should never come across as …(10)… (OPINION) or ignorant.",
+            "answer": "opinionated"
+          }
         ]
       }
     }

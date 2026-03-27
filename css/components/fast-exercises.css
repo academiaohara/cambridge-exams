@@ -5124,46 +5124,64 @@
   vertical-align: baseline;
 }
 
-/* Dark pill for gap + hint combinations (e.g. "1 [____] you") */
+/* Dark pill for gap + hint combinations (e.g. "1 [____] you") — styled like reading-type3-input-word-row */
 .cu-hint-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0;
-  background: #104862;
-  border-radius: 999px;
-  padding: 1px 8px 1px 6px;
+  gap: 6px;
+  background: #f8fafc;
+  border: 2px solid #cbd5e1;
+  border-radius: 16px;
+  padding: 3px 8px 3px 8px;
   vertical-align: middle;
-  margin: 1px 2px;
+  margin: 2px 3px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.cu-hint-pill:focus-within {
+  border-color: #1E9D8E;
+  box-shadow: 0 0 0 3px rgba(30, 157, 142, 0.12);
 }
 .cu-hint-pill-num {
-  color: #fff;
+  color: #475569;
   font-weight: 700;
-  font-size: 0.75rem;
-  margin-right: 6px;
+  font-size: 0.78rem;
   flex-shrink: 0;
+  background: #e2e8f0;
+  border-radius: 10px;
+  padding: 1px 6px;
+  line-height: 1.5;
 }
 .cu-hint-pill-input {
-  border-radius: 999px !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 10px !important;
+  border: 1.5px solid #e2e8f0 !important;
   background: #fff !important;
-  box-shadow: inset 0 1px 2px rgba(16, 72, 98, 0.15) !important;
+  box-shadow: none !important;
   color: var(--text-dark, #0f172a) !important;
-  padding: 2px 8px !important;
+  padding: 3px 8px !important;
   width: 110px !important;
   min-width: 65px !important;
-  font-size: 0.83rem !important;
+  font-size: 0.9rem !important;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
 }
 .cu-hint-pill-input:focus {
-  border-color: rgba(255, 255, 255, 0.8) !important;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2), inset 0 1px 2px rgba(16, 72, 98, 0.15) !important;
+  border-color: #1E9D8E !important;
+  box-shadow: none !important;
   outline: none;
 }
 .cu-hint-pill-word {
-  color: #fff;
+  color: #1E9D8E;
   font-weight: 700;
-  font-size: 0.75rem;
-  margin-left: 6px;
+  font-size: 0.78rem;
   flex-shrink: 0;
+  background: rgba(30, 157, 142, 0.1);
+  border-radius: 10px;
+  padding: 1px 8px;
+  line-height: 1.5;
+}
+.cu-wf-pill-word {
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.1);
 }
 
 /* Key Word Transformation two-sentence layout */
@@ -6494,4 +6512,342 @@
 
 .cu-block-card-header[onclick]:hover {
   opacity: 0.85;
+}
+
+/* ── Word Formation section list ────────────────────────────────────── */
+.cu-wf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.cu-wf-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.cu-wf-base {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #ef4444;
+  min-width: 90px;
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+.cu-wf-chips {
+  flex: 1;
+  margin: 0;
+}
+
+.cu-wf-chip {
+  font-size: 0.78rem;
+}
+
+/* ── MC gap pill (shows selected option text) ───────────────────────── */
+.cu-mc-gap-pill {
+  display: inline-block;
+  min-width: 60px;
+  padding: 1px 10px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  border: 1.5px dashed #94a3b8;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #64748b;
+  vertical-align: middle;
+  margin: 0 2px;
+  text-align: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.cu-mc-gap-pill-filled {
+  background: #e0f2fe;
+  border-color: #38bdf8;
+  border-style: solid;
+  color: #0369a1;
+  font-weight: 700;
+}
+
+/* ── Yes/No exercise items ──────────────────────────────────────────── */
+.cu-yn-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cu-yn-buttons {
+  display: flex;
+  gap: 8px;
+  padding-left: 2px;
+}
+
+.cu-yn-btn {
+  padding: 5px 18px;
+  border-radius: 20px;
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  color: #64748b;
+  font-family: 'Nunito', sans-serif;
+}
+
+.cu-yn-btn:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.cu-yn-btn.cu-yn-selected {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.cu-yn-btn.cu-yn-correct {
+  border-color: #22c55e;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.cu-yn-btn.cu-yn-incorrect {
+  border-color: #ef4444;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+/* ── Key Word Transformation (reading4 style) ───────────────────────── */
+.cu-kwtrans-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.cu-kwtrans-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cu-kwtrans-original {
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.cu-kwtrans-keyword-row {
+  display: flex;
+  align-items: center;
+}
+
+.cu-kwtrans-keyword {
+  display: inline-block;
+  padding: 3px 14px;
+  background: #1d4ed8;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cu-kwtrans-second {
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 2;
+}
+
+/* ── Sync (one-word-for-three) exercise ──────────────────────────────── */
+.cu-sync-sentences {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cu-sync-sentence {
+  padding: 4px 0;
+  line-height: 2;
+  font-size: 0.92rem;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.cu-sync-sentence:last-child {
+  border-bottom: none;
+}
+
+/* ── Passage exercise (word formation text with inline gaps) ─────────── */
+.cu-passage-text {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px 18px;
+  font-size: 0.93rem;
+  line-height: 2.2;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+.cu-wf-gap-wrap {
+  display: inline;
+}
+
+/* ── Two-column matching exercise ────────────────────────────────────── */
+.cu-match-exercise {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cu-match-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .cu-match-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cu-match-left,
+.cu-match-right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cu-match-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.4;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.cu-match-right-item {
+  cursor: grab;
+  user-select: none;
+}
+
+.cu-match-right-item:active {
+  cursor: grabbing;
+}
+
+.cu-match-right-item.cu-match-dragging {
+  opacity: 0.5;
+  background: #dbeafe;
+  border-color: #3b82f6;
+}
+
+.cu-match-right-item.cu-match-drag-over {
+  background: #eff6ff;
+  border-color: #60a5fa;
+  border-style: dashed;
+}
+
+.cu-match-num,
+.cu-match-letter {
+  font-weight: 800;
+  font-size: 0.82rem;
+  min-width: 20px;
+  flex-shrink: 0;
+  color: #3b82f6;
+}
+
+.cu-match-letter {
+  color: #7c3aed;
+}
+
+.cu-match-correct {
+  background: #f0fdf4 !important;
+  border-color: #22c55e !important;
+}
+
+.cu-match-incorrect {
+  background: #fef2f2 !important;
+  border-color: #ef4444 !important;
+}
+
+/* ── Custom confirm dialog ───────────────────────────────────────────── */
+.cu-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+}
+
+.cu-confirm-dialog {
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px 32px 22px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.cu-confirm-message {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.cu-confirm-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.cu-confirm-btn {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  font-family: 'Nunito', sans-serif;
+}
+
+.cu-confirm-cancel {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.cu-confirm-cancel:hover {
+  background: #e2e8f0;
+}
+
+.cu-confirm-ok {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.cu-confirm-ok:hover {
+  background: #2563eb;
 }
