@@ -7,7 +7,10 @@
     {
       "type": "exercise",
       "title": "A: Word Formation",
-      "scoring": { "pointsPerItem": 2, "maxScore": 10 },
+      "scoring": {
+        "pointsPerItem": 2,
+        "maxScore": 10
+      },
       "instructions": "Use the word given in capitals to form a word that fits in the space.",
       "items": [
         {
@@ -35,7 +38,10 @@
     {
       "type": "exercise",
       "title": "B: Key Word Transformation",
-      "scoring": { "pointsPerItem": 2, "maxScore": 16 },
+      "scoring": {
+        "pointsPerItem": 2,
+        "maxScore": 16
+      },
       "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
       "items": [
         {
@@ -75,79 +81,176 @@
     {
       "type": "exercise",
       "title": "C: Idioms / Collocations",
-      "scoring": { "pointsPerItem": 1, "maxScore": 8 },
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 8
+      },
       "instructions": "Write one word in each gap.",
       "items": [
-        { "sentence": "You really have to have your ………………… about you when driving through Birmingham.", "answer": "wits" },
-        { "sentence": "It’s a typical example of not being able to see the ………………… for the trees.", "answer": "wood" },
-        { "sentence": "Bill Denver? That name rings a ………………… .", "answer": "bell" },
-        { "sentence": "Don’t let success go to your ………………… whatever you do!", "answer": "head" },
-        { "sentence": "We were kept completely in the ………………… about what was going on – they didn’t tell us anything!", "answer": "dark" },
-        { "sentence": "Am I going round the ………………… or did you just ask me to marry you?", "answer": "bend" },
-        { "sentence": "He’ll never win the court case. My solicitor says he doesn’t have a ………………… to stand on.", "answer": "leg" },
-        { "sentence": "Dawn’s a bit slow on the ………………… sometimes, so maybe she didn’t realise you were suggesting she gave you a job.", "answer": "uptake" }
+        {
+          "sentence": "You really have to have your ………………… about you when driving through Birmingham.",
+          "answer": "wits"
+        },
+        {
+          "sentence": "It’s a typical example of not being able to see the ………………… for the trees.",
+          "answer": "wood"
+        },
+        {
+          "sentence": "Bill Denver? That name rings a ………………… .",
+          "answer": "bell"
+        },
+        {
+          "sentence": "Don’t let success go to your ………………… whatever you do!",
+          "answer": "head"
+        },
+        {
+          "sentence": "We were kept completely in the ………………… about what was going on – they didn’t tell us anything!",
+          "answer": "dark"
+        },
+        {
+          "sentence": "Am I going round the ………………… or did you just ask me to marry you?",
+          "answer": "bend"
+        },
+        {
+          "sentence": "He’ll never win the court case. My solicitor says he doesn’t have a ………………… to stand on.",
+          "answer": "leg"
+        },
+        {
+          "sentence": "Dawn’s a bit slow on the ………………… sometimes, so maybe she didn’t realise you were suggesting she gave you a job.",
+          "answer": "uptake"
+        }
       ]
     },
     {
       "type": "exercise",
       "title": "D: Phrasal Verbs / Expressions",
-      "scoring": { "pointsPerItem": 1, "maxScore": 8 },
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 8
+      },
       "instructions": "Circle the correct word.",
       "items": [
-        { "sentence": "We’re still trying to part / piece / set together exactly what went wrong.", "answer": "piece" },
-        { "sentence": "It’s too much information for me to take / read / get in in one go.", "answer": "take" },
-        { "sentence": "You’d better create / think / work up a very good excuse why you didn’t come to the meeting.", "answer": "think" },
-        { "sentence": "Let me mull this about / in / over for a while and then I’ll get back to you.", "answer": "over" },
-        { "sentence": "Toni was totally opposed at first but I think she’s come / made / taken around to the idea now.", "answer": "come" },
-        { "sentence": "I think you should face up on / with / to the fact that our relationship’s over.", "answer": "to" },
-        { "sentence": "We’re still trying to figure / think / guess out how the burglars got in.", "answer": "figure" },
-        { "sentence": "I’m going to have to learn / swot / look up on what all the road signs mean before my driving test.", "answer": "swot" }
+        {
+          "sentence": "We’re still trying to **part / piece / set** together exactly what went wrong.",
+          "answer": "piece"
+        },
+        {
+          "sentence": "It’s too much information for me to **take / read / get** in in one go.",
+          "answer": "take"
+        },
+        {
+          "sentence": "You’d better **create / think / work** up a very good excuse why you didn’t come to the meeting.",
+          "answer": "think"
+        },
+        {
+          "sentence": "Let me mull this **about / in / over** for a while and then I’ll get back to you.",
+          "answer": "over"
+        },
+        {
+          "sentence": "Toni was totally opposed at first but I think she’s **come / made / taken** around to the idea now.",
+          "answer": "come"
+        },
+        {
+          "sentence": "I think you should face up **on / with / to** the fact that our relationship’s over.",
+          "answer": "to"
+        },
+        {
+          "sentence": "We’re still trying to **figure / think / guess** out how the burglars got in.",
+          "answer": "figure"
+        },
+        {
+          "sentence": "I’m going to have to **learn / swot / look** up on what all the road signs mean before my driving test.",
+          "answer": "swot"
+        }
       ]
     },
     {
       "type": "exercise",
       "title": "E: Multiple Choice",
-      "scoring": { "pointsPerItem": 1, "maxScore": 8 },
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 8
+      },
       "instructions": "Choose the correct answer.",
       "items": [
         {
           "sentence": "I'm in a real ...... and I just don't know what to do.",
-          "options": ["A dilemma", "C query", "B paradox", "D hunch"],
+          "options": [
+            "A dilemma",
+            "C query",
+            "B paradox",
+            "D hunch"
+          ],
           "answer": "A"
         },
         {
           "sentence": "They're staying in rented accommodation for the time ......",
-          "options": ["A going", "C doing", "B making", "D being"],
+          "options": [
+            "A going",
+            "C doing",
+            "B making",
+            "D being"
+          ],
           "answer": "D"
         },
         {
           "sentence": "Is it really the first time ...... first class?",
-          "options": ["A you ever fly", "C you've ever flown", "B you're ever flying", "D you've ever been flying"],
+          "options": [
+            "A you ever fly",
+            "C you've ever flown",
+            "B you're ever flying",
+            "D you've ever been flying"
+          ],
           "answer": "C"
         },
         {
           "sentence": "...... getting a pet tarantula?",
-          "options": ["A Does Claire really", "C Has Claire really think of", "B Is Claire really thinking of", "D Has Claire really been thinking that"],
+          "options": [
+            "A Does Claire really",
+            "C Has Claire really think of",
+            "B Is Claire really thinking of",
+            "D Has Claire really been thinking that"
+          ],
           "answer": "B"
         },
         {
           "sentence": "...... Alan for hours but he just doesn't answer his mobile. I hope nothing's wrong.",
-          "options": ["A I call", "C I've called", "B I'm calling", "D I've been calling"],
+          "options": [
+            "A I call",
+            "C I've called",
+            "B I'm calling",
+            "D I've been calling"
+          ],
           "answer": "D"
         },
         {
           "sentence": "Looking at your CV, I ...... you used to live in Australia.",
-          "options": ["A gather", "C am gathering", "B do gather", "D have gathered"],
+          "options": [
+            "A gather",
+            "C am gathering",
+            "B do gather",
+            "D have gathered"
+          ],
           "answer": "A"
         },
         {
           "sentence": "I ...... it's going to snow tonight, don't you?",
-          "options": ["A speculate", "C reckon", "B reflect", "D ponder"],
+          "options": [
+            "A speculate",
+            "C reckon",
+            "B reflect",
+            "D ponder"
+          ],
           "answer": "C"
         },
         {
           "sentence": "Have you finished with the paper yet? I've ...... started reading it!",
-          "options": ["A even", "C still", "B just", "D already"],
+          "options": [
+            "A even",
+            "C still",
+            "B just",
+            "D already"
+          ],
           "answer": "B"
         }
       ]
