@@ -1313,9 +1313,10 @@
       if (checkBtn) checkBtn.disabled = false;
       var retryBtn = sec.querySelector('.cu-retry-btn');
       if (retryBtn) retryBtn.style.display = 'none';
-      // Reset show/hide answers button
+      // Restore show/hide answers button
       var showBtn = sec.querySelector('.cu-show-all-btn');
       if (showBtn) {
+        showBtn.style.display = '';
         var showIcon = showBtn.querySelector('.material-symbols-outlined');
         if (showIcon) showIcon.textContent = 'visibility';
         var textNode = showBtn.lastChild;
@@ -1325,19 +1326,23 @@
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) {
         input.value = '';
         input.disabled = false;
-        input.classList.remove('cu-input-correct', 'cu-input-incorrect');
+        input.classList.remove('cu-input-correct', 'cu-input-incorrect', 'cu-input-show-correct');
+        input.removeAttribute('data-student-value');
+        input.removeAttribute('data-correct-value');
       });
+      // Remove per-item toggle buttons
+      sec.querySelectorAll('.cu-item-toggle-btn').forEach(function(btn) { btn.remove(); });
       // Reset option buttons (inline word-choice and MC)
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) {
         btn.disabled = false;
-        btn.classList.remove('cu-option-selected', 'cu-option-correct', 'cu-option-incorrect');
+        btn.classList.remove('cu-option-selected', 'cu-option-correct', 'cu-option-incorrect', 'cu-option-correct-reveal');
       });
       // Hide answer divs
       sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'none'; });
       // Reset yn (yes/no) buttons
       sec.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
         btn.disabled = false;
-        btn.classList.remove('cu-yn-selected', 'cu-yn-correct', 'cu-yn-incorrect');
+        btn.classList.remove('cu-yn-selected', 'cu-yn-correct', 'cu-yn-incorrect', 'cu-yn-correct-reveal');
       });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
@@ -2919,17 +2924,22 @@
           var btns = ynGroups[g];
           btns.forEach(function(b) { b.classList.remove('cu-yn-correct', 'cu-yn-incorrect'); b.disabled = true; });
         });
+        var wasCorrect = false;
         if (selected) {
           var given = (selected.getAttribute('data-yn') || '').toUpperCase();
-          var ok = given === answer;
-          selected.classList.add(ok ? 'cu-yn-correct' : 'cu-yn-incorrect');
-          if (ok) correctItems++;
+          wasCorrect = given === answer;
+          selected.classList.add(wasCorrect ? 'cu-yn-correct' : 'cu-yn-incorrect');
+          if (wasCorrect) correctItems++;
         }
-        // If nothing selected, the item was unanswered: count as incorrect (correctItems stays same)
-        var ansDiv = item.querySelector('.cu-answer');
-        if (ansDiv && selected) {
-          var givenForDisplay = (selected.getAttribute('data-yn') || '').toUpperCase();
-          if (givenForDisplay !== answer) ansDiv.style.display = 'block';
+        // Mark the correct button whenever student was wrong or nothing was selected
+        if (!wasCorrect) {
+          Object.keys(ynGroups).forEach(function(g) {
+            ynGroups[g].forEach(function(b) {
+              if ((b.getAttribute('data-yn') || '').toUpperCase() === answer) {
+                b.classList.add('cu-yn-correct-reveal');
+              }
+            });
+          });
         }
       });
       // Handle matching exercise
@@ -3017,14 +3027,29 @@
           var btns = optGroups[gId];
           var selected = null;
           btns.forEach(function(b) { if (b.classList.contains('cu-option-selected')) selected = b; });
-          btns.forEach(function(b) { b.classList.remove('cu-option-correct', 'cu-option-incorrect'); });
+          btns.forEach(function(b) { b.classList.remove('cu-option-correct', 'cu-option-incorrect', 'cu-option-correct-reveal'); });
           if (selected) {
             var selectedText = selected.textContent.trim().toLowerCase();
             var matched = answerParts.some(function(ap) { return ap.trim().toLowerCase() === selectedText; });
             selected.classList.add(matched ? 'cu-option-correct' : 'cu-option-incorrect');
-            if (!matched) allCorrect = false;
+            // Mark the correct button if student chose wrong
+            if (!matched) {
+              btns.forEach(function(b) {
+                var bText = b.textContent.trim().toLowerCase();
+                if (b !== selected && answerParts.some(function(ap) { return ap.trim().toLowerCase() === bText; })) {
+                  b.classList.add('cu-option-correct-reveal');
+                }
+              });
+              allCorrect = false;
+            }
           } else {
-            // Nothing selected — counts as incorrect
+            // Nothing selected — mark correct option and count as incorrect
+            btns.forEach(function(b) {
+              var bText = b.textContent.trim().toLowerCase();
+              if (answerParts.some(function(ap) { return ap.trim().toLowerCase() === bText; })) {
+                b.classList.add('cu-option-correct-reveal');
+              }
+            });
             allCorrect = false;
           }
         });
@@ -3033,23 +3058,76 @@
           var btns = mcGroups[gId];
           var selected = null;
           btns.forEach(function(b) { if (b.classList.contains('cu-option-selected')) selected = b; });
-          btns.forEach(function(b) { b.classList.remove('cu-option-correct', 'cu-option-incorrect'); });
+          btns.forEach(function(b) { b.classList.remove('cu-option-correct', 'cu-option-incorrect', 'cu-option-correct-reveal'); });
           if (selected) {
             var letter = (selected.getAttribute('data-mc-letter') || '').trim().toUpperCase();
             var matched = answerParts.some(function(ap) { return ap.trim().toUpperCase() === letter; });
             selected.classList.add(matched ? 'cu-option-correct' : 'cu-option-incorrect');
-            if (!matched) allCorrect = false;
+            // Mark the correct button if student chose wrong
+            if (!matched) {
+              btns.forEach(function(b) {
+                var bLetter = (b.getAttribute('data-mc-letter') || '').trim().toUpperCase();
+                if (b !== selected && answerParts.some(function(ap) { return ap.trim().toUpperCase() === bLetter; })) {
+                  b.classList.add('cu-option-correct-reveal');
+                }
+              });
+              allCorrect = false;
+            }
           } else {
+            // Nothing selected — mark correct option and count as incorrect
+            btns.forEach(function(b) {
+              var bLetter = (b.getAttribute('data-mc-letter') || '').trim().toUpperCase();
+              if (answerParts.some(function(ap) { return ap.trim().toUpperCase() === bLetter; })) {
+                b.classList.add('cu-option-correct-reveal');
+              }
+            });
             allCorrect = false;
           }
         });
         if (allCorrect) correctItems++;
-        // Show answer div for incorrect items
-        var ansDiv = item.querySelector('.cu-answer');
-        if (ansDiv && !allCorrect) ansDiv.style.display = 'block';
+        // For incorrect items with text inputs (not MC/choice which show correct via button reveal), add a per-item toggle button
+        var hasNoOptionGroups = Object.keys(optGroups).length === 0 && Object.keys(mcGroups).length === 0;
+        var hasWrongInput = inputs.length > 0 && !allCorrect && hasNoOptionGroups;
+        if (hasWrongInput) {
+          // Store student answers and correct answers on inputs
+          inputs.forEach(function(inp, i) {
+            inp.setAttribute('data-student-value', inp.value || '');
+            var correctRaw = (answerParts[i] || '').trim();
+            // Pick first alternative for display
+            inp.setAttribute('data-correct-value', correctRaw.split(/\s*\/\s*/)[0].trim());
+            // For sync items, propagate to all siblings in the group
+            if (isSyncItem) {
+              var syncGroup = inp.getAttribute('data-sync-group');
+              if (syncGroup) {
+                item.querySelectorAll('.cu-sync-input[data-sync-group="' + syncGroup + '"]').forEach(function(syncInp) {
+                  syncInp.setAttribute('data-student-value', syncInp.value || '');
+                  syncInp.setAttribute('data-correct-value', correctRaw.split(/\s*\/\s*/)[0].trim());
+                });
+              }
+            }
+          });
+          var foot = item.querySelector('.cu-ex-foot');
+          if (foot && !foot.querySelector('.cu-item-toggle-btn')) {
+            var toggleBtn = document.createElement('button');
+            toggleBtn.type = 'button';
+            toggleBtn.className = 'cu-item-toggle-btn';
+            toggleBtn.setAttribute('data-mode', 'student');
+            toggleBtn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> Show correct answer';
+            (function(capturedItem) {
+              toggleBtn.addEventListener('click', function() { BentoGrid._toggleCuItemAnswer(this, capturedItem); });
+            })(item);
+            // Hide the static answer div — the toggle button replaces it
+            var ansDiv = item.querySelector('.cu-answer');
+            if (ansDiv) ansDiv.style.display = 'none';
+            foot.appendChild(toggleBtn);
+          }
+        }
       });
       var checkBtn = sec.querySelector('.cu-check-btn');
       if (checkBtn) checkBtn.disabled = true;
+      // Hide "Show answers" button — per-item toggles replace it after checking
+      var showBtn = sec.querySelector('.cu-show-all-btn');
+      if (showBtn) showBtn.style.display = 'none';
       // Disable all inputs and option buttons
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) { input.disabled = true; });
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) { btn.disabled = true; });
@@ -3139,6 +3217,30 @@
       var sec = document.getElementById(sectionId);
       if (!sec) return;
       sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'block'; });
+    },
+
+    // Toggle per-item answer: switches input values between student answer and correct answer
+    _toggleCuItemAnswer: function(btn, item) {
+      var mode = btn.getAttribute('data-mode');
+      var newMode = mode === 'student' ? 'correct' : 'student';
+      btn.setAttribute('data-mode', newMode);
+      // Update all gap inputs in this item
+      item.querySelectorAll('.cu-gap-input').forEach(function(inp) {
+        if (newMode === 'correct') {
+          inp.value = inp.getAttribute('data-correct-value') || '';
+          inp.classList.remove('cu-input-incorrect');
+          inp.classList.add('cu-input-show-correct');
+        } else {
+          inp.value = inp.getAttribute('data-student-value') || '';
+          inp.classList.remove('cu-input-show-correct');
+          inp.classList.add('cu-input-incorrect');
+        }
+      });
+      if (newMode === 'correct') {
+        btn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> Show your answer';
+      } else {
+        btn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> Show correct answer';
+      }
     },
 
     _updateRoadmapActiveItem: function(idx) {
