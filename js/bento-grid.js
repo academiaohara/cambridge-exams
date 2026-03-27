@@ -2164,15 +2164,17 @@
       // Build dots navigation bar above all sections
       var dotsHtml = '<div class="cu-dots-nav" id="cu-dots-nav">';
       var theoryDotCount = 0;
+      var vocabDotCount = 0;
       var exerciseDotCount = 0;
       for (var d = 0; d < total; d++) {
         var sec = sections[d];
         var isTheory = sec.classList.contains('cu-theory');
-        var dotTypeClass = isTheory ? 'cu-dot-theory' : 'cu-dot-exercise';
+        var isVocab = sec.classList.contains('cu-vocab');
+        var dotTypeClass = isTheory ? 'cu-dot-theory' : (isVocab ? 'cu-dot-vocab' : 'cu-dot-exercise');
         var activeClass = d === startIdx ? ' cu-dot-active' : '';
         var titleEl = sec.querySelector('.cu-section-title');
         var titleText = titleEl ? titleEl.textContent.trim().replace(/"/g, '&quot;') : String(d + 1);
-        var dotLabel = isTheory ? String(++theoryDotCount) : String.fromCharCode(65 + exerciseDotCount++);
+        var dotLabel = isTheory ? String(++theoryDotCount) : (isVocab ? String(++vocabDotCount) : String.fromCharCode(65 + exerciseDotCount++));
         dotsHtml += '<button class="cu-dot-nav ' + dotTypeClass + activeClass + '" ' +
           'onclick="BentoGrid._showCuSection(' + d + ')" ' +
           'title="' + titleText + '">' + dotLabel + '</button>';
