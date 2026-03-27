@@ -993,7 +993,7 @@
           html += self._renderCuWordBank(section.words);
 
           var items = section.items || [];
-          var hasInteractive = items.some(function(it) { return !!(it && it.sentence); });
+          var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
           html += '<div class="cu-ex-items">';
           html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
           html += '</div>';
@@ -1109,7 +1109,7 @@
           if (ex.instructions) html += '<div class="cu-ex-instructions">' + _bold(ex.instructions) + '</div>';
           html += self._renderCuWordBank(ex.words);
           var questions = ex.questions || [];
-          var hasInteractive = questions.some(function(q) { return !!(q && q.sentence); });
+          var hasInteractive = questions.some(function(q) { return self._itemHasInteractive(q); });
           html += '<div class="cu-ex-items">';
           html += self._renderCuExItemsList(questions, 'vc-' + key.replace(/\W+/g, ''), secId);
           html += '</div>';
@@ -1170,7 +1170,7 @@
           var reviewUnitId = BentoGrid._currentUnitId || '';
           var pointsPerItem = (section.scoring && section.scoring.pointsPerItem) || 1;
           var rvItems = section.items || [];
-          var hasInteractiveRv = rvItems.some(function(it) { return !!(it && it.sentence); });
+          var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
           html += self._renderCuExItemsList(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
           html += '</div>';
           if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
@@ -1182,6 +1182,10 @@
     },
 
     // --- Interactive exercise item helpers ---
+
+    _itemHasInteractive: function(item) {
+      return !!(item && (item.sentence || item.sentenceA !== undefined || item.sentenceB !== undefined));
+    },
 
     _renderCuWordBank: function(words) {
       var self = this;
@@ -1304,9 +1308,34 @@
 
     _renderCourseExItem: function(item, idx, idBase, trackCallback) {
       var self = this;
-      var sentence = item.sentence || '';
       var answer = item.answer || '';
       var inputId = 'cuex-' + idBase;
+
+      // Handle paired-sentence format (sentenceA / sentenceB) – e.g. Stative vs Active
+      if (item.sentenceA !== undefined || item.sentenceB !== undefined) {
+        var rawA = (item.sentenceA || '').replace(/^A[.):\s]\s*/, '');
+        var rawB = (item.sentenceB || '').replace(/^B[.):\s]\s*/, '');
+        return '<div class="cu-ex-item cu-ex-item-kwtrans" data-answer="' + self._escapeHTML(answer) + '">' +
+          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          '<div class="cu-ex-sentence">' +
+            '<div class="cu-ex-kwtrans">' +
+              '<div class="cu-ex-kwtrans-row">' +
+                '<span class="cu-ex-kwtrans-label">A</span>' +
+                '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(rawA, inputId + '_a') + '</div>' +
+              '</div>' +
+              '<div class="cu-ex-kwtrans-row">' +
+                '<span class="cu-ex-kwtrans-label">B</span>' +
+                '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(rawB, inputId + '_b') + '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="cu-ex-foot">' +
+            '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
+          '</div>' +
+        '</div>';
+      }
+
+      var sentence = item.sentence || '';
       var isKWT = sentence.indexOf('\n') !== -1;
       var isMC = !!(item.options && item.options.length);
 
@@ -2060,6 +2089,8 @@
 
       // Build dots navigation bar above all sections
       var dotsHtml = '<div class="cu-dots-nav" id="cu-dots-nav">';
+      var theoryDotCount = 0;
+      var exerciseDotCount = 0;
       for (var d = 0; d < total; d++) {
         var sec = sections[d];
         var isTheory = sec.classList.contains('cu-theory');
@@ -2067,9 +2098,10 @@
         var activeClass = d === startIdx ? ' cu-dot-active' : '';
         var titleEl = sec.querySelector('.cu-section-title');
         var titleText = titleEl ? titleEl.textContent.trim().replace(/"/g, '&quot;') : String(d + 1);
+        var dotLabel = isTheory ? String(++theoryDotCount) : String.fromCharCode(65 + exerciseDotCount++);
         dotsHtml += '<button class="cu-dot-nav ' + dotTypeClass + activeClass + '" ' +
           'onclick="BentoGrid._showCuSection(' + d + ')" ' +
-          'title="' + titleText + '">' + (d + 1) + '</button>';
+          'title="' + titleText + '">' + dotLabel + '</button>';
       }
       dotsHtml += '</div>';
       container.insertAdjacentHTML('afterbegin', dotsHtml);
