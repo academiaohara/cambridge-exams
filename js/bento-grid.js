@@ -2936,6 +2936,20 @@
       BentoGrid._doCheckCuExSection(sec);
     },
 
+    // Returns option group keys sorted by their _oN DOM-order suffix
+    _sortedOptGroupKeys: function(optGroups) {
+      return Object.keys(optGroups).sort(function(a, b) {
+        var ai = parseInt((a.match(/_o(\d+)$/) || ['', '0'])[1]);
+        var bi = parseInt((b.match(/_o(\d+)$/) || ['', '0'])[1]);
+        return ai - bi;
+      });
+    },
+
+    // Splits an answer part by '/' and returns trimmed lowercase alternatives
+    _answerAlts: function(answerPart) {
+      return (answerPart || '').trim().split(/\s*\/\s*/).map(function(a) { return a.trim().toLowerCase(); }).filter(Boolean);
+    },
+
     _doCheckCuExSection: function(sec) {
       var totalItems = 0;
       var correctItems = 0;
@@ -3107,30 +3121,33 @@
           partIdx++;
         });
         // Inline word-choice buttons (e.g. **word/word/word**)
-        Object.keys(optGroups).forEach(function(gId) {
+        // Sort groups in DOM order by their _oN suffix so answer parts map correctly
+        BentoGrid._sortedOptGroupKeys(optGroups).forEach(function(gId, gIdx) {
           var btns = optGroups[gId];
+          // Each option group maps to the next answer part after all text inputs
+          var gAlts = BentoGrid._answerAlts(answerParts[partIdx + gIdx]);
           var selected = null;
           btns.forEach(function(b) { if (b.classList.contains('cu-option-selected')) selected = b; });
           btns.forEach(function(b) { b.classList.remove('cu-option-correct', 'cu-option-incorrect', 'cu-option-correct-reveal'); });
           if (selected) {
             var selectedText = selected.textContent.trim().toLowerCase();
-            var matched = answerParts.some(function(ap) { return ap.trim().toLowerCase() === selectedText; });
+            var matched = gAlts.some(function(a) { return a === selectedText; });
             selected.classList.add(matched ? 'cu-option-correct' : 'cu-option-incorrect');
-            // Mark the correct button if student chose wrong
+            // Mark the correct button(s) if student chose wrong
             if (!matched) {
               btns.forEach(function(b) {
                 var bText = b.textContent.trim().toLowerCase();
-                if (b !== selected && answerParts.some(function(ap) { return ap.trim().toLowerCase() === bText; })) {
+                if (b !== selected && gAlts.some(function(a) { return a === bText; })) {
                   b.classList.add('cu-option-correct-reveal');
                 }
               });
               allCorrect = false;
             }
           } else {
-            // Nothing selected — mark correct option and count as incorrect
+            // Nothing selected — mark correct option(s) and count as incorrect
             btns.forEach(function(b) {
               var bText = b.textContent.trim().toLowerCase();
-              if (answerParts.some(function(ap) { return ap.trim().toLowerCase() === bText; })) {
+              if (gAlts.some(function(a) { return a === bText; })) {
                 b.classList.add('cu-option-correct-reveal');
               }
             });
@@ -3333,10 +3350,13 @@
             var g = b.getAttribute('data-group');
             if (g) { if (!optGroups[g]) optGroups[g] = []; optGroups[g].push(b); }
           });
-          Object.keys(optGroups).forEach(function(gId) {
+          // Sort groups in DOM order by their _oN suffix so answer parts map correctly
+          BentoGrid._sortedOptGroupKeys(optGroups).forEach(function(gId, gIdx) {
+            // Option groups start at answer part index = number of text inputs
+            var gAlts = BentoGrid._answerAlts(answerParts[inputs.length + gIdx]);
             optGroups[gId].forEach(function(b) {
               var bText = b.textContent.trim().toLowerCase();
-              if (answerParts.some(function(ap) { return ap.trim().toLowerCase() === bText; })) {
+              if (gAlts.some(function(a) { return a === bText; })) {
                 b.classList.add('cu-option-correct-reveal');
               }
             });
