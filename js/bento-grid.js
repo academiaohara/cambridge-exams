@@ -1382,7 +1382,7 @@
         allRightItems.sort(function(a, b) {
           var la = a.getAttribute('data-letter') || '';
           var lb = b.getAttribute('data-letter') || '';
-          return la < lb ? -1 : la > lb ? 1 : 0;
+          return la.localeCompare(lb);
         });
         var rows = matchExercise.querySelectorAll('.cu-match-row');
         rows.forEach(function(row, idx) {
@@ -1636,7 +1636,7 @@
       });
       // Sort right-column items alphabetically A→G (never shuffled)
       var rightItems = items.map(function(it) { return { letter: it.letter, ending: it.ending }; });
-      rightItems.sort(function(a, b) { return a.letter < b.letter ? -1 : a.letter > b.letter ? 1 : 0; });
+      rightItems.sort(function(a, b) { return a.letter.localeCompare(b.letter); });
       var html = '<div class="cu-match-exercise" data-sec-id="' + secId + '">';
       // Table layout: each row contains a left item and a right item so heights stay aligned
       html += '<table class="cu-match-table"><tbody>';
@@ -3540,6 +3540,7 @@
     },
 
     _updateRoadmapActiveItem: function(idx) {
+      var widget = document.querySelector('.course-roadmap-widget');
       if (!widget) return;
       // Remove active from all items
       widget.querySelectorAll('.course-roadmap-item').forEach(function(item) {
