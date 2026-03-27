@@ -315,6 +315,11 @@
         .replace(/"/g, '&quot;');
     },
 
+    // Extract display text from an MC option string like "A special" or "A. special"
+    _getCuMcOptionText: function(optionStr) {
+      return (optionStr || '').slice(1).replace(/^[.)\s]+/, '').trim();
+    },
+
     selectMode: function(mode) {
       if (typeof Dashboard !== 'undefined' && Dashboard.renderSubpage) {
         var modeState = { view: 'subpage', mode: mode };
@@ -1357,14 +1362,22 @@
       });
       // Reset MC passage gaps
       sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
-        gap.classList.remove('cu-mc-passage-gap-answered', 'cu-mc-passage-gap-correct', 'cu-mc-passage-gap-incorrect');
+        gap.classList.remove('cu-mc-passage-gap-answered', 'cu-mc-passage-gap-correct', 'cu-mc-passage-gap-incorrect', 'cu-mc-passage-gap-show-correct');
         gap.style.pointerEvents = '';
         var slot = gap.querySelector('.cu-mc-passage-gap-slot');
         if (slot) { slot.textContent = ''; slot.className = 'cu-mc-passage-gap-slot'; }
         var secId = gap.getAttribute('data-sec-id');
         var gapNum = parseInt(gap.getAttribute('data-gap-num') || '0');
         if (secId && BentoGrid._cuMcPassageAnswers[secId]) delete BentoGrid._cuMcPassageAnswers[secId][gapNum];
+        gap.removeAttribute('data-check-class');
+        gap.removeAttribute('data-student-text');
+        gap.removeAttribute('data-correct-text');
+        gap.removeAttribute('data-saved-gap-classes');
+        gap.removeAttribute('data-saved-slot-text');
+        gap.removeAttribute('data-saved-slot-class');
       });
+      // Remove MC passage view-toggle buttons
+      sec.querySelectorAll('.cu-mc-passage-view-btn').forEach(function(btn) { btn.remove(); });
       // Reset matching exercise: re-sort right column to A–G order and re-enable drag
       var matchExercise = sec.querySelector('.cu-match-exercise');
       if (matchExercise) {
@@ -1592,7 +1605,7 @@
       html += '<div class="options-grid">';
       qData.options.forEach(function(opt) {
         var letter = opt.charAt(0).toUpperCase();
-        var text = BentoGrid._escapeHTML(opt.slice(1).replace(/^[.)\s]+/, '').trim());
+        var text = BentoGrid._escapeHTML(BentoGrid._getCuMcOptionText(opt));
         html += '<button class="opt-btn" onclick="BentoGrid._selectCuMcAnswer(\'' + secId + '\',' + gapNum + ',\'' + letter + '\',\'' + text.replace(/'/g, "\\'") + '\')">' + text + '</button>';
       });
       html += '</div>';
@@ -2953,8 +2966,10 @@
     _doCheckCuExSection: function(sec) {
       var totalItems = 0;
       var correctItems = 0;
+      var hasMcPassage = false;
       // Handle MC passage exercises (multiple-choice cloze, e.g. Exercise D)
       sec.querySelectorAll('.cu-mc-passage-exercise').forEach(function(mcPassage) {
+        hasMcPassage = true;
         mcPassage.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
           totalItems++;
           var gapNum = parseInt(gap.getAttribute('data-gap-num') || '0');
@@ -2962,12 +2977,57 @@
           var expected = (gap.getAttribute('data-answer') || '').trim().toUpperCase();
           var given = ((BentoGrid._cuMcPassageAnswers[secId] || {})[gapNum] || '').trim().toUpperCase();
           var ok = given !== '' && given === expected;
-          gap.classList.remove('cu-mc-passage-gap-correct', 'cu-mc-passage-gap-incorrect');
-          if (given !== '') gap.classList.add(ok ? 'cu-mc-passage-gap-correct' : 'cu-mc-passage-gap-incorrect');
+
+          // Resolve option texts for view toggling
+          var qData = (BentoGrid._cuMcPassageData[secId] || {})[gapNum];
+          var correctOpt = qData ? qData.options.find(function(o) { return o.charAt(0).toUpperCase() === expected; }) : null;
+          var correctText = correctOpt ? BentoGrid._getCuMcOptionText(correctOpt) : expected;
+          var studentOpt = (given && qData) ? qData.options.find(function(o) { return o.charAt(0).toUpperCase() === given; }) : null;
+          var studentText = studentOpt ? BentoGrid._getCuMcOptionText(studentOpt) : '';
+          gap.setAttribute('data-correct-text', correctText);
+          gap.setAttribute('data-student-text', studentText);
+
+          gap.classList.remove('cu-mc-passage-gap-correct', 'cu-mc-passage-gap-incorrect', 'cu-mc-passage-gap-show-correct');
+          var slot = gap.querySelector('.cu-mc-passage-gap-slot');
+          if (given !== '') {
+            var checkClass = ok ? 'cu-mc-passage-gap-correct' : 'cu-mc-passage-gap-incorrect';
+            gap.classList.add(checkClass);
+            gap.setAttribute('data-check-class', checkClass);
+          } else {
+            // Unanswered: show correct answer in blue
+            gap.classList.add('cu-mc-passage-gap-show-correct');
+            gap.setAttribute('data-check-class', 'cu-mc-passage-gap-show-correct');
+            if (slot) {
+              slot.textContent = correctText;
+              slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
+            }
+          }
           gap.style.pointerEvents = 'none';
           if (ok) correctItems++;
         });
       });
+      // Add view-toggle buttons for MC passage sections
+      if (hasMcPassage) {
+        var footer = sec.querySelector('.cu-ex-footer');
+        if (footer && !footer.querySelector('.cu-mc-passage-view-btn')) {
+          var yourBtn = document.createElement('button');
+          yourBtn.type = 'button';
+          yourBtn.className = 'cu-mc-passage-view-btn cu-mc-passage-view-active';
+          yourBtn.setAttribute('data-view', 'yours');
+          yourBtn.innerHTML = '<span class="material-symbols-outlined">person</span> Your answers';
+          var correctViewBtn = document.createElement('button');
+          correctViewBtn.type = 'button';
+          correctViewBtn.className = 'cu-mc-passage-view-btn';
+          correctViewBtn.setAttribute('data-view', 'correct');
+          correctViewBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Correct answers';
+          (function(capturedSec) {
+            yourBtn.addEventListener('click', function() { BentoGrid._setCuMcPassageView(capturedSec, 'yours'); });
+            correctViewBtn.addEventListener('click', function() { BentoGrid._setCuMcPassageView(capturedSec, 'correct'); });
+          })(sec);
+          footer.appendChild(yourBtn);
+          footer.appendChild(correctViewBtn);
+        }
+      }
       // Handle passage exercises (word formation passage like Exercise O)
       sec.querySelectorAll('.cu-passage-exercise').forEach(function(passageEl) {
         passageEl.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(input) {
@@ -3428,6 +3488,29 @@
           });
         }
 
+        // MC passage gaps: show correct answers in blue
+        sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
+          var secId = gap.getAttribute('data-sec-id') || '';
+          var gapNum = parseInt(gap.getAttribute('data-gap-num') || '0');
+          var expected = (gap.getAttribute('data-answer') || '').trim().toUpperCase();
+          var qData = (BentoGrid._cuMcPassageData[secId] || {})[gapNum];
+          var correctOpt = qData ? qData.options.find(function(o) { return o.charAt(0).toUpperCase() === expected; }) : null;
+          var correctText = correctOpt ? BentoGrid._getCuMcOptionText(correctOpt) : expected;
+          var slot = gap.querySelector('.cu-mc-passage-gap-slot');
+          // Save current state
+          gap.setAttribute('data-saved-gap-classes', gap.classList.toString());
+          if (slot) {
+            gap.setAttribute('data-saved-slot-text', slot.textContent);
+            gap.setAttribute('data-saved-slot-class', slot.className);
+          }
+          // Apply show-correct style
+          gap.classList.remove('cu-mc-passage-gap-answered');
+          gap.classList.add('cu-mc-passage-gap-show-correct');
+          if (slot) {
+            slot.textContent = correctText;
+            slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
+          }
+        });
       } else {
         // Hide answers: restore original values
         sec.setAttribute('data-answers-showing', 'false');
@@ -3470,6 +3553,23 @@
           });
           matchExercise.removeAttribute('data-saved-letters');
         }
+
+        // Restore MC passage gaps to their saved state
+        sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
+          var slot = gap.querySelector('.cu-mc-passage-gap-slot');
+          if (gap.hasAttribute('data-saved-gap-classes')) {
+            gap.className = gap.getAttribute('data-saved-gap-classes');
+            gap.removeAttribute('data-saved-gap-classes');
+          } else {
+            gap.classList.remove('cu-mc-passage-gap-show-correct');
+          }
+          if (slot) {
+            if (gap.hasAttribute('data-saved-slot-text')) slot.textContent = gap.getAttribute('data-saved-slot-text');
+            if (gap.hasAttribute('data-saved-slot-class')) slot.className = gap.getAttribute('data-saved-slot-class');
+          }
+          gap.removeAttribute('data-saved-slot-text');
+          gap.removeAttribute('data-saved-slot-class');
+        });
       }
     },
 
@@ -3477,6 +3577,42 @@
       var sec = document.getElementById(sectionId);
       if (!sec) return;
       sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'block'; });
+    },
+
+    // Toggle MC passage exercise view between 'yours' (student results) and 'correct' (all correct in blue)
+    _setCuMcPassageView: function(sec, view) {
+      // Update button active states
+      sec.querySelectorAll('.cu-mc-passage-view-btn').forEach(function(btn) {
+        btn.classList.toggle('cu-mc-passage-view-active', btn.getAttribute('data-view') === view);
+      });
+      sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
+        var slot = gap.querySelector('.cu-mc-passage-gap-slot');
+        var correctText = gap.getAttribute('data-correct-text') || '';
+        var studentText = gap.getAttribute('data-student-text') || '';
+        var checkClass = gap.getAttribute('data-check-class') || 'cu-mc-passage-gap-show-correct';
+        gap.classList.remove('cu-mc-passage-gap-correct', 'cu-mc-passage-gap-incorrect', 'cu-mc-passage-gap-show-correct');
+        if (view === 'correct') {
+          // All gaps in blue showing correct answers
+          gap.classList.add('cu-mc-passage-gap-show-correct');
+          if (slot) {
+            slot.textContent = correctText;
+            slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
+          }
+        } else {
+          // 'yours': restore post-check state
+          gap.classList.add(checkClass);
+          if (slot) {
+            if (checkClass === 'cu-mc-passage-gap-show-correct') {
+              // Unanswered: show correct in blue
+              slot.textContent = correctText;
+            } else {
+              // Answered: show student's text (correct or wrong)
+              slot.textContent = studentText;
+            }
+            slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
+          }
+        }
+      });
     },
 
 
