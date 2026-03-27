@@ -1102,32 +1102,41 @@
         html += '<div class="cu-section cu-wf cu-vocab" id="cu-sec-' + (sectionIndex++) + '">' +
           '<div class="cu-section-title">' + _mi('spellcheck') + ' Word Formation</div>' +
           '<div class="cu-wf-list">';
-        // Chip colour definitions as explicit rgba values to avoid hex-alpha concatenation issues
+        // POS colour definitions (noun=blue, verb=green, adjective=purple, adverb=orange)
+        var wfPosColors = {
+          noun:      { text: '#1d4ed8', bg: 'rgba(29,78,216,0.09)',  border: 'rgba(29,78,216,0.28)'  },
+          verb:      { text: '#059669', bg: 'rgba(5,150,105,0.09)',  border: 'rgba(5,150,105,0.28)'  },
+          adjective: { text: '#7c3aed', bg: 'rgba(124,58,237,0.09)', border: 'rgba(124,58,237,0.28)' },
+          adverb:    { text: '#d97706', bg: 'rgba(217,119,6,0.09)',  border: 'rgba(217,119,6,0.28)'  }
+        };
+        // Fallback cycling colours for unlabelled derivatives
         var wfChipDefs = [
-          { text: '#1d4ed8', bg: 'rgba(29,78,216,0.08)',  border: 'rgba(29,78,216,0.25)'  },
-          { text: '#059669', bg: 'rgba(5,150,105,0.08)',  border: 'rgba(5,150,105,0.25)'  },
-          { text: '#7c3aed', bg: 'rgba(124,58,237,0.08)', border: 'rgba(124,58,237,0.25)' },
-          { text: '#be185d', bg: 'rgba(190,24,93,0.08)',  border: 'rgba(190,24,93,0.25)'  },
-          { text: '#d97706', bg: 'rgba(217,119,6,0.08)',  border: 'rgba(217,119,6,0.25)'  }
+          wfPosColors.noun, wfPosColors.verb, wfPosColors.adjective, wfPosColors.adverb,
+          { text: '#be185d', bg: 'rgba(190,24,93,0.09)', border: 'rgba(190,24,93,0.28)' }
         ];
         sections.word_formation.forEach(function(wf) {
           var base = wf.base || wf.root || '';
-          var derivatives = wf.derivatives || [];
-          // Fallback: build from noun/verb/adjective/adverb fields if no derivatives array
-          if (!derivatives.length) {
-            var parts = [];
-            if (wf.noun) parts = parts.concat(Array.isArray(wf.noun) ? wf.noun : [wf.noun]);
-            if (wf.verb) parts = parts.concat(Array.isArray(wf.verb) ? wf.verb : [wf.verb]);
-            if (wf.adjective) parts = parts.concat(Array.isArray(wf.adjective) ? wf.adjective : [wf.adjective]);
-            if (wf.adverb) parts = parts.concat(Array.isArray(wf.adverb) ? wf.adverb : [wf.adverb]);
-            derivatives = parts;
+          // Build labelled derivative list from POS-categorised fields when available
+          var labelledDerivs = [];
+          var hasCategories = wf.noun || wf.verb || wf.adjective || wf.adverb;
+          if (hasCategories) {
+            ['noun', 'verb', 'adjective', 'adverb'].forEach(function(pos) {
+              if (!wf[pos]) return;
+              var words = Array.isArray(wf[pos]) ? wf[pos] : [wf[pos]];
+              words.forEach(function(w) { labelledDerivs.push({ word: w, pos: pos }); });
+            });
+          } else {
+            // Plain derivatives array – fall back to index-based cycling colours
+            var derivatives = wf.derivatives || [];
+            derivatives.forEach(function(d, di) { labelledDerivs.push({ word: d, pos: null, idx: di }); });
           }
           html += '<div class="cu-wf-item">' +
             '<span class="cu-wf-base">' + self._escapeHTML(base) + '</span>' +
             '<div class="cu-theory-chips cu-wf-chips">';
-          derivatives.forEach(function(d, di) {
-            var chip = wfChipDefs[di % wfChipDefs.length];
-            html += '<span class="cu-theory-chip cu-wf-chip" style="color:' + chip.text + ';background:' + chip.bg + ';border-color:' + chip.border + '">' + self._escapeHTML(d) + '</span>';
+          labelledDerivs.forEach(function(item, di) {
+            var chip = item.pos ? (wfPosColors[item.pos] || wfChipDefs[di % wfChipDefs.length]) : wfChipDefs[(item.idx !== undefined ? item.idx : di) % wfChipDefs.length];
+            var posClass = item.pos ? ' cu-wf-chip-' + item.pos : '';
+            html += '<span class="cu-theory-chip cu-wf-chip' + posClass + '" style="color:' + chip.text + ';background:' + chip.bg + ';border-color:' + chip.border + '">' + self._escapeHTML(item.word) + '</span>';
           });
           html += '</div></div>';
         });
@@ -1167,6 +1176,9 @@
             html += self._renderCuSyncItems(questions, idBase, secId);
             html += '</div>';
             if (questions.length) html += self._renderCuExFooter(secId);
+          } else if (ex.passage && questions.length && questions[0] && questions[0].options) {
+            // Multiple-choice passage (e.g. Exercise D) – gaps open a modal with A/B/C/D options
+            html += self._renderCuMcPassageExercise(ex, idBase, secId);
           } else if (ex.passage) {
             // Passage-based word formation (e.g. Exercise O)
             html += self._renderCuPassageExercise(ex, idBase, secId);
@@ -1318,6 +1330,16 @@
         pill.classList.remove('cu-mc-gap-pill-filled');
         pill.innerHTML = CU_MC_BLANK;
       });
+      // Reset MC passage gaps
+      sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
+        gap.classList.remove('cu-mc-passage-gap-answered', 'cu-mc-passage-gap-correct', 'cu-mc-passage-gap-incorrect');
+        gap.style.pointerEvents = '';
+        var slot = gap.querySelector('.cu-mc-passage-gap-slot');
+        if (slot) { slot.textContent = ''; slot.className = 'cu-mc-passage-gap-slot'; }
+        var secId = gap.getAttribute('data-sec-id');
+        var gapNum = parseInt(gap.getAttribute('data-gap-num') || '0');
+        if (secId && BentoGrid._cuMcPassageAnswers[secId]) delete BentoGrid._cuMcPassageAnswers[secId][gapNum];
+      });
       // Reset matching exercise
       sec.querySelectorAll('.cu-match-item').forEach(function(item) {
         item.classList.remove('cu-match-correct', 'cu-match-incorrect');
@@ -1338,10 +1360,12 @@
         var iId = idBase + '-yn-' + idx;
         html += '<div class="cu-ex-item cu-yn-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
           '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
-          '<div class="cu-ex-sentence">' + _bold(item.sentence || '') + '</div>' +
-          '<div class="cu-yn-buttons">' +
-            '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">YES</button>' +
-            '<button class="cu-yn-btn cu-yn-no" data-group="' + iId + '" data-yn="NO" onclick="BentoGrid._selectCuYn(this)" type="button">NO</button>' +
+          '<div class="cu-yn-row">' +
+            '<div class="cu-ex-sentence cu-yn-sentence">' + _bold(item.sentence || '') + '</div>' +
+            '<div class="cu-yn-buttons">' +
+              '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">YES</button>' +
+              '<button class="cu-yn-btn cu-yn-no" data-group="' + iId + '" data-yn="NO" onclick="BentoGrid._selectCuYn(this)" type="button">NO</button>' +
+            '</div>' +
           '</div>' +
           '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div></div>' +
         '</div>';
@@ -1457,7 +1481,88 @@
       return html;
     },
 
-    // --- Two-column matching exercise renderer ---
+    // --- Multiple-choice passage renderer (exercise D style, like reading part 1) ---
+    // Stores: BentoGrid._cuMcPassageData[secId] = { qNum: { options, answer } }
+    _cuMcPassageData: {},
+    _cuMcPassageAnswers: {},
+
+    _renderCuMcPassageExercise: function(ex, idBase, secId) {
+      var self = this;
+      var passage = ex.passage || '';
+      var questions = ex.questions || [];
+      // Build question data keyed by gap number (1-based, matching "(N) ......" in passage)
+      var qMap = {};
+      questions.forEach(function(q, qi) {
+        // Determine gap number from sentence: "(1) ......" → 1
+        var numMatch = (q.sentence || '').match(/^\((\d+)\)/);
+        var gapNum = numMatch ? parseInt(numMatch[1]) : (qi + 1);
+        qMap[gapNum] = { options: q.options || [], answer: (q.answer || '').trim().toUpperCase() };
+      });
+      // Store question data for modal access
+      self._cuMcPassageData[secId] = qMap;
+      if (!self._cuMcPassageAnswers[secId]) self._cuMcPassageAnswers[secId] = {};
+
+      // Replace "(N) ......" patterns in the passage with clickable gap pills
+      // Escape HTML first, then replace the gap markers
+      var passageHtml = self._escapeHTML(passage).replace(
+        /\((\d+)\)\s*(?:\.{6,}|…{2,})/g,
+        function(_, num) {
+          var gapNum = parseInt(num);
+          var pillId = idBase + '-mcpg-' + gapNum;
+          return '<span class="cu-mc-passage-gap" id="' + pillId + '" ' +
+            'data-gap-num="' + gapNum + '" data-sec-id="' + secId + '" data-answer="' + self._escapeHTML((qMap[gapNum] || {}).answer || '') + '" ' +
+            'onclick="BentoGrid._openCuMcModal(\'' + secId + '\',' + gapNum + ')" role="button" tabindex="0">' +
+            '<span class="cu-mc-passage-gap-num">(' + num + ')</span>' +
+            '<span class="cu-mc-passage-gap-slot"></span>' +
+          '</span>';
+        }
+      );
+      var html = '<div class="cu-mc-passage-exercise" id="' + idBase + '-mcpassage">' +
+        '<div class="cu-passage-text">' + passageHtml + '</div>' +
+        '</div>';
+      html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    _openCuMcModal: function(secId, gapNum) {
+      var qData = (BentoGrid._cuMcPassageData[secId] || {})[gapNum];
+      if (!qData) return;
+      var overlay = document.getElementById('exercise-modal-overlay');
+      var body = document.getElementById('modal-body');
+      if (!overlay || !body) return;
+      var html = '<div class="modal-header"><div class="modal-header-row"><span class="modal-q-circle">' + gapNum + '</span><p>Select an option</p></div></div>';
+      html += '<div class="options-grid">';
+      qData.options.forEach(function(opt) {
+        var letter = opt.charAt(0).toUpperCase();
+        var text = BentoGrid._escapeHTML(opt.slice(1).replace(/^[.)\s]+/, '').trim());
+        html += '<button class="opt-btn" onclick="BentoGrid._selectCuMcAnswer(\'' + secId + '\',' + gapNum + ',\'' + letter + '\',\'' + text.replace(/'/g, "\\'") + '\')">' + text + '</button>';
+      });
+      html += '</div>';
+      body.innerHTML = html;
+      overlay.style.display = 'flex';
+    },
+
+    _selectCuMcAnswer: function(secId, gapNum, letter, text) {
+      // Store answer
+      if (!BentoGrid._cuMcPassageAnswers[secId]) BentoGrid._cuMcPassageAnswers[secId] = {};
+      BentoGrid._cuMcPassageAnswers[secId][gapNum] = letter;
+      // Update gap pill display
+      var secEl = document.getElementById(secId);
+      var pill = secEl ? secEl.querySelector('[data-gap-num="' + gapNum + '"]') : null;
+      if (pill) {
+        var slot = pill.querySelector('.cu-mc-passage-gap-slot');
+        if (slot) {
+          slot.textContent = text;
+          slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
+        }
+        pill.classList.add('cu-mc-passage-gap-answered');
+      }
+      // Close modal
+      var overlay = document.getElementById('exercise-modal-overlay');
+      if (overlay) overlay.style.display = 'none';
+    },
+
+
     _renderCuMatchingExercise: function(questions, idBase, secId) {
       var self = this;
       if (!questions || !questions.length) return '';
@@ -1473,39 +1578,38 @@
       });
       // Shuffle the right-column items
       var rightItems = items.map(function(it) { return { letter: it.letter, ending: it.ending }; });
-      // Fisher-Yates shuffle – rotate by 2 positions to ensure items are clearly out of original order
-      var shuffled = rightItems.slice();
       // Simple rotation-based shuffle: rotate by half the length + 1 to avoid trivial order
+      var shuffled = rightItems.slice();
       var offset = Math.floor(shuffled.length / 2) + 1;
       for (var i = 0; i < offset; i++) {
         var last = shuffled.pop();
         shuffled.unshift(last);
       }
       var html = '<div class="cu-match-exercise" data-sec-id="' + secId + '">';
-      html += '<div class="cu-match-columns">';
-      // Left column (numbered beginnings – fixed)
-      html += '<div class="cu-match-left">';
-      items.forEach(function(it) {
-        html += '<div class="cu-match-item cu-match-left-item" data-num="' + it.num + '">' +
-          '<span class="cu-match-num">' + it.num + '</span>' +
-          '<span class="cu-match-text">' + self._escapeHTML(it.beginning) + '</span>' +
-        '</div>';
+      // Table layout: each row contains a left item and a right item so heights stay aligned
+      html += '<table class="cu-match-table"><tbody>';
+      items.forEach(function(it, idx) {
+        var shuffledItem = shuffled[idx];
+        html += '<tr class="cu-match-row">' +
+          '<td class="cu-match-left-cell">' +
+            '<div class="cu-match-item cu-match-left-item" data-num="' + it.num + '">' +
+              '<span class="cu-match-num">' + it.num + '</span>' +
+              '<span class="cu-match-text">' + self._escapeHTML(it.beginning) + '</span>' +
+            '</div>' +
+          '</td>' +
+          '<td class="cu-match-right-cell">' +
+            '<div class="cu-match-item cu-match-right-item" data-letter="' + shuffledItem.letter + '" draggable="true" ' +
+              'ondragstart="BentoGrid._matchDragStart(event)" ' +
+              'ondragover="BentoGrid._matchDragOver(event)" ' +
+              'ondrop="BentoGrid._matchDrop(event)" ' +
+              'ondragend="BentoGrid._matchDragEnd(event)">' +
+              '<span class="cu-match-letter">' + shuffledItem.letter + '</span>' +
+              '<span class="cu-match-text">' + self._escapeHTML(shuffledItem.ending) + '</span>' +
+            '</div>' +
+          '</td>' +
+        '</tr>';
       });
-      html += '</div>';
-      // Right column (lettered endings – draggable, shuffled)
-      html += '<div class="cu-match-right" id="' + idBase + '-right">';
-      shuffled.forEach(function(it, si) {
-        html += '<div class="cu-match-item cu-match-right-item" data-letter="' + it.letter + '" draggable="true" ' +
-          'ondragstart="BentoGrid._matchDragStart(event)" ' +
-          'ondragover="BentoGrid._matchDragOver(event)" ' +
-          'ondrop="BentoGrid._matchDrop(event)" ' +
-          'ondragend="BentoGrid._matchDragEnd(event)">' +
-          '<span class="cu-match-letter">' + it.letter + '</span>' +
-          '<span class="cu-match-text">' + self._escapeHTML(it.ending) + '</span>' +
-        '</div>';
-      });
-      html += '</div>';
-      html += '</div>';
+      html += '</tbody></table>';
       // Hidden answer data
       html += '<div class="cu-match-answers" style="display:none">';
       items.forEach(function(it) {
@@ -1546,14 +1650,12 @@
       var target = (e.currentTarget || e.target).closest('.cu-match-right-item');
       var src = BentoGrid._matchDragSrc;
       if (!target || !src || target === src) return;
-      // Swap positions in DOM
-      var parent = target.parentNode;
-      var srcNext = src.nextSibling;
-      if (srcNext === target) {
-        parent.insertBefore(src, target.nextSibling);
-      } else {
-        parent.insertBefore(src, target);
-        parent.insertBefore(target, srcNext);
+      // Table layout: swap items between their respective cells (td.cu-match-right-cell)
+      var srcCell = src.parentNode;
+      var tgtCell = target.parentNode;
+      if (srcCell && tgtCell && srcCell !== tgtCell) {
+        srcCell.appendChild(target);
+        tgtCell.appendChild(src);
       }
       target.classList.remove('cu-match-drag-over');
     },
@@ -2666,6 +2768,16 @@
 
       // Detect unanswered questions (empty inputs with no option/yn-btn selected)
       var unanswered = [];
+      // MC passage gaps count separately
+      var mcPassageGaps = sec.querySelectorAll('.cu-mc-passage-gap');
+      if (mcPassageGaps.length > 0) {
+        mcPassageGaps.forEach(function(gap, idx) {
+          var gapNum = parseInt(gap.getAttribute('data-gap-num') || String(idx + 1));
+          var secId = gap.getAttribute('data-sec-id') || '';
+          var given = ((BentoGrid._cuMcPassageAnswers[secId] || {})[gapNum] || '').trim();
+          if (given === '') unanswered.push(gapNum);
+        });
+      }
       sec.querySelectorAll('.cu-ex-item').forEach(function(item, idx) {
         var inputs = item.querySelectorAll('.cu-gap-input');
         var optGroups = {};
@@ -2703,6 +2815,21 @@
     _doCheckCuExSection: function(sec) {
       var totalItems = 0;
       var correctItems = 0;
+      // Handle MC passage exercises (multiple-choice cloze, e.g. Exercise D)
+      sec.querySelectorAll('.cu-mc-passage-exercise').forEach(function(mcPassage) {
+        mcPassage.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
+          totalItems++;
+          var gapNum = parseInt(gap.getAttribute('data-gap-num') || '0');
+          var secId = gap.getAttribute('data-sec-id') || '';
+          var expected = (gap.getAttribute('data-answer') || '').trim().toUpperCase();
+          var given = ((BentoGrid._cuMcPassageAnswers[secId] || {})[gapNum] || '').trim().toUpperCase();
+          var ok = given !== '' && given === expected;
+          gap.classList.remove('cu-mc-passage-gap-correct', 'cu-mc-passage-gap-incorrect');
+          if (given !== '') gap.classList.add(ok ? 'cu-mc-passage-gap-correct' : 'cu-mc-passage-gap-incorrect');
+          gap.style.pointerEvents = 'none';
+          if (ok) correctItems++;
+        });
+      });
       // Handle passage exercises (word formation passage like Exercise O)
       sec.querySelectorAll('.cu-passage-exercise').forEach(function(passageEl) {
         passageEl.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(input) {
@@ -2752,13 +2879,13 @@
         matchExercise.querySelectorAll('.cu-match-answers span').forEach(function(sp) {
           answerMap[sp.getAttribute('data-num')] = sp.getAttribute('data-letter');
         });
-        var rightItems = matchExercise.querySelectorAll('.cu-match-right .cu-match-right-item');
-        var leftItems = matchExercise.querySelectorAll('.cu-match-left .cu-match-left-item');
-        leftItems.forEach(function(leftItem, idx) {
+        // Table layout: each .cu-match-row has a left and right item
+        matchExercise.querySelectorAll('.cu-match-row').forEach(function(row, idx) {
           totalItems++;
-          var num = leftItem.getAttribute('data-num') || String(idx + 1);
+          var leftItem = row.querySelector('.cu-match-left-item');
+          var rightItem = row.querySelector('.cu-match-right-item');
+          var num = leftItem ? leftItem.getAttribute('data-num') || String(idx + 1) : String(idx + 1);
           var correctLetter = answerMap[num] || '';
-          var rightItem = rightItems[idx];
           var givenLetter = rightItem ? rightItem.getAttribute('data-letter') : '';
           var ok = givenLetter === correctLetter;
           if (leftItem) leftItem.classList.add(ok ? 'cu-match-correct' : 'cu-match-incorrect');

@@ -561,8 +561,10 @@
     "word_formation": [
       {
         "base": "assume",
-        "derivatives": [
-          "assumption",
+        "noun": [
+          "assumption"
+        ],
+        "adjective": [
           "assuming",
           "unassuming",
           "assumed"
@@ -570,95 +572,145 @@
       },
       {
         "base": "believe",
-        "derivatives": [
-          "disbelieve",
+        "verb": [
+          "disbelieve"
+        ],
+        "noun": [
           "belief",
           "disbelief",
-          "(un)believer",
+          "(un)believer"
+        ],
+        "adjective": [
           "(un)believable",
-          "disbelieving",
+          "disbelieving"
+        ],
+        "adverb": [
           "unbelievably"
         ]
       },
       {
         "base": "brilliant",
-        "derivatives": [
-          "brilliance",
+        "noun": [
+          "brilliance"
+        ],
+        "adverb": [
           "brilliantly"
         ]
       },
       {
         "base": "conceive",
-        "derivatives": [
-          "conceptualise",
+        "verb": [
+          "conceptualise"
+        ],
+        "noun": [
           "concept",
-          "conception",
+          "conception"
+        ],
+        "adjective": [
           "conceptual",
-          "(in)conceivable",
+          "(in)conceivable"
+        ],
+        "adverb": [
           "(in)conceivably"
         ]
       },
       {
         "base": "confuse",
-        "derivatives": [
-          "confusion",
+        "noun": [
+          "confusion"
+        ],
+        "adjective": [
           "confused",
-          "confusing(ly)"
+          "confusing"
+        ],
+        "adverb": [
+          "confusingly"
         ]
       },
       {
         "base": "convince",
-        "derivatives": [
-          "conviction",
+        "noun": [
+          "conviction"
+        ],
+        "adjective": [
           "(un)convinced",
-          "(un)convincing(ly)"
+          "(un)convincing"
+        ],
+        "adverb": [
+          "(un)convincingly"
         ]
       },
       {
         "base": "decide",
-        "derivatives": [
+        "noun": [
           "decision",
           "decider",
-          "decisiveness",
+          "decisiveness"
+        ],
+        "adjective": [
           "deciding",
-          "(in)decisively(ly)"
+          "(in)decisive"
+        ],
+        "adverb": [
+          "(in)decisively"
         ]
       },
       {
         "base": "define",
-        "derivatives": [
-          "definition",
+        "noun": [
+          "definition"
+        ],
+        "adjective": [
           "defined",
-          "definitively(ly)",
-          "(in)definitely(ly)"
+          "definitive",
+          "(in)definite"
+        ],
+        "adverb": [
+          "definitively",
+          "(in)definitely"
         ]
       },
       {
         "base": "doubt",
-        "derivatives": [
-          "doubter",
-          "doubtful(ly)",
-          "undoubted(ly)",
+        "noun": [
+          "doubter"
+        ],
+        "adjective": [
+          "doubtful",
+          "undoubted"
+        ],
+        "adverb": [
+          "doubtfully",
+          "undoubtedly",
           "doubtless"
         ]
       },
       {
         "base": "explain",
-        "derivatives": [
-          "explanation",
+        "noun": [
+          "explanation"
+        ],
+        "adjective": [
           "explanatory",
           "unexplained",
-          "(in)explicable",
+          "(in)explicable"
+        ],
+        "adverb": [
           "inexplicably"
         ]
       },
       {
         "base": "imagine",
-        "derivatives": [
+        "noun": [
           "imagination",
-          "imaginings",
+          "imaginings"
+        ],
+        "adjective": [
           "imaginary",
-          "(un)imaginatively(ly)"
+          "(un)imaginative"
+        ],
+        "adverb": [
+          "(un)imaginatively"
         ]
       }
     ],

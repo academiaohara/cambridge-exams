@@ -6535,7 +6535,7 @@
 .cu-wf-base {
   font-weight: 800;
   font-size: 0.95rem;
-  color: #ef4444;
+  color: #4f46e5;
   min-width: 90px;
   flex-shrink: 0;
   padding-top: 4px;
@@ -6578,14 +6578,29 @@
 /* ── Yes/No exercise items ──────────────────────────────────────────── */
 .cu-yn-item {
   display: flex;
-  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: 8px;
+}
+
+.cu-yn-row {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.cu-yn-sentence {
+  flex: 1;
+  min-width: 0;
 }
 
 .cu-yn-buttons {
   display: flex;
-  gap: 8px;
-  padding-left: 2px;
+  gap: 6px;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .cu-yn-btn {
@@ -6699,6 +6714,71 @@
   display: inline;
 }
 
+/* ── Multiple-choice passage gap pills (exercise D style) ───────────── */
+.cu-mc-passage-gap {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+.cu-mc-passage-gap-num {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.cu-mc-passage-gap-slot {
+  display: inline-block;
+  min-width: 70px;
+  padding: 1px 10px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  border: 1.5px dashed #94a3b8;
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: #64748b;
+  text-align: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.cu-mc-passage-gap-slot.cu-mc-passage-gap-filled {
+  background: #e0f2fe;
+  border-color: #38bdf8;
+  border-style: solid;
+  color: #0369a1;
+  font-weight: 700;
+}
+
+.cu-mc-passage-gap:hover .cu-mc-passage-gap-slot:not(.cu-mc-passage-gap-filled) {
+  background: #e2e8f0;
+  border-color: #64748b;
+}
+
+.cu-mc-passage-gap.cu-mc-passage-gap-answered .cu-mc-passage-gap-slot {
+  background: #e0f2fe;
+  border-color: #38bdf8;
+  border-style: solid;
+  color: #0369a1;
+  font-weight: 700;
+}
+
+.cu-mc-passage-gap.cu-mc-passage-gap-correct .cu-mc-passage-gap-slot {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  border-style: solid;
+  color: #15803d;
+}
+
+.cu-mc-passage-gap.cu-mc-passage-gap-incorrect .cu-mc-passage-gap-slot {
+  background: #fef2f2;
+  border-color: #ef4444;
+  border-style: solid;
+  color: #b91c1c;
+}
+
 /* ── Two-column matching exercise ────────────────────────────────────── */
 .cu-match-exercise {
   display: flex;
@@ -6706,23 +6786,25 @@
   gap: 12px;
 }
 
-.cu-match-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+.cu-match-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 6px;
 }
 
-@media (max-width: 600px) {
-  .cu-match-columns {
-    grid-template-columns: 1fr;
-  }
+.cu-match-left-cell,
+.cu-match-right-cell {
+  width: 50%;
+  padding: 0;
+  vertical-align: top;
 }
 
-.cu-match-left,
-.cu-match-right {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.cu-match-left-cell {
+  padding-right: 6px;
+}
+
+.cu-match-right-cell {
+  padding-left: 6px;
 }
 
 .cu-match-item {
@@ -6736,6 +6818,8 @@
   font-size: 0.88rem;
   color: #334155;
   line-height: 1.4;
+  height: 100%;
+  box-sizing: border-box;
   transition: background 0.15s, border-color 0.15s;
 }
 
