@@ -5183,6 +5183,13 @@
   color: #7c3aed;
   background: rgba(124, 58, 237, 0.1);
 }
+/* Middle text between two inputs in a grouped gap pill */
+.cu-hint-pill-mid {
+  color: var(--text-dark, #0f172a);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 
 /* Key Word Transformation two-sentence layout */
 .cu-ex-num-badge {
