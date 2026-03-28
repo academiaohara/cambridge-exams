@@ -1387,7 +1387,7 @@
       var matchExercise = sec.querySelector('.cu-match-exercise');
       if (matchExercise) {
         matchExercise.querySelectorAll('.cu-match-item').forEach(function(item) {
-          item.classList.remove('cu-match-correct', 'cu-match-incorrect');
+          item.classList.remove('cu-match-correct', 'cu-match-incorrect', 'cu-match-show-correct');
         });
         matchExercise.removeAttribute('data-student-letters');
         matchExercise.removeAttribute('data-saved-letters');
@@ -3051,6 +3051,8 @@
     },
 
     _showCuSection: function(idx) {
+      // Close the options modal whenever the user navigates to another section
+      if (window.Modal) Modal.closeOptionsModal();
       var container = document.querySelector('.course-unit-content');
       if (!container) return;
       var sections = container.querySelectorAll('.cu-section');
@@ -3099,6 +3101,9 @@
     _checkCuExSection: function(sectionId) {
       var sec = document.getElementById(sectionId);
       if (!sec) return;
+
+      // Close the options modal when the user checks the section
+      if (window.Modal) Modal.closeOptionsModal();
 
       // Prevent checking while "Show answers" is active
       if (sec.getAttribute('data-answers-showing') === 'true') return;
@@ -3565,6 +3570,10 @@
     _toggleCuAnswers: function(sectionId) {
       var sec = document.getElementById(sectionId);
       if (!sec) return;
+
+      // Close the options modal when the user toggles answers
+      if (window.Modal) Modal.closeOptionsModal();
+
       var btn = sec.querySelector('.cu-show-all-btn');
       var icon = btn ? btn.querySelector('.material-symbols-outlined') : null;
       var isShowing = sec.getAttribute('data-answers-showing') === 'true';
@@ -3677,7 +3686,7 @@
           BentoGrid._resizeCuInput(inp);
         });
 
-        // Matching exercise: show correct order
+        // Matching exercise: show correct order in blue
         var matchExercise = sec.querySelector('.cu-match-exercise');
         if (matchExercise) {
           var currentLetters = [];
@@ -3702,6 +3711,10 @@
             if (correctLetter && rightItemsByLetter[correctLetter] && rightCell) {
               rightCell.appendChild(rightItemsByLetter[correctLetter]);
             }
+          });
+          // Apply blue show-correct style to all items
+          matchExercise.querySelectorAll('.cu-match-item').forEach(function(item) {
+            item.classList.add('cu-match-show-correct');
           });
         }
 
@@ -3759,6 +3772,10 @@
         // Restore matching exercise to saved order
         var matchExercise = sec.querySelector('.cu-match-exercise');
         if (matchExercise) {
+          // Remove show-correct styling before restoring
+          matchExercise.querySelectorAll('.cu-match-item').forEach(function(item) {
+            item.classList.remove('cu-match-show-correct');
+          });
           var savedLetters = JSON.parse(matchExercise.getAttribute('data-saved-letters') || '[]');
           var rightItemsByLetter = {};
           matchExercise.querySelectorAll('.cu-match-right-item').forEach(function(item) {
@@ -3883,9 +3900,10 @@
             rightCell.appendChild(rightItemsByLetter[correctLetter]);
           }
         });
-        // Remove feedback colours in correct view
+        // Apply blue show-correct style in correct view
         matchExercise.querySelectorAll('.cu-match-item').forEach(function(item) {
           item.classList.remove('cu-match-correct', 'cu-match-incorrect');
+          item.classList.add('cu-match-show-correct');
         });
         btn.setAttribute('data-mode', 'correct');
         btn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> See your answer';
@@ -3907,8 +3925,8 @@
           var correctLetter = answerMap[num] || '';
           var givenLetter = rightItem ? rightItem.getAttribute('data-letter') : '';
           var ok = givenLetter === correctLetter;
-          if (leftItem) { leftItem.classList.toggle('cu-match-correct', ok); leftItem.classList.toggle('cu-match-incorrect', !ok); }
-          if (rightItem) { rightItem.classList.toggle('cu-match-correct', ok); rightItem.classList.toggle('cu-match-incorrect', !ok); }
+          if (leftItem) { leftItem.classList.remove('cu-match-show-correct'); leftItem.classList.toggle('cu-match-correct', ok); leftItem.classList.toggle('cu-match-incorrect', !ok); }
+          if (rightItem) { rightItem.classList.remove('cu-match-show-correct'); rightItem.classList.toggle('cu-match-correct', ok); rightItem.classList.toggle('cu-match-incorrect', !ok); }
         });
         btn.setAttribute('data-mode', 'student');
         btn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> See correct order';
