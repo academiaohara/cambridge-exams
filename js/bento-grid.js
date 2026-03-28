@@ -1339,6 +1339,7 @@
         input.classList.remove('cu-input-correct', 'cu-input-incorrect', 'cu-input-show-correct');
         input.removeAttribute('data-student-value');
         input.removeAttribute('data-correct-value');
+        input.removeAttribute('data-check-class');
         input.removeAttribute('data-saved-value');
         BentoGrid._resizeCuInput(input);
       });
@@ -3485,7 +3486,6 @@
         }
       }
       sec.querySelectorAll('.cu-ex-item:not(.cu-yn-item)').forEach(function(item) {
-        totalItems++;
         var answer = (item.getAttribute('data-answer') || '').trim();
         var answerParts = answer.split(/,\s*/);
         // For sync-items, only check one representative input (all are synced to the same value)
@@ -3518,14 +3518,16 @@
             optGroups[g].push(btn);
           }
         });
-        var allCorrect = true;
+        var anyInputWrong = false;
         var partIdx = 0;
         inputs.forEach(function(input) {
+          totalItems++;
           var expected = (answerParts[partIdx] || '').trim().toLowerCase();
           var given = (input.value || '').trim().toLowerCase();
           var alts = expected.split(/\s*\/\s*/);
           var filled = given !== '';
           var ok = filled && alts.some(function(a) { return given === a.trim(); });
+          var checkClass = filled ? (ok ? 'cu-input-correct' : 'cu-input-incorrect') : '';
           // For sync items, apply visual feedback to all inputs in the group
           if (isSyncItem) {
             var group = input.getAttribute('data-sync-group');
@@ -3534,18 +3536,26 @@
               : [input];
             allInGroup.forEach(function(inp) {
               inp.classList.remove('cu-input-correct', 'cu-input-incorrect');
-              if (filled) inp.classList.add(ok ? 'cu-input-correct' : 'cu-input-incorrect');
+              if (checkClass) {
+                inp.classList.add(checkClass);
+                inp.setAttribute('data-check-class', checkClass);
+              }
             });
           } else {
             input.classList.remove('cu-input-correct', 'cu-input-incorrect');
-            if (filled) input.classList.add(ok ? 'cu-input-correct' : 'cu-input-incorrect');
+            if (checkClass) {
+              input.classList.add(checkClass);
+              input.setAttribute('data-check-class', checkClass);
+            }
           }
-          if (!ok) allCorrect = false;
+          if (ok) correctItems++;
+          if (!ok) anyInputWrong = true;
           partIdx++;
         });
         // Inline word-choice buttons (e.g. **word/word/word**)
         // Sort groups in DOM order by their _oN suffix so answer parts map correctly
         BentoGrid._sortedOptGroupKeys(optGroups).forEach(function(gId, gIdx) {
+          totalItems++;
           var btns = optGroups[gId];
           // Each option group maps to the next answer part after all text inputs
           var gAlts = BentoGrid._answerAlts(answerParts[partIdx + gIdx]);
@@ -3556,15 +3566,17 @@
             var selectedText = BentoGrid._normalizeText(selected.textContent.trim().toLowerCase());
             var matched = gAlts.some(function(a) { return a === selectedText; });
             selected.classList.add(matched ? 'cu-option-correct' : 'cu-option-incorrect');
-            // Mark the correct button(s) if student chose wrong
-            if (!matched) {
+            if (matched) {
+              correctItems++;
+            } else {
+              // Mark the correct button(s) if student chose wrong
               btns.forEach(function(b) {
                 var bText = BentoGrid._normalizeText(b.textContent.trim().toLowerCase());
                 if (b !== selected && gAlts.some(function(a) { return a === bText; })) {
                   b.classList.add('cu-option-correct-reveal');
                 }
               });
-              allCorrect = false;
+              anyInputWrong = true;
             }
           } else {
             // Nothing selected — mark correct option(s) and count as incorrect
@@ -3574,11 +3586,12 @@
                 b.classList.add('cu-option-correct-reveal');
               }
             });
-            allCorrect = false;
+            anyInputWrong = true;
           }
         });
         // Multiple-choice option buttons (Exercise E style)
         Object.keys(mcGroups).forEach(function(gId) {
+          totalItems++;
           var btns = mcGroups[gId];
           var selected = null;
           btns.forEach(function(b) { if (b.classList.contains('cu-option-selected')) selected = b; });
@@ -3587,15 +3600,17 @@
             var letter = (selected.getAttribute('data-mc-letter') || '').trim().toUpperCase();
             var matched = answerParts.some(function(ap) { return ap.trim().toUpperCase() === letter; });
             selected.classList.add(matched ? 'cu-option-correct' : 'cu-option-incorrect');
-            // Mark the correct button if student chose wrong
-            if (!matched) {
+            if (matched) {
+              correctItems++;
+            } else {
+              // Mark the correct button if student chose wrong
               btns.forEach(function(b) {
                 var bLetter = (b.getAttribute('data-mc-letter') || '').trim().toUpperCase();
                 if (b !== selected && answerParts.some(function(ap) { return ap.trim().toUpperCase() === bLetter; })) {
                   b.classList.add('cu-option-correct-reveal');
                 }
               });
-              allCorrect = false;
+              anyInputWrong = true;
             }
           } else {
             // Nothing selected — mark correct option and count as incorrect
@@ -3605,13 +3620,12 @@
                 b.classList.add('cu-option-correct-reveal');
               }
             });
-            allCorrect = false;
+            anyInputWrong = true;
           }
         });
-        if (allCorrect) correctItems++;
-        // For incorrect items with text inputs (not MC/choice which show correct via button reveal), add a per-item toggle button
+        // For items with wrong text inputs (not MC/choice which show correct via button reveal), add a per-item toggle button
         var hasNoOptionGroups = Object.keys(optGroups).length === 0 && Object.keys(mcGroups).length === 0;
-        var hasWrongInput = inputs.length > 0 && !allCorrect && hasNoOptionGroups;
+        var hasWrongInput = inputs.length > 0 && anyInputWrong && hasNoOptionGroups;
         if (hasWrongInput) {
           // Store student answers and correct answers on inputs
           inputs.forEach(function(inp, i) {
@@ -4022,12 +4036,14 @@
       item.querySelectorAll('.cu-gap-input').forEach(function(inp) {
         if (newMode === 'correct') {
           inp.value = inp.getAttribute('data-correct-value') || '';
-          inp.classList.remove('cu-input-incorrect');
+          inp.classList.remove('cu-input-correct', 'cu-input-incorrect');
           inp.classList.add('cu-input-show-correct');
         } else {
           inp.value = inp.getAttribute('data-student-value') || '';
           inp.classList.remove('cu-input-show-correct');
-          inp.classList.add('cu-input-incorrect');
+          // Restore the original check result class (correct or incorrect per input)
+          var savedClass = inp.getAttribute('data-check-class');
+          if (savedClass) inp.classList.add(savedClass);
         }
         BentoGrid._resizeCuInput(inp);
       });
