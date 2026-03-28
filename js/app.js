@@ -306,6 +306,25 @@
     ScoreCalculator.render();
   };
   
+  // Deshabilitar el corrector ortográfico del navegador en todos los inputs y textareas
+  function disableSpellcheck(el) {
+    if ((el.tagName === 'INPUT' && el.type === 'text') || el.tagName === 'TEXTAREA') {
+      el.spellcheck = false;
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('input[type="text"], textarea').forEach(disableSpellcheck);
+    new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        m.addedNodes.forEach(function(node) {
+          if (node.nodeType !== 1) return;
+          disableSpellcheck(node);
+          node.querySelectorAll('input[type="text"], textarea').forEach(disableSpellcheck);
+        });
+      });
+    }).observe(document.body, { childList: true, subtree: true });
+  });
+
   // Inicializar cuando el DOM esté listo
   document.addEventListener('DOMContentLoaded', () => App.init());
 })();
