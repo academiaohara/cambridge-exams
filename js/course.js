@@ -933,8 +933,13 @@
         input.removeAttribute('data-correct-value');
         input.removeAttribute('data-check-class');
         input.removeAttribute('data-saved-value');
+        input.removeAttribute('data-alt-answers');
+        input.removeAttribute('data-alt-idx');
+        input._cuAltBadge = null;
         BentoGrid._resizeCuInput(input);
       });
+      // Remove alt-solution cycle badges
+      sec.querySelectorAll('.cu-alt-badge').forEach(function(b) { b.remove(); });
       // Remove per-item toggle buttons
       sec.querySelectorAll('.cu-item-toggle-btn').forEach(function(btn) { btn.remove(); });
       // Remove matching view toggle button
@@ -3378,10 +3383,12 @@
           inputs.forEach(function(inp, i) {
             inp.setAttribute('data-saved-value', inp.value);
             var correctRaw = (answerParts[i] || answerParts[0] || '').trim();
-            var correctDisplay = correctRaw.split(/\s*\/\s*/)[0].trim();
+            var alts = correctRaw.split(/\s*\/\s*/).map(function(a) { return a.trim(); }).filter(Boolean);
+            var correctDisplay = alts[0] || '';
             inp.value = correctDisplay;
             inp.classList.add('cu-input-show-correct');
             BentoGrid._resizeCuInput(inp);
+            BentoGrid._attachAltBadge(inp, alts);
             // For sync items, propagate to all siblings
             if (isSyncItem) {
               var syncGroup = inp.getAttribute('data-sync-group');
@@ -3392,6 +3399,7 @@
                     syncInp.value = correctDisplay;
                     syncInp.classList.add('cu-input-show-correct');
                     BentoGrid._resizeCuInput(syncInp);
+                    BentoGrid._attachAltBadge(syncInp, alts);
                   }
                 });
               }
@@ -3446,11 +3454,14 @@
 
         // Passage inputs (data-passage-num)
         sec.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(inp) {
-          var correct = (inp.getAttribute('data-answer') || '').split(/\s*\/\s*/)[0].trim();
+          var correctRaw = (inp.getAttribute('data-answer') || '').trim();
+          var alts = correctRaw.split(/\s*\/\s*/).map(function(a) { return a.trim(); }).filter(Boolean);
+          var correct = alts[0] || '';
           inp.setAttribute('data-saved-value', inp.value);
           inp.value = correct;
           inp.classList.add('cu-input-show-correct');
           BentoGrid._resizeCuInput(inp);
+          BentoGrid._attachAltBadge(inp, alts);
         });
 
         // Matching exercise: show correct order in blue
@@ -3526,9 +3537,13 @@
             inp.value = saved;
             inp.removeAttribute('data-saved-value');
           }
+          inp.removeAttribute('data-alt-answers');
+          inp.removeAttribute('data-alt-idx');
+          inp._cuAltBadge = null;
           inp.classList.remove('cu-input-show-correct');
           BentoGrid._resizeCuInput(inp);
         });
+        sec.querySelectorAll('.cu-alt-badge').forEach(function(b) { b.remove(); });
         sec.querySelectorAll('.cu-option-btn').forEach(function(b) {
           b.classList.remove('cu-option-correct-reveal');
         });
@@ -3619,6 +3634,51 @@
       });
     },
 
+
+    // Attach a clickable alt-solution badge after an input if there are multiple alternatives
+    _attachAltBadge: function(inp, alts) {
+      if (!alts || alts.length <= 1) return;
+      inp.setAttribute('data-alt-answers', JSON.stringify(alts));
+      inp.setAttribute('data-alt-idx', '0');
+      var badge = document.createElement('span');
+      badge.className = 'cu-alt-badge';
+      badge.textContent = '1/' + alts.length;
+      badge.title = 'Click to see next solution';
+      badge.setAttribute('aria-label', 'Cycle through ' + alts.length + ' alternative solutions');
+      (function(capturedInp) {
+        badge.addEventListener('click', function() { BentoGrid._cycleInputAlt(capturedInp); });
+      })(inp);
+      inp._cuAltBadge = badge;
+      var anchor = inp.closest('.cu-hint-pill') || inp;
+      anchor.parentNode.insertBefore(badge, anchor.nextSibling);
+    },
+
+    // Cycle through alt solutions on a gap input
+    _cycleInputAlt: function(inp) {
+      var alts = JSON.parse(inp.getAttribute('data-alt-answers') || '[]');
+      if (alts.length <= 1) return;
+      var idx = (parseInt(inp.getAttribute('data-alt-idx') || '0') + 1) % alts.length;
+      inp.setAttribute('data-alt-idx', String(idx));
+      inp.value = alts[idx];
+      BentoGrid._resizeCuInput(inp);
+      var badge = inp._cuAltBadge;
+      if (badge) badge.textContent = (idx + 1) + '/' + alts.length;
+      // Propagate to sync siblings
+      var syncGroup = inp.getAttribute('data-sync-group');
+      if (syncGroup) {
+        var sec = inp.closest('.cu-section');
+        if (sec) {
+          sec.querySelectorAll('.cu-gap-input[data-sync-group="' + syncGroup + '"]').forEach(function(sibling) {
+            if (sibling === inp) return;
+            sibling.setAttribute('data-alt-idx', String(idx));
+            sibling.value = alts[idx];
+            BentoGrid._resizeCuInput(sibling);
+            var sibBadge = sibling._cuAltBadge;
+            if (sibBadge) sibBadge.textContent = (idx + 1) + '/' + alts.length;
+          });
+        }
+      }
+    },
 
     _toggleCuItemAnswer: function(btn, item) {
       var mode = btn.getAttribute('data-mode');

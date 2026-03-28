@@ -1149,6 +1149,32 @@
   color: #1e3a8a !important;
   animation: feBounceIn 0.3s ease;
 }
+/* Alt-solution cycle badge — shown next to inputs that have multiple valid answers */
+.cu-alt-badge {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  background: rgba(37, 99, 235, 0.12);
+  color: #1d4ed8;
+  border: 1.5px solid rgba(37, 99, 235, 0.3);
+  border-radius: 20px;
+  padding: 1px 7px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 0 2px;
+  user-select: none;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  line-height: 1.6;
+}
+.cu-alt-badge::before {
+  content: '↻ ';
+}
+.cu-alt-badge:hover {
+  background: rgba(37, 99, 235, 0.22);
+  border-color: rgba(37, 99, 235, 0.5);
+}
 .cu-gap-standalone {
   width: 100%;
   max-width: 380px;
