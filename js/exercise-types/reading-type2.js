@@ -31,7 +31,7 @@
                  value="${userAnswer || ''}" 
                  placeholder="..." 
                  ${isChecked ? 'disabled' : ''}
-                 oninput="ReadingType2.handleInput(${qNum}, this.value)">
+                 oninput="ReadingType2.handleInput(${qNum}, this.value); ReadingType2.resizeInput(this)">
         </span>
       `;
     },
@@ -40,6 +40,21 @@
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = value;
       Timer.updateScoreDisplay();
+    },
+    
+    resizeInput: function(input) {
+      var minWidth = 100;
+      var span = document.getElementById('reading-type2-resize-span');
+      if (!span) {
+        span = document.createElement('span');
+        span.id = 'reading-type2-resize-span';
+        span.style.cssText = 'visibility:hidden;position:absolute;white-space:pre;pointer-events:none;';
+        document.body.appendChild(span);
+      }
+      span.style.font = window.getComputedStyle(input).font;
+      span.textContent = input.value || input.placeholder || '';
+      var newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 28);
+      input.style.width = newWidth + 'px';
     },
     
     isAnswerCorrect: function(userAnswer, correctAnswer) {
