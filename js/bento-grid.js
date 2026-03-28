@@ -1426,6 +1426,14 @@
         if (unitId && !isNaN(sectionIdx)) {
           BentoGrid._clearReviewSectionState(unitId, sectionIdx);
         }
+      } else {
+        // Non-review exercise: clear the locally persisted draft/checked state
+        var unitId = BentoGrid._currentUnitId;
+        var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
+        var level = BentoGrid._courseLevel || 'C1';
+        if (unitId && !isNaN(sectionIdx)) {
+          BentoGrid._clearCuExSectionState(level, unitId, sectionIdx);
+        }
       }
       // Refresh total review score panel
       BentoGrid._updateReviewTotalScore();
@@ -1461,6 +1469,7 @@
       var siblings = document.querySelectorAll('.cu-yn-btn[data-group="' + group + '"]');
       siblings.forEach(function(s) { s.classList.remove('cu-yn-selected'); });
       btn.classList.add('cu-yn-selected');
+      BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
     // --- Key Word Transformation exercise renderer (reading4 style) ---
@@ -1644,6 +1653,8 @@
       // Close modal
       var overlay = document.getElementById('exercise-modal-overlay');
       if (overlay) overlay.style.display = 'none';
+      // Persist draft answers locally
+      if (secEl) BentoGrid._saveCuExSectionState(secEl);
     },
 
 
@@ -1736,6 +1747,9 @@
         tgtCell.appendChild(src);
       }
       target.classList.remove('cu-match-drag-over');
+      // Persist draft answers locally after a drag-drop swap
+      var sec = src.closest('.cu-section');
+      if (sec) BentoGrid._saveCuExSectionState(sec);
     },
 
     _matchDragSrc: null,
@@ -1889,6 +1903,7 @@
           pill.textContent = text || btn.getAttribute('data-mc-letter') || '';
         }
       }
+      BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
     _formatTextWithHints: function(text) {
@@ -2141,6 +2156,7 @@
       var siblings = document.querySelectorAll('.cu-option-btn[data-group="' + group + '"]');
       siblings.forEach(function(s) { s.classList.remove('cu-option-selected'); });
       btn.classList.add('cu-option-selected');
+      BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
     // Auto-resize a course gap input to fit its content (like test inputs)
@@ -2157,6 +2173,7 @@
       span.textContent = input.value || input.placeholder || '';
       var newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 28);
       input.style.width = newWidth + 'px';
+      BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
     },
 
     // Resize all cu-gap-input elements inside a section
@@ -2288,6 +2305,14 @@
           Object.keys(rsData).forEach(function(k) { if (k.indexOf(prefix) === 0) delete rsData[k]; });
           localStorage.setItem(rsKey, JSON.stringify(rsData));
         } catch(e) {}
+        // Clear exercise section draft/checked states for this unit
+        try {
+          var exKey = BentoGrid._cuExStateKey(level);
+          var exData = JSON.parse(localStorage.getItem(exKey) || '{}');
+          var exPrefix = unitId + '_';
+          Object.keys(exData).forEach(function(k) { if (k.indexOf(exPrefix) === 0) delete exData[k]; });
+          localStorage.setItem(exKey, JSON.stringify(exData));
+        } catch(e) {}
         // Reopen the unit fresh
         var foundItem = BentoGrid._courseIndexData && BentoGrid._courseIndexData.items &&
           BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
@@ -2322,6 +2347,16 @@
           });
           localStorage.setItem(raKey, JSON.stringify(raData));
           localStorage.setItem(rsKey, JSON.stringify(rsData));
+        } catch(e) {}
+        // Clear exercise section draft/checked states for all units in this block
+        try {
+          var exKey = BentoGrid._cuExStateKey(level);
+          var exData = JSON.parse(localStorage.getItem(exKey) || '{}');
+          items.forEach(function(item) {
+            var exPrefix = item.id + '_';
+            Object.keys(exData).forEach(function(k) { if (k.indexOf(exPrefix) === 0) delete exData[k]; });
+          });
+          localStorage.setItem(exKey, JSON.stringify(exData));
         } catch(e) {}
         BentoGrid._selectCourseBlock(blockKey);
       });
@@ -2424,6 +2459,114 @@
         data[skey] = pts;
         localStorage.setItem(key, JSON.stringify(data));
       } catch(e) {}
+    },
+
+    // ── Course Exercise Answer Persistence (non-review sections) ─────────────
+    _cuExStateKey: function(level) {
+      return 'course_ex_state_' + (level || BentoGrid._courseLevel || 'C1');
+    },
+
+    // Save the current (draft) answers of an exercise section to localStorage.
+    // Skipped when restoring answers from storage to avoid circular saves.
+    _saveCuExSectionState: function(sec) {
+      if (BentoGrid._isRestoringCuAnswers) return;
+      if (!sec || !sec.classList.contains('cu-exercise')) return;
+      var unitId = BentoGrid._currentUnitId;
+      if (!unitId) return;
+      var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
+      if (isNaN(sectionIdx)) return;
+      var level = BentoGrid._courseLevel || 'C1';
+      try {
+        var key = BentoGrid._cuExStateKey(level);
+        var state = JSON.parse(localStorage.getItem(key) || '{}');
+        var skey = unitId + '_' + sectionIdx;
+        // Don't overwrite a checked state with a plain draft save
+        if ((state[skey] || {}).checked) return;
+        state[skey] = { answers: BentoGrid._getReviewSectionAnswers(sec) };
+        localStorage.setItem(key, JSON.stringify(state));
+      } catch(e) {}
+    },
+
+    // Persist the final checked result (score + answers) and push to Supabase.
+    _saveCuExSectionChecked: function(unitId, sectionIdx, answers, score, total) {
+      // Skip when called from programmatic restoration to avoid redundant API calls
+      if (BentoGrid._isRestoringCuAnswers) return;
+      var level = BentoGrid._courseLevel || 'C1';
+      try {
+        var key = BentoGrid._cuExStateKey(level);
+        var state = JSON.parse(localStorage.getItem(key) || '{}');
+        var skey = unitId + '_' + sectionIdx;
+        state[skey] = { answers: answers, checked: true, score: score, total: total };
+        localStorage.setItem(key, JSON.stringify(state));
+      } catch(e) {}
+      BentoGrid._saveCuExToSupabase(level, unitId, sectionIdx, answers, score);
+    },
+
+    _loadCuExSectionState: function(level, unitId, sectionIdx) {
+      try {
+        var key = BentoGrid._cuExStateKey(level);
+        var state = JSON.parse(localStorage.getItem(key) || '{}');
+        return state[unitId + '_' + sectionIdx] || null;
+      } catch(e) { return null; }
+    },
+
+    _clearCuExSectionState: function(level, unitId, sectionIdx) {
+      try {
+        var key = BentoGrid._cuExStateKey(level);
+        var state = JSON.parse(localStorage.getItem(key) || '{}');
+        delete state[unitId + '_' + sectionIdx];
+        localStorage.setItem(key, JSON.stringify(state));
+      } catch(e) {}
+    },
+
+    // Upsert score + answers to Supabase user_progress table on check.
+    _saveCuExToSupabase: async function(level, unitId, sectionIdx, answers, score) {
+      // Skip when called during programmatic restoration to avoid redundant API calls
+      if (BentoGrid._isRestoringCuAnswers) return;
+      var client = window.Auth && window.Auth._client;
+      var user = window.Auth && window.Auth.getUser();
+      if (!client || !user) return;
+      try {
+        await client.from('user_progress').upsert({
+          user_id: user.id,
+          level: level,
+          exam_id: unitId,
+          section: 'ex_' + sectionIdx,
+          part: 1,
+          answers: answers,
+          score: score,
+          mode: 'course',
+          completed_at: new Date().toISOString()
+        }, { onConflict: 'user_id,exam_id,section,part,mode' });
+      } catch(e) {
+        console.warn('[BentoGrid] Failed to save course exercise to Supabase:', e);
+      }
+    },
+
+    // Flag used to suppress saves triggered by programmatic answer restoration.
+    _isRestoringCuAnswers: false,
+
+    // Restore saved answers (and re-check if already checked) for a section.
+    _restoreCuExSectionAnswers: function(sec) {
+      if (!sec || !sec.classList.contains('cu-exercise')) return;
+      if (sec.classList.contains('cu-review-section')) return;
+      var unitId = BentoGrid._currentUnitId;
+      if (!unitId) return;
+      var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
+      if (isNaN(sectionIdx)) return;
+      var level = BentoGrid._courseLevel || 'C1';
+      var saved = BentoGrid._loadCuExSectionState(level, unitId, sectionIdx);
+      if (!saved || !saved.answers) return;
+      // Keep the flag true for the entire restore (including re-check) to suppress
+      // redundant localStorage writes and Supabase API calls.
+      BentoGrid._isRestoringCuAnswers = true;
+      BentoGrid._applyReviewSectionAnswers(sec, saved.answers);
+      if (saved.checked) {
+        BentoGrid._doCheckCuExSection(sec);
+      } else {
+        BentoGrid._resizeAllCuInputs(sec);
+      }
+      BentoGrid._isRestoringCuAnswers = false;
     },
 
     _saveReviewSectionState: function(sec, unitId, sectionIdx, correctItems, totalItems) {
@@ -3046,8 +3189,13 @@
         BentoGrid._checkCourseUnitAllDone(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId);
       }
       BentoGrid._updateRoadmapActiveItem(startIdx);
-      // Resize inputs in the initial section
-      if (startSec) BentoGrid._resizeAllCuInputs(startSec);
+      // Restore saved answers (and re-check if already checked) for the initial section
+      if (startSec && startSec.classList.contains('cu-exercise') && !startSec.classList.contains('cu-review-section')) {
+        BentoGrid._restoreCuExSectionAnswers(startSec);
+      } else {
+        // Resize inputs in the initial section (restore already calls resize internally)
+        if (startSec) BentoGrid._resizeAllCuInputs(startSec);
+      }
     },
 
     _showCuSection: function(idx) {
@@ -3073,8 +3221,13 @@
         BentoGrid._checkCourseUnitAllDone(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId);
       }
       BentoGrid._updateRoadmapActiveItem(idx);
-      // Resize inputs in the newly visible section
-      if (targetSec) BentoGrid._resizeAllCuInputs(targetSec);
+      // Restore saved answers (and re-check if already checked) for exercise sections
+      if (targetSec && targetSec.classList.contains('cu-exercise') && !targetSec.classList.contains('cu-review-section')) {
+        BentoGrid._restoreCuExSectionAnswers(targetSec);
+      } else {
+        // Resize inputs in the newly visible section (restore already calls resize internally)
+        if (targetSec) BentoGrid._resizeAllCuInputs(targetSec);
+      }
       // Update URL to reflect the current section
       if (BentoGrid._currentUnitId && BentoGrid._currentBlockKey && BentoGrid._currentUnitFilePath) {
         var secState = { view: 'courseUnit', blockKey: BentoGrid._currentBlockKey, unitId: BentoGrid._currentUnitId, filePath: BentoGrid._currentUnitFilePath, sectionIdx: idx };
@@ -3538,6 +3691,14 @@
           if (unitId && !isNaN(sectionIdx)) {
             BentoGrid._trackReviewItem(unitId, sectionIdx, correctItems);
             BentoGrid._saveReviewSectionState(sec, unitId, sectionIdx, correctItems, totalItems);
+          }
+        } else {
+          // Non-review exercise: persist checked answers + score locally and to Supabase
+          var unitId = BentoGrid._currentUnitId;
+          var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
+          if (unitId && !isNaN(sectionIdx)) {
+            var checkedAnswers = BentoGrid._getReviewSectionAnswers(sec);
+            BentoGrid._saveCuExSectionChecked(unitId, sectionIdx, checkedAnswers, correctItems, totalItems);
           }
         }
         // Update total review score if this is a review section
