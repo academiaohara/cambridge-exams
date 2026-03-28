@@ -1,0 +1,207 @@
+/* css/components/tests.css */
+/* Tests section: exam/practice mode cards and grade evolution chart */
+
+/* ── Row 1: Top row (Summit · Ascent) ── */
+.bento-top-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto;
+  gap: 14px;
+}
+
+/* ── SUMMIT card (exam mode) ── */
+.bento-card-summit {
+  background: var(--card-summit);
+  color: #5c3a1e;
+  cursor: pointer;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.bento-card-summit .bento-card-title {
+  color: #80350E;
+}
+
+/* Summit PNG illustration */
+.bento-card-summit::after {
+content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -10px;
+    width: 240px;
+    height: 300px;
+    opacity: 1;
+    background-image: url(../../Assets/images/Summit.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom right;
+    pointer-events: none;
+}
+
+/* Ground effect for illustration cards */
+.bento-card-summit::before,
+.bento-card-ascent::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    opacity: 0.1;
+    background: black;
+    border-radius: 0 0 var(--bento-radius) var(--bento-radius);
+    pointer-events: none;
+    z-index: 0;
+}
+/* ── ASCENT card (practice mode) ── */
+.bento-card-ascent {
+  background: var(--card-ascent);
+  color: #6b5a10;
+  cursor: pointer;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.bento-card-ascent .bento-card-title {
+  color: #826900;
+}
+
+/* Ascent PNG illustration */
+.bento-card-ascent::after {
+content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -20px;
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+    background-image: url(../../Assets/images/Ascent.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom right;
+    pointer-events: none;
+}
+
+
+/* ── MIXED (Random Mix) row ── */
+.bento-mixed-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.bento-card-mixed {
+  background: linear-gradient(135deg, #e0f0ff 0%, #d8e8ff 60%, #ddd8ff 100%);
+  color: #2a3a6a;
+  cursor: pointer;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.bento-card-mixed .bento-card-title {
+  color: #2a3a9a;
+  display: flex;
+  align-items: center;
+}
+
+.bento-card-mixed.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Grade Evolution Section (rendered in main-content) ──────────────── */
+.grade-evolution-section {
+  width: 100%;
+}
+.grade-evolution-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.grade-evo-no-data {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  padding: 32px 0;
+  text-align: center;
+}
+.grade-evo-no-data i {
+  margin-right: 6px;
+  opacity: 0.5;
+}
+/* ── Grade Evolution dot chart ───────────────────────────────────────── */
+.ge-chart-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 20px rgba(45, 46, 95, 0.08);
+  border: 1px solid rgba(45, 46, 95, 0.08);
+}
+.ge-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.ge-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+.ge-legend-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 13px;
+  border: 1.5px solid var(--ge-color, #6366f1);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--text-dark);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+  opacity: 0.45;
+}
+.ge-legend-btn.active {
+  background: rgba(99, 102, 241, 0.12);
+  background: color-mix(in srgb, var(--ge-color, #6366f1) 14%, transparent);
+  opacity: 1;
+}
+.ge-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.ge-legend-dash {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+/* ── Grade Evolution floating tooltip ───────────────────────────────── */
+.ge-tip {
+  position: fixed;
+  background: rgba(15, 23, 42, 0.9);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--ge-tip-color, #6366f1);
+}
+
