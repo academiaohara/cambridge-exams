@@ -849,6 +849,11 @@
       html += '</div>';
       centerSection.innerHTML = html;
 
+      // Restore saved answers and scores for review units
+      if (unitData.type === 'review') {
+        BentoGrid._restoreReviewUnit(unitId);
+      }
+
       // Compute start section index
       var sectionStartIdx = 0;
       if (startSection === 'exercises') {
@@ -1414,6 +1419,14 @@
       sec.querySelectorAll('.cu-wordbank-item').forEach(function(item) {
         item.classList.remove('cu-wordbank-used');
       });
+      // Clear saved state from localStorage for review sections
+      if (sec.classList.contains('cu-review-section')) {
+        var unitId = BentoGrid._currentUnitId;
+        var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
+        if (unitId && !isNaN(sectionIdx)) {
+          BentoGrid._clearReviewSectionState(unitId, sectionIdx);
+        }
+      }
       // Refresh total review score panel
       BentoGrid._updateReviewTotalScore();
     },
@@ -2242,6 +2255,18 @@
         var secProg = BentoGrid._getCourseSectionProgress(level);
         delete secProg[unitId];
         try { localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(secProg)); } catch(e) {}
+        // Clear review section scores and state for this unit
+        try {
+          var prefix = unitId + '_';
+          var raKey = 'cambridge_review_answers_' + level;
+          var raData = JSON.parse(localStorage.getItem(raKey) || '{}');
+          Object.keys(raData).forEach(function(k) { if (k.indexOf(prefix) === 0) delete raData[k]; });
+          localStorage.setItem(raKey, JSON.stringify(raData));
+          var rsKey = 'cambridge_review_section_state_' + level;
+          var rsData = JSON.parse(localStorage.getItem(rsKey) || '{}');
+          Object.keys(rsData).forEach(function(k) { if (k.indexOf(prefix) === 0) delete rsData[k]; });
+          localStorage.setItem(rsKey, JSON.stringify(rsData));
+        } catch(e) {}
         // Reopen the unit fresh
         var foundItem = BentoGrid._courseIndexData && BentoGrid._courseIndexData.items &&
           BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
@@ -2263,6 +2288,20 @@
         });
         try { localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog)); } catch(e) {}
         try { localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(secProg)); } catch(e) {}
+        // Clear review section scores and state for all review units in this block
+        try {
+          var raKey = 'cambridge_review_answers_' + level;
+          var raData = JSON.parse(localStorage.getItem(raKey) || '{}');
+          var rsKey = 'cambridge_review_section_state_' + level;
+          var rsData = JSON.parse(localStorage.getItem(rsKey) || '{}');
+          items.forEach(function(item) {
+            var prefix = item.id + '_';
+            Object.keys(raData).forEach(function(k) { if (k.indexOf(prefix) === 0) delete raData[k]; });
+            Object.keys(rsData).forEach(function(k) { if (k.indexOf(prefix) === 0) delete rsData[k]; });
+          });
+          localStorage.setItem(raKey, JSON.stringify(raData));
+          localStorage.setItem(rsKey, JSON.stringify(rsData));
+        } catch(e) {}
         BentoGrid._selectCourseBlock(blockKey);
       });
     },
@@ -2361,8 +2400,145 @@
         var key = 'cambridge_review_answers_' + level;
         var data = JSON.parse(localStorage.getItem(key) || '{}');
         var skey = unitId + '_' + sectionIdx;
-        data[skey] = (data[skey] || 0) + (pts || 1);
+        data[skey] = pts;
         localStorage.setItem(key, JSON.stringify(data));
+      } catch(e) {}
+    },
+
+    _saveReviewSectionState: function(sec, unitId, sectionIdx, correctItems, totalItems) {
+      var level = BentoGrid._courseLevel || 'C1';
+      try {
+        var stateKey = 'cambridge_review_section_state_' + level;
+        var stateData = JSON.parse(localStorage.getItem(stateKey) || '{}');
+        var skey = unitId + '_' + sectionIdx;
+        stateData[skey] = { score: correctItems, total: totalItems, answers: BentoGrid._getReviewSectionAnswers(sec) };
+        localStorage.setItem(stateKey, JSON.stringify(stateData));
+      } catch(e) {}
+    },
+
+    _clearReviewSectionState: function(unitId, sectionIdx) {
+      var level = BentoGrid._courseLevel || 'C1';
+      try {
+        var key = 'cambridge_review_answers_' + level;
+        var data = JSON.parse(localStorage.getItem(key) || '{}');
+        var skey = unitId + '_' + sectionIdx;
+        delete data[skey];
+        localStorage.setItem(key, JSON.stringify(data));
+        var stateKey = 'cambridge_review_section_state_' + level;
+        var stateData = JSON.parse(localStorage.getItem(stateKey) || '{}');
+        delete stateData[skey];
+        localStorage.setItem(stateKey, JSON.stringify(stateData));
+      } catch(e) {}
+    },
+
+    _getReviewSectionAnswers: function(sec) {
+      var answers = {};
+      var inputVals = [];
+      sec.querySelectorAll('.cu-gap-input').forEach(function(inp) { inputVals.push(inp.value || ''); });
+      answers.inputs = inputVals;
+      var optionState = {};
+      sec.querySelectorAll('.cu-option-btn').forEach(function(btn) {
+        var g = btn.getAttribute('data-group');
+        if (g && btn.classList.contains('cu-option-selected')) optionState[g] = btn.textContent.trim();
+      });
+      answers.options = optionState;
+      var ynState = {};
+      sec.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
+        var g = btn.getAttribute('data-group');
+        if (g && btn.classList.contains('cu-yn-selected')) ynState[g] = btn.getAttribute('data-yn');
+      });
+      answers.ynButtons = ynState;
+      var mcPassage = {};
+      sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
+        var secId = gap.getAttribute('data-sec-id') || '';
+        if (secId && BentoGrid._cuMcPassageAnswers[secId]) mcPassage[secId] = Object.assign({}, BentoGrid._cuMcPassageAnswers[secId]);
+      });
+      answers.mcPassage = mcPassage;
+      var matchExercise = sec.querySelector('.cu-match-exercise');
+      if (matchExercise) {
+        var savedLetters = matchExercise.getAttribute('data-student-letters');
+        if (savedLetters) {
+          try { answers.matchLetters = JSON.parse(savedLetters); } catch(e) {}
+        }
+      }
+      return answers;
+    },
+
+    _applyReviewSectionAnswers: function(sec, answers) {
+      if (!answers) return;
+      if (answers.inputs) {
+        var inputs = sec.querySelectorAll('.cu-gap-input');
+        inputs.forEach(function(inp, i) { if (answers.inputs[i] !== undefined) inp.value = answers.inputs[i]; });
+      }
+      if (answers.options) {
+        sec.querySelectorAll('.cu-option-btn').forEach(function(btn) {
+          var g = btn.getAttribute('data-group');
+          if (g && answers.options[g] !== undefined && btn.textContent.trim() === answers.options[g]) btn.classList.add('cu-option-selected');
+        });
+      }
+      if (answers.ynButtons) {
+        sec.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
+          var g = btn.getAttribute('data-group');
+          if (g && answers.ynButtons[g] !== undefined && (btn.getAttribute('data-yn') || '') === answers.ynButtons[g]) btn.classList.add('cu-yn-selected');
+        });
+      }
+      if (answers.mcPassage) {
+        Object.keys(answers.mcPassage).forEach(function(secId) {
+          BentoGrid._cuMcPassageAnswers[secId] = answers.mcPassage[secId];
+          Object.keys(answers.mcPassage[secId]).forEach(function(gapNum) {
+            var letter = answers.mcPassage[secId][gapNum];
+            var gap = sec.querySelector('.cu-mc-passage-gap[data-gap-num="' + gapNum + '"][data-sec-id="' + secId + '"]');
+            if (gap) {
+              var slot = gap.querySelector('.cu-mc-passage-gap-slot');
+              if (slot) {
+                var qData = (BentoGrid._cuMcPassageData[secId] || {})[parseInt(gapNum)];
+                var optText = '';
+                if (qData) {
+                  var opt = qData.options.find(function(o) { return o.charAt(0).toUpperCase() === letter; });
+                  if (opt) optText = BentoGrid._getCuMcOptionText(opt);
+                }
+                slot.textContent = optText || letter;
+                slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
+                gap.classList.add('cu-mc-passage-gap-answered');
+              }
+            }
+          });
+        });
+      }
+      if (answers.matchLetters && Array.isArray(answers.matchLetters)) {
+        var matchExercise = sec.querySelector('.cu-match-exercise');
+        if (matchExercise) {
+          var rightItemsByLetter = {};
+          matchExercise.querySelectorAll('.cu-match-right-item').forEach(function(item) {
+            var letter = item.getAttribute('data-letter') || '';
+            rightItemsByLetter[letter] = item;
+          });
+          var rows = matchExercise.querySelectorAll('.cu-match-row');
+          rows.forEach(function(row, idx) {
+            var savedLetter = answers.matchLetters[idx];
+            if (savedLetter && rightItemsByLetter[savedLetter]) {
+              var rightCell = row.querySelector('.cu-match-right-cell');
+              if (rightCell) rightCell.appendChild(rightItemsByLetter[savedLetter]);
+            }
+          });
+        }
+      }
+    },
+
+    _restoreReviewUnit: function(unitId) {
+      var level = BentoGrid._courseLevel || 'C1';
+      try {
+        var stateKey = 'cambridge_review_section_state_' + level;
+        var stateData = JSON.parse(localStorage.getItem(stateKey) || '{}');
+        document.querySelectorAll('.cu-review-section').forEach(function(sec) {
+          var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
+          if (isNaN(sectionIdx)) return;
+          var skey = unitId + '_' + sectionIdx;
+          var state = stateData[skey];
+          if (!state) return;
+          if (state.answers) BentoGrid._applyReviewSectionAnswers(sec, state.answers);
+          BentoGrid._doCheckCuExSection(sec);
+        });
       } catch(e) {}
     },
 
@@ -3329,6 +3505,15 @@
         // Store result on the section element for total score tracking
         sec.setAttribute('data-correct-items', correctItems);
         sec.setAttribute('data-total-items', totalItems);
+        // Persist score and answers to localStorage for review sections
+        if (sec.classList.contains('cu-review-section')) {
+          var unitId = BentoGrid._currentUnitId;
+          var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
+          if (unitId && !isNaN(sectionIdx)) {
+            BentoGrid._trackReviewItem(unitId, sectionIdx, correctItems);
+            BentoGrid._saveReviewSectionState(sec, unitId, sectionIdx, correctItems, totalItems);
+          }
+        }
         // Update total review score if this is a review section
         BentoGrid._updateReviewTotalScore();
       }
