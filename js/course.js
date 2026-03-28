@@ -928,9 +928,12 @@
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) {
         input.value = '';
         input.disabled = false;
+        input.readOnly = false;
+        if (input._cuAltClickHandler) { input.removeEventListener('click', input._cuAltClickHandler); input._cuAltClickHandler = null; }
         input.classList.remove('cu-input-correct', 'cu-input-incorrect', 'cu-input-show-correct');
         input.removeAttribute('data-student-value');
         input.removeAttribute('data-correct-value');
+        input.removeAttribute('data-correct-raw');
         input.removeAttribute('data-check-class');
         input.removeAttribute('data-saved-value');
         input.removeAttribute('data-alt-answers');
@@ -3228,7 +3231,8 @@
           inputs.forEach(function(inp, i) {
             inp.setAttribute('data-student-value', inp.value || '');
             var correctRaw = (answerParts[i] || '').trim();
-            // Pick first alternative for display
+            // Store raw (with all alternatives) and first alternative for display
+            inp.setAttribute('data-correct-raw', correctRaw);
             inp.setAttribute('data-correct-value', correctRaw.split(/\s*\/\s*/)[0].trim());
             // For sync items, propagate to all siblings in the group
             if (isSyncItem) {
@@ -3236,6 +3240,7 @@
               if (syncGroup) {
                 item.querySelectorAll('.cu-sync-input[data-sync-group="' + syncGroup + '"]').forEach(function(syncInp) {
                   syncInp.setAttribute('data-student-value', syncInp.value || '');
+                  syncInp.setAttribute('data-correct-raw', correctRaw);
                   syncInp.setAttribute('data-correct-value', correctRaw.split(/\s*\/\s*/)[0].trim());
                 });
               }
@@ -3539,6 +3544,8 @@
           }
           inp.removeAttribute('data-alt-answers');
           inp.removeAttribute('data-alt-idx');
+          if (inp._cuAltClickHandler) { inp.removeEventListener('click', inp._cuAltClickHandler); inp._cuAltClickHandler = null; }
+          inp.readOnly = false;
           inp._cuAltBadge = null;
           inp.classList.remove('cu-input-show-correct');
           BentoGrid._resizeCuInput(inp);
@@ -3638,6 +3645,9 @@
     // Attach a clickable alt-solution badge after an input if there are multiple alternatives
     _attachAltBadge: function(inp, alts) {
       if (!alts || alts.length <= 1) return;
+      // Remove any previously attached badge/handler (idempotent)
+      if (inp._cuAltBadge) { inp._cuAltBadge.remove(); inp._cuAltBadge = null; }
+      if (inp._cuAltClickHandler) { inp.removeEventListener('click', inp._cuAltClickHandler); inp._cuAltClickHandler = null; }
       inp.setAttribute('data-alt-answers', JSON.stringify(alts));
       inp.setAttribute('data-alt-idx', '0');
       var badge = document.createElement('span');
@@ -3651,6 +3661,10 @@
       inp._cuAltBadge = badge;
       var anchor = inp.closest('.cu-hint-pill') || inp;
       anchor.parentNode.insertBefore(badge, anchor.nextSibling);
+      // Make the input non-editable; clicking it cycles through alternatives
+      inp.readOnly = true;
+      inp._cuAltClickHandler = function() { BentoGrid._cycleInputAlt(inp); };
+      inp.addEventListener('click', inp._cuAltClickHandler);
     },
 
     // Cycle through alt solutions on a gap input
@@ -3687,10 +3701,19 @@
       // Update all gap inputs in this item
       item.querySelectorAll('.cu-gap-input').forEach(function(inp) {
         if (newMode === 'correct') {
-          inp.value = inp.getAttribute('data-correct-value') || '';
+          var correctRaw = inp.getAttribute('data-correct-raw') || inp.getAttribute('data-correct-value') || '';
+          var alts = correctRaw.split(/\s*\/\s*/).map(function(a) { return a.trim(); }).filter(Boolean);
+          inp.value = alts[0] || '';
           inp.classList.remove('cu-input-correct', 'cu-input-incorrect');
           inp.classList.add('cu-input-show-correct');
+          BentoGrid._attachAltBadge(inp, alts);
         } else {
+          // Clean up alt badge, readonly and click handler
+          if (inp._cuAltBadge) { inp._cuAltBadge.remove(); inp._cuAltBadge = null; }
+          if (inp._cuAltClickHandler) { inp.removeEventListener('click', inp._cuAltClickHandler); inp._cuAltClickHandler = null; }
+          inp.readOnly = false;
+          inp.removeAttribute('data-alt-answers');
+          inp.removeAttribute('data-alt-idx');
           inp.value = inp.getAttribute('data-student-value') || '';
           inp.classList.remove('cu-input-show-correct');
           // Restore the original check result class (correct or incorrect per input)

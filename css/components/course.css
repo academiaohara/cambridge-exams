@@ -1175,6 +1175,10 @@
   background: rgba(37, 99, 235, 0.22);
   border-color: rgba(37, 99, 235, 0.5);
 }
+/* Readonly inputs in show-correct mode with multiple alternatives are clickable to cycle */
+.cu-gap-input[readonly].cu-input-show-correct {
+  cursor: pointer;
+}
 .cu-gap-standalone {
   width: 100%;
   max-width: 380px;
