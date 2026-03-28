@@ -762,6 +762,14 @@
             });
           }, 50);
           break;
+        case 'open-cloze':
+          // Initialize auto-resize for all open-cloze inputs
+          setTimeout(function() {
+            document.querySelectorAll('.reading-type2-input').forEach(function(inp) {
+              if (typeof ReadingType2 !== 'undefined') ReadingType2.resizeInput(inp);
+            });
+          }, 50);
+          break;
         case 'multiple-choice-text':
           if (AppState.currentSection === 'listening' && typeof ListeningType1?.initListeners === 'function') {
             ListeningType1.initListeners();
@@ -771,6 +779,12 @@
           break;
         case 'sentence-completion':
           if (typeof ListeningType2?.initListeners === 'function') ListeningType2.initListeners();
+          // Initialize auto-resize for all sentence-completion inputs
+          setTimeout(function() {
+            document.querySelectorAll('.listening-type2-input').forEach(function(inp) {
+              if (typeof ListeningType2 !== 'undefined') ListeningType2.resizeInput(inp);
+            });
+          }, 50);
           break;
         case 'essay':
           if (typeof WritingType1?.initListeners === 'function') WritingType1.initListeners();
