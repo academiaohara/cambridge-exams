@@ -2073,6 +2073,14 @@
         parts.push({ type: 'standalone' });
       }
 
+      // Post-process: group [gap, text, gap-hint] into a single gap-group pill so both
+      // inputs are visually tied together (e.g. "Darren [____] usually [____](get) home…")
+      for (var gg = 0; gg < parts.length - 2; gg++) {
+        if (parts[gg].type === 'gap' && parts[gg + 1].type === 'text' && parts[gg + 2].type === 'gap-hint') {
+          parts.splice(gg, 3, { type: 'gap-group', midText: parts[gg + 1].val, hint: parts[gg + 2].hint });
+        }
+      }
+
       var gapCount = 0;
       var optCount = 0;
       return parts.map(function(p) {
@@ -2101,6 +2109,19 @@
           }
           pillHtml += '</span>';
           return pillHtml;
+        } else if (p.type === 'gap-group') {
+          // Two inputs joined by middle text, both styled as hint-pill inputs
+          var gId1 = inputIdBase + '_g' + (gapCount++);
+          var gId2 = inputIdBase + '_g' + (gapCount++);
+          var groupHtml = '<span class="cu-hint-pill">' +
+            '<input type="text" id="' + gId1 + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">' +
+            '<span class="cu-hint-pill-mid">' + self._escapeHTML(p.midText.trim()) + '</span>' +
+            '<input type="text" id="' + gId2 + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">';
+          if (p.hint) {
+            groupHtml += '<span class="cu-hint-pill-word">' + self._escapeHTML(p.hint) + '</span>';
+          }
+          groupHtml += '</span>';
+          return groupHtml;
         } else if (p.type === 'options') {
           var oId = inputIdBase + '_o' + (optCount++);
           return p.parts.map(function(opt) {
