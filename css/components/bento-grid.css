@@ -82,14 +82,6 @@
   z-index: 1;
 }
 
-/* ── Row 1: Top row (Summit · Ascent) ── */
-.bento-top-row {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  grid-template-rows: auto;
-  gap: 14px;
-}
-
 /* ── Row 2: Learning row (Quicksteps · Basecamp) ── */
 .bento-learning-row {
   display: grid;
@@ -97,40 +89,7 @@
   gap: 14px;
 }
 
-/* ── SUMMIT card (exam mode) ── */
-.bento-card-summit {
-  background: var(--card-summit);
-  color: #5c3a1e;
-  cursor: pointer;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.bento-card-summit .bento-card-title {
-  color: #80350E;
-}
-
-/* Summit PNG illustration */
-.bento-card-summit::after {
-content: '';
-    position: absolute;
-    bottom: -30px;
-    right: -10px;
-    width: 240px;
-    height: 300px;
-    opacity: 1;
-    background-image: url(../../Assets/images/Summit.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom right;
-    pointer-events: none;
-}
-
 /* Ground effect for illustration cards */
-.bento-card-summit::before,
-.bento-card-ascent::before,
 .bento-card-quicksteps::before,
 .bento-card-basecamp::before {
     content: '';
@@ -145,38 +104,6 @@ content: '';
     pointer-events: none;
     z-index: 0;
 }
-
-/* ── ASCENT card (practice mode) ── */
-.bento-card-ascent {
-  background: var(--card-ascent);
-  color: #6b5a10;
-  cursor: pointer;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.bento-card-ascent .bento-card-title {
-  color: #826900;
-}
-
-/* Ascent PNG illustration */
-.bento-card-ascent::after {
-content: '';
-    position: absolute;
-    bottom: -80px;
-    right: -20px;
-    width: 300px;
-    height: 300px;
-    opacity: 1;
-    background-image: url(../../Assets/images/Ascent.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom right;
-    pointer-events: none;
-}
-
 /* ── QUICKSTEPS card (micro-learning) ── */
 .bento-card-quicksteps {
   background: var(--card-quicksteps);
@@ -1210,31 +1137,3 @@ margin-top: -2px;
   color: #3a3a6a;
 }
 
-
-
-/* ── MIXED (Random Mix) row ── */
-.bento-mixed-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-.bento-card-mixed {
-  background: linear-gradient(135deg, #e0f0ff 0%, #d8e8ff 60%, #ddd8ff 100%);
-  color: #2a3a6a;
-  cursor: pointer;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-}
-
-.bento-card-mixed .bento-card-title {
-  color: #2a3a9a;
-  display: flex;
-  align-items: center;
-}
-
-.bento-card-mixed.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
