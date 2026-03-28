@@ -1583,7 +1583,7 @@
           return '<span class="cu-mc-passage-gap" id="' + pillId + '" ' +
             'data-gap-num="' + gapNum + '" data-sec-id="' + secId + '" data-answer="' + self._escapeHTML((qMap[gapNum] || {}).answer || '') + '" ' +
             'onclick="BentoGrid._openCuMcModal(\'' + secId + '\',' + gapNum + ')" role="button" tabindex="0">' +
-            '<span class="cu-mc-passage-gap-num">(' + num + ')</span>' +
+            '<span class="cu-mc-passage-gap-num">' + num + '</span>' +
             '<span class="cu-mc-passage-gap-slot"></span>' +
           '</span>';
         }
@@ -2903,6 +2903,9 @@
       var sec = document.getElementById(sectionId);
       if (!sec) return;
 
+      // Prevent checking while "Show answers" is active
+      if (sec.getAttribute('data-answers-showing') === 'true') return;
+
       // Detect unanswered questions (empty inputs with no option/yn-btn selected)
       var unanswered = [];
       // MC passage gaps count separately
@@ -2958,9 +2961,14 @@
       });
     },
 
-    // Splits an answer part by '/' and returns trimmed lowercase alternatives
+    // Normalises curly/smart quotes to straight equivalents for comparison
+    _normalizeText: function(s) {
+      return (s || '').replace(/[\u2018\u2019\u201a\u201b]/g, "'").replace(/[\u201c\u201d\u201e\u201f]/g, '"');
+    },
+
+    // Splits an answer part by '/' and returns trimmed lowercase alternatives (quotes normalised)
     _answerAlts: function(answerPart) {
-      return (answerPart || '').trim().split(/\s*\/\s*/).map(function(a) { return a.trim().toLowerCase(); }).filter(Boolean);
+      return BentoGrid._normalizeText((answerPart || '').trim()).split(/\s*\/\s*/).map(function(a) { return BentoGrid._normalizeText(a.trim().toLowerCase()); }).filter(Boolean);
     },
 
     _doCheckCuExSection: function(sec) {
@@ -3190,13 +3198,13 @@
           btns.forEach(function(b) { if (b.classList.contains('cu-option-selected')) selected = b; });
           btns.forEach(function(b) { b.classList.remove('cu-option-correct', 'cu-option-incorrect', 'cu-option-correct-reveal'); });
           if (selected) {
-            var selectedText = selected.textContent.trim().toLowerCase();
+            var selectedText = BentoGrid._normalizeText(selected.textContent.trim().toLowerCase());
             var matched = gAlts.some(function(a) { return a === selectedText; });
             selected.classList.add(matched ? 'cu-option-correct' : 'cu-option-incorrect');
             // Mark the correct button(s) if student chose wrong
             if (!matched) {
               btns.forEach(function(b) {
-                var bText = b.textContent.trim().toLowerCase();
+                var bText = BentoGrid._normalizeText(b.textContent.trim().toLowerCase());
                 if (b !== selected && gAlts.some(function(a) { return a === bText; })) {
                   b.classList.add('cu-option-correct-reveal');
                 }
@@ -3206,7 +3214,7 @@
           } else {
             // Nothing selected — mark correct option(s) and count as incorrect
             btns.forEach(function(b) {
-              var bText = b.textContent.trim().toLowerCase();
+              var bText = BentoGrid._normalizeText(b.textContent.trim().toLowerCase());
               if (gAlts.some(function(a) { return a === bText; })) {
                 b.classList.add('cu-option-correct-reveal');
               }
@@ -3363,6 +3371,9 @@
           var textNode = btn.lastChild;
           if (textNode && textNode.nodeType === 3) textNode.textContent = ' Hide answers';
         }
+        // Disable check button while answers are shown
+        var checkBtn = sec.querySelector('.cu-check-btn');
+        if (checkBtn) checkBtn.disabled = true;
 
         // Text inputs from cu-ex-items
         sec.querySelectorAll('.cu-ex-item, .cu-sync-item').forEach(function(item) {
@@ -3415,7 +3426,7 @@
             // Option groups start at answer part index = number of text inputs
             var gAlts = BentoGrid._answerAlts(answerParts[inputs.length + gIdx]);
             optGroups[gId].forEach(function(b) {
-              var bText = b.textContent.trim().toLowerCase();
+              var bText = BentoGrid._normalizeText(b.textContent.trim().toLowerCase());
               if (gAlts.some(function(a) { return a === bText; })) {
                 b.classList.add('cu-option-correct-reveal');
               }
@@ -3519,6 +3530,9 @@
           var textNode = btn.lastChild;
           if (textNode && textNode.nodeType === 3) textNode.textContent = ' Show answers';
         }
+        // Re-enable check button when answers are hidden
+        var checkBtn = sec.querySelector('.cu-check-btn');
+        if (checkBtn) checkBtn.disabled = false;
 
         sec.querySelectorAll('.cu-gap-input').forEach(function(inp) {
           var saved = inp.getAttribute('data-saved-value');
