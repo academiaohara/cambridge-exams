@@ -807,6 +807,7 @@
       BentoGrid._courseUnitMeta[unitId] = BentoGrid._extractCourseUnitMeta(unitData);
 
       BentoGrid._currentUnitId = unitId;
+      BentoGrid._currentUnitType = unitData.type;
 
       // Update right sidebar with learning roadmap for this unit
       var rightSidebar = document.getElementById('dashboardRightSidebar');
@@ -852,6 +853,27 @@
       // Restore saved answers and scores for review units
       if (unitData.type === 'review') {
         BentoGrid._restoreReviewUnit(unitId);
+      } else {
+        // Restore saved draft/checked answers for grammar and vocabulary exercise sections
+        BentoGrid._restoreCuExSections(unitId);
+      }
+
+      // Attach event delegation to auto-save draft answers as the user interacts
+      var cuContent = centerSection.querySelector('.course-unit-content');
+      if (cuContent) {
+        cuContent.addEventListener('input', function(e) {
+          if (e.target && e.target.classList.contains('cu-gap-input')) {
+            var sec = e.target.closest('.cu-section');
+            if (sec) BentoGrid._saveCuExDraft(sec.id);
+          }
+        });
+        cuContent.addEventListener('click', function(e) {
+          var btn = e.target && e.target.closest('.cu-option-btn, .cu-yn-btn');
+          if (btn) {
+            var sec = btn.closest('.cu-section');
+            if (sec) BentoGrid._saveCuExDraft(sec.id);
+          }
+        });
       }
 
       // Compute start section index
@@ -1427,6 +1449,15 @@
           BentoGrid._clearReviewSectionState(unitId, sectionIdx);
         }
       }
+      // Clear pre-check draft and checked SyncManager entry for this section
+      var resetUnitId = BentoGrid._currentUnitId;
+      var resetSectionIdx = parseInt((sectionId || '').replace('cu-sec-', ''));
+      var resetLevel = BentoGrid._courseLevel || 'C1';
+      if (resetUnitId && !isNaN(resetSectionIdx)) {
+        try { localStorage.removeItem('cu_draft_' + resetLevel + '_' + resetUnitId + '_' + resetSectionIdx); } catch(e) {}
+        var smKey = 'cambridge_course_' + resetLevel + '_' + resetUnitId + '_' + (BentoGrid._currentUnitType || 'course') + '_' + resetSectionIdx;
+        try { localStorage.removeItem(smKey); } catch(e) {}
+      }
       // Refresh total review score panel
       BentoGrid._updateReviewTotalScore();
     },
@@ -1569,6 +1600,7 @@
     // Stores: BentoGrid._cuMcPassageData[secId] = { qNum: { options, answer } }
     _cuMcPassageData: {},
     _cuMcPassageAnswers: {},
+    _cuRestoring: false,   // true while replaying a saved checked state (prevents re-sync to Supabase)
 
     _renderCuMcPassageExercise: function(ex, idBase, secId) {
       var self = this;
@@ -1641,6 +1673,8 @@
         }
         pill.classList.add('cu-mc-passage-gap-answered');
       }
+      // Save draft for this section if not yet checked
+      if (secEl) BentoGrid._saveCuExDraft(secId);
       // Close modal
       var overlay = document.getElementById('exercise-modal-overlay');
       if (overlay) overlay.style.display = 'none';
@@ -2288,7 +2322,8 @@
           Object.keys(rsData).forEach(function(k) { if (k.indexOf(prefix) === 0) delete rsData[k]; });
           localStorage.setItem(rsKey, JSON.stringify(rsData));
         } catch(e) {}
-        // Reopen the unit fresh
+        // Clear draft and checked SyncManager answers for all sections in this unit
+        BentoGrid._clearCuExDraftsByUnit(unitId, level);
         var foundItem = BentoGrid._courseIndexData && BentoGrid._courseIndexData.items &&
           BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
         if (foundItem) {
@@ -2323,6 +2358,8 @@
           localStorage.setItem(raKey, JSON.stringify(raData));
           localStorage.setItem(rsKey, JSON.stringify(rsData));
         } catch(e) {}
+        // Clear draft and checked SyncManager answers for all units in this block
+        items.forEach(function(item) { BentoGrid._clearCuExDraftsByUnit(item.id, level); });
         BentoGrid._selectCourseBlock(blockKey);
       });
     },
@@ -2494,7 +2531,18 @@
       if (answers.options) {
         sec.querySelectorAll('.cu-option-btn').forEach(function(btn) {
           var g = btn.getAttribute('data-group');
-          if (g && answers.options[g] !== undefined && btn.textContent.trim() === answers.options[g]) btn.classList.add('cu-option-selected');
+          if (g && answers.options[g] !== undefined && btn.textContent.trim() === answers.options[g]) {
+            btn.classList.add('cu-option-selected');
+            // Update MC gap pill if present
+            var pillId = btn.getAttribute('data-pill-id');
+            if (pillId) {
+              var pill = document.getElementById(pillId);
+              if (pill) {
+                pill.classList.add('cu-mc-gap-pill-filled');
+                pill.textContent = btn.getAttribute('data-mc-text') || btn.getAttribute('data-mc-letter') || '';
+              }
+            }
+          }
         });
       }
       if (answers.ynButtons) {
@@ -2556,9 +2604,22 @@
           if (isNaN(sectionIdx)) return;
           var skey = unitId + '_' + sectionIdx;
           var state = stateData[skey];
-          if (!state) return;
-          if (state.answers) BentoGrid._applyReviewSectionAnswers(sec, state.answers);
-          BentoGrid._doCheckCuExSection(sec);
+          if (state) {
+            if (state.answers) BentoGrid._applyReviewSectionAnswers(sec, state.answers);
+            BentoGrid._cuRestoring = true;
+            try { BentoGrid._doCheckCuExSection(sec); } finally { BentoGrid._cuRestoring = false; }
+          } else {
+            // Restore pre-check draft if available
+            var draftKey = 'cu_draft_' + level + '_' + unitId + '_' + sectionIdx;
+            try {
+              var draftRaw = localStorage.getItem(draftKey);
+              if (draftRaw) {
+                var draftAnswers = JSON.parse(draftRaw);
+                BentoGrid._applyReviewSectionAnswers(sec, draftAnswers);
+                BentoGrid._resizeAllCuInputs(sec);
+              }
+            } catch(e) {}
+          }
         });
       } catch(e) {}
     },
@@ -2569,7 +2630,69 @@
       } catch(e) { return {}; }
     },
 
-    // ── Course Overview (all blocks roadmap) ─────────────────────────────
+    // ── Course exercise draft save/restore ──────────────────────────────
+    // Saves pre-check answers for a course exercise section to localStorage.
+    _saveCuExDraft: function(sectionId) {
+      var sec = document.getElementById(sectionId);
+      // Skip if section doesn't exist or has already been checked
+      if (!sec || sec.querySelector('.cu-ex-score-summary')) return;
+      var level = BentoGrid._courseLevel || 'C1';
+      var unitId = BentoGrid._currentUnitId;
+      var sectionIdx = parseInt((sectionId || '').replace('cu-sec-', ''));
+      if (!unitId || isNaN(sectionIdx)) return;
+      var answers = BentoGrid._getReviewSectionAnswers(sec);
+      try { localStorage.setItem('cu_draft_' + level + '_' + unitId + '_' + sectionIdx, JSON.stringify(answers)); } catch(e) {}
+    },
+
+    // Restores draft or previously-checked answers for non-review exercise sections.
+    _restoreCuExSections: function(unitId) {
+      var level = BentoGrid._courseLevel || 'C1';
+      var unitType = BentoGrid._currentUnitType || 'course';
+      document.querySelectorAll('.cu-section.cu-exercise').forEach(function(sec) {
+        if (sec.classList.contains('cu-review-section')) return; // handled by _restoreReviewUnit
+        var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
+        if (isNaN(sectionIdx)) return;
+        // Try a previously-checked SyncManager entry first
+        var smKey = 'cambridge_course_' + level + '_' + unitId + '_' + unitType + '_' + sectionIdx;
+        try {
+          var raw = localStorage.getItem(smKey);
+          if (raw) {
+            var entry = JSON.parse(raw);
+            if (entry.answersChecked && entry.answers) {
+              BentoGrid._applyReviewSectionAnswers(sec, entry.answers);
+              BentoGrid._resizeAllCuInputs(sec);
+              BentoGrid._cuRestoring = true;
+              try { BentoGrid._doCheckCuExSection(sec); } finally { BentoGrid._cuRestoring = false; }
+              return;
+            }
+          }
+        } catch(e) {}
+        // Fall back to pre-check draft
+        var draftKey = 'cu_draft_' + level + '_' + unitId + '_' + sectionIdx;
+        try {
+          var draftRaw = localStorage.getItem(draftKey);
+          if (!draftRaw) return;
+          var draftAnswers = JSON.parse(draftRaw);
+          BentoGrid._applyReviewSectionAnswers(sec, draftAnswers);
+          BentoGrid._resizeAllCuInputs(sec);
+        } catch(e) {}
+      });
+    },
+
+    // Clears all draft answers stored for a unit.
+    _clearCuExDraftsByUnit: function(unitId, level) {
+      level = level || BentoGrid._courseLevel || 'C1';
+      var draftPrefix = 'cu_draft_' + level + '_' + unitId + '_';
+      var smPrefix = 'cambridge_course_' + level + '_' + unitId + '_';
+      try {
+        var allKeys = Object.keys(localStorage);
+        allKeys.forEach(function(k) {
+          if (k.indexOf(draftPrefix) === 0 || k.indexOf(smPrefix) === 0) localStorage.removeItem(k);
+        });
+      } catch(e) {}
+    },
+
+
     _renderCourseOverview: function() {
       var self = this;
       var level = BentoGrid._courseLevel || 'C1';
@@ -3542,6 +3665,27 @@
         }
         // Update total review score if this is a review section
         BentoGrid._updateReviewTotalScore();
+        // Sync checked answers and score to Supabase (skip when restoring from saved state)
+        if (!BentoGrid._cuRestoring && window.SyncManager) {
+          var syncUnitId = BentoGrid._currentUnitId;
+          var syncSectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
+          var syncLevel = BentoGrid._courseLevel || 'C1';
+          var syncUnitType = BentoGrid._currentUnitType || 'course';
+          if (syncUnitId && !isNaN(syncSectionIdx)) {
+            SyncManager.saveProgress({
+              mode: 'course',
+              level: syncLevel,
+              examId: syncUnitId,
+              section: syncUnitType,
+              part: syncSectionIdx,
+              answers: BentoGrid._getReviewSectionAnswers(sec),
+              score: correctItems,
+              answersChecked: true
+            });
+            // Remove draft since the checked result is now saved
+            try { localStorage.removeItem('cu_draft_' + syncLevel + '_' + syncUnitId + '_' + syncSectionIdx); } catch(e) {}
+          }
+        }
       }
     },
 
