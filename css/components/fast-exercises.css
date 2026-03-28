@@ -7016,9 +7016,10 @@
   color: #7c3aed;
 }
 
-.cu-match-correct {
-  background: #f0fdf4 !important;
-  border-color: #22c55e !important;
+.cu-match-correct,
+.cu-match-show-correct {
+  background: #e0f2fe !important;
+  border-color: #38bdf8 !important;
 }
 
 .cu-match-incorrect {
