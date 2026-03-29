@@ -1217,7 +1217,7 @@
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
           feedbackEl.innerHTML = _mi('cancel') + ' The correct answer is <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
         }
-        feedbackEl.style.display = 'block';
+        feedbackEl.style.display = 'flex';
       }
 
       var answered = parseInt(questionsContainer.getAttribute('data-answered')) + 1;
@@ -1643,7 +1643,7 @@
           feedbackEl.textContent = '';
           feedbackEl.innerHTML = _mi('cancel') + ' ' + 'The correct answer is' + ' ' + correctAnswer;
         }
-        feedbackEl.style.display = 'block';
+        feedbackEl.style.display = 'flex';
       }
 
       // Update progress
@@ -2691,7 +2691,7 @@
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
           feedbackEl.innerHTML = _mi('cancel') + ' ' + 'The correct answer is' + ' <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
         }
-        feedbackEl.style.display = 'block';
+        feedbackEl.style.display = 'flex';
       }
 
       var answered = parseInt(questionsContainer.getAttribute('data-answered')) + 1;
@@ -3191,7 +3191,7 @@
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
           feedbackEl.innerHTML = _mi('cancel') + ' ' + 'The correct answer is' + ' <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
         }
-        feedbackEl.style.display = 'block';
+        feedbackEl.style.display = 'flex';
       }
 
       var answered = parseInt(questionsContainer.getAttribute('data-answered')) + 1;
