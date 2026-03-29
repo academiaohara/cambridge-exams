@@ -408,6 +408,11 @@
   border-color: rgba(239, 68, 68, 0.3);
 }
 .fe-dot-done {
+  background: rgba(16, 185, 129, 0.18) !important;
+  color: #059669 !important;
+  border-color: #10b981 !important;
+}
+.fe-dot-in-progress {
   background: rgba(59, 130, 246, 0.18) !important;
   color: #2563eb !important;
   border-color: #3b82f6 !important;
