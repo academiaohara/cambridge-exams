@@ -2523,7 +2523,7 @@
         var items = blocks[bk] || [];
         var hasAvailable = items.some(function(i) { return i.status === 'available'; });
         var hasActive = items.some(function(i) { return i.id === activeItemId; });
-        var isOpen = hasActive || bk === blockOrder[0];
+        var isOpen = false;
         var label = bk !== 'misc' ? 'Block ' + bk : 'Other';
         var availItems = items.filter(function(i) { return i.status === 'available'; });
         var doneItems = availItems.filter(function(i) { return !!progress[i.id]; });
