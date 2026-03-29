@@ -161,6 +161,7 @@
       var blocks = BentoGrid._courseBlocks || {};
       var progress = BentoGrid._getCourseProgress(level);
       var sectionProgress = BentoGrid._getCourseSectionProgress(level);
+      var openedProgress = BentoGrid._getCourseSectionOpened(level);
 
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
@@ -193,6 +194,7 @@
         if (isAvail) {
           var meta = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[item.id];
           var unitSectionProgress = sectionProgress[item.id] || {};
+          var unitOpenedProgress = openedProgress[item.id] || {};
           var theoryPoints = meta && meta.theory && meta.theory.length ? meta.theory : [{ label: theoryLabel, sectionIdx: 0 }];
           var exercisePoints = meta && meta.exercises && meta.exercises.length ? meta.exercises : [{ label: 'A', sectionIdx: theoryPoints.length }];
           html +=
@@ -201,14 +203,14 @@
               '<div class="fe-map-lesson-title">' +
                 '<span class="fe-map-lesson-num">' + theoryLabel + '</span>' +
               '</div>' +
-              BentoGrid._buildCourseBlockDotsHtml(theoryPoints, unitSectionProgress, 'fe-dot-explanation', item.id, unitPath) +
+              BentoGrid._buildCourseBlockDotsHtml(theoryPoints, unitSectionProgress, unitOpenedProgress, 'fe-dot-explanation', item.id, unitPath) +
             '</div>' +
             '<div class="fe-map-lesson ' + (isDone ? 'fe-lesson-complete' : 'fe-lesson-pending') + '" style="cursor:pointer;margin-top:10px" ' +
               'onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + unitPath + '\', \'exercises\')">' +
               '<div class="fe-map-lesson-title">' +
                 '<span class="fe-map-lesson-num">Exercises</span>' +
               '</div>' +
-              BentoGrid._buildCourseBlockDotsHtml(exercisePoints, unitSectionProgress, 'fe-dot-exercise', item.id, unitPath) +
+              BentoGrid._buildCourseBlockDotsHtml(exercisePoints, unitSectionProgress, unitOpenedProgress, 'fe-dot-exercise', item.id, unitPath) +
             '</div>';
         } else {
           html +=
@@ -293,14 +295,16 @@
       return html;
     },
 
-    _buildCourseBlockDotsHtml: function(points, visitedPoints, pendingClass, unitId, unitPath) {
+    _buildCourseBlockDotsHtml: function(points, visitedPoints, openedPoints, pendingClass, unitId, unitPath) {
       var dotsHtml = '<div class="fe-map-points-row">';
       (points || []).forEach(function(point) {
         var isVisited = !!(visitedPoints && visitedPoints[point.sectionIdx]);
+        var isOpened = !!(openedPoints && openedPoints[point.sectionIdx]);
+        var dotClass = isVisited ? 'fe-dot-done' : (isOpened ? 'fe-dot-in-progress' : 'fe-dot-outline ' + pendingClass);
         var clickAttr = (unitId && unitPath)
           ? ' onclick="event.stopPropagation();BentoGrid.openCourseUnit(\'' + unitId + '\',\'' + unitPath + '\',' + point.sectionIdx + ')" style="cursor:pointer"'
           : '';
-        dotsHtml += '<span class="fe-dot fe-dot-section-marker ' + (isVisited ? 'fe-dot-done' : 'fe-dot-outline ' + pendingClass) + '" title="' + point.label + '"' + clickAttr + '>' +
+        dotsHtml += '<span class="fe-dot fe-dot-section-marker ' + dotClass + '" title="' + point.label + '"' + clickAttr + '>' +
           '<span class="fe-dot-label">' + point.label + '</span>' +
         '</span>';
       });
@@ -1853,6 +1857,12 @@
       } catch(e) { return {}; }
     },
 
+    _getCourseSectionOpened: function(level) {
+      try {
+        return JSON.parse(localStorage.getItem('cambridge_course_section_opened_' + level) || '{}');
+      } catch(e) { return {}; }
+    },
+
     _markCourseUnitOpened: function(level, unitId) {
       var prog = BentoGrid._getCourseProgress(level);
       prog[unitId] = true;
@@ -1869,6 +1879,17 @@
       prog[unitId] = unitProg;
       try {
         localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(prog));
+      } catch(e) {}
+    },
+
+    _markCourseSectionOpened: function(level, unitId, sectionIdx) {
+      if (!level || !unitId || typeof sectionIdx !== 'number' || sectionIdx < 0) return;
+      var opened = BentoGrid._getCourseSectionOpened(level);
+      var unitOpened = opened[unitId] || {};
+      unitOpened[sectionIdx] = true;
+      opened[unitId] = unitOpened;
+      try {
+        localStorage.setItem('cambridge_course_section_opened_' + level, JSON.stringify(opened));
       } catch(e) {}
     },
 
@@ -1894,6 +1915,10 @@
         var secProg = BentoGrid._getCourseSectionProgress(level);
         delete secProg[unitId];
         try { localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(secProg)); } catch(e) {}
+        // Clear opened (in-progress) state for this unit
+        var openedProg = BentoGrid._getCourseSectionOpened(level);
+        delete openedProg[unitId];
+        try { localStorage.setItem('cambridge_course_section_opened_' + level, JSON.stringify(openedProg)); } catch(e) {}
         // Clear review section scores and state for this unit
         try {
           var prefix = unitId + '_';
@@ -1929,12 +1954,15 @@
         var items = (BentoGrid._courseBlocks || {})[blockKey] || [];
         var prog = BentoGrid._getCourseProgress(level);
         var secProg = BentoGrid._getCourseSectionProgress(level);
+        var openedProg = BentoGrid._getCourseSectionOpened(level);
         items.forEach(function(item) {
           delete prog[item.id];
           delete secProg[item.id];
+          delete openedProg[item.id];
         });
         try { localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog)); } catch(e) {}
         try { localStorage.setItem('cambridge_course_section_progress_' + level, JSON.stringify(secProg)); } catch(e) {}
+        try { localStorage.setItem('cambridge_course_section_opened_' + level, JSON.stringify(openedProg)); } catch(e) {}
         // Clear review section scores and state for all review units in this block
         try {
           var raKey = 'cambridge_review_answers_' + level;
@@ -2785,9 +2813,12 @@
 
       // Only auto-mark if starting section is an exercise (not theory)
       var startSec = sections[startIdx];
-      if (startSec && !startSec.classList.contains('cu-theory')) {
-        BentoGrid._markCourseSectionVisited(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId, startIdx);
-        BentoGrid._checkCourseUnitAllDone(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId);
+      var _initLevel = BentoGrid._courseLevel || 'C1';
+      var _initUnitId = BentoGrid._currentUnitId;
+      BentoGrid._markCourseSectionOpened(_initLevel, _initUnitId, startIdx);
+      if (startSec && startSec.classList.contains('cu-review-section')) {
+        BentoGrid._markCourseSectionVisited(_initLevel, _initUnitId, startIdx);
+        BentoGrid._checkCourseUnitAllDone(_initLevel, _initUnitId);
       }
       BentoGrid._updateRoadmapActiveItem(startIdx);
       // Restore saved answers (and re-check if already checked) for the initial section
@@ -2815,11 +2846,14 @@
       });
       var center = document.querySelector('.dashboard-center');
       if (center) center.scrollTop = 0;
-      // Only auto-mark exercise sections; theory sections require explicit "Entendido"
+      // Mark the section as opened (in progress); review sections are auto-done when visited
       var targetSec = sections[idx];
-      if (targetSec && !targetSec.classList.contains('cu-theory')) {
-        BentoGrid._markCourseSectionVisited(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId, idx);
-        BentoGrid._checkCourseUnitAllDone(BentoGrid._courseLevel || 'C1', BentoGrid._currentUnitId);
+      var _cuLevel = BentoGrid._courseLevel || 'C1';
+      var _cuUnitId = BentoGrid._currentUnitId;
+      BentoGrid._markCourseSectionOpened(_cuLevel, _cuUnitId, idx);
+      if (targetSec && targetSec.classList.contains('cu-review-section')) {
+        BentoGrid._markCourseSectionVisited(_cuLevel, _cuUnitId, idx);
+        BentoGrid._checkCourseUnitAllDone(_cuLevel, _cuUnitId);
       }
       BentoGrid._updateRoadmapActiveItem(idx);
       // Restore saved answers (and re-check if already checked) for exercise sections
@@ -3315,6 +3349,14 @@
           if (unitId && !isNaN(sectionIdx)) {
             var checkedAnswers = BentoGrid._getReviewSectionAnswers(sec);
             BentoGrid._saveCuExSectionChecked(unitId, sectionIdx, checkedAnswers, correctItems, totalItems);
+            // Mark section as done only on first check, not during answer restoration.
+            // _isRestoringCuAnswers is set true by _restoreCuExSectionAnswers to suppress
+            // redundant localStorage/Supabase writes when re-checking previously saved answers.
+            if (!BentoGrid._isRestoringCuAnswers) {
+              var _exLevel = BentoGrid._courseLevel || 'C1';
+              BentoGrid._markCourseSectionVisited(_exLevel, unitId, sectionIdx);
+              BentoGrid._checkCourseUnitAllDone(_exLevel, unitId);
+            }
           }
         }
         // Update total review score if this is a review section
