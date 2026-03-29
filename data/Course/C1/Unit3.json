@@ -371,9 +371,28 @@
         }
       ],
       "words": [
-        "appear", "check", "complete", "disappear", "get", "go", "kidnap", "look",
-        "make", "mean", "open", "press", "race", "rain", "remind", "see",
-        "start", "take", "travel", "wait", "wear", "work"
+        "appear",
+        "check",
+        "complete",
+        "disappear",
+        "get",
+        "go",
+        "kidnap",
+        "look",
+        "make",
+        "mean",
+        "open",
+        "press",
+        "race",
+        "rain",
+        "remind",
+        "see",
+        "start",
+        "take",
+        "travel",
+        "wait",
+        "wear",
+        "work"
       ]
     },
     {
@@ -500,15 +519,15 @@
     {
       "type": "exercise",
       "title": "G: Error Correction (Text)",
-      "instructions": "If a word or phrase in bold is in the correct form, put a tick. If it is incorrect, write the correct form on the line.",
+      "instructions": "If a word or phrase in bold is in the correct form, write OK. If it is incorrect, write the correct form on the line.",
       "items": [
         {
           "sentence": "People (1) **have been dreaming** of having a personal means of communication for a long time.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "In the late 1960s, the idea (2) **had seemed** so far in the future that it (3) **was included** in the science fiction series, Star Trek.",
-          "answer": "seemed, ✓"
+          "answer": "seemed, OK"
         },
         {
           "sentence": "Since the 1980s, however, mobiles (4) **became** a part of everyday life.",
@@ -516,7 +535,7 @@
         },
         {
           "sentence": "Although they (5) **were initially seen** as a status symbol for successful business people, mobile use (6) **had spread** to include practically everyone in the developed world, old and young alike.",
-          "answer": "✓, has spread"
+          "answer": "OK, has spread"
         },
         {
           "sentence": "The impact on social life (7) **had been** enormous.",
@@ -524,15 +543,15 @@
         },
         {
           "sentence": "We have got used to the idea of having constantly changing social plans, where a quick phone call is all it takes to rearrange things. Before this was possible, there were many occasions when friends who (8) **had arranged** to meet completely (9) **had missed** each other because of a slight misunderstanding.",
-          "answer": "✓, missed"
+          "answer": "OK, missed"
         },
         {
           "sentence": "As mobiles (10) **have been becoming** more popular, so they (11) **have become** more powerful.",
-          "answer": "have become, ✓"
+          "answer": "have become, OK"
         },
         {
           "sentence": "The large, unreliable mobile phone of the 1980s (12) **has evolved** into the small, stylish camera phone of today.",
-          "answer": "✓"
+          "answer": "OK"
         }
       ]
     },
@@ -617,62 +636,122 @@
       "items": [
         {
           "sentence": "How long ...... before Val finally turned up?",
-          "options": ["A have you been waiting", "B are you waiting", "C you waited", "D had you been waiting"],
+          "options": [
+            "A have you been waiting",
+            "B are you waiting",
+            "C you waited",
+            "D had you been waiting"
+          ],
           "answer": "D"
         },
         {
           "sentence": "You ...... be so good at backgammon, did you?",
-          "options": ["A never used to", "B got used to", "C are used to", "D wouldn't"],
+          "options": [
+            "A never used to",
+            "B got used to",
+            "C are used to",
+            "D wouldn't"
+          ],
           "answer": "A"
         },
         {
           "sentence": "Could you tell me, sir, what you ...... in the park at three in the morning?",
-          "options": ["A have done", "B have been doing", "C were doing", "D had done"],
+          "options": [
+            "A have done",
+            "B have been doing",
+            "C were doing",
+            "D had done"
+          ],
           "answer": "C"
         },
         {
           "sentence": "I was angry when you saw me because I ...... with my sister.",
-          "options": ["A have been arguing", "B argued", "C had been arguing", "D would argue"],
+          "options": [
+            "A have been arguing",
+            "B argued",
+            "C had been arguing",
+            "D would argue"
+          ],
           "answer": "C"
         },
         {
           "sentence": "The Black Pirate ...... over a million copies already this year.",
-          "options": ["A had sold", "B has sold", "C had been selling", "D was selling"],
+          "options": [
+            "A had sold",
+            "B has sold",
+            "C had been selling",
+            "D was selling"
+          ],
           "answer": "B"
         },
         {
           "sentence": "Don't throw the paper away because I ...... it yet.",
-          "options": ["A haven't read", "B hadn't read", "C haven't been reading", "D hadn't been reading"],
+          "options": [
+            "A haven't read",
+            "B hadn't read",
+            "C haven't been reading",
+            "D hadn't been reading"
+          ],
           "answer": "A"
         },
         {
           "sentence": "By the time we arrived, the film ...... .",
-          "options": ["A has already started", "B would already start", "C already started", "D had already started"],
+          "options": [
+            "A has already started",
+            "B would already start",
+            "C already started",
+            "D had already started"
+          ],
           "answer": "D"
         },
         {
           "sentence": "We had to walk home in the end because Jimmy ...... his car keys.",
-          "options": ["A has been losing", "B had lost", "C was losing", "D had been losing"],
+          "options": [
+            "A has been losing",
+            "B had lost",
+            "C was losing",
+            "D had been losing"
+          ],
           "answer": "B"
         },
         {
           "sentence": "It took Edward a long time to ...... living in Canada.",
-          "options": ["A be used to", "B used to", "C get used to", "D be used"],
+          "options": [
+            "A be used to",
+            "B used to",
+            "C get used to",
+            "D be used"
+          ],
           "answer": "C"
         },
         {
           "sentence": "I'd love to have lived in the old days, when people ...... to market by horse and carriage.",
-          "options": ["A have been travelling", "B would travel", "C got used to travelling", "D had been travelling"],
+          "options": [
+            "A have been travelling",
+            "B would travel",
+            "C got used to travelling",
+            "D had been travelling"
+          ],
           "answer": "B"
         },
         {
           "sentence": "I much preferred it when we ...... to Wales every summer on holiday.",
-          "options": ["A used to go", "B were used to going", "C had gone", "D have been going"],
+          "options": [
+            "A used to go",
+            "B were used to going",
+            "C had gone",
+            "D have been going"
+          ],
           "answer": "A"
         },
         {
           "sentence": "Your teacher called me today and said that you ...... in the playground again.",
-          "options": ["A had been fighting", "B used to fight", "C have fought", "D would fight"],
+          "options": [
+            "A had been fighting",
+            "B used to fight",
+            "C have fought",
+            "D would fight"
+          ],
           "answer": "A"
         }
       ]
