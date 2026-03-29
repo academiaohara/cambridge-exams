@@ -2107,6 +2107,8 @@
     _saveCuExSectionState: function(sec) {
       if (BentoGrid._isRestoringCuAnswers) return;
       if (!sec || !sec.classList.contains('cu-exercise')) return;
+      // Don't save while "Show answers" is active — those values were filled by the app, not the user
+      if (sec.getAttribute('data-answers-showing') === 'true') return;
       var unitId = BentoGrid._currentUnitId;
       if (!unitId) return;
       var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
