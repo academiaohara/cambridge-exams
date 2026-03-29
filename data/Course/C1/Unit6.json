@@ -1,0 +1,639 @@
+{
+  "block": 1,
+  "unit": 6,
+  "type": "vocabulary",
+  "unitTitle": "Unit 6: Time and Work",
+  "title": "Time and Work",
+  "sections": {
+    "topic_vocabulary": {
+      "time": [
+        { "word": "abrupt", "part_of_speech": "adj" },
+        { "word": "anachronism", "part_of_speech": "n" },
+        { "word": "annual", "part_of_speech": "adj" },
+        { "word": "antique", "part_of_speech": "adj, n" },
+        { "word": "century", "part_of_speech": "n" },
+        { "word": "chronological", "part_of_speech": "adj" },
+        { "word": "contemporary", "part_of_speech": "n, adj" },
+        { "word": "decade", "part_of_speech": "n" },
+        { "word": "duration", "part_of_speech": "n" },
+        { "word": "elapse", "part_of_speech": "v" },
+        { "word": "era", "part_of_speech": "n" },
+        { "word": "eternal", "part_of_speech": "adj" },
+        { "word": "expire", "part_of_speech": "v" },
+        { "word": "frequency", "part_of_speech": "n" },
+        { "word": "instantaneous", "part_of_speech": "adj" },
+        { "word": "interim", "part_of_speech": "n, adj" },
+        { "word": "interval", "part_of_speech": "n" },
+        { "word": "lapse", "part_of_speech": "v, n" },
+        { "word": "lifetime", "part_of_speech": "n" },
+        { "word": "long-standing", "part_of_speech": "adj" },
+        { "word": "millennium", "part_of_speech": "n" },
+        { "word": "obsolete", "part_of_speech": "adj" },
+        { "word": "overdue", "part_of_speech": "adj" },
+        { "word": "period", "part_of_speech": "n" },
+        { "word": "permanent", "part_of_speech": "adj" },
+        { "word": "phase", "part_of_speech": "n" },
+        { "word": "postpone", "part_of_speech": "v" },
+        { "word": "prior", "part_of_speech": "adj" },
+        { "word": "prompt", "part_of_speech": "adj" },
+        { "word": "provisional", "part_of_speech": "adj" },
+        { "word": "punctual", "part_of_speech": "adj" },
+        { "word": "seasonal", "part_of_speech": "adj" },
+        { "word": "simultaneous", "part_of_speech": "adj" },
+        { "word": "span", "part_of_speech": "v, n" },
+        { "word": "spell", "part_of_speech": "n" },
+        { "word": "stint", "part_of_speech": "n" },
+        { "word": "subsequent", "part_of_speech": "adj" },
+        { "word": "temporary", "part_of_speech": "adj" },
+        { "word": "timely", "part_of_speech": "adj" },
+        { "word": "vintage", "part_of_speech": "n, adj" }
+      ],
+      "work": [
+        { "word": "civil service", "part_of_speech": "n phr" },
+        { "word": "client", "part_of_speech": "n" },
+        { "word": "colleague", "part_of_speech": "n" },
+        { "word": "consultant", "part_of_speech": "n" },
+        { "word": "effective", "part_of_speech": "adj" },
+        { "word": "efficient", "part_of_speech": "adj" },
+        { "word": "executive", "part_of_speech": "n" },
+        { "word": "fire", "part_of_speech": "v" },
+        { "word": "headhunt", "part_of_speech": "v" },
+        { "word": "leave", "part_of_speech": "n" },
+        { "word": "marketing", "part_of_speech": "n" },
+        { "word": "multinational", "part_of_speech": "n, adj" },
+        { "word": "promotion", "part_of_speech": "n" },
+        { "word": "prospects", "part_of_speech": "n pl" },
+        { "word": "public/private sector", "part_of_speech": "n phr" },
+        { "word": "recruit", "part_of_speech": "v, n" },
+        { "word": "redundant", "part_of_speech": "adj" },
+        { "word": "sack", "part_of_speech": "v" },
+        { "word": "strike", "part_of_speech": "v, n" },
+        { "word": "union", "part_of_speech": "n" }
+      ]
+    },
+    "phrasal_verbs": [
+      { "verb": "crop up", "meaning": "appear or happen suddenly or unexpectedly" },
+      { "verb": "dive in", "meaning": "start doing something in a very enthusiastic way" },
+      { "verb": "end up", "meaning": "be in a particular place or state after doing something or because of doing it" },
+      { "verb": "kick off (with)", "meaning": "begin (with)" },
+      { "verb": "knock off", "meaning": "stop working" },
+      { "verb": "knuckle down", "meaning": "start working hard, especially when you should have done this earlier" },
+      { "verb": "lay off", "meaning": "end someone’s employment, especially temporarily, because there is not enough work for them; stop doing or using something, especially for a short period of time" },
+      { "verb": "lie ahead", "meaning": "if something lies ahead, it is going to happen to you in the future" },
+      { "verb": "make up", "meaning": "work at different times from usual because you have not worked enough at the normal times" },
+      { "verb": "press ahead/on (with)", "meaning": "continue doing something in a determined way, despite difficulties, opposition or interruptions" },
+      { "verb": "set out", "meaning": "start doing or working on something in order to achieve an aim" },
+      { "verb": "snow under", "meaning": "if you are snowed under, you have too much of something to deal with" },
+      { "verb": "take on", "meaning": "start to employ someone; accept some work or responsibility" },
+      { "verb": "tide over", "meaning": "help someone to get to the end of a difficult period of time, especially by giving them money until they can get some more" },
+      { "verb": "while away", "meaning": "spend time in a relaxed way when you have nothing else to do" },
+      { "verb": "wind down", "meaning": "end or finish something gradually; gradually reduce work before stopping completely; relax after a period of excitement or worry" }
+    ],
+    "collocations_patterns": {
+      "about": [
+        "partly/mainly/all about",
+        "do sth about",
+        "about time",
+        "about to do"
+      ],
+      "age": [
+        "act your age",
+        "(at/by/from) the age of",
+        "under age",
+        "school/working/etc age",
+        "with age",
+        "age limit",
+        "age bracket/group",
+        "(in the) Stone/Bronze/Iron Age"
+      ],
+      "ages": [
+        "take/spend ages (doing)",
+        "ages ago",
+        "seems/feels like ages (since)"
+      ],
+      "course": [
+        "run its course",
+        "in/during the course of",
+        "in due course",
+        "on a course",
+        "course of action/events"
+      ],
+      "day": [
+        "make sb’s day",
+        "day by day",
+        "from day to day",
+        "any day now",
+        "in this day and age",
+        "day off",
+        "day out",
+        "day trip"
+      ],
+      "end": [
+        "come to an end",
+        "bring sth to an end",
+        "put an end to",
+        "at/by the (very) end (of)",
+        "no end in sight (to)",
+        "at an end",
+        "(for) hours/weeks/etc on end",
+        "in the end"
+      ],
+      "ever": [
+        "hardly ever",
+        "if ever",
+        "first/only/etc sth ever (to)",
+        "bigger/better/etc than ever",
+        "as ever",
+        "ever since",
+        "forever/for ever"
+      ],
+      "hours": [
+        "keep regular/late hours",
+        "work long hours",
+        "for hours (on end)",
+        "(during) school/working/etc hours",
+        "at/until all hours",
+        "after hours",
+        "out of hours"
+      ],
+      "job": [
+        "get/find/take/do a job",
+        "it’s a good job",
+        "leave/lose your job",
+        "make/do a good/bad job of",
+        "make the best of a bad job",
+        "have a job to do / doing",
+        "sb’s job to do",
+        "out of a job",
+        "on the job",
+        "job losses"
+      ],
+      "moment": [
+        "take/be a moment",
+        "just/wait a moment",
+        "any moment (now)",
+        "at the moment",
+        "at this/that moment in time",
+        "in a moment",
+        "the right moment (to/for)",
+        "the moment of truth"
+      ],
+      "never": [
+        "you never know",
+        "never again",
+        "never mind",
+        "never mind if/whether/etc.",
+        "never ever",
+        "never-ending"
+      ],
+      "now": [
+        "now is the time to",
+        "from now on",
+        "for now",
+        "up to now",
+        "right now",
+        "now that",
+        "any day/moment/etc now",
+        "just now",
+        "every now and then/again",
+        "nowadays"
+      ],
+      "office": [
+        "take office",
+        "run for office",
+        "public office",
+        "head office",
+        "office holder",
+        "office block",
+        "office hours",
+        "office party"
+      ],
+      "on": [
+        "on time",
+        "on and on",
+        "on end",
+        "from now/that moment/then on",
+        "You’re on!"
+      ],
+      "second": [
+        "give/take sb a second to do",
+        "in a second",
+        "within seconds",
+        "seconds later",
+        "a split second"
+      ],
+      "start": [
+        "have/make a good/fine/bad/etc start",
+        "get off to a good/flying/head/bad/etc start",
+        "make a start (on/at)",
+        "(right) from the start",
+        "for a start",
+        "(at/from the) start of",
+        "get (sth) started"
+      ],
+      "term": [
+        "in the long/short term",
+        "end of term",
+        "term of/in office",
+        "term time",
+        "prison/jail term",
+        "fixed term",
+        "long/short-term"
+      ],
+      "time": [
+        "pass the time",
+        "spend time",
+        "make time",
+        "find the time",
+        "take time",
+        "in/on time",
+        "by the time",
+        "time after time",
+        "part-time",
+        "full-time",
+        "time frame",
+        "time limit"
+      ],
+      "work": [
+        "work on/in/with/as/at/for",
+        "work like magic",
+        "work both ways",
+        "work a treat",
+        "work wonders",
+        "work your way (through/around)",
+        "at work",
+        "out of / in work",
+        "piece of work"
+      ],
+      "year": [
+        "years of age",
+        "years old",
+        "year on year",
+        "for years",
+        "not/never in a million years",
+        "leap year"
+      ]
+    },
+    "idioms": [
+      { "idiom": "a stitch in time (saves nine)", "meaning": "used for saying that it is better to solve a problem now, rather than leave it until later when it may be more difficult to deal with" },
+      { "idiom": "all in good time", "meaning": "used for telling someone to wait for something and not try to make you hurry" },
+      { "idiom": "at the drop of a hat", "meaning": "immediately or in a way that shows that you have no doubts about doing something" },
+      { "idiom": "before your time", "meaning": "used for saying that something happened or existed before you were born or before you lived or worked somewhere" },
+      { "idiom": "for good", "meaning": "permanently, without the possibility of change in the future" },
+      { "idiom": "for the time being", "meaning": "for now" },
+      { "idiom": "from time to time", "meaning": "sometimes, but not often" },
+      { "idiom": "in/for donkey's years", "meaning": "an extremely long time" },
+      { "idiom": "in the nick of time", "meaning": "just in time to prevent something bad happening" },
+      { "idiom": "once in a blue moon", "meaning": "very rarely" },
+      { "idiom": "on the spur of the moment", "meaning": "if you do something on the spur of the moment, you do it suddenly and do not take time to plan it or think carefully about it" },
+      { "idiom": "the other day", "meaning": "recently" }
+    ],
+    "word_formation": [
+      {
+        "base": "antique",
+        "noun": ["antiquity"],
+        "adjective": ["antiquated"]
+      },
+      {
+        "base": "apply",
+        "verb": ["reapply", "misapply"],
+        "noun": ["applicant", "application", "(in)applicability"],
+        "adjective": ["(in)applicable", "(mis)applied"]
+      },
+      {
+        "base": "compete",
+        "noun": ["competence", "competition", "competitor", "competitiveness"],
+        "adjective": ["(un)competitive"]
+      },
+      {
+        "base": "employ",
+        "noun": ["(un)employment", "underemployment", "employer", "employee"],
+        "adjective": ["(un)employed", "underemployed", "(un)employable"]
+      },
+      {
+        "base": "end",
+        "noun": ["ending"],
+        "adjective": ["unending", "endless"],
+        "adverb": ["endlessly"]
+      },
+      {
+        "base": "event",
+        "noun": ["eventuality"],
+        "adjective": ["(un)eventful", "eventual"],
+        "adverb": ["eventually"]
+      },
+      {
+        "base": "expect",
+        "noun": ["expectation", "expectancy"],
+        "adjective": ["expectant", "(un)expected"],
+        "adverb": ["(un)expectedly"]
+      },
+      {
+        "base": "future",
+        "noun": ["futurist"],
+        "adjective": ["futuristic"],
+        "adverb": ["futuristically"]
+      },
+      {
+        "base": "history",
+        "noun": ["historian"],
+        "adjective": ["historic", "historical"],
+        "adverb": ["historically"]
+      },
+      {
+        "base": "incident",
+        "noun": ["incidence", "coincidence"],
+        "adjective": ["incidental", "coincidental"],
+        "adverb": ["incidentally", "coincidentally"]
+      },
+      {
+        "base": "job",
+        "noun": ["jobbing", "jobless"]
+      },
+      {
+        "base": "last",
+        "verb": ["outlast"],
+        "adjective": ["lasting", "everlasting"],
+        "adverb": ["lastly"]
+      },
+      {
+        "base": "manage",
+        "verb": ["mismanage"],
+        "noun": ["manager", "(mis)management"],
+        "adjective": ["(un)manageable", "mismanaged", "managerial", "managing"]
+      },
+      {
+        "base": "moment",
+        "noun": ["momentous"],
+        "adjective": ["momentary"],
+        "adverb": ["momentarily"]
+      },
+      {
+        "base": "period",
+        "noun": ["periodical"],
+        "adjective": ["periodic"],
+        "adverb": ["periodically"]
+      },
+      {
+        "base": "produce",
+        "noun": ["producer", "product", "productivity", "production"],
+        "adjective": ["counterproductive", "(un)productive"],
+        "adverb": ["(un)productively"]
+      },
+      {
+        "base": "time",
+        "verb": ["mistime"],
+        "noun": ["timer", "timing", "overtime", "timetable", "timelessness"],
+        "adjective": ["(un)timely", "timeless"],
+        "adverb": ["timelessly"]
+      },
+      {
+        "base": "work",
+        "verb": ["rework", "overwork"],
+        "noun": ["worker", "works", "reworking", "workplace", "overworked"],
+        "adjective": ["working", "(un)workable"]
+      }
+    ],
+    "exercises": {
+      "A": {
+        "title": "Write a word from the box in each gap",
+        "instructions": "Write a word from the box in each gap.",
+        "words": ["obsolete", "overdue", "provisional", "punctual", "seasonal", "simultaneous", "temporary", "timely"],
+        "questions": [
+          { "sentence": "I'll only be working here for a couple of weeks. I'm a ...... worker.", "answer": "temporary" },
+          { "sentence": "It couldn't have happened at a better time! What a ...... arrival!", "answer": "timely" },
+          { "sentence": "It depends on the time of year. It's a ...... problem.", "answer": "seasonal" },
+          { "sentence": "I get to work at nine o'clock on the dot every day. I try to be ...... .", "answer": "punctual" },
+          { "sentence": "We both said it at exactly the same time. Our answer was ...... .", "answer": "simultaneous" },
+          { "sentence": "We can't use that software on our new computers. It's ...... !", "answer": "obsolete" },
+          { "sentence": "It's the first draft of the text. We can change it later if we want. It's only ...... .", "answer": "provisional" },
+          { "sentence": "They should have sent that to us ages ago. It's long ...... .", "answer": "overdue" }
+        ]
+      },
+      "B": {
+        "title": "Write a word from the box in each gap",
+        "instructions": "Write a word from the box in each gap.",
+        "words": ["century", "era", "frequency", "millennium", "phase", "span", "spell", "stint"],
+        "questions": [
+          { "sentence": "We live in a/an ...... of mass communication.", "answer": "era" },
+          { "sentence": "After a short ...... of being unemployed, I decided to set up my own business.", "answer": "spell" },
+          { "sentence": "It was in the twentieth ...... that humans first developed nuclear weapons.", "answer": "century" },
+          { "sentence": "Despite advances in technology, no human being will ever live for a ...... in my opinion.", "answer": "millennium" },
+          { "sentence": "The council is planning to increase the ...... of buses to the city centre.", "answer": "frequency" },
+          { "sentence": "I did a brief ...... in the navy, and then decided it wasn't for me.", "answer": "stint" },
+          { "sentence": "I've got a very short concentration ...... .", "answer": "span" },
+          { "sentence": "It's just a ...... that most teenagers go through. Don't worry!", "answer": "phase" }
+        ]
+      },
+      "C": {
+        "title": "Choose the correct word",
+        "instructions": "Read the email and choose the correct word for each gap.",
+        "questions": [
+          { "sentence": "I am writing to thank the organisation for the (1) ______ service I received.", "options": ["A prior", "B prompt"], "answer": "B" },
+          { "sentence": "... when my membership (2) ______.", "options": ["A postponed", "B expired"], "answer": "B" },
+          { "sentence": "As you may know, I am a (3) ______ member of the Chaversham (4) ______ Car Club.", "options": ["A long-standing", "B timely", "A Vintage", "B Antique"], "answer": ["A", "A"] },
+          { "sentence": "... having spent most of my (5) ______ working with cars.", "options": ["A spell", "B lifetime"], "answer": "B" },
+          { "sentence": "... built in the (6) ______ following the First World War.", "options": ["A duration", "B decade"], "answer": "B" },
+          { "sentence": "I had been granted the status of '(7) ______ member' for the (8) ______ I spent as Chairperson.", "options": ["A chronological", "B permanent", "A period", "B interval"], "answer": ["B", "A"] },
+          { "sentence": "... to receive a rather (9) ______ e-mail.", "options": ["A interim", "B abrupt"], "answer": "B" },
+          { "sentence": "... as three months had (10) ______ since my membership ran out.", "options": ["A lapsed", "B elapsed"], "answer": "B" },
+          { "sentence": "... I was no longer eligible to attend the (11) ______ dinner next month.", "options": ["A annual", "B eternal"], "answer": "A" },
+          { "sentence": "I received a (12) ______ e-mail from the same person, apologising for the confusion.", "options": ["A subsequent", "B temporary"], "answer": "A" },
+          { "sentence": "... the change was literally (13) ______.", "options": ["A simultaneous", "B instantaneous"], "answer": "B" },
+          { "sentence": "I am now looking forward to meeting up with some of my (14) ______ at the dinner.", "options": ["A anachronisms", "B contemporaries"], "answer": "B" }
+        ]
+      },
+      "D": {
+        "title": "Write a word from the boxes in each gap",
+        "instructions": "Write the correct word from the box in each gap.",
+        "boxes": {
+          "box1": ["marketing", "multinational"],
+          "box2": ["consultant", "executive"],
+          "box3": ["effective", "efficient"],
+          "box4": ["leave", "redundant"],
+          "box5": ["fire", "strike"],
+          "box6": ["headhunt", "sack"]
+        },
+        "questions": [
+          { "sentence": "Would you like to work for a large ...... corporation?", "answer": "multinational" },
+          { "sentence": "How much budget is there for the ...... campaign?", "answer": "marketing" },
+          { "sentence": "Charlene is a freelance business ......", "answer": "consultant" },
+          { "sentence": "My dad's a senior ...... in a huge American corporation.", "answer": "executive" },
+          { "sentence": "The advertising campaign was ...... in that it increased sales by over 50%.", "answer": "effective" },
+          { "sentence": "Robots are often much more ...... than people.", "answer": "efficient" },
+          { "sentence": "The paper had to make several journalists ...... last week.", "answer": "redundant" },
+          { "sentence": "Darren's home on ...... from the army at the moment.", "answer": "leave" },
+          { "sentence": "How long is the union planning to ...... for?", "answer": "strike" },
+          { "sentence": "They wouldn't ...... someone just for stealing a bit of stationery, would they?", "answer": "fire" },
+          { "sentence": "Sue used to work here, but then she was ...... by a major law firm.", "answer": "headhunted" },
+          { "sentence": "I can't believe they ...... Jack just for taking a few paperclips home with him.", "answer": "sacked" }
+        ]
+      },
+      "E": {
+        "title": "Circle the correct word",
+        "instructions": "Circle the correct word to complete the text.",
+        "questions": [
+          { "sentence": "why not consider a career in the (1) state / civil service?", "answer": "civil" },
+          { "sentence": "Working in the public (2) area / sector provides job security.", "answer": "sector" },
+          { "sentence": "There are excellent (3) prospects / predictions for (4) promotion / progress.", "answer": ["prospects", "promotion"] },
+          { "sentence": "You'll be working with highly experienced and professional (5) colleagues / clients.", "answer": "colleagues" },
+          { "sentence": "We also respect our staff's right to be part of a (6) club / union.", "answer": "union" },
+          { "sentence": "We want to (7) recruit / elect the brightest and the best.", "answer": "recruit" }
+        ]
+      },
+      "F": {
+        "title": "Choose the correct word",
+        "instructions": "Choose the correct word (A, B, C or D) to complete each sentence.",
+        "questions": [
+          { "sentence": "I'm so ............... under with work at the moment – it's awful!", "options": ["A iced", "B rained", "C snowed", "D fogged"], "answer": "C" },
+          { "sentence": "The company's announced it's ............... off over 1,000 workers.", "options": ["A leaving", "B laying", "C setting", "D giving"], "answer": "B" },
+          { "sentence": "They're planning to ............... down their operation in Greece.", "options": ["A wind", "B tie", "C roll", "D stretch"], "answer": "A" },
+          { "sentence": "I'll try to ............... ahead with it anyway.", "options": ["A drive", "B bang", "C touch", "D press"], "answer": "D" },
+          { "sentence": "Something's ............... up, so I won't be able to make it.", "options": ["A shown", "B pulled", "C cropped", "D cut"], "answer": "C" },
+          { "sentence": "Could you lend me some money to ............... me over to the end of the month?", "options": ["A hand", "B tide", "C get", "D make"], "answer": "B" },
+          { "sentence": "I didn't ............... out to be a millionaire.", "options": ["A set", "B go", "C begin", "D watch"], "answer": "A" },
+          { "sentence": "Mona says she'll ............... up the hours tomorrow.", "options": ["A find", "B make", "C catch", "D bring"], "answer": "B" }
+        ]
+      },
+      "G": {
+        "title": "Write a phrasal verb from the box in the correct form",
+        "instructions": "Write the correct phrasal verb in each gap.",
+        "words": ["dive in", "end up", "kick off", "knock off", "knuckle down", "lie ahead", "take on", "while away"],
+        "questions": [
+          { "sentence": "If the business does well, I'll hopefully be able to ...... a part-time assistant.", "answer": "take on" },
+          { "sentence": "We ...... having to scrap the whole advertising campaign.", "answer": "ended up" },
+          { "sentence": "Let's ...... this session by introducing ourselves, shall we?", "answer": "kick off" },
+          { "sentence": "Josh can ...... a whole day playing online computer games.", "answer": "while away" },
+          { "sentence": "No teenager really knows what ...... for them career-wise.", "answer": "lies ahead" },
+          { "sentence": "It's time to ...... and get on with your homework now.", "answer": "knuckle down" },
+          { "sentence": "I usually ...... work at about half five.", "answer": "knock off" },
+          { "sentence": "As soon as the food was brought out, everyone ...... and helped themselves.", "answer": "dived in" }
+        ]
+      },
+      "H": {
+        "title": "Phrasal verbs with away",
+        "type": "yn",
+        "instructions": "Which of these phrasal verbs with away are connected to the idea of an action continuing for a long time? Write YES or NO.",
+        "questions": [
+          { "sentence": "Mary was beavering away at her desk.", "answer": "YES" },
+          { "sentence": "Let's break away from the main crowd.", "answer": "NO" },
+          { "sentence": "You can't explain it away as a simple mistake.", "answer": "NO" },
+          { "sentence": "I think I'll give these old clothes away.", "answer": "NO" },
+          { "sentence": "I've been hammering away at this keyboard for hours.", "answer": "YES" },
+          { "sentence": "Your great-grandfather passed away during the night.", "answer": "NO" },
+          { "sentence": "Keep plodding away and you'll finish your novel eventually.", "answer": "YES" },
+          { "sentence": "We've been slaving away all morning.", "answer": "YES" },
+          { "sentence": "We can hear Carol typing away at her keyboard.", "answer": "YES" },
+          { "sentence": "He's working away on some designs at the moment.", "answer": "YES" }
+        ]
+      },
+      "I": {
+        "title": "Write one word in each gap (collocations)",
+        "instructions": "Write one word in each gap to complete the collocations.",
+        "questions": [
+          { "sentence": "The President's just been elected to a second term ...... office.", "answer": "of" },
+          { "sentence": "I don't know how anyone can sit in front of a computer for hours ...... end.", "answer": "on" },
+          { "sentence": "My great-grandmother used to work ...... a servant in a huge mansion.", "answer": "as" },
+          { "sentence": "My exam results should come ...... day now.", "answer": "any" },
+          { "sentence": "Applicants must be at least 18 years ...... age.", "answer": "of" },
+          { "sentence": "You'd better start working a bit harder or you'll be ...... of a job!", "answer": "out" },
+          { "sentence": "Never mind ...... you get paid for it or not, you can't work this weekend.", "answer": "whether" },
+          { "sentence": "...... the time Jeremy got there, we'd already left.", "answer": "By" }
+        ]
+      },
+      "J": {
+        "title": "One word for three sentences",
+        "instructions": "For each question, write one word which can be used in all three sentences.",
+        "questions": [
+          { "sentence1": "Jenny, ...... you've been here for three years, we need to start thinking about your promotion.", "sentence2": "I'm sure Harold was here just ...... , wasn't he?", "sentence3": "You can share my computer for ...... , but they'll have to get you your own quite soon.", "answer": "now" },
+          { "sentence1": "Thanks so much for the flowers – they really made my ...... .", "sentence2": "My grandparents love going on ...... trips to towns by the sea.", "sentence3": "You'd think that, in this ...... and age, a 25 year old would know what a blog is.", "answer": "day" },
+          { "sentence1": "I was just ...... to go home, but that's okay.", "sentence2": "It's ...... time you got home – we've been worried sick!", "sentence3": "We're definitely going to have to do something ...... increasing our market share.", "answer": "about" },
+          { "sentence1": "I should get a reply from them any ...... now.", "sentence2": "It'll only take them a ...... to update the website.", "sentence3": "Now is the ...... of truth!", "answer": "moment" },
+          { "sentence1": "We're definitely living in the ...... of information.", "sentence2": "This particular wine doesn't really mature with ...... .", "sentence3": "It's time you started acting your ...... , young man!", "answer": "age" },
+          { "sentence1": "It's just a typical 1960s ...... block.", "sentence2": "The media start prying into your private life when you run for public ...... .", "sentence3": "You'd better talk to Derek at head ...... .", "answer": "office" },
+          { "sentence1": "I began to realise in the ...... of the meeting that my proposal was not going to be accepted.", "sentence2": "We're going to have to decide on a ...... of action to take.", "sentence3": "All they said was that they'd contact me in due ...... .", "answer": "course" },
+          { "sentence1": "I do hope we're going to arrive ...... time.", "sentence2": "How anyone could work in that office for years ...... end I just don't know.", "sentence3": "Jim bet me that Doug was going to get the sack so I immediately said: 'You're ...... !'", "answer": "on" }
+        ]
+      },
+      "K": {
+        "title": "Correct the wrong words in bold",
+        "instructions": "Each of the words in bold is incorrect. Rewrite them correctly.",
+        "questions": [
+          { "sentence": "I haven't seen Carol in **monkey's** years.", "answer": "donkey's" },
+          { "sentence": "That was long before your **moment**.", "answer": "time" },
+          { "sentence": "I was talking to Sandra the **recent** day.", "answer": "other" },
+          { "sentence": "I realised in the **bill** of time.", "answer": "nick" },
+          { "sentence": "Tina's happy with her job for the time **coming**.", "answer": "being" },
+          { "sentence": "Once in a blue **planet**.", "answer": "moon" },
+          { "sentence": "She's given up smoking **with** good.", "answer": "for" },
+          { "sentence": "I get to go on business trips from **once** to time.", "answer": "time" },
+          { "sentence": "I invited Graham on the **edge** of the moment.", "answer": "spur" },
+          { "sentence": "I'll be there at the drop of a **pen**!", "answer": "hat" },
+          { "sentence": "All in **nice** time!", "answer": "good" },
+          { "sentence": "'a **repair** in time saves nine'", "answer": "stitch" }
+        ]
+      },
+      "L": {
+        "title": "Correct the wrong words in bold (Word formation)",
+        "instructions": "Each of the words in bold is incorrect. Rewrite them correctly.",
+        "questions": [
+          { "sentence": "The salary they offered me exceeded my wildest **expectations**!", "answer": "expectations" },
+          { "sentence": "I hope I **last** his previous secretary.", "answer": "outlast" },
+          { "sentence": "It's very difficult to become just another company **employer** again.", "answer": "employee" },
+          { "sentence": "Hargreaves & Son are one of our main **competitors**.", "answer": "competitors" },
+          { "sentence": "There were over 100 **applicants** for the position.", "answer": "applicants" },
+          { "sentence": "Your supervisor will be checking up on you **periodically**.", "answer": "periodically" },
+          { "sentence": "The possibilities for expansion are **unending**.", "answer": "unending" },
+          { "sentence": "A good business suit is **timely** – it never goes out of fashion.", "answer": "timeless" },
+          { "sentence": "The building looks a bit **future** from the outside.", "answer": "futuristic" },
+          { "sentence": "You have to be prepared for every **eventuality** in life.", "answer": "eventuality" },
+          { "sentence": "Getting angry with your boss is **productive** because it'll just make a bad situation worse.", "answer": "counterproductive" }
+        ]
+      },
+      "M": {
+        "title": "Prefix counter-",
+        "instructions": "Write each of the words with counter- in the correct gap.",
+        "words": ["counteract", "counterattack", "counterbalance", "counterculture", "counterintelligence", "countermeasures", "counteroffensive", "counterpart"],
+        "questions": [
+          { "sentence": "As a spy, I was often involved in ......", "answer": "counterintelligence" },
+          { "sentence": "The government will have to take some ...... to stop inflation.", "answer": "countermeasures" },
+          { "sentence": "The reports will hopefully ...... the government's inaccurate propaganda.", "answer": "counterbalance" },
+          { "sentence": "The army's planning to mount a ...... later today.", "answer": "counteroffensive" },
+          { "sentence": "You'll have to speak to my ...... in the New York office.", "answer": "counterpart" },
+          { "sentence": "We have to ...... this rise in crime.", "answer": "counteract" },
+          { "sentence": "I'm far more concerned with art produced in the ...... .", "answer": "counterculture" },
+          { "sentence": "If he accuses me of lying, I'm going to ......", "answer": "counterattack" }
+        ]
+      },
+      "N": {
+        "title": "Word formation (Margaret Thatcher text)",
+        "instructions": "Complete the text with the correct form of the words in capitals.",
+        "passage": "Few British politicians have aroused more passion than Margaret Thatcher...",
+        "questions": [
+          { "sentence": "It is not (1) ...... that Britain went through a period of (2) ...... change.", "words": ["**INCIDENT**", "**MOMENT**"], "answer": ["incidental", "momentous"] },
+          { "sentence": "... changing Britain's (3) ...... union laws.", "words": ["**ANTIQUE**"], "answer": "antiquated" },
+          { "sentence": "... paving the way for the creation of a modern, (4) ...... economy.", "words": ["**COMPETE**"], "answer": "competitive" },
+          { "sentence": "... which required much higher (5) ...... , efficiency and wage-restraint on the part of the (6) ......", "words": ["**PRODUCE**", "**WORK/MANAGE**"], "answer": ["productivity", "workforce"] },
+          { "sentence": "One of her core beliefs was that it was (7) ...... which was responsible for running companies.", "words": ["**MANAGE**"], "answer": "management" },
+          { "sentence": "Critics point to the very high (8) ...... figures of the 1980s.", "words": ["**EMPLOY**"], "answer": "unemployment" },
+          { "sentence": "... the official (9) ...... total had risen to over three million.", "words": ["**JOB**"], "answer": "jobless" },
+          { "sentence": "Some saw her resignation as (10) ...... , and wished she would continue.", "words": ["**TIME**"], "answer": "untimely" },
+          { "sentence": "Even today, (11) ...... and economists are divided.", "words": ["**HISTORY**"], "answer": "historians" }
+        ]
+      },
+      "O": {
+        "title": "Key word transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Use between three and eight words.",
+        "questions": [
+          { "sentence": "The government needs to stop this ridiculous bureaucratic system.", "word": "put", "answer": "put an end to" },
+          { "sentence": "No one except Jake has ever beaten me at a game of chess.", "word": "only", "answer": "is the only person to have" },
+          { "sentence": "It's time we began to sort through these cupboards.", "word": "start", "answer": "made a start on sorting" },
+          { "sentence": "Julie asked for a second's thinking time before she answered.", "word": "just", "answer": "you just give me a second to" },
+          { "sentence": "I can't really remember the last time I had a day off.", "word": "ages", "answer": "like ages since" },
+          { "sentence": "Sorry, Alan, but right now I'm rather busy.", "word": "in", "answer": "the moment I'm rather busy" },
+          { "sentence": "They painted the wall very well.", "word": "made", "answer": "made a good job of painting" }
+        ]
+      }
+    }
+  }
+}
