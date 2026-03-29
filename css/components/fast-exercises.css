@@ -1,5 +1,10 @@
 /* ── Fast Exercises: Multi-category System ─────────────────────────────── */
 
+/* Align material symbols icons with adjacent text */
+.fe-section .material-symbols-outlined {
+  vertical-align: middle;
+}
+
 /* Accessibility utility */
 .visually-hidden {
   position: absolute;

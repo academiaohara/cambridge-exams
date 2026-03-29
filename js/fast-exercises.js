@@ -1050,7 +1050,8 @@
         // Multiple-choice fill-in exercises
         (lessonData.fillInExercises || []).forEach(function(ex) {
           if (ex.type === 'multiple-choice') {
-            exercises.push({ sentence: ex.sentence, options: ex.options, correct: ex.correct, type: 'mcq' });
+            var opts = (ex.options || []).slice().sort(function() { return Math.random() - 0.5; });
+            exercises.push({ sentence: ex.sentence, options: opts, correct: ex.correct, type: 'mcq' });
           }
         });
         // Conversation gap exercises
@@ -1080,7 +1081,8 @@
             });
           } else if (ex.type === 'complete-sentence' || ex.type === 'select-situation') {
             var correct = typeof ex.correct === 'number' ? (ex.options || [])[ex.correct] : ex.correct;
-            exercises.push({ sentence: ex.sentence || ex.question || '', options: ex.options || [], correct: correct, type: 'mcq' });
+            var opts = (ex.options || []).slice().sort(function() { return Math.random() - 0.5; });
+            exercises.push({ sentence: ex.sentence || ex.question || '', options: opts, correct: correct, type: 'mcq' });
           }
         });
 
@@ -1114,11 +1116,13 @@
             '</div>';
         }
 
+        var sentenceText = q.type === 'write' ? (q.sentence || '').replace(/\s*\([A-Z]+\)\s*$/, '') : (q.sentence || '');
+        var sentenceClass = 'fe-quiz-sentence' + (q.type === 'write' ? ' wf-transform-sentence' : '');
         questionsHtml +=
           '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
             '<div class="fe-quiz-num">Question ' + (qi + 1) + '/' + exercises.length + '</div>' +
             (q.hint ? '<div class="wf-transform-root-row">' + _mi('text_fields') + ' <span class="wf-transform-root-word">' + self._escapeHTML(q.hint) + '</span></div>' : '') +
-            '<div class="fe-quiz-sentence' + (q.type === 'write' ? ' wf-transform-sentence' : '') + '">' + self._escapeHTML(q.sentence || '') + '</div>' +
+            '<div class="' + sentenceClass + '">' + self._escapeHTML(sentenceText) + '</div>' +
             inputHtml +
             '<div class="fe-quiz-feedback" id="fe-quiz-feedback-' + qi + '"></div>' +
           '</div>';
@@ -2202,19 +2206,22 @@
             });
           });
         } else if (ex.type === 'complete-sentence') {
+          var csOpts = (ex.options || []).slice().sort(function() { return Math.random() - 0.5; });
           questions.push({
             type: 'complete-sentence',
             sentence: ex.sentence,
-            options: ex.options || [],
+            options: csOpts,
             correct: ex.correct,
             explanation: ex.explanation || ''
           });
         } else if (ex.type === 'select-situation') {
+          var ssCorrect = typeof ex.correct === 'number' ? (ex.options || [])[ex.correct] : ex.correct;
+          var ssOpts = (ex.options || []).slice().sort(function() { return Math.random() - 0.5; });
           questions.push({
             type: 'select-situation',
             sentence: (ex.question || ('In which situation would you use "' + (ex.idiom || '') + '"?')),
-            options: ex.options || [],
-            correct: typeof ex.correct === 'number' ? (ex.options || [])[ex.correct] : ex.correct,
+            options: ssOpts,
+            correct: ssCorrect,
             explanation: ex.explanation || ''
           });
         }
@@ -3374,7 +3381,8 @@
       var questionsHtml = '';
       exercises.forEach(function(ex, qi) {
         var optHtml = '';
-        (ex.options || []).forEach(function(opt) {
+        var shuffledOpts = (ex.options || []).slice().sort(function() { return Math.random() - 0.5; });
+        shuffledOpts.forEach(function(opt) {
           optHtml += '<button class="fe-quiz-option" data-question="wfmc' + qi + '" data-answer="' + self._escapeHTML(opt) + '" onclick="FastExercises._answerWfMC(this,' + qi + ',\'' + self._jsStr(ex.correct) + '\',\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')">' + self._escapeHTML(opt) + '</button>';
         });
         questionsHtml +=
@@ -3440,7 +3448,7 @@
         questionsHtml +=
           '<div class="fe-quiz-question" id="fe-quiz-q-' + qi + '">' +
             '<div class="fe-quiz-num">' + 'Question' + ' ' + (qi + 1) + '/' + exercises.length + '</div>' +
-            '<div class="wf-transform-sentence">' + self._escapeHTML(ex.sentence || '') + '</div>' +
+            '<div class="wf-transform-sentence">' + self._escapeHTML((ex.sentence || '').replace(/\s*\([A-Z]+\)\s*$/, '')) + '</div>' +
             '<div class="wf-transform-root-row">' +
               _mi('text_fields') + ' ' +
               '<span class="wf-transform-root-word">' + self._escapeHTML(ex.root || '') + '</span>' +
