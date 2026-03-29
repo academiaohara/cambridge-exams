@@ -1542,11 +1542,18 @@
         var sentA = sentence.slice(0, nlIdx);
         var sentB = sentence.slice(nlIdx + 1);
         // Extract **keyword** from the end of sentA (e.g. "...decision. **account**")
+        // or from the beginning of sentB (e.g. "**been** When you called, ......")
         var keyword = '';
         var kwMatch = sentA.match(/\s*\*\*([^*]+)\*\*\s*$/);
         if (kwMatch) {
           keyword = kwMatch[1];
           sentA = sentA.slice(0, kwMatch.index).trim();
+        } else {
+          var kwMatchB = sentB.match(/^\s*\*\*([^*]+)\*\*\s*/);
+          if (kwMatchB) {
+            keyword = kwMatchB[1];
+            sentB = sentB.slice(kwMatchB[0].length).trim();
+          }
         }
         return '<div class="cu-ex-kwtrans">' +
           '<div class="cu-ex-kwtrans-row">' +
