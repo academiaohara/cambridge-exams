@@ -105,6 +105,13 @@
       history.pushState(courseState, '', Router.stateToPath(courseState));
     },
 
+    _getBlockLabel: function(bk) {
+      var ptMatch = bk.match(/^pt(\d+)$/);
+      if (ptMatch) return 'Progress Test ' + ptMatch[1];
+      if (bk !== 'misc') return 'Block ' + bk;
+      return 'Other';
+    },
+
     _selectCourseBlock: function(blockKey) {
       var centerSection = document.getElementById('courseCenterSection');
       if (!centerSection || !BentoGrid._courseBlocks) return;
@@ -114,14 +121,16 @@
       var blockProgress = BentoGrid._getCourseProgress(level);
       var blockItems = (BentoGrid._courseBlocks || {})[blockKey] || [];
       var blockHasProgress = blockItems.some(function(i) { return !!blockProgress[i.id]; });
-      var resetBlockBtn = blockHasProgress
+      var isPtBlock = /^pt\d+$/.test(blockKey);
+      var resetBlockBtn = (!isPtBlock && blockHasProgress)
         ? '<button class="cu-reset-btn" onclick="BentoGrid._resetCourseBlock(\'' + blockKey + '\')" title="Restart block">' + _mi('restart_alt') + ' Restart</button>'
         : '';
+      var blockLabel = BentoGrid._getBlockLabel(blockKey);
       var headerHtml =
         '<div class="subpage-header">' +
           '<button class="subpage-back-btn" onclick="BentoGrid._backToCourseOverview()">Overview</button>' +
           '<div>' +
-            '<div class="subpage-title">' + _mi('auto_stories') + ' Block ' + blockKey + '</div>' +
+            '<div class="subpage-title">' + _mi('auto_stories') + ' ' + blockLabel + '</div>' +
             '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
           '</div>' +
           resetBlockBtn +
@@ -168,8 +177,48 @@
       var items = blocks[activeBlockKey] || [];
       var unitItems = items.filter(function(i) { return i.type === 'grammar' || i.type === 'vocabulary'; });
       var reviewItem = items.find(function(i) { return i.type === 'review'; });
+      var progressTestItem = items.find(function(i) { return i.type === 'progress_test'; });
 
       var html = '<div class="cu-course-view"><div class="fe-map-container">';
+
+      // Progress test block: render as a single large card
+      if (progressTestItem) {
+        var isPtAvail = progressTestItem.status === 'available';
+        var isPtDone = !!progress[progressTestItem.id];
+        var ptPath = 'data/Course/' + level + '/' + progressTestItem.file;
+        var ptScore = BentoGrid._getPtScore(level, progressTestItem.id);
+        var ptTotal = progressTestItem.totalPoints || 100;
+
+        html += '<div class="cu-unit-section cu-pt-section">';
+        html += '<div class="cu-unit-section-header">' +
+          '<span style="color:#f59e0b">' + _mi('assignment') + '</span>' +
+          '<span class="cu-us-title">' + self._escapeHTML(progressTestItem.title) + '</span>' +
+          (isPtDone ? '<span class="cu-us-done">' + _mi('check_circle') + '</span>' : '') +
+        '</div>';
+
+        if (isPtAvail) {
+          var scoreLabel = ptScore !== null ? (ptScore + ' / ' + ptTotal) : '–/' + ptTotal;
+          html += '<div class="fe-map-lesson fe-map-pt-block ' + (isPtDone ? 'fe-lesson-complete' : 'fe-lesson-active') + '" style="cursor:pointer" ' +
+            'onclick="BentoGrid.openCourseUnit(\'' + progressTestItem.id + '\',\'' + ptPath + '\')">' +
+            '<div class="fe-map-lesson-title">' +
+              '<span class="fe-map-lesson-num">' + _mi('assignment') + ' Progress Test</span>' +
+              '<span class="fe-rs-total-score' + (ptScore === null ? ' fe-rs-score-pending' : '') + '">' + scoreLabel + '</span>' +
+            '</div>' +
+            '<div class="cu-pt-block-desc">' + _mi('info') + ' ' + self._escapeHTML((progressTestItem.title || '').replace(/^Progress Test \d+\s*[—–-]\s*/i, '')) + '</div>' +
+            '<div class="cu-pt-block-cta">' + (isPtDone ? _mi('restart_alt') + ' Retake Test' : _mi('play_arrow') + ' Take the Test') + '</div>' +
+          '</div>';
+        } else {
+          html += '<div class="fe-map-lesson fe-lesson-locked">' +
+            '<div class="fe-map-lesson-title">' +
+              '<span class="fe-map-lesson-lock">' + _mi('lock') + ' Coming Soon</span>' +
+            '</div>' +
+          '</div>';
+        }
+
+        html += '</div>'; // .cu-unit-section
+        html += '</div></div>';
+        return html;
+      }
 
       unitItems.forEach(function(item, uIdx) {
         var isAvail = item.status === 'available';
@@ -416,14 +465,15 @@
         if (foundItem) blockNum = foundItem.block;
       }
       var backFn = blockNum ? 'BentoGrid._selectCourseBlock(\'' + blockNum + '\')' : 'BentoGrid.openLessons()';
+      var backLabel = blockNum ? BentoGrid._getBlockLabel(String(blockNum)) : 'Back';
       var unitHasProgress = !!(BentoGrid._getCourseSectionProgress(level)[unitId] && Object.keys(BentoGrid._getCourseSectionProgress(level)[unitId]).length);
-      var resetUnitBtn = unitHasProgress
+      var resetUnitBtn = (unitData.type !== 'progress_test' && unitHasProgress)
         ? '<button class="cu-reset-btn" onclick="BentoGrid._resetCourseUnit(\'' + unitId + '\')" title="Restart unit">' + _mi('restart_alt') + ' Restart</button>'
         : '';
 
       var html =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="' + backFn + '">Block ' + (blockNum || '') + '</button>' +
+          '<button class="subpage-back-btn" onclick="' + backFn + '">' + backLabel + '</button>' +
           '<div>' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' ' + (unitData.unitTitle || '') + '</div>' +
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
@@ -438,6 +488,8 @@
         html += BentoGrid._renderVocabUnit(unitData);
       } else if (unitData.type === 'review') {
         html += BentoGrid._renderReviewUnit(unitData);
+      } else if (unitData.type === 'progress_test') {
+        html += BentoGrid._renderProgressTestUnit(unitData);
       } else {
         html += '<div class="fe-error">Unknown unit type.</div>';
       }
@@ -445,8 +497,8 @@
       html += '</div>';
       centerSection.innerHTML = html;
 
-      // Restore saved answers and scores for review units
-      if (unitData.type === 'review') {
+      // Restore saved answers and scores for review/progress test units
+      if (unitData.type === 'review' || unitData.type === 'progress_test') {
         BentoGrid._restoreReviewUnit(unitId);
       }
 
@@ -2350,6 +2402,82 @@
       } catch(e) { return {}; }
     },
 
+    // Returns the sum of stored correct-item counts for a progress test unit,
+    // or null if the test has not been started yet.
+    _getPtScore: function(level, unitId) {
+      var ra = BentoGrid._getReviewAnswered(level);
+      var prefix = unitId + '_';
+      var total = 0;
+      var started = false;
+      Object.keys(ra).forEach(function(k) {
+        if (k.indexOf(prefix) === 0) {
+          total += ra[k] || 0;
+          started = true;
+        }
+      });
+      return started ? total : null;
+    },
+
+    _renderProgressTestUnit: function(data) {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+      var html = '';
+
+      // Count total answerable items across all sections
+      var totalMaxItems = 0;
+      (data.sections || []).forEach(function(s) {
+        if (s.type === 'exercise') totalMaxItems += (s.items || []).length;
+      });
+
+      html += '<div class="cu-review-banner cu-pt-banner">' +
+        '<div class="cu-review-banner-icon">' + _mi('assignment') + '</div>' +
+        '<div class="cu-review-banner-body">' +
+          '<div class="cu-review-banner-label">Progress Test</div>' +
+          (data.unitTitle ? '<div class="cu-review-banner-title">' + self._escapeHTML(data.unitTitle) + '</div>' : '') +
+          (data.totalPoints ? '<div class="cu-review-banner-covers">' + _mi('grade') + ' ' + data.totalPoints + ' points</div>' : '') +
+        '</div>' +
+        '<div class="cu-review-banner-stat">' +
+          '<span class="cu-review-stat-num">' + (data.sections || []).length + '</span>' +
+          '<span class="cu-review-stat-lbl">Sections</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="cu-review-total-score" id="cu-review-total-score" style="display:none">' +
+        '<span class="material-symbols-outlined">star</span>' +
+        '<span class="cu-review-total-label">Total:</span>' +
+        '<span class="cu-review-total-val" id="cu-review-total-val">0</span>' +
+        '<span class="cu-review-total-max">/ ' + totalMaxItems + '</span>' +
+        '<span class="cu-review-total-pct" id="cu-review-total-pct"></span>' +
+      '</div>';
+
+      (data.sections || []).forEach(function(section, sectionIdx) {
+        if (section.type === 'exercise') {
+          var rvSecId = 'cu-sec-' + sectionIdx;
+          var rvItems = section.items || [];
+          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvItems.length + '">' +
+            '<div class="cu-section-title">' + _mi('assignment') + ' ' + self._escapeHTML(section.title) + '</div>';
+          if (section.instructions) {
+            html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
+          }
+          if (section.scoring && section.scoring.maxScore) {
+            html += '<div class="cu-pt-scoring-info">' + _mi('grade') + ' ' + section.scoring.maxScore + ' points' +
+              (section.scoring.pointsPerItem && section.scoring.pointsPerItem !== 1
+                ? ' (' + section.scoring.pointsPerItem + ' pts per item)'
+                : '') +
+            '</div>';
+          }
+          html += '<div class="cu-ex-items">';
+          var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
+          html += self._renderCuExItemsList(rvItems, 'pt-' + sectionIdx + '-' + section.title.replace(/\W+/g, ''), rvSecId);
+          html += '</div>';
+          if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
+          html += '</div>';
+        }
+      });
+
+      return html || '<div class="fe-error">No content available.</div>';
+    },
+
     // ── Course Overview (all blocks roadmap) ─────────────────────────────
     _renderCourseOverview: function() {
       var self = this;
@@ -2396,9 +2524,36 @@
         var blockPct = availableItems.length > 0 ? Math.round((doneCount / availableItems.length) * 100) : 0;
         var isFullyDone = hasAvailable && doneCount === availableItems.length;
 
-        // Separate units from review
+        // Separate units from review and progress test
         var unitItems = items.filter(function(i) { return i.type === 'grammar' || i.type === 'vocabulary'; });
         var reviewItem = items.find(function(i) { return i.type === 'review'; });
+        var progressTestItem = items.find(function(i) { return i.type === 'progress_test'; });
+
+        // Progress test blocks: render as full-width card
+        if (progressTestItem) {
+          var isPtAvail = progressTestItem.status === 'available';
+          var isPtDone = !!progress[progressTestItem.id];
+          var ptPath = 'data/Course/' + level + '/' + progressTestItem.file;
+          var ptScore = BentoGrid._getPtScore(level, progressTestItem.id);
+          var ptTotal = progressTestItem.totalPoints || 100;
+          var ptClass = 'cu-pt-overview-card' + (isPtDone ? ' cu-pt-card-done' : (isPtAvail ? ' cu-pt-card-available' : ' cu-pt-card-locked'));
+          var ptClickAttr = isPtAvail ? ' onclick="BentoGrid.openCourseUnit(\'' + progressTestItem.id + '\',\'' + ptPath + '\')" style="cursor:pointer"' : '';
+          html += '<div class="' + ptClass + '"' + ptClickAttr + '>';
+          html += '<div class="cu-pt-ov-icon">' + _mi('assignment') + '</div>';
+          html += '<div class="cu-pt-ov-body">';
+          html += '<div class="cu-pt-ov-label">Progress Test</div>';
+          html += '<div class="cu-pt-ov-title">' + self._escapeHTML(progressTestItem.title) + '</div>';
+          if (ptScore !== null) {
+            html += '<div class="cu-pt-ov-score">' + _mi('stars') + ' ' + ptScore + ' / ' + ptTotal + ' pts</div>';
+          } else if (isPtAvail) {
+            html += '<div class="cu-pt-ov-cta">' + _mi('play_arrow') + ' Take the Test</div>';
+          }
+          html += '</div>';
+          if (isPtDone) html += '<div class="cu-pt-ov-check">' + _mi('check_circle') + '</div>';
+          else if (!isPtAvail) html += '<div class="cu-pt-ov-lock">' + _mi('lock') + ' Coming Soon</div>';
+          html += '</div>'; // .cu-pt-overview-card
+          return;
+        }
 
         var blockClass = 'cu-block-card';
         if (!hasAvailable) blockClass += ' cu-block-card-locked';
@@ -2425,7 +2580,7 @@
           ? '<button class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseBlock(\'' + bk + '\')" title="Restart block">' + _mi('restart_alt') + '</button>'
           : '';
         html += '<div class="cu-block-card-header"' + headerOnClick + '>' +
-          '<span class="cu-block-num">Block ' + bk + '</span>' +
+          '<span class="cu-block-num">' + self._escapeHTML(BentoGrid._getBlockLabel(bk)) + '</span>' +
           badgeHtml +
           resetBlockOverviewBtn +
         '</div>';
@@ -2533,7 +2688,7 @@
         var hasAvailable = items.some(function(i) { return i.status === 'available'; });
         var hasActive = items.some(function(i) { return i.id === activeItemId; });
         var isOpen = false;
-        var label = bk !== 'misc' ? 'Block ' + bk : 'Other';
+        var label = BentoGrid._getBlockLabel(bk);
         var availItems = items.filter(function(i) { return i.status === 'available'; });
         var doneItems = availItems.filter(function(i) { return !!progress[i.id]; });
         var blockPct = availItems.length > 0 ? Math.round((doneItems.length / availItems.length) * 100) : 0;
@@ -2558,7 +2713,8 @@
           items.forEach(function(item) {
             var typeIcon = item.type === 'grammar' ? 'menu_book' :
                            item.type === 'vocabulary' ? 'translate' :
-                           item.type === 'review' ? 'quiz' : 'school';
+                           item.type === 'review' ? 'quiz' :
+                           item.type === 'progress_test' ? 'assignment' : 'school';
             var isActive = item.id === activeItemId;
             var isAvail = item.status === 'available';
             var isDone = !!progress[item.id];
@@ -2655,7 +2811,8 @@
         var isCurrent = item.id === unitId;
         var typeIcon = item.type === 'grammar' ? 'menu_book' :
                        item.type === 'vocabulary' ? 'translate' :
-                       item.type === 'review' ? 'quiz' : 'school';
+                       item.type === 'review' ? 'quiz' :
+                       item.type === 'progress_test' ? 'assignment' : 'school';
         var itemPath = 'data/Course/' + level + '/' + item.file;
         var shortTitle = item.title;
         var colonIdx = shortTitle.indexOf(':');
@@ -2737,10 +2894,11 @@
             '</button>';
           });
         }
-      } else if (unitData.type === 'review') {
+      } else if (unitData.type === 'review' || unitData.type === 'progress_test') {
+        var sectionIcon = unitData.type === 'progress_test' ? 'assignment' : 'quiz';
         (unitData.sections || []).forEach(function(sec, i) {
           html += '<button class="course-roadmap-item crm-exercise" id="crm-item-' + i + '" onclick="BentoGrid._scrollToCuSection(' + i + ')">' +
-            '<span class="crm-icon">' + _mi('quiz') + '</span>' +
+            '<span class="crm-icon">' + _mi(sectionIcon) + '</span>' +
             '<span class="crm-text">' + self._escapeHTML(sec.title || '') + '</span>' +
           '</button>';
         });

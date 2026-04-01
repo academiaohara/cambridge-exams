@@ -2363,6 +2363,228 @@
   opacity: 0.85;
 }
 
+/* ── Progress Test overview card ────────────────────────────────────── */
+.cu-pt-overview-card {
+  grid-column: 1 / -1; /* span full width */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(167, 139, 250, 0.05));
+  border: 1.5px solid rgba(124, 58, 237, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.07);
+  transition: box-shadow 0.15s, transform 0.12s;
+}
+
+.cu-pt-overview-card.cu-pt-card-available:hover {
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.14);
+  transform: translateY(-2px);
+}
+
+.cu-pt-overview-card.cu-pt-card-done {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
+}
+
+.cu-pt-overview-card.cu-pt-card-locked {
+  opacity: 0.6;
+}
+
+.cu-pt-ov-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(124, 58, 237, 0.12);
+  flex-shrink: 0;
+}
+
+.cu-pt-ov-icon .material-symbols-outlined {
+  font-size: 1.7rem;
+  color: #7c3aed;
+}
+
+.cu-pt-card-done .cu-pt-ov-icon {
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.cu-pt-card-done .cu-pt-ov-icon .material-symbols-outlined {
+  color: #10b981;
+}
+
+.cu-pt-ov-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.cu-pt-ov-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #7c3aed;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 3px;
+}
+
+.cu-pt-card-done .cu-pt-ov-label {
+  color: #10b981;
+}
+
+.cu-pt-ov-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #2D2E5F;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.cu-pt-ov-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #059669;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 10px;
+  padding: 3px 10px;
+}
+
+.cu-pt-ov-score .material-symbols-outlined {
+  font-size: 0.95rem;
+  color: #059669;
+}
+
+.cu-pt-ov-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #7c3aed;
+}
+
+.cu-pt-ov-cta .material-symbols-outlined {
+  font-size: 0.95rem;
+}
+
+.cu-pt-ov-check {
+  color: #10b981;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.cu-pt-ov-check .material-symbols-outlined {
+  font-size: 1.6rem;
+}
+
+.cu-pt-ov-lock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+/* ── Progress Test block view card ──────────────────────────────────── */
+.fe-map-pt-block {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 18px 20px;
+  gap: 10px;
+}
+
+.fe-map-pt-block .fe-map-lesson-title {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.cu-pt-block-desc {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.cu-pt-block-desc .material-symbols-outlined {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.cu-pt-block-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.08);
+  border-radius: 10px;
+  padding: 5px 12px;
+  margin-top: 2px;
+}
+
+.cu-pt-block-cta .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+/* ── Progress Test banner (inside unit view) ─────────────────────────── */
+.cu-pt-banner {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.09), rgba(167, 139, 250, 0.05));
+  border-color: rgba(124, 58, 237, 0.22);
+}
+
+.cu-pt-banner .cu-review-banner-icon {
+  background: rgba(124, 58, 237, 0.12);
+}
+
+.cu-pt-banner .cu-review-banner-icon .material-symbols-outlined {
+  color: #7c3aed;
+}
+
+.cu-pt-banner .cu-review-banner-label {
+  color: #7c3aed;
+}
+
+.cu-pt-banner .cu-review-banner-stat {
+  background: rgba(124, 58, 237, 0.09);
+  border-color: rgba(124, 58, 237, 0.18);
+}
+
+.cu-pt-banner .cu-review-stat-num {
+  color: #7c3aed;
+}
+
+.cu-pt-banner .cu-review-stat-lbl {
+  color: #5b21b6;
+}
+
+/* ── Progress Test scoring info line ─────────────────────────────────── */
+.cu-pt-scoring-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.07);
+  border-radius: 8px;
+  padding: 3px 9px;
+  margin-bottom: 10px;
+}
+
+.cu-pt-scoring-info .material-symbols-outlined {
+  font-size: 0.9rem;
+  color: #7c3aed;
+}
+
 /* ── Word Formation section list ────────────────────────────────────── */
 .cu-wf-list {
   display: flex;
