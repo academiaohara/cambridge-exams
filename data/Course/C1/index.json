@@ -29,7 +29,7 @@
     { "id": "Unit12",     "type": "vocabulary",  "block": 6,  "unit": 12, "title": "Unit 12 — Vocabulary: Chance and nature",                "file": "Unit12.json",     "status": "available" },
     { "id": "Review6",    "type": "review",      "block": 6,              "title": "Review 6 — Units 11 and 12",                             "file": "Review6.json",    "status": "available" },
 
-    { "id": "ProgressTest1", "type": "progress_test",                     "title": "Progress Test 1 — Units 1–12",                           "file": "ProgressTest1.json", "status": "available" },
+    { "id": "ProgressTest1", "type": "progress_test", "block": "pt1",     "title": "Progress Test 1 — Units 1–12",                           "file": "ProgressTest1.json", "status": "available", "totalPoints": 100 },
 
     { "id": "Unit13",     "type": "grammar",    "block": 7,  "unit": 13, "title": "Unit 13 — Grammar: Unreal time",                        "file": "Unit13.json",     "status": "available" },
     { "id": "Unit14",     "type": "vocabulary",  "block": 7,  "unit": 14, "title": "Unit 14 — Vocabulary: Quantity and money",               "file": "Unit14.json",     "status": "available" },
@@ -59,6 +59,6 @@
     { "id": "Unit26",     "type": "vocabulary",  "block": 13, "unit": 26, "title": "Unit 26 — Vocabulary: Preference and leisure activities", "file": "Unit26.json",    "status": "available" },
     { "id": "Review13",   "type": "review",      "block": 13,             "title": "Review 13 — Units 25 and 26",                            "file": "Review13.json",   "status": "available" },
 
-    { "id": "ProgressTest2", "type": "progress_test",                     "title": "Progress Test 2 — Units 13–26",                          "file": "ProgressTest2.json", "status": "available" }
+    { "id": "ProgressTest2", "type": "progress_test", "block": "pt2",     "title": "Progress Test 2 — Units 13–26",                          "file": "ProgressTest2.json", "status": "available", "totalPoints": 100 }
   ]
 }
