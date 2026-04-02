@@ -7,87 +7,321 @@
   "sections": {
     "topic_vocabulary": {
       "relationships": [
-        { "word": "adjacent", "part_of_speech": "adj" },
-        { "word": "attach", "part_of_speech": "v" },
-        { "word": "bond", "part_of_speech": "v, n" },
-        { "word": "coexist", "part_of_speech": "v" },
-        { "word": "coherent", "part_of_speech": "adj" },
-        { "word": "compatible", "part_of_speech": "adj" },
-        { "word": "comprise", "part_of_speech": "v" },
-        { "word": "compromise", "part_of_speech": "v, n" },
-        { "word": "conflict", "part_of_speech": "v, n" },
-        { "word": "confront", "part_of_speech": "v" },
-        { "word": "consistent", "part_of_speech": "adj" },
-        { "word": "contradict", "part_of_speech": "v" },
-        { "word": "contrasting", "part_of_speech": "adj" },
-        { "word": "cooperate", "part_of_speech": "v" },
-        { "word": "correspond", "part_of_speech": "v" },
-        { "word": "dispute", "part_of_speech": "v, n" },
-        { "word": "distinguish", "part_of_speech": "v" },
-        { "word": "diverse", "part_of_speech": "adj" },
-        { "word": "divorce", "part_of_speech": "v, n" },
-        { "word": "equivalent", "part_of_speech": "n, adj" },
-        { "word": "exclude", "part_of_speech": "v" },
-        { "word": "external", "part_of_speech": "adj" },
-        { "word": "identify", "part_of_speech": "v" },
-        { "word": "integral", "part_of_speech": "adj" },
-        { "word": "integrate", "part_of_speech": "v" },
-        { "word": "interfere", "part_of_speech": "v" },
-        { "word": "intermediate", "part_of_speech": "adj" },
-        { "word": "internal", "part_of_speech": "adj" },
-        { "word": "intervene", "part_of_speech": "v" },
-        { "word": "intimate", "part_of_speech": "adj" },
-        { "word": "involve", "part_of_speech": "v" },
-        { "word": "joint", "part_of_speech": "adj" },
-        { "word": "liken", "part_of_speech": "v" },
-        { "word": "link", "part_of_speech": "v, n" },
-        { "word": "merge", "part_of_speech": "v" },
-        { "word": "mutual", "part_of_speech": "adj" },
-        { "word": "negotiate", "part_of_speech": "v" },
-        { "word": "related", "part_of_speech": "adj" },
-        { "word": "relative", "part_of_speech": "adj" },
-        { "word": "resemblance", "part_of_speech": "n" }
+        {
+          "word": "adjacent",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "attach",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "bond",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "coexist",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "coherent",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "compatible",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "comprise",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "compromise",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "conflict",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "confront",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "consistent",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "contradict",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "contrasting",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "cooperate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "correspond",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "dispute",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "distinguish",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "diverse",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "divorce",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "equivalent",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "exclude",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "external",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "identify",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "integral",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "integrate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "interfere",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "intermediate",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "internal",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "intervene",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "intimate",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "involve",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "joint",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "liken",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "link",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "merge",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "mutual",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "negotiate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "related",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "relative",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "resemblance",
+          "part_of_speech": "n"
+        }
       ],
       "people": [
-        { "word": "acquaintance", "part_of_speech": "n" },
-        { "word": "adopt", "part_of_speech": "v" },
-        { "word": "ancestor", "part_of_speech": "n" },
-        { "word": "citizen", "part_of_speech": "n" },
-        { "word": "companion", "part_of_speech": "n" },
-        { "word": "dependant", "part_of_speech": "n" },
-        { "word": "descendant", "part_of_speech": "n" },
-        { "word": "empathise", "part_of_speech": "v" },
-        { "word": "extrovert", "part_of_speech": "n" },
-        { "word": "foster", "part_of_speech": "v" },
-        { "word": "guardian", "part_of_speech": "n" },
-        { "word": "introvert", "part_of_speech": "n" },
-        { "word": "partner", "part_of_speech": "n" },
-        { "word": "peer", "part_of_speech": "n" },
-        { "word": "predecessor", "part_of_speech": "n" },
-        { "word": "sibling", "part_of_speech": "n" },
-        { "word": "spouse", "part_of_speech": "n" },
-        { "word": "stepmother", "part_of_speech": "n", "variants": ["stepson", "stepfather", "stepdaughter", "stepchild"] },
-        { "word": "successor", "part_of_speech": "n" },
-        { "word": "sympathise", "part_of_speech": "v" }
+        {
+          "word": "acquaintance",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "adopt",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "ancestor",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "citizen",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "companion",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "dependant",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "descendant",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "empathise",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "extrovert",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "foster",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "guardian",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "introvert",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "partner",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "peer",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "predecessor",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "sibling",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "spouse",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "stepmother",
+          "part_of_speech": "n",
+          "variants": [
+            "stepson",
+            "stepfather",
+            "stepdaughter",
+            "stepchild"
+          ]
+        },
+        {
+          "word": "successor",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "sympathise",
+          "part_of_speech": "v"
+        }
       ]
     },
     "phrasal_verbs": [
-      { "verb": "answer back", "meaning": "reply rudely to someone who has more authority than you" },
-      { "verb": "ask out", "meaning": "invite someone to go with you to a cinema, restaurant, etc because you want to start a romantic or sexual relationship with them" },
-      { "verb": "break up", "meaning": "if two people break up, they end their relationship; break something to make smaller pieces; if a meeting or other event breaks up, or if you break it up, it ends and people leave" },
-      { "verb": "bring out", "meaning": "make someone or something show a quality that they have; produce a new product and start to sell it" },
-      { "verb": "bring together", "meaning": "create a situation in which people meet and do something together, especially when they would not usually do so" },
-      { "verb": "bump into", "meaning": "meet someone unexpectedly; accidentally hit against something" },
-      { "verb": "cancel out", "meaning": "stop something from having any effect" },
-      { "verb": "come between", "meaning": "cause a disagreement or argument between people" },
-      { "verb": "crowd around", "meaning": "move to a particular place at the same time as a lot of other people" },
-      { "verb": "go together", "meaning": "if two or more things go together, they frequently exist together; if two things go together, they seem good, natural or attractive in combination with each other" },
-      { "verb": "meet up", "meaning": "come together with someone, either unexpectedly or as planned" },
-      { "verb": "open up", "meaning": "talk more about your personal feelings and experiences; open a locked door, container or building; make it easier to travel or do business in a country" },
-      { "verb": "pick on", "meaning": "keep treating someone badly or unfairly, especially by criticising them" },
-      { "verb": "sound out", "meaning": "try to find out someone's opinions, ideas, feelings, etc by talking to them" },
-      { "verb": "take after", "meaning": "look or behave like an older relative" },
-      { "verb": "take to", "meaning": "begin to like someone or something; start doing something as a habit" }
+      {
+        "verb": "answer back",
+        "meaning": "reply rudely to someone who has more authority than you"
+      },
+      {
+        "verb": "ask out",
+        "meaning": "invite someone to go with you to a cinema, restaurant, etc because you want to start a romantic or sexual relationship with them"
+      },
+      {
+        "verb": "break up",
+        "meaning": "if two people break up, they end their relationship; break something to make smaller pieces; if a meeting or other event breaks up, or if you break it up, it ends and people leave"
+      },
+      {
+        "verb": "bring out",
+        "meaning": "make someone or something show a quality that they have; produce a new product and start to sell it"
+      },
+      {
+        "verb": "bring together",
+        "meaning": "create a situation in which people meet and do something together, especially when they would not usually do so"
+      },
+      {
+        "verb": "bump into",
+        "meaning": "meet someone unexpectedly; accidentally hit against something"
+      },
+      {
+        "verb": "cancel out",
+        "meaning": "stop something from having any effect"
+      },
+      {
+        "verb": "come between",
+        "meaning": "cause a disagreement or argument between people"
+      },
+      {
+        "verb": "crowd around",
+        "meaning": "move to a particular place at the same time as a lot of other people"
+      },
+      {
+        "verb": "go together",
+        "meaning": "if two or more things go together, they frequently exist together; if two things go together, they seem good, natural or attractive in combination with each other"
+      },
+      {
+        "verb": "meet up",
+        "meaning": "come together with someone, either unexpectedly or as planned"
+      },
+      {
+        "verb": "open up",
+        "meaning": "talk more about your personal feelings and experiences; open a locked door, container or building; make it easier to travel or do business in a country"
+      },
+      {
+        "verb": "pick on",
+        "meaning": "keep treating someone badly or unfairly, especially by criticising them"
+      },
+      {
+        "verb": "sound out",
+        "meaning": "try to find out someone's opinions, ideas, feelings, etc by talking to them"
+      },
+      {
+        "verb": "take after",
+        "meaning": "look or behave like an older relative"
+      },
+      {
+        "verb": "take to",
+        "meaning": "begin to like someone or something; start doing something as a habit"
+      }
     ],
     "collocations_patterns": {
       "born": [
@@ -257,206 +491,803 @@
       ]
     },
     "idioms": [
-      { "idiom": "be born with a silver spoon in your mouth", "meaning": "have advantages because you come from a rich family" },
-      { "idiom": "be on the same wavelength", "meaning": "understand the way another person thinks because you often have the same ideas and opinions they do" },
-      { "idiom": "get on like a house on fire", "meaning": "become good friends very quickly and have a lot to talk to each other about" },
-      { "idiom": "in sb's bad/good books", "meaning": "used for saying that someone is annoyed/pleased with you" },
-      { "idiom": "like two peas in a pod", "meaning": "used for saying that two people look, behave or think exactly the same" },
-      { "idiom": "on good terms (with)", "meaning": "have a good relationship with someone" },
-      { "idiom": "put sth in perspective", "meaning": "provide a sensible way of judging how good, bad, important, etc something is in comparison with other things" },
-      { "idiom": "sb is only human", "meaning": "used for saying someone has been weak in the ways most people are weak and should not be blamed for their behaviour" },
-      { "idiom": "see eye to eye (with sb)", "meaning": "agree with someone or have the same opinion as them" },
-      { "idiom": "your flesh and blood", "meaning": "your relative" }
+      {
+        "idiom": "be born with a silver spoon in your mouth",
+        "meaning": "have advantages because you come from a rich family"
+      },
+      {
+        "idiom": "be on the same wavelength",
+        "meaning": "understand the way another person thinks because you often have the same ideas and opinions they do"
+      },
+      {
+        "idiom": "get on like a house on fire",
+        "meaning": "become good friends very quickly and have a lot to talk to each other about"
+      },
+      {
+        "idiom": "in sb's bad/good books",
+        "meaning": "used for saying that someone is annoyed/pleased with you"
+      },
+      {
+        "idiom": "like two peas in a pod",
+        "meaning": "used for saying that two people look, behave or think exactly the same"
+      },
+      {
+        "idiom": "on good terms (with)",
+        "meaning": "have a good relationship with someone"
+      },
+      {
+        "idiom": "put sth in perspective",
+        "meaning": "provide a sensible way of judging how good, bad, important, etc something is in comparison with other things"
+      },
+      {
+        "idiom": "sb is only human",
+        "meaning": "used for saying someone has been weak in the ways most people are weak and should not be blamed for their behaviour"
+      },
+      {
+        "idiom": "see eye to eye (with sb)",
+        "meaning": "agree with someone or have the same opinion as them"
+      },
+      {
+        "idiom": "your flesh and blood",
+        "meaning": "your relative"
+      }
     ],
     "word_formation": [
-      { "base": "appear", "related": ["disappear", "reappear", "(dis/re)appearance", "apparition", "apparent(ly)"] },
-      { "base": "appreciate", "related": ["appreciation", "appreciable", "appreciably", "(un)appreciatively"] },
-      { "base": "associate", "related": ["dissociate", "association", "associate", "associated"] },
-      { "base": "attach", "related": ["reattach", "attachment", "(un)attached"] },
-      { "base": "character", "related": ["characterise", "characterisation", "(un)characteristic", "characterless"] },
-      { "base": "connect", "related": ["disconnect", "reconnect", "interconnect", "(dis/re)connection", "(inter)connecting", "(un/dis/inter)connected", "connector"] },
-      { "base": "familiar", "related": ["familiarise", "(un)familiarity", "unfamiliar", "familiarly"] },
-      { "base": "human", "related": ["humanise", "humanity", "humanism", "humanist", "humanities", "humanitarian", "humane", "humanly"] },
-      { "base": "individual", "related": ["individualise", "individualisation", "individuality", "individualist", "individually"] },
-      { "base": "inherit", "related": ["inheritance", "heritage", "heredity", "hereditary"] },
-      { "base": "intimate", "related": ["intimacy", "intimately"] },
-      { "base": "loyal", "related": ["(dis)loyalty", "disloyal", "(dis)loyally"] },
-      { "base": "observe", "related": ["observation", "observance", "observer", "observatory", "observable", "observant", "observably"] },
-      { "base": "parent", "related": ["parenting", "parentage", "parenthood", "parental(y)"] },
-      { "base": "perceive", "related": ["perception", "perceptiveness", "(im)perceptible", "(im)perceptibly", "perceptively"] },
-      { "base": "person", "related": ["personalise", "impersonate", "personality", "personnel", "interpersonal", "personalised", "(im)personal(y)"] },
-      { "base": "race", "related": ["racism", "racist", "interracial", "racial(y)"] },
-      { "base": "relate", "related": ["relation", "relationship", "(un)related", "relatively"] },
-      { "base": "self", "related": ["(un)selfishness", "selflessness", "(un)selfishly", "selflessly"] },
-      { "base": "separate", "related": ["separation", "(in)separable", "separated", "separately"] },
-      { "base": "sympathy", "related": ["sympathise", "sympathiser", "(un)sympathetic", "(un)sympathetically"] },
-      { "base": "young", "related": ["youngster", "youth", "youthful"] }
+      {
+        "base": "appear",
+        "related": [
+          "disappear",
+          "reappear",
+          "(dis/re)appearance",
+          "apparition",
+          "apparent(ly)"
+        ]
+      },
+      {
+        "base": "appreciate",
+        "related": [
+          "appreciation",
+          "appreciable",
+          "appreciably",
+          "(un)appreciatively"
+        ]
+      },
+      {
+        "base": "associate",
+        "related": [
+          "dissociate",
+          "association",
+          "associate",
+          "associated"
+        ]
+      },
+      {
+        "base": "attach",
+        "related": [
+          "reattach",
+          "attachment",
+          "(un)attached"
+        ]
+      },
+      {
+        "base": "character",
+        "related": [
+          "characterise",
+          "characterisation",
+          "(un)characteristic",
+          "characterless"
+        ]
+      },
+      {
+        "base": "connect",
+        "related": [
+          "disconnect",
+          "reconnect",
+          "interconnect",
+          "(dis/re)connection",
+          "(inter)connecting",
+          "(un/dis/inter)connected",
+          "connector"
+        ]
+      },
+      {
+        "base": "familiar",
+        "related": [
+          "familiarise",
+          "(un)familiarity",
+          "unfamiliar",
+          "familiarly"
+        ]
+      },
+      {
+        "base": "human",
+        "related": [
+          "humanise",
+          "humanity",
+          "humanism",
+          "humanist",
+          "humanities",
+          "humanitarian",
+          "humane",
+          "humanly"
+        ]
+      },
+      {
+        "base": "individual",
+        "related": [
+          "individualise",
+          "individualisation",
+          "individuality",
+          "individualist",
+          "individually"
+        ]
+      },
+      {
+        "base": "inherit",
+        "related": [
+          "inheritance",
+          "heritage",
+          "heredity",
+          "hereditary"
+        ]
+      },
+      {
+        "base": "intimate",
+        "related": [
+          "intimacy",
+          "intimately"
+        ]
+      },
+      {
+        "base": "loyal",
+        "related": [
+          "(dis)loyalty",
+          "disloyal",
+          "(dis)loyally"
+        ]
+      },
+      {
+        "base": "observe",
+        "related": [
+          "observation",
+          "observance",
+          "observer",
+          "observatory",
+          "observable",
+          "observant",
+          "observably"
+        ]
+      },
+      {
+        "base": "parent",
+        "related": [
+          "parenting",
+          "parentage",
+          "parenthood",
+          "parental(y)"
+        ]
+      },
+      {
+        "base": "perceive",
+        "related": [
+          "perception",
+          "perceptiveness",
+          "(im)perceptible",
+          "(im)perceptibly",
+          "perceptively"
+        ]
+      },
+      {
+        "base": "person",
+        "related": [
+          "personalise",
+          "impersonate",
+          "personality",
+          "personnel",
+          "interpersonal",
+          "personalised",
+          "(im)personal(y)"
+        ]
+      },
+      {
+        "base": "race",
+        "related": [
+          "racism",
+          "racist",
+          "interracial",
+          "racial(y)"
+        ]
+      },
+      {
+        "base": "relate",
+        "related": [
+          "relation",
+          "relationship",
+          "(un)related",
+          "relatively"
+        ]
+      },
+      {
+        "base": "self",
+        "related": [
+          "(un)selfishness",
+          "selflessness",
+          "(un)selfishly",
+          "selflessly"
+        ]
+      },
+      {
+        "base": "separate",
+        "related": [
+          "separation",
+          "(in)separable",
+          "separated",
+          "separately"
+        ]
+      },
+      {
+        "base": "sympathy",
+        "related": [
+          "sympathise",
+          "sympathiser",
+          "(un)sympathetic",
+          "(un)sympathetically"
+        ]
+      },
+      {
+        "base": "young",
+        "related": [
+          "youngster",
+          "youth",
+          "youthful"
+        ]
+      }
     ],
     "exercises": {
       "A": {
         "title": "Complete using the correct form of the words in the box.",
         "instructions": "Complete using the correct form of the words in the box.",
-        "words": ["attach", "comprise", "confront", "contradict", "correspond", "dispute", "distinguish", "exclude", "identify", "integrate", "involve", "liken", "merge", "negotiate"],
+        "words": [
+          "attach",
+          "comprise",
+          "confront",
+          "contradict",
+          "correspond",
+          "dispute",
+          "distinguish",
+          "exclude",
+          "identify",
+          "integrate",
+          "involve",
+          "liken",
+          "merge",
+          "negotiate"
+        ],
         "questions": [
-          { "sentence": "It's not easy to ……………………. between Nick and Rick because they're identical twins.", "answer": "distinguish" },
-          { "sentence": "Why do you always ……………………… me and say that what I'm saying isn't true?", "answer": "contradict" },
-          { "sentence": "I love mountaineering, and I suppose I would ……………………… it to the excitement of winning the lottery.", "answer": "liken" },
-          { "sentence": "One of the reasons we grow to love characters in films is that we ……………………… with them.", "answer": "identify" },
-          { "sentence": "You need to ………………………… the handle to the drawer using these screws.", "answer": "attach" },
-          { "sentence": "I wouldn't …………………………… the possibility that you could be completely wrong on this.", "answer": "exclude" },
-          { "sentence": "Your answer to the maths problem should be the same as mine, but they don't …………………………… .", "answer": "correspond" },
-          { "sentence": "I'm going to ……………………………… Roy about his behaviour because I think it's unacceptable.", "answer": "confront" },
-          { "sentence": "Don't you think that people who come to live in this country should ……………………… into our culture?", "answer": "integrate" },
-          { "sentence": "In some countries, children under 16 …………………………… the majority of the population.", "answer": "comprise" },
-          { "sentence": "They say the price for the house is two hundred thousand, but I'm sure they'll …………………………… .", "answer": "negotiate" },
-          { "sentence": "I'm not …………………………………… the facts – I just don't agree with your interpretation of them.", "answer": "disputing" },
-          { "sentence": "Our office is going to …………………………… with the one in the next town so some people will lose their jobs.", "answer": "merge" },
-          { "sentence": "Having a successful marriage …………………………… learning how to keep quiet at the right time.", "answer": "involves" }
+          {
+            "sentence": "It can be very hard to ……………………. between the two paintings because they look almost the same.",
+            "answer": "distinguish"
+          },
+          {
+            "sentence": "Please don't ……………………… me – I said we should meet at seven, not six.",
+            "answer": "contradict"
+          },
+          {
+            "sentence": "Many critics ……………………… the experience of reading this novel to that of watching a film unfold.",
+            "answer": "liken"
+          },
+          {
+            "sentence": "I think readers can really ……………………… with the protagonist because she faces such everyday struggles.",
+            "answer": "identify"
+          },
+          {
+            "sentence": "You must ………………………… the safety tag to the luggage before checking in.",
+            "answer": "attach"
+          },
+          {
+            "sentence": "We should not ……………………………… the possibility that someone else was involved.",
+            "answer": "exclude"
+          },
+          {
+            "sentence": "The data from the second experiment does not …………………………… with the results of the first.",
+            "answer": "correspond"
+          },
+          {
+            "sentence": "I feel it's time to ……………………………… Patrick directly about the rumours that are circulating.",
+            "answer": "confront"
+          },
+          {
+            "sentence": "New employees often find it takes months to fully ……………………… into the company culture.",
+            "answer": "integrate"
+          },
+          {
+            "sentence": "The student body ……………………………… more than three thousand undergraduates and five hundred postgraduates.",
+            "answer": "comprises"
+          },
+          {
+            "sentence": "If we want a fair outcome, both sides will have to ………………………… .",
+            "answer": "negotiate"
+          },
+          {
+            "sentence": "I am not …………………………………… the figures – I simply believe they have been misinterpreted.",
+            "answer": "disputing"
+          },
+          {
+            "sentence": "The two companies announced that they would …………………………… to create a single global brand.",
+            "answer": "merge"
+          },
+          {
+            "sentence": "Running a successful café …………………………… managing staff, stock and customer relations all at once.",
+            "answer": "involves"
+          }
         ]
       },
       "B": {
         "title": "Choose the correct answer.",
         "instructions": "Choose the correct answer (A, B, C or D).",
         "questions": [
-          { "sentence": "I couldn't believe it when Marcy accused me of ...... in her relationship with Joe.", "options": ["A intervening", "B interacting", "C interfering", "D intercepting"], "answer": "C" },
-          { "sentence": "Do you think there might be a ...... between Angie's behaviour and the accident she had?", "options": ["A link", "B tie", "C bond", "D junction"], "answer": "A" },
-          { "sentence": "Suddenly, I overheard Melissa and Alex talking about me in the ...... room.", "options": ["A attached", "B beside", "C near", "D adjacent"], "answer": "D" },
-          { "sentence": "It's difficult to translate because there's no ...... for that word in English.", "options": ["A twin", "B clone", "C copy", "D equivalent"], "answer": "D" },
-          { "sentence": "Andrea and Theresa are so different! You couldn't have two more ...... sisters.", "options": ["A dislike", "B contrasting", "C conflicting", "D distinguished"], "answer": "B" },
-          { "sentence": "Keeping a relationship going is hard enough, without any ...... pressure from parents.", "options": ["A external", "B incoming", "C outward", "D outdoor"], "answer": "A" },
-          { "sentence": "Having your heart broken is an ...... part of growing up.", "options": ["A inward", "B inset", "C integral", "D internal"], "answer": "C" },
-          { "sentence": "Getting divorced was a ...... decision, so I don't blame my ex-wife.", "options": ["A relative", "B related", "C cooperative", "D joint"], "answer": "D" },
-          { "sentence": "But what you're saying now isn't ...... with what you said last week.", "options": ["A coherent", "B consistent", "C confirmed", "D continuous"], "answer": "B" },
-          { "sentence": "You have to go through a number of ...... stages before you become an expert.", "options": ["A medium", "B average", "C moderate", "D intermediate"], "answer": "D" },
-          { "sentence": "There's no ...... between Gary and Mark, even though they are brothers.", "options": ["A resemblance", "B appearance", "C correspondence", "D reflection"], "answer": "A" },
-          { "sentence": "There's no reason why people of different races can't ...... quite peacefully together.", "options": ["A endure", "B be", "C inhabit", "D coexist"], "answer": "D" }
+          {
+            "sentence": "I was hurt when Sandra accused me of ...... in her argument with Tom.",
+            "options": [
+              "A intervening",
+              "B interacting",
+              "C interfering",
+              "D intercepting"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "Is there a possible ...... between the rise in stress levels and the increase in health problems?",
+            "options": [
+              "A link",
+              "B tie",
+              "C bond",
+              "D junction"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "I realised I was being talked about when I spotted Laura and Finn whispering in the ...... office.",
+            "options": [
+              "A attached",
+              "B beside",
+              "C near",
+              "D adjacent"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "The Spanish word doesn't translate easily because English has no direct ...... for it.",
+            "options": [
+              "A twin",
+              "B clone",
+              "C copy",
+              "D equivalent"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "Helen and her cousin could not be more different – they're the most ...... pair I've ever met.",
+            "options": [
+              "A dislike",
+              "B contrasting",
+              "C conflicting",
+              "D distinguished"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "The couple struggled to cope with the ...... pressure of judgement from their respective families.",
+            "options": [
+              "A external",
+              "B incoming",
+              "C outward",
+              "D outdoor"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "Making mistakes is an ...... part of the learning process.",
+            "options": [
+              "A inward",
+              "B inset",
+              "C integral",
+              "D internal"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "The decision to relocate was a ...... one, so both partners are equally responsible.",
+            "options": [
+              "A relative",
+              "B related",
+              "C cooperative",
+              "D joint"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "What you're saying now doesn't seem ...... with the position you took at last week's meeting.",
+            "options": [
+              "A coherent",
+              "B consistent",
+              "C confirmed",
+              "D continuous"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "Before reaching expert level, learners typically pass through several ...... stages.",
+            "options": [
+              "A medium",
+              "B average",
+              "C moderate",
+              "D intermediate"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "There is absolutely no ...... between the two brothers, even though they grew up in the same house.",
+            "options": [
+              "A resemblance",
+              "B appearance",
+              "C correspondence",
+              "D reflection"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "People of very different backgrounds can learn to ...... quite harmoniously when given the chance.",
+            "options": [
+              "A endure",
+              "B be",
+              "C inhabit",
+              "D coexist"
+            ],
+            "answer": "D"
+          }
         ]
       },
       "C": {
         "title": "Complete using the correct form of the words in the box.",
         "instructions": "Complete using the correct form of the words in the box.",
-        "words": ["bond", "compatible", "compromise", "conflict", "cooperate", "diverse", "divorce", "intimate", "mutual", "relative"],
-        "passage": "When people are in (1) ...... , it can often help to talk to someone outside the relationship. When the (2) ...... that holds people together weakens and arguments break out, the (3) ...... calm of a counsellor's office can make a big difference. Relate is a registered charity in the UK that exists to give advice to couples. It started life as the Marriage Guidance Council in 1943 and was founded by Dr Herbert Gray, who was concerned at the increase in (4) ...... . They have dealt with a (5) ...... range of problems over the years, from couples who feel that their personalities aren't (6) ...... to couples who have problems being (7) ...... with each other. Getting people to (8) ...... with each other on rebuilding the relationship and encouraging (9) ...... respect often helps. Often, people need to learn that they can't have exactly what they want and that (10) ...... is necessary.",
+        "words": [
+          "bond",
+          "compatible",
+          "compromise",
+          "conflict",
+          "cooperate",
+          "diverse",
+          "divorce",
+          "intimate",
+          "mutual",
+          "relative"
+        ],
+        "passage": "When two people find themselves in (1) ...... , the most productive step is often to seek help from an impartial third party. Sometimes the (2) ...... that once held a couple together has faded so gradually that neither person noticed. A therapist's office offers (3) ...... calm and a safe space in which both parties can speak freely. In the UK, charities like Relate have supported couples through a (4) ...... range of difficulties, from those who feel they are simply not (5) ...... as people to those who struggle with (6) ...... communication and closeness. Professionals work hard to get both partners to (7) ...... in rebuilding trust and to foster (8) ...... understanding. A key lesson many people take away is that (9) ...... separation, while sometimes unavoidable, is not automatically the answer, and that learning to (10) ...... – rather than expecting everything on their own terms – can transform a relationship.",
         "answers": [
           "1 conflict",
           "2 bond",
           "3 relative",
-          "4 divorce",
-          "5 diverse",
-          "6 compatible",
-          "7 intimate",
-          "8 cooperate",
-          "9 mutual",
+          "4 diverse",
+          "5 compatible",
+          "6 intimate",
+          "7 cooperate",
+          "8 mutual",
+          "9 divorce",
           "10 compromise"
         ]
       },
       "D": {
         "title": "Complete using the words in the box.",
         "instructions": "Complete using the words in the box.",
-        "words": ["acquaintance", "citizen", "companion", "extrovert", "guardian", "introvert", "spouse", "stepmother"],
+        "words": [
+          "acquaintance",
+          "citizen",
+          "companion",
+          "extrovert",
+          "guardian",
+          "introvert",
+          "spouse",
+          "stepmother"
+        ],
         "questions": [
-          { "sentence": "I don't know Tony that well. We see each other on the way to work, and we always say hello. I wouldn't call him a friend, more of a/an ...................... , really.", "answer": "acquaintance" },
-          { "sentence": "I don't get on that well with my .............................. . Since my parents got divorced and Dad married her, things haven't exactly been peaceful in our house.", "answer": "stepmother" },
-          { "sentence": "Everyone who wants to go on the school trip needs to bring their form into class tomorrow. And remember that you have to get your legal ............................... to sign it, giving you permission to go.", "answer": "guardian" },
-          { "sentence": "I suppose I'm something of a/an ................................ . I wouldn't exactly describe myself as sociable. I'm quite shy, really, and don't like meeting new people.", "answer": "introvert" },
-          { "sentence": "You need to write your full name at the top of the form. If you're married, write the name of your ............................. in the space provided.", "answer": "spouse" },
-          { "sentence": "As I waited at the airport, I saw a rather strange-looking woman who didn't seem to have any luggage. Then I noticed her travelling .................................. , a small woman of a similar age with four suitcases.", "answer": "companion" },
-          { "sentence": "Guy's a real ................................... . He'll chat to anybody. He always seems to get into conversation wherever we go and everyone seems to find him charming.", "answer": "extrovert" },
-          { "sentence": "When my grandfather arrived in the States, he wanted to become an American ................................... as soon as he could. It was very important to him to feel that he belonged here.", "answer": "citizen" }
+          {
+            "sentence": "I've spoken to Diana a few times at the gym, but I wouldn't say we're close. She's more of an .............................. than a friend.",
+            "answer": "acquaintance"
+          },
+          {
+            "sentence": "My relationship with my .............................. has always been a little awkward. Ever since Dad remarried, the atmosphere at home has been tense.",
+            "answer": "stepmother"
+          },
+          {
+            "sentence": "Before the minors can take part in the competition, each one must submit a signed consent form from their .............................. .",
+            "answer": "guardian"
+          },
+          {
+            "sentence": "I'd describe myself as a real .............................. . Crowded parties make me anxious, and I usually prefer staying in with a good book to going out.",
+            "answer": "introvert"
+          },
+          {
+            "sentence": "Please fill in both your own details and those of your .............................. on the joint tax return form.",
+            "answer": "spouse"
+          },
+          {
+            "sentence": "The elderly professor arrived at the conference alone, but soon found a willing .............................. in a younger researcher who shared his interests.",
+            "answer": "companion"
+          },
+          {
+            "sentence": "Rosa is a natural .............................. who strikes up conversations with strangers on the bus and somehow ends up being everyone's best friend within minutes.",
+            "answer": "extrovert"
+          },
+          {
+            "sentence": "After living abroad for ten years, Luis felt the time had come to apply for permanent residency and eventually become a .............................. of his adopted country.",
+            "answer": "citizen"
+          }
         ]
       },
       "E": {
         "title": "Circle the correct word.",
         "instructions": "Circle the correct word.",
         "questions": [
-          { "sentence": "I do **empathise / sympathise** with Kim, but I can't say I really understand what she's going through.", "answer": "sympathise" },
-          { "sentence": "I understand you're trying to be kind, but I don't think you can really **empathise / sympathise** with me when you haven't experienced anything similar.", "answer": "empathise" },
-          { "sentence": "My parents often **adopted / fostered** children for a few months when I was young and they must have looked after about 50 youngsters altogether.", "answer": "fostered" },
-          { "sentence": "I was **adopted / fostered** by Frank and Mavis when I was just six weeks old, so they're the only parents I've ever known.", "answer": "adopted" },
-          { "sentence": "To some people, it's very important not to be different from their **partners / peers** and to fit in with the group.", "answer": "peers" },
-          { "sentence": "I thought it strange that the invitation didn't say that **partners / peers** were invited.", "answer": "partners" },
-          { "sentence": "It was a real blow when Jim lost his job because he's got a large number of **dependants / siblings**, including three children and a mother-in-law.", "answer": "dependants" },
-          { "sentence": "I never really got on with any of my **dependants / siblings** as I was growing up.", "answer": "siblings" },
-          { "sentence": "My **ancestor / predecessor** in the job left things in a real mess.", "answer": "predecessor" },
-          { "sentence": "The family home was built by a/an **ancestor / predecessor** of mine and six generations of Barretts have lived in it since then.", "answer": "ancestor" },
-          { "sentence": "I have decided to leave the company, but I'm sure my **descendant / successor** will carry on the good work.", "answer": "successor" },
-          { "sentence": "You won't believe me, but I'm a **descendant / successor** of Isaac Newton, although I don't share the same name.", "answer": "descendant" }
+          {
+            "sentence": "Because I went through the same experience last year, I think I can truly **empathise / sympathise** with what you're feeling right now.",
+            "answer": "empathise"
+          },
+          {
+            "sentence": "I've never been in that situation myself, but I do **empathise / sympathise** with those who have and I hope things improve soon.",
+            "answer": "sympathise"
+          },
+          {
+            "sentence": "The charity **adopted / fostered** a model of care that placed the needs of children above all else.",
+            "answer": "adopted"
+          },
+          {
+            "sentence": "The couple **adopted / fostered** several teenagers over the years before finally deciding to give a permanent home to one of them.",
+            "answer": "fostered"
+          },
+          {
+            "sentence": "Teenagers often feel tremendous pressure to dress and act like their **partners / peers** .",
+            "answer": "peers"
+          },
+          {
+            "sentence": "The party invitation specified that **partners / peers** were welcome to join for the evening reception.",
+            "answer": "partners"
+          },
+          {
+            "sentence": "It was a huge financial burden for Marco, as he had several **dependants / siblings** relying on his income.",
+            "answer": "dependants"
+          },
+          {
+            "sentence": "Growing up as the youngest of five **dependants / siblings** , Clara always had someone to turn to for advice.",
+            "answer": "siblings"
+          },
+          {
+            "sentence": "The new director faced an uphill task because her **ancestor / predecessor** had left the department in chaos.",
+            "answer": "predecessor"
+          },
+          {
+            "sentence": "Family legend has it that a/an **ancestor / predecessor** of ours once served as a ship's captain in the eighteenth century.",
+            "answer": "ancestor"
+          },
+          {
+            "sentence": "The retiring CEO said he was confident his **descendant / successor** would steer the company through any challenges ahead.",
+            "answer": "successor"
+          },
+          {
+            "sentence": "Genetic testing confirmed that she was a **descendant / successor** of the royal family, albeit a very distant one.",
+            "answer": "descendant"
+          }
         ]
       },
       "F": {
         "title": "Write one word in each gap.",
         "instructions": "Write one word in each gap.",
         "questions": [
-          { "sentence": "I haven't seen much of Cameron since he and Nicola broke ......", "answer": "up" },
-          { "sentence": "She really loves him and is determined not to let anything come ...... them.", "answer": "between" },
-          { "sentence": "Why don't we meet ...... here again on the 12th, when I get back from Germany?", "answer": "up" },
-          { "sentence": "I didn't take ...... my stepbrother at first, but after a while we grew closer.", "answer": "to" },
-          { "sentence": "We should bring everyone ...... and discuss what we're going to do for Grandpa's 80th birthday.", "answer": "together" },
-          { "sentence": "Being given some responsibility really brought ...... a side of Lindsay's character I hadn't seen before.", "answer": "out" },
-          { "sentence": "I'd like to ask Melanie ...... on a date, but I'm afraid of being rejected.", "answer": "out" },
-          { "sentence": "I had a row with Elizabeth and it just cancelled ...... all the effort I'd put into getting her to like me.", "answer": "out" }
+          {
+            "sentence": "I lost touch with most of my old school friends after they broke ......",
+            "answer": "up"
+          },
+          {
+            "sentence": "She felt that his long working hours were beginning to come ...... her and the children.",
+            "answer": "between"
+          },
+          {
+            "sentence": "Let's meet ...... for coffee on Saturday morning if you're free.",
+            "answer": "up"
+          },
+          {
+            "sentence": "I didn't take ...... my new flatmate straight away, but over time we became firm friends.",
+            "answer": "to"
+          },
+          {
+            "sentence": "The charity event should bring lots of people ...... and give them a chance to connect.",
+            "answer": "together"
+          },
+          {
+            "sentence": "Working under pressure really brought ...... qualities in Felix that none of us had noticed before.",
+            "answer": "out"
+          },
+          {
+            "sentence": "I've been meaning to ask Rosa ...... for weeks but I keep losing my nerve.",
+            "answer": "out"
+          },
+          {
+            "sentence": "The argument cancelled ...... all the goodwill we had built up over the previous month.",
+            "answer": "out"
+          }
         ]
       },
       "G": {
         "title": "Complete using a phrasal verb with a word from box A in the right form and a word from box B.",
         "instructions": "Complete using a phrasal verb with a word from box A in the right form and a word from box B.",
-        "wordsA": ["answer", "bump", "crowd", "go", "open", "pick", "sound", "take"],
-        "wordsB": ["after", "around", "back", "into", "on", "out", "together", "up"],
+        "wordsA": [
+          "answer",
+          "bump",
+          "crowd",
+          "go",
+          "open",
+          "pick",
+          "sound",
+          "take"
+        ],
+        "wordsB": [
+          "after",
+          "around",
+          "back",
+          "into",
+          "on",
+          "out",
+          "together",
+          "up"
+        ],
         "questions": [
-          { "sentence": "Guess who I ...... in town. Our old physics teacher, Mr Watson.", "answer": "bumped into" },
-          { "sentence": "After I got to know Ben a bit better, he started to ...... about his feelings.", "answer": "open up" },
-          { "sentence": "The jeans and the top are both fine on their own, but they don't really ...... .", "answer": "go together" },
-          { "sentence": "Don't ...... the other children in your class just because you're bigger than them.", "answer": "pick on" },
-          { "sentence": "I wish you would just do as you're told and not ...... every time I ask you to do something.", "answer": "answer back" },
-          { "sentence": "You should ...... your parents ...... and see what they think of your plan.", "answer": "sound out" },
-          { "sentence": "When the woman fainted in the street, everyone ...... her but no one seemed to know what to do.", "answer": "crowded around" },
-          { "sentence": "Michael really ...... his grandfather, doesn't he? They've both got the same red hair.", "answer": "takes after" }
+          {
+            "sentence": "You'll never guess who I ...... at the supermarket yesterday – our old geography teacher, Ms Collins.",
+            "answer": "bumped into"
+          },
+          {
+            "sentence": "It took a while, but once Paul felt comfortable, he started to ...... about what had been troubling him.",
+            "answer": "open up"
+          },
+          {
+            "sentence": "The colours in the living room are both attractive individually, but they don't really ...... .",
+            "answer": "go together"
+          },
+          {
+            "sentence": "It's unfair to ...... younger children just because you can get away with it.",
+            "answer": "pick on"
+          },
+          {
+            "sentence": "Please don't ...... every time I suggest a small change to the schedule.",
+            "answer": "answer back"
+          },
+          {
+            "sentence": "Before presenting your proposal to the committee, you should ...... your manager ...... first.",
+            "answer": "sound out"
+          },
+          {
+            "sentence": "As soon as the actor stepped outside the theatre, fans ...... him, eager for autographs.",
+            "answer": "crowded around"
+          },
+          {
+            "sentence": "People say Clara really ...... her grandmother – the same sharp humour and bright blue eyes.",
+            "answer": "takes after"
+          }
         ]
       },
       "H": {
         "title": "Complete the sentences using the words in the box in the correct form.",
         "instructions": "Complete the sentences using the words in the box in the correct form.",
-        "words": ["call", "fight", "fire", "get", "hit", "pay", "talk", "write"],
+        "words": [
+          "call",
+          "fight",
+          "fire",
+          "get",
+          "hit",
+          "pay",
+          "talk",
+          "write"
+        ],
         "questions": [
-          { "sentence": "I'm not aggressive, but if someone attacks me, then I'll ……………………. back.", "answer": "fight" },
-          { "sentence": "The Prime Minister ………………………… back at his critics and accused them of being biased.", "answer": "hit" },
-          { "sentence": "Don't be surprised if you get into trouble for …………………… back to the teacher.", "answer": "talking" },
-          { "sentence": "The robber shot at the police, who ……………………….. back.", "answer": "fired" },
-          { "sentence": "Nigel rang and he wants you to ………………………. back as soon as you can.", "answer": "call" },
-          { "sentence": "Read the e-mail from Carter Brothers and ……………………… back to them, explaining where their order is.", "answer": "write" },
-          { "sentence": "Lend me enough money for dinner and I'll ………………………….. you back next week.", "answer": "pay" },
-          { "sentence": "I've got a good plan to …………………………… back at Charlotte for all the trouble she's caused me.", "answer": "get" }
+          {
+            "sentence": "I try to avoid arguments, but if someone is rude to me, I'm not afraid to ……………………. back.",
+            "answer": "fight"
+          },
+          {
+            "sentence": "The minister ………………………… back at journalists who questioned her record.",
+            "answer": "hit"
+          },
+          {
+            "sentence": "If you keep ……………………… back to the referee, you'll end up being sent off.",
+            "answer": "talking"
+          },
+          {
+            "sentence": "The soldiers came under attack but quickly ……………………….. back and held their position.",
+            "answer": "fired"
+          },
+          {
+            "sentence": "Your sister left a message and asked you to ………………………. back when you have a moment.",
+            "answer": "call"
+          },
+          {
+            "sentence": "Please ……………………… back to the supplier and confirm whether we can change the delivery date.",
+            "answer": "write"
+          },
+          {
+            "sentence": "Thanks for covering my share of the bill. I'll ……………………………. you back on Friday.",
+            "answer": "pay"
+          },
+          {
+            "sentence": "I'm trying to think of a way to ………………………… back at Daniel for playing that embarrassing prank on me.",
+            "answer": "get"
+          }
         ]
       },
       "I": {
         "title": "One word in each sentence is incorrect. Underline the incorrect word and write the correct word on the line.",
         "instructions": "One word in each sentence is incorrect. Underline the incorrect word and write the correct word on the line.",
         "questions": [
-          { "sentence": "We didn't share the same father tongue, but we managed to communicate in English.", "answer": "mother" },
-          { "sentence": "When my brother got married, my sister-in-law very quickly became one from the family.", "answer": "of" },
-          { "sentence": "I sometimes find that born speakers of English speak a bit too fast for me.", "answer": "native" },
-          { "sentence": "We need to get something for Mum and Dad's marriage anniversary next week.", "answer": "wedding" },
-          { "sentence": "Since tomorrow's a country holiday, I thought we might drive up into the mountains.", "answer": "national" },
-          { "sentence": "I got an e-mail yesterday from a far relative who's researching our family tree.", "answer": "distant" },
-          { "sentence": "This maths problem should be kid's play to someone with as much talent as you.", "answer": "child's" },
-          { "sentence": "She's not my biological aunt, but she's my aunt with marriage.", "answer": "by" },
-          { "sentence": "Following the train crash, people concerned about their liked ones were given a special number to call.", "answer": "loved" },
-          { "sentence": "The problem of child misuse is much bigger than you might think.", "answer": "abuse" },
-          { "sentence": "It took me a long time to do friends with Justine, but it was worth it in the end.", "answer": "make" },
-          { "sentence": "It's only mankind nature to want to settle down, get married and start a family.", "answer": "human" }
+          {
+            "sentence": "Although she had lived in France for years, her father tongue was still Polish.",
+            "answer": "mother"
+          },
+          {
+            "sentence": "My cousin married last spring, and her husband has quickly become one from the family.",
+            "answer": "of"
+          },
+          {
+            "sentence": "She speaks English beautifully, but she admits she'll never sound like a born speaker.",
+            "answer": "native"
+          },
+          {
+            "sentence": "My parents are celebrating their marriage anniversary with a dinner party next Saturday.",
+            "answer": "wedding"
+          },
+          {
+            "sentence": "The stadium was closed during the country holiday, but there was plenty to do in the city centre.",
+            "answer": "national"
+          },
+          {
+            "sentence": "After some research, she discovered she was related to a far cousin she had never met.",
+            "answer": "distant"
+          },
+          {
+            "sentence": "Learning to tie a bow tie should be kid's play for someone who spends so much time getting dressed up.",
+            "answer": "child's"
+          },
+          {
+            "sentence": "He introduced her as his aunt with marriage, since she had married into the family rather than being born into it.",
+            "answer": "by"
+          },
+          {
+            "sentence": "After the earthquake, families anxious about their liked ones were directed to a dedicated helpline.",
+            "answer": "loved"
+          },
+          {
+            "sentence": "The charity campaign highlighted how widespread child misuse remains in many parts of the world.",
+            "answer": "abuse"
+          },
+          {
+            "sentence": "It took several months to do friends with my new neighbours, but they turned out to be lovely people.",
+            "answer": "make"
+          },
+          {
+            "sentence": "It's only mankind nature to feel jealous from time to time – no one is entirely immune.",
+            "answer": "human"
+          }
         ]
       },
       "J": {
         "title": "Write one word in each gap.",
         "instructions": "Write one word in each gap.",
-        "passage": "The usual western idea of marriage is that you meet someone, (1) ...... in love, and then decide to marry each other. For those born (2) ...... some cultures, however, marriage may have quite a different meaning. In an arranged marriage, it is the parents who choose the partner and it's possible (3) ...... the young person getting married not to meet their future bride or groom (4) ...... person until the day of the wedding. Indeed, a young person might be promised to another (5) ...... a child, many years before the wedding day.\n\nAmongst communities that practise arranged marriage, it's not unusual for a generation (6) ...... to open up between parents and children, with many young people refusing to accept an arranged marriage. However, if the partners treat each other (7) ...... respect and recognise that they are both (8) ...... equal value, there doesn't seem to be any real barrier to having a happy married life.",
+        "passage": "In most Western societies, the idea of marriage is rooted in romantic choice: two individuals (1) ...... in love, decide to commit, and plan their future together. Yet (2) ...... many parts of the world, the institution of marriage carries very different expectations. In cultures where arranged marriages are practised, families play a central role in selecting a suitable partner, and it is entirely possible (3) ...... the prospective couple to have little or no prior contact before the ceremony. Some young people are promised to a future partner (4) ...... childhood, long before they are old enough to understand what that commitment means.\n\nIn communities where this tradition is still followed, it is not unusual (5) ...... a generation gap to develop, with younger members challenging the expectations set (6) ...... their elders. Nevertheless, research suggests that, provided both partners treat each other (7) ...... dignity and genuine respect and accept that their union is (8) ...... equal importance to both families, arranged marriages can be just as fulfilling as those based on romantic love.",
         "answers": [
           "1 fall",
           "2 into",
           "3 for",
           "4 in",
-          "5 as",
-          "6 gap",
+          "5 for",
+          "6 by",
           "7 with",
           "8 of"
         ]
@@ -465,52 +1296,160 @@
         "title": "For each question, write one word which can be used in all three sentences.",
         "instructions": "For each question, write one word which can be used in all three sentences.",
         "questions": [
-          { "sentences": ["Oh, tell Carrie that I send my ………………… when you see her.", "When my mum and dad met, my mum says it was …………………………. at first sight.", "My ………………………… for travelling comes from the fact that we moved around a lot when I was young."], "answer": "love" },
-          { "sentences": ["One of the reasons why Damian and I get on so well is that we have a lot in …………………………..", "The architect told us that it was …………………………… practice to start building before getting all the permits.", "There are some words which are …………………………… to a number of the languages spoken in the area."], "answer": "common" },
-          { "sentences": ["I don't really see myself settling down any time in the …………………………… future.", "People came from …………………………… and far to attend the celebrity wedding of the year.", "We just about managed to get to the airport on time, but it was a …………………………… thing."], "answer": "near" },
-          { "sentences": ["The two countries are similar with …………………………… to the divorce rates.", "Of course we argue, but I don't think we're any different from other couples in that …………………………… .", "Todd lost a lot of people's …………………………… when they saw how he treats his wife."], "answer": "respect" },
-          { "sentences": ["One of the important …………………………… of the law is that it recognises the rights of unmarried partners.", "In order to find the woman's missing husband, the police asked if he had any distinguishing …………………………… .", "I was quite impressed by the safety …………………………… on Bill's new car."], "answer": "features" },
-          { "sentences": ["We …………………………… our son while he was at university so he didn't have to work while he was studying.", "My father …………………………… Chelsea, and so did his father before him, so it was only natural that I would too.", "When I saw the results of the survey, I was quite surprised by the number of people who …………………………… the death penalty."], "answer": "supported" }
+          {
+            "sentences": [
+              "Please pass on my ………………… to Harriet when you next speak to her.",
+              "According to Gran, it was ………………………… at first sight the moment Grandpa walked into the room.",
+              "My ………………………… of cooking developed from watching my father prepare elaborate Sunday meals."
+            ],
+            "answer": "love"
+          },
+          {
+            "sentences": [
+              "The thing that surprised me most about Clara and her brother is just how much they have in …………………………..",
+              "It was ………………………… practice at the time to send a handwritten note after a job interview.",
+              "The basic grammar rules are ………………………… to several of the languages spoken in the region."
+            ],
+            "answer": "common"
+          },
+          {
+            "sentences": [
+              "I doubt we'll resolve the issue in the …………………………… future, but progress is being made.",
+              "Supporters travelled from …………………………… and far to watch the championship final.",
+              "We only just made the last train – it really was a …………………………… thing."
+            ],
+            "answer": "near"
+          },
+          {
+            "sentences": [
+              "The two schools differ in many ways with …………………………… to how they handle student wellbeing.",
+              "I know we disagree, but in every other …………………………… we get along just fine.",
+              "The politician lost a great deal of public …………………………… after the scandal broke."
+            ],
+            "answer": "respect"
+          },
+          {
+            "sentences": [
+              "One of the most important …………………………… of the new legislation is the protection it offers to informal carers.",
+              "The detective noticed several distinguishing …………………………… that the suspect had mentioned earlier.",
+              "I was impressed by the number of safety …………………………… included in the updated design."
+            ],
+            "answer": "features"
+          },
+          {
+            "sentences": [
+              "Her parents …………………………… her financially throughout her entire postgraduate degree.",
+              "My grandfather …………………………… the same football club his whole life, as did his father before him.",
+              "A surprising number of respondents said they …………………………… stricter penalties for online harassment."
+            ],
+            "answer": "supported"
+          }
         ]
       },
       "L": {
         "title": "Write one word in each gap.",
         "instructions": "Write one word in each gap.",
         "questions": [
-          { "sentence": "Vivian and I usually agree, but we're not always on the ………………… wavelength.", "answer": "same" },
-          { "sentence": "I don't know Pauline that well, but I'm on good ………………… with her sister.", "answer": "terms" },
-          { "sentence": "I know I made a mistake, but I'm only ………………… , after all.", "answer": "human" },
-          { "sentence": "My brother and Jack got on like a ………………… on fire when they first met.", "answer": "house" },
-          { "sentence": "It's a shame to fall out so badly with your own ………………… and blood.", "answer": "flesh" },
-          { "sentence": "Life's very easy for you. You were born with a ………………… spoon in your mouth.", "answer": "silver" },
-          { "sentence": "Jill and Emily are so alike. They're like two ………………… in a pod.", "answer": "peas" },
-          { "sentence": "I don't think we're ever going to ………………… eye to eye on this issue.", "answer": "see" },
-          { "sentence": "When something like that happens, it certainly ………………… your own problems in perspective.", "answer": "puts" },
-          { "sentence": "I'm avoiding Mr Hunter because I think I'm in his bad ………………… .", "answer": "books" }
+          {
+            "sentence": "Fortunately, my new manager and I seem to be on the ………………… wavelength, which makes working together very easy.",
+            "answer": "same"
+          },
+          {
+            "sentence": "I've only met her partner once or twice, but we're on good ………………… with each other.",
+            "answer": "terms"
+          },
+          {
+            "sentence": "Don't be too hard on yourself – you're only ………………… , and everyone makes mistakes.",
+            "answer": "human"
+          },
+          {
+            "sentence": "The two new team members hit it off immediately and got on like a ………………… on fire from day one.",
+            "answer": "house"
+          },
+          {
+            "sentence": "Whatever our differences, I could never turn against my own ………………… and blood.",
+            "answer": "flesh"
+          },
+          {
+            "sentence": "He's never had to worry about money – he was born with a ………………… spoon in his mouth.",
+            "answer": "silver"
+          },
+          {
+            "sentence": "Those two are inseparable. They're like two ………………… in a pod.",
+            "answer": "peas"
+          },
+          {
+            "sentence": "I'm afraid we'll never ………………… eye to eye on the question of how to raise the children.",
+            "answer": "see"
+          },
+          {
+            "sentence": "Hearing about what others have to deal with really ………………… your own difficulties in perspective.",
+            "answer": "puts"
+          },
+          {
+            "sentence": "I think I upset the supervisor yesterday, so I suspect I'm in her bad ………………… right now.",
+            "answer": "books"
+          }
         ]
       },
       "M": {
         "title": "Complete the sentences by changing the form of the word in capitals.",
         "instructions": "Complete the sentences by changing the form of the word in capitals.",
         "questions": [
-          { "sentence": "Theo and his brother are always together. They're completely ...... . **SEPARATE**", "answer": "inseparable" },
-          { "sentence": "It's very ...... of you to notice that Sean's not his usual self. **PERCEIVE**", "answer": "perceptive" },
-          { "sentence": "There was a long legal battle over the ...... , but in the end I did get quite a bit of money. **INHERIT**", "answer": "inheritance" },
-          { "sentence": "I think saying that all black people are lazy is a very ...... remark, to be honest. **RACE**", "answer": "racist" },
-          { "sentence": "Despite his ...... lack of concern, I think Gabriel really does care what other people think of him. **APPEAR**", "answer": "apparent" },
-          { "sentence": "Don't feel that you're being ...... to Sharon if you tell me what's bothering you about her. **LOYAL**", "answer": "disloyal" },
-          { "sentence": "James got into trouble for ...... a police officer. **PERSON**", "answer": "impersonating" },
-          { "sentence": "If you have any complaints about a neighbour, take them to your residents' .................... , where they should be able to advise you further. **ASSOCIATE**", "answer": "association" },
-          { "sentence": "Marvin used to be quite wild, but he's ............................... calm these days. **RELATE**", "answer": "relatively" },
-          { "sentence": "According to Lionel, losing his job and then getting divorced were .................................. , but I think there's probably a link. **CONNECT**", "answer": "unconnected" },
-          { "sentence": "Young animals very quickly form a strong ........................................... to their mothers. **ATTACH**", "answer": "attachment" },
-          { "sentence": "What I don't like about school uniform is that it completely destroys all ..................................... . **INDIVIDUAL**", "answer": "individuality" }
+          {
+            "sentence": "The twins spend every waking moment together. They seem completely ...... . **SEPARATE**",
+            "answer": "inseparable"
+          },
+          {
+            "sentence": "It was very ...... of you to realise something was wrong just from the look on her face. **PERCEIVE**",
+            "answer": "perceptive"
+          },
+          {
+            "sentence": "The legal dispute over the ...... dragged on for three years before a settlement was finally reached. **INHERIT**",
+            "answer": "inheritance"
+          },
+          {
+            "sentence": "Referring to a whole community by a single stereotype is, at best, a ...... generalisation. **RACE**",
+            "answer": "racist"
+          },
+          {
+            "sentence": "Despite his ...... indifference, most of his colleagues believed he was deeply affected by the criticism. **APPEAR**",
+            "answer": "apparent"
+          },
+          {
+            "sentence": "Sharing confidential information with a competitor would be deeply ...... to the company. **LOYAL**",
+            "answer": "disloyal"
+          },
+          {
+            "sentence": "The actor was arrested for ...... a government official in order to gain access to restricted areas. **PERSON**",
+            "answer": "impersonating"
+          },
+          {
+            "sentence": "Disputes between neighbours are best resolved through the residents' .................... , who can mediate without things escalating. **ASSOCIATE**",
+            "answer": "association"
+          },
+          {
+            "sentence": "The situation was complex at first, but things have become ............................. straightforward in recent weeks. **RELATE**",
+            "answer": "relatively"
+          },
+          {
+            "sentence": "The two incidents may appear to be .................................. , but investigators believe they are part of a wider pattern. **CONNECT**",
+            "answer": "unconnected"
+          },
+          {
+            "sentence": "Research shows that puppies form the strongest emotional ........................................... to their owners during the first twelve weeks of life. **ATTACH**",
+            "answer": "attachment"
+          },
+          {
+            "sentence": "Forcing all students to wear the same outfit tends to suppress ..................................... and creative self-expression. **INDIVIDUAL**",
+            "answer": "individuality"
+          }
         ]
       },
       "N": {
         "title": "Use the word given in capitals to form a word that fits in the space.",
         "instructions": "Use the word given in capitals to form a word that fits in the space.",
-        "passage": "Very little in our lives prepares us for (1) ...... (PARENT). Suddenly, your life is turned upside down and all sorts of (2) ...... (FAMILIAR) demands are placed on you. How we ourselves were treated by our parents in our (3) ...... (YOUNG) can have an (4) ...... (APPRECIATE) effect on who we become as parents. Our own (5) ...... (OBSERVE) of how our parents responded to us creates a model of parenting that is (6) ...... (INTIMATE) connected to the kind of parents we become. It's not uncommon for people to show the same child-rearing (7) ...... (CHARACTER) as their own parents. If your father was an (8) ...... (SYMPATHY) figure who always seemed too busy to care about how you felt, then there's a chance you will repeat the same behaviour. If your mother was utterly (9) ...... (SELF) in her devotion to her children, there's a chance that you too will be equally giving and do all that is (10) ...... (HUMAN) possible for your offspring.",
+        "passage": "Nothing in modern life truly prepares us for the experience of (1) ...... (PARENT). The moment a child arrives, you are confronted with a host of (2) ...... (FAMILIAR) responsibilities and decisions that can seem overwhelming. The way we were raised in our (3) ...... (YOUNG) turns out to have an (4) ...... (APPRECIATE) influence on the kind of parents we go on to become. Our careful (5) ...... (OBSERVE) of our own parents' behaviour creates a template that is (6) ...... (INTIMATE) tied to how we respond to our own children. It is quite common for people to display the same parenting (7) ...... (CHARACTER) as their mothers and fathers. Those who grew up with an (8) ...... (SYMPATHY) parent – one who seemed remote or distracted – may unconsciously repeat those same patterns. Conversely, those raised by a parent who was utterly (9) ...... (SELF) in their care are more likely to show the same devotion, doing everything that is (10) ...... (HUMAN) possible for their own children.",
         "answers": [
           "1 parenthood",
           "2 unfamiliar",
@@ -528,24 +1467,99 @@
         "title": "The prefix re-, as in reappear, can go before verbs, nouns and adjectives to mean 'again'.",
         "instructions": "Tick the words below which can form words using re-.",
         "questions": [
-          "arrange", "build", "consider", "count", "create", "cycle", "develop", "dial", "do", "fill", "fresh", "heat", "join", "new", "pass", "print", "produce", "say", "think", "train", "trial", "use", "worry", "write"
+          "arrange",
+          "build",
+          "consider",
+          "count",
+          "create",
+          "cycle",
+          "develop",
+          "dial",
+          "do",
+          "fill",
+          "fresh",
+          "heat",
+          "join",
+          "new",
+          "pass",
+          "print",
+          "produce",
+          "say",
+          "think",
+          "train",
+          "trial",
+          "use",
+          "worry",
+          "write"
         ],
-        "answer": ["arrange", "build", "consider", "count", "create", "cycle", "develop", "dial", "do", "fill", "heat", "join", "pass", "print", "produce", "say", "think", "train", "trial", "use", "write"]
+        "answer": [
+          "arrange",
+          "build",
+          "consider",
+          "count",
+          "create",
+          "cycle",
+          "develop",
+          "dial",
+          "do",
+          "fill",
+          "heat",
+          "join",
+          "pass",
+          "print",
+          "produce",
+          "say",
+          "think",
+          "train",
+          "trial",
+          "use",
+          "write"
+        ]
       },
       "P": {
         "title": "Complete the sentences using words formed in exercise O in the correct form.",
         "instructions": "Complete the sentences using words formed in exercise O in the correct form.",
         "questions": [
-          { "sentence": "I'm beginning to ……………………………………… my plans for the future.", "answer": "reconsider" },
-          { "sentence": "Why don't you ……………………………………… the soup in the microwave?", "answer": "reheat" },
-          { "sentence": "Don't forget to ……………………………………… your passport, or you won't be able to come on holiday!", "answer": "renew" },
-          { "sentence": "You've spilt coffee on my notebook! Now I'm going to have to ……………………………………… my whole essay!", "answer": "rewrite" },
-          { "sentence": "When my mum lost her job, she decided to ……………………………………… as an engineer.", "answer": "retrain" },
-          { "sentence": "Empty that bit of Coke down the sink and then you can ……………………………………… the bottle with water.", "answer": "refill" },
-          { "sentence": "The election result was so close that they've decided to ……………………………………… the votes.", "answer": "recount" },
-          { "sentence": "I left my friends in Paris while I explored the area and then I ……………………………………… them a few days later.", "answer": "rejoined" },
-          { "sentence": "Scientists are hoping to ……………………………………… the conditions that existed on Earth millions of years ago.", "answer": "recreate" },
-          { "sentence": "You'll easily pass the exam if you can ……………………………………… the very good performance you put in during the mock exams.", "answer": "reproduce" }
+          {
+            "sentence": "After the disappointing results, the board decided to ……………………………………… its strategy for the coming year.",
+            "answer": "reconsider"
+          },
+          {
+            "sentence": "Would you mind ……………………………………… the leftover pasta? I'd love another portion.",
+            "answer": "reheating"
+          },
+          {
+            "sentence": "Don't forget to ……………………………………… your library card before it expires next month.",
+            "answer": "renew"
+          },
+          {
+            "sentence": "The flooding destroyed the archive, and researchers had to ……………………………………… years of documentation from scratch.",
+            "answer": "rewrite"
+          },
+          {
+            "sentence": "After being made redundant, she decided to ……………………………………… as a graphic designer.",
+            "answer": "retrain"
+          },
+          {
+            "sentence": "Once you've finished your drink, you can ……………………………………… the glass from the dispenser on the counter.",
+            "answer": "refill"
+          },
+          {
+            "sentence": "The contest was so close that the judges agreed to ……………………………………… the ballots by hand.",
+            "answer": "recount"
+          },
+          {
+            "sentence": "We spent a wonderful week apart, and when the holiday ended I was overjoyed to …………………………… my family at the airport.",
+            "answer": "rejoin"
+          },
+          {
+            "sentence": "Using advanced technology, scientists hope to ……………………………………… the atmospheric conditions present during the early stages of Earth's formation.",
+            "answer": "recreate"
+          },
+          {
+            "sentence": "The experiment is designed to see whether the original findings can be ……………………………………… under different laboratory conditions.",
+            "answer": "reproduced"
+          }
         ]
       }
     }
