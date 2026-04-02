@@ -587,12 +587,12 @@
           '<div class="translate-lang-bar">' +
             '<span class="translate-from-label"><i class="fas fa-flag"></i> English</span>' +
             '<i class="fas fa-arrow-right translate-arrow-lang"></i>' +
-            '<select class="translate-lang-select" onchange="Tools.setTranslateLang(this.value)">' +
+            '<select class="translate-lang-select" aria-label="Target language" onchange="Tools.setTranslateLang(this.value)">' +
               langOptions +
             '</select>' +
           '</div>' +
           '<div class="translate-manual-area">' +
-            '<textarea class="translate-manual-input" id="translate-manual-input" placeholder="Type text to translate..." rows="3" maxlength="500"></textarea>' +
+            '<textarea class="translate-manual-input" id="translate-manual-input" aria-label="Text to translate" placeholder="Type text to translate..." rows="3" maxlength="500"></textarea>' +
             '<button class="translate-manual-btn" onclick="Tools.translateFromInput()"><i class="fas fa-language"></i> Translate</button>' +
           '</div>' +
           '<div class="translate-columns" id="translate-columns" style="display:none">' +
@@ -622,14 +622,14 @@
 
     setTranslateLang: function(code) {
       _translateTargetLang = code;
-      try { localStorage.setItem('cambridge_translate_lang', code); } catch(e) {}
+      try { localStorage.setItem('cambridge_translate_lang', code); } catch(e) { console.warn('Could not persist translate language:', e); }
     },
 
     translateFromInput: function() {
       var input = document.getElementById('translate-manual-input');
       if (!input) return;
       var text = input.value.trim();
-      if (text.length < 1) return;
+      if (!text) return;
       this.traducirTexto(text);
     },
 
