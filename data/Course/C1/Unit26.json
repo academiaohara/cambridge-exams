@@ -7,428 +7,1598 @@
   "sections": {
     "topic_vocabulary": {
       "preference": [
-        { "word": "addiction", "part_of_speech": "n" },
-        { "word": "adore", "part_of_speech": "v" },
-        { "word": "anticipation", "part_of_speech": "n" },
-        { "word": "appeal", "part_of_speech": "v, n" },
-        { "word": "arbitrary", "part_of_speech": "adj" },
-        { "word": "aspiration", "part_of_speech": "n" },
-        { "word": "bear", "part_of_speech": "v" },
-        { "word": "compulsory", "part_of_speech": "adj" },
-        { "word": "content", "part_of_speech": "adj" },
-        { "word": "craving", "part_of_speech": "n" },
-        { "word": "decline", "part_of_speech": "v" },
-        { "word": "dedicated", "part_of_speech": "adj" },
-        { "word": "delight", "part_of_speech": "v" },
-        { "word": "desire", "part_of_speech": "v, n" },
-        { "word": "devote", "part_of_speech": "v" },
-        { "word": "differentiate", "part_of_speech": "v" },
-        { "word": "envy", "part_of_speech": "v, n" },
-        { "word": "fancy", "part_of_speech": "v" },
-        { "word": "fascination", "part_of_speech": "n" },
-        { "word": "favour", "part_of_speech": "v, n" },
-        { "word": "greedy", "part_of_speech": "adj" },
-        { "word": "impulse", "part_of_speech": "n" },
-        { "word": "inclined", "part_of_speech": "adj" },
-        { "word": "liking", "part_of_speech": "n" },
-        { "word": "mediocre", "part_of_speech": "adj" },
-        { "word": "motive", "part_of_speech": "n" },
-        { "word": "mundane", "part_of_speech": "adj" },
-        { "word": "obsessed", "part_of_speech": "adj" },
-        { "word": "optional", "part_of_speech": "adj" },
-        { "word": "passion", "part_of_speech": "n" },
-        { "word": "praise", "part_of_speech": "v, n" },
-        { "word": "resolve", "part_of_speech": "v" },
-        { "word": "sacrifice", "part_of_speech": "v, n" },
-        { "word": "strive", "part_of_speech": "v" },
-        { "word": "taste", "part_of_speech": "n" },
-        { "word": "tempting", "part_of_speech": "adj" },
-        { "word": "urge", "part_of_speech": "v, n" },
-        { "word": "welcome", "part_of_speech": "v, adj" },
-        { "word": "worthwhile", "part_of_speech": "adj" },
-        { "word": "yearn", "part_of_speech": "v" },
-        { "word": "youthful", "part_of_speech": "adj" },
-        { "word": "youth", "part_of_speech": "n" }
+        {
+          "word": "addiction",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "adore",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "anticipation",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "appeal",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "arbitrary",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "aspiration",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "bear",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "compulsory",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "content",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "craving",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "decline",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "dedicated",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "delight",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "desire",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "devote",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "differentiate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "envy",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "fancy",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "fascination",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "favour",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "greedy",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "impulse",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "inclined",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "liking",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "mediocre",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "motive",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "mundane",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "obsessed",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "optional",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "passion",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "praise",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "resolve",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "sacrifice",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "strive",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "taste",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "tempting",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "urge",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "welcome",
+          "part_of_speech": "v, adj"
+        },
+        {
+          "word": "worthwhile",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "yearn",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "youthful",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "youth",
+          "part_of_speech": "n"
+        }
       ],
       "leisure_activities": [
-        { "word": "absorbing", "part_of_speech": "adj" },
-        { "word": "casual", "part_of_speech": "adj" },
-        { "word": "exhilarating", "part_of_speech": "adj" },
-        { "word": "fatigue", "part_of_speech": "n" },
-        { "word": "idle", "part_of_speech": "adj" },
-        { "word": "indulge", "part_of_speech": "v" },
-        { "word": "lifestyle", "part_of_speech": "n" },
-        { "word": "leave", "part_of_speech": "n" },
-        { "word": "outing", "part_of_speech": "n" },
-        { "word": "pastime", "part_of_speech": "n" },
-        { "word": "pursue", "part_of_speech": "v" },
-        { "word": "recreation", "part_of_speech": "n" },
-        { "word": "respite", "part_of_speech": "n" },
-        { "word": "sedentary", "part_of_speech": "adj" },
-        { "word": "socialise", "part_of_speech": "v" },
-        { "word": "solitude", "part_of_speech": "n" },
-        { "word": "tedious", "part_of_speech": "adj" },
-        { "word": "trivial", "part_of_speech": "adj" },
-        { "word": "unwind", "part_of_speech": "v" },
-        { "word": "venue", "part_of_speech": "n" }
+        {
+          "word": "absorbing",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "casual",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "exhilarating",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "fatigue",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "idle",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "indulge",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "lifestyle",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "leave",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "outing",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "pastime",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "pursue",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "recreation",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "respite",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "sedentary",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "socialise",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "solitude",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "tedious",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "trivial",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "unwind",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "venue",
+          "part_of_speech": "n"
+        }
       ]
     },
     "phrasal_verbs": [
-      { "verb": "centre around", "meaning": "if something centres around someone or something, or you centre something around them, they are its main subject of attention or interest" },
-      { "verb": "get into", "meaning": "start enjoying something or become enthusiastic about it; if a train, plane, etc gets into a place, it arrives there; become involved in a bad situation" },
-      { "verb": "go in for", "meaning": "enjoy a particular thing or activity; choose something as a subject of study or as your career" },
-      { "verb": "go off", "meaning": "stop liking someone or something; explode or be fired; leave a place, especially for a particular purpose; if food or drink goes off, it is no longer fresh" },
-      { "verb": "grow on", "meaning": "if something or someone grows on you, you start to like them more" },
-      { "verb": "hang out", "meaning": "spend time in a particular place or with particular people; lean out of a window so that the top part of your body is outside" },
-      { "verb": "keep up", "meaning": "continue to do something; move at the same speed as someone or something" },
-      { "verb": "laze around", "meaning": "relax and enjoy yourself, doing no work" },
-      { "verb": "mess about/around", "meaning": "spend time doing things in a relaxed way; behave in a silly way" },
-      { "verb": "pick up", "meaning": "learn a new skill or start a habit without intending to; go and meet someone or something that you have arranged to take somewhere in a vehicle" },
-      { "verb": "put in", "meaning": "spend a particular amount of time doing something, or make a particular amount of effort in order to do something" },
-      { "verb": "seek out", "meaning": "find someone or something by looking for them in a determined way" },
-      { "verb": "take in", "meaning": "include something" },
-      { "verb": "take off", "meaning": "have a particular amount of time away from work; become successful or popular very fast" },
-      { "verb": "take out", "meaning": "take someone to a place like a cinema or a restaurant and usually pay for them" },
-      { "verb": "warm up", "meaning": "prepare for a sport or activity by doing gentle exercises or practising just before it starts" }
+      {
+        "verb": "centre around",
+        "meaning": "if something centres around someone or something, or you centre something around them, they are its main subject of attention or interest"
+      },
+      {
+        "verb": "get into",
+        "meaning": "start enjoying something or become enthusiastic about it; if a train, plane, etc gets into a place, it arrives there; become involved in a bad situation"
+      },
+      {
+        "verb": "go in for",
+        "meaning": "enjoy a particular thing or activity; choose something as a subject of study or as your career"
+      },
+      {
+        "verb": "go off",
+        "meaning": "stop liking someone or something; explode or be fired; leave a place, especially for a particular purpose; if food or drink goes off, it is no longer fresh"
+      },
+      {
+        "verb": "grow on",
+        "meaning": "if something or someone grows on you, you start to like them more"
+      },
+      {
+        "verb": "hang out",
+        "meaning": "spend time in a particular place or with particular people; lean out of a window so that the top part of your body is outside"
+      },
+      {
+        "verb": "keep up",
+        "meaning": "continue to do something; move at the same speed as someone or something"
+      },
+      {
+        "verb": "laze around",
+        "meaning": "relax and enjoy yourself, doing no work"
+      },
+      {
+        "verb": "mess about/around",
+        "meaning": "spend time doing things in a relaxed way; behave in a silly way"
+      },
+      {
+        "verb": "pick up",
+        "meaning": "learn a new skill or start a habit without intending to; go and meet someone or something that you have arranged to take somewhere in a vehicle"
+      },
+      {
+        "verb": "put in",
+        "meaning": "spend a particular amount of time doing something, or make a particular amount of effort in order to do something"
+      },
+      {
+        "verb": "seek out",
+        "meaning": "find someone or something by looking for them in a determined way"
+      },
+      {
+        "verb": "take in",
+        "meaning": "include something"
+      },
+      {
+        "verb": "take off",
+        "meaning": "have a particular amount of time away from work; become successful or popular very fast"
+      },
+      {
+        "verb": "take out",
+        "meaning": "take someone to a place like a cinema or a restaurant and usually pay for them"
+      },
+      {
+        "verb": "warm up",
+        "meaning": "prepare for a sport or activity by doing gentle exercises or practising just before it starts"
+      }
     ],
     "collocations_patterns": [
       {
         "headword": "choice",
-        "collocations": ["make a choice", "exercise choice", "have no choice", "choice between", "choice of", "personal/parental/consumer choice", "informed choice", "wide choice", "obvious choice"]
+        "collocations": [
+          "make a choice",
+          "exercise choice",
+          "have no choice",
+          "choice between",
+          "choice of",
+          "personal/parental/consumer choice",
+          "informed choice",
+          "wide choice",
+          "obvious choice"
+        ]
       },
       {
         "headword": "choose",
-        "collocations": ["choose from", "choose between", "choose sb/sth as", "choose sb/sth out of", "choose to do", "pick and choose", "nothing/little to choose between"]
+        "collocations": [
+          "choose from",
+          "choose between",
+          "choose sb/sth as",
+          "choose sb/sth out of",
+          "choose to do",
+          "pick and choose",
+          "nothing/little to choose between"
+        ]
       },
       {
         "headword": "decide",
-        "collocations": ["decide to do", "decide against/in favour of", "decide that", "decide between", "decide for yourself", "decide on"]
+        "collocations": [
+          "decide to do",
+          "decide against/in favour of",
+          "decide that",
+          "decide between",
+          "decide for yourself",
+          "decide on"
+        ]
       },
       {
         "headword": "delight",
-        "collocations": ["delight in doing", "take (great) delight in doing", "to sb’s delight", "with/in delight"]
+        "collocations": [
+          "delight in doing",
+          "take (great) delight in doing",
+          "to sb’s delight",
+          "with/in delight"
+        ]
       },
       {
         "headword": "eager",
-        "collocations": ["eager to do", "eager for", "only too eager to do"]
+        "collocations": [
+          "eager to do",
+          "eager for",
+          "only too eager to do"
+        ]
       },
       {
         "headword": "free",
-        "collocations": ["set sb free", "let sb go free", "free sb from", "walk free", "free to do", "free from", "free and easy", "free time"]
+        "collocations": [
+          "set sb free",
+          "let sb go free",
+          "free sb from",
+          "walk free",
+          "free to do",
+          "free from",
+          "free and easy",
+          "free time"
+        ]
       },
       {
         "headword": "impulse",
-        "collocations": ["act on impulse", "do sth on impulse", "control/resist an impulse", "an impulse to do"]
+        "collocations": [
+          "act on impulse",
+          "do sth on impulse",
+          "control/resist an impulse",
+          "an impulse to do"
+        ]
       },
       {
         "headword": "keen",
-        "collocations": ["keen (for sb) to do", "keen on", "keen interest in"]
+        "collocations": [
+          "keen (for sb) to do",
+          "keen on",
+          "keen interest in"
+        ]
       },
       {
         "headword": "leisure",
-        "collocations": ["have the leisure to do", "at your leisure", "leisure centre", "leisure pursuits", "leisure time"]
+        "collocations": [
+          "have the leisure to do",
+          "at your leisure",
+          "leisure centre",
+          "leisure pursuits",
+          "leisure time"
+        ]
       },
       {
         "headword": "like",
-        "collocations": ["like (sb) to do", "like doing", "like it when", "just like", "anything/nothing like", "it’s not like sb to do", "like crazy/mad", "like so", "something like"]
+        "collocations": [
+          "like (sb) to do",
+          "like doing",
+          "like it when",
+          "just like",
+          "anything/nothing like",
+          "it’s not like sb to do",
+          "like crazy/mad",
+          "like so",
+          "something like"
+        ]
       },
       {
         "headword": "need",
-        "collocations": ["need (sb) to do", "need do", "need doing", "meet a need", "have no need of", "in need (of)"]
+        "collocations": [
+          "need (sb) to do",
+          "need do",
+          "need doing",
+          "meet a need",
+          "have no need of",
+          "in need (of)"
+        ]
       },
       {
         "headword": "off",
-        "collocations": ["have / take / be given the day off", "have / take / be given time off", "off work/college", "off sick"]
+        "collocations": [
+          "have / take / be given the day off",
+          "have / take / be given time off",
+          "off work/college",
+          "off sick"
+        ]
       },
       {
         "headword": "opt",
-        "collocations": ["opt for", "opt to do"]
+        "collocations": [
+          "opt for",
+          "opt to do"
+        ]
       },
       {
         "headword": "option",
-        "collocations": ["have no option (but to do)", "consider your options", "the option of doing", "the option to do", "keep/leave your options open"]
+        "collocations": [
+          "have no option (but to do)",
+          "consider your options",
+          "the option of doing",
+          "the option to do",
+          "keep/leave your options open"
+        ]
       },
       {
         "headword": "play",
-        "collocations": ["play against/for", "play at", "play by yourself", "play for time", "play the fool", "play sth by ear", "at play"]
+        "collocations": [
+          "play against/for",
+          "play at",
+          "play by yourself",
+          "play for time",
+          "play the fool",
+          "play sth by ear",
+          "at play"
+        ]
       },
       {
         "headword": "praise",
-        "collocations": ["praise sb for doing", "win/earn/deserve praise", "full of praise for", "in praise of"]
+        "collocations": [
+          "praise sb for doing",
+          "win/earn/deserve praise",
+          "full of praise for",
+          "in praise of"
+        ]
       },
       {
         "headword": "prefer",
-        "collocations": ["prefer sth to", "prefer (sb) to do", "prefer doing", "would prefer (that)", "would prefer it if"]
+        "collocations": [
+          "prefer sth to",
+          "prefer (sb) to do",
+          "prefer doing",
+          "would prefer (that)",
+          "would prefer it if"
+        ]
       },
       {
         "headword": "rest",
-        "collocations": ["rest sth on/against", "rest assured that", "take/have a rest (from)", "get some rest", "come to rest", "at rest"]
+        "collocations": [
+          "rest sth on/against",
+          "rest assured that",
+          "take/have a rest (from)",
+          "get some rest",
+          "come to rest",
+          "at rest"
+        ]
       },
       {
         "headword": "taste",
-        "collocations": ["develop/have a taste for", "in good/bad taste", "sense of taste", "acquired taste"]
+        "collocations": [
+          "develop/have a taste for",
+          "in good/bad taste",
+          "sense of taste",
+          "acquired taste"
+        ]
       },
       {
         "headword": "want",
-        "collocations": ["want (sb) to do", "want sth done", "for want of"]
+        "collocations": [
+          "want (sb) to do",
+          "want sth done",
+          "for want of"
+        ]
       }
     ],
     "idioms": [
-      { "idiom": "at a loose end", "meaning": "with nothing in particular to do" },
-      { "idiom": "couch potato", "meaning": "someone who spends a lot of time sitting at home watching television" },
-      { "idiom": "do sth on a whim", "meaning": "do because of a sudden feeling that you must have or do something" },
-      { "idiom": "have time on your hands", "meaning": "have more time available than you need" },
-      { "idiom": "let your hair down", "meaning": "relax and enjoy yourself because you are in a comfortable environment" },
-      { "idiom": "life and soul of the party", "meaning": "someone who is very lively at social events" },
-      { "idiom": "put your feet up", "meaning": "sit down and relax, especially with your feet raised off the ground" },
-      { "idiom": "recharge your batteries", "meaning": "rest after being very busy, so that you will be ready to start working again" },
-      { "idiom": "set your heart on", "meaning": "decide that you want something very much" },
-      { "idiom": "variety is the spice of life", "meaning": "used for saying that different experiences and situations make life enjoyable or interesting" }
+      {
+        "idiom": "at a loose end",
+        "meaning": "with nothing in particular to do"
+      },
+      {
+        "idiom": "couch potato",
+        "meaning": "someone who spends a lot of time sitting at home watching television"
+      },
+      {
+        "idiom": "do sth on a whim",
+        "meaning": "do because of a sudden feeling that you must have or do something"
+      },
+      {
+        "idiom": "have time on your hands",
+        "meaning": "have more time available than you need"
+      },
+      {
+        "idiom": "let your hair down",
+        "meaning": "relax and enjoy yourself because you are in a comfortable environment"
+      },
+      {
+        "idiom": "life and soul of the party",
+        "meaning": "someone who is very lively at social events"
+      },
+      {
+        "idiom": "put your feet up",
+        "meaning": "sit down and relax, especially with your feet raised off the ground"
+      },
+      {
+        "idiom": "recharge your batteries",
+        "meaning": "rest after being very busy, so that you will be ready to start working again"
+      },
+      {
+        "idiom": "set your heart on",
+        "meaning": "decide that you want something very much"
+      },
+      {
+        "idiom": "variety is the spice of life",
+        "meaning": "used for saying that different experiences and situations make life enjoyable or interesting"
+      }
     ],
     "word_formation": [
-      { "base": "available", "derivatives": ["(un)availability", "unavailable"] },
-      { "base": "choose", "derivatives": ["chose", "chosen", "choice", "choosy"] },
-      { "base": "desire", "derivatives": ["(un)desirable", "desirous", "desired", "(un)desirably"] },
-      { "base": "do", "derivatives": ["overdo", "outdo", "redo", "undo", "(over/out/re/un)did", "(over/out/re/un)done", "doing", "doings"] },
-      { "base": "envy", "derivatives": ["(un)enviable", "(un)envially", "envious(ly)"] },
-      { "base": "leisure", "derivatives": ["leisured", "leisurely"] },
-      { "base": "motive", "derivatives": ["(de)motivated", "(de)motivator", "(de)motivation", "(de)motivating", "motivational"] },
-      { "base": "obsess", "derivatives": ["obsession", "obsessed", "obsessive(ly)"] },
-      { "base": "play", "derivatives": ["replay", "overlay", "downplay", "player", "playful(ly)"] },
-      { "base": "prefer", "derivatives": ["preference", "preferable", "preferred", "preferential", "preferably"] },
-      { "base": "pursue", "derivatives": ["pursuit", "pursuer"] },
-      { "base": "relax", "derivatives": ["relaxation", "relaxing", "relaxed"] },
-      { "base": "rest", "derivatives": ["restlessness", "unrest", "restive", "restful(ly)", "restless(ly)"] },
-      { "base": "rhythm", "derivatives": ["rhythmic(al)", "rhythmically"] },
-      { "base": "satisfy", "derivatives": ["dissatisfy", "(un)satisfactory", "(dis)satisfied", "(un)satisfying(ly)", "satisfactorily"] },
-      { "base": "select", "derivatives": ["deselect", "selection", "selective(ly)"] },
-      { "base": "sport", "derivatives": ["sportsman/woman/person", "sportsmanship", "sports", "sporting", "sporty"] },
-      { "base": "stimulate", "derivatives": ["stimulation", "stimulant", "stimulus", "stimuli", "stimulating", "stimulated"] },
-      { "base": "tend", "derivatives": ["tendency"] },
-      { "base": "zeal", "derivatives": ["zealot", "zealous(ly)"] }
+      {
+        "base": "available",
+        "derivatives": [
+          "(un)availability",
+          "unavailable"
+        ]
+      },
+      {
+        "base": "choose",
+        "derivatives": [
+          "chose",
+          "chosen",
+          "choice",
+          "choosy"
+        ]
+      },
+      {
+        "base": "desire",
+        "derivatives": [
+          "(un)desirable",
+          "desirous",
+          "desired",
+          "(un)desirably"
+        ]
+      },
+      {
+        "base": "do",
+        "derivatives": [
+          "overdo",
+          "outdo",
+          "redo",
+          "undo",
+          "(over/out/re/un)did",
+          "(over/out/re/un)done",
+          "doing",
+          "doings"
+        ]
+      },
+      {
+        "base": "envy",
+        "derivatives": [
+          "(un)enviable",
+          "(un)envially",
+          "envious(ly)"
+        ]
+      },
+      {
+        "base": "leisure",
+        "derivatives": [
+          "leisured",
+          "leisurely"
+        ]
+      },
+      {
+        "base": "motive",
+        "derivatives": [
+          "(de)motivated",
+          "(de)motivator",
+          "(de)motivation",
+          "(de)motivating",
+          "motivational"
+        ]
+      },
+      {
+        "base": "obsess",
+        "derivatives": [
+          "obsession",
+          "obsessed",
+          "obsessive(ly)"
+        ]
+      },
+      {
+        "base": "play",
+        "derivatives": [
+          "replay",
+          "overlay",
+          "downplay",
+          "player",
+          "playful(ly)"
+        ]
+      },
+      {
+        "base": "prefer",
+        "derivatives": [
+          "preference",
+          "preferable",
+          "preferred",
+          "preferential",
+          "preferably"
+        ]
+      },
+      {
+        "base": "pursue",
+        "derivatives": [
+          "pursuit",
+          "pursuer"
+        ]
+      },
+      {
+        "base": "relax",
+        "derivatives": [
+          "relaxation",
+          "relaxing",
+          "relaxed"
+        ]
+      },
+      {
+        "base": "rest",
+        "derivatives": [
+          "restlessness",
+          "unrest",
+          "restive",
+          "restful(ly)",
+          "restless(ly)"
+        ]
+      },
+      {
+        "base": "rhythm",
+        "derivatives": [
+          "rhythmic(al)",
+          "rhythmically"
+        ]
+      },
+      {
+        "base": "satisfy",
+        "derivatives": [
+          "dissatisfy",
+          "(un)satisfactory",
+          "(dis)satisfied",
+          "(un)satisfying(ly)",
+          "satisfactorily"
+        ]
+      },
+      {
+        "base": "select",
+        "derivatives": [
+          "deselect",
+          "selection",
+          "selective(ly)"
+        ]
+      },
+      {
+        "base": "sport",
+        "derivatives": [
+          "sportsman/woman/person",
+          "sportsmanship",
+          "sports",
+          "sporting",
+          "sporty"
+        ]
+      },
+      {
+        "base": "stimulate",
+        "derivatives": [
+          "stimulation",
+          "stimulant",
+          "stimulus",
+          "stimuli",
+          "stimulating",
+          "stimulated"
+        ]
+      },
+      {
+        "base": "tend",
+        "derivatives": [
+          "tendency"
+        ]
+      },
+      {
+        "base": "zeal",
+        "derivatives": [
+          "zealot",
+          "zealous(ly)"
+        ]
+      }
     ],
     "exercises": {
       "A": {
         "title": "Choose the correct answer.",
         "questions": [
-          { "sentence": "Although she would have preferred to carry on working, my mum ………………… her career in order to have children.", "options": ["A devoted", "B repealed", "C sacrificed", "D abolished"], "answer": "C" },
-          { "sentence": "I find the offer quite ………………… , but I think I’d rather study at Oxford.", "options": ["A tempting", "B desirous", "C inclined", "D envious"], "answer": "A" },
-          { "sentence": "I don’t normally like noisy clubs, but I had a sudden ………………… to see what the Blue Parrot was like.", "options": ["A force", "B motive", "C pressure", "D impulse"], "answer": "D" },
-          { "sentence": "Jerry loves snowboarding so much that it’s almost like a drug ………………… .", "options": ["A passion", "B obsession", "C addiction", "D requirement"], "answer": "C" },
-          { "sentence": "I don’t want to do the course in applied statistics, but it’s ………………… .", "options": ["A compulsory", "B inevitable", "C bound", "D indecisive"], "answer": "A" },
-          { "sentence": "Don’t worry about me – I’m quite ………………… to sit here and wait for you to come back.", "options": ["A ecstatic", "B delighted", "C joyful", "D content"], "answer": "D" },
-          { "sentence": "When I was pregnant, I often got a sudden ………………… for tinned sardines.", "options": ["A preference", "B craving", "C envy", "D greed"], "answer": "B" },
-          { "sentence": "Thank you for thinking of us, but I’m afraid we’re going to have to ………………… your kind invitation.", "options": ["A decline", "B deny", "C condemn", "D reject"], "answer": "A" },
-          { "sentence": "I’ve never seen anyone so ………………… to their job as Philip is.", "options": ["A eager", "B keen", "C dedicated", "D interested"], "answer": "C" },
-          { "sentence": "Why do you have such a ………………… with model railways?", "options": ["A desire", "B fascination", "C love", "D preference"], "answer": "B" },
-          { "sentence": "I wish you would stop wasting so much time on computer games and do something a little more ………………… .", "options": ["A welcome", "B enviable", "C feasible", "D worthwhile"], "answer": "D" },
-          { "sentence": "Olivia has always ………………… to return to the country she was born in.", "options": ["A favoured", "B yearned", "C urged", "D inclined"], "answer": "B" }
+          {
+            "sentence": "Although she could have continued her promising music career, my sister ……………………… her ambitions in order to care for their elderly parents.",
+            "options": [
+              "A devoted",
+              "B repealed",
+              "C sacrificed",
+              "D abolished"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "The job offer sounds incredibly ……………………… , but I think I would rather stay and finish my doctorate.",
+            "options": [
+              "A tempting",
+              "B desirous",
+              "C inclined",
+              "D envious"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "I rarely shop without a list, but last Saturday I had a sudden ……………………… to walk into that new bookshop on the corner.",
+            "options": [
+              "A force",
+              "B motive",
+              "C pressure",
+              "D impulse"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "Tom is so devoted to rock climbing that it has become almost like a drug ……………………… for him.",
+            "options": [
+              "A passion",
+              "B obsession",
+              "C addiction",
+              "D requirement"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "I really don’t want to sit through the four-hour safety workshop, but our manager says attendance is ……………………… .",
+            "options": [
+              "A compulsory",
+              "B inevitable",
+              "C bound",
+              "D indecisive"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "Please don’t worry about entertaining me – I’m perfectly ……………………… to sit by the window and read until you return.",
+            "options": [
+              "A ecstatic",
+              "B delighted",
+              "C joyful",
+              "D content"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "During her marathon training, she regularly experienced an intense ……………………… for salty foods after a long run.",
+            "options": [
+              "A preference",
+              "B craving",
+              "C envy",
+              "D greed"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "Although we were genuinely flattered, the committee agreed that it would have to ……………………… the award for financial reasons.",
+            "options": [
+              "A decline",
+              "B deny",
+              "C condemn",
+              "D reject"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "I have never come across anyone as ……………………… to their craft as Elena is.",
+            "options": [
+              "A eager",
+              "B keen",
+              "C dedicated",
+              "D interested"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "Why do you have such a deep ……………………… with vintage motorbikes?",
+            "options": [
+              "A desire",
+              "B fascination",
+              "C love",
+              "D preference"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "I wish you would channel all that energy into something a little more ……………………… than scrolling through social media.",
+            "options": [
+              "A welcome",
+              "B enviable",
+              "C feasible",
+              "D worthwhile"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "Daniel has always ……………………… to perform on stage in front of a large audience.",
+            "options": [
+              "A favoured",
+              "B yearned",
+              "C urged",
+              "D inclined"
+            ],
+            "answer": "B"
+          }
         ]
       },
       "B": {
         "title": "Complete using the correct form of the words in the box.",
-        "words": ["adore", "appeal", "bear", "delight", "differentiate", "fancy", "favour", "praise", "resolve", "strive", "urge", "welcome"],
+        "words": [
+          "adore",
+          "appeal",
+          "bear",
+          "delight",
+          "differentiate",
+          "fancy",
+          "favour",
+          "praise",
+          "resolve",
+          "strive",
+          "urge",
+          "welcome"
+        ],
         "questions": [
-          { "sentence": "Trisha suggested going to Indonesia, but the idea didn’t really …………………………………………. to me.", "answer": "appeal" },
-          { "sentence": "Young children seem to ……………………………………………… in showing things they’ve made at school to their parents.", "answer": "delight" },
-          { "sentence": "Francis obviously ………………………………………… his three children and will do anything for them.", "answer": "adores" },
-          { "sentence": "I think I just …………………………………………… getting a DVD and staying in tonight.", "answer": "fancy" },
-          { "sentence": "The firefighters ……………………………………… Mrs Collins for her quick thinking when the fire broke out.", "answer": "praised" },
-          { "sentence": "We would …………………………………………… anyone who values personal freedom to vote against this proposal.", "answer": "urge" },
-          { "sentence": "The Prime Minister ……………………………………… the suggestion from the leader of the opposition and said that the government would consider it carefully.", "answer": "welcomed" },
-          { "sentence": "I don’t know how Liz can ……………………………………… to work at that place.", "answer": "bear" },
-          { "sentence": "It’s important to have clear goals to ………………………………… towards.", "answer": "strive" },
-          { "sentence": "Parents should try to treat all their children equally and not ………………………………… one over another.", "answer": "favour" },
-          { "sentence": "It’s quite easy to …………………………………………… between margarine and butter because butter has a creamier taste.", "answer": "differentiate" },
-          { "sentence": "The Board of Directors has ……………………………………… to increase sales by at least 20% over the coming year.", "answer": "resolved" }
+          {
+            "sentence": "Rachel suggested a cycling holiday in the Alps, but the idea didn’t particularly ……………………………………………………………… to her partner.",
+            "answer": "appeal"
+          },
+          {
+            "sentence": "Little brothers seem to ………………………………………………………………………… in embarrassing their siblings in front of guests.",
+            "answer": "delight"
+          },
+          {
+            "sentence": "Marcus clearly ………………………………………………………………… his two cats and spoils them with the finest food.",
+            "answer": "adores"
+          },
+          {
+            "sentence": "I think I ……………………………………………………………… a quiet evening at home with a good film tonight.",
+            "answer": "fancy"
+          },
+          {
+            "sentence": "The head coach ……………………………………………………………… Laura for her extraordinary commitment during the final match.",
+            "answer": "praised"
+          },
+          {
+            "sentence": "We would ……………………………………………………………… anyone concerned about air quality to come to tonight’s public meeting.",
+            "answer": "urge"
+          },
+          {
+            "sentence": "The mayor ……………………………………………………………… the proposal from the residents’ association and promised to raise it with the full council.",
+            "answer": "welcomed"
+          },
+          {
+            "sentence": "I honestly don’t know how Patrick can ……………………………………………………………… to commute three hours every single day.",
+            "answer": "bear"
+          },
+          {
+            "sentence": "We all need something meaningful to ……………………………………………………………… towards in both our personal and professional lives.",
+            "answer": "strive"
+          },
+          {
+            "sentence": "Coaches should treat all squad members fairly and not ……………………………………………………………… certain players over others.",
+            "answer": "favour"
+          },
+          {
+            "sentence": "Even experienced collectors can find it difficult to ……………………………………………………………… between a genuine antique and a high-quality reproduction.",
+            "answer": "differentiate"
+          },
+          {
+            "sentence": "The board has ……………………………………………………………… to cut the organisation’s carbon footprint by at least 30% within the next decade.",
+            "answer": "resolved"
+          }
         ]
       },
       "C": {
         "title": "Circle the correct word.",
         "questions": [
-          { "sentence": "Share your chocolate with your brother and don’t be so **greedy / obsessed**.", "answer": "greedy" },
-          { "sentence": "Claudia’s completely **greedy / obsessed** with Jack and doesn’t talk about anything else these days.", "answer": "obsessed" },
-          { "sentence": "I smiled in **anticipation / aspiration** as the waiter brought the desserts to our table.", "answer": "anticipation" },
-          { "sentence": "Joining the Air Force has always been an **anticipation / aspiration** of mine.", "answer": "aspiration" },
-          { "sentence": "These two day trips are included in the price of the tour, while the third is **arbitrary / optional** and costs 50 euros extra.", "answer": "optional" },
-          { "sentence": "We don’t have any information about the hotels, so we’ll just have to make an **arbitrary / optional** decision.", "answer": "arbitrary" },
-          { "sentence": "If you look at Madeleine’s house, it’s obvious she has a lot of **liking / taste**.", "answer": "taste" },
-          { "sentence": "I’ve always had a **liking / taste** for Naomi, ever since she moved in next door.", "answer": "liking" },
-          { "sentence": "Life in this small town is really quite **mediocre / mundane** and I can’t wait to move to the big city.", "answer": "mundane" },
-          { "sentence": "I thought her latest book was **mediocre / mundane** compared to the others, which I really enjoyed.", "answer": "mediocre" },
-          { "sentence": "Eva got everything she had ever **envied / desired** when she married a rich businessman.", "answer": "desired" },
-          { "sentence": "I **envy / desire** people who can just walk into a room full of strangers and feel at home.", "answer": "envy" }
+          {
+            "sentence": "Stop taking so many biscuits and don’t be so **greedy / obsessed**.",
+            "answer": "greedy"
+          },
+          {
+            "sentence": "Nathan is completely **greedy / obsessed** with his stamp collection and talks of little else.",
+            "answer": "obsessed"
+          },
+          {
+            "sentence": "I smiled in **anticipation / aspiration** as the chef carried our main courses through from the kitchen.",
+            "answer": "anticipation"
+          },
+          {
+            "sentence": "Becoming a professional dancer has always been an **anticipation / aspiration** of mine.",
+            "answer": "aspiration"
+          },
+          {
+            "sentence": "The first two swimming sessions are included in the programme, while the third is **arbitrary / optional** and costs ten euros extra.",
+            "answer": "optional"
+          },
+          {
+            "sentence": "Since nobody could agree on a venue, we made a fairly **arbitrary / optional** choice and settled on the café at the end of the street.",
+            "answer": "arbitrary"
+          },
+          {
+            "sentence": "One glance at Helena’s apartment tells you she has wonderful **liking / taste**.",
+            "answer": "taste"
+          },
+          {
+            "sentence": "I’ve had a real **liking / taste** for Marcus ever since he helped me move house last spring.",
+            "answer": "liking"
+          },
+          {
+            "sentence": "Life in this remote village is rather **mediocre / mundane** and I’m counting the days until I can move to a bigger city.",
+            "answer": "mundane"
+          },
+          {
+            "sentence": "The critics generally agreed that the sequel was rather **mediocre / mundane** when compared with the original.",
+            "answer": "mediocre"
+          },
+          {
+            "sentence": "By the time she turned forty, Sofia had achieved everything she had ever **envied / desired**.",
+            "answer": "desired"
+          },
+          {
+            "sentence": "I genuinely **envy / desire** people who can fall asleep the moment their head touches the pillow.",
+            "answer": "envy"
+          }
         ]
       },
       "D": {
         "title": "If the word in bold is correct, put a tick. If it is incorrect, replace it with one of the words in bold from the other sentences.",
         "questions": [
-          { "sentence": "It should be quite a **sedentary** event, so don’t dress up too much.", "answer": "casual" },
-          { "sentence": "Without enough leisure time, people begin to suffer from stress and **solitude**.", "answer": "fatigue" },
-          { "sentence": "I get 25 days a year **venue**, which is probably about average.", "answer": "leave" },
-          { "sentence": "The new Arts Centre should be a great **outing** for concerts.", "answer": "venue" },
-          { "sentence": "Last time I had a day off, we went on a family **lifestyle** to the beach.", "answer": "outing" },
-          { "sentence": "Kids just wouldn’t fit in with my **fatigue**, so I don’t plan to have any at the moment.", "answer": "lifestyle" },
-          { "sentence": "I like to be quite active when I’ve got time off because my job is quite **absorbing**.", "answer": "sedentary" },
-          { "sentence": "I find nothing so relaxing as reading a really **casual** book.", "answer": "absorbing" },
-          { "sentence": "Work’s so **tedious** that I can’t wait to meet my friends in the evening.", "answer": "✓" },
-          { "sentence": "The most relaxing things about getting away to the mountains are the peace and **leave**.", "answer": "solitude" }
+          {
+            "sentence": "It’s a very informal garden party, so come in **sedentary** clothes – there’s no need to dress up.",
+            "answer": "casual"
+          },
+          {
+            "sentence": "Working such long shifts can lead to serious stress and **solitude** among hospital staff.",
+            "answer": "fatigue"
+          },
+          {
+            "sentence": "The union successfully negotiated an extra five days of annual **venue** for all full-time employees.",
+            "answer": "leave"
+          },
+          {
+            "sentence": "The converted warehouse has become a fantastic **outing** for live music events in the city.",
+            "answer": "venue"
+          },
+          {
+            "sentence": "We treated Grandma to a family **lifestyle** to the botanical gardens to celebrate her birthday.",
+            "answer": "outing"
+          },
+          {
+            "sentence": "Moving to the countryside completely transformed her **fatigue** and she says she feels far happier now.",
+            "answer": "lifestyle"
+          },
+          {
+            "sentence": "Sitting at a desk all day makes my job extremely **absorbing**, so I always try to go for a walk at lunchtime.",
+            "answer": "sedentary"
+          },
+          {
+            "sentence": "I’ve been reading the most incredibly **casual** novel – I genuinely cannot put it down.",
+            "answer": "absorbing"
+          },
+          {
+            "sentence": "These long waiting times are absolutely **tedious** and the management really needs to address them.",
+            "answer": "✓"
+          },
+          {
+            "sentence": "What I love most about hiking alone is the sense of peace and **leave** that it gives you.",
+            "answer": "solitude"
+          }
         ]
       },
       "E": {
         "title": "Complete using the correct form of the words in the box.",
-        "words": ["exhilarating", "idle", "indulge", "pastime", "pursue", "recreation", "respite", "socialise", "trivial", "unwind"],
+        "words": [
+          "exhilarating",
+          "idle",
+          "indulge",
+          "pastime",
+          "pursue",
+          "recreation",
+          "respite",
+          "socialise",
+          "trivial",
+          "unwind"
+        ],
         "questions": [
-          { "sentence": "During the first half of the nineteenth century, more and more people were employed in factories, working 14- or 15-hour days that left them little time for hobbies, sport or any other form of (1) ......", "answer": "recreation" },
-          { "sentence": "and meant they weren’t able to (2) ...... with friends.", "answer": "socialise" },
-          { "sentence": "A key breakthrough in Britain came with the Ten Hour Act (1847), which limited the working day and ensured that workers got some (3) ...... from their jobs.", "answer": "respite" },
-          { "sentence": "People now had at least some time to (4) ...... from work at the end of the day", "answer": "unwind" },
-          { "sentence": "and (5) ...... themselves.", "answer": "indulge" },
-          { "sentence": "Not everyone approved. Many members of the middle class hated the idea of the workers being (6) ......", "answer": "idle" },
-          { "sentence": "and believed that they would waste their time on (7) ...... matters", "answer": "trivial" },
-          { "sentence": "instead of (8) ...... productive activities, such as education or going to church.", "answer": "pursuing" },
-          { "sentence": "The workers, however, found the new freedom (9) ......", "answer": "exhilarating" },
-          { "sentence": "and threw themselves into new (10) ...... with enthusiasm.", "answer": "pastimes" }
+          {
+            "sentence": "During the latter decades of the twentieth century, the rise of digital entertainment transformed the way ordinary people approached their (1) ...... time.",
+            "answer": "recreation"
+          },
+          {
+            "sentence": "Unlike earlier generations, modern families could (2) ...... online as well as in person.",
+            "answer": "socialise"
+          },
+          {
+            "sentence": "However, the relentless pace of contemporary life meant that people rarely experienced any genuine (3) ...... from the pressures of work and daily responsibilities.",
+            "answer": "respite"
+          },
+          {
+            "sentence": "Once the weekend finally arrived, workers were eager to (4) ...... and recover their energy.",
+            "answer": "unwind"
+          },
+          {
+            "sentence": "Many sought any opportunity to (5) ...... themselves fully in activities they had long neglected.",
+            "answer": "indulge"
+          },
+          {
+            "sentence": "Critics argued that those who appeared (6) ...... in their leisure time were in fact recharging, preparing to return to work more productively.",
+            "answer": "idle"
+          },
+          {
+            "sentence": "Some commentators worried that people would squander their free time on (7) ...... distractions",
+            "answer": "trivial"
+          },
+          {
+            "sentence": "rather than (8) ...... meaningful goals, such as further education or community volunteering.",
+            "answer": "pursuing"
+          },
+          {
+            "sentence": "The majority of workers, however, found the freedom to choose their own activities deeply (9) ......",
+            "answer": "exhilarating"
+          },
+          {
+            "sentence": "and enthusiastically threw themselves into new (10) ...... that enriched their everyday lives.",
+            "answer": "pastimes"
+          }
         ]
       },
       "F": {
         "title": "Match to make sentences.",
         "questions": [
-          { "sentence": "I suppose I spend a lot of time just hanging", "match": "E", "answer": "E. out with friends in the town centre." },
-          { "sentence": "The best thing about camping is just messing", "match": "C", "answer": "C. about with all the equipment all day." },
-          { "sentence": "Since I’m self-employed, I’m able to take", "match": "D", "answer": "D. a whole month off and just travel." },
-          { "sentence": "Drew spends a lot of time seeking", "match": "F", "answer": "F. out good spots to go windsurfing." },
-          { "sentence": "Most of my leisure time seems to centre", "match": "G", "answer": "G. around fishing or my other main hobby, water polo." },
-          { "sentence": "The tour we’re going on next week takes", "match": "A", "answer": "A. in some fantastic areas of natural beauty." },
-          { "sentence": "I’m not one of those people who go in", "match": "B", "answer": "B. for active pastimes; I much prefer reading." },
-          { "sentence": "With a bit of practice, I picked", "match": "H", "answer": "H. up a few songs after just a couple of lessons on the guitar." }
+          {
+            "sentence": "When I have free time, I tend to spend it just hanging",
+            "match": "E",
+            "answer": "E. out at the beach with a few close friends."
+          },
+          {
+            "sentence": "What I enjoy most about camping is simply messing",
+            "match": "C",
+            "answer": "C. about in the river with the canoes all afternoon."
+          },
+          {
+            "sentence": "The great advantage of being a freelancer is that you can take",
+            "match": "D",
+            "answer": "D. a couple of weeks off whenever you need a real break."
+          },
+          {
+            "sentence": "Sophie spends most of her weekends seeking",
+            "match": "F",
+            "answer": "F. out remote mountain trails that few people have explored."
+          },
+          {
+            "sentence": "Most of my leisure time seems to centre",
+            "match": "G",
+            "answer": "G. around gardening or my other great passion, yoga."
+          },
+          {
+            "sentence": "The road trip we have planned for this summer takes",
+            "match": "A",
+            "answer": "A. in several breathtaking national parks along the coast."
+          },
+          {
+            "sentence": "My flatmate is not someone who goes in",
+            "match": "B",
+            "answer": "B. for energetic pursuits; she much prefers sketching at home."
+          },
+          {
+            "sentence": "Quite surprisingly, within just a few weeks I picked",
+            "match": "H",
+            "answer": "H. up the basics of Portuguese after only a handful of evening classes."
+          }
         ]
       },
       "G": {
         "title": "Complete using a phrasal verb with a word from box A in the right form and a word from box B. You need to use one word from box B more than once.",
-        "boxes": { "A": ["get", "go", "grow", "keep", "laze", "put", "take", "warm"], "B": ["around", "in", "into", "off", "on", "out", "up"] },
+        "boxes": {
+          "A": [
+            "get",
+            "go",
+            "grow",
+            "keep",
+            "laze",
+            "put",
+            "take",
+            "warm"
+          ],
+          "B": [
+            "around",
+            "in",
+            "into",
+            "off",
+            "on",
+            "out",
+            "up"
+          ]
+        },
         "questions": [
-          { "sentence": "I don’t have much money these days, so it’s hard to .................... my music collection.", "answer": "keep up" },
-          { "sentence": "If you’re .................... Amanda .................... this weekend, why don’t you go to the Popwave festival?", "answer": "taking out" },
-          { "sentence": "I didn’t like this CD at first, but now I’m really .................... it.", "answer": "getting into" },
-          { "sentence": "Carl and I just spent the whole day .................... listening to music.", "answer": "lazing around" },
-          { "sentence": "I’m still not sure about this track, but I think it’s starting to .................... me.", "answer": "grow on" },
-          { "sentence": "Before the concert started, we could hear the band .................... off stage.", "answer": "warming up" },
-          { "sentence": "I used to love this band, but I’ve .................... them since the lead singer left.", "answer": "gone off" },
-          { "sentence": "You can tell they’ve .................... a lot of hard work when you listen to their latest album.", "answer": "put in" }
+          {
+            "sentence": "It can be quite expensive to .................... with the latest smartphone releases these days.",
+            "answer": "keep up"
+          },
+          {
+            "sentence": "If you’re .................... Sophie .................... on Saturday, there’s a brilliant new rooftop cinema she’d absolutely love.",
+            "answer": "taking out"
+          },
+          {
+            "sentence": "This podcast seemed dull at first, but I’m really .................... it now.",
+            "answer": "getting into"
+          },
+          {
+            "sentence": "We spent the entire afternoon .................... by the pool, barely moving from our loungers.",
+            "answer": "lazing around"
+          },
+          {
+            "sentence": "I wasn’t sure about that new painting in the hallway, but it’s gradually starting to .................... me.",
+            "answer": "grow on"
+          },
+          {
+            "sentence": "By the time we arrived, the orchestra was already .................... in the rehearsal room backstage.",
+            "answer": "warming up"
+          },
+          {
+            "sentence": "I used to be a devoted fan of that band, but I’ve completely .................... them since they changed their sound.",
+            "answer": "gone off"
+          },
+          {
+            "sentence": "You can really tell they’ve .................... a tremendous amount of effort when you watch their live performances.",
+            "answer": "put in"
+          }
         ]
       },
       "H": {
         "title": "The phrasal verb get into has a meaning connected to the idea of becoming involved in an activity or situation. Tick the sentences where the phrasal verb has a meaning connected to a similar idea.",
         "questions": [
-          { "sentence": "I love watching TV, but it does **bite into** my free time.", "answer": "NO" },
-          { "sentence": "Jordan was relieved when she finally **broke into** the music business.", "answer": "YES" },
-          { "sentence": "When you’re flying a model aeroplane, the important thing is not to **crash into** anything!", "answer": "NO" },
-          { "sentence": "The council have **entered into** discussions on building a new sports centre in town.", "answer": "YES" },
-          { "sentence": "To access the online games network, **key your** username and password into the box below.", "answer": "NO" },
-          { "sentence": "Think carefully before you **rush into** such a long-term agreement.", "answer": "YES" },
-          { "sentence": "Kelly **launched into** a detailed account of her plans for the summer.", "answer": "YES" },
-          { "sentence": "Pete is always taking up new hobbies and he really **throws himself into** them.", "answer": "YES" }
+          {
+            "sentence": "That new streaming subscription does **eat into** your monthly budget rather significantly.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "After years of rejection, the young designer finally **broke into** the competitive fashion world.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "During the final lap, one of the cyclists nearly **rode into** a safety barrier on the sharp corner.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "The two rival companies have recently **entered into** a partnership to develop sustainable technologies.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "You will need to **type your** access code into the secure terminal to open the door.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "Don’t **jump into** such a significant career change without thinking it through very carefully.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "The guest speaker **launched into** a passionate explanation of how sport can transform communities.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "Whenever Priya begins a new project, she completely **throws herself into** it with remarkable energy.",
+            "answer": "YES"
+          }
         ]
       },
       "I": {
         "title": "One word in each sentence is incorrect. Underline the incorrect word and write the correct word.",
         "questions": [
-          { "sentence": "It’s the boss’s birthday next Wednesday, and there’s a rumour we might be taken the day off.", "answer": "given" },
-          { "sentence": "I know you’d rather I took up a sport, but it’s not your choice to do.", "answer": "decision" },
-          { "sentence": "Some of the courses are compulsory, so we can’t just pick and select whatever we like.", "answer": "choose" },
-          { "sentence": "If you won’t give me a pay rise, then I shall have to think my options.", "answer": "consider" },
-          { "sentence": "The council said they had no option apart to close the sports centre.", "answer": "but" },
-          { "sentence": "Angela travels a lot and is only very eager to experience new places.", "answer": "too" },
-          { "sentence": "Jake’s been practising as mad to impress the others in the band.", "answer": "like" },
-          { "sentence": "I can’t believe the judge just let the accused be free like that.", "answer": "go" },
-          { "sentence": "I’ve decided in favour for joining the local swimming team.", "answer": "of" },
-          { "sentence": "You should plan things more carefully and not just act with impulse all the time.", "answer": "on" }
+          {
+            "sentence": "The CEO announced that all employees would be taken the Friday afternoon off as a reward for hitting their quarterly targets.",
+            "answer": "given"
+          },
+          {
+            "sentence": "I understand you think I should change careers, but ultimately it is not your choice to do.",
+            "answer": "decision"
+          },
+          {
+            "sentence": "The catalogue is enormous, so listeners can pretty much pick and select whatever genre appeals to them most.",
+            "answer": "choose"
+          },
+          {
+            "sentence": "If the landlord refuses to lower the rent, she said she would have to think her options carefully.",
+            "answer": "consider"
+          },
+          {
+            "sentence": "The headmaster stated that the school had no option apart to postpone the end-of-year ceremony.",
+            "answer": "but"
+          },
+          {
+            "sentence": "He is a natural communicator and is only very eager to share his expertise with colleagues.",
+            "answer": "too"
+          },
+          {
+            "sentence": "She practised her presentation as mad before the big conference.",
+            "answer": "like"
+          },
+          {
+            "sentence": "After reviewing the new evidence, the judge decided to let the defendant be free.",
+            "answer": "go"
+          },
+          {
+            "sentence": "After careful consideration, he decided in favour for accepting the overseas scholarship.",
+            "answer": "of"
+          },
+          {
+            "sentence": "You cannot always act with impulse; sometimes you really do need to plan ahead.",
+            "answer": "on"
+          }
         ]
       },
       "J": {
         "title": "Circle the correct word.",
-        "passage": "There is no doubt technology and shorter working hours have **(1) got / let / set** people free to enjoy their leisure time more than ever before. Many people **(2) do / have / make** the leisure to pursue hobbies and other activities they **(3) like / prefer / want** to the work routine. What leisure activities will people **(4) choose / decide / opt** for in the future? We can expect to see increased personal **(5) choice / decision / option**. The range of leisure **(6) actions / hobbies / pursuits** will expand and people will have the **(7) decision / option / preference** of following up an interest in almost any activity. Whether at home or at **(8) enjoyment / leisure / relaxation** centres, there will be an ever-increasing need to provide for people at **(9) play / recreation / rest**. If the future is not one of increased leisure, then it won't be for **(10) need / desire / want** of demand.",
-        "answers": ["1 set", "2 have", "3 prefer", "4 opt", "5 choice", "6 pursuits", "7 option", "8 leisure", "9 play", "10 want"]
+        "passage": "Advances in communication technology and greater workplace flexibility have **(1) got / let / set** millions of workers free to enjoy their leisure time in genuinely new ways. A growing number of people now **(2) do / have / make** the leisure to follow activities that they **(3) like / prefer / want** to the daily demands of their working routine. So what activities will people **(4) choose / decide / opt** for as disposable time continues to increase? Analysts predict a significant rise in personal **(5) choice / decision / option** across all age groups. The range of available **(6) actions / hobbies / pursuits** will keep expanding, and individuals will have the **(7) decision / option / preference** of exploring interests that might previously have been beyond their reach. Whether they relax at home or visit dedicated **(8) enjoyment / leisure / relaxation** centres, providers will face ever-greater pressure to cater for people at **(9) play / recreation / rest**. If this era does not deliver greater personal freedom, it will certainly not be for **(10) need / desire / want** of opportunity.",
+        "answers": [
+          "1 set",
+          "2 have",
+          "3 prefer",
+          "4 opt",
+          "5 choice",
+          "6 pursuits",
+          "7 option",
+          "8 leisure",
+          "9 play",
+          "10 want"
+        ]
       },
       "K": {
         "title": "For each question, write one word which can be used in all three sentences.",
         "questions": [
-          { "sentence": "To our ...... , the boss said that we could have an extra day off work. Martin always takes great ...... in talking to anyone about fishing. When Erin finally started to move downhill on the skis for the first time, she laughed in ......", "answer": "delight" },
-          { "sentence": "It’s important that people feel they can exercise ...... over their leisure activities. Your fee is so late that I’m afraid we have no ...... but to cancel your membership. The college offers a wide ...... of evening and weekend classes.", "answer": "choice" },
-          { "sentence": "The local council should start a building programme to meet the ...... for leisure facilities. The Mayor said he had no ...... of advice from people who didn’t understand the situation. This area is badly in ...... of financial investment.", "answer": "need" },
-          { "sentence": "I had dried frog when I was in Korea, and I would describe the ...... as unforgettable. I thought that what you said to Erica was in very bad ...... . You might not like sushi the first time you try it – it’s a bit of an acquired ......", "answer": "taste" },
-          { "sentence": "We’re quite ...... for our son to go to Cambridge University when he finishes school. I enjoy team sports, like basketball and volleyball, and I’m especially ...... on football. My parents have always taken a ...... interest in my hobbies.", "answer": "keen" },
-          { "sentence": "I was a bit of a loner when I was younger and I spent a lot of time ...... by myself. The government has been accused of ...... for time because it doesn’t know what to do. Liam never learnt to read music, but he’s capable of ...... practically anything by ear.", "answer": "playing" },
-          { "sentence": "The headmaster was full of ...... for the school cricket team, who had won six matches in a row. The police officers involved deserve ...... for their bravery in such a difficult situation. If I read one more newspaper editorial in ...... of the Prime Minister I shall scream.", "answer": "praise" },
-          { "sentence": "When we finally made it out of the forest, we decided to ...... before moving on. Just ...... your bike against the gate and come inside. You can ...... assured that I will not stop until I find the person who damaged the school gym.", "answer": "rest" }
+          {
+            "sentence": "To everyone’s ...... , the speaker announced that admission to the festival would be completely free this year. Brendan takes genuine ...... in surprising his colleagues with homemade baked goods on Monday mornings. The children shrieked in ...... when they spotted the pile of presents beneath the tree.",
+            "answer": "delight"
+          },
+          {
+            "sentence": "Everyone should have the right to exercise ...... over how they spend their own personal time. After the storm damage, the organisers had no ...... but to postpone the outdoor concert indefinitely. This streaming platform offers a remarkably wide ...... of content to suit every possible taste.",
+            "answer": "choice"
+          },
+          {
+            "sentence": "Local parks and green spaces must be well maintained to meet the community’s ...... for outdoor recreation. The director made it clear she had no ...... of unsolicited opinions from those who did not understand her vision. Several villages in the region are badly in ...... of reliable and affordable public transport links.",
+            "answer": "need"
+          },
+          {
+            "sentence": "Trying sea urchin for the first time was an experience whose ...... I shall never forget. Printing jokes about such a tragic accident was, in my opinion, in extremely poor ...... . Raw oysters are something of an acquired ......; not everyone appreciates them on first encounter.",
+            "answer": "taste"
+          },
+          {
+            "sentence": "Mr and Mrs García are particularly ...... for their daughter to pursue a career in medicine after she graduates. He follows every form of motorsport closely and is especially ...... on endurance racing. Our professor has always shown a ...... interest in her students’ individual development and wellbeing.",
+            "answer": "keen"
+          },
+          {
+            "sentence": "As a child she spent most of her afternoons ...... by herself in the back garden, inventing imaginary worlds. The opposition accused the prime minister of ...... for time because the government had no clear plan. Lena can sight-read nearly any score and is fully capable of ...... almost anything by ear.",
+            "answer": "playing"
+          },
+          {
+            "sentence": "The principal was full of ...... for the science team, who had just won the national competition for the second year running. The emergency workers at the scene clearly deserve ...... for their swift and professional response under such difficult conditions. I shall cancel my subscription if I read one more article written in ...... of that discredited politician.",
+            "answer": "praise"
+          },
+          {
+            "sentence": "After the long hike through the hills, we decided to ...... under the shade of a large oak tree before pressing on. You can ...... your board against the wall while you retie your laces. Please ...... assured that we will investigate this complaint thoroughly and report back to you shortly.",
+            "answer": "rest"
+          }
         ]
       },
       "L": {
         "title": "Complete using the words in the box.",
-        "words": ["batteries", "end", "feet", "hair", "heart", "party", "potato", "spice", "time", "whim"],
+        "words": [
+          "batteries",
+          "end",
+          "feet",
+          "hair",
+          "heart",
+          "party",
+          "potato",
+          "spice",
+          "time",
+          "whim"
+        ],
         "questions": [
-          { "sentence": "‘Oh! I’m exhausted! I’ve been doing housework all day.’ ‘Come and put your ……………………………………… up for five minutes and I’ll make a cup of tea.’", "answer": "feet" },
-          { "sentence": "‘Do you fancy going to that new jazz club in town?’ ‘Yes, let’s go and let our …………………………………… down a bit, shall we?’", "answer": "hair" },
-          { "sentence": "‘Jamie is so much fun!’ ‘Yes, he really is the life and soul of the ……………………………’", "answer": "party" },
-          { "sentence": "‘You’re not changing jobs again already, are you?’ ‘Well, they do say that variety is the ……………………………… of life.’", "answer": "spice" },
-          { "sentence": "‘Roger wasn’t pleased to get rejected by the team, was he?’ ‘No. He really had his ………………………………… set on playing for them.’", "answer": "heart" },
-          { "sentence": "‘You look a bit bored.’ ‘Well, I’ve been at a loose ………………………………… since I finished the book I was reading.’", "answer": "end" },
-          { "sentence": "‘You weren’t planning to go to Singapore on holiday, were you?’ ‘No. I got to the travel agent’s and just decided to go there on a ………………………………………’", "answer": "whim" },
-          { "sentence": "‘I can’t believe you built the Eiffel Tower out of matchsticks!’ ‘I guess I must have had a lot of ………………………………… on my hands.’", "answer": "time" },
-          { "sentence": "‘Does Jenny ever move from in front of the TV?’ ‘I think she’s in danger of becoming a bit of a couch ………………………………………’", "answer": "potato" },
-          { "sentence": "‘You’ve got a great suntan!’ ‘I went away for a few days to recharge my ……………………………………….’", "answer": "batteries" }
+          {
+            "sentence": "'‘I’ve been standing in the kitchen for hours and my back is killing me.’ ‘Come and put your ……………………………………………………………… up for five minutes – I’ll bring you a cup of tea.’",
+            "answer": "feet"
+          },
+          {
+            "sentence": "'‘You look really tense lately.’ ‘I know – I desperately need a night out to let my ……………………………………………………………………… down. All this studying is getting to me.’",
+            "answer": "hair"
+          },
+          {
+            "sentence": "'‘Did you see Ben at the reunion?’ ‘Yes! He was the life and soul of the ……………………………………………………………… as always – absolutely brilliant.’",
+            "answer": "party"
+          },
+          {
+            "sentence": "'‘You’re retraining as a chef after fifteen years in IT?’ ‘Well, they do say that variety is the ……………………………………………………………… of life.’",
+            "answer": "spice"
+          },
+          {
+            "sentence": "'‘Did Mia get the lead role in the play?’ ‘Yes! She had her ……………………………………………………………… set on it for months and worked incredibly hard.’",
+            "answer": "heart"
+          },
+          {
+            "sentence": "'‘Why does Charlie look so restless?’ ‘He handed in his final assignment yesterday and now he’s at a loose ……………………………………………………’",
+            "answer": "end"
+          },
+          {
+            "sentence": "'‘I had no idea you were thinking of buying a campervan.’ ‘I wasn’t, really. I just spotted it at the showroom and bought it on a ……………………………………………………’",
+            "answer": "whim"
+          },
+          {
+            "sentence": "'‘How on earth did you manage to knit all those costumes for the play?’ ‘I had a lot of ……………………………………………………………… on my hands during the long winter evenings.’",
+            "answer": "time"
+          },
+          {
+            "sentence": "'‘Does your brother ever leave his armchair?’ ‘Rarely, to be honest. I’m worried he’s turning into a complete couch ……………………………………………………’",
+            "answer": "potato"
+          },
+          {
+            "sentence": "'‘You look so refreshed after your trip!’ ‘I really needed it. A week by the sea was the perfect way to recharge my …………………………………………………….'",
+            "answer": "batteries"
+          }
         ]
       },
       "M": {
         "title": "Complete the sentences by changing the form of the word in capitals.",
         "questions": [
-          { "sentence": "The cricket ground and the theatre make this a very ………………… area to live in. **DESIRE**", "answer": "desirable" },
-          { "sentence": "My family have always gone in for traditional country …………………………, such as hunting, shooting and fishing. **PURSUE**", "answer": "pursuits" },
-          { "sentence": "What I like about Stravinsky’s music is the ……………………… complexity, which has a powerful effect on the listener. **RHYTHM**", "answer": "rhythmic" },
-          { "sentence": "After ten matches, we had the ……………………… record of played ten, won none, lost ten. **ENVY**", "answer": "unenviable" },
-          { "sentence": "I know you’d rather take your holiday in August, but when the boss is offering you extra days off, I don’t think you can afford to be so ……………………… . **CHOOSE**", "answer": "choosy" },
-          { "sentence": "You don’t need to be quite so ……………………… in your work, and you might find you enjoy it more if you take a little time off. **ZEAL**", "answer": "zealous" },
-          { "sentence": "You don’t have time to do all the sports you’d like to, so you’re going to have to be a bit ……………………… **SELECT**.", "answer": "selective" },
-          { "sentence": "After dinner, we went for a ……………………… stroll along the seafront. **LEISURE**", "answer": "leisurely" },
-          { "sentence": "We’re only two weeks into the school holidays and already my children are ……………………… . **REST**", "answer": "restless" },
-          { "sentence": "I don’t mind Annabel spending time on her computer, but playing this latest game has become almost an ……………………… . **OBSESS**", "answer": "obsession" }
+          {
+            "sentence": "The riverside location and excellent transport links make this an extremely ……………………… area in which to raise a family. **DESIRE**",
+            "answer": "desirable"
+          },
+          {
+            "sentence": "The charity was founded to encourage young people from disadvantaged backgrounds to engage in outdoor …………………………………… . **PURSUE**",
+            "answer": "pursuits"
+          },
+          {
+            "sentence": "What makes tribal drumming so powerful is its insistent, …………………………………… quality that seems to bypass conscious thought altogether. **RHYTHM**",
+            "answer": "rhythmic"
+          },
+          {
+            "sentence": "Taking over as head coach halfway through such a difficult season is a thoroughly …………………………………… task. **ENVY**",
+            "answer": "unenviable"
+          },
+          {
+            "sentence": "I know you prefer organic produce, but when money is this tight you really cannot afford to be so ……………………… . **CHOOSE**",
+            "answer": "choosy"
+          },
+          {
+            "sentence": "The new health inspector was so …………………………………… that she found a fault in every single kitchen she visited that week. **ZEAL**",
+            "answer": "zealous"
+          },
+          {
+            "sentence": "With so many documentaries available to watch, you really do need to be quite …………………………………… about how you use your viewing time. **SELECT**",
+            "answer": "selective"
+          },
+          {
+            "sentence": "After an intense working week, there is nothing I enjoy more than a …………………………………… Sunday stroll through the countryside. **LEISURE**",
+            "answer": "leisurely"
+          },
+          {
+            "sentence": "By the third day of the conference, even the most enthusiastic delegates were becoming noticeably ……………………… . **REST**",
+            "answer": "restless"
+          },
+          {
+            "sentence": "I don’t mind Nathan being a gaming enthusiast, but lately his passion for this particular title has become a complete ……………………… . **OBSESS**",
+            "answer": "obsession"
+          }
         ]
       },
       "N": {
         "title": "Write a word formed from the words in the box in each gap.",
-        "words": ["available", "do", "motive", "play", "prefer", "relax", "satisfy", "sport", "stimulate", "tend"],
+        "words": [
+          "available",
+          "do",
+          "motive",
+          "play",
+          "prefer",
+          "relax",
+          "satisfy",
+          "sport",
+          "stimulate",
+          "tend"
+        ],
         "questions": [
-          { "sentence": "It's impossible to (1) ...... the importance of getting active as a family.", "answer": "overstate" },
-          { "sentence": "We all have a (2) ...... to start off with good intentions and then lose our (3) ...... .", "answers": ["tendency", "motivation"] },
-          { "sentence": "Playing and exercising together as a family can help you through those moments when you are (4) ...... with your progress.", "answer": "dissatisfied" },
-          { "sentence": "Don't (5) ...... it. Start with gentle exercise and work up to something more strenuous.", "answer": "overdo" },
-          { "sentence": "Whatever your (6) ...... activity, make sure that you're all comfortable doing it at that level.", "answer": "preferred" },
-          { "sentence": "If necessary, switch to a more (7) ...... activity until you're all in better shape.", "answer": "relaxing" },
-          { "sentence": "Children these days get a lot of (8) ...... from the fast-moving worlds of television, the Internet and computer games.", "answer": "stimulation" },
-          { "sentence": "Make sure you find an activity that they'll find fun. Contact Marlston Council to find out about the (9) ...... of facilities where you live.", "answer": "availability" },
-          { "sentence": "Playing a sport together will teach your children about fair play, (10) ...... and working with others.", "answer": "sportsmanship" }
+          {
+            "sentence": "It is almost impossible to (1) ...... how significantly regular physical activity can improve your mental wellbeing.",
+            "answer": "overstate"
+          },
+          {
+            "sentence": "Most of us (2) ...... to set ambitious fitness goals at the start of a new year, only to lose our (3) ...... when progress begins to feel slow.",
+            "answers": [
+              "tendency",
+              "motivation"
+            ]
+          },
+          {
+            "sentence": "We are especially likely to give up when we feel genuinely (4) ...... with our results.",
+            "answer": "dissatisfied"
+          },
+          {
+            "sentence": "Enthusiasm is admirable, but try not to (5) ...... it at the beginning – tired muscles need adequate time to recover properly.",
+            "answer": "overdo"
+          },
+          {
+            "sentence": "Start with your (6) ...... form of exercise, whether that is swimming, cycling, or something else entirely.",
+            "answer": "preferred"
+          },
+          {
+            "sentence": "On days when your energy levels are low, switch to a more (7) ...... form of movement, such as yoga or a gentle walk in the park.",
+            "answer": "relaxing"
+          },
+          {
+            "sentence": "We know that children and teenagers crave constant (8) ...... , so try combining physical activity with music or an interesting podcast to keep things engaging.",
+            "answer": "stimulation"
+          },
+          {
+            "sentence": "Contact your local sports centre to find out about the (9) ...... of group sessions and equipment hire in your area.",
+            "answer": "availability"
+          },
+          {
+            "sentence": "Exercising as a group not only keeps everyone motivated but also builds (10) ...... and genuine teamwork skills that carry over into daily life.",
+            "answer": "sportsmanship"
+          }
         ]
       },
       "O": {
         "title": "Some verbs form nouns using -ence, as in preference. Some form nouns using -ance. Put nouns formed from the following words in the correct category.",
-        "words": ["accept", "allow", "annoy", "appear", "assist", "attend", "avoid", "clear", "correspond", "depend", "differ", "disturb", "endure", "exist", "guide", "ignore", "inherit", "insist", "insure", "interfere", "occur", "perform", "persist", "refer", "rely", "resemble", "resist", "tolerate", "utter"],
+        "words": [
+          "accept",
+          "allow",
+          "annoy",
+          "appear",
+          "assist",
+          "attend",
+          "avoid",
+          "clear",
+          "correspond",
+          "depend",
+          "differ",
+          "disturb",
+          "endure",
+          "exist",
+          "guide",
+          "ignore",
+          "inherit",
+          "insist",
+          "insure",
+          "interfere",
+          "occur",
+          "perform",
+          "persist",
+          "refer",
+          "rely",
+          "resemble",
+          "resist",
+          "tolerate",
+          "utter"
+        ],
         "categories": {
-          "-ance": ["acceptance", "allowance", "annoyance", "appearance", "assistance", "avoidance", "clearance", "correspondence", "dependence", "disturbance", "endurance", "guidance", "ignorance", "inheritance", "insurance", "interference", "occurrence", "performance", "persistence", "reliance", "resemblance", "resistance", "tolerance", "utterance"],
-          "-ence": ["attendance", "difference", "existence", "insistence", "preference", "reference"]
+          "-ance": [
+            "acceptance",
+            "allowance",
+            "annoyance",
+            "appearance",
+            "assistance",
+            "avoidance",
+            "clearance",
+            "correspondence",
+            "dependence",
+            "disturbance",
+            "endurance",
+            "guidance",
+            "ignorance",
+            "inheritance",
+            "insurance",
+            "interference",
+            "occurrence",
+            "performance",
+            "persistence",
+            "reliance",
+            "resemblance",
+            "resistance",
+            "tolerance",
+            "utterance"
+          ],
+          "-ence": [
+            "attendance",
+            "difference",
+            "existence",
+            "insistence",
+            "preference",
+            "reference"
+          ]
         }
       },
       "P": {
         "title": "Complete the sentences using words formed in exercise O.",
         "questions": [
-          { "sentence": "Do you think you could help me? I'm having real problems with this and I think I need some ......", "answer": "assistance" },
-          { "sentence": "There's such a close ...... between Mikey and his father, don't you think?", "answer": "resemblance" },
-          { "sentence": "I use the Internet quite a bit now for looking up information and I don't really use the ...... books on my shelves.", "answer": "reference" },
-          { "sentence": "The head teacher was walking past the classroom door when she heard a loud ...... coming from inside.", "answer": "disturbance" },
-          { "sentence": "You need to be really fit to be able to complete an ...... race like the marathon.", "answer": "endurance" },
-          { "sentence": "You might feel like giving up, but keep practising and you'll be amazed at what a little ...... can achieve.", "answer": "persistence" },
-          { "sentence": "This football team has a proud tradition and has been in ...... since 1890.", "answer": "existence" },
-          { "sentence": "There was a lot of ...... from local people to the government's plans to knock down the leisure centre.", "answer": "resistance" }
+          {
+            "sentence": "The charity provides practical ...... to families who have recently arrived in the country and are finding it hard to settle in.",
+            "answer": "assistance"
+          },
+          {
+            "sentence": "The ...... between the two portraits is so striking that specialists initially believed they had been painted by the same artist.",
+            "answer": "resemblance"
+          },
+          {
+            "sentence": "The editor asked her to revise the introduction and remove any ...... to the events that are still being disputed in court.",
+            "answer": "reference"
+          },
+          {
+            "sentence": "Neighbours called the police after hearing a loud ...... coming from the apartment directly above them.",
+            "answer": "disturbance"
+          },
+          {
+            "sentence": "Completing the Sahara ultramarathon requires remarkable levels of both physical and mental ...... .",
+            "answer": "endurance"
+          },
+          {
+            "sentence": "After months of quiet ...... , the research team finally succeeded in decoding the ancient manuscript.",
+            "answer": "persistence"
+          },
+          {
+            "sentence": "The newly discovered document is considered proof of the ...... of a trading settlement in this region dating back to Roman times.",
+            "answer": "existence"
+          },
+          {
+            "sentence": "The volunteers were truly inspired by the local community’s fierce ...... to the proposed destruction of the historic building.",
+            "answer": "resistance"
+          }
         ]
       }
     }
