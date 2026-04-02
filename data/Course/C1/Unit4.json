@@ -7,370 +7,1492 @@
   "sections": {
     "topic_vocabulary": {
       "change": [
-        { "word": "adapt", "part_of_speech": "v" },
-        { "word": "adjust", "part_of_speech": "v" },
-        { "word": "alternate", "part_of_speech": "v, adj" },
-        { "word": "alternative", "part_of_speech": "n, adj" },
-        { "word": "amend", "part_of_speech": "v" },
-        { "word": "conservative", "part_of_speech": "adj" },
-        { "word": "convert", "part_of_speech": "v, n" },
-        { "word": "decay", "part_of_speech": "v, n" },
-        { "word": "deteriorate", "part_of_speech": "v" },
-        { "word": "distort", "part_of_speech": "v" },
-        { "word": "dynamic", "part_of_speech": "adj" },
-        { "word": "endure", "part_of_speech": "v" },
-        { "word": "evolve", "part_of_speech": "v" },
-        { "word": "influence", "part_of_speech": "v, n" },
-        { "word": "innovation", "part_of_speech": "n" },
-        { "word": "innovative", "part_of_speech": "adj" },
-        { "word": "last", "part_of_speech": "v" },
-        { "word": "maintain", "part_of_speech": "v" },
-        { "word": "mature", "part_of_speech": "v, adj" },
-        { "word": "modify", "part_of_speech": "v" },
-        { "word": "novel", "part_of_speech": "adj" },
-        { "word": "persist", "part_of_speech": "v" },
-        { "word": "potential", "part_of_speech": "n, adj" },
-        { "word": "progress", "part_of_speech": "v, n" },
-        { "word": "radical", "part_of_speech": "adj" },
-        { "word": "refine", "part_of_speech": "v" },
-        { "word": "reform", "part_of_speech": "v, n" },
-        { "word": "remain", "part_of_speech": "v" },
-        { "word": "revise", "part_of_speech": "v" },
-        { "word": "revolution", "part_of_speech": "n" },
-        { "word": "shift", "part_of_speech": "v, n" },
-        { "word": "spoil", "part_of_speech": "v" },
-        { "word": "status quo", "part_of_speech": "n phr" },
-        { "word": "steady", "part_of_speech": "adj" },
-        { "word": "substitute", "part_of_speech": "v, n" },
-        { "word": "sustain", "part_of_speech": "v" },
-        { "word": "switch", "part_of_speech": "v, n" },
-        { "word": "transform", "part_of_speech": "v" },
-        { "word": "trend", "part_of_speech": "n" },
-        { "word": "uniform", "part_of_speech": "adj" }
+        {
+          "word": "adapt",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "adjust",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "alternate",
+          "part_of_speech": "v, adj"
+        },
+        {
+          "word": "alternative",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "amend",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "conservative",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "convert",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "decay",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "deteriorate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "distort",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "dynamic",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "endure",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "evolve",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "influence",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "innovation",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "innovative",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "last",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "maintain",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "mature",
+          "part_of_speech": "v, adj"
+        },
+        {
+          "word": "modify",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "novel",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "persist",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "potential",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "progress",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "radical",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "refine",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "reform",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "remain",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "revise",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "revolution",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "shift",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "spoil",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "status quo",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "steady",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "substitute",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "sustain",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "switch",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "transform",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "trend",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "uniform",
+          "part_of_speech": "adj"
+        }
       ],
       "technology": [
-        { "word": "breakthrough", "part_of_speech": "n" },
-        { "word": "broadband", "part_of_speech": "adj, n" },
-        { "word": "click", "part_of_speech": "v" },
-        { "word": "complex", "part_of_speech": "adj" },
-        { "word": "consumer electronics", "part_of_speech": "n phr" },
-        { "word": "craft", "part_of_speech": "v, n" },
-        { "word": "data", "part_of_speech": "n" },
-        { "word": "download", "part_of_speech": "v, n" },
-        { "word": "file", "part_of_speech": "n" },
-        { "word": "games console", "part_of_speech": "n phr" },
-        { "word": "manual", "part_of_speech": "adj, n" },
-        { "word": "network", "part_of_speech": "v, n" },
-        { "word": "nuclear", "part_of_speech": "adj" },
-        { "word": "offline", "part_of_speech": "adj, adv" },
-        { "word": "online", "part_of_speech": "adj, adv" },
-        { "word": "primitive", "part_of_speech": "adj" },
-        { "word": "programmer", "part_of_speech": "n" },
-        { "word": "resource", "part_of_speech": "n" },
-        { "word": "technique", "part_of_speech": "n" },
-        { "word": "upload", "part_of_speech": "v" }
+        {
+          "word": "breakthrough",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "broadband",
+          "part_of_speech": "adj, n"
+        },
+        {
+          "word": "click",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "complex",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "consumer electronics",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "craft",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "data",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "download",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "file",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "games console",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "manual",
+          "part_of_speech": "adj, n"
+        },
+        {
+          "word": "network",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "nuclear",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "offline",
+          "part_of_speech": "adj, adv"
+        },
+        {
+          "word": "online",
+          "part_of_speech": "adj, adv"
+        },
+        {
+          "word": "primitive",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "programmer",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "resource",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "technique",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "upload",
+          "part_of_speech": "v"
+        }
       ]
     },
     "phrasal_verbs": [
-      { "verb": "back up", "meaning": "make a copy of information on your computer; give support to someone" },
-      { "verb": "change around", "meaning": "move things so that they are in different places or positions" },
-      { "verb": "change into", "meaning": "stop being in one state and start being in another; put on different clothes" },
-      { "verb": "change out of", "meaning": "take off clothes and put on different ones" },
-      { "verb": "do away with", "meaning": "get rid of" },
-      { "verb": "do up", "meaning": "repair, paint and improve an old building; fasten clothing" },
-      { "verb": "fade away", "meaning": "disappear slowly" },
-      { "verb": "key in", "meaning": "put information into a computer using keys" },
-      { "verb": "mix up", "meaning": "put things together without order; think one person/thing is another" },
-      { "verb": "switch on/off", "meaning": "start/stop a machine working" },
-      { "verb": "take apart", "meaning": "separate an object into pieces" },
-      { "verb": "try out", "meaning": "test something to see if it works correctly" },
-      { "verb": "turn into", "meaning": "change or develop into something different" },
-      { "verb": "use up", "meaning": "use all of something" },
-      { "verb": "wear out", "meaning": "use something a lot so it no longer works" }
+      {
+        "verb": "back up",
+        "meaning": "make a copy of information on your computer; give support to someone"
+      },
+      {
+        "verb": "change around",
+        "meaning": "move things so that they are in different places or positions"
+      },
+      {
+        "verb": "change into",
+        "meaning": "stop being in one state and start being in another; put on different clothes"
+      },
+      {
+        "verb": "change out of",
+        "meaning": "take off clothes and put on different ones"
+      },
+      {
+        "verb": "do away with",
+        "meaning": "get rid of"
+      },
+      {
+        "verb": "do up",
+        "meaning": "repair, paint and improve an old building; fasten clothing"
+      },
+      {
+        "verb": "fade away",
+        "meaning": "disappear slowly"
+      },
+      {
+        "verb": "key in",
+        "meaning": "put information into a computer using keys"
+      },
+      {
+        "verb": "mix up",
+        "meaning": "put things together without order; think one person/thing is another"
+      },
+      {
+        "verb": "switch on/off",
+        "meaning": "start/stop a machine working"
+      },
+      {
+        "verb": "take apart",
+        "meaning": "separate an object into pieces"
+      },
+      {
+        "verb": "try out",
+        "meaning": "test something to see if it works correctly"
+      },
+      {
+        "verb": "turn into",
+        "meaning": "change or develop into something different"
+      },
+      {
+        "verb": "use up",
+        "meaning": "use all of something"
+      },
+      {
+        "verb": "wear out",
+        "meaning": "use something a lot so it no longer works"
+      }
     ],
     "collocations_patterns": {
-      "access": ["have/gain/provide access to", "internet access", "wheelchair access"],
-      "break": ["break a habit", "break with tradition", "make the break", "take a break", "welcome break"],
-      "change": ["change from sth to", "change into", "change for the better/worse", "change your mind", "make a change"],
-      "clock": ["set a clock", "watch the clock", "against the clock", "around the clock", "clockwise"],
-      "date": ["date from", "keep up to date", "set a date", "to date"],
-      "demand": ["meet a demand", "make a demand", "the demand for", "in demand", "on demand"],
-      "energy": ["have the energy to", "nuclear energy", "source of energy", "energy crisis"],
-      "form": ["form an impression", "take the form of", "fill in a form", "in the form of", "application form"],
-      "good": ["good for sb to do", "a good deal", "for your own good", "it's no good doing"],
-      "know": ["know about", "know better", "get to know", "let sb know", "in the know", "know-how"],
-      "lead": ["lead to", "lead the way", "take the lead", "follow sb's lead", "in the lead"],
-      "link": ["link to", "click on a link", "find a link between"],
-      "place": ["change places with", "take the place of", "put in place", "in place of", "out of place"],
-      "process": ["the process of", "in the process of", "peace process", "process of elimination"],
-      "purpose": ["serve a purpose", "the purpose of", "sense of purpose", "on purpose"],
-      "reality": ["escape from reality", "face reality", "become a reality", "in reality", "virtual reality"],
-      "tool": ["a tool for", "toolbar", "tool kit"],
-      "use": ["use sth for", "use sth as", "in use", "of no use", "what's the use of?"],
-      "web": ["surf the Web", "on the Web", "website", "web page", "webcam", "blog"],
-      "wheel": ["take the wheel", "at the wheel", "on wheels"]
+      "access": [
+        "have/gain/provide access to",
+        "internet access",
+        "wheelchair access"
+      ],
+      "break": [
+        "break a habit",
+        "break with tradition",
+        "make the break",
+        "take a break",
+        "welcome break"
+      ],
+      "change": [
+        "change from sth to",
+        "change into",
+        "change for the better/worse",
+        "change your mind",
+        "make a change"
+      ],
+      "clock": [
+        "set a clock",
+        "watch the clock",
+        "against the clock",
+        "around the clock",
+        "clockwise"
+      ],
+      "date": [
+        "date from",
+        "keep up to date",
+        "set a date",
+        "to date"
+      ],
+      "demand": [
+        "meet a demand",
+        "make a demand",
+        "the demand for",
+        "in demand",
+        "on demand"
+      ],
+      "energy": [
+        "have the energy to",
+        "nuclear energy",
+        "source of energy",
+        "energy crisis"
+      ],
+      "form": [
+        "form an impression",
+        "take the form of",
+        "fill in a form",
+        "in the form of",
+        "application form"
+      ],
+      "good": [
+        "good for sb to do",
+        "a good deal",
+        "for your own good",
+        "it's no good doing"
+      ],
+      "know": [
+        "know about",
+        "know better",
+        "get to know",
+        "let sb know",
+        "in the know",
+        "know-how"
+      ],
+      "lead": [
+        "lead to",
+        "lead the way",
+        "take the lead",
+        "follow sb's lead",
+        "in the lead"
+      ],
+      "link": [
+        "link to",
+        "click on a link",
+        "find a link between"
+      ],
+      "place": [
+        "change places with",
+        "take the place of",
+        "put in place",
+        "in place of",
+        "out of place"
+      ],
+      "process": [
+        "the process of",
+        "in the process of",
+        "peace process",
+        "process of elimination"
+      ],
+      "purpose": [
+        "serve a purpose",
+        "the purpose of",
+        "sense of purpose",
+        "on purpose"
+      ],
+      "reality": [
+        "escape from reality",
+        "face reality",
+        "become a reality",
+        "in reality",
+        "virtual reality"
+      ],
+      "tool": [
+        "a tool for",
+        "toolbar",
+        "tool kit"
+      ],
+      "use": [
+        "use sth for",
+        "use sth as",
+        "in use",
+        "of no use",
+        "what's the use of?"
+      ],
+      "web": [
+        "surf the Web",
+        "on the Web",
+        "website",
+        "web page",
+        "webcam",
+        "blog"
+      ],
+      "wheel": [
+        "take the wheel",
+        "at the wheel",
+        "on wheels"
+      ]
     },
     "idioms": [
-      { "idiom": "a leopard can't change its spots", "meaning": "someone will never change their behaviour or character" },
-      { "idiom": "all modern conveniences", "meaning": "machines in your house that make life easy" },
-      { "idiom": "break the mould", "meaning": "do something very different from what is usually done" },
-      { "idiom": "change your tune", "meaning": "change your opinion or attitude" },
-      { "idiom": "have a change of heart", "meaning": "change your opinion about something" },
-      { "idiom": "know something inside out", "meaning": "be very familiar with something" },
-      { "idiom": "reinvent the wheel", "meaning": "waste time trying to do something already done well" },
-      { "idiom": "stick to your guns", "meaning": "refuse to change what you are saying or doing" },
-      { "idiom": "the tools of the trade", "meaning": "skills and equipment needed to do your job" },
-      { "idiom": "turn over a new leaf", "meaning": "change your life by starting to be a better person" }
+      {
+        "idiom": "a leopard can't change its spots",
+        "meaning": "someone will never change their behaviour or character"
+      },
+      {
+        "idiom": "all modern conveniences",
+        "meaning": "machines in your house that make life easy"
+      },
+      {
+        "idiom": "break the mould",
+        "meaning": "do something very different from what is usually done"
+      },
+      {
+        "idiom": "change your tune",
+        "meaning": "change your opinion or attitude"
+      },
+      {
+        "idiom": "have a change of heart",
+        "meaning": "change your opinion about something"
+      },
+      {
+        "idiom": "know something inside out",
+        "meaning": "be very familiar with something"
+      },
+      {
+        "idiom": "reinvent the wheel",
+        "meaning": "waste time trying to do something already done well"
+      },
+      {
+        "idiom": "stick to your guns",
+        "meaning": "refuse to change what you are saying or doing"
+      },
+      {
+        "idiom": "the tools of the trade",
+        "meaning": "skills and equipment needed to do your job"
+      },
+      {
+        "idiom": "turn over a new leaf",
+        "meaning": "change your life by starting to be a better person"
+      }
     ],
     "word_formation": [
-      { "base": "adapt", "noun": ["adaptation", "adaptor"], "adjective": ["adaptable"] },
-      { "base": "adjust", "noun": ["adjustment"], "adjective": ["adjustable"], "verb": ["readjust"] },
-      { "base": "alter", "noun": ["alteration"], "adjective": ["unalterable", "unaltered", "alternate", "alternative"] },
-      { "base": "arrange", "noun": ["arrangement"], "adjective": ["arranged"], "verb": ["rearrange"] },
-      { "base": "capable", "noun": ["capability"], "adjective": ["incapable"], "adverb": ["capably"] },
-      { "base": "change", "noun": ["exchange", "changeover"], "adjective": ["unchanging", "changeable", "interchangeable"] },
-      { "base": "continue", "noun": ["continuity", "continuation"], "adjective": ["continual", "continuous"], "verb": ["discontinue"] },
-      { "base": "convert", "noun": ["conversion"], "adjective": ["convertible"] },
-      { "base": "electric", "noun": ["electricity", "electrician"], "adjective": ["electrical", "electrifying"], "verb": ["electrify"] },
-      { "base": "endure", "noun": ["endurance"], "adjective": ["endurable", "enduring"] },
-      { "base": "evolve", "noun": ["evolution"], "adjective": ["evolutionary"] },
-      { "base": "flexible", "noun": ["flexibility"], "adjective": ["inflexible"] },
-      { "base": "influence", "adjective": ["influential"] },
-      { "base": "mature", "noun": ["maturity", "immaturity"], "adjective": ["immature"] },
-      { "base": "modern", "verb": ["modernise"], "noun": ["modernisation", "modernity"] },
-      { "base": "new", "verb": ["renew"], "noun": ["renewal", "newness"], "adjective": ["renewable"] },
-      { "base": "persist", "noun": ["persistence"], "adjective": ["persistent"] },
-      { "base": "place", "verb": ["replace"], "noun": ["replacement"], "adjective": ["irreplaceable"] },
-      { "base": "process", "noun": ["processor", "processing"], "adjective": ["processed"] },
-      { "base": "revolt", "noun": ["revolution"], "adjective": ["revolutionary", "revolting"], "verb": ["revolutionise"] }
+      {
+        "base": "adapt",
+        "noun": [
+          "adaptation",
+          "adaptor"
+        ],
+        "adjective": [
+          "adaptable"
+        ]
+      },
+      {
+        "base": "adjust",
+        "noun": [
+          "adjustment"
+        ],
+        "adjective": [
+          "adjustable"
+        ],
+        "verb": [
+          "readjust"
+        ]
+      },
+      {
+        "base": "alter",
+        "noun": [
+          "alteration"
+        ],
+        "adjective": [
+          "unalterable",
+          "unaltered",
+          "alternate",
+          "alternative"
+        ]
+      },
+      {
+        "base": "arrange",
+        "noun": [
+          "arrangement"
+        ],
+        "adjective": [
+          "arranged"
+        ],
+        "verb": [
+          "rearrange"
+        ]
+      },
+      {
+        "base": "capable",
+        "noun": [
+          "capability"
+        ],
+        "adjective": [
+          "incapable"
+        ],
+        "adverb": [
+          "capably"
+        ]
+      },
+      {
+        "base": "change",
+        "noun": [
+          "exchange",
+          "changeover"
+        ],
+        "adjective": [
+          "unchanging",
+          "changeable",
+          "interchangeable"
+        ]
+      },
+      {
+        "base": "continue",
+        "noun": [
+          "continuity",
+          "continuation"
+        ],
+        "adjective": [
+          "continual",
+          "continuous"
+        ],
+        "verb": [
+          "discontinue"
+        ]
+      },
+      {
+        "base": "convert",
+        "noun": [
+          "conversion"
+        ],
+        "adjective": [
+          "convertible"
+        ]
+      },
+      {
+        "base": "electric",
+        "noun": [
+          "electricity",
+          "electrician"
+        ],
+        "adjective": [
+          "electrical",
+          "electrifying"
+        ],
+        "verb": [
+          "electrify"
+        ]
+      },
+      {
+        "base": "endure",
+        "noun": [
+          "endurance"
+        ],
+        "adjective": [
+          "endurable",
+          "enduring"
+        ]
+      },
+      {
+        "base": "evolve",
+        "noun": [
+          "evolution"
+        ],
+        "adjective": [
+          "evolutionary"
+        ]
+      },
+      {
+        "base": "flexible",
+        "noun": [
+          "flexibility"
+        ],
+        "adjective": [
+          "inflexible"
+        ]
+      },
+      {
+        "base": "influence",
+        "adjective": [
+          "influential"
+        ]
+      },
+      {
+        "base": "mature",
+        "noun": [
+          "maturity",
+          "immaturity"
+        ],
+        "adjective": [
+          "immature"
+        ]
+      },
+      {
+        "base": "modern",
+        "verb": [
+          "modernise"
+        ],
+        "noun": [
+          "modernisation",
+          "modernity"
+        ]
+      },
+      {
+        "base": "new",
+        "verb": [
+          "renew"
+        ],
+        "noun": [
+          "renewal",
+          "newness"
+        ],
+        "adjective": [
+          "renewable"
+        ]
+      },
+      {
+        "base": "persist",
+        "noun": [
+          "persistence"
+        ],
+        "adjective": [
+          "persistent"
+        ]
+      },
+      {
+        "base": "place",
+        "verb": [
+          "replace"
+        ],
+        "noun": [
+          "replacement"
+        ],
+        "adjective": [
+          "irreplaceable"
+        ]
+      },
+      {
+        "base": "process",
+        "noun": [
+          "processor",
+          "processing"
+        ],
+        "adjective": [
+          "processed"
+        ]
+      },
+      {
+        "base": "revolt",
+        "noun": [
+          "revolution"
+        ],
+        "adjective": [
+          "revolutionary",
+          "revolting"
+        ],
+        "verb": [
+          "revolutionise"
+        ]
+      }
     ],
     "exercises": {
       "A": {
         "title": "Complete using the correct form of the words",
         "instructions": "Complete the sentences with the correct form of the words in brackets.",
         "questions": [
-          { "sentence": "Sometimes I wonder how many of the changes we see around us will really ______.", "answer": "last" },
-          { "sentence": "There has been a real ______ in attitudes towards this lately.", "answer": "shift" },
-          { "sentence": "Mobile phones that receive TV programmes are a real ______.", "answer": "breakthrough" },
-          { "sentence": "Iris has a lot of ______ and should do well in her future career.", "answer": "potential" },
-          { "sentence": "You have to try to be ______ about the situation and use your experience to find a solution.", "answer": "mature" },
-          { "sentence": "This isn't my laptop! Someone must have ______ my bag and theirs.", "answer": "mixed up" },
-          { "sentence": "We've made a lot of ______ with the plans, but we still have a long way to go.", "answer": "progress" },
-          { "sentence": "You might have learnt the theory, but there's no ______ for practical experience.", "answer": "substitute" },
-          { "sentence": "When trees fall and start to ______, they provide a home for many insects.", "answer": "decay" },
-          { "sentence": "I've ______ the design by giving the car six wings instead of four.", "answer": "modified" }
+          {
+            "sentence": "I'm not sure how many of the new habits people picked up during lockdown will really ______.",
+            "answer": "last"
+          },
+          {
+            "sentence": "There has been a noticeable ______ in public opinion on this issue over the past year.",
+            "answer": "shift"
+          },
+          {
+            "sentence": "The ability to charge a phone wirelessly was a genuine ______ in consumer technology.",
+            "answer": "breakthrough"
+          },
+          {
+            "sentence": "Sofia has enormous ______ as a researcher and is expected to make significant contributions to the field.",
+            "answer": "potential"
+          },
+          {
+            "sentence": "You need to be ______ about this setback and use what you've learnt to move forward.",
+            "answer": "mature"
+          },
+          {
+            "sentence": "I'm sorry, but the lab technician must have ______ my sample with someone else's.",
+            "answer": "mixed up"
+          },
+          {
+            "sentence": "The project team has made considerable ______, but there are still several phases left to complete.",
+            "answer": "progress"
+          },
+          {
+            "sentence": "When it comes to developing empathy, there is simply no ______ for real-life experience.",
+            "answer": "substitute"
+          },
+          {
+            "sentence": "If organic matter is left in warm, moist conditions, it will begin to ______ rapidly.",
+            "answer": "decay"
+          },
+          {
+            "sentence": "The engineer ______ the original blueprint by replacing two of the support beams with lighter alloys.",
+            "answer": "modified"
+          }
         ]
       },
       "B": {
         "title": "Choose the correct word",
-        "instructions": "Choose the correct word to complete the text about the changing face of Britain.",
-        "passage": "It seemed to the generation of Britons alive before the Second World War that their way of life would (1) ...... for many years to come. However, the war caused a (2) ...... in British life that completely changed the (3) ...... . What had been a fairly (4) ...... society up to that point, with people sharing many basic beliefs and values, underwent (5) ...... changes after the war. The (6) ...... was away from fixed social roles and towards a more (7) ...... society. Britain began to (8) ...... into its present form and many ideas that are accepted today, such as a large amount of freedom for teenagers, were at the time (9) ...... and exciting. New and (10) ...... music and fashion had a great (11) ...... on young people and the whole of Britain became less (12) ...... .",
+        "instructions": "Choose the correct word to complete the text about the transformation of post-war Japan.",
+        "passage": "Many observers believed that the traditional structures of Japanese society would (1) ...... well into the modern era. Yet the aftermath of the Second World War triggered a (2) ...... in Japanese life that fundamentally altered the (3) ...... . What had been a relatively (4) ...... society, built around shared customs and hierarchies, underwent (5) ...... reform in the years that followed. The dominant (6) ...... was away from rigid social conformity and towards a more (7) ...... economy open to global competition. Japan began to (8) ...... into one of the world's leading industrial powers, and concepts that are now taken for granted, such as mass consumerism, were at the time (9) ...... and exhilarating. Bold and (10) ...... manufacturing processes had a powerful (11) ...... on the nation's identity, and the whole of Japanese society gradually became less (12) ...... in its outlook.",
         "questions": [
-          { "sentence": "1", "options": ["A sustain", "B maintain", "C last", "D be"], "answer": "C" },
-          { "sentence": "2", "options": ["A revolution", "B revision", "C rotation", "D rejection"], "answer": "A" },
-          { "sentence": "3", "options": ["A social status", "B status quo", "C status symbol", "D high status"], "answer": "B" },
-          { "sentence": "4", "options": ["A uniform", "B same", "C similar", "D identical"], "answer": "A" },
-          { "sentence": "5", "options": ["A refined", "B potential", "C alternative", "D radical"], "answer": "D" },
-          { "sentence": "6", "options": ["A reform", "B trend", "C fashion", "D decay"], "answer": "B" },
-          { "sentence": "7", "options": ["A revised", "B amended", "C dynamic", "D different"], "answer": "C" },
-          { "sentence": "8", "options": ["A refine", "B progress", "C substitute", "D evolve"], "answer": "D" },
-          { "sentence": "9", "options": ["A novel", "B mature", "C alternate", "D steady"], "answer": "A" },
-          { "sentence": "10", "options": ["A internal", "B incoherent", "C innate", "D innovative"], "answer": "D" },
-          { "sentence": "11", "options": ["A substitute", "B progress", "C influence", "D innovation"], "answer": "C" },
-          { "sentence": "12", "options": ["A conservative", "B concerned", "C convinced", "D contained"], "answer": "A" }
+          {
+            "sentence": "1",
+            "options": [
+              "A sustain",
+              "B maintain",
+              "C last",
+              "D be"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "2",
+            "options": [
+              "A revolution",
+              "B revision",
+              "C rotation",
+              "D rejection"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "3",
+            "options": [
+              "A social status",
+              "B status quo",
+              "C status symbol",
+              "D high status"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "4",
+            "options": [
+              "A uniform",
+              "B same",
+              "C similar",
+              "D identical"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "5",
+            "options": [
+              "A refined",
+              "B potential",
+              "C alternative",
+              "D radical"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "6",
+            "options": [
+              "A reform",
+              "B trend",
+              "C fashion",
+              "D decay"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "7",
+            "options": [
+              "A revised",
+              "B amended",
+              "C dynamic",
+              "D different"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "8",
+            "options": [
+              "A refine",
+              "B progress",
+              "C substitute",
+              "D evolve"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "9",
+            "options": [
+              "A novel",
+              "B mature",
+              "C alternate",
+              "D steady"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "10",
+            "options": [
+              "A internal",
+              "B incoherent",
+              "C innate",
+              "D innovative"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "11",
+            "options": [
+              "A substitute",
+              "B progress",
+              "C influence",
+              "D innovation"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "12",
+            "options": [
+              "A conservative",
+              "B concerned",
+              "C convinced",
+              "D contained"
+            ],
+            "answer": "A"
+          }
         ]
       },
       "C": {
         "title": "Complete using the correct form of the words",
         "instructions": "Complete each sentence with the correct form of a word from the box.",
-        "words": ["amend", "distort", "maintain", "remain", "adapt", "adjust", "alternate", "alternative", "persist", "sustain", "convert", "transform", "deteriorate", "spoil"],
+        "words": [
+          "amend",
+          "distort",
+          "maintain",
+          "remain",
+          "adapt",
+          "adjust",
+          "alternate",
+          "alternative",
+          "persist",
+          "sustain",
+          "convert",
+          "transform",
+          "deteriorate",
+          "spoil"
+        ],
         "questions": [
-          { "sentence": "It's time we completely ______ the whole prison system.", "answer": "reformed" },
-          { "sentence": "I'd like you to ______ your report to include more information about costs.", "answer": "amend" },
-          { "sentence": "I thought the report in the paper completely ______ the truth.", "answer": "distorted" },
-          { "sentence": "I've ______ the contract and it now says that you will receive 15%.", "answer": "revised" },
-          { "sentence": "I sometimes find it hard to ______ a balance between work and my home life.", "answer": "strike" },
-          { "sentence": "The important thing is to ______ calm and try to think logically.", "answer": "remain" },
-          { "sentence": "You can ______ the chair to make it comfortable by pressing this button.", "answer": "adjust" },
-          { "sentence": "This company needs to ______ or we're not going to survive.", "answer": "change" },
-          { "sentence": "Mike and I meet for coffee on ______ Saturdays.", "answer": "alternate" },
-          { "sentence": "There's a lot of traffic, so I'm trying to find an ______ route.", "answer": "alternative" },
-          { "sentence": "You'll regret it if you ______ in annoying people like that.", "answer": "persist" },
-          { "sentence": "Can the company ______ the kind of growth we've had recently?", "answer": "sustain" },
-          { "sentence": "Many people in Britain ______ to Christianity during the Roman period.", "answer": "converted" },
-          { "sentence": "Learning to use the Internet has really ______ my life.", "answer": "transformed" },
-          { "sentence": "I hope the bad weather didn't ______ your holiday.", "answer": "spoil" }
+          {
+            "sentence": "The new health minister believes it is long overdue to completely ______ the healthcare system.",
+            "answer": "reform"
+          },
+          {
+            "sentence": "Could you please ______ the proposal to include the latest projected costs?",
+            "answer": "amend"
+          },
+          {
+            "sentence": "Critics argued that the documentary ______ the facts to make the story far more dramatic than it really was.",
+            "answer": "distorted"
+          },
+          {
+            "sentence": "The editor ______ the contract, which now states that the author will receive a higher royalty rate.",
+            "answer": "revised"
+          },
+          {
+            "sentence": "Running a successful café requires the owner to ______ a careful balance between quality and affordability.",
+            "answer": "maintain"
+          },
+          {
+            "sentence": "In an emergency, it is absolutely vital to ______ calm and follow the safety procedures.",
+            "answer": "remain"
+          },
+          {
+            "sentence": "You can ______ the height of the monitor by loosening the screw at the back.",
+            "answer": "adjust"
+          },
+          {
+            "sentence": "Unless this organisation is willing to ______, it simply will not survive in the current market.",
+            "answer": "adapt"
+          },
+          {
+            "sentence": "The committee meets on ______ Thursdays, so the next session will be in a fortnight.",
+            "answer": "alternate"
+          },
+          {
+            "sentence": "The bridge is closed, so let's take an ______ route to get to the conference centre.",
+            "answer": "alternative"
+          },
+          {
+            "sentence": "If you ______ in ignoring the warning signs, the situation will only get worse.",
+            "answer": "persist"
+          },
+          {
+            "sentence": "Is there sufficient funding to ______ this level of community support over the next three years?",
+            "answer": "sustain"
+          },
+          {
+            "sentence": "The disused railway station was ______ into a thriving arts and food market.",
+            "answer": "converted"
+          },
+          {
+            "sentence": "Access to high-speed internet has completely ______ the way millions of people work from home.",
+            "answer": "transformed"
+          },
+          {
+            "sentence": "I hope the delays at the airport didn't ______ your plans for the first day of the conference.",
+            "answer": "spoil"
+          }
         ]
       },
       "D": {
         "title": "Correct the wrong word",
         "instructions": "If the word in bold is correct, put a tick. If it is incorrect, replace it with the correct word from the box.",
-        "words": ["console", "broadband", "primitive", "nuclear", "crafted", "technique", "network", "breakthrough", "data", "resource"],
+        "words": [
+          "console",
+          "broadband",
+          "primitive",
+          "nuclear",
+          "crafted",
+          "technique",
+          "network",
+          "breakthrough",
+          "data",
+          "resource"
+        ],
         "questions": [
-          { "sentence": "The Internet is really a vast **console** of computers, all connected together.", "answer": "network" },
-          { "sentence": "Since we got **resource**, we've been watching music videos online.", "answer": "broadband" },
-          { "sentence": "Early computer games seem quite **nuclear** compared to today's games.", "answer": "primitive" },
-          { "sentence": "It seems to me that **primitive** power is far cleaner than oil.", "answer": "nuclear" },
-          { "sentence": "These ancient tools have been **crafted** with an enormous amount of skill.", "answer": "✓" },
-          { "sentence": "The next generation of games **technique** will have better graphics.", "answer": "console" },
-          { "sentence": "There's a **network** in computing called 'beta testing', which means you test something to see if it works properly before it becomes official.", "answer": "technique" },
-          { "sentence": "This latest **breakthrough** will mean cheaper, faster internet access for all.", "answer": "✓" },
-          { "sentence": "The computer has finished analysing all the **broadband**.", "answer": "data" },
-          { "sentence": "The sea is a great natural **data** but we need the right technology to use it.", "answer": "resource" }
+          {
+            "sentence": "A social media platform is essentially a global **console** of interconnected users and servers.",
+            "answer": "network"
+          },
+          {
+            "sentence": "Ever since the school upgraded its **resource** connection, video lessons have run without any interruption.",
+            "answer": "broadband"
+          },
+          {
+            "sentence": "By today's standards, the earliest navigation apps seem remarkably **nuclear** in what they could offer.",
+            "answer": "primitive"
+          },
+          {
+            "sentence": "The government has announced plans to invest in **primitive** energy as a cleaner alternative to fossil fuels.",
+            "answer": "nuclear"
+          },
+          {
+            "sentence": "Every item in the exhibition has been **crafted** by hand using centuries-old woodworking traditions.",
+            "answer": "✓"
+          },
+          {
+            "sentence": "My nephew has been completely absorbed in his gaming **technique** since he unwrapped it on his birthday.",
+            "answer": "console"
+          },
+          {
+            "sentence": "The instructor introduced a new memory **network** that the students found extremely helpful for revision.",
+            "answer": "technique"
+          },
+          {
+            "sentence": "Scientists have hailed the new vaccine as a major **breakthrough** in the fight against antibiotic-resistant bacteria.",
+            "answer": "✓"
+          },
+          {
+            "sentence": "The research team spent months collecting **broadband** before they were in a position to draw any conclusions.",
+            "answer": "data"
+          },
+          {
+            "sentence": "Sunlight is the most abundant natural **data** available for generating clean, renewable electricity.",
+            "answer": "resource"
+          }
         ]
       },
       "E": {
         "title": "Complete using the correct form of the words",
-        "instructions": "Complete the job advertisement with the correct form of the words in the box.",
-        "words": ["click", "complex", "download", "electronics", "file", "manual", "offline", "online", "programmer", "upload"],
+        "instructions": "Complete the technology training advertisement with the correct form of the words in the box.",
+        "words": [
+          "click",
+          "complex",
+          "download",
+          "electronics",
+          "file",
+          "manual",
+          "offline",
+          "online",
+          "programmer",
+          "upload"
+        ],
         "questions": [
-          { "sentence": "If you're interested in becoming a computer (1) ______", "answer": "programmer" },
-          { "sentence": "if you enjoy reading the (2) ______ to find out what's really going on inside consumer (3) ______", "answer": "manual", "answer2": "electronics" },
-          { "sentence": "Our six-week course covers everything from (4) ______ music (5) ______ from the Internet", "answer": "downloading", "answer2": "files" },
-          { "sentence": "You'll learn how to (6) ______ your own website to the Internet", "answer": "upload" },
-          { "sentence": "and how to solve (7) ______ problems", "answer": "complex" },
-          { "sentence": "Go (8) ______ now and visit us on the net. (9) ______ on 'Opportunities'", "answer": "online", "answer2": "Click" },
-          { "sentence": "If for any reason our website is (10) ______, call us", "answer": "offline" }
+          {
+            "sentence": "Are you passionate about becoming a computer (1) ______",
+            "answer": "programmer"
+          },
+          {
+            "sentence": "and do you prefer reading the (2) ______ to truly understand how consumer (3) ______ works under the surface?",
+            "answer": "manual",
+            "answer2": "electronics"
+          },
+          {
+            "sentence": "Our intensive eight-week course teaches you everything from how to (4) ______ and organise your (5) ______ in the cloud",
+            "answer": "download",
+            "answer2": "files"
+          },
+          {
+            "sentence": "to how to (6) ______ your own projects to a remote server",
+            "answer": "upload"
+          },
+          {
+            "sentence": "and how to resolve (7) ______ debugging challenges with confidence.",
+            "answer": "complex"
+          },
+          {
+            "sentence": "Go (8) ______ today and explore our full course catalogue. Simply (9) ______ on 'Enrol Now' to get started.",
+            "answer": "online",
+            "answer2": "Click"
+          },
+          {
+            "sentence": "If our portal is ever (10) ______ for maintenance, our helpdesk team is always available by phone.",
+            "answer": "offline"
+          }
         ]
       },
       "F": {
         "title": "Phrasal verbs",
         "instructions": "Write a phrasal verb in the correct form to replace the words in italics. Use the word given in brackets.",
         "questions": [
-          { "sentence": "Why don't you *remove* ______ those wet things and put something dry on? (out)", "answer": "change out of" },
-          { "sentence": "The image on the screen slowly *disappeared* ______ and I knew it was a computer virus. (away)", "answer": "faded away" },
-          { "sentence": "Let's *test* ______ your new game and see if it works. (out)", "answer": "try out" },
-          { "sentence": "You'll regret it if you don't *make a copy of* ______ your important data. (up)", "answer": "back up" },
-          { "sentence": "Have you *recorded on all of* ______ the blank CDs I gave you? (up)", "answer": "used up" },
-          { "sentence": "Did you hear they're thinking of *getting rid of* ______ identity cards? (away)", "answer": "doing away with" },
-          { "sentence": "You need to *put in using the keyboard* ______ your details and then press 'enter'. (in)", "answer": "key in" },
-          { "sentence": "We should *redecorate* ______ Jake's bedroom now he's left home. (up)", "answer": "do up" }
+          {
+            "sentence": "You should *take off* ______ your muddy boots before walking across the kitchen floor. (out)",
+            "answer": "change out of"
+          },
+          {
+            "sentence": "The sound of the music slowly *died* ______ as the car disappeared around the corner. (away)",
+            "answer": "faded away"
+          },
+          {
+            "sentence": "Would you like to *experiment with* ______ the new translation software before the company commits to buying it? (out)",
+            "answer": "try out"
+          },
+          {
+            "sentence": "Make sure you regularly *save a copy of* ______ all your research files in case the hard drive fails. (up)",
+            "answer": "back up"
+          },
+          {
+            "sentence": "I can't print anything — we've *consumed all of* ______ the ink cartridges already. (up)",
+            "answer": "used up"
+          },
+          {
+            "sentence": "The school is considering *abolishing* ______ written homework entirely in favour of digital projects. (away)",
+            "answer": "doing away with"
+          },
+          {
+            "sentence": "Please *enter* ______ your PIN number carefully before confirming the transaction. (in)",
+            "answer": "key in"
+          },
+          {
+            "sentence": "They are planning to *renovate* ______ the old warehouse and convert it into a community arts space. (up)",
+            "answer": "do up"
+          }
         ]
       },
       "G": {
         "title": "Complete using phrasal verbs",
         "instructions": "Complete using the correct form of the phrasal verbs in the box.",
-        "words": ["change around", "change into", "mix up", "switch on", "take apart", "turn into", "wear out"],
+        "words": [
+          "change around",
+          "change into",
+          "mix up",
+          "switch on",
+          "take apart",
+          "turn into",
+          "wear out"
+        ],
         "questions": [
-          { "sentence": "Could you send someone to look at my computer, because nothing happens when I ______ it ______?", "answer": "switch on" },
-          { "sentence": "I ______ my watch ______ to see what was wrong with it, but I couldn't put it back together again!", "answer": "took apart" },
-          { "sentence": "Your essay would make more sense if you ______ the second and third paragraphs ______.", "answer": "changed around" },
-          { "sentence": "One of the miracles of nature is the way a caterpillar ______ a butterfly.", "answer": "turns into" },
-          { "sentence": "I played so much football last season that I ______ two pairs of boots!", "answer": "wore out" },
-          { "sentence": "In the story, Cinderella's coach ______ a pumpkin at midnight.", "answer": "changed into" },
-          { "sentence": "My CDs were all in order and now someone's ______ them ______.", "answer": "mixed up" },
-          { "sentence": "I think they've ______ the old library ______ a really nice space for children to read in.", "answer": "made into" }
+          {
+            "sentence": "The projector just shows a black screen when I ______ it ______. Could you please call the IT helpdesk?",
+            "answer": "switch on"
+          },
+          {
+            "sentence": "Theo ______ the broken printer ______ piece by piece, but he couldn't identify what was wrong with it.",
+            "answer": "took apart"
+          },
+          {
+            "sentence": "Your presentation would flow much better if you ______ the third and fourth slides ______.",
+            "answer": "changed around"
+          },
+          {
+            "sentence": "One of the most astonishing aspects of metamorphosis is the way a caterpillar eventually ______ a butterfly.",
+            "answer": "turns into"
+          },
+          {
+            "sentence": "Nadia walked so much during the city tour that she completely ______ her brand new trainers.",
+            "answer": "wore out"
+          },
+          {
+            "sentence": "The moment the wizard waved his wand, the pumpkin ______ a gleaming golden carriage.",
+            "answer": "changed into"
+          },
+          {
+            "sentence": "Someone must have ______ our suitcases ______ at the airport — none of these clothes belong to me.",
+            "answer": "mixed up"
+          },
+          {
+            "sentence": "The local council has ______ the derelict car park ______ a pleasant green space with benches and a fountain.",
+            "answer": "made into"
+          }
         ]
       },
       "H": {
         "title": "Phrasal verbs meaning 'improve'",
         "instructions": "Put the following phrasal verbs into the sentences and tick (✓) the sentences where the phrasal verb means something like 'improve'.",
-        "words": ["bring up", "brush up", "cheer up", "dress up", "make up", "take up", "tidy up", "turn up"],
+        "words": [
+          "bring up",
+          "brush up",
+          "cheer up",
+          "dress up",
+          "make up",
+          "take up",
+          "tidy up",
+          "turn up"
+        ],
         "questions": [
-          { "sentence": "Why don't you ______ yoga?", "answer": "take up", "improve": false },
-          { "sentence": "I was depressed all day, but I started to ______ when I saw Alec.", "answer": "cheer up", "improve": true },
-          { "sentence": "I'm going to ______ my French before we go on holiday.", "answer": "brush up", "improve": true },
-          { "sentence": "How could you ______ such a ridiculous excuse?", "answer": "make up", "improve": false },
-          { "sentence": "If you ______ your room, then you'll be able to find things more easily.", "answer": "tidy up", "improve": true },
-          { "sentence": "Why did you have to ______ the fact that Dennis has lost his job?", "answer": "bring up", "improve": false },
-          { "sentence": "Let's ______ and go out to that new Italian restaurant tonight.", "answer": "dress up", "improve": false },
-          { "sentence": "What time did Nigel finally ______ at the party, then?", "answer": "turn up", "improve": false }
+          {
+            "sentence": "Have you thought about ______ photography as a hobby?",
+            "answer": "take up",
+            "improve": false
+          },
+          {
+            "sentence": "Elena had been feeling low all morning, but she started to ______ after speaking with her mentor.",
+            "answer": "cheer up",
+            "improve": true
+          },
+          {
+            "sentence": "Pedro decided to ______ on his presentation skills ahead of the international conference.",
+            "answer": "brush up",
+            "improve": true
+          },
+          {
+            "sentence": "I can't believe he would ______ such a far-fetched excuse for missing the deadline.",
+            "answer": "make up",
+            "improve": false
+          },
+          {
+            "sentence": "If you ______ your workspace at the end of each day, you'll find it much easier to focus tomorrow.",
+            "answer": "tidy up",
+            "improve": true
+          },
+          {
+            "sentence": "Please don't ______ the disagreement about the budget again — everyone agreed it was resolved.",
+            "answer": "bring up",
+            "improve": false
+          },
+          {
+            "sentence": "The children love to ______ as their favourite characters for the school's charity fundraiser.",
+            "answer": "dress up",
+            "improve": false
+          },
+          {
+            "sentence": "The keynote speaker didn't ______ until a full hour after the event was scheduled to begin.",
+            "answer": "turn up",
+            "improve": false
+          }
         ]
       },
       "I": {
         "title": "Write one word in each gap",
         "instructions": "Complete each sentence with one word to form common collocations.",
         "questions": [
-          { "sentence": "The government's decision not to publish this report represents a real ______ with tradition.", "answer": "break" },
-          { "sentence": "Bill Gates made his money by satisfying the ______ for computer operating systems that were easy to use.", "answer": "demand" },
-          { "sentence": "You should ______ better than to spend all your time playing computer games when you've got exams next week.", "answer": "know" },
-          { "sentence": "I was ______ the Web when I came across a site that had lots of information about my favourite band.", "answer": "surfing" },
-          { "sentence": "Click on the ______ below to become a member and enjoy everything that MusicOnline has to offer.", "answer": "link" },
-          { "sentence": "We've lived in this area for over 20 years, and I can tell you that things have definitely ______ for the worse.", "answer": "changed" },
-          { "sentence": "When you're ______ the wheel of the new T4 sports car, it's obvious that there's a lot of computing power under the bonnet.", "answer": "at" },
-          { "sentence": "People's attitudes to disability are changing and more and more places have wheelchair ______ these days.", "answer": "access" },
-          { "sentence": "Now, don't complain about having to spend the holidays away from your computer – it's for your own ______ and you'll thank me later.", "answer": "good" },
-          { "sentence": "Since she changed jobs, Anne has really thrown her ______ into her career.", "answer": "energy" },
-          { "sentence": "You should keep your computer system up to ______, or you might find that some programs won't run.", "answer": "date" },
-          { "sentence": "The workman said that he needed a spanner and asked me to pass him one from his ______ kit.", "answer": "tool" }
+          {
+            "sentence": "The committee's refusal to allow any public debate represents a troubling ______ with established procedure.",
+            "answer": "break"
+          },
+          {
+            "sentence": "The app developer identified a growing ______ for mobile fitness tracking among young professionals.",
+            "answer": "demand"
+          },
+          {
+            "sentence": "You should ______ better than to leave your laptop unlocked on a café table when you step away.",
+            "answer": "know"
+          },
+          {
+            "sentence": "I was ______ the Web late one evening when I stumbled across a fascinating forum about urban photography.",
+            "answer": "surfing"
+          },
+          {
+            "sentence": "Click on the ______ provided in the confirmation email to activate your account.",
+            "answer": "link"
+          },
+          {
+            "sentence": "The neighbourhood has definitely ______ for the better since the regeneration project was completed.",
+            "answer": "changed"
+          },
+          {
+            "sentence": "The racing driver explained that being ______ the wheel of such a powerful machine demands absolute concentration.",
+            "answer": "at"
+          },
+          {
+            "sentence": "The newly installed ramp ensures that visitors have full wheelchair ______ to every floor of the building.",
+            "answer": "access"
+          },
+          {
+            "sentence": "Don't complain about missing the concert — it was for your own ______, as you had an exam first thing the next morning.",
+            "answer": "good"
+          },
+          {
+            "sentence": "After the two-week hiking expedition, Clara simply didn't have the ______ to unpack her bags.",
+            "answer": "energy"
+          },
+          {
+            "sentence": "It is essential to keep your antivirus software up to ______ if you want to stay protected against the latest threats.",
+            "answer": "date"
+          },
+          {
+            "sentence": "The plumber asked his apprentice to pass him a wrench from his ______ kit.",
+            "answer": "tool"
+          }
         ]
       },
       "J": {
         "title": "Write one word in each gap (text)",
-        "instructions": "Write one word in each gap to complete the text about changing ambitions.",
+        "instructions": "Write one word in each gap to complete the text about shifting career choices.",
         "questions": [
-          { "sentence": "It used to be accepted wisdom that higher education provides access (1) ______ better-paid careers.", "answer": "to" },
-          { "sentence": "However, the world of work has changed in recent decades, (2) ______ one where few people had university degrees to one where they are very common.", "answer": "from" },
-          { "sentence": "A (3) ______ many underpaid teachers, managers and other professionals are considering a career change.", "answer": "good" },
-          { "sentence": "Swapping the desk for the (4) ______ box, many are retraining to become skilled manual workers, who are very much (5) ______ demand.", "answer": "tool", "answer2": "in" },
-          { "sentence": "Those who (6) ______ the change are finding that as plumbers, gas fitters and electricians they can earn a good (7) ______ more than they used to.", "answer": "make", "answer2": "deal" },
-          { "sentence": "Workers who (8) ______ something about these vital services can demand high fees (9) ______ customers and often enjoy considerable independence.", "answer": "know", "answer2": "from" },
-          { "sentence": "in (10) ______ of the controlled working environment in a school or office.", "answer": "place" },
-          { "sentence": "Of course, those who (11) ______ the break know that if it doesn't work out they can usually go back to their profession (12) ______ a later date.", "answer": "make", "answer2": "at" }
+          {
+            "sentence": "Many graduates once believed that a university degree guaranteed them access (1) ______ a stable and well-paid career.",
+            "answer": "to"
+          },
+          {
+            "sentence": "Yet the employment landscape has shifted dramatically in recent years, (2) ______ an era of straightforward job security to one where flexibility is prized above all else.",
+            "answer": "from"
+          },
+          {
+            "sentence": "A (3) ______ number of former office workers are now exploring entirely new paths.",
+            "answer": "good"
+          },
+          {
+            "sentence": "Trading in their laptop for a (4) ______ box, many are retraining as electricians, joiners and landscape gardeners — professions that remain very much (5) ______ demand.",
+            "answer": "tool",
+            "answer2": "in"
+          },
+          {
+            "sentence": "Those who (6) ______ this transition often discover they can earn a (7) ______ more than they did at their previous desk-bound roles.",
+            "answer": "make",
+            "answer2": "deal"
+          },
+          {
+            "sentence": "Professionals who (8) ______ their craft thoroughly are able to set their own rates and work (9) ______ a range of clients, rather than being tied to a single employer.",
+            "answer": "know",
+            "answer2": "from"
+          },
+          {
+            "sentence": "working entirely (10) ______ of the controlled environment of an office.",
+            "answer": "place"
+          },
+          {
+            "sentence": "Of course, those who (11) ______ such a move understand that, should things not work out, they can usually return to their original field (12) ______ a later stage.",
+            "answer": "make",
+            "answer2": "at"
+          }
         ]
       },
       "K": {
         "title": "One word for three sentences",
         "instructions": "For each question, write one word which can be used in all three sentences.",
         "questions": [
-          { "sentence": "There will be a help line when the new system is in ______. / It's of no ______ to me any more. / What's the ______ of trying to keep up?", "answer": "use" },
-          { "sentence": "Megan needs to face up to ______. / I don't think people have changed that much in ______. / ______ TV has become very popular.", "answer": "reality" },
-          { "sentence": "Many phones wouldn't look out of ______ in sci-fi films. / Vikram's been offered a ______ at Oxford. / Nothing will take the ______ of my old radio.", "answer": "place" },
-          { "sentence": "Do all these lights serve a ______? / Jerry lacks a sense of ______. / Alfie wouldn't have sent you a virus on ______.", "answer": "purpose" },
-          { "sentence": "You compete against the ______. / People watch the ______ until it's time to leave. / We provide support around the ______.", "answer": "clock" },
-          { "sentence": "In the ______ of the first games consoles. / Fill out the ______ online. / All the players have been in good ______.", "answer": "form" },
-          { "sentence": "I was in the ______ of texting Debbie. / The Middle East peace ______ could be restarted. / It's just a ______ of elimination.", "answer": "process" },
-          { "sentence": "The path ______ around the side of the building. / What ______ you to come up with that idea? / The scientist ______ me into the laboratory.", "answer": "led" }
+          {
+            "sentence": "The updated system has been in ______ since the beginning of the year. / This instruction manual is of absolutely no ______ without the diagrams. / What's the ______ of upgrading your phone every twelve months?",
+            "answer": "use"
+          },
+          {
+            "sentence": "Sophie struggles to separate her online world from ______. / In ______, very few people ever read the terms and conditions in full. / Augmented ______ is transforming the way visitors experience museums.",
+            "answer": "reality"
+          },
+          {
+            "sentence": "Nothing will ever take the ______ of a genuine face-to-face conversation. / The new data protection rules are already in ______ and working smoothly. / Wearing a formal suit to a beach barbecue looks completely out of ______.",
+            "answer": "place"
+          },
+          {
+            "sentence": "This new feature doesn't appear to serve any practical ______. / Without clear goals, it is difficult for people to feel a genuine sense of ______. / I know it sounds strange, but I said it entirely on ______.",
+            "answer": "purpose"
+          },
+          {
+            "sentence": "The deadline is tomorrow, so the whole team is working against the ______. / The security guard watched the ______ on the wall all evening, waiting for his shift to end. / Our helpdesk operates around the ______, every day of the year.",
+            "answer": "clock"
+          },
+          {
+            "sentence": "The agreement should ______ the foundation for all future negotiations. / You can complete the application ______ directly on our website. / The athlete has returned to top ______ after six months of rehabilitation.",
+            "answer": "form"
+          },
+          {
+            "sentence": "The repairs are still in the ______ of being completed and should be finished by Friday. / We are using a systematic ______ of elimination to identify the source of the fault. / The ______ for renewing your licence online has been greatly simplified.",
+            "answer": "process"
+          },
+          {
+            "sentence": "The new evidence ______ investigators to reconsider their initial conclusions. / A narrow corridor ______ them towards a brightly lit laboratory at the end of the building. / It was her insatiable curiosity that ultimately ______ to the discovery.",
+            "answer": "led"
+          }
         ]
       },
       "L": {
         "title": "Complete idioms",
         "instructions": "Complete each dialogue using the appropriate form of an idiom from the box.",
-        "words": ["a leopard can't change its spots", "all mod cons", "break the mould", "change your tune", "have a change of heart", "know something inside out", "reinvent the wheel", "stick to your guns", "the tools of the trade", "turn over a new leaf"],
+        "words": [
+          "a leopard can't change its spots",
+          "all mod cons",
+          "break the mould",
+          "change your tune",
+          "have a change of heart",
+          "know something inside out",
+          "reinvent the wheel",
+          "stick to your guns",
+          "the tools of the trade",
+          "turn over a new leaf"
+        ],
         "questions": [
-          { "sentence": "It would really ______ for them to choose a woman to run the company, but I hope so.", "answer": "break the mould" },
-          { "sentence": "Well, I ______ and decided to just ignore it after all.", "answer": "had a change of heart" },
-          { "sentence": "Let's hope he's ______.", "answer": "turning over a new leaf" },
-          { "sentence": "Well, there's no point ______, is there?", "answer": "reinventing the wheel" },
-          { "sentence": "I think you should ______ and show her you're serious.", "answer": "stick to your guns" },
-          { "sentence": "I know, but ______, you know.", "answer": "a leopard can't change its spots" },
-          { "sentence": "You've ______, haven't you? You said she annoyed you.", "answer": "changed your tune" },
-          { "sentence": "It's what I do for a living, so they're just ______, really.", "answer": "the tools of the trade" },
-          { "sentence": "It's got ______ and it's handy for the train.", "answer": "all mod cons" },
-          { "sentence": "Oh, she ______ computers ______, doesn't she?", "answer": "knows inside out" }
+          {
+            "sentence": "A: Do you think the new director will really bring fresh ideas to the company? B: I hope so — it would really ______ if she actually moved away from the usual top-down approach.",
+            "answer": "break the mould"
+          },
+          {
+            "sentence": "A: I thought you were planning to file a formal complaint? B: Well, I ______ and decided it simply wasn't worth the hassle.",
+            "answer": "had a change of heart"
+          },
+          {
+            "sentence": "A: Has Marco been arriving on time this week? B: Yes, apparently he's finally ______.",
+            "answer": "turning over a new leaf"
+          },
+          {
+            "sentence": "A: Why don't we just adapt the reporting template the finance team already uses? B: Precisely — there's no point ______ when it already does the job perfectly.",
+            "answer": "reinventing the wheel"
+          },
+          {
+            "sentence": "A: Everyone seems to disagree with my proposed approach. B: That doesn't automatically mean you're wrong — you should ______ if you genuinely believe in it.",
+            "answer": "stick to your guns"
+          },
+          {
+            "sentence": "A: My flatmate says he's going to start saving money from this month. B: Good luck with that — ______, as they say.",
+            "answer": "a leopard can't change its spots"
+          },
+          {
+            "sentence": "A: Didn't you say yesterday that the new software was a complete waste of the budget? B: You've ______, haven't you? Now you're saying it's the best thing we've ever bought.",
+            "answer": "changed your tune"
+          },
+          {
+            "sentence": "A: Why do you carry so many different gadgets and cables with you everywhere? B: They're just ______ — I genuinely can't do my job without them.",
+            "answer": "the tools of the trade"
+          },
+          {
+            "sentence": "A: What is the new apartment like? B: It's fantastic — it's got ______ and it's just a short walk from the metro station.",
+            "answer": "all mod cons"
+          },
+          {
+            "sentence": "A: Should we ask Clara to oversee the software migration? B: Absolutely — she ______ that system ______, so she's the obvious choice.",
+            "answer": "knows inside out"
+          }
         ]
       },
       "M": {
         "title": "Word formation (text)",
         "instructions": "Complete the text by writing the correct form of each word in capitals.",
-        "passage": "We often think of ourselves as living in a time of (1) ______ (CONTINUE) technological change. We tend to believe that we are unique in history in dealing with a constantly (2) ______ (EVOLVE) world of gadgets. However, the end of the nineteenth century was also a time that saw many (3) ______ (REVOLT) changes. People had needed to show (4) ______ (FLEXIBLE) throughout the nineteenth century, as the effects of the Industrial Revolution meant constantly making (5) ______ (ADJUST) to deal with changing working conditions. Towards the end of the century, though, people had to become more (6) ______ (ADAPT) than ever before. The typewriter, the telephone, the electric light bulb and other (7) ______ (INFLUENCE) developments gave people the (8) ______ (CAPABLE) to live and work in ways their grandparents could not have imagined. Over the next 30 years, little remained (9) ______ (ALTER) as the camera, the cinema, the phonograph, the plane and radio all had an (10) ______ (ELECTRIC) effect on people and society.",
+        "passage": "Many observers argue that we now live in a period of (1) ______ (CONTINUE) digital transformation that shows no sign of slowing down. Our society has become a constantly (2) ______ (EVOLVE) ecosystem of platforms and devices. Yet the early twentieth century witnessed equally (3) ______ (REVOLT) breakthroughs. At that time, people needed (4) ______ (FLEXIBLE) simply to navigate daily life, since the arrival of mass production demanded (5) ______ (ADJUST) to entirely new ways of working. Citizens had to become more (6) ______ (ADAPT) than any generation that had come before them. The telephone, the motor car, the aeroplane and electric lighting were among the most (7) ______ (INFLUENCE) inventions of the era, giving humanity the (8) ______ (CAPABLE) to communicate and travel on an unprecedented scale. Very little remained (9) ______ (ALTER) in the decades that followed, as wave after wave of innovation produced an (10) ______ (ELECTRIC) effect on culture, commerce and everyday life.",
         "questions": [
-          { "sentence": "1 (CONTINUE)", "answer": "continuous" },
-          { "sentence": "2 (EVOLVE)", "answer": "evolving" },
-          { "sentence": "3 (REVOLT)", "answer": "revolutionary" },
-          { "sentence": "4 (FLEXIBLE)", "answer": "flexibility" },
-          { "sentence": "5 (ADJUST)", "answer": "adjustments" },
-          { "sentence": "6 (ADAPT)", "answer": "adaptable" },
-          { "sentence": "7 (INFLUENCE)", "answer": "influential" },
-          { "sentence": "8 (CAPABLE)", "answer": "capability" },
-          { "sentence": "9 (ALTER)", "answer": "unaltered" },
-          { "sentence": "10 (ELECTRIC)", "answer": "electrifying" }
+          {
+            "sentence": "1 (CONTINUE)",
+            "answer": "continuous"
+          },
+          {
+            "sentence": "2 (EVOLVE)",
+            "answer": "evolving"
+          },
+          {
+            "sentence": "3 (REVOLT)",
+            "answer": "revolutionary"
+          },
+          {
+            "sentence": "4 (FLEXIBLE)",
+            "answer": "flexibility"
+          },
+          {
+            "sentence": "5 (ADJUST)",
+            "answer": "adjustments"
+          },
+          {
+            "sentence": "6 (ADAPT)",
+            "answer": "adaptable"
+          },
+          {
+            "sentence": "7 (INFLUENCE)",
+            "answer": "influential"
+          },
+          {
+            "sentence": "8 (CAPABLE)",
+            "answer": "capability"
+          },
+          {
+            "sentence": "9 (ALTER)",
+            "answer": "unaltered"
+          },
+          {
+            "sentence": "10 (ELECTRIC)",
+            "answer": "electrifying"
+          }
         ]
       },
       "N": {
         "title": "Word formation",
         "instructions": "Complete the sentences by changing the form of the word in capitals.",
         "questions": [
-          { "sentence": "The weather's been so ______ today that I don't know what to wear. (CHANGE)", "answer": "changeable" },
-          { "sentence": "Bonnie showed a lot of ______ in the way she handled the problem with Olivia. (MATURE)", "answer": "maturity" },
-          { "sentence": "The flats were built in the 1960s, but they were all ______ in the 90s. (MODERN)", "answer": "modernised" },
-          { "sentence": "Jack got in a lot of trouble for ______ breaking school rules. (PERSIST)", "answer": "persistently" },
-          { "sentence": "I really don't think I'd have the ______ to finish a marathon! (ENDURE)", "answer": "endurance" },
-          { "sentence": "I feel a lot better since I decided to stop eating ______ food. (PROCESS)", "answer": "processed" },
-          { "sentence": "Can we ______ the lesson for next Wednesday? (ARRANGE)", "answer": "rearrange" },
-          { "sentence": "We need to rely more on wave power, wind power and other ______ sources of energy. (NEW)", "answer": "renewable" },
-          { "sentence": "I gradually lost touch with Ricardo after his ______ to Islam. (CONVERT)", "answer": "conversion" },
-          { "sentence": "I'm scanning my gran's photos onto my computer because they'd be ______ if anything happened to them. (PLACE)", "answer": "irreplaceable" }
+          {
+            "sentence": "The signal on this network is so ______ that I never know whether my messages have actually been sent. (CHANGE)",
+            "answer": "changeable"
+          },
+          {
+            "sentence": "The way Lucas handled the criticism from the panel showed real emotional ______. (MATURE)",
+            "answer": "maturity"
+          },
+          {
+            "sentence": "The laboratory was completely ______ last year and is now equipped with state-of-the-art technology. (MODERN)",
+            "answer": "modernised"
+          },
+          {
+            "sentence": "The engineer ______ tested each component until she finally located the fault. (PERSIST)",
+            "answer": "persistently"
+          },
+          {
+            "sentence": "Completing an ultra-marathon demands not only physical strength but extraordinary mental ______. (ENDURE)",
+            "answer": "endurance"
+          },
+          {
+            "sentence": "Nutritionists consistently advise people to reduce their intake of highly ______ foods. (PROCESS)",
+            "answer": "processed"
+          },
+          {
+            "sentence": "We will need to ______ the meeting now that three of the key participants are unavailable on Thursday. (ARRANGE)",
+            "answer": "rearrange"
+          },
+          {
+            "sentence": "Investing in ______ energy sources is essential if we are to meet our long-term climate targets. (NEW)",
+            "answer": "renewable"
+          },
+          {
+            "sentence": "The ______ of the Victorian mill into luxury apartments took just under eighteen months to complete. (CONVERT)",
+            "answer": "conversion"
+          },
+          {
+            "sentence": "The archive holds documents that would be truly ______ if they were ever lost or damaged. (PLACE)",
+            "answer": "irreplaceable"
+          }
         ]
       }
     }
