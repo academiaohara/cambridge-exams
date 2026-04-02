@@ -7,85 +7,307 @@
   "sections": {
     "topic_vocabulary": {
       "communication": [
-        { "word": "allege", "part_of_speech": "v" },
-        { "word": "ambiguous", "part_of_speech": "adj" },
-        { "word": "assert", "part_of_speech": "v" },
-        { "word": "blunt", "part_of_speech": "adj" },
-        { "word": "boast", "part_of_speech": "v, n" },
-        { "word": "clarification", "part_of_speech": "n" },
-        { "word": "colloquial", "part_of_speech": "adj" },
-        { "word": "comprehend", "part_of_speech": "v" },
-        { "word": "confide", "part_of_speech": "v" },
-        { "word": "confirm", "part_of_speech": "v" },
-        { "word": "context", "part_of_speech": "n" },
-        { "word": "contradict", "part_of_speech": "v" },
-        { "word": "convey", "part_of_speech": "v" },
-        { "word": "declare", "part_of_speech": "v" },
-        { "word": "denounce", "part_of_speech": "v" },
-        { "word": "disclose", "part_of_speech": "v" },
-        { "word": "exaggerate", "part_of_speech": "v" },
-        { "word": "flatter", "part_of_speech": "v" },
-        { "word": "gist", "part_of_speech": "n" },
-        { "word": "hint", "part_of_speech": "v, n" },
-        { "word": "illegible", "part_of_speech": "adj" },
-        { "word": "inkling", "part_of_speech": "n" },
-        { "word": "insist", "part_of_speech": "v" },
-        { "word": "jargon", "part_of_speech": "n" },
-        { "word": "literal", "part_of_speech": "adj" },
-        { "word": "mumble", "part_of_speech": "v, n" },
-        { "word": "murmur", "part_of_speech": "v, n" },
-        { "word": "petition", "part_of_speech": "n" },
-        { "word": "placard", "part_of_speech": "n" },
-        { "word": "quibble", "part_of_speech": "v" },
-        { "word": "rant", "part_of_speech": "v" },
-        { "word": "rave", "part_of_speech": "v" },
-        { "word": "scribble", "part_of_speech": "v" },
-        { "word": "stumble", "part_of_speech": "v" },
-        { "word": "stutter", "part_of_speech": "v" },
-        { "word": "tip", "part_of_speech": "n" },
-        { "word": "utter", "part_of_speech": "v" },
-        { "word": "vague", "part_of_speech": "adj" }
+        {
+          "word": "allege",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "ambiguous",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "assert",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "blunt",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "boast",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "clarification",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "colloquial",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "comprehend",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "confide",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "confirm",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "context",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "contradict",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "convey",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "declare",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "denounce",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "disclose",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "exaggerate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "flatter",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "gist",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "hint",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "illegible",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "inkling",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "insist",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "jargon",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "literal",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "mumble",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "murmur",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "petition",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "placard",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "quibble",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "rant",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "rave",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "scribble",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "stumble",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "stutter",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "tip",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "utter",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "vague",
+          "part_of_speech": "adj"
+        }
       ],
       "media": [
-        { "word": "anchor", "part_of_speech": "v, n" },
-        { "word": "broadcast", "part_of_speech": "v, n" },
-        { "word": "caption", "part_of_speech": "n" },
-        { "word": "columnist", "part_of_speech": "n" },
-        { "word": "correspondent", "part_of_speech": "n" },
-        { "word": "coverage", "part_of_speech": "n" },
-        { "word": "critic", "part_of_speech": "n" },
-        { "word": "footnote", "part_of_speech": "n" },
-        { "word": "ghostwriter", "part_of_speech": "n" },
-        { "word": "handbook", "part_of_speech": "n" },
-        { "word": "manifesto", "part_of_speech": "n" },
-        { "word": "novelist", "part_of_speech": "n" },
-        { "word": "pamphlet", "part_of_speech": "n" },
-        { "word": "prerecorded", "part_of_speech": "adj" },
-        { "word": "reviewer", "part_of_speech": "n" },
-        { "word": "spine", "part_of_speech": "n" },
-        { "word": "subtitles", "part_of_speech": "n" },
-        { "word": "supplement", "part_of_speech": "n" },
-        { "word": "tabloid", "part_of_speech": "n" },
-        { "word": "trailer", "part_of_speech": "n" }
+        {
+          "word": "anchor",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "broadcast",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "caption",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "columnist",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "correspondent",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "coverage",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "critic",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "footnote",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "ghostwriter",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "handbook",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "manifesto",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "novelist",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "pamphlet",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "prerecorded",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "reviewer",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "spine",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "subtitles",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "supplement",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "tabloid",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "trailer",
+          "part_of_speech": "n"
+        }
       ]
     },
     "phrasal_verbs": [
-      { "verb": "blurt out", "meaning": "say something suddenly and without thinking about the effect it will have, usually because you are nervous or excited" },
-      { "verb": "catch on", "meaning": "understand; become popular or fashionable" },
-      { "verb": "come out", "meaning": "become available to buy or see; become easy to notice; become known; be spoken, heard, or understood in a particular way" },
-      { "verb": "come out with", "meaning": "say something suddenly, usually something that surprises or shocks people" },
-      { "verb": "dry up", "meaning": "stop talking because you have forgotten what you were going to say" },
-      { "verb": "get across", "meaning": "make people understand something" },
-      { "verb": "get (a)round", "meaning": "if news gets (a)round, a lot of people hear it" },
-      { "verb": "get through (to)", "meaning": "be connected to a place by telephone; make someone understand what you are trying to say" },
-      { "verb": "let on", "meaning": "talk about something that is intended to be a secret" },
-      { "verb": "pass on", "meaning": "give someone something, for example a message, that someone else has given you" },
-      { "verb": "put across/over", "meaning": "explain an idea, belief, etc in a way that is easy to understand" },
-      { "verb": "set down", "meaning": "write something on a piece of paper so that it will not be forgotten and can be looked at later; state officially how something should be done" },
-      { "verb": "shout down", "meaning": "make it difficult to hear what someone says by shouting while they are speaking" },
-      { "verb": "speak out", "meaning": "state your opinion firmly and publicly about something, especially in order to protest against or defend something" },
-      { "verb": "talk over", "meaning": "discuss a problem or a plan" },
-      { "verb": "talk round", "meaning": "succeed in persuading someone to agree something; discuss something in a general way and without dealing with the most important issues" }
+      {
+        "verb": "blurt out",
+        "meaning": "say something suddenly and without thinking about the effect it will have, usually because you are nervous or excited"
+      },
+      {
+        "verb": "catch on",
+        "meaning": "understand; become popular or fashionable"
+      },
+      {
+        "verb": "come out",
+        "meaning": "become available to buy or see; become easy to notice; become known; be spoken, heard, or understood in a particular way"
+      },
+      {
+        "verb": "come out with",
+        "meaning": "say something suddenly, usually something that surprises or shocks people"
+      },
+      {
+        "verb": "dry up",
+        "meaning": "stop talking because you have forgotten what you were going to say"
+      },
+      {
+        "verb": "get across",
+        "meaning": "make people understand something"
+      },
+      {
+        "verb": "get (a)round",
+        "meaning": "if news gets (a)round, a lot of people hear it"
+      },
+      {
+        "verb": "get through (to)",
+        "meaning": "be connected to a place by telephone; make someone understand what you are trying to say"
+      },
+      {
+        "verb": "let on",
+        "meaning": "talk about something that is intended to be a secret"
+      },
+      {
+        "verb": "pass on",
+        "meaning": "give someone something, for example a message, that someone else has given you"
+      },
+      {
+        "verb": "put across/over",
+        "meaning": "explain an idea, belief, etc in a way that is easy to understand"
+      },
+      {
+        "verb": "set down",
+        "meaning": "write something on a piece of paper so that it will not be forgotten and can be looked at later; state officially how something should be done"
+      },
+      {
+        "verb": "shout down",
+        "meaning": "make it difficult to hear what someone says by shouting while they are speaking"
+      },
+      {
+        "verb": "speak out",
+        "meaning": "state your opinion firmly and publicly about something, especially in order to protest against or defend something"
+      },
+      {
+        "verb": "talk over",
+        "meaning": "discuss a problem or a plan"
+      },
+      {
+        "verb": "talk round",
+        "meaning": "succeed in persuading someone to agree something; discuss something in a general way and without dealing with the most important issues"
+      }
     ],
     "collocations_patterns": {
       "answer": [
@@ -254,118 +476,563 @@
       ]
     },
     "word_formation": [
-      { "base": "declare", "noun": ["declaration"], "adjective": ["(un)declared"] },
-      { "base": "edit", "noun": ["edition", "editor", "editorship"], "adjective": ["(un)edited", "editorial"], "adverb": ["editorially"] },
-      { "base": "exclaim", "noun": ["exclamation"], "adjective": ["exclamatory"] },
-      { "base": "express", "noun": ["expression", "expressiveness", "expressionism", "expressionist"], "adjective": ["expressionless"], "adverb": ["expressively", "expressionlessly", "expressly"] },
-      { "base": "hear", "verb": ["overhear"], "noun": ["hearing", "hearsay"] },
-      { "base": "imply", "verb": ["implicate"], "noun": ["implication"], "adverb": ["implicitly"] },
-      { "base": "insist", "noun": ["insistence"], "adjective": ["insistent"] },
-      { "base": "mean", "noun": ["meaning", "meaninglessness"], "adjective": ["meaningless", "meaningful"], "adverb": ["meaningfully"] },
-      { "base": "phrase", "verb": ["rephrase", "paraphrase"], "noun": ["phrasing", "phraseology"] },
-      { "base": "print", "verb": ["reprint"], "noun": ["printing", "printer", "printout", "imprint"], "adjective": ["printed", "(un)printable"] },
-      { "base": "public", "verb": ["publicise"], "noun": ["publicity", "publication", "publicist"], "adverb": ["publicly"] },
-      { "base": "say", "verb": ["gainsay"], "noun": ["saying"], "adjective": ["unsaid"] },
-      { "base": "speak", "verb": ["speak"], "noun": ["speech", "speaker", "spokesman/woman/person"], "adjective": ["outspoken", "(un)spoken", "speechless", "unspeakable"], "adverb": ["unspeakably", "outspokenly"] },
-      { "base": "state", "verb": ["restate", "overstate", "understate"], "noun": ["statement", "understatement", "overstatement"], "adjective": ["understated", "overstated"] },
-      { "base": "suggest", "noun": ["suggestion", "suggestibility"], "adjective": ["suggested", "suggestive", "suggestible"], "adverb": ["suggestively"] },
-      { "base": "talk", "noun": ["talker", "talkie", "talkback"], "adjective": ["talkative"] },
-      { "base": "type", "verb": ["typeset", "typecast", "typify"], "noun": ["typist", "typewriter", "typeface", "typescript"], "adjective": ["typical"] },
-      { "base": "word", "verb": ["reword"], "noun": ["wording", "wordplay"], "adjective": ["wordy", "(re)worded"], "adverb": ["wordlessly"] },
-      { "base": "write", "verb": ["rewrite"], "noun": ["writing(s)", "writer"], "adjective": ["unwritten"] }
+      {
+        "base": "declare",
+        "noun": [
+          "declaration"
+        ],
+        "adjective": [
+          "(un)declared"
+        ]
+      },
+      {
+        "base": "edit",
+        "noun": [
+          "edition",
+          "editor",
+          "editorship"
+        ],
+        "adjective": [
+          "(un)edited",
+          "editorial"
+        ],
+        "adverb": [
+          "editorially"
+        ]
+      },
+      {
+        "base": "exclaim",
+        "noun": [
+          "exclamation"
+        ],
+        "adjective": [
+          "exclamatory"
+        ]
+      },
+      {
+        "base": "express",
+        "noun": [
+          "expression",
+          "expressiveness",
+          "expressionism",
+          "expressionist"
+        ],
+        "adjective": [
+          "expressionless"
+        ],
+        "adverb": [
+          "expressively",
+          "expressionlessly",
+          "expressly"
+        ]
+      },
+      {
+        "base": "hear",
+        "verb": [
+          "overhear"
+        ],
+        "noun": [
+          "hearing",
+          "hearsay"
+        ]
+      },
+      {
+        "base": "imply",
+        "verb": [
+          "implicate"
+        ],
+        "noun": [
+          "implication"
+        ],
+        "adverb": [
+          "implicitly"
+        ]
+      },
+      {
+        "base": "insist",
+        "noun": [
+          "insistence"
+        ],
+        "adjective": [
+          "insistent"
+        ]
+      },
+      {
+        "base": "mean",
+        "noun": [
+          "meaning",
+          "meaninglessness"
+        ],
+        "adjective": [
+          "meaningless",
+          "meaningful"
+        ],
+        "adverb": [
+          "meaningfully"
+        ]
+      },
+      {
+        "base": "phrase",
+        "verb": [
+          "rephrase",
+          "paraphrase"
+        ],
+        "noun": [
+          "phrasing",
+          "phraseology"
+        ]
+      },
+      {
+        "base": "print",
+        "verb": [
+          "reprint"
+        ],
+        "noun": [
+          "printing",
+          "printer",
+          "printout",
+          "imprint"
+        ],
+        "adjective": [
+          "printed",
+          "(un)printable"
+        ]
+      },
+      {
+        "base": "public",
+        "verb": [
+          "publicise"
+        ],
+        "noun": [
+          "publicity",
+          "publication",
+          "publicist"
+        ],
+        "adverb": [
+          "publicly"
+        ]
+      },
+      {
+        "base": "say",
+        "verb": [
+          "gainsay"
+        ],
+        "noun": [
+          "saying"
+        ],
+        "adjective": [
+          "unsaid"
+        ]
+      },
+      {
+        "base": "speak",
+        "verb": [
+          "speak"
+        ],
+        "noun": [
+          "speech",
+          "speaker",
+          "spokesman/woman/person"
+        ],
+        "adjective": [
+          "outspoken",
+          "(un)spoken",
+          "speechless",
+          "unspeakable"
+        ],
+        "adverb": [
+          "unspeakably",
+          "outspokenly"
+        ]
+      },
+      {
+        "base": "state",
+        "verb": [
+          "restate",
+          "overstate",
+          "understate"
+        ],
+        "noun": [
+          "statement",
+          "understatement",
+          "overstatement"
+        ],
+        "adjective": [
+          "understated",
+          "overstated"
+        ]
+      },
+      {
+        "base": "suggest",
+        "noun": [
+          "suggestion",
+          "suggestibility"
+        ],
+        "adjective": [
+          "suggested",
+          "suggestive",
+          "suggestible"
+        ],
+        "adverb": [
+          "suggestively"
+        ]
+      },
+      {
+        "base": "talk",
+        "noun": [
+          "talker",
+          "talkie",
+          "talkback"
+        ],
+        "adjective": [
+          "talkative"
+        ]
+      },
+      {
+        "base": "type",
+        "verb": [
+          "typeset",
+          "typecast",
+          "typify"
+        ],
+        "noun": [
+          "typist",
+          "typewriter",
+          "typeface",
+          "typescript"
+        ],
+        "adjective": [
+          "typical"
+        ]
+      },
+      {
+        "base": "word",
+        "verb": [
+          "reword"
+        ],
+        "noun": [
+          "wording",
+          "wordplay"
+        ],
+        "adjective": [
+          "wordy",
+          "(re)worded"
+        ],
+        "adverb": [
+          "wordlessly"
+        ]
+      },
+      {
+        "base": "write",
+        "verb": [
+          "rewrite"
+        ],
+        "noun": [
+          "writing(s)",
+          "writer"
+        ],
+        "adjective": [
+          "unwritten"
+        ]
+      }
     ],
     "exercises": {
       "A": {
         "title": "Complete using the correct form of the words",
-        "instructions": "Complete using the correct form of the words in the boxes.",
+        "instructions": "Complete each sentence by using the correct form of the words in the boxes.",
         "questions": [
-          { "sentence": "I think Dave's ...... the magazine's importance. It actually has a very small readership.", "answer": "exaggerating" },
-          { "sentence": "Caroline said the hotel was fantastic and then Paul immediately ...... her and said it wasn't actually very nice at all.", "answer": "contradicted" },
-          { "sentence": "I know Suzanne's wealthy but there's no need for her to ...... about it to everyone all the time.", "answer": "boast" },
-          { "sentence": "Adam said I could be a professional model but I think he was just ...... me.", "answer": "flattering" },
-          { "sentence": "The politician has continually ...... his innocence.", "answer": "asserted" },
-          { "sentence": "As your lawyer, I ...... on your telling me the truth.", "answer": "insist" },
-          { "sentence": "Thompson is ...... to have accepted a bribe from a local businesswoman.", "answer": "alleged" },
-          { "sentence": "Don't ...... a single word until you've spoken to your lawyer.", "answer": "utter" },
-          { "sentence": "You know you can ...... in me at any time, don't you?", "answer": "confide" },
-          { "sentence": "We would like to ...... that your application has been approved.", "answer": "confirm" },
-          { "sentence": "Your password will not be ...... to any third party.", "answer": "disclosed" },
-          { "sentence": "I can't begin to ...... how sorry I am for the trouble I've caused.", "answer": "convey" },
-          { "sentence": "I could hear the audience ...... but couldn't make out any distinct comments.", "answer": "murmuring" },
-          { "sentence": "It's so embarrassing when a newsreader ...... over their words.", "answer": "stumbles" },
-          { "sentence": "I stood there ...... in shock, unable to think of anything sensible to say.", "answer": "stuttering" },
-          { "sentence": "Please don't ...... when you're talking to me. Open your mouth when you talk!", "answer": "mumble" },
-          { "sentence": "Linda was ...... about that new sitcom on ITV. She said it's hilarious.", "answer": "raving" },
-          { "sentence": "Stop ...... on the desk!", "answer": "scribbling" },
-          { "sentence": "There's no point ...... over the bill. It's only a few euros more than we thought it would be anyway.", "answer": "quibbling" },
-          { "sentence": "When my boss gets in a bad mood, she just ...... at everybody.", "answer": "rants" },
-          { "sentence": "Here's a ...... for all budding writers out there. Never let the truth get in the way of a good story!", "answer": "tip" },
-          { "sentence": "Please do contact me if you require further ...... on any of these issues.", "answer": "clarification" },
-          { "sentence": "I understood the ...... of her argument, but I can't say I understood all the fine points.", "answer": "gist" },
-          { "sentence": "They quoted me completely out of ...... . I didn't mean that at all.", "answer": "context" }
+          {
+            "sentence": "In my view, Brian is ...... the scale of the problem. The actual figures are far lower than he claims.",
+            "answer": "exaggerating"
+          },
+          {
+            "sentence": "Natalie put forward a strong case, but her colleague immediately ...... everything she said.",
+            "answer": "contradicted"
+          },
+          {
+            "sentence": "It's fine to be proud of your achievements, but there's no need to ...... about them at every opportunity.",
+            "answer": "boast"
+          },
+          {
+            "sentence": "The photographer was just ...... Mia when he said the portrait made her look twenty years younger.",
+            "answer": "flattering"
+          },
+          {
+            "sentence": "The company spokesperson ...... that no data had been compromised during the breach.",
+            "answer": "asserted"
+          },
+          {
+            "sentence": "As your editor, I ...... on reviewing every article before it goes to print.",
+            "answer": "insist"
+          },
+          {
+            "sentence": "The journalist is ...... to have paid a source for confidential government documents.",
+            "answer": "alleged"
+          },
+          {
+            "sentence": "The barrister warned us not to ...... a single word before we had reviewed the agreement together.",
+            "answer": "utter"
+          },
+          {
+            "sentence": "Clara has always been someone you can ...... in, especially during difficult periods.",
+            "answer": "confide"
+          },
+          {
+            "sentence": "We are delighted to ...... that your application for funding has been approved.",
+            "answer": "confirm"
+          },
+          {
+            "sentence": "No personal information will be ...... to third parties without your explicit consent.",
+            "answer": "disclosed"
+          },
+          {
+            "sentence": "Words alone cannot ...... the depth of gratitude we feel towards the rescue team.",
+            "answer": "convey"
+          },
+          {
+            "sentence": "The delegates were ...... among themselves, but nobody dared challenge the chairperson openly.",
+            "answer": "murmuring"
+          },
+          {
+            "sentence": "Even the most experienced presenter ...... over their lines from time to time.",
+            "answer": "stumbles"
+          },
+          {
+            "sentence": "He stood at the podium, ...... nervously as he tried to recall his opening line.",
+            "answer": "stuttering"
+          },
+          {
+            "sentence": "Please don't ...... when addressing the audience. Speak clearly and project your voice!",
+            "answer": "mumble"
+          },
+          {
+            "sentence": "Half the office was ...... about that podcast on digital privacy. They said it was absolutely unmissable.",
+            "answer": "raving"
+          },
+          {
+            "sentence": "Stop ...... in the margins of the textbooks – those copies belong to the library.",
+            "answer": "scribbling"
+          },
+          {
+            "sentence": "There's no point ...... over the exact wording. What matters is that both parties have reached agreement.",
+            "answer": "quibbling"
+          },
+          {
+            "sentence": "Every time the topic of press freedom comes up, my neighbour ...... for hours without pause.",
+            "answer": "rants"
+          },
+          {
+            "sentence": "Here's a practical ...... for any aspiring journalist: always verify your sources before publishing.",
+            "answer": "tip"
+          },
+          {
+            "sentence": "Could you provide further ...... on the exact terms of the agreement before we proceed?",
+            "answer": "clarification"
+          },
+          {
+            "sentence": "I didn't follow every detail of the lecture, but I managed to grasp the ...... of the argument.",
+            "answer": "gist"
+          },
+          {
+            "sentence": "The headline is deliberately misleading if you read it without any surrounding ......",
+            "answer": "context"
+          }
         ]
       },
       "B": {
-        "title": "Circle the correct word",
-        "instructions": "Circle the correct word.",
+        "title": "Choose the correct word",
+        "instructions": "Choose the correct word to complete each sentence.",
         "questions": [
-          { "sentence": "Are you fed up with complicated **jargon / slang** in official documents?", "answer": "jargon" },
-          { "sentence": "...that's impossible to fully **comprehend / contradict**?", "answer": "comprehend" },
-          { "sentence": "Do you hear politicians use **vague / relevant** language?", "answer": "vague" },
-          { "sentence": "...and **literal / ambiguous** language?", "answer": "ambiguous" },
-          { "sentence": "...and realise you haven't got a/an **inkling / hint** what they really mean?", "answer": "inkling" },
-          { "sentence": "Do you find doctors' handwriting **colloquial / illegible** on prescriptions?", "answer": "illegible" },
-          { "sentence": "We **declare / denounce** all uses of language that confuse rather than explain.", "answer": "denounce" },
-          { "sentence": "Let's be **blunt / sharp**.", "answer": "blunt" },
-          { "sentence": "Sign our **placard / petition** today.", "answer": "petition" }
+          {
+            "sentence": "Are you frustrated by technical **jargon / slang** in official financial documents?",
+            "answer": "jargon"
+          },
+          {
+            "sentence": "...that seems almost impossible to fully **comprehend / contradict**?",
+            "answer": "comprehend"
+          },
+          {
+            "sentence": "Do you notice politicians using **vague / relevant** language to dodge difficult questions?",
+            "answer": "vague"
+          },
+          {
+            "sentence": "...or deliberately **literal / ambiguous** phrasing to avoid making firm commitments?",
+            "answer": "ambiguous"
+          },
+          {
+            "sentence": "...and realise you haven't got a/an **inkling / hint** of what they are actually trying to say?",
+            "answer": "inkling"
+          },
+          {
+            "sentence": "Is your doctor's handwriting on prescriptions completely **colloquial / illegible** to you?",
+            "answer": "illegible"
+          },
+          {
+            "sentence": "We **declare / denounce** all forms of communication designed to mislead rather than inform.",
+            "answer": "denounce"
+          },
+          {
+            "sentence": "Let's be **blunt / sharp** about the situation.",
+            "answer": "blunt"
+          },
+          {
+            "sentence": "Add your name to our online **placard / petition** today.",
+            "answer": "petition"
+          }
         ]
       },
       "C": {
         "title": "Write a word from the box in each gap",
-        "instructions": "Write a word from the box in each gap.",
-        "words": ["anchor", "broadcast", "caption", "correspondent", "coverage", "footnote", "pamphlet", "prerecorded", "spine", "trailer"],
+        "instructions": "Write the appropriate word from the box in each gap.",
+        "words": [
+          "anchor",
+          "broadcast",
+          "caption",
+          "correspondent",
+          "coverage",
+          "footnote",
+          "pamphlet",
+          "prerecorded",
+          "spine",
+          "trailer"
+        ],
         "questions": [
-          { "sentence": "The programme doesn't go out live. It's ...... .", "answer": "prerecorded" },
-          { "sentence": "And now let's go over to our political ...... , who's live at Westminster.", "answer": "correspondent" },
-          { "sentence": "The title of a book is usually printed on the cover and on the ...... .", "answer": "spine" },
-          { "sentence": "I'd really love to be the main ...... hosting a national, nightly news show.", "answer": "anchor" },
-          { "sentence": "There's usually massive media ...... when a celebrity couple splits up.", "answer": "coverage" },
-          { "sentence": "I haven't seen the film yet but I saw the ...... ; it looks quite interesting.", "answer": "trailer" },
-          { "sentence": "There's no ...... under this photo so I don't know who it's of.", "answer": "caption" },
-          { "sentence": "If you think I need to provide more detail, I'll add a short ...... at the bottom of the page.", "answer": "footnote" },
-          { "sentence": "I think they ...... the show live usually, don't they?", "answer": "broadcast" },
-          { "sentence": "Someone in the street gave me a small ...... about energy conservation at home.", "answer": "pamphlet" }
+          {
+            "sentence": "The interview didn't happen live; it was ...... earlier in the afternoon.",
+            "answer": "prerecorded"
+          },
+          {
+            "sentence": "Let's cross to our education ......, who has been following the story closely from the field.",
+            "answer": "correspondent"
+          },
+          {
+            "sentence": "The author's name is printed on the ...... of the book, making it easy to identify on a shelf.",
+            "answer": "spine"
+          },
+          {
+            "sentence": "She had always dreamed of becoming the main ...... on a prime-time national news programme.",
+            "answer": "anchor"
+          },
+          {
+            "sentence": "The election received round-the-clock media ...... on every major channel.",
+            "answer": "coverage"
+          },
+          {
+            "sentence": "I haven't seen that film yet, but the ...... made it look very intriguing.",
+            "answer": "trailer"
+          },
+          {
+            "sentence": "Could you add a ...... to this photo explaining who the people in it are?",
+            "answer": "caption"
+          },
+          {
+            "sentence": "The publisher suggested including a short ...... at the bottom of the page to clarify the historical reference.",
+            "answer": "footnote"
+          },
+          {
+            "sentence": "The ceremony was ...... live to over forty countries around the world.",
+            "answer": "broadcast"
+          },
+          {
+            "sentence": "A volunteer handed me a colourful ...... about the history of the local community media house.",
+            "answer": "pamphlet"
+          }
         ]
       },
       "D": {
         "title": "Write a word from the box in the correct form in each gap",
-        "instructions": "Write a word from the box in the correct form in each gap.",
-        "words": ["columnist", "critic", "ghostwriter", "handbook", "manifesto", "novelist", "reviewer", "subtitles", "supplement", "tabloid"],
+        "instructions": "Write the appropriate word from the box in its correct form in each gap.",
+        "words": [
+          "columnist",
+          "critic",
+          "ghostwriter",
+          "handbook",
+          "manifesto",
+          "novelist",
+          "reviewer",
+          "subtitles",
+          "supplement",
+          "tabloid"
+        ],
         "questions": [
-          { "sentence": "...you'll be regarded as a hugely successful (1) ......", "answer": "novelist" },
-          { "sentence": "The Sunday colour (2) ...... are filled with feature articles.", "answer": "supplement" },
-          { "sentence": "Consider doing the (3) ...... for foreign films and TV programmes.", "answer": "subtitles" },
-          { "sentence": "Offer to help a political party to produce its next (4) ......", "answer": "manifesto" },
-          { "sentence": "Someone has to write the instructions or (5) ...... that comes with every piece of equipment.", "answer": "handbook" },
-          { "sentence": "Set yourself up as a gossip (6) ......", "answer": "columnist" },
-          { "sentence": "Set yourself up as a film (7) ......", "answer": "critic" },
-          { "sentence": "Set yourself up as a book (8) ......", "answer": "reviewer" },
-          { "sentence": "...you can move on to a bigger paper, or even a national (9) ......", "answer": "tabloid" },
-          { "sentence": "...there's a fair amount of work out there for (10) ......", "answer": "ghostwriter" }
+          {
+            "sentence": "If you master the craft of character and plot, you could become a celebrated (1) ......",
+            "answer": "novelist"
+          },
+          {
+            "sentence": "The weekend colour (2) ...... is packed with in-depth feature articles.",
+            "answer": "supplement"
+          },
+          {
+            "sentence": "Translators who write (3) ...... for foreign films need both speed and precision.",
+            "answer": "subtitles"
+          },
+          {
+            "sentence": "Every new political movement is expected to release a clear (4) ...... outlining its intentions.",
+            "answer": "manifesto"
+          },
+          {
+            "sentence": "New recruits are given a comprehensive (5) ...... on their first day, covering all key company procedures.",
+            "answer": "handbook"
+          },
+          {
+            "sentence": "She spent years building her reputation as a lifestyle (6) ...... for a popular digital magazine.",
+            "answer": "columnist"
+          },
+          {
+            "sentence": "The theatre (7) ...... praised the director's bold interpretation of the classic play.",
+            "answer": "critic"
+          },
+          {
+            "sentence": "As a restaurant (8) ......, she visited dozens of eateries every month.",
+            "answer": "reviewer"
+          },
+          {
+            "sentence": "The scoop was picked up by a national (9) ...... and ran on the front page.",
+            "answer": "tabloid"
+          },
+          {
+            "sentence": "Many celebrity memoirs are actually crafted with the help of a professional (10) ......",
+            "answer": "ghostwriter"
+          }
         ]
       },
       "E": {
         "title": "Write one word in each gap (Phrasal verbs)",
         "instructions": "Write one word in each gap.",
         "questions": [
-          { "sentence": "No one's supposed to know yet, so don't ...... on, whatever you do!", "answer": "let" },
-          { "sentence": "The magazine ...... out every Friday.", "answer": "comes" },
-          { "sentence": "News ...... around very fast in this town!", "answer": "gets" },
-          { "sentence": "I couldn't believe it when Jake ...... out with the news that he was going to move to Australia.", "answer": "came" },
-          { "sentence": "You'll need to ...... your views across extremely diplomatically.", "answer": "get" },
-          { "sentence": "We've ...... down our beliefs and policies very clearly in our latest manifesto.", "answer": "set" },
-          { "sentence": "Everyone except Meg ...... on immediately that I was only joking.", "answer": "caught" },
-          { "sentence": "I've been trying to explain the situation to Ben for weeks but I just don't seem to be able to ...... through to him.", "answer": "get" }
+          {
+            "sentence": "This is strictly confidential, so please don't ...... on to anyone at the office.",
+            "answer": "let"
+          },
+          {
+            "sentence": "The newsletter ...... out on the first Monday of every month.",
+            "answer": "comes"
+          },
+          {
+            "sentence": "Information ...... around incredibly quickly in the digital age.",
+            "answer": "gets"
+          },
+          {
+            "sentence": "Everyone was astonished when Sophie ...... out with the announcement that she was retiring.",
+            "answer": "came"
+          },
+          {
+            "sentence": "The new director will need to ...... her vision for the company across to the board clearly.",
+            "answer": "get"
+          },
+          {
+            "sentence": "The committee has ...... down strict guidelines on how all complaints should be handled.",
+            "answer": "set"
+          },
+          {
+            "sentence": "Most people in the audience ...... on straight away that the speaker was being ironic.",
+            "answer": "caught"
+          },
+          {
+            "sentence": "No matter how many times I explain the schedule, I simply can't ...... through to my flatmate.",
+            "answer": "get"
+          }
         ]
       },
       "F": {
@@ -373,92 +1040,260 @@
         "type": "yn",
         "instructions": "Tick the phrasal verbs which are also connected to the idea of 'defeating someone or being defeated'.",
         "questions": [
-          { "sentence": "Rose backed down when she realised she was wrong.", "answer": "YES" },
-          { "sentence": "With my arthritis, it's actually quite difficult to bend down.", "answer": "NO" },
-          { "sentence": "I almost broke down in tears when I heard the news.", "answer": "NO" },
-          { "sentence": "If the vote goes the wrong way, it could bring down the government.", "answer": "YES" },
-          { "sentence": "The council's planning to clamp down on youths drinking in the streets.", "answer": "YES" },
-          { "sentence": "The Minister was forced to climb down in the face of so much evidence.", "answer": "YES" },
-          { "sentence": "The government's planning to crack down on anti-social behaviour.", "answer": "YES" },
-          { "sentence": "I was in such a hurry, I just gobbled down my breakfast and left.", "answer": "NO" },
-          { "sentence": "Both Jo and I went down with food poisoning on the first day of the holiday.", "answer": "NO" },
-          { "sentence": "I'll just jot a few notes down while we talk.", "answer": "NO" },
-          { "sentence": "Gareth really let me down when he told Andrea what I'd told him.", "answer": "NO" },
-          { "sentence": "Dave didn't want to get married at first, but I've managed to wear him down!", "answer": "YES" }
+          {
+            "sentence": "The councillor backed down when she saw the strength of public opposition to the proposal.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "You'll need to bend down to reach the parcel on the bottom shelf.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "The soloist almost broke down in tears during the final, deeply emotional movement.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "A vote of no confidence could bring down the entire administration.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "The authorities are clamping down on websites that spread deliberate misinformation.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "The minister was forced to climb down after the leaked documents proved him wrong.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "The editor decided to crack down on reporters who consistently failed to verify their sources.",
+            "answer": "YES"
+          },
+          {
+            "sentence": "She gobbled down her lunch in five minutes and rushed back to the newsroom.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "Half the production crew went down with a stomach bug on the day of the live broadcast.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "I'll jot those figures down while you continue explaining the rest of the plan.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "My camera let me down at the worst possible moment, seconds before the press conference began.",
+            "answer": "NO"
+          },
+          {
+            "sentence": "After weeks of resistance, he finally managed to wear the management down.",
+            "answer": "YES"
+          }
         ]
       },
       "G": {
         "title": "Write one word in each gap (Collocations)",
         "instructions": "Write one word in each gap.",
         "questions": [
-          { "sentence": "Obviously it goes ...... saying that I don't want you to tell anyone else.", "answer": "without" },
-          { "sentence": "Reading ...... the lines, it seems the government's considering tightening media regulations.", "answer": "between" },
-          { "sentence": "I'm afraid that book's ...... of print, but I'll see if we can find a second-hand copy.", "answer": "out" },
-          { "sentence": "I followed your instructions ...... the letter but I still couldn't get the printer to work.", "answer": "to" },
-          { "sentence": "Getting Elaine to edit your article is just asking ...... trouble; you know how pedantic she is!", "answer": "for" },
-          { "sentence": "...... answer to your question, no, I have never had any business dealings with Mr Partridge.", "answer": "In" },
-          { "sentence": "Even if you've got a great idea, it's incredibly hard putting pen ...... paper for the first time.", "answer": "to" },
-          { "sentence": "Put your ideas down ...... paper and we'll discuss them at the next meeting.", "answer": "on" },
-          { "sentence": "You've had some good news, haven't you? It's written all ...... your face!", "answer": "over" }
+          {
+            "sentence": "It goes ...... saying that all submissions must be proofread carefully before being sent.",
+            "answer": "without"
+          },
+          {
+            "sentence": "Reading ...... the lines, it appears the company is preparing to announce significant redundancies.",
+            "answer": "between"
+          },
+          {
+            "sentence": "That edition is ...... of print, but you might be able to track down a copy at a specialist bookshop.",
+            "answer": "out"
+          },
+          {
+            "sentence": "I followed the editor's style guide ...... the letter, yet she still found errors in my copy.",
+            "answer": "to"
+          },
+          {
+            "sentence": "Hiring that critic to review the script is asking ...... trouble – she's notoriously difficult to please.",
+            "answer": "for"
+          },
+          {
+            "sentence": "...... answer to your enquiry, we would be happy to supply a full written transcript.",
+            "answer": "In"
+          },
+          {
+            "sentence": "Sitting down and actually putting pen ...... paper was by far the hardest part of writing the book.",
+            "answer": "to"
+          },
+          {
+            "sentence": "Put your rough ideas down ...... paper first, and we'll discuss them in detail at the next meeting.",
+            "answer": "on"
+          },
+          {
+            "sentence": "You've just received some fantastic news, haven't you? It's written all ...... your face!",
+            "answer": "over"
+          }
         ]
       },
       "H": {
         "title": "Key word transformation",
         "instructions": "Complete the second sentence so that it has a similar meaning, using the word given. Use between three and eight words.",
         "questions": [
-          { "sentence": "The adverts look exactly the same as the articles in this magazine. **difference**\nIt's impossible ...... the adverts in this magazine.", "answer": "to tell the difference between the articles and" },
-          { "sentence": "I assume you've checked your facts carefully. **read**\nI ...... you've checked your facts carefully.", "answer": "take it as read that" },
-          { "sentence": "You've got to persuade the editor not to publish that story. **out**\nYou've got to ...... that story.", "answer": "talk the editor out of publishing" },
-          { "sentence": "Terry and I started arguing about the situation in the Middle East. **into**\nI ...... about the situation in the Middle East.", "answer": "got into an argument with Terry" },
-          { "sentence": "I'm sure we'll be able to agree on this matter. **understanding**\nI'm sure we'll be able to ...... on this matter.", "answer": "come to an understanding" },
-          { "sentence": "I'd discuss this with Phil before making a final decision. **discussion**\nI'd ...... before making a final decision.", "answer": "have a discussion with Phil" }
+          {
+            "sentence": "The editorial pieces look identical to the adverts on this page. **difference**\nIt's virtually impossible ...... the adverts on this page.",
+            "answer": "to tell the difference between the articles and"
+          },
+          {
+            "sentence": "I assume your facts have been thoroughly verified before publication. **read**\nI ...... your facts have been thoroughly verified before publication.",
+            "answer": "take it as read that"
+          },
+          {
+            "sentence": "You need to persuade the editor not to run that controversial photograph. **out**\nYou need to ...... that controversial photograph.",
+            "answer": "talk the editor out of publishing"
+          },
+          {
+            "sentence": "Terry and I ended up in a heated dispute about media regulation. **into**\nI ...... about media regulation.",
+            "answer": "got into an argument with Terry"
+          },
+          {
+            "sentence": "I'm confident we'll manage to agree on the contract terms. **understanding**\nI'm confident we'll be able to ...... on the contract terms.",
+            "answer": "come to an understanding"
+          },
+          {
+            "sentence": "I'd consult Phil before submitting the final draft. **discussion**\nI'd ...... before submitting the final draft.",
+            "answer": "have a discussion with Phil"
+          }
         ]
       },
       "I": {
         "title": "One word for three sentences",
-        "instructions": "For each question, write one word which can be used in all three sentences.",
+        "instructions": "For each question, write one word which can be used correctly in all three sentences.",
         "questions": [
-          { "sentence": "All of your managers seem to speak very ...... of you.\nThere were no problems to speak ...... with the printing.\nAs an investigative journalist, I'm a bit of a crusader, so to ...... .", "answer": "highly" },
-          { "sentence": "Do please spread the ...... about my new website.\nI think you should have a ...... with Sue about this.\nI knew from the ...... go this book would be difficult to write.", "answer": "word" },
-          { "sentence": "Helen and I are barely on ...... terms these days.\nGenerally ...... , we liked your screenplay very much.\nWell, ...... as someone who's in the public eye constantly, I do value my privacy.", "answer": "speaking" },
-          { "sentence": "Many politicians will only speak to journalists if their comments are off the ...... .\nI'd appreciate the chance to set the ...... straight on this matter.\nWe're trying to compile a ...... of all previous holders of the post.", "answer": "record" },
-          { "sentence": "When you stop being prime minister, not many people take any ...... of what you think any more.\nThe library will be closed until further ...... .\nThey contacted me at very short ...... and said I had to go to South America.", "answer": "notice" },
-          { "sentence": "No politician ever tells the complete truth in my ...... .\nDon't break any rules – just do it by the ...... .\nI always know what Fred's thinking – I can read him like a ...... .", "answer": "book" },
-          { "sentence": "Mr Davis has so far refused to ...... the charges that have been levelled against him.\nWhen you're self-employed, you don't have to ...... to anyone but yourself.\nWe believe this new radio show will ...... the needs of all those who wish to take part.", "answer": "answer" }
+          {
+            "sentence": "The panel speaks very ...... of your work in investigative journalism.\nThere are very few complications to speak ...... of in the new broadcasting guidelines.\nShe considers herself a storyteller of sorts, so to ......",
+            "answer": "highly"
+          },
+          {
+            "sentence": "We need to spread the ...... about the upcoming media literacy workshop.\nCould I have a quiet ...... with you about the interview process?\nI had a feeling from the ...... go that something about the story wasn't quite right.",
+            "answer": "word"
+          },
+          {
+            "sentence": "Marcus and I are barely on ...... terms after that editorial disagreement.\nGenerally ......, the committee was in favour of the proposed new guidelines.\nWell, ...... as someone with thirty years in broadcasting, I have always valued transparency.",
+            "answer": "speaking"
+          },
+          {
+            "sentence": "The minister insisted the conversation was strictly off the ...... before answering any questions.\nWe would like to set the ...... straight on exactly what was agreed at that meeting.\nThe archivist spent months compiling a complete ...... of every publication the press house had produced.",
+            "answer": "record"
+          },
+          {
+            "sentence": "Surprisingly few journalists took any ...... of the report when it was first published.\nThe press office will remain at its current address until further ......\nThey contacted me at extremely short ...... and asked me to cover the breaking story.",
+            "answer": "notice"
+          },
+          {
+            "sentence": "No journalist ever gives you the full picture, in my ......\nAll reporting in this newsroom must be conducted strictly by the ......\nAfter years of working together, I can read my editor like a ......",
+            "answer": "book"
+          },
+          {
+            "sentence": "The CEO has so far refused to ...... the charges that have been made against the company.\nAs a freelancer, you don't ...... to anyone but yourself.\nThe organisation believes its new podcast will ...... the needs of all listeners who want deeper analysis.",
+            "answer": "answer"
+          }
         ]
       },
       "J": {
         "title": "Correct the wrong words in bold",
-        "instructions": "Each of the words in bold is in the wrong sentence. Write the correct words on the line.",
+        "instructions": "Each of the words in bold is in the wrong sentence. Write the correct word on the line.",
         "questions": [
-          { "sentence": "Don't tell Irene any of your secrets. She's got a very big **grapevine**!", "answer": "mouth" },
-          { "sentence": "Keep me **clean** about any developments.", "answer": "posted" },
-          { "sentence": "Billy, stop telling **drift** about your sister.", "answer": "tales" },
-          { "sentence": "The Minister's disappearance speaks **cards** about his involvement in the corruption scandal.", "answer": "volumes" },
-          { "sentence": "I heard through the **tales** that you and Rick are thinking of splitting up.", "answer": "grapevine" },
-          { "sentence": "Get it off your **word** and tell me exactly what's wrong.", "answer": "chest" },
-          { "sentence": "You should just put your **hat** on the table and tell them you're leaving unless they give you a pay rise.", "answer": "cards" },
-          { "sentence": "Keep it under your **stick**, but Julie's going to have a baby.", "answer": "hat" },
-          { "sentence": "I wasn't sure whether to tell you, but then I thought it was best to come **posted** about it myself.", "answer": "clean" },
-          { "sentence": "I give you my **mouth** that I won't tell anybody.", "answer": "word" },
-          { "sentence": "If I catch your **volumes**, you're saying you're leaving me. Is that right?", "answer": "drift" },
-          { "sentence": "Eddie thought I was a football fan – he must have got completely the wrong end of the **chest**.", "answer": "stick" }
+          {
+            "sentence": "Don't share your ideas with Kim before the pitch – she has a very big **grapevine**!",
+            "answer": "mouth"
+          },
+          {
+            "sentence": "Keep me **clean** on any updates to the schedule.",
+            "answer": "posted"
+          },
+          {
+            "sentence": "Stop telling **drift** about your colleagues to the management.",
+            "answer": "tales"
+          },
+          {
+            "sentence": "His prolonged silence speaks **cards** about his attitude towards the whole affair.",
+            "answer": "volumes"
+          },
+          {
+            "sentence": "I heard through the **tales** that the editor is planning to step down.",
+            "answer": "grapevine"
+          },
+          {
+            "sentence": "Get it off your **word** and tell us what's been bothering you all week.",
+            "answer": "chest"
+          },
+          {
+            "sentence": "It's time to lay your **hat** on the table and admit what you know.",
+            "answer": "cards"
+          },
+          {
+            "sentence": "Keep it under your **stick**, but the live broadcast has been cancelled.",
+            "answer": "hat"
+          },
+          {
+            "sentence": "After much hesitation, she finally decided to come **posted** about the mistake.",
+            "answer": "clean"
+          },
+          {
+            "sentence": "You have my **mouth** that everything you've shared will remain strictly confidential.",
+            "answer": "word"
+          },
+          {
+            "sentence": "I think I catch your **volumes** – are you suggesting we postpone the launch?",
+            "answer": "drift"
+          },
+          {
+            "sentence": "He clearly missed the whole point and got the wrong end of the **chest** entirely.",
+            "answer": "stick"
+          }
         ]
       },
       "K": {
         "title": "Word formation (suffixes and prefixes)",
-        "instructions": "Complete the sentences by changing the form of the word in capitals.",
+        "instructions": "Complete each sentence by changing the form of the word in capitals.",
         "questions": [
-          { "sentence": "She stood there completely ......, so I had no idea what she was thinking. **EXPRESS**", "answer": "expressionless" },
-          { "sentence": "Film studios spend millions of dollars on ...... for new movies. **PUBLIC**", "answer": "publicity" },
-          { "sentence": "That news conference was ...... boring! **SPEAK**", "answer": "unspeakably" },
-          { "sentence": "I'm not very keen on the ...... of this dictionary definition. **WORD**", "answer": "wording" },
-          { "sentence": "The problem with Michael is that he's just so ...... – he never shuts up! **TALK**", "answer": "talkative" },
-          { "sentence": "I don't think you should have any ...... marks in your PhD dissertation. **EXCLAIM**", "answer": "exclamation" },
-          { "sentence": "Any actor who becomes known for one role is in danger of becoming ...... . **TYPE**", "answer": "typecast" },
-          { "sentence": "Advertising is particularly effective on people who are highly ...... . **SUGGEST**", "answer": "suggestible" },
-          { "sentence": "There are so many swear words in this article that I think it's ...... . **PRINT**", "answer": "unprintable" },
-          { "sentence": "Rose was extremely ...... that we rewrite the introduction. **INSIST**", "answer": "insistent" }
+          {
+            "sentence": "He stood there completely ......, making it impossible to judge how the interview had gone. **EXPRESS**",
+            "answer": "expressionless"
+          },
+          {
+            "sentence": "Major streaming platforms spend enormous sums on ...... for their new original releases. **PUBLIC**",
+            "answer": "publicity"
+          },
+          {
+            "sentence": "The awards ceremony was ...... tedious – not a single genuine moment of surprise all evening. **SPEAK**",
+            "answer": "unspeakably"
+          },
+          {
+            "sentence": "I have some reservations about the ...... of this headline; it could easily be misread. **WORD**",
+            "answer": "wording"
+          },
+          {
+            "sentence": "The trouble with inviting him onto a live programme is that he is far too ...... to manage easily. **TALK**",
+            "answer": "talkative"
+          },
+          {
+            "sentence": "Try to avoid using ...... marks in formal journalistic or academic writing. **EXCLAIM**",
+            "answer": "exclamation"
+          },
+          {
+            "sentence": "Any presenter who covers the same format for too long risks becoming hopelessly ...... **TYPE**",
+            "answer": "typecast"
+          },
+          {
+            "sentence": "Advertisers specifically target audiences they know to be highly ...... **SUGGEST**",
+            "answer": "suggestible"
+          },
+          {
+            "sentence": "Several of the reader letters contained language too offensive and ...... for publication. **PRINT**",
+            "answer": "unprintable"
+          },
+          {
+            "sentence": "The editor was extremely ...... that every single fact be independently checked before going to print. **INSIST**",
+            "answer": "insistent"
+          }
         ]
       },
       "L": {
@@ -466,57 +1301,171 @@
         "type": "yn",
         "instructions": "Which of these words can take over- to mean 'too much'?",
         "questions": [
-          { "sentence": "act", "answer": "YES" },
-          { "sentence": "book", "answer": "YES" },
-          { "sentence": "cook", "answer": "YES" },
-          { "sentence": "crowded", "answer": "YES" },
-          { "sentence": "do", "answer": "YES" },
-          { "sentence": "dressed", "answer": "YES" },
-          { "sentence": "excited", "answer": "YES" },
-          { "sentence": "grown", "answer": "YES" },
-          { "sentence": "heat", "answer": "YES" },
-          { "sentence": "priced", "answer": "YES" },
-          { "sentence": "protective", "answer": "YES" },
-          { "sentence": "rate", "answer": "YES" },
-          { "sentence": "react", "answer": "YES" },
-          { "sentence": "read", "answer": "YES" },
-          { "sentence": "spend", "answer": "YES" },
-          { "sentence": "step", "answer": "YES" },
-          { "sentence": "stretched", "answer": "YES" },
-          { "sentence": "surprised", "answer": "NO" },
-          { "sentence": "try", "answer": "NO" },
-          { "sentence": "weight", "answer": "YES" }
+          {
+            "sentence": "act",
+            "answer": "YES"
+          },
+          {
+            "sentence": "book",
+            "answer": "YES"
+          },
+          {
+            "sentence": "cook",
+            "answer": "YES"
+          },
+          {
+            "sentence": "crowded",
+            "answer": "YES"
+          },
+          {
+            "sentence": "do",
+            "answer": "YES"
+          },
+          {
+            "sentence": "dressed",
+            "answer": "YES"
+          },
+          {
+            "sentence": "excited",
+            "answer": "YES"
+          },
+          {
+            "sentence": "grown",
+            "answer": "YES"
+          },
+          {
+            "sentence": "heat",
+            "answer": "YES"
+          },
+          {
+            "sentence": "priced",
+            "answer": "YES"
+          },
+          {
+            "sentence": "protective",
+            "answer": "YES"
+          },
+          {
+            "sentence": "rate",
+            "answer": "YES"
+          },
+          {
+            "sentence": "react",
+            "answer": "YES"
+          },
+          {
+            "sentence": "read",
+            "answer": "YES"
+          },
+          {
+            "sentence": "spend",
+            "answer": "YES"
+          },
+          {
+            "sentence": "step",
+            "answer": "YES"
+          },
+          {
+            "sentence": "stretched",
+            "answer": "YES"
+          },
+          {
+            "sentence": "surprised",
+            "answer": "NO"
+          },
+          {
+            "sentence": "try",
+            "answer": "NO"
+          },
+          {
+            "sentence": "weight",
+            "answer": "YES"
+          }
         ]
       },
       "M": {
         "title": "Complete the sentences with over- words",
-        "instructions": "Complete the sentences using words with over- from exercise L.",
+        "instructions": "Complete each sentence using a word with over- from exercise L.",
         "questions": [
-          { "sentence": "The rice and sauce were okay, but I thought the chicken was a little ...... and tough.", "answer": "overcooked" },
-          { "sentence": "Everyone else was in jeans and T-shirts – I felt completely ......", "answer": "overdressed" },
-          { "sentence": "I've ...... this month and haven't got any money left!", "answer": "overspent" },
-          { "sentence": "Calm down! You're getting ...... !", "answer": "overexcited" },
-          { "sentence": "You've really ...... the mark this time. How could you be so thoughtless?", "answer": "overstepped" },
-          { "sentence": "The house is in good condition, but the garden is completely ...... and needs a lot of work.", "answer": "overgrown" },
-          { "sentence": "The doctor said I was ...... so she's put me on a diet.", "answer": "overweight" },
-          { "sentence": "It's a nice vase, but I think it's a bit ...... . Let's find something cheaper.", "answer": "overpriced" }
+          {
+            "sentence": "The vegetables were slightly ...... and had lost most of their natural flavour.",
+            "answer": "overcooked"
+          },
+          {
+            "sentence": "I turned up in a suit and tie, but everyone else was in casual clothes – I felt completely ......",
+            "answer": "overdressed"
+          },
+          {
+            "sentence": "We have significantly ...... on the advertising budget this quarter and urgently need to cut back.",
+            "answer": "overspent"
+          },
+          {
+            "sentence": "Please calm down – you're getting ...... and it's affecting your ability to focus.",
+            "answer": "overexcited"
+          },
+          {
+            "sentence": "The reporter ...... the mark by publishing personal details that were never intended for public release.",
+            "answer": "overstepped"
+          },
+          {
+            "sentence": "The garden at the back of the studio was completely ...... and clearly hadn't been touched in years.",
+            "answer": "overgrown"
+          },
+          {
+            "sentence": "The parcel was ...... so the post office charged an additional handling fee.",
+            "answer": "overweight"
+          },
+          {
+            "sentence": "The subscription fee seems rather ...... for the volume and quality of content currently on offer.",
+            "answer": "overpriced"
+          }
         ]
       },
       "N": {
         "title": "Word formation (Rhetoric text)",
         "instructions": "Use the word given in capitals to form a word that fits in the space.",
-        "passage": "The (1) ______ 'never judge a book by its cover' could not be more true for *Ridiculous Rules*. The cover is blank, whereas the book is crammed full of examples. Allen is an (2) ______ critic of much of what is taught, and has issued a (3) ______ of war against textbooks which tell lies. Take the ridiculous and (4) ______ rule of never ending a sentence with a preposition. The story goes that Churchill, well known for his numerous (5) ______ as well as for being Prime Minister, received a manuscript back from an ignorant (6) ______, who told him he had to (7) ______ a sentence. Churchill responded by making the forceful (8) ______ in the margin: 'This is an impertinence up with which I will not put.' – the (9) ______ being that not to end a sentence with a preposition often sounds ridiculous. Sadly, Allen informs us that the story is probably mere (10) ______, and that Churchill may have actually only written 'rubbish!'.",
+        "passage": "The (1) ______ 'the pen is mightier than the sword' might well have been coined with *Language Under Attack* in mind. Its author, Barker, is an (2) ______ defender of plain English and has made a bold (3) ______ of intent to expose the spread of empty, (4) ______ corporate language in public life. In his earlier (5) _______, Barker was already critical of the overuse of the passive voice, but it was not until a careless (6) ______ cut a key paragraph from his draft that he decided to (7) ______ his entire argument more forcefully. The result is a powerful (8) ______ of principles that runs throughout the whole book. The (9) ______ is clear: if we allow language to become hollow, we lose the capacity to think critically. Some have dismissed this as little more than (10) _______, but the evidence Barker provides is difficult to ignore.",
         "questions": [
-          { "sentence": "The (1) ...... (SAY)", "answer": "saying" },
-          { "sentence": "Allen is an (2) ...... (SPEAK) critic", "answer": "outspoken" },
-          { "sentence": "...has issued a (3) ...... (DECLARE) of war", "answer": "declaration" },
-          { "sentence": "Take the ridiculous and (4) ...... (MEAN) rule", "answer": "meaningless" },
-          { "sentence": "Well known for his numerous (5) ...... (WRITE)", "answer": "writings" },
-          { "sentence": "Received a manuscript back from an ignorant (6) ...... (EDIT)", "answer": "editor" },
-          { "sentence": "Who told him he had to (7) ...... (PHRASE) a sentence", "answer": "rephrase" },
-          { "sentence": "Churchill responded by making the forceful (8) ...... (STATE) in the margin", "answer": "statement" },
-          { "sentence": "The (9) ...... (IMPLY) being that not to end a sentence with a preposition sounds ridiculous", "answer": "implication" },
-          { "sentence": "The story is probably mere (10) ...... (HEAR)", "answer": "hearsay" }
+          {
+            "sentence": "The (1) ...... (SAY)",
+            "answer": "saying"
+          },
+          {
+            "sentence": "...is an (2) ...... (SPEAK) defender",
+            "answer": "outspoken"
+          },
+          {
+            "sentence": "...has made a bold (3) ...... (DECLARE) of intent",
+            "answer": "declaration"
+          },
+          {
+            "sentence": "...the spread of empty, (4) ...... (MEAN) corporate language",
+            "answer": "meaningless"
+          },
+          {
+            "sentence": "...in his earlier (5) ...... (WRITE)",
+            "answer": "writings"
+          },
+          {
+            "sentence": "...a careless (6) ...... (EDIT) cut a key paragraph",
+            "answer": "editor"
+          },
+          {
+            "sentence": "...decided to (7) ...... (PHRASE) his argument",
+            "answer": "rephrase"
+          },
+          {
+            "sentence": "...a powerful (8) ...... (STATE) of principles",
+            "answer": "statement"
+          },
+          {
+            "sentence": "The (9) ...... (IMPLY) is clear",
+            "answer": "implication"
+          },
+          {
+            "sentence": "...dismissed as little more than (10) ...... (HEAR)",
+            "answer": "hearsay"
+          }
         ]
       }
     }
