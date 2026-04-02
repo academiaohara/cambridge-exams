@@ -7,87 +7,315 @@
   "sections": {
     "topic_vocabulary": {
       "quality": [
-        { "word": "aggravate", "part_of_speech": "v" },
-        { "word": "better", "part_of_speech": "v" },
-        { "word": "blemish", "part_of_speech": "n" },
-        { "word": "chaos", "part_of_speech": "n" },
-        { "word": "cheapen", "part_of_speech": "v" },
-        { "word": "contaminate", "part_of_speech": "v" },
-        { "word": "decay", "part_of_speech": "v" },
-        { "word": "decline", "part_of_speech": "v" },
-        { "word": "defective", "part_of_speech": "adj" },
-        { "word": "detrimental", "part_of_speech": "adj" },
-        { "word": "devastate", "part_of_speech": "v" },
-        { "word": "enhance", "part_of_speech": "v" },
-        { "word": "evaluate", "part_of_speech": "v" },
-        { "word": "exacerbate", "part_of_speech": "v" },
-        { "word": "exquisite", "part_of_speech": "adj" },
-        { "word": "first-rate", "part_of_speech": "adj" },
-        { "word": "flaw", "part_of_speech": "n" },
-        { "word": "ideal", "part_of_speech": "adj" },
-        { "word": "inadequate", "part_of_speech": "adj" },
-        { "word": "invaluable", "part_of_speech": "adj" },
-        { "word": "optimum", "part_of_speech": "n, adj" },
-        { "word": "outclass", "part_of_speech": "v" },
-        { "word": "prime", "part_of_speech": "adj" },
-        { "word": "redeeming feature", "part_of_speech": "n phr" },
-        { "word": "refurbish", "part_of_speech": "v" },
-        { "word": "reinforce", "part_of_speech": "v" },
-        { "word": "renovate", "part_of_speech": "v" },
-        { "word": "rotten", "part_of_speech": "adj" },
-        { "word": "rusty", "part_of_speech": "adj" },
-        { "word": "satisfactory", "part_of_speech": "adj" },
-        { "word": "shambles", "part_of_speech": "n" },
-        { "word": "shoddy", "part_of_speech": "adj" },
-        { "word": "sound", "part_of_speech": "adj" },
-        { "word": "stale", "part_of_speech": "adj" },
-        { "word": "streamline", "part_of_speech": "v" },
-        { "word": "strengthen", "part_of_speech": "v" },
-        { "word": "surpass", "part_of_speech": "v" },
-        { "word": "ultimate", "part_of_speech": "adj" },
-        { "word": "worsen", "part_of_speech": "v" },
-        { "word": "wreck", "part_of_speech": "v, n" }
+        {
+          "word": "aggravate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "better",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "blemish",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "chaos",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "cheapen",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "contaminate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "decay",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "decline",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "defective",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "detrimental",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "devastate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "enhance",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "evaluate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "exacerbate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "exquisite",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "first-rate",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "flaw",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "ideal",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "inadequate",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "invaluable",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "optimum",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "outclass",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "prime",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "redeeming feature",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "refurbish",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "reinforce",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "renovate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "rotten",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "rusty",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "satisfactory",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "shambles",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "shoddy",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "sound",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "stale",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "streamline",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "strengthen",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "surpass",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "ultimate",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "worsen",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "wreck",
+          "part_of_speech": "v, n"
+        }
       ],
       "the_arts": [
-        { "word": "abstract", "part_of_speech": "n, adj" },
-        { "word": "auction", "part_of_speech": "n" },
-        { "word": "audition", "part_of_speech": "n" },
-        { "word": "bestseller", "part_of_speech": "n" },
-        { "word": "collector's item", "part_of_speech": "n phr" },
-        { "word": "curator", "part_of_speech": "n" },
-        { "word": "fine art", "part_of_speech": "n phr" },
-        { "word": "installation", "part_of_speech": "n" },
-        { "word": "lines", "part_of_speech": "n pl" },
-        { "word": "lyrics", "part_of_speech": "n pl" },
-        { "word": "masterpiece", "part_of_speech": "n" },
-        { "word": "paperback", "part_of_speech": "n" },
-        { "word": "period", "part_of_speech": "n, adj" },
-        { "word": "priceless", "part_of_speech": "adj" },
-        { "word": "recital", "part_of_speech": "n" },
-        { "word": "retrospective", "part_of_speech": "n, adj" },
-        { "word": "score", "part_of_speech": "n" },
-        { "word": "sketch", "part_of_speech": "v, n" },
-        { "word": "work of art", "part_of_speech": "n phr" },
-        { "word": "worthless", "part_of_speech": "adj" }
+        {
+          "word": "abstract",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "auction",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "audition",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "bestseller",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "collector's item",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "curator",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "fine art",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "installation",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "lines",
+          "part_of_speech": "n pl"
+        },
+        {
+          "word": "lyrics",
+          "part_of_speech": "n pl"
+        },
+        {
+          "word": "masterpiece",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "paperback",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "period",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "priceless",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "recital",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "retrospective",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "score",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "sketch",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "work of art",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "worthless",
+          "part_of_speech": "adj"
+        }
       ]
     },
     "phrasal_verbs": [
-      { "verb": "brighten up", "meaning": "start to have more colour or light; give something more colour or light; start looking or feeling happier; if the weather brightens up, it becomes sunnier" },
-      { "verb": "brush up (on)", "meaning": "practise and improve your skills or knowledge of something" },
-      { "verb": "check out", "meaning": "examine someone or something in order to be certain that everything is correct, true or satisfactory; if information checks out, you feel that it is true after examining it" },
-      { "verb": "liven up", "meaning": "make something more interesting or exciting, or become more interesting or exciting; give something a more interesting appearance, taste or other quality" },
-      { "verb": "make over", "meaning": "change or improve the appearance of someone or something; makeover (n)" },
-      { "verb": "mess up", "meaning": "make a mistake or do something badly; make something dirty or untidy; be the cause of someone’s physical, emotional or mental problems" },
-      { "verb": "paper over", "meaning": "hide a problem or disagreement rather than finding a satisfactory solution to it" },
-      { "verb": "patch up", "meaning": "repair something, often quickly and not very well; become friends with someone again after a disagreement; give basic medical treatment to someone who is injured" },
-      { "verb": "pick up", "meaning": "improve" },
-      { "verb": "run down", "meaning": "if an organisation or area is run down, its size, importance and activity is reduced; run-down (adj)" },
-      { "verb": "scrape through", "meaning": "succeed in doing something, but not in a very impressive way" },
-      { "verb": "smarten up", "meaning": "improve the appearance of something, for example by cleaning or painting it; if you smarten up or smarten yourself up, you make yourself look tidy and clean" },
-      { "verb": "stand out", "meaning": "be much more impressive or important than others; be easy to see or notice because of being different; outstanding (adj)" },
-      { "verb": "touch up", "meaning": "make a surface look better with small improvements" },
-      { "verb": "waste away", "meaning": "gradually become thinner and weaker over a period of time, usually because of an illness" },
-      { "verb": "write off", "meaning": "damage a vehicle so badly that it is not worth repairing; decide that someone or something will not succeed and stop giving them your attention and energy; write-off (n)" }
+      {
+        "verb": "brighten up",
+        "meaning": "start to have more colour or light; give something more colour or light; start looking or feeling happier; if the weather brightens up, it becomes sunnier"
+      },
+      {
+        "verb": "brush up (on)",
+        "meaning": "practise and improve your skills or knowledge of something"
+      },
+      {
+        "verb": "check out",
+        "meaning": "examine someone or something in order to be certain that everything is correct, true or satisfactory; if information checks out, you feel that it is true after examining it"
+      },
+      {
+        "verb": "liven up",
+        "meaning": "make something more interesting or exciting, or become more interesting or exciting; give something a more interesting appearance, taste or other quality"
+      },
+      {
+        "verb": "make over",
+        "meaning": "change or improve the appearance of someone or something; makeover (n)"
+      },
+      {
+        "verb": "mess up",
+        "meaning": "make a mistake or do something badly; make something dirty or untidy; be the cause of someone’s physical, emotional or mental problems"
+      },
+      {
+        "verb": "paper over",
+        "meaning": "hide a problem or disagreement rather than finding a satisfactory solution to it"
+      },
+      {
+        "verb": "patch up",
+        "meaning": "repair something, often quickly and not very well; become friends with someone again after a disagreement; give basic medical treatment to someone who is injured"
+      },
+      {
+        "verb": "pick up",
+        "meaning": "improve"
+      },
+      {
+        "verb": "run down",
+        "meaning": "if an organisation or area is run down, its size, importance and activity is reduced; run-down (adj)"
+      },
+      {
+        "verb": "scrape through",
+        "meaning": "succeed in doing something, but not in a very impressive way"
+      },
+      {
+        "verb": "smarten up",
+        "meaning": "improve the appearance of something, for example by cleaning or painting it; if you smarten up or smarten yourself up, you make yourself look tidy and clean"
+      },
+      {
+        "verb": "stand out",
+        "meaning": "be much more impressive or important than others; be easy to see or notice because of being different; outstanding (adj)"
+      },
+      {
+        "verb": "touch up",
+        "meaning": "make a surface look better with small improvements"
+      },
+      {
+        "verb": "waste away",
+        "meaning": "gradually become thinner and weaker over a period of time, usually because of an illness"
+      },
+      {
+        "verb": "write off",
+        "meaning": "damage a vehicle so badly that it is not worth repairing; decide that someone or something will not succeed and stop giving them your attention and energy; write-off (n)"
+      }
     ],
     "collocations_patterns": {
       "art": [
@@ -255,337 +483,962 @@
       ]
     },
     "idioms": [
-      { "idiom": "a sight for sore eyes", "meaning": "someone or something that you are very pleased to see" },
-      { "idiom": "Achilles' heel", "meaning": "a weak feature of someone or something that could cause failure or be attacked" },
-      { "idiom": "add fuel to the fire", "meaning": "make a bad situation worse" },
-      { "idiom": "below/under par", "meaning": "below the usual or expected standard" },
-      { "idiom": "clean as a whistle", "meaning": "completely honest or legal; extremely clean" },
-      { "idiom": "draw the line (at)", "meaning": "say that you will definitely not allow or accept something" },
-      { "idiom": "last word in", "meaning": "the newest and best type of something" },
-      { "idiom": "out of this world", "meaning": "extremely good or impressive" },
-      { "idiom": "over the top", "meaning": "more than what is considered normal or suitable" },
-      { "idiom": "pride of place", "meaning": "in the place that is most central or important" },
-      { "idiom": "steal the show", "meaning": "receive a lot of attention because you give the best performance in a show or other event" },
-      { "idiom": "the edge over", "meaning": "an advantage that makes someone or something more successful than other people or things" }
+      {
+        "idiom": "a sight for sore eyes",
+        "meaning": "someone or something that you are very pleased to see"
+      },
+      {
+        "idiom": "Achilles' heel",
+        "meaning": "a weak feature of someone or something that could cause failure or be attacked"
+      },
+      {
+        "idiom": "add fuel to the fire",
+        "meaning": "make a bad situation worse"
+      },
+      {
+        "idiom": "below/under par",
+        "meaning": "below the usual or expected standard"
+      },
+      {
+        "idiom": "clean as a whistle",
+        "meaning": "completely honest or legal; extremely clean"
+      },
+      {
+        "idiom": "draw the line (at)",
+        "meaning": "say that you will definitely not allow or accept something"
+      },
+      {
+        "idiom": "last word in",
+        "meaning": "the newest and best type of something"
+      },
+      {
+        "idiom": "out of this world",
+        "meaning": "extremely good or impressive"
+      },
+      {
+        "idiom": "over the top",
+        "meaning": "more than what is considered normal or suitable"
+      },
+      {
+        "idiom": "pride of place",
+        "meaning": "in the place that is most central or important"
+      },
+      {
+        "idiom": "steal the show",
+        "meaning": "receive a lot of attention because you give the best performance in a show or other event"
+      },
+      {
+        "idiom": "the edge over",
+        "meaning": "an advantage that makes someone or something more successful than other people or things"
+      }
     ],
     "word_formation": [
       {
         "base": "adequate",
-        "adjective": ["(in)adequate"],
-        "adverb": ["(in)adequately"]
+        "adjective": [
+          "(in)adequate"
+        ],
+        "adverb": [
+          "(in)adequately"
+        ]
       },
       {
         "base": "admire",
-        "noun": ["admiration", "admirer"],
-        "adjective": ["admirable"],
-        "adverb": ["admirably", "admiringly"]
+        "noun": [
+          "admiration",
+          "admirer"
+        ],
+        "adjective": [
+          "admirable"
+        ],
+        "adverb": [
+          "admirably",
+          "admiringly"
+        ]
       },
       {
         "base": "art",
-        "noun": ["arts", "artfulness", "artificiality", "artist", "artiste", "artistry", "artlessness", "artwork", "artifact/artefact", "artifice"],
-        "adjective": ["arty", "artistic(ally)", "artificial(ly)", "artfully", "artless(ly)"]
+        "noun": [
+          "arts",
+          "artfulness",
+          "artificiality",
+          "artist",
+          "artiste",
+          "artistry",
+          "artlessness",
+          "artwork",
+          "artifact/artefact",
+          "artifice"
+        ],
+        "adjective": [
+          "arty",
+          "artistic(ally)",
+          "artificial(ly)",
+          "artfully",
+          "artless(ly)"
+        ]
       },
       {
         "base": "awe",
-        "noun": ["awfulness", "awesomeness"],
-        "adjective": ["awestruck", "awful(ly)", "awesome(ly)"]
+        "noun": [
+          "awfulness",
+          "awesomeness"
+        ],
+        "adjective": [
+          "awestruck",
+          "awful(ly)",
+          "awesome(ly)"
+        ]
       },
       {
         "base": "class",
-        "verb": ["outclass", "(de)classify"],
-        "noun": ["classics", "classifieds", "classification", "classlessness", "classmate", "classroom", "classwork"],
-        "adjective": ["classic", "classy", "classless", "(de)classified", "classical(ly)"]
+        "verb": [
+          "outclass",
+          "(de)classify"
+        ],
+        "noun": [
+          "classics",
+          "classifieds",
+          "classification",
+          "classlessness",
+          "classmate",
+          "classroom",
+          "classwork"
+        ],
+        "adjective": [
+          "classic",
+          "classy",
+          "classless",
+          "(de)classified",
+          "classical(ly)"
+        ]
       },
       {
         "base": "collect",
-        "noun": ["collector", "collection"],
-        "adjective": ["collectable", "collected", "collective(ly)"]
+        "noun": [
+          "collector",
+          "collection"
+        ],
+        "adjective": [
+          "collectable",
+          "collected",
+          "collective(ly)"
+        ]
       },
       {
         "base": "destroy",
-        "noun": ["destroyer", "destruction"],
-        "adjective": ["indestructible", "destructive(ly)"]
+        "noun": [
+          "destroyer",
+          "destruction"
+        ],
+        "adjective": [
+          "indestructible",
+          "destructive(ly)"
+        ]
       },
       {
         "base": "good",
-        "noun": ["goods", "goodness", "goodwill", "goody/goodie"]
+        "noun": [
+          "goods",
+          "goodness",
+          "goodwill",
+          "goody/goodie"
+        ]
       },
       {
         "base": "ideal",
-        "verb": ["idealise"],
-        "noun": ["idealism", "idealisation", "idealist"],
-        "adjective": ["idealistic", "idealised"],
-        "adverb": ["ideally"]
+        "verb": [
+          "idealise"
+        ],
+        "noun": [
+          "idealism",
+          "idealisation",
+          "idealist"
+        ],
+        "adjective": [
+          "idealistic",
+          "idealised"
+        ],
+        "adverb": [
+          "ideally"
+        ]
       },
       {
         "base": "imitate",
-        "noun": ["imitation", "imitator"],
-        "adjective": ["imitative", "inimitable"]
+        "noun": [
+          "imitation",
+          "imitator"
+        ],
+        "adjective": [
+          "imitative",
+          "inimitable"
+        ]
       },
       {
         "base": "impress",
-        "noun": ["impression", "(un)impressiveness", "impressionism", "impressionist"],
-        "adjective": ["(un)impressed", "impressionable", "impressionistic", "(un)impressive(ly)"]
+        "noun": [
+          "impression",
+          "(un)impressiveness",
+          "impressionism",
+          "impressionist"
+        ],
+        "adjective": [
+          "(un)impressed",
+          "impressionable",
+          "impressionistic",
+          "(un)impressive(ly)"
+        ]
       },
       {
         "base": "improve",
-        "noun": ["improvement"],
-        "adjective": ["improvable", "improved"]
+        "noun": [
+          "improvement"
+        ],
+        "adjective": [
+          "improvable",
+          "improved"
+        ]
       },
       {
         "base": "match",
-        "noun": ["matchmaker", "matchmaking", "matchstick", "matchwood", "matchbook", "matchbox"],
-        "adjective": ["matching", "unmatched", "matchless"]
+        "noun": [
+          "matchmaker",
+          "matchmaking",
+          "matchstick",
+          "matchwood",
+          "matchbook",
+          "matchbox"
+        ],
+        "adjective": [
+          "matching",
+          "unmatched",
+          "matchless"
+        ]
       },
       {
         "base": "perfect",
-        "noun": ["(im)perfection", "perfectionist", "perfectionism"],
-        "adjective": ["perfectible", "perfectly", "imperfect(ly)"]
+        "noun": [
+          "(im)perfection",
+          "perfectionist",
+          "perfectionism"
+        ],
+        "adjective": [
+          "perfectible",
+          "perfectly",
+          "imperfect(ly)"
+        ]
       },
       {
         "base": "quality",
-        "adjective": ["qualitative(ly)"]
+        "adjective": [
+          "qualitative(ly)"
+        ]
       },
       {
         "base": "strong",
-        "verb": ["strengthen"],
-        "noun": ["strength", "stronghold"],
-        "adverb": ["strongly"]
+        "verb": [
+          "strengthen"
+        ],
+        "noun": [
+          "strength",
+          "stronghold"
+        ],
+        "adverb": [
+          "strongly"
+        ]
       },
       {
         "base": "terror",
-        "verb": ["terrorise", "terrify"],
-        "noun": ["terrorist", "terrorism"],
-        "adjective": ["terrible", "terrific", "terrifying", "terrified"],
-        "adverb": ["terribly"]
+        "verb": [
+          "terrorise",
+          "terrify"
+        ],
+        "noun": [
+          "terrorist",
+          "terrorism"
+        ],
+        "adjective": [
+          "terrible",
+          "terrific",
+          "terrifying",
+          "terrified"
+        ],
+        "adverb": [
+          "terribly"
+        ]
       },
       {
         "base": "use",
-        "verb": ["abuse", "misuse", "reuse", "overuse"],
-        "noun": ["(ab)user", "usefulness", "usage", "uselessness"],
-        "adjective": ["(un)used", "(un)usable", "reusable", "abused", "abusive(ly)"],
-        "adverb": ["useful(ly)", "useless(ly)"]
+        "verb": [
+          "abuse",
+          "misuse",
+          "reuse",
+          "overuse"
+        ],
+        "noun": [
+          "(ab)user",
+          "usefulness",
+          "usage",
+          "uselessness"
+        ],
+        "adjective": [
+          "(un)used",
+          "(un)usable",
+          "reusable",
+          "abused",
+          "abusive(ly)"
+        ],
+        "adverb": [
+          "useful(ly)",
+          "useless(ly)"
+        ]
       },
       {
         "base": "value",
-        "verb": ["revalue", "overvalue", "evaluate"],
-        "noun": ["(re)valuation", "evaluation", "overvaluation", "valuer", "valuables"],
-        "adjective": ["(in)valuable", "valueless"]
+        "verb": [
+          "revalue",
+          "overvalue",
+          "evaluate"
+        ],
+        "noun": [
+          "(re)valuation",
+          "evaluation",
+          "overvaluation",
+          "valuer",
+          "valuables"
+        ],
+        "adjective": [
+          "(in)valuable",
+          "valueless"
+        ]
       },
       {
         "base": "worth",
-        "noun": ["worthlessness"],
-        "adjective": ["worthy", "worthless", "worthwhile"]
+        "noun": [
+          "worthlessness"
+        ],
+        "adjective": [
+          "worthy",
+          "worthless",
+          "worthwhile"
+        ]
       }
     ],
     "exercises": {
       "A": {
-        "title": "Circle the correct word. If both are correct, circle both.",
-        "instructions": "Circle the correct word. If both are correct, circle both.",
+        "title": "Choose the correct word. If both options are correct, choose both.",
+        "instructions": "Choose the correct word. If both options are correct, choose both.",
         "questions": [
-          { "sentence": "The procedure’s good, but I think we can **better / streamline** it further to make it more efficient.", "answer": "both" },
-          { "sentence": "The shell of the building has been completely **renovated / refurbished** and the interior decorators will be starting inside next week.", "answer": "both" },
-          { "sentence": "The Minister’s inflammatory comments are just **exacerbating / aggravating** an already difficult situation.", "answer": "both" },
-          { "sentence": "The inspectors are going to be **evaluating / valuing** the performance of every teacher.", "answer": "evaluating" },
-          { "sentence": "In Berkshire, a lorry carrying chemicals has crashed into a river and has **decayed / contaminated** the local water supply.", "answer": "contaminated" },
-          { "sentence": "I set the school record for the 100m over eight years ago and it’s never been **strengthened / bettered** to this day.", "answer": "bettered" },
-          { "sentence": "This new browser should **enhance / reinforce** everyone’s experience online.", "answer": "enhance" },
-          { "sentence": "The number of school-leavers going on to university has **declined / devastated** since the government introduced tuition fees.", "answer": "declined" },
-          { "sentence": "We must never let inflation **surpass / outclass** the three per cent mark again.", "answer": "surpass" },
-          { "sentence": "This accident has **wrecked / worsened** Dagli’s chances of competing in the final.", "answer": "wrecked" },
-          { "sentence": "Pop songs have **cheapened / worsened** the word ‘love’ so that it’s meaningless nowadays.", "answer": "cheapened" },
-          { "sentence": "The rock festival was fun, but it was marred by the organisation, which was a **chaos / shambles**.", "answer": "shambles" },
-          { "sentence": "The face in the picture is angelic, except for that tiny **blemish / flaw** just below the eye – can you see it?", "answer": "both" }
+          {
+            "sentence": "The software works fine, but we could **better / streamline** it further to reduce the loading time.",
+            "answer": "both"
+          },
+          {
+            "sentence": "The hotel lobby has been completely **renovated / refurbished**, though the guest rooms are still waiting for attention.",
+            "answer": "both"
+          },
+          {
+            "sentence": "Spreading those rumours is only **exacerbating / aggravating** the tension between the two departments.",
+            "answer": "both"
+          },
+          {
+            "sentence": "The committee will be **evaluating / valuing** each candidate’s presentation before making a final decision.",
+            "answer": "evaluating"
+          },
+          {
+            "sentence": "A burst pipe at the industrial plant has **decayed / contaminated** the groundwater in the surrounding area.",
+            "answer": "contaminated"
+          },
+          {
+            "sentence": "She set the regional marathon record five years ago and it has never been **strengthened / bettered** since.",
+            "answer": "bettered"
+          },
+          {
+            "sentence": "Adding carefully chosen background music can really **enhance / reinforce** the atmosphere of a dining experience.",
+            "answer": "enhance"
+          },
+          {
+            "sentence": "High street sales have **declined / devastated** significantly since the out-of-town retail park opened.",
+            "answer": "declined"
+          },
+          {
+            "sentence": "Economists are warning that unemployment must not **surpass / outclass** the five per cent threshold.",
+            "answer": "surpass"
+          },
+          {
+            "sentence": "The injury has completely **wrecked / worsened** her chances of competing in next month’s championship.",
+            "answer": "wrecked"
+          },
+          {
+            "sentence": "Overusing the term ‘genius’ has **cheapened / worsened** it to the point where it carries almost no weight.",
+            "answer": "cheapened"
+          },
+          {
+            "sentence": "The ticket launch was meant to go smoothly, but the whole thing turned into a complete **chaos / shambles**.",
+            "answer": "shambles"
+          },
+          {
+            "sentence": "The sculpture is almost perfect, apart from a slight **blemish / flaw** near the base.",
+            "answer": "both"
+          }
         ]
       },
       "B": {
-        "title": "Circle the word which best matches each statement.",
-        "instructions": "Circle the word which best matches each statement.",
+        "title": "Select the word that best matches each statement.",
+        "instructions": "Select the word that best matches each statement.",
         "questions": [
-          { "sentence": "'I've never seen a more beautiful diamond!' **exquisite / sound**", "answer": "exquisite" },
-          { "sentence": "'His honesty is the only feature about him that's positive.' **redeeming / ultimate**", "answer": "redeeming" },
-          { "sentence": "'These metal railings are really old and brown.' **stale / rusty**", "answer": "rusty" },
-          { "sentence": "'It’s just not good enough.' **invaluable / inadequate**", "answer": "inadequate" },
-          { "sentence": "'The workmanship on this cabinet isn't very good.' **detrimental / shoddy**", "answer": "shoddy" },
-          { "sentence": "'This CD-ROM drive isn't working properly.' **defective / detrimental**", "answer": "defective" },
-          { "sentence": "'This apple’s completely black.' **rotten / stale**", "answer": "rotten" },
-          { "sentence": "'This was the most important reason for us.' **optimum / prime**", "answer": "prime" },
-          { "sentence": "'The job couldn’t have been done without your help.' **exquisite / invaluable**", "answer": "invaluable" },
-          { "sentence": "'The price seems reasonable to me. I'll take it.' **ultimate / satisfactory**", "answer": "satisfactory" },
-          { "sentence": "'This bread’s not very fresh.' **rotten / stale**", "answer": "stale" },
-          { "sentence": "'I think the government’s measures are going to do quite a lot of damage.' **detrimental / defective**", "answer": "detrimental" },
-          { "sentence": "'It’s the most exciting experience you’ll ever have!' **ultimate / optimum**", "answer": "ultimate" },
-          { "sentence": "'I think it was a sensible decision.' **prime / sound**", "answer": "sound" },
-          { "sentence": "'This is exactly what I need.' **ideal / prime**", "answer": "ideal" },
-          { "sentence": "'Excellent work. Well done!' **satisfactory / first-rate**", "answer": "first-rate" },
-          { "sentence": "'Four is the right number of people for this project.' **ultimate / optimum**", "answer": "optimum" }
+          {
+            "sentence": "‘The detail on this porcelain vase is absolutely breathtaking.’ **exquisite / sound**",
+            "answer": "exquisite"
+          },
+          {
+            "sentence": "‘The film was dreadful, but at least the soundtrack gave it one positive element.’ **redeeming / ultimate**",
+            "answer": "redeeming"
+          },
+          {
+            "sentence": "‘The old gate’s hinges have turned a deep shade of brown.’ **stale / rusty**",
+            "answer": "rusty"
+          },
+          {
+            "sentence": "‘What they’ve offered us really doesn’t meet our expectations.’ **invaluable / inadequate**",
+            "answer": "inadequate"
+          },
+          {
+            "sentence": "‘The stitching on this jacket fell apart after the very first wash.’ **detrimental / shoddy**",
+            "answer": "shoddy"
+          },
+          {
+            "sentence": "‘The screen on my new laptop has stopped responding altogether.’ **defective / detrimental**",
+            "answer": "defective"
+          },
+          {
+            "sentence": "‘This piece of fruit has gone completely dark and soft inside.’ **rotten / stale**",
+            "answer": "rotten"
+          },
+          {
+            "sentence": "‘This turned out to be the leading cause of the project’s failure.’ **optimum / prime**",
+            "answer": "prime"
+          },
+          {
+            "sentence": "‘We simply couldn’t have finished the report without your contribution.’ **exquisite / invaluable**",
+            "answer": "invaluable"
+          },
+          {
+            "sentence": "‘The rent isn’t too bad for the size of the flat. I’ll take it.’ **ultimate / satisfactory**",
+            "answer": "satisfactory"
+          },
+          {
+            "sentence": "‘This loaf has been sitting out for a few days and has lost its freshness.’ **rotten / stale**",
+            "answer": "stale"
+          },
+          {
+            "sentence": "‘The proposed cuts will be seriously harmful to local services.’ **detrimental / defective**",
+            "answer": "detrimental"
+          },
+          {
+            "sentence": "‘Nothing will ever compare to the thrill of skydiving for the very first time!’ **ultimate / optimum**",
+            "answer": "ultimate"
+          },
+          {
+            "sentence": "‘She put forward a very well-reasoned argument in the debate.’ **prime / sound**",
+            "answer": "sound"
+          },
+          {
+            "sentence": "‘This location has absolutely everything we were looking for.’ **ideal / prime**",
+            "answer": "ideal"
+          },
+          {
+            "sentence": "‘The performance last night was exceptional from start to finish.’ **satisfactory / first-rate**",
+            "answer": "first-rate"
+          },
+          {
+            "sentence": "‘Five turns out to be just the right number of people for this working group.’ **ultimate / optimum**",
+            "answer": "optimum"
+          }
         ]
       },
       "C": {
         "title": "Write a word from the boxes in each gap.",
         "instructions": "Write a word from the boxes in each gap.",
         "questions": [
-          { "sentence": "I haven't read Susan Bashworth's latest yet but I've heard it’s very good. It became a (1) ... within weeks of being published.", "answer": "bestseller" },
-          { "sentence": "I'm actually waiting for it to come out in (2) ... before I get it.", "answer": "paperback" },
-          { "sentence": "I've learnt all my (3) ... for the play, which was easy, but we have to sing a song at the end and I'm just no good at remembering (4) ....", "answer": "lines, lyrics" },
-          { "sentence": "The school orchestra’s giving a (5) ... tonight which sounds quite interesting. They’ve got a guest conductor who’s quite famous. Apparently, he’s written the (6) ... for a number of movies.", "answer": "recital, score" },
-          { "sentence": "We went to that (7) ... of Lewis’ paintings at the Granchester Museum last week. It was very good. We got chatting to the (8) ..., who told us a very interesting story about one picture…", "answer": "retrospective, curator" },
-          { "sentence": "He told us that someone had found it in their attic, thought it was (9) ... and so gave it to a neighbour. In fact, it turned out to be (10) ...!", "answer": "worthless, priceless" },
-          { "sentence": "One of the (11) ... I’d love to do is restoring damaged or faded (12) ... of art.", "answer": "jobs, works" }
+          {
+            "sentence": "My colleague Antonio was absolutely raving about Patricia Ortega’s new novel. Apparently it became a (1) ... almost overnight after its release.",
+            "answer": "bestseller"
+          },
+          {
+            "sentence": "I’m holding off buying it myself – I’d rather wait for it to come out in (2) ... before spending that much.",
+            "answer": "paperback"
+          },
+          {
+            "sentence": "Rehearsals for our amateur production are going well. I’ve memorised all my (3) ... without much difficulty, though I still struggle to remember the (4) ... to the songs we perform at the end.",
+            "answer": "lines, lyrics"
+          },
+          {
+            "sentence": "I’m thinking of attending the piano (5) ... at the arts centre tomorrow evening. The featured composer wrote the (6) ... for two award-winning films, which makes it even more interesting.",
+            "answer": "recital, score"
+          },
+          {
+            "sentence": "My cousin took me to a (7) ... of Nina Valdés’ paintings at the national gallery last weekend. The (8) ... gave a fascinating talk about how the exhibition had been selected and organised.",
+            "answer": "retrospective, curator"
+          },
+          {
+            "sentence": "Apparently, one of the pieces had been found at a flea market by someone who thought it was (9) ... and barely worth keeping. It later turned out to be completely (10) ... !",
+            "answer": "worthless, priceless"
+          },
+          {
+            "sentence": "Among the (11) ... I’d find most fulfilling would be helping to track down stolen (12) ... of art and returning them to their rightful owners.",
+            "answer": "jobs, works"
+          }
         ]
       },
       "D": {
         "title": "Complete using the words in the box in the correct form.",
         "instructions": "Complete using the words in the box in the correct form. There is one word you will not need.",
-        "words": ["abstract", "auction", "audition", "fine", "installation", "item", "masterpiece", "period", "sketch"],
+        "words": [
+          "abstract",
+          "auction",
+          "audition",
+          "fine",
+          "installation",
+          "item",
+          "masterpiece",
+          "period",
+          "sketch"
+        ],
         "questions": [
-          { "sentence": "When most of us think of works of art, we tend to think of pieces in galleries, whether they be famous (1) ...... (such as da Vinci's *Mona Lisa*) hanging on the wall, or bizarre (2) ...... (such as a pile of bricks with a red shoe on top).", "answer": "masterpieces, installations" },
-          { "sentence": "Another way is to go to a/an (3) ...... .", "answer": "auction" },
-          { "sentence": "On any one day, there may be (4) ...... in pencil (artists generally do these before painting the actual picture), (5) ...... art (which includes sculptures and ceramics as well as paintings), collector's (6) ...... (anything from broomsticks to postcards), (7) ...... paintings (the catalogue will help you work out what the artist was trying to express) and even (8) ...... furniture.", "answer": "sketches, fine, items, abstract, period" }
+          {
+            "sentence": "When art lovers think about expanding a personal collection, they often dream of owning iconic (1) ...... – such as Vermeer’s *Girl with a Pearl Earring* – or striking modern (2) ...... that transform entire gallery spaces.",
+            "answer": "masterpieces, installations"
+          },
+          {
+            "sentence": "One popular way to acquire pieces is to attend a/an (3) ...... , where both established and emerging artworks go to the highest bidder.",
+            "answer": "auction"
+          },
+          {
+            "sentence": "On any given day, a sale catalogue might list rough (4) ...... in charcoal or pen (often produced as preparatory studies), examples of (5) ...... art spanning ceramics and metalwork, collector’s (6) ...... ranging from signed photographs to vintage posters, (7) ...... compositions that challenge the viewer’s interpretation, and even (8) ...... pieces of furniture crafted in a specific historical style.",
+            "answer": "sketches, fine, items, abstract, period"
+          }
         ]
       },
       "E": {
         "title": "Write one word in each gap so the second sentence has a similar meaning to the first sentence.",
         "instructions": "Write one word in each gap so the second sentence has a similar meaning to the first sentence.",
         "questions": [
-          { "sentence": "You’ll have to improve your general knowledge before you go on that quiz show.\nYou’ll have to …………… up on your general knowledge before you go on that quiz show.", "answer": "brush" },
-          { "sentence": "The car was so badly damaged it had to be destroyed.\nThe car was so badly damaged it had to be ……… off.", "answer": "written" },
-          { "sentence": "One of the poems is particularly noteworthy due to its interesting use of imagery.\nOne of the poems particularly …………… out due to its interesting use of imagery.", "answer": "stands" },
-          { "sentence": "If attendance doesn’t improve soon, the play will probably have to close.\nIf attendance doesn’t …………… up soon, the play will probably have to close.", "answer": "pick" },
-          { "sentence": "I’ve heard a new gallery has opened in St Ives, so I’m going to see what it’s like.\nI’ve heard a new gallery has opened in St Ives, so I’m going …………… it out.", "answer": "to check" },
-          { "sentence": "Susan only just passed her history of art course.\nSusan …………… through her history of art course.", "answer": "scraped" },
-          { "sentence": "The photo’s got a couple of marks on it, so I’ll scan it and make it look better with some software I’ve got.\nThe photo’s got a couple of marks on it, so I’ll scan it and …………… it up with some software I’ve got.", "answer": "touch" },
-          { "sentence": "On the show today, we’re going to completely change the look of the Simpsons’ spare bedroom.\nOn the show today, we’re going to completely …………… over the Simpsons’ spare bedroom.", "answer": "make" }
+          {
+            "sentence": "You really need to review your watercolour technique before entering the national landscape competition.\nYou really need to ……………… up on your watercolour technique before entering the national landscape competition.",
+            "answer": "brush"
+          },
+          {
+            "sentence": "The van was so badly damaged in the collision that it had to be destroyed.\nThe van was so badly damaged in the collision that it had to be ………… off.",
+            "answer": "written"
+          },
+          {
+            "sentence": "One piece in the exhibition is particularly remarkable for its extraordinary use of light.\nOne piece in the exhibition particularly ………………… out for its extraordinary use of light.",
+            "answer": "stands"
+          },
+          {
+            "sentence": "Unless audience numbers improve, the dance company will have to cancel the upcoming tour.\nUnless audience numbers ………………… up, the dance company will have to cancel the upcoming tour.",
+            "answer": "pick"
+          },
+          {
+            "sentence": "I’ve heard there’s a new photography gallery near the waterfront, so I’m going to see what it’s like.\nI’ve heard there’s a new photography gallery near the waterfront, so I’m going ………………… it out.",
+            "answer": "to check"
+          },
+          {
+            "sentence": "Valentina only just passed her music theory module.\nValentina ………………… through her music theory module.",
+            "answer": "scraped"
+          },
+          {
+            "sentence": "The print has some faded sections, so I’ll scan it and improve it with specialist software.\nThe print has some faded sections, so I’ll scan it and ………………… it up with specialist software.",
+            "answer": "touch"
+          },
+          {
+            "sentence": "On tonight’s show, we’ll be completely transforming the Hendersons’ home recording studio.\nOn tonight’s show, we’ll be completely ………………… over the Hendersons’ home recording studio.",
+            "answer": "make"
+          }
         ]
       },
       "F": {
         "title": "If a word is in the wrong sentence, write the correct word on the line. If it is correct, put a tick.",
         "instructions": "If a word is in the wrong sentence, write the correct word on the line. If it is correct, put a tick.",
         "questions": [
-          { "sentence": "The party was a bit boring to start with but everyone **livened** up when Rod got out his guitar.", "answer": "✓" },
-          { "sentence": "I’m not very pleased with this drawing actually as I think I’ve **papered** up the perspective a little.", "answer": "messed" },
-          { "sentence": "I’ve only **wasted** this up for now – I won’t be able to fix it properly until we get home.", "answer": "patched" },
-          { "sentence": "Julie and Simone have **messed** over their differences while they get their business set up, but I’m sure they’ll start arguing again pretty soon.", "answer": "papered" },
-          { "sentence": "The Prime Minister responded that it was the previous administration which had **patched** the film industry down.", "answer": "run" },
-          { "sentence": "Luckily, the weather **brightened** up in the afternoon so we were able to hold the reception outside after all.", "answer": "✓" },
-          { "sentence": "As kids, we always **ran** ourselves up when our grandparents came to visit.", "answer": "smartened" },
-          { "sentence": "The holiday at the health farm was awful. They only gave us a few vegetables every evening – I almost **smartened** away!", "answer": "wasted" }
+          {
+            "sentence": "The studio session started slowly, but the whole atmosphere **livened** up once the lead guitarist arrived.",
+            "answer": "✓"
+          },
+          {
+            "sentence": "I’m not at all happy with this sketch – I think I’ve completely **papered** up the proportions.",
+            "answer": "messed"
+          },
+          {
+            "sentence": "I’ve only **wasted** the chair leg together for now – I won’t be able to do a proper repair until I’m back in the workshop.",
+            "answer": "patched"
+          },
+          {
+            "sentence": "The two directors have **messed** over their creative differences for the sake of getting the project finished on time.",
+            "answer": "papered"
+          },
+          {
+            "sentence": "The city council admitted that the public arts programme had been deliberately **patched** down over the past decade.",
+            "answer": "run"
+          },
+          {
+            "sentence": "Fortunately, the skies **brightened** up just as the outdoor concert was about to begin.",
+            "answer": "✓"
+          },
+          {
+            "sentence": "We always **ran** ourselves up before attending my aunt’s gallery openings.",
+            "answer": "smartened"
+          },
+          {
+            "sentence": "After the illness, he had barely eaten for three weeks and had almost **smartened** away.",
+            "answer": "wasted"
+          }
         ]
       },
       "G": {
         "title": "Circle the correct word.",
         "instructions": "Circle the correct word.",
         "questions": [
-          { "sentence": "I want this mess cleared up right now. Did **I make / do** myself clear?", "answer": "make" },
-          { "sentence": "It’s **nice / good** and warm in here.", "answer": "nice" },
-          { "sentence": "Off the top of my **brain / head**, I’d say this diamond’s worth at least a million euros.", "answer": "head" },
-          { "sentence": "You’re cutting it **fine / well**. The meeting starts in about two minutes.", "answer": "fine" },
-          { "sentence": "To the **top / best** of my knowledge, there aren’t any Picassos on the market at the moment.", "answer": "best" },
-          { "sentence": "That Ferrari Craig’s just bought is **brand / model** new.", "answer": "brand" },
-          { "sentence": "Lee’s his own worst **friend / enemy**. He complains he hasn’t sold any of his paintings, but he won’t show them to anyone.", "answer": "enemy" },
-          { "sentence": "There’s been bad **blood / mood** between them ever since Trevor accused Charlton of sabotaging his opening night.", "answer": "blood" },
-          { "sentence": "That’s the last time I lie to a client for Mrs Richards. I’m not going to do her dirty **job / work** for her any more.", "answer": "work" },
-          { "sentence": "My mum’s got organising her Christmas card list **round / down** to a fine art.", "answer": "down" }
+          {
+            "sentence": "Please sit down and stop interrupting. Did I **make / do** myself clear?",
+            "answer": "make"
+          },
+          {
+            "sentence": "Come inside! It’s **nice / good** and cosy in here – you must be absolutely freezing.",
+            "answer": "nice"
+          },
+          {
+            "sentence": "Off the top of my **brain / head**, I’d say this portrait dates back to around 1750.",
+            "answer": "head"
+          },
+          {
+            "sentence": "You’re cutting it extremely **fine / well**. The curtain goes up in about two minutes.",
+            "answer": "fine"
+          },
+          {
+            "sentence": "To the **top / best** of my knowledge, no original Monet has ever sold for under a million.",
+            "answer": "best"
+          },
+          {
+            "sentence": "She’s just bought a **brand / model** new violin and it already sounds incredible.",
+            "answer": "brand"
+          },
+          {
+            "sentence": "Marco is his own worst **friend / enemy** – he’s incredibly talented but refuses to show his work to anyone.",
+            "answer": "enemy"
+          },
+          {
+            "sentence": "There has been bad **blood / mood** between the two critics ever since that infamous review was published.",
+            "answer": "blood"
+          },
+          {
+            "sentence": "I refuse to do the director’s dirty **job / work** for her by covering up the budget discrepancies.",
+            "answer": "work"
+          },
+          {
+            "sentence": "With decades of experience, she has the whole restoration process **round / down** to a fine art.",
+            "answer": "down"
+          }
         ]
       },
       "H": {
         "title": "For each question, write one word which can be used in all three sentences.",
         "instructions": "For each question, write one word which can be used in all three sentences.",
         "questions": [
-          { "sentence": "The caterers didn’t turn up and the guest of honour was late so we had to make the ...... of a rather disastrous situation.\nI know you’re not very keen on art, but just do your ...... in the exam.\nI didn’t get the job in the end, but it’s probably for the ...... .", "answer": "best" },
-          { "sentence": "I’m afraid we’re ...... out of that CD.\nAs soon as I get out of prison, I’m determined to make a ...... start.\nAnd now, ...... from their blockbuster tour of the USA, here’s ... The Goldsmiths!", "answer": "fresh" },
-          { "sentence": "She wants to make a ...... break and leave the publishing industry completely.\nThe doctors have given me a completely ...... bill of health.\nThis term, you all start again with a ...... sheet, so I won’t hold anything you did wrong last term against you.", "answer": "clean" },
-          { "sentence": "Is long hair back in ...... ?\nI actually don’t know much about that ...... of architecture.\nIf I was a rock star, I’d make sure I was treated with ...... wherever I went.", "answer": "style" },
-          { "sentence": "I bumped into an ...... flame of mine in Woolworth’s this morning.\nDave’s an ...... hand when it comes to doing the carnival disco – he’s been doing it for years.\nI’m afraid we’re going to have to consider putting Mum in an ...... people’s home.", "answer": "old" },
-          { "sentence": "They think I’m stupid but I’m not going to let them get the ...... of me.\nWe could stay at a hotel near the festival or, ...... yet, camp in the grounds.\nYes, I’m certainly all the ...... for two weeks in the sun.", "answer": "better" }
+          {
+            "sentence": "The stage manager had to make the ...... of a situation where three actors called in sick on opening night.\nI’m a nervous public speaker, but I’ll certainly do my ...... when I address the board.\nIt wasn’t the role she had wanted, but in the end it was probably all for the ...... .",
+            "answer": "best"
+          },
+          {
+            "sentence": "I’m afraid we’re completely ...... out of large-print programmes.\nHe came home from his residency abroad with a ...... perspective on abstract painting.\nAnd tonight, ...... from their sold-out European tour, please welcome … The Hawthorns!",
+            "answer": "fresh"
+          },
+          {
+            "sentence": "After thirty years in the fashion industry, she decided to make a ...... break and move into painting full-time.\nThe specialist gave the sculpture a ...... bill of health – no signs of forgery whatsoever.\nThe new artistic director promised everyone would start with a ...... sheet and that past grievances would be forgotten.",
+            "answer": "clean"
+          },
+          {
+            "sentence": "Is that oversized collar back in ...... ?\nI find the minimalist ...... of Nordic design particularly appealing.\nIf I were a famous musician, I’d insist on travelling everywhere in ...... .",
+            "answer": "style"
+          },
+          {
+            "sentence": "He ran into an ...... flame at the opening night and they ended up chatting for hours.\nShe’s an ...... hand at organising gallery fundraisers – she’s been doing it for over a decade.\nEventually, we had to start thinking about moving my father into an ...... people’s home.",
+            "answer": "old"
+          },
+          {
+            "sentence": "The critics think my compositions are derivative, but I won’t let them get the ...... of me.\nWe could meet at the café before the show or, ...... yet, go straight to the green room.\nAfter a week’s rest, she was clearly all the ...... for it and ready to perform again.",
+            "answer": "better"
+          }
         ]
       },
       "I": {
         "title": "Complete the text with the words from the box.",
         "instructions": "Complete the text with the words from the box.",
         "questions": [
-          { "sentence": "There is a widely held view that artistic standards have got (1) .................... over the last 100 years or so and that contemporary art is (2) .................... a bad way...\nHow can we get to the (3) .................... of this seeming contradiction?\nThose new (4) .................... contemporary art should be forgiven...\nWhat needs to be (5) .................... clear is that contemporary art is at the cutting edge...\n...we would actually have the (6) .................... of all worlds – a stagnant and backward-looking artistic tradition.\nHaving said that, some contemporary art is of poor (7) .................... , but that's true of every art (8) .................... at any point in history.\nHowever, those (9) .................... the top of the contemporary art world are producing innovative and challenging pieces.\nAt (10) .................... best, contemporary art is as exciting and productive as it's possible for art to be.\nThere is, of course, a (11) .................... line between quality contemporary art and pseudo-art.", "answer": "1 worse, 2 in, 3 bottom, 4 to, 5 made, 6 best, 7 quality, 8 form, 9 at, 10 its, 11 fine" }
+          {
+            "sentence": "Many people hold the view that musical standards have deteriorated and become (1) .................... over the past hundred years or so, and that most commercial music today is genuinely (2) .................... a bad way...\nSo how do we get to the (3) .................... of this supposed contradiction?\nThose new (4) .................... experimental music should perhaps be forgiven for struggling to appreciate it...\nWhat needs to be (5) .................... clear is that experimental music sits at the very cutting edge of creative expression...\n...we would end up with the (6) .................... of all worlds – an art form completely trapped in its own past.\nAdmittedly, some experimental music is of genuinely poor (7) .................... , but that has always been true of every art (8) .................... across every era.\nYet those (9) .................... the very top of this genre are producing work that is genuinely bold and challenging.\nAt (10) .................... finest, experimental music is as thrilling and transformative as any art can be.\nThere is, of course, a (11) .................... line between genuine innovation and self-indulgent noise.",
+            "answer": "1 worse, 2 in, 3 bottom, 4 to, 5 made, 6 best, 7 quality, 8 form, 9 at, 10 its, 11 fine"
+          }
         ]
       },
       "J": {
         "title": "Complete using the words in the box.",
         "instructions": "Complete using the words in the box.",
-        "words": ["edge", "fuel", "heel", "line", "par", "pride", "show", "sight", "top", "whistle", "word", "world"],
+        "words": [
+          "edge",
+          "fuel",
+          "heel",
+          "line",
+          "par",
+          "pride",
+          "show",
+          "sight",
+          "top",
+          "whistle",
+          "word",
+          "world"
+        ],
         "questions": [
-          { "sentence": "Soccer Maestro is undoubtedly the last ...... in online football simulation games at the moment.", "answer": "word" },
-          { "sentence": "The picture that takes ...... of place on our mantelpiece, though, is the one of our granddaughter graduating.", "answer": "pride" },
-          { "sentence": "You’re a ...... for sore eyes, Claire! Thank goodness you’re here – we desperately need your input.", "answer": "sight" },
-          { "sentence": "Jean Paul is clearly a very talented designer. His one Achilles’ ...... , however, may be his lack of business sense.", "answer": "heel" },
-          { "sentence": "The buffet at the party was out of this ...... ! I’ve never tasted such exquisite strawberries.", "answer": "world" },
-          { "sentence": "Amis’ new novel is slightly below ...... for a writer of his stature; I was a little disappointed.", "answer": "par" },
-          { "sentence": "All the bands were fantastic, but *The Editors* and *Franz Ferdinand* really stole the ...... .", "answer": "show" },
-          { "sentence": "I’m happy to simplify things for the readers, but I draw the ...... at telling them blatant untruths.", "answer": "line" },
-          { "sentence": "I think the media’s response has been a little over the ...... – it’s only a TV programme, after all.", "answer": "top" },
-          { "sentence": "Recent allegations in the press about price-fixing at the auction house have only added ...... to the fire regarding speculation about Dotheby’s future.", "answer": "fuel" },
-          { "sentence": "I’ve spent the whole morning vacuuming the inside of the car. It’s now clean as a ...... .", "answer": "whistle" },
-          { "sentence": "The Gordon Gallery clearly has the ...... over other modern art galleries; they have the largest collection, and the largest budget to spend on acquiring new pieces.", "answer": "edge" }
+          {
+            "sentence": "ArtStream Pro is undoubtedly the last ...... in digital illustration platforms right now.",
+            "answer": "word"
+          },
+          {
+            "sentence": "The painting that takes ...... of place above our fireplace is the one my daughter made at summer camp.",
+            "answer": "pride"
+          },
+          {
+            "sentence": "You’re a ...... for sore eyes, Marco! I wasn’t sure you’d make it to the private view.",
+            "answer": "sight"
+          },
+          {
+            "sentence": "Silvia is a remarkably gifted sculptor. Her one Achilles’ ...... , however, is her reluctance to promote her own work.",
+            "answer": "heel"
+          },
+          {
+            "sentence": "The canapés at the gallery launch were out of this ...... – I must ask the caterer for the recipes.",
+            "answer": "world"
+          },
+          {
+            "sentence": "His latest novel is slightly below ...... for a writer of his literary reputation; I had expected more.",
+            "answer": "par"
+          },
+          {
+            "sentence": "The whole ensemble performed brilliantly, but it was the young soprano who truly stole the ...... .",
+            "answer": "show"
+          },
+          {
+            "sentence": "I’m happy to interpret modern pieces for our audience, but I draw the ...... at dismissing classical composers entirely.",
+            "answer": "line"
+          },
+          {
+            "sentence": "The response from some journalists has been rather over the ...... – it’s only a gallery reopening, after all.",
+            "answer": "top"
+          },
+          {
+            "sentence": "The conductor’s sudden resignation has only added ...... to the fire of rumours about the orchestra’s future.",
+            "answer": "fuel"
+          },
+          {
+            "sentence": "I spent all morning polishing the brass instruments. They’re now clean as a ...... .",
+            "answer": "whistle"
+          },
+          {
+            "sentence": "The Meridian Museum clearly has the ...... over its competitors; its permanent collection is unrivalled in scope.",
+            "answer": "edge"
+          }
         ]
       },
       "K": {
         "title": "Use the word given in capitals to form a word that fits in the space.",
         "instructions": "Use the word given in capitals to form a word that fits in the space.",
         "questions": [
-          { "sentence": "Well, she did study ……………………. at Oxford, so it's hardly surprising she knows Latin and Ancient Greek.\n**CLASS**", "answer": "Classics" },
-          { "sentence": "The Pet Shop Boys' sound is ………………………….. and unique.\n**IMITATE**", "answer": "inimitable" },
-          { "sentence": "What this painting says to me is that we live in a world of ………………………….. and despair.\n**DESTROY**", "answer": "destruction" },
-          { "sentence": "I've got enormous ………………………….. for Ben; he's achieved such a lot in such a short space of time.\n**ADMIRE**", "answer": "admiration" },
-          { "sentence": "The main reason I believe children shouldn't be exposed to violence on TV is that they're so ………………………….. at that age.\n**IMPRESS**", "answer": "impressionable" },
-          { "sentence": "I'm a bit of a ………………………….. , so I can spend all day agonising over which choice of two words to use.\n**PERFECT**", "answer": "perfectionist" },
-          { "sentence": "Maybe I am an ………………………….. ; but what's wrong with wanting every human being to have access to clean drinking water?\n**IDEAL**", "answer": "idealist" },
-          { "sentence": "I've read that many performers suffered feelings of ………………………….. as children.\n**ADEQUATE**", "answer": "inadequacy" },
-          { "sentence": "I don't know how ………………………….. it would be to get some of these old postcards valued.\n**WORTH**", "answer": "worthwhile" },
-          { "sentence": "We'll find out how much the jewellery's worth at the ………………………….. next Thursday.\n**VALUE**", "answer": "valuation" },
-          { "sentence": "Now the government's ………………………….. the papers, we can find out what really happened.\n**CLASS**", "answer": "declassified" },
-          { "sentence": "Being director of the National Gallery is an ………………………….. responsibility but thankfully I have a number of highly experienced experts to help me.\n**AWE**", "answer": "awesome" },
-          { "sentence": "With her experience as both an actor and a director, Tabitha is a very ………………………….. successor to Albert Weeks as Chairperson of the National Theatre.\n**WORTH**", "answer": "worthy" },
-          { "sentence": "There were some very interesting clay ………………………….. dating from the third century BC at the museum.\n**ART**", "answer": "artefacts" },
-          { "sentence": "Stage fright is an understatement! Performing on stage for the first time was the most .............................. experience I’ve ever had.\n**TERROR**", "answer": "terrifying" },
-          { "sentence": "Don’t throw away consumer packaging. Most of it’s ...... if you use a little creativity.\n**USE**", "answer": "reusable" },
-          { "sentence": "There’s a ...... difference between photography and still-life drawing.\n**QUALITY**", "answer": "qualitative" }
+          {
+            "sentence": "My uncle studied ……………………………… at Cambridge, which explains why he quotes Virgil at every family dinner.\n**CLASS**",
+            "answer": "Classics"
+          },
+          {
+            "sentence": "David Bowie’s ability to constantly reinvent himself was truly …………………………………… – no other artist has managed anything quite like it.\n**IMITATE**",
+            "answer": "inimitable"
+          },
+          {
+            "sentence": "The film explores the themes of conflict and the …………………………………… it brings to both communities and landscapes.\n**DESTROY**",
+            "answer": "destruction"
+          },
+          {
+            "sentence": "I have tremendous …………………………………… for anyone who dedicates their life to restoring endangered works of art.\n**ADMIRE**",
+            "answer": "admiration"
+          },
+          {
+            "sentence": "Young audiences are particularly …………………………………… , which is precisely why the content of children’s television matters so much.\n**IMPRESS**",
+            "answer": "impressionable"
+          },
+          {
+            "sentence": "Being a …………………………………… means she spends weeks refining a single photograph before she is satisfied with it.\n**PERFECT**",
+            "answer": "perfectionist"
+          },
+          {
+            "sentence": "Perhaps I’m an …………………………………… , but I firmly believe great art should be accessible to everyone, regardless of income.\n**IDEAL**",
+            "answer": "idealist"
+          },
+          {
+            "sentence": "Many stand-up comedians have spoken openly about deep-rooted feelings of …………………………………… that first drove them to perform.\n**ADEQUATE**",
+            "answer": "inadequacy"
+          },
+          {
+            "sentence": "I wasn’t entirely sure whether it would be …………………………………… to attend the symposium, but the keynote speech alone made the trip worthwhile.\n**WORTH**",
+            "answer": "worthwhile"
+          },
+          {
+            "sentence": "We took the painting to a specialist for a formal …………………………………… before deciding whether to put it up for sale.\n**VALUE**",
+            "answer": "valuation"
+          },
+          {
+            "sentence": "Now that the government has …………………………………… the wartime files, historians can finally piece together what really happened.\n**CLASS**",
+            "answer": "declassified"
+          },
+          {
+            "sentence": "Conducting a live symphony orchestra in a world-famous concert hall is an …………………………………… responsibility.\n**AWE**",
+            "answer": "awesome"
+          },
+          {
+            "sentence": "With her decades of experience in the theatre world, Helena is a truly …………………………………… candidate for the role of artistic director.\n**WORTH**",
+            "answer": "worthy"
+          },
+          {
+            "sentence": "The excavation team uncovered several clay …………………………………… dating from the second century CE.\n**ART**",
+            "answer": "artefacts"
+          },
+          {
+            "sentence": "Stepping out onto the stage in front of five thousand people for the very first time was the most …………………………………… moment of my entire career.\n**TERROR**",
+            "answer": "terrifying"
+          },
+          {
+            "sentence": "The festival organisers replaced all single-use cups with ...... alternatives to cut down significantly on waste.\n**USE**",
+            "answer": "reusable"
+          },
+          {
+            "sentence": "There is a clear ...... difference between a musician who has trained formally and one who has not.\n**QUALITY**",
+            "answer": "qualitative"
+          }
         ]
       },
       "L": {
         "title": "Word formation in context.",
         "instructions": "Complete the text with the correct form of the word in capitals.",
-        "passage": "This week we look at the working life of Jacob Lawson, who buys and sells items on Internet auction sites. In the old days, before the Internet, I had to trawl through hundreds of (1) ...... (CLASS) ads each week and go to car boot sales at the weekend. Auction sites like eBay, though, are extremely (2) ...... (IMPRESS) and a great (3) ...... (IMPROVE). It’s just (4) ...... (TERROR) what you can do at the click of a button. I love it! I generally buy and sell (5) ...... (COLLECT) items. These could be anything – from carriage clocks to knives and forks to plastic (6) ...... (ART) flowers. (7) ...... (COLLECT) are interested in the strangest things – and there’s always money to be made. The best money comes from items that are in very good condition – often because they’re (8) ...... (USE) and still in their packaging, but there’s also a market for things like second-hand pottery or glassware that might have (9) ...... (PERFECT). I’m quite successful. One of my (10) ...... (STRONG) is that I’ve got a very good rating on most of these sites – people I’ve sold to have given me very good reviews, so new customers trust me. I’m also good at spotting what’s (11) ...... (VALUE) and what’s completely (12) ...... (WORTH). For example, here’s a pair of (13) ...... (MATCH) earrings. The description says they’re diamond, but if you click on the picture, a trained eye like mine can tell immediately they’re (14) ...... (IMITATE). Diamond’s basically (15) ...... (DESTROY), you see, and these have got damage marks on them. So I won’t be buying them. Ideally, it’s better to actually see the (16) ...... (GOOD) you’re buying before you purchase them, but these auction sites have pretty good policies if you’re not satisfied with your purchase, and I’ve never had any problems.",
+        "passage": "This week we speak to Maya Thornton, who buys and sells vintage musical instruments through online marketplaces. Before platforms like these existed, I had to trawl through hundreds of (1) ...... (CLASS) listings in specialist music magazines and drive to flea markets at weekends. These online sites are genuinely (2) ...... (IMPRESS) and a real (3) ...... (IMPROVE) on the old way of doing things. It’s quite (4) ...... (TERROR) what you can track down with a simple search! I mainly deal in (5) ...... (COLLECT) instruments from the twentieth century. These range from vintage guitars to old brass instruments to (6) ...... (ART) stage props from touring productions. (7) ...... (COLLECT) have wonderfully eclectic tastes – and there is always a buyer somewhere. The best returns come from instruments in excellent condition – often those that are (8) ...... (USE) and still in their original cases – but there is also strong demand for older pieces that might have minor (9) ...... (PERFECT) giving them added character. One of my key (10) ...... (STRONG) is the excellent reputation I have built up across these platforms; buyers trust me and return again and again. I am also skilled at identifying what is genuinely (11) ...... (VALUE) and what is frankly (12) ...... (WORTH). Here is an example: I recently found a pair of (13) ...... (MATCH) silver cufflinks being sold as genuine antiques. One look and I could tell immediately they were cheap (14) ...... (IMITATE). Real silver is essentially (15) ...... (DESTROY), and these showed obvious signs of wear. Not a purchase I would make. Ideally, it is best to inspect the (16) ...... (GOOD) in person before committing to a purchase, but return policies on these sites are generally very robust, and I have never had a serious dispute.",
         "questions": [
-          { "sentence": "1", "answer": "classified" },
-          { "sentence": "2", "answer": "impressive" },
-          { "sentence": "3", "answer": "improvement" },
-          { "sentence": "4", "answer": "terrific" },
-          { "sentence": "5", "answer": "collectors'" },
-          { "sentence": "6", "answer": "artificial" },
-          { "sentence": "7", "answer": "Collectors" },
-          { "sentence": "8", "answer": "unused" },
-          { "sentence": "9", "answer": "imperfections" },
-          { "sentence": "10", "answer": "strengths" },
-          { "sentence": "11", "answer": "valuable" },
-          { "sentence": "12", "answer": "worthless" },
-          { "sentence": "13", "answer": "matching" },
-          { "sentence": "14", "answer": "imitations" },
-          { "sentence": "15", "answer": "indestructible" },
-          { "sentence": "16", "answer": "goods" }
+          {
+            "sentence": "1",
+            "answer": "classified"
+          },
+          {
+            "sentence": "2",
+            "answer": "impressive"
+          },
+          {
+            "sentence": "3",
+            "answer": "improvement"
+          },
+          {
+            "sentence": "4",
+            "answer": "terrific"
+          },
+          {
+            "sentence": "5",
+            "answer": "collectors'"
+          },
+          {
+            "sentence": "6",
+            "answer": "artificial"
+          },
+          {
+            "sentence": "7",
+            "answer": "Collectors"
+          },
+          {
+            "sentence": "8",
+            "answer": "unused"
+          },
+          {
+            "sentence": "9",
+            "answer": "imperfections"
+          },
+          {
+            "sentence": "10",
+            "answer": "strengths"
+          },
+          {
+            "sentence": "11",
+            "answer": "valuable"
+          },
+          {
+            "sentence": "12",
+            "answer": "worthless"
+          },
+          {
+            "sentence": "13",
+            "answer": "matching"
+          },
+          {
+            "sentence": "14",
+            "answer": "imitations"
+          },
+          {
+            "sentence": "15",
+            "answer": "indestructible"
+          },
+          {
+            "sentence": "16",
+            "answer": "goods"
+          }
         ]
       },
       "M": {
         "title": "The prefix in- meaning.",
         "instructions": "The prefix in- can often mean ‘not’ or ‘no’. However, in words such as invaluable, in- does not mean ‘not’ or ‘no’. Tick the words where it means ‘not’ or ‘no’. Put a cross next to the words where it doesn’t.",
         "questions": [
-          { "sentence": "The **inbound** flight from Chicago has been delayed due to bad weather.", "answer": "✗" },
-          { "sentence": "I really do value my **independence**.", "answer": "✗" },
-          { "sentence": "The whole family was **infamous** round here for their antisocial behaviour.", "answer": "✗" },
-          { "sentence": "I left the organisation eventually because of all the **infighting**.", "answer": "✗" },
-          { "sentence": "This material is **inflammatory**, isn’t it?", "answer": "✗" },
-          { "sentence": "What an **ingenious** idea.", "answer": "✗" },
-          { "sentence": "The place will soon be **inhabitable**, won’t it?", "answer": "✓" },
-          { "sentence": "The whole area feels very **inhospitable**.", "answer": "✓" },
-          { "sentence": "The situation is **intolerable**.", "answer": "✓" },
-          { "sentence": "She was charged with being disorderly and **intoxicated**.", "answer": "✗" }
+          {
+            "sentence": "The **incoming** flight from Buenos Aires was delayed due to adverse weather conditions.",
+            "answer": "✗"
+          },
+          {
+            "sentence": "The gallery offered a generous **incentive** to staff who agreed to work extended hours during the festival.",
+            "answer": "✗"
+          },
+          {
+            "sentence": "A minor **incident** at the opening night ceremony received more media coverage than the exhibition itself.",
+            "answer": "✗"
+          },
+          {
+            "sentence": "Her **income** from selling original prints has grown remarkably over the past three years.",
+            "answer": "✗"
+          },
+          {
+            "sentence": "The critic’s remarks proved deeply **inflammatory** and sparked a very public dispute between the two artists.",
+            "answer": "✗"
+          },
+          {
+            "sentence": "The set designer came up with an **ingenious** solution to fit the entire backdrop onto the tiny stage.",
+            "answer": "✗"
+          },
+          {
+            "sentence": "The article contained several **inaccurate** claims about the painting’s provenance that needed to be corrected.",
+            "answer": "✓"
+          },
+          {
+            "sentence": "The rehearsal space was cramped and **inhospitable**, yet the cast worked there throughout the entire winter.",
+            "answer": "✓"
+          },
+          {
+            "sentence": "The level of funding allocated to the restoration project was frankly **insufficient** to cover even basic costs.",
+            "answer": "✓"
+          },
+          {
+            "sentence": "The lead actor was reportedly **intoxicated** when he arrived for the evening performance.",
+            "answer": "✗"
+          }
         ]
       }
     }
