@@ -9,6 +9,23 @@
   // Request ID to prevent async race conditions when switching tools
   var _toolRequestId = 0;
 
+  // Translate tool state
+  var _translateTargetLang = localStorage.getItem('cambridge_translate_lang') || 'es';
+  var _TRANSLATE_LANGUAGES = [
+    { code: 'es', label: 'Español' },
+    { code: 'fr', label: 'Français' },
+    { code: 'pt', label: 'Português' },
+    { code: 'de', label: 'Deutsch' },
+    { code: 'it', label: 'Italiano' },
+    { code: 'ca', label: 'Català' },
+    { code: 'pl', label: 'Polski' },
+    { code: 'ru', label: 'Русский' },
+    { code: 'zh', label: '中文' },
+    { code: 'ar', label: 'العربية' },
+    { code: 'ja', label: '日本語' },
+    { code: 'ko', label: '한국어' }
+  ];
+
   function _escapeHtml(str) {
     return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
@@ -98,7 +115,7 @@
           this.renderDictSearch();
           break;
         case 'translate':
-          container.innerHTML = '<p class="placeholder-text">' + 'Select any phrase to translate.' + '</p>';
+          this.renderTranslatePanel();
           break;
         case 'tips':
           if (AppState.currentSection) {
@@ -557,34 +574,111 @@
       }
     },
     
+    renderTranslatePanel: function() {
+      var container = document.getElementById('active-tool-content');
+      if (!container) return;
+
+      var langOptions = _TRANSLATE_LANGUAGES.map(function(l) {
+        return '<option value="' + l.code + '"' + (l.code === _translateTargetLang ? ' selected' : '') + '>' + l.label + '</option>';
+      }).join('');
+
+      container.innerHTML =
+        '<div class="translate-panel">' +
+          '<div class="translate-lang-bar">' +
+            '<span class="translate-from-label"><i class="fas fa-flag"></i> English</span>' +
+            '<i class="fas fa-arrow-right translate-arrow-lang"></i>' +
+            '<select class="translate-lang-select" onchange="Tools.setTranslateLang(this.value)">' +
+              langOptions +
+            '</select>' +
+          '</div>' +
+          '<div class="translate-manual-area">' +
+            '<textarea class="translate-manual-input" id="translate-manual-input" placeholder="Type text to translate..." rows="3" maxlength="500"></textarea>' +
+            '<button class="translate-manual-btn" onclick="Tools.translateFromInput()"><i class="fas fa-language"></i> Translate</button>' +
+          '</div>' +
+          '<div class="translate-columns" id="translate-columns" style="display:none">' +
+            '<div class="translate-col translate-col-original">' +
+              '<div class="translate-col-label">English</div>' +
+              '<div class="translate-col-text" id="translate-original-text"></div>' +
+            '</div>' +
+            '<div class="translate-col translate-col-result">' +
+              '<div class="translate-col-label" id="translate-result-label">Translation</div>' +
+              '<div class="translate-col-text" id="translate-result-text"></div>' +
+            '</div>' +
+          '</div>' +
+          '<div id="translate-loading" class="translate-loading" style="display:none"><i class="fas fa-spinner fa-spin"></i></div>' +
+          '<p class="translate-hint" id="translate-hint">Select text on the page or type above.</p>' +
+        '</div>';
+
+      var input = document.getElementById('translate-manual-input');
+      if (input) {
+        input.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            Tools.translateFromInput();
+          }
+        });
+      }
+    },
+
+    setTranslateLang: function(code) {
+      _translateTargetLang = code;
+      try { localStorage.setItem('cambridge_translate_lang', code); } catch(e) {}
+    },
+
+    translateFromInput: function() {
+      var input = document.getElementById('translate-manual-input');
+      if (!input) return;
+      var text = input.value.trim();
+      if (text.length < 1) return;
+      this.traducirTexto(text);
+    },
+
     traducirTexto: async function(texto) {
       const requestId = ++_toolRequestId;
-      const areaHerramientas = document.getElementById('active-tool-content');
 
-      if (requestId !== _toolRequestId) return;
-      areaHerramientas.innerHTML = '<p class="loading-mini">' + 'Loading exercise...' + '...</p>';
-      
+      var columns = document.getElementById('translate-columns');
+      var loading = document.getElementById('translate-loading');
+      var hint    = document.getElementById('translate-hint');
+
+      // If the panel hasn't been rendered yet (e.g. called from text selection before panel exists)
+      if (!columns) {
+        this.renderTranslatePanel();
+        columns = document.getElementById('translate-columns');
+        loading  = document.getElementById('translate-loading');
+        hint     = document.getElementById('translate-hint');
+      }
+
+      if (columns) columns.style.display = 'none';
+      if (loading) loading.style.display = 'block';
+      if (hint)    hint.style.display = 'none';
+
       try {
-        let langPair = 'en|es';
-        let translateLabel = 'ENG → SPA';
-        
+        const langPair = 'en|' + _translateTargetLang;
+        const langObj  = _TRANSLATE_LANGUAGES.find(function(l) { return l.code === _translateTargetLang; });
+        const langLabel = langObj ? langObj.label : _translateTargetLang.toUpperCase();
+
         const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(texto)}&langpair=${langPair}`);
         const data = await res.json();
         const traduccion = data.responseData.translatedText;
 
         if (requestId !== _toolRequestId) return;
-        
-        areaHerramientas.innerHTML = `
-          <div class="translator-card">
-            <p class="original-text-small">"${texto}"</p>
-            <i class="fas fa-arrow-down"></i>
-            <p class="translated-result">${traduccion}</p>
-          </div>
-        `;
+
+        if (loading) loading.style.display = 'none';
+
+        var origEl   = document.getElementById('translate-original-text');
+        var resultEl = document.getElementById('translate-result-text');
+        var labelEl  = document.getElementById('translate-result-label');
+
+        if (origEl)   origEl.textContent   = texto;
+        if (resultEl) resultEl.textContent = traduccion;
+        if (labelEl)  labelEl.textContent  = langLabel;
+        if (columns)  columns.style.display = 'grid';
+
       } catch (e) {
         if (requestId !== _toolRequestId) return;
+        if (loading) loading.style.display = 'none';
+        if (hint) { hint.textContent = 'Translation error. Please try again.'; hint.style.display = 'block'; }
         console.error('Error en traducción:', e);
-        areaHerramientas.innerHTML = '<p>' + 'Translation error. Please try again.' + '</p>';
       }
     },
     
