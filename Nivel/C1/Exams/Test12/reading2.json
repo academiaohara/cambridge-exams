@@ -5,20 +5,52 @@
   "totalQuestions": 8,
   "description": "Complete the text with ONE word only.",
   "content": {
-    "text": "The term 'gig economy' refers to a labor market characterized (0) the prevalence of short-term contracts and freelance work. In this model, individuals often work for multiple employers (9) than being committed to a single company. (10) simple as this flexibility may seem, it presents significant challenges regarding workers' rights and job security. || (11) should an economic downturn occur, gig workers are often the first to lose their income. (12) is widely recognized that the lack of traditional benefits, such as health insurance or paid leave, is a major drawback. (13) far as many critics are concerned, this model shifts too much risk from the corporation to the individual. Nevertheless, (14) only does the gig economy provide extra income for many, but it also allows for a better work-life balance for some. (15) provided that new regulations are introduced, this sector will continue to expand. Ultimately, there is (16) doubt that the way we define 'work' is changing forever.",
+    "text": "The term 'gig economy' refers to a labor market characterized (0) the prevalence of short-term contracts and freelance work. In this model, individuals often work for multiple employers (9) RATHER than being committed to a single company. (10) HOWEVER simple this flexibility may seem, it presents significant challenges regarding workers' rights and job security. || (11) should an economic downturn occur, gig workers are often the first to lose their income. (12) IT is widely recognized that the lack of traditional benefits, such as health insurance or paid leave, is a major drawback. (13) AS far as many critics are concerned, this model shifts too much risk from the corporation to the individual. Nevertheless, (14) NOT only does the gig economy provide extra income for many, but it also allows for a better work-life balance for some. (15) ONLY provided that new regulations are introduced, this sector will continue to expand. Ultimately, there is (16) NO doubt that the way we define 'work' is changing forever.",
     "example": {
       "text": "characterized (0) the prevalence",
       "correct": "BY"
     },
     "questions": [
-      { "number": 9, "correct": "RATHER", "explanation": "Part of the comparative structure 'rather than'." },
-      { "number": 10, "correct": "AS/HOWEVER", "explanation": "Concessive structure (Adjective + as + subject + verb)." },
-      { "number": 11, "correct": "SHOULD", "explanation": "Inversion in a first conditional (Should an economic downturn occur...)." },
-      { "number": 12, "correct": "IT", "explanation": "Dummy subject for the passive reporting structure." },
-      { "number": 13, "correct": "AS", "explanation": "Part of the fixed phrase 'As far as... is concerned'." },
-      { "number": 14, "correct": "NOT", "explanation": "Part of the negative inversion 'Not only... but also'." },
-      { "number": 15, "correct": "ONLY", "explanation": "Used to emphasize the condition 'Only provided that'." },
-      { "number": 16, "correct": "NO/LITTLE", "explanation": "Part of the fixed expression 'there is no doubt that'." }
+      {
+        "number": 9,
+        "correct": "RATHER",
+        "explanation": "Part of the comparative structure 'rather than'."
+      },
+      {
+        "number": 10,
+        "correct": "HOWEVER",
+        "explanation": "Used to introduce a concessive adverbial clause meaning 'no matter how'. 'However + adjective + subject + verb' expresses contrast or concession."
+      },
+      {
+        "number": 11,
+        "correct": "SHOULD",
+        "explanation": "Inversion in a first conditional (Should an economic downturn occur...)."
+      },
+      {
+        "number": 12,
+        "correct": "IT",
+        "explanation": "Dummy subject for the passive reporting structure."
+      },
+      {
+        "number": 13,
+        "correct": "AS",
+        "explanation": "Part of the fixed phrase 'As far as... is concerned'."
+      },
+      {
+        "number": 14,
+        "correct": "NOT",
+        "explanation": "Part of the negative inversion 'Not only... but also'."
+      },
+      {
+        "number": 15,
+        "correct": "ONLY",
+        "explanation": "Used to emphasize the condition 'Only provided that'."
+      },
+      {
+        "number": 16,
+        "correct": "NO",
+        "explanation": "Part of the fixed expression 'there is no doubt that', used to assert something with certainty."
+      }
     ]
   }
 }
