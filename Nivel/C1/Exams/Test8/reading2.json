@@ -5,20 +5,52 @@
   "totalQuestions": 8,
   "description": "Complete the text with ONE word only.",
   "content": {
-    "text": "The collapse of the Maya civilization remains one of history’s most intriguing puzzles. At its peak, this society boasted advanced mathematics and celestial calendars (0) were far ahead of their time. However, by the 9th century, many of their great cities had (9) abandoned. (10) is still not fully understood is why such a sophisticated culture suddenly declined. || (11) the most likely theories point to a combination of prolonged drought and over-farming. (12) this be the case, it would serve as a stark warning about environmental mismanagement. (13) far as archaeologists can tell, there was no single catastrophic event, but rather a slow disintegration. (14) only did the population dwindle, but the social order itself seems to have collapsed. (15) provided that new LIDAR technology continues to uncover hidden structures in the jungle, we may soon have more answers. For now, the ruins of Tikal and Palenque stand (16) a testament to a lost golden age.",
+    "text": "The collapse of the Maya civilization remains one of history’s most intriguing puzzles. At its peak, this society boasted advanced mathematics and celestial calendars (0) were far ahead of their time. However, by the 9th century, many of their great cities had (9) BEEN abandoned. (10) WHAT is still not fully understood is why such a sophisticated culture suddenly declined. || (11) AMONG the most likely theories point to a combination of prolonged drought and over-farming. (12) SHOULD this be the case, it would serve as a stark warning about environmental mismanagement. (13) AS far as archaeologists can tell, there was no single catastrophic event, but rather a slow disintegration. (14) NOT only did the population dwindle, but the social order itself seems to have collapsed. (15) ONLY provided that new LIDAR technology continues to uncover hidden structures in the jungle, we may soon have more answers. For now, the ruins of Tikal and Palenque continue (16) TO stand as a powerful reminder of this lost golden age.",
     "example": {
       "text": "calendars (0) were far ahead",
       "correct": "THAT/WHICH"
     },
     "questions": [
-      { "number": 9, "correct": "BEEN", "explanation": "Past participle required to form the past perfect passive 'had been abandoned'." },
-      { "number": 10, "correct": "WHAT", "explanation": "Nominal relative pronoun acting as the subject of the sentence." },
-      { "number": 11, "correct": "AMONG/OF", "explanation": "Preposition used to indicate one of several options or theories." },
-      { "number": 12, "correct": "SHOULD", "explanation": "Inversion used to express a hypothetical condition (Should this be the case = If this is the case)." },
-      { "number": 13, "correct": "AS", "explanation": "Part of the fixed expression 'As far as'." },
-      { "number": 14, "correct": "NOT", "explanation": "Part of the negative inversion 'Not only... but (also)'." },
-      { "number": 15, "correct": "ONLY", "explanation": "Used to emphasize the condition 'Only provided that'." },
-      { "number": 16, "correct": "AS", "explanation": "Preposition used to describe the function or role of something (stand as a testament)." }
+      {
+        "number": 9,
+        "correct": "BEEN",
+        "explanation": "Past participle required to form the past perfect passive 'had been abandoned'."
+      },
+      {
+        "number": 10,
+        "correct": "WHAT",
+        "explanation": "Nominal relative pronoun acting as the subject of the sentence."
+      },
+      {
+        "number": 11,
+        "correct": "AMONG/OF",
+        "explanation": "Preposition used to indicate one of several options or theories."
+      },
+      {
+        "number": 12,
+        "correct": "SHOULD",
+        "explanation": "Inversion used to express a hypothetical condition (Should this be the case = If this is the case)."
+      },
+      {
+        "number": 13,
+        "correct": "AS",
+        "explanation": "Part of the fixed expression 'As far as'."
+      },
+      {
+        "number": 14,
+        "correct": "NOT",
+        "explanation": "Part of the negative inversion 'Not only... but (also)'."
+      },
+      {
+        "number": 15,
+        "correct": "ONLY",
+        "explanation": "Used to emphasize the condition 'Only provided that'."
+      },
+      {
+        "number": 16,
+        "correct": "TO",
+        "explanation": "Infinitive marker required after 'continue' to form 'continue to + infinitive', indicating an ongoing action."
+      }
     ]
   }
 }

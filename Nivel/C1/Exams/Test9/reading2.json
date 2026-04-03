@@ -5,20 +5,52 @@
   "totalQuestions": 8,
   "description": "Complete the text with ONE word only.",
   "content": {
-    "text": "Sleep is a biological necessity, yet its primary function remains (0) of the great unanswered questions in science. While we might feel that our brains simply shut (9) for the night, the reality is far more complex. Modern neuroimaging has shown that the brain is remarkably active during certain sleep stages. || (10) it not for this nocturnal activity, our ability to process memories and emotions would be severely impaired. Not (11) does sleep help consolidate what we have learned during the day, but it also flushes out toxins. (12) is widely believed that chronic sleep deprivation can lead to serious health issues. However, (13) the overwhelming evidence of its importance, many people continue to sacrifice sleep for work or entertainment. (14) such a habit to become permanent, the long-term cognitive effects could be irreversible. (15) far as current research is concerned, seven to nine hours remains the 'gold standard'. Ultimately, there is (16) doubt that prioritizing rest is essential for a productive life.",
+    "text": "Sleep is a biological necessity, yet its primary function remains (0) of the great unanswered questions in science. While we might feel that our brains simply shut (9) DOWN for the night, the reality is far more complex. Modern neuroimaging has shown that the brain is remarkably active during certain sleep stages. || (10) WERE it not for this nocturnal activity, our ability to process memories and emotions would be severely impaired. Not (11) ONLY does sleep help consolidate what we have learned during the day, but it also flushes out toxins. (12) IT is widely believed that chronic sleep deprivation can lead to serious health issues. However, (13) DESPITE the overwhelming evidence of its importance, many people continue to sacrifice sleep for work or entertainment. The long-term cognitive effects of chronic sleep deprivation are (14) BEYOND doubt serious and potentially irreversible. (15) AS far as current research is concerned, seven to nine hours remains the 'gold standard'. Ultimately, there is (16) NO doubt that prioritizing rest is essential for a productive life.",
     "example": {
       "text": "remains (0) of the great",
       "correct": "ONE"
     },
     "questions": [
-      { "number": 9, "correct": "DOWN", "explanation": "Part of the phrasal verb 'shut down', meaning to stop operating." },
-      { "number": 10, "correct": "WERE", "explanation": "Inversion in a second conditional structure (Were it not for...)." },
-      { "number": 11, "correct": "ONLY", "explanation": "Part of the negative inversion 'Not only... but (also)'." },
-      { "number": 12, "correct": "IT", "explanation": "Dummy subject for the passive reporting structure 'It is widely believed'." },
-      { "number": 13, "correct": "DESPITE", "explanation": "Preposition used to introduce contrast, followed by a noun phrase." },
-      { "number": 14, "correct": "WERE", "explanation": "Inversion used to express a hypothetical condition (Were such a habit to become...)." },
-      { "number": 15, "correct": "AS", "explanation": "Part of the fixed phrase 'As far as... is concerned'." },
-      { "number": 16, "correct": "NO/LITTLE", "explanation": "Part of the fixed expression 'there is no doubt that'." }
+      {
+        "number": 9,
+        "correct": "DOWN",
+        "explanation": "Part of the phrasal verb 'shut down', meaning to stop operating."
+      },
+      {
+        "number": 10,
+        "correct": "WERE",
+        "explanation": "Inversion in a second conditional structure (Were it not for...)."
+      },
+      {
+        "number": 11,
+        "correct": "ONLY",
+        "explanation": "Part of the negative inversion 'Not only... but (also)'."
+      },
+      {
+        "number": 12,
+        "correct": "IT",
+        "explanation": "Dummy subject for the passive reporting structure 'It is widely believed'."
+      },
+      {
+        "number": 13,
+        "correct": "DESPITE",
+        "explanation": "Preposition used to introduce contrast, followed by a noun phrase."
+      },
+      {
+        "number": 14,
+        "correct": "BEYOND",
+        "explanation": "Part of the fixed expression 'beyond doubt', meaning undeniably or certainly true."
+      },
+      {
+        "number": 15,
+        "correct": "AS",
+        "explanation": "Part of the fixed phrase 'As far as... is concerned'."
+      },
+      {
+        "number": 16,
+        "correct": "NO",
+        "explanation": "Part of the fixed expression 'there is no doubt that', used to assert something with certainty."
+      }
     ]
   }
 }
