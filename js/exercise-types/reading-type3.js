@@ -42,6 +42,10 @@
       `;
     },
     
+    _escapeHtml: function(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    },
+
     _getContextAround: function(text, qNum) {
       if (!text) return { before: '', after: '' };
       var gapMarker = '(' + qNum + ')';
@@ -65,7 +69,7 @@
       if (nextQMatch) {
         afterText = afterText.substring(0, nextQMatch.index);
       }
-      return { before: beforeText.trim(), after: afterText.trim() };
+      return { before: this._escapeHtml(beforeText.trim()), after: this._escapeHtml(afterText.trim()) };
     },
 
     openModal: function(qNum) {
