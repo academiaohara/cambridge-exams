@@ -147,6 +147,36 @@
   cursor: help;
 }
 
+/* Context snippet shown above input in modal */
+.rt3-modal-context {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+  background: #faf5ff;
+  border: 1px solid #e9d5ff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+
+.rt3-modal-context-text {
+  color: var(--text-dark);
+}
+
+.rt3-modal-context-gap {
+  font-weight: 700;
+  color: #7e22ce;
+  white-space: nowrap;
+}
+
+.rt3-modal-context-word {
+  font-size: 0.85rem;
+  color: #7e22ce;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 /* Modal styles for word formation */
 .reading-type3-modal-word {
   text-align: center;

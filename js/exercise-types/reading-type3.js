@@ -42,6 +42,32 @@
       `;
     },
     
+    _getContextAround: function(text, qNum) {
+      if (!text) return { before: '', after: '' };
+      var gapMarker = '(' + qNum + ')';
+      var paragraphs = text.split('||');
+      var targetPara = null;
+      for (var i = 0; i < paragraphs.length; i++) {
+        if (paragraphs[i].indexOf(gapMarker) !== -1) {
+          targetPara = paragraphs[i];
+          break;
+        }
+      }
+      if (!targetPara) return { before: '', after: '' };
+      var gapPos = targetPara.indexOf(gapMarker);
+      var beforeText = targetPara.substring(0, gapPos);
+      var prevQMatch = beforeText.match(/^[\s\S]*\(\d+\)/);
+      if (prevQMatch) {
+        beforeText = beforeText.substring(prevQMatch[0].length);
+      }
+      var afterText = targetPara.substring(gapPos + gapMarker.length);
+      var nextQMatch = afterText.match(/\(\d+\)/);
+      if (nextQMatch) {
+        afterText = afterText.substring(0, nextQMatch.index);
+      }
+      return { before: beforeText.trim(), after: afterText.trim() };
+    },
+
     openModal: function(qNum) {
       const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
       if (!question) return;
@@ -53,8 +79,16 @@
       const body = document.getElementById('modal-body');
       
       const currentAnswer = AppState.currentExercise.answers?.[qNum] || '';
-      
+      const ctx = this._getContextAround(AppState.currentExercise.content.text, qNum);
+
       let html = '<div class="modal-header"><div class="modal-header-row"><span class="modal-q-circle">' + qNum + '</span></div></div>';
+      if (ctx.before || ctx.after) {
+        html += '<div class="rt3-modal-context">';
+        if (ctx.before) html += '<span class="rt3-modal-context-text">' + ctx.before + '</span> ';
+        html += '<span class="rt3-modal-context-gap">(' + qNum + ') .......... <span class="rt3-modal-context-word">(' + question.word + ')</span></span>';
+        if (ctx.after) html += ' <span class="rt3-modal-context-text">' + ctx.after + '</span>';
+        html += '</div>';
+      }
       html += '<div class="reading-type3-input-word-row">';
       html += '<input type="text" class="reading-type3-modal-input" id="type3-modal-input" value="' + currentAnswer + '" placeholder="..." autofocus>';
       html += '<span class="reading-type3-word-badge">' + question.word + '</span>';
