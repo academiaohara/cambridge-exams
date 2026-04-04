@@ -10,61 +10,55 @@
         "number": 25,
         "firstSentence": "She was so exhausted that she couldn't keep her eyes open.",
         "keyWord": "TOO",
-        "beforeGap": "She was",
-        "afterGap": "her eyes open.",
-        "routes": [
-          { "p1": "far", "p2": "too exhausted to keep" },
-          { "p1": "much", "p2": "too exhausted to keep" }
+        "secondSentence": "She was (1) _________ her eyes open.",
+        "solutions": [
+          "far too exhausted to keep",
+          "much too exhausted to keep"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I would rather you didn't smoke in the office.",
         "keyWord": "MIND",
-        "beforeGap": "Would",
-        "afterGap": "in the office?",
-        "routes": [
-          { "p1": "you", "p2": "mind not smoking" }
+        "secondSentence": "Would (1) _________ in the office?",
+        "solutions": [
+          "you mind not smoking"
         ]
       },
       {
         "number": 27,
         "firstSentence": "It is rumored that the CEO is resigning.",
         "keyWord": "BE",
-        "beforeGap": "The CEO",
-        "afterGap": "resigning.",
-        "routes": [
-          { "p1": "is", "p2": "rumored to be" }
+        "secondSentence": "The CEO (1) _________ resigning.",
+        "solutions": [
+          "is rumored to be"
         ]
       },
       {
         "number": 28,
         "firstSentence": "The car was so expensive that I couldn't afford it.",
         "keyWord": "MUCH",
-        "beforeGap": "The car cost",
-        "afterGap": "I couldn't afford it.",
-        "routes": [
-          { "p1": "so", "p2": "much (money) that" }
+        "secondSentence": "The car cost (1) _________ I couldn't afford it.",
+        "solutions": [
+          "so much (money) that"
         ]
       },
       {
         "number": 29,
         "firstSentence": "He only passed the test because he worked very hard.",
         "keyWord": "HARD",
-        "beforeGap": "It was only by",
-        "afterGap": "that he passed the test.",
-        "routes": [
-          { "p1": "working", "p2": "very hard" }
+        "secondSentence": "It was only by (1) _________ that he passed the test.",
+        "solutions": [
+          "working very hard"
         ]
       },
       {
         "number": 30,
         "firstSentence": "I was about to leave when the phone rang.",
         "keyWord": "VERGE",
-        "beforeGap": "I was",
-        "afterGap": "leaving when the phone rang.",
-        "routes": [
-          { "p1": "on", "p2": "the verge of" }
+        "secondSentence": "I was (1) _________ leaving when the phone rang.",
+        "solutions": [
+          "on the verge of"
         ]
       }
     ]

@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "Someone painted this bridge in 1890.",
       "keyWord": "WAS",
-      "beforeGap": "This bridge",
-      "afterGap": "in 1890.",
-      "routes": [
-        {
-          "p1": "was",
-          "p2": "painted"
-        }
+      "secondSentence": "This bridge (1) _________ in 1890.",
+      "solutions": [
+        "was painted"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "It's not necessary for you to arrive early.",
         "keyWord": "HAVE",
-        "beforeGap": "You don't",
-        "afterGap": "early.",
-        "routes": [
-          {
-            "p1": "have",
-            "p2": "to arrive"
-          }
+        "secondSentence": "You don't (1) _________ early.",
+        "solutions": [
+          "have to arrive"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The film was so boring that I fell asleep.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that I fell asleep.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a boring film"
-          }
+        "secondSentence": "It was (1) _________ that I fell asleep.",
+        "solutions": [
+          "such a boring film"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She no longer plays the piano.",
         "keyWord": "GIVEN",
-        "beforeGap": "She has",
-        "afterGap": "playing the piano.",
-        "routes": [
-          {
-            "p1": "given",
-            "p2": "up"
-          }
+        "secondSentence": "She has (1) _________ playing the piano.",
+        "solutions": [
+          "given up"
         ]
       },
       {
         "number": 28,
         "firstSentence": "Nobody has repaired this machine for months.",
         "keyWord": "BEEN",
-        "beforeGap": "This machine hasn't",
-        "afterGap": "for months.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "repaired"
-          }
+        "secondSentence": "This machine hasn't (1) _________ for months.",
+        "solutions": [
+          "been repaired"
         ]
       },
       {
         "number": 29,
         "firstSentence": "You'll succeed only if you work hard.",
         "keyWord": "LONG",
-        "beforeGap": "You'll succeed",
-        "afterGap": "you work hard.",
-        "routes": [
-          {
-            "p1": "as long",
-            "p2": "as"
-          }
+        "secondSentence": "You'll succeed (1) _________ you work hard.",
+        "solutions": [
+          "as long as"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She started working here ten years ago.",
         "keyWord": "FOR",
-        "beforeGap": "She has been working here",
-        "afterGap": "years.",
-        "routes": [
-          {
-            "p1": "for",
-            "p2": "ten"
-          }
+        "secondSentence": "She has been working here (1) _________ years.",
+        "solutions": [
+          "for ten"
         ]
       }
     ]

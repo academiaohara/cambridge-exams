@@ -10,68 +10,62 @@
         "number": 25,
         "firstSentence": "They will announce the results at the end of the day.",
         "keyWord": "BE",
-        "beforeGap": "The results",
-        "afterGap": "at the end of the day.",
-        "routes": [
-          { "p1": "will", "p2": "be announced" }
-        ],
-        "explanation": "Tests the use of the passive voice in the future."
+        "explanation": "Tests the use of the passive voice in the future.",
+        "secondSentence": "The results (1) _________ at the end of the day.",
+        "solutions": [
+          "will be announced"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I won't be late,’ he said to his mother.",
         "keyWord": "PROMISED",
-        "beforeGap": "He",
-        "afterGap": "late.",
-        "routes": [
-          { "p1": "promised", "p2": "his mother (that) he wouldn't" },
-          { "p1": "promised", "p2": "not to be" }
-        ],
-        "explanation": "Tests reporting verbs with that-clauses or infinitives."
+        "explanation": "Tests reporting verbs with that-clauses or infinitives.",
+        "secondSentence": "He (1) _________ late.",
+        "solutions": [
+          "promised his mother (that) he wouldn't",
+          "promised not to be"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I only passed the test because I studied all night.",
         "keyWord": "UNLESS",
-        "beforeGap": "I wouldn't have passed the test",
-        "afterGap": "all night.",
-        "routes": [
-          { "p1": "unless", "p2": "I had studied" }
-        ],
-        "explanation": "Tests conditional meaning with 'unless' in a past hypothetical context."
+        "explanation": "Tests conditional meaning with 'unless' in a past hypothetical context.",
+        "secondSentence": "I wouldn't have passed the test (1) _________ all night.",
+        "solutions": [
+          "unless I had studied"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I am certain he was happy with his new job.",
         "keyWord": "MUST",
-        "beforeGap": "He",
-        "afterGap": "with his new job.",
-        "routes": [
-          { "p1": "must", "p2": "have been happy" }
-        ],
-        "explanation": "Tests modal perfect for positive deduction."
+        "explanation": "Tests modal perfect for positive deduction.",
+        "secondSentence": "He (1) _________ with his new job.",
+        "solutions": [
+          "must have been happy"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "He had never before seen such a beautiful sunrise.",
         "keyWord": "SEEN",
-        "beforeGap": "Never before",
-        "afterGap": "such a beautiful sunrise.",
-        "routes": [
-          { "p1": "had", "p2": "he seen" }
-        ],
-        "explanation": "Tests negative inversion with 'Never before'."
+        "explanation": "Tests negative inversion with 'Never before'.",
+        "secondSentence": "Never before (1) _________ such a beautiful sunrise.",
+        "solutions": [
+          "had he seen"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "It's a waste of time to try to open that door.",
         "keyWord": "POINT",
-        "beforeGap": "There is",
-        "afterGap": "to open that door.",
-        "routes": [
-          { "p1": "no", "p2": "point (in) trying" }
-        ],
-        "explanation": "Tests the fixed expression 'there is no point (in) -ing'."
+        "explanation": "Tests the fixed expression 'there is no point (in) -ing'.",
+        "secondSentence": "There is (1) _________ to open that door.",
+        "solutions": [
+          "no point (in) trying"
+        ]
       }
     ]
   }

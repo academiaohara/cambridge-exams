@@ -10,70 +10,64 @@
         "number": 25,
         "firstSentence": "A local builder is going to repair our roof next week.",
         "keyWord": "HAVE",
-        "beforeGap": "We are going",
-        "afterGap": "by a local builder next week.",
-        "routes": [
-          { "p1": "to", "p2": "have our roof repaired" }
-        ],
-        "explanation": "Tests causative 'have something done'."
+        "explanation": "Tests causative 'have something done'.",
+        "secondSentence": "We are going (1) _________ by a local builder next week.",
+        "solutions": [
+          "to have our roof repaired"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘You should avoid eating too much junk food,’ said the doctor.",
         "keyWord": "ADVISED",
-        "beforeGap": "The doctor",
-        "afterGap": "eating too much junk food.",
-        "routes": [
-          { "p1": "advised", "p2": "me to avoid" },
-          { "p1": "advised", "p2": "against" }
-        ],
-        "explanation": "Tests reporting verbs with infinitive or prepositional gerund structures."
+        "explanation": "Tests reporting verbs with infinitive or prepositional gerund structures.",
+        "secondSentence": "The doctor (1) _________ eating too much junk food.",
+        "solutions": [
+          "advised me to avoid",
+          "advised against"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I'm sorry I didn't see you at the party.",
         "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "you at the party.",
-        "routes": [
-          { "p1": "wish", "p2": "I had seen" },
-          { "p1": "wish", "p2": "I'd seen" }
-        ],
-        "explanation": "Tests 'wish' + past perfect for past regrets."
+        "explanation": "Tests 'wish' + past perfect for past regrets.",
+        "secondSentence": "I (1) _________ you at the party.",
+        "solutions": [
+          "wish I had seen",
+          "wish I'd seen"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "It is possible that the cat was trapped in the garage.",
         "keyWord": "MIGHT",
-        "beforeGap": "The cat",
-        "afterGap": "in the garage.",
-        "routes": [
-          { "p1": "might", "p2": "have been trapped" }
-        ],
-        "explanation": "Tests modal perfect passive for past possibility."
+        "explanation": "Tests modal perfect passive for past possibility.",
+        "secondSentence": "The cat (1) _________ in the garage.",
+        "solutions": [
+          "might have been trapped"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I didn't realize my phone was missing until I got home.",
         "keyWord": "DID",
-        "beforeGap": "Only after getting home",
-        "afterGap": "my phone was missing.",
-        "routes": [
-          { "p1": "did", "p2": "I realize" },
-          { "p1": "did", "p2": "I realise" }
-        ],
-        "explanation": "Tests inversion with 'Only after'."
+        "explanation": "Tests inversion with 'Only after'.",
+        "secondSentence": "Only after getting home (1) _________ my phone was missing.",
+        "solutions": [
+          "did I realize",
+          "did I realise"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "The match was so exciting that I didn't want it to end.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that I didn't want it to end.",
-        "routes": [
-          { "p1": "such", "p2": "an exciting match" }
-        ],
-        "explanation": "Tests 'such + (a/an) + adjective + noun' for emphasis."
+        "explanation": "Tests 'such + (a/an) + adjective + noun' for emphasis.",
+        "secondSentence": "It was (1) _________ that I didn't want it to end.",
+        "solutions": [
+          "such an exciting match"
+        ]
       }
     ]
   }

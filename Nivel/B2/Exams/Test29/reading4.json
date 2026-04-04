@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "He refused our invitation to the dinner party.",
       "keyWord": "TURNED",
-      "beforeGap": "He",
-      "afterGap": "our dinner party invitation.",
-      "routes": [
-        {
-          "p1": "turned",
-          "p2": "down"
-        }
+      "secondSentence": "He (1) _________ our dinner party invitation.",
+      "solutions": [
+        "turned down"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Workers are repairing the road outside.",
         "keyWord": "BEING",
-        "beforeGap": "The road outside is",
-        "afterGap": ".",
-        "routes": [
-          {
-            "p1": "being",
-            "p2": "repaired"
-          }
+        "secondSentence": "The road outside is (1) _________ .",
+        "solutions": [
+          "being repaired"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I'm sure she has already left the office.",
         "keyWord": "MUST",
-        "beforeGap": "She",
-        "afterGap": "the office already.",
-        "routes": [
-          {
-            "p1": "must",
-            "p2": "have left"
-          }
+        "secondSentence": "She (1) _________ the office already.",
+        "solutions": [
+          "must have left"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The concert hall was so full that people were standing.",
         "keyWord": "SUCH",
-        "beforeGap": "There was",
-        "afterGap": "that people were standing.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a full concert hall"
-          }
+        "secondSentence": "There was (1) _________ that people were standing.",
+        "solutions": [
+          "such a full concert hall"
         ]
       },
       {
         "number": 28,
         "firstSentence": "I haven't spoken to my old friend for years.",
         "keyWord": "AGO",
-        "beforeGap": "I last spoke to my old friend",
-        "afterGap": "years.",
-        "routes": [
-          {
-            "p1": "years",
-            "p2": "ago"
-          }
+        "secondSentence": "I last spoke to my old friend (1) _________ years.",
+        "solutions": [
+          "years ago"
         ]
       },
       {
         "number": 29,
         "firstSentence": "He managed to escape from the burning building.",
         "keyWord": "ABLE",
-        "beforeGap": "He was",
-        "afterGap": "the burning building.",
-        "routes": [
-          {
-            "p1": "able",
-            "p2": "to escape from"
-          }
+        "secondSentence": "He was (1) _________ the burning building.",
+        "solutions": [
+          "able to escape from"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She was forced to resign from her job.",
         "keyWord": "HAD",
-        "beforeGap": "She",
-        "afterGap": "from her job.",
-        "routes": [
-          {
-            "p1": "had",
-            "p2": "to resign"
-          }
+        "secondSentence": "She (1) _________ from her job.",
+        "solutions": [
+          "had to resign"
         ]
       }
     ]

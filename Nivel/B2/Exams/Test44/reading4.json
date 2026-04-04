@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "His car stopped working on the motorway.",
       "keyWord": "BROKE",
-      "beforeGap": "His car",
-      "afterGap": "on the motorway.",
-      "routes": [
-        {
-          "p1": "broke",
-          "p2": "down"
-        }
+      "secondSentence": "His car (1) _________ on the motorway.",
+      "solutions": [
+        "broke down"
       ]
     },
     "questions": [
@@ -23,77 +19,54 @@
         "number": 25,
         "firstSentence": "They are renovating the town hall this year.",
         "keyWord": "BEING",
-        "beforeGap": "The town hall is",
-        "afterGap": "this year.",
-        "routes": [
-          {
-            "p1": "being",
-            "p2": "renovated"
-          }
+        "secondSentence": "The town hall is (1) _________ this year.",
+        "solutions": [
+          "being renovated"
         ]
       },
       {
         "number": 26,
         "firstSentence": "No restaurant in the neighbourhood is cheaper than this.",
         "keyWord": "CHEAPEST",
-        "beforeGap": "This is",
-        "afterGap": "restaurant in the neighbourhood.",
-        "routes": [
-          {
-            "p1": "the cheapest"
-          }
+        "secondSentence": "This is (1) _________ restaurant in the neighbourhood.",
+        "solutions": [
+          "the cheapest"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She was too busy to reply to all the messages.",
         "keyWord": "ENOUGH",
-        "beforeGap": "She wasn't",
-        "afterGap": "to reply to all the messages.",
-        "routes": [
-          {
-            "p1": "free",
-            "p2": "enough"
-          }
+        "secondSentence": "She wasn't (1) _________ to reply to all the messages.",
+        "solutions": [
+          "free enough"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He regrets not keeping in touch with his old friends.",
         "keyWord": "WISHES",
-        "beforeGap": "He",
-        "afterGap": "in touch with his old friends.",
-        "routes": [
-          {
-            "p1": "wishes",
-            "p2": "he had kept"
-          }
+        "secondSentence": "He (1) _________ in touch with his old friends.",
+        "solutions": [
+          "wishes he had kept"
         ]
       },
       {
         "number": 29,
         "firstSentence": "She was in the habit of making a shopping list.",
         "keyWord": "USED",
-        "beforeGap": "She",
-        "afterGap": "a shopping list.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "make"
-          }
+        "secondSentence": "She (1) _________ a shopping list.",
+        "solutions": [
+          "used to make"
         ]
       },
       {
         "number": 30,
         "firstSentence": "The teacher said to the class, 'Hand in your essays today.'",
         "keyWord": "TOLD",
-        "beforeGap": "The teacher",
-        "afterGap": "in their essays that day.",
-        "routes": [
-          {
-            "p1": "told",
-            "p2": "the class to hand"
-          }
+        "secondSentence": "The teacher (1) _________ in their essays that day.",
+        "solutions": [
+          "told the class to hand"
         ]
       }
     ]

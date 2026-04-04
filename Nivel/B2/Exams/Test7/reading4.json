@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "They discovered oil in this region in 1960.",
       "keyWord": "WAS",
-      "beforeGap": "Oil",
-      "afterGap": "in this region in 1960.",
-      "routes": [
-        {
-          "p1": "was",
-          "p2": "discovered"
-        }
+      "secondSentence": "Oil (1) _________ in this region in 1960.",
+      "solutions": [
+        "was discovered"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Have they repaired the broken lift yet?",
         "keyWord": "BEEN",
-        "beforeGap": "Has the broken lift",
-        "afterGap": "yet?",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "repaired"
-          }
+        "secondSentence": "Has the broken lift (1) _________ yet?",
+        "solutions": [
+          "been repaired"
         ]
       },
       {
         "number": 26,
         "firstSentence": "He is too nervous to give a public speech.",
         "keyWord": "CALM",
-        "beforeGap": "He isn't",
-        "afterGap": "to give a public speech.",
-        "routes": [
-          {
-            "p1": "calm",
-            "p2": "enough"
-          }
+        "secondSentence": "He isn't (1) _________ to give a public speech.",
+        "solutions": [
+          "calm enough"
         ]
       },
       {
         "number": 27,
         "firstSentence": "A hairdresser cut her hair yesterday.",
         "keyWord": "HAD",
-        "beforeGap": "She",
-        "afterGap": "yesterday.",
-        "routes": [
-          {
-            "p1": "had",
-            "p2": "her hair cut"
-          }
+        "secondSentence": "She (1) _________ yesterday.",
+        "solutions": [
+          "had her hair cut"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He no longer smokes.",
         "keyWord": "GIVEN",
-        "beforeGap": "He has",
-        "afterGap": "smoking.",
-        "routes": [
-          {
-            "p1": "given",
-            "p2": "up"
-          }
+        "secondSentence": "He has (1) _________ smoking.",
+        "solutions": [
+          "given up"
         ]
       },
       {
         "number": 29,
         "firstSentence": "She is more experienced than any other candidate.",
         "keyWord": "MOST",
-        "beforeGap": "She is",
-        "afterGap": "candidate.",
-        "routes": [
-          {
-            "p1": "the most",
-            "p2": "experienced"
-          }
+        "secondSentence": "She is (1) _________ candidate.",
+        "solutions": [
+          "the most experienced"
         ]
       },
       {
         "number": 30,
         "firstSentence": "The last time I spoke to him was last month.",
         "keyWord": "SPOKEN",
-        "beforeGap": "I haven't",
-        "afterGap": "last month.",
-        "routes": [
-          {
-            "p1": "spoken",
-            "p2": "to him since"
-          }
+        "secondSentence": "I haven't (1) _________ last month.",
+        "solutions": [
+          "spoken to him since"
         ]
       }
     ]

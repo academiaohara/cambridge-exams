@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "It's not compulsory to wear a uniform here.",
       "keyWord": "HAVE",
-      "beforeGap": "You don't",
-      "afterGap": "a uniform here.",
-      "routes": [
-        {
-          "p1": "have",
-          "p2": "to wear"
-        }
+      "secondSentence": "You don't (1) _________ a uniform here.",
+      "solutions": [
+        "have to wear"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "People speak French in this part of Belgium.",
         "keyWord": "IS",
-        "beforeGap": "French",
-        "afterGap": "in this part of Belgium.",
-        "routes": [
-          {
-            "p1": "is",
-            "p2": "spoken"
-          }
+        "secondSentence": "French (1) _________ in this part of Belgium.",
+        "solutions": [
+          "is spoken"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The coffee was so strong that I couldn't sleep.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that I couldn't sleep.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "strong coffee"
-          }
+        "secondSentence": "It was (1) _________ that I couldn't sleep.",
+        "solutions": [
+          "such strong coffee"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The manager cancelled the meeting.",
         "keyWord": "CALLED",
-        "beforeGap": "The manager",
-        "afterGap": "the meeting.",
-        "routes": [
-          {
-            "p1": "called",
-            "p2": "off"
-          }
+        "secondSentence": "The manager (1) _________ the meeting.",
+        "solutions": [
+          "called off"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He said, 'I am very hungry.'",
         "keyWord": "SAID",
-        "beforeGap": "He",
-        "afterGap": "was very hungry.",
-        "routes": [
-          {
-            "p1": "said",
-            "p2": "(that) he"
-          }
+        "secondSentence": "He (1) _________ was very hungry.",
+        "solutions": [
+          "said (that) he"
         ]
       },
       {
         "number": 29,
         "firstSentence": "They haven't decorated the bedroom yet.",
         "keyWord": "BEEN",
-        "beforeGap": "The bedroom hasn't",
-        "afterGap": "yet.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "decorated"
-          }
+        "secondSentence": "The bedroom hasn't (1) _________ yet.",
+        "solutions": [
+          "been decorated"
         ]
       },
       {
         "number": 30,
         "firstSentence": "My father was in the habit of telling me stories.",
         "keyWord": "USED",
-        "beforeGap": "My father",
-        "afterGap": "me stories.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "tell"
-          }
+        "secondSentence": "My father (1) _________ me stories.",
+        "solutions": [
+          "used to tell"
         ]
       }
     ]

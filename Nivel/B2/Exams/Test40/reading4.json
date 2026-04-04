@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "The concert was cancelled because the singer was ill.",
       "keyWord": "CALLED",
-      "beforeGap": "The concert was",
-      "afterGap": "because the singer was ill.",
-      "routes": [
-        {
-          "p1": "called",
-          "p2": "off"
-        }
+      "secondSentence": "The concert was (1) _________ because the singer was ill.",
+      "solutions": [
+        "called off"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Someone had left the back door unlocked.",
         "keyWord": "BEEN",
-        "beforeGap": "The back door had",
-        "afterGap": "unlocked.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "left"
-          }
+        "secondSentence": "The back door had (1) _________ unlocked.",
+        "solutions": [
+          "been left"
         ]
       },
       {
         "number": 26,
         "firstSentence": "She is not as confident as she looks.",
         "keyWord": "LESS",
-        "beforeGap": "She is",
-        "afterGap": "she looks.",
-        "routes": [
-          {
-            "p1": "less confident",
-            "p2": "than"
-          }
+        "secondSentence": "She is (1) _________ she looks.",
+        "solutions": [
+          "less confident than"
         ]
       },
       {
         "number": 27,
         "firstSentence": "He was too frightened to enter the dark room.",
         "keyWord": "BRAVE",
-        "beforeGap": "He wasn't",
-        "afterGap": "to enter the dark room.",
-        "routes": [
-          {
-            "p1": "brave",
-            "p2": "enough"
-          }
+        "secondSentence": "He wasn't (1) _________ to enter the dark room.",
+        "solutions": [
+          "brave enough"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She regrets not taking the opportunity.",
         "keyWord": "WISHES",
-        "beforeGap": "She",
-        "afterGap": "the opportunity.",
-        "routes": [
-          {
-            "p1": "wishes",
-            "p2": "she had taken"
-          }
+        "secondSentence": "She (1) _________ the opportunity.",
+        "solutions": [
+          "wishes she had taken"
         ]
       },
       {
         "number": 29,
         "firstSentence": "He was in the habit of going to the market on Saturdays.",
         "keyWord": "USED",
-        "beforeGap": "He",
-        "afterGap": "the market on Saturdays.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "go to"
-          }
+        "secondSentence": "He (1) _________ the market on Saturdays.",
+        "solutions": [
+          "used to go to"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She said to him, 'Please don't tell anyone.'",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "tell anyone.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "him not to"
-          }
+        "secondSentence": "She (1) _________ tell anyone.",
+        "solutions": [
+          "asked him not to"
         ]
       }
     ]

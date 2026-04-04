@@ -10,62 +10,56 @@
         "number": 25,
         "firstSentence": "The company decided to postpone the launch until next month.",
         "keyWord": "OFF",
-        "beforeGap": "The company decided",
-        "afterGap": "until next month.",
-        "routes": [
-          { "p1": "to put", "p2": "off the launch" },
-          { "p1": "to put", "p2": "the launch off" }
+        "secondSentence": "The company decided (1) _________ until next month.",
+        "solutions": [
+          "to put off the launch",
+          "to put the launch off"
         ]
       },
       {
         "number": 26,
         "firstSentence": "If you don't start studying now, you will fail.",
         "keyWord": "TIME",
-        "beforeGap": "It is",
-        "afterGap": "studying.",
-        "routes": [
-          { "p1": "(high/about) time", "p2": "you started" }
+        "secondSentence": "It is (1) _________ studying.",
+        "solutions": [
+          "(high/about) time you started"
         ]
       },
       {
         "number": 27,
         "firstSentence": "I find it very difficult to understand what he is saying.",
         "keyWord": "DIFFICULTY",
-        "beforeGap": "I am",
-        "afterGap": "what he is saying.",
-        "routes": [
-          { "p1": "having (great)", "p2": "difficulty (in) understanding" }
+        "secondSentence": "I am (1) _________ what he is saying.",
+        "solutions": [
+          "having (great) difficulty (in) understanding"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She was so angry that she couldn't speak.",
         "keyWord": "SUCH",
-        "beforeGap": "She was",
-        "afterGap": "that she couldn't speak.",
-        "routes": [
-          { "p1": "in", "p2": "such a rage" },
-          { "p1": "in", "p2": "such an angry state" }
+        "secondSentence": "She was (1) _________ that she couldn't speak.",
+        "solutions": [
+          "in such a rage",
+          "in such an angry state"
         ]
       },
       {
         "number": 29,
         "firstSentence": "The bridge was built twenty years ago.",
         "keyWord": "CONSTRUCTION",
-        "beforeGap": "The bridge",
-        "afterGap": "twenty years ago.",
-        "routes": [
-          { "p1": "was under", "p2": "construction" }
+        "secondSentence": "The bridge (1) _________ twenty years ago.",
+        "solutions": [
+          "was under construction"
         ]
       },
       {
         "number": 30,
         "firstSentence": "It is not worth trying to fix that old car.",
         "keyWord": "POINT",
-        "beforeGap": "There",
-        "afterGap": "trying to fix that old car.",
-        "routes": [
-          { "p1": "is", "p2": "no point (in)" }
+        "secondSentence": "There (1) _________ trying to fix that old car.",
+        "solutions": [
+          "is no point (in)"
         ]
       }
     ]

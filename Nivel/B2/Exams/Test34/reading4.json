@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "Nobody had warned me about the icy roads.",
       "keyWord": "BEEN",
-      "beforeGap": "I hadn't",
-      "afterGap": "about the icy roads.",
-      "routes": [
-        {
-          "p1": "been",
-          "p2": "warned"
-        }
+      "secondSentence": "I hadn't (1) _________ about the icy roads.",
+      "solutions": [
+        "been warned"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "She started living abroad five years ago.",
         "keyWord": "FOR",
-        "beforeGap": "She has been living abroad",
-        "afterGap": "years.",
-        "routes": [
-          {
-            "p1": "for",
-            "p2": "five"
-          }
+        "secondSentence": "She has been living abroad (1) _________ years.",
+        "solutions": [
+          "for five"
         ]
       },
       {
         "number": 26,
         "firstSentence": "He is not as skilful as his colleague.",
         "keyWord": "LESS",
-        "beforeGap": "He is",
-        "afterGap": "his colleague.",
-        "routes": [
-          {
-            "p1": "less skilful",
-            "p2": "than"
-          }
+        "secondSentence": "He is (1) _________ his colleague.",
+        "solutions": [
+          "less skilful than"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She continued studying even after midnight.",
         "keyWord": "KEPT",
-        "beforeGap": "She",
-        "afterGap": "even after midnight.",
-        "routes": [
-          {
-            "p1": "kept",
-            "p2": "studying"
-          }
+        "secondSentence": "She (1) _________ even after midnight.",
+        "solutions": [
+          "kept studying"
         ]
       },
       {
         "number": 28,
         "firstSentence": "It was impossible for them to get tickets.",
         "keyWord": "UNABLE",
-        "beforeGap": "They were",
-        "afterGap": "tickets.",
-        "routes": [
-          {
-            "p1": "unable",
-            "p2": "to get"
-          }
+        "secondSentence": "They were (1) _________ tickets.",
+        "solutions": [
+          "unable to get"
         ]
       },
       {
         "number": 29,
         "firstSentence": "She wanted to know if he had ever visited Australia.",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "if he had ever visited Australia.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "him"
-          }
+        "secondSentence": "She (1) _________ if he had ever visited Australia.",
+        "solutions": [
+          "asked him"
         ]
       },
       {
         "number": 30,
         "firstSentence": "He took up golf after he retired.",
         "keyWord": "STARTED",
-        "beforeGap": "He",
-        "afterGap": "golf after he retired.",
-        "routes": [
-          {
-            "p1": "started",
-            "p2": "playing"
-          }
+        "secondSentence": "He (1) _________ golf after he retired.",
+        "solutions": [
+          "started playing"
         ]
       }
     ]

@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "They carry out safety checks on all aircraft.",
       "keyWord": "ARE",
-      "beforeGap": "Safety checks",
-      "afterGap": "on all aircraft.",
-      "routes": [
-        {
-          "p1": "are",
-          "p2": "carried out"
-        }
+      "secondSentence": "Safety checks (1) _________ on all aircraft.",
+      "solutions": [
+        "are carried out"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "He continued playing the guitar despite the noise.",
         "keyWord": "KEPT",
-        "beforeGap": "He",
-        "afterGap": "the guitar despite the noise.",
-        "routes": [
-          {
-            "p1": "kept",
-            "p2": "playing"
-          }
+        "secondSentence": "He (1) _________ the guitar despite the noise.",
+        "solutions": [
+          "kept playing"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The mountain road was so dangerous that they closed it.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that they closed it.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a dangerous road"
-          }
+        "secondSentence": "It was (1) _________ that they closed it.",
+        "solutions": [
+          "such a dangerous road"
         ]
       },
       {
         "number": 27,
         "firstSentence": "I was able to book the last ticket online.",
         "keyWord": "MANAGED",
-        "beforeGap": "I",
-        "afterGap": "the last ticket online.",
-        "routes": [
-          {
-            "p1": "managed",
-            "p2": "to book"
-          }
+        "secondSentence": "I (1) _________ the last ticket online.",
+        "solutions": [
+          "managed to book"
         ]
       },
       {
         "number": 28,
         "firstSentence": "Nobody had informed me about the delay.",
         "keyWord": "BEEN",
-        "beforeGap": "I hadn't",
-        "afterGap": "about the delay.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "informed"
-          }
+        "secondSentence": "I hadn't (1) _________ about the delay.",
+        "solutions": [
+          "been informed"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Despite the heavy rain, they went for a walk.",
         "keyWord": "EVEN",
-        "beforeGap": "They went for a walk",
-        "afterGap": "it was raining heavily.",
-        "routes": [
-          {
-            "p1": "even",
-            "p2": "though"
-          }
+        "secondSentence": "They went for a walk (1) _________ it was raining heavily.",
+        "solutions": [
+          "even though"
         ]
       },
       {
         "number": 30,
         "firstSentence": "My grandfather was in the habit of fishing on Sundays.",
         "keyWord": "USED",
-        "beforeGap": "My grandfather",
-        "afterGap": "on Sundays.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "fish"
-          }
+        "secondSentence": "My grandfather (1) _________ on Sundays.",
+        "solutions": [
+          "used to fish"
         ]
       }
     ]

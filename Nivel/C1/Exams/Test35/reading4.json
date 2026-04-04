@@ -10,70 +10,64 @@
         "number": 25,
         "firstSentence": "The dentist is checking my teeth this afternoon.",
         "keyWord": "HAVING",
-        "beforeGap": "I",
-        "afterGap": "this afternoon.",
-        "routes": [
-          { "p1": "am", "p2": "having my teeth checked" }
-        ],
-        "explanation": "Tests causative 'have something done'."
+        "explanation": "Tests causative 'have something done'.",
+        "secondSentence": "I (1) _________ this afternoon.",
+        "solutions": [
+          "am having my teeth checked"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I'm sorry I'm so late,’ said the driver.",
         "keyWord": "APOLOGISED",
-        "beforeGap": "The driver",
-        "afterGap": "so late.",
-        "routes": [
-          { "p1": "apologised", "p2": "for being" },
-          { "p1": "apologized", "p2": "for being" }
-        ],
-        "explanation": "Tests reporting verbs with gerunds."
+        "explanation": "Tests reporting verbs with gerunds.",
+        "secondSentence": "The driver (1) _________ so late.",
+        "solutions": [
+          "apologised for being",
+          "apologized for being"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I regret not buying that car when I had the chance.",
         "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "that car when I had the chance.",
-        "routes": [
-          { "p1": "wish", "p2": "I had bought" },
-          { "p1": "wish", "p2": "I'd bought" }
-        ],
-        "explanation": "Tests 'wish' + past perfect for past regrets."
+        "explanation": "Tests 'wish' + past perfect for past regrets.",
+        "secondSentence": "I (1) _________ that car when I had the chance.",
+        "solutions": [
+          "wish I had bought",
+          "wish I'd bought"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "Perhaps they were delayed by the heavy traffic.",
         "keyWord": "MIGHT",
-        "beforeGap": "They",
-        "afterGap": "by the heavy traffic.",
-        "routes": [
-          { "p1": "might", "p2": "have been delayed" }
-        ],
-        "explanation": "Tests modal perfect passive for past possibility."
+        "explanation": "Tests modal perfect passive for past possibility.",
+        "secondSentence": "They (1) _________ by the heavy traffic.",
+        "solutions": [
+          "might have been delayed"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I had never before seen such a beautiful view.",
         "keyWord": "NEVER",
-        "beforeGap": "Never",
-        "afterGap": "such a beautiful view.",
-        "routes": [
-          { "p1": "before", "p2": "had I seen" }
-        ],
-        "explanation": "Tests inversion with negative adverbials."
+        "explanation": "Tests inversion with negative adverbials.",
+        "secondSentence": "Never (1) _________ such a beautiful view.",
+        "solutions": [
+          "before had I seen"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "I find it difficult to get used to the cold weather here.",
         "keyWord": "ACCUSTOMED",
-        "beforeGap": "I am",
-        "afterGap": "the cold weather here.",
-        "routes": [
-          { "p1": "not", "p2": "accustomed to" },
-          { "p1": "not", "p2": "yet accustomed to" }
-        ],
-        "explanation": "Tests the phrase 'be accustomed to' + noun/gerund."
+        "explanation": "Tests the phrase 'be accustomed to' + noun/gerund.",
+        "secondSentence": "I am (1) _________ the cold weather here.",
+        "solutions": [
+          "not accustomed to",
+          "not yet accustomed to"
+        ]
       }
     ]
   }

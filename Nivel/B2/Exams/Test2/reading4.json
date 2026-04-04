@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "Someone stole my bicycle last night.",
       "keyWord": "WAS",
-      "beforeGap": "My bicycle",
-      "afterGap": "last night.",
-      "routes": [
-        {
-          "p1": "was",
-          "p2": "stolen"
-        }
+      "secondSentence": "My bicycle (1) _________ last night.",
+      "solutions": [
+        "was stolen"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "The teacher said to us, 'Open your books.'",
         "keyWord": "TOLD",
-        "beforeGap": "The teacher",
-        "afterGap": "to open our books.",
-        "routes": [
-          {
-            "p1": "told",
-            "p2": "us"
-          }
+        "secondSentence": "The teacher (1) _________ to open our books.",
+        "solutions": [
+          "told us"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I don't have a car, so I can't drive to work.",
         "keyWord": "WOULD",
-        "beforeGap": "If I had a car, I",
-        "afterGap": "to work.",
-        "routes": [
-          {
-            "p1": "would",
-            "p2": "drive"
-          }
+        "secondSentence": "If I had a car, I (1) _________ to work.",
+        "solutions": [
+          "would drive"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She is too short to reach the top shelf.",
         "keyWord": "TALL",
-        "beforeGap": "She isn't",
-        "afterGap": "to reach the top shelf.",
-        "routes": [
-          {
-            "p1": "tall",
-            "p2": "enough"
-          }
+        "secondSentence": "She isn't (1) _________ to reach the top shelf.",
+        "solutions": [
+          "tall enough"
         ]
       },
       {
         "number": 28,
         "firstSentence": "A plumber fixed our leaking pipe.",
         "keyWord": "HAD",
-        "beforeGap": "We",
-        "afterGap": "our leaking pipe fixed.",
-        "routes": [
-          {
-            "p1": "had",
-            "p2": "a plumber fix"
-          }
+        "secondSentence": "We (1) _________ our leaking pipe fixed.",
+        "solutions": [
+          "had a plumber fix"
         ]
       },
       {
         "number": 29,
         "firstSentence": "He doesn't go to the gym anymore.",
         "keyWord": "USED",
-        "beforeGap": "He",
-        "afterGap": "the gym.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "go to"
-          }
+        "secondSentence": "He (1) _________ the gym.",
+        "solutions": [
+          "used to go to"
         ]
       },
       {
         "number": 30,
         "firstSentence": "Where is the nearest hospital?",
         "keyWord": "KNOW",
-        "beforeGap": "Do you",
-        "afterGap": "is?",
-        "routes": [
-          {
-            "p1": "know",
-            "p2": "where the nearest hospital"
-          }
+        "secondSentence": "Do you (1) _________ is?",
+        "solutions": [
+          "know where the nearest hospital"
         ]
       }
     ]

@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "They painted the school during the summer break.",
       "keyWord": "WAS",
-      "beforeGap": "The school",
-      "afterGap": "during the summer break.",
-      "routes": [
-        {
-          "p1": "was",
-          "p2": "painted"
-        }
+      "secondSentence": "The school (1) _________ during the summer break.",
+      "solutions": [
+        "was painted"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "It is not essential to register in advance.",
         "keyWord": "NEED",
-        "beforeGap": "You",
-        "afterGap": "in advance.",
-        "routes": [
-          {
-            "p1": "don't",
-            "p2": "need to register"
-          }
+        "secondSentence": "You (1) _________ in advance.",
+        "solutions": [
+          "don't need to register"
         ]
       },
       {
         "number": 26,
         "firstSentence": "He is not as hardworking as he used to be.",
         "keyWord": "LAZIER",
-        "beforeGap": "He is",
-        "afterGap": "he used to be.",
-        "routes": [
-          {
-            "p1": "lazier",
-            "p2": "than"
-          }
+        "secondSentence": "He is (1) _________ he used to be.",
+        "solutions": [
+          "lazier than"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She continued running even though she was exhausted.",
         "keyWord": "KEPT",
-        "beforeGap": "She",
-        "afterGap": "even though she was exhausted.",
-        "routes": [
-          {
-            "p1": "kept",
-            "p2": "running"
-          }
+        "secondSentence": "She (1) _________ even though she was exhausted.",
+        "solutions": [
+          "kept running"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He was obliged to pay a fine for parking illegally.",
         "keyWord": "HAD",
-        "beforeGap": "He",
-        "afterGap": "a fine for parking illegally.",
-        "routes": [
-          {
-            "p1": "had",
-            "p2": "to pay"
-          }
+        "secondSentence": "He (1) _________ a fine for parking illegally.",
+        "solutions": [
+          "had to pay"
         ]
       },
       {
         "number": 29,
         "firstSentence": "He said, 'I will definitely come to your party.'",
         "keyWord": "PROMISED",
-        "beforeGap": "He",
-        "afterGap": "to my party.",
-        "routes": [
-          {
-            "p1": "promised",
-            "p2": "to come"
-          }
+        "secondSentence": "He (1) _________ to my party.",
+        "solutions": [
+          "promised to come"
         ]
       },
       {
         "number": 30,
         "firstSentence": "Without the map, they would have got lost.",
         "keyWord": "HAVE",
-        "beforeGap": "If they hadn't had the map, they would",
-        "afterGap": "lost.",
-        "routes": [
-          {
-            "p1": "have",
-            "p2": "got"
-          }
+        "secondSentence": "If they hadn't had the map, they would (1) _________ lost.",
+        "solutions": [
+          "have got"
         ]
       }
     ]

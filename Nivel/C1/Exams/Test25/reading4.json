@@ -10,69 +10,63 @@
         "number": 25,
         "firstSentence": "They are reporting that the prisoner has been recaptured.",
         "keyWord": "REPORTED",
-        "beforeGap": "The prisoner",
-        "afterGap": "recaptured.",
-        "routes": [
-          { "p1": "is", "p2": "reported to have been" }
-        ],
-        "explanation": "Tests complex passive reporting structures with perfect infinitive."
+        "explanation": "Tests complex passive reporting structures with perfect infinitive.",
+        "secondSentence": "The prisoner (1) _________ recaptured.",
+        "solutions": [
+          "is reported to have been"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I'm sorry I broke your favorite mug,’ said Kevin to his sister.",
         "keyWord": "BREAKING",
-        "beforeGap": "Kevin",
-        "afterGap": "her favorite mug.",
-        "routes": [
-          { "p1": "apologised", "p2": "to his sister for breaking" },
-          { "p1": "apologized", "p2": "to his sister for breaking" }
-        ],
-        "explanation": "Tests reporting verbs with dependent prepositions and gerunds."
+        "explanation": "Tests reporting verbs with dependent prepositions and gerunds.",
+        "secondSentence": "Kevin (1) _________ her favorite mug.",
+        "solutions": [
+          "apologised to his sister for breaking",
+          "apologized to his sister for breaking"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I didn't know it was your birthday, so I didn't buy you a present.",
         "keyWord": "KNOWN",
-        "beforeGap": "If I",
-        "afterGap": "your birthday, I would have bought you a present.",
-        "routes": [
-          { "p1": "had", "p2": "known it was" },
-          { "p1": "had", "p2": "known that it was" }
-        ],
-        "explanation": "Tests third conditional for hypothetical past events."
+        "explanation": "Tests third conditional for hypothetical past events.",
+        "secondSentence": "If I (1) _________ your birthday, I would have bought you a present.",
+        "solutions": [
+          "had known it was",
+          "had known that it was"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I'm sure that the keys fell out of your pocket.",
         "keyWord": "MUST",
-        "beforeGap": "The keys",
-        "afterGap": "out of your pocket.",
-        "routes": [
-          { "p1": "must", "p2": "have fallen" }
-        ],
-        "explanation": "Tests modal perfect for certain past deduction."
+        "explanation": "Tests modal perfect for certain past deduction.",
+        "secondSentence": "The keys (1) _________ out of your pocket.",
+        "solutions": [
+          "must have fallen"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "The team had only just started the match when it began to hail.",
         "keyWord": "SCARCELY",
-        "beforeGap": "Scarcely",
-        "afterGap": "the match when it began to hail.",
-        "routes": [
-          { "p1": "had", "p2": "the team started" }
-        ],
-        "explanation": "Tests negative inversion using 'Scarcely... when'."
+        "explanation": "Tests negative inversion using 'Scarcely... when'.",
+        "secondSentence": "Scarcely (1) _________ the match when it began to hail.",
+        "solutions": [
+          "had the team started"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "It's a waste of time to try to get a tickets for that show.",
         "keyWord": "POINT",
-        "beforeGap": "There is",
-        "afterGap": "to get tickets for that show.",
-        "routes": [
-          { "p1": "no", "p2": "point (in) trying" }
-        ],
-        "explanation": "Tests gerund expressions (no point in + -ing)."
+        "explanation": "Tests gerund expressions (no point in + -ing).",
+        "secondSentence": "There is (1) _________ to get tickets for that show.",
+        "solutions": [
+          "no point (in) trying"
+        ]
       }
     ]
   }

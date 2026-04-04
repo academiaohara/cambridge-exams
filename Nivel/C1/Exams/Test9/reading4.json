@@ -10,64 +10,58 @@
         "number": 25,
         "firstSentence": "I was so tired that I fell asleep on the bus.",
         "keyWord": "SUCH",
-        "beforeGap": "I was",
-        "afterGap": "that I fell asleep on the bus.",
-        "routes": [
-          { "p1": "in", "p2": "such a tired state" },
-          { "p1": "in", "p2": "such a state of tiredness" }
+        "secondSentence": "I was (1) _________ that I fell asleep on the bus.",
+        "solutions": [
+          "in such a tired state",
+          "in such a state of tiredness"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The report says that the government is planning to increase taxes.",
         "keyWord": "ACCORDING",
-        "beforeGap": "",
-        "afterGap": ", the government is planning to increase taxes.",
-        "routes": [
-          { "p1": "According", "p2": "to the report" }
+        "secondSentence": "(1) _________ , the government is planning to increase taxes.",
+        "solutions": [
+          "According to the report"
         ]
       },
       {
         "number": 27,
         "firstSentence": "I have no idea how much the repair will cost.",
         "keyWord": "KNOWING",
-        "beforeGap": "There",
-        "afterGap": "how much the repair will cost.",
-        "routes": [
-          { "p1": "is", "p2": "no (way of) knowing" }
+        "secondSentence": "There (1) _________ how much the repair will cost.",
+        "solutions": [
+          "is no (way of) knowing"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He was very upset when he lost his job.",
         "keyWord": "CAME",
-        "beforeGap": "Losing his job",
-        "afterGap": "to him.",
-        "routes": [
-          { "p1": "came as", "p2": "a (great) shock" },
-          { "p1": "came as", "p2": "a (great) blow" }
+        "secondSentence": "Losing his job (1) _________ to him.",
+        "solutions": [
+          "came as a (great) shock",
+          "came as a (great) blow"
         ]
       },
       {
         "number": 29,
         "firstSentence": "She's always complaining about the weather.",
         "keyWord": "STOP",
-        "beforeGap": "She",
-        "afterGap": "about the weather.",
-        "routes": [
-          { "p1": "never", "p2": "stops complaining" },
-          { "p1": "does not", "p2": "ever stop complaining" },
-          { "p1": "doesn't", "p2": "ever stop complaining" }
+        "secondSentence": "She (1) _________ about the weather.",
+        "solutions": [
+          "never stops complaining",
+          "does not ever stop complaining",
+          "doesn't ever stop complaining"
         ]
       },
       {
         "number": 30,
         "firstSentence": "The bridge was closed because it was unsafe.",
         "keyWord": "ACCOUNT",
-        "beforeGap": "The bridge was closed",
-        "afterGap": "its lack of safety.",
-        "routes": [
-          { "p1": "on", "p2": "account of" }
+        "secondSentence": "The bridge was closed (1) _________ its lack of safety.",
+        "solutions": [
+          "on account of"
         ]
       }
     ]

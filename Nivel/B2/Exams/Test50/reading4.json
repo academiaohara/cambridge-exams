@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "No mountain in Africa is higher than Kilimanjaro.",
       "keyWord": "HIGHEST",
-      "beforeGap": "Kilimanjaro is",
-      "afterGap": "in Africa.",
-      "routes": [
-        {
-          "p1": "the highest",
-          "p2": "mountain"
-        }
+      "secondSentence": "Kilimanjaro is (1) _________ in Africa.",
+      "solutions": [
+        "the highest mountain"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Someone has already booked all the tables.",
         "keyWord": "BEEN",
-        "beforeGap": "All the tables have already",
-        "afterGap": ".",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "booked"
-          }
+        "secondSentence": "All the tables have already (1) _________ .",
+        "solutions": [
+          "been booked"
         ]
       },
       {
         "number": 26,
         "firstSentence": "It's not possible for her to have made that mistake.",
         "keyWord": "HAVE",
-        "beforeGap": "She can't",
-        "afterGap": "that mistake.",
-        "routes": [
-          {
-            "p1": "have",
-            "p2": "made"
-          }
+        "secondSentence": "She can't (1) _________ that mistake.",
+        "solutions": [
+          "have made"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The documentary was so moving that many people cried.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that many people cried.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a moving documentary"
-          }
+        "secondSentence": "It was (1) _________ that many people cried.",
+        "solutions": [
+          "such a moving documentary"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He no longer watches television in the evenings.",
         "keyWord": "USED",
-        "beforeGap": "He",
-        "afterGap": "television in the evenings.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "watch"
-          }
+        "secondSentence": "He (1) _________ television in the evenings.",
+        "solutions": [
+          "used to watch"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Although the price was high, she bought the dress.",
         "keyWord": "DESPITE",
-        "beforeGap": "She bought the dress",
-        "afterGap": "high.",
-        "routes": [
-          {
-            "p1": "despite",
-            "p2": "the price being"
-          }
+        "secondSentence": "She bought the dress (1) _________ high.",
+        "solutions": [
+          "despite the price being"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She told me, 'I am planning a surprise party.'",
         "keyWord": "SAID",
-        "beforeGap": "She",
-        "afterGap": "planning a surprise party.",
-        "routes": [
-          {
-            "p1": "said",
-            "p2": "(that) she was"
-          }
+        "secondSentence": "She (1) _________ planning a surprise party.",
+        "solutions": [
+          "said (that) she was"
         ]
       }
     ]

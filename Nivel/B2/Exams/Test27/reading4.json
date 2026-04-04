@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "They sell fresh fish at the market every morning.",
       "keyWord": "IS",
-      "beforeGap": "Fresh fish",
-      "afterGap": "at the market every morning.",
-      "routes": [
-        {
-          "p1": "is",
-          "p2": "sold"
-        }
+      "secondSentence": "Fresh fish (1) _________ at the market every morning.",
+      "solutions": [
+        "is sold"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "It's not necessary to book in advance.",
         "keyWord": "HAVE",
-        "beforeGap": "You don't",
-        "afterGap": "in advance.",
-        "routes": [
-          {
-            "p1": "have",
-            "p2": "to book"
-          }
+        "secondSentence": "You don't (1) _________ in advance.",
+        "solutions": [
+          "have to book"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The suitcase was so heavy that I couldn't lift it.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that I couldn't lift it.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a heavy suitcase"
-          }
+        "secondSentence": "It was (1) _________ that I couldn't lift it.",
+        "solutions": [
+          "such a heavy suitcase"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She succeeded in passing the driving test.",
         "keyWord": "MANAGED",
-        "beforeGap": "She",
-        "afterGap": "the driving test.",
-        "routes": [
-          {
-            "p1": "managed",
-            "p2": "to pass"
-          }
+        "secondSentence": "She (1) _________ the driving test.",
+        "solutions": [
+          "managed to pass"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He no longer drinks coffee.",
         "keyWord": "GIVEN",
-        "beforeGap": "He has",
-        "afterGap": "drinking coffee.",
-        "routes": [
-          {
-            "p1": "given",
-            "p2": "up"
-          }
+        "secondSentence": "He has (1) _________ drinking coffee.",
+        "solutions": [
+          "given up"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Without his advice, I would have made the wrong choice.",
         "keyWord": "WOULD",
-        "beforeGap": "If he hadn't advised me, I",
-        "afterGap": "the wrong choice.",
-        "routes": [
-          {
-            "p1": "would",
-            "p2": "have made"
-          }
+        "secondSentence": "If he hadn't advised me, I (1) _________ the wrong choice.",
+        "solutions": [
+          "would have made"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She asked, 'What does this word mean?'",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "that word meant.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "what"
-          }
+        "secondSentence": "She (1) _________ that word meant.",
+        "solutions": [
+          "asked what"
         ]
       }
     ]

@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "She raised her three children on her own.",
       "keyWord": "BROUGHT",
-      "beforeGap": "She",
-      "afterGap": "her three children on her own.",
-      "routes": [
-        {
-          "p1": "brought",
-          "p2": "up"
-        }
+      "secondSentence": "She (1) _________ her three children on her own.",
+      "solutions": [
+        "brought up"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "They will announce the winner at noon.",
         "keyWord": "BE",
-        "beforeGap": "The winner will",
-        "afterGap": "at noon.",
-        "routes": [
-          {
-            "p1": "be",
-            "p2": "announced"
-          }
+        "secondSentence": "The winner will (1) _________ at noon.",
+        "solutions": [
+          "be announced"
         ]
       },
       {
         "number": 26,
         "firstSentence": "It was wrong of him to speak like that.",
         "keyWord": "SHOULD",
-        "beforeGap": "He",
-        "afterGap": "like that.",
-        "routes": [
-          {
-            "p1": "shouldn't",
-            "p2": "have spoken"
-          }
+        "secondSentence": "He (1) _________ like that.",
+        "solutions": [
+          "shouldn't have spoken"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The ladder was too short to reach the roof.",
         "keyWord": "LONG",
-        "beforeGap": "The ladder wasn't",
-        "afterGap": "to reach the roof.",
-        "routes": [
-          {
-            "p1": "long",
-            "p2": "enough"
-          }
+        "secondSentence": "The ladder wasn't (1) _________ to reach the roof.",
+        "solutions": [
+          "long enough"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She finally succeeded in finding a new flat.",
         "keyWord": "MANAGED",
-        "beforeGap": "She finally",
-        "afterGap": "a new flat.",
-        "routes": [
-          {
-            "p1": "managed",
-            "p2": "to find"
-          }
+        "secondSentence": "She finally (1) _________ a new flat.",
+        "solutions": [
+          "managed to find"
         ]
       },
       {
         "number": 29,
         "firstSentence": "The doctor said to her, 'Stop eating fast food.'",
         "keyWord": "TOLD",
-        "beforeGap": "The doctor",
-        "afterGap": "eating fast food.",
-        "routes": [
-          {
-            "p1": "told",
-            "p2": "her to stop"
-          }
+        "secondSentence": "The doctor (1) _________ eating fast food.",
+        "solutions": [
+          "told her to stop"
         ]
       },
       {
         "number": 30,
         "firstSentence": "He started working at this company five years ago.",
         "keyWord": "FOR",
-        "beforeGap": "He has been working at this company",
-        "afterGap": "years.",
-        "routes": [
-          {
-            "p1": "for",
-            "p2": "five"
-          }
+        "secondSentence": "He has been working at this company (1) _________ years.",
+        "solutions": [
+          "for five"
         ]
       }
     ]

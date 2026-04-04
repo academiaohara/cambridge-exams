@@ -10,69 +10,63 @@
         "number": 25,
         "firstSentence": "The company is having a professional translate the document.",
         "keyWord": "TRANSLATED",
-        "beforeGap": "The company is",
-        "afterGap": "by a professional.",
-        "routes": [
-          { "p1": "having", "p2": "the document translated" }
-        ],
-        "explanation": "Tests causative 'have something done'."
+        "explanation": "Tests causative 'have something done'.",
+        "secondSentence": "The company is (1) _________ by a professional.",
+        "solutions": [
+          "having the document translated"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘Don't go too near the edge,’ the guide told the tourists.",
         "keyWord": "WARNED",
-        "beforeGap": "The guide",
-        "afterGap": "too near the edge.",
-        "routes": [
-          { "p1": "warned", "p2": "the tourists not to go" }
-        ],
-        "explanation": "Tests reporting verbs with negative infinitives."
+        "explanation": "Tests reporting verbs with negative infinitives.",
+        "secondSentence": "The guide (1) _________ too near the edge.",
+        "solutions": [
+          "warned the tourists not to go"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I'm sorry I didn't learn to play the piano when I was a child.",
         "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "the piano when I was a child.",
-        "routes": [
-          { "p1": "wish", "p2": "I had learned to play" },
-          { "p1": "wish", "p2": "I'd learned to play" }
-        ],
-        "explanation": "Tests 'wish' + past perfect for past regrets."
+        "explanation": "Tests 'wish' + past perfect for past regrets.",
+        "secondSentence": "I (1) _________ the piano when I was a child.",
+        "solutions": [
+          "wish I had learned to play",
+          "wish I'd learned to play"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "Perhaps they didn't see the email until this morning.",
         "keyWord": "MIGHT",
-        "beforeGap": "They",
-        "afterGap": "the email until this morning.",
-        "routes": [
-          { "p1": "might", "p2": "not have seen" }
-        ],
-        "explanation": "Tests modal perfect for past possibility."
+        "explanation": "Tests modal perfect for past possibility.",
+        "secondSentence": "They (1) _________ the email until this morning.",
+        "solutions": [
+          "might not have seen"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I only realized my mistake after I had sent the letter.",
         "keyWord": "DID",
-        "beforeGap": "Only after sending the letter",
-        "afterGap": "my mistake.",
-        "routes": [
-          { "p1": "did", "p2": "I realize" },
-          { "p1": "did", "p2": "I realise" }
-        ],
-        "explanation": "Tests inversion with 'Only after'."
+        "explanation": "Tests inversion with 'Only after'.",
+        "secondSentence": "Only after sending the letter (1) _________ my mistake.",
+        "solutions": [
+          "did I realize",
+          "did I realise"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "The exercise was so difficult that I couldn't finish it.",
         "keyWord": "SUCH",
-        "beforeGap": "It",
-        "afterGap": "that I couldn't finish it.",
-        "routes": [
-          { "p1": "was", "p2": "such a difficult exercise" }
-        ],
-        "explanation": "Tests 'such' + adjective + noun structure."
+        "explanation": "Tests 'such' + adjective + noun structure.",
+        "secondSentence": "It (1) _________ that I couldn't finish it.",
+        "solutions": [
+          "was such a difficult exercise"
+        ]
       }
     ]
   }

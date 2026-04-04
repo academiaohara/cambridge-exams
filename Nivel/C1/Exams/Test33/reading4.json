@@ -10,70 +10,64 @@
         "number": 25,
         "firstSentence": "People believe that the painting is worth millions.",
         "keyWord": "BELIEVED",
-        "beforeGap": "The painting",
-        "afterGap": "worth millions.",
-        "routes": [
-          { "p1": "is", "p2": "believed to be" }
-        ],
-        "explanation": "Tests personal passive construction."
+        "explanation": "Tests personal passive construction.",
+        "secondSentence": "The painting (1) _________ worth millions.",
+        "solutions": [
+          "is believed to be"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘You stole my idea!’ the scientist said to his colleague.",
         "keyWord": "ACCUSED",
-        "beforeGap": "The scientist",
-        "afterGap": "his idea.",
-        "routes": [
-          { "p1": "accused", "p2": "his colleague of stealing" }
-        ],
-        "explanation": "Tests reporting verb 'accuse' + object + of + gerund."
+        "explanation": "Tests reporting verb 'accuse' + object + of + gerund.",
+        "secondSentence": "The scientist (1) _________ his idea.",
+        "solutions": [
+          "accused his colleague of stealing"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "The only reason I passed was because of your encouragement.",
         "keyWord": "FOR",
-        "beforeGap": "If it",
-        "afterGap": "your encouragement, I wouldn't have passed.",
-        "routes": [
-          { "p1": "had", "p2": "not been for" },
-          { "p1": "hadn't", "p2": "been for" }
-        ],
-        "explanation": "Tests third conditional fixed phrase 'If it hadn't been for'."
+        "explanation": "Tests third conditional fixed phrase 'If it hadn't been for'.",
+        "secondSentence": "If it (1) _________ your encouragement, I wouldn't have passed.",
+        "solutions": [
+          "had not been for",
+          "hadn't been for"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "Perhaps they didn't receive the invitation in time.",
         "keyWord": "MIGHT",
-        "beforeGap": "They",
-        "afterGap": "the invitation in time.",
-        "routes": [
-          { "p1": "might", "p2": "not have received" }
-        ],
-        "explanation": "Tests modal perfect for past possibility/uncertainty."
+        "explanation": "Tests modal perfect for past possibility/uncertainty.",
+        "secondSentence": "They (1) _________ the invitation in time.",
+        "solutions": [
+          "might not have received"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I didn't realize my phone was missing until I got home.",
         "keyWord": "DID",
-        "beforeGap": "Only after getting home",
-        "afterGap": "my phone was missing.",
-        "routes": [
-          { "p1": "did", "p2": "I realize (that)" },
-          { "p1": "did", "p2": "I realise (that)" }
-        ],
-        "explanation": "Tests inversion with 'Only after'."
+        "explanation": "Tests inversion with 'Only after'.",
+        "secondSentence": "Only after getting home (1) _________ my phone was missing.",
+        "solutions": [
+          "did I realize (that)",
+          "did I realise (that)"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "They are similar in many ways, but they are not identical.",
         "keyWord": "DIFFERENCE",
-        "beforeGap": "There is",
-        "afterGap": "them, though they are not identical.",
-        "routes": [
-          { "p1": "very", "p2": "little difference between" },
-          { "p1": "not", "p2": "much difference between" }
-        ],
-        "explanation": "Tests noun phrases and preposition usage."
+        "explanation": "Tests noun phrases and preposition usage.",
+        "secondSentence": "There is (1) _________ them, though they are not identical.",
+        "solutions": [
+          "very little difference between",
+          "not much difference between"
+        ]
       }
     ]
   }

@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "I'm sure he didn't take your wallet.",
       "keyWord": "HAVE",
-      "beforeGap": "He can't",
-      "afterGap": "your wallet.",
-      "routes": [
-        {
-          "p1": "have",
-          "p2": "taken"
-        }
+      "secondSentence": "He can't (1) _________ your wallet.",
+      "solutions": [
+        "have taken"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "This painting was created in the seventeenth century.",
         "keyWord": "PAINTED",
-        "beforeGap": "Someone",
-        "afterGap": "in the seventeenth century.",
-        "routes": [
-          {
-            "p1": "painted",
-            "p2": "this"
-          }
+        "secondSentence": "Someone (1) _________ in the seventeenth century.",
+        "solutions": [
+          "painted this"
         ]
       },
       {
         "number": 26,
         "firstSentence": "They didn't go to the festival because it was too far.",
         "keyWord": "ENOUGH",
-        "beforeGap": "The festival wasn't",
-        "afterGap": "to go to.",
-        "routes": [
-          {
-            "p1": "close",
-            "p2": "enough"
-          }
+        "secondSentence": "The festival wasn't (1) _________ to go to.",
+        "solutions": [
+          "close enough"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She advised me not to trust him.",
         "keyWord": "WARNED",
-        "beforeGap": "She",
-        "afterGap": "not to trust him.",
-        "routes": [
-          {
-            "p1": "warned",
-            "p2": "me"
-          }
+        "secondSentence": "She (1) _________ not to trust him.",
+        "solutions": [
+          "warned me"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He no longer argues with his sister.",
         "keyWord": "USED",
-        "beforeGap": "He",
-        "afterGap": "with his sister.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "argue"
-          }
+        "secondSentence": "He (1) _________ with his sister.",
+        "solutions": [
+          "used to argue"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Despite the high cost, they bought the house.",
         "keyWord": "EVEN",
-        "beforeGap": "They bought the house",
-        "afterGap": "it was very expensive.",
-        "routes": [
-          {
-            "p1": "even",
-            "p2": "though"
-          }
+        "secondSentence": "They bought the house (1) _________ it was very expensive.",
+        "solutions": [
+          "even though"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She started her degree three years ago.",
         "keyWord": "FOR",
-        "beforeGap": "She has been studying for her degree",
-        "afterGap": "years.",
-        "routes": [
-          {
-            "p1": "for",
-            "p2": "three"
-          }
+        "secondSentence": "She has been studying for her degree (1) _________ years.",
+        "solutions": [
+          "for three"
         ]
       }
     ]

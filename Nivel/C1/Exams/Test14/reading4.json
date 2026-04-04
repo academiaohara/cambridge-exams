@@ -10,62 +10,56 @@
         "number": 25,
         "firstSentence": "They are going to repair the roof before winter starts.",
         "keyWord": "HAVE",
-        "beforeGap": "They are going to",
-        "afterGap": "before winter starts.",
-        "routes": [
-          { "p1": "have", "p2": "the roof repaired" }
+        "secondSentence": "They are going to (1) _________ before winter starts.",
+        "solutions": [
+          "have the roof repaired"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I was very surprised that he didn't pass the exam.",
         "keyWord": "CAME",
-        "beforeGap": "His failure to pass the exam",
-        "afterGap": "to me.",
-        "routes": [
-          { "p1": "came as", "p2": "a (great/total) surprise" }
+        "secondSentence": "His failure to pass the exam (1) _________ to me.",
+        "solutions": [
+          "came as a (great/total) surprise"
         ]
       },
       {
         "number": 27,
         "firstSentence": "It's a waste of time to argue with him.",
         "keyWord": "WORTH",
-        "beforeGap": "It",
-        "afterGap": "with him.",
-        "routes": [
-          { "p1": "is", "p2": "not worth arguing" },
-          { "p1": "isn't", "p2": "worth arguing" }
+        "secondSentence": "It (1) _________ with him.",
+        "solutions": [
+          "is not worth arguing",
+          "isn't worth arguing"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He didn't realize how much the house was worth until he tried to sell it.",
         "keyWord": "ONLY",
-        "beforeGap": "Not until he tried to sell it",
-        "afterGap": "how much the house was worth.",
-        "routes": [
-          { "p1": "did", "p2": "he realize" }
+        "secondSentence": "Not until he tried to sell it (1) _________ how much the house was worth.",
+        "solutions": [
+          "did he realize"
         ]
       },
       {
         "number": 29,
         "firstSentence": "I'm sure he hasn't forgotten our appointment.",
         "keyWord": "CAN'T",
-        "beforeGap": "He",
-        "afterGap": "our appointment.",
-        "routes": [
-          { "p1": "can't", "p2": "have forgotten" },
-          { "p1": "cannot", "p2": "have forgotten" }
+        "secondSentence": "He (1) _________ our appointment.",
+        "solutions": [
+          "can't have forgotten",
+          "cannot have forgotten"
         ]
       },
       {
         "number": 30,
         "firstSentence": "You should check your spelling before you hand in the essay.",
         "keyWord": "ADVISABLE",
-        "beforeGap": "It",
-        "afterGap": "check your spelling before you hand in the essay.",
-        "routes": [
-          { "p1": "is", "p2": "advisable (for you) to" }
+        "secondSentence": "It (1) _________ check your spelling before you hand in the essay.",
+        "solutions": [
+          "is advisable (for you) to"
         ]
       }
     ]

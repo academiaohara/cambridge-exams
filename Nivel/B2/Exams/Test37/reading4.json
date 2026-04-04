@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "She conducted research on climate change.",
       "keyWord": "CARRIED",
-      "beforeGap": "She",
-      "afterGap": "on climate change.",
-      "routes": [
-        {
-          "p1": "carried",
-          "p2": "out research"
-        }
+      "secondSentence": "She (1) _________ on climate change.",
+      "solutions": [
+        "carried out research"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "They had repaired the roof by the time it started raining.",
         "keyWord": "BEEN",
-        "beforeGap": "The roof had",
-        "afterGap": "by the time it started raining.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "repaired"
-          }
+        "secondSentence": "The roof had (1) _________ by the time it started raining.",
+        "solutions": [
+          "been repaired"
         ]
       },
       {
         "number": 26,
         "firstSentence": "He is less organised than he used to be.",
         "keyWord": "MORE",
-        "beforeGap": "He is not",
-        "afterGap": "he used to be.",
-        "routes": [
-          {
-            "p1": "more organised",
-            "p2": "than"
-          }
+        "secondSentence": "He is not (1) _________ he used to be.",
+        "solutions": [
+          "more organised than"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The task was too complex for him to complete alone.",
         "keyWord": "SIMPLE",
-        "beforeGap": "The task wasn't",
-        "afterGap": "for him to complete alone.",
-        "routes": [
-          {
-            "p1": "simple",
-            "p2": "enough"
-          }
+        "secondSentence": "The task wasn't (1) _________ for him to complete alone.",
+        "solutions": [
+          "simple enough"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She forced the children to go to bed at nine.",
         "keyWord": "MADE",
-        "beforeGap": "She",
-        "afterGap": "to bed at nine.",
-        "routes": [
-          {
-            "p1": "made",
-            "p2": "the children go"
-          }
+        "secondSentence": "She (1) _________ to bed at nine.",
+        "solutions": [
+          "made the children go"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Despite the bad weather, the match continued.",
         "keyWord": "EVEN",
-        "beforeGap": "The match continued",
-        "afterGap": "the weather was bad.",
-        "routes": [
-          {
-            "p1": "even",
-            "p2": "though"
-          }
+        "secondSentence": "The match continued (1) _________ the weather was bad.",
+        "solutions": [
+          "even though"
         ]
       },
       {
         "number": 30,
         "firstSentence": "The music was so loud that she probably didn't hear you.",
         "keyWord": "BECAUSE",
-        "beforeGap": "She probably didn't hear you",
-        "afterGap": "the loud music.",
-        "routes": [
-          {
-            "p1": "because",
-            "p2": "of"
-          }
+        "secondSentence": "She probably didn't hear you (1) _________ the loud music.",
+        "solutions": [
+          "because of"
         ]
       }
     ]

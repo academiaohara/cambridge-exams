@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "Can you take care of the plants while I'm away?",
       "keyWord": "LOOK",
-      "beforeGap": "Can you",
-      "afterGap": "the plants while I'm away?",
-      "routes": [
-        {
-          "p1": "look",
-          "p2": "after"
-        }
+      "secondSentence": "Can you (1) _________ the plants while I'm away?",
+      "solutions": [
+        "look after"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "They haven't finished building the bridge yet.",
         "keyWord": "BEEN",
-        "beforeGap": "The bridge hasn't",
-        "afterGap": "yet.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "finished"
-          }
+        "secondSentence": "The bridge hasn't (1) _________ yet.",
+        "solutions": [
+          "been finished"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The box is too heavy for me to carry.",
         "keyWord": "LIGHT",
-        "beforeGap": "The box isn't",
-        "afterGap": "for me to carry.",
-        "routes": [
-          {
-            "p1": "light",
-            "p2": "enough"
-          }
+        "secondSentence": "The box isn't (1) _________ for me to carry.",
+        "solutions": [
+          "light enough"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She forced me to sign the document.",
         "keyWord": "MADE",
-        "beforeGap": "She",
-        "afterGap": "the document.",
-        "routes": [
-          {
-            "p1": "made",
-            "p2": "me sign"
-          }
+        "secondSentence": "She (1) _________ the document.",
+        "solutions": [
+          "made me sign"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He hasn't visited his parents since Christmas.",
         "keyWord": "LAST",
-        "beforeGap": "He",
-        "afterGap": "at Christmas.",
-        "routes": [
-          {
-            "p1": "last",
-            "p2": "visited his parents"
-          }
+        "secondSentence": "He (1) _________ at Christmas.",
+        "solutions": [
+          "last visited his parents"
         ]
       },
       {
         "number": 29,
         "firstSentence": "I'm sure the keys are on the table.",
         "keyWord": "MUST",
-        "beforeGap": "The keys",
-        "afterGap": "on the table.",
-        "routes": [
-          {
-            "p1": "must",
-            "p2": "be"
-          }
+        "secondSentence": "The keys (1) _________ on the table.",
+        "solutions": [
+          "must be"
         ]
       },
       {
         "number": 30,
         "firstSentence": "The athlete ran faster than all the others in the race.",
         "keyWord": "FASTEST",
-        "beforeGap": "The athlete",
-        "afterGap": "in the race.",
-        "routes": [
-          {
-            "p1": "ran",
-            "p2": "the fastest"
-          }
+        "secondSentence": "The athlete (1) _________ in the race.",
+        "solutions": [
+          "ran the fastest"
         ]
       }
     ]

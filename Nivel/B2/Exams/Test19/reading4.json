@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "My sister is more intelligent than me.",
       "keyWord": "AS",
-      "beforeGap": "I am not",
-      "afterGap": "my sister.",
-      "routes": [
-        {
-          "p1": "as intelligent",
-          "p2": "as"
-        }
+      "secondSentence": "I am not (1) _________ my sister.",
+      "solutions": [
+        "as intelligent as"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Somebody had already eaten all the sandwiches.",
         "keyWord": "BEEN",
-        "beforeGap": "All the sandwiches had already",
-        "afterGap": ".",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "eaten"
-          }
+        "secondSentence": "All the sandwiches had already (1) _________ .",
+        "solutions": [
+          "been eaten"
         ]
       },
       {
         "number": 26,
         "firstSentence": "It was too late for us to catch the last train.",
         "keyWord": "ENOUGH",
-        "beforeGap": "We didn't leave",
-        "afterGap": "to catch the last train.",
-        "routes": [
-          {
-            "p1": "early",
-            "p2": "enough"
-          }
+        "secondSentence": "We didn't leave (1) _________ to catch the last train.",
+        "solutions": [
+          "early enough"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She continued talking on her phone during dinner.",
         "keyWord": "KEPT",
-        "beforeGap": "She",
-        "afterGap": "on her phone during dinner.",
-        "routes": [
-          {
-            "p1": "kept",
-            "p2": "talking"
-          }
+        "secondSentence": "She (1) _________ on her phone during dinner.",
+        "solutions": [
+          "kept talking"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He was in the habit of staying up late.",
         "keyWord": "USED",
-        "beforeGap": "He",
-        "afterGap": "up late.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "stay"
-          }
+        "secondSentence": "He (1) _________ up late.",
+        "solutions": [
+          "used to stay"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Despite feeling nervous, she gave a great presentation.",
         "keyWord": "ALTHOUGH",
-        "beforeGap": "She gave a great presentation",
-        "afterGap": "nervous.",
-        "routes": [
-          {
-            "p1": "although",
-            "p2": "she felt"
-          }
+        "secondSentence": "She gave a great presentation (1) _________ nervous.",
+        "solutions": [
+          "although she felt"
         ]
       },
       {
         "number": 30,
         "firstSentence": "The secretary will send all the invitations tomorrow.",
         "keyWord": "SENT",
-        "beforeGap": "All the invitations will be",
-        "afterGap": "tomorrow.",
-        "routes": [
-          {
-            "p1": "sent",
-            "p2": "by the secretary"
-          }
+        "secondSentence": "All the invitations will be (1) _________ tomorrow.",
+        "solutions": [
+          "sent by the secretary"
         ]
       }
     ]

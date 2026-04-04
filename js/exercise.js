@@ -358,6 +358,8 @@
         
         if (exercise.content.example && exercise.content.example.correct) {
           AppState.currentExercise.answers[0] = exercise.content.example.correct;
+        } else if (exercise.content.example && exercise.content.example.solutions && exercise.content.example.solutions[0]) {
+          AppState.currentExercise.answers[0] = exercise.content.example.solutions[0];
         } else if (exercise.content.example && exercise.content.example.routes && exercise.content.example.routes[0]) {
           const r = exercise.content.example.routes[0];
           AppState.currentExercise.answers[0] = ((r.p1 || '') + ' ' + (r.p2 || '')).trim();
@@ -639,7 +641,7 @@
             // Key word transformations: 0, 1, or 2 marks per question
             var evalScore = 0;
             if (window.ReadingType4 && typeof ReadingType4.evaluateTransformation === 'function') {
-              evalScore = ReadingType4.evaluateTransformation(answers[q.number], q.routes).score;
+              evalScore = ReadingType4.evaluateTransformation(answers[q.number], q.solutions || q.routes).score;
             } else if (Utils.compareAnswers(answers[q.number], q.correct, 'transformations')) {
               evalScore = 2;
             }

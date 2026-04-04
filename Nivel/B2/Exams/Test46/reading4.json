@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "They were installing new lights in the corridor.",
       "keyWord": "WERE",
-      "beforeGap": "New lights",
-      "afterGap": "in the corridor.",
-      "routes": [
-        {
-          "p1": "were",
-          "p2": "being installed"
-        }
+      "secondSentence": "New lights (1) _________ in the corridor.",
+      "solutions": [
+        "were being installed"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "It isn't necessary for him to attend every meeting.",
         "keyWord": "HAVE",
-        "beforeGap": "He doesn't",
-        "afterGap": "every meeting.",
-        "routes": [
-          {
-            "p1": "have",
-            "p2": "to attend"
-          }
+        "secondSentence": "He doesn't (1) _________ every meeting.",
+        "solutions": [
+          "have to attend"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The traffic jam was so long that we missed our flight.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that we missed our flight.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a long traffic jam"
-          }
+        "secondSentence": "It was (1) _________ that we missed our flight.",
+        "solutions": [
+          "such a long traffic jam"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She eventually succeeded in solving the problem.",
         "keyWord": "MANAGED",
-        "beforeGap": "She eventually",
-        "afterGap": "the problem.",
-        "routes": [
-          {
-            "p1": "managed",
-            "p2": "to solve"
-          }
+        "secondSentence": "She eventually (1) _________ the problem.",
+        "solutions": [
+          "managed to solve"
         ]
       },
       {
         "number": 28,
         "firstSentence": "Despite the setbacks, he kept trying.",
         "keyWord": "EVEN",
-        "beforeGap": "He kept trying",
-        "afterGap": "there were setbacks.",
-        "routes": [
-          {
-            "p1": "even",
-            "p2": "though"
-          }
+        "secondSentence": "He kept trying (1) _________ there were setbacks.",
+        "solutions": [
+          "even though"
         ]
       },
       {
         "number": 29,
         "firstSentence": "The last time she went abroad was three years ago.",
         "keyWord": "FOR",
-        "beforeGap": "She hasn't been abroad",
-        "afterGap": "years.",
-        "routes": [
-          {
-            "p1": "for",
-            "p2": "three"
-          }
+        "secondSentence": "She hasn't been abroad (1) _________ years.",
+        "solutions": [
+          "for three"
         ]
       },
       {
         "number": 30,
         "firstSentence": "He persuaded her not to quit her job.",
         "keyWord": "TALKED",
-        "beforeGap": "He",
-        "afterGap": "her job.",
-        "routes": [
-          {
-            "p1": "talked",
-            "p2": "her out of quitting"
-          }
+        "secondSentence": "He (1) _________ her job.",
+        "solutions": [
+          "talked her out of quitting"
         ]
       }
     ]

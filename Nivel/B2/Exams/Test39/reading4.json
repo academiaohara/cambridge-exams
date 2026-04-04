@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "The doctor warned her not to eat salty food.",
       "keyWord": "TOLD",
-      "beforeGap": "The doctor",
-      "afterGap": "salty food.",
-      "routes": [
-        {
-          "p1": "told",
-          "p2": "her not to eat"
-        }
+      "secondSentence": "The doctor (1) _________ salty food.",
+      "solutions": [
+        "told her not to eat"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Workmen are repairing all the broken benches.",
         "keyWord": "BEING",
-        "beforeGap": "All the broken benches are",
-        "afterGap": ".",
-        "routes": [
-          {
-            "p1": "being",
-            "p2": "repaired"
-          }
+        "secondSentence": "All the broken benches are (1) _________ .",
+        "solutions": [
+          "being repaired"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I'm absolutely sure he forgot his passport.",
         "keyWord": "MUST",
-        "beforeGap": "He",
-        "afterGap": "his passport.",
-        "routes": [
-          {
-            "p1": "must",
-            "p2": "have forgotten"
-          }
+        "secondSentence": "He (1) _________ his passport.",
+        "solutions": [
+          "must have forgotten"
         ]
       },
       {
         "number": 27,
         "firstSentence": "This is the most peaceful place I have ever been.",
         "keyWord": "NEVER",
-        "beforeGap": "I have",
-        "afterGap": "such a peaceful place.",
-        "routes": [
-          {
-            "p1": "never",
-            "p2": "been to"
-          }
+        "secondSentence": "I have (1) _________ such a peaceful place.",
+        "solutions": [
+          "never been to"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He asked me if I was free on Saturday.",
         "keyWord": "ASKED",
-        "beforeGap": "He",
-        "afterGap": "free on Saturday.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "me if I was"
-          }
+        "secondSentence": "He (1) _________ free on Saturday.",
+        "solutions": [
+          "asked me if I was"
         ]
       },
       {
         "number": 29,
         "firstSentence": "She took up swimming after her operation.",
         "keyWord": "STARTED",
-        "beforeGap": "She",
-        "afterGap": "after her operation.",
-        "routes": [
-          {
-            "p1": "started",
-            "p2": "swimming"
-          }
+        "secondSentence": "She (1) _________ after her operation.",
+        "solutions": [
+          "started swimming"
         ]
       },
       {
         "number": 30,
         "firstSentence": "Without her encouragement, I would have quit.",
         "keyWord": "WOULD",
-        "beforeGap": "If she hadn't encouraged me, I",
-        "afterGap": ".",
-        "routes": [
-          {
-            "p1": "would",
-            "p2": "have quit"
-          }
+        "secondSentence": "If she hadn't encouraged me, I (1) _________ .",
+        "solutions": [
+          "would have quit"
         ]
       }
     ]

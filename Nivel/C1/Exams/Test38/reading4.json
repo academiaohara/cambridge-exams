@@ -10,68 +10,62 @@
         "number": 25,
         "firstSentence": "A professional is decorating our living room at the moment.",
         "keyWord": "HAVING",
-        "beforeGap": "We",
-        "afterGap": "at the moment.",
-        "routes": [
-          { "p1": "are", "p2": "having our living room decorated" }
-        ],
-        "explanation": "Tests causative passive (have something done)."
+        "explanation": "Tests causative passive (have something done).",
+        "secondSentence": "We (1) _________ at the moment.",
+        "solutions": [
+          "are having our living room decorated"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘Don't forget to lock the door,’ said my mother.",
         "keyWord": "REMINDED",
-        "beforeGap": "My mother",
-        "afterGap": "the door.",
-        "routes": [
-          { "p1": "reminded", "p2": "me to lock" }
-        ],
-        "explanation": "Tests reporting verbs with object + to-infinitive."
+        "explanation": "Tests reporting verbs with object + to-infinitive.",
+        "secondSentence": "My mother (1) _________ the door.",
+        "solutions": [
+          "reminded me to lock"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I really regret not buying that house when I had the chance.",
         "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "that house when I had the chance.",
-        "routes": [
-          { "p1": "wish", "p2": "I had bought" },
-          { "p1": "wish", "p2": "I'd bought" }
-        ],
-        "explanation": "Tests 'wish' + past perfect for past regret."
+        "explanation": "Tests 'wish' + past perfect for past regret.",
+        "secondSentence": "I (1) _________ that house when I had the chance.",
+        "solutions": [
+          "wish I had bought",
+          "wish I'd bought"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "It's possible that they forgot about the meeting.",
         "keyWord": "MIGHT",
-        "beforeGap": "They",
-        "afterGap": "about the meeting.",
-        "routes": [
-          { "p1": "might", "p2": "have forgotten" }
-        ],
-        "explanation": "Tests modal perfect for past possibility."
+        "explanation": "Tests modal perfect for past possibility.",
+        "secondSentence": "They (1) _________ about the meeting.",
+        "solutions": [
+          "might have forgotten"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I didn't realize who she was until she started speaking.",
         "keyWord": "ONLY",
-        "beforeGap": "It",
-        "afterGap": "she started speaking that I realized who she was.",
-        "routes": [
-          { "p1": "was", "p2": "only when" }
-        ],
-        "explanation": "Tests 'It was only when...' cleft sentences."
+        "explanation": "Tests 'It was only when...' cleft sentences.",
+        "secondSentence": "It (1) _________ she started speaking that I realized who she was.",
+        "solutions": [
+          "was only when"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "I find it difficult to get up early in the morning.",
         "keyWord": "USED",
-        "beforeGap": "I am",
-        "afterGap": "up early in the morning.",
-        "routes": [
-          { "p1": "not", "p2": "used to getting" }
-        ],
-        "explanation": "Tests 'be used to' + gerund for familiarity."
+        "explanation": "Tests 'be used to' + gerund for familiarity.",
+        "secondSentence": "I am (1) _________ up early in the morning.",
+        "solutions": [
+          "not used to getting"
+        ]
       }
     ]
   }

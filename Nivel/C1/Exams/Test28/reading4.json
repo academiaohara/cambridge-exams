@@ -10,70 +10,64 @@
         "number": 25,
         "firstSentence": "The local council is said to be reconsidering its decision.",
         "keyWord": "THAT",
-        "beforeGap": "It",
-        "afterGap": "the local council is reconsidering its decision.",
-        "routes": [
-          { "p1": "is", "p2": "said that" },
-          { "p1": "is", "p2": "widely said that" }
-        ],
-        "explanation": "Tests the impersonal passive construction 'It is said that'."
+        "explanation": "Tests the impersonal passive construction 'It is said that'.",
+        "secondSentence": "It (1) _________ the local council is reconsidering its decision.",
+        "solutions": [
+          "is said that",
+          "is widely said that"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I'll take you to the station,’ said my brother.",
         "keyWord": "OFFERED",
-        "beforeGap": "My brother",
-        "afterGap": "to the station.",
-        "routes": [
-          { "p1": "offered", "p2": "to take me" },
-          { "p1": "offered", "p2": "to drive me" }
-        ],
-        "explanation": "Tests reporting verbs followed by a to-infinitive."
+        "explanation": "Tests reporting verbs followed by a to-infinitive.",
+        "secondSentence": "My brother (1) _________ to the station.",
+        "solutions": [
+          "offered to take me",
+          "offered to drive me"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "If I had known the truth, I wouldn't have been so angry.",
         "keyWord": "HAD",
-        "beforeGap": "Not",
-        "afterGap": "the truth, I wouldn't have been so angry.",
-        "routes": [
-          { "p1": "having", "p2": "known" }
-        ],
-        "explanation": "Tests participle clauses used to replace conditional 'if' structures."
+        "explanation": "Tests participle clauses used to replace conditional 'if' structures.",
+        "secondSentence": "Not (1) _________ the truth, I wouldn't have been so angry.",
+        "solutions": [
+          "having known"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I'm sure he didn't do it on purpose.",
         "keyWord": "CAN'T",
-        "beforeGap": "He",
-        "afterGap": "it on purpose.",
-        "routes": [
-          { "p1": "can't", "p2": "have done" }
-        ],
-        "explanation": "Tests modal perfect for negative deduction in the past."
+        "explanation": "Tests modal perfect for negative deduction in the past.",
+        "secondSentence": "He (1) _________ it on purpose.",
+        "solutions": [
+          "can't have done"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "He had never before been so happy.",
         "keyWord": "NEVER",
-        "beforeGap": "At no",
-        "afterGap": "been so happy.",
-        "routes": [
-          { "p1": "time", "p2": "had he ever" }
-        ],
-        "explanation": "Tests inversion with the negative expression 'At no time'."
+        "explanation": "Tests inversion with the negative expression 'At no time'.",
+        "secondSentence": "At no (1) _________ been so happy.",
+        "solutions": [
+          "time had he ever"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "It is unlikely that the weather will improve tomorrow.",
         "keyWord": "LITTLE",
-        "beforeGap": "There is",
-        "afterGap": "the weather improving tomorrow.",
-        "routes": [
-          { "p1": "little", "p2": "chance of" },
-          { "p1": "very", "p2": "little prospect of" }
-        ],
-        "explanation": "Tests probability structures with 'little chance/prospect of'."
+        "explanation": "Tests probability structures with 'little chance/prospect of'.",
+        "secondSentence": "There is (1) _________ the weather improving tomorrow.",
+        "solutions": [
+          "little chance of",
+          "very little prospect of"
+        ]
       }
     ]
   }

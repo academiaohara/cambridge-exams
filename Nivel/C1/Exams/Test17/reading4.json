@@ -10,69 +10,63 @@
         "number": 25,
         "firstSentence": "A professional is decorating our living room at the moment.",
         "keyWord": "HAVING",
-        "beforeGap": "We",
-        "afterGap": "at the moment.",
-        "routes": [
-          { "p1": "are", "p2": "having our living room decorated" }
-        ],
-        "explanation": "Tests causative passive (have something done)."
+        "explanation": "Tests causative passive (have something done).",
+        "secondSentence": "We (1) _________ at the moment.",
+        "solutions": [
+          "are having our living room decorated"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘You should take up a hobby,’ the doctor told me.",
         "keyWord": "ADVISED",
-        "beforeGap": "The doctor",
-        "afterGap": "up a hobby.",
-        "routes": [
-          { "p1": "advised", "p2": "me to take" }
-        ],
-        "explanation": "Tests reporting verbs with object + infinitive."
+        "explanation": "Tests reporting verbs with object + infinitive.",
+        "secondSentence": "The doctor (1) _________ up a hobby.",
+        "solutions": [
+          "advised me to take"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I didn't go to the party and now I regret it.",
         "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "to the party.",
-        "routes": [
-          { "p1": "wish", "p2": "I had gone" },
-          { "p1": "wish", "p2": "I'd gone" }
-        ],
-        "explanation": "Tests 'wish' + past perfect to express past regret."
+        "explanation": "Tests 'wish' + past perfect to express past regret.",
+        "secondSentence": "I (1) _________ to the party.",
+        "solutions": [
+          "wish I had gone",
+          "wish I'd gone"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "It was impossible for Sarah to forget her keys at the office.",
         "keyWord": "CAN'T",
-        "beforeGap": "Sarah",
-        "afterGap": "her keys at the office.",
-        "routes": [
-          { "p1": "can't", "p2": "have forgotten" }
-        ],
-        "explanation": "Tests modal perfect for negative deduction (can't have + past participle)."
+        "explanation": "Tests modal perfect for negative deduction (can't have + past participle).",
+        "secondSentence": "Sarah (1) _________ her keys at the office.",
+        "solutions": [
+          "can't have forgotten"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I have never seen such a beautiful sunrise before.",
         "keyWord": "NEVER",
-        "beforeGap": "Never",
-        "afterGap": "such a beautiful sunrise.",
-        "routes": [
-          { "p1": "before", "p2": "have I seen" }
-        ],
-        "explanation": "Tests inversion with negative adverbials."
+        "explanation": "Tests inversion with negative adverbials.",
+        "secondSentence": "Never (1) _________ such a beautiful sunrise.",
+        "solutions": [
+          "before have I seen"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "The teacher said we didn't need to finish the essay until Monday.",
         "keyWord": "NECESSARY",
-        "beforeGap": "The teacher said it",
-        "afterGap": "to finish the essay until Monday.",
-        "routes": [
-          { "p1": "was", "p2": "not necessary (for us)" },
-          { "p1": "wasn't", "p2": "necessary (for us)" }
-        ],
-        "explanation": "Tests adjective patterns and formal structures of necessity."
+        "explanation": "Tests adjective patterns and formal structures of necessity.",
+        "secondSentence": "The teacher said it (1) _________ to finish the essay until Monday.",
+        "solutions": [
+          "was not necessary (for us)",
+          "wasn't necessary (for us)"
+        ]
       }
     ]
   }

@@ -10,65 +10,59 @@
         "number": 25,
         "firstSentence": "The only reason I'm late is that there was a massive traffic jam.",
         "keyWord": "IF",
-        "beforeGap": "I wouldn't be late",
-        "afterGap": "a massive traffic jam.",
-        "routes": [
-          { "p1": "if", "p2": "it hadn't been for" },
-          { "p1": "if", "p2": "it were not for" },
-          { "p1": "if", "p2": "there had not been" }
+        "secondSentence": "I wouldn't be late (1) _________ a massive traffic jam.",
+        "solutions": [
+          "if it hadn't been for",
+          "if it were not for",
+          "if there had not been"
         ]
       },
       {
         "number": 26,
         "firstSentence": "It's impossible that you saw Sarah yesterday because she's abroad.",
         "keyWord": "HAVE",
-        "beforeGap": "You",
-        "afterGap": "Sarah yesterday because she's abroad.",
-        "routes": [
-          { "p1": "can't", "p2": "have seen" },
-          { "p1": "cannot", "p2": "have seen" }
+        "secondSentence": "You (1) _________ Sarah yesterday because she's abroad.",
+        "solutions": [
+          "can't have seen",
+          "cannot have seen"
         ]
       },
       {
         "number": 27,
         "firstSentence": "I don't think you should tell him the news yet.",
         "keyWord": "BETTER",
-        "beforeGap": "You",
-        "afterGap": "tell him the news yet.",
-        "routes": [
-          { "p1": "had", "p2": "better not" },
-          { "p1": "'d", "p2": "better not" }
+        "secondSentence": "You (1) _________ tell him the news yet.",
+        "solutions": [
+          "had better not",
+          "'d better not"
         ]
       },
       {
         "number": 28,
         "firstSentence": "The manager said he would not tolerate such rude behavior anymore.",
         "keyWord": "PUT",
-        "beforeGap": "The manager said he would no",
-        "afterGap": "such rude behavior.",
-        "routes": [
-          { "p1": "longer", "p2": "put up with" }
+        "secondSentence": "The manager said he would no (1) _________ such rude behavior.",
+        "solutions": [
+          "longer put up with"
         ]
       },
       {
         "number": 29,
         "firstSentence": "If you need any help, please don't hesitate to ask.",
         "keyWord": "SHOULD",
-        "beforeGap": "",
-        "afterGap": "any help, please don't hesitate to ask.",
-        "routes": [
-          { "p1": "Should", "p2": "you (happen to) need" }
+        "secondSentence": "(1) _________ any help, please don't hesitate to ask.",
+        "solutions": [
+          "Should you (happen to) need"
         ]
       },
       {
         "number": 30,
         "firstSentence": "It was the first time I had ever flown in a private jet.",
         "keyWord": "NEVER",
-        "beforeGap": "I",
-        "afterGap": "in a private jet before.",
-        "routes": [
-          { "p1": "had", "p2": "never flown" },
-          { "p1": "'d", "p2": "never flown" }
+        "secondSentence": "I (1) _________ in a private jet before.",
+        "solutions": [
+          "had never flown",
+          "'d never flown"
         ]
       }
     ]

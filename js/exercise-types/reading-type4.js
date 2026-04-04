@@ -3,25 +3,54 @@
 
 (function() {
   window.ReadingType4 = {
+    _splitSecondSentence: function(question) {
+      var s = question.secondSentence || '';
+      var GAP = '(1) _________';
+      var idx = s.indexOf(GAP);
+      if (idx !== -1) {
+        return {
+          beforeGap: s.slice(0, idx).trim(),
+          afterGap: s.slice(idx + GAP.length).trim()
+        };
+      }
+      // Fallback to legacy fields
+      return {
+        beforeGap: question.beforeGap || '',
+        afterGap: question.afterGap || ''
+      };
+    },
+
+    _getSolutions: function(question) {
+      // New format: solutions array of strings
+      if (Array.isArray(question.solutions) && question.solutions.length > 0) {
+        return question.solutions;
+      }
+      // Legacy format: routes with p1/p2
+      var routes = question.routes || [];
+      return routes.map(function(r) { return ((r.p1 || '') + ' ' + (r.p2 || '')).trim(); }).filter(Boolean);
+    },
+
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
       if (qNum === 0) {
         return this._renderExample(question);
       }
-      const beforeGap = question.beforeGap || '';
-      const afterGap = question.afterGap || '';
+      var parts = this._splitSecondSentence(question);
+      var beforeGap = parts.beforeGap;
+      var afterGap = parts.afterGap;
+      var solutions = this._getSolutions(question);
       
       let gapHTML = '';
       let answersPanel = '';
       if (isChecked) {
-        const result = this.evaluateTransformation(userAnswer, question.routes);
+        const result = this.evaluateTransformation(userAnswer, solutions);
         const colorClass = result.score === 2 ? 'reading-type4-correct' : result.score === 1 ? 'reading-type4-partial' : 'reading-type4-incorrect';
-        const displayCorrect = this._formatRoutesDisplay(question.routes);
+        const displayCorrect = solutions[0] || '';
         const escapedCorrect = String(displayCorrect).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         const dataAttr = result.score < 2 ? ` data-correct="✓ ${escapedCorrect}"` : '';
         gapHTML = `<span class="reading-type4-inline-wrap ${colorClass}${result.score < 2 ? ' incorrect' : ''}"${dataAttr}>` +
           `<input type="text" class="reading-type4-inline-input gap-input ${colorClass}" data-question="${qNum}" value="${userAnswer || ''}" disabled>` +
           `</span>`;
-        answersPanel = this._renderAnswersPanel(question, qNum, beforeGap, afterGap);
+        answersPanel = this._renderAnswersPanel(solutions, qNum, beforeGap, afterGap);
       } else {
         gapHTML = `<span class="reading-type4-inline-wrap${userAnswer ? ' reading-type4-purple' : ''}">` +
           `<input type="text" class="reading-type4-inline-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" maxlength="100" placeholder="..." oninput="ReadingType4.handleInput(${qNum}, this.value); ReadingType4.resizeInput(this)">` +
@@ -45,10 +74,11 @@
     },
 
     _renderExample: function(question) {
-      const beforeGap = question.beforeGap || '';
-      const afterGap = question.afterGap || '';
-      const routes = question.routes || [];
-      const answer = routes[0] ? (((routes[0].p1 || '') + ' ' + (routes[0].p2 || '')).trim()) : '';
+      var parts = this._splitSecondSentence(question);
+      var beforeGap = parts.beforeGap;
+      var afterGap = parts.afterGap;
+      var solutions = this._getSolutions(question);
+      const answer = solutions[0] || '';
       const escapedAnswer = String(answer).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       const exampleLabel = 'Example';
       return `
@@ -67,15 +97,13 @@
       `;
     },
 
-    _renderAnswersPanel: function(question, qNum, beforeGap, afterGap) {
-      const routes = question.routes || [];
-      if (routes.length === 0) return '';
+    _renderAnswersPanel: function(solutions, qNum, beforeGap, afterGap) {
+      if (!Array.isArray(solutions) || solutions.length === 0) return '';
       let routesHTML = '';
-      routes.forEach(function(route, idx) {
-        const full = [route.p1, route.p2].filter(Boolean).join(' ');
+      solutions.forEach(function(sol, idx) {
         routesHTML += `<div class="reading-type4-answer-route">` +
           `<span class="reading-type4-answer-route-num">${idx + 1}.</span>` +
-          `<span class="reading-type4-answer-route-text">${beforeGap} <strong>${full}</strong> ${afterGap}</span>` +
+          `<span class="reading-type4-answer-route-text">${beforeGap} <strong>${sol}</strong> ${afterGap}</span>` +
           `</div>`;
       });
       return `<div class="reading-type4-answers-panel" data-qnum-answers="${qNum}" style="display:none;">${routesHTML}</div>`;
@@ -151,58 +179,35 @@
       return new RegExp(pattern, 'i');
     },
     
-    _formatRoutesDisplay: function(routes) {
-      if (!Array.isArray(routes) || routes.length === 0) return '';
-      // Show first route as representative correct answer
-      var r = routes[0];
-      return ((r.p1 || '') + ' ' + (r.p2 || '')).trim();
-    },
-    
-    evaluateTransformation: function(userAnswer, routes) {
+    evaluateTransformation: function(userAnswer, solutions) {
       if (!userAnswer) return { score: 0, parts: [] };
-      if (!Array.isArray(routes) || routes.length === 0) return { score: 0, parts: [] };
-      
+      // Accept either new format (array of strings) or legacy format (array of {p1,p2} objects)
+      var solList = [];
+      if (Array.isArray(solutions) && solutions.length > 0) {
+        if (typeof solutions[0] === 'string') {
+          solList = solutions;
+        } else {
+          // Legacy routes format
+          solList = solutions.map(function(r) { return ((r.p1 || '') + ' ' + (r.p2 || '')).trim(); }).filter(Boolean);
+        }
+      }
+      if (solList.length === 0) return { score: 0, parts: [] };
+
       var normalizedUser = userAnswer.trim().replace(/\s+/g, ' ');
       if (!normalizedUser) return { score: 0, parts: [] };
-      
+
       var self = this;
-      var bestScore = 0;
-      
-      for (var i = 0; i < routes.length; i++) {
-        var route = routes[i];
-        if (!route.p1 || !route.p2) continue;
-        
-        // Build regex for p1 (must match start of user answer)
-        var p1Regex = new RegExp('^' + self._buildPartRegex(route.p1).source, 'i');
-        var p1Match = normalizedUser.match(p1Regex);
-        
-        if (!p1Match) continue;
-        
-        // p1 matched → at least 1 point
-        var score = 1;
-        
-        // Get residue (what's left after p1 match)
-        var residue = normalizedUser.slice(p1Match[0].length).trim();
-        
-        // Build regex for p2 (must match residue exactly)
-        var p2Regex = new RegExp('^' + self._buildPartRegex(route.p2).source + '$', 'i');
-        
-        if (p2Regex.test(residue)) {
-          score = 2;
+      for (var i = 0; i < solList.length; i++) {
+        var solRegex = new RegExp('^' + self._buildPartRegex(solList[i]).source + '$', 'i');
+        if (solRegex.test(normalizedUser)) {
+          return { score: 2, parts: [true, true] };
         }
-        
-        if (score > bestScore) bestScore = score;
-        if (bestScore === 2) break;
       }
-      
-      return {
-        score: bestScore,
-        parts: bestScore === 2 ? [true, true] : bestScore === 1 ? [true, false] : [false, false]
-      };
+      return { score: 0, parts: [false, false] };
     },
     
-    isAnswerCorrect: function(userAnswer, routes) {
-      const result = this.evaluateTransformation(userAnswer, routes);
+    isAnswerCorrect: function(userAnswer, solutions) {
+      const result = this.evaluateTransformation(userAnswer, solutions);
       return result.score > 0;
     },
     
@@ -212,7 +217,8 @@
       
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
-        const result = this.evaluateTransformation(userAnswer, q.routes);
+        const solutions = this._getSolutions(q);
+        const result = this.evaluateTransformation(userAnswer, solutions);
         totalScore += result.score;
         
         const input = document.querySelector(`.reading-type4-inline-input[data-question="${q.number}"]`);
@@ -235,15 +241,16 @@
             wrap.classList.add(colorClass);
             if (!isCorrect) {
               wrap.classList.add('incorrect');
-              const displayCorrect = this._formatRoutesDisplay(q.routes);
+              const displayCorrect = solutions[0] || '';
               const escapedCorrect = String(displayCorrect).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
               wrap.setAttribute('data-correct', '✓ ' + escapedCorrect);
             }
           }
           // Inject answers panel into the question card
           if (questionDiv && !questionDiv.querySelector('.reading-type4-answers-panel')) {
+            var parts = this._splitSecondSentence(q);
             questionDiv.insertAdjacentHTML('beforeend',
-              this._renderAnswersPanel(q, q.number, q.beforeGap || '', q.afterGap || ''));
+              this._renderAnswersPanel(solutions, q.number, parts.beforeGap, parts.afterGap));
           }
         }
       });

@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "She couldn't swim when she was a child.",
       "keyWord": "ABLE",
-      "beforeGap": "She wasn't",
-      "afterGap": "when she was a child.",
-      "routes": [
-        {
-          "p1": "able",
-          "p2": "to swim"
-        }
+      "secondSentence": "She wasn't (1) _________ when she was a child.",
+      "solutions": [
+        "able to swim"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "They serve breakfast from seven o'clock.",
         "keyWord": "IS",
-        "beforeGap": "Breakfast",
-        "afterGap": "from seven o'clock.",
-        "routes": [
-          {
-            "p1": "is",
-            "p2": "served"
-          }
+        "secondSentence": "Breakfast (1) _________ from seven o'clock.",
+        "solutions": [
+          "is served"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I haven't spoken to my cousin for six months.",
         "keyWord": "AGO",
-        "beforeGap": "I last spoke to my cousin",
-        "afterGap": "months.",
-        "routes": [
-          {
-            "p1": "six",
-            "p2": "months ago"
-          }
+        "secondSentence": "I last spoke to my cousin (1) _________ months.",
+        "solutions": [
+          "six months ago"
         ]
       },
       {
         "number": 27,
         "firstSentence": "He is not as fast a runner as his brother.",
         "keyWord": "FASTER",
-        "beforeGap": "His brother is",
-        "afterGap": "him.",
-        "routes": [
-          {
-            "p1": "a faster",
-            "p2": "runner than"
-          }
+        "secondSentence": "His brother is (1) _________ him.",
+        "solutions": [
+          "a faster runner than"
         ]
       },
       {
         "number": 28,
         "firstSentence": "Why don't you try taking a different route?",
         "keyWord": "ABOUT",
-        "beforeGap": "What",
-        "afterGap": "a different route?",
-        "routes": [
-          {
-            "p1": "about",
-            "p2": "taking"
-          }
+        "secondSentence": "What (1) _________ a different route?",
+        "solutions": [
+          "about taking"
         ]
       },
       {
         "number": 29,
         "firstSentence": "The manager cancelled all deliveries due to snow.",
         "keyWord": "CALLED",
-        "beforeGap": "The manager",
-        "afterGap": "due to snow.",
-        "routes": [
-          {
-            "p1": "called",
-            "p2": "off all deliveries"
-          }
+        "secondSentence": "The manager (1) _________ due to snow.",
+        "solutions": [
+          "called off all deliveries"
         ]
       },
       {
         "number": 30,
         "firstSentence": "It was wrong of her not to invite him.",
         "keyWord": "SHOULD",
-        "beforeGap": "She",
-        "afterGap": "him.",
-        "routes": [
-          {
-            "p1": "should",
-            "p2": "have invited"
-          }
+        "secondSentence": "She (1) _________ him.",
+        "solutions": [
+          "should have invited"
         ]
       }
     ]

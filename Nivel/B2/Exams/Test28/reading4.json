@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "My mother was in the habit of singing while cooking.",
       "keyWord": "USED",
-      "beforeGap": "My mother",
-      "afterGap": "while cooking.",
-      "routes": [
-        {
-          "p1": "used to",
-          "p2": "sing"
-        }
+      "secondSentence": "My mother (1) _________ while cooking.",
+      "solutions": [
+        "used to sing"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Nobody has cleaned the kitchen for days.",
         "keyWord": "BEEN",
-        "beforeGap": "The kitchen hasn't",
-        "afterGap": "for days.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "cleaned"
-          }
+        "secondSentence": "The kitchen hasn't (1) _________ for days.",
+        "solutions": [
+          "been cleaned"
         ]
       },
       {
         "number": 26,
         "firstSentence": "He wasn't experienced enough to lead the team.",
         "keyWord": "TOO",
-        "beforeGap": "He was",
-        "afterGap": "lead the team.",
-        "routes": [
-          {
-            "p1": "too",
-            "p2": "inexperienced to"
-          }
+        "secondSentence": "He was (1) _________ lead the team.",
+        "solutions": [
+          "too inexperienced to"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The police are investigating the robbery.",
         "keyWord": "BEING",
-        "beforeGap": "The robbery is",
-        "afterGap": "by the police.",
-        "routes": [
-          {
-            "p1": "being",
-            "p2": "investigated"
-          }
+        "secondSentence": "The robbery is (1) _________ by the police.",
+        "solutions": [
+          "being investigated"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She wanted to know if I had enjoyed the concert.",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "if I had enjoyed the concert.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "me"
-          }
+        "secondSentence": "She (1) _________ if I had enjoyed the concert.",
+        "solutions": [
+          "asked me"
         ]
       },
       {
         "number": 29,
         "firstSentence": "In spite of being nervous, he spoke clearly.",
         "keyWord": "EVEN",
-        "beforeGap": "He spoke clearly",
-        "afterGap": "nervous.",
-        "routes": [
-          {
-            "p1": "even",
-            "p2": "though he was"
-          }
+        "secondSentence": "He spoke clearly (1) _________ nervous.",
+        "solutions": [
+          "even though he was"
         ]
       },
       {
         "number": 30,
         "firstSentence": "This is the best film I've seen this year.",
         "keyWord": "NEVER",
-        "beforeGap": "I've",
-        "afterGap": "a better film this year.",
-        "routes": [
-          {
-            "p1": "never",
-            "p2": "seen"
-          }
+        "secondSentence": "I've (1) _________ a better film this year.",
+        "solutions": [
+          "never seen"
         ]
       }
     ]

@@ -10,69 +10,63 @@
         "number": 25,
         "firstSentence": "People say that the old mansion is haunted by a ghost.",
         "keyWord": "SAID",
-        "beforeGap": "The old mansion",
-        "afterGap": "haunted by a ghost.",
-        "routes": [
-          { "p1": "is", "p2": "said to be" }
-        ],
-        "explanation": "Tests the passive reporting structure (Subject + is said + to-infinitive)."
+        "explanation": "Tests the passive reporting structure (Subject + is said + to-infinitive).",
+        "secondSentence": "The old mansion (1) _________ haunted by a ghost.",
+        "solutions": [
+          "is said to be"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I’ll definitely call you tomorrow,’ Sarah said to me.",
         "keyWord": "PROMISED",
-        "beforeGap": "Sarah",
-        "afterGap": "a call the following day.",
-        "routes": [
-          { "p1": "promised", "p2": "to give me" }
-        ],
-        "explanation": "Tests reporting verbs with infinitive and direct/indirect objects."
+        "explanation": "Tests reporting verbs with infinitive and direct/indirect objects.",
+        "secondSentence": "Sarah (1) _________ a call the following day.",
+        "solutions": [
+          "promised to give me"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "If I hadn't missed the train, I wouldn't be late for the meeting.",
         "keyWord": "HAD",
-        "beforeGap": "I wouldn't be late for the meeting",
-        "afterGap": "the train.",
-        "routes": [
-          { "p1": "if", "p2": "I had not missed" },
-          { "p1": "had", "p2": "I not missed" }
-        ],
-        "explanation": "Tests mixed conditionals and inverted conditional structures."
+        "explanation": "Tests mixed conditionals and inverted conditional structures.",
+        "secondSentence": "I wouldn't be late for the meeting (1) _________ the train.",
+        "solutions": [
+          "if I had not missed",
+          "had I not missed"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I'm sure he didn't mean to offend you with that comment.",
         "keyWord": "CAN'T",
-        "beforeGap": "He",
-        "afterGap": "to offend you with that comment.",
-        "routes": [
-          { "p1": "can't", "p2": "have intended" },
-          { "p1": "can't", "p2": "have meant" }
-        ],
-        "explanation": "Tests modal perfect for negative past deduction."
+        "explanation": "Tests modal perfect for negative past deduction.",
+        "secondSentence": "He (1) _________ to offend you with that comment.",
+        "solutions": [
+          "can't have intended",
+          "can't have meant"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "He had hardly finished his speech when the audience started cheering.",
         "keyWord": "SOONER",
-        "beforeGap": "No",
-        "afterGap": "his speech than the audience started cheering.",
-        "routes": [
-          { "p1": "sooner", "p2": "had he finished" }
-        ],
-        "explanation": "Tests negative inversion with 'No sooner'."
+        "explanation": "Tests negative inversion with 'No sooner'.",
+        "secondSentence": "No (1) _________ his speech than the audience started cheering.",
+        "solutions": [
+          "sooner had he finished"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "It is much more difficult to learn Chinese than I expected.",
         "keyWord": "NEARLY",
-        "beforeGap": "Learning Chinese is",
-        "afterGap": "as I expected.",
-        "routes": [
-          { "p1": "not", "p2": "nearly as easy" }
-        ],
-        "explanation": "Tests negative comparison using 'not nearly as... as'."
+        "explanation": "Tests negative comparison using 'not nearly as... as'.",
+        "secondSentence": "Learning Chinese is (1) _________ as I expected.",
+        "solutions": [
+          "not nearly as easy"
+        ]
       }
     ]
   }

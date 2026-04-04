@@ -10,70 +10,64 @@
         "number": 25,
         "firstSentence": "They believe that the house was built by a famous architect.",
         "keyWord": "THOUGHT",
-        "beforeGap": "The house",
-        "afterGap": "by a famous architect.",
-        "routes": [
-          { "p1": "is", "p2": "thought to have been built" }
-        ],
-        "explanation": "Tests complex passive with perfect infinitive."
+        "explanation": "Tests complex passive with perfect infinitive.",
+        "secondSentence": "The house (1) _________ by a famous architect.",
+        "solutions": [
+          "is thought to have been built"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I'll definitely help you with the chores,’ said my roommate.",
         "keyWord": "PROMISED",
-        "beforeGap": "My roommate",
-        "afterGap": "with the chores.",
-        "routes": [
-          { "p1": "promised", "p2": "to help me" },
-          { "p1": "promised", "p2": "to give me a hand" }
-        ],
-        "explanation": "Tests reporting verbs with infinitive structures."
+        "explanation": "Tests reporting verbs with infinitive structures.",
+        "secondSentence": "My roommate (1) _________ with the chores.",
+        "solutions": [
+          "promised to help me",
+          "promised to give me a hand"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I only managed to solve the problem because you gave me a hint.",
         "keyWord": "FOR",
-        "beforeGap": "If it",
-        "afterGap": "your hint, I wouldn't have solved the problem.",
-        "routes": [
-          { "p1": "had", "p2": "not been for" },
-          { "p1": "hadn't", "p2": "been for" }
-        ],
-        "explanation": "Tests the conditional structure 'If it hadn't been for'."
+        "explanation": "Tests the conditional structure 'If it hadn't been for'.",
+        "secondSentence": "If it (1) _________ your hint, I wouldn't have solved the problem.",
+        "solutions": [
+          "had not been for",
+          "hadn't been for"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I am sure they didn't see us because it was so dark.",
         "keyWord": "CAN'T",
-        "beforeGap": "They",
-        "afterGap": "us because it was so dark.",
-        "routes": [
-          { "p1": "can't", "p2": "have seen" }
-        ],
-        "explanation": "Tests modal perfect for negative deduction in the past."
+        "explanation": "Tests modal perfect for negative deduction in the past.",
+        "secondSentence": "They (1) _________ us because it was so dark.",
+        "solutions": [
+          "can't have seen"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "We had hardly started the picnic when it began to pour with rain.",
         "keyWord": "HAD",
-        "beforeGap": "Hardly",
-        "afterGap": "the picnic when it began to pour with rain.",
-        "routes": [
-          { "p1": "had", "p2": "we started" }
-        ],
-        "explanation": "Tests inversion with the restrictive adverb 'Hardly'."
+        "explanation": "Tests inversion with the restrictive adverb 'Hardly'.",
+        "secondSentence": "Hardly (1) _________ the picnic when it began to pour with rain.",
+        "solutions": [
+          "had we started"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "It is much easier to speak English than to write it.",
         "keyWord": "AS",
-        "beforeGap": "Writing English is",
-        "afterGap": "speaking it.",
-        "routes": [
-          { "p1": "not", "p2": "nearly as easy as" },
-          { "p1": "not", "p2": "quite as easy as" }
-        ],
-        "explanation": "Tests comparative structures with 'not as... as'."
+        "explanation": "Tests comparative structures with 'not as... as'.",
+        "secondSentence": "Writing English is (1) _________ speaking it.",
+        "solutions": [
+          "not nearly as easy as",
+          "not quite as easy as"
+        ]
       }
     ]
   }

@@ -10,67 +10,61 @@
         "number": 25,
         "firstSentence": "I'm sure it was a surprise to you when you won the lottery.",
         "keyWord": "BEEN",
-        "beforeGap": "You",
-        "afterGap": "surprised when you won the lottery.",
-        "routes": [
-          { "p1": "must", "p2": "have been (very/highly)" },
-          { "p1": "must", "p2": "have been quite" }
+        "secondSentence": "You (1) _________ surprised when you won the lottery.",
+        "solutions": [
+          "must have been (very/highly)",
+          "must have been quite"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The company is said to be on the verge of bankruptcy.",
         "keyWord": "RUMOUR",
-        "beforeGap": "There",
-        "afterGap": "the company is about to go bankrupt.",
-        "routes": [
-          { "p1": "is a", "p2": "rumour (that)" },
-          { "p1": "is a", "p2": "widespread rumour (that)" }
+        "secondSentence": "There (1) _________ the company is about to go bankrupt.",
+        "solutions": [
+          "is a rumour (that)",
+          "is a widespread rumour (that)"
         ]
       },
       {
         "number": 27,
         "firstSentence": "It was only because of his help that I passed the exam.",
         "keyWord": "BUT",
-        "beforeGap": "I would not have passed the exam",
-        "afterGap": "help.",
-        "routes": [
-          { "p1": "but", "p2": "for his" },
-          { "p1": "but", "p2": "for the help he gave" }
+        "secondSentence": "I would not have passed the exam (1) _________ help.",
+        "solutions": [
+          "but for his",
+          "but for the help he gave"
         ]
       },
       {
         "number": 28,
         "firstSentence": "They will likely cancel the outdoor concert if it keeps raining.",
         "keyWord": "PROBABILITY",
-        "beforeGap": "There is",
-        "afterGap": "the outdoor concert will be cancelled.",
-        "routes": [
-          { "p1": "every", "p2": "probability (that)" },
-          { "p1": "a high", "p2": "probability (that)" },
-          { "p1": "a strong", "p2": "probability (that)" }
+        "secondSentence": "There is (1) _________ the outdoor concert will be cancelled.",
+        "solutions": [
+          "every probability (that)",
+          "a high probability (that)",
+          "a strong probability (that)"
         ]
       },
       {
         "number": 29,
         "firstSentence": "I regret not studying harder for the final test.",
         "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "harder for the final test.",
-        "routes": [
-          { "p1": "wish (that)", "p2": "I had studied" },
-          { "p1": "wish", "p2": "I'd studied" }
+        "secondSentence": "I (1) _________ harder for the final test.",
+        "solutions": [
+          "wish (that) I had studied",
+          "wish I'd studied"
         ]
       },
       {
         "number": 30,
         "firstSentence": "They are going to demolish the old factory next month.",
         "keyWord": "PULLED",
-        "beforeGap": "The old factory is",
-        "afterGap": "next month.",
-        "routes": [
-          { "p1": "going to", "p2": "be pulled down" },
-          { "p1": "due to", "p2": "be pulled down" }
+        "secondSentence": "The old factory is (1) _________ next month.",
+        "solutions": [
+          "going to be pulled down",
+          "due to be pulled down"
         ]
       }
     ]

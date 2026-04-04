@@ -10,63 +10,57 @@
         "number": 25,
         "firstSentence": "The heavy snowfall made it impossible for the plane to take off.",
         "keyWord": "PREVENTED",
-        "beforeGap": "The heavy snowfall",
-        "afterGap": "off.",
-        "routes": [
-          { "p1": "prevented the plane", "p2": "(from) taking" }
+        "secondSentence": "The heavy snowfall (1) _________ off.",
+        "solutions": [
+          "prevented the plane (from) taking"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I'm sure he didn't forget about the meeting on purpose.",
         "keyWord": "INTENTION",
-        "beforeGap": "I'm sure he",
-        "afterGap": "about the meeting.",
-        "routes": [
-          { "p1": "had no", "p2": "intention of forgetting" },
-          { "p1": "had", "p2": "no intention of forgetting" }
+        "secondSentence": "I'm sure he (1) _________ about the meeting.",
+        "solutions": [
+          "had no intention of forgetting",
+          "had no intention of forgetting"
         ]
       },
       {
         "number": 27,
         "firstSentence": "It's possible that the text message was sent by mistake.",
         "keyWord": "MIGHT",
-        "beforeGap": "The text message",
-        "afterGap": "by mistake.",
-        "routes": [
-          { "p1": "might have", "p2": "been sent" }
+        "secondSentence": "The text message (1) _________ by mistake.",
+        "solutions": [
+          "might have been sent"
         ]
       },
       {
         "number": 28,
         "firstSentence": "The cost of the excursion is included in the price of the holiday.",
         "keyWord": "ACCOUNT",
-        "beforeGap": "The price of the holiday",
-        "afterGap": "the cost of the excursion.",
-        "routes": [
-          { "p1": "takes", "p2": "account of" },
-          { "p1": "takes", "p2": "into account" },
-          { "p1": "accounts", "p2": "for" }
+        "secondSentence": "The price of the holiday (1) _________ the cost of the excursion.",
+        "solutions": [
+          "takes account of",
+          "takes into account",
+          "accounts for"
         ]
       },
       {
         "number": 29,
         "firstSentence": "I would prefer you to pay in cash if possible.",
         "keyWord": "RATHER",
-        "beforeGap": "I",
-        "afterGap": "in cash if possible.",
-        "routes": [
-          { "p1": "would ('d)", "p2": "rather you paid" }
+        "secondSentence": "I (1) _________ in cash if possible.",
+        "solutions": [
+          "would ('d) rather you paid"
         ]
       },
       {
         "number": 30,
         "firstSentence": "As soon as he arrived, the conference began.",
         "keyWord": "SOONER",
-        "beforeGap": "No",
-        "afterGap": "the conference began.",
-        "routes": [
-          { "p1": "sooner had", "p2": "he arrived than" }
+        "secondSentence": "No (1) _________ the conference began.",
+        "solutions": [
+          "sooner had he arrived than"
         ]
       }
     ]

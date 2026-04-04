@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "He accidentally broke his neighbour's window.",
       "keyWord": "WAS",
-      "beforeGap": "His neighbour's window",
-      "afterGap": "accidentally.",
-      "routes": [
-        {
-          "p1": "was",
-          "p2": "broken"
-        }
+      "secondSentence": "His neighbour's window (1) _________ accidentally.",
+      "solutions": [
+        "was broken"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "It isn't necessary for you to stay late.",
         "keyWord": "HAVE",
-        "beforeGap": "You don't",
-        "afterGap": "late.",
-        "routes": [
-          {
-            "p1": "have",
-            "p2": "to stay"
-          }
+        "secondSentence": "You don't (1) _________ late.",
+        "solutions": [
+          "have to stay"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The test results were so poor that the class had to retake it.",
         "keyWord": "SUCH",
-        "beforeGap": "They were",
-        "afterGap": "that the class had to retake it.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "poor results"
-          }
+        "secondSentence": "They were (1) _________ that the class had to retake it.",
+        "solutions": [
+          "such poor results"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She succeeded in getting a promotion.",
         "keyWord": "MANAGED",
-        "beforeGap": "She",
-        "afterGap": "a promotion.",
-        "routes": [
-          {
-            "p1": "managed",
-            "p2": "to get"
-          }
+        "secondSentence": "She (1) _________ a promotion.",
+        "solutions": [
+          "managed to get"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He was in the habit of watching the news at ten.",
         "keyWord": "USED",
-        "beforeGap": "He",
-        "afterGap": "the news at ten.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "watch"
-          }
+        "secondSentence": "He (1) _________ the news at ten.",
+        "solutions": [
+          "used to watch"
         ]
       },
       {
         "number": 29,
         "firstSentence": "She told me, 'I have already sent the email.'",
         "keyWord": "SAID",
-        "beforeGap": "She",
-        "afterGap": "already sent the email.",
-        "routes": [
-          {
-            "p1": "said",
-            "p2": "(that) she had"
-          }
+        "secondSentence": "She (1) _________ already sent the email.",
+        "solutions": [
+          "said (that) she had"
         ]
       },
       {
         "number": 30,
         "firstSentence": "He might have left without saying goodbye.",
         "keyWord": "POSSIBLE",
-        "beforeGap": "It is",
-        "afterGap": "without saying goodbye.",
-        "routes": [
-          {
-            "p1": "possible",
-            "p2": "that he left"
-          }
+        "secondSentence": "It is (1) _________ without saying goodbye.",
+        "solutions": [
+          "possible that he left"
         ]
       }
     ]

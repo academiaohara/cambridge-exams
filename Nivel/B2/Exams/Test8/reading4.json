@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "The teacher told us, 'Work quietly.'",
       "keyWord": "TOLD",
-      "beforeGap": "The teacher",
-      "afterGap": "quietly.",
-      "routes": [
-        {
-          "p1": "told",
-          "p2": "us to work"
-        }
+      "secondSentence": "The teacher (1) _________ quietly.",
+      "solutions": [
+        "told us to work"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "You can use my laptop only if you are careful.",
         "keyWord": "LONG",
-        "beforeGap": "You can use my laptop",
-        "afterGap": "you are careful.",
-        "routes": [
-          {
-            "p1": "as long",
-            "p2": "as"
-          }
+        "secondSentence": "You can use my laptop (1) _________ you are careful.",
+        "solutions": [
+          "as long as"
         ]
       },
       {
         "number": 26,
         "firstSentence": "Thousands of people saw the performance.",
         "keyWord": "WAS",
-        "beforeGap": "The performance",
-        "afterGap": "by thousands of people.",
-        "routes": [
-          {
-            "p1": "was",
-            "p2": "seen"
-          }
+        "secondSentence": "The performance (1) _________ by thousands of people.",
+        "solutions": [
+          "was seen"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She is not as tall as her sister.",
         "keyWord": "TALLER",
-        "beforeGap": "Her sister is",
-        "afterGap": "her.",
-        "routes": [
-          {
-            "p1": "taller",
-            "p2": "than"
-          }
+        "secondSentence": "Her sister is (1) _________ her.",
+        "solutions": [
+          "taller than"
         ]
       },
       {
         "number": 28,
         "firstSentence": "It's not necessary for you to pay for the tickets.",
         "keyWord": "NEED",
-        "beforeGap": "You",
-        "afterGap": "for the tickets.",
-        "routes": [
-          {
-            "p1": "needn't",
-            "p2": "pay"
-          }
+        "secondSentence": "You (1) _________ for the tickets.",
+        "solutions": [
+          "needn't pay"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Even though he was tired, he finished his homework.",
         "keyWord": "DESPITE",
-        "beforeGap": "He finished his homework",
-        "afterGap": "tired.",
-        "routes": [
-          {
-            "p1": "despite",
-            "p2": "being"
-          }
+        "secondSentence": "He finished his homework (1) _________ tired.",
+        "solutions": [
+          "despite being"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She has been playing chess for twenty years.",
         "keyWord": "STARTED",
-        "beforeGap": "She",
-        "afterGap": "chess twenty years ago.",
-        "routes": [
-          {
-            "p1": "started",
-            "p2": "playing"
-          }
+        "secondSentence": "She (1) _________ chess twenty years ago.",
+        "solutions": [
+          "started playing"
         ]
       }
     ]

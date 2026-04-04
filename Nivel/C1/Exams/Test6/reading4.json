@@ -10,62 +10,56 @@
         "number": 25,
         "firstSentence": "James only succeeded because of his teacher's encouragement.",
         "keyWord": "FOR",
-        "beforeGap": "If it",
-        "afterGap": "his teacher's encouragement, James wouldn't have succeeded.",
-        "routes": [
-          { "p1": "had not", "p2": "been for" },
-          { "p1": "hadn't", "p2": "been for" }
+        "secondSentence": "If it (1) _________ his teacher's encouragement, James wouldn't have succeeded.",
+        "solutions": [
+          "had not been for",
+          "hadn't been for"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I think it would be a good idea to contact them by email.",
         "keyWord": "IN",
-        "beforeGap": "I am",
-        "afterGap": "them by email.",
-        "routes": [
-          { "p1": "in", "p2": "favour of contacting" }
+        "secondSentence": "I am (1) _________ them by email.",
+        "solutions": [
+          "in favour of contacting"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The manager said he was sorry he was late.",
         "keyWord": "APOLOGISED",
-        "beforeGap": "The manager",
-        "afterGap": "late.",
-        "routes": [
-          { "p1": "apologised", "p2": "for being" }
+        "secondSentence": "The manager (1) _________ late.",
+        "solutions": [
+          "apologised for being"
         ]
       },
       {
         "number": 28,
         "firstSentence": "Very few people came to the meeting.",
         "keyWord": "TURNOUT",
-        "beforeGap": "There was",
-        "afterGap": "for the meeting.",
-        "routes": [
-          { "p1": "a", "p2": "very poor turnout" },
-          { "p1": "a", "p2": "low turnout" }
+        "secondSentence": "There was (1) _________ for the meeting.",
+        "solutions": [
+          "a very poor turnout",
+          "a low turnout"
         ]
       },
       {
         "number": 29,
         "firstSentence": "They are going to renovate the hotel during the summer.",
         "keyWord": "DONE",
-        "beforeGap": "The hotel is going",
-        "afterGap": "during the summer.",
-        "routes": [
-          { "p1": "to", "p2": "be done up" }
+        "secondSentence": "The hotel is going (1) _________ during the summer.",
+        "solutions": [
+          "to be done up"
         ]
       },
       {
         "number": 30,
         "firstSentence": "You should not leave the building without permission.",
         "keyWord": "CIRCUMSTANCES",
-        "beforeGap": "Under",
-        "afterGap": "leave the building without permission.",
-        "routes": [
-          { "p1": "no", "p2": "circumstances should you" }
+        "secondSentence": "Under (1) _________ leave the building without permission.",
+        "solutions": [
+          "no circumstances should you"
         ]
       }
     ]

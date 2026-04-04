@@ -147,8 +147,8 @@
       } else {
         const marksPerQ = isMultiMarkPart ? Math.round(partConfig.maxMarks / partConfig.total) : 1;
         questions.forEach(q => {
-          if (partConfig.type === 'transformations' && typeof ReadingType4 !== 'undefined' && q.routes) {
-            correct += ReadingType4.evaluateTransformation(AppState.currentExercise.answers[q.number], q.routes).score;
+          if (partConfig.type === 'transformations' && typeof ReadingType4 !== 'undefined' && (q.solutions || q.routes)) {
+            correct += ReadingType4.evaluateTransformation(AppState.currentExercise.answers[q.number], q.solutions || q.routes).score;
           } else if (Utils.compareAnswers(AppState.currentExercise.answers[q.number], q.correct, partConfig.type)) {
             correct += marksPerQ;
           }

@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "He started a new photography project last month.",
       "keyWord": "SET",
-      "beforeGap": "He",
-      "afterGap": "a new photography project last month.",
-      "routes": [
-        {
-          "p1": "set",
-          "p2": "up"
-        }
+      "secondSentence": "He (1) _________ a new photography project last month.",
+      "solutions": [
+        "set up"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "They are interviewing all the candidates today.",
         "keyWord": "BEING",
-        "beforeGap": "All the candidates are",
-        "afterGap": "today.",
-        "routes": [
-          {
-            "p1": "being",
-            "p2": "interviewed"
-          }
+        "secondSentence": "All the candidates are (1) _________ today.",
+        "solutions": [
+          "being interviewed"
         ]
       },
       {
         "number": 26,
         "firstSentence": "This is the best pizza I've ever eaten.",
         "keyWord": "NEVER",
-        "beforeGap": "I've",
-        "afterGap": "a better pizza.",
-        "routes": [
-          {
-            "p1": "never",
-            "p2": "eaten"
-          }
+        "secondSentence": "I've (1) _________ a better pizza.",
+        "solutions": [
+          "never eaten"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The traffic was so bad that I missed the meeting.",
         "keyWord": "SUCH",
-        "beforeGap": "There was",
-        "afterGap": "that I missed the meeting.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "bad traffic"
-          }
+        "secondSentence": "There was (1) _________ that I missed the meeting.",
+        "solutions": [
+          "such bad traffic"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She was able to solve the difficult puzzle in the end.",
         "keyWord": "MANAGED",
-        "beforeGap": "She",
-        "afterGap": "the difficult puzzle in the end.",
-        "routes": [
-          {
-            "p1": "managed",
-            "p2": "to solve"
-          }
+        "secondSentence": "She (1) _________ the difficult puzzle in the end.",
+        "solutions": [
+          "managed to solve"
         ]
       },
       {
         "number": 29,
         "firstSentence": "She asked him to help carry the boxes.",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "carry the boxes.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "him to help"
-          }
+        "secondSentence": "She (1) _________ carry the boxes.",
+        "solutions": [
+          "asked him to help"
         ]
       },
       {
         "number": 30,
         "firstSentence": "I'm certain he has done the homework.",
         "keyWord": "MUST",
-        "beforeGap": "He",
-        "afterGap": "the homework.",
-        "routes": [
-          {
-            "p1": "must",
-            "p2": "have done"
-          }
+        "secondSentence": "He (1) _________ the homework.",
+        "solutions": [
+          "must have done"
         ]
       }
     ]

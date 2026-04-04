@@ -10,69 +10,63 @@
         "number": 25,
         "firstSentence": "They are going to paint the house next week.",
         "keyWord": "HAVE",
-        "beforeGap": "We are going",
-        "afterGap": "next week.",
-        "routes": [
-          { "p1": "to", "p2": "have the house painted" }
-        ],
-        "explanation": "Tests causative 'have something done'."
+        "explanation": "Tests causative 'have something done'.",
+        "secondSentence": "We are going (1) _________ next week.",
+        "solutions": [
+          "to have the house painted"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘You should see a doctor,’ my friend told me.",
         "keyWord": "ADVISED",
-        "beforeGap": "My friend",
-        "afterGap": "a doctor.",
-        "routes": [
-          { "p1": "advised", "p2": "me to see" }
-        ],
-        "explanation": "Tests reporting verb + object + to-infinitive."
+        "explanation": "Tests reporting verb + object + to-infinitive.",
+        "secondSentence": "My friend (1) _________ a doctor.",
+        "solutions": [
+          "advised me to see"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I'm sorry I didn't go to the concert with you.",
         "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "to the concert with you.",
-        "routes": [
-          { "p1": "wish", "p2": "I had gone" },
-          { "p1": "wish", "p2": "I'd gone" }
-        ],
-        "explanation": "Tests 'wish' + past perfect for past regrets."
+        "explanation": "Tests 'wish' + past perfect for past regrets.",
+        "secondSentence": "I (1) _________ to the concert with you.",
+        "solutions": [
+          "wish I had gone",
+          "wish I'd gone"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "It’s possible that she forgot to send the email.",
         "keyWord": "MIGHT",
-        "beforeGap": "She",
-        "afterGap": "to send the email.",
-        "routes": [
-          { "p1": "might", "p2": "have forgotten" }
-        ],
-        "explanation": "Tests modal perfect for past possibility."
+        "explanation": "Tests modal perfect for past possibility.",
+        "secondSentence": "She (1) _________ to send the email.",
+        "solutions": [
+          "might have forgotten"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I have never heard such a strange story.",
         "keyWord": "HAVE",
-        "beforeGap": "Never before",
-        "afterGap": "such a strange story.",
-        "routes": [
-          { "p1": "have", "p2": "I heard" }
-        ],
-        "explanation": "Tests inversion with 'Never before'."
+        "explanation": "Tests inversion with 'Never before'.",
+        "secondSentence": "Never before (1) _________ such a strange story.",
+        "solutions": [
+          "have I heard"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "The team played so badly that they lost the game.",
         "keyWord": "SUCH",
-        "beforeGap": "The team",
-        "afterGap": "that they lost the game.",
-        "routes": [
-          { "p1": "played", "p2": "in such a way" },
-          { "p1": "showed", "p2": "such a bad performance" }
-        ],
-        "explanation": "Tests 'such' structures to describe manner/degree."
+        "explanation": "Tests 'such' structures to describe manner/degree.",
+        "secondSentence": "The team (1) _________ that they lost the game.",
+        "solutions": [
+          "played in such a way",
+          "showed such a bad performance"
+        ]
       }
     ]
   }

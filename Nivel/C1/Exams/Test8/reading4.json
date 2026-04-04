@@ -10,63 +10,57 @@
         "number": 25,
         "firstSentence": "I was about to leave the office when the phone rang.",
         "keyWord": "POINT",
-        "beforeGap": "I was",
-        "afterGap": "the office when the phone rang.",
-        "routes": [
-          { "p1": "on the", "p2": "point of leaving" }
+        "secondSentence": "I was (1) _________ the office when the phone rang.",
+        "solutions": [
+          "on the point of leaving"
         ]
       },
       {
         "number": 26,
         "firstSentence": "It is unlikely that the weather will improve tomorrow.",
         "keyWord": "LITTLE",
-        "beforeGap": "There is",
-        "afterGap": "the weather improving tomorrow.",
-        "routes": [
-          { "p1": "little", "p2": "likelihood of" },
-          { "p1": "little", "p2": "prospect of" }
+        "secondSentence": "There is (1) _________ the weather improving tomorrow.",
+        "solutions": [
+          "little likelihood of",
+          "little prospect of"
         ]
       },
       {
         "number": 27,
         "firstSentence": "He was unable to explain why he was late for the meeting.",
         "keyWord": "ACCOUNT",
-        "beforeGap": "He was unable to",
-        "afterGap": "his lateness for the meeting.",
-        "routes": [
-          { "p1": "account", "p2": "for" },
-          { "p1": "give", "p2": "an account of" }
+        "secondSentence": "He was unable to (1) _________ his lateness for the meeting.",
+        "solutions": [
+          "account for",
+          "give an account of"
         ]
       },
       {
         "number": 28,
         "firstSentence": "It's a pity you didn't tell me about the problem earlier.",
         "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "about the problem earlier.",
-        "routes": [
-          { "p1": "wish", "p2": "(that) you had told me" },
-          { "p1": "wish", "p2": "(that) you'd told me" }
+        "secondSentence": "I (1) _________ about the problem earlier.",
+        "solutions": [
+          "wish (that) you had told me",
+          "wish (that) you'd told me"
         ]
       },
       {
         "number": 29,
         "firstSentence": "The only thing I want is a quiet holiday.",
         "keyWord": "ALL",
-        "beforeGap": "A quiet holiday",
-        "afterGap": "want.",
-        "routes": [
-          { "p1": "is", "p2": "all (that) I" }
+        "secondSentence": "A quiet holiday (1) _________ want.",
+        "solutions": [
+          "is all (that) I"
         ]
       },
       {
         "number": 30,
         "firstSentence": "Despite the rain, the match went ahead.",
         "keyWord": "EVEN",
-        "beforeGap": "The match went ahead",
-        "afterGap": "raining.",
-        "routes": [
-          { "p1": "even", "p2": "though it was" }
+        "secondSentence": "The match went ahead (1) _________ raining.",
+        "solutions": [
+          "even though it was"
         ]
       }
     ]

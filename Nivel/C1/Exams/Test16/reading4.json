@@ -10,71 +10,65 @@
         "number": 25,
         "firstSentence": "They believe that the criminal escaped through the back window.",
         "keyWord": "HAVE",
-        "beforeGap": "The criminal is",
-        "afterGap": "through the back window.",
-        "routes": [
-          { "p1": "thought to", "p2": "have escaped" },
-          { "p1": "believed to", "p2": "have escaped" }
-        ],
-        "explanation": "Tests complex passive structure (is thought to have + past participle)."
+        "explanation": "Tests complex passive structure (is thought to have + past participle).",
+        "secondSentence": "The criminal is (1) _________ through the back window.",
+        "solutions": [
+          "thought to have escaped",
+          "believed to have escaped"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I’m sorry I’m late,’ said Thomas.",
         "keyWord": "APOLOGISED",
-        "beforeGap": "Thomas",
-        "afterGap": "late.",
-        "routes": [
-          { "p1": "apologised", "p2": "for being" },
-          { "p1": "apologised", "p2": "for having been" }
-        ],
-        "explanation": "Tests reporting verbs followed by a preposition and gerund."
+        "explanation": "Tests reporting verbs followed by a preposition and gerund.",
+        "secondSentence": "Thomas (1) _________ late.",
+        "solutions": [
+          "apologised for being",
+          "apologised for having been"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I only managed to buy the house because my parents lent me the money.",
         "keyWord": "LENT",
-        "beforeGap": "If my parents",
-        "afterGap": "the money, I wouldn't have been able to buy the house.",
-        "routes": [
-          { "p1": "had not", "p2": "lent me" },
-          { "p1": "hadn't", "p2": "lent me" }
-        ],
-        "explanation": "Tests third conditional for hypothetical past situations."
+        "explanation": "Tests third conditional for hypothetical past situations.",
+        "secondSentence": "If my parents (1) _________ the money, I wouldn't have been able to buy the house.",
+        "solutions": [
+          "had not lent me",
+          "hadn't lent me"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I'm certain that the heavy rain caused the flooding.",
         "keyWord": "MUST",
-        "beforeGap": "The flooding",
-        "afterGap": "by the heavy rain.",
-        "routes": [
-          { "p1": "must", "p2": "have been caused" }
-        ],
-        "explanation": "Tests modal perfect in the passive voice (must have been + past participle)."
+        "explanation": "Tests modal perfect in the passive voice (must have been + past participle).",
+        "secondSentence": "The flooding (1) _________ by the heavy rain.",
+        "solutions": [
+          "must have been caused"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "As soon as the tennis players went onto the court, it started to rain.",
         "keyWord": "HAD",
-        "beforeGap": "No",
-        "afterGap": "onto the court than it started to rain.",
-        "routes": [
-          { "p1": "sooner", "p2": "had the players gone" },
-          { "p1": "sooner", "p2": "had the players stepped" }
-        ],
-        "explanation": "Tests negative inversion (No sooner had... than)."
+        "explanation": "Tests negative inversion (No sooner had... than).",
+        "secondSentence": "No (1) _________ onto the court than it started to rain.",
+        "solutions": [
+          "sooner had the players gone",
+          "sooner had the players stepped"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "It's a waste of time to try and convince him to change his mind.",
         "keyWord": "POINT",
-        "beforeGap": "There is",
-        "afterGap": "to convince him to change his mind.",
-        "routes": [
-          { "p1": "no", "p2": "point (in) trying" }
-        ],
-        "explanation": "Tests gerund phrases (There is no point in + -ing)."
+        "explanation": "Tests gerund phrases (There is no point in + -ing).",
+        "secondSentence": "There is (1) _________ to convince him to change his mind.",
+        "solutions": [
+          "no point (in) trying"
+        ]
       }
     ]
   }

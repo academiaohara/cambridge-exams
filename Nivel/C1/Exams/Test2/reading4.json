@@ -10,62 +10,56 @@
         "number": 25,
         "firstSentence": "He forgot to mention that he was bringing a friend to the party.",
         "keyWord": "FAILURE",
-        "beforeGap": "His",
-        "afterGap": "he was bringing a friend was unexpected.",
-        "routes": [
-          { "p1": "failure to", "p2": "mention (that)" }
+        "secondSentence": "His (1) _________ he was bringing a friend was unexpected.",
+        "solutions": [
+          "failure to mention (that)"
         ]
       },
       {
         "number": 26,
         "firstSentence": "No one has ever found a solution to this problem.",
         "keyWord": "HAS",
-        "beforeGap": "At no",
-        "afterGap": "found for this problem.",
-        "routes": [
-          { "p1": "time has", "p2": "a solution been" },
-          { "p1": "point has", "p2": "a solution been" }
+        "secondSentence": "At no (1) _________ found for this problem.",
+        "solutions": [
+          "time has a solution been",
+          "point has a solution been"
         ]
       },
       {
         "number": 27,
         "firstSentence": "I'm sure it was John you saw at the cinema yesterday.",
         "keyWord": "MUST",
-        "beforeGap": "The person you saw at the cinema yesterday",
-        "afterGap": "John.",
-        "routes": [
-          { "p1": "must", "p2": "have been" }
+        "secondSentence": "The person you saw at the cinema yesterday (1) _________ John.",
+        "solutions": [
+          "must have been"
         ]
       },
       {
         "number": 28,
         "firstSentence": "The meeting was so boring that I fell asleep.",
         "keyWord": "SUCH",
-        "beforeGap": "It",
-        "afterGap": "that I fell asleep.",
-        "routes": [
-          { "p1": "was", "p2": "such a boring meeting" }
+        "secondSentence": "It (1) _________ that I fell asleep.",
+        "solutions": [
+          "was such a boring meeting"
         ]
       },
       {
         "number": 29,
         "firstSentence": "You can stay here as long as you keep quiet.",
         "keyWord": "CONDITION",
-        "beforeGap": "You can stay here",
-        "afterGap": "keep quiet.",
-        "routes": [
-          { "p1": "on (the)", "p2": "condition (that) you" }
+        "secondSentence": "You can stay here (1) _________ keep quiet.",
+        "solutions": [
+          "on (the) condition (that) you"
         ]
       },
       {
         "number": 30,
         "firstSentence": "The manager told the staff they should work harder.",
         "keyWord": "URGED",
-        "beforeGap": "The manager",
-        "afterGap": "harder.",
-        "routes": [
-          { "p1": "urged the staff", "p2": "to work" },
-          { "p1": "urged them", "p2": "to work" }
+        "secondSentence": "The manager (1) _________ harder.",
+        "solutions": [
+          "urged the staff to work",
+          "urged them to work"
         ]
       }
     ]

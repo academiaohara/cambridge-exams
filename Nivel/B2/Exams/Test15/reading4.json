@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "It's possible that she left her keys at the office.",
       "keyWord": "MIGHT",
-      "beforeGap": "She",
-      "afterGap": "her keys at the office.",
-      "routes": [
-        {
-          "p1": "might",
-          "p2": "have left"
-        }
+      "secondSentence": "She (1) _________ her keys at the office.",
+      "solutions": [
+        "might have left"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Someone has already answered all the questions.",
         "keyWord": "BEEN",
-        "beforeGap": "All the questions have already",
-        "afterGap": ".",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "answered"
-          }
+        "secondSentence": "All the questions have already (1) _________ .",
+        "solutions": [
+          "been answered"
         ]
       },
       {
         "number": 26,
         "firstSentence": "It's a pity I didn't travel more when I was young.",
         "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "more when I was young.",
-        "routes": [
-          {
-            "p1": "wish",
-            "p2": "I had travelled"
-          }
+        "secondSentence": "I (1) _________ more when I was young.",
+        "solutions": [
+          "wish I had travelled"
         ]
       },
       {
         "number": 27,
         "firstSentence": "No building in the city is taller than the tower.",
         "keyWord": "TALLEST",
-        "beforeGap": "The tower is",
-        "afterGap": "in the city.",
-        "routes": [
-          {
-            "p1": "the tallest",
-            "p2": "building"
-          }
+        "secondSentence": "The tower is (1) _________ in the city.",
+        "solutions": [
+          "the tallest building"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He allowed his daughter to stay out late.",
         "keyWord": "LET",
-        "beforeGap": "He",
-        "afterGap": "out late.",
-        "routes": [
-          {
-            "p1": "let",
-            "p2": "his daughter stay"
-          }
+        "secondSentence": "He (1) _________ out late.",
+        "solutions": [
+          "let his daughter stay"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Why don't we go to the new Italian restaurant?",
         "keyWord": "SUGGEST",
-        "beforeGap": "I",
-        "afterGap": "to the new Italian restaurant.",
-        "routes": [
-          {
-            "p1": "suggest",
-            "p2": "going"
-          }
+        "secondSentence": "I (1) _________ to the new Italian restaurant.",
+        "solutions": [
+          "suggest going"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She wanted to know where the director lived.",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "where the director lived.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "him"
-          }
+        "secondSentence": "She (1) _________ where the director lived.",
+        "solutions": [
+          "asked him"
         ]
       }
     ]

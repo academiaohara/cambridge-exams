@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "He forgot about his dentist appointment.",
       "keyWord": "REMEMBER",
-      "beforeGap": "He didn't",
-      "afterGap": "his dentist appointment.",
-      "routes": [
-        {
-          "p1": "remember",
-          "p2": "to attend"
-        }
+      "secondSentence": "He didn't (1) _________ his dentist appointment.",
+      "solutions": [
+        "remember to attend"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "They are expanding the city centre.",
         "keyWord": "BEING",
-        "beforeGap": "The city centre is",
-        "afterGap": ".",
-        "routes": [
-          {
-            "p1": "being",
-            "p2": "expanded"
-          }
+        "secondSentence": "The city centre is (1) _________ .",
+        "solutions": [
+          "being expanded"
         ]
       },
       {
         "number": 26,
         "firstSentence": "This is the first time I have met a celebrity.",
         "keyWord": "NEVER",
-        "beforeGap": "I have",
-        "afterGap": "a celebrity before.",
-        "routes": [
-          {
-            "p1": "never",
-            "p2": "met"
-          }
+        "secondSentence": "I have (1) _________ a celebrity before.",
+        "solutions": [
+          "never met"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The stairs are too steep for elderly people.",
         "keyWord": "ENOUGH",
-        "beforeGap": "The stairs aren't",
-        "afterGap": "for elderly people.",
-        "routes": [
-          {
-            "p1": "gentle",
-            "p2": "enough"
-          }
+        "secondSentence": "The stairs aren't (1) _________ for elderly people.",
+        "solutions": [
+          "gentle enough"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She was in the habit of exercising at dawn.",
         "keyWord": "USED",
-        "beforeGap": "She",
-        "afterGap": "at dawn.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "exercise"
-          }
+        "secondSentence": "She (1) _________ at dawn.",
+        "solutions": [
+          "used to exercise"
         ]
       },
       {
         "number": 29,
         "firstSentence": "She wanted to know where he had grown up.",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "where he had grown up.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "him"
-          }
+        "secondSentence": "She (1) _________ where he had grown up.",
+        "solutions": [
+          "asked him"
         ]
       },
       {
         "number": 30,
         "firstSentence": "Without the map, we would have got lost.",
         "keyWord": "WOULD",
-        "beforeGap": "If we hadn't had the map, we",
-        "afterGap": "lost.",
-        "routes": [
-          {
-            "p1": "would",
-            "p2": "have got"
-          }
+        "secondSentence": "If we hadn't had the map, we (1) _________ lost.",
+        "solutions": [
+          "would have got"
         ]
       }
     ]

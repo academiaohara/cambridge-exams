@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "She allowed her son to go to the party.",
       "keyWord": "LET",
-      "beforeGap": "She",
-      "afterGap": "to the party.",
-      "routes": [
-        {
-          "p1": "let",
-          "p2": "her son go"
-        }
+      "secondSentence": "She (1) _________ to the party.",
+      "solutions": [
+        "let her son go"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "They produce this cheese only in one village.",
         "keyWord": "IS",
-        "beforeGap": "This cheese",
-        "afterGap": "only in one village.",
-        "routes": [
-          {
-            "p1": "is",
-            "p2": "produced"
-          }
+        "secondSentence": "This cheese (1) _________ only in one village.",
+        "solutions": [
+          "is produced"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The hotel room was so small that we could barely move.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that we could barely move.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a small room"
-          }
+        "secondSentence": "It was (1) _________ that we could barely move.",
+        "solutions": [
+          "such a small room"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She started working at the company four years ago.",
         "keyWord": "FOR",
-        "beforeGap": "She has been working at the company",
-        "afterGap": "years.",
-        "routes": [
-          {
-            "p1": "for",
-            "p2": "four"
-          }
+        "secondSentence": "She has been working at the company (1) _________ years.",
+        "solutions": [
+          "for four"
         ]
       },
       {
         "number": 28,
         "firstSentence": "You should see a specialist about your knee.",
         "keyWord": "OUGHT",
-        "beforeGap": "You",
-        "afterGap": "a specialist about your knee.",
-        "routes": [
-          {
-            "p1": "ought",
-            "p2": "to see"
-          }
+        "secondSentence": "You (1) _________ a specialist about your knee.",
+        "solutions": [
+          "ought to see"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Although the film was long, we enjoyed it.",
         "keyWord": "DESPITE",
-        "beforeGap": "We enjoyed the film",
-        "afterGap": "long.",
-        "routes": [
-          {
-            "p1": "despite",
-            "p2": "it being"
-          }
+        "secondSentence": "We enjoyed the film (1) _________ long.",
+        "solutions": [
+          "despite it being"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She wanted to know what time the concert started.",
         "keyWord": "WHAT",
-        "beforeGap": "She asked",
-        "afterGap": "started.",
-        "routes": [
-          {
-            "p1": "what",
-            "p2": "time the concert"
-          }
+        "secondSentence": "She asked (1) _________ started.",
+        "solutions": [
+          "what time the concert"
         ]
       }
     ]

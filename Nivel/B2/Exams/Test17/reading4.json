@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "A new supermarket is being built in our area.",
       "keyWord": "ARE",
-      "beforeGap": "They",
-      "afterGap": "a new supermarket in our area.",
-      "routes": [
-        {
-          "p1": "are",
-          "p2": "building"
-        }
+      "secondSentence": "They (1) _________ a new supermarket in our area.",
+      "solutions": [
+        "are building"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "She has been collecting stamps since she was eight.",
         "keyWord": "HAS",
-        "beforeGap": "She",
-        "afterGap": "collecting stamps since she was eight.",
-        "routes": [
-          {
-            "p1": "has",
-            "p2": "been"
-          }
+        "secondSentence": "She (1) _________ collecting stamps since she was eight.",
+        "solutions": [
+          "has been"
         ]
       },
       {
         "number": 26,
         "firstSentence": "It's not allowed to use your phone in class.",
         "keyWord": "MUST",
-        "beforeGap": "You",
-        "afterGap": "your phone in class.",
-        "routes": [
-          {
-            "p1": "must",
-            "p2": "not use"
-          }
+        "secondSentence": "You (1) _________ your phone in class.",
+        "solutions": [
+          "must not use"
         ]
       },
       {
         "number": 27,
         "firstSentence": "No river in Europe is longer than the Volga.",
         "keyWord": "LONGEST",
-        "beforeGap": "The Volga is",
-        "afterGap": "in Europe.",
-        "routes": [
-          {
-            "p1": "the longest",
-            "p2": "river"
-          }
+        "secondSentence": "The Volga is (1) _________ in Europe.",
+        "solutions": [
+          "the longest river"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He decided to take up yoga last year.",
         "keyWord": "STARTED",
-        "beforeGap": "He",
-        "afterGap": "yoga last year.",
-        "routes": [
-          {
-            "p1": "started",
-            "p2": "doing"
-          }
+        "secondSentence": "He (1) _________ yoga last year.",
+        "solutions": [
+          "started doing"
         ]
       },
       {
         "number": 29,
         "firstSentence": "'Don't forget to submit the form,' she said.",
         "keyWord": "REMINDED",
-        "beforeGap": "She",
-        "afterGap": "submit the form.",
-        "routes": [
-          {
-            "p1": "reminded",
-            "p2": "me to"
-          }
+        "secondSentence": "She (1) _________ submit the form.",
+        "solutions": [
+          "reminded me to"
         ]
       },
       {
         "number": 30,
         "firstSentence": "Despite working long hours, she stayed cheerful.",
         "keyWord": "EVEN",
-        "beforeGap": "She stayed cheerful",
-        "afterGap": "she worked long hours.",
-        "routes": [
-          {
-            "p1": "even",
-            "p2": "though"
-          }
+        "secondSentence": "She stayed cheerful (1) _________ she worked long hours.",
+        "solutions": [
+          "even though"
         ]
       }
     ]

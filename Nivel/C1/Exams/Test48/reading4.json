@@ -10,68 +10,62 @@
         "number": 25,
         "firstSentence": "They will renovate the old cinema next year.",
         "keyWord": "BE",
-        "beforeGap": "The old cinema",
-        "afterGap": "next year.",
-        "routes": [
-          { "p1": "will", "p2": "be renovated" },
-          { "p1": "is", "p2": "going to be renovated" }
-        ],
-        "explanation": "Tests simple future passive."
+        "explanation": "Tests simple future passive.",
+        "secondSentence": "The old cinema (1) _________ next year.",
+        "solutions": [
+          "will be renovated",
+          "is going to be renovated"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I'll pay for the coffee,’ said Paul.",
         "keyWord": "INSISTED",
-        "beforeGap": "Paul",
-        "afterGap": "for the coffee.",
-        "routes": [
-          { "p1": "insisted", "p2": "on paying" }
-        ],
-        "explanation": "Tests reporting verb 'insist' + 'on' + gerund."
+        "explanation": "Tests reporting verb 'insist' + 'on' + gerund.",
+        "secondSentence": "Paul (1) _________ for the coffee.",
+        "solutions": [
+          "insisted on paying"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I didn't have enough money, so I didn't buy the tickets.",
         "keyWord": "HAD",
-        "beforeGap": "If I",
-        "afterGap": "money, I would have bought the tickets.",
-        "routes": [
-          { "p1": "had", "p2": "had enough" }
-        ],
-        "explanation": "Tests third conditional 'if' clause (had + past participle)."
+        "explanation": "Tests third conditional 'if' clause (had + past participle).",
+        "secondSentence": "If I (1) _________ money, I would have bought the tickets.",
+        "solutions": [
+          "had had enough"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I'm sure he was very happy to hear the news.",
         "keyWord": "MUST",
-        "beforeGap": "He",
-        "afterGap": "happy to hear the news.",
-        "routes": [
-          { "p1": "must", "p2": "have been very" }
-        ],
-        "explanation": "Tests modal perfect for certain deduction."
+        "explanation": "Tests modal perfect for certain deduction.",
+        "secondSentence": "He (1) _________ happy to hear the news.",
+        "solutions": [
+          "must have been very"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I didn't know who he was until he spoke.",
         "keyWord": "ONLY",
-        "beforeGap": "It",
-        "afterGap": "he spoke that I knew who he was.",
-        "routes": [
-          { "p1": "was", "p2": "only when" }
-        ],
-        "explanation": "Tests 'It was only when...' cleft sentences."
+        "explanation": "Tests 'It was only when...' cleft sentences.",
+        "secondSentence": "It (1) _________ he spoke that I knew who he was.",
+        "solutions": [
+          "was only when"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "I find it hard to get used to the noise in the city.",
         "keyWord": "DIFFICULTY",
-        "beforeGap": "I have",
-        "afterGap": "the noise in the city.",
-        "routes": [
-          { "p1": "difficulty", "p2": "(in) getting used to" }
-        ],
-        "explanation": "Tests 'have difficulty (in) doing' combined with 'get used to'."
+        "explanation": "Tests 'have difficulty (in) doing' combined with 'get used to'.",
+        "secondSentence": "I have (1) _________ the noise in the city.",
+        "solutions": [
+          "difficulty (in) getting used to"
+        ]
       }
     ]
   }

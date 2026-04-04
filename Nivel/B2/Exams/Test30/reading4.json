@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "She carried on singing even after the music stopped.",
       "keyWord": "KEPT",
-      "beforeGap": "She",
-      "afterGap": "even after the music stopped.",
-      "routes": [
-        {
-          "p1": "kept",
-          "p2": "singing"
-        }
+      "secondSentence": "She (1) _________ even after the music stopped.",
+      "solutions": [
+        "kept singing"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Someone invented the telephone in the 1870s.",
         "keyWord": "WAS",
-        "beforeGap": "The telephone",
-        "afterGap": "in the 1870s.",
-        "routes": [
-          {
-            "p1": "was",
-            "p2": "invented"
-          }
+        "secondSentence": "The telephone (1) _________ in the 1870s.",
+        "solutions": [
+          "was invented"
         ]
       },
       {
         "number": 26,
         "firstSentence": "It was such a surprising result that no one expected it.",
         "keyWord": "SO",
-        "beforeGap": "The result was",
-        "afterGap": "that no one expected it.",
-        "routes": [
-          {
-            "p1": "so",
-            "p2": "surprising"
-          }
+        "secondSentence": "The result was (1) _________ that no one expected it.",
+        "solutions": [
+          "so surprising"
         ]
       },
       {
         "number": 27,
         "firstSentence": "You can stay here if you behave well.",
         "keyWord": "PROVIDED",
-        "beforeGap": "You can stay here",
-        "afterGap": "well.",
-        "routes": [
-          {
-            "p1": "provided",
-            "p2": "you behave"
-          }
+        "secondSentence": "You can stay here (1) _________ well.",
+        "solutions": [
+          "provided you behave"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She was too shy to ask for help.",
         "keyWord": "CONFIDENT",
-        "beforeGap": "She wasn't",
-        "afterGap": "to ask for help.",
-        "routes": [
-          {
-            "p1": "confident",
-            "p2": "enough"
-          }
+        "secondSentence": "She wasn't (1) _________ to ask for help.",
+        "solutions": [
+          "confident enough"
         ]
       },
       {
         "number": 29,
         "firstSentence": "He said, 'I will call you tomorrow.'",
         "keyWord": "SAID",
-        "beforeGap": "He",
-        "afterGap": "call me the next day.",
-        "routes": [
-          {
-            "p1": "said",
-            "p2": "(that) he would"
-          }
+        "secondSentence": "He (1) _________ call me the next day.",
+        "solutions": [
+          "said (that) he would"
         ]
       },
       {
         "number": 30,
         "firstSentence": "I have never been on a cruise before.",
         "keyWord": "FIRST",
-        "beforeGap": "This would be",
-        "afterGap": "I go on a cruise.",
-        "routes": [
-          {
-            "p1": "the first",
-            "p2": "time"
-          }
+        "secondSentence": "This would be (1) _________ I go on a cruise.",
+        "solutions": [
+          "the first time"
         ]
       }
     ]

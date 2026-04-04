@@ -10,70 +10,64 @@
         "number": 25,
         "firstSentence": "They will announce the winner of the competition tomorrow.",
         "keyWord": "BE",
-        "beforeGap": "The winner of the competition",
-        "afterGap": "tomorrow.",
-        "routes": [
-          { "p1": "is", "p2": "going to be announced" },
-          { "p1": "will", "p2": "be announced" }
-        ],
-        "explanation": "Tests future passive structures."
+        "explanation": "Tests future passive structures.",
+        "secondSentence": "The winner of the competition (1) _________ tomorrow.",
+        "solutions": [
+          "is going to be announced",
+          "will be announced"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I didn't break the vase,’ said the little boy.",
         "keyWord": "DENIED",
-        "beforeGap": "The little boy",
-        "afterGap": "the vase.",
-        "routes": [
-          { "p1": "denied", "p2": "breaking" },
-          { "p1": "denied", "p2": "having broken" }
-        ],
-        "explanation": "Tests reporting verbs (deny) followed by the gerund."
+        "explanation": "Tests reporting verbs (deny) followed by the gerund.",
+        "secondSentence": "The little boy (1) _________ the vase.",
+        "solutions": [
+          "denied breaking",
+          "denied having broken"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I was only able to solve the puzzle because you gave me a hint.",
         "keyWord": "WITHOUT",
-        "beforeGap": "I wouldn't have been able to solve the puzzle",
-        "afterGap": "hint.",
-        "routes": [
-          { "p1": "without", "p2": "your" },
-          { "p1": "without", "p2": "the help of your" }
-        ],
-        "explanation": "Tests conditional meaning using 'without' as a replacement for 'if it hadn't been for'."
+        "explanation": "Tests conditional meaning using 'without' as a replacement for 'if it hadn't been for'.",
+        "secondSentence": "I wouldn't have been able to solve the puzzle (1) _________ hint.",
+        "solutions": [
+          "without your",
+          "without the help of your"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I'm sure that Mark was at the party last night.",
         "keyWord": "MUST",
-        "beforeGap": "Mark",
-        "afterGap": "at the party last night.",
-        "routes": [
-          { "p1": "must", "p2": "have been" }
-        ],
-        "explanation": "Tests modal perfect for certain past deduction."
+        "explanation": "Tests modal perfect for certain past deduction.",
+        "secondSentence": "Mark (1) _________ at the party last night.",
+        "solutions": [
+          "must have been"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I didn't realize who she was until she started speaking.",
         "keyWord": "ONLY",
-        "beforeGap": "It",
-        "afterGap": "she started speaking that I realized who she was.",
-        "routes": [
-          { "p1": "was", "p2": "only when" }
-        ],
-        "explanation": "Tests 'It was only when...' cleft sentences."
+        "explanation": "Tests 'It was only when...' cleft sentences.",
+        "secondSentence": "It (1) _________ she started speaking that I realized who she was.",
+        "solutions": [
+          "was only when"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "I find it difficult to get up early in the morning.",
         "keyWord": "USED",
-        "beforeGap": "I am",
-        "afterGap": "up early in the morning.",
-        "routes": [
-          { "p1": "not", "p2": "used to getting" }
-        ],
-        "explanation": "Tests 'be used to' + gerund for familiarity."
+        "explanation": "Tests 'be used to' + gerund for familiarity.",
+        "secondSentence": "I am (1) _________ up early in the morning.",
+        "solutions": [
+          "not used to getting"
+        ]
       }
     ]
   }

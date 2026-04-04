@@ -10,69 +10,63 @@
         "number": 25,
         "firstSentence": "They will announce the winner later today.",
         "keyWord": "BE",
-        "beforeGap": "The winner",
-        "afterGap": "later today.",
-        "routes": [
-          { "p1": "is", "p2": "going to be announced" },
-          { "p1": "will", "p2": "be announced" }
-        ],
-        "explanation": "Tests future passive voice."
+        "explanation": "Tests future passive voice.",
+        "secondSentence": "The winner (1) _________ later today.",
+        "solutions": [
+          "is going to be announced",
+          "will be announced"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I didn't break the window,’ the boy said.",
         "keyWord": "DENIED",
-        "beforeGap": "The boy",
-        "afterGap": "the window.",
-        "routes": [
-          { "p1": "denied", "p2": "breaking" },
-          { "p1": "denied", "p2": "having broken" }
-        ],
-        "explanation": "Tests reporting verb 'deny' + gerund."
+        "explanation": "Tests reporting verb 'deny' + gerund.",
+        "secondSentence": "The boy (1) _________ the window.",
+        "solutions": [
+          "denied breaking",
+          "denied having broken"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "The project was only successful because of your hard work.",
         "keyWord": "BUT",
-        "beforeGap": "The project would have failed",
-        "afterGap": "your hard work.",
-        "routes": [
-          { "p1": "but", "p2": "for" }
-        ],
-        "explanation": "Tests conditional meaning with 'but for'."
+        "explanation": "Tests conditional meaning with 'but for'.",
+        "secondSentence": "The project would have failed (1) _________ your hard work.",
+        "solutions": [
+          "but for"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I am certain he was happy with his results.",
         "keyWord": "MUST",
-        "beforeGap": "He",
-        "afterGap": "with his results.",
-        "routes": [
-          { "p1": "must", "p2": "have been happy" }
-        ],
-        "explanation": "Tests modal perfect for positive deduction."
+        "explanation": "Tests modal perfect for positive deduction.",
+        "secondSentence": "He (1) _________ with his results.",
+        "solutions": [
+          "must have been happy"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I have never seen such a spectacular performance.",
         "keyWord": "HAVE",
-        "beforeGap": "Never before",
-        "afterGap": "such a spectacular performance.",
-        "routes": [
-          { "p1": "have", "p2": "I seen" }
-        ],
-        "explanation": "Tests inversion with 'Never before'."
+        "explanation": "Tests inversion with 'Never before'.",
+        "secondSentence": "Never before (1) _________ such a spectacular performance.",
+        "solutions": [
+          "have I seen"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "I find it difficult to understand his logic.",
         "keyWord": "DIFFICULTY",
-        "beforeGap": "I have",
-        "afterGap": "his logic.",
-        "routes": [
-          { "p1": "difficulty", "p2": "(in) understanding" }
-        ],
-        "explanation": "Tests the phrase 'have difficulty (in) + gerund'."
+        "explanation": "Tests the phrase 'have difficulty (in) + gerund'.",
+        "secondSentence": "I have (1) _________ his logic.",
+        "solutions": [
+          "difficulty (in) understanding"
+        ]
       }
     ]
   }

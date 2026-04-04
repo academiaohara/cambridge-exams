@@ -10,70 +10,64 @@
         "number": 25,
         "firstSentence": "They think that the building was abandoned over fifty years ago.",
         "keyWord": "THOUGHT",
-        "beforeGap": "The building",
-        "afterGap": "abandoned over fifty years ago.",
-        "routes": [
-          { "p1": "is", "p2": "thought to have been" }
-        ],
-        "explanation": "Tests complex passive with perfect infinitive (is thought to have + been)."
+        "explanation": "Tests complex passive with perfect infinitive (is thought to have + been).",
+        "secondSentence": "The building (1) _________ abandoned over fifty years ago.",
+        "solutions": [
+          "is thought to have been"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I'm sorry I didn't get back to you sooner,’ said the manager.",
         "keyWord": "NOT",
-        "beforeGap": "The manager",
-        "afterGap": "back to me sooner.",
-        "routes": [
-          { "p1": "apologised", "p2": "for not getting" },
-          { "p1": "apologized", "p2": "for not getting" }
-        ],
-        "explanation": "Tests reporting verb 'apologise' + preposition 'for' + negative gerund."
+        "explanation": "Tests reporting verb 'apologise' + preposition 'for' + negative gerund.",
+        "secondSentence": "The manager (1) _________ back to me sooner.",
+        "solutions": [
+          "apologised for not getting",
+          "apologized for not getting"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "The match was cancelled because it rained heavily.",
         "keyWord": "BUT",
-        "beforeGap": "The match",
-        "afterGap": "the heavy rain.",
-        "routes": [
-          { "p1": "would", "p2": "have gone ahead but for" },
-          { "p1": "would", "p2": "not have been cancelled but for" }
-        ],
-        "explanation": "Tests conditional meaning using 'but for' (meaning 'if it hadn't been for')."
+        "explanation": "Tests conditional meaning using 'but for' (meaning 'if it hadn't been for').",
+        "secondSentence": "The match (1) _________ the heavy rain.",
+        "solutions": [
+          "would have gone ahead but for",
+          "would not have been cancelled but for"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I'm sure that the car didn't just disappear on its own.",
         "keyWord": "CAN'T",
-        "beforeGap": "The car",
-        "afterGap": "on its own.",
-        "routes": [
-          { "p1": "can't", "p2": "have just disappeared" }
-        ],
-        "explanation": "Tests modal perfect for negative deduction in the past."
+        "explanation": "Tests modal perfect for negative deduction in the past.",
+        "secondSentence": "The car (1) _________ on its own.",
+        "solutions": [
+          "can't have just disappeared"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "He had only just arrived at the office when the alarm went off.",
         "keyWord": "HAD",
-        "beforeGap": "Hardly",
-        "afterGap": "at the office when the alarm went off.",
-        "routes": [
-          { "p1": "had", "p2": "he arrived" }
-        ],
-        "explanation": "Tests inversion with the restrictive adverb 'Hardly'."
+        "explanation": "Tests inversion with the restrictive adverb 'Hardly'.",
+        "secondSentence": "Hardly (1) _________ at the office when the alarm went off.",
+        "solutions": [
+          "had he arrived"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "I haven't seen a movie as good as this one for a long time.",
         "keyWord": "SINCE",
-        "beforeGap": "It is a long time",
-        "afterGap": "such a good movie.",
-        "routes": [
-          { "p1": "since", "p2": "I have seen" },
-          { "p1": "since", "p2": "I last saw" }
-        ],
-        "explanation": "Tests 'It is [time] since...' structures with present perfect or past simple."
+        "explanation": "Tests 'It is [time] since...' structures with present perfect or past simple.",
+        "secondSentence": "It is a long time (1) _________ such a good movie.",
+        "solutions": [
+          "since I have seen",
+          "since I last saw"
+        ]
       }
     ]
   }

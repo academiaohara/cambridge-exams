@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "All guests must check out by midday.",
       "keyWord": "REQUIRED",
-      "beforeGap": "All guests are",
-      "afterGap": "by midday.",
-      "routes": [
-        {
-          "p1": "required",
-          "p2": "to check out"
-        }
+      "secondSentence": "All guests are (1) _________ by midday.",
+      "solutions": [
+        "required to check out"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "A cleaner tidied the office before we arrived.",
         "keyWord": "BEEN",
-        "beforeGap": "The office had",
-        "afterGap": "before we arrived.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "tidied"
-          }
+        "secondSentence": "The office had (1) _________ before we arrived.",
+        "solutions": [
+          "been tidied"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The book was so long that she took a month to read it.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that she took a month to read it.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a long book"
-          }
+        "secondSentence": "It was (1) _________ that she took a month to read it.",
+        "solutions": [
+          "such a long book"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She decided to stop working overtime.",
         "keyWord": "GAVE",
-        "beforeGap": "She",
-        "afterGap": "working overtime.",
-        "routes": [
-          {
-            "p1": "gave",
-            "p2": "up"
-          }
+        "secondSentence": "She (1) _________ working overtime.",
+        "solutions": [
+          "gave up"
         ]
       },
       {
         "number": 28,
         "firstSentence": "Tom is taller than any other boy in his class.",
         "keyWord": "TALLEST",
-        "beforeGap": "Tom is",
-        "afterGap": "in his class.",
-        "routes": [
-          {
-            "p1": "the tallest",
-            "p2": "boy"
-          }
+        "secondSentence": "Tom is (1) _________ in his class.",
+        "solutions": [
+          "the tallest boy"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Even though he practised every day, he didn't improve.",
         "keyWord": "DESPITE",
-        "beforeGap": "He didn't improve",
-        "afterGap": "every day.",
-        "routes": [
-          {
-            "p1": "despite",
-            "p2": "practising"
-          }
+        "secondSentence": "He didn't improve (1) _________ every day.",
+        "solutions": [
+          "despite practising"
         ]
       },
       {
         "number": 30,
         "firstSentence": "The manager said to them, 'Please arrive on time.'",
         "keyWord": "TOLD",
-        "beforeGap": "The manager",
-        "afterGap": "on time.",
-        "routes": [
-          {
-            "p1": "told",
-            "p2": "them to arrive"
-          }
+        "secondSentence": "The manager (1) _________ on time.",
+        "solutions": [
+          "told them to arrive"
         ]
       }
     ]

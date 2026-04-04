@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "They have never performed this symphony before.",
       "keyWord": "FIRST",
-      "beforeGap": "This is",
-      "afterGap": "this symphony has been performed.",
-      "routes": [
-        {
-          "p1": "the first",
-          "p2": "time"
-        }
+      "secondSentence": "This is (1) _________ this symphony has been performed.",
+      "solutions": [
+        "the first time"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Somebody is cleaning the windows right now.",
         "keyWord": "BEING",
-        "beforeGap": "The windows are",
-        "afterGap": "right now.",
-        "routes": [
-          {
-            "p1": "being",
-            "p2": "cleaned"
-          }
+        "secondSentence": "The windows are (1) _________ right now.",
+        "solutions": [
+          "being cleaned"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I'm certain they didn't break the rules.",
         "keyWord": "HAVE",
-        "beforeGap": "They can't",
-        "afterGap": "the rules.",
-        "routes": [
-          {
-            "p1": "have",
-            "p2": "broken"
-          }
+        "secondSentence": "They can't (1) _________ the rules.",
+        "solutions": [
+          "have broken"
         ]
       },
       {
         "number": 27,
         "firstSentence": "He said, 'I haven't seen you for ages.'",
         "keyWord": "SAID",
-        "beforeGap": "He",
-        "afterGap": "seen me for ages.",
-        "routes": [
-          {
-            "p1": "said",
-            "p2": "(that) he hadn't"
-          }
+        "secondSentence": "He (1) _________ seen me for ages.",
+        "solutions": [
+          "said (that) he hadn't"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She postponed the meeting until Friday.",
         "keyWord": "PUT",
-        "beforeGap": "She",
-        "afterGap": "the meeting until Friday.",
-        "routes": [
-          {
-            "p1": "put",
-            "p2": "off"
-          }
+        "secondSentence": "She (1) _________ the meeting until Friday.",
+        "solutions": [
+          "put off"
         ]
       },
       {
         "number": 29,
         "firstSentence": "This is the most delicious meal I have ever tasted.",
         "keyWord": "NEVER",
-        "beforeGap": "I have",
-        "afterGap": "such a delicious meal.",
-        "routes": [
-          {
-            "p1": "never",
-            "p2": "tasted"
-          }
+        "secondSentence": "I have (1) _________ such a delicious meal.",
+        "solutions": [
+          "never tasted"
         ]
       },
       {
         "number": 30,
         "firstSentence": "He started learning to drive six months ago.",
         "keyWord": "FOR",
-        "beforeGap": "He has been learning to drive",
-        "afterGap": "months.",
-        "routes": [
-          {
-            "p1": "for",
-            "p2": "six"
-          }
+        "secondSentence": "He has been learning to drive (1) _________ months.",
+        "solutions": [
+          "for six"
         ]
       }
     ]

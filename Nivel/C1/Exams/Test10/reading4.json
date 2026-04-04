@@ -10,65 +10,59 @@
         "number": 25,
         "firstSentence": "They will probably announce the results of the competition tomorrow.",
         "keyWord": "LIKELY",
-        "beforeGap": "The results of the competition",
-        "afterGap": "tomorrow.",
-        "routes": [
-          { "p1": "are", "p2": "likely to be announced" }
+        "secondSentence": "The results of the competition (1) _________ tomorrow.",
+        "solutions": [
+          "are likely to be announced"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I'm sure he didn't write that letter because it's not his handwriting.",
         "keyWord": "CAN'T",
-        "beforeGap": "He",
-        "afterGap": "that letter because it's not his handwriting.",
-        "routes": [
-          { "p1": "can't", "p2": "have written" },
-          { "p1": "cannot", "p2": "have written" }
+        "secondSentence": "He (1) _________ that letter because it's not his handwriting.",
+        "solutions": [
+          "can't have written",
+          "cannot have written"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The match was postponed because the pitch was waterlogged.",
         "keyWord": "PUT",
-        "beforeGap": "The match",
-        "afterGap": "the pitch was waterlogged.",
-        "routes": [
-          { "p1": "was", "p2": "put off because" }
+        "secondSentence": "The match (1) _________ the pitch was waterlogged.",
+        "solutions": [
+          "was put off because"
         ]
       },
       {
         "number": 28,
         "firstSentence": "I regret not taking your advice earlier.",
         "keyWord": "ONLY",
-        "beforeGap": "If",
-        "afterGap": "your advice earlier.",
-        "routes": [
-          { "p1": "only", "p2": "I had taken" },
-          { "p1": "only", "p2": "I'd taken" }
+        "secondSentence": "If (1) _________ your advice earlier.",
+        "solutions": [
+          "only I had taken",
+          "only I'd taken"
         ]
       },
       {
         "number": 29,
         "firstSentence": "It was very kind of you to help me with my luggage.",
         "keyWord": "APPRECIATE",
-        "beforeGap": "I",
-        "afterGap": "me with my luggage.",
-        "routes": [
-          { "p1": "really", "p2": "appreciate your helping" },
-          { "p1": "really", "p2": "appreciate you helping" },
-          { "p1": "do", "p2": "appreciate your helping" }
+        "secondSentence": "I (1) _________ me with my luggage.",
+        "solutions": [
+          "really appreciate your helping",
+          "really appreciate you helping",
+          "do appreciate your helping"
         ]
       },
       {
         "number": 30,
         "firstSentence": "He is so intelligent that he can solve any problem.",
         "keyWord": "SUCH",
-        "beforeGap": "He is",
-        "afterGap": "that he can solve any problem.",
-        "routes": [
-          { "p1": "such", "p2": "an intelligent person" },
-          { "p1": "such", "p2": "an intelligent man" }
+        "secondSentence": "He is (1) _________ that he can solve any problem.",
+        "solutions": [
+          "such an intelligent person",
+          "such an intelligent man"
         ]
       }
     ]

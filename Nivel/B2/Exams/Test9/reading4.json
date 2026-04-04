@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "The organisers postponed the match due to rain.",
       "keyWord": "PUT",
-      "beforeGap": "The match was",
-      "afterGap": "due to rain.",
-      "routes": [
-        {
-          "p1": "put",
-          "p2": "off"
-        }
+      "secondSentence": "The match was (1) _________ due to rain.",
+      "solutions": [
+        "put off"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "This is the first time I have visited Tokyo.",
         "keyWord": "NEVER",
-        "beforeGap": "I have",
-        "afterGap": "Tokyo before.",
-        "routes": [
-          {
-            "p1": "never",
-            "p2": "visited"
-          }
+        "secondSentence": "I have (1) _________ Tokyo before.",
+        "solutions": [
+          "never visited"
         ]
       },
       {
         "number": 26,
         "firstSentence": "Mark's car is not as expensive as Pete's.",
         "keyWord": "MORE",
-        "beforeGap": "Pete's car is",
-        "afterGap": "Mark's.",
-        "routes": [
-          {
-            "p1": "more expensive",
-            "p2": "than"
-          }
+        "secondSentence": "Pete's car is (1) _________ Mark's.",
+        "solutions": [
+          "more expensive than"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She was in the habit of drinking two coffees a day.",
         "keyWord": "USED",
-        "beforeGap": "She",
-        "afterGap": "two coffees a day.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "drink"
-          }
+        "secondSentence": "She (1) _________ two coffees a day.",
+        "solutions": [
+          "used to drink"
         ]
       },
       {
         "number": 28,
         "firstSentence": "Without her help, I wouldn't have passed the exam.",
         "keyWord": "WOULD",
-        "beforeGap": "If she hadn't helped me, I",
-        "afterGap": "the exam.",
-        "routes": [
-          {
-            "p1": "wouldn't",
-            "p2": "have passed"
-          }
+        "secondSentence": "If she hadn't helped me, I (1) _________ the exam.",
+        "solutions": [
+          "wouldn't have passed"
         ]
       },
       {
         "number": 29,
         "firstSentence": "They are currently building a new hospital.",
         "keyWord": "BEING",
-        "beforeGap": "A new hospital is",
-        "afterGap": "at the moment.",
-        "routes": [
-          {
-            "p1": "being",
-            "p2": "built"
-          }
+        "secondSentence": "A new hospital is (1) _________ at the moment.",
+        "solutions": [
+          "being built"
         ]
       },
       {
         "number": 30,
         "firstSentence": "The manager said to him, 'Don't be late again.'",
         "keyWord": "TOLD",
-        "beforeGap": "The manager",
-        "afterGap": "late again.",
-        "routes": [
-          {
-            "p1": "told",
-            "p2": "him not to be"
-          }
+        "secondSentence": "The manager (1) _________ late again.",
+        "solutions": [
+          "told him not to be"
         ]
       }
     ]

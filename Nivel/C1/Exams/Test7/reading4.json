@@ -10,61 +10,55 @@
         "number": 25,
         "firstSentence": "It's a waste of time to try and convince her.",
         "keyWord": "POINT",
-        "beforeGap": "There",
-        "afterGap": "to convince her.",
-        "routes": [
-          { "p1": "is", "p2": "no point (in) trying" }
+        "secondSentence": "There (1) _________ to convince her.",
+        "solutions": [
+          "is no point (in) trying"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The company's profits have fallen significantly this year.",
         "keyWord": "FALL",
-        "beforeGap": "There",
-        "afterGap": "the company's profits this year.",
-        "routes": [
-          { "p1": "has", "p2": "been a significant fall in" }
+        "secondSentence": "There (1) _________ the company's profits this year.",
+        "solutions": [
+          "has been a significant fall in"
         ]
       },
       {
         "number": 27,
         "firstSentence": "He didn't mention the problem because he didn't want to worry you.",
         "keyWord": "FEAR",
-        "beforeGap": "He didn't mention the problem",
-        "afterGap": "you.",
-        "routes": [
-          { "p1": "for", "p2": "fear of worrying" }
+        "secondSentence": "He didn't mention the problem (1) _________ you.",
+        "solutions": [
+          "for fear of worrying"
         ]
       },
       {
         "number": 28,
         "firstSentence": "The hotel was much more expensive than we had expected.",
         "keyWord": "NEARLY",
-        "beforeGap": "The hotel was",
-        "afterGap": "we had expected.",
-        "routes": [
-          { "p1": "not", "p2": "nearly as cheap as" }
+        "secondSentence": "The hotel was (1) _________ we had expected.",
+        "solutions": [
+          "not nearly as cheap as"
         ]
       },
       {
         "number": 29,
         "firstSentence": "They believe that the thief entered through the window.",
         "keyWord": "HAVE",
-        "beforeGap": "The thief is",
-        "afterGap": "through the window.",
-        "routes": [
-          { "p1": "thought", "p2": "to have entered" },
-          { "p1": "believed", "p2": "to have entered" }
+        "secondSentence": "The thief is (1) _________ through the window.",
+        "solutions": [
+          "thought to have entered",
+          "believed to have entered"
         ]
       },
       {
         "number": 30,
         "firstSentence": "You can use my car, but you must drive carefully.",
         "keyWord": "PROVIDED",
-        "beforeGap": "You can use my car",
-        "afterGap": "carefully.",
-        "routes": [
-          { "p1": "provided", "p2": "(that) you drive" }
+        "secondSentence": "You can use my car (1) _________ carefully.",
+        "solutions": [
+          "provided (that) you drive"
         ]
       }
     ]

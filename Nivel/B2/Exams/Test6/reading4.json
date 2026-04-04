@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "Nobody has watered the plants this week.",
       "keyWord": "BEEN",
-      "beforeGap": "The plants haven't",
-      "afterGap": "this week.",
-      "routes": [
-        {
-          "p1": "been",
-          "p2": "watered"
-        }
+      "secondSentence": "The plants haven't (1) _________ this week.",
+      "solutions": [
+        "been watered"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "It's possible that he forgot about the appointment.",
         "keyWord": "MIGHT",
-        "beforeGap": "He",
-        "afterGap": "about the appointment.",
-        "routes": [
-          {
-            "p1": "might",
-            "p2": "have forgotten"
-          }
+        "secondSentence": "He (1) _________ about the appointment.",
+        "solutions": [
+          "might have forgotten"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The party was so crowded that we left early.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that we left early.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a crowded party"
-          }
+        "secondSentence": "It was (1) _________ that we left early.",
+        "solutions": [
+          "such a crowded party"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She established a new business last year.",
         "keyWord": "SET",
-        "beforeGap": "She",
-        "afterGap": "a new business last year.",
-        "routes": [
-          {
-            "p1": "set",
-            "p2": "up"
-          }
+        "secondSentence": "She (1) _________ a new business last year.",
+        "solutions": [
+          "set up"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She asked me, 'Are you feeling better?'",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "I was feeling better.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "me if"
-          }
+        "secondSentence": "She (1) _________ I was feeling better.",
+        "solutions": [
+          "asked me if"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Without money, you can't buy food.",
         "keyWord": "WOULD",
-        "beforeGap": "If you had no money, you",
-        "afterGap": "buy food.",
-        "routes": [
-          {
-            "p1": "wouldn't",
-            "p2": "be able to"
-          }
+        "secondSentence": "If you had no money, you (1) _________ buy food.",
+        "solutions": [
+          "wouldn't be able to"
         ]
       },
       {
         "number": 30,
         "firstSentence": "I have never tried paragliding before.",
         "keyWord": "FIRST",
-        "beforeGap": "This is",
-        "afterGap": "I have tried paragliding.",
-        "routes": [
-          {
-            "p1": "the first",
-            "p2": "time"
-          }
+        "secondSentence": "This is (1) _________ I have tried paragliding.",
+        "solutions": [
+          "the first time"
         ]
       }
     ]

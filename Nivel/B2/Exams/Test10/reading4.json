@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "A famous artist designed that sculpture.",
       "keyWord": "WAS",
-      "beforeGap": "That sculpture",
-      "afterGap": "by a famous artist.",
-      "routes": [
-        {
-          "p1": "was",
-          "p2": "designed"
-        }
+      "secondSentence": "That sculpture (1) _________ by a famous artist.",
+      "solutions": [
+        "was designed"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "I had my watch repaired at the jeweller's.",
         "keyWord": "REPAIRED",
-        "beforeGap": "I got",
-        "afterGap": "at the jeweller's.",
-        "routes": [
-          {
-            "p1": "my watch",
-            "p2": "repaired"
-          }
+        "secondSentence": "I got (1) _________ at the jeweller's.",
+        "solutions": [
+          "my watch repaired"
         ]
       },
       {
         "number": 26,
         "firstSentence": "The soup was so hot that I couldn't eat it.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that I couldn't eat it.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "hot soup"
-          }
+        "secondSentence": "It was (1) _________ that I couldn't eat it.",
+        "solutions": [
+          "such hot soup"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She didn't start the new job because she was too scared.",
         "keyWord": "ENOUGH",
-        "beforeGap": "She wasn't brave",
-        "afterGap": "the new job.",
-        "routes": [
-          {
-            "p1": "enough",
-            "p2": "to start"
-          }
+        "secondSentence": "She wasn't brave (1) _________ the new job.",
+        "solutions": [
+          "enough to start"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He has been living in Canada since 2018.",
         "keyWord": "MOVED",
-        "beforeGap": "He",
-        "afterGap": "Canada in 2018.",
-        "routes": [
-          {
-            "p1": "moved",
-            "p2": "to"
-          }
+        "secondSentence": "He (1) _________ Canada in 2018.",
+        "solutions": [
+          "moved to"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Can you take care of the dog this weekend?",
         "keyWord": "LOOK",
-        "beforeGap": "Can you",
-        "afterGap": "the dog this weekend?",
-        "routes": [
-          {
-            "p1": "look",
-            "p2": "after"
-          }
+        "secondSentence": "Can you (1) _________ the dog this weekend?",
+        "solutions": [
+          "look after"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She told me, 'I am visiting my aunt tomorrow.'",
         "keyWord": "SAID",
-        "beforeGap": "She",
-        "afterGap": "visiting her aunt the next day.",
-        "routes": [
-          {
-            "p1": "said",
-            "p2": "(that) she was"
-          }
+        "secondSentence": "She (1) _________ visiting her aunt the next day.",
+        "solutions": [
+          "said (that) she was"
         ]
       }
     ]

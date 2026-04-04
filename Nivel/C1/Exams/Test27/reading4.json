@@ -10,69 +10,63 @@
         "number": 25,
         "firstSentence": "The city council is going to build a new library.",
         "keyWord": "BUILT",
-        "beforeGap": "A new library is",
-        "afterGap": "by the city council.",
-        "routes": [
-          { "p1": "going", "p2": "to be built" }
-        ],
-        "explanation": "Tests future passive voice."
+        "explanation": "Tests future passive voice.",
+        "secondSentence": "A new library is (1) _________ by the city council.",
+        "solutions": [
+          "going to be built"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I'll pay you back on Friday,’ he said to me.",
         "keyWord": "PROMISED",
-        "beforeGap": "He",
-        "afterGap": "on Friday.",
-        "routes": [
-          { "p1": "promised", "p2": "to pay me back" }
-        ],
-        "explanation": "Tests reporting verbs with infinitive structures."
+        "explanation": "Tests reporting verbs with infinitive structures.",
+        "secondSentence": "He (1) _________ on Friday.",
+        "solutions": [
+          "promised to pay me back"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "If you don't start saving now, you won't be able to afford a holiday.",
         "keyWord": "UNLESS",
-        "beforeGap": "You won't be able to afford a holiday",
-        "afterGap": "saving now.",
-        "routes": [
-          { "p1": "unless", "p2": "you start" }
-        ],
-        "explanation": "Tests 'unless' in first conditional contexts."
+        "explanation": "Tests 'unless' in first conditional contexts.",
+        "secondSentence": "You won't be able to afford a holiday (1) _________ saving now.",
+        "solutions": [
+          "unless you start"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I am certain that the flight was cancelled due to the fog.",
         "keyWord": "MUST",
-        "beforeGap": "The flight",
-        "afterGap": "due to the fog.",
-        "routes": [
-          { "p1": "must", "p2": "have been cancelled" }
-        ],
-        "explanation": "Tests modal perfect passive for logical deduction."
+        "explanation": "Tests modal perfect passive for logical deduction.",
+        "secondSentence": "The flight (1) _________ due to the fog.",
+        "solutions": [
+          "must have been cancelled"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "I only realized I’d forgotten my wallet when I reached the checkout.",
         "keyWord": "DID",
-        "beforeGap": "Only when I reached the checkout",
-        "afterGap": "I’d forgotten my wallet.",
-        "routes": [
-          { "p1": "did", "p2": "I realize (that)" },
-          { "p1": "did", "p2": "I realise (that)" }
-        ],
-        "explanation": "Tests inversion with 'Only when'."
+        "explanation": "Tests inversion with 'Only when'.",
+        "secondSentence": "Only when I reached the checkout (1) _________ I’d forgotten my wallet.",
+        "solutions": [
+          "did I realize (that)",
+          "did I realise (that)"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "The test was too difficult for me to complete in time.",
         "keyWord": "ENOUGH",
-        "beforeGap": "The test",
-        "afterGap": "for me to complete in time.",
-        "routes": [
-          { "p1": "was", "p2": "not easy enough" },
-          { "p1": "wasn't", "p2": "easy enough" }
-        ],
-        "explanation": "Tests 'enough' vs 'too' with adjectives."
+        "explanation": "Tests 'enough' vs 'too' with adjectives.",
+        "secondSentence": "The test (1) _________ for me to complete in time.",
+        "solutions": [
+          "was not easy enough",
+          "wasn't easy enough"
+        ]
       }
     ]
   }

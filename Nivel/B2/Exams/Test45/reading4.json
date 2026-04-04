@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "He went on talking despite the interruptions.",
       "keyWord": "CONTINUED",
-      "beforeGap": "He",
-      "afterGap": "despite the interruptions.",
-      "routes": [
-        {
-          "p1": "continued",
-          "p2": "talking"
-        }
+      "secondSentence": "He (1) _________ despite the interruptions.",
+      "solutions": [
+        "continued talking"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "The contractor built the extension in just six weeks.",
         "keyWord": "WAS",
-        "beforeGap": "The extension",
-        "afterGap": "in just six weeks.",
-        "routes": [
-          {
-            "p1": "was",
-            "p2": "built"
-          }
+        "secondSentence": "The extension (1) _________ in just six weeks.",
+        "solutions": [
+          "was built"
         ]
       },
       {
         "number": 26,
         "firstSentence": "It's possible that she missed the flight.",
         "keyWord": "MIGHT",
-        "beforeGap": "She",
-        "afterGap": "the flight.",
-        "routes": [
-          {
-            "p1": "might",
-            "p2": "have missed"
-          }
+        "secondSentence": "She (1) _________ the flight.",
+        "solutions": [
+          "might have missed"
         ]
       },
       {
         "number": 27,
         "firstSentence": "This is the funniest programme I've ever seen.",
         "keyWord": "NEVER",
-        "beforeGap": "I've",
-        "afterGap": "such a funny programme.",
-        "routes": [
-          {
-            "p1": "never",
-            "p2": "seen"
-          }
+        "secondSentence": "I've (1) _________ such a funny programme.",
+        "solutions": [
+          "never seen"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She asked, 'Could you open the door, please?'",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "the door.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "me to open"
-          }
+        "secondSentence": "She (1) _________ the door.",
+        "solutions": [
+          "asked me to open"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Although the exam was hard, most students passed.",
         "keyWord": "DESPITE",
-        "beforeGap": "Most students passed",
-        "afterGap": "hard.",
-        "routes": [
-          {
-            "p1": "despite",
-            "p2": "the exam being"
-          }
+        "secondSentence": "Most students passed (1) _________ hard.",
+        "solutions": [
+          "despite the exam being"
         ]
       },
       {
         "number": 30,
         "firstSentence": "He started collecting rare coins at the age of ten.",
         "keyWord": "SINCE",
-        "beforeGap": "He has been collecting rare coins",
-        "afterGap": "ten.",
-        "routes": [
-          {
-            "p1": "since",
-            "p2": "he was"
-          }
+        "secondSentence": "He has been collecting rare coins (1) _________ ten.",
+        "solutions": [
+          "since he was"
         ]
       }
     ]

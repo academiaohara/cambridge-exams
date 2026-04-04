@@ -10,70 +10,64 @@
         "number": 25,
         "firstSentence": "They are going to renovate the old library next year.",
         "keyWord": "HAVE",
-        "beforeGap": "The city council plans",
-        "afterGap": "next year.",
-        "routes": [
-          { "p1": "to", "p2": "have the old library renovated" }
-        ],
-        "explanation": "Tests causative 'have something done'."
+        "explanation": "Tests causative 'have something done'.",
+        "secondSentence": "The city council plans (1) _________ next year.",
+        "solutions": [
+          "to have the old library renovated"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I'll help you with the project,’ said David.",
         "keyWord": "OFFERED",
-        "beforeGap": "David",
-        "afterGap": "with the project.",
-        "routes": [
-          { "p1": "offered", "p2": "to help me" },
-          { "p1": "offered", "p2": "to give me a hand" }
-        ],
-        "explanation": "Tests reporting verbs followed by an infinitive."
+        "explanation": "Tests reporting verbs followed by an infinitive.",
+        "secondSentence": "David (1) _________ with the project.",
+        "solutions": [
+          "offered to help me",
+          "offered to give me a hand"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I didn't listen to her, so I made a huge mistake.",
         "keyWord": "IF",
-        "beforeGap": "I wouldn't have made a huge mistake",
-        "afterGap": "to her.",
-        "routes": [
-          { "p1": "if", "p2": "I had listened" },
-          { "p1": "if", "p2": "I'd listened" }
-        ],
-        "explanation": "Tests third conditional for past hypothetical situations."
+        "explanation": "Tests third conditional for past hypothetical situations.",
+        "secondSentence": "I wouldn't have made a huge mistake (1) _________ to her.",
+        "solutions": [
+          "if I had listened",
+          "if I'd listened"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I'm certain they were very disappointed by the results.",
         "keyWord": "MUST",
-        "beforeGap": "They",
-        "afterGap": "by the results.",
-        "routes": [
-          { "p1": "must", "p2": "have been very disappointed" }
-        ],
-        "explanation": "Tests modal perfect for certain deduction in the past."
+        "explanation": "Tests modal perfect for certain deduction in the past.",
+        "secondSentence": "They (1) _________ by the results.",
+        "solutions": [
+          "must have been very disappointed"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "You should never reveal your password to anyone.",
         "keyWord": "CIRCUMSTANCES",
-        "beforeGap": "Under",
-        "afterGap": "reveal your password to anyone.",
-        "routes": [
-          { "p1": "no", "p2": "circumstances should you" }
-        ],
-        "explanation": "Tests inversion with negative prepositional phrases (Under no circumstances)."
+        "explanation": "Tests inversion with negative prepositional phrases (Under no circumstances).",
+        "secondSentence": "Under (1) _________ reveal your password to anyone.",
+        "solutions": [
+          "no circumstances should you"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "It's too cold to go swimming today.",
         "keyWord": "WARM",
-        "beforeGap": "It is",
-        "afterGap": "to go swimming today.",
-        "routes": [
-          { "p1": "not", "p2": "warm enough" },
-          { "p1": "n't", "p2": "warm enough" }
-        ],
-        "explanation": "Tests 'not + adjective + enough' as an alternative to 'too + adjective'."
+        "explanation": "Tests 'not + adjective + enough' as an alternative to 'too + adjective'.",
+        "secondSentence": "It is (1) _________ to go swimming today.",
+        "solutions": [
+          "not warm enough",
+          "n't warm enough"
+        ]
       }
     ]
   }

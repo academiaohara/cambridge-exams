@@ -10,70 +10,64 @@
         "number": 25,
         "firstSentence": "They are going to demolish the old factory next month.",
         "keyWord": "PULLED",
-        "beforeGap": "The old factory is",
-        "afterGap": "next month.",
-        "routes": [
-          { "p1": "going to", "p2": "be pulled down" },
-          { "p1": "due to", "p2": "be pulled down" }
-        ],
-        "explanation": "Tests future passive with phrasal verbs."
+        "explanation": "Tests future passive with phrasal verbs.",
+        "secondSentence": "The old factory is (1) _________ next month.",
+        "solutions": [
+          "going to be pulled down",
+          "due to be pulled down"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I'm sorry I'm late,’ said Thomas.",
         "keyWord": "APOLOGISED",
-        "beforeGap": "Thomas",
-        "afterGap": "late.",
-        "routes": [
-          { "p1": "apologised", "p2": "for being" },
-          { "p1": "apologized", "p2": "for being" }
-        ],
-        "explanation": "Tests reporting verbs with prepositions and gerunds."
+        "explanation": "Tests reporting verbs with prepositions and gerunds.",
+        "secondSentence": "Thomas (1) _________ late.",
+        "solutions": [
+          "apologised for being",
+          "apologized for being"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "It was only because of his help that I passed the exam.",
         "keyWord": "BUT",
-        "beforeGap": "I would not have passed the exam",
-        "afterGap": "help.",
-        "routes": [
-          { "p1": "but", "p2": "for his" },
-          { "p1": "but", "p2": "for the help he gave" }
-        ],
-        "explanation": "Tests conditional meaning with the structure 'but for'."
+        "explanation": "Tests conditional meaning with the structure 'but for'.",
+        "secondSentence": "I would not have passed the exam (1) _________ help.",
+        "solutions": [
+          "but for his",
+          "but for the help he gave"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I'm certain that the heavy rain caused the flooding.",
         "keyWord": "MUST",
-        "beforeGap": "The flooding",
-        "afterGap": "by the heavy rain.",
-        "routes": [
-          { "p1": "must", "p2": "have been caused" }
-        ],
-        "explanation": "Tests modal perfect in the passive voice."
+        "explanation": "Tests modal perfect in the passive voice.",
+        "secondSentence": "The flooding (1) _________ by the heavy rain.",
+        "solutions": [
+          "must have been caused"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "As soon as the tennis players went onto the court, it started to rain.",
         "keyWord": "HAD",
-        "beforeGap": "No",
-        "afterGap": "onto the court than it started to rain.",
-        "routes": [
-          { "p1": "sooner", "p2": "had the players gone" }
-        ],
-        "explanation": "Tests negative inversion (No sooner had... than)."
+        "explanation": "Tests negative inversion (No sooner had... than).",
+        "secondSentence": "No (1) _________ onto the court than it started to rain.",
+        "solutions": [
+          "sooner had the players gone"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "It's a waste of time to try and convince him to change his mind.",
         "keyWord": "POINT",
-        "beforeGap": "There is",
-        "afterGap": "to convince him to change his mind.",
-        "routes": [
-          { "p1": "no", "p2": "point (in) trying" }
-        ],
-        "explanation": "Tests the gerund phrase 'There is no point (in) doing'."
+        "explanation": "Tests the gerund phrase 'There is no point (in) doing'.",
+        "secondSentence": "There is (1) _________ to convince him to change his mind.",
+        "solutions": [
+          "no point (in) trying"
+        ]
       }
     ]
   }

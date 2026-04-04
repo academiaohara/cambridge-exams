@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "We discovered an old map in the attic.",
       "keyWord": "CAME",
-      "beforeGap": "We",
-      "afterGap": "an old map in the attic.",
-      "routes": [
-        {
-          "p1": "came",
-          "p2": "across"
-        }
+      "secondSentence": "We (1) _________ an old map in the attic.",
+      "solutions": [
+        "came across"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "A cleaner cleans the office every day.",
         "keyWord": "IS",
-        "beforeGap": "The office",
-        "afterGap": "every day.",
-        "routes": [
-          {
-            "p1": "is",
-            "p2": "cleaned"
-          }
+        "secondSentence": "The office (1) _________ every day.",
+        "solutions": [
+          "is cleaned"
         ]
       },
       {
         "number": 26,
         "firstSentence": "This is the most interesting book I have ever read.",
         "keyWord": "NEVER",
-        "beforeGap": "I have",
-        "afterGap": "such an interesting book.",
-        "routes": [
-          {
-            "p1": "never",
-            "p2": "read"
-          }
+        "secondSentence": "I have (1) _________ such an interesting book.",
+        "solutions": [
+          "never read"
         ]
       },
       {
         "number": 27,
         "firstSentence": "He's too proud to say sorry.",
         "keyWord": "HUMBLE",
-        "beforeGap": "He isn't",
-        "afterGap": "to say sorry.",
-        "routes": [
-          {
-            "p1": "humble",
-            "p2": "enough"
-          }
+        "secondSentence": "He isn't (1) _________ to say sorry.",
+        "solutions": [
+          "humble enough"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She was in the habit of going jogging before breakfast.",
         "keyWord": "USED",
-        "beforeGap": "She",
-        "afterGap": "jogging before breakfast.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "go"
-          }
+        "secondSentence": "She (1) _________ jogging before breakfast.",
+        "solutions": [
+          "used to go"
         ]
       },
       {
         "number": 29,
         "firstSentence": "You'll only get a discount if you're a member.",
         "keyWord": "PROVIDED",
-        "beforeGap": "You'll get a discount",
-        "afterGap": "a member.",
-        "routes": [
-          {
-            "p1": "provided",
-            "p2": "you're"
-          }
+        "secondSentence": "You'll get a discount (1) _________ a member.",
+        "solutions": [
+          "provided you're"
         ]
       },
       {
         "number": 30,
         "firstSentence": "She asked him, 'What time did you arrive?'",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "had arrived.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "him what time he"
-          }
+        "secondSentence": "She (1) _________ had arrived.",
+        "solutions": [
+          "asked him what time he"
         ]
       }
     ]

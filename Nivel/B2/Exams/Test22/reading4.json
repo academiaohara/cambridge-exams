@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "She found an old photo album by chance.",
       "keyWord": "CAME",
-      "beforeGap": "She",
-      "afterGap": "an old photo album.",
-      "routes": [
-        {
-          "p1": "came",
-          "p2": "across"
-        }
+      "secondSentence": "She (1) _________ an old photo album.",
+      "solutions": [
+        "came across"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "A famous chef cooked all the dishes.",
         "keyWord": "WERE",
-        "beforeGap": "All the dishes",
-        "afterGap": "by a famous chef.",
-        "routes": [
-          {
-            "p1": "were",
-            "p2": "cooked"
-          }
+        "secondSentence": "All the dishes (1) _________ by a famous chef.",
+        "solutions": [
+          "were cooked"
         ]
       },
       {
         "number": 26,
         "firstSentence": "He is not as hard-working as his colleague.",
         "keyWord": "HARDER",
-        "beforeGap": "His colleague works",
-        "afterGap": "him.",
-        "routes": [
-          {
-            "p1": "harder",
-            "p2": "than"
-          }
+        "secondSentence": "His colleague works (1) _________ him.",
+        "solutions": [
+          "harder than"
         ]
       },
       {
         "number": 27,
         "firstSentence": "She was too tired to go to the party.",
         "keyWord": "AWAKE",
-        "beforeGap": "She wasn't",
-        "afterGap": "to go to the party.",
-        "routes": [
-          {
-            "p1": "awake",
-            "p2": "enough"
-          }
+        "secondSentence": "She wasn't (1) _________ to go to the party.",
+        "solutions": [
+          "awake enough"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He forced the children to tidy their rooms.",
         "keyWord": "MADE",
-        "beforeGap": "He",
-        "afterGap": "their rooms.",
-        "routes": [
-          {
-            "p1": "made",
-            "p2": "the children tidy"
-          }
+        "secondSentence": "He (1) _________ their rooms.",
+        "solutions": [
+          "made the children tidy"
         ]
       },
       {
         "number": 29,
         "firstSentence": "She no longer takes the bus to school.",
         "keyWord": "USED",
-        "beforeGap": "She",
-        "afterGap": "to school.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "take the bus"
-          }
+        "secondSentence": "She (1) _________ to school.",
+        "solutions": [
+          "used to take the bus"
         ]
       },
       {
         "number": 30,
         "firstSentence": "Even though it was cold, they sat outside.",
         "keyWord": "DESPITE",
-        "beforeGap": "They sat outside",
-        "afterGap": "cold.",
-        "routes": [
-          {
-            "p1": "despite",
-            "p2": "the"
-          }
+        "secondSentence": "They sat outside (1) _________ cold.",
+        "solutions": [
+          "despite the"
         ]
       }
     ]

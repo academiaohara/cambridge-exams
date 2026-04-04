@@ -10,68 +10,62 @@
         "number": 25,
         "firstSentence": "They think the manuscript was written in the 14th century.",
         "keyWord": "BELIEVED",
-        "beforeGap": "The manuscript",
-        "afterGap": "written in the 14th century.",
-        "routes": [
-          { "p1": "is", "p2": "believed to have been" }
-        ],
-        "explanation": "Tests complex passive with perfect infinitive."
+        "explanation": "Tests complex passive with perfect infinitive.",
+        "secondSentence": "The manuscript (1) _________ written in the 14th century.",
+        "solutions": [
+          "is believed to have been"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘I'll definitely drive you to the airport,’ said my uncle.",
         "keyWord": "INSISTED",
-        "beforeGap": "My uncle",
-        "afterGap": "me to the airport.",
-        "routes": [
-          { "p1": "insisted", "p2": "on driving" }
-        ],
-        "explanation": "Tests reporting verb 'insist' + 'on' + gerund."
+        "explanation": "Tests reporting verb 'insist' + 'on' + gerund.",
+        "secondSentence": "My uncle (1) _________ me to the airport.",
+        "solutions": [
+          "insisted on driving"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I didn't know the road was closed, so I was late for work.",
         "keyWord": "IF",
-        "beforeGap": "I wouldn't have been late for work",
-        "afterGap": "the road was closed.",
-        "routes": [
-          { "p1": "if", "p2": "I had known (that)" },
-          { "p1": "if", "p2": "I'd known (that)" }
-        ],
-        "explanation": "Tests third conditional for hypothetical past."
+        "explanation": "Tests third conditional for hypothetical past.",
+        "secondSentence": "I wouldn't have been late for work (1) _________ the road was closed.",
+        "solutions": [
+          "if I had known (that)",
+          "if I'd known (that)"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I'm sure he didn't see the 'No Parking' sign.",
         "keyWord": "CAN'T",
-        "beforeGap": "He",
-        "afterGap": "the 'No Parking' sign.",
-        "routes": [
-          { "p1": "can't", "p2": "have seen" }
-        ],
-        "explanation": "Tests modal perfect for negative past deduction."
+        "explanation": "Tests modal perfect for negative past deduction.",
+        "secondSentence": "He (1) _________ the 'No Parking' sign.",
+        "solutions": [
+          "can't have seen"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "As soon as the meeting started, the fire alarm went off.",
         "keyWord": "HAD",
-        "beforeGap": "No sooner",
-        "afterGap": "than the fire alarm went off.",
-        "routes": [
-          { "p1": "had", "p2": "the meeting started" }
-        ],
-        "explanation": "Tests inversion with 'No sooner'."
+        "explanation": "Tests inversion with 'No sooner'.",
+        "secondSentence": "No sooner (1) _________ than the fire alarm went off.",
+        "solutions": [
+          "had the meeting started"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "It's not worth trying to fix that old computer.",
         "keyWord": "POINT",
-        "beforeGap": "There",
-        "afterGap": "trying to fix that old computer.",
-        "routes": [
-          { "p1": "is", "p2": "no point (in)" }
-        ],
-        "explanation": "Tests the expression 'There is no point (in) + -ing'."
+        "explanation": "Tests the expression 'There is no point (in) + -ing'.",
+        "secondSentence": "There (1) _________ trying to fix that old computer.",
+        "solutions": [
+          "is no point (in)"
+        ]
       }
     ]
   }

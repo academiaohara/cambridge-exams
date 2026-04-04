@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "They translated the novel into twelve languages.",
       "keyWord": "WAS",
-      "beforeGap": "The novel",
-      "afterGap": "into twelve languages.",
-      "routes": [
-        {
-          "p1": "was",
-          "p2": "translated"
-        }
+      "secondSentence": "The novel (1) _________ into twelve languages.",
+      "solutions": [
+        "was translated"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "It would be a good idea to see a doctor.",
         "keyWord": "OUGHT",
-        "beforeGap": "You",
-        "afterGap": "a doctor.",
-        "routes": [
-          {
-            "p1": "ought",
-            "p2": "to see"
-          }
+        "secondSentence": "You (1) _________ a doctor.",
+        "solutions": [
+          "ought to see"
         ]
       },
       {
         "number": 26,
         "firstSentence": "John's flat is bigger than mine.",
         "keyWord": "AS",
-        "beforeGap": "My flat is not",
-        "afterGap": "John's.",
-        "routes": [
-          {
-            "p1": "as big",
-            "p2": "as"
-          }
+        "secondSentence": "My flat is not (1) _________ John's.",
+        "solutions": [
+          "as big as"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The weather was so beautiful that we had a picnic.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that we had a picnic.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "beautiful weather"
-          }
+        "secondSentence": "It was (1) _________ that we had a picnic.",
+        "solutions": [
+          "such beautiful weather"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She was obliged to retake the exam.",
         "keyWord": "HAD",
-        "beforeGap": "She",
-        "afterGap": "the exam.",
-        "routes": [
-          {
-            "p1": "had",
-            "p2": "to retake"
-          }
+        "secondSentence": "She (1) _________ the exam.",
+        "solutions": [
+          "had to retake"
         ]
       },
       {
         "number": 29,
         "firstSentence": "He doesn't play video games any more.",
         "keyWord": "USED",
-        "beforeGap": "He",
-        "afterGap": "video games.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "play"
-          }
+        "secondSentence": "He (1) _________ video games.",
+        "solutions": [
+          "used to play"
         ]
       },
       {
         "number": 30,
         "firstSentence": "The journalist reported that a fire had broken out.",
         "keyWord": "REPORTED",
-        "beforeGap": "A fire",
-        "afterGap": "broken out.",
-        "routes": [
-          {
-            "p1": "was reported",
-            "p2": "to have"
-          }
+        "secondSentence": "A fire (1) _________ broken out.",
+        "solutions": [
+          "was reported to have"
         ]
       }
     ]

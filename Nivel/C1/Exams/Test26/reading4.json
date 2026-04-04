@@ -10,71 +10,65 @@
         "number": 25,
         "firstSentence": "A local decorator is painting the exterior of our house.",
         "keyWord": "HAVING",
-        "beforeGap": "We",
-        "afterGap": "by a local decorator.",
-        "routes": [
-          { "p1": "are", "p2": "having our house painted" },
-          { "p1": "are", "p2": "having the house exterior painted" }
-        ],
-        "explanation": "Tests causative 'have something done' in the present continuous."
+        "explanation": "Tests causative 'have something done' in the present continuous.",
+        "secondSentence": "We (1) _________ by a local decorator.",
+        "solutions": [
+          "are having our house painted",
+          "are having the house exterior painted"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘You should avoid eating too much sugar,’ the nutritionist said.",
         "keyWord": "ADVISED",
-        "beforeGap": "The nutritionist",
-        "afterGap": "too much sugar.",
-        "routes": [
-          { "p1": "advised", "p2": "me to avoid eating" },
-          { "p1": "advised", "p2": "against eating" }
-        ],
-        "explanation": "Tests reporting verbs with 'to-infinitive' or 'against + gerund'."
+        "explanation": "Tests reporting verbs with 'to-infinitive' or 'against + gerund'.",
+        "secondSentence": "The nutritionist (1) _________ too much sugar.",
+        "solutions": [
+          "advised me to avoid eating",
+          "advised against eating"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "I regret not visiting my grandmother more often when I was younger.",
         "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "my grandmother more often when I was younger.",
-        "routes": [
-          { "p1": "wish", "p2": "I had visited" },
-          { "p1": "wish", "p2": "I'd visited" }
-        ],
-        "explanation": "Tests 'wish' + past perfect for past regrets."
+        "explanation": "Tests 'wish' + past perfect for past regrets.",
+        "secondSentence": "I (1) _________ my grandmother more often when I was younger.",
+        "solutions": [
+          "wish I had visited",
+          "wish I'd visited"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "It was possible for the document to be lost in the post.",
         "keyWord": "COULD",
-        "beforeGap": "The document",
-        "afterGap": "lost in the post.",
-        "routes": [
-          { "p1": "could", "p2": "have been" }
-        ],
-        "explanation": "Tests modal perfect passive (could have been + past participle)."
+        "explanation": "Tests modal perfect passive (could have been + past participle).",
+        "secondSentence": "The document (1) _________ lost in the post.",
+        "solutions": [
+          "could have been"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "She never once offered to help with the housework.",
         "keyWord": "DID",
-        "beforeGap": "Not",
-        "afterGap": "to help with the housework.",
-        "routes": [
-          { "p1": "once", "p2": "did she offer" }
-        ],
-        "explanation": "Tests negative inversion (Not once + auxiliary + subject + verb)."
+        "explanation": "Tests negative inversion (Not once + auxiliary + subject + verb).",
+        "secondSentence": "Not (1) _________ to help with the housework.",
+        "solutions": [
+          "once did she offer"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "The museum was much more interesting than I had anticipated.",
         "keyWord": "AS",
-        "beforeGap": "The museum was",
-        "afterGap": "I had anticipated.",
-        "routes": [
-          { "p1": "not", "p2": "nearly as boring as" },
-          { "p1": "nothing", "p2": "like as dull as" }
-        ],
-        "explanation": "Tests negative comparison with emphasis."
+        "explanation": "Tests negative comparison with emphasis.",
+        "secondSentence": "The museum was (1) _________ I had anticipated.",
+        "solutions": [
+          "not nearly as boring as",
+          "nothing like as dull as"
+        ]
       }
     ]
   }

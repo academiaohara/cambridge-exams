@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "She decided to give up competitive swimming.",
       "keyWord": "GAVE",
-      "beforeGap": "She",
-      "afterGap": "competitive swimming.",
-      "routes": [
-        {
-          "p1": "gave",
-          "p2": "up"
-        }
+      "secondSentence": "She (1) _________ competitive swimming.",
+      "solutions": [
+        "gave up"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "Someone has taken all the chairs from the room.",
         "keyWord": "BEEN",
-        "beforeGap": "All the chairs have",
-        "afterGap": "from the room.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "taken"
-          }
+        "secondSentence": "All the chairs have (1) _________ from the room.",
+        "solutions": [
+          "been taken"
         ]
       },
       {
         "number": 26,
         "firstSentence": "I'm sure he knows the answer.",
         "keyWord": "MUST",
-        "beforeGap": "He",
-        "afterGap": "the answer.",
-        "routes": [
-          {
-            "p1": "must",
-            "p2": "know"
-          }
+        "secondSentence": "He (1) _________ the answer.",
+        "solutions": [
+          "must know"
         ]
       },
       {
         "number": 27,
         "firstSentence": "The view was so spectacular that we took lots of photos.",
         "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that we took lots of photos.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a spectacular view"
-          }
+        "secondSentence": "It was (1) _________ that we took lots of photos.",
+        "solutions": [
+          "such a spectacular view"
         ]
       },
       {
         "number": 28,
         "firstSentence": "She wanted to know if he had ever worked abroad.",
         "keyWord": "ASKED",
-        "beforeGap": "She",
-        "afterGap": "he had ever worked abroad.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "him if"
-          }
+        "secondSentence": "She (1) _________ he had ever worked abroad.",
+        "solutions": [
+          "asked him if"
         ]
       },
       {
         "number": 29,
         "firstSentence": "Despite being poorly paid, she loved her job.",
         "keyWord": "EVEN",
-        "beforeGap": "She loved her job",
-        "afterGap": "she was poorly paid.",
-        "routes": [
-          {
-            "p1": "even",
-            "p2": "though"
-          }
+        "secondSentence": "She loved her job (1) _________ she was poorly paid.",
+        "solutions": [
+          "even though"
         ]
       },
       {
         "number": 30,
         "firstSentence": "He took up rock climbing at the age of forty.",
         "keyWord": "STARTED",
-        "beforeGap": "He",
-        "afterGap": "rock climbing at the age of forty.",
-        "routes": [
-          {
-            "p1": "started",
-            "p2": "doing"
-          }
+        "secondSentence": "He (1) _________ rock climbing at the age of forty.",
+        "solutions": [
+          "started doing"
         ]
       }
     ]

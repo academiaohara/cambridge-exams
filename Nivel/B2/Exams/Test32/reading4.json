@@ -9,13 +9,9 @@
       "number": 0,
       "firstSentence": "She organised the whole event on her own.",
       "keyWord": "WAS",
-      "beforeGap": "The whole event",
-      "afterGap": "her.",
-      "routes": [
-        {
-          "p1": "was",
-          "p2": "organised by"
-        }
+      "secondSentence": "The whole event (1) _________ her.",
+      "solutions": [
+        "was organised by"
       ]
     },
     "questions": [
@@ -23,78 +19,54 @@
         "number": 25,
         "firstSentence": "It isn't obligatory to wear a tie.",
         "keyWord": "NEED",
-        "beforeGap": "You",
-        "afterGap": "a tie.",
-        "routes": [
-          {
-            "p1": "needn't",
-            "p2": "wear"
-          }
+        "secondSentence": "You (1) _________ a tie.",
+        "solutions": [
+          "needn't wear"
         ]
       },
       {
         "number": 26,
         "firstSentence": "This is the most exciting match I have ever watched.",
         "keyWord": "NEVER",
-        "beforeGap": "I have",
-        "afterGap": "such an exciting match.",
-        "routes": [
-          {
-            "p1": "never",
-            "p2": "watched"
-          }
+        "secondSentence": "I have (1) _________ such an exciting match.",
+        "solutions": [
+          "never watched"
         ]
       },
       {
         "number": 27,
         "firstSentence": "Tom is not as creative as his colleague Lisa.",
         "keyWord": "MORE",
-        "beforeGap": "Lisa is",
-        "afterGap": "Tom.",
-        "routes": [
-          {
-            "p1": "more creative",
-            "p2": "than"
-          }
+        "secondSentence": "Lisa is (1) _________ Tom.",
+        "solutions": [
+          "more creative than"
         ]
       },
       {
         "number": 28,
         "firstSentence": "He regrets spending so much money on the car.",
         "keyWord": "WISHES",
-        "beforeGap": "He",
-        "afterGap": "so much money on the car.",
-        "routes": [
-          {
-            "p1": "wishes",
-            "p2": "he hadn't spent"
-          }
+        "secondSentence": "He (1) _________ so much money on the car.",
+        "solutions": [
+          "wishes he hadn't spent"
         ]
       },
       {
         "number": 29,
         "firstSentence": "My boss allowed me to work from home.",
         "keyWord": "LET",
-        "beforeGap": "My boss",
-        "afterGap": "home.",
-        "routes": [
-          {
-            "p1": "let",
-            "p2": "me work from"
-          }
+        "secondSentence": "My boss (1) _________ home.",
+        "solutions": [
+          "let me work from"
         ]
       },
       {
         "number": 30,
         "firstSentence": "In spite of the noise, she fell asleep quickly.",
         "keyWord": "EVEN",
-        "beforeGap": "She fell asleep quickly",
-        "afterGap": "there was a lot of noise.",
-        "routes": [
-          {
-            "p1": "even",
-            "p2": "though"
-          }
+        "secondSentence": "She fell asleep quickly (1) _________ there was a lot of noise.",
+        "solutions": [
+          "even though"
         ]
       }
     ]

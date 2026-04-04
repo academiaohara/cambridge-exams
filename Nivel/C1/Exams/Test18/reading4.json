@@ -10,68 +10,62 @@
         "number": 25,
         "firstSentence": "The mechanic has just repaired my car.",
         "keyWord": "HAD",
-        "beforeGap": "I",
-        "afterGap": "by the mechanic.",
-        "routes": [
-          { "p1": "have", "p2": "just had my car repaired" }
-        ],
-        "explanation": "Tests causative 'have' in the present perfect."
+        "explanation": "Tests causative 'have' in the present perfect.",
+        "secondSentence": "I (1) _________ by the mechanic.",
+        "solutions": [
+          "have just had my car repaired"
+        ]
       },
       {
         "number": 26,
         "firstSentence": "‘Don’t forget to lock the door,’ said my mother.",
         "keyWord": "REMINDED",
-        "beforeGap": "My mother",
-        "afterGap": "the door.",
-        "routes": [
-          { "p1": "reminded", "p2": "me to lock" }
-        ],
-        "explanation": "Tests reporting verbs with infinitive structures."
+        "explanation": "Tests reporting verbs with infinitive structures.",
+        "secondSentence": "My mother (1) _________ the door.",
+        "solutions": [
+          "reminded me to lock"
+        ]
       },
       {
         "number": 27,
         "firstSentence": "If you don't work harder, you will fail the exam.",
         "keyWord": "UNLESS",
-        "beforeGap": "You will fail the exam",
-        "afterGap": "harder.",
-        "routes": [
-          { "p1": "unless", "p2": "you work" }
-        ],
-        "explanation": "Tests conditional structures using 'unless'."
+        "explanation": "Tests conditional structures using 'unless'.",
+        "secondSentence": "You will fail the exam (1) _________ harder.",
+        "solutions": [
+          "unless you work"
+        ]
       },
       {
         "number": 28,
         "firstSentence": "I am sure they were exhausted after the long flight.",
         "keyWord": "BEEN",
-        "beforeGap": "They",
-        "afterGap": "exhausted after the long flight.",
-        "routes": [
-          { "p1": "must", "p2": "have been" }
-        ],
-        "explanation": "Tests modal perfect for positive deduction."
+        "explanation": "Tests modal perfect for positive deduction.",
+        "secondSentence": "They (1) _________ exhausted after the long flight.",
+        "solutions": [
+          "must have been"
+        ]
       },
       {
         "number": 29,
         "firstSentence": "The bus service is very unreliable, so I prefer to walk.",
         "keyWord": "SUCH",
-        "beforeGap": "It is",
-        "afterGap": "that I prefer to walk.",
-        "routes": [
-          { "p1": "such", "p2": "an unreliable bus service" }
-        ],
-        "explanation": "Tests 'such + (a/an) + adjective + noun' for emphasis."
+        "explanation": "Tests 'such + (a/an) + adjective + noun' for emphasis.",
+        "secondSentence": "It is (1) _________ that I prefer to walk.",
+        "solutions": [
+          "such an unreliable bus service"
+        ]
       },
       {
         "number": 30,
         "firstSentence": "I’d rather you didn't smoke in the house.",
         "keyWord": "PREFER",
-        "beforeGap": "I",
-        "afterGap": "smoke in the house.",
-        "routes": [
-          { "p1": "would", "p2": "prefer you not to" },
-          { "p1": "would", "p2": "prefer it if you didn't" }
-        ],
-        "explanation": "Tests preference structures and infinitive vs. clause patterns."
+        "explanation": "Tests preference structures and infinitive vs. clause patterns.",
+        "secondSentence": "I (1) _________ smoke in the house.",
+        "solutions": [
+          "would prefer you not to",
+          "would prefer it if you didn't"
+        ]
       }
     ]
   }
