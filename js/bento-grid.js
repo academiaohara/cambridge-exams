@@ -467,21 +467,16 @@
             wordsPct = (prog.wordsTotal > 0) ? Math.round((prog.wordsComplete / prog.wordsTotal) * 100) : 0;
             if (isCompleted) wordsPct = 100;
           }
-          var progressHtml = prog
-            ? '<div class="cw-list-card-prog-wrap">' +
+          cardsHtml +=
+            '<div class="cw-list-card' + (isCompleted ? ' cw-list-card-done' : '') + '" style="background:' + diff.bg + '" ' +
+              'onclick="FastExercises._openVocabCrossword(\'' + entry.levelId + '\',\'' + entry.lessonId + '\')">' +
+              '<div class="cw-list-card-num">' + num + '</div>' +
+              '<div class="cw-list-card-prog-wrap">' +
                 '<div class="cw-list-card-prog-track">' +
                   '<div class="cw-list-card-prog-fill' + (isCompleted ? ' cw-prog-done' : '') + '" style="width:' + wordsPct + '%"></div>' +
                 '</div>' +
                 '<span class="cw-list-card-prog-pct">' + (isCompleted ? _mi('check_circle') : wordsPct + '%') + '</span>' +
-              '</div>'
-            : '';
-          cardsHtml +=
-            '<div class="cw-list-card' + (isCompleted ? ' cw-list-card-done' : '') + '" style="background:' + diff.bg + '" ' +
-              'onclick="FastExercises._openVocabCrossword(\'' + entry.levelId + '\',\'' + entry.lessonId + '\')">' +
-              '<div class="cw-list-card-num">Crossword ' + num + '</div>' +
-              '<div class="cw-list-card-topic">' + BentoGrid._escapeHTML(entry.title) + '</div>' +
-              '<div class="cw-list-card-badge" style="background:' + diff.badgeColor + '">' + diff.label + ' · ' + diff.difficulty + '</div>' +
-              progressHtml +
+              '</div>' +
             '</div>';
         });
         cardsHtml += '</div>';
