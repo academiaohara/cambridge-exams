@@ -274,26 +274,26 @@ content: '';
   transform: translateY(0);
 }
 
-/* ── Per-card hover: lighter text tones ── */
-.bento-card-quicksteps:hover .bento-card-title   { color: #7dd060; }
-.bento-card-quicksteps:hover                     { color: #5a8858; }
-.bento-card-quicksteps:hover .bento-card-hover-info { color: #60a048; }
+/* ── Per-card hover: darker text tones ── */
+.bento-card-quicksteps:hover .bento-card-title   { color: #2e7a10; }
+.bento-card-quicksteps:hover                     { color: #1a4a1a; }
+.bento-card-quicksteps:hover .bento-card-hover-info { color: #2d6e18; }
 
-.bento-card-basecamp:hover .bento-card-title     { color: #a0a8f5; }
-.bento-card-basecamp:hover                       { color: #7878a8; }
-.bento-card-basecamp:hover .bento-card-hover-info { color: #8898ee; }
+.bento-card-basecamp:hover .bento-card-title     { color: #3848c8; }
+.bento-card-basecamp:hover                       { color: #252550; }
+.bento-card-basecamp:hover .bento-card-hover-info { color: #3858c0; }
 
-.bento-card-weakspot:hover .bento-card-title     { color: #78b8f0; }
-.bento-card-weakspot:hover                       { color: #5a8878; }
-.bento-card-weakspot:hover .bento-card-hover-info { color: #60a0e0; }
+.bento-card-weakspot:hover .bento-card-title     { color: #1e6aaa; }
+.bento-card-weakspot:hover                       { color: #183838; }
+.bento-card-weakspot:hover .bento-card-hover-info { color: #1a65a0; }
 
-.bento-card-checkpoint:hover .bento-card-title   { color: #d068a0; }
-.bento-card-checkpoint:hover                     { color: #a06878; }
-.bento-card-checkpoint:hover .bento-card-hover-info { color: #c05890; }
+.bento-card-checkpoint:hover .bento-card-title   { color: #7a1858; }
+.bento-card-checkpoint:hover                     { color: #481830; }
+.bento-card-checkpoint:hover .bento-card-hover-info { color: #721858; }
 
-.bento-card-crossword:hover .bento-card-title    { color: #9080d8; }
-.bento-card-crossword:hover                      { color: #7060a0; }
-.bento-card-crossword:hover .bento-card-hover-info { color: #8870c8; }
+.bento-card-crossword:hover .bento-card-title    { color: #3820a0; }
+.bento-card-crossword:hover                      { color: #221848; }
+.bento-card-crossword:hover .bento-card-hover-info { color: #3020a0; }
 
 /* ── Bento card inner content ── */
 .bento-card-inner {
