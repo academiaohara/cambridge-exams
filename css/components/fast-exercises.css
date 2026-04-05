@@ -4333,6 +4333,7 @@
   width: 100%;
   overflow-y: auto;
   padding: 20px;
+  padding-bottom: 110px;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -4488,6 +4489,10 @@
 .vocab-cw-cell-incorrect { background: #fee2e2; }
 .vocab-cw-cell-incorrect .vocab-cw-cell-letter { color: #991b1b; }
 .vocab-cw-cell-revealed .vocab-cw-cell-letter { color: #7c3aed; }
+.vocab-cw-cell.vocab-cw-cell-locked,
+.vocab-cw-cell.vocab-cw-cell-locked.vocab-cw-cell-active,
+.vocab-cw-cell.vocab-cw-cell-locked.vocab-cw-cell-word { background: #16a34a; }
+.vocab-cw-cell.vocab-cw-cell-locked .vocab-cw-cell-letter { color: #fff; }
 .vocab-cw-cell-active.vocab-cw-cell-correct { background: #fef08a; }
 .vocab-cw-cell-active.vocab-cw-cell-incorrect { background: #fef08a; }
 
@@ -4531,7 +4536,6 @@
 .vocab-cw-clues {
   flex: 1;
   min-width: 200px;
-  max-width: 360px;
   max-height: 520px;
   overflow-y: auto;
   border: 1px solid #e2e8f0;
@@ -4581,17 +4585,21 @@
 }
 .vocab-cw-clue-active .vocab-cw-clue-num { color: #1d4ed8; }
 
-/* Word input strip */
+/* Word input strip — fixed at bottom like a modal bar */
 .vocab-cw-word-strip {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
   background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  position: relative;
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
 }
 .vocab-cw-strip-cells {
   display: flex;
@@ -4634,15 +4642,19 @@
 .vocab-cw-strip-cell-revealed { border-color: #7c3aed; color: #7c3aed; background: #f5f3ff; cursor: default; }
 .vocab-cw-strip-cell-correct { border-color: #059669; color: #166534; background: #dcfce7; }
 .vocab-cw-strip-cell-incorrect { border-color: #dc2626; color: #991b1b; background: #fee2e2; }
+.vocab-cw-strip-cell.vocab-cw-strip-cell-locked { border-color: #16a34a; color: #fff; background: #16a34a; cursor: default; }
 /* Hidden keyboard capture input */
 .vocab-cw-strip-input {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   opacity: 0;
   pointer-events: none;
   width: 1px;
   height: 1px;
   border: none;
   outline: none;
+  z-index: -1;
 }
 
 /* Back button */
@@ -4653,9 +4665,14 @@
 }
 .vocab-cw-back-btn:hover:not(:disabled) { background: #f1f5f9 !important; }
 
-/* Wordle mode toggle button */
+/* Wordle/Crossword mode toggle buttons */
+.vocab-cw-mode-btn { color: #475569; border-color: #e2e8f0; background: #f8fafc; }
+.vocab-cw-mode-btn:hover:not(:disabled) { background: #f1f5f9; }
+.vocab-cw-mode-btn.vocab-cw-cw-mode-btn-active,
+.vocab-cw-mode-btn.vocab-cw-mode-btn-active { background: #7c3aed; color: #fff; border-color: #7c3aed; }
 .vocab-cw-wordle-btn { color: #7c3aed; border-color: #ddd6fe; background: #faf5ff; }
 .vocab-cw-wordle-btn:hover:not(:disabled) { background: #ede9fe; }
+/* kept for back-compat — overridden by vocab-cw-mode-btn-active */
 .vocab-cw-wordle-btn-active { background: #7c3aed !important; color: #fff !important; border-color: #7c3aed !important; }
 
 /* Wordle area (inside grid-outer, replaces grid) */
@@ -4668,6 +4685,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  box-sizing: border-box;
 }
 .vocab-cw-wordle-empty {
   color: #94a3b8;
@@ -4714,8 +4732,25 @@
 .wdl-gray   { background: #94a3b8; border-color: #64748b; color: #fff; }
 .wdl-empty  { background: #fff; border-color: #e2e8f0; }
 .wdl-cur    { border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.2); }
-.vocab-cw-wordle-submit-btn { color: #7c3aed; border-color: #ddd6fe; background: #faf5ff; margin-top: 4px; }
+.vocab-cw-wordle-submit-btn { color: #7c3aed; border-color: #ddd6fe; background: #faf5ff; }
 .vocab-cw-wordle-submit-btn:hover:not(:disabled) { background: #ede9fe; }
+.vocab-cw-wordle-reset-btn { color: #64748b; border-color: #e2e8f0; background: #f8fafc; }
+.vocab-cw-wordle-reset-btn:hover:not(:disabled) { background: #f1f5f9; }
+.vocab-cw-wordle-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 4px;
+}
+.vocab-cw-wordle-hint-msg {
+  font-size: 0.8rem;
+  color: #0369a1;
+  background: #e0f2fe;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  padding: 4px 10px;
+  text-align: center;
+}
 .vocab-cw-wordle-msg {
   font-size: 0.85rem;
   font-weight: 600;

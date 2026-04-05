@@ -5073,9 +5073,9 @@
             '<span class="vocab-cw-level-badge">' + self._escapeHTML(levelId) + '</span>' +
           '</div>' +
           '<div class="vocab-cw-header-btns">' +
-            '<button class="vocab-cw-btn vocab-cw-wordle-btn" id="cw-wordle-btn">' + _mi('casino') + '<span>Wordle</span></button>' +
+            '<button class="vocab-cw-btn vocab-cw-mode-btn vocab-cw-cw-mode-btn vocab-cw-cw-mode-btn-active" id="cw-crossword-btn">' + _mi('grid_on') + '<span>Crossword</span></button>' +
+            '<button class="vocab-cw-btn vocab-cw-mode-btn vocab-cw-wordle-btn" id="cw-wordle-btn">' + _mi('casino') + '<span>Wordle</span></button>' +
             '<button class="vocab-cw-btn vocab-cw-hint-btn" id="cw-hint-btn">' + _mi('lightbulb') + '<span>Hint</span></button>' +
-            '<button class="vocab-cw-btn vocab-cw-check-btn" id="cw-check-btn">' + _mi('check_circle') + '<span>Check</span></button>' +
             '<button class="vocab-cw-btn vocab-cw-reset-btn" id="cw-reset-btn">' + _mi('refresh') + '<span>Reset</span></button>' +
           '</div>' +
         '</div>' +
@@ -5102,13 +5102,14 @@
         '</div>' +
         '<div class="vocab-cw-word-strip" id="cw-word-strip">' +
           '<div class="vocab-cw-strip-cells" id="cw-strip-cells"><span class="vocab-cw-strip-hint">Click a clue to select a word</span></div>' +
-          '<input type="text" id="cw-strip-input" class="vocab-cw-strip-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Crossword letter input" />' +
-        '</div>';
+        '</div>' +
+        '<input type="text" id="cw-strip-input" class="vocab-cw-strip-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Crossword letter input" />';
 
       var cwState = {
         userGrid: {},
         revealedCells: {},
         checkedCells: {},
+        lockedCells: {},
         selectedCell: null,
         selectedDir: 'across',
         activeWord: null,
@@ -5156,12 +5157,16 @@
 
       var hintBtn = document.getElementById('cw-hint-btn');
       if (hintBtn) hintBtn.addEventListener('click', function() { FastExercises._cwHint(); });
-      var checkBtn = document.getElementById('cw-check-btn');
-      if (checkBtn) checkBtn.addEventListener('click', function() { FastExercises._cwCheck(); });
       var resetBtn = document.getElementById('cw-reset-btn');
       if (resetBtn) resetBtn.addEventListener('click', function() { FastExercises._cwReset(); });
       var wordleBtn = document.getElementById('cw-wordle-btn');
-      if (wordleBtn) wordleBtn.addEventListener('click', function() { FastExercises._cwToggleWordleMode(); });
+      if (wordleBtn) wordleBtn.addEventListener('click', function() {
+        if (window._cwState && !window._cwState.wordleMode) FastExercises._cwToggleWordleMode();
+      });
+      var crosswordBtn = document.getElementById('cw-crossword-btn');
+      if (crosswordBtn) crosswordBtn.addEventListener('click', function() {
+        if (window._cwState && window._cwState.wordleMode) FastExercises._cwToggleWordleMode();
+      });
 
       var clueEls = document.querySelectorAll('.vocab-cw-clue');
       for (var ci = 0; ci < clueEls.length; ci++) {
@@ -5229,7 +5234,7 @@
         for (var i = 0; i < activeWord.word.length; i++) {
           var wr2 = activeWord.dir === 'across' ? activeWord.row : activeWord.row + i;
           var wc2 = activeWord.dir === 'across' ? activeWord.col + i : activeWord.col;
-          if (!state.revealedCells[wr2 + ',' + wc2]) { state.activeStripPos = i; break; }
+          if (!state.revealedCells[wr2 + ',' + wc2] && !state.lockedCells[wr2 + ',' + wc2]) { state.activeStripPos = i; break; }
         }
         FastExercises._cwRefreshActiveDef();
         FastExercises._cwUpdateWordStrip();
@@ -5277,7 +5282,7 @@
         var wr = activeWord.dir === 'across' ? activeWord.row : activeWord.row + pos;
         var wc = activeWord.dir === 'across' ? activeWord.col + pos : activeWord.col;
         var wkey = wr + ',' + wc;
-        if (!state.revealedCells[wkey] && state.userGrid[wkey]) {
+        if (!state.revealedCells[wkey] && !state.lockedCells[wkey] && state.userGrid[wkey]) {
           delete state.userGrid[wkey];
           delete state.checkedCells[wkey];
           FastExercises._cwUpdateCell(wr, wc);
@@ -5288,7 +5293,7 @@
           var pr = activeWord.dir === 'across' ? activeWord.row : activeWord.row + newPos;
           var pc = activeWord.dir === 'across' ? activeWord.col + newPos : activeWord.col;
           var pkey = pr + ',' + pc;
-          if (!state.revealedCells[pkey]) {
+          if (!state.revealedCells[pkey] && !state.lockedCells[pkey]) {
             delete state.userGrid[pkey];
             delete state.checkedCells[pkey];
             FastExercises._cwUpdateCell(pr, pc);
@@ -5306,19 +5311,19 @@
         var wr2 = activeWord.dir === 'across' ? activeWord.row : activeWord.row + pos;
         var wc2 = activeWord.dir === 'across' ? activeWord.col + pos : activeWord.col;
         var ltKey = wr2 + ',' + wc2;
-        if (!state.revealedCells[ltKey]) {
+        if (!state.revealedCells[ltKey] && !state.lockedCells[ltKey]) {
           state.userGrid[ltKey] = e.key.toUpperCase();
           delete state.checkedCells[ltKey];
           FastExercises._cwUpdateCell(wr2, wc2);
           FastExercises._cwUpdateStatus();
           FastExercises._cwRefreshActiveDef();
         }
-        // Advance to next non-revealed position
+        // Advance to next non-revealed, non-locked position
         var nextPos = pos + 1;
         while (nextPos < wordLen) {
           var nr3 = activeWord.dir === 'across' ? activeWord.row : activeWord.row + nextPos;
           var nc3 = activeWord.dir === 'across' ? activeWord.col + nextPos : activeWord.col;
-          if (!state.revealedCells[nr3 + ',' + nc3]) break;
+          if (!state.revealedCells[nr3 + ',' + nc3] && !state.lockedCells[nr3 + ',' + nc3]) break;
           nextPos++;
         }
         if (nextPos < wordLen) state.activeStripPos = nextPos;
@@ -5330,6 +5335,8 @@
         for (var i = 0; i < allCellEls.length; i++) allCellEls[i].classList.remove('vocab-cw-cell-active');
         var newActiveCellEl = document.getElementById('cw-cell-' + newCr + '-' + newCc);
         if (newActiveCellEl) newActiveCellEl.classList.add('vocab-cw-cell-active');
+        // Auto-check when word is fully filled
+        if (nextPos >= wordLen) FastExercises._cwAutoCheckWord();
         return;
       }
 
@@ -5354,8 +5361,9 @@
       if (!cellEl) return;
       var letterEl = cellEl.querySelector('.vocab-cw-cell-letter');
       if (letterEl) letterEl.textContent = state.userGrid[key] || '';
-      cellEl.classList.remove('vocab-cw-cell-correct', 'vocab-cw-cell-incorrect', 'vocab-cw-cell-revealed');
-      if (state.revealedCells[key]) cellEl.classList.add('vocab-cw-cell-revealed');
+      cellEl.classList.remove('vocab-cw-cell-correct', 'vocab-cw-cell-incorrect', 'vocab-cw-cell-revealed', 'vocab-cw-cell-locked');
+      if (state.lockedCells[key]) cellEl.classList.add('vocab-cw-cell-locked');
+      else if (state.revealedCells[key]) cellEl.classList.add('vocab-cw-cell-revealed');
       else if (state.checkedCells[key] === 'correct') cellEl.classList.add('vocab-cw-cell-correct');
       else if (state.checkedCells[key] === 'incorrect') cellEl.classList.add('vocab-cw-cell-incorrect');
     },
@@ -5364,12 +5372,36 @@
       var state = window._cwState;
       if (!state || !state.activeWord) return;
       var activeWord = state.activeWord;
+
+      if (state.wordleMode) {
+        var wordKey = activeWord.dir + '_' + activeWord.number;
+        if (!state.wordleState[wordKey]) {
+          state.wordleState[wordKey] = {
+            guesses: [], results: [], solved: false, currentInput: '',
+            confirmedLetters: new Array(activeWord.word.length).fill(null),
+            hintMessage: null
+          };
+        }
+        var ws = state.wordleState[wordKey];
+        if (ws.solved) return;
+        var candidates = [];
+        for (var i = 0; i < activeWord.word.length; i++) {
+          if (!ws.confirmedLetters[i]) candidates.push(i);
+        }
+        if (candidates.length === 0) return;
+        var pick = candidates[Math.floor(Math.random() * candidates.length)];
+        ws.confirmedLetters[pick] = activeWord.word[pick];
+        ws.hintMessage = 'Hint: position ' + (pick + 1) + ' is \'' + activeWord.word[pick].toLowerCase() + '\'';
+        FastExercises._cwRenderWordleView();
+        return;
+      }
+
       var candidates = [];
       for (var i = 0; i < activeWord.word.length; i++) {
         var wr = activeWord.dir === 'across' ? activeWord.row : activeWord.row + i;
         var wc = activeWord.dir === 'across' ? activeWord.col + i : activeWord.col;
         var wkey = wr + ',' + wc;
-        if (!state.revealedCells[wkey] && state.userGrid[wkey] !== activeWord.word[i]) {
+        if (!state.revealedCells[wkey] && !state.lockedCells[wkey] && state.userGrid[wkey] !== activeWord.word[i]) {
           candidates.push({ r: wr, c: wc, letter: activeWord.word[i], key: wkey });
         }
       }
@@ -5414,12 +5446,12 @@
       var cols = state.cwData.cols;
       state.userGrid = {};
       state.checkedCells = {};
+      state.revealedCells = {};
+      state.lockedCells = {};
       state.wordleState = {};
       for (var r = 0; r < rows; r++) {
         for (var c = 0; c < cols; c++) {
           if (grid[r][c] === null) continue;
-          var key = r + ',' + c;
-          if (state.revealedCells[key]) state.userGrid[key] = grid[r][c];
           FastExercises._cwUpdateCell(r, c);
         }
       }
@@ -5486,7 +5518,7 @@
         (wordSolved
           ? ' <strong class="vocab-cw-active-word">→ ' + FastExercises._escapeHTML(activeWord.word.toLowerCase()) + '</strong>'
           : '') +
-        (activeWord.example ? '<em class="vocab-cw-active-example"> "' + FastExercises._escapeHTML(activeWord.example) + '"</em>' : '');
+        (activeWord.example && wordSolved ? '<em class="vocab-cw-active-example"> "' + FastExercises._escapeHTML(activeWord.example) + '"</em>' : '');
     },
 
     _cwUpdateWordStrip: function() {
@@ -5509,12 +5541,16 @@
         var isCorrect = state.checkedCells[wkey] === 'correct';
         var isIncorrect = state.checkedCells[wkey] === 'incorrect';
         var isActive = (state.activeStripPos === i);
+        var isLocked = !!state.lockedCells[wkey];
         var cls = 'vocab-cw-strip-cell';
-        if (isActive) cls += ' vocab-cw-strip-cell-active';
-        if (isRevealed) cls += ' vocab-cw-strip-cell-revealed';
-        else if (isCorrect) cls += ' vocab-cw-strip-cell-correct';
-        else if (isIncorrect) cls += ' vocab-cw-strip-cell-incorrect';
-        else if (letter) cls += ' vocab-cw-strip-cell-filled';
+        if (isLocked) cls += ' vocab-cw-strip-cell-locked';
+        else if (isActive) cls += ' vocab-cw-strip-cell-active';
+        if (!isLocked) {
+          if (isRevealed) cls += ' vocab-cw-strip-cell-revealed';
+          else if (isCorrect) cls += ' vocab-cw-strip-cell-correct';
+          else if (isIncorrect) cls += ' vocab-cw-strip-cell-incorrect';
+          else if (letter) cls += ' vocab-cw-strip-cell-filled';
+        }
         html += '<div class="' + cls + '" data-pos="' + i + '" onclick="FastExercises._cwSelectStripPos(' + i + ')">' +
           (letter || '') +
         '</div>';
@@ -5529,7 +5565,7 @@
       if (pos < 0 || pos >= wordLen) return;
       var wr = state.activeWord.dir === 'across' ? state.activeWord.row : state.activeWord.row + pos;
       var wc = state.activeWord.dir === 'across' ? state.activeWord.col + pos : state.activeWord.col;
-      if (state.revealedCells[wr + ',' + wc]) return;
+      if (state.revealedCells[wr + ',' + wc] || state.lockedCells[wr + ',' + wc]) return;
       state.activeStripPos = pos;
       FastExercises._cwUpdateWordStrip();
       // Sync active cell on grid
@@ -5541,6 +5577,48 @@
       if (stripInput) stripInput.focus();
     },
 
+    // ── AUTO-CHECK (crossword) ──────────────────────────────────────────────
+
+    _cwAutoCheckWord: function() {
+      var state = window._cwState;
+      if (!state || !state.activeWord) return;
+      var activeWord = state.activeWord;
+      var wordLen = activeWord.word.length;
+      // Only run if all non-locked, non-revealed cells are filled
+      for (var i = 0; i < wordLen; i++) {
+        var r0 = activeWord.dir === 'across' ? activeWord.row : activeWord.row + i;
+        var c0 = activeWord.dir === 'across' ? activeWord.col + i : activeWord.col;
+        var k0 = r0 + ',' + c0;
+        if (!state.lockedCells[k0] && !state.revealedCells[k0] && !state.userGrid[k0]) return;
+      }
+      var allCorrect = true;
+      for (var i = 0; i < wordLen; i++) {
+        var wr = activeWord.dir === 'across' ? activeWord.row : activeWord.row + i;
+        var wc = activeWord.dir === 'across' ? activeWord.col + i : activeWord.col;
+        var wkey = wr + ',' + wc;
+        if (state.lockedCells[wkey] || state.revealedCells[wkey]) continue;
+        var correct = (state.userGrid[wkey] === activeWord.word[i]);
+        state.checkedCells[wkey] = correct ? 'correct' : 'incorrect';
+        if (!correct) allCorrect = false;
+        FastExercises._cwUpdateCell(wr, wc);
+      }
+      if (allCorrect) {
+        for (var i = 0; i < wordLen; i++) {
+          var wr = activeWord.dir === 'across' ? activeWord.row : activeWord.row + i;
+          var wc = activeWord.dir === 'across' ? activeWord.col + i : activeWord.col;
+          var wkey = wr + ',' + wc;
+          if (!state.lockedCells[wkey]) {
+            state.lockedCells[wkey] = true;
+            delete state.checkedCells[wkey];
+            FastExercises._cwUpdateCell(wr, wc);
+          }
+        }
+      }
+      FastExercises._cwUpdateWordStrip();
+      FastExercises._cwUpdateStatus();
+      FastExercises._cwRefreshActiveDef();
+    },
+
     // ── WORDLE MODE ─────────────────────────────────────────────────────────
 
     _cwToggleWordleMode: function() {
@@ -5548,16 +5626,23 @@
       if (!state) return;
       state.wordleMode = !state.wordleMode;
 
-      var gridWrap  = document.getElementById('cw-grid-wrap');
+      var gridWrap   = document.getElementById('cw-grid-wrap');
       var wordleArea = document.getElementById('cw-wordle-area');
       var wordStrip  = document.getElementById('cw-word-strip');
       var wordleBtn  = document.getElementById('cw-wordle-btn');
+      var crosswordBtn = document.getElementById('cw-crossword-btn');
 
       if (state.wordleMode) {
-        if (gridWrap)   gridWrap.style.display  = 'none';
-        if (wordStrip)  wordStrip.style.display  = 'none';
-        if (wordleArea) wordleArea.style.display = '';
-        if (wordleBtn)  wordleBtn.classList.add('vocab-cw-wordle-btn-active');
+        // Save grid width before hiding it
+        if (gridWrap && wordleArea) {
+          var gw = gridWrap.offsetWidth;
+          if (gw > 0) wordleArea.style.minWidth = gw + 'px';
+        }
+        if (gridWrap)    gridWrap.style.display   = 'none';
+        if (wordStrip)   wordStrip.style.display   = 'none';
+        if (wordleArea)  wordleArea.style.display  = '';
+        if (wordleBtn)   wordleBtn.classList.add('vocab-cw-mode-btn-active');
+        if (crosswordBtn) crosswordBtn.classList.remove('vocab-cw-mode-btn-active');
         // Ensure a word is selected
         if (!state.activeWord && state.cwData.placed.length > 0) {
           var fw = state.cwData.placed[0];
@@ -5584,7 +5669,7 @@
             var wr = wordData.dir === 'across' ? wordData.row : wordData.row + idx;
             var wc = wordData.dir === 'across' ? wordData.col + idx : wordData.col;
             var wkey = wr + ',' + wc;
-            if (!state.revealedCells[wkey]) {
+            if (!state.revealedCells[wkey] && !state.lockedCells[wkey]) {
               state.userGrid[wkey] = letter;
               state.checkedCells[wkey] = 'correct';
             }
@@ -5597,10 +5682,11 @@
             if (grid[r][c] !== null) FastExercises._cwUpdateCell(r, c);
           }
         }
-        if (gridWrap)   gridWrap.style.display  = '';
-        if (wordStrip)  wordStrip.style.display  = '';
-        if (wordleArea) wordleArea.style.display = 'none';
-        if (wordleBtn)  wordleBtn.classList.remove('vocab-cw-wordle-btn-active');
+        if (gridWrap)    gridWrap.style.display   = '';
+        if (wordStrip)   wordStrip.style.display   = '';
+        if (wordleArea)  wordleArea.style.display  = 'none';
+        if (wordleBtn)   wordleBtn.classList.remove('vocab-cw-mode-btn-active');
+        if (crosswordBtn) crosswordBtn.classList.add('vocab-cw-mode-btn-active');
         FastExercises._cwUpdateWordStrip();
         FastExercises._cwRefreshActiveDef();
         FastExercises._cwUpdateStatus();
@@ -5623,7 +5709,8 @@
           results: [],
           solved: false,
           currentInput: '',
-          confirmedLetters: new Array(activeWord.word.length).fill(null)
+          confirmedLetters: new Array(activeWord.word.length).fill(null),
+          hintMessage: null
         };
       }
       var ws = state.wordleState[wordKey];
@@ -5661,15 +5748,20 @@
             ? '<span class="vocab-cw-wordle-failed">Answer: <strong>' + FastExercises._escapeHTML(activeWord.word.toLowerCase()) + '</strong></span>'
             : '');
 
+      var actionsHtml = '';
+      if (!ws.solved && ws.guesses.length < MAX_GUESSES) {
+        actionsHtml += '<button class="vocab-cw-btn vocab-cw-wordle-submit-btn" onclick="FastExercises._cwWordleSubmit()">' + _mi('send') + '<span>Submit</span></button>';
+      }
+      actionsHtml += '<button class="vocab-cw-btn vocab-cw-wordle-reset-btn" onclick="FastExercises._cwWordleReset()">' + _mi('restart_alt') + '<span>Retry</span></button>';
+
       wordleArea.innerHTML =
         '<div class="vocab-cw-wordle-info">' +
           '<span class="vocab-cw-active-num">' + activeWord.number + (activeWord.dir === 'across' ? 'A' : 'D') + '</span> ' +
           '<span class="vocab-cw-wordle-len">' + wordLen + ' letters</span>' +
         '</div>' +
         '<div class="vocab-cw-wordle-grid">' + rowsHtml + '</div>' +
-        (!ws.solved && ws.guesses.length < MAX_GUESSES
-          ? '<button class="vocab-cw-btn vocab-cw-wordle-submit-btn" onclick="FastExercises._cwWordleSubmit()">' + _mi('send') + '<span>Submit</span></button>'
-          : '') +
+        '<div class="vocab-cw-wordle-actions">' + actionsHtml + '</div>' +
+        (ws.hintMessage ? '<div class="vocab-cw-wordle-hint-msg">' + FastExercises._escapeHTML(ws.hintMessage) + '</div>' : '') +
         '<div class="vocab-cw-wordle-msg">' + msgHtml + '</div>';
 
       var stripInput = document.getElementById('cw-strip-input');
@@ -5743,6 +5835,15 @@
         FastExercises._cwUpdateStatus();
       }
       ws.currentInput = '';
+      FastExercises._cwRenderWordleView();
+    },
+
+    _cwWordleReset: function() {
+      var state = window._cwState;
+      if (!state || !state.activeWord) return;
+      var activeWord = state.activeWord;
+      var wordKey = activeWord.dir + '_' + activeWord.number;
+      delete state.wordleState[wordKey];
       FastExercises._cwRenderWordleView();
     },
 
