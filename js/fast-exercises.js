@@ -5025,10 +5025,12 @@
         for (var c = 0; c < cols; c++) {
           var letter = grid[r][c];
           if (letter === null) {
-            gridHtml += '<div class="vocab-cw-cell vocab-cw-black"></div>';
+            gridHtml += '<div class="vocab-cw-cell vocab-cw-black" aria-hidden="true"></div>';
           } else {
             var numLabel = numMap[r + ',' + c] || '';
-            gridHtml += '<div class="vocab-cw-cell" data-r="' + r + '" data-c="' + c + '" id="cw-cell-' + r + '-' + c + '">' +
+            var cellWords = cellMap[r + ',' + c] || [];
+            var ariaLabel = cellWords.map(function(p) { return p.number + (p.dir === 'across' ? ' across' : ' down'); }).join(', ') || 'cell';
+            gridHtml += '<div class="vocab-cw-cell" role="button" tabindex="-1" data-r="' + r + '" data-c="' + c + '" id="cw-cell-' + r + '-' + c + '" aria-label="' + ariaLabel + '">' +
               (numLabel ? '<span class="vocab-cw-cell-num">' + numLabel + '</span>' : '') +
               '<span class="vocab-cw-cell-letter"></span>' +
             '</div>';
@@ -5088,7 +5090,7 @@
         '</div>' +
         '<div class="vocab-cw-word-strip" id="cw-word-strip">' +
           '<div class="vocab-cw-strip-cells" id="cw-strip-cells"><span class="vocab-cw-strip-hint">Click a clue to select a word</span></div>' +
-          '<input type="text" id="cw-strip-input" class="vocab-cw-strip-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />' +
+          '<input type="text" id="cw-strip-input" class="vocab-cw-strip-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Crossword letter input" />' +
         '</div>';
 
       var cwState = {
