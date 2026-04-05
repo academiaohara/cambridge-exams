@@ -3176,8 +3176,26 @@
   font-size: 0.92rem;
 }
 
+/* Course hub grid: 2-col grid with Theory card spanning full width */
+.course-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.course-hub-grid .fe-category-card:first-child {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 600px) {
   .course-hub-three {
     grid-template-columns: 1fr 1fr;
+  }
+  .course-hub-grid {
+    grid-template-columns: 1fr;
+  }
+  .course-hub-grid .fe-category-card:first-child {
+    grid-column: 1;
   }
 }

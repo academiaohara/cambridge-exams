@@ -2,6 +2,7 @@
 (function() {
   var VALID_LEVELS = ['b1', 'b2', 'c1', 'c2'];
   var VALID_SECTIONS = ['reading', 'listening', 'writing', 'speaking'];
+  var COURSE_CATEGORIES = ['phrasal-verbs', 'idioms', 'word-formation'];
 
   window.Router = {
     /**
@@ -55,6 +56,9 @@
           return '/fast-exercises';
 
         case 'fastExerciseCategory':
+          if (COURSE_CATEGORIES.indexOf(state.categoryId) !== -1) {
+            return '/course/' + (state.categoryId || '');
+          }
           return '/fast-exercises/' + (state.categoryId || '');
 
         case 'fastExercisePoint':
@@ -64,6 +68,9 @@
 
         case 'course':
           return '/course';
+
+        case 'courseTheory':
+          return '/course/theory';
 
         case 'courseBlock':
           return '/course/block-' + (state.blockKey || '1');
@@ -162,6 +169,15 @@
       if (first === 'course') {
         if (segments.length === 1) {
           return { view: 'course' };
+        }
+        if (segments.length === 2) {
+          if (segments[1] === 'theory') {
+            return { view: 'courseTheory' };
+          }
+          var _courseCategories = COURSE_CATEGORIES;
+          if (_courseCategories.indexOf(segments[1]) !== -1) {
+            return { view: 'fastExerciseCategory', categoryId: segments[1] };
+          }
         }
         if (segments.length >= 2 && segments[1].indexOf('block-') === 0) {
           var blockKey = segments[1].replace('block-', '');
