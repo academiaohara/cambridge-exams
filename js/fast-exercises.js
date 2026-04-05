@@ -5087,8 +5087,14 @@
           content.innerHTML = '<div class="fe-error">No words available for this level.</div>';
           return;
         }
-        // Derive a numeric seed from the date string ('YYYY-MM-DD' → integer)
-        var dateSeed = parseInt(date.replace(/-/g, ''), 10) || 0;
+        // Derive a reproducible seed from the date string using a simple hash
+        // (same approach as the rest of the codebase for seeded shuffles)
+        var dateSeed = 0;
+        for (var i = 0; i < date.length; i++) {
+          dateSeed = ((dateSeed << 5) - dateSeed) + date.charCodeAt(i);
+          dateSeed = dateSeed & dateSeed;
+        }
+        dateSeed = Math.abs(dateSeed);
         var shuffled = this._cwSeededShuffle(pool, dateSeed);
         var batch = shuffled.slice(0, CW_BATCH_SIZE);
         cwData = this._generateCrossword(batch);
@@ -5108,9 +5114,9 @@
 
       // Progress key is date-based so each day's puzzle has independent tracking.
       // We reuse the lessonId slot (cwIndex = undefined) so the save path becomes
-      // levelId + '_' + lessonId  →  e.g. 'B1_daily_2026-04-05'
-      var dailyLessonId = 'daily_' + date;
-      var pKey = levelId + '_' + dailyLessonId;
+      // levelId + '_' + dailyProgressId  →  e.g. 'B1_daily_2026-04-05'
+      var dailyProgressId = 'daily_' + date;
+      var pKey = levelId + '_' + dailyProgressId;
       var savedState = null;
       try {
         savedState = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.get(pKey) : null;
@@ -5135,8 +5141,8 @@
       wrapper.appendChild(mainDiv);
 
       var mainEl = document.getElementById('vocab-cw-main');
-      // cwIndex = undefined → progress key uses lessonId path (levelId_lessonId)
-      this._renderVocabCrossword(mainEl, cwData, { title: title }, catMeta, color, levelId, dailyLessonId, undefined, savedState);
+      // cwIndex = undefined → progress key uses lessonId path (levelId_dailyProgressId)
+      this._renderVocabCrossword(mainEl, cwData, { title: title }, catMeta, color, levelId, dailyProgressId, undefined, savedState);
     },
 
     // ─── Vocabulary-lesson crossword (kept for the vocabulary learning section) ──
