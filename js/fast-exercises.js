@@ -5193,12 +5193,11 @@
         }
         var defEl = document.getElementById('cw-active-def');
         if (defEl) {
-          var self = FastExercises;
           defEl.innerHTML =
             '<span class="vocab-cw-active-num">' + activeWord.number + (activeWord.dir === 'across' ? 'A' : 'D') + '</span> ' +
-            '<strong class="vocab-cw-active-word">' + self._escapeHTML(activeWord.word.toLowerCase()) + '</strong> — ' +
-            self._escapeHTML(activeWord.definition || '') +
-            (activeWord.example ? '<em class="vocab-cw-active-example"> "' + self._escapeHTML(activeWord.example) + '"</em>' : '');
+            '<strong class="vocab-cw-active-word">' + FastExercises._escapeHTML(activeWord.word.toLowerCase()) + '</strong> — ' +
+            FastExercises._escapeHTML(activeWord.definition || '') +
+            (activeWord.example ? '<em class="vocab-cw-active-example"> "' + FastExercises._escapeHTML(activeWord.example) + '"</em>' : '');
         }
       }
 
