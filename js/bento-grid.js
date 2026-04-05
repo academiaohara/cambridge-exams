@@ -286,7 +286,7 @@
     },
 
     _buildCrosswordStatsSidebarHtml: function(entries) {
-      var progress = this._getCwProgress();
+      var progress = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.getAll() : this._getCwProgress();
       var total = entries.length;
       var completedCount = 0;
       var lastUnfinished = null;
@@ -298,7 +298,7 @@
         if (!p) return;
         if (p.completed) {
           completedCount++;
-        } else if (p.wordsComplete > 0 && p.lastPlayed) {
+        } else if ((p.wordsCorrect || p.wordsComplete || 0) > 0 && p.lastPlayed) {
           var t = new Date(p.lastPlayed).getTime();
           if (t > lastUnfinishedTime) {
             lastUnfinishedTime = t;
@@ -332,7 +332,7 @@
           ? lastUnfinished.levelId + '_cw' + lastUnfinished.cwIndex
           : lastUnfinished.levelId + '_' + lastUnfinished.lessonId;
         var p2 = progress[key2] || {};
-        var wordsPct = (p2.wordsTotal > 0) ? Math.round((p2.wordsComplete / p2.wordsTotal) * 100) : 0;
+        var wordsPct = (p2.wordsTotal > 0) ? Math.round(((p2.wordsCorrect || p2.wordsComplete || 0) / p2.wordsTotal) * 100) : 0;
         var continueOnclick = lastUnfinished.cwIndex !== undefined
           ? 'FastExercises._openMixedCrossword(\'' + this._escapeHTML(lastUnfinished.levelId) + '\',' + lastUnfinished.cwIndex + ')'
           : 'FastExercises._openVocabCrossword(\'' + this._escapeHTML(lastUnfinished.levelId) + '\',\'' + this._escapeHTML(lastUnfinished.lessonId) + '\')';
@@ -447,7 +447,7 @@
         '</div>' +
         filterHtml;
 
-      var progress = this._getCwProgress();
+      var progress = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.getAll() : this._getCwProgress();
 
       var cardsHtml = '';
       if (entries.length === 0) {
@@ -464,7 +464,7 @@
           var isCompleted = false;
           if (prog) {
             isCompleted = !!prog.completed;
-            wordsPct = (prog.wordsTotal > 0) ? Math.round((prog.wordsComplete / prog.wordsTotal) * 100) : 0;
+            wordsPct = (prog.wordsTotal > 0) ? Math.round(((prog.wordsCorrect || prog.wordsComplete || 0) / prog.wordsTotal) * 100) : 0;
             if (isCompleted) wordsPct = 100;
           }
           cardsHtml +=
