@@ -473,6 +473,226 @@ Work through these groups one at a time. Each group = one video.
 
 ---
 
+### GROUP 41 — Weather & Climate
+**Words:** `forecast` · `blizzard` · `humid` · `gust` · `heatwave`  
+**Example sentences:**
+- *forecast* → "The meteorologist's **forecast** warned that the outdoor concert might be cancelled due to storms." *(B1)*
+- *blizzard* → "The football match was abandoned after a sudden **blizzard** made the pitch completely unplayable." *(B2)*
+- *humid* → "The tennis player struggled to perform in the intensely **humid** conditions during the Australian Open." *(B2)*
+- *gust* → "A powerful **gust** of wind knocked over several decorations during the outdoor awards ceremony." *(B1)*
+- *heatwave* → "Athletes at the Tokyo Olympics trained early in the morning to avoid the dangerous **heatwave**." *(B2)*
+
+---
+
+### GROUP 42 — Argument & Debate
+**Words:** `contradict` · `rebut` · `persuade` · `concede` · `controversy`  
+**Example sentences:**
+- *contradict* → "The athlete **contradicted** his coach's version of events in a live television interview." *(B2)*
+- *rebut* → "The director issued a statement to **rebut** the false claims made in the tabloid article." *(C1)*
+- *persuade* → "It took Oprah Winfrey years to **persuade** her network to give her full creative control." *(B2)*
+- *concede* → "The manager **conceded** that his team had not performed well enough to deserve a place in the final." *(B2)*
+- *controversy* → "The referee's decision sparked **controversy** that dominated sports news for the entire week." *(B2)*
+
+---
+
+### GROUP 43 — Urban Life & Cities
+**Words:** `congestion` · `suburb` · `skyline` · `pedestrian` · `commuter`  
+**Example sentences:**
+- *congestion* → "Traffic **congestion** in central London forced many celebrities to swap their cars for bicycles." *(B2)*
+- *suburb* → "The actor grew up in a quiet **suburb** before moving to Hollywood at the age of eighteen." *(B1)*
+- *skyline* → "The director filmed the iconic New York **skyline** at dawn for the opening scene of his film." *(B2)*
+- *pedestrian* → "The city created a new **pedestrian** zone after campaigners argued it would reduce air pollution." *(B1)*
+- *commuter* → "Thousands of **commuters** were stranded when the train strike began without warning on Monday." *(B2)*
+
+---
+
+### GROUP 44 — Animals & Wildlife
+**Words:** `predator` · `habitat` · `migrate` · `domesticate` · `endangered`  
+**Example sentences:**
+- *predator* → "David Attenborough narrated the moment a great white shark, a perfect ocean **predator**, attacked." *(B2)*
+- *habitat* → "The charity raised millions to protect the mountain gorilla's natural **habitat** in Central Africa." *(B2)*
+- *migrate* → "The documentary followed thousands of wildebeest as they **migrated** across the Serengeti plain." *(B2)*
+- *domesticate* → "Scientists believe dogs were **domesticated** from wolves over fifteen thousand years ago." *(C1)*
+- *endangered* → "The snow leopard is one of the most **endangered** big cats in the world, according to the WWF." *(B2)*
+
+---
+
+### GROUP 45 — Global Issues
+**Words:** `inequality` · `sanction` · `refugee` · `poverty` · `migration`  
+**Example sentences:**
+- *inequality* → "Billie Jean King spent her career fighting **inequality** both on and off the tennis court." *(B2)*
+- *sanction* → "New economic **sanctions** were imposed after the country refused to respect international law." *(C1)*
+- *refugee* → "The footballer became an ambassador for a charity supporting **refugee** children in war zones." *(B2)*
+- *poverty* → "The Oscar-winning documentary highlighted the extreme **poverty** experienced in several capital cities." *(B1)*
+- *migration* → "The author's novel explores the emotional impact of **migration** on three generations of one family." *(B2)*
+
+---
+
+### GROUP 46 — Space & Exploration
+**Words:** `orbit` · `launch` · `gravity` · `galaxy` · `astronaut`  
+**Example sentences:**
+- *orbit* → "Elon Musk's rocket successfully completed three full **orbits** before returning to Earth safely." *(B2)*
+- *launch* → "Millions watched the live stream of the rocket **launch** from Cape Canaveral early in the morning." *(B1)*
+- *gravity* → "Astronauts train for months to adapt to the absence of **gravity** aboard the space station." *(B1)*
+- *galaxy* → "The Hubble telescope revealed a distant **galaxy** that scientists had never observed before." *(B2)*
+- *astronaut* → "The first female **astronaut** to walk in space became an instant icon for a generation of girls." *(B1)*
+
+---
+
+### GROUP 47 — Mental Health & Wellbeing
+**Words:** `burnout` · `anxiety` · `therapy` · `resilience` · `mindfulness`  
+**Example sentences:**
+- *burnout* → "Simone Biles spoke openly about **burnout** and the pressure placed on young elite athletes." *(B2)*
+- *anxiety* → "Naomi Osaka withdrew from the French Open citing severe **anxiety** caused by press conferences." *(B2)*
+- *therapy* → "Many top athletes now see a sports psychologist for **therapy** alongside their physical training." *(B2)*
+- *resilience* → "The captain's **resilience** after a career-threatening injury inspired everyone in the squad." *(B2)*
+- *mindfulness* → "LeBron James credits daily **mindfulness** practice as a key part of his preparation for matches." *(C1)*
+
+---
+
+### GROUP 48 — Social Media & Influencers
+**Words:** `viral` · `follower` · `algorithm` · `engagement` · `influencer`  
+**Example sentences:**
+- *viral* → "The footballer's goal celebration went **viral** and was viewed over forty million times in one day." *(B1)*
+- *follower* → "Cristiano Ronaldo gained ten million new **followers** in the week after winning the World Cup." *(A2)*
+- *algorithm* → "Many creators complain that the **algorithm** promotes sensational content over educational videos." *(B2)*
+- *engagement* → "High **engagement** on social media posts is now considered more valuable than raw view counts." *(B2)*
+- *influencer* → "The brand hired an Olympic gold medallist as an **influencer** to promote their new sports range." *(B1)*
+
+---
+
+### GROUP 49 — Power & Influence
+**Words:** `dominate` · `authority` · `reign` · `hierarchy` · `leverage`  
+**Example sentences:**
+- *dominate* → "Novak Djokovic has **dominated** men's tennis with a consistency no other player has matched." *(B2)*
+- *authority* → "The coach's calm **authority** in the dressing room was credited with turning the club around." *(B2)*
+- *reign* → "During her **reign** at the top of the world rankings, she lost fewer than five matches in a year." *(B2)*
+- *hierarchy* → "Young players who challenge the dressing room **hierarchy** are rarely popular with senior teammates." *(C1)*
+- *leverage* → "The striker used his contract expiry to gain **leverage** in negotiations for a record-breaking deal." *(C1)*
+
+---
+
+### GROUP 50 — Describing Actions (Precise Verbs)
+**Words:** `scramble` · `hover` · `lunge` · `dodge` · `freeze`  
+**Example sentences:**
+- *scramble* → "Players **scrambled** back to defend after the goalkeeper spilled the ball inside the box." *(B2)*
+- *hover* → "The camera drone **hovered** above the stadium, capturing the full scale of the sold-out crowd." *(B2)*
+- *lunge* → "The defender made a desperate **lunge** to block the shot but could not prevent the goal." *(B2)*
+- *dodge* → "The boxer **dodged** three punches in a row before landing a counter that stunned his opponent." *(B1)*
+- *freeze* → "The young goalkeeper **froze** under pressure and failed to stop a shot that hit him directly." *(B1)*
+
+---
+
+### GROUP 51 — Describing Size & Degree
+**Words:** `immense` · `negligible` · `substantial` · `modest` · `excessive`  
+**Example sentences:**
+- *immense* → "The **immense** pressure of performing at a World Cup final affects even the most experienced players." *(B2)*
+- *negligible* → "The team doctor said the risk of playing with the injury was **negligible** and cleared him to start." *(C1)*
+- *substantial* → "The club received a **substantial** offer for their captain but rejected it without hesitation." *(B2)*
+- *modest* → "Despite winning five Ballon d'Or awards, the player remained genuinely **modest** in interviews." *(B1)*
+- *excessive* → "Critics argued the pop star's rider demands were **excessive** and out of touch with reality." *(B2)*
+
+---
+
+### GROUP 52 — Opinions & Attitude
+**Words:** `endorse` · `oppose` · `advocate` · `dismiss` · `acknowledge`  
+**Example sentences:**
+- *endorse* → "The Olympic champion was paid millions to **endorse** a global sportswear brand's new campaign." *(B2)*
+- *oppose* → "Several senior players openly **opposed** the decision to sell the captain before the season began." *(B2)*
+- *advocate* → "Megan Rapinoe has consistently **advocated** for equal pay for women in professional sport." *(C1)*
+- *dismiss* → "The manager **dismissed** questions about his future at the club as irrelevant and disrespectful." *(B2)*
+- *acknowledge* → "The director **acknowledged** the film's flaws in an interview but stood by every creative decision." *(B2)*
+
+---
+
+### GROUP 53 — Narrative & Storytelling
+**Words:** `plot` · `narrate` · `climax` · `subplot` · `dialogue`  
+**Example sentences:**
+- *plot* → "The novelist spent three years developing the **plot** before writing a single word of the first chapter." *(B2)*
+- *narrate* → "Morgan Freeman was chosen to **narrate** the documentary because of his calm, authoritative voice." *(B2)*
+- *climax* → "The **climax** of the film left audiences completely silent before the credits began to roll." *(B2)*
+- *subplot* → "The **subplot** involving the detective's sister added unexpected emotional depth to the series." *(C1)*
+- *dialogue* → "Aaron Sorkin is famous for writing **dialogue** that is fast, sharp, and completely unlike real speech." *(B2)*
+
+---
+
+### GROUP 54 — Cause & Effect
+**Words:** `trigger` · `consequence` · `contribute` · `generate` · `result`  
+**Example sentences:**
+- *trigger* → "The controversial interview **triggered** a media storm that lasted over three weeks." *(B2)*
+- *consequence* → "Breaking the club's code of conduct had serious **consequences** for the player's career." *(B1)*
+- *contribute* → "The captain's injury **contributed** significantly to the team's poor run of form in February." *(B2)*
+- *generate* → "The transfer announcement **generated** more social media activity than any other post that year." *(B2)*
+- *result* → "Hard work and sacrifice **resulted** in an Olympic medal that she dedicated to her family." *(A2)*
+
+---
+
+### GROUP 55 — Describing Places
+**Words:** `desolate` · `vibrant` · `picturesque` · `remote` · `bustling`  
+**Example sentences:**
+- *desolate* → "The documentary was filmed in a **desolate** Arctic landscape with temperatures of minus forty degrees." *(C1)*
+- *vibrant* → "Rio de Janeiro is known for its **vibrant** street culture, music, and colour year-round." *(B2)*
+- *picturesque* → "The team's pre-season camp was held in a **picturesque** mountain village in the Swiss Alps." *(B2)*
+- *remote* → "The survival show dropped contestants in a **remote** jungle with only a knife and a compass." *(B2)*
+- *bustling* → "After years in a quiet village, the musician found life in a **bustling** city both exciting and exhausting." *(B2)*
+
+---
+
+### GROUP 56 — Movement & Speed
+**Words:** `accelerate` · `decelerate` · `sprint` · `glide` · `creep`  
+**Example sentences:**
+- *accelerate* → "The racing driver **accelerated** out of the final corner to win the grand prix by half a second." *(B1)*
+- *decelerate* → "The cyclist was forced to **decelerate** sharply when a spectator stepped onto the mountain road." *(B2)*
+- *sprint* → "Usain Bolt could **sprint** one hundred metres faster than most people can even react to a sound." *(B1)*
+- *glide* → "The ice skater seemed to **glide** effortlessly across the rink, barely touching the surface." *(B2)*
+- *creep* → "The journalist **crept** quietly around the corner to film the players' private pre-match warm-up." *(B1)*
+
+---
+
+### GROUP 57 — Entertainment & Showbusiness
+**Words:** `audition` · `premiere` · `rehearse` · `standing ovation` · `cast`  
+**Example sentences:**
+- *audition* → "The actress **auditioned** for the role of Black Widow three times before landing the part." *(B2)*
+- *premiere* → "Thousands of fans lined the streets for the London **premiere** of the final superhero film." *(B2)*
+- *rehearse* → "Beyoncé is famous for **rehearsing** her choreography eight hours a day before a world tour." *(B2)*
+- *standing ovation* → "The cast received a seven-minute **standing ovation** on the final night of the Broadway run." *(B2)*
+- *cast* → "The director personally chose to **cast** an unknown actor in the lead role of the blockbuster." *(B1)*
+
+---
+
+### GROUP 58 — War & Conflict (Historical & Literary)
+**Words:** `invade` · `surrender` · `truce` · `siege` · `resistance`  
+**Example sentences:**
+- *invade* → "In the film, an alien civilisation **invades** Earth and only one scientist knows how to stop them." *(B2)*
+- *surrender* → "The villain **surrendered** only when he realised there was no possible escape from the fortress." *(B1)*
+- *truce* → "The two rival gangs agreed to a temporary **truce** in the classic story set in New York." *(C1)*
+- *siege* → "The final episode ends with a dramatic police **siege** at the suspect's isolated country mansion." *(C1)*
+- *resistance* → "The film's heroine leads the **resistance** against an authoritarian government that controls the media." *(B2)*
+
+---
+
+### GROUP 59 — Ethics & Values
+**Words:** `integrity` · `accountability` · `bias` · `transparent` · `ethical`  
+**Example sentences:**
+- *integrity* → "The athlete refused to cheat and proved that personal **integrity** matters more than any medal." *(B2)*
+- *accountability* → "Fans demanded greater **accountability** from club owners after the failed European Super League plan." *(C1)*
+- *bias* → "The study revealed unconscious **bias** in the way coaches selected players for elite youth academies." *(B2)*
+- *transparent* → "The federation promised to be fully **transparent** about how VAR decisions are made in matches." *(B2)*
+- *ethical* → "The brand faced pressure to be more **ethical** in how it sourced materials for its sports products." *(B2)*
+
+---
+
+### GROUP 60 — Imagination & Creativity
+**Words:** `envision` · `conceive` · `depict` · `abstract` · `original`  
+**Example sentences:**
+- *envision* → "Steve Jobs could **envision** products that consumers did not even know they needed yet." *(C1)*
+- *conceive* → "The architect **conceived** the stadium design while watching a nature documentary about seashells." *(C1)*
+- *depict* → "The mural **depicts** the city's sporting heroes alongside ordinary people who shaped its identity." *(B2)*
+- *abstract* → "The artist's most famous painting is entirely **abstract**, yet it sold for thirty million at auction." *(B2)*
+- *original* → "Every great director has a style so **original** that you can recognise their films in seconds." *(A2)*
+
+---
+
 ## ✅ Execution Checklist
 
 - [ ] GROUP 1 — Thinking & Reasoning
@@ -515,6 +735,26 @@ Work through these groups one at a time. Each group = one video.
 - [ ] GROUP 38 — Risk & Danger
 - [ ] GROUP 39 — Leadership & Management
 - [ ] GROUP 40 — Ambition & Goals
+- [ ] GROUP 41 — Weather & Climate
+- [ ] GROUP 42 — Argument & Debate
+- [ ] GROUP 43 — Urban Life & Cities
+- [ ] GROUP 44 — Animals & Wildlife
+- [ ] GROUP 45 — Global Issues
+- [ ] GROUP 46 — Space & Exploration
+- [ ] GROUP 47 — Mental Health & Wellbeing
+- [ ] GROUP 48 — Social Media & Influencers
+- [ ] GROUP 49 — Power & Influence
+- [ ] GROUP 50 — Describing Actions (Precise Verbs)
+- [ ] GROUP 51 — Describing Size & Degree
+- [ ] GROUP 52 — Opinions & Attitude
+- [ ] GROUP 53 — Narrative & Storytelling
+- [ ] GROUP 54 — Cause & Effect
+- [ ] GROUP 55 — Describing Places
+- [ ] GROUP 56 — Movement & Speed
+- [ ] GROUP 57 — Entertainment & Showbusiness
+- [ ] GROUP 58 — War & Conflict (Historical & Literary)
+- [ ] GROUP 59 — Ethics & Values
+- [ ] GROUP 60 — Imagination & Creativity
 
 ---
 
