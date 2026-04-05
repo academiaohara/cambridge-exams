@@ -5213,6 +5213,8 @@
       var rows = cwData.rows;
       var cols = cwData.cols;
 
+      mainEl.classList.add('vocab-cw-main-' + levelId.toLowerCase());
+
       var cellMap = {};
       placed.forEach(function(p) {
         for (var i = 0; i < p.word.length; i++) {
@@ -5268,7 +5270,7 @@
             '<span class="vocab-cw-header-text">' + self._escapeHTML(levelId) + ' Crossword</span>' +
             '<span class="vocab-cw-header-sep">—</span>' +
             '<span class="vocab-cw-header-lesson">' + self._escapeHTML(lessonTitle) + '</span>' +
-            '<span class="vocab-cw-level-badge">' + self._escapeHTML(levelId) + '</span>' +
+            '<span class="vocab-cw-level-badge vocab-cw-lvl-' + self._escapeHTML(levelId.toLowerCase()) + '">' + self._escapeHTML(levelId) + '</span>' +
           '</div>' +
           '<div class="vocab-cw-header-btns">' +
             '<button class="vocab-cw-btn vocab-cw-mode-btn vocab-cw-cw-mode-btn vocab-cw-cw-mode-btn-active" id="cw-crossword-btn">' + _mi('grid_on') + '<span>Crossword</span></button>' +
