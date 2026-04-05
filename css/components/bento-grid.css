@@ -1263,6 +1263,16 @@ margin-top: -2px;
   flex: 1;
 }
 
+.cw-list-card-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .cw-list-pagination {
   display: flex;
   align-items: center;

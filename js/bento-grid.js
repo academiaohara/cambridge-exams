@@ -293,7 +293,7 @@
       var lastUnfinishedTime = 0;
 
       entries.forEach(function(e) {
-        var key = e.levelId + '_' + e.lessonId;
+        var key = e.cwIndex !== undefined ? e.levelId + '_cw' + e.cwIndex : e.levelId + '_' + e.lessonId;
         var p = progress[key];
         if (!p) return;
         if (p.completed) {
@@ -328,11 +328,15 @@
 
       if (lastUnfinished) {
         var diff = this._cwDiffMap()[lastUnfinished.levelId] || this._cwDiffMap()['B2'];
-        var key2 = lastUnfinished.levelId + '_' + lastUnfinished.lessonId;
+        var key2 = lastUnfinished.cwIndex !== undefined
+          ? lastUnfinished.levelId + '_cw' + lastUnfinished.cwIndex
+          : lastUnfinished.levelId + '_' + lastUnfinished.lessonId;
         var p2 = progress[key2] || {};
         var wordsPct = (p2.wordsTotal > 0) ? Math.round((p2.wordsComplete / p2.wordsTotal) * 100) : 0;
-        html += '<div class="cw-sidebar-continue" onclick="FastExercises._openVocabCrossword(\'' +
-          this._escapeHTML(lastUnfinished.levelId) + '\',\'' + this._escapeHTML(lastUnfinished.lessonId) + '\')">' +
+        var continueOnclick = lastUnfinished.cwIndex !== undefined
+          ? 'FastExercises._openMixedCrossword(\'' + this._escapeHTML(lastUnfinished.levelId) + '\',' + lastUnfinished.cwIndex + ')'
+          : 'FastExercises._openVocabCrossword(\'' + this._escapeHTML(lastUnfinished.levelId) + '\',\'' + this._escapeHTML(lastUnfinished.lessonId) + '\')';
+        html += '<div class="cw-sidebar-continue" onclick="' + continueOnclick + '">' +
           '<div class="cw-sidebar-continue-label">' + _mi('play_circle') + ' Continue</div>' +
           '<div class="cw-sidebar-continue-title">' + this._escapeHTML(lastUnfinished.title) + '</div>' +
           '<div class="cw-sidebar-continue-sub">' + lastUnfinished.levelId + ' · ' + wordsPct + '% done</div>' +
@@ -375,13 +379,6 @@
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
 
-      // Load vocabulary levels data
-      var levelsData = null;
-      try {
-        var r = await fetch('data/vocabulary/levels.json');
-        if (r.ok) levelsData = await r.json();
-      } catch(e) {}
-
       var cwListPage = document.getElementById('cwListPage');
       var cwLeftSidebar = document.getElementById('cwLeftSidebar');
       if (!cwListPage) return;
@@ -389,20 +386,23 @@
       var CEFR_ORDER = ['A2', 'B1', 'B2', 'C1', 'C2'];
       var DIFF_MAP = this._cwDiffMap();
 
-      // Build all crossword entries ordered by CEFR level then lesson order
+      // Build crossword entries from the fixed level config (no topic grouping).
+      // CW_LEVEL_CONFIG is defined in fast-exercises.js and exposed via _cwLevelConfig().
+      var LEVEL_CONFIG = (typeof FastExercises !== 'undefined' && FastExercises._cwLevelConfig)
+        ? FastExercises._cwLevelConfig()
+        : [];
+
       var allEntries = [];
-      if (levelsData && levelsData.levels) {
-        CEFR_ORDER.forEach(function(cefrId) {
-          var lvl = null;
-          for (var i = 0; i < levelsData.levels.length; i++) {
-            if (levelsData.levels[i].id === cefrId) { lvl = levelsData.levels[i]; break; }
-          }
-          if (!lvl || !lvl.lessons) return;
-          lvl.lessons.forEach(function(lesson) {
-            allEntries.push({ levelId: cefrId, lessonId: lesson.id, title: lesson.title || lesson.id });
-          });
-        });
-      }
+      CEFR_ORDER.forEach(function(cefrId) {
+        var cfg = null;
+        for (var i = 0; i < LEVEL_CONFIG.length; i++) {
+          if (LEVEL_CONFIG[i].id === cefrId) { cfg = LEVEL_CONFIG[i]; break; }
+        }
+        if (!cfg || cfg.count <= 0) return;
+        for (var idx = 0; idx < cfg.count; idx++) {
+          allEntries.push({ levelId: cefrId, cwIndex: idx, title: cefrId + ' #' + (idx + 1) });
+        }
+      });
 
       // Build left sidebar with stats
       if (cwLeftSidebar) {
@@ -458,7 +458,7 @@
         pageEntries.forEach(function(entry, i) {
           var num = allEntries.indexOf(entry) + 1;
           var diff = DIFF_MAP[entry.levelId] || DIFF_MAP['B2'];
-          var pKey = entry.levelId + '_' + entry.lessonId;
+          var pKey = entry.levelId + '_cw' + entry.cwIndex;
           var prog = progress[pKey];
           var wordsPct = 0;
           var isCompleted = false;
@@ -468,14 +468,10 @@
             if (isCompleted) wordsPct = 100;
           }
           cardsHtml +=
-            '<div class="cw-list-card cw-list-card-' + entry.levelId.toLowerCase() + (isCompleted ? ' cw-list-card-done' : '') + '" ' +
-              'onclick="FastExercises._openVocabCrossword(\'' + entry.levelId + '\',\'' + entry.lessonId + '\')">' +
-              '<div class="cw-list-card-top">' +
-                '<span class="cw-list-card-num">#' + num + '</span>' +
-                '<span class="cw-list-card-lvl-badge">' + entry.levelId + '</span>' +
-              '</div>' +
-              '<span class="material-symbols-outlined cw-list-card-icon">grid_on</span>' +
-              '<div class="cw-list-card-title-text">' + BentoGrid._escapeHTML(entry.title) + '</div>' +
+            '<div class="cw-list-card' + (isCompleted ? ' cw-list-card-done' : '') + '" style="background:' + diff.bg + '" ' +
+              'onclick="FastExercises._openMixedCrossword(\'' + entry.levelId + '\',' + entry.cwIndex + ')">' +
+              '<div class="cw-list-card-num">' + num + '</div>' +
+              '<div class="cw-list-card-badge" style="background:' + diff.badgeColor + '">' + entry.levelId + '</div>' +
               '<div class="cw-list-card-prog-wrap">' +
                 '<div class="cw-list-card-prog-track">' +
                   '<div class="cw-list-card-prog-fill' + (isCompleted ? ' cw-prog-done' : '') + '" style="width:' + wordsPct + '%"></div>' +
