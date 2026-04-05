@@ -55,6 +55,7 @@
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Course</div>' +
+            '<div class="bento-card-desc">Grammar · Vocabulary · Review</div>' +
             '<div class="bento-card-hover-info">Follow the structured grammar and vocabulary course — theory, exercises and review all in one.</div>' +
           '</div>' +
         '</div>' +

@@ -95,7 +95,8 @@
 
 /* Ground effect for illustration cards */
 .bento-card-quicksteps::before,
-.bento-card-basecamp::before {
+.bento-card-basecamp::before,
+.bento-card-crossword::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -243,17 +244,13 @@ content: '';
   border-radius: var(--bento-radius);
 }
 
-/* ── On hover: hide card illustrations ── */
+/* ── On hover: hide card illustrations (::after only) ── */
 .bento-card::after,
 .bento-card::before {
   transition: opacity 0.3s ease;
 }
 
 .bento-card:hover::after {
-  opacity: 0 !important;
-}
-
-.bento-card:hover::before {
   opacity: 0 !important;
 }
 
