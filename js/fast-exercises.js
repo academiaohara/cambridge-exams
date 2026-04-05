@@ -5060,6 +5060,85 @@
       this._renderVocabCrossword(mainEl, cwData, { title: title }, catMeta, color, levelId, null, cwIndex, savedState);
     },
 
+    // ─── Daily generated crossword ────────────────────────────────────────────
+    // Generates a fresh crossword for today, caches it in localStorage, and
+    // overwrites it automatically when the calendar date changes.
+
+    _openDailyGeneratedCrossword: async function(levelId, date) {
+      var self = this;
+      var content = document.getElementById('main-content');
+      if (!content) return;
+
+      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+
+      // Return the cached crossword for today, or generate (and store) a new one.
+      var storageKey = 'cambridge_daily_crossword_' + levelId;
+      var cwData = null;
+      try {
+        var stored = JSON.parse(localStorage.getItem(storageKey) || 'null');
+        if (stored && stored.date === date && stored.cwData) {
+          cwData = stored.cwData;
+        }
+      } catch(e) { cwData = null; }
+
+      if (!cwData) {
+        var pool = await this._buildMixedWordPool(levelId);
+        if (!pool.length) {
+          content.innerHTML = '<div class="fe-error">No words available for this level.</div>';
+          return;
+        }
+        // Derive a numeric seed from the date string ('YYYY-MM-DD' → integer)
+        var dateSeed = parseInt(date.replace(/-/g, ''), 10) || 0;
+        var shuffled = this._cwSeededShuffle(pool, dateSeed);
+        var batch = shuffled.slice(0, CW_BATCH_SIZE);
+        cwData = this._generateCrossword(batch);
+        if (!cwData || !cwData.placed || cwData.placed.length < CW_MIN_PLACED) {
+          content.innerHTML = '<div class="fe-error">Not enough words could be placed. Please try again later.</div>';
+          return;
+        }
+        try {
+          localStorage.setItem(storageKey, JSON.stringify({ date: date, cwData: cwData }));
+        } catch(e) {}
+      }
+
+      if (!cwData || !cwData.placed || cwData.placed.length < CW_MIN_PLACED) {
+        content.innerHTML = '<div class="fe-error">Not enough words could be placed. Please try again later.</div>';
+        return;
+      }
+
+      // Progress key is date-based so each day's puzzle has independent tracking.
+      // We reuse the lessonId slot (cwIndex = undefined) so the save path becomes
+      // levelId + '_' + lessonId  →  e.g. 'B1_daily_2026-04-05'
+      var dailyLessonId = 'daily_' + date;
+      var pKey = levelId + '_' + dailyLessonId;
+      var savedState = null;
+      try {
+        savedState = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.get(pKey) : null;
+        if (!savedState) {
+          var rawProg = localStorage.getItem('cambridge_crossword_progress');
+          if (rawProg) savedState = (JSON.parse(rawProg) || {})[pKey] || null;
+        }
+      } catch(e) { savedState = null; }
+
+      var catMeta = { id: 'crossword', icon: 'grid_on', name: 'Crossword', color: '#10b981' };
+      var color = catMeta.color;
+      var title = '📅 Daily · ' + date;
+
+      var wrapper = document.createElement('div');
+      wrapper.className = 'fe-section';
+      content.innerHTML = '';
+      content.appendChild(wrapper);
+
+      var mainDiv = document.createElement('div');
+      mainDiv.className = 'vocab-cw-layout';
+      mainDiv.innerHTML = '<div class="vocab-cw-main" id="vocab-cw-main"></div>';
+      wrapper.appendChild(mainDiv);
+
+      var mainEl = document.getElementById('vocab-cw-main');
+      // cwIndex = undefined → progress key uses lessonId path (levelId_lessonId)
+      this._renderVocabCrossword(mainEl, cwData, { title: title }, catMeta, color, levelId, dailyLessonId, undefined, savedState);
+    },
+
     // ─── Vocabulary-lesson crossword (kept for the vocabulary learning section) ──
 
     _openVocabCrossword: async function(levelId, lessonId) {

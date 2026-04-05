@@ -390,13 +390,13 @@
       var daily = this._getDailyCrossword(level);
       var dailyHtml = '';
       if (daily) {
-        var dailyKey = daily.levelId + '_cw' + daily.cwIndex;
+        var dailyKey = daily.levelId + '_daily_' + daily.date;
         var dailyProg = progress[dailyKey];
         var isDailyDone = dailyProg && dailyProg.completed;
         var isDailyStarted = dailyProg && !isDailyDone && (dailyProg.wordsCorrect || dailyProg.wordsComplete || 0) > 0;
         var dailyStatusText = isDailyDone ? '✅ Completed!' : (isDailyStarted ? '⏳ In progress' : '▶ Play now');
         dailyHtml = '<div class="bento-card-cw-daily' + (isDailyDone ? ' bento-card-cw-daily-done' : '') + '">' +
-          '<span class="bento-cw-daily-label">📅 Daily · ' + daily.levelId + ' #' + (daily.cwIndex + 1) + '</span>' +
+          '<span class="bento-cw-daily-label">📅 Daily · ' + daily.levelId + '</span>' +
           '<span class="bento-cw-daily-status">' + dailyStatusText + '</span>' +
         '</div>';
       }
@@ -528,28 +528,15 @@
       };
     },
 
-    // Returns today's daily crossword { levelId, cwIndex, date } for the given level.
-    // Selection is deterministic: same crossword for everyone on the same date.
-    // A new puzzle is chosen automatically when the calendar day changes.
+    // Returns today's daily crossword descriptor { levelId, date } for the given level.
+    // A new puzzle is generated automatically when the calendar day changes.
     _getDailyCrossword: function(level) {
-      var LEVEL_CONFIG = (typeof FastExercises !== 'undefined' && FastExercises._cwLevelConfig)
-        ? FastExercises._cwLevelConfig() : [];
-      var cfg = null;
-      for (var i = 0; i < LEVEL_CONFIG.length; i++) {
-        if (LEVEL_CONFIG[i].id === level) { cfg = LEVEL_CONFIG[i]; break; }
-      }
-      if (!cfg || cfg.count <= 0) return null;
       var today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
-      var seed = today + '_' + level;
-      var hash = 0;
-      for (var j = 0; j < seed.length; j++) {
-        hash = ((hash << 5) - hash) + seed.charCodeAt(j);
-        hash = hash & hash; // Convert to 32-bit integer
-      }
-      return { levelId: level, cwIndex: Math.abs(hash) % cfg.count, date: today };
+      return { levelId: level, date: today };
     },
 
-    // Opens today's daily crossword directly. Falls back to the full list if unavailable.
+    // Opens today's daily crossword. Generates a fresh puzzle for the current date,
+    // caching it in localStorage so the same puzzle is shown throughout the day.
     openDailyCrossword: function() {
       var level = (typeof AppState !== 'undefined') ? AppState.currentLevel || 'C1' : 'C1';
       var daily = this._getDailyCrossword(level);
@@ -557,7 +544,7 @@
         this.openCrosswordList();
         return;
       }
-      FastExercises._openMixedCrossword(daily.levelId, daily.cwIndex);
+      FastExercises._openDailyGeneratedCrossword(daily.levelId, daily.date);
     },
 
     openCrosswordList: async function(page, levelFilter) {
@@ -690,7 +677,7 @@
       var daily = BentoGrid._getDailyCrossword(level);
       var dailyBannerHtml = '';
       if (daily) {
-        var dailyKey = daily.levelId + '_cw' + daily.cwIndex;
+        var dailyKey = daily.levelId + '_daily_' + daily.date;
         var dailyProgEntry = progress[dailyKey];
         var isDailyDone = dailyProgEntry && dailyProgEntry.completed;
         var isDailyStarted = dailyProgEntry && !isDailyDone && (dailyProgEntry.wordsCorrect || dailyProgEntry.wordsComplete || 0) > 0;
@@ -706,7 +693,7 @@
               '<div class="cw-daily-banner-icon">📅</div>' +
               '<div class="cw-daily-banner-info">' +
                 '<div class="cw-daily-banner-title">Today\'s Daily Crossword</div>' +
-                '<div class="cw-daily-banner-sub">' + daily.levelId + ' · Puzzle #' + (daily.cwIndex + 1) +
+                '<div class="cw-daily-banner-sub">' + daily.levelId + ' · ' + daily.date +
                   (isDailyStarted ? ' · ' + dailyPct + '% done' : '') +
                   (isDailyDone ? ' · Solved!' : '') +
                 '</div>' +
