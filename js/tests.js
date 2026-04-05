@@ -10,6 +10,7 @@
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Test Simulation</div>' +
+            '<div class="bento-card-desc">Timed exam · All sections in sequence</div>' +
             '<div class="bento-card-hover-info">Sit the full Cambridge exam under real timed conditions — all sections in sequence, just like the real thing.</div>' +
           '</div>' +
         '</div>' +
@@ -18,6 +19,7 @@
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Test Practice</div>' +
+            '<div class="bento-card-desc">No time limit · Choose any section</div>' +
             '<div class="bento-card-hover-info">Practice individual sections at your own pace — pick any part and focus on what you need most.</div>' +
           '</div>' +
         '</div>' +

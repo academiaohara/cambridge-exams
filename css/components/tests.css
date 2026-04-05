@@ -109,14 +109,14 @@ content: '';
   align-items: center;
 }
 
-/* ── Per-card hover: lighter text tones ── */
-.bento-card-summit:hover .bento-card-title   { color: #e08050; }
-.bento-card-summit:hover                     { color: #b07860; }
-.bento-card-summit:hover .bento-card-hover-info { color: #c86040; }
+/* ── Per-card hover: darker text tones ── */
+.bento-card-summit:hover .bento-card-title   { color: #6a2508; }
+.bento-card-summit:hover                     { color: #4a1a08; }
+.bento-card-summit:hover .bento-card-hover-info { color: #7a2a10; }
 
-.bento-card-ascent:hover .bento-card-title   { color: #b89020; }
-.bento-card-ascent:hover                     { color: #907c30; }
-.bento-card-ascent:hover .bento-card-hover-info { color: #a08010; }
+.bento-card-ascent:hover .bento-card-title   { color: #6a5500; }
+.bento-card-ascent:hover                     { color: #4a3a08; }
+.bento-card-ascent:hover .bento-card-hover-info { color: #7a6000; }
 
 .bento-card-mixed:hover .bento-card-title    { color: #6878c8; }
 .bento-card-mixed:hover                      { color: #6878a0; }
