@@ -950,6 +950,10 @@
   transition: width 0.2s ease;
 }
 
+.dashboard-sidebar-toggle-left {
+  align-self: flex-end;
+}
+
 .dashboard-sidebar-toggle {
   display: inline-flex;
   align-items: center;
