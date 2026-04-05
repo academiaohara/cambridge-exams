@@ -112,6 +112,14 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseUnit(initialState);
+      } else if (initialState.view === 'tips') {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof TipsPage !== 'undefined') TipsPage.openTipsHome();
+      } else if (initialState.view === 'tipsSkill' && initialState.level && initialState.skill) {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof TipsPage !== 'undefined') TipsPage.openTipsSkill(initialState.level, initialState.skill);
       } else {
         // Default: dashboard
         Dashboard.render();
@@ -167,6 +175,10 @@
         } else if (state.view === 'courseUnit' && state.unitId) {
           if (state.level) AppState.currentLevel = state.level;
           if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseUnit(state);
+        } else if (state.view === 'tips') {
+          if (typeof TipsPage !== 'undefined') TipsPage._renderHome();
+        } else if (state.view === 'tipsSkill' && state.level && state.skill) {
+          if (typeof TipsPage !== 'undefined') TipsPage._renderSkill(state.level, state.skill);
         }
       });
       

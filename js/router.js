@@ -3,6 +3,7 @@
   var VALID_LEVELS = ['b1', 'b2', 'c1', 'c2'];
   var VALID_SECTIONS = ['reading', 'listening', 'writing', 'speaking'];
   var COURSE_CATEGORIES = ['phrasal-verbs', 'idioms', 'word-formation'];
+  var TIPS_SKILLS = ['reading', 'listening', 'writing', 'speaking'];
 
   window.Router = {
     /**
@@ -51,6 +52,12 @@
 
         case 'crosswordList':
           return '/crosswords';
+
+        case 'tips':
+          return '/tips';
+
+        case 'tipsSkill':
+          return '/tips/' + (state.level || 'B2').toLowerCase() + '/' + (state.skill || 'reading');
 
         case 'fastExercises':
           return '/fast-exercises';
@@ -114,6 +121,23 @@
       if (first === 'stats')                              return { view: 'gradeEvolution' };
       if (first === 'quicksteps')                         return { view: 'quicksteps' };
       if (first === 'crosswords')                         return { view: 'crosswordList' };
+
+      // ── Tips routes ───────────────────────────────
+      if (first === 'tips') {
+        if (segments.length === 1) {
+          return { view: 'tips' };
+        }
+        if (segments.length >= 3 &&
+            VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1 &&
+            TIPS_SKILLS.indexOf(segments[2].toLowerCase()) !== -1) {
+          return {
+            view: 'tipsSkill',
+            level: segments[1].toUpperCase(),
+            skill: segments[2].toLowerCase()
+          };
+        }
+        return { view: 'tips' };
+      }
 
       // ── Test Practice / Test Simulation routes ─────
       var modeMap = { testpractice: 'practice', testsimulation: 'exam' };
