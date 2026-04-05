@@ -5100,7 +5100,9 @@
         selectedCell: null,
         selectedDir: 'across',
         cwData: cwData,
-        cellMap: cellMap
+        cellMap: cellMap,
+        levelId: levelId,
+        lessonId: lessonId
       };
       window._cwState = cwState;
 
@@ -5409,6 +5411,22 @@
       });
       var statusEl = document.getElementById('cw-status');
       if (statusEl) statusEl.textContent = complete + ' of ' + placed.length + ' words complete';
+
+      // Persist progress
+      if (state.levelId && state.lessonId) {
+        try {
+          var key = 'cambridge_crossword_progress';
+          var progressData = JSON.parse(localStorage.getItem(key)) || {};
+          var pKey = state.levelId + '_' + state.lessonId;
+          progressData[pKey] = {
+            wordsComplete: complete,
+            wordsTotal: placed.length,
+            completed: complete === placed.length,
+            lastPlayed: new Date().toISOString()
+          };
+          localStorage.setItem(key, JSON.stringify(progressData));
+        } catch(e) { /* ignore */ }
+      }
     }
 
   };

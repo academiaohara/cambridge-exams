@@ -1154,12 +1154,20 @@ margin-top: -2px;
   color: #6040c0;
 }
 
-.bento-card-crossword .bento-card-icon {
-  font-size: 2rem;
-  color: #6040c0;
-  margin-bottom: 4px;
-  position: relative;
-  z-index: 1;
+/* Crossword PNG illustration (same image as quicksteps) */
+.bento-card-crossword::after {
+content: '';
+    position: absolute;
+    bottom: -110px;
+    right: -20px;
+    width: 320px;
+    height: 320px;
+    opacity: 1;
+    background-image: url(../../Assets/images/quicksteps.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom right;
+    pointer-events: none;
 }
 
 /* ── CROSSWORD LIST PAGE ── */
@@ -1266,6 +1274,217 @@ margin-top: -2px;
 .cw-list-page-btn-active:hover {
   background: #4f33a0 !important;
   border-color: #4f33a0 !important;
+}
+
+/* ── Level filter ── */
+.cw-level-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.cw-filter-btn {
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1.5px solid #e2e8f0;
+  background: #fff;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  letter-spacing: 0.04em;
+}
+
+.cw-filter-btn:hover:not(.cw-filter-btn-active) {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.cw-filter-btn-active {
+  background: #6040c0;
+  border-color: #6040c0;
+  color: #fff;
+}
+
+/* ── Progress bar on crossword cards ── */
+.cw-list-card-prog-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.cw-list-card-prog-track {
+  flex: 1;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+
+.cw-list-card-prog-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: #6040c0;
+  transition: width 0.3s ease;
+}
+
+.cw-list-card-prog-fill.cw-prog-done {
+  background: #059669;
+}
+
+.cw-list-card-prog-pct {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #475569;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.cw-list-card-prog-pct .material-symbols-outlined {
+  font-size: 1rem;
+  color: #059669;
+}
+
+.cw-list-card-done {
+  outline: 2px solid rgba(5,150,105,0.35);
+}
+
+/* ── Crossword page layout (single sidebar on left) ── */
+.cw-list-layout {
+  grid-template-columns: 240px 1fr !important;
+}
+
+.cw-list-layout .dashboard-left-sidebar {
+  display: block !important;
+}
+
+/* ── Crossword sidebar stats widget ── */
+.cw-sidebar-stats {
+  background: var(--card-crossword, #c8b8f0);
+  border-radius: 16px;
+  padding: 18px 16px 14px;
+  margin-bottom: 12px;
+}
+
+.cw-sidebar-stats-title {
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #3a2a6a;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.cw-sidebar-stats-title .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
+.cw-sidebar-stats-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cw-sidebar-stat {
+  flex: 1;
+  background: rgba(255,255,255,0.55);
+  border-radius: 10px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.cw-sidebar-stat-num {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #4020a0;
+  line-height: 1;
+}
+
+.cw-sidebar-stat-label {
+  font-size: 0.72rem;
+  color: #5a3a9a;
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cw-sidebar-prog-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.12);
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.cw-sidebar-prog-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: #6040c0;
+  transition: width 0.4s ease;
+}
+
+.cw-sidebar-prog-label {
+  font-size: 0.72rem;
+  color: #5a3a9a;
+  text-align: right;
+}
+
+/* ── Continue last crossword widget ── */
+.cw-sidebar-continue {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  transition: box-shadow 0.18s;
+  margin-top: 4px;
+}
+
+.cw-sidebar-continue:hover {
+  box-shadow: 0 4px 14px rgba(96,64,192,0.15);
+}
+
+.cw-sidebar-continue-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #6040c0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.cw-sidebar-continue-label .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.cw-sidebar-continue-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #1e293b;
+  margin-bottom: 2px;
+}
+
+.cw-sidebar-continue-sub {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+@media (max-width: 900px) {
+  .cw-list-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .cw-list-layout .dashboard-left-sidebar {
+    display: none !important;
+  }
 }
 
 @media (max-width: 600px) {
