@@ -61,6 +61,7 @@
   font-size: 1.3rem;
   position: relative;
   z-index: 1;
+  transition: color 0.25s ease;
 }
 
 .bento-card-desc {
@@ -71,6 +72,7 @@
   margin-top: 4px;
   position: relative;
   z-index: 1;
+  transition: color 0.25s ease;
 }
 
 .bento-card-extra {
@@ -81,6 +83,7 @@
   margin-top: 6px;
   position: relative;
   z-index: 1;
+  transition: color 0.25s ease;
 }
 
 /* ── Row 2: Learning row (Quicksteps · Basecamp) ── */
@@ -240,8 +243,18 @@ content: '';
   border-radius: var(--bento-radius);
 }
 
-.bento-card:hover .bento-hover-overlay {
-  background: rgba(0, 0, 0, 0.45);
+/* ── On hover: hide card illustrations ── */
+.bento-card::after,
+.bento-card::before {
+  transition: opacity 0.3s ease;
+}
+
+.bento-card:hover::after {
+  opacity: 0 !important;
+}
+
+.bento-card:hover::before {
+  opacity: 0 !important;
 }
 
 /* ── Hover description text ── */
@@ -251,16 +264,36 @@ content: '';
   font-size: 0.85rem;
   line-height: 1.45;
   margin-top: 8px;
-  color: rgba(255, 255, 255, 0.92);
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity 0.25s ease 0.05s, transform 0.25s ease 0.05s;
+  transition: opacity 0.25s ease 0.05s, transform 0.25s ease 0.05s, color 0.25s ease;
 }
 
 .bento-card:hover .bento-card-hover-info {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ── Per-card hover: lighter text tones ── */
+.bento-card-quicksteps:hover .bento-card-title   { color: #7dd060; }
+.bento-card-quicksteps:hover                     { color: #5a8858; }
+.bento-card-quicksteps:hover .bento-card-hover-info { color: #60a048; }
+
+.bento-card-basecamp:hover .bento-card-title     { color: #a0a8f5; }
+.bento-card-basecamp:hover                       { color: #7878a8; }
+.bento-card-basecamp:hover .bento-card-hover-info { color: #8898ee; }
+
+.bento-card-weakspot:hover .bento-card-title     { color: #78b8f0; }
+.bento-card-weakspot:hover                       { color: #5a8878; }
+.bento-card-weakspot:hover .bento-card-hover-info { color: #60a0e0; }
+
+.bento-card-checkpoint:hover .bento-card-title   { color: #d068a0; }
+.bento-card-checkpoint:hover                     { color: #a06878; }
+.bento-card-checkpoint:hover .bento-card-hover-info { color: #c05890; }
+
+.bento-card-crossword:hover .bento-card-title    { color: #9080d8; }
+.bento-card-crossword:hover                      { color: #7060a0; }
+.bento-card-crossword:hover .bento-card-hover-info { color: #8870c8; }
 
 /* ── Bento card inner content ── */
 .bento-card-inner {

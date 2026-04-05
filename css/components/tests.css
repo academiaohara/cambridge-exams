@@ -109,6 +109,19 @@ content: '';
   align-items: center;
 }
 
+/* ── Per-card hover: lighter text tones ── */
+.bento-card-summit:hover .bento-card-title   { color: #e08050; }
+.bento-card-summit:hover                     { color: #b07860; }
+.bento-card-summit:hover .bento-card-hover-info { color: #c86040; }
+
+.bento-card-ascent:hover .bento-card-title   { color: #b89020; }
+.bento-card-ascent:hover                     { color: #907c30; }
+.bento-card-ascent:hover .bento-card-hover-info { color: #a08010; }
+
+.bento-card-mixed:hover .bento-card-title    { color: #6878c8; }
+.bento-card-mixed:hover                      { color: #6878a0; }
+.bento-card-mixed:hover .bento-card-hover-info { color: #7080b8; }
+
 .bento-card-mixed.disabled {
   opacity: 0.5;
   cursor: not-allowed;
