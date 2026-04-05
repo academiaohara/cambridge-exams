@@ -55,8 +55,8 @@
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Course</div>' +
-            '<div class="bento-card-desc">Grammar · Vocabulary · Review</div>' +
-            '<div class="bento-card-hover-info">Follow the structured grammar and vocabulary course — theory, exercises and review all in one.</div>' +
+            '<div class="bento-card-desc">Grammar · Vocab · Phrasal Verbs · Idioms · More</div>' +
+            '<div class="bento-card-hover-info">Structured lessons covering grammar theory, vocabulary, phrasal verbs, idioms, word formation, and review exercises — everything you need for Cambridge exams.</div>' +
           '</div>' +
         '</div>' +
 
@@ -385,24 +385,7 @@
         else                     lastPlayedText = 'Last played: ' + diffDays + ' days ago';
       }
 
-      // Daily challenge status
-      var level = (typeof AppState !== 'undefined') ? AppState.currentLevel || 'C1' : 'C1';
-      var daily = this._getDailyCrossword(level);
-      var dailyHtml = '';
-      if (daily) {
-        var dailyKey = daily.levelId + '_cw' + daily.cwIndex;
-        var dailyProg = progress[dailyKey];
-        var isDailyDone = dailyProg && dailyProg.completed;
-        var isDailyStarted = dailyProg && !isDailyDone && (dailyProg.wordsCorrect || dailyProg.wordsComplete || 0) > 0;
-        var dailyStatusText = isDailyDone ? '✅ Completed!' : (isDailyStarted ? '⏳ In progress' : '▶ Play now');
-        dailyHtml = '<div class="bento-card-cw-daily' + (isDailyDone ? ' bento-card-cw-daily-done' : '') + '">' +
-          '<span class="bento-cw-daily-label">📅 Daily · ' + daily.levelId + ' #' + (daily.cwIndex + 1) + '</span>' +
-          '<span class="bento-cw-daily-status">' + dailyStatusText + '</span>' +
-        '</div>';
-      }
-
       var html = '<div class="bento-card-cw-meta">';
-      html += dailyHtml;
       html += '<div class="bento-card-cw-prog">' + completedCount + ' / ' + total + ' completed</div>';
       if (streak > 0) html += '<div class="bento-card-cw-streak">🔥 ' + streak + '-day streak</div>';
       if (lastPlayedText) html += '<div class="bento-card-cw-lastplayed">' + lastPlayedText + '</div>';

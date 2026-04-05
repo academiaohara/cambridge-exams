@@ -4,13 +4,44 @@
 (function() {
   Object.assign(window.BentoGrid, {
     _renderTopRow: function(exams) {
+      var available = (exams || []).filter(function(e) { return e.status === 'available'; });
+      var availableCount = available.length;
+
+      var completedExams = 0;
+      var startedExams = 0;
+      available.forEach(function(exam) {
+        var secs = exam.sections || {};
+        var hasCompleted = Object.keys(secs).some(function(s) { return secs[s].completed && secs[s].completed.length > 0; });
+        var hasInProgress = Object.keys(secs).some(function(s) { return secs[s].inProgress && secs[s].inProgress.length > 0; });
+        if (hasCompleted) completedExams++;
+        else if (hasInProgress) startedExams++;
+      });
+
+      var summitSubtitle, ascentSubtitle;
+      if (availableCount === 0) {
+        summitSubtitle = 'No tests available yet';
+        ascentSubtitle = 'No tests available yet';
+      } else {
+        var countPart = availableCount + ' test' + (availableCount !== 1 ? 's' : '') + ' available';
+        if (completedExams > 0) {
+          summitSubtitle = countPart + ' · ' + completedExams + ' completed';
+          ascentSubtitle = countPart + ' · ' + completedExams + ' completed';
+        } else if (startedExams > 0) {
+          summitSubtitle = countPart + ' · ' + startedExams + ' in progress';
+          ascentSubtitle = countPart + ' · ' + startedExams + ' in progress';
+        } else {
+          summitSubtitle = countPart;
+          ascentSubtitle = countPart;
+        }
+      }
+
       return '<div class="bento-top-row">' +
 
         '<div class="bento-card bento-card-summit" onclick="BentoGrid.selectMode(\'exam\')">' +
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Test Simulation</div>' +
-            '<div class="bento-card-desc">Timed exam · All sections in sequence</div>' +
+            '<div class="bento-card-desc">' + summitSubtitle + '</div>' +
             '<div class="bento-card-hover-info">Sit the full Cambridge exam under real timed conditions — all sections in sequence, just like the real thing.</div>' +
           '</div>' +
         '</div>' +
@@ -19,7 +50,7 @@
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Test Practice</div>' +
-            '<div class="bento-card-desc">No time limit · Choose any section</div>' +
+            '<div class="bento-card-desc">' + ascentSubtitle + '</div>' +
             '<div class="bento-card-hover-info">Practice individual sections at your own pace — pick any part and focus on what you need most.</div>' +
           '</div>' +
         '</div>' +
