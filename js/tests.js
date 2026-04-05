@@ -7,14 +7,18 @@
       return '<div class="bento-top-row">' +
 
         '<div class="bento-card bento-card-summit" onclick="BentoGrid.selectMode(\'exam\')">' +
+          '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Test Simulation</div>' +
+            '<div class="bento-card-hover-info">Sit the full Cambridge exam under real timed conditions — all sections in sequence, just like the real thing.</div>' +
           '</div>' +
         '</div>' +
 
         '<div class="bento-card bento-card-ascent" onclick="BentoGrid.selectMode(\'practice\')">' +
+          '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Test Practice</div>' +
+            '<div class="bento-card-hover-info">Practice individual sections at your own pace — pick any part and focus on what you need most.</div>' +
           '</div>' +
         '</div>' +
 
@@ -30,12 +34,14 @@
         : 'Mix exercises from ' + availableCount + ' tests — speaking 3 & 4 always from the same test';
       return '<div class="bento-mixed-row">' +
         '<div class="bento-card bento-card-mixed' + (disabled ? ' disabled' : '') + '"' + clickAttr + '>' +
+          '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">' +
               '<span class="material-symbols-outlined" style="vertical-align:middle;font-size:1.4rem;margin-right:6px">shuffle</span>' +
               'Random Mix' +
             '</div>' +
             '<div class="bento-card-desc">' + descText + '</div>' +
+            '<div class="bento-card-hover-info">Combine exercises from multiple tests in a single session — a great way to practice across all sections.</div>' +
           '</div>' +
         '</div>' +
       '</div>';

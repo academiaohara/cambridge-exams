@@ -43,15 +43,19 @@
       return '<div class="bento-learning-row">' +
 
         '<div class="bento-card bento-card-crossword" onclick="BentoGrid.openCrosswordList()">' +
+          '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Crossword</div>' +
             BentoGrid._buildCrosswordBentoMeta() +
+            '<div class="bento-card-hover-info">Expand your vocabulary with Cambridge-style crossword puzzles. Build your streak day by day.</div>' +
           '</div>' +
         '</div>' +
 
         '<div class="bento-card bento-card-basecamp" onclick="BentoGrid.openLessons()">' +
+          '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Course</div>' +
+            '<div class="bento-card-hover-info">Follow the structured grammar and vocabulary course — theory, exercises and review all in one.</div>' +
           '</div>' +
         '</div>' +
 
@@ -82,9 +86,11 @@
 
       if (!weak) {
         return '<div class="bento-card bento-card-weakspot">' +
+          '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Weak Spot</div>' +
             '<div class="bento-card-desc">' + 'Complete some exercises to get personalised recommendations!' + '</div>' +
+            '<div class="bento-card-hover-info">Your lowest-scoring section — practice it to boost your overall result.</div>' +
           '</div>' +
         '</div>';
       }
@@ -94,9 +100,11 @@
         : '';
 
       return '<div class="bento-card bento-card-weakspot" onclick="Exercise.openPart(\'' + this._escapeHTML(weak.examId) + '\', \'' + weak.section + '\', ' + (weak.part || 1) + ')">' +
+        '<div class="bento-hover-overlay"></div>' +
         '<div class="bento-card-inner">' +
           '<div class="bento-card-title">Weak Spot</div>' +
           '<div class="bento-card-desc">' + this._escapeHTML(weak.examId) + ' — ' + this._capitalize(weak.section) + (weak.part ? ' ' + 'Part' + ' ' + weak.part : '') + scoreHtml + '</div>' +
+          '<div class="bento-card-hover-info">Your lowest-scoring section — practice it to boost your overall result.</div>' +
         '</div>' +
       '</div>';
     },
@@ -189,9 +197,11 @@
       var totalParts = lesson.totalParts || 1;
 
       return '<div class="bento-card bento-card-checkpoint" onclick="Exercise.openPart(\'' + this._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')">' +
+        '<div class="bento-hover-overlay"></div>' +
         '<div class="bento-card-inner">' +
           '<div class="bento-card-title">Checkpoint</div>' +
           '<div class="bento-card-desc">' + this._escapeHTML(lesson.examId) + ' — ' + this._capitalize(lesson.section) + ' ' + 'Part' + ' ' + lesson.part + ' (' + completedParts + '/' + totalParts + ')</div>' +
+          '<div class="bento-card-hover-info">Pick up where you left off and continue your next in-progress exercise.</div>' +
         '</div>' +
       '</div>';
     },
