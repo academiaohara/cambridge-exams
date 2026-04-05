@@ -4489,8 +4489,10 @@
 .vocab-cw-cell-incorrect { background: #fee2e2; }
 .vocab-cw-cell-incorrect .vocab-cw-cell-letter { color: #991b1b; }
 .vocab-cw-cell-revealed .vocab-cw-cell-letter { color: #7c3aed; }
-.vocab-cw-cell-locked { background: #16a34a !important; }
-.vocab-cw-cell-locked .vocab-cw-cell-letter { color: #fff !important; }
+.vocab-cw-cell.vocab-cw-cell-locked,
+.vocab-cw-cell.vocab-cw-cell-locked.vocab-cw-cell-active,
+.vocab-cw-cell.vocab-cw-cell-locked.vocab-cw-cell-word { background: #16a34a; }
+.vocab-cw-cell.vocab-cw-cell-locked .vocab-cw-cell-letter { color: #fff; }
 .vocab-cw-cell-active.vocab-cw-cell-correct { background: #fef08a; }
 .vocab-cw-cell-active.vocab-cw-cell-incorrect { background: #fef08a; }
 
@@ -4640,7 +4642,7 @@
 .vocab-cw-strip-cell-revealed { border-color: #7c3aed; color: #7c3aed; background: #f5f3ff; cursor: default; }
 .vocab-cw-strip-cell-correct { border-color: #059669; color: #166534; background: #dcfce7; }
 .vocab-cw-strip-cell-incorrect { border-color: #dc2626; color: #991b1b; background: #fee2e2; }
-.vocab-cw-strip-cell-locked { border-color: #16a34a !important; color: #fff !important; background: #16a34a !important; cursor: default; }
+.vocab-cw-strip-cell.vocab-cw-strip-cell-locked { border-color: #16a34a; color: #fff; background: #16a34a; cursor: default; }
 /* Hidden keyboard capture input */
 .vocab-cw-strip-input {
   position: fixed;
@@ -4666,8 +4668,8 @@
 /* Wordle/Crossword mode toggle buttons */
 .vocab-cw-mode-btn { color: #475569; border-color: #e2e8f0; background: #f8fafc; }
 .vocab-cw-mode-btn:hover:not(:disabled) { background: #f1f5f9; }
-.vocab-cw-cw-mode-btn-active,
-.vocab-cw-mode-btn-active { background: #7c3aed !important; color: #fff !important; border-color: #7c3aed !important; }
+.vocab-cw-mode-btn.vocab-cw-cw-mode-btn-active,
+.vocab-cw-mode-btn.vocab-cw-mode-btn-active { background: #7c3aed; color: #fff; border-color: #7c3aed; }
 .vocab-cw-wordle-btn { color: #7c3aed; border-color: #ddd6fe; background: #faf5ff; }
 .vocab-cw-wordle-btn:hover:not(:disabled) { background: #ede9fe; }
 /* kept for back-compat — overridden by vocab-cw-mode-btn-active */
