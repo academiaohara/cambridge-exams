@@ -90,7 +90,7 @@
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Weak Spot</div>' +
             '<div class="bento-card-desc">' + 'Complete some exercises to get personalised recommendations!' + '</div>' +
-            '<div class="bento-card-hover-info">Your lowest-scoring section — practise it to boost your overall result.</div>' +
+            '<div class="bento-card-hover-info">Your lowest-scoring section — practice it to boost your overall result.</div>' +
           '</div>' +
         '</div>';
       }
@@ -104,7 +104,7 @@
         '<div class="bento-card-inner">' +
           '<div class="bento-card-title">Weak Spot</div>' +
           '<div class="bento-card-desc">' + this._escapeHTML(weak.examId) + ' — ' + this._capitalize(weak.section) + (weak.part ? ' ' + 'Part' + ' ' + weak.part : '') + scoreHtml + '</div>' +
-          '<div class="bento-card-hover-info">Your lowest-scoring section — practise it to boost your overall result.</div>' +
+          '<div class="bento-card-hover-info">Your lowest-scoring section — practice it to boost your overall result.</div>' +
         '</div>' +
       '</div>';
     },

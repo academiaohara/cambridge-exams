@@ -18,7 +18,7 @@
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Test Practice</div>' +
-            '<div class="bento-card-hover-info">Practise individual sections at your own pace — pick any part and focus on what you need most.</div>' +
+            '<div class="bento-card-hover-info">Practice individual sections at your own pace — pick any part and focus on what you need most.</div>' +
           '</div>' +
         '</div>' +
 
@@ -41,7 +41,7 @@
               'Random Mix' +
             '</div>' +
             '<div class="bento-card-desc">' + descText + '</div>' +
-            '<div class="bento-card-hover-info">Combine exercises from multiple tests in a single session — a great way to practise across all sections.</div>' +
+            '<div class="bento-card-hover-info">Combine exercises from multiple tests in a single session — a great way to practice across all sections.</div>' +
           '</div>' +
         '</div>' +
       '</div>';
