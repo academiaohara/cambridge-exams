@@ -4961,13 +4961,13 @@
       var tabD     = document.getElementById('cw-tab-down');
       if (!acrossEl || !downEl) return;
       if (dir === 'across') {
-        acrossEl.style.display = '';
+        acrossEl.style.display = 'block';
         downEl.style.display   = 'none';
         if (tabA) tabA.classList.add('vocab-cw-clues-tab-active');
         if (tabD) tabD.classList.remove('vocab-cw-clues-tab-active');
       } else {
         acrossEl.style.display = 'none';
-        downEl.style.display   = '';
+        downEl.style.display   = 'block';
         if (tabA) tabA.classList.remove('vocab-cw-clues-tab-active');
         if (tabD) tabD.classList.add('vocab-cw-clues-tab-active');
       }
@@ -5356,8 +5356,8 @@
           '</div>' +
           '<div class="vocab-cw-clues" id="cw-clues">' +
             '<div class="vocab-cw-clues-toggle">' +
-              '<button class="vocab-cw-clues-tab vocab-cw-clues-tab-active" id="cw-tab-across" onclick="FastExercises._cwShowClueTab(\'across\')">' + 'ACROSS' + '</button>' +
-              '<button class="vocab-cw-clues-tab" id="cw-tab-down" onclick="FastExercises._cwShowClueTab(\'down\')">' + 'DOWN' + '</button>' +
+              '<button class="vocab-cw-clues-tab vocab-cw-clues-tab-active" id="cw-tab-across" onclick="FastExercises._cwShowClueTab(\'across\')">ACROSS</button>' +
+              '<button class="vocab-cw-clues-tab" id="cw-tab-down" onclick="FastExercises._cwShowClueTab(\'down\')">DOWN</button>' +
             '</div>' +
             '<div class="vocab-cw-clue-section" id="cw-clues-across">' +
               acrossClues.map(buildClue).join('') +
