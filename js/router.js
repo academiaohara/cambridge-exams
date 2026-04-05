@@ -54,8 +54,13 @@
         case 'fastExercises':
           return '/fast-exercises';
 
-        case 'fastExerciseCategory':
+        case 'fastExerciseCategory': {
+          var _courseCategories = ['phrasal-verbs', 'idioms', 'word-formation'];
+          if (_courseCategories.indexOf(state.categoryId) !== -1) {
+            return '/course/' + (state.categoryId || '');
+          }
           return '/fast-exercises/' + (state.categoryId || '');
+        }
 
         case 'fastExercisePoint':
           return '/fast-exercises/' + (state.categoryId || '') + '/' +
@@ -64,6 +69,9 @@
 
         case 'course':
           return '/course';
+
+        case 'courseTheory':
+          return '/course/theory';
 
         case 'courseBlock':
           return '/course/block-' + (state.blockKey || '1');
@@ -162,6 +170,15 @@
       if (first === 'course') {
         if (segments.length === 1) {
           return { view: 'course' };
+        }
+        if (segments.length === 2) {
+          if (segments[1] === 'theory') {
+            return { view: 'courseTheory' };
+          }
+          var _courseCategories = ['phrasal-verbs', 'idioms', 'word-formation'];
+          if (_courseCategories.indexOf(segments[1]) !== -1) {
+            return { view: 'fastExerciseCategory', categoryId: segments[1] };
+          }
         }
         if (segments.length >= 2 && segments[1].indexOf('block-') === 0) {
           var blockKey = segments[1].replace('block-', '');

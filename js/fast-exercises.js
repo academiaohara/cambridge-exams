@@ -347,6 +347,9 @@
         legendHtml = '';
       }
 
+      var _isCourseCategory = ['phrasal-verbs', 'idioms', 'word-formation'].indexOf(categoryId) !== -1;
+      var _backFn = _isCourseCategory ? 'BentoGrid.openLessons()' : 'FastExercises.openCategories()';
+
       content.innerHTML =
         '<div class="dashboard-layout">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
@@ -355,7 +358,7 @@
           '<div class="dashboard-center">' +
             '<div class="fe-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="FastExercises.openCategories()">' + 'Back' + '</button>' +
+                '<button class="subpage-back-btn" onclick="' + _backFn + '">' + 'Back' + '</button>' +
                 '<div class="subpage-header-titles">' +
                   '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
                   '<div class="subpage-subtitle">' + 'Level Progress' + ' — ' + activeLevel + '</div>' +

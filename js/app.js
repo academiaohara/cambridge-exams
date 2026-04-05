@@ -100,6 +100,10 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons();
+      } else if (initialState.view === 'courseTheory') {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseTheory();
       } else if (initialState.view === 'courseBlock' && initialState.blockKey) {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
@@ -154,6 +158,9 @@
         } else if (state.view === 'course') {
           if (state.level) AppState.currentLevel = state.level;
           if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons();
+        } else if (state.view === 'courseTheory') {
+          if (state.level) AppState.currentLevel = state.level;
+          if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseTheory();
         } else if (state.view === 'courseBlock' && state.blockKey) {
           if (state.level) AppState.currentLevel = state.level;
           if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseBlock(state.blockKey);
