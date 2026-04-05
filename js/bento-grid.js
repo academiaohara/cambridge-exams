@@ -39,11 +39,13 @@
 
 
     _renderLearningRow: function() {
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       return '<div class="bento-learning-row">' +
 
-        '<div class="bento-card bento-card-quicksteps" onclick="BentoGrid.openMicroLearning()">' +
+        '<div class="bento-card bento-card-crossword" onclick="BentoGrid.openCrosswordList()">' +
           '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Fast Learning</div>' +
+            '<div class="bento-card-icon">' + _mi('grid_on') + '</div>' +
+            '<div class="bento-card-title">Crossword</div>' +
           '</div>' +
         '</div>' +
 
@@ -276,6 +278,138 @@
       } else {
         BentoGrid.openQuickstepsChooser();
       }
+    },
+
+    openCrosswordList: async function(page) {
+      var content = document.getElementById('main-content');
+      if (!content) return;
+
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+
+      var cwState = { view: 'crosswordList' };
+      history.pushState(cwState, '', Router.stateToPath(cwState));
+
+      // Build sidebars
+      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      if (typeof BentoGrid !== 'undefined') {
+        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+      }
+      var rightSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined') {
+        rightSidebarContent = BentoGrid._buildContinueBasecampHtml(exams);
+        rightSidebarContent += BentoGrid._buildStreakSidebarHtml();
+        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
+      }
+
+      // Render initial layout with spinner
+      content.innerHTML =
+        '<div class="dashboard-layout">' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
+            : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
+          '<div class="dashboard-center">' +
+            '<div class="cw-list-page" id="cwListPage">' +
+              '<div class="fe-loading"><div class="fe-spinner"></div></div>' +
+            '</div>' +
+          '</div>' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
+            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>') +
+        '</div>';
+
+      if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
+
+      // Load vocabulary levels data
+      var levelsData = null;
+      try {
+        var r = await fetch('data/vocabulary/levels.json');
+        if (r.ok) levelsData = await r.json();
+      } catch(e) {}
+
+      var cwListPage = document.getElementById('cwListPage');
+      if (!cwListPage) return;
+
+      // Difficulty config
+      var CEFR_ORDER = ['A2', 'B1', 'B2', 'C1', 'C2'];
+      var DIFF_MAP = {
+        'A2': { label: 'A2', difficulty: 'easy',   bg: '#d1fae5', badgeColor: '#065f46' },
+        'B1': { label: 'B1', difficulty: 'easy',   bg: '#d1fae5', badgeColor: '#065f46' },
+        'B2': { label: 'B2', difficulty: 'medium', bg: '#fef9c3', badgeColor: '#713f12' },
+        'C1': { label: 'C1', difficulty: 'hard',   bg: '#ffedd5', badgeColor: '#7c2d12' },
+        'C2': { label: 'C2', difficulty: 'expert', bg: '#fee2e2', badgeColor: '#7f1d1d' }
+      };
+
+      // Build crossword entries ordered by CEFR level then lesson order
+      var entries = [];
+      if (levelsData && levelsData.levels) {
+        CEFR_ORDER.forEach(function(cefrId) {
+          var lvl = null;
+          for (var i = 0; i < levelsData.levels.length; i++) {
+            if (levelsData.levels[i].id === cefrId) { lvl = levelsData.levels[i]; break; }
+          }
+          if (!lvl || !lvl.lessons) return;
+          lvl.lessons.forEach(function(lesson) {
+            entries.push({ levelId: cefrId, lessonId: lesson.id, title: lesson.title || lesson.id });
+          });
+        });
+      }
+
+      var PAGE_SIZE = 12;
+      var currentPage = (typeof page === 'number' && page >= 0) ? page : 0;
+      var totalPages = Math.max(1, Math.ceil(entries.length / PAGE_SIZE));
+      currentPage = Math.min(currentPage, totalPages - 1);
+
+      var headerHtml =
+        '<div class="cw-list-header">' +
+          '<button class="subpage-back-btn" onclick="loadDashboard()">Back</button>' +
+          '<div>' +
+            '<div class="subpage-title">' + _mi('grid_on') + ' Crossword</div>' +
+            '<div class="subpage-subtitle">Select a crossword to play</div>' +
+          '</div>' +
+        '</div>';
+
+      var cardsHtml = '';
+      if (entries.length === 0) {
+        cardsHtml = '<div class="fe-map-empty">No crosswords available yet.</div>';
+      } else {
+        var pageEntries = entries.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE);
+        var globalStart = currentPage * PAGE_SIZE;
+        cardsHtml = '<div class="cw-list-grid">';
+        pageEntries.forEach(function(entry, i) {
+          var num = globalStart + i + 1;
+          var diff = DIFF_MAP[entry.levelId] || DIFF_MAP['B2'];
+          cardsHtml +=
+            '<div class="cw-list-card" style="background:' + diff.bg + '" ' +
+              'onclick="FastExercises._openVocabCrossword(\'' + entry.levelId + '\',\'' + entry.lessonId + '\')">' +
+              '<div class="cw-list-card-num">Crossword ' + num + '</div>' +
+              '<div class="cw-list-card-topic">' + BentoGrid._escapeHTML(entry.title) + '</div>' +
+              '<div class="cw-list-card-badge" style="background:' + diff.badgeColor + '">' + diff.label + ' · ' + diff.difficulty + '</div>' +
+            '</div>';
+        });
+        cardsHtml += '</div>';
+      }
+
+      // Pagination
+      var paginationHtml = '';
+      if (totalPages > 1) {
+        paginationHtml = '<div class="cw-list-pagination">';
+        paginationHtml += '<button class="cw-list-page-btn" ' +
+          (currentPage === 0 ? 'disabled' : 'onclick="BentoGrid.openCrosswordList(' + (currentPage - 1) + ')"') +
+          '>' + _mi('chevron_left') + ' Previous</button>';
+        for (var p = 0; p < totalPages; p++) {
+          paginationHtml += '<button class="cw-list-page-btn' + (p === currentPage ? ' cw-list-page-btn-active' : '') +
+            '" onclick="BentoGrid.openCrosswordList(' + p + ')">' + (p + 1) + '</button>';
+        }
+        paginationHtml += '<button class="cw-list-page-btn" ' +
+          (currentPage === totalPages - 1 ? 'disabled' : 'onclick="BentoGrid.openCrosswordList(' + (currentPage + 1) + ')"') +
+          '>Next ' + _mi('chevron_right') + '</button>';
+        paginationHtml += '</div>';
+      }
+
+      cwListPage.innerHTML = headerHtml + cardsHtml + paginationHtml;
     },
 
     openQuickstepsChooser: function() {

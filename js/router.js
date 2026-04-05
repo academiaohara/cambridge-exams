@@ -48,6 +48,9 @@
         case 'quicksteps':
           return '/quicksteps';
 
+        case 'crosswordList':
+          return '/crosswords';
+
         case 'fastExercises':
           return '/fast-exercises';
 
@@ -103,6 +106,7 @@
       if (first === 'premium')                            return { view: 'premium' };
       if (first === 'stats')                              return { view: 'gradeEvolution' };
       if (first === 'quicksteps')                         return { view: 'quicksteps' };
+      if (first === 'crosswords')                         return { view: 'crosswordList' };
 
       // ── Test Practice / Test Simulation routes ─────
       var modeMap = { testpractice: 'practice', testsimulation: 'exam' };
