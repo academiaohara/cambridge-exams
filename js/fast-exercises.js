@@ -14,6 +14,34 @@
   var VOCAB_MAX_STREAK = 10;   // Cap on consecutive-correct streak per word
   var VOCAB_RETRY_POS = 2;     // How far from front a bad card is reinserted (near top)
 
+  // Mixed crossword constants
+  var CW_MIN_PLACED = 8;       // Minimum words that must be placed for a valid crossword
+  var CW_MAX_PLACED = 20;      // Maximum words placed per crossword
+  var CW_BATCH_SIZE = 30;      // Words fed to the generator per crossword slot
+
+  // Levels available for mixed crosswords and their crossword counts
+  var CW_LEVEL_CONFIG = [
+    { id: 'A2', count: 6 },
+    { id: 'B1', count: 9 },
+    { id: 'B2', count: 20 },
+    { id: 'C1', count: 13 }
+  ];
+
+  // Common words excluded when extracting the key word from an idiom
+  var CW_STOPWORDS = { 'the': 1, 'a': 1, 'an': 1, 'in': 1, 'at': 1, 'on': 1, 'to': 1,
+    'of': 1, 'for': 1, 'with': 1, 'by': 1, 'from': 1, 'up': 1, 'about': 1, 'into': 1,
+    'is': 1, 'be': 1, 'as': 1, 'it': 1, 'its': 1, 'this': 1, 'that': 1, 'was': 1,
+    'are': 1, 'were': 1, 'has': 1, 'have': 1, 'had': 1, 'do': 1, 'does': 1, 'did': 1,
+    'will': 1, 'would': 1, 'can': 1, 'could': 1, 'may': 1, 'might': 1, 'shall': 1,
+    'should': 1, 'must': 1, 'not': 1, 'no': 1, 'nor': 1, 'so': 1, 'yet': 1, 'both': 1,
+    'also': 1, 'just': 1, 'there': 1, 'their': 1, 'they': 1, 'all': 1, 'any': 1,
+    'each': 1, 'few': 1, 'more': 1, 'most': 1, 'other': 1, 'some': 1, 'such': 1,
+    'out': 1, 'off': 1, 'over': 1, 'under': 1, 'again': 1, 'then': 1, 'once': 1,
+    'through': 1, 'my': 1, 'your': 1, 'his': 1, 'her': 1, 'our': 1, 'and': 1,
+    'but': 1, 'or': 1, 'if': 1, 'how': 1, 'what': 1, 'when': 1, 'who': 1, 'which': 1,
+    'where': 1, 'why': 1, 'too': 1, 'very': 1, 'these': 1, 'those': 1
+  };
+
   function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
   window.FastExercises = {
@@ -4798,6 +4826,173 @@
       '</div>';
     },
 
+    // ─── Mixed crossword helpers ────────────────────────────────────────────────
+
+    // Returns the level configuration for mixed crosswords.
+    _cwLevelConfig: function() { return CW_LEVEL_CONFIG; },
+
+    // Deterministic Fisher-Yates shuffle using a simple LCG seeded by cwIndex.
+    _cwSeededShuffle: function(arr, seed) {
+      var a = arr.slice();
+      var s = (seed + 1) * 1664525 + 1013904223;
+      for (var i = a.length - 1; i > 0; i--) {
+        s = ((s * 1664525) + 1013904223) | 0;
+        var j = Math.abs(s) % (i + 1);
+        var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+      }
+      return a;
+    },
+
+    // Extract the most distinctive single word from a multi-word idiom phrase.
+    _cwExtractIdiomWord: function(idiomStr) {
+      var WORD_RE = /^[a-zA-Z]{3,12}$/;
+      var parts = idiomStr.toLowerCase().split(/\s+/);
+      var eligible = parts.filter(function(p) { return WORD_RE.test(p) && !CW_STOPWORDS[p]; });
+      if (!eligible.length) eligible = parts.filter(function(p) { return WORD_RE.test(p); });
+      if (!eligible.length) return null;
+      return eligible.reduce(function(a, b) { return b.length > a.length ? b : a; });
+    },
+
+    // Build a deduplicated, level-filtered word pool from all four vocabulary
+    // sources.  Each entry has { word (uppercase), clue, type }.
+    _buildMixedWordPool: async function(levelId) {
+      var self = this;
+      var WORD_RE = /^[a-zA-Z]{3,12}$/;
+      var seen = {};
+      var pool = [];
+
+      function add(word, clue, type) {
+        var key = word.toLowerCase();
+        if (!WORD_RE.test(key) || seen[key]) return;
+        seen[key] = 1;
+        pool.push({ word: word.toUpperCase(), clue: clue, type: type });
+      }
+
+      // 1. Vocabulary dictionary
+      try {
+        var r = await fetch('data/vocabulary/dictionary.json');
+        if (r.ok) {
+          var vd = await r.json();
+          (vd.entries || []).forEach(function(e) {
+            if (e.level === levelId) add(e.word, e.definition, 'vocabulary');
+          });
+        }
+      } catch(e) {}
+
+      // 2. Collocations dictionary
+      try {
+        var r = await fetch('data/collocations/dictionary.json');
+        if (r.ok) {
+          var cd = await r.json();
+          (cd.entries || []).forEach(function(e) {
+            if (e.level === levelId && e.word && e.phrase) {
+              var blank = e.phrase.replace(new RegExp('\\b' + e.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi'), '___');
+              add(e.word, e.definition + ' | ' + blank, 'collocation');
+            }
+          });
+        }
+      } catch(e) {}
+
+      // 3. Phrasal verbs
+      try {
+        var r = await fetch('data/phrasal-verbs/levels.json');
+        if (r.ok) {
+          var pvLevels = await r.json();
+          var pvLevel = null;
+          (pvLevels.levels || []).forEach(function(l) { if (l.id === levelId) pvLevel = l; });
+          if (pvLevel) {
+            for (var li = 0; li < pvLevel.lessons.length; li++) {
+              try {
+                var lr = await fetch('data/phrasal-verbs/' + levelId + '/' + pvLevel.lessons[li].id + '.json');
+                if (lr.ok) {
+                  var ld = await lr.json();
+                  (ld.phrasalVerbs || []).forEach(function(pv) {
+                    if (!pv.verb) return;
+                    var parts = pv.verb.split(/\s+/);
+                    var mainVerb = parts[0];
+                    var rest = parts.slice(1).join(' ');
+                    add(mainVerb, pv.definition + (rest ? ' | ___ ' + rest : ''), 'phrasal-verb');
+                  });
+                }
+              } catch(e) {}
+            }
+          }
+        }
+      } catch(e) {}
+
+      // 4. Idioms
+      try {
+        var r = await fetch('data/idioms/levels.json');
+        if (r.ok) {
+          var idLevels = await r.json();
+          var idLevel = null;
+          (idLevels.levels || []).forEach(function(l) { if (l.id === levelId) idLevel = l; });
+          if (idLevel) {
+            for (var li = 0; li < idLevel.lessons.length; li++) {
+              try {
+                var lr = await fetch('data/idioms/' + levelId + '/' + idLevel.lessons[li].id + '.json');
+                if (lr.ok) {
+                  var ld = await lr.json();
+                  (ld.idioms || []).forEach(function(id) {
+                    if (!id.idiom) return;
+                    var kw = self._cwExtractIdiomWord(id.idiom);
+                    if (!kw) return;
+                    var blank = id.idiom.replace(new RegExp('\\b' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi'), '___');
+                    add(kw, id.definition + ' | ' + blank, 'idiom');
+                  });
+                }
+              } catch(e) {}
+            }
+          }
+        }
+      } catch(e) {}
+
+      return pool;
+    },
+
+    // Open a mixed (non-topic-grouped) crossword by level and slot index.
+    _openMixedCrossword: async function(levelId, cwIndex) {
+      var self = this;
+      var content = document.getElementById('main-content');
+      if (!content) return;
+
+      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+
+      var pool = await this._buildMixedWordPool(levelId);
+      if (!pool.length) {
+        content.innerHTML = '<div class="fe-error">No words available for this level.</div>';
+        return;
+      }
+
+      var shuffled = this._cwSeededShuffle(pool, cwIndex);
+      var batch = shuffled.slice(0, CW_BATCH_SIZE);
+
+      var cwData = this._generateCrossword(batch);
+      if (!cwData || !cwData.placed || cwData.placed.length < CW_MIN_PLACED) {
+        content.innerHTML = '<div class="fe-error">Not enough words could be placed. Please try another crossword.</div>';
+        return;
+      }
+
+      var catMeta = { id: 'crossword', icon: 'grid_on', name: 'Crossword', color: '#10b981' };
+      var color = catMeta.color;
+      var title = levelId + ' Crossword #' + (cwIndex + 1);
+
+      var wrapper = document.createElement('div');
+      wrapper.className = 'fe-section';
+      content.innerHTML = '';
+      content.appendChild(wrapper);
+
+      var mainDiv = document.createElement('div');
+      mainDiv.className = 'vocab-cw-layout';
+      mainDiv.innerHTML = '<div class="vocab-cw-main" id="vocab-cw-main"></div>';
+      wrapper.appendChild(mainDiv);
+
+      var mainEl = document.getElementById('vocab-cw-main');
+      this._renderVocabCrossword(mainEl, cwData, { title: title }, catMeta, color, levelId, null, cwIndex);
+    },
+
+    // ─── Vocabulary-lesson crossword (kept for the vocabulary learning section) ──
+
     _openVocabCrossword: async function(levelId, lessonId) {
       var self = this;
       var content = document.getElementById('main-content');
@@ -4886,7 +5081,6 @@
 
     _generateCrossword: function(words) {
       var SIZE = 21;
-      var MAX_PLACED = 20;
       var self = this;
 
       var eligible = words.filter(function(w) {
@@ -4917,9 +5111,9 @@
         grid[center][startC + i] = firstW[i];
         dirGrid[center][startC + i].across = true;
       }
-      placed.push({ word: firstW, definition: eligible[0].definition, example: eligible[0].example || '', row: center, col: startC, dir: 'across', number: 0 });
+      placed.push({ word: firstW, clue: eligible[0].clue || eligible[0].definition || '', definition: eligible[0].definition || '', row: center, col: startC, dir: 'across', number: 0 });
 
-      for (var wi = 1; wi < eligible.length && placed.length < MAX_PLACED; wi++) {
+      for (var wi = 1; wi < eligible.length && placed.length < CW_MAX_PLACED; wi++) {
         var wordObj = eligible[wi];
         var word = wordObj.word.toUpperCase();
         var bestScore = -Infinity;
@@ -4958,7 +5152,7 @@
             grid[pr2][pc2] = word[i];
             dirGrid[pr2][pc2][pd] = true;
           }
-          placed.push({ word: word, definition: wordObj.definition, example: wordObj.example || '', row: pr, col: pc, dir: pd, number: 0 });
+          placed.push({ word: word, clue: wordObj.clue || wordObj.definition || '', definition: wordObj.definition || '', row: pr, col: pc, dir: pd, number: 0 });
         }
       }
 
@@ -4973,7 +5167,7 @@
           }
         }
       }
-      if (maxR < 0) return null;
+      if (maxR < 0 || placed.length < CW_MIN_PLACED) return null;
       minR = Math.max(0, minR - 1);
       minC = Math.max(0, minC - 1);
       maxR = Math.min(SIZE - 1, maxR + 1);
@@ -5008,7 +5202,7 @@
       return { grid: trimGrid, placed: placed, rows: rows, cols: cols };
     },
 
-    _renderVocabCrossword: function(mainEl, cwData, lessonData, catMeta, color, levelId, lessonId) {
+    _renderVocabCrossword: function(mainEl, cwData, lessonData, catMeta, color, levelId, lessonId, cwIndex) {
       var self = this;
       var grid = cwData.grid;
       var placed = cwData.placed;
@@ -5056,7 +5250,7 @@
       var buildClue = function(p) {
         return '<div class="vocab-cw-clue" data-dir="' + p.dir + '" data-num="' + p.number + '" data-r="' + p.row + '" data-c="' + p.col + '">' +
           '<span class="vocab-cw-clue-num">' + p.number + (p.dir === 'across' ? 'A' : 'D') + '</span> ' +
-          '<span class="vocab-cw-clue-text">' + self._escapeHTML(p.definition || '') + '</span>' +
+          '<span class="vocab-cw-clue-text">' + self._escapeHTML(p.clue || p.definition || '') + '</span>' +
         '</div>';
       };
 
@@ -5119,7 +5313,8 @@
         cwData: cwData,
         cellMap: cellMap,
         levelId: levelId,
-        lessonId: lessonId
+        lessonId: lessonId,
+        cwIndex: cwIndex
       };
       window._cwState = cwState;
 
@@ -5481,11 +5676,13 @@
       });
 
       // Persist progress
-      if (state.levelId && state.lessonId) {
+      if (state.levelId) {
         try {
           var key = 'cambridge_crossword_progress';
           var progressData = JSON.parse(localStorage.getItem(key)) || {};
-          var pKey = state.levelId + '_' + state.lessonId;
+          var pKey = state.cwIndex !== undefined
+            ? state.levelId + '_cw' + state.cwIndex
+            : state.levelId + '_' + state.lessonId;
           progressData[pKey] = {
             wordsComplete: complete,
             wordsTotal: placed.length,
@@ -5519,11 +5716,10 @@
       var wordSolved = FastExercises._cwIsWordComplete(activeWord, state);
       defEl.innerHTML =
         '<span class="vocab-cw-active-num">' + activeWord.number + (activeWord.dir === 'across' ? 'A' : 'D') + '</span> ' +
-        FastExercises._escapeHTML(activeWord.definition || '') +
+        FastExercises._escapeHTML(activeWord.clue || activeWord.definition || '') +
         (wordSolved
           ? ' <strong class="vocab-cw-active-word">→ ' + FastExercises._escapeHTML(activeWord.word.toLowerCase()) + '</strong>'
-          : '') +
-        (activeWord.example && wordSolved ? '<em class="vocab-cw-active-example"> "' + FastExercises._escapeHTML(activeWord.example) + '"</em>' : '');
+          : '');
     },
 
     _cwUpdateWordStrip: function() {
