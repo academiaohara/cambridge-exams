@@ -18,6 +18,7 @@
   --card-summit: #e8a87c;
   --card-ascent: #f0d24a;
   --card-quicksteps: #a8e6a3;
+  --card-crossword: #c8b8f0;
   --card-basecamp: #b8b8e8;
   --card-weakspot: #b8e8d0;
   --card-checkpoint: #f5c0d0;
@@ -1137,3 +1138,138 @@ margin-top: -2px;
   color: #3a3a6a;
 }
 
+
+/* ── CROSSWORD card (bento grid tile) ── */
+.bento-card-crossword {
+  background: var(--card-crossword);
+  color: #3a2a6a;
+  cursor: pointer;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.bento-card-crossword .bento-card-title {
+  color: #6040c0;
+}
+
+.bento-card-crossword .bento-card-icon {
+  font-size: 2rem;
+  color: #6040c0;
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── CROSSWORD LIST PAGE ── */
+.cw-list-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 32px;
+}
+
+.cw-list-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 8px;
+}
+
+.cw-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.cw-list-card {
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.cw-list-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+}
+
+.cw-list-card-num {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1e293b;
+}
+
+.cw-list-card-topic {
+  font-size: 0.82rem;
+  color: #475569;
+  flex: 1;
+}
+
+.cw-list-card-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  align-self: flex-start;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cw-list-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.cw-list-page-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.cw-list-page-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.cw-list-page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cw-list-page-btn-active {
+  background: #6040c0;
+  border-color: #6040c0;
+  color: #fff;
+}
+
+.cw-list-page-btn-active:hover {
+  background: #4f33a0 !important;
+  border-color: #4f33a0 !important;
+}
+
+@media (max-width: 600px) {
+  .cw-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

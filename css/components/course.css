@@ -3101,3 +3101,83 @@
 .cu-confirm-ok:hover {
   background: #2563eb;
 }
+
+/* ── COURSE HUB TILES (Theory + Phrasal Verbs + Idioms + Word Formation) ── */
+.course-hub-tiles {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.course-hub-theory {
+  border-radius: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.course-hub-theory:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+}
+
+.course-hub-theory-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.course-hub-theory-title {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+.course-hub-theory-desc {
+  font-size: 0.83rem;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+.course-hub-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+
+.course-hub-tile {
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.course-hub-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+}
+
+.course-hub-tile-icon {
+  font-size: 1.8rem;
+}
+
+.course-hub-tile-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 600px) {
+  .course-hub-three {
+    grid-template-columns: 1fr 1fr;
+  }
+}

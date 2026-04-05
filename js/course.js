@@ -78,7 +78,7 @@
               '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
             '</div>' +
           '</div>';
-        centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
+        centerSection.innerHTML = headerHtml + BentoGrid._renderCourseLearningTiles() + BentoGrid._renderCourseOverview();
       } else {
         // Fallback: no index available for this level
         leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(null, level, null);
@@ -90,7 +90,7 @@
               '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
             '</div>' +
           '</div>';
-        centerSection.innerHTML = headerHtml +
+        centerSection.innerHTML = headerHtml + BentoGrid._renderCourseLearningTiles() +
           '<div class="fe-map-container">' +
           '<div class="lt-coming-soon-banner">' +
             _mi('schedule') +
@@ -103,6 +103,49 @@
       }
       var courseState = { view: 'course', level: level };
       history.pushState(courseState, '', Router.stateToPath(courseState));
+    },
+
+    _renderCourseLearningTiles: function() {
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+      return '<div class="course-hub-tiles">' +
+        '<div class="course-hub-theory" ' +
+          'style="background:linear-gradient(135deg,#e0f2fe 0%,#bae6fd 100%);color:#0c4a6e;" ' +
+          'onclick="BentoGrid._scrollToCourseBlocks()">' +
+          '<div class="course-hub-theory-icon">' + _mi('menu_book') + '</div>' +
+          '<div class="course-hub-theory-title">Theory</div>' +
+          '<div class="course-hub-theory-desc">Grammar &amp; Vocabulary theory blocks</div>' +
+        '</div>' +
+        '<div class="course-hub-three">' +
+          '<div class="course-hub-tile" ' +
+            'style="background:#dbeafe;color:#1e40af;" ' +
+            'onclick="FastExercises.openCategory(\'phrasal-verbs\')">' +
+            '<div class="course-hub-tile-icon">' + _mi('auto_stories') + '</div>' +
+            '<div class="course-hub-tile-title">Phrasal Verbs</div>' +
+          '</div>' +
+          '<div class="course-hub-tile" ' +
+            'style="background:#fef3c7;color:#92400e;" ' +
+            'onclick="FastExercises.openCategory(\'idioms\')">' +
+            '<div class="course-hub-tile-icon">' + _mi('record_voice_over') + '</div>' +
+            '<div class="course-hub-tile-title">Idioms</div>' +
+          '</div>' +
+          '<div class="course-hub-tile" ' +
+            'style="background:#fce7f3;color:#9d174d;" ' +
+            'onclick="FastExercises.openCategory(\'word-formation\')">' +
+            '<div class="course-hub-tile-icon">' + _mi('text_fields') + '</div>' +
+            '<div class="course-hub-tile-title">Word Formation</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _scrollToCourseBlocks: function() {
+      var target = document.querySelector('.cu-overview-container') || document.getElementById('courseOverviewSection');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        var center = document.getElementById('courseCenterSection');
+        if (center) center.scrollTop = center.scrollHeight;
+      }
     },
 
     _getBlockLabel: function(bk) {
