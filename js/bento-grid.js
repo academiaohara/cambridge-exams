@@ -541,8 +541,8 @@
       var today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
       var seed = today + '_' + level;
       var hash = 0;
-      for (var i = 0; i < seed.length; i++) {
-        hash = ((hash << 5) - hash) + seed.charCodeAt(i);
+      for (var j = 0; j < seed.length; j++) {
+        hash = ((hash << 5) - hash) + seed.charCodeAt(j);
         hash = hash & hash; // Convert to 32-bit integer
       }
       return { levelId: level, cwIndex: Math.abs(hash) % cfg.count, date: today };
