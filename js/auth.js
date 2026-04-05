@@ -152,6 +152,12 @@
         await StreakManager.restoreFromCloud();
       }
 
+      // Crossword sync: migrate legacy data once, then restore cloud state
+      if (typeof CrosswordSync !== 'undefined') {
+        CrosswordSync.migrateFromLegacy();
+        await CrosswordSync.restoreFromCloud();
+      }
+
       // Refresh exam statuses from the (now-updated) localStorage
       if (typeof App !== 'undefined' && App.restoreExamStatuses) {
         App.restoreExamStatuses();

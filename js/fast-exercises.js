@@ -4962,16 +4962,51 @@
 
       content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
 
-      var pool = await this._buildMixedWordPool(levelId);
-      if (!pool.length) {
-        content.innerHTML = '<div class="fe-error">No words available for this level.</div>';
-        return;
+      // Load pre-generated static JSON instead of generating at runtime
+      var cwData = null;
+      try {
+        var cwRes = await fetch('/crosswords/' + levelId + '/cw' + cwIndex + '.json');
+        if (!cwRes.ok) throw new Error('HTTP ' + cwRes.status);
+        var staticCw = await cwRes.json();
+
+        // Normalize static JSON format to runtime format expected by _renderVocabCrossword
+        // Static format: binary grid (1/0) + across/down arrays
+        // Runtime format: letter grid (letter/null) + placed array with dir field
+        var normPlaced = [];
+        (staticCw.across || []).forEach(function(e) {
+          normPlaced.push({ word: e.word, clue: e.clue, definition: e.clue, type: e.type, row: e.row, col: e.col, dir: 'across', number: e.number, length: e.length });
+        });
+        (staticCw.down || []).forEach(function(e) {
+          normPlaced.push({ word: e.word, clue: e.clue, definition: e.clue, type: e.type, row: e.row, col: e.col, dir: 'down', number: e.number, length: e.length });
+        });
+
+        // Reconstruct letter grid from placed entries
+        var normGrid = [];
+        for (var r = 0; r < staticCw.rows; r++) {
+          normGrid[r] = [];
+          for (var c = 0; c < staticCw.cols; c++) normGrid[r][c] = null;
+        }
+        normPlaced.forEach(function(p) {
+          for (var i = 0; i < p.word.length; i++) {
+            var gr = p.dir === 'across' ? p.row : p.row + i;
+            var gc = p.dir === 'across' ? p.col + i : p.col;
+            normGrid[gr][gc] = p.word[i];
+          }
+        });
+
+        cwData = { grid: normGrid, placed: normPlaced, rows: staticCw.rows, cols: staticCw.cols };
+      } catch(e) {
+        // Fallback: generate at runtime if static file not found
+        var pool = await this._buildMixedWordPool(levelId);
+        if (!pool.length) {
+          content.innerHTML = '<div class="fe-error">No words available for this level.</div>';
+          return;
+        }
+        var shuffled = this._cwSeededShuffle(pool, cwIndex);
+        var batch = shuffled.slice(0, CW_BATCH_SIZE);
+        cwData = this._generateCrossword(batch);
       }
 
-      var shuffled = this._cwSeededShuffle(pool, cwIndex);
-      var batch = shuffled.slice(0, CW_BATCH_SIZE);
-
-      var cwData = this._generateCrossword(batch);
       if (!cwData || !cwData.placed || cwData.placed.length < CW_MIN_PLACED) {
         content.innerHTML = '<div class="fe-error">Not enough words could be placed. Please try another crossword.</div>';
         return;
@@ -5683,20 +5718,32 @@
 
       // Persist progress
       if (state.levelId) {
-        try {
-          var key = 'cambridge_crossword_progress';
-          var progressData = JSON.parse(localStorage.getItem(key)) || {};
-          var pKey = state.cwIndex !== undefined
-            ? state.levelId + '_cw' + state.cwIndex
-            : state.levelId + '_' + state.lessonId;
-          progressData[pKey] = {
-            wordsComplete: complete,
-            wordsTotal: placed.length,
-            completed: complete === placed.length,
-            lastPlayed: new Date().toISOString()
-          };
-          localStorage.setItem(key, JSON.stringify(progressData));
-        } catch(e) { /* ignore */ }
+        var pKey = state.cwIndex !== undefined
+          ? state.levelId + '_cw' + state.cwIndex
+          : state.levelId + '_' + state.lessonId;
+        if (typeof CrosswordSync !== 'undefined') {
+          CrosswordSync.save(pKey, {
+            level:        state.levelId,
+            cwIndex:      state.cwIndex !== undefined ? state.cwIndex : 0,
+            completed:    complete === placed.length,
+            wordsCorrect: complete,
+            wordsTotal:   placed.length,
+            cellState:    {}
+          });
+        } else {
+          // Guest fallback
+          try {
+            var key = 'cambridge_crossword_progress';
+            var progressData = JSON.parse(localStorage.getItem(key)) || {};
+            progressData[pKey] = {
+              wordsComplete: complete,
+              wordsTotal: placed.length,
+              completed: complete === placed.length,
+              lastPlayed: new Date().toISOString()
+            };
+            localStorage.setItem(key, JSON.stringify(progressData));
+          } catch(e) { /* ignore */ }
+        }
       }
     },
 
