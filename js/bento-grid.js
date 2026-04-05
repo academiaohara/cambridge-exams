@@ -42,12 +42,12 @@
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       return '<div class="bento-learning-row">' +
 
-        '<div class="bento-card bento-card-crossword" onclick="BentoGrid.openCrosswordList()">' +
+        '<div class="bento-card bento-card-crossword" onclick="BentoGrid.openDailyCrossword()">' +
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Crossword</div>' +
+            '<div class="bento-card-title">Daily Crossword</div>' +
             BentoGrid._buildCrosswordBentoMeta() +
-            '<div class="bento-card-hover-info">Expand your vocabulary with Cambridge-style crossword puzzles. Build your streak day by day.</div>' +
+            '<div class="bento-card-hover-info">Solve today\'s Cambridge-style crossword. A new puzzle every day — build your streak!</div>' +
           '</div>' +
         '</div>' +
 
@@ -356,7 +356,7 @@
       return badges;
     },
 
-    // Returns compact meta HTML for the dashboard bento card (progress + streak).
+    // Returns compact meta HTML for the dashboard bento card (daily challenge + progress + streak).
     _buildCrosswordBentoMeta: function() {
       var progress = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.getAll() : this._getCwProgress();
       var LEVEL_CONFIG = (typeof FastExercises !== 'undefined' && FastExercises._cwLevelConfig)
@@ -384,7 +384,24 @@
         else                     lastPlayedText = 'Last played: ' + diffDays + ' days ago';
       }
 
+      // Daily challenge status
+      var level = (typeof AppState !== 'undefined') ? AppState.currentLevel || 'C1' : 'C1';
+      var daily = this._getDailyCrossword(level);
+      var dailyHtml = '';
+      if (daily) {
+        var dailyKey = daily.levelId + '_cw' + daily.cwIndex;
+        var dailyProg = progress[dailyKey];
+        var isDailyDone = dailyProg && dailyProg.completed;
+        var isDailyStarted = dailyProg && !isDailyDone && (dailyProg.wordsCorrect || dailyProg.wordsComplete || 0) > 0;
+        var dailyStatusText = isDailyDone ? '✅ Completed!' : (isDailyStarted ? '⏳ In progress' : '▶ Play now');
+        dailyHtml = '<div class="bento-card-cw-daily' + (isDailyDone ? ' bento-card-cw-daily-done' : '') + '">' +
+          '<span class="bento-cw-daily-label">📅 Daily · ' + daily.levelId + ' #' + (daily.cwIndex + 1) + '</span>' +
+          '<span class="bento-cw-daily-status">' + dailyStatusText + '</span>' +
+        '</div>';
+      }
+
       var html = '<div class="bento-card-cw-meta">';
+      html += dailyHtml;
       html += '<div class="bento-card-cw-prog">' + completedCount + ' / ' + total + ' completed</div>';
       if (streak > 0) html += '<div class="bento-card-cw-streak">🔥 ' + streak + '-day streak</div>';
       if (lastPlayedText) html += '<div class="bento-card-cw-lastplayed">' + lastPlayedText + '</div>';
@@ -508,6 +525,38 @@
         'C1': { label: 'Hard',   difficulty: 'hard',   cssClass: 'cw-list-card-c1', badgeColor: '#7c2d12' },
         'C2': { label: 'Expert', difficulty: 'expert', cssClass: 'cw-list-card-c2', badgeColor: '#7f1d1d' }
       };
+    },
+
+    // Returns today's daily crossword { levelId, cwIndex, date } for the given level.
+    // Selection is deterministic: same crossword for everyone on the same date.
+    // A new puzzle is chosen automatically when the calendar day changes.
+    _getDailyCrossword: function(level) {
+      var LEVEL_CONFIG = (typeof FastExercises !== 'undefined' && FastExercises._cwLevelConfig)
+        ? FastExercises._cwLevelConfig() : [];
+      var cfg = null;
+      for (var i = 0; i < LEVEL_CONFIG.length; i++) {
+        if (LEVEL_CONFIG[i].id === level) { cfg = LEVEL_CONFIG[i]; break; }
+      }
+      if (!cfg || cfg.count <= 0) return null;
+      var today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
+      var seed = today + '_' + level;
+      var hash = 0;
+      for (var i = 0; i < seed.length; i++) {
+        hash = ((hash << 5) - hash) + seed.charCodeAt(i);
+        hash = hash & hash; // Convert to 32-bit integer
+      }
+      return { levelId: level, cwIndex: Math.abs(hash) % cfg.count, date: today };
+    },
+
+    // Opens today's daily crossword directly. Falls back to the full list if unavailable.
+    openDailyCrossword: function() {
+      var level = (typeof AppState !== 'undefined') ? AppState.currentLevel || 'C1' : 'C1';
+      var daily = this._getDailyCrossword(level);
+      if (!daily || typeof FastExercises === 'undefined') {
+        this.openCrosswordList();
+        return;
+      }
+      FastExercises._openMixedCrossword(daily.levelId, daily.cwIndex);
     },
 
     openCrosswordList: async function(page, levelFilter) {
@@ -635,6 +684,37 @@
       }
       filterHtml += '</div>';
 
+      // ── Daily challenge banner ──
+      var level = (typeof AppState !== 'undefined') ? AppState.currentLevel || 'C1' : 'C1';
+      var daily = BentoGrid._getDailyCrossword(level);
+      var dailyBannerHtml = '';
+      if (daily) {
+        var dailyKey = daily.levelId + '_cw' + daily.cwIndex;
+        var dailyProgEntry = progress[dailyKey];
+        var isDailyDone = dailyProgEntry && dailyProgEntry.completed;
+        var isDailyStarted = dailyProgEntry && !isDailyDone && (dailyProgEntry.wordsCorrect || dailyProgEntry.wordsComplete || 0) > 0;
+        var dailyPct = 0;
+        if (dailyProgEntry && dailyProgEntry.wordsTotal > 0) {
+          dailyPct = isDailyDone ? 100 : Math.round(((dailyProgEntry.wordsCorrect || dailyProgEntry.wordsComplete || 0) / dailyProgEntry.wordsTotal) * 100);
+        }
+        var dailyBtnLabel = isDailyDone ? _mi('check_circle') + ' Completed' : (isDailyStarted ? _mi('play_circle') + ' Continue' : _mi('play_circle') + ' Play Today\'s');
+        var dailyBtnClass = 'cw-daily-banner-btn' + (isDailyDone ? ' cw-daily-banner-btn-done' : '');
+        dailyBannerHtml =
+          '<div class="cw-daily-banner' + (isDailyDone ? ' cw-daily-banner-done' : '') + '">' +
+            '<div class="cw-daily-banner-left">' +
+              '<div class="cw-daily-banner-icon">📅</div>' +
+              '<div class="cw-daily-banner-info">' +
+                '<div class="cw-daily-banner-title">Today\'s Daily Crossword</div>' +
+                '<div class="cw-daily-banner-sub">' + daily.levelId + ' · Puzzle #' + (daily.cwIndex + 1) +
+                  (isDailyStarted ? ' · ' + dailyPct + '% done' : '') +
+                  (isDailyDone ? ' · Solved!' : '') +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<button class="' + dailyBtnClass + '" onclick="BentoGrid.openDailyCrossword()">' + dailyBtnLabel + '</button>' +
+          '</div>';
+      }
+
       var headerHtml =
         '<div class="cw-list-header">' +
           '<button class="subpage-back-btn" onclick="loadDashboard()">Back</button>' +
@@ -643,6 +723,7 @@
             '<div class="subpage-subtitle">' + subtitleText + '</div>' +
           '</div>' +
         '</div>' +
+        dailyBannerHtml +
         filterHtml;
 
       var cardsHtml = '';
