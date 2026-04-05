@@ -5012,6 +5012,17 @@
         return;
       }
 
+      // Load saved cell state for progress restoration
+      var pKey = levelId + '_cw' + cwIndex;
+      var savedState = null;
+      try {
+        savedState = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.get(pKey) : null;
+        if (!savedState) {
+          var rawProg = localStorage.getItem('cambridge_crossword_progress');
+          if (rawProg) savedState = (JSON.parse(rawProg) || {})[pKey] || null;
+        }
+      } catch(e) { savedState = null; }
+
       var catMeta = { id: 'crossword', icon: 'grid_on', name: 'Crossword', color: '#10b981' };
       var color = catMeta.color;
       var title = levelId + ' Crossword #' + (cwIndex + 1);
@@ -5027,7 +5038,7 @@
       wrapper.appendChild(mainDiv);
 
       var mainEl = document.getElementById('vocab-cw-main');
-      this._renderVocabCrossword(mainEl, cwData, { title: title }, catMeta, color, levelId, null, cwIndex);
+      this._renderVocabCrossword(mainEl, cwData, { title: title }, catMeta, color, levelId, null, cwIndex, savedState);
     },
 
     // ─── Vocabulary-lesson crossword (kept for the vocabulary learning section) ──
@@ -5241,7 +5252,7 @@
       return { grid: trimGrid, placed: placed, rows: rows, cols: cols };
     },
 
-    _renderVocabCrossword: function(mainEl, cwData, lessonData, catMeta, color, levelId, lessonId, cwIndex) {
+    _renderVocabCrossword: function(mainEl, cwData, lessonData, catMeta, color, levelId, lessonId, cwIndex, savedState) {
       var self = this;
       var grid = cwData.grid;
       var placed = cwData.placed;
@@ -5359,7 +5370,28 @@
       };
       window._cwState = cwState;
 
-      var gridEl = document.getElementById('cw-grid');
+      // Restore previously saved cell state so the user can continue where they left off
+      if (savedState && savedState.cellState && typeof savedState.cellState === 'object') {
+        var cellStateKeys = Object.keys(savedState.cellState);
+        for (var sci = 0; sci < cellStateKeys.length; sci++) {
+          var sck = cellStateKeys[sci];
+          var letter = savedState.cellState[sck];
+          if (typeof letter !== 'string' || !letter) continue;
+          cwState.userGrid[sck] = letter.toUpperCase();
+          var parts = sck.split(',');
+          var sr = parseInt(parts[0]);
+          var sc = parseInt(parts[1]);
+          if (!isNaN(sr) && !isNaN(sc)) {
+            var cellDom = document.getElementById('cw-cell-' + sr + '-' + sc);
+            if (cellDom) {
+              var letterSpan = cellDom.querySelector('.vocab-cw-cell-letter');
+              if (letterSpan) letterSpan.textContent = letter.toUpperCase();
+              cellDom.classList.add('vocab-cw-cell-filled');
+            }
+          }
+        }
+      }
+
       if (gridEl) {
         gridEl.addEventListener('click', function(e) {
           var target = e.target;
@@ -5728,7 +5760,7 @@
             completed:    complete === placed.length,
             wordsCorrect: complete,
             wordsTotal:   placed.length,
-            cellState:    {}
+            cellState:    state.userGrid || {}
           });
         } else {
           // Guest fallback

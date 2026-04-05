@@ -45,6 +45,7 @@
         '<div class="bento-card bento-card-crossword" onclick="BentoGrid.openCrosswordList()">' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Crossword</div>' +
+            BentoGrid._buildCrosswordBentoMeta() +
           '</div>' +
         '</div>' +
 
@@ -285,10 +286,107 @@
       try { return JSON.parse(localStorage.getItem(this._cwProgressKey)) || {}; } catch(e) { return {}; }
     },
 
+    // Returns the number of consecutive days (ending today or yesterday) on which
+    // the user played at least one crossword.
+    _calcCwStreak: function(progressObj) {
+      var dates = {};
+      Object.values(progressObj).forEach(function(p) {
+        if (!p || !p.lastPlayed) return;
+        var d = p.lastPlayed.slice(0, 10); // 'YYYY-MM-DD'
+        dates[d] = true;
+      });
+      if (!Object.keys(dates).length) return 0;
+
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      // Allow streak to start from today or yesterday
+      var cursor = new Date(today);
+      var todayStr = today.toISOString().slice(0, 10);
+      var yestStr  = new Date(today.getTime() - 86400000).toISOString().slice(0, 10);
+      if (!dates[todayStr] && !dates[yestStr]) return 0;
+      if (!dates[todayStr]) cursor = new Date(today.getTime() - 86400000);
+
+      var streak = 0;
+      while (true) {
+        var ds = cursor.toISOString().slice(0, 10);
+        if (!dates[ds]) break;
+        streak++;
+        cursor = new Date(cursor.getTime() - 86400000);
+      }
+      return streak;
+    },
+
+    // Returns XP earned: 50 per completed crossword + 10 per in-progress crossword.
+    _calcCwXP: function(progressObj) {
+      var xp = 0;
+      Object.values(progressObj).forEach(function(p) {
+        if (!p) return;
+        if (p.completed) { xp += 50; }
+        else if ((p.wordsCorrect || p.wordsComplete || 0) > 0) { xp += 10; }
+      });
+      return xp;
+    },
+
+    // Returns array of earned badge objects { icon, label, earned }.
+    _getCwBadges: function(progressObj, completedCount, total) {
+      var badges = [];
+      var perfectCount = 0;
+      Object.values(progressObj).forEach(function(p) {
+        if (p && p.completed && (p.hintsUsed || 0) === 0) perfectCount++;
+      });
+      var defs = [
+        { icon: '⭐', label: 'First Crossword', earned: completedCount >= 1 },
+        { icon: '🔥', label: '5 Completed',     earned: completedCount >= 5 },
+        { icon: '🏆', label: '10 Completed',    earned: completedCount >= 10 },
+        { icon: '💎', label: 'All Done',         earned: total > 0 && completedCount >= total },
+        { icon: '🧠', label: 'Perfect Solver',   earned: perfectCount >= 1 }
+      ];
+      defs.forEach(function(b) { badges.push(b); });
+      return badges;
+    },
+
+    // Returns compact meta HTML for the dashboard bento card (progress + streak).
+    _buildCrosswordBentoMeta: function() {
+      var progress = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.getAll() : this._getCwProgress();
+      var LEVEL_CONFIG = (typeof FastExercises !== 'undefined' && FastExercises._cwLevelConfig)
+        ? FastExercises._cwLevelConfig() : [];
+      var total = LEVEL_CONFIG.reduce(function(s, l) { return s + (l.count || 0); }, 0);
+      if (!total) return '';
+
+      var completedCount = 0;
+      var lastPlayedMs = 0;
+      Object.values(progress).forEach(function(p) {
+        if (!p) return;
+        if (p.completed) completedCount++;
+        if (p.lastPlayed) {
+          var t = new Date(p.lastPlayed).getTime();
+          if (t > lastPlayedMs) lastPlayedMs = t;
+        }
+      });
+      var streak = this._calcCwStreak(progress);
+
+      var lastPlayedText = '';
+      if (lastPlayedMs) {
+        var diffDays = Math.floor((Date.now() - lastPlayedMs) / 86400000);
+        if (diffDays === 0)      lastPlayedText = 'Last played: Today';
+        else if (diffDays === 1) lastPlayedText = 'Last played: Yesterday';
+        else                     lastPlayedText = 'Last played: ' + diffDays + ' days ago';
+      }
+
+      var html = '<div class="bento-card-cw-meta">';
+      html += '<div class="bento-card-cw-prog">' + completedCount + ' / ' + total + ' completed</div>';
+      if (streak > 0) html += '<div class="bento-card-cw-streak">🔥 ' + streak + '-day streak</div>';
+      if (lastPlayedText) html += '<div class="bento-card-cw-lastplayed">' + lastPlayedText + '</div>';
+      html += '</div>';
+      return html;
+    },
+
     _buildCrosswordStatsSidebarHtml: function(entries) {
       var progress = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.getAll() : this._getCwProgress();
       var total = entries.length;
       var completedCount = 0;
+      var inProgressCount = 0;
       var lastUnfinished = null;
       var lastUnfinishedTime = 0;
 
@@ -298,24 +396,35 @@
         if (!p) return;
         if (p.completed) {
           completedCount++;
-        } else if ((p.wordsCorrect || p.wordsComplete || 0) > 0 && p.lastPlayed) {
-          var t = new Date(p.lastPlayed).getTime();
-          if (t > lastUnfinishedTime) {
-            lastUnfinishedTime = t;
-            lastUnfinished = e;
+        } else if ((p.wordsCorrect || p.wordsComplete || 0) > 0) {
+          inProgressCount++;
+          if (p.lastPlayed) {
+            var t = new Date(p.lastPlayed).getTime();
+            if (t > lastUnfinishedTime) {
+              lastUnfinishedTime = t;
+              lastUnfinished = e;
+            }
           }
         }
       });
 
       var pct = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+      var streak = this._calcCwStreak(progress);
+      var xp = this._calcCwXP(progress);
+      var badges = this._getCwBadges(progress, completedCount, total);
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
 
+      // ── Stats block ──
       var html = '<div class="cw-sidebar-stats">' +
         '<div class="cw-sidebar-stats-title">' + _mi('grid_on') + ' Crosswords</div>' +
         '<div class="cw-sidebar-stats-row">' +
           '<div class="cw-sidebar-stat">' +
             '<div class="cw-sidebar-stat-num">' + completedCount + '</div>' +
-            '<div class="cw-sidebar-stat-label">Completed</div>' +
+            '<div class="cw-sidebar-stat-label">Done</div>' +
+          '</div>' +
+          '<div class="cw-sidebar-stat">' +
+            '<div class="cw-sidebar-stat-num">' + inProgressCount + '</div>' +
+            '<div class="cw-sidebar-stat-label">In Progress</div>' +
           '</div>' +
           '<div class="cw-sidebar-stat">' +
             '<div class="cw-sidebar-stat-num">' + total + '</div>' +
@@ -326,8 +435,42 @@
         '<div class="cw-sidebar-prog-label">' + pct + '% overall progress</div>' +
       '</div>';
 
+      // ── Streak widget ──
+      html += '<div class="cw-sidebar-streak">';
+      if (streak > 0) {
+        html += '<div class="cw-sidebar-streak-num">🔥 ' + streak + '</div>';
+        html += '<div class="cw-sidebar-streak-label">day streak</div>';
+      } else {
+        html += '<div class="cw-sidebar-streak-empty">Start your streak today!</div>';
+      }
+      html += '</div>';
+
+      // ── XP bar ──
+      var XP_TIER = 500;
+      var xpInTier = xp % XP_TIER;
+      var xpPct = Math.round((xpInTier / XP_TIER) * 100);
+      var tier = Math.floor(xp / XP_TIER);
+      html += '<div class="cw-sidebar-xp">' +
+        '<div class="cw-sidebar-xp-row">' +
+          '<span class="cw-sidebar-xp-label">' + _mi('bolt') + ' ' + xp + ' XP</span>' +
+          (tier > 0 ? '<span class="cw-sidebar-xp-tier">Tier ' + tier + '</span>' : '') +
+          '<span class="cw-sidebar-xp-next">' + xpInTier + ' / ' + XP_TIER + '</span>' +
+        '</div>' +
+        '<div class="cw-sidebar-xp-track"><div class="cw-sidebar-xp-fill" style="width:' + xpPct + '%"></div></div>' +
+      '</div>';
+
+      // ── Badges ──
+      var earnedBadges = badges.filter(function(b) { return b.earned; });
+      if (earnedBadges.length > 0) {
+        html += '<div class="cw-sidebar-badges">';
+        earnedBadges.forEach(function(b) {
+          html += '<span class="cw-badge cw-badge-earned" title="' + b.label + '">' + b.icon + ' ' + b.label + '</span>';
+        });
+        html += '</div>';
+      }
+
+      // ── Continue last unfinished ──
       if (lastUnfinished) {
-        var diff = this._cwDiffMap()[lastUnfinished.levelId] || this._cwDiffMap()['B2'];
         var key2 = lastUnfinished.cwIndex !== undefined
           ? lastUnfinished.levelId + '_cw' + lastUnfinished.cwIndex
           : lastUnfinished.levelId + '_' + lastUnfinished.lessonId;
@@ -349,11 +492,11 @@
 
     _cwDiffMap: function() {
       return {
-        'A2': { label: 'A2', difficulty: 'easy',   bg: '#d1fae5', badgeColor: '#065f46' },
-        'B1': { label: 'B1', difficulty: 'easy',   bg: '#d1fae5', badgeColor: '#065f46' },
-        'B2': { label: 'B2', difficulty: 'medium', bg: '#fef9c3', badgeColor: '#713f12' },
-        'C1': { label: 'C1', difficulty: 'hard',   bg: '#ffedd5', badgeColor: '#7c2d12' },
-        'C2': { label: 'C2', difficulty: 'expert', bg: '#fee2e2', badgeColor: '#7f1d1d' }
+        'A2': { label: 'Easy',   difficulty: 'easy',   cssClass: 'cw-list-card-a2', badgeColor: '#065f46' },
+        'B1': { label: 'Easy',   difficulty: 'easy',   cssClass: 'cw-list-card-b1', badgeColor: '#065f46' },
+        'B2': { label: 'Medium', difficulty: 'medium', cssClass: 'cw-list-card-b2', badgeColor: '#713f12' },
+        'C1': { label: 'Hard',   difficulty: 'hard',   cssClass: 'cw-list-card-c1', badgeColor: '#7c2d12' },
+        'C2': { label: 'Expert', difficulty: 'expert', cssClass: 'cw-list-card-c2', badgeColor: '#7f1d1d' }
       };
     },
 
@@ -404,23 +547,61 @@
         }
       });
 
-      // Build left sidebar with stats
+      // Build left sidebar with stats + gamification
       if (cwLeftSidebar) {
         cwLeftSidebar.innerHTML = BentoGrid._buildCrosswordStatsSidebarHtml(allEntries);
       }
 
-      // Apply level filter
+      var progress = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.getAll() : this._getCwProgress();
+
+      // Compute per-level counts for filter buttons
+      var levelCounts = {};
+      var inProgressTotal = 0;
+      allEntries.forEach(function(e) {
+        var pKey = e.levelId + '_cw' + e.cwIndex;
+        var p = progress[pKey];
+        levelCounts[e.levelId] = (levelCounts[e.levelId] || 0);
+        if (!levelCounts[e.levelId + '_total']) levelCounts[e.levelId + '_total'] = 0;
+        levelCounts[e.levelId + '_total']++;
+        if (p && !p.completed && (p.wordsCorrect || p.wordsComplete || 0) > 0) inProgressTotal++;
+      });
+
+      // Apply level / in-progress filter
       var activeFilter = levelFilter || null;
-      var entries = activeFilter
-        ? allEntries.filter(function(e) { return e.levelId === activeFilter; })
-        : allEntries;
+      var inProgressFilter = (levelFilter === '__inprogress__');
+      var entries;
+      if (inProgressFilter) {
+        entries = allEntries.filter(function(e) {
+          var p = progress[e.levelId + '_cw' + e.cwIndex];
+          return p && !p.completed && (p.wordsCorrect || p.wordsComplete || 0) > 0;
+        });
+        activeFilter = '__inprogress__';
+      } else if (activeFilter) {
+        entries = allEntries.filter(function(e) { return e.levelId === activeFilter; });
+      } else {
+        entries = allEntries;
+      }
 
       var PAGE_SIZE = 12;
       var currentPage = (typeof page === 'number' && page >= 0) ? page : 0;
       var totalPages = Math.max(1, Math.ceil(entries.length / PAGE_SIZE));
       currentPage = Math.min(currentPage, totalPages - 1);
 
-      // Level filter buttons
+      // ── Compute summary subtitle counts ──
+      var completedTotalAll = 0;
+      var inProgressTotalAll = 0;
+      allEntries.forEach(function(e) {
+        var p = progress[e.levelId + '_cw' + e.cwIndex];
+        if (!p) return;
+        if (p.completed) completedTotalAll++;
+        else if ((p.wordsCorrect || p.wordsComplete || 0) > 0) inProgressTotalAll++;
+      });
+      var subtitleParts = [allEntries.length + ' crosswords'];
+      if (completedTotalAll > 0)   subtitleParts.push(completedTotalAll + ' completed');
+      if (inProgressTotalAll > 0)  subtitleParts.push(inProgressTotalAll + ' in progress');
+      var subtitleText = subtitleParts.join(' · ');
+
+      // ── Level filter buttons ──
       var availableLevels = [];
       CEFR_ORDER.forEach(function(lvl) {
         if (allEntries.some(function(e) { return e.levelId === lvl; })) availableLevels.push(lvl);
@@ -431,10 +612,17 @@
         '" onclick="BentoGrid.openCrosswordList(0)">All</button>';
       availableLevels.forEach(function(lvl) {
         var diff = DIFF_MAP[lvl] || DIFF_MAP['B2'];
-        filterHtml += '<button class="cw-filter-btn' + (activeFilter === lvl ? ' cw-filter-btn-active' : '') +
-          '" style="' + (activeFilter === lvl ? 'background:' + diff.badgeColor + ';color:#fff;border-color:' + diff.badgeColor : '') + '"' +
-          ' onclick="BentoGrid.openCrosswordList(0,\'' + lvl + '\')">' + lvl + '</button>';
+        var lvlCount = levelCounts[lvl + '_total'] || 0;
+        var isActive = activeFilter === lvl;
+        filterHtml += '<button class="cw-filter-btn' + (isActive ? ' cw-filter-btn-active' : '') +
+          '" style="' + (isActive ? 'background:' + diff.badgeColor + ';color:#fff;border-color:' + diff.badgeColor : '') + '"' +
+          ' onclick="BentoGrid.openCrosswordList(0,\'' + lvl + '\')">' + lvl + ' (' + lvlCount + ')</button>';
       });
+      if (inProgressTotalAll > 0) {
+        filterHtml += '<button class="cw-filter-btn' + (inProgressFilter ? ' cw-filter-btn-active cw-filter-btn-inprogress' : ' cw-filter-btn-inprogress') + '"' +
+          ' onclick="BentoGrid.openCrosswordList(0,\'__inprogress__\')">' +
+          _mi('pending') + ' In Progress (' + inProgressTotalAll + ')</button>';
+      }
       filterHtml += '</div>';
 
       var headerHtml =
@@ -442,36 +630,45 @@
           '<button class="subpage-back-btn" onclick="loadDashboard()">Back</button>' +
           '<div>' +
             '<div class="subpage-title">' + _mi('grid_on') + ' Crosswords</div>' +
-            '<div class="subpage-subtitle">Select a crossword to play</div>' +
+            '<div class="subpage-subtitle">' + subtitleText + '</div>' +
           '</div>' +
         '</div>' +
         filterHtml;
 
-      var progress = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.getAll() : this._getCwProgress();
-
       var cardsHtml = '';
       if (entries.length === 0) {
-        cardsHtml = '<div class="fe-map-empty">No crosswords available yet.</div>';
+        cardsHtml = '<div class="fe-map-empty">No crosswords found.</div>';
       } else {
         var pageEntries = entries.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE);
         cardsHtml = '<div class="cw-list-grid">';
-        pageEntries.forEach(function(entry, i) {
+        pageEntries.forEach(function(entry) {
           var num = allEntries.indexOf(entry) + 1;
           var diff = DIFF_MAP[entry.levelId] || DIFF_MAP['B2'];
           var pKey = entry.levelId + '_cw' + entry.cwIndex;
           var prog = progress[pKey];
           var wordsPct = 0;
           var isCompleted = false;
+          var isInProgress = false;
           if (prog) {
             isCompleted = !!prog.completed;
             wordsPct = (prog.wordsTotal > 0) ? Math.round(((prog.wordsCorrect || prog.wordsComplete || 0) / prog.wordsTotal) * 100) : 0;
             if (isCompleted) wordsPct = 100;
+            else if (wordsPct > 0) isInProgress = true;
           }
+          var cardClass = 'cw-list-card ' + diff.cssClass;
+          if (isCompleted)   cardClass += ' cw-list-card-done';
+          if (isInProgress)  cardClass += ' cw-list-card-inprogress';
+
           cardsHtml +=
-            '<div class="cw-list-card' + (isCompleted ? ' cw-list-card-done' : '') + '" style="background:' + diff.bg + '" ' +
+            '<div class="' + cardClass + '" ' +
               'onclick="FastExercises._openMixedCrossword(\'' + entry.levelId + '\',' + entry.cwIndex + ')">' +
-              '<div class="cw-list-card-num">' + num + '</div>' +
-              '<div class="cw-list-card-badge" style="background:' + diff.badgeColor + '">' + entry.levelId + '</div>' +
+              '<div class="cw-list-card-top">' +
+                '<span class="cw-list-card-num">#' + num + '</span>' +
+                '<span class="cw-list-card-lvl-badge">' + entry.levelId + '</span>' +
+              '</div>' +
+              '<div class="cw-list-card-icon">' + _mi('grid_on') + '</div>' +
+              '<div class="cw-list-card-title-text">' + entry.levelId + ' Crossword #' + (entry.cwIndex + 1) + '</div>' +
+              '<div class="cw-list-card-difficulty">' + diff.label + '</div>' +
               '<div class="cw-list-card-prog-wrap">' +
                 '<div class="cw-list-card-prog-track">' +
                   '<div class="cw-list-card-prog-fill' + (isCompleted ? ' cw-prog-done' : '') + '" style="width:' + wordsPct + '%"></div>' +
