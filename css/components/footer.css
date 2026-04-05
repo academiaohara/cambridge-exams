@@ -145,7 +145,29 @@
   letter-spacing: 0.04em;
 }
 
-/* AÑADIR AL FINAL DE footer.css */
+/* ── Clickable footer column title links ── */
+.footer-col h4 a.footer-col-title-link {
+  color: #FFFFFF;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.footer-col h4 a.footer-col-title-link:hover {
+  opacity: 0.8;
+}
+
+.footer-col h4 a.footer-col-title-link i {
+  color: #CD1025;
+}
+
+
 
 /* Estilos mejorados para botones del exercise-footer */
 .exercise-footer {

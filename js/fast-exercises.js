@@ -6161,6 +6161,62 @@
       FastExercises._cwRenderWordleView();
     },
 
+    _showDictionariesHome: function() {
+      var existing = document.getElementById('dict-home-modal');
+      if (existing) existing.remove();
+
+      var modal = document.createElement('div');
+      modal.id = 'dict-home-modal';
+      modal.className = 'dict-home-overlay';
+      modal.innerHTML =
+        '<div class="dict-home-box">' +
+          '<div class="dict-home-header">' +
+            '<span class="dict-home-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
+            '<h2 class="dict-home-title">Dictionaries</h2>' +
+            '<button class="dict-home-close" onclick="document.getElementById(\'dict-home-modal\').remove()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="dict-home-grid">' +
+            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showGeneralDictionary();">' +
+              '<span class="dict-home-card-icon" style="background:#6d28d9"><span class="material-symbols-outlined">search</span></span>' +
+              '<span class="dict-home-card-name">General Dictionary</span>' +
+              '<span class="dict-home-card-desc">Look up any word or phrasal verb</span>' +
+            '</button>' +
+            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showVocabDictionary();">' +
+              '<span class="dict-home-card-icon" style="background:#0ea5e9"><span class="material-symbols-outlined">library_books</span></span>' +
+              '<span class="dict-home-card-name">Vocabulary</span>' +
+              '<span class="dict-home-card-desc">Cambridge exam vocabulary by level</span>' +
+            '</button>' +
+            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showWfDictionary();">' +
+              '<span class="dict-home-card-icon" style="background:#e11d48"><span class="material-symbols-outlined">text_fields</span></span>' +
+              '<span class="dict-home-card-name">Word Formation</span>' +
+              '<span class="dict-home-card-desc">Prefixes, suffixes and derived forms</span>' +
+            '</button>' +
+            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showPvDictionary();">' +
+              '<span class="dict-home-card-icon" style="background:#3b82f6"><span class="material-symbols-outlined">auto_stories</span></span>' +
+              '<span class="dict-home-card-name">Phrasal Verbs</span>' +
+              '<span class="dict-home-card-desc">Phrasal verbs with meanings and examples</span>' +
+            '</button>' +
+            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showIdDictionary();">' +
+              '<span class="dict-home-card-icon" style="background:#f59e0b"><span class="material-symbols-outlined">record_voice_over</span></span>' +
+              '<span class="dict-home-card-name">Idioms</span>' +
+              '<span class="dict-home-card-desc">Common idioms with usage and examples</span>' +
+            '</button>' +
+            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showCollocDictionary();">' +
+              '<span class="dict-home-card-icon" style="background:#10b981"><span class="material-symbols-outlined">format_quote</span></span>' +
+              '<span class="dict-home-card-name">Collocations</span>' +
+              '<span class="dict-home-card-desc">Word combinations and collocations</span>' +
+            '</button>' +
+          '</div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
+      document.body.appendChild(modal);
+    },
+
     _cwEvalWordle: function(guess, target) {
       var result = new Array(guess.length).fill('gray');
       var targetArr = target.split('');
