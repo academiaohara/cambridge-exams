@@ -4825,8 +4825,9 @@
       this._renderVocabCrossword(mainEl, cwData, lessonData, catMeta, color, levelId, lessonId);
     },
 
-    _canPlace: function(grid, word, row, col, dir, SIZE) {
+    _canPlace: function(grid, dirGrid, word, row, col, dir, SIZE) {
       var len = word.length;
+      var oppDir = dir === 'across' ? 'down' : 'across';
       if (dir === 'across') {
         if (col < 0 || col + len > SIZE || row < 0 || row >= SIZE) return false;
         if (col > 0 && grid[row][col - 1] !== null) return false;
@@ -4842,6 +4843,10 @@
         var c = dir === 'across' ? col + i : col;
         if (grid[r][c] !== null) {
           if (grid[r][c] !== word[i]) return false;
+          // A valid crossing requires the existing letter was placed by a perpendicular word
+          // and no word in the same direction already occupies this cell
+          if (!dirGrid[r][c][oppDir]) return false;
+          if (dirGrid[r][c][dir]) return false;
           hasCrossing = true;
         } else {
           if (dir === 'across') {
@@ -4879,9 +4884,14 @@
       eligible = eligible.slice().sort(function(a, b) { return b.word.length - a.word.length; });
 
       var grid = [];
+      var dirGrid = []; // tracks which directions are used at each cell
       for (var r = 0; r < SIZE; r++) {
         grid[r] = [];
-        for (var c = 0; c < SIZE; c++) grid[r][c] = null;
+        dirGrid[r] = [];
+        for (var c = 0; c < SIZE; c++) {
+          grid[r][c] = null;
+          dirGrid[r][c] = { across: false, down: false };
+        }
       }
 
       var placed = [];
@@ -4890,7 +4900,10 @@
       var firstW = eligible[0].word.toUpperCase();
       var startC = Math.max(0, center - Math.floor(firstW.length / 2));
       if (startC + firstW.length > SIZE) startC = SIZE - firstW.length;
-      for (var i = 0; i < firstW.length; i++) grid[center][startC + i] = firstW[i];
+      for (var i = 0; i < firstW.length; i++) {
+        grid[center][startC + i] = firstW[i];
+        dirGrid[center][startC + i].across = true;
+      }
       placed.push({ word: firstW, definition: eligible[0].definition, example: eligible[0].example || '', row: center, col: startC, dir: 'across', number: 0 });
 
       for (var wi = 1; wi < eligible.length && placed.length < MAX_PLACED; wi++) {
@@ -4913,7 +4926,7 @@
                 tr = pw.row + pli;
                 tc = pw.col - li;
               }
-              if (!self._canPlace(grid, word, tr, tc, tryDir, SIZE)) continue;
+              if (!self._canPlace(grid, dirGrid, word, tr, tc, tryDir, SIZE)) continue;
               var crossings = self._countCrossings(grid, word, tr, tc, tryDir);
               var score = crossings * 10 - Math.abs(tr - center) - Math.abs(tc - center);
               if (score > bestScore) {
@@ -4927,8 +4940,10 @@
         if (bestPos) {
           var pr = bestPos.r, pc = bestPos.c, pd = bestPos.dir;
           for (var i = 0; i < word.length; i++) {
-            if (pd === 'across') grid[pr][pc + i] = word[i];
-            else grid[pr + i][pc] = word[i];
+            var pr2 = pd === 'across' ? pr : pr + i;
+            var pc2 = pd === 'across' ? pc + i : pc;
+            grid[pr2][pc2] = word[i];
+            dirGrid[pr2][pc2][pd] = true;
           }
           placed.push({ word: word, definition: wordObj.definition, example: wordObj.example || '', row: pr, col: pc, dir: pd, number: 0 });
         }
