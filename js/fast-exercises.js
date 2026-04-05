@@ -4891,7 +4891,7 @@
       var startC = Math.max(0, center - Math.floor(firstW.length / 2));
       if (startC + firstW.length > SIZE) startC = SIZE - firstW.length;
       for (var i = 0; i < firstW.length; i++) grid[center][startC + i] = firstW[i];
-      placed.push({ word: firstW, definition: eligible[0].definition, example: eligible[0].example || '', row: center, col: startC, dir: 'across', number: 0, clue: '' });
+      placed.push({ word: firstW, definition: eligible[0].definition, example: eligible[0].example || '', row: center, col: startC, dir: 'across', number: 0 });
 
       for (var wi = 1; wi < eligible.length && placed.length < MAX_PLACED; wi++) {
         var wordObj = eligible[wi];
@@ -4930,7 +4930,7 @@
             if (pd === 'across') grid[pr][pc + i] = word[i];
             else grid[pr + i][pc] = word[i];
           }
-          placed.push({ word: word, definition: wordObj.definition, example: wordObj.example || '', row: pr, col: pc, dir: pd, number: 0, clue: '' });
+          placed.push({ word: word, definition: wordObj.definition, example: wordObj.example || '', row: pr, col: pc, dir: pd, number: 0 });
         }
       }
 
@@ -4970,7 +4970,6 @@
             placed.forEach(function(p) {
               if (p.row === r && p.col === c) {
                 p.number = numCounter;
-                p.clue = numCounter + (p.dir === 'across' ? 'A' : 'D');
               }
             });
             numCounter++;
@@ -5012,9 +5011,13 @@
             gridHtml += '<div class="vocab-cw-cell vocab-cw-black"></div>';
           } else {
             var numLabel = numMap[r + ',' + c] || '';
+            var cellKey = r + ',' + c;
+            var cellWords = cellMap[cellKey] || [];
+            var ariaClues = cellWords.map(function(p) { return p.number + (p.dir === 'across' ? 'A' : 'D'); }).join('/');
+            var ariaLabel = ariaClues ? 'Cell ' + ariaClues : 'Cell';
             gridHtml += '<div class="vocab-cw-cell" data-r="' + r + '" data-c="' + c + '" id="cw-cell-' + r + '-' + c + '">' +
               (numLabel ? '<span class="vocab-cw-cell-num">' + numLabel + '</span>' : '') +
-              '<input type="text" class="vocab-cw-input" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" data-r="' + r + '" data-c="' + c + '" />' +
+              '<input type="text" class="vocab-cw-input" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" data-r="' + r + '" data-c="' + c + '" aria-label="' + ariaLabel + '" />' +
             '</div>';
           }
         }
@@ -5171,7 +5174,7 @@
         var clueEl = document.querySelector('.vocab-cw-clue[data-dir="' + activeWord.dir + '"][data-num="' + activeWord.number + '"]');
         if (clueEl) {
           clueEl.classList.add('vocab-cw-clue-active');
-          if (clueEl.scrollIntoView) clueEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          clueEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
         var defEl = document.getElementById('cw-active-def');
         if (defEl) {
