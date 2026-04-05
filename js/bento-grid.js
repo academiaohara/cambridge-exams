@@ -468,9 +468,14 @@
             if (isCompleted) wordsPct = 100;
           }
           cardsHtml +=
-            '<div class="cw-list-card' + (isCompleted ? ' cw-list-card-done' : '') + '" style="background:' + diff.bg + '" ' +
+            '<div class="cw-list-card cw-list-card-' + entry.levelId.toLowerCase() + (isCompleted ? ' cw-list-card-done' : '') + '" ' +
               'onclick="FastExercises._openVocabCrossword(\'' + entry.levelId + '\',\'' + entry.lessonId + '\')">' +
-              '<div class="cw-list-card-num">' + num + '</div>' +
+              '<div class="cw-list-card-top">' +
+                '<span class="cw-list-card-num">#' + num + '</span>' +
+                '<span class="cw-list-card-lvl-badge">' + entry.levelId + '</span>' +
+              '</div>' +
+              '<span class="material-symbols-outlined cw-list-card-icon">grid_on</span>' +
+              '<div class="cw-list-card-title-text">' + BentoGrid._escapeHTML(entry.title) + '</div>' +
               '<div class="cw-list-card-prog-wrap">' +
                 '<div class="cw-list-card-prog-track">' +
                   '<div class="cw-list-card-prog-fill' + (isCompleted ? ' cw-prog-done' : '') + '" style="width:' + wordsPct + '%"></div>' +
