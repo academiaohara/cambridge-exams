@@ -173,7 +173,7 @@
       for (var i = 0; i < catDefs.length; i++) {
         var cat = catDefs[i];
         var data = null;
-        try { data = await FastExercises._loadCategoryData(cat.id); } catch(e) {}
+        try { data = await FastExercises._loadCategoryData(cat.id); } catch(e) { console.warn('Course hub: failed to load category data for ' + cat.id, e); }
         var pct = data ? FastExercises._getCategoryPercent(cat.id, data.levels) : 0;
         var totalPoints = data ? FastExercises._getTotalPoints(data.levels) : 0;
         var btnLabel = pct > 0 ? 'Continue' : 'Start';
@@ -196,7 +196,7 @@
           '</div>';
       }
 
-      return '<div class="fe-categories-grid course-hub-grid">' +
+      return '<div class="course-hub-grid">' +
         theoryCard +
         categoryCards +
       '</div>';
