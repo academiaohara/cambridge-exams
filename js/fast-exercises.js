@@ -209,7 +209,19 @@
         var data = await this._loadCategoryData(cat.id);
         var pct = data ? this._getCategoryPercent(cat.id, data.levels) : 0;
         var totalPoints = data ? this._getTotalPoints(data.levels) : 0;
-        var btnLabel = pct > 0 ? 'Continue' : 'Start';
+
+        var levelBtnsHtml = '';
+        if (data && data.levels) {
+          for (var lvIdx = 0; lvIdx < data.levels.length; lvIdx++) {
+            var lv = data.levels[lvIdx];
+            var isUnlocked = this._isLevelUnlocked(cat.id, lv.id, data.levels);
+            var lockClass = isUnlocked ? '' : ' fe-cat-level-btn-locked';
+            var lvClick = isUnlocked
+              ? 'onclick="event.stopPropagation(); FastExercises._switchLevel(\'' + cat.id + '\', \'' + lv.id + '\')"'
+              : '';
+            levelBtnsHtml += '<button class="fe-cat-level-btn' + lockClass + '" style="background:' + cat.color + '" ' + lvClick + '>' + lv.id + '</button>';
+          }
+        }
 
         categoryCards += '<div class="fe-category-card" style="--cat-color: ' + cat.color + '" onclick="FastExercises.openCategory(\'' + cat.id + '\')">' +
           '<div class="fe-category-card-header">' +
@@ -225,7 +237,7 @@
             '</div>' +
             '<span class="fe-progress-text">' + pct + '% ' + 'complete' + '</span>' +
           '</div>' +
-          '<button class="fe-category-btn" style="background:' + cat.color + '">' + btnLabel + '</button>' +
+          '<div class="fe-cat-level-btns">' + levelBtnsHtml + '</div>' +
         '</div>';
       }
 
