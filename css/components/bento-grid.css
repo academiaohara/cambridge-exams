@@ -1156,18 +1156,18 @@ margin-top: -2px;
 
 /* Crossword PNG illustration (same image as quicksteps) */
 .bento-card-crossword::after {
-content: '';
-    position: absolute;
-    bottom: -110px;
-    right: -20px;
-    width: 320px;
-    height: 320px;
-    opacity: 1;
-    background-image: url(../../Assets/images/quicksteps.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom right;
-    pointer-events: none;
+  content: '';
+  position: absolute;
+  bottom: -110px;
+  right: -20px;
+  width: 320px;
+  height: 320px;
+  opacity: 1;
+  background-image: url(../../Assets/images/quicksteps.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom right;
+  pointer-events: none;
 }
 
 /* ── CROSSWORD LIST PAGE ── */

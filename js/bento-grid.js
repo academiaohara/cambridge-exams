@@ -454,7 +454,6 @@
         cardsHtml = '<div class="fe-map-empty">No crosswords available yet.</div>';
       } else {
         var pageEntries = entries.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE);
-        var globalIdx = allEntries.indexOf(pageEntries[0]);
         cardsHtml = '<div class="cw-list-grid">';
         pageEntries.forEach(function(entry, i) {
           var num = allEntries.indexOf(entry) + 1;
