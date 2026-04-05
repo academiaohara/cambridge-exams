@@ -1772,3 +1772,147 @@ margin-top: -2px;
 .cw-filter-btn-inprogress .material-symbols-outlined {
   font-size: 0.9rem;
 }
+
+/* ── Daily crossword indicator on bento card ── */
+.bento-card-cw-daily {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(96, 64, 192, 0.25);
+  border-radius: 8px;
+  padding: 5px 8px;
+  margin-bottom: 4px;
+}
+
+.bento-card-cw-daily.bento-card-cw-daily-done {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.bento-cw-daily-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #3a2a6a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bento-cw-daily-status {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #6040c0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.bento-card-cw-daily-done .bento-cw-daily-status {
+  color: #047857;
+}
+
+/* ── Daily challenge banner on crossword list page ── */
+.cw-daily-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+  border: 1.5px solid rgba(109, 40, 217, 0.25);
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(109, 40, 217, 0.1);
+}
+
+.cw-daily-banner.cw-daily-banner-done {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.12);
+}
+
+.cw-daily-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.cw-daily-banner-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.cw-daily-banner-info {
+  min-width: 0;
+}
+
+.cw-daily-banner-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #4c1d95;
+  line-height: 1.2;
+}
+
+.cw-daily-banner-done .cw-daily-banner-title {
+  color: #065f46;
+}
+
+.cw-daily-banner-sub {
+  font-size: 0.78rem;
+  color: #5b21b6;
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+.cw-daily-banner-done .cw-daily-banner-sub {
+  color: #047857;
+}
+
+.cw-daily-banner-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 9px 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.cw-daily-banner-btn:hover {
+  background: #6d28d9;
+}
+
+.cw-daily-banner-btn-done {
+  background: #10b981;
+}
+
+.cw-daily-banner-btn-done:hover {
+  background: #059669;
+}
+
+.cw-daily-banner-btn .material-symbols-outlined {
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  .cw-daily-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cw-daily-banner-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
