@@ -666,7 +666,6 @@
                 '<span class="cw-list-card-num">#' + num + '</span>' +
                 '<span class="cw-list-card-lvl-badge">' + entry.levelId + '</span>' +
               '</div>' +
-              '<div class="cw-list-card-icon">' + _mi('grid_on') + '</div>' +
               '<div class="cw-list-card-title-text">' + entry.levelId + ' Crossword #' + (entry.cwIndex + 1) + '</div>' +
               '<div class="cw-list-card-difficulty">' + diff.label + '</div>' +
               '<div class="cw-list-card-prog-wrap">' +

@@ -4954,6 +4954,25 @@
       return pool;
     },
 
+    _cwShowClueTab: function(dir) {
+      var acrossEl = document.getElementById('cw-clues-across');
+      var downEl   = document.getElementById('cw-clues-down');
+      var tabA     = document.getElementById('cw-tab-across');
+      var tabD     = document.getElementById('cw-tab-down');
+      if (!acrossEl || !downEl) return;
+      if (dir === 'across') {
+        acrossEl.style.display = 'block';
+        downEl.style.display   = 'none';
+        if (tabA) tabA.classList.add('vocab-cw-clues-tab-active');
+        if (tabD) tabD.classList.remove('vocab-cw-clues-tab-active');
+      } else {
+        acrossEl.style.display = 'none';
+        downEl.style.display   = 'block';
+        if (tabA) tabA.classList.remove('vocab-cw-clues-tab-active');
+        if (tabD) tabD.classList.add('vocab-cw-clues-tab-active');
+      }
+    },
+
     // Open a mixed (non-topic-grouped) crossword by level and slot index.
     _openMixedCrossword: async function(levelId, cwIndex) {
       var self = this;
@@ -5336,12 +5355,14 @@
             '<div class="vocab-cw-wordle-area" id="cw-wordle-area" style="display:none"></div>' +
           '</div>' +
           '<div class="vocab-cw-clues" id="cw-clues">' +
-            '<div class="vocab-cw-clue-section">' +
-              '<div class="vocab-cw-clue-heading">ACROSS</div>' +
+            '<div class="vocab-cw-clues-toggle">' +
+              '<button class="vocab-cw-clues-tab vocab-cw-clues-tab-active" id="cw-tab-across" onclick="FastExercises._cwShowClueTab(\'across\')">ACROSS</button>' +
+              '<button class="vocab-cw-clues-tab" id="cw-tab-down" onclick="FastExercises._cwShowClueTab(\'down\')">DOWN</button>' +
+            '</div>' +
+            '<div class="vocab-cw-clue-section" id="cw-clues-across">' +
               acrossClues.map(buildClue).join('') +
             '</div>' +
-            '<div class="vocab-cw-clue-section">' +
-              '<div class="vocab-cw-clue-heading">DOWN</div>' +
+            '<div class="vocab-cw-clue-section" id="cw-clues-down" style="display:none">' +
               downClues.map(buildClue).join('') +
             '</div>' +
           '</div>' +
@@ -5495,6 +5516,7 @@
         var clueEl = document.querySelector('.vocab-cw-clue[data-dir="' + activeWord.dir + '"][data-num="' + activeWord.number + '"]');
         if (clueEl) {
           clueEl.classList.add('vocab-cw-clue-active');
+          FastExercises._cwShowClueTab(activeWord.dir);
           clueEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
         // Set strip to first non-revealed position
