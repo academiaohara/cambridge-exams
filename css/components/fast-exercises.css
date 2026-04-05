@@ -65,7 +65,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  border-top: 3px solid var(--cat-color, #3b82f6);
+  border-left: 3px solid var(--cat-color, #3b82f6);
 }
 .fe-category-card:hover {
   transform: translateY(-3px);
@@ -142,6 +142,30 @@
 .fe-category-btn:hover {
   filter: brightness(1.1);
   transform: translateY(-1px);
+}
+.fe-cat-level-btns {
+  display: flex;
+  gap: 8px;
+}
+.fe-cat-level-btn {
+  flex: 1;
+  padding: 8px 4px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.03em;
+}
+.fe-cat-level-btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+.fe-cat-level-btn-locked {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 /* ── Category Info Widget (Left Sidebar) ──────────────────────────────── */

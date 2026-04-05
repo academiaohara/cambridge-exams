@@ -159,7 +159,6 @@
               '<div class="fe-category-stats">Grammar &amp; Vocabulary blocks</div>' +
             '</div>' +
           '</div>' +
-          '<button class="fe-category-btn" style="background:#0284c7">Open</button>' +
         '</div>';
 
       // Category tiles: load progress data for each
@@ -176,7 +175,20 @@
         try { data = await FastExercises._loadCategoryData(cat.id); } catch(e) { console.warn('Course hub: failed to load category data for ' + cat.id, e); }
         var pct = data ? FastExercises._getCategoryPercent(cat.id, data.levels) : 0;
         var totalPoints = data ? FastExercises._getTotalPoints(data.levels) : 0;
-        var btnLabel = pct > 0 ? 'Continue' : 'Start';
+
+        var levelBtnsHtml = '';
+        if (data && data.levels) {
+          for (var lvIdx = 0; lvIdx < data.levels.length; lvIdx++) {
+            var lv = data.levels[lvIdx];
+            var isUnlocked = FastExercises._isLevelUnlocked(cat.id, lv.id, data.levels);
+            var lockClass = isUnlocked ? '' : ' fe-cat-level-btn-locked';
+            var lvClick = isUnlocked
+              ? 'onclick="event.stopPropagation(); FastExercises._switchLevel(\'' + cat.id + '\', \'' + lv.id + '\')"'
+              : '';
+            levelBtnsHtml += '<button class="fe-cat-level-btn' + lockClass + '" style="background:' + cat.color + '" ' + lvClick + '>' + lv.id + '</button>';
+          }
+        }
+
         categoryCards +=
           '<div class="fe-category-card" style="--cat-color:' + cat.color + '" onclick="FastExercises.openCategory(\'' + cat.id + '\')">' +
             '<div class="fe-category-card-header">' +
@@ -192,7 +204,7 @@
               '</div>' +
               '<span class="fe-progress-text">' + pct + '% complete</span>' +
             '</div>' +
-            '<button class="fe-category-btn" style="background:' + cat.color + '">' + btnLabel + '</button>' +
+            '<div class="fe-cat-level-btns">' + levelBtnsHtml + '</div>' +
           '</div>';
       }
 
