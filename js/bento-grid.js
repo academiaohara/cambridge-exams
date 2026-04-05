@@ -386,10 +386,11 @@
       var CEFR_ORDER = ['A2', 'B1', 'B2', 'C1', 'C2'];
       var DIFF_MAP = this._cwDiffMap();
 
-      // Build crossword entries from the fixed level config (no topic grouping)
-      var LEVEL_CONFIG = typeof FastExercises !== 'undefined' && FastExercises._cwLevelConfig
+      // Build crossword entries from the fixed level config (no topic grouping).
+      // CW_LEVEL_CONFIG is defined in fast-exercises.js and exposed via _cwLevelConfig().
+      var LEVEL_CONFIG = (typeof FastExercises !== 'undefined' && FastExercises._cwLevelConfig)
         ? FastExercises._cwLevelConfig()
-        : [{ id: 'A2', count: 6 }, { id: 'B1', count: 9 }, { id: 'B2', count: 20 }, { id: 'C1', count: 13 }];
+        : [];
 
       var allEntries = [];
       CEFR_ORDER.forEach(function(cefrId) {

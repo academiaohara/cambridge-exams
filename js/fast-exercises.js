@@ -4832,6 +4832,8 @@
     _cwLevelConfig: function() { return CW_LEVEL_CONFIG; },
 
     // Deterministic Fisher-Yates shuffle using a simple LCG seeded by cwIndex.
+    // LCG parameters (1664525 multiplier, 1013904223 increment) are the classic
+    // Numerical Recipes values chosen for good distribution on 32-bit integers.
     _cwSeededShuffle: function(arr, seed) {
       var a = arr.slice();
       var s = (seed + 1) * 1664525 + 1013904223;
@@ -4861,6 +4863,8 @@
       var seen = {};
       var pool = [];
 
+      function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
       function add(word, clue, type) {
         var key = word.toLowerCase();
         if (!WORD_RE.test(key) || seen[key]) return;
@@ -4870,9 +4874,9 @@
 
       // 1. Vocabulary dictionary
       try {
-        var r = await fetch('data/vocabulary/dictionary.json');
-        if (r.ok) {
-          var vd = await r.json();
+        var vocabRes = await fetch('data/vocabulary/dictionary.json');
+        if (vocabRes.ok) {
+          var vd = await vocabRes.json();
           (vd.entries || []).forEach(function(e) {
             if (e.level === levelId) add(e.word, e.definition, 'vocabulary');
           });
@@ -4881,12 +4885,12 @@
 
       // 2. Collocations dictionary
       try {
-        var r = await fetch('data/collocations/dictionary.json');
-        if (r.ok) {
-          var cd = await r.json();
+        var collocRes = await fetch('data/collocations/dictionary.json');
+        if (collocRes.ok) {
+          var cd = await collocRes.json();
           (cd.entries || []).forEach(function(e) {
             if (e.level === levelId && e.word && e.phrase) {
-              var blank = e.phrase.replace(new RegExp('\\b' + e.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi'), '___');
+              var blank = e.phrase.replace(new RegExp('\\b' + escRe(e.word) + '\\b', 'gi'), '___');
               add(e.word, e.definition + ' | ' + blank, 'collocation');
             }
           });
@@ -4895,18 +4899,18 @@
 
       // 3. Phrasal verbs
       try {
-        var r = await fetch('data/phrasal-verbs/levels.json');
-        if (r.ok) {
-          var pvLevels = await r.json();
+        var pvLevelsRes = await fetch('data/phrasal-verbs/levels.json');
+        if (pvLevelsRes.ok) {
+          var pvLevels = await pvLevelsRes.json();
           var pvLevel = null;
           (pvLevels.levels || []).forEach(function(l) { if (l.id === levelId) pvLevel = l; });
           if (pvLevel) {
             for (var li = 0; li < pvLevel.lessons.length; li++) {
               try {
-                var lr = await fetch('data/phrasal-verbs/' + levelId + '/' + pvLevel.lessons[li].id + '.json');
-                if (lr.ok) {
-                  var ld = await lr.json();
-                  (ld.phrasalVerbs || []).forEach(function(pv) {
+                var pvLessonRes = await fetch('data/phrasal-verbs/' + levelId + '/' + pvLevel.lessons[li].id + '.json');
+                if (pvLessonRes.ok) {
+                  var pvLesson = await pvLessonRes.json();
+                  (pvLesson.phrasalVerbs || []).forEach(function(pv) {
                     if (!pv.verb) return;
                     var parts = pv.verb.split(/\s+/);
                     var mainVerb = parts[0];
@@ -4922,22 +4926,22 @@
 
       // 4. Idioms
       try {
-        var r = await fetch('data/idioms/levels.json');
-        if (r.ok) {
-          var idLevels = await r.json();
+        var idLevelsRes = await fetch('data/idioms/levels.json');
+        if (idLevelsRes.ok) {
+          var idLevels = await idLevelsRes.json();
           var idLevel = null;
           (idLevels.levels || []).forEach(function(l) { if (l.id === levelId) idLevel = l; });
           if (idLevel) {
             for (var li = 0; li < idLevel.lessons.length; li++) {
               try {
-                var lr = await fetch('data/idioms/' + levelId + '/' + idLevel.lessons[li].id + '.json');
-                if (lr.ok) {
-                  var ld = await lr.json();
-                  (ld.idioms || []).forEach(function(id) {
+                var idLessonRes = await fetch('data/idioms/' + levelId + '/' + idLevel.lessons[li].id + '.json');
+                if (idLessonRes.ok) {
+                  var idLesson = await idLessonRes.json();
+                  (idLesson.idioms || []).forEach(function(id) {
                     if (!id.idiom) return;
                     var kw = self._cwExtractIdiomWord(id.idiom);
                     if (!kw) return;
-                    var blank = id.idiom.replace(new RegExp('\\b' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi'), '___');
+                    var blank = id.idiom.replace(new RegExp('\\b' + escRe(kw) + '\\b', 'gi'), '___');
                     add(kw, id.definition + ' | ' + blank, 'idiom');
                   });
                 }
