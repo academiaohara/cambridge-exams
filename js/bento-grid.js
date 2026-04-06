@@ -42,10 +42,10 @@
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       return '<div class="bento-learning-row">' +
 
-        '<div class="bento-card bento-card-crossword" onclick="BentoGrid.openDailyCrossword()">' +
+        '<div class="bento-card bento-card-crossword" onclick="BentoGrid.openCrosswordList()">' +
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Daily Crossword</div>' +
+            '<div class="bento-card-title">Crossword</div>' +
             BentoGrid._buildCrosswordBentoMeta() +
             '<div class="bento-card-hover-info">Solve today\'s Cambridge-style crossword. A new puzzle every day — build your streak!</div>' +
           '</div>' +

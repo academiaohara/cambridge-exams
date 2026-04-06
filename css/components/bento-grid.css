@@ -138,6 +138,7 @@ content: '';
     background-size: contain;
     background-position: bottom right;
     pointer-events: none;
+    z-index: 0;
 }
 
 /* ── BASECAMP card (lessons) ── */
@@ -169,6 +170,7 @@ content: '';
     background-size: contain;
     background-position: bottom right;
     pointer-events: none;
+    z-index: 0;
 }
 
 /* ── WEAK SPOT card (recommended exercise) ── */
@@ -199,6 +201,7 @@ content: '';
     background-repeat: no-repeat;
     background-size: contain;
     pointer-events: none;
+    z-index: 0;
 }
 
 /* ── CHECKPOINT card (next lesson) ── */
@@ -229,6 +232,7 @@ content: '';
     background-repeat: no-repeat;
     background-size: contain;
     pointer-events: none;
+    z-index: 0;
 }
 
 
@@ -1231,6 +1235,7 @@ margin-top: -2px;
   background-size: contain;
   background-position: bottom right;
   pointer-events: none;
+  z-index: 0;
 }
 
 /* ── CROSSWORD LIST PAGE ── */
