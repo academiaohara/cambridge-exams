@@ -19,6 +19,9 @@
   var CW_MAX_PLACED = 20;      // Maximum words placed per crossword
   var CW_BATCH_SIZE = 30;      // Words fed to the generator per crossword slot
 
+  // Max scrollHeight (px) for a single-row dots row; taller means the dots wrapped
+  var DOTS_SINGLE_ROW_MAX_HEIGHT = 56;
+
   // Levels available for mixed crosswords and their crossword counts
   var CW_LEVEL_CONFIG = [
     { id: 'A2', count: 6 },
@@ -781,7 +784,7 @@
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
         row.classList.remove('fe-dots-compact');
-        if (row.scrollHeight > 56) {
+        if (row.scrollHeight > DOTS_SINGLE_ROW_MAX_HEIGHT) {
           row.classList.add('fe-dots-compact');
         }
       }
