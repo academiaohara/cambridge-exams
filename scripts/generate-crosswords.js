@@ -55,7 +55,7 @@ function buildPool(levelId) {
     });
   } catch(e) { console.warn('collocations missing', e.message); }
 
-  // 3. Phrasal verbs (uses data/phrasal-verbs/levels.json + per-lesson files)
+  // 3. Phrasal verbs — use the particle/preposition as the answer word when possible
   try {
     const pvLevels = JSON.parse(fs.readFileSync('data/phrasal-verbs/levels.json','utf8'));
     const pvLevel  = (pvLevels.levels || []).find(l => l.id === levelId);
@@ -67,8 +67,18 @@ function buildPool(levelId) {
             if (!pv.verb) return;
             const parts    = pv.verb.split(/\s+/);
             const mainVerb = parts[0];
-            const rest     = parts.slice(1).join(' ');
-            add(mainVerb, pv.definition + (rest ? ' | ___ ' + rest : ''), 'phrasal-verb');
+            const particle = parts.slice(1).join(' ');
+            // Prefer the particle as the crossword answer (allow 2+ letters)
+            if (particle && /^[a-zA-Z]{2,12}$/.test(particle)) {
+              const pk = particle.toLowerCase();
+              if (!seen[pk]) {
+                seen[pk] = 1;
+                pool.push({ word: particle.toUpperCase(), clue: pv.definition + ' | ' + mainVerb + ' ___', type: 'phrasal-verb' });
+                return;
+              }
+            }
+            // Fallback to main verb
+            add(mainVerb, pv.definition + (particle ? ' | ___ ' + particle : ''), 'phrasal-verb');
           });
         } catch(e) {}
       }
@@ -157,7 +167,7 @@ function generateCrossword(words) {
   const center = Math.floor(SIZE / 2);
 
   const eligible = words
-    .filter(w => /^[a-zA-Z]{3,12}$/.test(w.word))
+    .filter(w => /^[a-zA-Z]{2,12}$/.test(w.word))
     .sort((a, b) => b.word.length - a.word.length);
 
   if (eligible.length < 2) return null;

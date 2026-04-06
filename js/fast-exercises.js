@@ -4897,7 +4897,7 @@
         }
       } catch(e) {}
 
-      // 3. Phrasal verbs
+      // 3. Phrasal verbs — use the particle/preposition as the answer word when possible
       try {
         var pvLevelsRes = await fetch('data/phrasal-verbs/levels.json');
         if (pvLevelsRes.ok) {
@@ -4914,8 +4914,18 @@
                     if (!pv.verb) return;
                     var parts = pv.verb.split(/\s+/);
                     var mainVerb = parts[0];
-                    var rest = parts.slice(1).join(' ');
-                    add(mainVerb, pv.definition + (rest ? ' | ___ ' + rest : ''), 'phrasal-verb');
+                    var particle = parts.slice(1).join(' ');
+                    // Prefer the particle as the crossword answer (allow 2+ letters)
+                    if (particle && /^[a-zA-Z]{2,12}$/.test(particle)) {
+                      var pk = particle.toLowerCase();
+                      if (!seen[pk]) {
+                        seen[pk] = 1;
+                        pool.push({ word: particle.toUpperCase(), clue: pv.definition + ' | ' + mainVerb + ' ___', type: 'phrasal-verb' });
+                        return;
+                      }
+                    }
+                    // Fallback to main verb
+                    add(mainVerb, pv.definition + (particle ? ' | ___ ' + particle : ''), 'phrasal-verb');
                   });
                 }
               } catch(e) {}
@@ -5238,7 +5248,7 @@
       var self = this;
 
       var eligible = words.filter(function(w) {
-        return /^[a-zA-Z]{3,12}$/.test(w.word);
+        return /^[a-zA-Z]{2,12}$/.test(w.word);
       });
       if (eligible.length < 2) return null;
 
@@ -5403,10 +5413,25 @@
       var acrossClues = placed.filter(function(p) { return p.dir === 'across' && p.number; }).sort(function(a, b) { return a.number - b.number; });
       var downClues   = placed.filter(function(p) { return p.dir === 'down'   && p.number; }).sort(function(a, b) { return a.number - b.number; });
 
+      var cwTypeBadge = function(type) {
+        var labels = { 'vocabulary': 'vocab', 'collocation': 'coloc', 'phrasal-verb': 'phrasal', 'idiom': 'idiom' };
+        if (!type) return '';
+        var label = labels[type] || type;
+        return '<span class="vocab-cw-type-badge vocab-cw-type-' + self._escapeHTML(type) + '">' + label + '</span>';
+      };
+
+      var cwClueText = function(clue, solved) {
+        if (!clue) return '';
+        var pipe = clue.indexOf(' | ');
+        if (pipe !== -1) return solved ? clue : clue.slice(pipe + 3);
+        return clue;
+      };
+
       var buildClue = function(p) {
         return '<div class="vocab-cw-clue" data-dir="' + p.dir + '" data-num="' + p.number + '" data-r="' + p.row + '" data-c="' + p.col + '">' +
           '<span class="vocab-cw-clue-num">' + p.number + (p.dir === 'across' ? 'A' : 'D') + '</span> ' +
-          '<span class="vocab-cw-clue-text">' + self._escapeHTML(p.clue || p.definition || '') + '</span>' +
+          '<span class="vocab-cw-clue-text">' + self._escapeHTML(cwClueText(p.clue || p.definition || '', false)) + '</span>' +
+          cwTypeBadge(p.type) +
         '</div>';
       };
 
@@ -5426,6 +5451,7 @@
             '<button class="vocab-cw-btn vocab-cw-mode-btn vocab-cw-cw-mode-btn vocab-cw-cw-mode-btn-active" id="cw-crossword-btn">' + _mi('grid_on') + '<span>Crossword</span></button>' +
             '<button class="vocab-cw-btn vocab-cw-mode-btn vocab-cw-wordle-btn" id="cw-wordle-btn">' + _mi('casino') + '<span>Wordle</span></button>' +
             '<button class="vocab-cw-btn vocab-cw-hint-btn" id="cw-hint-btn">' + _mi('lightbulb') + '<span>Hint</span></button>' +
+            '<button class="vocab-cw-btn vocab-cw-solve-btn" id="cw-solve-btn">' + _mi('auto_fix') + '<span>Solve</span></button>' +
             '<button class="vocab-cw-btn vocab-cw-reset-btn" id="cw-reset-btn">' + _mi('refresh') + '<span>Reset</span></button>' +
           '</div>' +
         '</div>' +
@@ -5532,6 +5558,8 @@
 
       var hintBtn = document.getElementById('cw-hint-btn');
       if (hintBtn) hintBtn.addEventListener('click', function() { FastExercises._cwHint(); });
+      var solveBtn = document.getElementById('cw-solve-btn');
+      if (solveBtn) solveBtn.addEventListener('click', function() { FastExercises._cwSolveWord(); });
       var resetBtn = document.getElementById('cw-reset-btn');
       if (resetBtn) resetBtn.addEventListener('click', function() { FastExercises._cwReset(); });
       var wordleBtn = document.getElementById('cw-wordle-btn');
@@ -5797,6 +5825,49 @@
       FastExercises._cwRefreshActiveDef();
     },
 
+    _cwSolveWord: function() {
+      var state = window._cwState;
+      if (!state || !state.activeWord) return;
+      var activeWord = state.activeWord;
+      if (state.wordleMode) {
+        var wordKey = activeWord.dir + '_' + activeWord.number;
+        if (!state.wordleState[wordKey]) {
+          state.wordleState[wordKey] = {
+            guesses: [], results: [], solved: false, currentInput: '',
+            confirmedLetters: new Array(activeWord.word.length).fill(null),
+            hintedPositions: [],
+            hintMessage: null
+          };
+        }
+        var ws = state.wordleState[wordKey];
+        if (ws.solved) return;
+        for (var pos = 0; pos < activeWord.word.length; pos++) {
+          if (!ws.confirmedLetters[pos]) {
+            ws.hintedPositions = ws.hintedPositions || [];
+            ws.hintedPositions.push(pos);
+            ws.confirmedLetters[pos] = activeWord.word[pos];
+          }
+        }
+        ws.currentInput = activeWord.word;
+        FastExercises._cwRenderWordleView();
+        return;
+      }
+      for (var i = 0; i < activeWord.word.length; i++) {
+        var wr = activeWord.dir === 'across' ? activeWord.row : activeWord.row + i;
+        var wc = activeWord.dir === 'across' ? activeWord.col + i : activeWord.col;
+        var wkey = wr + ',' + wc;
+        if (!state.lockedCells[wkey]) {
+          state.userGrid[wkey] = activeWord.word[i];
+          state.revealedCells[wkey] = true;
+          delete state.checkedCells[wkey];
+          FastExercises._cwUpdateCell(wr, wc);
+        }
+      }
+      FastExercises._cwUpdateWordStrip();
+      FastExercises._cwUpdateStatus();
+      FastExercises._cwRefreshActiveDef();
+    },
+
     _cwCheck: function() {
       var state = window._cwState;
       if (!state) return;
@@ -5907,9 +5978,18 @@
         return;
       }
       var wordSolved = FastExercises._cwIsWordComplete(activeWord, state);
+      var rawClue = activeWord.clue || activeWord.definition || '';
+      var pipe = rawClue.indexOf(' | ');
+      var displayClue = (pipe !== -1 && !wordSolved) ? rawClue.slice(pipe + 3) : rawClue;
+      var typeLabels = { 'vocabulary': 'vocab', 'collocation': 'coloc', 'phrasal-verb': 'phrasal', 'idiom': 'idiom' };
+      var typeBadgeHtml = '';
+      if (activeWord.type) {
+        var tl = typeLabels[activeWord.type] || activeWord.type;
+        typeBadgeHtml = ' <span class="vocab-cw-type-badge vocab-cw-type-' + FastExercises._escapeHTML(activeWord.type) + '">' + tl + '</span>';
+      }
       defEl.innerHTML =
         '<span class="vocab-cw-active-num">' + activeWord.number + (activeWord.dir === 'across' ? 'A' : 'D') + '</span> ' +
-        FastExercises._escapeHTML(activeWord.clue || activeWord.definition || '') +
+        FastExercises._escapeHTML(displayClue) + typeBadgeHtml +
         (wordSolved
           ? ' <strong class="vocab-cw-active-word">→ ' + FastExercises._escapeHTML(activeWord.word.toLowerCase()) + '</strong>'
           : '');
