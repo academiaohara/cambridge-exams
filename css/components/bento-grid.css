@@ -1773,12 +1773,13 @@ margin-top: -2px;
   gap: 2px;
   position: relative;
   z-index: 1;
+  width: 42%;
 }
 
 .bcp-row {
   display: flex;
-  align-items: center;
-  gap: 4px;
+  align-items: baseline;
+  gap: 0;
   font-size: 0.78rem;
   font-weight: 700;
   color: #3a2a6a;
@@ -1788,11 +1789,24 @@ margin-top: -2px;
 
 .bcp-label {
   font-style: italic;
+  white-space: nowrap;
+}
+
+.bcp-dots {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0.5;
+  padding: 0 2px;
+}
+
+.bcp-dots::after {
+  content: "..................................................";
 }
 
 .bcp-pct {
   font-variant-numeric: tabular-nums;
-  min-width: 34px;
+  white-space: nowrap;
   text-align: right;
 }
 

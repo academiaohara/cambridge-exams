@@ -390,10 +390,10 @@
         var wfPct = (wfData && wfData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getLevelPercent('word-formation', level, wfData.levels) : 0;
 
         el.innerHTML =
-          '<div class="bcp-row"><span class="bcp-label">Theory</span><span class="bcp-pct">' + theoryPct + '%</span></div>' +
-          '<div class="bcp-row"><span class="bcp-label">Phrasal Verbs</span><span class="bcp-pct">' + pvPct + '%</span></div>' +
-          '<div class="bcp-row"><span class="bcp-label">Idioms</span><span class="bcp-pct">' + idPct + '%</span></div>' +
-          '<div class="bcp-row"><span class="bcp-label">Word Formation</span><span class="bcp-pct">' + wfPct + '%</span></div>';
+          '<div class="bcp-row"><span class="bcp-label">Theory</span><span class="bcp-dots"></span><span class="bcp-pct">' + theoryPct + '%</span></div>' +
+          '<div class="bcp-row"><span class="bcp-label">Phrasal Verbs</span><span class="bcp-dots"></span><span class="bcp-pct">' + pvPct + '%</span></div>' +
+          '<div class="bcp-row"><span class="bcp-label">Idioms</span><span class="bcp-dots"></span><span class="bcp-pct">' + idPct + '%</span></div>' +
+          '<div class="bcp-row"><span class="bcp-label">Word Formation</span><span class="bcp-dots"></span><span class="bcp-pct">' + wfPct + '%</span></div>';
       } catch(e) {}
     },
 
