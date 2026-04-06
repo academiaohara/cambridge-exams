@@ -18,6 +18,10 @@
   var CW_MIN_PLACED = 8;       // Minimum words that must be placed for a valid crossword
   var CW_MAX_PLACED = 20;      // Maximum words placed per crossword
   var CW_BATCH_SIZE = 30;      // Words fed to the generator per crossword slot
+  var CW_CLUE_SEP = ' | ';     // Separator between definition and fill-in-blank in clue text
+
+  // Human-readable short labels for each crossword word type
+  var CW_TYPE_LABELS = { 'vocabulary': 'vocab', 'collocation': 'coloc', 'phrasal-verb': 'phrasal', 'idiom': 'idiom' };
 
   // Levels available for mixed crosswords and their crossword counts
   var CW_LEVEL_CONFIG = [
@@ -5414,16 +5418,15 @@
       var downClues   = placed.filter(function(p) { return p.dir === 'down'   && p.number; }).sort(function(a, b) { return a.number - b.number; });
 
       var cwTypeBadge = function(type) {
-        var labels = { 'vocabulary': 'vocab', 'collocation': 'coloc', 'phrasal-verb': 'phrasal', 'idiom': 'idiom' };
         if (!type) return '';
-        var label = labels[type] || type;
+        var label = CW_TYPE_LABELS[type] || type;
         return '<span class="vocab-cw-type-badge vocab-cw-type-' + self._escapeHTML(type) + '">' + label + '</span>';
       };
 
       var cwClueText = function(clue, solved) {
         if (!clue) return '';
-        var pipe = clue.indexOf(' | ');
-        if (pipe !== -1) return solved ? clue : clue.slice(pipe + 3);
+        var sep = clue.indexOf(CW_CLUE_SEP);
+        if (sep !== -1) return solved ? clue : clue.slice(sep + CW_CLUE_SEP.length);
         return clue;
       };
 
@@ -5863,6 +5866,7 @@
           FastExercises._cwUpdateCell(wr, wc);
         }
       }
+      FastExercises._cwUpdateClueText(activeWord);
       FastExercises._cwUpdateWordStrip();
       FastExercises._cwUpdateStatus();
       FastExercises._cwRefreshActiveDef();
@@ -5979,12 +5983,11 @@
       }
       var wordSolved = FastExercises._cwIsWordComplete(activeWord, state);
       var rawClue = activeWord.clue || activeWord.definition || '';
-      var pipe = rawClue.indexOf(' | ');
-      var displayClue = (pipe !== -1 && !wordSolved) ? rawClue.slice(pipe + 3) : rawClue;
-      var typeLabels = { 'vocabulary': 'vocab', 'collocation': 'coloc', 'phrasal-verb': 'phrasal', 'idiom': 'idiom' };
+      var sep = rawClue.indexOf(CW_CLUE_SEP);
+      var displayClue = (sep !== -1 && !wordSolved) ? rawClue.slice(sep + CW_CLUE_SEP.length) : rawClue;
       var typeBadgeHtml = '';
       if (activeWord.type) {
-        var tl = typeLabels[activeWord.type] || activeWord.type;
+        var tl = CW_TYPE_LABELS[activeWord.type] || activeWord.type;
         typeBadgeHtml = ' <span class="vocab-cw-type-badge vocab-cw-type-' + FastExercises._escapeHTML(activeWord.type) + '">' + tl + '</span>';
       }
       defEl.innerHTML =
@@ -6087,10 +6090,21 @@
             FastExercises._cwUpdateCell(wr, wc);
           }
         }
+        FastExercises._cwUpdateClueText(activeWord);
       }
       FastExercises._cwUpdateWordStrip();
       FastExercises._cwUpdateStatus();
       FastExercises._cwRefreshActiveDef();
+    },
+
+    // Update the clue list entry for a word to show the full definition once solved
+    _cwUpdateClueText: function(word) {
+      var clueEl = document.querySelector('.vocab-cw-clue[data-dir="' + word.dir + '"][data-num="' + word.number + '"]');
+      if (!clueEl) return;
+      var textEl = clueEl.querySelector('.vocab-cw-clue-text');
+      if (!textEl) return;
+      // Show full clue (including definition before the separator) once the word is solved
+      textEl.textContent = word.clue || word.definition || '';
     },
 
     // ── WORDLE MODE ─────────────────────────────────────────────────────────
