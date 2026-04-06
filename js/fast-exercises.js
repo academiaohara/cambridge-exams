@@ -5938,17 +5938,17 @@
           var wkey = wr + ',' + wc;
           if (state.lockedCells[wkey] || state.revealedCells[wkey]) continue;
           hasUnlocked = true;
-          if (state.userGrid[wkey] !== word.word[i]) { allCorrect = false; return; }
+          if (state.userGrid[wkey] !== word.word[i]) { allCorrect = false; break; }
         }
         if (allCorrect && hasUnlocked) {
-          for (var i = 0; i < word.word.length; i++) {
-            var wr = word.dir === 'across' ? word.row : word.row + i;
-            var wc = word.dir === 'across' ? word.col + i : word.col;
-            var wkey = wr + ',' + wc;
-            if (!state.lockedCells[wkey]) {
-              state.lockedCells[wkey] = true;
-              delete state.checkedCells[wkey];
-              FastExercises._cwUpdateCell(wr, wc);
+          for (var j = 0; j < word.word.length; j++) {
+            var wr2 = word.dir === 'across' ? word.row : word.row + j;
+            var wc2 = word.dir === 'across' ? word.col + j : word.col;
+            var wkey2 = wr2 + ',' + wc2;
+            if (!state.lockedCells[wkey2]) {
+              state.lockedCells[wkey2] = true;
+              delete state.checkedCells[wkey2];
+              FastExercises._cwUpdateCell(wr2, wc2);
             }
           }
           FastExercises._cwUpdateClueText(word);
