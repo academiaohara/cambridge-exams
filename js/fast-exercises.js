@@ -5498,6 +5498,7 @@
         }
       }
 
+      var gridEl = document.getElementById('cw-grid');
       if (gridEl) {
         gridEl.addEventListener('click', function(e) {
           var target = e.target;
