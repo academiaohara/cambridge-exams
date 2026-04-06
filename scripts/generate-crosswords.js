@@ -44,18 +44,7 @@ function buildPool(levelId) {
     });
   } catch(e) { console.warn('vocabulary missing', e.message); }
 
-  // 2. Collocations
-  try {
-    const cd = JSON.parse(fs.readFileSync('data/collocations/dictionary.json', 'utf8'));
-    (cd.entries || []).forEach(e => {
-      if (e.level === levelId && e.word && e.phrase) {
-        const blank = e.phrase.replace(new RegExp('\\b' + e.word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '\\b','gi'),'___');
-        add(e.word, e.definition + ' | ' + blank, 'collocation');
-      }
-    });
-  } catch(e) { console.warn('collocations missing', e.message); }
-
-  // 3. Phrasal verbs — use the particle/preposition as the answer word when possible
+  // 2. Phrasal verbs — use the particle/preposition as the answer word when possible
   try {
     const pvLevels = JSON.parse(fs.readFileSync('data/phrasal-verbs/levels.json','utf8'));
     const pvLevel  = (pvLevels.levels || []).find(l => l.id === levelId);
@@ -85,7 +74,7 @@ function buildPool(levelId) {
     }
   } catch(e) { console.warn('phrasal-verbs missing', e.message); }
 
-  // 4. Idioms (uses data/idioms/levels.json + per-lesson files)
+  // 3. Idioms (uses data/idioms/levels.json + per-lesson files)
   try {
     const idLevels = JSON.parse(fs.readFileSync('data/idioms/levels.json','utf8'));
     const idLevel  = (idLevels.levels || []).find(l => l.id === levelId);

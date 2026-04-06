@@ -5533,18 +5533,37 @@
           var letter = savedState.cellState[sck];
           if (typeof letter !== 'string' || !letter) continue;
           cwState.userGrid[sck] = letter.toUpperCase();
-          var parts = sck.split(',');
-          var sr = parseInt(parts[0]);
-          var sc = parseInt(parts[1]);
-          if (!isNaN(sr) && !isNaN(sc)) {
-            var cellDom = document.getElementById('cw-cell-' + sr + '-' + sc);
-            if (cellDom) {
-              var letterSpan = cellDom.querySelector('.vocab-cw-cell-letter');
-              if (letterSpan) letterSpan.textContent = letter.toUpperCase();
-              cellDom.classList.add('vocab-cw-cell-filled');
-            }
-          }
         }
+      }
+      // Restore locked cells (dark green: correctly solved)
+      if (savedState && savedState.lockedCells && typeof savedState.lockedCells === 'object') {
+        Object.keys(savedState.lockedCells).forEach(function(k) {
+          if (savedState.lockedCells[k]) cwState.lockedCells[k] = true;
+        });
+      }
+      // Restore revealed cells (purple: shown via hint/solve)
+      if (savedState && savedState.revealedCells && typeof savedState.revealedCells === 'object') {
+        Object.keys(savedState.revealedCells).forEach(function(k) {
+          if (savedState.revealedCells[k]) cwState.revealedCells[k] = true;
+        });
+      }
+      // Apply visual colours for all restored cells
+      if (savedState && savedState.cellState && typeof savedState.cellState === 'object') {
+        var cellStateKeys2 = Object.keys(savedState.cellState);
+        for (var sci2 = 0; sci2 < cellStateKeys2.length; sci2++) {
+          var sck2 = cellStateKeys2[sci2];
+          if (typeof savedState.cellState[sck2] !== 'string' || !savedState.cellState[sck2]) continue;
+          var parts2 = sck2.split(',');
+          var sr2 = parseInt(parts2[0]);
+          var sc2 = parseInt(parts2[1]);
+          if (!isNaN(sr2) && !isNaN(sc2)) FastExercises._cwUpdateCell(sr2, sc2);
+        }
+        // Also refresh any revealed cells not covered above
+        Object.keys(cwState.revealedCells).forEach(function(k) {
+          var rp = k.split(',');
+          var rr = parseInt(rp[0]), rc = parseInt(rp[1]);
+          if (!isNaN(rr) && !isNaN(rc)) FastExercises._cwUpdateCell(rr, rc);
+        });
       }
 
       var gridEl = document.getElementById('cw-grid');
@@ -5909,6 +5928,32 @@
           FastExercises._cwUpdateCell(r, c);
         }
       }
+      // Lock any word that is fully and correctly filled
+      state.cwData.placed.forEach(function(word) {
+        var allCorrect = true;
+        var hasUnlocked = false;
+        for (var i = 0; i < word.word.length; i++) {
+          var wr = word.dir === 'across' ? word.row : word.row + i;
+          var wc = word.dir === 'across' ? word.col + i : word.col;
+          var wkey = wr + ',' + wc;
+          if (state.lockedCells[wkey] || state.revealedCells[wkey]) continue;
+          hasUnlocked = true;
+          if (state.userGrid[wkey] !== word.word[i]) { allCorrect = false; return; }
+        }
+        if (allCorrect && hasUnlocked) {
+          for (var i = 0; i < word.word.length; i++) {
+            var wr = word.dir === 'across' ? word.row : word.row + i;
+            var wc = word.dir === 'across' ? word.col + i : word.col;
+            var wkey = wr + ',' + wc;
+            if (!state.lockedCells[wkey]) {
+              state.lockedCells[wkey] = true;
+              delete state.checkedCells[wkey];
+              FastExercises._cwUpdateCell(wr, wc);
+            }
+          }
+          FastExercises._cwUpdateClueText(word);
+        }
+      });
       FastExercises._cwUpdateStatus();
       FastExercises._cwUpdateWordStrip();
       FastExercises._cwRefreshActiveDef();
@@ -5963,7 +6008,9 @@
             completed:    complete === placed.length,
             wordsCorrect: complete,
             wordsTotal:   placed.length,
-            cellState:    state.userGrid || {}
+            cellState:    state.userGrid || {},
+            lockedCells:  state.lockedCells || {},
+            revealedCells: state.revealedCells || {}
           });
         } else {
           // Guest fallback
