@@ -47,6 +47,8 @@
         hintsUsed:        data.hintsUsed        !== undefined ? data.hintsUsed : (prev.hintsUsed || 0),
         timeSpentSeconds: data.timeSpentSeconds !== undefined ? data.timeSpentSeconds : (prev.timeSpentSeconds || 0),
         cellState:        data.cellState        || prev.cellState || {},
+        lockedCells:      data.lockedCells      !== undefined ? data.lockedCells  : (prev.lockedCells  || {}),
+        revealedCells:    data.revealedCells    !== undefined ? data.revealedCells : (prev.revealedCells || {}),
         lastPlayed:       new Date().toISOString(),
         synced:           false
       };
@@ -92,6 +94,8 @@
             hintsUsed:        row.hints_used,
             timeSpentSeconds: row.time_spent_seconds,
             cellState:        row.cell_state || {},
+            lockedCells:      (row.cell_state && row.cell_state._locked)   || {},
+            revealedCells:    (row.cell_state && row.cell_state._revealed) || {},
             lastPlayed:       row.last_played,
             synced:           true
           };
@@ -189,7 +193,10 @@
           progress_pct:       v.progressPct,
           hints_used:         v.hintsUsed,
           time_spent_seconds: v.timeSpentSeconds,
-          cell_state:         v.cellState,
+          cell_state:         Object.assign({}, v.cellState || {}, {
+            _locked:   v.lockedCells   || {},
+            _revealed: v.revealedCells || {}
+          }),
           last_played:        v.lastPlayed
         };
       });
