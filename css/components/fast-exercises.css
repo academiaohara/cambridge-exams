@@ -468,6 +468,23 @@
   height: 4px;
 }
 
+/* Compact dots — applied when a points row would overflow one line */
+.fe-map-points-row.fe-dots-compact {
+  flex-wrap: nowrap;
+}
+.fe-map-points-row.fe-dots-compact .fe-dot {
+  width: 32px;
+  height: 32px;
+  font-size: 0.8rem;
+  border-width: 2px;
+}
+.fe-map-points-row.fe-dots-compact .fe-dot .material-symbols-outlined {
+  font-size: 0.95rem;
+}
+.fe-map-points-row.fe-dots-compact .fe-map-line {
+  width: 10px;
+}
+
 /* Legend */
 .fe-map-legend {
   display: flex;

@@ -1764,6 +1764,43 @@ margin-top: -2px;
   opacity: 0.75;
 }
 
+/* ── Course bento card progress rows ── */
+.bento-course-prog {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.bcp-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #3a2a6a;
+  opacity: 0.85;
+  transition: color 0.25s ease;
+}
+
+.bcp-label {
+  flex: 1;
+  font-style: italic;
+}
+
+.bcp-pct {
+  font-variant-numeric: tabular-nums;
+  min-width: 34px;
+  text-align: right;
+}
+
+.bento-card-basecamp:hover .bcp-row {
+  color: #252550;
+  opacity: 1;
+}
+
 /* ── In-progress filter button accent ── */
 .cw-filter-btn-inprogress {
   display: inline-flex;

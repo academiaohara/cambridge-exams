@@ -421,6 +421,8 @@
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       var catState = { view: 'fastExerciseCategory', categoryId: categoryId };
       history.pushState(catState, '', Router.stateToPath(catState));
+      var self = this;
+      requestAnimationFrame(function() { self._compactDots(); });
     },
 
     // ── LEFT WIDGET ──────────────────────────────────────────────────────
@@ -772,6 +774,19 @@
       return html;
     },
 
+    // ── COMPACT DOTS ─────────────────────────────────────────────────────
+    // If a points row wraps to more than one line, shrink the dots to fit.
+    _compactDots: function() {
+      var rows = document.querySelectorAll('.fe-map-points-row');
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        row.classList.remove('fe-dots-compact');
+        if (row.scrollHeight > 56) {
+          row.classList.add('fe-dots-compact');
+        }
+      }
+    },
+
     // ── MAP PAGE NAVIGATION ───────────────────────────────────────────────
     _goToMapPage: function(pageIdx) {
       var pages = document.querySelectorAll('.fe-map-page');
@@ -793,6 +808,8 @@
       var downArrow = document.getElementById('fe-map-arrow-down');
       if (upArrow) upArrow.style.visibility = pageIdx === 0 ? 'hidden' : 'visible';
       if (downArrow) downArrow.style.visibility = pageIdx === totalPages - 1 ? 'hidden' : 'visible';
+      var self = this;
+      requestAnimationFrame(function() { self._compactDots(); });
     },
 
     // ── VOCABULARY TOPIC LIST ─────────────────────────────────────────────
