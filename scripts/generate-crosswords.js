@@ -9,12 +9,17 @@ const CW_MIN_PLACED  = 8;
 const CW_MAX_PLACED  = 20;
 const CW_BATCH_SIZE  = 30;
 const CW_GRID_SIZE   = 21;
+// 100 crosswords per CEFR level + 100 for the mixed level
 const CW_LEVEL_CONFIG = [
-  { id: 'A2', count: 6  },
-  { id: 'B1', count: 9  },
-  { id: 'B2', count: 20 },
-  { id: 'C1', count: 13 }
+  { id: 'A2',  count: 100 },
+  { id: 'B1',  count: 100 },
+  { id: 'B2',  count: 100 },
+  { id: 'C1',  count: 100 },
+  { id: 'mix', count: 100 }
 ];
+// Levels that are combined into the 'mix' pool
+const CW_MIX_LEVELS = ['A2', 'B1', 'B2', 'C1'];
+
 const CW_STOPWORDS = {
   the:1,a:1,an:1,in:1,at:1,on:1,to:1,of:1,for:1,with:1,
   up:1,out:1,off:1,down:1,away:1,back:1,over:1,into:1,
@@ -25,6 +30,20 @@ const CW_STOPWORDS = {
 };
 
 function buildPool(levelId) {
+  // 'mix' combines words from all CEFR levels
+  if (levelId === 'mix') {
+    const mixSeen = {};
+    const mixPool = [];
+    for (const lvl of CW_MIX_LEVELS) {
+      const lvlPool = buildPool(lvl);
+      for (const entry of lvlPool) {
+        const key = entry.word.toLowerCase();
+        if (!mixSeen[key]) { mixSeen[key] = 1; mixPool.push(entry); }
+      }
+    }
+    return mixPool;
+  }
+
   const WORD_RE = /^[a-zA-Z]{3,12}$/;
   const seen    = {};
   const pool    = [];
@@ -44,7 +63,18 @@ function buildPool(levelId) {
     });
   } catch(e) { console.warn('vocabulary missing', e.message); }
 
-  // 2. Phrasal verbs — use the particle/preposition as the answer word when possible
+  // 2. Collocations dictionary
+  try {
+    const cd = JSON.parse(fs.readFileSync('data/collocations/dictionary.json', 'utf8'));
+    (cd.entries || []).forEach(e => {
+      if (e.level === levelId && e.word && e.phrase) {
+        const blank = e.phrase.replace(new RegExp('\\b' + e.word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '\\b','gi'), '___');
+        add(e.word, e.definition + ' | ' + blank, 'collocation');
+      }
+    });
+  } catch(e) { console.warn('collocations missing', e.message); }
+
+  // 3. Phrasal verbs — use the particle/preposition as the answer word when possible
   try {
     const pvLevels = JSON.parse(fs.readFileSync('data/phrasal-verbs/levels.json','utf8'));
     const pvLevel  = (pvLevels.levels || []).find(l => l.id === levelId);
@@ -74,7 +104,7 @@ function buildPool(levelId) {
     }
   } catch(e) { console.warn('phrasal-verbs missing', e.message); }
 
-  // 3. Idioms (uses data/idioms/levels.json + per-lesson files)
+  // 4. Idioms (uses data/idioms/levels.json + per-lesson files)
   try {
     const idLevels = JSON.parse(fs.readFileSync('data/idioms/levels.json','utf8'));
     const idLevel  = (idLevels.levels || []).find(l => l.id === levelId);
@@ -96,6 +126,29 @@ function buildPool(levelId) {
   } catch(e) { console.warn('idioms missing', e.message); }
 
   return pool;
+}
+
+// Build coverage-ensuring batches: cycles through the entire pool so every word
+// appears across the set of crosswords.  Each batch is a contiguous window
+// (with wrap-around) starting at a different position in the shuffled pool.
+function buildCoverageBatches(pool, count, batchSize, baseSeed) {
+  // Stable shuffle of the full pool using a level-specific seed
+  const shuffled = seededShuffle(pool, baseSeed);
+  const P = shuffled.length;
+  const batches = [];
+  // stride so that consecutive windows advance evenly through the pool
+  const stride = P <= batchSize ? 1 : Math.max(1, Math.floor(P / count));
+  for (let i = 0; i < count; i++) {
+    const start = (i * stride) % P;
+    const seen  = {};
+    const batch = [];
+    for (let j = 0; j < batchSize * 2 && batch.length < batchSize; j++) {
+      const entry = shuffled[(start + j) % P];
+      if (!seen[entry.word]) { seen[entry.word] = 1; batch.push(entry); }
+    }
+    batches.push(batch);
+  }
+  return batches;
 }
 
 function seededShuffle(arr, seed) {
@@ -262,6 +315,8 @@ function generateCrossword(words) {
 async function main() {
   let totalGenerated = 0;
   let totalFailed    = 0;
+  const DIFF_MAP = { A2:'easy', B1:'easy', B2:'medium', C1:'hard', C2:'expert', mix:'mixed' };
+  const generated = new Date().toISOString();
 
   for (const levelCfg of CW_LEVEL_CONFIG) {
     const { id: levelId, count } = levelCfg;
@@ -273,10 +328,19 @@ async function main() {
     const pool = buildPool(levelId);
     console.log(`  Pool: ${pool.length} words`);
 
+    if (pool.length < CW_MIN_PLACED) {
+      console.warn(`  ⚠️  ${levelId} — pool too small, skipping`);
+      continue;
+    }
+
+    // Use a stable level-based seed for the initial shuffle so the coverage
+    // window is deterministic across re-runs.
+    const baseSeed = levelId.split('').reduce((s, c) => s * 31 + c.charCodeAt(0), 0);
+    const batches  = buildCoverageBatches(pool, count, CW_BATCH_SIZE, baseSeed);
+
     for (let idx = 0; idx < count; idx++) {
-      const shuffled = seededShuffle(pool, idx);
-      const batch    = shuffled.slice(0, CW_BATCH_SIZE);
-      const cwData   = generateCrossword(batch);
+      const batch  = batches[idx];
+      const cwData = generateCrossword(batch);
 
       if (!cwData) {
         console.warn(`  ⚠️  ${levelId} #${idx+1} — failed`);
@@ -285,18 +349,18 @@ async function main() {
       }
 
       const output = {
-        id:         `${levelId}_cw${idx}`,
-        level:      levelId,
-        index:      idx,
-        title:      `${levelId} Crossword #${idx+1}`,
-        difficulty: { A2:'easy', B1:'easy', B2:'medium', C1:'hard', C2:'expert' }[levelId] || 'medium',
-        generated:  new Date().toISOString(),
-        rows:       cwData.rows,
-        cols:       cwData.cols,
-        grid:       cwData.grid,
+        id:            `${levelId}_cw${idx}`,
+        level:         levelId,
+        index:         idx,
+        title:         levelId === 'mix' ? `Mix Crossword #${idx+1}` : `${levelId} Crossword #${idx+1}`,
+        difficulty:    DIFF_MAP[levelId] || 'medium',
+        generated,
+        rows:          cwData.rows,
+        cols:          cwData.cols,
+        grid:          cwData.grid,
         numberedCells: cwData.numberedCells,
-        across:     cwData.across,
-        down:       cwData.down
+        across:        cwData.across,
+        down:          cwData.down
       };
 
       const outPath = path.join(outDir, `cw${idx}.json`);
@@ -309,7 +373,7 @@ async function main() {
   const manifest = {
     levels: CW_LEVEL_CONFIG,
     total: totalGenerated,
-    generated: new Date().toISOString()
+    generated
   };
   fs.writeFileSync(path.join('crosswords', 'manifest.json'), JSON.stringify(manifest, null, 2));
   console.log(`\n✅ Done: ${totalGenerated} generated, ${totalFailed} failed`);

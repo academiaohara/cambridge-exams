@@ -426,8 +426,7 @@
       }
 
       // Daily challenge status
-      var level = (typeof AppState !== 'undefined') ? AppState.currentLevel || 'C1' : 'C1';
-      var daily = this._getDailyCrossword(level);
+      var daily = this._getDailyCrossword('mix');
       var dailyHtml = '';
       if (daily) {
         var dailyKey = daily.levelId + '_daily_' + daily.date;
@@ -563,7 +562,8 @@
         'B1': { label: 'Easy',   difficulty: 'easy',   cssClass: 'cw-list-card-b1', badgeColor: '#065f46' },
         'B2': { label: 'Medium', difficulty: 'medium', cssClass: 'cw-list-card-b2', badgeColor: '#713f12' },
         'C1': { label: 'Hard',   difficulty: 'hard',   cssClass: 'cw-list-card-c1', badgeColor: '#7c2d12' },
-        'C2': { label: 'Expert', difficulty: 'expert', cssClass: 'cw-list-card-c2', badgeColor: '#7f1d1d' }
+        'C2': { label: 'Expert', difficulty: 'expert', cssClass: 'cw-list-card-c2', badgeColor: '#7f1d1d' },
+        'mix': { label: 'Mixed', difficulty: 'mixed',  cssClass: 'cw-list-card-b2', badgeColor: '#1d4ed8' }
       };
     },
 
@@ -574,11 +574,10 @@
       return { levelId: level, date: today };
     },
 
-    // Opens today's daily crossword. Generates a fresh puzzle for the current date,
-    // caching it in localStorage so the same puzzle is shown throughout the day.
+    // Opens today's daily crossword. Always uses the mixed level so the puzzle
+    // draws from vocabulary across all CEFR levels.
     openDailyCrossword: function() {
-      var level = (typeof AppState !== 'undefined') ? AppState.currentLevel || 'C1' : 'C1';
-      var daily = this._getDailyCrossword(level);
+      var daily = this._getDailyCrossword('mix');
       if (!daily || typeof FastExercises === 'undefined') {
         this.openCrosswordList();
         return;
@@ -612,7 +611,7 @@
       var cwLeftSidebar = document.getElementById('cwLeftSidebar');
       if (!cwListPage) return;
 
-      var CEFR_ORDER = ['A2', 'B1', 'B2', 'C1', 'C2'];
+      var CEFR_ORDER = ['A2', 'B1', 'B2', 'C1', 'C2', 'mix'];
       var DIFF_MAP = this._cwDiffMap();
 
       // Build crossword entries from the fixed level config (no topic grouping).
@@ -712,8 +711,7 @@
       filterHtml += '</div>';
 
       // ── Daily challenge banner ──
-      var level = (typeof AppState !== 'undefined') ? AppState.currentLevel || 'C1' : 'C1';
-      var daily = BentoGrid._getDailyCrossword(level);
+      var daily = BentoGrid._getDailyCrossword('mix');
       var dailyBannerHtml = '';
       if (daily) {
         var dailyKey = daily.levelId + '_daily_' + daily.date;

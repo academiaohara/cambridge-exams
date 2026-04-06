@@ -28,10 +28,11 @@
 
   // Levels available for mixed crosswords and their crossword counts
   var CW_LEVEL_CONFIG = [
-    { id: 'A2', count: 6 },
-    { id: 'B1', count: 9 },
-    { id: 'B2', count: 20 },
-    { id: 'C1', count: 13 }
+    { id: 'A2',  count: 100 },
+    { id: 'B1',  count: 100 },
+    { id: 'B2',  count: 100 },
+    { id: 'C1',  count: 100 },
+    { id: 'mix', count: 100 }
   ];
 
   // Common words excluded when extracting the key word from an idiom
@@ -4883,6 +4884,21 @@
     // sources.  Each entry has { word (uppercase), clue, type }.
     _buildMixedWordPool: async function(levelId) {
       var self = this;
+      // 'mix' level combines words from all CEFR levels
+      if (levelId === 'mix') {
+        var mixSeen = {};
+        var mixPool = [];
+        var mixLevels = ['A2', 'B1', 'B2', 'C1'];
+        for (var mi = 0; mi < mixLevels.length; mi++) {
+          var lvlPool = await self._buildMixedWordPool(mixLevels[mi]);
+          for (var pi = 0; pi < lvlPool.length; pi++) {
+            var key = lvlPool[pi].word.toLowerCase();
+            if (!mixSeen[key]) { mixSeen[key] = 1; mixPool.push(lvlPool[pi]); }
+          }
+        }
+        return mixPool;
+      }
+
       var WORD_RE = /^[a-zA-Z]{3,12}$/;
       var seen = {};
       var pool = [];
