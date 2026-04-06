@@ -55,8 +55,8 @@
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Course</div>' +
-            '<div class="bento-card-desc">Grammar · Vocabulary · Review</div>' +
-            '<div class="bento-card-hover-info">Follow the structured grammar and vocabulary course — theory, exercises and review all in one.</div>' +
+            '<div class="bento-card-desc">Grammar · Vocab · Phrasal Verbs · Idioms · More</div>' +
+            '<div class="bento-card-hover-info">Structured lessons covering grammar theory, vocabulary, phrasal verbs, idioms, word formation, and review exercises — everything you need for Cambridge exams.</div>' +
           '</div>' +
         '</div>' +
 
@@ -402,7 +402,6 @@
       }
 
       var html = '<div class="bento-card-cw-meta">';
-      html += dailyHtml;
       html += '<div class="bento-card-cw-prog">' + completedCount + ' / ' + total + ' completed</div>';
       if (streak > 0) html += '<div class="bento-card-cw-streak">🔥 ' + streak + '-day streak</div>';
       if (lastPlayedText) html += '<div class="bento-card-cw-lastplayed">' + lastPlayedText + '</div>';
