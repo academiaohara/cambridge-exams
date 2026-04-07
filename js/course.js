@@ -780,7 +780,7 @@
           var items = section.items || [];
           var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
           html += '<div class="cu-ex-items">';
-          html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
+          html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.noPaginate ? { noPaginate: true } : undefined);
           html += '</div>';
 
           if (hasInteractive) html += self._renderCuExFooter(secId);
@@ -1378,28 +1378,65 @@
       var self = this;
       var passage = ex.passage || '';
       var questions = ex.questions || [];
-      // Build a map from gap number to correct answer
+      // Build answer map from question sentences: keyed by gap number extracted from "(N)"
       var answerMap = {};
-      questions.forEach(function(q) {
-        var numMatch = (q.sentence || '').match(/…\((\d+)\)…/);
-        if (numMatch) answerMap[parseInt(numMatch[1])] = q.answer || '';
-      });
-      // Render passage: replace …(N)… (WORD) patterns with inline gap+badge widgets.
-      // Each gap input carries data-answer for scoring.
-      var passageHtml = self._escapeHTML(passage).replace(
-        /…\((\d+)\)…\s*\(([A-Z]+)\)/g,
-        function(_, num, word) {
-          var gId = idBase + '-p' + num;
-          var ans = self._escapeHTML(answerMap[parseInt(num)] || '');
-          return '<span class="cu-wf-gap-wrap">' +
-            '<span class="cu-hint-pill">' +
-              '<span class="cu-hint-pill-num">' + num + '</span>' +
-              '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '" oninput="BentoGrid._resizeCuInput(this)">' +
-              '<span class="cu-hint-pill-word cu-wf-pill-word">' + word + '</span>' +
-            '</span>' +
-          '</span>';
+      questions.forEach(function(q, qi) {
+        var numMatch = (q.sentence || '').match(/\((\d+)\)/);
+        if (numMatch) {
+          answerMap[parseInt(numMatch[1])] = q.answer || '';
+        } else {
+          // Sequential: use position in array
+          if (answerMap[qi + 1] === undefined) answerMap[qi + 1] = q.answer || '';
         }
-      );
+      });
+
+      var passageHtml;
+      if (/…\(\d+\)…/.test(passage)) {
+        // Format 1: …(N)… (WORD) — word-formation style with Unicode ellipsis and capital hint
+        passageHtml = self._escapeHTML(passage).replace(
+          /…\((\d+)\)…\s*\(([A-Z]+)\)/g,
+          function(_, num, word) {
+            var gId = idBase + '-p' + num;
+            var ans = self._escapeHTML(answerMap[parseInt(num)] || '');
+            return '<span class="cu-wf-gap-wrap">' +
+              '<span class="cu-hint-pill">' +
+                '<span class="cu-hint-pill-num">' + num + '</span>' +
+                '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '" oninput="BentoGrid._resizeCuInput(this)">' +
+                '<span class="cu-hint-pill-word cu-wf-pill-word">' + word + '</span>' +
+              '</span>' +
+            '</span>';
+          }
+        );
+      } else if (/\(\d+\)\s*\.{5,}/.test(passage)) {
+        // Format 2: (N) ...... — numbered gaps with ASCII dots (phrasal verbs, cloze context)
+        passageHtml = self._escapeHTML(passage).replace(
+          /\((\d+)\)\s*\.{5,}/g,
+          function(_, num) {
+            var gapNum = parseInt(num);
+            var gId = idBase + '-p' + gapNum;
+            var ans = self._escapeHTML(answerMap[gapNum] || '');
+            return '(' + num + ')&nbsp;<span class="cu-hint-pill">' +
+              '<span class="cu-hint-pill-num">' + num + '</span>' +
+              '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." data-passage-num="' + gapNum + '" data-answer="' + ans + '" oninput="BentoGrid._resizeCuInput(this)">' +
+            '</span>';
+          }
+        );
+      } else {
+        // Format 3: sequential ...... — plain gaps replaced in order
+        var seqCounter = 0;
+        passageHtml = self._escapeHTML(passage).replace(
+          /\.{5,}/g,
+          function() {
+            var gapNum = ++seqCounter;
+            var gId = idBase + '-p' + gapNum;
+            var ans = self._escapeHTML(answerMap[gapNum] || '');
+            return '<span class="cu-hint-pill">' +
+              '<span class="cu-hint-pill-num">' + gapNum + '</span>' +
+              '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." data-passage-num="' + gapNum + '" data-answer="' + ans + '" oninput="BentoGrid._resizeCuInput(this)">' +
+            '</span>';
+          }
+        );
+      }
       var html = '<div class="cu-passage-exercise" id="' + idBase + '-passage">' +
         '<div class="cu-passage-text">' + passageHtml + '</div>' +
         '</div>';
@@ -1599,10 +1636,11 @@
       });
     },
 
-    _renderCuExItemsList: function(items, idBase, secId) {
+    _renderCuExItemsList: function(items, idBase, secId, opts) {
       var self = this;
       if (!items || !items.length) return '';
-      if (items.length <= CU_PAGE_SIZE) {
+      var noPaginate = opts && opts.noPaginate;
+      if (items.length <= CU_PAGE_SIZE || noPaginate) {
         var html = '';
         items.forEach(function(item, iIdx) {
           html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx);
@@ -1646,6 +1684,23 @@
       var self = this;
       var answer = item.answer || '';
       var inputId = 'cuex-' + idBase;
+
+      // Handle ✓ answer: sentence is already correct, show OK button instead of text input
+      if (answer === '✓') {
+        function _boldOk(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+        var contextHtmlOk = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
+        return '<div class="cu-ex-item cu-yn-item" data-answer="' + self._escapeHTML(answer) + '">' +
+          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          contextHtmlOk +
+          '<div class="cu-yn-row">' +
+            '<div class="cu-ex-sentence cu-yn-sentence">' + _boldOk(item.sentence || '') + '</div>' +
+            '<div class="cu-yn-buttons">' +
+              '<button class="cu-yn-btn" data-group="' + inputId + '-ok" data-yn="✓" onclick="BentoGrid._selectCuYn(this)" type="button">OK</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div></div>' +
+        '</div>';
+      }
 
       // Handle paired-sentence format (sentenceA / sentenceB) – e.g. Stative vs Active
       if (item.sentenceA !== undefined || item.sentenceB !== undefined) {
@@ -1755,8 +1810,8 @@
           // Number — render as bold, no box
           result += '<strong>' + self._escapeHTML(inner) + '</strong>';
         } else {
-          // Word hint — render without parentheses
-          result += '<span class="cu-hint-word">' + self._escapeHTML(inner) + '</span>';
+          // Word hint — render without parentheses, strip bold markers
+          result += '<span class="cu-hint-word">' + self._escapeHTML(inner.replace(/\*\*/g, '')) + '</span>';
         }
         lastIdx = m.index + m[0].length;
       }
@@ -1817,12 +1872,14 @@
       var numParen    = '(\\(\\d+\\)\\s+)?';
       var hintParen   = '\\(([^)]+)\\)';
       var gapMarker   = '[.\\u2026]{5,}';
+      var posLabel    = '\\(([A-D])\\)';              // Position labels (A), (B), (C), (D)
       var boldMarker  = '\\*\\*[^*]+\\*\\*';
       var strikeMarker = '\\*[^*]+\\*';
       var tokenRegex = new RegExp(
-        numParen + hintParen + '\\s*' + gapMarker +    // Pattern A: (num?) (hint) gap
-        '|' + gapMarker + '\\s*' + hintParen +         // Pattern B: gap (hint)
+        numParen + hintParen + '\\s*' + gapMarker +    // Pattern A: (num?) (hint) gap → groups 1, 2
+        '|' + gapMarker + '\\s*' + hintParen +         // Pattern B: gap (hint) → group 3
         '|' + gapMarker +                              // Simple gap
+        '|' + posLabel +                              // Position label (A)–(D) → group 4
         '|' + boldMarker +                             // Bold text **...**
         '|' + strikeMarker,                            // Strikethrough text *...*
         'g'
@@ -1850,6 +1907,9 @@
         } else if (match[3] !== undefined) {
           // Pattern B: gap (hint)
           parts.push({ type: 'gap-hint', hint: match[3].trim() });
+        } else if (match[4] !== undefined) {
+          // Position label: (A), (B), (C), (D)
+          parts.push({ type: 'position', letter: match[4] });
         } else if (m.startsWith('**')) {
           // Bold marker **...**
           var inner = m.slice(2, -2);
@@ -1915,7 +1975,7 @@
       // All bold items are converted (no break) so sentences with multiple numbered
       // error-correction targets (e.g. Exercise G) get one input pill per bold phrase.
       var hasInteractive = parts.some(function(p) {
-        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-wf' || p.type === 'options';
+        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-wf' || p.type === 'options' || p.type === 'position';
       });
       if (!hasInteractive) {
         for (var bpi = 0; bpi < parts.length; bpi++) {
@@ -1945,7 +2005,7 @@
 
       // Check if there are any interactive elements (re-evaluate after post-processing)
       hasInteractive = parts.some(function(p) {
-        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-wf' || p.type === 'options';
+        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-wf' || p.type === 'options' || p.type === 'position';
       });
 
       // If no gaps or options detected, add a standalone answer input at the end
@@ -1988,10 +2048,14 @@
           }
           pillHtml += '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">';
           if (p.hint) {
-            pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(p.hint) + '</span>';
+            pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(p.hint.replace(/\*\*/g, '')) + '</span>';
           }
           pillHtml += '</span>';
           return pillHtml;
+        } else if (p.type === 'position') {
+          // Position label (A), (B), (C), (D) — clickable button for position exercises
+          var posGroupId = inputIdBase + '_pos';
+          return '<button class="cu-option-btn cu-position-btn" data-group="' + posGroupId + '" onclick="BentoGrid._selectCourseOption(this)" type="button">' + self._escapeHTML(p.letter) + '</button>';
         } else if (p.type === 'gap-group') {
           // Two inputs joined by middle text, both styled as hint-pill inputs
           var gId1 = inputIdBase + '_g' + (gapCount++);

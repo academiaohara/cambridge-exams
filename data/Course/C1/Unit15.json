@@ -357,7 +357,7 @@
         },
         {
           "sentence": "Construction began in 1959, and (A) the project (B) ran (C) over budget and behind schedule (D). (considerably)",
-          "answer": "B or D"
+          "answer": "B/D"
         },
         {
           "sentence": "Costing far more than the original estimate, (A) it (B) tested (C) the patience (D) of both the government and the public. (severely)",
@@ -365,17 +365,18 @@
         },
         {
           "sentence": "Even Utzon, the architect originally responsible for the design, (A) admitted that it (B) would (C) have been (D) easier to manage costs had the project been handled differently. (probably)",
-          "answer": "B or C"
+          "answer": "B/C"
         },
         {
           "sentence": "Despite the controversy, (A) visitors to the Opera House (B) had (C) a wonderfully positive impression (D). (consistently)",
-          "answer": "B or D"
+          "answer": "B/D"
         },
         {
           "sentence": "Even before its official opening, (A) it (B) was (C) regarded as the most ambitious structure in the southern hemisphere (D). (widely)",
           "answer": "C"
         }
-      ]
+      ],
+      "multiSelect": true
     },
     {
       "type": "exercise",
@@ -602,6 +603,16 @@
           "sentence": "The kite soared ………………………………… above the treetops.",
           "answer": "high"
         }
+      ],
+      "words": [
+        "hard",
+        "hardly",
+        "fair",
+        "fairly",
+        "free",
+        "freely",
+        "high",
+        "highly"
       ]
     },
     {
@@ -649,7 +660,8 @@
           "sentence": "Despite the ongoing controversies, urban cycling continues to grow in popularity, and most experts now agree that well-designed infrastructure is an essential element of any sustainable city.",
           "answer": ""
         }
-      ]
+      ],
+      "noPaginate": true
     },
     {
       "type": "exercise",
