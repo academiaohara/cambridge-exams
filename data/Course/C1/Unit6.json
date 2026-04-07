@@ -1073,7 +1073,8 @@
               }
             ]
           }
-        ]
+        ],
+        "continuous": true
       },
       "D": {
         "title": "Write a word from the boxes in each gap",
@@ -1246,7 +1247,8 @@
               }
             ]
           }
-        ]
+        ],
+        "sentencePaddingTop": true
       },
       "F": {
         "title": "Choose the correct word",
@@ -1472,54 +1474,71 @@
         "instructions": "For each question, write one word which can be used in all three sentences.",
         "questions": [
           {
-            "sentence1": "Since ...... you're part of the team, we expect full commitment from you.",
-            "sentence2": "He was standing here just ...... – you've only just missed him.",
-            "sentence3": "You can use my desk for ...... , but we'll get you a permanent one soon.",
+            "sentence": "Since ...... you're part of the team, we expect full commitment from you.\nHe was standing here just ...... – you've only just missed him.\nYou can use my desk for ...... , but we'll get you a permanent one soon.",
             "answer": "now"
           },
           {
-            "sentence1": "Your unexpected phone call this morning really made my ...... – thank you!",
-            "sentence2": "My family loves going on ...... trips to seaside towns in summer.",
-            "sentence3": "Can you believe that, in this ...... and age, there are still people without internet access?",
+            "sentence": "Your unexpected phone call this morning really made my ...... – thank you!\nMy family loves going on ...... trips to seaside towns in summer.\nCan you believe that, in this ...... and age, there are still people without internet access?",
             "answer": "day"
           },
           {
-            "sentence1": "Since you're in charge of the project, it's ...... time you took on more responsibility.",
-            "sentence2": "I was ...... to submit the application when the website suddenly crashed.",
-            "sentence3": "Something needs to be done ...... the level of noise in this open-plan office.",
+            "sentence": "Since you're in charge of the project, it's ...... time you took on more responsibility.\nI was ...... to submit the application when the website suddenly crashed.\nSomething needs to be done ...... the level of noise in this open-plan office.",
             "answer": "about"
           },
           {
-            "sentence1": "Could you give me just a ...... to finish what I'm working on?",
-            "sentence2": "The announcement could come any ...... now – we're all on standby.",
-            "sentence3": "Submitting the final proposal was truly the ...... of truth for the whole project.",
+            "sentence": "Could you give me just a ...... to finish what I'm working on?\nThe announcement could come any ...... now – we're all on standby.\nSubmitting the final proposal was truly the ...... of truth for the whole project.",
             "answer": "moment"
           },
           {
-            "sentence1": "We are living in the digital ...... – everything has changed beyond recognition.",
-            "sentence2": "A fine whisky, much like a good friendship, only improves with ...... .",
-            "sentence3": "It's high time you started acting your ...... instead of behaving like a teenager!",
+            "sentence": "We are living in the digital ...... – everything has changed beyond recognition.\nA fine whisky, much like a good friendship, only improves with ...... .\nIt's high time you started acting your ...... instead of behaving like a teenager!",
             "answer": "age"
           },
           {
-            "sentence1": "The new headquarters is a striking glass and steel ...... block in the city centre.",
-            "sentence2": "She has been in public ...... for less than a year and is already facing criticism.",
-            "sentence3": "You'll need to speak to someone at the head ...... about arranging a transfer.",
+            "sentence": "The new headquarters is a striking glass and steel ...... block in the city centre.\nShe has been in public ...... for less than a year and is already facing criticism.\nYou'll need to speak to someone at the head ...... about arranging a transfer.",
             "answer": "office"
           },
           {
-            "sentence1": "I gradually began to realise during the ...... of the interview that I wasn't their first choice.",
-            "sentence2": "The committee still hasn't agreed on a ...... of action to address the budget shortfall.",
-            "sentence3": "We sent the application two weeks ago and they said they'd respond in due ...... .",
+            "sentence": "I gradually began to realise during the ...... of the interview that I wasn't their first choice.\nThe committee still hasn't agreed on a ...... of action to address the budget shortfall.\nWe sent the application two weeks ago and they said they'd respond in due ...... .",
             "answer": "course"
           },
           {
-            "sentence1": "Please make sure you turn up ...... time for the client presentation.",
-            "sentence2": "I simply don't understand how anyone can sit at a desk for days ...... end.",
-            "sentence3": "She offered to cover my shift on Saturday, and I immediately replied: 'You're ...... !'",
+            "sentence": "Please make sure you turn up ...... time for the client presentation.\nI simply don't understand how anyone can sit at a desk for days ...... end.\nShe offered to cover my shift on Saturday, and I immediately replied: 'You're ...... !'",
+            "answer": "on"
+          },
+          {
+            "sentence": "Jenny, ...... you've been here for three years, we need to start thinking about your promotion.\nI'm sure Harold was here just ...... , wasn't he?\nYou can share my computer for ...... , but they'll have to get you your own quite soon.",
+            "answer": "now"
+          },
+          {
+            "sentence": "Thanks so much for the flowers – they really made my ......\nMy grandparents love going on ...... trips to towns by the sea.\nYou'd think that, in this ...... and age, a 25 year old would know what a blog is.",
+            "answer": "day"
+          },
+          {
+            "sentence": "I was just ...... to go home, but that's okay.\nIt's ...... time you got home – we've been worried sick!\nWe're definitely going to have to do something ...... increasing our market share.",
+            "answer": "about"
+          },
+          {
+            "sentence": "I should get a reply from them any ...... now.\nIt'll only take them a ...... to update the website.\nNow is the ...... of truth!",
+            "answer": "moment"
+          },
+          {
+            "sentence": "We're definitely living in the ...... of information.\nThis particular wine doesn't really mature with ......\nIt's time you started acting your ...... , young man!",
+            "answer": "age"
+          },
+          {
+            "sentence": "It's just a typical 1960s ...... block.\nThe media start prying into your private life when you run for public ......\nYou'd better talk to Derek at head ......",
+            "answer": "office"
+          },
+          {
+            "sentence": "I began to realise in the ...... of the meeting that my proposal was not going to be accepted.\nWe're going to have to decide on a ...... of action to take.\nAll they said was that they'd contact me in due ......",
+            "answer": "course"
+          },
+          {
+            "sentence": "I do hope we're going to arrive ...... time.\nHow anyone could work in that office for years ...... end I just don't know.\nJim bet me that Doug was going to get the sack so I immediately said: 'You're ...... !'",
             "answer": "on"
           }
-        ]
+        ],
+        "type": "sync"
       },
       "K": {
         "title": "Correct the wrong words in bold",
@@ -1573,6 +1592,20 @@
             "sentence": "As they say, 'a **repair** in time saves nine'.",
             "answer": "stitch"
           }
+        ],
+        "words": [
+          "donkey's",
+          "time",
+          "other",
+          "nick",
+          "being",
+          "moon",
+          "for",
+          "time",
+          "spur",
+          "hat",
+          "good",
+          "stitch"
         ]
       },
       "L": {
