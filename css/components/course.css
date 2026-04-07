@@ -2826,6 +2826,24 @@
   margin-bottom: 0;
 }
 
+/* Sentence top-padding modifier (ex.sentencePaddingTop) */
+.cu-mc-inline-sentence-pt .cu-mc-inline-item .cu-ex-sentence {
+  padding-top: 10px;
+}
+
+/* Continuous email/passage block (ex.continuous) – no per-item badges */
+.cu-mc-inline-continuous {
+  background: #fff;
+  border-radius: 10px;
+  border: 1.5px solid rgba(59, 130, 246, 0.18);
+  box-shadow: 0 1px 4px rgba(45, 46, 95, 0.04);
+  padding: 14px 18px;
+}
+.cu-mc-inline-continuous .cu-ex-sentence {
+  line-height: 2.2;
+  margin-bottom: 0;
+}
+
 /* ── Multiple-choice passage gap pills (exercise D style) ───────────── */
 .cu-mc-passage-gap {
   display: inline-flex;

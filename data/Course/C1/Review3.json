@@ -124,7 +124,7 @@
         "pointsPerItem": 1,
         "maxScore": 8
       },
-      "instructions": "If the word or phrase in bold is correct, put a tick. If it is incorrect, rewrite it correctly on the line.",
+      "instructions": "If the word or phrase in bold is correct, put OK. If it is incorrect, rewrite it correctly on the line.",
       "items": [
         {
           "sentence": "This time tomorrow I'll **sit** on a beach somewhere in the south of Spain.",
@@ -132,7 +132,7 @@
         },
         {
           "sentence": "Do you think **you'll have finished** the report by the time the director calls?",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "**Will I** make some tea while you get yourself settled?",
@@ -144,7 +144,7 @@
         },
         {
           "sentence": "Careful! That **lorry's reversing!**",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "When I leave school, **I'm being** a professional chef!",
@@ -156,7 +156,7 @@
         },
         {
           "sentence": "We **do transfer** terminals at Dubai on the way back, don't we?",
-          "answer": "✓"
+          "answer": "OK"
         }
       ]
     },
@@ -171,42 +171,82 @@
       "items": [
         {
           "sentence": "By Friday evening, Professor Grant ...... at this university for exactly thirty years.",
-          "options": ["A is teaching", "B will teach", "C will be teaching", "D will have been teaching"],
+          "options": [
+            "A is teaching",
+            "B will teach",
+            "C will be teaching",
+            "D will have been teaching"
+          ],
           "answer": "D"
         },
         {
           "sentence": "The new bridge is ...... opened to traffic early next spring.",
-          "options": ["A on the verge of being", "B on the point of being", "C due to be", "D about to be"],
+          "options": [
+            "A on the verge of being",
+            "B on the point of being",
+            "C due to be",
+            "D about to be"
+          ],
           "answer": "C"
         },
         {
           "sentence": "We had just received word that Helen ...... the new Head of Department.",
-          "options": ["A was to be", "B was being", "C is going to be", "D will be"],
+          "options": [
+            "A was to be",
+            "B was being",
+            "C is going to be",
+            "D will be"
+          ],
           "answer": "A"
         },
         {
           "sentence": "'Could you help me carry these boxes upstairs?' 'I'm sorry, I ...... .'",
-          "options": ["A wouldn't", "B can't", "C shan't", "D don't"],
+          "options": [
+            "A wouldn't",
+            "B can't",
+            "C shan't",
+            "D don't"
+          ],
           "answer": "B"
         },
         {
           "sentence": "My neighbour is incredibly ...... ; her alarm goes off at six thirty every single morning without fail.",
-          "options": ["A temporary", "B long-standing", "C punctual", "D subsequent"],
+          "options": [
+            "A temporary",
+            "B long-standing",
+            "C punctual",
+            "D subsequent"
+          ],
           "answer": "C"
         },
         {
           "sentence": "She has always dreamed of working in the ...... service and helping to shape government policy.",
-          "options": ["A civil", "B civic", "C national", "D governmental"],
+          "options": [
+            "A civil",
+            "B civic",
+            "C national",
+            "D governmental"
+          ],
           "answer": "A"
         },
         {
           "sentence": "Investment in the private ...... has increased significantly over the past two decades.",
-          "options": ["A division", "B zone", "C area", "D sector"],
+          "options": [
+            "A division",
+            "B zone",
+            "C area",
+            "D sector"
+          ],
           "answer": "D"
         },
         {
           "sentence": "Many young people go through a particularly difficult ...... in their early teens before eventually finding their feet.",
-          "options": ["A stint", "B span", "C duration", "D phase"],
+          "options": [
+            "A stint",
+            "B span",
+            "C duration",
+            "D phase"
+          ],
           "answer": "D"
         }
       ]

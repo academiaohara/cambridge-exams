@@ -1313,6 +1313,8 @@
     // --- Inline multiple-choice renderer (exercise C/E style) ---
     // Questions have a `gaps` array: [{ num, options, answer }]
     // Each (N) ...... in the sentence becomes a clickable pill that opens a modal.
+    // `ex.continuous`: render all sentences as a single email/passage block (no per-item badges).
+    // `ex.sentencePaddingTop`: add 10px top padding to each cu-ex-sentence.
     _renderCuMcInlineExercise: function(ex, idBase, secId) {
       var self = this;
       var questions = ex.questions || [];
@@ -1327,12 +1329,11 @@
       self._cuMcPassageData[secId] = qMap;
       if (!self._cuMcPassageAnswers[secId]) self._cuMcPassageAnswers[secId] = {};
 
-      var html = '<div class="cu-mc-passage-exercise cu-mc-inline-exercise" id="' + idBase + '-mcinline">';
-      html += '<div class="cu-mc-inline-items">';
-      questions.forEach(function(q, qi) {
-        var sentence = q.sentence || '';
-        // Replace (N) ______ / (N) ...... patterns with clickable gap pills
-        var sentHtml = self._escapeHTML(sentence).replace(
+      var extraClass = ex.sentencePaddingTop ? ' cu-mc-inline-sentence-pt' : '';
+      var html = '<div class="cu-mc-passage-exercise cu-mc-inline-exercise' + extraClass + '" id="' + idBase + '-mcinline">';
+
+      function buildGapHtml(sentence) {
+        return self._escapeHTML(sentence).replace(
           /\((\d+)\)\s*(?:_{6,}|\.{6,}|\u2026{2,})/g,
           function(_, num) {
             var gapNum = parseInt(num);
@@ -1347,12 +1348,26 @@
             '</span>';
           }
         );
-        html += '<div class="cu-mc-inline-item">' +
-          '<div class="cu-ex-num-badge">' + (qi + 1) + '</div>' +
-          '<div class="cu-ex-sentence">' + sentHtml + '</div>' +
-        '</div>';
-      });
-      html += '</div>';
+      }
+
+      if (ex.continuous) {
+        // Render all sentences as a continuous email block without per-item badges
+        html += '<div class="cu-mc-inline-continuous">';
+        questions.forEach(function(q) {
+          html += '<p class="cu-ex-sentence">' + buildGapHtml(q.sentence || '') + '</p>';
+        });
+        html += '</div>';
+      } else {
+        html += '<div class="cu-mc-inline-items">';
+        questions.forEach(function(q, qi) {
+          html += '<div class="cu-mc-inline-item">' +
+            '<div class="cu-ex-num-badge">' + (qi + 1) + '</div>' +
+            '<div class="cu-ex-sentence">' + buildGapHtml(q.sentence || '') + '</div>' +
+          '</div>';
+        });
+        html += '</div>';
+      }
+
       html += '</div>';
       html += self._renderCuExFooter(secId);
       return html;
