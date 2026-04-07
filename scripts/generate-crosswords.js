@@ -29,6 +29,16 @@ const CW_STOPWORDS = {
   this:1,that:1,than:1,so:1,your:1,my:1,his:1,her:1,their:1
 };
 
+function sanitizeClue(word, clue) {
+  if (!clue || !word) return clue || '';
+  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp('\\b' + escaped + '\\b', 'gi');
+  const sanitized = clue.replace(re, '___').trim();
+  // If the clue became too short after removal, keep the original
+  if (sanitized.replace(/[_\s|]/g, '').length < 8) return clue;
+  return sanitized;
+}
+
 function buildPool(levelId) {
   // 'mix' combines words from all CEFR levels
   if (levelId === 'mix') {
@@ -52,7 +62,7 @@ function buildPool(levelId) {
     const key = word.toLowerCase();
     if (!WORD_RE.test(key) || seen[key]) return;
     seen[key] = 1;
-    pool.push({ word: word.toUpperCase(), clue, type });
+    pool.push({ word: word.toUpperCase(), clue: sanitizeClue(word, clue), type });
   }
 
   // 1. Vocabulary dictionary
