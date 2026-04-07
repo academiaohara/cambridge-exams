@@ -943,6 +943,9 @@
             html += self._renderCuSyncItems(questions, idBase, secId);
             html += '</div>';
             if (questions.length) html += self._renderCuExFooter(secId);
+          } else if (ex.type === 'mc-inline') {
+            // Inline multiple-choice: numbered gaps open a modal (e.g. Exercise C, E)
+            html += self._renderCuMcInlineExercise(ex, idBase, secId);
           } else if (ex.passage && questions.length && questions[0] && questions[0].options) {
             // Multiple-choice passage (e.g. Exercise D) – gaps open a modal with A/B/C/D options
             html += self._renderCuMcPassageExercise(ex, idBase, secId);
@@ -1304,6 +1307,54 @@
           BentoGrid._resizeCuInput(inp);
         }
       });
+    },
+
+    // --- Inline multiple-choice renderer (exercise C/E style) ---
+    // Questions have a `gaps` array: [{ num, options, answer }]
+    // Each (N) ...... in the sentence becomes a clickable pill that opens a modal.
+    _renderCuMcInlineExercise: function(ex, idBase, secId) {
+      var self = this;
+      var questions = ex.questions || [];
+      // Collect all gap data keyed by gap number
+      var qMap = {};
+      questions.forEach(function(q) {
+        (q.gaps || []).forEach(function(gap) {
+          var num = parseInt(gap.num);
+          qMap[num] = { options: gap.options || [], answer: (gap.answer || '').trim().toUpperCase() };
+        });
+      });
+      self._cuMcPassageData[secId] = qMap;
+      if (!self._cuMcPassageAnswers[secId]) self._cuMcPassageAnswers[secId] = {};
+
+      var html = '<div class="cu-mc-passage-exercise cu-mc-inline-exercise" id="' + idBase + '-mcinline">';
+      html += '<div class="cu-mc-inline-items">';
+      questions.forEach(function(q, qi) {
+        var sentence = q.sentence || '';
+        // Replace (N) ______ / (N) ...... patterns with clickable gap pills
+        var sentHtml = self._escapeHTML(sentence).replace(
+          /\((\d+)\)\s*(?:_{6,}|\.{6,}|\u2026{2,})/g,
+          function(_, num) {
+            var gapNum = parseInt(num);
+            var pillId = idBase + '-mcil-' + gapNum;
+            return '<span class="cu-mc-passage-gap" id="' + pillId + '" ' +
+              'data-gap-num="' + gapNum + '" data-sec-id="' + secId + '" ' +
+              'data-answer="' + self._escapeHTML((qMap[gapNum] || {}).answer || '') + '" ' +
+              'onclick="BentoGrid._openCuMcModal(\'' + secId + '\',' + gapNum + ')" ' +
+              'role="button" tabindex="0">' +
+              '<span class="cu-mc-passage-gap-num">' + num + '</span>' +
+              '<span class="cu-mc-passage-gap-slot"></span>' +
+            '</span>';
+          }
+        );
+        html += '<div class="cu-mc-inline-item">' +
+          '<div class="cu-ex-num-badge">' + (qi + 1) + '</div>' +
+          '<div class="cu-ex-sentence">' + sentHtml + '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+      html += '</div>';
+      html += self._renderCuExFooter(secId);
+      return html;
     },
 
     // --- Passage-based word formation renderer (exercise O style) ---

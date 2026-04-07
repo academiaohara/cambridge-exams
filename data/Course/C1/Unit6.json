@@ -899,112 +899,179 @@
       "C": {
         "title": "Choose the correct word",
         "instructions": "Read the email and choose the correct word for each gap.",
+        "type": "mc-inline",
         "questions": [
           {
-            "sentence": "I am writing to express my gratitude for the (1) ______ response to my query regarding my membership details.",
-            "options": [
-              "A prior",
-              "B prompt"
-            ],
-            "answer": "B"
-          },
-          {
-            "sentence": "... since my subscription (2) ______ at the end of last quarter.",
-            "options": [
-              "A postponed",
-              "B expired"
-            ],
-            "answer": "B"
-          },
-          {
-            "sentence": "I have been a (3) ______ supporter of the Blakewell (4) ______ Motorcycle Association.",
-            "options": [
-              "A long-standing",
-              "B timely",
-              "A Vintage",
-              "B Antique"
-            ],
-            "answer": [
-              "A",
-              "A"
+            "sentence": "I am writing to express my gratitude for the (1) ...... response to my query regarding my membership details.",
+            "gaps": [
+              {
+                "num": 1,
+                "options": [
+                  "A prior",
+                  "B prompt"
+                ],
+                "answer": "B"
+              }
             ]
           },
           {
-            "sentence": "... having devoted the better part of my (5) ______ to restoring classic bikes.",
-            "options": [
-              "A spell",
-              "B lifetime"
-            ],
-            "answer": "B"
-          },
-          {
-            "sentence": "... which was manufactured in the (6) ______ following the Second World War.",
-            "options": [
-              "A duration",
-              "B decade"
-            ],
-            "answer": "B"
-          },
-          {
-            "sentence": "I had previously been awarded the status of '(7) ______ member' for the (8) ______ I served as Club Secretary.",
-            "options": [
-              "A chronological",
-              "B permanent",
-              "A period",
-              "B interval"
-            ],
-            "answer": [
-              "B",
-              "A"
+            "sentence": "... since my subscription (2) ...... at the end of last quarter.",
+            "gaps": [
+              {
+                "num": 2,
+                "options": [
+                  "A postponed",
+                  "B expired"
+                ],
+                "answer": "B"
+              }
             ]
           },
           {
-            "sentence": "... to receive a rather (9) ______ letter informing me that my membership had ended.",
-            "options": [
-              "A interim",
-              "B abrupt"
-            ],
-            "answer": "B"
+            "sentence": "I have been a (3) ...... supporter of the Blakewell (4) ...... Motorcycle Association.",
+            "gaps": [
+              {
+                "num": 3,
+                "options": [
+                  "A long-standing",
+                  "B timely"
+                ],
+                "answer": "A"
+              },
+              {
+                "num": 4,
+                "options": [
+                  "A Vintage",
+                  "B Antique"
+                ],
+                "answer": "A"
+              }
+            ]
           },
           {
-            "sentence": "... as three months had (10) ______ since my last renewal.",
-            "options": [
-              "A lapsed",
-              "B elapsed"
-            ],
-            "answer": "B"
+            "sentence": "... having devoted the better part of my (5) ...... to restoring classic bikes.",
+            "gaps": [
+              {
+                "num": 5,
+                "options": [
+                  "A spell",
+                  "B lifetime"
+                ],
+                "answer": "B"
+              }
+            ]
           },
           {
-            "sentence": "... I was no longer eligible to attend the (11) ______ awards ceremony that month.",
-            "options": [
-              "A annual",
-              "B eternal"
-            ],
-            "answer": "A"
+            "sentence": "... which was manufactured in the (6) ...... following the Second World War.",
+            "gaps": [
+              {
+                "num": 6,
+                "options": [
+                  "A duration",
+                  "B decade"
+                ],
+                "answer": "B"
+              }
+            ]
           },
           {
-            "sentence": "I received a (12) ______ communication from the new administrator, reinstating my membership.",
-            "options": [
-              "A subsequent",
-              "B temporary"
-            ],
-            "answer": "A"
+            "sentence": "I had previously been awarded the status of '(7) ...... member' for the (8) ...... I served as Club Secretary.",
+            "gaps": [
+              {
+                "num": 7,
+                "options": [
+                  "A chronological",
+                  "B permanent"
+                ],
+                "answer": "B"
+              },
+              {
+                "num": 8,
+                "options": [
+                  "A period",
+                  "B interval"
+                ],
+                "answer": "A"
+              }
+            ]
           },
           {
-            "sentence": "... and the correction was made almost (13) ______.",
-            "options": [
-              "A simultaneous",
-              "B instantaneous"
-            ],
-            "answer": "B"
+            "sentence": "... to receive a rather (9) ...... letter informing me that my membership had ended.",
+            "gaps": [
+              {
+                "num": 9,
+                "options": [
+                  "A interim",
+                  "B abrupt"
+                ],
+                "answer": "B"
+              }
+            ]
           },
           {
-            "sentence": "I look forward to catching up with some of my (14) ______ at the event next month.",
-            "options": [
-              "A anachronisms",
-              "B contemporaries"
-            ],
-            "answer": "B"
+            "sentence": "... as three months had (10) ...... since my last renewal.",
+            "gaps": [
+              {
+                "num": 10,
+                "options": [
+                  "A lapsed",
+                  "B elapsed"
+                ],
+                "answer": "B"
+              }
+            ]
+          },
+          {
+            "sentence": "... I was no longer eligible to attend the (11) ...... awards ceremony that month.",
+            "gaps": [
+              {
+                "num": 11,
+                "options": [
+                  "A annual",
+                  "B eternal"
+                ],
+                "answer": "A"
+              }
+            ]
+          },
+          {
+            "sentence": "I received a (12) ...... communication from the new administrator, reinstating my membership.",
+            "gaps": [
+              {
+                "num": 12,
+                "options": [
+                  "A subsequent",
+                  "B temporary"
+                ],
+                "answer": "A"
+              }
+            ]
+          },
+          {
+            "sentence": "... and the correction was made almost (13) ......",
+            "gaps": [
+              {
+                "num": 13,
+                "options": [
+                  "A simultaneous",
+                  "B instantaneous"
+                ],
+                "answer": "B"
+              }
+            ]
+          },
+          {
+            "sentence": "I look forward to catching up with some of my (14) ...... at the event next month.",
+            "gaps": [
+              {
+                "num": 14,
+                "options": [
+                  "A anachronisms",
+                  "B contemporaries"
+                ],
+                "answer": "B"
+              }
+            ]
           }
         ]
       },
@@ -1091,33 +1158,93 @@
       "E": {
         "title": "Circle the correct word",
         "instructions": "Circle the correct word to complete the text.",
+        "type": "mc-inline",
         "questions": [
           {
-            "sentence": "If you enjoy helping others, why not consider a role in the (1) state / civil service?",
-            "answer": "civil"
-          },
-          {
-            "sentence": "A career in the public (2) area / sector comes with excellent job security.",
-            "answer": "sector"
-          },
-          {
-            "sentence": "There are strong career (3) prospects / predictions and a clear path to (4) promotion / progress.",
-            "answer": [
-              "prospects",
-              "promotion"
+            "sentence": "If you enjoy helping others, why not consider a role in the (1) ...... ?",
+            "gaps": [
+              {
+                "num": 1,
+                "options": [
+                  "A state",
+                  "B civil service"
+                ],
+                "answer": "B"
+              }
             ]
           },
           {
-            "sentence": "You'll work side by side with experienced and dedicated (5) colleagues / clients.",
-            "answer": "colleagues"
+            "sentence": "A career in the public (2) ...... comes with excellent job security.",
+            "gaps": [
+              {
+                "num": 2,
+                "options": [
+                  "A area",
+                  "B sector"
+                ],
+                "answer": "B"
+              }
+            ]
           },
           {
-            "sentence": "We fully respect our employees' right to join a (6) club / union.",
-            "answer": "union"
+            "sentence": "There are strong career (3) ...... and a clear path to (4) ......",
+            "gaps": [
+              {
+                "num": 3,
+                "options": [
+                  "A prospects",
+                  "B predictions"
+                ],
+                "answer": "A"
+              },
+              {
+                "num": 4,
+                "options": [
+                  "A promotion",
+                  "B progress"
+                ],
+                "answer": "A"
+              }
+            ]
           },
           {
-            "sentence": "We aim to (7) recruit / elect the most talented and motivated individuals available.",
-            "answer": "recruit"
+            "sentence": "You'll work side by side with experienced and dedicated (5) ......",
+            "gaps": [
+              {
+                "num": 5,
+                "options": [
+                  "A colleagues",
+                  "B clients"
+                ],
+                "answer": "A"
+              }
+            ]
+          },
+          {
+            "sentence": "We fully respect our employees' right to join a (6) ......",
+            "gaps": [
+              {
+                "num": 6,
+                "options": [
+                  "A club",
+                  "B union"
+                ],
+                "answer": "B"
+              }
+            ]
+          },
+          {
+            "sentence": "We aim to (7) ...... the most talented and motivated individuals available.",
+            "gaps": [
+              {
+                "num": 7,
+                "options": [
+                  "A recruit",
+                  "B elect"
+                ],
+                "answer": "A"
+              }
+            ]
           }
         ]
       },
@@ -1549,77 +1676,50 @@
       "N": {
         "title": "Word formation (fictional business leader text)",
         "instructions": "Complete the text with the correct form of the words in capitals.",
-        "passage": "Few business leaders have aroused as much debate as Victoria Holman, the founder of Holman Industries...",
+        "passage": "Few business leaders have aroused as much debate as Victoria Holman, the founder of Holman Industries, who served as Chief Executive from 1982 until 1997. It is not …(1)… (INCIDENT) that, during her tenure, the company went through a period of …(2)… (MOMENT) change. Those who support Holman's policies say she was responsible for replacing the company's …(3)… (ANTIQUE) working practices with an entirely new operating model, creating one of the most …(4)… (COMPETE) organisations in the sector, which required much higher …(5)… (PRODUCE) and greater commitment from the entire …(6)… (WORK) than had ever been demanded before. One of her core beliefs was that it was skilled …(7)… (MANAGE) that ultimately drove a company’s success, rather than tradition or vested interests.\n\nCritics of Victoria Holman point to the very high …(8)… (EMPLOY) figures during her tenure – the official number of …(9)… (JOB) people within the organisation reached record levels by 1986.\n\nWhen Victoria Holman stepped down at the age of forty-three, the business world was divided. Some saw her departure as …(10)… (TIME), and wished she would continue. Others felt it could not have come too soon. Even today, …(11)… (HISTORY) and economists are divided as to whether her legacy was positive or negative overall.",
         "questions": [
           {
-            "sentence": "It is not (1) ...... that her rise coincided with a period of (2) ...... social and economic change.",
-            "words": [
-              "**INCIDENT**",
-              "**MOMENT**"
-            ],
-            "answer": [
-              "incidental",
-              "momentous"
-            ]
+            "sentence": "…(1)… (INCIDENT)",
+            "answer": "incidental"
           },
           {
-            "sentence": "... replacing the company's (3) ...... working practices with an entirely new operating model.",
-            "words": [
-              "**ANTIQUE**"
-            ],
+            "sentence": "…(2)… (MOMENT)",
+            "answer": "momentous"
+          },
+          {
+            "sentence": "…(3)… (ANTIQUE)",
             "answer": "antiquated"
           },
           {
-            "sentence": "... creating one of the most (4) ...... organisations in the sector.",
-            "words": [
-              "**COMPETE**"
-            ],
+            "sentence": "…(4)… (COMPETE)",
             "answer": "competitive"
           },
           {
-            "sentence": "... demanding much higher levels of (5) ...... and greater commitment from the entire (6) ......",
-            "words": [
-              "**PRODUCE**",
-              "**WORK/MANAGE**"
-            ],
-            "answer": [
-              "productivity",
-              "workforce"
-            ]
+            "sentence": "…(5)… (PRODUCE)",
+            "answer": "productivity"
           },
           {
-            "sentence": "Her supporters insisted that it was skilled (7) ...... that ultimately saved hundreds of jobs.",
-            "words": [
-              "**MANAGE**"
-            ],
+            "sentence": "…(6)… (WORK)",
+            "answer": "workforce"
+          },
+          {
+            "sentence": "…(7)… (MANAGE)",
             "answer": "management"
           },
           {
-            "sentence": "Critics pointed to the sharp rise in (8) ...... across the wider industry during the same period.",
-            "words": [
-              "**EMPLOY**"
-            ],
+            "sentence": "…(8)… (EMPLOY)",
             "answer": "unemployment"
           },
           {
-            "sentence": "... when the official number of (9) ...... people reached record levels.",
-            "words": [
-              "**JOB**"
-            ],
+            "sentence": "…(9)… (JOB)",
             "answer": "jobless"
           },
           {
-            "sentence": "When she stepped down at the age of forty-three, many considered it an (10) ...... departure.",
-            "words": [
-              "**TIME**"
-            ],
+            "sentence": "…(10)… (TIME)",
             "answer": "untimely"
           },
           {
-            "sentence": "Even now, (11) ...... and economists remain divided over her true legacy.",
-            "words": [
-              "**HISTORY**"
-            ],
+            "sentence": "…(11)… (HISTORY)",
             "answer": "historians"
           }
         ]
@@ -1627,41 +1727,35 @@
       "O": {
         "title": "Key word transformation",
         "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Use between three and eight words.",
+        "type": "kwtrans",
         "questions": [
           {
-            "sentence": "The manager wants to stop all unnecessary overtime immediately.",
-            "word": "put",
+            "sentence": "The manager wants to stop all unnecessary overtime immediately.\n**put** The manager wants to ...... all unnecessary overtime immediately.",
             "answer": "put an end to"
           },
           {
-            "sentence": "Apart from Sophia, nobody has ever won the award twice in a row.",
-            "word": "only",
-            "answer": "is the only person to have"
+            "sentence": "Apart from Sophia, nobody has ever won the award twice in a row.\n**only** Sophia ...... the award twice in a row.",
+            "answer": "is the only person to have won"
           },
           {
-            "sentence": "It's about time we began tidying up this storage room.",
-            "word": "start",
+            "sentence": "It's about time we began tidying up this storage room.\n**start** It's about time we ...... this storage room.",
             "answer": "made a start on tidying"
           },
           {
-            "sentence": "She asked for a moment to collect her thoughts before speaking.",
-            "word": "just",
-            "answer": "you just give me a moment to"
+            "sentence": "She asked for a moment to collect her thoughts before speaking.\n**just** 'Could ...... before I answer?' she asked.",
+            "answer": "you just give me a moment to think"
           },
           {
-            "sentence": "I can barely remember the last time I took a full week off work.",
-            "word": "ages",
+            "sentence": "I can barely remember the last time I took a full week off work.\n**ages** It feels ...... I took a full week off work.",
             "answer": "like ages since"
           },
           {
-            "sentence": "I'm afraid, Laura, but right now I'm a bit tied up.",
-            "word": "in",
-            "answer": "the moment I'm a bit tied up"
+            "sentence": "I'm afraid, Laura, but right now I'm a bit tied up.\n**in** I'm afraid, Laura, but at ...... I'm a bit tied up.",
+            "answer": "the moment"
           },
           {
-            "sentence": "The team decorated the conference room very professionally.",
-            "word": "made",
-            "answer": "made a good job of decorating"
+            "sentence": "The team decorated the conference room very professionally.\n**made** They ...... of decorating the conference room.",
+            "answer": "made a good job"
           }
         ]
       }
