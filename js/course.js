@@ -1997,8 +1997,10 @@
           if (p.hint) {
             pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(p.hint) + '</span>';
           }
-          // Error-correction hint: non-uppercase word hint with no number badge gets an ✓ OK chip
-          // so the student can mark the bold phrase as correct without typing.
+          // Error-correction hint: the hint is the bold word from the original sentence that may
+          // or may not be correct. Word-formation root hints are ALL-CAPS (e.g. "HIGH", "EXTEND"),
+          // so a hint with mixed/lowercase characters and no number badge identifies an
+          // error-correction item where the student can mark the phrase as "OK" (correct as written).
           var isErrHint = p.hint && !p.num && !/^[A-Z]{2,}$/.test(p.hint.trim());
           if (isErrHint) {
             pillHtml += '<button type="button" class="cu-ok-chip" onclick="BentoGrid._fillOkChip(this)" title="Mark as correct (OK)">\u2713 OK</button>';
@@ -2046,12 +2048,13 @@
       BentoGrid._saveCuExSectionState(sec || btn.closest('.cu-section'));
     },
 
-    // Fill the input inside an error-correction hint pill with "OK" (correct as written)
+    // Fill the input inside an error-correction hint pill with "OK" (correct as written).
+    // The chip itself is disabled when the input is locked, so no need to re-check state here.
     _fillOkChip: function(btn) {
       var pill = btn.closest('.cu-hint-pill');
       if (!pill) return;
       var input = pill.querySelector('.cu-gap-input');
-      if (input && !input.disabled && !input.readOnly) {
+      if (input) {
         input.value = 'OK';
         BentoGrid._resizeCuInput(input);
       }
