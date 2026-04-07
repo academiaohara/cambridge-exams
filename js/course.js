@@ -778,12 +778,23 @@
           html += self._renderCuWordBank(section.words);
 
           var items = section.items || [];
-          var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
           html += '<div class="cu-ex-items">';
-          html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
-          html += '</div>';
-
-          if (hasInteractive) html += self._renderCuExFooter(secId);
+          if (section.yn) {
+            // Tick/yes-no exercise: render as yn items (OK / NO buttons)
+            html += self._renderCuYnItems(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
+            html += '</div>';
+            if (items.length) html += self._renderCuExFooter(secId);
+          } else if (section.continuousText) {
+            // Continuous text (no pagination, no per-item numbered badges)
+            html += self._renderCuContinuousItems(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
+            html += '</div>';
+            if (items.length) html += self._renderCuExFooter(secId);
+          } else {
+            var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
+            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
+            html += '</div>';
+            if (hasInteractive) html += self._renderCuExFooter(secId);
+          }
 
           html += '</div>';
         }
@@ -1026,11 +1037,18 @@
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
           }
+          html += self._renderCuWordBank(section.words);
           html += '<div class="cu-ex-items">';
-          var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
-          html += self._renderCuExItemsList(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
-          html += '</div>';
-          if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
+          if (section.continuousText) {
+            html += self._renderCuContinuousItems(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
+            html += '</div>';
+            if (rvItems.length) html += self._renderCuExFooter(rvSecId);
+          } else {
+            var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
+            html += self._renderCuExItemsList(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
+            html += '</div>';
+            if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
+          }
           html += '</div>';
         }
       });
@@ -1050,12 +1068,35 @@
       return '<div class="cu-ex-wordbank">' +
         '<span class="material-symbols-outlined">view_list</span>' +
         words.map(function(w) {
-          return '<span class="cu-wordbank-item" role="button" tabindex="0" onclick="BentoGrid._toggleWordBankItem(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordBankItem(this);event.preventDefault();}" title="Mark as used">' + self._escapeHTML(w) + '</span>';
+          return '<span class="cu-wordbank-item" role="button" tabindex="0" ' +
+            'onmousedown="BentoGrid._wordBankMousedown(this)" ' +
+            'onclick="BentoGrid._toggleWordBankItem(this)" ' +
+            'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordBankItem(this);event.preventDefault();}" ' +
+            'title="Click to insert into focused gap">' + self._escapeHTML(w) + '</span>';
         }).join('') +
         '</div>';
     },
 
+    _lastFocusedCuGapInput: null,
+
+    _wordBankMousedown: function(el) {
+      // Capture the currently focused gap input before it loses focus on click
+      var active = document.activeElement;
+      if (active && active.classList.contains('cu-gap-input')) {
+        BentoGrid._lastFocusedCuGapInput = active;
+      }
+    },
+
     _toggleWordBankItem: function(el) {
+      var lastInput = BentoGrid._lastFocusedCuGapInput;
+      if (lastInput && !lastInput.disabled && document.contains(lastInput)) {
+        // Fill the last focused gap input with this word
+        lastInput.value = el.textContent.trim();
+        BentoGrid._resizeCuInput(lastInput);
+        el.classList.add('cu-wordbank-used');
+        BentoGrid._lastFocusedCuGapInput = null;
+        return;
+      }
       el.classList.toggle('cu-wordbank-used');
     },
 
@@ -1222,7 +1263,7 @@
           '<div class="cu-yn-row">' +
             '<div class="cu-ex-sentence cu-yn-sentence">' + _bold(item.sentence || '') + '</div>' +
             '<div class="cu-yn-buttons">' +
-              '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">YES</button>' +
+              '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button"><span class="material-symbols-outlined" style="font-size:1em;vertical-align:-0.15em">check</span> OK</button>' +
               '<button class="cu-yn-btn cu-yn-no" data-group="' + iId + '" data-yn="NO" onclick="BentoGrid._selectCuYn(this)" type="button">NO</button>' +
             '</div>' +
           '</div>' +
@@ -1240,6 +1281,33 @@
       siblings.forEach(function(s) { s.classList.remove('cu-yn-selected'); });
       btn.classList.add('cu-yn-selected');
       BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
+    },
+
+    // --- Tick (single OK button) for error-correction items marked as correct ---
+    _selectCuTick: function(btn) {
+      if (btn.disabled) return;
+      btn.classList.toggle('cu-yn-selected');
+      BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
+    },
+
+    // --- Continuous text exercise renderer (no pagination, no per-item badges) ---
+    // Used for cloze passages where all sentences form one coherent text.
+    _renderCuContinuousItems: function(items, idBase, secId) {
+      var self = this;
+      if (!items || !items.length) return '';
+      var html = '<div class="cu-continuous-text">';
+      items.forEach(function(item, iIdx) {
+        html += '<span class="cu-ex-item cu-continuous-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
+          self._renderCourseExSentenceParts(item.sentence || '', idBase + '-ct' + iIdx) +
+        '</span>';
+      });
+      html += '</div>';
+      return html;
+    },
+
+    // --- Simple sentence display (no interactive elements) for tick items ---
+    _renderCourseExSentenceDisplay: function(sentence) {
+      return this._escapeHTML(sentence).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     },
 
     // --- Key Word Transformation exercise renderer (reading4 style) ---
@@ -1646,6 +1714,7 @@
       var self = this;
       var answer = item.answer || '';
       var inputId = 'cuex-' + idBase;
+      var isTickItem = answer === '✓' || (answer.length > 0 && answer.charAt(0) === '✓');
 
       // Handle paired-sentence format (sentenceA / sentenceB) – e.g. Stative vs Active
       if (item.sentenceA !== undefined || item.sentenceB !== undefined) {
@@ -1679,14 +1748,29 @@
       var sentenceHtml;
       if (isMC) {
         sentenceHtml = self._renderCourseExMCItem(sentence, item.options, inputId);
+      } else if (isTickItem) {
+        // Tick item: display sentence with bold formatting but no input gap
+        sentenceHtml = self._renderCourseExSentenceDisplay(sentence);
       } else {
         sentenceHtml = self._renderCourseExSentence(sentence, inputId);
       }
 
-      return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
+      var tickBtnHtml = '';
+      if (isTickItem) {
+        var tBtnGroup = inputId + '_tick';
+        tickBtnHtml = '<div class="cu-tick-row">' +
+          '<button class="cu-yn-btn cu-tick-ok-btn" data-group="' + tBtnGroup +
+            '" data-yn="OK" onclick="BentoGrid._selectCuTick(this)" type="button">' +
+            '<span class="material-symbols-outlined" style="font-size:1em;vertical-align:-0.15em">check</span> OK' +
+          '</button>' +
+        '</div>';
+      }
+
+      return '<div class="cu-ex-item' + (isTickItem ? ' cu-tick-item' : '') + '" data-answer="' + self._escapeHTML(answer) + '">' +
         '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
         contextHtml +
         '<div class="cu-ex-sentence">' + sentenceHtml + '</div>' +
+        tickBtnHtml +
         '<div class="cu-ex-foot">' +
           '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
         '</div>' +

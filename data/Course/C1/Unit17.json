@@ -290,7 +290,8 @@
           "sentence": "Sentence 1, 4, 6, 10, 11, 12, 13: cannot be replaced by that (non-defining clauses, after prepositions, or 'what')",
           "answer": "Not possible"
         }
-      ]
+      ],
+      "yn": true
     },
     {
       "type": "exercise",
@@ -325,7 +326,8 @@
           "sentence": "Sentence 1, 4, 6, 9, 10, 11, 12, 13: cannot be omitted",
           "answer": "Not possible"
         }
-      ]
+      ],
+      "yn": true
     },
     {
       "type": "exercise",
@@ -564,7 +566,8 @@
           "sentence": "We were reminded that we were **to return / returning** the signed forms by the following Friday.",
           "answer": "to return"
         }
-      ]
+      ],
+      "multiSelect": true
     },
     {
       "type": "exercise",
@@ -628,52 +631,102 @@
       "items": [
         {
           "sentence": "1 ...... experienced coaches and seasoned athletes predicted that the solo crossing would end in failure, the young adventurer set off alone across the Pacific.",
-          "options": ["Despite", "While", "However", "In spite"],
+          "options": [
+            "Despite",
+            "While",
+            "However",
+            "In spite"
+          ],
           "answer": "While"
         },
         {
           "sentence": "2 She battled fierce storms and repeated equipment failures, ...... , and nearly abandoned the attempt on several occasions.",
-          "options": ["whereas", "although", "however", "despite"],
+          "options": [
+            "whereas",
+            "although",
+            "however",
+            "despite"
+          ],
           "answer": "however"
         },
         {
           "sentence": "3 Determined ...... she was, there were moments when giving up felt like the only sensible course of action.",
-          "options": ["as", "for", "with", "so"],
+          "options": [
+            "as",
+            "for",
+            "with",
+            "so"
+          ],
           "answer": "as"
         },
         {
           "sentence": "4 ...... battling severe exhaustion and a painful injury, she maintained a meticulous logbook every single day at sea.",
-          "options": ["However", "Whereas", "Although", "Despite"],
+          "options": [
+            "However",
+            "Whereas",
+            "Although",
+            "Despite"
+          ],
           "answer": "Despite"
         },
         {
           "sentence": "5 Her story doesn't end with the crossing, ...... .",
-          "options": ["even if", "even though", "although", "though"],
+          "options": [
+            "even if",
+            "even though",
+            "although",
+            "though"
+          ],
           "answer": "though"
         },
         {
           "sentence": "6 ...... her having spent over two hundred days at sea in complete isolation, she displayed no signs of lasting psychological damage.",
-          "options": ["in spite of", "although", "however", "while"],
+          "options": [
+            "in spite of",
+            "although",
+            "however",
+            "while"
+          ],
           "answer": "in spite of"
         },
         {
           "sentence": "7 She noted that ...... some days were filled with despair, others brought unexpected moments of profound calm.",
-          "options": ["nevertheless", "whereas", "in spite of", "however"],
+          "options": [
+            "nevertheless",
+            "whereas",
+            "in spite of",
+            "however"
+          ],
           "answer": "whereas"
         },
         {
           "sentence": "8 ...... the psychologist found her account difficult to believe at first, a subsequent investigation confirmed her observations.",
-          "options": ["In spite", "However", "Even though", "Despite"],
+          "options": [
+            "In spite",
+            "However",
+            "Even though",
+            "Despite"
+          ],
           "answer": "Even though"
         },
         {
           "sentence": "9 ...... as they tried, researchers were unable to fully explain why her psychological resilience proved so exceptional.",
-          "options": ["Most", "More", "Much", "Many"],
+          "options": [
+            "Most",
+            "More",
+            "Much",
+            "Many"
+          ],
           "answer": "Much"
         },
         {
           "sentence": "10 Even ...... one believes that human beings are fundamentally resilient, rowing across an ocean alone for two hundred days pushes that conviction to its very limits.",
-          "options": ["so", "if", "though", "that"],
+          "options": [
+            "so",
+            "if",
+            "though",
+            "that"
+          ],
           "answer": "if"
         }
       ]
@@ -762,7 +815,8 @@
           "sentence": "Even (15) ...... every step of the treatment has been followed correctly, there is no guarantee that the original colours or text will ever be fully restored.",
           "answer": "if"
         }
-      ]
+      ],
+      "continuousText": true
     }
   ]
 }
