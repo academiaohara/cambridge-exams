@@ -375,7 +375,8 @@
           "sentence": "Because it was a family celebration, the children **could / were allowed to** stay up until ten o'clock.",
           "answer": "were allowed to"
         }
-      ]
+      ],
+      "multiSelect": true
     },
     {
       "type": "exercise",
@@ -586,7 +587,16 @@
           "answer": "got"
         }
       ],
-      "words": ["doesn't", "got", "had", "has", "have", "must", "needn't", "will"]
+      "words": [
+        "doesn't",
+        "got",
+        "had",
+        "has",
+        "have",
+        "must",
+        "needn't",
+        "will"
+      ]
     },
     {
       "type": "exercise",
@@ -649,7 +659,8 @@
           "sentence": "you (15) ...... better brace yourselves, because we will find out the truth.",
           "answer": "had"
         }
-      ]
+      ],
+      "noPaginate": true
     },
     {
       "type": "exercise",
@@ -756,52 +767,102 @@
       "items": [
         {
           "sentence": "Even in a thousand years, we ............... reverse the effects of climate change without radical action.",
-          "options": ["A couldn't", "B can't", "C won't be able to", "D aren't able to"],
+          "options": [
+            "A couldn't",
+            "B can't",
+            "C won't be able to",
+            "D aren't able to"
+          ],
           "answer": "C"
         },
         {
           "sentence": "I ............... at the confidential notes on the manager's desk, but I decided against it.",
-          "options": ["A could look", "B can look", "C can have looked", "D could have looked"],
+          "options": [
+            "A could look",
+            "B can look",
+            "C can have looked",
+            "D could have looked"
+          ],
           "answer": "D"
         },
         {
           "sentence": "............... Sofia better explain to her tutor what went wrong?",
-          "options": ["A Mustn't", "B Oughtn't", "C Shouldn't", "D Hadn't"],
+          "options": [
+            "A Mustn't",
+            "B Oughtn't",
+            "C Shouldn't",
+            "D Hadn't"
+          ],
           "answer": "D"
         },
         {
           "sentence": "You ............... have at least informed us you were switching to a different supplier.",
-          "options": ["A may", "B could", "C would", "D will"],
+          "options": [
+            "A may",
+            "B could",
+            "C would",
+            "D will"
+          ],
           "answer": "B"
         },
         {
           "sentence": "............... presentations at your college?",
-          "options": ["A Haven't students got to have delivered", "B Needn't students have delivered", "C Mustn't students to deliver", "D Don't students have to deliver"],
+          "options": [
+            "A Haven't students got to have delivered",
+            "B Needn't students have delivered",
+            "C Mustn't students to deliver",
+            "D Don't students have to deliver"
+          ],
           "answer": "D"
         },
         {
           "sentence": "We ............... as well try to donate these old textbooks before recycling them.",
-          "options": ["A could", "B should", "C might", "D can"],
+          "options": [
+            "A could",
+            "B should",
+            "C might",
+            "D can"
+          ],
           "answer": "C"
         },
         {
           "sentence": "The committee may well not ............... about the budget changes yet.",
-          "options": ["A tell", "B to tell", "C have told", "D have been told"],
+          "options": [
+            "A tell",
+            "B to tell",
+            "C have told",
+            "D have been told"
+          ],
           "answer": "D"
         },
         {
           "sentence": "It is vital that all personal data ............... be encrypted before storage.",
-          "options": ["A should", "B would", "C ought to", "D had better"],
+          "options": [
+            "A should",
+            "B would",
+            "C ought to",
+            "D had better"
+          ],
           "answer": "A"
         },
         {
           "sentence": "Fortunately I ............... a new travel adapter as I found mine in the side pocket of my bag.",
-          "options": ["A needn't have bought", "B didn't need to buy", "C needed not to buy", "D hadn't to buy"],
+          "options": [
+            "A needn't have bought",
+            "B didn't need to buy",
+            "C needed not to buy",
+            "D hadn't to buy"
+          ],
           "answer": "B"
         },
         {
           "sentence": "I'm thinking of auditioning for the talent show; I'd love to ............... perform in front of a live audience one day!",
-          "options": ["A have to", "B must", "C can", "D be able to"],
+          "options": [
+            "A have to",
+            "B must",
+            "C can",
+            "D be able to"
+          ],
           "answer": "D"
         }
       ]
