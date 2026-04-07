@@ -368,7 +368,8 @@
           "sentence": "She admits she has never been particularly passionate about **politic / politics**.",
           "answer": "politics"
         }
-      ]
+      ],
+      "multiSelect": true
     },
     {
       "type": "exercise",
@@ -522,7 +523,26 @@
           "sentence": "Let me tear off a **lump** of paper so you can write the address down.",
           "answer": "sheet / piece"
         }
-      ]
+      ],
+      "words": [
+        "bar",
+        "blade",
+        "block",
+        "breath",
+        "bunch",
+        "drop",
+        "flock",
+        "herd",
+        "loaf",
+        "lump",
+        "pack",
+        "pair",
+        "piece",
+        "sheet",
+        "slice",
+        "speck"
+      ],
+      "useWordSelect": true
     },
     {
       "type": "exercise",
@@ -701,7 +721,8 @@
           "sentence": "We've still got **most / plenty / a lot / lots / lot** of work to do before the deadline.",
           "answer": "plenty / a lot / lots"
         }
-      ]
+      ],
+      "multiSelect": true
     },
     {
       "type": "exercise",
@@ -886,7 +907,8 @@
           "sentence": "Certainly, the (16) ...... creative industry — be it photography, illustration or graphic design — is under immense pressure, but there is still a vast (17) ...... of money to be made from original commissions.",
           "answer": "whole, amount"
         }
-      ]
+      ],
+      "continuous": true
     }
   ]
 }
