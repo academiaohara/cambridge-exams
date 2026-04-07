@@ -3249,3 +3249,29 @@
     grid-column: 1;
   }
 }
+
+/* Error-correction OK chip button inside hint pills */
+.cu-ok-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #dcfce7;
+  border: 1.5px solid #86efac;
+  border-radius: 10px;
+  padding: 1px 8px;
+  color: #15803d;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1.5;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.cu-ok-chip:hover {
+  background: #bbf7d0;
+  border-color: #4ade80;
+}
+.cu-ok-chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
