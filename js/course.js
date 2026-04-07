@@ -1834,9 +1834,11 @@
         }
       }
 
-      // Post-process: when no interactive elements and there is a bold word, convert it
-      // to an inline hint-gap pill (hint = bold word + input together), as in Exercise F
+      // Post-process: when no interactive elements and there are bold words, convert them
+      // to inline hint-gap pills (hint = bold word + input together), as in Exercise F
       // style error-correction where the incorrect bold word acts as the hint.
+      // All bold items are converted (no break) so sentences with multiple numbered
+      // error-correction targets (e.g. Exercise G) get one input pill per bold phrase.
       var hasInteractive = parts.some(function(p) {
         return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-wf' || p.type === 'options';
       });
@@ -1845,7 +1847,23 @@
           if (parts[bpi].type === 'bold') {
             parts[bpi] = { type: 'hint-gap', num: null, hint: parts[bpi].val };
             hasInteractive = true;
-            break;
+          }
+        }
+      }
+
+      // Post-process: extract a leading "(N)" from the text part immediately before each
+      // hint-gap pill (with no number yet) so the number is displayed inside the pill.
+      // This handles error-correction sentences like "(2) **hadSeen** ..." where the item
+      // number should appear as the pill's num badge rather than as plain text.
+      for (var npi = 1; npi < parts.length; npi++) {
+        if (parts[npi].type === 'hint-gap' && parts[npi].num === null) {
+          var prevPart = parts[npi - 1];
+          if (prevPart && prevPart.type === 'text') {
+            var numPrefixMatch = prevPart.val.match(/([\s\S]*)\s*\((\d+)\)\s*$/);
+            if (numPrefixMatch) {
+              parts[npi].num = numPrefixMatch[2];
+              prevPart.val = numPrefixMatch[1];
+            }
           }
         }
       }
