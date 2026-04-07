@@ -958,9 +958,39 @@
             if (questions.length) html += self._renderCuExFooter(secId);
           } else if (ex.type === 'sync') {
             // One-word-for-three-sentences with synced inputs (e.g. Exercise I)
-            html += '<div class="cu-ex-items">';
-            html += self._renderCuSyncItems(questions, idBase, secId);
-            html += '</div>';
+            if (questions.length <= CU_PAGE_SIZE) {
+              html += '<div class="cu-ex-items">';
+              html += self._renderCuSyncItems(questions, idBase, secId);
+              html += '</div>';
+            } else {
+              // Paginated rendering for larger sets
+              var syncPages = [];
+              for (var spi = 0; spi < questions.length; spi += CU_PAGE_SIZE) {
+                syncPages.push(questions.slice(spi, spi + CU_PAGE_SIZE));
+              }
+              html += '<nav class="cu-ex-page-dots" aria-label="Exercise pages">';
+              for (var spj = 0; spj < syncPages.length; spj++) {
+                html += '<button class="cu-ex-pdot' + (spj === 0 ? ' cu-ex-pdot-active' : '') + '" ' +
+                  'onclick="BentoGrid._cuExGoToPage(\'' + secId + '\',' + spj + ')" ' +
+                  (spj === 0 ? 'aria-current="true" ' : 'aria-current="false" ') +
+                  'aria-label="Parte ' + (spj + 1) + '"></button>';
+              }
+              html += '</nav>';
+              syncPages.forEach(function(pageQs, pageIdx) {
+                var startOffset = pageIdx * CU_PAGE_SIZE;
+                html += '<div class="cu-ex-page' + (pageIdx === 0 ? ' cu-ex-page-active' : '') + '">' +
+                  '<div class="cu-ex-items">';
+                html += self._renderCuSyncItems(pageQs, idBase + '-sp' + pageIdx, secId, startOffset);
+                html += '</div>';
+                if (pageIdx < syncPages.length - 1) {
+                  var syncRemaining = syncPages.length - pageIdx - 1;
+                  html += '<button class="cu-ex-page-more" type="button" onclick="BentoGrid._cuExGoToPage(\'' + secId + '\',' + (pageIdx + 1) + ')">' +
+                    '<span class="material-symbols-outlined">expand_circle_down</span> ' +
+                    syncRemaining + ' more part' + (syncRemaining > 1 ? 's' : '') + '</button>';
+                }
+                html += '</div>';
+              });
+            }
             if (questions.length) html += self._renderCuExFooter(secId);
           } else if (ex.type === 'mc-inline') {
             // Inline multiple-choice: numbered gaps open a modal (e.g. Exercise C, E)
@@ -1380,15 +1410,17 @@
     },
 
     // --- Sync-input exercise renderer (one word for 3 sentences) ---
-    _renderCuSyncItems: function(questions, idBase, secId) {
+    _renderCuSyncItems: function(questions, idBase, secId, offset) {
       var self = this;
       if (!questions || !questions.length) return '';
+      var startNum = offset || 0;
       var html = '';
       questions.forEach(function(item, idx) {
-        var syncGroup = idBase + '-sync-' + idx;
+        var globalIdx = startNum + idx;
+        var syncGroup = idBase + '-sync-' + globalIdx;
         var sentences = Array.isArray(item.sentences) ? item.sentences : (item.sentence || '').split('\n');
         html += '<div class="cu-ex-item cu-sync-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
-          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          '<div class="cu-ex-num-badge">' + (globalIdx + 1) + '</div>' +
           '<div class="cu-sync-sentences">';
         sentences.forEach(function(sent, sIdx) {
           var gapId = syncGroup + '-g' + sIdx;
@@ -1520,8 +1552,8 @@
       // Format A (old): …(N)… (WORD)
       // Format B (new): (N) ___ or (N) ......
       var passageHtml = self._escapeHTML(passage)
-        .replace(/…\((\d+)\)…\s*\(([A-Z]+)\)/g, function(_, num) {
-          return makeGapPill(parseInt(num), hintMap[parseInt(num)] || null);
+        .replace(/…\((\d+)\)…\s*\(([A-Z]+)\)/g, function(_, num, hintWordInPassage) {
+          return makeGapPill(parseInt(num), hintWordInPassage || hintMap[parseInt(num)] || null);
         })
         .replace(/\((\d+)\)\s*(?:_{2,}|[.…]{5,})/g, function(_, num) {
           return makeGapPill(parseInt(num), hintMap[parseInt(num)] || null);
@@ -2011,12 +2043,15 @@
     _renderCourseExMCItem: function(sentence, options, inputId) {
       var self = this;
       var oGroupId = inputId + '_mc';
-      // Replace gap markers with interactive pills that update when an option is selected.
+      // Store options for modal access when the gap pill is clicked
+      self._cuMcItemData[oGroupId] = options;
+      // Replace gap markers with interactive pills that open a modal when clicked.
       // Each gap gets a unique ID with a counter suffix to satisfy the uniqueness constraint.
       var pillCounter = 0;
       var sentenceHtml = self._formatTextWithHints(sentence).replace(/[…]{2,}|\.{5,}/g, function() {
         var pillId = oGroupId + '-pill' + pillCounter++;
-        return '<span class="cu-mc-gap-pill" id="' + pillId + '">' + CU_MC_BLANK + '</span>';
+        return '<span class="cu-mc-gap-pill" id="' + pillId + '" role="button" tabindex="0" ' +
+          'onclick="BentoGrid._openCuMcItemModal(\'' + oGroupId + '\',\'' + pillId + '\')">' + CU_MC_BLANK + '</span>';
       });
       // All options point to the first pill (counter resets per sentence, single gap expected for MC)
       var firstPillId = oGroupId + '-pill0';
@@ -2034,6 +2069,54 @@
       });
       optHtml += '</div>';
       return sentenceHtml + optHtml;
+    },
+
+    // Stores options data for MC item gap-pill modals, keyed by oGroupId
+    _cuMcItemData: {},
+
+    _openCuMcItemModal: function(oGroupId, pillId) {
+      var options = BentoGrid._cuMcItemData[oGroupId];
+      if (!options || !options.length) return;
+      var overlay = document.getElementById('exercise-modal-overlay');
+      var body = document.getElementById('modal-body');
+      if (!overlay || !body) return;
+      var html = '<div class="modal-header"><div class="modal-header-row"><p>Select an option</p></div></div>';
+      html += '<div class="options-grid">';
+      options.forEach(function(opt) {
+        var trimmed = opt.trim();
+        var letter = trimmed.charAt(0).toUpperCase();
+        var text = BentoGrid._escapeHTML(trimmed.slice(1).trim());
+        html += '<button class="opt-btn" onclick="BentoGrid._selectMcOptionFromModal(\'' +
+          oGroupId + '\',\'' + pillId + '\',\'' + letter + '\',\'' + text.replace(/'/g, "\\'") + '\')">' +
+          text + '</button>';
+      });
+      html += '</div>';
+      body.innerHTML = html;
+      overlay.style.display = 'flex';
+    },
+
+    _selectMcOptionFromModal: function(oGroupId, pillId, letter, text) {
+      // Update inline option buttons to match selection
+      document.querySelectorAll('.cu-option-btn[data-group="' + oGroupId + '"]').forEach(function(btn) {
+        btn.classList.toggle('cu-option-selected', btn.getAttribute('data-mc-letter') === letter);
+      });
+      // Update the gap pill display
+      var pill = document.getElementById(pillId);
+      if (pill) {
+        pill.textContent = '';
+        pill.classList.add('cu-mc-gap-pill-filled');
+        pill.textContent = text || letter;
+      }
+      // Close modal
+      var overlay = document.getElementById('exercise-modal-overlay');
+      if (overlay) overlay.style.display = 'none';
+      // Save section state
+      var sec = pill ? pill.closest('.cu-section') : null;
+      if (!sec) {
+        var btn = document.querySelector('.cu-option-btn[data-group="' + oGroupId + '"]');
+        if (btn) sec = btn.closest('.cu-section');
+      }
+      if (sec) BentoGrid._saveCuExSectionState(sec);
     },
 
     _selectMcOption: function(btn) {
@@ -2307,14 +2390,6 @@
           pillHtml += '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
           if (p.hint) {
             pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(p.hint) + '</span>';
-          }
-          // Error-correction hint: the hint is the bold word from the original sentence that may
-          // or may not be correct. Word-formation root hints are ALL-CAPS (e.g. "HIGH", "EXTEND"),
-          // so a hint with mixed/lowercase characters and no number badge identifies an
-          // error-correction item where the student can mark the phrase as "OK" (correct as written).
-          var isErrHint = p.hint && !p.num && !/^[A-Z]{2,}$/.test(p.hint.trim());
-          if (isErrHint) {
-            pillHtml += '<button type="button" class="cu-ok-chip" onclick="BentoGrid._fillOkChip(this)" title="Mark as correct (OK)">\u2713 OK</button>';
           }
           pillHtml += '</span>';
           return pillHtml;
