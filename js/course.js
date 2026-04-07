@@ -1500,8 +1500,8 @@
       });
       html += '</div>';
       html += '<div class="cu-drag-zones">';
-      categories.forEach(function(cat) {
-        var zoneId = exId + '-zone-' + cat.replace(/[^a-z0-9]/gi, '_');
+      categories.forEach(function(cat, catIdx) {
+        var zoneId = exId + '-zone-' + catIdx;
         html += '<div class="cu-drag-zone" id="' + zoneId + '" ' +
           'data-category="' + self._escapeHTML(cat) + '" ' +
           'data-ex-id="' + exId + '" ' +
@@ -1552,7 +1552,7 @@
     },
 
     _dragCatClick: function(chip) {
-      if (chip.disabled) return;
+      if (chip.getAttribute('draggable') === 'false') return;
       var exId = chip.getAttribute('data-ex-id');
       var exEl = exId ? document.getElementById(exId) : null;
       if (!exEl) return;
