@@ -44,6 +44,7 @@
         },
         {
           "subtitle": "Common Verbs (1)",
+          "chipStyle": true,
           "items": [
             "agree", "assume", "believe", "claim", "consider", "estimate", "expect", "feel", "find",
             "guarantee", "know", "mean", "presume", "regard", "report", "say", "suppose", "think", "understand"
@@ -51,6 +52,7 @@
         },
         {
           "subtitle": "Common Verbs (2)",
+          "chipStyle": true,
           "items": [
             "accept", "agree", "argue", "assume", "believe", "calculate", "claim", "consider",
             "estimate", "expect", "feel", "know", "presume", "report", "say", "suggest", "suppose", "think", "understand"
@@ -189,17 +191,17 @@
       "instructions": "If the verb in bold is correct, put a tick. If it is incorrect, rewrite it correctly.",
       "items": [
         { "sentence": "Could you clarify when the research grant **was been approved**?", "answer": "was approved" },
-        { "sentence": "When the competition winner **was finally announced**, the audience erupted in applause.", "answer": "✓" },
+        { "sentence": "When the competition winner **was finally announced**, the audience erupted in applause.", "answer": "OK" },
         { "sentence": "**Has** your reservation at the conference hotel next month **confirmed** by the organising committee?", "answer": "Has been confirmed" },
         { "sentence": "Every delegate who **was been invited** to the summit attended the opening session.", "answer": "was invited" },
         { "sentence": "The ballpoint pen **invented** in 1938 by László Bíró, a Hungarian-Argentine journalist.", "answer": "was invented" },
         { "sentence": "The proposal **has debated** in the Senate last Tuesday, but no agreement was reached.", "answer": "was debated" },
-        { "sentence": "By the time we arrive at the venue, the luggage **should have been unloaded**.", "answer": "✓" },
+        { "sentence": "By the time we arrive at the venue, the luggage **should have been unloaded**.", "answer": "OK" },
         { "sentence": "The ancient city **was be discovered** by archaeologists during routine excavations in the 1980s.", "answer": "was discovered" },
-        { "sentence": "The charity gala **had been organised** months before, yet several issues still arose on the day.", "answer": "✓" },
+        { "sentence": "The charity gala **had been organised** months before, yet several issues still arose on the day.", "answer": "OK" },
         { "sentence": "After **be examined** by the specialist, she was permitted to leave the clinic.", "answer": "being examined" },
         { "sentence": "We boarded the vessel and **were directing** to our quarters by the first officer.", "answer": "were directed" },
-        { "sentence": "The new library **is to be inaugurated** by a well-known scientist next Friday.", "answer": "✓" }
+        { "sentence": "The new library **is to be inaugurated** by a well-known scientist next Friday.", "answer": "OK" }
       ]
     },
     {
@@ -241,12 +243,13 @@
       "type": "exercise",
       "title": "D: Error Correction (Sydney Opera House Text)",
       "instructions": "Each sentence contains one verb in the wrong form. Underline the incorrect word or phrase and rewrite it correctly.",
+      "continuous": true,
       "items": [
         { "sentence": "The Sydney Opera House, situated on the shores of Sydney Harbour, **has called** one of the most recognisable architectural landmarks in the modern world.", "answer": "is called" },
         { "sentence": "The peninsula on which the building stands **sold** to the city authorities at the turn of the twentieth century.", "answer": "was sold" },
         { "sentence": "...designed to house world-class performances, **was named** after the surrounding harbour precinct...", "answer": "being named / and was named" },
         { "sentence": "...the main auditorium, which **has later renamed** the Concert Hall, can accommodate an audience of over 2,600.", "answer": "was later renamed" },
-        { "sentence": "...ensuring that theatregoers could **be transported** directly from the central business district by ferry in just minutes.", "answer": "✓" },
+        { "sentence": "...ensuring that theatregoers could **been transported** directly from the central business district by ferry in just minutes.", "answer": "be transported" },
         { "sentence": "Two additional rehearsal spaces... **have been completed** before the complex officially opened its doors to the public.", "answer": "had been completed" },
         { "sentence": "...a dedicated outdoor stage **has been incorporated** into the design, provided that sufficient funds could be raised.", "answer": "would be incorporated" }
       ]
@@ -268,16 +271,16 @@
       "title": "F: Causative Error Correction",
       "instructions": "If the word or phrase in bold is correct, put a tick. If it is incorrect, rewrite it correctly.",
       "items": [
-        { "sentence": "We ended up having it **replaced** twice! (1)", "answer": "✓" },
-        { "sentence": "Well, we got **delivered it** to our door on the very first morning. (2)", "answer": "got it delivered" },
-        { "sentence": "We decided to have it **check** straight away... (3)", "answer": "have it checked" },
-        { "sentence": "Oh, I didn't know you'd **had them do** that. (4)", "answer": "✓" },
-        { "sentence": "We had my neighbour **to take** a look at it. (5)", "answer": "had my neighbour take a look" },
-        { "sentence": "Did you have the contractor **to come** to inspect it? (6)", "answer": "have the contractor come" },
-        { "sentence": "We got my cousin **to working** on it. (7)", "answer": "got my cousin working" },
-        { "sentence": "I bet he soon had **running it** properly. (8)", "answer": "had it running" },
-        { "sentence": "...we still had to get the contractor **come** back out in the end... (9)", "answer": "get the contractor to come" },
-        { "sentence": "You should get them **to offer** you a partial refund. (10)", "answer": "✓" }
+        { "sentence": "We ended up having it **replaced** twice!", "answer": "OK" },
+        { "sentence": "Well, we got **delivered it** to our door on the very first morning.", "answer": "got it delivered" },
+        { "sentence": "We decided to have it **check** straight away...", "answer": "have it checked" },
+        { "sentence": "Oh, I didn't know you'd **had them do** that.", "answer": "OK" },
+        { "sentence": "We had my neighbour **to take** a look at it.", "answer": "had my neighbour take a look" },
+        { "sentence": "Did you have the contractor **to come** to inspect it?", "answer": "have the contractor come" },
+        { "sentence": "We got my cousin **to working** on it.", "answer": "got my cousin working" },
+        { "sentence": "I bet he soon had **running it** properly.", "answer": "had it running" },
+        { "sentence": "...we still had to get the contractor **come** back out in the end...", "answer": "get the contractor to come" },
+        { "sentence": "You should get them **to offer** you a partial refund.", "answer": "OK" }
       ]
     },
     {
@@ -317,16 +320,106 @@
       "title": "I: Multiple Choice",
       "instructions": "Choose the correct answer.",
       "items": [
-        { "sentence": "When Rosa appeared on stage, she soon ...... at her witty remarks.", "answer": "C had everyone laughing" },
-        { "sentence": "The authorities must ...... decisive action against illegal dumping.", "answer": "D be seen to be taking" },
-        { "sentence": "Mr Harrison asked me to tell you that he would like ...... by noon at the latest.", "answer": "A the reports sent" },
-        { "sentence": "Taking up yoga ...... , but I wasn't particularly convinced.", "answer": "C was suggested to me" },
-        { "sentence": "There ...... between 6,000 and 7,000 languages spoken across the world today.", "answer": "C are said to be" },
-        { "sentence": "...she says she ...... while travelling through the capital.", "answer": "D had her passport stolen" },
-        { "sentence": "Why didn't you ...... you when you relocated to your new office?", "answer": "A have Ben help" },
-        { "sentence": "Sales ...... considerably next quarter...", "answer": "D are expected to rise" },
-        { "sentence": "It's remarkable that this entire building ...... using only recycled materials.", "answer": "C has been constructed" },
-        { "sentence": "As soon as Mum ...... , we can head to the restaurant.", "answer": "B has got the car started" }
+        { 
+          "sentence": "When Rosa appeared on stage, she soon ...... at her witty remarks.", 
+          "answer": "C",
+          "options": [
+            "A made everyone laugh",
+            "B got everyone to laugh",
+            "C had everyone laughing",
+            "D had everyone to laugh"
+          ]
+        },
+        {
+          "sentence": "The authorities must ...... decisive action against illegal dumping.",
+          "answer": "D",
+          "options": [
+            "A be taking",
+            "B take seen to",
+            "C see to take",
+            "D be seen to be taking"
+          ]
+        },
+        {
+          "sentence": "Mr Harrison asked me to tell you that he would like ...... by noon at the latest.",
+          "answer": "A",
+          "options": [
+            "A the reports sent",
+            "B to send the reports",
+            "C the reports sending",
+            "D to have sent the reports"
+          ]
+        },
+        {
+          "sentence": "Taking up yoga ...... , but I wasn't particularly convinced.",
+          "answer": "C",
+          "options": [
+            "A suggested to me",
+            "B was suggesting to me",
+            "C was suggested to me",
+            "D had been suggested me"
+          ]
+        },
+        {
+          "sentence": "There ...... between 6,000 and 7,000 languages spoken across the world today.",
+          "answer": "C",
+          "options": [
+            "A is known to have",
+            "B have been said to be",
+            "C are said to be",
+            "D are being reported"
+          ]
+        },
+        {
+          "sentence": "...she says she ...... while travelling through the capital.",
+          "answer": "D",
+          "options": [
+            "A had stolen her passport",
+            "B got her passport to be stolen",
+            "C had her passport be stolen",
+            "D had her passport stolen"
+          ]
+        },
+        {
+          "sentence": "Why didn't you ...... you when you relocated to your new office?",
+          "answer": "A",
+          "options": [
+            "A have Ben help",
+            "B make Ben to help",
+            "C get Ben helping",
+            "D have Ben to help"
+          ]
+        },
+        {
+          "sentence": "Sales ...... considerably next quarter...",
+          "answer": "D",
+          "options": [
+            "A are believed rising",
+            "B have expected to rise",
+            "C are thought rising",
+            "D are expected to rise"
+          ]
+        },
+        {
+          "sentence": "It's remarkable that this entire building ...... using only recycled materials.",
+          "answer": "C",
+          "options": [
+            "A was constructing",
+            "B built",
+            "C has been constructed",
+            "D had been constructing"
+          ]
+        },
+        {
+          "sentence": "As soon as Mum ...... , we can head to the restaurant.",
+          "answer": "B",
+          "options": [
+            "A will start the car",
+            "B has got the car started",
+            "C will have the car starting",
+            "D gets the car to start"
+          ]
+        }
       ]
     },
     {

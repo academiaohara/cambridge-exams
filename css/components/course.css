@@ -3249,3 +3249,28 @@
     grid-column: 1;
   }
 }
+
+/* ── Drag-category exercise (Exercise G/M style) ──────────────────────────── */
+.cu-drag-category-exercise { display: flex; flex-direction: column; gap: 12px; }
+.cu-drag-pool { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 12px; background: var(--bg-2, #f5f5f5); border-radius: 8px; min-height: 44px; }
+.cu-drag-chip { display: inline-flex; align-items: center; padding: 5px 12px; background: var(--accent, #1976d2); color: #fff; border-radius: 20px; font-size: 0.88rem; font-weight: 500; cursor: grab; user-select: none; transition: opacity .15s, box-shadow .15s; }
+.cu-drag-chip:active { cursor: grabbing; opacity: .8; }
+.cu-drag-zones { display: flex; gap: 12px; flex-wrap: wrap; }
+.cu-drag-zone { flex: 1 1 120px; border: 2px dashed var(--border, #ccc); border-radius: 8px; padding: 8px; min-height: 60px; transition: border-color .15s, background .15s; }
+.cu-drag-zone-label { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted, #888); margin-bottom: 6px; }
+.cu-drag-zone-items { display: flex; flex-wrap: wrap; gap: 6px; min-height: 32px; }
+.cu-drag-zone-over { border-color: var(--accent, #1976d2); background: var(--accent-light, #e3f0fb); }
+.cu-drag-chip-correct { background: var(--correct, #2e7d32) !important; }
+.cu-drag-chip-incorrect { background: var(--incorrect, #c62828) !important; }
+.cu-drag-chip-unplaced { background: var(--text-muted, #888) !important; }
+
+/* ── Grouped exercise (Exercise A/B style) ────────────────────────────────── */
+.cu-grouped-exercise { display: flex; flex-direction: column; gap: 16px; }
+.cu-group-section { display: flex; flex-direction: column; gap: 8px; }
+.cu-group-wordbank { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px 10px; background: var(--bg-2, #f5f5f5); border-radius: 8px; font-size: .88rem; }
+.cu-group-wordbank .material-symbols-outlined { font-size: 1.1rem; color: var(--text-muted, #888); flex-shrink: 0; }
+
+/* ── Passage-input exercise (Exercise C style) ────────────────────────────── */
+.cu-pi-gap-wrap { display: inline; }
+.cu-pi-pill { display: inline-flex; align-items: center; gap: 2px; }
+.cu-pi-input { min-width: 60px; max-width: 160px; }

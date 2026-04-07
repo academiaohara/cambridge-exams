@@ -126,73 +126,121 @@
       { "idiom": "take the scenic route", "meaning": "follow a longer path than the usual one because it is more attractive" }
     ],
     "word_formation": [
-      { "base": "access", "other": ["accessibility", "(in)accessible"] },
-      { "base": "come", "other": ["overcome", "comeback", "newcomer", "outcome", "income", "coming", "oncoming", "incoming"] },
-      { "base": "go", "other": ["undergo", "underwent", "undergone", "for(e)go", "for(e)went", "for(e)gone", "ongoing", "outgoing"] },
-      { "base": "land", "other": ["landing", "landed", "landless"] },
-      { "base": "mobile", "other": ["(im)mobilise", "(im)mobility", "mobilisation", "immobile"] },
-      { "base": "motion", "other": ["motionless"] },
-      { "base": "move", "other": ["mover", "movement", "(im)movable", "moving"] },
-      { "base": "pass", "other": ["passage", "(im)passable", "passing"] },
-      { "base": "progress", "other": ["progression", "progressive(ly)"] },
-      { "base": "rapid", "other": ["rapidly", "rapidity"] },
-      { "base": "speed", "other": ["speed", "speeding", "speedy", "speedily"] },
-      { "base": "stable", "other": ["(de)stabilise", "(in)stability", "destabilisation", "stabiliser", "(de)stabilising", "unstable"] },
-      { "base": "stand", "other": ["withstand", "withstood", "standing", "upstanding", "outstanding", "notwithstanding"] },
-      { "base": "steady", "other": ["unsteady", "(un)steadily"] },
-      { "base": "transit", "other": ["transition", "transitory", "transitional", "transitionally"] },
-      { "base": "up", "other": ["upper", "uppermost", "upright", "upward(s)", "upwardly"] }
+      { "base": "access", "noun": ["accessibility"], "adjective": ["(in)accessible"] },
+      { "base": "come", "verb": ["overcome"], "noun": ["comeback", "newcomer", "outcome", "income"], "adjective": ["oncoming", "incoming", "coming"] },
+      { "base": "go", "verb": ["undergo", "for(e)go"], "adjective": ["ongoing", "outgoing"] },
+      { "base": "land", "noun": ["landing"], "adjective": ["landed", "landless"] },
+      { "base": "mobile", "verb": ["(im)mobilise"], "noun": ["(im)mobility", "mobilisation"], "adjective": ["immobile"] },
+      { "base": "motion", "adjective": ["motionless"] },
+      { "base": "move", "noun": ["mover", "movement"], "adjective": ["(im)movable", "moving"] },
+      { "base": "pass", "noun": ["passage", "passing"], "adjective": ["(im)passable"] },
+      { "base": "progress", "noun": ["progression"], "adjective": ["progressive"], "adverb": ["progressively"] },
+      { "base": "rapid", "noun": ["rapidity"], "adverb": ["rapidly"] },
+      { "base": "speed", "noun": ["speeding"], "adjective": ["speedy"], "adverb": ["speedily"] },
+      { "base": "stable", "verb": ["(de)stabilise"], "noun": ["(in)stability", "destabilisation", "stabiliser"], "adjective": ["unstable"] },
+      { "base": "stand", "verb": ["withstand"], "noun": ["standing", "notwithstanding"], "adjective": ["upstanding", "outstanding"] },
+      { "base": "steady", "adjective": ["unsteady"], "adverb": ["(un)steadily"] },
+      { "base": "transit", "noun": ["transition"], "adjective": ["transitory", "transitional"], "adverb": ["transitionally"] },
+      { "base": "up", "adjective": ["upper", "uppermost", "upright"], "adverb": ["upward(s)", "upwardly"] }
     ],
     "exercises": {
       "A": {
         "title": "Complete using the correct form of the words in the boxes",
         "instructions": "Complete the sentences with the correct form of the words provided.",
-        "questions": [
-          { "sentence": "She ...... her umbrella from the coat stand and ran out into the rain.", "answer": "grabbed", "options": ["clench", "clutch", "fumble", "gesture", "grab", "grasp", "point", "punch", "wave"] },
-          { "sentence": "The actor ...... nervously with his script backstage, unable to remember his opening lines.", "answer": "fumbled", "options": ["clench", "clutch", "fumble", "gesture", "grab", "grasp", "point", "punch", "wave"] },
-          { "sentence": "A woman rushed into the emergency room, ...... a small child to her chest.", "answer": "clutching", "options": ["clench", "clutch", "fumble", "gesture", "grab", "grasp", "point", "punch", "wave"] },
-          { "sentence": "The tour guide ...... towards the ancient ruins and began to explain their historical significance.", "answer": "pointed", "options": ["clench", "clutch", "fumble", "gesture", "grab", "grasp", "point", "punch", "wave"] },
-          { "sentence": "The crowd ...... enthusiastically as the parade passed down the main street.", "answer": "waved", "options": ["clench", "clutch", "fumble", "gesture", "grab", "grasp", "point", "punch", "wave"] },
-          { "sentence": "The security footage showed that someone had ...... the door intercom and broken it.", "answer": "punched", "options": ["clench", "clutch", "fumble", "gesture", "grab", "grasp", "point", "punch", "wave"] },
-          { "sentence": "Without looking up from her laptop, my colleague ...... vaguely towards the filing cabinet.", "answer": "gestured", "options": ["clench", "clutch", "fumble", "gesture", "grab", "grasp", "point", "punch", "wave"] },
-          { "sentence": "He ...... his jaw and said nothing, trying hard to appear calm.", "answer": "clenched", "options": ["clench", "clutch", "fumble", "gesture", "grab", "grasp", "point", "punch", "wave"] },
-          { "sentence": "She ...... the handrail tightly as the ship lurched in the storm.", "answer": "grasped", "options": ["clench", "clutch", "fumble", "gesture", "grab", "grasp", "point", "punch", "wave"] },
-          { "sentence": "The cat ...... silently under the fence and disappeared into the neighbour's garden.", "answer": "crept", "options": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"] },
-          { "sentence": "She hurt her ankle slightly but managed to ...... to the nearby bench.", "answer": "hop", "options": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"] },
-          { "sentence": "I ...... along the riverbank every evening to clear my head after work.", "answer": "jog", "options": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"] },
-          { "sentence": "Please ...... this way and someone will show you to your table.", "answer": "step", "options": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"] },
-          { "sentence": "As soon as the bell rang, all the students ...... for the exit.", "answer": "dashed", "options": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"] },
-          { "sentence": "The baby had just learnt to ...... and was exploring every corner of the room.", "answer": "crawl", "options": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"] },
-          { "sentence": "The protesters ...... through the city centre holding banners and chanting slogans.", "answer": "marched", "options": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"] },
-          { "sentence": "The detective ...... into the room and demanded to know what had happened.", "answer": "strode", "options": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"] },
-          { "sentence": "The goalkeeper ...... to his right and managed to tip the ball over the bar.", "answer": "leapt", "options": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"] },
-          { "sentence": "The little girl ...... happily down the path, humming a tune to herself.", "answer": "skipped", "options": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"] },
-          { "sentence": "The hot air balloon had been ...... for hours after losing radio contact.", "answer": "drifting", "options": ["drift", "roam", "wander"] },
-          { "sentence": "Herds of wild horses ...... across the open plains in this region.", "answer": "roam", "options": ["drift", "roam", "wander"] },
-          { "sentence": "After the conference ended early, I ...... round the old part of the city for a while.", "answer": "wandered", "options": ["drift", "roam", "wander"] },
-          { "sentence": "He ...... on the wet tiles and knocked over a display stand.", "answer": "slipped", "options": ["skid", "slide", "slip", "trip"] },
-          { "sentence": "The movers decided it would be easier to ...... the heavy boxes down the ramp.", "answer": "slide", "options": ["skid", "slide", "slip", "trip"] },
-          { "sentence": "I ...... over the extension cord and nearly fell flat on my face.", "answer": "tripped", "options": ["skid", "slide", "slip", "trip"] },
-          { "sentence": "When the deer ran across the road, the cyclist braked hard and ...... on the gravel.", "answer": "skidded", "options": ["skid", "slide", "slip", "trip"] }
+        "type": "grouped",
+        "groups": [
+          {
+            "words": ["clench", "clutch", "fumble", "gesture", "grab", "grasp", "point", "punch", "wave"],
+            "questions": [
+              { "sentence": "She ...... her umbrella from the coat stand and ran out into the rain.", "answer": "grabbed" },
+              { "sentence": "The actor ...... nervously with his script backstage, unable to remember his opening lines.", "answer": "fumbled" },
+              { "sentence": "A woman rushed into the emergency room, ...... a small child to her chest.", "answer": "clutching" },
+              { "sentence": "The tour guide ...... towards the ancient ruins and began to explain their historical significance.", "answer": "pointed" },
+              { "sentence": "The crowd ...... enthusiastically as the parade passed down the main street.", "answer": "waved" },
+              { "sentence": "The security footage showed that someone had ...... the door intercom and broken it.", "answer": "punched" },
+              { "sentence": "Without looking up from her laptop, my colleague ...... vaguely towards the filing cabinet.", "answer": "gestured" },
+              { "sentence": "He ...... his jaw and said nothing, trying hard to appear calm.", "answer": "clenched" },
+              { "sentence": "She ...... the handrail tightly as the ship lurched in the storm.", "answer": "grasped" }
+            ]
+          },
+          {
+            "words": ["crawl", "creep", "dash", "hop", "jog", "leap", "march", "skip", "step", "stride"],
+            "questions": [
+              { "sentence": "The cat ...... silently under the fence and disappeared into the neighbour's garden.", "answer": "crept" },
+              { "sentence": "She hurt her ankle slightly but managed to ...... to the nearby bench.", "answer": "hop" },
+              { "sentence": "I ...... along the riverbank every evening to clear my head after work.", "answer": "jog" },
+              { "sentence": "Please ...... this way and someone will show you to your table.", "answer": "step" },
+              { "sentence": "As soon as the bell rang, all the students ...... for the exit.", "answer": "dashed" },
+              { "sentence": "The baby had just learnt to ...... and was exploring every corner of the room.", "answer": "crawl" },
+              { "sentence": "The protesters ...... through the city centre holding banners and chanting slogans.", "answer": "marched" },
+              { "sentence": "The detective ...... into the room and demanded to know what had happened.", "answer": "strode" },
+              { "sentence": "The goalkeeper ...... to his right and managed to tip the ball over the bar.", "answer": "leapt" },
+              { "sentence": "The little girl ...... happily down the path, humming a tune to herself.", "answer": "skipped" }
+            ]
+          },
+          {
+            "words": ["drift", "roam", "wander"],
+            "questions": [
+              { "sentence": "The hot air balloon had been ...... for hours after losing radio contact.", "answer": "drifting" },
+              { "sentence": "Herds of wild horses ...... across the open plains in this region.", "answer": "roam" },
+              { "sentence": "After the conference ended early, I ...... round the old part of the city for a while.", "answer": "wandered" }
+            ]
+          },
+          {
+            "words": ["skid", "slide", "slip", "trip"],
+            "questions": [
+              { "sentence": "He ...... on the wet tiles and knocked over a display stand.", "answer": "slipped" },
+              { "sentence": "The movers decided it would be easier to ...... the heavy boxes down the ramp.", "answer": "slide" },
+              { "sentence": "I ...... over the extension cord and nearly fell flat on my face.", "answer": "tripped" },
+              { "sentence": "When the deer ran across the road, the cyclist braked hard and ...... on the gravel.", "answer": "skidded" }
+            ]
+          }
         ]
       },
       "B": {
         "title": "Complete using the words in bold in the correct form",
         "instructions": "Complete each paragraph with the correct form of the words in bold.",
-        "questions": [
-          { "sentence": "I ...... over the rusty fence and landed in the muddy field on the other side. We had ...... to about 1,500 metres when the rain began. The path ahead looked treacherous, and our guide suggested we ...... before conditions got any worse.", "answer": "clambered, ascended, descend", "options": ["ascend", "clamber", "descend"] },
-          { "sentence": "The instructor's voice was calm. Both engines had failed and the aircraft was ...... towards the long, empty beach below. She calculated that without enough ...... she could not make the strip of sand. The only way to ...... was to dive steeply first. She prayed that the air would continue to ...... over the wings, otherwise the nose would ...... without warning. She ...... her landing point and brought the aircraft down safely.", "answer": "gliding, velocity, accelerate, flow, sinking, approached", "options": ["accelerate", "approach", "flow", "glide", "sink", "velocity"] },
-          { "sentence": "The monarch butterfly ...... over four thousand kilometres every autumn, pausing sometimes to ...... on warm thermals above mountain ridges. How it can recall the exact ...... year after year, without ever having made the journey before, remains one of nature's greatest mysteries.", "answer": "migrates, float, route", "options": ["float", "migrate", "route"] },
-          { "sentence": "In cricket, a well-pitched delivery should ...... off the surface at an awkward angle. A spinner can make the ball ...... along its axis as it travels through the air. If the seam catches the ground, it causes the ball to ...... unpredictably, making it hard for the batsman to play a straight shot.", "answer": "bounce, roll, rotates", "options": ["bounce", "roll", "rotate"] },
-          { "sentence": "In the 1970s, many families ...... from South Asia to the UK in search of better opportunities. Life was rarely straightforward for these ...... , who faced language barriers and social challenges. Today, the country also offers protection to ...... who have been forced to flee their homelands due to conflict or persecution.", "answer": "emigrated, immigrants, refugees", "options": ["emigrate", "immigrant", "refugee"] }
+        "type": "grouped",
+        "groups": [
+          {
+            "words": ["ascend", "clamber", "descend"],
+            "questions": [
+              { "sentence": "I ...... over the rusty fence and landed in the muddy field on the other side. We had ...... to about 1,500 metres when the rain began. The path ahead looked treacherous, and our guide suggested we ...... before conditions got any worse.", "answer": "clambered, ascended, descend" }
+            ]
+          },
+          {
+            "words": ["accelerate", "approach", "flow", "glide", "sink", "velocity"],
+            "questions": [
+              { "sentence": "The instructor's voice was calm. Both engines had failed and the aircraft was ...... towards the long, empty beach below. She calculated that without enough ...... she could not make the strip of sand. The only way to ...... was to dive steeply first. She prayed that the air would continue to ...... over the wings, otherwise the nose would ...... without warning. She ...... her landing point and brought the aircraft down safely.", "answer": "gliding, velocity, accelerate, flow, sinking, approached" }
+            ]
+          },
+          {
+            "words": ["float", "migrate", "route"],
+            "questions": [
+              { "sentence": "The monarch butterfly ...... over four thousand kilometres every autumn, pausing sometimes to ...... on warm thermals above mountain ridges. How it can recall the exact ...... year after year, without ever having made the journey before, remains one of nature's greatest mysteries.", "answer": "migrates, float, route" }
+            ]
+          },
+          {
+            "words": ["bounce", "roll", "rotate"],
+            "questions": [
+              { "sentence": "In cricket, a well-pitched delivery should ...... off the surface at an awkward angle. A spinner can make the ball ...... along its axis as it travels through the air. If the seam catches the ground, it causes the ball to ...... unpredictably, making it hard for the batsman to play a straight shot.", "answer": "bounce, roll, rotates" }
+            ]
+          },
+          {
+            "words": ["emigrate", "immigrant", "refugee"],
+            "questions": [
+              { "sentence": "In the 1970s, many families ...... from South Asia to the UK in search of better opportunities. Life was rarely straightforward for these ...... , who faced language barriers and social challenges. Today, the country also offers protection to ...... who have been forced to flee their homelands due to conflict or persecution.", "answer": "emigrated, immigrants, refugees" }
+            ]
+          }
         ]
       },
       "C": {
         "title": "Complete using the correct form of the words in the box",
         "instructions": "Complete the text with the correct form of the words provided.",
         "passage": "HIGH FLYERS ON THE EARLY TRAIN\n\nUrban life changed dramatically when the railway arrived. For the first time, workers could (1) ...... into the city, settling back in a comfortable (2) ...... while the countryside rushed past. Now a new (3) ...... , AirCommute, is pushing that idea further still – offering suburban travellers the chance to fly to work!\n\nFor decades, arriving at work by air meant you were wealthy enough to (4) ...... a private jet or share a company helicopter. AirCommute, which now links (5) ...... across six countries, has turned that notion on its head with fares that compete with rail prices. There is less (6) ...... than you might be used to on longer flights, but the (7) ...... are specially trained to help you stay comfortable on every short hop. And because journey times are so brief, there is absolutely no chance of suffering from (8) ...... ! Log on to aircommute.com today to find out how your morning journey to the office could take off.",
+        "type": "passage-input",
         "answers": ["commute", "carriage", "airline", "charter", "destinations", "legroom", "stewards", "jet lag"],
-        "options": ["airline", "carriage", "charter", "commute", "destination", "jet lag", "legroom", "steward"]
+        "words": ["airline", "carriage", "charter", "commute", "destination", "jet lag", "legroom", "steward"]
       },
       "D": {
         "title": "Circle the correct word or phrase",
@@ -242,18 +290,11 @@
       },
       "G": {
         "title": "Phrasal verbs with similar meaning to 'cordon off'",
-        "type": "yn",
-        "instructions": "Tick the words which could be used to complete the sentence to form phrasal verbs with a similar meaning to 'cordon off'. The road has been ............... off by the emergency services.",
-        "questions": [
-          { "sentence": "block", "answer": "YES" },
-          { "sentence": "close", "answer": "YES" },
-          { "sentence": "line", "answer": "NO" },
-          { "sentence": "fence", "answer": "YES" },
-          { "sentence": "put", "answer": "NO" },
-          { "sentence": "rope", "answer": "YES" },
-          { "sentence": "seal", "answer": "YES" },
-          { "sentence": "take", "answer": "NO" }
-        ]
+        "type": "drag-category",
+        "instructions": "The road has been ............... off by the emergency services. Drag each word to YES (can be used) or NO (cannot be used).",
+        "categories": ["YES", "NO"],
+        "words": ["block", "close", "line", "fence", "put", "rope", "seal", "take"],
+        "answers": { "block": "YES", "close": "YES", "line": "NO", "fence": "YES", "put": "NO", "rope": "YES", "seal": "YES", "take": "NO" }
       },
       "H": {
         "title": "Write one word in each gap (collocations)",
@@ -305,9 +346,8 @@
       "K": {
         "title": "Word formation (The escalator)",
         "instructions": "Use the word given in capitals at the end of the line to form a word that fits in the space.",
-        "passage": "The escalator\n\nIt might seem strange that a device designed to carry people to (1) ...... floors without effort can itself become a source of frustration or even danger. For those with limited (2) ...... , a busy escalator in a crowded station can be effectively (3) ...... at peak times. Such difficulties are real obstacles to be (4) ...... on a daily basis.\n\nThat said, escalators have (5) ...... major improvements since their first appearance in department stores a century ago. They have become (6) ...... more reliable and energy-efficient over time. Modern systems can (7) ...... calculate how much load any mechanism can bear and for how many hours. Passenger safety remains the (8) ...... priority in every stage of the design process.\n\nThe (9) ...... of the steps and handrail is monitored electronically in real time for signs of wear and stress. The entire structure is engineered to (10) ...... the forces generated by thousands of passengers each hour. For urban commuters everywhere, the escalator has become as essential as the train itself.",
-        "answers": ["upper", "mobility", "inaccessible", "overcome", "undergone", "progressively", "rapidly", "uppermost", "movement", "withstand"],
-        "words": ["UP", "MOBILE", "ACCESS", "COME", "GO", "PROGRESS", "RAPID", "UP", "MOVE", "STAND"]
+        "passage": "The escalator\n\nIt might seem strange that a device designed to carry people to …(1)… (UP) floors without effort can itself become a source of frustration or even danger. For those with limited …(2)… (MOBILE) , a busy escalator in a crowded station can be effectively …(3)… (ACCESS) at peak times. Such difficulties are real obstacles to be …(4)… (COME) on a daily basis.\n\nThat said, escalators have …(5)… (GO) major improvements since their first appearance in department stores a century ago. They have become …(6)… (PROGRESS) more reliable and energy-efficient over time. Modern systems can …(7)… (RAPID) calculate how much load any mechanism can bear and for how many hours. Passenger safety remains the …(8)… (UP) priority in every stage of the design process.\n\nThe …(9)… (MOVE) of the steps and handrail is monitored electronically in real time for signs of wear and stress. The entire structure is engineered to …(10)… (STAND) the forces generated by thousands of passengers each hour. For urban commuters everywhere, the escalator has become as essential as the train itself.",
+        "answers": ["upper", "mobility", "inaccessible", "overcome", "undergone", "progressively", "rapidly", "uppermost", "movement", "withstand"]
       },
       "L": {
         "title": "Correct the wrong word",
@@ -325,24 +365,16 @@
       },
       "M": {
         "title": "Negative prefix de-",
-        "type": "yn",
-        "instructions": "The prefix de-, as in destabilise, can be added to some verbs, nouns and adjectives in order to give them a negative meaning. Tick the words below which can be made negative by adding de-.",
-        "questions": [
-          { "sentence": "caffeinated", "answer": "YES" },
-          { "sentence": "direct", "answer": "NO" },
-          { "sentence": "form", "answer": "YES" },
-          { "sentence": "hydrate", "answer": "YES" },
-          { "sentence": "motivate", "answer": "YES" },
-          { "sentence": "regulate", "answer": "YES" },
-          { "sentence": "satisfy", "answer": "NO" },
-          { "sentence": "sensitise", "answer": "YES" },
-          { "sentence": "understand", "answer": "NO" },
-          { "sentence": "value", "answer": "YES" }
-        ]
+        "type": "drag-category",
+        "instructions": "The prefix de-, as in destabilise, can be added to some verbs, nouns and adjectives in order to give them a negative meaning. Drag the words below to YES (can be made negative with de-) or NO (cannot).",
+        "categories": ["YES", "NO"],
+        "words": ["caffeinated", "direct", "form", "hydrate", "motivate", "regulate", "satisfy", "sensitise", "understand", "value"],
+        "answers": { "caffeinated": "YES", "direct": "NO", "form": "YES", "hydrate": "YES", "motivate": "YES", "regulate": "YES", "satisfy": "NO", "sensitise": "YES", "understand": "NO", "value": "YES" }
       },
       "N": {
         "title": "Complete using words formed with de-",
         "instructions": "Complete the sentences using words formed in exercise M.",
+        "words": ["dehydrate", "deregulate", "decaffeinated", "demotivate", "desensitise", "deform", "devalue"],
         "questions": [
           { "sentence": "Long-haul flights can ...... passengers significantly, so it is important to drink plenty of water.", "answer": "dehydrate" },
           { "sentence": "Critics argue that it would be dangerous to ...... the aviation industry without proper safeguards.", "answer": "deregulate" },

@@ -730,6 +730,18 @@
               continue;
             }
 
+            // Chip-style list (e.g. Common Verbs)
+            if (block.chipStyle) {
+              html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
+              html += '<div class="cu-theory-chips">';
+              (block.items || []).forEach(function(item) {
+                html += '<span class="cu-theory-chip">' + self._escapeHTML(item) + '</span>';
+              });
+              html += '</div>';
+              contentIdx++;
+              continue;
+            }
+
             // Default rendering
             if (block.subtitle && !(block.categories && block.categories.length)) {
               html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
@@ -923,7 +935,13 @@
           html += self._renderCuWordBank(ex.words);
           var questions = ex.questions || [];
 
-          if (ex.type === 'yn') {
+          if (ex.type === 'grouped') {
+            html += self._renderCuGroupedExercise(ex, idBase, secId);
+          } else if (ex.type === 'drag-category') {
+            html += self._renderCuDragCategoryExercise(ex, idBase, secId);
+          } else if (ex.type === 'passage-input') {
+            html += self._renderCuPassageInputExercise(ex, idBase, secId);
+          } else if (ex.type === 'yn') {
             // Yes / No exercise (e.g. Exercise N, G)
             html += '<div class="cu-ex-items">';
             html += self._renderCuYnItems(questions, idBase, secId);
@@ -1172,6 +1190,17 @@
         btn.disabled = false;
         btn.classList.remove('cu-yn-selected', 'cu-yn-correct', 'cu-yn-incorrect', 'cu-yn-correct-reveal');
       });
+      // Reset drag-category exercises
+      sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
+        var exId = exEl.id;
+        var pool = document.getElementById(exId + '-pool');
+        exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
+          chip.classList.remove('cu-drag-chip-correct', 'cu-drag-chip-incorrect', 'cu-drag-chip-unplaced');
+          chip.setAttribute('draggable', 'true');
+          chip.style.cursor = '';
+          if (pool) pool.appendChild(chip);
+        });
+      });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
         pill.classList.remove('cu-mc-gap-pill-filled');
@@ -1322,7 +1351,7 @@
       var html = '';
       questions.forEach(function(item, idx) {
         var syncGroup = idBase + '-sync-' + idx;
-        var sentences = (item.sentence || '').split('\n');
+        var sentences = Array.isArray(item.sentences) ? item.sentences : (item.sentence || '').split('\n');
         html += '<div class="cu-ex-item cu-sync-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
           '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
           '<div class="cu-sync-sentences">';
@@ -1468,6 +1497,165 @@
       if (questions.length) html += self._renderCuExFooter(secId);
       return html;
     },
+
+    // --- Passage-input exercise renderer (Exercise C style: word bank + passage with text inputs) ---
+    _renderCuPassageInputExercise: function(ex, idBase, secId) {
+      var self = this;
+      var passage = ex.passage || '';
+      var answers = ex.answers || [];
+      var answerMap = {};
+      answers.forEach(function(ans, idx) { answerMap[idx + 1] = ans; });
+      var passageHtml = self._escapeHTML(passage).replace(
+        /\((\d+)\)\s*(?:\.{6,}|…{2,})/g,
+        function(_, num) {
+          var gapNum = parseInt(num);
+          var gId = idBase + '-pi' + gapNum;
+          var ans = self._escapeHTML(answerMap[gapNum] || '');
+          return '<span class="cu-pi-gap-wrap">' +
+            '<span class="cu-hint-pill cu-pi-pill">' +
+              '<span class="cu-hint-pill-num">' + num + '</span>' +
+              '<input type="text" id="' + gId + '" class="cu-gap-input cu-pi-input" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '" oninput="BentoGrid._resizeCuInput(this)">' +
+            '</span>' +
+          '</span>';
+        }
+      );
+      var html = '<div class="cu-passage-exercise" id="' + idBase + '-pi-passage">' +
+        '<div class="cu-passage-text">' + passageHtml + '</div>' +
+        '</div>';
+      if (answers.length) html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    // --- Grouped exercise renderer (Exercise A/B style: word bank per group + questions) ---
+    _renderCuGroupedExercise: function(ex, idBase, secId) {
+      var self = this;
+      var groups = ex.groups || [];
+      var html = '<div class="cu-grouped-exercise">';
+      var globalIdx = 0;
+      groups.forEach(function(grp, grpIdx) {
+        html += '<div class="cu-group-section">';
+        if (grp.words && grp.words.length) {
+          html += '<div class="cu-group-wordbank">';
+          html += '<span class="material-symbols-outlined">view_list</span>';
+          grp.words.forEach(function(w) {
+            html += '<span class="cu-wordbank-item" role="button" tabindex="0" onclick="BentoGrid._toggleWordBankItem(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordBankItem(this);event.preventDefault();}" title="Mark as used">' + self._escapeHTML(w) + '</span>';
+          });
+          html += '</div>';
+        }
+        var questions = grp.questions || [];
+        html += '<div class="cu-ex-items">';
+        questions.forEach(function(item) {
+          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx);
+          globalIdx++;
+        });
+        html += '</div>';
+        html += '</div>';
+      });
+      html += '</div>';
+      var totalQs = groups.reduce(function(n, g) { return n + (g.questions || []).length; }, 0);
+      if (totalQs > 0) html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    // --- Drag-category exercise renderer (Exercise G/M style) ---
+    _renderCuDragCategoryExercise: function(ex, idBase, secId) {
+      var self = this;
+      var categories = ex.categories || [];
+      var words = ex.words || [];
+      var answers = ex.answers || {};
+      var exId = idBase + '-dragcat';
+      var html = '<div class="cu-drag-category-exercise" id="' + exId + '" data-sec-id="' + secId + '">';
+      html += '<div class="cu-drag-pool" id="' + exId + '-pool">';
+      words.forEach(function(w) {
+        html += '<span class="cu-drag-chip" draggable="true" ' +
+          'data-word="' + self._escapeHTML(w) + '" ' +
+          'data-answer="' + self._escapeHTML(answers[w] || '') + '" ' +
+          'data-ex-id="' + exId + '" ' +
+          'ondragstart="BentoGrid._dragCatStart(event)" ' +
+          'onclick="BentoGrid._dragCatClick(this)">' +
+          self._escapeHTML(w) + '</span>';
+      });
+      html += '</div>';
+      html += '<div class="cu-drag-zones">';
+      categories.forEach(function(cat, catIdx) {
+        var zoneId = exId + '-zone-' + catIdx;
+        html += '<div class="cu-drag-zone" id="' + zoneId + '" ' +
+          'data-category="' + self._escapeHTML(cat) + '" ' +
+          'data-ex-id="' + exId + '" ' +
+          'ondragover="BentoGrid._dragCatOver(event)" ' +
+          'ondrop="BentoGrid._dragCatDrop(event)" ' +
+          'ondragleave="BentoGrid._dragCatLeave(event)">' +
+          '<div class="cu-drag-zone-label">' + self._escapeHTML(cat) + '</div>' +
+          '<div class="cu-drag-zone-items" id="' + zoneId + '-items"></div>' +
+        '</div>';
+      });
+      html += '</div>';
+      html += '</div>';
+      if (words.length) html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    _dragCatStart: function(e) {
+      var el = e.currentTarget || e.target;
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', el.getAttribute('data-word') || '');
+      BentoGrid._dragCatSrc = el;
+    },
+
+    _dragCatOver: function(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      var zone = (e.currentTarget || e.target).closest('.cu-drag-zone');
+      if (zone) zone.classList.add('cu-drag-zone-over');
+    },
+
+    _dragCatLeave: function(e) {
+      var zone = (e.currentTarget || e.target).closest('.cu-drag-zone');
+      if (zone) zone.classList.remove('cu-drag-zone-over');
+    },
+
+    _dragCatDrop: function(e) {
+      e.preventDefault();
+      var zone = (e.currentTarget || e.target).closest('.cu-drag-zone');
+      if (!zone) return;
+      zone.classList.remove('cu-drag-zone-over');
+      var src = BentoGrid._dragCatSrc;
+      if (!src) return;
+      var itemsContainer = zone.querySelector('.cu-drag-zone-items');
+      if (itemsContainer) itemsContainer.appendChild(src);
+      BentoGrid._dragCatSrc = null;
+      var sec = zone.closest('.cu-section');
+      if (sec) BentoGrid._saveCuExSectionState(sec);
+    },
+
+    _dragCatClick: function(chip) {
+      if (chip.getAttribute('draggable') === 'false') return;
+      var exId = chip.getAttribute('data-ex-id');
+      var exEl = exId ? document.getElementById(exId) : null;
+      if (!exEl) return;
+      var categories = exEl.querySelectorAll('.cu-drag-zone');
+      var currentZone = chip.closest('.cu-drag-zone');
+      var pool = document.getElementById(exId + '-pool');
+      if (!currentZone) {
+        if (categories.length > 0) {
+          var firstZone = categories[0].querySelector('.cu-drag-zone-items');
+          if (firstZone) firstZone.appendChild(chip);
+        }
+      } else {
+        var catArr = Array.prototype.slice.call(categories);
+        var idx = catArr.indexOf(currentZone);
+        if (idx < catArr.length - 1) {
+          var nextZone = catArr[idx + 1].querySelector('.cu-drag-zone-items');
+          if (nextZone) nextZone.appendChild(chip);
+        } else {
+          if (pool) pool.appendChild(chip);
+        }
+      }
+      var sec = chip.closest('.cu-section');
+      if (sec) BentoGrid._saveCuExSectionState(sec);
+    },
+
+    _dragCatSrc: null,
 
     // --- Multiple-choice passage renderer (exercise D style, like reading part 1) ---
     // Stores: BentoGrid._cuMcPassageData[secId] = { qNum: { options, answer } }
@@ -2592,6 +2780,13 @@
           try { answers.matchLetters = JSON.parse(savedLetters); } catch(e) {}
         }
       }
+      var dragCatState = {};
+      sec.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
+        var word = chip.getAttribute('data-word') || '';
+        var zone = chip.closest('.cu-drag-zone');
+        if (word) dragCatState[word] = zone ? (zone.getAttribute('data-category') || '') : '';
+      });
+      if (Object.keys(dragCatState).length) answers.dragCat = dragCatState;
       return answers;
     },
 
@@ -2636,6 +2831,28 @@
                 slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
                 gap.classList.add('cu-mc-passage-gap-answered');
               }
+            }
+          });
+        });
+      }
+      if (answers.dragCat) {
+        sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
+          var exId = exEl.id;
+          var pool = document.getElementById(exId + '-pool');
+          exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
+            var word = chip.getAttribute('data-word') || '';
+            var savedCat = answers.dragCat[word];
+            if (savedCat === undefined) return;
+            if (savedCat === '') {
+              if (pool) pool.appendChild(chip);
+            } else {
+              var zones = exEl.querySelectorAll('.cu-drag-zone');
+              zones.forEach(function(zone) {
+                if ((zone.getAttribute('data-category') || '') === savedCat) {
+                  var items = zone.querySelector('.cu-drag-zone-items');
+                  if (items) items.appendChild(chip);
+                }
+              });
             }
           });
         });
@@ -3520,6 +3737,27 @@
             });
           });
         }
+      });
+      // Handle drag-category exercises
+      sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
+        exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
+          totalItems++;
+          var word = chip.getAttribute('data-word') || '';
+          var expected = (chip.getAttribute('data-answer') || '').trim().toUpperCase();
+          var zone = chip.closest('.cu-drag-zone');
+          var given = zone ? (zone.getAttribute('data-category') || '').trim().toUpperCase() : '';
+          chip.classList.remove('cu-drag-chip-correct', 'cu-drag-chip-incorrect', 'cu-drag-chip-unplaced');
+          if (!zone) {
+            chip.classList.add('cu-drag-chip-unplaced');
+          } else if (given === expected) {
+            chip.classList.add('cu-drag-chip-correct');
+            correctItems++;
+          } else {
+            chip.classList.add('cu-drag-chip-incorrect');
+          }
+          chip.setAttribute('draggable', 'false');
+          chip.style.cursor = 'default';
+        });
       });
       // Handle matching exercise
       var matchExercise = sec.querySelector('.cu-match-exercise');
