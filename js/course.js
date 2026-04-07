@@ -780,7 +780,7 @@
           var items = section.items || [];
           var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
           html += '<div class="cu-ex-items">';
-          html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
+          html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.noPaginate ? { noPaginate: true } : null);
           html += '</div>';
 
           if (hasInteractive) html += self._renderCuExFooter(secId);
@@ -1021,16 +1021,36 @@
         if (section.type === 'exercise') {
           var rvSecId = 'cu-sec-' + sectionIdx;
           var rvItems = section.items || [];
-          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvItems.length + '">' +
+          var multiSelectAttr = section.multiSelect ? ' data-multi-select="true"' : '';
+          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvItems.length + '"' + multiSelectAttr + '>' +
             '<div class="cu-section-title">' + _mi('quiz') + ' ' + self._escapeHTML(section.title) + '</div>';
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
           }
-          html += '<div class="cu-ex-items">';
-          var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
-          html += self._renderCuExItemsList(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
-          html += '</div>';
-          if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
+          var hasInteractiveRv;
+          if (section.passage && rvItems.length && rvItems[0] && rvItems[0].options) {
+            // Multiple-choice passage: render as a single text with clickable gap pills
+            html += self._renderCuMcPassageExercise(
+              { passage: section.passage, questions: rvItems },
+              'rv-' + section.title.replace(/\W+/g, ''),
+              rvSecId
+            );
+            hasInteractiveRv = false; // footer already added by _renderCuMcPassageExercise
+          } else if (section.passage) {
+            // Word-formation passage
+            html += self._renderCuPassageExercise(
+              { passage: section.passage, questions: rvItems },
+              'rv-' + section.title.replace(/\W+/g, ''),
+              rvSecId
+            );
+            hasInteractiveRv = false; // footer already added by _renderCuPassageExercise
+          } else {
+            hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
+            html += '<div class="cu-ex-items">';
+            html += self._renderCuExItemsList(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
+            html += '</div>';
+            if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
+          }
           html += '</div>';
         }
       });
@@ -1055,7 +1075,29 @@
         '</div>';
     },
 
+    // Track the most recently focused gap input (set via onfocus on each input)
+    _cuLastFocusedGap: null,
+
     _toggleWordBankItem: function(el) {
+      // If a gap input in the same section is focused/was last active, fill it with this word
+      var sec = el.closest('.cu-section');
+      var target = null;
+      if (sec) {
+        // Prefer currently focused input
+        var active = document.activeElement;
+        if (active && active.classList.contains('cu-gap-input') && sec.contains(active) && !active.disabled) {
+          target = active;
+        } else if (BentoGrid._cuLastFocusedGap && sec.contains(BentoGrid._cuLastFocusedGap) && !BentoGrid._cuLastFocusedGap.disabled) {
+          target = BentoGrid._cuLastFocusedGap;
+        }
+      }
+      if (target) {
+        target.value = el.textContent.trim();
+        BentoGrid._resizeCuInput(target);
+        el.classList.add('cu-wordbank-used');
+        BentoGrid._saveCuExSectionState(target.closest('.cu-section'));
+        return;
+      }
       el.classList.toggle('cu-wordbank-used');
     },
 
@@ -1222,8 +1264,8 @@
           '<div class="cu-yn-row">' +
             '<div class="cu-ex-sentence cu-yn-sentence">' + _bold(item.sentence || '') + '</div>' +
             '<div class="cu-yn-buttons">' +
-              '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">YES</button>' +
-              '<button class="cu-yn-btn cu-yn-no" data-group="' + iId + '" data-yn="NO" onclick="BentoGrid._selectCuYn(this)" type="button">NO</button>' +
+              '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">✓</button>' +
+              '<button class="cu-yn-btn cu-yn-no" data-group="' + iId + '" data-yn="NO" onclick="BentoGrid._selectCuYn(this)" type="button">✗</button>' +
             '</div>' +
           '</div>' +
           '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div></div>' +
@@ -1287,7 +1329,7 @@
         sentences.forEach(function(sent, sIdx) {
           var gapId = syncGroup + '-g' + sIdx;
           var sentHtml = self._escapeHTML(sent).replace(/……+|\.{5,}/g, function() {
-            return '<input type="text" id="' + gapId + '" class="cu-gap-input cu-sync-input" data-sync-group="' + syncGroup + '" placeholder="..." oninput="BentoGrid._syncInputGroup(this);BentoGrid._resizeCuInput(this)">';
+            return '<input type="text" id="' + gapId + '" class="cu-gap-input cu-sync-input" data-sync-group="' + syncGroup + '" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._syncInputGroup(this);BentoGrid._resizeCuInput(this)">';
           });
           html += '<div class="cu-sync-sentence">' + sentHtml + '</div>';
         });
@@ -1373,33 +1415,53 @@
       return html;
     },
 
-    // --- Passage-based word formation renderer (exercise O style) ---
+    // --- Passage-based word formation renderer (exercise O/N style) ---
     _renderCuPassageExercise: function(ex, idBase, secId) {
       var self = this;
       var passage = ex.passage || '';
       var questions = ex.questions || [];
-      // Build a map from gap number to correct answer
+      // Build maps from gap number to correct answer and optional hint word.
+      // Question sentence formats supported:
+      //   …(N)… (WORD)  – old explicit format
+      //   (N) ...... (WORD) – dot-gap format with trailing hint word
+      //   (N) ...... – dot-gap without hint word
       var answerMap = {};
-      questions.forEach(function(q) {
-        var numMatch = (q.sentence || '').match(/…\((\d+)\)…/);
-        if (numMatch) answerMap[parseInt(numMatch[1])] = q.answer || '';
+      var hintMap = {};
+      questions.forEach(function(q, qi) {
+        var sent = q.sentence || '';
+        // Extract gap number: match (N) anywhere at the start
+        var numMatch = sent.match(/\((\d+)\)/);
+        var num = numMatch ? parseInt(numMatch[1]) : (qi + 1);
+        answerMap[num] = q.answer || '';
+        // Extract trailing ALL-CAPS hint word in parens at end of sentence.
+        // Matches "(WORD)" or "(WORD1 / WORD2)" e.g. "(SAY)", "(SPEAK)", "(EXPRESS / EXPRESSIVE)"
+        var hintMatch = sent.match(/\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/);
+        if (hintMatch) hintMap[num] = hintMatch[1];
       });
-      // Render passage: replace …(N)… (WORD) patterns with inline gap+badge widgets.
-      // Each gap input carries data-answer for scoring.
-      var passageHtml = self._escapeHTML(passage).replace(
-        /…\((\d+)\)…\s*\(([A-Z]+)\)/g,
-        function(_, num, word) {
-          var gId = idBase + '-p' + num;
-          var ans = self._escapeHTML(answerMap[parseInt(num)] || '');
-          return '<span class="cu-wf-gap-wrap">' +
-            '<span class="cu-hint-pill">' +
-              '<span class="cu-hint-pill-num">' + num + '</span>' +
-              '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '" oninput="BentoGrid._resizeCuInput(this)">' +
-              '<span class="cu-hint-pill-word cu-wf-pill-word">' + word + '</span>' +
-            '</span>' +
-          '</span>';
-        }
-      );
+      // Helper to build a gap pill HTML
+      function makeGapPill(num, hintWord) {
+        var gId = idBase + '-p' + num;
+        var ans = self._escapeHTML(answerMap[num] || '');
+        return '<span class="cu-wf-gap-wrap">' +
+          '<span class="cu-hint-pill">' +
+            '<span class="cu-hint-pill-num">' + num + '</span>' +
+            '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." ' +
+              'data-passage-num="' + num + '" data-answer="' + ans + '" ' +
+              'onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">' +
+            (hintWord ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>' : '') +
+          '</span>' +
+        '</span>';
+      }
+      // Render passage: replace both gap formats with interactive pill widgets.
+      // Format A (old): …(N)… (WORD)
+      // Format B (new): (N) ___ or (N) ......
+      var passageHtml = self._escapeHTML(passage)
+        .replace(/…\((\d+)\)…\s*\(([A-Z]+)\)/g, function(_, num) {
+          return makeGapPill(parseInt(num), hintMap[parseInt(num)] || null);
+        })
+        .replace(/\((\d+)\)\s*(?:_{2,}|[.…]{5,})/g, function(_, num) {
+          return makeGapPill(parseInt(num), hintMap[parseInt(num)] || null);
+        });
       var html = '<div class="cu-passage-exercise" id="' + idBase + '-passage">' +
         '<div class="cu-passage-text">' + passageHtml + '</div>' +
         '</div>';
@@ -1599,10 +1661,11 @@
       });
     },
 
-    _renderCuExItemsList: function(items, idBase, secId) {
+    _renderCuExItemsList: function(items, idBase, secId, opts) {
       var self = this;
       if (!items || !items.length) return '';
-      if (items.length <= CU_PAGE_SIZE) {
+      var noPaginate = opts && opts.noPaginate;
+      if (noPaginate || items.length <= CU_PAGE_SIZE) {
         var html = '';
         items.forEach(function(item, iIdx) {
           html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx);
@@ -1972,12 +2035,12 @@
         } else if (p.type === 'strike') {
           return '<s>' + self._escapeHTML(p.val) + '</s>';
         } else if (p.type === 'gap') {
-          return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">';
+          return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
         } else if (p.type === 'gap-wf') {
           // Word-formation gap: input + word-badge together
           var gId = inputIdBase + '_g' + (gapCount++);
           return '<span class="cu-hint-pill">' +
-            '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">' +
+            '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">' +
             '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(p.wfWord) + '</span>' +
             '</span>';
         } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
@@ -1986,7 +2049,7 @@
           if (p.num) {
             pillHtml += '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>';
           }
-          pillHtml += '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">';
+          pillHtml += '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
           if (p.hint) {
             pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(p.hint) + '</span>';
           }
@@ -1997,9 +2060,9 @@
           var gId1 = inputIdBase + '_g' + (gapCount++);
           var gId2 = inputIdBase + '_g' + (gapCount++);
           var groupHtml = '<span class="cu-hint-pill">' +
-            '<input type="text" id="' + gId1 + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">' +
+            '<input type="text" id="' + gId1 + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">' +
             '<span class="cu-hint-pill-mid">' + self._escapeHTML(p.midText.trim()) + '</span>' +
-            '<input type="text" id="' + gId2 + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">';
+            '<input type="text" id="' + gId2 + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
           if (p.hint) {
             groupHtml += '<span class="cu-hint-pill-word">' + self._escapeHTML(p.hint) + '</span>';
           }
@@ -2011,7 +2074,7 @@
             return '<button class="cu-option-btn" data-group="' + oId + '" onclick="BentoGrid._selectCourseOption(this)" type="button">' + self._escapeHTML(opt.trim()) + '</button>';
           }).join('<span class="cu-option-sep">/</span>');
         } else if (p.type === 'standalone') {
-          return '<br><input type="text" class="cu-gap-input cu-gap-standalone" placeholder="Your answer..." oninput="BentoGrid._resizeCuInput(this)">';
+          return '<br><input type="text" class="cu-gap-input cu-gap-standalone" placeholder="Your answer..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
         }
         return '';
       }).join('');
