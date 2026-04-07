@@ -1859,7 +1859,7 @@
         if (parts[npi].type === 'hint-gap' && parts[npi].num === null) {
           var prevPart = parts[npi - 1];
           if (prevPart && prevPart.type === 'text') {
-            var numPrefixMatch = prevPart.val.match(/([\s\S]*)\s*\((\d+)\)\s*$/);
+            var numPrefixMatch = prevPart.val.match(/^(.*)\s*\((\d+)\)\s*$/);
             if (numPrefixMatch) {
               parts[npi].num = numPrefixMatch[2];
               prevPart.val = numPrefixMatch[1];
