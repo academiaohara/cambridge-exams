@@ -2086,8 +2086,11 @@
         var trimmed = opt.trim();
         var letter = trimmed.charAt(0).toUpperCase();
         var text = BentoGrid._escapeHTML(trimmed.slice(1).trim());
-        html += '<button class="opt-btn" onclick="BentoGrid._selectMcOptionFromModal(\'' +
-          oGroupId + '\',\'' + pillId + '\',\'' + letter + '\',\'' + text.replace(/'/g, "\\'") + '\')">' +
+        html += '<button class="opt-btn cu-mc-item-modal-btn"' +
+          ' data-group="' + BentoGrid._escapeHTML(oGroupId) + '"' +
+          ' data-pill-id="' + BentoGrid._escapeHTML(pillId) + '"' +
+          ' data-letter="' + letter + '"' +
+          ' onclick="BentoGrid._selectMcOptionFromModal(this)">' +
           text + '</button>';
       });
       html += '</div>';
@@ -2095,15 +2098,18 @@
       overlay.style.display = 'flex';
     },
 
-    _selectMcOptionFromModal: function(oGroupId, pillId, letter, text) {
+    _selectMcOptionFromModal: function(btn) {
+      var oGroupId = btn.getAttribute('data-group');
+      var pillId = btn.getAttribute('data-pill-id');
+      var letter = btn.getAttribute('data-letter');
+      var text = btn.textContent || letter;
       // Update inline option buttons to match selection
-      document.querySelectorAll('.cu-option-btn[data-group="' + oGroupId + '"]').forEach(function(btn) {
-        btn.classList.toggle('cu-option-selected', btn.getAttribute('data-mc-letter') === letter);
+      document.querySelectorAll('.cu-option-btn[data-group="' + oGroupId + '"]').forEach(function(b) {
+        b.classList.toggle('cu-option-selected', b.getAttribute('data-mc-letter') === letter);
       });
       // Update the gap pill display
       var pill = document.getElementById(pillId);
       if (pill) {
-        pill.textContent = '';
         pill.classList.add('cu-mc-gap-pill-filled');
         pill.textContent = text || letter;
       }
@@ -2113,8 +2119,8 @@
       // Save section state
       var sec = pill ? pill.closest('.cu-section') : null;
       if (!sec) {
-        var btn = document.querySelector('.cu-option-btn[data-group="' + oGroupId + '"]');
-        if (btn) sec = btn.closest('.cu-section');
+        var ob = document.querySelector('.cu-option-btn[data-group="' + oGroupId + '"]');
+        if (ob) sec = ob.closest('.cu-section');
       }
       if (sec) BentoGrid._saveCuExSectionState(sec);
     },
