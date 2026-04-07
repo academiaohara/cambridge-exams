@@ -767,7 +767,8 @@
 
         } else if (section.type === 'exercise') {
           var secId = 'cu-sec-' + idx;
-          html += '<div class="cu-section cu-exercise" id="' + secId + '">' +
+          var multiSelectAttr = section.multiSelect ? ' data-multi-select="true"' : '';
+          html += '<div class="cu-section cu-exercise" id="' + secId + '"' + multiSelectAttr + '>' +
             '<div class="cu-section-title">' + _mi('edit_note') + ' ' + self._escapeHTML(section.title) + '</div>';
 
           if (section.instructions) {
@@ -1606,6 +1607,8 @@
 
       var sentence = item.sentence || '';
       var isMC = !!(item.options && item.options.length);
+      // Optional read-only context sentence rendered above the interactive sentence
+      var contextHtml = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
 
       var sentenceHtml;
       if (isMC) {
@@ -1616,6 +1619,7 @@
 
       return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
         '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+        contextHtml +
         '<div class="cu-ex-sentence">' + sentenceHtml + '</div>' +
         '<div class="cu-ex-foot">' +
           '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
@@ -1951,10 +1955,16 @@
       if (btn.disabled) return;
       var group = btn.getAttribute('data-group');
       if (!group) return;
-      var siblings = document.querySelectorAll('.cu-option-btn[data-group="' + group + '"]');
-      siblings.forEach(function(s) { s.classList.remove('cu-option-selected'); });
-      btn.classList.add('cu-option-selected');
-      BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
+      var sec = btn.closest('.cu-section');
+      if (sec && sec.getAttribute('data-multi-select') === 'true') {
+        // Multi-select mode: toggle the clicked button without deselecting others
+        btn.classList.toggle('cu-option-selected');
+      } else {
+        var siblings = document.querySelectorAll('.cu-option-btn[data-group="' + group + '"]');
+        siblings.forEach(function(s) { s.classList.remove('cu-option-selected'); });
+        btn.classList.add('cu-option-selected');
+      }
+      BentoGrid._saveCuExSectionState(sec || btn.closest('.cu-section'));
     },
 
     // Auto-resize a course gap input to fit its content (like test inputs)
@@ -2424,10 +2434,14 @@
       var inputVals = [];
       sec.querySelectorAll('.cu-gap-input').forEach(function(inp) { inputVals.push(inp.value || ''); });
       answers.inputs = inputVals;
+      // Build option state as arrays (supports both single-select and multi-select)
       var optionState = {};
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) {
         var g = btn.getAttribute('data-group');
-        if (g && btn.classList.contains('cu-option-selected')) optionState[g] = btn.textContent.trim();
+        if (g && btn.classList.contains('cu-option-selected')) {
+          if (!optionState[g]) optionState[g] = [];
+          optionState[g].push(btn.textContent.trim());
+        }
       });
       answers.options = optionState;
       var ynState = {};
@@ -2461,7 +2475,11 @@
       if (answers.options) {
         sec.querySelectorAll('.cu-option-btn').forEach(function(btn) {
           var g = btn.getAttribute('data-group');
-          if (g && answers.options[g] !== undefined && btn.textContent.trim() === answers.options[g]) btn.classList.add('cu-option-selected');
+          if (!g || answers.options[g] === undefined) return;
+          var saved = answers.options[g];
+          // Support both legacy string and new array format
+          var selectedTexts = Array.isArray(saved) ? saved : [saved];
+          if (selectedTexts.indexOf(btn.textContent.trim()) !== -1) btn.classList.add('cu-option-selected');
         });
       }
       if (answers.ynButtons) {
@@ -3489,14 +3507,36 @@
         });
         // Inline word-choice buttons (e.g. **word/word/word**)
         // Sort groups in DOM order by their _oN suffix so answer parts map correctly
+        var isMultiSelect = sec.getAttribute('data-multi-select') === 'true';
         BentoGrid._sortedOptGroupKeys(optGroups).forEach(function(gId, gIdx) {
           totalItems++;
           var btns = optGroups[gId];
           // Each option group maps to the next answer part after all text inputs
           var gAlts = BentoGrid._answerAlts(answerParts[partIdx + gIdx]);
+          btns.forEach(function(b) { b.classList.remove('cu-option-correct', 'cu-option-incorrect', 'cu-option-correct-reveal'); });
+          if (isMultiSelect) {
+            // Multi-select: correct only if the selected set exactly matches gAlts
+            var selectedBtns = btns.filter(function(b) { return b.classList.contains('cu-option-selected'); });
+            var selectedTexts = selectedBtns.map(function(b) { return BentoGrid._normalizeText(b.textContent.trim().toLowerCase()); });
+            var allCorrectSelected = gAlts.every(function(a) { return selectedTexts.indexOf(a) !== -1; });
+            var noExtraSelected = selectedTexts.every(function(t) { return gAlts.indexOf(t) !== -1; });
+            var matched = selectedBtns.length > 0 && allCorrectSelected && noExtraSelected;
+            selectedBtns.forEach(function(b) { b.classList.add(matched ? 'cu-option-correct' : 'cu-option-incorrect'); });
+            if (matched) {
+              correctItems++;
+            } else {
+              // Reveal all correct options
+              btns.forEach(function(b) {
+                var bText = BentoGrid._normalizeText(b.textContent.trim().toLowerCase());
+                if (!b.classList.contains('cu-option-incorrect') && gAlts.some(function(a) { return a === bText; })) {
+                  b.classList.add('cu-option-correct-reveal');
+                }
+              });
+              anyInputWrong = true;
+            }
+          } else {
           var selected = null;
           btns.forEach(function(b) { if (b.classList.contains('cu-option-selected')) selected = b; });
-          btns.forEach(function(b) { b.classList.remove('cu-option-correct', 'cu-option-incorrect', 'cu-option-correct-reveal'); });
           if (selected) {
             var selectedText = BentoGrid._normalizeText(selected.textContent.trim().toLowerCase());
             var matched = gAlts.some(function(a) { return a === selectedText; });
@@ -3522,6 +3562,7 @@
               }
             });
             anyInputWrong = true;
+          }
           }
         });
         // Multiple-choice option buttons (Exercise E style)
