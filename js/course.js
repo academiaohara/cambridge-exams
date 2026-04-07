@@ -778,12 +778,19 @@
           html += self._renderCuWordBank(section.words);
 
           var items = section.items || [];
-          var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
-          html += '<div class="cu-ex-items">';
-          html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
-          html += '</div>';
+          var grBase = 'gr-' + section.title.replace(/\W+/g, '');
 
-          if (hasInteractive) html += self._renderCuExFooter(secId);
+          if (section.continuous) {
+            html += self._renderCuContinuousItems(items, grBase, secId);
+          } else if (section.exerciseType === 'tick-or-rewrite') {
+            html += self._renderCuTickOrRewriteItems(items, grBase, secId);
+          } else {
+            var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
+            html += '<div class="cu-ex-items">';
+            html += self._renderCuExItemsList(items, grBase, secId);
+            html += '</div>';
+            if (hasInteractive) html += self._renderCuExFooter(secId);
+          }
 
           html += '</div>';
         }
@@ -947,12 +954,18 @@
           } else if (ex.type === 'mc-inline') {
             // Inline multiple-choice: numbered gaps open a modal (e.g. Exercise C, E)
             html += self._renderCuMcInlineExercise(ex, idBase, secId);
+          } else if (ex.type === 'cloze-passage') {
+            html += self._renderCuClozePassageExercise(ex, idBase, secId);
           } else if (ex.passage && questions.length && questions[0] && questions[0].options) {
             // Multiple-choice passage (e.g. Exercise D) – gaps open a modal with A/B/C/D options
             html += self._renderCuMcPassageExercise(ex, idBase, secId);
           } else if (ex.passage) {
             // Passage-based word formation (e.g. Exercise O)
             html += self._renderCuPassageExercise(ex, idBase, secId);
+          } else if (ex.exerciseType === 'word-replace') {
+            html += self._renderCuWordReplaceExercise(ex, idBase, secId);
+          } else if (ex.continuous) {
+            html += self._renderCuContinuousItems(questions, idBase, secId);
           } else {
             var hasInteractive = questions.some(function(q) { return self._itemHasInteractive(q); });
             html += '<div class="cu-ex-items">';
@@ -1125,10 +1138,16 @@
       sec.querySelectorAll('.cu-answer').forEach(function(div) { div.style.display = 'none'; });
       // Reset show-answers state
       sec.setAttribute('data-answers-showing', 'false');
-      // Reset yn (yes/no) buttons
+      // Reset yn (yes/no) / OK-toggle buttons
       sec.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
         btn.disabled = false;
         btn.classList.remove('cu-yn-selected', 'cu-yn-correct', 'cu-yn-incorrect', 'cu-yn-correct-reveal');
+      });
+      // Reset word-replace select dropdowns
+      sec.querySelectorAll('.cu-wr-select').forEach(function(sel) {
+        sel.disabled = false;
+        sel.value = '';
+        sel.classList.remove('cu-input-correct', 'cu-input-incorrect');
       });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
@@ -1209,7 +1228,7 @@
       BentoGrid._updateReviewTotalScore();
     },
 
-    // --- Yes/No exercise renderer ---
+    // --- Yes/No / OK-toggle exercise renderer ---
     _renderCuYnItems: function(questions, idBase, secId) {
       var self = this;
       if (!questions || !questions.length) return '';
@@ -1217,16 +1236,21 @@
       function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
       questions.forEach(function(item, idx) {
         var iId = idBase + '-yn-' + idx;
-        html += '<div class="cu-ex-item cu-yn-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
-          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
-          '<div class="cu-yn-row">' +
-            '<div class="cu-ex-sentence cu-yn-sentence">' + _bold(item.sentence || '') + '</div>' +
-            '<div class="cu-yn-buttons">' +
-              '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">YES</button>' +
-              '<button class="cu-yn-btn cu-yn-no" data-group="' + iId + '" data-yn="NO" onclick="BentoGrid._selectCuYn(this)" type="button">NO</button>' +
-            '</div>' +
-          '</div>' +
-          '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div></div>' +
+        var hasWord = !!(item.word && !item.sentence);
+        html += '<div class="cu-ex-item cu-yn-item" data-answer="' + self._escapeHTML(item.answer || '') + '">';
+        if (hasWord) {
+          html += '<div class="cu-yn-word-row">' +
+            '<span class="cu-yn-word-chip">' + self._escapeHTML(item.word) + '</span>' +
+            '<button class="cu-yn-btn cu-yn-ok" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._toggleCuYnOk(this)" type="button">OK</button>' +
+          '</div>';
+        } else {
+          html += '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+            '<div class="cu-yn-row">' +
+              '<div class="cu-ex-sentence cu-yn-sentence">' + _bold(item.sentence || '') + '</div>' +
+              '<button class="cu-yn-btn cu-yn-ok" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._toggleCuYnOk(this)" type="button">OK</button>' +
+            '</div>';
+        }
+        html += '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div></div>' +
         '</div>';
       });
       return html;
@@ -1239,6 +1263,12 @@
       var siblings = document.querySelectorAll('.cu-yn-btn[data-group="' + group + '"]');
       siblings.forEach(function(s) { s.classList.remove('cu-yn-selected'); });
       btn.classList.add('cu-yn-selected');
+      BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
+    },
+
+    _toggleCuYnOk: function(btn) {
+      if (btn.disabled) return;
+      btn.classList.toggle('cu-yn-selected');
       BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
@@ -1403,6 +1433,149 @@
       var html = '<div class="cu-passage-exercise" id="' + idBase + '-passage">' +
         '<div class="cu-passage-text">' + passageHtml + '</div>' +
         '</div>';
+      if (questions.length) html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    // --- Cloze passage text-input renderer (passage with (N) ...... gaps, text inputs) ---
+    _renderCuClozePassageExercise: function(ex, idBase, secId) {
+      var self = this;
+      var passage = ex.passage || '';
+      var questions = ex.questions || [];
+      var answerMap = {};
+      questions.forEach(function(q) {
+        var numMatch = (q.sentence || '').match(/^\((\d+)\)/);
+        var gapNum = numMatch ? parseInt(numMatch[1]) : null;
+        if (gapNum) answerMap[gapNum] = q.answer || '';
+      });
+      var passageHtml = self._escapeHTML(passage).replace(
+        /\((\d+)\)\s*(?:\.{6,}|[\u2026]{2,})/g,
+        function(_, num) {
+          var gapNum = parseInt(num);
+          var ans = self._escapeHTML(answerMap[gapNum] || '');
+          var gId = idBase + '-cp' + gapNum;
+          return '<span class="cu-hint-pill">' +
+            '<span class="cu-hint-pill-num">' + num + '</span>' +
+            '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" ' +
+              'placeholder="..." data-passage-num="' + gapNum + '" data-answer="' + ans + '" ' +
+              'oninput="BentoGrid._resizeCuInput(this)">' +
+            '</span>';
+        }
+      );
+      var html = '<div class="cu-passage-exercise" id="' + idBase + '-cloze">' +
+        '<div class="cu-passage-text">' + passageHtml + '</div>' +
+        '</div>';
+      if (questions.length) html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    // --- Continuous items renderer (items form a single connected passage) ---
+    _renderCuContinuousItems: function(items, idBase, secId) {
+      var self = this;
+      if (!items || !items.length) return '';
+      var html = '<div class="cu-passage-exercise" id="' + idBase + '-cont">';
+      html += '<div class="cu-passage-text">';
+      items.forEach(function(item, idx) {
+        var sentence = item.sentence || '';
+        var answers = Array.isArray(item.answer) ? item.answer : [item.answer || ''];
+        var ansIdx = 0;
+        var inputIdBase = idBase + '-ci' + idx;
+        var sentHtml = self._escapeHTML(sentence).replace(
+          /\((\d+)\)\s*(?:\.{5,}|[\u2026]{2,})/g,
+          function(_, num) {
+            var ans = self._escapeHTML(answers[ansIdx] || '');
+            ansIdx++;
+            var gId = inputIdBase + '-g' + num;
+            return '<span class="cu-hint-pill">' +
+              '<span class="cu-hint-pill-num">' + num + '</span>' +
+              '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" ' +
+                'placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '" ' +
+                'oninput="BentoGrid._resizeCuInput(this)">' +
+              '</span>';
+          }
+        );
+        // Replace remaining ungapped ...... markers
+        sentHtml = sentHtml.replace(
+          /(?:\.{5,}|[\u2026]{3,})/g,
+          function() {
+            var ans = self._escapeHTML(answers[ansIdx] || '');
+            ansIdx++;
+            var gId = inputIdBase + '-gu' + ansIdx;
+            return '<input type="text" class="cu-gap-input" ' +
+              'placeholder="..." data-passage-num="' + (ansIdx) + '" data-answer="' + ans + '" ' +
+              'oninput="BentoGrid._resizeCuInput(this)">';
+          }
+        );
+        html += sentHtml + ' ';
+      });
+      html += '</div></div>';
+      html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    // --- Tick-or-rewrite exercise renderer ---
+    _renderCuTickOrRewriteItems: function(items, idBase, secId) {
+      var self = this;
+      if (!items || !items.length) return '';
+      var html = '<div class="cu-ex-items">';
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+      items.forEach(function(item, idx) {
+        var iId = idBase + '-tor-' + idx;
+        html += '<div class="cu-ex-item cu-tor-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
+          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          '<div class="cu-tor-row">' +
+            '<div class="cu-ex-sentence">' + _bold(item.sentence || '') + '</div>' +
+            '<div class="cu-tor-controls">' +
+              '<button class="cu-yn-btn cu-yn-ok cu-tor-ok" id="' + iId + '-ok" data-yn="YES" onclick="BentoGrid._toggleCuYnOk(this)" type="button">OK</button>' +
+              '<input type="text" id="' + iId + '-inp" class="cu-gap-input cu-tor-input" placeholder="Correction..." oninput="BentoGrid._resizeCuInput(this);BentoGrid._cuTorInputChanged(this)">' +
+            '</div>' +
+          '</div>' +
+          '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div></div>' +
+        '</div>';
+      });
+      html += '</div>';
+      html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    _cuTorInputChanged: function(input) {
+      var row = input.closest('.cu-tor-item');
+      if (!row) return;
+      var okBtn = row.querySelector('.cu-tor-ok');
+      if (okBtn && input.value.trim() !== '') {
+        okBtn.classList.remove('cu-yn-selected');
+      }
+      BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
+    },
+
+    // --- Word-replace exercise renderer ---
+    _renderCuWordReplaceExercise: function(ex, idBase, secId) {
+      var self = this;
+      var questions = ex.questions || [];
+      var words = ex.words || [];
+      var html = '';
+      if (words.length) html += self._renderCuWordBank(words);
+      html += '<div class="cu-ex-items">';
+      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+      var selectOptions = '<option value="">— choose —</option>' +
+        '<option value="\u2713">\u2713 Correct as written</option>' +
+        words.map(function(w) {
+          return '<option value="' + self._escapeHTML(w) + '">' + self._escapeHTML(w) + '</option>';
+        }).join('');
+      questions.forEach(function(item, idx) {
+        var iId = idBase + '-wr-' + idx;
+        html += '<div class="cu-ex-item cu-wr-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
+          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          '<div class="cu-wr-row">' +
+            '<div class="cu-ex-sentence">' + _bold(item.sentence || '') + '</div>' +
+            '<select class="cu-wr-select" id="' + iId + '-sel" onchange="BentoGrid._saveCuExSectionState(this.closest(\'.cu-section\'))">' +
+              selectOptions +
+            '</select>' +
+          '</div>' +
+          '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div></div>' +
+        '</div>';
+      });
+      html += '</div>';
       if (questions.length) html += self._renderCuExFooter(secId);
       return html;
     },
@@ -2529,6 +2702,12 @@
           try { answers.matchLetters = JSON.parse(savedLetters); } catch(e) {}
         }
       }
+      // Word-replace select values
+      var wrSelects = {};
+      sec.querySelectorAll('.cu-wr-select').forEach(function(sel, i) {
+        wrSelects[i] = sel.value || '';
+      });
+      if (Object.keys(wrSelects).length) answers.wrSelects = wrSelects;
       return answers;
     },
 
@@ -2552,6 +2731,12 @@
         sec.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
           var g = btn.getAttribute('data-group');
           if (g && answers.ynButtons[g] !== undefined && (btn.getAttribute('data-yn') || '') === answers.ynButtons[g]) btn.classList.add('cu-yn-selected');
+        });
+      }
+      // Restore word-replace select values
+      if (answers.wrSelects) {
+        sec.querySelectorAll('.cu-wr-select').forEach(function(sel, i) {
+          if (answers.wrSelects[i] !== undefined) sel.value = answers.wrSelects[i];
         });
       }
       if (answers.mcPassage) {
@@ -3294,6 +3479,20 @@
         });
       }
       sec.querySelectorAll('.cu-ex-item').forEach(function(item, idx) {
+        // tor-items and wr-items have their own "answered" check
+        if (item.classList.contains('cu-tor-item')) {
+          var okBtn = item.querySelector('.cu-tor-ok');
+          var inp = item.querySelector('.cu-tor-input');
+          var hasAnswer = !!(okBtn && okBtn.classList.contains('cu-yn-selected')) ||
+                          !!(inp && inp.value.trim() !== '');
+          if (!hasAnswer) unanswered.push(idx + 1);
+          return;
+        }
+        if (item.classList.contains('cu-wr-item')) {
+          var sel = item.querySelector('.cu-wr-select');
+          if (!sel || sel.value === '') unanswered.push(idx + 1);
+          return;
+        }
         var inputs = item.querySelectorAll('.cu-gap-input');
         var optGroups = {};
         item.querySelectorAll('.cu-option-btn').forEach(function(btn) {
@@ -3426,37 +3625,24 @@
           input.disabled = true;
         });
       });
-      // Handle yn-items
+      // Handle yn-items (OK toggle button)
       sec.querySelectorAll('.cu-yn-item').forEach(function(item) {
         totalItems++;
         var answer = (item.getAttribute('data-answer') || '').trim().toUpperCase();
-        var selected = item.querySelector('.cu-yn-btn.cu-yn-selected');
-        var ynGroups = {};
-        item.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
-          var g = btn.getAttribute('data-group');
-          if (g) { if (!ynGroups[g]) ynGroups[g] = []; ynGroups[g].push(btn); }
-        });
-        Object.keys(ynGroups).forEach(function(g) {
-          var btns = ynGroups[g];
-          btns.forEach(function(b) { b.classList.remove('cu-yn-correct', 'cu-yn-incorrect'); b.disabled = true; });
-        });
-        var wasCorrect = false;
-        if (selected) {
-          var given = (selected.getAttribute('data-yn') || '').toUpperCase();
-          wasCorrect = given === answer;
-          selected.classList.add(wasCorrect ? 'cu-yn-correct' : 'cu-yn-incorrect');
-          if (wasCorrect) correctItems++;
+        var okBtn = item.querySelector('.cu-yn-btn.cu-yn-ok');
+        var isSelected = !!(okBtn && okBtn.classList.contains('cu-yn-selected'));
+        var given = isSelected ? 'YES' : 'NO';
+        var wasCorrect = given === answer;
+        if (okBtn) {
+          okBtn.classList.remove('cu-yn-correct', 'cu-yn-incorrect');
+          okBtn.disabled = true;
+          if (isSelected) {
+            okBtn.classList.add(wasCorrect ? 'cu-yn-correct' : 'cu-yn-incorrect');
+          } else if (!wasCorrect) {
+            if (answer === 'YES') okBtn.classList.add('cu-yn-correct-reveal');
+          }
         }
-        // Mark the correct button whenever student was wrong or nothing was selected
-        if (!wasCorrect) {
-          Object.keys(ynGroups).forEach(function(g) {
-            ynGroups[g].forEach(function(b) {
-              if ((b.getAttribute('data-yn') || '').toUpperCase() === answer) {
-                b.classList.add('cu-yn-correct-reveal');
-              }
-            });
-          });
-        }
+        if (wasCorrect) correctItems++;
       });
       // Handle matching exercise
       var matchExercise = sec.querySelector('.cu-match-exercise');
@@ -3504,7 +3690,78 @@
           footer.appendChild(viewBtn);
         }
       }
-      sec.querySelectorAll('.cu-ex-item:not(.cu-yn-item)').forEach(function(item) {
+      // Handle tick-or-rewrite items
+      sec.querySelectorAll('.cu-tor-item').forEach(function(item) {
+        totalItems++;
+        var answer = (item.getAttribute('data-answer') || '').trim();
+        var isTickAnswer = (answer === '\u2713');
+        var okBtn = item.querySelector('.cu-tor-ok');
+        var inp = item.querySelector('.cu-tor-input');
+        var okSelected = !!(okBtn && okBtn.classList.contains('cu-yn-selected'));
+        var typed = (inp ? inp.value.trim() : '');
+        var wasCorrect = false;
+        if (isTickAnswer) {
+          wasCorrect = okSelected && typed === '';
+        } else {
+          var torAlts = answer.toLowerCase().split(/\s*\/\s*/);
+          wasCorrect = !okSelected && torAlts.some(function(a) { return a === typed.toLowerCase(); });
+        }
+        if (okBtn) { okBtn.disabled = true; okBtn.classList.remove('cu-yn-correct', 'cu-yn-incorrect'); }
+        if (inp) { inp.disabled = true; inp.classList.remove('cu-input-correct', 'cu-input-incorrect'); }
+        if (wasCorrect) {
+          correctItems++;
+          if (isTickAnswer && okBtn) okBtn.classList.add('cu-yn-correct');
+          if (!isTickAnswer && inp) inp.classList.add('cu-input-correct');
+        } else {
+          if (isTickAnswer) {
+            if (okSelected && okBtn) { okBtn.classList.add('cu-yn-incorrect'); }
+            else if (okBtn) { okBtn.classList.add('cu-yn-correct-reveal'); }
+          } else {
+            if (okSelected && okBtn) okBtn.classList.add('cu-yn-incorrect');
+            if (inp) inp.classList.add(typed ? 'cu-input-incorrect' : '');
+            var torFoot = item.querySelector('.cu-ex-foot');
+            if (torFoot && !torFoot.querySelector('.cu-item-toggle-btn')) {
+              if (inp) {
+                inp.setAttribute('data-student-value', typed);
+                inp.setAttribute('data-correct-value', answer.split(/\s*\/\s*/)[0]);
+                inp.setAttribute('data-correct-raw', answer);
+              }
+              var torToggle = document.createElement('button');
+              torToggle.type = 'button';
+              torToggle.className = 'cu-item-toggle-btn';
+              torToggle.setAttribute('data-mode', 'student');
+              torToggle.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> Show correct answer';
+              (function(capturedItem) {
+                torToggle.addEventListener('click', function() { BentoGrid._toggleCuItemAnswer(this, capturedItem); });
+              })(item);
+              var torAnsDiv = item.querySelector('.cu-answer');
+              if (torAnsDiv) torAnsDiv.style.display = 'none';
+              torFoot.appendChild(torToggle);
+            }
+          }
+        }
+      });
+      // Handle word-replace items
+      sec.querySelectorAll('.cu-wr-item').forEach(function(item) {
+        totalItems++;
+        var answer = (item.getAttribute('data-answer') || '').trim();
+        var sel = item.querySelector('.cu-wr-select');
+        var given = sel ? sel.value.trim() : '';
+        if (sel) sel.disabled = true;
+        var isTickAnswer = (answer === '\u2713');
+        var ok = given !== '' && (
+          isTickAnswer ? (given === '\u2713') : (given.toLowerCase() === answer.toLowerCase())
+        );
+        if (ok) {
+          correctItems++;
+          if (sel) sel.classList.add('cu-input-correct');
+        } else {
+          if (sel) sel.classList.add('cu-input-incorrect');
+          var wrAnsDiv = item.querySelector('.cu-answer');
+          if (wrAnsDiv) wrAnsDiv.style.display = '';
+        }
+      });
+      sec.querySelectorAll('.cu-ex-item:not(.cu-yn-item):not(.cu-tor-item):not(.cu-wr-item)').forEach(function(item) {
         var answer = (item.getAttribute('data-answer') || '').trim();
         var answerParts = answer.split(/,\s*/);
         // For sync-items, only check one representative input (all are synced to the same value)

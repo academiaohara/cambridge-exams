@@ -3249,3 +3249,109 @@
     grid-column: 1;
   }
 }
+
+/* ── OK-toggle button for yn/tick exercises ─────────────────────────── */
+.cu-yn-ok {
+  padding: 4px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #d1d5db;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.cu-yn-ok.cu-yn-selected {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+}
+
+/* Word-tick layout (word chip + OK button) */
+.cu-yn-word-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  flex: 1;
+}
+
+.cu-yn-word-chip {
+  display: inline-block;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* ── Tick-or-rewrite (cu-tor) items ─────────────────────────────────── */
+.cu-tor-item {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.cu-tor-row {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.cu-tor-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.cu-tor-input {
+  flex: 1;
+  min-width: 160px;
+}
+
+/* ── Word-replace (cu-wr) items ──────────────────────────────────────── */
+.cu-wr-item {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.cu-wr-row {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.cu-wr-select {
+  margin-top: 2px;
+  padding: 6px 10px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #fff;
+  cursor: pointer;
+  max-width: 300px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.cu-wr-select.cu-input-correct {
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.08);
+}
+
+.cu-wr-select.cu-input-incorrect {
+  border-color: #dc2626;
+  background: rgba(220, 38, 38, 0.08);
+}

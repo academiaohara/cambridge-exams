@@ -887,7 +887,8 @@
             "sentence": "(10) ......",
             "answer": "bureaucracy"
           }
-        ]
+        ],
+        "type": "cloze-passage"
       },
       "E": {
         "title": "Correct the incorrect word",
@@ -933,6 +934,19 @@
             "sentence": "Substantial waves of **charity** from Eastern Europe to North America in the early twentieth century reshaped entire cities.",
             "answer": "immigration"
           }
+        ],
+        "exerciseType": "word-replace",
+        "words": [
+          "abolish",
+          "advocate",
+          "alleviate",
+          "charity",
+          "class",
+          "heritage",
+          "immigration",
+          "industrial action",
+          "prosecute",
+          "privileged"
         ]
       },
       "F": {
@@ -1093,7 +1107,8 @@
             "sentence": "Research consistently shows that what members of a young person's peer (10) ………………… think carries far more weight than the opinion of any authority figure.",
             "answer": "group"
           }
-        ]
+        ],
+        "continuous": true
       },
       "J": {
         "title": "One word for three sentences",
@@ -1295,55 +1310,43 @@
         "instructions": "Use the word given in capitals at the end of the line to form a word that fits in the space in the same line.",
         "questions": [
           {
-            "sentence": "Many citizens describe feeling completely (1) ...... when dealing with large government departments.",
-            "answer": "powerless",
-            "capital": "POWER"
+            "sentence": "Many citizens describe feeling completely (1) ...... **POWER** when dealing with large government departments.",
+            "answer": "powerless"
           },
           {
-            "sentence": "Critics argue that too many public bodies have become rigid and (2) ......, resistant to any form of meaningful change.",
-            "answer": "institutionalised",
-            "capital": "INSTITUTE"
+            "sentence": "Critics argue that too many public bodies have become rigid and (2) ...... **INSTITUTE**, resistant to any form of meaningful change.",
+            "answer": "institutionalised"
           },
           {
-            "sentence": "Most staff carry out their responsibilities (3) ......, but a minority appear indifferent to the consequences of their decisions.",
-            "answer": "dutifully",
-            "capital": "DUTY"
+            "sentence": "Most staff carry out their responsibilities (3) ...... **DUTY**, but a minority appear indifferent to the consequences of their decisions.",
+            "answer": "dutifully"
           },
           {
-            "sentence": "A few officials adopt an (4) ...... approach, citing procedure at every turn and refusing to make exceptions even when what is (5) ...... under the rules is plainly unfair.",
+            "sentence": "A few officials adopt an (4) ...... **OFFICE** approach, citing procedure at every turn and refusing to make exceptions even when what is (5) ...... **PERMIT** under the rules is plainly unfair.",
             "answer": [
               "officious",
               "permissible"
-            ],
-            "capital": [
-              "OFFICE",
-              "PERMIT"
             ]
           },
           {
-            "sentence": "Public sector headcount has grown (6) ...... over the past decade, far outpacing population growth.",
-            "answer": "dramatically",
-            "capital": "DRAMA"
+            "sentence": "Public sector headcount has grown (6) ...... **DRAMA** over the past decade, far outpacing population growth.",
+            "answer": "dramatically"
           },
           {
-            "sentence": "This trend may be a useful (7) ...... of the extent to which governments have expanded their reach into everyday life.",
-            "answer": "indication",
-            "capital": "INDICATE"
+            "sentence": "This trend may be a useful (7) ...... **INDICATE** of the extent to which governments have expanded their reach into everyday life.",
+            "answer": "indication"
           },
           {
-            "sentence": "A leading newspaper has called it a (8) ...... misuse of public funds that cannot go unchallenged.",
-            "answer": "criminal",
-            "capital": "CRIME"
+            "sentence": "A leading newspaper has called it a (8) ...... **CRIME** misuse of public funds that cannot go unchallenged.",
+            "answer": "criminal"
           },
           {
-            "sentence": "I found the columnist's case for a radical reduction in the public payroll surprisingly (9) ...... .",
-            "answer": "persuasive",
-            "capital": "PERSUADE"
+            "sentence": "I found the columnist's case for a radical reduction in the public payroll surprisingly (9) ...... **PERSUADE** .",
+            "answer": "persuasive"
           },
           {
-            "sentence": "Our country has (10) ...... allowed its administrative apparatus to grow beyond what any democratic society should tolerate.",
-            "answer": "arguably",
-            "capital": "ARGUE"
+            "sentence": "Our country has (10) ...... **ARGUE** allowed its administrative apparatus to grow beyond what any democratic society should tolerate.",
+            "answer": "arguably"
           }
         ]
       },
