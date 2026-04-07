@@ -1433,7 +1433,8 @@
         var numMatch = sent.match(/\((\d+)\)/);
         var num = numMatch ? parseInt(numMatch[1]) : (qi + 1);
         answerMap[num] = q.answer || '';
-        // Extract trailing ALL-CAPS hint word in parens, e.g. (SAY) or (SPEAK)
+        // Extract trailing ALL-CAPS hint word in parens at end of sentence.
+        // Matches "(WORD)" or "(WORD1 / WORD2)" e.g. "(SAY)", "(SPEAK)", "(EXPRESS / EXPRESSIVE)"
         var hintMatch = sent.match(/\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/);
         if (hintMatch) hintMap[num] = hintMatch[1];
       });
