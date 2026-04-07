@@ -1045,30 +1045,12 @@
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
           }
-          var hasInteractiveRv;
-          if (section.passage && rvItems.length && rvItems[0] && rvItems[0].options) {
-            // Multiple-choice passage: render as a single text with clickable gap pills
-            html += self._renderCuMcPassageExercise(
-              { passage: section.passage, questions: rvItems },
-              'rv-' + section.title.replace(/\W+/g, ''),
-              rvSecId
-            );
-            hasInteractiveRv = false; // footer already added by _renderCuMcPassageExercise
-          } else if (section.passage) {
-            // Word-formation passage
-            html += self._renderCuPassageExercise(
-              { passage: section.passage, questions: rvItems },
-              'rv-' + section.title.replace(/\W+/g, ''),
-              rvSecId
-            );
-            hasInteractiveRv = false; // footer already added by _renderCuPassageExercise
-          } else {
-            hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
-            html += '<div class="cu-ex-items">';
-            html += self._renderCuExItemsList(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
-            html += '</div>';
-            if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
-          }
+          html += self._renderCuWordBank(section.words);
+          html += '<div class="cu-ex-items">';
+          var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
+          html += self._renderCuExItemsList(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId, true);
+          html += '</div>';
+          if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
           html += '</div>';
         }
       });
@@ -1190,17 +1172,8 @@
         btn.disabled = false;
         btn.classList.remove('cu-yn-selected', 'cu-yn-correct', 'cu-yn-incorrect', 'cu-yn-correct-reveal');
       });
-      // Reset drag-category exercises
-      sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
-        var exId = exEl.id;
-        var pool = document.getElementById(exId + '-pool');
-        exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
-          chip.classList.remove('cu-drag-chip-correct', 'cu-drag-chip-incorrect', 'cu-drag-chip-unplaced');
-          chip.setAttribute('draggable', 'true');
-          chip.style.cursor = '';
-          if (pool) pool.appendChild(chip);
-        });
-      });
+      // Re-enable OK chip buttons
+      sec.querySelectorAll('.cu-ok-chip').forEach(function(btn) { btn.disabled = false; });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
         pill.classList.remove('cu-mc-gap-pill-filled');
@@ -1849,11 +1822,10 @@
       });
     },
 
-    _renderCuExItemsList: function(items, idBase, secId, opts) {
+    _renderCuExItemsList: function(items, idBase, secId, noPagination) {
       var self = this;
       if (!items || !items.length) return '';
-      var noPaginate = opts && opts.noPaginate;
-      if (noPaginate || items.length <= CU_PAGE_SIZE) {
+      if (noPagination || items.length <= CU_PAGE_SIZE) {
         var html = '';
         items.forEach(function(item, iIdx) {
           html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx);
@@ -2067,7 +2039,7 @@
       //   boldMarker  – text enclosed in **double asterisks**
       var numParen    = '(\\(\\d+\\)\\s+)?';
       var hintParen   = '\\(([^)]+)\\)';
-      var gapMarker   = '[.\\u2026]{5,}';
+      var gapMarker   = '[._\\u2026]{5,}';
       var boldMarker  = '\\*\\*[^*]+\\*\\*';
       var strikeMarker = '\\*[^*]+\\*';
       var tokenRegex = new RegExp(
@@ -2181,11 +2153,14 @@
       // hint-gap pill (with no number yet) so the number is displayed inside the pill.
       // This handles error-correction sentences like "(2) **hadSeen** ..." where the item
       // number should appear as the pill's num badge rather than as plain text.
+      // Also applies to gap-hint pills (e.g. "(1) ...... (HIGH)") so the number appears
+      // inside the pill rather than as bold text before it.
       for (var npi = 1; npi < parts.length; npi++) {
-        if (parts[npi].type === 'hint-gap' && parts[npi].num === null) {
+        var pillType = parts[npi].type;
+        if ((pillType === 'hint-gap' || pillType === 'gap-hint') && parts[npi].num === null) {
           var prevPart = parts[npi - 1];
           if (prevPart && prevPart.type === 'text') {
-            var numPrefixMatch = prevPart.val.match(/^(.*)\s*\((\d+)\)\s*$/);
+            var numPrefixMatch = prevPart.val.match(/^([\s\S]*?)\s*\((\d+)\)\s*$/);
             if (numPrefixMatch) {
               parts[npi].num = numPrefixMatch[2];
               prevPart.val = numPrefixMatch[1];
@@ -2241,6 +2216,14 @@
           if (p.hint) {
             pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(p.hint) + '</span>';
           }
+          // Error-correction hint: the hint is the bold word from the original sentence that may
+          // or may not be correct. Word-formation root hints are ALL-CAPS (e.g. "HIGH", "EXTEND"),
+          // so a hint with mixed/lowercase characters and no number badge identifies an
+          // error-correction item where the student can mark the phrase as "OK" (correct as written).
+          var isErrHint = p.hint && !p.num && !/^[A-Z]{2,}$/.test(p.hint.trim());
+          if (isErrHint) {
+            pillHtml += '<button type="button" class="cu-ok-chip" onclick="BentoGrid._fillOkChip(this)" title="Mark as correct (OK)">\u2713 OK</button>';
+          }
           pillHtml += '</span>';
           return pillHtml;
         } else if (p.type === 'gap-group') {
@@ -2282,6 +2265,18 @@
         btn.classList.add('cu-option-selected');
       }
       BentoGrid._saveCuExSectionState(sec || btn.closest('.cu-section'));
+    },
+
+    // Fill the input inside an error-correction hint pill with "OK" (correct as written).
+    // The chip itself is disabled when the input is locked, so no need to re-check state here.
+    _fillOkChip: function(btn) {
+      var pill = btn.closest('.cu-hint-pill');
+      if (!pill) return;
+      var input = pill.querySelector('.cu-gap-input');
+      if (input) {
+        input.value = 'OK';
+        BentoGrid._resizeCuInput(input);
+      }
     },
 
     // Auto-resize a course gap input to fit its content (like test inputs)
@@ -2952,7 +2947,8 @@
         if (section.type === 'exercise') {
           var rvSecId = 'cu-sec-' + sectionIdx;
           var rvItems = section.items || [];
-          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvItems.length + '">' +
+          var multiSelectAttr = section.multiSelect ? ' data-multi-select="true"' : '';
+          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvItems.length + '"' + multiSelectAttr + '>' +
             '<div class="cu-section-title">' + _mi('assignment') + ' ' + self._escapeHTML(section.title) + '</div>';
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
@@ -2964,9 +2960,10 @@
                 : '') +
             '</div>';
           }
+          html += self._renderCuWordBank(section.words);
           html += '<div class="cu-ex-items">';
           var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
-          html += self._renderCuExItemsList(rvItems, 'pt-' + sectionIdx + '-' + section.title.replace(/\W+/g, ''), rvSecId);
+          html += self._renderCuExItemsList(rvItems, 'pt-' + sectionIdx + '-' + section.title.replace(/\W+/g, ''), rvSecId, true);
           html += '</div>';
           if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
           html += '</div>';
@@ -4011,9 +4008,10 @@
       // Hide "Show answers" button — per-item toggles replace it after checking
       var showBtn = sec.querySelector('.cu-show-all-btn');
       if (showBtn) showBtn.style.display = 'none';
-      // Disable all inputs and option buttons
+      // Disable all inputs, option buttons, and OK chips
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) { input.disabled = true; });
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) { btn.disabled = true; });
+      sec.querySelectorAll('.cu-ok-chip').forEach(function(btn) { btn.disabled = true; });
       // Show retry button
       var retryBtn = sec.querySelector('.cu-retry-btn');
       if (retryBtn) retryBtn.style.display = '';
@@ -4117,6 +4115,8 @@
         // Disable check button while answers are shown
         var checkBtn = sec.querySelector('.cu-check-btn');
         if (checkBtn) checkBtn.disabled = true;
+        // Disable OK chips while answers are shown
+        sec.querySelectorAll('.cu-ok-chip').forEach(function(btn) { btn.disabled = true; });
 
         // Text inputs from cu-ex-items
         sec.querySelectorAll('.cu-ex-item, .cu-sync-item').forEach(function(item) {
@@ -4286,6 +4286,8 @@
         // Re-enable check button when answers are hidden
         var checkBtn = sec.querySelector('.cu-check-btn');
         if (checkBtn) checkBtn.disabled = false;
+        // Re-enable OK chips when answers are hidden
+        sec.querySelectorAll('.cu-ok-chip').forEach(function(btn) { btn.disabled = false; });
 
         sec.querySelectorAll('.cu-gap-input').forEach(function(inp) {
           var saved = inp.getAttribute('data-saved-value');
