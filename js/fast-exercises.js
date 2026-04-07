@@ -4905,11 +4905,11 @@
 
       function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
-      function add(word, clue, type) {
+      function add(word, clue, type, example) {
         var key = word.toLowerCase();
         if (!WORD_RE.test(key) || seen[key]) return;
         seen[key] = 1;
-        pool.push({ word: word.toUpperCase(), clue: self._cwSanitizeClue(word, clue), type: type });
+        pool.push({ word: word.toUpperCase(), clue: self._cwSanitizeClue(word, clue), type: type, example: example || '' });
       }
 
       // 1. Vocabulary dictionary
@@ -4918,7 +4918,7 @@
         if (vocabRes.ok) {
           var vd = await vocabRes.json();
           (vd.entries || []).forEach(function(e) {
-            if (e.level === levelId) add(e.word, e.definition, 'vocabulary');
+            if (e.level === levelId) add(e.word, e.definition, 'vocabulary', e.example);
           });
         }
       } catch(e) {}
@@ -5325,7 +5325,7 @@
         grid[center][startC + i] = firstW[i];
         dirGrid[center][startC + i].across = true;
       }
-      placed.push({ word: firstW, clue: self._cwSanitizeClue(eligible[0].word, eligible[0].clue || eligible[0].definition || ''), definition: eligible[0].definition || '', row: center, col: startC, dir: 'across', number: 0 });
+      placed.push({ word: firstW, clue: self._cwSanitizeClue(eligible[0].word, eligible[0].clue || eligible[0].definition || ''), definition: eligible[0].definition || '', example: eligible[0].example || '', row: center, col: startC, dir: 'across', number: 0 });
 
       for (var wi = 1; wi < eligible.length && placed.length < CW_MAX_PLACED; wi++) {
         var wordObj = eligible[wi];
@@ -5366,7 +5366,7 @@
             grid[pr2][pc2] = word[i];
             dirGrid[pr2][pc2][pd] = true;
           }
-          placed.push({ word: word, clue: self._cwSanitizeClue(wordObj.word, wordObj.clue || wordObj.definition || ''), definition: wordObj.definition || '', row: pr, col: pc, dir: pd, number: 0 });
+          placed.push({ word: word, clue: self._cwSanitizeClue(wordObj.word, wordObj.clue || wordObj.definition || ''), definition: wordObj.definition || '', example: wordObj.example || '', row: pr, col: pc, dir: pd, number: 0 });
         }
       }
 
@@ -6087,7 +6087,8 @@
         '<span class="vocab-cw-active-num">' + activeWord.number + (activeWord.dir === 'across' ? 'A' : 'D') + '</span> ' +
         FastExercises._escapeHTML(displayClue) + typeBadgeHtml +
         (wordSolved
-          ? ' <strong class="vocab-cw-active-word">→ ' + FastExercises._escapeHTML(activeWord.word.toLowerCase()) + '</strong>'
+          ? ' <strong class="vocab-cw-active-word">→ ' + FastExercises._escapeHTML(activeWord.word.toLowerCase()) + '</strong>' +
+            (activeWord.example ? '<em class="vocab-cw-active-example">&ldquo;' + FastExercises._escapeHTML(activeWord.example) + '&rdquo;</em>' : '')
           : '');
     },
 
