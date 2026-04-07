@@ -1744,15 +1744,17 @@
       //   hintParen   – hint text in parens like "(you)" or "(I / just)"
       //   gapMarker   – five or more dots/ellipsis characters
       //   boldMarker  – text enclosed in **double asterisks**
-      var numParen   = '(\\(\\d+\\)\\s+)?';
-      var hintParen  = '\\(([^)]+)\\)';
-      var gapMarker  = '[.\\u2026]{5,}';
-      var boldMarker = '\\*\\*[^*]+\\*\\*';
+      var numParen    = '(\\(\\d+\\)\\s+)?';
+      var hintParen   = '\\(([^)]+)\\)';
+      var gapMarker   = '[.\\u2026]{5,}';
+      var boldMarker  = '\\*\\*[^*]+\\*\\*';
+      var strikeMarker = '\\*[^*]+\\*';
       var tokenRegex = new RegExp(
         numParen + hintParen + '\\s*' + gapMarker +    // Pattern A: (num?) (hint) gap
         '|' + gapMarker + '\\s*' + hintParen +         // Pattern B: gap (hint)
         '|' + gapMarker +                              // Simple gap
-        '|' + boldMarker,                              // Bold text
+        '|' + boldMarker +                             // Bold text **...**
+        '|' + strikeMarker,                            // Strikethrough text *...*
         'g'
       );
       var lastIndex = 0;
@@ -1778,14 +1780,17 @@
         } else if (match[3] !== undefined) {
           // Pattern B: gap (hint)
           parts.push({ type: 'gap-hint', hint: match[3].trim() });
-        } else if (m.charAt(0) === '*') {
-          // Bold marker
+        } else if (m.startsWith('**')) {
+          // Bold marker **...**
           var inner = m.slice(2, -2);
           if (inner.indexOf('/') !== -1) {
             parts.push({ type: 'options', parts: inner.split(/\s*\/\s*/) });
           } else {
             parts.push({ type: 'bold', val: inner });
           }
+        } else if (m.charAt(0) === '*') {
+          // Strikethrough marker *...*
+          parts.push({ type: 'strike', val: m.slice(1, -1) });
         } else {
           parts.push({ type: 'gap' });
         }
@@ -1894,6 +1899,8 @@
           return self._formatTextWithHints(p.val);
         } else if (p.type === 'bold') {
           return '<strong>' + self._escapeHTML(p.val) + '</strong>';
+        } else if (p.type === 'strike') {
+          return '<s>' + self._escapeHTML(p.val) + '</s>';
         } else if (p.type === 'gap') {
           return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="..." oninput="BentoGrid._resizeCuInput(this)">';
         } else if (p.type === 'gap-wf') {
