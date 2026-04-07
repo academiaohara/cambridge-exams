@@ -780,7 +780,7 @@
           var items = section.items || [];
           var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
           html += '<div class="cu-ex-items">';
-          html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
+          html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous);
           html += '</div>';
 
           if (hasInteractive) html += self._renderCuExFooter(secId);
@@ -953,10 +953,13 @@
           } else if (ex.passage) {
             // Passage-based word formation (e.g. Exercise O)
             html += self._renderCuPassageExercise(ex, idBase, secId);
+          } else if (!questions.length && ex.words && ex.words.length && ex.answer) {
+            // Word-tick exercise: click words to tick them as valid (e.g. Exercise P)
+            html += self._renderCuWordTickExercise(ex, idBase, secId);
           } else {
             var hasInteractive = questions.some(function(q) { return self._itemHasInteractive(q); });
             html += '<div class="cu-ex-items">';
-            html += self._renderCuExItemsList(questions, idBase, secId);
+            html += self._renderCuExItemsList(questions, idBase, secId, ex.continuous);
             html += '</div>';
             if (hasInteractive) html += self._renderCuExFooter(secId);
           }
@@ -1050,13 +1053,67 @@
       return '<div class="cu-ex-wordbank">' +
         '<span class="material-symbols-outlined">view_list</span>' +
         words.map(function(w) {
-          return '<span class="cu-wordbank-item" role="button" tabindex="0" onclick="BentoGrid._toggleWordBankItem(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordBankItem(this);event.preventDefault();}" title="Mark as used">' + self._escapeHTML(w) + '</span>';
+          return '<span class="cu-wordbank-item" role="button" tabindex="0" onclick="BentoGrid._clickWordBankItem(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._clickWordBankItem(this);event.preventDefault();}" title="Click to fill gap">' + self._escapeHTML(w) + '</span>';
         }).join('') +
         '</div>';
     },
 
+    _clickWordBankItem: function(el) {
+      var word = el.textContent.trim();
+      var sec = el.closest('.cu-section');
+      if (!sec) { el.classList.toggle('cu-wordbank-used'); return; }
+      // Find the last focused gap input in this section, or the first empty one
+      var inputs = Array.prototype.slice.call(sec.querySelectorAll('.cu-gap-input:not([disabled])'));
+      var target = null;
+      // Prefer a focused input
+      var focused = document.activeElement;
+      if (focused && focused.classList.contains('cu-gap-input') && sec.contains(focused) && !focused.disabled) {
+        target = focused;
+      } else if (BentoGrid._lastFocusedCuInput && sec.contains(BentoGrid._lastFocusedCuInput) && !BentoGrid._lastFocusedCuInput.disabled) {
+        target = BentoGrid._lastFocusedCuInput;
+      } else {
+        // First empty input
+        target = inputs.find(function(inp) { return (inp.value || '').trim() === ''; }) || inputs[0] || null;
+      }
+      if (target) {
+        target.value = word;
+        BentoGrid._resizeCuInput(target);
+        el.classList.add('cu-wordbank-used');
+        target.focus();
+      } else {
+        el.classList.toggle('cu-wordbank-used');
+      }
+    },
+
+    _lastFocusedCuInput: null,
+
     _toggleWordBankItem: function(el) {
       el.classList.toggle('cu-wordbank-used');
+    },
+
+    // Renders a word-tick exercise: a grid of words the student ticks as valid.
+    // Used for exercises like Exercise P where there are no sentence questions,
+    // just a list of words to evaluate with a comma-separated answer string.
+    _renderCuWordTickExercise: function(ex, idBase, secId) {
+      var self = this;
+      var words = ex.words || [];
+      var answerWords = (ex.answer || '').split(/,\s*/).map(function(w) { return w.trim().toLowerCase(); }).filter(Boolean);
+      var html = '<div class="cu-word-tick-grid" id="' + secId + '-wtg">';
+      words.forEach(function(word, idx) {
+        var wId = idBase + '-wt-' + idx;
+        html += '<button class="cu-word-tick-btn" id="' + wId + '" data-word="' + self._escapeHTML(word) + '" data-answer-words="' + self._escapeHTML(answerWords.join(',')) + '" onclick="BentoGrid._toggleWordTick(this)" type="button">' +
+          self._escapeHTML(word) +
+          '</button>';
+      });
+      html += '</div>';
+      html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    _toggleWordTick: function(btn) {
+      if (btn.disabled) return;
+      btn.classList.toggle('cu-word-tick-selected');
+      BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
     _renderCuExFooter: function(secId) {
@@ -1129,6 +1186,11 @@
       sec.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
         btn.disabled = false;
         btn.classList.remove('cu-yn-selected', 'cu-yn-correct', 'cu-yn-incorrect', 'cu-yn-correct-reveal');
+      });
+      // Reset word-tick buttons
+      sec.querySelectorAll('.cu-word-tick-btn').forEach(function(btn) {
+        btn.disabled = false;
+        btn.classList.remove('cu-word-tick-selected', 'cu-word-tick-correct', 'cu-word-tick-incorrect', 'cu-word-tick-reveal');
       });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
@@ -1222,7 +1284,7 @@
           '<div class="cu-yn-row">' +
             '<div class="cu-ex-sentence cu-yn-sentence">' + _bold(item.sentence || '') + '</div>' +
             '<div class="cu-yn-buttons">' +
-              '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">YES</button>' +
+              '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">OK</button>' +
               '<button class="cu-yn-btn cu-yn-no" data-group="' + iId + '" data-yn="NO" onclick="BentoGrid._selectCuYn(this)" type="button">NO</button>' +
             '</div>' +
           '</div>' +
@@ -1237,8 +1299,13 @@
       var group = btn.getAttribute('data-group');
       if (!group) return;
       var siblings = document.querySelectorAll('.cu-yn-btn[data-group="' + group + '"]');
-      siblings.forEach(function(s) { s.classList.remove('cu-yn-selected'); });
-      btn.classList.add('cu-yn-selected');
+      // For single-button groups (e.g. tick-only OK button), allow toggle
+      if (siblings.length === 1) {
+        btn.classList.toggle('cu-yn-selected');
+      } else {
+        siblings.forEach(function(s) { s.classList.remove('cu-yn-selected'); });
+        btn.classList.add('cu-yn-selected');
+      }
       BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
@@ -1599,10 +1666,10 @@
       });
     },
 
-    _renderCuExItemsList: function(items, idBase, secId) {
+    _renderCuExItemsList: function(items, idBase, secId, continuous) {
       var self = this;
       if (!items || !items.length) return '';
-      if (items.length <= CU_PAGE_SIZE) {
+      if (continuous || items.length <= CU_PAGE_SIZE) {
         var html = '';
         items.forEach(function(item, iIdx) {
           html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx);
@@ -1676,6 +1743,21 @@
       // Optional read-only context sentence rendered above the interactive sentence
       var contextHtml = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
 
+      // Items with answer '✓' are "correct as is" tick exercises: render OK button only
+      if (answer === '✓') {
+        var tickGroupId = inputId + '-tick';
+        return '<div class="cu-ex-item cu-yn-item" data-answer="YES">' +
+          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          '<div class="cu-yn-row">' +
+            '<div class="cu-ex-sentence cu-yn-sentence">' + self._escapeHTML(sentence).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>') + '</div>' +
+            '<div class="cu-yn-buttons">' +
+              '<button class="cu-yn-btn cu-yn-yes" data-group="' + tickGroupId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">OK ✓</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">OK</div></div>' +
+        '</div>';
+      }
+
       var sentenceHtml;
       if (isMC) {
         sentenceHtml = self._renderCourseExMCItem(sentence, item.options, inputId);
@@ -1683,10 +1765,25 @@
         sentenceHtml = self._renderCourseExSentence(sentence, inputId);
       }
 
-      return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
+      // Detect multi-answer: item has inline options (**A/B** pattern) and answer contains '/'
+      var hasInlineChoicePattern = /\*\*[^*]*\/[^*]*\*\*/.test(sentence);
+      var multiAnswerAttr = (hasInlineChoicePattern && answer.indexOf('/') !== -1) || item.multiAnswer
+        ? ' data-multi-answer="true"' : '';
+
+      // Tick button for items with 'tick' field (e.g. fill-in + tick whether phrasal verb means X)
+      var tickHtml = '';
+      if (item.tick !== undefined) {
+        var tickGroupId2 = inputId + '-itick';
+        tickHtml = '<div class="cu-yn-buttons cu-item-tick-buttons">' +
+          '<button class="cu-yn-btn cu-yn-yes cu-item-tick-btn" data-group="' + tickGroupId2 + '" data-yn="YES" data-tick-answer="' + self._escapeHTML(item.tick || '') + '" onclick="BentoGrid._selectCuYn(this)" type="button">OK ✓</button>' +
+          '</div>';
+      }
+
+      return '<div class="cu-ex-item' + (item.tick !== undefined ? ' cu-has-tick' : '') + '"' + multiAnswerAttr + ' data-answer="' + self._escapeHTML(answer) + '"' + (item.tick !== undefined ? ' data-tick="' + self._escapeHTML(item.tick || '') + '"' : '') + '>' +
         '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
         contextHtml +
         '<div class="cu-ex-sentence">' + sentenceHtml + '</div>' +
+        (tickHtml ? '<div class="cu-item-tick-row">' + tickHtml + '</div>' : '') +
         '<div class="cu-ex-foot">' +
           '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
         '</div>' +
@@ -1699,7 +1796,7 @@
       // Replace gap markers with interactive pills that update when an option is selected.
       // Each gap gets a unique ID with a counter suffix to satisfy the uniqueness constraint.
       var pillCounter = 0;
-      var sentenceHtml = self._formatTextWithHints(sentence).replace(/[…]{3,}|\.{5,}/g, function() {
+      var sentenceHtml = self._formatTextWithHints(sentence).replace(/[…]{2,}|\.{5,}/g, function() {
         var pillId = oGroupId + '-pill' + pillCounter++;
         return '<span class="cu-mc-gap-pill" id="' + pillId + '">' + CU_MC_BLANK + '</span>';
       });
@@ -1816,7 +1913,7 @@
       //   boldMarker  – text enclosed in **double asterisks**
       var numParen    = '(\\(\\d+\\)\\s+)?';
       var hintParen   = '\\(([^)]+)\\)';
-      var gapMarker   = '[.\\u2026]{5,}';
+      var gapMarker   = '(?:[.\\u2026]{5,}|\\u2026{2,})';
       var boldMarker  = '\\*\\*[^*]+\\*\\*';
       var strikeMarker = '\\*[^*]+\\*';
       var tokenRegex = new RegExp(
@@ -2022,7 +2119,10 @@
       var group = btn.getAttribute('data-group');
       if (!group) return;
       var sec = btn.closest('.cu-section');
-      if (sec && sec.getAttribute('data-multi-select') === 'true') {
+      var item = btn.closest('.cu-ex-item');
+      var isMultiSelect = (sec && sec.getAttribute('data-multi-select') === 'true') ||
+                          (item && item.getAttribute('data-multi-answer') === 'true');
+      if (isMultiSelect) {
         // Multi-select mode: toggle the clicked button without deselecting others
         btn.classList.toggle('cu-option-selected');
       } else {
@@ -2516,6 +2616,12 @@
         if (g && btn.classList.contains('cu-yn-selected')) ynState[g] = btn.getAttribute('data-yn');
       });
       answers.ynButtons = ynState;
+      // Word-tick buttons state
+      var wordTickState = [];
+      sec.querySelectorAll('.cu-word-tick-btn').forEach(function(btn) {
+        wordTickState.push(btn.classList.contains('cu-word-tick-selected') ? 1 : 0);
+      });
+      if (wordTickState.length) answers.wordTick = wordTickState;
       var mcPassage = {};
       sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
         var secId = gap.getAttribute('data-sec-id') || '';
@@ -2552,6 +2658,12 @@
         sec.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
           var g = btn.getAttribute('data-group');
           if (g && answers.ynButtons[g] !== undefined && (btn.getAttribute('data-yn') || '') === answers.ynButtons[g]) btn.classList.add('cu-yn-selected');
+        });
+      }
+      if (answers.wordTick && Array.isArray(answers.wordTick)) {
+        var wordTickBtns = sec.querySelectorAll('.cu-word-tick-btn');
+        wordTickBtns.forEach(function(btn, i) {
+          if (answers.wordTick[i]) btn.classList.add('cu-word-tick-selected');
         });
       }
       if (answers.mcPassage) {
@@ -3301,7 +3413,8 @@
           if (g) { if (!optGroups[g]) optGroups[g] = []; optGroups[g].push(btn); }
         });
         var ynGroups = {};
-        item.querySelectorAll('.cu-yn-btn').forEach(function(btn) {
+        // Exclude tick-only buttons from unanswered detection (not clicking = valid 'NO' answer)
+        item.querySelectorAll('.cu-yn-btn:not(.cu-item-tick-btn)').forEach(function(btn) {
           var g = btn.getAttribute('data-group');
           if (g) { if (!ynGroups[g]) ynGroups[g] = []; ynGroups[g].push(btn); }
         });
@@ -3350,6 +3463,19 @@
       var totalItems = 0;
       var correctItems = 0;
       var hasMcPassage = false;
+      // Handle word-tick exercises (e.g. Exercise P)
+      sec.querySelectorAll('.cu-word-tick-btn').forEach(function(btn) {
+        totalItems++;
+        var word = (btn.getAttribute('data-word') || '').trim().toLowerCase();
+        var answerWords = (btn.getAttribute('data-answer-words') || '').split(',').map(function(w) { return w.trim().toLowerCase(); }).filter(Boolean);
+        var isSelected = btn.classList.contains('cu-word-tick-selected');
+        var isCorrect = answerWords.indexOf(word) !== -1;
+        var ok = isSelected === isCorrect;
+        btn.classList.add(ok ? 'cu-word-tick-correct' : 'cu-word-tick-incorrect');
+        if (!ok && isCorrect) btn.classList.add('cu-word-tick-reveal');
+        btn.disabled = true;
+        if (ok) correctItems++;
+      });
       // Handle MC passage exercises (multiple-choice cloze, e.g. Exercise D)
       sec.querySelectorAll('.cu-mc-passage-exercise').forEach(function(mcPassage) {
         hasMcPassage = true;
@@ -3573,7 +3699,9 @@
         });
         // Inline word-choice buttons (e.g. **word/word/word**)
         // Sort groups in DOM order by their _oN suffix so answer parts map correctly
-        var isMultiSelect = sec.getAttribute('data-multi-select') === 'true';
+        var isMultiSelectSection = sec.getAttribute('data-multi-select') === 'true';
+        var isMultiSelectItem = item.getAttribute('data-multi-answer') === 'true';
+        var isMultiSelect = isMultiSelectSection || isMultiSelectItem;
         BentoGrid._sortedOptGroupKeys(optGroups).forEach(function(gId, gIdx) {
           totalItems++;
           var btns = optGroups[gId];
@@ -3665,6 +3793,25 @@
             anyInputWrong = true;
           }
         });
+        // Check tick buttons for items with `tick` field (e.g. Exercise H)
+        var tickBtns = item.querySelectorAll('.cu-item-tick-btn');
+        if (tickBtns.length > 0) {
+          totalItems++;
+          var tickAnswer = (item.getAttribute('data-tick') || '').trim().toUpperCase();
+          var tickSelected = Array.prototype.some.call(tickBtns, function(b) { return b.classList.contains('cu-yn-selected'); });
+          var studentTickVal = tickSelected ? 'YES' : 'NO';
+          var tickOk = studentTickVal === tickAnswer;
+          tickBtns.forEach(function(b) {
+            b.disabled = true;
+            b.classList.remove('cu-yn-correct', 'cu-yn-incorrect', 'cu-yn-correct-reveal');
+            if (b.classList.contains('cu-yn-selected')) {
+              b.classList.add(tickOk ? 'cu-yn-correct' : 'cu-yn-incorrect');
+            } else if (tickAnswer === 'YES') {
+              b.classList.add('cu-yn-correct-reveal');
+            }
+          });
+          if (tickOk) correctItems++;
+        }
         // For items with wrong text inputs (not MC/choice which show correct via button reveal), add a per-item toggle button
         var hasNoOptionGroups = Object.keys(optGroups).length === 0 && Object.keys(mcGroups).length === 0;
         var hasWrongInput = inputs.length > 0 && anyInputWrong && hasNoOptionGroups;
@@ -3891,10 +4038,10 @@
               }
             });
           });
-          // YN buttons
+          // YN buttons (regular yn-items)
           var ynAnswer = (item.getAttribute('data-answer') || '').trim().toUpperCase();
           var ynGroups = {};
-          item.querySelectorAll('.cu-yn-btn').forEach(function(b) {
+          item.querySelectorAll('.cu-yn-btn:not(.cu-item-tick-btn)').forEach(function(b) {
             var g = b.getAttribute('data-group');
             if (g) { if (!ynGroups[g]) ynGroups[g] = []; ynGroups[g].push(b); }
           });
@@ -3905,6 +4052,13 @@
               }
             });
           });
+          // Tick buttons (cu-item-tick-btn): reveal correct state based on data-tick attribute
+          var tickAnswer = (item.getAttribute('data-tick') || '').trim().toUpperCase();
+          if (tickAnswer) {
+            item.querySelectorAll('.cu-item-tick-btn').forEach(function(b) {
+              if (tickAnswer === 'YES') b.classList.add('cu-yn-correct-reveal');
+            });
+          }
         });
 
         // Passage inputs (data-passage-num)
@@ -3973,6 +4127,14 @@
             slot.textContent = correctText;
             slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
           }
+        });
+
+        // Word-tick exercise: reveal correct state
+        sec.querySelectorAll('.cu-word-tick-btn').forEach(function(wBtn) {
+          var word = (wBtn.getAttribute('data-word') || '').trim().toLowerCase();
+          var answerWords = (wBtn.getAttribute('data-answer-words') || '').split(',').map(function(w) { return w.trim().toLowerCase(); }).filter(Boolean);
+          var isCorrect = answerWords.indexOf(word) !== -1;
+          if (isCorrect) wBtn.classList.add('cu-word-tick-reveal');
         });
       } else {
         // Hide answers: restore original values
@@ -4045,6 +4207,11 @@
           }
           gap.removeAttribute('data-saved-slot-text');
           gap.removeAttribute('data-saved-slot-class');
+        });
+
+        // Word-tick exercise: remove reveal styling
+        sec.querySelectorAll('.cu-word-tick-btn').forEach(function(wBtn) {
+          wBtn.classList.remove('cu-word-tick-reveal');
         });
       }
     },
@@ -4268,4 +4435,11 @@
       '</div>';
     }
   });
+
+  // Track the last focused gap input for word bank click-to-fill
+  document.addEventListener('focusin', function(e) {
+    if (e.target && e.target.classList && e.target.classList.contains('cu-gap-input')) {
+      BentoGrid._lastFocusedCuInput = e.target;
+    }
+  }, true);
 })();
