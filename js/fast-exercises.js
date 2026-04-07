@@ -4909,7 +4909,7 @@
         var key = word.toLowerCase();
         if (!WORD_RE.test(key) || seen[key]) return;
         seen[key] = 1;
-        pool.push({ word: word.toUpperCase(), clue: clue, type: type });
+        pool.push({ word: word.toUpperCase(), clue: self._cwSanitizeClue(word, clue), type: type });
       }
 
       // 1. Vocabulary dictionary
@@ -5283,6 +5283,16 @@
       return count;
     },
 
+    _cwSanitizeClue: function(word, clue) {
+      if (!clue || !word) return clue || '';
+      var escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var re = new RegExp('\\b' + escaped + '\\b', 'gi');
+      var sanitized = clue.replace(re, '___').trim();
+      // If the clue became too short after removal, keep the original
+      if (sanitized.replace(/[_\s|]/g, '').length < 8) return clue;
+      return sanitized;
+    },
+
     _generateCrossword: function(words) {
       var SIZE = 21;
       var self = this;
@@ -5315,7 +5325,7 @@
         grid[center][startC + i] = firstW[i];
         dirGrid[center][startC + i].across = true;
       }
-      placed.push({ word: firstW, clue: eligible[0].clue || eligible[0].definition || '', definition: eligible[0].definition || '', row: center, col: startC, dir: 'across', number: 0 });
+      placed.push({ word: firstW, clue: self._cwSanitizeClue(eligible[0].word, eligible[0].clue || eligible[0].definition || ''), definition: eligible[0].definition || '', row: center, col: startC, dir: 'across', number: 0 });
 
       for (var wi = 1; wi < eligible.length && placed.length < CW_MAX_PLACED; wi++) {
         var wordObj = eligible[wi];
@@ -5356,7 +5366,7 @@
             grid[pr2][pc2] = word[i];
             dirGrid[pr2][pc2][pd] = true;
           }
-          placed.push({ word: word, clue: wordObj.clue || wordObj.definition || '', definition: wordObj.definition || '', row: pr, col: pc, dir: pd, number: 0 });
+          placed.push({ word: word, clue: self._cwSanitizeClue(wordObj.word, wordObj.clue || wordObj.definition || ''), definition: wordObj.definition || '', row: pr, col: pc, dir: pd, number: 0 });
         }
       }
 
