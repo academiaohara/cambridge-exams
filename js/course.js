@@ -1072,8 +1072,8 @@
       } else if (BentoGrid._lastFocusedCuInput && sec.contains(BentoGrid._lastFocusedCuInput) && !BentoGrid._lastFocusedCuInput.disabled) {
         target = BentoGrid._lastFocusedCuInput;
       } else {
-        // First empty input
-        target = inputs.find(function(inp) { return (inp.value || '').trim() === ''; }) || inputs[0] || null;
+        // First empty input only — never overwrite a filled input as fallback
+        target = inputs.find(function(inp) { return (inp.value || '').trim() === ''; }) || null;
       }
       if (target) {
         target.value = word;
@@ -4438,7 +4438,8 @@
 
   // Track the last focused gap input for word bank click-to-fill
   document.addEventListener('focusin', function(e) {
-    if (e.target && e.target.classList && e.target.classList.contains('cu-gap-input')) {
+    if (e.target && e.target.classList && e.target.classList.contains('cu-gap-input') &&
+        e.target.closest('.cu-section')) {
       BentoGrid._lastFocusedCuInput = e.target;
     }
   }, true);
