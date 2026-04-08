@@ -204,7 +204,11 @@
           }
         }
         if (segments.length === 3 && segments[1] === 'theory') {
-          return { view: 'courseTheory', level: segments[2].toUpperCase() };
+          var theoryLevel = segments[2].toLowerCase();
+          if (VALID_LEVELS.indexOf(theoryLevel) !== -1) {
+            return { view: 'courseTheory', level: theoryLevel.toUpperCase() };
+          }
+          return { view: 'courseTheory' };
         }
         if (segments.length >= 2 && segments[1].indexOf('block-') === 0) {
           var blockKey = segments[1].replace('block-', '');
