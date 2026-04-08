@@ -1,10 +1,10 @@
 {
-  "id": "B2-reading-public-health-campaigns",
+  "id": "Test50-reading-1",
   "examId": "Test50",
-  "section": "reading-and-use-of-english",
+  "section": "reading",
   "part": 1,
   "title": "Public Health Campaigns",
-  "type": "multiple-choice-text",
+  "type": "multiple-choice",
   "time": 15,
   "totalQuestions": 8,
   "description": "For questions 1–8, read the text below and choose which answer (A, B, C or D) best completes each gap.",
@@ -12,19 +12,104 @@
     "text": "Public health campaigns have been instrumental in improving the wellbeing of populations (0). the world. From encouraging vaccinations to promoting healthy eating, these initiatives aim to change behaviours and prevent disease on a large scale.\n\nOne of the most successful campaigns in history was the effort to (1). awareness about the dangers of smoking. Through a combination of advertising restrictions, health warnings and educational programmes, many countries have seen smoking rates (2). dramatically over recent decades. This achievement demonstrates how sustained public messaging can (3). about significant social change.\n\nHowever, designing effective campaigns is not straightforward. Health officials must (4). into account cultural differences and varying levels of health literacy. Messages that work well in one community may (5). to resonate in another. Modern campaigns increasingly (6). use of social media and digital platforms to reach younger audiences. Research shows that campaigns are most effective when they (7). emotional responses rather than simply presenting facts. Looking ahead, public health experts will need to adapt their strategies to (8). up with rapidly changing communication technologies.",
     "example": {
       "number": 0,
-      "options": ["A) through", "B) across", "C) over", "D) along"],
+      "options": [
+        "A) through",
+        "B) across",
+        "C) over",
+        "D) along"
+      ],
       "correct": "B",
       "explanation": "'Across the world' es la expresión correcta para 'en todo el mundo'."
     },
     "questions": [
-      {"number": 1, "options": ["A) rise", "B) grow", "C) raise", "D) lift"], "correct": "C", "explanation": "'Raise awareness' es la colocación fija para crear conciencia sobre algo."},
-      {"number": 2, "options": ["A) reduce", "B) lower", "C) drop", "D) decrease"], "correct": "C", "explanation": "'Drop dramatically' se usa para describir una disminución significativa."},
-      {"number": 3, "options": ["A) carry", "B) take", "C) come", "D) bring"], "correct": "D", "explanation": "'Bring about change' es la colocación correcta para provocar cambios."},
-      {"number": 4, "options": ["A) put", "B) bring", "C) take", "D) get"], "correct": "C", "explanation": "'Take into account' es la expresión fija para tener en cuenta algo."},
-      {"number": 5, "options": ["A) miss", "B) lack", "C) lose", "D) fail"], "correct": "D", "explanation": "'Fail to' significa no lograr o no conseguir hacer algo."},
-      {"number": 6, "options": ["A) take", "B) have", "C) make", "D) do"], "correct": "C", "explanation": "'Make use of' es la expresión correcta para utilizar o aprovechar algo."},
-      {"number": 7, "options": ["A) cause", "B) trigger", "C) create", "D) produce"], "correct": "B", "explanation": "'Trigger responses' es la colocación correcta para provocar respuestas."},
-      {"number": 8, "options": ["A) keep", "B) catch", "C) stay", "D) hold"], "correct": "A", "explanation": "'Keep up with' significa mantenerse al día con algo que cambia."}
+      {
+        "number": 1,
+        "options": [
+          "A) rise",
+          "B) grow",
+          "C) raise",
+          "D) lift"
+        ],
+        "correct": "C",
+        "explanation": "'Raise awareness' es la colocación fija para crear conciencia sobre algo."
+      },
+      {
+        "number": 2,
+        "options": [
+          "A) reduce",
+          "B) lower",
+          "C) drop",
+          "D) decrease"
+        ],
+        "correct": "C",
+        "explanation": "'Drop dramatically' se usa para describir una disminución significativa."
+      },
+      {
+        "number": 3,
+        "options": [
+          "A) carry",
+          "B) take",
+          "C) come",
+          "D) bring"
+        ],
+        "correct": "D",
+        "explanation": "'Bring about change' es la colocación correcta para provocar cambios."
+      },
+      {
+        "number": 4,
+        "options": [
+          "A) put",
+          "B) bring",
+          "C) take",
+          "D) get"
+        ],
+        "correct": "C",
+        "explanation": "'Take into account' es la expresión fija para tener en cuenta algo."
+      },
+      {
+        "number": 5,
+        "options": [
+          "A) miss",
+          "B) lack",
+          "C) lose",
+          "D) fail"
+        ],
+        "correct": "D",
+        "explanation": "'Fail to' significa no lograr o no conseguir hacer algo."
+      },
+      {
+        "number": 6,
+        "options": [
+          "A) take",
+          "B) have",
+          "C) make",
+          "D) do"
+        ],
+        "correct": "C",
+        "explanation": "'Make use of' es la expresión correcta para utilizar o aprovechar algo."
+      },
+      {
+        "number": 7,
+        "options": [
+          "A) cause",
+          "B) trigger",
+          "C) create",
+          "D) produce"
+        ],
+        "correct": "B",
+        "explanation": "'Trigger responses' es la colocación correcta para provocar respuestas."
+      },
+      {
+        "number": 8,
+        "options": [
+          "A) keep",
+          "B) catch",
+          "C) stay",
+          "D) hold"
+        ],
+        "correct": "A",
+        "explanation": "'Keep up with' significa mantenerse al día con algo que cambia."
+      }
     ]
   }
 }

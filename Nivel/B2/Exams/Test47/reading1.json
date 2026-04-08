@@ -1,10 +1,10 @@
 {
-  "id": "B2-reading-history-of-rubber",
+  "id": "Test47-reading-1",
   "examId": "Test47",
-  "section": "reading-and-use-of-english",
+  "section": "reading",
   "part": 1,
   "title": "The History of Rubber",
-  "type": "multiple-choice-text",
+  "type": "multiple-choice",
   "time": 15,
   "totalQuestions": 8,
   "description": "For questions 1–8, read the text below and choose which answer (A, B, C or D) best completes each gap.",
@@ -12,19 +12,104 @@
     "text": "Rubber is a material that we often take (0). granted, yet it has played a crucial role in modern industrial development. Indigenous peoples of Central and South America were the first to discover and use rubber, (1). it from the sap of certain trees. They made waterproof clothing and even balls for games.\n\nWhen European explorers (2). across this remarkable substance, they immediately recognised its potential. However, early rubber products had serious (3). : they became sticky in hot weather and brittle in cold conditions. This problem was eventually (4). by Charles Goodyear, who discovered the vulcanisation process in 1839.\n\nThe demand for rubber (5). dramatically with the invention of the automobile and the need for tyres. This led to the establishment of vast rubber plantations in Southeast Asia. Today, synthetic rubber (6). for a significant portion of global production, though natural rubber remains essential for certain applications. Scientists continue to (7). out research into making rubber production more sustainable, as the industry must (8). up to growing environmental challenges.",
     "example": {
       "number": 0,
-      "options": ["A) as", "B) for", "C) to", "D) by"],
+      "options": [
+        "A) as",
+        "B) for",
+        "C) to",
+        "D) by"
+      ],
       "correct": "B",
       "explanation": "'Take for granted' es una expresión fija que significa dar algo por sentado."
     },
     "questions": [
-      {"number": 1, "options": ["A) drawing", "B) pulling", "C) extracting", "D) removing"], "correct": "C", "explanation": "'Extract from' es el verbo correcto para obtener una sustancia de una fuente natural."},
-      {"number": 2, "options": ["A) came", "B) went", "C) ran", "D) fell"], "correct": "A", "explanation": "'Come across' significa encontrar o descubrir algo por casualidad."},
-      {"number": 3, "options": ["A) faults", "B) defects", "C) errors", "D) drawbacks"], "correct": "D", "explanation": "'Drawbacks' se refiere a desventajas o inconvenientes de algo."},
-      {"number": 4, "options": ["A) solved", "B) settled", "C) sorted", "D) fixed"], "correct": "A", "explanation": "'Solve a problem' es la colocación correcta para resolver un problema técnico."},
-      {"number": 5, "options": ["A) lifted", "B) raised", "C) increased", "D) grew"], "correct": "D", "explanation": "'Grow dramatically' se usa para describir un aumento significativo."},
-      {"number": 6, "options": ["A) makes", "B) accounts", "C) stands", "D) counts"], "correct": "B", "explanation": "'Account for' significa representar o constituir un porcentaje."},
-      {"number": 7, "options": ["A) bring", "B) take", "C) carry", "D) make"], "correct": "C", "explanation": "'Carry out research' es la colocación correcta para realizar investigación."},
-      {"number": 8, "options": ["A) face", "B) stand", "C) come", "D) meet"], "correct": "A", "explanation": "'Face up to' significa enfrentar o hacer frente a desafíos."}
+      {
+        "number": 1,
+        "options": [
+          "A) drawing",
+          "B) pulling",
+          "C) extracting",
+          "D) removing"
+        ],
+        "correct": "C",
+        "explanation": "'Extract from' es el verbo correcto para obtener una sustancia de una fuente natural."
+      },
+      {
+        "number": 2,
+        "options": [
+          "A) came",
+          "B) went",
+          "C) ran",
+          "D) fell"
+        ],
+        "correct": "A",
+        "explanation": "'Come across' significa encontrar o descubrir algo por casualidad."
+      },
+      {
+        "number": 3,
+        "options": [
+          "A) faults",
+          "B) defects",
+          "C) errors",
+          "D) drawbacks"
+        ],
+        "correct": "D",
+        "explanation": "'Drawbacks' se refiere a desventajas o inconvenientes de algo."
+      },
+      {
+        "number": 4,
+        "options": [
+          "A) solved",
+          "B) settled",
+          "C) sorted",
+          "D) fixed"
+        ],
+        "correct": "A",
+        "explanation": "'Solve a problem' es la colocación correcta para resolver un problema técnico."
+      },
+      {
+        "number": 5,
+        "options": [
+          "A) lifted",
+          "B) raised",
+          "C) increased",
+          "D) grew"
+        ],
+        "correct": "D",
+        "explanation": "'Grow dramatically' se usa para describir un aumento significativo."
+      },
+      {
+        "number": 6,
+        "options": [
+          "A) makes",
+          "B) accounts",
+          "C) stands",
+          "D) counts"
+        ],
+        "correct": "B",
+        "explanation": "'Account for' significa representar o constituir un porcentaje."
+      },
+      {
+        "number": 7,
+        "options": [
+          "A) bring",
+          "B) take",
+          "C) carry",
+          "D) make"
+        ],
+        "correct": "C",
+        "explanation": "'Carry out research' es la colocación correcta para realizar investigación."
+      },
+      {
+        "number": 8,
+        "options": [
+          "A) face",
+          "B) stand",
+          "C) come",
+          "D) meet"
+        ],
+        "correct": "A",
+        "explanation": "'Face up to' significa enfrentar o hacer frente a desafíos."
+      }
     ]
   }
 }

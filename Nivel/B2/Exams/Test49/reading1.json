@@ -1,10 +1,10 @@
 {
-  "id": "B2-reading-history-of-shoes",
+  "id": "Test49-reading-1",
   "examId": "Test49",
-  "section": "reading-and-use-of-english",
+  "section": "reading",
   "part": 1,
   "title": "The History of Shoes",
-  "type": "multiple-choice-text",
+  "type": "multiple-choice",
   "time": 15,
   "totalQuestions": 8,
   "description": "For questions 1–8, read the text below and choose which answer (A, B, C or D) best completes each gap.",
@@ -12,19 +12,104 @@
     "text": "Shoes are among the oldest items of clothing, with evidence suggesting humans have worn foot coverings (0). at least 40,000 years. The earliest shoes were simple sandals or wrappings made from animal hides and plant fibres, designed primarily to (1). the feet from rough terrain and extreme temperatures.\n\nAs civilisations developed, shoes began to (2). on additional meanings. In many cultures, footwear became a symbol of social (3). , with elaborate designs reserved for the wealthy and powerful. Shoemaking evolved into a skilled craft, with techniques being (4). down from master to apprentice over generations.\n\nThe Industrial Revolution (5). about dramatic changes in shoe production. Mass manufacturing made footwear affordable for ordinary people for the first time. Today, the shoe industry is worth billions of pounds and (6). everything from practical work boots to high-fashion designer heels. Athletic footwear has become particularly significant, with sports brands (7). heavily in research and technology. Despite all these advances, the basic (8). of protecting and supporting the human foot remains unchanged.",
     "example": {
       "number": 0,
-      "options": ["A) since", "B) for", "C) during", "D) from"],
+      "options": [
+        "A) since",
+        "B) for",
+        "C) during",
+        "D) from"
+      ],
       "correct": "B",
       "explanation": "'For' se usa con períodos de tiempo para indicar duración."
     },
     "questions": [
-      {"number": 1, "options": ["A) defend", "B) guard", "C) protect", "D) shield"], "correct": "C", "explanation": "'Protect from' es la colocación más común para proteger de algo."},
-      {"number": 2, "options": ["A) put", "B) get", "C) take", "D) bring"], "correct": "C", "explanation": "'Take on' significa adquirir o asumir características adicionales."},
-      {"number": 3, "options": ["A) status", "B) level", "C) position", "D) rank"], "correct": "A", "explanation": "'Social status' es la colocación correcta para posición social."},
-      {"number": 4, "options": ["A) given", "B) handed", "C) passed", "D) sent"], "correct": "C", "explanation": "'Pass down' es el phrasal verb para transmitir conocimientos entre generaciones."},
-      {"number": 5, "options": ["A) carried", "B) brought", "C) took", "D) made"], "correct": "B", "explanation": "'Bring about' significa provocar o causar cambios."},
-      {"number": 6, "options": ["A) includes", "B) contains", "C) covers", "D) holds"], "correct": "C", "explanation": "'Cover' significa abarcar o incluir una variedad de cosas."},
-      {"number": 7, "options": ["A) putting", "B) spending", "C) investing", "D) placing"], "correct": "C", "explanation": "'Invest in' es la colocación correcta para invertir recursos en algo."},
-      {"number": 8, "options": ["A) aim", "B) purpose", "C) target", "D) goal"], "correct": "B", "explanation": "'Purpose' es el sustantivo correcto para describir la función básica de algo."}
+      {
+        "number": 1,
+        "options": [
+          "A) defend",
+          "B) guard",
+          "C) protect",
+          "D) shield"
+        ],
+        "correct": "C",
+        "explanation": "'Protect from' es la colocación más común para proteger de algo."
+      },
+      {
+        "number": 2,
+        "options": [
+          "A) put",
+          "B) get",
+          "C) take",
+          "D) bring"
+        ],
+        "correct": "C",
+        "explanation": "'Take on' significa adquirir o asumir características adicionales."
+      },
+      {
+        "number": 3,
+        "options": [
+          "A) status",
+          "B) level",
+          "C) position",
+          "D) rank"
+        ],
+        "correct": "A",
+        "explanation": "'Social status' es la colocación correcta para posición social."
+      },
+      {
+        "number": 4,
+        "options": [
+          "A) given",
+          "B) handed",
+          "C) passed",
+          "D) sent"
+        ],
+        "correct": "C",
+        "explanation": "'Pass down' es el phrasal verb para transmitir conocimientos entre generaciones."
+      },
+      {
+        "number": 5,
+        "options": [
+          "A) carried",
+          "B) brought",
+          "C) took",
+          "D) made"
+        ],
+        "correct": "B",
+        "explanation": "'Bring about' significa provocar o causar cambios."
+      },
+      {
+        "number": 6,
+        "options": [
+          "A) includes",
+          "B) contains",
+          "C) covers",
+          "D) holds"
+        ],
+        "correct": "C",
+        "explanation": "'Cover' significa abarcar o incluir una variedad de cosas."
+      },
+      {
+        "number": 7,
+        "options": [
+          "A) putting",
+          "B) spending",
+          "C) investing",
+          "D) placing"
+        ],
+        "correct": "C",
+        "explanation": "'Invest in' es la colocación correcta para invertir recursos en algo."
+      },
+      {
+        "number": 8,
+        "options": [
+          "A) aim",
+          "B) purpose",
+          "C) target",
+          "D) goal"
+        ],
+        "correct": "B",
+        "explanation": "'Purpose' es el sustantivo correcto para describir la función básica de algo."
+      }
     ]
   }
 }
