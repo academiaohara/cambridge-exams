@@ -1508,8 +1508,13 @@
       },
       "O": {
         "title": "Prefix en-",
-        "type": "categorization",
+        "type": "drag-category",
         "instructions": "The prefix en-, as in enlarge, can be added to some adjectives, nouns and verbs to form new verbs. Place each word below, with en-, in the correct category.",
+        "categories": [
+          "put in/on (a) ...",
+          "make ...",
+          "bring into effect"
+        ],
         "words": [
           "able",
           "act",
@@ -1527,28 +1532,22 @@
           "tomb",
           "trap"
         ],
-        "categories": {
-          "put in/on (a) ...": [
-            "encircle",
-            "encode",
-            "enlist",
-            "enthrone",
-            "entomb",
-            "entrap"
-          ],
-          "make ...": [
-            "enable",
-            "endanger",
-            "endear",
-            "enlarge",
-            "enrich",
-            "enslave"
-          ],
-          "bring into effect": [
-            "enact",
-            "enforce",
-            "enrage"
-          ]
+        "answers": {
+          "able": "make ...",
+          "act": "bring into effect",
+          "circle": "put in/on (a) ...",
+          "code": "put in/on (a) ...",
+          "danger": "make ...",
+          "dear": "make ...",
+          "force": "bring into effect",
+          "large": "make ...",
+          "list": "put in/on (a) ...",
+          "rage": "bring into effect",
+          "rich": "make ...",
+          "slave": "make ...",
+          "throne": "put in/on (a) ...",
+          "tomb": "put in/on (a) ...",
+          "trap": "put in/on (a) ..."
         }
       },
       "P": {

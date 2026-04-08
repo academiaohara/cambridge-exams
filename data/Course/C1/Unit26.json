@@ -1285,18 +1285,98 @@
       },
       "J": {
         "title": "Circle the correct word.",
-        "passage": "Advances in communication technology and greater workplace flexibility have **(1) got / let / set** millions of workers free to enjoy their leisure time in genuinely new ways. A growing number of people now **(2) do / have / make** the leisure to follow activities that they **(3) like / prefer / want** to the daily demands of their working routine. So what activities will people **(4) choose / decide / opt** for as disposable time continues to increase? Analysts predict a significant rise in personal **(5) choice / decision / option** across all age groups. The range of available **(6) actions / hobbies / pursuits** will keep expanding, and individuals will have the **(7) decision / option / preference** of exploring interests that might previously have been beyond their reach. Whether they relax at home or visit dedicated **(8) enjoyment / leisure / relaxation** centres, providers will face ever-greater pressure to cater for people at **(9) play / recreation / rest**. If this era does not deliver greater personal freedom, it will certainly not be for **(10) need / desire / want** of opportunity.",
-        "answers": [
-          "1 set",
-          "2 have",
-          "3 prefer",
-          "4 opt",
-          "5 choice",
-          "6 pursuits",
-          "7 option",
-          "8 leisure",
-          "9 play",
-          "10 want"
+        "passage": "Advances in communication technology and greater workplace flexibility have (1) ...... millions of workers free to enjoy their leisure time in genuinely new ways. A growing number of people now (2) ...... the leisure to follow activities that they (3) ...... to the daily demands of their working routine. So what activities will people (4) ...... for as disposable time continues to increase? Analysts predict a significant rise in personal (5) ...... across all age groups. The range of available (6) ...... will keep expanding, and individuals will have the (7) ...... of exploring interests that might previously have been beyond their reach. Whether they relax at home or visit dedicated (8) ...... centres, providers will face ever-greater pressure to cater for people at (9) ....... If this era does not deliver greater personal freedom, it will certainly not be for (10) ...... of opportunity.",
+        "questions": [
+          {
+            "sentence": "(1) ......",
+            "options": [
+              "A. got",
+              "B. let",
+              "C. set"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "(2) ......",
+            "options": [
+              "A. do",
+              "B. have",
+              "C. make"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "(3) ......",
+            "options": [
+              "A. like",
+              "B. prefer",
+              "C. want"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "(4) ......",
+            "options": [
+              "A. choose",
+              "B. decide",
+              "C. opt"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "(5) ......",
+            "options": [
+              "A. choice",
+              "B. decision",
+              "C. option"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "(6) ......",
+            "options": [
+              "A. actions",
+              "B. hobbies",
+              "C. pursuits"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "(7) ......",
+            "options": [
+              "A. decision",
+              "B. option",
+              "C. preference"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "(8) ......",
+            "options": [
+              "A. enjoyment",
+              "B. leisure",
+              "C. relaxation"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "(9) ......",
+            "options": [
+              "A. play",
+              "B. recreation",
+              "C. rest"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "(10) ......",
+            "options": [
+              "A. need",
+              "B. desire",
+              "C. want"
+            ],
+            "answer": "C"
+          }
         ]
       },
       "K": {
@@ -1496,6 +1576,12 @@
       },
       "O": {
         "title": "Some verbs form nouns using -ence, as in preference. Some form nouns using -ance. Put nouns formed from the following words in the correct category.",
+        "type": "drag-category",
+        "instructions": "Put nouns formed from the following words in the correct category.",
+        "categories": [
+          "-ance",
+          "-ence"
+        ],
         "words": [
           "accept",
           "allow",
@@ -1527,41 +1613,37 @@
           "tolerate",
           "utter"
         ],
-        "categories": {
-          "-ance": [
-            "acceptance",
-            "allowance",
-            "annoyance",
-            "appearance",
-            "assistance",
-            "avoidance",
-            "clearance",
-            "correspondence",
-            "dependence",
-            "disturbance",
-            "endurance",
-            "guidance",
-            "ignorance",
-            "inheritance",
-            "insurance",
-            "interference",
-            "occurrence",
-            "performance",
-            "persistence",
-            "reliance",
-            "resemblance",
-            "resistance",
-            "tolerance",
-            "utterance"
-          ],
-          "-ence": [
-            "attendance",
-            "difference",
-            "existence",
-            "insistence",
-            "preference",
-            "reference"
-          ]
+        "answers": {
+          "accept": "-ance",
+          "allow": "-ance",
+          "annoy": "-ance",
+          "appear": "-ance",
+          "assist": "-ance",
+          "attend": "-ance",
+          "avoid": "-ance",
+          "clear": "-ance",
+          "disturb": "-ance",
+          "endure": "-ance",
+          "guide": "-ance",
+          "ignore": "-ance",
+          "inherit": "-ance",
+          "insure": "-ance",
+          "perform": "-ance",
+          "rely": "-ance",
+          "resemble": "-ance",
+          "resist": "-ance",
+          "tolerate": "-ance",
+          "utter": "-ance",
+          "correspond": "-ence",
+          "depend": "-ence",
+          "differ": "-ence",
+          "exist": "-ence",
+          "insist": "-ence",
+          "interfere": "-ence",
+          "occur": "-ence",
+          "persist": "-ence",
+          "prefer": "-ence",
+          "refer": "-ence"
         }
       },
       "P": {
