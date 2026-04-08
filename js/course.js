@@ -792,7 +792,7 @@
                 html += '<div class="cu-theory-cat-row">' +
                   '<span class="cu-theory-cat-name">' + self._escapeHTML(cat.name) + '</span>' +
                   '<div class="cu-theory-chips">';
-                (cat.verbs || []).forEach(function(v) {
+                (Array.isArray(cat.verbs) ? cat.verbs : (cat.verbs ? cat.verbs.split(',').map(function(s){return s.trim();}) : [])).forEach(function(v) {
                   html += '<span class="cu-theory-chip">' + self._escapeHTML(v) + '</span>';
                 });
                 html += '</div></div>';
