@@ -77,7 +77,7 @@
           return '/course';
 
         case 'courseTheory':
-          return '/course/theory';
+          return '/course/theory' + (state.level ? '/' + state.level.toLowerCase() : '');
 
         case 'courseBlock':
           return '/course/block-' + (state.blockKey || '1');
@@ -202,6 +202,13 @@
           if (_courseCategories.indexOf(segments[1]) !== -1) {
             return { view: 'fastExerciseCategory', categoryId: segments[1] };
           }
+        }
+        if (segments.length === 3 && segments[1] === 'theory') {
+          var theoryLevel = segments[2].toLowerCase();
+          if (VALID_LEVELS.indexOf(theoryLevel) !== -1) {
+            return { view: 'courseTheory', level: theoryLevel.toUpperCase() };
+          }
+          return { view: 'courseTheory' };
         }
         if (segments.length >= 2 && segments[1].indexOf('block-') === 0) {
           var blockKey = segments[1].replace('block-', '');

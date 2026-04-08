@@ -167,6 +167,18 @@
   opacity: 0.4;
   cursor: not-allowed;
 }
+.fe-cat-level-btns-header {
+  flex-direction: column;
+  align-self: center;
+  flex-shrink: 0;
+  gap: 6px;
+}
+.fe-cat-level-btns-header .fe-cat-level-btn {
+  flex: none;
+  padding: 6px 14px;
+  min-width: 52px;
+  text-align: center;
+}
 
 /* ── Category Info Widget (Left Sidebar) ──────────────────────────────── */
 .fe-info-widget {
