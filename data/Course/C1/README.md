@@ -235,6 +235,338 @@ Key rules:
 
 ---
 
+## 🏗️ Formatos interactivos de ejercicios (referencia completa)
+
+Esta sección documenta cómo debe escribirse el campo `sentence` (y campos auxiliares) para cada tipo de ejercicio dentro de las secciones `type: "exercise"`. **Esta es la guía para arreglar cualquier JSON mal configurado.**
+
+> ⚠️ **Regla crítica**: En unidades de tipo `review` y `progress_test`, **todas** las secciones de ejercicios deben usar `"type": "exercise"`. Tipos como `"gap_fill"`, `"word_formation"`, `"key_word_transformation"`, `"matching"`, `"multiple_choice"`, `"multiple_choice_vocab"`, `"error_correction"` o `"phrasal_verbs"` en el campo `type` de una sección **no son reconocidos** y hacen que el contenido sea invisible.
+
+---
+
+### 🔵 Gap fill (rellenar huecos con una palabra)
+
+El hueco se escribe como **seis o más puntos**: `......`
+
+```json
+{
+  "type": "exercise",
+  "title": "A: Open Cloze",
+  "instructions": "Write one word in each gap.",
+  "items": [
+    { "sentence": "She looked ...... the window and saw a fox in the garden.", "answer": "through" },
+    { "sentence": "It has been ...... years since I last visited London.", "answer": "many" }
+  ]
+}
+```
+
+- ✅ Usar `......` (6+ puntos consecutivos) → crea un campo de texto interactivo
+- ❌ No usar `______` (guiones bajos) → NO crea un campo interactivo (se muestra como texto plano)
+- ❌ No usar `____` (4 guiones bajos) → igual, no funciona
+
+---
+
+### 🔵 Word Formation (formación de palabras)
+
+El hueco va **antes** de la pista en mayúsculas entre paréntesis.
+
+```json
+{
+  "type": "exercise",
+  "title": "B: Word Formation",
+  "instructions": "Use the word in capitals to form a word that fits in the gap.",
+  "items": [
+    { "sentence": "Her ...... (EXPLAIN) of the theory was brilliant.", "answer": "explanation" },
+    { "sentence": "Despite being (1) ...... (DOUBT) at first, she came to accept it.", "answer": "doubtful" }
+  ]
+}
+```
+
+- ✅ Formato: `...... (WORD)` → el número entre paréntesis es opcional
+- ✅ También funciona: `(WORD) ......` (Pattern A del renderizador) → crea un pill con el hint
+- ❌ No usar: `(WORD) ______` o `______ (WORD)` → los guiones bajos no crean inputs interactivos
+- Con múltiples huecos en un mismo item, usar: `(1) ...... (WORD1) ... (2) ...... (WORD2)` y respuesta como `"word1, word2"`
+
+---
+
+### 🔵 Key Word Transformation (transformación con palabra clave)
+
+La palabra clave va al **final de la primera frase** en negrita con `**KEYWORD**`, seguida de `\n` y la segunda frase con el hueco.
+
+```json
+{
+  "type": "exercise",
+  "title": "C: Key Word Transformation",
+  "instructions": "Complete the second sentence using the word given.",
+  "items": [
+    {
+      "sentence": "I started learning guitar three years ago. **FOR**\nI ...... three years.",
+      "answer": "have been learning guitar for"
+    },
+    {
+      "sentence": "They finished the project only a few minutes ago. **JUST**\nThey ......  the project.",
+      "answer": "have just finished"
+    }
+  ]
+}
+```
+
+- ✅ Formato: `"Primera frase. **KEYWORD**\nSegunda frase ......"`
+- El renderizador extrae la `**KEYWORD**` del final de la primera frase y la muestra como badge entre las dos frases
+- ❌ No usar: `"Primera frase.\nKEYWORD\nSegunda frase ____"` → la keyword en su propia línea y con guiones bajos no funciona
+- ❌ No usar: `"Primera frase. (keyword)\nSegunda frase ____"` → el keyword entre paréntesis no se reconoce
+
+---
+
+### 🔵 Multiple Choice (opción múltiple)
+
+El hueco en la frase es `......`; las opciones son un array `options`.
+
+```json
+{
+  "type": "exercise",
+  "title": "D: Multiple Choice",
+  "instructions": "Choose the correct answer.",
+  "items": [
+    {
+      "sentence": "She has a natural ...... for languages.",
+      "options": ["A talent", "B skill", "C ability", "D gift"],
+      "answer": "A"
+    }
+  ]
+}
+```
+
+- ✅ `options`: array de strings, cada uno empieza por la letra (`"A texto"`, `"B texto"`, …)
+- ✅ `answer`: la letra correcta (`"A"`, `"B"`, `"C"` o `"D"`)
+- ✅ `sentence` con `......` → el hueco se convierte en un pill clickable
+- ❌ No poner las opciones dentro del texto de la frase (como `"She has a ...... A talent B skill C ability"`)
+
+---
+
+### 🔵 Circle the Correct Word (elegir entre opciones inline)
+
+Las opciones van en la frase entre `**` separadas por `/`.
+
+```json
+{
+  "type": "exercise",
+  "title": "E: Phrasal Verbs",
+  "instructions": "Circle the correct word.",
+  "items": [
+    { "sentence": "She needed time to **mull / think / come** over the offer.", "answer": "mull" },
+    { "sentence": "It took me a while to **figure / work / find** out the solution.", "answer": "figure" }
+  ]
+}
+```
+
+- ✅ Formato: `**opción1 / opción2 / opción3**` → renderiza como botones de opción
+- El `answer` es el texto exacto de la opción correcta
+
+---
+
+### 🔵 Error Correction (corrección de errores)
+
+La palabra incorrecta se marca en **negrita** con `**palabra**`. El `answer` es la corrección (o `"-"` si debe eliminarse, `"✓"` si la frase es correcta).
+
+```json
+{
+  "type": "exercise",
+  "title": "F: Error Correction",
+  "instructions": "Find and correct the error in each sentence.",
+  "items": [
+    { "sentence": "She told **to me** that she would be late.", "answer": "me" },
+    { "sentence": "The film was **an** excellent performance.", "answer": "-" },
+    { "sentence": "I have been waiting here for an hour.", "answer": "✓" }
+  ]
+}
+```
+
+- ✅ `**palabra**` → se convierte en un pill interactivo con la palabra incorrecta como hint
+- ✅ `"answer": "✓"` → renderiza como botón OK (la frase es correcta)
+- Para múltiples errores en la misma frase, usar `**error1**` y `**error2**`; el `answer` puede ser `"correction1, correction2"`
+
+---
+
+### 🔵 Phrasal Verbs (reescribir con un phrasal verb)
+
+La expresión a reemplazar va en negrita. El `answer` es el phrasal verb correcto.
+
+```json
+{
+  "type": "exercise",
+  "title": "G: Phrasal Verbs",
+  "instructions": "Replace the bold phrase with a phrasal verb in the correct form.",
+  "items": [
+    { "sentence": "My dad **fell asleep** during the film, as usual.", "answer": "dropped off" },
+    { "sentence": "It took her a long time to **recover from** the loss.", "answer": "get over" }
+  ]
+}
+```
+
+- Funciona igual que error correction: el texto en negrita se convierte en pill interactivo
+- El estudiante escribe el phrasal verb en el campo de texto
+
+---
+
+### 🔵 Matching (emparejar mitades de frases)
+
+Cada item contiene el principio de la frase, la letra de la opción correcta (de A a H), y el final correcto integrado con `**LETRA**`.
+
+```json
+{
+  "type": "exercise",
+  "title": "H: Matching",
+  "instructions": "Match to make sentences.",
+  "items": [
+    { "sentence": "I refuse to put **H** up with people who cheat at games.", "answer": "H" },
+    { "sentence": "The current champion was knocked **C** out in the second round.", "answer": "C" },
+    { "sentence": "I used to love basketball, but I've gone **F** off team sports lately.", "answer": "F" }
+  ]
+}
+```
+
+- ✅ Formato: `"principio **LETRA** final"` → renderiza columna izquierda (principios) y columna derecha (finales, arrastrables)
+- El `answer` es la letra correcta para ese item
+- ❌ No usar campos separados `"match"` y `"answer"` (no reconocidos en review/progress_test)
+- Alternativamente (para fill-in): `"sentence": "I refuse to put ...... people who cheat at games."`, `"answer": "up with (H)"`
+
+---
+
+### 🔵 Yes/No (verdadero/falso o correcto/incorrecto)
+
+```json
+{
+  "type": "exercise",
+  "title": "I: True or False",
+  "items": [
+    { "sentence": "Dogs can see in full colour.", "answer": "NO" },
+    { "sentence": "Elephants are the largest land animals.", "answer": "YES" }
+  ]
+}
+```
+
+- ✅ `"answer": "YES"` o `"answer": "NO"` → renderiza botones OK/NO
+- ✅ `"answer": "✓"` → renderiza solo botón OK (frase correcta como está)
+
+---
+
+### 🔵 Paired sentences / Stative vs Active (sentencias A/B)
+
+```json
+{
+  "type": "exercise",
+  "title": "J: Complete the sentences",
+  "items": [
+    {
+      "sentenceA": "A) She ...... (think) about the problem right now.",
+      "sentenceB": "B) She ...... (think) that the answer is correct.",
+      "answer": "is thinking / thinks"
+    }
+  ]
+}
+```
+
+- ✅ Usar `sentenceA` y `sentenceB` para ejercicios de contraste stative/active
+- El `answer` es `"respuesta_A / respuesta_B"` (separadas por `/`)
+
+---
+
+### 🔵 Sync input (una palabra para tres frases)
+
+Un mismo hueco se sincroniza en varias frases.
+
+```json
+{
+  "type": "exercise",
+  "subtype": "sync",
+  "title": "K: One word for three sentences",
+  "items": [
+    {
+      "sentences": [
+        "She ...... her bag on the table.",
+        "He ...... down the phone without saying goodbye.",
+        "The sun ...... early in summer."
+      ],
+      "answer": "put / put / sets"
+    }
+  ]
+}
+```
+
+- Los puntos `......` en cada frase se sincronizan: al escribir en uno se rellena en todos
+- También se puede usar el campo `sentence` con las frases separadas por `\n`
+
+---
+
+### 🔵 Passage-based Word Formation (hueco numerado en pasaje)
+
+Para ejercicios de toda una frase/párrafo con huecos numerados y hint entre paréntesis:
+
+```json
+{
+  "type": "exercise",
+  "title": "L: Word Formation Passage",
+  "passage": "The (1) ...... (DISCOVER) of penicillin was (2) ...... (ACCIDENT).",
+  "questions": [
+    { "sentence": "(1) DISCOVER", "answer": "discovery" },
+    { "sentence": "(2) ACCIDENT", "answer": "accidental" }
+  ]
+}
+```
+
+- `passage`: texto del párrafo con `(N) ......` o `(N) ...... (WORD)` para los huecos
+- `questions`: array con la respuesta para cada hueco (por número)
+
+---
+
+### 🔵 Passage-based Multiple Choice (huecos con opciones modales)
+
+```json
+{
+  "type": "exercise",
+  "title": "M: Multiple Choice Reading",
+  "passage": "Scientists have (1) ...... that climate change is (2) ...... rapidly.",
+  "items": [
+    { "sentence": "(1) ...... climate change is...", "options": [{"num":1,"options":["A confirmed","B stated","C argued","D suggested"],"answer":"A"}] }
+  ]
+}
+```
+
+---
+
+### 📋 Resumen rápido de formatos de hueco
+
+| Tipo de ejercicio | Formato del hueco en `sentence` | Campo adicional |
+|---|---|---|
+| Gap fill / Open cloze | `......` | — |
+| Word formation | `...... (WORD)` o `(N) ...... (WORD)` | — |
+| Key word transformation | `**KEYWORD**\n...... ` (al final de línea 1) | — |
+| Multiple choice | `......` | `options: ["A ...", "B ...", ...]` |
+| Circle correct word | `**opt1 / opt2 / opt3**` | — |
+| Error correction | `**wrong_word**` | answer = corrección o `"-"` o `"✓"` |
+| Phrasal verbs | `**frase a reemplazar**` | answer = phrasal verb |
+| Matching | `"text **A** ending"` o `"text ......", answer: "ending (A)"` | — |
+| Yes/No | frase sin hueco | `answer: "YES"` / `"NO"` |
+| Paired sentences | — | `sentenceA`, `sentenceB` |
+
+---
+
+### ❌ Errores comunes en B2 que rompen el renderizado
+
+1. **`type` de sección incorrecto** — El tipo de una sección de ejercicios DEBE ser `"exercise"`. Tipos como `"gap_fill"`, `"word_formation"`, `"key_word_transformation"`, `"matching"`, `"multiple_choice"`, `"multiple_choice_vocab"`, `"error_correction"` o `"phrasal_verbs"` hacen que toda la sección sea invisible.
+
+2. **Guiones bajos en lugar de puntos** — `______` no crea inputs interactivos. Siempre usar `......` (6+ puntos).
+
+3. **Keyword en su propia línea** — En KWT, `"frase1\nkeyword\nfrase2"` (3 líneas) no muestra el badge de keyword. Usar `"frase1 **keyword**\nfrase2"` (2 líneas, keyword al final de la primera).
+
+4. **Keyword entre paréntesis** — `"frase1 (keyword)\nfrase2"` no se detecta como KWT. Usar `"frase1 **keyword**\nfrase2"`.
+
+5. **Wrapper anidado en Review** — `{"Review1": {...}}` en lugar de escribir directamente el objeto (aunque el código lo maneja, es mejor estilo escribir sin wrapper).
+
+6. **Campo `match` en matching** — Los campos `{sentence, answer, match}` no son procesados como matching. Usar el formato `"texto **A** final"` o convertir a fill-in con `......`.
+
+---
+
 ## 🤖 Prompts de IA para generar los bloques pendientes
 
 Copia el prompt correspondiente y pégalo en ChatGPT / Claude, adjuntando `Unit1.json`, `Unit2.json` y `Review1.json` como referencia de formato.

@@ -1,90 +1,295 @@
 {
-  "Review9": {
-    "block": 1,
-    "type": "review",
-    "unitTitle": "Review: Block 1 – Units 1 & 2",
-    "totalPoints": 50,
-    "sections": [
-      {
-        "type": "gap_fill",
-        "title": "A: Write one word in each gap",
-        "instructions": "Write one word in each gap.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 15 },
-        "items": [
-          { "sentence": "It may sound strange, but Ben was looking forward to the English exam. Now, don't imagine that Ben was a great student. He was always slow to catch (1) ______ in class and couldn't really keep (2) ______ with the other students.", "answer": "on, up" },
-          { "sentence": "And he hadn't even studied (3) ______ the exam.", "answer": "for" },
-          { "sentence": "The real reason he thought he was going to sail (4) ______ was that he had all the answers!", "answer": "through" },
-          { "sentence": "Two days before, he had found a piece of paper with all the questions and answers on it on his teacher's desk. It suddenly (5) ______ his mind that maybe for once he could pass the exam.", "answer": "crossed" },
-          { "sentence": "'What's the point (6) ______ studying?' he asked himself.", "answer": "of" },
-          { "sentence": "After thinking it (7) ______ for a second, he (8) ______ his mind up.", "answer": "over, made" },
-          { "sentence": "He copied the piece of paper and his teacher (9) ______ no idea what had happened.", "answer": "had" },
-          { "sentence": "When the exam started, Ben sat down and turned the question paper over. He looked, and then looked again. It was the wrong paper! It dawned (10) ______ Ben that he had copied the wrong exam paper!", "answer": "on" },
-          { "sentence": "His teacher was looking at him, so Ben thought he'd better get (11) ______ with it.", "answer": "on" },
-          { "sentence": "He knew he would never succeed (12) ______ passing the exam.", "answer": "in" },
-          { "sentence": "Not all of it (13) ______ sense to him, but he did his best.", "answer": "made" },
-          { "sentence": "The next day, his teacher gave him his paper back and said 'Well done, Ben. Much better.' Ben couldn't believe it! He had passed with a B! He realised he had (14) ______ an important lesson.", "answer": "learned" },
-          { "sentence": "With a little work, who knew what he would be capable (15) ______?", "answer": "of" }
-        ]
+  "block": 1,
+  "type": "review",
+  "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "totalPoints": 50,
+  "sections": [
+    {
+      "type": "exercise",
+      "title": "A: Write one word in each gap",
+      "instructions": "Write one word in each gap.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 15
       },
-      {
-        "type": "word_formation",
-        "title": "B: Complete the sentences by changing the form of the word in capitals",
-        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
-        "items": [
-          { "sentence": "I passed the exam, but I'm still waiting to get my (CERTIFY) ______.", "answer": "certificate" },
-          { "sentence": "Have you done any (REVISE) ______ for the test?", "answer": "revision" },
-          { "sentence": "Please pay (ATTEND) ______, Rita, when I'm explaining what your homework is.", "answer": "attention" },
-          { "sentence": "I spent a long time on the maths problem but I still came up with the wrong (SOLVE) ______.", "answer": "solution" },
-          { "sentence": "One of my classmates was suspended for a week for bad (BEHAVE) ______.", "answer": "behaviour" },
-          { "sentence": "Well, Mrs Turner, you'll be pleased to hear that Georgia has made a big (IMPROVE) ______ in geography.", "answer": "improvement" },
-          { "sentence": "I'm hoping to study English (LITERATE) ______ at university.", "answer": "literature" }
-        ]
+      "items": [
+        {
+          "sentence": "It may sound strange, but Ben was looking forward to the English exam. Now, don't imagine that Ben was a great student. He was always slow to catch (1) ...... in class and couldn't really keep (2) ...... with the other students.",
+          "answer": "on, up"
+        },
+        {
+          "sentence": "And he hadn't even studied (3) ...... the exam.",
+          "answer": "for"
+        },
+        {
+          "sentence": "The real reason he thought he was going to sail (4) ...... was that he had all the answers!",
+          "answer": "through"
+        },
+        {
+          "sentence": "Two days before, he had found a piece of paper with all the questions and answers on it on his teacher's desk. It suddenly (5) ...... his mind that maybe for once he could pass the exam.",
+          "answer": "crossed"
+        },
+        {
+          "sentence": "'What's the point (6) ...... studying?' he asked himself.",
+          "answer": "of"
+        },
+        {
+          "sentence": "After thinking it (7) ...... for a second, he (8) ...... his mind up.",
+          "answer": "over, made"
+        },
+        {
+          "sentence": "He copied the piece of paper and his teacher (9) ...... no idea what had happened.",
+          "answer": "had"
+        },
+        {
+          "sentence": "When the exam started, Ben sat down and turned the question paper over. He looked, and then looked again. It was the wrong paper! It dawned (10) ...... Ben that he had copied the wrong exam paper!",
+          "answer": "on"
+        },
+        {
+          "sentence": "His teacher was looking at him, so Ben thought he'd better get (11) ...... with it.",
+          "answer": "on"
+        },
+        {
+          "sentence": "He knew he would never succeed (12) ...... passing the exam.",
+          "answer": "in"
+        },
+        {
+          "sentence": "Not all of it (13) ...... sense to him, but he did his best.",
+          "answer": "made"
+        },
+        {
+          "sentence": "The next day, his teacher gave him his paper back and said 'Well done, Ben. Much better.' Ben couldn't believe it! He had passed with a B! He realised he had (14) ...... an important lesson.",
+          "answer": "learned"
+        },
+        {
+          "sentence": "With a little work, who knew what he would be capable (15) ......?",
+          "answer": "of"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "B: Complete the sentences by changing the form of the word in capitals",
+      "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 7
       },
-      {
-        "type": "key_word_transformation",
-        "title": "C: Complete the second sentence using the word given",
-        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
-        "scoring": { "pointsPerItem": 2, "maxScore": 16 },
-        "items": [
-          { "sentence": "The headmaster made the pupil wait outside his door.\nmade\nThe pupil ______ outside the headmaster's door.", "answer": "was made to wait" },
-          { "sentence": "Please don't leave your books on my desk.\nrather\nI ______ leave your books on my desk.", "answer": "would rather you did not" },
-          { "sentence": "I didn't understand what my teacher was trying to express so I asked her again.\ngetting\nI didn't understand what my teacher ______ so I asked her again.", "answer": "was getting at" },
-          { "sentence": "Counting the words in your composition is a waste of time.\npoint\nThere ______ the words in your composition.", "answer": "is no point in counting" },
-          { "sentence": "I just can't decide whether to go to university or not.\nminds\nI'm ______ whether to go to university or not.", "answer": "in two minds about" },
-          { "sentence": "My cousin has decided that he isn't going to finish his engineering course.\ndrop\nMy cousin has decided ______ his engineering course.", "answer": "to drop out of" },
-          { "sentence": "All Emma's teachers say that she is able to do much more.\ncapable\nAll Emma's teachers say that she ______ much more.", "answer": "is capable of doing" },
-          { "sentence": "I was really pleased that I managed to pass the exam.\nsucceeded\nI was really pleased that I ______ the exam.", "answer": "succeeded in passing" }
-        ]
+      "items": [
+        {
+          "sentence": "I passed the exam, but I'm still waiting to get my (CERTIFY) .......",
+          "answer": "certificate"
+        },
+        {
+          "sentence": "Have you done any (REVISE) ...... for the test?",
+          "answer": "revision"
+        },
+        {
+          "sentence": "Please pay (ATTEND) ......, Rita, when I'm explaining what your homework is.",
+          "answer": "attention"
+        },
+        {
+          "sentence": "I spent a long time on the maths problem but I still came up with the wrong (SOLVE) .......",
+          "answer": "solution"
+        },
+        {
+          "sentence": "One of my classmates was suspended for a week for bad (BEHAVE) .......",
+          "answer": "behaviour"
+        },
+        {
+          "sentence": "Well, Mrs Turner, you'll be pleased to hear that Georgia has made a big (IMPROVE) ...... in geography.",
+          "answer": "improvement"
+        },
+        {
+          "sentence": "I'm hoping to study English (LITERATE) ...... at university.",
+          "answer": "literature"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "C: Complete the second sentence using the word given",
+      "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+      "scoring": {
+        "pointsPerItem": 2,
+        "maxScore": 16
       },
-      {
-        "type": "multiple_choice",
-        "title": "D: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 6 },
-        "items": [
-          { "sentence": "I didn't expect our history teacher ______ us so much homework.", "options": ["A giving", "B give", "C to give", "D to giving"], "answer": "C" },
-          { "sentence": "Do you remember ______ to school for the very first time?", "options": ["A go", "B to go", "C of going", "D going"], "answer": "D" },
-          { "sentence": "I started doing my homework when I got home from school but I stopped ______ my favourite show.", "options": ["A watch", "B to watch", "C watching", "D from watching"], "answer": "B" },
-          { "sentence": "Please don't forget ______ your essays during Friday's lesson.", "options": ["A handing in", "B to hand in", "C hand in", "D to handing in"], "answer": "B" },
-          { "sentence": "Our teacher made the whole class ______ after the lesson because we had been so noisy.", "options": ["A staying", "B to stay", "C stay", "D for staying"], "answer": "C" },
-          { "sentence": "'What was Derek's reaction to the accusation?' 'Well, he denied ______ anywhere near the house at the time.'", "options": ["A being", "B to be", "C be", "D of being"], "answer": "A" }
-        ]
+      "items": [
+        {
+          "sentence": "The headmaster made the pupil wait outside his door. **made**\nThe pupil ...... outside the headmaster's door.",
+          "answer": "was made to wait"
+        },
+        {
+          "sentence": "Please don't leave your books on my desk. **rather**\nI ...... leave your books on my desk.",
+          "answer": "would rather you did not"
+        },
+        {
+          "sentence": "I didn't understand what my teacher was trying to express so I asked her again. **getting**\nI didn't understand what my teacher ...... so I asked her again.",
+          "answer": "was getting at"
+        },
+        {
+          "sentence": "Counting the words in your composition is a waste of time. **point**\nThere ...... the words in your composition.",
+          "answer": "is no point in counting"
+        },
+        {
+          "sentence": "I just can't decide whether to go to university or not. **minds**\nI'm ...... whether to go to university or not.",
+          "answer": "in two minds about"
+        },
+        {
+          "sentence": "My cousin has decided that he isn't going to finish his engineering course. **drop**\nMy cousin has decided ...... his engineering course.",
+          "answer": "to drop out of"
+        },
+        {
+          "sentence": "All Emma's teachers say that she is able to do much more. **capable**\nAll Emma's teachers say that she ...... much more.",
+          "answer": "is capable of doing"
+        },
+        {
+          "sentence": "I was really pleased that I managed to pass the exam. **succeeded**\nI was really pleased that I ...... the exam.",
+          "answer": "succeeded in passing"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "D: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 6
       },
-      {
-        "type": "multiple_choice_vocab",
-        "title": "E: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 6 },
-        "items": [
-          { "sentence": "I was very proud when I was told that I'd been made a ______.", "options": ["A pupil", "B student", "C prefect", "D classmate"], "answer": "C" },
-          { "sentence": "With a little hard work, I'm sure you'll ______ a lot this year.", "options": ["A reach", "B succeed", "C achieve", "D qualify"], "answer": "C" },
-          { "sentence": "Who ______ you how to cook so well?", "options": ["A taught", "B learned", "C made", "D explained"], "answer": "A" },
-          { "sentence": "Lee didn't do so well in the test because he hadn't ______.", "options": ["A written", "B read", "C studied", "D learned"], "answer": "C" },
-          { "sentence": "I think you need to ______ your ideas more clearly so that the reader doesn't get confused.", "options": ["A dawn on", "B get on with", "C set out", "D give in"], "answer": "C" },
-          { "sentence": "Oh, no! We've got a double maths ______ next!", "options": ["A subject", "B interval", "C lesson", "D task"], "answer": "C" }
-        ]
-      }
-    ]
-  }
+      "items": [
+        {
+          "sentence": "I didn't expect our history teacher ...... us so much homework.",
+          "options": [
+            "A giving",
+            "B give",
+            "C to give",
+            "D to giving"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "Do you remember ...... to school for the very first time?",
+          "options": [
+            "A go",
+            "B to go",
+            "C of going",
+            "D going"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "I started doing my homework when I got home from school but I stopped ...... my favourite show.",
+          "options": [
+            "A watch",
+            "B to watch",
+            "C watching",
+            "D from watching"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Please don't forget ...... your essays during Friday's lesson.",
+          "options": [
+            "A handing in",
+            "B to hand in",
+            "C hand in",
+            "D to handing in"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Our teacher made the whole class ...... after the lesson because we had been so noisy.",
+          "options": [
+            "A staying",
+            "B to stay",
+            "C stay",
+            "D for staying"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "'What was Derek's reaction to the accusation?' 'Well, he denied ...... anywhere near the house at the time.'",
+          "options": [
+            "A being",
+            "B to be",
+            "C be",
+            "D of being"
+          ],
+          "answer": "A"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "E: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 6
+      },
+      "items": [
+        {
+          "sentence": "I was very proud when I was told that I'd been made a .......",
+          "options": [
+            "A pupil",
+            "B student",
+            "C prefect",
+            "D classmate"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "With a little hard work, I'm sure you'll ...... a lot this year.",
+          "options": [
+            "A reach",
+            "B succeed",
+            "C achieve",
+            "D qualify"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "Who ...... you how to cook so well?",
+          "options": [
+            "A taught",
+            "B learned",
+            "C made",
+            "D explained"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "Lee didn't do so well in the test because he hadn't .......",
+          "options": [
+            "A written",
+            "B read",
+            "C studied",
+            "D learned"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "I think you need to ...... your ideas more clearly so that the reader doesn't get confused.",
+          "options": [
+            "A dawn on",
+            "B get on with",
+            "C set out",
+            "D give in"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "Oh, no! We've got a double maths ...... next!",
+          "options": [
+            "A subject",
+            "B interval",
+            "C lesson",
+            "D task"
+          ],
+          "answer": "C"
+        }
+      ]
+    }
+  ]
 }

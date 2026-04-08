@@ -1,90 +1,319 @@
 {
-  "Review7": {
-    "block": 1,
-    "type": "review",
-    "unitTitle": "Review: Block 1 – Units 1 & 2",
-    "totalPoints": 50,
-    "sections": [
-      {
-        "type": "word_formation",
-        "title": "A: Use the word given in capitals to form a word",
-        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 10 },
-        "items": [
-          { "sentence": "Have you ever heard of scorpion fish? I was completely (1) ______ (AWARE) they existed until I trod on one in the sea.", "answer": "unaware" },
-          { "sentence": "I can't (2) ______ (EMPHASIS) enough how painful it was!", "answer": "emphasise" },
-          { "sentence": "The fish has a spike which gives you an (3) ______ (INJECT) of a (4) ______ (POISON) substance.", "answer": "injection, poisonous" },
-          { "sentence": "It's not dangerous, but you begin to feel extremely (5) ______ (COMFORT), and the pain just gets worse and worse.", "answer": "uncomfortable" },
-          { "sentence": "Luckily, there was a doctor on the beach - she was a (6) ______ (SURGERY) at the local hospital - and she told me what the best (7) ______ (TREAT) was.", "answer": "surgeon, treatment" },
-          { "sentence": "After my holiday, my foot still seemed to be a little infected, so my local GP gave me a (8) ______ (PRESCRIBE) for antibiotics.", "answer": "prescription" },
-          { "sentence": "Unfortunately, it turned out I was (9) ______ (ALLERGY) to them, so I came out in a red rash all over my body.", "answer": "allergic" },
-          { "sentence": "It was over a week before I had made a complete (10) ______ (RECOVER).", "answer": "recovery" }
-        ]
+  "block": 1,
+  "type": "review",
+  "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "totalPoints": 50,
+  "sections": [
+    {
+      "type": "exercise",
+      "title": "A: Use the word given in capitals to form a word",
+      "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 10
       },
-      {
-        "type": "key_word_transformation",
-        "title": "B: Complete the second sentence using the word given",
-        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
-        "items": [
-          { "sentence": "Thankfully, Adrian doesn't need to have an operation.\nno\nThankfully, there ______ to have an operation.", "answer": "is no need for Adrian" },
-          { "sentence": "The minister had to resign because of ill health.\nled\nIll health ______ resignation.", "answer": "led to the minister's" },
-          { "sentence": "You won't benefit from seeing the doctor if you've just got a cold.\nworth\nIt ______ the doctor if you've just got a cold.", "answer": "is not worth seeing" },
-          { "sentence": "I'm seeing the nutritionist at three tomorrow.\nappointment\nI've ______ the nutritionist at three tomorrow.", "answer": "made an appointment with" },
-          { "sentence": "I don't want to be a vegan any more!\ntired\nI ______ a vegan!", "answer": "am tired of being" },
-          { "sentence": "Your arm probably won't heal before the match on Saturday.\nunlikely\nYour arm ______ heal before the match on Saturday.", "answer": "is unlikely to" },
-          { "sentence": "I wish I could do a hundred press-ups in one go.\nable\nI'd love ______ a hundred press-ups in one go.", "answer": "to be able to do" },
-          { "sentence": "Do you think I should reduce the amount of chocolate I eat?\non\nDo you think I should ______ chocolate?", "answer": "cut down on" }
-        ]
+      "items": [
+        {
+          "sentence": "Have you ever heard of scorpion fish? I was completely (1) ...... (AWARE) they existed until I trod on one in the sea.",
+          "answer": "unaware"
+        },
+        {
+          "sentence": "I can't (2) ...... (EMPHASIS) enough how painful it was!",
+          "answer": "emphasise"
+        },
+        {
+          "sentence": "The fish has a spike which gives you an (3) ...... (INJECT) of a (4) ...... (POISON) substance.",
+          "answer": "injection, poisonous"
+        },
+        {
+          "sentence": "It's not dangerous, but you begin to feel extremely (5) ...... (COMFORT), and the pain just gets worse and worse.",
+          "answer": "uncomfortable"
+        },
+        {
+          "sentence": "Luckily, there was a doctor on the beach - she was a (6) ...... (SURGERY) at the local hospital - and she told me what the best (7) ...... (TREAT) was.",
+          "answer": "surgeon, treatment"
+        },
+        {
+          "sentence": "After my holiday, my foot still seemed to be a little infected, so my local GP gave me a (8) ...... (PRESCRIBE) for antibiotics.",
+          "answer": "prescription"
+        },
+        {
+          "sentence": "Unfortunately, it turned out I was (9) ...... (ALLERGY) to them, so I came out in a red rash all over my body.",
+          "answer": "allergic"
+        },
+        {
+          "sentence": "It was over a week before I had made a complete (10) ...... (RECOVER).",
+          "answer": "recovery"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "B: Complete the second sentence using the word given",
+      "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 8
       },
-      {
-        "type": "phrasal_verbs",
-        "title": "C: Write a phrasal verb in the correct form to replace the words in bold",
-        "instructions": "Write a phrasal verb in the correct form to replace the words in bold.",
-        "scoring": { "pointsPerItem": 2, "maxScore": 16 },
-        "items": [
-          { "sentence": "Dan's **started to suffer from** flu, so he can't come to work today.", "answer": "come down with" },
-          { "sentence": "It took Shirley a long time to **recover from** the death of her hamster.", "answer": "get over" },
-          { "sentence": "Many people feel sick when they **regain consciousness** after a general anaesthetic.", "answer": "come round" },
-          { "sentence": "It was so hot and stuffy, I nearly **suddenly lost consciousness**.", "answer": "passed out" },
-          { "sentence": "Fern's **gained** a lot of weight recently.", "answer": "put on" },
-          { "sentence": "Disease is more likely to **suddenly start** in areas of extreme poverty.", "answer": "break out" },
-          { "sentence": "I don't know what's been **causing** my terrible headaches.", "answer": "bringing on" },
-          { "sentence": "My grandfather's decided to **stop eating** red meat completely.", "answer": "give up" }
-        ]
+      "items": [
+        {
+          "sentence": "Thankfully, Adrian doesn't need to have an operation. **no**\nThankfully, there ...... to have an operation.",
+          "answer": "is no need for Adrian"
+        },
+        {
+          "sentence": "The minister had to resign because of ill health. **led**\nIll health ...... resignation.",
+          "answer": "led to the minister's"
+        },
+        {
+          "sentence": "You won't benefit from seeing the doctor if you've just got a cold. **worth**\nIt ...... the doctor if you've just got a cold.",
+          "answer": "is not worth seeing"
+        },
+        {
+          "sentence": "I'm seeing the nutritionist at three tomorrow. **appointment**\nI've ...... the nutritionist at three tomorrow.",
+          "answer": "made an appointment with"
+        },
+        {
+          "sentence": "I don't want to be a vegan any more! **tired**\nI ...... a vegan!",
+          "answer": "am tired of being"
+        },
+        {
+          "sentence": "Your arm probably won't heal before the match on Saturday. **unlikely**\nYour arm ...... heal before the match on Saturday.",
+          "answer": "is unlikely to"
+        },
+        {
+          "sentence": "I wish I could do a hundred press-ups in one go. **able**\nI'd love ...... a hundred press-ups in one go.",
+          "answer": "to be able to do"
+        },
+        {
+          "sentence": "Do you think I should reduce the amount of chocolate I eat? **on**\nDo you think I should ...... chocolate?",
+          "answer": "cut down on"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "C: Write a phrasal verb in the correct form to replace the words in bold",
+      "instructions": "Write a phrasal verb in the correct form to replace the words in bold.",
+      "scoring": {
+        "pointsPerItem": 2,
+        "maxScore": 16
       },
-      {
-        "type": "multiple_choice",
-        "title": "D: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
-        "items": [
-          { "sentence": "I ______ have joined a gym but in the end I decided to exercise at home.", "options": ["A must", "B could", "C will", "D may"], "answer": "B" },
-          { "sentence": "'I've been feeling under the weather recently.' 'You ______ more exercise.'", "options": ["A should get", "B should have got", "C would get", "D would have got"], "answer": "A" },
-          { "sentence": "'It was hard work getting back from the hospital with my leg in plaster.' 'You should ______ me. I'd have picked you up.'", "options": ["A call", "B be calling", "C have called", "D have been calling"], "answer": "C" },
-          { "sentence": "______ write with your left hand when you broke your arm?", "options": ["A Did you had to", "B Did you have to", "C Needed you to", "D Must you"], "answer": "B" },
-          { "sentence": "You ______ have huge muscles to look good, you know!", "options": ["A don't have to", "B mustn't", "C can't", "D shouldn't"], "answer": "A" },
-          { "sentence": "That ______ be Ted at the door. He's in bed with chicken pox.", "options": ["A hasn't to", "B oughtn't to", "C mustn't", "D can't"], "answer": "D" },
-          { "sentence": "You must ______ thrilled when the doctor said it wasn't serious.", "options": ["A be", "B have been", "C be being", "D have been being"], "answer": "B" },
-          { "sentence": "'Colin's got to stay in bed for eight weeks.' 'I'd hate to ______ do that.'", "options": ["A will have to", "B must", "C have to", "D will"], "answer": "C" }
-        ]
+      "items": [
+        {
+          "sentence": "Dan's **started to suffer from** flu, so he can't come to work today.",
+          "answer": "come down with"
+        },
+        {
+          "sentence": "It took Shirley a long time to **recover from** the death of her hamster.",
+          "answer": "get over"
+        },
+        {
+          "sentence": "Many people feel sick when they **regain consciousness** after a general anaesthetic.",
+          "answer": "come round"
+        },
+        {
+          "sentence": "It was so hot and stuffy, I nearly **suddenly lost consciousness**.",
+          "answer": "passed out"
+        },
+        {
+          "sentence": "Fern's **gained** a lot of weight recently.",
+          "answer": "put on"
+        },
+        {
+          "sentence": "Disease is more likely to **suddenly start** in areas of extreme poverty.",
+          "answer": "break out"
+        },
+        {
+          "sentence": "I don't know what's been **causing** my terrible headaches.",
+          "answer": "bringing on"
+        },
+        {
+          "sentence": "My grandfather's decided to **stop eating** red meat completely.",
+          "answer": "give up"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "D: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 8
       },
-      {
-        "type": "multiple_choice_vocab",
-        "title": "E: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
-        "items": [
-          { "sentence": "The doctor ______ the cut on my knee and said it had completely healed up.", "options": ["A investigated", "B researched", "C examined", "D looked into"], "answer": "C" },
-          { "sentence": "Dr Parker gave my mum a lovely ______ for spaghetti carbonara.", "options": ["A recipe", "B receipt", "C prescription", "D paper"], "answer": "A" },
-          { "sentence": "My feet are ______. I guess my new shoes are a bit tight.", "options": ["A hurt", "B pain", "C ache", "D sore"], "answer": "D" },
-          { "sentence": "I was shocked when I crashed the car, but at least I wasn't ______.", "options": ["A injured", "B broken", "C damaged", "D spoilt"], "answer": "A" },
-          { "sentence": "Diana looks terribly ______. You don't think she's ill, do you?", "options": ["A slim", "B slender", "C thin", "D slight"], "answer": "C" },
-          { "sentence": "Some drugs produce bad side ______.", "options": ["A consequences", "B products", "C results", "D effects"], "answer": "D" },
-          { "sentence": "I was very sad when the vet said he'd have to ______ Gertie, our labrador.", "options": ["A put down", "B feel up to", "C pull through", "D wear off"], "answer": "A" },
-          { "sentence": "Going on this diet has really ______ me good. I've lost weight and I feel fantastic!", "options": ["A made", "B taken", "C done", "D had"], "answer": "C" }
-        ]
-      }
-    ]
-  }
+      "items": [
+        {
+          "sentence": "I ...... have joined a gym but in the end I decided to exercise at home.",
+          "options": [
+            "A must",
+            "B could",
+            "C will",
+            "D may"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "'I've been feeling under the weather recently.' 'You ...... more exercise.'",
+          "options": [
+            "A should get",
+            "B should have got",
+            "C would get",
+            "D would have got"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "'It was hard work getting back from the hospital with my leg in plaster.' 'You should ...... me. I'd have picked you up.'",
+          "options": [
+            "A call",
+            "B be calling",
+            "C have called",
+            "D have been calling"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "...... write with your left hand when you broke your arm?",
+          "options": [
+            "A Did you had to",
+            "B Did you have to",
+            "C Needed you to",
+            "D Must you"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "You ...... have huge muscles to look good, you know!",
+          "options": [
+            "A don't have to",
+            "B mustn't",
+            "C can't",
+            "D shouldn't"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "That ...... be Ted at the door. He's in bed with chicken pox.",
+          "options": [
+            "A hasn't to",
+            "B oughtn't to",
+            "C mustn't",
+            "D can't"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "You must ...... thrilled when the doctor said it wasn't serious.",
+          "options": [
+            "A be",
+            "B have been",
+            "C be being",
+            "D have been being"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "'Colin's got to stay in bed for eight weeks.' 'I'd hate to ...... do that.'",
+          "options": [
+            "A will have to",
+            "B must",
+            "C have to",
+            "D will"
+          ],
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "E: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 8
+      },
+      "items": [
+        {
+          "sentence": "The doctor ...... the cut on my knee and said it had completely healed up.",
+          "options": [
+            "A investigated",
+            "B researched",
+            "C examined",
+            "D looked into"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "Dr Parker gave my mum a lovely ...... for spaghetti carbonara.",
+          "options": [
+            "A recipe",
+            "B receipt",
+            "C prescription",
+            "D paper"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "My feet are ....... I guess my new shoes are a bit tight.",
+          "options": [
+            "A hurt",
+            "B pain",
+            "C ache",
+            "D sore"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "I was shocked when I crashed the car, but at least I wasn't .......",
+          "options": [
+            "A injured",
+            "B broken",
+            "C damaged",
+            "D spoilt"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "Diana looks terribly ....... You don't think she's ill, do you?",
+          "options": [
+            "A slim",
+            "B slender",
+            "C thin",
+            "D slight"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "Some drugs produce bad side .......",
+          "options": [
+            "A consequences",
+            "B products",
+            "C results",
+            "D effects"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "I was very sad when the vet said he'd have to ...... Gertie, our labrador.",
+          "options": [
+            "A put down",
+            "B feel up to",
+            "C pull through",
+            "D wear off"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "Going on this diet has really ...... me good. I've lost weight and I feel fantastic!",
+          "options": [
+            "A made",
+            "B taken",
+            "C done",
+            "D had"
+          ],
+          "answer": "C"
+        }
+      ]
+    }
+  ]
 }
