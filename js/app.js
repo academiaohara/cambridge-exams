@@ -107,10 +107,12 @@
       } else if (initialState.view === 'courseBlock' && initialState.blockKey) {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
+        if (initialState.level) AppState.currentLevel = initialState.level;
         if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseBlock(initialState.blockKey);
       } else if (initialState.view === 'courseUnit' && initialState.unitId) {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
+        if (initialState.level) AppState.currentLevel = initialState.level;
         if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseUnit(initialState);
       } else if (initialState.view === 'tips') {
         history.replaceState({ view: 'dashboard' }, '', '/');
