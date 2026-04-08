@@ -1534,6 +1534,14 @@
         var hintMatch = sent.match(/\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/);
         if (hintMatch) hintMap[num] = hintMatch[1];
       });
+      // Fallback: use positional answers array when questions is empty
+      // Supports "N word" format (e.g. "1 parenthood") or plain strings
+      if (!questions.length && ex.answers && ex.answers.length) {
+        ex.answers.forEach(function(ans, idx) {
+          var raw = String(ans).replace(/^\d+\s+/, '');
+          answerMap[idx + 1] = raw;
+        });
+      }
       // Helper to build a gap pill HTML
       function makeGapPill(num, hintWord) {
         var gId = idBase + '-p' + num;
