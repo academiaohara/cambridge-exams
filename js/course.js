@@ -64,10 +64,16 @@
       history.pushState(courseState, '', Router.stateToPath(courseState));
     },
 
-    openCourseTheory: async function() {
+    openCourseTheory: async function(level) {
       var content = document.getElementById('main-content');
       if (!content) return;
-      var level = AppState.currentLevel || 'C1';
+      level = level || AppState.currentLevel || 'C1';
+      BentoGrid._courseLevel = level;
+
+      // Reset cached course data when switching level
+      BentoGrid._courseIndexData = null;
+      BentoGrid._courseBlocks = null;
+      BentoGrid._courseBlockOrder = null;
 
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
@@ -149,7 +155,11 @@
     _renderCourseLearningTiles: async function() {
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
 
-      // Theory tile: full-width card styled like fe-category-card
+      // Theory tile: full-width card styled like fe-category-card with B1/B2/C1 level buttons
+      var theoryLevelBtns =
+        '<button class="fe-cat-level-btn fe-cat-level-btn-locked" title="Coming soon">B1</button>' +
+        '<button class="fe-cat-level-btn" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'B2\')">B2</button>' +
+        '<button class="fe-cat-level-btn" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'C1\')">C1</button>';
       var theoryCard =
         '<div class="fe-category-card" style="--cat-color:#0284c7" onclick="BentoGrid.openCourseTheory()">' +
           '<div class="fe-category-card-header">' +
@@ -159,6 +169,7 @@
               '<div class="fe-category-stats">Grammar &amp; Vocabulary blocks</div>' +
             '</div>' +
           '</div>' +
+          '<div class="fe-cat-level-btns">' + theoryLevelBtns + '</div>' +
         '</div>';
 
       // Category tiles: load progress data for each
@@ -546,6 +557,25 @@
         var r = await fetch(filePath);
         if (r.ok) unitData = await r.json();
       } catch(e) { /* failed */ }
+
+      // Unwrap nested format: e.g. {"Review1": {...}} → {...}
+      if (unitData && !unitData.type) {
+        var keys = Object.keys(unitData);
+        if (keys.length === 1 && unitData[keys[0]] && unitData[keys[0]].type) {
+          unitData = unitData[keys[0]];
+        }
+      }
+
+      // Override block/title from index when available (fixes stale data in unit files)
+      if (unitData && BentoGrid._courseIndexData && BentoGrid._courseIndexData.items) {
+        var _idxItem = BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
+        if (_idxItem) {
+          if (_idxItem.block != null) unitData.block = _idxItem.block;
+          if (_idxItem.title && (unitData.type === 'review' || unitData.type === 'progress_test')) {
+            unitData.unitTitle = unitData.unitTitle || _idxItem.title;
+          }
+        }
+      }
 
       if (!unitData) {
         centerSection.innerHTML =
