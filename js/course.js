@@ -168,8 +168,8 @@
               '<div class="fe-category-name">Theory</div>' +
               '<div class="fe-category-stats">Grammar &amp; Vocabulary blocks</div>' +
             '</div>' +
+            '<div class="fe-cat-level-btns fe-cat-level-btns-header">' + theoryLevelBtns + '</div>' +
           '</div>' +
-          '<div class="fe-cat-level-btns">' + theoryLevelBtns + '</div>' +
         '</div>';
 
       // Category tiles: load progress data for each
