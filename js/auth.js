@@ -104,6 +104,12 @@
       if (!this._client) { return; }
       const { error } = await this._client.auth.signOut();
       if (error) { console.error('[Auth] signOut error:', error.message); }
+      // Always perform local sign-out even if the server call failed or
+      // onAuthStateChange doesn't fire (e.g. expired session).
+      this._session = null;
+      this._clearToken();
+      this._onSignOut();
+      this._showAuthModal();
     },
 
     /** Return the current session, or null. */
