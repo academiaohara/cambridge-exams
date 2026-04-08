@@ -80,10 +80,12 @@
           return '/course/theory' + (state.level ? '/' + state.level.toLowerCase() : '');
 
         case 'courseBlock':
-          return '/course/block-' + (state.blockKey || '1');
+          var cbLevel = (state.level || (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1').toLowerCase();
+          return '/course/' + cbLevel + '/block-' + (state.blockKey || '1');
 
         case 'courseUnit':
-          var cuPath = '/course/block-' + (state.blockKey || '1') + '/' + (state.unitId || '');
+          var cuLevel = (state.level || (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1').toLowerCase();
+          var cuPath = '/course/' + cuLevel + '/block-' + (state.blockKey || '1') + '/' + (state.unitId || '');
           if (typeof state.sectionIdx !== 'undefined' && state.sectionIdx !== null) {
             cuPath += '/' + state.sectionIdx;
           }
@@ -210,6 +212,24 @@
           }
           return { view: 'courseTheory' };
         }
+        // New format: /course/{level}/block-{key}[/{unitId}[/{sectionIdx}]]
+        if (segments.length >= 3 && VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1 && segments[2].indexOf('block-') === 0) {
+          var levelFromPath = segments[1].toUpperCase();
+          var blockKey = segments[2].replace('block-', '');
+          if (segments.length === 3) {
+            return { view: 'courseBlock', blockKey: blockKey, level: levelFromPath };
+          }
+          if (segments.length >= 4) {
+            var courseUnitId = segments[3];
+            var courseUnitState = { view: 'courseUnit', blockKey: blockKey, unitId: courseUnitId, level: levelFromPath };
+            if (segments.length >= 5) {
+              var sIdx = parseInt(segments[4], 10);
+              if (!isNaN(sIdx)) courseUnitState.sectionIdx = sIdx;
+            }
+            return courseUnitState;
+          }
+        }
+        // Backward compat: /course/block-{key}[/{unitId}[/{sectionIdx}]]
         if (segments.length >= 2 && segments[1].indexOf('block-') === 0) {
           var blockKey = segments[1].replace('block-', '');
           if (segments.length === 2) {
