@@ -932,7 +932,7 @@
           html += '<div class="cu-section cu-exercise" id="' + secId + '">' +
             '<div class="cu-section-title">' + _mi('edit_note') + ' Exercise ' + self._escapeHTML(key) + ': ' + self._escapeHTML(ex.title || '') + '</div>';
           if (ex.instructions) html += '<div class="cu-ex-instructions">' + _bold(ex.instructions) + '</div>';
-          html += self._renderCuWordBank(ex.words);
+          if (ex.type !== 'drag-category') html += self._renderCuWordBank(ex.words);
           var questions = ex.questions || [];
 
           if (ex.type === 'grouped') {
@@ -1607,25 +1607,55 @@
       var groups = ex.groups || [];
       var html = '<div class="cu-grouped-exercise">';
       var globalIdx = 0;
-      groups.forEach(function(grp, grpIdx) {
-        html += '<div class="cu-group-section">';
+
+      function renderGroupSection(grp) {
+        var out = '<div class="cu-group-section">';
         if (grp.words && grp.words.length) {
-          html += '<div class="cu-group-wordbank">';
-          html += '<span class="material-symbols-outlined">view_list</span>';
+          out += '<div class="cu-group-wordbank">';
+          out += '<span class="material-symbols-outlined">view_list</span>';
           grp.words.forEach(function(w) {
-            html += '<span class="cu-wordbank-item" role="button" tabindex="0" onclick="BentoGrid._toggleWordBankItem(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordBankItem(this);event.preventDefault();}" title="Mark as used">' + self._escapeHTML(w) + '</span>';
+            out += '<span class="cu-wordbank-item" role="button" tabindex="0" onclick="BentoGrid._toggleWordBankItem(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordBankItem(this);event.preventDefault();}" title="Mark as used">' + self._escapeHTML(w) + '</span>';
           });
-          html += '</div>';
+          out += '</div>';
         }
         var questions = grp.questions || [];
-        html += '<div class="cu-ex-items">';
+        out += '<div class="cu-ex-items">';
         questions.forEach(function(item) {
-          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx);
+          out += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx);
           globalIdx++;
         });
-        html += '</div>';
-        html += '</div>';
-      });
+        out += '</div>';
+        out += '</div>';
+        return out;
+      }
+
+      if (groups.length > 1) {
+        // Paginate: one page per group
+        html += '<nav class="cu-ex-page-dots" aria-label="Exercise pages">';
+        for (var p = 0; p < groups.length; p++) {
+          html += '<button class="cu-ex-pdot' + (p === 0 ? ' cu-ex-pdot-active' : '') + '" ' +
+            'onclick="BentoGrid._cuExGoToPage(\'' + secId + '\',' + p + ')" ' +
+            (p === 0 ? 'aria-current="true" ' : 'aria-current="false" ') +
+            'aria-label="Parte ' + (p + 1) + '"></button>';
+        }
+        html += '</nav>';
+        groups.forEach(function(grp, grpIdx) {
+          html += '<div class="cu-ex-page' + (grpIdx === 0 ? ' cu-ex-page-active' : '') + '">';
+          html += renderGroupSection(grp);
+          if (grpIdx < groups.length - 1) {
+            var remaining = groups.length - grpIdx - 1;
+            html += '<button class="cu-ex-page-more" type="button" onclick="BentoGrid._cuExGoToPage(\'' + secId + '\',' + (grpIdx + 1) + ')">' +
+              '<span class="material-symbols-outlined">expand_circle_down</span> ' +
+              remaining + ' more part' + (remaining > 1 ? 's' : '') + '</button>';
+          }
+          html += '</div>';
+        });
+      } else {
+        groups.forEach(function(grp) {
+          html += renderGroupSection(grp);
+        });
+      }
+
       html += '</div>';
       var totalQs = groups.reduce(function(n, g) { return n + (g.questions || []).length; }, 0);
       if (totalQs > 0) html += self._renderCuExFooter(secId);
