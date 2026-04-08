@@ -1,84 +1,277 @@
 {
-  "Review3": {
-    "block": 1,
-    "type": "review",
-    "unitTitle": "Review: Block 1 – Units 1 & 2",
-    "totalPoints": 50,
-    "sections": [
-      {
-        "type": "word_formation",
-        "title": "A: Use the word given in capitals to form a word",
-        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 10 },
-        "items": [
-          { "sentence": "There is still no adequate (1) ______ (EXPLAIN) why, several thousand years ago, cultures in both Egypt and South America saw the (2) ______ (INTRODUCE) of pyramids.", "answer": "explanation, introduction" },
-          { "sentence": "Was it coincidence? Many (3) ______ (SCIENCE) believe that it was, and state that there is no (4) ______ (POSSIBLE) at all that people from two distant continents traded information on (5) ______ (BUILD) techniques.", "answer": "scientists, possibility, building" },
-          { "sentence": "However, some (6) ______ (REVOLUTION) theories in recent years, based on the (7) ______ (DISCOVER) that the two cultures also share key myths, legends and beliefs, suggest that the (8) ______ (APPEAR) of pyramids on opposite sides of the world was no coincidence at all.", "answer": "revolutionary, discovery, appearance" },
-          { "sentence": "One (9) ______ (RESEARCH) working on this, Crystal Davis, said: 'The (10) ______ (IMPORTANT) of finding out the truth here cannot be exaggerated.'", "answer": "researcher, importance" }
-        ]
+  "block": 1,
+  "type": "review",
+  "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "totalPoints": 50,
+  "sections": [
+    {
+      "type": "exercise",
+      "title": "A: Use the word given in capitals to form a word",
+      "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 10
       },
-      {
-        "type": "matching",
-        "title": "B: Match to make sentences",
-        "instructions": "Match to make sentences.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
-        "items": [
-          { "sentence": "11 The fax machine has broken", "answer": "D", "match": "down, so I'm afraid you'll have to wait until tomorrow." },
-          { "sentence": "12 A number of experiments have been carried", "answer": "A", "match": "out by physicists which prove that time can speed up and slow down." },
-          { "sentence": "13 Whoever came", "answer": "F", "match": "up with that idea should have won the Nobel Prize." },
-          { "sentence": "14 The electricity was cut", "answer": "C", "match": "off for over three hours yesterday." },
-          { "sentence": "15 I'd like to find", "answer": "H", "match": "out much more about technology in the Bronze Age." },
-          { "sentence": "16 This chemical gives", "answer": "E", "match": "off a very nasty smell when it's heated." },
-          { "sentence": "17 Cancer treatments have come", "answer": "B", "match": "on enormously in recent years." },
-          { "sentence": "18 I wonder if you could put me", "answer": "G", "match": "through to the Radiology Department, please." }
-        ]
+      "items": [
+        {
+          "sentence": "There is still no adequate (1) ...... (EXPLAIN) why, several thousand years ago, cultures in both Egypt and South America saw the (2) ...... (INTRODUCE) of pyramids.",
+          "answer": "explanation, introduction"
+        },
+        {
+          "sentence": "Was it coincidence? Many (3) ...... (SCIENCE) believe that it was, and state that there is no (4) ...... (POSSIBLE) at all that people from two distant continents traded information on (5) ...... (BUILD) techniques.",
+          "answer": "scientists, possibility, building"
+        },
+        {
+          "sentence": "However, some (6) ...... (REVOLUTION) theories in recent years, based on the (7) ...... (DISCOVER) that the two cultures also share key myths, legends and beliefs, suggest that the (8) ...... (APPEAR) of pyramids on opposite sides of the world was no coincidence at all.",
+          "answer": "revolutionary, discovery, appearance"
+        },
+        {
+          "sentence": "One (9) ...... (RESEARCH) working on this, Crystal Davis, said: 'The (10) ...... (IMPORTANT) of finding out the truth here cannot be exaggerated.'",
+          "answer": "researcher, importance"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "B: Match to make sentences",
+      "instructions": "Match to make sentences.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 8
       },
-      {
-        "type": "key_word_transformation",
-        "title": "C: Complete the second sentence using the word given",
-        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
-        "scoring": { "pointsPerItem": 2, "maxScore": 18 },
-        "items": [
-          { "sentence": "I can't wait until we do some experiments in the science lab.\nforward\nI'm really ______ some experiments in the science lab.", "answer": "looking forward to doing" },
-          { "sentence": "Communication changed completely when the telephone was introduced.\nwith\nCommunication changed completely ______ the telephone.", "answer": "with the introduction of" },
-          { "sentence": "Dr Frankenstein was finally successful in bringing the monster to life.\nmanaged\nDr Frankenstein ______ the monster to life.", "answer": "finally managed to bring" },
-          { "sentence": "I can't understand how they built the Pyramids.\nimpossible\nI ______ how they built the Pyramids.", "answer": "find it impossible to understand" },
-          { "sentence": "Fleming discovered penicillin as a result of a little luck.\nresulted\nA little luck ______ penicillin.", "answer": "resulted in Fleming's discovery of" },
-          { "sentence": "People sometimes call nurses 'angels'.\nknown\nNurses ______ 'angels'.", "answer": "are sometimes known as" },
-          { "sentence": "Einstein eventually realised that he was wrong.\nconclusion\nEinstein eventually ______ that he was wrong.", "answer": "came to the conclusion" },
-          { "sentence": "Our physics teacher tried to explain the Theory of Relativity.\nattempt\nOur physics teacher ______ explaining the Theory of Relativity.", "answer": "made an attempt to" },
-          { "sentence": "We'll save enough money and then we'll buy a computer.\nsoon\nWe'll buy a computer ______ saved enough money.", "answer": "as soon as we have" }
-        ]
+      "items": [
+        {
+          "sentence": "The fax machine has broken ......",
+          "answer": "down, so I'm afraid you'll have to wait until tomorrow. (D)"
+        },
+        {
+          "sentence": "A number of experiments have been carried ......",
+          "answer": "out by physicists which prove that time can speed up and slow down. (A)"
+        },
+        {
+          "sentence": "Whoever came ......",
+          "answer": "up with that idea should have won the Nobel Prize. (F)"
+        },
+        {
+          "sentence": "The electricity was cut ......",
+          "answer": "off for over three hours yesterday. (C)"
+        },
+        {
+          "sentence": "I'd like to find ......",
+          "answer": "out much more about technology in the Bronze Age. (H)"
+        },
+        {
+          "sentence": "This chemical gives ......",
+          "answer": "off a very nasty smell when it's heated. (E)"
+        },
+        {
+          "sentence": "Cancer treatments have come ......",
+          "answer": "on enormously in recent years. (B)"
+        },
+        {
+          "sentence": "I wonder if you could put me ......",
+          "answer": "through to the Radiology Department, please. (G)"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "C: Complete the second sentence using the word given",
+      "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+      "scoring": {
+        "pointsPerItem": 2,
+        "maxScore": 18
       },
-      {
-        "type": "multiple_choice",
-        "title": "D: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
-        "items": [
-          { "sentence": "This time next week, we ______ the chemistry exam.", "options": ["A have finished", "B have been finishing", "C will have finished", "D will have been finishing"], "answer": "C" },
-          { "sentence": "When I grow up, ______ an inventor.", "options": ["A I'm being", "B I'm going to be", "C I will have been", "D I will be being"], "answer": "B" },
-          { "sentence": "Shirley will ______ her research for the next few weeks.", "options": ["A have done", "B be doing", "C have been doing", "D have been done"], "answer": "B" },
-          { "sentence": "Next year, Sam ______ patients at this hospital for twenty-five years.", "options": ["A have been treating", "B treat", "C be treating", "D be going to treat"], "answer": "A" },
-          { "sentence": "'What is it?' 'We won't know until we ______ at it under a microscope.'", "options": ["A we're going to look", "B we'll have looked", "C we'll be looking", "D we've looked"], "answer": "D" },
-          { "sentence": "You won't get any radio reception while ______ through the tunnel.", "options": ["A you've driven", "B you'll drive", "C you're driving", "D you'll be driving"], "answer": "C" },
-          { "sentence": "'I'm going to set up the equipment in a minute.' '______ give you a hand?'", "options": ["A Shall I", "B Will I", "C Would I", "D Do I"], "answer": "A" }
-        ]
+      "items": [
+        {
+          "sentence": "I can't wait until we do some experiments in the science lab. **forward**\nI'm really ...... some experiments in the science lab.",
+          "answer": "looking forward to doing"
+        },
+        {
+          "sentence": "Communication changed completely when the telephone was introduced. **with**\nCommunication changed completely ...... the telephone.",
+          "answer": "with the introduction of"
+        },
+        {
+          "sentence": "Dr Frankenstein was finally successful in bringing the monster to life. **managed**\nDr Frankenstein ...... the monster to life.",
+          "answer": "finally managed to bring"
+        },
+        {
+          "sentence": "I can't understand how they built the Pyramids. **impossible**\nI ...... how they built the Pyramids.",
+          "answer": "find it impossible to understand"
+        },
+        {
+          "sentence": "Fleming discovered penicillin as a result of a little luck. **resulted**\nA little luck ...... penicillin.",
+          "answer": "resulted in Fleming's discovery of"
+        },
+        {
+          "sentence": "People sometimes call nurses 'angels'. **known**\nNurses ...... 'angels'.",
+          "answer": "are sometimes known as"
+        },
+        {
+          "sentence": "Einstein eventually realised that he was wrong. **conclusion**\nEinstein eventually ...... that he was wrong.",
+          "answer": "came to the conclusion"
+        },
+        {
+          "sentence": "Our physics teacher tried to explain the Theory of Relativity. **attempt**\nOur physics teacher ...... explaining the Theory of Relativity.",
+          "answer": "made an attempt to"
+        },
+        {
+          "sentence": "We'll save enough money and then we'll buy a computer. **soon**\nWe'll buy a computer ...... saved enough money.",
+          "answer": "as soon as we have"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "D: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 7
       },
-      {
-        "type": "multiple_choice_vocab",
-        "title": "E: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 6 },
-        "items": [
-          { "sentence": "Do you know who ______ the fact that sound travels in waves?", "options": ["A invented", "B developed", "C discovered", "D found"], "answer": "C" },
-          { "sentence": "I'm thinking of getting a fax ______.", "options": ["A machine", "B motor", "C engine", "D instrument"], "answer": "A" },
-          { "sentence": "The ______ of the outbreak of the disease is still unknown.", "options": ["A aim", "B reason", "C cause", "D motive"], "answer": "C" },
-          { "sentence": "Ten million text messages are sent on ______ every minute.", "options": ["A normal", "B common", "C general", "D average"], "answer": "D" },
-          { "sentence": "Once they've finished the extension to the ______, there'll be room for them to take on a lot more workers.", "options": ["A manufacturing", "B trade", "C industry", "D factory"], "answer": "D" },
-          { "sentence": "Shannon doesn't dye her hair; it's ______ blonde.", "options": ["A physically", "B logically", "C naturally", "D organically"], "answer": "C" }
-        ]
-      }
-    ]
-  }
+      "items": [
+        {
+          "sentence": "This time next week, we ...... the chemistry exam.",
+          "options": [
+            "A have finished",
+            "B have been finishing",
+            "C will have finished",
+            "D will have been finishing"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "When I grow up, ...... an inventor.",
+          "options": [
+            "A I'm being",
+            "B I'm going to be",
+            "C I will have been",
+            "D I will be being"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Shirley will ...... her research for the next few weeks.",
+          "options": [
+            "A have done",
+            "B be doing",
+            "C have been doing",
+            "D have been done"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Next year, Sam ...... patients at this hospital for twenty-five years.",
+          "options": [
+            "A have been treating",
+            "B treat",
+            "C be treating",
+            "D be going to treat"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "'What is it?' 'We won't know until we ...... at it under a microscope.'",
+          "options": [
+            "A we're going to look",
+            "B we'll have looked",
+            "C we'll be looking",
+            "D we've looked"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "You won't get any radio reception while ...... through the tunnel.",
+          "options": [
+            "A you've driven",
+            "B you'll drive",
+            "C you're driving",
+            "D you'll be driving"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "'I'm going to set up the equipment in a minute.' '...... give you a hand?'",
+          "options": [
+            "A Shall I",
+            "B Will I",
+            "C Would I",
+            "D Do I"
+          ],
+          "answer": "A"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "E: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 6
+      },
+      "items": [
+        {
+          "sentence": "Do you know who ...... the fact that sound travels in waves?",
+          "options": [
+            "A invented",
+            "B developed",
+            "C discovered",
+            "D found"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "I'm thinking of getting a fax .......",
+          "options": [
+            "A machine",
+            "B motor",
+            "C engine",
+            "D instrument"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "The ...... of the outbreak of the disease is still unknown.",
+          "options": [
+            "A aim",
+            "B reason",
+            "C cause",
+            "D motive"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "Ten million text messages are sent on ...... every minute.",
+          "options": [
+            "A normal",
+            "B common",
+            "C general",
+            "D average"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "Once they've finished the extension to the ......, there'll be room for them to take on a lot more workers.",
+          "options": [
+            "A manufacturing",
+            "B trade",
+            "C industry",
+            "D factory"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "Shannon doesn't dye her hair; it's ...... blonde.",
+          "options": [
+            "A physically",
+            "B logically",
+            "C naturally",
+            "D organically"
+          ],
+          "answer": "C"
+        }
+      ]
+    }
+  ]
 }

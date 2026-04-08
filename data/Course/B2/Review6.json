@@ -1,87 +1,295 @@
 {
-  "Review6": {
-    "block": 1,
-    "type": "review",
-    "unitTitle": "Review: Block 1 – Units 1 & 2",
-    "totalPoints": 50,
-    "sections": [
-      {
-        "type": "word_formation",
-        "title": "A: Use the word given in capitals to form a word",
-        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 10 },
-        "items": [
-          { "sentence": "Frank Turner, the (1) ______ (ACCUSE) in a trial that has attracted national attention, was today convicted of murder.", "answer": "accused" },
-          { "sentence": "The police (2) ______ (INVESTIGATE) lasted for a year and during the trial over 100 hours of (3) ______ (EVIDENT) were heard.", "answer": "investigation, evidence" },
-          { "sentence": "Turner's (4) ______ (LAW) had all argued that he was not in the area at the time, but could not provide the necessary (5) ______ (PROVE).", "answer": "lawyers, proof" },
-          { "sentence": "Police described Turner as a well-known (6) ______ (THIEF) who was responsible for many (7) ______ (ROB) in the local region.", "answer": "thief, robberies" },
-          { "sentence": "This is not Turner's first (8) ______ (CONVICT). Seven years ago, he was found guilty of (9) ______ (FORGE) and served three years in prison.", "answer": "conviction, forgery" },
-          { "sentence": "The judge is expected to sentence Turner to a period of (10) ______ (PRISON) later this week.", "answer": "imprisonment" }
-        ]
+  "block": 1,
+  "type": "review",
+  "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "totalPoints": 50,
+  "sections": [
+    {
+      "type": "exercise",
+      "title": "A: Use the word given in capitals to form a word",
+      "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 10
       },
-      {
-        "type": "matching",
-        "title": "B: Match to make sentences",
-        "instructions": "Match to make sentences.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
-        "items": [
-          { "sentence": "11 I heard that they're going to bring", "answer": "G", "match": "in a law banning smoking in public places." },
-          { "sentence": "12 Police are appealing for members of the public to come", "answer": "D", "match": "forward with any information they feel might be useful." },
-          { "sentence": "13 Nobody was convinced when the man claimed the gun had gone", "answer": "A", "match": "off accidentally in his hand." },
-          { "sentence": "14 The policewoman started to take", "answer": "H", "match": "down everything I was saying and I knew I was in serious trouble." },
-          { "sentence": "15 Lots of old people have been taken", "answer": "C", "match": "in by this trick and have lost a lot of money." },
-          { "sentence": "16 Peterson was found guilty of holding", "answer": "E", "match": "up the bank and was sentenced to five years in prison." },
-          { "sentence": "17 Many people get", "answer": "B", "match": "away with serious crimes every day." },
-          { "sentence": "18 The policeman decided to let Shaun", "answer": "F", "match": "off this time, but told him that he wouldn't be so lucky next time." }
-        ]
+      "items": [
+        {
+          "sentence": "Frank Turner, the (1) ...... (ACCUSE) in a trial that has attracted national attention, was today convicted of murder.",
+          "answer": "accused"
+        },
+        {
+          "sentence": "The police (2) ...... (INVESTIGATE) lasted for a year and during the trial over 100 hours of (3) ...... (EVIDENT) were heard.",
+          "answer": "investigation, evidence"
+        },
+        {
+          "sentence": "Turner's (4) ...... (LAW) had all argued that he was not in the area at the time, but could not provide the necessary (5) ...... (PROVE).",
+          "answer": "lawyers, proof"
+        },
+        {
+          "sentence": "Police described Turner as a well-known (6) ...... (THIEF) who was responsible for many (7) ...... (ROB) in the local region.",
+          "answer": "thief, robberies"
+        },
+        {
+          "sentence": "This is not Turner's first (8) ...... (CONVICT). Seven years ago, he was found guilty of (9) ...... (FORGE) and served three years in prison.",
+          "answer": "conviction, forgery"
+        },
+        {
+          "sentence": "The judge is expected to sentence Turner to a period of (10) ...... (PRISON) later this week.",
+          "answer": "imprisonment"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "B: Match to make sentences",
+      "instructions": "Match to make sentences.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 8
       },
-      {
-        "type": "key_word_transformation",
-        "title": "C: Complete the second sentence using the word given",
-        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
-        "scoring": { "pointsPerItem": 2, "maxScore": 18 },
-        "items": [
-          { "sentence": "Police said there hadn't been a crime as bad as this in over ten years.\nthe\nPolice described it ______ over ten years.", "answer": "as the worst crime in" },
-          { "sentence": "Some people don't respect the law.\nhave\nSome people ______ the law.", "answer": "have no respect for" },
-          { "sentence": "The laws in some countries are so strict that people have very little freedom.\nsuch\nSome countries ______ people have very little freedom.", "answer": "have such strict laws that" },
-          { "sentence": "The girl was too young to go to prison.\nold\nThe girl ______ to go to prison.", "answer": "was not old enough" },
-          { "sentence": "The witness thought I was the thief, but realised that she was wrong.\nfor\nThe witness ______ but realised that she was wrong.", "answer": "took me for the thief" },
-          { "sentence": "Nobody in the country knows the law as well as Mr Parkhurst.\nthan\nMr Parkhurst knows the law ______ in the country.", "answer": "better than anyone else" },
-          { "sentence": "There have been so many robberies lately that people are afraid.\nsuch\nThere have been ______ robberies lately that people are afraid.", "answer": "such a lot of" },
-          { "sentence": "Even though we weren't old enough, we managed to get into the night club.\ntoo\nEven though we ______ we managed to get into the night club.", "answer": "were too young" },
-          { "sentence": "The judge told the jury to consider the man's past life.\naccount\nThe judge told the jury to ______ the man's past life.", "answer": "take into account" }
-        ]
+      "items": [
+        {
+          "sentence": "I heard that they're going to bring ......",
+          "answer": "in a law banning smoking in public places. (G)"
+        },
+        {
+          "sentence": "Police are appealing for members of the public to come ......",
+          "answer": "forward with any information they feel might be useful. (D)"
+        },
+        {
+          "sentence": "Nobody was convinced when the man claimed the gun had gone ......",
+          "answer": "off accidentally in his hand. (A)"
+        },
+        {
+          "sentence": "The policewoman started to take ......",
+          "answer": "down everything I was saying and I knew I was in serious trouble. (H)"
+        },
+        {
+          "sentence": "Lots of old people have been taken ......",
+          "answer": "in by this trick and have lost a lot of money. (C)"
+        },
+        {
+          "sentence": "Peterson was found guilty of holding ......",
+          "answer": "up the bank and was sentenced to five years in prison. (E)"
+        },
+        {
+          "sentence": "Many people get ......",
+          "answer": "away with serious crimes every day. (B)"
+        },
+        {
+          "sentence": "The policeman decided to let Shaun ......",
+          "answer": "off this time, but told him that he wouldn't be so lucky next time. (F)"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "C: Complete the second sentence using the word given",
+      "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+      "scoring": {
+        "pointsPerItem": 2,
+        "maxScore": 18
       },
-      {
-        "type": "multiple_choice",
-        "title": "D: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
-        "items": [
-          { "sentence": "I had ______ a bad time in prison that I never want to go there again.", "options": ["A too", "B so", "C such", "D quite"], "answer": "C" },
-          { "sentence": "One problem is that we don't have ______ officers on the streets.", "options": ["A so a lot of", "B too many", "C enough", "D such many"], "answer": "C" },
-          { "sentence": "I can't get a car yet because I'm not ______ to drive.", "options": ["A enough old", "B quite old", "C so old", "D old enough"], "answer": "D" },
-          { "sentence": "Some crimes seem to be ______ in this country than in others.", "options": ["A much less common", "B the least common", "C too little common", "D little common enough"], "answer": "A" },
-          { "sentence": "Police blamed the robberies ______ a local gang.", "options": ["A with", "B on", "C for", "D to"], "answer": "B" },
-          { "sentence": "My grandma says there was ______ a lot of crime when she was young that nobody trusted anybody else.", "options": ["A too", "B so", "C such", "D quite"], "answer": "B" },
-          { "sentence": "It became ______ as I walked home and I began to get slightly nervous.", "options": ["A enough dark", "B such dark", "C quite dark", "D so dark enough"], "answer": "C" }
-        ]
+      "items": [
+        {
+          "sentence": "Police said there hadn't been a crime as bad as this in over ten years. **the**\nPolice described it ...... over ten years.",
+          "answer": "as the worst crime in"
+        },
+        {
+          "sentence": "Some people don't respect the law. **have**\nSome people ...... the law.",
+          "answer": "have no respect for"
+        },
+        {
+          "sentence": "The laws in some countries are so strict that people have very little freedom. **such**\nSome countries ...... people have very little freedom.",
+          "answer": "have such strict laws that"
+        },
+        {
+          "sentence": "The girl was too young to go to prison. **old**\nThe girl ...... to go to prison.",
+          "answer": "was not old enough"
+        },
+        {
+          "sentence": "The witness thought I was the thief, but realised that she was wrong. **for**\nThe witness ...... but realised that she was wrong.",
+          "answer": "took me for the thief"
+        },
+        {
+          "sentence": "Nobody in the country knows the law as well as Mr Parkhurst. **than**\nMr Parkhurst knows the law ...... in the country.",
+          "answer": "better than anyone else"
+        },
+        {
+          "sentence": "There have been so many robberies lately that people are afraid. **such**\nThere have been ...... robberies lately that people are afraid.",
+          "answer": "such a lot of"
+        },
+        {
+          "sentence": "Even though we weren't old enough, we managed to get into the night club. **too**\nEven though we ...... we managed to get into the night club.",
+          "answer": "were too young"
+        },
+        {
+          "sentence": "The judge told the jury to consider the man's past life. **account**\nThe judge told the jury to ...... the man's past life.",
+          "answer": "take into account"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "D: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 7
       },
-      {
-        "type": "multiple_choice_vocab",
-        "title": "E: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
-        "items": [
-          { "sentence": "The prisoner knew he had ______ a mistake and would regret it forever.", "options": ["A got", "B taken", "C done", "D made"], "answer": "D" },
-          { "sentence": "The boy ______ that he had had anything to do with the break-in.", "options": ["A refused", "B denied", "C objected", "D rejected"], "answer": "B" },
-          { "sentence": "Suddenly, someone shouted, 'Thief!' and the man quickly ______ on a motorbike.", "options": ["A took in", "B made off", "C came forward", "D handed in"], "answer": "B" },
-          { "sentence": "Do you have ______ to take that bicycle?", "options": ["A allowance", "B exception", "C willingness", "D permission"], "answer": "D" },
-          { "sentence": "He said it was an accident, but I know he did it on ______.", "options": ["A purpose", "B goal", "C aim", "D reason"], "answer": "A" },
-          { "sentence": "Things started to ______ wrong for the robbers when the alarm went off.", "options": ["A take", "B have", "C go", "D come"], "answer": "C" },
-          { "sentence": "The sign says that all shoplifters will be ______.", "options": ["A persecuted", "B disproved", "C prosecuted", "D prohibited"], "answer": "C" }
-        ]
-      }
-    ]
-  }
+      "items": [
+        {
+          "sentence": "I had ...... a bad time in prison that I never want to go there again.",
+          "options": [
+            "A too",
+            "B so",
+            "C such",
+            "D quite"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "One problem is that we don't have ...... officers on the streets.",
+          "options": [
+            "A so a lot of",
+            "B too many",
+            "C enough",
+            "D such many"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "I can't get a car yet because I'm not ...... to drive.",
+          "options": [
+            "A enough old",
+            "B quite old",
+            "C so old",
+            "D old enough"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "Some crimes seem to be ...... in this country than in others.",
+          "options": [
+            "A much less common",
+            "B the least common",
+            "C too little common",
+            "D little common enough"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "Police blamed the robberies ...... a local gang.",
+          "options": [
+            "A with",
+            "B on",
+            "C for",
+            "D to"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "My grandma says there was ...... a lot of crime when she was young that nobody trusted anybody else.",
+          "options": [
+            "A too",
+            "B so",
+            "C such",
+            "D quite"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "It became ...... as I walked home and I began to get slightly nervous.",
+          "options": [
+            "A enough dark",
+            "B such dark",
+            "C quite dark",
+            "D so dark enough"
+          ],
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "E: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 7
+      },
+      "items": [
+        {
+          "sentence": "The prisoner knew he had ...... a mistake and would regret it forever.",
+          "options": [
+            "A got",
+            "B taken",
+            "C done",
+            "D made"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "The boy ...... that he had had anything to do with the break-in.",
+          "options": [
+            "A refused",
+            "B denied",
+            "C objected",
+            "D rejected"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Suddenly, someone shouted, 'Thief!' and the man quickly ...... on a motorbike.",
+          "options": [
+            "A took in",
+            "B made off",
+            "C came forward",
+            "D handed in"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Do you have ...... to take that bicycle?",
+          "options": [
+            "A allowance",
+            "B exception",
+            "C willingness",
+            "D permission"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "He said it was an accident, but I know he did it on .......",
+          "options": [
+            "A purpose",
+            "B goal",
+            "C aim",
+            "D reason"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "Things started to ...... wrong for the robbers when the alarm went off.",
+          "options": [
+            "A take",
+            "B have",
+            "C go",
+            "D come"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "The sign says that all shoplifters will be .......",
+          "options": [
+            "A persecuted",
+            "B disproved",
+            "C prosecuted",
+            "D prohibited"
+          ],
+          "answer": "C"
+        }
+      ]
+    }
+  ]
 }

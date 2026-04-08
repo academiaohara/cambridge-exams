@@ -1,88 +1,287 @@
 {
-  "Review5": {
-    "block": 1,
-    "type": "review",
-    "unitTitle": "Review: Block 1 – Units 1 & 2",
-    "totalPoints": 50,
-    "sections": [
-      {
-        "type": "gap_fill",
-        "title": "A: Write one word in each gap",
-        "instructions": "Write one word in each gap.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 15 },
-        "items": [
-          { "sentence": "Many people dream (1) ______ living in a foreign country.", "answer": "of" },
-          { "sentence": "It can be an amazing experience for those who (2) ______ the courage to leave their family and friends and settle (3) ______ in a new place.", "answer": "have, down" },
-          { "sentence": "Culture shock is the feeling we get from living in a place that is so different to where we (4) ______ up that we are not sure how to deal with it.", "answer": "grew" },
-          { "sentence": "We can often be (5) ______ aback by some of the things we find in foreign countries.", "answer": "taken" },
-          { "sentence": "Customs and traditions can be very different and that can sometimes make it difficult to (6) ______ on with local people and to (7) ______ friends.", "answer": "get, make" },
-          { "sentence": "They might not approve (8) ______ things you do or might object (9) ______ things you say.", "answer": "of, to" },
-          { "sentence": "You might even be banned (10) ______ doing things in another country that are perfectly legal in your own.", "answer": "from" },
-          { "sentence": "(11) ______ you were to move to a country such as Singapore, say, you might find some of the laws very strict.", "answer": "If" },
-          { "sentence": "There, people can be forced (12) ______ pay a large fine just for dropping litter.", "answer": "to" },
-          { "sentence": "Eventually, though, most people who live abroad (13) ______ in love with their adopted country and learn to accept its differences.", "answer": "fall" },
-          { "sentence": "It does (14) ______ real courage to make such a big change to your life, but many people agree (15) ______ it is worth it in the end.", "answer": "take, that" }
-        ]
+  "block": 1,
+  "type": "review",
+  "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "totalPoints": 50,
+  "sections": [
+    {
+      "type": "exercise",
+      "title": "A: Write one word in each gap",
+      "instructions": "Write one word in each gap.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 15
       },
-      {
-        "type": "word_formation",
-        "title": "B: Complete the sentences by changing the form of the word in capitals",
-        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
-        "items": [
-          { "sentence": "My (FRIEND) ______ with Harriet is one of the most important things in my life.", "answer": "friendship" },
-          { "sentence": "Many parents complain of their children's (OBEY) ______, but I think they were probably exactly the same.", "answer": "disobedience" },
-          { "sentence": "Don't listen to Mary - she's just (JEALOUS) ______ of you.", "answer": "jealous" },
-          { "sentence": "We all watched (NERVE) ______ as Mark made his speech of thanks.", "answer": "nervously" },
-          { "sentence": "Don't you think that we should make sure that (ABLE) ______ people have the same rights as everyone else?", "answer": "disabled" },
-          { "sentence": "Terry is really (ARGUE) ______ and is always looking for fights with other people.", "answer": "argumentative" },
-          { "sentence": "Hasn't anyone ever told you that it's very (POLITE) ______ to interrupt when other people are talking?", "answer": "impolite" }
-        ]
+      "items": [
+        {
+          "sentence": "Many people dream (1) ...... living in a foreign country.",
+          "answer": "of"
+        },
+        {
+          "sentence": "It can be an amazing experience for those who (2) ...... the courage to leave their family and friends and settle (3) ...... in a new place.",
+          "answer": "have, down"
+        },
+        {
+          "sentence": "Culture shock is the feeling we get from living in a place that is so different to where we (4) ...... up that we are not sure how to deal with it.",
+          "answer": "grew"
+        },
+        {
+          "sentence": "We can often be (5) ...... aback by some of the things we find in foreign countries.",
+          "answer": "taken"
+        },
+        {
+          "sentence": "Customs and traditions can be very different and that can sometimes make it difficult to (6) ...... on with local people and to (7) ...... friends.",
+          "answer": "get, make"
+        },
+        {
+          "sentence": "They might not approve (8) ...... things you do or might object (9) ...... things you say.",
+          "answer": "of, to"
+        },
+        {
+          "sentence": "You might even be banned (10) ...... doing things in another country that are perfectly legal in your own.",
+          "answer": "from"
+        },
+        {
+          "sentence": "(11) ...... you were to move to a country such as Singapore, say, you might find some of the laws very strict.",
+          "answer": "If"
+        },
+        {
+          "sentence": "There, people can be forced (12) ...... pay a large fine just for dropping litter.",
+          "answer": "to"
+        },
+        {
+          "sentence": "Eventually, though, most people who live abroad (13) ...... in love with their adopted country and learn to accept its differences.",
+          "answer": "fall"
+        },
+        {
+          "sentence": "It does (14) ...... real courage to make such a big change to your life, but many people agree (15) ...... it is worth it in the end.",
+          "answer": "take, that"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "B: Complete the sentences by changing the form of the word in capitals",
+      "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 7
       },
-      {
-        "type": "key_word_transformation",
-        "title": "C: Complete the second sentence using the word given",
-        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
-        "scoring": { "pointsPerItem": 2, "maxScore": 16 },
-        "items": [
-          { "sentence": "I promised my mum that I would work hard this year.\nmade\nI ______ that I would work hard this year.", "answer": "made my mum a promise" },
-          { "sentence": "My parents allowed me to go out even though it was very late.\nlet\nMy parents ______ even though it was very late.", "answer": "let me go out" },
-          { "sentence": "Margaret and I have had an argument, so we're not talking to each other.\nout\nMargaret and I ______ so we're not talking to each other.", "answer": "have fallen out" },
-          { "sentence": "Nobody approved of the new law when it was introduced.\napproval\nThe new law didn't ______ when it was introduced.", "answer": "meet with anyone's approval" },
-          { "sentence": "I didn't want to have an argument, so I changed the subject.\nmood\nI wasn't ______ an argument, so I changed the subject.", "answer": "in the mood for" },
-          { "sentence": "Tina was depressed because she couldn't make friends at summer camp.\ninability\nTina was depressed because ______ friends at summer camp.", "answer": "of her inability to make" },
-          { "sentence": "'Could you open the door for me, please?' said Simon.\nme\nSimon ______ the door for him.", "answer": "asked me to open" },
-          { "sentence": "Make sure you look after your little brother while I'm out.\ncare\nMake sure you ______ your little brother while I'm out.", "answer": "take care of" }
-        ]
+      "items": [
+        {
+          "sentence": "My (FRIEND) ...... with Harriet is one of the most important things in my life.",
+          "answer": "friendship"
+        },
+        {
+          "sentence": "Many parents complain of their children's (OBEY) ......, but I think they were probably exactly the same.",
+          "answer": "disobedience"
+        },
+        {
+          "sentence": "Don't listen to Mary - she's just (JEALOUS) ...... of you.",
+          "answer": "jealous"
+        },
+        {
+          "sentence": "We all watched (NERVE) ...... as Mark made his speech of thanks.",
+          "answer": "nervously"
+        },
+        {
+          "sentence": "Don't you think that we should make sure that (ABLE) ...... people have the same rights as everyone else?",
+          "answer": "disabled"
+        },
+        {
+          "sentence": "Terry is really (ARGUE) ...... and is always looking for fights with other people.",
+          "answer": "argumentative"
+        },
+        {
+          "sentence": "Hasn't anyone ever told you that it's very (POLITE) ...... to interrupt when other people are talking?",
+          "answer": "impolite"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "C: Complete the second sentence using the word given",
+      "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+      "scoring": {
+        "pointsPerItem": 2,
+        "maxScore": 16
       },
-      {
-        "type": "multiple_choice",
-        "title": "D: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 6 },
-        "items": [
-          { "sentence": "If I ______ the lottery, I'd give some of the money to each member of my family.", "options": ["A win", "B have won", "C will win", "D won"], "answer": "D" },
-          { "sentence": "'Did you have an argument with Francis?' 'If you had been there, you ______ the same.'", "options": ["A did", "B would have done", "C had done", "D will do"], "answer": "B" },
-          { "sentence": "If you see Nina on Friday, ______ her to give me a ring.", "options": ["A you will tell", "B tell", "C you would have told", "D tell to"], "answer": "B" },
-          { "sentence": "If I'd known you were coming, I ______ a cake.", "options": ["A would have baked", "B would bake", "C will bake", "D baked"], "answer": "A" },
-          { "sentence": "Remind Tony about the party ______ he's forgotten.", "options": ["A in case", "B unless", "C provided that", "D except"], "answer": "A" },
-          { "sentence": "'Did you have a message for Dan?' 'Tell him I'll call him on Friday if you ______ him.'", "options": ["A had seen", "B see", "C will see", "D saw"], "answer": "B" }
-        ]
+      "items": [
+        {
+          "sentence": "I promised my mum that I would work hard this year. **made**\nI ...... that I would work hard this year.",
+          "answer": "made my mum a promise"
+        },
+        {
+          "sentence": "My parents allowed me to go out even though it was very late. **let**\nMy parents ...... even though it was very late.",
+          "answer": "let me go out"
+        },
+        {
+          "sentence": "Margaret and I have had an argument, so we're not talking to each other. **out**\nMargaret and I ...... so we're not talking to each other.",
+          "answer": "have fallen out"
+        },
+        {
+          "sentence": "Nobody approved of the new law when it was introduced. **approval**\nThe new law didn't ...... when it was introduced.",
+          "answer": "meet with anyone's approval"
+        },
+        {
+          "sentence": "I didn't want to have an argument, so I changed the subject. **mood**\nI wasn't ...... an argument, so I changed the subject.",
+          "answer": "in the mood for"
+        },
+        {
+          "sentence": "Tina was depressed because she couldn't make friends at summer camp. **inability**\nTina was depressed because ...... friends at summer camp.",
+          "answer": "of her inability to make"
+        },
+        {
+          "sentence": "'Could you open the door for me, please?' said Simon. **me**\nSimon ...... the door for him.",
+          "answer": "asked me to open"
+        },
+        {
+          "sentence": "Make sure you look after your little brother while I'm out. **care**\nMake sure you ...... your little brother while I'm out.",
+          "answer": "take care of"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "D: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 6
       },
-      {
-        "type": "multiple_choice_vocab",
-        "title": "E: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 6 },
-        "items": [
-          { "sentence": "This fascinating book covers some of the most ______ crimes of the twentieth century.", "options": ["A unknown", "B hidden", "C covered", "D infamous"], "answer": "D" },
-          { "sentence": "The government should do more for ______ people.", "options": ["A usual", "B ordinary", "C everyday", "D typical"], "answer": "B" },
-          { "sentence": "Ivan tells me he really ______ himself at your barbecue last week.", "options": ["A pleased", "B played", "C enjoyed", "D interested"], "answer": "C" },
-          { "sentence": "I know we had an argument, but now I'd quite like to ______.", "options": ["A look down", "B make up", "C fall out", "D bring up"], "answer": "B" },
-          { "sentence": "Harry and Sam both denied that the fight was their ______.", "options": ["A blame", "B cause", "C criticism", "D fault"], "answer": "D" },
-          { "sentence": "The curtain went up, the ______ grew silent and the actors on stage began to speak.", "options": ["A crowd", "B congregation", "C jury", "D audience"], "answer": "D" }
-        ]
-      }
-    ]
-  }
+      "items": [
+        {
+          "sentence": "If I ...... the lottery, I'd give some of the money to each member of my family.",
+          "options": [
+            "A win",
+            "B have won",
+            "C will win",
+            "D won"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "'Did you have an argument with Francis?' 'If you had been there, you ...... the same.'",
+          "options": [
+            "A did",
+            "B would have done",
+            "C had done",
+            "D will do"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "If you see Nina on Friday, ...... her to give me a ring.",
+          "options": [
+            "A you will tell",
+            "B tell",
+            "C you would have told",
+            "D tell to"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "If I'd known you were coming, I ...... a cake.",
+          "options": [
+            "A would have baked",
+            "B would bake",
+            "C will bake",
+            "D baked"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "Remind Tony about the party ...... he's forgotten.",
+          "options": [
+            "A in case",
+            "B unless",
+            "C provided that",
+            "D except"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "'Did you have a message for Dan?' 'Tell him I'll call him on Friday if you ...... him.'",
+          "options": [
+            "A had seen",
+            "B see",
+            "C will see",
+            "D saw"
+          ],
+          "answer": "B"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "E: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 6
+      },
+      "items": [
+        {
+          "sentence": "This fascinating book covers some of the most ...... crimes of the twentieth century.",
+          "options": [
+            "A unknown",
+            "B hidden",
+            "C covered",
+            "D infamous"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "The government should do more for ...... people.",
+          "options": [
+            "A usual",
+            "B ordinary",
+            "C everyday",
+            "D typical"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Ivan tells me he really ...... himself at your barbecue last week.",
+          "options": [
+            "A pleased",
+            "B played",
+            "C enjoyed",
+            "D interested"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "I know we had an argument, but now I'd quite like to .......",
+          "options": [
+            "A look down",
+            "B make up",
+            "C fall out",
+            "D bring up"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Harry and Sam both denied that the fight was their .......",
+          "options": [
+            "A blame",
+            "B cause",
+            "C criticism",
+            "D fault"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "The curtain went up, the ...... grew silent and the actors on stage began to speak.",
+          "options": [
+            "A crowd",
+            "B congregation",
+            "C jury",
+            "D audience"
+          ],
+          "answer": "D"
+        }
+      ]
+    }
+  ]
 }

@@ -1,87 +1,295 @@
 {
-  "Review11": {
-    "block": 1,
-    "type": "review",
-    "unitTitle": "Review: Block 1 – Units 1 & 2",
-    "totalPoints": 50,
-    "sections": [
-      {
-        "type": "word_formation",
-        "title": "A: Use the word given in capitals to form a word",
-        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 10 },
-        "items": [
-          { "sentence": "Although too many people in the West do still live in (1) ______ (POOR), on the whole, Westerners are far more (2) ______ (WEALTH) than those who live in developing countries.", "answer": "poverty, wealthy" },
-          { "sentence": "Things that are essential to our (3) ______ (DAY) lives, and which we take for granted, such as electricity, are (4) ______ (LUXURY) to millions of people around the world.", "answer": "daily, luxuries" },
-          { "sentence": "Is this situation (5) ______ (ACCEPT) or should the West be giving more (6) ______ (ASSIST) to developing countries?", "answer": "acceptable, assistance" },
-          { "sentence": "Some politicians and (7) ______ (ECONOMY) believe that Western financial (8) ______ (INVEST) in developing countries would be in everyone's interest.", "answer": "economists, investment" },
-          { "sentence": "As those countries get richer, they will become (9) ______ (VALUE) trading partners with the West.", "answer": "valuable" },
-          { "sentence": "The (10) ______ (REAL) is, however, that there is an enormous amount of work to be done before people in developing countries can enjoy the kind of lives that most people lead in the West.", "answer": "reality" }
-        ]
+  "block": 1,
+  "type": "review",
+  "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "totalPoints": 50,
+  "sections": [
+    {
+      "type": "exercise",
+      "title": "A: Use the word given in capitals to form a word",
+      "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 10
       },
-      {
-        "type": "matching",
-        "title": "B: Match to make sentences",
-        "instructions": "Match to make sentences.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
-        "items": [
-          { "sentence": "11 Sharon came", "answer": "D", "match": "into some money when her aunt died." },
-          { "sentence": "12 I manage to put", "answer": "A", "match": "a little money by each month." },
-          { "sentence": "13 You can bank", "answer": "H", "match": "on house prices coming down soon." },
-          { "sentence": "14 I don't know how they can get", "answer": "F", "match": "by on such a low salary." },
-          { "sentence": "15 If you could make", "answer": "B", "match": "out the cheque to Peardrop Limited, that would be fine." },
-          { "sentence": "16 The shop's giving", "answer": "E", "match": "away free software with every computer." },
-          { "sentence": "17 I'm saving", "answer": "C", "match": "up to buy a new DVD player." },
-          { "sentence": "18 I don't know what we're going to live", "answer": "G", "match": "on now I've lost my job." }
-        ]
+      "items": [
+        {
+          "sentence": "Although too many people in the West do still live in (1) ...... (POOR), on the whole, Westerners are far more (2) ...... (WEALTH) than those who live in developing countries.",
+          "answer": "poverty, wealthy"
+        },
+        {
+          "sentence": "Things that are essential to our (3) ...... (DAY) lives, and which we take for granted, such as electricity, are (4) ...... (LUXURY) to millions of people around the world.",
+          "answer": "daily, luxuries"
+        },
+        {
+          "sentence": "Is this situation (5) ...... (ACCEPT) or should the West be giving more (6) ...... (ASSIST) to developing countries?",
+          "answer": "acceptable, assistance"
+        },
+        {
+          "sentence": "Some politicians and (7) ...... (ECONOMY) believe that Western financial (8) ...... (INVEST) in developing countries would be in everyone's interest.",
+          "answer": "economists, investment"
+        },
+        {
+          "sentence": "As those countries get richer, they will become (9) ...... (VALUE) trading partners with the West.",
+          "answer": "valuable"
+        },
+        {
+          "sentence": "The (10) ...... (REAL) is, however, that there is an enormous amount of work to be done before people in developing countries can enjoy the kind of lives that most people lead in the West.",
+          "answer": "reality"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "B: Match to make sentences",
+      "instructions": "Match to make sentences.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 8
       },
-      {
-        "type": "key_word_transformation",
-        "title": "C: Complete the second sentence using the word given",
-        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
-        "scoring": { "pointsPerItem": 2, "maxScore": 16 },
-        "items": [
-          { "sentence": "I had to pay to park in the supermarket car park!\ncharged\nI ______ parking in the supermarket car park!", "answer": "was charged for" },
-          { "sentence": "Is this credit card yours?\nbelong\nDoes ______ you?", "answer": "this credit card belong to" },
-          { "sentence": "I haven't got much money in the bank.\namount\nI've only got ______ money in the bank.", "answer": "a small amount of" },
-          { "sentence": "Getting the car repaired was so expensive!\nfortune\nIt ______ to get the car repaired!", "answer": "cost a fortune" },
-          { "sentence": "Sophie demanded that the shop assistant apologise to her.\napology\nSophie demanded ______ the shop assistant.", "answer": "an apology from" },
-          { "sentence": "Buying things online means I don't have to go into town so often.\nsaves\nBuying things online ______ to go into town so often.", "answer": "saves me from having" },
-          { "sentence": "Don't pay attention to what Dan says; your new shoes are lovely!\nnotice\nTake ______ what Dan says; your new shoes are lovely!", "answer": "no notice of" },
-          { "sentence": "I haven't got much cash at the moment.\nshort\nI ______ cash at the moment.", "answer": "am short of" },
-          { "sentence": "Can you lend me some money?\nborrow\nCan ______?", "answer": "I borrow some money from you" }
-        ]
+      "items": [
+        {
+          "sentence": "Sharon came ......",
+          "answer": "into some money when her aunt died. (D)"
+        },
+        {
+          "sentence": "I manage to put ......",
+          "answer": "a little money by each month. (A)"
+        },
+        {
+          "sentence": "You can bank ......",
+          "answer": "on house prices coming down soon. (H)"
+        },
+        {
+          "sentence": "I don't know how they can get ......",
+          "answer": "by on such a low salary. (F)"
+        },
+        {
+          "sentence": "If you could make ......",
+          "answer": "out the cheque to Peardrop Limited, that would be fine. (B)"
+        },
+        {
+          "sentence": "The shop's giving ......",
+          "answer": "away free software with every computer. (E)"
+        },
+        {
+          "sentence": "I'm saving ......",
+          "answer": "up to buy a new DVD player. (C)"
+        },
+        {
+          "sentence": "I don't know what we're going to live ......",
+          "answer": "on now I've lost my job. (G)"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "C: Complete the second sentence using the word given",
+      "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+      "scoring": {
+        "pointsPerItem": 2,
+        "maxScore": 16
       },
-      {
-        "type": "multiple_choice",
-        "title": "D: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
-        "items": [
-          { "sentence": "The shop assistant finally agreed ______ a full refund.", "options": ["A giving me", "B to give me", "C give to me", "D to me to give"], "answer": "B" },
-          { "sentence": "Bill asked me why ______ to go shopping with me.", "options": ["A I hadn't invited him", "B hadn't invited him", "C I hadn't him invited", "D hadn't him invited"], "answer": "A" },
-          { "sentence": "Ellie asked Stan ______ to look at the new catalogue.", "options": ["A did he want", "B do you want", "C whether he wants", "D if he wanted"], "answer": "D" },
-          { "sentence": "Stephen ______ me he'd bought that suit in a sale.", "options": ["A said", "B spoke", "C told", "D claimed"], "answer": "C" },
-          { "sentence": "'What did the man say when you challenged him?' 'He said he ______ pay for the things in his bag, but I didn't believe him!'", "options": ["A is going to", "B has been going to", "C goes to", "D was going to"], "answer": "D" },
-          { "sentence": "When I last saw Carrie, she told me she ______ of buying a house, but now she's changed her mind.", "options": ["A thought", "B is thinking", "C was thinking", "D has been thinking"], "answer": "C" },
-          { "sentence": "'What did they say when they realised you weren't a shoplifter?' 'They apologised ______ me.'", "options": ["A to doubt", "B they had doubted", "C for doubting", "D the doubt of"], "answer": "C" }
-        ]
+      "items": [
+        {
+          "sentence": "I had to pay to park in the supermarket car park! **charged**\nI ...... parking in the supermarket car park!",
+          "answer": "was charged for"
+        },
+        {
+          "sentence": "Is this credit card yours? **belong**\nDoes ...... you?",
+          "answer": "this credit card belong to"
+        },
+        {
+          "sentence": "I haven't got much money in the bank. **amount**\nI've only got ...... money in the bank.",
+          "answer": "a small amount of"
+        },
+        {
+          "sentence": "Getting the car repaired was so expensive! **fortune**\nIt ...... to get the car repaired!",
+          "answer": "cost a fortune"
+        },
+        {
+          "sentence": "Sophie demanded that the shop assistant apologise to her. **apology**\nSophie demanded ...... the shop assistant.",
+          "answer": "an apology from"
+        },
+        {
+          "sentence": "Buying things online means I don't have to go into town so often. **saves**\nBuying things online ...... to go into town so often.",
+          "answer": "saves me from having"
+        },
+        {
+          "sentence": "Don't pay attention to what Dan says; your new shoes are lovely! **notice**\nTake ...... what Dan says; your new shoes are lovely!",
+          "answer": "no notice of"
+        },
+        {
+          "sentence": "I haven't got much cash at the moment. **short**\nI ...... cash at the moment.",
+          "answer": "am short of"
+        },
+        {
+          "sentence": "Can you lend me some money? **borrow**\nCan ......?",
+          "answer": "I borrow some money from you"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "D: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 7
       },
-      {
-        "type": "multiple_choice_vocab",
-        "title": "E: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
-        "items": [
-          { "sentence": "This car is very ______ as it goes so far on one tank of petrol.", "options": ["A financial", "B economical", "C costly", "D endless"], "answer": "B" },
-          { "sentence": "I can't believe how cheap these shorts were. They were a real ______!", "options": ["A bargain", "B discount", "C sale", "D offer"], "answer": "A" },
-          { "sentence": "What ______ of car does your mum drive?", "options": ["A name", "B brand", "C make", "D form"], "answer": "C" },
-          { "sentence": "Could you tell me who's in ______ here, please?", "options": ["A charge", "B rule", "C responsibility", "D organisation"], "answer": "A" },
-          { "sentence": "I paid the assistant and took the books but then stupidly left the bookshop without waiting for my ______.", "options": ["A cash", "B fee", "C refund", "D change"], "answer": "D" },
-          { "sentence": "I think she ______ her fortune in the shipping industry.", "options": ["A took", "B won", "C made", "D saved"], "answer": "C" },
-          { "sentence": "I didn't find a new top but at ______ I got some new jeans.", "options": ["A less", "B the less", "C least", "D the least"], "answer": "C" }
-        ]
-      }
-    ]
-  }
+      "items": [
+        {
+          "sentence": "The shop assistant finally agreed ...... a full refund.",
+          "options": [
+            "A giving me",
+            "B to give me",
+            "C give to me",
+            "D to me to give"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Bill asked me why ...... to go shopping with me.",
+          "options": [
+            "A I hadn't invited him",
+            "B hadn't invited him",
+            "C I hadn't him invited",
+            "D hadn't him invited"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "Ellie asked Stan ...... to look at the new catalogue.",
+          "options": [
+            "A did he want",
+            "B do you want",
+            "C whether he wants",
+            "D if he wanted"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "Stephen ...... me he'd bought that suit in a sale.",
+          "options": [
+            "A said",
+            "B spoke",
+            "C told",
+            "D claimed"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "'What did the man say when you challenged him?' 'He said he ...... pay for the things in his bag, but I didn't believe him!'",
+          "options": [
+            "A is going to",
+            "B has been going to",
+            "C goes to",
+            "D was going to"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "When I last saw Carrie, she told me she ...... of buying a house, but now she's changed her mind.",
+          "options": [
+            "A thought",
+            "B is thinking",
+            "C was thinking",
+            "D has been thinking"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "'What did they say when they realised you weren't a shoplifter?' 'They apologised ...... me.'",
+          "options": [
+            "A to doubt",
+            "B they had doubted",
+            "C for doubting",
+            "D the doubt of"
+          ],
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "E: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 7
+      },
+      "items": [
+        {
+          "sentence": "This car is very ...... as it goes so far on one tank of petrol.",
+          "options": [
+            "A financial",
+            "B economical",
+            "C costly",
+            "D endless"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "I can't believe how cheap these shorts were. They were a real ......!",
+          "options": [
+            "A bargain",
+            "B discount",
+            "C sale",
+            "D offer"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "What ...... of car does your mum drive?",
+          "options": [
+            "A name",
+            "B brand",
+            "C make",
+            "D form"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "Could you tell me who's in ...... here, please?",
+          "options": [
+            "A charge",
+            "B rule",
+            "C responsibility",
+            "D organisation"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "I paid the assistant and took the books but then stupidly left the bookshop without waiting for my .......",
+          "options": [
+            "A cash",
+            "B fee",
+            "C refund",
+            "D change"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "I think she ...... her fortune in the shipping industry.",
+          "options": [
+            "A took",
+            "B won",
+            "C made",
+            "D saved"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "I didn't find a new top but at ...... I got some new jeans.",
+          "options": [
+            "A less",
+            "B the less",
+            "C least",
+            "D the least"
+          ],
+          "answer": "C"
+        }
+      ]
+    }
+  ]
 }

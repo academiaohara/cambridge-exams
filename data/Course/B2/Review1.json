@@ -1,92 +1,303 @@
 {
-  "Review1": {
-    "block": 1,
-    "type": "review",
-    "unitTitle": "Review: Block 1 – Units 1 & 2",
-    "totalPoints": 50,
-    "sections": [
-      {
-        "type": "gap_fill",
-        "title": "A: Write one word in each gap",
-        "instructions": "Write one word in each gap.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 15 },
-        "items": [
-          { "sentence": "What (1) ______ the phrase 'the great British seaside' bring to mind?", "answer": "does" },
-          { "sentence": "Most people, if asked to respond (2) ______ the top of their heads ...", "answer": "off" },
-          { "sentence": "... associate (3) ______ on holiday to places such as Blackpool or Torquay ...", "answer": "going" },
-          { "sentence": "These days, when people are more likely to go abroad to (4) ______ the sights ...", "answer": "see" },
-          { "sentence": "... traditional British seaside towns (5) ______ suffering from an image problem.", "answer": "are" },
-          { "sentence": "Now, finally, some of the resorts (6) ______ decided to bring their images up to date ...", "answer": "have" },
-          { "sentence": "... in the hope that a (7) ______ of direction will bring back the tourists.", "answer": "change" },
-          { "sentence": "... but those that (8) ______ come will find that today's Blackpool differs quite a bit ...", "answer": "do" },
-          { "sentence": "... differs quite a bit (9) ______ the picture postcard past.", "answer": "from" },
-          { "sentence": "Blackpool has to work hard to catch (10) ______ with foreign destinations ...", "answer": "up" },
-          { "sentence": "... but that's precisely what it (11) ______ doing.", "answer": "is" },
-          { "sentence": "It's the first time so much (12) ______ happened to improve the place ...", "answer": "has" },
-          { "sentence": "A massive building project (13) ______ that rainy days are no longer a problem.", "answer": "means" },
-          { "sentence": "And it appears (14) ______ be working.", "answer": "to" },
-          { "sentence": "As the tourists start to make (15) ______ the bright lights of Blackpool once again ...", "answer": "for" }
-        ]
+  "block": 1,
+  "type": "review",
+  "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "totalPoints": 50,
+  "sections": [
+    {
+      "type": "exercise",
+      "title": "A: Write one word in each gap",
+      "instructions": "Write one word in each gap.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 15
       },
-      {
-        "type": "word_formation",
-        "title": "B: Complete the sentences by changing the form of the word in capitals",
-        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
-        "items": [
-          { "sentence": "I've always wanted to be a travel (PHOTOGRAPH) ______ and take pictures of exotic places.", "answer": "photographer" },
-          { "sentence": "None of us were sure which (DIRECT) ______ to go in, so we got out the map.", "answer": "direction" },
-          { "sentence": "Since I was here five years ago, Delhi has changed so much that it's practically (RECOGNISE) ______.", "answer": "unrecognisable" },
-          { "sentence": "Once we got to the station, I quickly looked through the (TIME) ______ to see when the next train was.", "answer": "timetable" },
-          { "sentence": "I've got a cousin at university who is studying (TOUR) ______ and hopes to open a hotel.", "answer": "tourism" },
-          { "sentence": "As we got closer to the Amazonian village, the (INHABIT) ______ came out to meet us.", "answer": "inhabitants" },
-          { "sentence": "The (ARRIVE) ______ of Flight 472 from Amsterdam has been delayed by one hour.", "answer": "arrival" }
-        ]
+      "items": [
+        {
+          "sentence": "What (1) ...... the phrase 'the great British seaside' bring to mind?",
+          "answer": "does"
+        },
+        {
+          "sentence": "Most people, if asked to respond (2) ...... the top of their heads ...",
+          "answer": "off"
+        },
+        {
+          "sentence": "... associate (3) ...... on holiday to places such as Blackpool or Torquay ...",
+          "answer": "going"
+        },
+        {
+          "sentence": "These days, when people are more likely to go abroad to (4) ...... the sights ...",
+          "answer": "see"
+        },
+        {
+          "sentence": "... traditional British seaside towns (5) ...... suffering from an image problem.",
+          "answer": "are"
+        },
+        {
+          "sentence": "Now, finally, some of the resorts (6) ...... decided to bring their images up to date ...",
+          "answer": "have"
+        },
+        {
+          "sentence": "... in the hope that a (7) ...... of direction will bring back the tourists.",
+          "answer": "change"
+        },
+        {
+          "sentence": "... but those that (8) ...... come will find that today's Blackpool differs quite a bit ...",
+          "answer": "do"
+        },
+        {
+          "sentence": "... differs quite a bit (9) ...... the picture postcard past.",
+          "answer": "from"
+        },
+        {
+          "sentence": "Blackpool has to work hard to catch (10) ...... with foreign destinations ...",
+          "answer": "up"
+        },
+        {
+          "sentence": "... but that's precisely what it (11) ...... doing.",
+          "answer": "is"
+        },
+        {
+          "sentence": "It's the first time so much (12) ...... happened to improve the place ...",
+          "answer": "has"
+        },
+        {
+          "sentence": "A massive building project (13) ...... that rainy days are no longer a problem.",
+          "answer": "means"
+        },
+        {
+          "sentence": "And it appears (14) ...... be working.",
+          "answer": "to"
+        },
+        {
+          "sentence": "As the tourists start to make (15) ...... the bright lights of Blackpool once again ...",
+          "answer": "for"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "B: Complete the sentences by changing the form of the word in capitals",
+      "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 7
       },
-      {
-        "type": "key_word_transformation",
-        "title": "C: Complete each second sentence using the word given",
-        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
-        "scoring": { "pointsPerItem": 2, "maxScore": 16 },
-        "items": [
-          { "sentence": "As soon as we got on the plane, the pilot told us to get off again.\njust\nWe ______ the plane when the pilot told us to get off again.", "answer": "had just got on" },
-          { "sentence": "We arrived in Budapest two days ago.\nfor\nWe ______ two days.", "answer": "have been in Budapest for" },
-          { "sentence": "I visited Paris once before.\nsecond\nThis is the ______ Paris.", "answer": "second time I've visited" },
-          { "sentence": "I find it hard to go at the same speed as my husband on walking holidays.\nup\nI find it hard to ______ my husband on walking holidays.", "answer": "keep up with" },
-          { "sentence": "Joan has always been very fond of travelling and has been everywhere.\nkeen\nJoan has always been very ______ and has been everywhere.", "answer": "keen on travelling" },
-          { "sentence": "We drove away as fast as we could, ready to begin our adventure.\nfull\nWe drove away ______ ready to begin our adventure.", "answer": "at full speed" },
-          { "sentence": "As the storm started, we went towards the old house.\ndirection\nAs the storm started, we went ______ the old house.", "answer": "in the direction of" },
-          { "sentence": "I'm sorry I didn't look at the hotel room before I booked it.\nregret\nI ______ the hotel room before I booked it.", "answer": "regret not looking at" }
-        ]
+      "items": [
+        {
+          "sentence": "I've always wanted to be a travel (PHOTOGRAPH) ...... and take pictures of exotic places.",
+          "answer": "photographer"
+        },
+        {
+          "sentence": "None of us were sure which (DIRECT) ...... to go in, so we got out the map.",
+          "answer": "direction"
+        },
+        {
+          "sentence": "Since I was here five years ago, Delhi has changed so much that it's practically (RECOGNISE) .......",
+          "answer": "unrecognisable"
+        },
+        {
+          "sentence": "Once we got to the station, I quickly looked through the (TIME) ...... to see when the next train was.",
+          "answer": "timetable"
+        },
+        {
+          "sentence": "I've got a cousin at university who is studying (TOUR) ...... and hopes to open a hotel.",
+          "answer": "tourism"
+        },
+        {
+          "sentence": "As we got closer to the Amazonian village, the (INHABIT) ...... came out to meet us.",
+          "answer": "inhabitants"
+        },
+        {
+          "sentence": "The (ARRIVE) ...... of Flight 472 from Amsterdam has been delayed by one hour.",
+          "answer": "arrival"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "C: Complete each second sentence using the word given",
+      "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+      "scoring": {
+        "pointsPerItem": 2,
+        "maxScore": 16
       },
-      {
-        "type": "multiple_choice",
-        "title": "D: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 6 },
-        "items": [
-          { "sentence": "Our next door neighbour ______ his car every Sunday.", "options": ["A is washing", "B washes", "C has washed", "D is wash"], "answer": "B" },
-          { "sentence": "Last summer, I ______ to the beach almost every day.", "options": ["A went", "B was going", "C have been", "D have been going"], "answer": "A" },
-          { "sentence": "'Whose is this plane ticket on the floor?' 'Oh, it ______ to me. Thank you.'", "options": ["A is belonging", "B belongs", "C has belonged", "D belonged"], "answer": "B" },
-          { "sentence": "I'm really tired of travelling so much. 'I thought you ______ a bit quiet.'", "options": ["A were seeming", "B have seemed", "C have been seeming", "D seemed"], "answer": "D" },
-          { "sentence": "'You look thoughtful.' 'I ______ about our holiday last year.'", "options": ["A just think", "B had just thought", "C am just think", "D was just thinking"], "answer": "D" },
-          { "sentence": "You went to Chile, didn't you? 'No, but I ______ to Peru, which is right next door.'", "options": ["A had gone", "B was gone", "C did go", "D was going"], "answer": "C" }
-        ]
+      "items": [
+        {
+          "sentence": "As soon as we got on the plane, the pilot told us to get off again. **just**\nWe ...... the plane when the pilot told us to get off again.",
+          "answer": "had just got on"
+        },
+        {
+          "sentence": "We arrived in Budapest two days ago. **for**\nWe ...... two days.",
+          "answer": "have been in Budapest for"
+        },
+        {
+          "sentence": "I visited Paris once before. **second**\nThis is the ...... Paris.",
+          "answer": "second time I've visited"
+        },
+        {
+          "sentence": "I find it hard to go at the same speed as my husband on walking holidays. **up**\nI find it hard to ...... my husband on walking holidays.",
+          "answer": "keep up with"
+        },
+        {
+          "sentence": "Joan has always been very fond of travelling and has been everywhere. **keen**\nJoan has always been very ...... and has been everywhere.",
+          "answer": "keen on travelling"
+        },
+        {
+          "sentence": "We drove away as fast as we could, ready to begin our adventure. **full**\nWe drove away ...... ready to begin our adventure.",
+          "answer": "at full speed"
+        },
+        {
+          "sentence": "As the storm started, we went towards the old house. **direction**\nAs the storm started, we went ...... the old house.",
+          "answer": "in the direction of"
+        },
+        {
+          "sentence": "I'm sorry I didn't look at the hotel room before I booked it. **regret**\nI ...... the hotel room before I booked it.",
+          "answer": "regret not looking at"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "D: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 6
       },
-      {
-        "type": "multiple_choice_vocab",
-        "title": "E: Choose the correct answer",
-        "instructions": "Choose the correct answer.",
-        "scoring": { "pointsPerItem": 1, "maxScore": 6 },
-        "items": [
-          { "sentence": "Three people were captured at the ______ today trying to get into the country.", "options": ["A line", "C border", "B equator", "D edge"], "answer": "C" },
-          { "sentence": "There's a fantastic ______ from the top of the Empire State Building!", "options": ["A view", "C appearance", "B sight", "D look"], "answer": "A" },
-          { "sentence": "Once we get to the hotel, let's just quickly ______ and then do a bit of sightseeing.", "options": ["A set down", "C check in", "B make up", "D turn up"], "answer": "C" },
-          { "sentence": "I'm going to ask for directions because I think we've ______ our way.", "options": ["A missed", "C mistaken", "B misplaced", "D lost"], "answer": "D" },
-          { "sentence": "We usually do go by train, even though the car is a lot quicker.", "options": ["A travel", "C trip", "B journey", "D voyage"], "answer": "B" },
-          { "sentence": "Passengers requiring a special meal during the flight should inform the airline in ______.", "options": ["A ahead", "C advance", "B front", "D forward"], "answer": "C" }
-        ]
-      }
-    ]
-  }
+      "items": [
+        {
+          "sentence": "Our next door neighbour ...... his car every Sunday.",
+          "options": [
+            "A is washing",
+            "B washes",
+            "C has washed",
+            "D is wash"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Last summer, I ...... to the beach almost every day.",
+          "options": [
+            "A went",
+            "B was going",
+            "C have been",
+            "D have been going"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "'Whose is this plane ticket on the floor?' 'Oh, it ...... to me. Thank you.'",
+          "options": [
+            "A is belonging",
+            "B belongs",
+            "C has belonged",
+            "D belonged"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "I'm really tired of travelling so much. 'I thought you ...... a bit quiet.'",
+          "options": [
+            "A were seeming",
+            "B have seemed",
+            "C have been seeming",
+            "D seemed"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "'You look thoughtful.' 'I ...... about our holiday last year.'",
+          "options": [
+            "A just think",
+            "B had just thought",
+            "C am just think",
+            "D was just thinking"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "You went to Chile, didn't you? 'No, but I ...... to Peru, which is right next door.'",
+          "options": [
+            "A had gone",
+            "B was gone",
+            "C did go",
+            "D was going"
+          ],
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "E: Choose the correct answer",
+      "instructions": "Choose the correct answer.",
+      "scoring": {
+        "pointsPerItem": 1,
+        "maxScore": 6
+      },
+      "items": [
+        {
+          "sentence": "Three people were captured at the ...... today trying to get into the country.",
+          "options": [
+            "A line",
+            "C border",
+            "B equator",
+            "D edge"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "There's a fantastic ...... from the top of the Empire State Building!",
+          "options": [
+            "A view",
+            "C appearance",
+            "B sight",
+            "D look"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "Once we get to the hotel, let's just quickly ...... and then do a bit of sightseeing.",
+          "options": [
+            "A set down",
+            "C check in",
+            "B make up",
+            "D turn up"
+          ],
+          "answer": "C"
+        },
+        {
+          "sentence": "I'm going to ask for directions because I think we've ...... our way.",
+          "options": [
+            "A missed",
+            "C mistaken",
+            "B misplaced",
+            "D lost"
+          ],
+          "answer": "D"
+        },
+        {
+          "sentence": "We usually do go by train, even though the car is a lot quicker.",
+          "options": [
+            "A travel",
+            "C trip",
+            "B journey",
+            "D voyage"
+          ],
+          "answer": "B"
+        },
+        {
+          "sentence": "Passengers requiring a special meal during the flight should inform the airline in .......",
+          "options": [
+            "A ahead",
+            "C advance",
+            "B front",
+            "D forward"
+          ],
+          "answer": "C"
+        }
+      ]
+    }
+  ]
 }
