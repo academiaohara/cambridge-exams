@@ -7,91 +7,331 @@
   "sections": {
     "topic_vocabulary": {
       "materials": [
-        { "word": "block", "part_of_speech": "v, n" },
-        { "word": "brittle", "part_of_speech": "adj" },
-        { "word": "chip", "part_of_speech": "v, n" },
-        { "word": "compact", "part_of_speech": "v, adj" },
-        { "word": "concentrate", "part_of_speech": "v" },
-        { "word": "crack", "part_of_speech": "v, n" },
-        { "word": "crumb", "part_of_speech": "n" },
-        { "word": "crush", "part_of_speech": "v, n" },
-        { "word": "dense", "part_of_speech": "adj" },
-        { "word": "dilute", "part_of_speech": "v, adj" },
-        { "word": "dissolve", "part_of_speech": "v" },
-        { "word": "fabric", "part_of_speech": "n" },
-        { "word": "firm", "part_of_speech": "adj" },
-        { "word": "flake", "part_of_speech": "v, n" },
-        { "word": "fragile", "part_of_speech": "adj" },
-        { "word": "friction", "part_of_speech": "n" },
-        { "word": "grain", "part_of_speech": "n" },
-        { "word": "gravity", "part_of_speech": "n" },
-        { "word": "grind", "part_of_speech": "v" },
-        { "word": "hollow", "part_of_speech": "adj" },
-        { "word": "liquid", "part_of_speech": "n, adj" },
-        { "word": "lump", "part_of_speech": "v, n" },
-        { "word": "mineral", "part_of_speech": "n" },
-        { "word": "mould", "part_of_speech": "v, n" },
-        { "word": "opaque", "part_of_speech": "adj" },
-        { "word": "pat", "part_of_speech": "v, n" },
-        { "word": "pile", "part_of_speech": "v, n" },
-        { "word": "polish", "part_of_speech": "v, n" },
-        { "word": "scratch", "part_of_speech": "v, n" },
-        { "word": "scrub", "part_of_speech": "v, n" },
-        { "word": "smash", "part_of_speech": "v" },
-        { "word": "solid", "part_of_speech": "n, adj" },
-        { "word": "speck", "part_of_speech": "n" },
-        { "word": "squash", "part_of_speech": "v, n" },
-        { "word": "squeeze", "part_of_speech": "v, n" },
-        { "word": "stack", "part_of_speech": "v, n" },
-        { "word": "stiff", "part_of_speech": "adj" },
-        { "word": "stroke", "part_of_speech": "v, n" },
-        { "word": "stuff", "part_of_speech": "v, n" },
-        { "word": "substance", "part_of_speech": "n" },
-        { "word": "synthetic", "part_of_speech": "adj" },
-        { "word": "tear", "part_of_speech": "v, n" },
-        { "word": "texture", "part_of_speech": "n" },
-        { "word": "transparent", "part_of_speech": "adj" }
+        {
+          "word": "block",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "brittle",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "chip",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "compact",
+          "part_of_speech": "v, adj"
+        },
+        {
+          "word": "concentrate",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "crack",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "crumb",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "crush",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "dense",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "dilute",
+          "part_of_speech": "v, adj"
+        },
+        {
+          "word": "dissolve",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "fabric",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "firm",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "flake",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "fragile",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "friction",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "grain",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "gravity",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "grind",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "hollow",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "liquid",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "lump",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "mineral",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "mould",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "opaque",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "pat",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "pile",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "polish",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "scratch",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "scrub",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "smash",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "solid",
+          "part_of_speech": "n, adj"
+        },
+        {
+          "word": "speck",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "squash",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "squeeze",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "stack",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "stiff",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "stroke",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "stuff",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "substance",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "synthetic",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "tear",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "texture",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "transparent",
+          "part_of_speech": "adj"
+        }
       ],
       "built_environment": [
-        { "word": "built-up", "part_of_speech": "adj" },
-        { "word": "bypass", "part_of_speech": "v, n" },
-        { "word": "construct", "part_of_speech": "v" },
-        { "word": "demolish", "part_of_speech": "v" },
-        { "word": "district", "part_of_speech": "n" },
-        { "word": "dwell", "part_of_speech": "v" },
-        { "word": "estate", "part_of_speech": "n" },
-        { "word": "evict", "part_of_speech": "v" },
-        { "word": "high-rise", "part_of_speech": "adj" },
-        { "word": "housing", "part_of_speech": "n" },
-        { "word": "infrastructure", "part_of_speech": "n" },
-        { "word": "inner city", "part_of_speech": "n phr" },
-        { "word": "occupy", "part_of_speech": "v" },
-        { "word": "populated", "part_of_speech": "adj" },
-        { "word": "skyline", "part_of_speech": "n" },
-        { "word": "skyscraper", "part_of_speech": "n" },
-        { "word": "structure", "part_of_speech": "n" },
-        { "word": "suburban", "part_of_speech": "adj" },
-        { "word": "surroundings", "part_of_speech": "n pl" },
-        { "word": "urban", "part_of_speech": "adj" }
+        {
+          "word": "built-up",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "bypass",
+          "part_of_speech": "v, n"
+        },
+        {
+          "word": "construct",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "demolish",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "district",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "dwell",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "estate",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "evict",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "high-rise",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "housing",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "infrastructure",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "inner city",
+          "part_of_speech": "n phr"
+        },
+        {
+          "word": "occupy",
+          "part_of_speech": "v"
+        },
+        {
+          "word": "populated",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "skyline",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "skyscraper",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "structure",
+          "part_of_speech": "n"
+        },
+        {
+          "word": "suburban",
+          "part_of_speech": "adj"
+        },
+        {
+          "word": "surroundings",
+          "part_of_speech": "n pl"
+        },
+        {
+          "word": "urban",
+          "part_of_speech": "adj"
+        }
       ]
     },
     "phrasal_verbs": [
-      { "verb": "board up", "meaning": "cover a window or door with wooden boards" },
-      { "verb": "close up", "meaning": "lock the doors of a building or business" },
-      { "verb": "come out", "meaning": "be removed from something such as clothing or cloth by washing or rubbing; have a particular result or end in a particular way" },
-      { "verb": "cut out", "meaning": "remove something from a larger piece by cutting; stop eating something or doing something, especially because it is bad for your health" },
-      { "verb": "fix up", "meaning": "clean, repair or decorate something" },
-      { "verb": "knock/pull/tear down", "meaning": "destroy a building or wall" },
-      { "verb": "pile up", "meaning": "if something piles up or someone piles it up, the amount of it increases a lot" },
-      { "verb": "prop up", "meaning": "stop something from falling by putting something under it or against it; help a government, system, organisation, etc continue to exist, especially by providing financial or military support" },
-      { "verb": "put in", "meaning": "fix something such as equipment in the place where it will be used and make it ready to use; make an official request, claim, offer, etc" },
-      { "verb": "put together", "meaning": "make something by joining all its parts; produce or organise something using many different things; choose people or things to form a team or group" },
-      { "verb": "put up", "meaning": "build something such as a wall, fence or house; let someone stay in your house" },
-      { "verb": "set up", "meaning": "build a structure or put it in a particular place; make a piece of equipment ready for use" },
-      { "verb": "spread out", "meaning": "if people in a group spread out, they move away from one another so that they cover a large area" },
-      { "verb": "take down", "meaning": "separate a large structure into pieces; write down information or a statement" },
-      { "verb": "water down", "meaning": "add water to a drink or liquid in order to make it less strong, dilute; make something such as a statement or newspaper article less offensive, powerful or detailed" },
-      { "verb": "wear down", "meaning": "make something gradually disappear or become thinner by using or rubbing it; make someone gradually lose their energy or confidence" }
+      {
+        "verb": "board up",
+        "meaning": "cover a window or door with wooden boards"
+      },
+      {
+        "verb": "close up",
+        "meaning": "lock the doors of a building or business"
+      },
+      {
+        "verb": "come out",
+        "meaning": "be removed from something such as clothing or cloth by washing or rubbing; have a particular result or end in a particular way"
+      },
+      {
+        "verb": "cut out",
+        "meaning": "remove something from a larger piece by cutting; stop eating something or doing something, especially because it is bad for your health"
+      },
+      {
+        "verb": "fix up",
+        "meaning": "clean, repair or decorate something"
+      },
+      {
+        "verb": "knock/pull/tear down",
+        "meaning": "destroy a building or wall"
+      },
+      {
+        "verb": "pile up",
+        "meaning": "if something piles up or someone piles it up, the amount of it increases a lot"
+      },
+      {
+        "verb": "prop up",
+        "meaning": "stop something from falling by putting something under it or against it; help a government, system, organisation, etc continue to exist, especially by providing financial or military support"
+      },
+      {
+        "verb": "put in",
+        "meaning": "fix something such as equipment in the place where it will be used and make it ready to use; make an official request, claim, offer, etc"
+      },
+      {
+        "verb": "put together",
+        "meaning": "make something by joining all its parts; produce or organise something using many different things; choose people or things to form a team or group"
+      },
+      {
+        "verb": "put up",
+        "meaning": "build something such as a wall, fence or house; let someone stay in your house"
+      },
+      {
+        "verb": "set up",
+        "meaning": "build a structure or put it in a particular place; make a piece of equipment ready for use"
+      },
+      {
+        "verb": "spread out",
+        "meaning": "if people in a group spread out, they move away from one another so that they cover a large area"
+      },
+      {
+        "verb": "take down",
+        "meaning": "separate a large structure into pieces; write down information or a statement"
+      },
+      {
+        "verb": "water down",
+        "meaning": "add water to a drink or liquid in order to make it less strong, dilute; make something such as a statement or newspaper article less offensive, powerful or detailed"
+      },
+      {
+        "verb": "wear down",
+        "meaning": "make something gradually disappear or become thinner by using or rubbing it; make someone gradually lose their energy or confidence"
+      }
     ],
     "collocations_patterns": {
       "bend": [
@@ -225,117 +465,289 @@
         "a window on/onto/into"
       ]
     },
+    "idioms": [
+      {
+        "idiom": "blot on the landscape",
+        "meaning": "something that is ugly and spoils the appearance of a place"
+      },
+      {
+        "idiom": "concrete jungle",
+        "meaning": "a city or area that has a lot of large ugly buildings and no trees or plants"
+      },
+      {
+        "idiom": "make yourself at home",
+        "meaning": "behave in a relaxed way, as if you were in your own home"
+      },
+      {
+        "idiom": "go out on the town",
+        "meaning": "go to places of entertainment, such as bars and restaurants, in the evening"
+      },
+      {
+        "idiom": "commuter belt",
+        "meaning": "the area around a city where many people live who travel to the city to work"
+      },
+      {
+        "idiom": "out in the sticks",
+        "meaning": "living in the countryside, far from towns or cities"
+      },
+      {
+        "idiom": "market town",
+        "meaning": "a small town that regularly has a market and acts as a centre for the surrounding area"
+      },
+      {
+        "idiom": "home from home",
+        "meaning": "a place where you feel as relaxed and comfortable as in your own home"
+      },
+      {
+        "idiom": "end up on the street(s)",
+        "meaning": "become homeless and have nowhere to live"
+      },
+      {
+        "idiom": "home sweet home",
+        "meaning": "said when you return to your home and are happy to be there"
+      }
+    ],
     "word_formation": [
       {
         "base": "analyse",
-        "noun": ["analysis", "analyst"],
-        "adjective": ["analytical"],
-        "adverb": ["analytically"]
+        "noun": [
+          "analysis",
+          "analyst"
+        ],
+        "adjective": [
+          "analytical"
+        ],
+        "adverb": [
+          "analytically"
+        ]
       },
       {
         "base": "architect",
-        "noun": ["architecture"],
-        "adjective": ["architectural"],
-        "adverb": ["architecturally"]
+        "noun": [
+          "architecture"
+        ],
+        "adjective": [
+          "architectural"
+        ],
+        "adverb": [
+          "architecturally"
+        ]
       },
       {
         "base": "dense",
-        "noun": ["density"],
-        "adverb": ["densely"]
+        "noun": [
+          "density"
+        ],
+        "adverb": [
+          "densely"
+        ]
       },
       {
         "base": "house",
-        "noun": ["housing", "householder", "houseful"]
+        "noun": [
+          "housing",
+          "householder",
+          "houseful"
+        ]
       },
       {
         "base": "inhabit",
-        "noun": ["inhabitant", "habitat", "habitation"],
-        "adjective": ["habitable", "uninhabitable", "uninhabited"]
+        "noun": [
+          "inhabitant",
+          "habitat",
+          "habitation"
+        ],
+        "adjective": [
+          "habitable",
+          "uninhabitable",
+          "uninhabited"
+        ]
       },
       {
         "base": "manufacture",
-        "noun": ["manufacturer", "manufacturing"]
+        "noun": [
+          "manufacturer",
+          "manufacturing"
+        ]
       },
       {
         "base": "material",
-        "verb": ["materialise"],
-        "noun": ["materialism"],
-        "adjective": ["materialistic", "immaterial"],
-        "adverb": ["materially"]
+        "verb": [
+          "materialise"
+        ],
+        "noun": [
+          "materialism"
+        ],
+        "adjective": [
+          "materialistic",
+          "immaterial"
+        ],
+        "adverb": [
+          "materially"
+        ]
       },
       {
         "base": "metal",
-        "adjective": ["metallic"],
-        "noun": ["metallurgy"]
+        "adjective": [
+          "metallic"
+        ],
+        "noun": [
+          "metallurgy"
+        ]
       },
       {
         "base": "object",
-        "noun": ["objective", "objection", "objectivity", "objector"],
-        "adjective": ["objectionable", "unobjectionable"],
-        "adverb": ["objectively"]
+        "noun": [
+          "objective",
+          "objection",
+          "objectivity",
+          "objector"
+        ],
+        "adjective": [
+          "objectionable",
+          "unobjectionable"
+        ],
+        "adverb": [
+          "objectively"
+        ]
       },
       {
         "base": "repair",
-        "noun": ["repairman", "repairer", "reparation"],
-        "adjective": ["repairable", "irreparable"],
-        "adverb": ["irreparably"]
+        "noun": [
+          "repairman",
+          "repairer",
+          "reparation"
+        ],
+        "adjective": [
+          "repairable",
+          "irreparable"
+        ],
+        "adverb": [
+          "irreparably"
+        ]
       },
       {
         "base": "reside",
-        "noun": ["residence", "residency", "resident"],
-        "adjective": ["residential"],
-        "adverb": ["residentially"]
+        "noun": [
+          "residence",
+          "residency",
+          "resident"
+        ],
+        "adjective": [
+          "residential"
+        ],
+        "adverb": [
+          "residentially"
+        ]
       },
       {
         "base": "rigid",
-        "noun": ["rigidity"],
-        "adverb": ["rigidly"]
+        "noun": [
+          "rigidity"
+        ],
+        "adverb": [
+          "rigidly"
+        ]
       },
       {
         "base": "round",
-        "verb": ["surround"],
-        "noun": ["surroundings", "roundness", "roundabout"],
-        "adjective": ["surrounding"],
-        "adverb": ["roundly"]
+        "verb": [
+          "surround"
+        ],
+        "noun": [
+          "surroundings",
+          "roundness",
+          "roundabout"
+        ],
+        "adjective": [
+          "surrounding"
+        ],
+        "adverb": [
+          "roundly"
+        ]
       },
       {
         "base": "shelf",
-        "verb": ["shelve"],
-        "noun": ["shelves", "shelving"]
+        "verb": [
+          "shelve"
+        ],
+        "noun": [
+          "shelves",
+          "shelving"
+        ]
       },
       {
         "base": "slip",
-        "noun": ["slippage"],
-        "adjective": ["slippery"]
+        "noun": [
+          "slippage"
+        ],
+        "adjective": [
+          "slippery"
+        ]
       },
       {
         "base": "soft",
-        "verb": ["soften"],
-        "noun": ["softener"],
-        "adverb": ["softly"]
+        "verb": [
+          "soften"
+        ],
+        "noun": [
+          "softener"
+        ],
+        "adverb": [
+          "softly"
+        ]
       },
       {
         "base": "solid",
-        "verb": ["solidify"],
-        "noun": ["solidity"]
+        "verb": [
+          "solidify"
+        ],
+        "noun": [
+          "solidity"
+        ]
       },
       {
         "base": "space",
-        "noun": ["spacing", "spaciousness"],
-        "adjective": ["spacious"],
-        "adverb": ["spaciously"]
+        "noun": [
+          "spacing",
+          "spaciousness"
+        ],
+        "adjective": [
+          "spacious"
+        ],
+        "adverb": [
+          "spaciously"
+        ]
       },
       {
         "base": "structure",
-        "noun": ["infrastructure"],
-        "adjective": ["structural", "unstructured", "structured"],
-        "adverb": ["structurally"]
+        "noun": [
+          "infrastructure"
+        ],
+        "adjective": [
+          "structural",
+          "unstructured",
+          "structured"
+        ],
+        "adverb": [
+          "structurally"
+        ]
       },
       {
         "base": "substance",
-        "verb": ["substantiate", "substantiation"],
-        "adjective": ["unsubstantiated", "substantial", "insubstantial"],
-        "adverb": ["substantially", "insubstantially"]
+        "verb": [
+          "substantiate",
+          "substantiation"
+        ],
+        "adjective": [
+          "unsubstantiated",
+          "substantial",
+          "insubstantial"
+        ],
+        "adverb": [
+          "substantially",
+          "insubstantially"
+        ]
       }
     ],
     "exercises": {
@@ -343,66 +755,206 @@
         "title": "Complete using the correct form of the words in the boxes",
         "instructions": "Complete the sentences using the correct form of the words provided.",
         "questions": [
-          { "sentence": "There's a ...... of books on your desk – have you been sorting through your shelves again?", "answer": "pile" },
-          { "sentence": "She dropped two ...... of sugar into her coffee and gave it a slow stir.", "answer": "lumps" },
-          { "sentence": "The pastry crumbled as she cut it and left small ...... all over the counter.", "answer": "flakes" },
-          { "sentence": "The bridge is built from enormous ...... of stone, each one weighing several tonnes.", "answer": "blocks" },
-          { "sentence": "He was obsessive about cleanliness and refused to tolerate a single ...... of dirt anywhere.", "answer": "speck" },
-          { "sentence": "A few ...... of rice had scattered across the kitchen floor near the hob.", "answer": "grains" },
-          { "sentence": "Please eat your biscuit over the table – I don't want ...... all over the new carpet.", "answer": "crumbs" },
-          { "sentence": "The cup shattered and there were tiny ...... of ceramic spread across the floor.", "answer": "chips" },
-          { "sentence": "Try not to ...... the insect bite or it will only get more irritated.", "answer": "scratch" },
-          { "sentence": "The coach ...... each player on the shoulder and offered a few words of encouragement.", "answer": "patted" },
-          { "sentence": "Elena ...... her boots until they shone, then set off for the interview.", "answer": "polished" },
-          { "sentence": "If you want the horse to stay calm, just gently ...... its neck.", "answer": "stroke" },
-          { "sentence": "He had to ...... the tiles for a long time before the grime finally came off.", "answer": "scrub" }
+          {
+            "sentence": "There's a ...... of books on your desk – have you been sorting through your shelves again?",
+            "answer": "pile"
+          },
+          {
+            "sentence": "She dropped two ...... of sugar into her coffee and gave it a slow stir.",
+            "answer": "lumps"
+          },
+          {
+            "sentence": "The pastry crumbled as she cut it and left small ...... all over the counter.",
+            "answer": "flakes"
+          },
+          {
+            "sentence": "The bridge is built from enormous ...... of stone, each one weighing several tonnes.",
+            "answer": "blocks"
+          },
+          {
+            "sentence": "He was obsessive about cleanliness and refused to tolerate a single ...... of dirt anywhere.",
+            "answer": "speck"
+          },
+          {
+            "sentence": "A few ...... of rice had scattered across the kitchen floor near the hob.",
+            "answer": "grains"
+          },
+          {
+            "sentence": "Please eat your biscuit over the table – I don't want ...... all over the new carpet.",
+            "answer": "crumbs"
+          },
+          {
+            "sentence": "The cup shattered and there were tiny ...... of ceramic spread across the floor.",
+            "answer": "chips"
+          },
+          {
+            "sentence": "Try not to ...... the insect bite or it will only get more irritated.",
+            "answer": "scratch"
+          },
+          {
+            "sentence": "The coach ...... each player on the shoulder and offered a few words of encouragement.",
+            "answer": "patted"
+          },
+          {
+            "sentence": "Elena ...... her boots until they shone, then set off for the interview.",
+            "answer": "polished"
+          },
+          {
+            "sentence": "If you want the horse to stay calm, just gently ...... its neck.",
+            "answer": "stroke"
+          },
+          {
+            "sentence": "He had to ...... the tiles for a long time before the grime finally came off.",
+            "answer": "scrub"
+          }
         ],
-        "words": ["pile", "lump", "flake", "block", "speck", "grain", "crumb", "chip", "scratch", "pat", "polish", "stroke", "scrub"]
+        "words": [
+          "pile",
+          "lump",
+          "flake",
+          "block",
+          "speck",
+          "grain",
+          "crumb",
+          "chip",
+          "scratch",
+          "pat",
+          "polish",
+          "stroke",
+          "scrub"
+        ]
       },
       "B": {
         "title": "Complete using the words in bold in the correct form",
         "instructions": "Complete the passage using the words in bold in the correct form.",
         "passage": "What prevents a heavy object from sliding down a rough slope? The answer lies in ...... , the resistance created when two surfaces press against each other. When two ...... come into contact, the irregularities in each surface lock together, making movement difficult. However, if a layer of ...... forms between the surfaces, this resistance is greatly reduced. At that point, the pull of ...... takes over, and the object begins to slide.",
         "questions": [
-          { "sentence": "The answer lies in ......", "answer": "friction" },
-          { "sentence": "When two ...... come into contact", "answer": "solids" },
-          { "sentence": "if a layer of ...... forms between the surfaces", "answer": "liquid" },
-          { "sentence": "the pull of ...... takes over", "answer": "gravity" }
+          {
+            "sentence": "The answer lies in ......",
+            "answer": "friction"
+          },
+          {
+            "sentence": "When two ...... come into contact",
+            "answer": "solids"
+          },
+          {
+            "sentence": "if a layer of ...... forms between the surfaces",
+            "answer": "liquid"
+          },
+          {
+            "sentence": "the pull of ...... takes over",
+            "answer": "gravity"
+          }
         ],
-        "words": ["friction", "solid", "liquid", "gravity"]
+        "words": [
+          "friction",
+          "solid",
+          "liquid",
+          "gravity"
+        ]
       },
       "C": {
         "title": "Complete using the correct form of the words in the box (The built environment)",
         "instructions": "Complete the text using the correct form of the words provided.",
         "passage": "The planned (1) ...... around the historic city of Sandford has reignited controversy among residents. Local planners have spent six years trying to (2) ...... the new route in order to ease congestion in the (3) ...... , one of the most densely (4) ...... areas in the entire region. Despite their efforts, those living in (5) ...... neighbourhoods on the city's outskirts have voiced strong opposition, arguing that the road would ruin the (6) ...... . 'We chose these (7) ...... deliberately,' said Tom Hawthorn, a homeowner whose property (8) ...... a plot adjacent to the proposed route. 'The council show no regard for (9) ...... planning.' Scores of those who (10) ...... in the vicinity have rallied to support the protest.",
         "questions": [
-          { "sentence": "The planned (1) ...... around the historic city", "answer": "bypass" },
-          { "sentence": "local planners have spent six years trying to (2) ...... the new route", "answer": "construct" },
-          { "sentence": "to ease congestion in the (3) ......", "answer": "inner city" },
-          { "sentence": "one of the most densely (4) ...... areas", "answer": "populated" },
-          { "sentence": "those living in (5) ...... neighbourhoods", "answer": "suburban" },
-          { "sentence": "the road would ruin the (6) ......", "answer": "surroundings" },
-          { "sentence": "We chose these (7) ...... deliberately", "answer": "surroundings" },
-          { "sentence": "whose property (8) ...... a plot adjacent", "answer": "occupies" },
-          { "sentence": "no regard for (9) ...... planning", "answer": "urban" },
-          { "sentence": "those who (10) ...... in the vicinity", "answer": "dwell" }
+          {
+            "sentence": "The planned (1) ...... around the historic city",
+            "answer": "bypass"
+          },
+          {
+            "sentence": "local planners have spent six years trying to (2) ...... the new route",
+            "answer": "construct"
+          },
+          {
+            "sentence": "to ease congestion in the (3) ......",
+            "answer": "inner city"
+          },
+          {
+            "sentence": "one of the most densely (4) ...... areas",
+            "answer": "populated"
+          },
+          {
+            "sentence": "those living in (5) ...... neighbourhoods",
+            "answer": "suburban"
+          },
+          {
+            "sentence": "the road would ruin the (6) ......",
+            "answer": "surroundings"
+          },
+          {
+            "sentence": "We chose these (7) ...... deliberately",
+            "answer": "surroundings"
+          },
+          {
+            "sentence": "whose property (8) ...... a plot adjacent",
+            "answer": "occupies"
+          },
+          {
+            "sentence": "no regard for (9) ...... planning",
+            "answer": "urban"
+          },
+          {
+            "sentence": "those who (10) ...... in the vicinity",
+            "answer": "dwell"
+          }
         ],
-        "words": ["bypass", "construct", "inner city", "populated", "suburban", "surroundings", "occupy", "urban", "dwell"]
+        "words": [
+          "bypass",
+          "construct",
+          "inner city",
+          "populated",
+          "suburban",
+          "surroundings",
+          "occupy",
+          "urban",
+          "dwell"
+        ]
       },
       "D": {
         "title": "Circle the correct word",
         "instructions": "Circle the correct word to complete each sentence.",
         "questions": [
-          { "sentence": "I find it hard to breathe when I spend too much time in such a **built-up / high-rise** area with no green spaces.", "answer": "built-up" },
-          { "sentence": "My uncle recently moved into a **built-up / high-rise** block on the fourteenth floor with spectacular views across the city.", "answer": "high-rise" },
-          { "sentence": "The very first **skyline / skyscraper** was erected in Chicago, marking a turning point in the history of urban architecture.", "answer": "skyscraper" },
-          { "sentence": "From the observation deck, visitors could take in the breathtaking **skyline / skyscraper** stretching across the horizon.", "answer": "skyline" },
-          { "sentence": "The charity is working hard to provide affordable **estate / housing** for vulnerable families across the city.", "answer": "housing" },
-          { "sentence": "They grew up together on the same **estate / housing** on the edge of town and have been friends ever since.", "answer": "estate" },
-          { "sentence": "After the fire, the council took the decision to **demolish / evict** the damaged block of flats.", "answer": "demolish" },
-          { "sentence": "The landlord tried to **demolish / evict** the tenants without giving them the required notice.", "answer": "evict" },
-          { "sentence": "The old lighthouse is a remarkable **structure / infrastructure** that has withstood centuries of harsh weather.", "answer": "structure" },
-          { "sentence": "Developing nations often lack the **structure / infrastructure** necessary to support rapid economic growth.", "answer": "infrastructure" }
+          {
+            "sentence": "I find it hard to breathe when I spend too much time in such a **built-up / high-rise** area with no green spaces.",
+            "answer": "built-up"
+          },
+          {
+            "sentence": "My uncle recently moved into a **built-up / high-rise** block on the fourteenth floor with spectacular views across the city.",
+            "answer": "high-rise"
+          },
+          {
+            "sentence": "The very first **skyline / skyscraper** was erected in Chicago, marking a turning point in the history of urban architecture.",
+            "answer": "skyscraper"
+          },
+          {
+            "sentence": "From the observation deck, visitors could take in the breathtaking **skyline / skyscraper** stretching across the horizon.",
+            "answer": "skyline"
+          },
+          {
+            "sentence": "The charity is working hard to provide affordable **estate / housing** for vulnerable families across the city.",
+            "answer": "housing"
+          },
+          {
+            "sentence": "They grew up together on the same **estate / housing** on the edge of town and have been friends ever since.",
+            "answer": "estate"
+          },
+          {
+            "sentence": "After the fire, the council took the decision to **demolish / evict** the damaged block of flats.",
+            "answer": "demolish"
+          },
+          {
+            "sentence": "The landlord tried to **demolish / evict** the tenants without giving them the required notice.",
+            "answer": "evict"
+          },
+          {
+            "sentence": "The old lighthouse is a remarkable **structure / infrastructure** that has withstood centuries of harsh weather.",
+            "answer": "structure"
+          },
+          {
+            "sentence": "Developing nations often lack the **structure / infrastructure** necessary to support rapid economic growth.",
+            "answer": "infrastructure"
+          }
         ]
       },
       "E": {
@@ -410,60 +962,171 @@
         "instructions": "Write one word in each gap to complete the text.",
         "passage": "Since the tourist industry collapsed in the area, it has become a common sight to see shops that have been boarded (1) ...... along the seafront. Many restaurants and cafés have closed (2) ...... permanently, and the problems of urban decline have been piling (3) ...... for some time. Nevertheless, the local authority has finally decided to fix the area (4) ...... and attract new visitors and businesses. The plan involves knocking (5) ...... derelict warehouses near the harbour and putting (6) ...... modern mixed-use developments in their place. Old billboards advertising long-closed businesses are being taken (7) ...... , and new cycle paths and family-friendly spaces are being put (8) ...... along the promenade.",
         "questions": [
-          { "sentence": "boarded (1) ......", "answer": "up" },
-          { "sentence": "closed (2) ...... permanently", "answer": "up" },
-          { "sentence": "piling (3) ...... for some time", "answer": "up" },
-          { "sentence": "fix the area (4) ......", "answer": "up" },
-          { "sentence": "knocking (5) ...... derelict warehouses", "answer": "down" },
-          { "sentence": "putting (6) ...... modern mixed-use developments", "answer": "up" },
-          { "sentence": "billboards are being taken (7) ......", "answer": "down" },
-          { "sentence": "are being put (8) ...... along the promenade", "answer": "up" }
+          {
+            "sentence": "boarded (1) ......",
+            "answer": "up"
+          },
+          {
+            "sentence": "closed (2) ...... permanently",
+            "answer": "up"
+          },
+          {
+            "sentence": "piling (3) ...... for some time",
+            "answer": "up"
+          },
+          {
+            "sentence": "fix the area (4) ......",
+            "answer": "up"
+          },
+          {
+            "sentence": "knocking (5) ...... derelict warehouses",
+            "answer": "down"
+          },
+          {
+            "sentence": "putting (6) ...... modern mixed-use developments",
+            "answer": "up"
+          },
+          {
+            "sentence": "billboards are being taken (7) ......",
+            "answer": "down"
+          },
+          {
+            "sentence": "are being put (8) ...... along the promenade",
+            "answer": "up"
+          }
         ]
       },
       "F": {
         "title": "Complete using a phrasal verb",
         "instructions": "Complete using a phrasal verb with a word from box A in the right form and a word from box B.",
         "questions": [
-          { "sentence": "The market traders arrived early and had already ...... their stalls well before dawn.", "answer": "put up" },
-          { "sentence": "...... a template ...... of the newspaper and use it as a guide when preparing the cover.", "answer": "Cut out" },
-          { "sentence": "This soup is incredibly thick – would you prefer to ...... it ...... with a little hot water?", "answer": "water down" },
-          { "sentence": "The injured tree was ...... with a stake until its roots could grow stronger.", "answer": "propped up" },
-          { "sentence": "There's an ink stain on your sleeve, but I doubt it will ...... however many times you wash it.", "answer": "come out" },
-          { "sentence": "Over the years, the family had ...... across several different countries.", "answer": "spread out" },
-          { "sentence": "It took the entire afternoon to ...... the wardrobe ...... – the instructions were baffling.", "answer": "put together" },
-          { "sentence": "The heels of her shoes were completely ...... after a week of constant walking.", "answer": "worn down" }
+          {
+            "sentence": "The market traders arrived early and had already ...... their stalls well before dawn.",
+            "answer": "put up"
+          },
+          {
+            "sentence": "...... a template ...... of the newspaper and use it as a guide when preparing the cover.",
+            "answer": "Cut out"
+          },
+          {
+            "sentence": "This soup is incredibly thick – would you prefer to ...... it ...... with a little hot water?",
+            "answer": "water down"
+          },
+          {
+            "sentence": "The injured tree was ...... with a stake until its roots could grow stronger.",
+            "answer": "propped up"
+          },
+          {
+            "sentence": "There's an ink stain on your sleeve, but I doubt it will ...... however many times you wash it.",
+            "answer": "come out"
+          },
+          {
+            "sentence": "Over the years, the family had ...... across several different countries.",
+            "answer": "spread out"
+          },
+          {
+            "sentence": "It took the entire afternoon to ...... the wardrobe ...... – the instructions were baffling.",
+            "answer": "put together"
+          },
+          {
+            "sentence": "The heels of her shoes were completely ...... after a week of constant walking.",
+            "answer": "worn down"
+          }
         ]
       },
       "H": {
         "title": "Complete using the phrases in the box",
         "instructions": "Complete the sentences using the phrases provided.",
         "questions": [
-          { "sentence": "After a complicated first week at the new job, everything was pretty ...... from that point on.", "answer": "smooth sailing" },
-          { "sentence": "The manager apologised for the delay and announced that desserts would be ...... that evening.", "answer": "on the house" },
-          { "sentence": "The factory depended on importing ...... from three different countries to keep production running.", "answer": "raw materials" },
-          { "sentence": "She grew up in ...... Hartfield, a small but welcoming place in the heart of the countryside.", "answer": "the town of" },
-          { "sentence": "Several proposals are currently ...... and the committee will vote on them next week.", "answer": "on the table" },
-          { "sentence": "Rather than keeping his savings in the bank, he preferred to put his money into ...... .", "answer": "bricks and mortar" },
-          { "sentence": "After six months with barely any exercise, Marcus felt completely ...... when he returned to training.", "answer": "out of shape" },
-          { "sentence": "Gold remains the most widely traded ...... in the global commodities market.", "answer": "precious metal" }
+          {
+            "sentence": "After a complicated first week at the new job, everything was pretty ...... from that point on.",
+            "answer": "smooth sailing"
+          },
+          {
+            "sentence": "The manager apologised for the delay and announced that desserts would be ...... that evening.",
+            "answer": "on the house"
+          },
+          {
+            "sentence": "The factory depended on importing ...... from three different countries to keep production running.",
+            "answer": "raw materials"
+          },
+          {
+            "sentence": "She grew up in ...... Hartfield, a small but welcoming place in the heart of the countryside.",
+            "answer": "the town of"
+          },
+          {
+            "sentence": "Several proposals are currently ...... and the committee will vote on them next week.",
+            "answer": "on the table"
+          },
+          {
+            "sentence": "Rather than keeping his savings in the bank, he preferred to put his money into ...... .",
+            "answer": "bricks and mortar"
+          },
+          {
+            "sentence": "After six months with barely any exercise, Marcus felt completely ...... when he returned to training.",
+            "answer": "out of shape"
+          },
+          {
+            "sentence": "Gold remains the most widely traded ...... in the global commodities market.",
+            "answer": "precious metal"
+          }
         ],
-        "phrases": ["smooth sailing", "on the house", "raw materials", "the town of", "on the table", "bricks and mortar", "out of shape", "precious metal"]
+        "phrases": [
+          "smooth sailing",
+          "on the house",
+          "raw materials",
+          "the town of",
+          "on the table",
+          "bricks and mortar",
+          "out of shape",
+          "precious metal"
+        ]
       },
       "I": {
         "title": "Write one word in each gap",
         "instructions": "Write one word in each gap to complete the text.",
         "passage": "I've always kept a sharp eye (1) ...... architectural trends, so when the time came to design my own home, I was determined to create something truly different. It was far from simple. Planning regulations appeared to block (2) ...... path at every turn and, to (3) ...... matters worse, finding an architect who shared my vision took far longer than I had anticipated. A contact from work gave me a window (4) ...... the world of architecture and introduced me to someone who had handled similar projects. Was I being unrealistic? That, some might argue, is a (5) ...... of opinion. But beneath the appearance I wanted practicality – (6) ...... the surface, everything needed to be energy-efficient and future-proof. Countless hours of research smoothed the (7) ...... considerably. I took part in the physical work personally, helping to bend metal framework (8) ...... shape and laying some of the internal flooring myself. I'd gladly erect a monument (9) ...... the engineer who developed the solar heating system we installed. As it turned out, all the sceptics' warnings of failure (10) ...... no foundation and the project was completed in under a year.",
         "questions": [
-          { "sentence": "sharp eye (1) ...... architectural trends", "answer": "on" },
-          { "sentence": "block (2) ...... path at every turn", "answer": "my" },
-          { "sentence": "to (3) ...... matters worse", "answer": "make" },
-          { "sentence": "a window (4) ...... the world of architecture", "answer": "on/onto/into" },
-          { "sentence": "that's a (5) ...... of opinion", "answer": "matter" },
-          { "sentence": "(6) ...... the surface", "answer": "on" },
-          { "sentence": "smoothed the (7) ......", "answer": "way" },
-          { "sentence": "bending metal framework (8) ...... shape", "answer": "into" },
-          { "sentence": "erect a monument (9) ...... the engineer", "answer": "to" },
-          { "sentence": "warnings of failure (10) ...... no foundation", "answer": "had" }
+          {
+            "sentence": "sharp eye (1) ...... architectural trends",
+            "answer": "on"
+          },
+          {
+            "sentence": "block (2) ...... path at every turn",
+            "answer": "my"
+          },
+          {
+            "sentence": "to (3) ...... matters worse",
+            "answer": "make"
+          },
+          {
+            "sentence": "a window (4) ...... the world of architecture",
+            "answer": "on/onto/into"
+          },
+          {
+            "sentence": "that's a (5) ...... of opinion",
+            "answer": "matter"
+          },
+          {
+            "sentence": "(6) ...... the surface",
+            "answer": "on"
+          },
+          {
+            "sentence": "smoothed the (7) ......",
+            "answer": "way"
+          },
+          {
+            "sentence": "bending metal framework (8) ...... shape",
+            "answer": "into"
+          },
+          {
+            "sentence": "erect a monument (9) ...... the engineer",
+            "answer": "to"
+          },
+          {
+            "sentence": "warnings of failure (10) ...... no foundation",
+            "answer": "had"
+          }
         ]
       },
       "J": {
@@ -500,18 +1163,56 @@
       "K": {
         "title": "Complete idioms",
         "instructions": "Complete using the words in the box. You have to use some words more than once.",
-        "words": ["belt", "home", "jungle", "landscape", "sticks", "street", "town"],
+        "words": [
+          "belt",
+          "home",
+          "jungle",
+          "landscape",
+          "sticks",
+          "street",
+          "town"
+        ],
         "questions": [
-          { "sentence": "That hideous glass tower they built last year is a real blot on the ......", "answer": "landscape" },
-          { "sentence": "Downtown after midnight feels like a concrete ...... – you really have to watch your back.", "answer": "jungle" },
-          { "sentence": "Just make yourself at ...... – I'll get the kettle on and there are biscuits on the table.", "answer": "home" },
-          { "sentence": "It's our anniversary tonight, so we're planning to go out on the ...... for a meal and some dancing.", "answer": "town" },
-          { "sentence": "They bought a house in the commuter ...... and he catches the 7:15 train into the city every morning.", "answer": "belt" },
-          { "sentence": "You can't expect a decent internet signal if you insist on living out in the ......", "answer": "sticks" },
-          { "sentence": "After finishing her studies, Elena settled in a small market ...... about an hour from the capital.", "answer": "town" },
-          { "sentence": "They had only been staying at the guesthouse for three days, but it already felt like a ...... from home.", "answer": "home" },
-          { "sentence": "When the factory closed and he lost his savings, it wasn't long before Patrick ended up on the ......", "answer": "street" },
-          { "sentence": "Travelling is wonderful, of course, but nothing quite compares to ...... sweet home.", "answer": "home" }
+          {
+            "sentence": "That hideous glass tower they built last year is a real blot on the ......",
+            "answer": "landscape"
+          },
+          {
+            "sentence": "Downtown after midnight feels like a concrete ...... – you really have to watch your back.",
+            "answer": "jungle"
+          },
+          {
+            "sentence": "Just make yourself at ...... – I'll get the kettle on and there are biscuits on the table.",
+            "answer": "home"
+          },
+          {
+            "sentence": "It's our anniversary tonight, so we're planning to go out on the ...... for a meal and some dancing.",
+            "answer": "town"
+          },
+          {
+            "sentence": "They bought a house in the commuter ...... and he catches the 7:15 train into the city every morning.",
+            "answer": "belt"
+          },
+          {
+            "sentence": "You can't expect a decent internet signal if you insist on living out in the ......",
+            "answer": "sticks"
+          },
+          {
+            "sentence": "After finishing her studies, Elena settled in a small market ...... about an hour from the capital.",
+            "answer": "town"
+          },
+          {
+            "sentence": "They had only been staying at the guesthouse for three days, but it already felt like a ...... from home.",
+            "answer": "home"
+          },
+          {
+            "sentence": "When the factory closed and he lost his savings, it wasn't long before Patrick ended up on the ......",
+            "answer": "street"
+          },
+          {
+            "sentence": "Travelling is wonderful, of course, but nothing quite compares to ...... sweet home.",
+            "answer": "home"
+          }
         ],
         "type": "idioms"
       },
@@ -519,16 +1220,46 @@
         "title": "Correct the wrong form",
         "instructions": "Each of the words in bold is in the wrong form. Rewrite them correctly.",
         "questions": [
-          { "sentence": "The **manufacturer** sector in this region has declined sharply over the past decade.", "answer": "manufacturing" },
-          { "sentence": "The city centre and the **roundness** districts are both set to benefit from the new investment.", "answer": "surrounding" },
-          { "sentence": "As the lava cools, it begins to **solidity** and forms a new layer of rock on the surface.", "answer": "solidify" },
-          { "sentence": "Every **housing** is asked to separate their waste into the correct recycling bins.", "answer": "householder" },
-          { "sentence": "'Please try not to worry,' she said **soften**, placing a hand on his arm.", "answer": "softly" },
-          { "sentence": "Watch your step near the pool – the tiles can be quite **slippage** when wet.", "answer": "slippery" },
-          { "sentence": "The new sculpture gave off a bright, **metallurgy** gleam in the afternoon sunlight.", "answer": "metallic" },
-          { "sentence": "The renovation brought about **substance** improvements to the building's energy efficiency.", "answer": "substantial" },
-          { "sentence": "The planning committee applies the height restrictions quite **rigidity** in this conservation area.", "answer": "rigidly" },
-          { "sentence": "Engineers conducted a thorough assessment of the **structure** integrity of the bridge.", "answer": "structural" }
+          {
+            "sentence": "The **manufacturer** sector in this region has declined sharply over the past decade.",
+            "answer": "manufacturing"
+          },
+          {
+            "sentence": "The city centre and the **roundness** districts are both set to benefit from the new investment.",
+            "answer": "surrounding"
+          },
+          {
+            "sentence": "As the lava cools, it begins to **solidity** and forms a new layer of rock on the surface.",
+            "answer": "solidify"
+          },
+          {
+            "sentence": "Every **housing** is asked to separate their waste into the correct recycling bins.",
+            "answer": "householder"
+          },
+          {
+            "sentence": "'Please try not to worry,' she said **soften**, placing a hand on his arm.",
+            "answer": "softly"
+          },
+          {
+            "sentence": "Watch your step near the pool – the tiles can be quite **slippage** when wet.",
+            "answer": "slippery"
+          },
+          {
+            "sentence": "The new sculpture gave off a bright, **metallurgy** gleam in the afternoon sunlight.",
+            "answer": "metallic"
+          },
+          {
+            "sentence": "The renovation brought about **substance** improvements to the building's energy efficiency.",
+            "answer": "substantial"
+          },
+          {
+            "sentence": "The planning committee applies the height restrictions quite **rigidity** in this conservation area.",
+            "answer": "rigidly"
+          },
+          {
+            "sentence": "Engineers conducted a thorough assessment of the **structure** integrity of the bridge.",
+            "answer": "structural"
+          }
         ]
       },
       "M": {
@@ -536,30 +1267,84 @@
         "instructions": "Use the word given in capitals at the end of the line to form a word that fits in the space in the same line.",
         "passage": "By the early 1960s, (1) ...... could already see that the industrial waterfront district of the city of Grayvale was in urgent need of transformation. Initial proposals had to be (2) ...... when a period of economic instability gripped the region. However, the planners' opportunity (3) ...... unexpectedly when a large section of the dockside area was devastated by flooding. Warehouses and old factory buildings had been (4) ...... damaged, making any form of restoration impossible. Aiming to create a far more (5) ...... environment for the city's (6) ...... to enjoy, a team of town planners put forward a bold new vision. By pedestrianising the waterfront and introducing parks, they hoped to make the district more (7) ...... and attractive to families. There were (8) ...... from local property developers who feared disruption to their existing projects, but the plans moved forward regardless. What had once been a (9) ...... packed industrial zone gradually became a vibrant and welcoming neighbourhood. The result was a remarkable (10) ...... triumph that inspired similar schemes in cities across the country.",
         "questions": [
-          { "sentence": "(1) ...... (ANALYSE)", "answer": "analysts" },
-          { "sentence": "(2) ...... (SHELF)", "answer": "shelved" },
-          { "sentence": "(3) ...... (MATERIAL)", "answer": "materialised" },
-          { "sentence": "(4) ...... (REPAIR)", "answer": "irreparably" },
-          { "sentence": "(5) ...... (SPACE)", "answer": "spacious" },
-          { "sentence": "(6) ...... (RESIDE)", "answer": "residents" },
-          { "sentence": "(7) ...... (INHABIT)", "answer": "habitable" },
-          { "sentence": "(8) ...... (OBJECT)", "answer": "objections" },
-          { "sentence": "(9) ...... (DENSE)", "answer": "densely" },
-          { "sentence": "(10) ...... (ARCHITECT)", "answer": "architectural" }
+          {
+            "sentence": "(1) ...... (ANALYSE)",
+            "answer": "analysts"
+          },
+          {
+            "sentence": "(2) ...... (SHELF)",
+            "answer": "shelved"
+          },
+          {
+            "sentence": "(3) ...... (MATERIAL)",
+            "answer": "materialised"
+          },
+          {
+            "sentence": "(4) ...... (REPAIR)",
+            "answer": "irreparably"
+          },
+          {
+            "sentence": "(5) ...... (SPACE)",
+            "answer": "spacious"
+          },
+          {
+            "sentence": "(6) ...... (RESIDE)",
+            "answer": "residents"
+          },
+          {
+            "sentence": "(7) ...... (INHABIT)",
+            "answer": "habitable"
+          },
+          {
+            "sentence": "(8) ...... (OBJECT)",
+            "answer": "objections"
+          },
+          {
+            "sentence": "(9) ...... (DENSE)",
+            "answer": "densely"
+          },
+          {
+            "sentence": "(10) ...... (ARCHITECT)",
+            "answer": "architectural"
+          }
         ]
       },
       "N": {
         "title": "Complete the sentences using words formed with -en",
         "instructions": "Complete the sentences using words formed with the suffix -en in the correct form.",
         "questions": [
-          { "sentence": "The council has announced plans to ...... the main road through town to reduce congestion.", "answer": "widen" },
-          { "sentence": "Regular physical training gradually ...... the muscles and improves overall stamina.", "answer": "strengthens" },
-          { "sentence": "His cheeks ...... immediately when she walked into the room and smiled at him.", "answer": "reddened" },
-          { "sentence": "The tailor offered to ...... the trousers as part of the standard alteration service.", "answer": "shorten" },
-          { "sentence": "You'll need to ...... the bolts at the back, or the shelf will start to wobble.", "answer": "tighten" },
-          { "sentence": "A few colourful cushions and a rug could really ...... the living room up.", "answer": "brighten" },
-          { "sentence": "The cement mixture needs to ...... overnight before the tiles can be laid on top.", "answer": "harden" },
-          { "sentence": "Any delay in treatment risks allowing the infection to spread and could ...... the patient's recovery.", "answer": "weaken" }
+          {
+            "sentence": "The council has announced plans to ...... the main road through town to reduce congestion.",
+            "answer": "widen"
+          },
+          {
+            "sentence": "Regular physical training gradually ...... the muscles and improves overall stamina.",
+            "answer": "strengthens"
+          },
+          {
+            "sentence": "His cheeks ...... immediately when she walked into the room and smiled at him.",
+            "answer": "reddened"
+          },
+          {
+            "sentence": "The tailor offered to ...... the trousers as part of the standard alteration service.",
+            "answer": "shorten"
+          },
+          {
+            "sentence": "You'll need to ...... the bolts at the back, or the shelf will start to wobble.",
+            "answer": "tighten"
+          },
+          {
+            "sentence": "A few colourful cushions and a rug could really ...... the living room up.",
+            "answer": "brighten"
+          },
+          {
+            "sentence": "The cement mixture needs to ...... overnight before the tiles can be laid on top.",
+            "answer": "harden"
+          },
+          {
+            "sentence": "Any delay in treatment risks allowing the infection to spread and could ...... the patient's recovery.",
+            "answer": "weaken"
+          }
         ]
       }
     }
