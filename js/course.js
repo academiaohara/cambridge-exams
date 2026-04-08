@@ -1549,7 +1549,7 @@
         html += '<div class="cu-mc-inline-items">';
         questions.forEach(function(q, qi) {
           html += '<div class="cu-mc-inline-item">' +
-            '<div class="cu-ex-num-badge">' + (qi + 1) + '</div>' +
+            (ex.hideNumBadge ? '' : '<div class="cu-ex-num-badge">' + (qi + 1) + '</div>') +
             '<div class="cu-ex-sentence">' + buildGapHtml(q.sentence || '') + '</div>' +
           '</div>';
         });
