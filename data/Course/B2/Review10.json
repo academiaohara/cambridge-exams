@@ -1,0 +1,85 @@
+{
+  "Review10": {
+    "block": 1,
+    "type": "review",
+    "unitTitle": "Review: Block 1 – Units 1 & 2",
+    "totalPoints": 50,
+    "sections": [
+      {
+        "type": "error_correction",
+        "title": "A: Error correction",
+        "instructions": "Each of the numbered words or phrases in bold is incorrect. Rewrite them correctly.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 10 },
+        "items": [
+          { "sentence": "Forecasts might warn **to us** about threats posed by the weather, but imagine if we could take **out** control of the weather and prevent dangerous weather conditions from **in** the first place.", "answer": "us, -, happening" },
+          { "sentence": "Controlling the weather may be the biggest technological challenge we face. For a **long** of time, scientists have dreamed of creating artificial clouds to bring rain to areas hit by drought, but it's much harder to do than they expected **that**.", "answer": "long time, -" },
+          { "sentence": "The global weather system is very complicated, with each part having an effect **taken** on all the others.", "answer": "-" },
+          { "sentence": "The scientists may feel they are wasting **up** their time, but success could save millions of lives.", "answer": "-" }
+        ]
+      },
+      {
+        "type": "word_formation",
+        "title": "B: Complete the sentences by changing the form of the word in capitals",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
+        "items": [
+          { "sentence": "The forecast said there was a high (LIKELY) ______ of rain this weekend.", "answer": "likelihood" },
+          { "sentence": "We all know that using our cars causes (POLLUTE) ______, but we still do it.", "answer": "pollution" },
+          { "sentence": "Forecasting the weather (ACCURATE) ______ takes a great deal of training.", "answer": "accurately" },
+          { "sentence": "Litter is often a problem in (RESIDENT) ______ areas.", "answer": "residential" },
+          { "sentence": "According to (ENVIRONMENT) ______, we could be facing a crisis within fifty years.", "answer": "environmentalists" },
+          { "sentence": "It was a wonderfully (SUN) ______ day, so we decided to go to the beach.", "answer": "sunny" },
+          { "sentence": "The giant panda is (DANGER) ______ because its habitat is being destroyed.", "answer": "endangered" },
+          { "sentence": "We didn't enjoy our walk because it was absolutely (FREEZE) ______!", "answer": "freezing" }
+        ]
+      },
+      {
+        "type": "key_word_transformation",
+        "title": "C: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "scoring": { "pointsPerItem": 2, "maxScore": 18 },
+        "items": [
+          { "sentence": "Did you see the documentary about the ozone layer?\nsaw\nI wonder ______ the documentary about the ozone layer.", "answer": "if you saw" },
+          { "sentence": "I saw a badger for a moment before it disappeared into the woods.\nsight\nI ______ a badger before it disappeared into the woods.", "answer": "caught sight of" },
+          { "sentence": "I hope the weather gets better for our trip to the mountains this weekend.\nup\nI hope ______ for our trip to the mountains this weekend.", "answer": "the weather clears up" },
+          { "sentence": "Did you hear that the greenhouse in the park had been demolished?\ntorn\nDid you hear that they ______ the greenhouse in the park?", "answer": "had torn down" },
+          { "sentence": "Everything we do affects the environment in one way or another.\neffect\nEverything we do ______ the environment in one way or another.", "answer": "has an effect on" },
+          { "sentence": "I don't really know a lot about the work that Greenpeace does.\nfamiliar\nI ______ the work that Greenpeace does.", "answer": "am not really familiar with" },
+          { "sentence": "The builders have spoiled our garden.\nmess\nThe builders have ______ our garden.", "answer": "made a mess of" },
+          { "sentence": "Dr Trent said the problems were caused by rubbish in the streets.\nput\nDr Trent ______ rubbish in the streets.", "answer": "put the problems down to" },
+          { "sentence": "Most people know that wasting water causes problems.\naware\nMost people ______ the problems caused by wasting water.", "answer": "are aware of" }
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
+        "items": [
+          { "sentence": "No one seems to care about the environment, ______?", "options": ["A does he", "B are they", "C is he", "D do they"], "answer": "D" },
+          { "sentence": "Do you know where ______ a book about insects?", "options": ["A can I find", "B I find", "C I can find", "D do I find"], "answer": "C" },
+          { "sentence": "The new law prevents people ______ their rubbish in certain areas.", "options": ["A to leave", "B from leaving", "C of leaving", "D leave"], "answer": "B" },
+          { "sentence": "Let's walk to the shops instead of taking the car, ______?", "options": ["A shall we", "B don't we", "C will we", "D won't we"], "answer": "A" },
+          { "sentence": "There isn't much point in trying to save electricity, ______?", "options": ["A is it", "B isn't there", "C isn't it", "D is there"], "answer": "D" },
+          { "sentence": "Don't drop your sweet wrapper on the floor, ______?", "options": ["A do you", "B aren't you", "C will you", "D won't you"], "answer": "C" },
+          { "sentence": "'I went to the exhibition at the natural history museum.' 'Oh, yes? What ______ there?'", "options": ["A saw you", "B you did see", "C you saw", "D did you see"], "answer": "D" }
+        ]
+      },
+      {
+        "type": "multiple_choice_vocab",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
+        "items": [
+          { "sentence": "There's been a ______ in Germany and a village was completely destroyed.", "options": ["A flood", "B drizzle", "C shower", "D smog"], "answer": "A" },
+          { "sentence": "Do you know what CFC ______?", "options": ["A sets in", "B does up", "C stands for", "D gets down"], "answer": "C" },
+          { "sentence": "Dinosaurs have been ______ for millions of years.", "options": ["A endangered", "B threatened", "C extinct", "D disappeared"], "answer": "C" },
+          { "sentence": "It's sunny, but there's a very cold ______ so don't forget your coat.", "options": ["A blowing", "B air", "C wind", "D gas"], "answer": "C" },
+          { "sentence": "If you ask me, ______ waste is a much bigger problem than ordinary household waste.", "options": ["A industrial", "B business", "C working", "D employer"], "answer": "A" },
+          { "sentence": "As towns grow, they tend to destroy the surrounding ______ areas.", "options": ["A urban", "B commercial", "C land", "D rural"], "answer": "D" },
+          { "sentence": "Jill put her wellington boots on and, as soon as it stopped raining, went out to play in the ______.", "options": ["A reservoirs", "B lakes", "C puddles", "D ponds"], "answer": "C" }
+        ]
+      }
+    ]
+  }
+}

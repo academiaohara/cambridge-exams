@@ -1,0 +1,87 @@
+{
+  "Review12": {
+    "block": 1,
+    "type": "review",
+    "unitTitle": "Review: Block 1 – Units 1 & 2",
+    "totalPoints": 50,
+    "sections": [
+      {
+        "type": "word_formation",
+        "title": "A: Use the word given in capitals to form a word",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 10 },
+        "items": [
+          { "sentence": "I've always wanted to be an (1) ______ (ENTERTAIN) but never did anything about it until I lost my job last year.", "answer": "entertainer" },
+          { "sentence": "After a (2) ______ (CONVERSE) with a friend about the (3) ______ (BORE) of office life, I decided not to look for another job in management, but to earn my living from giving (4) ______ (PERFORM) at events like kids' parties.", "answer": "conversation, boredom, performances" },
+          { "sentence": "So I became a clown! I'm (5) ______ (CURRENT) doing four or five parties a week and I love it!", "answer": "currently" },
+          { "sentence": "I love seeing the (6) ______ (EXCITE) on the kids' faces when I walk in the room.", "answer": "excitement" },
+          { "sentence": "I try to have a lot of (7) ______ (VARY) in my act, so I tell jokes - most of which the kids find (8) ______ (AMUSE) - and bend balloons into funny animals, do impersonations of (9) ______ (FAME) people and generally keep the kids (10) ______ (ACT) involved for an hour or two.", "answer": "variety, amusing, famous, actively" }
+        ]
+      },
+      {
+        "type": "key_word_transformation",
+        "title": "B: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
+        "items": [
+          { "sentence": "We didn't have a birthday party for Jake; we took him to the cinema instead.\ninstead\nWe took Jake to the cinema for his birthday ______ a party.", "answer": "instead of having" },
+          { "sentence": "It doesn't surprise me that Sandra wants to live in Hollywood.\njust\nIt ______ want to live in Hollywood.", "answer": "is just like Sandra to" },
+          { "sentence": "I'm sure the audience will go wild when you come on stage.\nbound\nThe audience ______ wild when you come on stage.", "answer": "are bound to go" },
+          { "sentence": "You shouldn't take food into the theatre.\nsupposed\nYou ______ food into the theatre.", "answer": "are not supposed to take" },
+          { "sentence": "At least he said he was sorry that he'd ruined my joke!\napologised\nAt least he ______ my joke!", "answer": "apologised for ruining" },
+          { "sentence": "My parents don't mind you staying with us after the concert.\nhappy\nMy parents ______ stay with us after the concert.", "answer": "are happy for you to" },
+          { "sentence": "Don't tease Libby as she doesn't like it.\nfun\nDon't ______ Libby as she doesn't like it.", "answer": "make fun of" },
+          { "sentence": "That play really affected me.\nimpression\nThat play really ______ me.", "answer": "made an impression on" }
+        ]
+      },
+      {
+        "type": "phrasal_verbs",
+        "title": "C: Write a phrasal verb in the correct form to replace the words in bold",
+        "instructions": "Write a phrasal verb in the correct form to replace the words in bold.",
+        "scoring": { "pointsPerItem": 2, "maxScore": 16 },
+        "items": [
+          { "sentence": "My dad **fell asleep** during the film, as usual!", "answer": "dropped off" },
+          { "sentence": "I felt so **disappointed** when my parents didn't come to watch me in the school play.", "answer": "let down" },
+          { "sentence": "Although they're partners in a comedy act, apparently they don't **have a good relationship** with each other off stage.", "answer": "get along" },
+          { "sentence": "Let's **perform** a play at the end of term!", "answer": "put on" },
+          { "sentence": "Fiona **resembles** her mother; they both love playing board games!", "answer": "takes after" },
+          { "sentence": "I told Marcie that the word 'stupid' didn't appear in the dictionary and she **believed** it!", "answer": "fell for" },
+          { "sentence": "Laurel and Hardy will **be remembered** as one of the greatest double acts in comedy history.", "answer": "go down" },
+          { "sentence": "You can always **trust** Uncle Colin to cheer you up when you're feeling miserable.", "answer": "count on" }
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
+        "items": [
+          { "sentence": "______ an Oscar last year, she's now one of the most powerful movie stars in the industry.", "options": ["A She won", "B To win", "C The winning of", "D Having won"], "answer": "D" },
+          { "sentence": "'Which cinema did you go to?' 'The one ______ they don't sell any popcorn!'", "options": ["A which", "B where", "C whom", "D who"], "answer": "B" },
+          { "sentence": "That's the actor ______ autograph I got last year!", "options": ["A whose", "B who's", "C who", "D whom"], "answer": "A" },
+          { "sentence": "______ to change his name by his agent, John Smith became Marvo The Magnificent overnight.", "options": ["A Made", "B Making", "C Having made", "D To make"], "answer": "A" },
+          { "sentence": "The book ______ she's most famous is Dance of the Dinosaurs.", "options": ["A in that", "B to whom", "C for which", "D that"], "answer": "C" },
+          { "sentence": "Lyle Lovett, ______ I last saw perform over ten years ago, is on tour again.", "options": ["A he who", "B to whom", "C who", "D that"], "answer": "C" },
+          { "sentence": "And the song ______ by our listeners as their favourite of the week is Goodbye Baby by The Tunesmiths.", "options": ["A having chosen", "B chosen", "C was chosen", "D is chosen"], "answer": "B" },
+          { "sentence": "'You didn't get into Harvard, did you?' 'No, and that's the reason ______ I ended up going to drama college!'", "options": ["A how", "B which", "C for that", "D why"], "answer": "D" }
+        ]
+      },
+      {
+        "type": "multiple_choice_vocab",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
+        "items": [
+          { "sentence": "Could you ______ in the paper and see what's on TV tonight?", "options": ["A see", "B watch", "C look", "D examine"], "answer": "C" },
+          { "sentence": "I'm reading a ______ set in Greece during the Second World War.", "options": ["A novel", "B fiction", "C literature", "D writing"], "answer": "A" },
+          { "sentence": "Harry kept us ______ throughout the journey with his non-stop jokes.", "options": ["A enjoyed", "B entertained", "C laughed", "D pleasured"], "answer": "B" },
+          { "sentence": "I never read ______ of films as I don't trust the critics' opinions.", "options": ["A reviews", "B criticisms", "C articles", "D investigations"], "answer": "A" },
+          { "sentence": "How did your ______ go? Do you think you'll be offered the main part?", "options": ["A audit", "B auditorium", "C audience", "D audition"], "answer": "D" },
+          { "sentence": "I'd love to work in show ______. It's so glamorous!", "options": ["A industry", "B commerce", "C business", "D trade"], "answer": "C" },
+          { "sentence": "Joe told me a joke today but I didn't ______ it at all.", "options": ["A get", "B fetch", "C bring", "D collect"], "answer": "A" },
+          { "sentence": "I didn't like this album at first but it's really starting to ______ on me now.", "options": ["A grow", "B develop", "C raise", "D increase"], "answer": "A" }
+        ]
+      }
+    ]
+  }
+}

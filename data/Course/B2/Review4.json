@@ -1,0 +1,87 @@
+{
+  "Review4": {
+    "block": 1,
+    "type": "review",
+    "unitTitle": "Review: Block 1 – Units 1 & 2",
+    "totalPoints": 50,
+    "sections": [
+      {
+        "type": "error_correction",
+        "title": "A: Error correction",
+        "instructions": "Each of the numbered words or phrases in bold is incorrect. Rewrite them correctly.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 10 },
+        "items": [
+          { "sentence": "Last month, I wrote to a few local television **station** asking if they gave away **the** free tickets to any shows.", "answer": "stations, -" },
+          { "sentence": "A week later, they sent **to me** two tickets for a quiz show.", "answer": "me" },
+          { "sentence": "I went with my best friend Angie last night. It was **an** excellent!", "answer": "-" },
+          { "sentence": "The show is called Know Them Or Not? and contestants have to answer questions about **a lots** of different people in their lives, like friends, relatives and colleagues.", "answer": "lots" },
+          { "sentence": "There are ten contestants to start with but one of them gets knocked out at the end of each round.", "answer": "√" },
+          { "sentence": "I'd like to go into **on** a show like that one day but, for now, I'm **much** happy just to have been in the audience.", "answer": "-", "very" }
+        ]
+      },
+      {
+        "type": "word_formation",
+        "title": "B: Complete the sentences by changing the form of the word in capitals",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
+        "items": [
+          { "sentence": "Why can't (POLITICS) ______ ever just say 'yes' or 'no' when they're asked if they agree with something?", "answer": "politicians" },
+          { "sentence": "I was hoping this book would help me with my history project but in fact it wasn't very (INFORM) ______.", "answer": "informative" },
+          { "sentence": "My cousin Dan has kept a (JOURNAL) ______ since he was twelve years old.", "answer": "journal" },
+          { "sentence": "Did you hear that (ANNOUNCE) ______ on the radio about the water shortage?", "answer": "announcement" },
+          { "sentence": "There's an (WRITE) ______ rule in our house about how late we can stay up to watch TV.", "answer": "unwritten" },
+          { "sentence": "I just stood there in (BELIEVE) ______ when I heard I'd been selected to go on the quiz show.", "answer": "disbelief" },
+          { "sentence": "The Internet is an incredibly powerful means of (COMMUNICATE) ______.", "answer": "communication" },
+          { "sentence": "I wouldn't describe the film as a comedy, but one or two scenes are mildly (HUMOUR) ______.", "answer": "humorous" }
+        ]
+      },
+      {
+        "type": "key_word_transformation",
+        "title": "C: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "scoring": { "pointsPerItem": 2, "maxScore": 18 },
+        "items": [
+          { "sentence": "These two dictionaries are similar.\nlittle\nThere ______ these two dictionaries.", "answer": "is little difference between" },
+          { "sentence": "My first editor greatly influenced me.\ninfluence\nMy first editor ______ me.", "answer": "had a great influence on" },
+          { "sentence": "They described the robber on the evening news.\ngave\nThey ______ the robber on the evening news.", "answer": "gave a description of" },
+          { "sentence": "Robert Maxdoch has just bought the newspaper.\ncontrol\nThe newspaper is now ______ Robert Maxdoch.", "answer": "under the control of" },
+          { "sentence": "You'll be wasting your time if you try to get tickets for that show.\npoint\nThere ______ to get tickets for that show.", "answer": "is no point in trying" },
+          { "sentence": "I believe that adverts do influence people's buying habits.\nview\nIt ______ that adverts do influence people's buying habits.", "answer": "is my view" },
+          { "sentence": "The prime minister will probably make a statement this afternoon.\nlikely\nThe prime minister ______ a statement this afternoon.", "answer": "is likely to make" },
+          { "sentence": "A programme about the royal family will be shown instead of Friends this evening.\nplace\nThis evening, Friends, ______ a programme about the royal family will be shown.", "answer": "in place of" },
+          { "sentence": "The Hollywood star wouldn't say anything about the allegations.\ncomment\nThe Hollywood star refused ______ the allegations.", "answer": "to comment on" }
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
+        "items": [
+          { "sentence": "How ______ information do we have at the moment?", "options": ["A much", "B few", "C lots", "D many"], "answer": "A" },
+          { "sentence": "Only a ______ print journalists manage to move into television.", "options": ["A much", "B few", "C lots", "D many"], "answer": "B" },
+          { "sentence": "This magazine's got ______ of adverts in it.", "options": ["A little", "B few", "C lots", "D much"], "answer": "C" },
+          { "sentence": "I won ______ money on a quiz show once.", "options": ["A much", "B few", "C some", "D many"], "answer": "C" },
+          { "sentence": "There's ______ chance of getting rich from starting a website.", "options": ["A much", "B few", "C little", "D many"], "answer": "C" },
+          { "sentence": "I think that ______ children's TV programmes these days are educational.", "options": ["A most", "B few", "C little", "D much"], "answer": "A" },
+          { "sentence": "There aren't ______ opportunities for poets to get published.", "options": ["A much", "B few", "C many", "D little"], "answer": "C" }
+        ]
+      },
+      {
+        "type": "multiple_choice_vocab",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
+        "items": [
+          { "sentence": "The programme usually ______ on at half past eight.", "options": ["A looks", "B does", "C turns", "D comes"], "answer": "D" },
+          { "sentence": "I saw the interview while I was ______ through a magazine at the hairdresser's.", "options": ["A clicking", "B flicking", "C picking", "D ticking"], "answer": "B" },
+          { "sentence": "Why did you have to bring that subject ______ at dinner?", "options": ["A up", "B over", "C out", "D off"], "answer": "A" },
+          { "sentence": "They mentioned it in the article but they didn't ______ into detail.", "options": ["A make", "B come", "C take", "D go"], "answer": "D" },
+          { "sentence": "The tabloids completely ______ that story about Bruce Willis. It's not true at all!", "options": ["A stood out", "B filled in", "C made up", "D turned over"], "answer": "C" },
+          { "sentence": "They were ______ out free tickets to the concert to everyone in the shopping centre.", "options": ["A handing", "B carrying", "C holding", "D bringing"], "answer": "A" },
+          { "sentence": "We had the volume turned down, so I couldn't make ______ what they were talking about.", "options": ["A up", "B in", "C out", "D off"], "answer": "C" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "Review14": {
+    "block": 1,
+    "type": "review",
+    "unitTitle": "Review: Block 1 – Units 1 & 2",
+    "totalPoints": 50,
+    "sections": [
+      {
+        "type": "gap_fill",
+        "title": "A: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 10 },
+        "items": [
+          { "sentence": "Dear Sir,\n\nI would like to (1) ______ a complaint about an article that appeared in your newspaper last week.", "answer": "make" },
+          { "sentence": "In the article, entitled 'Why they are (2) ______ of work', the writer suggested that the unemployed were responsible (3) ______ their own situation.", "answer": "out, for" },
+          { "sentence": "If the writer had (4) ______ their job properly and (5) ______ a little effort to speak to local unemployed people, they might have realised that this is not the case.", "answer": "done, made" },
+          { "sentence": "Let me begin (6) ______ saying that most unemployed people want to work.", "answer": "by" },
+          { "sentence": "They apply (7) ______ jobs and (8) ______ a great deal of effort into changing their situation.", "answer": "for, put" },
+          { "sentence": "The truth is that local businesses are simply not taking (9) ______ new staff.", "answer": "on" },
+          { "sentence": "The government is to blame for the way in which economic growth has (10) ______ down, making life difficult for many businesses.", "answer": "slowed" },
+          { "sentence": "I look forward to reading a more balanced article in the future.\n\nYours faithfully,\nRebecca Winterson", "answer": "" }
+        ]
+      },
+      {
+        "type": "word_formation",
+        "title": "B: Complete the sentences by changing the form of the word in capitals",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
+        "items": [
+          { "sentence": "Dave left the office keys in a pub and he was sacked for being so (RESPONSIBLE) ______.", "answer": "irresponsible" },
+          { "sentence": "'Leave it to me. I'll find a solution,' the manager said, (HELP) ______.", "answer": "helpfully" },
+          { "sentence": "All (APPLY) ______ are asked to send their CV to Mrs Simpson in the Personnel Department.", "answer": "applicants" },
+          { "sentence": "My job is to (SUPERVISE) ______ the telesales workers.", "answer": "supervise" },
+          { "sentence": "Carol has worked for us for over twenty years with great loyalty and (DEDICATE) ______.", "answer": "dedication" },
+          { "sentence": "All our (EMPLOY) ______ receive four weeks paid holiday per year.", "answer": "employees" },
+          { "sentence": "The managing director didn't think the suggestion would ever be (WORK) ______, so we had to think of another solution.", "answer": "workable" },
+          { "sentence": "It seems that Mr Jones lied about his (QUALIFY) ______ on his application form.", "answer": "qualifications" }
+        ]
+      },
+      {
+        "type": "key_word_transformation",
+        "title": "C: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "scoring": { "pointsPerItem": 2, "maxScore": 18 },
+        "items": [
+          { "sentence": "Yuri qualified and then immediately found a really good job.\nthan\nNo ______ he found a really good job.", "answer": "sooner had Yuri qualified than" },
+          { "sentence": "Women don't often get promoted in some industries.\ndo\nRarely ______ in some industries.", "answer": "do women get promoted" },
+          { "sentence": "I never realised that Tony was the head of Fizzco.\nrealise\nLittle ______ that Tony was the head of Fizzco.", "answer": "did I realise" },
+          { "sentence": "I didn't know about the meeting until Tracy rang.\ndid\nNot until ______ about the meeting.", "answer": "Tracy rang did I know" },
+          { "sentence": "I think you will benefit from getting a new job.\ngood\nI think it will be ______ a new job.", "answer": "good for you to get" },
+          { "sentence": "The two companies finally agreed the deal.\nreached\nThe two companies finally ______ the deal.", "answer": "reached an agreement on" },
+          { "sentence": "Customers of the bank are never allowed into the basement area.\ncircumstances\nUnder ______ customers of the bank allowed into the basement area.", "answer": "no circumstances are" },
+          { "sentence": "I didn't think of a good answer to the interviewer's question until later.\ndid\nOnly ______ a good answer to the interviewer's question.", "answer": "later did I think of" },
+          { "sentence": "It was such a boring job that no one wanted to do it.\nwas\nSuch ______ that no one wanted to do it.", "answer": "a boring job was it" }
+        ]
+      },
+      {
+        "type": "matching",
+        "title": "D: Match to make sentences",
+        "instructions": "Match to make sentences.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
+        "items": [
+          { "sentence": "28 Ironworks Limited has closed", "answer": "D", "match": "down and 400 people have lost their jobs." },
+          { "sentence": "29 Henry asked Janet to stand", "answer": "A", "match": "in for him while he went into town." },
+          { "sentence": "30 Mr Carter asked me to see", "answer": "F", "match": "to the orders while he spoke to a customer." },
+          { "sentence": "31 I heard that Bigburger have taken", "answer": "C", "match": "over Cookright and plan to close some branches." },
+          { "sentence": "32 Roger says he never set", "answer": "G", "match": "out to become a millionaire - it just happened!" },
+          { "sentence": "33 Apparently, Fatfoods are bringing", "answer": "B", "match": "out a new flavour of ice cream next month." },
+          { "sentence": "34 I'm thinking of setting", "answer": "E", "match": "up a business selling my own jewellery." }
+        ]
+      },
+      {
+        "type": "multiple_choice_vocab",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
+        "items": [
+          { "sentence": "The ______ for this position starts at thirty thousand euros per year.", "options": ["A wage", "B payment", "C salary", "D tip"], "answer": "C" },
+          { "sentence": "After working at the same factory for thirty years, my grandfather was looking forward to his ______.", "options": ["A overtime", "B charity", "C pension", "D allowance"], "answer": "C" },
+          { "sentence": "Some people ______ to London every day from as far away as Leeds.", "options": ["A connect", "B correspond", "C commute", "D commence"], "answer": "C" },
+          { "sentence": "Most governments tax people on the amount they ______ each year.", "options": ["A win", "B gain", "C earn", "D benefit"], "answer": "C" },
+          { "sentence": "Shelley disagreed with the board's decision and so she ______ and went to work for another company.", "options": ["A retired", "B sacked", "C fired", "D resigned"], "answer": "D" },
+          { "sentence": "When the factory closed, over a hundred people were ______ redundant.", "options": ["A done", "B given", "C taken", "D made"], "answer": "D" },
+          { "sentence": "Here at Weatherby's, we provide all our ______, from senior management down, with regular training.", "options": ["A staff", "B crowd", "C crew", "D firm"], "answer": "A" }
+        ]
+      }
+    ]
+  }
+}

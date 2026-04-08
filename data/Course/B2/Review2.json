@@ -1,0 +1,91 @@
+{
+  "Review2": {
+    "block": 1,
+    "type": "review",
+    "unitTitle": "Review: Block 1 – Units 1 & 2",
+    "totalPoints": 50,
+    "sections": [
+      {
+        "type": "word_formation",
+        "title": "A: Use the word given in capitals to form a word",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 10 },
+        "items": [
+          { "sentence": "I saw some badminton on TV and found it quite (1) ______ (INTEREST).", "answer": "interesting" },
+          { "sentence": "... so I thought I'd see if there was a club or (2) ______ (ASSOCIATE) in my area.", "answer": "association" },
+          { "sentence": "I looked everywhere but, (3) ______ (FORTUNE), the nearest club was 80 kilometres away.", "answer": "unfortunately" },
+          { "sentence": "So, without any (4) ______ (KNOW), I decided to form my own club.", "answer": "knowledge" },
+          { "sentence": "It was very hard in the beginning - I didn't have any (5) ______ (EQUIP).", "answer": "equipment" },
+          { "sentence": "... and I had to convince a few people that it was an (6) ______ (ENJOY) way to keep fit.", "answer": "enjoyable" },
+          { "sentence": "I organised a small (7) ______ (COMPETE), which was a lot of fun ...", "answer": "competition" },
+          { "sentence": "Now we've got a full-time (8) ______ (TRAIN) ...", "answer": "trainer" },
+          { "sentence": "... and our (9) ______ (OPPOSE) come from all over the country.", "answer": "opponents" },
+          { "sentence": "One of our members was even a bronze (10) ______ (MEDAL) in the national championship!", "answer": "medallist" }
+        ]
+      },
+      {
+        "type": "matching",
+        "title": "B: Match to make sentences",
+        "instructions": "Match to make sentences.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 8 },
+        "items": [
+          { "sentence": "11 I refuse to put", "answer": "H", "match": "up with people who cheat at games." },
+          { "sentence": "12 The current champion was knocked", "answer": "C", "match": "out in the second round of the competition." },
+          { "sentence": "13 I used to love basketball, but I've gone", "answer": "F", "match": "off team sports lately." },
+          { "sentence": "14 The trainer asked us to carry", "answer": "E", "match": "on with the activity while he answered the phone." },
+          { "sentence": "15 The organisers had to bring", "answer": "G", "match": "the race forward by a week." },
+          { "sentence": "16 You should think about taking", "answer": "A", "match": "up a martial art, to defend yourself." },
+          { "sentence": "17 Although she was very young, Olivia took", "answer": "B", "match": "to swimming as soon as she tried it." },
+          { "sentence": "18 Rob had to pull", "answer": "D", "match": "out of the race because of a last minute injury." }
+        ]
+      },
+      {
+        "type": "key_word_transformation",
+        "title": "C: Complete each second sentence using the word given",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "scoring": { "pointsPerItem": 2, "maxScore": 18 },
+        "items": [
+          { "sentence": "Our tennis match started at one o'clock and we were still playing at four.\nbeen\nAt four o'clock, we ______ three hours.", "answer": "had been playing tennis for" },
+          { "sentence": "Terry never used to spend so much time playing on his computer.\nuse\nTerry ______ spend so much time playing on his computer.", "answer": "did not use to" },
+          { "sentence": "Before we play, check all the cards are there.\ncertain\nBefore we play, ______ all the cards are there.", "answer": "make certain that" },
+          { "sentence": "Hang-gliding can be dangerous, but after a while you don't mind it.\nused\nHang-gliding can be dangerous, but after a while you ______ it.", "answer": "get used to" },
+          { "sentence": "I ran fifteen miles, and then my trainer told me to do fifty push-ups!\nalready\nWhen my trainer told me to do fifty push-ups, I ______ fifteen miles!", "answer": "had already run" },
+          { "sentence": "We wouldn't spend so much time indoors when I was young.\nused\nWe ______ so much time indoors when I was young.", "answer": "never used to spend" },
+          { "sentence": "I spend a lot of my time on my hobbies.\nup\nMy hobbies ______ a lot of my time.", "answer": "take up" },
+          { "sentence": "I would rather play ludo than snakes and ladders.\nprefer\nI ______ ludo rather than snakes and ladders.", "answer": "would prefer to play" },
+          { "sentence": "I don't think it's likely that you'll win the competition.\nchance\nI think there's ______ the competition.", "answer": "little chance of your winning" }
+        ]
+      },
+      {
+        "type": "multiple_choice",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
+        "items": [
+          { "sentence": "'Why were you so tired yesterday?' 'Because I ______ all morning.'", "options": ["A jog", "B was jogged", "C had been jogging", "D had been jogged"], "answer": "C" },
+          { "sentence": "It was the first time I ______ a live match.", "options": ["A was ever seeing", "B had ever been seeing", "C had ever seen", "D was ever seen"], "answer": "C" },
+          { "sentence": "'You live in a huge house, don't you?' 'Yes, but we ______.'", "options": ["A didn't use to", "B wouldn't", "C use not", "D weren't used to"], "answer": "A" },
+          { "sentence": "I ______ the whole of War and Peace by the time I was seven years old.", "options": ["A was reading", "B had been reading", "C had read", "D had been read"], "answer": "C" },
+          { "sentence": "Karate hurt my hands at first, but I finally ______ it in the end.", "options": ["A got used to", "B was used", "C was used to", "D got use to"], "answer": "A" },
+          { "sentence": "I ______ for the match to begin when suddenly a dog ran onto the pitch.", "options": ["A had waited", "B waited", "C was waiting", "D wait"], "answer": "C" },
+          { "sentence": "Before she retired, my grandma ______ go for a run every morning before work.", "options": ["A use to", "B would", "C got used to", "D was used to"], "answer": "B" }
+        ]
+      },
+      {
+        "type": "multiple_choice_vocab",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "scoring": { "pointsPerItem": 1, "maxScore": 7 },
+        "items": [
+          { "sentence": "The ______ in the stadium all cheered the athletes.", "options": ["A viewers", "B witnesses", "C spectators", "D onlookers"], "answer": "C" },
+          { "sentence": "I got a new baseball ______ yesterday.", "options": ["A stick", "B club", "C racket", "D bat"], "answer": "D" },
+          { "sentence": "After a hard match, United managed to ______ with City, 1-1.", "options": ["A equal", "B exact", "C draw", "D score"], "answer": "C" },
+          { "sentence": "In this game, the players ______ it in turns to throw the dice.", "options": ["A take", "B do", "C make", "D have"], "answer": "A" },
+          { "sentence": "It's nice to win, but the important thing is to ______ your best.", "options": ["A make", "B take", "C have", "D do"], "answer": "D" },
+          { "sentence": "Just ask them if you can play and I'm sure they'll let you ______.", "options": ["A take up", "B join in", "C go off", "D take to"], "answer": "B" },
+          { "sentence": "Everyone expects Johnson to ______ Smith in today's final.", "options": ["A beat", "B score", "C win", "D champion"], "answer": "A" }
+        ]
+      }
+    ]
+  }
+}
