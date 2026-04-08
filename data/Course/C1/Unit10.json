@@ -837,6 +837,32 @@
             "sentence": "The headline is deliberately misleading if you read it without any surrounding ......",
             "answer": "context"
           }
+        ],
+        "words": [
+          "allege",
+          "assert",
+          "boast",
+          "clarification",
+          "confide",
+          "confirm",
+          "context",
+          "contradict",
+          "convey",
+          "disclose",
+          "exaggerate",
+          "flatter",
+          "gist",
+          "insist",
+          "mumble",
+          "murmur",
+          "quibble",
+          "rant",
+          "rave",
+          "scribble",
+          "stumble",
+          "stutter",
+          "tip",
+          "utter"
         ]
       },
       "B": {
@@ -1312,90 +1338,56 @@
       },
       "L": {
         "title": "Prefix over-",
-        "type": "yn",
+        "type": "drag-category",
         "instructions": "Which of these words can take over- to mean 'too much'?",
-        "questions": [
-          {
-            "sentence": "act",
-            "answer": "YES"
-          },
-          {
-            "sentence": "book",
-            "answer": "YES"
-          },
-          {
-            "sentence": "cook",
-            "answer": "YES"
-          },
-          {
-            "sentence": "crowded",
-            "answer": "YES"
-          },
-          {
-            "sentence": "do",
-            "answer": "YES"
-          },
-          {
-            "sentence": "dressed",
-            "answer": "YES"
-          },
-          {
-            "sentence": "excited",
-            "answer": "YES"
-          },
-          {
-            "sentence": "grown",
-            "answer": "YES"
-          },
-          {
-            "sentence": "heat",
-            "answer": "YES"
-          },
-          {
-            "sentence": "priced",
-            "answer": "YES"
-          },
-          {
-            "sentence": "protective",
-            "answer": "YES"
-          },
-          {
-            "sentence": "rate",
-            "answer": "YES"
-          },
-          {
-            "sentence": "react",
-            "answer": "YES"
-          },
-          {
-            "sentence": "read",
-            "answer": "YES"
-          },
-          {
-            "sentence": "spend",
-            "answer": "YES"
-          },
-          {
-            "sentence": "step",
-            "answer": "YES"
-          },
-          {
-            "sentence": "stretched",
-            "answer": "YES"
-          },
-          {
-            "sentence": "surprised",
-            "answer": "NO"
-          },
-          {
-            "sentence": "try",
-            "answer": "NO"
-          },
-          {
-            "sentence": "weight",
-            "answer": "YES"
-          }
-        ]
+        "categories": [
+          "YES",
+          "NO"
+        ],
+        "words": [
+          "act",
+          "book",
+          "cook",
+          "crowded",
+          "do",
+          "dressed",
+          "excited",
+          "grown",
+          "heat",
+          "priced",
+          "protective",
+          "rate",
+          "react",
+          "read",
+          "spend",
+          "step",
+          "stretched",
+          "surprised",
+          "try",
+          "weight"
+        ],
+        "answers": {
+          "act": "YES",
+          "book": "YES",
+          "cook": "YES",
+          "crowded": "YES",
+          "do": "YES",
+          "dressed": "YES",
+          "excited": "YES",
+          "grown": "YES",
+          "heat": "YES",
+          "priced": "YES",
+          "protective": "YES",
+          "rate": "YES",
+          "react": "YES",
+          "read": "YES",
+          "spend": "YES",
+          "step": "YES",
+          "stretched": "YES",
+          "surprised": "NO",
+          "try": "NO",
+          "weight": "YES"
+        }
       },
       "M": {
         "title": "Complete the sentences with over- words",
@@ -1433,6 +1425,26 @@
             "sentence": "The subscription fee seems rather ...... for the volume and quality of content currently on offer.",
             "answer": "overpriced"
           }
+        ],
+        "words": [
+          "overact",
+          "overbook",
+          "overcook",
+          "overcrowded",
+          "overdo",
+          "overdressed",
+          "overexcited",
+          "overgrown",
+          "overheat",
+          "overpriced",
+          "overprotective",
+          "overrate",
+          "overreact",
+          "overread",
+          "overspend",
+          "overstep",
+          "overstretched",
+          "overweight"
         ]
       },
       "N": {

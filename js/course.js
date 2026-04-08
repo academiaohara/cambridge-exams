@@ -1079,11 +1079,16 @@
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
           }
           html += self._renderCuWordBank(section.words);
-          html += '<div class="cu-ex-items">';
-          var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
-          html += self._renderCuExItemsList(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId, true);
-          html += '</div>';
-          if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
+          if (section.passage && rvItems.length && rvItems[0] && rvItems[0].options) {
+            // Multiple-choice passage exercise (e.g. Review Exercise A)
+            html += self._renderCuMcPassageExercise(section, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
+          } else {
+            html += '<div class="cu-ex-items">';
+            var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
+            html += self._renderCuExItemsList(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId, true);
+            html += '</div>';
+            if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
+          }
           html += '</div>';
         }
       });
@@ -1770,7 +1775,7 @@
     _renderCuMcPassageExercise: function(ex, idBase, secId) {
       var self = this;
       var passage = ex.passage || '';
-      var questions = ex.questions || [];
+      var questions = ex.questions || ex.items || [];
       // Build question data keyed by gap number (1-based, matching "(N) ......" in passage)
       var qMap = {};
       questions.forEach(function(q, qi) {
