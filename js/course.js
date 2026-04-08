@@ -648,17 +648,23 @@
           var theorySections = (unitData.sections || []).filter(function(s) { return s.type === 'theory'; });
           sectionStartIdx = theorySections.length;
         } else if (unitData.type === 'vocabulary') {
-          // Find the rendered index of the 'exercises' key in vocab section order
-          var vocabKeys = ['topic_vocabulary', 'phrasal_verbs', 'collocations_patterns', 'idioms', 'word_formation', 'exercises'];
-          var secs = unitData.sections || {};
-          var vIdx = 0;
-          vocabKeys.forEach(function(k) {
-            var hasContent = secs[k] && (Array.isArray(secs[k]) ? secs[k].length > 0 : Object.keys(secs[k]).length > 0);
-            if (hasContent) {
-              if (k === 'exercises') sectionStartIdx = vIdx;
-              vIdx++;
-            }
-          });
+          if (Array.isArray(unitData.sections)) {
+            // B2 array format: count theory sections like grammar
+            var vocabTheorySections = unitData.sections.filter(function(s) { return s.type === 'theory'; });
+            sectionStartIdx = vocabTheorySections.length;
+          } else {
+            // C1 object format: find the rendered index of the 'exercises' key in vocab section order
+            var vocabKeys = ['topic_vocabulary', 'phrasal_verbs', 'collocations_patterns', 'idioms', 'word_formation', 'exercises'];
+            var secs = unitData.sections || {};
+            var vIdx = 0;
+            vocabKeys.forEach(function(k) {
+              var hasContent = secs[k] && (Array.isArray(secs[k]) ? secs[k].length > 0 : Object.keys(secs[k]).length > 0);
+              if (hasContent) {
+                if (k === 'exercises') sectionStartIdx = vIdx;
+                vIdx++;
+              }
+            });
+          }
         }
       } else if (typeof startSection === 'number') {
         sectionStartIdx = startSection;
@@ -835,6 +841,10 @@
     },
 
     _renderVocabUnit: function(data) {
+      // B2 vocabulary units use sections as an array (same format as grammar units)
+      if (Array.isArray(data.sections)) {
+        return BentoGrid._renderGrammarUnit(data);
+      }
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
