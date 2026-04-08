@@ -457,8 +457,8 @@
           "answer": "get"
         },
         {
-          "sentence": "Marcus really ought not to be worn smart clothes to the job interview last month.",
-          "answer": "to have worn"
+          "sentence": "Marcus really ought not to **be** worn smart clothes to the job interview last month.",
+          "answer": "have"
         },
         {
           "sentence": "She might have **gave** us a heads-up so we could have prepared.",
@@ -474,7 +474,7 @@
         },
         {
           "sentence": "We definitely **should** not draw conclusions before we have all the facts.",
-          "answer": "✓"
+          "answer": "should"
         },
         {
           "sentence": "I probably won't get the scholarship but I **should** as well put in an application, I suppose.",
@@ -482,7 +482,7 @@
         },
         {
           "sentence": "You **could** have warned us you'd decided to cancel the trip.",
-          "answer": "✓"
+          "answer": "could"
         },
         {
           "sentence": "We had **rather** reserve a table now, hadn't we?",
@@ -762,7 +762,7 @@
     },
     {
       "type": "exercise",
-      "title": "J: Multiple choice",
+      "title": "I: Multiple choice",
       "instructions": "Choose the correct answer.",
       "items": [
         {
