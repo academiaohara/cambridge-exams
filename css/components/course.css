@@ -954,12 +954,9 @@
   min-width: 0;
 }
 
-/* Multiple-choice options (Exercise E) */
+/* Multiple-choice options (Exercise E) — hidden; interaction via gap-pill modal only */
 .cu-mc-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
+  display: none;
 }
 .cu-mc-blank {
   display: inline-block;
