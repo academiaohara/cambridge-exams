@@ -195,8 +195,8 @@
           "subtitle": "Watch out!",
           "description": "We usually use the present perfect simple to say how many times something has happened or how many things have been completed. We usually use the present perfect continuous to emphasise how long something has been happening.",
           "examples": [
-            "\u2713 She**'s sent** ten emails this morning. (number of completed actions)",
-            "\u2713 She**'s been sending** emails all morning. (emphasising duration)"
+            "✓ She**'s sent** ten emails this morning. (number of completed actions)",
+            "✓ She**'s been sending** emails all morning. (emphasising duration)"
           ]
         },
         {
@@ -320,10 +320,10 @@
           "subtitle": "Watch out!",
           "description": "Many stative verbs can be used in continuous tenses when they describe an action rather than a state. Examples: be, consider, feel, have, look, see, smell, taste, think, weigh.",
           "examples": [
-            "\u2713 I **think** this app is very useful. (state: think = believe)",
-            "\u2713 I**'m thinking** about upgrading my phone. (action: think = consider)",
-            "\u2713 The soup **smells** delicious. (state: perception)",
-            "\u2713 The chef **is smelling** the herbs to check they are fresh. (action)"
+            "✓ I **think** this app is very useful. (state: think = believe)",
+            "✓ I**'m thinking** about upgrading my phone. (action: think = consider)",
+            "✓ The soup **smells** delicious. (state: perception)",
+            "✓ The chef **is smelling** the herbs to check they are fresh. (action)"
           ]
         }
       ]
@@ -420,43 +420,43 @@
       "instructions": "Complete the sentences using the correct form of the verb in brackets. Use the present perfect simple or present perfect continuous.",
       "items": [
         {
-          "sentence": "It's the first time (I / ever / visit) ______ this part of the country.",
+          "sentence": "It's the first time (I / ever / visit) ...... this part of the country.",
           "answer": "I've ever visited"
         },
         {
-          "sentence": "(you / ever / work) ______ in a team with people from different countries?",
+          "sentence": "(you / ever / work) ...... in a team with people from different countries?",
           "answer": "Have you ever worked"
         },
         {
-          "sentence": "The students (prepare) ______ for the exam all week — they deserve a break.",
+          "sentence": "The students (prepare) ...... for the exam all week — they deserve a break.",
           "answer": "have been preparing"
         },
         {
-          "sentence": "How many languages (she / learn) ______ so far? I know she started a new one recently.",
+          "sentence": "How many languages (she / learn) ...... so far? I know she started a new one recently.",
           "answer": "has she learned / has she learnt"
         },
         {
-          "sentence": "I (wait) ______ for this update for months — I'm so glad it's finally here.",
+          "sentence": "I (wait) ...... for this update for months — I'm so glad it's finally here.",
           "answer": "have been waiting"
         },
         {
-          "sentence": "We (not / decide) ______ where to hold the launch event yet.",
+          "sentence": "We (not / decide) ...... where to hold the launch event yet.",
           "answer": "haven't decided"
         },
         {
-          "sentence": "(the engineers / test) ______ the new software all morning, but they still haven't finished.",
+          "sentence": "(the engineers / test) ...... the new software all morning, but they still haven't finished.",
           "answer": "The engineers have been testing"
         },
         {
-          "sentence": "That's the third time this week (he / forget) ______ to log out of the shared computer.",
+          "sentence": "That's the third time this week (he / forget) ...... to log out of the shared computer.",
           "answer": "he's forgotten"
         },
         {
-          "sentence": "I can't believe (you / never / try) ______ sushi before! You should give it a go.",
+          "sentence": "I can't believe (you / never / try) ...... sushi before! You should give it a go.",
           "answer": "you've never tried"
         },
         {
-          "sentence": "The temperature (drop) ______ steadily over the past few weeks.",
+          "sentence": "The temperature (drop) ...... steadily over the past few weeks.",
           "answer": "has been dropping"
         }
       ]
@@ -467,43 +467,43 @@
       "instructions": "Write one word in each gap to complete the sentences.",
       "items": [
         {
-          "sentence": "Have you ______ been to a country where you couldn't speak the language at all?",
+          "sentence": "Have you ...... been to a country where you couldn't speak the language at all?",
           "answer": "ever"
         },
         {
-          "sentence": "I've ______ checked in — the boarding gate opens in about twenty minutes.",
+          "sentence": "I've ...... checked in — the boarding gate opens in about twenty minutes.",
           "answer": "just / already"
         },
         {
-          "sentence": "She's been working on this project ______ the beginning of the year.",
+          "sentence": "She's been working on this project ...... the beginning of the year.",
           "answer": "since"
         },
         {
-          "sentence": "We've been waiting here ______ almost an hour. Where is everyone?",
+          "sentence": "We've been waiting here ...... almost an hour. Where is everyone?",
           "answer": "for"
         },
         {
-          "sentence": "Have you finished editing the report ______? The client is expecting it today.",
+          "sentence": "Have you finished editing the report ......? The client is expecting it today.",
           "answer": "yet"
         },
         {
-          "sentence": "I've ______ heard back from the agency — I'm waiting for a reply.",
+          "sentence": "I've ...... heard back from the agency — I'm waiting for a reply.",
           "answer": "still"
         },
         {
-          "sentence": "So far this year, the team has ______ won a single match.",
+          "sentence": "So far this year, the team has ...... won a single match.",
           "answer": "never / not"
         },
         {
-          "sentence": "This is the first time I've ______ presented to such a large audience.",
+          "sentence": "This is the first time I've ...... presented to such a large audience.",
           "answer": "ever"
         },
         {
-          "sentence": "She's ______ visited twelve countries and she's planning two more trips this year.",
+          "sentence": "She's ...... visited twelve countries and she's planning two more trips this year.",
           "answer": "already"
         },
         {
-          "sentence": "Have things improved ______ since we last spoke? I hope so.",
+          "sentence": "Have things improved ...... since we last spoke? I hope so.",
           "answer": "recently / lately"
         }
       ]
@@ -619,34 +619,42 @@
       "type": "exercise",
       "title": "F: Stative verbs (cloze)",
       "instructions": "Complete each sentence with the correct form of a stative verb from the box. Use each verb once.",
-      "wordBank": ["belong", "contain", "cost", "doubt", "know", "prefer", "smell"],
+      "wordBank": [
+        "belong",
+        "contain",
+        "cost",
+        "doubt",
+        "know",
+        "prefer",
+        "smell"
+      ],
       "items": [
         {
-          "sentence": "Everyone (1) ______ that regular exercise is good for your health.",
+          "sentence": "Everyone (1) ...... that regular exercise is good for your health.",
           "answer": "knows"
         },
         {
-          "sentence": "This bag (2) ______ to my colleague — she left it here this morning.",
+          "sentence": "This bag (2) ...... to my colleague — she left it here this morning.",
           "answer": "belongs"
         },
         {
-          "sentence": "I (3) ______ whether the project will be finished on time, given all the delays.",
+          "sentence": "I (3) ...... whether the project will be finished on time, given all the delays.",
           "answer": "doubt"
         },
         {
-          "sentence": "The sauce (4) ______ amazing — what spices did you add?",
+          "sentence": "The sauce (4) ...... amazing — what spices did you add?",
           "answer": "smells"
         },
         {
-          "sentence": "Each capsule (5) ______ a daily dose of vitamins B, C and D.",
+          "sentence": "Each capsule (5) ...... a daily dose of vitamins B, C and D.",
           "answer": "contains"
         },
         {
-          "sentence": "How much (6) ______ a return ticket to the capital these days?",
+          "sentence": "How much (6) ...... a return ticket to the capital these days?",
           "answer": "does … cost"
         },
         {
-          "sentence": "Most people (7) ______ online shopping to visiting a physical store nowadays.",
+          "sentence": "Most people (7) ...... online shopping to visiting a physical store nowadays.",
           "answer": "prefer"
         }
       ]
@@ -657,118 +665,39 @@
       "instructions": "Match each sentence beginning (1–8) with the correct ending (A–H).",
       "items": [
         {
-          "sentence": "1 I think",
-          "options": [
-            "A much more than I did before I started training.",
-            "B the conference is going to be a great success.",
-            "C whether to accept the job offer.",
-            "D very strongly of fresh coffee in the morning.",
-            "E a lot to the local community.",
-            "F to the director, not to the marketing team.",
-            "G two bottles of sparkling and one still water.",
-            "H exactly like his father — same eyes, same smile."
-          ],
-          "answer": "B"
+          "sentence": "I think **B** the conference is going to be a great success.",
+          "answer": "B – the conference is going to be a great success."
         },
         {
-          "sentence": "2 She resembles",
-          "options": [
-            "A much more than I did before I started training.",
-            "B the conference is going to be a great success.",
-            "C whether to accept the job offer.",
-            "D very strongly of fresh coffee in the morning.",
-            "E a lot to the local community.",
-            "F to the director, not to the marketing team.",
-            "G two bottles of sparkling and one still water.",
-            "H exactly like his father — same eyes, same smile."
-          ],
-          "answer": "H"
+          "sentence": "She resembles **H** exactly like his father — same eyes, same smile.",
+          "answer": "H – exactly like his father — same eyes, same smile."
         },
         {
-          "sentence": "3 This report belongs",
-          "options": [
-            "A much more than I did before I started training.",
-            "B the conference is going to be a great success.",
-            "C whether to accept the job offer.",
-            "D very strongly of fresh coffee in the morning.",
-            "E a lot to the local community.",
-            "F to the director, not to the marketing team.",
-            "G two bottles of sparkling and one still water.",
-            "H exactly like his father — same eyes, same smile."
-          ],
-          "answer": "F"
+          "sentence": "This report belongs **F** to the director, not to the marketing team.",
+          "answer": "F – to the director, not to the marketing team."
         },
         {
-          "sentence": "4 The order contains",
-          "options": [
-            "A much more than I did before I started training.",
-            "B the conference is going to be a great success.",
-            "C whether to accept the job offer.",
-            "D very strongly of fresh coffee in the morning.",
-            "E a lot to the local community.",
-            "F to the director, not to the marketing team.",
-            "G two bottles of sparkling and one still water.",
-            "H exactly like his father — same eyes, same smile."
-          ],
-          "answer": "G"
+          "sentence": "The order contains **G** two bottles of sparkling and one still water.",
+          "answer": "G – two bottles of sparkling and one still water."
         },
         {
-          "sentence": "5 I weigh",
-          "options": [
-            "A much more than I did before I started training.",
-            "B the conference is going to be a great success.",
-            "C whether to accept the job offer.",
-            "D very strongly of fresh coffee in the morning.",
-            "E a lot to the local community.",
-            "F to the director, not to the marketing team.",
-            "G two bottles of sparkling and one still water.",
-            "H exactly like his father — same eyes, same smile."
-          ],
-          "answer": "A"
+          "sentence": "I weigh **A** much more than I did before I started training.",
+          "answer": "A – much more than I did before I started training."
         },
         {
-          "sentence": "6 The café smells",
-          "options": [
-            "A much more than I did before I started training.",
-            "B the conference is going to be a great success.",
-            "C whether to accept the job offer.",
-            "D very strongly of fresh coffee in the morning.",
-            "E a lot to the local community.",
-            "F to the director, not to the marketing team.",
-            "G two bottles of sparkling and one still water.",
-            "H exactly like his father — same eyes, same smile."
-          ],
-          "answer": "D"
+          "sentence": "The café smells **D** very strongly of fresh coffee in the morning.",
+          "answer": "D – very strongly of fresh coffee in the morning."
         },
         {
-          "sentence": "7 The new youth centre matters",
-          "options": [
-            "A much more than I did before I started training.",
-            "B the conference is going to be a great success.",
-            "C whether to accept the job offer.",
-            "D very strongly of fresh coffee in the morning.",
-            "E a lot to the local community.",
-            "F to the director, not to the marketing team.",
-            "G two bottles of sparkling and one still water.",
-            "H exactly like his father — same eyes, same smile."
-          ],
-          "answer": "E"
+          "sentence": "The new youth centre matters **E** a lot to the local community.",
+          "answer": "E – a lot to the local community."
         },
         {
-          "sentence": "8 I'm still considering",
-          "options": [
-            "A much more than I did before I started training.",
-            "B the conference is going to be a great success.",
-            "C whether to accept the job offer.",
-            "D very strongly of fresh coffee in the morning.",
-            "E a lot to the local community.",
-            "F to the director, not to the marketing team.",
-            "G two bottles of sparkling and one still water.",
-            "H exactly like his father — same eyes, same smile."
-          ],
-          "answer": "C"
+          "sentence": "I'm still considering **C** whether to accept the job offer.",
+          "answer": "C – whether to accept the job offer."
         }
-      ]
+      ],
+      "subtype": "matching"
     },
     {
       "type": "exercise",
@@ -823,35 +752,35 @@
       "instructions": "Write one word in each gap to complete the text.",
       "items": [
         {
-          "sentence": "Urban cycling (1) ______ grown enormously in popularity over the past decade.",
+          "sentence": "Urban cycling (1) ...... grown enormously in popularity over the past decade.",
           "answer": "has"
         },
         {
-          "sentence": "City planners (2) ______ been adding new cycle lanes across the network since last year.",
+          "sentence": "City planners (2) ...... been adding new cycle lanes across the network since last year.",
           "answer": "have"
         },
         {
-          "sentence": "The number of commuters who choose to cycle to work (3) ______ risen every year.",
+          "sentence": "The number of commuters who choose to cycle to work (3) ...... risen every year.",
           "answer": "has"
         },
         {
-          "sentence": "Many people say they (4) ______ been cycling for years but never felt safe until now.",
+          "sentence": "Many people say they (4) ...... been cycling for years but never felt safe until now.",
           "answer": "have"
         },
         {
-          "sentence": "The local authority (5) ______ just launched a scheme to offer subsidised bike repairs.",
+          "sentence": "The local authority (5) ...... just launched a scheme to offer subsidised bike repairs.",
           "answer": "has"
         },
         {
-          "sentence": "Environmentalists argue that cycling (6) ______ one of the most sustainable ways to travel.",
+          "sentence": "Environmentalists argue that cycling (6) ...... one of the most sustainable ways to travel.",
           "answer": "is"
         },
         {
-          "sentence": "How long (7) ______ the city been investing in its cycling infrastructure?",
+          "sentence": "How long (7) ...... the city been investing in its cycling infrastructure?",
           "answer": "has"
         },
         {
-          "sentence": "So far, the new lanes (8) ______ already reduced congestion in the city centre.",
+          "sentence": "So far, the new lanes (8) ...... already reduced congestion in the city centre.",
           "answer": "have"
         }
       ]
@@ -862,31 +791,31 @@
       "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
       "items": [
         {
-          "sentence": "This is my first visit to the capital city.\n(NEVER)\nI ______ the capital city before.",
+          "sentence": "This is my first visit to the capital city.\n**NEVER**\nI ...... the capital city before.",
           "answer": "have never visited"
         },
         {
-          "sentence": "She started learning to drive six months ago and she still hasn't stopped.\n(FOR)\nShe ______ six months.",
+          "sentence": "She started learning to drive six months ago and she still hasn't stopped.\n**FOR**\nShe ...... six months.",
           "answer": "has been learning to drive for"
         },
         {
-          "sentence": "The last time he went to the gym was three weeks ago.\n(BEEN)\nHe ______ three weeks.",
+          "sentence": "The last time he went to the gym was three weeks ago.\n**BEEN**\nHe ...... three weeks.",
           "answer": "hasn't been to the gym for"
         },
         {
-          "sentence": "They moved into their new flat and they are still living there.\n(SINCE)\nThey ______ they moved in.",
+          "sentence": "They moved into their new flat and they are still living there.\n**SINCE**\nThey ...... they moved in.",
           "answer": "have been living there since"
         },
         {
-          "sentence": "I find it annoying that my manager keeps interrupting me in meetings.\n(ALWAYS)\nMy manager ______ me in meetings.",
+          "sentence": "I find it annoying that my manager keeps interrupting me in meetings.\n**ALWAYS**\nMy manager ...... me in meetings.",
           "answer": "is always interrupting"
         },
         {
-          "sentence": "The last train for the city leaves at eleven forty-five.\n(DEPARTS)\nThe last train for the city ______ at eleven forty-five.",
+          "sentence": "The last train for the city leaves at eleven forty-five.\n**DEPARTS**\nThe last train for the city ...... at eleven forty-five.",
           "answer": "departs"
         },
         {
-          "sentence": "This is the most challenging project I have worked on.\n(EVER)\nThis is the most challenging project I ______ on.",
+          "sentence": "This is the most challenging project I have worked on.\n**EVER**\nThis is the most challenging project I ...... on.",
           "answer": "have ever worked"
         }
       ]

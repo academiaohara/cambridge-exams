@@ -826,12 +826,15 @@
           html += self._renderCuWordBank(section.words);
 
           var items = section.items || [];
-          var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
-          html += '<div class="cu-ex-items">';
-          html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous);
-          html += '</div>';
-
-          if (hasInteractive) html += self._renderCuExFooter(secId);
+          if (section.subtype === 'matching') {
+            html += self._renderCuMatchingExercise(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
+          } else {
+            var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
+            html += '<div class="cu-ex-items">';
+            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous);
+            html += '</div>';
+            if (hasInteractive) html += self._renderCuExFooter(secId);
+          }
 
           html += '</div>';
         }
