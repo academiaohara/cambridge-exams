@@ -828,6 +828,8 @@
           var items = section.items || [];
           if (section.subtype === 'matching') {
             html += self._renderCuMatchingExercise(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
+          } else if (section.subtype === 'mc-inline') {
+            html += self._renderCuMcInlineExercise(section, 'gr-' + section.title.replace(/\W+/g, ''), secId);
           } else {
             var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
             html += '<div class="cu-ex-items">';
@@ -2786,6 +2788,21 @@
       }
 
       if (unitData.type === 'vocabulary') {
+        // Vocabulary units using array sections (same format as grammar units) – handle like grammar
+        if (Array.isArray(unitData.sections)) {
+          var sections = unitData.sections || [];
+          var theoryCount = sections.filter(function(section) { return section.type === 'theory'; }).length;
+          var exerciseCount = Math.max(0, sections.length - theoryCount);
+          return {
+            theory: Array.from({ length: theoryCount }, function(_, idx) {
+              return { label: String(idx + 1), sectionIdx: idx };
+            }),
+            exercises: Array.from({ length: exerciseCount }, function(_, idx) {
+              return { label: BentoGrid._getCourseExerciseLabel(idx), sectionIdx: theoryCount + idx };
+            })
+          };
+        }
+
         var secs = unitData.sections || {};
         var vocabKeys = ['topic_vocabulary', 'phrasal_verbs', 'collocations_patterns', 'idioms', 'word_formation', 'exercises'];
         var theory = [];
