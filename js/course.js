@@ -1545,9 +1545,12 @@
         // appears more than once only the marked occurrence is treated as the answer.
         var bracketAnswerIdx = -1;
         var origTokens = (item.sentence || '').replace(/\*\*/g, '').split(/\s+/).filter(Boolean);
-        origTokens.forEach(function(t, i) {
-          if (t.indexOf('[') !== -1 && t.indexOf(']') !== -1) bracketAnswerIdx = i;
-        });
+        for (var bi = 0; bi < origTokens.length; bi++) {
+          if (origTokens[bi].indexOf('[') !== -1 && origTokens[bi].indexOf(']') !== -1) {
+            bracketAnswerIdx = bi;
+            break;
+          }
+        }
 
         // Build the display sentence: strip bold markers and remove [ ] brackets (keep inner text)
         var rawSentence = stripBold(item.sentence || '').replace(/\[([^\]]+)\]/g, '$1');
