@@ -833,7 +833,7 @@
           } else {
             var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
             html += '<div class="cu-ex-items">';
-            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous);
+            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous, section.hideNumBadge);
             html += '</div>';
             if (hasInteractive) html += self._renderCuExFooter(secId);
           }
@@ -1052,7 +1052,7 @@
           } else {
             var hasInteractive = questions.some(function(q) { return self._itemHasInteractive(q); });
             html += '<div class="cu-ex-items">';
-            html += self._renderCuExItemsList(questions, idBase, secId, ex.continuous);
+            html += self._renderCuExItemsList(questions, idBase, secId, ex.continuous, ex.hideNumBadge);
             html += '</div>';
             if (hasInteractive) html += self._renderCuExFooter(secId);
           }
@@ -1983,13 +1983,13 @@
       });
     },
 
-    _renderCuExItemsList: function(items, idBase, secId, continuous) {
+    _renderCuExItemsList: function(items, idBase, secId, continuous, hideNumBadge) {
       var self = this;
       if (!items || !items.length) return '';
       if (continuous || items.length <= CU_PAGE_SIZE) {
         var html = '';
         items.forEach(function(item, iIdx) {
-          html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx);
+          html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx, null, hideNumBadge);
         });
         return html;
       }
@@ -2013,7 +2013,7 @@
         html += '<div class="cu-ex-page' + (pageIdx === 0 ? ' cu-ex-page-active' : '') + '">';
         pageItems.forEach(function(item, itemIdx) {
           var globalIdx = pageIdx * CU_PAGE_SIZE + itemIdx;
-          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx);
+          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx, null, hideNumBadge);
         });
         if (pageIdx < pages.length - 1) {
           var remaining = pages.length - pageIdx - 1;
@@ -2026,17 +2026,18 @@
       return html;
     },
 
-    _renderCourseExItem: function(item, idx, idBase, trackCallback) {
+    _renderCourseExItem: function(item, idx, idBase, trackCallback, hideNumBadge) {
       var self = this;
       var answer = item.answer || '';
       var inputId = 'cuex-' + idBase;
+      var numBadgeHtml = hideNumBadge ? '' : '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>';
 
       // Handle paired-sentence format (sentenceA / sentenceB) – e.g. Stative vs Active
       if (item.sentenceA !== undefined || item.sentenceB !== undefined) {
         var rawA = (item.sentenceA || '').replace(/^A[.):\s]\s*/, '');
         var rawB = (item.sentenceB || '').replace(/^B[.):\s]\s*/, '');
         return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
-          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          numBadgeHtml +
           '<div class="cu-ex-sentence">' +
             '<div class="cu-ex-kwtrans">' +
               '<div class="cu-ex-kwtrans-row">' +
@@ -2064,7 +2065,7 @@
       if (answer === '✓') {
         var tickGroupId = inputId + '-tick';
         return '<div class="cu-ex-item cu-yn-item" data-answer="YES">' +
-          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          numBadgeHtml +
           '<div class="cu-yn-row">' +
             '<div class="cu-ex-sentence cu-yn-sentence">' + self._escapeHTML(sentence).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>') + '</div>' +
             '<div class="cu-yn-buttons">' +
@@ -2097,7 +2098,7 @@
       }
 
       return '<div class="cu-ex-item' + (item.tick !== undefined ? ' cu-has-tick' : '') + '"' + multiAnswerAttr + ' data-answer="' + self._escapeHTML(answer) + '"' + (item.tick !== undefined ? ' data-tick="' + self._escapeHTML(item.tick || '') + '"' : '') + '>' +
-        '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+        numBadgeHtml +
         contextHtml +
         '<div class="cu-ex-sentence">' + sentenceHtml + '</div>' +
         (tickHtml ? '<div class="cu-item-tick-row">' + tickHtml + '</div>' : '') +
