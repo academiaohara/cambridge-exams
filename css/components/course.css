@@ -3352,3 +3352,16 @@
 .cu-pi-gap-wrap { display: inline; }
 .cu-pi-pill { display: inline-flex; align-items: center; gap: 2px; }
 .cu-pi-input { min-width: 60px; max-width: 160px; }
+
+/* ── Crossword exercise (clue-list style) ────────────────────────────────── */
+.cu-cw-exercise { display: flex; flex-direction: column; gap: 16px; }
+.cu-cw-section { display: flex; flex-direction: column; gap: 8px; }
+.cu-cw-section-label { font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent, #1976d2); padding-bottom: 4px; border-bottom: 2px solid var(--accent, #1976d2); }
+.cu-cw-clue-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.cu-cw-clue-item { display: flex; flex-direction: column; gap: 5px; padding: 8px 10px; background: var(--bg-2, #f5f5f5); border-radius: 6px; }
+.cu-cw-clue-item::marker { display: none; }
+.cu-cw-clue-text { font-size: .9rem; color: var(--text, #222); }
+.cu-cw-clue-text::before { content: attr(value) '. '; font-weight: 700; color: var(--accent, #1976d2); }
+.cu-cw-input-row { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; }
+.cu-cw-box { display: inline-block; width: 22px; height: 22px; border: 1.5px solid var(--border, #ccc); border-radius: 3px; background: #fff; }
+.cu-cw-input { min-width: 80px; max-width: 200px; border: none; border-bottom: 2px solid var(--accent, #1976d2); background: transparent; font-size: .95rem; padding: 2px 4px; margin-left: 8px; }
