@@ -101,13 +101,14 @@
         {
           "subtitle": "Use",
           "items": [
-            "Hypothetical conditions in the past and their results in the past: If you had worn a fake beard, no one would have known who you were!"
+            "Impossible conditions in the past and their imagined results: If you had studied harder, you would have passed the exam."
           ]
         },
         {
           "subtitle": "Variations",
           "items": [
-            "We can also use might, could or should instead of would: If I had done some revision, I might / could / should have passed the exam."
+            "We can also use might or could instead of would: If you had left earlier, you might have caught the train.",
+            "We can also use a continuous form: If they had been paying attention, they would have noticed the mistake."
           ]
         }
       ]
@@ -117,17 +118,15 @@
       "title": "Mixed conditionals",
       "content": [
         {
-          "subtitle": "Type 1",
+          "subtitle": "Past condition → present result",
           "items": [
-            "Form: if + past perfect (simple or continuous), would + bare infinitive",
-            "Use: Hypothetical past condition and a present result: If I had listened to my parents, I wouldn't be in so much trouble now."
+            "if + past perfect, would + bare infinitive: If she had taken the job offer, she would be living in Paris now."
           ]
         },
         {
-          "subtitle": "Type 2",
+          "subtitle": "Present condition → past result",
           "items": [
-            "Form: if + past simple or past continuous, would + have + past participle",
-            "Use: Hypothetical present condition and a past result: If I had a mobile, I would have called you last night."
+            "if + past simple, would + have + past participle: If he were more organised, he would have finished the project on time."
           ]
         }
       ]
@@ -137,19 +136,21 @@
       "title": "Inverted conditionals",
       "content": [
         {
-          "subtitle": "Form",
+          "subtitle": "Should (first conditional)",
           "items": [
-            "Should I/you/he/etc... instead of If I/you/he/etc should...",
-            "Were I/you/he/etc... instead of If I/you/he/etc were...",
-            "Had I/you/he/etc... instead of If I/you/he/etc had..."
+            "Should you need any help, please let me know. (= If you should need any help...)"
           ]
         },
         {
-          "subtitle": "Use",
+          "subtitle": "Were (second conditional)",
           "items": [
-            "More formal form of the first conditional (with should): Should the situation worsen, the United Nations is prepared to send in a peacekeeping force.",
-            "More formal form of the second conditional: Were the situation to worsen, the United Nations would be prepared to send in a peacekeeping force.",
-            "More formal form of the third conditional: Had the situation worsened, the United Nations would have been prepared to send in a peacekeeping force."
+            "Were I you, I would accept the offer. (= If I were you...)"
+          ]
+        },
+        {
+          "subtitle": "Had (third conditional)",
+          "items": [
+            "Had she studied harder, she would have passed. (= If she had studied harder...)"
           ]
         }
       ]
@@ -160,9 +161,10 @@
       "content": [
         {
           "items": [
-            "For all conditional sentences, when the condition comes before the result it is usually followed by a comma. When the result comes first, no comma is necessary: I would have called you last night if I had a mobile.",
-            "In conditional sentences, modals (will, would, could, etc) are sometimes followed by a continuous infinitive: We'd still be waiting if you hadn't turned up.",
-            "American English note: In informal conversation, US speakers sometimes use would or would have in the if clause. UK: How would you feel if this happened to you? US: How would you feel if this would happen to you?"
+            "In formal English, 'were' is used instead of 'was' in second conditional: If I were rich, I'd travel the world.",
+            "We can use 'unless' to mean 'if not': I'll go unless it rains. = I'll go if it doesn't rain.",
+            "'In case' means 'because something might happen': Take an umbrella in case it rains.",
+            "'Provided/providing (that)' and 'as long as / so long as' mean 'on condition that'."
           ]
         }
       ]
@@ -170,74 +172,109 @@
     {
       "type": "exercise",
       "title": "A: Understanding conditionals",
-      "instructions": "Answer the questions about each sentence.",
+      "instructions": "Read each conditional sentence. Then answer the question by choosing YES or NO.",
+      "subtype": "yn",
+      "yesLabel": "YES",
       "items": [
         {
-          "sentence": "If Carl doesn't come to the party, I'll be really upset.",
-          "answer": "Is it possible that Carl won't come to the party? YES"
+          "context": "If Carl doesn't come to the party, I'll be really upset.",
+          "sentence": "Is it possible that Carl won't come to the party?",
+          "answer": "YES"
         },
         {
-          "sentence": "If my neighbour became prime minister, he'd give everyone a million euros.",
-          "answer": "Is it likely that the neighbour will become prime minister? NO. Is it possible? YES"
+          "context": "If my neighbour became prime minister, he'd give everyone a million euros.",
+          "sentence": "Is it likely that the neighbour will become prime minister?",
+          "answer": "NO"
         },
         {
-          "sentence": "If Helen weren't here, I don't know what we'd do.",
-          "answer": "Is Helen here now? YES"
+          "context": "If my neighbour became prime minister, he'd give everyone a million euros.",
+          "sentence": "Is it possible that the neighbour will become prime minister?",
+          "answer": "YES"
         },
         {
-          "sentence": "If Tarek had had enough money, he'd have bought a car.",
-          "answer": "Did Tarek have enough money? NO. Did he buy a car? NO"
+          "context": "If Helen weren't here, I don't know what we'd do.",
+          "sentence": "Is Helen here now?",
+          "answer": "YES"
         },
         {
-          "sentence": "If Debbie hadn't gone to the UK, she wouldn't have met Will.",
-          "answer": "Did Debbie go to the UK? YES. Did she meet Will? YES"
+          "context": "If Tarek had had enough money, he'd have bought a car.",
+          "sentence": "Did Tarek have enough money?",
+          "answer": "NO"
         },
         {
-          "sentence": "If the police had investigated the case thoroughly, they wouldn't have arrested Keren.",
-          "answer": "Did the police investigate the case thoroughly? NO. Did they arrest Keren? YES"
+          "context": "If Tarek had had enough money, he'd have bought a car.",
+          "sentence": "Did he buy a car?",
+          "answer": "NO"
         },
         {
-          "sentence": "Had she not gone to university, she might not have started her own business.",
-          "answer": "Did she go to university? YES. Did she start her own business? YES"
+          "context": "If Debbie hadn't gone to the UK, she wouldn't have met Will.",
+          "sentence": "Did Debbie go to the UK?",
+          "answer": "YES"
+        },
+        {
+          "context": "If Debbie hadn't gone to the UK, she wouldn't have met Will.",
+          "sentence": "Did she meet Will?",
+          "answer": "YES"
+        },
+        {
+          "context": "If the police had investigated the case thoroughly, they wouldn't have arrested Keren.",
+          "sentence": "Did the police investigate the case thoroughly?",
+          "answer": "NO"
+        },
+        {
+          "context": "If the police had investigated the case thoroughly, they wouldn't have arrested Keren.",
+          "sentence": "Did they arrest Keren?",
+          "answer": "YES"
+        },
+        {
+          "context": "Had she not gone to university, she might not have started her own business.",
+          "sentence": "Did she go to university?",
+          "answer": "YES"
+        },
+        {
+          "context": "Had she not gone to university, she might not have started her own business.",
+          "sentence": "Did she start her own business?",
+          "answer": "YES"
         }
       ]
     },
     {
       "type": "exercise",
       "title": "B: Complete the definitions",
-      "instructions": "Complete the definitions using your own ideas.",
+      "instructions": "Match each sentence beginning (1–8) with the correct ending (A–H).",
+      "subtype": "matching",
       "items": [
         {
-          "sentence": "If you bully someone,",
-          "answer": "you don't treat them with respect."
+          "sentence": "If you bully someone, **A** you don't treat them with respect.",
+          "answer": "A – you don't treat them with respect."
         },
         {
-          "sentence": "If you accuse someone,",
-          "answer": "you say they have done something wrong."
+          "sentence": "If you accuse someone, **B** you say they have done something wrong.",
+          "answer": "B – you say they have done something wrong."
         },
         {
-          "sentence": "If you are a liar,",
-          "answer": "you don't tell the truth."
+          "sentence": "If you are a liar, **C** you don't tell the truth.",
+          "answer": "C – you don't tell the truth."
         },
         {
-          "sentence": "If you are rich,",
-          "answer": "you have lots of money."
+          "sentence": "If you are rich, **D** you have lots of money.",
+          "answer": "D – you have lots of money."
         },
         {
-          "sentence": "If you are lucky,",
-          "answer": "good things happen to you."
+          "sentence": "If you are lucky, **E** good things happen to you.",
+          "answer": "E – good things happen to you."
         },
         {
-          "sentence": "If you are lazy,",
-          "answer": "you don't work hard."
+          "sentence": "If you are lazy, **F** you don't work hard.",
+          "answer": "F – you don't work hard."
         },
         {
-          "sentence": "If you look up to someone,",
-          "answer": "you respect them."
+          "sentence": "If you look up to someone, **G** you respect them.",
+          "answer": "G – you respect them."
         },
         {
-          "sentence": "If you look down on someone,",
-          "answer": "you don't respect them."
+          "sentence": "If you look down on someone, **H** you don't respect them.",
+          "answer": "H – you don't respect them."
         }
       ]
     },
@@ -245,6 +282,7 @@
       "type": "exercise",
       "title": "C: First conditional",
       "instructions": "Complete using the correct form of the verbs in the box.",
+      "words": ["are taking", "don't forget", "don't want", "find/see", "get", "has been working", "have been", "have seen/got", "leaves", "will call"],
       "items": [
         {
           "sentence": "If she ...... at five o'clock, she'll be there by half past seven.",
@@ -330,38 +368,46 @@
     {
       "type": "exercise",
       "title": "E: Second conditional",
-      "instructions": "Write sentences using the second conditional.",
+      "instructions": "Write the complete second conditional sentence.",
       "items": [
         {
-          "sentence": "I don't live alone so I don't get lonely.",
+          "context": "I don't live alone so I don't get lonely.",
+          "sentence": "......",
           "answer": "If I lived alone, I'd get lonely."
         },
         {
-          "sentence": "Don's got such a lot of homework that he's not going to play football tonight.",
+          "context": "Don's got such a lot of homework that he's not going to play football tonight.",
+          "sentence": "......",
           "answer": "If Don didn't have so much homework, he'd play football tonight."
         },
         {
-          "sentence": "I can't swim so I'm not going scuba diving with Terry.",
+          "context": "I can't swim so I'm not going scuba diving with Terry.",
+          "sentence": "......",
           "answer": "If I could swim, I'd go scuba diving with Terry."
         },
         {
-          "sentence": "We're not going to order a pizza because we don't have enough money.",
+          "context": "We're not going to order a pizza because we don't have enough money.",
+          "sentence": "......",
           "answer": "We'd order pizza if we had enough money."
         },
         {
-          "sentence": "We're not staying in the same hotel, so we can't share a room.",
+          "context": "We're not staying in the same hotel, so we can't share a room.",
+          "sentence": "......",
           "answer": "If we were staying in the same hotel, we could share a room."
         },
         {
-          "sentence": "I'm not you, but I think you should call Antony right now!",
+          "context": "I'm not you, but I think you should call Antony right now!",
+          "sentence": "......",
           "answer": "If I were you, I'd call Antony right now."
         },
         {
-          "sentence": "I can't come because I have to help my dad with something.",
+          "context": "I can't come because I have to help my dad with something.",
+          "sentence": "......",
           "answer": "I'd come if I didn't have to help my dad with something."
         },
         {
-          "sentence": "I don't go to bed as late as you so I'm able to get up early in the morning.",
+          "context": "I don't go to bed as late as you so I'm able to get up early in the morning.",
+          "sentence": "......",
           "answer": "If I went to bed as late as you, I wouldn't be able to get up early in the morning."
         }
       ]
@@ -369,43 +415,44 @@
     {
       "type": "exercise",
       "title": "F: Third conditional",
-      "instructions": "Read the text and complete the sentences using the third conditional.",
+      "instructions": "Match each sentence beginning (1–9) with the correct ending (A–I).",
+      "subtype": "matching",
       "items": [
         {
-          "sentence": "If I'd started learning English a year earlier,",
-          "answer": "I would have done this book last year!"
+          "sentence": "If I'd started learning English a year earlier, **A** I would have done this book last year!",
+          "answer": "A – I would have done this book last year!"
         },
         {
-          "sentence": "If a meteor hadn't struck the Earth,",
-          "answer": "the dinosaurs wouldn't have become extinct."
+          "sentence": "If a meteor hadn't struck the Earth, **B** the dinosaurs wouldn't have become extinct.",
+          "answer": "B – the dinosaurs wouldn't have become extinct."
         },
         {
-          "sentence": "If my best friend had won the lottery last summer,",
-          "answer": "he/she would have moved to a bigger house."
+          "sentence": "If my best friend had won the lottery last summer, **C** he/she would have moved to a bigger house.",
+          "answer": "C – he/she would have moved to a bigger house."
         },
         {
-          "sentence": "If my parents hadn't met,",
-          "answer": "I wouldn't have been born."
+          "sentence": "If my parents hadn't met, **D** I wouldn't have been born.",
+          "answer": "D – I wouldn't have been born."
         },
         {
-          "sentence": "Everyone on board the Titanic would have survived",
-          "answer": "if there had been enough lifeboats."
+          "sentence": "Everyone on board the Titanic would have survived **E** if there had been enough lifeboats.",
+          "answer": "E – if there had been enough lifeboats."
         },
         {
-          "sentence": "Van Gogh wouldn't have died in poverty",
-          "answer": "if he had been recognised as a great painter during his lifetime."
+          "sentence": "Van Gogh wouldn't have died in poverty **F** if he had been recognised as a great painter during his lifetime.",
+          "answer": "F – if he had been recognised as a great painter during his lifetime."
         },
         {
-          "sentence": "Madonna wouldn't have made any records",
-          "answer": "if she hadn't been discovered."
+          "sentence": "Madonna wouldn't have made any records **G** if she hadn't been discovered.",
+          "answer": "G – if she hadn't been discovered."
         },
         {
-          "sentence": "If George Bush hadn't become President of the USA in January 2001,",
-          "answer": "lots of things would have been different."
+          "sentence": "If George Bush hadn't become President of the USA in January 2001, **H** lots of things would have been different.",
+          "answer": "H – lots of things would have been different."
         },
         {
-          "sentence": "If Greece hadn't won the European Cup in July 2004,",
-          "answer": "I would have been very upset."
+          "sentence": "If Greece hadn't won the European Cup in July 2004, **I** I would have been very upset.",
+          "answer": "I – I would have been very upset."
         }
       ]
     },
@@ -413,9 +460,10 @@
       "type": "exercise",
       "title": "G: Multiple choice (Conditionals)",
       "instructions": "Choose the correct answer.",
+      "passage": "If this theory about parallel universes (1) ...... correct, it (2) ...... that we're living in more than one universe at the same time. But if that (3) ...... true - if I was doing different things in different universes - (4) ...... about it. And if I (5) ...... about it, how could it be me doing these things? If I (6) ...... the lottery last year in a parallel universe, and decided to sail round the world, how is that 'me'? If I do something, it (7) ...... consequences. For example, if I (8) ...... study, I might not pass my exams. If I just (9) ...... about the universe I actually live in, then I'm sure (10) ...... okay!",
       "items": [
         {
-          "sentence": "If this theory about parallel universes (1) ...... correct, it (2) ...... that we're living in more than one universe at the same time.",
+          "sentence": "(1) ......",
           "options": [
             "A will be",
             "B is",
@@ -425,7 +473,7 @@
           "answer": "B"
         },
         {
-          "sentence": "it (2) ...... that we're living in more than one universe at the same time.",
+          "sentence": "(2) ......",
           "options": [
             "A has meant",
             "B meant",
@@ -435,7 +483,7 @@
           "answer": "D"
         },
         {
-          "sentence": "But if that (3) ...... true - if I was doing different things in different universes - (4) ...... about it.",
+          "sentence": "(3) ......",
           "options": [
             "A will be",
             "B was being",
@@ -445,7 +493,7 @@
           "answer": "C"
         },
         {
-          "sentence": "if I was doing different things in different universes - (4) ...... about it.",
+          "sentence": "(4) ......",
           "options": [
             "A I'd know",
             "B I'll know",
@@ -455,7 +503,7 @@
           "answer": "A"
         },
         {
-          "sentence": "And if I (5) ...... about it, how could it be me doing these things?",
+          "sentence": "(5) ......",
           "options": [
             "A wouldn't know",
             "B don't know",
@@ -465,7 +513,7 @@
           "answer": "D"
         },
         {
-          "sentence": "If I (6) ...... the lottery last year in a parallel universe, and decided to sail round the world, how is that 'me'?",
+          "sentence": "(6) ......",
           "options": [
             "A had won",
             "B was winning",
@@ -475,7 +523,7 @@
           "answer": "A"
         },
         {
-          "sentence": "If I do something, it (7) ...... consequences.",
+          "sentence": "(7) ......",
           "options": [
             "A would have",
             "B would have had",
@@ -485,7 +533,7 @@
           "answer": "C"
         },
         {
-          "sentence": "For example, if I (8) ...... study, I might not pass my exams.",
+          "sentence": "(8) ......",
           "options": [
             "A won't",
             "B haven't",
@@ -495,7 +543,7 @@
           "answer": "C"
         },
         {
-          "sentence": "If I just (9) ...... about the universe I actually live in, then I'm sure (10) ...... okay!",
+          "sentence": "(9) ......",
           "options": [
             "A think",
             "B to think",
@@ -505,7 +553,7 @@
           "answer": "A"
         },
         {
-          "sentence": "then I'm sure (10) ...... okay!",
+          "sentence": "(10) ......",
           "options": [
             "A I'd be",
             "B I've been",
@@ -522,43 +570,43 @@
       "instructions": "Complete using the correct form of the verbs in brackets.",
       "items": [
         {
-          "sentence": "If (you / do) your homework last night, you'd know the answer to this question!",
+          "sentence": "If (you / do) ...... your homework last night, you'd know the answer to this question!",
           "answer": "you'd done"
         },
         {
-          "sentence": "We (not / stand) by the side of the road at the moment trying to get a lift if (we / bring) a spare tyre with us.",
+          "sentence": "We (not / stand) ...... by the side of the road at the moment trying to get a lift if (we / bring) ...... a spare tyre with us.",
           "answer": "wouldn't be standing, we'd brought"
         },
         {
-          "sentence": "If I (not / stay up) so late last night, I (not / feel) so tired this morning!",
+          "sentence": "If I (not / stay up) ...... so late last night, I (not / feel) ...... so tired this morning!",
           "answer": "hadn't stayed up, wouldn't be feeling"
         },
         {
-          "sentence": "(I / be) in terrible trouble right now if you (not / help) me.",
+          "sentence": "(I / be) ...... in terrible trouble right now if you (not / help) ...... me.",
           "answer": "I'd be, hadn't helped"
         },
         {
-          "sentence": "If I had a video recorder, (I / record) the match last night.",
+          "sentence": "If I had a video recorder, (I / record) ...... the match last night.",
           "answer": "I would have/I'd have recorded"
         },
         {
-          "sentence": "(I / ask) for Andy's phone number when I met him if I (not / already / have) a boyfriend!",
+          "sentence": "(I / ask) ...... for Andy's phone number when I met him if I (not / already / have) ...... a boyfriend!",
           "answer": "I'd have asked, didn't already have"
         },
         {
-          "sentence": "If Cody (not / live) so far away, he (not / be) so late to the barbecue yesterday.",
+          "sentence": "If Cody (not / live) ...... so far away, he (not / be) ...... so late to the barbecue yesterday.",
           "answer": "didn't live, wouldn't have been"
         },
         {
-          "sentence": "Tracy (not / need) extra lessons last month if she (be) as good at maths as you are.",
+          "sentence": "Tracy (not / need) ...... extra lessons last month if she (be) ...... as good at maths as you are.",
           "answer": "wouldn't have needed, was/were"
         },
         {
-          "sentence": "(you / get) a job when you left school if the university (not / offer) you a place?",
+          "sentence": "(you / get) ...... a job when you left school if the university (not / offer) ...... you a place?",
           "answer": "Would you have got, hadn't offered"
         },
         {
-          "sentence": "If you (have) as much money as she does, (you / retire) by now?",
+          "sentence": "If you (have) ...... as much money as she does, (you / retire) ...... by now?",
           "answer": "had, would you have retired"
         }
       ]
@@ -569,31 +617,31 @@
       "instructions": "Complete the sentences so that the meaning remains the same.",
       "items": [
         {
-          "sentence": "If her condition should improve, we'll inform you immediately. (Should)\nShould ......, we'll inform you immediately.",
+          "sentence": "If her condition should improve, we'll inform you immediately. **Should**\nShould ......, we'll inform you immediately.",
           "answer": "her condition improve"
         },
         {
-          "sentence": "Jade will ask lots of difficult questions if she gets to interview a famous politician. (Should)\nShould ......, she will ask lots of difficult questions.",
+          "sentence": "Jade will ask lots of difficult questions if she gets to interview a famous politician. **Should**\nShould ......, she will ask lots of difficult questions.",
           "answer": "Jade get to interview a famous politician"
         },
         {
-          "sentence": "If you were able to go abroad for the summer, where would you go? (Were)\nWere ......, where would you go?",
+          "sentence": "If you were able to go abroad for the summer, where would you go? **Were**\nWere ......, where would you go?",
           "answer": "you able to go abroad for the summer"
         },
         {
-          "sentence": "If I was to become a vet, I'd find putting animals down very difficult. (Were)\nWere ......, I'd find putting animals down very difficult.",
+          "sentence": "If I was to become a vet, I'd find putting animals down very difficult. **Were**\nWere ......, I'd find putting animals down very difficult.",
           "answer": "I to become a vet"
         },
         {
-          "sentence": "The world would be much better off if all environmental pollution stopped today. (Were)\nWere ......, the world would be much better off.",
+          "sentence": "The world would be much better off if all environmental pollution stopped today. **Were**\nWere ......, the world would be much better off.",
           "answer": "all environmental pollution to stop today"
         },
         {
-          "sentence": "If the hole in the ozone layer had been discovered sooner, fewer people would have got skin cancer. (Had)\nHad ......, fewer people would have got skin cancer.",
+          "sentence": "If the hole in the ozone layer had been discovered sooner, fewer people would have got skin cancer. **Had**\nHad ......, fewer people would have got skin cancer.",
           "answer": "the hole in the ozone layer been discovered sooner"
         },
         {
-          "sentence": "I wouldn't have become a teacher if I hadn't had such a good English teacher at school. (Had)\nHad ......, I wouldn't have become a teacher.",
+          "sentence": "I wouldn't have become a teacher if I hadn't had such a good English teacher at school. **Had**\nHad ......, I wouldn't have become a teacher.",
           "answer": "I not had such a good English teacher at school"
         }
       ]
@@ -601,46 +649,46 @@
     {
       "type": "exercise",
       "title": "J: Error correction (extra words)",
-      "instructions": "If a line is correct, put a tick (✓). If there is an extra word in a line, write it next to the number.",
+      "instructions": "Read each line of the text. If the line is correct, write OK in the box. If there is an extra word in the line, write the extra word in the box.",
       "items": [
         {
-          "sentence": "I'm an only child. People often say to me: 'Wouldn't you be a lot",
-          "answer": "✓"
+          "sentence": "I'm an only child. People often say to me: 'Wouldn't you be a lot ......",
+          "answer": "OK"
         },
         {
-          "sentence": "happier if you have had brothers and sisters?' but I don't see it like that.",
+          "sentence": "happier if you have had brothers and sisters?' but I don't see it like that. ......",
           "answer": "have"
         },
         {
-          "sentence": "It's true that if I had had a brother or sister, I would have someone closer",
+          "sentence": "It's true that if I had had a brother or sister, I would have someone closer ......",
           "answer": "had"
         },
         {
-          "sentence": "to my own age to talk to and play with at home, but I don't think that's",
-          "answer": "✓"
+          "sentence": "to my own age to talk to and play with at home, but I don't think that's ......",
+          "answer": "OK"
         },
         {
-          "sentence": "very important provided for you have close friends, which I do.",
+          "sentence": "very important provided for you have close friends, which I do. ......",
           "answer": "for"
         },
         {
-          "sentence": "If my parents would had more children, they wouldn't be able to spend so much",
+          "sentence": "If my parents would had more children, they wouldn't be able to spend so much ......",
           "answer": "would"
         },
         {
-          "sentence": "time with me. And we have great fun together! Also, except if I had a",
+          "sentence": "time with me. And we have great fun together! Also, except if I had a ......",
           "answer": "except"
         },
         {
-          "sentence": "brother or sister, I'd have it to share a bedroom with them.",
+          "sentence": "brother or sister, I'd have it to share a bedroom with them. ......",
           "answer": "it"
         },
         {
-          "sentence": "That might be fun, but what would happen if I wanted to play my CDs and he or she had",
-          "answer": "✓"
+          "sentence": "That might be fun, but what would happen if I wanted to play my CDs and he or she had ......",
+          "answer": "OK"
         },
         {
-          "sentence": "to study? No - I don't want a brother or sister, unless it will happens, of course. In that case, I'll think it's the best thing in the world!",
+          "sentence": "to study? No - I don't want a brother or sister, unless it will happens, of course. In that case, I'll think it's the best thing in the world! ......",
           "answer": "will"
         }
       ]

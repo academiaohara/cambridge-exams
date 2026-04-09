@@ -826,14 +826,22 @@
           html += self._renderCuWordBank(section.words);
 
           var items = section.items || [];
+          var grIdBase = 'gr-' + section.title.replace(/\W+/g, '');
           if (section.subtype === 'matching') {
-            html += self._renderCuMatchingExercise(items, 'gr-' + section.title.replace(/\W+/g, ''), secId);
+            html += self._renderCuMatchingExercise(items, grIdBase, secId);
           } else if (section.subtype === 'mc-inline') {
-            html += self._renderCuMcInlineExercise(section, 'gr-' + section.title.replace(/\W+/g, ''), secId);
+            html += self._renderCuMcInlineExercise(section, grIdBase, secId);
+          } else if (section.subtype === 'yn') {
+            html += '<div class="cu-ex-items">';
+            html += self._renderCuYnItems(items, grIdBase, secId, section.yesLabel);
+            html += '</div>';
+            if (items.length) html += self._renderCuExFooter(secId);
+          } else if (section.passage && items.length) {
+            html += self._renderCuMcPassageExercise(section, grIdBase, secId);
           } else {
             var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
             html += '<div class="cu-ex-items">';
-            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous);
+            html += self._renderCuExItemsList(items, grIdBase, secId, section.continuous);
             html += '</div>';
             if (hasInteractive) html += self._renderCuExFooter(secId);
           }
@@ -1368,19 +1376,22 @@
     },
 
     // --- Yes/No exercise renderer ---
-    _renderCuYnItems: function(questions, idBase, secId) {
+    _renderCuYnItems: function(questions, idBase, secId, yesLabel) {
       var self = this;
       if (!questions || !questions.length) return '';
       var html = '';
+      var yesText = yesLabel || 'OK';
       function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
       questions.forEach(function(item, idx) {
         var iId = idBase + '-yn-' + idx;
+        var contextHtml = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
         html += '<div class="cu-ex-item cu-yn-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
           '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          contextHtml +
           '<div class="cu-yn-row">' +
             '<div class="cu-ex-sentence cu-yn-sentence">' + _bold(item.sentence || '') + '</div>' +
             '<div class="cu-yn-buttons">' +
-              '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">OK</button>' +
+              '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">' + self._escapeHTML(yesText) + '</button>' +
               '<button class="cu-yn-btn cu-yn-no" data-group="' + iId + '" data-yn="NO" onclick="BentoGrid._selectCuYn(this)" type="button">NO</button>' +
             '</div>' +
           '</div>' +
@@ -4104,6 +4115,11 @@
           inputs = dedupedInputs;
         } else {
           inputs = Array.prototype.slice.call(rawInputs);
+        }
+        // If there is only one input but the answer contains commas, compare the full
+        // answer string rather than splitting — handles free-write sentences (e.g. Exercise E).
+        if (inputs.length === 1 && answerParts.length > 1) {
+          answerParts = [answer];
         }
         // Separate inline option groups from MC option groups
         var optGroups = {};
