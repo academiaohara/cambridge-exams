@@ -595,7 +595,7 @@
     {
       "type": "exercise",
       "title": "J: Error correction (extra words)",
-      "instructions": "If a line is correct, put a tick (✓). If there is an extra word in a line, write it next to the number.",
+      "instructions": "If a line is correct, click OK. If there is an extra word, click it.",
       "items": [
         {
           "sentence": "Well, Trisha, that's my **own** first day at my new job out of the way.",
@@ -637,7 +637,8 @@
           "sentence": "I have finally found a job that I am happy in, and so will you **have**, I'm sure.",
           "answer": "have"
         }
-      ]
+      ],
+      "subtype": "find-extra-word"
     }
   ]
 }

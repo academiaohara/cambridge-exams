@@ -725,7 +725,7 @@
       },
       "G": {
         "title": "Error correction (extra words)",
-        "instructions": "Find the extra word in each line.",
+        "instructions": "Find the extra word in each line. Click it.",
         "questions": [
           {
             "sentence": "Did you know that Sara is afraid of be flying?",
@@ -763,7 +763,8 @@
             "sentence": "So, we all went to home.",
             "answer": "to"
           }
-        ]
+        ],
+        "type": "find-extra-word"
       },
       "H": {
         "title": "Word formation (TOUR)",

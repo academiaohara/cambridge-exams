@@ -569,7 +569,7 @@
       },
       "E": {
         "title": "Error correction (extra words)",
-        "instructions": "Circle the extra word in each sentence.",
+        "instructions": "Find the extra word in each line. Click it.",
         "questions": [
           {
             "sentence": "What time did you get to home last night?",
@@ -607,7 +607,8 @@
             "sentence": "I have the impression of Sasha's thinking about giving up ballet classes.",
             "answer": "of"
           }
-        ]
+        ],
+        "type": "find-extra-word"
       },
       "F": {
         "title": "Key word transformation",

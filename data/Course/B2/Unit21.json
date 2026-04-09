@@ -525,7 +525,7 @@
     {
       "type": "exercise",
       "title": "I: Error correction (extra words)",
-      "instructions": "Circle the extra word in each line.",
+      "instructions": "Circle the extra word in each line. Click it.",
       "items": [
         {
           "sentence": "Someone told to me a few months ago that getting a mortgage would be easy.",
@@ -587,7 +587,8 @@
           "sentence": "By then, though, it was said too late as someone else had bought the flat!",
           "answer": "said"
         }
-      ]
+      ],
+      "subtype": "find-extra-word"
     }
   ]
 }

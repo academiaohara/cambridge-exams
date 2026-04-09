@@ -657,7 +657,7 @@
     {
       "type": "exercise",
       "title": "J: Error correction (extra words)",
-      "instructions": "There is one extra word in each line. Write the extra word.",
+      "instructions": "There is one extra word in each line. Click the extra word.",
       "items": [
         {
           "sentence": "Do you have much free time these days or are you be quite busy?",
@@ -691,7 +691,8 @@
           "sentence": "I wonder if you know where I can buy something to eat.",
           "answer": "it"
         }
-      ]
+      ],
+      "subtype": "find-extra-word"
     }
   ]
 }

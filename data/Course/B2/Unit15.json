@@ -504,7 +504,7 @@
     {
       "type": "exercise",
       "title": "H: Error correction (extra words)",
-      "instructions": "Find the extra word in each line.",
+      "instructions": "Find the extra word in each line. Click it.",
       "items": [
         {
           "sentence": "My wedding had been being arranged for months.",
@@ -538,7 +538,8 @@
           "sentence": "I had got my lawyer to call to get my money back.",
           "answer": "got"
         }
-      ]
+      ],
+      "subtype": "find-extra-word"
     },
     {
       "type": "exercise",

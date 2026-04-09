@@ -682,7 +682,7 @@
     {
       "type": "exercise",
       "title": "J: Error correction (extra words)",
-      "instructions": "Read each line of the text. If the line is correct, write OK in the box. If there is an extra word in the line, write the extra word in the box.",
+      "instructions": "Read each line of the text. If there is an extra word, click it. If the line is correct, click OK.",
       "items": [
         {
           "sentence": "I'm an only child. People often say to me: 'Wouldn't you be a lot ......",
@@ -724,7 +724,8 @@
           "sentence": "to study? No - I don't want a brother or sister, unless it will happens, of course. In that case, I'll think it's the best thing in the world! ......",
           "answer": "will"
         }
-      ]
+      ],
+      "subtype": "find-extra-word"
     }
   ]
 }
