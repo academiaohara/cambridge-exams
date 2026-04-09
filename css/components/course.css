@@ -3222,6 +3222,20 @@
   background: rgba(5, 150, 105, 0.14);
 }
 
+/* Keyword-row inside kwtrans-match left cell */
+.cu-match-kwrow {
+  margin: 0;
+  flex: 1;
+}
+.cu-match-kwrow .cu-kwtrans-keyword {
+  text-transform: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  white-space: normal;
+  word-break: break-word;
+}
+
 /* ── Custom confirm dialog ───────────────────────────────────────────── */
 .cu-confirm-overlay {
   position: fixed;
