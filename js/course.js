@@ -818,7 +818,7 @@
                     // Detect leading ✓ or ✗ symbols for auto-styling
                     if (/^✓/.test(item)) {
                       html += '<li class="cu-gc-wo-correct"><span class="cu-gc-wo-mark">✓</span>' + _bold(item.replace(/^✓\s*/, '')) + '</li>';
-                    } else if (/^✗|^✕|^[Xx]\s/.test(item) || item.startsWith('X ')) {
+                    } else if (/^[✗✕]|^[Xx]\s/.test(item)) {
                       html += '<li class="cu-gc-wo-incorrect"><span class="cu-gc-wo-mark">✗</span><s>' + _bold(item.replace(/^[✗✕Xx]\s*/, '')) + '</s></li>';
                     } else {
                       html += '<li>' + _bold(item) + '</li>';
