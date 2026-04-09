@@ -1536,10 +1536,21 @@
       html += '<div class="cu-ex-items">';
 
       items.forEach(function(item, idx) {
-        var rawSentence = stripBold(item.sentence || '');
         var answer = (item.answer || '').trim();
         var isOkItem = answer.toUpperCase() === 'OK';
         var itemId = idBase + '-few' + idx;
+
+        // Detect [word] bracket notation: find the index of the bracketed token in the
+        // original sentence (after stripping ** bold markers) so that when the same word
+        // appears more than once only the marked occurrence is treated as the answer.
+        var bracketAnswerIdx = -1;
+        var origTokens = (item.sentence || '').replace(/\*\*/g, '').split(/\s+/).filter(Boolean);
+        origTokens.forEach(function(t, i) {
+          if (t.indexOf('[') !== -1 && t.indexOf(']') !== -1) bracketAnswerIdx = i;
+        });
+
+        // Build the display sentence: strip bold markers and remove [ ] brackets (keep inner text)
+        var rawSentence = stripBold(item.sentence || '').replace(/\[([^\]]+)\]/g, '$1');
 
         html += '<div class="cu-few-item' + (isOkItem ? ' cu-few-ok-item' : '') + '" ' +
           'data-answer="' + self._escapeHTML(answer) + '">';
@@ -1557,8 +1568,12 @@
           var answerCore = answer.toLowerCase();
           html += '<div class="cu-few-sentence">';
           tokens.forEach(function(token, ti) {
-            var core = wordCore(token);
-            var isAnswer = (core === answerCore) ? '1' : '0';
+            var isAnswer;
+            if (bracketAnswerIdx !== -1) {
+              isAnswer = (ti === bracketAnswerIdx) ? '1' : '0';
+            } else {
+              isAnswer = (wordCore(token) === answerCore) ? '1' : '0';
+            }
             html += '<span class="cu-few-word" ' +
               'data-few-is-answer="' + isAnswer + '" ' +
               'onclick="BentoGrid._toggleFewWord(this)" ' +
