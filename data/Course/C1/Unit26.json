@@ -325,212 +325,152 @@
         "meaning": "prepare for a sport or activity by doing gentle exercises or practising just before it starts"
       }
     ],
-    "collocations_patterns": [
-      {
-        "headword": "choice",
-        "collocations": [
-          "make a choice",
-          "exercise choice",
-          "have no choice",
-          "choice between",
-          "choice of",
-          "personal/parental/consumer choice",
-          "informed choice",
-          "wide choice",
-          "obvious choice"
-        ]
-      },
-      {
-        "headword": "choose",
-        "collocations": [
-          "choose from",
-          "choose between",
-          "choose sb/sth as",
-          "choose sb/sth out of",
-          "choose to do",
-          "pick and choose",
-          "nothing/little to choose between"
-        ]
-      },
-      {
-        "headword": "decide",
-        "collocations": [
-          "decide to do",
-          "decide against/in favour of",
-          "decide that",
-          "decide between",
-          "decide for yourself",
-          "decide on"
-        ]
-      },
-      {
-        "headword": "delight",
-        "collocations": [
-          "delight in doing",
-          "take (great) delight in doing",
-          "to sb’s delight",
-          "with/in delight"
-        ]
-      },
-      {
-        "headword": "eager",
-        "collocations": [
-          "eager to do",
-          "eager for",
-          "only too eager to do"
-        ]
-      },
-      {
-        "headword": "free",
-        "collocations": [
-          "set sb free",
-          "let sb go free",
-          "free sb from",
-          "walk free",
-          "free to do",
-          "free from",
-          "free and easy",
-          "free time"
-        ]
-      },
-      {
-        "headword": "impulse",
-        "collocations": [
-          "act on impulse",
-          "do sth on impulse",
-          "control/resist an impulse",
-          "an impulse to do"
-        ]
-      },
-      {
-        "headword": "keen",
-        "collocations": [
-          "keen (for sb) to do",
-          "keen on",
-          "keen interest in"
-        ]
-      },
-      {
-        "headword": "leisure",
-        "collocations": [
-          "have the leisure to do",
-          "at your leisure",
-          "leisure centre",
-          "leisure pursuits",
-          "leisure time"
-        ]
-      },
-      {
-        "headword": "like",
-        "collocations": [
-          "like (sb) to do",
-          "like doing",
-          "like it when",
-          "just like",
-          "anything/nothing like",
-          "it’s not like sb to do",
-          "like crazy/mad",
-          "like so",
-          "something like"
-        ]
-      },
-      {
-        "headword": "need",
-        "collocations": [
-          "need (sb) to do",
-          "need do",
-          "need doing",
-          "meet a need",
-          "have no need of",
-          "in need (of)"
-        ]
-      },
-      {
-        "headword": "off",
-        "collocations": [
-          "have / take / be given the day off",
-          "have / take / be given time off",
-          "off work/college",
-          "off sick"
-        ]
-      },
-      {
-        "headword": "opt",
-        "collocations": [
-          "opt for",
-          "opt to do"
-        ]
-      },
-      {
-        "headword": "option",
-        "collocations": [
-          "have no option (but to do)",
-          "consider your options",
-          "the option of doing",
-          "the option to do",
-          "keep/leave your options open"
-        ]
-      },
-      {
-        "headword": "play",
-        "collocations": [
-          "play against/for",
-          "play at",
-          "play by yourself",
-          "play for time",
-          "play the fool",
-          "play sth by ear",
-          "at play"
-        ]
-      },
-      {
-        "headword": "praise",
-        "collocations": [
-          "praise sb for doing",
-          "win/earn/deserve praise",
-          "full of praise for",
-          "in praise of"
-        ]
-      },
-      {
-        "headword": "prefer",
-        "collocations": [
-          "prefer sth to",
-          "prefer (sb) to do",
-          "prefer doing",
-          "would prefer (that)",
-          "would prefer it if"
-        ]
-      },
-      {
-        "headword": "rest",
-        "collocations": [
-          "rest sth on/against",
-          "rest assured that",
-          "take/have a rest (from)",
-          "get some rest",
-          "come to rest",
-          "at rest"
-        ]
-      },
-      {
-        "headword": "taste",
-        "collocations": [
-          "develop/have a taste for",
-          "in good/bad taste",
-          "sense of taste",
-          "acquired taste"
-        ]
-      },
-      {
-        "headword": "want",
-        "collocations": [
-          "want (sb) to do",
-          "want sth done",
-          "for want of"
-        ]
-      }
-    ],
+    "collocations_patterns": {
+      "choice": [
+        "make a choice",
+        "exercise choice",
+        "have no choice",
+        "choice between",
+        "choice of",
+        "personal/parental/consumer choice",
+        "informed choice",
+        "wide choice",
+        "obvious choice"
+      ],
+      "choose": [
+        "choose from",
+        "choose between",
+        "choose sb/sth as",
+        "choose sb/sth out of",
+        "choose to do",
+        "pick and choose",
+        "nothing/little to choose between"
+      ],
+      "decide": [
+        "decide to do",
+        "decide against/in favour of",
+        "decide that",
+        "decide between",
+        "decide for yourself",
+        "decide on"
+      ],
+      "delight": [
+        "delight in doing",
+        "take (great) delight in doing",
+        "to sb’s delight",
+        "with/in delight"
+      ],
+      "eager": [
+        "eager to do",
+        "eager for",
+        "only too eager to do"
+      ],
+      "free": [
+        "set sb free",
+        "let sb go free",
+        "free sb from",
+        "walk free",
+        "free to do",
+        "free from",
+        "free and easy",
+        "free time"
+      ],
+      "impulse": [
+        "act on impulse",
+        "do sth on impulse",
+        "control/resist an impulse",
+        "an impulse to do"
+      ],
+      "keen": [
+        "keen (for sb) to do",
+        "keen on",
+        "keen interest in"
+      ],
+      "leisure": [
+        "have the leisure to do",
+        "at your leisure",
+        "leisure centre",
+        "leisure pursuits",
+        "leisure time"
+      ],
+      "like": [
+        "like (sb) to do",
+        "like doing",
+        "like it when",
+        "just like",
+        "anything/nothing like",
+        "it’s not like sb to do",
+        "like crazy/mad",
+        "like so",
+        "something like"
+      ],
+      "need": [
+        "need (sb) to do",
+        "need do",
+        "need doing",
+        "meet a need",
+        "have no need of",
+        "in need (of)"
+      ],
+      "off": [
+        "have / take / be given the day off",
+        "have / take / be given time off",
+        "off work/college",
+        "off sick"
+      ],
+      "opt": [
+        "opt for",
+        "opt to do"
+      ],
+      "option": [
+        "have no option (but to do)",
+        "consider your options",
+        "the option of doing",
+        "the option to do",
+        "keep/leave your options open"
+      ],
+      "play": [
+        "play against/for",
+        "play at",
+        "play by yourself",
+        "play for time",
+        "play the fool",
+        "play sth by ear",
+        "at play"
+      ],
+      "praise": [
+        "praise sb for doing",
+        "win/earn/deserve praise",
+        "full of praise for",
+        "in praise of"
+      ],
+      "prefer": [
+        "prefer sth to",
+        "prefer (sb) to do",
+        "prefer doing",
+        "would prefer (that)",
+        "would prefer it if"
+      ],
+      "rest": [
+        "rest sth on/against",
+        "rest assured that",
+        "take/have a rest (from)",
+        "get some rest",
+        "come to rest",
+        "at rest"
+      ],
+      "taste": [
+        "develop/have a taste for",
+        "in good/bad taste",
+        "sense of taste",
+        "acquired taste"
+      ],
+      "want": [
+        "want (sb) to do",
+        "want sth done",
+        "for want of"
+      ]
+    },
     "idioms": [
       {
         "idiom": "at a loose end",
