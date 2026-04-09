@@ -166,6 +166,85 @@
   font-weight: 700;
 }
 
+/* Grammar Form row */
+.cu-gc-form-row {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid rgba(45, 46, 95, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 4px 0 6px;
+}
+.cu-gc-form-label {
+  flex-shrink: 0;
+  width: 68px;
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-dark, #0f172a);
+  background: rgba(59, 130, 246, 0.06);
+  border-right: 1px solid rgba(45, 46, 95, 0.1);
+  line-height: 1.4;
+}
+.cu-gc-form-content {
+  flex: 1;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cu-gc-form-item {
+  font-size: 0.87rem;
+  color: var(--text-dark, #0f172a);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Watch out! box */
+.cu-gc-watchout {
+  background: rgba(234, 179, 8, 0.07);
+  border: 1px solid rgba(234, 179, 8, 0.25);
+  border-left: 3px solid #eab308;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 4px 0 2px;
+}
+.cu-gc-watchout-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.cu-gc-watchout-icon {
+  font-size: 18px;
+  color: #ca8a04;
+}
+.cu-gc-watchout-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.cu-gc-watchout-desc {
+  font-size: 0.87rem;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+.cu-gc-watchout-list {
+  margin: 4px 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cu-gc-watchout-list li {
+  font-size: 0.86rem;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.55;
+}
+
 /* Uses + Examples table */
 .cu-uses-examples-table {
   width: 100%;

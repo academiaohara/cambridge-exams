@@ -717,6 +717,65 @@
               continue;
             }
 
+            // "Form" subtitle → Cambridge-style form row
+            if (block.subtitle === 'Form') {
+              var formItems = block.items || [];
+              html += '<div class="cu-gc-form-row">' +
+                '<div class="cu-gc-form-label">Form</div>' +
+                '<div class="cu-gc-form-content">';
+              formItems.forEach(function(fi) {
+                html += '<div class="cu-gc-form-item">' + _bold(fi) + '</div>';
+              });
+              html += '</div></div>';
+              contentIdx++;
+              continue;
+            }
+
+            // "Use" (singular) subtitle → Use/Example table (auto-split items on ": ")
+            if (block.subtitle === 'Use') {
+              var useItems = block.items || [];
+              html += '<table class="cu-uses-examples-table">' +
+                '<thead><tr><th class="cu-ue-head">Use</th><th class="cu-ue-head">Example</th></tr></thead>' +
+                '<tbody>';
+              useItems.forEach(function(itm) {
+                var colonIdx = itm.indexOf(': ');
+                var useText = colonIdx !== -1 ? itm.substring(0, colonIdx) : itm;
+                var exText  = colonIdx !== -1 ? itm.substring(colonIdx + 2) : '';
+                html += '<tr class="cu-ue-row">' +
+                  '<td class="cu-ue-use">' + self._escapeHTML(useText) + '</td>' +
+                  '<td class="cu-ue-example">' + _bold(exText) + '</td>' +
+                '</tr>';
+              });
+              html += '</tbody></table>';
+              contentIdx++;
+              continue;
+            }
+
+            // "Watch out!" subtitle → styled warning box
+            if (block.subtitle === 'Watch out!') {
+              html += '<div class="cu-gc-watchout">' +
+                '<div class="cu-gc-watchout-header">' +
+                  '<span class="material-symbols-outlined cu-gc-watchout-icon">warning</span>' +
+                  '<span class="cu-gc-watchout-label">Watch out!</span>' +
+                '</div>';
+              if (block.description) {
+                html += '<div class="cu-gc-watchout-desc">' + _bold(block.description) + '</div>';
+              }
+              var woItems = block.items || block.examples || block.notes || [];
+              if (woItems.length) {
+                html += '<ul class="cu-gc-watchout-list">';
+                woItems.forEach(function(item) {
+                  if (typeof item === 'string') {
+                    html += '<li>' + _bold(item) + '</li>';
+                  }
+                });
+                html += '</ul>';
+              }
+              html += '</div>';
+              contentIdx++;
+              continue;
+            }
+
             // "Common words and phrases" as chips
             if (block.subtitle === 'Common words and phrases') {
               html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
