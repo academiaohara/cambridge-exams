@@ -166,51 +166,51 @@
       "instructions": "If a word in bold is correct, put a tick (✓). If it is incorrect, rewrite it correctly.",
       "items": [
         {
-          "sentence": "November 5th was the day which Guy Fawkes tried to blow up Parliament.",
+          "sentence": "November 5th was the day **which** Guy Fawkes tried to blow up Parliament.",
           "answer": "when"
         },
         {
-          "sentence": "There were none of my favourite biscuits left when I had a cup of tea, that was really annoying.",
+          "sentence": "There were none of my favourite biscuits left when I had a cup of tea, **that** was really annoying.",
           "answer": "which"
         },
         {
-          "sentence": "I've just got a new webcam that takes really clear pictures.",
-          "answer": "✓"
+          "sentence": "I've just got a new webcam **that** takes really clear pictures.",
+          "answer": "OK"
         },
         {
-          "sentence": "The Godfather was made by Francis Ford Copolla, who's daughter is also a film director.",
+          "sentence": "The Godfather was made by Francis Ford Copolla, **who's** daughter is also a film director.",
           "answer": "whose"
         },
         {
-          "sentence": "Can you think of any reason which Cathy should be angry with me?",
+          "sentence": "Can you think of any reason **which** Cathy should be angry with me?",
           "answer": "why"
         },
         {
-          "sentence": "Here's a photo of the hotel where we stayed in when we were in Beijing.",
+          "sentence": "Here's a photo of the hotel where we **stayed in** when we were in Beijing.",
           "answer": "where (remove 'in')"
         },
         {
-          "sentence": "How do you think the first man whom walked on the moon felt?",
+          "sentence": "How do you think the first man **whom** walked on the moon felt?",
           "answer": "who"
         },
         {
-          "sentence": "This is the first occasion on which the leaders of these two countries have met.",
-          "answer": "✓"
+          "sentence": "This is the first occasion on **which** the leaders of these two countries have met.",
+          "answer": "OK"
         },
         {
-          "sentence": "He is a person for who very few people feel much sympathy.",
+          "sentence": "He is a person for **who** very few people feel much sympathy.",
           "answer": "whom"
         },
         {
-          "sentence": "The moment which the hero suddenly appears from behind a tree is the best moment in the whole film.",
+          "sentence": "The moment **which** the hero suddenly appears from behind a tree is the best moment in the whole film.",
           "answer": "when"
         },
         {
-          "sentence": "I met a man which had a dog with only three legs.",
+          "sentence": "I met a man **which** had a dog with only three legs.",
           "answer": "who/that"
         },
         {
-          "sentence": "My new school, who I moved to about a month ago, seems like quite a friendly place.",
+          "sentence": "My new school, **who** I moved to about a month ago, seems like quite a friendly place.",
           "answer": "which"
         }
       ]
@@ -220,10 +220,6 @@
       "title": "C: Rewrite as one sentence using a relative clause",
       "instructions": "Rewrite as one sentence using a relative clause.",
       "items": [
-        {
-          "sentence": "My friend, Simon, plays the guitar. He has just released a CD.",
-          "answer": "My friend, Simon, who has just released a CD, plays the guitar."
-        },
         {
           "sentence": "Prince Charles is heir to the throne of England. His wife was Princess Diana.",
           "answer": "Prince Charles, whose wife was Princess Diana, is heir to the throne of England."
@@ -237,7 +233,7 @@
           "answer": "The euro, which was introduced in January 2002, replaced a number of national currencies."
         },
         {
-          "sentence": "Friends ran for ten years. It is one of my favourite series.",
+          "sentence": "Friends is one of my favourite series. It ran for ten years.",
           "answer": "Friends, which is one of my favourite series, ran for ten years."
         },
         {
@@ -245,11 +241,11 @@
           "answer": "Venus, which is much closer to the Sun than the Earth is, is a very hot place."
         },
         {
-          "sentence": "Cricket is popular in many countries around the world. It is played between two teams of eleven.",
+          "sentence": "Cricket is popular in many countries of the world. It is played between two teams of eleven.",
           "answer": "Cricket, which is played between two teams of eleven, is popular in many countries of the world."
         },
         {
-          "sentence": "Parts of Buckingham Palace are open to the public. It is where the queen lives.",
+          "sentence": "Parts of Buckingham Palace are open to the public. The queen lives there.",
           "answer": "Parts of Buckingham Palace, where the queen lives, are open to the public."
         },
         {
@@ -311,62 +307,7 @@
     },
     {
       "type": "exercise",
-      "title": "E: That in relative clauses",
-      "instructions": "Tick (✓) the gaps in Exercise D which could be completed using that. Put a cross (✗) where that could not be used.",
-      "items": [
-        {
-          "sentence": "Gap 1",
-          "answer": "✗"
-        },
-        {
-          "sentence": "Gap 2",
-          "answer": "✓"
-        },
-        {
-          "sentence": "Gap 3",
-          "answer": "✓"
-        },
-        {
-          "sentence": "Gap 4",
-          "answer": "✓"
-        },
-        {
-          "sentence": "Gap 5",
-          "answer": "✓"
-        },
-        {
-          "sentence": "Gap 6",
-          "answer": "✗"
-        },
-        {
-          "sentence": "Gap 7",
-          "answer": "✗"
-        },
-        {
-          "sentence": "Gap 8",
-          "answer": "✓"
-        },
-        {
-          "sentence": "Gap 9",
-          "answer": "✗"
-        },
-        {
-          "sentence": "Gap 10",
-          "answer": "✓"
-        },
-        {
-          "sentence": "Gap 11",
-          "answer": "✓"
-        },
-        {
-          "sentence": "Gap 12",
-          "answer": "✓"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "F: Multiple choice (Relative clauses)",
+      "title": "E: Multiple choice (Relative clauses)",
       "instructions": "Choose the correct answer.",
       "items": [
         {
@@ -453,34 +394,16 @@
     },
     {
       "type": "exercise",
-      "title": "G: Omit the relative pronoun",
-      "instructions": "Circle the words in bold which are not necessary.",
-      "items": [
-        {
-          "sentence": "The number of options (1) that are available to us is increasing all the time.",
-          "answer": "that"
-        },
-        {
-          "sentence": "While previous generations, (3) who lived before the electronic age, had musical instruments and card games (4) that they played to pass the time, we have PlayStation, computers, televisions and stereos.",
-          "answer": "who, that"
-        },
-        {
-          "sentence": "Although parents (5) whose teenagers spend a lot of time on these activities might worry about the effect (6) which it is having on them, for most of us they provide harmless fun, (7) which is becoming more important as life becomes more stressful.",
-          "answer": "which, which"
-        },
-        {
-          "sentence": "The television programmes (8) which we watch and the computer games (9) that we play all entertain us and, although there will always be people to (10) whom they seem a complete waste of time, the effect (11) that they have on society cannot be ignored.",
-          "answer": "which, that, that"
-        },
-        {
-          "sentence": "Entertainment is something (12) which we all need and, as long as we're willing to pay, there will always be someone (13) who is willing to provide it.",
-          "answer": "which"
-        }
-      ]
+      "title": "F: Omit the relative pronoun",
+      "instructions": "There are 9 relative pronouns in the text which are not necessary. Click on them to mark them.",
+      "passage": "The number of options [[that]] are available to us is increasing all the time. While previous generations, [[who]] lived before the electronic age, had musical instruments and card games [[that]] they played to pass the time, we have PlayStation, computers, televisions and stereos. Although parents [[whose]] teenagers spend a lot of time on these activities might worry about the effect [[which]] it is having on them, for most of us they provide harmless fun, [[which]] is becoming more important as life becomes more stressful. The television programmes [[which]] we watch and the computer games [[that]] we play all entertain us and, although there will always be people to [[whom]] they seem a complete waste of time, the effect [[that]] they have on society cannot be ignored. Entertainment is something [[which]] we all need and, as long as we're willing to pay, there will always be someone [[who]] is willing to provide it.",
+      "answer": "1,2,3,5,6,7,8,10,11",
+      "subtype": "word-spot",
+      "items": []
     },
     {
       "type": "exercise",
-      "title": "H: Participles",
+      "title": "G: Participles",
       "instructions": "Circle the correct word or phrase.",
       "items": [
         {
@@ -527,7 +450,7 @@
     },
     {
       "type": "exercise",
-      "title": "I: Participle transformations",
+      "title": "H: Participle transformations",
       "instructions": "Rewrite the sentences using a participle clause.",
       "items": [
         {
@@ -566,39 +489,39 @@
     },
     {
       "type": "exercise",
-      "title": "J: Error correction (Participles)",
+      "title": "I: Error correction (Participles)",
       "instructions": "Tick (✓) the correct sentences. If a sentence is incorrect, rewrite it correctly.",
       "items": [
         {
-          "sentence": "Looking through the window, a plane was passing overhead.",
+          "sentence": "Looking through the window, a **plane was passing** overhead.",
           "answer": "Looking through the window, I saw a plane passing overhead."
         },
         {
           "sentence": "Realising that it was late, I ran all the way home.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
-          "sentence": "Having examined me, I was given a prescription by the doctor.",
+          "sentence": "Having examined me, **I was given a prescription** by the doctor.",
           "answer": "Having examined me, the doctor gave me a prescription."
         },
         {
-          "sentence": "Turning on the television, the newsreader said there had been an explosion.",
+          "sentence": "Turning on the television, **the newsreader said** there had been an explosion.",
           "answer": "Turning on the television, I heard the newsreader say there had been an explosion."
         },
         {
           "sentence": "Dropping the shopping bags on the kitchen floor, Mrs Moorcroft sighed and sat down heavily.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "Having practised the piano, I decided to call one of my friends.",
-          "answer": "✓"
+          "answer": "OK"
         }
       ]
     },
     {
       "type": "exercise",
-      "title": "K: Error correction (extra words)",
-      "instructions": "If a line is correct, put a tick (✓). If there is an extra word in a line, write it next to the number.",
+      "title": "J: Error correction (extra words)",
+      "instructions": "Each line either has one extra word that does not belong, or is correct. Write the extra word, or write OK if the line is correct.",
       "items": [
         {
           "sentence": "Hello, viewers, and welcome to Easy Money, the game show who you",
@@ -606,7 +529,7 @@
         },
         {
           "sentence": "voted the best on TV! Now, remember yesterday when our current champion,",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "Pat Barber, having been won ten thousand euros, decided to carry on?",
@@ -618,7 +541,7 @@
         },
         {
           "sentence": "That's right. Having got her this far, if Pat can answer three more questions correctly, then she could be driving home in this car, ladies and gentlemen.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "Having not seen the programme before, you will know just how",
@@ -630,7 +553,7 @@
         },
         {
           "sentence": "fine and there's one person for whom tonight is very special and that's Pat's",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "husband, Frank, who he is sitting in the audience. So, let's play Easy Money!",

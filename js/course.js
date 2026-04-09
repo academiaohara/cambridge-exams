@@ -836,6 +836,8 @@
             html += self._renderCuYnItems(items, grIdBase, secId, section.yesLabel);
             html += '</div>';
             if (items.length) html += self._renderCuExFooter(secId);
+          } else if (section.subtype === 'word-spot') {
+            html += self._renderCuWordSpotExercise(section, grIdBase, secId);
           } else if (section.passage && items.length) {
             html += self._renderCuMcPassageExercise(section, grIdBase, secId);
           } else {
@@ -1223,6 +1225,63 @@
       BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
+    // Renders a word-spot exercise: a passage where certain words (marked with [[word]])
+    // are clickable. Students click the ones they think are wrong/unnecessary.
+    // Data: { passage: '...[[word]]...', answer: '1,3,5', instructions: '...' }
+    _renderCuWordSpotExercise: function(ex, idBase, secId) {
+      var self = this;
+      var passage = ex.passage || '';
+      var wrongIndices = (ex.answer || '').split(',').map(function(a) { return parseInt(a.trim()); }).filter(function(n) { return !isNaN(n); });
+      var totalWrong = wrongIndices.length;
+      var counterId = idBase + '-ws-count';
+
+      var wordIdx = 0;
+      var passageHtml = '';
+      // Split on [[word]] markers; odd indices are the clickable words
+      var parts = passage.split(/\[\[([^\]]+)\]\]/g);
+      for (var i = 0; i < parts.length; i++) {
+        if (i % 2 === 0) {
+          passageHtml += self._escapeHTML(parts[i]);
+        } else {
+          wordIdx++;
+          var isAnswer = wrongIndices.indexOf(wordIdx) !== -1;
+          passageHtml += '<span class="cu-ws-word" ' +
+            'data-ws-idx="' + wordIdx + '" ' +
+            'data-ws-answer="' + (isAnswer ? '1' : '0') + '" ' +
+            'data-counter-id="' + self._escapeHTML(counterId) + '" ' +
+            'onclick="BentoGrid._toggleWordSpot(this)" ' +
+            'role="button" tabindex="0" ' +
+            'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordSpot(this);event.preventDefault();}">' +
+            self._escapeHTML(parts[i]) +
+            '</span>';
+        }
+      }
+
+      var html = '<div class="cu-ws-counter">' +
+        '<span class="material-symbols-outlined">check_circle</span> ' +
+        '<span id="' + self._escapeHTML(counterId) + '">0</span> / ' + totalWrong +
+        '</div>' +
+        '<div class="cu-ws-passage" id="' + self._escapeHTML(idBase) + '-ws">' +
+        passageHtml +
+        '</div>';
+      html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    _toggleWordSpot: function(span) {
+      if (span.getAttribute('data-ws-disabled') === '1') return;
+      span.classList.toggle('cu-ws-selected');
+      var counterId = span.getAttribute('data-counter-id');
+      if (counterId) {
+        var counter = document.getElementById(counterId);
+        if (counter) {
+          var sec = span.closest('.cu-section');
+          if (sec) counter.textContent = sec.querySelectorAll('.cu-ws-word.cu-ws-selected').length;
+        }
+      }
+      BentoGrid._saveCuExSectionState(span.closest('.cu-section'));
+    },
+
     _renderCuExFooter: function(secId) {
       return '<div class="cu-ex-footer">' +
         '<button class="cu-check-btn" onclick="BentoGrid._checkCuExSection(\'' + secId + '\')">' +
@@ -1299,6 +1358,13 @@
         btn.disabled = false;
         btn.classList.remove('cu-word-tick-selected', 'cu-word-tick-correct', 'cu-word-tick-incorrect', 'cu-word-tick-reveal');
       });
+      // Reset word-spot spans
+      sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
+        span.removeAttribute('data-ws-disabled');
+        span.classList.remove('cu-ws-selected', 'cu-ws-correct', 'cu-ws-incorrect', 'cu-ws-reveal');
+      });
+      var wsCounter = sec.querySelector('.cu-ws-counter span[id]');
+      if (wsCounter) wsCounter.textContent = '0';
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
         pill.classList.remove('cu-mc-gap-pill-filled');
@@ -3085,6 +3151,12 @@
         wordTickState.push(btn.classList.contains('cu-word-tick-selected') ? 1 : 0);
       });
       if (wordTickState.length) answers.wordTick = wordTickState;
+      // Word-spot state (clickable passage words)
+      var wordSpotState = [];
+      sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
+        wordSpotState.push(span.classList.contains('cu-ws-selected') ? 1 : 0);
+      });
+      if (wordSpotState.length) answers.wordSpot = wordSpotState;
       var mcPassage = {};
       sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
         var secId = gap.getAttribute('data-sec-id') || '';
@@ -3135,6 +3207,15 @@
         wordTickBtns.forEach(function(btn, i) {
           if (answers.wordTick[i]) btn.classList.add('cu-word-tick-selected');
         });
+      }
+      if (answers.wordSpot && Array.isArray(answers.wordSpot)) {
+        var wordSpanEls = sec.querySelectorAll('.cu-ws-word');
+        wordSpanEls.forEach(function(span, i) {
+          if (answers.wordSpot[i]) span.classList.add('cu-ws-selected');
+        });
+        // Restore counter
+        var counterEl = sec.querySelector('.cu-ws-counter span[id]');
+        if (counterEl) counterEl.textContent = sec.querySelectorAll('.cu-ws-word.cu-ws-selected').length;
       }
       if (answers.mcPassage) {
         Object.keys(answers.mcPassage).forEach(function(secId) {
@@ -3957,6 +4038,17 @@
       var totalItems = 0;
       var correctItems = 0;
       var hasMcPassage = false;
+      // Handle word-spot exercises (clickable passage words)
+      sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
+        totalItems++;
+        var isSelected = span.classList.contains('cu-ws-selected');
+        var isAnswer = span.getAttribute('data-ws-answer') === '1';
+        var ok = isSelected === isAnswer;
+        span.classList.add(ok ? 'cu-ws-correct' : 'cu-ws-incorrect');
+        if (!ok && isAnswer) span.classList.add('cu-ws-reveal');
+        span.setAttribute('data-ws-disabled', '1');
+        if (ok) correctItems++;
+      });
       // Handle word-tick exercises (e.g. Exercise P)
       sec.querySelectorAll('.cu-word-tick-btn').forEach(function(btn) {
         totalItems++;
@@ -4684,6 +4776,10 @@
           var isCorrect = answerWords.indexOf(word) !== -1;
           if (isCorrect) wBtn.classList.add('cu-word-tick-reveal');
         });
+        // Word-spot exercise: reveal correct words
+        sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
+          if (span.getAttribute('data-ws-answer') === '1') span.classList.add('cu-ws-reveal');
+        });
       } else {
         // Hide answers: restore original values
         sec.setAttribute('data-answers-showing', 'false');
@@ -4775,6 +4871,10 @@
         // Word-tick exercise: remove reveal styling
         sec.querySelectorAll('.cu-word-tick-btn').forEach(function(wBtn) {
           wBtn.classList.remove('cu-word-tick-reveal');
+        });
+        // Word-spot exercise: remove reveal styling
+        sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
+          span.classList.remove('cu-ws-reveal');
         });
       }
     },

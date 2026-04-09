@@ -403,43 +403,43 @@
       "instructions": "Rewrite the sentences to make them into questions. Begin with the word in brackets.",
       "items": [
         {
-          "sentence": "I asked my mum. (who)",
+          "sentence": "I asked my mum.\n**who** ......",
           "answer": "Who did you ask?"
         },
         {
-          "sentence": "I saw my best friend. (who)",
+          "sentence": "I saw my best friend.\n**who** ......",
           "answer": "Who did you see?"
         },
         {
-          "sentence": "My dad gave me a CD. (who)",
+          "sentence": "My dad gave me a CD.\n**who** ......",
           "answer": "Who gave you a CD?"
         },
         {
-          "sentence": "I thought you were in Paris. (what)",
+          "sentence": "I thought you were in Paris.\n**what** ......",
           "answer": "What thought you were in Paris?"
         },
         {
-          "sentence": "Miss Jones taught us history. (who)",
+          "sentence": "Miss Jones taught us history.\n**who** ......",
           "answer": "Who taught you history?"
         },
         {
-          "sentence": "I borrowed a video from Jamie. (who)",
+          "sentence": "I borrowed a video from Jamie.\n**who** ......",
           "answer": "Who did you borrow a video from?"
         },
         {
-          "sentence": "My uncle brought me a present from Canada. (who)",
+          "sentence": "My uncle brought me a present from Canada.\n**who** ......",
           "answer": "Who brought you a present from Canada?"
         },
         {
-          "sentence": "George accused me of stealing his pencil. (who)",
+          "sentence": "George accused me of stealing his pencil.\n**who** ......",
           "answer": "Who did George accuse of stealing his pencil?"
         },
         {
-          "sentence": "I admire my mum more than anyone else. (who)",
+          "sentence": "I admire my mum more than anyone else.\n**who** ......",
           "answer": "Who do you admire more than anyone else?"
         },
         {
-          "sentence": "I told Dave the good news. (who)",
+          "sentence": "I told Dave the good news.\n**who** ......",
           "answer": "Who told Dave the good news?"
         }
       ]
@@ -489,118 +489,39 @@
       "instructions": "Match to make sentences.",
       "items": [
         {
-          "sentence": "You've sent that letter I gave you,",
-          "options": [
-            "A don't you?",
-            "B didn't you?",
-            "C will you?",
-            "D haven't you?",
-            "E do you?",
-            "F did you?",
-            "G weren't you?",
-            "H aren't you?"
-          ],
+          "sentence": "You've sent that letter I gave you, **D** ...haven't you?",
           "answer": "D"
         },
         {
-          "sentence": "You catch the bus to school,",
-          "options": [
-            "A don't you?",
-            "B didn't you?",
-            "C will you?",
-            "D haven't you?",
-            "E do you?",
-            "F did you?",
-            "G weren't you?",
-            "H aren't you?"
-          ],
+          "sentence": "You catch the bus to school, **A** ...don't you?",
           "answer": "A"
         },
         {
-          "sentence": "You won't tell anyone about this,",
-          "options": [
-            "A don't you?",
-            "B didn't you?",
-            "C will you?",
-            "D haven't you?",
-            "E do you?",
-            "F did you?",
-            "G weren't you?",
-            "H aren't you?"
-          ],
+          "sentence": "You won't tell anyone about this, **C** ...will you?",
           "answer": "C"
         },
         {
-          "sentence": "You're a friend of Charlie's,",
-          "options": [
-            "A don't you?",
-            "B didn't you?",
-            "C will you?",
-            "D haven't you?",
-            "E do you?",
-            "F did you?",
-            "G weren't you?",
-            "H aren't you?"
-          ],
+          "sentence": "You're a friend of Charlie's, **H** ...aren't you?",
           "answer": "H"
         },
         {
-          "sentence": "You were living in Hong Kong then,",
-          "options": [
-            "A don't you?",
-            "B didn't you?",
-            "C will you?",
-            "D haven't you?",
-            "E do you?",
-            "F did you?",
-            "G weren't you?",
-            "H aren't you?"
-          ],
+          "sentence": "You were living in Hong Kong then, **G** ...weren't you?",
           "answer": "G"
         },
         {
-          "sentence": "You never work more than you have to,",
-          "options": [
-            "A don't you?",
-            "B didn't you?",
-            "C will you?",
-            "D haven't you?",
-            "E do you?",
-            "F did you?",
-            "G weren't you?",
-            "H aren't you?"
-          ],
+          "sentence": "You never work more than you have to, **E** ...do you?",
           "answer": "E"
         },
         {
-          "sentence": "You made no effort to make friends with Darren,",
-          "options": [
-            "A don't you?",
-            "B didn't you?",
-            "C will you?",
-            "D haven't you?",
-            "E do you?",
-            "F did you?",
-            "G weren't you?",
-            "H aren't you?"
-          ],
+          "sentence": "You made no effort to make friends with Darren, **F** ...did you?",
           "answer": "F"
         },
         {
-          "sentence": "You got Jimmy a cap for his birthday,",
-          "options": [
-            "A don't you?",
-            "B didn't you?",
-            "C will you?",
-            "D haven't you?",
-            "E do you?",
-            "F did you?",
-            "G weren't you?",
-            "H aren't you?"
-          ],
+          "sentence": "You got Jimmy a cap for his birthday, **B** ...didn't you?",
           "answer": "B"
         }
-      ]
+      ],
+      "subtype": "matching"
     },
     {
       "type": "exercise",
@@ -702,35 +623,35 @@
       "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
       "items": [
         {
-          "sentence": "When does Tina get back from Berlin? (know)\nDo ...... back from Berlin?",
+          "sentence": "When does Tina get back from Berlin?\n**know** Do ...... back from Berlin?",
           "answer": "you know when Tina gets"
         },
         {
-          "sentence": "What time does the film start tonight? (starts)\nCould you tell me ...... tonight?",
+          "sentence": "What time does the film start tonight?\n**starts** Could you tell me ...... tonight?",
           "answer": "what time/when the film starts"
         },
         {
-          "sentence": "Is service included in the price? (know)\nI would like to ...... in the price.",
+          "sentence": "Is service included in the price?\n**know** I would like to ...... in the price.",
           "answer": "know if/whether service is included"
         },
         {
-          "sentence": "What is the salary? (let)\nCould you ...... the salary is?",
+          "sentence": "What is the salary?\n**let** Could you ...... the salary is?",
           "answer": "let me know what"
         },
         {
-          "sentence": "Have you been to Brussels before? (wonder)\nI ...... to Brussels before.",
+          "sentence": "Have you been to Brussels before?\n**wonder** I ...... to Brussels before.",
           "answer": "wonder if/whether you have been"
         },
         {
-          "sentence": "Did Gail pass her exam? (passed)\nDo you know ...... her exam?",
+          "sentence": "Did Gail pass her exam?\n**passed** Do you know ...... her exam?",
           "answer": "if/whether Gail passed"
         },
         {
-          "sentence": "I wonder if you know where Mary went after the party last night. (go)\nWhere ...... after the party last night?",
+          "sentence": "I wonder if you know where Mary went after the party last night.\n**go** Where ...... after the party last night?",
           "answer": "did Mary go"
         },
         {
-          "sentence": "I would like to know how many days holiday we get each year. (given)\nHow many days holiday ...... each year?",
+          "sentence": "I would like to know how many days holiday we get each year.\n**given** How many days holiday ...... each year?",
           "answer": "are we given"
         }
       ]
@@ -738,7 +659,7 @@
     {
       "type": "exercise",
       "title": "J: Error correction (extra words)",
-      "instructions": "Circle the extra word in each sentence.",
+      "instructions": "There is one extra word in each line. Write the extra word.",
       "items": [
         {
           "sentence": "Do you have much free time these days or are you be quite busy?",
