@@ -717,6 +717,27 @@
               continue;
             }
 
+            // Generic multi-column table: tableHeaders + rows (array of arrays)
+            if (block.tableHeaders && block.rows) {
+              var thCols = block.tableHeaders;
+              html += '<table class="cu-uses-examples-table"><thead><tr>';
+              thCols.forEach(function(h) {
+                html += '<th class="cu-ue-head">' + self._escapeHTML(h) + '</th>';
+              });
+              html += '</tr></thead><tbody>';
+              (block.rows || []).forEach(function(row) {
+                html += '<tr class="cu-ue-row">';
+                (Array.isArray(row) ? row : []).forEach(function(cell, ci) {
+                  var cls = ci === 0 ? 'cu-ue-use' : 'cu-ue-example';
+                  html += '<td class="' + cls + '">' + _bold(cell) + '</td>';
+                });
+                html += '</tr>';
+              });
+              html += '</tbody></table>';
+              contentIdx++;
+              continue;
+            }
+
             // "Form" subtitle → Cambridge-style structured form block
             if (block.subtitle === 'Form') {
               var formRows   = block.rows   || null;
