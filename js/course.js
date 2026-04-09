@@ -1153,36 +1153,13 @@
       return '<div class="cu-ex-wordbank">' +
         '<span class="material-symbols-outlined">view_list</span>' +
         words.map(function(w) {
-          return '<span class="cu-wordbank-item" role="button" tabindex="0" onclick="BentoGrid._clickWordBankItem(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._clickWordBankItem(this);event.preventDefault();}" title="Click to fill gap">' + self._escapeHTML(w) + '</span>';
+          return '<span class="cu-wordbank-item" role="button" tabindex="0" onclick="BentoGrid._clickWordBankItem(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._clickWordBankItem(this);event.preventDefault();}" title="Click to mark/unmark">' + self._escapeHTML(w) + '</span>';
         }).join('') +
         '</div>';
     },
 
     _clickWordBankItem: function(el) {
-      var word = el.textContent.trim();
-      var sec = el.closest('.cu-section');
-      if (!sec) { el.classList.toggle('cu-wordbank-used'); return; }
-      // Find the last focused gap input in this section, or the first empty one
-      var inputs = Array.prototype.slice.call(sec.querySelectorAll('.cu-gap-input:not([disabled])'));
-      var target = null;
-      // Prefer a focused input
-      var focused = document.activeElement;
-      if (focused && focused.classList.contains('cu-gap-input') && sec.contains(focused) && !focused.disabled) {
-        target = focused;
-      } else if (BentoGrid._lastFocusedCuInput && sec.contains(BentoGrid._lastFocusedCuInput) && !BentoGrid._lastFocusedCuInput.disabled) {
-        target = BentoGrid._lastFocusedCuInput;
-      } else {
-        // First empty input only — never overwrite a filled input as fallback
-        target = inputs.find(function(inp) { return (inp.value || '').trim() === ''; }) || null;
-      }
-      if (target) {
-        target.value = word;
-        BentoGrid._resizeCuInput(target);
-        el.classList.add('cu-wordbank-used');
-        target.focus();
-      } else {
-        el.classList.toggle('cu-wordbank-used');
-      }
+      el.classList.toggle('cu-wordbank-used');
     },
 
     _lastFocusedCuInput: null,
