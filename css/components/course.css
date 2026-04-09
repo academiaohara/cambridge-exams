@@ -2802,6 +2802,67 @@
   animation: feBounceIn 0.35s ease;
 }
 
+/* ── Word-Spot exercise (clickable passage words) ────────────────────── */
+.cu-ws-counter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 12px;
+}
+.cu-ws-counter .material-symbols-outlined {
+  font-size: 1.1rem;
+  color: #6d28d9;
+}
+
+.cu-ws-passage {
+  line-height: 1.85;
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 14px;
+}
+
+.cu-ws-word {
+  display: inline;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 1px 3px;
+  transition: background 0.15s, color 0.15s, text-decoration 0.15s;
+  border-bottom: 2px solid transparent;
+}
+.cu-ws-word:hover {
+  background: rgba(109, 40, 217, 0.08);
+  border-bottom-color: rgba(109, 40, 217, 0.4);
+}
+.cu-ws-word.cu-ws-selected {
+  background: rgba(109, 40, 217, 0.15);
+  border-bottom-color: #6d28d9;
+  color: #4c1d95;
+  text-decoration: line-through;
+}
+.cu-ws-word.cu-ws-correct {
+  background: rgba(34, 197, 94, 0.15);
+  border-bottom-color: #22c55e;
+  color: #15803d;
+  cursor: default;
+}
+.cu-ws-word.cu-ws-incorrect {
+  background: rgba(239, 68, 68, 0.12);
+  border-bottom-color: #ef4444;
+  color: #b91c1c;
+  cursor: default;
+}
+.cu-ws-word.cu-ws-reveal {
+  background: rgba(37, 99, 235, 0.12);
+  border-bottom-color: #2563eb;
+  color: #1e40af;
+  font-weight: 700;
+  cursor: default;
+  animation: feBounceIn 0.35s ease;
+}
+
 /* ── Key Word Transformation (reading4 style) ───────────────────────── */
 .cu-kwtrans-item {
   display: flex;
