@@ -1360,6 +1360,9 @@
           if (section.passage && rvItems.length && rvItems[0] && rvItems[0].options) {
             // Multiple-choice passage exercise (e.g. Review Exercise A)
             html += self._renderCuMcPassageExercise(section, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
+          } else if (section.subtype === 'matching') {
+            // Two-column matching with drag-to-swap (e.g. Review Exercise B)
+            html += self._renderCuMatchingExercise(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
           } else {
             html += '<div class="cu-ex-items">';
             var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
