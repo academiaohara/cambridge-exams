@@ -1607,7 +1607,9 @@
       var answers = ex.answers || [];
       var answerMap = {};
       answers.forEach(function(ans, idx) { answerMap[idx + 1] = ans; });
-      var passageHtml = self._escapeHTML(passage).replace(
+      var passageHtml = self._escapeHTML(passage)
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(
         /\((\d+)\)\s*(?:\.{6,}|…{2,})/g,
         function(_, num) {
           var gapNum = parseInt(num);
