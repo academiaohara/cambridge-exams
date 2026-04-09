@@ -18,8 +18,12 @@
           "subtitle": "Watch out!",
           "description": "Whether we use 'an' or 'a' depends on the sound, not the spelling.",
           "examples": [
-            "✓ The news is on TV in an hour.",
-            "✓ Being in a film was a unique experience for me."
+            {
+              "correct": "The news is on TV in an hour."
+            },
+            {
+              "correct": "Being in a film was a unique experience for me."
+            }
           ]
         }
       ]

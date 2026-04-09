@@ -717,15 +717,56 @@
               continue;
             }
 
-            // "Form" subtitle → Cambridge-style form row
+            // "Form" subtitle → Cambridge-style structured form block
             if (block.subtitle === 'Form') {
-              var formItems = block.items || [];
-              html += '<div class="cu-gc-form-row">' +
-                '<div class="cu-gc-form-label">Form</div>' +
-                '<div class="cu-gc-form-content">';
-              formItems.forEach(function(fi) {
-                html += '<div class="cu-gc-form-item">' + _bold(fi) + '</div>';
-              });
+              var formRows   = block.rows   || null;
+              var formItems  = block.items  || [];
+              var formFormula = block.formula || null;
+
+              html += '<div class="cu-gc-form-row"><div class="cu-gc-form-label">Form</div><div class="cu-gc-form-content">';
+
+              // Optional formula header (e.g. "have/has + past participle")
+              if (formFormula) {
+                html += '<div class="cu-gc-form-formula">' + _bold(formFormula) + '</div>';
+              }
+
+              if (formRows && formRows.length) {
+                // New structured rows format: { label, left, right?, note? }
+                var hasTwoCol = formRows.some(function(r) { return r.right; });
+                formRows.forEach(function(row) {
+                  html += '<div class="cu-gc-form-stmt-row' + (hasTwoCol ? ' cu-gc-form-two-col' : '') + '">' +
+                    '<span class="cu-gc-form-stmt-label">' + self._escapeHTML(row.label || '') + '</span>' +
+                    '<span class="cu-gc-form-stmt-cell">' + _bold(row.left || '') + '</span>';
+                  if (hasTwoCol) {
+                    html += '<span class="cu-gc-form-stmt-cell">' + _bold(row.right || '') + '</span>';
+                  }
+                  html += '</div>';
+                  if (row.note) {
+                    html += '<div class="cu-gc-form-stmt-note">' + _bold(row.note) + '</div>';
+                  }
+                });
+              } else if (formItems.length) {
+                // Legacy items: detect "statement:", "negative:", "question:" prefixes
+                var firstItem = formItems[0] || '';
+                var isLabeled = /^(statement|negative|question):/i.test(firstItem);
+                if (isLabeled) {
+                  formItems.forEach(function(fi) {
+                    var sep = fi.indexOf(': ');
+                    var lbl = sep !== -1 ? fi.substring(0, sep) : '';
+                    var cnt = sep !== -1 ? fi.substring(sep + 2) : fi;
+                    html += '<div class="cu-gc-form-stmt-row">' +
+                      '<span class="cu-gc-form-stmt-label">' + self._escapeHTML(lbl) + '</span>' +
+                      '<span class="cu-gc-form-stmt-cell">' + _bold(cnt) + '</span>' +
+                    '</div>';
+                  });
+                } else {
+                  // Simple formula items (e.g. "had + past participle")
+                  formItems.forEach(function(fi) {
+                    html += '<div class="cu-gc-form-item">' + _bold(fi) + '</div>';
+                  });
+                }
+              }
+
               html += '</div></div>';
               contentIdx++;
               continue;
@@ -765,8 +806,23 @@
               if (woItems.length) {
                 html += '<ul class="cu-gc-watchout-list">';
                 woItems.forEach(function(item) {
-                  if (typeof item === 'string') {
-                    html += '<li>' + _bold(item) + '</li>';
+                  if (item && typeof item === 'object') {
+                    if (item.correct !== undefined) {
+                      html += '<li class="cu-gc-wo-correct"><span class="cu-gc-wo-mark">✓</span>' + _bold(item.correct) + '</li>';
+                    } else if (item.incorrect !== undefined) {
+                      html += '<li class="cu-gc-wo-incorrect"><span class="cu-gc-wo-mark">✗</span><s>' + _bold(item.incorrect) + '</s></li>';
+                    } else if (item.note) {
+                      html += '<li class="cu-gc-wo-note">' + _bold(item.note) + '</li>';
+                    }
+                  } else if (typeof item === 'string') {
+                    // Detect leading ✓ or ✗ symbols for auto-styling
+                    if (/^✓/.test(item)) {
+                      html += '<li class="cu-gc-wo-correct"><span class="cu-gc-wo-mark">✓</span>' + _bold(item.replace(/^✓\s*/, '')) + '</li>';
+                    } else if (/^[✗✕]|^[Xx]\s/.test(item)) {
+                      html += '<li class="cu-gc-wo-incorrect"><span class="cu-gc-wo-mark">✗</span><s>' + _bold(item.replace(/^[✗✕Xx]\s*/, '')) + '</s></li>';
+                    } else {
+                      html += '<li>' + _bold(item) + '</li>';
+                    }
                   }
                 });
                 html += '</ul>';

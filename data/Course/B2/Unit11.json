@@ -10,11 +10,7 @@
       "content": [
         {
           "subtitle": "Form",
-          "items": [
-            "so + adjective + that",
-            "so + adverb + that",
-            "so + many/much + noun + that"
-          ]
+          "formula": "so + adjective/adverb + that ..."
         },
         {
           "subtitle": "Use",
@@ -26,9 +22,15 @@
           "subtitle": "Watch out!",
           "description": "The word 'that' is not usually necessary to introduce the second clause.",
           "examples": [
-            "✓ The crime rate is so high people are very frightened.",
-            "✓ The word 'so' has a number of other uses. Try not to get confused between them.",
-            "✓ I saw that burglar leaving the house, so I called the police."
+            {
+              "correct": "The crime rate is so high people are very frightened."
+            },
+            {
+              "correct": "The word 'so' has a number of other uses. Try not to get confused between them."
+            },
+            {
+              "correct": "I saw that burglar leaving the house, so I called the police."
+            }
           ]
         }
       ]
@@ -39,11 +41,7 @@
       "content": [
         {
           "subtitle": "Form",
-          "items": [
-            "such + a/an + adjective + singular noun + that",
-            "such + adjective + plural noun + that",
-            "such + a lot of + noun + that"
-          ]
+          "formula": "such + (a/an) + adjective + noun + that ..."
         },
         {
           "subtitle": "Use",
@@ -59,11 +57,7 @@
       "content": [
         {
           "subtitle": "Form",
-          "items": [
-            "enough + noun (+ for and/or + full infinitive)",
-            "adjective + enough (+ for and/or + full infinitive)",
-            "adverb + enough (+ for and/or + full infinitive)"
-          ]
+          "formula": "adjective/adverb + enough (+ infinitive) / enough + noun"
         },
         {
           "subtitle": "Use",
@@ -75,7 +69,9 @@
           "subtitle": "Watch out!",
           "description": "A common mistake is to put 'enough' before an adjective when the correct word is 'quite' or 'fairly'.",
           "examples": [
-            "✓ It's quite / fairly dangerous around here so don't go out alone."
+            {
+              "correct": "It's quite / fairly dangerous around here so don't go out alone."
+            }
           ]
         }
       ]
@@ -86,11 +82,7 @@
       "content": [
         {
           "subtitle": "Form",
-          "items": [
-            "too + adjective (+ for and/or + full infinitive)",
-            "too + adverb (+ for and/or + full infinitive)",
-            "too + many/much + noun (+ for and/or + full infinitive)"
-          ]
+          "formula": "too + adjective/adverb (+ infinitive)"
         },
         {
           "subtitle": "Use",
@@ -102,7 +94,9 @@
           "subtitle": "Watch out!",
           "description": "We do not use 'too' when we want to describe something we consider to be positive. Instead, we use 'very', 'really' or 'extremely'.",
           "examples": [
-            "✓ You were very / really / extremely lucky not to get caught."
+            {
+              "correct": "You were very / really / extremely lucky not to get caught."
+            }
           ]
         }
       ]

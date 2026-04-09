@@ -9,6 +9,26 @@
       "title": "Present Simple",
       "content": [
         {
+          "subtitle": "Form",
+          "rows": [
+            {
+              "label": "statement",
+              "left": "I/you/we/they **travel** ...",
+              "right": "He/she/it **travels** ..."
+            },
+            {
+              "label": "negative",
+              "left": "I/you/we/they **don't travel** ...",
+              "right": "He/she/it **doesn't travel** ..."
+            },
+            {
+              "label": "question",
+              "left": "**Do** I/you/we/they **travel** ...?",
+              "right": "**Does** he/she/it **travel** ...?"
+            }
+          ]
+        },
+        {
           "subtitle": "Uses",
           "items": [
             "General truths and facts",
@@ -71,6 +91,26 @@
       "title": "Present Continuous",
       "content": [
         {
+          "subtitle": "Form",
+          "rows": [
+            {
+              "label": "statement",
+              "left": "I **am driving** ...",
+              "right": "He/she/it **is driving** ... You/we/they **are driving** ..."
+            },
+            {
+              "label": "negative",
+              "left": "I **'m not driving** ...",
+              "right": "He/she/it **isn't driving** ... You/we/they **aren't driving** ..."
+            },
+            {
+              "label": "question",
+              "left": "**Am** I **driving** ...?",
+              "right": "**Is** he/she/it **driving** ...? **Are** you/we/they **driving** ...?"
+            }
+          ]
+        },
+        {
           "subtitle": "Uses",
           "items": [
             "Actions happening at the moment of speaking",
@@ -117,6 +157,27 @@
       "type": "theory",
       "title": "Present Perfect Simple",
       "content": [
+        {
+          "subtitle": "Form",
+          "formula": "have/has + past participle",
+          "rows": [
+            {
+              "label": "statement",
+              "left": "I/you/we/they **have flown** ...",
+              "right": "He/she/it **has flown** ..."
+            },
+            {
+              "label": "negative",
+              "left": "I/you/we/they **haven't flown** ...",
+              "right": "He/she/it **hasn't flown** ..."
+            },
+            {
+              "label": "question",
+              "left": "**Have** I/you/we/they **flown** ...?",
+              "right": "**Has** he/she/it **flown** ...?"
+            }
+          ]
+        },
         {
           "subtitle": "Uses",
           "items": [
@@ -176,6 +237,27 @@
       "title": "Present Perfect Continuous",
       "content": [
         {
+          "subtitle": "Form",
+          "formula": "have/has + been + -ing",
+          "rows": [
+            {
+              "label": "statement",
+              "left": "I/you/we/they **have been travelling** ...",
+              "right": "He/she/it **has been travelling** ..."
+            },
+            {
+              "label": "negative",
+              "left": "I/you/we/they **haven't been travelling** ...",
+              "right": "He/she/it **hasn't been travelling** ..."
+            },
+            {
+              "label": "question",
+              "left": "**Have** I/you/we/they **been travelling** ...?",
+              "right": "**Has** he/she/it **been travelling** ...?"
+            }
+          ]
+        },
+        {
           "subtitle": "Uses",
           "items": [
             "Actions and situations that started in the past and are still continuing (or have just stopped)",
@@ -195,8 +277,12 @@
           "subtitle": "Watch out!",
           "description": "We usually use the present perfect simple to say how many times something has happened or how many things have been completed. We usually use the present perfect continuous to emphasise how long something has been happening.",
           "examples": [
-            "✓ She**'s sent** ten emails this morning. (number of completed actions)",
-            "✓ She**'s been sending** emails all morning. (emphasising duration)"
+            {
+              "correct": "She**'s sent** ten emails this morning. (number of completed actions)"
+            },
+            {
+              "correct": "She**'s been sending** emails all morning. (emphasising duration)"
+            }
           ]
         },
         {
@@ -320,10 +406,18 @@
           "subtitle": "Watch out!",
           "description": "Many stative verbs can be used in continuous tenses when they describe an action rather than a state. Examples: be, consider, feel, have, look, see, smell, taste, think, weigh.",
           "examples": [
-            "✓ I **think** this app is very useful. (state: think = believe)",
-            "✓ I**'m thinking** about upgrading my phone. (action: think = consider)",
-            "✓ The soup **smells** delicious. (state: perception)",
-            "✓ The chef **is smelling** the herbs to check they are fresh. (action)"
+            {
+              "correct": "I **think** this app is very useful. (state: think = believe)"
+            },
+            {
+              "correct": "I**'m thinking** about upgrading my phone. (action: think = consider)"
+            },
+            {
+              "correct": "The soup **smells** delicious. (state: perception)"
+            },
+            {
+              "correct": "The chef **is smelling** the herbs to check they are fresh. (action)"
+            }
           ]
         }
       ]
