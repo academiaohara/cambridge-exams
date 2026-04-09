@@ -1540,7 +1540,7 @@
 
         html += '<div class="cu-few-item' + (isOkItem ? ' cu-few-ok-item' : '') + '" ' +
           'data-answer="' + self._escapeHTML(answer) + '">';
-        html += '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>';
+        if (!ex.hideNumBadge) html += '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>';
 
         if (isOkItem) {
           // Correct-sentence item: plain text + OK button
