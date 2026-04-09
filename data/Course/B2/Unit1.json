@@ -510,110 +510,108 @@
     },
     {
       "type": "exercise",
-      "subtype": "mc-inline",
       "title": "E: Multiple choice",
-      "hideNumBadge": true,
       "instructions": "Choose the correct answer: A, B, C or D.",
-      "questions": [
+      "items": [
         {
           "sentence": "She (1) ______ on a new research project at the moment, so she's very busy.",
-          "gaps": [
-            {
-              "num": 1,
-              "options": ["A works", "B is working", "C has worked", "D has been working"],
-              "answer": "B"
-            }
-          ]
+          "options": [
+            "A works",
+            "B is working",
+            "C has worked",
+            "D has been working"
+          ],
+          "answer": "B"
         },
         {
           "sentence": "Water (2) ______ at a lower temperature at high altitude than it does at sea level.",
-          "gaps": [
-            {
-              "num": 2,
-              "options": ["A is boiling", "B has boiled", "C boils", "D has been boiling"],
-              "answer": "C"
-            }
-          ]
+          "options": [
+            "A is boiling",
+            "B has boiled",
+            "C boils",
+            "D has been boiling"
+          ],
+          "answer": "C"
         },
         {
           "sentence": "The company (3) ______ its prices three times already this year.",
-          "gaps": [
-            {
-              "num": 3,
-              "options": ["A raised", "B raises", "C is raising", "D has raised"],
-              "answer": "D"
-            }
-          ]
+          "options": [
+            "A raised",
+            "B raises",
+            "C is raising",
+            "D has raised"
+          ],
+          "answer": "D"
         },
         {
           "sentence": "I can smell something burning — I think the oven (4) ______ for too long.",
-          "gaps": [
-            {
-              "num": 4,
-              "options": ["A is on", "B has been on", "C was on", "D will be on"],
-              "answer": "B"
-            }
-          ]
+          "options": [
+            "A is on",
+            "B has been on",
+            "C was on",
+            "D will be on"
+          ],
+          "answer": "B"
         },
         {
           "sentence": "The museum (5) ______ on Mondays, so we'll have to go another day.",
-          "gaps": [
-            {
-              "num": 5,
-              "options": ["A closes", "B is closing", "C has closed", "D has been closing"],
-              "answer": "A"
-            }
-          ]
+          "options": [
+            "A closes",
+            "B is closing",
+            "C has closed",
+            "D has been closing"
+          ],
+          "answer": "A"
         },
         {
           "sentence": "Look — the sky (6) ______ darker. I think there's a storm coming.",
-          "gaps": [
-            {
-              "num": 6,
-              "options": ["A gets", "B got", "C is getting", "D has got"],
-              "answer": "C"
-            }
-          ]
+          "options": [
+            "A gets",
+            "B got",
+            "C is getting",
+            "D has got"
+          ],
+          "answer": "C"
         },
         {
           "sentence": "I (7) ______ the document twice and I still don't understand what it means.",
-          "gaps": [
-            {
-              "num": 7,
-              "options": ["A read", "B am reading", "C have read", "D have been reading"],
-              "answer": "C"
-            }
-          ]
+          "options": [
+            "A read",
+            "B am reading",
+            "C have read",
+            "D have been reading"
+          ],
+          "answer": "C"
         },
         {
           "sentence": "(8) ______ you ever ______ a complaint about poor service in a restaurant?",
-          "gaps": [
-            {
-              "num": 8,
-              "options": ["A Do … make", "B Are … making", "C Have … made", "D Did … make"],
-              "answer": "C"
-            }
-          ]
+          "options": [
+            "A Do … make",
+            "B Are … making",
+            "C Have … made",
+            "D Did … make"
+          ],
+          "answer": "C"
         },
         {
           "sentence": "My grandfather (9) ______ chess every Sunday — it's his favourite hobby.",
-          "gaps": [
-            {
-              "num": 9,
-              "options": ["A plays", "B is playing", "C has played", "D has been playing"],
-              "answer": "A"
-            }
-          ]
+          "options": [
+            "A plays",
+            "B is playing",
+            "C has played",
+            "D has been playing"
+          ],
+          "answer": "A"
         },
         {
           "sentence": "The development team (10) ______ a new feature all week and they're nearly done.",
-          "gaps": [
-            {
-              "num": 10,
-              "options": ["A tests", "B tested", "C has tested", "D has been testing"],
-              "answer": "D"
-            }
-          ]
+          "options": [
+            "A tests",
+            "B tested",
+            "C has tested",
+            "D has been testing"
+          ],
+          "answer": "D"
         }
       ]
     },
@@ -698,8 +696,7 @@
           "sentence": "I'm still considering **C** whether to accept the job offer.",
           "answer": "C – whether to accept the job offer."
         }
-      ],
-      "subtype": "matching"
+      ]
     },
     {
       "type": "exercise",
