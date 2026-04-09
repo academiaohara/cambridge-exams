@@ -867,6 +867,22 @@
   padding: 1px 6px;
   line-height: 1.5;
 }
+.cu-ex-num-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #e2e8f0;
+  color: #475569;
+  font-weight: 700;
+  font-size: 0.78rem;
+  border-radius: 50%;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1;
+  vertical-align: middle;
+  margin: 0 2px;
+  flex-shrink: 0;
+}
 .cu-hint-pill-input {
   border-radius: 10px !important;
   border: 1.5px solid #e2e8f0 !important;

@@ -378,7 +378,7 @@
           },
           {
             "sentence": "I'd spend hours putting linseed oil on my cricket ...... to keep the wood strong.",
-            "answer": "bat(s)"
+            "answer": "bat/bats"
           }
         ]
       },
@@ -433,27 +433,27 @@
         "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
         "questions": [
           {
-            "sentence": "I don't know how you can stand getting up so early to go to the pool. (put)\nI don't know how you can ...... up so early to go to the pool.",
+            "sentence": "I don't know how you can stand getting up so early to go to the pool. **put**\nI don't know how you can ...... up so early to go to the pool.",
             "answer": "put up with getting"
           },
           {
-            "sentence": "I've finally started sorting out my postcard collection. (round)\nI've finally ...... sorting out my postcard collection.",
+            "sentence": "I've finally started sorting out my postcard collection. **round**\nI've finally ...... sorting out my postcard collection.",
             "answer": "got round to"
           },
           {
-            "sentence": "What did you do at the weekend? (get)\nWhat did you ...... at the weekend?",
+            "sentence": "What did you do at the weekend? **get**\nWhat did you ...... at the weekend?",
             "answer": "get up to"
           },
           {
-            "sentence": "I'm not so keen on skiing now I've discovered snowboarding. (gone)\nI've ...... since I discovered snowboarding.",
+            "sentence": "I'm not so keen on skiing now I've discovered snowboarding. **gone**\nI've ...... since I discovered snowboarding.",
             "answer": "gone off skiing"
           },
           {
-            "sentence": "Why do you continue to have riding lessons if you can't afford them? (on)\nWhy do you ...... riding lessons if you can't afford them?",
+            "sentence": "Why do you continue to have riding lessons if you can't afford them? **on**\nWhy do you ...... riding lessons if you can't afford them?",
             "answer": "carry on having"
           },
           {
-            "sentence": "We can't delay the match any longer. (put)\nWe can't ...... any longer.",
+            "sentence": "We can't delay the match any longer. **put**\nWe can't ...... any longer.",
             "answer": "put (off) the match (off)"
           }
         ]
@@ -647,97 +647,35 @@
         "instructions": "Match to make sentences.",
         "questions": [
           {
-            "sentence": "I'm not very fond",
-            "options": [
-              "A in playing for the school team.",
-              "B to find enough time to have any hobbies.",
-              "C to try to find the golf balls we'd lost.",
-              "D of playing in goal.",
-              "E from finishing the game.",
-              "F to what the coach thinks first.",
-              "G on getting fit."
-            ],
-            "answer": "D"
+            "sentence": "I'm not very fond **D** of playing in goal.",
+            "answer": "D – of playing in goal."
           },
           {
-            "sentence": "She's interested",
-            "options": [
-              "A in playing for the school team.",
-              "B to find enough time to have any hobbies.",
-              "C to try to find the golf balls we'd lost.",
-              "D of playing in goal.",
-              "E from finishing the game.",
-              "F to what the coach thinks first.",
-              "G on getting fit."
-            ],
-            "answer": "A"
+            "sentence": "She's interested **A** in playing for the school team.",
+            "answer": "A – in playing for the school team."
           },
           {
-            "sentence": "You should concentrate",
-            "options": [
-              "A in playing for the school team.",
-              "B to find enough time to have any hobbies.",
-              "C to try to find the golf balls we'd lost.",
-              "D of playing in goal.",
-              "E from finishing the game.",
-              "F to what the coach thinks first.",
-              "G on getting fit."
-            ],
-            "answer": "G"
+            "sentence": "You should concentrate **G** on getting fit.",
+            "answer": "G – on getting fit."
           },
           {
-            "sentence": "I used to find it difficult",
-            "options": [
-              "A in playing for the school team.",
-              "B to find enough time to have any hobbies.",
-              "C to try to find the golf balls we'd lost.",
-              "D of playing in goal.",
-              "E from finishing the game.",
-              "F to what the coach thinks first.",
-              "G on getting fit."
-            ],
-            "answer": "B"
+            "sentence": "I used to find it difficult **B** to find enough time to have any hobbies.",
+            "answer": "B – to find enough time to have any hobbies."
           },
           {
-            "sentence": "Let's listen",
-            "options": [
-              "A in playing for the school team.",
-              "B to find enough time to have any hobbies.",
-              "C to try to find the golf balls we'd lost.",
-              "D of playing in goal.",
-              "E from finishing the game.",
-              "F to what the coach thinks first.",
-              "G on getting fit."
-            ],
-            "answer": "F"
+            "sentence": "Let's listen **F** to what the coach thinks first.",
+            "answer": "F – to what the coach thinks first."
           },
           {
-            "sentence": "We stopped",
-            "options": [
-              "A in playing for the school team.",
-              "B to find enough time to have any hobbies.",
-              "C to try to find the golf balls we'd lost.",
-              "D of playing in goal.",
-              "E from finishing the game.",
-              "F to what the coach thinks first.",
-              "G on getting fit."
-            ],
-            "answer": "C"
+            "sentence": "We stopped **C** to try to find the golf balls we'd lost.",
+            "answer": "C – to try to find the golf balls we'd lost."
           },
           {
-            "sentence": "The bad weather stopped us",
-            "options": [
-              "A in playing for the school team.",
-              "B to find enough time to have any hobbies.",
-              "C to try to find the golf balls we'd lost.",
-              "D of playing in goal.",
-              "E from finishing the game.",
-              "F to what the coach thinks first.",
-              "G on getting fit."
-            ],
-            "answer": "E"
+            "sentence": "The bad weather stopped us **E** from finishing the game.",
+            "answer": "E – from finishing the game."
           }
-        ]
+        ],
+        "type": "matching"
       },
       "G": {
         "title": "Cloze (Word patterns)",
@@ -832,31 +770,31 @@
         "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
         "questions": [
           {
-            "sentence": "When I first started playing snooker, I had no real (1) ...... of the rules.",
+            "sentence": "When I first started playing snooker, I had no real (1) ...... (KNOW) of the rules.",
             "answer": "knowledge"
           },
           {
-            "sentence": "I just thought it looked an (2) ...... game.",
+            "sentence": "I just thought it looked an (2) ...... (ENJOY) game.",
             "answer": "enjoyable"
           },
           {
-            "sentence": "Also, I didn't need to buy any expensive (3) ...... because the snooker hall near my house had tables and cues.",
+            "sentence": "Also, I didn't need to buy any expensive (3) ...... (EQUIP) because the snooker hall near my house had tables and cues.",
             "answer": "equipment"
           },
           {
-            "sentence": "I spent (4) ...... all the free time I had practising, and then decided to enter a (5) .......",
+            "sentence": "I spent (4) ...... (PRACTICAL) all the free time I had practising, and then decided to enter a (5) ...... (COMPETE).",
             "answer": "practically, competition"
           },
           {
-            "sentence": "My (6) ...... was someone who'd been playing for years.",
+            "sentence": "My (6) ...... (OPPOSE) was someone who'd been playing for years.",
             "answer": "opponent"
           },
           {
-            "sentence": "Of course, he beat me, but the fact that I'd (7) ...... didn't put me off at all.",
+            "sentence": "Of course, he beat me, but the fact that I'd (7) ...... (LOSE) didn't put me off at all.",
             "answer": "lost"
           },
           {
-            "sentence": "And, (8) ......, my game improved enough for me to become a professional snooker player three years ago.",
+            "sentence": "And, (8) ...... (FORTUNE), my game improved enough for me to become a professional snooker player three years ago.",
             "answer": "fortunately"
           }
         ]
