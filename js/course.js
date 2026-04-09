@@ -1302,6 +1302,7 @@
       // Clear stored result data for total score
       sec.removeAttribute('data-correct-items');
       sec.removeAttribute('data-total-items');
+      sec.removeAttribute('data-checked');
       // Re-enable check button, hide retry button
       var checkBtn = sec.querySelector('.cu-check-btn');
       if (checkBtn) checkBtn.disabled = false;
@@ -1333,6 +1334,15 @@
         input._cuAltBadge = null;
         BentoGrid._resizeCuInput(input);
       });
+      // Reset crossword letter boxes
+      sec.querySelectorAll('.cu-cw-letter').forEach(function(b) {
+        b.value = '';
+        b.disabled = false;
+        b.classList.remove('cu-cw-letter-correct', 'cu-cw-letter-incorrect', 'cu-input-show-correct');
+        b.removeAttribute('data-saved-cw-value');
+      });
+      // Remove crossword answer-reveal divs inserted by _doCheckCuExSection
+      sec.querySelectorAll('.cu-cw-answer-reveal').forEach(function(el) { el.remove(); });
       // Remove alt-solution cycle badges
       sec.querySelectorAll('.cu-alt-badge').forEach(function(b) { b.remove(); });
       // Remove per-item toggle buttons
@@ -1959,8 +1969,6 @@
       var self = this;
       var acrossItems = ex.across || [];
       var downItems = ex.down || [];
-      var allItems = acrossItems.map(function(it) { return { dir: 'across', num: it.num, clue: it.clue, answer: it.answer }; })
-        .concat(downItems.map(function(it) { return { dir: 'down', num: it.num, clue: it.clue, answer: it.answer }; }));
 
       function renderClueList(items, label) {
         if (!items.length) return '';
@@ -1968,23 +1976,24 @@
         items.forEach(function(it) {
           var boxesHtml = '';
           var ans = it.answer || '';
-          for (var ci = 0; ci < ans.length; ci++) {
-            boxesHtml += '<span class="cu-cw-box"></span>';
-          }
           var iid = idBase + '-cw-' + it.dir + '-' + it.num;
-          h += '<li class="cu-cw-clue-item">' +
+          for (var ci = 0; ci < ans.length; ci++) {
+            boxesHtml += '<input type="text" class="cu-cw-box cu-cw-letter" maxlength="1" ' +
+              'data-cw-id="' + iid + '" data-cw-idx="' + ci + '" ' +
+              'autocomplete="off" spellcheck="false" ' +
+              'oninput="BentoGrid._cwBoxInput(this)" ' +
+              'onkeydown="BentoGrid._cwBoxKeydown(this,event)" />';
+          }
+          h += '<li class="cu-cw-clue-item" data-answer="' + self._escapeHTML(ans.toLowerCase()) + '" data-cw-id="' + iid + '">' +
             '<span class="cu-cw-clue-text"><span class="cu-cw-clue-num">' + it.num + '.</span> ' + self._escapeHTML(it.clue) + '</span>' +
             '<div class="cu-cw-input-row">' +
               boxesHtml +
+              // Hidden backing input keeps compatibility with save/restore logic (_getReviewSectionAnswers reads .cu-gap-input)
               '<input type="text" class="cu-gap-input cu-cw-input" id="' + iid + '" ' +
                 'data-answer="' + self._escapeHTML(ans.toLowerCase()) + '" ' +
-                'data-len="' + ans.length + '" ' +
-                'maxlength="' + (ans.length + 2) + '" ' +
-                'placeholder="' + ans.length + ' letters" ' +
-                'autocomplete="off" spellcheck="false" ' +
-                'oninput="BentoGrid._resizeCuInput(this);BentoGrid._saveCuExSectionState(this.closest(\'.cu-section\'))" />' +
+                'style="display:none" tabindex="-1" aria-hidden="true" ' +
+                'autocomplete="off" />' +
             '</div>' +
-            '<div class="cu-ex-answer-reveal" style="display:none">' + self._escapeHTML(ans) + '</div>' +
           '</li>';
         });
         h += '</ol></div>';
@@ -1997,6 +2006,56 @@
       html += '</div>';
       html += self._renderCuExFooter(secId);
       return html;
+    },
+
+    // Called oninput on each crossword letter box: filter to one letter, auto-advance, sync backing input.
+    _cwBoxInput: function(el) {
+      // Keep only the last typed character (handles paste/IME)
+      var val = el.value.replace(/[^a-zA-Z]/g, '');
+      el.value = val ? val[val.length - 1] : '';
+      // Auto-advance to next box if a letter was entered
+      if (el.value) {
+        var iid = el.getAttribute('data-cw-id');
+        var idx = parseInt(el.getAttribute('data-cw-idx') || '0');
+        var row = el.closest('.cu-cw-input-row');
+        var next = row ? row.querySelector('[data-cw-id="' + iid + '"][data-cw-idx="' + (idx + 1) + '"]') : null;
+        if (next && !next.disabled) { next.focus(); next.select(); }
+      }
+      BentoGrid._syncCwBackingInput(el);
+      var sec = el.closest('.cu-section');
+      if (sec) BentoGrid._saveCuExSectionState(sec);
+    },
+
+    // Called onkeydown on each crossword letter box: handle Backspace/Delete and arrow navigation.
+    _cwBoxKeydown: function(el, e) {
+      var iid = el.getAttribute('data-cw-id');
+      var idx = parseInt(el.getAttribute('data-cw-idx') || '0');
+      var row = el.closest('.cu-cw-input-row');
+      if (e.key === 'Backspace' || e.key === 'Delete') {
+        // If box is already empty, move focus to previous box
+        if (!el.value) {
+          var prev = row ? row.querySelector('[data-cw-id="' + iid + '"][data-cw-idx="' + (idx - 1) + '"]') : null;
+          if (prev && !prev.disabled) { prev.focus(); prev.select(); }
+        }
+      } else if (e.key === 'ArrowLeft') {
+        var prevBox = row ? row.querySelector('[data-cw-id="' + iid + '"][data-cw-idx="' + (idx - 1) + '"]') : null;
+        if (prevBox) { e.preventDefault(); prevBox.focus(); prevBox.select(); }
+      } else if (e.key === 'ArrowRight') {
+        var nextBox = row ? row.querySelector('[data-cw-id="' + iid + '"][data-cw-idx="' + (idx + 1) + '"]') : null;
+        if (nextBox) { e.preventDefault(); nextBox.focus(); nextBox.select(); }
+      }
+    },
+
+    // Sync the hidden backing .cu-gap-input with the concatenated values of the letter boxes.
+    _syncCwBackingInput: function(el) {
+      var iid = el.getAttribute('data-cw-id');
+      var row = el.closest('.cu-cw-input-row');
+      if (!row) return;
+      var backing = document.getElementById(iid);
+      if (!backing) return;
+      var letters = Array.prototype.slice.call(row.querySelectorAll('.cu-cw-letter[data-cw-id="' + iid + '"]'));
+      letters.sort(function(a, b) { return parseInt(a.getAttribute('data-cw-idx') || '0') - parseInt(b.getAttribute('data-cw-idx') || '0'); });
+      backing.value = letters.map(function(b) { return b.value || ''; }).join('');
     },
 
     _renderCuMatchingExercise: function(questions, idBase, secId) {
@@ -3186,6 +3245,15 @@
         var inputs = sec.querySelectorAll('.cu-gap-input');
         inputs.forEach(function(inp, i) { if (answers.inputs[i] !== undefined) inp.value = answers.inputs[i]; });
       }
+      // Restore crossword letter boxes from the hidden backing inputs
+      sec.querySelectorAll('.cu-cw-clue-item').forEach(function(item) {
+        var cwId = item.getAttribute('data-cw-id');
+        var backing = cwId ? document.getElementById(cwId) : null;
+        if (!backing) return;
+        var word = backing.value || '';
+        var boxes = item.querySelectorAll('.cu-cw-letter');
+        boxes.forEach(function(b, bi) { b.value = word[bi] || ''; });
+      });
       if (answers.options) {
         sec.querySelectorAll('.cu-option-btn').forEach(function(btn) {
           var g = btn.getAttribute('data-group');
@@ -4479,11 +4547,46 @@
           }
         }
       });
+      // Handle crossword exercises (letter-box style)
+      sec.querySelectorAll('.cu-cw-clue-item').forEach(function(item) {
+        totalItems++;
+        var expected = (item.getAttribute('data-answer') || '').toLowerCase();
+        var boxes = item.querySelectorAll('.cu-cw-letter');
+        var givenArr = Array.prototype.slice.call(boxes).map(function(b) { return (b.value || '').toLowerCase(); });
+        var given = givenArr.join('');
+        var filled = given.replace(/\s/g, '') !== '';
+        var ok = filled && given === expected;
+        boxes.forEach(function(b, bi) {
+          b.classList.remove('cu-cw-letter-correct', 'cu-cw-letter-incorrect');
+          b.disabled = true;
+          if (!filled) return;
+          var letterOk = (b.value || '').toLowerCase() === (expected[bi] || '');
+          b.classList.add(letterOk ? 'cu-cw-letter-correct' : 'cu-cw-letter-incorrect');
+        });
+        // Show correct answer below the row when wrong or empty
+        if (!ok) {
+          var row = item.querySelector('.cu-cw-input-row');
+          if (row && !row.querySelector('.cu-cw-answer-reveal')) {
+            var revSpan = document.createElement('div');
+            revSpan.className = 'cu-cw-answer-reveal';
+            revSpan.setAttribute('role', 'status');
+            revSpan.setAttribute('aria-live', 'polite');
+            revSpan.textContent = expected;
+            row.parentNode.insertBefore(revSpan, row.nextSibling);
+          }
+        }
+        if (ok) correctItems++;
+      });
       var checkBtn = sec.querySelector('.cu-check-btn');
       if (checkBtn) checkBtn.disabled = true;
+      // Mark the section as checked so Show/Hide answers doesn't re-enable Check
+      sec.setAttribute('data-checked', 'true');
+      // If crossword has no other item types, keep "Show answers" visible (per-item toggles don't exist for crossword)
+      var hasCwItems = sec.querySelectorAll('.cu-cw-clue-item').length > 0;
+      var hasNonCwItems = sec.querySelectorAll('.cu-ex-item').length > 0;
       // Hide "Show answers" button — per-item toggles replace it after checking
       var showBtn = sec.querySelector('.cu-show-all-btn');
-      if (showBtn) showBtn.style.display = 'none';
+      if (showBtn) showBtn.style.display = (hasCwItems && !hasNonCwItems) ? '' : 'none';
       // Disable all inputs, option buttons, and OK chips
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) { input.disabled = true; });
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) { btn.disabled = true; });
@@ -4780,6 +4883,17 @@
         sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
           if (span.getAttribute('data-ws-answer') === '1') span.classList.add('cu-ws-reveal');
         });
+        // Crossword: fill each letter box with the correct character
+        sec.querySelectorAll('.cu-cw-clue-item').forEach(function(item) {
+          var ans = (item.getAttribute('data-answer') || '');
+          var boxes = item.querySelectorAll('.cu-cw-letter');
+          boxes.forEach(function(b, bi) {
+            b.setAttribute('data-saved-cw-value', b.value);
+            b.value = ans[bi] || '';
+            b.classList.add('cu-input-show-correct');
+            b.disabled = true;
+          });
+        });
       } else {
         // Hide answers: restore original values
         sec.setAttribute('data-answers-showing', 'false');
@@ -4788,9 +4902,10 @@
           var textNode = btn.lastChild;
           if (textNode && textNode.nodeType === 3) textNode.textContent = ' Show answers';
         }
-        // Re-enable check button when answers are hidden
+        // Re-enable check button when answers are hidden (only if section hasn't been checked yet)
         var checkBtn = sec.querySelector('.cu-check-btn');
-        if (checkBtn) checkBtn.disabled = false;
+        var wasChecked = sec.getAttribute('data-checked') === 'true';
+        if (checkBtn && !wasChecked) checkBtn.disabled = false;
         // Re-enable OK chips when answers are hidden
         sec.querySelectorAll('.cu-ok-chip').forEach(function(btn) { btn.disabled = false; });
 
@@ -4875,6 +4990,16 @@
         // Word-spot exercise: remove reveal styling
         sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
           span.classList.remove('cu-ws-reveal');
+        });
+        // Crossword: restore saved letter values
+        sec.querySelectorAll('.cu-cw-letter').forEach(function(b) {
+          var saved = b.getAttribute('data-saved-cw-value');
+          if (saved !== null) {
+            b.value = saved;
+            b.removeAttribute('data-saved-cw-value');
+          }
+          b.classList.remove('cu-input-show-correct');
+          b.disabled = false;
         });
       }
     },
