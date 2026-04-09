@@ -379,6 +379,45 @@
   font-style: normal;
 }
 
+/* Subtitle-as-table: right column (items list, not italic) */
+.cu-ue-items {
+  padding: 7px 10px 7px 12px;
+  font-size: 0.85rem;
+  color: var(--text-dark, #0f172a);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+/* Type name heading within a type-table cell */
+.cu-ue-type-name {
+  display: block;
+  font-weight: 700;
+  color: var(--text-dark, #0f172a);
+  margin-bottom: 4px;
+}
+
+/* Full-width cell spanning all columns (e.g. common uncountable nouns) */
+.cu-ue-full-cell {
+  padding: 7px 12px;
+  font-size: 0.85rem;
+  color: var(--text-medium, #64748b);
+  font-style: italic;
+}
+
+/* 3-column quantifier table */
+.cu-ue-quantifier {
+  padding: 7px 10px;
+  font-size: 0.85rem;
+  vertical-align: top;
+  border-right: 1px solid rgba(45, 46, 95, 0.07);
+  width: 20%;
+}
+.cu-3col-table .cu-ue-head:first-child { width: 20%; }
+.cu-3col-table .cu-ue-use {
+  width: 40%;
+  border-right: 1px solid rgba(45, 46, 95, 0.07);
+}
+
 /* Common words chips */
 .cu-theory-chips {
   display: flex;

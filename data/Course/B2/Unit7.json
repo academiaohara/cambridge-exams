@@ -2,7 +2,7 @@
   "block": 1,
   "unit": 7,
   "type": "grammar",
-  "unitTitle": "Unit 7: Articles / Countable and uncountable nouns / Quantifiers",
+  "unitTitle": "Unit 7: Articles",
   "sections": [
     {
       "type": "theory",
@@ -81,68 +81,77 @@
           "description": "Notice how we use articles in the following phrases and expressions. Many of these are examples of general categories. For example, '**the** River Thames' means that we use 'the' for all rivers."
         },
         {
-          "subtitle": "Time",
-          "items": [
-            "definite article: in the 1990s, in (the) summer, in the morning",
-            "zero article: in 2008, in June, on Friday, at night"
-          ]
-        },
-        {
-          "subtitle": "People and work",
-          "items": [
-            "indefinite article: have a job, work as a ...",
-            "definite article: the queen, the principal, the president, the French",
-            "zero article: become president, go to work, be at work, have work to do, he's French"
-          ]
-        },
-        {
-          "subtitle": "Places",
-          "items": [
-            "definite article: the Alps, the Atlantic Ocean, the River Thames, the Earth, the Arctic, the USA, the UK, the Cyclades",
-            "zero article: Mount Everest, Paris, America, Mars/Venus/Jupiter etc, Oxford Street, Lake Superior, Crete"
-          ]
-        },
-        {
-          "subtitle": "Entertainment and sport",
-          "items": [
-            "definite article: the media, on the radio, play the guitar, go to the cinema, watch (the) TV",
-            "zero article: listen to music, on television, play tennis/football etc"
-          ]
-        },
-        {
-          "subtitle": "Organisations",
-          "items": [
-            "definite article: the army, the police, the fire brigade"
-          ]
-        },
-        {
-          "subtitle": "Education",
-          "items": [
-            "definite article: go to the school (as a visitor), be in the first year",
-            "zero article: go to school (as a student), be in Class 3B, maths"
-          ]
-        },
-        {
-          "subtitle": "Travel",
-          "items": [
-            "indefinite article: take a taxi, catch a/the bus",
-            "definite article: on the bus",
-            "zero article: on foot, go home, go by bus"
-          ]
-        },
-        {
-          "subtitle": "Health",
-          "items": [
-            "indefinite article: have a cold/headache/cough",
-            "definite article: have (the) flu/measles",
-            "zero article: have toothache"
-          ]
-        },
-        {
-          "subtitle": "Public buildings",
-          "items": [
-            "definite article: the bank, the tax office, go to the hospital/prison (as a visitor)",
-            "zero article: go to hospital/prison/church (as a patient/prisoner/worshipper)"
+          "subtitleTable": true,
+          "headers": [
+            "Use",
+            "Example"
+          ],
+          "rows": [
+            {
+              "label": "Time",
+              "items": [
+                "definite article: in the 1990s, in (the) summer, in the morning",
+                "zero article: in 2008, in June, on Friday, at night"
+              ]
+            },
+            {
+              "label": "People and work",
+              "items": [
+                "indefinite article: have a job, work as a ...",
+                "definite article: the queen, the principal, the president, the French",
+                "zero article: become president, go to work, be at work, have work to do, he's French"
+              ]
+            },
+            {
+              "label": "Places",
+              "items": [
+                "definite article: the Alps, the Atlantic Ocean, the River Thames, the Earth, the Arctic, the USA, the UK, the Cyclades",
+                "zero article: Mount Everest, Paris, America, Mars/Venus/Jupiter etc, Oxford Street, Lake Superior, Crete"
+              ]
+            },
+            {
+              "label": "Entertainment and sport",
+              "items": [
+                "definite article: the media, on the radio, play the guitar, go to the cinema, watch (the) TV",
+                "zero article: listen to music, on television, play tennis/football etc"
+              ]
+            },
+            {
+              "label": "Organisations",
+              "items": [
+                "definite article: the army, the police, the fire brigade"
+              ]
+            },
+            {
+              "label": "Education",
+              "items": [
+                "definite article: go to the school (as a visitor), be in the first year",
+                "zero article: go to school (as a student), be in Class 3B, maths"
+              ]
+            },
+            {
+              "label": "Travel",
+              "items": [
+                "indefinite article: take a taxi, catch a/the bus",
+                "definite article: on the bus",
+                "zero article: on foot, go home, go by bus"
+              ]
+            },
+            {
+              "label": "Health",
+              "items": [
+                "indefinite article: have a cold/headache/cough",
+                "definite article: have (the) flu/measles",
+                "zero article: have toothache"
+              ]
+            },
+            {
+              "label": "Public buildings",
+              "items": [
+                "definite article: the bank, the tax office, go to the hospital/prison (as a visitor)",
+                "zero article: go to hospital/prison/church (as a patient/prisoner/worshipper)"
+              ]
+            }
           ]
         },
         {
@@ -159,25 +168,40 @@
       "title": "Countable and uncountable nouns",
       "content": [
         {
-          "subtitle": "Countable nouns",
-          "items": [
-            "Use **a**, **the**, **some**, **many**",
-            "Use a singular or plural verb",
-            "*I want to be **a journalist**.*",
-            "*Where is **the newspaper**?*",
-            "*There are **some** good **articles** in the paper.*",
-            "*How **many channels** do you get?*"
-          ]
-        },
-        {
-          "subtitle": "Uncountable nouns",
-          "items": [
-            "Use **the**, **some**, **much**",
-            "Use a singular verb",
-            "*Did you hear **the news**?*",
-            "***Some** important **news** has just come in.*",
-            "*How **much information** do we have about it?*",
-            "*Your **advice** was very useful.*",
+          "typeTable": true,
+          "headers": [
+            "Type",
+            "Example"
+          ],
+          "rows": [
+            {
+              "type": "Countable nouns",
+              "useItems": [
+                "Use **a**, **the**, **some**, **many**",
+                "Use a singular or plural verb"
+              ],
+              "examples": [
+                "I want to be **a journalist**.",
+                "Where is **the newspaper**?",
+                "There are **some** good **articles** in the paper.",
+                "How **many channels** do you get?"
+              ]
+            },
+            {
+              "type": "Uncountable nouns",
+              "useItems": [
+                "Use **the**, **some**, **much**",
+                "Use a singular verb"
+              ],
+              "examples": [
+                "Did you hear **the news**?",
+                "**Some** important **news** has just come in.",
+                "How **much information** do we have about it?",
+                "Your **advice** was very useful."
+              ]
+            }
+          ],
+          "fullWidthRows": [
             "Common uncountable nouns: advice, coffee, furniture, glass, hair, homework, information, knowledge, luggage, money, news, paper, work"
           ]
         },
@@ -198,14 +222,48 @@
       "title": "Quantifiers",
       "content": [
         {
-          "items": [
-            "**many**: countable nouns, usually in negative statements and questions: *There aren't **many** programmes on TV that I find interesting.*",
-            "**much**: uncountable nouns, usually in negative statements and questions: *My dad never shows **much** interest in the news.*",
-            "**a lot of / lots of**: countable and uncountable nouns in positive statements: *That film has won **a lot of / lots of** awards.* | *What **a lot of** luggage you've got!*",
-            "**a few**: countable nouns, means 'some': *There have been **a few** scandals in the papers recently.*",
-            "**a little**: uncountable nouns, means 'some': *They say that **a little** knowledge is a dangerous thing.*",
-            "**few**: countable nouns, means 'not many': *Richard has **few** interests outside work.*",
-            "**little**: uncountable nouns, means 'not much': *The police have **little** information about the robbery.*"
+          "quantifierTable": true,
+          "headers": [
+            "Quantifier",
+            "Use",
+            "Example"
+          ],
+          "rows": [
+            {
+              "quantifier": "many",
+              "use": "countable nouns, usually in negative statements and questions",
+              "example": "There aren't **many** programmes on TV that I find interesting."
+            },
+            {
+              "quantifier": "much",
+              "use": "uncountable nouns, usually in negative statements and questions",
+              "example": "My dad never shows **much** interest in the news."
+            },
+            {
+              "quantifier": "a lot of / lots of",
+              "use": "countable and uncountable nouns in positive statements",
+              "example": "That film has won **a lot of / lots of** awards.\nWhat **a lot of** luggage you've got!"
+            },
+            {
+              "quantifier": "a few",
+              "use": "countable nouns, means 'some'",
+              "example": "There have been **a few** scandals in the papers recently."
+            },
+            {
+              "quantifier": "a little",
+              "use": "uncountable nouns, means 'some'",
+              "example": "They say that **a little** knowledge is a dangerous thing."
+            },
+            {
+              "quantifier": "few",
+              "use": "countable nouns, means 'not many'",
+              "example": "Richard has **few** interests outside work."
+            },
+            {
+              "quantifier": "little",
+              "use": "uncountable nouns, means 'not much'",
+              "example": "The police have **little** information about the robbery."
+            }
           ]
         },
         {
