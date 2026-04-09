@@ -3,460 +3,680 @@
   "unit": 20,
   "type": "vocabulary",
   "unitTitle": "Unit 20: Weather and the environment",
-  "sections": [
-    {
-      "type": "theory",
-      "title": "Topic vocabulary in contrast",
-      "content": [
+  "sections": {
+    "topic_vocabulary": {
+      "vocabulary": [
         {
-          "items": [
-            "urban / suburban / rural",
-            "clean / clear",
-            "thunder / lightning",
-            "smog / fog / smoke / mist",
-            "pour / drizzle / flood",
-            "global / worldwide",
-            "weather / climate",
-            "environment / surroundings",
-            "plain / land / field / desert",
-            "forecast / prediction",
-            "wind / air",
-            "extinct / endangered",
-            "waste / litter / rubbish",
-            "reservoir / lake / puddle / pond",
-            "recycle / reuse"
-          ]
+          "word": "urban / suburban / rural"
+        },
+        {
+          "word": "clean / clear"
+        },
+        {
+          "word": "thunder / lightning"
+        },
+        {
+          "word": "smog / fog / smoke / mist"
+        },
+        {
+          "word": "pour / drizzle / flood"
+        },
+        {
+          "word": "global / worldwide"
+        },
+        {
+          "word": "weather / climate"
+        },
+        {
+          "word": "environment / surroundings"
+        },
+        {
+          "word": "plain / land / field / desert"
+        },
+        {
+          "word": "forecast / prediction"
+        },
+        {
+          "word": "wind / air"
+        },
+        {
+          "word": "extinct / endangered"
+        },
+        {
+          "word": "waste / litter / rubbish"
+        },
+        {
+          "word": "reservoir / lake / puddle / pond"
+        },
+        {
+          "word": "recycle / reuse"
         }
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrasal verbs",
-      "content": [
-        {
-          "items": [
-            "call for: require; need; demand",
-            "get (sb) down: make sb feel sad or lose hope",
-            "call off: cancel",
-            "put down to: suggest that sth is the result of",
-            "clear up: become brighter and better (for weather)",
-            "put out: make something stop burning",
-            "cut off: make a place difficult or impossible to enter, leave or communicate with; disconnect",
-            "set in: start and be likely to continue for a while (for rain, winter, an economic depression, etc)",
-            "die down: become less noisy, powerful or active",
-            "stand for: represent (for abbreviations and symbols); put up with",
-            "do up: repair, paint or improve",
-            "tear down: destroy or remove (for buildings, statues, etc)",
-            "face up to: accept sth and try to deal with it",
-            "throw away: get rid of, discard"
-          ]
-        }
+    "phrasal_verbs": [
+      {
+        "verb": "call for",
+        "meaning": "require; need; demand"
+      },
+      {
+        "verb": "get (sb) down",
+        "meaning": "make sb feel sad or lose hope"
+      },
+      {
+        "verb": "call off",
+        "meaning": "cancel"
+      },
+      {
+        "verb": "put down to",
+        "meaning": "suggest that sth is the result of"
+      },
+      {
+        "verb": "clear up",
+        "meaning": "become brighter and better (for weather)"
+      },
+      {
+        "verb": "put out",
+        "meaning": "make something stop burning"
+      },
+      {
+        "verb": "cut off",
+        "meaning": "make a place difficult or impossible to enter, leave or communicate with; disconnect"
+      },
+      {
+        "verb": "set in",
+        "meaning": "start and be likely to continue for a while (for rain, winter, an economic depression, etc)"
+      },
+      {
+        "verb": "die down",
+        "meaning": "become less noisy, powerful or active"
+      },
+      {
+        "verb": "stand for",
+        "meaning": "represent (for abbreviations and symbols); put up with"
+      },
+      {
+        "verb": "do up",
+        "meaning": "repair, paint or improve"
+      },
+      {
+        "verb": "tear down",
+        "meaning": "destroy or remove (for buildings, statues, etc)"
+      },
+      {
+        "verb": "face up to",
+        "meaning": "accept sth and try to deal with it"
+      },
+      {
+        "verb": "throw away",
+        "meaning": "get rid of, discard"
+      }
+    ],
+    "collocations_patterns": {
+      "control": [
+        "lose/take/have control (of sth)",
+        "in control",
+        "out of control"
+      ],
+      "effect": [
+        "have an effect (on sth/sb)",
+        "take effect"
+      ],
+      "end": [
+        "in the end",
+        "at the end (of sth)",
+        "come to an end",
+        "come to/reach the end (of sth)",
+        "happy ending"
+      ],
+      "floor": [
+        "on the floor",
+        "on the ground/first/second/etc floor"
+      ],
+      "fuss": [
+        "make/cause a fuss (about sth/doing)"
+      ],
+      "long": [
+        "(for) as long as",
+        "(for) a long time",
+        "take a long time (to do)",
+        "long to do",
+        "long for sth (to do)"
+      ],
+      "look": [
+        "have/take a look at sth/sb",
+        "look like sth/sb",
+        "look at/for sth/sb"
+      ],
+      "mess": [
+        "make a mess (of sth)",
+        "in a mess"
+      ],
+      "responsibility": [
+        "have/take (the) responsibility for sth/doing"
+      ],
+      "shower": [
+        "take/have a shower",
+        "a rain shower",
+        "a light/heavy shower of rain"
+      ],
+      "sight": [
+        "catch/lose sight of sth/sb",
+        "in sight of sth",
+        "at first sight"
+      ],
+      "waste": [
+        "a waste of time",
+        "waste your time",
+        "industrial/household waste"
+      ],
+      "weather": [
+        "weather forecast",
+        "under the weather"
+      ],
+      "world": [
+        "all over the world",
+        "around the world",
+        "throughout the world",
+        "the whole world",
+        "in the world",
+        "world record"
+      ],
+      "aware": [
+        "of sth",
+        "that"
+      ],
+      "expect": [
+        "sth/sb (to do)",
+        "that"
+      ],
+      "hard": [
+        "to do",
+        "doing"
+      ],
+      "covered": [
+        "in/with sth"
+      ],
+      "familiar": [
+        "with sth",
+        "to sb"
+      ],
+      "prevent": [
+        "sth",
+        "sb from doing",
+        "sth from happening"
+      ],
+      "disappointed": [
+        "with/by sth",
+        "in sb"
+      ],
+      "famous": [
+        "for sth/doing"
+      ],
+      "short": [
+        "of sth",
+        "on sth"
+      ],
+      "except": [
+        "(for) sth/doing"
+      ],
+      "glance": [
+        "at sth/sb"
+      ],
+      "warn": [
+        "sb about/against sth/doing",
+        "sb of sth",
+        "sb not to do",
+        "(sb) that"
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrases and collocations",
-      "content": [
-        {
-          "items": [
-            "control: lose/take/have control (of sth); in control; out of control",
-            "effect: have an effect (on sth/sb); take effect",
-            "end: in the end; at the end (of sth); come to an end; come to/reach the end (of sth); happy ending",
-            "floor: on the floor; on the ground/first/second/etc floor",
-            "fuss: make/cause a fuss (about sth/doing)",
-            "long: (for) as long as; (for) a long time; take a long time (to do); long to do; long for sth (to do)",
-            "look: have/take a look at sth/sb; look like sth/sb; look at/for sth/sb",
-            "mess: make a mess (of sth); in a mess",
-            "responsibility: have/take (the) responsibility for sth/doing",
-            "shower: take/have a shower; a rain shower; a light/heavy shower of rain",
-            "sight: catch/lose sight of sth/sb; in sight of sth; at first sight",
-            "waste: a waste of time; waste your time; industrial/household waste",
-            "weather: weather forecast; under the weather",
-            "world: all over the world; around the world; throughout the world; the whole world; in the world; world record"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word patterns",
-      "content": [
-        {
-          "items": [
-            "aware of sth; aware that",
-            "expect sth/sb (to do); expect that",
-            "hard to do; hard doing",
-            "covered in/with sth",
-            "familiar with sth; familiar to sb",
-            "prevent sth; prevent sb from doing; prevent sth from happening",
-            "disappointed with/by sth; in sb",
-            "famous for sth/doing",
-            "short of sth; short on sth",
-            "except (for) sth/doing",
-            "glance at sth/sb",
-            "warn sb about/against sth/doing; warn sb of sth; warn sb not to do; warn (sb) that"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word formation",
-      "content": [
-        {
-          "items": [
-            "accurate → accurately, inaccurate(ly), (in)accuracy",
-            "globe → global(ly)",
-            "nature → (un)natural(ly)",
-            "danger → dangerous(ly); endanger; endangered",
-            "great → greatly, greatness",
-            "neighbour → neighbourly, neighbouring, neighbourhood",
-            "develop → (un)developed, developing, developer, development",
-            "harm → harmful(ly), harmless(ly), (un)harmed",
-            "pollute → (un)polluted, pollution, pollutant",
-            "environment → environmental(ly), environmentalist",
-            "likely → unlikely, likelihood",
-            "reside → residential, resident, residence",
-            "extreme → extremely, extremity, extremist",
-            "low → lower, lowness",
-            "sun → sunny, sunshine",
-            "freeze → froze, frozen, freezing, freezer"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "A: Topic vocabulary in contrast",
-      "instructions": "Circle the correct word.",
-      "items": [
-        {
-          "sentence": "Plans to turn much of the Thresham Valley into a large (1) **puddle / reservoir** to provide drinking water...",
-          "answer": "reservoir"
-        },
-        {
-          "sentence": "the environmental and economic benefits of (2) **flooding / pouring** the valley will far outweigh the disadvantages.",
-          "answer": "flooding"
-        },
-        {
-          "sentence": "Several small (3) **rural / urban** communities - two villages, three hamlets and two farms - in the valley will disappear, however.",
-          "answer": "rural"
-        },
-        {
-          "sentence": "A farmer was struck by (4) **lightning / thunder** on Thursday evening...",
-          "answer": "lightning"
-        },
-        {
-          "sentence": "while mending a fence in one of his (5) **plains / fields**.",
-          "answer": "fields"
-        },
-        {
-          "sentence": "It was (6) **drizzling / showering** slightly when I went out...",
-          "answer": "drizzling"
-        },
-        {
-          "sentence": "but I'd checked the weather (7) **prediction / forecast**...",
-          "answer": "forecast"
-        },
-        {
-          "sentence": "the factory has to pump out industrial (8) **waste / litter** and that's increasing pollution...",
-          "answer": "waste"
-        },
-        {
-          "sentence": "in the (9) **suburban / surrounding** area.",
-          "answer": "surrounding"
-        },
-        {
-          "sentence": "We're offering a financial incentive to our customers to (10) **reuse / repeat** their bags...",
-          "answer": "reuse"
-        },
-        {
-          "sentence": "An academic from Davington University has caused controversy by claiming that (11) **global / worldwide** warming is not caused by human disregard...",
-          "answer": "global"
-        },
-        {
-          "sentence": "for the (12) **weather / environment**.",
-          "answer": "environment"
-        },
-        {
-          "sentence": "large- scale changes in the Mediterranean (13) **land / climate**, for example, have taken place ever since the world was formed.",
-          "answer": "climate"
-        },
-        {
-          "sentence": "we certainly weren't responsible for the fact the dinosaurs became (14) **extinct / endangered**...",
-          "answer": "extinct"
-        },
-        {
-          "sentence": "if domestic chimneys stopped pumping out (15) **smoke / fog** into the atmosphere, the (16) **air / wind** we'd all be breathing would be much (17) **cleaner / clearer**, she said.",
-          "answer": "smoke, air, cleaner"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "B: Phrasal verbs (gap fill)",
-      "instructions": "Complete using the correct form of the phrasal verbs in the box.",
-      "items": [
-        {
-          "sentence": "The weather should have ...... by this evening, shouldn't it?",
-          "answer": "cleared up"
-        },
-        {
-          "sentence": "Do you think the wind has ...... enough for us to go sailing without any danger?",
-          "answer": "died down"
-        },
-        {
-          "sentence": "Environmentalists are ...... stricter controls on the use of leaded petrol.",
-          "answer": "calling for"
-        },
-        {
-          "sentence": "Why can't they ...... the fact that their products are bad for the environment?",
-          "answer": "face up to"
-        },
-        {
-          "sentence": "Firefighters managed to ...... the forest fire before it destroyed any houses.",
-          "answer": "put out"
-        },
-        {
-          "sentence": "We'll have to ...... the demonstration if the weather's really bad, won't we?",
-          "answer": "call off"
-        },
-        {
-          "sentence": "The town was totally ...... for three days because of the floods.",
-          "answer": "cut off"
-        },
-        {
-          "sentence": "It didn't take us long to ...... the old barn, did it?",
-          "answer": "do up"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "C: Phrasal verbs (gap fill)",
-      "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "Don't throw those batteries ....... They're not biodegradable!",
-          "answer": "away/out"
-        },
-        {
-          "sentence": "Rainy days always ...... me down.",
-          "answer": "get/bring"
-        },
-        {
-          "sentence": "Could you tell me what the letters 'CJD' stand ......?",
-          "answer": "for"
-        },
-        {
-          "sentence": "They're planning to tear ...... the old cinema and build a new shopping centre on the land.",
-          "answer": "down"
-        },
-        {
-          "sentence": "I think the rain's set ...... for the day, don't you?",
-          "answer": "in"
-        },
-        {
-          "sentence": "Some scientists put the extinction of the dinosaurs down ...... changes in the world's climate.",
-          "answer": "to"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "D: Key word transformation (Phrases and collocations)",
-      "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
-      "items": [
-        {
-          "sentence": "Josh isn't feeling very well today. (weather)\nJosh is feeling a bit ...... today.",
-          "answer": "under the weather"
-        },
-        {
-          "sentence": "CFC's have badly affected the ozone layer. (effect)\nCFC's have ...... the ozone layer.",
-          "answer": "had a bad effect on"
-        },
-        {
-          "sentence": "Would you mind quickly looking at the engine? (look)\nWould you mind ...... the engine?",
-          "answer": "taking/having a quick look at"
-        },
-        {
-          "sentence": "Cleaning the beach took ages. (long)\nIt ...... clean the beach.",
-          "answer": "took a long time to"
-        },
-        {
-          "sentence": "It's Carl's job to read the barometer every morning. (responsibility)\nCarl ...... the barometer every morning.",
-          "answer": "has (the) responsibility for reading"
-        },
-        {
-          "sentence": "There's no point trying to persuade him to recycle bottles and paper. (waste)\nIt ...... trying to persuade him to recycle bottles and paper.",
-          "answer": "is a waste of time"
-        },
-        {
-          "sentence": "We'll soon be able to see land, won't we? (sight)\nWe'll soon be ...... land, won't we?",
-          "answer": "in sight of"
-        },
-        {
-          "sentence": "I couldn't steer the boat because the waves were so high. (control)\nI ...... the boat because the waves were so high.",
-          "answer": "lost control of"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "E: Circle the correct word",
-      "instructions": "Circle the correct word.",
-      "items": [
-        {
-          "sentence": "The days of Athens being one of the most polluted cities in the world have **come / gone** to an end.",
-          "answer": "come"
-        },
-        {
-          "sentence": "Their office is **at / on** the fifteenth floor.",
-          "answer": "on"
-        },
-        {
-          "sentence": "The government's **made / done** a complete mess of its environmental policy.",
-          "answer": "made"
-        },
-        {
-          "sentence": "It's so hot, I think I'm going to **do / have** a cold shower to cool down.",
-          "answer": "have"
-        },
-        {
-          "sentence": "As usual, so-called nature lovers are **making / taking** a fuss about nothing.",
-          "answer": "making"
-        },
-        {
-          "sentence": "I can't believe there's anyone in the **complete / whole** world who wants the hole in the ozone layer to get any bigger.",
-          "answer": "whole"
-        },
-        {
-          "sentence": "It looks **like / as** a large number of species will become extinct over the next decade.",
-          "answer": "like"
-        },
-        {
-          "sentence": "You used to believe there really was a pot of gold **at / in** the end of every rainbow, didn't you?",
-          "answer": "at"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "F: Word patterns (gap fill)",
-      "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "Tourists to San Francisco are rarely disappointed (1) ...... the famous range of cultural and artistic attractions the city has to offer.",
-          "answer": "with/by"
-        },
-        {
-          "sentence": "But San Francisco is more famous (2) ...... being on the San Andreas fault, a notorious source of earthquakes.",
-          "answer": "for"
-        },
-        {
-          "sentence": "It's hard (3) ...... imagine why anyone would want to live in such a dangerous area, but millions of people choose to do so.",
-          "answer": "to"
-        },
-        {
-          "sentence": "They are all familiar (4) ...... the faultline, and are aware (5) ...... the potential danger if there's another powerful quake.",
-          "answer": "with, of"
-        },
-        {
-          "sentence": "Yet nothing, it seems, will prevent people (6) ...... building in San Francisco.",
-          "answer": "from"
-        },
-        {
-          "sentence": "A quick glance (7) ...... a photo of the city shows a large number of modern skyscrapers, many of them completely covered (8) ...... glass.",
-          "answer": "at, in/with"
-        },
-        {
-          "sentence": "Seismologists are constantly warning residents (9) ...... the possibility of 'the next big quake'.",
-          "answer": "about/of"
-        },
-        {
-          "sentence": "They expect it (10) ...... happen sooner rather than later.",
-          "answer": "to/will"
-        },
-        {
-          "sentence": "But San Franciscans are not short (11) ...... courage.",
-          "answer": "of/on"
-        },
-        {
-          "sentence": "Except (12) ...... making doubly sure that their buildings are built to the highest safety standards, they carry on with their daily lives as if nothing could ever disrupt them.",
-          "answer": "for"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "G: Word formation (error correction)",
-      "instructions": "Each of the words in bold is in the wrong form. Rewrite them correctly.",
-      "items": [
-        {
-          "sentence": "Most scientists accept that globe warming is a reality.",
-          "answer": "global"
-        },
-        {
-          "sentence": "The weather was freeze. I was wearing two pairs of gloves and my fingers were still cold!",
-          "answer": "freezing"
-        },
-        {
-          "sentence": "What can we do to protect danger species like the giant panda?",
-          "answer": "endangered"
-        },
-        {
-          "sentence": "Meteorologists can forecast tomorrow's weather with incredible accurate these days.",
-          "answer": "accuracy"
-        },
-        {
-          "sentence": "Develop are planning to build a water park on the site of the old airport.",
-          "answer": "Developers"
-        },
-        {
-          "sentence": "All our products are environment friendly.",
-          "answer": "environmentally"
-        },
-        {
-          "sentence": "Everyone should be extreme worried about the hole in the ozone layer.",
-          "answer": "extremely"
-        },
-        {
-          "sentence": "We live in a resident area about twenty minutes from the town centre.",
-          "answer": "residential"
-        },
-        {
-          "sentence": "There's not much likely of environmental groups stopping the building of the new factory, is there?",
-          "answer": "likelihood"
-        },
-        {
-          "sentence": "Don't worry! This snake is completely harm.",
-          "answer": "harmless"
-        },
-        {
-          "sentence": "Let's go outside and enjoy the sunny while it lasts.",
-          "answer": "sunshine/sun"
-        },
-        {
-          "sentence": "What kind of neighbour did you grow up in?",
-          "answer": "neighbourhood"
-        },
-        {
-          "sentence": "I hope they don't low the price of petrol.",
-          "answer": "lower"
-        },
-        {
-          "sentence": "The great of solar power lies in its simplicity.",
-          "answer": "greatness"
-        },
-        {
-          "sentence": "A number of different pollute in the river have caused the death of all the fish.",
-          "answer": "pollutants"
-        },
-        {
-          "sentence": "It's nature dark for this time of day. They didn't say there was going to be an eclipse, did they?",
-          "answer": "unnaturally"
-        }
-      ]
+    "word_formation": [
+      {
+        "base": "accurate",
+        "derivatives": [
+          "accurately",
+          "inaccurate(ly)",
+          "(in)accuracy"
+        ]
+      },
+      {
+        "base": "globe",
+        "derivatives": [
+          "global(ly)"
+        ]
+      },
+      {
+        "base": "nature",
+        "derivatives": [
+          "(un)natural(ly)"
+        ]
+      },
+      {
+        "base": "danger",
+        "derivatives": [
+          "dangerous(ly); endanger; endangered"
+        ]
+      },
+      {
+        "base": "great",
+        "derivatives": [
+          "greatly",
+          "greatness"
+        ]
+      },
+      {
+        "base": "neighbour",
+        "derivatives": [
+          "neighbourly",
+          "neighbouring",
+          "neighbourhood"
+        ]
+      },
+      {
+        "base": "develop",
+        "derivatives": [
+          "(un)developed",
+          "developing",
+          "developer",
+          "development"
+        ]
+      },
+      {
+        "base": "harm",
+        "derivatives": [
+          "harmful(ly)",
+          "harmless(ly)",
+          "(un)harmed"
+        ]
+      },
+      {
+        "base": "pollute",
+        "derivatives": [
+          "(un)polluted",
+          "pollution",
+          "pollutant"
+        ]
+      },
+      {
+        "base": "environment",
+        "derivatives": [
+          "environmental(ly)",
+          "environmentalist"
+        ]
+      },
+      {
+        "base": "likely",
+        "derivatives": [
+          "unlikely",
+          "likelihood"
+        ]
+      },
+      {
+        "base": "reside",
+        "derivatives": [
+          "residential",
+          "resident",
+          "residence"
+        ]
+      },
+      {
+        "base": "extreme",
+        "derivatives": [
+          "extremely",
+          "extremity",
+          "extremist"
+        ]
+      },
+      {
+        "base": "low",
+        "derivatives": [
+          "lower",
+          "lowness"
+        ]
+      },
+      {
+        "base": "sun",
+        "derivatives": [
+          "sunny",
+          "sunshine"
+        ]
+      },
+      {
+        "base": "freeze",
+        "derivatives": [
+          "froze",
+          "frozen",
+          "freezing",
+          "freezer"
+        ]
+      }
+    ],
+    "exercises": {
+      "A": {
+        "title": "Topic vocabulary in contrast",
+        "instructions": "Circle the correct word.",
+        "questions": [
+          {
+            "sentence": "Plans to turn much of the Thresham Valley into a large (1) **puddle / reservoir** to provide drinking water...",
+            "answer": "reservoir"
+          },
+          {
+            "sentence": "the environmental and economic benefits of (2) **flooding / pouring** the valley will far outweigh the disadvantages.",
+            "answer": "flooding"
+          },
+          {
+            "sentence": "Several small (3) **rural / urban** communities - two villages, three hamlets and two farms - in the valley will disappear, however.",
+            "answer": "rural"
+          },
+          {
+            "sentence": "A farmer was struck by (4) **lightning / thunder** on Thursday evening...",
+            "answer": "lightning"
+          },
+          {
+            "sentence": "while mending a fence in one of his (5) **plains / fields**.",
+            "answer": "fields"
+          },
+          {
+            "sentence": "It was (6) **drizzling / showering** slightly when I went out...",
+            "answer": "drizzling"
+          },
+          {
+            "sentence": "but I'd checked the weather (7) **prediction / forecast**...",
+            "answer": "forecast"
+          },
+          {
+            "sentence": "the factory has to pump out industrial (8) **waste / litter** and that's increasing pollution...",
+            "answer": "waste"
+          },
+          {
+            "sentence": "in the (9) **suburban / surrounding** area.",
+            "answer": "surrounding"
+          },
+          {
+            "sentence": "We're offering a financial incentive to our customers to (10) **reuse / repeat** their bags...",
+            "answer": "reuse"
+          },
+          {
+            "sentence": "An academic from Davington University has caused controversy by claiming that (11) **global / worldwide** warming is not caused by human disregard...",
+            "answer": "global"
+          },
+          {
+            "sentence": "for the (12) **weather / environment**.",
+            "answer": "environment"
+          },
+          {
+            "sentence": "large- scale changes in the Mediterranean (13) **land / climate**, for example, have taken place ever since the world was formed.",
+            "answer": "climate"
+          },
+          {
+            "sentence": "we certainly weren't responsible for the fact the dinosaurs became (14) **extinct / endangered**...",
+            "answer": "extinct"
+          },
+          {
+            "sentence": "if domestic chimneys stopped pumping out (15) **smoke / fog** into the atmosphere, the (16) **air / wind** we'd all be breathing would be much (17) **cleaner / clearer**, she said.",
+            "answer": "smoke, air, cleaner"
+          }
+        ]
+      },
+      "B": {
+        "title": "Phrasal verbs (gap fill)",
+        "instructions": "Complete using the correct form of the phrasal verbs in the box.",
+        "questions": [
+          {
+            "sentence": "The weather should have ...... by this evening, shouldn't it?",
+            "answer": "cleared up"
+          },
+          {
+            "sentence": "Do you think the wind has ...... enough for us to go sailing without any danger?",
+            "answer": "died down"
+          },
+          {
+            "sentence": "Environmentalists are ...... stricter controls on the use of leaded petrol.",
+            "answer": "calling for"
+          },
+          {
+            "sentence": "Why can't they ...... the fact that their products are bad for the environment?",
+            "answer": "face up to"
+          },
+          {
+            "sentence": "Firefighters managed to ...... the forest fire before it destroyed any houses.",
+            "answer": "put out"
+          },
+          {
+            "sentence": "We'll have to ...... the demonstration if the weather's really bad, won't we?",
+            "answer": "call off"
+          },
+          {
+            "sentence": "The town was totally ...... for three days because of the floods.",
+            "answer": "cut off"
+          },
+          {
+            "sentence": "It didn't take us long to ...... the old barn, did it?",
+            "answer": "do up"
+          }
+        ]
+      },
+      "C": {
+        "title": "Phrasal verbs (gap fill)",
+        "instructions": "Write one word in each gap.",
+        "questions": [
+          {
+            "sentence": "Don't throw those batteries ....... They're not biodegradable!",
+            "answer": "away/out"
+          },
+          {
+            "sentence": "Rainy days always ...... me down.",
+            "answer": "get/bring"
+          },
+          {
+            "sentence": "Could you tell me what the letters 'CJD' stand ......?",
+            "answer": "for"
+          },
+          {
+            "sentence": "They're planning to tear ...... the old cinema and build a new shopping centre on the land.",
+            "answer": "down"
+          },
+          {
+            "sentence": "I think the rain's set ...... for the day, don't you?",
+            "answer": "in"
+          },
+          {
+            "sentence": "Some scientists put the extinction of the dinosaurs down ...... changes in the world's climate.",
+            "answer": "to"
+          }
+        ]
+      },
+      "D": {
+        "title": "Key word transformation (Phrases and collocations)",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "questions": [
+          {
+            "sentence": "Josh isn't feeling very well today. (weather)\nJosh is feeling a bit ...... today.",
+            "answer": "under the weather"
+          },
+          {
+            "sentence": "CFC's have badly affected the ozone layer. (effect)\nCFC's have ...... the ozone layer.",
+            "answer": "had a bad effect on"
+          },
+          {
+            "sentence": "Would you mind quickly looking at the engine? (look)\nWould you mind ...... the engine?",
+            "answer": "taking/having a quick look at"
+          },
+          {
+            "sentence": "Cleaning the beach took ages. (long)\nIt ...... clean the beach.",
+            "answer": "took a long time to"
+          },
+          {
+            "sentence": "It's Carl's job to read the barometer every morning. (responsibility)\nCarl ...... the barometer every morning.",
+            "answer": "has (the) responsibility for reading"
+          },
+          {
+            "sentence": "There's no point trying to persuade him to recycle bottles and paper. (waste)\nIt ...... trying to persuade him to recycle bottles and paper.",
+            "answer": "is a waste of time"
+          },
+          {
+            "sentence": "We'll soon be able to see land, won't we? (sight)\nWe'll soon be ...... land, won't we?",
+            "answer": "in sight of"
+          },
+          {
+            "sentence": "I couldn't steer the boat because the waves were so high. (control)\nI ...... the boat because the waves were so high.",
+            "answer": "lost control of"
+          }
+        ]
+      },
+      "E": {
+        "title": "Circle the correct word",
+        "instructions": "Circle the correct word.",
+        "questions": [
+          {
+            "sentence": "The days of Athens being one of the most polluted cities in the world have **come / gone** to an end.",
+            "answer": "come"
+          },
+          {
+            "sentence": "Their office is **at / on** the fifteenth floor.",
+            "answer": "on"
+          },
+          {
+            "sentence": "The government's **made / done** a complete mess of its environmental policy.",
+            "answer": "made"
+          },
+          {
+            "sentence": "It's so hot, I think I'm going to **do / have** a cold shower to cool down.",
+            "answer": "have"
+          },
+          {
+            "sentence": "As usual, so-called nature lovers are **making / taking** a fuss about nothing.",
+            "answer": "making"
+          },
+          {
+            "sentence": "I can't believe there's anyone in the **complete / whole** world who wants the hole in the ozone layer to get any bigger.",
+            "answer": "whole"
+          },
+          {
+            "sentence": "It looks **like / as** a large number of species will become extinct over the next decade.",
+            "answer": "like"
+          },
+          {
+            "sentence": "You used to believe there really was a pot of gold **at / in** the end of every rainbow, didn't you?",
+            "answer": "at"
+          }
+        ]
+      },
+      "F": {
+        "title": "Word patterns (gap fill)",
+        "instructions": "Write one word in each gap.",
+        "questions": [
+          {
+            "sentence": "Tourists to San Francisco are rarely disappointed (1) ...... the famous range of cultural and artistic attractions the city has to offer.",
+            "answer": "with/by"
+          },
+          {
+            "sentence": "But San Francisco is more famous (2) ...... being on the San Andreas fault, a notorious source of earthquakes.",
+            "answer": "for"
+          },
+          {
+            "sentence": "It's hard (3) ...... imagine why anyone would want to live in such a dangerous area, but millions of people choose to do so.",
+            "answer": "to"
+          },
+          {
+            "sentence": "They are all familiar (4) ...... the faultline, and are aware (5) ...... the potential danger if there's another powerful quake.",
+            "answer": "with, of"
+          },
+          {
+            "sentence": "Yet nothing, it seems, will prevent people (6) ...... building in San Francisco.",
+            "answer": "from"
+          },
+          {
+            "sentence": "A quick glance (7) ...... a photo of the city shows a large number of modern skyscrapers, many of them completely covered (8) ...... glass.",
+            "answer": "at, in/with"
+          },
+          {
+            "sentence": "Seismologists are constantly warning residents (9) ...... the possibility of 'the next big quake'.",
+            "answer": "about/of"
+          },
+          {
+            "sentence": "They expect it (10) ...... happen sooner rather than later.",
+            "answer": "to/will"
+          },
+          {
+            "sentence": "But San Franciscans are not short (11) ...... courage.",
+            "answer": "of/on"
+          },
+          {
+            "sentence": "Except (12) ...... making doubly sure that their buildings are built to the highest safety standards, they carry on with their daily lives as if nothing could ever disrupt them.",
+            "answer": "for"
+          }
+        ]
+      },
+      "G": {
+        "title": "Word formation (error correction)",
+        "instructions": "Each of the words in bold is in the wrong form. Rewrite them correctly.",
+        "questions": [
+          {
+            "sentence": "Most scientists accept that globe warming is a reality.",
+            "answer": "global"
+          },
+          {
+            "sentence": "The weather was freeze. I was wearing two pairs of gloves and my fingers were still cold!",
+            "answer": "freezing"
+          },
+          {
+            "sentence": "What can we do to protect danger species like the giant panda?",
+            "answer": "endangered"
+          },
+          {
+            "sentence": "Meteorologists can forecast tomorrow's weather with incredible accurate these days.",
+            "answer": "accuracy"
+          },
+          {
+            "sentence": "Develop are planning to build a water park on the site of the old airport.",
+            "answer": "Developers"
+          },
+          {
+            "sentence": "All our products are environment friendly.",
+            "answer": "environmentally"
+          },
+          {
+            "sentence": "Everyone should be extreme worried about the hole in the ozone layer.",
+            "answer": "extremely"
+          },
+          {
+            "sentence": "We live in a resident area about twenty minutes from the town centre.",
+            "answer": "residential"
+          },
+          {
+            "sentence": "There's not much likely of environmental groups stopping the building of the new factory, is there?",
+            "answer": "likelihood"
+          },
+          {
+            "sentence": "Don't worry! This snake is completely harm.",
+            "answer": "harmless"
+          },
+          {
+            "sentence": "Let's go outside and enjoy the sunny while it lasts.",
+            "answer": "sunshine/sun"
+          },
+          {
+            "sentence": "What kind of neighbour did you grow up in?",
+            "answer": "neighbourhood"
+          },
+          {
+            "sentence": "I hope they don't low the price of petrol.",
+            "answer": "lower"
+          },
+          {
+            "sentence": "The great of solar power lies in its simplicity.",
+            "answer": "greatness"
+          },
+          {
+            "sentence": "A number of different pollute in the river have caused the death of all the fish.",
+            "answer": "pollutants"
+          },
+          {
+            "sentence": "It's nature dark for this time of day. They didn't say there was going to be an eclipse, did they?",
+            "answer": "unnaturally"
+          }
+        ]
+      }
     }
-  ]
+  }
 }
