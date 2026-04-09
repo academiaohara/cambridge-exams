@@ -230,6 +230,17 @@
       return (str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
     },
 
+    // Text-to-Speech using the Web Speech API (en-GB, no external API)
+    _speakWord: function(word) {
+      if (!word || !window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      var utter = new SpeechSynthesisUtterance(word.trim());
+      utter.lang = 'en-GB';
+      utter.rate = 0.85;
+      utter.pitch = 1;
+      window.speechSynthesis.speak(utter);
+    },
+
 
     openCategories: async function() {
       var content = document.getElementById('main-content');
@@ -3745,7 +3756,12 @@
         });
         html +=
           '<div class="wf-dict-entry">' +
-            '<div class="wf-dict-base">' + self._escapeHTML(base) + '</div>' +
+            '<div class="wf-dict-base">' +
+              self._escapeHTML(base) +
+              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(base) + '\')" title="Listen to pronunciation">' +
+                '<span class="material-symbols-outlined">volume_up</span>' +
+              '</button>' +
+            '</div>' +
             '<div class="wf-dict-forms">' + derivedHtml + '</div>' +
           '</div>';
       });
@@ -3952,7 +3968,12 @@
         });
         html +=
           '<div class="colloc-dict-entry">' +
-            '<div class="colloc-dict-base">' + self._escapeHTML(group[0].word) + '</div>' +
+            '<div class="colloc-dict-base">' +
+              self._escapeHTML(group[0].word) +
+              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(group[0].word) + '\')" title="Listen to pronunciation">' +
+                '<span class="material-symbols-outlined">volume_up</span>' +
+              '</button>' +
+            '</div>' +
             '<div class="colloc-dict-forms">' + phrasesHtml + '</div>' +
           '</div>';
       });
@@ -4071,6 +4092,9 @@
               '<div class="pv-dict-form-top">' +
                 '<span class="pv-dict-verb">' + self._escapeHTML(e.verb) + '</span>' +
                 '<span class="pv-dict-level-badge pv-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+                '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.verb) + '\')" title="Listen to pronunciation">' +
+                  '<span class="material-symbols-outlined">volume_up</span>' +
+                '</button>' +
               '</div>' +
               '<span class="pv-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
               examplesHtml +
@@ -4226,6 +4250,9 @@
             '<div class="gd-dict-word-row">' +
               '<span class="gd-dict-word">' + FastExercises._escapeHTML(info.word) + '</span>' +
               '<span class="gd-dict-phonetic">' + FastExercises._escapeHTML(info.phonetic || '') + '</span>' +
+              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + FastExercises._jsStr(info.word) + '\')" title="Listen to pronunciation">' +
+                '<span class="material-symbols-outlined">volume_up</span>' +
+              '</button>' +
             '</div>' +
             allMeaningsHTML +
             synonymsHTML +
@@ -4325,6 +4352,9 @@
             '<div class="id-dict-idiom-row">' +
               '<span class="id-dict-idiom">' + self._escapeHTML(e.idiom) + '</span>' +
               '<span class="id-dict-level-badge id-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.idiom) + '\')" title="Listen to pronunciation">' +
+                '<span class="material-symbols-outlined">volume_up</span>' +
+              '</button>' +
             '</div>' +
             '<span class="id-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
           '</div>';
@@ -4423,6 +4453,9 @@
             '<div class="vocab-dict-word-row">' +
               '<span class="vocab-dict-word">' + self._escapeHTML(e.word) + '</span>' +
               '<span class="vocab-dict-level-badge vocab-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.word) + '\')" title="Listen to pronunciation">' +
+                '<span class="material-symbols-outlined">volume_up</span>' +
+              '</button>' +
             '</div>' +
             '<span class="vocab-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
           '</div>';
@@ -4508,7 +4541,12 @@
             '<span class="material-symbols-outlined">close</span>' +
           '</button>' +
           '<div class="pv-verb-popup-badge">' + 'Phrasal Verb' + '</div>' +
-          '<div class="pv-verb-popup-verb">' + FastExercises._escapeHTML(pv.verb || '') + '</div>' +
+          '<div class="pv-verb-popup-verb">' +
+            FastExercises._escapeHTML(pv.verb || '') +
+            '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + FastExercises._jsStr(pv.verb || '') + '\')" title="Listen to pronunciation">' +
+              '<span class="material-symbols-outlined">volume_up</span>' +
+            '</button>' +
+          '</div>' +
           '<div class="pv-verb-popup-def">' + FastExercises._escapeHTML(pv.definition || '') + '</div>' +
           (examplesHtml ? '<ul class="pv-verb-popup-examples">' + examplesHtml + '</ul>' : '') +
         '</div>';
