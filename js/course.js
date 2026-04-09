@@ -683,7 +683,7 @@
     _renderGrammarUnit: function(data) {
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
-      function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+      function _bold(str) { return self._escapeHTML(str).replace(/\n/g, '<br>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
       var html = '';
 
       (data.sections || []).forEach(function(section, idx) {
@@ -775,9 +775,14 @@
             // "Use" (singular) subtitle → Use/Example table (auto-split items on ": ")
             if (block.subtitle === 'Use') {
               var useItems = block.items || [];
-              html += '<table class="cu-uses-examples-table">' +
-                '<thead><tr><th class="cu-ue-head">Use</th><th class="cu-ue-head">Example</th></tr></thead>' +
-                '<tbody>';
+              var tHeaders = block.tableHeaders;
+              var h1 = tHeaders ? tHeaders[0] : 'Use';
+              var h2 = tHeaders ? tHeaders[1] : 'Example';
+              html += '<table class="cu-uses-examples-table">';
+              if (!block.noHeader) {
+                html += '<thead><tr><th class="cu-ue-head">' + self._escapeHTML(h1 || '') + '</th><th class="cu-ue-head">' + self._escapeHTML(h2 || '') + '</th></tr></thead>';
+              }
+              html += '<tbody>';
               useItems.forEach(function(itm) {
                 var colonIdx = itm.indexOf(': ');
                 var useText = colonIdx !== -1 ? itm.substring(0, colonIdx) : itm;
