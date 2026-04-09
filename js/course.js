@@ -484,7 +484,7 @@
     openCourseUnit: async function(unitId, filePath, startSection) {
       var content = document.getElementById('main-content');
       if (!content) return;
-      var level = AppState.currentLevel || 'C1';
+      var level = BentoGrid._courseLevel || AppState.currentLevel || 'C1';
 
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
