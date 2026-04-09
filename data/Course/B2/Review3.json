@@ -1,7 +1,7 @@
 {
-  "block": 1,
+  "block": 3,
   "type": "review",
-  "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "unitTitle": "Review: Block 3 – Units 5 & 6",
   "totalPoints": 50,
   "sections": [
     {
@@ -34,45 +34,46 @@
     {
       "type": "exercise",
       "title": "B: Match to make sentences",
-      "instructions": "Match to make sentences.",
+      "instructions": "Match each sentence beginning (1–8) with the correct ending (A–H).",
       "scoring": {
         "pointsPerItem": 1,
         "maxScore": 8
       },
       "items": [
         {
-          "sentence": "The fax machine has broken ......",
-          "answer": "down, so I'm afraid you'll have to wait until tomorrow. (D)"
+          "sentence": "The fax machine has broken **D** down, so I'm afraid you'll have to wait until tomorrow.",
+          "answer": "D – down, so I'm afraid you'll have to wait until tomorrow."
         },
         {
-          "sentence": "A number of experiments have been carried ......",
-          "answer": "out by physicists which prove that time can speed up and slow down. (A)"
+          "sentence": "A number of experiments have been carried **A** out by physicists which prove that time can speed up and slow down.",
+          "answer": "A – out by physicists which prove that time can speed up and slow down."
         },
         {
-          "sentence": "Whoever came ......",
-          "answer": "up with that idea should have won the Nobel Prize. (F)"
+          "sentence": "Whoever came **F** up with that idea should have won the Nobel Prize.",
+          "answer": "F – up with that idea should have won the Nobel Prize."
         },
         {
-          "sentence": "The electricity was cut ......",
-          "answer": "off for over three hours yesterday. (C)"
+          "sentence": "The electricity was cut **C** off for over three hours yesterday.",
+          "answer": "C – off for over three hours yesterday."
         },
         {
-          "sentence": "I'd like to find ......",
-          "answer": "out much more about technology in the Bronze Age. (H)"
+          "sentence": "I'd like to find **H** out much more about technology in the Bronze Age.",
+          "answer": "H – out much more about technology in the Bronze Age."
         },
         {
-          "sentence": "This chemical gives ......",
-          "answer": "off a very nasty smell when it's heated. (E)"
+          "sentence": "This chemical gives **E** off a very nasty smell when it's heated.",
+          "answer": "E – off a very nasty smell when it's heated."
         },
         {
-          "sentence": "Cancer treatments have come ......",
-          "answer": "on enormously in recent years. (B)"
+          "sentence": "Cancer treatments have come **B** on enormously in recent years.",
+          "answer": "B – on enormously in recent years."
         },
         {
-          "sentence": "I wonder if you could put me ......",
-          "answer": "through to the Radiology Department, please. (G)"
+          "sentence": "I wonder if you could put me **G** through to the Radiology Department, please.",
+          "answer": "G – through to the Radiology Department, please."
         }
-      ]
+      ],
+      "subtype": "matching"
     },
     {
       "type": "exercise",
