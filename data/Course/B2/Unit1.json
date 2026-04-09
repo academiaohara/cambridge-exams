@@ -607,6 +607,7 @@
       "title": "E: Multiple choice",
       "instructions": "Choose the correct answer: A, B, C or D.",
       "subtype": "mc-inline",
+      "hideNumBadge": true,
       "questions": [
         {
           "sentence": "She (1) ...... on a new research project at the moment, so she's very busy.",
@@ -847,7 +848,8 @@
     {
       "type": "exercise",
       "title": "H: Error correction (extra words)",
-      "instructions": "Each sentence contains one extra word that should not be there. Find and write the extra word.",
+      "instructions": "Each sentence contains one extra word that should not be there. Click the extra word.",
+      "subtype": "find-extra-word",
       "items": [
         {
           "sentence": "I've been to waiting for the bus for nearly half an hour.",

@@ -654,7 +654,7 @@
       },
       "F": {
         "title": "Error correction (extra words)",
-        "instructions": "Find the extra word in each line.",
+        "instructions": "Find the extra word in each line. Click it.",
         "questions": [
           {
             "sentence": "We were discussing about the future in class today.",
@@ -680,7 +680,8 @@
             "sentence": "I am look forward to our next discussion.",
             "answer": "am"
           }
-        ]
+        ],
+        "type": "find-extra-word"
       },
       "G": {
         "title": "Key word transformation",

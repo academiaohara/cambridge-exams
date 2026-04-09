@@ -525,7 +525,7 @@
     {
       "type": "exercise",
       "title": "J: Error correction (extra words)",
-      "instructions": "Each line either has one extra word that does not belong, or is correct. Write the extra word, or write OK if the line is correct.",
+      "instructions": "Each line either has one extra word that does not belong, or is correct. Click the extra word, or click OK if the line is correct.",
       "items": [
         {
           "sentence": "Hello, viewers, and welcome to Easy Money, the game show who you",
@@ -563,7 +563,8 @@
           "sentence": "husband, Frank, who he is sitting in the audience. So, let's play Easy Money!",
           "answer": "he"
         }
-      ]
+      ],
+      "subtype": "find-extra-word"
     }
   ]
 }

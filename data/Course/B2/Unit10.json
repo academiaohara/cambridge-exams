@@ -716,7 +716,7 @@
       },
       "G": {
         "title": "Error correction (extra words)",
-        "instructions": "Find the extra word in each line.",
+        "instructions": "Find the extra word in each line. Click it.",
         "questions": [
           {
             "sentence": "Living together in societyHell, said Jean-Paul Sartre, is other people, and whether you agree with or not, we are all have to learn to live together.",
@@ -742,7 +742,8 @@
             "sentence": "You don't have to pretend it that you like how some other people live, but letting them to be themselves is often the only choice.",
             "answer": "it"
           }
-        ]
+        ],
+        "type": "find-extra-word"
       },
       "H": {
         "title": "Word formation (text)",

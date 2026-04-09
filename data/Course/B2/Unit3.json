@@ -639,7 +639,7 @@
     {
       "type": "exercise",
       "title": "I: Error correction (extra words)",
-      "instructions": "Find the extra word in each line.",
+      "instructions": "Find the extra word in each line. Click it.",
       "items": [
         {
           "sentence": "Childhood would used to be quite different from what it is today.",
@@ -669,7 +669,8 @@
           "sentence": "Today, we are got used to having some free time to do things we enjoy, a luxury people in the past rarely were had.",
           "answer": "were"
         }
-      ]
+      ],
+      "subtype": "find-extra-word"
     },
     {
       "type": "exercise",
