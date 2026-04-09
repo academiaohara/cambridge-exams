@@ -888,6 +888,8 @@
           var grIdBase = 'gr-' + section.title.replace(/\W+/g, '');
           if (section.subtype === 'matching') {
             html += self._renderCuMatchingExercise(items, grIdBase, secId);
+          } else if (section.subtype === 'kwtrans-match') {
+            html += self._renderCuKwtransMatchExercise(items, grIdBase, secId);
           } else if (section.subtype === 'mc-inline') {
             html += self._renderCuMcInlineExercise(section, grIdBase, secId);
           } else if (section.subtype === 'yn') {
@@ -1067,6 +1069,9 @@
           } else if (ex.type === 'matching') {
             // Two-column matching with drag-to-swap (e.g. Exercise E)
             html += self._renderCuMatchingExercise(questions, idBase, secId);
+          } else if (ex.type === 'kwtrans-match') {
+            // Matching exercise with keyword-row styled left items (e.g. Exercise D)
+            html += self._renderCuKwtransMatchExercise(questions, idBase, secId);
           } else if (ex.type === 'kwtrans') {
             // Key-word transformation (reading4 style) (e.g. Exercise K)
             html += '<div class="cu-ex-items">';
@@ -2084,6 +2089,56 @@
             '<div class="cu-match-item cu-match-left-item" data-num="' + it.num + '">' +
               '<span class="cu-match-num">' + it.num + '</span>' +
               '<span class="cu-match-text">' + self._escapeHTML(it.beginning) + '</span>' +
+            '</div>' +
+          '</td>' +
+          '<td class="cu-match-right-cell">' +
+            '<div class="cu-match-item cu-match-right-item" data-letter="' + rightItem.letter + '" draggable="true" ' +
+              'ondragstart="BentoGrid._matchDragStart(event)" ' +
+              'ondragover="BentoGrid._matchDragOver(event)" ' +
+              'ondrop="BentoGrid._matchDrop(event)" ' +
+              'ondragend="BentoGrid._matchDragEnd(event)">' +
+              '<span class="cu-match-letter">' + rightItem.letter + '</span>' +
+              '<span class="cu-match-text">' + self._escapeHTML(rightItem.ending) + '</span>' +
+            '</div>' +
+          '</td>' +
+        '</tr>';
+      });
+      html += '</tbody></table>';
+      // Hidden answer data
+      html += '<div class="cu-match-answers" style="display:none">';
+      items.forEach(function(it) {
+        html += '<span data-num="' + it.num + '" data-letter="' + it.letter + '"></span>';
+      });
+      html += '</div>';
+      html += self._renderCuExFooter(secId);
+      html += '</div>';
+      return html;
+    },
+
+    _renderCuKwtransMatchExercise: function(questions, idBase, secId) {
+      var self = this;
+      if (!questions || !questions.length) return '';
+      // Extract beginnings and endings from "beginning **LETTER** ending" sentence format
+      var items = questions.map(function(q, idx) {
+        var sentence = q.sentence || '';
+        var boldMatch = sentence.match(/^(.*?)\s*\*\*([A-Z])\*\*\s*(.*)?$/);
+        var beginning = boldMatch ? boldMatch[1].trim() : sentence;
+        var letter = boldMatch ? boldMatch[2] : String.fromCharCode(65 + idx);
+        var ending = boldMatch ? (boldMatch[3] || '').trim() : '';
+        return { num: idx + 1, letter: letter, beginning: beginning, ending: ending, answer: q.answer || '' };
+      });
+      // Sort right-column items alphabetically A→Z
+      var rightItems = items.map(function(it) { return { letter: it.letter, ending: it.ending }; });
+      rightItems.sort(function(a, b) { return a.letter.localeCompare(b.letter); });
+      var html = '<div class="cu-match-exercise" data-sec-id="' + secId + '">';
+      html += '<table class="cu-match-table"><tbody>';
+      items.forEach(function(it, idx) {
+        var rightItem = rightItems[idx];
+        html += '<tr class="cu-match-row">' +
+          '<td class="cu-match-left-cell">' +
+            '<div class="cu-match-item cu-match-left-item" data-num="' + it.num + '">' +
+              '<span class="cu-match-num">' + it.num + '</span>' +
+              '<div class="cu-kwtrans-keyword-row cu-match-kwrow"><span class="cu-kwtrans-keyword">' + self._escapeHTML(it.beginning) + '</span></div>' +
             '</div>' +
           '</td>' +
           '<td class="cu-match-right-cell">' +

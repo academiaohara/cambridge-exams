@@ -412,6 +412,15 @@
             "sentence": "Rarely have I ...... so much valuable experience in such a short space of time.",
             "answer": "gained"
           }
+        ],
+        "words": [
+          "win",
+          "commute",
+          "earn",
+          "make",
+          "sack",
+          "deliver",
+          "gain"
         ]
       },
       "C": {
@@ -419,7 +428,7 @@
         "instructions": "Write one word in each gap.",
         "questions": [
           {
-            "sentence": "I was working as an IT Manager for a small publishing company (in fact, I was standing (1) ...... for the actual manager while she was away on maternity leave) when the company was taken (2) ...... by a large multinational media organisation.",
+            "sentence": "I was working as an IT Manager for a small publishing company - in fact, I was standing (1) ...... for the actual manager while she was away on maternity leave - when the company was taken (2) ...... by a large multinational media organisation.",
             "answer": "in, over"
           },
           {
@@ -473,156 +482,47 @@
         "instructions": "Match to make sentences.",
         "questions": [
           {
-            "sentence": "I put a lot of effort",
-            "options": [
-              "A about the economy.",
-              "B they've made their decision.",
-              "C to apply for that job.",
-              "D on hold for twenty minutes.",
-              "E that we need to cut costs.",
-              "F of work for six months.",
-              "G business for very long.",
-              "H in what you do.",
-              "I of work."
-            ],
-            "answer": "H"
-          },
-          {
-            "sentence": "They've made their decision",
-            "options": [
-              "A about the economy.",
-              "B they've made their decision.",
-              "C to apply for that job.",
-              "D on hold for twenty minutes.",
-              "E that we need to cut costs.",
-              "F of work for six months.",
-              "G business for very long.",
-              "H in what you do.",
-              "I of work."
-            ],
-            "answer": "B"
-          },
-          {
-            "sentence": "It's not in your interest to",
-            "options": [
-              "A about the economy.",
-              "B they've made their decision.",
-              "C to apply for that job.",
-              "D on hold for twenty minutes.",
-              "E that we need to cut costs.",
-              "F of work for six months.",
-              "G business for very long.",
-              "H in what you do.",
-              "I of work."
-            ],
-            "answer": "C"
-          },
-          {
-            "sentence": "The secretary's kept me",
-            "options": [
-              "A about the economy.",
-              "B they've made their decision.",
-              "C to apply for that job.",
-              "D on hold for twenty minutes.",
-              "E that we need to cut costs.",
-              "F of work for six months.",
-              "G business for very long.",
-              "H in what you do.",
-              "I of work."
-            ],
+            "sentence": "I put a lot of effort **D** into writing this report.",
             "answer": "D"
           },
           {
-            "sentence": "I don't know why you didn't apply",
-            "options": [
-              "A about the economy.",
-              "B they've made their decision.",
-              "C to apply for that job.",
-              "D on hold for twenty minutes.",
-              "E that we need to cut costs.",
-              "F of work for six months.",
-              "G business for very long.",
-              "H in what you do.",
-              "I of work."
-            ],
-            "answer": "A"
+            "sentence": "They've made their decision **B** about who's going to get promoted.",
+            "answer": "B"
           },
           {
-            "sentence": "I think we're all in agreement",
-            "options": [
-              "A about the economy.",
-              "B they've made their decision.",
-              "C to apply for that job.",
-              "D on hold for twenty minutes.",
-              "E that we need to cut costs.",
-              "F of work for six months.",
-              "G business for very long.",
-              "H in what you do.",
-              "I of work."
-            ],
-            "answer": "E"
-          },
-          {
-            "sentence": "Dean's been out",
-            "options": [
-              "A about the economy.",
-              "B they've made their decision.",
-              "C to apply for that job.",
-              "D on hold for twenty minutes.",
-              "E that we need to cut costs.",
-              "F of work for six months.",
-              "G business for very long.",
-              "H in what you do.",
-              "I of work."
-            ],
-            "answer": "F"
-          },
-          {
-            "sentence": "The shop hasn't been in",
-            "options": [
-              "A about the economy.",
-              "B they've made their decision.",
-              "C to apply for that job.",
-              "D on hold for twenty minutes.",
-              "E that we need to cut costs.",
-              "F of work for six months.",
-              "G business for very long.",
-              "H in what you do.",
-              "I of work."
-            ],
-            "answer": "G"
-          },
-          {
-            "sentence": "I'm glad you're finally taking an interest",
-            "options": [
-              "A about the economy.",
-              "B they've made their decision.",
-              "C to apply for that job.",
-              "D on hold for twenty minutes.",
-              "E that we need to cut costs.",
-              "F of work for six months.",
-              "G business for very long.",
-              "H in what you do.",
-              "I of work."
-            ],
+            "sentence": "It's not in your interest to **H** accept a pay cut.",
             "answer": "H"
           },
           {
-            "sentence": "Jason lives fairly near his place",
-            "options": [
-              "A about the economy.",
-              "B they've made their decision.",
-              "C to apply for that job.",
-              "D on hold for twenty minutes.",
-              "E that we need to cut costs.",
-              "F of work for six months.",
-              "G business for very long.",
-              "H in what you do.",
-              "I of work."
-            ],
+            "sentence": "The secretary's kept me **A** on hold for ages.",
+            "answer": "A"
+          },
+          {
+            "sentence": "I don't know why you didn't apply **G** for that position.",
+            "answer": "G"
+          },
+          {
+            "sentence": "I think we're all in agreement **J** on this, aren't we?",
+            "answer": "J"
+          },
+          {
+            "sentence": "Dean's been out **C** of work for over two months now.",
+            "answer": "C"
+          },
+          {
+            "sentence": "The shop hasn't been in **E** business long.",
+            "answer": "E"
+          },
+          {
+            "sentence": "I'm glad you're finally taking an interest **F** in your work.",
+            "answer": "F"
+          },
+          {
+            "sentence": "Jason lives fairly near his place of **I** work, doesn't he?",
             "answer": "I"
           }
-        ]
+        ],
+        "type": "kwtrans-match"
       },
       "E": {
         "title": "Phrases and collocations (gap fill)",
@@ -667,70 +567,34 @@
         ]
       },
       "F": {
-        "title": "Multiple choice (Word patterns)",
-        "instructions": "Choose the correct answer.",
+        "instructions": "Each of the words in bold is incorrect. Rewrite them correctly.",
         "questions": [
           {
-            "sentence": "Who is responsible ...... dealing with complaints?",
-            "options": [
-              "A with",
-              "B for",
-              "C in",
-              "D at"
-            ],
-            "answer": "B"
+            "sentence": "Who is responsible **with** dealing with complaints?",
+            "answer": "for"
           },
           {
-            "sentence": "We began looking round for advertising agencies which had experience ...... our market.",
-            "options": [
-              "A to",
-              "B with",
-              "C by",
-              "D at"
-            ],
-            "answer": "C"
+            "sentence": "We began looking round for advertising agencies which had experience **to** our market.",
+            "answer": "in/at"
           },
           {
-            "sentence": "The covering letter wasn't attached ...... the CV.",
-            "options": [
-              "A to",
-              "B with",
-              "C from",
-              "D by"
-            ],
-            "answer": "A"
+            "sentence": "The covering letter wasn't attached **with** the CV.",
+            "answer": "to"
           },
           {
-            "sentence": "Don't you think you should apply for the job ...... writing?",
-            "options": [
-              "A with",
-              "B for",
-              "C at",
-              "D in"
-            ],
-            "answer": "D"
+            "sentence": "Don't you think you should apply for the job **with** writing?",
+            "answer": "in"
           },
           {
-            "sentence": "I was only absent ...... the office for a few minutes!",
-            "options": [
-              "A for",
-              "B from",
-              "C in",
-              "D about"
-            ],
-            "answer": "B"
+            "sentence": "I was only absent **for** the office for a few minutes!",
+            "answer": "from"
           },
           {
-            "sentence": "Success in this industry depends a lot ...... luck!",
-            "options": [
-              "A with",
-              "B from",
-              "C at",
-              "D on"
-            ],
-            "answer": "D"
+            "sentence": "Success in this industry depends a lot **with** luck!",
+            "answer": "on"
           }
-        ]
+        ],
+        "title": "Error correction (Word patterns)"
       },
       "G": {
         "title": "Error correction (Word patterns)",
