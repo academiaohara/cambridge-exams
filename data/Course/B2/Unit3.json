@@ -10,10 +10,20 @@
       "content": [
         {
           "subtitle": "Form",
-          "items": [
-            "statement: I/you/he/she/it/we/they played... (irregular verbs: learn the past simple form)",
-            "negative: I/you/he/she/it/we/they didn't play...",
-            "question: Did I/you/he/she/it/we/they play...?"
+          "rows": [
+            {
+              "label": "statement",
+              "left": "I/you/he/she/it/we/they **played** ...",
+              "note": "Note: Irregular verbs do not take '-ed'. Learn the past simple form of irregular verbs."
+            },
+            {
+              "label": "negative",
+              "left": "I/you/he/she/it/we/they **didn't play** ..."
+            },
+            {
+              "label": "question",
+              "left": "**Did** I/you/he/she/it/we/they **play** ...?"
+            }
           ]
         },
         {
@@ -41,10 +51,22 @@
       "content": [
         {
           "subtitle": "Form",
-          "items": [
-            "statement: I/he/she/it was playing... You/we/they were playing...",
-            "negative: I/he/she/it wasn't playing... You/we/they weren't playing...",
-            "question: Was I/he/she/it playing...? Were you/we/they playing...?"
+          "rows": [
+            {
+              "label": "statement",
+              "left": "I/he/she/it **was playing** ...",
+              "right": "You/we/they **were playing** ..."
+            },
+            {
+              "label": "negative",
+              "left": "I/he/she/it **wasn't playing** ...",
+              "right": "You/we/they **weren't playing** ..."
+            },
+            {
+              "label": "question",
+              "left": "**Was** I/he/she/it **playing** ...?",
+              "right": "**Were** you/we/they **playing** ...?"
+            }
           ]
         },
         {
@@ -74,9 +96,7 @@
       "content": [
         {
           "subtitle": "Form",
-          "items": [
-            "had + past participle"
-          ]
+          "formula": "had + past participle"
         },
         {
           "subtitle": "Use",
@@ -102,10 +122,19 @@
       "content": [
         {
           "subtitle": "Form",
-          "items": [
-            "statement: I/you/he/she/it/we/they had been playing...",
-            "negative: I/you/he/she/it/we/they hadn't been playing...",
-            "question: Had I/you/he/she/it/we/they been playing...?"
+          "rows": [
+            {
+              "label": "statement",
+              "left": "I/you/he/she/it/we/they **had been playing** ..."
+            },
+            {
+              "label": "negative",
+              "left": "I/you/he/she/it/we/they **hadn't been playing** ..."
+            },
+            {
+              "label": "question",
+              "left": "**Had** I/you/he/she/it/we/they **been playing** ...?"
+            }
           ]
         },
         {
@@ -145,9 +174,7 @@
       "content": [
         {
           "subtitle": "Form",
-          "items": [
-            "be/get used to + -ing form / noun"
-          ]
+          "formula": "be/get used to + -ing form / noun"
         },
         {
           "subtitle": "Use",

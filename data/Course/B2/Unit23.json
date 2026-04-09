@@ -99,8 +99,12 @@
           "subtitle": "Watch out!",
           "description": "The participle and the rest of the sentence must both refer to the same subject.",
           "examples": [
-            "✓ Watching TV, I saw a news report about Hollywood.",
-            "✗ Watching TV, a news report came on about Hollywood."
+            {
+              "correct": "Watching TV, I saw a news report about Hollywood."
+            },
+            {
+              "incorrect": "Watching TV, a news report came on about Hollywood."
+            }
           ]
         }
       ]

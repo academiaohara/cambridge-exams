@@ -188,14 +188,58 @@
 }
 .cu-gc-form-content {
   flex: 1;
-  padding: 10px 14px;
+  padding: 8px 14px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 0;
 }
 .cu-gc-form-item {
   font-size: 0.87rem;
   color: var(--text-dark, #0f172a);
+  font-style: italic;
+  line-height: 1.5;
+}
+/* Formula line (e.g. "have/has + past participle") */
+.cu-gc-form-formula {
+  font-size: 0.87rem;
+  color: var(--text-dark, #0f172a);
+  font-style: italic;
+  font-weight: 600;
+  padding: 3px 0 5px;
+}
+/* Structured statement / negative / question rows */
+.cu-gc-form-stmt-row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  align-items: baseline;
+  padding: 3px 0;
+  border-top: 1px solid rgba(45, 46, 95, 0.05);
+  gap: 6px;
+}
+.cu-gc-form-stmt-row:first-child {
+  border-top: none;
+}
+.cu-gc-form-stmt-row.cu-gc-form-two-col {
+  grid-template-columns: 72px 1fr 1fr;
+}
+.cu-gc-form-stmt-label {
+  font-size: 0.76rem;
+  font-style: italic;
+  color: #64748b;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.cu-gc-form-stmt-cell {
+  font-size: 0.86rem;
+  color: var(--text-dark, #0f172a);
+  font-style: italic;
+  line-height: 1.55;
+}
+.cu-gc-form-stmt-note {
+  font-size: 0.78rem;
+  color: #64748b;
+  padding-left: 78px;
+  padding-bottom: 4px;
   font-style: italic;
   line-height: 1.5;
 }
@@ -233,17 +277,50 @@
   margin-bottom: 6px;
 }
 .cu-gc-watchout-list {
-  margin: 4px 0 0 18px;
+  margin: 4px 0 0 4px;
   padding: 0;
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 .cu-gc-watchout-list li {
   font-size: 0.86rem;
   color: var(--text-dark, #0f172a);
   line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
 }
+.cu-gc-watchout-list li::before {
+  content: '•';
+  position: absolute;
+  left: 4px;
+  color: #ca8a04;
+}
+/* ✓ correct example line */
+.cu-gc-watchout-list li.cu-gc-wo-correct::before { content: ''; }
+.cu-gc-watchout-list li.cu-gc-wo-correct { padding-left: 0; color: var(--text-dark, #0f172a); }
+.cu-gc-wo-correct .cu-gc-wo-mark {
+  display: inline-block;
+  color: #16a34a;
+  font-weight: 700;
+  margin-right: 5px;
+  font-style: normal;
+}
+/* ✗ incorrect example line */
+.cu-gc-watchout-list li.cu-gc-wo-incorrect::before { content: ''; }
+.cu-gc-watchout-list li.cu-gc-wo-incorrect { padding-left: 0; color: #94a3b8; }
+.cu-gc-wo-incorrect .cu-gc-wo-mark {
+  display: inline-block;
+  color: #dc2626;
+  font-weight: 700;
+  margin-right: 5px;
+  font-style: normal;
+}
+.cu-gc-wo-incorrect s { color: #94a3b8; text-decoration-color: #dc2626; }
+.cu-gc-wo-incorrect s strong { color: #94a3b8; font-weight: 600; }
+/* Note line in Watch out */
+.cu-gc-watchout-list li.cu-gc-wo-note { color: #64748b; font-style: italic; }
 
 /* Uses + Examples table */
 .cu-uses-examples-table {
