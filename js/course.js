@@ -2221,8 +2221,8 @@
         result += self._escapeHTML(text.slice(lastIdx, m.index));
         var inner = m[1];
         if (/^\d+$/.test(inner.trim())) {
-          // Number — render as bold, no box
-          result += '<strong>' + self._escapeHTML(inner) + '</strong>';
+          // Number — render as circle badge
+          result += '<span class="cu-ex-num-circle">' + self._escapeHTML(inner) + '</span>';
         } else {
           // Word hint — render without parentheses
           result += '<span class="cu-hint-word">' + self._escapeHTML(inner) + '</span>';
