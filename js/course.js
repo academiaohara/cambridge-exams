@@ -683,7 +683,7 @@
     _renderGrammarUnit: function(data) {
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
-      function _bold(str) { return self._escapeHTML(str).replace(/\n/g, '<br>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
+      function _bold(str) { return self._escapeHTML(str).replace(/\n/g, '<br>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\*([^*]+)\*/g, '<em>$1</em>'); }
       var html = '';
 
       (data.sections || []).forEach(function(section, idx) {
@@ -697,6 +697,80 @@
           while (contentIdx < content.length) {
             var block = content[contentIdx];
             var nextBlock = content[contentIdx + 1];
+
+            // subtitleTable: 2-col table where each block's label → "Use" col, items → right col
+            if (block.subtitleTable) {
+              var stHeaders = block.headers || ['Use', 'Example'];
+              html += '<table class="cu-uses-examples-table">';
+              if (!block.noHeader) {
+                html += '<thead><tr><th class="cu-ue-head">' + self._escapeHTML(stHeaders[0]) + '</th><th class="cu-ue-head">' + self._escapeHTML(stHeaders[1]) + '</th></tr></thead>';
+              }
+              html += '<tbody>';
+              (block.rows || []).forEach(function(row) {
+                html += '<tr class="cu-ue-row">';
+                html += '<td class="cu-ue-use">' + self._escapeHTML(row.label || '') + '</td>';
+                var stItems = row.items || [];
+                var stItemsHtml = '';
+                if (stItems.length) {
+                  stItemsHtml = '<ul class="cu-theory-list">';
+                  stItems.forEach(function(item) { stItemsHtml += '<li>' + _bold(item) + '</li>'; });
+                  stItemsHtml += '</ul>';
+                }
+                html += '<td class="cu-ue-items">' + stItemsHtml + '</td>';
+                html += '</tr>';
+              });
+              html += '</tbody></table>';
+              contentIdx++;
+              continue;
+            }
+
+            // typeTable: 2-col table with type name + useItems in left col, examples in right col
+            if (block.typeTable) {
+              var ttHeaders = block.headers || ['Type', 'Example'];
+              html += '<table class="cu-uses-examples-table">';
+              if (!block.noHeader) {
+                html += '<thead><tr><th class="cu-ue-head">' + self._escapeHTML(ttHeaders[0]) + '</th><th class="cu-ue-head">' + self._escapeHTML(ttHeaders[1]) + '</th></tr></thead>';
+              }
+              html += '<tbody>';
+              (block.rows || []).forEach(function(row) {
+                html += '<tr class="cu-ue-row">';
+                var ttLeft = '<span class="cu-ue-type-name">' + self._escapeHTML(row.type || '') + '</span>';
+                if ((row.useItems || []).length) {
+                  ttLeft += '<ul class="cu-theory-list">';
+                  row.useItems.forEach(function(ui) { ttLeft += '<li>' + _bold(ui) + '</li>'; });
+                  ttLeft += '</ul>';
+                }
+                html += '<td class="cu-ue-use">' + ttLeft + '</td>';
+                var ttExHtml = (row.examples || []).map(function(ex) { return _bold(ex); }).join('<br>');
+                html += '<td class="cu-ue-example">' + ttExHtml + '</td>';
+                html += '</tr>';
+              });
+              (block.fullWidthRows || []).forEach(function(fwRow) {
+                html += '<tr class="cu-ue-row"><td colspan="2" class="cu-ue-full-cell">' + _bold(fwRow) + '</td></tr>';
+              });
+              html += '</tbody></table>';
+              contentIdx++;
+              continue;
+            }
+
+            // quantifierTable: 3-col table (Quantifier | Use | Example)
+            if (block.quantifierTable) {
+              var qtHeaders = block.headers || ['Quantifier', 'Use', 'Example'];
+              html += '<table class="cu-uses-examples-table cu-3col-table">';
+              html += '<thead><tr>';
+              qtHeaders.forEach(function(h) { html += '<th class="cu-ue-head">' + self._escapeHTML(h) + '</th>'; });
+              html += '</tr></thead><tbody>';
+              (block.rows || []).forEach(function(row) {
+                html += '<tr class="cu-ue-row">';
+                html += '<td class="cu-ue-quantifier"><em>' + self._escapeHTML(row.quantifier || '') + '</em></td>';
+                html += '<td class="cu-ue-use"><ul class="cu-theory-list"><li>' + _bold(row.use || '') + '</li></ul></td>';
+                html += '<td class="cu-ue-example">' + _bold(row.example || '') + '</td>';
+                html += '</tr>';
+              });
+              html += '</tbody></table>';
+              contentIdx++;
+              continue;
+            }
 
             // Pair "Uses" + "Examples" as a 2-column table
             if (block.subtitle === 'Uses' && nextBlock && nextBlock.subtitle === 'Examples') {
