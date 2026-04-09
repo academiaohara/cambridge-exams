@@ -3,587 +3,807 @@
   "unit": 18,
   "type": "vocabulary",
   "unitTitle": "Unit 18: Education and learning",
-  "sections": [
-    {
-      "type": "theory",
-      "title": "Topic vocabulary in contrast",
-      "content": [
+  "sections": {
+    "topic_vocabulary": {
+      "vocabulary": [
         {
-          "items": [
-            "take / pass",
-            "prefect / pupil / student",
-            "lesson / subject",
-            "read / study",
-            "qualifications / qualities",
-            "achieve / reach",
-            "test / exam",
-            "count / measure",
-            "task / effort",
-            "primary / secondary / high",
-            "degree / certificate / results",
-            "know / recognise",
-            "colleague / classmate",
-            "speak / talk",
-            "teach / learn"
-          ]
+          "word": "take / pass"
+        },
+        {
+          "word": "prefect / pupil / student"
+        },
+        {
+          "word": "lesson / subject"
+        },
+        {
+          "word": "read / study"
+        },
+        {
+          "word": "qualifications / qualities"
+        },
+        {
+          "word": "achieve / reach"
+        },
+        {
+          "word": "test / exam"
+        },
+        {
+          "word": "count / measure"
+        },
+        {
+          "word": "task / effort"
+        },
+        {
+          "word": "primary / secondary / high"
+        },
+        {
+          "word": "degree / certificate / results"
+        },
+        {
+          "word": "know / recognise"
+        },
+        {
+          "word": "colleague / classmate"
+        },
+        {
+          "word": "speak / talk"
+        },
+        {
+          "word": "teach / learn"
         }
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrasal verbs",
-      "content": [
-        {
-          "items": [
-            "catch on: understand",
-            "get on with: continue doing",
-            "come (a)round (to): be persuaded to change your mind (about)",
-            "give in: stop making an effort to achieve sth difficult",
-            "cross out: draw a line through sth written",
-            "keep up with: stay at the same level as",
-            "dawn on: if something dawns on you, you realise it for the first time",
-            "sail through: do something or deal with something very easily",
-            "deal with: handle, cope with",
-            "set out: explain, describe or arrange sth in a clear and detailed way",
-            "drop out (of): leave school, etc before you have finished a course",
-            "think over: consider",
-            "get at: try to express"
-          ]
-        }
+    "phrasal_verbs": [
+      {
+        "verb": "catch on",
+        "meaning": "understand"
+      },
+      {
+        "verb": "get on with",
+        "meaning": "continue doing"
+      },
+      {
+        "verb": "come (a)round (to)",
+        "meaning": "be persuaded to change your mind (about)"
+      },
+      {
+        "verb": "give in",
+        "meaning": "stop making an effort to achieve sth difficult"
+      },
+      {
+        "verb": "cross out",
+        "meaning": "draw a line through sth written"
+      },
+      {
+        "verb": "keep up with",
+        "meaning": "stay at the same level as"
+      },
+      {
+        "verb": "dawn on",
+        "meaning": "if something dawns on you, you realise it for the first time"
+      },
+      {
+        "verb": "sail through",
+        "meaning": "do something or deal with something very easily"
+      },
+      {
+        "verb": "deal with",
+        "meaning": "handle, cope with"
+      },
+      {
+        "verb": "set out",
+        "meaning": "explain, describe or arrange sth in a clear and detailed way"
+      },
+      {
+        "verb": "drop out (of)",
+        "meaning": "leave school, etc before you have finished a course"
+      },
+      {
+        "verb": "think over",
+        "meaning": "consider"
+      },
+      {
+        "verb": "get at",
+        "meaning": "try to express"
+      }
+    ],
+    "collocations_patterns": {
+      "attention": [
+        "pay attention (to sth/sb)",
+        "attract (sb's) attention",
+        "draw (sb's) attention to sth"
+      ],
+      "break": [
+        "have/take a break (from sth/doing)",
+        "lunch break",
+        "tea break",
+        "commercial break",
+        "give sb a break"
+      ],
+      "discussion": [
+        "have a discussion (with sb) about/on sth/doing"
+      ],
+      "exam": [
+        "take/do/have/pass/fail an exam",
+        "sit (for) an exam"
+      ],
+      "homework": [
+        "do your homework",
+        "have homework (to do)"
+      ],
+      "idea": [
+        "question an idea",
+        "have an idea",
+        "bright idea",
+        "have no idea (about)"
+      ],
+      "learn": [
+        "about sth/doing",
+        "to do",
+        "by doing"
+      ],
+      "lesson": [
+        "go to/have a lesson",
+        "double lesson",
+        "learn a/your lesson",
+        "teach sb a lesson"
+      ],
+      "mind": [
+        "make up your mind (about sth/doing)",
+        "bear (sth) in mind",
+        "in two minds about sth/doing",
+        "change your mind (about sth/doing)",
+        "cross your mind",
+        "to my mind",
+        "(not) mind if"
+      ],
+      "opinion": [
+        "in my opinion",
+        "give/express your/an opinion (of/about sth/doing)",
+        "hold/have an opinion (of/about sth/doing)"
+      ],
+      "pass": [
+        "pass sth (over) to sb",
+        "pass an exam/test/etc",
+        "pass a building/etc"
+      ],
+      "point": [
+        "see/take sb's point (about sth/doing)",
+        "(see) the point in/of sth/doing",
+        "there's no point in sth/doing",
+        "make a point (of doing)"
+      ],
+      "sense": [
+        "make sense of sth",
+        "it makes sense (to do)",
+        "sense of humour/taste/sight/etc"
+      ],
+      "suggestion": [
+        "make/accept a suggestion"
+      ],
+      "able": [
+        "to do"
+      ],
+      "fail": [
+        "to do"
+      ],
+      "similar": [
+        "to sth/sb/doing"
+      ],
+      "admire": [
+        "sb (for sth/doing)"
+      ],
+      "hope": [
+        "to do",
+        "that"
+      ],
+      "study": [
+        "sth",
+        "for sth"
+      ],
+      "boast": [
+        "of/about sth/doing (to sb)"
+      ],
+      "succeed": [
+        "in sth/doing"
+      ],
+      "capable": [
+        "of doing"
+      ],
+      "settle": [
+        "for/on sth"
+      ],
+      "suitable": [
+        "for sth/doing",
+        "to do"
+      ],
+      "congratulate": [
+        "sb on sth/doing"
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrases and collocations",
-      "content": [
-        {
-          "items": [
-            "attention: pay attention (to sth/sb); attract (sb's) attention; draw (sb's) attention to sth",
-            "break: have/take a break (from sth/doing); lunch break; tea break; commercial break; give sb a break",
-            "discussion: have a discussion (with sb) about/on sth/doing",
-            "exam: take/do/have/pass/fail an exam; sit (for) an exam",
-            "homework: do your homework; have homework (to do)",
-            "idea: question an idea; have an idea; bright idea; have no idea (about)",
-            "learn: have a lot to learn about sth/doing; learn (how) to do",
-            "lesson: go to/have a lesson; double lesson; learn a/your lesson; teach sb a lesson",
-            "mind: make up your mind (about sth/doing); bear (sth) in mind; in two minds about sth/doing; change your mind (about sth/doing); cross your mind; to my mind; (not) mind if",
-            "opinion: in my opinion; give/express your/an opinion (of/about sth/doing); hold/have an opinion (of/about sth/doing)",
-            "pass: pass sth (over) to sb; pass an exam/test/etc; pass a building/etc",
-            "point: see/take sb's point (about sth/doing); (see) the point in/of sth/doing; there's no point in sth/doing; make a point (of doing)",
-            "sense: make sense of sth; it makes sense (to do); sense of humour/taste/sight/etc",
-            "suggestion: make/accept a suggestion"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word patterns",
-      "content": [
-        {
-          "items": [
-            "able to do",
-            "fail to do",
-            "similar to sth/sb/doing",
-            "admire sb (for sth/doing)",
-            "hope to do; hope that",
-            "study sth; for sth",
-            "boast of/about sth/doing (to sb)",
-            "learn about sth/doing; learn to do; learn by doing",
-            "succeed in sth/doing",
-            "capable of doing",
-            "settle for/on sth",
-            "suitable for sth/doing; suitable to do",
-            "congratulate sb on sth/doing"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word formation",
-      "content": [
-        {
-          "items": [
-            "academy → academic, academically",
-            "improve → improvement, improved",
-            "solve → solution, (un)solvable",
-            "attend → attention, (in)attentive(ly), attendance, attendant",
-            "intense → intensity, intensify, intensely",
-            "study → student, studies, studio",
-            "behave → behaviour",
-            "literate → illiterate, (illiteracy), literature",
-            "teach → teacher, taught",
-            "certify → certificate, certified",
-            "reason → (un)reasonable, (un)reasonably, reasoning",
-            "think → thought, (un)thinkable, thoughtful, thoughtless",
-            "educate → education, educator, educational(ly)",
-            "revise → revision, revised",
-            "understand → (mis)understanding, (mis)understood, understandable, understandably",
-            "fail → failure, failings",
-            "scholar → scholarship, scholarly, scholastic"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "A: Topic vocabulary in contrast",
-      "instructions": "Complete using the correct form of the words in the box.",
-      "items": [
-        {
-          "sentence": "In our school, most classes have about 35 ...... in them.",
-          "answer": "pupils"
-        },
-        {
-          "sentence": "Every year, two new ...... are chosen from the best students in each class.",
-          "answer": "prefects"
-        },
-        {
-          "sentence": "The university accepts around 2000 new ...... every year.",
-          "answer": "students"
-        },
-        {
-          "sentence": "When he finally graduated, Victor felt he had ...... everything he set out to do.",
-          "answer": "achieved"
-        },
-        {
-          "sentence": "The work we're doing now will make more sense when you ...... the sixth form.",
-          "answer": "reach"
-        },
-        {
-          "sentence": "Who ...... you how to play the drums like that?",
-          "answer": "taught"
-        },
-        {
-          "sentence": "I would love to ...... a new language I don't know anything about, like Swedish.",
-          "answer": "learn"
-        },
-        {
-          "sentence": "Children in England go to ...... school from the ages of five to eleven.",
-          "answer": "primary"
-        },
-        {
-          "sentence": "In Britain, grammar schools, public schools and comprehensives are often referred to as ...... schools.",
-          "answer": "secondary"
-        },
-        {
-          "sentence": "Americans usually refer to their secondary school as a ...... school, and there are often separate junior and senior schools.",
-          "answer": "high"
-        },
-        {
-          "sentence": "The exam ...... come out today and I'm really nervous. I hope I've passed.",
-          "answer": "results"
-        },
-        {
-          "sentence": "I was so proud when my exam ...... finally arrived in the post.",
-          "answer": "certificate"
-        },
-        {
-          "sentence": "I would prefer to go to university and do a ...... in astronomy, rather than start work.",
-          "answer": "degree"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "B: Circle the correct word",
-      "instructions": "Circle the correct word or phrase.",
-      "items": [
-        {
-          "sentence": "I made a few mistakes in the exam and I don't think I **passed / took** it.",
-          "answer": "passed"
-        },
-        {
-          "sentence": "It's not always easy to **count / measure** how intelligent someone is.",
-          "answer": "measure"
-        },
-        {
-          "sentence": "Did you know that our French teacher can **speak / talk** four languages?",
-          "answer": "speak"
-        },
-        {
-          "sentence": "My **qualifications / qualities** include a degree and an MA in chemistry.",
-          "answer": "qualifications"
-        },
-        {
-          "sentence": "Our headteacher had had her hair cut and I didn't **know / recognise** her at first.",
-          "answer": "recognise"
-        },
-        {
-          "sentence": "In design and technology, we were given the **effort / task** of designing a stadium.",
-          "answer": "task"
-        },
-        {
-          "sentence": "You'll find plenty of books on the **subject / lesson** of business studies in the library.",
-          "answer": "subject"
-        },
-        {
-          "sentence": "You have to **read / study** hard in order to do well at university.",
-          "answer": "study"
-        },
-        {
-          "sentence": "Look at what we did in today's lesson and we'll have a quick **exam / test** tomorrow morning.",
-          "answer": "test"
-        },
-        {
-          "sentence": "Our teacher asked us to choose one of our **colleagues / classmates** to be our partner for the next exercise.",
-          "answer": "classmates"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "C: Phrasal verbs (gap fill)",
-      "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "Just get ...... with Exercise C and I'll be back in a minute.",
-          "answer": "on"
-        },
-        {
-          "sentence": "My teacher says that I should sail ...... the exam, but I'm not so sure.",
-          "answer": "through"
-        },
-        {
-          "sentence": "Dave didn't understand what Miss Smith was getting ...... so he asked her to explain it again.",
-          "answer": "at"
-        },
-        {
-          "sentence": "We all tried to convince our teacher to change his mind about the school trip and he finally came .......",
-          "answer": "(a)round"
-        },
-        {
-          "sentence": "If you make a mistake, just cross it ...... with a single line.",
-          "answer": "out"
-        },
-        {
-          "sentence": "Belinda missed a few months of school because of illness and found it difficult to keep ...... with her classmates.",
-          "answer": "up"
-        },
-        {
-          "sentence": "The other kids were making fun of me, but I didn't catch ...... until I heard them laughing.",
-          "answer": "on"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "D: Phrasal verbs (transformation)",
-      "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
-      "items": [
-        {
-          "sentence": "The ideas in your essay need to be organised better. (set)\nYou need to ...... in your essay better.",
-          "answer": "set out the ideas"
-        },
-        {
-          "sentence": "Why don't you consider the college's offer for a few days and then call them? (over)\nWhy don't you ...... for a few days and then call them?",
-          "answer": "think the college's offer over"
-        },
-        {
-          "sentence": "You'll never pass the exam if you just stop trying like that. (in)\nYou'll never pass the exam if you just ...... like that.",
-          "answer": "give in"
-        },
-        {
-          "sentence": "When he was at university, Nick just couldn't handle all the work. (deal)\nNick just couldn't ...... at university.",
-          "answer": "deal with all the work"
-        },
-        {
-          "sentence": "I suddenly realised that I had left my homework at home. (dawned)\nIt ...... that I had left my homework at home.",
-          "answer": "suddenly dawned on me"
-        },
-        {
-          "sentence": "Ed was very lonely at university and he left after only one month. (out)\nEd ...... after only one month because he was very lonely.",
-          "answer": "dropped out of university"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "E: Multiple choice (Phrases and collocations)",
-      "instructions": "Choose the correct answer.",
-      "items": [
-        {
-          "sentence": "If you need to ...... the teacher's attention, just put your hand up.",
-          "options": [
-            "A pull",
-            "B attract",
-            "C capture",
-            "D draw"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "Make sure you ...... your homework before you go out.",
-          "options": [
-            "A make",
-            "B solve",
-            "C write",
-            "D do"
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "Could I ...... a suggestion? Why not have piano lessons?",
-          "options": [
-            "A have",
-            "B do",
-            "C put",
-            "D make"
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "I really don't ...... the point of taking the exam when you're not ready for it.",
-          "options": [
-            "A take",
-            "B see",
-            "C have",
-            "D mind"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "I'll meet you at the school gates during the lunch .......",
-          "options": [
-            "A break",
-            "B gap",
-            "C interval",
-            "D pause"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "Do you think you could pass that book ...... to me, please?",
-          "options": [
-            "A under",
-            "B through",
-            "C over",
-            "D in"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "Mrs Dawson said that we are ...... our lesson in the library next Monday.",
-          "options": [
-            "A having",
-            "B making",
-            "C reading",
-            "D going"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "In English yesterday, we had a discussion ...... different cultures.",
-          "options": [
-            "A around",
-            "B about",
-            "C for",
-            "D from"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "...... my opinion, maths shouldn't be a compulsory subject.",
-          "options": [
-            "A From",
-            "B To",
-            "C At",
-            "D In"
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "When you ...... the exam tomorrow, try to stay calm and relaxed.",
-          "options": [
-            "A make",
-            "B write",
-            "C take",
-            "D answer"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "My dad wants me to go to university, but I'm in ...... minds about it.",
-          "options": [
-            "A my",
-            "B two",
-            "C some",
-            "D different"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "I still have a lot ...... about the English language.",
-          "options": [
-            "A learning",
-            "B to learn",
-            "C for learning",
-            "D of learning"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "If the examiner can't ...... sense of your writing, you'll get a low mark.",
-          "options": [
-            "A make",
-            "B bring",
-            "C take",
-            "D understand"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "I hadn't studied, so when the teacher asked me I had ...... idea.",
-          "options": [
-            "A none",
-            "B no",
-            "C even",
-            "D not"
-          ],
-          "answer": "B"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "F: Word patterns (error correction)",
-      "instructions": "Each of the words in bold is incorrect. Rewrite them correctly.",
-      "items": [
-        {
-          "sentence": "I've always admired our music teacher from being so patient.",
-          "answer": "for"
-        },
-        {
-          "sentence": "My new school is quite similar with my old one.",
-          "answer": "to"
-        },
-        {
-          "sentence": "Mr Wilkins congratulated me for passing the exam.",
-          "answer": "on"
-        },
-        {
-          "sentence": "I'd better go home and study on tomorrow's test.",
-          "answer": "for"
-        },
-        {
-          "sentence": "Ian is capable for doing very well this year if he works hard.",
-          "answer": "of"
-        },
-        {
-          "sentence": "This course is suitable to students who are considering a career in the media.",
-          "answer": "for"
-        },
-        {
-          "sentence": "If you don't get into university, you'll have to settle with art college.",
-          "answer": "for"
-        },
-        {
-          "sentence": "After six attempts, Bill finally succeeded with passing his driving test.",
-          "answer": "in"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "G: Cloze (Word patterns)",
-      "instructions": "Water has damaged part of this text from a diary. Read it and decide what you think each of the original words was. Write the words in the blank spaces.",
-      "items": [
-        {
-          "sentence": "I was able ...... make a few friends, although I hope I meet more people tomorrow.",
-          "answer": "to"
-        },
-        {
-          "sentence": "I met one girl I didn't like, who just boasted ...... her exam results and succeeded ...... annoying everyone.",
-          "answer": "about/of, in"
-        },
-        {
-          "sentence": "The teacher asked me what I'd been learning at my other school and when I told her she said she failed ...... see how I would be able to catch up with the others.",
-          "answer": "to"
-        },
-        {
-          "sentence": "I'm just as capable ...... doing the work as the others.",
-          "answer": "of"
-        },
-        {
-          "sentence": "I'm really going to study hard ...... the test.",
-          "answer": "for"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "H: Word formation (sentences)",
-      "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
-      "items": [
-        {
-          "sentence": "I wonder if you could tell me who was awarded the ...... (SCHOLAR)?",
-          "answer": "scholarship"
-        },
-        {
-          "sentence": "Do you think that you pay enough ...... (ATTEND) in class?",
-          "answer": "attention"
-        },
-        {
-          "sentence": "Could you tell me what the ...... (SOLVE) to number seven is?",
-          "answer": "solution"
-        },
-        {
-          "sentence": "My dad said I'd better spend more time on my ...... (STUDY).",
-          "answer": "studies"
-        },
-        {
-          "sentence": "I would like to know what qualifications ...... (TEACH) require in your country.",
-          "answer": "teachers"
-        },
-        {
-          "sentence": "Joshua was suspended from school for a week for bad ...... (BEHAVE).",
-          "answer": "behaviour"
-        },
-        {
-          "sentence": "I did six hours of ...... (REVISE) for the test, and I still failed!",
-          "answer": "revision"
-        },
-        {
-          "sentence": "Please send photocopies of all your ...... (CERTIFY) to us at the address below.",
-          "answer": "certificates"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "I: Word formation (text)",
-      "instructions": "Complete the text by changing the form of the word in capitals.",
-      "items": [
-        {
-          "sentence": "It seems (1) ...... (THINK) today not to provide children with a decent (2) ...... (EDUCATE).",
-          "answer": "unthinkable, education"
-        },
-        {
-          "sentence": "There is such an emphasis on (3) ...... (ACADEMY) achievement these days that it's easy to forget what a problem (4) ...... (LITERATE) used to be.",
-          "answer": "academic, illiteracy"
-        },
-        {
-          "sentence": "Being unable to read can be (5) ...... (INTENSE) embarrassing and can make someone feel like a complete (6) ...... (FAIL).",
-          "answer": "intensely, failure"
-        },
-        {
-          "sentence": "Someone who can't read is often (7) ...... (UNDERSTAND) afraid of certain situations.",
-          "answer": "understandably"
-        },
-        {
-          "sentence": "The problem can seem (8) ...... (SOLVE).",
-          "answer": "unsolvable"
-        },
-        {
-          "sentence": "However, given the right teacher, a lot of hard work and a (9) ...... (REASON) amount of time, anyone can learn.",
-          "answer": "reasonable"
-        },
-        {
-          "sentence": "Being able to read can lead to an (10) ...... (IMPROVE) quality of life.",
-          "answer": "improved"
-        }
-      ]
+    "word_formation": [
+      {
+        "base": "academy",
+        "derivatives": [
+          "academic",
+          "academically"
+        ]
+      },
+      {
+        "base": "improve",
+        "derivatives": [
+          "improvement",
+          "improved"
+        ]
+      },
+      {
+        "base": "solve",
+        "derivatives": [
+          "solution",
+          "(un)solvable"
+        ]
+      },
+      {
+        "base": "attend",
+        "derivatives": [
+          "attention",
+          "(in)attentive(ly)",
+          "attendance",
+          "attendant"
+        ]
+      },
+      {
+        "base": "intense",
+        "derivatives": [
+          "intensity",
+          "intensify",
+          "intensely"
+        ]
+      },
+      {
+        "base": "study",
+        "derivatives": [
+          "student",
+          "studies",
+          "studio"
+        ]
+      },
+      {
+        "base": "behave",
+        "derivatives": [
+          "behaviour"
+        ]
+      },
+      {
+        "base": "literate",
+        "derivatives": [
+          "illiterate",
+          "(illiteracy)",
+          "literature"
+        ]
+      },
+      {
+        "base": "teach",
+        "derivatives": [
+          "teacher",
+          "taught"
+        ]
+      },
+      {
+        "base": "certify",
+        "derivatives": [
+          "certificate",
+          "certified"
+        ]
+      },
+      {
+        "base": "reason",
+        "derivatives": [
+          "(un)reasonable",
+          "(un)reasonably",
+          "reasoning"
+        ]
+      },
+      {
+        "base": "think",
+        "derivatives": [
+          "thought",
+          "(un)thinkable",
+          "thoughtful",
+          "thoughtless"
+        ]
+      },
+      {
+        "base": "educate",
+        "derivatives": [
+          "education",
+          "educator",
+          "educational(ly)"
+        ]
+      },
+      {
+        "base": "revise",
+        "derivatives": [
+          "revision",
+          "revised"
+        ]
+      },
+      {
+        "base": "understand",
+        "derivatives": [
+          "(mis)understanding",
+          "(mis)understood",
+          "understandable",
+          "understandably"
+        ]
+      },
+      {
+        "base": "fail",
+        "derivatives": [
+          "failure",
+          "failings"
+        ]
+      },
+      {
+        "base": "scholar",
+        "derivatives": [
+          "scholarship",
+          "scholarly",
+          "scholastic"
+        ]
+      }
+    ],
+    "exercises": {
+      "A": {
+        "title": "Topic vocabulary in contrast",
+        "instructions": "Complete using the correct form of the words in the box.",
+        "questions": [
+          {
+            "sentence": "In our school, most classes have about 35 ...... in them.",
+            "answer": "pupils"
+          },
+          {
+            "sentence": "Every year, two new ...... are chosen from the best students in each class.",
+            "answer": "prefects"
+          },
+          {
+            "sentence": "The university accepts around 2000 new ...... every year.",
+            "answer": "students"
+          },
+          {
+            "sentence": "When he finally graduated, Victor felt he had ...... everything he set out to do.",
+            "answer": "achieved"
+          },
+          {
+            "sentence": "The work we're doing now will make more sense when you ...... the sixth form.",
+            "answer": "reach"
+          },
+          {
+            "sentence": "Who ...... you how to play the drums like that?",
+            "answer": "taught"
+          },
+          {
+            "sentence": "I would love to ...... a new language I don't know anything about, like Swedish.",
+            "answer": "learn"
+          },
+          {
+            "sentence": "Children in England go to ...... school from the ages of five to eleven.",
+            "answer": "primary"
+          },
+          {
+            "sentence": "In Britain, grammar schools, public schools and comprehensives are often referred to as ...... schools.",
+            "answer": "secondary"
+          },
+          {
+            "sentence": "Americans usually refer to their secondary school as a ...... school, and there are often separate junior and senior schools.",
+            "answer": "high"
+          },
+          {
+            "sentence": "The exam ...... come out today and I'm really nervous. I hope I've passed.",
+            "answer": "results"
+          },
+          {
+            "sentence": "I was so proud when my exam ...... finally arrived in the post.",
+            "answer": "certificate"
+          },
+          {
+            "sentence": "I would prefer to go to university and do a ...... in astronomy, rather than start work.",
+            "answer": "degree"
+          }
+        ]
+      },
+      "B": {
+        "title": "Circle the correct word",
+        "instructions": "Circle the correct word or phrase.",
+        "questions": [
+          {
+            "sentence": "I made a few mistakes in the exam and I don't think I **passed / took** it.",
+            "answer": "passed"
+          },
+          {
+            "sentence": "It's not always easy to **count / measure** how intelligent someone is.",
+            "answer": "measure"
+          },
+          {
+            "sentence": "Did you know that our French teacher can **speak / talk** four languages?",
+            "answer": "speak"
+          },
+          {
+            "sentence": "My **qualifications / qualities** include a degree and an MA in chemistry.",
+            "answer": "qualifications"
+          },
+          {
+            "sentence": "Our headteacher had had her hair cut and I didn't **know / recognise** her at first.",
+            "answer": "recognise"
+          },
+          {
+            "sentence": "In design and technology, we were given the **effort / task** of designing a stadium.",
+            "answer": "task"
+          },
+          {
+            "sentence": "You'll find plenty of books on the **subject / lesson** of business studies in the library.",
+            "answer": "subject"
+          },
+          {
+            "sentence": "You have to **read / study** hard in order to do well at university.",
+            "answer": "study"
+          },
+          {
+            "sentence": "Look at what we did in today's lesson and we'll have a quick **exam / test** tomorrow morning.",
+            "answer": "test"
+          },
+          {
+            "sentence": "Our teacher asked us to choose one of our **colleagues / classmates** to be our partner for the next exercise.",
+            "answer": "classmates"
+          }
+        ]
+      },
+      "C": {
+        "title": "Phrasal verbs (gap fill)",
+        "instructions": "Write one word in each gap.",
+        "questions": [
+          {
+            "sentence": "Just get ...... with Exercise C and I'll be back in a minute.",
+            "answer": "on"
+          },
+          {
+            "sentence": "My teacher says that I should sail ...... the exam, but I'm not so sure.",
+            "answer": "through"
+          },
+          {
+            "sentence": "Dave didn't understand what Miss Smith was getting ...... so he asked her to explain it again.",
+            "answer": "at"
+          },
+          {
+            "sentence": "We all tried to convince our teacher to change his mind about the school trip and he finally came .......",
+            "answer": "(a)round"
+          },
+          {
+            "sentence": "If you make a mistake, just cross it ...... with a single line.",
+            "answer": "out"
+          },
+          {
+            "sentence": "Belinda missed a few months of school because of illness and found it difficult to keep ...... with her classmates.",
+            "answer": "up"
+          },
+          {
+            "sentence": "The other kids were making fun of me, but I didn't catch ...... until I heard them laughing.",
+            "answer": "on"
+          }
+        ]
+      },
+      "D": {
+        "title": "Phrasal verbs (transformation)",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "questions": [
+          {
+            "sentence": "The ideas in your essay need to be organised better. (set)\nYou need to ...... in your essay better.",
+            "answer": "set out the ideas"
+          },
+          {
+            "sentence": "Why don't you consider the college's offer for a few days and then call them? (over)\nWhy don't you ...... for a few days and then call them?",
+            "answer": "think the college's offer over"
+          },
+          {
+            "sentence": "You'll never pass the exam if you just stop trying like that. (in)\nYou'll never pass the exam if you just ...... like that.",
+            "answer": "give in"
+          },
+          {
+            "sentence": "When he was at university, Nick just couldn't handle all the work. (deal)\nNick just couldn't ...... at university.",
+            "answer": "deal with all the work"
+          },
+          {
+            "sentence": "I suddenly realised that I had left my homework at home. (dawned)\nIt ...... that I had left my homework at home.",
+            "answer": "suddenly dawned on me"
+          },
+          {
+            "sentence": "Ed was very lonely at university and he left after only one month. (out)\nEd ...... after only one month because he was very lonely.",
+            "answer": "dropped out of university"
+          }
+        ]
+      },
+      "E": {
+        "title": "Multiple choice (Phrases and collocations)",
+        "instructions": "Choose the correct answer.",
+        "questions": [
+          {
+            "sentence": "If you need to ...... the teacher's attention, just put your hand up.",
+            "options": [
+              "A pull",
+              "B attract",
+              "C capture",
+              "D draw"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "Make sure you ...... your homework before you go out.",
+            "options": [
+              "A make",
+              "B solve",
+              "C write",
+              "D do"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "Could I ...... a suggestion? Why not have piano lessons?",
+            "options": [
+              "A have",
+              "B do",
+              "C put",
+              "D make"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "I really don't ...... the point of taking the exam when you're not ready for it.",
+            "options": [
+              "A take",
+              "B see",
+              "C have",
+              "D mind"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "I'll meet you at the school gates during the lunch .......",
+            "options": [
+              "A break",
+              "B gap",
+              "C interval",
+              "D pause"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "Do you think you could pass that book ...... to me, please?",
+            "options": [
+              "A under",
+              "B through",
+              "C over",
+              "D in"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "Mrs Dawson said that we are ...... our lesson in the library next Monday.",
+            "options": [
+              "A having",
+              "B making",
+              "C reading",
+              "D going"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "In English yesterday, we had a discussion ...... different cultures.",
+            "options": [
+              "A around",
+              "B about",
+              "C for",
+              "D from"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "...... my opinion, maths shouldn't be a compulsory subject.",
+            "options": [
+              "A From",
+              "B To",
+              "C At",
+              "D In"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "When you ...... the exam tomorrow, try to stay calm and relaxed.",
+            "options": [
+              "A make",
+              "B write",
+              "C take",
+              "D answer"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "My dad wants me to go to university, but I'm in ...... minds about it.",
+            "options": [
+              "A my",
+              "B two",
+              "C some",
+              "D different"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "I still have a lot ...... about the English language.",
+            "options": [
+              "A learning",
+              "B to learn",
+              "C for learning",
+              "D of learning"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "If the examiner can't ...... sense of your writing, you'll get a low mark.",
+            "options": [
+              "A make",
+              "B bring",
+              "C take",
+              "D understand"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "I hadn't studied, so when the teacher asked me I had ...... idea.",
+            "options": [
+              "A none",
+              "B no",
+              "C even",
+              "D not"
+            ],
+            "answer": "B"
+          }
+        ]
+      },
+      "F": {
+        "title": "Word patterns (error correction)",
+        "instructions": "Each of the words in bold is incorrect. Rewrite them correctly.",
+        "questions": [
+          {
+            "sentence": "I've always admired our music teacher from being so patient.",
+            "answer": "for"
+          },
+          {
+            "sentence": "My new school is quite similar with my old one.",
+            "answer": "to"
+          },
+          {
+            "sentence": "Mr Wilkins congratulated me for passing the exam.",
+            "answer": "on"
+          },
+          {
+            "sentence": "I'd better go home and study on tomorrow's test.",
+            "answer": "for"
+          },
+          {
+            "sentence": "Ian is capable for doing very well this year if he works hard.",
+            "answer": "of"
+          },
+          {
+            "sentence": "This course is suitable to students who are considering a career in the media.",
+            "answer": "for"
+          },
+          {
+            "sentence": "If you don't get into university, you'll have to settle with art college.",
+            "answer": "for"
+          },
+          {
+            "sentence": "After six attempts, Bill finally succeeded with passing his driving test.",
+            "answer": "in"
+          }
+        ]
+      },
+      "G": {
+        "title": "Cloze (Word patterns)",
+        "instructions": "Water has damaged part of this text from a diary. Read it and decide what you think each of the original words was. Write the words in the blank spaces.",
+        "questions": [
+          {
+            "sentence": "I was able ...... make a few friends, although I hope I meet more people tomorrow.",
+            "answer": "to"
+          },
+          {
+            "sentence": "I met one girl I didn't like, who just boasted ...... her exam results and succeeded ...... annoying everyone.",
+            "answer": "about/of, in"
+          },
+          {
+            "sentence": "The teacher asked me what I'd been learning at my other school and when I told her she said she failed ...... see how I would be able to catch up with the others.",
+            "answer": "to"
+          },
+          {
+            "sentence": "I'm just as capable ...... doing the work as the others.",
+            "answer": "of"
+          },
+          {
+            "sentence": "I'm really going to study hard ...... the test.",
+            "answer": "for"
+          }
+        ]
+      },
+      "H": {
+        "title": "Word formation (sentences)",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "questions": [
+          {
+            "sentence": "I wonder if you could tell me who was awarded the ...... (SCHOLAR)?",
+            "answer": "scholarship"
+          },
+          {
+            "sentence": "Do you think that you pay enough ...... (ATTEND) in class?",
+            "answer": "attention"
+          },
+          {
+            "sentence": "Could you tell me what the ...... (SOLVE) to number seven is?",
+            "answer": "solution"
+          },
+          {
+            "sentence": "My dad said I'd better spend more time on my ...... (STUDY).",
+            "answer": "studies"
+          },
+          {
+            "sentence": "I would like to know what qualifications ...... (TEACH) require in your country.",
+            "answer": "teachers"
+          },
+          {
+            "sentence": "Joshua was suspended from school for a week for bad ...... (BEHAVE).",
+            "answer": "behaviour"
+          },
+          {
+            "sentence": "I did six hours of ...... (REVISE) for the test, and I still failed!",
+            "answer": "revision"
+          },
+          {
+            "sentence": "Please send photocopies of all your ...... (CERTIFY) to us at the address below.",
+            "answer": "certificates"
+          }
+        ]
+      },
+      "I": {
+        "title": "Word formation (text)",
+        "instructions": "Complete the text by changing the form of the word in capitals.",
+        "questions": [
+          {
+            "sentence": "It seems (1) ...... (THINK) today not to provide children with a decent (2) ...... (EDUCATE).",
+            "answer": "unthinkable, education"
+          },
+          {
+            "sentence": "There is such an emphasis on (3) ...... (ACADEMY) achievement these days that it's easy to forget what a problem (4) ...... (LITERATE) used to be.",
+            "answer": "academic, illiteracy"
+          },
+          {
+            "sentence": "Being unable to read can be (5) ...... (INTENSE) embarrassing and can make someone feel like a complete (6) ...... (FAIL).",
+            "answer": "intensely, failure"
+          },
+          {
+            "sentence": "Someone who can't read is often (7) ...... (UNDERSTAND) afraid of certain situations.",
+            "answer": "understandably"
+          },
+          {
+            "sentence": "The problem can seem (8) ...... (SOLVE).",
+            "answer": "unsolvable"
+          },
+          {
+            "sentence": "However, given the right teacher, a lot of hard work and a (9) ...... (REASON) amount of time, anyone can learn.",
+            "answer": "reasonable"
+          },
+          {
+            "sentence": "Being able to read can lead to an (10) ...... (IMPROVE) quality of life.",
+            "answer": "improved"
+          }
+        ]
+      }
     }
-  ]
+  }
 }

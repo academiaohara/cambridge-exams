@@ -3,591 +3,810 @@
   "unit": 10,
   "type": "vocabulary",
   "unitTitle": "Unit 10: People and society",
-  "sections": [
-    {
-      "type": "theory",
-      "title": "Topic vocabulary in contrast",
-      "content": [
+  "sections": {
+    "topic_vocabulary": {
+      "vocabulary": [
         {
-          "items": [
-            "relationship / connection",
-            "support / assist",
-            "company / group",
-            "blame / fault",
-            "kind / polite",
-            "popular / famous",
-            "old / ancient",
-            "sympathetic / likeable",
-            "typical / usual / ordinary",
-            "crowd / audience",
-            "nervous / bad-tempered",
-            "close / near",
-            "enjoy / please",
-            "sensitive / sensible",
-            "unknown / infamous"
-          ]
+          "word": "relationship / connection"
+        },
+        {
+          "word": "support / assist"
+        },
+        {
+          "word": "company / group"
+        },
+        {
+          "word": "blame / fault"
+        },
+        {
+          "word": "kind / polite"
+        },
+        {
+          "word": "popular / famous"
+        },
+        {
+          "word": "old / ancient"
+        },
+        {
+          "word": "sympathetic / likeable"
+        },
+        {
+          "word": "typical / usual / ordinary"
+        },
+        {
+          "word": "crowd / audience"
+        },
+        {
+          "word": "nervous / bad-tempered"
+        },
+        {
+          "word": "close / near"
+        },
+        {
+          "word": "enjoy / please"
+        },
+        {
+          "word": "sensitive / sensible"
+        },
+        {
+          "word": "unknown / infamous"
         }
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrasal verbs",
-      "content": [
-        {
-          "items": [
-            "ask after: ask for news about",
-            "make up: become friends again after an argument",
-            "bring up: look after a child until he or she becomes an adult",
-            "pass away: die",
-            "fall for: fall in love with; believe (a lie/trick/etc)",
-            "pick on: keep treating someone badly or unfairly",
-            "fall out (with): have an argument with and stop being friends",
-            "put down: criticise, make someone feel stupid",
-            "get on (with): have a good relationship (with)",
-            "settle down: become calm after being upset, etc; stay in one place or get married and live quietly",
-            "grow up: become older",
-            "stand up for: support in an argument or fight",
-            "look down on: think that you are better than",
-            "take aback: surprise (usually in passive voice)",
-            "look up to: admire and respect"
-          ]
-        }
+    "phrasal_verbs": [
+      {
+        "verb": "ask after",
+        "meaning": "ask for news about"
+      },
+      {
+        "verb": "make up",
+        "meaning": "become friends again after an argument"
+      },
+      {
+        "verb": "bring up",
+        "meaning": "look after a child until he or she becomes an adult"
+      },
+      {
+        "verb": "pass away",
+        "meaning": "die"
+      },
+      {
+        "verb": "fall for",
+        "meaning": "fall in love with; believe (a lie/trick/etc)"
+      },
+      {
+        "verb": "pick on",
+        "meaning": "keep treating someone badly or unfairly"
+      },
+      {
+        "verb": "fall out (with)",
+        "meaning": "have an argument with and stop being friends"
+      },
+      {
+        "verb": "put down",
+        "meaning": "criticise, make someone feel stupid"
+      },
+      {
+        "verb": "get on (with)",
+        "meaning": "have a good relationship (with)"
+      },
+      {
+        "verb": "settle down",
+        "meaning": "become calm after being upset, etc; stay in one place or get married and live quietly"
+      },
+      {
+        "verb": "grow up",
+        "meaning": "become older"
+      },
+      {
+        "verb": "stand up for",
+        "meaning": "support in an argument or fight"
+      },
+      {
+        "verb": "look down on",
+        "meaning": "think that you are better than"
+      },
+      {
+        "verb": "take aback",
+        "meaning": "surprise (usually in passive voice)"
+      },
+      {
+        "verb": "look up to",
+        "meaning": "admire and respect"
+      }
+    ],
+    "collocations_patterns": {
+      "approval": [
+        "show/give (your) approval of/for sth",
+        "meet with sb's approval"
+      ],
+      "argument": [
+        "have an argument (with sb) (about sth/doing)",
+        "win/lose an argument"
+      ],
+      "care": [
+        "take care (of sth/sb)",
+        "care for/about sth/sb"
+      ],
+      "courage": [
+        "have the courage to do",
+        "it takes courage to do"
+      ],
+      "disguise": [
+        "in disguise",
+        "wear a disguise",
+        "disguise yourself",
+        "disguised as sth/sb"
+      ],
+      "dream": [
+        "have a dream (about sth/sb/doing)",
+        "daydream",
+        "dream of/about doing"
+      ],
+      "family": [
+        "have/start a family",
+        "nuclear family",
+        "extended family"
+      ],
+      "favour": [
+        "do/owe sb a favour",
+        "be in favour of"
+      ],
+      "friend": [
+        "make/become/be/stay friends (with sb)",
+        "best friend"
+      ],
+      "love": [
+        "be/fall in love with sb"
+      ],
+      "mood": [
+        "in a good/bad mood",
+        "in the right/wrong mood",
+        "in the mood for sth"
+      ],
+      "pity": [
+        "pity sb",
+        "take pity on sb",
+        "feel pity for sb",
+        "it's a pity (that)"
+      ],
+      "promise": [
+        "promise to do",
+        "give/make sb a promise",
+        "break a/your promise"
+      ],
+      "agree": [
+        "with/on/to sth",
+        "with sb",
+        "to do",
+        "that"
+      ],
+      "force": [
+        "sb to do sth",
+        "sb into sth/doing"
+      ],
+      "allow": [
+        "sb to do",
+        "sth"
+      ],
+      "independent": [
+        "of/from sth"
+      ],
+      "approve": [
+        "of sth/doing",
+        "sth"
+      ],
+      "let": [
+        "sb do sth"
+      ],
+      "ask": [
+        "sb sth",
+        "sb to do sth (for you)",
+        "about/for sth",
+        "if/whether"
+      ],
+      "object": [
+        "to sth/doing"
+      ],
+      "attack": [
+        "sth",
+        "sb for sth/doing",
+        "an attack on sth/sb"
+      ],
+      "pretend": [
+        "to be",
+        "to do",
+        "that"
+      ],
+      "ban": [
+        "sb from sth/doing",
+        "sth"
+      ],
+      "rely": [
+        "on sth/sb"
+      ],
+      "convince": [
+        "sb (of sth)",
+        "sb to do",
+        "sb that"
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrases and collocations",
-      "content": [
-        {
-          "items": [
-            "approval: show/give (your) approval of/for sth; meet with sb's approval",
-            "argument: have an argument (with sb) (about sth/doing); win/lose an argument",
-            "care: take care (of sth/sb); care for/about sth/sb",
-            "courage: have the courage to do; it takes courage to do",
-            "disguise: in disguise; wear a disguise; disguise yourself; disguised as sth/sb",
-            "dream: have a dream (about sth/sb/doing); daydream; dream of/about doing",
-            "family: have/start a family; nuclear family; extended family",
-            "favour: do/owe sb a favour; be in favour of",
-            "friend: make/become/be/stay friends (with sb); best friend",
-            "love: be/fall in love with sb",
-            "mood: in a good/bad mood; in the right/wrong mood; in the mood for sth",
-            "pity: pity sb; take pity on sb; feel pity for sb; it's a pity (that)",
-            "promise: promise to do; give/make sb a promise; break a/your promise"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word patterns",
-      "content": [
-        {
-          "items": [
-            "agree with/on/to sth; agree with sb; agree to do; agree that",
-            "force sb to do sth; force sb into sth/doing",
-            "allow sb to do; allow sth",
-            "independent of/from sth",
-            "approve of sth/doing; approve sth",
-            "let sb do sth",
-            "ask sb sth; ask sb to do sth (for you); ask about/for sth; ask if/whether",
-            "object to sth/doing",
-            "attack sth; attack sb for sth/doing; an attack on sth/sb",
-            "pretend to be; pretend to do; pretend that",
-            "ban sb from sth/doing; ban sth",
-            "rely on sth/sb",
-            "convince sb (of sth); convince sb to do; convince sb that"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word formation",
-      "content": [
-        {
-          "items": [
-            "able → unable, (in)ability, disabled, disability",
-            "happy → unhappy, (un)happiness, (un)happily",
-            "obey → disobey, (dis)obedient(ly), (dis)obedience",
-            "achieve → achievement",
-            "jealous → jealousy, jealously",
-            "person → (im)personal(ly), personality",
-            "argue → argument, argumentative",
-            "kind → unkind, (un)kindness, kindly",
-            "polite → impolite, (im)politely, (im)politeness",
-            "care → careful(ly), careless(ly), (un)caring",
-            "marry → marriage, (un)married",
-            "relate → relative(ly), relation, relationship",
-            "correspond → correspondence",
-            "nerve → nervous(ly), nervousness",
-            "willing → unwilling, (un)willingness, (un)willingly",
-            "friend → friendship, (un)friendly"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "A: Multiple choice (Vocabulary in contrast)",
-      "instructions": "Choose the correct answer.",
-      "items": [
-        {
-          "sentence": "Everyone said they had ...... themselves at the wedding.",
-          "options": [
-            "A enjoyed",
-            "B impressed",
-            "C pleased",
-            "D excited"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "Mary seems to go out with a different ...... of friends almost every night.",
-          "options": [
-            "A group",
-            "B band",
-            "C company",
-            "D collection"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "People can become very ...... when they are stuck in traffic for a long time.",
-          "options": [
-            "A nervous",
-            "B bad-tempered",
-            "C stressed",
-            "D pressed"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "More and more people are living into ...... age and it's a serious social problem.",
-          "options": [
-            "A high",
-            "B far",
-            "C ancient",
-            "D old"
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "Stephanie seems to be very ...... with her classmates.",
-          "options": [
-            "A likeable",
-            "B known",
-            "C famous",
-            "D popular"
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "Most people have no idea what it's like to be .......",
-          "options": [
-            "A usual",
-            "C typical",
-            "B ordinary",
-            "D medium"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "When my parents got divorced, my best friend was very ...... and listened to all my problems.",
-          "options": [
-            "A likeable",
-            "C sympathetic",
-            "B amusing",
-            "D enjoyable"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "Rita's very ...... and easily gets upset when people criticise her.",
-          "options": [
-            "A level-headed",
-            "C sensible",
-            "B sensitive",
-            "D open-minded"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "Police were called in when the ...... of people began to get violent.",
-          "options": [
-            "A crowd",
-            "C audience",
-            "B company",
-            "D herd"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "My dad says he once met Robbie Williams when he was still .......",
-          "options": [
-            "A unknown",
-            "C infamous",
-            "B hidden",
-            "D unrelated"
-          ],
-          "answer": "A"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "B: Circle the correct word",
-      "instructions": "Circle the correct word.",
-      "items": [
-        {
-          "sentence": "These days, many parents find it difficult to **assist / support** a large family.",
-          "answer": "support"
-        },
-        {
-          "sentence": "Forgetting to thank us for dinner is **usual / typical** of George.",
-          "answer": "typical"
-        },
-        {
-          "sentence": "My grandma doesn't have any **close / near** family her own age left.",
-          "answer": "close"
-        },
-        {
-          "sentence": "In **ancient / old** times, people had a very different view of the world.",
-          "answer": "ancient"
-        },
-        {
-          "sentence": "Who was to **blame / fault** for the argument?",
-          "answer": "blame"
-        },
-        {
-          "sentence": "Don't you know it's **kind / polite** to close your mouth when you are eating?",
-          "answer": "polite"
-        },
-        {
-          "sentence": "Nathan's parents were very **enjoyed / pleased** when they saw him in the school play.",
-          "answer": "pleased"
-        },
-        {
-          "sentence": "I have a very good **connection / relationship** with my mother.",
-          "answer": "relationship"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "C: Phrasal verbs (gap fill)",
-      "instructions": "Complete using the words from the box. You need to use one word twice.",
-      "items": [
-        {
-          "sentence": "Some of us seem to be infinitely kind, while others seem to (1) ...... down on everyone around them.",
-          "answer": "look"
-        },
-        {
-          "sentence": "Some of us never forget an argument, while others (2) ...... up and forgive easily.",
-          "answer": "make"
-        },
-        {
-          "sentence": "As we (3) ...... up, our personality develops and we find that we (4) ...... on with certain people more than others.",
-          "answer": "grow, get"
-        },
-        {
-          "sentence": "Who we are seems to have a large genetic element, but is also influenced by those who (5) ...... us up.",
-          "answer": "bring"
-        },
-        {
-          "sentence": "If we (6) ...... up to our parents or other family members, we may want to be like them.",
-          "answer": "look"
-        },
-        {
-          "sentence": "On the other hand, if our parents seem to (7) ...... us down all the time and we (8) ...... out with them a lot, then perhaps we will develop quite different personalities.",
-          "answer": "put, fall"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "D: Phrasal verbs (transformation)",
-      "instructions": "Rewrite the sentences using a phrasal verb.",
-      "items": [
-        {
-          "sentence": "The doctor said that the old woman had died peacefully in her sleep.",
-          "answer": "passed away"
-        },
-        {
-          "sentence": "I always support my brother when he gets into trouble.",
-          "answer": "stand up for"
-        },
-        {
-          "sentence": "Tony seems to have really fallen in love with Vanessa.",
-          "answer": "fallen for"
-        },
-        {
-          "sentence": "Mark is such a bully and treats badly the younger boys at school.",
-          "answer": "picks on"
-        },
-        {
-          "sentence": "I was surprised when Michaela said I'd hurt her feelings.",
-          "answer": "taken aback"
-        },
-        {
-          "sentence": "Richard finally met the woman of his dreams and got married and started to live quietly in Australia.",
-          "answer": "settled down"
-        },
-        {
-          "sentence": "I saw Mrs Khan in the centre of town and she asked for news about you.",
-          "answer": "asked after"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "E: Phrases and collocations (gap fill)",
-      "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "Could you ...... me a favour and ask Oliver to see me in my office?",
-          "answer": "do"
-        },
-        {
-          "sentence": "I don't have many ambitions, but I'd like to graduate and then ...... a family.",
-          "answer": "have/start"
-        },
-        {
-          "sentence": "As we walked down the street, Helen ...... pity on the beggar and gave him some money.",
-          "answer": "took"
-        },
-        {
-          "sentence": "Nadia's hair looked awful, but I didn't ...... the courage to tell her.",
-          "answer": "have"
-        },
-        {
-          "sentence": "My dad can't stand an argument and always has to have the last word.",
-          "answer": "losing"
-        },
-        {
-          "sentence": "The new law seemed to ...... with everyone's approval.",
-          "answer": "meet"
-        },
-        {
-          "sentence": "Can you ...... care of your little sister for a minute while I go to the shop?",
-          "answer": "take"
-        },
-        {
-          "sentence": "When you first ...... in love, the whole world seems a beautiful place.",
-          "answer": "fall"
-        },
-        {
-          "sentence": "I don't really ...... friends very easily because I'm quite shy.",
-          "answer": "make"
-        },
-        {
-          "sentence": "I didn't recognise Ed when I saw him because he was ...... disguise.",
-          "answer": "in"
-        },
-        {
-          "sentence": "You're in a very good ....... Why are you so happy?",
-          "answer": "mood"
-        },
-        {
-          "sentence": "If you keep ...... your promises, people won't trust you any more.",
-          "answer": "breaking"
-        },
-        {
-          "sentence": "...... a really strange dream last night about my best friend.",
-          "answer": "had"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "F: Multiple choice (Word patterns)",
-      "instructions": "Choose the correct answer.",
-      "items": [
-        {
-          "sentence": "The government is trying to convince people ...... the need for higher taxes.",
-          "options": [
-            "A with",
-            "C that",
-            "B of",
-            "D for"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "I believe that judges should be independent ...... the government.",
-          "options": [
-            "A to",
-            "C with",
-            "B from",
-            "D on"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "Local residents object ...... the new power station in their area.",
-          "options": [
-            "A to have",
-            "C of having",
-            "B having",
-            "D to having"
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "Do you think they should ban people ...... smoking in public places?",
-          "options": [
-            "A from",
-            "C in",
-            "B that",
-            "D of"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "The MP asked the prime minister ...... was aware of the growing social problem.",
-          "options": [
-            "A that",
-            "C if",
-            "B him",
-            "D what"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "Most people seem to agree ...... the newspapers' criticism of the government.",
-          "options": [
-            "A on",
-            "C with",
-            "B to",
-            "D that"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "I don't think people should rely ...... the state, even if they are unemployed.",
-          "options": [
-            "A to",
-            "C on",
-            "B with",
-            "D by"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "The mayor was attacked ...... public money.",
-          "options": [
-            "A for wasting",
-            "C he waste",
-            "B to waste",
-            "D of wasting"
-          ],
-          "answer": "A"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "G: Error correction (extra words)",
-      "instructions": "Find the extra word in each line.",
-      "items": [
-        {
-          "sentence": "Living together in societyHell, said Jean-Paul Sartre, is other people, and whether you agree with or not, we are all have to learn to live together.",
-          "answer": "with"
-        },
-        {
-          "sentence": "We may not always approve of that other people's behaviour, but we do have to live with it.",
-          "answer": "that"
-        },
-        {
-          "sentence": "It is impossible to force other people in to behave exactly how we think they should behave.",
-          "answer": "in"
-        },
-        {
-          "sentence": "Of course, the law bans from all kinds of behaviour and if you can convince to enough people, you might be able to get the government to pass a new law.",
-          "answer": "from"
-        },
-        {
-          "sentence": "Mostly, though, you have to let off people live their own lives, in the same way you expect them to allow you for to live your life.",
-          "answer": "off"
-        },
-        {
-          "sentence": "You don't have to pretend it that you like how some other people live, but letting them to be themselves is often the only choice.",
-          "answer": "it"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "H: Word formation (text)",
-      "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
-      "items": [
-        {
-          "sentence": "I had a really stupid (1) ...... with my best friend the other day.",
-          "answer": "argument"
-        },
-        {
-          "sentence": "It all started because we were talking about (2) ...... and having a family.",
-          "answer": "marriage/marrying/getting married"
-        },
-        {
-          "sentence": "I said that (3) ...... is important when you are married and she said that she thought that was rubbish and that (4) ...... is much more important.",
-          "answer": "politeness, kindness"
-        },
-        {
-          "sentence": "Well, we were (5) ...... to agree and, in the end, she left without saying goodbye.",
-          "answer": "unable"
-        },
-        {
-          "sentence": "I do hope it doesn't spoil our (6) .......",
-          "answer": "friendship"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "I: Word formation (sentences)",
-      "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
-      "items": [
-        {
-          "sentence": "My best friend has a great (PERSON) and everyone likes her.",
-          "answer": "personality"
-        },
-        {
-          "sentence": "I have a good (RELATE) with my mum and I can talk to her about anything.",
-          "answer": "relationship"
-        },
-        {
-          "sentence": "They've just published a book of George Bush's (CORRESPOND) and it looks really interesting.",
-          "answer": "correspondence"
-        },
-        {
-          "sentence": "Jenny seemed (WILLING) to talk about her argument with Nancy but I eventually got the facts.",
-          "answer": "unwilling"
-        },
-        {
-          "sentence": "As I waited for Kelly to arrive at the cinema, I bit my nails (NERVE).",
-          "answer": "nervously"
-        },
-        {
-          "sentence": "Ignore what Sharon says about you. It's just (JEALOUS).",
-          "answer": "jealousy"
-        },
-        {
-          "sentence": "In the past, children were expected to be very (OBEY).",
-          "answer": "obedient"
-        },
-        {
-          "sentence": "Brenda blames her (HAPPY) on being single, but I'm not so sure.",
-          "answer": "unhappiness"
-        },
-        {
-          "sentence": "Tom knew that being chosen as class president was a real (ACHIEVE).",
-          "answer": "achievement"
-        },
-        {
-          "sentence": "Kevin's so sensitive that you have to be very (CARE) what you say to him.",
-          "answer": "careful"
-        }
-      ]
+    "word_formation": [
+      {
+        "base": "able",
+        "derivatives": [
+          "unable",
+          "(in)ability",
+          "disabled",
+          "disability"
+        ]
+      },
+      {
+        "base": "happy",
+        "derivatives": [
+          "unhappy",
+          "(un)happiness",
+          "(un)happily"
+        ]
+      },
+      {
+        "base": "obey",
+        "derivatives": [
+          "disobey",
+          "(dis)obedient(ly)",
+          "(dis)obedience"
+        ]
+      },
+      {
+        "base": "achieve",
+        "derivatives": [
+          "achievement"
+        ]
+      },
+      {
+        "base": "jealous",
+        "derivatives": [
+          "jealousy",
+          "jealously"
+        ]
+      },
+      {
+        "base": "person",
+        "derivatives": [
+          "(im)personal(ly)",
+          "personality"
+        ]
+      },
+      {
+        "base": "argue",
+        "derivatives": [
+          "argument",
+          "argumentative"
+        ]
+      },
+      {
+        "base": "kind",
+        "derivatives": [
+          "unkind",
+          "(un)kindness",
+          "kindly"
+        ]
+      },
+      {
+        "base": "polite",
+        "derivatives": [
+          "impolite",
+          "(im)politely",
+          "(im)politeness"
+        ]
+      },
+      {
+        "base": "care",
+        "derivatives": [
+          "careful(ly)",
+          "careless(ly)",
+          "(un)caring"
+        ]
+      },
+      {
+        "base": "marry",
+        "derivatives": [
+          "marriage",
+          "(un)married"
+        ]
+      },
+      {
+        "base": "relate",
+        "derivatives": [
+          "relative(ly)",
+          "relation",
+          "relationship"
+        ]
+      },
+      {
+        "base": "correspond",
+        "derivatives": [
+          "correspondence"
+        ]
+      },
+      {
+        "base": "nerve",
+        "derivatives": [
+          "nervous(ly)",
+          "nervousness"
+        ]
+      },
+      {
+        "base": "willing",
+        "derivatives": [
+          "unwilling",
+          "(un)willingness",
+          "(un)willingly"
+        ]
+      },
+      {
+        "base": "friend",
+        "derivatives": [
+          "friendship",
+          "(un)friendly"
+        ]
+      }
+    ],
+    "exercises": {
+      "A": {
+        "title": "Multiple choice (Vocabulary in contrast)",
+        "instructions": "Choose the correct answer.",
+        "questions": [
+          {
+            "sentence": "Everyone said they had ...... themselves at the wedding.",
+            "options": [
+              "A enjoyed",
+              "B impressed",
+              "C pleased",
+              "D excited"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "Mary seems to go out with a different ...... of friends almost every night.",
+            "options": [
+              "A group",
+              "B band",
+              "C company",
+              "D collection"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "People can become very ...... when they are stuck in traffic for a long time.",
+            "options": [
+              "A nervous",
+              "B bad-tempered",
+              "C stressed",
+              "D pressed"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "More and more people are living into ...... age and it's a serious social problem.",
+            "options": [
+              "A high",
+              "B far",
+              "C ancient",
+              "D old"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "Stephanie seems to be very ...... with her classmates.",
+            "options": [
+              "A likeable",
+              "B known",
+              "C famous",
+              "D popular"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "Most people have no idea what it's like to be .......",
+            "options": [
+              "A usual",
+              "C typical",
+              "B ordinary",
+              "D medium"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "When my parents got divorced, my best friend was very ...... and listened to all my problems.",
+            "options": [
+              "A likeable",
+              "C sympathetic",
+              "B amusing",
+              "D enjoyable"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "Rita's very ...... and easily gets upset when people criticise her.",
+            "options": [
+              "A level-headed",
+              "C sensible",
+              "B sensitive",
+              "D open-minded"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "Police were called in when the ...... of people began to get violent.",
+            "options": [
+              "A crowd",
+              "C audience",
+              "B company",
+              "D herd"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "My dad says he once met Robbie Williams when he was still .......",
+            "options": [
+              "A unknown",
+              "C infamous",
+              "B hidden",
+              "D unrelated"
+            ],
+            "answer": "A"
+          }
+        ]
+      },
+      "B": {
+        "title": "Circle the correct word",
+        "instructions": "Circle the correct word.",
+        "questions": [
+          {
+            "sentence": "These days, many parents find it difficult to **assist / support** a large family.",
+            "answer": "support"
+          },
+          {
+            "sentence": "Forgetting to thank us for dinner is **usual / typical** of George.",
+            "answer": "typical"
+          },
+          {
+            "sentence": "My grandma doesn't have any **close / near** family her own age left.",
+            "answer": "close"
+          },
+          {
+            "sentence": "In **ancient / old** times, people had a very different view of the world.",
+            "answer": "ancient"
+          },
+          {
+            "sentence": "Who was to **blame / fault** for the argument?",
+            "answer": "blame"
+          },
+          {
+            "sentence": "Don't you know it's **kind / polite** to close your mouth when you are eating?",
+            "answer": "polite"
+          },
+          {
+            "sentence": "Nathan's parents were very **enjoyed / pleased** when they saw him in the school play.",
+            "answer": "pleased"
+          },
+          {
+            "sentence": "I have a very good **connection / relationship** with my mother.",
+            "answer": "relationship"
+          }
+        ]
+      },
+      "C": {
+        "title": "Phrasal verbs (gap fill)",
+        "instructions": "Complete using the words from the box. You need to use one word twice.",
+        "questions": [
+          {
+            "sentence": "Some of us seem to be infinitely kind, while others seem to (1) ...... down on everyone around them.",
+            "answer": "look"
+          },
+          {
+            "sentence": "Some of us never forget an argument, while others (2) ...... up and forgive easily.",
+            "answer": "make"
+          },
+          {
+            "sentence": "As we (3) ...... up, our personality develops and we find that we (4) ...... on with certain people more than others.",
+            "answer": "grow, get"
+          },
+          {
+            "sentence": "Who we are seems to have a large genetic element, but is also influenced by those who (5) ...... us up.",
+            "answer": "bring"
+          },
+          {
+            "sentence": "If we (6) ...... up to our parents or other family members, we may want to be like them.",
+            "answer": "look"
+          },
+          {
+            "sentence": "On the other hand, if our parents seem to (7) ...... us down all the time and we (8) ...... out with them a lot, then perhaps we will develop quite different personalities.",
+            "answer": "put, fall"
+          }
+        ]
+      },
+      "D": {
+        "title": "Phrasal verbs (transformation)",
+        "instructions": "Rewrite the sentences using a phrasal verb.",
+        "questions": [
+          {
+            "sentence": "The doctor said that the old woman had died peacefully in her sleep.",
+            "answer": "passed away"
+          },
+          {
+            "sentence": "I always support my brother when he gets into trouble.",
+            "answer": "stand up for"
+          },
+          {
+            "sentence": "Tony seems to have really fallen in love with Vanessa.",
+            "answer": "fallen for"
+          },
+          {
+            "sentence": "Mark is such a bully and treats badly the younger boys at school.",
+            "answer": "picks on"
+          },
+          {
+            "sentence": "I was surprised when Michaela said I'd hurt her feelings.",
+            "answer": "taken aback"
+          },
+          {
+            "sentence": "Richard finally met the woman of his dreams and got married and started to live quietly in Australia.",
+            "answer": "settled down"
+          },
+          {
+            "sentence": "I saw Mrs Khan in the centre of town and she asked for news about you.",
+            "answer": "asked after"
+          }
+        ]
+      },
+      "E": {
+        "title": "Phrases and collocations (gap fill)",
+        "instructions": "Write one word in each gap.",
+        "questions": [
+          {
+            "sentence": "Could you ...... me a favour and ask Oliver to see me in my office?",
+            "answer": "do"
+          },
+          {
+            "sentence": "I don't have many ambitions, but I'd like to graduate and then ...... a family.",
+            "answer": "have/start"
+          },
+          {
+            "sentence": "As we walked down the street, Helen ...... pity on the beggar and gave him some money.",
+            "answer": "took"
+          },
+          {
+            "sentence": "Nadia's hair looked awful, but I didn't ...... the courage to tell her.",
+            "answer": "have"
+          },
+          {
+            "sentence": "My dad can't stand an argument and always has to have the last word.",
+            "answer": "losing"
+          },
+          {
+            "sentence": "The new law seemed to ...... with everyone's approval.",
+            "answer": "meet"
+          },
+          {
+            "sentence": "Can you ...... care of your little sister for a minute while I go to the shop?",
+            "answer": "take"
+          },
+          {
+            "sentence": "When you first ...... in love, the whole world seems a beautiful place.",
+            "answer": "fall"
+          },
+          {
+            "sentence": "I don't really ...... friends very easily because I'm quite shy.",
+            "answer": "make"
+          },
+          {
+            "sentence": "I didn't recognise Ed when I saw him because he was ...... disguise.",
+            "answer": "in"
+          },
+          {
+            "sentence": "You're in a very good ....... Why are you so happy?",
+            "answer": "mood"
+          },
+          {
+            "sentence": "If you keep ...... your promises, people won't trust you any more.",
+            "answer": "breaking"
+          },
+          {
+            "sentence": "...... a really strange dream last night about my best friend.",
+            "answer": "had"
+          }
+        ]
+      },
+      "F": {
+        "title": "Multiple choice (Word patterns)",
+        "instructions": "Choose the correct answer.",
+        "questions": [
+          {
+            "sentence": "The government is trying to convince people ...... the need for higher taxes.",
+            "options": [
+              "A with",
+              "C that",
+              "B of",
+              "D for"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "I believe that judges should be independent ...... the government.",
+            "options": [
+              "A to",
+              "C with",
+              "B from",
+              "D on"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "Local residents object ...... the new power station in their area.",
+            "options": [
+              "A to have",
+              "C of having",
+              "B having",
+              "D to having"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "Do you think they should ban people ...... smoking in public places?",
+            "options": [
+              "A from",
+              "C in",
+              "B that",
+              "D of"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "The MP asked the prime minister ...... was aware of the growing social problem.",
+            "options": [
+              "A that",
+              "C if",
+              "B him",
+              "D what"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "Most people seem to agree ...... the newspapers' criticism of the government.",
+            "options": [
+              "A on",
+              "C with",
+              "B to",
+              "D that"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "I don't think people should rely ...... the state, even if they are unemployed.",
+            "options": [
+              "A to",
+              "C on",
+              "B with",
+              "D by"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "The mayor was attacked ...... public money.",
+            "options": [
+              "A for wasting",
+              "C he waste",
+              "B to waste",
+              "D of wasting"
+            ],
+            "answer": "A"
+          }
+        ]
+      },
+      "G": {
+        "title": "Error correction (extra words)",
+        "instructions": "Find the extra word in each line.",
+        "questions": [
+          {
+            "sentence": "Living together in societyHell, said Jean-Paul Sartre, is other people, and whether you agree with or not, we are all have to learn to live together.",
+            "answer": "with"
+          },
+          {
+            "sentence": "We may not always approve of that other people's behaviour, but we do have to live with it.",
+            "answer": "that"
+          },
+          {
+            "sentence": "It is impossible to force other people in to behave exactly how we think they should behave.",
+            "answer": "in"
+          },
+          {
+            "sentence": "Of course, the law bans from all kinds of behaviour and if you can convince to enough people, you might be able to get the government to pass a new law.",
+            "answer": "from"
+          },
+          {
+            "sentence": "Mostly, though, you have to let off people live their own lives, in the same way you expect them to allow you for to live your life.",
+            "answer": "off"
+          },
+          {
+            "sentence": "You don't have to pretend it that you like how some other people live, but letting them to be themselves is often the only choice.",
+            "answer": "it"
+          }
+        ]
+      },
+      "H": {
+        "title": "Word formation (text)",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "questions": [
+          {
+            "sentence": "I had a really stupid (1) ...... with my best friend the other day.",
+            "answer": "argument"
+          },
+          {
+            "sentence": "It all started because we were talking about (2) ...... and having a family.",
+            "answer": "marriage/marrying/getting married"
+          },
+          {
+            "sentence": "I said that (3) ...... is important when you are married and she said that she thought that was rubbish and that (4) ...... is much more important.",
+            "answer": "politeness, kindness"
+          },
+          {
+            "sentence": "Well, we were (5) ...... to agree and, in the end, she left without saying goodbye.",
+            "answer": "unable"
+          },
+          {
+            "sentence": "I do hope it doesn't spoil our (6) .......",
+            "answer": "friendship"
+          }
+        ]
+      },
+      "I": {
+        "title": "Word formation (sentences)",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "questions": [
+          {
+            "sentence": "My best friend has a great (PERSON) and everyone likes her.",
+            "answer": "personality"
+          },
+          {
+            "sentence": "I have a good (RELATE) with my mum and I can talk to her about anything.",
+            "answer": "relationship"
+          },
+          {
+            "sentence": "They've just published a book of George Bush's (CORRESPOND) and it looks really interesting.",
+            "answer": "correspondence"
+          },
+          {
+            "sentence": "Jenny seemed (WILLING) to talk about her argument with Nancy but I eventually got the facts.",
+            "answer": "unwilling"
+          },
+          {
+            "sentence": "As I waited for Kelly to arrive at the cinema, I bit my nails (NERVE).",
+            "answer": "nervously"
+          },
+          {
+            "sentence": "Ignore what Sharon says about you. It's just (JEALOUS).",
+            "answer": "jealousy"
+          },
+          {
+            "sentence": "In the past, children were expected to be very (OBEY).",
+            "answer": "obedient"
+          },
+          {
+            "sentence": "Brenda blames her (HAPPY) on being single, but I'm not so sure.",
+            "answer": "unhappiness"
+          },
+          {
+            "sentence": "Tom knew that being chosen as class president was a real (ACHIEVE).",
+            "answer": "achievement"
+          },
+          {
+            "sentence": "Kevin's so sensitive that you have to be very (CARE) what you say to him.",
+            "answer": "careful"
+          }
+        ]
+      }
     }
-  ]
+  }
 }

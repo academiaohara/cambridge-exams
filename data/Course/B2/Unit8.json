@@ -3,525 +3,732 @@
   "unit": 8,
   "type": "vocabulary",
   "unitTitle": "Unit 8: The media",
-  "sections": [
-    {
-      "type": "theory",
-      "title": "Topic vocabulary in contrast",
-      "content": [
+  "sections": {
+    "topic_vocabulary": {
+      "vocabulary": [
         {
-          "items": [
-            "deny / refuse",
-            "talk show / quiz show / game show",
-            "press / media",
-            "agree / accept",
-            "announcer / commentator",
-            "programme / program",
-            "headline / heading",
-            "tabloid / broadsheet",
-            "channel / broadcast",
-            "feature / article",
-            "journalist / columnist",
-            "bulletin / newsflash"
-          ]
+          "word": "deny / refuse"
+        },
+        {
+          "word": "talk show / quiz show / game show"
+        },
+        {
+          "word": "press / media"
+        },
+        {
+          "word": "agree / accept"
+        },
+        {
+          "word": "announcer / commentator"
+        },
+        {
+          "word": "programme / program"
+        },
+        {
+          "word": "headline / heading"
+        },
+        {
+          "word": "tabloid / broadsheet"
+        },
+        {
+          "word": "channel / broadcast"
+        },
+        {
+          "word": "feature / article"
+        },
+        {
+          "word": "journalist / columnist"
+        },
+        {
+          "word": "bulletin / newsflash"
         }
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrasal verbs",
-      "content": [
-        {
-          "items": [
-            "bring up: start discussing a subject",
-            "look up: try to find information in a book or list, etc",
-            "come on: start to be broadcast",
-            "make out: pretend that something is true; see, hear or understand sb or sth with difficulty",
-            "come out: be published",
-            "make up: invent an explanation, excuse, etc; create a story, poem, etc",
-            "fill in: add information in the spaces on a document",
-            "put forward: suggest",
-            "flick through: turn and look at the pages of a magazine, etc quickly",
-            "see through: recognise that sth is not true and not be tricked by it",
-            "go into: deal with sth in detail",
-            "stand out: be easy to see because of being different",
-            "hand out: give things to people in a group",
-            "turn over: turn a page so that the other side is towards you"
-          ]
-        }
+    "phrasal_verbs": [
+      {
+        "verb": "bring up",
+        "meaning": "start discussing a subject"
+      },
+      {
+        "verb": "look up",
+        "meaning": "try to find information in a book or list, etc"
+      },
+      {
+        "verb": "come on",
+        "meaning": "start to be broadcast"
+      },
+      {
+        "verb": "make out",
+        "meaning": "pretend that something is true; see, hear or understand sb or sth with difficulty"
+      },
+      {
+        "verb": "come out",
+        "meaning": "be published"
+      },
+      {
+        "verb": "make up",
+        "meaning": "invent an explanation, excuse, etc; create a story, poem, etc"
+      },
+      {
+        "verb": "fill in",
+        "meaning": "add information in the spaces on a document"
+      },
+      {
+        "verb": "put forward",
+        "meaning": "suggest"
+      },
+      {
+        "verb": "flick through",
+        "meaning": "turn and look at the pages of a magazine, etc quickly"
+      },
+      {
+        "verb": "see through",
+        "meaning": "recognise that sth is not true and not be tricked by it"
+      },
+      {
+        "verb": "go into",
+        "meaning": "deal with sth in detail"
+      },
+      {
+        "verb": "stand out",
+        "meaning": "be easy to see because of being different"
+      },
+      {
+        "verb": "hand out",
+        "meaning": "give things to people in a group"
+      },
+      {
+        "verb": "turn over",
+        "meaning": "turn a page so that the other side is towards you"
+      }
+    ],
+    "collocations_patterns": {
+      "control": [
+        "in control (of sth)",
+        "take control (of sth)",
+        "under control",
+        "under the control of sb",
+        "out of control"
+      ],
+      "description": [
+        "give a description of sth/sb"
+      ],
+      "difference": [
+        "make a difference (to sth/sb)",
+        "tell the difference (between)",
+        "there's no/some/little/etc difference between"
+      ],
+      "granted": [
+        "take sth/sb for granted"
+      ],
+      "influence": [
+        "influence sth/sb",
+        "have/be an influence on sth/sb"
+      ],
+      "Internet": [
+        "on the Internet",
+        "over the Internet",
+        "surf the Internet"
+      ],
+      "news": [
+        "in the news",
+        "on the news",
+        "hear the news",
+        "newsflash",
+        "newspaper"
+      ],
+      "place": [
+        "take place",
+        "in place of",
+        "at a place"
+      ],
+      "question": [
+        "ask/answer a question",
+        "question sth/sb",
+        "in question",
+        "question mark"
+      ],
+      "view": [
+        "have/hold/take a view",
+        "be sb's view that",
+        "in my view",
+        "in view of",
+        "look at/see the view",
+        "view of sth",
+        "view from sth/swh"
+      ],
+      "watch": [
+        "watch sth/sb",
+        "watch (out) for sth/sb",
+        "keep watch"
+      ],
+      "according": [
+        "to sb"
+      ],
+      "inform": [
+        "sb that",
+        "sb about/of sth"
+      ],
+      "announce": [
+        "sth (to sb)",
+        "that"
+      ],
+      "likely": [
+        "to do",
+        "that"
+      ],
+      "believe": [
+        "sth",
+        "in sth",
+        "that",
+        "to be"
+      ],
+      "persuade": [
+        "sb to do",
+        "sb that",
+        "sb of sth"
+      ],
+      "comment": [
+        "on sth",
+        "make a comment (to sb) about sth"
+      ],
+      "point": [
+        "(in) doing"
+      ],
+      "confuse": [
+        "sth/sb with sth/sb",
+        "confused about/by sth"
+      ],
+      "send": [
+        "sb sth",
+        "sth (to sb)"
+      ],
+      "correspond": [
+        "with sth/sb"
+      ],
+      "surprise": [
+        "by surprise",
+        "surprised at/by sth"
+      ],
+      "describe": [
+        "sth/sb as",
+        "sth/sb to sb"
+      ],
+      "tell": [
+        "sb sth",
+        "sb that",
+        "sb about sth/doing",
+        "sb (not) to do"
+      ],
+      "hear": [
+        "sth/sb",
+        "about sth/sb",
+        "from sb"
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrases and collocations",
-      "content": [
-        {
-          "items": [
-            "control: in control (of sth); take control (of sth); under control; under the control of sb; out of control",
-            "description: give a description of sth/sb",
-            "difference: make a difference (to sth/sb); tell the difference (between); there's no/some/little/etc difference between",
-            "granted: take sth/sb for granted",
-            "influence: influence sth/sb; have/be an influence on sth/sb",
-            "Internet: on the Internet; over the Internet; surf the Internet",
-            "news: in the news; on the news; hear the news; newsflash; newspaper",
-            "place: take place; in place of; at a place",
-            "question: ask/answer a question; question sth/sb; in question; question mark",
-            "view: have/hold/take a view; be sb's view that; in my view; in view of; look at/see the view; view of sth; view from sth/swh",
-            "watch: watch sth/sb; watch (out) for sth/sb; keep watch"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word patterns",
-      "content": [
-        {
-          "items": [
-            "according to sb",
-            "inform sb that; inform sb about/of sth",
-            "announce sth (to sb); announce that",
-            "likely to do; likely that",
-            "believe sth; believe in sth; believe that; believe to be",
-            "persuade sb to do; persuade sb that; persuade sb of sth",
-            "comment on sth; make a comment (to sb) about sth",
-            "point (in) doing",
-            "confuse sth/sb with sth/sb; confused about/by sth",
-            "send sb sth; send sth (to sb)",
-            "correspond with sth/sb",
-            "surprise by surprise; surprised at/by sth",
-            "describe sth/sb as; describe sth/sb to sb",
-            "tell sb sth; tell sb that; tell sb about sth/doing; tell sb (not) to do",
-            "hear sth/sb; hear about sth/sb; hear from sb"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word formation",
-      "content": [
-        {
-          "items": [
-            "announce → announcement, (un)announced",
-            "edit → editor, editorial, edited",
-            "power → powerful(ly), powerless(ly), empower",
-            "belief → disbelief, believe, (un)believable, (un)believably",
-            "humour → humorous, humourless",
-            "ridicule → ridiculous(ly), ridiculousness",
-            "communicate → communication, (un)communicative, communicator",
-            "inform → information, (un)informed, (un)informative",
-            "second → secondly, secondary",
-            "convince → convinced, (un)convincing",
-            "journal → journalist, journalism, journalistic",
-            "write → writer, writing, wrote, (un)written",
-            "discuss → discussion",
-            "politics → political(ly), politician"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "A: Topic vocabulary in contrast",
-      "instructions": "Complete using the correct form of the words in the box.",
-      "items": [
-        {
-          "sentence": "John Sanders, MP, ...... any involvement in the scandal when asked about it yesterday.",
-          "answer": "denied"
-        },
-        {
-          "sentence": "The politician ...... to say more when questioned by reporters this morning.",
-          "answer": "refused"
-        },
-        {
-          "sentence": "Johnny Depp rarely ...... invitations to do interviews.",
-          "answer": "accepts"
-        },
-        {
-          "sentence": "Johnny Depp ...... to appear at a press conference to promote his latest film.",
-          "answer": "agreed"
-        },
-        {
-          "sentence": "Did you see the newspaper ...... this morning?",
-          "answer": "headline"
-        },
-        {
-          "sentence": "If you give every paragraph of your report a ...... it'll be easier to read.",
-          "answer": "heading"
-        },
-        {
-          "sentence": "Living Today has got a special ...... this month on healthy diets.",
-          "answer": "feature"
-        },
-        {
-          "sentence": "There's an interesting ...... in the paper about the Constitution of the European Union.",
-          "answer": "article"
-        },
-        {
-          "sentence": "I generally trust what I hear on the news, but rarely believe anything I read in the .......",
-          "answer": "press"
-        },
-        {
-          "sentence": "The ...... involve print journalism, TV, radio and even electronic forms of communication such as the Internet.",
-          "answer": "media"
-        },
-        {
-          "sentence": "We interrupt this programme to bring you an urgent .......",
-          "answer": "newsflash"
-        },
-        {
-          "sentence": "And we'll be back with our regular ...... at seven o'clock.",
-          "answer": "bulletin"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "B: Circle the correct word",
-      "instructions": "Circle the correct word or phrase.",
-      "items": [
-        {
-          "sentence": "It's a great computer **programme / program** once you get the hang of it.",
-          "answer": "program"
-        },
-        {
-          "sentence": "I hate **tabloid / broadsheet** newspapers; they're just full of gossip, scandal and lies!",
-          "answer": "tabloid"
-        },
-        {
-          "sentence": "As a **journalist / columnist** for a local paper, you don't have to interview people or attend events. You just have to express your opinions about the issues of the day.",
-          "answer": "columnist"
-        },
-        {
-          "sentence": "There's a great **talk / quiz / game** show on BBC1 tonight. Contestants have to race through a supermarket as quickly as they can, filling up their trolleys as they go.",
-          "answer": "game"
-        },
-        {
-          "sentence": "On some TV channels, an **announcer / a commentator** tells you what the next programme is going to be.",
-          "answer": "announcer"
-        },
-        {
-          "sentence": "Join us at half past nine for a live **broadcast / channel** of the State Opening of Parliament.",
-          "answer": "broadcast"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "C: Phrasal verbs (gap fill)",
-      "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "Please do not ...... over your examination papers until you are instructed to do so.",
-          "answer": "turn"
-        },
-        {
-          "sentence": "I had to ...... in so many forms. It took me hours!",
-          "answer": "fill"
-        },
-        {
-          "sentence": "I'd like everyone here to ...... forward as many suggestions as possible.",
-          "answer": "put"
-        },
-        {
-          "sentence": "There was a guy in the street ...... out free tickets to that new quiz show.",
-          "answer": "handing"
-        },
-        {
-          "sentence": "He ...... out that he'd worked in children's TV, but in fact he's never been near a TV studio!",
-          "answer": "made"
-        },
-        {
-          "sentence": "Could you ...... up her number in the phone book?",
-          "answer": "look"
-        },
-        {
-          "sentence": "She ...... out as one of the finest contemporary British novelists around at the moment.",
-          "answer": "stands"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "D: Phrasal verbs (transformation)",
-      "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
-      "items": [
-        {
-          "sentence": "Her latest bestseller was published last month. (out)\nHer latest bestseller ...... last month.",
-          "answer": "came out"
-        },
-        {
-          "sentence": "That story's not true, is it? (up)\nYou ......, didn't you?",
-          "answer": "made it up"
-        },
-        {
-          "sentence": "The programme starts at half past six. (on)\nThe programme ...... at half past six.",
-          "answer": "comes on"
-        },
-        {
-          "sentence": "The documentary didn't really explore why the rainforests are being cut down. (into)\nThe documentary didn't really ...... why the rainforests are being cut down.",
-          "answer": "go into"
-        },
-        {
-          "sentence": "I had a quick look at the magazine in the dentist's waiting room. (through)\nI ...... in the dentist's waiting room.",
-          "answer": "flicked through the magazine"
-        },
-        {
-          "sentence": "I don't think we need to mention that now. (up)\nI don't think we need to ...... now.",
-          "answer": "bring that up"
-        },
-        {
-          "sentence": "Your lies don't fool me! (through)\nI can ...... your lies!",
-          "answer": "see through"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "E: Multiple choice (Phrases and collocations)",
-      "instructions": "Choose the correct answer.",
-      "items": [
-        {
-          "sentence": "It's not always easy to ...... the difference between fact and opinion.",
-          "options": [
-            "A make",
-            "C say",
-            "B do",
-            "D tell"
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "The debate will ...... place tonight.",
-          "options": [
-            "A be",
-            "C take",
-            "B have",
-            "D make"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "In my ......, freedom of the press must be maintained.",
-          "options": [
-            "A mind",
-            "C sight",
-            "B view",
-            "D thought"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "Media mogul Ronald Morduck has ...... control of another tabloid.",
-          "options": [
-            "A made",
-            "C given",
-            "B found",
-            "D taken"
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "They ...... a description of the robber on CrimeTime and it sounded like you!",
-          "options": [
-            "A made",
-            "C said",
-            "B told",
-            "D gave"
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "J.K. Rowling has ...... an enormous influence on children's literature.",
-          "options": [
-            "A had",
-            "C done",
-            "B given",
-            "D set"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "I could spend hours ...... the Internet!",
-          "options": [
-            "A surfing",
-            "C sailing",
-            "B diving",
-            "D swimming"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "They said ...... the news that the price of petrol is going up again.",
-          "options": [
-            "A from",
-            "C on",
-            "B in",
-            "D at"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "The issue ...... question is more complex than you think.",
-          "options": [
-            "A from",
-            "C on",
-            "B in",
-            "D at"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "Watch ...... for words like 'so-called' in articles as they express the writer's bias.",
-          "options": [
-            "A about",
-            "C over",
-            "B around",
-            "D out"
-          ],
-          "answer": "D"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "F: Error correction (Word patterns)",
-      "instructions": "Each of the words in bold is incorrect. Rewrite them correctly.",
-      "items": [
-        {
-          "sentence": "He's been described by several critics for our greatest living poet.",
-          "answer": "as"
-        },
-        {
-          "sentence": "I think you've confused tabloids by broadsheets.",
-          "answer": "with"
-        },
-        {
-          "sentence": "Do you believe about telepathy?",
-          "answer": "in"
-        },
-        {
-          "sentence": "There's no point of trying to get an interview with him. He never does interviews!",
-          "answer": "in"
-        },
-        {
-          "sentence": "According from this report, scientists have discovered a new planet.",
-          "answer": "to"
-        },
-        {
-          "sentence": "The facts in this article don't correspond about my own experience at all.",
-          "answer": "with"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "G: Cloze (Word patterns)",
-      "instructions": "Water has damaged part of this text. Read it and decide what you think each of the original words was. Write the words in the blank spaces.",
-      "items": [
-        {
-          "sentence": "The editor sent an e- mail ...... every journalist on the news desk announcing there would be an emergency editorial meeting at one o'clock.",
-          "answer": "to"
-        },
-        {
-          "sentence": "I had heard ...... the problems the paper was facing and I heard ...... one of my colleagues ...... the paper might be going to close.",
-          "answer": "about, from, that"
-        },
-        {
-          "sentence": "Whatever it was, it was likely ...... be bad news.",
-          "answer": "to"
-        },
-        {
-          "sentence": "At the meeting, the editor told us ...... to tell anyone else yet, but the paper had been taken over by Ronald Morduck.",
-          "answer": "not"
-        },
-        {
-          "sentence": "He said he had only been informed ...... the decision that morning.",
-          "answer": "of"
-        },
-        {
-          "sentence": "We were all so surprised ...... the news that nobody knew what to say.",
-          "answer": "at/by"
-        },
-        {
-          "sentence": "I made a comment ...... a colleague that it was time to start looking for a new job.",
-          "answer": "to"
-        },
-        {
-          "sentence": "The editor heard this, and finally managed to persuade us ...... quit until we had seen what changes would be made.",
-          "answer": "not to"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "H: Word formation (sentences)",
-      "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
-      "items": [
-        {
-          "sentence": "Why do press photographers think they can turn up at a celebrity's house completely ...... (ANNOUNCE)?",
-          "answer": "unannounced"
-        },
-        {
-          "sentence": "How many means of ...... (COMMUNICATE) do you use on a regular basis?",
-          "answer": "communication"
-        },
-        {
-          "sentence": "Could you write an ...... (EDIT) for the next issue of the school magazine?",
-          "answer": "editorial"
-        },
-        {
-          "sentence": "You have to have a sense of ...... (HUMOUR) to work on children's TV!",
-          "answer": "humour"
-        },
-        {
-          "sentence": "There's an ...... (WRITE) rule on tabloid newspapers that the truth always takes second place to a good story.",
-          "answer": "unwritten"
-        },
-        {
-          "sentence": "When Jill was at ...... (SECOND) school she used to dream of being a DJ on local radio.",
-          "answer": "secondary"
-        },
-        {
-          "sentence": "Are you thinking of a career in ...... (JOURNAL)?",
-          "answer": "journalism"
-        },
-        {
-          "sentence": "You don't actually get a lot of ...... (INFORM) from a news report on radio or TV.",
-          "answer": "information"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "I: Word formation (text)",
-      "instructions": "Complete the text by changing the form of the word in capitals.",
-      "items": [
-        {
-          "sentence": "I love watching (1) ...... (DISCUSS) programmes, and I love politics, so you'd think I'd enjoy watching (2) ...... (POLITICS) being interviewed on TV.",
-          "answer": "discussion, politicians"
-        },
-        {
-          "sentence": "But I don't. All too often, (3) ...... (JOURNAL) ask them the most (4) ...... (RIDICULE) questions,",
-          "answer": "journalists, ridiculous"
-        },
-        {
-          "sentence": "and, when they do get an interesting question, I sit there watching in (5) ...... (BELIEVE) as some of the most (6) ...... (POWER) people in the country give totally (7) ...... (CONVINCE) responses.",
-          "answer": "disbelief, powerful, unconvincing"
-        },
-        {
-          "sentence": "It's as if they don't care whether their reply is (8) ...... (BELIEVE) or not.",
-          "answer": "believable"
-        },
-        {
-          "sentence": "Often, they're very poor (9) ...... (COMMUNICATE), and they're frequently even more (10) ...... (INFORM) about key issues than I am.",
-          "answer": "communicators, uninformed"
-        },
-        {
-          "sentence": "I don't expect them to be particularly (11) ...... (HUMOUR) - they are serious people, after all - but at least they could say something interesting occasionally.",
-          "answer": "humorous"
-        }
-      ]
+    "word_formation": [
+      {
+        "base": "announce",
+        "derivatives": [
+          "announcement",
+          "(un)announced"
+        ]
+      },
+      {
+        "base": "edit",
+        "derivatives": [
+          "editor",
+          "editorial",
+          "edited"
+        ]
+      },
+      {
+        "base": "power",
+        "derivatives": [
+          "powerful(ly)",
+          "powerless(ly)",
+          "empower"
+        ]
+      },
+      {
+        "base": "belief",
+        "derivatives": [
+          "disbelief",
+          "believe",
+          "(un)believable",
+          "(un)believably"
+        ]
+      },
+      {
+        "base": "humour",
+        "derivatives": [
+          "humorous",
+          "humourless"
+        ]
+      },
+      {
+        "base": "ridicule",
+        "derivatives": [
+          "ridiculous(ly)",
+          "ridiculousness"
+        ]
+      },
+      {
+        "base": "communicate",
+        "derivatives": [
+          "communication",
+          "(un)communicative",
+          "communicator"
+        ]
+      },
+      {
+        "base": "inform",
+        "derivatives": [
+          "information",
+          "(un)informed",
+          "(un)informative"
+        ]
+      },
+      {
+        "base": "second",
+        "derivatives": [
+          "secondly",
+          "secondary"
+        ]
+      },
+      {
+        "base": "convince",
+        "derivatives": [
+          "convinced",
+          "(un)convincing"
+        ]
+      },
+      {
+        "base": "journal",
+        "derivatives": [
+          "journalist",
+          "journalism",
+          "journalistic"
+        ]
+      },
+      {
+        "base": "write",
+        "derivatives": [
+          "writer",
+          "writing",
+          "wrote",
+          "(un)written"
+        ]
+      },
+      {
+        "base": "discuss",
+        "derivatives": [
+          "discussion"
+        ]
+      },
+      {
+        "base": "politics",
+        "derivatives": [
+          "political(ly)",
+          "politician"
+        ]
+      }
+    ],
+    "exercises": {
+      "A": {
+        "title": "Topic vocabulary in contrast",
+        "instructions": "Complete using the correct form of the words in the box.",
+        "questions": [
+          {
+            "sentence": "John Sanders, MP, ...... any involvement in the scandal when asked about it yesterday.",
+            "answer": "denied"
+          },
+          {
+            "sentence": "The politician ...... to say more when questioned by reporters this morning.",
+            "answer": "refused"
+          },
+          {
+            "sentence": "Johnny Depp rarely ...... invitations to do interviews.",
+            "answer": "accepts"
+          },
+          {
+            "sentence": "Johnny Depp ...... to appear at a press conference to promote his latest film.",
+            "answer": "agreed"
+          },
+          {
+            "sentence": "Did you see the newspaper ...... this morning?",
+            "answer": "headline"
+          },
+          {
+            "sentence": "If you give every paragraph of your report a ...... it'll be easier to read.",
+            "answer": "heading"
+          },
+          {
+            "sentence": "Living Today has got a special ...... this month on healthy diets.",
+            "answer": "feature"
+          },
+          {
+            "sentence": "There's an interesting ...... in the paper about the Constitution of the European Union.",
+            "answer": "article"
+          },
+          {
+            "sentence": "I generally trust what I hear on the news, but rarely believe anything I read in the .......",
+            "answer": "press"
+          },
+          {
+            "sentence": "The ...... involve print journalism, TV, radio and even electronic forms of communication such as the Internet.",
+            "answer": "media"
+          },
+          {
+            "sentence": "We interrupt this programme to bring you an urgent .......",
+            "answer": "newsflash"
+          },
+          {
+            "sentence": "And we'll be back with our regular ...... at seven o'clock.",
+            "answer": "bulletin"
+          }
+        ]
+      },
+      "B": {
+        "title": "Circle the correct word",
+        "instructions": "Circle the correct word or phrase.",
+        "questions": [
+          {
+            "sentence": "It's a great computer **programme / program** once you get the hang of it.",
+            "answer": "program"
+          },
+          {
+            "sentence": "I hate **tabloid / broadsheet** newspapers; they're just full of gossip, scandal and lies!",
+            "answer": "tabloid"
+          },
+          {
+            "sentence": "As a **journalist / columnist** for a local paper, you don't have to interview people or attend events. You just have to express your opinions about the issues of the day.",
+            "answer": "columnist"
+          },
+          {
+            "sentence": "There's a great **talk / quiz / game** show on BBC1 tonight. Contestants have to race through a supermarket as quickly as they can, filling up their trolleys as they go.",
+            "answer": "game"
+          },
+          {
+            "sentence": "On some TV channels, an **announcer / a commentator** tells you what the next programme is going to be.",
+            "answer": "announcer"
+          },
+          {
+            "sentence": "Join us at half past nine for a live **broadcast / channel** of the State Opening of Parliament.",
+            "answer": "broadcast"
+          }
+        ]
+      },
+      "C": {
+        "title": "Phrasal verbs (gap fill)",
+        "instructions": "Write one word in each gap.",
+        "questions": [
+          {
+            "sentence": "Please do not ...... over your examination papers until you are instructed to do so.",
+            "answer": "turn"
+          },
+          {
+            "sentence": "I had to ...... in so many forms. It took me hours!",
+            "answer": "fill"
+          },
+          {
+            "sentence": "I'd like everyone here to ...... forward as many suggestions as possible.",
+            "answer": "put"
+          },
+          {
+            "sentence": "There was a guy in the street ...... out free tickets to that new quiz show.",
+            "answer": "handing"
+          },
+          {
+            "sentence": "He ...... out that he'd worked in children's TV, but in fact he's never been near a TV studio!",
+            "answer": "made"
+          },
+          {
+            "sentence": "Could you ...... up her number in the phone book?",
+            "answer": "look"
+          },
+          {
+            "sentence": "She ...... out as one of the finest contemporary British novelists around at the moment.",
+            "answer": "stands"
+          }
+        ]
+      },
+      "D": {
+        "title": "Phrasal verbs (transformation)",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "questions": [
+          {
+            "sentence": "Her latest bestseller was published last month. (out)\nHer latest bestseller ...... last month.",
+            "answer": "came out"
+          },
+          {
+            "sentence": "That story's not true, is it? (up)\nYou ......, didn't you?",
+            "answer": "made it up"
+          },
+          {
+            "sentence": "The programme starts at half past six. (on)\nThe programme ...... at half past six.",
+            "answer": "comes on"
+          },
+          {
+            "sentence": "The documentary didn't really explore why the rainforests are being cut down. (into)\nThe documentary didn't really ...... why the rainforests are being cut down.",
+            "answer": "go into"
+          },
+          {
+            "sentence": "I had a quick look at the magazine in the dentist's waiting room. (through)\nI ...... in the dentist's waiting room.",
+            "answer": "flicked through the magazine"
+          },
+          {
+            "sentence": "I don't think we need to mention that now. (up)\nI don't think we need to ...... now.",
+            "answer": "bring that up"
+          },
+          {
+            "sentence": "Your lies don't fool me! (through)\nI can ...... your lies!",
+            "answer": "see through"
+          }
+        ]
+      },
+      "E": {
+        "title": "Multiple choice (Phrases and collocations)",
+        "instructions": "Choose the correct answer.",
+        "questions": [
+          {
+            "sentence": "It's not always easy to ...... the difference between fact and opinion.",
+            "options": [
+              "A make",
+              "C say",
+              "B do",
+              "D tell"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "The debate will ...... place tonight.",
+            "options": [
+              "A be",
+              "C take",
+              "B have",
+              "D make"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "In my ......, freedom of the press must be maintained.",
+            "options": [
+              "A mind",
+              "C sight",
+              "B view",
+              "D thought"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "Media mogul Ronald Morduck has ...... control of another tabloid.",
+            "options": [
+              "A made",
+              "C given",
+              "B found",
+              "D taken"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "They ...... a description of the robber on CrimeTime and it sounded like you!",
+            "options": [
+              "A made",
+              "C said",
+              "B told",
+              "D gave"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "J.K. Rowling has ...... an enormous influence on children's literature.",
+            "options": [
+              "A had",
+              "C done",
+              "B given",
+              "D set"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "I could spend hours ...... the Internet!",
+            "options": [
+              "A surfing",
+              "C sailing",
+              "B diving",
+              "D swimming"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "They said ...... the news that the price of petrol is going up again.",
+            "options": [
+              "A from",
+              "C on",
+              "B in",
+              "D at"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "The issue ...... question is more complex than you think.",
+            "options": [
+              "A from",
+              "C on",
+              "B in",
+              "D at"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "Watch ...... for words like 'so-called' in articles as they express the writer's bias.",
+            "options": [
+              "A about",
+              "C over",
+              "B around",
+              "D out"
+            ],
+            "answer": "D"
+          }
+        ]
+      },
+      "F": {
+        "title": "Error correction (Word patterns)",
+        "instructions": "Each of the words in bold is incorrect. Rewrite them correctly.",
+        "questions": [
+          {
+            "sentence": "He's been described by several critics for our greatest living poet.",
+            "answer": "as"
+          },
+          {
+            "sentence": "I think you've confused tabloids by broadsheets.",
+            "answer": "with"
+          },
+          {
+            "sentence": "Do you believe about telepathy?",
+            "answer": "in"
+          },
+          {
+            "sentence": "There's no point of trying to get an interview with him. He never does interviews!",
+            "answer": "in"
+          },
+          {
+            "sentence": "According from this report, scientists have discovered a new planet.",
+            "answer": "to"
+          },
+          {
+            "sentence": "The facts in this article don't correspond about my own experience at all.",
+            "answer": "with"
+          }
+        ]
+      },
+      "G": {
+        "title": "Cloze (Word patterns)",
+        "instructions": "Water has damaged part of this text. Read it and decide what you think each of the original words was. Write the words in the blank spaces.",
+        "questions": [
+          {
+            "sentence": "The editor sent an e- mail ...... every journalist on the news desk announcing there would be an emergency editorial meeting at one o'clock.",
+            "answer": "to"
+          },
+          {
+            "sentence": "I had heard ...... the problems the paper was facing and I heard ...... one of my colleagues ...... the paper might be going to close.",
+            "answer": "about, from, that"
+          },
+          {
+            "sentence": "Whatever it was, it was likely ...... be bad news.",
+            "answer": "to"
+          },
+          {
+            "sentence": "At the meeting, the editor told us ...... to tell anyone else yet, but the paper had been taken over by Ronald Morduck.",
+            "answer": "not"
+          },
+          {
+            "sentence": "He said he had only been informed ...... the decision that morning.",
+            "answer": "of"
+          },
+          {
+            "sentence": "We were all so surprised ...... the news that nobody knew what to say.",
+            "answer": "at/by"
+          },
+          {
+            "sentence": "I made a comment ...... a colleague that it was time to start looking for a new job.",
+            "answer": "to"
+          },
+          {
+            "sentence": "The editor heard this, and finally managed to persuade us ...... quit until we had seen what changes would be made.",
+            "answer": "not to"
+          }
+        ]
+      },
+      "H": {
+        "title": "Word formation (sentences)",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "questions": [
+          {
+            "sentence": "Why do press photographers think they can turn up at a celebrity's house completely ...... (ANNOUNCE)?",
+            "answer": "unannounced"
+          },
+          {
+            "sentence": "How many means of ...... (COMMUNICATE) do you use on a regular basis?",
+            "answer": "communication"
+          },
+          {
+            "sentence": "Could you write an ...... (EDIT) for the next issue of the school magazine?",
+            "answer": "editorial"
+          },
+          {
+            "sentence": "You have to have a sense of ...... (HUMOUR) to work on children's TV!",
+            "answer": "humour"
+          },
+          {
+            "sentence": "There's an ...... (WRITE) rule on tabloid newspapers that the truth always takes second place to a good story.",
+            "answer": "unwritten"
+          },
+          {
+            "sentence": "When Jill was at ...... (SECOND) school she used to dream of being a DJ on local radio.",
+            "answer": "secondary"
+          },
+          {
+            "sentence": "Are you thinking of a career in ...... (JOURNAL)?",
+            "answer": "journalism"
+          },
+          {
+            "sentence": "You don't actually get a lot of ...... (INFORM) from a news report on radio or TV.",
+            "answer": "information"
+          }
+        ]
+      },
+      "I": {
+        "title": "Word formation (text)",
+        "instructions": "Complete the text by changing the form of the word in capitals.",
+        "questions": [
+          {
+            "sentence": "I love watching (1) ...... (DISCUSS) programmes, and I love politics, so you'd think I'd enjoy watching (2) ...... (POLITICS) being interviewed on TV.",
+            "answer": "discussion, politicians"
+          },
+          {
+            "sentence": "But I don't. All too often, (3) ...... (JOURNAL) ask them the most (4) ...... (RIDICULE) questions,",
+            "answer": "journalists, ridiculous"
+          },
+          {
+            "sentence": "and, when they do get an interesting question, I sit there watching in (5) ...... (BELIEVE) as some of the most (6) ...... (POWER) people in the country give totally (7) ...... (CONVINCE) responses.",
+            "answer": "disbelief, powerful, unconvincing"
+          },
+          {
+            "sentence": "It's as if they don't care whether their reply is (8) ...... (BELIEVE) or not.",
+            "answer": "believable"
+          },
+          {
+            "sentence": "Often, they're very poor (9) ...... (COMMUNICATE), and they're frequently even more (10) ...... (INFORM) about key issues than I am.",
+            "answer": "communicators, uninformed"
+          },
+          {
+            "sentence": "I don't expect them to be particularly (11) ...... (HUMOUR) - they are serious people, after all - but at least they could say something interesting occasionally.",
+            "answer": "humorous"
+          }
+        ]
+      }
     }
-  ]
+  }
 }

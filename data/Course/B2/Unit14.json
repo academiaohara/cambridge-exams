@@ -3,620 +3,819 @@
   "unit": 14,
   "type": "vocabulary",
   "unitTitle": "Unit 14: Health and fitness",
-  "sections": [
-    {
-      "type": "theory",
-      "title": "Topic vocabulary in contrast",
-      "content": [
+  "sections": {
+    "topic_vocabulary": {
+      "vocabulary": [
         {
-          "items": [
-            "prescription / recipe",
-            "thin / slim",
-            "infection / pollution",
-            "operation / surgery",
-            "remedy / cure / therapy",
-            "plaster / bandage",
-            "sore / hurt / pain",
-            "effect / result",
-            "ward / clinic",
-            "illness / disease",
-            "healthy / fit",
-            "dose / fix",
-            "injured / damaged",
-            "examine / investigate",
-            "fever / rash"
-          ]
+          "word": "prescription / recipe"
+        },
+        {
+          "word": "thin / slim"
+        },
+        {
+          "word": "infection / pollution"
+        },
+        {
+          "word": "operation / surgery"
+        },
+        {
+          "word": "remedy / cure / therapy"
+        },
+        {
+          "word": "plaster / bandage"
+        },
+        {
+          "word": "sore / hurt / pain"
+        },
+        {
+          "word": "effect / result"
+        },
+        {
+          "word": "ward / clinic"
+        },
+        {
+          "word": "illness / disease"
+        },
+        {
+          "word": "healthy / fit"
+        },
+        {
+          "word": "dose / fix"
+        },
+        {
+          "word": "injured / damaged"
+        },
+        {
+          "word": "examine / investigate"
+        },
+        {
+          "word": "fever / rash"
         }
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrasal verbs",
-      "content": [
-        {
-          "items": [
-            "break out: start suddenly (for a war, fire, etc)",
-            "give up: stop doing sth you do regularly",
-            "bring on: cause (an illness, etc)",
-            "look after: take care of",
-            "come down with: start to suffer from a minor illness",
-            "pass out: suddenly become unconscious",
-            "come round/to: become conscious",
-            "pull through: survive (a serious illness, etc)",
-            "cut down (on): do less of (smoking, etc); reduce an amount of",
-            "put down: kill (a sick/old animal)",
-            "feel up to: feel well enough to do",
-            "put on: gain (weight)",
-            "get over: recover from (an illness, etc)",
-            "wear off: stop being effective (for a drug, etc)"
-          ]
-        }
+    "phrasal_verbs": [
+      {
+        "verb": "break out",
+        "meaning": "start suddenly (for a war, fire, etc)"
+      },
+      {
+        "verb": "give up",
+        "meaning": "stop doing sth you do regularly"
+      },
+      {
+        "verb": "bring on",
+        "meaning": "cause (an illness, etc)"
+      },
+      {
+        "verb": "look after",
+        "meaning": "take care of"
+      },
+      {
+        "verb": "come down with",
+        "meaning": "start to suffer from a minor illness"
+      },
+      {
+        "verb": "pass out",
+        "meaning": "suddenly become unconscious"
+      },
+      {
+        "verb": "come round/to",
+        "meaning": "become conscious"
+      },
+      {
+        "verb": "pull through",
+        "meaning": "survive (a serious illness, etc)"
+      },
+      {
+        "verb": "cut down (on)",
+        "meaning": "do less of (smoking, etc); reduce an amount of"
+      },
+      {
+        "verb": "put down",
+        "meaning": "kill (a sick/old animal)"
+      },
+      {
+        "verb": "feel up to",
+        "meaning": "feel well enough to do"
+      },
+      {
+        "verb": "put on",
+        "meaning": "gain (weight)"
+      },
+      {
+        "verb": "get over",
+        "meaning": "recover from (an illness, etc)"
+      },
+      {
+        "verb": "wear off",
+        "meaning": "stop being effective (for a drug, etc)"
+      }
+    ],
+    "collocations_patterns": {
+      "alternative": [
+        "alternative medicine/therapy",
+        "find an alternative (to sth)"
+      ],
+      "appointment": [
+        "make/have/break an appointment"
+      ],
+      "bath": [
+        "have/take a bath",
+        "run a bath (for sb)"
+      ],
+      "danger": [
+        "in danger",
+        "out of danger"
+      ],
+      "exercise": [
+        "do an exercise",
+        "do exercise",
+        "take/get (some) exercise"
+      ],
+      "fit": [
+        "get/stay/keep/be fit",
+        "fit and healthy"
+      ],
+      "good": [
+        "do sb good",
+        "sth does you good",
+        "good for sb (to do)"
+      ],
+      "health": [
+        "in good/bad/poor/etc health",
+        "health centre",
+        "health care"
+      ],
+      "injection": [
+        "have an injection (for/against sth)",
+        "give sb an injection"
+      ],
+      "medicine": [
+        "take/prescribe medicine",
+        "practise/study medicine",
+        "the best medicine",
+        "alternative medicine"
+      ],
+      "shape": [
+        "get in/into shape",
+        "stay/keep in shape",
+        "the shape of sth",
+        "in the shape of"
+      ],
+      "spread": [
+        "spread sth",
+        "spread sth over/on sth",
+        "spread to a place"
+      ],
+      "addicted": [
+        "to sth"
+      ],
+      "need": [
+        "to do",
+        "doing",
+        "in need of",
+        "no need for"
+      ],
+      "attempt": [
+        "to do"
+      ],
+      "operate": [
+        "on sb/sth"
+      ],
+      "benefit": [
+        "from sth",
+        "a benefit of sth"
+      ],
+      "suffer": [
+        "from sth",
+        "sth"
+      ],
+      "complain": [
+        "(to sb) (about sth/sb doing)",
+        "of sth"
+      ],
+      "tired": [
+        "of sth/doing"
+      ],
+      "cope": [
+        "with sth/doing"
+      ],
+      "try": [
+        "to do",
+        "sth/sb/doing",
+        "and do"
+      ],
+      "inject": [
+        "sth into sth/sb"
+      ],
+      "worry": [
+        "about sth/sb doing",
+        "worried that",
+        "worried about/by"
+      ],
+      "lead": [
+        "to sth/(your) doing"
+      ],
+      "worth": [
+        "sth/doing"
+      ],
+      "likely": [
+        "to do",
+        "it is (un)likely that"
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrases and collocations",
-      "content": [
-        {
-          "items": [
-            "alternative: alternative medicine/therapy; find an alternative (to sth)",
-            "appointment: make/have/break an appointment",
-            "bath: have/take a bath; run a bath (for sb)",
-            "danger: in danger; out of danger",
-            "exercise: do an exercise; do exercise; take/get (some) exercise",
-            "fit: get/stay/keep/be fit; fit and healthy",
-            "good: do sb good; sth does you good; good for sb (to do)",
-            "health: in good/bad/poor/etc health; health centre; health care",
-            "injection: have an injection (for/against sth); give sb an injection",
-            "medicine: take/prescribe medicine; practise/study medicine; the best medicine; alternative medicine",
-            "shape: get in/into shape; stay/keep in shape; the shape of sth; in the shape of",
-            "spread: spread sth; spread sth over/on sth; spread to a place"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word patterns",
-      "content": [
-        {
-          "items": [
-            "addicted to sth",
-            "need to do; need doing; in need of; no need for",
-            "attempt to do",
-            "operate on sb/sth",
-            "benefit from sth; a benefit of sth",
-            "suffer from sth; suffer sth",
-            "complain (to sb) (about sth/sb doing); complain of sth",
-            "tired of sth/doing",
-            "cope with sth/doing",
-            "try to do; try sth/sb/doing; try and do",
-            "inject sth into sth/sb",
-            "worry about sth/sb doing; worried that; worried about/by",
-            "lead to sth/(your) doing",
-            "worth sth/doing",
-            "likely to do; it is (un)likely that"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word formation",
-      "content": [
-        {
-          "items": [
-            "allergy → allergic",
-            "fit → unfit, fitness",
-            "poison → poisonous, poisoning",
-            "aware → unaware, awareness",
-            "ill → illness",
-            "recover → recovery",
-            "benefit → beneficial",
-            "inject → injection",
-            "strong → strength, strengthen, strongly",
-            "comfort → discomfort, (un)comfortable, (un)comfortably",
-            "injure → injury, injuries",
-            "surgery → surgeon, surgical(ly)",
-            "emphasis → emphasize, emphatic",
-            "operate → operation, operator, operating, cooperate, cooperation, (un)cooperative",
-            "treat → treatment"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "A: Topic vocabulary in contrast",
-      "instructions": "Complete using the correct form of the words in the box.",
-      "items": [
-        {
-          "sentence": "My doctor said I have to stay in bed and gave me a ...... for some medicine.",
-          "answer": "prescription"
-        },
-        {
-          "sentence": "You must give me the ...... for that wonderful chocolate cake you made!",
-          "answer": "recipe"
-        },
-        {
-          "sentence": "Many rock stars seem to end up in drug .......",
-          "answer": "therapy"
-        },
-        {
-          "sentence": "Do you think a ...... for cancer will ever be found?",
-          "answer": "cure"
-        },
-        {
-          "sentence": "My grandma uses an old-fashioned ...... for her arthritis.",
-          "answer": "remedy"
-        },
-        {
-          "sentence": "I lifted my shirt so the doctor could ...... my chest.",
-          "answer": "examine"
-        },
-        {
-          "sentence": "Police have begun to ...... the break-in at the hospital.",
-          "answer": "investigate"
-        },
-        {
-          "sentence": "My mum's thinking of having an ...... to have her nose straightened.",
-          "answer": "operation"
-        },
-        {
-          "sentence": "Dr Key told the old man that he needed ...... on his leg.",
-          "answer": "surgery"
-        },
-        {
-          "sentence": "My arm is really ...... and I can't move it.",
-          "answer": "sore"
-        },
-        {
-          "sentence": "Mind you don't ...... yourself! Oh, too late. Sorry.",
-          "answer": "hurt"
-        },
-        {
-          "sentence": "I had a really bad ...... in my foot so I decided to see a doctor.",
-          "answer": "pain"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "B: Circle the correct word",
-      "instructions": "Circle the correct word.",
-      "items": [
-        {
-          "sentence": "Tim looks really pale and **thin / slim**. I'm worried he might be ill.",
-          "answer": "thin"
-        },
-        {
-          "sentence": "It's important to eat a **fit / healthy** diet with lots of vegetables.",
-          "answer": "healthy"
-        },
-        {
-          "sentence": "After picking the flowers, I noticed I had a **fever / rash** all over my hands.",
-          "answer": "rash"
-        },
-        {
-          "sentence": "When I broke a rib, I had to wear a **bandage / plaster** around my chest.",
-          "answer": "bandage"
-        },
-        {
-          "sentence": "Make sure you wash your cut properly so that you don't get a/an **infection / pollution**.",
-          "answer": "infection"
-        },
-        {
-          "sentence": "Half an hour after taking the pill, I began to feel the **results / effects**.",
-          "answer": "effects"
-        },
-        {
-          "sentence": "The doctor walked along the **ward / clinic**, chatting to all the patients she passed.",
-          "answer": "ward"
-        },
-        {
-          "sentence": "Two people have been slightly **injured / damaged** in an accident on the M1.",
-          "answer": "injured"
-        },
-        {
-          "sentence": "It's good for children to get minor **diseases / illnesses**, such as colds.",
-          "answer": "illnesses"
-        },
-        {
-          "sentence": "The medicine bottle said the recommended **dose / fix** was two teaspoons twice a day.",
-          "answer": "dose"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "C: Phrasal verbs (transformation)",
-      "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
-      "items": [
-        {
-          "sentence": "Dan couldn't work because he caught the flu. (down)\nDan ...... which meant he couldn't work.",
-          "answer": "came down with the flu"
-        },
-        {
-          "sentence": "If you smoke, then stopping can really improve your health. (up)\nIf you ...... you'll really improve your health.",
-          "answer": "give up smoking"
-        },
-        {
-          "sentence": "We asked the vet to kill the dog to stop her suffering any longer. (put)\nWe asked the vet ...... to stop her suffering any longer.",
-          "answer": "to put the dog down/to put down the dog"
-        },
-        {
-          "sentence": "I don't really have enough energy to play tennis. (up)\nI don't really ...... tennis.",
-          "answer": "feel up to playing"
-        },
-        {
-          "sentence": "Is it true that getting wet can cause a cold? (on)\nIs it true that getting wet can ...... a cold?",
-          "answer": "bring on"
-        },
-        {
-          "sentence": "The flu epidemic started suddenly in June and lots of people got ill. (out)\nLots of people got ill when the flu epidemic ...... in June.",
-          "answer": "broke out"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "D: Phrasal verbs (gap fill)",
-      "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "When I fainted, it took a long time for me to come .......",
-          "answer": "round/to"
-        },
-        {
-          "sentence": "The doctor told him to ...... down on the amount of red meat he eats.",
-          "answer": "cut"
-        },
-        {
-          "sentence": "It took about an hour for the anaesthetic to wear ...... after the operation.",
-          "answer": "off"
-        },
-        {
-          "sentence": "Losing weight is not easy. Most people ...... on about a kilo a month.",
-          "answer": "putting"
-        },
-        {
-          "sentence": "I didn't just faint. I ...... out completely.",
-          "answer": "passed"
-        },
-        {
-          "sentence": "It took me ages to ...... over my cold.",
-          "answer": "get"
-        },
-        {
-          "sentence": "The doctors didn't think my grandfather was going to pull ......, but he did.",
-          "answer": "through"
-        },
-        {
-          "sentence": "I'll ...... after the children while you're away.",
-          "answer": "look"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "E: Multiple choice (Phrases and collocations)",
-      "instructions": "Choose the correct answer.",
-      "items": [
-        {
-          "sentence": "We need to find a/an ...... to this problem very soon.",
-          "options": [
-            "A alternative",
-            "B solution",
-            "C change",
-            "D result"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "When I got to the dentist's, the receptionist told me that I'd ...... my appointment.",
-          "options": [
-            "A missed",
-            "B lost",
-            "C broken",
-            "D failed"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "All of the police officers who entered the burning building were in ...... of their lives.",
-          "options": [
-            "A threat",
-            "B risk",
-            "C hazard",
-            "D danger"
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "I'm afraid I don't have time to ...... much exercise at the moment.",
-          "options": [
-            "A make",
-            "B take",
-            "C get",
-            "D do"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "You should try to ...... fit by going to the gym at least twice a week.",
-          "options": [
-            "A keep",
-            "B stay",
-            "C remain",
-            "D hold"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "I think a week by the sea will do you a lot of .......",
-          "options": [
-            "A good",
-            "B well",
-            "C fine",
-            "D great"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "The doctor gave me an ...... for the flu.",
-          "options": [
-            "A injection",
-            "B vaccination",
-            "C immunisation",
-            "D antibiotic"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "You should ...... this cream on the rash twice a day.",
-          "options": [
-            "A apply",
-            "B put",
-            "C spread",
-            "D rub"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "I need to get back into ...... before the summer.",
-          "options": [
-            "A form",
-            "B shape",
-            "C condition",
-            "D state"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "The ...... of the disease to other countries was inevitable.",
-          "options": [
-            "A spread",
-            "B expansion",
-            "C extension",
-            "D growth"
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "I've become ...... to caffeine. I can't function without my morning coffee.",
-          "options": [
-            "A hooked",
-            "B dependent",
-            "C addicted",
-            "D attached"
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "The doctors are going to ...... on my knee tomorrow morning.",
-          "options": [
-            "A operate",
-            "B perform",
-            "C carry out",
-            "D do"
-          ],
-          "answer": "A"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "F: Matching (Word patterns)",
-      "instructions": "Match to make sentences.",
-      "items": [
-        {
-          "sentence": "Many people are addicted",
-          "options": [
-            "A to give up smoking.",
-            "B from stress-related illnesses.",
-            "C to the risks involved.",
-            "D to nicotine.",
-            "E of his hard work.",
-            "F with the noise.",
-            "G on a strict diet."
-          ],
-          "answer": "D"
-        },
-        {
-          "sentence": "She's trying",
-          "options": [
-            "A to give up smoking.",
-            "B from stress-related illnesses.",
-            "C to the risks involved.",
-            "D to nicotine.",
-            "E of his hard work.",
-            "F with the noise.",
-            "G on a strict diet."
-          ],
-          "answer": "A"
-        },
-        {
-          "sentence": "He's suffering",
-          "options": [
-            "A to give up smoking.",
-            "B from stress-related illnesses.",
-            "C to the risks involved.",
-            "D to nicotine.",
-            "E of his hard work.",
-            "F with the noise.",
-            "G on a strict diet."
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "I'm not used",
-          "options": [
-            "A to give up smoking.",
-            "B from stress-related illnesses.",
-            "C to the risks involved.",
-            "D to nicotine.",
-            "E of his hard work.",
-            "F with the noise.",
-            "G on a strict diet."
-          ],
-          "answer": "F"
-        },
-        {
-          "sentence": "She's tired",
-          "options": [
-            "A to give up smoking.",
-            "B from stress-related illnesses.",
-            "C to the risks involved.",
-            "D to nicotine.",
-            "E of his hard work.",
-            "F with the noise.",
-            "G on a strict diet."
-          ],
-          "answer": "C"
-        },
-        {
-          "sentence": "He's a doctor and has warned me",
-          "options": [
-            "A to give up smoking.",
-            "B from stress-related illnesses.",
-            "C to the risks involved.",
-            "D to nicotine.",
-            "E of his hard work.",
-            "F with the noise.",
-            "G on a strict diet."
-          ],
-          "answer": "C"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "G: Cloze (Word patterns)",
-      "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "Many people today are worried ...... drugs.",
-          "answer": "about/by"
-        },
-        {
-          "sentence": "It seems that more and more people are becoming addicted ...... substances, such as heroine and cocaine, that damage their health.",
-          "answer": "to"
-        },
-        {
-          "sentence": "But what leads people ...... becoming addicts?",
-          "answer": "to"
-        },
-        {
-          "sentence": "What makes someone inject a drug ...... their veins?",
-          "answer": "into"
-        },
-        {
-          "sentence": "Is it because of their inability to cope ...... problems in their everyday lives?",
-          "answer": "with"
-        },
-        {
-          "sentence": "One thing is for sure. When we complain ...... the problems caused by hard drugs, we need remember that people suffer all kinds of health problems caused by legal drugs, such as alcohol and tobacco.",
-          "answer": "about"
-        },
-        {
-          "sentence": "We would all benefit ...... more education and the government should attempt make sure we all know the risks involved.",
-          "answer": "from"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "H: Word formation (sentences)",
-      "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
-      "items": [
-        {
-          "sentence": "Most people seem to be ...... (AWARE) of the harmful effects of their diet.",
-          "answer": "unaware"
-        },
-        {
-          "sentence": "I'm ...... (ALLERGY) to peanuts so I have to be very careful what I eat.",
-          "answer": "allergic"
-        },
-        {
-          "sentence": "Jade's ...... (ILL) turned out to be much more serious than anyone imagined.",
-          "answer": "illness"
-        },
-        {
-          "sentence": "Did you know Australia has the highest number of ...... (POISON) species of snake?",
-          "answer": "poisonous"
-        },
-        {
-          "sentence": "After a couple of weeks, the plaster cast on my leg became really ...... (COMFORT) and I couldn't wait to take it off.",
-          "answer": "uncomfortable"
-        },
-        {
-          "sentence": "I was really impressed by the levels of ...... (FIT) of all the athletes.",
-          "answer": "fitness"
-        },
-        {
-          "sentence": "Luckily, Ted's ...... (INJURE) weren't serious.",
-          "answer": "injuries"
-        },
-        {
-          "sentence": "Working out can really ...... (STRONG) your muscles.",
-          "answer": "strengthen"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "I: Word formation (text)",
-      "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
-      "items": [
-        {
-          "sentence": "These days, it seems there's an (1) ...... for everything.",
-          "answer": "operation"
-        },
-        {
-          "sentence": "Whether you want something made smaller or you want to (2) ...... your best features, you can bet that plastic (3) ...... claim to have the solution.",
-          "answer": "emphasise, surgeons"
-        },
-        {
-          "sentence": "We at BodySculpt know, though, that you don't want the (4) ...... associated with surgery.",
-          "answer": "discomfort"
-        },
-        {
-          "sentence": "But you can't enjoy the (5) ...... effects without going under the knife, can you?",
-          "answer": "beneficial"
-        },
-        {
-          "sentence": "Yes! No need for (6) ...... procedures with a long (7) ...... period!",
-          "answer": "surgical, recovery"
-        },
-        {
-          "sentence": "Our unique service consists of a series of (8) ...... that will give you the results you've always wanted!",
-          "answer": "injections"
-        },
-        {
-          "sentence": "Call now and speak to one of our (9) .......",
-          "answer": "operators"
-        }
-      ]
+    "word_formation": [
+      {
+        "base": "allergy",
+        "derivatives": [
+          "allergic"
+        ]
+      },
+      {
+        "base": "fit",
+        "derivatives": [
+          "unfit",
+          "fitness"
+        ]
+      },
+      {
+        "base": "poison",
+        "derivatives": [
+          "poisonous",
+          "poisoning"
+        ]
+      },
+      {
+        "base": "aware",
+        "derivatives": [
+          "unaware",
+          "awareness"
+        ]
+      },
+      {
+        "base": "ill",
+        "derivatives": [
+          "illness"
+        ]
+      },
+      {
+        "base": "recover",
+        "derivatives": [
+          "recovery"
+        ]
+      },
+      {
+        "base": "benefit",
+        "derivatives": [
+          "beneficial"
+        ]
+      },
+      {
+        "base": "inject",
+        "derivatives": [
+          "injection"
+        ]
+      },
+      {
+        "base": "strong",
+        "derivatives": [
+          "strength",
+          "strengthen",
+          "strongly"
+        ]
+      },
+      {
+        "base": "comfort",
+        "derivatives": [
+          "discomfort",
+          "(un)comfortable",
+          "(un)comfortably"
+        ]
+      },
+      {
+        "base": "injure",
+        "derivatives": [
+          "injury",
+          "injuries"
+        ]
+      },
+      {
+        "base": "surgery",
+        "derivatives": [
+          "surgeon",
+          "surgical(ly)"
+        ]
+      },
+      {
+        "base": "emphasis",
+        "derivatives": [
+          "emphasize",
+          "emphatic"
+        ]
+      },
+      {
+        "base": "operate",
+        "derivatives": [
+          "operation",
+          "operator",
+          "operating",
+          "cooperate",
+          "cooperation",
+          "(un)cooperative"
+        ]
+      },
+      {
+        "base": "treat",
+        "derivatives": [
+          "treatment"
+        ]
+      }
+    ],
+    "exercises": {
+      "A": {
+        "title": "Topic vocabulary in contrast",
+        "instructions": "Complete using the correct form of the words in the box.",
+        "questions": [
+          {
+            "sentence": "My doctor said I have to stay in bed and gave me a ...... for some medicine.",
+            "answer": "prescription"
+          },
+          {
+            "sentence": "You must give me the ...... for that wonderful chocolate cake you made!",
+            "answer": "recipe"
+          },
+          {
+            "sentence": "Many rock stars seem to end up in drug .......",
+            "answer": "therapy"
+          },
+          {
+            "sentence": "Do you think a ...... for cancer will ever be found?",
+            "answer": "cure"
+          },
+          {
+            "sentence": "My grandma uses an old-fashioned ...... for her arthritis.",
+            "answer": "remedy"
+          },
+          {
+            "sentence": "I lifted my shirt so the doctor could ...... my chest.",
+            "answer": "examine"
+          },
+          {
+            "sentence": "Police have begun to ...... the break-in at the hospital.",
+            "answer": "investigate"
+          },
+          {
+            "sentence": "My mum's thinking of having an ...... to have her nose straightened.",
+            "answer": "operation"
+          },
+          {
+            "sentence": "Dr Key told the old man that he needed ...... on his leg.",
+            "answer": "surgery"
+          },
+          {
+            "sentence": "My arm is really ...... and I can't move it.",
+            "answer": "sore"
+          },
+          {
+            "sentence": "Mind you don't ...... yourself! Oh, too late. Sorry.",
+            "answer": "hurt"
+          },
+          {
+            "sentence": "I had a really bad ...... in my foot so I decided to see a doctor.",
+            "answer": "pain"
+          }
+        ]
+      },
+      "B": {
+        "title": "Circle the correct word",
+        "instructions": "Circle the correct word.",
+        "questions": [
+          {
+            "sentence": "Tim looks really pale and **thin / slim**. I'm worried he might be ill.",
+            "answer": "thin"
+          },
+          {
+            "sentence": "It's important to eat a **fit / healthy** diet with lots of vegetables.",
+            "answer": "healthy"
+          },
+          {
+            "sentence": "After picking the flowers, I noticed I had a **fever / rash** all over my hands.",
+            "answer": "rash"
+          },
+          {
+            "sentence": "When I broke a rib, I had to wear a **bandage / plaster** around my chest.",
+            "answer": "bandage"
+          },
+          {
+            "sentence": "Make sure you wash your cut properly so that you don't get a/an **infection / pollution**.",
+            "answer": "infection"
+          },
+          {
+            "sentence": "Half an hour after taking the pill, I began to feel the **results / effects**.",
+            "answer": "effects"
+          },
+          {
+            "sentence": "The doctor walked along the **ward / clinic**, chatting to all the patients she passed.",
+            "answer": "ward"
+          },
+          {
+            "sentence": "Two people have been slightly **injured / damaged** in an accident on the M1.",
+            "answer": "injured"
+          },
+          {
+            "sentence": "It's good for children to get minor **diseases / illnesses**, such as colds.",
+            "answer": "illnesses"
+          },
+          {
+            "sentence": "The medicine bottle said the recommended **dose / fix** was two teaspoons twice a day.",
+            "answer": "dose"
+          }
+        ]
+      },
+      "C": {
+        "title": "Phrasal verbs (transformation)",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "questions": [
+          {
+            "sentence": "Dan couldn't work because he caught the flu. (down)\nDan ...... which meant he couldn't work.",
+            "answer": "came down with the flu"
+          },
+          {
+            "sentence": "If you smoke, then stopping can really improve your health. (up)\nIf you ...... you'll really improve your health.",
+            "answer": "give up smoking"
+          },
+          {
+            "sentence": "We asked the vet to kill the dog to stop her suffering any longer. (put)\nWe asked the vet ...... to stop her suffering any longer.",
+            "answer": "to put the dog down/to put down the dog"
+          },
+          {
+            "sentence": "I don't really have enough energy to play tennis. (up)\nI don't really ...... tennis.",
+            "answer": "feel up to playing"
+          },
+          {
+            "sentence": "Is it true that getting wet can cause a cold? (on)\nIs it true that getting wet can ...... a cold?",
+            "answer": "bring on"
+          },
+          {
+            "sentence": "The flu epidemic started suddenly in June and lots of people got ill. (out)\nLots of people got ill when the flu epidemic ...... in June.",
+            "answer": "broke out"
+          }
+        ]
+      },
+      "D": {
+        "title": "Phrasal verbs (gap fill)",
+        "instructions": "Write one word in each gap.",
+        "questions": [
+          {
+            "sentence": "When I fainted, it took a long time for me to come .......",
+            "answer": "round/to"
+          },
+          {
+            "sentence": "The doctor told him to ...... down on the amount of red meat he eats.",
+            "answer": "cut"
+          },
+          {
+            "sentence": "It took about an hour for the anaesthetic to wear ...... after the operation.",
+            "answer": "off"
+          },
+          {
+            "sentence": "Losing weight is not easy. Most people ...... on about a kilo a month.",
+            "answer": "putting"
+          },
+          {
+            "sentence": "I didn't just faint. I ...... out completely.",
+            "answer": "passed"
+          },
+          {
+            "sentence": "It took me ages to ...... over my cold.",
+            "answer": "get"
+          },
+          {
+            "sentence": "The doctors didn't think my grandfather was going to pull ......, but he did.",
+            "answer": "through"
+          },
+          {
+            "sentence": "I'll ...... after the children while you're away.",
+            "answer": "look"
+          }
+        ]
+      },
+      "E": {
+        "title": "Multiple choice (Phrases and collocations)",
+        "instructions": "Choose the correct answer.",
+        "questions": [
+          {
+            "sentence": "We need to find a/an ...... to this problem very soon.",
+            "options": [
+              "A alternative",
+              "B solution",
+              "C change",
+              "D result"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "When I got to the dentist's, the receptionist told me that I'd ...... my appointment.",
+            "options": [
+              "A missed",
+              "B lost",
+              "C broken",
+              "D failed"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "All of the police officers who entered the burning building were in ...... of their lives.",
+            "options": [
+              "A threat",
+              "B risk",
+              "C hazard",
+              "D danger"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "I'm afraid I don't have time to ...... much exercise at the moment.",
+            "options": [
+              "A make",
+              "B take",
+              "C get",
+              "D do"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "You should try to ...... fit by going to the gym at least twice a week.",
+            "options": [
+              "A keep",
+              "B stay",
+              "C remain",
+              "D hold"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "I think a week by the sea will do you a lot of .......",
+            "options": [
+              "A good",
+              "B well",
+              "C fine",
+              "D great"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "The doctor gave me an ...... for the flu.",
+            "options": [
+              "A injection",
+              "B vaccination",
+              "C immunisation",
+              "D antibiotic"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "You should ...... this cream on the rash twice a day.",
+            "options": [
+              "A apply",
+              "B put",
+              "C spread",
+              "D rub"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "I need to get back into ...... before the summer.",
+            "options": [
+              "A form",
+              "B shape",
+              "C condition",
+              "D state"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "The ...... of the disease to other countries was inevitable.",
+            "options": [
+              "A spread",
+              "B expansion",
+              "C extension",
+              "D growth"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "I've become ...... to caffeine. I can't function without my morning coffee.",
+            "options": [
+              "A hooked",
+              "B dependent",
+              "C addicted",
+              "D attached"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "The doctors are going to ...... on my knee tomorrow morning.",
+            "options": [
+              "A operate",
+              "B perform",
+              "C carry out",
+              "D do"
+            ],
+            "answer": "A"
+          }
+        ]
+      },
+      "F": {
+        "title": "Matching (Word patterns)",
+        "instructions": "Match to make sentences.",
+        "questions": [
+          {
+            "sentence": "Many people are addicted",
+            "options": [
+              "A to give up smoking.",
+              "B from stress-related illnesses.",
+              "C to the risks involved.",
+              "D to nicotine.",
+              "E of his hard work.",
+              "F with the noise.",
+              "G on a strict diet."
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "She's trying",
+            "options": [
+              "A to give up smoking.",
+              "B from stress-related illnesses.",
+              "C to the risks involved.",
+              "D to nicotine.",
+              "E of his hard work.",
+              "F with the noise.",
+              "G on a strict diet."
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "He's suffering",
+            "options": [
+              "A to give up smoking.",
+              "B from stress-related illnesses.",
+              "C to the risks involved.",
+              "D to nicotine.",
+              "E of his hard work.",
+              "F with the noise.",
+              "G on a strict diet."
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "I'm not used",
+            "options": [
+              "A to give up smoking.",
+              "B from stress-related illnesses.",
+              "C to the risks involved.",
+              "D to nicotine.",
+              "E of his hard work.",
+              "F with the noise.",
+              "G on a strict diet."
+            ],
+            "answer": "F"
+          },
+          {
+            "sentence": "She's tired",
+            "options": [
+              "A to give up smoking.",
+              "B from stress-related illnesses.",
+              "C to the risks involved.",
+              "D to nicotine.",
+              "E of his hard work.",
+              "F with the noise.",
+              "G on a strict diet."
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "He's a doctor and has warned me",
+            "options": [
+              "A to give up smoking.",
+              "B from stress-related illnesses.",
+              "C to the risks involved.",
+              "D to nicotine.",
+              "E of his hard work.",
+              "F with the noise.",
+              "G on a strict diet."
+            ],
+            "answer": "C"
+          }
+        ]
+      },
+      "G": {
+        "title": "Cloze (Word patterns)",
+        "instructions": "Write one word in each gap.",
+        "questions": [
+          {
+            "sentence": "Many people today are worried ...... drugs.",
+            "answer": "about/by"
+          },
+          {
+            "sentence": "It seems that more and more people are becoming addicted ...... substances, such as heroine and cocaine, that damage their health.",
+            "answer": "to"
+          },
+          {
+            "sentence": "But what leads people ...... becoming addicts?",
+            "answer": "to"
+          },
+          {
+            "sentence": "What makes someone inject a drug ...... their veins?",
+            "answer": "into"
+          },
+          {
+            "sentence": "Is it because of their inability to cope ...... problems in their everyday lives?",
+            "answer": "with"
+          },
+          {
+            "sentence": "One thing is for sure. When we complain ...... the problems caused by hard drugs, we need remember that people suffer all kinds of health problems caused by legal drugs, such as alcohol and tobacco.",
+            "answer": "about"
+          },
+          {
+            "sentence": "We would all benefit ...... more education and the government should attempt make sure we all know the risks involved.",
+            "answer": "from"
+          }
+        ]
+      },
+      "H": {
+        "title": "Word formation (sentences)",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "questions": [
+          {
+            "sentence": "Most people seem to be ...... (AWARE) of the harmful effects of their diet.",
+            "answer": "unaware"
+          },
+          {
+            "sentence": "I'm ...... (ALLERGY) to peanuts so I have to be very careful what I eat.",
+            "answer": "allergic"
+          },
+          {
+            "sentence": "Jade's ...... (ILL) turned out to be much more serious than anyone imagined.",
+            "answer": "illness"
+          },
+          {
+            "sentence": "Did you know Australia has the highest number of ...... (POISON) species of snake?",
+            "answer": "poisonous"
+          },
+          {
+            "sentence": "After a couple of weeks, the plaster cast on my leg became really ...... (COMFORT) and I couldn't wait to take it off.",
+            "answer": "uncomfortable"
+          },
+          {
+            "sentence": "I was really impressed by the levels of ...... (FIT) of all the athletes.",
+            "answer": "fitness"
+          },
+          {
+            "sentence": "Luckily, Ted's ...... (INJURE) weren't serious.",
+            "answer": "injuries"
+          },
+          {
+            "sentence": "Working out can really ...... (STRONG) your muscles.",
+            "answer": "strengthen"
+          }
+        ]
+      },
+      "I": {
+        "title": "Word formation (text)",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "questions": [
+          {
+            "sentence": "These days, it seems there's an (1) ...... for everything.",
+            "answer": "operation"
+          },
+          {
+            "sentence": "Whether you want something made smaller or you want to (2) ...... your best features, you can bet that plastic (3) ...... claim to have the solution.",
+            "answer": "emphasise, surgeons"
+          },
+          {
+            "sentence": "We at BodySculpt know, though, that you don't want the (4) ...... associated with surgery.",
+            "answer": "discomfort"
+          },
+          {
+            "sentence": "But you can't enjoy the (5) ...... effects without going under the knife, can you?",
+            "answer": "beneficial"
+          },
+          {
+            "sentence": "Yes! No need for (6) ...... procedures with a long (7) ...... period!",
+            "answer": "surgical, recovery"
+          },
+          {
+            "sentence": "Our unique service consists of a series of (8) ...... that will give you the results you've always wanted!",
+            "answer": "injections"
+          },
+          {
+            "sentence": "Call now and speak to one of our (9) .......",
+            "answer": "operators"
+          }
+        ]
+      }
     }
-  ]
+  }
 }

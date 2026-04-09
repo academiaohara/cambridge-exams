@@ -3,463 +3,665 @@
   "unit": 16,
   "type": "vocabulary",
   "unitTitle": "Unit 16: Food and drink",
-  "sections": [
-    {
-      "type": "theory",
-      "title": "Topic vocabulary in contrast",
-      "content": [
+  "sections": {
+    "topic_vocabulary": {
+      "vocabulary": [
         {
-          "items": [
-            "chop / slice / grate",
-            "lunch / dinner",
-            "freezer / fridge",
-            "bake / grill / fry / roast / boil",
-            "plate / bowl / saucer / dish",
-            "frozen / freezing",
-            "cook / cooker / chef",
-            "vegetable / vegetarian / vegan",
-            "mix / stir / whisk",
-            "oven / grill / hob",
-            "fast food / takeaway",
-            "soft drink / fizzy drink",
-            "kitchen / cuisine",
-            "kettle / teapot",
-            "menu / catalogue"
-          ]
+          "word": "chop / slice / grate"
+        },
+        {
+          "word": "lunch / dinner"
+        },
+        {
+          "word": "freezer / fridge"
+        },
+        {
+          "word": "bake / grill / fry / roast / boil"
+        },
+        {
+          "word": "plate / bowl / saucer / dish"
+        },
+        {
+          "word": "frozen / freezing"
+        },
+        {
+          "word": "cook / cooker / chef"
+        },
+        {
+          "word": "vegetable / vegetarian / vegan"
+        },
+        {
+          "word": "mix / stir / whisk"
+        },
+        {
+          "word": "oven / grill / hob"
+        },
+        {
+          "word": "fast food / takeaway"
+        },
+        {
+          "word": "soft drink / fizzy drink"
+        },
+        {
+          "word": "kitchen / cuisine"
+        },
+        {
+          "word": "kettle / teapot"
+        },
+        {
+          "word": "menu / catalogue"
         }
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrasal verbs",
-      "content": [
-        {
-          "items": [
-            "drop in (on): visit unexpectedly",
-            "put off: make sb not want to do or not like sth",
-            "get on for: be almost a particular time, number, age, etc",
-            "run into: meet by chance",
-            "go off: be no longer fresh",
-            "run out of: not have any left",
-            "go on: continue happening or doing sth; do sth after doing sth else",
-            "take to: begin to like; begin to do sth regularly",
-            "go/come round: go/come to sb's house to visit them",
-            "try out: experiment with",
-            "keep on: continue doing sth",
-            "turn out: develop in a particular way or have a particular result",
-            "leave out: not include",
-            "turn up: appear unexpectedly or without making a firm arrangement"
-          ]
-        }
+    "phrasal_verbs": [
+      {
+        "verb": "drop in (on)",
+        "meaning": "visit unexpectedly"
+      },
+      {
+        "verb": "put off",
+        "meaning": "make sb not want to do or not like sth"
+      },
+      {
+        "verb": "get on for",
+        "meaning": "be almost a particular time, number, age, etc"
+      },
+      {
+        "verb": "run into",
+        "meaning": "meet by chance"
+      },
+      {
+        "verb": "go off",
+        "meaning": "be no longer fresh"
+      },
+      {
+        "verb": "run out of",
+        "meaning": "not have any left"
+      },
+      {
+        "verb": "go on",
+        "meaning": "continue happening or doing sth; do sth after doing sth else"
+      },
+      {
+        "verb": "take to",
+        "meaning": "begin to like; begin to do sth regularly"
+      },
+      {
+        "verb": "go/come round",
+        "meaning": "go/come to sb's house to visit them"
+      },
+      {
+        "verb": "try out",
+        "meaning": "experiment with"
+      },
+      {
+        "verb": "keep on",
+        "meaning": "continue doing sth"
+      },
+      {
+        "verb": "turn out",
+        "meaning": "develop in a particular way or have a particular result"
+      },
+      {
+        "verb": "leave out",
+        "meaning": "not include"
+      },
+      {
+        "verb": "turn up",
+        "meaning": "appear unexpectedly or without making a firm arrangement"
+      }
+    ],
+    "collocations_patterns": {
+      "cook": [
+        "a good/great/etc cook",
+        "cook a meal/chicken/etc",
+        "do the cooking"
+      ],
+      "drink": [
+        "make (sb) a drink",
+        "have a drink (of sth)",
+        "drink sth",
+        "drink to sb",
+        "drink to sb's health",
+        "drink a toast to sb"
+      ],
+      "feed": [
+        "feed an animal/etc",
+        "feed on sth"
+      ],
+      "fill": [
+        "fill sth (up)",
+        "filled with sth",
+        "full of sth"
+      ],
+      "food": [
+        "make/prepare/cook/serve food",
+        "fast/junk food",
+        "pet food",
+        "health food"
+      ],
+      "meal": [
+        "make/cook/have a meal",
+        "go out for a meal"
+      ],
+      "note": [
+        "make/take/keep (a) note of sth",
+        "note sth (down)"
+      ],
+      "occasion": [
+        "on this/that occasion",
+        "on occasion",
+        "on the occasion of sth",
+        "special occasion"
+      ],
+      "recipe": [
+        "follow a recipe",
+        "recipe book",
+        "recipe for disaster"
+      ],
+      "table": [
+        "lay/set/clear the table",
+        "book/reserve a table"
+      ],
+      "wash": [
+        "wash the dishes",
+        "wash one's hands",
+        "do the washing-up",
+        "dishwasher",
+        "washing machine"
+      ],
+      "associate": [
+        "sth/sb with sth/sb"
+      ],
+      "regard": [
+        "sb as (being) sth"
+      ],
+      "careful": [
+        "with/about/of sth"
+      ],
+      "remember": [
+        "to do",
+        "sth/sb/doing",
+        "that"
+      ],
+      "choose": [
+        "between",
+        "to do"
+      ],
+      "suggest": [
+        "sth/doing (to sb)",
+        "that"
+      ],
+      "compliment": [
+        "sb on sth"
+      ],
+      "tend": [
+        "to do"
+      ],
+      "full": [
+        "of sth"
+      ],
+      "wait": [
+        "for sth/sb",
+        "(for sth) to do",
+        "and see"
+      ],
+      "lack": [
+        "sth",
+        "of sth",
+        "lacking in sth"
+      ],
+      "willing": [
+        "to do"
+      ],
+      "offer": [
+        "sb sth",
+        "sth (to sb)",
+        "to do"
       ]
     },
-    {
-      "type": "theory",
-      "title": "Phrases and collocations",
-      "content": [
-        {
-          "items": [
-            "cook: a good/great/etc cook; cook a meal/chicken/etc; do the cooking",
-            "drink: make (sb) a drink; have a drink (of sth); drink sth; drink to sb; drink to sb's health; drink a toast to sb",
-            "feed: feed an animal/etc; feed on sth",
-            "fill: fill sth (up); filled with sth; full of sth",
-            "food: make/prepare/cook/serve food; fast/junk food; pet food; health food",
-            "meal: make/cook/have a meal; go out for a meal",
-            "note: make/take/keep (a) note of sth; note sth (down)",
-            "occasion: on this/that occasion; on occasion; on the occasion of sth; special occasion",
-            "recipe: follow a recipe; recipe book; recipe for disaster",
-            "table: lay/set/clear the table; book/reserve a table",
-            "wash: wash the dishes; wash one's hands; do the washing-up; dishwasher; washing machine"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word patterns",
-      "content": [
-        {
-          "items": [
-            "associate sth/sb with sth/sb",
-            "regard sb as (being) sth",
-            "careful with/about/of sth",
-            "remember to do; remember sth/sb/doing; remember that",
-            "choose between; choose to do",
-            "suggest sth/doing (to sb); suggest that",
-            "compliment sb on sth",
-            "tend to do",
-            "full of sth",
-            "wait for sth/sb; wait (for sth) to do; wait and see",
-            "lack sth; lack of sth; lacking in sth",
-            "willing to do",
-            "offer sb sth; offer sth (to sb); offer to do"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Word formation",
-      "content": [
-        {
-          "items": [
-            "anxious → anxiously, anxiety",
-            "grow → growth, grown-up, growing, grown, home-grown, grower",
-            "safe → unsafe, (un)safely, save, safety, saviour, saver",
-            "appreciate → (un)appreciative(ly), appreciation",
-            "mix → mixed, mixture, mixer",
-            "surprise → (un)surprising(ly), surprised",
-            "contain → container, content(s)",
-            "origin → (un)original(ly), originate, originator",
-            "sweet → sweetly, sweetener, sweetness",
-            "create → creative(ly), creation, creativity, creator",
-            "prepare → preparation, preparatory, (un)prepared",
-            "thorough → thoroughly, thoroughness",
-            "disgust → disgusting, disgusted"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "A: Cooking verbs (pictures)",
-      "instructions": "Write a verb from the box under each picture. (fry, chop, bake, grate, whisk, slice, mix, roast, grill, stir, boil)",
-      "items": [
-        {
-          "sentence": "Picture 1",
-          "answer": "fry"
-        },
-        {
-          "sentence": "Picture 2",
-          "answer": "chop"
-        },
-        {
-          "sentence": "Picture 3",
-          "answer": "bake"
-        },
-        {
-          "sentence": "Picture 4",
-          "answer": "grate"
-        },
-        {
-          "sentence": "Picture 5",
-          "answer": "whisk"
-        },
-        {
-          "sentence": "Picture 6",
-          "answer": "slice"
-        },
-        {
-          "sentence": "Picture 7",
-          "answer": "mix"
-        },
-        {
-          "sentence": "Picture 8",
-          "answer": "roast"
-        },
-        {
-          "sentence": "Picture 9",
-          "answer": "grill"
-        },
-        {
-          "sentence": "Picture 10",
-          "answer": "stir"
-        },
-        {
-          "sentence": "Picture 11",
-          "answer": "boil"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "B: Circle the correct word",
-      "instructions": "Circle the correct word.",
-      "items": [
-        {
-          "sentence": "I particularly like Mexican and Indian **kitchen / cuisine**.",
-          "answer": "cuisine"
-        },
-        {
-          "sentence": "**Frozen / Freezing** fish is just as tasty as fresh fish.",
-          "answer": "Frozen"
-        },
-        {
-          "sentence": "My mum's the best **cooker / cook** in the world!",
-          "answer": "cook"
-        },
-        {
-          "sentence": "Once the **kettle / teapot** has boiled, pour the boiling water over the jelly cubes.",
-          "answer": "kettle"
-        },
-        {
-          "sentence": "Excuse me. Could we have the **catalogue / menu**, please?",
-          "answer": "menu"
-        },
-        {
-          "sentence": "Boil the eggs for three minutes in a saucepan on the **grill / hob / oven**.",
-          "answer": "hob"
-        },
-        {
-          "sentence": "Any meat that's kept in the **fridge / freezer** should be defrosted thoroughly before cooking.",
-          "answer": "freezer"
-        },
-        {
-          "sentence": "Grandma's having her new **chef / cooker** delivered next week.",
-          "answer": "cooker"
-        },
-        {
-          "sentence": "Chilli con carne is one of my favourite **plates / bowls / saucers / dishes**.",
-          "answer": "dishes"
-        },
-        {
-          "sentence": "Are you going to get your suit dry-cleaned for the Carlton's **dinner / lunch** party tomorrow night?",
-          "answer": "dinner"
-        },
-        {
-          "sentence": "My friend Sally's a true **vegetable / vegetarian / vegan**, so she doesn't eat meat, fish or even any milk products like cheese!",
-          "answer": "vegan"
-        },
-        {
-          "sentence": "Let's get a Chinese **takeaway / fast** food tonight.",
-          "answer": "takeaway"
-        },
-        {
-          "sentence": "**Fizzy / Soft** drinks are gassy because they've got carbon dioxide in them.",
-          "answer": "Fizzy"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "C: Phrasal verbs (gap fill)",
-      "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "I've taken (1) ...... not booking a table in my real name for these restaurant reviews...",
-          "answer": "to"
-        },
-        {
-          "sentence": "Earlier in the evening, some friends had come (2) ...... for a chat and mentioned La Clara.",
-          "answer": "round/over/by"
-        },
-        {
-          "sentence": "We decided just to drop (3) ...... to see if there was a free table.",
-          "answer": "in/by"
-        },
-        {
-          "sentence": "There wasn't - always a risk if you (4) ...... up without booking, of course - but we decided to wait.",
-          "answer": "turn"
-        },
-        {
-          "sentence": "Having arrived at about 9.30, it was getting (5) ...... for eleven before we were finally seated.",
-          "answer": "on"
-        },
-        {
-          "sentence": "while we were having a drink at the bar, we ran (6) ...... the food critic of a rival newspaper.",
-          "answer": "into"
-        },
-        {
-          "sentence": "unfortunately our meal turned (7) ...... to be far from wonderful.",
-          "answer": "out"
-        },
-        {
-          "sentence": "The sauce tasted like the cream had (8) ...... off.",
-          "answer": "gone"
-        },
-        {
-          "sentence": "Fifteen minutes after my mushrooms had arrived, the waiter came over to say that they had (9) ...... out of salmon.",
-          "answer": "run"
-        },
-        {
-          "sentence": "He went (10) ...... to say that they would be closing at midnight.",
-          "answer": "on"
-        },
-        {
-          "sentence": "The head chef of La Clara likes to try (11) ...... one new dish every day.",
-          "answer": "out"
-        },
-        {
-          "sentence": "the waiter kept (12) ...... coming over to see if we had finished.",
-          "answer": "on"
-        },
-        {
-          "sentence": "I'll leave (13) ...... a description of the dessert.",
-          "answer": "out"
-        },
-        {
-          "sentence": "I don't want to (14) ...... anyone off trying La Clara...",
-          "answer": "put"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "D: Matching (Where do these texts appear?)",
-      "instructions": "Read ten different ways of explaining things and decide where these texts appear.",
-      "items": [
-        {
-          "sentence": "Only heat-resistant ceramic and glass dishes should be used for oven baking/roasting.",
-          "answer": "C in the instructions for an electric cooker"
-        },
-        {
-          "sentence": "A homemade chunky and succulent beefburger, filled with mozzarella cheese and served with a side salad and baked potato.",
-          "answer": "F on a menu"
-        },
-        {
-          "sentence": "Wash the carrots and slice. Set to one side. Boil the potatoes for six minutes or until slightly soft to the touch.",
-          "answer": "D in a recipe book"
-        },
-        {
-          "sentence": "Open seven days a week. Ideal for wedding receptions, birthday parties and other special occasions.",
-          "answer": "G in an advertisement for a restaurant"
-        },
-        {
-          "sentence": "Large plates, dishes and bowls should be loaded into the bottom rack. Glasses should be placed upside down on the top rack. Cutlery should be placed in the cutlery container.",
-          "answer": "A in the instructions for a dishwasher"
-        },
-        {
-          "sentence": "Are you fed up with trying to lose weight and failing? Doreen Brown asks top nutritionists how we can lose that fat, and not put it back on again.",
-          "answer": "I in an article on dieting"
-        },
-        {
-          "sentence": "Make a note of all the things you have to do before your guests arrive... If you're planning to cook the meal yourself... make sure you choose a menu you know well.",
-          "answer": "J in an article on organising a dinner party"
-        },
-        {
-          "sentence": "Whites and delicate items should be washed separately.",
-          "answer": "B in the instructions for a washing machine"
-        },
-        {
-          "sentence": "I ask you all to raise your glasses so we can drink to my wonderful great-grandfather, ninety-seven years young today!",
-          "answer": "H in a toast at a celebration"
-        },
-        {
-          "sentence": "Vegetarian and Vegan Products.",
-          "answer": "E on a sign in a health food shop"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "E: Word patterns (gap fill)",
-      "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "Everyone complimented her ...... the wonderful buffet she'd laid on.",
-          "answer": "on"
-        },
-        {
-          "sentence": "The problem with drinks like that is they're full ...... sugar.",
-          "answer": "of"
-        },
-        {
-          "sentence": "I can't choose ...... Death by Chocolate or fruit salad.",
-          "answer": "between"
-        },
-        {
-          "sentence": "I'm not going to tell you what's for supper. You'll just have to wait ...... see.",
-          "answer": "and"
-        },
-        {
-          "sentence": "She's generally regarded ...... being the best cookery book writer of her generation.",
-          "answer": "as"
-        },
-        {
-          "sentence": "Most people associate English food ...... fish and chips and shepherd's pie.",
-          "answer": "with"
-        },
-        {
-          "sentence": "Karen's very careful ...... how much salt she has.",
-          "answer": "about/with"
-        },
-        {
-          "sentence": "There's a lack ...... good restaurants round here.",
-          "answer": "of"
-        },
-        {
-          "sentence": "The meat was well cooked, but the sauce was totally lacking ...... flavour.",
-          "answer": "in"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "F: Verb patterns",
-      "instructions": "Complete using the correct form of the verb in brackets.",
-      "items": [
-        {
-          "sentence": "I tend not ...... (cook) very often during the week as I don't have time.",
-          "answer": "to cook"
-        },
-        {
-          "sentence": "Do you remember ...... (go) to that wonderful little taverna on Skiathos last summer?",
-          "answer": "going"
-        },
-        {
-          "sentence": "I must remember ...... (buy) some bread on the way home.",
-          "answer": "to buy"
-        },
-        {
-          "sentence": "Why don't you offer ...... (help) with the washing-up?",
-          "answer": "to help"
-        },
-        {
-          "sentence": "I'd suggest ...... (get) a takeaway rather than cooking.",
-          "answer": "getting"
-        },
-        {
-          "sentence": "Would you be willing ...... (lend) me a hand with the pudding?",
-          "answer": "to lend"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "G: Word formation (text)",
-      "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
-      "items": [
-        {
-          "sentence": "Good cooking is always a strange (1) ...... of science and art and you certainly have to be fairly (2) ...... if you want to come up with your own recipes.",
-          "answer": "mixture, creative"
-        },
-        {
-          "sentence": "All cooking also demands a fair amount of (3) ...... and this is doubly true when you're producing (4) ...... dishes.",
-          "answer": "preparation, original"
-        },
-        {
-          "sentence": "You'll be (5) ...... by how honest people can be when it comes to food.",
-          "answer": "surprised"
-        },
-        {
-          "sentence": "I've had people tell me my latest dish is (6) ...... and (7) ...... inedible!",
-          "answer": "disgusting, thoroughly"
-        },
-        {
-          "sentence": "Just smile (8) ...... and thank them for their valuable opinion.",
-          "answer": "sweetly"
-        },
-        {
-          "sentence": "And never forget that when you're waiting (9) ...... to hear whether or not your 'masterpiece' is a success and they suddenly show their (10) ...... you'll realise it was all worth it.",
-          "answer": "anxiously, appreciation"
-        },
-        {
-          "sentence": "My tips: home- (11) ...... vegetables are always the tastiest.",
-          "answer": "grown"
-        },
-        {
-          "sentence": "Every good cook needs a top- quality (12) ....... It's an essential piece of kitchen equipment, not a luxury.",
-          "answer": "mixer"
-        },
-        {
-          "sentence": "Make sure you've got lots of good- quality food storage (13) .......",
-          "answer": "containers"
-        },
-        {
-          "sentence": "And, finally, remember that designing a new dish is not about (14) ....... It's about taking risks, and learning from your mistakes.",
-          "answer": "safety"
-        }
-      ]
+    "word_formation": [
+      {
+        "base": "anxious",
+        "derivatives": [
+          "anxiously",
+          "anxiety"
+        ]
+      },
+      {
+        "base": "grow",
+        "derivatives": [
+          "growth",
+          "grown-up",
+          "growing",
+          "grown",
+          "home-grown",
+          "grower"
+        ]
+      },
+      {
+        "base": "safe",
+        "derivatives": [
+          "unsafe",
+          "(un)safely",
+          "save",
+          "safety",
+          "saviour",
+          "saver"
+        ]
+      },
+      {
+        "base": "appreciate",
+        "derivatives": [
+          "(un)appreciative(ly)",
+          "appreciation"
+        ]
+      },
+      {
+        "base": "mix",
+        "derivatives": [
+          "mixed",
+          "mixture",
+          "mixer"
+        ]
+      },
+      {
+        "base": "surprise",
+        "derivatives": [
+          "(un)surprising(ly)",
+          "surprised"
+        ]
+      },
+      {
+        "base": "contain",
+        "derivatives": [
+          "container",
+          "content(s)"
+        ]
+      },
+      {
+        "base": "origin",
+        "derivatives": [
+          "(un)original(ly)",
+          "originate",
+          "originator"
+        ]
+      },
+      {
+        "base": "sweet",
+        "derivatives": [
+          "sweetly",
+          "sweetener",
+          "sweetness"
+        ]
+      },
+      {
+        "base": "create",
+        "derivatives": [
+          "creative(ly)",
+          "creation",
+          "creativity",
+          "creator"
+        ]
+      },
+      {
+        "base": "prepare",
+        "derivatives": [
+          "preparation",
+          "preparatory",
+          "(un)prepared"
+        ]
+      },
+      {
+        "base": "thorough",
+        "derivatives": [
+          "thoroughly",
+          "thoroughness"
+        ]
+      },
+      {
+        "base": "disgust",
+        "derivatives": [
+          "disgusting",
+          "disgusted"
+        ]
+      }
+    ],
+    "exercises": {
+      "A": {
+        "title": "Cooking verbs (pictures)",
+        "instructions": "Write a verb from the box under each picture. (fry, chop, bake, grate, whisk, slice, mix, roast, grill, stir, boil)",
+        "questions": [
+          {
+            "sentence": "Picture 1",
+            "answer": "fry"
+          },
+          {
+            "sentence": "Picture 2",
+            "answer": "chop"
+          },
+          {
+            "sentence": "Picture 3",
+            "answer": "bake"
+          },
+          {
+            "sentence": "Picture 4",
+            "answer": "grate"
+          },
+          {
+            "sentence": "Picture 5",
+            "answer": "whisk"
+          },
+          {
+            "sentence": "Picture 6",
+            "answer": "slice"
+          },
+          {
+            "sentence": "Picture 7",
+            "answer": "mix"
+          },
+          {
+            "sentence": "Picture 8",
+            "answer": "roast"
+          },
+          {
+            "sentence": "Picture 9",
+            "answer": "grill"
+          },
+          {
+            "sentence": "Picture 10",
+            "answer": "stir"
+          },
+          {
+            "sentence": "Picture 11",
+            "answer": "boil"
+          }
+        ]
+      },
+      "B": {
+        "title": "Circle the correct word",
+        "instructions": "Circle the correct word.",
+        "questions": [
+          {
+            "sentence": "I particularly like Mexican and Indian **kitchen / cuisine**.",
+            "answer": "cuisine"
+          },
+          {
+            "sentence": "**Frozen / Freezing** fish is just as tasty as fresh fish.",
+            "answer": "Frozen"
+          },
+          {
+            "sentence": "My mum's the best **cooker / cook** in the world!",
+            "answer": "cook"
+          },
+          {
+            "sentence": "Once the **kettle / teapot** has boiled, pour the boiling water over the jelly cubes.",
+            "answer": "kettle"
+          },
+          {
+            "sentence": "Excuse me. Could we have the **catalogue / menu**, please?",
+            "answer": "menu"
+          },
+          {
+            "sentence": "Boil the eggs for three minutes in a saucepan on the **grill / hob / oven**.",
+            "answer": "hob"
+          },
+          {
+            "sentence": "Any meat that's kept in the **fridge / freezer** should be defrosted thoroughly before cooking.",
+            "answer": "freezer"
+          },
+          {
+            "sentence": "Grandma's having her new **chef / cooker** delivered next week.",
+            "answer": "cooker"
+          },
+          {
+            "sentence": "Chilli con carne is one of my favourite **plates / bowls / saucers / dishes**.",
+            "answer": "dishes"
+          },
+          {
+            "sentence": "Are you going to get your suit dry-cleaned for the Carlton's **dinner / lunch** party tomorrow night?",
+            "answer": "dinner"
+          },
+          {
+            "sentence": "My friend Sally's a true **vegetable / vegetarian / vegan**, so she doesn't eat meat, fish or even any milk products like cheese!",
+            "answer": "vegan"
+          },
+          {
+            "sentence": "Let's get a Chinese **takeaway / fast** food tonight.",
+            "answer": "takeaway"
+          },
+          {
+            "sentence": "**Fizzy / Soft** drinks are gassy because they've got carbon dioxide in them.",
+            "answer": "Fizzy"
+          }
+        ]
+      },
+      "C": {
+        "title": "Phrasal verbs (gap fill)",
+        "instructions": "Write one word in each gap.",
+        "questions": [
+          {
+            "sentence": "I've taken (1) ...... not booking a table in my real name for these restaurant reviews...",
+            "answer": "to"
+          },
+          {
+            "sentence": "Earlier in the evening, some friends had come (2) ...... for a chat and mentioned La Clara.",
+            "answer": "round/over/by"
+          },
+          {
+            "sentence": "We decided just to drop (3) ...... to see if there was a free table.",
+            "answer": "in/by"
+          },
+          {
+            "sentence": "There wasn't - always a risk if you (4) ...... up without booking, of course - but we decided to wait.",
+            "answer": "turn"
+          },
+          {
+            "sentence": "Having arrived at about 9.30, it was getting (5) ...... for eleven before we were finally seated.",
+            "answer": "on"
+          },
+          {
+            "sentence": "while we were having a drink at the bar, we ran (6) ...... the food critic of a rival newspaper.",
+            "answer": "into"
+          },
+          {
+            "sentence": "unfortunately our meal turned (7) ...... to be far from wonderful.",
+            "answer": "out"
+          },
+          {
+            "sentence": "The sauce tasted like the cream had (8) ...... off.",
+            "answer": "gone"
+          },
+          {
+            "sentence": "Fifteen minutes after my mushrooms had arrived, the waiter came over to say that they had (9) ...... out of salmon.",
+            "answer": "run"
+          },
+          {
+            "sentence": "He went (10) ...... to say that they would be closing at midnight.",
+            "answer": "on"
+          },
+          {
+            "sentence": "The head chef of La Clara likes to try (11) ...... one new dish every day.",
+            "answer": "out"
+          },
+          {
+            "sentence": "the waiter kept (12) ...... coming over to see if we had finished.",
+            "answer": "on"
+          },
+          {
+            "sentence": "I'll leave (13) ...... a description of the dessert.",
+            "answer": "out"
+          },
+          {
+            "sentence": "I don't want to (14) ...... anyone off trying La Clara...",
+            "answer": "put"
+          }
+        ]
+      },
+      "D": {
+        "title": "Matching (Where do these texts appear?)",
+        "instructions": "Read ten different ways of explaining things and decide where these texts appear.",
+        "questions": [
+          {
+            "sentence": "Only heat-resistant ceramic and glass dishes should be used for oven baking/roasting.",
+            "answer": "C in the instructions for an electric cooker"
+          },
+          {
+            "sentence": "A homemade chunky and succulent beefburger, filled with mozzarella cheese and served with a side salad and baked potato.",
+            "answer": "F on a menu"
+          },
+          {
+            "sentence": "Wash the carrots and slice. Set to one side. Boil the potatoes for six minutes or until slightly soft to the touch.",
+            "answer": "D in a recipe book"
+          },
+          {
+            "sentence": "Open seven days a week. Ideal for wedding receptions, birthday parties and other special occasions.",
+            "answer": "G in an advertisement for a restaurant"
+          },
+          {
+            "sentence": "Large plates, dishes and bowls should be loaded into the bottom rack. Glasses should be placed upside down on the top rack. Cutlery should be placed in the cutlery container.",
+            "answer": "A in the instructions for a dishwasher"
+          },
+          {
+            "sentence": "Are you fed up with trying to lose weight and failing? Doreen Brown asks top nutritionists how we can lose that fat, and not put it back on again.",
+            "answer": "I in an article on dieting"
+          },
+          {
+            "sentence": "Make a note of all the things you have to do before your guests arrive... If you're planning to cook the meal yourself... make sure you choose a menu you know well.",
+            "answer": "J in an article on organising a dinner party"
+          },
+          {
+            "sentence": "Whites and delicate items should be washed separately.",
+            "answer": "B in the instructions for a washing machine"
+          },
+          {
+            "sentence": "I ask you all to raise your glasses so we can drink to my wonderful great-grandfather, ninety-seven years young today!",
+            "answer": "H in a toast at a celebration"
+          },
+          {
+            "sentence": "Vegetarian and Vegan Products.",
+            "answer": "E on a sign in a health food shop"
+          }
+        ]
+      },
+      "E": {
+        "title": "Word patterns (gap fill)",
+        "instructions": "Write one word in each gap.",
+        "questions": [
+          {
+            "sentence": "Everyone complimented her ...... the wonderful buffet she'd laid on.",
+            "answer": "on"
+          },
+          {
+            "sentence": "The problem with drinks like that is they're full ...... sugar.",
+            "answer": "of"
+          },
+          {
+            "sentence": "I can't choose ...... Death by Chocolate or fruit salad.",
+            "answer": "between"
+          },
+          {
+            "sentence": "I'm not going to tell you what's for supper. You'll just have to wait ...... see.",
+            "answer": "and"
+          },
+          {
+            "sentence": "She's generally regarded ...... being the best cookery book writer of her generation.",
+            "answer": "as"
+          },
+          {
+            "sentence": "Most people associate English food ...... fish and chips and shepherd's pie.",
+            "answer": "with"
+          },
+          {
+            "sentence": "Karen's very careful ...... how much salt she has.",
+            "answer": "about/with"
+          },
+          {
+            "sentence": "There's a lack ...... good restaurants round here.",
+            "answer": "of"
+          },
+          {
+            "sentence": "The meat was well cooked, but the sauce was totally lacking ...... flavour.",
+            "answer": "in"
+          }
+        ]
+      },
+      "F": {
+        "title": "Verb patterns",
+        "instructions": "Complete using the correct form of the verb in brackets.",
+        "questions": [
+          {
+            "sentence": "I tend not ...... (cook) very often during the week as I don't have time.",
+            "answer": "to cook"
+          },
+          {
+            "sentence": "Do you remember ...... (go) to that wonderful little taverna on Skiathos last summer?",
+            "answer": "going"
+          },
+          {
+            "sentence": "I must remember ...... (buy) some bread on the way home.",
+            "answer": "to buy"
+          },
+          {
+            "sentence": "Why don't you offer ...... (help) with the washing-up?",
+            "answer": "to help"
+          },
+          {
+            "sentence": "I'd suggest ...... (get) a takeaway rather than cooking.",
+            "answer": "getting"
+          },
+          {
+            "sentence": "Would you be willing ...... (lend) me a hand with the pudding?",
+            "answer": "to lend"
+          }
+        ]
+      },
+      "G": {
+        "title": "Word formation (text)",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "questions": [
+          {
+            "sentence": "Good cooking is always a strange (1) ...... of science and art and you certainly have to be fairly (2) ...... if you want to come up with your own recipes.",
+            "answer": "mixture, creative"
+          },
+          {
+            "sentence": "All cooking also demands a fair amount of (3) ...... and this is doubly true when you're producing (4) ...... dishes.",
+            "answer": "preparation, original"
+          },
+          {
+            "sentence": "You'll be (5) ...... by how honest people can be when it comes to food.",
+            "answer": "surprised"
+          },
+          {
+            "sentence": "I've had people tell me my latest dish is (6) ...... and (7) ...... inedible!",
+            "answer": "disgusting, thoroughly"
+          },
+          {
+            "sentence": "Just smile (8) ...... and thank them for their valuable opinion.",
+            "answer": "sweetly"
+          },
+          {
+            "sentence": "And never forget that when you're waiting (9) ...... to hear whether or not your 'masterpiece' is a success and they suddenly show their (10) ...... you'll realise it was all worth it.",
+            "answer": "anxiously, appreciation"
+          },
+          {
+            "sentence": "My tips: home- (11) ...... vegetables are always the tastiest.",
+            "answer": "grown"
+          },
+          {
+            "sentence": "Every good cook needs a top- quality (12) ....... It's an essential piece of kitchen equipment, not a luxury.",
+            "answer": "mixer"
+          },
+          {
+            "sentence": "Make sure you've got lots of good- quality food storage (13) .......",
+            "answer": "containers"
+          },
+          {
+            "sentence": "And, finally, remember that designing a new dish is not about (14) ....... It's about taking risks, and learning from your mistakes.",
+            "answer": "safety"
+          }
+        ]
+      }
     }
-  ]
+  }
 }
