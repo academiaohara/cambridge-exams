@@ -19,10 +19,16 @@
           "description": "Whether we use 'an' or 'a' depends on the sound, not the spelling.",
           "examples": [
             {
-              "correct": "The news is on TV in an hour."
+              "correct": "The news is on TV in **an** hour."
             },
             {
-              "correct": "Being in a film was a unique experience for me."
+              "incorrect": "The news is on TV in **a** hour."
+            },
+            {
+              "correct": "Being in a film was **a** unique experience for me."
+            },
+            {
+              "incorrect": "Being in a film was **an** unique experience for me."
             }
           ]
         }
@@ -42,13 +48,11 @@
           ]
         },
         {
-          "subtitle": "Pronunciation",
-          "description": "Before a consonant sound: /ðə/ (the media). Before a vowel sound: /ði/ (the actor)."
-        },
-        {
-          "subtitle": "Things there is only one of",
+          "subtitle": "Watch out!",
           "items": [
-            "the sky, the sun, the moon, the Prince of Wales, the North Pole, the World Cup"
+            "The way we say 'the' changes depending on the sound at the start of the next word. Before a consonant sound (*the media*, *the USA*, *the programme*), we pronounce it /ðə/. Before a vowel sound (*the announcer*, *the actor*, *the editor*), we pronounce it /ði/.",
+            "We often use 'the' when we are talking about something there is only one of.",
+            "✓ **the** sky, **the** sun, **the** moon, **the** Prince of Wales, **the** North Pole, **the** World Cup"
           ]
         }
       ]
@@ -57,6 +61,9 @@
       "type": "theory",
       "title": "Zero article (no article)",
       "content": [
+        {
+          "description": "We often don't use an article at all. This is sometimes called the zero article."
+        },
         {
           "subtitle": "Use",
           "items": [
@@ -70,6 +77,9 @@
       "type": "theory",
       "title": "Articles in phrases and expressions",
       "content": [
+        {
+          "description": "Notice how we use articles in the following phrases and expressions. Many of these are examples of general categories. For example, '**the** River Thames' means that we use 'the' for all rivers."
+        },
         {
           "subtitle": "Time",
           "items": [
@@ -138,7 +148,9 @@
         {
           "subtitle": "American English note",
           "description": "US speakers use 'the hospital' where UK speakers say 'to hospital'.",
-          "example": "US: The ambulance took Simon to the hospital. UK: The ambulance took Simon to hospital."
+          "examples": [
+            "US: The ambulance took Simon to the hospital. UK: The ambulance took Simon to hospital."
+          ]
         }
       ]
     },
@@ -149,29 +161,34 @@
         {
           "subtitle": "Countable nouns",
           "items": [
-            "Use a, the, some, many",
-            "Use a singular or plural verb: I want to be a journalist. How many channels do you get?"
+            "Use **a**, **the**, **some**, **many**",
+            "Use a singular or plural verb",
+            "*I want to be **a journalist**.*",
+            "*Where is **the newspaper**?*",
+            "*There are **some** good **articles** in the paper.*",
+            "*How **many channels** do you get?*"
           ]
         },
         {
           "subtitle": "Uncountable nouns",
           "items": [
-            "Use the, some, much",
-            "Use a singular verb: Did you hear the news? How much information do we have?",
+            "Use **the**, **some**, **much**",
+            "Use a singular verb",
+            "*Did you hear **the news**?*",
+            "***Some** important **news** has just come in.*",
+            "*How **much information** do we have about it?*",
+            "*Your **advice** was very useful.*",
             "Common uncountable nouns: advice, coffee, furniture, glass, hair, homework, information, knowledge, luggage, money, news, paper, work"
           ]
         },
         {
-          "subtitle": "Plural uncountable nouns",
+          "subtitle": "Watch out!",
           "items": [
-            "clothes, scissors, jeans, spectacles, trousers, groceries (use plural verb): Oh, no! My new clothes are dirty!"
-          ]
-        },
-        {
-          "subtitle": "Nouns with countable and uncountable meanings",
-          "examples": [
-            "Do you think you could bring me a clean glass? (countable)",
-            "We should make computer monitors out of recycled glass. (uncountable)"
+            "Most uncountable nouns are singular, but a few are plural. These include *clothes, scissors, jeans, spectacles, trousers, groceries*, etc. With these words, we use a plural verb.",
+            "✓ Oh, no! My new clothes **are** dirty!",
+            "Some nouns are countable with one meaning and uncountable with another meaning.",
+            "✓ Do you think you could bring me **a** clean **glass**? (countable)",
+            "✓ We should make computer monitors out of recycled **glass**. (uncountable)"
           ]
         }
       ]
@@ -182,21 +199,21 @@
       "content": [
         {
           "items": [
-            "many: countable nouns, usually in negative statements and questions: There aren't many programmes on TV that I find interesting.",
-            "much: uncountable nouns, usually in negative statements and questions: My dad never shows much interest in the news.",
-            "a lot of / lots of: countable and uncountable nouns in positive statements: That film has won a lot of awards.",
-            "a few: countable nouns, means 'some': There have been a few scandals in the papers recently.",
-            "a little: uncountable nouns, means 'some': They say that a little knowledge is a dangerous thing.",
-            "few: countable nouns, means 'not many': Richard has few interests outside work.",
-            "little: uncountable nouns, means 'not much': The police have little information about the robbery."
+            "**many**: countable nouns, usually in negative statements and questions: *There aren't **many** programmes on TV that I find interesting.*",
+            "**much**: uncountable nouns, usually in negative statements and questions: *My dad never shows **much** interest in the news.*",
+            "**a lot of / lots of**: countable and uncountable nouns in positive statements: *That film has won **a lot of / lots of** awards.* | *What **a lot of** luggage you've got!*",
+            "**a few**: countable nouns, means 'some': *There have been **a few** scandals in the papers recently.*",
+            "**a little**: uncountable nouns, means 'some': *They say that **a little** knowledge is a dangerous thing.*",
+            "**few**: countable nouns, means 'not many': *Richard has **few** interests outside work.*",
+            "**little**: uncountable nouns, means 'not much': *The police have **little** information about the robbery.*"
           ]
         },
         {
-          "subtitle": "Note",
-          "description": "The phrase 'only a few' means 'not many'. The phrase 'only a little' means 'not much'.",
-          "examples": [
-            "There are only a few programmes on TV that I like watching.",
-            "There's only a little sugar left."
+          "subtitle": "Watch out!",
+          "items": [
+            "The phrase '**only a few**' means 'not many'. The phrase '**only a little**' means 'not much'.",
+            "✓ There are **only a few** programmes on TV that I like watching.",
+            "✓ There's **only a little** sugar left, so get some when you go out."
           ]
         }
       ]
