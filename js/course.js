@@ -1895,8 +1895,8 @@
             boxesHtml += '<span class="cu-cw-box"></span>';
           }
           var iid = idBase + '-cw-' + it.dir + '-' + it.num;
-          h += '<li class="cu-cw-clue-item" value="' + it.num + '">' +
-            '<span class="cu-cw-clue-text">' + self._escapeHTML(it.clue) + '</span>' +
+          h += '<li class="cu-cw-clue-item">' +
+            '<span class="cu-cw-clue-text"><span class="cu-cw-clue-num">' + it.num + '.</span> ' + self._escapeHTML(it.clue) + '</span>' +
             '<div class="cu-cw-input-row">' +
               boxesHtml +
               '<input type="text" class="cu-gap-input cu-cw-input" id="' + iid + '" ' +
