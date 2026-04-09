@@ -168,30 +168,26 @@
 
 /* Grammar Form row */
 .cu-gc-form-row {
-  display: flex;
-  align-items: flex-start;
   border: 1px solid rgba(45, 46, 95, 0.12);
   border-radius: 8px;
   overflow: hidden;
   margin: 4px 0 6px;
 }
-.cu-gc-form-label {
-  flex-shrink: 0;
-  width: 68px;
-  padding: 10px 12px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--text-dark, #0f172a);
-  background: rgba(59, 130, 246, 0.06);
-  border-right: 1px solid rgba(45, 46, 95, 0.1);
-  line-height: 1.4;
-}
 .cu-gc-form-content {
-  flex: 1;
   padding: 8px 14px;
   display: flex;
   flex-direction: column;
   gap: 0;
+}
+.cu-gc-form-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-dark, #0f172a);
+  background: rgba(59, 130, 246, 0.06);
+  padding: 6px 14px;
+  margin: -8px -14px 8px;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.1);
+  line-height: 1.4;
 }
 .cu-gc-form-item {
   font-size: 0.87rem;
