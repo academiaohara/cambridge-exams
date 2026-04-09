@@ -723,7 +723,7 @@
               var formItems  = block.items  || [];
               var formFormula = block.formula || null;
 
-              html += '<div class="cu-gc-form-row"><div class="cu-gc-form-label">Form</div><div class="cu-gc-form-content">';
+              html += '<div class="cu-gc-form-row"><div class="cu-gc-form-content"><div class="cu-gc-form-label">Form</div>';
 
               // Optional formula header (e.g. "have/has + past participle")
               if (formFormula) {
