@@ -1000,6 +1000,9 @@
             html += self._renderCuYnItems(questions, idBase, secId);
             html += '</div>';
             if (questions.length) html += self._renderCuExFooter(secId);
+          } else if (ex.type === 'crossword') {
+            // Crossword clue-list exercise
+            html += self._renderCuCrosswordExercise(ex, idBase, secId);
           } else if (ex.type === 'matching') {
             // Two-column matching with drag-to-swap (e.g. Exercise E)
             html += self._renderCuMatchingExercise(questions, idBase, secId);
@@ -1885,6 +1888,50 @@
       if (secEl) BentoGrid._saveCuExSectionState(secEl);
     },
 
+
+    _renderCuCrosswordExercise: function(ex, idBase, secId) {
+      var self = this;
+      var acrossItems = ex.across || [];
+      var downItems = ex.down || [];
+      var allItems = acrossItems.map(function(it) { return { dir: 'across', num: it.num, clue: it.clue, answer: it.answer }; })
+        .concat(downItems.map(function(it) { return { dir: 'down', num: it.num, clue: it.clue, answer: it.answer }; }));
+
+      function renderClueList(items, label) {
+        if (!items.length) return '';
+        var h = '<div class="cu-cw-section"><div class="cu-cw-section-label">' + self._escapeHTML(label) + '</div><ol class="cu-cw-clue-list">';
+        items.forEach(function(it) {
+          var boxesHtml = '';
+          var ans = it.answer || '';
+          for (var ci = 0; ci < ans.length; ci++) {
+            boxesHtml += '<span class="cu-cw-box"></span>';
+          }
+          var iid = idBase + '-cw-' + it.dir + '-' + it.num;
+          h += '<li class="cu-cw-clue-item">' +
+            '<span class="cu-cw-clue-text"><span class="cu-cw-clue-num">' + it.num + '.</span> ' + self._escapeHTML(it.clue) + '</span>' +
+            '<div class="cu-cw-input-row">' +
+              boxesHtml +
+              '<input type="text" class="cu-gap-input cu-cw-input" id="' + iid + '" ' +
+                'data-answer="' + self._escapeHTML(ans.toLowerCase()) + '" ' +
+                'data-len="' + ans.length + '" ' +
+                'maxlength="' + (ans.length + 2) + '" ' +
+                'placeholder="' + ans.length + ' letters" ' +
+                'autocomplete="off" spellcheck="false" ' +
+                'oninput="BentoGrid._resizeCuInput(this);BentoGrid._saveCuExSectionState(this.closest(\'.cu-section\'))" />' +
+            '</div>' +
+            '<div class="cu-ex-answer-reveal" style="display:none">' + self._escapeHTML(ans) + '</div>' +
+          '</li>';
+        });
+        h += '</ol></div>';
+        return h;
+      }
+
+      var html = '<div class="cu-cw-exercise">';
+      html += renderClueList(acrossItems, 'Across');
+      html += renderClueList(downItems, 'Down');
+      html += '</div>';
+      html += self._renderCuExFooter(secId);
+      return html;
+    },
 
     _renderCuMatchingExercise: function(questions, idBase, secId) {
       var self = this;

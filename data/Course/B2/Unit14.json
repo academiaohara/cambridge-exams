@@ -384,6 +384,20 @@
             "sentence": "I had a really bad ...... in my foot so I decided to see a doctor.",
             "answer": "pain"
           }
+        ],
+        "words": [
+          "prescription",
+          "recipe",
+          "therapy",
+          "cure",
+          "remedy",
+          "examine",
+          "investigate",
+          "operation",
+          "surgery",
+          "sore",
+          "hurt",
+          "pain"
         ]
       },
       "B": {
@@ -437,27 +451,27 @@
         "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
         "questions": [
           {
-            "sentence": "Dan couldn't work because he caught the flu. (down)\nDan ...... which meant he couldn't work.",
+            "sentence": "Dan couldn't work because he caught the flu. **down**\nDan ...... which meant he couldn't work.",
             "answer": "came down with the flu"
           },
           {
-            "sentence": "If you smoke, then stopping can really improve your health. (up)\nIf you ...... you'll really improve your health.",
+            "sentence": "If you smoke, then stopping can really improve your health. **up**\nIf you ...... you'll really improve your health.",
             "answer": "give up smoking"
           },
           {
-            "sentence": "We asked the vet to kill the dog to stop her suffering any longer. (put)\nWe asked the vet ...... to stop her suffering any longer.",
+            "sentence": "We asked the vet to kill the dog to stop her suffering any longer. **put**\nWe asked the vet ...... to stop her suffering any longer.",
             "answer": "to put the dog down/to put down the dog"
           },
           {
-            "sentence": "I don't really have enough energy to play tennis. (up)\nI don't really ...... tennis.",
+            "sentence": "I don't really have enough energy to play tennis. **up**\nI don't really ...... tennis.",
             "answer": "feel up to playing"
           },
           {
-            "sentence": "Is it true that getting wet can cause a cold? (on)\nIs it true that getting wet can ...... a cold?",
+            "sentence": "Is it true that getting wet can cause a cold? **on**\nIs it true that getting wet can ...... a cold?",
             "answer": "bring on"
           },
           {
-            "sentence": "The flu epidemic started suddenly in June and lots of people got ill. (out)\nLots of people got ill when the flu epidemic ...... in June.",
+            "sentence": "The flu epidemic started suddenly in June and lots of people got ill. **out**\nLots of people got ill when the flu epidemic ...... in June.",
             "answer": "broke out"
           }
         ]
@@ -629,83 +643,26 @@
       "F": {
         "title": "Matching (Word patterns)",
         "instructions": "Match to make sentences.",
+        "type": "matching",
         "questions": [
           {
-            "sentence": "Many people are addicted",
-            "options": [
-              "A to give up smoking.",
-              "B from stress-related illnesses.",
-              "C to the risks involved.",
-              "D to nicotine.",
-              "E of his hard work.",
-              "F with the noise.",
-              "G on a strict diet."
-            ],
-            "answer": "D"
+            "sentence": "It is said that people who eat poorly are likely **E** to have health problems later in life.",
+            "answer": "E"
           },
           {
-            "sentence": "She's trying",
-            "options": [
-              "A to give up smoking.",
-              "B from stress-related illnesses.",
-              "C to the risks involved.",
-              "D to nicotine.",
-              "E of his hard work.",
-              "F with the noise.",
-              "G on a strict diet."
-            ],
+            "sentence": "Did you know that you can have your eyes operated **A** on with lasers these days?",
             "answer": "A"
           },
           {
-            "sentence": "He's suffering",
-            "options": [
-              "A to give up smoking.",
-              "B from stress-related illnesses.",
-              "C to the risks involved.",
-              "D to nicotine.",
-              "E of his hard work.",
-              "F with the noise.",
-              "G on a strict diet."
-            ],
+            "sentence": "I'm getting really tired of **D** telling my dad to give up smoking.",
+            "answer": "D"
+          },
+          {
+            "sentence": "Why don't you try **B** going to the gym more often?",
             "answer": "B"
           },
           {
-            "sentence": "I'm not used",
-            "options": [
-              "A to give up smoking.",
-              "B from stress-related illnesses.",
-              "C to the risks involved.",
-              "D to nicotine.",
-              "E of his hard work.",
-              "F with the noise.",
-              "G on a strict diet."
-            ],
-            "answer": "F"
-          },
-          {
-            "sentence": "She's tired",
-            "options": [
-              "A to give up smoking.",
-              "B from stress-related illnesses.",
-              "C to the risks involved.",
-              "D to nicotine.",
-              "E of his hard work.",
-              "F with the noise.",
-              "G on a strict diet."
-            ],
-            "answer": "C"
-          },
-          {
-            "sentence": "He's a doctor and has warned me",
-            "options": [
-              "A to give up smoking.",
-              "B from stress-related illnesses.",
-              "C to the risks involved.",
-              "D to nicotine.",
-              "E of his hard work.",
-              "F with the noise.",
-              "G on a strict diet."
-            ],
+            "sentence": "It really is worth **C** losing a bit of weight.",
             "answer": "C"
           }
         ]
@@ -787,31 +744,31 @@
         "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
         "questions": [
           {
-            "sentence": "These days, it seems there's an (1) ...... for everything.",
+            "sentence": "These days, it seems there's an ...... (OPERATE) for everything.",
             "answer": "operation"
           },
           {
-            "sentence": "Whether you want something made smaller or you want to (2) ...... your best features, you can bet that plastic (3) ...... claim to have the solution.",
+            "sentence": "Whether you want something made smaller or you want to ...... (EMPHASISE) your best features, you can bet that plastic ...... (SURGERY) claim to have the solution.",
             "answer": "emphasise, surgeons"
           },
           {
-            "sentence": "We at BodySculpt know, though, that you don't want the (4) ...... associated with surgery.",
+            "sentence": "We at BodySculpt know, though, that you don't want the ...... (COMFORT) associated with surgery.",
             "answer": "discomfort"
           },
           {
-            "sentence": "But you can't enjoy the (5) ...... effects without going under the knife, can you?",
+            "sentence": "But you can't enjoy the ...... (BENEFIT) effects without going under the knife, can you?",
             "answer": "beneficial"
           },
           {
-            "sentence": "Yes! No need for (6) ...... procedures with a long (7) ...... period!",
+            "sentence": "Yes! No need for ...... (SURGERY) procedures with a long ...... (RECOVER) period!",
             "answer": "surgical, recovery"
           },
           {
-            "sentence": "Our unique service consists of a series of (8) ...... that will give you the results you've always wanted!",
+            "sentence": "Our unique service consists of a series of ...... (INJECT) that will give you the results you've always wanted!",
             "answer": "injections"
           },
           {
-            "sentence": "Call now and speak to one of our (9) .......",
+            "sentence": "Call now and speak to one of our ...... (OPERATE).",
             "answer": "operators"
           }
         ]

@@ -408,66 +408,99 @@
             "sentence": "'Silence in court!' shouted the ...... angrily.",
             "answer": "judge"
           }
+        ],
+        "words": [
+          "jury",
+          "commit",
+          "rules",
+          "witness",
+          "corporal",
+          "right",
+          "break",
+          "laws",
+          "imprisoned",
+          "justice",
+          "capital",
+          "sentenced",
+          "bystanders",
+          "judge"
         ]
       },
       "B": {
+        "type": "crossword",
         "title": "Crossword",
-        "instructions": "Complete the crossword.",
-        "questions": [
+        "instructions": "Solve the crossword using the clues below.",
+        "across": [
           {
-            "sentence": "Across 2: A football ... is someone who causes trouble at a football match. (8)",
+            "num": 2,
+            "clue": "A football ... is someone who causes trouble at a football match. (8)",
             "answer": "hooligan"
           },
           {
-            "sentence": "Across 4: the decision of a judge or jury (7)",
+            "num": 4,
+            "clue": "The decision of a judge or jury. (7)",
             "answer": "verdict"
           },
           {
-            "sentence": "Across 8: a burglar, robber or any other person who steals (5)",
+            "num": 8,
+            "clue": "A burglar, robber or any other person who steals. (5)",
             "answer": "thief"
           },
           {
-            "sentence": "Across 10: It might not be absolute proof of someone's guilt, but it is used to show that someone could be guilty. (8)",
+            "num": 10,
+            "clue": "It might not be absolute proof of someone's guilt, but it is used to show that someone could be guilty. (8)",
             "answer": "evidence"
           },
           {
-            "sentence": "Across 11: a person the police think might have committed a crime (7)",
+            "num": 11,
+            "clue": "A person the police think might have committed a crime. (7)",
             "answer": "suspect"
           },
           {
-            "sentence": "Across 12: The jury found her not ... of all charges. (6)",
+            "num": 12,
+            "clue": "The jury found her not ... of all charges. (6)",
             "answer": "guilty"
           },
           {
-            "sentence": "Across 13: take someone to court (9)",
+            "num": 13,
+            "clue": "Take someone to court. (9)",
             "answer": "prosecute"
-          },
+          }
+        ],
+        "down": [
           {
-            "sentence": "Down 1: A solicitor is a specific type of ... (6)",
+            "num": 1,
+            "clue": "A solicitor is a specific type of ... (6)",
             "answer": "lawyer"
           },
           {
-            "sentence": "Down 3: put someone in handcuffs and take them to the police station, for example (6)",
+            "num": 3,
+            "clue": "Put someone in handcuffs and take them to the police station, for example. (6)",
             "answer": "arrest"
           },
           {
-            "sentence": "Down 4: a person who puts graffiti on walls, smashes windows, etc (6)",
+            "num": 4,
+            "clue": "A person who puts graffiti on walls, smashes windows, etc. (6)",
             "answer": "vandal"
           },
           {
-            "sentence": "Down 5: not guilty (8)",
+            "num": 5,
+            "clue": "Not guilty. (8)",
             "answer": "innocent"
           },
           {
-            "sentence": "Down 6: If the police feel sure a person is guilty, they ... that person with the crime. (6)",
+            "num": 6,
+            "clue": "If the police feel sure a person is guilty, they ... that person with the crime. (6)",
             "answer": "charge"
           },
           {
-            "sentence": "Down 7: frequently attack or annoy; treat someone badly and deny them their rights (9)",
+            "num": 7,
+            "clue": "Frequently attack or annoy; treat someone badly and deny them their rights. (9)",
             "answer": "persecute"
           },
           {
-            "sentence": "Down 9: the person in court who is on trial (also known as the defendant) (7)",
+            "num": 9,
+            "clue": "The person in court who is on trial (also known as the defendant). (7)",
             "answer": "accused"
           }
         ]
@@ -508,6 +541,16 @@
             "sentence": "Luckily, the bomb disposal squad defused the bomb before it .......",
             "answer": "went off"
           }
+        ],
+        "words": [
+          "come forward",
+          "made/went off",
+          "looking into",
+          "bringing in",
+          "held up",
+          "broke out",
+          "chased after",
+          "went off"
         ]
       },
       "D": {
@@ -541,48 +584,45 @@
         ]
       },
       "E": {
-        "title": "Phrases and collocations",
-        "instructions": "Circle the correct word.",
+        "title": "Matching (Word patterns)",
+        "instructions": "Match to make sentences.",
+        "type": "matching",
         "questions": [
           {
-            "sentence": "I don't know why you're **putting / taking** the blame on me.",
-            "answer": "putting"
+            "sentence": "They accused me **I** of shoplifting.",
+            "answer": "I"
           },
           {
-            "sentence": "Shelley has no **intention / purpose** of admitting she lied.",
-            "answer": "intention"
+            "sentence": "Our next-door neighbour was arrested **A** for shoplifting.",
+            "answer": "A"
           },
           {
-            "sentence": "It **doesn't / isn't** necessary to set the burglar alarm.",
-            "answer": "isn't"
+            "sentence": "Three people have been charged **H** with theft.",
+            "answer": "H"
           },
           {
-            "sentence": "The judge **made / gave** us permission to call a surprise witness.",
-            "answer": "gave"
+            "sentence": "She denied **E** stealing the clothes.",
+            "answer": "E"
           },
           {
-            "sentence": "We don't know who was at **fault / damage** yet, but we'll find out.",
-            "answer": "fault"
+            "sentence": "I doubt whether **B** she's guilty.",
+            "answer": "B"
           },
           {
-            "sentence": "Sorry, I mistook you **for / with** someone else.",
-            "answer": "for"
+            "sentence": "I caught a glimpse **D** of someone shoplifting.",
+            "answer": "D"
           },
           {
-            "sentence": "Should judges take children into **reason / account** when sentencing their parents?",
-            "answer": "account"
+            "sentence": "My friends made me **G** steal something from the shop.",
+            "answer": "G"
           },
           {
-            "sentence": "The plan **went / had wrong**, didn't it?",
-            "answer": "went"
+            "sentence": "She says she was made **F** to steal something from the shop.",
+            "answer": "F"
           },
           {
-            "sentence": "We need prisons in **solution / order** to keep society safe from dangerous criminals.",
-            "answer": "order"
-          },
-          {
-            "sentence": "Many people are **making / taking** advantage of the change in the tax law.",
-            "answer": "taking"
+            "sentence": "It is illegal for **C** someone to steal something from a shop.",
+            "answer": "C"
           }
         ]
       },
@@ -759,70 +799,70 @@
       },
       "H": {
         "title": "Word formation (error correction)",
-        "instructions": "Each of the words in bold is in the wrong form. Write the correct form on the line.",
+        "instructions": "Each sentence contains an error. The incorrect word is shown in bold. Write the correct form on the line.",
         "questions": [
           {
-            "sentence": "I'm not sure that sending young offence to prison is such a good idea.",
+            "sentence": "I'm not sure that sending young **offence** ...... to prison is such a good idea.",
             "answer": "offenders"
           },
           {
-            "sentence": "There's absolutely no solid prove that he was anywhere near the scene of the crime.",
+            "sentence": "There's absolutely no solid **prove** ...... that he was anywhere near the scene of the crime.",
             "answer": "proof"
           },
           {
-            "sentence": "I'm not saying another word until I've spoken to my law.",
+            "sentence": "I'm not saying another word until I've spoken to my **law** .......",
             "answer": "lawyer"
           },
           {
-            "sentence": "You shouldn't make accuse like that without evidence.",
+            "sentence": "You shouldn't make **accuse** ...... like that without evidence.",
             "answer": "accusations"
           },
           {
-            "sentence": "When she left the police force, she worked as a private investigate for a while.",
+            "sentence": "When she left the police force, she worked as a private **investigate** ...... for a while.",
             "answer": "investigator"
           },
           {
-            "sentence": "I hope that your prison has shown you the error of your ways,' said the prison governor.",
+            "sentence": "I hope that your **prison** ...... has shown you the error of your ways,' said the prison governor.",
             "answer": "imprisonment"
           },
           {
-            "sentence": "He was initially sent to a maximum secure prison.",
+            "sentence": "He was initially sent to a maximum **secure** ...... prison.",
             "answer": "security"
           },
           {
-            "sentence": "Lying and stealing are both forms of honest.",
+            "sentence": "Lying and stealing are both forms of **honest** .......",
             "answer": "dishonesty"
           },
           {
-            "sentence": "Police are looking carefully at the forensic evident.",
+            "sentence": "Police are looking carefully at the forensic **evident** .......",
             "answer": "evidence"
           },
           {
-            "sentence": "There's no doubt this painting is a forge.",
+            "sentence": "There's no doubt this painting is a **forge** .......",
             "answer": "forgery"
           },
           {
-            "sentence": "Drug addict is no excuse - no one should hold up a petrol station!",
+            "sentence": "Drug **addict** ...... is no excuse - no one should hold up a petrol station!",
             "answer": "addiction"
           },
           {
-            "sentence": "The rob took place at half past ten in the morning.",
+            "sentence": "The **rob** ...... took place at half past ten in the morning.",
             "answer": "robbery"
           },
           {
-            "sentence": "No one is born a theft, and no one has to remain one their whole life.",
+            "sentence": "No one is born a **theft** ......, and no one has to remain one their whole life.",
             "answer": "thief"
           },
           {
-            "sentence": "The convict of a number of senior executives has left the whole business community in shock.",
+            "sentence": "The **convict** ...... of a number of senior executives has left the whole business community in shock.",
             "answer": "conviction"
           },
           {
-            "sentence": "The problem with prisons is that they're full of crime who can teach new inmates all their tricks and skills!",
+            "sentence": "The problem with prisons is that they're full of **crime** ...... who can teach new inmates all their tricks and skills!",
             "answer": "criminals"
           },
           {
-            "sentence": "Should a murder be given the death penalty?",
+            "sentence": "Should a **murder** ...... be given the death penalty?",
             "answer": "murderer"
           }
         ]
