@@ -10,14 +10,90 @@ Ejemplos:
   python generar_examen.py Nivel/C1/Exams/Test1 mi_plantilla.pptx
 """
 
+import copy
 import json
 import os
 import re
 import sys
 
+from lxml import etree
 from pptx import Presentation
 from pptx.dml.color import RGBColor
-from pptx.util import Pt
+
+# Namespace DrawingML
+_NS_A = "http://schemas.openxmlformats.org/drawingml/2006/main"
+
+
+def _tag(local):
+    return f"{{{_NS_A}}}{local}"
+
+
+def _save_para_template(tf):
+    """
+    Devuelve una copia profunda del primer párrafo del text frame
+    para usarla como plantilla de formato al reconstruir el contenido.
+    """
+    paras = tf._txBody.findall(_tag("p"))
+    if paras:
+        return copy.deepcopy(paras[0])
+    return None
+
+
+def _build_run(rPr_template, text):
+    """Crea un elemento <a:r> con el rPr copiado de la plantilla y el texto dado."""
+    r = etree.Element(_tag("r"))
+    if rPr_template is not None:
+        r.append(copy.deepcopy(rPr_template))
+    t = etree.SubElement(r, _tag("t"))
+    t.text = text
+    # xml:space="preserve" para mantener espacios iniciales/finales
+    t.set("{http://www.w3.org/XML/1998/namespace}space", "preserve")
+    return r
+
+
+def _build_para_from_template(template_p, text):
+    """
+    Construye un <a:p> nuevo con el texto dado, conservando pPr y rPr
+    del párrafo plantilla.
+    """
+    new_p = etree.Element(_tag("p"))
+
+    # Copiar pPr si existe
+    pPr = template_p.find(_tag("pPr"))
+    if pPr is not None:
+        new_p.append(copy.deepcopy(pPr))
+
+    # Obtener rPr del primer run de la plantilla
+    first_r = template_p.find(_tag("r"))
+    rPr = None
+    if first_r is not None:
+        rPr_elem = first_r.find(_tag("rPr"))
+        if rPr_elem is not None:
+            rPr = rPr_elem
+
+    new_p.append(_build_run(rPr, text))
+    return new_p
+
+
+def _replace_txBody_text(tf, lines, template_p):
+    """
+    Reemplaza el contenido del text frame con las líneas dadas, conservando
+    el formato del párrafo/run plantilla.
+    """
+    txBody = tf._txBody
+    # Eliminar todos los párrafos actuales
+    for p in txBody.findall(_tag("p")):
+        txBody.remove(p)
+    # Añadir un párrafo por línea
+    for line in lines:
+        if template_p is not None:
+            new_p = _build_para_from_template(template_p, line)
+        else:
+            new_p = etree.Element(_tag("p"))
+            r = etree.SubElement(new_p, _tag("r"))
+            t = etree.SubElement(r, _tag("t"))
+            t.text = line
+        txBody.append(new_p)
 
 TEMPLATE_DEFAULT = "examen_plantilla.pptx"
 
@@ -41,21 +117,28 @@ def get_table(slide, name):
 
 
 def set_text(slide, name, text):
-    """Escribe texto plano en una forma. No hace nada si la forma no existe."""
+    """
+    Escribe texto plano en una forma conservando el estilo original del cuadro
+    de texto (fuente, tamaño, color, alineación, etc.).
+    No hace nada si la forma no existe.
+    """
     shape = get_shape(slide, name)
     if shape is None or not shape.has_text_frame:
         return
     tf = shape.text_frame
-    tf.clear()
-    tf.text = text
+    template_p = _save_para_template(tf)
+    lines = text.split("\n")
+    _replace_txBody_text(tf, lines, template_p)
 
 
 def set_shape_text_rich(slide, name, runs):
     """
-    Escribe texto enriquecido en una forma.
+    Escribe texto enriquecido en una forma conservando el estilo base del
+    cuadro de texto (fuente, tamaño, color…). Solo sobreescribe las
+    propiedades explícitamente indicadas en cada run (bold, size).
 
     runs es una lista de dict:
-        {'text': str, 'bold': bool, 'size': int (opcional en puntos)}
+        {'text': str, 'bold': bool, 'size': int (opcional, en puntos)}
 
     No hace nada si la forma no existe o no tiene marco de texto.
     """
@@ -63,14 +146,58 @@ def set_shape_text_rich(slide, name, runs):
     if shape is None or not shape.has_text_frame:
         return
     tf = shape.text_frame
-    tf.clear()
-    p = tf.paragraphs[0]
+    txBody = tf._txBody
+
+    # Guardar plantilla de formato antes de limpiar
+    template_p = _save_para_template(tf)
+    first_r_tmpl = template_p.find(_tag("r")) if template_p is not None else None
+    rPr_base = None
+    if first_r_tmpl is not None:
+        rPr_elem = first_r_tmpl.find(_tag("rPr"))
+        if rPr_elem is not None:
+            rPr_base = rPr_elem
+
+    # Eliminar párrafos existentes
+    for p in txBody.findall(_tag("p")):
+        txBody.remove(p)
+
+    # Construir el único párrafo con todos los runs
+    new_p = etree.Element(_tag("p"))
+    if template_p is not None:
+        pPr = template_p.find(_tag("pPr"))
+        if pPr is not None:
+            new_p.append(copy.deepcopy(pPr))
+
     for run_data in runs:
-        run = p.add_run()
-        run.text = run_data.get("text", "")
-        run.font.bold = run_data.get("bold", False)
-        if "size" in run_data:
-            run.font.size = Pt(run_data["size"])
+        raw_text = run_data.get("text", "")
+        # Dividir por saltos de línea dentro del run
+        parts = raw_text.split("\n")
+        for part_idx, part in enumerate(parts):
+            r = etree.SubElement(new_p, _tag("r"))
+            # rPr: partir de la base y aplicar overrides
+            if rPr_base is not None:
+                rPr = copy.deepcopy(rPr_base)
+            else:
+                rPr = etree.Element(_tag("rPr"))
+                rPr.set("lang", "en-US")
+            if run_data.get("bold", False):
+                rPr.set("b", "1")
+            else:
+                rPr.attrib.pop("b", None)
+            if "size" in run_data:
+                rPr.set("sz", str(int(run_data["size"] * 100)))
+            r.insert(0, rPr)
+            t = etree.SubElement(r, _tag("t"))
+            t.text = part
+            t.set("{http://www.w3.org/XML/1998/namespace}space", "preserve")
+
+            # Si no es el último fragmento, añadir salto de línea (nueva línea)
+            if part_idx < len(parts) - 1:
+                br = etree.SubElement(new_p, _tag("br"))
+                if rPr_base is not None:
+                    br.append(copy.deepcopy(rPr_base))
+
+    txBody.append(new_p)
 
 
 def fill_black_shape(slide, name):
@@ -92,18 +219,25 @@ def clear_shape_fill(slide, name):
 
 def fill_table_cell(table, row, col, text, bold=False):
     """
-    Escribe texto en una celda de tabla.
+    Escribe texto en una celda de tabla conservando el estilo original de la celda.
     No hace nada si table es None o si la celda no existe.
     """
     if table is None:
         return
     try:
         cell = table.cell(row, col)
-        cell.text = text
+        tf = cell.text_frame
+        template_p = _save_para_template(tf)
+        lines = text.split("\n") if text else [""]
+        _replace_txBody_text(tf, lines, template_p)
         if bold:
-            for para in cell.text_frame.paragraphs:
-                for run in para.runs:
-                    run.font.bold = True
+            for para in tf.paragraphs:
+                for r in para._p.findall(_tag("r")):
+                    rPr = r.find(_tag("rPr"))
+                    if rPr is None:
+                        rPr = etree.Element(_tag("rPr"))
+                        r.insert(0, rPr)
+                    rPr.set("b", "1")
     except Exception:
         pass
 
