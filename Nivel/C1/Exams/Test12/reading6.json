@@ -7,36 +7,56 @@
   "content": {
     "title": "Rewriting the Code of Life",
     "texts": {
-      "A": "The ability to edit the human genome is the most significant scientific milestone since the discovery of fire. [37]While the focus is currently on curing hereditary diseases, I believe the transition to 'enhancement'—choosing traits like intelligence or physical strength—is inevitable and should be embraced.[/37] [39]The idea that we should stay 'natural' is a hollow argument; we have been manipulating our environment and biology for millennia.[/39] To deny ourselves the chance to eliminate human frailty is not a moral stance, but a failure of imagination.",
-      "B": "CRISPR technology is a medical miracle, but we are standing on a dangerous precipice. [38]I disagree with the notion that we can easily separate 'therapy' from 'enhancement'; once the technology is available to the wealthy, it will be used to create a new biological elite.[/38] [40]Unlike those who believe we can regulate this on a national level, I am convinced that without a strict international ban on germline editing, we will trigger a global genetic arms race.[/40] We must proceed with extreme caution, or risk fracturing the human species forever.",
-      "C": "The ethical panic over 'designer babies' is a distraction from the immediate life-saving potential of somatic gene editing. [37]I share the view that the line between curing a disease and enhancing a trait is dangerously thin, and we must be extremely wary of crossing it.[/37] [38]However, I am more optimistic than others about our ability to manage this through robust legal frameworks and public debate.[/38] We don't need a ban; we need a global consensus on where the boundaries lie. Science should serve humanity, not lead it into a neo-eugenics nightmare.",
-      "D": "We have a moral obligation to use every tool at our disposal to reduce suffering. If we can prevent a child from being born with a debilitating condition, why shouldn't we? [39]I share the view that 'natural' is a poorly defined concept; vaccines and antibiotics are equally 'unnatural' by that logic.[/39] [40]I am less convinced than some of my colleagues that international bans are effective; history shows that such restrictions simply drive research into the shadows or to countries with fewer regulations.[/40] The best way to ensure ethical use is to keep the research transparent and publicly funded.",
+      "A": "The ability to edit the human genome is the most significant scientific milestone since the discovery of fire. Those who resist this technology often do so out of a visceral fear of the unknown, rather than a rational assessment of its transformative potential. [37]While the focus is currently on curing hereditary diseases, I believe the transition to 'enhancement'—choosing traits like intelligence or physical strength—is inevitable and should be embraced.[/37] [39]The idea that we should stay 'natural' is a hollow argument; we have been manipulating our environment and biology for millennia.[/39] To deny ourselves the chance to eliminate human frailty is not a moral stance, but a failure of imagination. Future generations will look back and marvel that we once accepted preventable suffering as an inevitability, just as we now look back in disbelief at those who opposed anaesthesia or vaccination on the grounds that it interfered with divine providence. Embracing enhancement is simply the next logical step in our species' long march toward self-determination and the mastery of our own biological destiny.",
+      "B": "CRISPR technology is a medical miracle, but we are standing on a dangerous precipice. The very precision that makes this tool so promising is also what makes it so perilous; a single heritable error introduced into the germline could propagate through countless future generations before its consequences are fully understood. [38]I disagree with the notion that we can easily separate 'therapy' from 'enhancement'; once the technology is available to the wealthy, it will be used to create a new biological elite.[/38] [40]Unlike those who believe we can regulate this on a national level, I am convinced that without a strict international ban on germline editing, we will trigger a global genetic arms race.[/40] We must proceed with extreme caution, or risk fracturing the human species forever. The history of eugenics should serve as a sobering reminder that science without ethical constraints is not progress but catastrophe. We owe it to every future generation to pause, reflect, and proceed only when the safety mechanisms are truly bulletproof and independently verified.",
+      "C": "The ethical panic over 'designer babies' is a distraction from the immediate life-saving potential of somatic gene editing. Thousands of people die each year from conditions that gene therapy could already address, and our collective hand-wringing is costing lives that could be saved. [37]I share the view that the line between curing a disease and enhancing a trait is dangerously thin, and we must be extremely wary of crossing it.[/37] [38]However, I am more optimistic than others about our ability to manage this through robust legal frameworks and public debate.[/38] We don't need a ban; we need a global consensus on where the boundaries lie. A well-resourced international oversight body, modelled on the IAEA for nuclear technology, could provide transparent governance to harness the benefits of genomic medicine while keeping its most dangerous applications firmly off the table. Science should serve humanity, not lead it into a neo-eugenics nightmare. Robust governance, not prohibition, is the path that reconciles scientific progress with our deepest ethical obligations to those who will inherit the consequences of our decisions.",
+      "D": "We have a moral obligation to use every tool at our disposal to reduce suffering. The suffering caused by genetic conditions is not a philosophical abstraction; it is lived daily by millions of patients and their families, who would consider our hesitation a profound betrayal of our scientific capabilities. If we can prevent a child from being born with a debilitating condition, why shouldn't we? [39]I share the view that 'natural' is a poorly defined concept; vaccines and antibiotics are equally 'unnatural' by that logic.[/39] [40]I am less convinced than some of my colleagues that international bans are effective; history shows that such restrictions simply drive research into the shadows or to countries with fewer regulations.[/40] The best way to ensure ethical use is to keep the research transparent and publicly funded. Private entities operating in secrecy are far more dangerous than open science subject to independent peer review and democratic accountability.",
       "questions": [
         {
           "number": 37,
           "question": "Which expert has a different view from A on the desirability of using gene editing for human 'enhancement'?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "C",
           "explanation": "A believes enhancement 'should be embraced.' C, however, says we must be 'extremely wary of crossing' the line into enhancement, calling the possibility a 'nightmare.'"
         },
         {
           "number": 38,
           "question": "Which expert expresses a different opinion to B regarding the feasibility of regulating gene-editing technology?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "C",
           "explanation": "B is very pessimistic, fearing a 'global genetic arms race' and species fracture. C is 'more optimistic' about the ability to manage this through 'robust legal frameworks.'"
         },
         {
           "number": 39,
           "question": "Which expert shares A's perspective on the 'naturalness' of human biological intervention?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "D",
           "explanation": "A says the idea of staying natural is a 'hollow argument.' D shares this, noting that 'natural' is poorly defined and that things like vaccines are also 'unnatural' by the same logic."
         },
         {
           "number": 40,
           "question": "Which expert expresses a similar view to D on the effectiveness of international bans on genetic research?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "B",
           "explanation": "Wait, let's check: D says bans are NOT effective because they 'drive research into the shadows.' B says we NEED a 'strict international ban.' They have *opposite* views. The question is who *shares* D's view? Let's check A: A doesn't mention bans. C says 'we don't need a ban.' This aligns with D's skepticism about the effectiveness/necessity of bans."
         }
