@@ -552,7 +552,6 @@
             <button class="dashboard-reset-btn reset-test-btn" onclick="event.stopPropagation(); Dashboard.resetTest('${exam.id}')" title="Reset test">
               <i class="fas fa-redo-alt"></i>
             </button>
-            <button class="btn-download-pdf" onclick="event.stopPropagation(); PdfGenerator.generate('${exam.id}', this)" title="Descargar PDF del examen">📄</button>
             <i class="fas fa-chevron-down exam-arrow"></i>
           </div>
           <div class="exam-content${isOpen ? ' show' : ''}">
