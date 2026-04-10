@@ -7,36 +7,56 @@
   "content": {
     "title": "The End of the Private Car?",
     "texts": {
-      "A": "The dream of the autonomous vehicle (AV) is often sold as a panacea for urban congestion, but the reality is likely to be far messier. [37]While proponents argue that AVs will lead to fewer cars on the road, I suspect they will actually increase total mileage, as people become willing to endure longer commutes in their 'mobile offices.'[/37] The only real solution to urban mobility is a massive reinvestment in high-quality, driver-led public transit. [39]Furthermore, the privacy implications of a transport network that tracks every movement of its citizens are deeply concerning.[/39] We are trading our liberty for a convenience that may not even materialize.",
-      "B": "We are on the verge of a transport revolution that will make the private ownership of a car seem as quaint as owning a horse. 'Transportation as a Service' (TaaS) will allow users to summon an electric, autonomous pod with a tap on their phone. [38]I disagree with those who believe this will exacerbate traffic; by optimizing routes through AI, we can move more people with 20% of the current number of vehicles.[/38] [40]This shift will also reclaim vast amounts of urban space currently wasted on parking, allowing us to turn concrete deserts into green parks.[/40] The city of the future is quiet, clean, and shared.",
-      "C": "The transition to electric and autonomous transport is inevitable, but we must be wary of the 'tech-bro' obsession with individual pods. [37]I share the view that self-driving cars could lead to 'induced demand,' where the ease of travel simply encourages more of it, leaving our streets as clogged as ever.[/37] [40]However, I am less convinced than some that this will lead to a 'green' paradise; the mining of materials for millions of massive batteries has its own devastating environmental footprint.[/40] We should be focusing on electric bicycles and trams—technologies that are already proven and far more space-efficient.",
-      "D": "The debate over autonomous vehicles often ignores the psychological need for control. Many people enjoy the act of driving and the sense of freedom it provides. [38]I share the view that AVs, by removing human error, will drastically reduce accidents and eventually lead to a more efficient use of our existing road infrastructure.[/38] [39]As for privacy, the data collected is a necessary trade-off for a system that can respond to real-time emergencies and prevent gridlock.[/39] The future isn't about the death of the car, but its transformation into a safe, integrated part of the digital city.",
+      "A": "The dream of the autonomous vehicle (AV) is often sold as a panacea for urban congestion, but the reality is likely to be far messier. [37]While proponents argue that AVs will lead to fewer cars on the road, I suspect they will actually increase total mileage, as people become willing to endure longer commutes in their 'mobile offices.'[/37] The only real solution to urban mobility is a massive reinvestment in high-quality, driver-led public transit. [39]Furthermore, the privacy implications of a transport network that tracks every movement of its citizens are deeply concerning.[/39] The billions being invested in AV development would be far better spent electrifying bus and rail networks, which carry vastly more passengers per unit of energy and land. Autonomous vehicles, however sophisticated, will still occupy the same physical space as the cars they replace. Until we address the fundamental inefficiency of the single-occupancy vehicle model, no amount of technological refinement will solve the congestion crisis that is strangling our cities. We are trading our liberty for a convenience that may not even materialize.",
+      "B": "We are on the verge of a transport revolution that will make the private ownership of a car seem as quaint as owning a horse. 'Transportation as a Service' (TaaS) will allow users to summon an electric, autonomous pod with a tap on their phone. [38]I disagree with those who believe this will exacerbate traffic; by optimizing routes through AI, we can move more people with 20% of the current number of vehicles.[/38] [40]This shift will also reclaim vast amounts of urban space currently wasted on parking, allowing us to turn concrete deserts into green parks.[/40] Every square meter currently devoted to the storage of idle cars represents a failure of urban imagination. Shared autonomous transport fundamentally reframes the city as a human-centered space rather than an infrastructure for machines. Early pilots in cities from Singapore to San Francisco are already demonstrating that this model reduces both emissions and commute times, offering a compelling vision of what urban life could look like within a single generation. The city of the future is quiet, clean, and shared.",
+      "C": "The transition to electric and autonomous transport is inevitable, but we must be wary of the 'tech-bro' obsession with individual pods. [37]I share the view that self-driving cars could lead to 'induced demand,' where the ease of travel simply encourages more of it, leaving our streets as clogged as ever.[/37] [40]However, I am less convinced than some that this will lead to a 'green' paradise; the mining of materials for millions of massive batteries has its own devastating environmental footprint.[/40] A truly sustainable urban future cannot be built on the replacement of petrol-powered individual vehicles with electric individual vehicles; it requires a fundamental redesign of how we move through cities. The evidence from the Netherlands and Denmark shows that when cities invest in protected cycling infrastructure and integrated public transit, private car usage falls dramatically without any need for autonomous technology. We should be focusing on electric bicycles and trams—technologies that are already proven, far more space-efficient, and available today.",
+      "D": "The debate over autonomous vehicles often ignores the psychological need for control. Many people enjoy the act of driving and the sense of freedom it provides. [38]I share the view that AVs, by removing human error, will drastically reduce accidents and eventually lead to a more efficient use of our existing road infrastructure.[/38] [39]As for privacy, the data collected is a necessary trade-off for a system that can respond to real-time emergencies and prevent gridlock.[/39] Road traffic accidents currently cost the global economy hundreds of billions of dollars annually, to say nothing of the incalculable human suffering they cause. A network of communicating, AI-driven vehicles could reduce that toll by over ninety percent, representing one of the most significant public health advances of the century. The transition will not happen overnight, but each incremental improvement in sensor technology and regulatory frameworks brings us closer to roads genuinely engineered for human well-being. The future is not about the death of the car, but its transformation into a safe, integrated part of the digital city.",
       "questions": [
         {
           "number": 37,
           "question": "Which expert has a similar view to A on the potential for autonomous vehicles to worsen traffic congestion?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "C",
           "explanation": "A suspects AVs will 'increase total mileage' due to longer commutes. C shares this view, mentioning 'induced demand' where ease of travel 'encourages more of it,' keeping streets clogged."
         },
         {
           "number": 38,
           "question": "Which expert expresses a different opinion to B regarding the effect of AI-optimized transport on traffic flow?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "A",
           "explanation": "B believes AI will 'optimize routes' and move people with fewer vehicles, reducing traffic. A disagrees, arguing they will 'increase total mileage' and that only public transit is the 'real solution.'"
         },
         {
           "number": 39,
           "question": "Which expert has a different view from A on the acceptability of data collection in transport networks?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "D",
           "explanation": "A finds the 'privacy implications' of tracking movements 'deeply concerning.' D, however, sees the data as a 'necessary trade-off' for a more efficient and safer system."
         },
         {
           "number": 40,
           "question": "Which expert expresses a different opinion to B on whether a shift to new vehicle technologies will result in an environmental 'paradise'?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "C",
           "explanation": "B paints a picture of a 'quiet, clean' city with 'green parks.' C is 'less convinced' it will be a 'green paradise' due to the 'devastating environmental footprint' of mining battery materials."
         }

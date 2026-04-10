@@ -3,39 +3,60 @@
   "type": "cross-text-matching",
   "time": 10,
   "totalQuestions": 4,
-"description": "You are going to read four extracts from internet articles about technology in sports. For questions 37 – 40, choose from the experts A – D. The expert may be chosen more than once.",  "content": {
+  "description": "You are going to read four extracts from internet articles about technology in sports. For questions 37 – 40, choose from the experts A – D. The expert may be chosen more than once.",
+  "content": {
     "title": "The Price of Prediction: AI and Personal Liberty",
     "texts": {
-      "A": "The rapid integration of AI into daily life is often hailed as a triumph of convenience, yet we ignore the erosion of anonymity at our peril. Modern algorithms do not just suggest products; they construct a digital cage around our future choices. [37]While some argue that the sheer volume of data makes individual surveillance impossible, the reality is that the predictive power of these systems is already outstripping our legal ability to regulate them.[/37] Furthermore, the idea that we can simply 'opt out' of this ecosystem is a fantasy. [39]To exist in modern society is to be tracked, and no amount of personal digital literacy can shield a citizen from the systemic harvesting of their behavioral data.[/39] We are sleepwalking into a world where our internal motivations are transparent to corporations but their logic remains opaque to us.",
-      "B": "Much of the anxiety surrounding AI privacy stems from a misunderstanding of how these systems operate. They are not interested in 'you' as a person, but in patterns. [40]By offloading routine cognitive tasks to machines, humans are actually freed to engage in more creative and high-level intellectual pursuits.[/40] However, we must be wary of the 'black box' problem—the lack of transparency in AI decision-making. [38]Unlike those who believe the solution lies in restrictive legislation, I would argue that the only path forward is radical transparency from the tech giants themselves.[/38] [37]If we can ensure that the underlying code is open to public audit, the benefits of personalized AI will far outweigh the perceived risks to privacy.[/37] Technology is a tool, and like any tool, its value depends entirely on the hand that wields it.",
-      "C": "The fundamental issue with AI is not privacy in the traditional sense, but the loss of human agency. When an algorithm decides which news you see or which job application is successful, it is exercising a form of soft power that is almost impossible to challenge. [39]Individuals must take a more proactive role in their digital lives, seeking out tools that scramble their data and intentionally diversifying their online behavior to confuse the algorithms.[/39] This is not a battle that can be won by governments alone; it requires a grassroots movement of 'algorithmic resistance.' [38]I share the view that current legislative efforts are largely performative, serving only to give a false sense of security while the data-mining continues unabated behind a thin veil of consent forms.[/38]",
-      "D": "The debate over AI privacy often ignores the historical context of technological shifts. Every major innovation, from the telephone to the internet, has initially been met with fears of social collapse and the end of privacy. [40]In reality, these technologies have consistently empowered the individual, providing access to information and opportunities that were previously the domain of the elite.[/40] AI is no different. The focus on 'privacy' is a red herring; the real conversation should be about 'utility.' As long as the AI provides a service that improves the user’s life, the exchange of data is a fair price to pay. [38]The calls for strict government intervention are not only premature but could stifle the very innovation that might solve our most pressing global challenges.[/38] We should embrace the data-driven future, not fear it.",
+      "A": "The rapid integration of AI into daily life is often hailed as a triumph of convenience, yet we ignore the erosion of anonymity at our peril. Modern algorithms do not just suggest products; they construct a digital cage around our future choices. [37]While some argue that the sheer volume of data makes individual surveillance impossible, the reality is that the predictive power of these systems is already outstripping our legal ability to regulate them.[/37] Furthermore, the idea that we can simply 'opt out' of this ecosystem is a fantasy. [39]To exist in modern society is to be tracked, and no amount of personal digital literacy can shield a citizen from the systemic harvesting of their behavioral data.[/39] We are sleepwalking into a world where our internal motivations are transparent to corporations but their logic remains opaque to us. This asymmetry of knowledge is not merely inconvenient; it fundamentally undermines the democratic contract between citizens and institutions. Meaningful consent requires genuine alternatives, and in the current digital landscape those alternatives simply do not exist.",
+      "B": "Much of the anxiety surrounding AI privacy stems from a misunderstanding of how these systems operate. They are not interested in 'you' as a person, but in patterns. [40]By offloading routine cognitive tasks to machines, humans are actually freed to engage in more creative and high-level intellectual pursuits.[/40] However, we must be wary of the 'black box' problem—the lack of transparency in AI decision-making. [38]Unlike those who believe the solution lies in restrictive legislation, I would argue that the only path forward is radical transparency from the tech giants themselves.[/38] [37]If we can ensure that the underlying code is open to public audit, the benefits of personalized AI will far outweigh the perceived risks to privacy.[/37] Technology is a tool, and like any tool, its value depends entirely on the hand that wields it. Society has always absorbed disruptive technologies by establishing new norms of accountability, and AI should be no different. The key is informed public discourse rather than reflexive legislative overreaction.",
+      "C": "The fundamental issue with AI is not privacy in the traditional sense, but the loss of human agency. When an algorithm decides which news you see or which job application is successful, it is exercising a form of soft power that is almost impossible to challenge. [39]Individuals must take a more proactive role in their digital lives, seeking out tools that scramble their data and intentionally diversifying their online behavior to confuse the algorithms.[/39] This is not a battle that can be won by governments alone; it requires a grassroots movement of 'algorithmic resistance.' [38]I share the view that current legislative efforts are largely performative, serving only to give a false sense of security while the data-mining continues unabated behind a thin veil of consent forms.[/38] Every click and scroll contributes to a profile that narrows our perceived options over time, quietly eroding the cognitive freedom that democracy depends upon. Only by actively reclaiming our digital footprint can we restore the genuine autonomy that technology has so gradually diminished.",
+      "D": "The debate over AI privacy often ignores the historical context of technological shifts. Every major innovation, from the telephone to the internet, has initially been met with fears of social collapse and the end of privacy. [40]In reality, these technologies have consistently empowered the individual, providing access to information and opportunities that were previously the domain of the elite.[/40] AI is no different. The focus on 'privacy' is a red herring; the real conversation should be about 'utility.' As long as the AI provides a service that improves the user's life, the exchange of data is a fair price to pay. [38]The calls for strict government intervention are not only premature but could stifle the very innovation that might solve our most pressing global challenges.[/38] We should embrace the data-driven future, not fear it. History rewards those who adapt, and the nations that embrace AI most comprehensively will be the ones that define the ethical standards of tomorrow. Passive resistance is not a strategy; it is a guarantee of irrelevance.",
       "questions": [
         {
           "number": 37,
           "question": "Which expert has a different view from B on the ability of society to manage the risks of AI predictive power?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "A",
           "explanation": "B believes that if we ensure transparency, the benefits will 'far outweigh' the risks. A, however, argues that the predictive power is 'already outstripping our legal ability to regulate' and is much more pessimistic."
         },
         {
           "number": 38,
           "question": "Which expert expresses a similar opinion to C regarding the effectiveness of government legislation on AI?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "B",
           "explanation": "C says legislative efforts are 'largely performative' and give a 'false sense of security.' B also expresses a similar skepticism, stating that unlike those who want 'restrictive legislation,' they believe the only path is radical transparency (implying laws aren't the answer)."
         },
         {
           "number": 39,
           "question": "Which expert shares A's skepticism about the power of individuals to protect their own data?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "D",
           "explanation": "Wait, let's re-read. C says individuals 'must take a proactive role' and can confuse algorithms. A says 'no amount of personal digital literacy' can shield a citizen. Looking at the options, if the question asks who *shares A's skepticism*, we look for someone who thinks individuals *can't* do much. Actually, A stands alone in that radical view, but C is the direct opposite. The question is a 'cross-match' check: A says individuals can't protect themselves; C says they can and should. Therefore, C has a *different* view. Let's look for a similarity: D thinks the focus on privacy is a 'red herring' and we should just accept it, which aligns with the idea that individual protection is not the point."
         },
         {
           "number": 40,
           "question": "Which expert has a similar view to D on the overall impact of technology on the individual?",
-          "options": ["A", "B", "C", "D"],
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correct": "B",
           "explanation": "D argues that technology 'consistently empowered the individual' and AI is no different. B shares this positive outlook, stating that AI 'frees' humans to engage in 'creative and high-level intellectual pursuits.'"
         }
