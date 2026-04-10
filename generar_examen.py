@@ -325,12 +325,15 @@ def fill_slide_reading1(slide, data, test_num):
         else:
             clear_shape_fill(slide, letter)
 
-    # Tabla "options": una fila por pregunta; col 2=A, col 4=B, col 6=C, col 8=D (índice 0)
+    # Tabla "options": una fila por pregunta.
+    # Columna 0 = número de pregunta; columna 2 = opción A; columna 4 = opción B;
+    # columna 6 = opción C; columna 8 = opción D. Las columnas pares intermedias
+    # son separadores de formato definidos en la plantilla.
     options_table = get_table(slide, "options")
     for row_idx, q in enumerate(questions):
         q_opts = format_options_list(q.get("options", []))
         fill_table_cell(options_table, row_idx, 0, str(q.get("number", "")))
-        col_map = {0: 2, 1: 4, 2: 6, 3: 8}
+        col_map = {0: 2, 1: 4, 2: 6, 3: 8}  # índice opción -> columna tabla (A→2, B→4, C→6, D→8)
         for opt_idx, opt in enumerate(q_opts):
             if opt_idx in col_map:
                 fill_table_cell(options_table, row_idx, col_map[opt_idx], opt)
@@ -370,7 +373,8 @@ def fill_slide_reading4(slide, data, test_num):
     content = data.get("content", {})
     questions = content.get("questions", [])
 
-    # Tabla "example": cada celda contiene una letra de la respuesta
+    # Tabla "example": cada celda contiene una letra de la respuesta, empezando
+    # en la columna 0 (igual que la tabla "example" de la diapositiva 3).
     example = content.get("example", {})
     if example:
         ex_answer = str(example.get("answer", example.get("correct", ""))).upper()
@@ -506,7 +510,8 @@ def fill_slide_reading8_texto(slide, data, test_num):
     set_text(slide, "titulo", title)
     runs = []
     for letter in ("A", "B", "C", "D"):
-        # Quitar marcadores y encabezados ### al inicio
+        # Quitar marcadores y encabezados ### al inicio (el JSON puede incluir
+        # títulos de estilo Markdown que no deben mostrarse en la diapositiva)
         raw = strip_markers(texts.get(letter, "")).strip()
         raw = re.sub(r"^###\s*", "", raw)
         runs.append({"text": f"{letter})", "bold": True})
