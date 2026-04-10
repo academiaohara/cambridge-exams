@@ -524,6 +524,14 @@
           pageSize: 'A4',
           pageMargins: [60, 50, 60, 50],
           content: content,
+          fonts: {
+            Helvetica: {
+              normal:      'Helvetica',
+              bold:        'Helvetica-Bold',
+              italics:     'Helvetica-Oblique',
+              bolditalics: 'Helvetica-BoldOblique'
+            }
+          },
           styles: {
             coverTitle:       { fontSize: 28, bold: true, color: COLORS.primary, alignment: 'center' },
             coverSubtitle:    { fontSize: 16, color: COLORS.secondary, alignment: 'center' },
