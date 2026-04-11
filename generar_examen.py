@@ -97,6 +97,9 @@ def _replace_txBody_text(tf, lines, template_p):
 
 TEMPLATE_DEFAULT = "examen_plantilla.pptx"
 
+# Indicador de hueco en el texto (puntos de relleno)
+GAP_DOTS = "…………"
+
 
 # ─── helpers silenciosos (sin avisos ni warnings) ────────────────────────────
 
@@ -217,10 +220,33 @@ def clear_shape_fill(slide, name):
     shape.fill.background()
 
 
-def fill_table_cell(table, row, col, text, bold=False):
+_FILL_TAGS = {
+    _tag("solidFill"), _tag("gradFill"), _tag("pattFill"),
+    _tag("blipFill"), _tag("grpFill"), _tag("noFill"),
+}
+
+
+def _force_black_text(tf):
+    """Fuerza color negro en todos los runs del text frame."""
+    for r in tf._txBody.iter(_tag("r")):
+        rPr = r.find(_tag("rPr"))
+        if rPr is None:
+            continue
+        # Eliminar fills de color existentes
+        for child in list(rPr):
+            if child.tag in _FILL_TAGS:
+                rPr.remove(child)
+        # Añadir solidFill negro
+        sf = etree.SubElement(rPr, _tag("solidFill"))
+        srgb = etree.SubElement(sf, _tag("srgbClr"))
+        srgb.set("val", "000000")
+
+
+def fill_table_cell(table, row, col, text, bold=False, force_black=True):
     """
     Escribe texto en una celda de tabla conservando el estilo original de la celda.
     No hace nada si table es None o si la celda no existe.
+    force_black=True fuerza color negro en el texto.
     """
     if table is None:
         return
@@ -230,16 +256,49 @@ def fill_table_cell(table, row, col, text, bold=False):
         template_p = _save_para_template(tf)
         lines = text.split("\n") if text else [""]
         _replace_txBody_text(tf, lines, template_p)
-        if bold:
-            for para in tf.paragraphs:
-                for r in para._p.findall(_tag("r")):
-                    rPr = r.find(_tag("rPr"))
-                    if rPr is None:
-                        rPr = etree.Element(_tag("rPr"))
-                        r.insert(0, rPr)
+        for para in tf.paragraphs:
+            for r in para._p.findall(_tag("r")):
+                rPr = r.find(_tag("rPr"))
+                if rPr is None:
+                    rPr = etree.Element(_tag("rPr"))
+                    r.insert(0, rPr)
+                if bold:
                     rPr.set("b", "1")
+                else:
+                    rPr.attrib.pop("b", None)
+        if force_black:
+            _force_black_text(tf)
     except Exception:
         pass
+
+
+def redistribute_shapes_vertically(slide, shape_names):
+    """
+    Redistribuye verticalmente las formas indicadas para que no se superpongan,
+    dividiendo el área total que ocupan entre ellas de forma equitativa.
+    """
+    shapes = []
+    for name in shape_names:
+        s = get_shape(slide, name)
+        if s is not None:
+            shapes.append(s)
+    if len(shapes) < 2:
+        return
+    shapes.sort(key=lambda s: s.top)
+    top_start = shapes[0].top
+    bottom_end = shapes[-1].top + shapes[-1].height
+    total_height = bottom_end - top_start
+    n = len(shapes)
+    current_top = top_start
+    for i, shape in enumerate(shapes):
+        # Distribute evenly, assigning the remaining space to the last shape
+        if i < n - 1:
+            each_height = round(total_height * (i + 1) / n) - round(total_height * i / n)
+        else:
+            each_height = bottom_end - current_top
+        shape.top = current_top
+        shape.height = each_height
+        current_top += each_height
 
 
 # ─── procesado de texto ─────────────────────────────────────────────────────
@@ -249,24 +308,69 @@ def format_parrafos(raw_text):
     return raw_text.replace("||", "\n")
 
 
-def text_con_huecos(raw_text):
-    """Sustituye cada (N) en el texto por (N) ......... ."""
-    return re.sub(r"\((\d+)\)", r"(\1) .........", raw_text)
+def _strip_embedded_answers(raw_text, correct_map):
+    """
+    Elimina del texto las palabras correctas que aparecen después de cada
+    marcador de hueco (N). Ej.: "(0) which" → "(0)".
+    """
+    for n, correct in correct_map.items():
+        if correct:
+            raw_text = re.sub(
+                rf"\({re.escape(n)}\)\s+{re.escape(correct)}",
+                f"({n})",
+                raw_text,
+                flags=re.IGNORECASE,
+            )
+    return raw_text
 
 
-def text_con_huecos_wf(raw_text, questions):
+def text_con_huecos(raw_text, questions=None, example=None):
     """
-    Word-formation: sustituye (N) por (N) ......... (WORD)
-    donde WORD es la palabra en mayúsculas asociada a esa pregunta.
+    Sustituye cada (N) en el texto por (N) GAP_DOTS.
+    Si se pasan questions/example, elimina previamente la palabra correcta
+    que pueda estar incrustada en el texto justo después del marcador.
     """
-    word_map = {str(q["number"]): q.get("word", "") for q in questions}
+    correct_map = {}
+    if example:
+        n = str(example.get("number", 0))
+        correct_map[n] = str(example.get("correct", "")).lower()
+    if questions:
+        for q in questions:
+            n = str(q.get("number", ""))
+            c = str(q.get("correct", "")).lower()
+            if c:
+                correct_map[n] = c
+    if correct_map:
+        raw_text = _strip_embedded_answers(raw_text, correct_map)
+    return re.sub(r"\((\d+)\)", rf"(\1) {GAP_DOTS}", raw_text)
+
+
+def text_con_huecos_wf(raw_text, questions, example=None):
+    """
+    Word-formation: sustituye (N) CORRECT_WORD por (N) GAP_DOTS (HINT_WORD)
+    donde HINT_WORD es la palabra base en mayúsculas de esa pregunta.
+    Elimina la palabra correcta que aparezca tras el marcador en el texto.
+    """
+    correct_map = {}
+    hint_map = {}
+    if example:
+        n = str(example.get("number", 0))
+        correct_map[n] = str(example.get("correct", "")).lower()
+        hint_map[n] = str(example.get("word", ""))
+    for q in questions:
+        n = str(q["number"])
+        correct_map[n] = str(q.get("correct", "")).lower()
+        hint_map[n] = str(q.get("word", ""))
+
+    # Eliminar palabras correctas incrustadas
+    raw_text = _strip_embedded_answers(raw_text, correct_map)
 
     def repl(match):
         n = match.group(1)
-        word = word_map.get(n, "")
-        if word:
-            return f"({n}) ......... ({word})"
-        return f"({n}) ........."
+        hint = hint_map.get(n, "")
+        if hint:
+            return f"({n}) {GAP_DOTS} ({hint})"
+        return f"({n}) {GAP_DOTS}"
 
     return re.sub(r"\((\d+)\)", repl, raw_text)
 
@@ -274,6 +378,11 @@ def text_con_huecos_wf(raw_text, questions):
 def strip_markers(text):
     """Elimina marcadores tipo [41] y [/41] del texto."""
     return re.sub(r"\[/?(\d+)\]", "", text)
+
+
+def _strip_option_letter(opt):
+    """Elimina el prefijo de letra 'A) ', 'B) ', etc. de una opción."""
+    return re.sub(r"^[A-Da-d]\)\s*", "", str(opt))
 
 
 def format_options_dict(opts):
@@ -309,12 +418,13 @@ def fill_slide_reading1(slide, data, test_num):
     questions = content.get("questions", [])
 
     set_text(slide, "titulo", data.get("title", ""))
-    set_text(slide, "texto", format_parrafos(text_con_huecos(raw_text)))
+    set_text(slide, "texto", format_parrafos(text_con_huecos(raw_text, questions, example)))
 
-    # Forma "example": "0     A) opción     B) opción     C) opción     D) opción"
+    # Forma "example": "0     opción     opción     opción     opción" (sin letra)
     opts = format_options_list(example.get("options", []))
     ex_num = example.get("number", 0)
-    parts = [str(ex_num)] + opts
+    clean_opts = [_strip_option_letter(o) for o in opts]
+    parts = [str(ex_num)] + clean_opts
     set_text(slide, "example", "     ".join(parts))
 
     # Formas A, B, C, D: rellenar de negro la respuesta correcta del example
@@ -325,18 +435,15 @@ def fill_slide_reading1(slide, data, test_num):
         else:
             clear_shape_fill(slide, letter)
 
-    # Tabla "options": una fila por pregunta.
-    # Columna 0 = número de pregunta; columna 2 = opción A; columna 4 = opción B;
-    # columna 6 = opción C; columna 8 = opción D. Las columnas pares intermedias
-    # son separadores de formato definidos en la plantilla.
+    # Tabla "options": una fila por pregunta (solo texto de la opción, sin letra)
     options_table = get_table(slide, "options")
     for row_idx, q in enumerate(questions):
         q_opts = format_options_list(q.get("options", []))
         fill_table_cell(options_table, row_idx, 0, str(q.get("number", "")))
-        col_map = {0: 2, 1: 4, 2: 6, 3: 8}  # índice opción -> columna tabla (A→2, B→4, C→6, D→8)
+        col_map = {0: 2, 1: 4, 2: 6, 3: 8}
         for opt_idx, opt in enumerate(q_opts):
             if opt_idx in col_map:
-                fill_table_cell(options_table, row_idx, col_map[opt_idx], opt)
+                fill_table_cell(options_table, row_idx, col_map[opt_idx], _strip_option_letter(opt))
 
 
 def fill_slide_reading2(slide, data, test_num):
@@ -345,9 +452,10 @@ def fill_slide_reading2(slide, data, test_num):
     content = data.get("content", {})
     example = content.get("example", {})
     raw_text = content.get("text", "")
+    questions = content.get("questions", [])
 
     set_text(slide, "titulo", data.get("title", ""))
-    set_text(slide, "texto", format_parrafos(text_con_huecos(raw_text)))
+    set_text(slide, "texto", format_parrafos(text_con_huecos(raw_text, questions, example)))
 
     # Tabla "example": cada celda contiene una letra de la palabra correcta
     correct_word = str(example.get("correct", ""))
@@ -360,11 +468,18 @@ def fill_slide_reading3(slide, data, test_num):
     """Diapositiva 4: Reading 3 — Word formation."""
     set_nombre_test(slide, test_num)
     content = data.get("content", {})
+    example = content.get("example", {})
     questions = content.get("questions", [])
     raw_text = content.get("text", "")
 
     set_text(slide, "titulo", data.get("title", ""))
-    set_text(slide, "texto", format_parrafos(text_con_huecos_wf(raw_text, questions)))
+    set_text(slide, "texto", format_parrafos(text_con_huecos_wf(raw_text, questions, example)))
+
+    # Tabla "example": cada celda contiene una letra de la palabra correcta
+    correct_word = str(example.get("correct", ""))
+    table = get_table(slide, "example")
+    for i, letter in enumerate(correct_word):
+        fill_table_cell(table, 0, i, letter)
 
 
 def fill_slide_reading4(slide, data, test_num):
@@ -409,6 +524,7 @@ def fill_slide_reading5_preguntas(slide, data, test_num):
     set_nombre_test(slide, test_num)
     content = data.get("content", {})
     questions = content.get("questions", [])
+    shape_names = []
     for q in questions:
         num = q.get("number", "")
         question_text = q.get("question", "")
@@ -422,9 +538,10 @@ def fill_slide_reading5_preguntas(slide, data, test_num):
                 rest = opt[1:]
                 runs.append({"text": f"   {letter}", "bold": True})
                 runs.append({"text": f"{rest}\n", "bold": False})
-        # Línea en blanco al final para separación vertical con la siguiente pregunta
-        runs.append({"text": "\n", "bold": False})
         set_shape_text_rich(slide, str(num), runs)
+        if str(num):
+            shape_names.append(str(num))
+    redistribute_shapes_vertically(slide, shape_names)
 
 
 def fill_slide_reading6_texto(slide, data, test_num):
@@ -532,7 +649,7 @@ def fill_slide_writing1(slide, data, test_num):
     set_text(slide, "challenges", "\n".join(f"• {m}" for m in methods))
 
     opinions = notes.get("opinions", [])
-    set_text(slide, "opinions", "\n".join(f"• {o}" for o in opinions))
+    set_text(slide, "opinions", "\n".join(f'"{o}"' for o in opinions))
 
 
 def fill_slide_writing2(slide, data, test_num):
@@ -540,34 +657,47 @@ def fill_slide_writing2(slide, data, test_num):
     set_nombre_test(slide, test_num)
     content = data.get("content", {})
     tasks = content.get("tasks", [])
+    shape_names = []
     for i, task in enumerate(tasks[:3], start=2):
         title = task.get("title", "")
         prompt = task.get("prompt", task.get("description", ""))
         set_text(slide, str(i), f"{title}\n{prompt}\n")
+        shape_names.append(str(i))
+    redistribute_shapes_vertically(slide, shape_names)
 
 
 def fill_slide_listening1(slide, data, test_num):
     """Diapositiva 16: Listening 1 — preguntas 1–6 y contextos."""
     set_nombre_test(slide, test_num)
     extracts = data.get("extracts", [])
+    shape_names = []
     for ctx_idx, extract in enumerate(extracts, start=1):
         set_text(slide, f"context{ctx_idx}", extract.get("context", "") + "\n")
+        shape_names.append(f"context{ctx_idx}")
         for q in extract.get("questions", []):
             num = q.get("number", "")
             question_text = q.get("question", "")
             opts = format_options_list(q.get("options", []))
             text = f"{num}. {question_text}\n" + "\n".join(f"   {o}" for o in opts) + "\n"
             set_text(slide, str(num), text)
+            if str(num):
+                shape_names.append(str(num))
+    redistribute_shapes_vertically(slide, shape_names)
 
 
 def fill_slide_listening2(slide, data, test_num):
-    """Diapositiva 17: Listening 2 — sentence completion (sin título)."""
+    """Diapositiva 17: Listening 2 — sentence completion."""
     set_nombre_test(slide, test_num)
     set_text(slide, "description", data.get("instructions", data.get("description", "")))
     questions = []
     for extract in data.get("extracts", []):
         questions.extend(extract.get("questions", []))
-    lines = [f"{q.get('number', '')}. {q.get('question', '')}" for q in questions]
+    # Sin prefijo de número; añadir GAP_DOTS tras cada marcador (N) en la pregunta.
+    # El patrón (\d+)(\s*\.)? captura también el punto final opcional tras el marcador.
+    lines = [
+        re.sub(r"\((\d+)\)(\s*\.)?", rf"(\1) {GAP_DOTS}", q.get("question", "").strip())
+        for q in questions
+    ]
     set_text(slide, "texto", "\n".join(lines))
 
 
@@ -575,6 +705,7 @@ def fill_slide_listening3(slide, data, test_num):
     """Diapositiva 18: Listening 3 — preguntas 15–20 con opciones."""
     set_nombre_test(slide, test_num)
     set_text(slide, "description", data.get("instructions", data.get("description", "")))
+    shape_names = []
     for extract in data.get("extracts", []):
         for q in extract.get("questions", []):
             num = q.get("number", "")
@@ -582,6 +713,9 @@ def fill_slide_listening3(slide, data, test_num):
             opts = format_options_list(q.get("options", []))
             text = f"{num}. {question_text}\n" + "\n".join(f"   {o}" for o in opts) + "\n"
             set_text(slide, str(num), text)
+            if str(num):
+                shape_names.append(str(num))
+    redistribute_shapes_vertically(slide, shape_names)
 
 
 def fill_slide_listening4(slide, data, test_num):
@@ -650,6 +784,20 @@ def _fill_answer_table(slide, shape_name, pairs):
         fill_table_cell(table, 0, col_offset * 2 + 1, answer)
 
 
+def _format_answers_horizontal(pairs, cols=4):
+    """
+    Formatea pares (num, respuesta) en un grid horizontal con columnas de ancho fijo.
+    """
+    if not pairs:
+        return ""
+    col_width = max((len(f"{n}. {a}") for n, a in pairs), default=10) + 4
+    rows = []
+    for i in range(0, len(pairs), cols):
+        row_pairs = pairs[i:i + cols]
+        rows.append("".join(f"{n}. {a}".ljust(col_width) for n, a in row_pairs).rstrip())
+    return "\n".join(rows)
+
+
 def fill_slide_answer_reading(slide, test_num, reading_data):
     """Diapositiva 20: Answer Key — Reading & Use of English (formas 1–8)."""
     set_nombre_test(slide, test_num)
@@ -659,11 +807,13 @@ def fill_slide_answer_reading(slide, test_num, reading_data):
         if data is None:
             continue
         pairs = _build_answer_pairs(data, part_idx)
+        # Excluir el ejemplo (0) de la hoja de respuestas
+        pairs = [(n, a) for n, a in pairs if n != "0"]
         if part_idx in TABLE_PARTS:
             _fill_answer_table(slide, str(part_idx), pairs)
         else:
-            lines = [f"{num}. {answer}" for num, answer in pairs]
-            set_text(slide, str(part_idx), "\n".join(lines))
+            cols = 3 if part_idx == 4 else 4
+            set_text(slide, str(part_idx), _format_answers_horizontal(pairs, cols=cols))
 
 
 def fill_slide_answer_listening(slide, test_num, listening_data):
@@ -691,11 +841,12 @@ def fill_slide_answer_listening(slide, test_num, listening_data):
                     if isinstance(correct, list):
                         correct = " / ".join(correct)
                     pairs.append((str(num), str(correct)))
+        # Excluir el ejemplo (0)
+        pairs = [(n, a) for n, a in pairs if n != "0"]
         if part_idx in TABLE_PARTS:
             _fill_answer_table(slide, str(part_idx), pairs)
         else:
-            lines = [f"{num}. {answer}" for num, answer in pairs]
-            set_text(slide, str(part_idx), "\n".join(lines))
+            set_text(slide, str(part_idx), _format_answers_horizontal(pairs, cols=4))
 
 
 # ─── carga de datos ─────────────────────────────────────────────────────────
