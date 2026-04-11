@@ -459,11 +459,11 @@ def fill_slide_reading2(slide, data, test_num):
     set_text(slide, "titulo", data.get("title", ""))
     set_text(slide, "texto", format_parrafos(text_con_huecos(raw_text, questions, example)))
 
-    # Tabla "example": cada celda contiene una letra de la palabra correcta
+    # Tabla "example": cada celda contiene una letra de la palabra correcta (mayúscula y negrita)
     correct_word = str(example.get("correct", ""))
     table = get_table(slide, "example")
     for i, letter in enumerate(correct_word):
-        fill_table_cell(table, 0, i, letter)
+        fill_table_cell(table, 0, i, letter.upper(), bold=True)
 
 
 def fill_slide_reading3(slide, data, test_num):
@@ -477,11 +477,11 @@ def fill_slide_reading3(slide, data, test_num):
     set_text(slide, "titulo", data.get("title", ""))
     set_text(slide, "texto", format_parrafos(text_con_huecos_wf(raw_text, questions, example)))
 
-    # Tabla "example": cada celda contiene una letra de la palabra correcta
+    # Tabla "example": cada celda contiene una letra de la palabra correcta (negrita)
     correct_word = str(example.get("correct", ""))
     table = get_table(slide, "example")
     for i, letter in enumerate(correct_word):
-        fill_table_cell(table, 0, i, letter)
+        fill_table_cell(table, 0, i, letter, bold=True)
 
 
 def fill_slide_reading4(slide, data, test_num):
@@ -526,24 +526,21 @@ def fill_slide_reading5_preguntas(slide, data, test_num):
     set_nombre_test(slide, test_num)
     content = data.get("content", {})
     questions = content.get("questions", [])
-    shape_names = []
+    all_runs = []
     for q in questions:
         num = q.get("number", "")
         question_text = q.get("question", "")
         opts = format_options_list(q.get("options", []))
         # Texto enriquecido: número + pregunta, luego opciones con letra en negrita
-        runs = [{"text": f"{num}. {question_text}\n", "bold": False}]
+        all_runs.append({"text": f"{num}. {question_text}\n", "bold": False})
         for opt in opts:
             # opt tiene formato "A) texto..."
             if opt and len(opt) >= 2:
                 letter = opt[0]
                 rest = opt[1:]
-                runs.append({"text": f"   {letter}", "bold": True})
-                runs.append({"text": f"{rest}\n", "bold": False})
-        set_shape_text_rich(slide, str(num), runs)
-        if str(num):
-            shape_names.append(str(num))
-    redistribute_shapes_vertically(slide, shape_names)
+                all_runs.append({"text": f"   {letter}", "bold": True})
+                all_runs.append({"text": f"{rest}\n", "bold": False})
+    set_shape_text_rich(slide, "preguntas", all_runs)
 
 
 def fill_slide_reading6_texto(slide, data, test_num):
@@ -655,17 +652,16 @@ def fill_slide_writing1(slide, data, test_num):
 
 
 def fill_slide_writing2(slide, data, test_num):
-    """Diapositiva 15: Writing 2 — opciones (formas 2, 3 y 4)."""
+    """Diapositiva 15: Writing 2 — opciones (forma "options")."""
     set_nombre_test(slide, test_num)
     content = data.get("content", {})
     tasks = content.get("tasks", [])
-    shape_names = []
-    for i, task in enumerate(tasks[:3], start=2):
+    all_text = ""
+    for task in tasks[:3]:
         title = task.get("title", "")
         prompt = task.get("prompt", task.get("description", ""))
-        set_text(slide, str(i), f"{title}\n{prompt}\n")
-        shape_names.append(str(i))
-    redistribute_shapes_vertically(slide, shape_names)
+        all_text += f"{title}\n{prompt}\n\n"
+    set_text(slide, "options", all_text.rstrip())
 
 
 def fill_slide_listening1(slide, data, test_num):
@@ -674,16 +670,15 @@ def fill_slide_listening1(slide, data, test_num):
     extracts = data.get("extracts", [])
     shape_names = []
     for ctx_idx, extract in enumerate(extracts, start=1):
-        set_text(slide, f"context{ctx_idx}", extract.get("context", "") + "\n")
-        shape_names.append(f"context{ctx_idx}")
+        context_text = extract.get("context", "")
+        combined = context_text + "\n"
         for q in extract.get("questions", []):
             num = q.get("number", "")
             question_text = q.get("question", "")
             opts = format_options_list(q.get("options", []))
-            text = f"{num}. {question_text}\n" + "\n".join(f"   {o}" for o in opts) + "\n"
-            set_text(slide, str(num), text)
-            if str(num):
-                shape_names.append(str(num))
+            combined += f"{num}. {question_text}\n" + "\n".join(f"   {o}" for o in opts) + "\n\n"
+        set_text(slide, f"context{ctx_idx}", combined.rstrip())
+        shape_names.append(f"context{ctx_idx}")
     redistribute_shapes_vertically(slide, shape_names)
 
 
@@ -707,17 +702,14 @@ def fill_slide_listening3(slide, data, test_num):
     """Diapositiva 18: Listening 3 — preguntas 15–20 con opciones."""
     set_nombre_test(slide, test_num)
     set_text(slide, "description", data.get("instructions", data.get("description", "")))
-    shape_names = []
+    all_text = ""
     for extract in data.get("extracts", []):
         for q in extract.get("questions", []):
             num = q.get("number", "")
             question_text = q.get("question", "")
             opts = format_options_list(q.get("options", []))
-            text = f"{num}. {question_text}\n" + "\n".join(f"   {o}" for o in opts) + "\n"
-            set_text(slide, str(num), text)
-            if str(num):
-                shape_names.append(str(num))
-    redistribute_shapes_vertically(slide, shape_names)
+            all_text += f"{num}. {question_text}\n" + "\n".join(f"   {o}" for o in opts) + "\n\n"
+    set_text(slide, "preguntas", all_text.rstrip())
 
 
 def fill_slide_listening4(slide, data, test_num):
