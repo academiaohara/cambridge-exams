@@ -231,15 +231,17 @@ def _force_black_text(tf):
     for r in tf._txBody.iter(_tag("r")):
         rPr = r.find(_tag("rPr"))
         if rPr is None:
-            continue
+            rPr = etree.Element(_tag("rPr"))
+            r.insert(0, rPr)
         # Eliminar fills de color existentes
         for child in list(rPr):
             if child.tag in _FILL_TAGS:
                 rPr.remove(child)
-        # Añadir solidFill negro
-        sf = etree.SubElement(rPr, _tag("solidFill"))
+        # Insertar solidFill negro al principio de rPr (posición correcta en DML)
+        sf = etree.Element(_tag("solidFill"))
         srgb = etree.SubElement(sf, _tag("srgbClr"))
         srgb.set("val", "000000")
+        rPr.insert(0, sf)
 
 
 def fill_table_cell(table, row, col, text, bold=False, force_black=True):
@@ -265,7 +267,7 @@ def fill_table_cell(table, row, col, text, bold=False, force_black=True):
                 if bold:
                     rPr.set("b", "1")
                 else:
-                    rPr.attrib.pop("b", None)
+                    rPr.set("b", "0")
         if force_black:
             _force_black_text(tf)
     except Exception:
@@ -762,7 +764,14 @@ def _build_answer_pairs(data, part_idx):
                 correct = q.get("correct", q.get("answer", ""))
             pairs.append((str(num), str(correct)))
     else:
-        for q in content.get("questions", []):
+        # Algunos ejercicios (p.ej. reading6/reading8 de C1) guardan las
+        # preguntas bajo content.texts.questions en lugar de content.questions
+        questions = content.get("questions", [])
+        if not questions:
+            texts = content.get("texts", {})
+            if isinstance(texts, dict):
+                questions = texts.get("questions", [])
+        for q in questions:
             num = q.get("number", "")
             correct = q.get("correct", q.get("answer", ""))
             if isinstance(correct, list):
@@ -798,6 +807,14 @@ def _format_answers_horizontal(pairs, cols=4):
     return "\n".join(rows)
 
 
+def _format_answers_vertical(pairs):
+    """
+    Formatea pares (num, respuesta) con cada par en su propia línea.
+    Evita que respuestas largas se corten en mitad de línea.
+    """
+    return "\n".join(f"{n}. {a}" for n, a in pairs)
+
+
 def fill_slide_answer_reading(slide, test_num, reading_data):
     """Diapositiva 20: Answer Key — Reading & Use of English (formas 1–8)."""
     set_nombre_test(slide, test_num)
@@ -812,8 +829,8 @@ def fill_slide_answer_reading(slide, test_num, reading_data):
         if part_idx in TABLE_PARTS:
             _fill_answer_table(slide, str(part_idx), pairs)
         else:
-            cols = 3 if part_idx == 4 else 4
-            set_text(slide, str(part_idx), _format_answers_horizontal(pairs, cols=cols))
+            # Parts 2, 3, 4: una respuesta por línea para evitar cortes
+            set_text(slide, str(part_idx), _format_answers_vertical(pairs))
 
 
 def fill_slide_answer_listening(slide, test_num, listening_data):
@@ -846,7 +863,8 @@ def fill_slide_answer_listening(slide, test_num, listening_data):
         if part_idx in TABLE_PARTS:
             _fill_answer_table(slide, str(part_idx), pairs)
         else:
-            set_text(slide, str(part_idx), _format_answers_horizontal(pairs, cols=4))
+            # Part 2: una respuesta por línea para evitar cortes
+            set_text(slide, str(part_idx), _format_answers_vertical(pairs))
 
 
 # ─── carga de datos ─────────────────────────────────────────────────────────
