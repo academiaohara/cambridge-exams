@@ -306,6 +306,7 @@ def fill_slide_reading1(slide, data, test_num):
     content = data.get("content", {})
     example = content.get("example", {})
     raw_text = content.get("text", "")
+    questions = content.get("questions", [])
 
     set_text(slide, "titulo", data.get("title", ""))
     set_text(slide, "texto", format_parrafos(text_con_huecos(raw_text)))
@@ -323,6 +324,19 @@ def fill_slide_reading1(slide, data, test_num):
             fill_black_shape(slide, letter)
         else:
             clear_shape_fill(slide, letter)
+
+    # Tabla "options": una fila por pregunta.
+    # Columna 0 = número de pregunta; columna 2 = opción A; columna 4 = opción B;
+    # columna 6 = opción C; columna 8 = opción D. Las columnas pares intermedias
+    # son separadores de formato definidos en la plantilla.
+    options_table = get_table(slide, "options")
+    for row_idx, q in enumerate(questions):
+        q_opts = format_options_list(q.get("options", []))
+        fill_table_cell(options_table, row_idx, 0, str(q.get("number", "")))
+        col_map = {0: 2, 1: 4, 2: 6, 3: 8}  # índice opción -> columna tabla (A→2, B→4, C→6, D→8)
+        for opt_idx, opt in enumerate(q_opts):
+            if opt_idx in col_map:
+                fill_table_cell(options_table, row_idx, col_map[opt_idx], opt)
 
 
 def fill_slide_reading2(slide, data, test_num):
@@ -359,23 +373,25 @@ def fill_slide_reading4(slide, data, test_num):
     content = data.get("content", {})
     questions = content.get("questions", [])
 
-    # Tabla "example": segunda celda = respuesta del example (si existe)
+    # Tabla "example": cada celda contiene una letra de la respuesta, empezando
+    # en la columna 0 (igual que la tabla "example" de la diapositiva 3).
     example = content.get("example", {})
     if example:
         ex_answer = str(example.get("answer", example.get("correct", ""))).upper()
         table = get_table(slide, "example")
-        fill_table_cell(table, 0, 1, ex_answer)
+        for i, letter in enumerate(ex_answer):
+            fill_table_cell(table, 0, i, letter)
 
-    # Cada pregunta en su propia forma (nombre = número de pregunta)
-    for q in questions:
-        num = q.get("number", "")
+    # Cada pregunta en Frase{i}, key{i} y Refrase{i} (i = posición 1-6)
+    for i, q in enumerate(questions, start=1):
         key = q.get("keyWord", q.get("key", ""))
         first = q.get("firstSentence", "")
         before = q.get("beforeGap", "")
         after = q.get("afterGap", "")
         gap_line = f"{before} .................... {after}"
-        text = f"{num}  {key}\n{first}\n{gap_line}"
-        set_text(slide, str(num), text)
+        set_text(slide, f"Frase{i}", first)
+        set_text(slide, f"key{i}", key)
+        set_text(slide, f"Refrase{i}", gap_line)
 
 
 def fill_slide_reading5_texto(slide, data, test_num):
@@ -406,6 +422,8 @@ def fill_slide_reading5_preguntas(slide, data, test_num):
                 rest = opt[1:]
                 runs.append({"text": f"   {letter}", "bold": True})
                 runs.append({"text": f"{rest}\n", "bold": False})
+        # Línea en blanco al final para separación vertical con la siguiente pregunta
+        runs.append({"text": "\n", "bold": False})
         set_shape_text_rich(slide, str(num), runs)
 
 
@@ -420,7 +438,7 @@ def fill_slide_reading6_texto(slide, data, test_num):
     for letter in ("A", "B", "C", "D"):
         raw = strip_markers(texts.get(letter, "")).strip()
         runs.append({"text": f"{letter})", "bold": True})
-        runs.append({"text": f" {raw}\n", "bold": False})
+        runs.append({"text": f" {raw}\n\n", "bold": False})
     set_shape_text_rich(slide, "texto", runs)
 
 
@@ -440,12 +458,10 @@ def fill_slide_reading6_tablas(slide, data, test_num):
 
 
 def fill_slide_reading7_texto(slide, data, test_num):
-    """Diapositiva 10: Reading 7 — título y texto con numeración entre párrafos."""
+    """Diapositiva 10: Reading 7 — texto con numeración entre párrafos (sin título)."""
     set_nombre_test(slide, test_num)
     content = data.get("content", {})
-    title = content.get("title", data.get("title", ""))
     raw_text = strip_markers(content.get("text", ""))
-    set_text(slide, "titulo", title)
     set_text(slide, "texto", format_parrafos(raw_text))
 
 
@@ -494,9 +510,12 @@ def fill_slide_reading8_texto(slide, data, test_num):
     set_text(slide, "titulo", title)
     runs = []
     for letter in ("A", "B", "C", "D"):
+        # Quitar marcadores y encabezados ### al inicio (el JSON puede incluir
+        # títulos de estilo Markdown que no deben mostrarse en la diapositiva)
         raw = strip_markers(texts.get(letter, "")).strip()
+        raw = re.sub(r"^###\s*", "", raw)
         runs.append({"text": f"{letter})", "bold": True})
-        runs.append({"text": f" {raw}\n", "bold": False})
+        runs.append({"text": f" {raw}\n\n", "bold": False})
     set_shape_text_rich(slide, "texto", runs)
 
 
@@ -505,18 +524,15 @@ def fill_slide_writing1(slide, data, test_num):
     set_nombre_test(slide, test_num)
     content = data.get("content", {})
     notes = content.get("notes", {})
-    structure = content.get("structure", {})
 
     set_text(slide, "description", data.get("description", ""))
+    set_text(slide, "question", content.get("question", ""))
 
     methods = notes.get("methods", notes.get("aspects", []))
-    set_text(slide, "aspects", "\n".join(f"• {m}" for m in methods))
+    set_text(slide, "challenges", "\n".join(f"• {m}" for m in methods))
 
     opinions = notes.get("opinions", [])
     set_text(slide, "opinions", "\n".join(f"• {o}" for o in opinions))
-
-    struct_text = "\n".join(f"{k}: {v}" for k, v in structure.items())
-    set_text(slide, "structure", struct_text)
 
 
 def fill_slide_writing2(slide, data, test_num):
@@ -527,7 +543,7 @@ def fill_slide_writing2(slide, data, test_num):
     for i, task in enumerate(tasks[:3], start=2):
         title = task.get("title", "")
         prompt = task.get("prompt", task.get("description", ""))
-        set_text(slide, str(i), f"{title}\n{prompt}")
+        set_text(slide, str(i), f"{title}\n{prompt}\n")
 
 
 def fill_slide_listening1(slide, data, test_num):
@@ -535,20 +551,19 @@ def fill_slide_listening1(slide, data, test_num):
     set_nombre_test(slide, test_num)
     extracts = data.get("extracts", [])
     for ctx_idx, extract in enumerate(extracts, start=1):
-        set_text(slide, f"context{ctx_idx}", extract.get("context", ""))
+        set_text(slide, f"context{ctx_idx}", extract.get("context", "") + "\n")
         for q in extract.get("questions", []):
             num = q.get("number", "")
             question_text = q.get("question", "")
             opts = format_options_list(q.get("options", []))
-            text = f"{num}. {question_text}\n" + "\n".join(f"   {o}" for o in opts)
+            text = f"{num}. {question_text}\n" + "\n".join(f"   {o}" for o in opts) + "\n"
             set_text(slide, str(num), text)
 
 
 def fill_slide_listening2(slide, data, test_num):
-    """Diapositiva 17: Listening 2 — sentence completion."""
+    """Diapositiva 17: Listening 2 — sentence completion (sin título)."""
     set_nombre_test(slide, test_num)
     set_text(slide, "description", data.get("instructions", data.get("description", "")))
-    set_text(slide, "titulo", data.get("title", ""))
     questions = []
     for extract in data.get("extracts", []):
         questions.extend(extract.get("questions", []))
@@ -565,7 +580,7 @@ def fill_slide_listening3(slide, data, test_num):
             num = q.get("number", "")
             question_text = q.get("question", "")
             opts = format_options_list(q.get("options", []))
-            text = f"{num}. {question_text}\n" + "\n".join(f"   {o}" for o in opts)
+            text = f"{num}. {question_text}\n" + "\n".join(f"   {o}" for o in opts) + "\n"
             set_text(slide, str(num), text)
 
 
@@ -586,36 +601,80 @@ def fill_slide_listening4(slide, data, test_num):
     set_text(slide, "options2", "\n".join(format_options_dict(opts2) if isinstance(opts2, dict) else opts2))
 
 
-def fill_slide_answer_reading(slide, test_num, reading_data):
-    """Diapositiva 20: Answer Key — Reading & Use of English (formas 1–8)."""
-    set_nombre_test(slide, test_num)
-    for part_idx, data in enumerate(reading_data, start=1):
-        if data is None:
-            continue
-        content = data.get("content", {})
-        lines = []
-        example = content.get("example", {})
-        if example:
-            correct = example.get("correct", "")
-            lines.append(f"0. {correct}")
-        questions = content.get("questions", [])
-        for q in questions:
+def _build_answer_pairs(data, part_idx):
+    """
+    Devuelve una lista de tuplas (num, respuesta) para una parte del examen.
+    Incluye el ejemplo (0) si existe.
+    """
+    content = data.get("content", {})
+    pairs = []
+
+    example = content.get("example", {})
+    if example:
+        correct = example.get("correct", "")
+        pairs.append((str(example.get("number", 0)), str(correct)))
+
+    if part_idx == 4:
+        # Reading 4: key word transformations — respuesta desde routes
+        for q in content.get("questions", []):
+            num = q.get("number", "")
+            routes = q.get("routes", [])
+            if routes:
+                route_strs = [
+                    f"{r.get('p1', '')} {r.get('p2', '')}".strip() for r in routes
+                ]
+                correct = " / ".join(route_strs)
+            else:
+                correct = q.get("correct", q.get("answer", ""))
+            pairs.append((str(num), str(correct)))
+    else:
+        for q in content.get("questions", []):
             num = q.get("number", "")
             correct = q.get("correct", q.get("answer", ""))
             if isinstance(correct, list):
                 correct = " / ".join(correct)
-            lines.append(f"{num}. {correct}")
-        text = f"Part {part_idx}\n" + "\n".join(lines)
-        set_text(slide, str(part_idx), text)
+            pairs.append((str(num), str(correct)))
+
+    return pairs
+
+
+def _fill_answer_table(slide, shape_name, pairs):
+    """
+    Rellena una tabla de respuestas en horizontal.
+    Columnas impares (índice par 0,2,4…) = número de pregunta;
+    columnas pares (índice impar 1,3,5…) = respuesta.
+    """
+    table = get_table(slide, shape_name)
+    for col_offset, (num, answer) in enumerate(pairs):
+        fill_table_cell(table, 0, col_offset * 2, num)
+        fill_table_cell(table, 0, col_offset * 2 + 1, answer)
+
+
+def fill_slide_answer_reading(slide, test_num, reading_data):
+    """Diapositiva 20: Answer Key — Reading & Use of English (formas 1–8)."""
+    set_nombre_test(slide, test_num)
+    # Partes 1, 5, 6, 7, 8 son tablas; partes 2, 3, 4 son cuadros de texto
+    TABLE_PARTS = {1, 5, 6, 7, 8}
+    for part_idx, data in enumerate(reading_data, start=1):
+        if data is None:
+            continue
+        pairs = _build_answer_pairs(data, part_idx)
+        if part_idx in TABLE_PARTS:
+            _fill_answer_table(slide, str(part_idx), pairs)
+        else:
+            lines = [f"{num}. {answer}" for num, answer in pairs]
+            set_text(slide, str(part_idx), "\n".join(lines))
 
 
 def fill_slide_answer_listening(slide, test_num, listening_data):
     """Diapositiva 21: Answer Key — Listening (formas 1–4)."""
     set_nombre_test(slide, test_num)
+    # Partes 1, 3, 4 son tablas; parte 2 es cuadro de texto
+    TABLE_PARTS = {1, 3, 4}
     for part_idx, data in enumerate(listening_data, start=1):
         if data is None:
             continue
-        lines = []
+        pairs = []
         if part_idx == 4:
             content = data.get("content", {})
             for task_key in ("task1", "task2"):
@@ -623,7 +682,7 @@ def fill_slide_answer_listening(slide, test_num, listening_data):
                 for q in task.get("questions", []):
                     num = q.get("number", "")
                     correct = q.get("correct", q.get("answer", ""))
-                    lines.append(f"{num}. {correct}")
+                    pairs.append((str(num), str(correct)))
         else:
             for extract in data.get("extracts", []):
                 for q in extract.get("questions", []):
@@ -631,9 +690,12 @@ def fill_slide_answer_listening(slide, test_num, listening_data):
                     correct = q.get("answer", q.get("correct", ""))
                     if isinstance(correct, list):
                         correct = " / ".join(correct)
-                    lines.append(f"{num}. {correct}")
-        text = f"Part {part_idx}\n" + "\n".join(lines)
-        set_text(slide, str(part_idx), text)
+                    pairs.append((str(num), str(correct)))
+        if part_idx in TABLE_PARTS:
+            _fill_answer_table(slide, str(part_idx), pairs)
+        else:
+            lines = [f"{num}. {answer}" for num, answer in pairs]
+            set_text(slide, str(part_idx), "\n".join(lines))
 
 
 # ─── carga de datos ─────────────────────────────────────────────────────────
