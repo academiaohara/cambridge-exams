@@ -6,11 +6,15 @@
   "content": {
     "question": "Write an essay discussing two of the considerations in your notes. You should explain which consideration you think is most important, giving reasons for your opinion.",
     "notes": {
-      "considerations": ["Diagnostic accuracy", "Patient data privacy", "Impact on medical professionals"],
+      "considerations": [
+        "Diagnostic accuracy",
+        "Patient data privacy",
+        "Impact on medical professionals"
+      ],
       "opinions": [
-        "AI-powered diagnostic tools have demonstrated the ability to detect conditions such as cancer with greater accuracy than human specialists in controlled studies.",
-        "The vast quantities of personal health data required to train AI systems raise serious concerns about consent, security and potential misuse.",
-        "While AI may automate routine tasks, it risks devaluing clinical expertise and fundamentally altering the doctor-patient relationship."
+        "AI already detects some cancers more accurately than doctors can.",
+        "Training medical AI requires patient data that raises serious privacy concerns.",
+        "AI risks undermining the doctor-patient relationship and clinical judgement."
       ]
     },
     "wordLimit": "220-260 words",
