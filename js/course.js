@@ -1356,7 +1356,7 @@
           var rvSecId = 'cu-sec-' + sectionIdx;
           var rvItems = section.items || [];
           var multiSelectAttr = section.multiSelect ? ' data-multi-select="true"' : '';
-          var isPassageInput = section.subtype === 'passage-input' || (section.passage && section.answers);
+          var isPassageInput = section.subtype === 'passage-input';
           var rvMaxItems = isPassageInput ? (section.answers || []).length : rvItems.length;
           html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvMaxItems + '"' + multiSelectAttr + '>' +
             '<div class="cu-section-title">' + _mi('quiz') + ' ' + self._escapeHTML(section.title) + '</div>';
