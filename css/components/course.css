@@ -3077,7 +3077,6 @@
 .cu-few-sentence {
   display: flex;
   flex-wrap: wrap;
-  gap: 1px 2px;
   align-items: baseline;
   line-height: 2;
   font-size: 0.95rem;
@@ -3094,11 +3093,10 @@
   display: inline;
   cursor: pointer;
   border-radius: 4px;
-  padding: 2px 5px;
+  padding: 2px 3px;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
   border: 1.5px solid transparent;
   user-select: none;
-  white-space: nowrap;
 }
 
 .cu-few-word:hover {
@@ -3387,6 +3385,75 @@
 
 /* Show-correct state: correct answers in blue (used by "Show answers" toggle and "Correct answers" view) */
 .cu-mc-passage-gap.cu-mc-passage-gap-show-correct .cu-mc-passage-gap-slot {
+  background: #e0f2fe;
+  border-color: #38bdf8;
+  border-style: solid;
+  color: #0369a1;
+  font-weight: 700;
+}
+
+/* Split gap: two-slot pill for sentences with (N) ...... FIXED_TEXT ...... */
+.cu-mc-passage-gap-split .cu-mc-passage-gap-slot {
+  display: none;
+}
+
+.cu-mc-passage-gap-slot-pre,
+.cu-mc-passage-gap-slot-post {
+  display: inline-block;
+  min-width: 60px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  border: 1.5px dashed #94a3b8;
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: #64748b;
+  text-align: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  vertical-align: middle;
+  line-height: 1.4;
+  min-height: 20px;
+}
+
+.cu-mc-passage-gap-mid {
+  font-size: 0.9rem;
+  color: #475569;
+  padding: 0 3px;
+}
+
+.cu-mc-passage-gap-split:hover .cu-mc-passage-gap-slot-pre,
+.cu-mc-passage-gap-split:hover .cu-mc-passage-gap-slot-post {
+  background: #e2e8f0;
+  border-color: #64748b;
+}
+
+.cu-mc-passage-gap-split.cu-mc-passage-gap-answered .cu-mc-passage-gap-slot-pre,
+.cu-mc-passage-gap-split.cu-mc-passage-gap-answered .cu-mc-passage-gap-slot-post {
+  background: #e0f2fe;
+  border-color: #38bdf8;
+  border-style: solid;
+  color: #0369a1;
+  font-weight: 700;
+}
+
+.cu-mc-passage-gap-split.cu-mc-passage-gap-correct .cu-mc-passage-gap-slot-pre,
+.cu-mc-passage-gap-split.cu-mc-passage-gap-correct .cu-mc-passage-gap-slot-post {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  border-style: solid;
+  color: #15803d;
+}
+
+.cu-mc-passage-gap-split.cu-mc-passage-gap-incorrect .cu-mc-passage-gap-slot-pre,
+.cu-mc-passage-gap-split.cu-mc-passage-gap-incorrect .cu-mc-passage-gap-slot-post {
+  background: #fff7ed;
+  border-color: #f97316;
+  border-style: solid;
+  color: #c2410c;
+}
+
+.cu-mc-passage-gap-split.cu-mc-passage-gap-show-correct .cu-mc-passage-gap-slot-pre,
+.cu-mc-passage-gap-split.cu-mc-passage-gap-show-correct .cu-mc-passage-gap-slot-post {
   background: #e0f2fe;
   border-color: #38bdf8;
   border-style: solid;
