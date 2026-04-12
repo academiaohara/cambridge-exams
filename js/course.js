@@ -3204,6 +3204,10 @@
     _popstateCourseUnit: async function(state) {
       var unitId = state.unitId;
       var filePath = state.filePath;
+      // Ensure course index data is loaded before trying to derive filePath
+      if (!BentoGrid._courseIndexData) {
+        await BentoGrid.openCourseTheory(state.level || AppState.currentLevel);
+      }
       // Derive filePath from index data if not stored in state
       if (!filePath && BentoGrid._courseIndexData) {
         var item = (BentoGrid._courseIndexData.items || []).find(function(i) { return i.id === unitId; });
