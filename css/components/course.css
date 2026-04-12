@@ -2848,12 +2848,29 @@
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
+.cu-mc-gap-pill-filled,
+.cu-mc-gap-pill-correct,
+.cu-mc-gap-pill-incorrect {
+  border-style: solid;
+  font-weight: 700;
+}
+
 .cu-mc-gap-pill-filled {
   background: #e0f2fe;
   border-color: #38bdf8;
-  border-style: solid;
   color: #0369a1;
-  font-weight: 700;
+}
+
+.cu-mc-gap-pill-correct {
+  background: #d1fae5 !important;
+  border-color: #059669 !important;
+  color: #065f46 !important;
+}
+
+.cu-mc-gap-pill-incorrect {
+  background: #fef3c7 !important;
+  border-color: #d97706 !important;
+  color: #92400e !important;
 }
 
 /* ── Yes/No exercise items ──────────────────────────────────────────── */
