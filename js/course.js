@@ -1356,7 +1356,9 @@
           var rvSecId = 'cu-sec-' + sectionIdx;
           var rvItems = section.items || [];
           var multiSelectAttr = section.multiSelect ? ' data-multi-select="true"' : '';
-          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvItems.length + '"' + multiSelectAttr + '>' +
+          var isPassageInput = section.subtype === 'passage-input';
+          var rvMaxItems = isPassageInput ? (section.answers || []).length : rvItems.length;
+          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvMaxItems + '"' + multiSelectAttr + '>' +
             '<div class="cu-section-title">' + _mi('quiz') + ' ' + self._escapeHTML(section.title) + '</div>';
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
@@ -1365,6 +1367,9 @@
           if (section.passage && rvItems.length && rvItems[0] && rvItems[0].options) {
             // Multiple-choice passage exercise (e.g. Review Exercise A)
             html += self._renderCuMcPassageExercise(section, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
+          } else if (isPassageInput) {
+            // Continuous-text gap-fill passage exercise
+            html += self._renderCuPassageInputExercise(section, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
           } else if (section.subtype === 'matching') {
             // Two-column drag-to-match table (e.g. Review Exercise B)
             html += self._renderCuMatchingExercise(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
