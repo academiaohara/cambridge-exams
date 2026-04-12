@@ -21,7 +21,7 @@
         slot.className = slotClass;
       }
       if (gap.classList.contains('cu-mc-passage-gap-split')) {
-        var parts = text ? text.split(/\s*\u2026\s*/) : ['', ''];
+        var parts = text ? text.split(/\s*\u2026\s*/).slice(0, 2) : ['', ''];
         var pre = gap.querySelector('.cu-mc-passage-gap-slot-pre');
         var post = gap.querySelector('.cu-mc-passage-gap-slot-post');
         if (pre) pre.textContent = parts[0] || '';
