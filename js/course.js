@@ -1746,7 +1746,7 @@
       });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
-        pill.classList.remove('cu-mc-gap-pill-filled');
+        pill.classList.remove('cu-mc-gap-pill-filled', 'cu-mc-gap-pill-correct', 'cu-mc-gap-pill-incorrect');
         pill.innerHTML = CU_MC_BLANK;
       });
       // Reset MC passage gaps
@@ -3716,7 +3716,20 @@
           var saved = answers.options[g];
           // Support both legacy string and new array format
           var selectedTexts = Array.isArray(saved) ? saved : [saved];
-          if (selectedTexts.indexOf(btn.textContent.trim()) !== -1) btn.classList.add('cu-option-selected');
+          if (selectedTexts.indexOf(btn.textContent.trim()) !== -1) {
+            btn.classList.add('cu-option-selected');
+            // For MC items, also update the gap pill to reflect the restored selection
+            if (btn.classList.contains('cu-mc-option')) {
+              var pillId = btn.getAttribute('data-pill-id');
+              if (pillId) {
+                var pill = document.getElementById(pillId);
+                if (pill) {
+                  pill.classList.add('cu-mc-gap-pill-filled');
+                  pill.textContent = btn.getAttribute('data-mc-text') || btn.getAttribute('data-mc-letter') || '';
+                }
+              }
+            }
+          }
         });
       }
       if (answers.ynButtons) {
@@ -4948,11 +4961,12 @@
           var selected = null;
           btns.forEach(function(b) { if (b.classList.contains('cu-option-selected')) selected = b; });
           btns.forEach(function(b) { b.classList.remove('cu-option-correct', 'cu-option-incorrect', 'cu-option-correct-reveal'); });
+          var mcMatched = false;
           if (selected) {
             var letter = (selected.getAttribute('data-mc-letter') || '').trim().toUpperCase();
-            var matched = answerParts.some(function(ap) { return ap.trim().toUpperCase() === letter; });
-            selected.classList.add(matched ? 'cu-option-correct' : 'cu-option-incorrect');
-            if (matched) {
+            mcMatched = answerParts.some(function(ap) { return ap.trim().toUpperCase() === letter; });
+            selected.classList.add(mcMatched ? 'cu-option-correct' : 'cu-option-incorrect');
+            if (mcMatched) {
               correctItems++;
             } else {
               // Mark the correct button if student chose wrong
@@ -4974,7 +4988,7 @@
             });
             anyInputWrong = true;
           }
-          // Update the gap pill to show the correct answer text
+          // Update the gap pill to show the answer and apply correct/incorrect colour
           var correctMcBtn = null;
           btns.forEach(function(b) {
             var bLetter = (b.getAttribute('data-mc-letter') || '').trim().toUpperCase();
@@ -4985,8 +4999,18 @@
             btns.some(function(b) { var pid = b.getAttribute('data-pill-id'); if (pid) { mcPillId = pid; return true; } });
             var mcPill = mcPillId ? document.getElementById(mcPillId) : null;
             if (mcPill) {
-              mcPill.classList.add('cu-mc-gap-pill-filled');
-              mcPill.textContent = correctMcBtn.getAttribute('data-mc-text') || correctMcBtn.getAttribute('data-mc-letter') || '';
+              mcPill.classList.remove('cu-mc-gap-pill-filled', 'cu-mc-gap-pill-correct', 'cu-mc-gap-pill-incorrect');
+              if (selected) {
+                var pillText = mcMatched
+                  ? (selected.getAttribute('data-mc-text') || selected.getAttribute('data-mc-letter') || '')
+                  : (correctMcBtn.getAttribute('data-mc-text') || correctMcBtn.getAttribute('data-mc-letter') || '');
+                mcPill.classList.add(mcMatched ? 'cu-mc-gap-pill-correct' : 'cu-mc-gap-pill-incorrect');
+                mcPill.textContent = pillText;
+              } else {
+                // Nothing selected — show correct answer in default filled (blue) style
+                mcPill.classList.add('cu-mc-gap-pill-filled');
+                mcPill.textContent = correctMcBtn.getAttribute('data-mc-text') || correctMcBtn.getAttribute('data-mc-letter') || '';
+              }
             }
           }
         });
@@ -5276,7 +5300,8 @@
                 var saPill = saPillId ? document.getElementById(saPillId) : null;
                 if (saPill) {
                   saPill.setAttribute('data-saved-pill-text', saPill.textContent);
-                  saPill.setAttribute('data-saved-pill-filled', saPill.classList.contains('cu-mc-gap-pill-filled') ? '1' : '');
+                  saPill.setAttribute('data-saved-pill-filled', saPill.classList.contains('cu-mc-gap-pill-filled') ? '1' : saPill.classList.contains('cu-mc-gap-pill-correct') ? 'correct' : saPill.classList.contains('cu-mc-gap-pill-incorrect') ? 'incorrect' : '');
+                  saPill.classList.remove('cu-mc-gap-pill-filled', 'cu-mc-gap-pill-correct', 'cu-mc-gap-pill-incorrect');
                   saPill.classList.add('cu-mc-gap-pill-filled');
                   saPill.textContent = b.getAttribute('data-mc-text') || b.getAttribute('data-mc-letter') || '';
                 }
@@ -5443,11 +5468,18 @@
 
         // Restore MC gap pills to their saved state
         sec.querySelectorAll('.cu-mc-gap-pill[data-saved-pill-text]').forEach(function(pill) {
-          var wasFilled = pill.getAttribute('data-saved-pill-filled') === '1';
-          if (wasFilled) {
+          var savedState = pill.getAttribute('data-saved-pill-filled');
+          pill.classList.remove('cu-mc-gap-pill-filled', 'cu-mc-gap-pill-correct', 'cu-mc-gap-pill-incorrect');
+          if (savedState === '1') {
             pill.textContent = pill.getAttribute('data-saved-pill-text');
+            pill.classList.add('cu-mc-gap-pill-filled');
+          } else if (savedState === 'correct') {
+            pill.textContent = pill.getAttribute('data-saved-pill-text');
+            pill.classList.add('cu-mc-gap-pill-correct');
+          } else if (savedState === 'incorrect') {
+            pill.textContent = pill.getAttribute('data-saved-pill-text');
+            pill.classList.add('cu-mc-gap-pill-incorrect');
           } else {
-            pill.classList.remove('cu-mc-gap-pill-filled');
             pill.innerHTML = CU_MC_BLANK;
           }
           pill.removeAttribute('data-saved-pill-text');
