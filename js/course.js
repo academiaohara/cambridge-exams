@@ -1346,7 +1346,11 @@
       // Compute total possible points across all exercise sections
       var totalMaxItems = 0;
       (data.sections || []).forEach(function(s) {
-        if (s.type === 'exercise') totalMaxItems += (s.items || []).length;
+        if (s.type === 'exercise') {
+          totalMaxItems += s.subtype === 'passage-input'
+            ? (s.answers || []).length
+            : (s.items || []).length;
+        }
       });
 
       html += '<div class="cu-review-banner">' +
@@ -2596,6 +2600,7 @@
         d.classList.toggle('cu-ex-pdot-active', i === pageIdx);
         d.setAttribute('aria-current', i === pageIdx ? 'true' : 'false');
       });
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
 
     _renderCuExItemsList: function(items, idBase, secId, continuous, hideNumBadge) {
