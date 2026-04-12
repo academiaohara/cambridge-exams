@@ -11,6 +11,24 @@
       return (optionStr || '').slice(1).replace(/^[.)\s]+/, '').trim();
     },
 
+    // Helper: set text in a mc-passage gap slot, handling split gaps (pre/mid/post).
+    // For split gaps the text is stored in the hidden .cu-mc-passage-gap-slot and
+    // the visible pre/post spans are populated by splitting on the "…" separator.
+    _applyMcPassageGapSlot: function(gap, text, slotClass) {
+      var slot = gap.querySelector('.cu-mc-passage-gap-slot');
+      if (slot) {
+        slot.textContent = text;
+        slot.className = slotClass;
+      }
+      if (gap.classList.contains('cu-mc-passage-gap-split')) {
+        var parts = text ? text.split(/\s*\u2026\s*/) : ['', ''];
+        var pre = gap.querySelector('.cu-mc-passage-gap-slot-pre');
+        var post = gap.querySelector('.cu-mc-passage-gap-slot-post');
+        if (pre) pre.textContent = parts[0] || '';
+        if (post) post.textContent = parts[1] || '';
+      }
+    },
+
     openLessons: async function() {
       var content = document.getElementById('main-content');
       if (!content) return;
@@ -1727,7 +1745,7 @@
         gap.classList.remove('cu-mc-passage-gap-answered', 'cu-mc-passage-gap-correct', 'cu-mc-passage-gap-incorrect', 'cu-mc-passage-gap-show-correct');
         gap.style.pointerEvents = '';
         var slot = gap.querySelector('.cu-mc-passage-gap-slot');
-        if (slot) { slot.textContent = ''; slot.className = 'cu-mc-passage-gap-slot'; }
+        if (slot) { BentoGrid._applyMcPassageGapSlot(gap, '', 'cu-mc-passage-gap-slot'); }
         var secId = gap.getAttribute('data-sec-id');
         var gapNum = parseInt(gap.getAttribute('data-gap-num') || '0');
         if (secId && BentoGrid._cuMcPassageAnswers[secId]) delete BentoGrid._cuMcPassageAnswers[secId][gapNum];
@@ -1930,8 +1948,29 @@
       var html = '<div class="cu-mc-passage-exercise cu-mc-inline-exercise' + extraClass + '" id="' + idBase + '-mcinline">';
 
       function buildGapHtml(sentence) {
-        return self._escapeHTML(sentence).replace(
-          /\((\d+)\)\s*(?:_{6,}|\.{6,}|\u2026{2,})/g,
+        var escaped = self._escapeHTML(sentence);
+        // Phase 1: detect (N) ...... FIXED_TEXT ...... and render a split two-slot pill
+        escaped = escaped.replace(
+          /\((\d+)\)\s*(?:_{6,}|\u2026{2,}|\.{6,})\s*([^.…_]+?)\s*(?:_{6,}|\u2026{2,}|\.{6,})/g,
+          function(_, num, midText) {
+            var gapNum = parseInt(num);
+            var pillId = idBase + '-mcil-' + gapNum;
+            return '<span class="cu-mc-passage-gap cu-mc-passage-gap-split" id="' + pillId + '" ' +
+              'data-gap-num="' + gapNum + '" data-sec-id="' + secId + '" ' +
+              'data-answer="' + self._escapeHTML((qMap[gapNum] || {}).answer || '') + '" ' +
+              'onclick="BentoGrid._openCuMcModal(\'' + secId + '\',' + gapNum + ')" ' +
+              'role="button" tabindex="0">' +
+              '<span class="cu-mc-passage-gap-num">' + num + '</span>' +
+              '<span class="cu-mc-passage-gap-slot-pre"></span>' +
+              '<span class="cu-mc-passage-gap-mid">' + midText + '</span>' +
+              '<span class="cu-mc-passage-gap-slot-post"></span>' +
+              '<span class="cu-mc-passage-gap-slot" style="display:none"></span>' +
+            '</span>';
+          }
+        );
+        // Phase 2: handle remaining single-slot gaps: (N) ......
+        return escaped.replace(
+          /\((\d+)\)\s*(?:_{6,}|\u2026{2,}|\.{6,})/g,
           function(_, num) {
             var gapNum = parseInt(num);
             var pillId = idBase + '-mcil-' + gapNum;
@@ -2292,11 +2331,7 @@
       var secEl = document.getElementById(secId);
       var pill = secEl ? secEl.querySelector('[data-gap-num="' + gapNum + '"]') : null;
       if (pill) {
-        var slot = pill.querySelector('.cu-mc-passage-gap-slot');
-        if (slot) {
-          slot.textContent = text;
-          slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
-        }
+        BentoGrid._applyMcPassageGapSlot(pill, text, 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled');
         pill.classList.add('cu-mc-passage-gap-answered');
       }
       // Close modal
@@ -3714,18 +3749,14 @@
             var letter = answers.mcPassage[secId][gapNum];
             var gap = sec.querySelector('.cu-mc-passage-gap[data-gap-num="' + gapNum + '"][data-sec-id="' + secId + '"]');
             if (gap) {
-              var slot = gap.querySelector('.cu-mc-passage-gap-slot');
-              if (slot) {
-                var qData = (BentoGrid._cuMcPassageData[secId] || {})[parseInt(gapNum)];
-                var optText = '';
-                if (qData) {
-                  var opt = qData.options.find(function(o) { return o.charAt(0).toUpperCase() === letter; });
-                  if (opt) optText = BentoGrid._getCuMcOptionText(opt);
-                }
-                slot.textContent = optText || letter;
-                slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
-                gap.classList.add('cu-mc-passage-gap-answered');
+              var qData = (BentoGrid._cuMcPassageData[secId] || {})[parseInt(gapNum)];
+              var optText = '';
+              if (qData) {
+                var opt = qData.options.find(function(o) { return o.charAt(0).toUpperCase() === letter; });
+                if (opt) optText = BentoGrid._getCuMcOptionText(opt);
               }
+              BentoGrid._applyMcPassageGapSlot(gap, optText || letter, 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled');
+              gap.classList.add('cu-mc-passage-gap-answered');
             }
           });
         });
@@ -4620,10 +4651,7 @@
             // Unanswered: show correct answer in blue
             gap.classList.add('cu-mc-passage-gap-show-correct');
             gap.setAttribute('data-check-class', 'cu-mc-passage-gap-show-correct');
-            if (slot) {
-              slot.textContent = correctText;
-              slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
-            }
+            BentoGrid._applyMcPassageGapSlot(gap, correctText, 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled');
           }
           gap.style.pointerEvents = 'none';
           if (ok) correctItems++;
@@ -5326,10 +5354,7 @@
           // Apply show-correct style
           gap.classList.remove('cu-mc-passage-gap-answered');
           gap.classList.add('cu-mc-passage-gap-show-correct');
-          if (slot) {
-            slot.textContent = correctText;
-            slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
-          }
+          BentoGrid._applyMcPassageGapSlot(gap, correctText, 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled');
         });
 
         // Word-tick exercise: reveal correct state
@@ -5446,9 +5471,10 @@
           } else {
             gap.classList.remove('cu-mc-passage-gap-show-correct');
           }
-          if (slot) {
-            if (gap.hasAttribute('data-saved-slot-text')) slot.textContent = gap.getAttribute('data-saved-slot-text');
-            if (gap.hasAttribute('data-saved-slot-class')) slot.className = gap.getAttribute('data-saved-slot-class');
+          if (gap.hasAttribute('data-saved-slot-text') || gap.hasAttribute('data-saved-slot-class')) {
+            var savedText = gap.hasAttribute('data-saved-slot-text') ? gap.getAttribute('data-saved-slot-text') : (slot ? slot.textContent : '');
+            var savedClass = gap.hasAttribute('data-saved-slot-class') ? gap.getAttribute('data-saved-slot-class') : (slot ? slot.className : 'cu-mc-passage-gap-slot');
+            BentoGrid._applyMcPassageGapSlot(gap, savedText, savedClass);
           }
           gap.removeAttribute('data-saved-slot-text');
           gap.removeAttribute('data-saved-slot-class');
@@ -5495,7 +5521,6 @@
         btn.classList.toggle('cu-mc-passage-view-active', btn.getAttribute('data-view') === view);
       });
       sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
-        var slot = gap.querySelector('.cu-mc-passage-gap-slot');
         var correctText = gap.getAttribute('data-correct-text') || '';
         var studentText = gap.getAttribute('data-student-text') || '';
         var checkClass = gap.getAttribute('data-check-class') || 'cu-mc-passage-gap-show-correct';
@@ -5503,23 +5528,12 @@
         if (view === 'correct') {
           // All gaps in blue showing correct answers
           gap.classList.add('cu-mc-passage-gap-show-correct');
-          if (slot) {
-            slot.textContent = correctText;
-            slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
-          }
+          BentoGrid._applyMcPassageGapSlot(gap, correctText, 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled');
         } else {
           // 'yours': restore post-check state
           gap.classList.add(checkClass);
-          if (slot) {
-            if (checkClass === 'cu-mc-passage-gap-show-correct') {
-              // Unanswered: show correct in blue
-              slot.textContent = correctText;
-            } else {
-              // Answered: show student's text (correct or wrong)
-              slot.textContent = studentText;
-            }
-            slot.className = 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled';
-          }
+          var displayText = (checkClass === 'cu-mc-passage-gap-show-correct') ? correctText : studentText;
+          BentoGrid._applyMcPassageGapSlot(gap, displayText, 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled');
         }
       });
     },
