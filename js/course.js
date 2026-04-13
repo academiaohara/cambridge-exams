@@ -4055,14 +4055,14 @@
               : '';
             html += '<div class="cu-block-unit-row cu-block-unit-available" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'data/Course/' + level + '/' + item.file + '\')">' +
               '<span class="cu-bur-icon" style="color:' + typeColor + '">' + _mi(typeIcon) + '</span>' +
-              '<span class="cu-bur-text">' + self._escapeHTML(shortTitle) + '</span>' +
+              '<span class="cu-bur-text">' + (item.unit ? 'U' + item.unit + ': ' : '') + self._escapeHTML(shortTitle) + '</span>' +
               (isDone ? '<span class="cu-bur-done">' + _mi('check_circle') + '</span>' : '<span class="cu-bur-arrow">' + _mi('chevron_right') + '</span>') +
               resetUnitOverviewBtn +
             '</div>';
           } else {
             html += '<div class="cu-block-unit-row cu-block-unit-locked">' +
               '<span class="cu-bur-icon">' + _mi('lock') + '</span>' +
-              '<span class="cu-bur-text">' + self._escapeHTML(shortTitle) + '</span>' +
+              '<span class="cu-bur-text">' + (item.unit ? 'U' + item.unit + ': ' : '') + self._escapeHTML(shortTitle) + '</span>' +
             '</div>';
           }
         });
