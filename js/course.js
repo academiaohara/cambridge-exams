@@ -319,7 +319,7 @@
 
       var html = '<div class="cu-course-view"><div class="fe-map-container">';
 
-      // Progress test block: render as a single large card
+      // Progress test block: render with individual exercise slots like review
       if (progressTestItem) {
         var isPtAvail = progressTestItem.status === 'available';
         var isPtDone = !!progress[progressTestItem.id];
@@ -335,16 +335,34 @@
         '</div>';
 
         if (isPtAvail) {
-          var scoreLabel = ptScore !== null ? (ptScore + ' / ' + ptTotal) : '–/' + ptTotal;
-          html += '<div class="fe-map-lesson fe-map-pt-block ' + (isPtDone ? 'fe-lesson-complete' : 'fe-lesson-active') + '" style="cursor:pointer" ' +
-            'onclick="BentoGrid.openCourseUnit(\'' + progressTestItem.id + '\',\'' + ptPath + '\')">' +
-            '<div class="fe-map-lesson-title">' +
-              '<span class="fe-map-lesson-num">' + _mi('assignment') + ' Progress Test</span>' +
-              '<span class="fe-rs-total-score' + (ptScore === null ? ' fe-rs-score-pending' : '') + '">' + scoreLabel + '</span>' +
-            '</div>' +
-            '<div class="cu-pt-block-desc">' + _mi('info') + ' ' + self._escapeHTML((progressTestItem.title || '').replace(/^Progress Test \d+\s*[—–-]\s*/i, '')) + '</div>' +
-            '<div class="cu-pt-block-cta">' + (isPtDone ? _mi('restart_alt') + ' Retake Test' : _mi('play_arrow') + ' Take the Test') + '</div>' +
+          var reviewAnsweredData = BentoGrid._getReviewAnswered(level);
+          var ptMeta = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[progressTestItem.id];
+          var ptSectionDefs = (ptMeta && ptMeta.ptSections) || [];
+          html += '<div class="fe-map-lesson fe-map-pt-block fe-map-review-block ' + (isPtDone ? 'fe-lesson-complete' : 'fe-lesson-active') + '">';
+          html += '<div class="fe-map-lesson-title">' +
+            '<span class="fe-map-lesson-num">' + _mi('assignment') + ' Progress Test</span>' +
+            '<span class="fe-rs-total-score' + (ptScore === null ? ' fe-rs-score-pending' : '') + '">' + (ptScore !== null ? ptScore : '–') + '/' + ptTotal + '</span>' +
           '</div>';
+          if (ptSectionDefs.length) {
+            html += '<div class="fe-map-pt-slots">';
+            ptSectionDefs.forEach(function(sec) {
+              var earned = reviewAnsweredData[progressTestItem.id + '_' + sec.sectionIdx];
+              var isPending = earned === undefined || earned === null;
+              var scoreLabel = (isPending ? '–' : Math.min(earned, sec.maxScore)) + '/' + sec.maxScore;
+              var titleParts = sec.title.split(':');
+              var letter = titleParts.length > 1 ? titleParts[0].trim() : '';
+              var name = titleParts.length > 1 ? titleParts.slice(1).join(':').trim() : sec.title;
+              html += '<button class="fe-review-slot fe-pt-slot" onclick="BentoGrid.openCourseUnit(\'' + progressTestItem.id + '\',\'' + ptPath + '\',' + sec.sectionIdx + ')">' +
+                (letter ? '<span class="fe-rs-letter">' + self._escapeHTML(letter) + '</span>' : '') +
+                '<span class="fe-rs-name">' + self._escapeHTML(name) + '</span>' +
+                '<span class="fe-rs-score' + (isPending ? ' fe-rs-score-pending' : '') + '">' + scoreLabel + '</span>' +
+              '</button>';
+            });
+            html += '</div>';
+          } else {
+            html += '<div class="cu-pt-block-cta">' + (isPtDone ? _mi('restart_alt') + ' Retake Test' : _mi('play_arrow') + ' Take the Test') + '</div>';
+          }
+          html += '</div>';
         } else {
           html += '<div class="fe-map-lesson fe-lesson-locked">' +
             '<div class="fe-map-lesson-title">' +
@@ -1109,7 +1127,7 @@
           } else {
             var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
             html += '<div class="cu-ex-items">';
-            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous, section.hideNumBadge, section.textareaAnswer);
+            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous, section.hideNumBadge, section.textareaAnswer, section.showOkBtn);
             html += '</div>';
             if (hasInteractive) html += self._renderCuExFooter(secId);
           }
@@ -1430,6 +1448,9 @@
             html += self._renderCuMcPassageExercise(section, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
           } else if (isPassageInput) {
             // Continuous-text gap-fill passage exercise
+            if (section.passageTitle) {
+              html += '<div class="cu-passage-title">' + self._escapeHTML(section.passageTitle) + '</div>';
+            }
             html += self._renderCuPassageInputExercise(section, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
           } else if (section.subtype === 'matching') {
             // Two-column drag-to-match table (e.g. Review Exercise B)
@@ -2216,7 +2237,11 @@
         .replace(/\((\d+)\)\s*(?:_{2,}|[.…]{5,})/g, function(_, num) {
           return makeGapPill(parseInt(num), hintMap[parseInt(num)] || null);
         });
+      var titleHtml = ex.passageTitle
+        ? '<div class="cu-passage-title">' + self._escapeHTML(ex.passageTitle) + '</div>'
+        : '';
       var html = '<div class="cu-passage-exercise" id="' + idBase + '-passage">' +
+        titleHtml +
         '<div class="cu-passage-text">' + passageHtml + '</div>' +
         '</div>';
       if (questions.length) html += self._renderCuExFooter(secId);
@@ -2251,7 +2276,11 @@
           '</span>';
         }
       );
+      var piTitleHtml = ex.passageTitle
+        ? '<div class="cu-passage-title">' + self._escapeHTML(ex.passageTitle) + '</div>'
+        : '';
       var html = '<div class="cu-passage-exercise" id="' + idBase + '-pi-passage">' +
+        piTitleHtml +
         '<div class="cu-passage-text">' + passageHtml + '</div>' +
         '</div>';
       if (answers.length) html += self._renderCuExFooter(secId);
@@ -2771,13 +2800,13 @@
       sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
 
-    _renderCuExItemsList: function(items, idBase, secId, continuous, hideNumBadge, useTextarea) {
+    _renderCuExItemsList: function(items, idBase, secId, continuous, hideNumBadge, useTextarea, showOkBtn) {
       var self = this;
       if (!items || !items.length) return '';
       if (continuous || items.length <= CU_PAGE_SIZE) {
         var html = '';
         items.forEach(function(item, iIdx) {
-          html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx, null, hideNumBadge, useTextarea);
+          html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx, null, hideNumBadge, useTextarea, showOkBtn);
         });
         return html;
       }
@@ -2801,7 +2830,7 @@
         html += '<div class="cu-ex-page' + (pageIdx === 0 ? ' cu-ex-page-active' : '') + '">';
         pageItems.forEach(function(item, itemIdx) {
           var globalIdx = pageIdx * CU_PAGE_SIZE + itemIdx;
-          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx, null, hideNumBadge, useTextarea);
+          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx, null, hideNumBadge, useTextarea, showOkBtn);
         });
         if (pageIdx < pages.length - 1) {
           var remaining = pages.length - pageIdx - 1;
@@ -2814,7 +2843,7 @@
       return html;
     },
 
-    _renderCourseExItem: function(item, idx, idBase, trackCallback, hideNumBadge, useTextarea) {
+    _renderCourseExItem: function(item, idx, idBase, trackCallback, hideNumBadge, useTextarea, showOkBtn) {
       var self = this;
       var answer = item.answer || '';
       var inputId = 'cuex-' + idBase;
@@ -2848,6 +2877,24 @@
       var isMC = !!(item.options && item.options.length);
       // Optional read-only context sentence rendered above the interactive sentence
       var contextHtml = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
+
+      // When showOkBtn is true (e.g. Exercise H style), all items get an OK fill button
+      // alongside the text input. Clicking OK fills the input with "OK". The answer field
+      // stores either "OK" (correct as written) or a correction word.
+      if (showOkBtn) {
+        var sentHtmlOk = self._renderCourseExSentence(sentence, inputId, useTextarea);
+        return '<div class="cu-ex-item cu-ok-btn-item" data-answer="' + self._escapeHTML(answer) + '">' +
+          numBadgeHtml +
+          contextHtml +
+          '<div class="cu-ex-sentence">' + sentHtmlOk + '</div>' +
+          '<div class="cu-ok-fill-row">' +
+            '<button class="cu-ok-fill-btn" type="button" onclick="BentoGrid._fillOkChip(this)">OK ✓</button>' +
+          '</div>' +
+          '<div class="cu-ex-foot">' +
+            '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
+          '</div>' +
+        '</div>';
+      }
 
       // Items with answer '✓' are "correct as is" tick exercises: render OK button.
       // Use _renderCourseExSentence so any hint-gap pills (e.g. bold hint words) are rendered.
@@ -3305,14 +3352,22 @@
     },
 
     // Fill the input inside an error-correction hint pill with "OK" (correct as written).
-    // The chip itself is disabled when the input is locked, so no need to re-check state here.
+    // Works both when the button is inside a .cu-hint-pill and when it is at item level
+    // (e.g. Exercise H style where each item has a standalone OK button). Toggles the fill
+    // so clicking OK a second time clears the input.
     _fillOkChip: function(btn) {
       var pill = btn.closest('.cu-hint-pill');
-      if (!pill) return;
-      var input = pill.querySelector('.cu-gap-input');
-      if (input) {
-        input.value = 'OK';
+      var input;
+      if (pill) {
+        input = pill.querySelector('.cu-gap-input');
+      } else {
+        var item = btn.closest('.cu-ex-item');
+        if (item) input = item.querySelector('.cu-gap-input');
+      }
+      if (input && !input.disabled) {
+        input.value = input.value === 'OK' ? '' : 'OK';
         BentoGrid._resizeCuInput(input);
+        BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
       }
     },
 
@@ -3612,6 +3667,20 @@
         return { theory: theory, exercises: exercises };
       }
 
+      if (unitData.type === 'progress_test') {
+        var ptSections = [];
+        (unitData.sections || []).forEach(function(sec, sectionIdx) {
+          if (sec.type === 'exercise') {
+            ptSections.push({
+              title: sec.title,
+              maxScore: (sec.scoring && sec.scoring.maxScore) || 0,
+              sectionIdx: sectionIdx
+            });
+          }
+        });
+        return { ptSections: ptSections };
+      }
+
       return null;
     },
 
@@ -3628,7 +3697,7 @@
         return item &&
           item.status === 'available' &&
           item.file &&
-          (item.type === 'grammar' || item.type === 'vocabulary') &&
+          (item.type === 'grammar' || item.type === 'vocabulary' || item.type === 'progress_test') &&
           !BentoGrid._courseUnitMeta[item.id];
       });
 
@@ -5513,6 +5582,7 @@
         if (checkBtn) checkBtn.disabled = true;
         // Disable OK chips while answers are shown
         sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = true; });
+        sec.querySelectorAll('.cu-ok-fill-btn').forEach(function(btn) { btn.disabled = true; });
 
         // Text inputs from cu-ex-items
         sec.querySelectorAll('.cu-ex-item, .cu-sync-item').forEach(function(item) {
@@ -5759,6 +5829,7 @@
         if (checkBtn && !wasChecked) checkBtn.disabled = false;
         // Re-enable OK chips when answers are hidden
         sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = false; });
+        sec.querySelectorAll('.cu-ok-fill-btn').forEach(function(btn) { btn.disabled = false; });
 
         sec.querySelectorAll('.cu-gap-input').forEach(function(inp) {
           var saved = inp.getAttribute('data-saved-value');

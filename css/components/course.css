@@ -613,6 +613,25 @@
   margin-top: 10px;
 }
 
+/* Progress test slots – 2-column grid */
+.fe-map-pt-slots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.fe-map-pt-block .fe-map-pt-slots {
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .fe-map-pt-slots {
+    grid-template-columns: 1fr;
+  }
+}
+
 .fe-review-slot {
   display: flex;
   align-items: center;
@@ -3024,6 +3043,37 @@ textarea.cu-gap-input.cu-gap-textarea {
 
 .cu-item-tick-row .cu-yn-buttons {
   margin-left: 0;
+}
+
+/* ── OK fill button (Exercise H showOkBtn style: sentence + OK button) ── */
+.cu-ok-fill-row {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.cu-ok-fill-btn {
+  padding: 5px 18px;
+  border-radius: 20px;
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  color: #64748b;
+  font-family: 'Nunito', sans-serif;
+}
+
+.cu-ok-fill-btn:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.cu-ok-fill-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
 }
 
 /* ── Word-tick exercise (e.g. Exercise P: tick valid -y adjectives) ─── */

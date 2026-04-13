@@ -402,43 +402,43 @@
       "instructions": "There is an error in each sentence. The incorrect word or phrase is shown in bold. Write the correction on the line.",
       "items": [
         {
-          "sentence": "I don't think there's **pizza enough** ...... for everyone.",
+          "sentence": "I don't think there's ...... (pizza enough) for everyone.",
           "answer": "enough pizza"
         },
         {
-          "sentence": "I'm afraid you're not **enough old** ...... to see this film.",
+          "sentence": "I'm afraid you're not ...... (enough old) to see this film.",
           "answer": "old enough"
         },
         {
-          "sentence": "Luckily, we got to the box office **enough early** ...... and got the tickets.",
+          "sentence": "Luckily, we got to the box office ...... (enough early) and got the tickets.",
           "answer": "early enough"
         },
         {
-          "sentence": "Anne's **enough sensible** ...... to realise she needs to work hard this year.",
+          "sentence": "Anne's ...... (enough sensible) to realise she needs to work hard this year.",
           "answer": "sensible enough"
         },
         {
-          "sentence": "If you don't train **enough hard** ......, you'll never win the race.",
+          "sentence": "If you don't train ...... (enough hard), you'll never win the race.",
           "answer": "hard enough"
         },
         {
-          "sentence": "Have you got **credits enough** ...... to call Yiota on your mobile?",
+          "sentence": "Have you got ...... (credits enough) to call Yiota on your mobile?",
           "answer": "enough credits"
         },
         {
-          "sentence": "It should be **enough warm** ...... for a picnic this weekend.",
+          "sentence": "It should be ...... (enough warm) for a picnic this weekend.",
           "answer": "warm enough"
         },
         {
-          "sentence": "I don't think I'm good enough for **getting** ...... into the swimming team.",
+          "sentence": "I don't think I'm good enough for ...... (getting) into the swimming team.",
           "answer": "to get"
         },
         {
-          "sentence": "Are you sure you've got enough chairs **we all sit down** ...... ?",
+          "sentence": "Are you sure you've got enough chairs ...... (we all sit down) ?",
           "answer": "for us all to sit down"
         },
         {
-          "sentence": "In mountaineering, you have to be strong enough for **pull** ...... yourself up with your fingers.",
+          "sentence": "In mountaineering, you have to be strong enough for ...... (pull) yourself up with your fingers.",
           "answer": "to pull"
         }
       ],
@@ -451,7 +451,7 @@
       "items": [
         {
           "sentence": "I wanted to get some new trainers but they were **too** expensive.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "Japanese is a **too** difficult language for Westerners to learn.",
@@ -463,11 +463,11 @@
         },
         {
           "sentence": "Don't invite **too** many people to the party or we won't have enough room.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "If you try to write your essay **too** quickly, you'll make mistakes.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "My new computer is **too** fast and can run all the latest programs.",
@@ -475,11 +475,11 @@
         },
         {
           "sentence": "Joanne was fined for driving **too** fast.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "Carol couldn't climb over the wall because it was **too** high.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "Cornwall is **too** beautiful and we go there every year on holiday.",
@@ -487,17 +487,18 @@
         },
         {
           "sentence": "My grandparents are **too** old to work now and have retired.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "It was **too** dark for me to see the map and I got lost.",
-          "answer": "✓"
+          "answer": "OK"
         },
         {
           "sentence": "My best friend is **too** funny and always makes me laugh.",
           "answer": "very/really/extremely"
         }
-      ]
+      ],
+      "showOkBtn": true
     },
     {
       "type": "exercise",

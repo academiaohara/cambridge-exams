@@ -8,35 +8,31 @@
       "type": "exercise",
       "title": "A: Use the word given in capitals to form a word",
       "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
-      "scoring": {
-        "pointsPerItem": 1,
-        "maxScore": 10
-      },
-      "items": [
-        {
-          "sentence": "Frank Turner, the (1) ...... (ACCUSE) in a trial that has attracted national attention, was today convicted of murder.",
-          "answer": "accused"
-        },
-        {
-          "sentence": "The police (2) ...... (INVESTIGATE) lasted for a year and during the trial over 100 hours of (3) ...... (EVIDENT) were heard.",
-          "answer": "investigation, evidence"
-        },
-        {
-          "sentence": "Turner's (4) ...... (LAW) had all argued that he was not in the area at the time, but could not provide the necessary (5) ...... (PROVE).",
-          "answer": "lawyers, proof"
-        },
-        {
-          "sentence": "Police described Turner as a well-known (6) ...... (THIEF) who was responsible for many (7) ...... (ROB) in the local region.",
-          "answer": "thief, robberies"
-        },
-        {
-          "sentence": "This is not Turner's first (8) ...... (CONVICT). Seven years ago, he was found guilty of (9) ...... (FORGE) and served three years in prison.",
-          "answer": "conviction, forgery"
-        },
-        {
-          "sentence": "The judge is expected to sentence Turner to a period of (10) ...... (PRISON) later this week.",
-          "answer": "imprisonment"
-        }
+      "subtype": "passage-input",
+      "passage": "Frank Turner, the (1) ...... in a trial that has attracted national attention, was today convicted of murder. The police (2) ...... lasted for a year and during the trial over 100 hours of (3) ...... were heard. Turner's (4) ...... had all argued that he was not in the area at the time, but could not provide the necessary (5) ...... . Police described Turner as a well-known (6) ...... who was responsible for many (7) ...... in the local region. This is not Turner's first (8) ...... . Seven years ago, he was found guilty of (9) ...... and served three years in prison. The judge is expected to sentence Turner to a period of (10) ...... later this week.",
+      "answers": [
+        "accused",
+        "investigation",
+        "evidence",
+        "lawyers",
+        "proof",
+        "thief",
+        "robberies",
+        "conviction",
+        "forgery",
+        "imprisonment"
+      ],
+      "hints": [
+        "ACCUSE",
+        "INVESTIGATE",
+        "EVIDENT",
+        "LAW",
+        "PROVE",
+        "THIEF",
+        "ROB",
+        "CONVICT",
+        "FORGE",
+        "PRISON"
       ]
     },
     {
