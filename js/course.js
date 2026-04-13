@@ -1141,6 +1141,7 @@
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
           }
+          html += self._renderCuWordBank(section.words);
           html += self._renderCuPassageInputExercise(section, grIdBase, secId);
           html += '</div>';
         }
@@ -2275,7 +2276,7 @@
             '</span>' +
           '</span>';
         }
-      );
+      ).replace(/\n/g, '<br>');
       var piTitleHtml = ex.passageTitle
         ? '<div class="cu-passage-title">' + self._escapeHTML(ex.passageTitle) + '</div>'
         : '';
@@ -2483,8 +2484,12 @@
             '<span class="cu-mc-passage-gap-slot"></span>' +
           '</span>';
         }
-      );
+      ).replace(/\n/g, '<br>');
+      var passTitleHtml = ex.passageTitle
+        ? '<div class="cu-passage-title">' + self._escapeHTML(ex.passageTitle) + '</div>'
+        : '';
       var html = '<div class="cu-mc-passage-exercise" id="' + idBase + '-mcpassage">' +
+        passTitleHtml +
         '<div class="cu-passage-text">' + passageHtml + '</div>' +
         '</div>';
       html += self._renderCuExFooter(secId);
