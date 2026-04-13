@@ -2393,13 +2393,14 @@
       var acrossItems = ex.across || [];
       var downItems = ex.down || [];
 
-      function renderClueList(items, label) {
+      function renderClueList(items, dir) {
         if (!items.length) return '';
+        var label = dir === 'across' ? 'Across' : 'Down';
         var h = '<div class="cu-cw-section"><div class="cu-cw-section-label">' + self._escapeHTML(label) + '</div><ol class="cu-cw-clue-list">';
         items.forEach(function(it) {
           var boxesHtml = '';
           var ans = it.answer || '';
-          var iid = idBase + '-cw-' + it.dir + '-' + it.num;
+          var iid = idBase + '-cw-' + dir + '-' + it.num;
           for (var ci = 0; ci < ans.length; ci++) {
             boxesHtml += '<input type="text" class="cu-cw-box cu-cw-letter" maxlength="1" ' +
               'data-cw-id="' + iid + '" data-cw-idx="' + ci + '" ' +
@@ -2423,9 +2424,28 @@
         return h;
       }
 
+      // Split into two pages: Across and Down
+      var hasAcross = acrossItems.length > 0;
+      var hasDown = downItems.length > 0;
       var html = '<div class="cu-cw-exercise">';
-      html += renderClueList(acrossItems, 'Across');
-      html += renderClueList(downItems, 'Down');
+
+      if (hasAcross && hasDown) {
+        // Page-dot navigation: page 0 = Across, page 1 = Down
+        html += '<nav class="cu-ex-page-dots" aria-label="Exercise pages">';
+        html += '<button class="cu-ex-pdot cu-ex-pdot-label cu-ex-pdot-active" ' +
+          'onclick="BentoGrid._cuExGoToPage(\'' + secId + '\',0)" ' +
+          'aria-current="true" aria-label="Across">Across</button>';
+        html += '<button class="cu-ex-pdot cu-ex-pdot-label" ' +
+          'onclick="BentoGrid._cuExGoToPage(\'' + secId + '\',1)" ' +
+          'aria-current="false" aria-label="Down">Down</button>';
+        html += '</nav>';
+        html += '<div class="cu-ex-page cu-ex-page-active">' + renderClueList(acrossItems, 'across') + '</div>';
+        html += '<div class="cu-ex-page">' + renderClueList(downItems, 'down') + '</div>';
+      } else {
+        html += renderClueList(acrossItems, 'across');
+        html += renderClueList(downItems, 'down');
+      }
+
       html += '</div>';
       html += self._renderCuExFooter(secId);
       return html;
@@ -2718,13 +2738,15 @@
       // Optional read-only context sentence rendered above the interactive sentence
       var contextHtml = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
 
-      // Items with answer '✓' are "correct as is" tick exercises: render OK button only
+      // Items with answer '✓' are "correct as is" tick exercises: render OK button.
+      // Use _renderCourseExSentence so any hint-gap pills (e.g. bold hint words) are rendered.
       if (answer === '✓') {
         var tickGroupId = inputId + '-tick';
+        var tickSentHtml = self._renderCourseExSentence(sentence, inputId, useTextarea);
         return '<div class="cu-ex-item cu-yn-item" data-answer="YES">' +
           numBadgeHtml +
           '<div class="cu-yn-row">' +
-            '<div class="cu-ex-sentence cu-yn-sentence">' + self._escapeHTML(sentence).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>') + '</div>' +
+            '<div class="cu-ex-sentence cu-yn-sentence">' + tickSentHtml + '</div>' +
             '<div class="cu-yn-buttons">' +
               '<button class="cu-yn-btn cu-yn-yes" data-group="' + tickGroupId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">OK ✓</button>' +
             '</div>' +
