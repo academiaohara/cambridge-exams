@@ -1107,7 +1107,7 @@
           } else {
             var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
             html += '<div class="cu-ex-items">';
-            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous, section.hideNumBadge, section.textareaAnswer);
+            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous, section.hideNumBadge, section.textareaAnswer, section.showOkBtn);
             html += '</div>';
             if (hasInteractive) html += self._renderCuExFooter(secId);
           }
@@ -1804,6 +1804,10 @@
           okBtn.classList.remove('cu-few-ok-selected', 'cu-few-ok-correct', 'cu-few-ok-incorrect', 'cu-few-ok-reveal');
         }
       });
+      // Reset OK fill buttons (Exercise H showOkBtn style)
+      sec.querySelectorAll('.cu-ok-fill-btn').forEach(function(btn) {
+        btn.disabled = false;
+      });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
         pill.classList.remove('cu-mc-gap-pill-filled', 'cu-mc-gap-pill-correct', 'cu-mc-gap-pill-incorrect');
@@ -2135,7 +2139,11 @@
         .replace(/\((\d+)\)\s*(?:_{2,}|[.…]{5,})/g, function(_, num) {
           return makeGapPill(parseInt(num), hintMap[parseInt(num)] || null);
         });
+      var titleHtml = ex.passageTitle
+        ? '<div class="cu-passage-title">' + self._escapeHTML(ex.passageTitle) + '</div>'
+        : '';
       var html = '<div class="cu-passage-exercise" id="' + idBase + '-passage">' +
+        titleHtml +
         '<div class="cu-passage-text">' + passageHtml + '</div>' +
         '</div>';
       if (questions.length) html += self._renderCuExFooter(secId);
@@ -2170,7 +2178,11 @@
           '</span>';
         }
       );
+      var piTitleHtml = ex.passageTitle
+        ? '<div class="cu-passage-title">' + self._escapeHTML(ex.passageTitle) + '</div>'
+        : '';
       var html = '<div class="cu-passage-exercise" id="' + idBase + '-pi-passage">' +
+        piTitleHtml +
         '<div class="cu-passage-text">' + passageHtml + '</div>' +
         '</div>';
       if (answers.length) html += self._renderCuExFooter(secId);
@@ -2690,13 +2702,13 @@
       sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
 
-    _renderCuExItemsList: function(items, idBase, secId, continuous, hideNumBadge, useTextarea) {
+    _renderCuExItemsList: function(items, idBase, secId, continuous, hideNumBadge, useTextarea, showOkBtn) {
       var self = this;
       if (!items || !items.length) return '';
       if (continuous || items.length <= CU_PAGE_SIZE) {
         var html = '';
         items.forEach(function(item, iIdx) {
-          html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx, null, hideNumBadge, useTextarea);
+          html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx, null, hideNumBadge, useTextarea, showOkBtn);
         });
         return html;
       }
@@ -2720,7 +2732,7 @@
         html += '<div class="cu-ex-page' + (pageIdx === 0 ? ' cu-ex-page-active' : '') + '">';
         pageItems.forEach(function(item, itemIdx) {
           var globalIdx = pageIdx * CU_PAGE_SIZE + itemIdx;
-          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx, null, hideNumBadge, useTextarea);
+          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx, null, hideNumBadge, useTextarea, showOkBtn);
         });
         if (pageIdx < pages.length - 1) {
           var remaining = pages.length - pageIdx - 1;
@@ -2733,7 +2745,7 @@
       return html;
     },
 
-    _renderCourseExItem: function(item, idx, idBase, trackCallback, hideNumBadge, useTextarea) {
+    _renderCourseExItem: function(item, idx, idBase, trackCallback, hideNumBadge, useTextarea, showOkBtn) {
       var self = this;
       var answer = item.answer || '';
       var inputId = 'cuex-' + idBase;
@@ -2767,6 +2779,24 @@
       var isMC = !!(item.options && item.options.length);
       // Optional read-only context sentence rendered above the interactive sentence
       var contextHtml = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
+
+      // When showOkBtn is true (e.g. Exercise H style), all items get an OK fill button
+      // alongside the text input. Clicking OK fills the input with "OK". The answer field
+      // stores either "OK" (correct as written) or a correction word.
+      if (showOkBtn) {
+        var sentHtmlOk = self._renderCourseExSentence(sentence, inputId, useTextarea);
+        return '<div class="cu-ex-item cu-ok-btn-item" data-answer="' + self._escapeHTML(answer) + '">' +
+          numBadgeHtml +
+          contextHtml +
+          '<div class="cu-ex-sentence">' + sentHtmlOk + '</div>' +
+          '<div class="cu-ok-fill-row">' +
+            '<button class="cu-ok-fill-btn" type="button" onclick="BentoGrid._fillOkChip(this)">OK ✓</button>' +
+          '</div>' +
+          '<div class="cu-ex-foot">' +
+            '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
+          '</div>' +
+        '</div>';
+      }
 
       // Items with answer '✓' are "correct as is" tick exercises: render OK button.
       // Use _renderCourseExSentence so any hint-gap pills (e.g. bold hint words) are rendered.
@@ -3224,14 +3254,22 @@
     },
 
     // Fill the input inside an error-correction hint pill with "OK" (correct as written).
-    // The chip itself is disabled when the input is locked, so no need to re-check state here.
+    // Works both when the button is inside a .cu-hint-pill and when it is at item level
+    // (e.g. Exercise H style where each item has a standalone OK button). Toggles the fill
+    // so clicking OK a second time clears the input.
     _fillOkChip: function(btn) {
       var pill = btn.closest('.cu-hint-pill');
-      if (!pill) return;
-      var input = pill.querySelector('.cu-gap-input');
-      if (input) {
-        input.value = 'OK';
+      var input;
+      if (pill) {
+        input = pill.querySelector('.cu-gap-input');
+      } else {
+        var item = btn.closest('.cu-ex-item');
+        if (item) input = item.querySelector('.cu-gap-input');
+      }
+      if (input && !input.disabled) {
+        input.value = input.value === 'OK' ? '' : 'OK';
         BentoGrid._resizeCuInput(input);
+        BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
       }
     },
 
@@ -5248,6 +5286,7 @@
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) { input.disabled = true; });
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) { btn.disabled = true; });
       sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = true; });
+      sec.querySelectorAll('.cu-ok-fill-btn').forEach(function(btn) { btn.disabled = true; });
       // Show retry button
       var retryBtn = sec.querySelector('.cu-retry-btn');
       if (retryBtn) retryBtn.style.display = '';
@@ -5353,6 +5392,7 @@
         if (checkBtn) checkBtn.disabled = true;
         // Disable OK chips while answers are shown
         sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = true; });
+        sec.querySelectorAll('.cu-ok-fill-btn').forEach(function(btn) { btn.disabled = true; });
 
         // Text inputs from cu-ex-items
         sec.querySelectorAll('.cu-ex-item, .cu-sync-item').forEach(function(item) {
@@ -5576,6 +5616,7 @@
         if (checkBtn && !wasChecked) checkBtn.disabled = false;
         // Re-enable OK chips when answers are hidden
         sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = false; });
+        sec.querySelectorAll('.cu-ok-fill-btn').forEach(function(btn) { btn.disabled = false; });
 
         sec.querySelectorAll('.cu-gap-input').forEach(function(inp) {
           var saved = inp.getAttribute('data-saved-value');
