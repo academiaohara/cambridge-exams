@@ -319,7 +319,7 @@
 
       var html = '<div class="cu-course-view"><div class="fe-map-container">';
 
-      // Progress test block: render as a single large card
+      // Progress test block: render with individual exercise slots like review
       if (progressTestItem) {
         var isPtAvail = progressTestItem.status === 'available';
         var isPtDone = !!progress[progressTestItem.id];
@@ -335,16 +335,34 @@
         '</div>';
 
         if (isPtAvail) {
-          var scoreLabel = ptScore !== null ? (ptScore + ' / ' + ptTotal) : '–/' + ptTotal;
-          html += '<div class="fe-map-lesson fe-map-pt-block ' + (isPtDone ? 'fe-lesson-complete' : 'fe-lesson-active') + '" style="cursor:pointer" ' +
-            'onclick="BentoGrid.openCourseUnit(\'' + progressTestItem.id + '\',\'' + ptPath + '\')">' +
-            '<div class="fe-map-lesson-title">' +
-              '<span class="fe-map-lesson-num">' + _mi('assignment') + ' Progress Test</span>' +
-              '<span class="fe-rs-total-score' + (ptScore === null ? ' fe-rs-score-pending' : '') + '">' + scoreLabel + '</span>' +
-            '</div>' +
-            '<div class="cu-pt-block-desc">' + _mi('info') + ' ' + self._escapeHTML((progressTestItem.title || '').replace(/^Progress Test \d+\s*[—–-]\s*/i, '')) + '</div>' +
-            '<div class="cu-pt-block-cta">' + (isPtDone ? _mi('restart_alt') + ' Retake Test' : _mi('play_arrow') + ' Take the Test') + '</div>' +
+          var reviewAnsweredData = BentoGrid._getReviewAnswered(level);
+          var ptMeta = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[progressTestItem.id];
+          var ptSectionDefs = (ptMeta && ptMeta.ptSections) || [];
+          html += '<div class="fe-map-lesson fe-map-pt-block fe-map-review-block ' + (isPtDone ? 'fe-lesson-complete' : 'fe-lesson-active') + '">';
+          html += '<div class="fe-map-lesson-title">' +
+            '<span class="fe-map-lesson-num">' + _mi('assignment') + ' Progress Test</span>' +
+            '<span class="fe-rs-total-score' + (ptScore === null ? ' fe-rs-score-pending' : '') + '">' + (ptScore !== null ? ptScore : '–') + '/' + ptTotal + '</span>' +
           '</div>';
+          if (ptSectionDefs.length) {
+            html += '<div class="fe-map-pt-slots">';
+            ptSectionDefs.forEach(function(sec) {
+              var earned = reviewAnsweredData[progressTestItem.id + '_' + sec.sectionIdx];
+              var isPending = earned === undefined || earned === null;
+              var scoreLabel = (isPending ? '–' : Math.min(earned, sec.maxScore)) + '/' + sec.maxScore;
+              var titleParts = sec.title.split(':');
+              var letter = titleParts.length > 1 ? titleParts[0].trim() : '';
+              var name = titleParts.length > 1 ? titleParts.slice(1).join(':').trim() : sec.title;
+              html += '<button class="fe-review-slot fe-pt-slot" onclick="BentoGrid.openCourseUnit(\'' + progressTestItem.id + '\',\'' + ptPath + '\',' + sec.sectionIdx + ')">' +
+                (letter ? '<span class="fe-rs-letter">' + self._escapeHTML(letter) + '</span>' : '') +
+                '<span class="fe-rs-name">' + self._escapeHTML(name) + '</span>' +
+                '<span class="fe-rs-score' + (isPending ? ' fe-rs-score-pending' : '') + '">' + scoreLabel + '</span>' +
+              '</button>';
+            });
+            html += '</div>';
+          } else {
+            html += '<div class="cu-pt-block-cta">' + (isPtDone ? _mi('restart_alt') + ' Retake Test' : _mi('play_arrow') + ' Take the Test') + '</div>';
+          }
+          html += '</div>';
         } else {
           html += '<div class="fe-map-lesson fe-lesson-locked">' +
             '<div class="fe-map-lesson-title">' +
@@ -3528,6 +3546,20 @@
         return { theory: theory, exercises: exercises };
       }
 
+      if (unitData.type === 'progress_test') {
+        var ptSections = [];
+        (unitData.sections || []).forEach(function(sec, sectionIdx) {
+          if (sec.type === 'exercise') {
+            ptSections.push({
+              title: sec.title,
+              maxScore: (sec.scoring && sec.scoring.maxScore) || 0,
+              sectionIdx: sectionIdx
+            });
+          }
+        });
+        return { ptSections: ptSections };
+      }
+
       return null;
     },
 
@@ -3544,7 +3576,7 @@
         return item &&
           item.status === 'available' &&
           item.file &&
-          (item.type === 'grammar' || item.type === 'vocabulary') &&
+          (item.type === 'grammar' || item.type === 'vocabulary' || item.type === 'progress_test') &&
           !BentoGrid._courseUnitMeta[item.id];
       });
 
