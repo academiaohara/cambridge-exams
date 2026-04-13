@@ -1396,6 +1396,22 @@
   margin-top: 8px;
 }
 
+/* Textarea variant for long free-write answers (e.g. error-correction rewrite exercises) */
+textarea.cu-gap-input.cu-gap-textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  resize: none;
+  overflow: hidden;
+  line-height: 1.55;
+  padding: 6px 10px;
+  margin: 6px 0 0;
+  min-height: 2.8em;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 /* Option buttons (circle the correct word) — WCAG: min 44px touch target */
 .cu-option-btn {
   display: inline-flex;
