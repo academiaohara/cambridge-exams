@@ -1849,9 +1849,11 @@
         var contextHtml = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
         html += '<div class="cu-ex-item cu-yn-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
           '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
-          contextHtml +
           '<div class="cu-yn-row">' +
-            '<div class="cu-ex-sentence cu-yn-sentence">' + _bold(item.sentence || '') + '</div>' +
+            '<div class="cu-yn-content">' +
+              contextHtml +
+              '<div class="cu-ex-sentence cu-yn-sentence">' + _bold(item.sentence || '') + '</div>' +
+            '</div>' +
             '<div class="cu-yn-buttons">' +
               '<button class="cu-yn-btn cu-yn-yes" data-group="' + iId + '" data-yn="YES" onclick="BentoGrid._selectCuYn(this)" type="button">' + self._escapeHTML(yesText) + '</button>' +
               '<button class="cu-yn-btn cu-yn-no" data-group="' + iId + '" data-yn="NO" onclick="BentoGrid._selectCuYn(this)" type="button">NO</button>' +

@@ -2877,16 +2877,28 @@
 .cu-yn-item {
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
 }
 
 .cu-yn-row {
   display: flex;
   flex: 1;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   min-width: 0;
+}
+
+.cu-yn-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cu-yn-content .cu-ex-context {
+  margin-bottom: 0;
 }
 
 .cu-yn-sentence {
