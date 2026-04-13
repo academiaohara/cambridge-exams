@@ -1656,6 +1656,7 @@
     _toggleFewOk: function(btn) {
       if (btn.disabled) return;
       btn.classList.toggle('cu-few-ok-selected');
+      btn.setAttribute('aria-pressed', btn.classList.contains('cu-few-ok-selected') ? 'true' : 'false');
       BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
