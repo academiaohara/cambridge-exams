@@ -1604,9 +1604,11 @@
         if (!ex.hideNumBadge) html += '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>';
 
         if (isOkItem) {
-          // Correct-sentence item: plain text only — leaving it unmarked on Check counts as correct
+          // Correct-sentence item: show text with an OK button the student must click to confirm
           html += '<div class="cu-few-sentence cu-few-sentence-plain">' +
-            self._escapeHTML(rawSentence) + '</div>';
+            self._escapeHTML(rawSentence) + '</div>' +
+            '<button class="cu-few-ok-btn" onclick="BentoGrid._toggleFewOk(this)" ' +
+            'aria-pressed="false">OK</button>';
         } else {
           // Extra-word item: each token is a clickable span
           var tokens = tokenize(rawSentence);
@@ -1654,6 +1656,7 @@
     _toggleFewOk: function(btn) {
       if (btn.disabled) return;
       btn.classList.toggle('cu-few-ok-selected');
+      btn.setAttribute('aria-pressed', btn.classList.contains('cu-few-ok-selected') ? 'true' : 'false');
       BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
@@ -1756,7 +1759,12 @@
         span.classList.remove('cu-few-selected', 'cu-few-correct', 'cu-few-incorrect', 'cu-few-reveal');
       });
       sec.querySelectorAll('.cu-few-item').forEach(function(item) {
-        item.classList.remove('cu-few-ok-correct');
+        item.classList.remove('cu-few-ok-correct', 'cu-few-ok-reveal');
+        var okBtn = item.querySelector('.cu-few-ok-btn');
+        if (okBtn) {
+          okBtn.disabled = false;
+          okBtn.classList.remove('cu-few-ok-selected', 'cu-few-ok-correct', 'cu-few-ok-incorrect', 'cu-few-ok-reveal');
+        }
       });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
@@ -3681,9 +3689,9 @@
       // Find-extra-word state
       var fewState = [];
       sec.querySelectorAll('.cu-few-item').forEach(function(item) {
-        // OK items (correct-sentence) have no interactive element — nothing to save
         if (item.classList.contains('cu-few-ok-item')) {
-          fewState.push({ ok: 0 });
+          var okBtn = item.querySelector('.cu-few-ok-btn');
+          fewState.push({ ok: okBtn && okBtn.classList.contains('cu-few-ok-selected') ? 1 : 0 });
         } else {
           var words = item.querySelectorAll('.cu-few-word');
           var selIdx = -1;
@@ -3779,8 +3787,12 @@
         sec.querySelectorAll('.cu-few-item').forEach(function(item, ii) {
           var state = answers.fewState[ii];
           if (!state) return;
-          // OK items have no interactive element — nothing to restore
-          if (!item.classList.contains('cu-few-ok-item') && typeof state.sel === 'number' && state.sel >= 0) {
+          if (item.classList.contains('cu-few-ok-item')) {
+            if (state.ok === 1) {
+              var okBtn = item.querySelector('.cu-few-ok-btn');
+              if (okBtn) okBtn.classList.add('cu-few-ok-selected');
+            }
+          } else if (typeof state.sel === 'number' && state.sel >= 0) {
             var words = item.querySelectorAll('.cu-few-word');
             if (words[state.sel]) words[state.sel].classList.add('cu-few-selected');
           }
@@ -4573,8 +4585,14 @@
       // Detect unanswered find-extra-word items
       sec.querySelectorAll('.cu-few-item').forEach(function(item, idx) {
         var isOkItem = item.classList.contains('cu-few-ok-item');
-        // OK items (correct sentences) are never unanswered — leaving them blank is the answer
-        if (isOkItem) return;
+        if (isOkItem) {
+          // OK items require the OK button to be clicked
+          var okBtn = item.querySelector('.cu-few-ok-btn');
+          if (okBtn && !okBtn.classList.contains('cu-few-ok-selected')) {
+            unanswered.push(idx + 1);
+          }
+          return;
+        }
         var isEmpty = !item.querySelector('.cu-few-word.cu-few-selected');
         if (isEmpty) unanswered.push(idx + 1);
       });
@@ -4616,13 +4634,19 @@
         totalItems++;
         var isOkItem = item.classList.contains('cu-few-ok-item');
         if (isOkItem) {
-          // Correct-sentence item: no word selected = correct; word selected = incorrect
-          var selectedWord = item.querySelector('.cu-few-word.cu-few-selected');
-          if (selectedWord) {
-            selectedWord.setAttribute('data-few-disabled', '1');
-            selectedWord.classList.add('cu-few-incorrect');
+          // Correct-sentence item: OK button must be clicked to confirm correct
+          var okBtn = item.querySelector('.cu-few-ok-btn');
+          if (okBtn) {
+            okBtn.disabled = true;
+            if (okBtn.classList.contains('cu-few-ok-selected')) {
+              item.classList.add('cu-few-ok-correct');
+              okBtn.classList.add('cu-few-ok-correct');
+              correctItems++;
+            } else {
+              okBtn.classList.add('cu-few-ok-incorrect');
+            }
           } else {
-            // Nothing selected — correct, mark sentence as confirmed correct
+            // Fallback: no OK button rendered — leaving blank counts as correct
             item.classList.add('cu-few-ok-correct');
             correctItems++;
           }
@@ -5135,7 +5159,7 @@
       // Disable all inputs, option buttons, and OK chips
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) { input.disabled = true; });
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) { btn.disabled = true; });
-      sec.querySelectorAll('.cu-ok-chip').forEach(function(btn) { btn.disabled = true; });
+      sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = true; });
       // Show retry button
       var retryBtn = sec.querySelector('.cu-retry-btn');
       if (retryBtn) retryBtn.style.display = '';
@@ -5240,7 +5264,7 @@
         var checkBtn = sec.querySelector('.cu-check-btn');
         if (checkBtn) checkBtn.disabled = true;
         // Disable OK chips while answers are shown
-        sec.querySelectorAll('.cu-ok-chip').forEach(function(btn) { btn.disabled = true; });
+        sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = true; });
 
         // Text inputs from cu-ex-items
         sec.querySelectorAll('.cu-ex-item, .cu-sync-item').forEach(function(item) {
@@ -5426,10 +5450,12 @@
         sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
           if (span.getAttribute('data-ws-answer') === '1') span.classList.add('cu-ws-reveal');
         });
-        // Find-extra-word exercise: reveal correct word; for OK items highlight the sentence
+        // Find-extra-word exercise: reveal correct word; for OK items highlight the sentence and button
         sec.querySelectorAll('.cu-few-item').forEach(function(item) {
           if (item.classList.contains('cu-few-ok-item')) {
             item.classList.add('cu-few-ok-reveal');
+            var okBtn = item.querySelector('.cu-few-ok-btn');
+            if (okBtn) { okBtn.disabled = true; okBtn.classList.add('cu-few-ok-reveal'); }
           } else {
             item.querySelectorAll('.cu-few-word').forEach(function(span) {
               if (span.getAttribute('data-few-is-answer') === '1') span.classList.add('cu-few-reveal');
@@ -5460,7 +5486,7 @@
         var wasChecked = sec.getAttribute('data-checked') === 'true';
         if (checkBtn && !wasChecked) checkBtn.disabled = false;
         // Re-enable OK chips when answers are hidden
-        sec.querySelectorAll('.cu-ok-chip').forEach(function(btn) { btn.disabled = false; });
+        sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = false; });
 
         sec.querySelectorAll('.cu-gap-input').forEach(function(inp) {
           var saved = inp.getAttribute('data-saved-value');
@@ -5558,6 +5584,8 @@
         });
         sec.querySelectorAll('.cu-few-item').forEach(function(item) {
           item.classList.remove('cu-few-ok-reveal');
+          var okBtn = item.querySelector('.cu-few-ok-btn');
+          if (okBtn) { okBtn.disabled = false; okBtn.classList.remove('cu-few-ok-reveal'); }
         });
         // Crossword: restore saved letter values
         sec.querySelectorAll('.cu-cw-letter').forEach(function(b) {
