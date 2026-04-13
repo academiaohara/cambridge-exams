@@ -10,43 +10,128 @@
       "content": [
         {
           "subtitle": "Form",
-          "items": [
-            "noun + be in the correct form + past participle (+ by/with + noun)"
-          ]
+          "formula": "noun + **be** in the correct form + past participle (+ **by**/**with** + noun)"
         },
         {
-          "subtitle": "Tense table",
-          "items": [
-            "present simple: am/is/are + past participle - Bananas are grown in tropical areas.",
-            "present continuous: am/is/are + being + past participle - The café is being redecorated.",
-            "present perfect simple: has/have + been + past participle - Have the carrots been peeled?",
-            "past simple: was/were + past participle - The meal was served in an elegant dining room.",
-            "past continuous: was/were + being + past participle - We asked for coffee while the bill was being prepared.",
-            "past perfect simple: had + been + past participle - All the food had been eaten by the time I got there.",
-            "will future: will + be + past participle - Your pizza will be delivered in forty minutes.",
-            "be going to future: is/are going to + be + past participle - Burgerland is going to be sued by overweight customers.",
-            "future perfect simple: will + have + been + past participle - All the grapes will have been harvested by the end of September.",
-            "modal: modal + be + past participle - The chicken breast should be brushed with oil and then fried.",
-            "modal + perfect infinitive: modal + have + been + past participle - The groceries should have been delivered by now.",
-            "-ing (gerund): being + past participle - I don't like being told what to do in the kitchen."
+          "tableHeaders": [
+            "",
+            "Active",
+            "Passive"
+          ],
+          "rows": [
+            [
+              "present simple",
+              "*They grow bananas in tropical areas.*",
+              "am/is/are + past participle\n*Bananas **are grown** in tropical areas.*"
+            ],
+            [
+              "present continuous",
+              "*They are redecorating the café.*",
+              "am/is/are + -ing + past participle\n*The café **is being redecorated**.*"
+            ],
+            [
+              "present perfect simple",
+              "*Has anyone peeled the carrots?*",
+              "has/have + been + past participle\n***Have** the carrots **been peeled**?*"
+            ],
+            [
+              "past simple",
+              "*They served the meal in an elegant dining room.*",
+              "was/were + past participle\n*The meal **was served** in an elegant dining room.*"
+            ],
+            [
+              "past continuous",
+              "*We asked for coffee while they were preparing the bill.*",
+              "was/were + -ing + past participle\n*We asked for coffee while the bill **was being prepared**.*"
+            ],
+            [
+              "past perfect simple",
+              "*Someone had eaten all the food by the time I got there.*",
+              "had + been + past participle\n*All the food **had been eaten** by the time I got there.*"
+            ],
+            [
+              "will future",
+              "*We will deliver your pizza in forty minutes.*",
+              "will + be + past participle\n*Your pizza **will be delivered** in forty minutes.*"
+            ],
+            [
+              "be going to future",
+              "*Overweight customers are going to sue Burgerland.*",
+              "is/are going to + be + past participle\n*Burgerland **is going to be sued** by overweight customers.*"
+            ],
+            [
+              "future perfect simple",
+              "*They will have harvested all the grapes by the end of September.*",
+              "will + have + been + past participle\n*All the grapes **will have been harvested** by the end of September.*"
+            ],
+            [
+              "modal",
+              "*You should brush the chicken breast with oil and then fry it.*",
+              "modal + be + past participle\n*The chicken breast **should be brushed** with oil and then fried.*"
+            ],
+            [
+              "modal + perfect infinitive",
+              "*They should have delivered the groceries by now.*",
+              "modal + have + been + past participle\n*The groceries **should have been delivered** by now.*"
+            ],
+            [
+              "-ing (gerund)",
+              "*I don’t like people telling me what to do in the kitchen.*",
+              "being + past participle\n*I don’t like **being told** what to do in the kitchen.*"
+            ]
           ]
         },
         {
           "subtitle": "Use",
           "items": [
-            "When we don't know who does/did something: My groceries have been stolen!",
-            "When it's obvious who does/did something: A boy was arrested in town yesterday for stealing an apple.",
-            "When it's not important who does/did something: The French bistro is being knocked down.",
-            "When we want to emphasise new information or use a formal style: The potato was brought to Europe by Sir Walter Raleigh."
+            "When we don’t know who does/did something: *My groceries **have been stolen**!*",
+            "When it’s obvious who does/did something: *A boy **was arrested** in town yesterday for stealing an apple.*",
+            "When it’s not important who does/did something: *The French bistro **is being knocked down**.*",
+            "When we want to emphasise new information or use a formal style: *The potato **was brought** to Europe by Sir Walter Raleigh.*"
           ]
         },
         {
           "subtitle": "Watch out!",
           "items": [
-            "We do not normally use verbs in the passive in the present perfect continuous, past perfect continuous, future continuous or future perfect continuous tenses. Instead, we use a different phrase: The restaurant has been under construction for four years.",
-            "We only normally use 'by' to say who did something when it is important information: Margarine was invented by a French chef.",
-            "We usually use 'with' when we talk about the thing used to do something: The soup should then be stirred with a spoon.",
-            "Some verbs are not normally used in the passive. They include intransitive verbs (without objects), such as appear and die, and some common transitive verbs, such as have, let, lack, etc."
+            {
+              "note": "We do not normally use verbs in the passive in the present perfect continuous, past perfect continuous, future continuous or future perfect continuous tenses. Instead, we use a different phrase."
+            },
+            {
+              "correct": "The restaurant has been **under construction** for four years."
+            },
+            {
+              "incorrect": "The restaurant has been being built for four years."
+            },
+            {
+              "correct": "Dave has been **in training** as a chef for three years."
+            },
+            {
+              "incorrect": "Dave has been being trained as a chef for three years."
+            },
+            {
+              "note": "We only normally use 'by' to say who did something when it is important information."
+            },
+            {
+              "correct": "Margarine was invented **by** a French chef."
+            },
+            {
+              "correct": "The best pizzas are made **by** the Italians."
+            },
+            {
+              "incorrect": "Waiter! This steak has been overcooked by someone."
+            },
+            {
+              "note": "We usually use 'with' when we talk about the thing used to do something."
+            },
+            {
+              "correct": "The soup should then be stirred **with** a spoon."
+            },
+            {
+              "incorrect": "The soup should be stirred by a spoon."
+            },
+            {
+              "note": "Some verbs are not normally used in the passive. They include intransitive verbs (without objects), such as *appear* and *die*, and some common transitive verbs, such as *have*, *let*, *lack*, etc."
+            }
           ]
         }
       ]
@@ -56,18 +141,45 @@
       "title": "The impersonal passive",
       "content": [
         {
-          "subtitle": "Form",
-          "formula": "It + passive verb + that ... / Subject + passive verb + to-infinitive"
+          "description": "To express other people's opinions in a formal style, we can use two special forms of the passive. They can be used with a number of verbs, including: *say, believe, think, claim, estimate,* etc. Some other verbs (*argue, suggest, calculate,* etc) are usually used with only the second structure."
         },
         {
-          "subtitle": "Examples",
+          "subtitle": "Form",
           "items": [
-            "Active: People think he is a great chef. Passive: He is thought to be a great chef. / It is thought that he is a great chef.",
-            "Active: People believe he was a great chef. Passive: He is believed to have been a great chef. / It is believed that he was a great chef.",
-            "Active: People claim he has had an influence on many other chefs. Passive: He is claimed to have had an influence on many other chefs. / It is claimed that he has had an influence on many other chefs.",
-            "Active: People say he has been making the best cheese in the area for over thirty years. Passive: He is said to have been making the best cheese in the area for over thirty years. / It is said that he has been making the best cheese in the area for over thirty years.",
-            "Active: People estimated that his restaurant was worth over $10 million. Passive: His restaurant was estimated to be / to have been worth over $10 million. / It was estimated that his restaurant was worth over $10 million.",
-            "Active: People have suggested that he is a great chef. Passive: It has been suggested that he is a great chef."
+            "noun + *is/are said to* + bare infinitive/perfect infinitive",
+            "*It is said that* + clause"
+          ]
+        },
+        {
+          "tableHeaders": [
+            "Active",
+            "Passive"
+          ],
+          "rows": [
+            [
+              "People **think** he **is** a great chef.",
+              "He **is thought to be** a great chef.\nIt **is thought that** he **is** a great chef."
+            ],
+            [
+              "People **believe** he **was** a great chef.",
+              "He **is believed to have been** a great chef.\nIt **is believed that** he **was** a great chef."
+            ],
+            [
+              "People **claim** he **has had** an influence on many other chefs.",
+              "He **is claimed to have had** an influence on many other chefs.\nIt **is claimed that** he **has had** an influence on many other chefs."
+            ],
+            [
+              "People **say** he **has been making** the best cheese in the area for over thirty years.",
+              "He **is said to have been making** the best cheese in the area for over thirty years.\nIt **is said that** he **has been making** the best cheese in the area for over thirty years."
+            ],
+            [
+              "People **estimated** that his restaurant **was** worth over $10 million.",
+              "His restaurant **was estimated to be** / **to have been** worth over $10 million.\nIt **was estimated** that his restaurant **was** worth over $10 million."
+            ],
+            [
+              "People **have suggested** that he **is** a great chef.",
+              "It **has been suggested** that he **is** a great chef."
+            ]
           ]
         }
       ]
@@ -78,20 +190,52 @@
       "content": [
         {
           "subtitle": "Form",
-          "formula": "have/get + object + past participle"
+          "formula": "noun + **have**/**get** in the correct form + noun + past participle (+ **by**/**with** + noun)"
         },
         {
-          "subtitle": "Use",
-          "items": [
-            "To show that someone arranges for someone else to do something for them: I have my groceries delivered by the supermarket once a week. / We are having a new cooker put in tomorrow. / We had a large wedding cake made. / Have you had your kitchen decorated? / We are going to have the food for the party made by a catering company.",
-            "To refer to an unpleasant situation which hasn't been arranged: We had our herb garden vandalised while we were away. / The Smiths have had their new microwave stolen."
+          "subtitleTable": true,
+          "headers": [
+            "Use",
+            "Example"
+          ],
+          "rows": [
+            {
+              "label": "To show that someone arranges for someone else to do something for them",
+              "items": [
+                "I **have** my groceries **delivered** by the supermarket once a week.",
+                "We **are having** a new cooker **put in** tomorrow.",
+                "We **had** a large wedding cake **made**.",
+                "**Have** you **had** your kitchen **decorated**?",
+                "We **are going to have** the food for the party **made** by a catering company."
+              ]
+            },
+            {
+              "label": "To refer to an unpleasant situation which hasn't been arranged",
+              "items": [
+                "We **had** our herb garden **vandalised** while we were away.",
+                "The Smiths **have had** their new microwave **stolen**."
+              ]
+            }
           ]
         },
         {
-          "subtitle": "Notes",
+          "subtitle": "Watch out!",
           "items": [
-            "Using the verb 'get' is usually more informal than using 'have': Can you go and get this recipe photocopied for me?",
-            "We can also use 'get somebody to do' and 'have somebody do' when we want to refer to the person we arrange to do something for us: Why don't you get the chef to prepare you a vegetarian meal? / Why don't you have the chef prepare you a vegetarian meal?"
+            {
+              "note": "Using the verb *get* is usually more informal than using *have*."
+            },
+            {
+              "correct": "Can you go and **get** this recipe **photocopied** for me?"
+            },
+            {
+              "note": "We can also use *get somebody to do* and *have somebody do* when we want to refer to the person we arrange to do something for us."
+            },
+            {
+              "correct": "Why don’t you **get the chef to prepare** you a vegetarian meal?"
+            },
+            {
+              "correct": "Why don’t you **have the chef prepare** you a vegetarian meal?"
+            }
           ]
         }
       ]
@@ -101,21 +245,18 @@
       "title": "Direct and indirect objects",
       "content": [
         {
-          "subtitle": "Verbs with two objects",
-          "items": [
-            "bring, buy, get, give, lend, make, offer, owe, pass, promise, send, show, take, teach, tell, write, etc."
-          ]
+          "description": "Some verbs can be followed by both a direct and an indirect object (usually a person). These verbs include:\n*bring, buy, get, give, lend, make, offer, owe, pass, promise, send, show, take, teach, tell, write,* etc."
         },
         {
-          "subtitle": "Active",
-          "items": [
-            "A friend gave my sister this cookery book. / A friend gave this cookery book to my sister."
-          ]
-        },
-        {
-          "subtitle": "Passive",
-          "items": [
-            "My sister was given this cookery book by a friend. / This cookery book was given to my sister by a friend."
+          "tableHeaders": [
+            "Active",
+            "Passive"
+          ],
+          "rows": [
+            [
+              "We can put the indirect object either immediately after the verb, or at the end of the sentence with a preposition (*for*/*to*, etc.).\nA friend gave **my sister** this cookery book.\nA friend gave this cookery book **to my sister**.",
+              "The subject of the sentence can be either the indirect object or the direct object of the active sentence.\n**My sister** was given this cookery book by a friend.\n**This cookery book** was given to my sister by a friend."
+            ]
           ]
         }
       ]
