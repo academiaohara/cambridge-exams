@@ -2099,8 +2099,11 @@
       var self = this;
       var passage = ex.passage || '';
       var answers = ex.answers || [];
+      var hints = ex.hints || [];
       var answerMap = {};
+      var hintMap = {};
       answers.forEach(function(ans, idx) { answerMap[idx + 1] = ans; });
+      hints.forEach(function(h, idx) { hintMap[idx + 1] = h; });
       var passageHtml = self._escapeHTML(passage)
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
         .replace(
@@ -2109,10 +2112,12 @@
           var gapNum = parseInt(num);
           var gId = idBase + '-pi' + gapNum;
           var ans = self._escapeHTML(answerMap[gapNum] || '');
+          var hintWord = hintMap[gapNum] || null;
           return '<span class="cu-pi-gap-wrap">' +
             '<span class="cu-hint-pill cu-pi-pill">' +
               '<span class="cu-hint-pill-num">' + num + '</span>' +
               '<input type="text" id="' + gId + '" class="cu-gap-input cu-pi-input" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '" oninput="BentoGrid._resizeCuInput(this)">' +
+              (hintWord ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>' : '') +
             '</span>' +
           '</span>';
         }
