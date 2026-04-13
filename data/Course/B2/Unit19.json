@@ -9,71 +9,73 @@
       "title": "Questions",
       "content": [
         {
-          "subtitle": "Form with 'be' as a main verb",
-          "items": [
-            "Am/Was I on time?",
-            "Are/Were you/we/they tired?",
-            "Is/Was he/she/it cold?"
-          ]
-        },
-        {
-          "subtitle": "Form with 'be' as an auxiliary verb",
-          "items": [
-            "Am/Was I interrupting you?",
-            "Are/Were you/we/they going on a picnic?",
-            "Is/Was he/she/it working?"
-          ]
-        },
-        {
-          "subtitle": "Form with 'have' as an auxiliary verb",
-          "items": [
-            "Have/Had I/you/we/they got any money?",
-            "Has/Had he/she/it finished?"
-          ]
-        },
-        {
-          "subtitle": "Form with 'have' as a main verb and with all other verbs",
-          "items": [
-            "Do/Did I/you/we/they have enough time?",
-            "Does/Did he/she/it need anything?"
-          ]
-        },
-        {
-          "subtitle": "Form with modals",
-          "items": [
-            "Should I wait?",
-            "Could you help me?",
-            "Will she be here soon?",
-            "Might they be lost?"
-          ]
-        },
-        {
-          "subtitle": "Form with question words",
-          "items": [
-            "Who is taking the rubbish out?",
-            "Whose book is this?",
-            "To whom did you speak?",
-            "What is the weather like?",
-            "Which do you want?",
-            "Where did you go on holiday?",
-            "When is Terry starting work?",
-            "Why did they leave?",
-            "How do you spell 'environment'?"
-          ]
-        },
-        {
-          "subtitle": "Subject vs. object questions",
-          "description": "With 'who' and 'what', whether we use 'do' or not depends on whether the question word refers to the subject or object of the verb.",
-          "examples": [
-            "Subject: Who saw you? (= Someone saw you. Who?)",
-            "Object: Who did you see? (= You saw someone. Who?)"
+          "tableHeaders": [
+            "Form",
+            ""
+          ],
+          "rows": [
+            [
+              "With *be* as a main verb",
+              "**Am**/**Was** I on time?\n**Are**/**Were** you/we/they tired?\n**Is**/**Was** he/she/it cold?"
+            ],
+            [
+              "With *be* as an auxiliary verb",
+              "**Am**/**Was** I **interrupting** you?\n**Are**/**Were** you/we/they **going** on a picnic?\n**Is**/**Was** he/she/it **working**?"
+            ],
+            [
+              "With *have* as an auxiliary verb",
+              "**Have**/**Had** I/you/we/they got any money?\n**Has**/**Had** he/she/it finished?"
+            ],
+            [
+              "With *have* as a main verb and with all other verbs",
+              "**Do**/**Did** I/you/we/they have enough time?\n**Does**/**Did** he/she/it need anything?"
+            ],
+            [
+              "With modals",
+              "**Should** I wait?\n**Could** you help me?\n**Will** she be here soon?\n**Might** they be lost?"
+            ],
+            [
+              "With *who, whose, whom, what, which, where, when, why* and *how*",
+              "**Who** is taking the rubbish out?\n**Whose** book is this?\nTo **whom** did you speak?\n**What** is the weather like?\n**Which** do you want?\n**Where** did you go on holiday?\n**When** is Terry starting work?\n**Why** did they leave?\n**How** do you spell 'environment'?"
+            ]
           ]
         },
         {
           "subtitle": "Watch out!",
           "items": [
-            "After 'do' or 'does', we use the bare infinitive: Did you go to the talk on the environment?",
-            "The verb 'mean' forms questions just like other main verbs: What does 'environmental' mean?"
+            {
+              "note": "With the question words *who* and *what*, whether we use *do* or not depends on whether the question word refers to the **subject** or **object** of the verb."
+            },
+            {
+              "correct": "Subject: *Who **saw** you?* (= Someone saw you. Who?)"
+            },
+            {
+              "correct": "Object: *Who **did** you **see**?* (= You saw someone. Who?)"
+            },
+            {
+              "note": "Remember that after *do* or *does*, we use the bare infinitive."
+            },
+            {
+              "correct": "*Did you **go** to the talk on the environment?*"
+            },
+            {
+              "incorrect": "*Did you **went** to the talk on the environment?*"
+            },
+            {
+              "correct": "*Does Tom **want** a glass of orange juice?*"
+            },
+            {
+              "incorrect": "*Does Tom **wants** a glass of orange juice?*"
+            },
+            {
+              "note": "Remember that the verb *mean* forms questions just like other main verbs."
+            },
+            {
+              "correct": "*What **does** 'environmental' **mean**?*"
+            },
+            {
+              "incorrect": "*What **means** 'environmental'?*"
+            }
           ]
         }
       ]
@@ -83,71 +85,90 @@
       "title": "Question tags",
       "content": [
         {
-          "subtitle": "Form with 'be' as a main verb",
-          "items": [
-            "You are Canadian, aren't you?",
-            "She is beautiful, isn't she?"
-          ]
-        },
-        {
-          "subtitle": "Form with auxiliary verbs and modals",
-          "items": [
-            "You haven't lost my CD, have you?",
-            "We are having the lesson early tomorrow, aren't we?",
-            "People should recycle things, shouldn't they?",
-            "There will be lots of people there, won't there?"
-          ]
-        },
-        {
-          "subtitle": "Form with 'have' as a main verb",
-          "items": [
-            "Tom has a lovely voice, hasn't/doesn't he?"
-          ]
-        },
-        {
-          "subtitle": "Form with other verbs",
-          "items": [
-            "You play the guitar, don't you?",
-            "Frank lives in Germany now, doesn't he?",
-            "Your friends really enjoyed themselves at the party, didn't they?"
-          ]
-        },
-        {
-          "subtitle": "Form with 'Let's'",
-          "items": [
-            "Let's get a DVD tonight, shall we?"
-          ]
-        },
-        {
-          "subtitle": "Form with imperatives",
-          "items": [
-            "Pass me that book, will/would/could you?",
-            "Don't forget tonight, will you?"
+          "tableHeaders": [
+            "Form",
+            ""
+          ],
+          "rows": [
+            [
+              "With *be* as a main verb",
+              "You **are** Canadian, **aren't** you?\nShe **is** beautiful, **isn't** she?"
+            ],
+            [
+              "With auxiliary verbs and modals",
+              "You **haven't** lost my CD, **have** you?\nWe **are** having the lesson early tomorrow, **aren't** we?\nPeople **should** recycle things, **shouldn't** they?\nThere **will** be lots of people there, **won't** there?"
+            ],
+            [
+              "With *have* as a main verb",
+              "Tom **has** a lovely voice, **hasn't**/**doesn't** he?"
+            ],
+            [
+              "With other verbs",
+              "You play the guitar, **don't** you?\nFrank lives in Germany now, **doesn't** he?\nYour friends really enjoyed themselves at the party, **didn't** they?"
+            ],
+            [
+              "With *Let's*",
+              "Let's get a DVD tonight, **shall** we?"
+            ],
+            [
+              "With imperatives",
+              "Pass me that book, **will**/**would**/**could** you?\nDon't forget tonight, **will** you?"
+            ]
           ]
         },
         {
           "subtitle": "Use",
           "items": [
-            "To ask someone to agree with us (falling intonation): It's really hot, isn't it?",
-            "To check whether something is true (rising intonation): You're Spanish, aren't you?"
+            "To ask someone to agree with us (falling intonation): *It's really hot, **isn't** it?*",
+            "To check whether something is true (rising intonation): *You're Spanish, **aren't** you?*"
           ]
         },
         {
-          "subtitle": "Special cases",
+          "subtitle": "Watch out!",
           "items": [
-            "With 'I am', we use 'aren't?' as the question tag: I'm the best student in the class, aren't I?",
-            "With 'I am not', we use 'am I?': I'm not very tall, am I?",
-            "With everyone, no one and someone, we use question tags with a plural verb and 'they': Everyone's going to be there, aren't they?",
-            "In sentences with a negative word like no, little, never, nobody, no one, hardly, etc, we use a positive question tag: You have got no manners, have you?",
-            "In sentences where the subject is 'there', we repeat 'there' in the question tag: There's no point calling Tim now, is there?"
+            {
+              "note": "In sentences with *I am*, we use *aren't I?* as the question tag. In sentences with *I am not*, we use *am I?*"
+            },
+            {
+              "correct": "I'm the best student in the class, **aren't** I?"
+            },
+            {
+              "correct": "I'm not very tall, **am** I?"
+            },
+            {
+              "note": "With *everyone*, *no one* and *someone*, we use question tags with a plural verb and *they*."
+            },
+            {
+              "correct": "Everyone's going to be there, **aren't** they?"
+            },
+            {
+              "correct": "No one wants to come, **do** they?"
+            },
+            {
+              "correct": "Someone's been in here, **haven't** they?"
+            },
+            {
+              "note": "Usually, when we have a positive verb in a sentence, we use a negative question tag. When we have a negative verb in a sentence, we use a positive question tag. In sentences with a negative word like *no, little, never, nobody, no one, hardly*, etc, we use a positive question tag."
+            },
+            {
+              "correct": "You have got **no** manners, **have** you?"
+            },
+            {
+              "correct": "We **never** enjoy our holiday, **do** we?"
+            },
+            {
+              "note": "In sentences where the subject is *there*, we repeat *there* in the question tag."
+            },
+            {
+              "correct": "There's no point calling Tim now, **is there**?"
+            }
           ]
         },
         {
           "subtitle": "American English note",
-          "description": "In American English, a question tag with 'do' can be used after a sentence with 'have got'. This is not usually done in British English.",
+          "description": "In American English, a question tag with *do* can be used after a sentence with *have got*. This is not usually done in British English.",
           "examples": [
-            "US: They've got a lot of money, don't they?",
-            "UK: They've got a lot of money, haven't they?"
+            "US: They've got a lot of money, **don't** they? UK: They've got a lot of money, **haven't** they?"
           ]
         }
       ]
@@ -158,26 +179,68 @@
       "content": [
         {
           "subtitle": "Form",
-          "formula": "question word + subject + verb (statement word order)"
+          "formula": "introductory phrase or question + clause with normal word order"
         },
         {
           "subtitle": "Use",
-          "description": "We use indirect questions when we want to ask questions politely.",
-          "examples": [
-            "Could you tell me what time it is?",
-            "Could you let me know when it starts?",
-            "Do you know who that woman is?",
-            "I wonder if you could tell me how much this costs.",
-            "I wonder if you know what the starting salary is.",
-            "I would like to know what your company is going to do about it."
+          "description": "We use indirect questions when we want to ask questions politely."
+        },
+        {
+          "tableHeaders": [
+            "Some introductory phrases and questions",
+            "Example"
+          ],
+          "rows": [
+            [
+              "*Can/Could you tell me ...?*",
+              "*Could you tell me what time it is?*"
+            ],
+            [
+              "*Could you let me know ...?*",
+              "*Could you let me know when it starts?*"
+            ],
+            [
+              "*Do you know ...?*",
+              "*Do you know who that woman is?*"
+            ],
+            [
+              "*I wonder if you could tell me ...*",
+              "*I wonder if you could tell me how much this costs.*"
+            ],
+            [
+              "*I wonder if you know ...*",
+              "*I wonder if you know what the starting salary is.*"
+            ],
+            [
+              "*I would like to know ...*",
+              "*I would like to know what your company is going to do about it.*"
+            ]
           ]
         },
         {
           "subtitle": "Watch out!",
           "items": [
-            "We do not use question word order in the second part of the sentence: ✓ I would like to know when the next train to London leaves.",
-            "Some indirect questions need a question mark at the end: Could you tell me where the library is?",
-            "If a direct question is a 'yes/no' question, the equivalent indirect question uses 'if' or 'whether': I wonder if/whether you have read this book."
+            {
+              "note": "We **do not** use question word order in the second part of the sentence."
+            },
+            {
+              "correct": "I would like to know when **the next train to London leaves**."
+            },
+            {
+              "incorrect": "I would like to know when **does the next train to London leave**."
+            },
+            {
+              "note": "Some indirect questions, which begin with a question word, need a question mark at the end."
+            },
+            {
+              "correct": "***Could** you tell me where the library is?*"
+            },
+            {
+              "note": "If a direct question is a 'yes/no' question, the equivalent indirect question uses *if* or *whether*."
+            },
+            {
+              "correct": "I wonder ***if***/**whether** you have read this book."
+            }
           ]
         }
       ]
