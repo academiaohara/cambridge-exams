@@ -4879,9 +4879,46 @@
       return (s || '').replace(/[\u2018\u2019\u201a\u201b]/g, "'").replace(/[\u201c\u201d\u201e\u201f]/g, '"');
     },
 
-    // Splits an answer part by '/' and returns trimmed lowercase alternatives (quotes normalised)
+    // Expands optional groups (word) in an answer string into all combinations.
+    // E.g. "have cost (you) a fortune" → ["have cost you a fortune", "have cost a fortune"]
+    // "in(to)" → ["into", "in"]
+    _expandOptionals: function(ans) {
+      var results = [ans];
+      var parenRegex = /\(([^)]*)\)/;
+      var maxIter = 10;
+      while (maxIter-- > 0) {
+        var anyMatch = false;
+        var next = [];
+        results.forEach(function(r) {
+          var m = r.match(parenRegex);
+          if (!m) { next.push(r); return; }
+          anyMatch = true;
+          var before = r.substring(0, m.index);
+          var inside = m[1];
+          var after = r.substring(m.index + m[0].length);
+          var withInside = (before + inside + after).replace(/\s+/g, ' ').trim();
+          var withoutInside = (before + after).replace(/\s+/g, ' ').trim();
+          next.push(withInside);
+          if (withoutInside !== withInside) next.push(withoutInside);
+        });
+        results = next;
+        if (!anyMatch) break;
+      }
+      return results;
+    },
+
+    // Splits an answer part by '/' and returns trimmed lowercase alternatives (quotes normalised).
+    // Also expands optional (word) groups into all combinations.
     _answerAlts: function(answerPart) {
-      return BentoGrid._normalizeText((answerPart || '').trim()).split(/\s*\/\s*/).map(function(a) { return BentoGrid._normalizeText(a.trim().toLowerCase()); }).filter(Boolean);
+      var base = BentoGrid._normalizeText((answerPart || '').trim()).split(/\s*\/\s*/);
+      var expanded = [];
+      base.forEach(function(a) {
+        BentoGrid._expandOptionals(a.trim().toLowerCase()).forEach(function(opt) {
+          var norm = BentoGrid._normalizeText(opt);
+          if (norm && expanded.indexOf(norm) === -1) expanded.push(norm);
+        });
+      });
+      return expanded.filter(Boolean);
     },
 
     _doCheckCuExSection: function(sec) {
@@ -5076,9 +5113,14 @@
           totalItems++;
           var expected = (input.getAttribute('data-answer') || '').trim().toLowerCase();
           var given = (input.value || '').trim().toLowerCase();
-          var alts = expected.split(/\s*\/\s*/);
+          var alts = [];
+          expected.split(/\s*\/\s*/).forEach(function(a) {
+            BentoGrid._expandOptionals(a.trim()).forEach(function(opt) {
+              if (opt && alts.indexOf(opt) === -1) alts.push(opt);
+            });
+          });
           var filled = given !== '';
-          var ok = filled && alts.some(function(a) { return given === a.trim(); });
+          var ok = filled && alts.some(function(a) { return given === a; });
           input.classList.remove('cu-input-correct', 'cu-input-incorrect');
           if (filled) input.classList.add(ok ? 'cu-input-correct' : 'cu-input-incorrect');
           if (ok) correctItems++;
@@ -5228,9 +5270,14 @@
           totalItems++;
           var expected = (answerParts[partIdx] || '').trim().toLowerCase();
           var given = (input.value || '').trim().toLowerCase();
-          var alts = expected.split(/\s*\/\s*/);
+          var alts = [];
+          expected.split(/\s*\/\s*/).forEach(function(a) {
+            BentoGrid._expandOptionals(a.trim()).forEach(function(opt) {
+              if (opt && alts.indexOf(opt) === -1) alts.push(opt);
+            });
+          });
           var filled = given !== '';
-          var ok = filled && alts.some(function(a) { return given === a.trim(); });
+          var ok = filled && alts.some(function(a) { return given === a; });
           var checkClass = filled ? (ok ? 'cu-input-correct' : 'cu-input-incorrect') : '';
           // For sync items, apply visual feedback to all inputs in the group
           if (isSyncItem) {
@@ -5610,7 +5657,12 @@
           inputs.forEach(function(inp, i) {
             inp.setAttribute('data-saved-value', inp.value);
             var correctRaw = (answerParts[i] || answerParts[0] || '').trim();
-            var alts = correctRaw.split(/\s*\/\s*/).map(function(a) { return a.trim(); }).filter(Boolean);
+            var alts = [];
+            correctRaw.split(/\s*\/\s*/).forEach(function(a) {
+              BentoGrid._expandOptionals(a.trim()).forEach(function(opt) {
+                if (opt && alts.indexOf(opt) === -1) alts.push(opt);
+              });
+            });
             var correctDisplay = alts[0] || '';
             inp.value = correctDisplay;
             inp.classList.add('cu-input-show-correct');
@@ -5700,7 +5752,12 @@
         // Passage inputs (data-passage-num)
         sec.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(inp) {
           var correctRaw = (inp.getAttribute('data-answer') || '').trim();
-          var alts = correctRaw.split(/\s*\/\s*/).map(function(a) { return a.trim(); }).filter(Boolean);
+          var alts = [];
+          correctRaw.split(/\s*\/\s*/).forEach(function(a) {
+            BentoGrid._expandOptionals(a.trim()).forEach(function(opt) {
+              if (opt && alts.indexOf(opt) === -1) alts.push(opt);
+            });
+          });
           var correct = alts[0] || '';
           inp.setAttribute('data-saved-value', inp.value);
           inp.value = correct;
@@ -6056,7 +6113,12 @@
       item.querySelectorAll('.cu-gap-input').forEach(function(inp) {
         if (newMode === 'correct') {
           var correctRaw = inp.getAttribute('data-correct-raw') || inp.getAttribute('data-correct-value') || '';
-          var alts = correctRaw.split(/\s*\/\s*/).map(function(a) { return a.trim(); }).filter(Boolean);
+          var alts = [];
+          correctRaw.split(/\s*\/\s*/).forEach(function(a) {
+            BentoGrid._expandOptionals(a.trim()).forEach(function(opt) {
+              if (opt && alts.indexOf(opt) === -1) alts.push(opt);
+            });
+          });
           inp.value = alts[0] || '';
           inp.classList.remove('cu-input-correct', 'cu-input-incorrect');
           inp.classList.add('cu-input-show-correct');
