@@ -1120,6 +1120,8 @@
             html += self._renderCuWordSpotExercise(section, grIdBase, secId);
           } else if (section.subtype === 'find-extra-word') {
             html += self._renderCuFindExtraWordExercise(section, grIdBase, secId);
+          } else if (section.subtype === 'bold-correct') {
+            html += self._renderCuBoldCorrectExercise(section, grIdBase, secId);
           } else if (section.passage && items.length) {
             html += self._renderCuMcPassageExercise(section, grIdBase, secId);
           } else {
@@ -1716,6 +1718,76 @@
       BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
+    // Bold-correct exercise: each item shows the sentence with one bold word,
+    // a text input for the correction, and an OK button (available for ALL items).
+    _renderCuBoldCorrectExercise: function(section, idBase, secId) {
+      var self = this;
+      var items = section.items || [];
+
+      // Render sentence: convert **...** to <strong> and escape the rest
+      function renderSentence(sentence) {
+        var parts = (sentence || '').split(/\*\*([^*]+)\*\*/g);
+        var out = '';
+        for (var i = 0; i < parts.length; i++) {
+          if (i % 2 === 1) {
+            out += '<strong>' + self._escapeHTML(parts[i]) + '</strong>';
+          } else {
+            out += self._escapeHTML(parts[i]);
+          }
+        }
+        return out;
+      }
+
+      var html = '<div class="cu-bc-exercise cu-ex-items">';
+      items.forEach(function(item, idx) {
+        var answer = (item.answer || '').trim();
+        var inputId = idBase + '-bc' + idx;
+        html += '<div class="cu-bc-item" data-answer="' + self._escapeHTML(answer) + '">' +
+          '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
+          '<div class="cu-bc-row">' +
+            '<div class="cu-bc-sentence">' + renderSentence(item.sentence || '') + '</div>' +
+            '<div class="cu-bc-controls">' +
+              '<input type="text" class="cu-gap-input cu-bc-input" id="' + inputId + '" ' +
+                'autocomplete="off" autocorrect="off" spellcheck="false" ' +
+                'oninput="BentoGrid._onCuBcInput(this)" ' +
+                'placeholder="correction…" />' +
+              '<button class="cu-bc-ok-btn" onclick="BentoGrid._toggleCuBcOk(this)" ' +
+                'aria-pressed="false" type="button">OK</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+      html += self._renderCuExFooter(secId);
+      return html;
+    },
+
+    _onCuBcInput: function(input) {
+      // When user types, deselect OK button for this item
+      var item = input.closest('.cu-bc-item');
+      if (item) {
+        var okBtn = item.querySelector('.cu-bc-ok-btn');
+        if (okBtn && okBtn.classList.contains('cu-bc-ok-selected')) {
+          okBtn.classList.remove('cu-bc-ok-selected');
+          okBtn.setAttribute('aria-pressed', 'false');
+        }
+      }
+      BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
+    },
+
+    _toggleCuBcOk: function(btn) {
+      if (btn.disabled) return;
+      var item = btn.closest('.cu-bc-item');
+      btn.classList.toggle('cu-bc-ok-selected');
+      btn.setAttribute('aria-pressed', btn.classList.contains('cu-bc-ok-selected') ? 'true' : 'false');
+      // Clear input when OK is toggled on
+      if (btn.classList.contains('cu-bc-ok-selected') && item) {
+        var input = item.querySelector('.cu-bc-input');
+        if (input) input.value = '';
+      }
+      BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
+    },
+
     _renderCuExFooter: function(secId) {
       return '<div class="cu-ex-footer">' +
         '<button class="cu-check-btn" onclick="BentoGrid._checkCuExSection(\'' + secId + '\')">' +
@@ -1822,9 +1894,17 @@
           okBtn.classList.remove('cu-few-ok-selected', 'cu-few-ok-correct', 'cu-few-ok-incorrect', 'cu-few-ok-reveal');
         }
       });
-      // Reset OK fill buttons (Exercise H showOkBtn style)
-      sec.querySelectorAll('.cu-ok-fill-btn').forEach(function(btn) {
-        btn.disabled = false;
+      // Reset bold-correct items
+      sec.querySelectorAll('.cu-bc-item').forEach(function(item) {
+        item.classList.remove('cu-bc-item-correct', 'cu-bc-item-incorrect');
+        var okBtn = item.querySelector('.cu-bc-ok-btn');
+        if (okBtn) {
+          okBtn.disabled = false;
+          okBtn.classList.remove('cu-bc-ok-selected', 'cu-bc-ok-correct', 'cu-bc-ok-incorrect', 'cu-bc-ok-reveal');
+          okBtn.setAttribute('aria-pressed', 'false');
+        }
+        // Remove reveal divs injected during check
+        item.querySelectorAll('.cu-bc-reveal').forEach(function(el) { el.remove(); });
       });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
@@ -3836,6 +3916,13 @@
         fewState.push({ ok: okBtn && okBtn.classList.contains('cu-few-ok-selected') ? 1 : 0, sel: selIdx });
       });
       if (fewState.length) answers.fewState = fewState;
+      // Bold-correct (bc) items state: OK button selections
+      var bcState = [];
+      sec.querySelectorAll('.cu-bc-item').forEach(function(item) {
+        var okBtn = item.querySelector('.cu-bc-ok-btn');
+        bcState.push(okBtn && okBtn.classList.contains('cu-bc-ok-selected') ? 1 : 0);
+      });
+      if (bcState.length) answers.bcState = bcState;
       var mcPassage = {};
       sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
         var secId = gap.getAttribute('data-sec-id') || '';
@@ -3932,6 +4019,14 @@
             var words = item.querySelectorAll('.cu-few-word');
             if (words[state.sel]) words[state.sel].classList.add('cu-few-selected');
           }
+        });
+      }
+      // Restore bold-correct OK button selections
+      if (answers.bcState && Array.isArray(answers.bcState)) {
+        sec.querySelectorAll('.cu-bc-item').forEach(function(item, ii) {
+          if (answers.bcState[ii] !== 1) return;
+          var okBtn = item.querySelector('.cu-bc-ok-btn');
+          if (okBtn) { okBtn.classList.add('cu-bc-ok-selected'); okBtn.setAttribute('aria-pressed', 'true'); }
         });
       }
       if (answers.mcPassage) {
@@ -4747,6 +4842,14 @@
         var hasOk = okBtn && okBtn.classList.contains('cu-few-ok-selected');
         if (!hasWord && !hasOk) unanswered.push(idx + 1);
       });
+      // Detect unanswered bold-correct items
+      sec.querySelectorAll('.cu-bc-item').forEach(function(item, idx) {
+        var input = item.querySelector('.cu-bc-input');
+        var okBtn = item.querySelector('.cu-bc-ok-btn');
+        var hasInput = input && (input.value || '').trim() !== '';
+        var hasOk = okBtn && okBtn.classList.contains('cu-bc-ok-selected');
+        if (!hasInput && !hasOk) unanswered.push(idx + 1);
+      });
 
       if (unanswered.length > 0) {
         var msg = 'Questions ' + unanswered.join(', ') + (unanswered.length === 1 ? ' has' : ' have') + ' not been answered. Check anyway?';
@@ -4780,6 +4883,61 @@
       var totalItems = 0;
       var correctItems = 0;
       var hasMcPassage = false;
+      // Handle bold-correct exercises (input + OK button for each item)
+      sec.querySelectorAll('.cu-bc-item').forEach(function(item) {
+        totalItems++;
+        var answer = (item.getAttribute('data-answer') || '').trim();
+        var isOkAnswer = answer === '\u2713';
+        var okBtn = item.querySelector('.cu-bc-ok-btn');
+        var input = item.querySelector('.cu-bc-input');
+        var okSelected = okBtn && okBtn.classList.contains('cu-bc-ok-selected');
+        var given = input ? (input.value || '').trim() : '';
+
+        // Disable controls
+        if (okBtn) okBtn.disabled = true;
+        if (input) input.disabled = true;
+
+        var correct = false;
+        if (isOkAnswer) {
+          // Correct sentence: correct only if OK pressed (no input)
+          correct = okSelected && given === '';
+          if (correct) {
+            item.classList.add('cu-bc-item-correct');
+            if (okBtn) okBtn.classList.add('cu-bc-ok-correct');
+          } else {
+            item.classList.add('cu-bc-item-incorrect');
+            if (okBtn) okBtn.classList.add(okSelected ? 'cu-bc-ok-incorrect' : 'cu-bc-ok-reveal');
+            // Show correct OK if not selected
+            if (!okSelected && okBtn) okBtn.classList.add('cu-bc-ok-reveal');
+          }
+        } else {
+          // Wrong word: correct only if input matches answer (not OK)
+          var alts = BentoGrid._answerAlts(answer);
+          var givenNorm = BentoGrid._normalizeText(given.toLowerCase());
+          correct = given !== '' && !okSelected && alts.some(function(a) { return a === givenNorm; });
+          if (correct) {
+            item.classList.add('cu-bc-item-correct');
+            if (input) input.classList.add('cu-input-correct');
+          } else {
+            item.classList.add('cu-bc-item-incorrect');
+            if (okSelected) {
+              if (okBtn) okBtn.classList.add('cu-bc-ok-incorrect');
+            } else if (given !== '') {
+              if (input) input.classList.add('cu-input-incorrect');
+            }
+            // Reveal correct answer
+            if (input && !input.disabled) input.disabled = true;
+            // Show the correct answer visually
+            if (input) {
+              var revealEl = document.createElement('div');
+              revealEl.className = 'cu-bc-reveal';
+              revealEl.textContent = answer;
+              item.querySelector('.cu-bc-controls').appendChild(revealEl);
+            }
+          }
+        }
+        if (correct) correctItems++;
+      });
       // Handle find-extra-word exercises (clickable sentence words)
       sec.querySelectorAll('.cu-few-item').forEach(function(item) {
         totalItems++;
@@ -5318,7 +5476,7 @@
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) { input.disabled = true; });
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) { btn.disabled = true; });
       sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = true; });
-      sec.querySelectorAll('.cu-ok-fill-btn').forEach(function(btn) { btn.disabled = true; });
+      sec.querySelectorAll('.cu-bc-ok-btn').forEach(function(btn) { btn.disabled = true; });
       // Show retry button
       var retryBtn = sec.querySelector('.cu-retry-btn');
       if (retryBtn) retryBtn.style.display = '';
@@ -5623,6 +5781,29 @@
             if (okBtn) okBtn.disabled = true;
           }
         });
+        // Bold-correct exercise: reveal correct answers
+        sec.querySelectorAll('.cu-bc-item').forEach(function(item) {
+          var answer = (item.getAttribute('data-answer') || '').trim();
+          var isOkAnswer = answer === '\u2713';
+          var input = item.querySelector('.cu-bc-input');
+          var okBtn = item.querySelector('.cu-bc-ok-btn');
+          if (input) {
+            input.setAttribute('data-saved-value', input.value);
+            if (isOkAnswer) {
+              input.value = '';
+            } else {
+              var alts = answer.split(/\s*\/\s*/).map(function(a) { return a.trim(); }).filter(Boolean);
+              input.value = alts[0] || answer;
+              BentoGrid._attachAltBadge(input, alts);
+            }
+            input.classList.add('cu-input-show-correct');
+            input.disabled = true;
+          }
+          if (okBtn) {
+            okBtn.disabled = true;
+            if (isOkAnswer) okBtn.classList.add('cu-bc-ok-reveal');
+          }
+        });
         // Crossword: fill each letter box with the correct character
         sec.querySelectorAll('.cu-cw-clue-item').forEach(function(item) {
           var ans = (item.getAttribute('data-answer') || '');
@@ -5748,6 +5929,23 @@
           item.classList.remove('cu-few-ok-reveal');
           var okBtn = item.querySelector('.cu-few-ok-btn');
           if (okBtn) { okBtn.disabled = false; okBtn.classList.remove('cu-few-ok-reveal'); }
+        });
+        // Bold-correct exercise: restore saved values
+        sec.querySelectorAll('.cu-bc-item').forEach(function(item) {
+          var input = item.querySelector('.cu-bc-input');
+          var okBtn = item.querySelector('.cu-bc-ok-btn');
+          if (input) {
+            var saved = input.getAttribute('data-saved-value');
+            if (saved !== null) { input.value = saved; input.removeAttribute('data-saved-value'); }
+            input.classList.remove('cu-input-show-correct');
+            input.disabled = false;
+            input.removeAttribute('data-alt-answers');
+            input.removeAttribute('data-alt-idx');
+            if (input._cuAltClickHandler) { input.removeEventListener('click', input._cuAltClickHandler); input._cuAltClickHandler = null; }
+            input.readOnly = false;
+            input._cuAltBadge = null;
+          }
+          if (okBtn) { okBtn.disabled = false; okBtn.classList.remove('cu-bc-ok-reveal'); }
         });
         // Crossword: restore saved letter values
         sec.querySelectorAll('.cu-cw-letter').forEach(function(b) {

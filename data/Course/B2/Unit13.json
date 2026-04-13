@@ -225,46 +225,47 @@
     {
       "type": "exercise",
       "title": "A: Ability",
-      "instructions": "Circle the correct word or phrase. If both are correct, circle both.",
+      "subtype": "bold-correct",
+      "instructions": "Correct the word or phrase in bold. If it is correct, mark OK.",
       "items": [
         {
-          "sentence": "Can you **to speak / speak** French?",
+          "sentence": "Can you **to speak** French?",
           "answer": "speak"
         },
         {
-          "sentence": "I can give you a hand tomorrow morning, if you like.",
+          "sentence": "I **can** give you a hand tomorrow morning, if you like.",
           "answer": "✓"
         },
         {
-          "sentence": "I'll **can / be able to** take my driving test after a few more lessons.",
+          "sentence": "I'll **can** take my driving test after a few more lessons.",
           "answer": "be able to"
         },
         {
-          "sentence": "Jack **could / was able to** play the guitar before he learnt to talk!",
+          "sentence": "Jack **can** play the guitar before he learnt to talk!",
           "answer": "could/was able to"
         },
         {
-          "sentence": "If only I **can / could** afford to buy that top!",
+          "sentence": "If only I **can** afford to buy that top!",
+          "answer": "could/was able to"
+        },
+        {
+          "sentence": "We **can** have gone up the Eiffel Tower while we were in Paris, but we decided to go to the Louvre instead.",
           "answer": "could"
         },
         {
-          "sentence": "We **could / were able to** have gone up the Eiffel Tower while we were in Paris, but we decided to go to the Louvre instead.",
-          "answer": "could/were able to"
+          "sentence": "I could **get** a more expensive computer, but it didn't seem worth it.",
+          "answer": "have got"
         },
         {
-          "sentence": "I **could / was able to** get a more expensive computer, but it didn't seem worth it.",
-          "answer": "could"
-        },
-        {
-          "sentence": "I wish I could get out of the maths test tomorrow!",
+          "sentence": "I wish I **could** get out of the maths test tomorrow!",
           "answer": "✓"
         },
         {
-          "sentence": "I bet you'd love to be **can / able** to get satellite TV.",
+          "sentence": "I bet you'd love to be **can** to get satellite TV.",
           "answer": "able"
         },
         {
-          "sentence": "You'd better tell the coach if you can't **playing / play** on Saturday.",
+          "sentence": "You'd better tell the coach if you can't **playing** on Saturday.",
           "answer": "play"
         }
       ]
