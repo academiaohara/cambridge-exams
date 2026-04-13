@@ -3207,6 +3207,26 @@
   cursor: default;
 }
 
+.cu-few-passage-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1e293b;
+  text-align: center;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+
+.cu-few-item.cu-few-ok-correct {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.cu-few-item.cu-few-ok-reveal {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.07);
+}
+
 /* ── Key Word Transformation (reading4 style) ───────────────────────── */
 .cu-kwtrans-item {
   display: flex;

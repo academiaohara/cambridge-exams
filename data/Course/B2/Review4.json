@@ -7,35 +7,53 @@
     {
       "type": "exercise",
       "title": "A: Error correction",
-      "instructions": "Each of the numbered words or phrases in bold is incorrect. Rewrite them correctly.",
+      "instructions": "Read the text. Some lines contain one extra word that should not be there. Click the extra word. If a line is correct, leave it as it is.",
+      "subtype": "find-extra-word",
+      "passage": "Quiz Show",
       "scoring": {
         "pointsPerItem": 1,
         "maxScore": 10
       },
       "items": [
         {
-          "sentence": "Last month, I wrote to a few local television **station** asking if they gave away **the** free tickets to any shows.",
-          "answer": "stations, -"
+          "sentence": "Last month, I wrote to a [few] local television station asking if",
+          "answer": "few"
         },
         {
-          "sentence": "A week later, they sent **to me** two tickets for a quiz show.",
-          "answer": "me"
+          "sentence": "they gave away [the] free tickets to any shows. A week later,",
+          "answer": "the"
         },
         {
-          "sentence": "I went with my best friend Angie last night. It was **an** excellent!",
-          "answer": "-"
+          "sentence": "they sent [to] me two tickets for a quiz show. I went with my",
+          "answer": "to"
         },
         {
-          "sentence": "The show is called Know Them Or Not? and contestants have to answer questions about **a lots** of different people in their lives, like friends, relatives and colleagues.",
-          "answer": "lots"
+          "sentence": "best friend Angie last night. It was [an] excellent! The show",
+          "answer": "an"
         },
         {
-          "sentence": "There are ten contestants to start with but one of them gets knocked out at the end of each round.",
-          "answer": "√"
+          "sentence": "is called Know Them Or Not? and contestants have to",
+          "answer": "OK"
         },
         {
-          "sentence": "I'd like to go into **on** a show like that one day but, for now, I'm **much** happy just to have been in the audience.",
-          "answer": "-, very"
+          "sentence": "answer questions about [a] lots of different people in their lives,",
+          "answer": "a"
+        },
+        {
+          "sentence": "like friends, relatives and colleagues. There are ten contestants",
+          "answer": "OK"
+        },
+        {
+          "sentence": "to start with but one of them gets knocked out at the end of",
+          "answer": "OK"
+        },
+        {
+          "sentence": "each round. I'd like to go [into] on a show like that one day",
+          "answer": "into"
+        },
+        {
+          "sentence": "but, for now, I'm [much] happy just to have been in the audience.",
+          "answer": "much"
         }
       ]
     },

@@ -1395,6 +1395,9 @@
           } else if (section.subtype === 'matching') {
             // Two-column drag-to-match table (e.g. Review Exercise B)
             html += self._renderCuMatchingExercise(rvItems, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
+          } else if (section.subtype === 'find-extra-word') {
+            // Find-the-extra-word: clickable words (e.g. Review Exercise A)
+            html += self._renderCuFindExtraWordExercise(section, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
           } else {
             html += '<div class="cu-ex-items">';
             var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
@@ -1538,7 +1541,8 @@
     },
 
     // Renders a find-the-extra-word exercise: each sentence's words are clickable.
-    // Students click the word they think is extra. Items with answer "OK" show a button.
+    // Students click the word they think is extra. Items with answer "OK" show plain text
+    // with no interaction required — leaving them blank on Check counts as correct.
     // Data: { items: [{sentence, answer}] } (grammar) or questions (vocab, useQuestions=true)
     _renderCuFindExtraWordExercise: function(ex, idBase, secId, useQuestions) {
       var self = this;
@@ -1560,12 +1564,15 @@
       }
 
       var html = '<div class="cu-few-exercise">';
+      // Optional passage title
+      if (ex.passage && typeof ex.passage === 'string' && ex.items) {
+        html += '<div class="cu-few-passage-title">' + self._escapeHTML(ex.passage) + '</div>';
+      }
       html += '<div class="cu-ex-items">';
 
       items.forEach(function(item, idx) {
         var answer = (item.answer || '').trim();
         var isOkItem = answer.toUpperCase() === 'OK';
-        var itemId = idBase + '-few' + idx;
 
         // Detect [word] bracket notation: find the index of the bracketed token in the
         // original sentence (after stripping ** bold markers) so that when the same word
@@ -1587,11 +1594,9 @@
         if (!ex.hideNumBadge) html += '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>';
 
         if (isOkItem) {
-          // Correct-sentence item: plain text + OK button
+          // Correct-sentence item: plain text only — leaving it unmarked on Check counts as correct
           html += '<div class="cu-few-sentence cu-few-sentence-plain">' +
             self._escapeHTML(rawSentence) + '</div>';
-          html += '<button class="cu-few-ok-btn" id="' + self._escapeHTML(itemId) + '-ok" ' +
-            'onclick="BentoGrid._toggleFewOk(this)" type="button">Correct ✓</button>';
         } else {
           // Extra-word item: each token is a clickable span
           var tokens = tokenize(rawSentence);
@@ -1740,9 +1745,8 @@
         span.removeAttribute('data-few-disabled');
         span.classList.remove('cu-few-selected', 'cu-few-correct', 'cu-few-incorrect', 'cu-few-reveal');
       });
-      sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) {
-        btn.disabled = false;
-        btn.classList.remove('cu-few-ok-selected', 'cu-few-ok-correct', 'cu-few-ok-incorrect', 'cu-few-ok-reveal');
+      sec.querySelectorAll('.cu-few-item').forEach(function(item) {
+        item.classList.remove('cu-few-ok-correct');
       });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
@@ -3660,9 +3664,9 @@
       // Find-extra-word state
       var fewState = [];
       sec.querySelectorAll('.cu-few-item').forEach(function(item) {
+        // OK items (correct-sentence) have no interactive element — nothing to save
         if (item.classList.contains('cu-few-ok-item')) {
-          var okBtn = item.querySelector('.cu-few-ok-btn');
-          fewState.push({ ok: (okBtn && okBtn.classList.contains('cu-few-ok-selected')) ? 1 : 0 });
+          fewState.push({ ok: 0 });
         } else {
           var words = item.querySelectorAll('.cu-few-word');
           var selIdx = -1;
@@ -3758,12 +3762,8 @@
         sec.querySelectorAll('.cu-few-item').forEach(function(item, ii) {
           var state = answers.fewState[ii];
           if (!state) return;
-          if (item.classList.contains('cu-few-ok-item')) {
-            if (state.ok) {
-              var okBtn = item.querySelector('.cu-few-ok-btn');
-              if (okBtn) okBtn.classList.add('cu-few-ok-selected');
-            }
-          } else if (typeof state.sel === 'number' && state.sel >= 0) {
+          // OK items have no interactive element — nothing to restore
+          if (!item.classList.contains('cu-few-ok-item') && typeof state.sel === 'number' && state.sel >= 0) {
             var words = item.querySelectorAll('.cu-few-word');
             if (words[state.sel]) words[state.sel].classList.add('cu-few-selected');
           }
@@ -4556,9 +4556,9 @@
       // Detect unanswered find-extra-word items
       sec.querySelectorAll('.cu-few-item').forEach(function(item, idx) {
         var isOkItem = item.classList.contains('cu-few-ok-item');
-        var isEmpty = isOkItem
-          ? !item.querySelector('.cu-few-ok-btn.cu-few-ok-selected')
-          : !item.querySelector('.cu-few-word.cu-few-selected');
+        // OK items (correct sentences) are never unanswered — leaving them blank is the answer
+        if (isOkItem) return;
+        var isEmpty = !item.querySelector('.cu-few-word.cu-few-selected');
         if (isEmpty) unanswered.push(idx + 1);
       });
 
@@ -4599,14 +4599,16 @@
         totalItems++;
         var isOkItem = item.classList.contains('cu-few-ok-item');
         if (isOkItem) {
-          var okBtn = item.querySelector('.cu-few-ok-btn');
-          var selected = okBtn && okBtn.classList.contains('cu-few-ok-selected');
-          if (okBtn) {
-            okBtn.classList.add(selected ? 'cu-few-ok-correct' : 'cu-few-ok-incorrect');
-            if (!selected) okBtn.classList.add('cu-few-ok-reveal');
-            okBtn.disabled = true;
+          // Correct-sentence item: no word selected = correct; word selected = incorrect
+          var selectedWord = item.querySelector('.cu-few-word.cu-few-selected');
+          if (selectedWord) {
+            selectedWord.setAttribute('data-few-disabled', '1');
+            selectedWord.classList.add('cu-few-incorrect');
+          } else {
+            // Nothing selected — correct, mark sentence as confirmed correct
+            item.classList.add('cu-few-ok-correct');
+            correctItems++;
           }
-          if (selected) correctItems++;
         } else {
           var words = item.querySelectorAll('.cu-few-word');
           var selectedWord = item.querySelector('.cu-few-word.cu-few-selected');
@@ -5407,11 +5409,10 @@
         sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
           if (span.getAttribute('data-ws-answer') === '1') span.classList.add('cu-ws-reveal');
         });
-        // Find-extra-word exercise: reveal correct word/OK button
+        // Find-extra-word exercise: reveal correct word; for OK items highlight the sentence
         sec.querySelectorAll('.cu-few-item').forEach(function(item) {
           if (item.classList.contains('cu-few-ok-item')) {
-            var okBtn = item.querySelector('.cu-few-ok-btn');
-            if (okBtn) okBtn.classList.add('cu-few-ok-reveal');
+            item.classList.add('cu-few-ok-reveal');
           } else {
             item.querySelectorAll('.cu-few-word').forEach(function(span) {
               if (span.getAttribute('data-few-is-answer') === '1') span.classList.add('cu-few-reveal');
@@ -5538,8 +5539,8 @@
         sec.querySelectorAll('.cu-few-word').forEach(function(span) {
           span.classList.remove('cu-few-reveal');
         });
-        sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) {
-          btn.classList.remove('cu-few-ok-reveal');
+        sec.querySelectorAll('.cu-few-item').forEach(function(item) {
+          item.classList.remove('cu-few-ok-reveal');
         });
         // Crossword: restore saved letter values
         sec.querySelectorAll('.cu-cw-letter').forEach(function(b) {
