@@ -1086,6 +1086,16 @@
           }
 
           html += '</div>';
+        } else if (section.type === 'passage-input') {
+          var secId = 'cu-sec-' + idx;
+          var grIdBase = 'gr-' + section.title.replace(/\W+/g, '');
+          html += '<div class="cu-section cu-exercise" id="' + secId + '">' +
+            '<div class="cu-section-title">' + _mi('edit_note') + ' ' + self._escapeHTML(section.title) + '</div>';
+          if (section.instructions) {
+            html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
+          }
+          html += self._renderCuPassageInputExercise(section, grIdBase, secId);
+          html += '</div>';
         }
       });
 
