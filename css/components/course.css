@@ -613,6 +613,25 @@
   margin-top: 10px;
 }
 
+/* Progress test slots – 2-column grid */
+.fe-map-pt-slots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.fe-map-pt-block .fe-map-pt-slots {
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .fe-map-pt-slots {
+    grid-template-columns: 1fr;
+  }
+}
+
 .fe-review-slot {
   display: flex;
   align-items: center;
