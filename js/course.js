@@ -1428,6 +1428,9 @@
             html += self._renderCuMcPassageExercise(section, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
           } else if (isPassageInput) {
             // Continuous-text gap-fill passage exercise
+            if (section.passageTitle) {
+              html += '<div class="cu-passage-title">' + self._escapeHTML(section.passageTitle) + '</div>';
+            }
             html += self._renderCuPassageInputExercise(section, 'rv-' + section.title.replace(/\W+/g, ''), rvSecId);
           } else if (section.subtype === 'matching') {
             // Two-column drag-to-match table (e.g. Review Exercise B)

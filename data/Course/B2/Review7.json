@@ -6,45 +6,38 @@
   "sections": [
     {
       "type": "exercise",
+      "subtype": "passage-input",
       "title": "A: Use the word given in capitals to form a word",
-      "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+      "passageTitle": "Scorpion Fish",
+      "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
       "scoring": {
         "pointsPerItem": 1,
         "maxScore": 10
       },
-      "items": [
-        {
-          "sentence": "Have you ever heard of scorpion fish? I was completely (1) ...... (AWARE) they existed until I trod on one in the sea.",
-          "answer": "unaware"
-        },
-        {
-          "sentence": "I can't (2) ...... (EMPHASIS) enough how painful it was!",
-          "answer": "emphasise"
-        },
-        {
-          "sentence": "The fish has a spike which gives you an (3) ...... (INJECT) of a (4) ...... (POISON) substance.",
-          "answer": "injection, poisonous"
-        },
-        {
-          "sentence": "It's not dangerous, but you begin to feel extremely (5) ...... (COMFORT), and the pain just gets worse and worse.",
-          "answer": "uncomfortable"
-        },
-        {
-          "sentence": "Luckily, there was a doctor on the beach - she was a (6) ...... (SURGERY) at the local hospital - and she told me what the best (7) ...... (TREAT) was.",
-          "answer": "surgeon, treatment"
-        },
-        {
-          "sentence": "After my holiday, my foot still seemed to be a little infected, so my local GP gave me a (8) ...... (PRESCRIBE) for antibiotics.",
-          "answer": "prescription"
-        },
-        {
-          "sentence": "Unfortunately, it turned out I was (9) ...... (ALLERGY) to them, so I came out in a red rash all over my body.",
-          "answer": "allergic"
-        },
-        {
-          "sentence": "It was over a week before I had made a complete (10) ...... (RECOVER).",
-          "answer": "recovery"
-        }
+      "passage": "Have you ever heard of scorpion fish? I was completely (1) ...... they existed until I trod on one in the sea. I can't (2) ...... enough how painful it was! The fish has a spike which gives you an (3) ...... of a (4) ...... substance. It's not dangerous, but you begin to feel extremely (5) ...... , and the pain just gets worse and worse. Luckily, there was a doctor on the beach – she was a (6) ...... at the local hospital – and she told me what the best (7) ...... was. I had to bathe my foot in warm, salty water and then apply an ammonia-based solution. After my holiday, my foot still seemed to be a little infected, so my local GP gave me a (8) ...... for antibiotics. Unfortunately, it turned out I was (9) ...... to them, so I came out in a red rash all over my body. It was over a week before I had made a complete (10) ...... .",
+      "answers": [
+        "unaware",
+        "emphasise",
+        "injection",
+        "poisonous",
+        "uncomfortable",
+        "surgeon",
+        "treatment",
+        "prescription",
+        "allergic",
+        "recovery"
+      ],
+      "hints": [
+        "AWARE",
+        "EMPHASIS",
+        "INJECT",
+        "POISON",
+        "COMFORT",
+        "SURGERY",
+        "TREAT",
+        "PRESCRIBE",
+        "ALLERGY",
+        "RECOVER"
       ]
     },
     {
