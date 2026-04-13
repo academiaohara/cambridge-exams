@@ -631,141 +631,43 @@
         "instructions": "Match to make sentences.",
         "questions": [
           {
-            "sentence": "They accused me",
-            "options": [
-              "A for shoplifting.",
-              "B she's guilty.",
-              "C someone to steal something from a shop.",
-              "D of someone shoplifting.",
-              "E stealing the clothes.",
-              "F to steal something from the shop.",
-              "G steal something from the shop.",
-              "H with theft.",
-              "I of shoplifting."
-            ],
+            "sentence": "They accused me **I** of shoplifting.",
             "answer": "I"
           },
           {
-            "sentence": "Our next-door neighbour was arrested",
-            "options": [
-              "A for shoplifting.",
-              "B she's guilty.",
-              "C someone to steal something from a shop.",
-              "D of someone shoplifting.",
-              "E stealing the clothes.",
-              "F to steal something from the shop.",
-              "G steal something from the shop.",
-              "H with theft.",
-              "I of shoplifting."
-            ],
+            "sentence": "Our next-door neighbour was arrested **A** for shoplifting.",
             "answer": "A"
           },
           {
-            "sentence": "Three people have been charged",
-            "options": [
-              "A for shoplifting.",
-              "B she's guilty.",
-              "C someone to steal something from a shop.",
-              "D of someone shoplifting.",
-              "E stealing the clothes.",
-              "F to steal something from the shop.",
-              "G steal something from the shop.",
-              "H with theft.",
-              "I of shoplifting."
-            ],
+            "sentence": "Three people have been charged **H** with theft.",
             "answer": "H"
           },
           {
-            "sentence": "She denied",
-            "options": [
-              "A for shoplifting.",
-              "B she's guilty.",
-              "C someone to steal something from a shop.",
-              "D of someone shoplifting.",
-              "E stealing the clothes.",
-              "F to steal something from the shop.",
-              "G steal something from the shop.",
-              "H with theft.",
-              "I of shoplifting."
-            ],
+            "sentence": "She denied **E** stealing the clothes.",
             "answer": "E"
           },
           {
-            "sentence": "I doubt whether",
-            "options": [
-              "A for shoplifting.",
-              "B she's guilty.",
-              "C someone to steal something from a shop.",
-              "D of someone shoplifting.",
-              "E stealing the clothes.",
-              "F to steal something from the shop.",
-              "G steal something from the shop.",
-              "H with theft.",
-              "I of shoplifting."
-            ],
+            "sentence": "I doubt whether **B** she's guilty.",
             "answer": "B"
           },
           {
-            "sentence": "I caught a glimpse",
-            "options": [
-              "A for shoplifting.",
-              "B she's guilty.",
-              "C someone to steal something from a shop.",
-              "D of someone shoplifting.",
-              "E stealing the clothes.",
-              "F to steal something from the shop.",
-              "G steal something from the shop.",
-              "H with theft.",
-              "I of shoplifting."
-            ],
+            "sentence": "I caught a glimpse **D** of someone shoplifting.",
             "answer": "D"
           },
           {
-            "sentence": "My friends made me",
-            "options": [
-              "A for shoplifting.",
-              "B she's guilty.",
-              "C someone to steal something from a shop.",
-              "D of someone shoplifting.",
-              "E stealing the clothes.",
-              "F to steal something from the shop.",
-              "G steal something from the shop.",
-              "H with theft.",
-              "I of shoplifting."
-            ],
+            "sentence": "My friends made me **G** steal something from the shop.",
             "answer": "G"
           },
           {
-            "sentence": "She says she was made",
-            "options": [
-              "A for shoplifting.",
-              "B she's guilty.",
-              "C someone to steal something from a shop.",
-              "D of someone shoplifting.",
-              "E stealing the clothes.",
-              "F to steal something from the shop.",
-              "G steal something from the shop.",
-              "H with theft.",
-              "I of shoplifting."
-            ],
+            "sentence": "She says she was made **F** to steal something from the shop.",
             "answer": "F"
           },
           {
-            "sentence": "It is illegal for",
-            "options": [
-              "A for shoplifting.",
-              "B she's guilty.",
-              "C someone to steal something from a shop.",
-              "D of someone shoplifting.",
-              "E stealing the clothes.",
-              "F to steal something from the shop.",
-              "G steal something from the shop.",
-              "H with theft.",
-              "I of shoplifting."
-            ],
+            "sentence": "It is illegal for **C** someone to steal something from a shop.",
             "answer": "C"
           }
-        ]
+        ],
+        "type": "matching"
       },
       "G": {
         "title": "Cloze (Word patterns)",
