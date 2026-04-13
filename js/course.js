@@ -1080,7 +1080,7 @@
           } else {
             var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
             html += '<div class="cu-ex-items">';
-            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous, section.hideNumBadge);
+            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous, section.hideNumBadge, section.textareaAnswer);
             html += '</div>';
             if (hasInteractive) html += self._renderCuExFooter(secId);
           }
@@ -2632,13 +2632,13 @@
       sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
 
-    _renderCuExItemsList: function(items, idBase, secId, continuous, hideNumBadge) {
+    _renderCuExItemsList: function(items, idBase, secId, continuous, hideNumBadge, useTextarea) {
       var self = this;
       if (!items || !items.length) return '';
       if (continuous || items.length <= CU_PAGE_SIZE) {
         var html = '';
         items.forEach(function(item, iIdx) {
-          html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx, null, hideNumBadge);
+          html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx, null, hideNumBadge, useTextarea);
         });
         return html;
       }
@@ -2662,7 +2662,7 @@
         html += '<div class="cu-ex-page' + (pageIdx === 0 ? ' cu-ex-page-active' : '') + '">';
         pageItems.forEach(function(item, itemIdx) {
           var globalIdx = pageIdx * CU_PAGE_SIZE + itemIdx;
-          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx, null, hideNumBadge);
+          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx, null, hideNumBadge, useTextarea);
         });
         if (pageIdx < pages.length - 1) {
           var remaining = pages.length - pageIdx - 1;
@@ -2675,7 +2675,7 @@
       return html;
     },
 
-    _renderCourseExItem: function(item, idx, idBase, trackCallback, hideNumBadge) {
+    _renderCourseExItem: function(item, idx, idBase, trackCallback, hideNumBadge, useTextarea) {
       var self = this;
       var answer = item.answer || '';
       var inputId = 'cuex-' + idBase;
@@ -2729,7 +2729,7 @@
       if (isMC) {
         sentenceHtml = self._renderCourseExMCItem(sentence, item.options, inputId);
       } else {
-        sentenceHtml = self._renderCourseExSentence(sentence, inputId);
+        sentenceHtml = self._renderCourseExSentence(sentence, inputId, useTextarea);
       }
 
       // Detect multi-answer: item has inline options (**A/B** pattern) and answer contains '/'
@@ -2885,7 +2885,7 @@
       return result;
     },
 
-    _renderCourseExSentence: function(sentence, inputIdBase) {
+    _renderCourseExSentence: function(sentence, inputIdBase, useTextarea) {
       var self = this;
 
       // Key Word Transformation: two sentences separated by \n → show A / keyword / B rows
@@ -2920,10 +2920,10 @@
         '</div>';
       }
 
-      return self._renderCourseExSentenceParts(sentence, inputIdBase);
+      return self._renderCourseExSentenceParts(sentence, inputIdBase, false, useTextarea);
     },
 
-    _renderCourseExSentenceParts: function(sentence, inputIdBase, noStandalone) {
+    _renderCourseExSentenceParts: function(sentence, inputIdBase, noStandalone, useTextarea) {
       var self = this;
       // Tokenise sentence into: plain text, gap markers, bold+option patterns, plain bold
       // Compound patterns (hint+gap pill) are matched first so they take priority:
@@ -3096,6 +3096,9 @@
         } else if (p.type === 'strike') {
           return '<s>' + self._escapeHTML(p.val) + '</s>';
         } else if (p.type === 'gap') {
+          if (useTextarea) {
+            return '<textarea id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input cu-gap-textarea" placeholder="Your answer..." rows="2" aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
+          }
           return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
         } else if (p.type === 'gap-wf') {
           // Word-formation gap: input + word-badge together
@@ -3174,6 +3177,13 @@
 
     // Auto-resize a course gap input to fit its content (like test inputs)
     _resizeCuInput: function(input) {
+      // Textarea inputs: auto-grow height to show all content without scrolling
+      if (input.tagName === 'TEXTAREA') {
+        input.style.height = 'auto';
+        input.style.height = input.scrollHeight + 'px';
+        BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
+        return;
+      }
       var minWidth = 80;
       var span = document.getElementById('cu-resize-span');
       if (!span) {
