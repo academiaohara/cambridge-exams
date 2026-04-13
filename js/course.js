@@ -1603,34 +1603,32 @@
           'data-answer="' + self._escapeHTML(answer) + '">';
         if (!ex.hideNumBadge) html += '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>';
 
-        if (isOkItem) {
-          // Correct-sentence item: show text with an OK button the student must click to confirm
-          html += '<div class="cu-few-sentence cu-few-sentence-plain">' +
-            self._escapeHTML(rawSentence) + '</div>' +
-            '<button class="cu-few-ok-btn" onclick="BentoGrid._toggleFewOk(this)" ' +
-            'aria-pressed="false">OK</button>';
-        } else {
-          // Extra-word item: each token is a clickable span
-          var tokens = tokenize(rawSentence);
-          var answerCore = answer.toLowerCase();
-          html += '<div class="cu-few-sentence">';
-          tokens.forEach(function(token, ti) {
-            var isAnswer;
-            if (bracketAnswerIdx !== -1) {
-              isAnswer = (ti === bracketAnswerIdx) ? '1' : '0';
-            } else {
-              isAnswer = (wordCore(token) === answerCore) ? '1' : '0';
-            }
-            html += '<span class="cu-few-word" ' +
-              'data-few-is-answer="' + isAnswer + '" ' +
-              'onclick="BentoGrid._toggleFewWord(this)" ' +
-              'role="button" tabindex="0" ' +
-              'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleFewWord(this);event.preventDefault();}">' +
-              self._escapeHTML(token) +
-              '</span>';
-          });
-          html += '</div>';
-        }
+        // All items: clickable words + OK button to the right outside the sentence block
+        var tokens = tokenize(rawSentence);
+        var answerCore = isOkItem ? '' : answer.toLowerCase();
+        html += '<div class="cu-few-sentence-row">';
+        html += '<div class="cu-few-sentence">';
+        tokens.forEach(function(token, ti) {
+          var isAnswer;
+          if (isOkItem) {
+            isAnswer = '0';
+          } else if (bracketAnswerIdx !== -1) {
+            isAnswer = (ti === bracketAnswerIdx) ? '1' : '0';
+          } else {
+            isAnswer = (wordCore(token) === answerCore) ? '1' : '0';
+          }
+          html += '<span class="cu-few-word" ' +
+            'data-few-is-answer="' + isAnswer + '" ' +
+            'onclick="BentoGrid._toggleFewWord(this)" ' +
+            'role="button" tabindex="0" ' +
+            'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleFewWord(this);event.preventDefault();}">' +
+            self._escapeHTML(token) +
+            '</span>';
+        });
+        html += '</div>';
+        html += '<button class="cu-few-ok-btn" onclick="BentoGrid._toggleFewOk(this)" ' +
+          'aria-pressed="false">OK</button>';
+        html += '</div>'; // cu-few-sentence-row
 
         html += '</div>'; // cu-few-item
       });
@@ -1649,14 +1647,24 @@
       // Deselect all words in this item first
       item.querySelectorAll('.cu-few-word').forEach(function(w) { w.classList.remove('cu-few-selected'); });
       // Toggle: select only if it wasn't already selected
-      if (!wasSelected) span.classList.add('cu-few-selected');
+      if (!wasSelected) {
+        span.classList.add('cu-few-selected');
+        // Deselect OK button when a word is chosen
+        var okBtn = item.querySelector('.cu-few-ok-btn');
+        if (okBtn) { okBtn.classList.remove('cu-few-ok-selected'); okBtn.setAttribute('aria-pressed', 'false'); }
+      }
       BentoGrid._saveCuExSectionState(item.closest('.cu-section'));
     },
 
     _toggleFewOk: function(btn) {
       if (btn.disabled) return;
+      var item = btn.closest('.cu-few-item');
       btn.classList.toggle('cu-few-ok-selected');
       btn.setAttribute('aria-pressed', btn.classList.contains('cu-few-ok-selected') ? 'true' : 'false');
+      // Deselect any selected word when OK is toggled on
+      if (btn.classList.contains('cu-few-ok-selected') && item) {
+        item.querySelectorAll('.cu-few-word').forEach(function(w) { w.classList.remove('cu-few-selected'); });
+      }
       BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
@@ -3699,15 +3707,11 @@
       // Find-extra-word state
       var fewState = [];
       sec.querySelectorAll('.cu-few-item').forEach(function(item) {
-        if (item.classList.contains('cu-few-ok-item')) {
-          var okBtn = item.querySelector('.cu-few-ok-btn');
-          fewState.push({ ok: okBtn && okBtn.classList.contains('cu-few-ok-selected') ? 1 : 0 });
-        } else {
-          var words = item.querySelectorAll('.cu-few-word');
-          var selIdx = -1;
-          words.forEach(function(w, wi) { if (w.classList.contains('cu-few-selected')) selIdx = wi; });
-          fewState.push({ sel: selIdx });
-        }
+        var okBtn = item.querySelector('.cu-few-ok-btn');
+        var words = item.querySelectorAll('.cu-few-word');
+        var selIdx = -1;
+        words.forEach(function(w, wi) { if (w.classList.contains('cu-few-selected')) selIdx = wi; });
+        fewState.push({ ok: okBtn && okBtn.classList.contains('cu-few-ok-selected') ? 1 : 0, sel: selIdx });
       });
       if (fewState.length) answers.fewState = fewState;
       var mcPassage = {};
@@ -3797,12 +3801,12 @@
         sec.querySelectorAll('.cu-few-item').forEach(function(item, ii) {
           var state = answers.fewState[ii];
           if (!state) return;
-          if (item.classList.contains('cu-few-ok-item')) {
-            if (state.ok === 1) {
-              var okBtn = item.querySelector('.cu-few-ok-btn');
-              if (okBtn) okBtn.classList.add('cu-few-ok-selected');
-            }
-          } else if (typeof state.sel === 'number' && state.sel >= 0) {
+          var okBtn = item.querySelector('.cu-few-ok-btn');
+          if (state.ok === 1 && okBtn) {
+            okBtn.classList.add('cu-few-ok-selected');
+            okBtn.setAttribute('aria-pressed', 'true');
+          }
+          if (typeof state.sel === 'number' && state.sel >= 0) {
             var words = item.querySelectorAll('.cu-few-word');
             if (words[state.sel]) words[state.sel].classList.add('cu-few-selected');
           }
@@ -4598,17 +4602,10 @@
       });
       // Detect unanswered find-extra-word items
       sec.querySelectorAll('.cu-few-item').forEach(function(item, idx) {
-        var isOkItem = item.classList.contains('cu-few-ok-item');
-        if (isOkItem) {
-          // OK items require the OK button to be clicked
-          var okBtn = item.querySelector('.cu-few-ok-btn');
-          if (okBtn && !okBtn.classList.contains('cu-few-ok-selected')) {
-            unanswered.push(idx + 1);
-          }
-          return;
-        }
-        var isEmpty = !item.querySelector('.cu-few-word.cu-few-selected');
-        if (isEmpty) unanswered.push(idx + 1);
+        var hasWord = !!item.querySelector('.cu-few-word.cu-few-selected');
+        var okBtn = item.querySelector('.cu-few-ok-btn');
+        var hasOk = okBtn && okBtn.classList.contains('cu-few-ok-selected');
+        if (!hasWord && !hasOk) unanswered.push(idx + 1);
       });
 
       if (unanswered.length > 0) {
@@ -4647,34 +4644,41 @@
       sec.querySelectorAll('.cu-few-item').forEach(function(item) {
         totalItems++;
         var isOkItem = item.classList.contains('cu-few-ok-item');
+        var okBtn = item.querySelector('.cu-few-ok-btn');
+        var okSelected = okBtn && okBtn.classList.contains('cu-few-ok-selected');
+        var words = item.querySelectorAll('.cu-few-word');
+        var selectedWord = item.querySelector('.cu-few-word.cu-few-selected');
+
+        // Disable OK button
+        if (okBtn) okBtn.disabled = true;
+        // Disable all word spans
+        words.forEach(function(w) { w.setAttribute('data-few-disabled', '1'); });
+
         if (isOkItem) {
-          // Correct-sentence item: OK button must be clicked to confirm correct
-          var okBtn = item.querySelector('.cu-few-ok-btn');
-          if (okBtn) {
-            okBtn.disabled = true;
-            if (okBtn.classList.contains('cu-few-ok-selected')) {
-              item.classList.add('cu-few-ok-correct');
-              okBtn.classList.add('cu-few-ok-correct');
-              correctItems++;
-            } else {
-              okBtn.classList.add('cu-few-ok-incorrect');
-            }
-          } else {
-            // Fallback: no OK button rendered — leaving blank counts as correct
+          // Correct-sentence: correct answer = OK pressed, no word selected
+          if (okSelected && !selectedWord) {
             item.classList.add('cu-few-ok-correct');
+            if (okBtn) okBtn.classList.add('cu-few-ok-correct');
             correctItems++;
+          } else {
+            if (okBtn) okBtn.classList.add('cu-few-ok-incorrect');
+            if (selectedWord) {
+              selectedWord.classList.add('cu-few-incorrect');
+            }
           }
         } else {
-          var words = item.querySelectorAll('.cu-few-word');
-          var selectedWord = item.querySelector('.cu-few-word.cu-few-selected');
-          words.forEach(function(w) { w.setAttribute('data-few-disabled', '1'); });
+          // Extra-word item: correct answer = correct word selected, no OK
           if (selectedWord) {
             var isAnswer = selectedWord.getAttribute('data-few-is-answer') === '1';
             selectedWord.classList.add(isAnswer ? 'cu-few-correct' : 'cu-few-incorrect');
             if (!isAnswer) {
               words.forEach(function(w) { if (w.getAttribute('data-few-is-answer') === '1') w.classList.add('cu-few-reveal'); });
             }
-            if (isAnswer) correctItems++;
+            if (isAnswer && !okSelected) correctItems++;
+          } else if (okSelected) {
+            // User clicked OK on an extra-word item — wrong
+            if (okBtn) okBtn.classList.add('cu-few-ok-incorrect');
+            words.forEach(function(w) { if (w.getAttribute('data-few-is-answer') === '1') w.classList.add('cu-few-reveal'); });
           } else {
             // Nothing selected: reveal the answer
             words.forEach(function(w) { if (w.getAttribute('data-few-is-answer') === '1') w.classList.add('cu-few-reveal'); });
@@ -5466,14 +5470,15 @@
         });
         // Find-extra-word exercise: reveal correct word; for OK items highlight the sentence and button
         sec.querySelectorAll('.cu-few-item').forEach(function(item) {
+          var okBtn = item.querySelector('.cu-few-ok-btn');
           if (item.classList.contains('cu-few-ok-item')) {
             item.classList.add('cu-few-ok-reveal');
-            var okBtn = item.querySelector('.cu-few-ok-btn');
             if (okBtn) { okBtn.disabled = true; okBtn.classList.add('cu-few-ok-reveal'); }
           } else {
             item.querySelectorAll('.cu-few-word').forEach(function(span) {
               if (span.getAttribute('data-few-is-answer') === '1') span.classList.add('cu-few-reveal');
             });
+            if (okBtn) okBtn.disabled = true;
           }
         });
         // Crossword: fill each letter box with the correct character

@@ -3119,6 +3119,12 @@ textarea.cu-gap-input.cu-gap-textarea {
   margin-bottom: 0;
 }
 
+.cu-few-sentence-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .cu-few-sentence {
   display: flex;
   flex-wrap: wrap;
@@ -3126,6 +3132,8 @@ textarea.cu-gap-input.cu-gap-textarea {
   line-height: 2;
   font-size: 0.95rem;
   color: #334155;
+  flex: 1;
+  min-width: 0;
 }
 
 .cu-few-sentence-plain {
@@ -3188,7 +3196,7 @@ textarea.cu-gap-input.cu-gap-textarea {
 }
 
 .cu-few-ok-btn {
-  align-self: flex-start;
+  flex-shrink: 0;
   padding: 5px 16px;
   border-radius: 20px;
   border: 2px solid #e2e8f0;
@@ -3199,7 +3207,6 @@ textarea.cu-gap-input.cu-gap-textarea {
   transition: background 0.15s, border-color 0.15s, color 0.15s;
   color: #64748b;
   font-family: 'Nunito', sans-serif;
-  margin-top: 4px;
 }
 
 .cu-few-ok-btn:hover:not(:disabled) {
