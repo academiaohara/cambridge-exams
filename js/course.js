@@ -2235,8 +2235,8 @@
         .replace(/…\((\d+)\)…\s*\(([A-Z]+)\)/g, function(_, num, hintWordInPassage) {
           return makeGapPill(parseInt(num), hintWordInPassage || hintMap[parseInt(num)] || null);
         })
-        .replace(/\((\d+)\)\s*(?:_{2,}|[.…]{5,})\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)/g, function(_, num, hintWordInline) {
-          return makeGapPill(parseInt(num), hintWordInline || hintMap[parseInt(num)] || null);
+        .replace(/\((\d+)\)\s*(?:_{2,}|[.…]{5,})\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)/g, function(_, num, hintWord) {
+          return makeGapPill(parseInt(num), hintWord || hintMap[parseInt(num)] || null);
         })
         .replace(/\((\d+)\)\s*(?:_{2,}|[.…]{5,})/g, function(_, num) {
           return makeGapPill(parseInt(num), hintMap[parseInt(num)] || null);
