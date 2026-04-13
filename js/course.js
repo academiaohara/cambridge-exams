@@ -790,6 +790,26 @@
               continue;
             }
 
+            // modalTable: 3-col table (Use | Modal | Example)
+            if (block.modalTable) {
+              html += '<table class="cu-uses-examples-table cu-modal-table">';
+              html += '<thead><tr>';
+              html += '<th class="cu-ue-head">Use</th>';
+              html += '<th class="cu-ue-head">Modal</th>';
+              html += '<th class="cu-ue-head">Example</th>';
+              html += '</tr></thead><tbody>';
+              (block.rows || []).forEach(function(row) {
+                html += '<tr class="cu-ue-row">';
+                html += '<td class="cu-ue-use">' + self._escapeHTML(row.use || '') + '</td>';
+                html += '<td class="cu-ue-modal"><em>' + self._escapeHTML(row.modal || '') + '</em></td>';
+                html += '<td class="cu-ue-example">' + _bold(row.example || '') + '</td>';
+                html += '</tr>';
+              });
+              html += '</tbody></table>';
+              contentIdx++;
+              continue;
+            }
+
             // Pair "Uses" + "Examples" as a 2-column table
             if (block.subtitle === 'Uses' && nextBlock && nextBlock.subtitle === 'Examples') {
               var uses = block.items || [];
@@ -858,6 +878,13 @@
                     html += '<div class="cu-gc-form-stmt-note">' + _bold(row.note) + '</div>';
                   }
                 });
+              } else if (block.bullets && block.bullets.length) {
+                // Bullet-list items (non-italic)
+                html += '<ul class="cu-theory-list">';
+                block.bullets.forEach(function(fi) {
+                  html += '<li>' + _bold(fi) + '</li>';
+                });
+                html += '</ul>';
               } else if (formItems.length) {
                 // Legacy items: detect "statement:", "negative:", "question:" prefixes
                 var firstItem = formItems[0] || '';

@@ -6,25 +6,59 @@
   "sections": [
     {
       "type": "theory",
+      "title": "Modals: form",
+      "content": [
+        {
+          "subtitle": "Form",
+          "bullets": [
+            "All modals (*will, would, shall, should, can, could, may, might, must*) and the semi-modal *ought to* have only one form.",
+            "Modals are followed by the bare infinitive (simple or continuous) or the bare perfect infinitive\neg Toby **should be** very fit by now.\nToby **should have recovered** by now.",
+            "The semi-modals *have to* and *need to* change their form depending on person and tense\neg The doctor said I **had/needed to** give up red meat."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "theory",
       "title": "Modals: ability",
       "content": [
         {
-          "subtitle": "Use",
-          "items": [
-            "Expressing ability now or generally: can - I can run a kilometre in four minutes.",
-            "Expressing decisions made now about future ability: can - We can meet at the gym tomorrow, if you like.",
-            "Expressing ability in the past: could - I could do fifty press-ups with one hand when I was younger.",
-            "Expressing ability in present, future or general hypothetical situations: could - If only I could quit smoking!",
-            "Expressing ability in past hypothetical situations: could + perfect infinitive - I could have roasted the potatoes, but I decided that boiling them was healthier."
+          "modalTable": true,
+          "rows": [
+            {
+              "use": "Expressing ability now or generally",
+              "modal": "can",
+              "example": "I **can** run a kilometre in four minutes."
+            },
+            {
+              "use": "Expressing decisions made now about future ability",
+              "modal": "can",
+              "example": "We **can** meet at the gym tomorrow, if you like."
+            },
+            {
+              "use": "Expressing ability in the past",
+              "modal": "could",
+              "example": "I **could** do fifty press-ups with one hand when I was younger."
+            },
+            {
+              "use": "Expressing ability in present, future or general hypothetical situations",
+              "modal": "could",
+              "example": "If only I **could** quit smoking!"
+            },
+            {
+              "use": "Expressing ability in past hypothetical situations",
+              "modal": "could + perfect infinitive",
+              "example": "I **could have roasted** the potatoes, but I decided that boiling them was healthier."
+            }
           ]
         },
         {
-          "subtitle": "Note on 'be able to'",
-          "description": "We use 'be able to' for the infinitive and other tenses.",
-          "examples": [
-            "I'd love to be able to fit into these jeans again! (infinitive)",
-            "I'll be able to leave hospital in a few weeks, apparently. (future)",
-            "I've been able to swim since I was five. (present perfect)"
+          "subtitle": "Watch out!",
+          "items": [
+            "We use *be able to* for the infinitive and other tenses.",
+            "✓ I'd love to **be able to** fit into these jeans again! (infinitive)",
+            "✓ I'll **be able to** leave hospital in a few weeks, apparently. (future)",
+            "✓ I've **been able to** swim since I was five. (present perfect)"
           ]
         }
       ]
@@ -34,21 +68,24 @@
       "title": "Modals: permission",
       "content": [
         {
-          "subtitle": "Use",
-          "items": [
-            "Asking for and giving permission now, for the future or generally: may / could / can - May / Could / Can I see the doctor, please?"
+          "modalTable": true,
+          "rows": [
+            {
+              "use": "Asking for and giving permission now, for the future or generally",
+              "modal": "may / could / can",
+              "example": "**May / Could / Can** I see the doctor, please?"
+            }
           ]
         },
         {
-          "subtitle": "Note on politeness",
-          "description": "May is more polite than could, and could is more polite than can."
-        },
-        {
-          "subtitle": "Past permission",
-          "description": "We don't usually use a modal to talk about past permission. We use 'was/were allowed to'.",
-          "examples": [
-            "✓ I was allowed to wear a knee support during the match.",
-            "✓ However, we do use 'could' to talk about past permission in reported speech: The coach said I could wear a knee support during the match."
+          "subtitle": "Watch out!",
+          "items": [
+            "*May* is more polite than *could*, and *could* is more polite than *can*.",
+            "We don't usually use a modal to talk about past permission.",
+            "✓ I **was allowed to** wear a knee support during the match.",
+            "✗ I could wear a knee support during the match.",
+            "However, we do use *could* to talk about past permission in reported speech.",
+            "✓ The coach said I **could** wear a knee support during the match."
           ]
         }
       ]
@@ -58,9 +95,13 @@
       "title": "Modals: advice",
       "content": [
         {
-          "subtitle": "Use",
-          "items": [
-            "Asking for and giving advice now, for the future or generally: should / ought to - You ought to / should cut down on the amount of red meat you eat."
+          "modalTable": true,
+          "rows": [
+            {
+              "use": "Asking for and giving advice now, for the future or generally",
+              "modal": "should / ought to",
+              "example": "You **ought to / should** cut down on the amount of red meat you eat."
+            }
           ]
         }
       ]
@@ -70,9 +111,13 @@
       "title": "Modals: criticism",
       "content": [
         {
-          "subtitle": "Use",
-          "items": [
-            "Criticising past behaviour: should / ought to (+ perfect infinitive) - He ought to / should have made more of an effort with his diet."
+          "modalTable": true,
+          "rows": [
+            {
+              "use": "Criticising past behaviour",
+              "modal": "should / ought to (+ perfect infinitive)",
+              "example": "He **ought to / should have made** more of an effort with his diet."
+            }
           ]
         }
       ]
@@ -82,22 +127,51 @@
       "title": "Modals: obligation and necessity",
       "content": [
         {
-          "subtitle": "Use",
-          "items": [
-            "Expressing obligation or necessity: must / have to / need to - I must / have to / need to pick up that prescription from the chemist on the way home.",
-            "Expressing lack of obligation or necessity: needn't / don't have to / don't need to - You needn't / don't have to / don't need to pick up that prescription from the chemist as I'll get it while I'm in town.",
-            "Expressing past obligation: had to - I had to take the pills three times a day for two weeks.",
-            "Expressing lack of past obligation: needn't (+ perfect infinitive) / didn't have to / didn't need to - I needn't have gone / didn't have to go / didn't need to go to the doctor."
+          "modalTable": true,
+          "rows": [
+            {
+              "use": "Expressing obligation or necessity",
+              "modal": "must / have to / need to",
+              "example": "I **must / have to / need to** pick up that prescription from the chemist on the way home."
+            },
+            {
+              "use": "Expressing lack of obligation or necessity",
+              "modal": "needn't / don't have to / don't need to",
+              "example": "You **needn't / don't have to / don't need to** pick up that prescription from the chemist as I'll get it while I'm in town."
+            },
+            {
+              "use": "Expressing past obligation",
+              "modal": "had to",
+              "example": "I **had to** take the pills three times a day for two weeks."
+            },
+            {
+              "use": "Expressing lack of past obligation",
+              "modal": "needn't (+ perfect infinitive) / didn't have to / didn't need to",
+              "example": "I **needn't have gone / didn't have to go / didn't need to go** to the doctor."
+            }
           ]
         },
         {
-          "subtitle": "Notes",
+          "subtitle": "Watch out!",
           "items": [
-            "There is usually no difference in meaning between 'must' and 'have to'. However, 'must' is often used for personal obligation and 'have to' for external obligation.",
-            "We can also use 'will have/need to' to express future obligation: You'll have/need to be more careful about what you eat in future.",
-            "It is unusual to use 'must' for questions. We usually use 'have/need to': Do I have/need to take this medicine before every meal?",
-            "'Must' cannot be used as an infinitive. Use 'to have to': I'd hate to have to have injections every day.",
-            "'Mustn't' and 'don't/doesn't have/need to' have different meanings: You mustn't do that! (Don't do that!) / You don't have/need to do that. (You can do that if you want to but it's not necessary.)"
+            "There is usually no difference in meaning between *must* and *have to*. However, we are sometimes more likely to use *must* for personal obligation and *have to* for external obligation.",
+            "We can also use *will have/need to* to express future obligation.",
+            "✓ You'll **have/need to** be more careful about what you eat in future.",
+            "It is unusual to use *must* for questions. We usually use *have/need to*.",
+            "✓ **Do I have/need to** take this medicine before every meal?",
+            "*Must* cannot be used as an infinitive. Use *to have to*.",
+            "✓ I'd hate **to have to** have injections every day.",
+            "✗ I'd hate to must have injections every day.",
+            "*Mustn't* and *don't/doesn't have/need to* have different meanings.",
+            "✓ You **mustn't** do that! (Don't do that!)",
+            "✓ You **don't have/need to** do that. (You can do that if you want to but it's not necessary.)",
+            "*Needn't* (+ perfect infinitive) always refers to an action that happened. *Didn't have to* and *didn't need to* can refer to actions that did or didn't happen.",
+            "✓ I **needn't have gone** to the doctor. (I went but it wasn't necessary.)",
+            "✓ I **didn't have/need to** go to the doctor because I suddenly felt better. (I didn't go.)",
+            "✓ I **didn't have/need to** go to the doctor but I went just to be on the safe side. (I did go.)",
+            "Be careful with the verb *need*. It can also take the *-ing* form.",
+            "✓ I need to sterilise this syringe.",
+            "✓ This syringe needs sterilising."
           ]
         }
       ]
@@ -107,15 +181,43 @@
       "title": "Modals: degrees of certainty",
       "content": [
         {
-          "subtitle": "Use",
-          "items": [
-            "Expressing certainty (or near certainty) about now or generally: must / can't / couldn't - That must be the district nurse at the door. These can't / couldn't be the pills; they're the wrong colour.",
-            "Expressing certainty (or near certainty) about the past: must / can't / couldn't (+ perfect infinitive) - She must have been in a lot of pain. His leg can't / couldn't have been in plaster for two years!",
-            "Expressing probability about now, the future or generally: should / ought to - You ought to / should feel better in a few days, as long as you get lots of rest.",
-            "Expressing probability about the past: should / ought to (+ perfect infinitive) - The bruise ought to / should have disappeared days ago. I wonder why it didn't.",
-            "Expressing possibility about now, the future or generally: could / may / might - You should talk to your doctor first because that diet could / may / might be dangerous.",
-            "Expressing possibility about the real past: could / may / might (+ perfect infinitive) - That could / may / might have been the doctor who rang earlier while we were out.",
-            "Expressing possibility about a hypothetical past: could / might (+ perfect infinitive) - It's a good thing you went to the doctor or you could / might have become quite ill."
+          "modalTable": true,
+          "rows": [
+            {
+              "use": "Expressing certainty (or near certainty) about now or generally",
+              "modal": "must / can't / couldn't",
+              "example": "That **must** be the district nurse at the door. These **can't / couldn't** be the pills; they're the wrong colour."
+            },
+            {
+              "use": "Expressing certainty (or near certainty) about the past",
+              "modal": "must / can't / couldn't (+ perfect infinitive)",
+              "example": "She **must have been** in a lot of pain. His leg **can't / couldn't have been** in plaster for two years!"
+            },
+            {
+              "use": "Expressing probability about now, the future or generally",
+              "modal": "should / ought to",
+              "example": "You **ought to / should** feel better in a few days, as long as you get lots of rest."
+            },
+            {
+              "use": "Expressing probability about the past",
+              "modal": "should / ought to (+ perfect infinitive)",
+              "example": "The bruise **ought to / should have disappeared** days ago. I wonder why it didn't."
+            },
+            {
+              "use": "Expressing possibility about now, the future or generally",
+              "modal": "could / may / might",
+              "example": "You should talk to your doctor first because that diet **could / may / might** be dangerous."
+            },
+            {
+              "use": "Expressing possibility about the real past",
+              "modal": "could / may / might (+ perfect infinitive)",
+              "example": "That **could / may / might have been** the doctor who rang earlier while we were out."
+            },
+            {
+              "use": "Expressing possibility about a hypothetical past",
+              "modal": "could / might (+ perfect infinitive)",
+              "example": "It's a good thing you went to the doctor or you **could / might have become** quite ill."
+            }
           ]
         }
       ]
