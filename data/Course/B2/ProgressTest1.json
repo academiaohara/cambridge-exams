@@ -1,17 +1,19 @@
 {
   "block": 1,
   "type": "progress_test",
-  "unitTitle": "Progress Test 1: Units 1-12",
+  "unitTitle": "Progress Test 1: Units 1-14",
   "totalPoints": 100,
   "sections": [
     {
       "type": "exercise",
       "title": "A: Multiple Choice (History of Writing)",
+      "passageTitle": "THE HISTORY OF WRITING",
       "scoring": {
         "pointsPerItem": 1,
         "maxScore": 15
       },
       "instructions": "Choose the correct answer (A, B, C, or D).",
+      "passage": "The development of writing (1) .......... a huge difference to the world and we might see it as the beginning of the (2) .......... . Pieces of pottery with marks on that are probably numbers have been (3) .......... in China that date from around 4000 BC. Hieroglyphics and other forms of 'picture writing' developed in the (4) .......... around Mesopotamia (modern-day Iraq), where the (5) .......... Sumerian civilization was based, from around 3300 BC onwards. However, the first (6) .......... alphabet was used by the Phoenicians around 1050 BC. Their alphabet had 22 letters and it is (7) .......... that it lasted for 1000 years. The first two signs were called 'aleph' and 'beth', which in Greek became 'alpha' and 'beta', which gave us the (8) .......... word 'alphabet'.\n\nThe modern European alphabet is based on the Greek and (9) .......... to other European countries under the Romans. A number of changes took (10) .......... as time (11) .......... . The Romans added the letter G, and the letters J and V were (12) .......... to people in Shakespeare's time.\n\nIf we (13) .......... the history of punctuation, we also find some interesting facts. The Romans used to write quaesto at the end of a sentence in (14) .......... to show that it was a question. They started to write Qo in (15) .......... of the whole word, and then put the Q above the o. In the end, that became the question mark '?'.",
       "items": [
         {
           "answer": "C",
@@ -263,74 +265,16 @@
     },
     {
       "type": "exercise",
+      "subtype": "passage-input",
       "title": "C: Open Cloze (Your first telescope)",
+      "passageTitle": "Your first telescope",
       "scoring": {
         "pointsPerItem": 1,
         "maxScore": 15
       },
       "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "26 Many people look up at ...... night sky...",
-          "answer": "the"
-        },
-        {
-          "sentence": "27 ...... that sounds like you, then perhaps it's time...",
-          "answer": "If"
-        },
-        {
-          "sentence": "28 Astronomy ...... be a great hobby...",
-          "answer": "can"
-        },
-        {
-          "sentence": "29 ...for those of you thinking of ...... it up.",
-          "answer": "taking"
-        },
-        {
-          "sentence": "30 You can still see a lot, as ...... as you don't expect...",
-          "answer": "long"
-        },
-        {
-          "sentence": "31 ...to see so ...... detail.",
-          "answer": "much"
-        },
-        {
-          "sentence": "32 You might ...... discover a comet!",
-          "answer": "even"
-        },
-        {
-          "sentence": "33 Remember, though, that you ...... never look at the Sun directly...",
-          "answer": "should"
-        },
-        {
-          "sentence": "34 ...you need to choose ...... a refracting and a reflecting telescope.",
-          "answer": "between"
-        },
-        {
-          "sentence": "35 A refracting telescope is ...... great way of quickly...",
-          "answer": "a"
-        },
-        {
-          "sentence": "36 ...quickly ...... your way around the heavens.",
-          "answer": "finding"
-        },
-        {
-          "sentence": "37 As well as more stars ...... you can imagine...",
-          "answer": "than"
-        },
-        {
-          "sentence": "38 You should have no difficulty ...... finding Mars...",
-          "answer": "in"
-        },
-        {
-          "sentence": "39 ...then you ...... need a reflecting telescope...",
-          "answer": "will"
-        },
-        {
-          "sentence": "40 These telescopes are much ...... at collecting light...",
-          "answer": "better"
-        }
-      ]
+      "passage": "Many people look up at (1) .......... night sky and become fascinated by the wonders of the universe. (2) .......... that sounds like you, then perhaps it's time you got your own telescope. Astronomy (3) .......... be a great hobby and we've provided this simple guide for those of you thinking of (4) .......... it up.\n\n**What if I don't have much money?**\n\nTry a pair of binoculars. You can still see a lot, as (5) .......... as you don't expect to see so (6) .......... detail. Explore the Moon and the stars — and who knows? You might (7) .......... discover a comet! Remember, though, that you (8) .......... never look at the Sun directly through binoculars or a telescope.\n\n**What kind of telescope do I need?**\n\nDepending on what you want to do, you need to choose (9) .......... a refracting and a reflecting telescope. A refracting telescope (with two glass lenses) is (10) .......... great way of quickly (11) .......... your way around the heavens. As well as more stars (12) .......... you can imagine, there are the planets to explore! You should have no difficulty (13) .......... finding Mars and even Saturn, with its fantastic rings. If you want to really explore the universe, then you (14) .......... need a reflecting telescope (with a mirror). These telescopes are much (15) .......... at collecting light and allow you to see things in amazing detail!\n\nWhatever you decide, welcome to the wonderful world of astronomy!",
+      "answers": ["the", "If", "can", "taking", "long", "much", "even", "should", "between", "a", "finding", "than", "in", "will", "better"]
     },
     {
       "type": "exercise",
@@ -402,7 +346,7 @@
           ]
         },
         {
-          "sentence": "I'm afraid we've run out of ...... this week...",
+          "sentence": "I'm afraid we've run out of ...... this week.",
           "answer": "C",
           "options": [
             "A the time",
@@ -422,7 +366,7 @@
           ]
         },
         {
-          "sentence": "I seem to be ...... busy to find the time for reading these days.'",
+          "sentence": "I seem to be ...... busy to find the time for reading these days.",
           "answer": "B",
           "options": [
             "A so",
@@ -453,31 +397,31 @@
       "instructions": "Match to make sentences.",
       "items": [
         {
-          "sentence": "51 The Pattersons have decided to pull **F** out of the Seaview Apartments project.",
+          "sentence": "The Pattersons have decided to pull **F** out of the Seaview Apartments project.",
           "answer": "F"
         },
         {
-          "sentence": "52 Mr Greene seems to find it difficult to get **H** on with the other teachers in his department.",
+          "sentence": "Mr Greene seems to find it difficult to get **H** on with the other teachers in his department.",
           "answer": "H"
         },
         {
-          "sentence": "53 We haven't made a final decision, but we've narrowed it **A** down to three possible candidates.",
+          "sentence": "We haven't made a final decision, but we've narrowed it **A** down to three possible candidates.",
           "answer": "A"
         },
         {
-          "sentence": "54 Dad thought it might be a good idea to look **B** into the noise complaints from the neighbours.",
+          "sentence": "Dad thought it might be a good idea to look **B** into the noise complaints from the neighbours.",
           "answer": "B"
         },
         {
-          "sentence": "55 It seems that Matt has fallen **D** out with his best friend over a silly argument.",
+          "sentence": "It seems that Matt has fallen **D** out with his best friend over a silly argument.",
           "answer": "D"
         },
         {
-          "sentence": "56 I think it was Bob who came **C** up with the idea for the new coffee shop.",
+          "sentence": "I think it was Bob who came **C** up with the idea for the new coffee shop.",
           "answer": "C"
         },
         {
-          "sentence": "57 The holiday started okay and then turned **G** out to be one of the best we'd ever had.",
+          "sentence": "The holiday started okay and then turned **G** out to be one of the best we'd ever had.",
           "answer": "G"
         }
       ],
@@ -493,45 +437,46 @@
       "instructions": "Complete the second sentence using the word given, so that it has a similar meaning. Write between two and five words.",
       "items": [
         {
-          "sentence": "58 I lost my keys once before this month. **second**\nThis is the ...... my keys this month.",
+          "sentence": "I lost my keys once before this month. **second**\nThis is the ...... my keys this month.",
           "answer": "second time I have lost"
         },
         {
-          "sentence": "59 I started playing squash six years ago. **for**\nI ...... six years.",
+          "sentence": "I started playing squash six years ago. **for**\nI ...... six years.",
           "answer": "have been playing squash for"
         },
         {
-          "sentence": "60 I can't wait until I'm old enough to go to a match on my own. **forward**\nI'm really ...... old enough to go to a match on my own.",
+          "sentence": "I can't wait until I'm old enough to go to a match on my own. **forward**\nI'm really ...... old enough to go to a match on my own.",
           "answer": "looking forward to being"
         },
         {
-          "sentence": "61 Accidents are often caused by careless driving. **results**\nCareless driving ...... accidents.",
+          "sentence": "Accidents are often caused by careless driving. **results**\nCareless driving ...... accidents.",
           "answer": "often results in"
         },
         {
-          "sentence": "62 It's a waste of time denying that you did it when we've got proof. **point**\nThere ...... that you did it when we've got proof.",
+          "sentence": "It's a waste of time denying that you did it when we've got proof. **point**\nThere ...... that you did it when we've got proof.",
           "answer": "is no point in denying"
         },
         {
-          "sentence": "63 Don't you wish you could travel into space? **able**\nWouldn't you love ...... into space?",
+          "sentence": "Don't you wish you could travel into space? **able**\nWouldn't you love ...... into space?",
           "answer": "to be able to travel"
         },
         {
-          "sentence": "64 I called the travel agent to check that I had the right timetable. **make**\nI called the travel agent to ...... I had the right timetable.",
+          "sentence": "I called the travel agent to check that I had the right timetable. **make**\nI called the travel agent to ...... I had the right timetable.",
           "answer": "make sure that"
         },
         {
-          "sentence": "65 I'm afraid you're too young to go down the water slide. **old**\nI'm afraid you ...... to go down the water slide.",
+          "sentence": "I'm afraid you're too young to go down the water slide. **old**\nI'm afraid you ...... to go down the water slide.",
           "answer": "are not old enough"
         },
         {
-          "sentence": "66 My mum says doctors weren't so expensive in the past. **used**\nMy mum says doctors ...... so expensive.",
+          "sentence": "My mum says doctors weren't so expensive in the past. **used**\nMy mum says doctors ...... so expensive.",
           "answer": "never used to be"
         }
       ]
     },
     {
       "type": "exercise",
+      "subtype": "find-extra-word",
       "title": "G: Error Correction (Extra word)",
       "scoring": {
         "pointsPerItem": 1,
@@ -540,117 +485,80 @@
       "instructions": "If a line is correct, put a tick (✓). If there is an extra word, write it.",
       "items": [
         {
-          "sentence": "67 I had a great week at school! We were been having a media",
+          "sentence": "I had a great week at school! We were been having a media",
           "answer": "been"
         },
         {
-          "sentence": "68 studies lesson when our teacher told to us that we were going",
+          "sentence": "studies lesson when our teacher told to us that we were going",
           "answer": "to"
         },
         {
-          "sentence": "69 to make a radio advert for the school! I was really keen on",
+          "sentence": "to make a radio advert for the school! I was really keen on",
           "answer": "✓"
         },
         {
-          "sentence": "70 to be involved because I've always had been interested in a",
+          "sentence": "to be involved because I've always had been interested in a",
           "answer": "had"
         },
         {
-          "sentence": "71 career in the television. She asked us to plan our advert in",
+          "sentence": "career in the television. She asked us to plan our advert in",
           "answer": "the"
         },
         {
-          "sentence": "72 detail and to write a script. Most people found it out difficult",
+          "sentence": "detail and to write a script. Most people found it out difficult",
           "answer": "out"
         },
         {
-          "sentence": "73 to come up with ideas, but I didn't. I decided that I would have",
+          "sentence": "to come up with ideas, but I didn't. I decided that I would have",
           "answer": "✓"
         },
         {
-          "sentence": "74 interviews with people who were used to go to the school,",
+          "sentence": "interviews with people who were used to go to the school,",
           "answer": "were"
         },
         {
-          "sentence": "75 commenting on how they had benefited them from going to that",
+          "sentence": "commenting on how they had benefited them from going to that",
           "answer": "them"
         },
         {
-          "sentence": "76 school. My teacher thought it was a great idea and said I should",
+          "sentence": "school. My teacher thought it was a great idea and said I should",
           "answer": "✓"
         },
         {
-          "sentence": "77 to see if I could find some ex-students. I asked the head and",
+          "sentence": "to see if I could find some ex-students. I asked the head and",
           "answer": "to"
         },
         {
-          "sentence": "78 she gave me a few phone numbers. When I called them and",
+          "sentence": "she gave me a few phone numbers. When I called them and",
           "answer": "✓"
         },
         {
-          "sentence": "79 explained them what I wanted to do, they were all happy to",
+          "sentence": "explained them what I wanted to do, they were all happy to",
           "answer": "them"
         },
         {
-          "sentence": "80 help. I am going to visit them with a tape recorder and record",
+          "sentence": "help. I am going to visit them with a tape recorder and record",
           "answer": "✓"
         },
         {
-          "sentence": "81 that what they say. Media studies is definitely turning out to be my favourite subject!",
+          "sentence": "that what they say. Media studies is definitely turning out to be my favourite subject!",
           "answer": "that"
         }
       ]
     },
     {
       "type": "exercise",
+      "subtype": "passage-input",
       "title": "H: Word Formation",
+      "passageTitle": "Crime and Stupidity",
       "scoring": {
         "pointsPerItem": 1,
         "maxScore": 10
       },
       "instructions": "Use the word in capitals to form a word that fits in the gap.",
-      "items": [
-        {
-          "sentence": "82 Some ...... (CRIME) become known for their intelligence...",
-          "answer": "criminals"
-        },
-        {
-          "sentence": "83 Others are just so stupid that it seems ...... (RIDICULE).",
-          "answer": "ridiculous"
-        },
-        {
-          "sentence": "84 Take, for instance, one ...... (ROB), who decided that he was feeling a little tired...",
-          "answer": "robber"
-        },
-        {
-          "sentence": "85 Seeing the ...... (COMFORT) bed, he decided to take a nap.",
-          "answer": "comfortable"
-        },
-        {
-          "sentence": "86 It may seem ...... (BELIEF), but he was still asleep when the owners got home!",
-          "answer": "unbelievable"
-        },
-        {
-          "sentence": "87 They ...... (NERVOUS) called the police...",
-          "answer": "nervously"
-        },
-        {
-          "sentence": "88 Another ...... (HUMOUR) story is that of the man who stole a...",
-          "answer": "humorous"
-        },
-        {
-          "sentence": "89 ...a ...... (SECURE) camera.",
-          "answer": "security"
-        },
-        {
-          "sentence": "90 He managed to steal the camera ...... (EQUIP), but left the tape behind.",
-          "answer": "equipment"
-        },
-        {
-          "sentence": "91 It was used as ...... (EVIDENT) in court because...",
-          "answer": "evidence"
-        }
-      ]
+      "passage": "Some (1) .......... become known for their intelligence and others are just so stupid that it seems (2) .......... . Take, for instance, one (3) .......... who decided that he was feeling a little tired after breaking into a house. Seeing the (4) .......... bed, he decided to take a nap. It may seem (5) .......... , but he was still asleep when the owners got home! They (6) .......... called the police and told them what had happened. Another (7) .......... story is that of the man who stole a (8) .......... camera. He managed to steal the camera (9) .......... , but left the tape behind. It was used as (10) .......... in court because the whole robbery had been recorded!",
+      "answers": ["criminals", "ridiculous", "robber", "comfortable", "unbelievable", "nervously", "humorous", "security", "equipment", "evidence"],
+      "hints": ["CRIME", "RIDICULE", "ROB", "COMFORT", "BELIEF", "NERVOUS", "HUMOUR", "SECURE", "EQUIP", "EVIDENT"]
     }
   ]
 }

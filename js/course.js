@@ -3970,7 +3970,10 @@
       // Count total answerable items across all sections
       var totalMaxItems = 0;
       (data.sections || []).forEach(function(s) {
-        if (s.type === 'exercise') totalMaxItems += (s.items || []).length;
+        if (s.type === 'exercise') {
+          if (s.subtype === 'passage-input') totalMaxItems += (s.answers || []).length;
+          else totalMaxItems += (s.items || []).length;
+        }
       });
 
       html += '<div class="cu-review-banner cu-pt-banner">' +
@@ -3998,7 +4001,10 @@
           var rvSecId = 'cu-sec-' + sectionIdx;
           var rvItems = section.items || [];
           var multiSelectAttr = section.multiSelect ? ' data-multi-select="true"' : '';
-          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvItems.length + '"' + multiSelectAttr + '>' +
+          var isPassageInput = section.subtype === 'passage-input';
+          var isMcPassage = !!(section.passage && rvItems.length && rvItems[0] && rvItems[0].options);
+          var ptMaxItems = isPassageInput ? (section.answers || []).length : rvItems.length;
+          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + ptMaxItems + '"' + multiSelectAttr + '>' +
             '<div class="cu-section-title">' + _mi('assignment') + ' ' + self._escapeHTML(section.title) + '</div>';
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
@@ -4011,7 +4017,19 @@
             '</div>';
           }
           html += self._renderCuWordBank(section.words);
-          if (section.subtype === 'matching') {
+          if (isMcPassage) {
+            if (section.passageTitle) {
+              html += '<div class="cu-passage-title">' + self._escapeHTML(section.passageTitle) + '</div>';
+            }
+            html += self._renderCuMcPassageExercise(section, 'pt-' + sectionIdx + '-' + section.title.replace(/\W+/g, ''), rvSecId);
+          } else if (isPassageInput) {
+            if (section.passageTitle) {
+              html += '<div class="cu-passage-title">' + self._escapeHTML(section.passageTitle) + '</div>';
+            }
+            html += self._renderCuPassageInputExercise(section, 'pt-' + sectionIdx + '-' + section.title.replace(/\W+/g, ''), rvSecId);
+          } else if (section.subtype === 'find-extra-word') {
+            html += self._renderCuFindExtraWordExercise(section, 'pt-' + sectionIdx + '-' + section.title.replace(/\W+/g, ''), rvSecId);
+          } else if (section.subtype === 'matching') {
             html += self._renderCuMatchingExercise(rvItems, 'pt-' + sectionIdx + '-' + section.title.replace(/\W+/g, ''), rvSecId);
           } else {
             html += '<div class="cu-ex-items">';
@@ -4078,7 +4096,7 @@
         var reviewItem = items.find(function(i) { return i.type === 'review'; });
         var progressTestItem = items.find(function(i) { return i.type === 'progress_test'; });
 
-        // Progress test blocks: render as full-width card
+        // Progress test blocks: render as a card matching block card size
         if (progressTestItem) {
           var isPtAvail = progressTestItem.status === 'available';
           var isPtDone = !!progress[progressTestItem.id];
@@ -4088,18 +4106,18 @@
           var ptClass = 'cu-pt-overview-card' + (isPtDone ? ' cu-pt-card-done' : (isPtAvail ? ' cu-pt-card-available' : ' cu-pt-card-locked'));
           var ptClickAttr = isPtAvail ? ' onclick="BentoGrid.openCourseUnit(\'' + progressTestItem.id + '\',\'' + ptPath + '\')" style="cursor:pointer"' : '';
           html += '<div class="' + ptClass + '"' + ptClickAttr + '>';
+          html += '<div class="cu-pt-ov-header-row">';
           html += '<div class="cu-pt-ov-icon">' + _mi('assignment') + '</div>';
-          html += '<div class="cu-pt-ov-body">';
           html += '<div class="cu-pt-ov-label">Progress Test</div>';
+          if (isPtDone) html += '<div class="cu-pt-ov-check">' + _mi('check_circle') + '</div>';
+          else if (!isPtAvail) html += '<div class="cu-pt-ov-lock">' + _mi('lock') + ' Coming Soon</div>';
+          html += '</div>'; // .cu-pt-ov-header-row
           html += '<div class="cu-pt-ov-title">' + self._escapeHTML(progressTestItem.title) + '</div>';
           if (ptScore !== null) {
             html += '<div class="cu-pt-ov-score">' + _mi('stars') + ' ' + ptScore + ' / ' + ptTotal + ' pts</div>';
           } else if (isPtAvail) {
             html += '<div class="cu-pt-ov-cta">' + _mi('play_arrow') + ' Take the Test</div>';
           }
-          html += '</div>';
-          if (isPtDone) html += '<div class="cu-pt-ov-check">' + _mi('check_circle') + '</div>';
-          else if (!isPtAvail) html += '<div class="cu-pt-ov-lock">' + _mi('lock') + ' Coming Soon</div>';
           html += '</div>'; // .cu-pt-overview-card
           return;
         }

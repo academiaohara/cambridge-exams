@@ -2625,16 +2625,21 @@ textarea.cu-gap-input.cu-gap-textarea {
 
 /* ── Progress Test overview card ────────────────────────────────────── */
 .cu-pt-overview-card {
-  grid-column: 1 / -1; /* span full width */
   display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 20px 22px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
   background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(167, 139, 250, 0.05));
   border: 1.5px solid rgba(124, 58, 237, 0.2);
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.07);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.07);
   transition: box-shadow 0.15s, transform 0.12s;
+}
+
+.cu-pt-ov-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .cu-pt-overview-card.cu-pt-card-available:hover {
@@ -2655,15 +2660,15 @@ textarea.cu-gap-input.cu-gap-textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   background: rgba(124, 58, 237, 0.12);
   flex-shrink: 0;
 }
 
 .cu-pt-ov-icon .material-symbols-outlined {
-  font-size: 1.7rem;
+  font-size: 1.25rem;
   color: #7c3aed;
 }
 
@@ -3357,6 +3362,19 @@ textarea.cu-gap-input.cu-gap-textarea {
 }
 
 /* ── Passage exercise (word formation text with inline gaps) ─────────── */
+.cu-passage-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1e293b;
+  background: #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 .cu-passage-text {
   background: #f8fafc;
   border: 1px solid #e2e8f0;

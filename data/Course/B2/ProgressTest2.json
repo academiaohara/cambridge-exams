@@ -1,17 +1,19 @@
 {
   "block": 2,
   "type": "progress_test",
-  "unitTitle": "Progress Test 2: Units 13-28",
+  "unitTitle": "Progress Test 2: Units 15-28",
   "totalPoints": 100,
   "sections": [
     {
       "type": "exercise",
       "title": "A: Multiple Choice (Criticism)",
+      "passageTitle": "THE ART OF PUBLIC SPEAKING",
       "scoring": {
         "pointsPerItem": 1,
         "maxScore": 15
       },
       "instructions": "Choose the correct answer (A, B, C, or D).",
+      "passage": "Being good at public speaking can (1) .......... years of practice. It also helps if you are naturally (2) .......... . However, you need to be (3) .......... of the way you come across to an audience. When David first spoke in public, the room was (4) .......... of people and his mind went blank. His teacher told him he should not (5) .......... too much about this, and that nerves would not (6) .......... him from improving. A positive (7) .......... of being nervous is that it can actually sharpen your performance. Rather than being (8) .......... in confidence, many experienced speakers find that nerves help them to focus. A professional coach (9) .......... students to see criticism as something positive. It is important to (10) .......... who is offering the criticism and why they are doing so. If you want to make a (11) .......... out of public speaking, you must learn to welcome feedback. David's first speech was a complete (12) .......... but he refused to give up. He made a decision to (13) .......... trying, regardless of how difficult it was. Success does not (14) .......... entirely on natural talent; hard work and commitment are equally important. As David discovered, things can (15) .......... to be far better than you imagined, as long as you keep going.",
       "items": [
         {
           "answer": "C",
@@ -220,7 +222,7 @@
           ]
         },
         {
-          "sentence": "...ours is about the most ...... lifestyle you can have!",
+          "sentence": "Ours is about the most ...... lifestyle you can have!",
           "answer": "C",
           "options": [
             "A urban",
@@ -263,74 +265,16 @@
     },
     {
       "type": "exercise",
+      "subtype": "passage-input",
       "title": "C: Open Cloze (Lack of faith in politicians)",
+      "passageTitle": "Lack of faith in politicians",
       "scoring": {
         "pointsPerItem": 1,
         "maxScore": 15
       },
       "instructions": "Write one word in each gap.",
-      "items": [
-        {
-          "sentence": "26 A recent survey has shown an increase ...... distrust for politicians.",
-          "answer": "in"
-        },
-        {
-          "sentence": "27 They've always been regarded ...... untrustworthy...",
-          "answer": "as"
-        },
-        {
-          "sentence": "28 A majority of the people who ...... questioned...",
-          "answer": "were"
-        },
-        {
-          "sentence": "29 ...associate politicians ...... an inability...",
-          "answer": "with"
-        },
-        {
-          "sentence": "30 ...to tell ...... truth.",
-          "answer": "the"
-        },
-        {
-          "sentence": "31 They believe they're responsible ...... most of the country's problems...",
-          "answer": "for"
-        },
-        {
-          "sentence": "32 ...have had a negative effect ...... the country's image...",
-          "answer": "on"
-        },
-        {
-          "sentence": "33 ...refuse to face ...... to the fact...",
-          "answer": "up"
-        },
-        {
-          "sentence": "34 ...never apologise for ...... made mistakes.",
-          "answer": "having"
-        },
-        {
-          "sentence": "35 The survey, ...... was carried out over three months...",
-          "answer": "which"
-        },
-        {
-          "sentence": "36 ...give the impression ...... being arrogant...",
-          "answer": "of"
-        },
-        {
-          "sentence": "37 ...only ...... note of what the electorate believe...",
-          "answer": "take"
-        },
-        {
-          "sentence": "38 In ...... of these disturbing findings...",
-          "answer": "spite"
-        },
-        {
-          "sentence": "39 ...people do not believe that ...... is no point in voting...",
-          "answer": "there"
-        },
-        {
-          "sentence": "40 ...... least politicians can take some comfort...",
-          "answer": "At"
-        }
-      ]
+      "passage": "A recent survey has shown an increase (1) .......... distrust for politicians. They have always been regarded (2) .......... untrustworthy, and a majority of the people who (3) .......... questioned associate politicians (4) .......... an inability to be honest with the public. People feel that politicians refuse to tell (5) .......... truth. They believe politicians are responsible (6) .......... most of the country's problems and that their decisions have had a negative effect (7) .......... the country's image abroad. Many citizens also believe that politicians refuse to face (8) .......... to the fact that they have made mistakes and never apologise for (9) .......... made those mistakes. The survey, (10) .......... was carried out over three months, also found that many people feel politicians give the impression (11) .......... being arrogant and only (12) .......... note of public opinion when elections are near. In (13) .......... of these disturbing findings, people do not believe (14) .......... is no point in voting. (15) .......... least, politicians can take some comfort from this.",
+      "answers": ["in", "as", "were", "with", "the", "for", "on", "up", "having", "which", "of", "take", "spite", "there", "At"]
     },
     {
       "type": "exercise",
@@ -453,31 +397,31 @@
       "instructions": "Match to make sentences.",
       "items": [
         {
-          "sentence": "51 When we can afford it, we're going to do **F** up the kitchen and the living room.",
+          "sentence": "When we can afford it, we're going to do **F** up the kitchen and the living room.",
           "answer": "F"
         },
         {
-          "sentence": "52 Jason's thinking of dropping **E** out of his medical degree and becoming a teacher.",
+          "sentence": "Jason's thinking of dropping **E** out of his medical degree and becoming a teacher.",
           "answer": "E"
         },
         {
-          "sentence": "53 When the factory closed **H** down, hundreds of people lost their jobs.",
+          "sentence": "When the factory closed **H** down, hundreds of people lost their jobs.",
           "answer": "H"
         },
         {
-          "sentence": "54 They should do away **C** with that complicated system and start again.",
+          "sentence": "They should do away **C** with that complicated system and start again.",
           "answer": "C"
         },
         {
-          "sentence": "55 Let me take you out to dinner to make **B** up for missing your birthday.",
+          "sentence": "Let me take you out to dinner to make **B** up for missing your birthday.",
           "answer": "B"
         },
         {
-          "sentence": "56 I never wanted a mortgage but I'm coming **A** round to the idea.",
+          "sentence": "I never wanted a mortgage but I'm coming **A** round to the idea.",
           "answer": "A"
         },
         {
-          "sentence": "57 Cynthia's decided to set **G** up her own catering business.",
+          "sentence": "Cynthia's decided to set **G** up her own catering business.",
           "answer": "G"
         }
       ],
@@ -493,45 +437,46 @@
       "instructions": "Complete the second sentence using the word given. Write between two and five words.",
       "items": [
         {
-          "sentence": "58 I don't think George has the ability to climb right to the top of that mountain! **capable**\nI don't think George ...... right to the top of that mountain!",
+          "sentence": "I don't think George has the ability to climb right to the top of that mountain! **capable**\nI don't think George ...... right to the top of that mountain!",
           "answer": "is capable of climbing"
         },
         {
-          "sentence": "59 Joanne, do you know anything about Chaos Theory? **familiar**\nJoanne, ...... Chaos Theory?",
+          "sentence": "Joanne, do you know anything about Chaos Theory? **familiar**\nJoanne, ...... Chaos Theory?",
           "answer": "are you familiar with"
         },
         {
-          "sentence": "60 You shouldn't have bought presents for all of us. **expense**\nYou shouldn't have ...... buying presents for all of us.",
+          "sentence": "You shouldn't have bought presents for all of us. **expense**\nYou shouldn't have ...... buying presents for all of us.",
           "answer": "gone to the expense of"
         },
         {
-          "sentence": "61 Charles often phones up TV stations to complain about programmes. **tendency**\nCharles ...... up TV stations to complain about programmes.",
+          "sentence": "Charles often phones up TV stations to complain about programmes. **tendency**\nCharles ...... up TV stations to complain about programmes.",
           "answer": "has a tendency to phone"
         },
         {
-          "sentence": "62 Alice seemed tired to me. **impression**\nAlice ...... she was tired.",
+          "sentence": "Alice seemed tired to me. **impression**\nAlice ...... she was tired.",
           "answer": "gave me the impression that"
         },
         {
-          "sentence": "63 Taking out a private pension scheme will benefit you. **interest**\nIt is ...... out a private pension scheme.",
+          "sentence": "Taking out a private pension scheme will benefit you. **interest**\nIt is ...... out a private pension scheme.",
           "answer": "in your interest to take"
         },
         {
-          "sentence": "64 I understand what Gary was saying but I don't agree with him. **point**\nI can ...... but I don't agree with him.",
+          "sentence": "I understand what Gary was saying but I don't agree with him. **point**\nI can ...... but I don't agree with him.",
           "answer": "see Gary's point"
         },
         {
-          "sentence": "65 They won't allow passengers to get off the train at the next station. **prevent**\nThey're going ...... off the train at the next station.",
+          "sentence": "They won't allow passengers to get off the train at the next station. **prevent**\nThey're going ...... off the train at the next station.",
           "answer": "to prevent passengers from getting"
         },
         {
-          "sentence": "66 I want you to try really hard to pass this exam! **effort**\nI want you to ...... to pass this exam!",
+          "sentence": "I want you to try really hard to pass this exam! **effort**\nI want you to ...... to pass this exam!",
           "answer": "make a real effort"
         }
       ]
     },
     {
       "type": "exercise",
+      "subtype": "find-extra-word",
       "title": "G: Error Correction (Extra word)",
       "scoring": {
         "pointsPerItem": 1,
@@ -540,117 +485,80 @@
       "instructions": "If a line is correct, put a tick (✓). If there is an extra word, write it.",
       "items": [
         {
-          "sentence": "67 It is often been said that the secret of good comedy is timing.",
+          "sentence": "It is often been said that the secret of good comedy is timing.",
           "answer": "been"
         },
         {
-          "sentence": "68 As a comedian myself, I know that's not true.",
+          "sentence": "As a comedian myself, I know that's not true.",
           "answer": "✓"
         },
         {
-          "sentence": "69 I was told that a joke the other day about a man whose his dog has no nose.",
+          "sentence": "I was told that a joke the other day about a man whose dog has no nose.",
           "answer": "that"
         },
         {
-          "sentence": "70 When asked how it smells, the man replies 'Terrible!'. The problem here is that, despite of the joke having a fairly clever punchline...",
+          "sentence": "When asked how it smells, the man replies 'Terrible!'. The problem here is that, despite of the joke having a fairly clever punchline,",
           "answer": "of"
         },
         {
-          "sentence": "71 ...no one finds it a funny.",
+          "sentence": "no one finds it a funny.",
           "answer": "a"
         },
         {
-          "sentence": "72 However good your timing is, you can't make out people laugh at that joke.",
+          "sentence": "However good your timing is, you can't make out people laugh at that joke.",
           "answer": "out"
         },
         {
-          "sentence": "73 I get my friends to tell to me jokes all the time.",
+          "sentence": "I get my friends to tell to me jokes all the time.",
           "answer": "to"
         },
         {
-          "sentence": "74 If I've never heard them before, and if they make me laugh it out loud...",
+          "sentence": "If I've never heard them before, and if they make me laugh it out loud,",
           "answer": "it"
         },
         {
-          "sentence": "75 I am like jokes that rely on word play...",
-          "answer": "am"
+          "sentence": "I like jokes that rely on word play,",
+          "answer": "✓"
         },
         {
-          "sentence": "76 ...even though the joke was about the noseless dog is rubbish!",
+          "sentence": "even though the joke was about the noseless dog is rubbish!",
           "answer": "was"
         },
         {
-          "sentence": "77 'My mum's from Cuba and my dad's from Iceland so I guess that makes me up an ice cube.'",
+          "sentence": "'My mum's from Cuba and my dad's from Iceland so I guess that makes me up an ice cube.'",
           "answer": "up"
         },
         {
-          "sentence": "78 Now that's a classic joke however you tell it.",
+          "sentence": "Now that's a classic joke however you tell it.",
           "answer": "✓"
         },
         {
-          "sentence": "79 Comedy is made not just to do with timing!",
+          "sentence": "Comedy is made not just to do with timing!",
           "answer": "made"
         },
         {
-          "sentence": "80 (blank line - no text provided in PDF for line 80 in this section)",
+          "sentence": "It is also about the content and the way you connect with your audience.",
           "answer": "✓"
         },
         {
-          "sentence": "81 (blank line - no text provided in PDF for line 81 in this section)",
+          "sentence": "It takes real passion and also a very good natural sense of comic timing.",
           "answer": "✓"
         }
       ]
     },
     {
       "type": "exercise",
+      "subtype": "passage-input",
       "title": "H: Word Formation (Memories and reality)",
+      "passageTitle": "Memories and Reality",
       "scoring": {
         "pointsPerItem": 1,
         "maxScore": 10
       },
       "instructions": "Use the word in capitals to form a word that fits in the gap.",
-      "items": [
-        {
-          "sentence": "82 There is a well-known ...... (SAY), 'School days are the best days of your life.'",
-          "answer": "saying"
-        },
-        {
-          "sentence": "83 No ...... (STUDY) at school ever believes it though...",
-          "answer": "student"
-        },
-        {
-          "sentence": "84 ...when you're worried about your ...... (FINANCE) situation...",
-          "answer": "financial"
-        },
-        {
-          "sentence": "85 ...and are beginning to hate the ...... (BORE) of working in an office...",
-          "answer": "boredom"
-        },
-        {
-          "sentence": "86 ...you look back fondly on the ...... (EXCITE) times you had at school.",
-          "answer": "exciting"
-        },
-        {
-          "sentence": "87 ...like having to pay ...... (ATTEND) during a tedious chemistry lesson...",
-          "answer": "attention"
-        },
-        {
-          "sentence": "88 ...being punished for bad ...... (BEHAVE) when you didn't do anything wrong...",
-          "answer": "behaviour"
-        },
-        {
-          "sentence": "89 ...or feeling ...... (HELP) in an exam because you don't know any of the answers...",
-          "answer": "helpless"
-        },
-        {
-          "sentence": "90 ...and, in fact, had completely ...... (UNDERSTAND) the questions too!",
-          "answer": "misunderstood"
-        },
-        {
-          "sentence": "91 But it's quite ...... (ACCEPT) to complain about things and then have great memories afterwards.",
-          "answer": "acceptable"
-        }
-      ]
+      "passage": "There is a well-known (1) .......... : 'School days are the best days of your life.' No (2) .......... at school ever believes it though. But it is interesting that when you are in a difficult (3) .......... situation as an adult and beginning to hate the (4) .......... of working in an office all day, you look back fondly on the (5) .......... times you had at school. You forget about the bad things — like having to pay (6) .......... during a tedious chemistry lesson, being punished for bad (7) .......... when you didn't do anything wrong, feeling completely (8) .......... in an exam because you don't know any of the answers, and, in fact, having completely (9) .......... the questions too! But it is quite (10) .......... to complain about things and then have great memories afterwards.",
+      "answers": ["saying", "student", "financial", "boredom", "exciting", "attention", "behaviour", "helpless", "misunderstood", "acceptable"],
+      "hints": ["SAY", "STUDY", "FINANCE", "BORE", "EXCITE", "ATTEND", "BEHAVE", "HELP", "UNDERSTAND", "ACCEPT"]
     }
   ]
 }
