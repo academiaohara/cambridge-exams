@@ -3948,11 +3948,15 @@
             '</div>';
           }
           html += self._renderCuWordBank(section.words);
-          html += '<div class="cu-ex-items">';
-          var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
-          html += self._renderCuExItemsList(rvItems, 'pt-' + sectionIdx + '-' + section.title.replace(/\W+/g, ''), rvSecId, true);
-          html += '</div>';
-          if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
+          if (section.subtype === 'matching') {
+            html += self._renderCuMatchingExercise(rvItems, 'pt-' + sectionIdx + '-' + section.title.replace(/\W+/g, ''), rvSecId);
+          } else {
+            html += '<div class="cu-ex-items">';
+            var hasInteractiveRv = rvItems.some(function(it) { return self._itemHasInteractive(it); });
+            html += self._renderCuExItemsList(rvItems, 'pt-' + sectionIdx + '-' + section.title.replace(/\W+/g, ''), rvSecId, true);
+            html += '</div>';
+            if (hasInteractiveRv) html += self._renderCuExFooter(rvSecId);
+          }
           html += '</div>';
         }
       });
