@@ -3089,7 +3089,7 @@
           return '<s>' + self._escapeHTML(p.val) + '</s>';
         } else if (p.type === 'gap') {
           if (useTextarea) {
-            return '<textarea id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input cu-gap-textarea" placeholder="Your answer..." rows="2" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
+            return '<textarea id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input cu-gap-textarea" placeholder="Your answer..." rows="2" aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           }
           return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
         } else if (p.type === 'gap-wf') {
