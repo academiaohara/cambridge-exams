@@ -3473,6 +3473,22 @@ textarea.cu-gap-input.cu-gap-textarea {
   animation: feBounceIn 0.35s ease;
 }
 
+/* textarea variant of bold-correct (Section I style) */
+.cu-bc-controls-textarea {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.cu-bc-controls-textarea .cu-bc-input {
+  max-width: 100%;
+  width: 100%;
+  resize: vertical;
+}
+
+.cu-bc-controls-textarea .cu-bc-ok-btn {
+  align-self: flex-start;
+}
+
 /* ── Key Word Transformation (reading4 style) ───────────────────────── */
 .cu-kwtrans-item {
   display: flex;
