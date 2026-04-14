@@ -5011,11 +5011,13 @@
 
         var correct = false;
         if (isOkAnswer) {
-          // Correct sentence: correct only if OK pressed (no input)
-          correct = okSelected && given === '';
+          // Correct sentence: correct if OK pressed (no input) OR user typed "ok"
+          var typedOk = given.toLowerCase() === 'ok';
+          correct = (okSelected && given === '') || typedOk;
           if (correct) {
             item.classList.add('cu-bc-item-correct');
             if (okBtn) okBtn.classList.add('cu-bc-ok-correct');
+            if (input && typedOk) input.classList.add('cu-input-correct');
           } else {
             item.classList.add('cu-bc-item-incorrect');
             if (okBtn) okBtn.classList.add(okSelected ? 'cu-bc-ok-incorrect' : 'cu-bc-ok-reveal');
