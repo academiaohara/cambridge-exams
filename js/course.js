@@ -1559,7 +1559,8 @@
       if (ex.freeWordSpot) {
         // Free mode: every whitespace-separated token is a clickable span.
         // [[word]] tokens have data-ws-answer="1"; all others have data-ws-answer="0".
-        totalWrong = (passage.match(/\[\[[^\]]+\]\]/g) || []).length;
+        // totalWrong is counted during segment processing (no separate regex scan needed).
+        totalWrong = 0;
         var wordCount = 0;
         // Split passage into segments: [[answer-word]] vs plain text chunks
         var segments = [];
@@ -1579,6 +1580,7 @@
         segments.forEach(function(seg) {
           if (seg.type === 'answer') {
             wordCount++;
+            totalWrong++;
             passageHtml += '<span class="cu-ws-word" ' +
               'data-ws-idx="' + wordCount + '" ' +
               'data-ws-answer="1" ' +
