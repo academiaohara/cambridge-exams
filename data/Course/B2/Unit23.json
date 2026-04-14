@@ -348,7 +348,7 @@
     {
       "type": "exercise",
       "title": "B: Error correction (Relative clauses)",
-      "instructions": "If a word in bold is correct, put a tick (✓). If it is incorrect, rewrite it correctly.",
+      "instructions": "Write OK if the bold word is correct. If it is incorrect, write the correct word.",
       "items": [
         {
           "sentence": "November 5th was the day **which** Guy Fawkes tried to blow up Parliament.",
@@ -360,7 +360,7 @@
         },
         {
           "sentence": "I've just got a new webcam **that** takes really clear pictures.",
-          "answer": "OK"
+          "answer": "✓"
         },
         {
           "sentence": "The Godfather was made by Francis Ford Copolla, **who's** daughter is also a film director.",
@@ -372,7 +372,7 @@
         },
         {
           "sentence": "Here's a photo of the hotel where we **stayed in** when we were in Beijing.",
-          "answer": "where (remove 'in')"
+          "answer": "stayed/where"
         },
         {
           "sentence": "How do you think the first man **whom** walked on the moon felt?",
@@ -380,7 +380,7 @@
         },
         {
           "sentence": "This is the first occasion on **which** the leaders of these two countries have met.",
-          "answer": "OK"
+          "answer": "✓"
         },
         {
           "sentence": "He is a person for **who** very few people feel much sympathy.",
@@ -398,12 +398,13 @@
           "sentence": "My new school, **who** I moved to about a month ago, seems like quite a friendly place.",
           "answer": "which"
         }
-      ]
+      ],
+      "subtype": "bold-correct"
     },
     {
       "type": "exercise",
       "title": "C: Rewrite as one sentence using a relative clause",
-      "instructions": "Rewrite as one sentence using a relative clause.",
+      "instructions": "Rewrite as one complete sentence using a relative clause.",
       "items": [
         {
           "sentence": "Prince Charles is heir to the throne of England. His wife was Princess Diana.",
@@ -441,7 +442,8 @@
           "sentence": "1984 was written by George Orwell. His real name was Eric Blair.",
           "answer": "1984 was written by George Orwell, whose real name was Eric Blair."
         }
-      ]
+      ],
+      "textareaAnswer": true
     },
     {
       "type": "exercise",
@@ -581,10 +583,11 @@
       "type": "exercise",
       "title": "F: Omit the relative pronoun",
       "instructions": "There are 9 relative pronouns in the text which are not necessary. Click on them to mark them.",
-      "passage": "The number of options [[that]] are available to us is increasing all the time. While previous generations, [[who]] lived before the electronic age, had musical instruments and card games [[that]] they played to pass the time, we have PlayStation, computers, televisions and stereos. Although parents [[whose]] teenagers spend a lot of time on these activities might worry about the effect [[which]] it is having on them, for most of us they provide harmless fun, [[which]] is becoming more important as life becomes more stressful. The television programmes [[which]] we watch and the computer games [[that]] we play all entertain us and, although there will always be people to [[whom]] they seem a complete waste of time, the effect [[that]] they have on society cannot be ignored. Entertainment is something [[which]] we all need and, as long as we're willing to pay, there will always be someone [[who]] is willing to provide it.",
+      "passage": "The number of options [[that]] are available to us is increasing all the time. While previous generations, [[who]] lived before the electronic age, had musical instruments and card games [[that]] they played to pass the time, we have PlayStation, computers, televisions and stereos. Although parents whose teenagers spend a lot of time on these activities might worry about the effect [[which]] it is having on them, for most of us they provide harmless fun, [[which]] is becoming more important as life becomes more stressful. The television programmes [[which]] we watch and the computer games [[that]] we play all entertain us and, although there will always be people to whom they seem a complete waste of time, the effect [[that]] they have on society cannot be ignored. Entertainment is something [[which]] we all need and, as long as we're willing to pay, there will always be someone who is willing to provide it.",
       "answer": "1,2,3,5,6,7,8,10,11",
       "subtype": "word-spot",
-      "items": []
+      "items": [],
+      "freeWordSpot": true
     },
     {
       "type": "exercise",
@@ -636,72 +639,83 @@
     {
       "type": "exercise",
       "title": "H: Participle transformations",
-      "instructions": "Rewrite the sentences using a participle clause.",
+      "instructions": "Rewrite the sentences using a participle clause. Write the full sentence.",
       "items": [
         {
-          "sentence": "I suddenly remembered where I'd left my keys when I was waiting for the bus.",
-          "answer": "Waiting for the bus, I suddenly remembered where I'd left my keys."
+          "context": "I suddenly remembered where I'd left my keys when I was waiting for the bus.",
+          "sentence": "Waiting …………………………………………………………………………………………………………………………",
+          "answer": "for the bus, I suddenly remembered where I'd left my keys."
         },
         {
-          "sentence": "I slipped because I was trying to run in the rain.",
-          "answer": "Trying to run in the rain, I slipped."
+          "context": "I slipped because I was trying to run in the rain.",
+          "sentence": "Trying …………………………………………………………………………………………………………………………",
+          "answer": "to run in the rain, I slipped."
         },
         {
-          "sentence": "I felt quite sorry for Tim when I saw him cry.",
-          "answer": "Seeing Tim cry, I felt quite sorry for him."
+          "context": "I felt quite sorry for Tim when I saw him cry.",
+          "sentence": "Seeing …………………………………………………………………………………………………………………………",
+          "answer": "Tim cry, I felt quite sorry for him."
         },
         {
-          "sentence": "John was depressed because he knew he was going to fail the exam.",
-          "answer": "Knowing (that) he was going to fail the exam, John was depressed."
+          "context": "John was depressed because he knew he was going to fail the exam.",
+          "sentence": "Knowing …………………………………………………………………………………………………………………………",
+          "answer": "(that) he was going to fail the exam, John was depressed."
         },
         {
-          "sentence": "The reason I'm quite good at basketball is that I'm quite tall.",
-          "answer": "Being quite tall, I'm quite good at basketball."
+          "context": "The reason I'm quite good at basketball is that I'm quite tall.",
+          "sentence": "Being …………………………………………………………………………………………………………………………",
+          "answer": "quite tall, I'm quite good at basketball."
         },
         {
-          "sentence": "Georgia didn't know any Japanese so she used a phrase book when she was there.",
-          "answer": "Not knowing any Japanese, Georgia used a phrase book when she was there."
+          "context": "Georgia didn't know any Japanese so she used a phrase book when she was there.",
+          "sentence": "Not …………………………………………………………………………………………………………………………",
+          "answer": "knowing any Japanese, Georgia used a phrase book when she was there."
         },
         {
-          "sentence": "Ed can afford three holidays abroad each year because he has a lot of money.",
-          "answer": "Having a lot of money, Ed can afford three holidays abroad every year."
+          "context": "Ed can afford three holidays abroad each year because he has a lot of money.",
+          "sentence": "Having …………………………………………………………………………………………………………………………",
+          "answer": "a lot of money, Ed can afford three holidays abroad every year."
         },
         {
-          "sentence": "Maria began to worry when she realised she was lost.",
-          "answer": "Realising (that) she was lost, Maria began to worry."
+          "context": "Maria began to worry when she realised she was lost.",
+          "sentence": "Realising …………………………………………………………………………………………………………………………",
+          "answer": "(that) she was lost, Maria began to worry."
         }
-      ]
+      ],
+      "textareaAnswer": true
     },
     {
       "type": "exercise",
       "title": "I: Error correction (Participles)",
-      "instructions": "Tick (✓) the correct sentences. If a sentence is incorrect, rewrite it correctly.",
+      "instructions": "Write OK if the sentence is correct. If it is incorrect, rewrite the full sentence correctly.",
       "items": [
         {
-          "sentence": "Looking through the window, a **plane was passing** overhead.",
+          "sentence": "Looking through the window, a plane was passing overhead.",
           "answer": "Looking through the window, I saw a plane passing overhead."
         },
         {
           "sentence": "Realising that it was late, I ran all the way home.",
-          "answer": "OK"
+          "answer": "✓"
         },
         {
-          "sentence": "Having examined me, **I was given a prescription** by the doctor.",
+          "sentence": "Having examined me, I was given a prescription by the doctor.",
           "answer": "Having examined me, the doctor gave me a prescription."
         },
         {
-          "sentence": "Turning on the television, **the newsreader said** there had been an explosion.",
+          "sentence": "Turning on the television, the newsreader said there had been an explosion.",
           "answer": "Turning on the television, I heard the newsreader say there had been an explosion."
         },
         {
           "sentence": "Dropping the shopping bags on the kitchen floor, Mrs Moorcroft sighed and sat down heavily.",
-          "answer": "OK"
+          "answer": "✓"
         },
         {
           "sentence": "Having practised the piano, I decided to call one of my friends.",
-          "answer": "OK"
+          "answer": "✓"
         }
-      ]
+      ],
+      "subtype": "bold-correct",
+      "textareaAnswer": true
     },
     {
       "type": "exercise",

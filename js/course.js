@@ -1547,32 +1547,91 @@
     // Renders a word-spot exercise: a passage where certain words (marked with [[word]])
     // are clickable. Students click the ones they think are wrong/unnecessary.
     // Data: { passage: '...[[word]]...', answer: '1,3,5', instructions: '...' }
+    // When freeWordSpot is true, ALL words in the passage are clickable; [[word]] marks
+    // the correct answers while all other tokens are non-answer clickable words.
     _renderCuWordSpotExercise: function(ex, idBase, secId) {
       var self = this;
       var passage = ex.passage || '';
-      var wrongIndices = (ex.answer || '').split(',').map(function(a) { return parseInt(a.trim()); }).filter(function(n) { return !isNaN(n); });
-      var totalWrong = wrongIndices.length;
       var counterId = idBase + '-ws-count';
-
-      var wordIdx = 0;
       var passageHtml = '';
-      // Split on [[word]] markers; odd indices are the clickable words
-      var parts = passage.split(/\[\[([^\]]+)\]\]/g);
-      for (var i = 0; i < parts.length; i++) {
-        if (i % 2 === 0) {
-          passageHtml += self._escapeHTML(parts[i]);
-        } else {
-          wordIdx++;
-          var isAnswer = wrongIndices.indexOf(wordIdx) !== -1;
-          passageHtml += '<span class="cu-ws-word" ' +
-            'data-ws-idx="' + wordIdx + '" ' +
-            'data-ws-answer="' + (isAnswer ? '1' : '0') + '" ' +
-            'data-counter-id="' + self._escapeHTML(counterId) + '" ' +
-            'onclick="BentoGrid._toggleWordSpot(this)" ' +
-            'role="button" tabindex="0" ' +
-            'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordSpot(this);event.preventDefault();}">' +
-            self._escapeHTML(parts[i]) +
-            '</span>';
+      var totalWrong;
+
+      if (ex.freeWordSpot) {
+        // Free mode: every whitespace-separated token is a clickable span.
+        // [[word]] tokens have data-ws-answer="1"; all others have data-ws-answer="0".
+        // totalWrong is counted during segment processing (no separate regex scan needed).
+        totalWrong = 0;
+        var wordCount = 0;
+        // Split passage into segments: [[answer-word]] vs plain text chunks
+        var segments = [];
+        var wsRegex = /\[\[([^\]]+)\]\]/g;
+        var lastIdx = 0;
+        var wsMatch;
+        while ((wsMatch = wsRegex.exec(passage)) !== null) {
+          if (wsMatch.index > lastIdx) {
+            segments.push({ type: 'text', val: passage.slice(lastIdx, wsMatch.index) });
+          }
+          segments.push({ type: 'answer', val: wsMatch[1] });
+          lastIdx = wsMatch.index + wsMatch[0].length;
+        }
+        if (lastIdx < passage.length) {
+          segments.push({ type: 'text', val: passage.slice(lastIdx) });
+        }
+        segments.forEach(function(seg) {
+          if (seg.type === 'answer') {
+            wordCount++;
+            totalWrong++;
+            passageHtml += '<span class="cu-ws-word" ' +
+              'data-ws-idx="' + wordCount + '" ' +
+              'data-ws-answer="1" ' +
+              'data-counter-id="' + self._escapeHTML(counterId) + '" ' +
+              'onclick="BentoGrid._toggleWordSpot(this)" ' +
+              'role="button" tabindex="0" ' +
+              'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordSpot(this);event.preventDefault();}">' +
+              self._escapeHTML(seg.val) + '</span>';
+          } else {
+            // Split plain text into whitespace runs and word tokens
+            var textParts = seg.val.split(/(\s+)/);
+            textParts.forEach(function(part) {
+              if (part === '' || /^\s+$/.test(part)) {
+                passageHtml += self._escapeHTML(part);
+              } else {
+                wordCount++;
+                passageHtml += '<span class="cu-ws-word" ' +
+                  'data-ws-idx="' + wordCount + '" ' +
+                  'data-ws-answer="0" ' +
+                  'data-counter-id="' + self._escapeHTML(counterId) + '" ' +
+                  'onclick="BentoGrid._toggleWordSpot(this)" ' +
+                  'role="button" tabindex="0" ' +
+                  'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordSpot(this);event.preventDefault();}">' +
+                  self._escapeHTML(part) + '</span>';
+              }
+            });
+          }
+        });
+      } else {
+        // Standard mode: only [[word]]-marked tokens are clickable.
+        var wrongIndices = (ex.answer || '').split(',').map(function(a) { return parseInt(a.trim()); }).filter(function(n) { return !isNaN(n); });
+        totalWrong = wrongIndices.length;
+        var wordIdx = 0;
+        // Split on [[word]] markers; odd indices are the clickable words
+        var parts = passage.split(/\[\[([^\]]+)\]\]/g);
+        for (var i = 0; i < parts.length; i++) {
+          if (i % 2 === 0) {
+            passageHtml += self._escapeHTML(parts[i]);
+          } else {
+            wordIdx++;
+            var isAnswer = wrongIndices.indexOf(wordIdx) !== -1;
+            passageHtml += '<span class="cu-ws-word" ' +
+              'data-ws-idx="' + wordIdx + '" ' +
+              'data-ws-answer="' + (isAnswer ? '1' : '0') + '" ' +
+              'data-counter-id="' + self._escapeHTML(counterId) + '" ' +
+              'onclick="BentoGrid._toggleWordSpot(this)" ' +
+              'role="button" tabindex="0" ' +
+              'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleWordSpot(this);event.preventDefault();}">' +
+              self._escapeHTML(parts[i]) +
+              '</span>';
+          }
         }
       }
 
@@ -1580,7 +1639,8 @@
         '<span class="material-symbols-outlined">check_circle</span> ' +
         '<span id="' + self._escapeHTML(counterId) + '">0</span> / ' + totalWrong +
         '</div>' +
-        '<div class="cu-ws-passage" id="' + self._escapeHTML(idBase) + '-ws">' +
+        '<div class="cu-ws-passage" id="' + self._escapeHTML(idBase) + '-ws"' +
+        (ex.freeWordSpot ? ' data-free-ws="true"' : '') + '>' +
         passageHtml +
         '</div>';
       html += self._renderCuExFooter(secId);
@@ -1724,6 +1784,7 @@
     _renderCuBoldCorrectExercise: function(section, idBase, secId) {
       var self = this;
       var items = section.items || [];
+      var useTextarea = !!section.textareaAnswer;
 
       // Render sentence: convert **...** to <strong> and escape the rest
       function renderSentence(sentence) {
@@ -1743,15 +1804,21 @@
       items.forEach(function(item, idx) {
         var answer = (item.answer || '').trim();
         var inputId = idBase + '-bc' + idx;
-        html += '<div class="cu-bc-item" data-answer="' + self._escapeHTML(answer) + '">' +
+        var inputHtml = useTextarea
+          ? '<textarea class="cu-gap-input cu-bc-input cu-gap-textarea" id="' + inputId + '" ' +
+              'autocomplete="off" autocorrect="off" spellcheck="false" rows="2" ' +
+              'oninput="BentoGrid._onCuBcInput(this);BentoGrid._resizeCuInput(this)" ' +
+              'placeholder="Rewrite the full sentence correctly…"></textarea>'
+          : '<input type="text" class="cu-gap-input cu-bc-input" id="' + inputId + '" ' +
+              'autocomplete="off" autocorrect="off" spellcheck="false" ' +
+              'oninput="BentoGrid._onCuBcInput(this)" ' +
+              'placeholder="correction…" />';
+        html += '<div class="cu-bc-item' + (useTextarea ? ' cu-bc-item-textarea' : '') + '" data-answer="' + self._escapeHTML(answer) + '">' +
           '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
-          '<div class="cu-bc-row">' +
+          '<div class="cu-bc-row' + (useTextarea ? ' cu-bc-row-textarea' : '') + '">' +
             '<div class="cu-bc-sentence">' + renderSentence(item.sentence || '') + '</div>' +
-            '<div class="cu-bc-controls">' +
-              '<input type="text" class="cu-gap-input cu-bc-input" id="' + inputId + '" ' +
-                'autocomplete="off" autocorrect="off" spellcheck="false" ' +
-                'oninput="BentoGrid._onCuBcInput(this)" ' +
-                'placeholder="correction…" />' +
+            '<div class="cu-bc-controls' + (useTextarea ? ' cu-bc-controls-textarea' : '') + '">' +
+              inputHtml +
               '<button class="cu-bc-ok-btn" onclick="BentoGrid._toggleCuBcOk(this)" ' +
                 'aria-pressed="false" type="button">OK</button>' +
             '</div>' +
@@ -5029,15 +5096,20 @@
         }
       });
       // Handle word-spot exercises (clickable passage words)
+      // In free-word-spot mode (data-free-ws="true"), scoring only counts answer words
+      // (data-ws-answer="1"); non-answer words are still marked if incorrectly selected
+      // but don't affect the score denominator.
+      var freeWsPassage = sec.querySelector('.cu-ws-passage[data-free-ws="true"]');
       sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
-        totalItems++;
-        var isSelected = span.classList.contains('cu-ws-selected');
         var isAnswer = span.getAttribute('data-ws-answer') === '1';
+        var isFreeWs = !!freeWsPassage;
+        if (!isFreeWs || isAnswer) totalItems++;
+        var isSelected = span.classList.contains('cu-ws-selected');
         var ok = isSelected === isAnswer;
         span.classList.add(ok ? 'cu-ws-correct' : 'cu-ws-incorrect');
         if (!ok && isAnswer) span.classList.add('cu-ws-reveal');
         span.setAttribute('data-ws-disabled', '1');
-        if (ok) correctItems++;
+        if ((!isFreeWs || isAnswer) && ok) correctItems++;
       });
       // Handle word-tick exercises (e.g. Exercise P)
       sec.querySelectorAll('.cu-word-tick-btn').forEach(function(btn) {
@@ -5863,6 +5935,7 @@
             }
             input.classList.add('cu-input-show-correct');
             input.disabled = true;
+            BentoGrid._resizeCuInput(input);
           }
           if (okBtn) {
             okBtn.disabled = true;
