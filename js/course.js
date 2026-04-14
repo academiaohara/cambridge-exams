@@ -2230,10 +2230,13 @@
       }
       // Render passage: replace both gap formats with interactive pill widgets.
       // Format A (old): …(N)… (WORD)
-      // Format B (new): (N) ___ or (N) ......
+      // Format B (new): (N) ___ or (N) ...... optionally followed by (CAPS) hint inline
       var passageHtml = self._escapeHTML(passage)
         .replace(/…\((\d+)\)…\s*\(([A-Z]+)\)/g, function(_, num, hintWordInPassage) {
           return makeGapPill(parseInt(num), hintWordInPassage || hintMap[parseInt(num)] || null);
+        })
+        .replace(/\((\d+)\)\s*(?:_{2,}|[.…]{5,})\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)/g, function(_, num, hintWord) {
+          return makeGapPill(parseInt(num), hintWord || hintMap[parseInt(num)] || null);
         })
         .replace(/\((\d+)\)\s*(?:_{2,}|[.…]{5,})/g, function(_, num) {
           return makeGapPill(parseInt(num), hintMap[parseInt(num)] || null);

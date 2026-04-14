@@ -831,15 +831,15 @@
         "questions": [
           {
             "sentence": "The software works fine, but we could **better / streamline** it further to reduce the loading time.",
-            "answer": "both"
+            "answer": "better/streamline"
           },
           {
             "sentence": "The hotel lobby has been completely **renovated / refurbished**, though the guest rooms are still waiting for attention.",
-            "answer": "both"
+            "answer": "renovated/refurbished"
           },
           {
             "sentence": "Spreading those rumours is only **exacerbating / aggravating** the tension between the two departments.",
-            "answer": "both"
+            "answer": "exacerbating/aggravating"
           },
           {
             "sentence": "The committee will be **evaluating / valuing** each candidate’s presentation before making a final decision.",
@@ -879,7 +879,7 @@
           },
           {
             "sentence": "The sculpture is almost perfect, apart from a slight **blemish / flaw** near the base.",
-            "answer": "both"
+            "answer": "blemish/flaw"
           }
         ]
       },
@@ -962,33 +962,48 @@
         "instructions": "Write a word from the boxes in each gap.",
         "questions": [
           {
-            "sentence": "My colleague Antonio was absolutely raving about Patricia Ortega’s new novel. Apparently it became a (1) ... almost overnight after its release.",
+            "sentence": "My colleague Antonio was absolutely raving about Patricia Ortega’s new novel. Apparently it became a (1) ...... almost overnight after its release.",
             "answer": "bestseller"
           },
           {
-            "sentence": "I’m holding off buying it myself – I’d rather wait for it to come out in (2) ... before spending that much.",
+            "sentence": "I’m holding off buying it myself – I’d rather wait for it to come out in (2) ...... before spending that much.",
             "answer": "paperback"
           },
           {
-            "sentence": "Rehearsals for our amateur production are going well. I’ve memorised all my (3) ... without much difficulty, though I still struggle to remember the (4) ... to the songs we perform at the end.",
+            "sentence": "Rehearsals for our amateur production are going well. I’ve memorised all my (3) ...... without much difficulty, though I still struggle to remember the (4) ...... to the songs we perform at the end.",
             "answer": "lines, lyrics"
           },
           {
-            "sentence": "I’m thinking of attending the piano (5) ... at the arts centre tomorrow evening. The featured composer wrote the (6) ... for two award-winning films, which makes it even more interesting.",
+            "sentence": "I’m thinking of attending the piano (5) ...... at the arts centre tomorrow evening. The featured composer wrote the (6) ...... for two award-winning films, which makes it even more interesting.",
             "answer": "recital, score"
           },
           {
-            "sentence": "My cousin took me to a (7) ... of Nina Valdés’ paintings at the national gallery last weekend. The (8) ... gave a fascinating talk about how the exhibition had been selected and organised.",
+            "sentence": "My cousin took me to a (7) ...... of Nina Valdés’ paintings at the national gallery last weekend. The (8) ...... gave a fascinating talk about how the exhibition had been selected and organised.",
             "answer": "retrospective, curator"
           },
           {
-            "sentence": "Apparently, one of the pieces had been found at a flea market by someone who thought it was (9) ... and barely worth keeping. It later turned out to be completely (10) ... !",
+            "sentence": "Apparently, one of the pieces had been found at a flea market by someone who thought it was (9) ...... and barely worth keeping. It later turned out to be completely (10) ...... !",
             "answer": "worthless, priceless"
           },
           {
-            "sentence": "Among the (11) ... I’d find most fulfilling would be helping to track down stolen (12) ... of art and returning them to their rightful owners.",
+            "sentence": "Among the (11) ...... I’d find most fulfilling would be helping to track down stolen (12) ...... of art and returning them to their rightful owners.",
             "answer": "jobs, works"
           }
+        ],
+        "words": [
+          "bestseller",
+          "curator",
+          "gallery",
+          "jobs",
+          "lines",
+          "lyrics",
+          "paperback",
+          "priceless",
+          "recital",
+          "retrospective",
+          "score",
+          "works",
+          "worthless"
         ]
       },
       "D": {
@@ -1015,7 +1030,7 @@
             "answer": "auction"
           },
           {
-            "sentence": "On any given day, a sale catalogue might list rough (4) ...... in charcoal or pen (often produced as preparatory studies), examples of (5) ...... art spanning ceramics and metalwork, collector’s (6) ...... ranging from signed photographs to vintage posters, (7) ...... compositions that challenge the viewer’s interpretation, and even (8) ...... pieces of furniture crafted in a specific historical style.",
+            "sentence": "On any given day, a sale catalogue might list rough (4) ...... in charcoal or pen, examples of (5) ...... art spanning ceramics and metalwork, collector’s (6) ...... ranging from signed photographs to vintage posters, (7) ...... compositions that challenge the viewer’s interpretation, and even (8) ...... pieces of furniture crafted in a specific historical style.",
             "answer": "sketches, fine, items, abstract, period"
           }
         ]
@@ -1064,7 +1079,7 @@
         "questions": [
           {
             "sentence": "The studio session started slowly, but the whole atmosphere **livened** up once the lead guitarist arrived.",
-            "answer": "✓"
+            "answer": "OK"
           },
           {
             "sentence": "I’m not at all happy with this sketch – I think I’ve completely **papered** up the proportions.",
@@ -1084,7 +1099,7 @@
           },
           {
             "sentence": "Fortunately, the skies **brightened** up just as the outdoor concert was about to begin.",
-            "answer": "✓"
+            "answer": "OK"
           },
           {
             "sentence": "We always **ran** ourselves up before attending my aunt’s gallery openings.",
@@ -1255,71 +1270,71 @@
         "instructions": "Use the word given in capitals to form a word that fits in the space.",
         "questions": [
           {
-            "sentence": "My uncle studied ……………………………… at Cambridge, which explains why he quotes Virgil at every family dinner.\n**CLASS**",
+            "sentence": "My uncle studied ……………………………… at Cambridge, which explains why he quotes Virgil at every family dinner. **CLASS**",
             "answer": "Classics"
           },
           {
-            "sentence": "David Bowie’s ability to constantly reinvent himself was truly …………………………………… – no other artist has managed anything quite like it.\n**IMITATE**",
+            "sentence": "David Bowie’s ability to constantly reinvent himself was truly …………………………………… – no other artist has managed anything quite like it. **IMITATE**",
             "answer": "inimitable"
           },
           {
-            "sentence": "The film explores the themes of conflict and the …………………………………… it brings to both communities and landscapes.\n**DESTROY**",
+            "sentence": "The film explores the themes of conflict and the …………………………………… it brings to both communities and landscapes. **DESTROY**",
             "answer": "destruction"
           },
           {
-            "sentence": "I have tremendous …………………………………… for anyone who dedicates their life to restoring endangered works of art.\n**ADMIRE**",
+            "sentence": "I have tremendous …………………………………… for anyone who dedicates their life to restoring endangered works of art. **ADMIRE**",
             "answer": "admiration"
           },
           {
-            "sentence": "Young audiences are particularly …………………………………… , which is precisely why the content of children’s television matters so much.\n**IMPRESS**",
+            "sentence": "Young audiences are particularly …………………………………… , which is precisely why the content of children’s television matters so much. **IMPRESS**",
             "answer": "impressionable"
           },
           {
-            "sentence": "Being a …………………………………… means she spends weeks refining a single photograph before she is satisfied with it.\n**PERFECT**",
+            "sentence": "Being a …………………………………… means she spends weeks refining a single photograph before she is satisfied with it. **PERFECT**",
             "answer": "perfectionist"
           },
           {
-            "sentence": "Perhaps I’m an …………………………………… , but I firmly believe great art should be accessible to everyone, regardless of income.\n**IDEAL**",
+            "sentence": "Perhaps I’m an …………………………………… , but I firmly believe great art should be accessible to everyone, regardless of income. **IDEAL**",
             "answer": "idealist"
           },
           {
-            "sentence": "Many stand-up comedians have spoken openly about deep-rooted feelings of …………………………………… that first drove them to perform.\n**ADEQUATE**",
+            "sentence": "Many stand-up comedians have spoken openly about deep-rooted feelings of …………………………………… that first drove them to perform. **ADEQUATE**",
             "answer": "inadequacy"
           },
           {
-            "sentence": "I wasn’t entirely sure whether it would be …………………………………… to attend the symposium, but the keynote speech alone made the trip worthwhile.\n**WORTH**",
+            "sentence": "I wasn’t entirely sure whether it would be …………………………………… to attend the symposium, but the keynote speech alone made the trip worthwhile. **WORTH**",
             "answer": "worthwhile"
           },
           {
-            "sentence": "We took the painting to a specialist for a formal …………………………………… before deciding whether to put it up for sale.\n**VALUE**",
+            "sentence": "We took the painting to a specialist for a formal …………………………………… before deciding whether to put it up for sale. **VALUE**",
             "answer": "valuation"
           },
           {
-            "sentence": "Now that the government has …………………………………… the wartime files, historians can finally piece together what really happened.\n**CLASS**",
+            "sentence": "Now that the government has …………………………………… the wartime files, historians can finally piece together what really happened. **CLASS**",
             "answer": "declassified"
           },
           {
-            "sentence": "Conducting a live symphony orchestra in a world-famous concert hall is an …………………………………… responsibility.\n**AWE**",
+            "sentence": "Conducting a live symphony orchestra in a world-famous concert hall is an …………………………………… responsibility. **AWE**",
             "answer": "awesome"
           },
           {
-            "sentence": "With her decades of experience in the theatre world, Helena is a truly …………………………………… candidate for the role of artistic director.\n**WORTH**",
+            "sentence": "With her decades of experience in the theatre world, Helena is a truly …………………………………… candidate for the role of artistic director. **WORTH**",
             "answer": "worthy"
           },
           {
-            "sentence": "The excavation team uncovered several clay …………………………………… dating from the second century CE.\n**ART**",
+            "sentence": "The excavation team uncovered several clay …………………………………… dating from the second century CE. **ART**",
             "answer": "artefacts"
           },
           {
-            "sentence": "Stepping out onto the stage in front of five thousand people for the very first time was the most …………………………………… moment of my entire career.\n**TERROR**",
+            "sentence": "Stepping out onto the stage in front of five thousand people for the very first time was the most …………………………………… moment of my entire career. **TERROR**",
             "answer": "terrifying"
           },
           {
-            "sentence": "The festival organisers replaced all single-use cups with ...... alternatives to cut down significantly on waste.\n**USE**",
+            "sentence": "The festival organisers replaced all single-use cups with ...... alternatives to cut down significantly on waste. **USE**",
             "answer": "reusable"
           },
           {
-            "sentence": "There is a clear ...... difference between a musician who has trained formally and one who has not.\n**QUALITY**",
+            "sentence": "There is a clear ...... difference between a musician who has trained formally and one who has not. **QUALITY**",
             "answer": "qualitative"
           }
         ]
@@ -1397,47 +1412,47 @@
       },
       "M": {
         "title": "The prefix in- meaning.",
-        "instructions": "The prefix in- can often mean ‘not’ or ‘no’. However, in words such as invaluable, in- does not mean ‘not’ or ‘no’. Mark with OK the words where it means ‘not’ or ‘no’. Put a cross next to the words where it doesn’t.",
+        "instructions": "The prefix in- can often mean 'not' or 'no'. However, in words such as invaluable, in- does not mean 'not' or 'no'. Write YES in the input if in- means 'not' or 'no', or NO if it doesn't.",
         "questions": [
           {
             "sentence": "The **incoming** flight from Buenos Aires was delayed due to adverse weather conditions.",
-            "answer": "✗"
+            "answer": "no"
           },
           {
             "sentence": "The gallery offered a generous **incentive** to staff who agreed to work extended hours during the festival.",
-            "answer": "✗"
+            "answer": "no"
           },
           {
             "sentence": "A minor **incident** at the opening night ceremony received more media coverage than the exhibition itself.",
-            "answer": "✗"
+            "answer": "no"
           },
           {
             "sentence": "Her **income** from selling original prints has grown remarkably over the past three years.",
-            "answer": "✗"
+            "answer": "no"
           },
           {
             "sentence": "The critic’s remarks proved deeply **inflammatory** and sparked a very public dispute between the two artists.",
-            "answer": "✗"
+            "answer": "no"
           },
           {
             "sentence": "The set designer came up with an **ingenious** solution to fit the entire backdrop onto the tiny stage.",
-            "answer": "✗"
+            "answer": "no"
           },
           {
             "sentence": "The article contained several **inaccurate** claims about the painting’s provenance that needed to be corrected.",
-            "answer": "✓"
+            "answer": "yes"
           },
           {
             "sentence": "The rehearsal space was cramped and **inhospitable**, yet the cast worked there throughout the entire winter.",
-            "answer": "✓"
+            "answer": "yes"
           },
           {
             "sentence": "The level of funding allocated to the restoration project was frankly **insufficient** to cover even basic costs.",
-            "answer": "✓"
+            "answer": "yes"
           },
           {
             "sentence": "The lead actor was reportedly **intoxicated** when he arrived for the evening performance.",
-            "answer": "✗"
+            "answer": "no"
           }
         ]
       }
