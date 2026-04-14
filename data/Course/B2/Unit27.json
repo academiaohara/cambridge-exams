@@ -282,7 +282,7 @@
     {
       "type": "exercise",
       "title": "C: Error correction (Inversions)",
-      "instructions": "If a word or phrase in bold is correct, put a tick (✓). If it is incorrect, rewrite it correctly.",
+      "instructions": "Write **OK** if the bold word or phrase is correct. If it is incorrect, write the correct version.",
       "items": [
         {
           "sentence": "Hardly **Tom had** opened the door when the dog ran out into the street.",
@@ -290,7 +290,7 @@
         },
         {
           "sentence": "Only when I read the book did I realise why it was so special.",
-          "answer": "OK"
+          "answer": "✓"
         },
         {
           "sentence": "Not only **you passed** the exam, but you also got an A!",
@@ -302,7 +302,7 @@
         },
         {
           "sentence": "No sooner had we found our seats than the film began.",
-          "answer": "OK"
+          "answer": "✓"
         },
         {
           "sentence": "At no point while the race is taking place **members of the public are not allowed** onto the track.",
@@ -324,7 +324,8 @@
           "sentence": "Hardly **I had put** the baby to bed when she started crying.",
           "answer": "had I put"
         }
-      ]
+      ],
+      "subtype": "bold-correct"
     },
     {
       "type": "exercise",

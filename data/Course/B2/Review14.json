@@ -12,39 +12,19 @@
         "pointsPerItem": 1,
         "maxScore": 10
       },
-      "items": [
-        {
-          "sentence": "Dear Sir,\n\nI would like to (1) ...... a complaint about an article that appeared in your newspaper last week.",
-          "answer": "make"
-        },
-        {
-          "sentence": "In the article, entitled 'Why they are (2) ...... of work', the writer suggested that the unemployed were responsible (3) ...... their own situation.",
-          "answer": "out, for"
-        },
-        {
-          "sentence": "If the writer had (4) ...... their job properly and (5) ...... a little effort to speak to local unemployed people, they might have realised that this is not the case.",
-          "answer": "done, made"
-        },
-        {
-          "sentence": "Let me begin (6) ...... saying that most unemployed people want to work.",
-          "answer": "by"
-        },
-        {
-          "sentence": "They apply (7) ...... jobs and (8) ...... a great deal of effort into changing their situation.",
-          "answer": "for, put"
-        },
-        {
-          "sentence": "The truth is that local businesses are simply not taking (9) ...... new staff.",
-          "answer": "on"
-        },
-        {
-          "sentence": "The government is to blame for the way in which economic growth has (10) ...... down, making life difficult for many businesses.",
-          "answer": "slowed"
-        },
-        {
-          "sentence": "I look forward to reading a more balanced article in the future.\n\nYours faithfully,\nRebecca Winterson",
-          "answer": ""
-        }
+      "subtype": "passage-input",
+      "passage": "Dear Sir,\n\nI would like to (1) ...... a complaint about an article that appeared in your newspaper last week. In the article, entitled 'Why they are (2) ...... of work', the writer suggested that the unemployed were responsible (3) ...... their own situation. If the writer had (4) ...... their job properly and (5) ...... a little effort to speak to local unemployed people, they might have realised that this is not the case.\n\nLet me begin (6) ...... saying that most unemployed people want to work. They apply (7) ...... jobs and (8) ...... a great deal of effort into changing their situation. The truth is that local businesses are simply not taking (9) ...... new staff. The government is to blame for the way in which economic growth has (10) ...... down, making life difficult for many businesses.\n\nI look forward to reading a more balanced article in the future.\n\nYours faithfully,\nRebecca Winterson",
+      "answers": [
+        "make",
+        "out",
+        "for",
+        "done",
+        "made",
+        "by",
+        "for",
+        "put",
+        "on",
+        "slowed"
       ]
     },
     {
