@@ -1971,8 +1971,11 @@
           okBtn.classList.remove('cu-bc-ok-selected', 'cu-bc-ok-correct', 'cu-bc-ok-incorrect', 'cu-bc-ok-reveal');
           okBtn.setAttribute('aria-pressed', 'false');
         }
-        // Remove reveal divs injected during check
+        // Remove reveal divs injected during check or show-answers
         item.querySelectorAll('.cu-bc-reveal').forEach(function(el) { el.remove(); });
+        // Restore input visibility if hidden during show-answers
+        var input = item.querySelector('.cu-bc-input');
+        if (input) input.style.display = '';
       });
       // Reset MC gap pills
       sec.querySelectorAll('.cu-mc-gap-pill').forEach(function(pill) {
@@ -5928,16 +5931,20 @@
           var okBtn = item.querySelector('.cu-bc-ok-btn');
           if (input) {
             input.setAttribute('data-saved-value', input.value);
+            input.disabled = true;
             if (isOkAnswer) {
               input.value = '';
+              input.classList.add('cu-input-show-correct');
+              BentoGrid._resizeCuInput(input);
             } else {
+              // Show answer as a styled reveal div so long sentences display fully (same as check)
               var alts = answer.split(/\s*\/\s*/).map(function(a) { return a.trim(); }).filter(Boolean);
-              input.value = alts[0] || answer;
-              BentoGrid._attachAltBadge(input, alts);
+              var revealEl = document.createElement('div');
+              revealEl.className = 'cu-bc-reveal cu-bc-show-reveal';
+              revealEl.textContent = alts.join(' / ') || answer;
+              input.style.display = 'none';
+              input.parentNode.insertBefore(revealEl, input.nextSibling);
             }
-            input.classList.add('cu-input-show-correct');
-            input.disabled = true;
-            BentoGrid._resizeCuInput(input);
           }
           if (okBtn) {
             okBtn.disabled = true;
@@ -6074,7 +6081,10 @@
         sec.querySelectorAll('.cu-bc-item').forEach(function(item) {
           var input = item.querySelector('.cu-bc-input');
           var okBtn = item.querySelector('.cu-bc-ok-btn');
+          // Remove any show-reveal divs added during show-answers
+          item.querySelectorAll('.cu-bc-show-reveal').forEach(function(el) { el.remove(); });
           if (input) {
+            input.style.display = '';
             var saved = input.getAttribute('data-saved-value');
             if (saved !== null) { input.value = saved; input.removeAttribute('data-saved-value'); }
             input.classList.remove('cu-input-show-correct');
