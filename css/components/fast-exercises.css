@@ -3477,54 +3477,47 @@
 }
 
 .vocab-dict-entry {
-  background: #f0fdf4;
+  background: #f8fafc;
   border-radius: 14px;
   padding: 12px 14px;
-  border: 1px solid rgba(16, 185, 129, 0.15);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  border: 1px solid rgba(45, 46, 95, 0.07);
   transition: box-shadow 0.15s;
 }
 .vocab-dict-entry:hover { box-shadow: 0 3px 12px rgba(16, 185, 129, 0.12); }
 
-/* Level-specific card styles */
-.vocab-entry-a2 { background: #fefce8; border-color: rgba(234, 179, 8, 0.3); }
-.vocab-entry-a2:hover { box-shadow: 0 3px 12px rgba(234, 179, 8, 0.15); }
-.vocab-entry-a2 .vocab-dict-word { color: #92400e; }
-
-.vocab-entry-b1 { background: #f0fdf4; border-color: rgba(16, 185, 129, 0.2); }
-.vocab-entry-b1:hover { box-shadow: 0 3px 12px rgba(16, 185, 129, 0.15); }
-.vocab-entry-b1 .vocab-dict-word { color: #065f46; }
-
-.vocab-entry-b2 { background: #eff6ff; border-color: rgba(59, 130, 246, 0.25); }
-.vocab-entry-b2:hover { box-shadow: 0 3px 12px rgba(59, 130, 246, 0.12); }
-.vocab-entry-b2 .vocab-dict-word { color: #1e3a8a; }
-
-.vocab-entry-c1 { background: #faf5ff; border-color: rgba(139, 92, 246, 0.25); }
-.vocab-entry-c1:hover { box-shadow: 0 3px 12px rgba(139, 92, 246, 0.12); }
-.vocab-entry-c1 .vocab-dict-word { color: #4c1d95; }
-
-.vocab-entry-c2 { background: #fff1f2; border-color: rgba(225, 29, 72, 0.25); }
-.vocab-entry-c2:hover { box-shadow: 0 3px 12px rgba(225, 29, 72, 0.12); }
-.vocab-entry-c2 .vocab-dict-word { color: #881337; }
-
-.vocab-dict-word-row {
+.vocab-dict-base {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid rgba(16, 185, 129, 0.2);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.vocab-dict-word {
-  font-weight: 700;
-  color: #065f46;
-  font-size: 0.97rem;
-  flex: 1;
+.vocab-dict-forms {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vocab-dict-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.88rem;
+}
+
+.vocab-dict-form-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .vocab-dict-def {
   color: var(--text-medium, #64748b);
-  font-style: italic;
   font-size: 0.88rem;
 }
 
