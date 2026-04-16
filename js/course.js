@@ -744,7 +744,7 @@
               html += '<tbody>';
               (block.rows || []).forEach(function(row) {
                 html += '<tr class="cu-ue-row">';
-                html += '<td class="cu-ue-use">' + self._escapeHTML(row.label || '') + '</td>';
+                html += '<td class="cu-ue-use">' + _bold(row.label || '') + '</td>';
                 var stItems = row.items || [];
                 var stItemsHtml = '';
                 if (stItems.length) {
