@@ -4459,6 +4459,7 @@
       var html = '';
       groupOrder.forEach(function(key) {
         var group = groups[key];
+        var baseWord = (group[0] && group[0].word) || '';
         var formsHtml = '';
         group.forEach(function(e) {
           formsHtml +=
@@ -4474,8 +4475,8 @@
         html +=
           '<div class="vocab-dict-entry">' +
             '<div class="vocab-dict-base">' +
-              self._escapeHTML(group[0].word || '') +
-              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(group[0].word || '') + '\')" title="Listen to pronunciation">' +
+              self._escapeHTML(baseWord) +
+              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(baseWord) + '\')" title="Listen to pronunciation">' +
                 '<span class="material-symbols-outlined">volume_up</span>' +
               '</button>' +
             '</div>' +
