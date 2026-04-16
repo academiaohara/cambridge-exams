@@ -4836,7 +4836,7 @@
       }
       // Update URL to reflect the current section
       if (BentoGrid._currentUnitId && BentoGrid._currentBlockKey && BentoGrid._currentUnitFilePath) {
-        var secState = { view: 'courseUnit', blockKey: BentoGrid._currentBlockKey, unitId: BentoGrid._currentUnitId, filePath: BentoGrid._currentUnitFilePath, sectionIdx: idx };
+        var secState = { view: 'courseUnit', blockKey: BentoGrid._currentBlockKey, unitId: BentoGrid._currentUnitId, level: _cuLevel, filePath: BentoGrid._currentUnitFilePath, sectionIdx: idx };
         history.replaceState(secState, '', Router.stateToPath(secState));
       }
     },
