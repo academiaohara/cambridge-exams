@@ -3046,12 +3046,21 @@ textarea.cu-gap-input.cu-gap-textarea {
 }
 
 /* ── OK fill button (Exercise H showOkBtn style: sentence + OK button) ── */
-.cu-ok-fill-row {
+.cu-ok-inline-row {
   display: flex;
-  align-items: center;
-  margin-top: 6px;
-  padding-top: 6px;
-  border-top: 1px solid #f1f5f9;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cu-ok-inline-sentence {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.cu-ok-inline-row .cu-ok-fill-btn {
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .cu-ok-fill-btn {

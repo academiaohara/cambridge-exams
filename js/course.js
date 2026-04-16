@@ -2961,9 +2961,9 @@
         return '<div class="cu-ex-item cu-ok-btn-item" data-answer="' + self._escapeHTML(answer) + '">' +
           numBadgeHtml +
           contextHtml +
-          '<div class="cu-ex-sentence">' + sentHtmlOk + '</div>' +
-          '<div class="cu-ok-fill-row">' +
-            '<button class="cu-ok-fill-btn" type="button" onclick="BentoGrid._fillOkChip(this)">OK ✓</button>' +
+          '<div class="cu-ok-inline-row">' +
+            '<div class="cu-ex-sentence cu-ok-inline-sentence">' + sentHtmlOk + '</div>' +
+            '<button class="cu-ok-fill-btn" type="button" onclick="BentoGrid._fillOkChip(this)">OK</button>' +
           '</div>' +
           '<div class="cu-ex-foot">' +
             '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
