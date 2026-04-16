@@ -4438,6 +4438,7 @@
 
       var resultsEl = document.getElementById('vocab-dict-results');
       var countEl = document.getElementById('vocab-dict-count');
+      var missingValuePlaceholder = '—';
       if (!resultsEl) return;
 
       if (countEl) countEl.textContent = filtered.length + ' entries' + (q || levelFilter ? ' (filtered)' : '');
@@ -4447,20 +4448,39 @@
         return;
       }
 
-      var html = '';
+      var groups = {};
+      var groupOrder = [];
       filtered.forEach(function(e) {
-        var example = e.example ? '<span class="vocab-dict-example">Example: ' + self._escapeHTML(e.example) + '</span>' : '';
+        var key = (e.word || '').toLowerCase().trim();
+        if (!groups[key]) { groups[key] = []; groupOrder.push(key); }
+        groups[key].push(e);
+      });
+
+      var html = '';
+      groupOrder.forEach(function(key) {
+        var group = groups[key];
+        var baseWord = (group[0] && group[0].word) || '';
+        var formsHtml = '';
+        group.forEach(function(e) {
+          formsHtml +=
+            '<div class="vocab-dict-form">' +
+              '<div class="vocab-dict-form-top">' +
+                '<span class="vocab-dict-level-badge vocab-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+              '</div>' +
+              '<span class="vocab-dict-def"><strong>Definition:</strong> ' + self._escapeHTML(e.definition || missingValuePlaceholder) + '</span>' +
+              '<span class="vocab-dict-example"><strong>Example:</strong> ' + self._escapeHTML(e.example || missingValuePlaceholder) + '</span>' +
+            '</div>';
+        });
+
         html +=
-          '<div class="vocab-dict-entry vocab-entry-' + (e.level || '').toLowerCase() + '">' +
-            '<div class="vocab-dict-word-row">' +
-              '<span class="vocab-dict-word">' + self._escapeHTML(e.word) + '</span>' +
-              '<span class="vocab-dict-level-badge vocab-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
-              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.word) + '\')" title="Listen to pronunciation">' +
+          '<div class="vocab-dict-entry">' +
+            '<div class="vocab-dict-base">' +
+              self._escapeHTML(baseWord) +
+              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(baseWord) + '\')" title="Listen to pronunciation">' +
                 '<span class="material-symbols-outlined">volume_up</span>' +
               '</button>' +
             '</div>' +
-            '<span class="vocab-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
-            example +
+            '<div class="vocab-dict-forms">' + formsHtml + '</div>' +
           '</div>';
       });
 
