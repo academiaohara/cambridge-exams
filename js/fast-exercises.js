@@ -4438,6 +4438,7 @@
 
       var resultsEl = document.getElementById('vocab-dict-results');
       var countEl = document.getElementById('vocab-dict-count');
+      var missingValuePlaceholder = '—';
       if (!resultsEl) return;
 
       if (countEl) countEl.textContent = filtered.length + ' entries' + (q || levelFilter ? ' (filtered)' : '');
@@ -4465,8 +4466,8 @@
               '<div class="vocab-dict-form-top">' +
                 '<span class="vocab-dict-level-badge vocab-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
               '</div>' +
-              '<span class="vocab-dict-def"><strong>Definition:</strong> ' + self._escapeHTML(e.definition || '—') + '</span>' +
-              '<span class="vocab-dict-example"><strong>Example:</strong> ' + self._escapeHTML(e.example || '—') + '</span>' +
+              '<span class="vocab-dict-def"><strong>Definition:</strong> ' + self._escapeHTML(e.definition || missingValuePlaceholder) + '</span>' +
+              '<span class="vocab-dict-example"><strong>Example:</strong> ' + self._escapeHTML(e.example || missingValuePlaceholder) + '</span>' +
             '</div>';
         });
 
