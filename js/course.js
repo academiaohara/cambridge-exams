@@ -4986,7 +4986,7 @@
       var base = BentoGrid._normalizeText((answerPart || '').trim()).split(/\s*\/\s*/);
       var expanded = [];
       base.forEach(function(a) {
-        BentoGrid._expandOptionals(a.trim().toLowerCase()).forEach(function(opt) {
+        BentoGrid._expandOptionals(a.trim()).forEach(function(opt) {
           var norm = BentoGrid._normalizeCompareText(opt);
           if (norm && expanded.indexOf(norm) === -1) expanded.push(norm);
         });
