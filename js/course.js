@@ -5725,6 +5725,9 @@
           } else {
             inputs = Array.prototype.slice.call(rawInputs);
           }
+          if (inputs.length === 1 && answerParts.length > 1) {
+            answerParts = [answer];
+          }
           inputs.forEach(function(inp, i) {
             inp.setAttribute('data-saved-value', inp.value);
             var correctRaw = (answerParts[i] || answerParts[0] || '').trim();
