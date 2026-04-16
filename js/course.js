@@ -4946,6 +4946,15 @@
       return (s || '').replace(/[\u2018\u2019\u201a\u201b]/g, "'").replace(/[\u201c\u201d\u201e\u201f]/g, '"');
     },
 
+    // Normalises answers for text-input comparison.
+    // Keep punctuation generally intact, but allow an optional final period.
+    _normalizeCompareText: function(s) {
+      return BentoGrid._normalizeText((s || '').toLowerCase())
+        .replace(/\s+/g, ' ')
+        .replace(/\s*\.\s*$/, '')
+        .trim();
+    },
+
     // Expands optional groups (word) in an answer string into all combinations.
     // E.g. "have cost (you) a fortune" → ["have cost you a fortune", "have cost a fortune"]
     // "in(to)" → ["into", "in"]
@@ -4981,7 +4990,7 @@
       var expanded = [];
       base.forEach(function(a) {
         BentoGrid._expandOptionals(a.trim().toLowerCase()).forEach(function(opt) {
-          var norm = BentoGrid._normalizeText(opt);
+          var norm = BentoGrid._normalizeCompareText(opt);
           if (norm && expanded.indexOf(norm) === -1) expanded.push(norm);
         });
       });
@@ -5024,7 +5033,7 @@
         } else {
           // Wrong word: correct only if input matches answer (not OK)
           var alts = BentoGrid._answerAlts(answer);
-          var givenNorm = BentoGrid._normalizeText(given.toLowerCase());
+          var givenNorm = BentoGrid._normalizeCompareText(given);
           correct = given !== '' && !okSelected && alts.some(function(a) { return a === givenNorm; });
           if (correct) {
             item.classList.add('cu-bc-item-correct');
@@ -5185,12 +5194,13 @@
       sec.querySelectorAll('.cu-passage-exercise').forEach(function(passageEl) {
         passageEl.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(input) {
           totalItems++;
-          var expected = (input.getAttribute('data-answer') || '').trim().toLowerCase();
-          var given = (input.value || '').trim().toLowerCase();
+          var expected = BentoGrid._normalizeCompareText((input.getAttribute('data-answer') || '').trim());
+          var given = BentoGrid._normalizeCompareText((input.value || '').trim());
           var alts = [];
           expected.split(/\s*\/\s*/).forEach(function(a) {
             BentoGrid._expandOptionals(a.trim()).forEach(function(opt) {
-              if (opt && alts.indexOf(opt) === -1) alts.push(opt);
+              var normOpt = BentoGrid._normalizeCompareText(opt);
+              if (normOpt && alts.indexOf(normOpt) === -1) alts.push(normOpt);
             });
           });
           var filled = given !== '';
@@ -5342,12 +5352,13 @@
         var partIdx = 0;
         inputs.forEach(function(input) {
           totalItems++;
-          var expected = (answerParts[partIdx] || '').trim().toLowerCase();
-          var given = (input.value || '').trim().toLowerCase();
+          var expected = BentoGrid._normalizeCompareText((answerParts[partIdx] || '').trim());
+          var given = BentoGrid._normalizeCompareText((input.value || '').trim());
           var alts = [];
           expected.split(/\s*\/\s*/).forEach(function(a) {
             BentoGrid._expandOptionals(a.trim()).forEach(function(opt) {
-              if (opt && alts.indexOf(opt) === -1) alts.push(opt);
+              var normOpt = BentoGrid._normalizeCompareText(opt);
+              if (normOpt && alts.indexOf(normOpt) === -1) alts.push(normOpt);
             });
           });
           var filled = given !== '';
