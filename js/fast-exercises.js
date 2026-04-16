@@ -4432,7 +4432,8 @@
         if (!matchLevel) return false;
         if (!q) return true;
         return (e.word || '').toLowerCase().indexOf(q) !== -1 ||
-               (e.definition || '').toLowerCase().indexOf(q) !== -1;
+               (e.definition || '').toLowerCase().indexOf(q) !== -1 ||
+               (e.example || '').toLowerCase().indexOf(q) !== -1;
       });
 
       var resultsEl = document.getElementById('vocab-dict-results');
@@ -4448,6 +4449,7 @@
 
       var html = '';
       filtered.forEach(function(e) {
+        var example = e.example ? '<span class="vocab-dict-example">Example: ' + self._escapeHTML(e.example) + '</span>' : '';
         html +=
           '<div class="vocab-dict-entry vocab-entry-' + (e.level || '').toLowerCase() + '">' +
             '<div class="vocab-dict-word-row">' +
@@ -4458,6 +4460,7 @@
               '</button>' +
             '</div>' +
             '<span class="vocab-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
+            example +
           '</div>';
       });
 

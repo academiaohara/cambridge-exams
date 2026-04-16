@@ -3528,6 +3528,14 @@
   font-size: 0.88rem;
 }
 
+.vocab-dict-example {
+  display: block;
+  margin-top: 2px;
+  color: var(--text, #334155);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
 .vocab-dict-level-badge {
   font-size: 0.72rem;
   font-weight: 800;
