@@ -106,20 +106,26 @@
       if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
 
       var sectionsHtml = page.sections.map(function(section) {
+        var safeHeading = this._escapeHtml(section.heading);
+        var safeContent = this._escapeHtml(section.content);
         return '<section class="static-page-section">' +
-          '<h3>' + section.heading + '</h3>' +
-          '<p>' + section.content + '</p>' +
+          '<h3>' + safeHeading + '</h3>' +
+          '<p>' + safeContent + '</p>' +
         '</section>';
-      }).join('');
+      }, this).join('');
+
+      var safeIcon = this._escapeHtml(page.icon);
+      var safeTitle = this._escapeHtml(page.title);
+      var safeIntro = this._escapeHtml(page.intro);
 
       content.innerHTML =
         '<div class="static-page-wrapper">' +
           '<div class="static-page-header">' +
             '<button class="static-page-back-btn" onclick="loadDashboard()">Back</button>' +
-            '<h1><span class="material-symbols-outlined" aria-hidden="true">' + page.icon + '</span>' + page.title + '</h1>' +
+            '<h1><span class="material-symbols-outlined" aria-hidden="true">' + safeIcon + '</span>' + safeTitle + '</h1>' +
           '</div>' +
           '<div class="static-page-card">' +
-            '<p class="static-page-intro">' + page.intro + '</p>' +
+            '<p class="static-page-intro">' + safeIntro + '</p>' +
             sectionsHtml +
           '</div>' +
         '</div>';
@@ -127,6 +133,15 @@
       if (pushHistory !== false) {
         history.pushState({ view: pageKey }, '', Router.stateToPath({ view: pageKey }));
       }
+    },
+
+    _escapeHtml: function(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     }
   };
 
