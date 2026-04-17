@@ -92,7 +92,7 @@
     _getRouteDisplayTexts: function(routes) {
       if (!Array.isArray(routes)) return [];
       return routes.map(function(route) {
-        return [route && route.p1, route && route.p2].filter(Boolean).join(' ').trim();
+        return [route?.p1, route?.p2].filter(Boolean).join(' ').trim();
       }).filter(Boolean);
     },
 
