@@ -2029,6 +2029,20 @@
           item.style.cursor = '';
         });
       }
+      // Reset drag-category exercises: move chips back to pool and re-enable drag
+      sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
+        var pool = exEl.querySelector('.cu-drag-pool');
+        exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
+          zone.classList.remove('cu-drag-zone-over');
+        });
+        exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
+          chip.classList.remove('cu-drag-chip-correct', 'cu-drag-chip-incorrect', 'cu-drag-chip-unplaced');
+          chip.setAttribute('draggable', 'true');
+          chip.style.cursor = '';
+          chip.removeAttribute('data-saved-category');
+          if (pool) pool.appendChild(chip);
+        });
+      });
       // Reset word-bank used state
       sec.querySelectorAll('.cu-wordbank-item').forEach(function(item) {
         item.classList.remove('cu-wordbank-used');
@@ -5854,6 +5868,26 @@
           BentoGrid._attachAltBadge(inp, alts);
         });
 
+        // Drag-category exercise: move each chip into its correct category
+        sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
+          var pool = exEl.querySelector('.cu-drag-pool');
+          exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
+            var currentZone = chip.closest('.cu-drag-zone');
+            chip.setAttribute('data-saved-category', currentZone ? (currentZone.getAttribute('data-category') || '') : '');
+            var expectedCat = chip.getAttribute('data-answer') || '';
+            var targetZone = null;
+            exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
+              if (!targetZone && (zone.getAttribute('data-category') || '') === expectedCat) targetZone = zone;
+            });
+            var targetItems = targetZone ? targetZone.querySelector('.cu-drag-zone-items') : null;
+            if (targetItems) targetItems.appendChild(chip);
+            else if (pool) pool.appendChild(chip);
+            chip.classList.remove('cu-drag-chip-correct', 'cu-drag-chip-incorrect', 'cu-drag-chip-unplaced');
+            chip.setAttribute('draggable', 'false');
+            chip.style.cursor = 'default';
+          });
+        });
+
         // Matching exercise: show correct order in blue
         var matchExercise = sec.querySelector('.cu-match-exercise');
         if (matchExercise) {
@@ -6049,6 +6083,36 @@
           });
           matchExercise.removeAttribute('data-saved-letters');
         }
+
+        // Drag-category exercise: restore chips to the student's saved placement
+        sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
+          var pool = exEl.querySelector('.cu-drag-pool');
+          exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
+            var savedCat = chip.getAttribute('data-saved-category');
+            if (savedCat !== null) {
+              if (savedCat === '') {
+                if (pool) pool.appendChild(chip);
+              } else {
+                var targetZone = null;
+                exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
+                  if (!targetZone && (zone.getAttribute('data-category') || '') === savedCat) targetZone = zone;
+                });
+                var targetItems = targetZone ? targetZone.querySelector('.cu-drag-zone-items') : null;
+                if (targetItems) targetItems.appendChild(chip);
+                else if (pool) pool.appendChild(chip);
+              }
+              chip.removeAttribute('data-saved-category');
+            }
+            chip.classList.remove('cu-drag-chip-correct', 'cu-drag-chip-incorrect', 'cu-drag-chip-unplaced');
+            if (!wasChecked) {
+              chip.setAttribute('draggable', 'true');
+              chip.style.cursor = '';
+            } else {
+              chip.setAttribute('draggable', 'false');
+              chip.style.cursor = 'default';
+            }
+          });
+        });
 
         // Restore MC passage gaps to their saved state
         sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
