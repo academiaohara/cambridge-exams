@@ -1,6 +1,8 @@
 // js/exercise-handlers.js
 (function() {
   window.ExerciseHandlers = {
+    _ALT_BADGE_CONTAINERS_SELECTOR: '.reading-type2-gap, .listening-type2-gap, .reading-type3-gap-inline, .reading-type4-inline-wrap',
+
     handleTextGap: function(qNum, value) {
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = value;
@@ -671,7 +673,7 @@
       });
 
       document.querySelectorAll('.cu-alt-badge').forEach(function(badge) {
-        if (badge.closest('.reading-type2-gap, .listening-type2-gap, .reading-type3-gap-inline, .reading-type4-inline-wrap')) {
+        if (badge.closest(ExerciseHandlers._ALT_BADGE_CONTAINERS_SELECTOR)) {
           badge.remove();
         }
       });
@@ -760,7 +762,7 @@
             gap.removeAttribute('data-alt-idx');
           });
           document.querySelectorAll('.cu-alt-badge').forEach(badge => {
-            if (badge.closest('.reading-type2-gap, .listening-type2-gap, .reading-type3-gap-inline, .reading-type4-inline-wrap')) {
+            if (badge.closest(this._ALT_BADGE_CONTAINERS_SELECTOR)) {
               badge.remove();
             }
           });

@@ -2,6 +2,8 @@
 // Key word transformations - Part 4
 
 (function() {
+  var MAX_OPTIONAL_EXPANSIONS = 10;
+
   window.ReadingType4 = {
     _clearAltBadge: function(input) {
       if (input._cuAltBadge) {
@@ -47,7 +49,7 @@
     _expandOptionals: function(text) {
       var results = [String(text || '').trim()];
       var re = /\(([^)]*)\)/;
-      var guard = 10;
+      var guard = MAX_OPTIONAL_EXPANSIONS;
       while (guard-- > 0) {
         var changed = false;
         var next = [];

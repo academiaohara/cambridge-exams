@@ -193,6 +193,7 @@
         const question = questionsByNumber[qNum];
         if (!question) return;
         const studentValue = gap.getAttribute('data-student-value') || '_____';
+        // Fallback is needed for restored checked states where data attributes may be missing.
         const correctValue = gap.getAttribute('data-correct-value') || self.getCorrectText(question) || '';
         const checkClass = gap.getAttribute('data-check-class') || 'reading-type1-incorrect';
         const answerEl = gap.querySelector('.reading-type1-answered-word');
