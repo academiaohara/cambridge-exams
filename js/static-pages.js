@@ -91,7 +91,7 @@
   };
 
   window.StaticPages = {
-    open: function(pageKey) {
+    navigate: function(pageKey) {
       this.render(pageKey, true);
     },
 
@@ -121,7 +121,7 @@
       content.innerHTML =
         '<div class="static-page-wrapper">' +
           '<div class="static-page-header">' +
-            '<button class="static-page-back-btn" onclick="loadDashboard()">Back</button>' +
+            '<button class="static-page-back-btn" onclick="StaticPages.goBack()">Back</button>' +
             '<h1><span class="material-symbols-outlined" aria-hidden="true">' + safeIcon + '</span>' + safeTitle + '</h1>' +
           '</div>' +
           '<div class="static-page-card">' +
@@ -142,12 +142,20 @@
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
+    },
+
+    goBack: function() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        loadDashboard();
+      }
     }
   };
 
-  window.openTermsPage = function() { StaticPages.open('terms'); };
-  window.openAboutPage = function() { StaticPages.open('about'); };
-  window.openContactPage = function() { StaticPages.open('contact'); };
-  window.openPrivacyPage = function() { StaticPages.open('privacy'); };
-  window.openFaqPage = function() { StaticPages.open('faq'); };
+  window.openTermsPage = function() { StaticPages.navigate('terms'); };
+  window.openAboutPage = function() { StaticPages.navigate('about'); };
+  window.openContactPage = function() { StaticPages.navigate('contact'); };
+  window.openPrivacyPage = function() { StaticPages.navigate('privacy'); };
+  window.openFaqPage = function() { StaticPages.navigate('faq'); };
 })();
