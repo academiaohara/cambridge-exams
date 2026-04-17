@@ -109,6 +109,44 @@
             width: 100%;
             flex: 1;
         }
+
+        .page-skeleton {
+            display: grid;
+            gap: 16px;
+        }
+
+        .page-skeleton-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: var(--shadow-md);
+            padding: 20px;
+        }
+
+        .page-skeleton-line {
+            height: 14px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #edf2ff 0%, #e2e8f0 45%, #edf2ff 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.3s linear infinite;
+        }
+
+        .page-skeleton-line + .page-skeleton-line {
+            margin-top: 10px;
+        }
+
+        .page-skeleton-line-lg {
+            height: 18px;
+            width: 48%;
+            margin-bottom: 16px;
+        }
+
+        .page-skeleton-line-md {
+            width: 80%;
+        }
+
+        .page-skeleton-line-sm {
+            width: 62%;
+        }
         
         /* Estilos para loading */
         .loading-exercise {
@@ -395,7 +433,19 @@
         <!-- Contenido principal -->
         <main class="app-container">
             <div id="main-content">
-                <!-- El dashboard se cargará aquí dinámicamente -->
+                <div class="page-skeleton" aria-hidden="true">
+                    <div class="page-skeleton-card">
+                        <div class="page-skeleton-line page-skeleton-line-lg"></div>
+                        <div class="page-skeleton-line page-skeleton-line-md"></div>
+                        <div class="page-skeleton-line page-skeleton-line-sm"></div>
+                    </div>
+                    <div class="page-skeleton-card">
+                        <div class="page-skeleton-line page-skeleton-line-lg"></div>
+                        <div class="page-skeleton-line"></div>
+                        <div class="page-skeleton-line page-skeleton-line-md"></div>
+                        <div class="page-skeleton-line page-skeleton-line-sm"></div>
+                    </div>
+                </div>
             </div>
         </main>
 
