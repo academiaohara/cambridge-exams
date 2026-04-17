@@ -998,12 +998,20 @@
       var isListening = AppState.currentSection === 'listening';
       // In mixed mode, use actual section part for content-based conditions (explanations)
       var actualPart = AppState.currentPart || part;
+      var supportsAnswerToggle = (isReading && actualPart >= 1 && actualPart <= 4) || (isListening && actualPart === 2);
+      var answerToggleLabel = AppState.answerViewMode === 'correct' ? 'Show your answer' : 'Show correct answer';
       let footer = '';
       
       if (!isExamMode) {
         footer += `
           <button class="btn-check" onclick="ExerciseHandlers.checkAnswers()" ${AppState.answersChecked ? 'disabled' : ''}>
             <span data-i18n="checkAnswers">Check answers</span>
+          </button>
+        `;
+
+        footer += `
+          <button class="btn-toggle-answer" onclick="ExerciseHandlers.toggleAnswerView()" ${supportsAnswerToggle && AppState.answersChecked ? '' : 'style="display:none"'}>
+            <span class="material-symbols-outlined">swap_horiz</span> <span>${answerToggleLabel}</span>
           </button>
         `;
 

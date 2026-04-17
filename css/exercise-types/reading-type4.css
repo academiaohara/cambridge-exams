@@ -109,6 +109,11 @@
   background: #fee2e2;
 }
 
+.reading-type4-inline-wrap.reading-type4-show-correct {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+}
+
 .reading-type4-inline-input {
   width: 120px;
   min-width: 80px;
@@ -162,6 +167,12 @@
   font-weight: 600;
   background: transparent;
   border: none;
+}
+
+.reading-type4-inline-input.cu-input-show-correct {
+  color: #1e3a8a;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .reading-type4-keyword-badge {

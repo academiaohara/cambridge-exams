@@ -233,6 +233,7 @@
       AppState.currentPart = part;
       AppState.currentExamId = examId;
       AppState.answersChecked = false;
+      AppState.answerViewMode = 'student';
       AppState.currentPartScore = 0;
       AppState.explanationMode = false;
       AppState.explanationActiveQuestion = null;
@@ -940,6 +941,7 @@
       AppState.freeNotes = [];
       AppState.freeNotesIndex = 0;
       AppState.answersChecked = false;
+      AppState.answerViewMode = 'student';
       AppState.sectionScores = {};
       AppState.currentPartScore = 0;
       AppState.examFullMode = false;
