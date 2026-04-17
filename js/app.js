@@ -122,6 +122,8 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof TipsPage !== 'undefined') TipsPage.openTipsSkill(initialState.level, initialState.skill);
+      } else if (['terms', 'about', 'contact', 'privacy', 'faq'].indexOf(initialState.view) !== -1) {
+        if (typeof StaticPages !== 'undefined') StaticPages.render(initialState.view, false);
       } else {
         // Default: dashboard
         Dashboard.render();
@@ -181,6 +183,8 @@
           if (typeof TipsPage !== 'undefined') TipsPage._renderHome();
         } else if (state.view === 'tipsSkill' && state.level && state.skill) {
           if (typeof TipsPage !== 'undefined') TipsPage._renderSkill(state.level, state.skill);
+        } else if (['terms', 'about', 'contact', 'privacy', 'faq'].indexOf(state.view) !== -1) {
+          if (typeof StaticPages !== 'undefined') StaticPages.render(state.view, false);
         }
       });
       
