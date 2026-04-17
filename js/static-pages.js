@@ -101,7 +101,7 @@
       var content = document.getElementById('main-content');
       if (!content) return;
 
-      if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
+      if (window.QuestionNav && typeof window.QuestionNav.close === 'function') window.QuestionNav.close();
       AppState.currentView = pageKey;
       if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
 
