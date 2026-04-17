@@ -254,7 +254,6 @@
           input.classList.remove('cu-input-show-correct');
           input.classList.remove('correct', 'incorrect');
           if (checkClass) input.classList.add(checkClass);
-          input.readOnly = false;
           self._clearAltBadge(input);
         }
         self.resizeInput(input);

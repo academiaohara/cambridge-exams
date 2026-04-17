@@ -736,6 +736,7 @@
         case 'word-formation':
         case 'sentence-completion':
         case 'transformations':
+          const altBadgeContainersSelector = this._ALT_BADGE_CONTAINERS_SELECTOR;
           document.querySelectorAll('input.gap-input, .reading-type2-input, .listening-type2-input').forEach(input => {
             input.value = '';
             input.classList.remove('correct', 'incorrect');
@@ -763,7 +764,7 @@
             gap.removeAttribute('data-alt-idx');
           });
           document.querySelectorAll('.cu-alt-badge').forEach(badge => {
-            if (badge.closest(this._ALT_BADGE_CONTAINERS_SELECTOR)) {
+            if (badge.closest(altBadgeContainersSelector)) {
               badge.remove();
             }
           });
