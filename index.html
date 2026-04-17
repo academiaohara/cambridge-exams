@@ -112,15 +112,46 @@
         }
 
         .page-skeleton {
+            --page-skeleton-chip-md-width: 120px;
+            --page-skeleton-chip-sm-width: 86px;
             display: grid;
+            grid-template-columns: 260px minmax(0, 1fr) 260px;
+            gap: 24px;
+            align-items: start;
+            padding: 0 16px;
+        }
+
+        .page-skeleton-sidebar {
+            display: flex;
+            flex-direction: column;
             gap: 16px;
+        }
+
+        .page-skeleton-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #edf2ff 0%, #e2e8f0 45%, #edf2ff 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.3s linear infinite;
+            margin-left: auto;
         }
 
         .page-skeleton-card {
             background: #fff;
-            border-radius: 18px;
-            box-shadow: var(--shadow-md);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(45, 46, 95, 0.08);
+            border: 1px solid rgba(45, 46, 95, 0.08);
             padding: 20px;
+        }
+
+        .page-skeleton-main {
+            display: grid;
+            gap: 16px;
+        }
+
+        .page-skeleton-main .page-skeleton-card {
+            padding: 18px 20px;
         }
 
         .page-skeleton-line {
@@ -147,6 +178,41 @@
 
         .page-skeleton-line-sm {
             width: 62%;
+        }
+
+        .page-skeleton-badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .page-skeleton-chip {
+            height: 28px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #edf2ff 0%, #e2e8f0 45%, #edf2ff 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.3s linear infinite;
+        }
+
+        .page-skeleton-chip-md { width: var(--page-skeleton-chip-md-width); }
+        .page-skeleton-chip-sm { width: var(--page-skeleton-chip-sm-width); }
+
+        @media (max-width: 1200px) {
+            .page-skeleton {
+                grid-template-columns: 220px minmax(0, 1fr) 220px;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 980px) {
+            .page-skeleton {
+                grid-template-columns: 1fr;
+                padding: 0;
+            }
+
+            .page-skeleton-sidebar {
+                display: none;
+            }
         }
 
         @keyframes shimmer {
@@ -443,16 +509,49 @@
         <main class="app-container">
             <div id="main-content">
                 <div class="page-skeleton" aria-hidden="true">
-                    <div class="page-skeleton-card">
-                        <div class="page-skeleton-line page-skeleton-line-lg"></div>
-                        <div class="page-skeleton-line page-skeleton-line-md"></div>
-                        <div class="page-skeleton-line page-skeleton-line-sm"></div>
+                    <div class="page-skeleton-sidebar">
+                        <div class="page-skeleton-toggle"></div>
+                        <div class="page-skeleton-card">
+                            <div class="page-skeleton-line page-skeleton-line-lg"></div>
+                            <div class="page-skeleton-line page-skeleton-line-md"></div>
+                            <div class="page-skeleton-line page-skeleton-line-sm"></div>
+                        </div>
+                        <div class="page-skeleton-card">
+                            <div class="page-skeleton-line page-skeleton-line-lg"></div>
+                            <div class="page-skeleton-line"></div>
+                        </div>
                     </div>
-                    <div class="page-skeleton-card">
-                        <div class="page-skeleton-line page-skeleton-line-lg"></div>
-                        <div class="page-skeleton-line"></div>
-                        <div class="page-skeleton-line page-skeleton-line-md"></div>
-                        <div class="page-skeleton-line page-skeleton-line-sm"></div>
+                    <div class="page-skeleton-main">
+                        <div class="page-skeleton-card">
+                            <div class="page-skeleton-line page-skeleton-line-lg"></div>
+                            <div class="page-skeleton-line"></div>
+                            <div class="page-skeleton-badges">
+                                <div class="page-skeleton-chip page-skeleton-chip-md"></div>
+                                <div class="page-skeleton-chip page-skeleton-chip-sm"></div>
+                            </div>
+                        </div>
+                        <div class="page-skeleton-card">
+                            <div class="page-skeleton-line page-skeleton-line-lg"></div>
+                            <div class="page-skeleton-line"></div>
+                            <div class="page-skeleton-line page-skeleton-line-md"></div>
+                        </div>
+                        <div class="page-skeleton-card">
+                            <div class="page-skeleton-line page-skeleton-line-lg"></div>
+                            <div class="page-skeleton-line"></div>
+                            <div class="page-skeleton-line page-skeleton-line-sm"></div>
+                        </div>
+                    </div>
+                    <div class="page-skeleton-sidebar">
+                        <div class="page-skeleton-toggle"></div>
+                        <div class="page-skeleton-card">
+                            <div class="page-skeleton-line page-skeleton-line-lg"></div>
+                            <div class="page-skeleton-line page-skeleton-line-md"></div>
+                            <div class="page-skeleton-line page-skeleton-line-sm"></div>
+                        </div>
+                        <div class="page-skeleton-card">
+                            <div class="page-skeleton-line page-skeleton-line-lg"></div>
+                            <div class="page-skeleton-line"></div>
+                        </div>
                     </div>
                 </div>
             </div>
