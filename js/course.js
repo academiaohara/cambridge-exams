@@ -4,6 +4,7 @@
 (function() {
   var CU_PAGE_SIZE = 4; // max items per page in paginated course exercises (balanced 4+4 for 8-item sections)
   var CU_MC_BLANK = '<span class="cu-mc-blank">&#9135;&#9135;&#9135;&#9135;&#9135;</span>';
+  var CU_DRAG_POOL_MARKER = '__POOL__';
 
   Object.assign(window.BentoGrid, {
     // Extract display text from an MC option string like "A special" or "A. special"
@@ -2039,7 +2040,6 @@
           chip.classList.remove('cu-drag-chip-correct', 'cu-drag-chip-incorrect', 'cu-drag-chip-unplaced');
           chip.setAttribute('draggable', 'true');
           chip.style.cursor = '';
-          chip.removeAttribute('data-saved-category');
           if (pool) pool.appendChild(chip);
         });
       });
@@ -5871,14 +5871,15 @@
         // Drag-category exercise: move each chip into its correct category
         sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
           var pool = exEl.querySelector('.cu-drag-pool');
+          var zonesByCategory = {};
+          exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
+            zonesByCategory[zone.getAttribute('data-category') || ''] = zone;
+          });
           exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
             var currentZone = chip.closest('.cu-drag-zone');
-            chip.setAttribute('data-saved-category', currentZone ? (currentZone.getAttribute('data-category') || '') : '__POOL__');
+            chip.setAttribute('data-saved-category', currentZone ? (currentZone.getAttribute('data-category') || '') : CU_DRAG_POOL_MARKER);
             var expectedCat = chip.getAttribute('data-answer') || '';
-            var targetZone = null;
-            exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
-              if (!targetZone && (zone.getAttribute('data-category') || '') === expectedCat) targetZone = zone;
-            });
+            var targetZone = zonesByCategory[expectedCat] || null;
             var targetItems = targetZone ? targetZone.querySelector('.cu-drag-zone-items') : null;
             if (targetItems) targetItems.appendChild(chip);
             else if (pool) pool.appendChild(chip);
@@ -6087,16 +6088,17 @@
         // Drag-category exercise: restore chips to the student's saved placement
         sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
           var pool = exEl.querySelector('.cu-drag-pool');
+          var zonesByCategory = {};
+          exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
+            zonesByCategory[zone.getAttribute('data-category') || ''] = zone;
+          });
           exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
             if (chip.hasAttribute('data-saved-category')) {
               var savedCat = chip.getAttribute('data-saved-category');
-              if (savedCat === '__POOL__') {
+              if (savedCat === CU_DRAG_POOL_MARKER) {
                 if (pool) pool.appendChild(chip);
               } else {
-                var targetZone = null;
-                exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
-                  if (!targetZone && (zone.getAttribute('data-category') || '') === savedCat) targetZone = zone;
-                });
+                var targetZone = zonesByCategory[savedCat] || null;
                 var targetItems = targetZone ? targetZone.querySelector('.cu-drag-zone-items') : null;
                 if (targetItems) targetItems.appendChild(chip);
                 else if (pool) pool.appendChild(chip);
