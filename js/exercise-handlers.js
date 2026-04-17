@@ -24,6 +24,7 @@
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       
       AppState.answersChecked = true;
+      AppState.answerViewMode = 'student';
       const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       
       let correct = 0;
@@ -91,6 +92,7 @@
       // For parts 1–3 and listening: reveal the footer explanation button
       const footerExplBtn = document.querySelector('.btn-explanations');
       if (footerExplBtn) footerExplBtn.style.display = '';
+      this.syncAnswerToggleButton();
     },
     
     updatePartNavigation: function() {
@@ -137,6 +139,38 @@
         'discussion': window.SpeakingType
       };
       return typeMap[type];
+    },
+
+    shouldEnableAnswerToggle: function() {
+      if (AppState.currentSection === 'reading') {
+        return AppState.currentPart >= 1 && AppState.currentPart <= 4;
+      }
+      return AppState.currentSection === 'listening' && AppState.currentPart === 2;
+    },
+
+    syncAnswerToggleButton: function() {
+      const btn = document.querySelector('.btn-toggle-answer');
+      if (!btn) return;
+      if (!this.shouldEnableAnswerToggle() || !AppState.answersChecked) {
+        btn.style.display = 'none';
+        return;
+      }
+      btn.style.display = '';
+      const label = AppState.answerViewMode === 'correct' ? 'Show your answer' : 'Show correct answer';
+      const labelSpan = btn.querySelector('span:last-child');
+      if (labelSpan) labelSpan.textContent = label;
+      else btn.textContent = label;
+    },
+
+    toggleAnswerView: function() {
+      if (!this.shouldEnableAnswerToggle() || !AppState.answersChecked) return;
+      AppState.answerViewMode = AppState.answerViewMode === 'correct' ? 'student' : 'correct';
+      const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
+      const typeHandler = this.getTypeChecker(partConfig.type);
+      if (typeHandler && typeof typeHandler.setAnswerMode === 'function') {
+        typeHandler.setAnswerMode(AppState.answerViewMode);
+      }
+      this.syncAnswerToggleButton();
     },
     
     markAnswerVisual: function(qNum, userAnswer, correctAnswer, isCorrect, partConfig) {
@@ -590,6 +624,7 @@
       AppState.answersChecked = false;
       AppState.explanationMode = false;
       AppState.explanationActiveQuestion = null;
+      AppState.answerViewMode = 'student';
       
       // Clear saved state from localStorage
       Exercise.clearPartState(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
@@ -616,21 +651,29 @@
       
       const checkBtn = document.querySelector('.btn-check');
       if (checkBtn) checkBtn.disabled = false;
+      this.syncAnswerToggleButton();
     },
     
     clearAllCorrections: function() {
       // Remove correction classes from gap boxes, inputs, labels, options
-      document.querySelectorAll('.correct, .incorrect, .checked, .correct-answer').forEach(function(el) {
-        el.classList.remove('correct', 'incorrect', 'checked', 'correct-answer');
+      document.querySelectorAll('.correct, .incorrect, .checked, .correct-answer, .cu-input-show-correct').forEach(function(el) {
+        el.classList.remove('correct', 'incorrect', 'checked', 'correct-answer', 'cu-input-show-correct');
       });
       
       // Remove type-specific correction classes
-      document.querySelectorAll('.reading-type1-correct, .reading-type1-incorrect, .reading-type3-correct, .reading-type3-incorrect, .reading-type4-correct, .reading-type4-incorrect').forEach(function(el) {
+      document.querySelectorAll('.reading-type1-correct, .reading-type1-incorrect, .reading-type1-show-correct, .reading-type3-correct, .reading-type3-incorrect, .reading-type3-show-correct, .reading-type4-correct, .reading-type4-incorrect, .reading-type4-show-correct').forEach(function(el) {
         el.classList.remove(
           'reading-type1-correct', 'reading-type1-incorrect',
-          'reading-type3-correct', 'reading-type3-incorrect',
-          'reading-type4-correct', 'reading-type4-incorrect'
+          'reading-type1-show-correct',
+          'reading-type3-correct', 'reading-type3-incorrect', 'reading-type3-show-correct',
+          'reading-type4-correct', 'reading-type4-incorrect', 'reading-type4-show-correct'
         );
+      });
+
+      document.querySelectorAll('.cu-alt-badge').forEach(function(badge) {
+        if (badge.closest('.reading-type2-gap, .listening-type2-gap, .reading-type3-gap-inline, .reading-type4-inline-wrap')) {
+          badge.remove();
+        }
       });
       
       // Remove data-correct attributes (correction tooltips)
@@ -693,12 +736,32 @@
           document.querySelectorAll('input.gap-input, .reading-type2-input, .listening-type2-input').forEach(input => {
             input.value = '';
             input.classList.remove('correct', 'incorrect');
+            input.classList.remove('cu-input-show-correct');
             input.disabled = false;
+            input.readOnly = false;
             input.removeAttribute('title');
+            input.removeAttribute('data-student-value');
+            input.removeAttribute('data-check-class');
+            input.removeAttribute('data-correct-raw');
+            input.removeAttribute('data-correct-routes');
+            input.removeAttribute('data-alt-answers');
+            input.removeAttribute('data-alt-idx');
+            if (input._cuAltBadge) { input._cuAltBadge.remove(); input._cuAltBadge = null; }
+            if (input._cuAltClickHandler) { input.removeEventListener('click', input._cuAltClickHandler); input._cuAltClickHandler = null; }
             const gap = input.closest('.reading-type2-gap, .listening-type2-gap');
             if (gap) {
               gap.classList.remove('incorrect');
               gap.removeAttribute('data-correct');
+            }
+          });
+          document.querySelectorAll('.reading-type3-gap-inline').forEach(gap => {
+            if (gap._cuAltBadge) { gap._cuAltBadge.remove(); gap._cuAltBadge = null; }
+            gap.removeAttribute('data-alt-answers');
+            gap.removeAttribute('data-alt-idx');
+          });
+          document.querySelectorAll('.cu-alt-badge').forEach(badge => {
+            if (badge.closest('.reading-type2-gap, .listening-type2-gap, .reading-type3-gap-inline, .reading-type4-inline-wrap')) {
+              badge.remove();
             }
           });
           break;

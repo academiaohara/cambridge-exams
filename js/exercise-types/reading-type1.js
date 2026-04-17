@@ -12,13 +12,15 @@
           </span>
         `;
       }
-      if (isChecked && userAnswer) {
+      if (isChecked) {
         const isCorrect = this.isAnswerCorrect(question, userAnswer);
-        const answerText = this.getDisplayAnswer(question, userAnswer);
+        const answerText = this.getDisplayAnswer(question, userAnswer) || '_____';
         const colorClass = isCorrect ? 'reading-type1-correct' : 'reading-type1-incorrect';
         const correctText = !isCorrect ? this.getCorrectText(question) : '';
+        const escapedStudent = String(answerText).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const escapedCorrect = String(this.getCorrectText(question)).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         return `
-          <span class="reading-type1-gap">
+          <span class="reading-type1-gap" data-student-value="${escapedStudent}" data-correct-value="${escapedCorrect}" data-check-class="${colorClass}">
             <span class="reading-type1-gap-number">(${qNum})</span>
             <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'data-correct="✓ ' + correctText + '"' : ''}>${answerText}</span>
           </span>
@@ -163,6 +165,9 @@
             const answerText = this.getDisplayAnswer(q, userAnswer) || '_____';
             const colorClass = isCorrect ? 'reading-type1-correct' : 'reading-type1-incorrect';
             const correctText = !isCorrect ? this.getCorrectText(q) : '';
+            gap.setAttribute('data-student-value', answerText);
+            gap.setAttribute('data-correct-value', this.getCorrectText(q));
+            gap.setAttribute('data-check-class', colorClass);
             gap.innerHTML = `
               <span class="reading-type1-gap-number">(${q.number})</span>
               <span class="reading-type1-answered-word ${colorClass}" ${!isCorrect ? 'data-correct="✓ ' + correctText + '"' : ''}>${answerText}</span>
@@ -172,6 +177,42 @@
       });
       
       return correct;
+    },
+
+    setAnswerMode: function(mode) {
+      const self = this;
+      const questionsByNumber = {};
+      (AppState.currentExercise.content.questions || []).forEach(function(q) { questionsByNumber[q.number] = q; });
+      document.querySelectorAll('.reading-type1-gap').forEach(function(gap) {
+        const numberEl = gap.querySelector('.reading-type1-gap-number');
+        if (!numberEl) return;
+        const match = numberEl.textContent.match(/\((\d+)\)/);
+        if (!match) return;
+        const qNum = parseInt(match[1], 10);
+        if (qNum === 0) return;
+        const question = questionsByNumber[qNum];
+        if (!question) return;
+        const studentValue = gap.getAttribute('data-student-value') || '_____';
+        const correctValue = gap.getAttribute('data-correct-value') || self.getCorrectText(question) || '';
+        const checkClass = gap.getAttribute('data-check-class') || 'reading-type1-incorrect';
+        const answerEl = gap.querySelector('.reading-type1-answered-word');
+        if (!answerEl) return;
+        if (mode === 'correct') {
+          answerEl.textContent = correctValue;
+          answerEl.classList.remove('reading-type1-correct', 'reading-type1-incorrect');
+          answerEl.classList.add('reading-type1-show-correct');
+          answerEl.removeAttribute('data-correct');
+        } else {
+          answerEl.textContent = studentValue;
+          answerEl.classList.remove('reading-type1-show-correct', 'reading-type1-correct', 'reading-type1-incorrect');
+          answerEl.classList.add(checkClass);
+          if (checkClass === 'reading-type1-incorrect') {
+            answerEl.setAttribute('data-correct', '✓ ' + correctValue);
+          } else {
+            answerEl.removeAttribute('data-correct');
+          }
+        }
+      });
     }
   };
 })();
