@@ -89,6 +89,13 @@
       return out;
     },
 
+    _getRouteDisplayTexts: function(routes) {
+      if (!Array.isArray(routes)) return [];
+      return routes.map(function(route) {
+        return [route?.p1, route?.p2].filter(Boolean).join(' ').trim();
+      }).filter(Boolean);
+    },
+
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
       if (qNum === 0) {
         return this._renderExample(question);
@@ -156,11 +163,10 @@
     },
 
     _renderAnswersPanel: function(question, qNum, beforeGap, afterGap) {
-      const routes = question.routes || [];
-      if (routes.length === 0) return '';
+      const routeTexts = this._getRouteDisplayTexts(question.routes || []);
+      if (routeTexts.length === 0) return '';
       let routesHTML = '';
-      routes.forEach(function(route, idx) {
-        const full = [route.p1, route.p2].filter(Boolean).join(' ');
+      routeTexts.forEach(function(full, idx) {
         routesHTML += `<div class="reading-type4-answer-route">` +
           `<span class="reading-type4-answer-route-num">${idx + 1}.</span>` +
           `<span class="reading-type4-answer-route-text">${beforeGap} <strong>${full}</strong> ${afterGap}</span>` +
@@ -240,10 +246,8 @@
     },
     
     _formatRoutesDisplay: function(routes) {
-      if (!Array.isArray(routes) || routes.length === 0) return '';
-      // Show first route as representative correct answer
-      var r = routes[0];
-      return ((r.p1 || '') + ' ' + (r.p2 || '')).trim();
+      var routeTexts = this._getRouteDisplayTexts(routes);
+      return routeTexts[0] || '';
     },
     
     evaluateTransformation: function(userAnswer, routes) {
@@ -360,7 +364,7 @@
         var wrap = input.closest('.reading-type4-inline-wrap');
         if (!wrap) return;
         if (mode === 'correct') {
-          var alternatives = self._buildRouteAlternatives(routes);
+          var alternatives = self._getRouteDisplayTexts(routes);
           input.value = alternatives[0] || '';
           input.classList.remove('reading-type4-correct', 'reading-type4-partial', 'reading-type4-incorrect');
           input.classList.add('cu-input-show-correct');
