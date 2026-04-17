@@ -2531,6 +2531,17 @@
       if (sec) BentoGrid._saveCuExSectionState(sec);
     },
 
+    _getCuDragCategoryZoneMap: function(exEl) {
+      var map = {};
+      if (!exEl) return map;
+      exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
+        var category = zone.getAttribute('data-category');
+        if (!category) return;
+        map[category] = zone;
+      });
+      return map;
+    },
+
     _dragCatSrc: null,
 
     // --- Multiple-choice passage renderer (exercise D style, like reading part 1) ---
@@ -5871,15 +5882,13 @@
         // Drag-category exercise: move each chip into its correct category
         sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
           var pool = exEl.querySelector('.cu-drag-pool');
-          var zonesByCategory = {};
-          exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
-            zonesByCategory[zone.getAttribute('data-category') || ''] = zone;
-          });
+          var zonesByCategory = BentoGrid._getCuDragCategoryZoneMap(exEl);
           exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
             var currentZone = chip.closest('.cu-drag-zone');
-            chip.setAttribute('data-saved-category', currentZone ? (currentZone.getAttribute('data-category') || '') : CU_DRAG_POOL_MARKER);
+            var currentCat = currentZone ? currentZone.getAttribute('data-category') : '';
+            chip.setAttribute('data-saved-category', currentCat || CU_DRAG_POOL_MARKER);
             var expectedCat = chip.getAttribute('data-answer') || '';
-            var targetZone = zonesByCategory[expectedCat] || null;
+            var targetZone = expectedCat ? (zonesByCategory[expectedCat] || null) : null;
             var targetItems = targetZone ? targetZone.querySelector('.cu-drag-zone-items') : null;
             if (targetItems) targetItems.appendChild(chip);
             else if (pool) pool.appendChild(chip);
@@ -6088,17 +6097,14 @@
         // Drag-category exercise: restore chips to the student's saved placement
         sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
           var pool = exEl.querySelector('.cu-drag-pool');
-          var zonesByCategory = {};
-          exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
-            zonesByCategory[zone.getAttribute('data-category') || ''] = zone;
-          });
+          var zonesByCategory = BentoGrid._getCuDragCategoryZoneMap(exEl);
           exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
             if (chip.hasAttribute('data-saved-category')) {
               var savedCat = chip.getAttribute('data-saved-category');
               if (savedCat === CU_DRAG_POOL_MARKER) {
                 if (pool) pool.appendChild(chip);
               } else {
-                var targetZone = zonesByCategory[savedCat] || null;
+                var targetZone = savedCat ? (zonesByCategory[savedCat] || null) : null;
                 var targetItems = targetZone ? targetZone.querySelector('.cu-drag-zone-items') : null;
                 if (targetItems) targetItems.appendChild(chip);
                 else if (pool) pool.appendChild(chip);
