@@ -37,6 +37,7 @@
     sectionElapsedSeconds: 0,
     explanationMode: false,
     explanationActiveQuestion: null,
+    answerViewMode: 'student',
     // Auth state
     isAuthenticated: false,
     currentUser: null,

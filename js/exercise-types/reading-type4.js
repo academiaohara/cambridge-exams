@@ -2,7 +2,93 @@
 // Key word transformations - Part 4
 
 (function() {
+  var MAX_OPTIONAL_EXPANSION_DEPTH = 10;
+
   window.ReadingType4 = {
+    _clearAltBadge: function(input) {
+      if (input._cuAltBadge) {
+        input._cuAltBadge.remove();
+        input._cuAltBadge = null;
+      }
+      if (input._cuAltClickHandler) {
+        input.removeEventListener('click', input._cuAltClickHandler);
+        input._cuAltClickHandler = null;
+      }
+      input.removeAttribute('data-alt-answers');
+      input.removeAttribute('data-alt-idx');
+    },
+
+    _attachAltBadge: function(input, alternatives) {
+      this._clearAltBadge(input);
+      if (!alternatives || alternatives.length <= 1) return;
+      input.setAttribute('data-alt-answers', JSON.stringify(alternatives));
+      input.setAttribute('data-alt-idx', '0');
+      var badge = document.createElement('span');
+      badge.className = 'cu-alt-badge';
+      badge.textContent = '1/' + alternatives.length;
+      badge.title = 'Click to see next solution';
+      var self = this;
+      badge.addEventListener('click', function() { self._cycleAltInput(input); });
+      input._cuAltBadge = badge;
+      input.closest('.reading-type4-inline-wrap').appendChild(badge);
+      input._cuAltClickHandler = function() { self._cycleAltInput(input); };
+      input.addEventListener('click', input._cuAltClickHandler);
+      input.readOnly = true;
+    },
+
+    _cycleAltInput: function(input) {
+      var alternatives = JSON.parse(input.getAttribute('data-alt-answers') || '[]');
+      if (!alternatives.length) return;
+      var idx = (parseInt(input.getAttribute('data-alt-idx') || '0', 10) + 1) % alternatives.length;
+      input.setAttribute('data-alt-idx', String(idx));
+      input.value = alternatives[idx] || '';
+      this.resizeInput(input);
+      if (input._cuAltBadge) input._cuAltBadge.textContent = (idx + 1) + '/' + alternatives.length;
+    },
+
+    _expandOptionals: function(text) {
+      var results = [String(text || '').trim()];
+      var re = /\(([^)]*)\)/;
+      var guard = MAX_OPTIONAL_EXPANSION_DEPTH;
+      while (guard-- > 0) {
+        var changed = false;
+        var next = [];
+        results.forEach(function(candidate) {
+          var match = candidate.match(re);
+          if (!match) {
+            next.push(candidate.replace(/\s+/g, ' ').trim());
+            return;
+          }
+          changed = true;
+          var before = candidate.substring(0, match.index);
+          var inside = match[1];
+          var after = candidate.substring(match.index + match[0].length);
+          var withInside = (before + inside + after).replace(/\s+/g, ' ').trim();
+          var withoutInside = (before + after).replace(/\s+/g, ' ').trim();
+          if (withInside) next.push(withInside);
+          if (withoutInside && withoutInside !== withInside) next.push(withoutInside);
+        });
+        results = next;
+        if (!changed) break;
+      }
+      return results.filter(Boolean);
+    },
+
+    _buildRouteAlternatives: function(routes) {
+      if (!Array.isArray(routes)) return [];
+      var out = [];
+      var expandOptionals = this._expandOptionals.bind(this);
+      routes.forEach(function(route) {
+        var full = [route.p1, route.p2].filter(Boolean).join(' ');
+        String(full).split('/').forEach(function(part) {
+          expandOptionals(part).forEach(function(opt) {
+            if (opt && out.indexOf(opt) === -1) out.push(opt);
+          });
+        });
+      });
+      return out;
+    },
+
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
       if (qNum === 0) {
         return this._renderExample(question);
@@ -17,9 +103,11 @@
         const colorClass = result.score === 2 ? 'reading-type4-correct' : result.score === 1 ? 'reading-type4-partial' : 'reading-type4-incorrect';
         const displayCorrect = this._formatRoutesDisplay(question.routes);
         const escapedCorrect = String(displayCorrect).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        const dataAttr = result.score < 2 ? ` data-correct="✓ ${escapedCorrect}"` : '';
+        const dataAttr = result.score < 2 ? ` data-correct="✓ ${escapedCorrect}" data-correct-label="✓ ${escapedCorrect}"` : '';
+        const escapedStudent = String(userAnswer || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const escapedRoutes = String(JSON.stringify(question.routes || [])).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
         gapHTML = `<span class="reading-type4-inline-wrap ${colorClass}${result.score < 2 ? ' incorrect' : ''}"${dataAttr}>` +
-          `<input type="text" class="reading-type4-inline-input gap-input ${colorClass}" data-question="${qNum}" value="${userAnswer || ''}" disabled>` +
+          `<input type="text" class="reading-type4-inline-input gap-input ${colorClass}" data-question="${qNum}" data-student-value="${escapedStudent}" data-check-class="${colorClass}" data-correct-routes="${escapedRoutes}" value="${userAnswer || ''}" disabled>` +
           `</span>`;
         answersPanel = this._renderAnswersPanel(question, qNum, beforeGap, afterGap);
       } else {
@@ -225,6 +313,10 @@
           input.classList.add(colorClass);
           input.disabled = true;
           this.resizeInput(input);
+          input.setAttribute('data-student-value', userAnswer || '');
+          input.setAttribute('data-check-class', colorClass);
+          input.setAttribute('data-correct-routes', JSON.stringify(q.routes || []));
+          this._clearAltBadge(input);
           if (!isCorrect) {
             const secondDiv = input.closest('.reading-type4-second');
             // Remove any leftover correction text elements
@@ -238,6 +330,7 @@
               const displayCorrect = this._formatRoutesDisplay(q.routes);
               const escapedCorrect = String(displayCorrect).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
               wrap.setAttribute('data-correct', '✓ ' + escapedCorrect);
+              wrap.setAttribute('data-correct-label', '✓ ' + escapedCorrect);
             }
           }
           // Inject answers panel into the question card
@@ -255,6 +348,47 @@
       }
       
       return totalScore;
+    },
+
+    setAnswerMode: function(mode) {
+      var self = this;
+      document.querySelectorAll('.reading-type4-inline-input[data-question]').forEach(function(input) {
+        var studentValue = input.getAttribute('data-student-value') || '';
+        var checkClass = input.getAttribute('data-check-class') || '';
+        var routes = [];
+        try { routes = JSON.parse(input.getAttribute('data-correct-routes') || '[]'); } catch (e) { routes = []; }
+        var wrap = input.closest('.reading-type4-inline-wrap');
+        if (!wrap) return;
+        if (mode === 'correct') {
+          var alternatives = self._buildRouteAlternatives(routes);
+          input.value = alternatives[0] || '';
+          input.classList.remove('reading-type4-correct', 'reading-type4-partial', 'reading-type4-incorrect');
+          input.classList.add('cu-input-show-correct');
+          wrap.classList.remove('reading-type4-correct', 'reading-type4-partial', 'reading-type4-incorrect', 'incorrect');
+          wrap.classList.add('reading-type4-show-correct');
+          wrap.removeAttribute('data-correct');
+          self._attachAltBadge(input, alternatives);
+        } else {
+          input.value = studentValue;
+          input.classList.remove('cu-input-show-correct');
+          input.classList.remove('reading-type4-correct', 'reading-type4-partial', 'reading-type4-incorrect');
+          wrap.classList.remove('reading-type4-show-correct');
+          wrap.classList.remove('reading-type4-correct', 'reading-type4-partial', 'reading-type4-incorrect', 'incorrect');
+          if (checkClass) {
+            input.classList.add(checkClass);
+            wrap.classList.add(checkClass);
+            if (checkClass !== 'reading-type4-correct') {
+              wrap.classList.add('incorrect');
+              var correctLabel = wrap.getAttribute('data-correct-label');
+              if (correctLabel) wrap.setAttribute('data-correct', correctLabel);
+            } else {
+              wrap.removeAttribute('data-correct');
+            }
+          }
+          self._clearAltBadge(input);
+        }
+        self.resizeInput(input);
+      });
     }
   };
 })();
