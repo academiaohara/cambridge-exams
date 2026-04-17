@@ -1283,8 +1283,9 @@
           html += '<div class="cu-section cu-exercise" id="' + secId + '">' +
             '<div class="cu-section-title">' + _mi('edit_note') + ' Exercise ' + self._escapeHTML(key) + ': ' + self._escapeHTML(ex.title || '') + '</div>';
           if (ex.instructions) html += '<div class="cu-ex-instructions">' + _bold(ex.instructions) + '</div>';
-          if (ex.type !== 'drag-category') html += self._renderCuWordBank(ex.words);
           var questions = ex.questions || [];
+          var isWordTickExercise = !questions.length && ex.words && ex.words.length && ex.answer;
+          if (ex.type !== 'drag-category' && !isWordTickExercise) html += self._renderCuWordBank(ex.words);
 
           if (ex.type === 'grouped') {
             html += self._renderCuGroupedExercise(ex, idBase, secId);
@@ -2206,7 +2207,7 @@
         var escaped = self._escapeHTML(sentence);
         // Phase 1: detect (N) ...... FIXED_TEXT ...... and render a split two-slot pill
         escaped = escaped.replace(
-          /\((\d+)\)\s*(?:_{6,}|\u2026{2,}|\.{6,})\s*([^.…_]+?)\s*(?:_{6,}|\u2026{2,}|\.{6,})/g,
+          /\((\d+)\)\s*(?:_{6,}|\u2026{2,}|\.{6,})\s*([^.…_()]+?)\s*(?:_{6,}|\u2026{2,}|\.{6,})/g,
           function(_, num, midText) {
             var gapNum = parseInt(num);
             var pillId = idBase + '-mcil-' + gapNum;
@@ -2329,7 +2330,7 @@
         titleHtml +
         '<div class="cu-passage-text">' + passageHtml + '</div>' +
         '</div>';
-      if (questions.length) html += self._renderCuExFooter(secId);
+      if (questions.length || (ex.answers && ex.answers.length)) html += self._renderCuExFooter(secId);
       return html;
     },
 

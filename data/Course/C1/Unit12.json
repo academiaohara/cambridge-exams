@@ -944,7 +944,7 @@
           },
           {
             "sentence": "The mountain gorilla is becoming increasingly **scarce** due to habitat loss and poaching.",
-            "answer": "✓"
+            "answer": "OK"
           },
           {
             "sentence": "Biologists have recently described a previously unknown **instinct** of butterfly living deep in the rainforest.",
@@ -960,7 +960,7 @@
           "harvest",
           "instinct",
           "resource",
-          "✓"
+          "OK"
         ]
       },
       "E": {
@@ -1023,8 +1023,7 @@
           },
           {
             "sentence": "After a forest fire, temperatures heat (3) …………… sharply during the day and cool (4) …………… rapidly once the sun sets.",
-            "answer": "up",
-            "answer2": "down"
+            "answer": "up, down"
           },
           {
             "sentence": "The timber industry argues we need to get (5) …………… the available supplies before exploring greener alternatives.",
@@ -1460,7 +1459,7 @@
       },
       "P": {
         "title": "The suffix -y",
-        "instructions": "The suffix -y, as in risky, can be added to some nouns and verbs to form adjectives. Mark with OK the words which can have -y added to them to make adjectives. You may need to double a final letter or remove a final -e.",
+        "instructions": "The suffix -y, as in risky, can be added to some nouns and verbs to form adjectives. Select the words by clicking them.",
         "words": [
           "brain",
           "bump",
