@@ -58,6 +58,7 @@
           </span>
         `;
       }
+      // Intentionally render checked unanswered gaps as "_____" to allow toggle mode on restored attempts.
       if (isChecked) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
         const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';

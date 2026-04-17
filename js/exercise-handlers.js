@@ -657,6 +657,7 @@
     },
     
     clearAllCorrections: function() {
+      var altBadgeContainersSelector = this._ALT_BADGE_CONTAINERS_SELECTOR;
       // Remove correction classes from gap boxes, inputs, labels, options
       document.querySelectorAll('.correct, .incorrect, .checked, .correct-answer, .cu-input-show-correct').forEach(function(el) {
         el.classList.remove('correct', 'incorrect', 'checked', 'correct-answer', 'cu-input-show-correct');
@@ -673,7 +674,7 @@
       });
 
       document.querySelectorAll('.cu-alt-badge').forEach(function(badge) {
-        if (badge.closest(ExerciseHandlers._ALT_BADGE_CONTAINERS_SELECTOR)) {
+        if (badge.closest(altBadgeContainersSelector)) {
           badge.remove();
         }
       });

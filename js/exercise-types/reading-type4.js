@@ -2,7 +2,7 @@
 // Key word transformations - Part 4
 
 (function() {
-  var MAX_OPTIONAL_EXPANSIONS = 10;
+  var MAX_EXPANSION_ITERATIONS = 10;
 
   window.ReadingType4 = {
     _clearAltBadge: function(input) {
@@ -49,7 +49,7 @@
     _expandOptionals: function(text) {
       var results = [String(text || '').trim()];
       var re = /\(([^)]*)\)/;
-      var guard = MAX_OPTIONAL_EXPANSIONS;
+      var guard = MAX_EXPANSION_ITERATIONS;
       while (guard-- > 0) {
         var changed = false;
         var next = [];
@@ -77,10 +77,11 @@
     _buildRouteAlternatives: function(routes) {
       if (!Array.isArray(routes)) return [];
       var out = [];
+      var expandOptionals = this._expandOptionals.bind(this);
       routes.forEach(function(route) {
         var full = [route.p1, route.p2].filter(Boolean).join(' ');
         String(full).split('/').forEach(function(part) {
-          window.ReadingType4._expandOptionals(part).forEach(function(opt) {
+          expandOptionals(part).forEach(function(opt) {
             if (opt && out.indexOf(opt) === -1) out.push(opt);
           });
         });
