@@ -200,14 +200,15 @@
         var parts = tipsData.parts;
         var partKeys = Object.keys(parts).sort(function (a, b) { return parseInt(a) - parseInt(b); });
 
-        html += '<div class="tips-parts-nav">';
+        html += '<div class="tips-detail-layout">';
+        html += '<aside class="tips-parts-nav" aria-label="Tips sections">';
         partKeys.forEach(function (key) {
           html += '<button class="tips-part-btn" data-part="' + key + '" onclick="TipsPage._showPart(\'' + key + '\')">' + (parts[key].title || ('Part ' + key)) + '</button>';
         });
         if (tipsData.general && tipsData.general.length) {
           html += '<button class="tips-part-btn" data-part="general" onclick="TipsPage._showPart(\'general\')">General</button>';
         }
-        html += '</div>';
+        html += '</aside>';
 
         html += '<div class="tips-parts-content">';
         partKeys.forEach(function (key, idx) {
@@ -234,6 +235,7 @@
           html += '</div>';
         }
 
+        html += '</div>';
         html += '</div>';
 
         // First part key stored as data attribute for post-render activation

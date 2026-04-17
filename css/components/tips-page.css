@@ -1,7 +1,7 @@
 /* css/components/tips-page.css */
 
 .tips-page {
-  max-width: 900px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 24px 16px 48px;
   font-family: 'Nunito', sans-serif;
@@ -14,6 +14,11 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 28px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
 .tips-back-btn {
@@ -22,7 +27,7 @@
   height: 40px;
   border: none;
   border-radius: 50%;
-  background: #f1f5f9;
+  background: #eef2ff;
   color: #475569;
   cursor: pointer;
   display: flex;
@@ -33,7 +38,7 @@
 }
 
 .tips-back-btn:hover {
-  background: #e2e8f0;
+  background: #dbeafe;
   color: #1e293b;
 }
 
@@ -73,14 +78,17 @@
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.15s;
   font-family: inherit;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
 }
 
 .tips-level-tab:hover,
 .tips-level-tab.active {
   background: var(--tips-level-color, #1e9d8e);
   color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--tips-level-color, #1e9d8e) 30%, transparent);
 }
 
 /* ── Skills grid (home) ──────────────────────────────────────────── */
@@ -97,10 +105,10 @@
   gap: 14px;
   padding: 18px 16px;
   background: #fff;
-  border: 1.5px solid #e9ecf0;
+  border: 1px solid #e2e8f0;
   border-radius: 14px;
   cursor: pointer;
-  transition: box-shadow 0.18s, transform 0.15s, border-color 0.15s;
+  transition: box-shadow 0.18s, transform 0.15s, border-color 0.15s, background 0.15s;
   position: relative;
   overflow: hidden;
 }
@@ -117,9 +125,10 @@
 }
 
 .tips-skill-card:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12);
   transform: translateY(-2px);
   border-color: var(--tips-skill-color, #1e9d8e);
+  background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
 }
 
 .tips-skill-card:focus {
@@ -217,46 +226,70 @@
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
 }
 
 .tips-level-pill:hover,
 .tips-level-pill.active {
   background: var(--tips-level-color, #1e9d8e);
   color: #fff;
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--tips-level-color, #1e9d8e) 28%, transparent);
 }
 
-/* ── Parts navigation tabs ───────────────────────────────────────── */
+/* ── Detail layout ──────────────────────────────────────────────── */
+
+.tips-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(190px, 240px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+/* ── Parts navigation sidebar ───────────────────────────────────── */
 
 .tips-parts-nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 8px;
-  margin-bottom: 24px;
+  position: sticky;
+  top: 90px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
 }
 
 .tips-part-btn {
-  padding: 7px 16px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
   border-radius: 8px;
-  border: 1.5px solid #e2e8f0;
+  border: 1px solid #e2e8f0;
   background: #fff;
   color: #475569;
   font-size: 0.84rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
   font-family: inherit;
 }
 
 .tips-part-btn:hover {
   border-color: #94a3b8;
   background: #f8fafc;
+  transform: translateX(2px);
 }
 
 .tips-part-btn.active {
   background: var(--primary, #2D2E5F);
   color: #fff;
-  border-color: transparent;
+  border-color: var(--primary, #2D2E5F);
+}
+
+.tips-parts-content {
+  min-width: 0;
 }
 
 /* ── Part section ────────────────────────────────────────────────── */
@@ -264,9 +297,10 @@
 .tips-part-section,
 .tips-simple-section {
   background: #fff;
-  border: 1.5px solid #e9ecf0;
+  border: 1px solid #e2e8f0;
   border-radius: 14px;
   padding: 24px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
 .tips-part-title {
@@ -294,6 +328,9 @@
   font-size: 0.95rem;
   color: #334155;
   line-height: 1.55;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f8fafc;
 }
 
 .tips-list-icon {
@@ -309,6 +346,9 @@
   color: #64748b;
   padding: 60px 20px;
   font-size: 1rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
 }
 
 .tips-error {
@@ -316,6 +356,9 @@
   color: #ef4444;
   padding: 40px 20px;
   font-size: 0.95rem;
+  background: #fff;
+  border: 1px solid #fecaca;
+  border-radius: 14px;
 }
 
 /* ── Responsive ──────────────────────────────────────────────────── */
@@ -329,13 +372,29 @@
     grid-template-columns: 1fr;
   }
 
+  .tips-page-header {
+    padding: 12px;
+    margin-bottom: 18px;
+  }
+
+  .tips-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
   .tips-parts-nav {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 6px;
+    padding: 8px;
   }
 
   .tips-part-btn {
     font-size: 0.78rem;
     padding: 6px 11px;
+    width: auto;
+    text-align: center;
   }
 
   .tips-part-section,
