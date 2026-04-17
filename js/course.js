@@ -4,6 +4,7 @@
 (function() {
   var CU_PAGE_SIZE = 4; // max items per page in paginated course exercises (balanced 4+4 for 8-item sections)
   var CU_MC_BLANK = '<span class="cu-mc-blank">&#9135;&#9135;&#9135;&#9135;&#9135;</span>';
+  var CU_DRAG_POOL_MARKER = '__POOL__';
 
   Object.assign(window.BentoGrid, {
     // Extract display text from an MC option string like "A special" or "A. special"
@@ -2029,6 +2030,19 @@
           item.style.cursor = '';
         });
       }
+      // Reset drag-category exercises: move chips back to pool and re-enable drag
+      sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
+        var pool = exEl.querySelector('.cu-drag-pool');
+        exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
+          zone.classList.remove('cu-drag-zone-over');
+        });
+        exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
+          chip.classList.remove('cu-drag-chip-correct', 'cu-drag-chip-incorrect', 'cu-drag-chip-unplaced');
+          chip.setAttribute('draggable', 'true');
+          chip.style.cursor = '';
+          if (pool) pool.appendChild(chip);
+        });
+      });
       // Reset word-bank used state
       sec.querySelectorAll('.cu-wordbank-item').forEach(function(item) {
         item.classList.remove('cu-wordbank-used');
@@ -2515,6 +2529,17 @@
       }
       var sec = chip.closest('.cu-section');
       if (sec) BentoGrid._saveCuExSectionState(sec);
+    },
+
+    _getCuDragCategoryZoneMap: function(exEl) {
+      var map = {};
+      if (!exEl) return map;
+      exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
+        var category = zone.getAttribute('data-category');
+        if (!category) return;
+        map[category] = zone;
+      });
+      return map;
     },
 
     _dragCatSrc: null,
@@ -5854,6 +5879,25 @@
           BentoGrid._attachAltBadge(inp, alts);
         });
 
+        // Drag-category exercise: move each chip into its correct category
+        sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
+          var pool = exEl.querySelector('.cu-drag-pool');
+          var zonesByCategory = BentoGrid._getCuDragCategoryZoneMap(exEl);
+          exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
+            var currentZone = chip.closest('.cu-drag-zone');
+            var currentCat = currentZone ? currentZone.getAttribute('data-category') : '';
+            chip.setAttribute('data-saved-category', currentCat || CU_DRAG_POOL_MARKER);
+            var expectedCat = chip.getAttribute('data-answer') || '';
+            var targetZone = expectedCat ? (zonesByCategory[expectedCat] || null) : null;
+            var targetItems = targetZone ? targetZone.querySelector('.cu-drag-zone-items') : null;
+            if (targetItems) targetItems.appendChild(chip);
+            else if (pool) pool.appendChild(chip);
+            chip.classList.remove('cu-drag-chip-correct', 'cu-drag-chip-incorrect', 'cu-drag-chip-unplaced');
+            chip.setAttribute('draggable', 'false');
+            chip.style.cursor = 'default';
+          });
+        });
+
         // Matching exercise: show correct order in blue
         var matchExercise = sec.querySelector('.cu-match-exercise');
         if (matchExercise) {
@@ -6049,6 +6093,34 @@
           });
           matchExercise.removeAttribute('data-saved-letters');
         }
+
+        // Drag-category exercise: restore chips to the student's saved placement
+        sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
+          var pool = exEl.querySelector('.cu-drag-pool');
+          var zonesByCategory = BentoGrid._getCuDragCategoryZoneMap(exEl);
+          exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
+            if (chip.hasAttribute('data-saved-category')) {
+              var savedCat = chip.getAttribute('data-saved-category');
+              if (savedCat === CU_DRAG_POOL_MARKER) {
+                if (pool) pool.appendChild(chip);
+              } else {
+                var targetZone = savedCat ? (zonesByCategory[savedCat] || null) : null;
+                var targetItems = targetZone ? targetZone.querySelector('.cu-drag-zone-items') : null;
+                if (targetItems) targetItems.appendChild(chip);
+                else if (pool) pool.appendChild(chip);
+              }
+              chip.removeAttribute('data-saved-category');
+            }
+            chip.classList.remove('cu-drag-chip-correct', 'cu-drag-chip-incorrect', 'cu-drag-chip-unplaced');
+            if (!wasChecked) {
+              chip.setAttribute('draggable', 'true');
+              chip.style.cursor = '';
+            } else {
+              chip.setAttribute('draggable', 'false');
+              chip.style.cursor = 'default';
+            }
+          });
+        });
 
         // Restore MC passage gaps to their saved state
         sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
