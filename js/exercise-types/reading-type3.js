@@ -64,21 +64,22 @@
         const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
         const escapedCorrect = String(question.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         const answerText = userAnswer || '_____';
-        const escapedStudent = String(answerText).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const escapedAnswer = this._escapeHtml(answerText);
         const dataAttr = !isCorrect ? ` data-correct="✓ ${escapedCorrect}"` : '';
         return `
-          <span class="reading-type3-gap-inline${!isCorrect ? ' incorrect' : ''}"${dataAttr} data-student-value="${escapedStudent}" data-correct-raw="${escapedCorrect}" data-check-class="${colorClass}">
+          <span class="reading-type3-gap-inline${!isCorrect ? ' incorrect' : ''}"${dataAttr} data-student-value="${escapedAnswer}" data-correct-raw="${escapedCorrect}" data-check-class="${colorClass}">
             <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered-word ${colorClass}">${answerText}</span>
+            <span class="reading-type3-answered-word ${colorClass}">${escapedAnswer}</span>
           </span>
         `;
       }
       
       if (userAnswer) {
+        const escapedAnswer = this._escapeHtml(userAnswer);
         return `
           <span class="reading-type3-gap-inline">
             <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(${qNum})">${userAnswer}</span>
+            <span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(${qNum})">${escapedAnswer}</span>
           </span>
         `;
       }
@@ -95,32 +96,6 @@
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     },
 
-    _getContextAround: function(text, qNum) {
-      if (!text) return { before: '', after: '' };
-      var gapMarker = '(' + qNum + ')';
-      var paragraphs = text.split('||');
-      var targetPara = null;
-      for (var i = 0; i < paragraphs.length; i++) {
-        if (paragraphs[i].indexOf(gapMarker) !== -1) {
-          targetPara = paragraphs[i];
-          break;
-        }
-      }
-      if (!targetPara) return { before: '', after: '' };
-      var gapPos = targetPara.indexOf(gapMarker);
-      var beforeText = targetPara.substring(0, gapPos);
-      var prevQMatch = beforeText.match(/^[\s\S]*\(\d+\)/);
-      if (prevQMatch) {
-        beforeText = beforeText.substring(prevQMatch[0].length);
-      }
-      var afterText = targetPara.substring(gapPos + gapMarker.length);
-      var nextQMatch = afterText.match(/\(\d+\)/);
-      if (nextQMatch) {
-        afterText = afterText.substring(0, nextQMatch.index);
-      }
-      return { before: this._escapeHtml(beforeText.trim()), after: this._escapeHtml(afterText.trim()) };
-    },
-
     openModal: function(qNum) {
       const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
       if (!question) return;
@@ -132,19 +107,13 @@
       const body = document.getElementById('modal-body');
       
       const currentAnswer = AppState.currentExercise.answers?.[qNum] || '';
-      const ctx = this._getContextAround(AppState.currentExercise.content.text, qNum);
+      const escapedCurrentAnswer = this._escapeHtml(currentAnswer);
+      const escapedWord = this._escapeHtml(question.word || '');
 
       let html = '<div class="modal-header"><div class="modal-header-row"><span class="modal-q-circle">' + qNum + '</span></div></div>';
-      if (ctx.before || ctx.after) {
-        html += '<div class="rt3-modal-context">';
-        if (ctx.before) html += '<span class="rt3-modal-context-text">' + ctx.before + '</span> ';
-        html += '<span class="rt3-modal-context-gap">(' + qNum + ') .......... <span class="rt3-modal-context-word">(' + question.word + ')</span></span>';
-        if (ctx.after) html += ' <span class="rt3-modal-context-text">' + ctx.after + '</span>';
-        html += '</div>';
-      }
       html += '<div class="reading-type3-input-word-row">';
-      html += '<input type="text" class="reading-type3-modal-input" id="type3-modal-input" value="' + currentAnswer + '" placeholder="..." autofocus>';
-      html += '<span class="reading-type3-word-badge">' + question.word + '</span>';
+      html += '<input type="text" class="reading-type3-modal-input" id="type3-modal-input" value="' + escapedCurrentAnswer + '" placeholder="..." autofocus>';
+      html += '<span class="reading-type3-word-badge">' + escapedWord + '</span>';
       html += '</div>';
       html += '<div class="reading-type3-modal-actions">';
       html += '<button class="opt-btn" onclick="ReadingType3.submitAnswer(' + qNum + ')">' + 'Confirm' + '</button>';
@@ -169,19 +138,19 @@
     submitAnswer: function(qNum) {
       var inp = document.getElementById('type3-modal-input');
       var value = inp ? inp.value : '';
+      var escapedValue = this._escapeHtml(value);
       
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = value;
       
       // Update the gap in place
-      var question = AppState.currentExercise.content.questions.find(function(q) { return q.number === qNum; });
       var gaps = document.querySelectorAll('.reading-type3-gap-inline');
       gaps.forEach(function(gap) {
         var numSpan = gap.querySelector('.reading-type3-gap-number');
         if (numSpan && numSpan.textContent.trim() === '(' + qNum + ')') {
           if (value.trim()) {
             gap.innerHTML = '<span class="reading-type3-gap-number">(' + qNum + ')</span>' +
-              '<span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(' + qNum + ')">' + value + '</span>';
+              '<span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(' + qNum + ')">' + escapedValue + '</span>';
           } else {
             gap.innerHTML = '<span class="reading-type3-gap-number">(' + qNum + ')</span>' +
               '<span class="reading-type3-gap-slot" onclick="ReadingType3.openModal(' + qNum + ')"></span>';
@@ -218,6 +187,7 @@
           const numSpan = gap.querySelector('.reading-type3-gap-number');
           if (numSpan && numSpan.textContent.trim() === `(${q.number})`) {
             const answerText = userAnswer || '_____';
+            const escapedAnswerText = this._escapeHtml(answerText);
             const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
             const escapedCorrect = String(q.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             gap.setAttribute('data-student-value', answerText);
@@ -229,7 +199,7 @@
             else gap.removeAttribute('data-correct');
             gap.innerHTML = `
               <span class="reading-type3-gap-number">(${q.number})</span>
-              <span class="reading-type3-answered-word ${colorClass}">${answerText}</span>
+              <span class="reading-type3-answered-word ${colorClass}">${escapedAnswerText}</span>
             `;
           }
         });

@@ -126,18 +126,34 @@
 }
 
 .reading-type3-answered-word {
+  display: inline-block;
+  min-width: 70px;
+  padding: 2px 10px;
+  border: 1.5px solid #c084fc;
+  border-radius: 6px;
+  background: #f3e8ff;
   font-weight: 600;
   font-size: 1.05rem;
-  margin-left: 2px;
+  margin-left: 4px;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .reading-type3-purple {
   color: var(--primary);
+  cursor: pointer;
+}
+
+.reading-type3-purple:hover {
+  background: #ede9fe;
+  border-color: #1E9D8E;
 }
 
 .reading-type3-correct {
   color: var(--correct);
   font-weight: 700;
+  border-color: var(--correct);
+  background: #ecfdf5;
 }
 
 .reading-type3-show-correct {
@@ -150,36 +166,8 @@
   text-decoration: line-through;
   font-weight: 600;
   cursor: help;
-}
-
-/* Context snippet shown above input in modal */
-.rt3-modal-context {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--text-dark);
-  background: #faf5ff;
-  border: 1px solid #e9d5ff;
-  border-radius: 12px;
-  padding: 10px 14px;
-  margin-bottom: 12px;
-}
-
-.rt3-modal-context-text {
-  color: var(--text-dark);
-}
-
-.rt3-modal-context-gap {
-  font-weight: 700;
-  color: #7e22ce;
-  white-space: nowrap;
-}
-
-.rt3-modal-context-word {
-  font-size: 0.85rem;
-  color: #7e22ce;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  border-color: var(--incorrect);
+  background: #fef2f2;
 }
 
 /* Modal styles for word formation */

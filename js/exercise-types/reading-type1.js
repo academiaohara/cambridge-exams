@@ -46,36 +46,6 @@
       `;
     },
     
-    _escapeHtml: function(str) {
-      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    },
-
-    _getContextAround: function(text, qNum) {
-      if (!text) return { before: '', after: '' };
-      var gapMarker = '(' + qNum + ')';
-      var paragraphs = text.split('||');
-      var targetPara = null;
-      for (var i = 0; i < paragraphs.length; i++) {
-        if (paragraphs[i].indexOf(gapMarker) !== -1) {
-          targetPara = paragraphs[i];
-          break;
-        }
-      }
-      if (!targetPara) return { before: '', after: '' };
-      var gapPos = targetPara.indexOf(gapMarker);
-      var beforeText = targetPara.substring(0, gapPos);
-      var prevQMatch = beforeText.match(/^[\s\S]*\(\d+\)/);
-      if (prevQMatch) {
-        beforeText = beforeText.substring(prevQMatch[0].length);
-      }
-      var afterText = targetPara.substring(gapPos + gapMarker.length);
-      var nextQMatch = afterText.match(/\(\d+\)/);
-      if (nextQMatch) {
-        afterText = afterText.substring(0, nextQMatch.index);
-      }
-      return { before: this._escapeHtml(beforeText.trim()), after: this._escapeHtml(afterText.trim()) };
-    },
-
     openOptions: function(qNum) {
       const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
       if (!question) return;
@@ -85,17 +55,8 @@
       
       const overlay = document.getElementById('exercise-modal-overlay');
       const body = document.getElementById('modal-body');
-      
-      const ctx = this._getContextAround(AppState.currentExercise.content.text, qNum);
 
       let optionsHTML = '<div class="modal-header"><div class="modal-header-row"><span class="modal-q-circle">' + qNum + '</span><p>' + 'Select an option' + '</p></div></div>';
-      if (ctx.before || ctx.after) {
-        optionsHTML += '<div class="rt1-modal-context">';
-        if (ctx.before) optionsHTML += '<span class="rt1-modal-context-text">' + ctx.before + '</span> ';
-        optionsHTML += '<span class="rt1-modal-context-gap">(' + qNum + ') ..........</span>';
-        if (ctx.after) optionsHTML += ' <span class="rt1-modal-context-text">' + ctx.after + '</span>';
-        optionsHTML += '</div>';
-      }
       optionsHTML += '<div class="options-grid">';
       
       question.options.forEach(opt => {
