@@ -169,7 +169,31 @@
           if (input) {
             input.classList.add(isCorrect ? 'correct' : 'incorrect');
             input.disabled = true;
-            if (!isCorrect) input.setAttribute('title', `✓ ${correctAnswer}`);
+            if (!isCorrect) {
+              input.setAttribute('title', `✓ ${correctAnswer}`);
+              input.setAttribute('data-student-value', userAnswer || '');
+              input.setAttribute('data-correct-raw', correctAnswer || '');
+              input.setAttribute('data-correct-value', (correctAnswer || '').split(/\s*\/\s*/)[0].trim());
+              input.setAttribute('data-check-class', 'incorrect');
+              const anchor = input.closest('.gap-box') || input;
+              const parent = anchor.parentNode;
+              if (parent) {
+                const existingBtn = parent.querySelector(`.ex-item-toggle-btn[data-question-toggle="${qNum}"]`);
+                if (existingBtn) existingBtn.remove();
+                const toggleBtn = document.createElement('button');
+                toggleBtn.type = 'button';
+                toggleBtn.className = 'ex-item-toggle-btn';
+                toggleBtn.setAttribute('data-question-toggle', String(qNum));
+                toggleBtn.setAttribute('data-mode', 'student');
+                toggleBtn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> Show correct answer';
+                toggleBtn.addEventListener('click', () => {
+                  ExerciseHandlers.toggleInputAnswer(toggleBtn, input, correctAnswer || '');
+                });
+                parent.insertBefore(toggleBtn, anchor.nextSibling);
+              }
+            } else {
+              input.setAttribute('data-check-class', 'correct');
+            }
           }
           break;
           
@@ -181,6 +205,118 @@
           document.querySelector(`select[data-question="${qNum}"]`).disabled = true;
           break;
       }
+    },
+
+    toggleInputAnswer: function(btn, input, correctAnswer) {
+      if (!btn || !input) return;
+      const mode = btn.getAttribute('data-mode') || 'student';
+      const toCorrect = mode === 'student';
+      if (toCorrect) {
+        const alts = this._parseInputAlternatives(correctAnswer);
+        input.disabled = false;
+        input.readOnly = true;
+        input.value = alts[0] || '';
+        input.classList.remove('correct', 'incorrect');
+        input.classList.add('correct-shown', 'ex-input-correct-shown');
+        this._attachInputAltBadge(input, alts);
+        btn.setAttribute('data-mode', 'correct');
+        btn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> Show your answer';
+      } else {
+        this._removeInputAltBadge(input);
+        input.disabled = false;
+        input.readOnly = true;
+        input.value = input.getAttribute('data-student-value') || '';
+        input.classList.remove('correct-shown', 'ex-input-correct-shown');
+        const checkClass = input.getAttribute('data-check-class');
+        if (checkClass) input.classList.add(checkClass);
+        btn.setAttribute('data-mode', 'student');
+        btn.innerHTML = '<span class="material-symbols-outlined">swap_horiz</span> Show correct answer';
+      }
+    },
+
+    _parseInputAlternatives: function(correctAnswer) {
+      const raw = (correctAnswer || '').trim();
+      if (!raw) return [''];
+      const all = [];
+      raw.split(/\s*\/\s*/).forEach(part => {
+        this._expandOptionals(part.trim()).forEach(opt => {
+          if (opt && all.indexOf(opt) === -1) all.push(opt);
+        });
+      });
+      return all.length ? all : [''];
+    },
+
+    _expandOptionals: function(answer) {
+      let results = [answer];
+      const parenRegex = /\(([^)]*)\)/;
+      let maxIter = 10;
+      while (maxIter-- > 0) {
+        let found = false;
+        const next = [];
+        results.forEach(result => {
+          const match = result.match(parenRegex);
+          if (!match) {
+            next.push(result);
+            return;
+          }
+          found = true;
+          const before = result.substring(0, match.index);
+          const inside = match[1];
+          const after = result.substring(match.index + match[0].length);
+          const withInside = (before + inside + after).replace(/\s+/g, ' ').trim();
+          const withoutInside = (before + after).replace(/\s+/g, ' ').trim();
+          next.push(withInside);
+          if (withoutInside !== withInside) next.push(withoutInside);
+        });
+        results = next;
+        if (!found) break;
+      }
+      return results;
+    },
+
+    _attachInputAltBadge: function(input, alts) {
+      this._removeInputAltBadge(input);
+      if (!alts || alts.length <= 1) return;
+      input.setAttribute('data-alt-answers', JSON.stringify(alts));
+      input.setAttribute('data-alt-idx', '0');
+      const badge = document.createElement('span');
+      badge.className = 'ex-alt-badge';
+      badge.textContent = '1/' + alts.length;
+      badge.title = 'Click to see next solution';
+      badge.setAttribute('aria-label', 'Cycle through ' + alts.length + ' alternative solutions');
+      badge.addEventListener('click', function() {
+        ExerciseHandlers._cycleInputAlt(input);
+      });
+      input._exAltBadge = badge;
+      const anchor = input.closest('.gap-box') || input;
+      const parent = anchor.parentNode;
+      if (parent) parent.insertBefore(badge, anchor.nextSibling);
+      input._exAltClickHandler = function() { ExerciseHandlers._cycleInputAlt(input); };
+      input.addEventListener('click', input._exAltClickHandler);
+    },
+
+    _cycleInputAlt: function(input) {
+      const alts = JSON.parse(input.getAttribute('data-alt-answers') || '[]');
+      if (alts.length <= 1) return;
+      const idx = (parseInt(input.getAttribute('data-alt-idx') || '0', 10) + 1) % alts.length;
+      input.setAttribute('data-alt-idx', String(idx));
+      input.value = alts[idx];
+      const badge = input._exAltBadge;
+      if (badge) badge.textContent = (idx + 1) + '/' + alts.length;
+    },
+
+    _removeInputAltBadge: function(input) {
+      if (!input) return;
+      if (input._exAltBadge) {
+        input._exAltBadge.remove();
+        input._exAltBadge = null;
+      }
+      if (input._exAltClickHandler) {
+        input.removeEventListener('click', input._exAltClickHandler);
+        input._exAltClickHandler = null;
+      }
+      input.removeAttribute('data-alt-answers');
+      input.removeAttribute('data-alt-idx');
     },
     
     disableAllInputs: function(partConfig) {
@@ -647,6 +783,21 @@
       document.querySelectorAll('[title^="✓"]').forEach(function(el) {
         el.removeAttribute('title');
       });
+
+      // Remove injected test-mode toggle buttons and alt badges for inputs
+      document.querySelectorAll('.ex-item-toggle-btn, .ex-alt-badge').forEach(function(el) {
+        el.remove();
+      });
+      document.querySelectorAll('input.gap-input, .reading-type2-input, .listening-type2-input').forEach(function(input) {
+        if (ExerciseHandlers && typeof ExerciseHandlers._removeInputAltBadge === 'function') {
+          ExerciseHandlers._removeInputAltBadge(input);
+        }
+        input.classList.remove('correct-shown', 'ex-input-correct-shown');
+        input.removeAttribute('data-student-value');
+        input.removeAttribute('data-correct-value');
+        input.removeAttribute('data-correct-raw');
+        input.removeAttribute('data-check-class');
+      });
     },
     
     resetInputsByType: function(partConfig) {
@@ -694,13 +845,21 @@
             input.value = '';
             input.classList.remove('correct', 'incorrect');
             input.disabled = false;
+            input.readOnly = false;
             input.removeAttribute('title');
+            this._removeInputAltBadge(input);
+            input.classList.remove('correct-shown', 'ex-input-correct-shown');
+            input.removeAttribute('data-student-value');
+            input.removeAttribute('data-correct-value');
+            input.removeAttribute('data-correct-raw');
+            input.removeAttribute('data-check-class');
             const gap = input.closest('.reading-type2-gap, .listening-type2-gap');
             if (gap) {
               gap.classList.remove('incorrect');
               gap.removeAttribute('data-correct');
             }
           });
+          document.querySelectorAll('.ex-item-toggle-btn, .ex-alt-badge').forEach(el => el.remove());
           break;
           
         case 'multiple-choice-text':
