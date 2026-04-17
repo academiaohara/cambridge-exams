@@ -270,6 +270,80 @@
   color: white;
 }
 
+/* Test-mode per-input toggle button (incorrect answers only) */
+.ex-item-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1d4ed8;
+  background: rgba(37, 99, 235, 0.07);
+  border: 1.5px solid rgba(37, 99, 235, 0.25);
+  border-radius: 8px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  margin-top: 6px;
+  font-family: inherit;
+}
+
+.ex-item-toggle-btn:hover {
+  background: rgba(37, 99, 235, 0.13);
+}
+
+.ex-item-toggle-btn .material-symbols-outlined {
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.ex-item-toggle-btn[data-mode="correct"] {
+  color: #065f46;
+  background: rgba(5, 150, 105, 0.08);
+  border-color: rgba(5, 150, 105, 0.28);
+}
+
+.ex-item-toggle-btn[data-mode="correct"]:hover {
+  background: rgba(5, 150, 105, 0.14);
+}
+
+/* Test-mode show-correct input state */
+input.gap-input.ex-input-correct-shown,
+input.gap-input.correct-shown {
+  border-color: #2563eb !important;
+  background: rgba(37, 99, 235, 0.07) !important;
+  color: #1e3a8a !important;
+}
+
+/* Test-mode alt-solution cycle badge */
+.ex-alt-badge {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  background: rgba(37, 99, 235, 0.12);
+  color: #1d4ed8;
+  border: 1.5px solid rgba(37, 99, 235, 0.3);
+  border-radius: 20px;
+  padding: 1px 7px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 0 2px;
+  user-select: none;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  line-height: 1.6;
+}
+
+.ex-alt-badge::before {
+  content: '↻ ';
+}
+
+.ex-alt-badge:hover {
+  background: rgba(37, 99, 235, 0.22);
+  border-color: rgba(37, 99, 235, 0.5);
+}
+
 /* Part-level progress pill */
 .part-score-display {
   background: var(--secondary);
