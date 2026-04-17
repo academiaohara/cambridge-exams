@@ -253,6 +253,7 @@
     _expandOptionals: function(answer) {
       let results = [answer];
       const parenRegex = /\(([^)]*)\)/;
+      // Guard against pathological nested optionals causing an endless expansion loop.
       let maxIter = 10;
       while (maxIter-- > 0) {
         let found = false;
@@ -285,7 +286,7 @@
       input.setAttribute('data-alt-idx', '0');
       const badge = document.createElement('span');
       badge.className = 'ex-alt-badge';
-      badge.textContent = '1/' + alts.length;
+      badge.textContent = `1/${alts.length}`;
       badge.title = 'Click to see next solution';
       badge.setAttribute('aria-label', 'Cycle through ' + alts.length + ' alternative solutions');
       badge.addEventListener('click', function() {
@@ -306,7 +307,7 @@
       input.setAttribute('data-alt-idx', String(idx));
       input.value = alts[idx];
       const badge = input._exAltBadge;
-      if (badge) badge.textContent = (idx + 1) + '/' + alts.length;
+      if (badge) badge.textContent = `${idx + 1}/${alts.length}`;
     },
 
     _removeInputAltBadge: function(input) {
@@ -793,9 +794,7 @@
         el.remove();
       });
       document.querySelectorAll('input.gap-input, .reading-type2-input, .listening-type2-input').forEach(function(input) {
-        if (ExerciseHandlers && typeof ExerciseHandlers._removeInputAltBadge === 'function') {
-          ExerciseHandlers._removeInputAltBadge(input);
-        }
+        ExerciseHandlers._removeInputAltBadge(input);
         input.classList.remove('correct-shown', 'ex-input-correct-shown');
         input.removeAttribute('data-student-value');
         input.removeAttribute('data-correct-value');
