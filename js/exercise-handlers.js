@@ -238,9 +238,13 @@
       const raw = (correctAnswer || '').trim();
       if (!raw) return [''];
       const all = [];
+      const seen = new Set();
       raw.split(/\s*\/\s*/).forEach(part => {
         this._expandOptionals(part.trim()).forEach(opt => {
-          if (opt && all.indexOf(opt) === -1) all.push(opt);
+          if (opt && !seen.has(opt)) {
+            seen.add(opt);
+            all.push(opt);
+          }
         });
       });
       return all.length ? all : [''];
