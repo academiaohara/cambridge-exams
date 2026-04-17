@@ -5873,7 +5873,7 @@
           var pool = exEl.querySelector('.cu-drag-pool');
           exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
             var currentZone = chip.closest('.cu-drag-zone');
-            chip.setAttribute('data-saved-category', currentZone ? (currentZone.getAttribute('data-category') || '') : '');
+            chip.setAttribute('data-saved-category', currentZone ? (currentZone.getAttribute('data-category') || '') : '__POOL__');
             var expectedCat = chip.getAttribute('data-answer') || '';
             var targetZone = null;
             exEl.querySelectorAll('.cu-drag-zone').forEach(function(zone) {
@@ -6088,9 +6088,9 @@
         sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
           var pool = exEl.querySelector('.cu-drag-pool');
           exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
-            var savedCat = chip.getAttribute('data-saved-category');
-            if (savedCat !== null) {
-              if (savedCat === '') {
+            if (chip.hasAttribute('data-saved-category')) {
+              var savedCat = chip.getAttribute('data-saved-category');
+              if (savedCat === '__POOL__') {
                 if (pool) pool.appendChild(chip);
               } else {
                 var targetZone = null;
