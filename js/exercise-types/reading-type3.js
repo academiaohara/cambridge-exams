@@ -90,6 +90,7 @@
     submitAnswer: function(qNum) {
       var inp = document.getElementById('type3-modal-input');
       var value = inp ? inp.value : '';
+      var escapedValue = this._escapeHtml(value);
       
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = value;
@@ -101,8 +102,7 @@
         if (numSpan && numSpan.textContent.trim() === '(' + qNum + ')') {
           if (value.trim()) {
             gap.innerHTML = '<span class="reading-type3-gap-number">(' + qNum + ')</span>' +
-              '<span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(' + qNum + ')"></span>';
-            gap.querySelector('.reading-type3-answered-word').textContent = value;
+              '<span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(' + qNum + ')">' + escapedValue + '</span>';
           } else {
             gap.innerHTML = '<span class="reading-type3-gap-number">(' + qNum + ')</span>' +
               '<span class="reading-type3-gap-slot" onclick="ReadingType3.openModal(' + qNum + ')"></span>';
@@ -139,6 +139,7 @@
           const numSpan = gap.querySelector('.reading-type3-gap-number');
           if (numSpan && numSpan.textContent.trim() === `(${q.number})`) {
             const answerText = userAnswer || '_____';
+            const escapedAnswerText = this._escapeHtml(answerText);
             const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
             const escapedCorrect = String(q.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             gap.className = 'reading-type3-gap-inline' + (!isCorrect ? ' incorrect' : '');
@@ -146,9 +147,8 @@
             else gap.removeAttribute('data-correct');
             gap.innerHTML = `
               <span class="reading-type3-gap-number">(${q.number})</span>
-              <span class="reading-type3-answered-word ${colorClass}"></span>
+              <span class="reading-type3-answered-word ${colorClass}">${escapedAnswerText}</span>
             `;
-            gap.querySelector('.reading-type3-answered-word').textContent = answerText;
           }
         });
       });
