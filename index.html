@@ -112,6 +112,8 @@
         }
 
         .page-skeleton {
+            --page-skeleton-chip-md-width: 120px;
+            --page-skeleton-chip-sm-width: 86px;
             display: grid;
             grid-template-columns: 260px minmax(0, 1fr) 260px;
             gap: 24px;
@@ -136,7 +138,7 @@
         }
 
         .page-skeleton-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: #fff;
             border-radius: 20px;
             box-shadow: 0 4px 20px rgba(45, 46, 95, 0.08);
             border: 1px solid rgba(45, 46, 95, 0.08);
@@ -192,8 +194,8 @@
             animation: shimmer 1.3s linear infinite;
         }
 
-        .page-skeleton-chip-md { width: 120px; }
-        .page-skeleton-chip-sm { width: 86px; }
+        .page-skeleton-chip-md { width: var(--page-skeleton-chip-md-width); }
+        .page-skeleton-chip-sm { width: var(--page-skeleton-chip-sm-width); }
 
         @media (max-width: 1200px) {
             .page-skeleton {
