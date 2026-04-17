@@ -51,18 +51,34 @@
 }
 
 .reading-type1-answered-word {
+  display: inline-block;
+  min-width: 70px;
+  padding: 2px 10px;
+  border: 1.5px solid var(--primary-light);
+  border-radius: 6px;
+  background: #f5f3ff;
   font-weight: 600;
   font-size: 1.05rem;
-  margin-left: 2px;
+  margin-left: 4px;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .reading-type1-purple {
   color: var(--primary);
+  cursor: pointer;
+}
+
+.reading-type1-purple:hover {
+  background: #ede9fe;
+  border-color: var(--primary);
 }
 
 .reading-type1-correct {
   color: var(--correct);
   font-weight: 700;
+  border-color: var(--correct);
+  background: #ecfdf5;
 }
 
 .reading-type1-incorrect {
@@ -71,6 +87,8 @@
   font-weight: 600;
   cursor: help;
   position: relative;
+  border-color: var(--incorrect);
+  background: #fef2f2;
 }
 
 .reading-type1-incorrect[data-correct]::after {
@@ -95,28 +113,6 @@
 
 .reading-type1-incorrect[data-correct]:hover::after {
   display: block;
-}
-
-/* Context snippet shown above options in modal */
-.rt1-modal-context {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--text-dark);
-  background: #f0f4ff;
-  border: 1px solid #e0e7ff;
-  border-radius: 12px;
-  padding: 10px 14px;
-  margin-bottom: 12px;
-}
-
-.rt1-modal-context-text {
-  color: var(--text-dark);
-}
-
-.rt1-modal-context-gap {
-  font-weight: 700;
-  color: var(--primary);
-  white-space: nowrap;
 }
 
 .reading-type1-example {
