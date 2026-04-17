@@ -1,0 +1,66 @@
+.static-page-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.static-page-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.static-page-header h1 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--primary);
+  font-size: 1.8rem;
+}
+
+.static-page-back-btn {
+  border: 1px solid var(--border-light);
+  background: var(--white);
+  color: var(--text-dark);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.static-page-back-btn:hover {
+  background: #f8faff;
+}
+
+.static-page-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  padding: 1.2rem;
+}
+
+.static-page-intro {
+  margin-top: 0;
+  color: var(--text-medium);
+}
+
+.static-page-section + .static-page-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.static-page-section h3 {
+  margin: 0 0 0.35rem;
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+
+.static-page-section p {
+  margin: 0;
+  color: var(--text-dark);
+  line-height: 1.6;
+}

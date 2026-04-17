@@ -1,5 +1,7 @@
 // js/app.js
 (function() {
+  var STATIC_PAGE_VIEWS = ['terms', 'about', 'contact', 'privacy', 'faq'];
+
   window.App = {
     init: async function() {
       console.log('🚀 Iniciando aplicación v' + CONFIG.APP_VERSION);
@@ -122,6 +124,8 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof TipsPage !== 'undefined') TipsPage.openTipsSkill(initialState.level, initialState.skill);
+      } else if (STATIC_PAGE_VIEWS.indexOf(initialState.view) !== -1) {
+        if (typeof StaticPages !== 'undefined') StaticPages.render(initialState.view, false);
       } else {
         // Default: dashboard
         Dashboard.render();
@@ -181,6 +185,8 @@
           if (typeof TipsPage !== 'undefined') TipsPage._renderHome();
         } else if (state.view === 'tipsSkill' && state.level && state.skill) {
           if (typeof TipsPage !== 'undefined') TipsPage._renderSkill(state.level, state.skill);
+        } else if (STATIC_PAGE_VIEWS.indexOf(state.view) !== -1) {
+          if (typeof StaticPages !== 'undefined') StaticPages.render(state.view, false);
         }
       });
       

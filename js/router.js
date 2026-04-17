@@ -53,6 +53,21 @@
         case 'crosswordList':
           return '/crosswords';
 
+        case 'terms':
+          return '/terms';
+
+        case 'about':
+          return '/about';
+
+        case 'contact':
+          return '/contact';
+
+        case 'privacy':
+          return '/privacy';
+
+        case 'faq':
+          return '/faq';
+
         case 'tips':
           return '/tips';
 
@@ -123,6 +138,11 @@
       if (first === 'stats')                              return { view: 'gradeEvolution' };
       if (first === 'quicksteps')                         return { view: 'quicksteps' };
       if (first === 'crosswords')                         return { view: 'crosswordList' };
+      if (first === 'terms')                              return { view: 'terms' };
+      if (first === 'about')                              return { view: 'about' };
+      if (first === 'contact')                            return { view: 'contact' };
+      if (first === 'privacy')                            return { view: 'privacy' };
+      if (first === 'faq')                                return { view: 'faq' };
 
       // ── Tips routes ───────────────────────────────
       if (first === 'tips') {
