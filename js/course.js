@@ -2207,7 +2207,7 @@
         var escaped = self._escapeHTML(sentence);
         // Phase 1: detect (N) ...... FIXED_TEXT ...... and render a split two-slot pill
         escaped = escaped.replace(
-          /\((\d+)\)\s*(?:_{6,}|\u2026{2,}|\.{6,})\s*([^.…_()]+?)\s*(?:_{6,}|\u2026{2,}|\.{6,})/g,
+          /\((\d+)\)\s*(?:_{6,}|\u2026{2,}|\.{6,})\s*((?:(?!\(\d+\)\s*(?:_{6,}|\u2026{2,}|\.{6,})).)+?)\s*(?:_{6,}|\u2026{2,}|\.{6,})/g,
           function(_, num, midText) {
             var gapNum = parseInt(num);
             var pillId = idBase + '-mcil-' + gapNum;
