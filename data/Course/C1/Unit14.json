@@ -904,6 +904,20 @@
       "B": {
         "title": "Correct the wrong words in bold",
         "instructions": "Each of the words in bold is in the wrong sentence. Write the correct words on the lines.",
+        "words": [
+          "average",
+          "quantify",
+          "ration",
+          "expand",
+          "finite",
+          "vast",
+          "equidistant",
+          "imbalance",
+          "force",
+          "uneven",
+          "mass",
+          "intensity"
+        ],
         "questions": [
           {
             "sentence": "The **uneven** monthly temperature across the city last January was just below freezing.",
@@ -1104,35 +1118,39 @@
       },
       "F": {
         "title": "Match to make sentences",
-        "instructions": "Match the sentence beginnings (1–7) with the correct endings (A–G).",
+        "instructions": "Match the sentence beginnings (1–8) with the correct endings (A–H).",
         "questions": [
           {
-            "sentence": "A rival developer managed to buy",
-            "answer": "D – up the remaining plots of land before we could even make an offer."
+            "sentence": "A rival developer managed to buy **D** up the remaining plots of land before we could even make an offer.",
+            "answer": "D"
           },
           {
-            "sentence": "If we club",
-            "answer": "G – together, we should be able to afford a decent leaving gift for Mr Brennan."
+            "sentence": "If we club **G** together, we should be able to afford a decent leaving gift for Mr Brennan.",
+            "answer": "G"
           },
           {
-            "sentence": "In ten years of long-haul routes, our head pilot has clocked",
-            "answer": "A – up more than 15,000 hours in the air."
+            "sentence": "In ten years of long-haul routes, our head pilot has clocked **A** up more than 15,000 hours in the air.",
+            "answer": "A"
           },
           {
-            "sentence": "The best way to drum",
-            "answer": "B – up enthusiasm for the launch is to offer an early-bird discount."
+            "sentence": "The best way to drum **B** up enthusiasm for the launch is to offer an early-bird discount.",
+            "answer": "B"
           },
           {
-            "sentence": "The three founders decided to buy",
-            "answer": "E – out their fourth partner after a serious disagreement over strategy."
+            "sentence": "The three founders decided to buy **E** out their fourth partner after a serious disagreement over strategy.",
+            "answer": "E"
           },
           {
-            "sentence": "I still have three days of leave remaining, so I plan to carry",
-            "answer": "C – it over to next year and use it during the spring break."
+            "sentence": "I still have three days of leave remaining, so I plan to carry **C** it over to next year and use it during the spring break.",
+            "answer": "C"
           },
           {
-            "sentence": "I absolutely refuse to buy",
-            "answer": "F – corrupt officials off — we will build to the proper standard or not at all."
+            "sentence": "I absolutely refuse to buy **F** corrupt officials off — we will build to the proper standard or not at all.",
+            "answer": "F"
+          },
+          {
+            "sentence": "Before signing anything, we asked our lawyer to draw **H** up a revised contract with clearer payment terms.",
+            "answer": "H"
           }
         ],
         "endings": {
@@ -1142,48 +1160,63 @@
           "D": "up the remaining plots of land before we could even make an offer.",
           "E": "out their fourth partner after a serious disagreement over strategy.",
           "F": "corrupt officials off — we will build to the proper standard or not at all.",
-          "G": "together, we should be able to afford a decent leaving gift for Mr Brennan."
+          "G": "together, we should be able to afford a decent leaving gift for Mr Brennan.",
+          "H": "up a revised contract with clearer payment terms."
         },
         "type": "matching"
       },
       "G": {
         "title": "Phrasal verbs with together",
-        "type": "yn",
-        "instructions": "Phrasal verbs with together, such as club together, often contain the idea of people doing something as a group. Mark with OK the sentences which contain that idea.",
+        "instructions": "Complete each sentence with the missing word.",
         "questions": [
           {
-            "sentence": "Staff from both departments joined together to organise a charity auction.",
-            "answer": "YES"
+            "sentence": "Staff from both departments joined ...... to organise a charity auction.",
+            "answer": "together"
           },
           {
-            "sentence": "It took her all afternoon to piece together exactly what had happened.",
-            "answer": "NO"
+            "sentence": "It took her all afternoon to piece ...... exactly what had happened.",
+            "answer": "together"
           },
           {
-            "sentence": "All the local businesses came together to run a joint summer festival.",
-            "answer": "YES"
+            "sentence": "All the local businesses came ...... to run a joint summer festival.",
+            "answer": "together"
           },
           {
-            "sentence": "He managed to scrape together just enough money to pay the registration fee.",
-            "answer": "NO"
+            "sentence": "He managed to scrape ...... just enough money to pay the registration fee.",
+            "answer": "together"
           },
           {
-            "sentence": "The whole village pulled together to rebuild the community hall after the fire.",
-            "answer": "YES"
+            "sentence": "The whole village pulled ...... to rebuild the community hall after the fire.",
+            "answer": "together"
           },
           {
-            "sentence": "We will get through this difficult period far more easily if we all stick together.",
-            "answer": "YES"
+            "sentence": "We will get through this difficult period far more easily if we all stick ......",
+            "answer": "together"
           },
           {
-            "sentence": "Between us, we put together a fairly convincing proposal in under an hour.",
-            "answer": "NO"
+            "sentence": "Between us, we put ...... a fairly convincing proposal in under an hour.",
+            "answer": "together"
           }
         ]
       },
       "H": {
         "title": "Circle the correct word (collocations)",
         "instructions": "Circle the correct word.",
+        "words": [
+          "long",
+          "share",
+          "of",
+          "thin",
+          "at",
+          "in",
+          "in",
+          "at",
+          "poor",
+          "fat",
+          "rich",
+          "for",
+          "load"
+        ],
         "questions": [
           {
             "sentence": "After months of delays, **at slow / long** last the insurance company has agreed to pay out.",
@@ -1288,6 +1321,14 @@
       "J": {
         "title": "One word for three sentences",
         "instructions": "For each question, write one word which can be used in all three sentences.",
+        "words": [
+          "short",
+          "pays",
+          "lot",
+          "high",
+          "big",
+          "small"
+        ],
         "questions": [
           {
             "sentence": "We seem to be running ...... of printer paper — could you order some more?\nHe has a really ...... temper and overreacts to even the smallest problem.\nThey gave us very ...... notice about the meeting — we only found out this morning.",
