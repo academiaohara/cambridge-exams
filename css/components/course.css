@@ -1408,9 +1408,9 @@
 }
 /* Show correct answer in input (toggle mode) */
 .cu-gap-input.cu-input-show-correct {
-  border-color: #2563eb !important;
-  background: rgba(37, 99, 235, 0.07) !important;
-  color: #1e3a8a !important;
+  border-color: #7c3aed !important;
+  background: rgba(124, 58, 237, 0.09) !important;
+  color: #5b21b6 !important;
   animation: feBounceIn 0.3s ease;
   max-width: none;
 }
@@ -3024,7 +3024,7 @@ textarea.cu-gap-input.cu-gap-textarea {
   color: #b91c1c;
 }
 
-/* Correct answer reveal for YN — the button the student should have chosen (blue, like cu-input-show-correct) */
+/* Correct answer reveal for YN — the button the student should have chosen */
 .cu-yn-btn.cu-yn-correct-reveal {
   border-color: #2563eb;
   background: rgba(37, 99, 235, 0.1);
@@ -3706,12 +3706,12 @@ textarea.cu-gap-input.cu-gap-textarea {
   color: #c2410c;
 }
 
-/* Show-correct state: correct answers in blue (used by "Show answers" toggle and "Correct answers" view) */
+/* Show-correct state: revealed correct answers (used by "Show answers" toggle and "Correct answers" view) */
 .cu-mc-passage-gap.cu-mc-passage-gap-show-correct .cu-mc-passage-gap-slot {
-  background: #e0f2fe;
-  border-color: #38bdf8;
+  background: #f5f3ff;
+  border-color: #a78bfa;
   border-style: solid;
-  color: #0369a1;
+  color: #6d28d9;
   font-weight: 700;
 }
 
@@ -3777,10 +3777,10 @@ textarea.cu-gap-input.cu-gap-textarea {
 
 .cu-mc-passage-gap-split.cu-mc-passage-gap-show-correct .cu-mc-passage-gap-slot-pre,
 .cu-mc-passage-gap-split.cu-mc-passage-gap-show-correct .cu-mc-passage-gap-slot-post {
-  background: #e0f2fe;
-  border-color: #38bdf8;
+  background: #f5f3ff;
+  border-color: #a78bfa;
   border-style: solid;
-  color: #0369a1;
+  color: #6d28d9;
   font-weight: 700;
 }
 
@@ -4162,6 +4162,6 @@ textarea.cu-gap-input.cu-gap-textarea {
 .cu-cw-box:disabled { cursor: default; }
 .cu-cw-letter-correct { background: #e8f5e9 !important; border-color: #43a047 !important; color: #2e7d32; }
 .cu-cw-letter-incorrect { background: #fce4ec !important; border-color: #e53935 !important; color: #c62828; }
-.cu-cw-box.cu-input-show-correct { background: #e3f2fd !important; border-color: #1976d2 !important; color: #1565c0; }
+.cu-cw-box.cu-input-show-correct { background: #f5f3ff !important; border-color: #8b5cf6 !important; color: #5b21b6; }
 .cu-cw-answer-reveal { font-size: .82rem; font-weight: 600; color: var(--accent, #1976d2); margin-top: 3px; letter-spacing: .04em; }
 .cu-cw-input { display: none; }
