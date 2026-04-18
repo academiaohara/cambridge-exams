@@ -3495,6 +3495,12 @@
       span.style.font = window.getComputedStyle(input).font;
       span.textContent = input.value || input.placeholder || '';
       var newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 28);
+      var widthHost = input.closest('.cu-hint-pill, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text');
+      var maxWidth = 0;
+      if (widthHost && widthHost.getBoundingClientRect) {
+        maxWidth = Math.max(120, Math.floor(widthHost.getBoundingClientRect().width - 24));
+      }
+      if (maxWidth > 0) newWidth = Math.min(newWidth, maxWidth);
       input.style.width = newWidth + 'px';
       BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
     },

@@ -1395,55 +1395,104 @@
         ]
       },
       "M": {
-        "title": "Complete the sentences by changing the form of the word in capitals.",
-        "instructions": "Complete the sentences by changing the form of the word in capitals.",
+        "title": "One word for three sentences",
+        "type": "sync",
+        "instructions": "Write one word in each set. The same word must complete all three sentences.",
         "questions": [
           {
-            "sentence": "The twins spend every waking moment together. They seem completely ...... . **SEPARATE**",
+            "sentences": [
+              "The twins spend every waking moment together, so they seem completely ...... .",
+              "Even at school, the sisters were virtually ...... and sat together in every lesson.",
+              "After years of travelling side by side, the two friends remain ...... ."
+            ],
             "answer": "inseparable"
           },
           {
-            "sentence": "It was very ...... of you to realise something was wrong just from the look on her face. **PERCEIVE**",
+            "sentences": [
+              "It was very ...... of you to notice she was upset from one look.",
+              "A truly ...... manager can read the mood of a team in seconds.",
+              "Her ...... comments showed she had understood the situation perfectly."
+            ],
             "answer": "perceptive"
           },
           {
-            "sentence": "The legal dispute over the ...... dragged on for three years before a settlement was finally reached. **INHERIT**",
+            "sentences": [
+              "The legal dispute over the ...... lasted for three years.",
+              "All claims to the family ...... had to be submitted by Friday.",
+              "He donated most of his ...... to charity after the case ended."
+            ],
             "answer": "inheritance"
           },
           {
-            "sentence": "Referring to a whole community by a single stereotype is, at best, a ...... generalisation. **RACE**",
+            "sentences": [
+              "Reducing people to stereotypes is a ...... generalisation.",
+              "The club introduced strict rules against ...... abuse in the stands.",
+              "The article was condemned for its ...... assumptions about migrants."
+            ],
             "answer": "racist"
           },
           {
-            "sentence": "Despite his ...... indifference, most of his colleagues believed he was deeply affected by the criticism. **APPEAR**",
+            "sentences": [
+              "Despite his ...... indifference, he was clearly upset.",
+              "There was no ...... reason for concern, but people still panicked.",
+              "His calm tone gave an ...... sense of control."
+            ],
             "answer": "apparent"
           },
           {
-            "sentence": "Sharing confidential information with a competitor would be deeply ...... to the company. **LOYAL**",
+            "sentences": [
+              "Sharing confidential files with a rival would be deeply ...... .",
+              "The board dismissed the employee for ...... conduct.",
+              "Leaking internal messages was seen as a blatantly ...... act."
+            ],
             "answer": "disloyal"
           },
           {
-            "sentence": "The actor was arrested for ...... a government official in order to gain access to restricted areas. **PERSON**",
+            "sentences": [
+              "The actor was arrested for ...... a government official.",
+              "He was charged with ...... a police officer online.",
+              "Security staff stopped a man ...... a courier at reception."
+            ],
             "answer": "impersonating"
           },
           {
-            "sentence": "Disputes between neighbours are best resolved through the residents' .................... , who can mediate without things escalating. **ASSOCIATE**",
+            "sentences": [
+              "Neighbour disputes are usually handled by the residents' ...... .",
+              "Our local ...... meets monthly to discuss shared issues.",
+              "The housing ...... appointed a mediator for the complaint."
+            ],
             "answer": "association"
           },
           {
-            "sentence": "The situation was complex at first, but things have become ............................. straightforward in recent weeks. **RELATE**",
+            "sentences": [
+              "Things have become ...... straightforward in recent weeks.",
+              "The second task is ...... easy once you understand the pattern.",
+              "Traffic is ...... light on Sundays in this area."
+            ],
             "answer": "relatively"
           },
           {
-            "sentence": "The two incidents may appear to be .................................. , but investigators believe they are part of a wider pattern. **CONNECT**",
+            "sentences": [
+              "The two incidents seem ...... at first glance.",
+              "Police believe these cases are not ...... after all.",
+              "The data looked ...... until analysts found the hidden link."
+            ],
             "answer": "unconnected"
           },
           {
-            "sentence": "Research shows that puppies form the strongest emotional ........................................... to their owners during the first twelve weeks of life. **ATTACH**",
+            "sentences": [
+              "Puppies form a strong emotional ...... to their owners.",
+              "Children need secure ...... figures in early development.",
+              "Therapists often discuss ...... patterns formed in childhood."
+            ],
             "answer": "attachment"
           },
           {
-            "sentence": "Forcing all students to wear the same outfit tends to suppress ..................................... and creative self-expression. **INDIVIDUAL**",
+            "sentences": [
+              "Uniform policies can suppress ...... and self-expression.",
+              "The course encourages ...... rather than strict conformity.",
+              "Creative work thrives when ...... is respected."
+            ],
             "answer": "individuality"
           }
         ]
@@ -1467,7 +1516,7 @@
       },
       "O": {
         "title": "The prefix re-, as in reappear, can go before verbs, nouns and adjectives to mean 'again'.",
-        "instructions": "Mark with OK the words below which can form words using re-.",
+        "instructions": "Select the words below that can form a word with the prefix re-.",
         "answer": "arrange, build, consider, count, create, cycle, develop, dial, do, fill, heat, join, pass, print, produce, say, think, train, trial, use, write",
         "words": [
           "arrange",
