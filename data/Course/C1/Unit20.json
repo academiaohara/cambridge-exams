@@ -891,7 +891,7 @@
       },
       "E": {
         "title": "Correct the incorrect word",
-        "instructions": "If the word in bold is correct, put OK. If it is incorrect, replace it with one of the words in bold from the other sentences.",
+        "instructions": "If the word in bold is correct, write OK. If it is incorrect, replace it with one of the words in bold from the other sentences.",
         "questions": [
           {
             "sentence": "Several MPs have called on the government to **advocate** the controversial vagrancy law that dates back to the 1800s.",
@@ -923,7 +923,7 @@
           },
           {
             "sentence": "Growing up in a household with access to books and private tutoring left her feeling **privileged** compared to her peers.",
-            "answer": "✓"
+            "answer": "OK"
           },
           {
             "sentence": "Local charities are calling for greater funding to **prosecute** the hardship experienced by families below the poverty line.",
@@ -937,39 +937,39 @@
       },
       "F": {
         "title": "Match to make sentences",
-        "instructions": "Match the sentence beginnings (1–8) with the correct endings (A–H).",
+        "instructions": "Match the sentence beginnings (1–8) with the correct endings (A–H) by dragging the right column.",
         "questions": [
           {
-            "sentence": "Despite enormous pressure from colleagues, the senator refused to back",
-            "answer": "D – down from her stance on the proposed welfare cuts."
+            "sentence": "Despite enormous pressure from colleagues, the senator refused to back **D** down from her stance on the proposed welfare cuts.",
+            "answer": "D"
           },
           {
-            "sentence": "Barely had the security team locked the office",
-            "answer": "F – up when they noticed the fire alarm had been triggered."
+            "sentence": "Barely had the security team locked the office **F** up when they noticed the fire alarm had been triggered.",
+            "answer": "F"
           },
           {
-            "sentence": "Only a complete overhaul of the system will bring",
-            "answer": "G – about the lasting reforms that citizens have been demanding."
+            "sentence": "Only a complete overhaul of the system will bring **G** about the lasting reforms that citizens have been demanding.",
+            "answer": "G"
           },
           {
-            "sentence": "What frustrated everyone was that the accused simply got",
-            "answer": "B – off with a small fine despite the seriousness of the offence."
+            "sentence": "What frustrated everyone was that the accused simply got **B** off with a small fine despite the seriousness of the offence.",
+            "answer": "B"
           },
           {
-            "sentence": "The party leader hit",
-            "answer": "H – back at accusations that she had misled parliament."
+            "sentence": "The party leader hit **H** back at accusations that she had misled parliament.",
+            "answer": "H"
           },
           {
-            "sentence": "Productivity has risen sharply since the new management team took",
-            "answer": "E – over the department and restructured the workflow."
+            "sentence": "Productivity has risen sharply since the new management team took **E** over the department and restructured the workflow.",
+            "answer": "E"
           },
           {
-            "sentence": "The government must not give",
-            "answer": "A – in to pressure groups that resort to intimidation tactics."
+            "sentence": "The government must not give **A** in to pressure groups that resort to intimidation tactics.",
+            "answer": "A"
           },
           {
-            "sentence": "Honestly, it barely matters who gets",
-            "answer": "C – in at this by-election; both candidates have identical policies."
+            "sentence": "Honestly, it barely matters who gets **C** in at this by-election; both candidates have identical policies.",
+            "answer": "C"
           }
         ],
         "type": "matching"
@@ -1233,8 +1233,13 @@
         ]
       },
       "L": {
-        "title": "Complete idioms",
-        "instructions": "Complete using the words in the box.",
+        "title": "Idioms: drag each word to YES or NO",
+        "type": "drag-category",
+        "instructions": "Drag each word to YES if it can complete one of the target idioms in this unit, or to NO if it cannot.",
+        "categories": [
+          "YES",
+          "NO"
+        ],
         "words": [
           "book",
           "hand",
@@ -1245,50 +1250,40 @@
           "strings",
           "tape",
           "thumb",
-          "way"
+          "way",
+          "arm",
+          "brain",
+          "heart",
+          "order",
+          "paper",
+          "road",
+          "rules",
+          "stone",
+          "wire",
+          "voice"
         ],
-        "questions": [
-          {
-            "sentence": "We can't keep burying our ……………………………………… in the sand and pretending that inequality isn't getting worse.",
-            "answer": "head"
-          },
-          {
-            "sentence": "It was widely known that she had pulled a few ……………………………………… to secure the contract for her former employer.",
-            "answer": "strings"
-          },
-          {
-            "sentence": "You simply cannot take the ……………………………………… into your own hands – that's precisely what courts are there for.",
-            "answer": "law"
-          },
-          {
-            "sentence": "The new intern was clearly under her supervisor's ……………………………………… and had no freedom to act independently.",
-            "answer": "thumb"
-          },
-          {
-            "sentence": "After a shaky first half, our team fought back and gained the upper ……………………………………… in the final minutes.",
-            "answer": "hand"
-          },
-          {
-            "sentence": "He has unusual ideas about education, but I say ……………………………………… and let live – it's not my place to judge.",
-            "answer": "live"
-          },
-          {
-            "sentence": "The ……………………………………… that be have announced yet another round of spending cuts affecting community services.",
-            "answer": "powers"
-          },
-          {
-            "sentence": "It took months of red ……………………………………… before we were finally given permission to extend the building.",
-            "answer": "tape"
-          },
-          {
-            "sentence": "The committee always seemed to get its own ……………………………………… , regardless of what the public consultation suggested.",
-            "answer": "way"
-          },
-          {
-            "sentence": "The judge warned the defendant that if she reoffended, the court would throw the ……………………………………… at her.",
-            "answer": "book"
-          }
-        ]
+        "answers": {
+          "book": "YES",
+          "hand": "YES",
+          "head": "YES",
+          "law": "YES",
+          "live": "YES",
+          "powers": "YES",
+          "strings": "YES",
+          "tape": "YES",
+          "thumb": "YES",
+          "way": "YES",
+          "arm": "NO",
+          "brain": "NO",
+          "heart": "NO",
+          "order": "NO",
+          "paper": "NO",
+          "road": "NO",
+          "rules": "NO",
+          "stone": "NO",
+          "wire": "NO",
+          "voice": "NO"
+        }
       },
       "M": {
         "title": "Word formation",
