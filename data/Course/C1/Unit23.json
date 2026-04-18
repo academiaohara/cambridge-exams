@@ -419,14 +419,14 @@
       "items": [
         {
           "sentence": "Mia: Oh, hello! You must be Felix. Felix: That's right! Mia, is it? I have to admit (1) **to be / to being** a little intimidated. I've never been to a book club before. Mia: Neither have I! I almost didn't come (2) **to see / seeing** what it was like. But you just have to risk (3) **to meet / meeting** people you might not connect with, don't you? Felix: I suppose so. Do you mind (4) **to sit / sitting** near the back? I feel more comfortable there. Mia: That's fine with me. It was my flatmate, Rosa, who suggested (5) **to meet / meeting** you. Felix: Really? Did she happen (6) **to tell / telling** you which books I'd recommended? Mia: She mentioned you enjoy literary fiction, but she refused (7) **to say / saying** anything more. Felix: Fair enough. Well, I've been looking forward (8) **to meet / to meeting** you. Do you feel like (9) **to order / ordering** a coffee before we start? Mia: Yes, please! I think I fancy (10) **to have / having** a cappuccino. What about you? Felix: Great idea. Let me find the waiter.",
-          "answer": "1 to being, 2 to see, 3 meeting, 4 sitting, 5 meeting, 6 to tell, 7 to say, 8 to meeting, 9 ordering, 10 having"
+          "answer": "to being, to see, meeting, sitting, meeting, to tell, to say, to meeting, ordering, having"
         }
       ]
     },
     {
       "type": "exercise",
       "title": "C: Complete using the verbs in the box in the correct form",
-      "instructions": "Complete using the verbs in the box in the correct form. You may need to add a preposition. (accept, apply, ask, commit, delay, fine, promote, replace, submit, wait)",
+      "instructions": "Complete using the verbs in the box in the correct form. You may need to add a preposition. Some items require two words in two gaps. (accept, apply, ask, commit, delay, fine, promote, replace, submit, wait)",
       "items": [
         {
           "sentence": "How can you justify ...... the announcement for so long?",
@@ -457,8 +457,8 @@
           "answer": "to submit"
         },
         {
-          "sentence": "Why do you keep ...... me about what the finance director decided?",
-          "answer": "(on) asking"
+          "sentence": "Why do you keep ...... ...... me about what the finance director decided?",
+          "answer": "on, asking"
         },
         {
           "sentence": "I challenge any of you ...... for this grant and not find it worthwhile.",
@@ -520,47 +520,47 @@
     {
       "type": "exercise",
       "title": "E: Complete with a pair of verbs",
-      "instructions": "Complete each sentence with a pair of verbs from the box in the correct form. (catch / wish, feel / follow, find / hide, glimpse / walk, hear / say, notice / try, observe / interact, see / come, smell / burn, watch / climb)",
+      "instructions": "Complete each sentence with a pair of verbs from the box in the correct form, using the hint words in each pill. (catch / wish, feel / follow, find / hide, glimpse / walk, hear / say, notice / try, observe / interact, see / come, smell / burn, watch / climb)",
       "items": [
         {
-          "sentence": "I couldn't be certain, but I thought I ...... Clara ...... past the library window.",
-          "answer": "glimpsed walking"
+          "sentence": "I couldn't be certain, but I thought I (glimpse) ...... Clara (walk) ...... past the library window.",
+          "answer": "glimpsed, walking"
         },
         {
-          "sentence": "Did you ...... the director ...... that he was thinking of relocating the head office?",
-          "answer": "hear say/saying"
+          "sentence": "Did you (hear) ...... the director (say) ...... that he was thinking of relocating the head office?",
+          "answer": "hear, say/saying"
         },
         {
-          "sentence": "During the research session, the scientists ...... the dolphins ...... playfully with each other.",
-          "answer": "observed interacting"
+          "sentence": "During the research session, the scientists (observe) ...... the dolphins (interact) ...... playfully with each other.",
+          "answer": "observed, interacting"
         },
         {
-          "sentence": "Did you leave the iron on? I can ...... something ...... upstairs.",
-          "answer": "smell burning"
+          "sentence": "Did you leave the iron on? I can (smell) ...... something (burn) ...... upstairs.",
+          "answer": "smell, burning"
         },
         {
-          "sentence": "I searched the whole flat and eventually ...... the kitten ...... behind the wardrobe.",
-          "answer": "found hiding"
+          "sentence": "I searched the whole flat and eventually (find) ...... the kitten (hide) ...... behind the wardrobe.",
+          "answer": "found, hiding"
         },
         {
-          "sentence": "We ...... the rescue team ...... up the collapsed building to reach the trapped survivors.",
-          "answer": "watched climb"
+          "sentence": "We (watch) ...... the rescue team (climb) ...... up the collapsed building to reach the trapped survivors.",
+          "answer": "watched, climb"
         },
         {
-          "sentence": "I couldn't help ...... the technician ...... to connect the projector before the presentation began.",
-          "answer": "noticing trying"
+          "sentence": "I couldn't help (notice) ...... the technician (try) ...... to connect the projector before the presentation began.",
+          "answer": "noticing, trying"
         },
         {
-          "sentence": "She ...... someone ...... her along the corridor, but when she turned around there was nobody there.",
-          "answer": "felt following"
+          "sentence": "She (feel) ...... someone (follow) ...... her along the corridor, but when she turned around there was nobody there.",
+          "answer": "felt, following"
         },
         {
-          "sentence": "He ...... himself ...... he had never accepted the invitation to join that project.",
-          "answer": "caught wishing"
+          "sentence": "He (catch) ...... himself (wish) ...... he had never accepted the invitation to join that project.",
+          "answer": "caught, wishing"
         },
         {
-          "sentence": "I ...... Dr Reyes ...... towards me across the car park, so I quickly slipped into the nearest café.",
-          "answer": "saw/glimpsed coming/walking"
+          "sentence": "I (see) ...... Dr Reyes (come) ...... towards me across the car park, so I quickly slipped into the nearest café.",
+          "answer": "saw/glimpsed, coming/walking"
         }
       ]
     },
@@ -640,40 +640,80 @@
     },
     {
       "type": "exercise",
-      "title": "H: Complete the second sentence",
-      "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+      "title": "H: Multiple choice",
+      "instructions": "Choose the correct option (A, B or C).",
       "items": [
         {
-          "sentence": "After three failed attempts, she finally managed to pass the driving test. **in** On her third attempt, she finally ...... the driving test.",
-          "answer": "succeeded in passing"
+          "sentence": "On her third attempt, she finally ...... the driving test.",
+          "options": [
+            "A succeeded in passing",
+            "B managed passing",
+            "C was succeeded to pass"
+          ],
+          "answer": "A"
         },
         {
-          "sentence": "Beatriz can guide tour groups professionally because she holds a certified guiding licence. **to** Beatriz's certified guiding licence ...... tour groups professionally.",
-          "answer": "qualifies her to guide"
+          "sentence": "Beatriz's certified guiding licence ...... tour groups professionally.",
+          "options": [
+            "A qualifies her to guide",
+            "B qualifies her guiding",
+            "C qualifies to her guide"
+          ],
+          "answer": "A"
         },
         {
-          "sentence": "I was surprised when they put me forward to present the findings at the annual conference. **nominated** I couldn't believe it when they ...... the findings at the annual conference.",
-          "answer": "nominated me to present"
+          "sentence": "I couldn't believe it when they ...... the findings at the annual conference.",
+          "options": [
+            "A nominated me to present",
+            "B nominated me presenting",
+            "C nominated me present"
+          ],
+          "answer": "A"
         },
         {
-          "sentence": "I had a locker partner at school when I was a teenager and I rather enjoyed it. **like** I used ...... a locker with my classmate when I was at school.",
-          "answer": "to quite like sharing"
+          "sentence": "I used ...... a locker with my classmate when I was at school.",
+          "options": [
+            "A to quite like sharing",
+            "B quite liking to share",
+            "C to quite like share"
+          ],
+          "answer": "A"
         },
         {
-          "sentence": "On moving to a new city, Daniel made a firm decision not to repeat the same mistakes. **to** On moving to a new city, Daniel resolved ...... the same mistakes again.",
-          "answer": "not to repeat/never to repeat"
+          "sentence": "On moving to a new city, Daniel resolved ...... the same mistakes again.",
+          "options": [
+            "A not to repeat",
+            "B not repeating",
+            "C to not repeating"
+          ],
+          "answer": "A"
         },
         {
-          "sentence": "Are you sorry that you recommended Marco for the promotion? **regret** Do ...... Marco for the promotion?",
-          "answer": "you regret recommending"
+          "sentence": "Do ...... Marco for the promotion?",
+          "options": [
+            "A you regret recommending",
+            "B you regret to recommend",
+            "C you regret recommend"
+          ],
+          "answer": "A"
         },
         {
-          "sentence": "The plan is that you will be collected by the local coordinator. **for** We ...... by the local coordinator.",
-          "answer": "have arranged for you to be collected"
+          "sentence": "We ...... by the local coordinator.",
+          "options": [
+            "A have arranged for you to be collected",
+            "B have arranged you to be collected for",
+            "C arranged for you collecting"
+          ],
+          "answer": "A"
         },
         {
-          "sentence": "Where did you get the idea for designing such a groundbreaking product in your latest collection? **to** What ...... such a groundbreaking product in your latest collection?",
-          "answer": "inspired you to design"
+          "sentence": "What ...... such a groundbreaking product in your latest collection?",
+          "options": [
+            "A inspired you to design",
+            "B inspired you designing",
+            "C inspired you design"
+          ],
+          "answer": "A"
         }
       ]
     },
@@ -683,43 +723,103 @@
       "instructions": "Choose the correct answer.",
       "items": [
         {
-          "sentence": "When she mentioned ...... on Saturdays without extra pay, I immediately threatened to resign. A me to working B me to work C me work D me working",
+          "sentence": "When she mentioned ...... on Saturdays without extra pay, I immediately threatened to resign.",
+          "options": [
+            "A me to working",
+            "B me to work",
+            "C me work",
+            "D me working"
+          ],
           "answer": "D"
         },
         {
-          "sentence": "The director insisted that all department heads ...... available throughout the audit. A have been B be C are being D being",
+          "sentence": "The director insisted that all department heads ...... available throughout the audit.",
+          "options": [
+            "A have been",
+            "B be",
+            "C are being",
+            "D being"
+          ],
           "answer": "B"
         },
         {
-          "sentence": "Didn't you ...... that Oliver wasn't at his own leaving party? A think it strange B think strange C think strangely D think it strangely",
+          "sentence": "Didn't you ...... that Oliver wasn't at his own leaving party?",
+          "options": [
+            "A think it strange",
+            "B think strange",
+            "C think strangely",
+            "D think it strangely"
+          ],
           "answer": "A"
         },
         {
-          "sentence": "It is absolutely crucial that the emergency response team ...... the moment anything changes. A be it notified B being notified C were notified D be notified",
+          "sentence": "It is absolutely crucial that the emergency response team ...... the moment anything changes.",
+          "options": [
+            "A be it notified",
+            "B being notified",
+            "C were notified",
+            "D be notified"
+          ],
           "answer": "D"
         },
         {
-          "sentence": "I consider ...... to remind the committee that several members have raised serious objections. A my duty B this my duty C it my duty D that my duty",
+          "sentence": "I consider ...... to remind the committee that several members have raised serious objections.",
+          "options": [
+            "A my duty",
+            "B this my duty",
+            "C it my duty",
+            "D that my duty"
+          ],
           "answer": "C"
         },
         {
-          "sentence": "Given the look on his face at this morning's briefing, I didn't ...... him about the complaints I had received. A dare telling B dare it telling C dare tell D dare to telling",
+          "sentence": "Given the look on his face at this morning's briefing, I didn't ...... him about the complaints I had received.",
+          "options": [
+            "A dare telling",
+            "B dare it telling",
+            "C dare tell",
+            "D dare to telling"
+          ],
           "answer": "C"
         },
         {
-          "sentence": "Don't you ...... that Nathan and Priya have been close friends for over twenty years? A incredibly find B find incredible C find incredibly D find it incredible",
+          "sentence": "Don't you ...... that Nathan and Priya have been close friends for over twenty years?",
+          "options": [
+            "A incredibly find",
+            "B find incredible",
+            "C find incredibly",
+            "D find it incredible"
+          ],
           "answer": "D"
         },
         {
-          "sentence": "You really shouldn't have let Sophie ...... without clearing the air between you first. A leave B to leave C leaving D to leaving",
+          "sentence": "You really shouldn't have let Sophie ...... without clearing the air between you first.",
+          "options": [
+            "A leave",
+            "B to leave",
+            "C leaving",
+            "D to leaving"
+          ],
           "answer": "A"
         },
         {
-          "sentence": "It was rather awkward when the examiner caught us ...... during the written assessment. A to cheat B cheating C cheat D to cheating",
+          "sentence": "It was rather awkward when the examiner caught us ...... during the written assessment.",
+          "options": [
+            "A to cheat",
+            "B cheating",
+            "C cheat",
+            "D to cheating"
+          ],
           "answer": "B"
         },
         {
-          "sentence": "It's cruel to make a small child ...... in a hot vehicle on such a warm afternoon. A to wait B waiting C wait D for waiting",
+          "sentence": "It's cruel to make a small child ...... in a hot vehicle on such a warm afternoon.",
+          "options": [
+            "A to wait",
+            "B waiting",
+            "C wait",
+            "D for waiting"
+          ],
           "answer": "C"
         }
       ]
