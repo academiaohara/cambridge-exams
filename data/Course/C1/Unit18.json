@@ -856,46 +856,46 @@
       },
       "B": {
         "title": "Emotions in the workplace",
-        "instructions": "Each of the words in bold, except one, is in the wrong place. Write the correct words on the lines.",
+        "instructions": "Use the hint word inside each pill to write the correct word.",
         "questions": [
           {
-            "sentence": "Some colleagues tend to (1) ...... **neglect** others behind their backs when something goes wrong, which damages team morale.",
+            "sentence": "Some colleagues tend to (1) ...... (NEGLECT) others behind their backs when something goes wrong, which damages team morale.",
             "answer": "mock"
           },
           {
-            "sentence": "Whenever her department exceeds its targets, she can't help but (2) ...... **grimace** over the other teams who fell short.",
+            "sentence": "Whenever her department exceeds its targets, she can't help but (2) ...... (GRIMACE) over the other teams who fell short.",
             "answer": "gloat"
           },
           {
-            "sentence": "Even experienced professionals will (3) ...... **conduct** when they're handed an unreasonable workload at the last minute.",
+            "sentence": "Even experienced professionals will (3) ...... (CONDUCT) when they're handed an unreasonable workload at the last minute.",
             "answer": "grimace"
           },
           {
-            "sentence": "When deadlines pile up and communication breaks down, even calm employees grow visibly (4) ...... **impatient**.",
+            "sentence": "When deadlines pile up and communication breaks down, even calm employees grow visibly (4) ...... (IMPATIENT).",
             "answer": "cross"
           },
           {
-            "sentence": "The (5) ...... **gloat** of presenting to a hostile boardroom is something most new managers vividly recall.",
+            "sentence": "The (5) ...... (GLOAT) of presenting to a hostile boardroom is something most new managers vividly recall.",
             "answer": "terror"
           },
           {
-            "sentence": "Under extreme pressure, people sometimes (6) ...... **mock** at colleagues without any real justification.",
+            "sentence": "Under extreme pressure, people sometimes (6) ...... (MOCK) at colleagues without any real justification.",
             "answer": "snap"
           },
           {
-            "sentence": "A supportive management style fosters genuine (7) ...... **terror** among staff and reduces turnover significantly.",
+            "sentence": "A supportive management style fosters genuine (7) ...... (TERROR) among staff and reduces turnover significantly.",
             "answer": "contentment"
           },
           {
-            "sentence": "It is easy to (8) ...... **snap** the training needs of quieter team members when louder voices take up all the attention.",
+            "sentence": "It is easy to (8) ...... (SNAP) the training needs of quieter team members when louder voices take up all the attention.",
             "answer": "neglect"
           },
           {
-            "sentence": "Part of a manager's job is to (9) ...... **contentment** conflict calmly and without taking sides.",
+            "sentence": "Part of a manager's job is to (9) ...... (CONTENTMENT) conflict calmly and without taking sides.",
             "answer": "handle"
           },
           {
-            "sentence": "Employees are expected to (10) ...... **handle** themselves with professionalism at all company events.",
+            "sentence": "Employees are expected to (10) ...... (HANDLE) themselves with professionalism at all company events.",
             "answer": "conduct"
           }
         ]
@@ -1094,7 +1094,7 @@
       },
       "F": {
         "title": "Choose the correct word",
-        "instructions": "Choose the correct word.",
+        "instructions": "Write YES or NO.",
         "questions": [
           {
             "sentence": "I honestly don't know how she managed to summon **up / back** the energy to finish the marathon in those conditions.",
@@ -1180,76 +1180,78 @@
       },
       "H": {
         "title": "Phrasal verbs with through",
-        "instructions": "Mark with OK the phrasal verbs in these sentences which contain the idea of completing something successfully.",
+        "instructions": "Write YES or NO by selecting the option for each sentence.",
         "questions": [
           {
-            "sentence": "The conditions were appalling, but the expedition team muddled through and reached the summit.",
+            "sentence": "The conditions were appalling, but the expedition team muddled **through** and reached the summit.",
             "answer": "YES"
           },
           {
-            "sentence": "She was flicking through some old magazines when she came across an article about her hometown.",
+            "sentence": "She was flicking **through** some old magazines when she came across an article about her hometown.",
             "answer": "NO"
           },
           {
-            "sentence": "We've committed to this plan and I intend to see it through, whatever happens.",
+            "sentence": "We've committed to this plan and I intend to see it **through**, whatever happens.",
             "answer": "YES"
           },
           {
-            "sentence": "He was an excellent student overall, but he only just scraped through his final economics exam.",
+            "sentence": "He was an excellent student overall, but he only just scraped **through** his final economics exam.",
             "answer": "YES"
           },
           {
-            "sentence": "Common sense will win through in the end, even if it takes longer than expected.",
+            "sentence": "Common sense will win **through** in the end, even if it takes longer than expected.",
             "answer": "YES"
           },
           {
-            "sentence": "The new administration is fully committed to carrying through the promised infrastructure reforms.",
+            "sentence": "The new administration is fully committed to carrying **through** the promised infrastructure reforms.",
             "answer": "YES"
           }
-        ]
+        ],
+        "subtype": "yn",
+        "yesLabel": "YES"
       },
       "I": {
         "title": "Write one word in each gap",
-        "instructions": "Write one word in each gap.",
+        "instructions": "Write one word in each hint pill.",
         "questions": [
           {
-            "sentence": "Please make sure you are ...... your best behaviour during the interview – first impressions really do matter.",
+            "sentence": "Please make sure you are ...... (ON) your best behaviour during the interview – first impressions really do matter.",
             "answer": "on"
           },
           {
-            "sentence": "The patient has been ...... poor health for the past several months and the family is understandably worried.",
+            "sentence": "The patient has been ...... (IN) poor health for the past several months and the family is understandably worried.",
             "answer": "in"
           },
           {
-            "sentence": "You shouldn't have reacted ...... sending such an aggressive message – it only made things worse.",
+            "sentence": "You shouldn't have reacted ...... (BY) sending such an aggressive message – it only made things worse.",
             "answer": "by"
           },
           {
-            "sentence": "Staff are expected to be respectful and polite ...... visitors at all times.",
+            "sentence": "Staff are expected to be respectful and polite ...... (TO) visitors at all times.",
             "answer": "to"
           },
           {
-            "sentence": "Even if the chances seem slim, it's always worth living ...... hope.",
+            "sentence": "Even if the chances seem slim, it's always worth living ...... (IN) hope.",
             "answer": "in"
           },
           {
-            "sentence": "She hopes to live to the grand old age ...... 100 and still be dancing!",
+            "sentence": "She hopes to live to the grand old age ...... (OF) 100 and still be dancing!",
             "answer": "of"
           },
           {
-            "sentence": "I am writing ...... response to the complaint you submitted on 4th February.",
+            "sentence": "I am writing ...... (IN) response to the complaint you submitted on 4th February.",
             "answer": "in"
           },
           {
-            "sentence": "So ...... effect, what you are telling us is that the entire project has been shelved.",
+            "sentence": "So ...... (IN) effect, what you are telling us is that the entire project has been shelved.",
             "answer": "in"
           },
           {
-            "sentence": "The team leader resigned, and, ...... a consequence, the whole timeline had to be rescheduled.",
+            "sentence": "The team leader resigned, and, ...... (AS) a consequence, the whole timeline had to be rescheduled.",
             "answer": "as"
           },
           {
-            "sentence": "It may look suspicious from the outside, but I can assure you I was acting ...... good faith throughout.",
+            "sentence": "It may look suspicious from the outside, but I can assure you I was acting ...... (IN) good faith throughout.",
             "answer": "in"
           }
         ]

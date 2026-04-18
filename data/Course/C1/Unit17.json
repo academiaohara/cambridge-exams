@@ -193,133 +193,119 @@
     {
       "type": "exercise",
       "title": "A: Relative Pronouns",
-      "instructions": "Write a relative pronoun in each gap. Do not use the word that.",
+      "instructions": "Read the sentences and click the marked relative pronoun only when it can be replaced by that. If it cannot, select OK.",
       "items": [
         {
-          "sentence": "Natasha, ...... paintings you admired at the gallery last month, is exhibiting again in the spring.",
-          "answer": "whose"
+          "sentence": "Natasha, [whose] paintings you admired at the gallery last month, is exhibiting again in the spring.",
+          "answer": "OK"
         },
         {
-          "sentence": "I've never really understood the reason ...... he decided to resign from such a well-paid position.",
+          "sentence": "I've never really understood the reason [why] he decided to resign from such a well-paid position.",
           "answer": "why"
         },
         {
-          "sentence": "The coastal town ...... Marcus grew up in is only a short drive from here.",
+          "sentence": "The coastal town [which] Marcus grew up in is only a short drive from here.",
           "answer": "which"
         },
         {
-          "sentence": "Have you heard from that composer ...... latest symphony is being premiered next month?",
-          "answer": "whose"
+          "sentence": "Have you heard from that composer [whose] latest symphony is being premiered next month?",
+          "answer": "OK"
         },
         {
-          "sentence": "It was back in the early 1990s, ...... the internet was still a novelty, that hardly anyone ...... I knew owned a personal computer.",
-          "answer": "when, whom"
+          "sentence": "It was back in the early 1990s, when the internet was still a novelty, that hardly anyone [whom] I knew owned a personal computer.",
+          "answer": "whom"
         },
         {
-          "sentence": "The council has just announced that the old cinema, ...... we all used to go on Friday evenings, will be converted into luxury apartments.",
-          "answer": "where"
+          "sentence": "The council has just announced that the old cinema, [where] we all used to go on Friday evenings, will be converted into luxury apartments.",
+          "answer": "OK"
         },
         {
-          "sentence": "Rio de Janeiro is a city ...... I've always dreamed of visiting.",
+          "sentence": "Rio de Janeiro is a city [which] I've always dreamed of visiting.",
           "answer": "which"
         },
         {
-          "sentence": "Do you remember the afternoon ...... we got completely lost on the way to the festival?",
+          "sentence": "Do you remember the afternoon [when] we got completely lost on the way to the festival?",
           "answer": "when"
         },
         {
-          "sentence": "The horses ...... are grazing in the far field belong to the local riding school.",
+          "sentence": "The horses [which] are grazing in the far field belong to the local riding school.",
           "answer": "which"
         },
         {
-          "sentence": "Our tortoise, Archie, ...... can never resist a piece of lettuce, turned forty last spring.",
-          "answer": "which"
-        },
-        {
-          "sentence": "Elena decided to relocate to another country, ...... struck most of her colleagues as a very bold move.",
-          "answer": "which"
-        },
-        {
-          "sentence": "The department head to ...... you should address your application is currently on sabbatical.",
-          "answer": "whom"
-        },
-        {
-          "sentence": "...... amazes me is the sheer level of detail in those blueprints, ...... is truly extraordinary.",
-          "answer": "What, which"
-        },
-        {
-          "sentence": "Felix was the only candidate ...... the entire panel agreed was truly outstanding.",
-          "answer": "whom"
+          "sentence": "The department head to [whom] you should address your application is currently on sabbatical.",
+          "answer": "OK"
         }
-      ]
+      ],
+      "subtype": "find-extra-word"
     },
     {
       "type": "exercise",
       "title": "B: Replacing with 'That'",
-      "instructions": "Tick the relative pronouns in exercise A which can be replaced by that.",
+      "instructions": "Read the sentences and click the marked relative pronoun only when it can be omitted. If it cannot, select OK.",
       "items": [
         {
-          "sentence": "Sentence 2: the reason ...... he decided",
-          "answer": "✓ (why can be replaced by that)"
+          "sentence": "The coastal town [which] Marcus grew up in is only a short drive from here.",
+          "answer": "which"
         },
         {
-          "sentence": "Sentence 3: The town ...... Marcus grew up in",
-          "answer": "✓ (which can be replaced by that)"
+          "sentence": "It was back in the early 1990s, when the internet was still a novelty, that hardly anyone [whom] I knew owned a personal computer.",
+          "answer": "whom"
         },
         {
-          "sentence": "Sentence 5: hardly anyone ...... I knew",
-          "answer": "✓ (whom can be replaced by that)"
+          "sentence": "Rio de Janeiro is a city [which] I've always dreamed of visiting.",
+          "answer": "which"
         },
         {
-          "sentence": "Sentence 7: a city ...... I've always dreamed of visiting",
-          "answer": "✓ (which can be replaced by that)"
+          "sentence": "Do you remember the afternoon [when] we got completely lost on the way to the festival?",
+          "answer": "when"
         },
         {
-          "sentence": "Sentence 8: the afternoon ...... we got completely lost",
-          "answer": "✓ (when can be replaced by that)"
+          "sentence": "I've never really understood the reason [why] he decided to resign from such a well-paid position.",
+          "answer": "why"
         },
         {
-          "sentence": "Sentence 9: The horses ...... are grazing",
-          "answer": "✓ (which can be replaced by that)"
+          "sentence": "Felix was the only candidate [whom] the entire panel agreed was truly outstanding.",
+          "answer": "whom"
         },
         {
-          "sentence": "Sentence 14: the only candidate ...... the panel agreed",
-          "answer": "✓ (whom can be replaced by that)"
+          "sentence": "Natasha, [whose] paintings you admired at the gallery last month, is exhibiting again in the spring.",
+          "answer": "OK"
         },
         {
-          "sentence": "Sentence 1, 4, 6, 10, 11, 12, 13: cannot be replaced by that (non-defining clauses, after prepositions, or 'what')",
-          "answer": "Not possible"
+          "sentence": "The department head to [whom] you should address your application is currently on sabbatical.",
+          "answer": "OK"
         }
-      ]
+      ],
+      "subtype": "find-extra-word"
     },
     {
       "type": "exercise",
       "title": "C: Omitted Relative Pronouns",
-      "instructions": "Circle the relative pronouns in exercise A which can be omitted.",
+      "instructions": "If the relative pronoun is correct, write OK. If it is incorrect, rewrite it correctly.",
       "items": [
         {
           "sentence": "Sentence 3: The town (which) Marcus grew up in",
-          "answer": "✓ (which can be omitted - object)"
+          "answer": "OK"
         },
         {
           "sentence": "Sentence 5: hardly anyone (whom) I knew",
-          "answer": "✓ (whom can be omitted - object)"
+          "answer": "OK"
         },
         {
           "sentence": "Sentence 7: a city (which) I've always dreamed of visiting",
-          "answer": "✓ (which can be omitted - object)"
+          "answer": "OK"
         },
         {
           "sentence": "Sentence 8: the afternoon (when) we got completely lost",
-          "answer": "✓ (when can be omitted)"
+          "answer": "OK"
         },
         {
           "sentence": "Sentence 14: the only candidate (whom) the panel agreed was outstanding",
-          "answer": "✓ (whom can be omitted - object)"
+          "answer": "OK"
         },
         {
           "sentence": "Sentence 2: reason why - 'why' can be omitted",
-          "answer": "✓ (why can be omitted)"
+          "answer": "OK"
         },
         {
           "sentence": "Sentence 1, 4, 6, 9, 10, 11, 12, 13: cannot be omitted",
@@ -330,53 +316,11 @@
     {
       "type": "exercise",
       "title": "D: Error Correction",
-      "instructions": "If a word or phrase in bold is correct, put a tick. If it is incorrect, rewrite it correctly.",
-      "items": [
-        {
-          "sentence": "We found the bicycle **that we'd repaired** it last week at the back of the shed.",
-          "answer": "that we'd repaired"
-        },
-        {
-          "sentence": "Could any students **who's** surnames begin with T please come to the front?",
-          "answer": "whose"
-        },
-        {
-          "sentence": "The evening **which I** first heard that piece of music, I knew I had to learn it.",
-          "answer": "when I"
-        },
-        {
-          "sentence": "To Whom It May Concern is the standard opening for a formal business letter.",
-          "answer": "✓"
-        },
-        {
-          "sentence": "The colleague **who I spoke with** turned out to be surprisingly helpful.",
-          "answer": "✓"
-        },
-        {
-          "sentence": "The novel **which I've been meaning to read** it is the one everyone has been talking about.",
-          "answer": "which I've been meaning to read"
-        },
-        {
-          "sentence": "No, the bridge where **you took those photos there** was demolished a few years back.",
-          "answer": "you took those photos"
-        },
-        {
-          "sentence": "Could you give me just one **reason why** you would say something like that?",
-          "answer": "✓"
-        },
-        {
-          "sentence": "The bench **where we sat** at had a perfect view of the harbour.",
-          "answer": "that we sat"
-        },
-        {
-          "sentence": "Surprises me is how quickly attitudes towards remote working have changed.",
-          "answer": "What surprises me"
-        },
-        {
-          "sentence": "The man **whose passport you just stamped** it is a retired diplomat.",
-          "answer": "whose passport you just stamped"
-        }
-      ]
+      "instructions": "Read the full text and click the comma pills where a comma is needed.",
+      "items": [],
+      "subtype": "word-spot",
+      "passage": "My sister who lives in Madrid [[,]] is visiting next week [[,]] and my brother who works in Lisbon is coming too [[,]] if he can leave early. The report that you sent yesterday [[,]] was very clear [[,]] and we can submit it this afternoon.",
+      "answer": "1,3,5"
     },
     {
       "type": "exercise",
@@ -470,7 +414,8 @@
           "sentence": "The director produced over thirty documentaries, several ...... which have gone on to win major awards.",
           "answer": "of"
         }
-      ]
+      ],
+      "textareaAnswer": true
     },
     {
       "type": "exercise",
@@ -569,54 +514,54 @@
     {
       "type": "exercise",
       "title": "I: Participle Clause Forms",
-      "instructions": "Write the verb in brackets in the correct form. Write only one or two words in each gap.",
+      "instructions": "Write the verb in brackets in the correct form in each hint pill.",
       "items": [
         {
-          "sentence": "I'd love to work on an international project, ...... (give) the opportunity.",
+          "sentence": "I'd love to work on an international project, (1) ...... (give) the opportunity.",
           "answer": "given"
         },
         {
-          "sentence": "After ...... (get) such critical feedback on the first draft, she rewrote the entire chapter.",
+          "sentence": "After (2) ...... (get) such critical feedback on the first draft, she rewrote the entire chapter.",
           "answer": "getting"
         },
         {
-          "sentence": "The three candidates ...... (select) for the final round have not yet been publicly announced.",
+          "sentence": "The three candidates (3) ...... (select) for the final round have not yet been publicly announced.",
           "answer": "selected"
         },
         {
-          "sentence": "We were only offered a refund after ...... (complain) directly to the store manager.",
+          "sentence": "We were only offered a refund after (4) ...... (complain) directly to the store manager.",
           "answer": "complaining"
         },
         {
-          "sentence": "...... (visit) the exhibition already, Priya was eager to hear her friend's first impressions.",
+          "sentence": "(5) ...... (visit) the exhibition already, Priya was eager to hear her friend's first impressions.",
           "answer": "Having visited"
         },
         {
-          "sentence": "...... (cycle) along the coastal path, the tourists were thrilled to spot a pod of dolphins.",
+          "sentence": "(6) ...... (cycle) along the coastal path, the tourists were thrilled to spot a pod of dolphins.",
           "answer": "Cycling"
         },
         {
-          "sentence": "...... (send) in her resignation, she felt an immediate sense of relief.",
+          "sentence": "(7) ...... (send) in her resignation, she felt an immediate sense of relief.",
           "answer": "Having sent"
         },
         {
-          "sentence": "Is the Ritz the only hotel in the city ...... (host) the symposium this year?",
+          "sentence": "Is the Ritz the only hotel in the city (8) ...... (host) the symposium this year?",
           "answer": "to host"
         },
         {
-          "sentence": "...... (wish) to cause offence, Claire chose her words very carefully.",
+          "sentence": "(9) ...... (wish) to cause offence, Claire chose her words very carefully.",
           "answer": "Not wishing"
         },
         {
-          "sentence": "It's the project manager's role ...... (coordinate) all the different departments throughout the process.",
+          "sentence": "It's the project manager's role (10) ...... (coordinate) all the different departments throughout the process.",
           "answer": "to coordinate"
         },
         {
-          "sentence": "...... (injure) in the opening set, the tennis player struggled to maintain her usual pace.",
+          "sentence": "(11) ...... (injure) in the opening set, the tennis player struggled to maintain her usual pace.",
           "answer": "Injured"
         },
         {
-          "sentence": "...... (collect) vintage maps is a surprisingly popular hobby!",
+          "sentence": "(12) ...... (collect) vintage maps is a surprisingly popular hobby!",
           "answer": "Collecting"
         }
       ]
@@ -624,56 +569,46 @@
     {
       "type": "exercise",
       "title": "J: Concession Clauses",
-      "instructions": "Choose the correct answer.",
+      "instructions": "Complete each transformation with the correct linker/expression. Use the word shown.",
       "items": [
         {
-          "sentence": "...... experienced coaches and seasoned athletes predicted that the solo crossing would end in failure, the young adventurer set off alone across the Pacific.",
-          "options": ["Despite", "While", "However", "In spite"],
+          "sentence": "...... experienced coaches and seasoned athletes predicted that the solo crossing would end in failure, the young adventurer set off alone across the Pacific. (WHILE)",
           "answer": "While"
         },
         {
-          "sentence": "She battled fierce storms and repeated equipment failures, ...... , and nearly abandoned the attempt on several occasions.",
-          "options": ["whereas", "although", "however", "despite"],
+          "sentence": "She battled fierce storms and repeated equipment failures, ...... , and nearly abandoned the attempt on several occasions. (HOWEVER)",
           "answer": "however"
         },
         {
-          "sentence": "Determined ...... she was, there were moments when giving up felt like the only sensible course of action.",
-          "options": ["as", "for", "with", "so"],
+          "sentence": "Determined ...... she was, there were moments when giving up felt like the only sensible course of action. (AS)",
           "answer": "as"
         },
         {
-          "sentence": "...... battling severe exhaustion and a painful injury, she maintained a meticulous logbook every single day at sea.",
-          "options": ["However", "Whereas", "Although", "Despite"],
+          "sentence": "...... battling severe exhaustion and a painful injury, she maintained a meticulous logbook every single day at sea. (DESPITE)",
           "answer": "Despite"
         },
         {
-          "sentence": "Her story doesn't end with the crossing, ...... .",
-          "options": ["even if", "even though", "although", "though"],
+          "sentence": "Her story doesn't end with the crossing, ...... . (THOUGH)",
           "answer": "though"
         },
         {
-          "sentence": "...... her having spent over two hundred days at sea in complete isolation, she displayed no signs of lasting psychological damage.",
-          "options": ["in spite of", "although", "however", "while"],
+          "sentence": "...... her having spent over two hundred days at sea in complete isolation, she displayed no signs of lasting psychological damage. (IN SPITE OF)",
           "answer": "in spite of"
         },
         {
-          "sentence": "She noted that ...... some days were filled with despair, others brought unexpected moments of profound calm.",
-          "options": ["nevertheless", "whereas", "in spite of", "however"],
+          "sentence": "She noted that ...... some days were filled with despair, others brought unexpected moments of profound calm. (WHEREAS)",
           "answer": "whereas"
         },
         {
-          "sentence": "...... the psychologist found her account difficult to believe at first, a subsequent investigation confirmed her observations.",
-          "options": ["In spite", "However", "Even though", "Despite"],
+          "sentence": "...... the psychologist found her account difficult to believe at first, a subsequent investigation confirmed her observations. (EVEN THOUGH)",
           "answer": "Even though"
         },
         {
-          "sentence": "...... as they tried, researchers were unable to fully explain why her psychological resilience proved so exceptional.",
-          "options": ["Most", "More", "Much", "Many"],
+          "sentence": "...... as they tried, researchers were unable to fully explain why her psychological resilience proved so exceptional. (MUCH)",
           "answer": "Much"
         },
         {
-          "sentence": "Even ...... one believes that human beings are fundamentally resilient, rowing across an ocean alone for two hundred days pushes that conviction to its very limits.",
-          "options": ["so", "if", "though", "that"],
+          "sentence": "Even ...... one believes that human beings are fundamentally resilient, rowing across an ocean alone for two hundred days pushes that conviction to its very limits. (IF)",
           "answer": "if"
         }
       ]
