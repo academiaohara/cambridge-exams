@@ -584,36 +584,44 @@
       "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
       "items": [
         {
-          "sentence": "Despite having searched the entire house, Oliver never found his lucky coin. **he**",
-          "answer": "Even **though he had searched** the entire house, Oliver never found his lucky coin."
+          "context": "Despite having searched the entire house, Oliver never found his lucky coin.",
+          "sentence": "Even ...... (HE) the entire house, Oliver never found his lucky coin.",
+          "answer": "though he had searched"
         },
         {
-          "sentence": "The renovation won't be finished before the opening whether the builders start right away or not. **even**",
-          "answer": "The renovation won't be finished before the opening **even if the builders start** right away."
+          "context": "The renovation won't be finished before the opening whether the builders start right away or not.",
+          "sentence": "The renovation won't be finished before the opening ...... (EVEN) right away.",
+          "answer": "even if the builders start"
         },
         {
-          "sentence": "The technicians are on strike but the service is still running. **spite**",
-          "answer": "The service is still running **in spite of the fact that** the technicians are on strike."
+          "context": "The technicians are on strike but the service is still running.",
+          "sentence": "The service is still running ...... (SPITE) the technicians are on strike.",
+          "answer": "in spite of the fact that"
         },
         {
-          "sentence": "Although nobody sent us directions, we still managed to find the venue. **given**",
-          "answer": "We still managed to find the venue in **spite of not being given** any directions."
+          "context": "Although nobody sent us directions, we still managed to find the venue.",
+          "sentence": "We still managed to find the venue in ...... (GIVEN) any directions.",
+          "answer": "spite of not being given"
         },
         {
-          "sentence": "Tom couldn't solve the puzzle despite really trying his hardest. **might**",
-          "answer": "Try **as he might**, Tom couldn't solve the puzzle."
+          "context": "Tom couldn't solve the puzzle despite really trying his hardest.",
+          "sentence": "Try ...... (MIGHT), Tom couldn't solve the puzzle.",
+          "answer": "as he might"
         },
         {
-          "sentence": "Although Rachel sang beautifully, she still wasn't selected for the lead role. **might**",
-          "answer": "However **beautifully she might sing**, Rachel still wasn't selected for the lead role."
+          "context": "Although Rachel sang beautifully, she still wasn't selected for the lead role.",
+          "sentence": "However ...... (MIGHT), Rachel still wasn't selected for the lead role.",
+          "answer": "beautifully she might sing"
         },
         {
-          "sentence": "I couldn't convince Maria in spite of my pleading with her to stay. **as**",
-          "answer": "Much **as I pleaded with her**, I couldn't convince Maria to stay."
+          "context": "I couldn't convince Maria in spite of my pleading with her to stay.",
+          "sentence": "Much ...... (AS), I couldn't convince Maria to stay.",
+          "answer": "as I pleaded with her"
         },
         {
-          "sentence": "Despite our being exhausted, we didn't consider for a moment that we wouldn't reach the summit. **though**",
-          "answer": "Exhausted **though we were**, we didn't consider for a moment that we wouldn't reach the summit."
+          "context": "Despite our being exhausted, we didn't consider for a moment that we wouldn't reach the summit.",
+          "sentence": "Exhausted ...... (THOUGH), we didn't consider for a moment that we wouldn't reach the summit.",
+          "answer": "though we were"
         }
       ]
     },
