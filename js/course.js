@@ -5,7 +5,9 @@
   var CU_PAGE_SIZE = 4; // max items per page in paginated course exercises (balanced 4+4 for 8-item sections)
   var CU_MC_BLANK = '<span class="cu-mc-blank">&#9135;&#9135;&#9135;&#9135;&#9135;</span>';
   var CU_DRAG_POOL_MARKER = '__POOL__';
+  // KWT-style gap marker: 5+ dots/ellipsis chars, 2+ unicode ellipses, or 3+ underscores.
   var CU_KWTRANS_GAP_PATTERN = /(?:[.\u2026]{5,}|\u2026{2,}|_{3,})/;
+  // Trailing keyword marker: "(KEYWORD)" or "(KEY / WORD)" in uppercase at sentence end.
   var CU_KWTRANS_KEYWORD_SUFFIX_PATTERN = /\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/;
 
   Object.assign(window.BentoGrid, {
@@ -1805,9 +1807,9 @@
           } else {
             isAnswer = (wordCore(token) === answerCore) ? '1' : '0';
           }
-          var isMarkedToken = bracketAnswerIdx !== -1 && ti === bracketAnswerIdx;
-          var isInteractiveToken = !onlyMarkedWordClickable || isMarkedToken;
-          if (isInteractiveToken) {
+          var isBracketMarkedToken = bracketAnswerIdx !== -1 && ti === bracketAnswerIdx;
+          var isClickableToken = !onlyMarkedWordClickable || isBracketMarkedToken;
+          if (isClickableToken) {
             html += '<span class="cu-few-word" ' +
               'data-few-is-answer="' + isAnswer + '" ' +
               'onclick="BentoGrid._toggleFewWord(this)" ' +
