@@ -4328,8 +4328,8 @@
               var qData = (BentoGrid._cuMcPassageData[secId] || {})[parseInt(gapNum)];
               var optText = '';
               if (qData) {
-                var opt = qData.options.find(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === letter; });
-                if (opt) optText = BentoGrid._getCuMcOptionText(opt);
+                var optIdx = qData.options.findIndex(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === letter; });
+                if (optIdx !== -1) optText = BentoGrid._getCuMcOptionText(qData.options[optIdx], optIdx);
               }
               BentoGrid._applyMcPassageGapSlot(gap, optText || letter, 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled');
               gap.classList.add('cu-mc-passage-gap-answered');
@@ -5414,10 +5414,10 @@
 
           // Resolve option texts for view toggling
           var qData = (BentoGrid._cuMcPassageData[secId] || {})[gapNum];
-          var correctOpt = qData ? qData.options.find(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === expected; }) : null;
-          var correctText = correctOpt ? BentoGrid._getCuMcOptionText(correctOpt) : expected;
-          var studentOpt = (given && qData) ? qData.options.find(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === given; }) : null;
-          var studentText = studentOpt ? BentoGrid._getCuMcOptionText(studentOpt) : '';
+          var correctOptIdx = qData ? qData.options.findIndex(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === expected; }) : -1;
+          var correctText = correctOptIdx !== -1 ? BentoGrid._getCuMcOptionText(qData.options[correctOptIdx], correctOptIdx) : expected;
+          var studentOptIdx = (given && qData) ? qData.options.findIndex(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === given; }) : -1;
+          var studentText = studentOptIdx !== -1 ? BentoGrid._getCuMcOptionText(qData.options[studentOptIdx], studentOptIdx) : '';
           gap.setAttribute('data-correct-text', correctText);
           gap.setAttribute('data-student-text', studentText);
 
@@ -6172,8 +6172,8 @@
           var gapNum = parseInt(gap.getAttribute('data-gap-num') || '0');
           var expected = (gap.getAttribute('data-answer') || '').trim().toUpperCase();
           var qData = (BentoGrid._cuMcPassageData[secId] || {})[gapNum];
-          var correctOpt = qData ? qData.options.find(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === expected; }) : null;
-          var correctText = correctOpt ? BentoGrid._getCuMcOptionText(correctOpt) : expected;
+          var correctOptIdx = qData ? qData.options.findIndex(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === expected; }) : -1;
+          var correctText = correctOptIdx !== -1 ? BentoGrid._getCuMcOptionText(qData.options[correctOptIdx], correctOptIdx) : expected;
           var slot = gap.querySelector('.cu-mc-passage-gap-slot');
           // Save current state
           gap.setAttribute('data-saved-gap-classes', gap.classList.toString());
