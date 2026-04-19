@@ -5041,9 +5041,11 @@
       var parts = raw.split(/,\s*/);
       if (inputCount > 1 && parts.length === 1) {
         var splitGapParts = raw
-          .split(/\s*(?:\.{3,}|…)\s*/)
+          .split(/\s*(?:\.{3}|…)\s*/)
           .map(function(p) { return p.trim(); })
           .filter(Boolean);
+        // Only switch to split-gap mode when parts align exactly with the rendered gaps.
+        // Otherwise keep the default comma-based interpretation as a safe fallback.
         if (splitGapParts.length === inputCount) parts = splitGapParts;
       }
       if (inputCount === 1 && parts.length > 1) return [raw];
