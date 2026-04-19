@@ -5,6 +5,8 @@
   var CU_PAGE_SIZE = 4; // max items per page in paginated course exercises (balanced 4+4 for 8-item sections)
   var CU_MC_BLANK = '<span class="cu-mc-blank">&#9135;&#9135;&#9135;&#9135;&#9135;</span>';
   var CU_DRAG_POOL_MARKER = '__POOL__';
+  var CU_KWTRANS_GAP_PATTERN = /(?:[.\u2026]{5,}|\u2026{2,}|_{3,})/;
+  var CU_KWTRANS_KEYWORD_SUFFIX_PATTERN = /\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/;
 
   Object.assign(window.BentoGrid, {
     // Extract display text from an MC option string like "A special" or "A. special"
@@ -3074,12 +3076,11 @@
 
       // Context + sentence transformation layout (A / KEYWORD / B).
       // Trigger only when sentence has a KWT-style gap and a trailing (KEYWORD).
-      var hasKwTransGapInSentence = /(?:[.\u2026]{5,}|\u2026{2,}|_{3,})/.test(sentence);
-      var keywordSuffixRegex = /\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/;
-      var keywordSuffixMatch = sentence.match(keywordSuffixRegex);
+      var hasKwTransGapInSentence = CU_KWTRANS_GAP_PATTERN.test(sentence);
+      var keywordSuffixMatch = sentence.match(CU_KWTRANS_KEYWORD_SUFFIX_PATTERN);
       if (item.context && hasKwTransGapInSentence && keywordSuffixMatch) {
         var kwKeyword = keywordSuffixMatch[1].trim();
-        var kwSentenceB = sentence.replace(keywordSuffixRegex, '');
+        var kwSentenceB = sentence.replace(CU_KWTRANS_KEYWORD_SUFFIX_PATTERN, '');
         return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
           numBadgeHtml +
           '<div class="cu-ex-sentence">' +
