@@ -3226,7 +3226,7 @@
       //   boldMarker  – text enclosed in **double asterisks**
       var numParen    = '(\\(\\d+\\)\\s+)?';
       var hintParen   = '\\(([^)]+)\\)';
-      var gapMarker   = '(?:[.\\u2026]{5,}|\\u2026{2,}|_{3,})';
+      var gapMarker   = '(?:[.\\u2026]{5,}|\\u2026{2,}|_{5,})';
       var boldMarker  = '\\*\\*[^*]+\\*\\*';
       var strikeMarker = '\\*[^*]+\\*';
       var tokenRegex = new RegExp(
