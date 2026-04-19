@@ -3345,6 +3345,11 @@ textarea.cu-gap-input.cu-gap-textarea {
   user-select: none;
 }
 
+.cu-few-word-static {
+  display: inline;
+  padding: 2px 3px;
+}
+
 .cu-few-word:hover {
   background: rgba(109, 40, 217, 0.08);
   border-color: rgba(109, 40, 217, 0.35);

@@ -5,6 +5,10 @@
   var CU_PAGE_SIZE = 4; // max items per page in paginated course exercises (balanced 4+4 for 8-item sections)
   var CU_MC_BLANK = '<span class="cu-mc-blank">&#9135;&#9135;&#9135;&#9135;&#9135;</span>';
   var CU_DRAG_POOL_MARKER = '__POOL__';
+  // KWT-style gap marker: 5+ dots/ellipsis chars, 2+ unicode ellipses, or 3+ underscores.
+  var CU_KWTRANS_GAP_PATTERN = /(?:[.\u2026]{5,}|\u2026{2,}|_{3,})/;
+  // Trailing keyword marker: "(KEYWORD)" or "(KEY / WORD)" in uppercase at sentence end.
+  var CU_KWTRANS_KEYWORD_SUFFIX_PATTERN = /\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/;
 
   Object.assign(window.BentoGrid, {
     // Extract display text from an MC option string like "A special" or "A. special"
@@ -1742,6 +1746,7 @@
     _renderCuFindExtraWordExercise: function(ex, idBase, secId, useQuestions) {
       var self = this;
       var items = useQuestions ? (ex.questions || []) : (ex.items || []);
+      var onlyMarkedWordClickable = !!ex.onlyMarkedWordClickable;
 
       // Strip **bold** markers, returning plain text
       function stripBold(str) {
@@ -1802,13 +1807,19 @@
           } else {
             isAnswer = (wordCore(token) === answerCore) ? '1' : '0';
           }
-          html += '<span class="cu-few-word" ' +
-            'data-few-is-answer="' + isAnswer + '" ' +
-            'onclick="BentoGrid._toggleFewWord(this)" ' +
-            'role="button" tabindex="0" ' +
-            'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleFewWord(this);event.preventDefault();}">' +
-            self._escapeHTML(token) +
-            '</span>';
+          var isBracketMarkedToken = bracketAnswerIdx !== -1 && ti === bracketAnswerIdx;
+          var isClickableToken = !onlyMarkedWordClickable || isBracketMarkedToken;
+          if (isClickableToken) {
+            html += '<span class="cu-few-word" ' +
+              'data-few-is-answer="' + isAnswer + '" ' +
+              'onclick="BentoGrid._toggleFewWord(this)" ' +
+              'role="button" tabindex="0" ' +
+              'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleFewWord(this);event.preventDefault();}">' +
+              self._escapeHTML(token) +
+              '</span>';
+          } else {
+            html += '<span class="cu-few-word-static">' + self._escapeHTML(token) + '</span>';
+          }
         });
         html += '</div>';
         html += '<button class="cu-few-ok-btn" onclick="BentoGrid._toggleFewOk(this)" ' +
@@ -3064,6 +3075,34 @@
       var isMC = !!(item.options && item.options.length);
       // Optional read-only context sentence rendered above the interactive sentence
       var contextHtml = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
+
+      // Context + sentence transformation layout (A / KEYWORD / B).
+      // Trigger only when sentence has a KWT-style gap and a trailing (KEYWORD).
+      var hasKwTransGapInSentence = CU_KWTRANS_GAP_PATTERN.test(sentence);
+      var keywordSuffixMatch = sentence.match(CU_KWTRANS_KEYWORD_SUFFIX_PATTERN);
+      if (item.context && hasKwTransGapInSentence && keywordSuffixMatch) {
+        var kwKeyword = keywordSuffixMatch[1].trim();
+        var kwSentenceB = sentence.replace(CU_KWTRANS_KEYWORD_SUFFIX_PATTERN, '');
+        return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
+          numBadgeHtml +
+          '<div class="cu-ex-sentence">' +
+            '<div class="cu-ex-kwtrans">' +
+              '<div class="cu-ex-kwtrans-row">' +
+                '<span class="cu-ex-kwtrans-label">A</span>' +
+                '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(item.context, inputId + '_a', true) + '</div>' +
+              '</div>' +
+              '<div class="cu-kwtrans-keyword-row"><span class="cu-kwtrans-keyword">' + self._escapeHTML(kwKeyword) + '</span></div>' +
+              '<div class="cu-ex-kwtrans-row">' +
+                '<span class="cu-ex-kwtrans-label">B</span>' +
+                '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(kwSentenceB, inputId + '_b') + '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="cu-ex-foot">' +
+            '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
+          '</div>' +
+        '</div>';
+      }
 
       // When showOkBtn is true (e.g. Exercise H style), all items get an OK fill button
       // alongside the text input. Clicking OK fills the input with "OK". The answer field
