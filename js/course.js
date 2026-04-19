@@ -4118,7 +4118,8 @@
       sec.querySelectorAll('.cu-comma-item').forEach(function(item) {
         var selected = [];
         item.querySelectorAll('.cu-comma-slot').forEach(function(slot) {
-          if (slot.classList.contains('cu-comma-selected')) selected.push(parseInt(slot.getAttribute('data-comma-slot-idx') || '-1'));
+          var idx = parseInt(slot.getAttribute('data-comma-slot-idx') || '-1', 10);
+          if (idx >= 0 && slot.classList.contains('cu-comma-selected')) selected.push(idx);
         });
         commaState.push(selected);
       });
@@ -5301,7 +5302,7 @@
         var selected = [];
         item.querySelectorAll('.cu-comma-slot').forEach(function(slot) {
           var idx = parseInt(slot.getAttribute('data-comma-slot-idx') || '-1', 10);
-          if (slot.classList.contains('cu-comma-selected')) selected.push(idx);
+          if (idx >= 0 && slot.classList.contains('cu-comma-selected')) selected.push(idx);
           slot.disabled = true;
           slot.setAttribute('data-comma-disabled', '1');
           slot.classList.remove('cu-comma-correct', 'cu-comma-incorrect', 'cu-comma-reveal', 'cu-comma-show-correct');
