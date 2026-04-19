@@ -892,6 +892,18 @@
       "E": {
         "title": "Correct the incorrect word",
         "instructions": "If the word in bold is correct, write OK. If it is incorrect, replace it with one of the words in bold from the other sentences.",
+        "words": [
+          "advocate",
+          "heritage",
+          "action",
+          "class",
+          "alleviate",
+          "immigration",
+          "abolish",
+          "privileged",
+          "prosecute",
+          "charity"
+        ],
         "questions": [
           {
             "sentence": "Several MPs have called on the government to **advocate** the controversial vagrancy law that dates back to the 1800s.",
@@ -1414,102 +1426,74 @@
       },
       "O": {
         "title": "Prefix mis-",
-        "type": "yn",
-        "instructions": "The prefix mis-, as in misgovern, can be used with some nouns and verbs to mean 'bad/badly' or 'wrong/wrongly'. Mark with OK the words below which can form words using mis-.",
-        "questions": [
-          {
-            "word": "apply",
-            "answer": "YES"
-          },
-          {
-            "word": "behave",
-            "answer": "YES"
-          },
-          {
-            "word": "calculate",
-            "answer": "YES"
-          },
-          {
-            "word": "conduct",
-            "answer": "YES"
-          },
-          {
-            "word": "direct",
-            "answer": "YES"
-          },
-          {
-            "word": "fire",
-            "answer": "YES"
-          },
-          {
-            "word": "fortune",
-            "answer": "YES"
-          },
-          {
-            "word": "hear",
-            "answer": "YES"
-          },
-          {
-            "word": "inform",
-            "answer": "YES"
-          },
-          {
-            "word": "judge",
-            "answer": "YES"
-          },
-          {
-            "word": "lead",
-            "answer": "YES"
-          },
-          {
-            "word": "listen",
-            "answer": "NO"
-          },
-          {
-            "word": "manage",
-            "answer": "YES"
-          },
-          {
-            "word": "organise",
-            "answer": "YES"
-          },
-          {
-            "word": "place",
-            "answer": "YES"
-          },
-          {
-            "word": "print",
-            "answer": "YES"
-          },
-          {
-            "word": "read",
-            "answer": "YES"
-          },
-          {
-            "word": "satisfy",
-            "answer": "NO"
-          },
-          {
-            "word": "spell",
-            "answer": "YES"
-          },
-          {
-            "word": "trust",
-            "answer": "YES"
-          },
-          {
-            "word": "understand",
-            "answer": "YES"
-          },
-          {
-            "word": "use",
-            "answer": "YES"
-          }
-        ]
+        "type": "drag-category",
+        "instructions": "Drag all the words into the correct box: Yes (can take the prefix mis-) or No (cannot take mis-).",
+        "categories": [
+          "Yes",
+          "No"
+        ],
+        "words": [
+          "apply",
+          "behave",
+          "calculate",
+          "conduct",
+          "direct",
+          "fire",
+          "fortune",
+          "hear",
+          "inform",
+          "judge",
+          "lead",
+          "listen",
+          "manage",
+          "organise",
+          "place",
+          "print",
+          "read",
+          "satisfy",
+          "spell",
+          "trust",
+          "understand",
+          "use"
+        ],
+        "answers": {
+          "apply": "Yes",
+          "behave": "Yes",
+          "calculate": "Yes",
+          "conduct": "Yes",
+          "direct": "Yes",
+          "fire": "Yes",
+          "fortune": "Yes",
+          "hear": "Yes",
+          "inform": "Yes",
+          "judge": "Yes",
+          "lead": "Yes",
+          "listen": "No",
+          "manage": "Yes",
+          "organise": "Yes",
+          "place": "Yes",
+          "print": "Yes",
+          "read": "Yes",
+          "satisfy": "No",
+          "spell": "Yes",
+          "trust": "Yes",
+          "understand": "Yes",
+          "use": "Yes"
+        }
       },
       "P": {
         "title": "Complete the sentences using words formed in exercise O",
         "instructions": "Complete the sentences using words formed in exercise O in the correct form.",
+        "words": [
+          "misread",
+          "misfortune",
+          "mismanaged",
+          "miscalculated",
+          "misbehave",
+          "misspell",
+          "misjudged",
+          "misfired"
+        ],
         "questions": [
           {
             "sentence": "I was sure the meeting was on Thursday – I must have ...... the email.",
