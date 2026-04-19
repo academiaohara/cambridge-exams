@@ -937,7 +937,20 @@
         ]
       },
       "D": {
-        "title": "If the word in bold is correct, write OK. If it is incorrect, replace it with one of the words in bold from the other sentences.",
+        "title": "Correct the incorrect word.",
+        "instructions": "If the word in bold is correct, write OK. If it is incorrect, replace it with one of the words in bold from the other sentences.",
+        "words": [
+          "sedentary",
+          "solitude",
+          "venue",
+          "outing",
+          "lifestyle",
+          "fatigue",
+          "absorbing",
+          "casual",
+          "tedious",
+          "leave"
+        ],
         "questions": [
           {
             "sentence": "It’s a very informal garden party, so come in **sedentary** clothes – there’s no need to dress up.",
@@ -1013,51 +1026,46 @@
       },
       "F": {
         "title": "Match to make sentences.",
+        "instructions": "Match the sentence beginnings (1–8) with the correct endings (A–H) by dragging the right column.",
+        "type": "matching",
         "questions": [
           {
-            "sentence": "When I have free time, I tend to spend it just hanging",
-            "match": "E",
-            "answer": "E. out at the beach with a few close friends."
+            "sentence": "When I have free time, I tend to spend it just hanging **E** out at the beach with a few close friends.",
+            "answer": "E"
           },
           {
-            "sentence": "What I enjoy most about camping is simply messing",
-            "match": "C",
-            "answer": "C. about in the river with the canoes all afternoon."
+            "sentence": "What I enjoy most about camping is simply messing **C** about in the river with the canoes all afternoon.",
+            "answer": "C"
           },
           {
-            "sentence": "The great advantage of being a freelancer is that you can take",
-            "match": "D",
-            "answer": "D. a couple of weeks off whenever you need a real break."
+            "sentence": "The great advantage of being a freelancer is that you can take **D** a couple of weeks off whenever you need a real break.",
+            "answer": "D"
           },
           {
-            "sentence": "Sophie spends most of her weekends seeking",
-            "match": "F",
-            "answer": "F. out remote mountain trails that few people have explored."
+            "sentence": "Sophie spends most of her weekends seeking **F** out remote mountain trails that few people have explored.",
+            "answer": "F"
           },
           {
-            "sentence": "Most of my leisure time seems to centre",
-            "match": "G",
-            "answer": "G. around gardening or my other great passion, yoga."
+            "sentence": "Most of my leisure time seems to centre **G** around gardening or my other great passion, yoga.",
+            "answer": "G"
           },
           {
-            "sentence": "The road trip we have planned for this summer takes",
-            "match": "A",
-            "answer": "A. in several breathtaking national parks along the coast."
+            "sentence": "The road trip we have planned for this summer takes **A** in several breathtaking national parks along the coast.",
+            "answer": "A"
           },
           {
-            "sentence": "My flatmate is not someone who goes in",
-            "match": "B",
-            "answer": "B. for energetic pursuits; she much prefers sketching at home."
+            "sentence": "My flatmate is not someone who goes in **B** for energetic pursuits; she much prefers sketching at home.",
+            "answer": "B"
           },
           {
-            "sentence": "Quite surprisingly, within just a few weeks I picked",
-            "match": "H",
-            "answer": "H. up the basics of Portuguese after only a handful of evening classes."
+            "sentence": "Quite surprisingly, within just a few weeks I picked **H** up the basics of Portuguese after only a handful of evening classes.",
+            "answer": "H"
           }
         ]
       },
       "G": {
-        "title": "Complete using a phrasal verb with a word from box A in the right form and a word from box B. You need to use one word from box B more than once.",
+        "title": "Complete with phrasal verbs.",
+        "instructions": "Complete using a phrasal verb with a word from box A in the right form and a word from box B. You need to use one word from box B more than once.",
         "boxes": {
           "A": [
             "get",
@@ -1086,7 +1094,7 @@
           },
           {
             "sentence": "If you’re .................... Sophie .................... on Saturday, there’s a brilliant new rooftop cinema she’d absolutely love.",
-            "answer": "taking out"
+            "answer": "taking, out"
           },
           {
             "sentence": "This podcast seemed dull at first, but I’m really .................... it now.",
@@ -1152,46 +1160,47 @@
         ]
       },
       "I": {
-        "title": "One word in each sentence is incorrect. Underline the incorrect word and write the correct word.",
+        "title": "One word in each sentence is incorrect. Underline the incorrect word and write the correct word on the line.",
+        "instructions": "One word in each sentence is incorrect. Underline the incorrect word and write the correct word on the line.",
         "questions": [
           {
-            "sentence": "The CEO announced that all employees would be taken the Friday afternoon off as a reward for hitting their quarterly targets.",
+            "sentence": "The CEO announced that all employees would be **taken** the Friday afternoon off as a reward for hitting their quarterly targets.",
             "answer": "given"
           },
           {
-            "sentence": "I understand you think I should change careers, but ultimately it is not your choice to do.",
+            "sentence": "I understand you think I should change careers, but ultimately it is not your **choice** to do.",
             "answer": "decision"
           },
           {
-            "sentence": "The catalogue is enormous, so listeners can pretty much pick and select whatever genre appeals to them most.",
+            "sentence": "The catalogue is enormous, so listeners can pretty much pick and **select** whatever genre appeals to them most.",
             "answer": "choose"
           },
           {
-            "sentence": "If the landlord refuses to lower the rent, she said she would have to think her options carefully.",
+            "sentence": "If the landlord refuses to lower the rent, she said she would have to **think** her options carefully.",
             "answer": "consider"
           },
           {
-            "sentence": "The headmaster stated that the school had no option apart to postpone the end-of-year ceremony.",
+            "sentence": "The headmaster stated that the school had no option **apart** to postpone the end-of-year ceremony.",
             "answer": "but"
           },
           {
-            "sentence": "He is a natural communicator and is only very eager to share his expertise with colleagues.",
+            "sentence": "He is a natural communicator and is only **very** eager to share his expertise with colleagues.",
             "answer": "too"
           },
           {
-            "sentence": "She practised her presentation as mad before the big conference.",
+            "sentence": "She practised her presentation as **mad** before the big conference.",
             "answer": "like"
           },
           {
-            "sentence": "After reviewing the new evidence, the judge decided to let the defendant be free.",
+            "sentence": "After reviewing the new evidence, the judge decided to let the defendant be **free**.",
             "answer": "go"
           },
           {
-            "sentence": "After careful consideration, he decided in favour for accepting the overseas scholarship.",
+            "sentence": "After careful consideration, he decided in favour **for** accepting the overseas scholarship.",
             "answer": "of"
           },
           {
-            "sentence": "You cannot always act with impulse; sometimes you really do need to plan ahead.",
+            "sentence": "You cannot always act **with** impulse; sometimes you really do need to plan ahead.",
             "answer": "on"
           }
         ]
@@ -1561,6 +1570,17 @@
       },
       "P": {
         "title": "Complete the sentences using words formed in exercise O.",
+        "instructions": "Complete the sentences using words formed in exercise O.",
+        "words": [
+          "assistance",
+          "resemblance",
+          "reference",
+          "disturbance",
+          "endurance",
+          "persistence",
+          "existence",
+          "resistance"
+        ],
         "questions": [
           {
             "sentence": "The charity provides practical ...... to families who have recently arrived in the country and are finding it hard to settle in.",
