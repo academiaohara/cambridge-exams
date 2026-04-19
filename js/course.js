@@ -5034,6 +5034,24 @@
       return expanded.filter(Boolean);
     },
 
+    // Splits an item answer into per-gap parts.
+    // Supports comma-separated answers and split-gap format like "cross ... off".
+    _splitCourseAnswerParts: function(answer, inputCount) {
+      var raw = (answer || '').trim();
+      var parts = raw.split(/,\s*/);
+      if (inputCount > 1 && parts.length === 1) {
+        var splitGapParts = raw
+          .split(/\s*(?:\.{3}|…)\s*/)
+          .map(function(p) { return p.trim(); })
+          .filter(Boolean);
+        // Only switch to split-gap mode when parts align exactly with the rendered gaps.
+        // Otherwise keep the default comma-based interpretation as a safe fallback.
+        if (splitGapParts.length === inputCount) parts = splitGapParts;
+      }
+      if (inputCount === 1 && parts.length > 1) return [raw];
+      return parts;
+    },
+
     _doCheckCuExSection: function(sec) {
       var totalItems = 0;
       var correctItems = 0;
@@ -5349,7 +5367,6 @@
       }
       sec.querySelectorAll('.cu-ex-item:not(.cu-yn-item)').forEach(function(item) {
         var answer = (item.getAttribute('data-answer') || '').trim();
-        var answerParts = answer.split(/,\s*/);
         // For sync-items, only check one representative input (all are synced to the same value)
         var isSyncItem = item.classList.contains('cu-sync-item');
         var rawInputs = item.querySelectorAll('.cu-gap-input');
@@ -5366,11 +5383,7 @@
         } else {
           inputs = Array.prototype.slice.call(rawInputs);
         }
-        // If there is only one input but the answer contains commas, compare the full
-        // answer string rather than splitting — handles free-write sentences (e.g. Exercise E).
-        if (inputs.length === 1 && answerParts.length > 1) {
-          answerParts = [answer];
-        }
+        var answerParts = BentoGrid._splitCourseAnswerParts(answer, inputs.length);
         // Separate inline option groups from MC option groups
         var optGroups = {};
         var mcGroups = {};
@@ -5761,7 +5774,6 @@
         // Text inputs from cu-ex-items
         sec.querySelectorAll('.cu-ex-item, .cu-sync-item').forEach(function(item) {
           var answer = (item.getAttribute('data-answer') || '').trim();
-          var answerParts = answer.split(/,\s*/);
           var isSyncItem = item.classList.contains('cu-sync-item');
           var rawInputs = item.querySelectorAll('.cu-gap-input');
           var inputs;
@@ -5776,9 +5788,7 @@
           } else {
             inputs = Array.prototype.slice.call(rawInputs);
           }
-          if (inputs.length === 1 && answerParts.length > 1) {
-            answerParts = [answer];
-          }
+          var answerParts = BentoGrid._splitCourseAnswerParts(answer, inputs.length);
           inputs.forEach(function(inp, i) {
             inp.setAttribute('data-saved-value', inp.value);
             var correctRaw = (answerParts[i] || answerParts[0] || '').trim();
