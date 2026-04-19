@@ -381,6 +381,16 @@
       "type": "exercise",
       "title": "D: Place Inversions",
       "instructions": "Complete using a verb from the box in the correct form.",
+      "words": [
+        "be",
+        "appear",
+        "come",
+        "hang",
+        "lay",
+        "lie",
+        "sit",
+        "stand"
+      ],
       "items": [
         {
           "sentence": "'There (1) ...... our new head of department now,' Clara whispered.",
@@ -469,43 +479,53 @@
       "instructions": "Rewrite the sentences, starting with the words given.",
       "items": [
         {
-          "sentence": "The laboratory window was smashed by a falling tree branch.",
+          "context": "The laboratory window was smashed by a falling tree branch.",
+          "sentence": "It ......",
           "answer": "It was a falling tree branch that smashed the laboratory window."
         },
         {
-          "sentence": "I will never forget the day I discovered I had been accepted to medical school.",
+          "context": "I will never forget the day I discovered I had been accepted to medical school.",
+          "sentence": "The day on ......",
           "answer": "The day on which I discovered I had been accepted to medical school is one I'll never forget."
         },
         {
-          "sentence": "Nathan became a teacher to inspire students who had struggled at school.",
+          "context": "Nathan became a teacher to inspire students who had struggled at school.",
+          "sentence": "The reason ......",
           "answer": "The reason Nathan became a teacher was to inspire students who had struggled at school."
         },
         {
-          "sentence": "Completing the entire marathon without stopping was the only thing the runner wanted.",
+          "context": "Completing the entire marathon without stopping was the only thing the runner wanted.",
+          "sentence": "All ......",
           "answer": "All the runner wanted was to complete the entire marathon without stopping."
         },
         {
-          "sentence": "The cyclist failed to notice that the traffic light had turned red.",
+          "context": "The cyclist failed to notice that the traffic light had turned red.",
+          "sentence": "What happened ......",
           "answer": "What happened was that the cyclist failed to notice the traffic light had turned red."
         },
         {
-          "sentence": "Marie Curie discovered polonium.",
+          "context": "Marie Curie discovered polonium.",
+          "sentence": "The person ......",
           "answer": "The person who discovered polonium was Marie Curie."
         },
         {
-          "sentence": "Watching my elderly neighbour struggle alone made me feel deeply ashamed.",
+          "context": "Watching my elderly neighbour struggle alone made me feel deeply ashamed.",
+          "sentence": "What ......",
           "answer": "What made me feel deeply ashamed was watching my elderly neighbour struggle alone."
         },
         {
-          "sentence": "What we had to do first was reach agreement on a realistic budget.",
+          "context": "What we had to do first was reach agreement on a realistic budget.",
+          "sentence": "The first thing ......",
           "answer": "The first thing we had to do was reach agreement on a realistic budget."
         },
         {
-          "sentence": "There are excellent walking trails where we usually go on holiday.",
+          "context": "There are excellent walking trails where we usually go on holiday.",
+          "sentence": "The place ......",
           "answer": "The place where we usually go on holiday has excellent walking trails."
         },
         {
-          "sentence": "Darwin demonstrated that species change gradually over many generations.",
+          "context": "Darwin demonstrated that species change gradually over many generations.",
+          "sentence": "What ......",
           "answer": "What Darwin demonstrated was that species change gradually over many generations."
         }
       ]
