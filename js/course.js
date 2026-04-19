@@ -2720,11 +2720,28 @@
         var parsed = BentoGrid._parseCuMcOption(opt, optIdx);
         var letter = parsed.letter;
         var text = BentoGrid._escapeHTML(parsed.text);
-        html += '<button class="opt-btn" onclick="BentoGrid._selectCuMcAnswer(\'' + secId + '\',' + gapNum + ',\'' + letter + '\',\'' + text.replace(/'/g, "\\'") + '\')">' + text + '</button>';
+        html += '<button class="opt-btn cu-mc-passage-modal-btn"' +
+          ' data-sec-id="' + BentoGrid._escapeHTML(secId) + '"' +
+          ' data-gap-num="' + gapNum + '"' +
+          ' data-letter="' + BentoGrid._escapeHTML(letter) + '"' +
+          ' data-opt-idx="' + optIdx + '"' +
+          ' onclick="BentoGrid._selectCuMcAnswerFromModal(this)">' +
+          text + '</button>';
       });
       html += '</div>';
       body.innerHTML = html;
       overlay.style.display = 'flex';
+    },
+
+    _selectCuMcAnswerFromModal: function(btn) {
+      var secId = btn.getAttribute('data-sec-id') || '';
+      var gapNum = parseInt(btn.getAttribute('data-gap-num') || '0', 10);
+      var letter = (btn.getAttribute('data-letter') || '').toUpperCase();
+      var optIdx = parseInt(btn.getAttribute('data-opt-idx') || '-1', 10);
+      var qData = (BentoGrid._cuMcPassageData[secId] || {})[gapNum];
+      if (!qData || !Array.isArray(qData.options) || optIdx < 0 || optIdx >= qData.options.length) return;
+      var text = BentoGrid._getCuMcOptionText(qData.options[optIdx], optIdx);
+      BentoGrid._selectCuMcAnswer(secId, gapNum, letter, text);
     },
 
     _selectCuMcAnswer: function(secId, gapNum, letter, text) {
@@ -3214,10 +3231,10 @@
         var safeLetter = self._escapeHTML(letter);
         optHtml += '<button class="cu-option-btn cu-mc-option" data-group="' + oGroupId +
           '" data-mc-letter="' + safeLetter +
-          '" data-mc-text="' + text +
           '" data-pill-id="' + firstPillId +
           '" onclick="BentoGrid._selectMcOption(this)" type="button">' +
-          (parsed.showLetter ? '<span class="cu-mc-letter">' + safeLetter + '</span>' : '') + text + '</button>';
+          (parsed.showLetter ? '<span class="cu-mc-letter">' + safeLetter + '</span>' : '') +
+          '<span class="cu-mc-text">' + text + '</span></button>';
       });
       optHtml += '</div>';
       return sentenceHtml + optHtml;
@@ -3278,6 +3295,13 @@
       if (sec) BentoGrid._saveCuExSectionState(sec);
     },
 
+    _getCuMcButtonText: function(btn) {
+      if (!btn) return '';
+      var txtEl = btn.querySelector('.cu-mc-text');
+      if (txtEl) return (txtEl.textContent || '').trim();
+      return (btn.getAttribute('data-mc-text') || btn.textContent || '').trim();
+    },
+
     _selectMcOption: function(btn) {
       if (btn.disabled) return;
       var group = btn.getAttribute('data-group');
@@ -3287,7 +3311,7 @@
       btn.classList.add('cu-option-selected');
       // Update the gap pill in the sentence
       var pillId = btn.getAttribute('data-pill-id');
-      var text = btn.getAttribute('data-mc-text') || '';
+      var text = BentoGrid._getCuMcButtonText(btn);
       if (pillId) {
         var pill = document.getElementById(pillId);
         if (pill) {
@@ -4256,7 +4280,7 @@
                 var pill = document.getElementById(pillId);
                 if (pill) {
                   pill.classList.add('cu-mc-gap-pill-filled');
-                  pill.textContent = btn.getAttribute('data-mc-text') || btn.getAttribute('data-mc-letter') || '';
+                  pill.textContent = BentoGrid._getCuMcButtonText(btn) || btn.getAttribute('data-mc-letter') || '';
                 }
               }
             }
@@ -5764,14 +5788,14 @@
               mcPill.classList.remove('cu-mc-gap-pill-filled', 'cu-mc-gap-pill-correct', 'cu-mc-gap-pill-incorrect');
               if (selected) {
                 var pillText = mcMatched
-                  ? (selected.getAttribute('data-mc-text') || selected.getAttribute('data-mc-letter') || '')
-                  : (correctMcBtn.getAttribute('data-mc-text') || correctMcBtn.getAttribute('data-mc-letter') || '');
+                  ? (BentoGrid._getCuMcButtonText(selected) || selected.getAttribute('data-mc-letter') || '')
+                  : (BentoGrid._getCuMcButtonText(correctMcBtn) || correctMcBtn.getAttribute('data-mc-letter') || '');
                 mcPill.classList.add(mcMatched ? 'cu-mc-gap-pill-correct' : 'cu-mc-gap-pill-incorrect');
                 mcPill.textContent = pillText;
               } else {
                 // Nothing selected — show correct answer in default filled (blue) style
                 mcPill.classList.add('cu-mc-gap-pill-filled');
-                mcPill.textContent = correctMcBtn.getAttribute('data-mc-text') || correctMcBtn.getAttribute('data-mc-letter') || '';
+                mcPill.textContent = BentoGrid._getCuMcButtonText(correctMcBtn) || correctMcBtn.getAttribute('data-mc-letter') || '';
               }
             }
           }
@@ -6072,7 +6096,7 @@
                   saPill.setAttribute('data-saved-pill-filled', saPill.classList.contains('cu-mc-gap-pill-filled') ? '1' : saPill.classList.contains('cu-mc-gap-pill-correct') ? 'correct' : saPill.classList.contains('cu-mc-gap-pill-incorrect') ? 'incorrect' : '');
                   saPill.classList.remove('cu-mc-gap-pill-filled', 'cu-mc-gap-pill-correct', 'cu-mc-gap-pill-incorrect');
                   saPill.classList.add('cu-mc-gap-pill-filled');
-                  saPill.textContent = b.getAttribute('data-mc-text') || b.getAttribute('data-mc-letter') || '';
+                  saPill.textContent = BentoGrid._getCuMcButtonText(b) || b.getAttribute('data-mc-letter') || '';
                 }
               }
             });
