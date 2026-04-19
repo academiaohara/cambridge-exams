@@ -1681,7 +1681,7 @@
       if (!baseTokens.length || baseTokens.length !== ansTokensRaw.length) return [];
 
       function normalizeToken(tok) {
-        return (tok || '').toLowerCase().replace(/,+$/g, '');
+        return (tok || '').toLowerCase().replace(/,+$/, '');
       }
 
       var ansTokens = [];
@@ -1689,11 +1689,8 @@
       for (var i = 0; i < ansTokensRaw.length; i++) {
         var tok = ansTokensRaw[i];
         commaAfter.push(/,+$/.test(tok));
-        ansTokens.push(tok.replace(/,+$/g, ''));
-      }
-
-      for (var j = 0; j < baseTokens.length; j++) {
-        if (normalizeToken(baseTokens[j]) !== normalizeToken(ansTokens[j])) return [];
+        ansTokens.push(tok.replace(/,+$/, ''));
+        if (normalizeToken(baseTokens[i]) !== normalizeToken(ansTokens[i])) return [];
       }
 
       var slots = [];
@@ -5312,7 +5309,7 @@
         var selectedSet = {};
         selected.forEach(function(i) { selectedSet[i] = true; });
         var exactMatch = selected.length === expected.length &&
-          selected.every(function(i) { return !!expectedSet[i]; });
+          selected.every(function(i) { return expectedSet[i]; });
 
         if (exactMatch) {
           item.classList.add('cu-comma-item-correct');
