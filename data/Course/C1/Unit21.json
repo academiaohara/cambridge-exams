@@ -623,35 +623,43 @@
       "instructions": "Complete each second sentence using one of the two words in bold and any other words you need so that it has a similar meaning to the first sentence.",
       "items": [
         {
-          "sentence": "Only two students raised their hands during the entire lesson.",
+          "context": "Only two boys volunteered to hand out programmes.",
+          "sentence": "Only (double / couple) ...... boys volunteered to hand out programmes.",
           "answer": "a couple of"
         },
         {
-          "sentence": "Quite a few residents complained about the noise from the construction site.",
+          "context": "There were quite a few people at the party who I knew.",
+          "sentence": "There were (number / amount) ...... people at the party who I knew.",
           "answer": "a number of"
         },
         {
-          "sentence": "Back then, I had no experience of working within large organisations.",
+          "context": "When I was small, I'd never heard of computers.",
+          "sentence": "When I was (little / few) ...... girl, I'd never heard of computers.",
           "answer": "a little"
         },
         {
-          "sentence": "There's not much fuel left in the tank.",
+          "context": "There's not much ketchup left in the bottle.",
+          "sentence": "There's only (little / few) ...... ketchup left in the bottle.",
           "answer": "a little"
         },
         {
-          "sentence": "A handful of volunteers have already put their names down for the event.",
+          "context": "Some kids have put their names down already.",
+          "sentence": "(little / few) ...... kids have put their names down already.",
           "answer": "A few"
         },
         {
-          "sentence": "I'm sorry, but I barely have any cash on me right now.",
+          "context": "I haven't got much money on me, I'm afraid.",
+          "sentence": "I've only got (number / amount) ...... money on me, I'm afraid.",
           "answer": "a small amount of"
         },
         {
-          "sentence": "I couldn't follow a large portion of what the speaker was saying.",
+          "context": "I didn't understand a lot of what she said, to be honest.",
+          "sentence": "I didn't understand (much / many) ...... what she said, to be honest.",
           "answer": "much of"
         },
         {
-          "sentence": "Not enough young professionals are choosing careers in the public sector.",
+          "context": "Not enough British people can speak a foreign language.",
+          "sentence": "(little / few) ...... British people can speak a foreign language.",
           "answer": "Few"
         }
       ]
@@ -758,134 +766,92 @@
         {
           "sentence": "Is that sculpture really carved entirely out of ......?",
           "options": [
-            "A. a wood",
-            "B. wood"
+            "A a wood",
+            "B wood"
           ],
           "answer": "B"
         },
         {
           "sentence": "Let's play cards. Have we got a ...... somewhere?",
           "options": [
-            "A. pack",
-            "B. pair"
+            "A pack",
+            "B pair"
           ],
           "answer": "A"
         },
         {
           "sentence": "Luckily, only ...... of the paint was actually wasted.",
           "options": [
-            "A. little",
-            "B. a little"
+            "A little",
+            "B a little"
           ],
           "answer": "B"
         },
         {
           "sentence": "The ...... on the shop floor.",
           "options": [
-            "A. groceries are",
-            "B. grocery is"
+            "A groceries are",
+            "B grocery is"
           ],
           "answer": "A"
         },
         {
           "sentence": "Hardly ...... of the applications received met the minimum criteria.",
           "options": [
-            "A. any",
-            "B. some"
+            "A any",
+            "B some"
           ],
           "answer": "A"
         },
         {
           "sentence": "What ...... opportunity to witness the Northern Lights in person!",
           "options": [
-            "A. an unique",
-            "B. a unique"
+            "A an unique",
+            "B a unique"
           ],
           "answer": "B"
         },
         {
           "sentence": "You can't simply buy ...... — it has to be given freely.",
           "options": [
-            "A. a trust",
-            "B. trust"
+            "A a trust",
+            "B trust"
           ],
           "answer": "B"
         },
         {
           "sentence": "Almost ...... employee who attended the training said it had been valuable.",
           "options": [
-            "A. every",
-            "B. each"
+            "A every",
+            "B each"
           ],
           "answer": "A"
         }
       ]
     },
     {
-      "type": "exercise",
+      "type": "passage-input",
       "title": "I: Text completion",
-      "instructions": "Complete the text with a, an, the or the correct quantifier from the options given.",
-      "items": [
-        {
-          "sentence": "In (1) ...... field of professional photography, (2) ...... photographer typically earns income through licensing agreements.",
-          "answer": "the, a"
-        },
-        {
-          "sentence": "For (3) ...... image that is published commercially, they are entitled to receive a set fee.",
-          "answer": "every"
-        },
-        {
-          "sentence": "The more established the photographer, the greater their bargaining power, and (4) ...... higher the rates they can demand.",
-          "answer": "the"
-        },
-        {
-          "sentence": "Although financial uncertainty is common in this field, a skilled photographer can earn a (5) ...... deal of money from a single high-profile commission.",
-          "answer": "great"
-        },
-        {
-          "sentence": "You only have to look at (6) ...... fashion photographer Annie Leibovitz to see that.",
-          "answer": "the"
-        },
-        {
-          "sentence": "For (7) ...... illustrator, however, the financial situation is considerably more complex.",
-          "answer": "an"
-        },
-        {
-          "sentence": "An illustrator sells their artwork for (8) ...... flat fee.",
-          "answer": "a"
-        },
-        {
-          "sentence": "(9) ...... time that piece is reprinted or licensed, its commercial value grows.",
-          "answer": "Each / Every"
-        },
-        {
-          "sentence": "The illustrator does not, however, receive (10) ...... additional income from these subsequent uses.",
-          "answer": "any"
-        },
-        {
-          "sentence": "More than a (11) ...... illustrators today, though, are fully aware of this disparity, and so they practise what is sometimes called 'selective licensing'.",
-          "answer": "few"
-        },
-        {
-          "sentence": "They may produce, say, ten illustrations for an exhibition, but only allow a certain (12) ...... of them, say eight, to be sold immediately.",
-          "answer": "number"
-        },
-        {
-          "sentence": "The remaining two they keep back, in (13) ...... hope that their value will increase substantially over time.",
-          "answer": "the"
-        },
-        {
-          "sentence": "Since (14) ...... illegal copying of digital artwork via online platforms has become so widespread,",
-          "answer": "the"
-        },
-        {
-          "sentence": "(15) ...... illustrators and photographers have grown deeply concerned that their primary income stream will be undermined.",
-          "answer": "many / some"
-        },
-        {
-          "sentence": "Certainly, the (16) ...... creative industry — be it photography, illustration or graphic design — is under immense pressure, but there is still a vast (17) ...... of money to be made from original commissions.",
-          "answer": "whole, amount"
-        }
+      "instructions": "Write one word in each gap.",
+      "passage": "In (1) ...... field of professional photography, (2) ...... photographer typically earns income through licensing agreements.\nFor (3) ...... image that is published commercially, they are entitled to receive a set fee.\nThe more established the photographer, the greater their bargaining power, and (4) ...... higher the rates they can demand.\nAlthough financial uncertainty is common in this field, a skilled photographer can earn a (5) ...... deal of money from a single high-profile commission.\nYou only have to look at (6) ...... fashion photographer Annie Leibovitz to see that.\nFor (7) ...... illustrator, however, the financial situation is considerably more complex.\nAn illustrator sells their artwork for (8) ...... flat fee.\n(9) ...... time that piece is reprinted or licensed, its commercial value grows.\nThe illustrator does not, however, receive (10) ...... additional income from these subsequent uses.\nMore than a (11) ...... illustrators today, though, are fully aware of this disparity, and so they practise what is sometimes called 'selective licensing'.\nThey may produce, say, ten illustrations for an exhibition, but only allow a certain (12) ...... of them, say eight, to be sold immediately.\nThe remaining two they keep back, in (13) ...... hope that their value will increase substantially over time.\nSince (14) ...... illegal copying of digital artwork via online platforms has become so widespread, (15) ...... illustrators and photographers have grown deeply concerned that their primary income stream will be undermined.\nCertainly, the (16) ...... creative industry — be it photography, illustration or graphic design — is under immense pressure, but there is still a vast (17) ...... of money to be made from original commissions.",
+      "answers": [
+        "the",
+        "a",
+        "every",
+        "the",
+        "great",
+        "the",
+        "an",
+        "a",
+        "Each / Every",
+        "any",
+        "few",
+        "number",
+        "the",
+        "the",
+        "many / some",
+        "whole",
+        "amount"
       ]
     }
   ]
