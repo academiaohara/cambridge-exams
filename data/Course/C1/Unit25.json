@@ -489,6 +489,7 @@
       "type": "exercise",
       "title": "I: Verb Patterns (Infinitive/Gerund)",
       "instructions": "Write a verb from the box in the correct form in each gap.",
+      "words": ["get", "want", "do", "proceed", "reserve", "take", "work", "use", "turn", "like", "make", "speak"],
       "items": [
         {
           "sentence": "You'd better ask the caretaker how ………………… into the sports hall after hours.",
@@ -547,35 +548,43 @@
       "items": [
         {
           "sentence": "Do you deny ………………… this with the accused on the morning in question?",
-          "answer": "B discussing"
+          "options": ["discuss", "discussing", "to discuss", "having discussed"],
+          "answer": "B"
         },
         {
           "sentence": "Why did you refuse ………………… the inspector's questions? It really doesn't reflect well on you.",
-          "answer": "A to answer"
+          "options": ["to answer", "answering", "answer", "to answering"],
+          "answer": "A"
         },
         {
           "sentence": "It's high time Mr Walsh apologised to me ………………… me unreliable in front of the whole team.",
-          "answer": "C for calling"
+          "options": ["to call", "calling", "for calling", "of calling"],
+          "answer": "C"
         },
         {
           "sentence": "He may claim ………………… a black belt, but no one has ever seen him in action.",
-          "answer": "A having"
+          "options": ["having", "have", "to have", "to having"],
+          "answer": "A"
         },
         {
           "sentence": "The children suggested ………………… sushi for dinner tonight. Shall we?",
-          "answer": "C getting"
+          "options": ["to get", "get", "getting", "having got"],
+          "answer": "C"
         },
         {
           "sentence": "I do agree there ………………… straightforward answer to this dilemma.",
-          "answer": "A is no"
+          "options": ["is no", "are no", "has no", "have no"],
+          "answer": "A"
         },
         {
           "sentence": "Leo responded ………………… that at least he had always been honest with his colleagues.",
-          "answer": "C by saying"
+          "options": ["saying", "with saying", "by saying", "to say"],
+          "answer": "C"
         },
         {
           "sentence": "I'm begging ………………… .",
-          "answer": "A you to stay"
+          "options": ["you to stay", "that you stay", "you staying", "to stay you"],
+          "answer": "A"
         }
       ]
     },
