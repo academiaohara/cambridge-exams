@@ -3075,17 +3075,18 @@
       // Context + sentence transformation layout (A / KEYWORD / B).
       // Trigger only when sentence has a KWT-style gap and a trailing (KEYWORD).
       var hasKwTransGapInSentence = /(?:[.\u2026]{5,}|\u2026{2,}|_{3,})/.test(sentence);
-      var keywordSuffixMatch = sentence.match(/\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/);
+      var keywordSuffixRegex = /\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/;
+      var keywordSuffixMatch = sentence.match(keywordSuffixRegex);
       if (item.context && hasKwTransGapInSentence && keywordSuffixMatch) {
         var kwKeyword = keywordSuffixMatch[1].trim();
-        var kwSentenceB = sentence.replace(/\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/, '');
+        var kwSentenceB = sentence.replace(keywordSuffixRegex, '');
         return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
           numBadgeHtml +
           '<div class="cu-ex-sentence">' +
             '<div class="cu-ex-kwtrans">' +
               '<div class="cu-ex-kwtrans-row">' +
                 '<span class="cu-ex-kwtrans-label">A</span>' +
-                '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(item.context || '', inputId + '_a', true) + '</div>' +
+                '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(item.context, inputId + '_a', true) + '</div>' +
               '</div>' +
               '<div class="cu-kwtrans-keyword-row"><span class="cu-kwtrans-keyword">' + self._escapeHTML(kwKeyword) + '</span></div>' +
               '<div class="cu-ex-kwtrans-row">' +
