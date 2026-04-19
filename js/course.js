@@ -11,9 +11,28 @@
   var CU_KWTRANS_KEYWORD_SUFFIX_PATTERN = /\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/;
 
   Object.assign(window.BentoGrid, {
-    // Extract display text from an MC option string like "A special" or "A. special"
-    _getCuMcOptionText: function(optionStr) {
-      return (optionStr || '').slice(1).replace(/^[.)\s]+/, '').trim();
+    // Parse MC options. Supports both labelled options ("A text", "B. text")
+    // and plain options ("text"), assigning fallback letters by index.
+    _parseCuMcOption: function(optionStr, index) {
+      var trimmed = (optionStr || '').trim();
+      var m = trimmed.match(/^([A-Z])(?:[.)\s-]+)(.+)$/i);
+      if (m) {
+        return {
+          letter: m[1].toUpperCase(),
+          text: (m[2] || '').trim(),
+          showLetter: true
+        };
+      }
+      var fallbackIndex = typeof index === 'number' && index >= 0 ? index : 0;
+      return {
+        letter: String.fromCharCode(65 + (fallbackIndex % 26)),
+        text: trimmed,
+        showLetter: false
+      };
+    },
+
+    _getCuMcOptionText: function(optionStr, index) {
+      return this._parseCuMcOption(optionStr, index).text;
     },
 
     // Helper: set text in a mc-passage gap slot, handling split gaps (pre/mid/post).
@@ -2697,9 +2716,10 @@
       if (!overlay || !body) return;
       var html = '<div class="modal-header"><div class="modal-header-row"><span class="modal-q-circle">' + gapNum + '</span><p>Select an option</p></div></div>';
       html += '<div class="options-grid">';
-      qData.options.forEach(function(opt) {
-        var letter = opt.charAt(0).toUpperCase();
-        var text = BentoGrid._escapeHTML(BentoGrid._getCuMcOptionText(opt));
+      qData.options.forEach(function(opt, optIdx) {
+        var parsed = BentoGrid._parseCuMcOption(opt, optIdx);
+        var letter = parsed.letter;
+        var text = BentoGrid._escapeHTML(parsed.text);
         html += '<button class="opt-btn" onclick="BentoGrid._selectCuMcAnswer(\'' + secId + '\',' + gapNum + ',\'' + letter + '\',\'' + text.replace(/'/g, "\\'") + '\')">' + text + '</button>';
       });
       html += '</div>';
@@ -3187,16 +3207,16 @@
       // All options point to the first pill (counter resets per sentence, single gap expected for MC)
       var firstPillId = oGroupId + '-pill0';
       var optHtml = '<div class="cu-mc-options">';
-      options.forEach(function(opt) {
-        var trimmed = opt.trim();
-        var letter = trimmed.charAt(0).toUpperCase();
-        var text = self._escapeHTML(trimmed.slice(1).trim());
+      options.forEach(function(opt, optIdx) {
+        var parsed = self._parseCuMcOption(opt, optIdx);
+        var letter = parsed.letter;
+        var text = self._escapeHTML(parsed.text);
         optHtml += '<button class="cu-option-btn cu-mc-option" data-group="' + oGroupId +
           '" data-mc-letter="' + letter +
           '" data-mc-text="' + text +
           '" data-pill-id="' + firstPillId +
           '" onclick="BentoGrid._selectMcOption(this)" type="button">' +
-          '<span class="cu-mc-letter">' + letter + '</span>' + text + '</button>';
+          (parsed.showLetter ? '<span class="cu-mc-letter">' + letter + '</span>' : '') + text + '</button>';
       });
       optHtml += '</div>';
       return sentenceHtml + optHtml;
@@ -3213,10 +3233,10 @@
       if (!overlay || !body) return;
       var html = '<div class="modal-header"><div class="modal-header-row"><p>Select an option</p></div></div>';
       html += '<div class="options-grid">';
-      options.forEach(function(opt) {
-        var trimmed = opt.trim();
-        var letter = trimmed.charAt(0).toUpperCase();
-        var text = BentoGrid._escapeHTML(trimmed.slice(1).trim());
+      options.forEach(function(opt, optIdx) {
+        var parsed = BentoGrid._parseCuMcOption(opt, optIdx);
+        var letter = parsed.letter;
+        var text = BentoGrid._escapeHTML(parsed.text);
         html += '<button class="opt-btn cu-mc-item-modal-btn"' +
           ' data-group="' + BentoGrid._escapeHTML(oGroupId) + '"' +
           ' data-pill-id="' + BentoGrid._escapeHTML(pillId) + '"' +
@@ -4308,7 +4328,7 @@
               var qData = (BentoGrid._cuMcPassageData[secId] || {})[parseInt(gapNum)];
               var optText = '';
               if (qData) {
-                var opt = qData.options.find(function(o) { return o.charAt(0).toUpperCase() === letter; });
+                var opt = qData.options.find(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === letter; });
                 if (opt) optText = BentoGrid._getCuMcOptionText(opt);
               }
               BentoGrid._applyMcPassageGapSlot(gap, optText || letter, 'cu-mc-passage-gap-slot cu-mc-passage-gap-filled');
@@ -5394,9 +5414,9 @@
 
           // Resolve option texts for view toggling
           var qData = (BentoGrid._cuMcPassageData[secId] || {})[gapNum];
-          var correctOpt = qData ? qData.options.find(function(o) { return o.charAt(0).toUpperCase() === expected; }) : null;
+          var correctOpt = qData ? qData.options.find(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === expected; }) : null;
           var correctText = correctOpt ? BentoGrid._getCuMcOptionText(correctOpt) : expected;
-          var studentOpt = (given && qData) ? qData.options.find(function(o) { return o.charAt(0).toUpperCase() === given; }) : null;
+          var studentOpt = (given && qData) ? qData.options.find(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === given; }) : null;
           var studentText = studentOpt ? BentoGrid._getCuMcOptionText(studentOpt) : '';
           gap.setAttribute('data-correct-text', correctText);
           gap.setAttribute('data-student-text', studentText);
@@ -6152,7 +6172,7 @@
           var gapNum = parseInt(gap.getAttribute('data-gap-num') || '0');
           var expected = (gap.getAttribute('data-answer') || '').trim().toUpperCase();
           var qData = (BentoGrid._cuMcPassageData[secId] || {})[gapNum];
-          var correctOpt = qData ? qData.options.find(function(o) { return o.charAt(0).toUpperCase() === expected; }) : null;
+          var correctOpt = qData ? qData.options.find(function(o, oi) { return BentoGrid._parseCuMcOption(o, oi).letter === expected; }) : null;
           var correctText = correctOpt ? BentoGrid._getCuMcOptionText(correctOpt) : expected;
           var slot = gap.querySelector('.cu-mc-passage-gap-slot');
           // Save current state
