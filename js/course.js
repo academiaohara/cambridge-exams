@@ -3183,6 +3183,8 @@
       // Key Word Transformation: two sentences separated by \n with a visible gap marker
       // → show A / keyword / B rows. Plain line breaks should remain plain line breaks.
       var nlIdx = sentence.indexOf('\n');
+      // Treat as key-word transformation only when a clear gap marker is present:
+      // 5+ dots/ellipsis chars (..... / ………) or 3+ underscores (___).
       var hasKwTransGap = /(?:[.\u2026]{5,}|\u2026{2,}|_{3,})/.test(sentence);
       if (nlIdx !== -1 && hasKwTransGap) {
         var sentA = sentence.slice(0, nlIdx);
