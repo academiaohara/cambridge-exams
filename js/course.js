@@ -3222,11 +3222,11 @@
       // Individual sub-patterns:
       //   numParen    – optional number-only parens like "(1) "
       //   hintParen   – hint text in parens like "(you)" or "(I / just)"
-      //   gapMarker   – five or more dots/ellipsis characters
+      //   gapMarker   – five or more dots/ellipsis characters or underscore blanks
       //   boldMarker  – text enclosed in **double asterisks**
       var numParen    = '(\\(\\d+\\)\\s+)?';
       var hintParen   = '\\(([^)]+)\\)';
-      var gapMarker   = '(?:[.\\u2026]{5,}|\\u2026{2,})';
+      var gapMarker   = '(?:[.\\u2026]{5,}|\\u2026{2,}|_{5,})';
       var boldMarker  = '\\*\\*[^*]+\\*\\*';
       var strikeMarker = '\\*[^*]+\\*';
       var tokenRegex = new RegExp(
