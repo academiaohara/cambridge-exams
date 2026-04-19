@@ -3500,7 +3500,12 @@
       if (widthHost && widthHost.getBoundingClientRect) {
         maxWidth = Math.max(120, Math.floor(widthHost.getBoundingClientRect().width - 24));
       }
-      if (maxWidth > 0) newWidth = Math.min(newWidth, maxWidth);
+      if (input.classList.contains('cu-input-show-correct')) {
+        var viewportMax = Math.max(minWidth, Math.floor(window.innerWidth * 0.92));
+        newWidth = Math.min(newWidth, viewportMax);
+      } else if (maxWidth > 0) {
+        newWidth = Math.min(newWidth, maxWidth);
+      }
       input.style.width = newWidth + 'px';
       BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
     },
