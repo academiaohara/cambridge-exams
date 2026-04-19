@@ -3154,12 +3154,15 @@
 
     _formatTextWithHints: function(text) {
       var self = this;
+      function _withLineBreaks(str) {
+        return self._escapeHTML(str).replace(/\r?\n/g, '<br>');
+      }
       var result = '';
       var parenRegex = /\(([^)]+)\)/g;
       var lastIdx = 0;
       var m;
       while ((m = parenRegex.exec(text)) !== null) {
-        result += self._escapeHTML(text.slice(lastIdx, m.index));
+        result += _withLineBreaks(text.slice(lastIdx, m.index));
         var inner = m[1];
         if (/^\d+$/.test(inner.trim())) {
           // Number — render as circle badge
@@ -3170,16 +3173,20 @@
         }
         lastIdx = m.index + m[0].length;
       }
-      result += self._escapeHTML(text.slice(lastIdx));
+      result += _withLineBreaks(text.slice(lastIdx));
       return result;
     },
 
     _renderCourseExSentence: function(sentence, inputIdBase, useTextarea) {
       var self = this;
 
-      // Key Word Transformation: two sentences separated by \n → show A / keyword / B rows
+      // Key Word Transformation: two sentences separated by \n with a visible gap marker
+      // → show A / keyword / B rows. Plain line breaks should remain plain line breaks.
       var nlIdx = sentence.indexOf('\n');
-      if (nlIdx !== -1) {
+      // Treat as key-word transformation only when a clear gap marker is present:
+      // 5+ dots/ellipsis chars (..... / ………) or 3+ underscores (___).
+      var hasKwTransGap = /(?:[.\u2026]{5,}|\u2026{2,}|_{3,})/.test(sentence);
+      if (nlIdx !== -1 && hasKwTransGap) {
         var sentA = sentence.slice(0, nlIdx);
         var sentB = sentence.slice(nlIdx + 1);
         // Extract **keyword** from the end of sentA (e.g. "...decision. **account**")
