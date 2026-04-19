@@ -15,7 +15,7 @@
     // and plain options ("text"), assigning fallback letters by index.
     _parseCuMcOption: function(optionStr, index) {
       var trimmed = (optionStr || '').trim();
-      var m = trimmed.match(/^([A-Z])(?:[.)\s-]+)(.+)$/i);
+      var m = trimmed.match(/^([A-Za-z])(?:[.)\s-]+)(.+)$/);
       if (m) {
         return {
           letter: m[1].toUpperCase(),
@@ -3211,12 +3211,13 @@
         var parsed = self._parseCuMcOption(opt, optIdx);
         var letter = parsed.letter;
         var text = self._escapeHTML(parsed.text);
+        var safeLetter = self._escapeHTML(letter);
         optHtml += '<button class="cu-option-btn cu-mc-option" data-group="' + oGroupId +
-          '" data-mc-letter="' + letter +
+          '" data-mc-letter="' + safeLetter +
           '" data-mc-text="' + text +
           '" data-pill-id="' + firstPillId +
           '" onclick="BentoGrid._selectMcOption(this)" type="button">' +
-          (parsed.showLetter ? '<span class="cu-mc-letter">' + letter + '</span>' : '') + text + '</button>';
+          (parsed.showLetter ? '<span class="cu-mc-letter">' + safeLetter + '</span>' : '') + text + '</button>';
       });
       optHtml += '</div>';
       return sentenceHtml + optHtml;
@@ -3236,11 +3237,12 @@
       options.forEach(function(opt, optIdx) {
         var parsed = BentoGrid._parseCuMcOption(opt, optIdx);
         var letter = parsed.letter;
+        var safeLetter = BentoGrid._escapeHTML(letter);
         var text = BentoGrid._escapeHTML(parsed.text);
         html += '<button class="opt-btn cu-mc-item-modal-btn"' +
           ' data-group="' + BentoGrid._escapeHTML(oGroupId) + '"' +
           ' data-pill-id="' + BentoGrid._escapeHTML(pillId) + '"' +
-          ' data-letter="' + letter + '"' +
+          ' data-letter="' + safeLetter + '"' +
           ' onclick="BentoGrid._selectMcOptionFromModal(this)">' +
           text + '</button>';
       });
