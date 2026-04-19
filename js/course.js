@@ -1742,6 +1742,7 @@
     _renderCuFindExtraWordExercise: function(ex, idBase, secId, useQuestions) {
       var self = this;
       var items = useQuestions ? (ex.questions || []) : (ex.items || []);
+      var onlyMarkedWordClickable = !!ex.onlyMarkedWordClickable;
 
       // Strip **bold** markers, returning plain text
       function stripBold(str) {
@@ -1802,13 +1803,19 @@
           } else {
             isAnswer = (wordCore(token) === answerCore) ? '1' : '0';
           }
-          html += '<span class="cu-few-word" ' +
-            'data-few-is-answer="' + isAnswer + '" ' +
-            'onclick="BentoGrid._toggleFewWord(this)" ' +
-            'role="button" tabindex="0" ' +
-            'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleFewWord(this);event.preventDefault();}">' +
-            self._escapeHTML(token) +
-            '</span>';
+          var isMarkedToken = bracketAnswerIdx !== -1 && ti === bracketAnswerIdx;
+          var isInteractiveToken = !onlyMarkedWordClickable || isMarkedToken;
+          if (isInteractiveToken) {
+            html += '<span class="cu-few-word" ' +
+              'data-few-is-answer="' + isAnswer + '" ' +
+              'onclick="BentoGrid._toggleFewWord(this)" ' +
+              'role="button" tabindex="0" ' +
+              'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._toggleFewWord(this);event.preventDefault();}">' +
+              self._escapeHTML(token) +
+              '</span>';
+          } else {
+            html += '<span class="cu-few-word-static">' + self._escapeHTML(token) + '</span>';
+          }
         });
         html += '</div>';
         html += '<button class="cu-few-ok-btn" onclick="BentoGrid._toggleFewOk(this)" ' +
@@ -3064,6 +3071,34 @@
       var isMC = !!(item.options && item.options.length);
       // Optional read-only context sentence rendered above the interactive sentence
       var contextHtml = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
+
+      // Context + sentence transformation layout (A / KEYWORD / B).
+      // Trigger only when sentence has a KWT-style gap and a trailing (KEYWORD).
+      var hasKwTransGapInSentence = /(?:[.\u2026]{5,}|\u2026{2,}|_{3,})/.test(sentence);
+      var keywordSuffixMatch = sentence.match(/\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/);
+      if (item.context && hasKwTransGapInSentence && keywordSuffixMatch) {
+        var kwKeyword = keywordSuffixMatch[1].trim();
+        var kwSentenceB = sentence.replace(/\s*\(([A-Z]{2,}(?:\s*\/\s*[A-Z]+)*)\)\s*$/, '');
+        return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
+          numBadgeHtml +
+          '<div class="cu-ex-sentence">' +
+            '<div class="cu-ex-kwtrans">' +
+              '<div class="cu-ex-kwtrans-row">' +
+                '<span class="cu-ex-kwtrans-label">A</span>' +
+                '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(item.context || '', inputId + '_a', true) + '</div>' +
+              '</div>' +
+              '<div class="cu-kwtrans-keyword-row"><span class="cu-kwtrans-keyword">' + self._escapeHTML(kwKeyword) + '</span></div>' +
+              '<div class="cu-ex-kwtrans-row">' +
+                '<span class="cu-ex-kwtrans-label">B</span>' +
+                '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(kwSentenceB, inputId + '_b') + '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="cu-ex-foot">' +
+            '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
+          '</div>' +
+        '</div>';
+      }
 
       // When showOkBtn is true (e.g. Exercise H style), all items get an OK fill button
       // alongside the text input. Clicking OK fills the input with "OK". The answer field
