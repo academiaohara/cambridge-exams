@@ -9,45 +9,77 @@
       "title": "Relative Pronouns in Relative Clauses",
       "content": [
         {
-          "subtitle": "Relative Pronouns",
+          "tableHeaders": [
+            "Relative pronoun",
+            "Use",
+            "Example"
+          ],
+          "rows": [
+            [
+              "**who**",
+              "to refer to people (and animals when we want to give them a personality)",
+              "There are a lot of people **who** find modern architecture difficult to appreciate."
+            ],
+            [
+              "**which**",
+              "to refer to things and concepts (and animals when we don't want to give them a personality)",
+              "This is the blueprint **which** the engineer submitted last month."
+            ],
+            [
+              "**whom**",
+              "a formal word for who; as an object; must be used directly after a preposition",
+              "That's the consultant with **whom** I collaborated on the project."
+            ],
+            [
+              "**that**",
+              "a more informal word for who, which, when, where, why; only used in defining relative clauses",
+              "This is the design **that** won the competition."
+            ],
+            [
+              "**when**",
+              "to refer to time; = in/on/at which",
+              "I'll never forget the summer **when** I first visited the Alhambra."
+            ],
+            [
+              "**where**",
+              "to refer to place or situation; = in/at which",
+              "Barcelona, **where** Gaudí spent most of his career, is world-famous for its architecture."
+            ],
+            [
+              "**why**",
+              "often after the word reason; = the reason for which; only used in defining relative clauses",
+              "And that's (the reason) **why** I decided to study fine arts."
+            ],
+            [
+              "**whose**",
+              "the possessive of who and which; can also come after a preposition",
+              "There are several students in my group **whose** portfolios have been shortlisted."
+            ],
+            [
+              "**what**",
+              "= the thing(s) which; only used in defining relative clauses",
+              "**What** I find extraordinary is how ancient builders aligned their structures with the stars."
+            ]
+          ]
+        },
+        {
+          "subtitle": "Watch out!",
           "items": [
-            "who: to refer to people (and animals when we want to give them a personality)",
-            "which: to refer to things and concepts (and animals when we don't want to give them a personality)",
-            "whom: a formal word for who; as an object; must be used directly after a preposition",
-            "that: a more informal word for who, which, when, where, why; only used in defining relative clauses",
-            "when: to refer to time; = in/on/at which",
-            "where: to refer to place or situation; = in/at which",
-            "why: often after the word reason; = the reason for which; only used in defining relative clauses",
-            "whose: the possessive of who and which; can also come after a preposition",
-            "what: = the thing(s) which; only used in defining relative clauses"
-          ]
-        },
-        {
-          "subtitle": "Examples",
-          "items": [
-            "There are a lot of people **who** find modern architecture difficult to appreciate.",
-            "This is the blueprint **which** the engineer submitted last month.",
-            "That's the consultant with **whom** I collaborated on the project.",
-            "I'll never forget the summer **when** I first visited the Alhambra.",
-            "Barcelona, **where** Gaudí spent most of his career, is world-famous for its architecture.",
-            "And that's (the reason) **why** I decided to study fine arts.",
-            "There are several students in my group **whose** portfolios have been shortlisted.",
-            "**What** I find extraordinary is how ancient builders aligned their structures with the stars."
-          ]
-        },
-        {
-          "subtitle": "Prepositions in Relative Clauses",
-          "description": "When we use a preposition with a relative pronoun, it is more formal to put the preposition before the pronoun.",
-          "examples": [
-            "This is the journal **to which I referred.** (very formal)",
-            "This is the journal **which I referred to.** (less formal)"
-          ]
-        },
-        {
-          "subtitle": "Which Referring to a Whole Clause",
-          "description": "Which can refer to the whole preceding clause, rather than just the preceding noun.",
-          "examples": [
-            "She announced that she was leaving the company, **which really surprised everyone.** (= the announcement surprised us)"
+            {
+              "note": "When we use a preposition with a relative pronoun, it is more formal to put the preposition before the pronoun."
+            },
+            {
+              "correct": "This is the journal **to which I referred.** (very formal)"
+            },
+            {
+              "correct": "This is the journal **which I referred to.** (less formal)"
+            },
+            {
+              "note": "Which can refer to the whole preceding clause, rather than just the preceding noun."
+            },
+            {
+              "correct": "She announced that she was leaving the company, **which really surprised everyone.** (= the announcement surprised us)"
+            }
           ]
         }
       ]
@@ -57,37 +89,48 @@
       "title": "Defining and Non-Defining Relative Clauses",
       "content": [
         {
-          "subtitle": "Defining Relative Clauses",
-          "description": "These tell us which one of a group of things/people we are talking about. The sentence doesn't usually make complete sense if we remove the relative clause.",
-          "items": [
-            "We can use **that** instead of who/which/etc. This is more informal.",
-            "We don't use a comma or commas.",
-            "We can omit the relative pronoun if it is the object.",
-            "When, where and why can be omitted.",
-            "We cannot put a number or a determiner such as some, none, much and many before of which or of whom."
+          "typeTable": true,
+          "headers": [
+            "Type",
+            "Example"
           ],
-          "examples": [
-            "That's the professor **who gave the keynote lecture.**",
-            "That's the professor **that gave the keynote lecture.**",
-            "That's the professor **she interviewed.** (object omitted)",
-            "I'll never forget **the afternoon I passed my driving test.** (when omitted)"
-          ]
-        },
-        {
-          "subtitle": "Non-Defining Relative Clauses",
-          "description": "These simply give us more information about someone/something. The sentence makes complete sense if we remove the relative clause.",
-          "items": [
-            "We cannot use **that** instead of who/which/etc.",
-            "We must use a comma or commas.",
-            "We cannot omit the relative pronoun.",
-            "We do not use why.",
-            "We cannot omit where and when.",
-            "We can put a number or a determiner such as some, none, much and many before of which or of whom."
-          ],
-          "examples": [
-            "Professor Clarke, **who has been lecturing here for over twenty years**, is a highly respected researcher.",
-            "Cambridge, **where she completed her doctorate**, is renowned for its academic excellence.",
-            "I enrolled in three seminars, **some of which** were genuinely eye-opening."
+          "rows": [
+            {
+              "type": "Defining relative clauses",
+              "useItems": [
+                "tell us which one of a group of things/people we are talking about",
+                "the sentence doesn't usually make complete sense if we remove the clause",
+                "we can use **that** (more informal)",
+                "we don't use commas",
+                "we can omit the relative pronoun when it is the object",
+                "when, where and why can be omitted",
+                "we cannot put a number/determiner before of which or of whom"
+              ],
+              "examples": [
+                "That's the professor **who gave the keynote lecture.**",
+                "That's the professor **that gave the keynote lecture.**",
+                "That's the professor **she interviewed.** (object omitted)",
+                "I'll never forget **the afternoon I passed my driving test.** (when omitted)"
+              ]
+            },
+            {
+              "type": "Non-defining relative clauses",
+              "useItems": [
+                "give extra information about someone/something",
+                "the sentence still makes complete sense if we remove the clause",
+                "we cannot use **that**",
+                "we must use commas",
+                "we cannot omit the relative pronoun",
+                "we do not use why",
+                "we cannot omit where and when",
+                "we can put a number/determiner before of which or of whom"
+              ],
+              "examples": [
+                "Professor Clarke, **who has been lecturing here for over twenty years**, is a highly respected researcher.",
+                "Cambridge, **where she completed her doctorate**, is renowned for its academic excellence.",
+                "I enrolled in three seminars, **some of which** were genuinely eye-opening."
+              ]
+            }
           ]
         }
       ]
