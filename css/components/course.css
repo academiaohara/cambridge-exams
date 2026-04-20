@@ -2188,13 +2188,22 @@ textarea.cu-gap-input.cu-gap-textarea {
 }
 
 .cu-obf-btn:hover {
-  border-color: rgba(45, 46, 95, 0.35);
-  color: #2D2E5F;
+  border-color: rgba(59, 130, 246, 0.75);
+  background: rgba(59, 130, 246, 0.1);
+  color: #1e3a8a;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
 }
 
 .cu-obf-btn-active {
-  background: #2D2E5F;
-  border-color: #2D2E5F;
+  background: linear-gradient(90deg, #3b82f6, #46B1E1);
+  border-color: #3b82f6;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(59, 130, 246, 0.25);
+}
+
+.cu-obf-btn-active:hover {
+  background: linear-gradient(90deg, #2563eb, #2ea6db);
+  border-color: #2563eb;
   color: #fff;
 }
 
