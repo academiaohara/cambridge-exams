@@ -794,7 +794,7 @@
         } else if (rawItem !== undefined && rawItem !== null) {
           variants = [rawItem];
         }
-        return variants.map(function(v) { return String(v || '').trim(); }).filter(Boolean);
+        return variants.map(function(v) { return String(v).trim(); }).filter(Boolean);
       }
       function _renderTheoryExampleCell(rawItem) {
         var variants = _normaliseTheoryExampleVariants(rawItem);
@@ -802,7 +802,7 @@
         if (variants.length === 1) return _bold(variants[0]);
         var encodedVariants = encodeURIComponent(JSON.stringify(variants));
         return '<span class="cu-theory-alt-example">' + _bold(variants[0]) + '</span>' +
-          '<span class="cu-alt-badge cu-theory-alt-badge" role="button" tabindex="0" data-alt-idx="0" data-alt-examples="' + encodedVariants + '" aria-label="Cycle through ' + variants.length + ' examples" onclick="BentoGrid._cycleTheoryAlt(this)">1/' + variants.length + '</span>';
+          '<span class="cu-alt-badge cu-theory-alt-badge" role="button" tabindex="0" data-alt-idx="0" data-alt-examples="' + encodedVariants + '" aria-label="Cycle through ' + variants.length + ' examples" onclick="BentoGrid._cycleTheoryAlt(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid._cycleTheoryAlt(this);}else if(event.key===\'Escape\'){event.preventDefault();this.blur();}">1/' + variants.length + '</span>';
       }
       var html = '';
 
@@ -6777,10 +6777,41 @@
       badge.textContent = (idx + 1) + '/' + variants.length;
       var target = badge.previousElementSibling;
       if (target && target.classList.contains('cu-theory-alt-example')) {
-        target.innerHTML = BentoGrid._escapeHTML(String(variants[idx] || ''))
-          .replace(/\n/g, '<br>')
-          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+        this._setTheoryAltExampleContent(target, variants[idx]);
+      }
+    },
+
+    _appendTheoryAltTextWithFormat: function(container, text) {
+      var raw = String(text || '');
+      var regex = /\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+      var cursor = 0;
+      var match;
+      while ((match = regex.exec(raw)) !== null) {
+        if (match.index > cursor) {
+          container.appendChild(document.createTextNode(raw.slice(cursor, match.index)));
+        }
+        if (match[1] !== undefined) {
+          var strong = document.createElement('strong');
+          strong.textContent = match[1];
+          container.appendChild(strong);
+        } else if (match[2] !== undefined) {
+          var em = document.createElement('em');
+          em.textContent = match[2];
+          container.appendChild(em);
+        }
+        cursor = regex.lastIndex;
+      }
+      if (cursor < raw.length) {
+        container.appendChild(document.createTextNode(raw.slice(cursor)));
+      }
+    },
+
+    _setTheoryAltExampleContent: function(target, text) {
+      while (target.firstChild) target.removeChild(target.firstChild);
+      var lines = String(text || '').split('\n');
+      for (var i = 0; i < lines.length; i++) {
+        if (i > 0) target.appendChild(document.createElement('br'));
+        this._appendTheoryAltTextWithFormat(target, lines[i]);
       }
     },
 
