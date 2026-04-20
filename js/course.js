@@ -4553,18 +4553,19 @@
         BentoGrid._courseOverviewVisibleBlocks[bk] = true;
       });
 
-      html += '<div class="cu-overview-block-filter-wrap">' +
+      html += '<div class="cu-overview-block-filter-wrap" onclick="BentoGrid._handleOverviewFilterClick(event)">' +
         '<div class="cu-overview-block-filter-icon">' + _mi('filter_alt') + '</div>' +
         '<div class="cu-overview-block-filter-buttons">';
       blockOrder.forEach(function(bk) {
         var chipLabel = bk === 'misc' ? 'OT' : bk;
         var ptMatch = bk.match(/^pt(\d+)$/);
-        var safeBk = String(bk).replace(/\\/g, '\\\\').replace(/'/g, '\\\'');
+        var escapedBk = self._escapeHTML(bk);
+        var escapedLabel = self._escapeHTML(BentoGrid._getBlockLabel(bk));
         if (ptMatch) chipLabel = 'PT' + ptMatch[1];
-        html += '<button type="button" class="cu-obf-btn cu-obf-block-btn cu-obf-btn-active" data-overview-filter-btn="' + self._escapeHTML(bk) + '" onclick="BentoGrid._toggleOverviewBlockFilter(\'' + safeBk + '\')" title="' + self._escapeHTML(BentoGrid._getBlockLabel(bk)) + '">' + self._escapeHTML(chipLabel) + '</button>';
+        html += '<button type="button" class="cu-obf-btn cu-obf-block-btn cu-obf-btn-active" data-overview-filter-btn="' + escapedBk + '" title="' + escapedLabel + '">' + self._escapeHTML(chipLabel) + '</button>';
       });
-      html += '<button type="button" class="cu-obf-btn cu-obf-select-all cu-obf-btn-active" onclick="BentoGrid._selectAllOverviewBlocks()" title="Select all blocks">' + _mi('done_all') + '</button>' +
-        '<button type="button" class="cu-obf-btn cu-obf-select-none" onclick="BentoGrid._clearOverviewBlocks()" title="Deselect all blocks">' + _mi('block') + '</button>' +
+      html += '<button type="button" class="cu-obf-btn cu-obf-select-all cu-obf-btn-active" data-overview-filter-action="all" title="Select all blocks">' + _mi('done_all') + '</button>' +
+        '<button type="button" class="cu-obf-btn cu-obf-select-none" data-overview-filter-action="none" title="Deselect all blocks">' + _mi('block') + '</button>' +
         '</div>' +
       '</div>';
 
@@ -4748,9 +4749,28 @@
       if (noneBtn) noneBtn.classList.toggle('cu-obf-btn-active', selectedCount === 0);
     },
 
+    _handleOverviewFilterClick: function(event) {
+      if (!event || !event.target || !event.target.closest) return;
+      var btn = event.target.closest('.cu-obf-btn');
+      if (!btn) return;
+      if (btn.classList.contains('cu-obf-select-all')) {
+        BentoGrid._selectAllOverviewBlocks();
+        return;
+      }
+      if (btn.classList.contains('cu-obf-select-none')) {
+        BentoGrid._clearOverviewBlocks();
+        return;
+      }
+      var blockKey = btn.getAttribute('data-overview-filter-btn');
+      if (blockKey) BentoGrid._toggleOverviewBlockFilter(blockKey);
+    },
+
     _toggleOverviewBlockFilter: function(blockKey) {
       var visibleBlocks = BentoGrid._courseOverviewVisibleBlocks || {};
-      if (!(blockKey in visibleBlocks)) return;
+      if (!(blockKey in visibleBlocks)) {
+        console.warn('Course overview filter: invalid block key', blockKey);
+        return;
+      }
       visibleBlocks[blockKey] = !visibleBlocks[blockKey];
       BentoGrid._applyCourseOverviewFilter();
     },
