@@ -7,8 +7,8 @@ Este directorio contiene los datos para las lecciones de **phrasal verbs** del m
 ```
 phrasal-verbs/
 ├── levels.json         # Catálogo de niveles y lecciones
-├── dictionary.json     # Diccionario completo (261 entradas: B1:101 / B2:141 / C1:19)
-├── B1.csv              # Datos fuente en CSV (nivel B1, 13 lecciones)
+├── dictionary.json     # Diccionario completo (305 entradas: B1:145 / B2:141 / C1:19)
+├── B1.csv              # Datos fuente en CSV (nivel B1, 21 lecciones)
 ├── B2.csv              # Datos fuente en CSV (nivel B2, 22 lecciones)
 ├── C1.csv              # Datos fuente en CSV (nivel C1, 5 lecciones)
 ├── B1/                 # Lecciones generadas para nivel B1
@@ -26,8 +26,8 @@ phrasal-verbs/
 
 | Nivel | Lecciones | Notas |
 |---|---|---|
-| B1 | 16 | Incluye lección "Final Challenge" |
-| B2 | 22 | Incluye lección "Final Challenge" |
+| B1 | 21 | |
+| B2 | 22 | |
 | C1 | 5 | |
 
 ## Esquema de una lección (`lesson-N.json`)
