@@ -5000,10 +5000,10 @@
           navHtml += '<span></span>';
         }
 
-        // Middle: "Entendido" button for theory sections
+        // Middle: "Got it" button for theory sections
         if (isTheorySec) {
-          navHtml += '<button class="cu-entendido-btn" onclick="BentoGrid._markCuTheoryDone(' + idx + ',' + total + ')">' +
-            _mi('check_circle') + ' Entendido</button>';
+          navHtml += '<button class="cu-entendido-btn" onclick="BentoGrid._markCuTheoryDone(' + idx + ',' + total + ',true,' + (idx + 1) + ')">' +
+            _mi('check_circle') + ' Got it</button>';
         } else {
           navHtml += '<span></span>';
         }
