@@ -899,17 +899,17 @@
             var thirdBlock = content[contentIdx + 2];
             if (_isStructureSubtitle(block.subtitle) && nextBlock && _isUsesSubtitle(nextBlock.subtitle) && thirdBlock && _isExampleSubtitle(thirdBlock.subtitle)) {
               var structureItems = block.items || block.examples || [];
-              var useItems3 = nextBlock.items || nextBlock.examples || [];
-              var exampleItems3 = thirdBlock.items || thirdBlock.examples || [];
+              var usesItems = nextBlock.items || nextBlock.examples || [];
+              var exampleItems = thirdBlock.items || thirdBlock.examples || [];
               html += '<table class="cu-uses-examples-table cu-3col-table">' +
                 '<thead><tr><th class="cu-ue-head">' + self._escapeHTML(block.subtitle || 'Structure') + '</th><th class="cu-ue-head">' + self._escapeHTML(nextBlock.subtitle || 'Use') + '</th><th class="cu-ue-head">' + self._escapeHTML(thirdBlock.subtitle || 'Example') + '</th></tr></thead>' +
                 '<tbody>';
-              var maxLen3 = Math.max(structureItems.length, useItems3.length, exampleItems3.length);
-              for (var r3 = 0; r3 < maxLen3; r3++) {
+              var maxTriadLength = Math.max(structureItems.length, usesItems.length, exampleItems.length);
+              for (var rowIndex = 0; rowIndex < maxTriadLength; rowIndex++) {
                 html += '<tr class="cu-ue-row">' +
-                  '<td class="cu-ue-use">' + (structureItems[r3] ? _bold(structureItems[r3]) : '') + '</td>' +
-                  '<td class="cu-ue-use">' + (useItems3[r3] ? _bold(useItems3[r3]) : '') + '</td>' +
-                  '<td class="cu-ue-example">' + (exampleItems3[r3] ? _bold(exampleItems3[r3]) : '') + '</td>' +
+                  '<td class="cu-ue-use">' + (structureItems[rowIndex] ? _bold(structureItems[rowIndex]) : '') + '</td>' +
+                  '<td class="cu-ue-use">' + (usesItems[rowIndex] ? _bold(usesItems[rowIndex]) : '') + '</td>' +
+                  '<td class="cu-ue-example">' + (exampleItems[rowIndex] ? _bold(exampleItems[rowIndex]) : '') + '</td>' +
                 '</tr>';
               }
               html += '</tbody></table>';
@@ -923,11 +923,11 @@
               html += '<table class="cu-uses-examples-table">' +
                 '<thead><tr><th class="cu-ue-head">' + self._escapeHTML(block.subtitle || 'Use') + '</th><th class="cu-ue-head">' + self._escapeHTML(nextBlock.subtitle || 'Example') + '</th></tr></thead>' +
                 '<tbody>';
-              var maxLen2 = Math.max(leftItems.length, rightItems.length);
-              for (var r2 = 0; r2 < maxLen2; r2++) {
+              var maxPairLength = Math.max(leftItems.length, rightItems.length);
+              for (var pairRowIndex = 0; pairRowIndex < maxPairLength; pairRowIndex++) {
                 html += '<tr class="cu-ue-row">' +
-                  '<td class="cu-ue-use">' + (leftItems[r2] ? _bold(leftItems[r2]) : '') + '</td>' +
-                  '<td class="cu-ue-example">' + (rightItems[r2] ? _bold(rightItems[r2]) : '') + '</td>' +
+                  '<td class="cu-ue-use">' + (leftItems[pairRowIndex] ? _bold(leftItems[pairRowIndex]) : '') + '</td>' +
+                  '<td class="cu-ue-example">' + (rightItems[pairRowIndex] ? _bold(rightItems[pairRowIndex]) : '') + '</td>' +
                 '</tr>';
               }
               html += '</tbody></table>';
