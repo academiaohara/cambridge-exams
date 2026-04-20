@@ -746,6 +746,47 @@
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       function _bold(str) { return self._escapeHTML(str).replace(/\n/g, '<br>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\*([^*]+)\*/g, '<em>$1</em>'); }
+      function _normSubtitle(v) { return String(v || '').toLowerCase().trim(); }
+      function _isExampleSubtitle(v) { return /^examples?$/.test(_normSubtitle(v)); }
+      function _isUsesSubtitle(v) { return _normSubtitle(v) === 'uses'; }
+      function _isStructureSubtitle(v) {
+        var s = _normSubtitle(v);
+        return s === 'structure' || s === 'structures' || s === 'pattern' || s === 'patterns' || s === 'main pattern' || s === 'question structure';
+      }
+      function _expandChipItems(items) {
+        var out = [];
+        (items || []).forEach(function(item) {
+          var text = String(item || '').trim();
+          if (!text) return;
+          if (text.indexOf(',') !== -1 && text.indexOf(':') === -1 && !/[.?!]$/.test(text)) {
+            text.split(',').forEach(function(part) {
+              var chunk = part.trim();
+              if (chunk) out.push(chunk);
+            });
+            return;
+          }
+          out.push(text);
+        });
+        return out;
+      }
+      function _looksLikeChipContent(text) {
+        if (!text) return false;
+        if (/[.?!]$/.test(text)) return false;
+        if (/^\d+\)/.test(text)) return false;
+        return text.split(/\s+/).length <= 8;
+      }
+      function _shouldRenderAsChips(block) {
+        if (block.chipStyle) return true;
+        var items = _expandChipItems(block.items || []);
+        if (!items.length) return false;
+        var subtitle = _normSubtitle(block.subtitle);
+        if (_isExampleSubtitle(subtitle) || _isUsesSubtitle(subtitle) || _isStructureSubtitle(subtitle) || subtitle === 'watch out!' || subtitle === 'form' || subtitle === 'use') {
+          return false;
+        }
+        var keywordHint = /(word|phrase|verb|expression|linker|quantifier|modal|example|group|family|category)/.test(subtitle);
+        var shortItems = items.filter(_looksLikeChipContent).length === items.length;
+        return keywordHint && shortItems;
+      }
       var html = '';
 
       (data.sections || []).forEach(function(section, idx) {
@@ -855,17 +896,38 @@
             }
 
             // Pair "Uses" + "Examples" as a 2-column table
-            if (block.subtitle === 'Uses' && nextBlock && nextBlock.subtitle === 'Examples') {
-              var uses = block.items || [];
-              var examples = nextBlock.items || nextBlock.examples || [];
-              html += '<table class="cu-uses-examples-table">' +
-                '<thead><tr><th class="cu-ue-head">Use</th><th class="cu-ue-head">Example</th></tr></thead>' +
+            var thirdBlock = content[contentIdx + 2];
+            if (_isStructureSubtitle(block.subtitle) && nextBlock && _isUsesSubtitle(nextBlock.subtitle) && thirdBlock && _isExampleSubtitle(thirdBlock.subtitle)) {
+              var structureItems = block.items || block.examples || [];
+              var usesItems = nextBlock.items || nextBlock.examples || [];
+              var exampleItems = thirdBlock.items || thirdBlock.examples || [];
+              html += '<table class="cu-uses-examples-table cu-3col-table">' +
+                '<thead><tr><th class="cu-ue-head">' + self._escapeHTML(block.subtitle || 'Structure') + '</th><th class="cu-ue-head">' + self._escapeHTML(nextBlock.subtitle || 'Use') + '</th><th class="cu-ue-head">' + self._escapeHTML(thirdBlock.subtitle || 'Example') + '</th></tr></thead>' +
                 '<tbody>';
-              var maxLen = Math.max(uses.length, examples.length);
-              for (var r = 0; r < maxLen; r++) {
+              var maxTriadLength = Math.max(structureItems.length, usesItems.length, exampleItems.length);
+              for (var rowIndex = 0; rowIndex < maxTriadLength; rowIndex++) {
                 html += '<tr class="cu-ue-row">' +
-                  '<td class="cu-ue-use">' + (uses[r] ? self._escapeHTML(uses[r]) : '') + '</td>' +
-                  '<td class="cu-ue-example">' + (examples[r] ? _bold(examples[r]) : '') + '</td>' +
+                  '<td class="cu-ue-use">' + (structureItems[rowIndex] ? _bold(structureItems[rowIndex]) : '') + '</td>' +
+                  '<td class="cu-ue-use">' + (usesItems[rowIndex] ? _bold(usesItems[rowIndex]) : '') + '</td>' +
+                  '<td class="cu-ue-example">' + (exampleItems[rowIndex] ? _bold(exampleItems[rowIndex]) : '') + '</td>' +
+                '</tr>';
+              }
+              html += '</tbody></table>';
+              contentIdx += 3;
+              continue;
+            }
+
+            if (!_isExampleSubtitle(block.subtitle) && nextBlock && _isExampleSubtitle(nextBlock.subtitle)) {
+              var leftItems = block.items || block.examples || [];
+              var rightItems = nextBlock.items || nextBlock.examples || [];
+              html += '<table class="cu-uses-examples-table">' +
+                '<thead><tr><th class="cu-ue-head">' + self._escapeHTML(block.subtitle || 'Use') + '</th><th class="cu-ue-head">' + self._escapeHTML(nextBlock.subtitle || 'Example') + '</th></tr></thead>' +
+                '<tbody>';
+              var maxPairLength = Math.max(leftItems.length, rightItems.length);
+              for (var pairRowIndex = 0; pairRowIndex < maxPairLength; pairRowIndex++) {
+                html += '<tr class="cu-ue-row">' +
+                  '<td class="cu-ue-use">' + (leftItems[pairRowIndex] ? _bold(leftItems[pairRowIndex]) : '') + '</td>' +
+                  '<td class="cu-ue-example">' + (rightItems[pairRowIndex] ? _bold(rightItems[pairRowIndex]) : '') + '</td>' +
                 '</tr>';
               }
               html += '</tbody></table>';
@@ -1075,7 +1137,7 @@
               html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
               html += '<div class="cu-theory-chips">';
               (block.items || []).forEach(function(item) {
-                html += '<span class="cu-theory-chip">' + self._escapeHTML(item) + '</span>';
+                html += '<span class="cu-theory-chip">' + _bold(item) + '</span>';
               });
               html += '</div>';
               contentIdx++;
@@ -1105,11 +1167,19 @@
             } else {
               var listItems = block.items || block.examples || [];
               if (listItems.length) {
-                html += '<ul class="cu-theory-list">';
-                listItems.forEach(function(item) {
-                  html += '<li>' + _bold(item) + '</li>';
-                });
-                html += '</ul>';
+                if (_shouldRenderAsChips(block)) {
+                  html += '<div class="cu-theory-chips">';
+                  _expandChipItems(listItems).forEach(function(item) {
+                    html += '<span class="cu-theory-chip">' + _bold(item) + '</span>';
+                  });
+                  html += '</div>';
+                } else {
+                  html += '<ul class="cu-theory-list">';
+                  listItems.forEach(function(item) {
+                    html += '<li>' + _bold(item) + '</li>';
+                  });
+                  html += '</ul>';
+                }
               }
             }
             contentIdx++;
