@@ -5005,7 +5005,7 @@
           navHtml += '<button class="cu-entendido-btn" onclick="BentoGrid._markCuTheoryDone(' + idx + ',' + total + ',true,' + (idx + 1) + ')">' +
             _mi('check_circle') + ' Got it</button>';
         } else {
-          navHtml += '<span></span>';
+          navHtml += '<div class="cu-section-nav-center"></div>';
         }
 
         if (idx < total - 1) {
@@ -5022,6 +5022,11 @@
         }
         navHtml += '</div>';
         sec.insertAdjacentHTML('beforeend', navHtml);
+        if (!isTheorySec) {
+          var footer = sec.querySelector('.cu-ex-footer');
+          var navCenter = sec.querySelector('.cu-section-nav-center');
+          if (footer && navCenter) navCenter.appendChild(footer);
+        }
       });
 
       // Only auto-mark if starting section is an exercise (not theory)
