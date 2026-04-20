@@ -2132,6 +2132,77 @@ textarea.cu-gap-input.cu-gap-textarea {
   padding-bottom: 32px;
 }
 
+.cu-overview-block-filter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(45, 46, 95, 0.08);
+  border-radius: 14px;
+  padding: 10px 12px;
+  box-shadow: 0 4px 16px rgba(45, 46, 95, 0.06);
+}
+
+.cu-overview-block-filter-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(70, 177, 225, 0.14);
+  color: #0ea5e9;
+  flex-shrink: 0;
+}
+
+.cu-overview-block-filter-icon .material-symbols-outlined {
+  font-size: 1.05rem;
+}
+
+.cu-overview-block-filter-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cu-obf-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border: 1.5px solid rgba(45, 46, 95, 0.2);
+  background: #fff;
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.cu-obf-btn .material-symbols-outlined {
+  font-size: 1.05rem;
+}
+
+.cu-obf-btn:hover {
+  border-color: rgba(45, 46, 95, 0.35);
+  color: #2D2E5F;
+}
+
+.cu-obf-btn-active {
+  background: #2D2E5F;
+  border-color: #2D2E5F;
+  color: #fff;
+}
+
+.cu-obf-select-none.cu-obf-btn-active {
+  background: #ef4444;
+  border-color: #ef4444;
+}
+
 /* Overall progress bar */
 .cu-overview-progress-bar-wrap {
   background: rgba(255, 255, 255, 0.96);
@@ -2614,6 +2685,9 @@ textarea.cu-gap-input.cu-gap-textarea {
   .cu-blocks-grid { grid-template-columns: 1fr; }
   .cu-review-banner { flex-wrap: wrap; }
   .cu-review-banner-stat { width: 100%; flex-direction: row; gap: 8px; justify-content: center; }
+  .cu-overview-block-filter-wrap {
+    align-items: flex-start;
+  }
 }
 
 /* ── Review total score bar ─────────────────────────────────────────── */
