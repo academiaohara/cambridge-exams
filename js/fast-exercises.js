@@ -4458,8 +4458,18 @@
               '<span class="material-symbols-outlined">volume_up</span>' +
             '</button>' +
           '</td>' +
-          '<td>' + self._escapeHTML(e.pastSimple || '') + '</td>' +
-          '<td>' + self._escapeHTML(e.pastParticiple || '') + '</td>' +
+          '<td>' +
+            self._escapeHTML(e.pastSimple || '') +
+            '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.pastSimple || '') + '\')" title="Listen to pronunciation">' +
+              '<span class="material-symbols-outlined">volume_up</span>' +
+            '</button>' +
+          '</td>' +
+          '<td>' +
+            self._escapeHTML(e.pastParticiple || '') +
+            '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.pastParticiple || '') + '\')" title="Listen to pronunciation">' +
+              '<span class="material-symbols-outlined">volume_up</span>' +
+            '</button>' +
+          '</td>' +
         '</tr>';
       }).join('');
 
