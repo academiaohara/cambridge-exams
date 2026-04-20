@@ -4451,6 +4451,8 @@
       }
 
       var rowsHtml = filtered.map(function(e) {
+        var pastSimple = e.pastSimple || '';
+        var pastParticiple = e.pastParticiple || '';
         return '<tr>' +
           '<td class="irv-col-infinitive">' +
             self._escapeHTML(e.infinitive || '') +
@@ -4458,8 +4460,22 @@
               '<span class="material-symbols-outlined">volume_up</span>' +
             '</button>' +
           '</td>' +
-          '<td>' + self._escapeHTML(e.pastSimple || '') + '</td>' +
-          '<td>' + self._escapeHTML(e.pastParticiple || '') + '</td>' +
+          '<td>' +
+            self._escapeHTML(pastSimple) +
+            (pastSimple ? (
+              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(pastSimple) + '\')" title="Listen to pronunciation">' +
+                '<span class="material-symbols-outlined">volume_up</span>' +
+              '</button>'
+            ) : '') +
+          '</td>' +
+          '<td>' +
+            self._escapeHTML(pastParticiple) +
+            (pastParticiple ? (
+              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(pastParticiple) + '\')" title="Listen to pronunciation">' +
+                '<span class="material-symbols-outlined">volume_up</span>' +
+              '</button>'
+            ) : '') +
+          '</td>' +
         '</tr>';
       }).join('');
 
