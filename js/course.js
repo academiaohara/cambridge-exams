@@ -787,6 +787,23 @@
         var shortItems = items.filter(_looksLikeChipContent).length === items.length;
         return keywordHint && shortItems;
       }
+      function _normaliseTheoryExampleVariants(rawItem) {
+        var variants = [];
+        if (Array.isArray(rawItem)) {
+          variants = rawItem;
+        } else if (rawItem !== undefined && rawItem !== null) {
+          variants = [rawItem];
+        }
+        return variants.map(function(v) { return String(v || '').trim(); }).filter(Boolean);
+      }
+      function _renderTheoryExampleCell(rawItem) {
+        var variants = _normaliseTheoryExampleVariants(rawItem);
+        if (!variants.length) return '';
+        if (variants.length === 1) return _bold(variants[0]);
+        var encodedVariants = encodeURIComponent(JSON.stringify(variants));
+        return '<span class="cu-theory-alt-example">' + _bold(variants[0]) + '</span>' +
+          '<span class="cu-alt-badge cu-theory-alt-badge" role="button" tabindex="0" data-alt-idx="0" data-alt-examples="' + encodedVariants + '" aria-label="Cycle through ' + variants.length + ' examples" onclick="BentoGrid._cycleTheoryAlt(this)">1/' + variants.length + '</span>';
+      }
       var html = '';
 
       (data.sections || []).forEach(function(section, idx) {
@@ -927,7 +944,7 @@
               for (var pairRowIndex = 0; pairRowIndex < maxPairLength; pairRowIndex++) {
                 html += '<tr class="cu-ue-row">' +
                   '<td class="cu-ue-use">' + (leftItems[pairRowIndex] ? _bold(leftItems[pairRowIndex]) : '') + '</td>' +
-                  '<td class="cu-ue-example">' + (rightItems[pairRowIndex] ? _bold(rightItems[pairRowIndex]) : '') + '</td>' +
+                  '<td class="cu-ue-example">' + _renderTheoryExampleCell(rightItems[pairRowIndex]) + '</td>' +
                 '</tr>';
               }
               html += '</tbody></table>';
@@ -6742,6 +6759,28 @@
             if (sibBadge) sibBadge.textContent = (idx + 1) + '/' + alts.length;
           });
         }
+      }
+    },
+
+    _cycleTheoryAlt: function(badge) {
+      if (!badge) return;
+      var encoded = badge.getAttribute('data-alt-examples') || '';
+      var variants = [];
+      try {
+        variants = JSON.parse(decodeURIComponent(encoded));
+      } catch (e) {
+        variants = [];
+      }
+      if (!Array.isArray(variants) || variants.length <= 1) return;
+      var idx = (parseInt(badge.getAttribute('data-alt-idx') || '0', 10) + 1) % variants.length;
+      badge.setAttribute('data-alt-idx', String(idx));
+      badge.textContent = (idx + 1) + '/' + variants.length;
+      var target = badge.previousElementSibling;
+      if (target && target.classList.contains('cu-theory-alt-example')) {
+        target.innerHTML = BentoGrid._escapeHTML(String(variants[idx] || ''))
+          .replace(/\n/g, '<br>')
+          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*([^*]+)\*/g, '<em>$1</em>');
       }
     },
 
