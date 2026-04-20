@@ -5929,11 +5929,16 @@
           '<span aria-hidden="true">' + (isGood ? '🎉' : '💡') + '</span>' +
           '<span class="visually-hidden">' + emojiLabel + ' </span>' +
           scoreText + ' — ' + feedbackText;
-        var footer = sec.querySelector('.cu-ex-footer');
-        if (footer) {
-          footer.parentNode.insertBefore(summary, footer.nextSibling);
+        var sectionNav = sec.querySelector('.cu-section-nav');
+        if (sectionNav) {
+          sectionNav.parentNode.insertBefore(summary, sectionNav);
         } else {
-          sec.appendChild(summary);
+          var footer = sec.querySelector('.cu-ex-footer');
+          if (footer) {
+            footer.parentNode.insertBefore(summary, footer.nextSibling);
+          } else {
+            sec.appendChild(summary);
+          }
         }
         // Store result on the section element for total score tracking
         sec.setAttribute('data-correct-items', correctItems);
