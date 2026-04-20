@@ -5029,3 +5029,282 @@
 .dict-speak-btn .material-symbols-outlined {
   font-size: 1.2rem;
 }
+
+/* ── IRREGULAR VERBS DICTIONARY ────────────────────────────────────────── */
+.irv-dict-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: pvFadeIn 0.18s ease;
+}
+
+.irv-dict-box {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.2);
+  width: 100%;
+  max-width: 960px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.irv-dict-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+  flex-shrink: 0;
+}
+
+.irv-dict-icon .material-symbols-outlined {
+  font-size: 1.4rem;
+  color: #2563eb;
+}
+
+.irv-dict-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--text-dark, #0f172a);
+  flex: 1;
+  margin: 0;
+}
+
+.irv-dict-practice-btn {
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.irv-dict-practice-btn:hover { filter: brightness(1.08); }
+
+.irv-dict-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  color: var(--text-medium, #64748b);
+  display: flex;
+  align-items: center;
+  transition: background 0.15s;
+}
+.irv-dict-close:hover { background: rgba(239, 68, 68, 0.08); color: #ef4444; }
+
+.irv-dict-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px 8px;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.07);
+}
+
+.irv-dict-search-icon .material-symbols-outlined {
+  font-size: 1.1rem;
+  color: var(--text-medium, #94a3b8);
+  flex-shrink: 0;
+}
+
+.irv-dict-search {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1.5px solid rgba(45, 46, 95, 0.15);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.irv-dict-search:focus { border-color: #2563eb; }
+
+.irv-dict-count {
+  font-size: 0.8rem;
+  color: var(--text-medium, #94a3b8);
+  padding: 6px 18px 0;
+}
+
+.irv-dict-body {
+  flex: 1;
+  overflow: auto;
+  padding: 10px 16px 16px;
+}
+
+.irv-dict-table-wrap {
+  overflow: auto;
+  border: 1px solid rgba(45, 46, 95, 0.1);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.irv-dict-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.irv-dict-table th {
+  position: sticky;
+  top: 0;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.86rem;
+  text-align: left;
+  padding: 10px 12px;
+  z-index: 1;
+}
+
+.irv-dict-table td {
+  border-top: 1px solid #e2e8f0;
+  padding: 9px 12px;
+  font-size: 0.92rem;
+  color: #1e293b;
+  vertical-align: top;
+}
+
+.irv-col-infinitive {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.irv-dict-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 40px 20px;
+  color: var(--text-medium, #94a3b8);
+}
+.irv-dict-empty .material-symbols-outlined { font-size: 2rem; }
+.irv-dict-empty p { margin: 0; font-size: 0.95rem; }
+
+.irv-practice-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.irv-practice-title {
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.irv-practice-score {
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+.irv-practice-table td {
+  vertical-align: middle;
+}
+
+.irv-practice-infinitive {
+  font-weight: 800;
+}
+
+.irv-practice-input {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.irv-practice-input:focus { border-color: #2563eb; }
+
+.irv-input-correct {
+  border-color: #10b981;
+  background: #ecfdf5;
+}
+
+.irv-input-wrong {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.irv-practice-result {
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.irv-practice-result-ok {
+  color: #065f46;
+}
+
+.irv-practice-result-wrong {
+  color: #991b1b;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.irv-practice-result-wrong span {
+  font-weight: 500;
+  font-size: 0.78rem;
+}
+
+.irv-practice-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.irv-practice-btn {
+  border: 1px solid rgba(45, 46, 95, 0.2);
+  background: #fff;
+  color: #334155;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.irv-practice-btn:hover:not(:disabled) { background: #f1f5f9; }
+.irv-practice-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.irv-practice-btn-primary {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+.irv-practice-btn-primary:hover:not(:disabled) { background: #1d4ed8; }
+
+.irv-practice-complete {
+  text-align: center;
+  padding: 36px 20px;
+}
+.irv-practice-complete .material-symbols-outlined {
+  font-size: 2.4rem;
+  color: #2563eb;
+}
+.irv-practice-complete h3 {
+  margin: 10px 0 8px;
+  color: #0f172a;
+}
+.irv-practice-complete p {
+  margin: 0;
+  color: #475569;
+}
+
+.irv-practice-complete-actions {
+  margin-top: 16px;
+  display: inline-flex;
+  gap: 10px;
+}
