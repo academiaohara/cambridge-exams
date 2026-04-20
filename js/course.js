@@ -177,6 +177,7 @@
 
         leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(indexData, level, null);
         centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
+        BentoGrid._bindCourseOverviewFilterEvents();
       } else {
         leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(null, level, null);
         centerSection.innerHTML = headerHtml +
@@ -317,6 +318,7 @@
           '</div>' +
         '</div>';
       centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
+      BentoGrid._bindCourseOverviewFilterEvents();
       // Update left sidebar to deselect any active unit
       var leftSidebar = document.getElementById('courseLeftSidebar');
       if (leftSidebar && BentoGrid._courseIndexData) {
@@ -4547,6 +4549,28 @@
 
       var html = '<div class="cu-overview-container">';
 
+      BentoGrid._courseOverviewFilterOrder = blockOrder.slice();
+      BentoGrid._courseOverviewVisibleBlocks = {};
+      blockOrder.forEach(function(bk) {
+        BentoGrid._courseOverviewVisibleBlocks[bk] = true;
+      });
+
+      html += '<div class="cu-overview-block-filter-wrap">' +
+        '<div class="cu-overview-block-filter-icon">' + _mi('filter_alt') + '</div>' +
+        '<div class="cu-overview-block-filter-buttons">';
+      blockOrder.forEach(function(bk) {
+        var chipLabel = bk === 'misc' ? 'OT' : bk;
+        var ptMatch = bk.match(/^pt(\d+)$/);
+        var escapedBk = self._escapeHTML(bk);
+        var escapedLabel = self._escapeHTML(BentoGrid._getBlockLabel(bk));
+        if (ptMatch) chipLabel = 'PT' + ptMatch[1];
+        html += '<button type="button" class="cu-obf-btn cu-obf-block-btn cu-obf-btn-active" data-overview-filter-btn="' + escapedBk + '" title="' + escapedLabel + '">' + self._escapeHTML(chipLabel) + '</button>';
+      });
+      html += '<button type="button" class="cu-obf-btn cu-obf-select-all cu-obf-btn-active" data-overview-filter-action="all" title="Select all blocks">' + _mi('done_all') + '</button>' +
+        '<button type="button" class="cu-obf-btn cu-obf-select-none" data-overview-filter-action="none" title="Deselect all blocks">' + _mi('block') + '</button>' +
+        '</div>' +
+      '</div>';
+
       // Overall progress bar at top
       html += '<div class="cu-overview-progress-bar-wrap">' +
         '<div class="cu-overview-progress-header">' +
@@ -4582,9 +4606,9 @@
           var ptPath = 'data/Course/' + level + '/' + progressTestItem.file;
           var ptScore = BentoGrid._getPtScore(level, progressTestItem.id);
           var ptTotal = progressTestItem.totalPoints || 100;
-          var ptClass = 'cu-pt-overview-card' + (isPtDone ? ' cu-pt-card-done' : (isPtAvail ? ' cu-pt-card-available' : ' cu-pt-card-locked'));
+          var ptClass = 'cu-pt-overview-card cu-overview-filterable' + (isPtDone ? ' cu-pt-card-done' : (isPtAvail ? ' cu-pt-card-available' : ' cu-pt-card-locked'));
           var ptClickAttr = isPtAvail ? ' onclick="BentoGrid.openCourseUnit(\'' + progressTestItem.id + '\',\'' + ptPath + '\')" style="cursor:pointer"' : '';
-          html += '<div class="' + ptClass + '"' + ptClickAttr + '>';
+          html += '<div class="' + ptClass + '" data-overview-block="' + self._escapeHTML(bk) + '"' + ptClickAttr + '>';
           html += '<div class="cu-pt-ov-header-row">';
           html += '<div class="cu-pt-ov-icon">' + _mi('assignment') + '</div>';
           html += '<div class="cu-pt-ov-label">Progress Test</div>';
@@ -4606,8 +4630,9 @@
         else if (isFullyDone) blockClass += ' cu-block-card-done';
         else if (doneCount > 0) blockClass += ' cu-block-card-in-progress';
         else blockClass += ' cu-block-card-available';
+        blockClass += ' cu-overview-filterable';
 
-        html += '<div class="' + blockClass + '">';
+        html += '<div class="' + blockClass + '" data-overview-block="' + self._escapeHTML(bk) + '">';
 
         // Block header
         var badgeHtml = '';
@@ -4699,6 +4724,80 @@
       html += '</div>'; // .cu-blocks-grid
       html += '</div>'; // .cu-overview-container
       return html;
+    },
+
+    _applyCourseOverviewFilter: function() {
+      var visibleBlocks = BentoGrid._courseOverviewVisibleBlocks || {};
+      var cards = document.querySelectorAll('.cu-overview-filterable');
+      cards.forEach(function(card) {
+        var bk = card.getAttribute('data-overview-block');
+        card.classList.toggle('cu-overview-card-hidden', !visibleBlocks[bk]);
+      });
+
+      var filterBtns = document.querySelectorAll('.cu-obf-block-btn');
+      filterBtns.forEach(function(btn) {
+        var bk = btn.getAttribute('data-overview-filter-btn');
+        btn.classList.toggle('cu-obf-btn-active', !!visibleBlocks[bk]);
+      });
+
+      var order = BentoGrid._courseOverviewFilterOrder || [];
+      var selectedCount = 0;
+      order.forEach(function(bk) {
+        if (visibleBlocks[bk]) selectedCount++;
+      });
+      var allBtn = document.querySelector('.cu-obf-select-all');
+      var noneBtn = document.querySelector('.cu-obf-select-none');
+      if (allBtn) allBtn.classList.toggle('cu-obf-btn-active', order.length > 0 && selectedCount === order.length);
+      if (noneBtn) noneBtn.classList.toggle('cu-obf-btn-active', selectedCount === 0);
+    },
+
+    _bindCourseOverviewFilterEvents: function() {
+      var filterWrap = document.querySelector('.cu-overview-block-filter-wrap');
+      if (!filterWrap || filterWrap._cuFilterBound) return;
+      filterWrap.addEventListener('click', BentoGrid._handleOverviewFilterClick);
+      filterWrap._cuFilterBound = true;
+    },
+
+    _handleOverviewFilterClick: function(event) {
+      if (!event || !event.target || !event.target.closest) return;
+      var btn = event.target.closest('.cu-obf-btn');
+      if (!btn) return;
+      if (btn.classList.contains('cu-obf-select-all')) {
+        BentoGrid._selectAllOverviewBlocks();
+        return;
+      }
+      if (btn.classList.contains('cu-obf-select-none')) {
+        BentoGrid._clearOverviewBlocks();
+        return;
+      }
+      var blockKey = btn.getAttribute('data-overview-filter-btn');
+      if (blockKey) BentoGrid._toggleOverviewBlockFilter(blockKey);
+    },
+
+    _toggleOverviewBlockFilter: function(blockKey) {
+      var visibleBlocks = BentoGrid._courseOverviewVisibleBlocks || {};
+      if (!(blockKey in visibleBlocks)) {
+        console.warn('Course overview filter: invalid block key', blockKey);
+        return;
+      }
+      visibleBlocks[blockKey] = !visibleBlocks[blockKey];
+      BentoGrid._applyCourseOverviewFilter();
+    },
+
+    _selectAllOverviewBlocks: function() {
+      var visibleBlocks = BentoGrid._courseOverviewVisibleBlocks || {};
+      (BentoGrid._courseOverviewFilterOrder || []).forEach(function(bk) {
+        visibleBlocks[bk] = true;
+      });
+      BentoGrid._applyCourseOverviewFilter();
+    },
+
+    _clearOverviewBlocks: function() {
+      var visibleBlocks = BentoGrid._courseOverviewVisibleBlocks || {};
+      (BentoGrid._courseOverviewFilterOrder || []).forEach(function(bk) {
+        visibleBlocks[bk] = false;
+      });
+      BentoGrid._applyCourseOverviewFilter();
     },
 
     // ── Course Navigation Sidebar (left) ─────────────────────────────────
