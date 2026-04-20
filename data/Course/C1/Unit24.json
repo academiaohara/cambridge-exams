@@ -1027,56 +1027,38 @@
         ]
       },
       "E": {
-        "title": "Correct Word",
-        "instructions": "Circle the correct word.",
+        "title": "Change in Meaning",
+        "instructions": "Complete both sentences in each pair with the correct word.",
         "questions": [
           {
-            "sentence": "Because I went through the same experience last year, I think I can truly **empathise / sympathise** with what you're feeling right now.",
-            "answer": "empathise"
+            "sentenceA": "Because I went through the same experience last year, I think I can truly ...... with what you're feeling right now.",
+            "sentenceB": "I've never been in that situation myself, but I do ...... with those who have and I hope things improve soon.",
+            "answer": "empathise / sympathise"
           },
           {
-            "sentence": "I've never been in that situation myself, but I do **empathise / sympathise** with those who have and I hope things improve soon.",
-            "answer": "sympathise"
+            "sentenceA": "The charity ...... a model of care that placed the needs of children above all else.",
+            "sentenceB": "The couple ...... several teenagers over the years before finally deciding to give a permanent home to one of them.",
+            "answer": "adopted / fostered"
           },
           {
-            "sentence": "The charity **adopted / fostered** a model of care that placed the needs of children above all else.",
-            "answer": "adopted"
+            "sentenceA": "Teenagers often feel tremendous pressure to dress and act like their ...... .",
+            "sentenceB": "The party invitation specified that ...... were welcome to join for the evening reception.",
+            "answer": "peers / partners"
           },
           {
-            "sentence": "The couple **adopted / fostered** several teenagers over the years before finally deciding to give a permanent home to one of them.",
-            "answer": "fostered"
+            "sentenceA": "It was a huge financial burden for Marco, as he had several ...... relying on his income.",
+            "sentenceB": "Growing up as the youngest of five ......, Clara always had someone to turn to for advice.",
+            "answer": "dependants / siblings"
           },
           {
-            "sentence": "Teenagers often feel tremendous pressure to dress and act like their **partners / peers** .",
-            "answer": "peers"
+            "sentenceA": "The new director faced an uphill task because her ...... had left the department in chaos.",
+            "sentenceB": "Family legend has it that a/an ...... of ours once served as a ship's captain in the eighteenth century.",
+            "answer": "predecessor / ancestor"
           },
           {
-            "sentence": "The party invitation specified that **partners / peers** were welcome to join for the evening reception.",
-            "answer": "partners"
-          },
-          {
-            "sentence": "It was a huge financial burden for Marco, as he had several **dependants / siblings** relying on his income.",
-            "answer": "dependants"
-          },
-          {
-            "sentence": "Growing up as the youngest of five **dependants / siblings** , Clara always had someone to turn to for advice.",
-            "answer": "siblings"
-          },
-          {
-            "sentence": "The new director faced an uphill task because her **ancestor / predecessor** had left the department in chaos.",
-            "answer": "predecessor"
-          },
-          {
-            "sentence": "Family legend has it that a/an **ancestor / predecessor** of ours once served as a ship's captain in the eighteenth century.",
-            "answer": "ancestor"
-          },
-          {
-            "sentence": "The retiring CEO said he was confident his **descendant / successor** would steer the company through any challenges ahead.",
-            "answer": "successor"
-          },
-          {
-            "sentence": "Genetic testing confirmed that she was a **descendant / successor** of the royal family, albeit a very distant one.",
-            "answer": "descendant"
+            "sentenceA": "The retiring CEO said he was confident his ...... would steer the company through any challenges ahead.",
+            "sentenceB": "Genetic testing confirmed that she was a ...... of the royal family, albeit a very distant one.",
+            "answer": "successor / descendant"
           }
         ]
       },
