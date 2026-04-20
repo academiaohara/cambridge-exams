@@ -4366,9 +4366,18 @@
     // ── IRREGULAR VERBS DICTIONARY ────────────────────────────────────────
     _irvDictCache: null,
 
+    _closeIrvDictModal: function() {
+      this._irvPracticeState = null;
+      var modal = document.getElementById('irv-dict-modal');
+      if (modal) modal.remove();
+    },
+
     _showIrregularVerbsDictionary: async function() {
       var existing = document.getElementById('irv-dict-modal');
-      if (existing) { existing.remove(); return; }
+      if (existing) {
+        this._closeIrvDictModal();
+        return;
+      }
 
       if (!this._irvDictCache) {
         try {
@@ -4387,7 +4396,7 @@
             '<span class="irv-dict-icon"><span class="material-symbols-outlined">table_view</span></span>' +
             '<h2 class="irv-dict-title">Irregular Verbs Dictionary</h2>' +
             '<button class="irv-dict-practice-btn" id="irv-dict-practice-btn" onclick="FastExercises._toggleIrvPracticeMode()">Practice mode</button>' +
-            '<button class="irv-dict-close" onclick="document.getElementById(\'irv-dict-modal\').remove()">' +
+            '<button class="irv-dict-close" onclick="FastExercises._closeIrvDictModal()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
@@ -4400,7 +4409,7 @@
         '</div>';
 
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) modal.remove();
+        if (e.target === modal) FastExercises._closeIrvDictModal();
       });
       document.body.appendChild(modal);
 
@@ -4470,7 +4479,6 @@
       var searchRow = document.getElementById('irv-dict-search-row');
       var count = document.getElementById('irv-dict-count');
       var searchInput = document.getElementById('irv-dict-search');
-      var entries = this._irvDictEntries || [];
 
       if (this._irvPracticeState && this._irvPracticeState.active) {
         this._irvPracticeState = null;
@@ -4480,8 +4488,13 @@
         this._renderIrvDictResults((searchInput && searchInput.value) || '');
         return;
       }
+      this._startIrvPracticeMode();
+    },
 
+    _startIrvPracticeMode: function() {
+      var entries = this._irvDictEntries || [];
       if (!entries.length) return;
+
       var shuffled = entries.slice();
       for (var i = shuffled.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -4500,10 +4513,19 @@
         totalAnswers: 0,
         currentBatch: []
       };
+
+      var btn = document.getElementById('irv-dict-practice-btn');
+      var searchRow = document.getElementById('irv-dict-search-row');
+      var count = document.getElementById('irv-dict-count');
       if (btn) btn.textContent = 'Back to dictionary';
       if (searchRow) searchRow.style.display = 'none';
       if (count) count.style.display = 'none';
       this._renderIrvPracticeBatch();
+    },
+
+    _restartIrvPracticeMode: function() {
+      this._irvPracticeState = null;
+      this._startIrvPracticeMode();
     },
 
     _renderIrvPracticeBatch: function() {
@@ -4521,7 +4543,7 @@
             '<p>Score: <strong>' + state.totalCorrect + '/' + state.totalAnswers + '</strong> (' + pct + '%)</p>' +
             '<div class="irv-practice-complete-actions">' +
               '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._toggleIrvPracticeMode()">Back to dictionary</button>' +
-              '<button class="irv-practice-btn" onclick="FastExercises._toggleIrvPracticeMode(); FastExercises._toggleIrvPracticeMode();">Practice again</button>' +
+              '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Practice again</button>' +
             '</div>' +
           '</div>';
         return;
@@ -4563,12 +4585,14 @@
     },
 
     _irvNormalizeForm: function(value) {
-      return (value || '').toLowerCase().replace(/’/g, '\'').replace(/\s+/g, ' ').trim();
+      // Normalize typographic apostrophes from copied lists/user input.
+      return (value || '').toLowerCase().replace(/[\u2018\u2019]/g, '\'').replace(/\s+/g, ' ').trim();
     },
 
     _irvMatchesForm: function(typed, expected) {
       var normalizedTyped = this._irvNormalizeForm(typed);
       if (!normalizedTyped) return false;
+      // Support alternatives such as "was/were", "burned, burnt", or "burned or burnt".
       var options = (expected || '')
         .split(/\/|,|\bor\b/gi)
         .map(this._irvNormalizeForm.bind(this))
