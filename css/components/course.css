@@ -2268,6 +2268,10 @@ textarea.cu-gap-input.cu-gap-textarea {
   gap: 14px;
 }
 
+.cu-overview-card-hidden {
+  display: none !important;
+}
+
 /* Block card */
 .cu-block-card {
   background: rgba(255, 255, 255, 0.96);

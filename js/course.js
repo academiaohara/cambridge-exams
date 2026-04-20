@@ -4559,8 +4559,9 @@
       blockOrder.forEach(function(bk) {
         var chipLabel = bk === 'misc' ? 'OT' : bk;
         var ptMatch = bk.match(/^pt(\d+)$/);
+        var safeBk = String(bk).replace(/\\/g, '\\\\').replace(/'/g, '\\\'');
         if (ptMatch) chipLabel = 'PT' + ptMatch[1];
-        html += '<button type="button" class="cu-obf-btn cu-obf-block-btn cu-obf-btn-active" data-overview-filter-btn="' + self._escapeHTML(bk) + '" onclick="BentoGrid._toggleOverviewBlockFilter(\'' + bk + '\')" title="' + self._escapeHTML(BentoGrid._getBlockLabel(bk)) + '">' + self._escapeHTML(chipLabel) + '</button>';
+        html += '<button type="button" class="cu-obf-btn cu-obf-block-btn cu-obf-btn-active" data-overview-filter-btn="' + self._escapeHTML(bk) + '" onclick="BentoGrid._toggleOverviewBlockFilter(\'' + safeBk + '\')" title="' + self._escapeHTML(BentoGrid._getBlockLabel(bk)) + '">' + self._escapeHTML(chipLabel) + '</button>';
       });
       html += '<button type="button" class="cu-obf-btn cu-obf-select-all cu-obf-btn-active" onclick="BentoGrid._selectAllOverviewBlocks()" title="Select all blocks">' + _mi('done_all') + '</button>' +
         '<button type="button" class="cu-obf-btn cu-obf-select-none" onclick="BentoGrid._clearOverviewBlocks()" title="Deselect all blocks">' + _mi('block') + '</button>' +
@@ -4727,7 +4728,7 @@
       var cards = document.querySelectorAll('.cu-overview-filterable');
       cards.forEach(function(card) {
         var bk = card.getAttribute('data-overview-block');
-        card.style.display = visibleBlocks[bk] ? '' : 'none';
+        card.classList.toggle('cu-overview-card-hidden', !visibleBlocks[bk]);
       });
 
       var filterBtns = document.querySelectorAll('.cu-obf-block-btn');
@@ -4737,7 +4738,10 @@
       });
 
       var order = BentoGrid._courseOverviewFilterOrder || [];
-      var selectedCount = order.filter(function(bk) { return !!visibleBlocks[bk]; }).length;
+      var selectedCount = 0;
+      order.forEach(function(bk) {
+        if (visibleBlocks[bk]) selectedCount++;
+      });
       var allBtn = document.querySelector('.cu-obf-select-all');
       var noneBtn = document.querySelector('.cu-obf-select-none');
       if (allBtn) allBtn.classList.toggle('cu-obf-btn-active', order.length > 0 && selectedCount === order.length);
