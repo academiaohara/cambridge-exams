@@ -30,40 +30,55 @@
       "title": "Ability",
       "content": [
         {
-          "subtitle": "Current or general ability",
-          "examples": [
-            "You can't seriously speak seven languages fluently, can you?"
-          ]
-        },
-        {
-          "subtitle": "Past ability",
-          "examples": [
-            "There's simply no way you could read when you were two!"
-          ]
-        },
-        {
-          "subtitle": "Decisions made now about future ability",
-          "examples": [
-            "I can pick up a copy of the magazine when I pass the newsagent, if you want."
-          ]
-        },
-        {
-          "subtitle": "Future ability",
-          "examples": [
-            "Perhaps one day all children across the world will be able to access quality education."
-          ]
-        },
-        {
-          "subtitle": "Hypothetical ability (present/future)",
-          "examples": [
-            "I couldn't appear on a live debate show. I'd be far too nervous!",
-            "I could join them for lunch on Friday but I won't bother, since I've already eaten there recently."
-          ]
-        },
-        {
-          "subtitle": "Past hypothetical ability",
-          "examples": [
-            "They could have raised far more challenging issues during the interview. It makes you wonder why they held back."
+          "tableHeaders": [
+            "Ability type",
+            "Situation",
+            "Forms",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Real ability",
+              "Current or general ability",
+              "**can, can't**",
+              "You **can't** genuinely **speak** eight languages fluently, **can** you?"
+            ],
+            [
+              "Real ability",
+              "Past ability",
+              "**could, couldn't**",
+              "There's no way you **could** decode that text when you were three!"
+            ],
+            [
+              "Real ability",
+              "Decision now about future ability",
+              "**can, can't, could, couldn't**",
+              "I **can** pick up those notes later today if you want."
+            ],
+            [
+              "Real ability",
+              "Future ability",
+              "**will / won't be able to**",
+              "In the future, many people **will be able to** work from almost anywhere."
+            ],
+            [
+              "Hypothetical ability",
+              "Current or general hypothetical ability",
+              "**could, couldn't**",
+              "I **couldn't** perform in a talent show. I'd panic."
+            ],
+            [
+              "Hypothetical ability",
+              "Future hypothetical ability",
+              "**could, couldn't**",
+              "I **could** travel with them next month, but I'm not planning to."
+            ],
+            [
+              "Hypothetical ability",
+              "Past hypothetical ability",
+              "**could have, couldn't have**",
+              "They **could have** asked much tougher questions during the interview."
+            ]
           ]
         }
       ]
@@ -73,28 +88,15 @@
       "title": "Watch out! (Ability)",
       "content": [
         {
-          "subtitle": "Negative forms",
-          "description": "The full negative of modals is generally written as two separate words, eg could not. The sole exception is cannot, which is always one word."
-        },
-        {
-          "subtitle": "Infinitives",
-          "description": "Can and could cannot function as infinitives. The construction to be able to serves as an alternative in those contexts.",
-          "examples": [
-            "I'd really love to be able to join you for the conference next week, but I simply can't."
-          ]
-        },
-        {
-          "subtitle": "Past ability on one occasion",
-          "description": "Could is generally not used to describe a single instance of past ability. Expressions such as was/were able to, managed or succeeded are preferred instead.",
-          "examples": [
-            "Fortunately, she was able to submit the report before the deadline."
-          ]
-        },
-        {
-          "subtitle": "Exceptions (perception verbs)",
-          "description": "With verbs of perception such as see, hear, feel, etc., could may be used to refer to a single instance of past ability.",
-          "examples": [
-            "I could hear that something was wrong the moment she answered the phone."
+          "subtitle": "Watch out!",
+          "items": [
+            "The full negative form is usually two words, e.g. **could not**; the exception is **cannot** (one word).",
+            "**Can** and **could** do not work as infinitives; use **to be able to** instead.",
+            "✓ I'd love **to be able to** join you tomorrow, but I can't.",
+            "For a single completed event in the past, we normally use **was/were able to**, **managed to**, or **succeeded in**.",
+            "✓ Luckily, she **was able to** finish before the deadline.",
+            "With perception verbs (see, hear, feel, etc.), **could** is possible for one past occasion.",
+            "✓ I **could hear** that he was upset."
           ]
         }
       ]
@@ -104,30 +106,23 @@
       "title": "Permission",
       "content": [
         {
-          "subtitle": "Asking for permission",
-          "items": [
-            "may",
-            "could",
-            "couldn't",
-            "can",
-            "can't"
-          ],
-          "examples": [
-            "Can I leave a few minutes early to catch my train?"
-          ]
-        },
-        {
-          "subtitle": "Giving/refusing permission",
-          "items": [
-            "may",
-            "may not",
-            "could",
-            "couldn't",
-            "can",
-            "can't"
-          ],
-          "examples": [
-            "No, you can't, I'm afraid."
+          "modalTable": true,
+          "rows": [
+            {
+              "use": "Asking for permission",
+              "modal": "may, could, can",
+              "example": "**Could** I borrow your charger for a moment?"
+            },
+            {
+              "use": "Giving permission",
+              "modal": "may, can, could",
+              "example": "Yes, you **can** use my laptop for the presentation."
+            },
+            {
+              "use": "Refusing permission",
+              "modal": "may not, can't, couldn't",
+              "example": "No, you **can't** park in this area after 6 p.m."
+            }
           ]
         }
       ]
@@ -137,10 +132,13 @@
       "title": "Watch out! (Permission)",
       "content": [
         {
-          "description": "In terms of formality, may is the most polite and formal option, followed by could, with can being the least formal.",
-          "examples": [
-            "We don't usually use modals to talk about past permission. We can use was/were allowed to: We were allowed to take one book home per week.",
-            "However, we do use could to talk about past permission in reported speech: The librarian said we could take one book home per week."
+          "subtitle": "Watch out!",
+          "items": [
+            "In terms of formality, **may** is usually the most formal, then **could**, then **can**.",
+            "To talk about past permission, we commonly use **was/were allowed to**.",
+            "✓ We **were allowed to** leave ten minutes early.",
+            "In reported speech, **could** can refer to past permission.",
+            "✓ The teacher said we **could** submit the task the next day."
           ]
         }
       ]
@@ -150,16 +148,13 @@
       "title": "Advice",
       "content": [
         {
-          "subtitle": "Asking for and giving advice",
-          "items": [
-            "should",
-            "shouldn't",
-            "ought to",
-            "oughtn't to",
-            "had better"
-          ],
-          "examples": [
-            "You should try to submit that short story to a literary magazine."
+          "modalTable": true,
+          "rows": [
+            {
+              "use": "Asking for / giving advice",
+              "modal": "should, shouldn't, ought to, oughtn't to, had better",
+              "example": "You **should** back up your files before updating the system."
+            }
           ]
         }
       ]
@@ -169,15 +164,12 @@
       "title": "Watch out! (Advice)",
       "content": [
         {
-          "description": "Hadn't better is restricted to question forms only.",
-          "examples": [
-            "Hadn't you better double-check those statistics before sending the report?"
-          ]
-        },
-        {
-          "description": "Might/may as well can also be used to give advice or make suggestions, implying that while the option is not ideal, no superior alternative exists.",
-          "examples": [
-            "We may as well read the book since the film adaptation has been cancelled."
+          "subtitle": "Watch out!",
+          "items": [
+            "**Hadn't better** is mainly used in question form.",
+            "✓ **Hadn't you better** check the venue details again?",
+            "**May/Might as well** can give advice when no better option is available.",
+            "✓ We **might as well** leave now to avoid traffic."
           ]
         }
       ]
@@ -187,49 +179,33 @@
       "title": "Criticism",
       "content": [
         {
-          "subtitle": "Criticising past behaviour",
-          "items": [
-            "should have",
-            "shouldn't have",
-            "ought to have",
-            "oughtn't to have"
-          ],
-          "examples": [
-            "You shouldn't have spoken to Professor Harris in that tone."
-          ]
-        },
-        {
-          "subtitle": "Expressing annoyance at past behaviour",
-          "items": [
-            "could have",
-            "might have"
-          ],
-          "examples": [
-            "You could/might have let me know you weren't coming to dinner!"
-          ]
-        },
-        {
-          "subtitle": "Criticising general behaviour",
-          "items": [
-            "will"
-          ],
-          "examples": [
-            "She will leave the kitchen in a state every single time she cooks."
-          ]
-        },
-        {
-          "subtitle": "Criticising a specific example of someone's general behaviour",
-          "items": [
-            "would"
-          ],
-          "examples": [
-            "You would lose your keys on the one day I couldn't let you in."
-          ]
-        },
-        {
-          "subtitle": "Might as well for criticism",
-          "examples": [
-            "I might as well be invisible for all the attention you pay me."
+          "modalTable": true,
+          "rows": [
+            {
+              "use": "Criticising past behaviour",
+              "modal": "should have, shouldn't have, ought to have, oughtn't to have",
+              "example": "You **shouldn't have** replied to that message so aggressively."
+            },
+            {
+              "use": "Showing annoyance about past behaviour",
+              "modal": "could have, might have",
+              "example": "You **could have** told me earlier that the plan had changed!"
+            },
+            {
+              "use": "Criticising habitual behaviour",
+              "modal": "will",
+              "example": "He **will** leave every light on in the house."
+            },
+            {
+              "use": "Criticising one instance of usual behaviour",
+              "modal": "would",
+              "example": "You **would** forget your notes on the day of the meeting."
+            },
+            {
+              "use": "Expressing frustrated comparison",
+              "modal": "might as well",
+              "example": "I **might as well** talk to the wall for all the attention I get."
+            }
           ]
         }
       ]
@@ -239,73 +215,38 @@
       "title": "Obligation",
       "content": [
         {
-          "subtitle": "Current or general obligation",
-          "items": [
-            "must",
-            "mustn't",
-            "have (got) to",
-            "need (to)"
-          ],
-          "examples": [
-            "You have to be extremely well-organised to succeed as a project manager."
-          ]
-        },
-        {
-          "subtitle": "Lack of current or general obligation",
-          "items": [
-            "don't have to",
-            "haven't got to",
-            "needn't",
-            "don't need (to)"
-          ],
-          "examples": [
-            "You don't always need to have formal qualifications to start your own business."
-          ]
-        },
-        {
-          "subtitle": "Future obligation",
-          "items": [
-            "will have to",
-            "must",
-            "mustn't",
-            "have (got) to",
-            "(will) need (to)"
-          ],
-          "examples": [
-            "You'll have to gather quite a bit of data before you can draw any conclusions."
-          ]
-        },
-        {
-          "subtitle": "Lack of future obligation",
-          "items": [
-            "don't/won't have to",
-            "haven't got to",
-            "needn't",
-            "don't/won't need (to)"
-          ],
-          "examples": [
-            "It's a relief that we won't have to sit through another lengthy presentation this term."
-          ]
-        },
-        {
-          "subtitle": "Past obligation",
-          "items": [
-            "had to",
-            "needed (to)"
-          ],
-          "examples": [
-            "We had to prepare at least five questions each before the panel discussion."
-          ]
-        },
-        {
-          "subtitle": "Lack of past obligation",
-          "items": [
-            "didn't have to",
-            "didn't need (to)",
-            "needn't have"
-          ],
-          "examples": [
-            "In earlier decades, politicians didn't have to contend with the pressure of round-the-clock social media."
+          "modalTable": true,
+          "rows": [
+            {
+              "use": "Current or general obligation",
+              "modal": "must, mustn't, have (got) to, need (to)",
+              "example": "You **have to** stay focused to finish this project on time."
+            },
+            {
+              "use": "Lack of current or general obligation",
+              "modal": "don't have to, haven't got to, needn't, don't need (to)",
+              "example": "You **don't have to** attend every optional workshop."
+            },
+            {
+              "use": "Future obligation",
+              "modal": "will have to, must, mustn't, have (got) to, (will) need (to)",
+              "example": "We **will have to** submit the final draft by Friday."
+            },
+            {
+              "use": "Lack of future obligation",
+              "modal": "don't/won't have to, haven't got to, needn't, don't/won't need (to)",
+              "example": "They **won't have to** retake the exam if they pass now."
+            },
+            {
+              "use": "Past obligation",
+              "modal": "had to, needed (to)",
+              "example": "I **had to** rewrite the report after the review meeting."
+            },
+            {
+              "use": "Lack of past obligation",
+              "modal": "didn't have to, didn't need (to), needn't have",
+              "example": "We **didn't need to** print everything in colour."
+            }
           ]
         }
       ]
