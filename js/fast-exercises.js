@@ -4544,7 +4544,7 @@
             '<p>Score: <strong>' + state.totalCorrect + '/' + state.totalAnswers + '</strong> (' + pct + '%)</p>' +
             '<div class="irv-practice-complete-actions">' +
               '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._toggleIrvPracticeMode()">Back to dictionary</button>' +
-              '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Restart from 0</button>' +
+              '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Restart practice</button>' +
             '</div>' +
           '</div>';
         return;
@@ -4581,9 +4581,9 @@
         '</div>' +
         '<div class="irv-practice-actions">' +
           '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._checkIrvPracticeBatch()">Check batch</button>' +
-          '<button class="irv-practice-btn" id="irv-practice-toggle" onclick="FastExercises._toggleIrvPracticeAnswers()" disabled aria-label="Show correct answers (available after checking the batch)">Show correct answers</button>' +
+          '<button class="irv-practice-btn" id="irv-practice-toggle" onclick="FastExercises._toggleIrvPracticeAnswers()" disabled aria-label="Show correct answers">Show correct answers</button>' +
           '<button class="irv-practice-btn" id="irv-practice-next" onclick="FastExercises._nextIrvPracticeBatch()" disabled>Next batch</button>' +
-          '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Restart from 0</button>' +
+          '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Restart practice</button>' +
         '</div>';
     },
 
