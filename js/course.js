@@ -177,6 +177,7 @@
 
         leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(indexData, level, null);
         centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
+        BentoGrid._bindCourseOverviewFilterEvents();
       } else {
         leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(null, level, null);
         centerSection.innerHTML = headerHtml +
@@ -317,6 +318,7 @@
           '</div>' +
         '</div>';
       centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
+      BentoGrid._bindCourseOverviewFilterEvents();
       // Update left sidebar to deselect any active unit
       var leftSidebar = document.getElementById('courseLeftSidebar');
       if (leftSidebar && BentoGrid._courseIndexData) {
@@ -4553,7 +4555,7 @@
         BentoGrid._courseOverviewVisibleBlocks[bk] = true;
       });
 
-      html += '<div class="cu-overview-block-filter-wrap" onclick="BentoGrid._handleOverviewFilterClick(event)">' +
+      html += '<div class="cu-overview-block-filter-wrap">' +
         '<div class="cu-overview-block-filter-icon">' + _mi('filter_alt') + '</div>' +
         '<div class="cu-overview-block-filter-buttons">';
       blockOrder.forEach(function(bk) {
@@ -4747,6 +4749,13 @@
       var noneBtn = document.querySelector('.cu-obf-select-none');
       if (allBtn) allBtn.classList.toggle('cu-obf-btn-active', order.length > 0 && selectedCount === order.length);
       if (noneBtn) noneBtn.classList.toggle('cu-obf-btn-active', selectedCount === 0);
+    },
+
+    _bindCourseOverviewFilterEvents: function() {
+      var filterWrap = document.querySelector('.cu-overview-block-filter-wrap');
+      if (!filterWrap || filterWrap._cuFilterBound) return;
+      filterWrap.addEventListener('click', BentoGrid._handleOverviewFilterClick);
+      filterWrap._cuFilterBound = true;
     },
 
     _handleOverviewFilterClick: function(event) {

@@ -2268,8 +2268,8 @@ textarea.cu-gap-input.cu-gap-textarea {
   gap: 14px;
 }
 
-.cu-overview-card-hidden {
-  display: none !important;
+.cu-overview-filterable.cu-overview-card-hidden {
+  display: none;
 }
 
 /* Block card */
