@@ -154,12 +154,18 @@
         {
           "subtitle": "Examples",
           "items": [
-            "She was the technician **leading** the research at the time. (who was leading)",
-            "The manuscript **discovered in the attic** was over four hundred years old. (which had been discovered)",
-            "After **submitting her essay**, she went straight out for a walk.",
-            "After **having submitted her essay**, she went straight out for a walk.",
-            "**Being allergic to shellfish**, Marcus was very cautious at the seafood buffet.",
-            "**Having visited Florence several times before**, Carla felt completely at ease navigating the city.",
+            [
+              "She was the technician **leading** the research at the time. (who was leading)",
+              "The manuscript **discovered in the attic** was over four hundred years old. (which had been discovered)"
+            ],
+            [
+              "After **submitting her essay**, she went straight out for a walk.",
+              "After **having submitted her essay**, she went straight out for a walk."
+            ],
+            [
+              "**Being allergic to shellfish**, Marcus was very cautious at the seafood buffet.",
+              "**Having visited Florence several times before**, Carla felt completely at ease navigating the city."
+            ],
             "**Waiting** at the airport gate, I could hear announcements echoing through the terminal.",
             "**Having spotted** a vacancy at the museum, she applied straight away.",
             "**Given** a map of the city, we found the gallery without any trouble. (when/because we were given a map)",
@@ -213,9 +219,11 @@
             "Despite applying for the scholarship, Clara did not receive an offer.",
             "While solar panels are highly effective in sunny climates, they generate far less energy in overcast regions.",
             "Titanium is an exceptionally strong material. However, it is costly to process.",
-            "Try as she might, she simply could not master the art of calligraphy.",
-            "However hard she tried, she simply could not master the art of calligraphy.",
-            "Much as she tried, she simply could not master the art of calligraphy."
+            [
+              "Try as she might, she simply could not master the art of calligraphy.",
+              "However hard she tried, she simply could not master the art of calligraphy.",
+              "Much as she tried, she simply could not master the art of calligraphy."
+            ]
           ]
         },
         {
