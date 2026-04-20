@@ -23,7 +23,7 @@ En B1, el índice compartido sigue bloques de **3 units + 1 review**:
 
 ## 2) Esquemas JSON (plantillas)
 
-## 2.1 Unit de Grammar (`type: "grammar"`)
+### 2.1 Unit de Grammar (`type: "grammar"`)
 
 ```json
 {
@@ -61,7 +61,7 @@ En B1, el índice compartido sigue bloques de **3 units + 1 review**:
 }
 ```
 
-## 2.2 Unit de Vocabulary (`type: "vocabulary"`)
+### 2.2 Unit de Vocabulary (`type: "vocabulary"`)
 
 ```json
 {
@@ -99,7 +99,7 @@ En B1, el índice compartido sigue bloques de **3 units + 1 review**:
 }
 ```
 
-## 2.3 Review (`type: "review"`)
+### 2.3 Review (`type: "review"`)
 
 ```json
 {
@@ -127,7 +127,7 @@ En B1, el índice compartido sigue bloques de **3 units + 1 review**:
 }
 ```
 
-## 2.4 Progress Test (`type: "progress_test"`)
+### 2.4 Progress Test (`type: "progress_test"`)
 
 ```json
 {
@@ -242,4 +242,3 @@ Campos recomendados por item:
 3. Usar títulos consistentes (`unitTitle`, `title`).
 4. Añadir `scoring` en ejercicios evaluables.
 5. Validar que cada `file` existe y coincide con `index.json`.
-
