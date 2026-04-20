@@ -4581,7 +4581,7 @@
         '</div>' +
         '<div class="irv-practice-actions">' +
           '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._checkIrvPracticeBatch()">Check batch</button>' +
-          '<button class="irv-practice-btn" id="irv-practice-toggle" onclick="FastExercises._toggleIrvPracticeAnswers()" disabled title="Available after checking the batch" aria-label="Show correct answers (available after checking the batch)">Show correct answers</button>' +
+          '<button class="irv-practice-btn" id="irv-practice-toggle" onclick="FastExercises._toggleIrvPracticeAnswers()" disabled aria-label="Show correct answers (available after checking the batch)">Show correct answers</button>' +
           '<button class="irv-practice-btn" id="irv-practice-next" onclick="FastExercises._nextIrvPracticeBatch()" disabled>Next batch</button>' +
           '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Restart from 0</button>' +
         '</div>';
@@ -4641,7 +4641,6 @@
       var toggleBtn = document.getElementById('irv-practice-toggle');
       if (toggleBtn) {
         toggleBtn.disabled = false;
-        toggleBtn.title = '';
         toggleBtn.setAttribute('aria-label', 'Show correct answers');
         toggleBtn.textContent = 'Show correct answers';
       }
