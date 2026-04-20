@@ -4509,6 +4509,7 @@
         batchSize: 5,
         batchIndex: 0,
         checked: false,
+        showingCorrect: false,
         totalCorrect: 0,
         totalAnswers: 0,
         currentBatch: []
@@ -4543,7 +4544,7 @@
             '<p>Score: <strong>' + state.totalCorrect + '/' + state.totalAnswers + '</strong> (' + pct + '%)</p>' +
             '<div class="irv-practice-complete-actions">' +
               '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._toggleIrvPracticeMode()">Back to dictionary</button>' +
-              '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Practice again</button>' +
+              '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Restart from 0</button>' +
             '</div>' +
           '</div>';
         return;
@@ -4554,6 +4555,7 @@
       var batch = state.items.slice(start, end);
       state.currentBatch = batch;
       state.checked = false;
+      state.showingCorrect = false;
 
       var rowsHtml = '';
       for (var i = 0; i < batch.length; i++) {
@@ -4563,7 +4565,6 @@
             '<td class="irv-practice-infinitive">' + this._escapeHTML(item.infinitive || '') + '</td>' +
             '<td><input id="irv-ps-' + i + '" class="irv-practice-input" type="text" placeholder="Past simple" autocomplete="off" /></td>' +
             '<td><input id="irv-pp-' + i + '" class="irv-practice-input" type="text" placeholder="Past participle" autocomplete="off" /></td>' +
-            '<td id="irv-res-' + i + '" class="irv-practice-result"></td>' +
           '</tr>';
       }
 
@@ -4574,13 +4575,15 @@
         '</div>' +
         '<div class="irv-dict-table-wrap">' +
           '<table class="irv-dict-table irv-practice-table">' +
-            '<thead><tr><th>Infinitive</th><th>Past simple</th><th>Past participle</th><th>Result</th></tr></thead>' +
+            '<thead><tr><th>Infinitive</th><th>Past simple</th><th>Past participle</th></tr></thead>' +
             '<tbody>' + rowsHtml + '</tbody>' +
           '</table>' +
         '</div>' +
         '<div class="irv-practice-actions">' +
           '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._checkIrvPracticeBatch()">Check batch</button>' +
+          '<button class="irv-practice-btn" id="irv-practice-toggle" onclick="FastExercises._toggleIrvPracticeAnswers()" disabled>Show correct answers</button>' +
           '<button class="irv-practice-btn" id="irv-practice-next" onclick="FastExercises._nextIrvPracticeBatch()" disabled>Next batch</button>' +
+          '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Restart from 0</button>' +
         '</div>';
     },
 
@@ -4608,35 +4611,64 @@
         var item = state.currentBatch[i];
         var psInput = document.getElementById('irv-ps-' + i);
         var ppInput = document.getElementById('irv-pp-' + i);
-        var resultEl = document.getElementById('irv-res-' + i);
-        if (!psInput || !ppInput || !resultEl) continue;
+        if (!psInput || !ppInput) continue;
 
-        var psOk = this._irvMatchesForm(psInput.value, item.pastSimple);
-        var ppOk = this._irvMatchesForm(ppInput.value, item.pastParticiple);
+        var psTyped = psInput.value || '';
+        var ppTyped = ppInput.value || '';
+
+        var psOk = this._irvMatchesForm(psTyped, item.pastSimple);
+        var ppOk = this._irvMatchesForm(ppTyped, item.pastParticiple);
 
         state.totalAnswers += 2;
         if (psOk) state.totalCorrect++;
         if (ppOk) state.totalCorrect++;
 
+        psInput.dataset.userAnswer = psTyped;
+        ppInput.dataset.userAnswer = ppTyped;
+        psInput.dataset.correctAnswer = item.pastSimple || '';
+        ppInput.dataset.correctAnswer = item.pastParticiple || '';
+        psInput.dataset.isCorrect = psOk ? '1' : '0';
+        ppInput.dataset.isCorrect = ppOk ? '1' : '0';
+
         psInput.disabled = true;
         ppInput.disabled = true;
         psInput.classList.add(psOk ? 'irv-input-correct' : 'irv-input-wrong');
         ppInput.classList.add(ppOk ? 'irv-input-correct' : 'irv-input-wrong');
-
-        if (psOk && ppOk) {
-          resultEl.className = 'irv-practice-result irv-practice-result-ok';
-          resultEl.textContent = '✓';
-        } else {
-          resultEl.className = 'irv-practice-result irv-practice-result-wrong';
-          resultEl.innerHTML = '✗<span>Expected: ' +
-            this._escapeHTML(item.pastSimple || '') + ' / ' + this._escapeHTML(item.pastParticiple || '') +
-            '</span>';
-        }
       }
 
       state.checked = true;
+      state.showingCorrect = false;
+      var toggleBtn = document.getElementById('irv-practice-toggle');
+      if (toggleBtn) {
+        toggleBtn.disabled = false;
+        toggleBtn.textContent = 'Show correct answers';
+      }
       var nextBtn = document.getElementById('irv-practice-next');
       if (nextBtn) nextBtn.disabled = false;
+    },
+
+    _toggleIrvPracticeAnswers: function() {
+      var state = this._irvPracticeState;
+      if (!state || !state.checked || !state.currentBatch || !state.currentBatch.length) return;
+
+      state.showingCorrect = !state.showingCorrect;
+      for (var i = 0; i < state.currentBatch.length; i++) {
+        var psInput = document.getElementById('irv-ps-' + i);
+        var ppInput = document.getElementById('irv-pp-' + i);
+        if (!psInput || !ppInput) continue;
+
+        if (psInput.dataset.isCorrect !== '1') {
+          psInput.value = state.showingCorrect ? (psInput.dataset.correctAnswer || '') : (psInput.dataset.userAnswer || '');
+        }
+        if (ppInput.dataset.isCorrect !== '1') {
+          ppInput.value = state.showingCorrect ? (ppInput.dataset.correctAnswer || '') : (ppInput.dataset.userAnswer || '');
+        }
+      }
+
+      var toggleBtn = document.getElementById('irv-practice-toggle');
+      if (toggleBtn) {
+        toggleBtn.textContent = state.showingCorrect ? 'Show my answers' : 'Show correct answers';
+      }
     },
 
     _nextIrvPracticeBatch: function() {
