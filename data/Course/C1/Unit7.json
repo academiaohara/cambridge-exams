@@ -9,23 +9,45 @@
       "title": "The Passive",
       "content": [
         {
-          "subtitle": "Uses",
-          "items": [
-            "When we don't know who does/did something",
-            "When it's obvious who does/did something",
-            "When it's not important who does/did something",
-            "To produce a formal style"
-          ]
-        },
-        {
-          "subtitle": "Examples",
-          "items": [
-            "Three journalists were detained during the protests that swept through the capital last weekend.",
-            "Having been ratified in 1948, the Universal Declaration of Human Rights continues to shape international law.",
-            "The championship trophy was lifted at the closing ceremony by the tournament's youngest-ever captain.",
-            "This deep-sea drilling technique was pioneered during the 1960s by marine geologists working off the coast of California.",
-            "We were astonished by the scale of the destruction left behind by the overnight storm.",
-            "All passengers are required to present valid identification before boarding the international flight."
+          "subtitleTable": true,
+          "noHeader": true,
+          "rows": [
+            {
+              "label": "When the agent is unknown",
+              "items": [
+                "A rare manuscript **was stolen** from the university archive overnight."
+              ]
+            },
+            {
+              "label": "When the agent is obvious",
+              "items": [
+                "The emergency bridge **was reopened** at dawn after final checks."
+              ]
+            },
+            {
+              "label": "When the action matters more than the doer",
+              "items": [
+                "Several safety recommendations **were introduced** after the inspection."
+              ]
+            },
+            {
+              "label": "To highlight new information at the end",
+              "items": [
+                "The final decision **was announced** by the board chair at noon."
+              ]
+            },
+            {
+              "label": "To avoid heavy subjects at the start",
+              "items": [
+                "We **were impressed** by the number of volunteers joining the campaign."
+              ]
+            },
+            {
+              "label": "To create a formal register",
+              "items": [
+                "All candidates **are required** to carry photographic identification."
+              ]
+            }
           ]
         }
       ]
@@ -35,67 +57,34 @@
       "title": "Impersonal Passive",
       "content": [
         {
-          "subtitle": "Form",
-          "items": [
-            "noun + verb in passive form + infinitive / perfect infinitive",
-            "There + verb in passive form + infinitive / perfect infinitive",
-            "It + verb in passive form + that clause"
+          "tableHeaders": [
+            "Form",
+            "Common verbs",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Noun + passive verb + infinitive / perfect infinitive",
+              "believe, expect, find, know, report, say, think, understand",
+              "Renewable energy **is expected to account** for most new electricity capacity this decade."
+            ],
+            [
+              "There + passive verb + infinitive / perfect infinitive",
+              "believe, consider, estimate, report, say, think",
+              "There **are reported to have been** significant delays at the border this morning."
+            ],
+            [
+              "It + passive verb + that-clause",
+              "accept, agree, assume, believe, claim, suggest, think",
+              "It **is widely believed that** early intervention improves long-term outcomes."
+            ]
           ]
         },
         {
-          "subtitle": "Common words and phrases",
+          "subtitle": "Watch out!",
           "items": [
-            "agree",
-            "assume",
-            "believe",
-            "claim",
-            "consider",
-            "estimate",
-            "expect",
-            "feel",
-            "find",
-            "guarantee",
-            "know",
-            "mean",
-            "presume",
-            "regard",
-            "report",
-            "say",
-            "suppose",
-            "think",
-            "understand"
-          ]
-        },
-        {
-          "subtitle": "Common words and phrases",
-          "items": [
-            "accept",
-            "agree",
-            "argue",
-            "assume",
-            "believe",
-            "calculate",
-            "claim",
-            "consider",
-            "estimate",
-            "expect",
-            "feel",
-            "know",
-            "presume",
-            "report",
-            "say",
-            "suggest",
-            "suppose",
-            "think",
-            "understand"
-          ]
-        },
-        {
-          "subtitle": "Examples",
-          "items": [
-            "The global population is expected to reach approximately ten billion by the middle of this century.",
-            "There are reported to have been unusually high levels of air pollution across the northern region this winter.",
-            "It is believed that the discovery of the ancient tomb will shed new light on early civilisation in the region."
+            "Use the **perfect infinitive** (*to have + past participle*) for an action earlier than the reporting verb.",
+            "This structure is common in formal writing, reports and news summaries."
           ]
         }
       ]
@@ -105,23 +94,29 @@
       "title": "Direct and Indirect Object",
       "content": [
         {
-          "subtitle": "Form",
-          "items": [
-            "Some verbs (bring, buy, get, give, leave, lend, make, offer, owe, pass, pay, promise, refuse, send, show, take, teach, tell, write) can take two objects."
-          ]
-        },
-        {
-          "subtitle": "Example",
-          "items": [
-            "Active: The panel offered the young scientist a prestigious grant.",
-            "Passive (indirect object as subject): The young scientist was offered a prestigious grant (by the panel).",
-            "Passive (direct object as subject): A prestigious grant was offered to the young scientist (by the panel)."
+          "tableHeaders": [
+            "Pattern",
+            "Active sentence",
+            "Passive alternatives"
+          ],
+          "rows": [
+            [
+              "Verb + indirect object + direct object",
+              "The committee offered the researcher a grant.",
+              "The researcher **was offered** a grant. / A grant **was offered** to the researcher."
+            ],
+            [
+              "Verb + direct object + to + indirect object",
+              "The editor sent the writer a revised contract.",
+              "The writer **was sent** a revised contract. / A revised contract **was sent** to the writer."
+            ]
           ]
         },
         {
           "subtitle": "Watch out!",
           "items": [
-            "With explain and suggest, the preposition cannot be omitted. They cannot be used with indirect object as subject."
+            "With **explain** and **suggest**, keep the preposition or clause structure: *The rule was explained to us*.",
+            "Not every ditransitive verb allows both passive patterns in natural use."
           ]
         }
       ]
@@ -131,24 +126,39 @@
       "title": "Avoiding the Passive",
       "content": [
         {
-          "subtitle": "Tenses to avoid",
-          "description": "The passive is not normally used with present perfect continuous, past perfect continuous, future continuous or future perfect continuous.",
-          "items": [
-            "in progress",
-            "in training",
-            "on display",
-            "under consideration",
-            "under construction"
-          ]
-        },
-        {
-          "subtitle": "Examples",
-          "items": [
-            "✓ Restoration work on the cathedral roof will be in progress throughout the winter months.",
-            "✓ By the time she completes her residency, Elena will have been in training as a cardiologist for six years.",
-            "✓ Rare artefacts from the ancient Egyptian collection have been on display in the east wing for several weeks.",
-            "✓ By the time the committee reached a verdict, the proposal had been under consideration for over a year.",
-            "✓ The new coastal motorway has been under construction for nearly two years now."
+          "subtitle": "Tenses usually avoided in the passive",
+          "description": "Present perfect continuous, past perfect continuous, future continuous and future perfect continuous are often replaced by fixed expressions.",
+          "tableHeaders": [
+            "Preferred expression",
+            "Typical context",
+            "Example"
+          ],
+          "rows": [
+            [
+              "in progress",
+              "ongoing activity",
+              "Restoration work on the theatre roof **has been in progress** since January."
+            ],
+            [
+              "in training",
+              "long preparation period",
+              "By graduation, Maya **will have been in training** as a pilot for four years."
+            ],
+            [
+              "on display",
+              "public exhibition",
+              "Original sketches from the project **have been on display** all week."
+            ],
+            [
+              "under consideration",
+              "decision-making stage",
+              "The revised policy **has been under consideration** since last month."
+            ],
+            [
+              "under construction",
+              "building/development process",
+              "The coastal rail extension **has been under construction** for nearly two years."
+            ]
           ]
         }
       ]
@@ -158,25 +168,30 @@
       "title": "Causative: get/have sth done",
       "content": [
         {
-          "subtitle": "Uses",
-          "items": [
-            "Actions we arrange for other people to do for us",
-            "Things we experience (usually negative and not intended)"
-          ]
-        },
-        {
-          "subtitle": "Examples",
-          "items": [
-            "Have you managed to get your bicycle repaired before the race?",
-            "I later found out that James had his briefcase stolen on the train."
+          "tableHeaders": [
+            "Use",
+            "Structure",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Arranging services",
+              "have/get + object + past participle",
+              "We **had** the solar panels **installed** before winter."
+            ],
+            [
+              "Unwanted experiences",
+              "have/get + object + past participle",
+              "She **had** her phone **stolen** on the way home."
+            ]
           ]
         },
         {
           "subtitle": "Watch out!",
           "items": [
-            "Get is more informal than have.",
-            "Can use need, want, would like: I'd like those samples analysed before the meeting.",
-            "Get sth done can also mean 'finish doing something': Let's leave as soon as I've got the presentation prepared."
+            "**Get** is usually more informal than **have**.",
+            "You can combine this pattern with **need / want / would like**: *I need my laptop repaired today*.",
+            "**Get something done** can also mean finishing a task: *I got the report written before lunch*."
           ]
         }
       ]
@@ -186,15 +201,22 @@
       "title": "Causative: get sb to do / have sb do",
       "content": [
         {
-          "subtitle": "Form",
-          "items": [
-            "Actions we make somebody/something do for us"
-          ]
-        },
-        {
-          "subtitle": "Example",
-          "items": [
-            "Did you get Marcus to translate the whole report into French?"
+          "tableHeaders": [
+            "Structure",
+            "Meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "get + person + to-infinitive",
+              "persuade or arrange for someone to do something",
+              "Could you **get Leo to review** the final draft?"
+            ],
+            [
+              "have + person + bare infinitive",
+              "instruct someone to do something (often more formal/direct)",
+              "The supervisor **had the team update** the safety log immediately."
+            ]
           ]
         }
       ]
@@ -204,15 +226,27 @@
       "title": "Causative: get/have sb doing",
       "content": [
         {
-          "subtitle": "Form",
-          "items": [
-            "Actions we make somebody/something start doing"
-          ]
-        },
-        {
-          "subtitle": "Example",
-          "items": [
-            "Don't worry. We'll soon have the new system running smoothly."
+          "tableHeaders": [
+            "Structure",
+            "Meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "get + person + -ing",
+              "make someone start doing something (often by encouragement)",
+              "The coach **got everyone warming up** before sunrise."
+            ],
+            [
+              "have + person + -ing",
+              "cause someone to be in the middle of an activity",
+              "By noon, she **had the interns organising** all the files by priority."
+            ],
+            [
+              "have + thing + -ing",
+              "set a process in motion",
+              "We soon **had the new platform running** without errors."
+            ]
           ]
         }
       ]
