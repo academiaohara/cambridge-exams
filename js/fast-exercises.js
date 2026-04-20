@@ -4363,6 +4363,290 @@
       resultsEl.innerHTML = html;
     },
 
+    // ── IRREGULAR VERBS DICTIONARY ────────────────────────────────────────
+    _irvDictCache: null,
+
+    _closeIrvDictModal: function() {
+      this._irvPracticeState = null;
+      var modal = document.getElementById('irv-dict-modal');
+      if (modal) modal.remove();
+    },
+
+    _showIrregularVerbsDictionary: async function() {
+      var existing = document.getElementById('irv-dict-modal');
+      if (existing) {
+        this._closeIrvDictModal();
+        return;
+      }
+
+      if (!this._irvDictCache) {
+        try {
+          var r = await fetch('data/irregular-verbs/dictionary.json');
+          if (r.ok) this._irvDictCache = await r.json();
+        } catch (e) {}
+      }
+      var entries = (this._irvDictCache && this._irvDictCache.entries) || [];
+
+      var modal = document.createElement('div');
+      modal.id = 'irv-dict-modal';
+      modal.className = 'irv-dict-overlay';
+      modal.innerHTML =
+        '<div class="irv-dict-box">' +
+          '<div class="irv-dict-header">' +
+            '<span class="irv-dict-icon"><span class="material-symbols-outlined">table_view</span></span>' +
+            '<h2 class="irv-dict-title">Irregular Verbs Dictionary</h2>' +
+            '<button class="irv-dict-practice-btn" id="irv-dict-practice-btn" onclick="FastExercises._toggleIrvPracticeMode()">Practice mode</button>' +
+            '<button class="irv-dict-close" onclick="FastExercises._closeIrvDictModal()">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<div class="irv-dict-search-row" id="irv-dict-search-row">' +
+            '<span class="irv-dict-search-icon"><span class="material-symbols-outlined">search</span></span>' +
+            '<input type="text" class="irv-dict-search" id="irv-dict-search" placeholder="Search infinitive or form…" oninput="FastExercises._filterIrvDict(this.value)" />' +
+          '</div>' +
+          '<div class="irv-dict-count" id="irv-dict-count">' + entries.length + ' entries</div>' +
+          '<div class="irv-dict-body" id="irv-dict-body"></div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) FastExercises._closeIrvDictModal();
+      });
+      document.body.appendChild(modal);
+
+      this._irvDictEntries = entries;
+      this._irvPracticeState = null;
+      this._renderIrvDictResults('');
+
+      setTimeout(function() {
+        var searchEl = document.getElementById('irv-dict-search');
+        if (searchEl) searchEl.focus();
+      }, 100);
+    },
+
+    _filterIrvDict: function(query) {
+      this._renderIrvDictResults(query || '');
+    },
+
+    _renderIrvDictResults: function(query) {
+      var self = this;
+      var entries = this._irvDictEntries || [];
+      var q = (query || '').toLowerCase().trim();
+
+      var filtered = entries.filter(function(e) {
+        if (!q) return true;
+        return (e.infinitive || '').toLowerCase().indexOf(q) !== -1 ||
+               (e.pastSimple || '').toLowerCase().indexOf(q) !== -1 ||
+               (e.pastParticiple || '').toLowerCase().indexOf(q) !== -1;
+      });
+
+      var bodyEl = document.getElementById('irv-dict-body');
+      var countEl = document.getElementById('irv-dict-count');
+      if (!bodyEl) return;
+
+      if (countEl) countEl.textContent = filtered.length + ' entries' + (q ? ' (filtered)' : '');
+
+      if (!filtered.length) {
+        bodyEl.innerHTML = '<div class="irv-dict-empty"><span class="material-symbols-outlined">search_off</span><p>No results found</p></div>';
+        return;
+      }
+
+      var rowsHtml = filtered.map(function(e) {
+        return '<tr>' +
+          '<td class="irv-col-infinitive">' +
+            self._escapeHTML(e.infinitive || '') +
+            '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.infinitive || '') + '\')" title="Listen to pronunciation">' +
+              '<span class="material-symbols-outlined">volume_up</span>' +
+            '</button>' +
+          '</td>' +
+          '<td>' + self._escapeHTML(e.pastSimple || '') + '</td>' +
+          '<td>' + self._escapeHTML(e.pastParticiple || '') + '</td>' +
+        '</tr>';
+      }).join('');
+
+      bodyEl.innerHTML =
+        '<div class="irv-dict-table-wrap">' +
+          '<table class="irv-dict-table">' +
+            '<thead>' +
+              '<tr><th>Infinitive</th><th>Past simple</th><th>Past participle</th></tr>' +
+            '</thead>' +
+            '<tbody>' + rowsHtml + '</tbody>' +
+          '</table>' +
+        '</div>';
+    },
+
+    _toggleIrvPracticeMode: function() {
+      var btn = document.getElementById('irv-dict-practice-btn');
+      var searchRow = document.getElementById('irv-dict-search-row');
+      var count = document.getElementById('irv-dict-count');
+      var searchInput = document.getElementById('irv-dict-search');
+
+      if (this._irvPracticeState && this._irvPracticeState.active) {
+        this._irvPracticeState = null;
+        if (btn) btn.textContent = 'Practice mode';
+        if (searchRow) searchRow.style.display = '';
+        if (count) count.style.display = '';
+        this._renderIrvDictResults((searchInput && searchInput.value) || '');
+        return;
+      }
+      this._startIrvPracticeMode();
+    },
+
+    _startIrvPracticeMode: function() {
+      var entries = this._irvDictEntries || [];
+      if (!entries.length) return;
+
+      var shuffled = entries.slice();
+      for (var i = shuffled.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = shuffled[i];
+        shuffled[i] = shuffled[j];
+        shuffled[j] = tmp;
+      }
+
+      this._irvPracticeState = {
+        active: true,
+        items: shuffled,
+        batchSize: 5,
+        batchIndex: 0,
+        checked: false,
+        totalCorrect: 0,
+        totalAnswers: 0,
+        currentBatch: []
+      };
+
+      var btn = document.getElementById('irv-dict-practice-btn');
+      var searchRow = document.getElementById('irv-dict-search-row');
+      var count = document.getElementById('irv-dict-count');
+      if (btn) btn.textContent = 'Back to dictionary';
+      if (searchRow) searchRow.style.display = 'none';
+      if (count) count.style.display = 'none';
+      this._renderIrvPracticeBatch();
+    },
+
+    _restartIrvPracticeMode: function() {
+      this._irvPracticeState = null;
+      this._startIrvPracticeMode();
+    },
+
+    _renderIrvPracticeBatch: function() {
+      var state = this._irvPracticeState;
+      var bodyEl = document.getElementById('irv-dict-body');
+      if (!state || !bodyEl) return;
+
+      var totalBatches = Math.ceil(state.items.length / state.batchSize);
+      if (state.batchIndex >= totalBatches) {
+        var pct = state.totalAnswers ? Math.round((state.totalCorrect / state.totalAnswers) * 100) : 0;
+        bodyEl.innerHTML =
+          '<div class="irv-practice-complete">' +
+            '<span class="material-symbols-outlined">trophy</span>' +
+            '<h3>Practice complete</h3>' +
+            '<p>Score: <strong>' + state.totalCorrect + '/' + state.totalAnswers + '</strong> (' + pct + '%)</p>' +
+            '<div class="irv-practice-complete-actions">' +
+              '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._toggleIrvPracticeMode()">Back to dictionary</button>' +
+              '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Practice again</button>' +
+            '</div>' +
+          '</div>';
+        return;
+      }
+
+      var start = state.batchIndex * state.batchSize;
+      var end = Math.min(start + state.batchSize, state.items.length);
+      var batch = state.items.slice(start, end);
+      state.currentBatch = batch;
+      state.checked = false;
+
+      var rowsHtml = '';
+      for (var i = 0; i < batch.length; i++) {
+        var item = batch[i];
+        rowsHtml +=
+          '<tr>' +
+            '<td class="irv-practice-infinitive">' + this._escapeHTML(item.infinitive || '') + '</td>' +
+            '<td><input id="irv-ps-' + i + '" class="irv-practice-input" type="text" placeholder="Past simple" autocomplete="off" /></td>' +
+            '<td><input id="irv-pp-' + i + '" class="irv-practice-input" type="text" placeholder="Past participle" autocomplete="off" /></td>' +
+            '<td id="irv-res-' + i + '" class="irv-practice-result"></td>' +
+          '</tr>';
+      }
+
+      bodyEl.innerHTML =
+        '<div class="irv-practice-top">' +
+          '<div class="irv-practice-title">Batch ' + (state.batchIndex + 1) + ' of ' + totalBatches + '</div>' +
+          '<div class="irv-practice-score">Running score: ' + state.totalCorrect + '/' + state.totalAnswers + '</div>' +
+        '</div>' +
+        '<div class="irv-dict-table-wrap">' +
+          '<table class="irv-dict-table irv-practice-table">' +
+            '<thead><tr><th>Infinitive</th><th>Past simple</th><th>Past participle</th><th>Result</th></tr></thead>' +
+            '<tbody>' + rowsHtml + '</tbody>' +
+          '</table>' +
+        '</div>' +
+        '<div class="irv-practice-actions">' +
+          '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._checkIrvPracticeBatch()">Check batch</button>' +
+          '<button class="irv-practice-btn" id="irv-practice-next" onclick="FastExercises._nextIrvPracticeBatch()" disabled>Next batch</button>' +
+        '</div>';
+    },
+
+    _irvNormalizeForm: function(value) {
+      // Normalize typographic apostrophes from copied lists/user input.
+      return (value || '').toLowerCase().replace(/[\u2018\u2019]/g, '\'').replace(/\s+/g, ' ').trim();
+    },
+
+    _irvMatchesForm: function(typed, expected) {
+      var normalizedTyped = this._irvNormalizeForm(typed);
+      if (!normalizedTyped) return false;
+      // Support alternatives such as "was/were", "burned, burnt", or "burned or burnt".
+      var options = (expected || '')
+        .split(/\/|,|\bor\b/gi)
+        .map(this._irvNormalizeForm.bind(this))
+        .filter(Boolean);
+      return options.indexOf(normalizedTyped) !== -1;
+    },
+
+    _checkIrvPracticeBatch: function() {
+      var state = this._irvPracticeState;
+      if (!state || state.checked || !state.currentBatch || !state.currentBatch.length) return;
+
+      for (var i = 0; i < state.currentBatch.length; i++) {
+        var item = state.currentBatch[i];
+        var psInput = document.getElementById('irv-ps-' + i);
+        var ppInput = document.getElementById('irv-pp-' + i);
+        var resultEl = document.getElementById('irv-res-' + i);
+        if (!psInput || !ppInput || !resultEl) continue;
+
+        var psOk = this._irvMatchesForm(psInput.value, item.pastSimple);
+        var ppOk = this._irvMatchesForm(ppInput.value, item.pastParticiple);
+
+        state.totalAnswers += 2;
+        if (psOk) state.totalCorrect++;
+        if (ppOk) state.totalCorrect++;
+
+        psInput.disabled = true;
+        ppInput.disabled = true;
+        psInput.classList.add(psOk ? 'irv-input-correct' : 'irv-input-wrong');
+        ppInput.classList.add(ppOk ? 'irv-input-correct' : 'irv-input-wrong');
+
+        if (psOk && ppOk) {
+          resultEl.className = 'irv-practice-result irv-practice-result-ok';
+          resultEl.textContent = '✓';
+        } else {
+          resultEl.className = 'irv-practice-result irv-practice-result-wrong';
+          resultEl.innerHTML = '✗<span>Expected: ' +
+            this._escapeHTML(item.pastSimple || '') + ' / ' + this._escapeHTML(item.pastParticiple || '') +
+            '</span>';
+        }
+      }
+
+      state.checked = true;
+      var nextBtn = document.getElementById('irv-practice-next');
+      if (nextBtn) nextBtn.disabled = false;
+    },
+
+    _nextIrvPracticeBatch: function() {
+      var state = this._irvPracticeState;
+      if (!state || !state.checked) return;
+      state.batchIndex++;
+      state.checked = false;
+      this._renderIrvPracticeBatch();
+    },
+
     // ── VOCABULARY DICTIONARY ─────────────────────────────────────────────
     _showVocabDictionary: async function() {
       var existing = document.getElementById('vocab-dict-modal');
@@ -6542,6 +6826,11 @@
               '<span class="dict-home-card-icon" style="background:#10b981"><span class="material-symbols-outlined">format_quote</span></span>' +
               '<span class="dict-home-card-name">Collocations</span>' +
               '<span class="dict-home-card-desc">Word combinations and collocations</span>' +
+            '</button>' +
+            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showIrregularVerbsDictionary();">' +
+              '<span class="dict-home-card-icon" style="background:#2563eb"><span class="material-symbols-outlined">table_view</span></span>' +
+              '<span class="dict-home-card-name">Irregular Verbs</span>' +
+              '<span class="dict-home-card-desc">Infinitive, past simple and past participle</span>' +
             '</button>' +
           '</div>' +
         '</div>';
