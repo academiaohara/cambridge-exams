@@ -11,12 +11,13 @@ En B1, el índice compartido sigue bloques de **3 units + 1 review**:
 - `UnitX.json` → puede ser `grammar` o `vocabulary`
 - `ReviewN.json` → repaso de 3 unidades
 - `ProgressTest1.json` → test global de Units 1–21
+- `ProgressTest2.json` → test global de Units 22–42
 
 ### Convención de nombres
 
-- `Unit1.json`, `Unit2.json`, ..., `Unit24.json`
+- `Unit1.json`, `Unit2.json`, ..., `Unit42.json`
 - `Review1.json`, `Review2.json`, ...
-- `ProgressTest1.json`
+- `ProgressTest1.json`, `ProgressTest2.json`
 - `index.json` para el catálogo del curso
 
 ---
@@ -166,7 +167,7 @@ En B1, el índice compartido sigue bloques de **3 units + 1 review**:
 {
   "level": "B1",
   "name": "B1 Preliminary",
-  "totalUnits": 24,
+  "totalUnits": 42,
   "items": [
     {
       "id": "Unit1",
@@ -196,7 +197,7 @@ Campos recomendados por item:
 
 ## 4) Índice B1 recibido (base de trabajo)
 
-> Este es el índice que compartiste en la imagen (hasta `Unit24`).
+> Este es el índice que compartiste en la imagen (hasta `Unit42`).
 
 | Orden | Tipo | Título / Tema | Fichero sugerido |
 |---|---|---|---|
@@ -232,6 +233,42 @@ Campos recomendados por item:
 | 30 | Grammar | Unit 22: Modals 3: the modal perfect | `Unit22.json` |
 | 31 | Grammar | Unit 23: Questions, question tags, indirect questions | `Unit23.json` |
 | 32 | Vocabulary | Unit 24: People and daily life | `Unit24.json` |
+| 33 | Review | Review 8: Units 22, 23 and 24 | `Review8.json` |
+| 34 | Grammar | Unit 25: So and such, too and enough | `Unit25.json` |
+| 35 | Grammar | Unit 26: Comparatives and superlatives | `Unit26.json` |
+| 36 | Vocabulary | Unit 27: Working and earning | `Unit27.json` |
+| 37 | Review | Review 9: Units 25, 26 and 27 | `Review9.json` |
+| 38 | Grammar | Unit 28: Conditionals 1: (zero, first, second) | `Unit28.json` |
+| 39 | Grammar | Unit 29: Conditionals 2: (third) | `Unit29.json` |
+| 40 | Vocabulary | Unit 30: Body and lifestyle | `Unit30.json` |
+| 41 | Review | Review 10: Units 28, 29 and 30 | `Review10.json` |
+| 42 | Grammar | Unit 31: Reported speech | `Unit31.json` |
+| 43 | Grammar | Unit 32: Reported questions, orders, requests | `Unit32.json` |
+| 44 | Vocabulary | Unit 33: Creating and building | `Unit33.json` |
+| 45 | Review | Review 11: Units 31, 32 and 33 | `Review11.json` |
+| 46 | Grammar | Unit 34: Direct and indirect objects | `Unit34.json` |
+| 47 | Grammar | Unit 35: wish | `Unit35.json` |
+| 48 | Vocabulary | Unit 36: Nature and the universe | `Unit36.json` |
+| 49 | Review | Review 12: Units 34, 35 and 36 | `Review12.json` |
+| 50 | Grammar | Unit 37: -ing and infinitive | `Unit37.json` |
+| 51 | Grammar | Unit 38: Both, either, neither, so, nor | `Unit38.json` |
+| 52 | Vocabulary | Unit 39: Laughing and crying | `Unit39.json` |
+| 53 | Review | Review 13: Units 37, 38 and 39 | `Review13.json` |
+| 54 | Grammar | Unit 40: Connectives | `Unit40.json` |
+| 55 | Grammar | Unit 41: The causative | `Unit41.json` |
+| 56 | Vocabulary | Unit 42: Problems and solutions | `Unit42.json` |
+| 57 | Review | Review 14: Units 40, 41 and 42 | `Review14.json` |
+| 58 | Progress Test | Progress Test 2: Units 22–42 | `ProgressTest2.json` |
+
+### Sección de referencia (según el índice de la imagen)
+
+- Irregular present forms
+- Irregular verbs
+- Topic vocabulary
+- Phrasal verbs
+- Prepositional phrases
+- Word patterns
+- Word formation
 
 ---
 
