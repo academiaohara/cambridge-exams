@@ -284,13 +284,13 @@ Campos recomendados por item:
 
 ## 6) Formatos de ejercicios para que se visualicen bien (como B2/C1)
 
-> ⚠️ Regla crítica: en `review` y `progress_test`, cada bloque de preguntas debe tener `"type": "exercise"`.  
-> Si se usan tipos de sección como `"gap_fill"`, `"word_formation"`, `"matching"` o `"multiple_choice"`, el contenido puede no renderizarse.
+> ⚠️ Regla crítica: en `review` y `progress_test` (obligatorio), cada bloque de preguntas debe tener `"type": "exercise"`.  
+> En `unit` también se recomienda mantener `"type": "exercise"` para evitar inconsistencias de renderizado.
 
 ### 6.1 Reglas base de renderizado
 
-- Para huecos interactivos usar siempre `......` (exactamente 6 puntos, como en B2/C1), no `______`.
-- En *key word transformation* usar `**KEYWORD**` al final de la primera frase y `\n` antes de la segunda frase con hueco.
+- Para huecos interactivos usar siempre `......` (exactamente 6 puntos, como en B2/C1), porque el renderizador detecta ese patrón; no usar `______`.
+- En *key word transformation* usar `**KEYWORD**` al final de la primera frase (justo antes del salto de línea) y `\n` antes de la segunda frase con hueco.
 - En múltiple opción, `options` debe ser un array (`"A ..."`, `"B ..."`, `"C ..."`, `"D ..."`) y `answer` debe ser la letra.
 - En ejercicios con dos frases de contraste, usar `sentenceA` y `sentenceB`.
 
