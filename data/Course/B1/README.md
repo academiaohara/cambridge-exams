@@ -331,7 +331,7 @@ Campos recomendados por item:
   "instructions": "Complete the second sentence.",
   "items": [
     {
-      "sentence": "I started English classes two years ago. **FOR**\nI ...... two years.",
+      "sentence": "I started English classes two years ago. **FOR**\nI have ...... for two years.",
       "answer": "have been in English classes for"
     }
   ]
