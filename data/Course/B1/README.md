@@ -4,6 +4,19 @@
 
 ---
 
+## 0) Cómo se hacen los JSON de ejercicios (igual que en B2 y C1)
+
+En B1, los ejercicios deben seguir **exactamente** el mismo patrón que en `data/Course/B2` y `data/Course/C1`:
+
+- Cada bloque evaluable va dentro de una sección con `"type": "exercise"`.
+- Los huecos interactivos se escriben con `......` (6 puntos), no con guiones bajos.
+- En elección múltiple, usar `options` (array) y `answer` (letra correcta).
+- En *key word transformation*, incluir la keyword como `**KEYWORD**` en la primera frase.
+
+> Referencia rápida: revisa también la sección **6) Formatos de ejercicios para que se visualicen bien (como B2/C1)** de este mismo documento.
+
+---
+
 ## 1) Estructura general recomendada para B1
 
 En B1, el índice compartido sigue bloques de **3 units + 1 review**:
