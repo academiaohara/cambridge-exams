@@ -290,7 +290,7 @@ Campos recomendados por item:
 ### 6.1 Reglas base de renderizado
 
 - Para huecos interactivos usar siempre `......` (exactamente 6 puntos, como en B2/C1), porque el renderizador detecta ese patrón; no usar `______`.
-- En *key word transformation* usar `**KEYWORD**` al final de la primera frase (justo antes del salto de línea) y `\n` antes de la segunda frase con hueco.
+- En *key word transformation* usar `**KEYWORD**` al final de la primera frase (justo antes del salto de línea) y colocar un salto de línea (`\n`) antes de la segunda frase con hueco.
 - En múltiple opción, `options` debe ser un array (`"A ..."`, `"B ..."`, `"C ..."`, `"D ..."`) y `answer` debe ser la letra.
 - En ejercicios con dos frases de contraste, usar `sentenceA` y `sentenceB`.
 
@@ -355,7 +355,7 @@ Campos recomendados por item:
 }
 ```
 
-#### E) Opciones inline (circle the correct word)
+#### E) Inline options (circle the correct word)
 
 ```json
 {
