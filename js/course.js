@@ -200,7 +200,7 @@
 
       // Theory tile: full-width card styled like fe-category-card with B1/B2/C1 level buttons
       var theoryLevelBtns =
-        '<button class="fe-cat-level-btn fe-cat-level-btn-locked" title="Coming soon">B1</button>' +
+        '<button class="fe-cat-level-btn" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'B1\')">B1</button>' +
         '<button class="fe-cat-level-btn" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'B2\')">B2</button>' +
         '<button class="fe-cat-level-btn" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'C1\')">C1</button>';
       var theoryCard =
