@@ -4455,7 +4455,7 @@
         var pastParticiple = e.pastParticiple || '';
         return '<tr>' +
           '<td class="irv-col-infinitive">' +
-            self._escapeHTML(e.infinitive || '') +
+            '<span class="irv-col-word">' + self._escapeHTML(e.infinitive || '') + '</span>' +
             '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.infinitive || '') + '\')" title="Listen to pronunciation">' +
               '<span class="material-symbols-outlined">volume_up</span>' +
             '</button>' +
@@ -4579,8 +4579,14 @@
         rowsHtml +=
           '<tr>' +
             '<td class="irv-practice-infinitive">' + this._escapeHTML(item.infinitive || '') + '</td>' +
-            '<td><input id="irv-ps-' + i + '" class="irv-practice-input" type="text" placeholder="Past simple" autocomplete="off" /></td>' +
-            '<td><input id="irv-pp-' + i + '" class="irv-practice-input" type="text" placeholder="Past participle" autocomplete="off" /></td>' +
+            '<td>' +
+              '<input id="irv-ps-' + i + '" class="irv-practice-input" type="text" placeholder="Past simple" autocomplete="off" />' +
+              '<div id="irv-res-ps-' + i + '" class="irv-practice-result" aria-live="polite"></div>' +
+            '</td>' +
+            '<td>' +
+              '<input id="irv-pp-' + i + '" class="irv-practice-input" type="text" placeholder="Past participle" autocomplete="off" />' +
+              '<div id="irv-res-pp-' + i + '" class="irv-practice-result" aria-live="polite"></div>' +
+            '</td>' +
           '</tr>';
       }
 
@@ -4650,6 +4656,8 @@
         ppInput.disabled = true;
         psInput.classList.add(psOk ? 'irv-input-correct' : 'irv-input-wrong');
         ppInput.classList.add(ppOk ? 'irv-input-correct' : 'irv-input-wrong');
+        this._renderIrvPracticeFieldResult('ps', i, psInput.dataset.userAnswer || '', psInput.dataset.correctAnswer || '', psOk, false);
+        this._renderIrvPracticeFieldResult('pp', i, ppInput.dataset.userAnswer || '', ppInput.dataset.correctAnswer || '', ppOk, false);
       }
 
       state.checked = true;
@@ -4673,13 +4681,8 @@
         var psInput = document.getElementById('irv-ps-' + i);
         var ppInput = document.getElementById('irv-pp-' + i);
         if (!psInput || !ppInput) continue;
-
-        if (psInput.dataset.isCorrect !== '1') {
-          psInput.value = state.showingCorrect ? (psInput.dataset.correctAnswer || '') : (psInput.dataset.userAnswer || '');
-        }
-        if (ppInput.dataset.isCorrect !== '1') {
-          ppInput.value = state.showingCorrect ? (ppInput.dataset.correctAnswer || '') : (ppInput.dataset.userAnswer || '');
-        }
+        this._renderIrvPracticeFieldResult('ps', i, psInput.dataset.userAnswer || '', psInput.dataset.correctAnswer || '', psInput.dataset.isCorrect === '1', state.showingCorrect);
+        this._renderIrvPracticeFieldResult('pp', i, ppInput.dataset.userAnswer || '', ppInput.dataset.correctAnswer || '', ppInput.dataset.isCorrect === '1', state.showingCorrect);
       }
 
       var toggleBtn = document.getElementById('irv-practice-toggle');
@@ -4687,6 +4690,24 @@
         toggleBtn.textContent = state.showingCorrect ? 'Show my answers' : 'Show correct answers';
         toggleBtn.setAttribute('aria-label', state.showingCorrect ? 'Show my answers' : 'Show correct answers');
       }
+    },
+
+    _renderIrvPracticeFieldResult: function(fieldType, rowIndex, userAnswer, correctAnswer, isCorrect, showCorrectAnswer) {
+      var resultEl = document.getElementById('irv-res-' + fieldType + '-' + rowIndex);
+      if (!resultEl) return;
+
+      if (isCorrect) {
+        resultEl.className = 'irv-practice-result irv-practice-result-ok';
+        resultEl.textContent = 'Correct';
+        return;
+      }
+
+      var safeUser = this._escapeHTML((userAnswer || '').trim() || '—');
+      var safeCorrect = this._escapeHTML((correctAnswer || '').trim() || '—');
+      resultEl.className = 'irv-practice-result irv-practice-result-wrong';
+      resultEl.innerHTML =
+        '<span class="irv-practice-user-answer">Your answer: ' + safeUser + '</span>' +
+        '<span class="irv-practice-correct-answer' + (showCorrectAnswer ? '' : ' irv-practice-correct-answer-hidden') + '">Correct: ' + safeCorrect + '</span>';
     },
 
     _nextIrvPracticeBatch: function() {
