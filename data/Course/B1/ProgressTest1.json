@@ -1,5 +1,5 @@
 {
-  "block": 1,
+  "block": "pt1",
   "type": "progress_test",
   "unitTitle": "Progress Test 1: Units 1–21",
   "totalPoints": 100,
@@ -189,7 +189,7 @@
         "maxScore": 10
       },
       "items": [
-        { "sentence": "It's true! Don't tell me a <s>lie</s>.", "answer": "liar" },
+        { "sentence": "It's true! Don't call me a <s>lie</s>.", "answer": "liar" },
         { "sentence": "I need a new chair for my bedroom - this one is so <s>comfortable</s>!", "answer": "uncomfortable" },
         { "sentence": "After not speaking to her for a week, I finally <s>forgive</s> Gemma for not inviting me.", "answer": "forgave" },
         { "sentence": "It's important to get a good <s>educate</s> if you want a good job.", "answer": "education" },
