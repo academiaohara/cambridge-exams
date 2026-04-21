@@ -279,3 +279,114 @@ Campos recomendados por item:
 3. Usar títulos consistentes (`unitTitle`, `title`).
 4. Añadir `scoring` en ejercicios evaluables.
 5. Validar que cada `file` existe y coincide con `index.json`.
+
+---
+
+## 6) Formatos de ejercicios para que se visualicen bien (como B2/C1)
+
+> ⚠️ Regla crítica: en `review` y `progress_test` (obligatorio), cada bloque de preguntas debe tener `"type": "exercise"`.  
+> En `unit` también se recomienda mantener `"type": "exercise"` para evitar inconsistencias de renderizado.
+
+### 6.1 Reglas base de renderizado
+
+- Para huecos interactivos usar siempre `......` (exactamente 6 puntos, como en B2/C1), porque el renderizador detecta ese patrón; no usar `______`.
+- En *key word transformation* usar `**KEYWORD**` al final de la primera frase (justo antes del salto de línea) y colocar un salto de línea (`\n`) antes de la segunda frase con hueco.
+- En múltiple opción, `options` debe ser un array (`"A ..."`, `"B ..."`, `"C ..."`, `"D ..."`) y `answer` debe ser la letra.
+- En ejercicios con dos frases de contraste, usar `sentenceA` y `sentenceB`.
+
+### 6.2 Plantillas rápidas (copiar/pegar)
+
+#### A) Gap fill
+
+```json
+{
+  "type": "exercise",
+  "title": "A: Complete the sentences",
+  "instructions": "Write one word in each gap.",
+  "items": [
+    { "sentence": "She usually ...... at 7 a.m.", "answer": "wakes" }
+  ]
+}
+```
+
+#### B) Word formation
+
+```json
+{
+  "type": "exercise",
+  "title": "B: Word Formation",
+  "instructions": "Use the word in capitals.",
+  "items": [
+    { "sentence": "Her ...... (EXPLAIN) was very clear.", "answer": "explanation" }
+  ]
+}
+```
+
+#### C) Key word transformation
+
+```json
+{
+  "type": "exercise",
+  "title": "C: Key Word Transformation",
+  "instructions": "Complete the second sentence.",
+  "items": [
+    {
+      "sentence": "I started English classes two years ago. **FOR**\nI have been ...... for two years.",
+      "answer": "studying English"
+    }
+  ]
+}
+```
+
+#### D) Multiple choice
+
+```json
+{
+  "type": "exercise",
+  "title": "D: Multiple Choice",
+  "instructions": "Choose the correct option.",
+  "items": [
+    {
+      "sentence": "She has ...... homework today.",
+      "options": ["A many", "B much", "C a lot", "D lots"],
+      "answer": "B"
+    }
+  ]
+}
+```
+
+#### E) Inline options (circle the correct word)
+
+```json
+{
+  "type": "exercise",
+  "title": "E: Circle the correct word",
+  "instructions": "Choose the correct option in each sentence.",
+  "items": [
+    { "sentence": "He **go / goes / going** to school by bus.", "answer": "goes" }
+  ]
+}
+```
+
+#### F) Contraste de dos frases (stative/active, etc.)
+
+```json
+{
+  "type": "exercise",
+  "title": "F: Complete the pairs",
+  "items": [
+    {
+      "sentenceA": "A) She ...... (think) about the exam now.",
+      "sentenceB": "B) She ...... (think) it is easy.",
+      "answer": "is thinking / thinks"
+    }
+  ]
+}
+```
+
+### 6.3 Resumen de errores que rompen la visualización
+
+1. Tipo de sección distinto de `"exercise"` en `review`/`progress_test`.
+2. Usar guiones bajos (`______`) en vez de puntos (`......`).
+3. Escribir la keyword en línea separada o entre paréntesis en vez de `**KEYWORD**`.
+4. Meter opciones múltiples dentro de `sentence` en vez de usar `options`.
