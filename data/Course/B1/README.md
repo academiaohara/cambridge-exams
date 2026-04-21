@@ -289,7 +289,7 @@ Campos recomendados por item:
 
 ### 6.1 Reglas base de renderizado
 
-- Para huecos interactivos usar siempre `......` (6 o más puntos), no `______`.
+- Para huecos interactivos usar siempre `......` (exactamente 6 puntos, como en B2/C1), no `______`.
 - En *key word transformation* usar `**KEYWORD**` al final de la primera frase y `\n` antes de la segunda frase con hueco.
 - En múltiple opción, `options` debe ser un array (`"A ..."`, `"B ..."`, `"C ..."`, `"D ..."`) y `answer` debe ser la letra.
 - En ejercicios con dos frases de contraste, usar `sentenceA` y `sentenceB`.
@@ -332,7 +332,7 @@ Campos recomendados por item:
   "items": [
     {
       "sentence": "I started English classes two years ago. **FOR**\nI have ...... for two years.",
-      "answer": "have been in English classes for"
+      "answer": "been studying English"
     }
   ]
 }
