@@ -304,7 +304,7 @@ Campos recomendados por item:
   "title": "A: Complete the sentences",
   "instructions": "Write one word in each gap.",
   "items": [
-    { "sentence": "She usually ...... at 7 a.m.", "answer": "gets up" }
+    { "sentence": "She usually ...... at 7 a.m.", "answer": "wakes" }
   ]
 }
 ```
