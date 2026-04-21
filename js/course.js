@@ -109,7 +109,7 @@
     openCourseTheory: async function(level) {
       var content = document.getElementById('main-content');
       if (!content) return;
-      level = level || AppState.currentLevel || 'C1';
+      level = (level || AppState.currentLevel || 'C1').toUpperCase();
       BentoGrid._courseLevel = level;
 
       // Reset cached course data when switching level
@@ -153,6 +153,7 @@
           '<div>' +
             '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
             '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
+            BentoGrid._buildCourseTheoryLevelButtons(level) +
           '</div>' +
         '</div>';
 
@@ -193,6 +194,18 @@
       }
       var theoryState = { view: 'courseTheory', level: level };
       history.pushState(theoryState, '', Router.stateToPath(theoryState));
+    },
+
+    _buildCourseTheoryLevelButtons: function(activeLevel) {
+      var currentLevel = (activeLevel || '').toUpperCase();
+      var levels = ['B1', 'B2', 'C1'];
+      var buttons = levels.map(function(lv) {
+        var isActive = lv === currentLevel;
+        var style = isActive ? 'background:#0369a1' : 'background:#0284c7';
+        var action = isActive ? 'return false;' : 'event.stopPropagation();BentoGrid.openCourseTheory(\'' + lv + '\')';
+        return '<button class="fe-cat-level-btn' + (isActive ? ' active' : '') + '" style="' + style + '" onclick="' + action + '">' + lv + '</button>';
+      }).join('');
+      return '<div class="fe-cat-level-btns" style="margin-top:10px;max-width:240px">' + buttons + '</div>';
     },
 
     _renderCourseLearningTiles: async function() {
@@ -315,6 +328,7 @@
           '<div>' +
             '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
             '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
+            BentoGrid._buildCourseTheoryLevelButtons(level) +
           '</div>' +
         '</div>';
       centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
