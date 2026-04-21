@@ -4695,19 +4695,26 @@
     _renderIrvPracticeFieldResult: function(fieldType, rowIndex, userAnswer, correctAnswer, isCorrect, showCorrectAnswer) {
       var resultEl = document.getElementById('irv-res-' + fieldType + '-' + rowIndex);
       if (!resultEl) return;
+      var inputEl = document.getElementById('irv-' + fieldType + '-' + rowIndex);
+      resultEl.style.display = 'none';
+      resultEl.textContent = '';
+      if (!inputEl) return;
 
       if (isCorrect) {
-        resultEl.className = 'irv-practice-result irv-practice-result-ok';
-        resultEl.textContent = 'Correct';
+        inputEl.classList.remove('irv-input-showing-correct');
         return;
       }
 
-      var safeUser = this._escapeHTML((userAnswer || '').trim() || '—');
-      var safeCorrect = this._escapeHTML((correctAnswer || '').trim() || '—');
-      resultEl.className = 'irv-practice-result irv-practice-result-wrong';
-      resultEl.innerHTML =
-        '<span class="irv-practice-user-answer">Your answer: ' + safeUser + '</span>' +
-        '<span class="irv-practice-correct-answer' + (showCorrectAnswer ? '' : ' irv-practice-correct-answer-hidden') + '">Correct: ' + safeCorrect + '</span>';
+      if (showCorrectAnswer) {
+        inputEl.value = (correctAnswer || '').trim() || '—';
+        inputEl.classList.remove('irv-input-wrong');
+        inputEl.classList.add('irv-input-showing-correct');
+        return;
+      }
+
+      inputEl.value = (userAnswer || '').trim() || '—';
+      inputEl.classList.remove('irv-input-showing-correct');
+      inputEl.classList.add('irv-input-wrong');
     },
 
     _nextIrvPracticeBatch: function() {
