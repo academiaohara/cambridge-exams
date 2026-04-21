@@ -4,6 +4,89 @@
 
 ---
 
+## ⚠️ REGLA OBLIGATORIA: Todos los JSON deben incluir exercises
+
+> **Sin ejercicios, el JSON está incompleto y NO debe mergearse.**
+
+Cada fichero `UnitX.json`, `ReviewN.json` y `ProgressTestN.json` **debe** contener al menos una sección de tipo `"exercise"`.
+
+- En unidades de **grammar** (`type: "grammar"`): `sections` es un **array** con bloques `"type": "theory"` seguidos obligatoriamente de bloques `"type": "exercise"` (mínimo 3 ejercicios por unidad, igual que en B2/C1).
+- En unidades de **vocabulary** (`type: "vocabulary"`): `sections` es un **objeto** que contiene las listas de vocabulario Y además una clave `"exercises"` con los bloques de ejercicios interactivos.
+- En **reviews** y **progress tests**: solo ejercicios, sin teoría.
+
+### ¿Por qué es obligatorio?
+
+Los archivos B1/Unit3.json, Unit4.json, Unit5.json y Unit6.json fueron generados **sin exercises**, lo que hace que en la vista del curso solo aparezca la teoría/vocabulario sin ninguna actividad interactiva. El renderizador necesita los bloques `"type": "exercise"` para mostrar los ejercicios.
+
+### Estructura mínima obligatoria para Grammar
+
+```json
+{
+  "block": 1,
+  "unit": 1,
+  "type": "grammar",
+  "unitTitle": "Unit N: ...",
+  "sections": [
+    {
+      "type": "theory",
+      "title": "...",
+      "content": [...]
+    },
+    {
+      "type": "exercise",
+      "title": "A: ...",
+      "instructions": "...",
+      "items": [
+        { "sentence": "...", "answer": "..." }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "B: ...",
+      "instructions": "...",
+      "items": [...]
+    }
+  ]
+}
+```
+
+### Estructura mínima obligatoria para Vocabulary
+
+```json
+{
+  "block": 1,
+  "unit": 3,
+  "type": "vocabulary",
+  "unitTitle": "Unit N: ...",
+  "sections": {
+    "topic_vocabulary": { ... },
+    "phrasal_verbs": [...],
+    "collocations_patterns": { ... },
+    "word_formation": [...],
+    "exercises": [
+      {
+        "type": "exercise",
+        "title": "A: Vocabulary in use",
+        "instructions": "Choose the correct word.",
+        "items": [
+          { "sentence": "...", "answer": "..." }
+        ]
+      },
+      {
+        "type": "exercise",
+        "title": "B: Phrasal verbs",
+        "instructions": "Complete the sentences with the correct phrasal verb.",
+        "items": [
+          { "sentence": "...", "answer": "..." }
+        ]
+      }
+    ]
+  }
+}
+```
+
+---
+
 ## 0) Cómo se hacen los JSON de ejercicios (igual que en B2 y C1)
 
 En B1, los ejercicios deben seguir **exactamente** el mismo patrón que en `data/Course/B2` y `data/Course/C1`:
@@ -287,11 +370,12 @@ Campos recomendados por item:
 
 ## 5) Checklist rápida para crear cada JSON
 
-1. Confirmar `type` correcto (`grammar`, `vocabulary`, `review`, `progress_test`).
+1. ✅ **OBLIGATORIO**: Verificar que el JSON incluye al menos una sección `"type": "exercise"` (en grammar: dentro del array `sections`; en vocabulary: dentro de `sections.exercises`).
 2. Mantener `block` y `unit` coherentes con el índice.
 3. Usar títulos consistentes (`unitTitle`, `title`).
 4. Añadir `scoring` en ejercicios evaluables.
 5. Validar que cada `file` existe y coincide con `index.json`.
+6. ❌ **NO mergear** si el JSON solo tiene teoría/vocabulario sin exercises.
 
 ---
 
