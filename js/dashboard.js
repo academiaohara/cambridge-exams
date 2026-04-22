@@ -18,42 +18,14 @@
 
   window.Dashboard = {
     _renderSidebarShell: function(side, shellId, contentId, contentHtml) {
-      var isLeft = side === 'left';
-      var isCollapsed = isLeft ? leftSidebarCollapsed : rightSidebarCollapsed;
-      var icon = isLeft
-        ? (isCollapsed ? 'chevron_right' : 'chevron_left')
-        : (isCollapsed ? 'chevron_left' : 'chevron_right');
-      var label = isCollapsed
-        ? (isLeft ? 'Open left sidebar' : 'Open right sidebar')
-        : (isLeft ? 'Collapse left sidebar' : 'Collapse right sidebar');
-
-      return '<div class="dashboard-' + side + '-sidebar dashboard-sidebar-shell' + (isCollapsed ? ' is-collapsed' : '') + '" id="' + shellId + '">' +
-        '<button class="dashboard-sidebar-toggle dashboard-sidebar-toggle-' + side + '" type="button" onclick="Dashboard.toggleSidebar(\'' + side + '\')" aria-label="' + label + '" title="' + label + '">' +
-          '<span class="material-symbols-outlined">' + icon + '</span>' +
-        '</button>' +
+      return '<div class="dashboard-' + side + '-sidebar dashboard-sidebar-shell" id="' + shellId + '">' +
         '<div class="dashboard-sidebar-content" id="' + contentId + '">' + (contentHtml || '') + '</div>' +
       '</div>';
     },
 
     _applySidebarState: function() {
       document.querySelectorAll('.dashboard-sidebar-shell').forEach(function(shell) {
-        var isLeft = shell.classList.contains('dashboard-left-sidebar');
-        var isCollapsed = isLeft ? leftSidebarCollapsed : rightSidebarCollapsed;
-        shell.classList.toggle('is-collapsed', isCollapsed);
-
-        var toggle = shell.querySelector('.dashboard-sidebar-toggle');
-        if (toggle) {
-          var label = isCollapsed
-            ? (isLeft ? 'Open left sidebar' : 'Open right sidebar')
-            : (isLeft ? 'Collapse left sidebar' : 'Collapse right sidebar');
-          var icon = isLeft
-            ? (isCollapsed ? 'chevron_right' : 'chevron_left')
-            : (isCollapsed ? 'chevron_left' : 'chevron_right');
-          toggle.setAttribute('aria-label', label);
-          toggle.setAttribute('title', label);
-          var iconEl = toggle.querySelector('.material-symbols-outlined');
-          if (iconEl) iconEl.textContent = icon;
-        }
+        shell.classList.remove('is-collapsed');
       });
 
       document.querySelectorAll('.dashboard-layout').forEach(function(layout) {
@@ -61,17 +33,17 @@
         var hasRight = !!layout.querySelector('.dashboard-right-sidebar');
         if (layout.classList.contains('dashboard-layout-right-closed')) {
           layout.style.gridTemplateColumns =
-            (leftSidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH) + ' minmax(0, 1fr) ' + SIDEBAR_COLLAPSED_WIDTH;
+            SIDEBAR_EXPANDED_WIDTH + ' minmax(0, 1fr) ' + SIDEBAR_COLLAPSED_WIDTH;
           return;
         }
         if (!hasLeft && !hasRight) return;
         if (hasLeft && hasRight) {
           layout.style.gridTemplateColumns =
-            (leftSidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH) + ' minmax(0, 1fr) ' + (rightSidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH);
+            SIDEBAR_EXPANDED_WIDTH + ' minmax(0, 1fr) ' + SIDEBAR_EXPANDED_WIDTH;
         } else if (hasLeft) {
-          layout.style.gridTemplateColumns = (leftSidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH) + ' minmax(0, 1fr)';
+          layout.style.gridTemplateColumns = SIDEBAR_EXPANDED_WIDTH + ' minmax(0, 1fr)';
         } else if (hasRight) {
-          layout.style.gridTemplateColumns = 'minmax(0, 1fr) ' + (rightSidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH);
+          layout.style.gridTemplateColumns = 'minmax(0, 1fr) ' + SIDEBAR_EXPANDED_WIDTH;
         }
       });
     },
