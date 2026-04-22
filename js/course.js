@@ -150,11 +150,11 @@
       var headerHtml =
         '<div class="subpage-header">' +
           '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()">Back</button>' +
-          '<div>' +
+          '<div class="subpage-header-titles">' +
             '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
             '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
-            BentoGrid._buildCourseTheoryLevelButtons(level) +
           '</div>' +
+          BentoGrid._buildCourseTheoryLevelButtons(level) +
         '</div>';
 
       if (indexData && indexData.items && indexData.items.length > 0) {
@@ -205,7 +205,7 @@
         var action = isActive ? 'return false;' : 'event.stopPropagation();BentoGrid.openCourseTheory(\'' + lv + '\')';
         return '<button class="fe-cat-level-btn' + (isActive ? ' active' : '') + '" style="' + style + '" onclick="' + action + '">' + lv + '</button>';
       }).join('');
-      return '<div class="fe-cat-level-btns" style="margin-top:10px;max-width:240px">' + buttons + '</div>';
+      return '<div class="fe-cat-level-btns fe-cat-level-btns-header">' + buttons + '</div>';
     },
 
     _renderCourseLearningTiles: async function() {
@@ -331,11 +331,11 @@
       var headerHtml =
         '<div class="subpage-header">' +
           '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()">Back</button>' +
-          '<div>' +
+          '<div class="subpage-header-titles">' +
             '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
             '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
-            BentoGrid._buildCourseTheoryLevelButtons(level) +
           '</div>' +
+          BentoGrid._buildCourseTheoryLevelButtons(level) +
         '</div>';
       centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
       BentoGrid._bindCourseOverviewFilterEvents();
