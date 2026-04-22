@@ -289,6 +289,12 @@
     },
 
     _selectCourseBlock: function(blockKey) {
+      var blockIndex = (BentoGrid._courseBlockOrder || []).indexOf(blockKey);
+      if (!AppState.hasTheoryPack && blockIndex > 0) {
+        if (typeof Dashboard !== 'undefined' && Dashboard.showTheoryUpgradeGate) Dashboard.showTheoryUpgradeGate();
+        return;
+      }
+
       var centerSection = document.getElementById('courseCenterSection');
       if (!centerSection || !BentoGrid._courseBlocks) return;
 
@@ -558,6 +564,18 @@
     },
 
     openCourseUnit: async function(unitId, filePath, startSection) {
+      if (BentoGrid._courseIndexData && !AppState.hasTheoryPack) {
+        var foundItem = (BentoGrid._courseIndexData.items || []).find(function(i) { return i.id === unitId; });
+        if (foundItem) {
+          var blockKey = foundItem.block != null ? String(foundItem.block) : 'misc';
+          var blockIndex = (BentoGrid._courseBlockOrder || []).indexOf(blockKey);
+          if (blockIndex > 0) {
+            if (typeof Dashboard !== 'undefined' && Dashboard.showTheoryUpgradeGate) Dashboard.showTheoryUpgradeGate();
+            return;
+          }
+        }
+      }
+
       var content = document.getElementById('main-content');
       if (!content) return;
       var level = BentoGrid._courseLevel || AppState.currentLevel || 'C1';
@@ -4688,6 +4706,8 @@
       html += '<div class="cu-blocks-grid">';
 
       blockOrder.forEach(function(bk) {
+        var blockIndex = blockOrder.indexOf(bk);
+        var isBlockLocked = !AppState.hasTheoryPack && blockIndex > 0;
         var items = blocks[bk] || [];
         var hasAvailable = items.some(function(i) { return i.status === 'available'; });
         var availableItems = items.filter(function(i) { return i.status === 'available'; });
@@ -4707,9 +4727,14 @@
           var ptPath = 'data/Course/' + level + '/' + progressTestItem.file;
           var ptScore = BentoGrid._getPtScore(level, progressTestItem.id);
           var ptTotal = progressTestItem.totalPoints || 100;
-          var ptClass = 'cu-pt-overview-card cu-overview-filterable' + (isPtDone ? ' cu-pt-card-done' : (isPtAvail ? ' cu-pt-card-available' : ' cu-pt-card-locked'));
-          var ptClickAttr = isPtAvail ? ' onclick="BentoGrid.openCourseUnit(\'' + progressTestItem.id + '\',\'' + ptPath + '\')" style="cursor:pointer"' : '';
+          var ptClass = 'cu-pt-overview-card cu-overview-filterable' + (isPtDone ? ' cu-pt-card-done' : (isPtAvail ? ' cu-pt-card-available' : ' cu-pt-card-locked')) + (isBlockLocked ? ' cu-block-card-locked' : '');
+          var ptClickAttr = isPtAvail
+            ? (isBlockLocked ? ' onclick="Dashboard.showTheoryUpgradeGate()" style="cursor:pointer"' : ' onclick="BentoGrid.openCourseUnit(\'' + progressTestItem.id + '\',\'' + ptPath + '\')" style="cursor:pointer"')
+            : '';
           html += '<div class="' + ptClass + '" data-overview-block="' + self._escapeHTML(bk) + '"' + ptClickAttr + '>';
+          if (isBlockLocked) {
+            html += '<span class="cu-block-lock-badge">🔒 Pack Theory</span>';
+          }
           html += '<div class="cu-pt-ov-header-row">';
           html += '<div class="cu-pt-ov-icon">' + _mi('assignment') + '</div>';
           html += '<div class="cu-pt-ov-label">Progress Test</div>';
@@ -4728,6 +4753,7 @@
 
         var blockClass = 'cu-block-card';
         if (!hasAvailable) blockClass += ' cu-block-card-locked';
+        else if (isBlockLocked) blockClass += ' cu-block-card-locked';
         else if (isFullyDone) blockClass += ' cu-block-card-done';
         else if (doneCount > 0) blockClass += ' cu-block-card-in-progress';
         else blockClass += ' cu-block-card-available';
@@ -4747,7 +4773,11 @@
           badgeHtml = '<span class="cu-block-badge cu-badge-available">Available</span>';
         }
 
-        var headerOnClick = hasAvailable ? ' onclick="BentoGrid._selectCourseBlock(\'' + bk + '\')" style="cursor:pointer"' : '';
+        var headerOnClick = hasAvailable
+          ? (isBlockLocked
+            ? ' onclick="Dashboard.showTheoryUpgradeGate()" style="cursor:pointer"'
+            : ' onclick="BentoGrid._selectCourseBlock(\'' + bk + '\')" style="cursor:pointer"')
+          : '';
         var resetBlockOverviewBtn = (hasAvailable && doneCount > 0)
           ? '<button class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseBlock(\'' + bk + '\')" title="Restart block">' + _mi('restart_alt') + '</button>'
           : '';
@@ -4756,6 +4786,9 @@
           badgeHtml +
           resetBlockOverviewBtn +
         '</div>';
+        if (isBlockLocked && hasAvailable) {
+          html += '<span class="cu-block-lock-badge">🔒 Pack Theory</span>';
+        }
 
         // Unit rows
         html += '<div class="cu-block-units">';
@@ -4930,6 +4963,8 @@
       html += '<div class="course-nav-blocks">';
 
       blockOrder.forEach(function(bk) {
+        var blockIndex = blockOrder.indexOf(bk);
+        var isPremiumLocked = !AppState.hasTheoryPack && blockIndex > 0;
         var items = blocks[bk] || [];
         var hasAvailable = items.some(function(i) { return i.status === 'available'; });
         var hasActive = items.some(function(i) { return i.id === activeItemId; });
@@ -4943,6 +4978,11 @@
 
         if (!hasAvailable) {
           html += '<div class="course-nav-block-hdr cnb-locked">' +
+            '<span class="cnb-lock-icon">' + _mi('lock') + '</span>' +
+            '<span class="cnb-label">' + label + '</span>' +
+          '</div>';
+        } else if (isPremiumLocked) {
+          html += '<div class="course-nav-block-hdr cnb-pack-locked" onclick="Dashboard.showTheoryUpgradeGate()">' +
             '<span class="cnb-lock-icon">' + _mi('lock') + '</span>' +
             '<span class="cnb-label">' + label + '</span>' +
           '</div>';

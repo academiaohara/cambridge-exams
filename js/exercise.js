@@ -163,9 +163,29 @@
     
     startFullSection: async function(examId, section) {
       // Guest gate: block writing and speaking for guest users
-      if (AppState.isGuest && (section === 'writing' || section === 'speaking')) {
-        if (typeof Dashboard !== 'undefined') Dashboard.showGuestGate();
+      if (!AppState.isAuthenticated && (section === 'writing' || section === 'speaking')) {
+        if (typeof Auth !== 'undefined' && Auth._showAuthModal) Auth._showAuthModal();
         return;
+      }
+
+      // Registered users without exams pack: writing/speaking only once
+      if (AppState.isAuthenticated && !AppState.hasExamsPack) {
+        if (section === 'writing') {
+          if (localStorage.getItem('cambridge_free_writing_used') && AppState._freeWritingAccessExam !== examId) {
+            if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+            return;
+          }
+          AppState._freeWritingAccessExam = examId;
+          try { localStorage.setItem('cambridge_free_writing_used', '1'); } catch(e) {}
+        }
+        if (section === 'speaking') {
+          if (localStorage.getItem('cambridge_free_speaking_used') && AppState._freeSpeakingAccessExam !== examId) {
+            if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+            return;
+          }
+          AppState._freeSpeakingAccessExam = examId;
+          try { localStorage.setItem('cambridge_free_speaking_used', '1'); } catch(e) {}
+        }
       }
 
       var self = this;
@@ -220,9 +240,29 @@
       }
 
       // Guest gate: block writing and speaking for guest users
-      if (AppState.isGuest && (section === 'writing' || section === 'speaking')) {
-        if (typeof Dashboard !== 'undefined') Dashboard.showGuestGate();
+      if (!AppState.isAuthenticated && (section === 'writing' || section === 'speaking')) {
+        if (typeof Auth !== 'undefined' && Auth._showAuthModal) Auth._showAuthModal();
         return;
+      }
+
+      // Registered users without exams pack: writing/speaking only once
+      if (AppState.isAuthenticated && !AppState.hasExamsPack) {
+        if (section === 'writing') {
+          if (localStorage.getItem('cambridge_free_writing_used') && AppState._freeWritingAccessExam !== examId) {
+            if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+            return;
+          }
+          AppState._freeWritingAccessExam = examId;
+          try { localStorage.setItem('cambridge_free_writing_used', '1'); } catch(e) {}
+        }
+        if (section === 'speaking') {
+          if (localStorage.getItem('cambridge_free_speaking_used') && AppState._freeSpeakingAccessExam !== examId) {
+            if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+            return;
+          }
+          AppState._freeSpeakingAccessExam = examId;
+          try { localStorage.setItem('cambridge_free_speaking_used', '1'); } catch(e) {}
+        }
       }
 
       const content = document.getElementById('main-content');

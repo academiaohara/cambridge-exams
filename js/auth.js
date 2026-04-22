@@ -83,6 +83,9 @@
     continueAsGuest: function () {
       AppState.isGuest = true;
       AppState.isAuthenticated = false;
+      AppState.isAdmin = false;
+      AppState.hasTheoryPack = false;
+      AppState.hasExamsPack = false;
       AppState.isPremium = false;
       AppState.currentUser = null;
       this._hideAuthModal();
@@ -95,6 +98,10 @@
       if (AppState.isGuest) {
         AppState.isGuest = false;
         AppState.isAuthenticated = false;
+        AppState.isAdmin = false;
+        AppState.hasTheoryPack = false;
+        AppState.hasExamsPack = false;
+        AppState.isPremium = false;
         AppState.currentUser = null;
         this._removeUserWidget();
         this._showAuthModal();
@@ -184,6 +191,10 @@
     _onSignOut: function () {
       AppState.currentUser = null;
       AppState.isAuthenticated = false;
+      AppState.isAdmin = false;
+      AppState.hasTheoryPack = false;
+      AppState.hasExamsPack = false;
+      AppState.isPremium = false;
 
       if (typeof SyncManager !== 'undefined') { SyncManager.stop(); }
       if (typeof UserProfile !== 'undefined') { UserProfile.closePanel(); }

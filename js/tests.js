@@ -60,10 +60,15 @@
 
     _renderMixedRow: function(exams) {
       var availableCount = (exams || []).filter(function(e) { return e.status === 'available'; }).length;
-      var disabled = availableCount === 0;
-      var clickAttr = disabled ? '' : ' onclick="BentoGrid.startMixedTest()"';
+      var lockedByPack = !AppState.hasExamsPack;
+      var disabled = availableCount === 0 || lockedByPack;
+      var clickAttr = disabled
+        ? (lockedByPack ? ' onclick="Dashboard.showExamsUpgradeGate()"' : '')
+        : ' onclick="BentoGrid.startMixedTest()"';
       var descText = disabled
-        ? 'No tests available yet'
+        ? (lockedByPack
+          ? 'Pack Exams required to use Random Mix'
+          : 'No tests available yet')
         : 'Mix exercises from ' + availableCount + ' tests — speaking 3 & 4 always from the same test';
       return '<div class="bento-mixed-row">' +
         '<div class="bento-card bento-card-mixed' + (disabled ? ' disabled' : '') + '"' + clickAttr + '>' +

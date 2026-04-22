@@ -1912,6 +1912,15 @@ textarea.cu-gap-input.cu-gap-textarea {
   gap: 6px;
 }
 
+.cnb-pack-locked {
+  cursor: pointer;
+  color: var(--text-medium);
+  background: rgba(99,102,241,0.06);
+  border: 1px dashed rgba(99,102,241,0.3);
+  border-radius: 8px;
+}
+.cnb-pack-locked:hover { background: rgba(99,102,241,0.12); }
+
 .cnb-lock-icon {
   display: flex;
   align-items: center;
@@ -2301,7 +2310,25 @@ textarea.cu-gap-input.cu-gap-textarea {
 }
 
 .cu-block-card-locked {
-  opacity: 0.6;
+  opacity: 0.75;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.cu-block-card-locked::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.45);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.cu-block-lock-badge {
+  position: absolute; top: 10px; right: 10px;
+  background: #6366f1; color: #fff;
+  font-size: 0.7rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 50px;
+  display: flex; align-items: center; gap: 4px;
+  z-index: 1;
 }
 
 .cu-block-card-done {

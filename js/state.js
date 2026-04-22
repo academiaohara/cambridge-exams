@@ -42,6 +42,9 @@
     isAuthenticated: false,
     currentUser: null,
     isGuest: false,
+    isAdmin: false,
+    hasTheoryPack: false,
+    hasExamsPack: false,
     isPremium: false,
     // Streak state (managed by StreakManager)
     streak: {

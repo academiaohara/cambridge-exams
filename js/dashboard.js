@@ -149,10 +149,11 @@
       '</div>';
 
       var isGuest = AppState.isGuest;
+      var hasExamsPack = !!AppState.hasExamsPack;
 
       // Premium upgrade banner for guest users
       var premiumBannerHtml = '';
-      if (isGuest) {
+      if (!hasExamsPack) {
         premiumBannerHtml = this._renderPremiumBanner();
       }
 
@@ -196,7 +197,7 @@
           var globalIdx = pageStart + idx;
           if (exam.status === 'coming_soon') {
             examListHtml += Dashboard.renderComingSoonExam(exam);
-          } else if (isGuest && globalIdx > 0) {
+          } else if (!hasExamsPack && globalIdx > 0) {
             examListHtml += Dashboard._renderGuestLockedExam(exam);
           } else {
             examListHtml += Dashboard.renderAvailableExam(exam, expandExamId);
@@ -307,6 +308,7 @@
     // ── Section exercise list (paginated by section type) ──────────
     _renderSectionExerciseList: function(exams, sectionKey, isGuest) {
       var mode = AppState.currentMode || 'practice';
+      var hasExamsPack = !!AppState.hasExamsPack;
 
       // Pagination
       var totalPages = Math.ceil(exams.length / SECTION_ITEMS_PER_PAGE);
@@ -329,7 +331,7 @@
         var globalIdx = pageStart + idx;
         if (exam.status === 'coming_soon') {
           html += Dashboard._renderSectionExComingSoon(exam);
-        } else if (isGuest && globalIdx > 0) {
+        } else if (!hasExamsPack && globalIdx > 0) {
           html += Dashboard._renderSectionExGuestLocked(exam, sectionKey);
         } else {
           html += Dashboard._renderSectionExItem(exam, sectionKey, isGuest);
@@ -366,13 +368,16 @@
     },
 
     _renderSectionExGuestLocked: function(exam, sectionKey) {
-      return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
+      var isAuth = !!AppState.isAuthenticated;
+      var action = isAuth ? 'Dashboard.showExamsUpgradeGate()' : 'Dashboard.showGuestGate()';
+      var subtitle = isAuth ? 'Pack Exams required' : 'Sign in to access';
+      return '<div class="exam-item guest-exam-locked" onclick="' + action + '">' +
         '<div class="exam-header">' +
           '<div class="exam-header-left">' +
             '<span class="exam-number">' + exam.number + '</span>' +
             '<div>' +
               '<div class="exam-title">Test ' + exam.number + '</div>' +
-              '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + 'Sign in to access' + '</div>' +
+              '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + subtitle + '</div>' +
             '</div>' +
           '</div>' +
           '<div class="exam-progress-badge"><i class="fas fa-lock"></i> ' + 'Upgrade' + '</div>' +
@@ -384,9 +389,9 @@
       var section = exam.sections[sectionKey];
       if (!section) return '';
 
-      var isGuestLocked = isGuest && (sectionKey === 'writing' || sectionKey === 'speaking');
-      if (isGuestLocked) {
-        return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
+      var isWritingSpeaking = sectionKey === 'writing' || sectionKey === 'speaking';
+      if (isWritingSpeaking && !AppState.isAuthenticated) {
+        return '<div class="exam-item guest-exam-locked" onclick="Auth._showAuthModal()">' +
           '<div class="exam-header">' +
             '<div class="exam-header-left">' +
               '<span class="exam-number">' + exam.number + '</span>' +
@@ -398,6 +403,24 @@
             '<div class="exam-progress-badge"><i class="fas fa-lock"></i></div>' +
           '</div>' +
         '</div>';
+      }
+      if (isWritingSpeaking && AppState.isAuthenticated && !AppState.hasExamsPack) {
+        var trialKey = sectionKey === 'writing' ? 'cambridge_free_writing_used' : 'cambridge_free_speaking_used';
+        var trialUsed = !!localStorage.getItem(trialKey);
+        if (trialUsed) {
+          return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showExamsUpgradeGate()">' +
+            '<div class="exam-header">' +
+              '<div class="exam-header-left">' +
+                '<span class="exam-number">' + exam.number + '</span>' +
+                '<div>' +
+                  '<div class="exam-title">Test ' + exam.number + '</div>' +
+                  '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>Pack Exams required</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="exam-progress-badge"><i class="fas fa-lock"></i></div>' +
+            '</div>' +
+          '</div>';
+        }
       }
 
       var html =
@@ -430,6 +453,20 @@
     
     // ── Random Test card (always shown at top of test list) ──────────────
     _renderRandomTestCard: function(mode) {
+      if (!AppState.hasExamsPack) {
+        return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showExamsUpgradeGate()">' +
+          '<div class="exam-header">' +
+            '<div class="exam-header-left">' +
+              '<span class="exam-number exam-number-random"><span class="material-symbols-outlined" style="font-size:1.1rem;line-height:1">shuffle</span></span>' +
+              '<div>' +
+                '<div class="exam-title">Random Test</div>' +
+                '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>Pack Exams required</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="exam-progress-badge"><i class="fas fa-lock"></i> Upgrade</div>' +
+          '</div>' +
+        '</div>';
+      }
       var plan         = window.MixedTest ? MixedTest.getStoredPlan() : null;
       var completedSet = window.MixedTest ? MixedTest.getCompletedSet() : new Set();
       var hasPlan      = Array.isArray(plan) && plan.length > 0;
@@ -574,17 +611,29 @@
     renderSection: function(exam, sectionKey) {
       const section = exam.sections[sectionKey];
       const isExamMode = AppState.currentMode === 'exam';
-      const isGuest = AppState.isGuest;
-      const isGuestLocked = isGuest && (sectionKey === 'writing' || sectionKey === 'speaking');
-      var lockedBadge = isGuestLocked
-        ? '<span class="guest-locked-badge"><i class="fas fa-lock"></i> ' + ('Sign in required') + '</span>'
-        : '';
+      var isLocked = false;
+      var lockClick = '';
+      var lockedBadge = '';
+      if ((sectionKey === 'writing' || sectionKey === 'speaking') && !AppState.isAuthenticated) {
+        isLocked = true;
+        lockClick = 'Auth._showAuthModal()';
+        lockedBadge = '<span class="guest-locked-badge"><i class="fas fa-lock"></i> Sign in required</span>';
+      } else if ((sectionKey === 'writing' || sectionKey === 'speaking') && AppState.isAuthenticated && !AppState.hasExamsPack) {
+        var trialKey = sectionKey === 'writing' ? 'cambridge_free_writing_used' : 'cambridge_free_speaking_used';
+        if (localStorage.getItem(trialKey)) {
+          isLocked = true;
+          lockClick = 'Dashboard.showExamsUpgradeGate()';
+          lockedBadge = '<span class="guest-locked-badge"><i class="fas fa-lock"></i> Pack Exams required</span>';
+        } else {
+          lockedBadge = '<span class="guest-locked-badge"><i class="fas fa-gift"></i> 1 free try</span>';
+        }
+      }
       let html = `
-        <div class="exam-section${isGuestLocked ? ' guest-locked' : ''}"${isGuestLocked ? ' onclick="Dashboard.showGuestGate()"' : ''}>
+        <div class="exam-section${isLocked ? ' guest-locked' : ''}"${isLocked ? ' onclick="' + lockClick + '"' : ''}>
           <div class="section-header">
             <span class="material-symbols-outlined section-icon ${sectionKey}">${Utils.getMaterialIcon(sectionKey)}</span>
             <h4>${section.name}${lockedBadge}</h4>
-            <button class="section-play" onclick="event.stopPropagation(); Exercise.startFullSection('${exam.id}', '${sectionKey}')">
+            <button class="section-play" onclick="event.stopPropagation(); ${isLocked ? lockClick : "Exercise.startFullSection('" + exam.id + "', '" + sectionKey + "')"}">
               <i class="fas fa-play"></i>
             </button>
             <button class="section-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showSectionResults('${exam.id}', '${sectionKey}')" title="Section Results">
@@ -603,7 +652,7 @@
         if (isExamMode && !section.completed.includes(i)) {
           html += `<span class="part-number ${statusClass} exam-locked" title="Complete the exam to view corrections">${i}</span>`;
         } else {
-          html += `<span class="part-number ${statusClass}" onclick="event.stopPropagation(); Exercise.openPart('${exam.id}', '${sectionKey}', ${i})">${i}</span>`;
+           html += `<span class="part-number ${statusClass}" onclick="event.stopPropagation(); ${isLocked ? lockClick : "Exercise.openPart('" + exam.id + "', '" + sectionKey + "', " + i + ")"}">${i}</span>`;
         }
       }
       
@@ -716,26 +765,29 @@
     // ── Guest / Premium helpers ──────────────────────────────────────────
 
     _renderPremiumBanner: function() {
+      var isAuth = !!AppState.isAuthenticated;
       return '<div class="premium-banner">' +
         '<div class="premium-banner-icon"><span class="material-symbols-outlined">workspace_premium</span></div>' +
         '<div class="premium-banner-text">' +
-          '<div class="premium-banner-title">' + 'Upgrade to Premium' + '</div>' +
-          '<div class="premium-banner-desc">' + 'Get full access to all exams, writing evaluation with AI, and speaking exercises.' + '</div>' +
+          '<div class="premium-banner-title">' + (isAuth ? 'Unlock Pack Exams' : 'Sign in & unlock more') + '</div>' +
+          '<div class="premium-banner-desc">' + 'Unlock all exams, Random Test, and unlimited Writing/Speaking.' + '</div>' +
         '</div>' +
-        '<button class="premium-banner-btn" onclick="Dashboard.showGuestGate()">' +
-          '<i class="fas fa-crown"></i> ' + 'Upgrade' +
+        '<button class="premium-banner-btn" onclick="' + (isAuth ? 'Dashboard.showExamsUpgradeGate()' : 'Dashboard.showGuestGate()') + '">' +
+          '<i class="fas fa-crown"></i> ' + (isAuth ? 'View Plans' : 'Sign in') +
         '</button>' +
       '</div>';
     },
 
     _renderGuestLockedExam: function(exam) {
-      return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showGuestGate()">' +
+      var isAuth = !!AppState.isAuthenticated;
+      var action = isAuth ? 'Dashboard.showExamsUpgradeGate()' : 'Dashboard.showGuestGate()';
+      return '<div class="exam-item guest-exam-locked" onclick="' + action + '">' +
         '<div class="exam-header">' +
           '<div class="exam-header-left">' +
             '<span class="exam-number">' + exam.number + '</span>' +
             '<div>' +
               '<div class="exam-title">Test ' + exam.number + '</div>' +
-              '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + 'Sign in to access' + '</div>' +
+              '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>' + (isAuth ? 'Pack Exams required' : 'Sign in to access') + '</div>' +
             '</div>' +
           '</div>' +
           '<div class="exam-progress-badge"><i class="fas fa-lock"></i> ' + 'Upgrade' + '</div>' +
@@ -766,6 +818,53 @@
 
     closeGuestGate: function() {
       var overlay = document.getElementById('guest-gate-overlay');
+      if (overlay) overlay.remove();
+    },
+
+    showExamsUpgradeGate: function() {
+      if (document.getElementById('upgrade-gate-overlay')) return;
+      var overlay = document.createElement('div');
+      overlay.id = 'upgrade-gate-overlay';
+      overlay.className = 'upgrade-gate-overlay';
+      overlay.innerHTML =
+        '<div class="upgrade-gate-card">' +
+          '<div class="upgrade-gate-icon">🔒</div>' +
+          '<div class="upgrade-gate-title">Pack Exams required</div>' +
+          '<div class="upgrade-gate-desc">Unlock all exams, Random Test, Writing and Speaking with unlimited access.</div>' +
+          '<div class="upgrade-gate-actions">' +
+            '<button class="upgrade-gate-btn-primary" onclick="Dashboard.closeUpgradeGate(); UserProfile.renderPremiumSection()">Ver Planes</button>' +
+            '<button class="upgrade-gate-btn-secondary" onclick="Dashboard.closeUpgradeGate()">Close</button>' +
+          '</div>' +
+        '</div>';
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) Dashboard.closeUpgradeGate();
+      });
+      document.body.appendChild(overlay);
+    },
+
+    showTheoryUpgradeGate: function() {
+      if (document.getElementById('upgrade-gate-overlay')) return;
+      var overlay = document.createElement('div');
+      overlay.id = 'upgrade-gate-overlay';
+      overlay.className = 'upgrade-gate-overlay';
+      overlay.innerHTML =
+        '<div class="upgrade-gate-card">' +
+          '<div class="upgrade-gate-icon">🔒</div>' +
+          '<div class="upgrade-gate-title">Pack Theory required</div>' +
+          '<div class="upgrade-gate-desc">Unlock all Grammar &amp; Vocabulary theory blocks.</div>' +
+          '<div class="upgrade-gate-actions">' +
+            '<button class="upgrade-gate-btn-primary" onclick="Dashboard.closeUpgradeGate(); UserProfile.renderPremiumSection()">Ver Planes</button>' +
+            '<button class="upgrade-gate-btn-secondary" onclick="Dashboard.closeUpgradeGate()">Close</button>' +
+          '</div>' +
+        '</div>';
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) Dashboard.closeUpgradeGate();
+      });
+      document.body.appendChild(overlay);
+    },
+
+    closeUpgradeGate: function() {
+      var overlay = document.getElementById('upgrade-gate-overlay');
       if (overlay) overlay.remove();
     }
   };
