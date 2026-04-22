@@ -42,7 +42,10 @@
           animal_avatar: animalAvatar,
           preferred_level: AppState.currentLevel || 'C1',
           preferred_mode: AppState.currentMode || 'practice',
-          preferred_language: 'en'
+          preferred_language: 'en',
+          role: 'user',
+          has_theory_pack: false,
+          has_exams_pack: false
         };
         const { data: created } = await client
           .from('profiles')
@@ -50,12 +53,14 @@
           .select()
           .single();
         this._profile = created || newProfile;
+        this._syncAccessFromProfile(this._profile);
         // Cache animal avatar in localStorage
         if (this._profile && this._profile.animal_avatar) {
           try { localStorage.setItem('cambridge_animal_avatar', this._profile.animal_avatar); } catch (e) { /* ignore */ }
         }
       } else if (!error && data) {
         this._profile = data;
+        this._syncAccessFromProfile(data);
         // Cache animal avatar in localStorage
         if (data.animal_avatar) {
           try { localStorage.setItem('cambridge_animal_avatar', data.animal_avatar); } catch (e) { /* ignore */ }
@@ -94,10 +99,19 @@
 
       if (!error && data) {
         this._profile = data;
+        this._syncAccessFromProfile(data);
         this._applyPreferences(data);
         this._refreshPanelValues();
       }
       return { data, error };
+    },
+
+    _syncAccessFromProfile: function (profile) {
+      var data = profile || {};
+      AppState.isAdmin = (data.role === 'admin');
+      AppState.hasTheoryPack = !!(data.has_theory_pack) || AppState.isAdmin;
+      AppState.hasExamsPack = !!(data.has_exams_pack) || AppState.isAdmin;
+      AppState.isPremium = AppState.hasTheoryPack && AppState.hasExamsPack;
     },
 
     // ── panel toggle ──────────────────────────────────────────────────
@@ -357,9 +371,26 @@
       var initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
 
       var isPremium = AppState.isPremium;
+      var hasTheoryPack = AppState.hasTheoryPack;
+      var hasExamsPack = AppState.hasExamsPack;
       var subBadge = isPremium
         ? '<div class="profile-section-sub-badge premium"><i class="fas fa-crown"></i> Premium</div>'
         : '<div class="profile-section-sub-badge free"><i class="fas fa-user"></i> ' + 'Free Plan' + '</div>';
+      var packBadges = '';
+      if (!isGuest) {
+        if (AppState.isAdmin) {
+          packBadges += '<span class="profile-pack-badge admin"><i class="fas fa-shield-alt"></i> Admin</span>';
+        }
+        if (hasTheoryPack) {
+          packBadges += '<span class="profile-pack-badge theory"><i class="fas fa-book-open"></i> Pack Theory</span>';
+        }
+        if (hasExamsPack) {
+          packBadges += '<span class="profile-pack-badge exams"><i class="fas fa-file-alt"></i> Pack Exams</span>';
+        }
+        if (!packBadges) {
+          packBadges = '<span class="profile-pack-badge free"><i class="fas fa-leaf"></i> Free</span>';
+        }
+      }
 
       // Always use Google profile photo for user display
       var avatarHtml = avatarUrl
@@ -388,6 +419,7 @@
               '<div class="profile-name">' + name + '</div>' +
               '<div class="profile-email">' + email + '</div>' +
               subBadge +
+              (packBadges ? '<div class="profile-pack-badges">' + packBadges + '</div>' : '') +
             '</div>' +
           '</div>' +
           (isGuest
@@ -407,8 +439,8 @@
           '<h3><span class="material-symbols-outlined">workspace_premium</span> ' + 'Subscription' + '</h3>' +
           '<p style="color:var(--text-medium);font-size:0.88rem;margin:0 0 14px">' +
             (isPremium
-              ? 'You have an active Premium subscription with full access to all features.'
-              : 'You are on the free plan. Upgrade to unlock all exams and AI features.') +
+              ? 'You have active Theory + Exams access.'
+              : 'You are on the free plan. Upgrade to unlock all exams and theory blocks.') +
           '</p>' +
           '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '" onclick="' + (isPremium ? '' : 'UserProfile.renderPremiumSection()') + '">' +
             (isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + 'Current Plan' + ': Premium' : '<i class="fas fa-crown"></i> ' + 'View Plans') +
@@ -428,62 +460,129 @@
       history.pushState(profState, '', Router.stateToPath(profState));
     },
 
+    _showPaymentComingSoon: function () {
+      alert('Payment integration coming soon. Contact us at academiaohara@gmail.com');
+    },
+
+    _renderPremiumPackCards: function (durationKey) {
+      var plans = {
+        theory: {
+          icon: '📘',
+          name: 'Pack Theory',
+          tagline: 'Unlock all Grammar & Vocabulary theory blocks',
+          className: '',
+          features: ['All theory blocks', 'Course navigation unlocked', 'All units and reviews'],
+          owned: !!AppState.hasTheoryPack,
+          prices: {
+            m1: { total: 4, monthly: '€4', totalLabel: '€4 total' },
+            m3: { total: 10, monthly: '€3,33', totalLabel: '€10 total • Save 17%' },
+            m6: { total: 18, monthly: '€3', totalLabel: '€18 total • Save 25%' },
+            y1: { total: 32, monthly: '€2,67', totalLabel: '€32 total • Save 33%' }
+          }
+        },
+        exams: {
+          icon: '📝',
+          name: 'Pack Exams',
+          tagline: 'Unlock all exams, Random Test, Writing and Speaking',
+          className: '',
+          features: ['All exams unlocked', 'Random Test unlocked', 'Unlimited Writing/Speaking'],
+          owned: !!AppState.hasExamsPack,
+          prices: {
+            m1: { total: 6, monthly: '€6', totalLabel: '€6 total' },
+            m3: { total: 15, monthly: '€5', totalLabel: '€15 total • Save 17%' },
+            m6: { total: 27, monthly: '€4,50', totalLabel: '€27 total • Save 25%' },
+            y1: { total: 50, monthly: '€4,17', totalLabel: '€50 total • Save 31%' }
+          }
+        },
+        complete: {
+          icon: '👑',
+          name: 'Pack Complete',
+          tagline: 'Everything included',
+          className: 'pack-recommended',
+          features: ['All theory blocks', 'All exams + Random Test', 'Unlimited Writing/Speaking'],
+          owned: !!(AppState.hasTheoryPack && AppState.hasExamsPack),
+          prices: {
+            m1: { total: 10, monthly: '€10', totalLabel: '€10 total' },
+            m3: { total: 25, monthly: '€8,33', totalLabel: '€25 total • Save 17%' },
+            m6: { total: 45, monthly: '€7,50', totalLabel: '€45 total • Save 25%' },
+            y1: { total: 80, monthly: '€6,67', totalLabel: '€80 total • Save 33%' }
+          }
+        }
+      };
+      var order = ['theory', 'exams', 'complete'];
+      var html = '';
+      order.forEach(function (key) {
+        var plan = plans[key];
+        var pricing = plan.prices[durationKey] || plan.prices.m1;
+        var cardClass = 'premium-pack-card ' + plan.className + (plan.owned ? ' pack-owned' : '');
+        html += '<div class="' + cardClass.trim() + '">' +
+          (plan.className ? '<div class="premium-pack-badge">Recommended</div>' : '') +
+          '<div class="premium-pack-icon">' + plan.icon + '</div>' +
+          '<div class="premium-pack-name">' + plan.name + '</div>' +
+          '<div class="premium-pack-tagline">' + plan.tagline + '</div>' +
+          '<div class="premium-pack-price-big">' + pricing.monthly + '</div>' +
+          '<div class="premium-pack-price-period">/ month</div>' +
+          '<div class="premium-pack-price-total">' + pricing.totalLabel + '</div>' +
+          '<ul class="premium-pack-features">' +
+            plan.features.map(function (f) { return '<li><i class="fas fa-check"></i> ' + f + '</li>'; }).join('') +
+          '</ul>' +
+          '<button class="premium-plan-btn ' + (plan.owned ? 'current-plan' : 'primary') + '" ' + (plan.owned ? 'disabled' : 'onclick="UserProfile._showPaymentComingSoon()"') + '>' +
+            (plan.owned ? '<span class="material-symbols-outlined">check_circle</span> Current Plan' : 'Get Pack') +
+          '</button>' +
+        '</div>';
+      });
+      return html;
+    },
+
     // ── Premium Plans Section (rendered inside main-content) ───────────
     renderPremiumSection: function () {
       var content = document.getElementById('main-content');
       if (!content) return;
 
-      var isPremium = AppState.isPremium;
+      var durationOptions = [
+        { key: 'm1', label: '1 month', badge: '' },
+        { key: 'm3', label: '3 months', badge: 'Save 17%' },
+        { key: 'm6', label: '6 months', badge: 'Save 25%' },
+        { key: 'y1', label: '1 year', badge: 'Save 33%' }
+      ];
+      var selectedDuration = 'm1';
 
       var html = '<div class="premium-plans-section">' +
         '<div class="profile-section-header">' +
           '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + 'Back' + '</button>' +
         '</div>' +
-
         '<div class="premium-plans-header">' +
-          '<h2><span class="material-symbols-outlined">workspace_premium</span> ' + 'Choose your Plan' + '</h2>' +
-          '<p>' + 'Unlock the full Cambridge Exams experience' + '</p>' +
+          '<h2><span class="material-symbols-outlined">workspace_premium</span> Choose your Pack</h2>' +
+          '<p>Select duration and unlock exactly what you need</p>' +
         '</div>' +
-
-        '<div class="premium-plans-grid">' +
-
-          '<div class="premium-plan-card' + (!isPremium ? ' current' : '') + '">' +
-            (!isPremium ? '<div class="premium-plan-badge">' + 'Current Plan' + '</div>' : '') +
-            '<div class="premium-plan-icon"><span class="material-symbols-outlined">auto_stories</span></div>' +
-            '<div class="premium-plan-name">' + 'Free' + '</div>' +
-            '<div class="premium-plan-price">€0 <span>/ ' + 'month' + '</span></div>' +
-            '<ul class="premium-plan-features">' +
-              '<li><i class="fas fa-check"></i> ' + 'Access to first exam' + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + 'Reading & Listening exercises' + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + 'Score calculator' + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + 'Micro-learning mode' + '</li>' +
-            '</ul>' +
-            '<button class="premium-plan-btn ' + (!isPremium ? 'current-plan' : 'outline') + '">' + (!isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + 'Current Plan' : 'Free') + '</button>' +
-          '</div>' +
-
-          '<div class="premium-plan-card' + (isPremium ? ' current' : ' recommended') + '">' +
-            (isPremium
-              ? '<div class="premium-plan-badge">' + 'Current Plan' + '</div>'
-              : '<div class="premium-plan-badge">' + 'Recommended' + '</div>') +
-            '<div class="premium-plan-icon"><span class="material-symbols-outlined">workspace_premium</span></div>' +
-            '<div class="premium-plan-name">Premium</div>' +
-            '<div class="premium-plan-price">€9.99 <span>/ ' + 'month' + '</span></div>' +
-            '<ul class="premium-plan-features">' +
-              '<li><i class="fas fa-check"></i> ' + 'All exams unlocked' + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + 'AI writing evaluation' + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + 'Speaking exercises' + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + 'Progress sync across devices' + '</li>' +
-              '<li><i class="fas fa-check"></i> ' + 'Detailed grade analytics' + '</li>' +
-            '</ul>' +
-            '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '">' + (isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + 'Current Plan' : 'Get Premium') + '</button>' +
-          '</div>' +
-
+        '<div class="premium-duration-selector" id="premium-duration-selector">' +
+          durationOptions.map(function (opt) {
+            return '<button class="premium-duration-btn' + (opt.key === selectedDuration ? ' active' : '') + '" data-duration="' + opt.key + '">' +
+              opt.label +
+              (opt.badge ? '<span class="premium-duration-badge">' + opt.badge + '</span>' : '') +
+            '</button>';
+          }).join('') +
         '</div>' +
+        '<div class="premium-packs-grid" id="premium-packs-grid">' + this._renderPremiumPackCards(selectedDuration) + '</div>' +
       '</div>';
 
       content.innerHTML = html;
       var premState = { view: 'premium' };
       history.pushState(premState, '', Router.stateToPath(premState));
+
+      var selector = document.getElementById('premium-duration-selector');
+      var packsGrid = document.getElementById('premium-packs-grid');
+      if (selector && packsGrid) {
+        selector.addEventListener('click', function (e) {
+          var btn = e.target && e.target.closest ? e.target.closest('.premium-duration-btn') : null;
+          if (!btn) return;
+          selectedDuration = btn.getAttribute('data-duration') || 'm1';
+          selector.querySelectorAll('.premium-duration-btn').forEach(function (el) {
+            el.classList.toggle('active', el === btn);
+          });
+          packsGrid.innerHTML = UserProfile._renderPremiumPackCards(selectedDuration);
+        });
+      }
     }
   };
 })();

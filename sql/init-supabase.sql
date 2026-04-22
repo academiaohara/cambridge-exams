@@ -15,6 +15,14 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   updated_at     TIMESTAMPTZ DEFAULT NOW()
 );
 
+ALTER TABLE public.profiles
+  ADD COLUMN IF NOT EXISTS role TEXT DEFAULT 'user',
+  ADD COLUMN IF NOT EXISTS has_theory_pack BOOLEAN DEFAULT FALSE,
+  ADD COLUMN IF NOT EXISTS has_exams_pack BOOLEAN DEFAULT FALSE;
+
+UPDATE public.profiles SET role = 'admin', has_theory_pack = TRUE, has_exams_pack = TRUE
+  WHERE email = 'illanlinos@gmail.com';
+
 -- ── User streaks ───────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS public.user_streaks (
   id               UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
