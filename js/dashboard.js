@@ -836,7 +836,7 @@
           '<div class="upgrade-gate-icon">🔒</div>' +
           '<div class="upgrade-gate-title">Pack Exams required</div>' +
           '<div class="upgrade-gate-desc">Unlock all exams, Random Test, Writing and Speaking with unlimited access.</div>' +
-            '<div class="upgrade-gate-actions">' +
+          '<div class="upgrade-gate-actions">' +
             '<button class="upgrade-gate-btn-primary" onclick="Dashboard.closeUpgradeGate(); UserProfile.renderPremiumSection()">View Plans</button>' +
             '<button class="upgrade-gate-btn-secondary" onclick="Dashboard.closeUpgradeGate()">Close</button>' +
           '</div>' +
@@ -857,7 +857,7 @@
           '<div class="upgrade-gate-icon">🔒</div>' +
           '<div class="upgrade-gate-title">Pack Theory required</div>' +
           '<div class="upgrade-gate-desc">Unlock all Grammar &amp; Vocabulary theory blocks.</div>' +
-            '<div class="upgrade-gate-actions">' +
+          '<div class="upgrade-gate-actions">' +
             '<button class="upgrade-gate-btn-primary" onclick="Dashboard.closeUpgradeGate(); UserProfile.renderPremiumSection()">View Plans</button>' +
             '<button class="upgrade-gate-btn-secondary" onclick="Dashboard.closeUpgradeGate()">Close</button>' +
           '</div>' +
