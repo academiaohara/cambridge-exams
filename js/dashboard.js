@@ -8,6 +8,8 @@
   var SECTION_ITEMS_PER_PAGE = 4;
   var leftSidebarCollapsed = false;
   var rightSidebarCollapsed = false;
+  var SIDEBAR_EXPANDED_WIDTH = '260px';
+  var SIDEBAR_COLLAPSED_WIDTH = '52px';
 
   try {
     leftSidebarCollapsed = localStorage.getItem('cambridge_dashboard_sidebar_left') === '1';
@@ -59,17 +61,17 @@
         var hasRight = !!layout.querySelector('.dashboard-right-sidebar');
         if (layout.classList.contains('dashboard-layout-right-closed')) {
           layout.style.gridTemplateColumns =
-            (leftSidebarCollapsed ? '52px' : '260px') + ' minmax(0, 1fr) 52px';
+            (leftSidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH) + ' minmax(0, 1fr) ' + SIDEBAR_COLLAPSED_WIDTH;
           return;
         }
         if (!hasLeft && !hasRight) return;
         if (hasLeft && hasRight) {
           layout.style.gridTemplateColumns =
-            (leftSidebarCollapsed ? '52px' : '260px') + ' minmax(0, 1fr) ' + (rightSidebarCollapsed ? '52px' : '260px');
+            (leftSidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH) + ' minmax(0, 1fr) ' + (rightSidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH);
         } else if (hasLeft) {
-          layout.style.gridTemplateColumns = (leftSidebarCollapsed ? '52px' : '260px') + ' minmax(0, 1fr)';
+          layout.style.gridTemplateColumns = (leftSidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH) + ' minmax(0, 1fr)';
         } else if (hasRight) {
-          layout.style.gridTemplateColumns = 'minmax(0, 1fr) ' + (rightSidebarCollapsed ? '52px' : '260px');
+          layout.style.gridTemplateColumns = 'minmax(0, 1fr) ' + (rightSidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH);
         }
       });
     },
