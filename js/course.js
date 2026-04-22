@@ -1219,7 +1219,14 @@
                 } else {
                   html += '<ul class="cu-theory-list">';
                   listItems.forEach(function(item) {
-                    html += '<li>' + _bold(item) + '</li>';
+                    var itemStr = String(item);
+                    if (/^✓/.test(itemStr)) {
+                      html += '<li class="cu-theory-list-correct"><span class="cu-theory-list-mark">✓</span>' + _bold(itemStr.replace(/^✓\s*/, '')) + '</li>';
+                    } else if (/^[✗✕]/.test(itemStr)) {
+                      html += '<li class="cu-theory-list-incorrect"><span class="cu-theory-list-mark">✗</span><s>' + _bold(itemStr.replace(/^[✗✕]\s*/, '')) + '</s></li>';
+                    } else {
+                      html += '<li>' + _bold(item) + '</li>';
+                    }
                   });
                   html += '</ul>';
                 }

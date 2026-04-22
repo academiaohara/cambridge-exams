@@ -1013,6 +1013,27 @@
   line-height: 1.55;
 }
 
+/* ✓/✗ items inside regular theory lists */
+.cu-theory-list li.cu-theory-list-correct,
+.cu-theory-list li.cu-theory-list-incorrect {
+  list-style: none;
+  margin-left: -18px;
+  padding-left: 22px;
+  position: relative;
+}
+.cu-theory-list-mark {
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  font-style: normal;
+}
+.cu-theory-list li.cu-theory-list-correct { color: var(--text-dark, #0f172a); }
+.cu-theory-list-correct .cu-theory-list-mark { color: #16a34a; }
+.cu-theory-list li.cu-theory-list-incorrect { color: #94a3b8; }
+.cu-theory-list-incorrect .cu-theory-list-mark { color: #dc2626; }
+.cu-theory-list-incorrect s { color: #94a3b8; text-decoration-color: #dc2626; }
+.cu-theory-list-incorrect s strong { color: #94a3b8; font-weight: 600; }
+
 /* Exercise sections */
 .cu-ex-instructions {
   font-size: 0.88rem;
