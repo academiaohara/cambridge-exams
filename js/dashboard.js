@@ -57,6 +57,11 @@
       document.querySelectorAll('.dashboard-layout').forEach(function(layout) {
         var hasLeft = !!layout.querySelector('.dashboard-left-sidebar');
         var hasRight = !!layout.querySelector('.dashboard-right-sidebar');
+        if (layout.classList.contains('dashboard-layout-right-closed')) {
+          layout.style.gridTemplateColumns =
+            (leftSidebarCollapsed ? '52px' : '260px') + ' minmax(0, 1fr) 52px';
+          return;
+        }
         if (!hasLeft && !hasRight) return;
         if (hasLeft && hasRight) {
           layout.style.gridTemplateColumns =
@@ -831,8 +836,8 @@
           '<div class="upgrade-gate-icon">🔒</div>' +
           '<div class="upgrade-gate-title">Pack Exams required</div>' +
           '<div class="upgrade-gate-desc">Unlock all exams, Random Test, Writing and Speaking with unlimited access.</div>' +
-          '<div class="upgrade-gate-actions">' +
-            '<button class="upgrade-gate-btn-primary" onclick="Dashboard.closeUpgradeGate(); UserProfile.renderPremiumSection()">Ver Planes</button>' +
+            '<div class="upgrade-gate-actions">' +
+            '<button class="upgrade-gate-btn-primary" onclick="Dashboard.closeUpgradeGate(); UserProfile.renderPremiumSection()">View Plans</button>' +
             '<button class="upgrade-gate-btn-secondary" onclick="Dashboard.closeUpgradeGate()">Close</button>' +
           '</div>' +
         '</div>';
@@ -852,8 +857,8 @@
           '<div class="upgrade-gate-icon">🔒</div>' +
           '<div class="upgrade-gate-title">Pack Theory required</div>' +
           '<div class="upgrade-gate-desc">Unlock all Grammar &amp; Vocabulary theory blocks.</div>' +
-          '<div class="upgrade-gate-actions">' +
-            '<button class="upgrade-gate-btn-primary" onclick="Dashboard.closeUpgradeGate(); UserProfile.renderPremiumSection()">Ver Planes</button>' +
+            '<div class="upgrade-gate-actions">' +
+            '<button class="upgrade-gate-btn-primary" onclick="Dashboard.closeUpgradeGate(); UserProfile.renderPremiumSection()">View Plans</button>' +
             '<button class="upgrade-gate-btn-secondary" onclick="Dashboard.closeUpgradeGate()">Close</button>' +
           '</div>' +
         '</div>';

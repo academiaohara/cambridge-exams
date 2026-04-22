@@ -121,7 +121,7 @@
 
       // Render initial layout with loading spinners
       content.innerHTML =
-        '<div class="dashboard-layout">' +
+        '<div class="dashboard-layout dashboard-layout-right-closed">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'courseLeftSidebarShell', 'courseLeftSidebar', '<div class="fe-loading"><div class="fe-spinner"></div></div>')
             : '<div class="dashboard-left-sidebar" id="courseLeftSidebar"><div class="fe-loading"><div class="fe-spinner"></div></div></div>') +
@@ -130,9 +130,6 @@
               '<div class="fe-loading"><div class="fe-spinner"></div></div>' +
             '</div>' +
           '</div>' +
-          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', '')
-            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar"></div>') +
         '</div>';
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
 
@@ -586,16 +583,13 @@
       if (!centerSection) {
         // Re-render layout if navigated directly — use course-specific sidebars
         content.innerHTML =
-          '<div class="dashboard-layout">' +
+          '<div class="dashboard-layout dashboard-layout-right-closed">' +
             (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
               ? Dashboard._renderSidebarShell('left', 'courseLeftSidebarShell', 'courseLeftSidebar', '<div class="fe-loading"><div class="fe-spinner"></div></div>')
               : '<div class="dashboard-left-sidebar" id="courseLeftSidebar"><div class="fe-loading"><div class="fe-spinner"></div></div></div>') +
             '<div class="dashboard-center">' +
               '<div class="fe-section" id="courseCenterSection"></div>' +
             '</div>' +
-            (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-              ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', '')
-              : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar"></div>') +
           '</div>';
         if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
         centerSection = document.getElementById('courseCenterSection');
