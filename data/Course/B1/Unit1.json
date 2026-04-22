@@ -48,15 +48,21 @@
         },
         {
           "subtitle": "Helpful hints",
-          "description": "The present simple is often used with frequency adverbs and routine expressions.",
+          "description": "The present simple is often used with the following words and phrases:"
+        },
+        {
+          "subtitle": "Adverbs",
+          "chipStyle": true,
+          "items": ["always", "usually", "often", "sometimes", "rarely", "never"]
+        },
+        {
+          "subtitle": "Phrases",
+          "chipStyle": true,
+          "items": ["every Monday/week/etc", "each Monday/week/etc", "once/twice a week/month/etc", "three times a week/month/etc"]
+        },
+        {
+          "description": "These adverbs usually go before the verb, but after the verb **be**.",
           "items": [
-            "always, usually, often",
-            "sometimes, rarely, never",
-            "every Monday/week/etc",
-            "each Monday/week/etc",
-            "once/twice a week/month/etc",
-            "three times a week/month/etc",
-            "These adverbs usually go before the verb, but after the verb **be**.",
             "I **often play** football with my friends.",
             "I am **often** late for my piano lessons."
           ]
@@ -111,15 +117,20 @@
         },
         {
           "subtitle": "Helpful hints",
-          "description": "The present continuous is commonly used with words that show something is happening around now.",
+          "description": "The present continuous is commonly used with words that show something is happening around now:",
+          "chipStyle": true,
           "items": [
             "now",
             "right now",
             "at the moment",
             "today",
             "this week/month/etc",
-            "these days",
-            "We can use **always** + present continuous to show irritation about repeated behaviour.",
+            "these days"
+          ]
+        },
+        {
+          "description": "We can use **always** + present continuous to show irritation about repeated behaviour.",
+          "items": [
             "My brother **is always borrowing** my CDs without asking."
           ]
         }
@@ -130,7 +141,6 @@
       "title": "Stative verbs",
       "content": [
         {
-          "subtitle": "Form",
           "description": "Stative verbs do not usually describe actions. They describe states (feelings, thoughts, etc). They are not normally used in continuous tenses.",
           "items": [
             "✓ I **like** reading books in my free time.",
