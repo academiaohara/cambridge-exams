@@ -87,6 +87,167 @@
       { "base": "refer", "derivatives": ["reference"] },
       { "base": "silent", "derivatives": ["silence", "silently"] },
       { "base": "simple", "derivatives": ["simplify", "simplicity"] }
-    ]
+    ],
+    "exercises": {
+      "A": {
+        "title": "Topic vocabulary (gap fill)",
+        "instructions": "Complete using the correct form of the words and phrases in the boxes.",
+        "type": "grouped",
+        "groups": [
+          {
+            "words": ["achieve", "fail", "pass"],
+            "questions": [
+              { "sentence": "We had our English exam this morning. I hope I've ...... !", "answer": "passed" },
+              { "sentence": "Pete couldn't answer any questions, so he thinks he has ...... .", "answer": "failed" },
+              { "sentence": "Our teacher said that we've all ...... a lot this year.", "answer": "achieved" }
+            ]
+          },
+          {
+            "words": ["degree", "experience", "instruction"],
+            "questions": [
+              { "sentence": "I've left you a list of ...... on the kitchen table. Make sure you follow them!", "answer": "instructions" },
+              { "sentence": "Meeting Brad Pitt was an amazing ...... !", "answer": "experience" },
+              { "sentence": "My sister left Warwick University after she got her ...... .", "answer": "degree" }
+            ]
+          },
+          {
+            "words": ["course", "qualification", "skill"],
+            "questions": [
+              { "sentence": "Being able to use a computer is a very useful ...... .", "answer": "skill" },
+              { "sentence": "I'm thinking of going on a computer ...... .", "answer": "course" },
+              { "sentence": "You can only apply for this job if you've got a ...... in website design.", "answer": "qualification" }
+            ]
+          },
+          {
+            "words": ["make progress", "make sure", "take an exam"],
+            "questions": [
+              { "sentence": "You've all ...... a lot of ...... this year. Well done!", "answer": "made, progress" },
+              { "sentence": "I always get nervous before I ...... .", "answer": "take an exam" },
+              { "sentence": "I ...... that I'd answered all the questions and then I handed in my test paper.", "answer": "made sure" }
+            ]
+          }
+        ]
+      },
+      "B": {
+        "title": "Circle the correct word",
+        "instructions": "Circle the correct word.",
+        "questions": [
+          { "sentence": "I **search / wonder** how difficult the maths test tomorrow will be.", "answer": "wonder" },
+          { "sentence": "It's nearly the end of **term / mark**, so it will be the holidays soon!", "answer": "term" },
+          { "sentence": "Could you **revise / remind** me to take this book back to the library?", "answer": "remind" },
+          { "sentence": "Carl is a computer **brain / expert**. Why don't you ask him to fix your computer?", "answer": "expert" },
+          { "sentence": "Rosalind is a really **smart / talented** musician, but she doesn't practise enough.", "answer": "talented" },
+          { "sentence": "Rebecca is really **clever / mental**. She always knows the answer!", "answer": "clever" },
+          { "sentence": "I wasn't sure of the answer so I **guessed / hesitated** and I was right!", "answer": "guessed" },
+          { "sentence": "Have you ever **concentrated / considered** becoming a professional singer?", "answer": "considered" },
+          { "sentence": "After every experiment in chemistry, we have to write a **subject / report** on what happened.", "answer": "report" }
+        ]
+      },
+      "C": {
+        "title": "Crossword",
+        "instructions": "Complete the crossword. All the answers are words in bold in exercise B.",
+        "type": "crossword",
+        "across": [
+          { "num": 2, "clue": "I want you to ...... Unit 6 at the weekend because you've got a test on Monday. (6)", "answer": "revise" },
+          { "num": 4, "clue": "Another word for 'clever' is '......'. (5)", "answer": "smart" },
+          { "num": 6, "clue": "What's your favourite ...... at school? (7)", "answer": "subject" },
+          { "num": 8, "clue": "The other students were talking and laughing but Jamie ...... on his work. (12)", "answer": "concentrated" }
+        ],
+        "down": [
+          { "num": 1, "clue": "If you can do maths problems in your head, then you're good at ...... arithmetic. (6)", "answer": "mental" },
+          { "num": 3, "clue": "I got a ...... of nineteen out of twenty in the test. (4)", "answer": "mark" },
+          { "num": 4, "clue": "I'll have to ...... for that book because I've no idea where it is. (6)", "answer": "search" },
+          { "num": 5, "clue": "Kelly didn't know what to say so she ...... before she answered. (9)", "answer": "hesitated" },
+          { "num": 7, "clue": "Everyone uses their ...... when they think. (5)", "answer": "brain" }
+        ]
+      },
+      "D": {
+        "title": "Phrasal verbs (diary entry)",
+        "instructions": "Write one word in each gap.",
+        "passageTitle": "24th June",
+        "passage": "We had our English exam today. It was a disaster! We all sat there nervously, waiting for Mrs Jennings to say we could start. Finally, she told us to turn our exam papers (1) ...... . Then she read (2) ...... the instructions to make sure we all understood. We had to write three essays in two hours! We weren't allowed to look (3) ...... any words in the dictionary, and we had to write in pen. That meant we couldn't rub anything (4) ...... if we made a mistake. We had to cross it (5) ...... neatly or just rip (6) ...... the whole piece of paper and start again. So, I read through the three questions very carefully and thought about what I was going to write. I'd just written my name (7) ...... at the top of the first piece of paper, and was about to start writing the first essay, when Mrs Jennings pointed (8) ...... that there were only five minutes left. Oh dear!",
+        "questions": [
+          { "sentence": "(1)", "answer": "over" },
+          { "sentence": "(2)", "answer": "out" },
+          { "sentence": "(3)", "answer": "up" },
+          { "sentence": "(4)", "answer": "out" },
+          { "sentence": "(5)", "answer": "out" },
+          { "sentence": "(6)", "answer": "up" },
+          { "sentence": "(7)", "answer": "down" },
+          { "sentence": "(8)", "answer": "out" }
+        ]
+      },
+      "E": {
+        "title": "Prepositional phrases",
+        "instructions": "Each of the words in bold is in the wrong sentence. Write the correct word.",
+        "questions": [
+          { "sentence": "We learnt that poem by **conclusion** but I've forgotten it now. ......", "answer": "heart" },
+          { "sentence": "Are you in **general** of teenagers leaving school at the age of sixteen? ......", "answer": "favour" },
+          { "sentence": "I thought the exam would be difficult but, in **instance**, it was really easy. ......", "answer": "fact" },
+          { "sentence": "Many people, for **heart** my brother, prefer to do something active rather than do homework. ......", "answer": "instance" },
+          { "sentence": "In **fact**, the teachers at this school are really nice, but some are nicer than others! ......", "answer": "general" },
+          { "sentence": "It's a good idea to start the final paragraph of your composition with the phrase 'In **favour**'. ......", "answer": "conclusion" }
+        ]
+      },
+      "F": {
+        "title": "Word formation",
+        "instructions": "Complete by changing the form of the word in capitals.",
+        "questions": [
+          { "sentence": "Do you think you get a good ...... at your school? **EDUCATE**", "answer": "education" },
+          { "sentence": "I'm not an expert. I'm only a ...... ! **BEGIN**", "answer": "beginner" },
+          { "sentence": "The police are going to give Tracy an award for ...... . **BRAVE**", "answer": "bravery" },
+          { "sentence": "I'm writing in ...... to your advertisement for a guitar teacher. **REFER**", "answer": "reference" },
+          { "sentence": "I want ...... at all times during the exam. **SILENT**", "answer": "silence" },
+          { "sentence": "Rupert is an ...... at a local extreme sports centre. **INSTRUCT**", "answer": "instructor" },
+          { "sentence": "I'm afraid that answer is ...... so you haven't won today's top prize. What a shame! **CORRECT**", "answer": "incorrect" },
+          { "sentence": "You don't understand ...... ? Look! Twelve divided by four is three. It's easy! **DIVIDE**", "answer": "division" },
+          { "sentence": "This is really difficult to understand. Why don't we ...... it a little? **SIMPLE**", "answer": "simplify" },
+          { "sentence": "Actors have to ...... a lot of words when they are in a play. **MEMORY**", "answer": "memorise" }
+        ]
+      },
+      "G": {
+        "title": "Word patterns",
+        "instructions": "Write one word in each gap.",
+        "questions": [
+          { "sentence": "You didn't cheat ...... the exam, did you?", "answer": "in/at" },
+          { "sentence": "We're learning ...... dinosaurs at the moment at school.", "answer": "about" },
+          { "sentence": "What's your opinion ...... children going to school at a very young age?", "answer": "of/about" },
+          { "sentence": "I think you've confused astronomy ...... astrology – they're not the same!", "answer": "with" },
+          { "sentence": "I hope Mr Aziz doesn't ask me a question ...... the book because I haven't read it!", "answer": "about" },
+          { "sentence": "I can't cope ...... all this homework I've got to do!", "answer": "with" }
+        ]
+      },
+      "H": {
+        "title": "Word patterns (sentence transformation)",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "type": "kwtrans",
+        "questions": [
+          {
+            "sentence": "Sasha is a really good tango dancer.\n**TALENTED** Sasha is really ...... tango dancing.",
+            "answer": "talented at"
+          },
+          {
+            "sentence": "Our teacher wasn't feeling well but she didn't stop the lesson.\n**CONTINUED** Our teacher wasn't feeling well but she ...... the lesson.",
+            "answer": "continued with"
+          },
+          {
+            "sentence": "I've got no experience at designing clothes.\n**KNOW** I ...... designing clothes at all!",
+            "answer": "don't know anything about"
+          },
+          {
+            "sentence": "Dan couldn't do his homework on his own so I've been helping him.\n**HELPING** I've been ...... his homework because he couldn't do it on his own.",
+            "answer": "helping Dan with"
+          },
+          {
+            "sentence": "No one can learn all that in one day!\n**CAPABLE** No one ...... all that in one day!",
+            "answer": "is capable of learning"
+          },
+          {
+            "sentence": "I really hope you find a solution to the problem.\n**SUCCEED** I really hope you ...... a solution to the problem.",
+            "answer": "succeed in finding"
+          }
+        ]
+      }
+    }
   }
 }
