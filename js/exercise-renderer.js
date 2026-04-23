@@ -345,6 +345,21 @@
             if (partConfig.type === 'open-cloze' || (partConfig.type === 'word-formation' && isExample)) {
               // For open-cloze and word-formation example (0), remove the answer word that follows the gap marker
               regex = new RegExp(`\\(${qNum}\\)\\s+\\S+`, 'g');
+            } else if (partConfig.type === 'word-formation' && !isExample && question) {
+              // For word-formation non-example gaps, strip embedded correct answer if present
+              // (B2 format stores answer words inline after the gap number, e.g. "(17) connection ...").
+              // The 'gi' flag is intentional: B2 texts embed answers in lowercase while question.correct
+              // is uppercase. The pattern requires the word to be immediately after the gap marker,
+              // so false positives against unrelated passage text are not a practical concern.
+              const correctAnswers = String(question.correct || '').split('/').map(s => s.trim()).filter(Boolean);
+              for (const ca of correctAnswers) {
+                const escapedCa = ca.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                paraProcessed = paraProcessed.replace(
+                  new RegExp(`\\(${qNum}\\)\\s+${escapedCa}`, 'gi'),
+                  `(${qNum})`
+                );
+              }
+              regex = new RegExp(`\\(${qNum}\\)`, 'g');
             } else {
               regex = new RegExp(`\\(${qNum}\\)`, 'g');
             }
