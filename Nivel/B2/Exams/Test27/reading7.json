@@ -8,21 +8,71 @@
     "title": "Better Every Day: Four People on Personal Growth and Self-Improvement",
     "texts": {
       "A": "### Elena, 29, Marketing Executive\n[43]I used to be the kind of person who blamed external circumstances for everything that went wrong in my life.[/43] It was only after a particularly honest conversation with a mentor that I started to take responsibility for my own choices. I began journalling every morning – not to record what happened, but to question my reactions and assumptions. [47]Reading books about cognitive behavioural therapy was a turning point; I learned to notice unhelpful thought patterns before they took hold.[/47] [51]I still slip into old habits occasionally, but I now catch myself much faster and find it easier to redirect my thinking.[/51]",
-      "B": "### Raj, 41, Accountant\n[44]For me, personal growth began the day I admitted to a close friend that I was deeply unhappy despite what looked from the outside like a successful life.[/44] I had a good job, a nice home, and no obvious problems, yet I felt stuck. That conversation prompted me to see a therapist, which I had previously dismissed as something only people in crisis needed. [48]Therapy taught me that many of the beliefs limiting my potential had been shaped by experiences in early childhood that I had never properly examined.[/48] I am more self-aware now than I have ever been, though the process is ongoing and sometimes uncomfortable.",
-      "C": "### Fiona, 36, Physiotherapist\n[45]I signed up for an online leadership course two years ago mainly because my employer offered to pay for it, but it ended up changing the way I see myself.[/45] I had never thought of myself as a leader, but the course encouraged me to reframe the skills I already had as strengths rather than just personality traits. [49]The most challenging exercise involved asking five colleagues to give me honest feedback, and hearing things I hadn't expected gave me a lot to think about.[/49] [52]Since completing the course, I have taken on a supervisory role at work that I would never have applied for previously.[/52] Growth, I've come to believe, rarely feels comfortable while it's happening.",
-      "D": "### Henry, 24, Recent Graduate\n[46]After graduating, I spent several months feeling directionless and comparing myself constantly to friends who seemed to have everything figured out.[/46] I eventually decided to stop scrolling through social media and redirect that time into something constructive. I started waking up an hour earlier each day and using that time to learn Spanish and practise guitar. [50]What I didn't expect was how building discipline in one area would spill over into other parts of my life – I became more focused at work, more patient in relationships, and generally less anxious.[/50] Small habits, I've found, have the power to reshape your whole outlook."
+      "C": "### Raj, 41, Accountant\n[44]For me, personal growth began the day I admitted to a close friend that I was deeply unhappy despite what looked from the outside like a successful life.[/44] I had a good job, a nice home, and no obvious problems, yet I felt stuck. That conversation prompted me to see a therapist, which I had previously dismissed as something only people in crisis needed. [48]Therapy taught me that many of the beliefs limiting my potential had been shaped by experiences in early childhood that I had never properly examined.[/48] I am more self-aware now than I have ever been, though the process is ongoing and sometimes uncomfortable.",
+      "D": "### Fiona, 36, Physiotherapist\n[45]I signed up for an online leadership course two years ago mainly because my employer offered to pay for it, but it ended up changing the way I see myself.[/45] I had never thought of myself as a leader, but the course encouraged me to reframe the skills I already had as strengths rather than just personality traits. [49]The most challenging exercise involved asking five colleagues to give me honest feedback, and hearing things I hadn't expected gave me a lot to think about.[/49] [52]Since completing the course, I have taken on a supervisory role at work that I would never have applied for previously.[/52] Growth, I've come to believe, rarely feels comfortable while it's happening.",
+      "B": "### Henry, 24, Recent Graduate\n[46]After graduating, I spent several months feeling directionless and comparing myself constantly to friends who seemed to have everything figured out.[/46] I eventually decided to stop scrolling through social media and redirect that time into something constructive. I started waking up an hour earlier each day and using that time to learn Spanish and practise guitar. [50]What I didn't expect was how building discipline in one area would spill over into other parts of my life – I became more focused at work, more patient in relationships, and generally less anxious.[/50] Small habits, I've found, have the power to reshape your whole outlook."
     },
     "questions": [
-      { "number": 43, "question": "used to hold other people or situations responsible for their problems?", "correct": "A", "explanation": "Elena describes herself as someone who blamed external circumstances for everything that went wrong before a mentor prompted her to change." },
-      { "number": 44, "question": "began their journey of self-improvement by confiding in someone close to them?", "correct": "B", "explanation": "Raj says personal growth began the day he admitted to a close friend that he was unhappy despite appearing successful." },
-      { "number": 45, "question": "took part in a course without high expectations that ended up having a significant impact?", "correct": "C", "explanation": "Fiona signed up for a leadership course mainly because her employer covered the cost, but it changed the way she saw herself." },
-      { "number": 46, "question": "felt lost and made unfavourable comparisons between themselves and their peers?", "correct": "D", "explanation": "Henry spent months feeling directionless after graduating and constantly comparing himself to friends who seemed to have life sorted out." },
-      { "number": 47, "question": "describes learning to identify and interrupt negative patterns of thinking?", "correct": "A", "explanation": "Elena read books on cognitive behavioural therapy and learned to notice unhelpful thought patterns before they took hold." },
-      { "number": 48, "question": "discovered that past experiences were responsible for beliefs that had been holding them back?", "correct": "B", "explanation": "Therapy revealed to Raj that many of his limiting beliefs had been shaped by childhood experiences he had never properly examined." },
-      { "number": 49, "question": "found receiving candid feedback from others particularly challenging?", "correct": "C", "explanation": "Fiona describes an exercise where she asked five colleagues for honest feedback, and hearing unexpected things gave her a lot to think about." },
-      { "number": 50, "question": "was surprised to find that improving in one aspect of life had a positive effect on other areas?", "correct": "D", "explanation": "Henry didn't expect that building discipline through morning habits would make him more focused at work and more patient in relationships." },
-      { "number": 51, "question": "admits they have not completely overcome old tendencies but have developed better self-awareness?", "correct": "A", "explanation": "Elena says she still slips into old habits occasionally but now catches herself much faster." },
-      { "number": 52, "question": "credits a self-development experience with enabling them to take on greater responsibility at work?", "correct": "C", "explanation": "Since completing the leadership course, Fiona took on a supervisory role she would never have applied for before." }
+      {
+        "number": 43,
+        "question": "used to hold other people or situations responsible for their problems?",
+        "correct": "A",
+        "explanation": "Elena describes herself as someone who blamed external circumstances for everything that went wrong before a mentor prompted her to change."
+      },
+      {
+        "number": 44,
+        "question": "began their journey of self-improvement by confiding in someone close to them?",
+        "correct": "C",
+        "explanation": "Raj says personal growth began the day he admitted to a close friend that he was unhappy despite appearing successful."
+      },
+      {
+        "number": 45,
+        "question": "took part in a course without high expectations that ended up having a significant impact?",
+        "correct": "D",
+        "explanation": "Fiona signed up for a leadership course mainly because her employer covered the cost, but it changed the way she saw herself."
+      },
+      {
+        "number": 46,
+        "question": "felt lost and made unfavourable comparisons between themselves and their peers?",
+        "correct": "B",
+        "explanation": "Henry spent months feeling directionless after graduating and constantly comparing himself to friends who seemed to have life sorted out."
+      },
+      {
+        "number": 47,
+        "question": "describes learning to identify and interrupt negative patterns of thinking?",
+        "correct": "A",
+        "explanation": "Elena read books on cognitive behavioural therapy and learned to notice unhelpful thought patterns before they took hold."
+      },
+      {
+        "number": 48,
+        "question": "discovered that past experiences were responsible for beliefs that had been holding them back?",
+        "correct": "C",
+        "explanation": "Therapy revealed to Raj that many of his limiting beliefs had been shaped by childhood experiences he had never properly examined."
+      },
+      {
+        "number": 49,
+        "question": "found receiving candid feedback from others particularly challenging?",
+        "correct": "D",
+        "explanation": "Fiona describes an exercise where she asked five colleagues for honest feedback, and hearing unexpected things gave her a lot to think about."
+      },
+      {
+        "number": 50,
+        "question": "was surprised to find that improving in one aspect of life had a positive effect on other areas?",
+        "correct": "B",
+        "explanation": "Henry didn't expect that building discipline through morning habits would make him more focused at work and more patient in relationships."
+      },
+      {
+        "number": 51,
+        "question": "admits they have not completely overcome old tendencies but have developed better self-awareness?",
+        "correct": "A",
+        "explanation": "Elena says she still slips into old habits occasionally but now catches herself much faster."
+      },
+      {
+        "number": 52,
+        "question": "credits a self-development experience with enabling them to take on greater responsibility at work?",
+        "correct": "D",
+        "explanation": "Since completing the leadership course, Fiona took on a supervisory role she would never have applied for before."
+      }
     ]
   }
 }

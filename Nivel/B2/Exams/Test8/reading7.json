@@ -7,22 +7,72 @@
   "content": {
     "title": "In Tune: Four People on Music and Entertainment",
     "texts": {
-      "A": "### Isabelle, 32, Journalist\n[43]I played the violin for twelve years as a child and teenager, reaching a fairly high level before university life made it impossible to continue.[/43] I still regret giving it up. [47]Music is deeply tied to my memory – certain songs can instantly transport me back to specific moments in my past with extraordinary clarity.[/47] I make playlists for every phase of my life as a kind of personal archive. [51]I find it almost impossible to work in silence – I always have music on, though it has to be instrumental, because lyrics distract me from writing.[/51] My colleagues find this strange but I can't function without background music.",
-      "B": "### Kevin, 17, School Student\n[44]I started making my own music last year using a laptop and free software, and it's become the most important thing in my life.[/44] I produce electronic tracks and post them online, and a few have actually got thousands of plays, which still surprises me. [48]What I love most about making music electronically is that you don't need expensive instruments or a recording studio – just a computer and an internet connection.[/48] [52]My parents think I should focus on my exams rather than spending so much time on music, and we argue about it regularly.[/52] But I honestly think music is where my future is.",
-      "C": "### Diane, 61, Retired Civil Servant\nI've been attending live concerts for over forty years and there's nothing else like it. [45]The thing about a live performance that no recording can replicate is the energy between the audience and the performer – you can feel it physically.[/45] I saw some extraordinary performances in the seventies and eighties when the music scene felt genuinely revolutionary. [49]I spend quite a lot of money on concert tickets each year and my husband thinks I'm extravagant, but experiences matter more to me than possessions.[/49] [53]I've noticed that younger audiences at concerts tend to spend more time filming on their phones than actually listening, and I find that terribly sad.[/53]",
-      "D": "### Marcus, 38, Dentist\n[46]I sing in an amateur choir that meets every Wednesday evening, and it's become the social highlight of my week.[/46] I'm not a particularly talented singer, but that doesn't matter – choir is genuinely for everyone. [50]Research suggests that singing in a group has remarkable benefits for mental health, and I can personally confirm this is true.[/50] After a stressful day at the surgery, an hour of singing with friends transforms my mood entirely. [54]We perform two or three public concerts a year, and the nervousness I feel before going on stage is something I've never quite managed to overcome despite years of performing.[/54]"
+      "A": "### Diane, 61, Retired Civil Servant\nI've been attending live concerts for over forty years and there's nothing else like it. [45]The thing about a live performance that no recording can replicate is the energy between the audience and the performer – you can feel it physically.[/45] I saw some extraordinary performances in the seventies and eighties when the music scene felt genuinely revolutionary. [49]I spend quite a lot of money on concert tickets each year and my husband thinks I'm extravagant, but experiences matter more to me than possessions.[/49] [53]I've noticed that younger audiences at concerts tend to spend more time filming on their phones than actually listening, and I find that terribly sad.[/53]",
+      "D": "### Kevin, 17, School Student\n[44]I started making my own music last year using a laptop and free software, and it's become the most important thing in my life.[/44] I produce electronic tracks and post them online, and a few have actually got thousands of plays, which still surprises me. [48]What I love most about making music electronically is that you don't need expensive instruments or a recording studio – just a computer and an internet connection.[/48] [52]My parents think I should focus on my exams rather than spending so much time on music, and we argue about it regularly.[/52] But I honestly think music is where my future is.",
+      "C": "### Isabelle, 32, Journalist\n[43]I played the violin for twelve years as a child and teenager, reaching a fairly high level before university life made it impossible to continue.[/43] I still regret giving it up. [47]Music is deeply tied to my memory – certain songs can instantly transport me back to specific moments in my past with extraordinary clarity.[/47] I make playlists for every phase of my life as a kind of personal archive. [51]I find it almost impossible to work in silence – I always have music on, though it has to be instrumental, because lyrics distract me from writing.[/51] My colleagues find this strange but I can't function without background music.",
+      "B": "### Marcus, 38, Dentist\n[46]I sing in an amateur choir that meets every Wednesday evening, and it's become the social highlight of my week.[/46] I'm not a particularly talented singer, but that doesn't matter – choir is genuinely for everyone. [50]Research suggests that singing in a group has remarkable benefits for mental health, and I can personally confirm this is true.[/50] After a stressful day at the surgery, an hour of singing with friends transforms my mood entirely. [54]We perform two or three public concerts a year, and the nervousness I feel before going on stage is something I've never quite managed to overcome despite years of performing.[/54]"
     },
     "questions": [
-      { "number": 43, "question": "used to play a musical instrument seriously but had to stop?", "correct": "A", "explanation": "Isabelle played the violin for twelve years but had to give it up when university life made it impossible to continue." },
-      { "number": 44, "question": "has recently started creating original music using a computer?", "correct": "B", "explanation": "Kevin started making his own electronic music using a laptop and free software last year." },
-      { "number": 45, "question": "describes an aspect of live music that cannot be reproduced by listening to recordings?", "correct": "C", "explanation": "Diane says the energy between audience and performer at a live concert can be felt physically and no recording can replicate it." },
-      { "number": 46, "question": "participates in a regular group musical activity that is also important to them socially?", "correct": "D", "explanation": "Marcus sings in an amateur choir every Wednesday, calling it the social highlight of his week." },
-      { "number": 47, "question": "finds that music is strongly connected to their personal memories?", "correct": "A", "explanation": "Isabelle says certain songs can instantly transport her back to specific moments in her past with great clarity." },
-      { "number": 48, "question": "points out that modern technology has made it possible to create music without traditional resources?", "correct": "B", "explanation": "Kevin says making electronic music only requires a computer and an internet connection, not expensive instruments or a studio." },
-      { "number": 49, "question": "spends a significant amount on a music-related activity despite their partner's disapproval?", "correct": "C", "explanation": "Diane spends a lot on concert tickets each year and her husband thinks she is extravagant." },
-      { "number": 50, "question": "mentions scientific evidence to support the positive effects of their musical activity?", "correct": "D", "explanation": "Marcus refers to research suggesting that singing in a group has remarkable benefits for mental health." },
-      { "number": 51, "question": "needs to have music playing in order to concentrate on their work?", "correct": "A", "explanation": "Isabelle says she almost cannot work in silence and always has instrumental music on when writing." },
-      { "number": 52, "question": "has experienced conflict with family members over the time they devote to music?", "correct": "B", "explanation": "Kevin says his parents want him to focus on exams rather than music and they argue about it regularly." }
+      {
+        "number": 43,
+        "question": "used to play a musical instrument seriously but had to stop?",
+        "correct": "C",
+        "explanation": "Isabelle played the violin for twelve years but had to give it up when university life made it impossible to continue."
+      },
+      {
+        "number": 44,
+        "question": "has recently started creating original music using a computer?",
+        "correct": "D",
+        "explanation": "Kevin started making his own electronic music using a laptop and free software last year."
+      },
+      {
+        "number": 45,
+        "question": "describes an aspect of live music that cannot be reproduced by listening to recordings?",
+        "correct": "A",
+        "explanation": "Diane says the energy between audience and performer at a live concert can be felt physically and no recording can replicate it."
+      },
+      {
+        "number": 46,
+        "question": "participates in a regular group musical activity that is also important to them socially?",
+        "correct": "B",
+        "explanation": "Marcus sings in an amateur choir every Wednesday, calling it the social highlight of his week."
+      },
+      {
+        "number": 47,
+        "question": "finds that music is strongly connected to their personal memories?",
+        "correct": "C",
+        "explanation": "Isabelle says certain songs can instantly transport her back to specific moments in her past with great clarity."
+      },
+      {
+        "number": 48,
+        "question": "points out that modern technology has made it possible to create music without traditional resources?",
+        "correct": "D",
+        "explanation": "Kevin says making electronic music only requires a computer and an internet connection, not expensive instruments or a studio."
+      },
+      {
+        "number": 49,
+        "question": "spends a significant amount on a music-related activity despite their partner's disapproval?",
+        "correct": "A",
+        "explanation": "Diane spends a lot on concert tickets each year and her husband thinks she is extravagant."
+      },
+      {
+        "number": 50,
+        "question": "mentions scientific evidence to support the positive effects of their musical activity?",
+        "correct": "B",
+        "explanation": "Marcus refers to research suggesting that singing in a group has remarkable benefits for mental health."
+      },
+      {
+        "number": 51,
+        "question": "needs to have music playing in order to concentrate on their work?",
+        "correct": "C",
+        "explanation": "Isabelle says she almost cannot work in silence and always has instrumental music on when writing."
+      },
+      {
+        "number": 52,
+        "question": "has experienced conflict with family members over the time they devote to music?",
+        "correct": "D",
+        "explanation": "Kevin says his parents want him to focus on exams rather than music and they argue about it regularly."
+      }
     ]
   }
 }
