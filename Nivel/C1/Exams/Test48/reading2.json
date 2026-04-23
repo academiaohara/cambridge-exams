@@ -1,30 +1,56 @@
 {
-  "id": "Test42-reading-2",
-  "examId": "Test42",
-  "section": "reading",
-  "part": 2,
+  "title": "Reading and Use of English - Part 2",
   "type": "open-cloze",
-  "title": "Reading and Use of English – Part 2",
-  "description": "For questions 9–16, read the text below and think of the word which best fits each gap. Use only ONE word in each gap. There is an example at the beginning (0).",
   "time": 10,
   "totalQuestions": 8,
+  "description": "For questions 9 - 16, read the text below and think of the word which best fits each gap. Use only one word in each gap. There is an example at the beginning (0).",
   "content": {
-    "articleTitle": "The Gutenberg Revolution",
-    "text": "The invention of the movable-type printing press by Johannes Gutenberg (0) in the mid-fifteenth century was a catalyst for the modern world. (9) Although books had existed for centuries, they were previously handwritten and extremely expensive for the average person to own. (10) Such was the efficiency of the new press that it allowed for the mass production of texts at an affordable cost. (11) Provided that a person could read, they suddenly had access to a vast world of knowledge and information. (12) Not only did the printing press facilitate the spread of religious ideas, but it also laid the foundation for the Scientific Revolution. (13) Regardless of the initial opposition from some authorities, the demand for printed material grew exponentially across the European continent. (14) Not until information could be shared rapidly through books did the standard of literacy begin to rise significantly. (15) Despite the digital age we live in now, the legacy of the printed word remains a cornerstone of our intellectual heritage. (16) Whether or not Gutenberg realized the scale of the change he had started is a question that historians often explore. This technological breakthrough remains one of the most significant events in human history.",
+    "text": "The development of the steam engine in eighteenth-century Britain was a pivotal moment in technological history, (0) which transformed not only manufacturing but also the social and economic organisation of entire nations. Its significance extends well beyond the boundaries of industrial history. (9) Although early steam engines were inefficient by modern standards and consumed enormous quantities of fuel, their ability to convert heat into mechanical work opened up unprecedented productive possibilities. (10) Such was the transformative impact of James Watt's refinements to the steam engine design in the 1760s that many historians regard them as the true beginning of the Industrial Revolution. These machines were adopted across a widening range of industries, and (11) Provided that coal was available in sufficient quantities, manufacturers could now power mills and factories on a previously unimaginable scale. Not (12) only did steam power accelerate the pace of manufacturing, but it also fundamentally altered patterns of employment, drawing rural workers into rapidly expanding industrial towns. (13) Regardless of one's assessment of the social costs of rapid industrialisation, the productivity gains it enabled were historically unprecedented. Not (14) until the expansion of the railway network in the 1830s and 1840s did steam power begin to transform the movement of goods and people as well as the organisation of production. (15) Having revolutionised industry and transport within the space of a century, steam technology was itself gradually displaced by electricity and the internal combustion engine. Yet the organisational and social changes it had set in motion proved irreversible. (16) Whether measured in terms of economic output, environmental impact or social transformation, the steam engine stands as one of the most consequential inventions in human history.",
     "example": {
-      "text": "The invention of the movable-type printing press (0) in the mid-fifteenth century.",
-      "correct": "in",
-      "explanation": "Preposition used to indicate a point in time."
+      "text": "The development of the steam engine in eighteenth-century Britain was a pivotal moment in technological history, (0) which transformed not only manufacturing but also the social and economic organisation of entire nations.",
+      "correct": "which"
     },
     "questions": [
-      { "number": 9, "correct": "Although", "explanation": "Conjunction used to introduce a contrast." },
-      { "number": 10, "correct": "Such", "explanation": "Determiner used for emphasis before a noun phrase." },
-      { "number": 11, "correct": "Provided", "explanation": "Conjunction meaning 'on the condition that'." },
-      { "number": 12, "correct": "only", "explanation": "Part of the 'Not only... but also' correlative conjunction." },
-      { "number": 13, "correct": "Regardless", "explanation": "Part of the fixed linker 'Regardless of'." },
-      { "number": 14, "correct": "until", "explanation": "Part of the 'Not until' structure requiring inversion ('did the standard... begin')." },
-      { "number": 15, "correct": "Despite", "explanation": "Preposition used to introduce a contrast." },
-      { "number": 16, "correct": "Whether", "explanation": "Conjunction introducing two possibilities or a doubt." }
+      {
+        "number": 9,
+        "correct": "Although",
+        "explanation": "Concessive conjunction used to introduce a contrast or concession between two clauses."
+      },
+      {
+        "number": 10,
+        "correct": "Such",
+        "explanation": "Emphatic determiner in the inverted structure 'Such was/is the [noun] that...' to express a high degree."
+      },
+      {
+        "number": 11,
+        "correct": "Provided",
+        "explanation": "Conditional conjunction meaning 'on the condition that', used to introduce a condition and its result."
+      },
+      {
+        "number": 12,
+        "correct": "only",
+        "explanation": "Part of the correlative conjunction 'Not only... but also', which requires subject-auxiliary inversion after 'Not only'."
+      },
+      {
+        "number": 13,
+        "correct": "Regardless",
+        "explanation": "Part of the fixed prepositional phrase 'Regardless of', meaning 'without being affected by'."
+      },
+      {
+        "number": 14,
+        "correct": "until",
+        "explanation": "Part of the 'Not until' negative fronting structure, which requires subject-auxiliary inversion."
+      },
+      {
+        "number": 15,
+        "correct": "Having",
+        "explanation": "Perfect participle used as a discourse connector, expressing a completed prior action that provides the context for the following clause."
+      },
+      {
+        "number": 16,
+        "correct": "Whether",
+        "explanation": "Conjunction introducing two alternatives or possibilities in a summarising conclusion."
+      }
     ]
   }
 }

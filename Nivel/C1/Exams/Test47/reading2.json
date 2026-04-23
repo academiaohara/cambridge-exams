@@ -1,30 +1,56 @@
 {
-  "id": "Test41-reading-2",
-  "examId": "Test41",
-  "section": "reading",
-  "part": 2,
+  "title": "Reading and Use of English - Part 2",
   "type": "open-cloze",
-  "title": "Reading and Use of English – Part 2",
-  "description": "For questions 9–16, read the text below and think of the word which best fits each gap. Use only ONE word in each gap. There is an example at the beginning (0).",
   "time": 10,
   "totalQuestions": 8,
+  "description": "For questions 9 - 16, read the text below and think of the word which best fits each gap. Use only one word in each gap. There is an example at the beginning (0).",
   "content": {
-    "articleTitle": "The Architecture of the Anthill",
-    "text": "Ants are social insects that live in highly organized colonies, (0) where each individual performs a specific role for the benefit of the group. (9) Although an ant has a very simple brain, the collective intelligence of the colony can solve incredibly complex problems. (10) Such is the coordination of these insects that they can build massive structures and find the shortest paths to food sources. (11) Provided that a chemical trail is established by a scout, hundreds of other ants will quickly follow it to the target. (12) Not only do they farm other insects like aphids, but they also cultivate fungi in sophisticated underground gardens. (13) Regardless of the size of the colony, the division of labor ensures that every task, from foraging to nursing, is completed. (14) Not until scientists began using time-lapse photography did they realize how dynamic the internal life of a nest truly is. (15) Despite the lack of a central leader, the colony functions as a single 'superorganism' capable of adapting to changing environments. (16) Whether we can apply the principles of ant behavior to human logistics and robotics is an area of ongoing scientific research. These tiny creatures demonstrate the power of cooperation and shared goals.",
+    "text": "The domestication of the dog from its wolf ancestors represents one of the oldest and most consequential relationships between humans and animals, (0) which is believed to have begun at least fifteen thousand years ago. No other species has become so deeply integrated into human society across so many diverse cultures. (9) Although the precise circumstances under which domestication first occurred remain a matter of scientific debate, genetic evidence points to a process that began in East Asia or the Middle East. (10) Such was the degree of genetic divergence between domestic dogs and modern wolves that scientists now treat them as distinct subspecies, despite their shared evolutionary ancestry. The process of domestication involved intense selective pressure over many generations, and (11) Provided that early dogs displayed reduced aggression and sensitivity to human social cues, they were more likely to receive food and shelter from human communities. Not (12) only did domestication change the physical characteristics of the dog, including its skull shape and coat, but it also produced significant changes in its social cognition and communication. (13) Regardless of the particular theory one accepts about how domestication began, there is broad agreement that it ultimately benefited both species in different ways. Not (14) until modern genetic sequencing was applied to archaeological samples did researchers establish a reliable timeline for the domestication process. (15) Through careful selective breeding over thousands of years, humans have produced an astonishing diversity of breeds suited to different working and companionship roles. The range of morphological variation within the species is unmatched anywhere in the animal kingdom. (16) Whether the dog's extraordinary responsiveness to human emotion is primarily the result of genetic change or of early socialisation remains one of the most intriguing questions in comparative psychology.",
     "example": {
-      "text": "Ants are social insects that live in highly organized colonies, (0) where each individual performs a specific role.",
-      "correct": "where",
-      "explanation": "Relative adverb used to refer to a place or situation."
+      "text": "The domestication of the dog from its wolf ancestors represents one of the oldest and most consequential relationships between humans and animals, (0) which is believed to have begun at least fifteen thousand years ago.",
+      "correct": "which"
     },
     "questions": [
-      { "number": 9, "correct": "Although", "explanation": "Conjunction introducing a contrast or concession." },
-      { "number": 10, "correct": "Such", "explanation": "Determiner used for emphasis at the start of the clause." },
-      { "number": 11, "correct": "Provided", "explanation": "Conjunction used to express a condition." },
-      { "number": 12, "correct": "only", "explanation": "Part of the 'Not only... but also' structure." },
-      { "number": 13, "correct": "Regardless", "explanation": "Part of the fixed phrase 'Regardless of'." },
-      { "number": 14, "correct": "until", "explanation": "Part of the 'Not until' structure triggering inversion ('did they realize')." },
-      { "number": 15, "correct": "Despite", "explanation": "Preposition used to introduce a contrast." },
-      { "number": 16, "correct": "Whether", "explanation": "Conjunction introducing two possibilities or a doubt." }
+      {
+        "number": 9,
+        "correct": "Although",
+        "explanation": "Concessive conjunction used to introduce a contrast or concession between two clauses."
+      },
+      {
+        "number": 10,
+        "correct": "Such",
+        "explanation": "Emphatic determiner in the inverted structure 'Such was/is the [noun] that...' to express a high degree."
+      },
+      {
+        "number": 11,
+        "correct": "Provided",
+        "explanation": "Conditional conjunction meaning 'on the condition that', used to introduce a condition and its result."
+      },
+      {
+        "number": 12,
+        "correct": "only",
+        "explanation": "Part of the correlative conjunction 'Not only... but also', which requires subject-auxiliary inversion after 'Not only'."
+      },
+      {
+        "number": 13,
+        "correct": "Regardless",
+        "explanation": "Part of the fixed prepositional phrase 'Regardless of', meaning 'without being affected by'."
+      },
+      {
+        "number": 14,
+        "correct": "until",
+        "explanation": "Part of the 'Not until' negative fronting structure, which requires subject-auxiliary inversion."
+      },
+      {
+        "number": 15,
+        "correct": "Through",
+        "explanation": "Preposition used to indicate the means or method by which something is achieved."
+      },
+      {
+        "number": 16,
+        "correct": "Whether",
+        "explanation": "Conjunction introducing two alternatives or possibilities in a summarising conclusion."
+      }
     ]
   }
 }

@@ -1,30 +1,56 @@
 {
-  "id": "Test39-reading-2",
-  "examId": "Test39",
-  "section": "reading",
-  "part": 2,
+  "title": "Reading and Use of English - Part 2",
   "type": "open-cloze",
-  "title": "Reading and Use of English – Part 2",
-  "description": "For questions 9–16, read the text below and think of the word which best fits each gap. Use only ONE word in each gap. There is an example at the beginning (0).",
   "time": 10,
   "totalQuestions": 8,
+  "description": "For questions 9 - 16, read the text below and think of the word which best fits each gap. Use only one word in each gap. There is an example at the beginning (0).",
   "content": {
-    "articleTitle": "Can Machines Think?",
-    "text": "The Turing Test was proposed by Alan Turing in 1950 (0) as a way to determine if a machine could exhibit intelligent behavior. (9) Although the test has faced criticism over the years, it remains a foundational concept in the field of artificial intelligence. (10) Such is the difficulty of mimicking human conversation that very few programs have come close to passing it convincingly. (11) Provided that a computer can deceive a human judge into thinking it is also human, it is said to have passed. (12) Not only did Turing's work provide a philosophical framework for AI, but it also anticipated the future challenges of machine learning. (13) Regardless of its limitations, the test encourages us to think deeply about what defines consciousness and intelligence. (14) Not until recently have large language models begun to show the kind of linguistic fluency that Turing originally envisioned. (15) Despite these advancements, many argue that a machine can simulate understanding without actually possessing any internal awareness. (16) Whether or not the Turing Test is still relevant in the age of neural networks is a topic of intense academic discussion. This intellectual challenge continues to push the boundaries of technology and human philosophy.",
+    "text": "The concept of intelligence has been debated by psychologists and philosophers for over a century, a discussion (0) which has grown increasingly complex as neuroscience and genetics have added new dimensions to the question. Defining what intelligence means, and how it should be measured, remains profoundly contested. (9) Although the first standardised intelligence tests were developed in the early twentieth century with apparently practical educational objectives, they quickly became the focus of broader debates about heredity and social policy. (10) Such is the difficulty of capturing intelligence in a single numerical score that many contemporary researchers prefer to speak of multiple distinct cognitive abilities rather than a single general factor. These models are more complex to apply in practice, and (11) Provided that researchers and policymakers agree on which cognitive dimensions to assess, multiple-intelligence frameworks can offer more nuanced insights into human potential. Not (12) only do such frameworks better account for the full range of human cognitive diversity, but they also challenge the cultural assumptions embedded in traditional testing instruments. (13) Regardless of the particular model one adopts, there is broad consensus that both genetic endowment and environmental experience contribute substantially to cognitive development. Not (14) until large-scale longitudinal studies began in the mid-twentieth century did researchers start to untangle the relative contributions of nature and nurture in any rigorous way. (15) Following decades of sometimes acrimonious public debate, a degree of scientific consensus has emerged around the proposition that neither heredity nor environment alone can explain cognitive variation. The interaction between these factors is now seen as central. (16) Whether intelligence is best understood as a fixed capacity or as a developmental potential shaped by experience, the ethical implications of how we measure and interpret it remain considerable.",
     "example": {
-      "text": "The Turing Test was proposed by Alan Turing in 1950 (0) as a way to determine.",
-      "correct": "as",
-      "explanation": "Preposition used to describe the purpose or function of something."
+      "text": "The concept of intelligence has been debated by psychologists and philosophers for over a century, a discussion (0) which has grown increasingly complex as neuroscience and genetics have added new dimensions to the question.",
+      "correct": "which"
     },
     "questions": [
-      { "number": 9, "correct": "Although", "explanation": "Conjunction used to introduce a contrast or concession." },
-      { "number": 10, "correct": "Such", "explanation": "Determiner used for emphasis at the start of the clause." },
-      { "number": 11, "correct": "Provided", "explanation": "Conjunction meaning 'on the condition that'." },
-      { "number": 12, "correct": "only", "explanation": "Part of the 'Not only... but also' correlative conjunction." },
-      { "number": 13, "correct": "Regardless", "explanation": "Part of the fixed linker 'Regardless of'." },
-      { "number": 14, "correct": "until", "explanation": "Part of the 'Not until' structure requiring inversion ('have large language models begun')." },
-      { "number": 15, "correct": "Despite", "explanation": "Preposition used to introduce a contrast." },
-      { "number": 16, "correct": "Whether", "explanation": "Conjunction introducing two possibilities or a doubt." }
+      {
+        "number": 9,
+        "correct": "Although",
+        "explanation": "Concessive conjunction used to introduce a contrast or concession between two clauses."
+      },
+      {
+        "number": 10,
+        "correct": "Such",
+        "explanation": "Emphatic determiner in the inverted structure 'Such was/is the [noun] that...' to express a high degree."
+      },
+      {
+        "number": 11,
+        "correct": "Provided",
+        "explanation": "Conditional conjunction meaning 'on the condition that', used to introduce a condition and its result."
+      },
+      {
+        "number": 12,
+        "correct": "only",
+        "explanation": "Part of the correlative conjunction 'Not only... but also', which requires subject-auxiliary inversion after 'Not only'."
+      },
+      {
+        "number": 13,
+        "correct": "Regardless",
+        "explanation": "Part of the fixed prepositional phrase 'Regardless of', meaning 'without being affected by'."
+      },
+      {
+        "number": 14,
+        "correct": "until",
+        "explanation": "Part of the 'Not until' negative fronting structure, which requires subject-auxiliary inversion."
+      },
+      {
+        "number": 15,
+        "correct": "Following",
+        "explanation": "Preposition meaning 'subsequent to' or 'as a result of', used here as a temporal discourse marker indicating elapsed time."
+      },
+      {
+        "number": 16,
+        "correct": "Whether",
+        "explanation": "Conjunction introducing two alternatives or possibilities in a summarising conclusion."
+      }
     ]
   }
 }

@@ -1,30 +1,56 @@
 {
-  "id": "Test44-reading-2",
-  "examId": "Test44",
-  "section": "reading",
-  "part": 2,
+  "title": "Reading and Use of English - Part 2",
   "type": "open-cloze",
-  "title": "Reading and Use of English – Part 2",
-  "description": "For questions 9–16, read the text below and think of the word which best fits each gap. Use only ONE word in each gap. There is an example at the beginning (0).",
   "time": 10,
   "totalQuestions": 8,
+  "description": "For questions 9 - 16, read the text below and think of the word which best fits each gap. Use only one word in each gap. There is an example at the beginning (0).",
   "content": {
-    "articleTitle": "The Underwater Meadows",
-    "text": "Seagrasses are the only flowering plants that grow in marine environments, (0) forming vast underwater meadows that are essential for ocean health. (9) Although they are frequently confused with seaweed, they are actually more closely related to terrestrial grasses and lilies. (10) Such is the capacity of seagrass to capture carbon that it can store it up to thirty-five times faster than a rainforest. (11) Provided that the water remains clear and unpolluted, these meadows can provide a vital nursery for thousands of fish and invertebrate species. (12) Not only do they support biodiversity, but they also protect coastlines by reducing the energy of waves and preventing erosion. (13) Regardless of their ecological value, seagrass habitats are disappearing at an alarming rate due to human activity and coastal development. (14) Not until recently have scientists fully mapped the extent of these meadows and their contribution to fighting climate change. (15) In spite of the damage already sustained, restoration efforts in places like the UK are showing promising results for the future. (16) Whether we can successfully protect these hidden ecosystems will depend on global cooperation and awareness. These green fields of the sea are a silent but powerful ally in our environmental efforts.",
+    "text": "The aurora borealis, or northern lights, is a natural light display visible at high latitudes, (0) which occurs when charged particles from the sun interact with gases in the Earth's upper atmosphere. It has fascinated observers across cultures for thousands of years. (9) Although the aurora was long associated with myth and folklore in Arctic communities, the scientific explanation for its origin was not fully established until the twentieth century. (10) Such is the visual drama of the northern lights that it has become a significant draw for tourism in countries such as Norway, Iceland and Finland, generating substantial economic activity in remote regions. The phenomenon depends strongly on solar activity, and (11) Provided that the sun is producing sufficient coronal mass ejections, auroral displays can occasionally be visible at far lower latitudes than normal. Not (12) only does the aurora occur in the northern hemisphere, but a corresponding southern aurora, the aurora australis, is simultaneously visible at high southern latitudes. (13) Regardless of latitude, the colours produced depend on the altitude at which collisions occur and the type of gas involved, with oxygen producing greens and reds and nitrogen creating blues and purples. Not (14) until space-based instruments began monitoring solar wind in real time did it become possible to forecast auroral activity with any meaningful degree of accuracy. (15) Beyond their visual appeal, auroral phenomena are studied closely because the same solar wind interactions that produce them can also disrupt satellite navigation, radio communications and power grids. Understanding them therefore has significant practical implications. (16) Whether one's interest in the aurora is aesthetic, scientific or practical, it represents one of nature's most compelling demonstrations of the relationship between our planet and the sun.",
     "example": {
-      "text": "Seagrasses are the only flowering plants that grow in marine environments, (0) forming vast underwater meadows.",
-      "correct": "forming",
-      "explanation": "Present participle used to describe the result of an action or a secondary characteristic."
+      "text": "The aurora borealis, or northern lights, is a natural light display visible at high latitudes, (0) which occurs when charged particles from the sun interact with gases in the Earth's upper atmosphere.",
+      "correct": "which"
     },
     "questions": [
-      { "number": 9, "correct": "Although", "explanation": "Conjunction introducing a contrast or concession." },
-      { "number": 10, "correct": "Such", "explanation": "Determiner used for emphasis at the start of the clause." },
-      { "number": 11, "correct": "Provided", "explanation": "Conjunction meaning 'on the condition that'." },
-      { "number": 12, "correct": "only", "explanation": "Part of the 'Not only... but also' correlative conjunction." },
-      { "number": 13, "correct": "Regardless", "explanation": "Part of the fixed phrase 'Regardless of'." },
-      { "number": 14, "correct": "until", "explanation": "Part of the 'Not until' structure requiring inversion ('have scientists... mapped')." },
-      { "number": 15, "correct": "In", "explanation": "Part of the prepositional linker 'In spite of'." },
-      { "number": 16, "correct": "Whether", "explanation": "Conjunction introducing two possibilities or a doubt." }
+      {
+        "number": 9,
+        "correct": "Although",
+        "explanation": "Concessive conjunction used to introduce a contrast or concession between two clauses."
+      },
+      {
+        "number": 10,
+        "correct": "Such",
+        "explanation": "Emphatic determiner in the inverted structure 'Such was/is the [noun] that...' to express a high degree."
+      },
+      {
+        "number": 11,
+        "correct": "Provided",
+        "explanation": "Conditional conjunction meaning 'on the condition that', used to introduce a condition and its result."
+      },
+      {
+        "number": 12,
+        "correct": "only",
+        "explanation": "Part of the correlative conjunction 'Not only... but also', which requires subject-auxiliary inversion after 'Not only'."
+      },
+      {
+        "number": 13,
+        "correct": "Regardless",
+        "explanation": "Part of the fixed prepositional phrase 'Regardless of', meaning 'without being affected by'."
+      },
+      {
+        "number": 14,
+        "correct": "until",
+        "explanation": "Part of the 'Not until' negative fronting structure, which requires subject-auxiliary inversion."
+      },
+      {
+        "number": 15,
+        "correct": "Beyond",
+        "explanation": "Preposition used figuratively to mean 'in addition to' or 'going further than' a stated topic or area of concern."
+      },
+      {
+        "number": 16,
+        "correct": "Whether",
+        "explanation": "Conjunction introducing two alternatives or possibilities in a summarising conclusion."
+      }
     ]
   }
 }
