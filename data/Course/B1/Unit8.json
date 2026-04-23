@@ -9,20 +9,22 @@
       "title": "Preposition: in",
       "content": [
         {
-          "subtitle": "Use (time)",
-          "items": [
-            "months: in April",
-            "years: in 2006",
-            "seasons: in winter",
-            "parts of the day: in the morning / afternoon / evening"
+          "subtitle": "Time",
+          "tableHeaders": ["When", "Example"],
+          "rows": [
+            ["Months", "We always go on holiday in August."],
+            ["Years", "She moved to London in 2006."],
+            ["Seasons", "It snows a lot in winter."],
+            ["Parts of the day", "I usually exercise in the morning / afternoon / evening."]
           ]
         },
         {
-          "subtitle": "Use (place)",
-          "items": [
-            "towns, cities, countries, continents: in Paris / in Mexico / in Europe",
-            "areas and regions: in the desert / in the countryside",
-            "inside spaces: in the drawer / in the living room / in the travel agent's"
+          "subtitle": "Place",
+          "tableHeaders": ["Where", "Example"],
+          "rows": [
+            ["Towns, cities, countries and continents", "My grandmother was born in Paris."],
+            ["Areas and regions", "It can be very hot in the desert."],
+            ["Inside spaces", "I found your keys in the drawer."]
           ]
         },
         {
@@ -36,7 +38,7 @@
         {
           "subtitle": "Watch out!",
           "notes": [
-            "With movement verbs (go, come, walk, run, move, fly), we often use to for destination: go to Japan."
+            "With movement verbs (go, come, walk, run, move, fly), we often use **to** for destination: *go to Japan*."
           ]
         }
       ]
