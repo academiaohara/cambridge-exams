@@ -980,6 +980,9 @@
 
             // Generic multi-column table: tableHeaders + rows (array of arrays)
             if (block.tableHeaders && block.rows) {
+              if (block.subtitle) {
+                html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
+              }
               var thCols = block.tableHeaders;
               html += '<table class="cu-uses-examples-table"><thead><tr>';
               thCols.forEach(function(h) {

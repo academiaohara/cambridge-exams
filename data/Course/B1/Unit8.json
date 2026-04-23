@@ -46,26 +46,39 @@
       "title": "Preposition: on",
       "content": [
         {
-          "subtitle": "Use (time)",
-          "items": [
-            "days: on Saturday",
-            "dates: on the second of July",
-            "specific day + part of day: on Tuesday morning",
-            "specific holidays with Day: on Christmas Day"
+          "subtitle": "Time",
+          "tableHeaders": ["When", "Example"],
+          "rows": [
+            ["Days", "I got a new car on Saturday."],
+            ["Dates", "My birthday is on 19th March."]
           ]
         },
         {
-          "subtitle": "Use (place)",
+          "subtitle": "Place",
+          "tableHeaders": ["Where", "Example"],
+          "rows": [
+            ["Islands", "Last year, we stayed on Mykonos."],
+            ["Pages", "There are some useful Italian phrases on page 97."],
+            ["On top of an object", "Did you put your car keys on the kitchen table?"],
+            ["On a surface", "There's a timetable on the wall."]
+          ]
+        },
+        {
+          "subtitle": "Helpful hints",
           "items": [
-            "on surfaces: on the table / on the wall",
-            "set phrases: on the beach / on the left / on the right"
+            "on the beach",
+            "on the left/right",
+            "on my birthday"
           ]
         },
         {
           "subtitle": "Watch out!",
           "notes": [
-            "We say in the morning/afternoon/evening, but on Monday morning.",
-            "No preposition with tomorrow/yesterday: tomorrow afternoon."
+            "**General vs. Specific**: We say *in the morning/afternoon/evening*, but we use **on** when a specific day is mentioned (**on Monday morning** / **on Wednesday evening** / etc.).",
+            "✓ We're flying to Washington in the morning.",
+            "✓ We're flying to Washington on Tuesday morning.",
+            "**No Preposition**: Do not use a preposition with *tomorrow*, *yesterday*, *tomorrow morning*, *yesterday evening*, etc.",
+            "✓ We're flying to Washington tomorrow afternoon."
           ]
         }
       ]
@@ -75,21 +88,38 @@
       "title": "Preposition: at",
       "content": [
         {
-          "subtitle": "Use (time)",
-          "items": [
-            "clock times: at five o'clock / at 11 pm",
-            "holiday periods in general: at Christmas / at Easter",
-            "set times: at night / at midday / at midnight"
+          "subtitle": "Time",
+          "tableHeaders": ["When", "Example"],
+          "rows": [
+            ["Clock times", "There's a bus at ten past three."],
+            ["Holiday periods", "What are you doing at Christmas?"]
           ]
         },
         {
-          "subtitle": "Use (place)",
+          "subtitle": "Place",
+          "tableHeaders": ["Where", "Example"],
+          "rows": [
+            ["Exact places", "What's it like at the North Pole?"],
+            ["Addresses", "My cousin lives at 132 London Road."],
+            ["Buildings (when referring to the activity)", "I think John is at the cinema, watching Titanic."],
+            ["Activities", "Rania isn't here. She's at a party."]
+          ]
+        },
+        {
+          "subtitle": "Helpful hints",
           "items": [
-            "exact places and points: at the North Pole / at the end of the street",
-            "addresses: at 44 King Street",
-            "buildings as activity locations: at the cinema / at school / at work",
-            "events: at a party / at a wedding / at a concert",
-            "set phrases: at the door / at the top / at the bottom"
+            "at the moment",
+            "at night",
+            "at the top/bottom",
+            "at the door/window"
+          ]
+        },
+        {
+          "subtitle": "Watch out!",
+          "notes": [
+            "It is important to compare how we use **in** and **at** for places:",
+            "**In**: Used for larger areas that are all around us when we are there. Example: *We're spending our next holiday in the countryside.*",
+            "**At**: Used for smaller places and specific points on a journey. Example: *Let's meet at the train station.*"
           ]
         }
       ]
