@@ -3,53 +3,53 @@
   "type": "open-cloze",
   "time": 10,
   "totalQuestions": 8,
-  "description": "Complete the text with ONE word only.",
+  "description": "For questions 9 - 16, read the text below and think of the word which best fits each gap. Use only one word in each gap. There is an example at the beginning (0).",
   "content": {
-    "text": "The transition from nomadic life to settled urban environments marked a turning point (0) human history. Early cities emerged in Mesopotamia, where the fertile land allowed for agricultural surpluses. (9) IT was this surplus that enabled a division of labor, leading to the rise of specialized craftsmen and priests. || (10) HAD it not been for the development of irrigation systems, these early civilizations might never have flourished. (11) WHAT is often argued is that the density of city life accelerated technological progress. However, (12) SUCH is the complexity of urban planning that even today, modern architects struggle to balance growth with sustainability. (13) EVEN though ancient cities lacked modern plumbing, their social structures were incredibly sophisticated. (14) AT least one major theory suggests that climate change was responsible for the abandonment of some early settlements. Seldom (15) HAS humanity faced such a challenge as managing the mega-cities of the 21st century. (16) ONLY provided that we learn from the past, we can build more resilient urban futures.",
+    "text": "The aqueducts of ancient Rome are among the most impressive engineering achievements of the ancient world, (0) which stretched for hundreds of kilometres across the Empire. (9) Were it not for the sophisticated surveying methods developed by Roman engineers, such precision over such long distances would have been technically impossible. || (10) It was precisely this combination of mathematical knowledge and practical expertise that set Roman hydraulic engineering apart from earlier civilisations. Scholars continue to debate (11) what motivated such extraordinary public investment in infrastructure, though the need to supply rapidly growing urban populations clearly played a key role. || (12) Not until the nineteenth century did European engineers begin to develop truly comparable systems of water management, and even then they drew heavily on Roman precedents. (13) Had the Romans not mastered the use of hydraulic concrete, entire sections of their aqueducts could never have been built in the way that they were. (14) Such was the ambition of the imperial engineers that several of these structures continue to carry water to this day. (15) Only by examining the individual stones, laid by hand across rugged terrain over many generations, can one fully appreciate the scale of this achievement. (16) No sooner had Rome's engineers resolved one technical problem than another presented itself, driving a continuous cycle of innovation that defined an era.",
     "example": {
-      "text": "marked a turning point (0) human history",
-      "correct": "IN"
+      "text": "The aqueducts of ancient Rome are among the most impressive engineering achievements of the ancient world, (0) which stretched for hundreds of kilometres across the Empire.",
+      "correct": "which"
     },
     "questions": [
       {
         "number": 9,
-        "correct": "IT",
-        "explanation": "Cleft sentence structure used for emphasis (It was this... that...)."
+        "correct": "Were",
+        "explanation": "Inversion in a conditional clause without 'if'; 'Were it not for' replaces 'If it were not for', used to express a formal hypothetical condition."
       },
       {
         "number": 10,
-        "correct": "HAD",
-        "explanation": "Inversion in a third conditional (Had it not been for...)."
+        "correct": "it",
+        "explanation": "Cleft sentence using 'It was... that' to place emphasis on a specific element; 'it' introduces the cleft structure."
       },
       {
         "number": 11,
-        "correct": "WHAT",
-        "explanation": "Nominal relative pronoun acting as the subject of a cleft-like structure ('What is argued is that...')."
+        "correct": "what",
+        "explanation": "Nominal relative pronoun introducing an indirect question or nominal clause that acts as the object of the verb 'debate'."
       },
       {
         "number": 12,
-        "correct": "SUCH",
-        "explanation": "Used for emphasis at the start of a clause to show degree: 'Such is/was the...'."
+        "correct": "Not",
+        "explanation": "Negative fronting structure 'Not until... did', which places the negative adverbial at the start of the sentence and requires subject-auxiliary inversion."
       },
       {
         "number": 13,
-        "correct": "EVEN",
-        "explanation": "Part of the conjunction 'Even though' used for contrast."
+        "correct": "had",
+        "explanation": "Conditional inversion without 'if' in a third conditional: 'Had the Romans not mastered' replaces 'If the Romans had not mastered'."
       },
       {
         "number": 14,
-        "correct": "AT",
-        "explanation": "Part of the fixed quantifier 'at least'."
+        "correct": "such",
+        "explanation": "Emphatic inversion using 'Such was the [noun] that...', where 'such' is fronted to emphasise the degree or extent of a quality."
       },
       {
         "number": 15,
-        "correct": "HAS",
-        "explanation": "Auxiliary verb for the present perfect after the negative inversion 'Seldom'."
+        "correct": "only",
+        "explanation": "Fronted 'Only by [gerund phrase]' requires inversion of subject and auxiliary in the main clause; 'only' initiates the fronted adverbial."
       },
       {
         "number": 16,
-        "correct": "ONLY",
-        "explanation": "Used to emphasize the condition 'Only provided that'."
+        "correct": "no",
+        "explanation": "Part of the correlative structure 'No sooner... than', which requires subject-auxiliary inversion after 'No sooner' and expresses rapid succession of events."
       }
     ]
   }

@@ -1,30 +1,56 @@
 {
-  "id": "Test40-reading-2",
-  "examId": "Test40",
-  "section": "reading",
-  "part": 2,
+  "title": "Reading and Use of English - Part 2",
   "type": "open-cloze",
-  "title": "Reading and Use of English – Part 2",
-  "description": "For questions 9–16, read the text below and think of the word which best fits each gap. Use only ONE word in each gap. There is an example at the beginning (0).",
   "time": 10,
   "totalQuestions": 8,
+  "description": "For questions 9 - 16, read the text below and think of the word which best fits each gap. Use only one word in each gap. There is an example at the beginning (0).",
   "content": {
-    "articleTitle": "The Forgotten Carbon Sinks",
-    "text": "Peatlands are a type of wetland that covers only three percent of the Earth’s land surface, (0) yet they store more carbon than all the world’s forests combined. (9) Although they are often overlooked in climate discussions, their preservation is vital for meeting global emission targets. (10) Such is the efficiency of peat in sequestering carbon that damaging these ecosystems releases massive amounts of greenhouse gases. (11) Provided that these areas remain waterlogged, the organic matter they contain does not fully decompose, keeping carbon trapped underground. (12) Not only do peatlands regulate water cycles, but they also provide a unique habitat for rare and endangered species. (13) Regardless of their ecological importance, many peatlands are still being drained for agriculture and fuel extraction today. (14) Not until recently did the international community begin to implement large-scale restoration projects to protect these vulnerable landscapes. (15) In spite of the challenges, rewetting degraded bogs has proven to be a highly effective way to mitigate climate change. (16) Whether we can protect the remaining peatlands from further destruction will be a decisive factor in our future environmental stability. These ancient ecosystems are a critical natural defense against the warming of our global atmosphere.",
+    "text": "Arctic sea ice is a critical component of the Earth's climate system, (0) which plays a key role in regulating global temperatures through its high surface reflectivity. The decline of this ice cover has become one of the most visible indicators of ongoing climate change. (9) Although seasonal variation in the extent of Arctic sea ice is entirely natural, the long-term trend in minimum summer extent has declined markedly since satellite observations began in the late 1970s. (10) Such is the significance of Arctic ice loss that scientists now speak of a feedback loop in which melting exposes darker ocean water, increasing heat absorption and accelerating further melting. This feedback makes the Arctic particularly sensitive to warming, and (11) Provided that global greenhouse gas emissions are not substantially reduced, models project that the Arctic Ocean may be largely ice-free during summer months within decades. Not (12) only does sea ice loss affect global temperatures through the albedo feedback, but it also threatens the viability of ice-dependent species including polar bears, walruses and certain seal populations. (13) Regardless of short-term natural variability, the underlying trend in sea ice loss is entirely consistent with the predictions of climate models over time. Not (14) until Arctic ice loss began to affect shipping routes and access to offshore resources did Arctic governance receive significant attention from national governments beyond the Arctic states themselves. (15) Notwithstanding the considerable uncertainties in projecting precise timelines, the scientific consensus on the general direction and cause of Arctic change is robust. International scientific cooperation in this sensitive region remains essential. (16) Whether Arctic change is approached primarily as an ecological crisis or as a geopolitical challenge, its implications for the planet as a whole are considerable and growing.",
     "example": {
-      "text": "Peatlands cover only three percent of the Earth’s land surface, (0) yet they store more carbon than all the world’s forests combined.",
-      "correct": "yet",
-      "explanation": "Conjunction used to introduce a surprising or contrasting fact."
+      "text": "Arctic sea ice is a critical component of the Earth's climate system, (0) which plays a key role in regulating global temperatures through its high surface reflectivity.",
+      "correct": "which"
     },
     "questions": [
-      { "number": 9, "correct": "Although", "explanation": "Conjunction used to introduce a contrast or concession." },
-      { "number": 10, "correct": "Such", "explanation": "Determiner used for emphasis before a noun phrase." },
-      { "number": 11, "correct": "Provided", "explanation": "Conjunction meaning 'on the condition that'." },
-      { "number": 12, "correct": "only", "explanation": "Part of the 'Not only... but also' correlative conjunction." },
-      { "number": 13, "correct": "Regardless", "explanation": "Part of the fixed phrase 'Regardless of'." },
-      { "number": 14, "correct": "until", "explanation": "Part of the 'Not until' structure requiring inversion ('did the... community begin')." },
-      { "number": 15, "correct": "In", "explanation": "Part of the prepositional linker 'In spite of'." },
-      { "number": 16, "correct": "Whether", "explanation": "Conjunction introducing a doubt or two possibilities." }
+      {
+        "number": 9,
+        "correct": "Although",
+        "explanation": "Concessive conjunction used to introduce a contrast or concession between two clauses."
+      },
+      {
+        "number": 10,
+        "correct": "Such",
+        "explanation": "Emphatic determiner in the inverted structure 'Such was/is the [noun] that...' to express a high degree."
+      },
+      {
+        "number": 11,
+        "correct": "Provided",
+        "explanation": "Conditional conjunction meaning 'on the condition that', used to introduce a condition and its result."
+      },
+      {
+        "number": 12,
+        "correct": "only",
+        "explanation": "Part of the correlative conjunction 'Not only... but also', which requires subject-auxiliary inversion after 'Not only'."
+      },
+      {
+        "number": 13,
+        "correct": "Regardless",
+        "explanation": "Part of the fixed prepositional phrase 'Regardless of', meaning 'without being affected by'."
+      },
+      {
+        "number": 14,
+        "correct": "until",
+        "explanation": "Part of the 'Not until' negative fronting structure, which requires subject-auxiliary inversion."
+      },
+      {
+        "number": 15,
+        "correct": "Notwithstanding",
+        "explanation": "Formal preposition or conjunction meaning 'in spite of' or 'despite', introducing a concessive contrast."
+      },
+      {
+        "number": 16,
+        "correct": "Whether",
+        "explanation": "Conjunction introducing two alternatives or possibilities in a summarising conclusion."
+      }
     ]
   }
 }

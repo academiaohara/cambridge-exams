@@ -1,30 +1,56 @@
 {
-  "id": "Test42-reading-2",
-  "examId": "Test42",
-  "section": "reading",
-  "part": 2,
+  "title": "Reading and Use of English - Part 2",
   "type": "open-cloze",
-  "title": "Reading and Use of English – Part 2",
-  "description": "For questions 9–16, read the text below and think of the word which best fits each gap. Use only ONE word in each gap. There is an example at the beginning (0).",
   "time": 10,
   "totalQuestions": 8,
+  "description": "For questions 9 - 16, read the text below and think of the word which best fits each gap. Use only one word in each gap. There is an example at the beginning (0).",
   "content": {
-    "articleTitle": "The Gutenberg Revolution",
-    "text": "The invention of the movable-type printing press by Johannes Gutenberg (0) in the mid-fifteenth century was a catalyst for the modern world. (9) Although books had existed for centuries, they were previously handwritten and extremely expensive for the average person to own. (10) Such was the efficiency of the new press that it allowed for the mass production of texts at an affordable cost. (11) Provided that a person could read, they suddenly had access to a vast world of knowledge and information. (12) Not only did the printing press facilitate the spread of religious ideas, but it also laid the foundation for the Scientific Revolution. (13) Regardless of the initial opposition from some authorities, the demand for printed material grew exponentially across the European continent. (14) Not until information could be shared rapidly through books did the standard of literacy begin to rise significantly. (15) Despite the digital age we live in now, the legacy of the printed word remains a cornerstone of our intellectual heritage. (16) Whether or not Gutenberg realized the scale of the change he had started is a question that historians often explore. This technological breakthrough remains one of the most significant events in human history.",
+    "text": "The Human Genome Project was an international scientific collaboration launched in 1990 with the objective of mapping the complete sequence of human DNA, (0) which was finally achieved in 2003 after more than a decade of intensive coordinated effort. Its completion was hailed as a milestone in biological science. (9) Although the project produced a reference sequence of approximately three billion base pairs, scientists quickly recognised that understanding the genome's function would require many further decades of research. (10) Such was the complexity of the relationship between genetic sequences and observable characteristics that simplistic notions of 'the gene for' a particular trait were rapidly abandoned. The scientific community invested heavily in the necessary analytical tools, and (11) Provided that the raw sequence data was made freely available, researchers worldwide could pursue their own investigations into gene function and disease susceptibility. Not (12) only did the project generate a vast quantity of biological data, but it also stimulated the development of entirely new fields, including genomics, proteomics and bioinformatics. (13) Regardless of the speed at which data has been generated, translating genomic knowledge into clinical treatments has proved considerably more challenging than many early advocates anticipated. Not (14) until the widespread adoption of next-generation sequencing technologies did the cost of individual genomic analysis fall sufficiently to permit large-scale population studies. (15) Yet the ethical questions surrounding genomic data - including issues of consent, privacy and insurance discrimination - have not been resolved with the same efficiency as the technical challenges. These questions remain pressing for legislators and scientists alike. (16) Whether the Human Genome Project ultimately proves most transformative for medicine or for our fundamental biological self-understanding, its impact on science in the twenty-first century is already beyond question.",
     "example": {
-      "text": "The invention of the movable-type printing press (0) in the mid-fifteenth century.",
-      "correct": "in",
-      "explanation": "Preposition used to indicate a point in time."
+      "text": "The Human Genome Project was an international scientific collaboration launched in 1990 with the objective of mapping the complete sequence of human DNA, (0) which was finally achieved in 2003 after more than a decade of intensive coordinated effort.",
+      "correct": "which"
     },
     "questions": [
-      { "number": 9, "correct": "Although", "explanation": "Conjunction used to introduce a contrast." },
-      { "number": 10, "correct": "Such", "explanation": "Determiner used for emphasis before a noun phrase." },
-      { "number": 11, "correct": "Provided", "explanation": "Conjunction meaning 'on the condition that'." },
-      { "number": 12, "correct": "only", "explanation": "Part of the 'Not only... but also' correlative conjunction." },
-      { "number": 13, "correct": "Regardless", "explanation": "Part of the fixed linker 'Regardless of'." },
-      { "number": 14, "correct": "until", "explanation": "Part of the 'Not until' structure requiring inversion ('did the standard... begin')." },
-      { "number": 15, "correct": "Despite", "explanation": "Preposition used to introduce a contrast." },
-      { "number": 16, "correct": "Whether", "explanation": "Conjunction introducing two possibilities or a doubt." }
+      {
+        "number": 9,
+        "correct": "Although",
+        "explanation": "Concessive conjunction used to introduce a contrast or concession between two clauses."
+      },
+      {
+        "number": 10,
+        "correct": "Such",
+        "explanation": "Emphatic determiner in the inverted structure 'Such was/is the [noun] that...' to express a high degree."
+      },
+      {
+        "number": 11,
+        "correct": "Provided",
+        "explanation": "Conditional conjunction meaning 'on the condition that', used to introduce a condition and its result."
+      },
+      {
+        "number": 12,
+        "correct": "only",
+        "explanation": "Part of the correlative conjunction 'Not only... but also', which requires subject-auxiliary inversion after 'Not only'."
+      },
+      {
+        "number": 13,
+        "correct": "Regardless",
+        "explanation": "Part of the fixed prepositional phrase 'Regardless of', meaning 'without being affected by'."
+      },
+      {
+        "number": 14,
+        "correct": "until",
+        "explanation": "Part of the 'Not until' negative fronting structure, which requires subject-auxiliary inversion."
+      },
+      {
+        "number": 15,
+        "correct": "Yet",
+        "explanation": "Adversative conjunction or adverb used as a discourse marker meaning 'however' or 'nevertheless', introducing a contrast after positive information."
+      },
+      {
+        "number": 16,
+        "correct": "Whether",
+        "explanation": "Conjunction introducing two alternatives or possibilities in a summarising conclusion."
+      }
     ]
   }
 }
