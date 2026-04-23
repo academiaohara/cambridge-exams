@@ -744,7 +744,7 @@
             // C1 object format: find the rendered index of the 'exercises' key in vocab section order
             var vocabKeys = ['topic_vocabulary', 'phrasal_verbs', 'collocations_patterns', 'idioms', 'word_formation', 'exercises'];
             var secs = unitData.sections || {};
-            var vIdx = (unitData.grammar_sections || []).length;
+            var vIdx = 0;
             vocabKeys.forEach(function(k) {
               var hasContent = secs[k] && (Array.isArray(secs[k]) ? secs[k].length > 0 : Object.keys(secs[k]).length > 0);
               if (hasContent) {
@@ -1311,13 +1311,7 @@
       function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }
       var html = '';
       var sections = data.sections || {};
-      var grammarSections = data.grammar_sections || [];
-      var sectionIndex = grammarSections.length;
-
-      // Grammar theory sections (rendered before vocabulary content)
-      if (grammarSections.length) {
-        html += BentoGrid._renderGrammarUnit({ sections: grammarSections });
-      }
+      var sectionIndex = 0;
 
       // Topic vocabulary
       if (sections.topic_vocabulary) {
