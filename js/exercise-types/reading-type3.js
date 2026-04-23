@@ -58,6 +58,9 @@
           </span>
         `;
       }
+      const wordRaw = question.word || '';
+      const escapedWord = this._escapeHtml(wordRaw);
+      const wordHintHTML = wordRaw ? `<span class="reading-type3-word-hint">(${escapedWord})</span>` : '';
       // Intentionally render checked unanswered gaps as "_____" to allow toggle mode on restored attempts.
       if (isChecked) {
         const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
@@ -67,9 +70,9 @@
         const escapedAnswer = this._escapeHtml(answerText);
         const dataAttr = !isCorrect ? ` data-correct="✓ ${escapedCorrect}"` : '';
         return `
-          <span class="reading-type3-gap-inline${!isCorrect ? ' incorrect' : ''}"${dataAttr} data-student-value="${escapedAnswer}" data-correct-raw="${escapedCorrect}" data-check-class="${colorClass}">
+          <span class="reading-type3-gap-inline${!isCorrect ? ' incorrect' : ''}"${dataAttr} data-student-value="${escapedAnswer}" data-correct-raw="${escapedCorrect}" data-check-class="${colorClass}" data-word="${escapedWord}">
             <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered-word ${colorClass}">${escapedAnswer}</span>
+            <span class="reading-type3-answered-word ${colorClass}">${escapedAnswer}</span>${wordHintHTML}
           </span>
         `;
       }
@@ -77,17 +80,17 @@
       if (userAnswer) {
         const escapedAnswer = this._escapeHtml(userAnswer);
         return `
-          <span class="reading-type3-gap-inline">
+          <span class="reading-type3-gap-inline" data-word="${escapedWord}">
             <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(${qNum})">${escapedAnswer}</span>
+            <span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(${qNum})">${escapedAnswer}</span>${wordHintHTML}
           </span>
         `;
       }
       
       return `
-        <span class="reading-type3-gap-inline">
+        <span class="reading-type3-gap-inline" data-word="${escapedWord}">
           <span class="reading-type3-gap-number">(${qNum})</span>
-          <span class="reading-type3-gap-slot" onclick="ReadingType3.openModal(${qNum})"></span>
+          <span class="reading-type3-gap-slot" onclick="ReadingType3.openModal(${qNum})"></span>${wordHintHTML}
         </span>
       `;
     },
@@ -148,12 +151,16 @@
       gaps.forEach(function(gap) {
         var numSpan = gap.querySelector('.reading-type3-gap-number');
         if (numSpan && numSpan.textContent.trim() === '(' + qNum + ')') {
+          var wordHint = gap.getAttribute('data-word') || '';
+          var wordHintHTML = wordHint ? '<span class="reading-type3-word-hint">(' + ReadingType3._escapeHtml(wordHint) + ')</span>' : '';
           if (value.trim()) {
             gap.innerHTML = '<span class="reading-type3-gap-number">(' + qNum + ')</span>' +
-              '<span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(' + qNum + ')">' + escapedValue + '</span>';
+              '<span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(' + qNum + ')">' + escapedValue + '</span>' +
+              wordHintHTML;
           } else {
             gap.innerHTML = '<span class="reading-type3-gap-number">(' + qNum + ')</span>' +
-              '<span class="reading-type3-gap-slot" onclick="ReadingType3.openModal(' + qNum + ')"></span>';
+              '<span class="reading-type3-gap-slot" onclick="ReadingType3.openModal(' + qNum + ')"></span>' +
+              wordHintHTML;
           }
         }
       });
@@ -197,9 +204,11 @@
             gap.className = 'reading-type3-gap-inline' + (!isCorrect ? ' incorrect' : '');
             if (!isCorrect) gap.setAttribute('data-correct', '✓ ' + escapedCorrect);
             else gap.removeAttribute('data-correct');
+            const wordHint = gap.getAttribute('data-word') || '';
+            const wordHintHTML = wordHint ? `<span class="reading-type3-word-hint">(${this._escapeHtml(wordHint)})</span>` : '';
             gap.innerHTML = `
               <span class="reading-type3-gap-number">(${q.number})</span>
-              <span class="reading-type3-answered-word ${colorClass}">${escapedAnswerText}</span>
+              <span class="reading-type3-answered-word ${colorClass}">${escapedAnswerText}</span>${wordHintHTML}
             `;
           }
         });
