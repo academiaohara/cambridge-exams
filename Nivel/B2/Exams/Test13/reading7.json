@@ -7,22 +7,72 @@
   "content": {
     "title": "Book Lovers: Four People on Reading",
     "texts": {
-      "A": "### Laura, 27, Librarian\n[43]I've loved reading since I was a child, and now I help others discover books at the library.[/43] [47]I enjoy recommending stories to people who aren't sure what to read next.[/47] [51]I prefer fiction, especially novels that take me to different worlds.[/51]",
       "B": "### Adam, 35, Engineer\n[44]I didn't read much growing up, but a friend gave me a science book that changed my mind.[/44] [48]Now I read mostly non-fiction, especially about technology and history.[/48] [52]I like learning new things, so I always have a book on my desk at work.[/52]",
-      "C": "### Priya, 22, Student\n[45]I read every night before bed – it helps me relax and sleep better.[/45] [49]Sometimes I join online book clubs to discuss what I'm reading with others.[/49] I use an e-reader because it's easier to carry than heavy books.",
-      "D": "### George, 60, Retired\n[46]Since retiring, I've had more time to read, so I visit the library every week.[/46] [50]I enjoy biographies and books about real people's lives.[/50] I sometimes read to my grandchildren, which is a wonderful way to spend time together."
+      "A": "### Laura, 27, Librarian\n[43]I've loved reading since I was a child, and now I help others discover books at the library.[/43] [47]I enjoy recommending stories to people who aren't sure what to read next.[/47] [51]I prefer fiction, especially novels that take me to different worlds.[/51]",
+      "C": "### George, 60, Retired\n[46]Since retiring, I've had more time to read, so I visit the library every week.[/46] [50]I enjoy biographies and books about real people's lives.[/50] I sometimes read to my grandchildren, which is a wonderful way to spend time together.",
+      "D": "### Priya, 22, Student\n[45]I read every night before bed – it helps me relax and sleep better.[/45] [49]Sometimes I join online book clubs to discuss what I'm reading with others.[/49] I use an e-reader because it's easier to carry than heavy books."
     },
     "questions": [
-      { "number": 43, "question": "has been passionate about reading since childhood?", "correct": "A", "explanation": "Laura has loved reading since she was a child." },
-      { "number": 44, "question": "became interested in reading after receiving a book as a gift?", "correct": "B", "explanation": "Adam started reading after a friend gave him a science book." },
-      { "number": 45, "question": "reads before going to sleep to help them relax?", "correct": "C", "explanation": "Priya reads every night before bed to relax and sleep better." },
-      { "number": 46, "question": "visits the library regularly since retiring?", "correct": "D", "explanation": "George visits the library every week since retiring." },
-      { "number": 47, "question": "enjoys helping others choose books?", "correct": "A", "explanation": "Laura enjoys recommending stories to people at the library." },
-      { "number": 48, "question": "mainly reads non-fiction books?", "correct": "B", "explanation": "Adam reads mostly non-fiction, especially about technology and history." },
-      { "number": 49, "question": "participates in online discussions about books?", "correct": "C", "explanation": "Priya joins online book clubs to discuss what she's reading." },
-      { "number": 50, "question": "likes reading about real people's lives?", "correct": "D", "explanation": "George enjoys biographies and books about real people." },
-      { "number": 51, "question": "prefers fiction that allows them to escape to different worlds?", "correct": "A", "explanation": "Laura prefers fiction, especially novels that take her to different worlds." },
-      { "number": 52, "question": "always keeps a book at work to read in spare moments?", "correct": "B", "explanation": "Adam always has a book on his desk at work to learn new things." }
+      {
+        "number": 43,
+        "question": "has been passionate about reading since childhood?",
+        "correct": "A",
+        "explanation": "Laura has loved reading since she was a child."
+      },
+      {
+        "number": 44,
+        "question": "became interested in reading after receiving a book as a gift?",
+        "correct": "B",
+        "explanation": "Adam started reading after a friend gave him a science book."
+      },
+      {
+        "number": 45,
+        "question": "reads before going to sleep to help them relax?",
+        "correct": "D",
+        "explanation": "Priya reads every night before bed to relax and sleep better."
+      },
+      {
+        "number": 46,
+        "question": "visits the library regularly since retiring?",
+        "correct": "C",
+        "explanation": "George visits the library every week since retiring."
+      },
+      {
+        "number": 47,
+        "question": "enjoys helping others choose books?",
+        "correct": "A",
+        "explanation": "Laura enjoys recommending stories to people at the library."
+      },
+      {
+        "number": 48,
+        "question": "mainly reads non-fiction books?",
+        "correct": "B",
+        "explanation": "Adam reads mostly non-fiction, especially about technology and history."
+      },
+      {
+        "number": 49,
+        "question": "participates in online discussions about books?",
+        "correct": "D",
+        "explanation": "Priya joins online book clubs to discuss what she's reading."
+      },
+      {
+        "number": 50,
+        "question": "likes reading about real people's lives?",
+        "correct": "C",
+        "explanation": "George enjoys biographies and books about real people."
+      },
+      {
+        "number": 51,
+        "question": "prefers fiction that allows them to escape to different worlds?",
+        "correct": "A",
+        "explanation": "Laura prefers fiction, especially novels that take her to different worlds."
+      },
+      {
+        "number": 52,
+        "question": "always keeps a book at work to read in spare moments?",
+        "correct": "B",
+        "explanation": "Adam always has a book on his desk at work to learn new things."
+      }
     ]
   }
 }

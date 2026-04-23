@@ -11,22 +11,72 @@
   "content": {
     "title": "The Art of the Grain: Traditional Woodworking",
     "texts": {
-      "A": "### Liam, The Cabinet Maker\n'I spent twenty years behind a desk, so working with my hands was a revelation,' Liam says. [51]The hardest part was the precision required; a mistake of one millimeter could ruin an entire week's work.[/51] [48]I was surprised to find that my chronic wrist strain from typing completely disappeared after I learned correct tool technique.[/48] [53]I learned that wood isn't just a material; it’s a living thing that you have to listen to and respect.[/53] [50]I realized that my background as an architect helped me visualize the three-dimensional joints much faster than others.[/50] [47]Initially, the lack of power tools was a shock, but I eventually grew to love the quiet rhythm of the hand-saw.[/47] It was a grounding experience.",
+      "C": "### Liam, The Cabinet Maker\n'I spent twenty years behind a desk, so working with my hands was a revelation,' Liam says. [51]The hardest part was the precision required; a mistake of one millimeter could ruin an entire week's work.[/51] [48]I was surprised to find that my chronic wrist strain from typing completely disappeared after I learned correct tool technique.[/48] [53]I learned that wood isn't just a material; it’s a living thing that you have to listen to and respect.[/53] [50]I realized that my background as an architect helped me visualize the three-dimensional joints much faster than others.[/50] [47]Initially, the lack of power tools was a shock, but I eventually grew to love the quiet rhythm of the hand-saw.[/47] It was a grounding experience.",
       "B": "### Sarah, The Furniture Restorer\nSarah focused on repairing antique chairs. 'It’s about honoring the original maker,' she explains. [49]The experience taught me that true sustainability lies in making things that can be repaired for centuries.[/49] [52]I hadn't anticipated the emotional weight of working on a family heirloom that had been neglected for decades.[/52] [47]I was quite startled by how quickly I adapted to the physical demands of standing at a workbench all day.[/47] [54]What I valued most was the patience of the master carpenter, who never once lost his temper at my mistakes.[/54] [56]If I hadn't seen a flyer at my local hardware store, I never would have known the course existed.[/56] It was a creative awakening.",
-      "C": "### Victor, The Bowl Turner\nVictor learned to use a traditional pole-lathe. 'It’s a physical dance,' he notes. [51]I struggled with the rhythmic coordination required between my foot and my hands, which I found incredibly frustrating at first.[/51] [48]I noticed that my general patience and concentration levels reached an all-time high, which was a great mental side effect.[/48] [53]I realized that the flaws in the wood are what give the final piece its character and soul.[/53] [50]I found that the focus I used in my previous career as a pilot was perfect for the absolute concentration required at the lathe.[/50] [55]It took a while to adjust to the wood dust and the physical mess, which I found quite repulsive initially.[/55] [52]I’d initially worried I was too clumsy, but the wood taught me grace.",
+      "A": "### Victor, The Bowl Turner\nVictor learned to use a traditional pole-lathe. 'It’s a physical dance,' he notes. [51]I struggled with the rhythmic coordination required between my foot and my hands, which I found incredibly frustrating at first.[/51] [48]I noticed that my general patience and concentration levels reached an all-time high, which was a great mental side effect.[/48] [53]I realized that the flaws in the wood are what give the final piece its character and soul.[/53] [50]I found that the focus I used in my previous career as a pilot was perfect for the absolute concentration required at the lathe.[/50] [55]It took a while to adjust to the wood dust and the physical mess, which I found quite repulsive initially.[/55] [52]I’d initially worried I was too clumsy, but the wood taught me grace.",
       "D": "### Elena, The Timber Framer\nElena worked on building a traditional barn. 'It was like a giant puzzle for adults,' she laughs. [49]The project made me realize that we’ve lost a vital connection to the structures we inhabit.[/49] [56]I wouldn't have found the apprenticeship if my brother hadn't recommended it after his own experience there.[/56] [54]I was moved by the camaraderie among the diverse group of students, who supported each other through the long days.[/54] [47]I hadn't expected the physical exhaustion of working outdoors in the heat to be so draining initially.[/47] [55]I found the initial weeks of learning complex geometric layouts incredibly tedious and confusing.[/55] [52]I’d been concerned that I wouldn't be strong enough, but teamwork solved every heavy lifting problem."
     },
     "questions": [
-      { "number": 47, "question": "mentions being surprised by how a physical or environmental factor affected their initial progress?", "correct": "A", "explanation": "Liam (A) mentions the lack of power tools, and Elena (D) mentions the exhaustion of working in the heat." },
-      { "number": 48, "question": "notes a positive physical or mental health change that resulted from the manual work?", "correct": "A", "explanation": "Liam (A) found his wrist strain disappeared, and Victor (C) saw his concentration levels reach an all-time high." },
-      { "number": 49, "question": "expresses a change in their perception regarding sustainability or our relationship with objects?", "correct": "B", "explanation": "Sarah (B) reflects on sustainability and repair, and Elena (D) on our connection to buildings." },
-      { "number": 50, "question": "mentions how their professional background or skills were advantageous during the course?", "correct": "A", "explanation": "Liam (A) used his architect background, and Victor (C) used his pilot's focus." },
-      { "number": 51, "question": "describes a specific technical or physical coordination challenge that was difficult to master?", "correct": "A", "explanation": "Liam (A) mentions the millimeter precision, and Victor (C) the coordination of foot and hands." },
-      { "number": 52, "question": "admits to having had prior concerns or having an unexpected emotional response to the work?", "correct": "B", "explanation": "Sarah (B) felt the emotional weight of a family heirloom, and Victor (C) worried about being clumsy." },
-      { "number": 53, "question": "reflects on a deeper philosophical lesson learned about the nature of the material or its flaws?", "correct": "A", "explanation": "Liam (A) learned wood is a living thing, and Victor (C) saw flaws as character." },
-      { "number": 54, "question": "highlights the value of the guidance or the camaraderie found during the sessions?", "correct": "B", "explanation": "Sarah (B) valued the master carpenter's patience, and Elena (D) the camaraderie of the students." },
-      { "number": 55, "question": "describes a period of frustration or adjustment to the technical or physical conditions?", "correct": "C", "explanation": "Victor (C) adjusted to the wood dust, and Elena (D) found the geometry layouts tedious." },
-      { "number": 56, "question": "acknowledges the specific external source or recommendation that led them to the course?", "correct": "B", "explanation": "Sarah (B) saw a flyer in a hardware store, and Elena (D) was recommended by her brother." }
+      {
+        "number": 47,
+        "question": "mentions being surprised by how a physical or environmental factor affected their initial progress?",
+        "correct": "C",
+        "explanation": "Liam (A) mentions the lack of power tools, and Elena (D) mentions the exhaustion of working in the heat."
+      },
+      {
+        "number": 48,
+        "question": "notes a positive physical or mental health change that resulted from the manual work?",
+        "correct": "C",
+        "explanation": "Liam (A) found his wrist strain disappeared, and Victor (C) saw his concentration levels reach an all-time high."
+      },
+      {
+        "number": 49,
+        "question": "expresses a change in their perception regarding sustainability or our relationship with objects?",
+        "correct": "B",
+        "explanation": "Sarah (B) reflects on sustainability and repair, and Elena (D) on our connection to buildings."
+      },
+      {
+        "number": 50,
+        "question": "mentions how their professional background or skills were advantageous during the course?",
+        "correct": "C",
+        "explanation": "Liam (A) used his architect background, and Victor (C) used his pilot's focus."
+      },
+      {
+        "number": 51,
+        "question": "describes a specific technical or physical coordination challenge that was difficult to master?",
+        "correct": "C",
+        "explanation": "Liam (A) mentions the millimeter precision, and Victor (C) the coordination of foot and hands."
+      },
+      {
+        "number": 52,
+        "question": "admits to having had prior concerns or having an unexpected emotional response to the work?",
+        "correct": "B",
+        "explanation": "Sarah (B) felt the emotional weight of a family heirloom, and Victor (C) worried about being clumsy."
+      },
+      {
+        "number": 53,
+        "question": "reflects on a deeper philosophical lesson learned about the nature of the material or its flaws?",
+        "correct": "C",
+        "explanation": "Liam (A) learned wood is a living thing, and Victor (C) saw flaws as character."
+      },
+      {
+        "number": 54,
+        "question": "highlights the value of the guidance or the camaraderie found during the sessions?",
+        "correct": "B",
+        "explanation": "Sarah (B) valued the master carpenter's patience, and Elena (D) the camaraderie of the students."
+      },
+      {
+        "number": 55,
+        "question": "describes a period of frustration or adjustment to the technical or physical conditions?",
+        "correct": "A",
+        "explanation": "Victor (C) adjusted to the wood dust, and Elena (D) found the geometry layouts tedious."
+      },
+      {
+        "number": 56,
+        "question": "acknowledges the specific external source or recommendation that led them to the course?",
+        "correct": "B",
+        "explanation": "Sarah (B) saw a flyer in a hardware store, and Elena (D) was recommended by her brother."
+      }
     ]
   }
 }

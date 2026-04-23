@@ -7,22 +7,72 @@
   "content": {
     "title": "Wild at Heart: Four People on Animals and Nature",
     "texts": {
-      "A": "### Nina, 30, Veterinary Nurse\n[43]I have worked with animals since I was sixteen and I cannot imagine any other profession.[/43] People sometimes assume it's a gentle, easy job, but it can be emotionally exhausting – losing a patient is never routine, even after years. [47]The hardest aspect is often dealing with the owners rather than the animals.[/47] People's grief when they lose a pet is completely genuine and supporting them is as important as treating the animal. [51]Outside work, I have two rescue dogs and a garden full of bird feeders – bringing nature home makes everything more peaceful.[/51]",
-      "B": "### Robert, 67, Retired Farmer\n[44]I farmed the same land for over forty years and I know every field, every hedgerow, every season's particular character.[/44] [48]I've watched the wildlife on my land change dramatically over my lifetime – there are birds I saw as a child that are now almost impossible to spot.[/48] That saddens me deeply. Since retiring I've turned a large part of my land into a wildlife meadow and the change has been remarkable – the insects came back first, then the birds followed. [52]I don't think farming and nature have to be in opposition, but it requires a long-term view that doesn't always fit with the economics of modern agriculture.[/52]",
-      "C": "### Sasha, 23, Environmental Science Graduate\n[45]I grew up in a city and had almost no contact with nature as a child – the first time I saw a deer in the wild, I was nineteen and on a university field trip.[/45] It was a profound experience. [49]Since then I've become passionate about urban rewilding – the idea that nature can come back into cities if we give it space.[/49] I volunteer with a project planting native wildflowers on unused land in my city. [53]I believe access to nature is a social justice issue – wealthier areas have parks and green spaces while poorer communities often have nothing.[/53]",
-      "D": "### Ellie, 11, Primary School Pupil\n[46]My favourite thing is going rock pooling at the beach near my grandmother's house.[/46] You have to be really patient and quiet, and then suddenly you see crabs and sea anemones and tiny fish. It's like discovering a hidden world every time. [50]My teacher says I know more about marine life than most adults, which makes me very proud.[/50] [54]I want to be a marine biologist when I grow up because I think the ocean is the most mysterious place on Earth and there's so much we still don't know about it.[/54] My parents say I'm too young to decide, but I don't think I'll ever change my mind."
+      "B": "### Nina, 30, Veterinary Nurse\n[43]I have worked with animals since I was sixteen and I cannot imagine any other profession.[/43] People sometimes assume it's a gentle, easy job, but it can be emotionally exhausting – losing a patient is never routine, even after years. [47]The hardest aspect is often dealing with the owners rather than the animals.[/47] People's grief when they lose a pet is completely genuine and supporting them is as important as treating the animal. [51]Outside work, I have two rescue dogs and a garden full of bird feeders – bringing nature home makes everything more peaceful.[/51]",
+      "A": "### Robert, 67, Retired Farmer\n[44]I farmed the same land for over forty years and I know every field, every hedgerow, every season's particular character.[/44] [48]I've watched the wildlife on my land change dramatically over my lifetime – there are birds I saw as a child that are now almost impossible to spot.[/48] That saddens me deeply. Since retiring I've turned a large part of my land into a wildlife meadow and the change has been remarkable – the insects came back first, then the birds followed. [52]I don't think farming and nature have to be in opposition, but it requires a long-term view that doesn't always fit with the economics of modern agriculture.[/52]",
+      "D": "### Sasha, 23, Environmental Science Graduate\n[45]I grew up in a city and had almost no contact with nature as a child – the first time I saw a deer in the wild, I was nineteen and on a university field trip.[/45] It was a profound experience. [49]Since then I've become passionate about urban rewilding – the idea that nature can come back into cities if we give it space.[/49] I volunteer with a project planting native wildflowers on unused land in my city. [53]I believe access to nature is a social justice issue – wealthier areas have parks and green spaces while poorer communities often have nothing.[/53]",
+      "C": "### Ellie, 11, Primary School Pupil\n[46]My favourite thing is going rock pooling at the beach near my grandmother's house.[/46] You have to be really patient and quiet, and then suddenly you see crabs and sea anemones and tiny fish. It's like discovering a hidden world every time. [50]My teacher says I know more about marine life than most adults, which makes me very proud.[/50] [54]I want to be a marine biologist when I grow up because I think the ocean is the most mysterious place on Earth and there's so much we still don't know about it.[/54] My parents say I'm too young to decide, but I don't think I'll ever change my mind."
     },
     "questions": [
-      { "number": 43, "question": "has always worked with animals and cannot picture doing anything else?", "correct": "A", "explanation": "Nina has worked with animals since she was sixteen and cannot imagine any other profession." },
-      { "number": 44, "question": "has an intimate, long-standing knowledge of a particular piece of land?", "correct": "B", "explanation": "Robert farmed the same land for over forty years and knows every field, hedgerow and seasonal character." },
-      { "number": 45, "question": "had very little experience of nature during their childhood?", "correct": "C", "explanation": "Sasha grew up in a city with almost no contact with nature and first saw a deer in the wild at nineteen." },
-      { "number": 46, "question": "enjoys an outdoor activity that requires stillness and patience to observe wildlife?", "correct": "D", "explanation": "Ellie loves rock pooling, which requires being patient and quiet to spot crabs, sea anemones and tiny fish." },
-      { "number": 47, "question": "finds a particular aspect of their job unexpectedly challenging that involves people rather than animals?", "correct": "A", "explanation": "Nina says the hardest aspect of her job is often dealing with the owners rather than the animals." },
-      { "number": 48, "question": "has personally witnessed a decline in wildlife over a period of time?", "correct": "B", "explanation": "Robert has watched wildlife on his land change dramatically and says there are birds he saw as a child that are now almost impossible to spot." },
-      { "number": 49, "question": "is interested in helping nature return to urban environments?", "correct": "C", "explanation": "Sasha is passionate about urban rewilding and volunteers with a project planting native wildflowers on unused city land." },
-      { "number": 50, "question": "has been praised for having exceptional knowledge of wildlife for their age?", "correct": "D", "explanation": "Ellie's teacher says she knows more about marine life than most adults." },
-      { "number": 51, "question": "has created a welcoming environment for wildlife at their own home?", "correct": "A", "explanation": "Nina has two rescue dogs and a garden full of bird feeders, bringing nature home." },
-      { "number": 52, "question": "suggests that two things which are often seen as opposed can in fact coexist?", "correct": "B", "explanation": "Robert says farming and nature don't have to be in opposition but require a long-term view." }
+      {
+        "number": 43,
+        "question": "has always worked with animals and cannot picture doing anything else?",
+        "correct": "B",
+        "explanation": "Nina has worked with animals since she was sixteen and cannot imagine any other profession."
+      },
+      {
+        "number": 44,
+        "question": "has an intimate, long-standing knowledge of a particular piece of land?",
+        "correct": "A",
+        "explanation": "Robert farmed the same land for over forty years and knows every field, hedgerow and seasonal character."
+      },
+      {
+        "number": 45,
+        "question": "had very little experience of nature during their childhood?",
+        "correct": "D",
+        "explanation": "Sasha grew up in a city with almost no contact with nature and first saw a deer in the wild at nineteen."
+      },
+      {
+        "number": 46,
+        "question": "enjoys an outdoor activity that requires stillness and patience to observe wildlife?",
+        "correct": "C",
+        "explanation": "Ellie loves rock pooling, which requires being patient and quiet to spot crabs, sea anemones and tiny fish."
+      },
+      {
+        "number": 47,
+        "question": "finds a particular aspect of their job unexpectedly challenging that involves people rather than animals?",
+        "correct": "B",
+        "explanation": "Nina says the hardest aspect of her job is often dealing with the owners rather than the animals."
+      },
+      {
+        "number": 48,
+        "question": "has personally witnessed a decline in wildlife over a period of time?",
+        "correct": "A",
+        "explanation": "Robert has watched wildlife on his land change dramatically and says there are birds he saw as a child that are now almost impossible to spot."
+      },
+      {
+        "number": 49,
+        "question": "is interested in helping nature return to urban environments?",
+        "correct": "D",
+        "explanation": "Sasha is passionate about urban rewilding and volunteers with a project planting native wildflowers on unused city land."
+      },
+      {
+        "number": 50,
+        "question": "has been praised for having exceptional knowledge of wildlife for their age?",
+        "correct": "C",
+        "explanation": "Ellie's teacher says she knows more about marine life than most adults."
+      },
+      {
+        "number": 51,
+        "question": "has created a welcoming environment for wildlife at their own home?",
+        "correct": "B",
+        "explanation": "Nina has two rescue dogs and a garden full of bird feeders, bringing nature home."
+      },
+      {
+        "number": 52,
+        "question": "suggests that two things which are often seen as opposed can in fact coexist?",
+        "correct": "A",
+        "explanation": "Robert says farming and nature don't have to be in opposition but require a long-term view."
+      }
     ]
   }
 }

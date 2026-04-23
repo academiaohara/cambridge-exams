@@ -8,21 +8,71 @@
     "title": "Dreams and Ambitions",
     "texts": {
       "A": "### Mia, 24, Medical Student\n[43]I’ve wanted to be a doctor since I was a child[/43]. It’s a long road, but I’m determined. [47]I volunteer at a hospital to gain experience[/47]. [50]Sometimes, I worry about balancing work and personal life in the future[/50].",
-      "B": "### Ethan, 29, Entrepreneur\n[44]My ambition is to start my own tech company[/44]. I’m saving money and learning as much as I can. [48]I attend networking events to meet potential partners[/48]. [51]I know there will be setbacks, but I’m ready to face them[/51].",
-      "C": "### Zoe, 27, Artist\n[45]I dream of having my own art exhibition one day[/45]. I work on my portfolio every week. [49]I take online courses to improve my skills[/49]. [52]I believe persistence is the key to achieving my goals[/52].",
-      "D": "### Lucas, 35, Teacher\n[46]I want to write a book about education[/46]. I’ve started drafting chapters in my free time. [47]Sharing ideas with colleagues inspires me[/47]. [49]I hope my work will help others in the future[/49]."
+      "D": "### Ethan, 29, Entrepreneur\n[44]My ambition is to start my own tech company[/44]. I’m saving money and learning as much as I can. [48]I attend networking events to meet potential partners[/48]. [51]I know there will be setbacks, but I’m ready to face them[/51].",
+      "B": "### Zoe, 27, Artist\n[45]I dream of having my own art exhibition one day[/45]. I work on my portfolio every week. [49]I take online courses to improve my skills[/49]. [52]I believe persistence is the key to achieving my goals[/52].",
+      "C": "### Lucas, 35, Teacher\n[46]I want to write a book about education[/46]. I’ve started drafting chapters in my free time. [47]Sharing ideas with colleagues inspires me[/47]. [49]I hope my work will help others in the future[/49]."
     },
     "questions": [
-      { "number": 43, "question": "has had the same career goal since childhood?", "correct": "A", "explanation": "Mia has wanted to be a doctor since she was a child." },
-      { "number": 44, "question": "is working towards starting a business?", "correct": "B", "explanation": "Ethan’s ambition is to start his own tech company." },
-      { "number": 45, "question": "hopes to display their work in a public setting?", "correct": "C", "explanation": "Zoe dreams of having her own art exhibition." },
-      { "number": 46, "question": "is writing a book in their spare time?", "correct": "D", "explanation": "Lucas is drafting chapters for a book about education." },
-      { "number": 47, "question": "gains inspiration from helping others or sharing ideas?", "correct": "A", "explanation": "Mia volunteers at a hospital to gain experience." },
-      { "number": 48, "question": "attends events to make useful contacts?", "correct": "B", "explanation": "Ethan attends networking events to meet partners." },
-      { "number": 49, "question": "is actively improving their skills through courses?", "correct": "C", "explanation": "Zoe takes online courses to improve her skills." },
-      { "number": 50, "question": "is concerned about maintaining a work-life balance?", "correct": "A", "explanation": "Mia worries about balancing work and personal life." },
-      { "number": 51, "question": "expects to face difficulties but is prepared for them?", "correct": "B", "explanation": "Ethan is ready to face setbacks." },
-      { "number": 52, "question": "believes determination is essential for success?", "correct": "C", "explanation": "Zoe believes persistence is key to achieving goals." }
+      {
+        "number": 43,
+        "question": "has had the same career goal since childhood?",
+        "correct": "A",
+        "explanation": "Mia has wanted to be a doctor since she was a child."
+      },
+      {
+        "number": 44,
+        "question": "is working towards starting a business?",
+        "correct": "D",
+        "explanation": "Ethan’s ambition is to start his own tech company."
+      },
+      {
+        "number": 45,
+        "question": "hopes to display their work in a public setting?",
+        "correct": "B",
+        "explanation": "Zoe dreams of having her own art exhibition."
+      },
+      {
+        "number": 46,
+        "question": "is writing a book in their spare time?",
+        "correct": "C",
+        "explanation": "Lucas is drafting chapters for a book about education."
+      },
+      {
+        "number": 47,
+        "question": "gains inspiration from helping others or sharing ideas?",
+        "correct": "A",
+        "explanation": "Mia volunteers at a hospital to gain experience."
+      },
+      {
+        "number": 48,
+        "question": "attends events to make useful contacts?",
+        "correct": "D",
+        "explanation": "Ethan attends networking events to meet partners."
+      },
+      {
+        "number": 49,
+        "question": "is actively improving their skills through courses?",
+        "correct": "B",
+        "explanation": "Zoe takes online courses to improve her skills."
+      },
+      {
+        "number": 50,
+        "question": "is concerned about maintaining a work-life balance?",
+        "correct": "A",
+        "explanation": "Mia worries about balancing work and personal life."
+      },
+      {
+        "number": 51,
+        "question": "expects to face difficulties but is prepared for them?",
+        "correct": "D",
+        "explanation": "Ethan is ready to face setbacks."
+      },
+      {
+        "number": 52,
+        "question": "believes determination is essential for success?",
+        "correct": "B",
+        "explanation": "Zoe believes persistence is key to achieving goals."
+      }
     ]
   }
 }

@@ -11,22 +11,72 @@
   "content": {
     "title": "Digital Mastery: New Skills for the Modern Era",
     "texts": {
-      "A": "### Sam, 3D Character Animation\n'I thought it was just about moving pixels, but it's really about acting,' Sam explains. [51]The biggest struggle was the software's interface, which felt like the cockpit of a jet fighter—overwhelming and complex.[/51] [48]I was surprised to find that my understanding of human anatomy improved significantly through the rigging process.[/48] [53]I learned that patience is the most important tool; you can spend a day on a single second of movement.[/53] [50]I realized that my previous hobby of stop-motion filming helped me understand the timing and weight of motion better than most.[/50] [47]Initially, the sedentary nature of the work was a shock, but I eventually learned to take regular breaks.[/47] It was a technical and creative awakening.",
+      "C": "### Sam, 3D Character Animation\n'I thought it was just about moving pixels, but it's really about acting,' Sam explains. [51]The biggest struggle was the software's interface, which felt like the cockpit of a jet fighter—overwhelming and complex.[/51] [48]I was surprised to find that my understanding of human anatomy improved significantly through the rigging process.[/48] [53]I learned that patience is the most important tool; you can spend a day on a single second of movement.[/53] [50]I realized that my previous hobby of stop-motion filming helped me understand the timing and weight of motion better than most.[/50] [47]Initially, the sedentary nature of the work was a shock, but I eventually learned to take regular breaks.[/47] It was a technical and creative awakening.",
       "B": "### Elena, Data Science and Analytics\nElena took a bootcamp after years in retail. 'I wanted to see the logic behind the sales,' she says. [47]I hadn't expected the mental fatigue of staring at code for eight hours a day, which was a massive adjustment.[/47] [52]I’d initially feared that my lack of a math degree would be an insurmountable wall, but the logic was very intuitive.[/52] [49]The experience taught me that data isn't just numbers; it's a story about human behavior.[/49] [56]If I hadn't received a scholarship for women in tech, I never could have made the leap.[/56] [55]It took months before I stopped feeling like an imposter in the classroom, a feeling I hadn't fully prepared for.[/55] It was a life-changing shift.",
-      "C": "### Marcus, Game Design\nMarcus started designing his own strategy games. 'It’s a balance between art and math,' he notes. [51]The most difficult part was the debugging process; finding a single missing comma in thousands of lines of code is soul-destroying.[/51] [48]I noticed that my general problem-solving skills in daily life became much sharper and more structured.[/48] [53]I realized that a good game isn't about the graphics, but about the choices the player has to make.[/53] [50]I found that my background as a teacher helped me design tutorials that were much clearer for new players.[/50] [55]I found the initial learning curve for the engine incredibly steep and frustrating.[/55] [54]The online developer community was an essential source of moral support during the low points.",
+      "A": "### Marcus, Game Design\nMarcus started designing his own strategy games. 'It’s a balance between art and math,' he notes. [51]The most difficult part was the debugging process; finding a single missing comma in thousands of lines of code is soul-destroying.[/51] [48]I noticed that my general problem-solving skills in daily life became much sharper and more structured.[/48] [53]I realized that a good game isn't about the graphics, but about the choices the player has to make.[/53] [50]I found that my background as a teacher helped me design tutorials that were much clearer for new players.[/50] [55]I found the initial learning curve for the engine incredibly steep and frustrating.[/55] [54]The online developer community was an essential source of moral support during the low points.",
       "D": "### Sophie, Cybersecurity and Hacking\n'I wanted to understand how to protect things in a digital world,' Sophie says. [52]I hadn't anticipated the ethical complexity involved; you have to think like a criminal to defend like a hero.[/52] [48]I noticed that my ability to concentrate for long periods increased dramatically, which was an unexpected cognitive boost.[/48] [56]I wouldn't have found the right path if my brother hadn't shared his own learning resources with me.[/56] [54]What I valued most was the mentorship from industry veterans who encouraged me to keep trying after every failure.[/54] [47]I was quite startled by how much the physical environment of my office affected my productivity initially.[/47] [49]It changed how I view every single device I own; I’m much more aware of my digital footprint now."
     },
     "questions": [
-      { "number": 47, "question": "mentions being surprised by how their environment or the nature of the work affected them?", "correct": "A", "explanation": "Sam (A) was shocked by the sedentary nature, Elena (B) by the mental fatigue, and Sophie (D) by her office environment." },
-      { "number": 48, "question": "notes a specific cognitive or physical improvement that occurred during the learning process?", "correct": "A", "explanation": "Sam (A) improved his anatomy knowledge, Marcus (C) his problem-solving, and Sophie (D) her concentration." },
-      { "number": 49, "question": "expresses a shift in their understanding of the field or their relationship with technology?", "correct": "B", "explanation": "Elena (B) sees data as human behavior, and Sophie (D) is more aware of her digital footprint." },
-      { "number": 50, "question": "mentions how a previous hobby or professional skill was advantageous?", "correct": "A", "explanation": "Sam (A) used stop-motion experience, and Marcus (C) used his teaching background." },
-      { "number": 51, "question": "describes a specific technical difficulty that was particularly challenging?", "correct": "A", "explanation": "Sam (A) mentions the complex software interface, and Marcus (C) mentions the debugging process." },
-      { "number": 52, "question": "admits to having had prior fears or having encountered unexpected conceptual challenges?", "correct": "B", "explanation": "Elena (B) feared her lack of math degree, and Sophie (D) hadn't anticipated the ethical complexity." },
-      { "number": 53, "question": "reflects on a broader philosophical lesson learned about the skill?", "correct": "A", "explanation": "Sam (A) learned about patience, and Marcus (C) about the importance of player choice." },
-      { "number": 54, "question": "highlights the value of the support or mentorship they received?", "correct": "C", "explanation": "Marcus (C) mentions the online community, and Sophie (D) mentions her mentors." },
-      { "number": 55, "question": "describes a period of psychological adjustment or frustration with the learning curve?", "correct": "B", "explanation": "Elena (B) felt like an imposter for months, and Marcus (C) found the initial engine curve steep." },
-      { "number": 56, "question": "acknowledges an external factor or person that influenced their journey?", "correct": "B", "explanation": "Elena (B) received a scholarship, and Sophie (D) was helped by her brother." }
+      {
+        "number": 47,
+        "question": "mentions being surprised by how their environment or the nature of the work affected them?",
+        "correct": "C",
+        "explanation": "Sam (A) was shocked by the sedentary nature, Elena (B) by the mental fatigue, and Sophie (D) by her office environment."
+      },
+      {
+        "number": 48,
+        "question": "notes a specific cognitive or physical improvement that occurred during the learning process?",
+        "correct": "C",
+        "explanation": "Sam (A) improved his anatomy knowledge, Marcus (C) his problem-solving, and Sophie (D) her concentration."
+      },
+      {
+        "number": 49,
+        "question": "expresses a shift in their understanding of the field or their relationship with technology?",
+        "correct": "B",
+        "explanation": "Elena (B) sees data as human behavior, and Sophie (D) is more aware of her digital footprint."
+      },
+      {
+        "number": 50,
+        "question": "mentions how a previous hobby or professional skill was advantageous?",
+        "correct": "C",
+        "explanation": "Sam (A) used stop-motion experience, and Marcus (C) used his teaching background."
+      },
+      {
+        "number": 51,
+        "question": "describes a specific technical difficulty that was particularly challenging?",
+        "correct": "C",
+        "explanation": "Sam (A) mentions the complex software interface, and Marcus (C) mentions the debugging process."
+      },
+      {
+        "number": 52,
+        "question": "admits to having had prior fears or having encountered unexpected conceptual challenges?",
+        "correct": "B",
+        "explanation": "Elena (B) feared her lack of math degree, and Sophie (D) hadn't anticipated the ethical complexity."
+      },
+      {
+        "number": 53,
+        "question": "reflects on a broader philosophical lesson learned about the skill?",
+        "correct": "C",
+        "explanation": "Sam (A) learned about patience, and Marcus (C) about the importance of player choice."
+      },
+      {
+        "number": 54,
+        "question": "highlights the value of the support or mentorship they received?",
+        "correct": "A",
+        "explanation": "Marcus (C) mentions the online community, and Sophie (D) mentions her mentors."
+      },
+      {
+        "number": 55,
+        "question": "describes a period of psychological adjustment or frustration with the learning curve?",
+        "correct": "B",
+        "explanation": "Elena (B) felt like an imposter for months, and Marcus (C) found the initial engine curve steep."
+      },
+      {
+        "number": 56,
+        "question": "acknowledges an external factor or person that influenced their journey?",
+        "correct": "B",
+        "explanation": "Elena (B) received a scholarship, and Sophie (D) was helped by her brother."
+      }
     ]
   }
 }

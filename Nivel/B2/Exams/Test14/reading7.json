@@ -7,22 +7,72 @@
   "content": {
     "title": "Life in the City",
     "texts": {
-      "A": "### Marta, 29, Architect\nMoving to the city was a huge adjustment for me. I grew up in a small town, so [43]the constant noise and fast pace were overwhelming at first[/43]. Over time, I learned to appreciate the endless opportunities here. I love that I can walk to art galleries or try food from around the world. However, [47]I sometimes miss the sense of community I had back home[/47]. Making friends in the city takes more effort, but I’ve found joining local clubs helps. I wouldn’t trade the excitement of city life, but [50]I do need to escape to the countryside now and then to recharge[/50].",
-      "B": "### Liam, 35, Software Developer\nI moved to the city for work, and [44]at first, I struggled with the high cost of living[/44]. Rent and transport eat up a lot of my salary, but the career opportunities make it worthwhile. I enjoy the diversity and the fact that [48]there’s always something happening, from concerts to street festivals[/48]. One thing I’ve learned is to [51]plan my journeys carefully to avoid rush hour[/51], otherwise commuting can be exhausting. Despite the challenges, I feel like I belong here now.",
-      "C": "### Priya, 24, Student\nI was born and raised in the city, so [45]I can’t imagine living anywhere else[/45]. I love the energy and the fact that [49]you meet people from all walks of life[/49]. My friends from smaller towns often say they’d feel lost here, but for me, [52]the city is where I feel most at home[/52]. Of course, it can be stressful, especially during exam season, but I find peace in the city’s parks and quiet cafes.",
-      "D": "### Carlos, 41, Chef\nI came to the city ten years ago, chasing a dream to open my own restaurant. [46]It wasn’t easy at first—finding affordable space and building a customer base took years[/46]. But the city’s vibrant food scene inspired me to keep going. [47]I love how people here are open to trying new cuisines[/47], and I’ve made friends from all over the world. Sometimes, [49]I miss the slower pace of my hometown[/49], but I wouldn’t change my decision."
+      "C": "### Marta, 29, Architect\nMoving to the city was a huge adjustment for me. I grew up in a small town, so [43]the constant noise and fast pace were overwhelming at first[/43]. Over time, I learned to appreciate the endless opportunities here. I love that I can walk to art galleries or try food from around the world. However, [47]I sometimes miss the sense of community I had back home[/47]. Making friends in the city takes more effort, but I’ve found joining local clubs helps. I wouldn’t trade the excitement of city life, but [50]I do need to escape to the countryside now and then to recharge[/50].",
+      "D": "### Liam, 35, Software Developer\nI moved to the city for work, and [44]at first, I struggled with the high cost of living[/44]. Rent and transport eat up a lot of my salary, but the career opportunities make it worthwhile. I enjoy the diversity and the fact that [48]there’s always something happening, from concerts to street festivals[/48]. One thing I’ve learned is to [51]plan my journeys carefully to avoid rush hour[/51], otherwise commuting can be exhausting. Despite the challenges, I feel like I belong here now.",
+      "B": "### Priya, 24, Student\nI was born and raised in the city, so [45]I can’t imagine living anywhere else[/45]. I love the energy and the fact that [49]you meet people from all walks of life[/49]. My friends from smaller towns often say they’d feel lost here, but for me, [52]the city is where I feel most at home[/52]. Of course, it can be stressful, especially during exam season, but I find peace in the city’s parks and quiet cafes.",
+      "A": "### Carlos, 41, Chef\nI came to the city ten years ago, chasing a dream to open my own restaurant. [46]It wasn’t easy at first—finding affordable space and building a customer base took years[/46]. But the city’s vibrant food scene inspired me to keep going. [47]I love how people here are open to trying new cuisines[/47], and I’ve made friends from all over the world. Sometimes, [49]I miss the slower pace of my hometown[/49], but I wouldn’t change my decision."
     },
     "questions": [
-      { "number": 43, "question": "found the city’s constant activity difficult to get used to?", "correct": "A", "explanation": "Marta describes being overwhelmed by the noise and fast pace at first." },
-      { "number": 44, "question": "was surprised by how expensive city life can be?", "correct": "B", "explanation": "Liam struggled with the high cost of living when he moved." },
-      { "number": 45, "question": "cannot imagine living anywhere but the city?", "correct": "C", "explanation": "Priya says she was born and raised in the city and can’t imagine living elsewhere." },
-      { "number": 46, "question": "had to overcome significant obstacles to start a business in the city?", "correct": "D", "explanation": "Carlos describes the difficulties of opening his restaurant." },
-      { "number": 47, "question": "sometimes misses the close-knit feeling of a smaller community?", "correct": "A", "explanation": "Marta misses the sense of community from her hometown." },
-      { "number": 48, "question": "enjoys the variety of events always happening in the city?", "correct": "B", "explanation": "Liam mentions there’s always something happening, like concerts and festivals." },
-      { "number": 49, "question": "appreciates meeting people from many different backgrounds?", "correct": "C", "explanation": "Priya enjoys meeting people from all walks of life." },
-      { "number": 50, "question": "needs to leave the city occasionally to relax?", "correct": "A", "explanation": "Marta says she escapes to the countryside to recharge." },
-      { "number": 51, "question": "has learned to avoid busy travel times in the city?", "correct": "B", "explanation": "Liam plans his journeys to avoid rush hour." },
-      { "number": 52, "question": "feels most comfortable in the city environment?", "correct": "C", "explanation": "Priya says the city is where she feels most at home." }
+      {
+        "number": 43,
+        "question": "found the city’s constant activity difficult to get used to?",
+        "correct": "C",
+        "explanation": "Marta describes being overwhelmed by the noise and fast pace at first."
+      },
+      {
+        "number": 44,
+        "question": "was surprised by how expensive city life can be?",
+        "correct": "D",
+        "explanation": "Liam struggled with the high cost of living when he moved."
+      },
+      {
+        "number": 45,
+        "question": "cannot imagine living anywhere but the city?",
+        "correct": "B",
+        "explanation": "Priya says she was born and raised in the city and can’t imagine living elsewhere."
+      },
+      {
+        "number": 46,
+        "question": "had to overcome significant obstacles to start a business in the city?",
+        "correct": "A",
+        "explanation": "Carlos describes the difficulties of opening his restaurant."
+      },
+      {
+        "number": 47,
+        "question": "sometimes misses the close-knit feeling of a smaller community?",
+        "correct": "C",
+        "explanation": "Marta misses the sense of community from her hometown."
+      },
+      {
+        "number": 48,
+        "question": "enjoys the variety of events always happening in the city?",
+        "correct": "D",
+        "explanation": "Liam mentions there’s always something happening, like concerts and festivals."
+      },
+      {
+        "number": 49,
+        "question": "appreciates meeting people from many different backgrounds?",
+        "correct": "B",
+        "explanation": "Priya enjoys meeting people from all walks of life."
+      },
+      {
+        "number": 50,
+        "question": "needs to leave the city occasionally to relax?",
+        "correct": "C",
+        "explanation": "Marta says she escapes to the countryside to recharge."
+      },
+      {
+        "number": 51,
+        "question": "has learned to avoid busy travel times in the city?",
+        "correct": "D",
+        "explanation": "Liam plans his journeys to avoid rush hour."
+      },
+      {
+        "number": 52,
+        "question": "feels most comfortable in the city environment?",
+        "correct": "B",
+        "explanation": "Priya says the city is where she feels most at home."
+      }
     ]
   }
 }
