@@ -844,6 +844,51 @@
             var block = content[contentIdx];
             var nextBlock = content[contentIdx + 1];
 
+            // twoColumnsBlock: side-by-side two-column layout (Column A: table, Column B: hint sections)
+            if (block.twoColumnsBlock) {
+              html += '<div class="cu-theory-two-cols">';
+              // Column A
+              html += '<div class="cu-theory-col">';
+              var colA = block.columnA || {};
+              if (colA.tableHeaders && colA.rows) {
+                html += '<table class="cu-uses-examples-table">';
+                html += '<thead><tr>';
+                colA.tableHeaders.forEach(function(h) {
+                  html += '<th class="cu-ue-head">' + self._escapeHTML(h) + '</th>';
+                });
+                html += '</tr></thead><tbody>';
+                colA.rows.forEach(function(row) {
+                  html += '<tr class="cu-ue-row">';
+                  (Array.isArray(row) ? row : []).forEach(function(cell, ci) {
+                    var cls = ci === 0 ? 'cu-ue-use' : 'cu-ue-example';
+                    html += '<td class="' + cls + '">' + _bold(cell) + '</td>';
+                  });
+                  html += '</tr>';
+                });
+                html += '</tbody></table>';
+              }
+              html += '</div>';
+              // Column B
+              html += '<div class="cu-theory-col">';
+              var colB = block.columnB || {};
+              (colB.sections || []).forEach(function(sec) {
+                if (sec.description) {
+                  html += '<div class="cu-theory-desc cu-theory-col-desc">' + _bold(sec.description) + '</div>';
+                }
+                if (sec.items && sec.items.length) {
+                  html += '<ul class="cu-theory-list">';
+                  sec.items.forEach(function(item) {
+                    html += '<li>' + _bold(item) + '</li>';
+                  });
+                  html += '</ul>';
+                }
+              });
+              html += '</div>';
+              html += '</div>';
+              contentIdx++;
+              continue;
+            }
+
             // subtitleTable: 2-col table where each block's label → "Use" col, items → right col
             if (block.subtitleTable) {
               var stHeaders = block.headers || ['Use', 'Example'];
@@ -1099,30 +1144,42 @@
               if (block.description) {
                 html += '<div class="cu-gc-watchout-desc">' + _bold(block.description) + '</div>';
               }
-              var woItems = block.items || block.examples || block.notes || [];
-              if (woItems.length) {
-                html += '<ul class="cu-gc-watchout-list">';
-                woItems.forEach(function(item) {
-                  if (item && typeof item === 'object') {
-                    if (item.correct !== undefined) {
-                      html += '<li class="cu-gc-wo-correct"><span class="cu-gc-wo-mark">✓</span>' + _bold(item.correct) + '</li>';
-                    } else if (item.incorrect !== undefined) {
-                      html += '<li class="cu-gc-wo-incorrect"><span class="cu-gc-wo-mark">✗</span><s>' + _bold(item.incorrect) + '</s></li>';
-                    } else if (item.note) {
-                      html += '<li class="cu-gc-wo-note">' + _bold(item.note) + '</li>';
-                    }
-                  } else if (typeof item === 'string') {
-                    // Detect leading ✓ or ✗ symbols for auto-styling
-                    if (/^✓/.test(item)) {
-                      html += '<li class="cu-gc-wo-correct"><span class="cu-gc-wo-mark">✓</span>' + _bold(item.replace(/^✓\s*/, '')) + '</li>';
-                    } else if (/^[✗✕]|^[Xx]\s/.test(item)) {
-                      html += '<li class="cu-gc-wo-incorrect"><span class="cu-gc-wo-mark">✗</span><s>' + _bold(item.replace(/^[✗✕Xx]\s*/, '')) + '</s></li>';
-                    } else {
-                      html += '<li>' + _bold(item) + '</li>';
-                    }
-                  }
+              if (block.columns && block.columns.length) {
+                html += '<div class="cu-gc-wo-columns">';
+                block.columns.forEach(function(col) {
+                  html += '<ul class="cu-gc-watchout-list">';
+                  (Array.isArray(col) ? col : []).forEach(function(item) {
+                    html += '<li>' + _bold(item) + '</li>';
+                  });
+                  html += '</ul>';
                 });
-                html += '</ul>';
+                html += '</div>';
+              } else {
+                var woItems = block.items || block.examples || block.notes || [];
+                if (woItems.length) {
+                  html += '<ul class="cu-gc-watchout-list">';
+                  woItems.forEach(function(item) {
+                    if (item && typeof item === 'object') {
+                      if (item.correct !== undefined) {
+                        html += '<li class="cu-gc-wo-correct"><span class="cu-gc-wo-mark">✓</span>' + _bold(item.correct) + '</li>';
+                      } else if (item.incorrect !== undefined) {
+                        html += '<li class="cu-gc-wo-incorrect"><span class="cu-gc-wo-mark">✗</span><s>' + _bold(item.incorrect) + '</s></li>';
+                      } else if (item.note) {
+                        html += '<li class="cu-gc-wo-note">' + _bold(item.note) + '</li>';
+                      }
+                    } else if (typeof item === 'string') {
+                      // Detect leading ✓ or ✗ symbols for auto-styling
+                      if (/^✓/.test(item)) {
+                        html += '<li class="cu-gc-wo-correct"><span class="cu-gc-wo-mark">✓</span>' + _bold(item.replace(/^✓\s*/, '')) + '</li>';
+                      } else if (/^[✗✕]|^[Xx]\s/.test(item)) {
+                        html += '<li class="cu-gc-wo-incorrect"><span class="cu-gc-wo-mark">✗</span><s>' + _bold(item.replace(/^[✗✕Xx]\s*/, '')) + '</s></li>';
+                      } else {
+                        html += '<li>' + _bold(item) + '</li>';
+                      }
+                    }
+                  });
+                  html += '</ul>';
+                }
               }
               html += '</div>';
               contentIdx++;

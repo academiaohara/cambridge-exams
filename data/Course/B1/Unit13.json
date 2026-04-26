@@ -13,9 +13,9 @@
           "description": "Countable nouns have singular and plural forms and can take a singular or plural verb.",
           "tableHeaders": ["Countable noun", "Example"],
           "items": [
-            "shop / shops — There are over 100 **shops** in the new shopping centre.",
-            "baby / babies — They've got some great toys for **babies** in there.",
-            "dish / dishes — We need to get some new **dishes** for this evening."
+            "shop / shop**s** — There are over 100 **shops** in the new shopping centre.",
+            "baby / bab**ies** — They've got some great toys for **babies** in there.",
+            "dish / dish**es** — We need to get some new **dishes** for this evening."
           ]
         },
         {
@@ -24,8 +24,18 @@
         },
         {
           "subtitle": "Watch out!",
-          "notes": [
-            "A few countable nouns have irregular plurals: one child → two children, one foot → two feet, one man → two men, one person → two people, one tooth → two teeth, one woman → two women."
+          "description": "A few countable nouns have irregular plurals:",
+          "columns": [
+            [
+              "one child → two **children**",
+              "one foot → two **feet**",
+              "one man → two **men**"
+            ],
+            [
+              "one person → two **people**",
+              "one tooth → two **teeth**",
+              "one woman → two **women**"
+            ]
           ]
         }
       ]
@@ -35,25 +45,47 @@
       "title": "Uncountable nouns",
       "content": [
         {
-          "subtitle": "Form",
-          "description": "Uncountable nouns cannot usually be counted. They normally do not have a plural form and usually take a singular verb.",
-          "tableHeaders": ["Some uncountable nouns", "Example"],
-          "items": [
-            "advice, bread, fruit, furniture, hair, homework, information, money, news, paper, rice, work",
-            "My **money** is in my wallet.",
-            "Your **hair** is really long!",
-            "The **news** was a complete shock."
-          ]
+          "description": "We cannot count some nouns (uncountable nouns). They do not have a plural form and take a singular verb, even if they end in **-s**."
         },
         {
-          "subtitle": "Helpful hints",
-          "description": "With uncountable nouns we often use: **a little, much, a bit of, a piece of**. With both countable and uncountable nouns we can use: **a lot of, some, lots of, the**. We can use **any** in questions and negative sentences with uncountable nouns and plural countable nouns."
+          "twoColumnsBlock": true,
+          "columnA": {
+            "tableHeaders": ["Some uncountable nouns", "Example"],
+            "rows": [
+              [
+                "advice, bread, fruit, furniture, hair, homework, information, money, news, paper, rice, work",
+                "My **money** is in my wallet.\nYour **hair** is really long!\nThe **news** was a complete shock."
+              ]
+            ]
+          },
+          "columnB": {
+            "sections": [
+              {
+                "description": "We use these words with uncountable nouns:",
+                "items": ["**a little**", "**much**", "**a bit of**", "**a piece of**"]
+              },
+              {
+                "description": "We use these words with both countable and uncountable nouns:",
+                "items": ["**a lot of**", "**some**", "**lots of**", "**the**"]
+              },
+              {
+                "description": "We can use **any** in questions and negative statements with both uncountable nouns and plural countable nouns:",
+                "items": ["Have we got **any** homework today?", "There aren't **any** eggs left."]
+              }
+            ]
+          }
         },
         {
           "subtitle": "Watch out!",
           "notes": [
-            "Some nouns are plural and take a plural verb even though they are usually treated as uncountable in meaning (e.g. clothes, jeans).",
-            "Some nouns can be uncountable with one meaning and countable with another: Get me some **paper** (= material to write on) / Get me a **paper** (= newspaper)."
+            { "note": "Plural uncountable nouns" },
+            "There are a few uncountable nouns that are plural and are followed by a plural verb. Be careful with the following words:",
+            { "correct": "**clothes** — Your clean **clothes** are on the bed." },
+            { "correct": "**jeans** — Your new **jeans** look great!" },
+            { "note": "Dual-meaning nouns" },
+            "Some nouns are uncountable with one meaning and countable with another meaning.",
+            { "correct": "Get me some **paper** when you go to the shops. (= a packet of paper to write on)" },
+            { "correct": "Get me a **paper** when you go to the shops. (= a newspaper)" }
           ]
         }
       ]

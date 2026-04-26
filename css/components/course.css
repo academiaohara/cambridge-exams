@@ -341,6 +341,35 @@
 /* Note line in Watch out */
 .cu-gc-watchout-list li.cu-gc-wo-note { color: #64748b; font-style: italic; }
 
+/* Two-column grid inside Watch out! (e.g. irregular plurals) */
+.cu-gc-wo-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 12px;
+  margin-top: 4px;
+}
+@media (max-width: 480px) {
+  .cu-gc-wo-columns { grid-template-columns: 1fr; }
+}
+
+/* Two-column side-by-side theory block */
+.cu-theory-two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+  margin: 8px 0;
+}
+.cu-theory-col {
+  min-width: 0;
+}
+.cu-theory-col-desc {
+  margin-top: 6px;
+}
+@media (max-width: 600px) {
+  .cu-theory-two-cols { grid-template-columns: 1fr; }
+}
+
 /* Uses + Examples table */
 .cu-uses-examples-table {
   width: 100%;
