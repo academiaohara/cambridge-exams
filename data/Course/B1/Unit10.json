@@ -14,11 +14,11 @@
           "rows": [
             {
               "label": "statement",
-              "left": "Everyone **is invited**."
+              "left": "Everyone **is invited**!"
             },
             {
               "label": "negative",
-              "left": "Some people **aren't invited**."
+              "left": "Some people **aren't (are not) invited**."
             },
             {
               "label": "question",
@@ -30,32 +30,37 @@
           "subtitle": "Active and passive",
           "tableHeaders": ["Tense", "Active", "Passive"],
           "items": [
-            "Present simple: They always invite Grandma. → Grandma is always invited.",
-            "Past simple: They invited Uncle Adrian. → Uncle Adrian was invited.",
-            "Will: They will / won't invite the neighbours. → The neighbours will / won't be invited."
+            "present simple: They always invite Grandma. → Grandma **is** always **invited**.",
+            "past simple: They invited Uncle Adrian. → Uncle Adrian **was invited**.",
+            "will: They **will / won't** invite the neighbours. → The neighbours **will / won't be invited**."
           ]
         },
         {
           "subtitle": "Use",
           "tableHeaders": ["Use", "Example"],
           "items": [
-            "When we don't know who does something: My sister's bike was stolen yesterday.",
-            "When we don't want or need to say who does something: Was Simon invited?"
+            "When we don't know who does something: My sister's bike **was stolen** yesterday.",
+            "When we don't want or need to say who does something: **Was** Simon **invited**?"
           ]
         },
         {
           "subtitle": "Helpful hints",
+          "intro": "If you are not sure how to form a passive sentence, think of the **active** sentence first.",
+          "activeExample": "Someone **stole** my sister's bike yesterday.",
+          "passiveExample": "**My sister's bike** **was stolen** yesterday.",
           "items": [
-            "Find the object in the active sentence and make it the subject in the passive sentence.",
-            "Keep the same tense by changing only the form of **be**.",
-            "Use the past participle of the main verb."
+            "Look at the active sentence. The verb is *stole* and the object is *my sister's bike*.",
+            "The object of the active sentence (*my sister's bike*) becomes the subject of the passive sentence. *My sister's bike* …",
+            "Then we need the verb *be* in the same tense as the verb in the active sentence. Here, *stole* is past simple, so we need *was*. *My sister's bike was* …",
+            "Then we need the past participle of the verb in the active sentence. The past participle of *steal* is *stolen*. *My sister's bike was stolen* …",
+            "Finally, we finish the sentence in the right way. ***My sister's bike was stolen yesterday.***"
           ]
         },
         {
           "subtitle": "Watch out!",
           "notes": [
-            "If the verb is a phrasal verb, keep the particle: They picked up the glass. → The glass was picked up.",
-            "Some past participles are irregular (e.g. steal → stolen)."
+            "When the verb in a passive sentence is a phrasal verb, don't forget to include the particle. They **picked up** the broken glass. → The broken glass was **picked up**.",
+            "Some verbs have irregular past participle forms (e.g. steal → stolen)."
           ]
         }
       ]
