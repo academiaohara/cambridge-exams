@@ -946,6 +946,49 @@
               continue;
             }
 
+            // directReportedTable: 2-col table grouping examples by type with alt-badge cycling both columns
+            if (block.directReportedTable) {
+              if (block.subtitle) {
+                html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
+              }
+              var drHeaders = block.headers || ['Direct question/order/request', 'Reported question/order/request'];
+              html += '<table class="cu-uses-examples-table cu-dr-table">';
+              html += '<thead><tr>';
+              drHeaders.forEach(function(h) { html += '<th class="cu-ue-head">' + self._escapeHTML(h) + '</th>'; });
+              html += '</tr></thead><tbody>';
+              (block.rows || []).forEach(function(row) {
+                html += '<tr class="cu-dr-type-row"><td colspan="2" class="cu-dr-type-cell">' + self._escapeHTML(row.type || '') + '</td></tr>';
+                var examples = row.examples || [];
+                if (!examples.length) return;
+                var firstEx = examples[0];
+                html += '<tr class="cu-ue-row">';
+                if (examples.length === 1) {
+                  html += '<td class="cu-ue-use">' + _bold(firstEx.direct || '') + '</td>';
+                  html += '<td class="cu-ue-example">' + _bold(firstEx.reported || '') + '</td>';
+                } else {
+                  var directVariants = examples.map(function(e) { return e.direct || ''; });
+                  var reportedVariants = examples.map(function(e) { return e.reported || ''; });
+                  var encDirect = encodeURIComponent(JSON.stringify(directVariants));
+                  var encReported = encodeURIComponent(JSON.stringify(reportedVariants));
+                  var n = examples.length;
+                  html += '<td class="cu-ue-use">';
+                  html += '<span class="cu-theory-alt-example cu-dr-direct">' + _bold(firstEx.direct || '') + '</span>';
+                  html += '<span class="cu-alt-badge cu-theory-alt-badge" role="button" tabindex="0" data-alt-idx="0"' +
+                    ' data-dr-direct="' + encDirect + '" data-dr-reported="' + encReported + '"' +
+                    ' aria-label="Cycle through ' + n + ' examples"' +
+                    ' onclick="BentoGrid._cycleDrAlt(this)"' +
+                    ' onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid._cycleDrAlt(this);}else if(event.key===\'Escape\'){event.preventDefault();this.blur();}">' +
+                    '1/' + n + '</span>';
+                  html += '</td>';
+                  html += '<td class="cu-ue-example"><span class="cu-dr-reported">' + _bold(firstEx.reported || '') + '</span></td>';
+                }
+                html += '</tr>';
+              });
+              html += '</tbody></table>';
+              contentIdx++;
+              continue;
+            }
+
             // quantifierTable: 3-col table (Quantifier | Use | Example)
             if (block.quantifierTable) {
               var qtHeaders = block.headers || ['Quantifier', 'Use', 'Example'];
@@ -6913,6 +6956,34 @@
       var target = badge.previousElementSibling;
       if (target && target.classList.contains('cu-theory-alt-example')) {
         this._setTheoryAltExampleContent(target, variants[idx]);
+      }
+    },
+
+    _cycleDrAlt: function(badge) {
+      if (!badge) return;
+      var directVariants, reportedVariants;
+      try {
+        directVariants = JSON.parse(decodeURIComponent(badge.getAttribute('data-dr-direct') || '[]'));
+        reportedVariants = JSON.parse(decodeURIComponent(badge.getAttribute('data-dr-reported') || '[]'));
+      } catch (e) {
+        return;
+      }
+      if (!Array.isArray(directVariants) || directVariants.length <= 1) return;
+      if (!Array.isArray(reportedVariants) || reportedVariants.length !== directVariants.length) return;
+      var idx = (parseInt(badge.getAttribute('data-alt-idx') || '0', 10) + 1) % directVariants.length;
+      badge.setAttribute('data-alt-idx', String(idx));
+      badge.textContent = (idx + 1) + '/' + directVariants.length;
+      var cell = badge.parentElement;
+      var directTarget = cell ? cell.querySelector('.cu-dr-direct') : null;
+      if (directTarget) {
+        this._setTheoryAltExampleContent(directTarget, directVariants[idx]);
+      }
+      var row = badge.closest('tr');
+      if (row) {
+        var reportedTarget = row.querySelector('.cu-dr-reported');
+        if (reportedTarget) {
+          this._setTheoryAltExampleContent(reportedTarget, reportedVariants[idx]);
+        }
       }
     },
 

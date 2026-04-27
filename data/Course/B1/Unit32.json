@@ -6,7 +6,7 @@
   "sections": [
     {
       "type": "theory",
-      "title": "Reported questions",
+      "title": "Reported questions, orders and requests",
       "content": [
         {
           "subtitle": "Use",
@@ -15,63 +15,105 @@
           ]
         },
         {
+          "directReportedTable": true,
           "subtitle": "Form",
-          "tableHeaders": ["Direct question", "Reported question"],
+          "headers": ["Direct question/order/request", "Reported question/order/request"],
           "rows": [
-            [
-              "Have you been to the gallery? he asked her.",
-              "He asked her **if** she had been to the gallery."
-            ],
-            [
-              "Will you make me one? I asked Terry.",
-              "I asked Terry **if** he would make me one."
-            ],
-            [
-              "What kind of shoes are in fashion now? my mum asked me.",
-              "My mum asked me what kind of shoes were in fashion at that moment."
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Orders and requests in reported speech",
-      "content": [
-        {
-          "subtitle": "Orders",
-          "tableHeaders": ["Direct order", "Reported order"],
-          "rows": [
-            [
-              "Put your clothes in the drawer, Mum said.",
-              "Mum told me to put my clothes in the drawer."
-            ],
-            [
-              "Don't wear the red one, Alice said.",
-              "Alice told me not to wear the red one."
-            ]
+            {
+              "type": "questions beginning with have, do or be",
+              "examples": [
+                {
+                  "direct": "'**Have** you **been** to the gallery?' he asked her.",
+                  "reported": "He asked her **if** she **had been** to the gallery."
+                },
+                {
+                  "direct": "'**Do** you **want** a sweater?' my mum asked.",
+                  "reported": "My mum asked **if** I **wanted** a sweater."
+                },
+                {
+                  "direct": "'**Are** you **making** a skirt?' I asked Anne.",
+                  "reported": "I asked Anne **if** she **was making** a skirt."
+                }
+              ]
+            },
+            {
+              "type": "questions beginning with a modal",
+              "examples": [
+                {
+                  "direct": "'**Can** you paint?' Mary asked her friend.",
+                  "reported": "Mary asked her friend **if** he **could** paint."
+                },
+                {
+                  "direct": "'**Will** you make me one?' I asked Terry.",
+                  "reported": "I asked Terry **if** he **would** make me one."
+                },
+                {
+                  "direct": "'**Shall** I wear a jacket?' I asked Mum.",
+                  "reported": "I asked Mum **if** I **should** wear a jacket."
+                },
+                {
+                  "direct": "'**May** I borrow your coat?' Mr Jones asked me.",
+                  "reported": "Mr Jones asked me **if** he **might** borrow my coat."
+                }
+              ]
+            },
+            {
+              "type": "questions beginning with a question word",
+              "examples": [
+                {
+                  "direct": "'**What** kind of shoes are in fashion now?' my mum asked me.",
+                  "reported": "My mum asked me **what** kind of shoes **were** in fashion at that moment."
+                },
+                {
+                  "direct": "'**Who** did you see at the fashion show?' asked Ben.",
+                  "reported": "Ben asked **who** I **had seen** at the fashion show."
+                },
+                {
+                  "direct": "'**Which** one do you want?' Sarah asked Liam.",
+                  "reported": "Sarah asked Liam **which** one he **wanted**."
+                },
+                {
+                  "direct": "'**When** will they finish the house?' I asked.",
+                  "reported": "I asked **when** they **would** finish the house."
+                },
+                {
+                  "direct": "'**Why** did you say that?' my sister asked me.",
+                  "reported": "My sister asked me **why** I **had said** that."
+                },
+                {
+                  "direct": "'**How** much did your hat cost?' Ed asked Carl.",
+                  "reported": "Ed asked Carl **how** much his hat **had cost**."
+                }
+              ]
+            },
+            {
+              "type": "orders",
+              "examples": [
+                {
+                  "direct": "'Put your clothes in the drawer,' Mum said.",
+                  "reported": "Mum **told** me **to put** my clothes in the drawer."
+                },
+                {
+                  "direct": "'Don't wear the red one,' Alice said.",
+                  "reported": "Alice **told** me **not to wear** the red one."
+                }
+              ]
+            },
+            {
+              "type": "requests",
+              "examples": [
+                {
+                  "direct": "'Will you make me one?' I asked Terry.",
+                  "reported": "I **asked** Terry **to make** me one."
+                },
+                {
+                  "direct": "'Please don't move my pictures,' said Olga.",
+                  "reported": "Olga **asked** me **not to move** her pictures."
+                }
+              ]
+            }
           ]
         },
-        {
-          "subtitle": "Requests",
-          "tableHeaders": ["Direct request", "Reported request"],
-          "rows": [
-            [
-              "Will you make me one? I asked Terry.",
-              "I asked Terry to make me one."
-            ],
-            [
-              "Please don't move my pictures, said Olga.",
-              "Olga asked me not to move her pictures."
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Helpful hints and watch out",
-      "content": [
         {
           "subtitle": "Helpful hint",
           "items": [
@@ -83,8 +125,8 @@
           "subtitle": "Watch out!",
           "items": [
             "Do not use question word order in reported questions.",
-            "Correct: I asked when they would finish the house.",
-            "Incorrect: I asked when would they finish the house."
+            { "correct": "I asked when they would finish the house." },
+            { "incorrect": "I asked when would they finish the house." }
           ]
         }
       ]

@@ -481,6 +481,21 @@
 .cu-modal-table .cu-ue-head:nth-child(2) { width: 20%; }
 .cu-modal-table .cu-ue-use { border-right: 1px solid rgba(45, 46, 95, 0.07); }
 
+/* Direct/Reported table: type-group header row */
+.cu-dr-type-row {
+  background: rgba(45, 46, 95, 0.04);
+  border-bottom: none;
+}
+.cu-dr-type-cell {
+  padding: 5px 10px 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+.cu-dr-table .cu-ue-use { width: 50%; }
+
 /* Common words chips */
 .cu-theory-chips {
   display: flex;
