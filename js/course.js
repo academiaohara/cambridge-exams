@@ -176,6 +176,7 @@
         leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(indexData, level, null);
         centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
         BentoGrid._bindCourseOverviewFilterEvents();
+        BentoGrid._applyCourseOverviewFilter();
       } else {
         leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(null, level, null);
         centerSection.innerHTML = headerHtml +
@@ -336,6 +337,7 @@
         '</div>';
       centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
       BentoGrid._bindCourseOverviewFilterEvents();
+      BentoGrid._applyCourseOverviewFilter();
       // Update left sidebar to deselect any active unit
       var leftSidebar = document.getElementById('courseLeftSidebar');
       if (leftSidebar && BentoGrid._courseIndexData) {
