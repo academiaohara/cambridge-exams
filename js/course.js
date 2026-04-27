@@ -1155,7 +1155,7 @@
             }
 
             // "Use" (singular) subtitle → Use/Example table (auto-split items on ": ")
-            if (block.subtitle === 'Use') {
+            if (block.subtitle === 'Use' && !block.noTable) {
               var useItems = block.items || [];
               var tHeaders = block.tableHeaders;
               var h1 = tHeaders ? tHeaders[0] : 'Use';
