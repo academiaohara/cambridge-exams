@@ -10,12 +10,12 @@
       "content": [
         {
           "subtitle": "Use",
-          "tableHeaders": ["Use", "Modal", "Example"],
-          "items": [
-            "Present or future obligation: **must / mustn't**, **have to**, **need to** — All visitors **must** turn off their mobile phones. / You **have to / need to** press \"send\".",
-            "No present or future obligation: **don't have to**, **don't need to**, **needn't** — You **don't have to / don't need to / needn't** pay to send an e-mail.",
-            "Past obligation: **had to** — Yesterday, Sam **had to** buy more stamps.",
-            "No past obligation: **didn't have to**, **didn't need to** — I learnt a little Italian, but everyone spoke English, so I **didn't have to / didn't need to** use it."
+          "modalTable": true,
+          "rows": [
+            { "use": "Present or future obligation", "modal": "must / mustn't, have to, need to", "example": "All visitors **must** turn off their mobile phones. / You **have to / need to** press \"send\"." },
+            { "use": "No present or future obligation", "modal": "don't have to, don't need to, needn't", "example": "You **don't have to / don't need to / needn't** pay to send an e-mail." },
+            { "use": "Past obligation", "modal": "had to", "example": "Yesterday, Sam **had to** buy more stamps." },
+            { "use": "No past obligation", "modal": "didn't have to, didn't need to", "example": "I learnt a little Italian, but everyone spoke English, so I **didn't have to / didn't need to** use it." }
           ]
         },
         {
@@ -28,10 +28,10 @@
         },
         {
           "subtitle": "Watch out!",
+          "description": "**Mustn't** and **don't have to** do not mean the same.",
           "notes": [
-            "**Mustn't** and **don't have to** do not mean the same.",
-            "You **mustn't** do that! (= Don't do that!)",
-            "You **don't have to** do that. (= You can do that if you want to, but it's not necessary.)"
+            { "correct": "You **mustn't** do that! (= Don't do that!)" },
+            { "correct": "You **don't have to** do that. (= You can do that if you want to, but it's not necessary.)" }
           ]
         }
       ]
@@ -42,11 +42,11 @@
       "content": [
         {
           "subtitle": "Use",
-          "tableHeaders": ["Use", "Modal", "Example"],
-          "items": [
-            "Present strong probability: **must**, **can't**, **couldn't** — The phone is ringing – it **must** be Simon. / This letter **can't / couldn't** be from Japan because it's got a French stamp.",
-            "Present and future probability: **should**, **ought to** — We **ought to / should** hear from Cheryl this weekend.",
-            "Present and future possibility: **could**, **may**, **might** — I'm not sure what language it is – it **could / may / might** be Polish."
+          "modalTable": true,
+          "rows": [
+            { "use": "Present strong probability", "modal": "must, can't, couldn't", "example": "The phone is ringing – it **must** be Simon. / This letter **can't / couldn't** be from Japan because it's got a French stamp." },
+            { "use": "Present and future probability", "modal": "should, ought to", "example": "We **ought to / should** hear from Cheryl this weekend." },
+            { "use": "Present and future possibility", "modal": "could, may, might", "example": "I'm not sure what language it is – it **could / may / might** be Polish." }
           ]
         },
         {
