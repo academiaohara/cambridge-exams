@@ -30,9 +30,9 @@
         },
         {
           "subtitle": "Watch out!",
-          "notes": [
-            "Whether we use a or an with a word depends on the sound, not the spelling. Be careful with the following words and phrases:",
-            "an honest person • an hour • a euro • a uniform"
+          "columns": [
+            ["an honest person", "an hour"],
+            ["a euro", "a uniform"]
           ]
         }
       ]
@@ -72,31 +72,35 @@
       "content": [
         {
           "subtitle": "Places",
-          "items": [
-            "the: seas (the Atlantic), rivers (the Amazon), areas (the Antarctic), some countries (the USA, the UK), public buildings (the theatre), the Earth, the world, the sky, the moon, the sun, the sea, the environment",
-            "no article: towns and cities (Moscow), most countries (France), continents (Europe), streets (Baker Street), planets (Mars)"
+          "tableHeaders": ["Article", "Examples"],
+          "rows": [
+            ["the", "seas (the Atlantic), rivers (the Amazon), areas (the Antarctic), some countries (the USA, the UK), public buildings (the theatre), the Earth, the world, the sky, the moon, the sun, the sea, the environment"],
+            ["no article", "towns and cities (Moscow), most countries (France), continents (Europe), streets (Baker Street), planets (Mars)"]
           ]
         },
         {
           "subtitle": "Activities",
-          "items": [
-            "a/an: have a job, work as a ...",
-            "the: on the radio, the media, play the piano",
-            "no article: go to work, on TV, go shopping, play tennis, listen to music, go to school, be at school, be at university, school subjects (maths)"
+          "tableHeaders": ["Article", "Examples"],
+          "rows": [
+            ["a/an", "have a job, work as a ..."],
+            ["the", "on the radio, the media, play the piano"],
+            ["no article", "go to work, on TV, go shopping, play tennis, listen to music, go to school, be at school, be at university, school subjects (maths)"]
           ]
         },
         {
           "subtitle": "Time",
-          "items": [
-            "the: in the morning/afternoon/evening, on the 20th March, in the 1950s",
-            "no article: days (Thursday), months (May), years (2009), at night"
+          "tableHeaders": ["Article", "Examples"],
+          "rows": [
+            ["the", "in the morning/afternoon/evening, on the 20th March, in the 1950s"],
+            ["no article", "days (Thursday), months (May), years (2009), at night"]
           ]
         },
         {
           "subtitle": "People",
-          "items": [
-            "the: the King, the Prime Minister, the army, the navy, the police, the Germans, the English",
-            "no article: become king, he's English, speak English"
+          "tableHeaders": ["Article", "Examples"],
+          "rows": [
+            ["the", "the King, the Prime Minister, the army, the navy, the police, the Germans, the English"],
+            ["no article", "become king, he's English, speak English"]
           ]
         }
       ]
