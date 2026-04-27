@@ -1040,7 +1040,7 @@
                 html += '<tr class="cu-ue-row">';
                 (Array.isArray(row) ? row : []).forEach(function(cell, ci) {
                   var cls = ci === 0 ? 'cu-ue-use' : 'cu-ue-example';
-                  html += '<td class="' + cls + '">' + (Array.isArray(cell) ? _renderTheoryExampleCell(cell) : _bold(cell)) + '</td>';
+                  html += '<td class="' + cls + '">' + (ci === 0 ? _bold(cell) : _renderTheoryExampleCell(cell)) + '</td>';
                 });
                 html += '</tr>';
               });
