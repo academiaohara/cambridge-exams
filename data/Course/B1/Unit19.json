@@ -53,10 +53,10 @@
       "content": [
         {
           "subtitle": "Use and form",
-          "tableHeaders": ["Use", "Modal", "Example"],
-          "items": [
-            "Ability now or generally → **can** → Can you use a fax machine?",
-            "Ability in the past → **could** → Tom could read when he was two years old."
+          "modalTable": true,
+          "rows": [
+            { "use": "Ability now or generally", "modal": "can", "example": "Can you use a fax machine?" },
+            { "use": "Ability in the past", "modal": "could", "example": "Tom could read when he was two years old." }
           ]
         },
         {
@@ -75,17 +75,17 @@
       "content": [
         {
           "subtitle": "Permission",
-          "tableHeaders": ["Use", "Modal", "Example"],
-          "items": [
-            "Asking for permission → **can / could / may** → Can / Could / May I use the phone?",
-            "Giving permission → **can / may** → You can / may send the fax when you like."
+          "modalTable": true,
+          "rows": [
+            { "use": "Asking for permission", "modal": "can / could / may", "example": "Can / Could / May I use the phone?" },
+            { "use": "Giving permission", "modal": "can / may", "example": "You can / may send the fax when you like." }
           ]
         },
         {
           "subtitle": "Advice",
-          "tableHeaders": ["Use", "Modal", "Example"],
-          "items": [
-            "Asking for and giving advice → **should / ought to** → Liam ought to / should watch less TV."
+          "modalTable": true,
+          "rows": [
+            { "use": "Asking for and giving advice", "modal": "should / ought to", "example": "Liam ought to / should watch less TV." }
           ]
         },
         {
