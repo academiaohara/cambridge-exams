@@ -948,10 +948,10 @@
 
             // directReportedTable: 2-col table grouping examples by type with alt-badge cycling both columns
             if (block.directReportedTable) {
-              if (block.subtitle) {
+              var drHeaders = block.headers || ['Direct question/order/request', 'Reported question/order/request'];
+              if (block.subtitle && drHeaders.indexOf(block.subtitle) === -1) {
                 html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
               }
-              var drHeaders = block.headers || ['Direct question/order/request', 'Reported question/order/request'];
               html += '<table class="cu-uses-examples-table cu-dr-table">';
               html += '<thead><tr>';
               drHeaders.forEach(function(h) { html += '<th class="cu-ue-head">' + self._escapeHTML(h) + '</th>'; });
@@ -1070,7 +1070,7 @@
 
             // Generic multi-column table: tableHeaders + rows (array of arrays)
             if (block.tableHeaders && block.rows) {
-              if (block.subtitle) {
+              if (block.subtitle && block.tableHeaders.indexOf(block.subtitle) === -1) {
                 html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
               }
               var thCols = block.tableHeaders;
