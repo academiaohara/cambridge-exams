@@ -1127,7 +1127,7 @@
                 var useText = colonIdx !== -1 ? itm.substring(0, colonIdx) : itm;
                 var exText  = colonIdx !== -1 ? itm.substring(colonIdx + 2) : '';
                 html += '<tr class="cu-ue-row">' +
-                  '<td class="cu-ue-use">' + self._escapeHTML(useText) + '</td>' +
+                  '<td class="cu-ue-use">' + _bold(useText) + '</td>' +
                   '<td class="cu-ue-example">' + _bold(exText) + '</td>' +
                 '</tr>';
               });
