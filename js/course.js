@@ -4731,8 +4731,9 @@
 
       BentoGrid._courseOverviewFilterOrder = blockOrder.slice();
       BentoGrid._courseOverviewVisibleBlocks = {};
+      var _savedFilter = BentoGrid._loadCourseOverviewFilter(level);
       blockOrder.forEach(function(bk) {
-        BentoGrid._courseOverviewVisibleBlocks[bk] = true;
+        BentoGrid._courseOverviewVisibleBlocks[bk] = _savedFilter ? (_savedFilter[bk] !== false) : true;
       });
 
       html += '<div class="cu-overview-block-filter-wrap">' +
@@ -4977,6 +4978,7 @@
       }
       visibleBlocks[blockKey] = !visibleBlocks[blockKey];
       BentoGrid._applyCourseOverviewFilter();
+      BentoGrid._saveCourseOverviewFilter();
     },
 
     _selectAllOverviewBlocks: function() {
@@ -4985,6 +4987,7 @@
         visibleBlocks[bk] = true;
       });
       BentoGrid._applyCourseOverviewFilter();
+      BentoGrid._saveCourseOverviewFilter();
     },
 
     _clearOverviewBlocks: function() {
@@ -4993,6 +4996,21 @@
         visibleBlocks[bk] = false;
       });
       BentoGrid._applyCourseOverviewFilter();
+      BentoGrid._saveCourseOverviewFilter();
+    },
+
+    _saveCourseOverviewFilter: function() {
+      var level = BentoGrid._courseLevel || 'C1';
+      try {
+        localStorage.setItem('course_block_filter_' + level, JSON.stringify(BentoGrid._courseOverviewVisibleBlocks || {}));
+      } catch (e) {}
+    },
+
+    _loadCourseOverviewFilter: function(level) {
+      try {
+        var raw = localStorage.getItem('course_block_filter_' + (level || 'C1'));
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) { return null; }
     },
 
     // ── Course Navigation Sidebar (left) ─────────────────────────────────
