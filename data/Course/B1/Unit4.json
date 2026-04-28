@@ -2,7 +2,7 @@
   "block": 2,
   "unit": 4,
   "type": "grammar",
-  "unitTitle": "Unit 4: Present perfect simple, present perfect continuous",
+  "unitTitle": "Unit 4: Present perfect simple & continuous",
   "sections": [
     {
       "type": "theory",
@@ -114,42 +114,66 @@
       "items": [
         {
           "sentence": "...... never played this game before.",
-          "options": ["A I've", "B I"],
+          "options": [
+            "A I've",
+            "B I"
+          ],
           "answer": "A"
         },
         {
           "sentence": "Adam ...... his room last night.",
-          "options": ["A has tidied", "B tidied"],
+          "options": [
+            "A has tidied",
+            "B tidied"
+          ],
           "answer": "B"
         },
         {
           "sentence": "...... here since 2005?",
-          "options": ["A Have you lived", "B Did you live"],
+          "options": [
+            "A Have you lived",
+            "B Did you live"
+          ],
           "answer": "A"
         },
         {
           "sentence": "Carol and I ...... to the cinema three nights ago.",
-          "options": ["A have been", "B went"],
+          "options": [
+            "A have been",
+            "B went"
+          ],
           "answer": "B"
         },
         {
           "sentence": "It's the first time ...... our flat, isn't it?",
-          "options": ["A you've visited", "B you visited"],
+          "options": [
+            "A you've visited",
+            "B you visited"
+          ],
           "answer": "A"
         },
         {
           "sentence": "They ...... the baby a name yet.",
-          "options": ["A haven't given", "B didn't give"],
+          "options": [
+            "A haven't given",
+            "B didn't give"
+          ],
           "answer": "A"
         },
         {
           "sentence": "...... to New York when you went to the States last summer?",
-          "options": ["A Have you been", "B Did you go"],
+          "options": [
+            "A Have you been",
+            "B Did you go"
+          ],
           "answer": "B"
         },
         {
           "sentence": "...... an e-mail before?",
-          "options": ["A Have you ever sent", "B Did you ever send"],
+          "options": [
+            "A Have you ever sent",
+            "B Did you ever send"
+          ],
           "answer": "A"
         }
       ]
@@ -231,11 +255,23 @@
         {
           "subtitle": "Useful notes",
           "description": "The present perfect continuous is often used with the following words:",
-          "tableHeaders": ["Key word", "Example"],
+          "tableHeaders": [
+            "Key word",
+            "Example"
+          ],
           "rows": [
-            ["for", "I've been learning English **for** over three years."],
-            ["since", "He's been learning Chinese **since** 2004."],
-            ["just", "I've **just** been reading the school newspaper."]
+            [
+              "for",
+              "I've been learning English **for** over three years."
+            ],
+            [
+              "since",
+              "He's been learning Chinese **since** 2004."
+            ],
+            [
+              "just",
+              "I've **just** been reading the school newspaper."
+            ]
           ]
         },
         {
@@ -271,28 +307,78 @@
       "title": "E: Circle the correct word or phrase",
       "instructions": "Circle the correct word or phrase.",
       "items": [
-        { "sentence": "I think I've **heard / been hearing** that song before.", "answer": "heard" },
-        { "sentence": "They haven't **arrived / been arriving** yet, but they should be here soon.", "answer": "arrived" },
-        { "sentence": "You've **written / been writing** that e-mail for over an hour. How long is it going to take you?", "answer": "been writing" },
-        { "sentence": "Have you **talked / been talking** on the phone since eight o'clock?", "answer": "been talking" },
-        { "sentence": "Jo has already **invited / been inviting** Shirley to dinner.", "answer": "invited" },
-        { "sentence": "I've **read / been reading** an interview with Brad Pitt, but I haven't finished it yet.", "answer": "been reading" },
-        { "sentence": "Have the boys **played / been playing** computer games since this morning?", "answer": "been playing" }
+        {
+          "sentence": "I think I've **heard / been hearing** that song before.",
+          "answer": "heard"
+        },
+        {
+          "sentence": "They haven't **arrived / been arriving** yet, but they should be here soon.",
+          "answer": "arrived"
+        },
+        {
+          "sentence": "You've **written / been writing** that e-mail for over an hour. How long is it going to take you?",
+          "answer": "been writing"
+        },
+        {
+          "sentence": "Have you **talked / been talking** on the phone since eight o'clock?",
+          "answer": "been talking"
+        },
+        {
+          "sentence": "Jo has already **invited / been inviting** Shirley to dinner.",
+          "answer": "invited"
+        },
+        {
+          "sentence": "I've **read / been reading** an interview with Brad Pitt, but I haven't finished it yet.",
+          "answer": "been reading"
+        },
+        {
+          "sentence": "Have the boys **played / been playing** computer games since this morning?",
+          "answer": "been playing"
+        }
       ]
     },
     {
       "type": "exercise",
       "title": "F: Complete using the words in the box",
       "instructions": "Complete using the words in the box.",
-      "words": ["already", "ever", "for", "just", "never", "since", "yet"],
+      "words": [
+        "already",
+        "ever",
+        "for",
+        "just",
+        "never",
+        "since",
+        "yet"
+      ],
       "items": [
-        { "sentence": "I haven't listened to their new CD ...... . Is it any good?", "answer": "yet" },
-        { "sentence": "We've been waiting for you ...... over an hour. Where have you been?", "answer": "for" },
-        { "sentence": "Have you ...... been to the UK before?", "answer": "ever" },
-        { "sentence": "I'm afraid we've ...... made plans for this weekend, so we won't be free.", "answer": "already" },
-        { "sentence": "Pedro has been having English lessons ...... he was five years old.", "answer": "since" },
-        { "sentence": "It's strange that you mention the film Crash. I've ...... been reading about it in the paper.", "answer": "just" },
-        { "sentence": "I've ...... heard of a 'sudoku'. What is it?", "answer": "never" }
+        {
+          "sentence": "I haven't listened to their new CD ...... . Is it any good?",
+          "answer": "yet"
+        },
+        {
+          "sentence": "We've been waiting for you ...... over an hour. Where have you been?",
+          "answer": "for"
+        },
+        {
+          "sentence": "Have you ...... been to the UK before?",
+          "answer": "ever"
+        },
+        {
+          "sentence": "I'm afraid we've ...... made plans for this weekend, so we won't be free.",
+          "answer": "already"
+        },
+        {
+          "sentence": "Pedro has been having English lessons ...... he was five years old.",
+          "answer": "since"
+        },
+        {
+          "sentence": "It's strange that you mention the film Crash. I've ...... been reading about it in the paper.",
+          "answer": "just"
+        },
+        {
+          "sentence": "I've ...... heard of a 'sudoku'. What is it?",
+          "answer": "never"
+        }
       ]
     }
   ]

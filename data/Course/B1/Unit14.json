@@ -10,7 +10,10 @@
       "content": [
         {
           "subtitle": "Use",
-          "tableHeaders": ["Use", "Example"],
+          "tableHeaders": [
+            "Use",
+            "Example"
+          ],
           "items": [
             "singular countable nouns (not specific): I need to get **a** new coat."
           ]
@@ -23,7 +26,10 @@
       "content": [
         {
           "subtitle": "Use",
-          "tableHeaders": ["Use", "Example"],
+          "tableHeaders": [
+            "Use",
+            "Example"
+          ],
           "items": [
             "instead of a when the next word begins with a vowel sound: I don't have enough money for **an** expensive dress."
           ]
@@ -31,8 +37,14 @@
         {
           "subtitle": "Be careful",
           "columns": [
-            ["an honest person", "an hour"],
-            ["a euro", "a uniform"]
+            [
+              "an honest person",
+              "an hour"
+            ],
+            [
+              "a euro",
+              "a uniform"
+            ]
           ]
         }
       ]
@@ -43,7 +55,10 @@
       "content": [
         {
           "subtitle": "Use",
-          "tableHeaders": ["Use", "Example"],
+          "tableHeaders": [
+            "Use",
+            "Example"
+          ],
           "items": [
             "singular countable nouns (specific): Let's go to **the** new shopping centre.",
             "plural countable nouns (specific): Where are **the** books I ordered?",
@@ -58,7 +73,10 @@
       "content": [
         {
           "subtitle": "Use",
-          "tableHeaders": ["Use", "Example"],
+          "tableHeaders": [
+            "Use",
+            "Example"
+          ],
           "items": [
             "plural countable nouns (general): Prices have gone up a lot recently.",
             "uncountable nouns (general): Fresh fruit is really good for you."
@@ -72,35 +90,74 @@
       "content": [
         {
           "subtitle": "Places",
-          "tableHeaders": ["Article", "Examples"],
+          "tableHeaders": [
+            "Article",
+            "Examples"
+          ],
           "rows": [
-            ["the", "seas (the Atlantic), rivers (the Amazon), areas (the Antarctic), some countries (the USA, the UK), public buildings (the theatre), the Earth, the world, the sky, the moon, the sun, the sea, the environment"],
-            ["no article", "towns and cities (Moscow), most countries (France), continents (Europe), streets (Baker Street), planets (Mars)"]
+            [
+              "the",
+              "seas (the Atlantic), rivers (the Amazon), areas (the Antarctic), some countries (the USA, the UK), public buildings (the theatre), the Earth, the world, the sky, the moon, the sun, the sea, the environment"
+            ],
+            [
+              "no article",
+              "towns and cities (Moscow), most countries (France), continents (Europe), streets (Baker Street), planets (Mars)"
+            ]
           ]
         },
         {
           "subtitle": "Activities",
-          "tableHeaders": ["Article", "Examples"],
+          "tableHeaders": [
+            "Article",
+            "Examples"
+          ],
           "rows": [
-            ["a/an", "have a job, work as a ..."],
-            ["the", "on the radio, the media, play the piano"],
-            ["no article", "go to work, on TV, go shopping, play tennis, listen to music, go to school, be at school, be at university, school subjects (maths)"]
+            [
+              "a/an",
+              "have a job, work as a ..."
+            ],
+            [
+              "the",
+              "on the radio, the media, play the piano"
+            ],
+            [
+              "no article",
+              "go to work, on TV, go shopping, play tennis, listen to music, go to school, be at school, be at university, school subjects (maths)"
+            ]
           ]
         },
         {
           "subtitle": "Time",
-          "tableHeaders": ["Article", "Examples"],
+          "tableHeaders": [
+            "Article",
+            "Examples"
+          ],
           "rows": [
-            ["the", "in the morning/afternoon/evening, on the 20th March, in the 1950s"],
-            ["no article", "days (Thursday), months (May), years (2009), at night"]
+            [
+              "the",
+              "in the morning/afternoon/evening, on the 20th March, in the 1950s"
+            ],
+            [
+              "no article",
+              "days (Thursday), months (May), years (2009), at night"
+            ]
           ]
         },
         {
           "subtitle": "People",
-          "tableHeaders": ["Article", "Examples"],
+          "tableHeaders": [
+            "Article",
+            "Examples"
+          ],
           "rows": [
-            ["the", "the King, the Prime Minister, the army, the navy, the police, the Germans, the English"],
-            ["no article", "become king, he's English, speak English"]
+            [
+              "the",
+              "the King, the Prime Minister, the army, the navy, the police, the Germans, the English"
+            ],
+            [
+              "no article",
+              "become king, he's English, speak English"
+            ]
           ]
         }
       ]
@@ -110,14 +167,38 @@
       "title": "A: a, an or the",
       "instructions": "Complete each sentence with a, an or the.",
       "items": [
-        { "sentence": "I saw ...... interesting documentary on TV last night.", "answer": "an" },
-        { "sentence": "Can you close ...... window, please?", "answer": "the" },
-        { "sentence": "My sister wants to be ...... engineer.", "answer": "an" },
-        { "sentence": "We need to buy ...... new table for the kitchen.", "answer": "a" },
-        { "sentence": "Where did you put ...... keys I gave you?", "answer": "the" },
-        { "sentence": "He waited for ...... hour before the bus arrived.", "answer": "an" },
-        { "sentence": "They live in ...... small village near the coast.", "answer": "a" },
-        { "sentence": "I think ...... film we watched was excellent.", "answer": "the" }
+        {
+          "sentence": "I saw ...... interesting documentary on TV last night.",
+          "answer": "an"
+        },
+        {
+          "sentence": "Can you close ...... window, please?",
+          "answer": "the"
+        },
+        {
+          "sentence": "My sister wants to be ...... engineer.",
+          "answer": "an"
+        },
+        {
+          "sentence": "We need to buy ...... new table for the kitchen.",
+          "answer": "a"
+        },
+        {
+          "sentence": "Where did you put ...... keys I gave you?",
+          "answer": "the"
+        },
+        {
+          "sentence": "He waited for ...... hour before the bus arrived.",
+          "answer": "an"
+        },
+        {
+          "sentence": "They live in ...... small village near the coast.",
+          "answer": "a"
+        },
+        {
+          "sentence": "I think ...... film we watched was excellent.",
+          "answer": "the"
+        }
       ]
     },
     {
@@ -125,14 +206,38 @@
       "title": "B: Article or no article",
       "instructions": "Write a, an, the or - (no article).",
       "items": [
-        { "sentence": "...... fruit is good for you.", "answer": "-" },
-        { "sentence": "Can I have ...... apple, please?", "answer": "an" },
-        { "sentence": "...... apples in that basket are from our garden.", "answer": "the" },
-        { "sentence": "My dad is ...... teacher.", "answer": "a" },
-        { "sentence": "I usually go to ...... school by bus.", "answer": "-" },
-        { "sentence": "We met at ...... school gates at eight.", "answer": "the" },
-        { "sentence": "She plays ...... guitar very well.", "answer": "the" },
-        { "sentence": "My brother loves ...... music.", "answer": "-" }
+        {
+          "sentence": "...... fruit is good for you.",
+          "answer": "-"
+        },
+        {
+          "sentence": "Can I have ...... apple, please?",
+          "answer": "an"
+        },
+        {
+          "sentence": "...... apples in that basket are from our garden.",
+          "answer": "the"
+        },
+        {
+          "sentence": "My dad is ...... teacher.",
+          "answer": "a"
+        },
+        {
+          "sentence": "I usually go to ...... school by bus.",
+          "answer": "-"
+        },
+        {
+          "sentence": "We met at ...... school gates at eight.",
+          "answer": "the"
+        },
+        {
+          "sentence": "She plays ...... guitar very well.",
+          "answer": "the"
+        },
+        {
+          "sentence": "My brother loves ...... music.",
+          "answer": "-"
+        }
       ]
     },
     {
@@ -140,14 +245,38 @@
       "title": "C: Circle the correct word",
       "instructions": "Choose the correct option in each sentence.",
       "items": [
-        { "sentence": "He's **a / an** honest person.", "answer": "an" },
-        { "sentence": "They arrived after **a / an** hour.", "answer": "an" },
-        { "sentence": "I need **a / an** uniform for school.", "answer": "a" },
-        { "sentence": "She paid with **a / an** euro coin.", "answer": "a" },
-        { "sentence": "Let's go to **the / -** cinema this evening.", "answer": "the" },
-        { "sentence": "We watched the match on **the / -** TV.", "answer": "-" },
-        { "sentence": "My parents are at **the / -** work now.", "answer": "-" },
-        { "sentence": "The programme was on **the / -** radio.", "answer": "the" }
+        {
+          "sentence": "He's **a / an** honest person.",
+          "answer": "an"
+        },
+        {
+          "sentence": "They arrived after **a / an** hour.",
+          "answer": "an"
+        },
+        {
+          "sentence": "I need **a / an** uniform for school.",
+          "answer": "a"
+        },
+        {
+          "sentence": "She paid with **a / an** euro coin.",
+          "answer": "a"
+        },
+        {
+          "sentence": "Let's go to **the / -** cinema this evening.",
+          "answer": "the"
+        },
+        {
+          "sentence": "We watched the match on **the / -** TV.",
+          "answer": "-"
+        },
+        {
+          "sentence": "My parents are at **the / -** work now.",
+          "answer": "-"
+        },
+        {
+          "sentence": "The programme was on **the / -** radio.",
+          "answer": "the"
+        }
       ]
     },
     {
@@ -155,14 +284,38 @@
       "title": "D: Special rules (places)",
       "instructions": "Complete with the if necessary. If no article is needed, write -.",
       "items": [
-        { "sentence": "...... Amazon is the largest river in the world.", "answer": "the" },
-        { "sentence": "I've always wanted to visit ...... Europe.", "answer": "-" },
-        { "sentence": "They are travelling around ...... UK this summer.", "answer": "the" },
-        { "sentence": "My cousin studies in ...... France.", "answer": "-" },
-        { "sentence": "...... Earth moves around the Sun.", "answer": "the" },
-        { "sentence": "We had dinner at ...... theatre restaurant.", "answer": "the" },
-        { "sentence": "My aunt lives in ...... Moscow.", "answer": "-" },
-        { "sentence": "Children learn about ...... moon at school.", "answer": "the" }
+        {
+          "sentence": "...... Amazon is the largest river in the world.",
+          "answer": "the"
+        },
+        {
+          "sentence": "I've always wanted to visit ...... Europe.",
+          "answer": "-"
+        },
+        {
+          "sentence": "They are travelling around ...... UK this summer.",
+          "answer": "the"
+        },
+        {
+          "sentence": "My cousin studies in ...... France.",
+          "answer": "-"
+        },
+        {
+          "sentence": "...... Earth moves around the Sun.",
+          "answer": "the"
+        },
+        {
+          "sentence": "We had dinner at ...... theatre restaurant.",
+          "answer": "the"
+        },
+        {
+          "sentence": "My aunt lives in ...... Moscow.",
+          "answer": "-"
+        },
+        {
+          "sentence": "Children learn about ...... moon at school.",
+          "answer": "the"
+        }
       ]
     },
     {
@@ -170,14 +323,38 @@
       "title": "E: Special rules (activities and time)",
       "instructions": "Write the missing article or - (no article).",
       "items": [
-        { "sentence": "I go to ...... work at 8 o'clock every day.", "answer": "-" },
-        { "sentence": "My mum heard the news on ...... radio.", "answer": "the" },
-        { "sentence": "We usually play ...... tennis on Saturdays.", "answer": "-" },
-        { "sentence": "He can play ...... piano very well.", "answer": "the" },
-        { "sentence": "They got married on ...... 20th March.", "answer": "the" },
-        { "sentence": "She was born in ...... 1950s.", "answer": "the" },
-        { "sentence": "I'll call you on ...... Thursday.", "answer": "-" },
-        { "sentence": "I never drink coffee at ...... night.", "answer": "-" }
+        {
+          "sentence": "I go to ...... work at 8 o'clock every day.",
+          "answer": "-"
+        },
+        {
+          "sentence": "My mum heard the news on ...... radio.",
+          "answer": "the"
+        },
+        {
+          "sentence": "We usually play ...... tennis on Saturdays.",
+          "answer": "-"
+        },
+        {
+          "sentence": "He can play ...... piano very well.",
+          "answer": "the"
+        },
+        {
+          "sentence": "They got married on ...... 20th March.",
+          "answer": "the"
+        },
+        {
+          "sentence": "She was born in ...... 1950s.",
+          "answer": "the"
+        },
+        {
+          "sentence": "I'll call you on ...... Thursday.",
+          "answer": "-"
+        },
+        {
+          "sentence": "I never drink coffee at ...... night.",
+          "answer": "-"
+        }
       ]
     },
     {
@@ -185,14 +362,38 @@
       "title": "F: Error correction",
       "instructions": "Each sentence has one article mistake. Write the correct article form.",
       "items": [
-        { "sentence": "She is an university student.", "answer": "a university student" },
-        { "sentence": "I like the music, especially jazz.", "answer": "I like music" },
-        { "sentence": "We're going to the school now (students speaking).", "answer": "We're going to school now" },
-        { "sentence": "He works as the waiter in a hotel.", "answer": "He works as a waiter" },
-        { "sentence": "The English is spoken in many countries.", "answer": "English is spoken" },
-        { "sentence": "They visited Louvre in Paris.", "answer": "visited the Louvre" },
-        { "sentence": "My father listens to radio every morning.", "answer": "the radio" },
-        { "sentence": "I saw a moon last night.", "answer": "the moon" }
+        {
+          "sentence": "She is an university student.",
+          "answer": "a university student"
+        },
+        {
+          "sentence": "I like the music, especially jazz.",
+          "answer": "I like music"
+        },
+        {
+          "sentence": "We're going to the school now (students speaking).",
+          "answer": "We're going to school now"
+        },
+        {
+          "sentence": "He works as the waiter in a hotel.",
+          "answer": "He works as a waiter"
+        },
+        {
+          "sentence": "The English is spoken in many countries.",
+          "answer": "English is spoken"
+        },
+        {
+          "sentence": "They visited Louvre in Paris.",
+          "answer": "visited the Louvre"
+        },
+        {
+          "sentence": "My father listens to radio every morning.",
+          "answer": "the radio"
+        },
+        {
+          "sentence": "I saw a moon last night.",
+          "answer": "the moon"
+        }
       ]
     },
     {
@@ -202,32 +403,62 @@
       "items": [
         {
           "sentence": "She wants to buy ...... new phone.",
-          "options": ["A an", "B the", "C a", "D -"],
+          "options": [
+            "A an",
+            "B the",
+            "C a",
+            "D -"
+          ],
           "answer": "C"
         },
         {
           "sentence": "We had lunch at ...... school canteen.",
-          "options": ["A an", "B the", "C a", "D -"],
+          "options": [
+            "A an",
+            "B the",
+            "C a",
+            "D -"
+          ],
           "answer": "B"
         },
         {
           "sentence": "My grandparents live in ...... Spain.",
-          "options": ["A the", "B a", "C an", "D -"],
+          "options": [
+            "A the",
+            "B a",
+            "C an",
+            "D -"
+          ],
           "answer": "D"
         },
         {
           "sentence": "Can you play ...... guitar?",
-          "options": ["A a", "B an", "C the", "D -"],
+          "options": [
+            "A a",
+            "B an",
+            "C the",
+            "D -"
+          ],
           "answer": "C"
         },
         {
           "sentence": "He waited for ...... hour and left.",
-          "options": ["A a", "B an", "C the", "D -"],
+          "options": [
+            "A a",
+            "B an",
+            "C the",
+            "D -"
+          ],
           "answer": "B"
         },
         {
           "sentence": "...... books on that shelf belong to me.",
-          "options": ["A A", "B The", "C An", "D -"],
+          "options": [
+            "A A",
+            "B The",
+            "C An",
+            "D -"
+          ],
           "answer": "B"
         }
       ]
