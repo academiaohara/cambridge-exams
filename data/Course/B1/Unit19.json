@@ -2,7 +2,7 @@
   "block": 7,
   "unit": 19,
   "type": "grammar",
-  "unitTitle": "Unit 19: Modals 1: ability, permission, advice",
+  "unitTitle": "Unit 19: Modals: ability, permission & advice",
   "sections": [
     {
       "type": "theory",
@@ -55,8 +55,16 @@
           "subtitle": "Use and form",
           "modalTable": true,
           "rows": [
-            { "use": "Ability now or generally", "modal": "can", "example": "Can you use a fax machine?" },
-            { "use": "Ability in the past", "modal": "could", "example": "Tom could read when he was two years old." }
+            {
+              "use": "Ability now or generally",
+              "modal": "can",
+              "example": "Can you use a fax machine?"
+            },
+            {
+              "use": "Ability in the past",
+              "modal": "could",
+              "example": "Tom could read when he was two years old."
+            }
           ]
         },
         {
@@ -77,15 +85,27 @@
           "subtitle": "Permission",
           "modalTable": true,
           "rows": [
-            { "use": "Asking for permission", "modal": "can / could / may", "example": "Can / Could / May I use the phone?" },
-            { "use": "Giving permission", "modal": "can / may", "example": "You can / may send the fax when you like." }
+            {
+              "use": "Asking for permission",
+              "modal": "can / could / may",
+              "example": "Can / Could / May I use the phone?"
+            },
+            {
+              "use": "Giving permission",
+              "modal": "can / may",
+              "example": "You can / may send the fax when you like."
+            }
           ]
         },
         {
           "subtitle": "Advice",
           "modalTable": true,
           "rows": [
-            { "use": "Asking for and giving advice", "modal": "should / ought to", "example": "Liam ought to / should watch less TV." }
+            {
+              "use": "Asking for and giving advice",
+              "modal": "should / ought to",
+              "example": "Liam ought to / should watch less TV."
+            }
           ]
         },
         {
@@ -101,14 +121,38 @@
       "title": "A: Complete with can, could or be able to",
       "instructions": "Write the correct form in each gap.",
       "items": [
-        { "sentence": "I love music, but I ...... play the piano yet.", "answer": "can't" },
-        { "sentence": "When my grandmother was five, she ...... already read.", "answer": "could" },
-        { "sentence": "After the operation, he'll ...... walk again soon.", "answer": "be able to" },
-        { "sentence": "We haven't ...... solve this maths problem yet.", "answer": "been able to" },
-        { "sentence": "...... you swim when you were six?", "answer": "Could" },
-        { "sentence": "If you practise every day, you'll ...... speak more fluently.", "answer": "be able to" },
-        { "sentence": "Sorry, I ...... come to the party tonight.", "answer": "can't" },
-        { "sentence": "She wasn't ...... finish the test on time.", "answer": "able to" }
+        {
+          "sentence": "I love music, but I ...... play the piano yet.",
+          "answer": "can't"
+        },
+        {
+          "sentence": "When my grandmother was five, she ...... already read.",
+          "answer": "could"
+        },
+        {
+          "sentence": "After the operation, he'll ...... walk again soon.",
+          "answer": "be able to"
+        },
+        {
+          "sentence": "We haven't ...... solve this maths problem yet.",
+          "answer": "been able to"
+        },
+        {
+          "sentence": "...... you swim when you were six?",
+          "answer": "Could"
+        },
+        {
+          "sentence": "If you practise every day, you'll ...... speak more fluently.",
+          "answer": "be able to"
+        },
+        {
+          "sentence": "Sorry, I ...... come to the party tonight.",
+          "answer": "can't"
+        },
+        {
+          "sentence": "She wasn't ...... finish the test on time.",
+          "answer": "able to"
+        }
       ]
     },
     {
@@ -116,14 +160,38 @@
       "title": "B: Permission (choose the correct modal)",
       "instructions": "Circle the correct word or phrase.",
       "items": [
-        { "sentence": "**Can / May** I leave the classroom for a minute, please?", "answer": "May" },
-        { "sentence": "You **can / could** borrow my dictionary if you want.", "answer": "can" },
-        { "sentence": "**Could / Can** you open the window, please?", "answer": "Could" },
-        { "sentence": "Students **may / could** use calculators in this part of the exam.", "answer": "may" },
-        { "sentence": "**May / Can** I ask you a personal question?", "answer": "May" },
-        { "sentence": "You **couldn't / can't** park here. It's private.", "answer": "can't" },
-        { "sentence": "Excuse me, **could / may** you tell me where platform 3 is?", "answer": "could" },
-        { "sentence": "No, you **may not / could not** use your phone during the lesson.", "answer": "may not" }
+        {
+          "sentence": "**Can / May** I leave the classroom for a minute, please?",
+          "answer": "May"
+        },
+        {
+          "sentence": "You **can / could** borrow my dictionary if you want.",
+          "answer": "can"
+        },
+        {
+          "sentence": "**Could / Can** you open the window, please?",
+          "answer": "Could"
+        },
+        {
+          "sentence": "Students **may / could** use calculators in this part of the exam.",
+          "answer": "may"
+        },
+        {
+          "sentence": "**May / Can** I ask you a personal question?",
+          "answer": "May"
+        },
+        {
+          "sentence": "You **couldn't / can't** park here. It's private.",
+          "answer": "can't"
+        },
+        {
+          "sentence": "Excuse me, **could / may** you tell me where platform 3 is?",
+          "answer": "could"
+        },
+        {
+          "sentence": "No, you **may not / could not** use your phone during the lesson.",
+          "answer": "may not"
+        }
       ]
     },
     {
@@ -131,14 +199,38 @@
       "title": "C: Advice (should / ought to)",
       "instructions": "Complete each sentence with should, shouldn't, ought to or ought not to.",
       "items": [
-        { "sentence": "You look tired. You ...... go to bed earlier.", "answer": "should" },
-        { "sentence": "We ...... spend so much money on things we don't need.", "answer": "shouldn't" },
-        { "sentence": "If he wants to pass, he ...... study more regularly.", "answer": "ought to" },
-        { "sentence": "You ...... eat so many sweets if you want healthier teeth.", "answer": "ought not to" },
-        { "sentence": "What ...... I do about this headache?", "answer": "should" },
-        { "sentence": "You ...... talk to your teacher if you're worried.", "answer": "should" },
-        { "sentence": "People ...... be rude to shop assistants.", "answer": "shouldn't" },
-        { "sentence": "We ...... leave now or we'll miss the bus.", "answer": "ought to" }
+        {
+          "sentence": "You look tired. You ...... go to bed earlier.",
+          "answer": "should"
+        },
+        {
+          "sentence": "We ...... spend so much money on things we don't need.",
+          "answer": "shouldn't"
+        },
+        {
+          "sentence": "If he wants to pass, he ...... study more regularly.",
+          "answer": "ought to"
+        },
+        {
+          "sentence": "You ...... eat so many sweets if you want healthier teeth.",
+          "answer": "ought not to"
+        },
+        {
+          "sentence": "What ...... I do about this headache?",
+          "answer": "should"
+        },
+        {
+          "sentence": "You ...... talk to your teacher if you're worried.",
+          "answer": "should"
+        },
+        {
+          "sentence": "People ...... be rude to shop assistants.",
+          "answer": "shouldn't"
+        },
+        {
+          "sentence": "We ...... leave now or we'll miss the bus.",
+          "answer": "ought to"
+        }
       ]
     },
     {
@@ -146,12 +238,30 @@
       "title": "D: Rewrite using a modal",
       "instructions": "Rewrite each sentence using the modal in brackets.",
       "items": [
-        { "sentence": "Is it possible for you to help me this afternoon? (can)\n...... you help me this afternoon?", "answer": "Can" },
-        { "sentence": "It is not a good idea to stay up so late. (shouldn't)\nYou ...... stay up so late.", "answer": "shouldn't" },
-        { "sentence": "I had the ability to run very fast when I was younger. (could)\nI ...... run very fast when I was younger.", "answer": "could" },
-        { "sentence": "Is it all right if I sit here? (may)\n...... I sit here?", "answer": "May" },
-        { "sentence": "It is not necessary to shout. (shouldn't)\nYou ...... shout.", "answer": "shouldn't" },
-        { "sentence": "She has managed to finish the project. (been able to)\nShe has ...... finish the project.", "answer": "been able to" }
+        {
+          "sentence": "Is it possible for you to help me this afternoon? (can)\n...... you help me this afternoon?",
+          "answer": "Can"
+        },
+        {
+          "sentence": "It is not a good idea to stay up so late. (shouldn't)\nYou ...... stay up so late.",
+          "answer": "shouldn't"
+        },
+        {
+          "sentence": "I had the ability to run very fast when I was younger. (could)\nI ...... run very fast when I was younger.",
+          "answer": "could"
+        },
+        {
+          "sentence": "Is it all right if I sit here? (may)\n...... I sit here?",
+          "answer": "May"
+        },
+        {
+          "sentence": "It is not necessary to shout. (shouldn't)\nYou ...... shout.",
+          "answer": "shouldn't"
+        },
+        {
+          "sentence": "She has managed to finish the project. (been able to)\nShe has ...... finish the project.",
+          "answer": "been able to"
+        }
       ]
     },
     {
@@ -192,32 +302,62 @@
       "items": [
         {
           "sentence": "'I'm very worried about the exam.' 'You ...... so much. You'll be fine.'",
-          "options": ["A should worry", "B shouldn't worry", "C may worry", "D can't worry"],
+          "options": [
+            "A should worry",
+            "B shouldn't worry",
+            "C may worry",
+            "D can't worry"
+          ],
           "answer": "B"
         },
         {
           "sentence": "When I was little, I ...... stay up late at weekends.",
-          "options": ["A can", "B am able to", "C could", "D should"],
+          "options": [
+            "A can",
+            "B am able to",
+            "C could",
+            "D should"
+          ],
           "answer": "C"
         },
         {
           "sentence": "'...... I borrow your pen for a second?' 'Of course.'",
-          "options": ["A May", "B Should", "C Ought", "D Must"],
+          "options": [
+            "A May",
+            "B Should",
+            "C Ought",
+            "D Must"
+          ],
           "answer": "A"
         },
         {
           "sentence": "You ...... bring your passport if you're flying abroad.",
-          "options": ["A should", "B can", "C could", "D may not"],
+          "options": [
+            "A should",
+            "B can",
+            "C could",
+            "D may not"
+          ],
           "answer": "A"
         },
         {
           "sentence": "By next month, he ...... speak French much better.",
-          "options": ["A could", "B will be able to", "C may", "D should"],
+          "options": [
+            "A could",
+            "B will be able to",
+            "C may",
+            "D should"
+          ],
           "answer": "B"
         },
         {
           "sentence": "Students ...... run in the corridors at school.",
-          "options": ["A should", "B can", "C shouldn't", "D may"],
+          "options": [
+            "A should",
+            "B can",
+            "C shouldn't",
+            "D may"
+          ],
           "answer": "C"
         }
       ]
@@ -227,12 +367,30 @@
       "title": "G: Error correction",
       "instructions": "Each sentence has one mistake with a modal. Write the correct sentence.",
       "items": [
-        { "sentence": "She cans speak three languages.", "answer": "She can speak three languages." },
-        { "sentence": "You should to see a doctor.", "answer": "You should see a doctor." },
-        { "sentence": "May I to use your phone for a moment?", "answer": "May I use your phone for a moment?" },
-        { "sentence": "I didn't could understand the instructions.", "answer": "I couldn't understand the instructions." },
-        { "sentence": "He will can finish it tomorrow.", "answer": "He will be able to finish it tomorrow." },
-        { "sentence": "We ought not go there so late.", "answer": "We ought not to go there so late." }
+        {
+          "sentence": "She cans speak three languages.",
+          "answer": "She can speak three languages."
+        },
+        {
+          "sentence": "You should to see a doctor.",
+          "answer": "You should see a doctor."
+        },
+        {
+          "sentence": "May I to use your phone for a moment?",
+          "answer": "May I use your phone for a moment?"
+        },
+        {
+          "sentence": "I didn't could understand the instructions.",
+          "answer": "I couldn't understand the instructions."
+        },
+        {
+          "sentence": "He will can finish it tomorrow.",
+          "answer": "He will be able to finish it tomorrow."
+        },
+        {
+          "sentence": "We ought not go there so late.",
+          "answer": "We ought not to go there so late."
+        }
       ]
     },
     {
@@ -240,14 +398,38 @@
       "title": "H: Mixed practice",
       "instructions": "Complete each gap with one suitable modal expression.",
       "items": [
-        { "sentence": "Excuse me, ...... I ask you something?", "answer": "may" },
-        { "sentence": "You ...... wear a helmet when you ride a bike.", "answer": "should" },
-        { "sentence": "I ...... read until I was seven years old.", "answer": "couldn't" },
-        { "sentence": "Don't worry. I'm sure you'll ...... solve the problem.", "answer": "be able to" },
-        { "sentence": "...... you possibly repeat that, please?", "answer": "Could" },
-        { "sentence": "We ...... arrive early if we want good seats.", "answer": "ought to" },
-        { "sentence": "Passengers ...... smoke on the plane.", "answer": "mustn't" },
-        { "sentence": "My little brother ...... use a computer very well now.", "answer": "can" }
+        {
+          "sentence": "Excuse me, ...... I ask you something?",
+          "answer": "may"
+        },
+        {
+          "sentence": "You ...... wear a helmet when you ride a bike.",
+          "answer": "should"
+        },
+        {
+          "sentence": "I ...... read until I was seven years old.",
+          "answer": "couldn't"
+        },
+        {
+          "sentence": "Don't worry. I'm sure you'll ...... solve the problem.",
+          "answer": "be able to"
+        },
+        {
+          "sentence": "...... you possibly repeat that, please?",
+          "answer": "Could"
+        },
+        {
+          "sentence": "We ...... arrive early if we want good seats.",
+          "answer": "ought to"
+        },
+        {
+          "sentence": "Passengers ...... smoke on the plane.",
+          "answer": "mustn't"
+        },
+        {
+          "sentence": "My little brother ...... use a computer very well now.",
+          "answer": "can"
+        }
       ]
     }
   ]

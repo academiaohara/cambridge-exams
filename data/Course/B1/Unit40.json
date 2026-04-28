@@ -16,14 +16,35 @@
         },
         {
           "subtitle": "Common words",
-          "tableHeaders": ["Time word / phrase", "Example"],
+          "tableHeaders": [
+            "Time word / phrase",
+            "Example"
+          ],
           "rows": [
-            ["after", "I'll call you after we solve the problem."],
-            ["as soon as", "I'll call you as soon as we solve the problem."],
-            ["before", "It'll be a few days before we find the solution."],
-            ["until / till", "I won't call you until we find the solution."],
-            ["when", "It'll be great when we find the solution."],
-            ["while", "I'll be in the office while I deal with this problem."]
+            [
+              "after",
+              "I'll call you after we solve the problem."
+            ],
+            [
+              "as soon as",
+              "I'll call you as soon as we solve the problem."
+            ],
+            [
+              "before",
+              "It'll be a few days before we find the solution."
+            ],
+            [
+              "until / till",
+              "I won't call you until we find the solution."
+            ],
+            [
+              "when",
+              "It'll be great when we find the solution."
+            ],
+            [
+              "while",
+              "I'll be in the office while I deal with this problem."
+            ]
           ]
         },
         {
@@ -46,9 +67,15 @@
           ]
         },
         {
-          "tableHeaders": ["Form", "Example"],
+          "tableHeaders": [
+            "Form",
+            "Example"
+          ],
           "rows": [
-            ["although + subject + verb, subject + verb", "Although my homework was difficult, I finished it before bed."]
+            [
+              "although + subject + verb, subject + verb",
+              "Although my homework was difficult, I finished it before bed."
+            ]
           ]
         },
         {
@@ -71,10 +98,19 @@
           ]
         },
         {
-          "tableHeaders": ["Form", "Example"],
+          "tableHeaders": [
+            "Form",
+            "Example"
+          ],
           "rows": [
-            ["in spite of / despite + -ing form, subject + verb", "In spite of revising for hours, I didn't do well in the test."],
-            ["in spite of / despite + noun, subject + verb", "Despite my revision, I didn't do well in the test."]
+            [
+              "in spite of / despite + -ing form, subject + verb",
+              "In spite of revising for hours, I didn't do well in the test."
+            ],
+            [
+              "in spite of / despite + noun, subject + verb",
+              "Despite my revision, I didn't do well in the test."
+            ]
           ]
         },
         {
@@ -97,9 +133,15 @@
           ]
         },
         {
-          "tableHeaders": ["Form", "Example"],
+          "tableHeaders": [
+            "Form",
+            "Example"
+          ],
           "rows": [
-            ["Subject + verb. However, subject + verb.", "We believed that we would find a solution. However, we were wrong."]
+            [
+              "Subject + verb. However, subject + verb.",
+              "We believed that we would find a solution. However, we were wrong."
+            ]
           ]
         },
         {
@@ -129,12 +171,30 @@
       "title": "A: Time clauses",
       "instructions": "Complete each sentence with one time word or phrase.",
       "items": [
-        { "sentence": "I'll text you ...... I arrive at the station.", "answer": "when" },
-        { "sentence": "Don't leave ...... I finish explaining the task.", "answer": "until" },
-        { "sentence": "She checked the door ...... she went to bed.", "answer": "before" },
-        { "sentence": "We'll start dinner ...... Dad gets home.", "answer": "as soon as" },
-        { "sentence": "Please wash your hands ...... you cook.", "answer": "before" },
-        { "sentence": "I usually listen to music ...... I do my homework.", "answer": "while" }
+        {
+          "sentence": "I'll text you ...... I arrive at the station.",
+          "answer": "when"
+        },
+        {
+          "sentence": "Don't leave ...... I finish explaining the task.",
+          "answer": "until"
+        },
+        {
+          "sentence": "She checked the door ...... she went to bed.",
+          "answer": "before"
+        },
+        {
+          "sentence": "We'll start dinner ...... Dad gets home.",
+          "answer": "as soon as"
+        },
+        {
+          "sentence": "Please wash your hands ...... you cook.",
+          "answer": "before"
+        },
+        {
+          "sentence": "I usually listen to music ...... I do my homework.",
+          "answer": "while"
+        }
       ]
     },
     {
@@ -142,12 +202,30 @@
       "title": "B: Although vs despite",
       "instructions": "Complete each sentence with although, despite or in spite of.",
       "items": [
-        { "sentence": "...... it was raining, they continued playing football.", "answer": "Although" },
-        { "sentence": "...... being tired, she finished the report.", "answer": "Despite" },
-        { "sentence": "He passed the exam ...... not studying much.", "answer": "in spite of" },
-        { "sentence": "...... the traffic, we arrived on time.", "answer": "Despite" },
-        { "sentence": "...... I was nervous, I gave the presentation.", "answer": "Although" },
-        { "sentence": "...... the noise, the baby stayed asleep.", "answer": "In spite of" }
+        {
+          "sentence": "...... it was raining, they continued playing football.",
+          "answer": "Although"
+        },
+        {
+          "sentence": "...... being tired, she finished the report.",
+          "answer": "Despite"
+        },
+        {
+          "sentence": "He passed the exam ...... not studying much.",
+          "answer": "in spite of"
+        },
+        {
+          "sentence": "...... the traffic, we arrived on time.",
+          "answer": "Despite"
+        },
+        {
+          "sentence": "...... I was nervous, I gave the presentation.",
+          "answer": "Although"
+        },
+        {
+          "sentence": "...... the noise, the baby stayed asleep.",
+          "answer": "In spite of"
+        }
       ]
     },
     {
@@ -155,12 +233,30 @@
       "title": "C: Rewrite with however",
       "instructions": "Join the ideas using however.",
       "items": [
-        { "sentence": "He trained every day. ......, he didn't win the race.", "answer": "However" },
-        { "sentence": "We planned carefully. ......, the event had problems.", "answer": "However" },
-        { "sentence": "The task looked easy. It was difficult, ...... .", "answer": "however" },
-        { "sentence": "I wanted to buy it. ......, it was too expensive.", "answer": "However" },
-        { "sentence": "She studied a lot. She forgot some answers, ...... .", "answer": "however" },
-        { "sentence": "The hotel was comfortable. ......, the service was poor.", "answer": "However" }
+        {
+          "sentence": "He trained every day. ......, he didn't win the race.",
+          "answer": "However"
+        },
+        {
+          "sentence": "We planned carefully. ......, the event had problems.",
+          "answer": "However"
+        },
+        {
+          "sentence": "The task looked easy. It was difficult, ...... .",
+          "answer": "however"
+        },
+        {
+          "sentence": "I wanted to buy it. ......, it was too expensive.",
+          "answer": "However"
+        },
+        {
+          "sentence": "She studied a lot. She forgot some answers, ...... .",
+          "answer": "however"
+        },
+        {
+          "sentence": "The hotel was comfortable. ......, the service was poor.",
+          "answer": "However"
+        }
       ]
     },
     {
@@ -168,12 +264,30 @@
       "title": "D: Unless",
       "instructions": "Complete the sentences with unless.",
       "items": [
-        { "sentence": "We won't catch the bus ...... we leave now.", "answer": "unless" },
-        { "sentence": "You can't enter ...... you show your ID.", "answer": "unless" },
-        { "sentence": "I'll call you tonight ...... I'm very late.", "answer": "unless" },
-        { "sentence": "The plants will die ...... you water them.", "answer": "unless" },
-        { "sentence": "She won't improve ...... she practises more.", "answer": "unless" },
-        { "sentence": "I won't lend you my bike ...... you promise to be careful.", "answer": "unless" }
+        {
+          "sentence": "We won't catch the bus ...... we leave now.",
+          "answer": "unless"
+        },
+        {
+          "sentence": "You can't enter ...... you show your ID.",
+          "answer": "unless"
+        },
+        {
+          "sentence": "I'll call you tonight ...... I'm very late.",
+          "answer": "unless"
+        },
+        {
+          "sentence": "The plants will die ...... you water them.",
+          "answer": "unless"
+        },
+        {
+          "sentence": "She won't improve ...... she practises more.",
+          "answer": "unless"
+        },
+        {
+          "sentence": "I won't lend you my bike ...... you promise to be careful.",
+          "answer": "unless"
+        }
       ]
     },
     {
@@ -183,32 +297,62 @@
       "items": [
         {
           "sentence": "Call me as soon as you ...... home.",
-          "options": ["A will get", "B get", "C are getting", "D got"],
+          "options": [
+            "A will get",
+            "B get",
+            "C are getting",
+            "D got"
+          ],
           "answer": "B"
         },
         {
           "sentence": "...... it was cold, they went for a walk.",
-          "options": ["A Despite", "B However", "C Although", "D Unless"],
+          "options": [
+            "A Despite",
+            "B However",
+            "C Although",
+            "D Unless"
+          ],
           "answer": "C"
         },
         {
           "sentence": "Despite ...... hard, we couldn't finish on time.",
-          "options": ["A work", "B worked", "C to work", "D working"],
+          "options": [
+            "A work",
+            "B worked",
+            "C to work",
+            "D working"
+          ],
           "answer": "D"
         },
         {
           "sentence": "She was ill. ......, she came to class.",
-          "options": ["A However", "B Unless", "C Although", "D Before"],
+          "options": [
+            "A However",
+            "B Unless",
+            "C Although",
+            "D Before"
+          ],
           "answer": "A"
         },
         {
           "sentence": "We'll miss the start ...... we hurry.",
-          "options": ["A if", "B unless", "C before", "D while"],
+          "options": [
+            "A if",
+            "B unless",
+            "C before",
+            "D while"
+          ],
           "answer": "B"
         },
         {
           "sentence": "I'll wait here ...... you finish.",
-          "options": ["A until", "B however", "C despite", "D although"],
+          "options": [
+            "A until",
+            "B however",
+            "C despite",
+            "D although"
+          ],
           "answer": "A"
         }
       ]

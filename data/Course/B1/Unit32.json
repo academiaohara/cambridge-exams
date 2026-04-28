@@ -2,7 +2,7 @@
   "block": 11,
   "unit": 32,
   "type": "grammar",
-  "unitTitle": "Unit 32: Reported questions, orders, requests",
+  "unitTitle": "Unit 32: Reported questions & orders",
   "sections": [
     {
       "type": "theory",
@@ -10,7 +10,10 @@
       "content": [
         {
           "subtitle": "Use",
-          "tableHeaders": ["Use", "Example"],
+          "tableHeaders": [
+            "Use",
+            "Example"
+          ],
           "rows": [
             [
               "To report what someone asked",
@@ -21,7 +24,10 @@
         {
           "directReportedTable": true,
           "subtitle": "Form",
-          "headers": ["Direct question/order/request", "Reported question/order/request"],
+          "headers": [
+            "Direct question/order/request",
+            "Reported question/order/request"
+          ],
           "rows": [
             {
               "type": "questions beginning with have, do or be",
@@ -129,8 +135,12 @@
           "subtitle": "Be careful",
           "items": [
             "Do not use question word order in reported questions.",
-            { "correct": "I asked when they would finish the house." },
-            { "incorrect": "I asked when would they finish the house." }
+            {
+              "correct": "I asked when they would finish the house."
+            },
+            {
+              "incorrect": "I asked when would they finish the house."
+            }
           ]
         }
       ]
@@ -235,32 +245,62 @@
       "items": [
         {
           "sentence": "\"Are you busy?\" she asked me. She asked me ...... busy.",
-          "options": ["A if I am", "B if I was", "C whether was I", "D that I was"],
+          "options": [
+            "A if I am",
+            "B if I was",
+            "C whether was I",
+            "D that I was"
+          ],
           "answer": "B"
         },
         {
           "sentence": "\"Why did you leave early?\" he asked. He asked ...... early.",
-          "options": ["A why did I leave", "B why I had left", "C why had I left", "D why I leave"],
+          "options": [
+            "A why did I leave",
+            "B why I had left",
+            "C why had I left",
+            "D why I leave"
+          ],
           "answer": "B"
         },
         {
           "sentence": "\"Please sit down,\" the doctor said. The doctor ...... down.",
-          "options": ["A asked me sit", "B told me to sit", "C said me to sit", "D asked that I sit"],
+          "options": [
+            "A asked me sit",
+            "B told me to sit",
+            "C said me to sit",
+            "D asked that I sit"
+          ],
           "answer": "B"
         },
         {
           "sentence": "\"Don't open the door,\" Mum said. Mum told us ...... the door.",
-          "options": ["A to not open", "B don't open", "C not to open", "D not open"],
+          "options": [
+            "A to not open",
+            "B don't open",
+            "C not to open",
+            "D not open"
+          ],
           "answer": "C"
         },
         {
           "sentence": "\"Can you help me?\" she asked. She asked me if I ...... help her.",
-          "options": ["A can", "B could", "C will", "D should"],
+          "options": [
+            "A can",
+            "B could",
+            "C will",
+            "D should"
+          ],
           "answer": "B"
         },
         {
           "sentence": "\"When will they arrive?\" he asked. He asked when they ...... .",
-          "options": ["A will arrive", "B would arrive", "C did arrive", "D arrive"],
+          "options": [
+            "A will arrive",
+            "B would arrive",
+            "C did arrive",
+            "D arrive"
+          ],
           "answer": "B"
         }
       ]
