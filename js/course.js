@@ -808,7 +808,7 @@
         var items = _expandChipItems(block.items || []);
         if (!items.length) return false;
         var subtitle = _normSubtitle(block.subtitle);
-        if (_isExampleSubtitle(subtitle) || _isUsesSubtitle(subtitle) || _isStructureSubtitle(subtitle) || subtitle === 'watch out!' || subtitle === 'form' || subtitle === 'use') {
+        if (_isExampleSubtitle(subtitle) || _isUsesSubtitle(subtitle) || _isStructureSubtitle(subtitle) || subtitle === 'be careful' || subtitle === 'form' || subtitle === 'use') {
           return false;
         }
         var keywordHint = /(word|phrase|verb|expression|linker|quantifier|modal|example|group|family|category)/.test(subtitle);
@@ -1183,12 +1183,12 @@
               continue;
             }
 
-            // "Watch out!" subtitle → styled warning box
-            if (block.subtitle === 'Watch out!') {
+            // "Be careful" subtitle → styled warning box
+            if (block.subtitle === 'Be careful') {
               html += '<div class="cu-gc-watchout">' +
                 '<div class="cu-gc-watchout-header">' +
                   '<span class="material-symbols-outlined cu-gc-watchout-icon">warning</span>' +
-                  '<span class="cu-gc-watchout-label">Watch out!</span>' +
+                  '<span class="cu-gc-watchout-label">Be careful</span>' +
                 '</div>';
               if (block.description) {
                 html += '<div class="cu-gc-watchout-desc">' + _bold(block.description) + '</div>';
