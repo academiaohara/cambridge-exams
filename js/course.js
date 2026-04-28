@@ -1074,11 +1074,15 @@
                 html += '<div class="cu-theory-subtitle">' + self._escapeHTML(block.subtitle) + '</div>';
               }
               var thCols = block.tableHeaders;
-              html += '<table class="cu-uses-examples-table"><thead><tr>';
-              thCols.forEach(function(h) {
-                html += '<th class="cu-ue-head">' + self._escapeHTML(h) + '</th>';
-              });
-              html += '</tr></thead><tbody>';
+              html += '<table class="cu-uses-examples-table"><thead>';
+              if (!block.noHeader) {
+                html += '<tr>';
+                thCols.forEach(function(h) {
+                  html += '<th class="cu-ue-head">' + self._escapeHTML(h) + '</th>';
+                });
+                html += '</tr>';
+              }
+              html += '</thead><tbody>';
               (block.rows || []).forEach(function(row) {
                 html += '<tr class="cu-ue-row">';
                 (Array.isArray(row) ? row : []).forEach(function(cell, ci) {
