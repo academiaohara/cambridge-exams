@@ -808,7 +808,7 @@
         var items = _expandChipItems(block.items || []);
         if (!items.length) return false;
         var subtitle = _normSubtitle(block.subtitle);
-        if (_isExampleSubtitle(subtitle) || _isUsesSubtitle(subtitle) || _isStructureSubtitle(subtitle) || subtitle === 'be careful' || subtitle === 'form' || subtitle === 'use') {
+        if (_isExampleSubtitle(subtitle) || _isUsesSubtitle(subtitle) || _isStructureSubtitle(subtitle) || subtitle === 'be careful' || subtitle === 'useful notes' || subtitle === 'helpful hint' || subtitle === 'form' || subtitle === 'use') {
           return false;
         }
         var keywordHint = /(word|phrase|verb|expression|linker|quantifier|modal|example|group|family|category)/.test(subtitle);
@@ -1179,6 +1179,44 @@
                 '</tr>';
               });
               html += '</tbody></table>';
+              contentIdx++;
+              continue;
+            }
+
+            // "Useful notes" / "Helpful hint" subtitle → styled info box
+            if (block.subtitle === 'Useful notes' || block.subtitle === 'Helpful hint') {
+              html += '<div class="cu-gc-usefnote">' +
+                '<div class="cu-gc-usefnote-header">' +
+                  '<span class="material-symbols-outlined cu-gc-usefnote-icon">lightbulb</span>' +
+                  '<span class="cu-gc-usefnote-label">' + self._escapeHTML(block.subtitle) + '</span>' +
+                '</div>';
+              if (block.description) {
+                html += '<div class="cu-gc-usefnote-desc">' + _bold(block.description) + '</div>';
+              }
+              var unItems = block.items || block.examples || block.notes || [];
+              if (unItems.length) {
+                if (block.chipStyle) {
+                  html += '<div class="cu-gc-usefnote-chips">';
+                  _expandChipItems(unItems).forEach(function(item) {
+                    html += '<span class="cu-theory-chip">' + _bold(item) + '</span>';
+                  });
+                  html += '</div>';
+                } else {
+                  html += '<ul class="cu-gc-usefnote-list">';
+                  unItems.forEach(function(item) {
+                    var itemStr = String(item);
+                    if (/^✓/.test(itemStr)) {
+                      html += '<li class="cu-theory-list-correct"><span class="cu-theory-list-mark">✓</span>' + _bold(itemStr.replace(/^✓\s*/, '')) + '</li>';
+                    } else if (/^[✗✕]/.test(itemStr)) {
+                      html += '<li class="cu-theory-list-incorrect"><span class="cu-theory-list-mark">✗</span><s>' + _bold(itemStr.replace(/^[✗✕]\s*/, '')) + '</s></li>';
+                    } else {
+                      html += '<li>' + _bold(itemStr) + '</li>';
+                    }
+                  });
+                  html += '</ul>';
+                }
+              }
+              html += '</div>';
               contentIdx++;
               continue;
             }

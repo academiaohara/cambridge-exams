@@ -352,6 +352,70 @@
   .cu-gc-wo-columns { grid-template-columns: 1fr; }
 }
 
+/* Useful notes info box */
+.cu-gc-usefnote {
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  border-left: 3px solid #3b82f6;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 4px 0 2px;
+}
+.cu-gc-usefnote-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.cu-gc-usefnote-icon {
+  font-size: 18px;
+  color: #2563eb;
+}
+.cu-gc-usefnote-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1e40af;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.cu-gc-usefnote-desc {
+  font-size: 0.87rem;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+.cu-gc-usefnote-list {
+  margin: 4px 0 0 4px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cu-gc-usefnote-list li {
+  font-size: 0.86rem;
+  color: var(--text-dark, #0f172a);
+  line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
+}
+.cu-gc-usefnote-list li::before {
+  content: '•';
+  position: absolute;
+  left: 4px;
+  color: #2563eb;
+}
+.cu-gc-usefnote-list li.cu-theory-list-correct::before { content: ''; }
+.cu-gc-usefnote-list li.cu-theory-list-correct { padding-left: 0; }
+.cu-gc-usefnote-list li.cu-theory-list-incorrect::before { content: ''; }
+.cu-gc-usefnote-list li.cu-theory-list-incorrect { padding-left: 0; }
+.cu-gc-usefnote-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
 /* Two-column side-by-side theory block */
 .cu-theory-two-cols {
   display: grid;
