@@ -159,7 +159,7 @@
           "answer": "could have"
         },
         {
-          "sentence": "You **must have / might have** been very happy when you passed the exam!",
+          "sentence": "You **might have / must have** been very happy when you passed the exam!",
           "answer": "must have"
         },
         {
@@ -167,7 +167,7 @@
           "answer": "can't have"
         },
         {
-          "sentence": "You **should have / may have** called me before you came.",
+          "sentence": "You **may have / should have** called me before you came.",
           "answer": "should have"
         },
         {
@@ -175,7 +175,7 @@
           "answer": "might have"
         },
         {
-          "sentence": "We **could have / must have** won, but we missed two easy goals.",
+          "sentence": "We **must have / could have** won, but we missed two easy goals.",
           "answer": "could have"
         },
         {
@@ -333,6 +333,69 @@
         {
           "sentence": "It was wrong not to apologise. **OUGHT**\nYou ...... apologise.",
           "answer": "ought to have apologised"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "G: Error correction",
+      "instructions": "Find and correct one mistake in each sentence.",
+      "items": [
+        {
+          "sentence": "She must have **forgot** her keys.",
+          "answer": "forgotten"
+        },
+        {
+          "sentence": "He can't have **be** at the meeting.",
+          "answer": "been"
+        },
+        {
+          "sentence": "You should have **tell** me earlier.",
+          "answer": "told"
+        },
+        {
+          "sentence": "They might have **took** the wrong bus.",
+          "answer": "taken"
+        },
+        {
+          "sentence": "We could have **win** if we had tried harder.",
+          "answer": "won"
+        },
+        {
+          "sentence": "I ought to have **write** sooner.",
+          "answer": "written"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "H: Key word transformation",
+      "instructions": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+      "showCorrectInline": true,
+      "items": [
+        {
+          "sentence": "I'm sure she didn't take the money.\nShe ...... the money.",
+          "answer": "can't have taken"
+        },
+        {
+          "sentence": "It was wrong of you to leave without saying goodbye.\nYou ...... without saying goodbye.",
+          "answer": "shouldn't have left"
+        },
+        {
+          "sentence": "I'm sure he was at home – his car was there.\nHe ...... at home – his car was there.",
+          "answer": "must have been"
+        },
+        {
+          "sentence": "Perhaps they got lost on the way.\nThey ...... on the way.",
+          "answer": "might have got"
+        },
+        {
+          "sentence": "It was a pity you didn't come – you would have loved it.\nYou ...... – you would have loved it.",
+          "answer": "should have come"
+        },
+        {
+          "sentence": "I'm sure it wasn't easy for her.\nIt ...... easy for her.",
+          "answer": "can't have been"
         }
       ]
     }

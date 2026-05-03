@@ -162,7 +162,8 @@
           "sentence": "People who smoke should try to stop.",
           "answer": "No commas"
         }
-      ]
+      ],
+      "subtype": "comma-placement"
     },
     {
       "type": "exercise",
@@ -419,6 +420,37 @@
         {
           "sentence": "It's the kind of place ...... I would like to work one day.",
           "answer": "where"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "title": "J: Key word transformation",
+      "instructions": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+      "items": [
+        {
+          "sentence": "The woman is a teacher. She lives next door.\nThe woman ...... next door is a teacher.",
+          "answer": "who lives"
+        },
+        {
+          "sentence": "I bought a car. It was made in Germany.\nI bought a car ...... in Germany.",
+          "answer": "that was made"
+        },
+        {
+          "sentence": "The hotel was beautiful. We stayed there.\nThe hotel ...... was beautiful.",
+          "answer": "where we stayed"
+        },
+        {
+          "sentence": "He's the man. His son won the prize.\nHe's the man ...... the prize.",
+          "answer": "whose son won"
+        },
+        {
+          "sentence": "The book was very interesting. I read it last week.\nThe book ...... last week was very interesting.",
+          "answer": "that I read"
+        },
+        {
+          "sentence": "That's the shop. I buy my coffee there.\nThat's the shop ...... my coffee.",
+          "answer": "where I buy"
         }
       ]
     }
