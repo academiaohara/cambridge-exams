@@ -2229,6 +2229,19 @@
       BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
+    _toggleCuAbSelect: function(btn) {
+      if (btn.disabled) return;
+      var item = btn.closest('.cu-ex-item');
+      if (!item) return;
+      item.querySelectorAll('.cu-ab-btn').forEach(function(b) {
+        b.classList.remove('cu-ab-selected');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('cu-ab-selected');
+      btn.setAttribute('aria-pressed', 'true');
+      BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
+    },
+
     _renderCuExFooter: function(secId) {
       return '<div class="cu-ex-footer">' +
         '<button class="cu-check-btn" onclick="BentoGrid._checkCuExSection(\'' + secId + '\')">' +
@@ -2727,8 +2740,11 @@
       var hints = ex.hints || [];
       var answerMap = {};
       var hintMap = {};
-      answers.forEach(function(ans, idx) { answerMap[idx + 1] = ans; });
-      hints.forEach(function(h, idx) { hintMap[idx + 1] = h; });
+      var passageGapRe = /\((\d+)\)\s*(?:\.{6,}|…{2,})/;
+      var firstGapMatch = passageGapRe.exec(passage);
+      var startGap = firstGapMatch ? parseInt(firstGapMatch[1]) : 1;
+      answers.forEach(function(ans, idx) { answerMap[startGap + idx] = ans; });
+      hints.forEach(function(h, idx) { hintMap[startGap + idx] = h; });
       var passageHtml = self._escapeHTML(passage)
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
         .replace(
@@ -3362,11 +3378,13 @@
           '<div class="cu-ex-sentence">' +
             '<div class="cu-ex-kwtrans">' +
               '<div class="cu-ex-kwtrans-row">' +
-                '<span class="cu-ex-kwtrans-label">A</span>' +
+                '<button class="cu-ex-kwtrans-label cu-ab-btn" data-choice="A" type="button" ' +
+                'onclick="BentoGrid._toggleCuAbSelect(this)" aria-pressed="false">A</button>' +
                 '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(rawA, inputId + '_a') + '</div>' +
               '</div>' +
               '<div class="cu-ex-kwtrans-row">' +
-                '<span class="cu-ex-kwtrans-label">B</span>' +
+                '<button class="cu-ex-kwtrans-label cu-ab-btn" data-choice="B" type="button" ' +
+                'onclick="BentoGrid._toggleCuAbSelect(this)" aria-pressed="false">B</button>' +
                 '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(rawB, inputId + '_b') + '</div>' +
               '</div>' +
             '</div>' +
@@ -4495,6 +4513,13 @@
         bcState.push(okBtn && okBtn.classList.contains('cu-bc-ok-selected') ? 1 : 0);
       });
       if (bcState.length) answers.bcState = bcState;
+      // A/B circle-select items state
+      var abState = [];
+      sec.querySelectorAll('.cu-ex-item').forEach(function(item) {
+        var selected = item.querySelector('.cu-ab-btn.cu-ab-selected');
+        abState.push(selected ? (selected.getAttribute('data-choice') || '') : '');
+      });
+      if (abState.length) answers.abState = abState;
       var mcPassage = {};
       sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
         var secId = gap.getAttribute('data-sec-id') || '';
@@ -4611,6 +4636,19 @@
           if (answers.bcState[ii] !== 1) return;
           var okBtn = item.querySelector('.cu-bc-ok-btn');
           if (okBtn) { okBtn.classList.add('cu-bc-ok-selected'); okBtn.setAttribute('aria-pressed', 'true'); }
+        });
+      }
+      // Restore A/B circle-select selections
+      if (answers.abState && Array.isArray(answers.abState)) {
+        sec.querySelectorAll('.cu-ex-item').forEach(function(item, ii) {
+          var choice = answers.abState[ii];
+          if (!choice) return;
+          item.querySelectorAll('.cu-ab-btn').forEach(function(b) {
+            if (b.getAttribute('data-choice') === choice) {
+              b.classList.add('cu-ab-selected');
+              b.setAttribute('aria-pressed', 'true');
+            }
+          });
         });
       }
       if (answers.mcPassage) {
@@ -6025,6 +6063,30 @@
       }
       sec.querySelectorAll('.cu-ex-item:not(.cu-yn-item)').forEach(function(item) {
         var answer = (item.getAttribute('data-answer') || '').trim();
+        // Handle A/B circle-select items (sentenceA/sentenceB format)
+        var abBtns = item.querySelectorAll('.cu-ab-btn');
+        if (abBtns.length) {
+          var selectedAb = item.querySelector('.cu-ab-btn.cu-ab-selected');
+          totalItems++;
+          abBtns.forEach(function(b) { b.disabled = true; });
+          if (selectedAb) {
+            var givenAb = selectedAb.getAttribute('data-choice') || '';
+            var okAb = givenAb === answer;
+            selectedAb.classList.add(okAb ? 'cu-ab-correct' : 'cu-ab-incorrect');
+            if (!okAb) {
+              abBtns.forEach(function(b) {
+                if (b.getAttribute('data-choice') === answer) b.classList.add('cu-ab-correct-reveal');
+              });
+            }
+            if (okAb) correctItems++;
+          } else {
+            // Nothing selected - reveal correct
+            abBtns.forEach(function(b) {
+              if (b.getAttribute('data-choice') === answer) b.classList.add('cu-ab-correct-reveal');
+            });
+          }
+          return; // skip further checks for this item (no gap inputs present)
+        }
         // For sync-items, only check one representative input (all are synced to the same value)
         var isSyncItem = item.classList.contains('cu-sync-item');
         var rawInputs = item.querySelectorAll('.cu-gap-input');
