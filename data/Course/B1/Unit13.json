@@ -117,41 +117,32 @@
     {
       "type": "exercise",
       "title": "A: Countable or uncountable?",
-      "instructions": "Write C (countable) or U (uncountable).",
-      "items": [
-        {
-          "sentence": "advice",
-          "answer": "U"
-        },
-        {
-          "sentence": "apple",
-          "answer": "C"
-        },
-        {
-          "sentence": "rice",
-          "answer": "U"
-        },
-        {
-          "sentence": "child",
-          "answer": "C"
-        },
-        {
-          "sentence": "information",
-          "answer": "U"
-        },
-        {
-          "sentence": "dish",
-          "answer": "C"
-        },
-        {
-          "sentence": "work",
-          "answer": "U"
-        },
-        {
-          "sentence": "tooth",
-          "answer": "C"
-        }
-      ]
+      "instructions": "Drag each word to the correct box.",
+      "subtype": "drag-category",
+      "categories": [
+        "Countable",
+        "Uncountable"
+      ],
+      "words": [
+        "advice",
+        "apple",
+        "rice",
+        "child",
+        "information",
+        "dish",
+        "work",
+        "tooth"
+      ],
+      "answers": {
+        "advice": "Uncountable",
+        "apple": "Countable",
+        "rice": "Uncountable",
+        "child": "Countable",
+        "information": "Uncountable",
+        "dish": "Countable",
+        "work": "Uncountable",
+        "tooth": "Countable"
+      }
     },
     {
       "type": "exercise",

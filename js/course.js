@@ -1387,7 +1387,8 @@
         } else if (section.type === 'exercise') {
           var secId = 'cu-sec-' + idx;
           var multiSelectAttr = section.multiSelect ? ' data-multi-select="true"' : '';
-          html += '<div class="cu-section cu-exercise" id="' + secId + '"' + multiSelectAttr + '>' +
+          var showCorrectInlineAttr = section.showCorrectInline ? ' data-show-correct-inline="true"' : '';
+          html += '<div class="cu-section cu-exercise" id="' + secId + '"' + multiSelectAttr + showCorrectInlineAttr + '>' +
             '<div class="cu-section-title">' + _mi('edit_note') + ' ' + self._escapeHTML(section.title) + '</div>';
 
           if (section.instructions) {
@@ -1417,12 +1418,14 @@
             html += self._renderCuCommaPlacementExercise(section, grIdBase, secId);
           } else if (section.subtype === 'bold-correct') {
             html += self._renderCuBoldCorrectExercise(section, grIdBase, secId);
+          } else if (section.subtype === 'drag-category') {
+            html += self._renderCuDragCategoryExercise(section, grIdBase, secId);
           } else if (section.passage && items.length) {
             html += self._renderCuMcPassageExercise(section, grIdBase, secId);
           } else {
             var hasInteractive = items.some(function(it) { return self._itemHasInteractive(it); });
             html += '<div class="cu-ex-items">';
-            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous, section.hideNumBadge, section.textareaAnswer, section.showOkBtn);
+            html += self._renderCuExItemsList(items, 'gr-' + section.title.replace(/\W+/g, ''), secId, section.continuous, section.hideNumBadge, section.textareaAnswer, section.showOkBtn, section.showCopyBtn);
             html += '</div>';
             if (hasInteractive) html += self._renderCuExFooter(secId);
           }
@@ -2277,6 +2280,8 @@
         var textNode = showBtn.lastChild;
         if (textNode && textNode.nodeType === 3) textNode.textContent = ' Show answers';
       }
+      // Remove inline correct-answer hints
+      sec.querySelectorAll('.cu-correct-inline').forEach(function(el) { el.remove(); });
       // Reset text inputs
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) {
         input.value = '';
@@ -3320,13 +3325,13 @@
       sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
 
-    _renderCuExItemsList: function(items, idBase, secId, continuous, hideNumBadge, useTextarea, showOkBtn) {
+    _renderCuExItemsList: function(items, idBase, secId, continuous, hideNumBadge, useTextarea, showOkBtn, showCopyBtn) {
       var self = this;
       if (!items || !items.length) return '';
       if (continuous || items.length <= CU_PAGE_SIZE) {
         var html = '';
         items.forEach(function(item, iIdx) {
-          html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx, null, hideNumBadge, useTextarea, showOkBtn);
+          html += self._renderCourseExItem(item, iIdx, idBase + '-' + iIdx, null, hideNumBadge, useTextarea, showOkBtn, showCopyBtn);
         });
         return html;
       }
@@ -3350,7 +3355,7 @@
         html += '<div class="cu-ex-page' + (pageIdx === 0 ? ' cu-ex-page-active' : '') + '">';
         pageItems.forEach(function(item, itemIdx) {
           var globalIdx = pageIdx * CU_PAGE_SIZE + itemIdx;
-          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx, null, hideNumBadge, useTextarea, showOkBtn);
+          html += self._renderCourseExItem(item, globalIdx, idBase + '-' + globalIdx, null, hideNumBadge, useTextarea, showOkBtn, showCopyBtn);
         });
         if (pageIdx < pages.length - 1) {
           var remaining = pages.length - pageIdx - 1;
@@ -3363,7 +3368,7 @@
       return html;
     },
 
-    _renderCourseExItem: function(item, idx, idBase, trackCallback, hideNumBadge, useTextarea, showOkBtn) {
+    _renderCourseExItem: function(item, idx, idBase, trackCallback, hideNumBadge, useTextarea, showOkBtn, showCopyBtn) {
       var self = this;
       var answer = item.answer || '';
       var inputId = 'cuex-' + idBase;
@@ -3484,10 +3489,20 @@
           '</div>';
       }
 
+      // Copy button for standalone textarea items (no gap in sentence)
+      var copyBtnHtml = '';
+      if (showCopyBtn && useTextarea && !isMC) {
+        var hasGapInSentence = /\.{5,}|[…]{2,}/.test(sentence);
+        if (!hasGapInSentence) {
+          copyBtnHtml = '<button class="cu-copy-btn" type="button" onclick="BentoGrid._copySentenceToTextarea(this)" title="Copy original sentence">\u2398</button>';
+        }
+      }
+
       return '<div class="cu-ex-item' + (item.tick !== undefined ? ' cu-has-tick' : '') + '"' + multiAnswerAttr + ' data-answer="' + self._escapeHTML(answer) + '"' + (item.tick !== undefined ? ' data-tick="' + self._escapeHTML(item.tick || '') + '"' : '') + '>' +
         numBadgeHtml +
         contextHtml +
         '<div class="cu-ex-sentence">' + sentenceHtml + '</div>' +
+        copyBtnHtml +
         (tickHtml ? '<div class="cu-item-tick-row">' + tickHtml + '</div>' : '') +
         '<div class="cu-ex-foot">' +
           '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
@@ -3764,6 +3779,29 @@
         }
       }
 
+      // Post-process: if the last text part ends with (CAPS) – word-formation hint in parens
+      // convert the preceding gap to gap-wf and remove the paren hint text
+      var lastTxtPartIdx = -1;
+      for (var ltp = parts.length - 1; ltp >= 0; ltp--) {
+        if (parts[ltp].type === 'text') { lastTxtPartIdx = ltp; break; }
+      }
+      if (lastTxtPartIdx !== -1) {
+        var wfParenMatch2 = parts[lastTxtPartIdx].val.match(/^([\s\S]*?)\s*\(([A-Z]{2,}(?:\s*[\/\\]\s*[A-Z]+)*)\)\s*$/);
+        if (wfParenMatch2) {
+          var lastGapIdx3 = -1;
+          for (var lgi = lastTxtPartIdx - 1; lgi >= 0; lgi--) {
+            if (parts[lgi].type === 'gap' || parts[lgi].type === 'hint-gap' || parts[lgi].type === 'gap-hint') {
+              lastGapIdx3 = lgi; break;
+            }
+          }
+          if (lastGapIdx3 !== -1) {
+            parts[lastTxtPartIdx].val = wfParenMatch2[1];
+            if (!parts[lastTxtPartIdx].val.trim()) parts.splice(lastTxtPartIdx, 1);
+            parts[lastGapIdx3] = { type: 'gap-wf', wfWord: wfParenMatch2[2] };
+          }
+        }
+      }
+
       // Post-process: capture trailing (HINT) text into the preceding hint-gap pill
       // e.g. "(1) ...... (EXPLAIN)" → pill with num=1, input, hint="EXPLAIN" all together
       for (var pi = 0; pi < parts.length - 1; pi++) {
@@ -3918,6 +3956,18 @@
         btn.classList.add('cu-option-selected');
       }
       BentoGrid._saveCuExSectionState(sec || btn.closest('.cu-section'));
+    },
+
+    _copySentenceToTextarea: function(btn) {
+      var item = btn.closest('.cu-ex-item');
+      if (!item) return;
+      var sentenceEl = item.querySelector('.cu-ex-sentence');
+      var textarea = item.querySelector('.cu-gap-textarea');
+      if (sentenceEl && textarea) {
+        textarea.value = sentenceEl.textContent.trim();
+        BentoGrid._resizeCuInput(textarea);
+        textarea.focus();
+      }
     },
 
     // Fill the input inside an error-correction hint pill with "OK" (correct as written).
@@ -6152,6 +6202,21 @@
             if (checkClass) {
               input.classList.add(checkClass);
               input.setAttribute('data-check-class', checkClass);
+            }
+          }
+          // Show correct answer inline when section is configured to do so
+          if (checkClass === 'cu-input-incorrect') {
+            var sectionEl2 = input.closest('.cu-section');
+            if (sectionEl2 && sectionEl2.getAttribute('data-show-correct-inline') === 'true') {
+              var oldInline = input.nextSibling;
+              if (oldInline && oldInline.classList && oldInline.classList.contains('cu-correct-inline')) oldInline.remove();
+              var correctVal2 = (answerParts[partIdx - 1] || '').trim();
+              if (correctVal2) {
+                var inlineSpan2 = document.createElement('span');
+                inlineSpan2.className = 'cu-correct-inline';
+                inlineSpan2.textContent = '\u2192 ' + correctVal2;
+                if (input.parentNode) input.parentNode.insertBefore(inlineSpan2, input.nextSibling);
+              }
             }
           }
           if (ok) correctItems++;
