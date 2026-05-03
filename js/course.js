@@ -2740,7 +2740,7 @@
       var hints = ex.hints || [];
       var answerMap = {};
       var hintMap = {};
-      var passageGapRe = /\((\d+)\)\s*(?:\.{6,}|…{2,})/g;
+      var passageGapRe = /\((\d+)\)\s*(?:\.{6,}|…{2,})/;
       var firstGapMatch = passageGapRe.exec(passage);
       var startGap = firstGapMatch ? parseInt(firstGapMatch[1]) : 1;
       answers.forEach(function(ans, idx) { answerMap[startGap + idx] = ans; });
@@ -4519,7 +4519,7 @@
         var selected = item.querySelector('.cu-ab-btn.cu-ab-selected');
         abState.push(selected ? (selected.getAttribute('data-choice') || '') : '');
       });
-      if (abState.some(function(v) { return v !== ''; })) answers.abState = abState;
+      if (abState.length) answers.abState = abState;
       var mcPassage = {};
       sec.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
         var secId = gap.getAttribute('data-sec-id') || '';
@@ -6085,7 +6085,7 @@
               if (b.getAttribute('data-choice') === answer) b.classList.add('cu-ab-correct-reveal');
             });
           }
-          return; // skip further checks for this item (no gap inputs)
+          return; // skip further checks for this item (no gap inputs present)
         }
         // For sync-items, only check one representative input (all are synced to the same value)
         var isSyncItem = item.classList.contains('cu-sync-item');
