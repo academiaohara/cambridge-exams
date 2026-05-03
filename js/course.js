@@ -2753,7 +2753,7 @@
       var passageHtml = self._escapeHTML(passage)
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
         .replace(
-        /\((\d+)\)\s*(?:\.{6,}|…{2,})/g,
+        /(?:<strong>[^<]*<\/strong>\s*)?\((\d+)\)\s*(?:\.{6,}|…{2,})/g,
         function(_, num) {
           var gapNum = parseInt(num);
           var gId = idBase + '-pi' + gapNum;
@@ -3378,8 +3378,10 @@
       if (item.sentenceA !== undefined || item.sentenceB !== undefined) {
         var rawA = (item.sentenceA || '').replace(/^A[.):\s]\s*/, '');
         var rawB = (item.sentenceB || '').replace(/^B[.):\s]\s*/, '');
+        var contextHtmlAB = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
         return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
           numBadgeHtml +
+          contextHtmlAB +
           '<div class="cu-ex-sentence">' +
             '<div class="cu-ex-kwtrans">' +
               '<div class="cu-ex-kwtrans-row">' +

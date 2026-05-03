@@ -91,39 +91,35 @@
     "exercises": {
       "A": {
         "title": "Topic vocabulary (gap fill)",
-        "instructions": "Complete using the correct form of the words and phrases in the boxes.",
+        "instructions": "Complete using the correct form of the words and phrases given.",
         "type": "grouped",
         "groups": [
           {
-            "words": ["achieve", "fail", "pass"],
             "questions": [
-              { "sentence": "We had our English exam this morning. I hope I've ...... !", "answer": "passed" },
-              { "sentence": "Pete couldn't answer any questions, so he thinks he has ...... .", "answer": "failed" },
-              { "sentence": "Our teacher said that we've all ...... a lot this year.", "answer": "achieved" }
+              { "sentence": "We had our English exam this morning. I hope I've ...... (achieve / fail / pass)!", "answer": "passed" },
+              { "sentence": "Pete couldn't answer any questions, so he thinks he has ...... (achieve / fail / pass).", "answer": "failed" },
+              { "sentence": "Our teacher said that we've all ...... (achieve / fail / pass) a lot this year.", "answer": "achieved" }
             ]
           },
           {
-            "words": ["degree", "experience", "instruction"],
             "questions": [
-              { "sentence": "I've left you a list of ...... on the kitchen table. Make sure you follow them!", "answer": "instructions" },
-              { "sentence": "Meeting Brad Pitt was an amazing ...... !", "answer": "experience" },
-              { "sentence": "My sister left Warwick University after she got her ...... .", "answer": "degree" }
+              { "sentence": "I've left you a list of ...... (degree / experience / instruction) on the kitchen table. Make sure you follow them!", "answer": "instructions" },
+              { "sentence": "Meeting Brad Pitt was an amazing ...... (degree / experience / instruction)!", "answer": "experience" },
+              { "sentence": "My sister left Warwick University after she got her ...... (degree / experience / instruction).", "answer": "degree" }
             ]
           },
           {
-            "words": ["course", "qualification", "skill"],
             "questions": [
-              { "sentence": "Being able to use a computer is a very useful ...... .", "answer": "skill" },
-              { "sentence": "I'm thinking of going on a computer ...... .", "answer": "course" },
-              { "sentence": "You can only apply for this job if you've got a ...... in website design.", "answer": "qualification" }
+              { "sentence": "Being able to use a computer is a very useful ...... (course / qualification / skill).", "answer": "skill" },
+              { "sentence": "I'm thinking of going on a computer ...... (course / qualification / skill).", "answer": "course" },
+              { "sentence": "You can only apply for this job if you've got a ...... (course / qualification / skill) in website design.", "answer": "qualification" }
             ]
           },
           {
-            "words": ["make progress", "make sure", "take an exam"],
             "questions": [
-              { "sentence": "You've all ...... a lot of ...... this year. Well done!", "answer": "made, progress" },
-              { "sentence": "I always get nervous before I ...... .", "answer": "take an exam" },
-              { "sentence": "I ...... that I'd answered all the questions and then I handed in my test paper.", "answer": "made sure" }
+              { "sentence": "You've all ...... (make progress / make sure / take an exam) a lot of ...... (make progress / make sure / take an exam) this year. Well done!", "answer": "made, progress" },
+              { "sentence": "I always get nervous before I ...... (make progress / make sure / take an exam).", "answer": "take an exam" },
+              { "sentence": "I ...... (make progress / make sure / take an exam) that I'd answered all the questions and then I handed in my test paper.", "answer": "made sure" }
             ]
           }
         ]

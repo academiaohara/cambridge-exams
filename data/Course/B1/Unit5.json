@@ -123,59 +123,45 @@
       "instructions": "Choose the sentence (A or B) which means the same as the first sentence.",
       "items": [
         {
-          "sentence": "We'd had dinner when Wendy arrived.",
-          "options": [
-            "A Wendy arrived and then we had dinner.",
-            "B We had dinner and then Wendy arrived."
-          ],
+          "context": "We'd had dinner when Wendy arrived.",
+          "sentenceA": "Wendy arrived and then we had dinner.",
+          "sentenceB": "We had dinner and then Wendy arrived.",
           "answer": "B"
         },
         {
-          "sentence": "I read the book after I'd seen the film.",
-          "options": [
-            "A I saw the film and then I read the book.",
-            "B I read the book and then I saw the film."
-          ],
+          "context": "I read the book after I'd seen the film.",
+          "sentenceA": "I saw the film and then I read the book.",
+          "sentenceB": "I read the book and then I saw the film.",
           "answer": "A"
         },
         {
-          "sentence": "By the time Dad came home, I'd gone to bed.",
-          "options": [
-            "A I went to bed before Dad came home.",
-            "B I went to bed after Dad came home."
-          ],
+          "context": "By the time Dad came home, I'd gone to bed.",
+          "sentenceA": "I went to bed before Dad came home.",
+          "sentenceB": "I went to bed after Dad came home.",
           "answer": "A"
         },
         {
-          "sentence": "She didn't go to bed until her mum had come home.",
-          "options": [
-            "A She went to bed and then her mum came home.",
-            "B Her mum came home and then she went to bed."
-          ],
+          "context": "She didn't go to bed until her mum had come home.",
+          "sentenceA": "She went to bed and then her mum came home.",
+          "sentenceB": "Her mum came home and then she went to bed.",
           "answer": "B"
         },
         {
-          "sentence": "Mr Banks hadn't arrived at the office by the time I got there.",
-          "options": [
-            "A I arrived before Mr Banks.",
-            "B Mr Banks arrived before me."
-          ],
+          "context": "Mr Banks hadn't arrived at the office by the time I got there.",
+          "sentenceA": "I arrived before Mr Banks.",
+          "sentenceB": "Mr Banks arrived before me.",
           "answer": "A"
         },
         {
-          "sentence": "They'd bought the plane tickets before they heard about the cheaper flight.",
-          "options": [
-            "A They bought the plane tickets and later they heard about the cheaper flight.",
-            "B They heard about the cheaper flight and then they bought the plane tickets."
-          ],
+          "context": "They'd bought the plane tickets before they heard about the cheaper flight.",
+          "sentenceA": "They bought the plane tickets and later they heard about the cheaper flight.",
+          "sentenceB": "They heard about the cheaper flight and then they bought the plane tickets.",
           "answer": "A"
         },
         {
-          "sentence": "The girls had tidied the house when the visitors arrived.",
-          "options": [
-            "A The visitors arrived and later the girls tidied the house.",
-            "B The girls tidied the house and then the visitors arrived."
-          ],
+          "context": "The girls had tidied the house when the visitors arrived.",
+          "sentenceA": "The visitors arrived and later the girls tidied the house.",
+          "sentenceB": "The girls tidied the house and then the visitors arrived.",
           "answer": "B"
         }
       ]
