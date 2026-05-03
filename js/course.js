@@ -5374,22 +5374,29 @@
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
       // Build dots navigation bar above all sections
-      var dotsHtml = '<div class="cu-dots-nav" id="cu-dots-nav">';
-      var theoryDotCount = 0;
-      var vocabDotCount = 0;
-      var exerciseDotCount = 0;
+      // Collect dot data and sort: theory first, then vocab, then exercises
+      var dotsRaw = [];
       for (var d = 0; d < total; d++) {
         var sec = sections[d];
         var isTheory = sec.classList.contains('cu-theory');
         var isVocab = sec.classList.contains('cu-vocab');
-        var dotTypeClass = isTheory ? 'cu-dot-theory' : (isVocab ? 'cu-dot-vocab' : 'cu-dot-exercise');
-        var activeClass = d === startIdx ? ' cu-dot-active' : '';
         var titleEl = sec.querySelector('.cu-section-title');
         var titleText = titleEl ? titleEl.textContent.trim().replace(/"/g, '&quot;') : String(d + 1);
-        var dotLabel = isTheory ? String(++theoryDotCount) : (isVocab ? String(++vocabDotCount) : String.fromCharCode(65 + exerciseDotCount++));
+        dotsRaw.push({ idx: d, isTheory: isTheory, isVocab: isVocab, titleText: titleText, sortOrder: isTheory ? 0 : (isVocab ? 1 : 2) });
+      }
+      dotsRaw.sort(function(a, b) { return a.sortOrder - b.sortOrder; });
+      var dotsHtml = '<div class="cu-dots-nav" id="cu-dots-nav">';
+      var theoryDotCount = 0;
+      var vocabDotCount = 0;
+      var exerciseDotCount = 0;
+      for (var di = 0; di < dotsRaw.length; di++) {
+        var dot = dotsRaw[di];
+        var dotTypeClass = dot.isTheory ? 'cu-dot-theory' : (dot.isVocab ? 'cu-dot-vocab' : 'cu-dot-exercise');
+        var activeClass = dot.idx === startIdx ? ' cu-dot-active' : '';
+        var dotLabel = dot.isTheory ? String(++theoryDotCount) : (dot.isVocab ? String(++vocabDotCount) : String.fromCharCode(65 + exerciseDotCount++));
         dotsHtml += '<button class="cu-dot-nav ' + dotTypeClass + activeClass + '" ' +
-          'onclick="BentoGrid._showCuSection(' + d + ')" ' +
-          'title="' + titleText + '">' + dotLabel + '</button>';
+          'onclick="BentoGrid._showCuSection(' + dot.idx + ')" ' +
+          'title="' + dot.titleText + '">' + dotLabel + '</button>';
       }
       dotsHtml += '</div>';
       container.insertAdjacentHTML('afterbegin', dotsHtml);
