@@ -204,38 +204,39 @@
     {
       "type": "exercise",
       "title": "A: Tick if correct; correct if wrong",
-      "instructions": "If the preposition in bold is correct, write ✓. If it is wrong, write the correct preposition.",
+      "instructions": "If the preposition in bold is correct, type OK. If it is wrong, write the correct preposition.",
+      "showOkBtn": true,
       "items": [
         {
-          "sentence": "We first visited China on 2006.",
+          "sentence": "We first visited China **on** 2006.",
           "answer": "in"
         },
         {
-          "sentence": "My birthday is at the second of July.",
+          "sentence": "My birthday is **at** the second of July.",
           "answer": "on"
         },
         {
-          "sentence": "Let's meet on five o'clock, shall we?",
+          "sentence": "Let's meet **on** five o'clock, shall we?",
           "answer": "at"
         },
         {
-          "sentence": "School starts again in September.",
-          "answer": "✓"
+          "sentence": "School starts again **in** September.",
+          "answer": "OK"
         },
         {
-          "sentence": "There's a party at Emily's at Saturday.",
+          "sentence": "There's a party at Emily's **at** Saturday.",
           "answer": "on"
         },
         {
-          "sentence": "What do you want to do on the morning?",
+          "sentence": "What do you want to do **on** the morning?",
           "answer": "in"
         },
         {
-          "sentence": "Let's go and see Grandma on Easter.",
+          "sentence": "Let's go and see Grandma **on** Easter.",
           "answer": "at"
         },
         {
-          "sentence": "Where do you usually go in Christmas Day?",
+          "sentence": "Where do you usually go **in** Christmas Day?",
           "answer": "on"
         }
       ]
@@ -473,35 +474,35 @@
       "instructions": "Each sentence has one wrong preposition. Write the correct one.",
       "items": [
         {
-          "sentence": "We usually go skiing on winter.",
+          "sentence": "We usually go skiing **on** winter.",
           "answer": "in"
         },
         {
-          "sentence": "Let's meet in 7:30 outside the station.",
+          "sentence": "Let's meet **in** 7:30 outside the station.",
           "answer": "at"
         },
         {
-          "sentence": "My parents got married at 12th June.",
+          "sentence": "My parents got married **at** 12th June.",
           "answer": "on"
         },
         {
-          "sentence": "She left her phone at the table in the kitchen.",
+          "sentence": "She left her phone **at** the table in the kitchen.",
           "answer": "on"
         },
         {
-          "sentence": "They're waiting in the door for you.",
+          "sentence": "They're waiting **in** the door for you.",
           "answer": "at"
         },
         {
-          "sentence": "We arrived to Madrid very late.",
+          "sentence": "We arrived **to** Madrid very late.",
           "answer": "in"
         },
         {
-          "sentence": "I love walking at the beach in the evening.",
+          "sentence": "I love walking **at** the beach in the evening.",
           "answer": "on"
         },
         {
-          "sentence": "He'll be back on a few minutes.",
+          "sentence": "He'll be back **on** a few minutes.",
           "answer": "in"
         }
       ]
@@ -509,30 +510,30 @@
     {
       "type": "exercise",
       "title": "H: Key word transformation",
-      "instructions": "Complete the second sentence using the word given.",
+      "instructions": "Complete the second sentence so it has a similar meaning to the first. Use a maximum of four words.",
       "items": [
         {
-          "sentence": "The lesson starts at nine o'clock. **ON**\nThe lesson doesn't start ...... the afternoon.",
+          "sentence": "The lesson starts at nine o'clock.\nThe lesson doesn't start ...... the afternoon.",
           "answer": "on"
         },
         {
-          "sentence": "My exam is on Monday morning. **IN**\nMy exam isn't ...... the evening.",
+          "sentence": "My exam is on Monday morning.\nMy exam isn't ...... the evening.",
           "answer": "in"
         },
         {
-          "sentence": "She is currently at a meeting. **MOMENT**\nShe is at a meeting ...... .",
+          "sentence": "She is currently at a meeting.\nShe is at a meeting ...... .",
           "answer": "at the moment"
         },
         {
-          "sentence": "We landed in Rome at midnight. **AT**\nWe landed in Rome ...... .",
-          "answer": "at midnight"
+          "sentence": "We landed in Rome at midnight.\nWe arrived ...... (AT) midnight.",
+          "answer": "at"
         },
         {
-          "sentence": "Let's meet outside the cinema entrance. **DOOR**\nLet's meet ...... the cinema.",
+          "sentence": "Let's meet outside the cinema entrance.\nLet's meet ...... the cinema.",
           "answer": "at the door of"
         },
         {
-          "sentence": "The keys are in the centre of the table. **MIDDLE**\nThe keys are ...... the table.",
+          "sentence": "The keys are in the centre of the table.\nThe keys are ...... the table.",
           "answer": "in the middle of"
         }
       ]
