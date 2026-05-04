@@ -4498,6 +4498,13 @@
       // Keep the flag true for the entire restore (including re-check) to suppress
       // redundant localStorage writes and Supabase API calls.
       BentoGrid._isRestoringCuAnswers = true;
+      // If "Show answers" was active when the user navigated away, remember it so we
+      // can re-apply it after restoring draft answers.
+      var wasShowingAnswers = sec.getAttribute('data-answers-showing') === 'true';
+      if (wasShowingAnswers) {
+        // Reset the flag so _toggleCuAnswers enters the "show" branch (not "hide") below.
+        sec.setAttribute('data-answers-showing', 'false');
+      }
       BentoGrid._applyReviewSectionAnswers(sec, saved.answers);
       if (saved.checked) {
         BentoGrid._doCheckCuExSection(sec);
@@ -4505,6 +4512,11 @@
         BentoGrid._resizeAllCuInputs(sec);
       }
       BentoGrid._isRestoringCuAnswers = false;
+      // Re-apply "Show answers" if it was active when the user navigated away
+      // (only for unchecked sections — checked sections already show results).
+      if (wasShowingAnswers && !saved.checked) {
+        BentoGrid._toggleCuAnswers(sec.id);
+      }
     },
 
     _saveReviewSectionState: function(sec, unitId, sectionIdx, correctItems, totalItems) {
