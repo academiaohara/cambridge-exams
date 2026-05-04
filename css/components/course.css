@@ -1343,6 +1343,12 @@
   min-width: 0;
 }
 
+.cu-kwt-copy-btn {
+  align-self: center;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
 /* Multiple-choice options (Exercise E) — hidden; interaction via gap-pill modal only */
 .cu-mc-options {
   display: none;

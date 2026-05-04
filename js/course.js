@@ -3414,6 +3414,9 @@
       if (item.context && hasKwTransGapInSentence && keywordSuffixMatch) {
         var kwKeyword = keywordSuffixMatch[1].trim();
         var kwSentenceB = sentence.replace(CU_KWTRANS_KEYWORD_SUFFIX_PATTERN, '');
+        var kwtCopyBtnHtml = showCopyBtn
+          ? '<button class="cu-copy-btn cu-kwt-copy-btn" type="button" onclick="BentoGrid._copyKwtInputToClipboard(this)" title="Copy answer to clipboard">\u2398</button>'
+          : '';
         return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
           numBadgeHtml +
           '<div class="cu-ex-sentence">' +
@@ -3426,6 +3429,7 @@
               '<div class="cu-ex-kwtrans-row">' +
                 '<span class="cu-ex-kwtrans-label">B</span>' +
                 '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(kwSentenceB, inputId + '_b') + '</div>' +
+                kwtCopyBtnHtml +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -3997,6 +4001,27 @@
         textarea.value = sentenceEl.textContent.trim();
         BentoGrid._resizeCuInput(textarea);
         textarea.focus();
+      }
+    },
+
+    _copyKwtInputToClipboard: function(btn) {
+      var item = btn.closest('.cu-ex-item');
+      if (!item) return;
+      var input = item.querySelector('.cu-gap-input:not(.cu-gap-textarea)');
+      if (!input) return;
+      var text = input.value.trim();
+      if (!text) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).catch(function() {});
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
       }
     },
 
