@@ -179,30 +179,36 @@
     {
       "type": "exercise",
       "title": "D: Mixed passive forms",
-      "instructions": "Complete each sentence with the correct passive form of the verb in brackets.",
+      "instructions": "Choose the correct passive form for each sentence.",
       "items": [
         {
-          "sentence": "The documents ...... by the time we arrived. (DESTROY)",
+          "sentence": "The documents ...... by the time we arrived.",
+          "options": ["were destroyed", "had been destroyed", "have been destroyed"],
           "answer": "had been destroyed"
         },
         {
-          "sentence": "The new hospital ...... at the moment. (BUILD)",
+          "sentence": "The new hospital ...... at the moment.",
+          "options": ["was being built", "has been built", "is being built"],
           "answer": "is being built"
         },
         {
-          "sentence": "The children ...... to leave the park when it closed. (TELL)",
+          "sentence": "The children ...... to leave the park when it closed.",
+          "options": ["were told", "had been told", "have been told"],
           "answer": "were told"
         },
         {
-          "sentence": "Dinner ...... when you arrived. (STILL / COOK)",
+          "sentence": "Dinner ...... when you arrived.",
+          "options": ["had still been cooked", "was still being cooked", "is still being cooked"],
           "answer": "was still being cooked"
         },
         {
-          "sentence": "All the arrangements ...... by tomorrow. (MAKE)",
+          "sentence": "All the arrangements ...... by tomorrow.",
+          "options": ["will be made", "would have been made", "will have been made"],
           "answer": "will have been made"
         },
         {
-          "sentence": "The package ...... for two days now. (HOLD)",
+          "sentence": "The package ...... for two days now.",
+          "options": ["was held", "has been held", "had been held"],
           "answer": "has been held"
         }
       ]
