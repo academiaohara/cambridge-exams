@@ -418,35 +418,40 @@
       },
       "E": {
         "title": "Word patterns (adjectives, verbs and nouns)",
-        "instructions": "Write one preposition in each gap.",
+        "type": "matching",
+        "instructions": "Match each sentence beginning with the correct ending.",
         "questions": [
           {
-            "sentence": "I've always been fond ...... old family photos.",
-            "answer": "of"
+            "left": "I've always been fond",
+            "right": "of old family photos."
           },
           {
-            "sentence": "Don't be jealous ...... your brother's success.",
-            "answer": "of"
+            "left": "She is really good",
+            "right": "at painting landscapes."
           },
           {
-            "sentence": "She's always kind ...... everyone in the class.",
-            "answer": "to"
+            "left": "He insisted",
+            "right": "on paying for dinner."
           },
           {
-            "sentence": "He's been married ...... Elena since 2018.",
-            "answer": "to"
+            "left": "I was surprised",
+            "right": "by her sudden decision."
           },
           {
-            "sentence": "I really admire my mum ...... her patience.",
-            "answer": "for"
+            "left": "Are you interested",
+            "right": "in learning a new language?"
           },
           {
-            "sentence": "They often argue ...... money and chores.",
-            "answer": "about"
+            "left": "She congratulated him",
+            "right": "on passing the exam."
           },
           {
-            "sentence": "She had an argument ...... her friend about the trip.",
-            "answer": "with"
+            "left": "They argued",
+            "right": "about the best route to take."
+          },
+          {
+            "left": "He apologised",
+            "right": "for arriving late to class."
           }
         ]
       },
