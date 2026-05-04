@@ -148,6 +148,14 @@
           "sentence": "She ...... her friend a birthday card.",
           "answer": "sent"
         }
+      ],
+      "words": [
+        "close",
+        "laugh",
+        "lend",
+        "put",
+        "send",
+        "sleep"
       ]
     },
     {
@@ -184,31 +192,37 @@
     {
       "type": "exercise",
       "title": "C: Rewrite with to/for",
-      "instructions": "Rewrite each sentence using the structure with to or for.",
+      "instructions": "Complete the second sentence so it has a similar meaning to the first.",
       "items": [
         {
-          "sentence": "Mia gave her friend some advice.",
-          "answer": "Mia gave some advice to her friend."
+          "context": "Mia gave her friend some advice.",
+          "sentence": "Mia gave some advice ...... her friend.",
+          "answer": "to"
         },
         {
-          "sentence": "Dad bought me a new backpack.",
-          "answer": "Dad bought a new backpack for me."
+          "context": "Dad bought me a new backpack.",
+          "sentence": "Dad bought a new backpack ...... me.",
+          "answer": "for"
         },
         {
-          "sentence": "The teacher showed us the answers.",
-          "answer": "The teacher showed the answers to us."
+          "context": "The teacher showed us the answers.",
+          "sentence": "The teacher showed the answers ...... us.",
+          "answer": "to"
         },
         {
-          "sentence": "Leo made his sister a sandwich.",
-          "answer": "Leo made a sandwich for his sister."
+          "context": "Leo made his sister a sandwich.",
+          "sentence": "Leo made a sandwich ...... his sister.",
+          "answer": "for"
         },
         {
-          "sentence": "I sent my aunt a photo.",
-          "answer": "I sent a photo to my aunt."
+          "context": "I sent my aunt a photo.",
+          "sentence": "I sent a photo ...... my aunt.",
+          "answer": "to"
         },
         {
-          "sentence": "They offered me a job.",
-          "answer": "They offered a job to me."
+          "context": "They offered me a job.",
+          "sentence": "They offered a job ...... me.",
+          "answer": "to"
         }
       ]
     },

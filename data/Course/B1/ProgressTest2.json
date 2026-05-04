@@ -270,27 +270,35 @@
       "instructions": "Match to make sentences.",
       "items": [
         {
-          "sentence": "What's going ......",
+          "sentence": "What's going",
           "answer": "D",
           "options": [
             "A up this morning?",
             "B off your jacket?",
             "C out or is it still burning?",
-            "D on here?"
+            "D on here?",
+            "E into the building?",
+            "F back my book?",
+            "G up until the film finishes?",
+            "H off or is it okay?"
           ]
         },
         {
-          "sentence": "What time did you get ......",
+          "sentence": "What time did you get",
           "answer": "A",
           "options": [
             "A up this morning?",
             "B off your jacket?",
             "C out or is it still burning?",
-            "D on here?"
+            "D on here?",
+            "E into the building?",
+            "F back my book?",
+            "G up until the film finishes?",
+            "H off or is it okay?"
           ]
         },
         {
-          "sentence": "When are you going to give me ......",
+          "sentence": "When are you going to give me",
           "answer": "F",
           "options": [
             "A up this morning?",
@@ -304,27 +312,35 @@
           ]
         },
         {
-          "sentence": "Has this milk gone ......",
+          "sentence": "Has this milk gone",
           "answer": "H",
           "options": [
             "A up this morning?",
             "B off your jacket?",
             "C out or is it still burning?",
-            "D on here?"
+            "D on here?",
+            "E into the building?",
+            "F back my book?",
+            "G up until the film finishes?",
+            "H off or is it okay?"
           ]
         },
         {
-          "sentence": "Why don't you take ......",
+          "sentence": "Why don't you take",
           "answer": "B",
           "options": [
             "A up this morning?",
             "B off your jacket?",
             "C out or is it still burning?",
-            "D on here?"
+            "D on here?",
+            "E into the building?",
+            "F back my book?",
+            "G up until the film finishes?",
+            "H off or is it okay?"
           ]
         },
         {
-          "sentence": "Has the fire gone ......",
+          "sentence": "Has the fire gone",
           "answer": "C",
           "options": [
             "A up this morning?",
@@ -338,7 +354,7 @@
           ]
         },
         {
-          "sentence": "How did the burglars break ......",
+          "sentence": "How did the burglars break",
           "answer": "E",
           "options": [
             "A up this morning?",
@@ -352,7 +368,7 @@
           ]
         },
         {
-          "sentence": "Mum, can I stay ......",
+          "sentence": "Mum, can I stay",
           "answer": "G",
           "options": [
             "A up this morning?",
@@ -518,92 +534,54 @@
     },
     {
       "type": "exercise",
-      "title": "J: Multiple Choice (Grammar)",
+      "title": "J: Grammar gap fill",
+      "instructions": "Complete each sentence with a word from the box.",
       "scoring": {
         "pointsPerItem": 1,
         "maxScore": 8
       },
-      "instructions": "Choose the correct answer (A, B, C, or D).",
+      "words": [
+        "although",
+        "aren't",
+        "enough",
+        "hadn't",
+        "must",
+        "such",
+        "than",
+        "unless"
+      ],
       "items": [
         {
-          "sentence": "I'm going to have a part in the play, ...... ?",
-          "answer": "D",
-          "options": [
-            "A am not",
-            "B don't",
-            "C haven't",
-            "D aren't"
-          ]
-        },
-        {
-          "sentence": "Sophie ...... have been ill today because she didn't come to school.",
-          "answer": "C",
-          "options": [
-            "A can't",
-            "B should",
-            "C must",
-            "D would"
-          ]
-        },
-        {
-          "sentence": "I'm ...... to go on holiday on my own! I'm nineteen!",
-          "answer": "D",
-          "options": [
-            "A so old",
-            "B such an old",
-            "C too old",
-            "D old enough"
-          ]
-        },
-        {
           "sentence": "My MP3 player is better ...... yours!",
-          "answer": "C",
-          "options": [
-            "A from",
-            "B to",
-            "C than",
-            "D that"
-          ]
+          "answer": "than"
         },
         {
-          "sentence": "If you ...... helped me, I would never have finished on time.",
-          "answer": "A",
-          "options": [
-            "A hadn't",
-            "B haven't",
-            "C don't",
-            "D wouldn't"
-          ]
+          "sentence": "Sophie ...... have been ill because she didn't come to school.",
+          "answer": "must"
         },
         {
-          "sentence": "Carol asked me if you ...... the film.",
-          "answer": "B",
-          "options": [
-            "A already see",
-            "B had already seen",
-            "C already saw",
-            "D has already seen"
-          ]
+          "sentence": "If you ...... helped me, I'd never have finished on time.",
+          "answer": "hadn't"
         },
         {
-          "sentence": "I wish you ...... be quiet for five minutes!",
-          "answer": "B",
-          "options": [
-            "A must",
-            "B would",
-            "C can",
-            "D should"
-          ]
+          "sentence": "I'm old ...... to go on holiday on my own!",
+          "answer": "enough"
         },
         {
-          "sentence": "We were made ...... up all the mess we'd made.",
-          "answer": "B",
-          "options": [
-            "A clear",
-            "B to clear",
-            "C clearing",
-            "D cleared"
-          ]
+          "sentence": "You can't enter ...... you show your ID.",
+          "answer": "unless"
+        },
+        {
+          "sentence": "I'm going to have a part in the play, ...... I?",
+          "answer": "aren't"
+        },
+        {
+          "sentence": "It'll be ...... a relief when the exams are over!",
+          "answer": "such"
+        },
+        {
+          "sentence": "...... it was cold, they went for a walk.",
+          "answer": "although"
         }
       ]
     }
