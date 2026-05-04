@@ -123,27 +123,27 @@
       "items": [
         {
           "sentence": "We ...... our kitchen ...... last month. (paint)",
-          "answer": "had / painted"
+          "answer": "had, painted"
         },
         {
           "sentence": "She ...... her photo ...... tomorrow. (take)",
-          "answer": "is having / taken"
+          "answer": "is having, taken"
         },
         {
           "sentence": "I ...... my laptop ...... next week. (repair)",
-          "answer": "am going to have / repaired"
+          "answer": "am going to have, repaired"
         },
         {
           "sentence": "They ...... their windows ...... every spring. (clean)",
-          "answer": "have / cleaned"
+          "answer": "have, cleaned"
         },
         {
           "sentence": "He ...... his passport ...... before the trip. (renew)",
-          "answer": "had had / renewed"
+          "answer": "had had, renewed"
         },
         {
           "sentence": "We should ...... the printer ...... today. (fix)",
-          "answer": "have / fixed"
+          "answer": "have, fixed"
         }
       ]
     },
@@ -180,68 +180,38 @@
     },
     {
       "type": "exercise",
-      "title": "C: Choose the correct option",
-      "instructions": "Select the best answer.",
+      "title": "C: Rewrite using the causative",
+      "instructions": "Complete the second sentence using the causative. Use no more than four words.",
       "items": [
         {
-          "sentence": "She had her dress ...... for the party.",
-          "options": [
-            "A make",
-            "B making",
-            "C made",
-            "D to make"
-          ],
-          "answer": "C"
+          "context": "A hairdresser cut her hair last week.",
+          "sentence": "She ...... her hair cut last week. **HAD**",
+          "answer": "had"
         },
         {
-          "sentence": "We're going to ...... our house painted.",
-          "options": [
-            "A have",
-            "B having",
-            "C had",
-            "D has"
-          ],
-          "answer": "A"
+          "context": "Someone is going to paint their house tomorrow.",
+          "sentence": "They are ...... their house painted tomorrow. **HAVING**",
+          "answer": "going to have"
         },
         {
-          "sentence": "Did you have the report ...... yesterday?",
-          "options": [
-            "A finish",
-            "B finishing",
-            "C finished",
-            "D to finish"
-          ],
-          "answer": "C"
+          "context": "A mechanic repaired his car last Saturday.",
+          "sentence": "He ...... his car repaired last Saturday. **HAD**",
+          "answer": "had"
         },
         {
-          "sentence": "He might ...... his car repaired next month.",
-          "options": [
-            "A has",
-            "B have",
-            "C had",
-            "D having"
-          ],
-          "answer": "B"
+          "context": "Someone cleans their windows every month.",
+          "sentence": "They ...... their windows cleaned every month. **HAVE**",
+          "answer": "have"
         },
         {
-          "sentence": "They are ...... their bathroom redesigned.",
-          "options": [
-            "A have",
-            "B had",
-            "C having",
-            "D has"
-          ],
-          "answer": "C"
+          "context": "A photographer took our family photo last summer.",
+          "sentence": "We ...... our family photo taken last summer. **HAD**",
+          "answer": "had"
         },
         {
-          "sentence": "I got my watch ...... at that shop.",
-          "options": [
-            "A repaired",
-            "B repair",
-            "C repairing",
-            "D repairs"
-          ],
-          "answer": "A"
+          "context": "A tailor is making her dress for the wedding.",
+          "sentence": "She is ...... her dress made for the wedding. **HAVING**",
+          "answer": "having"
         }
       ]
     }

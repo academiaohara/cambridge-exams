@@ -3880,6 +3880,34 @@
         }
       }
 
+      // Post-process: when there is exactly one plain 'gap' and exactly one trailing 'options'
+      // (with no other interactive elements between them), move the 'options' to the gap position.
+      // This handles sentences like "I didn't ...... notice. **notice / suit**" where the trailing
+      // bold options define the choices for the preceding gap marker.
+      var mergeGapCount = parts.filter(function(p) { return p.type === 'gap'; }).length;
+      var mergeOptCount = parts.filter(function(p) { return p.type === 'options'; }).length;
+      if (mergeGapCount === 1 && mergeOptCount === 1) {
+        var lastIsOptions = parts[parts.length - 1].type === 'options';
+        var trailingTextOnly = true;
+        for (var gi = parts.length - 2; gi >= 0; gi--) {
+          if (parts[gi].type === 'gap') break;
+          if (parts[gi].type !== 'text') { trailingTextOnly = false; break; }
+        }
+        if (lastIsOptions && trailingTextOnly) {
+          var trailingOpts = parts.pop(); // remove trailing options
+          for (var gapPartIdx = 0; gapPartIdx < parts.length; gapPartIdx++) {
+            if (parts[gapPartIdx].type === 'gap') {
+              parts[gapPartIdx] = trailingOpts; // replace gap with options
+              break;
+            }
+          }
+        }
+      }
+      // Remove trailing empty text parts
+      while (parts.length && parts[parts.length - 1].type === 'text' && !parts[parts.length - 1].val.trim()) {
+        parts.pop();
+      }
+
       var gapCount = 0;
       var optCount = 0;
       return parts.map(function(p) {
@@ -6206,20 +6234,20 @@
               input.setAttribute('data-check-class', checkClass);
             }
           }
-          // Show correct answer inline when section is configured to do so
+          // Show correct answer inline next to incorrect inputs
           if (checkClass === 'cu-input-incorrect') {
-            var sectionEl2 = input.closest('.cu-section');
-            if (sectionEl2 && sectionEl2.getAttribute('data-show-correct-inline') === 'true') {
-              var oldInline = input.nextSibling;
-              if (oldInline && oldInline.classList && oldInline.classList.contains('cu-correct-inline')) oldInline.remove();
-              var correctVal2 = (answerParts[partIdx - 1] || '').trim();
-              if (correctVal2) {
-                var inlineSpan2 = document.createElement('span');
-                inlineSpan2.className = 'cu-correct-inline';
-                inlineSpan2.textContent = '\u2192 ' + correctVal2;
-                if (input.parentNode) input.parentNode.insertBefore(inlineSpan2, input.nextSibling);
-              }
+            var oldInline = input.nextSibling;
+            if (oldInline && oldInline.classList && oldInline.classList.contains('cu-input-inline-reveal')) oldInline.remove();
+            var revealText = (answerParts[partIdx] || '').trim();
+            if (revealText) {
+              var revSpan = document.createElement('span');
+              revSpan.className = 'cu-input-inline-reveal';
+              revSpan.textContent = revealText;
+              if (input.parentNode) input.parentNode.insertBefore(revSpan, input.nextSibling);
             }
+          } else {
+            var oldInline2 = input.nextSibling;
+            if (oldInline2 && oldInline2.classList && oldInline2.classList.contains('cu-input-inline-reveal')) oldInline2.remove();
           }
           if (ok) correctItems++;
           if (!ok) anyInputWrong = true;
