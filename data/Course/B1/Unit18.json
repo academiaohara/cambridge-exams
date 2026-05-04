@@ -332,7 +332,7 @@
         "instructions": "Choose the correct option in each sentence.",
         "questions": [
           {
-            "sentence": "The scientist had to **estimate / involve** the cost before buying materials.",
+            "sentence": "The scientist had to **involve / estimate** the cost before buying materials.",
             "answer": "estimate"
           },
           {
@@ -340,7 +340,7 @@
             "answer": "sudden"
           },
           {
-            "sentence": "In our project, we used recycled **plastic / software** bottles.",
+            "sentence": "In our project, we used recycled **software / plastic** bottles.",
             "answer": "plastic"
           },
           {
@@ -348,7 +348,7 @@
             "answer": "exact"
           },
           {
-            "sentence": "The phone's **screen / run** is cracked, so I can't read messages.",
+            "sentence": "The phone's **run / screen** is cracked, so I can't read messages.",
             "answer": "screen"
           },
           {
@@ -356,7 +356,7 @@
             "answer": "decrease"
           },
           {
-            "sentence": "The app is easy to **run / hardware** on old devices.",
+            "sentence": "The app is easy to **hardware / run** on old devices.",
             "answer": "run"
           },
           {
@@ -537,67 +537,39 @@
       },
       "G": {
         "title": "Multiple choice",
-        "instructions": "Choose the correct answer.",
+        "instructions": "Complete each sentence with a word from the box.",
+        "words": [
+          "effect",
+          "involve",
+          "lack",
+          "maximum",
+          "run",
+          "software"
+        ],
         "questions": [
           {
             "sentence": "This app can ...... in offline mode as well.",
-            "options": [
-              "A run",
-              "B effect",
-              "C exact",
-              "D involve"
-            ],
-            "answer": "A"
+            "answer": "run"
           },
           {
             "sentence": "The project was delayed because of a ...... of parts.",
-            "options": [
-              "A screen",
-              "B minimum",
-              "C lack",
-              "D program"
-            ],
-            "answer": "C"
+            "answer": "lack"
           },
           {
             "sentence": "The engineer recorded the ...... temperature reached by the engine.",
-            "options": [
-              "A maximum",
-              "B digital",
-              "C sudden",
-              "D unique"
-            ],
-            "answer": "A"
+            "answer": "maximum"
           },
           {
             "sentence": "Can you install that ...... before we test the hardware?",
-            "options": [
-              "A plastic",
-              "B software",
-              "C laboratory",
-              "D estimate"
-            ],
-            "answer": "B"
+            "answer": "software"
           },
           {
             "sentence": "The lesson will ...... students from different year groups.",
-            "options": [
-              "A throw away",
-              "B involve",
-              "C break down",
-              "D come across"
-            ],
-            "answer": "B"
+            "answer": "involve"
           },
           {
             "sentence": "The machine has an immediate ...... on electricity use.",
-            "options": [
-              "A effect",
-              "B screen",
-              "C gadget",
-              "D minimum"
-            ],
-            "answer": "A"
+            "answer": "effect"
           }
         ]
       },

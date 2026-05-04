@@ -218,7 +218,7 @@
       "instructions": "Choose the correct possessive determiner.",
       "items": [
         {
-          "sentence": "Is this **my / mine** notebook?",
+          "sentence": "Is this **mine / my** notebook?",
           "answer": "my"
         },
         {
@@ -226,11 +226,11 @@
           "answer": "her"
         },
         {
-          "sentence": "The dog is in **its / it's** bed.",
+          "sentence": "The dog is in **it's / its** bed.",
           "answer": "its"
         },
         {
-          "sentence": "We are doing **our / ours** project now.",
+          "sentence": "We are doing **ours / our** project now.",
           "answer": "our"
         },
         {
@@ -238,7 +238,7 @@
           "answer": "their"
         },
         {
-          "sentence": "I like **your / yours** new jacket.",
+          "sentence": "I like **yours / your** new jacket.",
           "answer": "your"
         }
       ]
@@ -378,62 +378,62 @@
       "instructions": "Each sentence has one pronoun mistake. Write the correct word.",
       "items": [
         {
-          "sentence": "This is hers bag.",
+          "sentence": "This is **hers** bag.",
           "answer": "her"
         },
         {
-          "sentence": "Me am very happy today.",
+          "sentence": "**Me** am very happy today.",
           "answer": "I"
         },
         {
-          "sentence": "Can you give that book to she?",
+          "sentence": "Can you give that book to **she**?",
           "answer": "her"
         },
         {
-          "sentence": "The students finished the activity by ourself.",
+          "sentence": "The students finished the activity by **ourself**.",
           "answer": "themselves"
         },
         {
-          "sentence": "The cat is playing with it's toy.",
+          "sentence": "The cat is playing with **it's** toy.",
           "answer": "its"
         },
         {
-          "sentence": "These tickets are our.",
+          "sentence": "These tickets are **our**.",
           "answer": "ours"
         }
       ]
     },
     {
       "type": "exercise",
-      "title": "H: Rewrite using the word in bold",
-      "instructions": "Complete the second sentence so it means the same as the first.",
+      "subtype": "bold-correct",
+      "title": "H: Error correction",
+      "instructions": "Each sentence has one pronoun mistake. Find the error and write the whole sentence correctly.",
       "items": [
         {
-          "sentence": "That coat belongs to me. **MINE**\nThat coat is ...... .",
-          "answer": "mine"
+          "sentence": "That coat is **my**.",
+          "answer": "That coat is mine."
         },
         {
-          "sentence": "Ana did the work without help. **HERSELF**\nAna did the work by ...... .",
-          "answer": "herself"
+          "sentence": "Ana did the work by **her**.",
+          "answer": "Ana did the work by herself."
         },
         {
-          "sentence": "This is the dogs' bed. **THEIR**\nThis is ...... bed.",
-          "answer": "their"
+          "sentence": "This is **they** bed.",
+          "answer": "This is their bed."
         },
         {
-          "sentence": "Could you send the email to Laura and me? **US**\nCould you send ...... the email?",
-          "answer": "us"
+          "sentence": "Could you send **we** the email?",
+          "answer": "Could you send us the email?"
         },
         {
-          "sentence": "The bicycle belongs to Tom. **HIS**\nThe bicycle is ...... .",
-          "answer": "his"
+          "sentence": "The bicycle is **him**.",
+          "answer": "The bicycle is his."
         },
         {
-          "sentence": "Nobody helped us. **OURSELVES**\nWe did it ...... .",
-          "answer": "ourselves"
+          "sentence": "We did it by **us**.",
+          "answer": "We did it by ourselves."
         }
-      ],
-      "showCorrectInline": true
+      ]
     },
     {
       "type": "exercise",

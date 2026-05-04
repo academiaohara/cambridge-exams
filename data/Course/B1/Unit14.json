@@ -360,106 +360,71 @@
     {
       "type": "exercise",
       "title": "F: Error correction",
-      "instructions": "Each sentence has one article mistake. Write the correct article form.",
+      "instructions": "Each sentence has one article mistake. Write the correct article, or '–' if no article is needed.",
       "items": [
         {
-          "sentence": "She is an university student.",
-          "answer": "a university student"
+          "sentence": "She is **an** university student.",
+          "answer": "a"
         },
         {
-          "sentence": "I like the music, especially jazz.",
-          "answer": "I like music"
+          "sentence": "**The** English is spoken in many countries.",
+          "answer": "–"
         },
         {
-          "sentence": "We're going to the school now (students speaking).",
-          "answer": "We're going to school now"
+          "sentence": "He works as **the** waiter in a hotel.",
+          "answer": "a"
         },
         {
-          "sentence": "He works as the waiter in a hotel.",
-          "answer": "He works as a waiter"
+          "sentence": "I saw **a** moon last night.",
+          "answer": "the"
         },
         {
-          "sentence": "The English is spoken in many countries.",
-          "answer": "English is spoken"
+          "sentence": "They visited **a** Louvre in Paris.",
+          "answer": "the"
         },
         {
-          "sentence": "They visited Louvre in Paris.",
-          "answer": "visited the Louvre"
+          "sentence": "My father listens to **a** radio every morning.",
+          "answer": "the"
         },
         {
-          "sentence": "My father listens to radio every morning.",
-          "answer": "the radio"
+          "sentence": "We're going to **the** school now (students speaking).",
+          "answer": "–"
         },
         {
-          "sentence": "I saw a moon last night.",
-          "answer": "the moon"
+          "sentence": "I like **the** music, especially jazz.",
+          "answer": "–"
         }
       ]
     },
     {
       "type": "exercise",
-      "title": "G: Multiple choice",
-      "instructions": "Choose the correct option.",
+      "subtype": "bold-correct",
+      "title": "G: Error correction",
+      "instructions": "Each sentence has one article mistake. Find the error and write the whole sentence correctly.",
       "items": [
         {
-          "sentence": "She wants to buy ...... new phone.",
-          "options": [
-            "A an",
-            "B the",
-            "C a",
-            "D -"
-          ],
-          "answer": "C"
+          "sentence": "She wants to buy **an** new phone.",
+          "answer": "She wants to buy a new phone."
         },
         {
-          "sentence": "We had lunch at ...... school canteen.",
-          "options": [
-            "A an",
-            "B the",
-            "C a",
-            "D -"
-          ],
-          "answer": "B"
+          "sentence": "We had lunch at **a** school canteen.",
+          "answer": "We had lunch at the school canteen."
         },
         {
-          "sentence": "My grandparents live in ...... Spain.",
-          "options": [
-            "A the",
-            "B a",
-            "C an",
-            "D -"
-          ],
-          "answer": "D"
+          "sentence": "My grandparents live in **the** Spain.",
+          "answer": "My grandparents live in Spain."
         },
         {
-          "sentence": "Can you play ...... guitar?",
-          "options": [
-            "A a",
-            "B an",
-            "C the",
-            "D -"
-          ],
-          "answer": "C"
+          "sentence": "Can you play **a** guitar?",
+          "answer": "Can you play the guitar?"
         },
         {
-          "sentence": "He waited for ...... hour and left.",
-          "options": [
-            "A a",
-            "B an",
-            "C the",
-            "D -"
-          ],
-          "answer": "B"
+          "sentence": "He waited for **a** hour and left.",
+          "answer": "He waited for an hour and left."
         },
         {
-          "sentence": "...... books on that shelf belong to me.",
-          "options": [
-            "A A",
-            "B The",
-            "C An",
-            "D -"
-          ],
-          "answer": "B"
+          "sentence": "**A** books on that shelf belong to me.",
+          "answer": "The books on that shelf belong to me."
         }
       ]
     },
