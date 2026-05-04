@@ -237,31 +237,32 @@
     },
     {
       "type": "exercise",
-      "title": "E: Correct the mistakes",
-      "instructions": "Each sentence has one mistake. Write the correct sentence.",
+      "subtype": "bold-correct",
+      "title": "E: Error correction",
+      "instructions": "Each sentence has one mistake with relative clauses. Find the error and write the whole sentence correctly.",
       "items": [
         {
-          "sentence": "That's the man who he won the competition.",
+          "sentence": "That's the man who **he** won the competition.",
           "answer": "That's the man who won the competition."
         },
         {
-          "sentence": "This is the computer which I use it every day.",
+          "sentence": "This is the computer which I use **it** every day.",
           "answer": "This is the computer which I use every day."
         },
         {
-          "sentence": "My uncle, who he lives in Canada, is visiting us.",
+          "sentence": "My uncle, who **he** lives in Canada, is visiting us.",
           "answer": "My uncle, who lives in Canada, is visiting us."
         },
         {
-          "sentence": "The book who I borrowed was very interesting.",
+          "sentence": "The book **who** I borrowed was very interesting.",
           "answer": "The book which I borrowed was very interesting."
         },
         {
-          "sentence": "The school where I studied there is now closed.",
+          "sentence": "The school where I studied **there** is now closed.",
           "answer": "The school where I studied is now closed."
         },
         {
-          "sentence": "My friend that she plays tennis is from Italy.",
+          "sentence": "My friend **that she** plays tennis is from Italy.",
           "answer": "My friend who plays tennis is from Italy."
         }
       ]

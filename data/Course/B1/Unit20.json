@@ -293,68 +293,32 @@
     },
     {
       "type": "exercise",
-      "title": "F: Choose the correct answer",
-      "instructions": "Choose the best option.",
+      "title": "F: Error correction",
+      "instructions": "Each sentence has one modal verb mistake. Write the correct modal.",
       "items": [
         {
-          "sentence": "You look tired. You ...... go to bed earlier.",
-          "options": [
-            "A mustn't",
-            "B should",
-            "C can't",
-            "D needn't"
-          ],
-          "answer": "B"
+          "sentence": "You look tired. You **must** go to bed earlier.",
+          "answer": "should"
         },
         {
-          "sentence": "This ...... be Olivia's phone. She has exactly the same case.",
-          "options": [
-            "A might",
-            "B should",
-            "C had to",
-            "D don't have to"
-          ],
-          "answer": "A"
+          "sentence": "This **should** be Olivia's phone. She has exactly the same case.",
+          "answer": "might"
         },
         {
-          "sentence": "We ...... pay now; the meal is included in the ticket.",
-          "options": [
-            "A must",
-            "B have to",
-            "C don't have to",
-            "D mustn't"
-          ],
-          "answer": "C"
+          "sentence": "We **must** pay now; the meal is included in the ticket.",
+          "answer": "don't have to"
         },
         {
-          "sentence": "You ...... run in the corridor. It's dangerous.",
-          "options": [
-            "A needn't",
-            "B mustn't",
-            "C could",
-            "D ought to"
-          ],
-          "answer": "B"
+          "sentence": "You **needn't** run in the corridor. It's dangerous.",
+          "answer": "mustn't"
         },
         {
-          "sentence": "He left home at six, so he ...... be here soon.",
-          "options": [
-            "A should",
-            "B can't",
-            "C had to",
-            "D needn't"
-          ],
-          "answer": "A"
+          "sentence": "He left home at six, so he **can't** be here soon.",
+          "answer": "should"
         },
         {
-          "sentence": "She ...... finish the project yesterday, so she stayed at the office late.",
-          "options": [
-            "A didn't need to",
-            "B had to",
-            "C mustn't",
-            "D couldn't"
-          ],
-          "answer": "B"
+          "sentence": "She **mustn't** finish the project yesterday, so she stayed at the office late.",
+          "answer": "had to"
         }
       ]
     },
