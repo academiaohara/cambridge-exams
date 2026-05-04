@@ -5480,6 +5480,12 @@
       BentoGrid._showCuSection(idx);
     },
 
+    // Returns the section index encoded in a cu-dot-nav button's onclick attribute, or -1 if not found.
+    _getCuDotSectionIdx: function(dot) {
+      var m = (dot.getAttribute('onclick') || '').match(/_showCuSection\((\d+)\)/);
+      return m ? parseInt(m[1], 10) : -1;
+    },
+
     _initCuSectionNav: function(startIdx) {
       var container = document.querySelector('.course-unit-content');
       if (!container) return;
@@ -5588,10 +5594,10 @@
       sections.forEach(function(sec, i) {
         sec.style.display = (i === idx) ? '' : 'none';
       });
-      // Sync active dot
+      // Sync active dot — match by onclick index since dots may be sorted differently from sections
       var dots = container.querySelectorAll('.cu-dot-nav');
-      dots.forEach(function(dot, i) {
-        dot.classList.toggle('cu-dot-active', i === idx);
+      dots.forEach(function(dot) {
+        dot.classList.toggle('cu-dot-active', BentoGrid._getCuDotSectionIdx(dot) === idx);
       });
       var center = document.querySelector('.dashboard-center');
       if (center) center.scrollTop = 0;
@@ -5624,11 +5630,13 @@
       var unitId = BentoGrid._currentUnitId;
       BentoGrid._markCourseSectionVisited(level, unitId, idx);
       BentoGrid._checkCourseUnitAllDone(level, unitId);
-      // Update dot visual for this section
+      // Update dot visual for this section — match by onclick index since dots may be sorted
       var container = document.querySelector('.course-unit-content');
       if (container) {
         var dots = container.querySelectorAll('.cu-dot-nav');
-        if (dots[idx]) dots[idx].classList.add('cu-dot-done-mark');
+        dots.forEach(function(dot) {
+          if (BentoGrid._getCuDotSectionIdx(dot) === idx) dot.classList.add('cu-dot-done-mark');
+        });
       }
       if (goNext && typeof nextIdx === 'number' && nextIdx < total) {
         BentoGrid._showCuSection(nextIdx);
