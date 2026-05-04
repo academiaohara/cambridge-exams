@@ -3474,11 +3474,21 @@
         '</div>';
       }
 
+      // Copy button for standalone textarea items (no gap in sentence):
+      // inserted inline at the end of the sentence text, before the standalone textarea.
+      var copyBtnHtml = '';
+      if (showCopyBtn && useTextarea && !isMC) {
+        var hasGapInSentence = /\.{5,}|[…]{2,}/.test(sentence);
+        if (!hasGapInSentence) {
+          copyBtnHtml = '<button class="cu-copy-btn" type="button" onclick="BentoGrid._copySentenceToTextarea(this)" title="Copy original sentence">\u2398</button>';
+        }
+      }
+
       var sentenceHtml;
       if (isMC) {
         sentenceHtml = self._renderCourseExMCItem(sentence, item.options, inputId);
       } else {
-        sentenceHtml = self._renderCourseExSentence(sentence, inputId, useTextarea);
+        sentenceHtml = self._renderCourseExSentence(sentence, inputId, useTextarea, copyBtnHtml);
       }
 
       // Detect multi-answer: item has inline options (**A/B** pattern) and answer contains '/'
@@ -3495,20 +3505,10 @@
           '</div>';
       }
 
-      // Copy button for standalone textarea items (no gap in sentence)
-      var copyBtnHtml = '';
-      if (showCopyBtn && useTextarea && !isMC) {
-        var hasGapInSentence = /\.{5,}|[…]{2,}/.test(sentence);
-        if (!hasGapInSentence) {
-          copyBtnHtml = '<button class="cu-copy-btn" type="button" onclick="BentoGrid._copySentenceToTextarea(this)" title="Copy original sentence">\u2398</button>';
-        }
-      }
-
       return '<div class="cu-ex-item' + (item.tick !== undefined ? ' cu-has-tick' : '') + '"' + multiAnswerAttr + ' data-answer="' + self._escapeHTML(answer) + '"' + (item.tick !== undefined ? ' data-tick="' + self._escapeHTML(item.tick || '') + '"' : '') + '>' +
         numBadgeHtml +
         contextHtml +
         '<div class="cu-ex-sentence">' + sentenceHtml + '</div>' +
-        copyBtnHtml +
         (tickHtml ? '<div class="cu-item-tick-row">' + tickHtml + '</div>' : '') +
         '<div class="cu-ex-foot">' +
           '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
@@ -3656,7 +3656,7 @@
       return result;
     },
 
-    _renderCourseExSentence: function(sentence, inputIdBase, useTextarea) {
+    _renderCourseExSentence: function(sentence, inputIdBase, useTextarea, beforeStandalone) {
       var self = this;
 
       // Key Word Transformation: two sentences separated by \n with a visible gap marker
@@ -3695,10 +3695,10 @@
         '</div>';
       }
 
-      return self._renderCourseExSentenceParts(sentence, inputIdBase, false, useTextarea);
+      return self._renderCourseExSentenceParts(sentence, inputIdBase, false, useTextarea, beforeStandalone);
     },
 
-    _renderCourseExSentenceParts: function(sentence, inputIdBase, noStandalone, useTextarea) {
+    _renderCourseExSentenceParts: function(sentence, inputIdBase, noStandalone, useTextarea, beforeStandalone) {
       var self = this;
       // Tokenise sentence into: plain text, gap markers, bold+option patterns, plain bold
       // Compound patterns (hint+gap pill) are matched first so they take priority:
@@ -3965,7 +3965,7 @@
           }).join('<span class="cu-option-sep">/</span>');
         } else if (p.type === 'standalone') {
           if (useTextarea) {
-            return '<br><textarea class="cu-gap-input cu-gap-textarea cu-gap-standalone" placeholder="Your answer..." rows="2" aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
+            return (beforeStandalone || '') + '<br><textarea class="cu-gap-input cu-gap-textarea cu-gap-standalone" placeholder="Your answer..." rows="2" aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           }
           return '<br><input type="text" class="cu-gap-input cu-gap-standalone" placeholder="Your answer..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
         }
@@ -3998,7 +3998,14 @@
       var sentenceEl = item.querySelector('.cu-ex-sentence');
       var textarea = item.querySelector('.cu-gap-textarea');
       if (sentenceEl && textarea) {
-        textarea.value = sentenceEl.textContent.trim();
+        // Clone the sentence element and remove any copy buttons before extracting text,
+        // so the button label (⎘) is not included in the copied text.
+        var clone = sentenceEl.cloneNode(true);
+        var btns = clone.querySelectorAll('.cu-copy-btn');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].parentNode.removeChild(btns[i]);
+        }
+        textarea.value = clone.textContent.trim();
         BentoGrid._resizeCuInput(textarea);
         textarea.focus();
       }
