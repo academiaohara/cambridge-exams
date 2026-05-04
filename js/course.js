@@ -3884,9 +3884,9 @@
       // (with no other interactive elements between them), move the 'options' to the gap position.
       // This handles sentences like "I didn't ...... notice. **notice / suit**" where the trailing
       // bold options define the choices for the preceding gap marker.
-      var gapCount0 = parts.filter(function(p) { return p.type === 'gap'; }).length;
-      var optCount0 = parts.filter(function(p) { return p.type === 'options'; }).length;
-      if (gapCount0 === 1 && optCount0 === 1) {
+      var preGapCount = parts.filter(function(p) { return p.type === 'gap'; }).length;
+      var preOptCount = parts.filter(function(p) { return p.type === 'options'; }).length;
+      if (preGapCount === 1 && preOptCount === 1) {
         var lastIsOptions = parts[parts.length - 1].type === 'options';
         var trailingTextOnly = true;
         for (var gi = parts.length - 2; gi >= 0; gi--) {
@@ -3895,9 +3895,9 @@
         }
         if (lastIsOptions && trailingTextOnly) {
           var trailingOpts = parts.pop(); // remove trailing options
-          for (var gi2 = 0; gi2 < parts.length; gi2++) {
-            if (parts[gi2].type === 'gap') {
-              parts[gi2] = trailingOpts; // replace gap with options
+          for (var gapPartIdx = 0; gapPartIdx < parts.length; gapPartIdx++) {
+            if (parts[gapPartIdx].type === 'gap') {
+              parts[gapPartIdx] = trailingOpts; // replace gap with options
               break;
             }
           }
