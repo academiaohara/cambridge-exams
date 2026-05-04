@@ -209,7 +209,7 @@
       "instructions": "Circle the correct word or phrase.",
       "items": [
         {
-          "sentence": "Nora said she **is / was** tired.",
+          "sentence": "Nora said she **was / is** tired.",
           "answer": "was"
         },
         {
@@ -217,7 +217,7 @@
           "answer": "could"
         },
         {
-          "sentence": "He said he **will / would** send the email later.",
+          "sentence": "He said he **would / will** send the email later.",
           "answer": "would"
         },
         {
@@ -225,7 +225,7 @@
           "answer": "had to"
         },
         {
-          "sentence": "Paul said he had finished the task **yesterday / the day before**.",
+          "sentence": "Paul said he had finished the task **the day before / yesterday**.",
           "answer": "the day before"
         },
         {
@@ -236,34 +236,36 @@
     },
     {
       "type": "exercise",
-      "title": "E: Key word transformation",
-      "instructions": "Complete the second sentence so that it has a similar meaning.",
+      "title": "E: Correct the errors",
+      "instructions": "Each sentence has an error in reported speech. Write the whole sentence correctly.",
       "items": [
         {
-          "sentence": "\"I will make you a scarf,\" my grandma said. **WOULD**\nMy grandma said she ...... me a scarf.",
-          "answer": "would make"
+          "sentence": "My grandma said she will make me a scarf.",
+          "answer": "My grandma said she would make me a scarf."
         },
         {
-          "sentence": "\"You have to visit the fashion show,\" she said. **HAD**\nShe said we ...... to visit the fashion show.",
-          "answer": "had"
+          "sentence": "She said we have to visit the fashion show.",
+          "answer": "She said we had to visit the fashion show."
         },
         {
-          "sentence": "\"I can swim very fast,\" Dan said. **COULD**\nDan said he ...... very fast.",
-          "answer": "could swim"
+          "sentence": "Dan said he can swim very fast.",
+          "answer": "Dan said he could swim very fast."
         },
         {
-          "sentence": "\"I'm drawing all day,\" Debbie said. **BEEN**\nDebbie said she had ...... all day.",
-          "answer": "been drawing"
+          "sentence": "Debbie said she is drawing all day.",
+          "answer": "Debbie said she had been drawing all day."
         },
         {
-          "sentence": "\"We are going to buy a new car,\" they said. **WERE**\nThey said they ...... going to buy a new car.",
-          "answer": "were"
+          "sentence": "They said they are going to buy a new car.",
+          "answer": "They said they were going to buy a new car."
         },
         {
-          "sentence": "\"I may visit my aunt tomorrow,\" Lucy said. **MIGHT**\nLucy said she ...... visit her aunt the next day.",
-          "answer": "might"
+          "sentence": "Lucy said she may visit her aunt tomorrow.",
+          "answer": "Lucy said she might visit her aunt the next day."
         }
-      ]
+      ],
+      "textareaAnswer": true,
+      "showCopyBtn": true
     },
     {
       "type": "exercise",
