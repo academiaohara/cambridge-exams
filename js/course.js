@@ -502,21 +502,30 @@
           ];
           var reviewTotalMax = 50;
           var reviewAnsweredData = BentoGrid._getReviewAnswered(level);
+          var reviewStateData = BentoGrid._getReviewSectionState(level);
           var totalEarned = 0;
+          var anyStarted = false;
           reviewSectionDefs.forEach(function(sec, idx) {
-            totalEarned += reviewAnsweredData[reviewItem.id + '_' + idx] || 0;
+            var skey = reviewItem.id + '_' + idx;
+            if (skey in reviewAnsweredData) {
+              anyStarted = true;
+              totalEarned += reviewAnsweredData[skey] || 0;
+            }
           });
           totalEarned = Math.min(totalEarned, reviewTotalMax);
           html += '<div class="fe-map-lesson fe-map-review-block ' + (isDone ? 'fe-lesson-complete' : 'fe-lesson-pending') + '">' +
             '<div class="fe-map-lesson-title">' +
               '<span class="fe-map-lesson-num">Review</span>' +
-              '<span class="fe-rs-total-score' + (totalEarned === 0 ? ' fe-rs-score-pending' : '') + '">' + (totalEarned > 0 ? totalEarned : '–') + '/' + reviewTotalMax + '</span>' +
+              '<span class="fe-rs-total-score' + (!anyStarted ? ' fe-rs-score-pending' : '') + '">' + (anyStarted ? totalEarned : '–') + '/' + reviewTotalMax + '</span>' +
             '</div>' +
             '<div class="fe-map-review-slots">';
           reviewSectionDefs.forEach(function(sec, idx) {
-            var earned = reviewAnsweredData[reviewItem.id + '_' + idx] || 0;
-            var isPending = earned === 0;
-            var scoreLabel = (earned > 0 ? Math.min(earned, sec.maxScore) : '–') + '/' + sec.maxScore;
+            var skey = reviewItem.id + '_' + idx;
+            var isPending = !(skey in reviewAnsweredData);
+            var earned = isPending ? 0 : (reviewAnsweredData[skey] || 0);
+            var state = reviewStateData[skey];
+            var displayMax = (state && state.total) ? state.total : sec.maxScore;
+            var scoreLabel = (isPending ? '–' : Math.min(earned, displayMax)) + '/' + displayMax;
             html += '<button class="fe-review-slot" onclick="BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\', ' + idx + ')">' +
               '<span class="fe-rs-letter">' + sec.letter + '</span>' +
               '<span class="fe-rs-name">' + self._escapeHTML(sec.name) + '</span>' +
@@ -4856,6 +4865,12 @@
     _getReviewAnswered: function(level) {
       try {
         return JSON.parse(localStorage.getItem('cambridge_review_answers_' + level) || '{}');
+      } catch(e) { return {}; }
+    },
+
+    _getReviewSectionState: function(level) {
+      try {
+        return JSON.parse(localStorage.getItem('cambridge_review_section_state_' + level) || '{}');
       } catch(e) { return {}; }
     },
 
