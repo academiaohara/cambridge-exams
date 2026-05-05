@@ -6555,7 +6555,7 @@
         var existing = sec.querySelector('.cu-ex-score-summary');
         if (existing) existing.remove();
         // Apply per-item weighting for sections that use multi-point scoring (e.g. KWT = 2 pts each)
-        var pointsPerItem = parseInt(sec.getAttribute('data-points-per-item') || '1', 10) || 1;
+        var pointsPerItem = parseInt(sec.getAttribute('data-points-per-item'), 10) || 1;
         var weightedCorrect = correctItems * pointsPerItem;
         var weightedTotal = totalItems * pointsPerItem;
         var pct = Math.round((correctItems / totalItems) * 100);
