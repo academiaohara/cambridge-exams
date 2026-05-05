@@ -1713,9 +1713,9 @@
       var totalMaxItems = 0;
       (data.sections || []).forEach(function(s) {
         if (s.type === 'exercise') {
-          totalMaxItems += s.subtype === 'passage-input'
-            ? (s.answers || []).length
-            : (s.items || []).length;
+          totalMaxItems += (s.scoring && s.scoring.maxScore)
+            ? s.scoring.maxScore
+            : (s.subtype === 'passage-input' ? (s.answers || []).length : (s.items || []).length);
         }
       });
 
@@ -1746,7 +1746,7 @@
           var multiSelectAttr = section.multiSelect ? ' data-multi-select="true"' : '';
           var isPassageInput = section.subtype === 'passage-input';
           var rvMaxItems = isPassageInput ? (section.answers || []).length : rvItems.length;
-          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvMaxItems + '"' + multiSelectAttr + '>' +
+          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + rvMaxItems + '" data-points-per-item="' + ((section.scoring && section.scoring.pointsPerItem) || 1) + '"' + multiSelectAttr + '>' +
             '<div class="cu-section-title">' + _mi('quiz') + ' ' + self._escapeHTML(section.title) + '</div>';
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
@@ -4900,8 +4900,9 @@
       var totalMaxItems = 0;
       (data.sections || []).forEach(function(s) {
         if (s.type === 'exercise') {
-          if (s.subtype === 'passage-input') totalMaxItems += (s.answers || []).length;
-          else totalMaxItems += (s.items || []).length;
+          totalMaxItems += (s.scoring && s.scoring.maxScore)
+            ? s.scoring.maxScore
+            : (s.subtype === 'passage-input' ? (s.answers || []).length : (s.items || []).length);
         }
       });
 
@@ -4933,7 +4934,7 @@
           var isPassageInput = section.subtype === 'passage-input';
           var isMcPassage = !!(section.passage && rvItems.length && rvItems[0] && rvItems[0].options);
           var ptMaxItems = isPassageInput ? (section.answers || []).length : rvItems.length;
-          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + ptMaxItems + '"' + multiSelectAttr + '>' +
+          html += '<div class="cu-section cu-exercise cu-review-section" id="' + rvSecId + '" data-max-items="' + ptMaxItems + '" data-points-per-item="' + ((section.scoring && section.scoring.pointsPerItem) || 1) + '"' + multiSelectAttr + '>' +
             '<div class="cu-section-title">' + _mi('assignment') + ' ' + self._escapeHTML(section.title) + '</div>';
           if (section.instructions) {
             html += '<div class="cu-ex-instructions">' + _bold(section.instructions) + '</div>';
@@ -6553,6 +6554,10 @@
       if (totalItems > 0) {
         var existing = sec.querySelector('.cu-ex-score-summary');
         if (existing) existing.remove();
+        // Apply per-item weighting for sections that use multi-point scoring (e.g. KWT = 2 pts each)
+        var pointsPerItem = parseInt(sec.getAttribute('data-points-per-item'), 10) || 1;
+        var weightedCorrect = correctItems * pointsPerItem;
+        var weightedTotal = totalItems * pointsPerItem;
         var pct = Math.round((correctItems / totalItems) * 100);
         var isGood = pct >= 70;
         var summary = document.createElement('div');
@@ -6560,7 +6565,7 @@
         summary.setAttribute('role', 'status');
         summary.setAttribute('aria-live', 'polite');
         var emojiLabel = isGood ? '(celebration)' : '(hint)';
-        var scoreText = correctItems + '/' + totalItems + ' correct';
+        var scoreText = weightedCorrect + '/' + weightedTotal + (pointsPerItem > 1 ? ' pts' : ' correct');
         var feedbackText = isGood ? '¡Muy bien!' : 'Review the highlighted answers above.';
         summary.innerHTML =
           '<span aria-hidden="true">' + (isGood ? '🎉' : '💡') + '</span>' +
@@ -6577,16 +6582,16 @@
             sec.appendChild(summary);
           }
         }
-        // Store result on the section element for total score tracking
-        sec.setAttribute('data-correct-items', correctItems);
-        sec.setAttribute('data-total-items', totalItems);
+        // Store result on the section element for total score tracking (weighted)
+        sec.setAttribute('data-correct-items', weightedCorrect);
+        sec.setAttribute('data-total-items', weightedTotal);
         // Persist score and answers to localStorage for review sections
         if (sec.classList.contains('cu-review-section')) {
           var unitId = BentoGrid._currentUnitId;
           var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
           if (unitId && !isNaN(sectionIdx)) {
-            BentoGrid._trackReviewItem(unitId, sectionIdx, correctItems);
-            BentoGrid._saveReviewSectionState(sec, unitId, sectionIdx, correctItems, totalItems);
+            BentoGrid._trackReviewItem(unitId, sectionIdx, weightedCorrect);
+            BentoGrid._saveReviewSectionState(sec, unitId, sectionIdx, weightedCorrect, weightedTotal);
           }
         } else {
           // Non-review exercise: persist checked answers + score locally and to Supabase
