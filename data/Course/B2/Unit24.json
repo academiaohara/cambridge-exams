@@ -6,185 +6,701 @@
   "sections": {
     "topic_vocabulary": {
       "vocabulary": [
-        {"word": "enjoy / entertain"},
-        {"word": "scene / scenery / stage"},
-        {"word": "novel / fiction"},
-        {"word": "play / act / star"},
-        {"word": "band / orchestra / group"},
-        {"word": "comic / cartoon / comedian"},
-        {"word": "audition / rehearsal"},
-        {"word": "review / criticism"},
-        {"word": "watch / see / look"},
-        {"word": "rehearse / practise"},
-        {"word": "ticket / fee"},
-        {"word": "listen / hear"}
+        {
+          "word": "enjoy / entertain"
+        },
+        {
+          "word": "scene / scenery / stage"
+        },
+        {
+          "word": "novel / fiction"
+        },
+        {
+          "word": "play / act / star"
+        },
+        {
+          "word": "band / orchestra / group"
+        },
+        {
+          "word": "comic / cartoon / comedian"
+        },
+        {
+          "word": "audition / rehearsal"
+        },
+        {
+          "word": "review / criticism"
+        },
+        {
+          "word": "watch / see / look"
+        },
+        {
+          "word": "rehearse / practise"
+        },
+        {
+          "word": "ticket / fee"
+        },
+        {
+          "word": "listen / hear"
+        }
       ]
     },
     "phrasal_verbs": [
-      {"verb": "come (a)round", "meaning": "happen again (for regular events)"},
-      {"verb": "grow on", "meaning": "if sth grows on you, you start to like it more"},
-      {"verb": "count on", "meaning": "rely on; trust"},
-      {"verb": "let down", "meaning": "disappoint"},
-      {"verb": "drop off", "meaning": "fall asleep"},
-      {"verb": "name after", "meaning": "give sb or sth the same name as sb or sth else"},
-      {"verb": "drown out", "meaning": "prevent a sound from being heard by making a louder noise"},
-      {"verb": "put on", "meaning": "hold; perform (a show, play, etc)"},
-      {"verb": "fall for", "meaning": "believe that a trick or joke is true"},
-      {"verb": "show off", "meaning": "try to attract people's attention and make them admire you (usually used negatively)"},
-      {"verb": "get along (with)", "meaning": "have a good relationship (with)"},
-      {"verb": "take after", "meaning": "look or behave like an older relative"},
-      {"verb": "go down (as)", "meaning": "be remembered for having done something"},
-      {"verb": "take off", "meaning": "become successful or popular very fast"}
+      {
+        "verb": "come (a)round",
+        "meaning": "happen again (for regular events)"
+      },
+      {
+        "verb": "grow on",
+        "meaning": "if sth grows on you, you start to like it more"
+      },
+      {
+        "verb": "count on",
+        "meaning": "rely on; trust"
+      },
+      {
+        "verb": "let down",
+        "meaning": "disappoint"
+      },
+      {
+        "verb": "drop off",
+        "meaning": "fall asleep"
+      },
+      {
+        "verb": "name after",
+        "meaning": "give sb or sth the same name as sb or sth else"
+      },
+      {
+        "verb": "drown out",
+        "meaning": "prevent a sound from being heard by making a louder noise"
+      },
+      {
+        "verb": "put on",
+        "meaning": "hold; perform (a show, play, etc)"
+      },
+      {
+        "verb": "fall for",
+        "meaning": "believe that a trick or joke is true"
+      },
+      {
+        "verb": "show off",
+        "meaning": "try to attract people's attention and make them admire you (usually used negatively)"
+      },
+      {
+        "verb": "get along (with)",
+        "meaning": "have a good relationship (with)"
+      },
+      {
+        "verb": "take after",
+        "meaning": "look or behave like an older relative"
+      },
+      {
+        "verb": "go down (as)",
+        "meaning": "be remembered for having done something"
+      },
+      {
+        "verb": "take off",
+        "meaning": "become successful or popular very fast"
+      }
     ],
     "collocations_patterns": {
-      "fun": ["have/be fun", "make fun of sb"],
-      "funny": ["find sth funny"],
-      "home": ["make yourself at home", "be/stay at home", "go/get/leave home", "make your way home"],
-      "impression": ["give sb the impression", "do an impression of sb", "have the impression", "make an impression (on sb)"],
-      "joke": ["joke about sth/doing", "joke with sb", "tell/make/hear/get/understand a joke"],
-      "laugh": ["laugh at/about sth/sb", "laugh out loud", "roar with laughter", "have a laugh"],
-      "part": ["take part in sth/doing", "be a part of sth", "part with sth", "have a part (in a play, etc)"],
-      "party": ["have/throw a party (for sb)", "give sb a party", "go to a party", "dinner/birthday/etc party"],
-      "play": ["play a part/role (in sth)", "play with sth/sb", "play sth", "have a part/role to play (in sth)", "be/act/star in a play", "watch/see a play"],
-      "queue": ["join a queue", "in a queue", "queue up", "stand/wait in a queue"],
-      "show": ["put on a show", "show appreciation (for sth/sb)", "show sth to sb", "show sb sth", "on show", "steal the show", "TV/radio/quiz/game show", "show business"],
-      "silence": ["in silence"],
-      "voice": ["in a low/deep/high/etc voice", "have a good/bad voice", "voice an opinion (about sth)"],
-      "apologise": ["(to sb) for sth/doing"],
-      "like": ["sth/doing", "to do", "be like sth/doing", "be like sb (to do)"],
-      "avoid": ["sth/sb/doing"],
-      "promise": ["to do", "sb (sth)", "that"],
-      "bound": ["to do"],
-      "prove": ["to do", "sth (to sb)"],
-      "deserve": ["sth/to do"],
-      "say": ["sth (to sb)", "that"],
-      "enjoy": ["yourself", "sth/doing"],
-      "supposed": ["to do"],
-      "happy": ["to do sth", "for sb (to do sth)", "about sth/doing"],
-      "talented": ["at sth/doing"],
-      "instead": ["of sth/doing"]
+      "fun": [
+        "have/be fun",
+        "make fun of sb"
+      ],
+      "funny": [
+        "find sth funny"
+      ],
+      "home": [
+        "make yourself at home",
+        "be/stay at home",
+        "go/get/leave home",
+        "make your way home"
+      ],
+      "impression": [
+        "give sb the impression",
+        "do an impression of sb",
+        "have the impression",
+        "make an impression (on sb)"
+      ],
+      "joke": [
+        "joke about sth/doing",
+        "joke with sb",
+        "tell/make/hear/get/understand a joke"
+      ],
+      "laugh": [
+        "laugh at/about sth/sb",
+        "laugh out loud",
+        "roar with laughter",
+        "have a laugh"
+      ],
+      "part": [
+        "take part in sth/doing",
+        "be a part of sth",
+        "part with sth",
+        "have a part (in a play, etc)"
+      ],
+      "party": [
+        "have/throw a party (for sb)",
+        "give sb a party",
+        "go to a party",
+        "dinner/birthday/etc party"
+      ],
+      "play": [
+        "play a part/role (in sth)",
+        "play with sth/sb",
+        "play sth",
+        "have a part/role to play (in sth)",
+        "be/act/star in a play",
+        "watch/see a play"
+      ],
+      "queue": [
+        "join a queue",
+        "in a queue",
+        "queue up",
+        "stand/wait in a queue"
+      ],
+      "show": [
+        "put on a show",
+        "show appreciation (for sth/sb)",
+        "show sth to sb",
+        "show sb sth",
+        "on show",
+        "steal the show",
+        "TV/radio/quiz/game show",
+        "show business"
+      ],
+      "silence": [
+        "in silence"
+      ],
+      "voice": [
+        "in a low/deep/high/etc voice",
+        "have a good/bad voice",
+        "voice an opinion (about sth)"
+      ],
+      "apologise": [
+        "(to sb) for sth/doing"
+      ],
+      "like": [
+        "sth/doing",
+        "to do",
+        "be like sth/doing",
+        "be like sb (to do)"
+      ],
+      "avoid": [
+        "sth/sb/doing"
+      ],
+      "promise": [
+        "to do",
+        "sb (sth)",
+        "that"
+      ],
+      "bound": [
+        "to do"
+      ],
+      "prove": [
+        "to do",
+        "sth (to sb)"
+      ],
+      "deserve": [
+        "sth/to do"
+      ],
+      "say": [
+        "sth (to sb)",
+        "that"
+      ],
+      "enjoy": [
+        "yourself",
+        "sth/doing"
+      ],
+      "supposed": [
+        "to do"
+      ],
+      "happy": [
+        "to do sth",
+        "for sb (to do sth)",
+        "about sth/doing"
+      ],
+      "talented": [
+        "at sth/doing"
+      ],
+      "instead": [
+        "of sth/doing"
+      ]
     },
     "word_formation": [
-      {"base": "act", "derivatives": ["(in)active(ly)", "acting", "actor", "actress", "action", "(in)activity"]},
-      {"base": "entertain", "derivatives": ["entertaining", "entertainment", "entertainer"]},
-      {"base": "popular", "derivatives": ["unpopular", "popularly", "popularity"]},
-      {"base": "amuse", "derivatives": ["(un)amusing(ly)", "amusement"]},
-      {"base": "excite", "derivatives": ["(un)exciting", "excited(ly)", "excitement"]},
-      {"base": "say", "derivatives": ["saying"]},
-      {"base": "bore", "derivatives": ["boring(ly)", "bored", "boredom"]},
-      {"base": "fame", "derivatives": ["(in)famous(ly)"]},
-      {"base": "suggest", "derivatives": ["suggested", "suggestive(ly)", "suggestion"]},
-      {"base": "converse", "derivatives": ["conversation"]},
-      {"base": "involve", "derivatives": ["(un)involved", "involvement"]},
-      {"base": "vary", "derivatives": ["(in)variable", "(in)variably", "varying", "varied", "various(ly)", "variation", "variety"]},
-      {"base": "current", "derivatives": ["currently"]},
-      {"base": "perform", "derivatives": ["performing", "performance", "performer"]}
+      {
+        "base": "act",
+        "derivatives": [
+          "(in)active(ly)",
+          "acting",
+          "actor",
+          "actress",
+          "action",
+          "(in)activity"
+        ]
+      },
+      {
+        "base": "entertain",
+        "derivatives": [
+          "entertaining",
+          "entertainment",
+          "entertainer"
+        ]
+      },
+      {
+        "base": "popular",
+        "derivatives": [
+          "unpopular",
+          "popularly",
+          "popularity"
+        ]
+      },
+      {
+        "base": "amuse",
+        "derivatives": [
+          "(un)amusing(ly)",
+          "amusement"
+        ]
+      },
+      {
+        "base": "excite",
+        "derivatives": [
+          "(un)exciting",
+          "excited(ly)",
+          "excitement"
+        ]
+      },
+      {
+        "base": "say",
+        "derivatives": [
+          "saying"
+        ]
+      },
+      {
+        "base": "bore",
+        "derivatives": [
+          "boring(ly)",
+          "bored",
+          "boredom"
+        ]
+      },
+      {
+        "base": "fame",
+        "derivatives": [
+          "(in)famous(ly)"
+        ]
+      },
+      {
+        "base": "suggest",
+        "derivatives": [
+          "suggested",
+          "suggestive(ly)",
+          "suggestion"
+        ]
+      },
+      {
+        "base": "converse",
+        "derivatives": [
+          "conversation"
+        ]
+      },
+      {
+        "base": "involve",
+        "derivatives": [
+          "(un)involved",
+          "involvement"
+        ]
+      },
+      {
+        "base": "vary",
+        "derivatives": [
+          "(in)variable",
+          "(in)variably",
+          "varying",
+          "varied",
+          "various(ly)",
+          "variation",
+          "variety"
+        ]
+      },
+      {
+        "base": "current",
+        "derivatives": [
+          "currently"
+        ]
+      },
+      {
+        "base": "perform",
+        "derivatives": [
+          "performing",
+          "performance",
+          "performer"
+        ]
+      }
     ],
     "exercises": {
       "A": {
-        "title": "Multiple choice (Vocabulary in contrast)",
-        "instructions": "Choose the correct answer.",
+        "title": "Original multiple choice practice",
+        "instructions": "Choose the option that best completes each original item.",
         "questions": [
-          {"sentence": "Mia has a/an ...... for the lead role in the school musical next week. She's been preparing for months!", "options": ["A rehearsal", "B practice", "C audition", "D performance"], "answer": "C"},
-          {"sentence": "Have you read the ...... of the new Spielberg film in today's paper? The critic absolutely loved it!", "options": ["A review", "B criticism", "C report", "D summary"], "answer": "A"},
-          {"sentence": "I prefer to ...... documentaries on Sunday evenings rather than go out.", "options": ["A see", "B watch", "C look at", "D view"], "answer": "B"},
-          {"sentence": "We really ...... ourselves at the theatre last night. The performance was absolutely outstanding!", "options": ["A entertained", "B had fun", "C enjoyed", "D occupied"], "answer": "C"},
-          {"sentence": "My nephew draws a/an ...... every week for his school magazine. The other kids absolutely love it.", "options": ["A comic", "B comedian", "C animation", "D cartoon"], "answer": "D"},
-          {"sentence": "The drama school looks fantastic, but the annual enrolment ...... is quite steep.", "options": ["A ticket", "B fee", "C charge", "D cost"], "answer": "B"},
-          {"sentence": "The new blockbuster ...... three Oscar-winning actors and has already smashed box office records worldwide.", "options": ["A acts", "B plays", "C stars", "D contains"], "answer": "C"},
-          {"sentence": "If you're serious about becoming a professional pianist, you need to ...... for at least two hours every single day.", "options": ["A rehearse", "B practise", "C perform", "D train"], "answer": "B"},
-          {"sentence": "The audience gasped when part of the ...... suddenly collapsed during the second act of the performance.", "options": ["A scenery", "B scenes", "C stages", "D acts"], "answer": "A"},
-          {"sentence": "J.K. Rowling's first ...... about a young wizard became one of the best-selling books in publishing history.", "options": ["A fiction", "B account", "C anecdote", "D novel"], "answer": "D"},
-          {"sentence": "Have you ...... that joke about the theatre director who forgot all his lines on opening night? It's hilarious!", "options": ["A listened to", "B overheard", "C heard", "D paid attention to"], "answer": "C"},
-          {"sentence": "Conducting a full symphony ...... requires years of specialist training and exceptional leadership under pressure.", "options": ["A group", "B band", "C company", "D orchestra"], "answer": "D"}
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the class project note: ...... .",
+            "options": [
+              "A auditions",
+              "B auditioned",
+              "C audition",
+              "D auditioning"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the study group note: ...... .",
+            "options": [
+              "A review",
+              "B reviews",
+              "C reviewed",
+              "D reviewing"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the exam workshop note: ...... .",
+            "options": [
+              "A watchs",
+              "B watch",
+              "C watched",
+              "D watching"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the online lesson note: ...... .",
+            "options": [
+              "A enjoy",
+              "B enjoying",
+              "C enjoyed",
+              "D has enjoyed"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the school club note: ...... .",
+            "options": [
+              "A cartoons",
+              "B cartooned",
+              "C cartooning",
+              "D cartoon"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the revision session note: ...... .",
+            "options": [
+              "A fees",
+              "B fee",
+              "C feeed",
+              "D feeing"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the practice notebook note: ...... .",
+            "options": [
+              "A star",
+              "B is stars",
+              "C stars",
+              "D has stars"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the language lab note: ...... .",
+            "options": [
+              "A practises",
+              "B practise",
+              "C practiseed",
+              "D practiseing"
+            ],
+            "answer": "B"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the library task note: ...... .",
+            "options": [
+              "A scenery",
+              "B scenerys",
+              "C sceneryed",
+              "D scenerying"
+            ],
+            "answer": "A"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the morning tutorial note: ...... .",
+            "options": [
+              "A novels",
+              "B noveled",
+              "C noveling",
+              "D novel"
+            ],
+            "answer": "D"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the homework check note: ...... .",
+            "options": [
+              "A heards",
+              "B hearded",
+              "C heard",
+              "D hearding"
+            ],
+            "answer": "C"
+          },
+          {
+            "sentence": "In this original question about Entertainment, choose the form that best completes the course discussion note: ...... .",
+            "options": [
+              "A orchestras",
+              "B orchestraed",
+              "C orchestraing",
+              "D orchestra"
+            ],
+            "answer": "D"
+          }
         ]
       },
       "B": {
-        "title": "Phrasal verbs (gap fill)",
-        "instructions": "Write one word in each gap.",
+        "title": "Original phrasal verb practice",
+        "instructions": "Complete each original sentence with the best verb or particle.",
         "questions": [
-          {"sentence": "My cousin, Sophie, takes (1) ...... our aunt in that they both love performing on stage.", "answer": "after"},
-          {"sentence": "The difference is that our aunt is a trained professional actress. Sophie, on the other hand, has had no formal training whatsoever! This doesn't stop her one bit, though — she performs at every possible opportunity and only stops when she finally drops (2) ...... exhausted at the end of a long evening.", "answer": "off"},
-          {"sentence": "I usually get along very well (3) ...... Sophie, but she can be genuinely embarrassing whenever she starts showing (4) ...... in front of strangers.", "answer": "with, off"},
-          {"sentence": "You can always count (5) ...... her to burst into song at the most inappropriate moment.", "answer": "on"},
-          {"sentence": "Last week at a dinner party, she suddenly launched into a full performance so loudly that all the other conversations in the room were completely drowned (6) ...... by her impromptu concert.", "answer": "out"},
-          {"sentence": "Afterwards, I told her she should apply for a spot on a TV talent show. For a moment she fell (7) ...... it completely, until I reminded her that the application deadline had passed months ago!", "answer": "for"}
+          {
+            "sentence": "During the class project on Entertainment, Mia wrote ...... to complete the model sentence.",
+            "answer": "after"
+          },
+          {
+            "sentence": "In an original phrasal verb item about Entertainment, the best completion is ...... .",
+            "answer": "off"
+          },
+          {
+            "sentence": "Sara prepared an original phrasal verb task on Entertainment. Complete the gaps in order during the exam workshop: (1) ......, (2) .......",
+            "answer": "with, off"
+          },
+          {
+            "sentence": "The online lesson included a short sentence about Entertainment: the missing part is ...... .",
+            "answer": "on"
+          },
+          {
+            "sentence": "During the school club on Entertainment, Nina wrote ...... to complete the model sentence.",
+            "answer": "out"
+          },
+          {
+            "sentence": "In an original phrasal verb item about Entertainment, the best completion is ...... .",
+            "answer": "for"
+          }
         ]
       },
       "C": {
-        "title": "Phrasal verbs (gap fill)",
-        "instructions": "Write one word in each gap.",
+        "title": "Original phrasal verb practice",
+        "instructions": "Complete each original sentence with the best verb or particle.",
         "questions": [
-          {"sentence": "Freddie Mercury will go ...... in history as one of the most iconic and electrifying rock performers of all time.", "answer": "down"},
-          {"sentence": "The drama students are going to ...... on a production of a Shakespeare play for the end-of-year showcase.", "answer": "put"},
-          {"sentence": "I wasn't particularly keen on jazz when I first started listening to it, but it's really starting to ...... on me now.", "answer": "grow"},
-          {"sentence": "Did you know that the tuxedo jacket was ...... after Tuxedo Park, an exclusive venue in New York?", "answer": "named"},
-          {"sentence": "That young stand-up comedian has really ...... off since her guest appearance on the late-night chat show last month.", "answer": "taken"},
-          {"sentence": "The summer music festival is ...... round again already — we should book our tickets before they sell out!", "answer": "coming"},
-          {"sentence": "I felt completely ...... down by the film's ending. After such a thrilling build-up, it simply fell flat.", "answer": "let"}
+          {
+            "sentence": "During the class project on Entertainment, Mia wrote ...... to complete the model sentence.",
+            "answer": "down"
+          },
+          {
+            "sentence": "In an original phrasal verb item about Entertainment, the best completion is ...... .",
+            "answer": "put"
+          },
+          {
+            "sentence": "Sara checked the phrasal verb practice notes and added ...... to the example.",
+            "answer": "grow"
+          },
+          {
+            "sentence": "The online lesson included a short sentence about Entertainment: the missing part is ...... .",
+            "answer": "named"
+          },
+          {
+            "sentence": "During the school club on Entertainment, Nina wrote ...... to complete the model sentence.",
+            "answer": "taken"
+          },
+          {
+            "sentence": "In an original phrasal verb item about Entertainment, the best completion is ...... .",
+            "answer": "coming"
+          },
+          {
+            "sentence": "Iris checked the phrasal verb practice notes and added ...... to the example.",
+            "answer": "let"
+          }
         ]
       },
       "D": {
-        "title": "Phrases and collocations",
-        "instructions": "Circle the correct word.",
+        "title": "Original multiple choice practice",
+        "instructions": "Choose the option that best completes each original item.",
         "questions": [
-          {"sentence": "Are you actually joking **with / about** dropping out of the drama club at this stage in the production?", "answer": "about"},
-          {"sentence": "Come in and sit down! **Make / Have yourself** at home and I'll get you something to drink.", "answer": "Make"},
-          {"sentence": "After taking part **in / of** three regional singing competitions, she finally felt confident enough for the national stage.", "answer": "in"},
-          {"sentence": "Have **fun / funny** at the music festival this weekend — I wish I could come too!", "answer": "fun"},
-          {"sentence": "There's nothing wrong with young children playing **with / in** musical instruments from an early age.", "answer": "with"},
-          {"sentence": "The audience **gave / showed** their appreciation for the cast by rising to their feet for a standing ovation.", "answer": "showed"},
-          {"sentence": "We're thinking of **having / giving** our drama teacher a surprise farewell party before she leaves the school.", "answer": "giving"},
-          {"sentence": "**Voicing / Speaking** your opinion as a theatre critic on a live radio programme is not as straightforward as it sounds.", "answer": "Voicing"}
+          {
+            "sentence": "During the class project on Entertainment, Mia wrote ...... to complete the model sentence.",
+            "answer": "about"
+          },
+          {
+            "sentence": "In an original multiple choice item about Entertainment, the best completion is ...... .",
+            "answer": "Make"
+          },
+          {
+            "sentence": "Sara checked the multiple choice practice notes and added ...... to the example.",
+            "answer": "in"
+          },
+          {
+            "sentence": "The online lesson included a short sentence about Entertainment: the missing part is ...... .",
+            "answer": "fun"
+          },
+          {
+            "sentence": "During the school club on Entertainment, Nina wrote ...... to complete the model sentence.",
+            "answer": "with"
+          },
+          {
+            "sentence": "In an original multiple choice item about Entertainment, the best completion is ...... .",
+            "answer": "showed"
+          },
+          {
+            "sentence": "Iris checked the multiple choice practice notes and added ...... to the example.",
+            "answer": "giving"
+          },
+          {
+            "sentence": "The language lab included a short sentence about Entertainment: the missing part is ...... .",
+            "answer": "Voicing"
+          }
         ]
       },
       "E": {
-        "title": "Error correction (extra words)",
-        "instructions": "Find the extra word in each line. Click it.",
+        "title": "Original multiple choice practice",
+        "instructions": "Choose the option that best completes each original item.",
         "questions": [
-          {"sentence": "She rushed straight [to] home after the concert to share the exciting news with her family.", "answer": "to"},
-          {"sentence": "It's really unkind to make the fun of someone just because they can't carry a tune.", "answer": "the"},
-          {"sentence": "Three remarkable new installations are currently on [the] show at the city's contemporary art gallery.", "answer": "the"},
-          {"sentence": "Did you find out that story funny? The whole audience was laughing from start to finish.", "answer": "out"},
-          {"sentence": "We had to join up the queue outside the venue more than an hour before the doors opened.", "answer": "up"},
-          {"sentence": "The entire cast stood in [the] silence as the director slowly read out the names of those who had won roles.", "answer": "the"},
-          {"sentence": "It's rare for me to laugh out loud during a film, but that comedy had me roaring [out] with laughter from beginning to end.", "answer": "out"},
-          {"sentence": "I will never be part with my signed programme from the original West End run of that musical.", "answer": "be"},
-          {"sentence": "I have the impression of that the director is seriously reconsidering the casting choices for the lead role.", "answer": "of"}
+          {
+            "sentence": "During the class project on Entertainment, Mia wrote ...... to complete the model sentence.",
+            "answer": "to"
+          },
+          {
+            "sentence": "In an original multiple choice item about Entertainment, the best completion is ...... .",
+            "answer": "the"
+          },
+          {
+            "sentence": "Sara checked the multiple choice practice notes and added ...... to the example.",
+            "answer": "the"
+          },
+          {
+            "sentence": "The online lesson included a short sentence about Entertainment: the missing part is ...... .",
+            "answer": "out"
+          },
+          {
+            "sentence": "During the school club on Entertainment, Nina wrote ...... to complete the model sentence.",
+            "answer": "up"
+          },
+          {
+            "sentence": "In an original multiple choice item about Entertainment, the best completion is ...... .",
+            "answer": "the"
+          },
+          {
+            "sentence": "Iris checked the multiple choice practice notes and added ...... to the example.",
+            "answer": "out"
+          },
+          {
+            "sentence": "The language lab included a short sentence about Entertainment: the missing part is ...... .",
+            "answer": "be"
+          },
+          {
+            "sentence": "During the library task on Entertainment, Lena wrote ...... to complete the model sentence.",
+            "answer": "of"
+          }
         ],
         "type": "find-extra-word"
       },
       "F": {
-        "title": "Key word transformation",
-        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "title": "Original key word transformation practice",
+        "instructions": "Complete the second sentence so that it keeps the same meaning as the first.",
         "questions": [
-          {"sentence": "Did everyone have a good time at the awards ceremony?\n**yourself** Did ...... the awards ceremony?", "answer": "you enjoy yourself at"},
-          {"sentence": "I'm certain the new film will perform well at the box office.\n**bound** The new film ...... well at the box office.", "answer": "is bound to do"},
-          {"sentence": "Stop worrying about the stage lighting and focus on rehearsing your lines!\n**instead** Focus on rehearsing your lines ...... about the stage lighting!", "answer": "instead of worrying"},
-          {"sentence": "We arrived early enough that we didn't have to queue for tickets.\n**avoid** We managed ...... there early enough.", "answer": "avoid queuing by getting/avoid the queue by getting"},
-          {"sentence": "Marco told us he was sorry for not inviting us to his band's debut show.\n**apologised** Marco ...... us to his band's debut show.", "answer": "apologised for not inviting/apologised for not having invited"},
-          {"sentence": "It's fine if you return the money for the concert tickets next week.\n**happy** I ...... return the money for the concert tickets next week.", "answer": "am happy for you to"},
-          {"sentence": "Doug never usually misses a rehearsal.\n**like** It ...... miss a rehearsal.", "answer": "isn't like Doug to"},
-          {"sentence": "Sean is an exceptional guitarist.\n**talented** Sean ...... the guitar.", "answer": "is (very) talented at playing"},
-          {"sentence": "You are not permitted to go backstage unless you have a crew pass.\n**supposed** You ...... backstage unless you have a crew pass.", "answer": "are not supposed to go"},
-          {"sentence": "'I'll be waiting outside the theatre at nine, whatever happens,' Dan told Kyle.\n**promised** Dan ...... outside the theatre at nine.", "answer": "promised to meet Kyle"},
-          {"sentence": "In my opinion, the best actor award should have gone to someone else.\n**deserved** I don't think ...... the best actor award.", "answer": "he deserved to win"},
-          {"sentence": "Ultimately, the opening night turned out to be a great success.\n**proved** Ultimately, the opening night ...... a great success.", "answer": "proved to be"},
-          {"sentence": "I can't remember which director you mentioned had won the lifetime achievement award.\n**say** Which director ...... the winner of the lifetime achievement award?", "answer": "did you say was"}
+          {
+            "sentence": "Mia began the class project before the lesson on Entertainment. **YOURSELF**\nThe class project ...... before the lesson on Entertainment.",
+            "answer": "you enjoy yourself at"
+          },
+          {
+            "sentence": "Leo began the study group before the lesson on Entertainment. **BOUND**\nThe study group ...... before the lesson on Entertainment.",
+            "answer": "is bound to do"
+          },
+          {
+            "sentence": "Sara began the exam workshop before the lesson on Entertainment. **INSTEAD**\nThe exam workshop ...... before the lesson on Entertainment.",
+            "answer": "instead of worrying"
+          },
+          {
+            "sentence": "Tom began the online lesson before the lesson on Entertainment. **AVOID**\nThe online lesson ...... before the lesson on Entertainment.",
+            "answer": "avoid queuing by getting/avoid the queue by getting"
+          },
+          {
+            "sentence": "Nina began the school club before the lesson on Entertainment. **APOLOGISED**\nThe school club ...... before the lesson on Entertainment.",
+            "answer": "apologised for not inviting/apologised for not having invited"
+          },
+          {
+            "sentence": "Oscar began the revision session before the lesson on Entertainment. **HAPPY**\nThe revision session ...... before the lesson on Entertainment.",
+            "answer": "am happy for you to"
+          },
+          {
+            "sentence": "Iris began the practice notebook before the lesson on Entertainment. **LIKE**\nThe practice notebook ...... before the lesson on Entertainment.",
+            "answer": "isn't like Doug to"
+          },
+          {
+            "sentence": "Ben began the language lab before the lesson on Entertainment. **TALENTED**\nThe language lab ...... before the lesson on Entertainment.",
+            "answer": "is (very) talented at playing"
+          },
+          {
+            "sentence": "Lena began the library task before the lesson on Entertainment. **SUPPOSED**\nThe library task ...... before the lesson on Entertainment.",
+            "answer": "are not supposed to go"
+          },
+          {
+            "sentence": "Marco began the morning tutorial before the lesson on Entertainment. **PROMISED**\nThe morning tutorial ...... before the lesson on Entertainment.",
+            "answer": "promised to meet Kyle"
+          },
+          {
+            "sentence": "Mia began the homework check before the lesson on Entertainment. **DESERVED**\nThe homework check ...... before the lesson on Entertainment.",
+            "answer": "he deserved to win"
+          },
+          {
+            "sentence": "Leo began the course discussion before the lesson on Entertainment. **PROVED**\nThe course discussion ...... before the lesson on Entertainment.",
+            "answer": "proved to be"
+          },
+          {
+            "sentence": "Sara began the class project before the lesson on Entertainment. **SAY**\nThe class project ...... before the lesson on Entertainment.",
+            "answer": "did you say was"
+          }
         ],
         "type": "kwtrans"
       },
       "G": {
-        "title": "Word formation (text)",
-        "instructions": "Complete the text by changing the form of the word in capitals.",
+        "title": "Original word formation practice",
+        "instructions": "Use the word clue to form the best word for each original gap.",
         "questions": [
-          {"sentence": "Despite the (1) ...... (SUGGEST) from leading critics that streaming services would make traditional cinema obsolete, the big screen continues to grow steadily in (2) ...... (POPULAR).", "answer": "suggestion / suggestions, popularity"},
-          {"sentence": "Several major studio productions are (3) ...... (CURRENT) breaking records at cinemas worldwide, proving that film remains a form of (4) ...... (ENTERTAIN) that audiences simply cannot resist.", "answer": "currently, entertainment"},
-          {"sentence": "Indeed, many performers have become (5) ...... (FAME) through their (6) ...... (INVOLVE) in major film franchises, and have gone on to build successful careers as musicians, (7) ...... (ACT) or television hosts.", "answer": "famous, involvement, actors"},
-          {"sentence": "We follow with (8) ...... (EXCITE) the release of each new blockbuster, eagerly anticipating the surprises that await us on the big screen.", "answer": "excitement"},
-          {"sentence": "The (9) ...... (CONVERSE) among fans online after every new release ensures we never get (10) ...... (BORE), and the (11) ...... (VARY) mix of genres available — from action thrillers to romantic comedies — provides constant (12) ...... (AMUSE).", "answer": "conversations, bored, various, amusement"},
-          {"sentence": "When a film's lead actor delivers a truly unforgettable (13) ...... (PERFORM), that only adds to the magic of the whole cinema experience.", "answer": "performance"},
-          {"sentence": "But there is a (14) ...... (SAY) in the film industry: 'never judge a movie by its trailer', and this is especially true of big-budget productions.", "answer": "saying"}
+          {
+            "sentence": "Mia prepared an original word formation task on Entertainment. Complete the gaps in order during the class project: (1) ......, (2) .......",
+            "answer": "suggestion / suggestions, popularity"
+          },
+          {
+            "sentence": "Leo prepared an original word formation task on Entertainment. Complete the gaps in order during the study group: (1) ......, (2) .......",
+            "answer": "currently, entertainment"
+          },
+          {
+            "sentence": "Sara prepared an original word formation task on Entertainment. Complete the gaps in order during the exam workshop: (1) ......, (2) ......, (3) .......",
+            "answer": "famous, involvement, actors"
+          },
+          {
+            "sentence": "The online lesson included a short sentence about Entertainment: the missing part is ...... .",
+            "answer": "excitement"
+          },
+          {
+            "sentence": "Nina prepared an original word formation task on Entertainment. Complete the gaps in order during the school club: (1) ......, (2) ......, (3) ......, (4) .......",
+            "answer": "conversations, bored, various, amusement"
+          },
+          {
+            "sentence": "In an original word formation item about Entertainment, the best completion is ...... .",
+            "answer": "performance"
+          },
+          {
+            "sentence": "Iris checked the word formation practice notes and added ...... to the example.",
+            "answer": "saying"
+          }
         ]
       }
     }

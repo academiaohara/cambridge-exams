@@ -493,14 +493,17 @@
         '</div>';
 
         if (isAvail) {
-          var reviewSectionDefs = [
-            { letter: 'A', name: 'Word Formation', maxScore: 10 },
-            { letter: 'B', name: 'Key Word Transformation', maxScore: 16 },
-            { letter: 'C', name: 'Idioms & Collocations', maxScore: 8 },
-            { letter: 'D', name: 'Phrasal Verbs', maxScore: 8 },
-            { letter: 'E', name: 'Multiple Choice', maxScore: 8 }
-          ];
-          var reviewTotalMax = 50;
+          var reviewMeta = (BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[reviewItem.id]) || null;
+          var reviewSectionDefs = reviewMeta && reviewMeta.reviewSections && reviewMeta.reviewSections.length
+            ? reviewMeta.reviewSections
+            : [
+              { letter: 'A', name: 'Word Formation', maxScore: 10 },
+              { letter: 'B', name: 'Key Word Transformation', maxScore: 16 },
+              { letter: 'C', name: 'Idioms & Collocations', maxScore: 8 },
+              { letter: 'D', name: 'Phrasal Verbs', maxScore: 8 },
+              { letter: 'E', name: 'Multiple Choice', maxScore: 8 }
+            ];
+          var reviewTotalMax = (reviewMeta && reviewMeta.totalMax) || 50;
           var reviewAnsweredData = BentoGrid._getReviewAnswered(level);
           var reviewStateData = BentoGrid._getReviewSectionState(level);
           var totalEarned = 0;
@@ -4382,6 +4385,29 @@
         return { ptSections: ptSections };
       }
 
+      if (unitData.type === 'review') {
+        var reviewSections = [];
+        var totalMax = 0;
+        (unitData.sections || []).forEach(function(sec, sectionIdx) {
+          if (sec.type !== 'exercise') return;
+          var maxScore = (sec.scoring && sec.scoring.maxScore) || 0;
+          if (!maxScore) {
+            var itemCount = sec.subtype === 'passage-input'
+              ? (sec.answers || []).length
+              : (sec.items || []).length;
+            maxScore = itemCount * ((sec.scoring && sec.scoring.pointsPerItem) || 1);
+          }
+          totalMax += maxScore;
+          reviewSections.push({
+            letter: BentoGrid._getCourseExerciseLabel(reviewSections.length),
+            name: String(sec.title || '').replace(/^[A-Z]+:\s*/, '') || ('Section ' + (sectionIdx + 1)),
+            maxScore: maxScore,
+            sectionIdx: sectionIdx
+          });
+        });
+        return { reviewSections: reviewSections, totalMax: unitData.totalPoints || totalMax };
+      }
+
       return null;
     },
 
@@ -4398,7 +4424,7 @@
         return item &&
           item.status === 'available' &&
           item.file &&
-          (item.type === 'grammar' || item.type === 'vocabulary' || item.type === 'progress_test') &&
+          (item.type === 'grammar' || item.type === 'vocabulary' || item.type === 'review' || item.type === 'progress_test') &&
           !BentoGrid._courseUnitMeta[item.id];
       });
 
