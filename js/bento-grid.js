@@ -1391,6 +1391,8 @@
     },
 
     openStreakSection: function() {
+      var existing = document.querySelector('.bento-streak-modal-overlay');
+      if (existing) existing.remove();
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
       var streakBest = streak ? (streak.longestStreak || 0) : 0;
@@ -1435,7 +1437,7 @@
       el.className = 'bento-streak-modal-overlay';
       el.innerHTML =
         '<div class="bento-streak-modal">' +
-          '<button class="bento-streak-modal-close" onclick="this.closest(\'.bento-streak-modal-overlay\').remove()">✕</button>' +
+          '<button class="bento-streak-modal-close" onclick="event.stopPropagation(); BentoGrid.closeStreakSection()" aria-label="Close streak calendar"><span class="material-symbols-outlined">close</span></button>' +
           '<div class="bento-streak-modal-fire"><span class="material-symbols-outlined">local_fire_department</span></div>' +
           '<div class="bento-streak-modal-count">' + streakCount + '</div>' +
           '<div class="bento-streak-modal-label">' + 'day streak' + '</div>' +
@@ -1450,6 +1452,12 @@
         '</div>';
       document.body.appendChild(el);
       el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
+    },
+
+    closeStreakSection: function() {
+      document.querySelectorAll('.bento-streak-modal-overlay').forEach(function(el) {
+        el.remove();
+      });
     }
   };
 })();

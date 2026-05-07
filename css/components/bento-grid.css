@@ -749,6 +749,11 @@ content: '';
   justify-content: center;
 }
 
+.bento-streak-modal-close .material-symbols-outlined {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
 .bento-streak-modal-fire {
   font-size: 3.5rem;
   animation: fireFlicker 1.5s ease-in-out infinite;
