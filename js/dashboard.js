@@ -28,6 +28,13 @@
         shell.classList.remove('is-collapsed');
       });
 
+      if (window.matchMedia && window.matchMedia('(max-width: 900px)').matches) {
+        document.querySelectorAll('.dashboard-layout').forEach(function(layout) {
+          layout.style.removeProperty('grid-template-columns');
+        });
+        return;
+      }
+
       document.querySelectorAll('.dashboard-layout').forEach(function(layout) {
         var hasLeft = !!layout.querySelector('.dashboard-left-sidebar');
         var hasRight = !!layout.querySelector('.dashboard-right-sidebar');

@@ -11,151 +11,49 @@
 }
 
 /* ============================================
-   MOBILE-ONLY SCREEN
-   Shown on screens smaller than 768px.
-   Hides the main app and displays a message
-   with features list.
+   LEGACY MOBILE-ONLY SCREEN
+   Kept hidden so the real app remains available
+   on phones.
    ============================================ */
 #mobile-only-screen {
-  display: none;
+  display: none !important;
 }
 
 @media (max-width: 768px) {
-  #mobile-only-screen {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    background: linear-gradient(135deg, #F4F7FF 0%, #e8ecf4 100%);
-    justify-content: center;
-    align-items: flex-start;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    background: #F4F7FF;
+    -webkit-text-size-adjust: 100%;
   }
 
   #app {
-    display: none !important;
-  }
-
-  .mobile-only-content {
-    width: 100%;
-    max-width: 480px;
-    padding: 48px 24px 40px;
-    text-align: center;
-  }
-
-  .mobile-only-logo {
-    width: auto;
-    height: 46px;
-    margin-bottom: 16px;
-  }
-
-  .mobile-only-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: linear-gradient(135deg, #2D2E5F, #1E9D8E);
-    color: white;
-    padding: 8px 20px;
-    border-radius: 40px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-
-  .mobile-only-badge .material-symbols-outlined {
-    font-size: 1.1rem;
-  }
-
-  .mobile-only-subtitle {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.95rem;
-    color: #4a4b7c;
-    line-height: 1.6;
-    margin: 0 0 32px;
-    padding: 0 8px;
-  }
-
-  .mobile-only-features {
-    text-align: left;
-  }
-
-  .mobile-only-features h2 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #2D2E5F;
-    margin: 0 0 16px;
-    text-align: center;
-  }
-
-  .mobile-only-feature-list {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .mobile-only-feature {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    background: white;
-    padding: 14px 16px;
-    border-radius: 14px;
-    box-shadow: 0 1px 4px rgba(45, 46, 95, 0.06);
-  }
-
-  .mobile-only-feature > .material-symbols-outlined {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, rgba(30, 157, 142, 0.12), rgba(45, 46, 95, 0.08));
-    border-radius: 10px;
-    color: #1E9D8E;
-    font-size: 1.3rem;
-  }
-
-  .mobile-only-feature div {
-    flex: 1;
     min-width: 0;
   }
 
-  .mobile-only-feature strong {
-    display: block;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #2D2E5F;
-    margin-bottom: 2px;
+  .app-container {
+    max-width: 100%;
+    padding: 14px 12px 24px;
   }
 
-  .mobile-only-feature p {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.8rem;
-    color: #7b7ca0;
-    line-height: 1.4;
-    margin: 0;
+  button,
+  [role="button"],
+  .part-number {
+    min-height: 44px;
   }
 
-  .mobile-only-footer {
-    margin-top: 32px;
-    padding: 16px;
-    background: rgba(45, 46, 95, 0.04);
-    border-radius: 12px;
+  .page-skeleton {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 0;
   }
 
-  .mobile-only-footer p {
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.85rem;
-    color: #4a4b7c;
-    margin: 0;
-  }
-
-  .mobile-only-footer strong {
-    color: #1E9D8E;
+  .page-skeleton-sidebar {
+    display: none;
   }
 }

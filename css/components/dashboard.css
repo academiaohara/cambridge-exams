@@ -1016,6 +1016,53 @@
   min-width: 0;
 }
 
+@media (max-width: 900px) {
+  .dashboard-layout,
+  .dashboard-layout.dashboard-layout-right-closed {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .dashboard-center {
+    order: 1;
+  }
+
+  .dashboard-left-sidebar {
+    order: 2;
+  }
+
+  .dashboard-right-sidebar {
+    order: 3;
+  }
+
+  .dashboard-left-sidebar,
+  .dashboard-right-sidebar,
+  .dashboard-sidebar-shell {
+    width: auto !important;
+    overflow: visible;
+  }
+
+  .dashboard-sidebar-toggle {
+    display: none;
+  }
+
+  .dashboard-sidebar-shell.is-collapsed .dashboard-sidebar-content {
+    display: flex;
+  }
+
+  .dashboard-sidebar-content {
+    gap: 12px;
+  }
+
+  .sidebar-widget {
+    position: static;
+    padding: 16px;
+    margin-bottom: 0;
+  }
+}
+
 /* Sidebar widgets */
 .sidebar-widget {
   background: rgba(255,255,255,0.92);
@@ -1765,6 +1812,102 @@
 }
 
 @media (max-width: 540px) {
+  .mode-toggle,
+  .subpage-view-toggle {
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mode-btn,
+  .subpage-view-btn {
+    flex: 0 0 auto;
+    min-width: 132px;
+    padding: 10px 14px;
+  }
+
+  .subpage-header {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .subpage-title {
+    font-size: 1.2rem;
+  }
+
+  .exam-header {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .exam-header-left {
+    min-width: 0;
+    gap: 12px;
+  }
+
+  .exam-number {
+    font-size: 1.35rem;
+  }
+
+  .exam-title {
+    font-size: 1.05rem;
+  }
+
+  .exam-subtitle {
+    font-size: 0.82rem;
+  }
+
+  .exam-progress-badge {
+    align-self: stretch;
+    justify-content: center;
+    font-size: 0.78rem;
+    padding: 5px 8px;
+  }
+
+  .exam-content.show {
+    padding: 14px;
+  }
+
+  .exam-section {
+    padding: 16px;
+    padding-top: 0;
+  }
+
+  .section-header {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .section-header h4 {
+    font-size: 1rem;
+  }
+
+  .section-parts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
+    gap: 10px;
+  }
+
+  .part-number {
+    width: 100%;
+  }
+
+  .section-progress {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .section-ex-item-header,
+  .section-ex-item-info {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .section-ex-item .section-parts {
+    padding: 0 14px 14px;
+  }
+
   .section-type-tiles {
     grid-template-columns: 1fr;
   }
