@@ -734,21 +734,22 @@ content: '';
 
 .bento-streak-modal-close {
   position: absolute;
-  top: 14px;
-  right: 16px;
+  top: 8px;
+  right: 8px;
   background: rgba(45, 46, 95, 0.08);
   border: none;
   color: #2D2E5F;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 48px;
+  height: 48px;
+  min-height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: auto;
-  z-index: 2;
+  z-index: 10001;
 }
 
 .bento-streak-modal-close .material-symbols-outlined {
