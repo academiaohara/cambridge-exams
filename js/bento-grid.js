@@ -1437,7 +1437,7 @@
       el.className = 'bento-streak-modal-overlay';
       el.innerHTML =
         '<div class="bento-streak-modal">' +
-          '<button class="bento-streak-modal-close" onclick="event.stopPropagation(); BentoGrid.closeStreakSection()" aria-label="Close streak calendar"><span class="material-symbols-outlined">close</span></button>' +
+          '<button class="bento-streak-modal-close" type="button" aria-label="Close streak calendar"><span class="material-symbols-outlined">close</span></button>' +
           '<div class="bento-streak-modal-fire"><span class="material-symbols-outlined">local_fire_department</span></div>' +
           '<div class="bento-streak-modal-count">' + streakCount + '</div>' +
           '<div class="bento-streak-modal-label">' + 'day streak' + '</div>' +
@@ -1452,6 +1452,14 @@
         '</div>';
       document.body.appendChild(el);
       el.addEventListener('click', function(e) { if (e.target === el) el.remove(); });
+      var closeBtn = el.querySelector('.bento-streak-modal-close');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          el.remove();
+        });
+      }
     },
 
     closeStreakSection: function() {
