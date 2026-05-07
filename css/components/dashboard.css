@@ -1064,6 +1064,39 @@
 }
 
 @media (max-width: 768px) {
+  .dashboard-layout,
+  .dashboard-layout.dashboard-layout-right-closed {
+    display: block;
+    padding: 0;
+  }
+
+  .dashboard-left-sidebar,
+  .dashboard-right-sidebar {
+    display: none !important;
+  }
+
+  .dashboard-center {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+  }
+
+  .subpage-header {
+    align-items: flex-start;
+    padding: 14px;
+    border-radius: 18px;
+    gap: 10px;
+  }
+
+  .subpage-title {
+    font-size: 1.05rem;
+    overflow-wrap: anywhere;
+  }
+
+  .subpage-subtitle {
+    overflow-wrap: anywhere;
+  }
+
   .exam-header {
     flex-wrap: wrap;
     align-items: flex-start;

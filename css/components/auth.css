@@ -476,6 +476,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .user-profile-panel {
+    display: none !important;
+  }
+}
+
 /* ── Full profile section (rendered in main-content) ─────────────────── */
 .profile-section {
   max-width: 700px;
@@ -802,6 +808,72 @@
 .profile-pack-badge.theory { background: rgba(59,130,246,0.12); color: #1d4ed8; }
 .profile-pack-badge.exams { background: rgba(16,185,129,0.12); color: #047857; }
 .profile-pack-badge.free { background: rgba(100,116,139,0.12); color: #475569; }
+
+@media (max-width: 768px) {
+  .profile-section {
+    max-width: 430px;
+    padding: 0;
+  }
+
+  .profile-section-header {
+    margin-bottom: 14px;
+    padding: 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.94);
+    box-shadow: 0 6px 20px rgba(45,46,95,0.07);
+  }
+
+  .profile-section-header h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    line-height: 1.1;
+  }
+
+  .profile-section-card {
+    margin-bottom: 14px;
+    padding: 18px;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(45,46,95,0.08);
+  }
+
+  .profile-section-avatar-row {
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .profile-section-info {
+    min-width: 0;
+  }
+
+  .profile-section-info .profile-name,
+  .profile-section-info .profile-email {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .profile-pack-badges {
+    gap: 6px;
+  }
+
+  .pref-row {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .pref-row label {
+    min-width: 0;
+  }
+
+  .pref-row select {
+    width: 100%;
+  }
+
+  .profile-signout-btn {
+    width: 100%;
+    margin: 8px 0 0;
+  }
+}
 
 /* Duration selector */
 .premium-duration-selector {

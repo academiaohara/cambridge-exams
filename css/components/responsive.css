@@ -27,18 +27,38 @@
   }
 
   body {
-    background: #F4F7FF;
+    min-height: 100dvh;
+    background: linear-gradient(180deg, #e9f7ff 0%, #f7fbff 44%, #f4f7ff 100%);
     -webkit-text-size-adjust: 100%;
   }
 
+  .main-header,
+  .main-footer {
+    display: none !important;
+  }
+
   #app {
-    display: flex;
+    display: block;
     min-width: 0;
   }
 
   .app-container {
     max-width: 100%;
-    padding: 14px 12px 24px;
+    width: 100%;
+    padding: max(14px, env(safe-area-inset-top)) 12px max(26px, env(safe-area-inset-bottom));
+    box-sizing: border-box;
+  }
+
+  #main-content {
+    min-width: 0;
+    width: 100%;
+  }
+
+  img,
+  svg,
+  canvas,
+  video {
+    max-width: 100%;
   }
 
   button,

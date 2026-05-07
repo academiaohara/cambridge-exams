@@ -19,6 +19,8 @@
 
       var html = '<div class="bento-grid">';
 
+      html += this._renderMobileAppHero(level, exams);
+
       // Row 1: Arena · Practice
       html += this._renderTopRow(exams);
 
@@ -33,9 +35,94 @@
         html += this._renderNextLesson(nextLesson);
       }
 
+      html += this._renderMobileStatsSection(exams);
+
       html += '</div>';
       container.innerHTML = html;
       this._updateCourseProgressDesc(level);
+    },
+
+    _renderMobileAppHero: function(level, exams) {
+      var name = this._getUserName() || 'there';
+      var availableCount = (exams || []).filter(function(e) { return e.status === 'available'; }).length;
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+
+      return '<section class="mobile-app-hero">' +
+        '<div class="mobile-app-kicker">EngagEd</div>' +
+        '<h1>Hi, ' + this._escapeHTML(name.split(' ')[0]) + '</h1>' +
+        '<p>Choose your next move for ' + this._escapeHTML(level) + '.</p>' +
+        '<div class="mobile-app-pill-row">' +
+          '<span class="mobile-app-pill">' + _mi('school') + this._escapeHTML(level) + '</span>' +
+          '<span class="mobile-app-pill">' + _mi('assignment') + availableCount + ' tests</span>' +
+        '</div>' +
+        '<div class="mobile-app-actions" aria-label="Mobile sections">' +
+          '<button onclick="BentoGrid.selectMode(\'practice\')">' + _mi('edit_note') + '<span>Practice</span></button>' +
+          '<button onclick="BentoGrid.selectMode(\'exam\')">' + _mi('timer') + '<span>Simulation</span></button>' +
+          '<button onclick="BentoGrid.openLessons()">' + _mi('auto_stories') + '<span>Course</span></button>' +
+          '<button onclick="BentoGrid.openMicroLearning()">' + _mi('bolt') + '<span>Exercises</span></button>' +
+          '<button onclick="document.getElementById(\'mobileStatsSection\')?.scrollIntoView({behavior:\'smooth\',block:\'start\'})">' + _mi('bar_chart') + '<span>Stats</span></button>' +
+          '<button onclick="UserProfile.renderProfileSection()">' + _mi('settings') + '<span>Profile</span></button>' +
+        '</div>' +
+      '</section>';
+    },
+
+    _renderMobileStatsSection: function(exams) {
+      var level = AppState.currentLevel || 'C1';
+      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
+      var streakCount = streak ? (streak.currentStreak || 0) : 0;
+      var completedParts = 0;
+      var inProgressParts = 0;
+      var availableCount = 0;
+      var scaleTotal = 0;
+      var scaleCount = 0;
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+
+      (exams || []).forEach(function(exam) {
+        if (exam.status !== 'available') return;
+        availableCount++;
+        Object.keys(exam.sections || {}).forEach(function(sectionKey) {
+          var section = exam.sections[sectionKey] || {};
+          completedParts += (section.completed || []).length;
+          inProgressParts += (section.inProgress || []).length;
+        });
+        if (typeof ScoreCalculator !== 'undefined') {
+          try {
+            ScoreCalculator.getAllSkillScores(exam.id).forEach(function(score) {
+              if (score.raw > 0) {
+                scaleTotal += score.scale;
+                scaleCount++;
+              }
+            });
+          } catch (e) {}
+        }
+      });
+
+      var avgScale = scaleCount ? Math.round(scaleTotal / scaleCount) : '--';
+      var levels = ['B1', 'B2', 'C1'];
+      var levelButtons = levels.map(function(lvl) {
+        return '<button class="mobile-level-chip' + (lvl === level ? ' active' : '') + '" onclick="BentoGrid.changeLevel(\'' + lvl + '\')">' + lvl + '</button>';
+      }).join('');
+
+      return '<section class="mobile-stats-section" id="mobileStatsSection">' +
+        '<div class="mobile-section-heading">' +
+          '<div>' +
+            '<span>Stats</span>' +
+            '<h2>Your progress</h2>' +
+          '</div>' +
+          '<button onclick="BentoGrid.openGradeEvolution()">' + _mi('query_stats') + ' Details</button>' +
+        '</div>' +
+        '<div class="mobile-stats-grid">' +
+          '<div class="mobile-stat-card"><span>Level</span><strong>' + this._escapeHTML(level) + '</strong><small>' + availableCount + ' tests</small></div>' +
+          '<div class="mobile-stat-card"><span>Streak</span><strong>' + streakCount + '</strong><small>days</small></div>' +
+          '<div class="mobile-stat-card"><span>Done</span><strong>' + completedParts + '</strong><small>' + inProgressParts + ' in progress</small></div>' +
+          '<div class="mobile-stat-card"><span>Score</span><strong>' + avgScale + '</strong><small>avg scale</small></div>' +
+        '</div>' +
+        '<div class="mobile-level-switcher" aria-label="Choose level">' + levelButtons + '</div>' +
+        '<div class="mobile-stats-actions">' +
+          '<button onclick="openScoreCalculator()">' + _mi('calculate') + '<span>Score calculator</span></button>' +
+          '<button onclick="BentoGrid.openStreakSection()">' + _mi('local_fire_department') + '<span>Streak calendar</span></button>' +
+        '</div>' +
+      '</section>';
     },
 
 
