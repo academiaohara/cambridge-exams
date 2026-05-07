@@ -2425,13 +2425,13 @@ margin-top: -2px;
 
   .mobile-bottom-level strong {
     display: grid;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 34px;
     place-items: center;
-    border-radius: 14px;
+    border-radius: 13px;
     background: #2D2E5F;
     color: #fff;
-    font-size: 0.92rem;
+    font-size: 0.88rem;
   }
 
   .mobile-level-modal-overlay {
@@ -2442,7 +2442,7 @@ margin-top: -2px;
     align-items: center;
     justify-content: center;
     padding: 18px;
-    background: rgba(15, 23, 42, 0.42);
+    background: rgba(15, 23, 42, 0.58);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
   }
@@ -2609,8 +2609,22 @@ margin-top: -2px;
 
   .bento-grid[data-mobile-tab="learn"] .bento-card-weakspot .bento-card-inner,
   .bento-grid[data-mobile-tab="learn"] .bento-card-checkpoint .bento-card-inner {
+    display: block;
     min-height: 34px;
-    align-items: center;
+    text-align: left;
+  }
+
+  .bento-grid[data-mobile-tab="learn"] .bento-card-weakspot .bento-card-desc,
+  .bento-grid[data-mobile-tab="learn"] .bento-card-checkpoint .bento-card-desc {
+    display: block !important;
+    max-width: 68%;
+    margin-top: 2px;
+    font-size: 0.66rem;
+    line-height: 1.15;
+    opacity: 0.72;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .bento-grid[data-mobile-tab="learn"] .bento-card-weakspot::after,

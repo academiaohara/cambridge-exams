@@ -138,7 +138,7 @@
         '<button class="mobile-bottom-nav-btn" data-mobile-tab="learn" onclick="BentoGrid.setMobileDashboardTab(\'learn\')">' + _mi('school') + '<span>Learn</span></button>' +
         '<button class="mobile-bottom-nav-btn" data-mobile-tab="stats" onclick="BentoGrid.setMobileDashboardTab(\'stats\')">' + _mi('bar_chart') + '<span>Stats</span></button>' +
         '<button class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
-        '<button class="mobile-bottom-nav-btn mobile-bottom-level" onclick="BentoGrid.openMobileLevelModal()" aria-label="Change level"><strong>' + this._escapeHTML(level || 'C1') + '</strong></button>' +
+        '<button class="mobile-bottom-nav-btn mobile-bottom-level" onclick="BentoGrid.openMobileLevelModal()" aria-label="Change level"><strong>' + this._escapeHTML(level || 'C1') + '</strong><span>Level</span></button>' +
       '</nav>';
     },
 
