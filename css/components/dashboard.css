@@ -1272,6 +1272,7 @@
 .subpage-back-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   padding: 8px 16px;
   border-radius: 40px;
@@ -1286,10 +1287,34 @@
   white-space: nowrap;
 }
 
+.subpage-back-btn .material-symbols-outlined {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
 .subpage-back-btn:hover {
   background: rgba(45, 46, 95, 0.08);
   border-color: rgba(45, 46, 95, 0.2);
   transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .subpage-back-btn {
+    gap: 0;
+    min-width: 42px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border-radius: 14px;
+  }
+
+  .subpage-back-btn .icon-btn-label {
+    display: none;
+  }
+
+  .subpage-back-btn .material-symbols-outlined {
+    font-size: 1.25rem;
+  }
 }
 
 .subpage-title {
@@ -2129,6 +2154,12 @@
 .btn-mixed-home:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+@media (max-width: 768px) {
+  .btn-mixed-home .icon-btn-label {
+    display: none;
+  }
 }
 
 /* ── Random Test card ── */

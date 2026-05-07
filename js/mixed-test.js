@@ -243,7 +243,7 @@
               '<i class="fas fa-redo-alt"></i> Repeat This Test' +
             '</button>' +
             '<button class="btn-mixed-home" onclick="Dashboard.renderSubpage(\'' + mode + '\')">' +
-              '<i class="fas fa-arrow-left"></i> Back to Tests' +
+              '<i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Tests</span>' +
             '</button>' +
           '</div>' +
         '</div>';

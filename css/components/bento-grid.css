@@ -2072,9 +2072,6 @@ margin-top: -2px;
     padding: 18px 10px 14px;
     text-align: center;
     color: #14365a;
-    background:
-      radial-gradient(circle at 50% 0%, rgba(70,177,225,0.20), transparent 42%),
-      radial-gradient(circle at 20% 62%, rgba(30,157,142,0.10), transparent 38%);
     border: 0;
     border-radius: 0;
     box-shadow: none;
@@ -2231,9 +2228,6 @@ margin-top: -2px;
     margin: 16px auto 0;
     padding: 18px 6px 12px;
     border-radius: 0;
-    background:
-      radial-gradient(circle at 82% 8%, rgba(255,210,142,0.22), transparent 34%),
-      radial-gradient(circle at 12% 72%, rgba(70,177,225,0.15), transparent 40%);
     box-shadow: none;
   }
 
@@ -2370,7 +2364,7 @@ margin-top: -2px;
 
 @media (max-width: 768px) {
   .bento-grid {
-    padding-bottom: calc(82px + env(safe-area-inset-bottom));
+    /* padding-bottom: calc(82px + env(safe-area-inset-bottom)); */
   }
 
   .mobile-bottom-nav {
@@ -2380,7 +2374,7 @@ margin-top: -2px;
     bottom: max(10px, env(safe-area-inset-bottom));
     z-index: 1000;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 6px;
     max-width: 430px;
     margin: 0 auto;
@@ -2542,11 +2536,7 @@ margin-top: -2px;
   }
 
   .bento-grid[data-mobile-tab="home"] .mobile-learn-pane,
-  .bento-grid[data-mobile-tab="home"] .mobile-stats-section,
-  .bento-grid[data-mobile-tab="learn"] .mobile-app-hero,
-  .bento-grid[data-mobile-tab="learn"] .mobile-stats-section,
-  .bento-grid[data-mobile-tab="stats"] .mobile-app-hero,
-  .bento-grid[data-mobile-tab="stats"] .mobile-learn-pane {
+  .bento-grid[data-mobile-tab="learn"] .mobile-app-hero {
     display: none !important;
   }
 
@@ -2556,8 +2546,7 @@ margin-top: -2px;
     gap: 10px;
   }
 
-  .bento-grid[data-mobile-tab="home"] .mobile-app-hero,
-  .bento-grid[data-mobile-tab="stats"] .mobile-stats-section {
+  .bento-grid[data-mobile-tab="home"] .mobile-app-hero {
     min-height: calc(100dvh - 112px);
     display: flex;
     flex-direction: column;
@@ -2632,10 +2621,6 @@ margin-top: -2px;
     width: 58px !important;
     height: 58px !important;
     bottom: -12px !important;
-  }
-
-  .mobile-stats-section {
-    min-height: calc(100dvh - 112px);
   }
 
   .bento-streak-modal {

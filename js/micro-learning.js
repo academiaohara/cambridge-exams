@@ -347,7 +347,7 @@
         '<div class="ml-complete-title">Session Complete!</div>' +
         '<div class="ml-complete-score">' + correct + '/' + total + ' correct</div>' +
         '<div class="ml-complete-pct">' + pct + '%</div>' +
-        '<button class="ml-btn-primary" onclick="MicroLearning.close()">Back to Dashboard</button>' +
+        '<button class="ml-btn-primary" onclick="MicroLearning.close()" aria-label="Back to dashboard"><span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><span class="icon-btn-label">Dashboard</span></button>' +
         '<button class="ml-btn-secondary" onclick="MicroLearning.open()">Play Again</button>' +
       '</div>';
 

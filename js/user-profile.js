@@ -392,7 +392,7 @@
 
       var html = '<div class="profile-section">' +
         '<div class="profile-section-header">' +
-          '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + 'Back' + '</button>' +
+          '<button class="btn-back" onclick="loadDashboard()" aria-label="Back"><i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Back</span></button>' +
           '<h2>' + 'My Profile' + '</h2>' +
         '</div>' +
 
@@ -534,7 +534,7 @@
 
       var html = '<div class="premium-plans-section">' +
         '<div class="profile-section-header">' +
-          '<button class="btn-back" onclick="loadDashboard()"><i class="fas fa-arrow-left"></i> ' + 'Back' + '</button>' +
+          '<button class="btn-back" onclick="loadDashboard()" aria-label="Back"><i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Back</span></button>' +
         '</div>' +
         '<div class="premium-plans-header">' +
           '<h2><span class="material-symbols-outlined">workspace_premium</span> Choose your Pack</h2>' +

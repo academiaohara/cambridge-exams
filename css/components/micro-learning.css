@@ -350,6 +350,10 @@
 }
 
 .ml-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   background: var(--oxford-blue, #2D2E5F);
   color: white;
   border: none;
@@ -365,6 +369,16 @@
 
 .ml-btn-primary:hover {
   opacity: 0.88;
+}
+
+.ml-btn-primary .material-symbols-outlined {
+  font-size: 1.15rem;
+}
+
+@media (max-width: 768px) {
+  .ml-btn-primary .icon-btn-label {
+    display: none;
+  }
 }
 
 .ml-btn-secondary {

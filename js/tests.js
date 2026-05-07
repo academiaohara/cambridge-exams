@@ -173,7 +173,7 @@
           '<div class="dashboard-center">' +
             '<div class="grade-evolution-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()" aria-label="Back"><span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><span class="icon-btn-label">Back</span></button>' +
                 '<div>' +
                   '<div class="subpage-title">' + 'Grade Evolution' + '</div>' +
                   '<div class="subpage-subtitle">' + level + ' · ' + 'Track your progress across exams' + '</div>' +
