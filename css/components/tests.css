@@ -127,6 +127,24 @@ content: '';
   cursor: not-allowed;
 }
 
+@media (max-width: 768px) {
+  .bento-top-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-card-summit,
+  .bento-card-ascent {
+    min-height: 136px;
+  }
+
+  .bento-card-summit::after,
+  .bento-card-ascent::after {
+    opacity: 0.72;
+    transform: scale(0.82);
+    transform-origin: bottom right;
+  }
+}
+
 /* ── Grade Evolution Section (rendered in main-content) ──────────────── */
 .grade-evolution-section {
   width: 100%;
