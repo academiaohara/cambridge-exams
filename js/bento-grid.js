@@ -106,7 +106,7 @@
       var avgScale = scaleCount ? Math.round(scaleTotal / scaleCount) : '--';
       var levels = ['B1', 'B2', 'C1'];
       var levelButtons = levels.map(function(lvl) {
-        return '<button class="mobile-level-chip' + (lvl === level ? ' active' : '') + '" onclick="BentoGrid.changeLevel(\'' + lvl + '\')">' + lvl + '</button>';
+        return '<button class="mobile-level-chip' + (lvl === level ? ' active' : '') + '" onclick="BentoGrid.openMobileLevelModal()">' + lvl + '</button>';
       }).join('');
 
       return '<section class="mobile-stats-section" id="mobileStatsSection">' +
@@ -138,7 +138,7 @@
         '<button class="mobile-bottom-nav-btn" data-mobile-tab="learn" onclick="BentoGrid.setMobileDashboardTab(\'learn\')">' + _mi('school') + '<span>Learn</span></button>' +
         '<button class="mobile-bottom-nav-btn" data-mobile-tab="stats" onclick="BentoGrid.setMobileDashboardTab(\'stats\')">' + _mi('bar_chart') + '<span>Stats</span></button>' +
         '<button class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
-        '<button class="mobile-bottom-nav-btn mobile-bottom-level" onclick="BentoGrid.cycleMobileLevel()" aria-label="Change level"><strong>' + this._escapeHTML(level || 'C1') + '</strong></button>' +
+        '<button class="mobile-bottom-nav-btn mobile-bottom-level" onclick="BentoGrid.openMobileLevelModal()" aria-label="Change level"><strong>' + this._escapeHTML(level || 'C1') + '</strong></button>' +
       '</nav>';
     },
 
@@ -165,8 +165,60 @@
       this.changeLevel(next);
     },
 
+    openMobileLevelModal: function() {
+      var existing = document.getElementById('mobile-level-modal');
+      if (existing) existing.remove();
+
+      var current = (AppState.currentLevel || 'C1').toUpperCase();
+      var levels = [
+        { code: 'B1', name: 'Preliminary', icon: 'school' },
+        { code: 'B2', name: 'First', icon: 'workspace_premium' },
+        { code: 'C1', name: 'Advanced', icon: 'auto_stories' }
+      ];
+
+      var html = '<div class="mobile-level-modal-card" role="dialog" aria-modal="true" aria-labelledby="mobile-level-title">' +
+        '<button class="mobile-level-modal-close" onclick="BentoGrid.closeMobileLevelModal()" aria-label="Close level picker">' +
+          '<span class="material-symbols-outlined">close</span>' +
+        '</button>' +
+        '<div class="mobile-level-modal-kicker">Choose level</div>' +
+        '<h2 id="mobile-level-title">What are you studying?</h2>' +
+        '<div class="mobile-level-modal-options">';
+
+      levels.forEach(function(level) {
+        var isActive = level.code === current;
+        html += '<button class="mobile-level-option' + (isActive ? ' active' : '') + '" onclick="BentoGrid.selectMobileLevel(\'' + level.code + '\')">' +
+          '<span class="material-symbols-outlined">' + level.icon + '</span>' +
+          '<strong>' + level.code + '</strong>' +
+          '<small>' + level.name + '</small>' +
+        '</button>';
+      });
+
+      html += '</div></div>';
+
+      var modal = document.createElement('div');
+      modal.id = 'mobile-level-modal';
+      modal.className = 'mobile-level-modal-overlay';
+      modal.innerHTML = html;
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) BentoGrid.closeMobileLevelModal();
+      });
+      document.body.appendChild(modal);
+    },
+
+    closeMobileLevelModal: function() {
+      var modal = document.getElementById('mobile-level-modal');
+      if (modal) modal.remove();
+    },
+
+    selectMobileLevel: function(level) {
+      this.closeMobileLevelModal();
+      this.changeLevel(level);
+    },
+
     openMobileDictionaries: function() {
-      if (typeof FastExercises !== 'undefined' && FastExercises._showGeneralDictionary) {
+      if (typeof FastExercises !== 'undefined' && FastExercises._showDictionariesHome) {
+        FastExercises._showDictionariesHome();
+      } else if (typeof FastExercises !== 'undefined' && FastExercises._showGeneralDictionary) {
         FastExercises._showGeneralDictionary();
       }
     },
