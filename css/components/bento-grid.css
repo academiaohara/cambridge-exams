@@ -2463,16 +2463,18 @@ margin-top: -2px;
   }
 
   .bento-grid[data-mobile-tab="learn"] .bento-card-title {
-    max-width: 58%;
-    font-size: 0.95rem;
+    max-width: 72%;
+    font-size: 0.84rem;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .bento-grid[data-mobile-tab="learn"] .bento-card::after {
     display: block !important;
     opacity: 0.9 !important;
     transform: none !important;
-    width: 118px !important;
-    height: 118px !important;
+    width: 96px !important;
+    height: 96px !important;
     right: -10px !important;
     bottom: -20px !important;
     top: auto !important;
@@ -2490,8 +2492,8 @@ margin-top: -2px;
 
   .bento-grid[data-mobile-tab="learn"] .bento-card-weakspot::after,
   .bento-grid[data-mobile-tab="learn"] .bento-card-checkpoint::after {
-    width: 86px !important;
-    height: 86px !important;
+    width: 76px !important;
+    height: 76px !important;
     bottom: -16px !important;
   }
 
