@@ -869,19 +869,19 @@
 
       var filterHtml = '<div class="cw-level-filter">';
       filterHtml += '<button class="cw-filter-btn' + (!activeFilter ? ' cw-filter-btn-active' : '') +
-        '" onclick="BentoGrid.openCrosswordList(0)">All</button>';
+        '" title="All" aria-label="All crosswords" onclick="BentoGrid.openCrosswordList(0)">' + _mi('apps') + '<span>All</span></button>';
       availableLevels.forEach(function(lvl) {
         var diff = DIFF_MAP[lvl] || DIFF_MAP['B2'];
-        var lvlCount = levelCounts[lvl + '_total'] || 0;
         var isActive = activeFilter === lvl;
+        var lvlLabel = (lvl === 'mix') ? (_mi('shuffle') + '<span>Mix</span>') : lvl;
         filterHtml += '<button class="cw-filter-btn' + (isActive ? ' cw-filter-btn-active' : '') +
           '" style="' + (isActive ? 'background:' + diff.badgeColor + ';color:#fff;border-color:' + diff.badgeColor : '') + '"' +
-          ' onclick="BentoGrid.openCrosswordList(0,\'' + lvl + '\')">' + lvl + ' (' + lvlCount + ')</button>';
+          ' title="' + lvl + '" aria-label="' + lvl + '" onclick="BentoGrid.openCrosswordList(0,\'' + lvl + '\')">' + lvlLabel + '</button>';
       });
       if (inProgressTotalAll > 0) {
         filterHtml += '<button class="cw-filter-btn' + (inProgressFilter ? ' cw-filter-btn-active cw-filter-btn-inprogress' : ' cw-filter-btn-inprogress') + '"' +
-          ' onclick="BentoGrid.openCrosswordList(0,\'__inprogress__\')">' +
-          _mi('pending') + ' In Progress (' + inProgressTotalAll + ')</button>';
+          ' title="In progress" aria-label="In progress" onclick="BentoGrid.openCrosswordList(0,\'__inprogress__\')">' +
+          _mi('pending') + '<span>Progress</span></button>';
       }
       filterHtml += '</div>';
 
@@ -975,16 +975,17 @@
       if (totalPages > 1) {
         var filterArg = activeFilter ? ',\'' + activeFilter + '\'' : '';
         paginationHtml = '<div class="cw-list-pagination">';
-        paginationHtml += '<button class="cw-list-page-btn" ' +
+        paginationHtml += '<button class="cw-list-page-btn cw-list-page-arrow" title="Previous page" aria-label="Previous page" ' +
           (currentPage === 0 ? 'disabled' : 'onclick="BentoGrid.openCrosswordList(' + (currentPage - 1) + filterArg + ')"') +
-          '>' + _mi('chevron_left') + ' Previous</button>';
+          '>' + _mi('chevron_left') + '</button>';
+        paginationHtml += '<label class="cw-list-page-select-wrap"><span class="visually-hidden">Page</span><select class="cw-list-page-select" onchange="BentoGrid.openCrosswordList(parseInt(this.value,10)' + filterArg + ')">';
         for (var p = 0; p < totalPages; p++) {
-          paginationHtml += '<button class="cw-list-page-btn' + (p === currentPage ? ' cw-list-page-btn-active' : '') +
-            '" onclick="BentoGrid.openCrosswordList(' + p + filterArg + ')">' + (p + 1) + '</button>';
+          paginationHtml += '<option value="' + p + '"' + (p === currentPage ? ' selected' : '') + '>Page ' + (p + 1) + ' / ' + totalPages + '</option>';
         }
-        paginationHtml += '<button class="cw-list-page-btn" ' +
+        paginationHtml += '</select></label>';
+        paginationHtml += '<button class="cw-list-page-btn cw-list-page-arrow" title="Next page" aria-label="Next page" ' +
           (currentPage === totalPages - 1 ? 'disabled' : 'onclick="BentoGrid.openCrosswordList(' + (currentPage + 1) + filterArg + ')"') +
-          '>Next ' + _mi('chevron_right') + '</button>';
+          '>' + _mi('chevron_right') + '</button>';
         paginationHtml += '</div>';
       }
 
