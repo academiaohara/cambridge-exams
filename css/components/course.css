@@ -4594,3 +4594,112 @@ textarea.cu-gap-input.cu-gap-textarea {
 .cu-copy-btn:active {
   background: #bfdbfe;
 }
+
+@media (max-width: 768px) {
+  .course-hub-grid {
+    gap: 10px;
+  }
+
+  .course-hub-grid .fe-category-card {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .course-hub-grid .fe-category-card-header {
+    gap: 10px;
+  }
+
+  .course-hub-grid .fe-category-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    font-size: 1.55rem;
+  }
+
+  .course-hub-grid .fe-cat-level-btns-header {
+    flex-direction: row;
+    align-self: center;
+    gap: 6px;
+  }
+
+  .course-hub-grid .fe-cat-level-btns-header .fe-cat-level-btn {
+    min-width: 44px;
+    min-height: 36px;
+    padding: 6px 10px;
+  }
+
+  .cu-dot-nav,
+  .cu-ex-pdot {
+    min-width: 0 !important;
+    min-height: 0 !important;
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+  }
+
+  .cu-dot-nav {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+  }
+
+  .cu-ex-pdot {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+  }
+
+  .cu-section-nav {
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+  }
+
+  .cu-nav-btn,
+  .cu-reset-btn,
+  #courseCenterSection .subpage-back-btn {
+    gap: 0;
+    min-width: 42px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 0;
+  }
+
+  .cu-nav-btn .material-symbols-outlined,
+  .cu-reset-btn .material-symbols-outlined,
+  .subpage-back-btn .material-symbols-outlined {
+    font-size: 1.25rem;
+  }
+
+  .cu-reset-btn span,
+  .subpage-back-btn span {
+    display: none;
+  }
+
+  .cu-check-btn,
+  .cu-show-all-btn,
+  .cu-retry-btn {
+    min-width: 44px;
+    width: 44px;
+    height: 44px;
+    min-height: 44px !important;
+    padding: 8px 12px;
+    font-size: 0;
+    border-radius: 14px;
+    justify-content: center;
+  }
+
+  .cu-check-btn .material-symbols-outlined,
+  .cu-show-all-btn .material-symbols-outlined,
+  .cu-retry-btn .material-symbols-outlined {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .cu-ex-page-dots {
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+}

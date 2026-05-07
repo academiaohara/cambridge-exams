@@ -36,6 +36,12 @@
   animation: slideDown 0.4s ease-out;
 }
 
+.mobile-learn-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 /* ── Base card ── */
 .bento-card {
   border-radius: var(--bento-radius);
@@ -2334,7 +2340,8 @@ margin-top: -2px;
 
 @media (min-width: 769px) {
   .mobile-app-hero,
-  .mobile-stats-section {
+  .mobile-stats-section,
+  .mobile-bottom-nav {
     display: none;
   }
 }
@@ -2342,5 +2349,164 @@ margin-top: -2px;
 @media (max-width: 360px) {
   .mobile-app-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    padding-bottom: calc(82px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+    max-width: 430px;
+    margin: 0 auto;
+    padding: 8px;
+    border: 1px solid rgba(45, 46, 95, 0.08);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 12px 34px rgba(45, 46, 95, 0.18);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .mobile-bottom-nav-btn {
+    display: flex;
+    min-width: 0;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 4px;
+    border: 0;
+    border-radius: 18px;
+    background: transparent;
+    color: #64748b;
+    font: inherit;
+    font-size: 0.64rem;
+    font-weight: 900;
+    cursor: pointer;
+  }
+
+  .mobile-bottom-nav-btn .material-symbols-outlined {
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  .mobile-bottom-nav-btn.active,
+  .mobile-bottom-level {
+    background: #edf8ff;
+    color: #2D2E5F;
+  }
+
+  .mobile-bottom-level strong {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 14px;
+    background: #2D2E5F;
+    color: #fff;
+    font-size: 0.92rem;
+  }
+
+  .bento-grid[data-mobile-tab="home"] .mobile-learn-pane,
+  .bento-grid[data-mobile-tab="home"] .mobile-stats-section,
+  .bento-grid[data-mobile-tab="learn"] .mobile-app-hero,
+  .bento-grid[data-mobile-tab="learn"] .mobile-stats-section,
+  .bento-grid[data-mobile-tab="stats"] .mobile-app-hero,
+  .bento-grid[data-mobile-tab="stats"] .mobile-learn-pane {
+    display: none !important;
+  }
+
+  .mobile-learn-pane {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bento-grid[data-mobile-tab="home"] .mobile-app-hero,
+  .bento-grid[data-mobile-tab="stats"] .mobile-stats-section {
+    min-height: calc(100dvh - 112px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bento-grid[data-mobile-tab="learn"] .mobile-learn-pane .bento-card {
+    min-height: 116px !important;
+    padding: 14px;
+  }
+
+  .bento-grid[data-mobile-tab="learn"] .bento-card-inner {
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bento-grid[data-mobile-tab="learn"] .bento-card-title {
+    max-width: 58%;
+    font-size: 0.95rem;
+  }
+
+  .bento-grid[data-mobile-tab="learn"] .bento-card::after {
+    display: block !important;
+    opacity: 0.9 !important;
+    transform: none !important;
+    width: 118px !important;
+    height: 118px !important;
+    right: -10px !important;
+    bottom: -20px !important;
+    top: auto !important;
+    background-position: bottom right !important;
+  }
+
+  .bento-grid[data-mobile-tab="learn"] .bento-card::before {
+    display: block !important;
+  }
+
+  .bento-grid[data-mobile-tab="learn"] .bento-card-weakspot,
+  .bento-grid[data-mobile-tab="learn"] .bento-card-checkpoint {
+    min-height: 74px !important;
+  }
+
+  .bento-grid[data-mobile-tab="learn"] .bento-card-weakspot::after,
+  .bento-grid[data-mobile-tab="learn"] .bento-card-checkpoint::after {
+    width: 86px !important;
+    height: 86px !important;
+    bottom: -16px !important;
+  }
+
+  .mobile-stats-section {
+    min-height: calc(100dvh - 112px);
+  }
+
+  .bento-streak-modal {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+    padding: 24px 18px 18px;
+  }
+
+  .bento-streak-modal-count {
+    font-size: 3rem;
+  }
+
+  .bento-streak-modal-stats {
+    gap: 6px;
+  }
+
+  .bento-cal-grid {
+    gap: 4px;
   }
 }

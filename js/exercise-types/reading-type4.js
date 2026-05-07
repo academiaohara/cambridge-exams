@@ -224,7 +224,9 @@
       }
       span.style.font = window.getComputedStyle(input).font;
       span.textContent = input.value || input.placeholder || '';
-      const newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 50); // extra buffer (padding 32px + 18px breathing room)
+      var line = input.closest('.reading-type4-second');
+      var maxWidth = line ? Math.max(minWidth, line.clientWidth - 24) : window.innerWidth - 48;
+      const newWidth = Math.min(maxWidth, Math.max(minWidth, span.getBoundingClientRect().width + 50)); // extra buffer (padding 32px + 18px breathing room)
       input.style.width = newWidth + 'px';
     },
     

@@ -21,6 +21,8 @@
 
       html += this._renderMobileAppHero(level, exams);
 
+      html += '<section class="mobile-learn-pane" id="mobileLearnPane">';
+
       // Row 1: Arena · Practice
       html += this._renderTopRow(exams);
 
@@ -35,11 +37,15 @@
         html += this._renderNextLesson(nextLesson);
       }
 
+      html += '</section>';
+
       html += this._renderMobileStatsSection(exams);
+      html += this._renderMobileBottomNav(level);
 
       html += '</div>';
       container.innerHTML = html;
       this._updateCourseProgressDesc(level);
+      this.setMobileDashboardTab(this._mobileDashboardTab || 'home');
     },
 
     _renderMobileAppHero: function(level, exams) {
@@ -123,6 +129,46 @@
           '<button onclick="BentoGrid.openStreakSection()">' + _mi('local_fire_department') + '<span>Streak calendar</span></button>' +
         '</div>' +
       '</section>';
+    },
+
+    _renderMobileBottomNav: function(level) {
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+      return '<nav class="mobile-bottom-nav" aria-label="Mobile dashboard">' +
+        '<button class="mobile-bottom-nav-btn" data-mobile-tab="home" onclick="BentoGrid.setMobileDashboardTab(\'home\')">' + _mi('home') + '<span>Inicio</span></button>' +
+        '<button class="mobile-bottom-nav-btn" data-mobile-tab="learn" onclick="BentoGrid.setMobileDashboardTab(\'learn\')">' + _mi('school') + '<span>Learn</span></button>' +
+        '<button class="mobile-bottom-nav-btn" data-mobile-tab="stats" onclick="BentoGrid.setMobileDashboardTab(\'stats\')">' + _mi('bar_chart') + '<span>Stats</span></button>' +
+        '<button class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
+        '<button class="mobile-bottom-nav-btn mobile-bottom-level" onclick="BentoGrid.cycleMobileLevel()" aria-label="Change level"><strong>' + this._escapeHTML(level || 'C1') + '</strong></button>' +
+      '</nav>';
+    },
+
+    setMobileDashboardTab: function(tab) {
+      tab = tab || 'home';
+      this._mobileDashboardTab = tab;
+      var grid = document.querySelector('.bento-grid');
+      if (grid) {
+        grid.setAttribute('data-mobile-tab', tab);
+      }
+      document.querySelectorAll('.mobile-bottom-nav-btn[data-mobile-tab]').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-mobile-tab') === tab);
+      });
+      if (tab === 'stats') {
+        var stats = document.getElementById('mobileStatsSection');
+        if (stats) stats.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    },
+
+    cycleMobileLevel: function() {
+      var levels = ['B1', 'B2', 'C1'];
+      var current = (AppState.currentLevel || 'C1').toUpperCase();
+      var next = levels[(levels.indexOf(current) + 1) % levels.length] || 'C1';
+      this.changeLevel(next);
+    },
+
+    openMobileDictionaries: function() {
+      if (typeof FastExercises !== 'undefined' && FastExercises._showGeneralDictionary) {
+        FastExercises._showGeneralDictionary();
+      }
     },
 
 
