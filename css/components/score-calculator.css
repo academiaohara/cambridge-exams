@@ -897,6 +897,7 @@
 
   .sc-selector select {
     width: 100%;
+    font-size: 16px;
   }
 
   .sc-inputs {
@@ -911,6 +912,10 @@
 
   .sc-input-group label {
     flex-wrap: wrap;
+  }
+
+  .sc-input-group input[type="number"] {
+    font-size: 16px;
   }
 
   .sc-calculate-btn {
