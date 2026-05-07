@@ -762,4 +762,188 @@
   color: var(--primary);
 }
 
+/* ── App-style score calculator refresh ── */
+.score-calculator {
+  max-width: 960px;
+  background: transparent;
+  box-shadow: none;
+  padding: 0 16px 44px;
+}
+
+.sc-header {
+  max-width: 760px;
+  margin: 0 auto 16px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.94);
+  border-radius: 22px;
+  box-shadow: 0 6px 20px rgba(45, 46, 95, 0.07);
+}
+
+.sc-kicker {
+  display: block;
+  color: #1E9D8E;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sc-header h2 {
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-weight: 900;
+}
+
+.sc-hero-card,
+.sc-workspace,
+.statement-of-results {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sc-hero-card {
+  margin-bottom: 14px;
+  padding: 18px;
+  border-radius: 26px;
+  color: #173b5d;
+  background: linear-gradient(135deg, #dff7e8 0%, #e9f7ff 100%);
+  border: 1px solid rgba(30,157,142,0.18);
+  box-shadow: 0 8px 22px rgba(45, 46, 95, 0.07);
+}
+
+.sc-hero-card .material-symbols-outlined {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  border-radius: 16px;
+  background: #fff;
+  color: #1E9D8E;
+  box-shadow: 0 3px 0 rgba(30,157,142,0.16);
+}
+
+.sc-hero-card strong {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.sc-hero-card p {
+  max-width: 520px;
+  margin: 6px 0 0;
+  color: #526b7d;
+}
+
+.sc-workspace {
+  padding: 18px;
+  border-radius: 26px;
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 8px 24px rgba(45, 46, 95, 0.08);
+}
+
+.sc-selector {
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 18px;
+  background: #f6fbff;
+  border: 1px solid rgba(45,46,95,0.07);
+}
+
+.sc-inputs {
+  grid-template-columns: repeat(auto-fit, minmax(138px, 1fr));
+}
+
+.sc-input-group {
+  box-shadow: none;
+  background: #f8fbff;
+}
+
+.statement-of-results {
+  overflow: hidden;
+}
+
+.cb-chart {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .score-calculator {
+    max-width: 430px;
+    padding: 0 0 28px;
+  }
+
+  .sc-header,
+  .sc-hero-card,
+  .sc-workspace,
+  .statement-of-results {
+    max-width: 430px;
+  }
+
+  .sc-header {
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .sc-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sc-selector select {
+    width: 100%;
+  }
+
+  .sc-inputs {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .sc-input-group {
+    padding: 13px;
+    border-radius: 15px;
+  }
+
+  .sc-input-group label {
+    flex-wrap: wrap;
+  }
+
+  .sc-calculate-btn {
+    min-height: 50px;
+    margin-bottom: 0;
+    border-radius: 16px;
+  }
+
+  .statement-of-results {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .cb-chart {
+    margin: 0 -8px;
+    padding: 10px 8px;
+  }
+
+  .cb-chart-columns {
+    min-width: 520px;
+  }
+
+  .cb-raw-row {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cb-raw-label,
+  .cb-raw-value {
+    min-width: 0;
+    text-align: left;
+  }
+}
+
 

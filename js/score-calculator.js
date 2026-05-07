@@ -136,23 +136,36 @@
             <button class="btn-back" onclick="loadDashboard()">
               <i class="fas fa-arrow-left"></i> Back
             </button>
-            <h2><i class="fas fa-calculator"></i> Score Calculator</h2>
+            <div>
+              <span class="sc-kicker">Cambridge</span>
+              <h2>Score Calculator</h2>
+            </div>
           </div>
 
-          <div class="sc-selector">
-            <label for="examSelector">Exam Level:</label>
-            <select id="examSelector" onchange="ScoreCalculator.onExamChange()">
-              <option value="B1" ${examType === 'B1' ? 'selected' : ''}>B1 Preliminary</option>
-              <option value="B2" ${examType === 'B2' ? 'selected' : ''}>B2 First</option>
-              <option value="C1" ${examType === 'C1' ? 'selected' : ''}>C1 Advanced</option>
-            </select>
+          <div class="sc-hero-card">
+            <div>
+              <span class="material-symbols-outlined">calculate</span>
+              <strong>Estimate your scale score</strong>
+              <p>Enter raw marks for each paper and get the Cambridge result instantly.</p>
+            </div>
           </div>
 
-          <div id="dynamicInputs" class="sc-inputs"></div>
+          <div class="sc-workspace">
+            <div class="sc-selector">
+              <label for="examSelector">Exam level</label>
+              <select id="examSelector" onchange="ScoreCalculator.onExamChange()">
+                <option value="B1" ${examType === 'B1' ? 'selected' : ''}>B1 Preliminary</option>
+                <option value="B2" ${examType === 'B2' ? 'selected' : ''}>B2 First</option>
+                <option value="C1" ${examType === 'C1' ? 'selected' : ''}>C1 Advanced</option>
+              </select>
+            </div>
 
-          <button class="sc-calculate-btn" onclick="ScoreCalculator.calculateExam()">
-            <i class="fas fa-chart-bar"></i> Calculate Score
-          </button>
+            <div id="dynamicInputs" class="sc-inputs"></div>
+
+            <button class="sc-calculate-btn" onclick="ScoreCalculator.calculateExam()">
+              <i class="fas fa-chart-bar"></i> Calculate Score
+            </button>
+          </div>
 
           <div class="statement-of-results" id="statementOfResults" style="display:none;"></div>
         </div>

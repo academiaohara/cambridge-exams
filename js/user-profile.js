@@ -1,5 +1,5 @@
 // js/user-profile.js
-// User profile panel — reads/writes public.profiles in Supabase
+// User profile settings — reads/writes public.profiles in Supabase
 (function () {
   'use strict';
 
@@ -114,33 +114,18 @@
       AppState.isPremium = AppState.hasTheoryPack && AppState.hasExamsPack;
     },
 
-    // ── panel toggle ──────────────────────────────────────────────────
+    // ── profile screen navigation ─────────────────────────────────────
     togglePanel: function () {
-      if (this._panelOpen) { this.closePanel(); } else { this.openPanel(); }
+      this.renderProfileSection();
     },
 
     openPanel: function () {
-      this._renderPanel();
-      const panel = document.getElementById('user-profile-panel');
-      if (panel) {
-        panel.style.display = 'flex';
-        requestAnimationFrame(function () { panel.classList.add('visible'); });
-        this._panelOpen = true;
-      }
-
-      // Close on outside click
-      var self = this;
-      setTimeout(function () {
-        document.addEventListener('click', self._outsideClickHandler.bind(self), { once: true });
-      }, 10);
+      this.renderProfileSection();
     },
 
     closePanel: function () {
       const panel = document.getElementById('user-profile-panel');
-      if (panel) {
-        panel.classList.remove('visible');
-        setTimeout(function () { panel.style.display = 'none'; }, 250);
-      }
+      if (panel) { panel.remove(); }
       this._panelOpen = false;
     },
 

@@ -251,7 +251,7 @@
       widget.className = 'user-widget';
       widget.setAttribute('title', name);
       widget.onclick = function () {
-        if (typeof UserProfile !== 'undefined') { UserProfile.togglePanel(); }
+        if (typeof UserProfile !== 'undefined') { UserProfile.renderProfileSection(); }
       };
 
       // Always use Google profile photo

@@ -129,19 +129,20 @@ content: '';
 
 @media (max-width: 768px) {
   .bento-top-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .bento-card-summit,
   .bento-card-ascent {
-    min-height: 136px;
+    min-height: 70px !important;
   }
 
+  .bento-card-summit::before,
+  .bento-card-ascent::before,
   .bento-card-summit::after,
   .bento-card-ascent::after {
-    opacity: 0.72;
-    transform: scale(0.82);
-    transform-origin: bottom right;
+    display: none !important;
   }
 }
 
