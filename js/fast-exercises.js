@@ -5907,29 +5907,31 @@
         '</div>';
       };
 
-      var lessonTitle = lessonData.title || lessonId;
+      var lessonTitle = lessonData.title || lessonId || '';
+      var isStandaloneCrossword = (typeof cwIndex !== 'undefined') || (lessonId && lessonId.indexOf('daily_') === 0);
+      var headerTitle = (isStandaloneCrossword && lessonTitle) ? lessonTitle : (levelId + ' Crossword');
+      var headerDetail = (!isStandaloneCrossword && lessonTitle) ? lessonTitle : '';
 
       mainEl.innerHTML =
         '<div class="vocab-cw-header">' +
-          '<button class="vocab-cw-btn vocab-cw-back-btn" onclick="BentoGrid.openCrosswordList()">' + _mi('arrow_back') + '<span>Back</span></button>' +
+          '<button class="vocab-cw-btn vocab-cw-back-btn" title="Back" aria-label="Back" onclick="BentoGrid.openCrosswordList()">' + _mi('arrow_back') + '</button>' +
           '<div class="vocab-cw-header-title">' +
             '<span class="material-symbols-outlined vocab-cw-header-icon">grid_on</span>' +
-            '<span class="vocab-cw-header-text">' + self._escapeHTML(levelId) + ' Crossword</span>' +
-            '<span class="vocab-cw-header-sep">—</span>' +
-            '<span class="vocab-cw-header-lesson">' + self._escapeHTML(lessonTitle) + '</span>' +
+            '<span class="vocab-cw-header-text">' + self._escapeHTML(headerTitle) + '</span>' +
+            (headerDetail ? '<span class="vocab-cw-header-sep">—</span><span class="vocab-cw-header-lesson">' + self._escapeHTML(headerDetail) + '</span>' : '') +
             '<span class="vocab-cw-level-badge vocab-cw-lvl-' + self._escapeHTML(levelId.toLowerCase()) + '">' + self._escapeHTML(levelId) + '</span>' +
           '</div>' +
           '<div class="vocab-cw-header-btns">' +
-            '<button class="vocab-cw-btn vocab-cw-mode-btn vocab-cw-cw-mode-btn vocab-cw-cw-mode-btn-active" id="cw-crossword-btn">' + _mi('grid_on') + '<span>Crossword</span></button>' +
-            '<button class="vocab-cw-btn vocab-cw-mode-btn vocab-cw-wordle-btn" id="cw-wordle-btn">' + _mi('casino') + '<span>Wordle</span></button>' +
-            '<button class="vocab-cw-btn vocab-cw-hint-btn" id="cw-hint-btn">' + _mi('lightbulb') + '<span>Hint</span></button>' +
-            '<button class="vocab-cw-btn vocab-cw-solve-btn" id="cw-solve-btn">' + _mi('auto_fix') + '<span>Solve</span></button>' +
-            '<button class="vocab-cw-btn vocab-cw-reset-btn" id="cw-reset-btn">' + _mi('refresh') + '<span>Reset</span></button>' +
+            '<button class="vocab-cw-btn vocab-cw-mode-btn vocab-cw-cw-mode-btn vocab-cw-cw-mode-btn-active" id="cw-crossword-btn" title="Crossword" aria-label="Crossword">' + _mi('grid_on') + '<span>Crossword</span></button>' +
+            '<button class="vocab-cw-btn vocab-cw-mode-btn vocab-cw-wordle-btn" id="cw-wordle-btn" title="Wordle" aria-label="Wordle">' + _mi('casino') + '<span>Wordle</span></button>' +
+            '<button class="vocab-cw-btn vocab-cw-hint-btn" id="cw-hint-btn" title="Hint" aria-label="Hint">' + _mi('lightbulb') + '<span>Hint</span></button>' +
+            '<button class="vocab-cw-btn vocab-cw-solve-btn" id="cw-solve-btn" title="Solve" aria-label="Solve">' + _mi('auto_fix') + '<span>Solve</span></button>' +
+            '<button class="vocab-cw-btn vocab-cw-reset-btn" id="cw-reset-btn" title="Reset" aria-label="Reset">' + _mi('refresh') + '<span>Reset</span></button>' +
           '</div>' +
         '</div>' +
         '<div class="vocab-cw-active-def" id="cw-active-def"><em>Click a clue to begin</em></div>' +
         '<div class="vocab-cw-board">' +
-          '<div class="vocab-cw-grid-outer">' +
+          '<div class="vocab-cw-grid-outer" style="--cw-cols:' + cols + '">' +
             '<div class="vocab-cw-grid-wrap" id="cw-grid-wrap">' +
               '<div class="vocab-cw-grid" id="cw-grid" style="grid-template-columns:repeat(' + cols + ',var(--cw-cell-size,36px))">' +
                 gridHtml +
@@ -5938,14 +5940,12 @@
             '<div class="vocab-cw-wordle-area" id="cw-wordle-area" style="display:none"></div>' +
           '</div>' +
           '<div class="vocab-cw-clues" id="cw-clues">' +
-            '<div class="vocab-cw-clues-toggle">' +
-              '<button class="vocab-cw-clues-tab vocab-cw-clues-tab-active" id="cw-tab-across" onclick="FastExercises._cwShowClueTab(\'across\')">ACROSS</button>' +
-              '<button class="vocab-cw-clues-tab" id="cw-tab-down" onclick="FastExercises._cwShowClueTab(\'down\')">DOWN</button>' +
-            '</div>' +
+            '<div class="vocab-cw-clue-section-title">Across</div>' +
             '<div class="vocab-cw-clue-section" id="cw-clues-across">' +
               acrossClues.map(buildClue).join('') +
             '</div>' +
-            '<div class="vocab-cw-clue-section" id="cw-clues-down" style="display:none">' +
+            '<div class="vocab-cw-clue-section-title">Down</div>' +
+            '<div class="vocab-cw-clue-section" id="cw-clues-down">' +
               downClues.map(buildClue).join('') +
             '</div>' +
           '</div>' +
@@ -6638,11 +6638,12 @@
       var crosswordBtn = document.getElementById('cw-crossword-btn');
 
       if (state.wordleMode) {
-        // Save grid width before hiding it
-        if (gridWrap && wordleArea) {
+        // Keep desktop Wordle aligned with the crossword; mobile uses the viewport width.
+        if (gridWrap && wordleArea && !window.matchMedia('(max-width: 700px)').matches) {
           var gw = gridWrap.offsetWidth;
           if (gw > 0) wordleArea.style.minWidth = gw + 'px';
         }
+        if (wordleArea && window.matchMedia('(max-width: 700px)').matches) wordleArea.style.minWidth = '';
         if (gridWrap)    gridWrap.style.display   = 'none';
         if (wordStrip)   wordStrip.style.display   = 'none';
         if (wordleArea)  wordleArea.style.display  = '';

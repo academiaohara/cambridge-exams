@@ -4396,6 +4396,8 @@
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
 }
 .vocab-cw-header-icon {
   font-size: 1.5rem;
@@ -4405,6 +4407,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   color: #0f172a;
+  min-width: 0;
 }
 .vocab-cw-header-sep {
   color: #94a3b8;
@@ -4435,6 +4438,7 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .vocab-cw-btn {
   display: inline-flex;
@@ -4480,6 +4484,9 @@
   border-radius: 12px;
   flex-shrink: 0;
   box-shadow: 0 4px 18px rgba(15,23,42,0.25);
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
 }
 .vocab-cw-grid-wrap {
   overflow-x: auto;
@@ -4626,6 +4633,18 @@
   flex-direction: column;
   gap: 2px;
 }
+.vocab-cw-clue-section-title {
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  padding: 8px 8px 4px;
+  text-transform: uppercase;
+}
+.vocab-cw-clue-section-title:first-child {
+  padding-top: 4px;
+}
 .vocab-cw-clue {
   font-size: 0.82rem;
   color: #334155;
@@ -4745,6 +4764,10 @@
   color: #475569 !important;
   border-color: #e2e8f0 !important;
   background: #f8fafc !important;
+  justify-content: center;
+  padding: 7px;
+  width: 34px;
+  height: 34px;
 }
 .vocab-cw-back-btn:hover:not(:disabled) { background: #f1f5f9 !important; }
 
@@ -4764,6 +4787,9 @@
   border-radius: 4px;
   padding: 14px 12px;
   min-width: 200px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4790,10 +4816,12 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  max-width: 100%;
 }
 .vocab-cw-wordle-row {
   display: flex;
   gap: 5px;
+  justify-content: center;
 }
 .vocab-cw-wordle-box {
   width: 40px;
@@ -4857,19 +4885,47 @@
 
 /* Mobile responsive */
 @media (max-width: 700px) {
-  .vocab-cw-grid-wrap { --cw-cell-size: 28px; }
-  .vocab-cw-board { flex-direction: column; }
-  .vocab-cw-clues { max-width: 100%; max-height: 260px; }
-  .vocab-cw-header { flex-direction: column; align-items: flex-start; }
+  .vocab-cw-grid-wrap { --cw-cell-size: clamp(18px, 5vw, 28px); }
+  .vocab-cw-board { flex-direction: column; gap: 12px; }
+  .vocab-cw-grid-outer { width: 100%; padding: 6px; align-items: center; }
+  .vocab-cw-clues { width: 100%; min-width: 0; max-width: 100%; max-height: none; box-sizing: border-box; }
+  .vocab-cw-header { align-items: center; display: grid; grid-template-columns: auto minmax(0, 1fr); }
+  .vocab-cw-header-title { gap: 6px; }
+  .vocab-cw-header-text { font-size: 1rem; }
+  .vocab-cw-header-sep,
+  .vocab-cw-header-lesson { display: none; }
+  .vocab-cw-header-btns {
+    grid-column: 1 / -1;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .vocab-cw-header-btns .vocab-cw-btn {
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+    padding: 8px;
+  }
+  .vocab-cw-header-btns .vocab-cw-btn > span:not(.material-symbols-outlined) { display: none; }
   .vocab-cw-main { padding: 10px; }
-  .vocab-cw-wordle-box { width: 40px; height: 40px; }
+  .vocab-cw-wordle-area { min-width: 0; padding: 12px 8px; }
+  .vocab-cw-wordle-row { gap: 4px; }
+  .vocab-cw-wordle-box {
+    width: clamp(24px, calc(8.33vw - 7.67px), 36px);
+    height: clamp(24px, calc(8.33vw - 7.67px), 36px);
+    border-radius: 5px;
+  }
+  .vocab-cw-wordle-actions .vocab-cw-btn {
+    justify-content: center;
+    padding: 8px 12px;
+  }
   .vocab-cw-strip-cell { width: 44px; height: 44px; font-size: 1rem; }
 }
 @media (max-width: 420px) {
-  .vocab-cw-grid-wrap { --cw-cell-size: 24px; }
+  .vocab-cw-grid-wrap { --cw-cell-size: clamp(16px, 4.8vw, 24px); }
   .vocab-cw-cell-letter { font-size: 0.72rem; }
   .vocab-cw-cell-num { font-size: 7px; }
-  .vocab-cw-wordle-box { width: 36px; height: 36px; font-size: 0.9rem; }
+  .vocab-cw-wordle-box { font-size: 0.9rem; }
   .vocab-cw-strip-cell { width: 40px; height: 40px; font-size: 0.95rem; }
 }
 
