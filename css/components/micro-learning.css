@@ -77,6 +77,25 @@
   color: #64748b;
 }
 
+@media (max-width: 520px) {
+  .ml-overlay {
+    align-items: stretch;
+  }
+
+  .ml-container {
+    max-width: none;
+    max-height: none;
+    height: 100dvh;
+    border-radius: 0;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .ml-header {
+    padding: 12px 14px 8px;
+  }
+}
+
 /* ── Progress bar ── */
 .ml-progress-bar-wrapper {
   height: 4px;

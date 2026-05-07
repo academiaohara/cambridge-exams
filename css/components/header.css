@@ -193,7 +193,7 @@
 
 @media (max-width: 560px) {
   .header-quick-nav {
-    display: none;
+    display: flex;
   }
 }
 
@@ -294,6 +294,12 @@
   transform: translateY(0);
 }
 
+.header-dict-dropdown:focus-within .header-dict-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .header-dict-menu-item {
   display: flex;
   align-items: center;
@@ -327,5 +333,112 @@
 @media (max-width: 560px) {
   .header-dict-label {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    position: sticky;
+    top: 0;
+    padding: 10px 12px 8px;
+    border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+  }
+
+  .header-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .logo {
+    min-width: 0;
+  }
+
+  .logo .logo-icon {
+    height: 30px;
+  }
+
+  .header-quick-nav {
+    order: 4;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 2px 2px 6px;
+    margin: 0 -2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .header-quick-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-nav-btn {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 8px 12px;
+    background: rgba(45, 46, 95, 0.04);
+    border-color: rgba(45, 46, 95, 0.08);
+  }
+
+  .header-nav-label {
+    display: inline;
+    font-size: 0.78rem;
+  }
+
+  .header-nav-group {
+    gap: 6px;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+
+  .header-dict-dropdown {
+    position: static;
+  }
+
+  .header-dict-btn,
+  .header-calc-btn {
+    min-height: 40px;
+    padding: 8px 10px;
+  }
+
+  .header-dict-menu {
+    position: fixed;
+    top: 106px;
+    left: 12px;
+    right: 12px;
+    min-width: 0;
+    max-height: calc(100dvh - 124px);
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .header-container {
+    grid-template-columns: auto 1fr;
+    row-gap: 8px;
+  }
+
+  .header-nav-group {
+    grid-column: 2;
+    gap: 4px;
+  }
+
+  .header-nav-label {
+    display: none;
+  }
+
+  .header-quick-nav {
+    grid-column: 1 / -1;
+    gap: 8px;
+    padding: 4px 1px 8px;
+  }
+
+  .header-nav-btn {
+    min-width: 46px;
+    justify-content: center;
+    padding: 8px 10px;
   }
 }

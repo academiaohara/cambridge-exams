@@ -71,3 +71,21 @@
   justify-content: center;
   text-align: center;
 }
+
+@media (max-width: 480px) {
+  .reading-type6-container,
+  .reading-type6-text-card,
+  .reading-type6-question {
+    padding: 14px;
+  }
+
+  .reading-type6-question {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .reading-type6-question-text {
+    min-width: 0;
+    font-size: 1rem;
+  }
+}

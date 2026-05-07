@@ -196,6 +196,25 @@
   min-width: 140px;
 }
 
+@media (max-width: 520px) {
+  .exercise-footer {
+    gap: 10px;
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+
+  .exercise-footer button {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 0;
+    padding: 12px 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .exercise-footer button {
+    flex-basis: 100%;
+  }
+}
+
 .exercise-footer button i {
   font-size: 16px;
 }

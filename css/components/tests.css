@@ -127,6 +127,24 @@ content: '';
   cursor: not-allowed;
 }
 
+@media (max-width: 768px) {
+  .bento-top-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-card-summit,
+  .bento-card-ascent {
+    min-height: 136px;
+  }
+
+  .bento-card-summit::after,
+  .bento-card-ascent::after {
+    opacity: 0.72;
+    transform: scale(0.82);
+    transform-origin: bottom right;
+  }
+}
+
 /* ── Grade Evolution Section (rendered in main-content) ──────────────── */
 .grade-evolution-section {
   width: 100%;
@@ -216,5 +234,13 @@ content: '';
   white-space: nowrap;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   border-left: 3px solid var(--ge-tip-color, #6366f1);
+}
+
+@media (max-width: 480px) {
+  .ge-tip {
+    max-width: calc(100vw - 24px);
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }
 

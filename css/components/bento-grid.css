@@ -573,6 +573,120 @@ content: '';
   box-shadow: 0 4px 16px rgba(45, 46, 95, 0.2);
 }
 
+@media (max-width: 768px) {
+  .bento-center-wrapper {
+    border-radius: 20px;
+    padding: 12px;
+  }
+
+  .bento-grid {
+    gap: 12px;
+  }
+
+  .bento-learning-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-card {
+    padding: 18px;
+  }
+
+  .bento-card-title {
+    font-size: 1.08rem;
+  }
+
+  .bento-card-desc {
+    font-size: 0.82rem;
+  }
+
+  .bento-card-quicksteps,
+  .bento-card-basecamp,
+  .bento-card-weakspot,
+  .bento-card-checkpoint,
+  .bento-card-crossword {
+    min-height: 132px;
+  }
+
+  .bento-card::after {
+    opacity: 0.75;
+    transform: scale(0.9);
+    transform-origin: bottom right;
+  }
+
+  .bento-recommended-header,
+  .bento-recommended-body,
+  .bento-next-header,
+  .bento-next-progress {
+    align-items: flex-start;
+  }
+
+  .bento-recommended-body {
+    flex-wrap: wrap;
+  }
+
+  .bento-rec-btn {
+    width: 100%;
+  }
+
+  .bento-grade-bar-row {
+    grid-template-columns: 88px 1fr 40px;
+    gap: 8px;
+  }
+
+  .bento-grade-skill,
+  .bento-grade-score {
+    font-size: 0.75rem;
+  }
+
+  .bento-next-lesson {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bento-resume-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .bento-center-wrapper {
+    margin: 0 -2px;
+    padding: 10px;
+  }
+
+  .bento-card {
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .bento-grade-bar-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-grade-score {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .sw-grade .grade-carousel-cefr {
+    font-size: 4rem;
+  }
+
+  .bento-course-prog {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .bento-card::after,
+  .bento-card::before {
+    display: none;
+  }
+}
+
 /* ── Progress bar (shared) ── */
 .bento-progress-track {
   height: 8px;

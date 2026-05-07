@@ -452,6 +452,30 @@
   font-size: 0.8rem;
 }
 
+@media (max-width: 420px) {
+  .header-signin-btn {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    justify-content: center;
+    padding: 0;
+    gap: 0;
+  }
+
+  .header-signin-btn span {
+    display: none;
+  }
+
+  .user-widget {
+    padding: 4px;
+    gap: 0;
+  }
+
+  .user-name {
+    display: none;
+  }
+}
+
 /* ── Full profile section (rendered in main-content) ─────────────────── */
 .profile-section {
   max-width: 700px;
