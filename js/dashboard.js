@@ -127,7 +127,7 @@
         : { title: 'Test Practice', subtitle: 'No limits. Safe space.' };
 
       var subpageHeader = '<div class="subpage-header">' +
-        '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
+        '<button class="subpage-back-btn" onclick="loadDashboard()" aria-label="Back"><span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><span class="icon-btn-label">Back</span></button>' +
         '<div>' +
           '<div class="subpage-title">' + modeConfig.title + '</div>' +
           '<div class="subpage-subtitle">' + modeConfig.subtitle + '</div>' +

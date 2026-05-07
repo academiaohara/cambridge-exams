@@ -4674,7 +4674,7 @@ textarea.cu-gap-input.cu-gap-textarea {
   }
 
   .cu-reset-btn span,
-  .subpage-back-btn span {
+  .subpage-back-btn span:not(.material-symbols-outlined) {
     display: none;
   }
 
