@@ -162,6 +162,40 @@
   cursor: not-allowed;
 }
 
+@media (max-width: 480px) {
+  .gap-container {
+    max-width: 100%;
+    margin: 3px 2px;
+  }
+
+  .gap-box {
+    min-width: 0;
+    max-width: 100%;
+    padding: 7px 10px;
+  }
+
+  .gap-answer {
+    min-width: 0;
+  }
+
+  .gap-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .gap-input {
+    width: min(92px, calc(100vw - 64px));
+    max-width: 100%;
+    padding: 6px 8px;
+  }
+
+  .gap-box.incorrect::after {
+    max-width: calc(100vw - 32px);
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
 .gap-error {
   color: var(--incorrect);
   font-size: 0.9rem;

@@ -91,3 +91,22 @@
   justify-content: center;
   text-align: center;
 }
+
+@media (max-width: 480px) {
+  .reading-type8-container,
+  .reading-type8-text-card,
+  .reading-type8-question {
+    padding: 14px;
+  }
+
+  .reading-type8-question {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .reading-type8-question-text,
+  .reading-type8-text-title {
+    min-width: 0;
+    font-size: 1rem;
+  }
+}

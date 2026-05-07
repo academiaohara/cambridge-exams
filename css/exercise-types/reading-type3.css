@@ -280,6 +280,13 @@
   border: 1px dashed #c084fc;
 }
 
+@media (max-width: 480px) {
+  .reading-type3-input,
+  .reading-type3-input:focus {
+    width: min(100%, 220px);
+  }
+}
+
 .reading-type3-example-answer {
   color: var(--correct);
   font-weight: 700;

@@ -226,6 +226,26 @@
   background: var(--white);
 }
 
+@media (max-width: 520px) {
+  .cb-result-boxes {
+    flex-wrap: wrap;
+  }
+
+  .cb-result-box {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 130px;
+  }
+
+  .cb-chart-toggle {
+    width: 100%;
+  }
+
+  .cb-toggle-btn {
+    flex: 1;
+    padding: 8px 10px;
+  }
+}
+
 .cb-result-box.cb-result-green {
   background: #2D2E5F;
   border-color: #2D2E5F;

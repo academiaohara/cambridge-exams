@@ -669,6 +669,24 @@ content: '';
   }
 }
 
+@media (max-width: 480px) {
+  .sw-grade .grade-carousel-cefr {
+    font-size: 4rem;
+  }
+
+  .bento-course-prog {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .bento-card::after,
+  .bento-card::before {
+    display: none;
+  }
+}
+
 /* ── Progress bar (shared) ── */
 .bento-progress-track {
   height: 8px;

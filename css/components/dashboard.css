@@ -1063,6 +1063,72 @@
   }
 }
 
+@media (max-width: 768px) {
+  .exam-header {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .exam-header-left {
+    min-width: 0;
+  }
+
+  .exam-title,
+  .exam-subtitle {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .exam-progress-badge {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .exam-play-btn,
+  .exam-results-btn,
+  .exam-arrow {
+    flex-shrink: 0;
+  }
+
+  .section-header {
+    flex-wrap: wrap;
+  }
+
+  .section-header h4 {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .results-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .results-modal-content {
+    width: 100%;
+    max-height: calc(100dvh - 24px);
+    border-radius: 20px 20px 0 0;
+    overflow-y: auto;
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+  }
+
+  .results-modal-header {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .results-modal-header h3 {
+    min-width: 0;
+    font-size: 1.05rem;
+    overflow-wrap: anywhere;
+  }
+
+  .grade-carousel-cefr {
+    font-size: 2.6rem;
+  }
+}
+
 /* Sidebar widgets */
 .sidebar-widget {
   background: rgba(255,255,255,0.92);

@@ -294,4 +294,29 @@
   background: #6b7280;
 }
 
+@media (max-width: 480px) {
+  .question-nav-panel {
+    max-height: calc(70dvh - env(safe-area-inset-bottom));
+    border-radius: 18px 18px 0 0;
+    padding: 16px 14px max(18px, env(safe-area-inset-bottom));
+  }
+
+  .qnav-header {
+    align-items: flex-start;
+  }
+
+  .question-nav-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(42px, 1fr));
+  }
+
+  .question-nav-cell {
+    min-height: 42px;
+  }
+
+  .qnav-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 

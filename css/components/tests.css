@@ -236,3 +236,11 @@ content: '';
   border-left: 3px solid var(--ge-tip-color, #6366f1);
 }
 
+@media (max-width: 480px) {
+  .ge-tip {
+    max-width: calc(100vw - 24px);
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
