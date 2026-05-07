@@ -1396,6 +1396,13 @@
       var streakBest = streak ? (streak.longestStreak || 0) : 0;
       var totalDays = streak ? (streak.totalDaysActive || 0) : 0;
       var practicedToday = streak ? streak.practicedToday : false;
+      var formatLocalDate = (typeof StreakManager !== 'undefined' && StreakManager._formatLocalDate)
+        ? function(d) { return StreakManager._formatLocalDate(d); }
+        : function(d) {
+          var month = String(d.getMonth() + 1).padStart(2, '0');
+          var day = String(d.getDate()).padStart(2, '0');
+          return d.getFullYear() + '-' + month + '-' + day;
+        };
 
       // Build last 28-day calendar from activeDates
       var today = new Date();
@@ -1407,7 +1414,7 @@
       for (var i = 27; i >= 0; i--) {
         var d = new Date(today);
         d.setDate(today.getDate() - i);
-        var dateStr = StreakManager._formatLocalDate(d);
+        var dateStr = formatLocalDate(d);
         var isActive = !!activeDatesSet[dateStr];
         calDays.push({ date: dateStr, active: isActive });
       }
@@ -1420,7 +1427,7 @@
 
       var statusHtml = practicedToday
         ? '<div class="bento-streak-modal-status bento-streak-safe"><span class="material-symbols-outlined">check_circle</span> ' + 'Streak safe today!' + '</div>'
-        : (StreakManager && StreakManager.isAtRisk()
+        : (typeof StreakManager !== 'undefined' && StreakManager.isAtRisk && StreakManager.isAtRisk()
           ? '<div class="bento-streak-modal-status bento-streak-risk"><span class="material-symbols-outlined">warning</span> ' + 'Practice now to keep your streak!' + '</div>'
           : '<div class="bento-streak-modal-status">' + t('startTodayStreak', 'Start today\'s practice to build your streak') + '</div>');
 
