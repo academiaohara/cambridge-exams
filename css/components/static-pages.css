@@ -21,6 +21,10 @@
 }
 
 .static-page-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
   border: 1px solid var(--border-light);
   background: var(--white);
   color: var(--text-dark);
@@ -32,6 +36,23 @@
 
 .static-page-back-btn:hover {
   background: #f8faff;
+}
+
+.static-page-back-btn .material-symbols-outlined {
+  font-size: 1.15rem;
+}
+
+@media (max-width: 768px) {
+  .static-page-back-btn {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border-radius: 14px;
+  }
+
+  .static-page-back-btn .icon-btn-label {
+    display: none;
+  }
 }
 
 .static-page-card {

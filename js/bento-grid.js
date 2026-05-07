@@ -29,17 +29,19 @@
       // Row 2: Lessons · Micro-Learning
       html += this._renderLearningRow();
 
-      // Row 3: Recommended Exercise
+      // Row 3: Recommended Exercise + Next in-progress lesson
+      html += '<div class="bento-progress-row">';
       html += this._renderRecommendedExercise(exams);
 
-      // Row 4 (optional): Next in-progress lesson
       if (nextLesson) {
         html += this._renderNextLesson(nextLesson);
       }
+      html += '</div>';
+
+      html += this._renderMobileStatsSection(exams);
 
       html += '</section>';
 
-      html += this._renderMobileStatsSection(exams);
       html += this._renderMobileBottomNav(level);
 
       html += '</div>';
@@ -66,7 +68,6 @@
           '<button onclick="BentoGrid.selectMode(\'exam\')">' + _mi('timer') + '<span>Simulation</span></button>' +
           '<button onclick="BentoGrid.openLessons()">' + _mi('auto_stories') + '<span>Course</span></button>' +
           '<button onclick="BentoGrid.openMicroLearning()">' + _mi('bolt') + '<span>Exercises</span></button>' +
-          '<button onclick="document.getElementById(\'mobileStatsSection\')?.scrollIntoView({behavior:\'smooth\',block:\'start\'})">' + _mi('bar_chart') + '<span>Stats</span></button>' +
           '<button onclick="UserProfile.renderProfileSection()">' + _mi('settings') + '<span>Profile</span></button>' +
         '</div>' +
       '</section>';
@@ -104,11 +105,6 @@
       });
 
       var avgScale = scaleCount ? Math.round(scaleTotal / scaleCount) : '--';
-      var levels = ['B1', 'B2', 'C1'];
-      var levelButtons = levels.map(function(lvl) {
-        return '<button class="mobile-level-chip' + (lvl === level ? ' active' : '') + '" onclick="BentoGrid.openMobileLevelModal()">' + lvl + '</button>';
-      }).join('');
-
       return '<section class="mobile-stats-section" id="mobileStatsSection">' +
         '<div class="mobile-section-heading">' +
           '<div>' +
@@ -123,7 +119,6 @@
           '<div class="mobile-stat-card"><span>Done</span><strong>' + completedParts + '</strong><small>' + inProgressParts + ' in progress</small></div>' +
           '<div class="mobile-stat-card"><span>Score</span><strong>' + avgScale + '</strong><small>avg scale</small></div>' +
         '</div>' +
-        '<div class="mobile-level-switcher" aria-label="Choose level">' + levelButtons + '</div>' +
         '<div class="mobile-stats-actions">' +
           '<button onclick="openScoreCalculator()">' + _mi('calculate') + '<span>Score calculator</span></button>' +
           '<button onclick="BentoGrid.openStreakSection()">' + _mi('local_fire_department') + '<span>Streak calendar</span></button>' +
@@ -136,7 +131,6 @@
       return '<nav class="mobile-bottom-nav" aria-label="Mobile dashboard">' +
         '<button class="mobile-bottom-nav-btn" data-mobile-tab="home" onclick="BentoGrid.setMobileDashboardTab(\'home\')">' + _mi('home') + '<span>Inicio</span></button>' +
         '<button class="mobile-bottom-nav-btn" data-mobile-tab="learn" onclick="BentoGrid.setMobileDashboardTab(\'learn\')">' + _mi('school') + '<span>Learn</span></button>' +
-        '<button class="mobile-bottom-nav-btn" data-mobile-tab="stats" onclick="BentoGrid.setMobileDashboardTab(\'stats\')">' + _mi('bar_chart') + '<span>Stats</span></button>' +
         '<button class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
         '<button class="mobile-bottom-nav-btn mobile-bottom-level" onclick="BentoGrid.openMobileLevelModal()" aria-label="Change level"><strong>' + this._escapeHTML(level || 'C1') + '</strong><span>Level</span></button>' +
       '</nav>';
@@ -152,10 +146,6 @@
       document.querySelectorAll('.mobile-bottom-nav-btn[data-mobile-tab]').forEach(function(btn) {
         btn.classList.toggle('active', btn.getAttribute('data-mobile-tab') === tab);
       });
-      if (tab === 'stats') {
-        var stats = document.getElementById('mobileStatsSection');
-        if (stats) stats.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
     },
 
     cycleMobileLevel: function() {
@@ -927,7 +917,7 @@
 
       var headerHtml =
         '<div class="cw-list-header">' +
-          '<button class="subpage-back-btn" onclick="loadDashboard()">Back</button>' +
+          '<button class="subpage-back-btn" onclick="loadDashboard()" aria-label="Back">' + _mi('arrow_back') + '<span class="icon-btn-label">Back</span></button>' +
           '<div>' +
             '<div class="subpage-title">' + _mi('grid_on') + ' Crosswords</div>' +
             '<div class="subpage-subtitle">' + subtitleText + '</div>' +
@@ -1051,7 +1041,7 @@
           '<div class="dashboard-center">' +
             '<div class="qs-chooser-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()" aria-label="Back">' + _mi('arrow_back') + '<span class="icon-btn-label">Back</span></button>' +
                 '<div>' +
                   '<div class="subpage-title">' + 'Quicksteps' + '</div>' +
                   '<div class="subpage-subtitle">' + 'Choose a category to start practicing' + '</div>' +

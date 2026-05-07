@@ -51,6 +51,12 @@
   };
 
   function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+  function _backButtonContent(label) {
+    return '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><span class="icon-btn-label">' + (label || 'Back') + '</span>';
+  }
+  function _symbolButtonContent(icon, label) {
+    return '<span class="material-symbols-outlined" aria-hidden="true">' + icon + '</span><span class="visually-hidden">' + label + '</span>';
+  }
 
   window.FastExercises = {
     _cache: {},
@@ -307,7 +313,7 @@
           '<div class="dashboard-center">' +
             '<div class="fe-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()">' + 'Back' + '</button>' +
+                '<button class="subpage-back-btn" onclick="loadDashboard()" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
                 '<div>' +
                   '<div class="subpage-title">' + _mi('bolt') + ' ' + 'Fast Learning' + '</div>' +
                   '<div class="subpage-subtitle">' + 'Choose a category and start your learning path' + '</div>' +
@@ -417,7 +423,7 @@
           '<div class="dashboard-center">' +
             '<div class="fe-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="' + _backFn + '">' + 'Back' + '</button>' +
+                '<button class="subpage-back-btn" onclick="' + _backFn + '" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
                 '<div class="subpage-header-titles">' +
                   '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
                   '<div class="subpage-subtitle">' + 'Level Progress' + ' — ' + activeLevel + '</div>' +
@@ -945,7 +951,7 @@
                   '<div class="vocab-fc-results-title">' + emptyTitle + '</div>' +
                   '<div class="vocab-fc-results-msg">' + emptyMsg + '</div>' +
                   '<button class="vocab-fc-next-batch-btn" onclick="FastExercises.openCategory(\'vocabulary\')" style="background:' + color + '">' +
-                    '<span class="material-symbols-outlined">arrow_back</span> Back to Topics' +
+                    '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><span class="icon-btn-label">Topics</span>' +
                   '</button>' +
                 '</div>' +
               '</div>' +
@@ -1103,7 +1109,7 @@
         content.innerHTML =
           '<div class="fe-point-view">' +
             '<div class="subpage-header">' +
-              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')">' + 'Back' + '</button>' +
+              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
               '<div class="subpage-header-titles">' +
                 '<div class="subpage-title">' + _mi('quiz') + ' Quick Review</div>' +
                 '<div class="subpage-subtitle">' + self._escapeHTML(catMeta.name) + ' · ' + activeLevel + '</div>' +
@@ -1113,7 +1119,7 @@
               '<div class="fe-quiz-complete-section" style="display:block;">' +
                 '<div class="fe-quiz-complete-icon">' + _mi('info') + '</div>' +
                 '<div class="fe-quiz-complete-text">No exercises available for this level yet.</div>' +
-                '<button class="fe-point-next-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" style="background:' + catMeta.color + '">Back to Map</button>' +
+                '<button class="fe-point-next-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" aria-label="Back to map" style="background:' + catMeta.color + '">' + _backButtonContent('Map') + '</button>' +
               '</div>' +
             '</div>' +
           '</div>';
@@ -1219,7 +1225,7 @@
       container.innerHTML =
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
             '<div class="subpage-header-titles">' +
               '<div class="subpage-title">' + _mi('quiz') + ' Quick Review</div>' +
               '<div class="subpage-subtitle">' + self._escapeHTML(catMeta.name) + ' · ' + activeLevel + ' · ' + exercises.length + ' exercises</div>' +
@@ -1236,7 +1242,7 @@
               '<div class="fe-qr-complete-actions">' +
                 '<button class="fe-point-next-btn" onclick="FastExercises._quickReviewNewRound()" style="background:' + catMeta.color + '">' + _mi('shuffle') + ' New Review</button>' +
                 '<button class="fe-point-next-btn fe-qr-repeat-btn" onclick="FastExercises._quickReviewRepeat()" style="background:' + catMeta.color + '">' + _mi('replay') + ' Repeat</button>' +
-                '<button class="fe-qr-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + _mi('arrow_back') + ' Back to Map</button>' +
+                '<button class="fe-qr-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back to map">' + _backButtonContent('Map') + '</button>' +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -1404,7 +1410,7 @@
           content.innerHTML =
             '<div class="fe-point-view">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')">' + 'Back' + '</button>' +
+                '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
                 '<div>' +
                   '<div class="subpage-title">' + self._escapeHTML(pointLabel) + '</div>' +
                   '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle) + '</div>' +
@@ -1473,7 +1479,7 @@
                 '<div class="fe-point-icon">' + _mi('emoji_events') + '</div>' +
                 '<div class="fe-point-message">' + '🏆 Congratulations! You\'ve completed all ' + levelId + ' Idioms lessons!' + '</div>' +
                 '<button class="fe-point-next-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" style="background:' + (catMeta ? catMeta.color : '#f59e0b') + '">' +
-                  'Back to Map' +
+                  _backButtonContent('Map') +
                 '</button>' +
               '</div>' +
             '</div>';
@@ -1534,7 +1540,7 @@
         content.innerHTML =
           '<div class="fe-point-view">' +
             '<div class="subpage-header">' +
-              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')">' + 'Back' + '</button>' +
+              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
               '<div>' +
                 '<div class="subpage-title">' + self._escapeHTML(pointLabel) + '</div>' +
                 '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonId) + '</div>' +
@@ -1595,7 +1601,7 @@
       container.innerHTML =
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
             '<div>' +
               '<div class="subpage-title">' + self._escapeHTML(point.label) + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
@@ -1625,7 +1631,7 @@
         container.innerHTML =
           '<div class="fe-point-view">' +
             '<div class="subpage-header">' +
-              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
+              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
               '<div>' +
                 '<div class="subpage-title">' + self._escapeHTML(point.label) + '</div>' +
                 '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
@@ -1662,7 +1668,7 @@
       container.innerHTML =
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' + 'Back' + '</button>' +
+            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
             '<div>' +
               '<div class="subpage-title">' + self._escapeHTML(point.label) + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + ' · ' + (ct.instructions || '') + '</div>' +
@@ -2455,8 +2461,8 @@
 
       return '<div class="pv-point-sidebar" id="pv-point-sidebar">' +
         '<div class="pv-sidebar-top-row">' +
-          '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
-            'Back' +
+          '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' +
+            _backButtonContent('Back') +
           '</button>' +
           '<button class="pv-sidebar-collapse-btn" id="pv-sidebar-toggle" title="' + 'Collapse' + '" onclick="FastExercises._pvToggleSidebar()">' +
             '<span class="material-symbols-outlined pv-sidebar-toggle-icon">chevron_left</span>' +
@@ -2520,8 +2526,8 @@
 
       return '<div class="pv-point-sidebar vocab-fc-sidebar-right" id="vocab-fc-sidebar">' +
         '<div class="pv-sidebar-top-row">' +
-          '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + self._jsStr(catMeta.id) + '\')">' +
-            'Back' +
+          '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + self._jsStr(catMeta.id) + '\')" aria-label="Back">' +
+            _backButtonContent('Back') +
           '</button>' +
           '<button class="pv-sidebar-collapse-btn" id="vocab-fc-sidebar-toggle" title="Collapse" onclick="FastExercises._vocabToggleSidebar()">' +
             '<span class="material-symbols-outlined pv-sidebar-toggle-icon">chevron_right</span>' +
@@ -4283,7 +4289,6 @@
         '<div class="id-dict-box">' +
           '<div class="id-dict-header">' +
             '<span class="id-dict-icon"><span class="material-symbols-outlined">record_voice_over</span></span>' +
-            '<h2 class="id-dict-title">Idioms Dictionary</h2>' +
             '<button class="id-dict-close" onclick="document.getElementById(\'id-dict-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
@@ -4453,29 +4458,20 @@
       var rowsHtml = filtered.map(function(e) {
         var pastSimple = e.pastSimple || '';
         var pastParticiple = e.pastParticiple || '';
+        var buildFormCell = function(word) {
+          return '<div class="irv-col-form">' +
+            '<span class="irv-col-word">' + self._escapeHTML(word) + '</span>' +
+            (word ? (
+              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(word) + '\')" title="Listen to pronunciation">' +
+                '<span class="material-symbols-outlined">volume_up</span>' +
+              '</button>'
+            ) : '') +
+          '</div>';
+        };
         return '<tr>' +
-          '<td class="irv-col-infinitive">' +
-            '<span class="irv-col-word">' + self._escapeHTML(e.infinitive || '') + '</span>' +
-            '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.infinitive || '') + '\')" title="Listen to pronunciation">' +
-              '<span class="material-symbols-outlined">volume_up</span>' +
-            '</button>' +
-          '</td>' +
-          '<td>' +
-            self._escapeHTML(pastSimple) +
-            (pastSimple ? (
-              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(pastSimple) + '\')" title="Listen to pronunciation">' +
-                '<span class="material-symbols-outlined">volume_up</span>' +
-              '</button>'
-            ) : '') +
-          '</td>' +
-          '<td>' +
-            self._escapeHTML(pastParticiple) +
-            (pastParticiple ? (
-              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(pastParticiple) + '\')" title="Listen to pronunciation">' +
-                '<span class="material-symbols-outlined">volume_up</span>' +
-              '</button>'
-            ) : '') +
-          '</td>' +
+          '<td>' + buildFormCell(e.infinitive || '') + '</td>' +
+          '<td>' + buildFormCell(pastSimple) + '</td>' +
+          '<td>' + buildFormCell(pastParticiple) + '</td>' +
         '</tr>';
       }).join('');
 
@@ -4498,7 +4494,10 @@
 
       if (this._irvPracticeState && this._irvPracticeState.active) {
         this._irvPracticeState = null;
-        if (btn) btn.textContent = 'Practice mode';
+        if (btn) {
+          btn.setAttribute('aria-label', 'Practice mode');
+          btn.textContent = 'Practice mode';
+        }
         if (searchRow) searchRow.style.display = '';
         if (count) count.style.display = '';
         this._renderIrvDictResults((searchInput && searchInput.value) || '');
@@ -4534,7 +4533,10 @@
       var btn = document.getElementById('irv-dict-practice-btn');
       var searchRow = document.getElementById('irv-dict-search-row');
       var count = document.getElementById('irv-dict-count');
-      if (btn) btn.textContent = 'Back to dictionary';
+      if (btn) {
+        btn.setAttribute('aria-label', 'Back to dictionary');
+        btn.innerHTML = _backButtonContent('Dictionary');
+      }
       if (searchRow) searchRow.style.display = 'none';
       if (count) count.style.display = 'none';
       this._renderIrvPracticeBatch();
@@ -4559,8 +4561,8 @@
             '<h3>Practice complete</h3>' +
             '<p>Score: <strong>' + state.totalCorrect + '/' + state.totalAnswers + '</strong> (' + pct + '%)</p>' +
             '<div class="irv-practice-complete-actions">' +
-              '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._toggleIrvPracticeMode()">Back to dictionary</button>' +
-              '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Restart practice</button>' +
+              '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._toggleIrvPracticeMode()" aria-label="Back to dictionary" title="Back to dictionary">' + _symbolButtonContent('arrow_back', 'Back to dictionary') + '</button>' +
+              '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()" aria-label="Restart practice" title="Restart practice">' + _symbolButtonContent('restart_alt', 'Restart practice') + '</button>' +
             '</div>' +
           '</div>';
         return;
@@ -4602,10 +4604,10 @@
           '</table>' +
         '</div>' +
         '<div class="irv-practice-actions">' +
-          '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._checkIrvPracticeBatch()">Check batch</button>' +
-          '<button class="irv-practice-btn" id="irv-practice-toggle" onclick="FastExercises._toggleIrvPracticeAnswers()" disabled aria-label="Show correct answers">Show correct answers</button>' +
-          '<button class="irv-practice-btn" id="irv-practice-next" onclick="FastExercises._nextIrvPracticeBatch()" disabled>Next batch</button>' +
-          '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()">Restart practice</button>' +
+          '<button class="irv-practice-btn irv-practice-btn-primary" onclick="FastExercises._checkIrvPracticeBatch()" aria-label="Check batch" title="Check batch">' + _symbolButtonContent('check', 'Check batch') + '</button>' +
+          '<button class="irv-practice-btn" id="irv-practice-toggle" onclick="FastExercises._toggleIrvPracticeAnswers()" disabled aria-label="Show correct answers" title="Show correct answers">' + _symbolButtonContent('visibility', 'Show correct answers') + '</button>' +
+          '<button class="irv-practice-btn" id="irv-practice-next" onclick="FastExercises._nextIrvPracticeBatch()" disabled aria-label="Next batch" title="Next batch">' + _symbolButtonContent('arrow_forward', 'Next batch') + '</button>' +
+          '<button class="irv-practice-btn" onclick="FastExercises._restartIrvPracticeMode()" aria-label="Restart practice" title="Restart practice">' + _symbolButtonContent('restart_alt', 'Restart practice') + '</button>' +
         '</div>';
     },
 
@@ -4666,7 +4668,8 @@
       if (toggleBtn) {
         toggleBtn.disabled = false;
         toggleBtn.setAttribute('aria-label', 'Show correct answers');
-        toggleBtn.textContent = 'Show correct answers';
+        toggleBtn.setAttribute('title', 'Show correct answers');
+        toggleBtn.innerHTML = _symbolButtonContent('visibility', 'Show correct answers');
       }
       var nextBtn = document.getElementById('irv-practice-next');
       if (nextBtn) nextBtn.disabled = false;
@@ -4687,8 +4690,10 @@
 
       var toggleBtn = document.getElementById('irv-practice-toggle');
       if (toggleBtn) {
-        toggleBtn.textContent = state.showingCorrect ? 'Show my answers' : 'Show correct answers';
-        toggleBtn.setAttribute('aria-label', state.showingCorrect ? 'Show my answers' : 'Show correct answers');
+        var label = state.showingCorrect ? 'Show my answers' : 'Show correct answers';
+        toggleBtn.innerHTML = _symbolButtonContent(state.showingCorrect ? 'person' : 'visibility', label);
+        toggleBtn.setAttribute('aria-label', label);
+        toggleBtn.setAttribute('title', label);
       }
     },
 
@@ -5200,8 +5205,8 @@
             '</div>' +
             '<div class="vocab-fc-results-msg">' + (batchLearned > 0 ? 'You got ' + batchLearned + ' word' + (batchLearned !== 1 ? 's' : '') + ' right this session!' : 'Keep practising — you\'ll get them!') + '</div>' +
             continueBtn +
-            '<button class="vocab-fc-next-batch-btn vocab-fc-back-topics-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" style="background:#64748b">' +
-              '<span class="material-symbols-outlined">arrow_back</span> Back to Topics' +
+            '<button class="vocab-fc-next-batch-btn vocab-fc-back-topics-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back to topics" style="background:#64748b">' +
+              '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><span class="icon-btn-label">Topics</span>' +
             '</button>' +
           '</div>' +
         '</div>';
@@ -5222,8 +5227,8 @@
               '<div class="vocab-fc-results-progress-fill" style="width:100%; background:' + color + '"></div>' +
             '</div>' +
             '<div class="vocab-fc-results-msg">You\'ve mastered all the words in this topic. Keep it up!</div>' +
-            '<button class="vocab-fc-next-batch-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" style="background:' + color + '">' +
-              '<span class="material-symbols-outlined">arrow_back</span> Back to Topics' +
+            '<button class="vocab-fc-next-batch-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back to topics" style="background:' + color + '">' +
+              '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><span class="icon-btn-label">Topics</span>' +
             '</button>' +
           '</div>' +
         '</div>';
@@ -5254,8 +5259,8 @@
       }
       return '<div class="pv-point-sidebar vocab-fc-sidebar-right" id="vocab-fc-sidebar">' +
         '<div class="pv-sidebar-top-row">' +
-          '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'vocabulary\')">' +
-            'Back' +
+          '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'vocabulary\')" aria-label="Back">' +
+            _backButtonContent('Back') +
           '</button>' +
           '<button class="pv-sidebar-collapse-btn" id="vocab-fc-sidebar-toggle" title="Collapse" onclick="FastExercises._vocabToggleSidebar()">' +
             '<span class="material-symbols-outlined pv-sidebar-toggle-icon">chevron_right</span>' +
@@ -5914,7 +5919,7 @@
 
       mainEl.innerHTML =
         '<div class="vocab-cw-header">' +
-          '<button class="vocab-cw-btn vocab-cw-back-btn" title="Back" aria-label="Back" onclick="BentoGrid.openCrosswordList()">' + _mi('arrow_back') + '</button>' +
+          '<button class="vocab-cw-btn vocab-cw-back-btn" title="Back" aria-label="Back" onclick="BentoGrid.openCrosswordList()">' + _symbolButtonContent('arrow_back', 'Back') + '</button>' +
           '<div class="vocab-cw-header-title">' +
             '<span class="material-symbols-outlined vocab-cw-header-icon">grid_on</span>' +
             '<span class="vocab-cw-header-text">' + self._escapeHTML(headerTitle) + '</span>' +
@@ -6879,37 +6884,30 @@
             '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showGeneralDictionary();">' +
               '<span class="dict-home-card-icon" style="background:#6d28d9"><span class="material-symbols-outlined">search</span></span>' +
               '<span class="dict-home-card-name">General Dictionary</span>' +
-              '<span class="dict-home-card-desc">Look up any word or phrasal verb</span>' +
             '</button>' +
             '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showVocabDictionary();">' +
               '<span class="dict-home-card-icon" style="background:#0ea5e9"><span class="material-symbols-outlined">library_books</span></span>' +
               '<span class="dict-home-card-name">Vocabulary</span>' +
-              '<span class="dict-home-card-desc">Cambridge exam vocabulary by level</span>' +
             '</button>' +
             '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showWfDictionary();">' +
               '<span class="dict-home-card-icon" style="background:#e11d48"><span class="material-symbols-outlined">text_fields</span></span>' +
               '<span class="dict-home-card-name">Word Formation</span>' +
-              '<span class="dict-home-card-desc">Prefixes, suffixes and derived forms</span>' +
             '</button>' +
             '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showPvDictionary();">' +
               '<span class="dict-home-card-icon" style="background:#3b82f6"><span class="material-symbols-outlined">auto_stories</span></span>' +
               '<span class="dict-home-card-name">Phrasal Verbs</span>' +
-              '<span class="dict-home-card-desc">Phrasal verbs with meanings and examples</span>' +
             '</button>' +
             '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showIdDictionary();">' +
               '<span class="dict-home-card-icon" style="background:#f59e0b"><span class="material-symbols-outlined">record_voice_over</span></span>' +
               '<span class="dict-home-card-name">Idioms</span>' +
-              '<span class="dict-home-card-desc">Common idioms with usage and examples</span>' +
             '</button>' +
             '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showCollocDictionary();">' +
               '<span class="dict-home-card-icon" style="background:#10b981"><span class="material-symbols-outlined">format_quote</span></span>' +
               '<span class="dict-home-card-name">Collocations</span>' +
-              '<span class="dict-home-card-desc">Word combinations and collocations</span>' +
             '</button>' +
             '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showIrregularVerbsDictionary();">' +
               '<span class="dict-home-card-icon" style="background:#2563eb"><span class="material-symbols-outlined">table_view</span></span>' +
               '<span class="dict-home-card-name">Irregular Verbs</span>' +
-              '<span class="dict-home-card-desc">Infinitive, past simple and past participle</span>' +
             '</button>' +
           '</div>' +
         '</div>';

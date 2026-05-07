@@ -121,7 +121,7 @@
       content.innerHTML =
         '<div class="static-page-wrapper">' +
           '<div class="static-page-header">' +
-            '<button class="static-page-back-btn" onclick="StaticPages.goBack()">Back</button>' +
+            '<button class="static-page-back-btn" onclick="StaticPages.goBack()" aria-label="Back"><span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><span class="icon-btn-label">Back</span></button>' +
             '<h1><span class="material-symbols-outlined" aria-hidden="true">' + safeIcon + '</span>' + safeTitle + '</h1>' +
           '</div>' +
           '<div class="static-page-card">' +

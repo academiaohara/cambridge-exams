@@ -494,6 +494,12 @@
   gap: 12px;
   margin-bottom: 24px;
 }
+.profile-section-header .btn-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
 .profile-section-card {
   background: #fff;
   border-radius: 20px;
@@ -821,6 +827,17 @@
     border-radius: 20px;
     background: rgba(255,255,255,0.94);
     box-shadow: 0 6px 20px rgba(45,46,95,0.07);
+  }
+
+  .profile-section-header .btn-back {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border-radius: 14px;
+  }
+
+  .profile-section-header .btn-back .icon-btn-label {
+    display: none;
   }
 
   .profile-section-header h2 {

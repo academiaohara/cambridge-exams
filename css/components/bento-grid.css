@@ -42,6 +42,12 @@
   gap: 14px;
 }
 
+.bento-progress-row {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 /* ── Base card ── */
 .bento-card {
   border-radius: var(--bento-radius);
@@ -2143,9 +2149,6 @@ margin-top: -2px;
     padding: 18px 10px 14px;
     text-align: center;
     color: #14365a;
-    background:
-      radial-gradient(circle at 50% 0%, rgba(70,177,225,0.20), transparent 42%),
-      radial-gradient(circle at 20% 62%, rgba(30,157,142,0.10), transparent 38%);
     border: 0;
     border-radius: 0;
     box-shadow: none;
@@ -2210,8 +2213,7 @@ margin-top: -2px;
 
   .mobile-app-actions button,
   .mobile-stats-actions button,
-  .mobile-section-heading button,
-  .mobile-level-chip {
+  .mobile-section-heading button {
     border: 0;
     font-family: inherit;
     cursor: pointer;
@@ -2255,6 +2257,16 @@ margin-top: -2px;
   .bento-learning-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
+  }
+
+  .bento-progress-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .bento-progress-row > .bento-card:only-child {
+    grid-column: 1 / -1;
   }
 
   .bento-card {
@@ -2302,9 +2314,6 @@ margin-top: -2px;
     margin: 16px auto 0;
     padding: 18px 6px 12px;
     border-radius: 0;
-    background:
-      radial-gradient(circle at 82% 8%, rgba(255,210,142,0.22), transparent 34%),
-      radial-gradient(circle at 12% 72%, rgba(70,177,225,0.15), transparent 40%);
     box-shadow: none;
   }
 
@@ -2382,28 +2391,12 @@ margin-top: -2px;
     line-height: 1;
   }
 
-  .mobile-level-switcher,
   .mobile-stats-actions {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 14px;
-  }
-
-  .mobile-level-chip {
-    min-height: 38px;
-    min-width: 56px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.76);
-    color: #496174;
-    font-weight: 900;
-  }
-
-  .mobile-level-chip.active {
-    background: linear-gradient(135deg, #2D2E5F, #1E9D8E);
-    color: #fff;
   }
 
   .mobile-stats-actions button {
@@ -2441,7 +2434,7 @@ margin-top: -2px;
 
 @media (max-width: 768px) {
   .bento-grid {
-    padding-bottom: calc(82px + env(safe-area-inset-bottom));
+    /* padding-bottom: calc(82px + env(safe-area-inset-bottom)); */
   }
 
   .mobile-bottom-nav {
@@ -2451,7 +2444,7 @@ margin-top: -2px;
     bottom: max(10px, env(safe-area-inset-bottom));
     z-index: 1000;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 6px;
     max-width: 430px;
     margin: 0 auto;
@@ -2613,11 +2606,7 @@ margin-top: -2px;
   }
 
   .bento-grid[data-mobile-tab="home"] .mobile-learn-pane,
-  .bento-grid[data-mobile-tab="home"] .mobile-stats-section,
-  .bento-grid[data-mobile-tab="learn"] .mobile-app-hero,
-  .bento-grid[data-mobile-tab="learn"] .mobile-stats-section,
-  .bento-grid[data-mobile-tab="stats"] .mobile-app-hero,
-  .bento-grid[data-mobile-tab="stats"] .mobile-learn-pane {
+  .bento-grid[data-mobile-tab="learn"] .mobile-app-hero {
     display: none !important;
   }
 
@@ -2627,8 +2616,7 @@ margin-top: -2px;
     gap: 10px;
   }
 
-  .bento-grid[data-mobile-tab="home"] .mobile-app-hero,
-  .bento-grid[data-mobile-tab="stats"] .mobile-stats-section {
+  .bento-grid[data-mobile-tab="home"] .mobile-app-hero {
     min-height: calc(100dvh - 112px);
     display: flex;
     flex-direction: column;
@@ -2636,7 +2624,7 @@ margin-top: -2px;
   }
 
   .bento-grid[data-mobile-tab="learn"] .mobile-learn-pane .bento-card {
-    min-height: 116px !important;
+    min-height: 0px !important;
     padding: 14px;
   }
 
@@ -2703,10 +2691,6 @@ margin-top: -2px;
     width: 58px !important;
     height: 58px !important;
     bottom: -12px !important;
-  }
-
-  .mobile-stats-section {
-    min-height: calc(100dvh - 112px);
   }
 
   .bento-streak-modal {
