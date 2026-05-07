@@ -29,13 +29,14 @@
       // Row 2: Lessons · Micro-Learning
       html += this._renderLearningRow();
 
-      // Row 3: Recommended Exercise
+      // Row 3: Recommended Exercise + Next in-progress lesson
+      html += '<div class="bento-progress-row">';
       html += this._renderRecommendedExercise(exams);
 
-      // Row 4 (optional): Next in-progress lesson
       if (nextLesson) {
         html += this._renderNextLesson(nextLesson);
       }
+      html += '</div>';
 
       html += this._renderMobileStatsSection(exams);
 
@@ -104,11 +105,6 @@
       });
 
       var avgScale = scaleCount ? Math.round(scaleTotal / scaleCount) : '--';
-      var levels = ['B1', 'B2', 'C1'];
-      var levelButtons = levels.map(function(lvl) {
-        return '<button class="mobile-level-chip' + (lvl === level ? ' active' : '') + '" onclick="BentoGrid.openMobileLevelModal()">' + lvl + '</button>';
-      }).join('');
-
       return '<section class="mobile-stats-section" id="mobileStatsSection">' +
         '<div class="mobile-section-heading">' +
           '<div>' +
@@ -123,7 +119,6 @@
           '<div class="mobile-stat-card"><span>Done</span><strong>' + completedParts + '</strong><small>' + inProgressParts + ' in progress</small></div>' +
           '<div class="mobile-stat-card"><span>Score</span><strong>' + avgScale + '</strong><small>avg scale</small></div>' +
         '</div>' +
-        '<div class="mobile-level-switcher" aria-label="Choose level">' + levelButtons + '</div>' +
         '<div class="mobile-stats-actions">' +
           '<button onclick="openScoreCalculator()">' + _mi('calculate') + '<span>Score calculator</span></button>' +
           '<button onclick="BentoGrid.openStreakSection()">' + _mi('local_fire_department') + '<span>Streak calendar</span></button>' +

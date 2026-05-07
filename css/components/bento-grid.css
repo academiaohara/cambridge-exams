@@ -42,6 +42,12 @@
   gap: 14px;
 }
 
+.bento-progress-row {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 /* ── Base card ── */
 .bento-card {
   border-radius: var(--bento-radius);
@@ -2136,8 +2142,7 @@ margin-top: -2px;
 
   .mobile-app-actions button,
   .mobile-stats-actions button,
-  .mobile-section-heading button,
-  .mobile-level-chip {
+  .mobile-section-heading button {
     border: 0;
     font-family: inherit;
     cursor: pointer;
@@ -2181,6 +2186,16 @@ margin-top: -2px;
   .bento-learning-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
+  }
+
+  .bento-progress-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .bento-progress-row > .bento-card:only-child {
+    grid-column: 1 / -1;
   }
 
   .bento-card {
@@ -2305,28 +2320,12 @@ margin-top: -2px;
     line-height: 1;
   }
 
-  .mobile-level-switcher,
   .mobile-stats-actions {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 14px;
-  }
-
-  .mobile-level-chip {
-    min-height: 38px;
-    min-width: 56px;
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.76);
-    color: #496174;
-    font-weight: 900;
-  }
-
-  .mobile-level-chip.active {
-    background: linear-gradient(135deg, #2D2E5F, #1E9D8E);
-    color: #fff;
   }
 
   .mobile-stats-actions button {
