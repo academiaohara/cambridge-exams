@@ -301,3 +301,65 @@
   margin-left: 4px;
   font-style: italic;
 }
+
+.reading-type3-confirm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  min-height: 42px;
+  border: none;
+  border-radius: 14px;
+  background: #10b981;
+  color: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.reading-type3-confirm-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.reading-type3-confirm-btn .material-symbols-outlined {
+  font-size: 1.35rem;
+}
+
+.reading-type3-modal-q {
+  width: 34px;
+  height: 34px;
+  min-height: 34px;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 480px) {
+  .reading-type3-input-word-row {
+    gap: 6px;
+    margin: 8px 0;
+    padding: 5px 5px 5px 9px;
+  }
+
+  .reading-type3-word-badge {
+    max-width: 34%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 6px 10px;
+    font-size: 0.72rem;
+  }
+
+  .reading-type3-confirm-btn {
+    width: 38px;
+    height: 38px;
+    min-height: 38px;
+    border-radius: 12px;
+  }
+
+  .reading-type3-modal-q {
+    width: 30px;
+    height: 30px;
+    min-height: 30px;
+    font-size: 0.82rem;
+  }
+}

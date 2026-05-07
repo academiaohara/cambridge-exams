@@ -94,7 +94,7 @@
 
       var headerHtml =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="loadDashboard()">Back</button>' +
+          '<button class="subpage-back-btn" onclick="loadDashboard()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
           '<div>' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
             '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
@@ -146,7 +146,7 @@
 
       var headerHtml =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()">Back</button>' +
+          '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
           '<div class="subpage-header-titles">' +
             '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
             '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
@@ -303,12 +303,12 @@
       var blockHasProgress = blockItems.some(function(i) { return !!blockProgress[i.id]; });
       var isPtBlock = /^pt\d+$/.test(blockKey);
       var resetBlockBtn = (!isPtBlock && blockHasProgress)
-        ? '<button class="cu-reset-btn" onclick="BentoGrid._resetCourseBlock(\'' + blockKey + '\')" title="Restart block">' + _mi('restart_alt') + ' Restart</button>'
+        ? '<button class="cu-reset-btn" onclick="BentoGrid._resetCourseBlock(\'' + blockKey + '\')" title="Restart block">' + _mi('restart_alt') + '<span>Restart</span></button>'
         : '';
       var blockLabel = BentoGrid._getBlockLabel(blockKey);
       var headerHtml =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="BentoGrid._backToCourseOverview()">Overview</button>' +
+          '<button class="subpage-back-btn" onclick="BentoGrid._backToCourseOverview()" title="Overview">' + _mi('dashboard') + '<span>Overview</span></button>' +
           '<div>' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' ' + blockLabel + '</div>' +
             '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
@@ -328,7 +328,7 @@
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var headerHtml =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()">Back</button>' +
+          '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
           '<div class="subpage-header-titles">' +
             '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
             '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
@@ -643,7 +643,7 @@
       // Show loading in center
       centerSection.innerHTML =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="BentoGrid.openCourseTheory()">Back</button>' +
+          '<button class="subpage-back-btn" onclick="BentoGrid.openCourseTheory()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
           '<div>' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
@@ -679,7 +679,7 @@
       if (!unitData) {
         centerSection.innerHTML =
           '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="BentoGrid.openCourseTheory()">Back</button>' +
+            '<button class="subpage-back-btn" onclick="BentoGrid.openCourseTheory()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
             '<div><div class="subpage-title">' + _mi('auto_stories') + ' Course</div></div>' +
           '</div>' +
           '<div class="fe-error">Could not load unit content.</div>';
@@ -706,12 +706,12 @@
       var backLabel = blockNum ? BentoGrid._getBlockLabel(String(blockNum)) : 'Back';
       var unitHasProgress = !!(BentoGrid._getCourseSectionProgress(level)[unitId] && Object.keys(BentoGrid._getCourseSectionProgress(level)[unitId]).length);
       var resetUnitBtn = (unitData.type !== 'progress_test' && unitHasProgress)
-        ? '<button class="cu-reset-btn" onclick="BentoGrid._resetCourseUnit(\'' + unitId + '\')" title="Restart unit">' + _mi('restart_alt') + ' Restart</button>'
+        ? '<button class="cu-reset-btn" onclick="BentoGrid._resetCourseUnit(\'' + unitId + '\')" title="Restart unit">' + _mi('restart_alt') + '<span>Restart</span></button>'
         : '';
 
       var html =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="' + backFn + '">' + backLabel + '</button>' +
+          '<button class="subpage-back-btn" onclick="' + backFn + '" title="' + backLabel + '">' + _mi('arrow_back') + '<span>' + backLabel + '</span></button>' +
           '<div>' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' ' + (unitData.unitTitle || '') + '</div>' +
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +

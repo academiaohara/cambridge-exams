@@ -323,7 +323,7 @@
       const loadingIsExamMode = AppState.currentMode === 'exam';
       let loadingFooterHTML = '';
       if (!loadingIsExamMode) {
-        loadingFooterHTML += `<button class="btn-check" disabled><span data-i18n="checkAnswers">Check answers</span></button>`;
+        loadingFooterHTML += `<button class="btn-check" disabled><i class="fas fa-check"></i> <span data-i18n="checkAnswers">Check answers</span></button>`;
         loadingFooterHTML += `<button class="btn-reset" disabled><i class="fas fa-redo-alt"></i> <span data-i18n="reset">Reset</span></button>`;
       }
       if (loadingDisplayPart > 1 && (!loadingIsExamMode || AppState.examFullMode)) {

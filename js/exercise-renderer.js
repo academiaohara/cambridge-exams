@@ -1005,7 +1005,7 @@
       if (!isExamMode) {
         footer += `
           <button class="btn-check" onclick="ExerciseHandlers.checkAnswers()" ${AppState.answersChecked ? 'disabled' : ''}>
-            <span data-i18n="checkAnswers">Check answers</span>
+            <i class="fas fa-check"></i> <span data-i18n="checkAnswers">Check answers</span>
           </button>
         `;
 

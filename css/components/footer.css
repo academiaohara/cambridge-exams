@@ -294,3 +294,32 @@
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
 }
 
+@media (max-width: 768px) {
+  .exercise-footer {
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+
+  .exercise-footer button {
+    flex: 0 0 44px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px !important;
+    padding: 0;
+    border-radius: 15px;
+    gap: 0;
+  }
+
+  .exercise-footer button span {
+    display: none;
+  }
+
+  .exercise-footer button i,
+  .exercise-footer button .material-symbols-outlined {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+}
+

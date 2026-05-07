@@ -110,13 +110,12 @@
       const escapedCurrentAnswer = this._escapeHtml(currentAnswer);
       const escapedWord = this._escapeHtml(question.word || '');
 
-      let html = '<div class="modal-header"><div class="modal-header-row"><span class="modal-q-circle">' + qNum + '</span></div></div>';
+      let html = '';
       html += '<div class="reading-type3-input-word-row">';
+      html += '<span class="modal-q-circle reading-type3-modal-q">' + qNum + '</span>';
       html += '<input type="text" class="reading-type3-modal-input" id="type3-modal-input" value="' + escapedCurrentAnswer + '" placeholder="..." autofocus>';
       html += '<span class="reading-type3-word-badge">' + escapedWord + '</span>';
-      html += '</div>';
-      html += '<div class="reading-type3-modal-actions">';
-      html += '<button class="opt-btn" onclick="ReadingType3.submitAnswer(' + qNum + ')">' + 'Confirm' + '</button>';
+      html += '<button class="reading-type3-confirm-btn" onclick="ReadingType3.submitAnswer(' + qNum + ')" title="Confirm"><span class="material-symbols-outlined">check</span></button>';
       html += '</div>';
       
       body.innerHTML = html;

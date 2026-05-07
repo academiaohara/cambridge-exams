@@ -1169,3 +1169,33 @@
   font-size: 0.85rem;
   padding: 10px;
 }
+
+.sidebar-tool-btn {
+  width: 38px;
+  min-width: 38px;
+  padding: 0;
+  border-radius: 14px;
+}
+
+.sidebar-tool-btn .tool-label {
+  display: none;
+}
+
+.sidebar-tool-btn i {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 768px) {
+  .tools-sidebar {
+    margin: 14px -14px -14px;
+  }
+
+  .sidebar-rail {
+    padding: 8px 10px;
+  }
+
+  .sidebar-tools-list {
+    gap: 6px;
+  }
+}
