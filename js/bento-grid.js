@@ -1429,7 +1429,7 @@
         ? '<div class="bento-streak-modal-status bento-streak-safe"><span class="material-symbols-outlined">check_circle</span> ' + 'Streak safe today!' + '</div>'
         : (typeof StreakManager !== 'undefined' && StreakManager.isAtRisk && StreakManager.isAtRisk()
           ? '<div class="bento-streak-modal-status bento-streak-risk"><span class="material-symbols-outlined">warning</span> ' + 'Practice now to keep your streak!' + '</div>'
-          : '<div class="bento-streak-modal-status">' + t('startTodayStreak', 'Start today\'s practice to build your streak') + '</div>');
+          : '<div class="bento-streak-modal-status">' + 'Start today\'s practice to build your streak' + '</div>');
 
       var el = document.createElement('div');
       el.className = 'bento-streak-modal-overlay';
