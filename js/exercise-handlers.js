@@ -159,9 +159,12 @@
       }
       btn.style.display = '';
       const label = AppState.answerViewMode === 'correct' ? 'Show your answer' : 'Show correct answer';
-      const labelSpan = btn.querySelector('span:last-child');
+      const iconName = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
+      const labelSpan = btn.querySelector('.btn-toggle-answer-label');
+      const iconSpan = btn.querySelector('.btn-toggle-answer-icon');
       if (labelSpan) labelSpan.textContent = label;
       else btn.textContent = label;
+      if (iconSpan) iconSpan.textContent = iconName;
     },
 
     toggleAnswerView: function() {
@@ -252,20 +255,20 @@
           document.querySelectorAll('.reading-type3-answered-word').forEach(word => {
             word.style.pointerEvents = 'none';
           });
-          document.querySelectorAll('input.gap-input').forEach(input => input.disabled = true);
+          document.querySelectorAll('.gap-input').forEach(input => { input.disabled = true; });
           break;
 
         case 'transformations':
-          // Inline input design for transformations
+          // Inline textarea/input design for transformations
           document.querySelectorAll('.reading-type4-inline-input').forEach(input => {
             input.disabled = true;
           });
-          document.querySelectorAll('input.gap-input').forEach(input => input.disabled = true);
+          document.querySelectorAll('.gap-input').forEach(input => { input.disabled = true; });
           break;
 
         case 'open-cloze':
         case 'sentence-completion':
-          document.querySelectorAll('input.gap-input').forEach(input => input.disabled = true);
+          document.querySelectorAll('.gap-input').forEach(input => { input.disabled = true; });
           break;
           
         case 'multiple-choice-text':
@@ -737,7 +740,7 @@
         case 'sentence-completion':
         case 'transformations':
           const altBadgeContainersSelector = this._ALT_BADGE_CONTAINERS_SELECTOR;
-          document.querySelectorAll('input.gap-input, .reading-type2-input, .listening-type2-input').forEach(input => {
+          document.querySelectorAll('.gap-input, .reading-type2-input, .listening-type2-input').forEach(input => {
             input.value = '';
             input.classList.remove('correct', 'incorrect');
             input.classList.remove('cu-input-show-correct');

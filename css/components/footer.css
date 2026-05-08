@@ -249,16 +249,20 @@
   box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
 }
 
-/* Botón Toggle answer view */
+/* Botón Toggle answer view — violeta + iconos visibility */
 .btn-toggle-answer {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
   color: white;
   border: none;
 }
 .btn-toggle-answer:hover {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: linear-gradient(135deg, #6d28d9, #5b21b6);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+}
+
+.btn-toggle-answer .btn-toggle-answer-icon {
+  font-size: 1.25rem;
 }
 
 /* Botón Reset */
@@ -299,6 +303,7 @@
     gap: 8px;
     margin-top: 16px;
     padding-top: 14px;
+    justify-content: flex-start;
   }
 
   .exercise-footer button {
@@ -312,12 +317,13 @@
     gap: 0;
   }
 
-  .exercise-footer button span {
+  .exercise-footer button span:not(.material-symbols-outlined) {
     display: none;
   }
 
   .exercise-footer button i,
-  .exercise-footer button .material-symbols-outlined {
+  .exercise-footer button .material-symbols-outlined,
+  .exercise-footer button .btn-toggle-answer-icon {
     margin: 0;
     font-size: 1.05rem;
   }

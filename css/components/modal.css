@@ -45,7 +45,8 @@
   font-size: 2rem;
   cursor: pointer;
   transition: color 0.2s;
-  z-index: 10;
+  z-index: 60;
+  line-height: 1;
 }
 
 .modal-close:hover {
@@ -129,11 +130,11 @@
     max-width: none;
     max-height: calc(100dvh - 16px);
     overflow-y: auto;
-    padding: 18px 18px max(18px, env(safe-area-inset-bottom));
+    padding: 44px 18px max(18px, env(safe-area-inset-bottom));
   }
 
   .modal-header-row {
-    align-items: flex-start;
+    align-items: center;
   }
 
   .options-grid {
@@ -146,5 +147,34 @@
     padding: 10px 8px;
     font-size: 0.76rem;
     letter-spacing: 0.04em;
+  }
+
+  /* Reading parts 6–8 (and similar) gap-selection modals */
+  .reading-gap-modal .modal-header h3 {
+    font-size: 0.92rem;
+    line-height: 1.25;
+    margin-bottom: 2px;
+  }
+
+  .reading-gap-modal .modal-header p {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+  }
+
+  .reading-gap-modal .modal-header-row {
+    align-items: center;
+  }
+
+  .reading-gap-modal .modal-header-row p {
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .reading-gap-modal .modal-q-circle {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
   }
 }
