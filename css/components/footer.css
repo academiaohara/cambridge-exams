@@ -288,48 +288,41 @@
 @media (max-width: 768px) {
   .exercise-footer {
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
     flex-wrap: nowrap;
-    gap: 6px;
+    gap: 8px;
     margin-top: 16px;
-    padding: 14px 8px max(10px, env(safe-area-inset-bottom));
+    padding: 14px 10px max(10px, env(safe-area-inset-bottom));
     border-top: 2px solid #eef2f6;
   }
 
   .exercise-footer button {
-    flex: 1 1 0;
-    min-width: 0;
-    width: auto;
-    height: auto;
-    min-height: 38px;
-    padding: 8px 6px;
-    border-radius: 10px;
-    font-size: 0.68rem;
-    font-weight: 600;
-    gap: 4px;
-    line-height: 1.15;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    flex: 0 0 44px;
+    width: 44px;
+    min-width: 44px;
+    max-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 0;
+    gap: 0;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    justify-content: center;
   }
 
-  .exercise-footer button span:not(.material-symbols-outlined) {
-    display: inline;
-    white-space: normal;
-    text-align: center;
-    hyphens: auto;
-    overflow-wrap: anywhere;
+  .exercise-footer button span:not(.material-symbols-outlined),
+  .exercise-footer button .btn-toggle-answer-label {
+    display: none !important;
   }
 
   .exercise-footer button i,
   .exercise-footer button .material-symbols-outlined,
   .exercise-footer button .btn-toggle-answer-icon {
     margin: 0;
-    font-size: 0.85rem;
+    font-size: 1.05rem;
     flex-shrink: 0;
-  }
-
-  .exercise-footer button .btn-toggle-answer-label {
-    font-size: 0.68rem;
-    line-height: 1.15;
   }
 }
 

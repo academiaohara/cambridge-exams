@@ -724,6 +724,19 @@ function roleName(role) {
       if (endBtn) {
         endBtn.onclick = function() { self._endConversation(); };
       }
+
+      sim.querySelectorAll('.speaking-img-card').forEach(function(card) {
+        card.addEventListener('click', function(ev) {
+          ev.stopPropagation();
+          if (typeof window.matchMedia === 'function' && !window.matchMedia('(max-width: 768px)').matches) {
+            return;
+          }
+          card.classList.toggle('speaking-img-card--expanded');
+          sim.querySelectorAll('.speaking-img-card').forEach(function(c) {
+            if (c !== card) c.classList.remove('speaking-img-card--expanded');
+          });
+        });
+      });
     },
 
     // ── Conversation flow ──
