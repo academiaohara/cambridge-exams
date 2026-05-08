@@ -693,7 +693,7 @@
               // Review points render as rows
               if (point.type === 'review') {
                 var reviewStateClass = isDone ? 'fe-level-active' : (isAccessible ? 'fe-level-unlocked' : 'fe-level-locked');
-                var reviewIcon = isDone ? _mi('check_circle') : (isAccessible ? _mi('rate_review') : _mi('lock'));
+                var reviewIcon = (isAccessible || isDone) ? _mi('rate_review') : _mi('lock');
                 var reviewOnclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + activeLevel + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
                 html += '<div class="fe-review-row fe-level-item ' + reviewStateClass + '" ' + reviewOnclick + '>' +
                   '<span class="fe-level-icon">' + reviewIcon + '</span>' +
@@ -709,58 +709,58 @@
               var dotIcon = '';
               if (point.type === 'explanation') {
                 dotClass += ' fe-dot-explanation';
-                dotIcon = isDone ? _mi('check') : _mi('article');
+                dotIcon = _mi('article');
               } else if (point.type === 'exercise') {
                 dotClass += ' fe-dot-exercise';
-                dotIcon = isDone ? _mi('check') : _mi('fitness_center');
+                dotIcon = _mi('fitness_center');
               } else if (point.type === 'trophy') {
                 dotClass += ' fe-dot-trophy';
-                dotIcon = isDone ? _mi('check') : _mi('emoji_events');
+                dotIcon = _mi('emoji_events');
               } else if (point.type === 'pv-gallery') {
                 dotClass += ' fe-dot-pv-gallery';
-                dotIcon = isDone ? _mi('check') : _mi('collections_bookmark');
+                dotIcon = _mi('collections_bookmark');
               } else if (point.type === 'pv-fill-in') {
                 dotClass += ' fe-dot-pv-fill-in';
-                dotIcon = isDone ? _mi('check') : _mi('edit');
+                dotIcon = _mi('edit');
               } else if (point.type === 'pv-conversations') {
                 dotClass += ' fe-dot-pv-conv';
-                dotIcon = isDone ? _mi('check') : _mi('forum');
+                dotIcon = _mi('forum');
               } else if (point.type === 'pv-conversation-drag') {
                 dotClass += ' fe-dot-pv-drag';
-                dotIcon = isDone ? _mi('check') : _mi('drag_indicator');
+                dotIcon = _mi('drag_indicator');
               } else if (point.type === 'pv-mixed') {
                 dotClass += ' fe-dot-pv-mixed';
-                dotIcon = isDone ? _mi('check') : _mi('shuffle');
+                dotIcon = _mi('shuffle');
               } else if (point.type === 'wf-explanation') {
                 dotClass += ' fe-dot-wf-explanation';
-                dotIcon = isDone ? _mi('check') : _mi('school');
+                dotIcon = _mi('school');
               } else if (point.type === 'wf-multiple-choice') {
                 dotClass += ' fe-dot-wf-multiple-choice';
-                dotIcon = isDone ? _mi('check') : _mi('rule');
+                dotIcon = _mi('rule');
               } else if (point.type === 'wf-transform') {
                 dotClass += ' fe-dot-wf-transform';
-                dotIcon = isDone ? _mi('check') : _mi('transform');
+                dotIcon = _mi('transform');
               } else if (point.type === 'id-gallery') {
                 dotClass += ' fe-dot-id-gallery';
-                dotIcon = isDone ? _mi('check') : _mi('collections_bookmark');
+                dotIcon = _mi('collections_bookmark');
               } else if (point.type === 'id-fill-in') {
                 dotClass += ' fe-dot-id-fill-in';
-                dotIcon = isDone ? _mi('check') : _mi('edit');
+                dotIcon = _mi('edit');
               } else if (point.type === 'id-conversations') {
                 dotClass += ' fe-dot-id-conv';
-                dotIcon = isDone ? _mi('check') : _mi('forum');
+                dotIcon = _mi('forum');
               } else if (point.type === 'id-conversation-drag') {
                 dotClass += ' fe-dot-id-drag';
-                dotIcon = isDone ? _mi('check') : _mi('drag_indicator');
+                dotIcon = _mi('drag_indicator');
               } else if (point.type === 'id-quiz') {
                 dotClass += ' fe-dot-id-quiz';
-                dotIcon = isDone ? _mi('check') : _mi('quiz');
+                dotIcon = _mi('quiz');
               } else if (point.type === 'id-trophy') {
                 dotClass += ' fe-dot-trophy';
-                dotIcon = isDone ? _mi('check') : _mi('emoji_events');
+                dotIcon = _mi('emoji_events');
               } else if (point.type === 'vocab-flashcards') {
                 dotClass += ' fe-dot-vocab-flashcards';
-                dotIcon = isDone ? _mi('check') : _mi('style');
+                dotIcon = _mi('style');
               }
 
               if (isDone) {
@@ -843,6 +843,8 @@
       if (!lessonEl || lessonEl.classList.contains('fe-lesson-locked')) return;
       outer.classList.add('fe-mobile-roadmap-active');
       container.classList.add('fe-mobile-roadmap-active');
+      var feSection = document.querySelector('.dashboard-center .fe-section');
+      if (feSection) feSection.classList.add('fe-mobile-lesson-drill-active');
       for (var j = 0; j < lessons.length; j++) {
         lessons[j].classList.remove('fe-map-lesson-mobile-selected');
         var pr = lessons[j].querySelector('.fe-map-points-row');
@@ -859,6 +861,8 @@
       var container = page ? page.querySelector('.fe-map-container') : document.querySelector('.fe-map-container');
       var outer = document.querySelector('.fe-map-outer');
       if (outer) outer.classList.remove('fe-mobile-roadmap-active');
+      var feSectionClose = document.querySelector('.dashboard-center .fe-section');
+      if (feSectionClose) feSectionClose.classList.remove('fe-mobile-lesson-drill-active');
       if (container) {
         container.classList.remove('fe-mobile-roadmap-active');
         container.querySelectorAll('.fe-map-lesson').forEach(function(l) {

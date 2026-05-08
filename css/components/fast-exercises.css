@@ -1186,6 +1186,21 @@
 }
 
 @media (max-width: 640px) {
+  /* Lesson drill-in: fullscreen-style map, hide chrome */
+  .fe-section.fe-mobile-lesson-drill-active .subpage-header.subpage-header--with-levels {
+    display: none !important;
+  }
+  .fe-section.fe-mobile-lesson-drill-active .fe-bottom-bar {
+    display: none !important;
+  }
+  .fe-map-outer.fe-mobile-roadmap-active .fe-map-page-dots,
+  .fe-map-outer.fe-mobile-roadmap-active .fe-map-arrow-btn {
+    display: none !important;
+  }
+  .fe-map-outer.fe-mobile-roadmap-active .fe-map-main {
+    padding-top: max(4px, env(safe-area-inset-top, 0px));
+  }
+
   .fe-map-legend-top {
     display: none !important;
   }
@@ -1206,6 +1221,16 @@
     align-items: stretch;
     gap: 16px;
   }
+  .fe-map-container.fe-mobile-roadmap-active .fe-map-lesson.fe-map-lesson-mobile-selected .fe-map-lesson-title {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    width: 100%;
+  }
+  .fe-map-container.fe-mobile-roadmap-active .fe-map-lesson.fe-map-lesson-mobile-selected .fe-map-lesson-name {
+    line-height: 1.35;
+  }
   .fe-map-container.fe-mobile-roadmap-active .fe-map-connector {
     display: none !important;
   }
@@ -1216,10 +1241,10 @@
     align-items: center;
     width: 100%;
     padding: 8px 0 16px;
+    gap: 16px;
   }
   .fe-map-points-row.fe-mobile-vertical-roadmap .fe-map-line {
-    width: 4px;
-    height: 18px;
+    display: none !important;
   }
   .fe-map-points-row.fe-mobile-vertical-roadmap .fe-review-row {
     width: 100%;
@@ -2466,17 +2491,59 @@
     border-radius: 18px;
   }
   .fe-quiz-complete-section {
-    padding: 28px 14px 22px;
-    margin: 12px -6px 0;
-    width: calc(100% + 12px);
+    padding: 28px 16px 22px;
+    margin: 12px 0 0;
+    width: 100%;
     max-width: none;
     box-sizing: border-box;
     border-radius: 16px;
     background: linear-gradient(180deg, rgba(16, 185, 129, 0.09), rgba(255, 255, 255, 0));
     border: 1px solid rgba(16, 185, 129, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  .fe-quiz-complete-text {
+  .fe-quiz-complete-section .fe-quiz-complete-text {
     margin-bottom: 18px;
+    width: 100%;
+  }
+  /* Gallery / conversation slides: full width, centered column */
+  .pv-point-main .pv-gallery-single-wrap {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 14px;
+  }
+  .pv-point-main .pv-gallery-cards-area,
+  .pv-point-main .pv-conversations-slides {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .pv-point-main .pv-gallery-nav-col {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 4px 0 0;
+    gap: 10px;
+  }
+  .pv-point-main .pv-gallery-card-single.pv-gallery-card-active,
+  .pv-point-main .pv-gallery-card {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .pv-point-main .pv-conv-slide.pv-conv-slide-active {
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
