@@ -71,7 +71,11 @@
           .select('*')
           .eq('user_id', user.id);
 
-        if (res.error || !res.data) return;
+        if (res.error) {
+          console.warn('[CrosswordSync] restoreFromCloud Supabase:', res.error.code || '', res.error.message || '', res.error.details || '', res.error.hint || '');
+          return;
+        }
+        if (!res.data) return;
 
         var all = this.getAll();
 
@@ -207,7 +211,10 @@
           .upsert(rows, { onConflict: 'user_id,crossword_id' })
           .select();
 
-        if (res.error) throw res.error;
+        if (res.error) {
+          console.warn('[CrosswordSync] upsert failed:', res.error.code || '', res.error.message || '', res.error.details || '', res.error.hint || '');
+          throw res.error;
+        }
 
         unsynced.forEach(function(v) { v.synced = true; });
         _memCache = all;
@@ -215,7 +222,7 @@
         CrosswordSync._setStatus('synced');
         setTimeout(function() { CrosswordSync._setStatus(''); }, 3000);
       } catch(e) {
-        console.warn('[CrosswordSync] push error:', e);
+        console.warn('[CrosswordSync] push error:', e && (e.message || e.code || e.details || e));
         CrosswordSync._setStatus('error');
       }
     },

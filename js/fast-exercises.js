@@ -5454,22 +5454,12 @@
     },
 
     _cwShowClueTab: function(dir) {
-      var acrossEl = document.getElementById('cw-clues-across');
-      var downEl   = document.getElementById('cw-clues-down');
-      var tabA     = document.getElementById('cw-tab-across');
-      var tabD     = document.getElementById('cw-tab-down');
-      if (!acrossEl || !downEl) return;
-      if (dir === 'across') {
-        acrossEl.style.display = 'block';
-        downEl.style.display   = 'none';
-        if (tabA) tabA.classList.add('vocab-cw-clues-tab-active');
-        if (tabD) tabD.classList.remove('vocab-cw-clues-tab-active');
-      } else {
-        acrossEl.style.display = 'none';
-        downEl.style.display   = 'block';
-        if (tabA) tabA.classList.remove('vocab-cw-clues-tab-active');
-        if (tabD) tabD.classList.add('vocab-cw-clues-tab-active');
-      }
+      var cluesRoot = document.getElementById('cw-clues');
+      var tabA      = document.getElementById('cw-strip-tab-across');
+      var tabD      = document.getElementById('cw-strip-tab-down');
+      if (cluesRoot) cluesRoot.setAttribute('data-cw-clues-dir', dir === 'down' ? 'down' : 'across');
+      if (tabA) tabA.classList.toggle('vocab-cw-strip-dir-btn-active', dir === 'across');
+      if (tabD) tabD.classList.toggle('vocab-cw-strip-dir-btn-active', dir === 'down');
     },
 
     // Open a mixed (non-topic-grouped) crossword by level and slot index.
@@ -5965,18 +5955,32 @@
             '</div>' +
             '<div class="vocab-cw-wordle-area" id="cw-wordle-area" style="display:none"></div>' +
           '</div>' +
-          '<div class="vocab-cw-clues" id="cw-clues">' +
-            '<div class="vocab-cw-clue-section-title">Across</div>' +
-            '<div class="vocab-cw-clue-section" id="cw-clues-across">' +
-              acrossClues.map(buildClue).join('') +
+          '<div class="vocab-cw-clues" id="cw-clues" data-cw-clues-dir="across">' +
+            '<div class="vocab-cw-clues-panel" id="cw-panel-across">' +
+              '<div class="vocab-cw-clue-section-title">Across</div>' +
+              '<div class="vocab-cw-clue-section" id="cw-clues-across">' +
+                acrossClues.map(buildClue).join('') +
+              '</div>' +
             '</div>' +
-            '<div class="vocab-cw-clue-section-title">Down</div>' +
-            '<div class="vocab-cw-clue-section" id="cw-clues-down">' +
-              downClues.map(buildClue).join('') +
+            '<div class="vocab-cw-clues-panel" id="cw-panel-down">' +
+              '<div class="vocab-cw-clue-section-title">Down</div>' +
+              '<div class="vocab-cw-clue-section" id="cw-clues-down">' +
+                downClues.map(buildClue).join('') +
+              '</div>' +
             '</div>' +
           '</div>' +
         '</div>' +
         '<div class="vocab-cw-word-strip" id="cw-word-strip">' +
+          '<div class="vocab-cw-strip-dir-row" role="toolbar" aria-label="Clue direction">' +
+            '<button type="button" class="vocab-cw-strip-dir-btn vocab-cw-strip-dir-btn-active" id="cw-strip-tab-across" aria-label="Across clues" title="Across">' +
+              '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>' +
+              '<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>' +
+            '</button>' +
+            '<button type="button" class="vocab-cw-strip-dir-btn" id="cw-strip-tab-down" aria-label="Down clues" title="Down">' +
+              '<span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>' +
+              '<span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>' +
+            '</button>' +
+          '</div>' +
           '<div class="vocab-cw-strip-cells" id="cw-strip-cells"><span class="vocab-cw-strip-hint">Click a clue to select a word</span></div>' +
         '</div>' +
         '<input type="text" id="cw-strip-input" class="vocab-cw-strip-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Crossword letter input" />';
@@ -6100,6 +6104,12 @@
           });
         })(clueEls[ci]);
       }
+
+      FastExercises._cwShowClueTab('across');
+      var stripTabA = document.getElementById('cw-strip-tab-across');
+      var stripTabD = document.getElementById('cw-strip-tab-down');
+      if (stripTabA) stripTabA.addEventListener('click', function() { FastExercises._cwShowClueTab('across'); });
+      if (stripTabD) stripTabD.addEventListener('click', function() { FastExercises._cwShowClueTab('down'); });
     },
 
     _cwSelectCell: function(r, c, forceDir) {
