@@ -634,6 +634,7 @@
       }
 
       html += '<div class="fe-map-main">';
+      html += '<button type="button" class="fe-map-mobile-back subpage-back-btn" onclick="FastExercises._closeMobileLessonRoadmap()" aria-label="' + 'Lessons' + '">' + _backButtonContent('Lessons') + '</button>';
 
       // Up arrow
       if (totalPages > 1) {
@@ -665,8 +666,8 @@
 
           var lessonClass = lessonLocked ? 'fe-lesson-locked' : (lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending'));
 
-          html += '<div class="fe-map-lesson ' + lessonClass + '">' +
-            '<div class="fe-map-lesson-title">' +
+          html += '<div class="fe-map-lesson ' + lessonClass + '" data-lesson-global-idx="' + li + '">' +
+            '<div class="fe-map-lesson-title" role="button" tabindex="0" onclick="FastExercises._mobileLessonTitleClick(event,\'' + catMeta.id + '\',\'' + activeLevel + '\',' + li + ')">' +
               '<span class="fe-map-lesson-num">' + 'Lesson' + ' ' + (li + 1) + '</span>' +
               '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
             '</div>' +
@@ -805,6 +806,12 @@
     // ── COMPACT DOTS ─────────────────────────────────────────────────────
     // If a points row wraps to more than one line, shrink the dots to fit.
     _compactDots: function() {
+      if (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 640px)').matches) {
+        document.querySelectorAll('.fe-map-points-row').forEach(function(row) {
+          row.classList.remove('fe-dots-compact');
+        });
+        return;
+      }
       var rows = document.querySelectorAll('.fe-map-points-row');
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
@@ -815,8 +822,76 @@
       }
     },
 
+    _mobileLessonTitleClick: function(e, categoryId, levelId, lessonGlobalIdx) {
+      if (typeof window.matchMedia !== 'function' || !window.matchMedia('(max-width: 640px)').matches) return;
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      var page = document.querySelector('.fe-map-page.fe-map-page-active');
+      var container = page ? page.querySelector('.fe-map-container') : document.querySelector('.fe-map-container');
+      var outer = document.querySelector('.fe-map-outer');
+      if (!container || !outer) return;
+      var lessons = container.querySelectorAll('.fe-map-lesson');
+      var lessonEl = null;
+      for (var i = 0; i < lessons.length; i++) {
+        if (parseInt(lessons[i].getAttribute('data-lesson-global-idx'), 10) === lessonGlobalIdx) {
+          lessonEl = lessons[i];
+          break;
+        }
+      }
+      if (!lessonEl || lessonEl.classList.contains('fe-lesson-locked')) return;
+      outer.classList.add('fe-mobile-roadmap-active');
+      container.classList.add('fe-mobile-roadmap-active');
+      for (var j = 0; j < lessons.length; j++) {
+        lessons[j].classList.remove('fe-map-lesson-mobile-selected');
+        var pr = lessons[j].querySelector('.fe-map-points-row');
+        if (pr) pr.classList.remove('fe-mobile-vertical-roadmap');
+      }
+      lessonEl.classList.add('fe-map-lesson-mobile-selected');
+      var row = lessonEl.querySelector('.fe-map-points-row');
+      if (row) row.classList.add('fe-mobile-vertical-roadmap');
+      requestAnimationFrame(function() { FastExercises._compactDots(); });
+    },
+
+    _closeMobileLessonRoadmap: function() {
+      var page = document.querySelector('.fe-map-page.fe-map-page-active');
+      var container = page ? page.querySelector('.fe-map-container') : document.querySelector('.fe-map-container');
+      var outer = document.querySelector('.fe-map-outer');
+      if (outer) outer.classList.remove('fe-mobile-roadmap-active');
+      if (container) {
+        container.classList.remove('fe-mobile-roadmap-active');
+        container.querySelectorAll('.fe-map-lesson').forEach(function(l) {
+          l.classList.remove('fe-map-lesson-mobile-selected');
+        });
+        container.querySelectorAll('.fe-map-points-row').forEach(function(r) {
+          r.classList.remove('fe-mobile-vertical-roadmap');
+        });
+      }
+      requestAnimationFrame(function() { FastExercises._compactDots(); });
+    },
+
+    _attachHorizontalSwipe: function(element, onPrev, onNext) {
+      if (!element || typeof onPrev !== 'function' || typeof onNext !== 'function') return;
+      var sx = 0;
+      var sy = 0;
+      element.addEventListener('touchstart', function(ev) {
+        if (!ev.touches || !ev.touches[0]) return;
+        sx = ev.touches[0].clientX;
+        sy = ev.touches[0].clientY;
+      }, { passive: true });
+      element.addEventListener('touchend', function(ev) {
+        if (!ev.changedTouches || !ev.changedTouches[0]) return;
+        var dx = ev.changedTouches[0].clientX - sx;
+        var dy = ev.changedTouches[0].clientY - sy;
+        if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+        if (dx < 0) onNext(); else onPrev();
+      }, { passive: true });
+    },
+
     // ── MAP PAGE NAVIGATION ───────────────────────────────────────────────
     _goToMapPage: function(pageIdx) {
+      this._closeMobileLessonRoadmap();
       var pages = document.querySelectorAll('.fe-map-page');
       var totalPages = pages.length;
       if (totalPages === 0) return;
@@ -1859,6 +1934,11 @@
           if (e.deltaY > 0) FastExercises._idGalleryGoTo(current + 1);
           else FastExercises._idGalleryGoTo(current - 1);
         }, { passive: false });
+        this._attachHorizontalSwipe(cardsArea, function() {
+          FastExercises._idGalleryGoTo((FastExercises._idGalleryCurrentIdx || 0) - 1);
+        }, function() {
+          FastExercises._idGalleryGoTo((FastExercises._idGalleryCurrentIdx || 0) + 1);
+        });
       }
       this._idGalleryCurrentIdx = 0;
       this._idGalleryTotal = idioms.length;
@@ -1877,6 +1957,11 @@
       for (var i = 0; i < dots.length; i++) {
         dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx')) === idx);
       }
+      requestAnimationFrame(function() {
+        var nav = document.getElementById('id-gallery-nav');
+        var dot = nav && nav.querySelector('.pv-gallery-nav-dot-active');
+        if (dot && dot.scrollIntoView) dot.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+      });
     },
 
     // ── IDIOMS: FILL-IN EXERCISES (Point 2) ───────────────────────────────
@@ -2020,6 +2105,11 @@
           if (e.deltaY > 0) FastExercises._idConvGoTo(current + 1);
           else FastExercises._idConvGoTo(current - 1);
         }, { passive: false });
+        this._attachHorizontalSwipe(slidesArea, function() {
+          FastExercises._idConvGoTo((FastExercises._idConvCurrentIdx || 0) - 1);
+        }, function() {
+          FastExercises._idConvGoTo((FastExercises._idConvCurrentIdx || 0) + 1);
+        });
       }
       this._idConvCurrentIdx = 0;
       this._idConvTotal = convs.length;
@@ -2038,6 +2128,11 @@
       for (var i = 0; i < dots.length; i++) {
         dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx')) === idx);
       }
+      requestAnimationFrame(function() {
+        var nav = document.getElementById('id-conv-nav');
+        var dot = nav && nav.querySelector('.pv-gallery-nav-dot-active');
+        if (dot && dot.scrollIntoView) dot.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+      });
     },
 
     _showIdIdiomPopup: function(idiomText) {
@@ -2170,6 +2265,10 @@
           this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints) +
           '<div class="pv-point-main">' +
             '<div class="pv-drag-container">' +
+              '<div class="pv-chips-panel" id="id-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
+                '<div class="pv-chips-title">' + 'Idioms' + ':</div>' +
+                '<div class="pv-chips-list" id="id-chips-list">' + chipsHtml + '</div>' +
+              '</div>' +
               '<div class="pv-drag-main">' +
                 '<div class="pv-conv-block">' +
                   '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
@@ -2183,10 +2282,6 @@
                     : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
                   ) +
                 '</div>' +
-              '</div>' +
-              '<div class="pv-chips-panel" id="id-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
-                '<div class="pv-chips-title">' + 'Idioms' + ':</div>' +
-                '<div class="pv-chips-list" id="id-chips-list">' + chipsHtml + '</div>' +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -2483,14 +2578,6 @@
           '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' +
             _backButtonContent('Back') +
           '</button>' +
-          '<button class="pv-sidebar-collapse-btn" id="pv-sidebar-toggle" title="' + 'Collapse' + '" onclick="FastExercises._pvToggleSidebar()">' +
-            '<span class="material-symbols-outlined pv-sidebar-toggle-icon">chevron_left</span>' +
-          '</button>' +
-        '</div>' +
-        '<button class="pv-sidebar-exit-btn" title="' + 'Back' + '" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
-          '<span class="material-symbols-outlined">close</span>' +
-        '</button>' +
-        '<div class="pv-sidebar-content" id="pv-sidebar-content">' +
           '<div class="pv-sidebar-lesson-info">' +
             '<div class="pv-sidebar-lesson-info-header">' +
               '<div class="pv-sidebar-lesson-info-text">' +
@@ -2499,9 +2586,14 @@
               '</div>' +
             '</div>' +
           '</div>' +
-          '<div class="pv-sidebar-points">' + dotsHtml + '</div>' +
+        '</div>' +
+        '<button class="pv-sidebar-exit-btn" title="' + 'Back' + '" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
+          '<span class="material-symbols-outlined">close</span>' +
+        '</button>' +
+        '<div class="pv-sidebar-content" id="pv-sidebar-content">' +
           (exerciseDesc ? '<div class="pv-sidebar-exercise-desc">' + exerciseDesc + '</div>' : '') +
         '</div>' +
+        '<div class="pv-sidebar-points">' + dotsHtml + '</div>' +
       '</div>';
     },
 
@@ -2677,6 +2769,11 @@
           if (e.deltaY > 0) FastExercises._pvGalleryGoTo(current + 1);
           else FastExercises._pvGalleryGoTo(current - 1);
         }, { passive: false });
+        this._attachHorizontalSwipe(cardsArea, function() {
+          FastExercises._pvGalleryGoTo((FastExercises._pvGalleryCurrentIdx || 0) - 1);
+        }, function() {
+          FastExercises._pvGalleryGoTo((FastExercises._pvGalleryCurrentIdx || 0) + 1);
+        });
       }
       this._pvGalleryCurrentIdx = 0;
       this._pvGalleryTotal = pvs.length;
@@ -2696,6 +2793,11 @@
       for (var i = 0; i < dots.length; i++) {
         dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx')) === idx);
       }
+      requestAnimationFrame(function() {
+        var nav = document.getElementById('pv-gallery-nav');
+        var dot = nav && nav.querySelector('.pv-gallery-nav-dot-active');
+        if (dot && dot.scrollIntoView) dot.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+      });
     },
 
     // ── PV FILL-IN EXERCISES (Point 2) ───────────────────────────────────
@@ -2789,14 +2891,20 @@
       var self = this;
       var feedbackEl = document.getElementById('fe-quiz-feedback-' + qIndex);
       var questionsContainer = document.getElementById('fe-quiz-questions');
+      if (!questionsContainer) return;
 
       if (feedbackEl) {
         if (isCorrect) {
           feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-correct';
           feedbackEl.innerHTML = _mi('check_circle') + ' ' + 'Correct' + '!';
         } else {
-          feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong';
-          feedbackEl.innerHTML = _mi('cancel') + ' ' + 'The correct answer is' + ' <strong>' + self._escapeHTML(correctAnswer) + '</strong>';
+          feedbackEl.className = 'fe-quiz-feedback fe-quiz-feedback-wrong fe-quiz-feedback-stack';
+          feedbackEl.innerHTML =
+            '<div class="fe-quiz-feedback-wrong-line">' + _mi('cancel') + ' ' + 'Not quite.' + '</div>' +
+            '<div class="fe-quiz-correct-answer-box">' +
+              '<span class="fe-quiz-correct-label">' + 'Correct answer' + '</span>' +
+              '<span class="fe-quiz-correct-value">' + self._escapeHTML(correctAnswer) + '</span>' +
+            '</div>';
         }
         feedbackEl.style.display = 'flex';
       }
@@ -2810,22 +2918,37 @@
       var progressFill = document.getElementById('fe-quiz-progress-fill');
       if (progressFill) progressFill.style.width = Math.round((answered / total) * 100) + '%';
 
-      setTimeout(function() {
-        if (answered >= total) {
-          self._markPointComplete(categoryId, levelId, lessonId, pointIndex);
-          var completeSection = document.getElementById('fe-quiz-complete');
-          var completeText = document.getElementById('fe-quiz-complete-text');
-          if (completeSection && completeText) {
-            completeText.textContent = correct + '/' + total + ' ' + 'correct' + '!';
-            completeSection.style.display = 'block';
-          }
-          var qs = document.querySelectorAll('.fe-quiz-question');
-          for (var i = 0; i < qs.length; i++) qs[i].style.display = 'none';
-          if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
-        } else {
-          self._showQuizQuestion(qIndex + 1);
+      var qEl = document.getElementById('fe-quiz-q-' + qIndex);
+      if (qEl) {
+        qEl.querySelectorAll('.fe-quiz-continue-wrap').forEach(function(n) { n.remove(); });
+      }
+
+      if (answered >= total) {
+        self._markPointComplete(categoryId, levelId, lessonId, pointIndex);
+        var completeSection = document.getElementById('fe-quiz-complete');
+        var completeText = document.getElementById('fe-quiz-complete-text');
+        if (completeSection && completeText) {
+          completeText.textContent = correct + '/' + total + ' ' + 'correct' + '!';
+          completeSection.style.display = 'block';
         }
-      }, isCorrect ? 800 : 1800);
+        var qs = document.querySelectorAll('.fe-quiz-question');
+        for (var i = 0; i < qs.length; i++) qs[i].style.display = 'none';
+        if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+      } else if (qEl) {
+        var wrap = document.createElement('div');
+        wrap.className = 'fe-quiz-continue-wrap';
+        wrap.innerHTML =
+          '<button type="button" class="fe-quiz-continue-btn" onclick="FastExercises._advanceFillInQuiz(' + qIndex + ',\'' + categoryId + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')">' +
+          'Continue' +
+          '</button>';
+        qEl.appendChild(wrap);
+      }
+    },
+
+    _advanceFillInQuiz: function(qIndex, categoryId, levelId, lessonId, pointIndex) {
+      var wrap = document.querySelector('#fe-quiz-q-' + qIndex + ' .fe-quiz-continue-wrap');
+      if (wrap) wrap.remove();
+      this._showQuizQuestion(qIndex + 1);
     },
 
     // ── PV CONVERSATIONS (Point 3) ───────────────────────────────────────
@@ -2910,6 +3033,11 @@
           if (e.deltaY > 0) FastExercises._pvConvGoTo(current + 1);
           else FastExercises._pvConvGoTo(current - 1);
         }, { passive: false });
+        this._attachHorizontalSwipe(slidesArea, function() {
+          FastExercises._pvConvGoTo((FastExercises._pvConvCurrentIdx || 0) - 1);
+        }, function() {
+          FastExercises._pvConvGoTo((FastExercises._pvConvCurrentIdx || 0) + 1);
+        });
       }
       this._pvConvCurrentIdx = 0;
       this._pvConvTotal = convs.length;
@@ -2929,6 +3057,11 @@
       for (var i = 0; i < dots.length; i++) {
         dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx')) === idx);
       }
+      requestAnimationFrame(function() {
+        var nav = document.getElementById('pv-conv-nav');
+        var dot = nav && nav.querySelector('.pv-gallery-nav-dot-active');
+        if (dot && dot.scrollIntoView) dot.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+      });
     },
 
     // ── PV CONVERSATION DRAG (Point 4) ───────────────────────────────────
@@ -3030,6 +3163,10 @@
           this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints) +
           '<div class="pv-point-main">' +
             '<div class="pv-drag-container">' +
+              '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
+                '<div class="pv-chips-title">' + 'Phrasal Verbs' + ':</div>' +
+                '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
+              '</div>' +
               '<div class="pv-drag-main">' +
                 '<div class="pv-conv-block">' +
                   '<div class="pv-conv-title">' + _mi('forum') + '<span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' + numHtml + '</div>' +
@@ -3043,10 +3180,6 @@
                     : '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>'
                   ) +
                 '</div>' +
-              '</div>' +
-              '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
-                '<div class="pv-chips-title">' + 'Phrasal Verbs' + ':</div>' +
-                '<div class="pv-chips-list" id="pv-chips-list">' + chipsHtml + '</div>' +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -3454,6 +3587,11 @@
           if (e.deltaY > 0) FastExercises._wfCardGoTo(current + 1);
           else FastExercises._wfCardGoTo(current - 1);
         }, { passive: false });
+        this._attachHorizontalSwipe(cardsArea, function() {
+          FastExercises._wfCardGoTo((FastExercises._wfCardCurrentIdx || 0) - 1);
+        }, function() {
+          FastExercises._wfCardGoTo((FastExercises._wfCardCurrentIdx || 0) + 1);
+        });
       }
       this._wfCardCurrentIdx = 0;
       this._wfCardTotal = wordForms.length;
@@ -3472,6 +3610,11 @@
       for (var i = 0; i < dots.length; i++) {
         dots[i].classList.toggle('pv-gallery-nav-dot-active', parseInt(dots[i].getAttribute('data-idx'), 10) === idx);
       }
+      requestAnimationFrame(function() {
+        var nav = document.getElementById('wf-gallery-nav');
+        var dot = nav && nav.querySelector('.pv-gallery-nav-dot-active');
+        if (dot && dot.scrollIntoView) dot.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+      });
     },
 
     // ── WORD FORMATION: MULTIPLE CHOICE (Point 2) ────────────────────────
