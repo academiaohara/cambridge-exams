@@ -764,21 +764,18 @@
     }
   };
 
-  // Inicializar eventos de selección de texto
-  document.addEventListener('mouseup', async function(e) {
+  async function handleToolTextSelection() {
     if (!AppState.activeTool) return;
     if (!AppState.toolSelectionEnabled) return;
-    
+
     const selection = window.getSelection();
     const text = selection.toString().trim();
     if (text.length < 2) return;
-    
+
     if (AppState.activeTool === 'notes') {
       try {
         AppState.currentNoteRange = selection.getRangeAt(0).cloneRange();
-        // Render notes area first (which includes the hidden note-creator)
         Tools.renderNotesArea();
-        // Then show the note-creator and hide the carousel/empty-msg
         var noteCreator = document.getElementById('note-creator');
         var carousel = document.querySelector('.notes-carousel');
         var emptyMsg = document.querySelector('#active-tool-content .empty-msg');
@@ -795,13 +792,23 @@
         console.log('Error al seleccionar texto:', e);
       }
     }
-    
+
     if (AppState.activeTool === 'dict') {
       Tools.buscarEnDiccionario(text);
     }
-    
+
     if (AppState.activeTool === 'translate') {
       Tools.traducirTexto(text);
     }
+  }
+
+  document.addEventListener('mouseup', function() {
+    handleToolTextSelection();
   });
+
+  document.addEventListener('touchend', function() {
+    setTimeout(function() {
+      handleToolTextSelection();
+    }, 120);
+  }, { passive: true });
 })();

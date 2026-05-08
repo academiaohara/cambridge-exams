@@ -51,12 +51,23 @@
   display: block;
 }
 
-/* Combined input + word badge layout in modal */
-.reading-type3-input-word-row {
+/* Modal: stem row + compact confirm (outside the bordered input row) */
+.reading-type3-modal-field-row {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 16px 0;
+  margin: 28px 0 12px;
+  flex-wrap: nowrap;
+}
+
+/* Combined input + word badge layout in modal */
+.reading-type3-input-word-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
   background: #f8fafc;
   border: 2px solid #cbd5e1;
   border-radius: 16px;
@@ -306,25 +317,32 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  min-height: 42px;
+  width: 38px;
+  height: 38px;
+  min-height: 38px;
   border: none;
-  border-radius: 14px;
-  background: #10b981;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #7e22ce, #6d28d9);
   color: #fff;
   cursor: pointer;
   flex-shrink: 0;
-  transition: transform 0.15s, background 0.15s;
+  align-self: center;
+  box-shadow: 0 2px 8px rgba(126, 34, 206, 0.25);
+  transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
 }
 
 .reading-type3-confirm-btn:hover {
-  background: #059669;
+  background: linear-gradient(145deg, #6d28d9, #5b21b6);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(126, 34, 206, 0.35);
+}
+
+.reading-type3-confirm-btn:active {
+  transform: translateY(0);
 }
 
 .reading-type3-confirm-btn .material-symbols-outlined {
-  font-size: 1.35rem;
+  font-size: 1.2rem;
 }
 
 .reading-type3-modal-q {
@@ -335,9 +353,22 @@
 }
 
 @media (max-width: 480px) {
+  .reading-type3-modal-field-row {
+    margin: 32px 0 10px;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .reading-type3-modal-field-row .reading-type3-confirm-btn {
+    align-self: center;
+    width: 36px;
+    height: 36px;
+    min-height: 36px;
+    border-radius: 11px;
+  }
+
   .reading-type3-input-word-row {
     gap: 6px;
-    margin: 8px 0;
     padding: 5px 5px 5px 9px;
   }
 
@@ -347,13 +378,6 @@
     text-overflow: ellipsis;
     padding: 6px 10px;
     font-size: 0.72rem;
-  }
-
-  .reading-type3-confirm-btn {
-    width: 38px;
-    height: 38px;
-    min-height: 38px;
-    border-radius: 12px;
   }
 
   .reading-type3-modal-q {

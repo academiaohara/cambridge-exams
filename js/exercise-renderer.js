@@ -257,13 +257,13 @@
             <div class="exercise-info">
               <div class="exercise-info-left">
                 ${partNavHTML}
-                <span><i class="fas fa-clock"></i> ${
+              </div>
+              <div class="exercise-info-right">
+                <span class="exercise-duration"><i class="fas fa-clock"></i> ${
                   (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section])
                     ? CONFIG.SECTION_TIMES[section]
                     : (exercise.time || '10')
                 } <span data-i18n="minutes">min</span></span>
-              </div>
-              <div class="exercise-info-right">
                 <div class="exercise-timer" id="exercise-timer"${section === 'speaking' ? ' style="display:none"' : ''}>
                   <i class="fas fa-hourglass-half"></i>
                   <span id="timer-display">${
@@ -1000,7 +1000,12 @@
       var actualPart = AppState.currentPart || part;
       var supportsAnswerToggle = (isReading && actualPart >= 1 && actualPart <= 4) || (isListening && actualPart === 2);
       var answerToggleLabel = AppState.answerViewMode === 'correct' ? 'Show your answer' : 'Show correct answer';
+      var answerToggleIcon = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
       let footer = '';
+
+      if (part > 1 && (!isExamMode || AppState.examFullMode)) {
+        footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
+      }
       
       if (!isExamMode) {
         footer += `
@@ -1011,7 +1016,7 @@
 
         footer += `
           <button class="btn-toggle-answer" onclick="ExerciseHandlers.toggleAnswerView()" ${supportsAnswerToggle && AppState.answersChecked ? '' : 'style="display:none"'}>
-            <span class="material-symbols-outlined">swap_horiz</span> <span>${answerToggleLabel}</span>
+            <span class="material-symbols-outlined btn-toggle-answer-icon">${answerToggleIcon}</span> <span class="btn-toggle-answer-label">${answerToggleLabel}</span>
           </button>
         `;
 
@@ -1041,11 +1046,6 @@
             <i class="fas fa-redo-alt"></i> <span data-i18n="reset">Reset</span>
           </button>
         `;
-      }
-      
-      // Allow going back in both practice mode and exam full mode
-      if (part > 1 && (!isExamMode || AppState.examFullMode)) {
-        footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
       }
       
       if (part < totalParts) {

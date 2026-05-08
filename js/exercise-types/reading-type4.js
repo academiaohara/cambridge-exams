@@ -113,13 +113,21 @@
         const dataAttr = result.score < 2 ? ` data-correct="✓ ${escapedCorrect}" data-correct-label="✓ ${escapedCorrect}"` : '';
         const escapedStudent = String(userAnswer || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         const escapedRoutes = String(JSON.stringify(question.routes || [])).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+        const escForTextarea = String(userAnswer || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
         gapHTML = `<span class="reading-type4-inline-wrap ${colorClass}${result.score < 2 ? ' incorrect' : ''}"${dataAttr}>` +
-          `<input type="text" class="reading-type4-inline-input gap-input ${colorClass}" data-question="${qNum}" data-student-value="${escapedStudent}" data-check-class="${colorClass}" data-correct-routes="${escapedRoutes}" value="${userAnswer || ''}" disabled>` +
+          `<textarea class="reading-type4-inline-input reading-type4-inline-textarea gap-input ${colorClass}" data-question="${qNum}" data-student-value="${escapedStudent}" data-check-class="${colorClass}" data-correct-routes="${escapedRoutes}" rows="1" disabled>${escForTextarea}</textarea>` +
           `</span>`;
         answersPanel = this._renderAnswersPanel(question, qNum, beforeGap, afterGap);
       } else {
+        const escForTextarea = String(userAnswer || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
         gapHTML = `<span class="reading-type4-inline-wrap${userAnswer ? ' reading-type4-purple' : ''}">` +
-          `<input type="text" class="reading-type4-inline-input gap-input" data-question="${qNum}" value="${userAnswer || ''}" maxlength="100" placeholder="..." oninput="ReadingType4.handleInput(${qNum}, this.value); ReadingType4.resizeInput(this)">` +
+          `<textarea class="reading-type4-inline-input reading-type4-inline-textarea gap-input" data-question="${qNum}" rows="1" placeholder="..." maxlength="500" oninput="ReadingType4.handleInput(${qNum}, this.value); ReadingType4.resizeInput(this)">${escForTextarea}</textarea>` +
           `</span>`;
       }
       
@@ -201,7 +209,7 @@
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = value;
       
-      const wrap = document.querySelector(`input[data-question="${qNum}"]`)?.closest('.reading-type4-inline-wrap');
+      const wrap = document.querySelector(`textarea[data-question="${qNum}"]`)?.closest('.reading-type4-inline-wrap');
       if (wrap) {
         if (value.trim()) {
           wrap.classList.add('reading-type4-purple');
@@ -219,15 +227,20 @@
       if (!span) {
         span = document.createElement('span');
         span.id = 'reading-type4-resize-span';
-        span.style.cssText = 'visibility:hidden;position:absolute;white-space:pre;pointer-events:none;';
+        span.style.cssText = 'visibility:hidden;position:absolute;white-space:pre-wrap;word-wrap:break-word;pointer-events:none;';
         document.body.appendChild(span);
       }
       span.style.font = window.getComputedStyle(input).font;
-      span.textContent = input.value || input.placeholder || '';
+      span.style.width = '';
       var line = input.closest('.reading-type4-second');
       var maxWidth = line ? Math.max(minWidth, line.clientWidth - 24) : window.innerWidth - 48;
-      const newWidth = Math.min(maxWidth, Math.max(minWidth, span.getBoundingClientRect().width + 50)); // extra buffer (padding 32px + 18px breathing room)
-      input.style.width = newWidth + 'px';
+      span.style.maxWidth = maxWidth + 'px';
+      span.textContent = input.value || input.placeholder || '';
+      var measured = span.getBoundingClientRect().width + 36;
+      var targetWidth = Math.min(maxWidth, Math.max(minWidth, measured));
+      input.style.width = targetWidth + 'px';
+      input.style.height = 'auto';
+      input.style.height = Math.max(input.scrollHeight, parseFloat(window.getComputedStyle(input).lineHeight) || 22) + 'px';
     },
     
     _buildPartRegex: function(text) {
@@ -309,7 +322,7 @@
         const result = this.evaluateTransformation(userAnswer, q.routes);
         totalScore += result.score;
         
-        const input = document.querySelector(`.reading-type4-inline-input[data-question="${q.number}"]`);
+        const input = document.querySelector(`textarea.reading-type4-inline-input[data-question="${q.number}"]`);
         if (input) {
           const wrap = input.closest('.reading-type4-inline-wrap');
           const questionDiv = input.closest('.reading-type4-question');
@@ -358,7 +371,7 @@
 
     setAnswerMode: function(mode) {
       var self = this;
-      document.querySelectorAll('.reading-type4-inline-input[data-question]').forEach(function(input) {
+      document.querySelectorAll('textarea.reading-type4-inline-input[data-question]').forEach(function(input) {
         var studentValue = input.getAttribute('data-student-value') || '';
         var checkClass = input.getAttribute('data-check-class') || '';
         var routes = [];
