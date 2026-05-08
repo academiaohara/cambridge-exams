@@ -33,18 +33,18 @@
                     placeholder="Write your essay..."
                     oninput="WritingType1.handleInput(this.value)">${savedAnswer}</textarea>
           <div class="writing-corrected-text" id="writing-type1-corrected" style="display:none;"></div>
-          <div class="writing-type1-footer-row">
+          <div class="writing-type1-toolbar">
             <div class="writing-type1-word-count">
               <span id="writing-type1-count">0</span> words written
             </div>
-            <button class="btn-copy-clipboard" onclick="WritingType1.copyToClipboard()" title="Copy to clipboard">
-              <i class="fas fa-copy"></i> Copy to clipboard
-            </button>
-          </div>
-          <div class="writing-type1-actions">
-            ${AppState.currentMode !== 'exam' ? `<button class="btn-evaluate-ai" id="writing-type1-evaluate-btn" onclick="WritingType1.evaluateWithAI()">
-              <i class="fas fa-robot"></i> Evaluate with AI
-            </button>` : ''}
+            <div class="writing-toolbar-actions">
+              <button class="btn-copy-clipboard" onclick="WritingType1.copyToClipboard()" title="Copy to clipboard">
+                <i class="fas fa-copy"></i><span class="writing-btn-label"> Copy to clipboard</span>
+              </button>
+              ${AppState.currentMode !== 'exam' ? `<button class="btn-evaluate-ai" id="writing-type1-evaluate-btn" onclick="WritingType1.evaluateWithAI()" title="Evaluate with AI">
+                <i class="fas fa-robot"></i><span class="writing-btn-label"> Evaluate with AI</span>
+              </button>` : ''}
+            </div>
           </div>
           <div class="writing-inline-msg" id="writing-type1-msg" style="display:none;"></div>
           <div class="writing-type1-ai-results" id="writing-type1-ai-results" style="display:none;">

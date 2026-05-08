@@ -109,10 +109,23 @@
   color: var(--text-medium);
 }
 
-.writing-type2-footer-row {
+.writing-type2-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.writing-toolbar-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.writing-btn-label {
+  display: inline;
 }
 
 .writing-type2-word-count {
@@ -120,10 +133,44 @@
   font-size: 0.875rem;
 }
 
-.writing-type2-actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+.btn-evaluate-ai {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-evaluate-ai:hover {
+  opacity: 0.85;
+}
+
+.btn-copy-clipboard {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  background: var(--white);
+  color: var(--text-medium);
+}
+
+.btn-copy-clipboard:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #f0f7ff;
 }
 
 .writing-type2-ai-results {
@@ -341,4 +388,47 @@
   border: 1px solid #fde68a;
   border-left: 4px solid #f59e0b;
   border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .writing-type2-toolbar {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .writing-type2-word-count {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.72rem;
+    line-height: 1.25;
+  }
+
+  .writing-toolbar-actions {
+    flex-shrink: 0;
+    gap: 0.45rem;
+  }
+
+  .writing-btn-label {
+    display: none;
+  }
+
+  .btn-copy-clipboard,
+  .btn-evaluate-ai {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    gap: 0;
+    font-size: 0;
+  }
+
+  .btn-copy-clipboard i,
+  .btn-evaluate-ai i {
+    font-size: 1rem;
+    margin: 0;
+  }
 }
