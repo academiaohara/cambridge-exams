@@ -422,11 +422,14 @@
             : '<div class="dashboard-left-sidebar">' + leftWidget + '</div>') +
           '<div class="dashboard-center">' +
             '<div class="fe-section">' +
-              '<div class="subpage-header">' +
+              '<div class="subpage-header subpage-header--with-levels">' +
                 '<button class="subpage-back-btn" onclick="' + _backFn + '" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
-                '<div class="subpage-header-titles">' +
-                  '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
-                  '<div class="subpage-subtitle">' + 'Level Progress' + ' — ' + activeLevel + '</div>' +
+                '<div class="subpage-header-core">' +
+                  '<div class="subpage-header-titles">' +
+                    '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
+                    '<div class="subpage-subtitle">' + 'Level Progress' + ' — ' + activeLevel + '</div>' +
+                  '</div>' +
+                  this._buildSubpageLevelRow(catMeta, data, activeLevel) +
                 '</div>' +
                 (categoryId === 'phrasal-verbs' ? '<button class="subpage-info-btn" onclick="FastExercises._showPvInfoModal()" title="' + 'What are phrasal verbs?' + '">' + _mi('info') + '</button>' : '') +
                 (categoryId === 'word-formation' ? '<button class="subpage-info-btn" onclick="FastExercises._showWfInfoModal()" title="' + 'What is word formation?' + '">' + _mi('info') + '</button>' : '') +
@@ -1004,6 +1007,22 @@
           'Continue' +
         '</button>' +
       '</div>';
+    },
+
+    /** Compact level pills for mobile subpage header (hidden on wide screens via CSS). */
+    _buildSubpageLevelRow: function(catMeta, data, activeLevel) {
+      if (!data || !data.levels) return '';
+      var html = '';
+      for (var i = 0; i < data.levels.length; i++) {
+        var lv = data.levels[i];
+        var isUnlocked = this._isLevelUnlocked(catMeta.id, lv.id, data.levels);
+        var isActive = lv.id === activeLevel;
+        var lockClass = isUnlocked ? '' : ' fe-subpage-lv-locked';
+        var activeClass = isActive ? ' active' : '';
+        var oc = isUnlocked ? 'onclick="FastExercises._switchLevel(\'' + catMeta.id + '\', \'' + lv.id + '\')"' : '';
+        html += '<button type="button" class="fe-subpage-lv-btn' + activeClass + lockClass + '" style="--lv-color:' + catMeta.color + '" ' + oc + '>' + lv.id + '</button>';
+      }
+      return '<div class="fe-subpage-level-row">' + html + '</div>';
     },
 
     // ── SWITCH LEVEL ─────────────────────────────────────────────────────
@@ -3691,6 +3710,18 @@
                 '<option value="adverb">Adverb</option>' +
               '</select>' +
             '</label>' +
+            '<div class="wf-dict-mf-triggers">' +
+              '<button type="button" class="wf-dict-mf-trigger" id="wf-dict-mf-level-btn" aria-haspopup="listbox">' +
+                '<span class="material-symbols-outlined">layers</span>' +
+                '<span class="wf-dict-mf-trigger-label" id="wf-dict-mf-level-lbl">All levels</span>' +
+                '<span class="material-symbols-outlined wf-dict-mf-chevron">expand_more</span>' +
+              '</button>' +
+              '<button type="button" class="wf-dict-mf-trigger" id="wf-dict-mf-type-btn" aria-haspopup="listbox">' +
+                '<span class="material-symbols-outlined">bookmark</span>' +
+                '<span class="wf-dict-mf-trigger-label" id="wf-dict-mf-type-lbl">All types</span>' +
+                '<span class="material-symbols-outlined wf-dict-mf-chevron">expand_more</span>' +
+              '</button>' +
+            '</div>' +
           '</div>' +
           '<div class="wf-dict-count" id="wf-dict-count">' + entries.length + ' entries</div>' +
           '<div class="wf-dict-results" id="wf-dict-results"></div>' +
@@ -3704,6 +3735,7 @@
       // Store entries for filtering
       this._wfDictEntries = entries;
       this._renderWfDictResults('', '', '');
+      this._wfDictInitMobileFilters();
 
       // Focus search
       setTimeout(function() {
@@ -3784,6 +3816,89 @@
       });
 
       resultsEl.innerHTML = html;
+      this._wfDictSyncMobileFilterTriggers();
+    },
+
+    _wfDictSyncMobileFilterTriggers: function() {
+      var levelSel = document.getElementById('wf-dict-level');
+      var typeSel = document.getElementById('wf-dict-type-filter');
+      var lblL = document.getElementById('wf-dict-mf-level-lbl');
+      var lblT = document.getElementById('wf-dict-mf-type-lbl');
+      function optText(sel) {
+        if (!sel) return '';
+        var o = sel.options[sel.selectedIndex];
+        return o ? o.textContent : '';
+      }
+      if (lblL) lblL.textContent = optText(levelSel);
+      if (lblT) lblT.textContent = optText(typeSel);
+    },
+
+    _wfDictCloseMobileFilterSheet: function() {
+      var el = document.getElementById('wf-dict-filter-sheet-root');
+      if (el) el.remove();
+    },
+
+    /** Native select pickers are hard to style on mobile; use a short bottom sheet of options. */
+    _wfDictOpenMobileFilterSheet: function(which) {
+      var selectId = which === 'type' ? 'wf-dict-type-filter' : 'wf-dict-level';
+      var sel = document.getElementById(selectId);
+      if (!sel) return;
+      var self = this;
+      this._wfDictCloseMobileFilterSheet();
+      var root = document.createElement('div');
+      root.id = 'wf-dict-filter-sheet-root';
+      root.className = 'wf-dict-filter-sheet-root';
+      var title = which === 'type' ? 'Word type' : 'Level';
+      var optsHtml = '';
+      for (var i = 0; i < sel.options.length; i++) {
+        var opt = sel.options[i];
+        var val = opt.value;
+        var active = val === sel.value ? ' wf-dict-filter-sheet-opt--active' : '';
+        optsHtml += '<button type="button" class="wf-dict-filter-sheet-opt' + active + '" data-wf-opt-val="' + String(val).replace(/"/g, '&quot;') + '">' +
+          this._escapeHTML(opt.textContent) + '</button>';
+      }
+      root.innerHTML =
+        '<div class="wf-dict-filter-sheet-backdrop"></div>' +
+        '<div class="wf-dict-filter-sheet" role="dialog" aria-modal="true">' +
+          '<div class="wf-dict-filter-sheet-handle"></div>' +
+          '<div class="wf-dict-filter-sheet-title">' + title + '</div>' +
+          '<div class="wf-dict-filter-sheet-list">' + optsHtml + '</div>' +
+        '</div>';
+      document.body.appendChild(root);
+      function close() { self._wfDictCloseMobileFilterSheet(); }
+      root.querySelector('.wf-dict-filter-sheet-backdrop').addEventListener('click', close);
+      var list = root.querySelector('.wf-dict-filter-sheet-list');
+      if (list) {
+        list.addEventListener('click', function(ev) {
+          var btn = ev.target.closest('.wf-dict-filter-sheet-opt');
+          if (!btn) return;
+          var v = btn.getAttribute('data-wf-opt-val');
+          if (v === null) v = '';
+          sel.value = v;
+          try {
+            sel.dispatchEvent(new Event('change', { bubbles: true }));
+          } catch (e1) {}
+          var searchEl = document.getElementById('wf-dict-search');
+          self._filterWfDict(searchEl ? searchEl.value : '');
+          close();
+        });
+      }
+    },
+
+    _wfDictInitMobileFilters: function() {
+      if (!window.matchMedia || !window.matchMedia('(max-width: 640px)').matches) return;
+      var self = this;
+      var bL = document.getElementById('wf-dict-mf-level-btn');
+      var bT = document.getElementById('wf-dict-mf-type-btn');
+      if (bL && !bL._wfMfBound) {
+        bL._wfMfBound = true;
+        bL.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); self._wfDictOpenMobileFilterSheet('level'); });
+      }
+      if (bT && !bT._wfMfBound) {
+        bT._wfMfBound = true;
+        bT.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); self._wfDictOpenMobileFilterSheet('type'); });
+      }
+      this._wfDictSyncMobileFilterTriggers();
     },
 
     // ── COLLOCATIONS INFO MODAL ───────────────────────────────────────────
@@ -4317,12 +4432,15 @@
           '<div class="id-dict-search-row">' +
             '<span class="id-dict-search-icon"><span class="material-symbols-outlined">search</span></span>' +
             '<input type="text" class="id-dict-search" id="id-dict-search" placeholder="Search idiom or keyword…" oninput="FastExercises._filterIdDict(this.value)" />' +
-            '<select class="id-dict-level-filter" id="id-dict-level" onchange="FastExercises._filterIdDict(document.getElementById(\'id-dict-search\').value)">' +
-              '<option value="">All Levels</option>' +
-              '<option value="B1">B1</option>' +
-              '<option value="B2">B2</option>' +
-              '<option value="C1">C1</option>' +
-            '</select>' +
+            '<label class="dict-filter-wrap dict-filter-wrap--level" title="Level">' +
+              '<span class="material-symbols-outlined dict-filter-wrap-icon">layers</span>' +
+              '<select class="id-dict-level-filter" id="id-dict-level" onchange="FastExercises._filterIdDict(document.getElementById(\'id-dict-search\').value)">' +
+                '<option value="">All Levels</option>' +
+                '<option value="B1">B1</option>' +
+                '<option value="B2">B2</option>' +
+                '<option value="C1">C1</option>' +
+              '</select>' +
+            '</label>' +
           '</div>' +
           '<div class="id-dict-count" id="id-dict-count">' + entries.length + ' entries</div>' +
           '<div class="id-dict-results" id="id-dict-results"></div>' +
@@ -4420,7 +4538,6 @@
         '<div class="irv-dict-box">' +
           '<div class="irv-dict-header">' +
             '<span class="irv-dict-icon"><span class="material-symbols-outlined">table_view</span></span>' +
-            '<h2 class="irv-dict-title">Irregular Verbs Dictionary</h2>' +
             '<button class="irv-dict-practice-btn" id="irv-dict-practice-btn" onclick="FastExercises._toggleIrvPracticeMode()">Practice mode</button>' +
             '<button class="irv-dict-close" onclick="FastExercises._closeIrvDictModal()">' +
               '<span class="material-symbols-outlined">close</span>' +
@@ -4779,13 +4896,16 @@
           '<div class="vocab-dict-search-row">' +
             '<span class="vocab-dict-search-icon"><span class="material-symbols-outlined">search</span></span>' +
             '<input type="text" class="vocab-dict-search" id="vocab-dict-search" placeholder="Search word or definition…" oninput="FastExercises._filterVocabDict(this.value)" />' +
-            '<select class="vocab-dict-level-filter" id="vocab-dict-level" onchange="FastExercises._filterVocabDict(document.getElementById(\'vocab-dict-search\').value)">' +
-              '<option value="">All Levels</option>' +
-              '<option value="A2">A2</option>' +
-              '<option value="B1">B1</option>' +
-              '<option value="B2">B2</option>' +
-              '<option value="C1">C1</option>' +
-            '</select>' +
+            '<label class="dict-filter-wrap dict-filter-wrap--level" title="Level">' +
+              '<span class="material-symbols-outlined dict-filter-wrap-icon">layers</span>' +
+              '<select class="vocab-dict-level-filter" id="vocab-dict-level" onchange="FastExercises._filterVocabDict(document.getElementById(\'vocab-dict-search\').value)">' +
+                '<option value="">All Levels</option>' +
+                '<option value="A2">A2</option>' +
+                '<option value="B1">B1</option>' +
+                '<option value="B2">B2</option>' +
+                '<option value="C1">C1</option>' +
+              '</select>' +
+            '</label>' +
           '</div>' +
           '<div class="vocab-dict-count" id="vocab-dict-count">' + entries.length + ' entries</div>' +
           '<div class="vocab-dict-results" id="vocab-dict-results"></div>' +

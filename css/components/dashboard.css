@@ -1995,7 +1995,7 @@
 
   .exam-section {
     padding: 16px;
-    padding-top: 0;
+    padding-top: 12px;
   }
 
   .section-header {
@@ -2008,13 +2008,19 @@
   }
 
   .section-parts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
-    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
   }
 
   .part-number {
-    width: 100%;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    font-size: 0.85rem;
+    border-radius: 10px;
   }
 
   .section-progress {
@@ -2285,24 +2291,49 @@
 
 @media (max-width: 768px) {
   .section-icon {
-    width: 30px;
-    height: 30px;
-    min-height: 30px !important;
-    padding: 5px;
+    width: 26px;
+    height: 26px;
+    min-height: 26px !important;
+    padding: 4px;
+    border-radius: 9px;
+    font-size: 0.92rem !important;
+  }
+
+  .exam-section .section-parts,
+  .section-ex-item .section-parts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .exam-section .part-number,
+  .section-ex-item .part-number {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    font-size: 0.85rem;
     border-radius: 10px;
-    font-size: 1.05rem !important;
+  }
+
+  .exam-section {
+    padding-top: 12px;
+  }
+
+  .section-type-tile {
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid rgba(45, 46, 95, 0.1);
+    min-height: 68px;
+    justify-content: center;
+    padding: 10px 8px;
+    border-radius: 18px;
   }
 
   .section-type-tiles {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
-  }
-
-  .section-type-tile {
-    min-height: 68px;
-    justify-content: center;
-    padding: 10px 8px;
-    border-radius: 18px;
   }
 
   .section-type-tile-icon {

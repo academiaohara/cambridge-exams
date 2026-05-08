@@ -19,7 +19,7 @@
   window.Dashboard = {
     /** Display title for "By Exercise Type" section drill-down (mobile Mileast header). */
     _sectionExDisplayTitle: function(sectionKey) {
-      if (sectionKey === 'reading') return 'Reading & UOE';
+      if (sectionKey === 'reading') return 'READING & UOE';
       if (!sectionKey) return '';
       return sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
     },
@@ -287,7 +287,7 @@
     _renderBySectionTiles: function() {
       var mode = AppState.currentMode || 'practice';
       var sections = [
-        { key: 'reading',   icon: 'menu_book',        label: 'Reading' },
+        { key: 'reading',   icon: 'menu_book',        label: 'READING & UOE' },
         { key: 'listening', icon: 'headphones',        label: 'Listening' },
         { key: 'writing',   icon: 'edit_note',         label: 'Writing' },
         { key: 'speaking',  icon: 'record_voice_over', label: 'Speaking' }
@@ -528,7 +528,7 @@
               '<span class="material-symbols-outlined section-icon ' + sectionKey + '">' +
                 Utils.getMaterialIcon(sectionKey) +
               '</span>' +
-              '<h4>' + sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1) + '</h4>' +
+              '<h4>' + Dashboard._sectionExDisplayTitle(sectionKey) + '</h4>' +
               '<span class="section-progress">' + completedCount + '/' + items.length + '</span>' +
             '</div>' +
             '<div class="section-parts">';
@@ -632,7 +632,7 @@
         <div class="exam-section${isLocked ? ' guest-locked' : ''}"${isLocked ? ' onclick="' + lockClick + '"' : ''}>
           <div class="section-header">
             <span class="material-symbols-outlined section-icon ${sectionKey}">${Utils.getMaterialIcon(sectionKey)}</span>
-            <h4>${section.name}${lockedBadge}</h4>
+            <h4>${sectionKey === 'reading' ? 'READING & UOE' : section.name}${lockedBadge}</h4>
             <button class="section-play" onclick="event.stopPropagation(); ${isLocked ? lockClick : "Exercise.startFullSection('" + exam.id + "', '" + sectionKey + "')"}">
               <i class="fas fa-play"></i>
             </button>

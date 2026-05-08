@@ -136,7 +136,7 @@
     // Obtener título de sección
     getSectionTitle: function(section) {
       const titles = {
-        'reading': 'READING & USE OF ENGLISH',
+        'reading': 'READING & UOE',
         'listening': 'LISTENING',
         'writing': 'WRITING',
         'speaking': 'SPEAKING'
