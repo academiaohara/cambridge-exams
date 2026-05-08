@@ -967,6 +967,60 @@
   color: #78350f;
   border: 1.5px solid rgba(217, 119, 6, 0.22);
 }
+.fe-quiz-feedback-stack {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+.fe-quiz-feedback-wrong-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fe-quiz-correct-answer-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(5, 150, 105, 0.08);
+  border: 1px solid rgba(5, 150, 105, 0.22);
+}
+.fe-quiz-correct-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #059669;
+}
+.fe-quiz-correct-value {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #064e3b;
+  word-break: break-word;
+}
+.fe-quiz-continue-wrap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+.fe-quiz-continue-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 28px;
+  min-height: 48px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #fff;
+  background: var(--cat-color, #3b82f6);
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.fe-quiz-continue-btn:active {
+  transform: scale(0.98);
+}
 .fe-quiz-complete-section {
   text-align: center;
   padding: 32px 0 24px;
@@ -1120,6 +1174,65 @@
   transform: scale(1.05);
 }
 .fe-map-arrow-btn .material-symbols-outlined { font-size: 1.4rem; }
+
+/* Back to lesson list — mobile roadmap drill-in */
+.fe-map-mobile-back {
+  display: none;
+  align-self: stretch;
+  margin-bottom: 8px;
+}
+.fe-map-outer.fe-mobile-roadmap-active .fe-map-mobile-back {
+  display: inline-flex;
+}
+
+@media (max-width: 640px) {
+  .fe-map-legend-top {
+    display: none !important;
+  }
+  .fe-map-container:not(.fe-mobile-roadmap-active) .fe-map-lesson .fe-map-points-row {
+    display: none !important;
+  }
+  .fe-map-container:not(.fe-mobile-roadmap-active) .fe-map-lesson-title {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    flex: 1;
+    min-width: 0;
+  }
+  .fe-map-container.fe-mobile-roadmap-active .fe-map-lesson:not(.fe-map-lesson-mobile-selected) {
+    display: none !important;
+  }
+  .fe-map-container.fe-mobile-roadmap-active .fe-map-lesson.fe-map-lesson-mobile-selected {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .fe-map-container.fe-mobile-roadmap-active .fe-map-connector {
+    display: none !important;
+  }
+  .fe-map-points-row.fe-mobile-vertical-roadmap {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 8px 0 16px;
+  }
+  .fe-map-points-row.fe-mobile-vertical-roadmap .fe-map-line {
+    width: 4px;
+    height: 18px;
+  }
+  .fe-map-points-row.fe-mobile-vertical-roadmap .fe-review-row {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 641px) {
+  .fe-map-mobile-back {
+    display: none !important;
+  }
+}
 
 /* ── Profile avatar in conversations ─────────────────────────────────── */
 .pv-conv-avatar.pv-avatar-has-photo {
@@ -1817,7 +1930,7 @@
 /* ── POINT 4: Conversation Drag ──────────────────────────────────────── */
 .pv-drag-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   gap: 20px;
   padding: 12px 0 24px;
   align-items: flex-start;
@@ -1972,9 +2085,45 @@
   .pv-chip { font-size: 0.83rem; padding: 7px 13px; }
   .pv-write-row { flex-direction: column; align-items: flex-start; }
   .pv-write-input { max-width: 100%; }
-  .pv-drag-container { flex-direction: column; }
-  .pv-chips-panel { width: auto; position: static; }
-  .pv-chips-list { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .pv-drag-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pv-chips-panel {
+    width: 100%;
+    position: static;
+  }
+  .pv-chips-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .pv-gallery-single-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .pv-gallery-nav-col {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    padding: 4px 2px 10px;
+    scrollbar-width: thin;
+  }
+  .pv-gallery-nav-col::-webkit-scrollbar {
+    height: 4px;
+  }
+  .pv-gallery-nav-dot {
+    flex-shrink: 0;
+  }
 }
 
 /* ── PV Point Layout: sidebar + main ─────────────────────────────────── */
@@ -2220,50 +2369,114 @@
   .fe-point-view.pv-point-layout {
     flex-direction: column;
     gap: 12px;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
   }
   .pv-point-sidebar {
     width: 100% !important;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     position: static;
     max-height: none;
-    gap: 8px;
+    gap: 10px;
     padding: 10px 12px;
-    overflow-x: visible;
+    overflow: visible;
+    flex-wrap: nowrap;
   }
   .pv-point-sidebar.pv-sidebar-collapsed .pv-sidebar-content {
-    display: none;
+    display: flex;
   }
-  .pv-sidebar-content {
+  .pv-sidebar-top-row {
+    display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    flex: 1;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+  .pv-sidebar-back {
+    flex: 0 0 auto;
+    width: auto;
+    justify-content: center;
   }
   .pv-sidebar-lesson-info {
     flex: 1;
-    border-top: none;
-    border-bottom: none;
-    border-left: 1px solid rgba(45, 46, 95, 0.08);
-    padding: 0 0 0 10px;
+    min-width: 0;
+    padding: 0;
+    border: none !important;
+  }
+  .pv-sidebar-content {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex: none;
+    width: 100%;
+    gap: 6px;
   }
   .pv-sidebar-exercise-desc {
-    display: none;
+    display: block;
+    text-align: left;
+    padding: 4px 0 0;
+    border-top: none;
   }
   .pv-sidebar-points {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
     flex-direction: row;
-    gap: 6px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 8px max(10px, env(safe-area-inset-left, 0px)) max(10px, env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-right, 0px));
+    margin: 0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(45, 46, 95, 0.1);
+    box-shadow: 0 -4px 24px rgba(45, 46, 95, 0.12);
+  }
+  .pv-sidebar-point-dot {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 56px;
+    width: auto;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 10px;
     padding: 0;
   }
-  .pv-sidebar-connector {
-    width: 8px;
-    height: 2px;
+  .pv-sidebar-point-dot .material-symbols-outlined {
+    font-size: 1rem;
   }
-  .pv-sidebar-back {
-    width: auto;
-    flex: none;
+  .pv-sidebar-connector {
+    width: 6px;
+    height: 2px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .pv-sidebar-exit-btn {
+    display: none;
+  }
+  .pv-point-main .fe-exercise-card {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 20px 16px 24px;
+    border-radius: 18px;
+  }
+  .fe-quiz-complete-section {
+    padding: 28px 14px 22px;
+    margin: 12px -6px 0;
+    width: calc(100% + 12px);
+    max-width: none;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.09), rgba(255, 255, 255, 0));
+    border: 1px solid rgba(16, 185, 129, 0.15);
+  }
+  .fe-quiz-complete-text {
+    margin-bottom: 18px;
   }
 }
 
