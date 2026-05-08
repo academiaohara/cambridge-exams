@@ -1908,8 +1908,8 @@
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-transform: none;
+  letter-spacing: 0.03em;
 }
 
 /* ── Section exercise item (compact, single-section card) ─────────────── */
@@ -2022,10 +2022,91 @@
     margin-left: 0;
   }
 
-  .section-ex-item-header,
+  .section-ex-item-header {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding: 10px 14px 8px;
+  }
+
   .section-ex-item-info {
-    align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex: 1;
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .section-ex-item .exam-title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.98rem;
+  }
+
+  .section-ex-item .section-progress {
+    width: auto;
+    flex-shrink: 0;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .section-ex-item .exam-number {
+    flex-shrink: 0;
+  }
+
+  .section-ex-item .section-play,
+  .section-ex-item .section-results-btn {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    min-height: 36px !important;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .exam-section .section-header {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .exam-section .section-header h4 {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.25;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .exam-section .section-header .section-progress {
+    width: auto;
+    flex-shrink: 0;
+    margin-left: 0;
+    white-space: nowrap;
+    font-size: 0.78rem;
+  }
+
+  .exam-section .section-play,
+  .exam-section .section-results-btn {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    min-height: 34px !important;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .section-ex-item .section-parts {
@@ -2234,9 +2315,15 @@
   }
 
   .section-type-tile-label,
-  .section-type-tile-arrow,
-  .section-ex-title {
+  .section-type-tile-arrow {
     display: none;
+  }
+
+  .section-ex-title {
+    flex: 1;
+    min-width: 0;
+    font-size: 1.05rem;
+    line-height: 1.2;
   }
 
   .section-ex-header {
@@ -2277,5 +2364,15 @@
 @media (max-width: 540px) {
   .section-type-tiles {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout .dashboard-center--subpage {
+    padding-bottom: calc(52px + env(safe-area-inset-bottom));
+  }
+
+  .dashboard-center--subpage .subpage-pagination {
+    bottom: calc(52px + env(safe-area-inset-bottom));
   }
 }
