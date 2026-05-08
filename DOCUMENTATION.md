@@ -362,7 +362,7 @@ Secciones disponibles: `reading`, `listening`, `writing`, `speaking`, `use-of-en
       "status": "available",
       "progress": "Ejercicios disponibles: ...",
       "sections": {
-        "reading":   { "name": "READING & USE OF ENGLISH", "icon": "book-open", "total": 8, "completed": [], "inProgress": [] },
+        "reading":   { "name": "READING & UOE", "icon": "book-open", "total": 8, "completed": [], "inProgress": [] },
         "listening": { "name": "LISTENING",  "icon": "headphones", "total": 4, "completed": [], "inProgress": [] },
         "writing":   { "name": "WRITING",    "icon": "pen",        "total": 2, "completed": [], "inProgress": [] },
         "speaking":  { "name": "SPEAKING",   "icon": "microphone", "total": 4, "completed": [], "inProgress": [] }

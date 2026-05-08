@@ -215,15 +215,14 @@
         '<button class="fe-cat-level-btn" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'B2\')">B2</button>' +
         '<button class="fe-cat-level-btn" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'C1\')">C1</button>';
       var theoryCard =
-        '<div class="fe-category-card" style="--cat-color:#0284c7" onclick="BentoGrid.openCourseTheory()">' +
+        '<div class="fe-category-card fe-category-card--theory" style="--cat-color:#0284c7" onclick="BentoGrid.openCourseTheory()">' +
           '<div class="fe-category-card-header">' +
             '<span class="fe-category-icon">' + _mi('menu_book') + '</span>' +
             '<div class="fe-category-info">' +
               '<div class="fe-category-name">Theory</div>' +
-              '<div class="fe-category-stats">Grammar &amp; Vocabulary blocks</div>' +
             '</div>' +
-            '<div class="fe-cat-level-btns fe-cat-level-btns-header">' + theoryLevelBtns + '</div>' +
           '</div>' +
+          '<div class="fe-cat-level-btns">' + theoryLevelBtns + '</div>' +
         '</div>';
 
       // Category tiles: load progress data for each

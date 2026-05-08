@@ -247,7 +247,7 @@
         var readingTotal = level === 'B2' ? 7 : 8;
         var readingLabel = level === 'B2' ? 'Reading 1-7' : 'Reading 1-8';
         return {
-          reading: { name: 'READING & USE OF ENGLISH', icon: 'book-open', total: readingTotal, completed: [], inProgress: [] },
+          reading: { name: 'READING & UOE', icon: 'book-open', total: readingTotal, completed: [], inProgress: [] },
           listening: { name: 'LISTENING', icon: 'headphones', total: 4, completed: [], inProgress: [] },
           writing: { name: 'WRITING', icon: 'pen', total: 2, completed: [], inProgress: [] },
           speaking: { name: 'SPEAKING', icon: 'microphone', total: 4, completed: [], inProgress: [] },
