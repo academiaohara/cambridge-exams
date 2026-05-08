@@ -17,6 +17,13 @@
   } catch (e) {}
 
   window.Dashboard = {
+    /** Display title for "By Exercise Type" section drill-down (mobile Mileast header). */
+    _sectionExDisplayTitle: function(sectionKey) {
+      if (sectionKey === 'reading') return 'Reading & UOE';
+      if (!sectionKey) return '';
+      return sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
+    },
+
     _renderSidebarShell: function(side, shellId, contentId, contentHtml) {
       return '<div class="dashboard-' + side + '-sidebar dashboard-sidebar-shell" id="' + shellId + '">' +
         '<div class="dashboard-sidebar-content" id="' + contentId + '">' + (contentHtml || '') + '</div>' +
@@ -221,13 +228,19 @@
         rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
       }
 
+      var mobileNavHtml =
+        typeof BentoGrid !== 'undefined'
+          ? BentoGrid._renderMobileBottomNav(AppState.currentLevel || 'C1')
+          : '';
+
       var html = '<div class="dashboard-layout">' +
         this._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent) +
-        '<div class="dashboard-center">' +
+        '<div class="dashboard-center dashboard-center--subpage">' +
           subpageHeader +
           premiumBannerHtml +
           viewToggleHtml +
           mainContentHtml +
+          mobileNavHtml +
         '</div>' +
         this._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent) +
       '</div>';
@@ -236,6 +249,7 @@
       this._applySidebarState();
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
+        BentoGrid.setMobileDashboardTab(BentoGrid._mobileDashboardTab || 'learn');
       }
       if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
     },
@@ -309,7 +323,7 @@
             '<i class="fas fa-arrow-left"></i>' +
           '</button>' +
           '<span class="material-symbols-outlined section-icon ' + sectionKey + '">' + Utils.getMaterialIcon(sectionKey) + '</span>' +
-          '<span class="section-ex-title">' + sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1) + '</span>' +
+          '<span class="section-ex-title">' + Dashboard._sectionExDisplayTitle(sectionKey) + '</span>' +
         '</div>' +
         '<div class="exams-container">';
 

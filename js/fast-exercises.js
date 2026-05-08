@@ -3672,19 +3672,25 @@
           '<div class="wf-dict-search-row">' +
             '<span class="wf-dict-search-icon">' + _mi('search') + '</span>' +
             '<input type="text" class="wf-dict-search" id="wf-dict-search" placeholder="Search root word or derived form…" oninput="FastExercises._filterWfDict(this.value)" />' +
-            '<select class="wf-dict-level-filter" id="wf-dict-level" onchange="FastExercises._filterWfDict(document.getElementById(\'wf-dict-search\').value)">' +
-              '<option value="">All Levels</option>' +
-              '<option value="B1">B1</option>' +
-              '<option value="B2">B2</option>' +
-              '<option value="C1">C1</option>' +
-            '</select>' +
-            '<select class="wf-dict-type-filter" id="wf-dict-type-filter" onchange="FastExercises._filterWfDict(document.getElementById(\'wf-dict-search\').value)">' +
-              '<option value="">All Types</option>' +
-              '<option value="noun">Noun</option>' +
-              '<option value="verb">Verb</option>' +
-              '<option value="adjective">Adjective</option>' +
-              '<option value="adverb">Adverb</option>' +
-            '</select>' +
+            '<label class="dict-filter-wrap dict-filter-wrap--level" title="Level">' +
+              '<span class="material-symbols-outlined dict-filter-wrap-icon">layers</span>' +
+              '<select class="wf-dict-level-filter" id="wf-dict-level" onchange="FastExercises._filterWfDict(document.getElementById(\'wf-dict-search\').value)">' +
+                '<option value="">All Levels</option>' +
+                '<option value="B1">B1</option>' +
+                '<option value="B2">B2</option>' +
+                '<option value="C1">C1</option>' +
+              '</select>' +
+            '</label>' +
+            '<label class="dict-filter-wrap dict-filter-wrap--type" title="Word type">' +
+              '<span class="material-symbols-outlined dict-filter-wrap-icon">bookmark</span>' +
+              '<select class="wf-dict-type-filter" id="wf-dict-type-filter" onchange="FastExercises._filterWfDict(document.getElementById(\'wf-dict-search\').value)">' +
+                '<option value="">All Types</option>' +
+                '<option value="noun">Noun</option>' +
+                '<option value="verb">Verb</option>' +
+                '<option value="adjective">Adjective</option>' +
+                '<option value="adverb">Adverb</option>' +
+              '</select>' +
+            '</label>' +
           '</div>' +
           '<div class="wf-dict-count" id="wf-dict-count">' + entries.length + ' entries</div>' +
           '<div class="wf-dict-results" id="wf-dict-results"></div>' +
@@ -3752,22 +3758,27 @@
         var derivedHtml = '';
         group.forEach(function(e) {
           var wt = e.wordType || '';
+          var morph = e.type ? '<span class="wf-dict-morph">' + self._escapeHTML(e.type) + '</span>' : '';
+          var wtBadge = wt
+            ? '<span class="wf-dict-type wf-type-' + self._escapeHTML(wt) + '">' + self._escapeHTML(wt) + '</span>'
+            : '';
           derivedHtml +=
             '<div class="wf-dict-form">' +
-              '<span class="wf-dict-derived">' + self._escapeHTML(e.derived) + '</span>' +
-              '<span class="wf-dict-type wf-type-' + self._escapeHTML(wt) + '">' + self._escapeHTML(wt) + '</span>' +
+              '<div class="wf-dict-form-top">' +
+                '<span class="wf-dict-derived">' + self._escapeHTML(e.derived) + '</span>' +
+                '<span class="wf-dict-level-badge wf-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+                wtBadge +
+                morph +
+                '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.derived) + '\')" title="Listen to pronunciation">' +
+                  '<span class="material-symbols-outlined">volume_up</span>' +
+                '</button>' +
+              '</div>' +
               '<span class="wf-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
-              '<span class="wf-dict-level-badge wf-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
             '</div>';
         });
         html +=
           '<div class="wf-dict-entry">' +
-            '<div class="wf-dict-base">' +
-              self._escapeHTML(base) +
-              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(base) + '\')" title="Listen to pronunciation">' +
-                '<span class="material-symbols-outlined">volume_up</span>' +
-              '</button>' +
-            '</div>' +
+            '<div class="wf-dict-base">' + self._escapeHTML(base) + '</div>' +
             '<div class="wf-dict-forms">' + derivedHtml + '</div>' +
           '</div>';
       });
@@ -3892,14 +3903,17 @@
           '<div class="colloc-dict-search-row">' +
             '<span class="colloc-dict-search-icon">' + _mi('search') + '</span>' +
             '<input type="text" class="colloc-dict-search" id="colloc-dict-search" placeholder="Search word or phrase…" oninput="FastExercises._filterCollocDict(this.value)" />' +
-            '<select class="colloc-dict-level-filter" id="colloc-dict-level" onchange="FastExercises._filterCollocDict(document.getElementById(\'colloc-dict-search\').value)">' +
-              '<option value="">All Levels</option>' +
-              '<option value="A1">A1</option>' +
-              '<option value="A2">A2</option>' +
-              '<option value="B1">B1</option>' +
-              '<option value="B2">B2</option>' +
-              '<option value="C1">C1</option>' +
-            '</select>' +
+            '<label class="dict-filter-wrap dict-filter-wrap--level" title="Level">' +
+              '<span class="material-symbols-outlined dict-filter-wrap-icon">layers</span>' +
+              '<select class="colloc-dict-level-filter" id="colloc-dict-level" onchange="FastExercises._filterCollocDict(document.getElementById(\'colloc-dict-search\').value)">' +
+                '<option value="">All Levels</option>' +
+                '<option value="A1">A1</option>' +
+                '<option value="A2">A2</option>' +
+                '<option value="B1">B1</option>' +
+                '<option value="B2">B2</option>' +
+                '<option value="C1">C1</option>' +
+              '</select>' +
+            '</label>' +
           '</div>' +
           '<div class="colloc-dict-count" id="colloc-dict-count">' + entries.length + ' entries</div>' +
           '<div class="colloc-dict-results" id="colloc-dict-results"></div>' +
@@ -3965,21 +3979,25 @@
         var group = groups[key];
         var phrasesHtml = '';
         group.forEach(function(e) {
+          var exHtml = e.example
+            ? '<div class="colloc-dict-example">' + self._escapeHTML(e.example) + '</div>'
+            : '';
           phrasesHtml +=
             '<div class="colloc-dict-form">' +
-              '<span class="colloc-dict-phrase">' + self._escapeHTML(e.phrase) + '</span>' +
+              '<div class="colloc-dict-form-top">' +
+                '<span class="colloc-dict-phrase">' + self._escapeHTML(e.phrase) + '</span>' +
+                '<span class="colloc-dict-level-badge colloc-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+                '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(e.phrase) + '\')" title="Listen to pronunciation">' +
+                  '<span class="material-symbols-outlined">volume_up</span>' +
+                '</button>' +
+              '</div>' +
               '<span class="colloc-dict-def">' + self._escapeHTML(e.definition) + '</span>' +
-              '<span class="colloc-dict-level-badge colloc-level-' + (e.level || '').toLowerCase() + '">' + self._escapeHTML(e.level || '') + '</span>' +
+              exHtml +
             '</div>';
         });
         html +=
           '<div class="colloc-dict-entry">' +
-            '<div class="colloc-dict-base">' +
-              self._escapeHTML(group[0].word) +
-              '<button class="dict-speak-btn" onclick="FastExercises._speakWord(\'' + self._jsStr(group[0].word) + '\')" title="Listen to pronunciation">' +
-                '<span class="material-symbols-outlined">volume_up</span>' +
-              '</button>' +
-            '</div>' +
+            '<div class="colloc-dict-base">' + self._escapeHTML(group[0].word) + '</div>' +
             '<div class="colloc-dict-forms">' + phrasesHtml + '</div>' +
           '</div>';
       });
@@ -4015,12 +4033,15 @@
           '<div class="pv-dict-search-row">' +
             '<span class="pv-dict-search-icon">' + _mi('search') + '</span>' +
             '<input type="text" class="pv-dict-search" id="pv-dict-search" placeholder="Search phrasal verb or keyword…" oninput="FastExercises._filterPvDict(this.value)" />' +
-            '<select class="pv-dict-level-filter" id="pv-dict-level" onchange="FastExercises._filterPvDict(document.getElementById(\'pv-dict-search\').value)">' +
-              '<option value="">All Levels</option>' +
-              '<option value="B1">B1</option>' +
-              '<option value="B2">B2</option>' +
-              '<option value="C1">C1</option>' +
-            '</select>' +
+            '<label class="dict-filter-wrap dict-filter-wrap--level" title="Level">' +
+              '<span class="material-symbols-outlined dict-filter-wrap-icon">layers</span>' +
+              '<select class="pv-dict-level-filter" id="pv-dict-level" onchange="FastExercises._filterPvDict(document.getElementById(\'pv-dict-search\').value)">' +
+                '<option value="">All Levels</option>' +
+                '<option value="B1">B1</option>' +
+                '<option value="B2">B2</option>' +
+                '<option value="C1">C1</option>' +
+              '</select>' +
+            '</label>' +
           '</div>' +
           '<div class="pv-dict-count" id="pv-dict-count">' + entries.length + ' entries</div>' +
           '<div class="pv-dict-results" id="pv-dict-results"></div>' +

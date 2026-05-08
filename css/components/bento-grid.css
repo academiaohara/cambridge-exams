@@ -2434,25 +2434,26 @@ margin-top: -2px;
 
 @media (max-width: 768px) {
   .bento-grid {
-    /* padding-bottom: calc(82px + env(safe-area-inset-bottom)); */
+    padding-bottom: calc(52px + env(safe-area-inset-bottom));
   }
 
   .mobile-bottom-nav {
     position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: max(10px, env(safe-area-inset-bottom));
-    z-index: 1000;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1200;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
-    max-width: 430px;
-    margin: 0 auto;
-    padding: 8px;
-    border: 1px solid rgba(45, 46, 95, 0.08);
-    border-radius: 26px;
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 12px 34px rgba(45, 46, 95, 0.18);
+    gap: 4px;
+    max-width: none;
+    margin: 0;
+    padding: 4px 8px max(4px, env(safe-area-inset-bottom));
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid rgba(45, 46, 95, 0.1);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 -6px 22px rgba(45, 46, 95, 0.12);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
   }
@@ -2460,24 +2461,25 @@ margin-top: -2px;
   .mobile-bottom-nav-btn {
     display: flex;
     min-width: 0;
-    min-height: 52px;
+    min-height: 42px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 2px;
-    padding: 6px 4px;
+    gap: 1px;
+    padding: 3px 2px;
     border: 0;
-    border-radius: 18px;
+    border-radius: 14px;
     background: transparent;
     color: #64748b;
     font: inherit;
-    font-size: 0.64rem;
-    font-weight: 900;
+    font-size: 0.56rem;
+    font-weight: 800;
     cursor: pointer;
+    letter-spacing: 0.02em;
   }
 
   .mobile-bottom-nav-btn .material-symbols-outlined {
-    font-size: 1.35rem;
+    font-size: 1.12rem;
     line-height: 1;
   }
 
@@ -2489,13 +2491,13 @@ margin-top: -2px;
 
   .mobile-bottom-level strong {
     display: grid;
-    width: 36px;
-    height: 34px;
+    width: 28px;
+    height: 26px;
     place-items: center;
-    border-radius: 13px;
+    border-radius: 10px;
     background: #2D2E5F;
     color: #fff;
-    font-size: 0.88rem;
+    font-size: 0.72rem;
   }
 
   .mobile-level-modal-overlay {
