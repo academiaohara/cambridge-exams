@@ -26,6 +26,7 @@
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       
       AppState.answersChecked = true;
+      if (document.body) document.body.classList.add('answers-checked-app');
       AppState.answerViewMode = 'student';
       const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       
@@ -627,6 +628,7 @@
       if (Timer.timerInterval) clearInterval(Timer.timerInterval);
       AppState.elapsedSeconds = 0;
       AppState.answersChecked = false;
+      if (document.body) document.body.classList.remove('answers-checked-app');
       AppState.explanationMode = false;
       AppState.explanationActiveQuestion = null;
       AppState.answerViewMode = 'student';

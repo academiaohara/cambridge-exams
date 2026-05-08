@@ -44,10 +44,13 @@
 
 .listening-type1-timeline {
   flex: 1;
-  height: 6px;
+  height: 10px;
   background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
+  border-radius: 5px;
   position: relative;
+  cursor: pointer;
+  touch-action: manipulation;
+  align-self: center;
 }
 
 .listening-type1-progress {
@@ -57,7 +60,7 @@
   height: 100%;
   width: 0%;
   background: #fbbf24;
-  border-radius: 3px;
+  border-radius: 5px;
   transition: width 0.1s linear;
 }
 
@@ -83,12 +86,19 @@
   color: white;
   width: 36px;
   height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  aspect-ratio: 1;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   margin-right: 12px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  line-height: 1;
+  padding: 0;
 }
 
 .listening-type1-options {
@@ -205,7 +215,7 @@
 
 .listening-type1-extract-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   margin-bottom: 16px;
 }
@@ -215,6 +225,8 @@
   color: var(--text-medium);
   font-style: italic;
   line-height: 1.5;
+  flex: 1;
+  min-width: 0;
 }
 
 .listening-type1-audio-section {
@@ -234,6 +246,52 @@
 .listening-type1-audio-section audio {
   width: 100%;
   border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .listening-type1-audio-bar {
+    padding: 14px 16px;
+    gap: 12px;
+    border-radius: 28px;
+    align-items: center;
+  }
+
+  .listening-type1-timeline {
+    height: 22px;
+    border-radius: 11px;
+  }
+
+  .listening-type1-progress {
+    border-radius: 11px;
+  }
+
+  .listening-type1-play-btn {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+
+  .listening-type1-time {
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+
+  .listening-type1-extract {
+    padding: 16px;
+  }
+
+  .listening-type1-extract-number {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    font-size: 0.95rem;
+  }
+
+  .listening-type1-context {
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
 }
 
 /* Compact mode for flat question lists (e.g. Listening Part 3) */

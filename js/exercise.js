@@ -273,6 +273,7 @@
       AppState.currentPart = part;
       AppState.currentExamId = examId;
       AppState.answersChecked = false;
+      if (document.body) document.body.classList.remove('answers-checked-app');
       AppState.answerViewMode = 'student';
       AppState.currentPartScore = 0;
       AppState.explanationMode = false;
@@ -297,6 +298,7 @@
           AppState.sectionScores[sectionKey][part] = savedState.partScore || 0;
         }
       }
+      if (document.body) document.body.classList.toggle('answers-checked-app', !!AppState.answersChecked);
       
       // Restore section-level timer (in exam full mode, timer is shared across all parts)
       if (AppState.currentMode === 'exam' && AppState.examFullMode && CONFIG.SECTION_TIMES && CONFIG.SECTION_TIMES[section]) {
@@ -981,6 +983,7 @@
       AppState.freeNotes = [];
       AppState.freeNotesIndex = 0;
       AppState.answersChecked = false;
+      if (document.body) document.body.classList.remove('answers-checked-app');
       AppState.answerViewMode = 'student';
       AppState.sectionScores = {};
       AppState.currentPartScore = 0;

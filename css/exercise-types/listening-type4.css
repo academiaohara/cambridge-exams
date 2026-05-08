@@ -36,6 +36,35 @@
   align-items: start;
 }
 
+@media (max-width: 768px) {
+  .listening-type4-tasks {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .listening-type4-wrapper {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .listening-type4-task {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.85rem;
+  }
+
+  .listening-type4-question {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .listening-type4-speaker-label {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+}
+
 
 
 .listening-type4-task {
@@ -193,6 +222,35 @@
   border-top-color: var(--correct);
 }
 
+/* Avoid revealing the correct letter via hover on touch devices (sticky/false hover). */
 .listening-type4-answer-wrapper:hover .listening-type4-correct-tooltip {
-  display: block;
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .listening-type4-answer-wrapper:hover .listening-type4-correct-tooltip {
+    display: block;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .listening-type4-correct-tooltip {
+    display: block;
+    position: static;
+    transform: none;
+    margin-top: 6px;
+    margin-bottom: 0;
+    white-space: normal;
+    max-width: 100%;
+    pointer-events: auto;
+  }
+
+  .listening-type4-correct-tooltip::after {
+    display: none;
+  }
+
+  .listening-type4-answer-wrapper {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
 }
