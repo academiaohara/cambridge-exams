@@ -5,6 +5,10 @@
   window.ListeningType1 = {
     audioElements: {},
     currentPlaying: null,
+    /** Simulated extract duration (seconds) for the inline demo player (no file URL). */
+    _demoDuration: 30,
+    extractTimers: {},
+    extractSeconds: {},
     
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
       return `
@@ -80,6 +84,11 @@
         icon.classList.remove('fa-play');
         icon.classList.add('fa-pause');
         this.currentPlaying = extractId;
+        var dur = this._demoDuration;
+        var prev = this.extractSeconds[extractId];
+        if (prev === undefined || prev >= dur) {
+          this.extractSeconds[extractId] = 0;
+        }
         this.simulateProgress(extractId);
       } else {
         this.stopExtract(extractId);
@@ -87,6 +96,10 @@
     },
     
     stopExtract: function(extractId) {
+      if (this.extractTimers[extractId]) {
+        clearInterval(this.extractTimers[extractId]);
+        this.extractTimers[extractId] = null;
+      }
       const btn = document.querySelector(`[onclick*="ListeningType1.playExtract(${extractId}"] i`);
       if (btn) {
         btn.classList.remove('fa-pause');
@@ -94,27 +107,65 @@
       }
       this.currentPlaying = null;
     },
+
+    /** Seek demo timeline (pointer / touch). */
+    seekTimeline: function(ev, timelineEl) {
+      if (ev.pointerType === 'mouse' && ev.button != null && ev.button !== 0) return;
+      ev.preventDefault();
+      ev.stopPropagation();
+      var extractId = timelineEl.id.replace(/^timeline-/, '');
+      var duration = this._demoDuration;
+      var rect = timelineEl.getBoundingClientRect();
+      var clientX = ev.clientX;
+      if (typeof clientX !== 'number' && ev.changedTouches && ev.changedTouches[0]) {
+        clientX = ev.changedTouches[0].clientX;
+      }
+      if (typeof clientX !== 'number') return;
+      var ratio = rect.width > 0 ? (clientX - rect.left) / rect.width : 0;
+      ratio = Math.max(0, Math.min(1, ratio));
+      var seconds = Math.floor(ratio * duration);
+      this.extractSeconds[extractId] = seconds;
+      var progressBar = document.getElementById('progress-' + extractId);
+      var timeDisplay = document.getElementById('time-' + extractId);
+      if (progressBar) progressBar.style.width = (seconds / duration * 100) + '%';
+      if (timeDisplay) timeDisplay.textContent = '00:' + String(seconds).padStart(2, '0');
+      if (this.currentPlaying === extractId) {
+        if (this.extractTimers[extractId]) {
+          clearInterval(this.extractTimers[extractId]);
+          this.extractTimers[extractId] = null;
+        }
+        this.simulateProgress(extractId);
+      }
+    },
     
     simulateProgress: function(extractId) {
-      const progressBar = document.getElementById(`progress-${extractId}`);
-      const timeDisplay = document.getElementById(`time-${extractId}`);
-      let seconds = 0;
-      const duration = 30;
-      
-      const interval = setInterval(() => {
-        if (this.currentPlaying !== extractId) {
-          clearInterval(interval);
+      var progressBar = document.getElementById('progress-' + extractId);
+      var timeDisplay = document.getElementById('time-' + extractId);
+      var duration = this._demoDuration;
+      if (!progressBar || !timeDisplay) return;
+
+      if (this.extractTimers[extractId]) {
+        clearInterval(this.extractTimers[extractId]);
+        this.extractTimers[extractId] = null;
+      }
+      if (this.extractSeconds[extractId] === undefined) this.extractSeconds[extractId] = 0;
+
+      var self = this;
+      this.extractTimers[extractId] = setInterval(function() {
+        if (self.currentPlaying !== extractId) {
+          clearInterval(self.extractTimers[extractId]);
+          self.extractTimers[extractId] = null;
           return;
         }
-        
-        seconds++;
-        const progress = (seconds / duration) * 100;
-        progressBar.style.width = `${progress}%`;
-        timeDisplay.textContent = `00:${seconds.toString().padStart(2, '0')}`;
-        
+        self.extractSeconds[extractId]++;
+        var seconds = self.extractSeconds[extractId];
+        var progress = (seconds / duration) * 100;
+        progressBar.style.width = progress + '%';
+        timeDisplay.textContent = '00:' + String(seconds).padStart(2, '0');
         if (seconds >= duration) {
-          clearInterval(interval);
-          this.stopExtract(extractId);
+          clearInterval(self.extractTimers[extractId]);
+          self.extractTimers[extractId] = null;
+          self.stopExtract(extractId);
         }
       }, 1000);
     },
@@ -247,4 +298,11 @@
       }
     }
   };
+
+  document.addEventListener('pointerdown', function(ev) {
+    var tl = ev.target.closest('.listening-type1-timeline');
+    if (!tl) return;
+    if (ev.pointerType === 'mouse' && ev.button != null && ev.button !== 0) return;
+    ListeningType1.seekTimeline(ev, tl);
+  }, true);
 })();
