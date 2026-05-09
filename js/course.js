@@ -1812,6 +1812,67 @@
 
     _lastFocusedCuInput: null,
 
+    _cuGapIsContentEditable: function(el) {
+      return !!(el && el.nodeType === 1 && el.classList && el.classList.contains('cu-gap-inline-editable'));
+    },
+
+    _cuGapGetValue: function(el) {
+      if (!el) return '';
+      if (BentoGrid._cuGapIsContentEditable(el)) {
+        var t = el.innerText !== undefined ? el.innerText : el.textContent;
+        return (t || '').replace(/\r\n/g, '\n');
+      }
+      return el.value || '';
+    },
+
+    _cuGapSetValue: function(el, val) {
+      if (!el) return;
+      var s = val == null ? '' : String(val);
+      if (BentoGrid._cuGapIsContentEditable(el)) {
+        el.textContent = s;
+        var empty = s.replace(/\u200b/g, '').trim() === '';
+        el.classList.toggle('cu-gap-editable-empty', empty);
+        return;
+      }
+      el.value = s;
+    },
+
+    _cuGapSetDisabled: function(el, disabled) {
+      if (!el) return;
+      if (BentoGrid._cuGapIsContentEditable(el)) {
+        el.setAttribute('contenteditable', disabled ? 'false' : 'true');
+        if (disabled) el.setAttribute('aria-disabled', 'true');
+        else el.removeAttribute('aria-disabled');
+        el.classList.toggle('cu-gap-disabled', !!disabled);
+        return;
+      }
+      el.disabled = !!disabled;
+    },
+
+    _cuGapIsInteractive: function(el) {
+      if (!el || !el.classList || !el.classList.contains('cu-gap-input')) return false;
+      if (BentoGrid._cuGapIsContentEditable(el)) {
+        return el.getAttribute('contenteditable') !== 'false';
+      }
+      return !el.disabled;
+    },
+
+    _onCuGapEditableInput: function(el) {
+      if (!el || !BentoGrid._cuGapIsContentEditable(el)) return;
+      var empty = (el.innerText || el.textContent || '').replace(/\u200b/g, '').trim() === '';
+      el.classList.toggle('cu-gap-editable-empty', empty);
+      BentoGrid._saveCuExSectionState(el.closest('.cu-section'));
+    },
+
+    _onCuGapEditablePaste: function(ev) {
+      if (!ev || !ev.clipboardData) return;
+      ev.preventDefault();
+      var text = ev.clipboardData.getData('text/plain') || '';
+      if (document.queryCommandSupported && document.queryCommandSupported('insertText')) {
+        document.execCommand('insertText', false, text);
+      }
+    },
+
     _toggleWordBankItem: function(el) {
       // If a gap input in the same section is focused/was last active, fill it with this word
       var sec = el.closest('.cu-section');
@@ -1819,14 +1880,14 @@
       if (sec) {
         // Prefer currently focused input
         var active = document.activeElement;
-        if (active && active.classList.contains('cu-gap-input') && sec.contains(active) && !active.disabled) {
+        if (active && active.classList.contains('cu-gap-input') && sec.contains(active) && BentoGrid._cuGapIsInteractive(active)) {
           target = active;
-        } else if (BentoGrid._cuLastFocusedGap && sec.contains(BentoGrid._cuLastFocusedGap) && !BentoGrid._cuLastFocusedGap.disabled) {
+        } else if (BentoGrid._cuLastFocusedGap && sec.contains(BentoGrid._cuLastFocusedGap) && BentoGrid._cuGapIsInteractive(BentoGrid._cuLastFocusedGap)) {
           target = BentoGrid._cuLastFocusedGap;
         }
       }
       if (target) {
-        target.value = el.textContent.trim();
+        BentoGrid._cuGapSetValue(target, el.textContent.trim());
         BentoGrid._resizeCuInput(target);
         el.classList.add('cu-wordbank-used');
         BentoGrid._saveCuExSectionState(target.closest('.cu-section'));
@@ -2302,8 +2363,8 @@
       sec.querySelectorAll('.cu-correct-inline').forEach(function(el) { el.remove(); });
       // Reset text inputs
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) {
-        input.value = '';
-        input.disabled = false;
+        BentoGrid._cuGapSetValue(input, '');
+        BentoGrid._cuGapSetDisabled(input, false);
         input.readOnly = false;
         if (input._cuAltClickHandler) { input.removeEventListener('click', input._cuAltClickHandler); input._cuAltClickHandler = null; }
         input.classList.remove('cu-input-correct', 'cu-input-incorrect', 'cu-input-show-correct');
@@ -2585,11 +2646,14 @@
         sentences.forEach(function(sent, sIdx) {
           var gapId = syncGroup + '-g' + sIdx;
           var sentHtml = self._escapeHTML(sent).replace(/……+|\.{5,}/g, function() {
-            return '<span class="cu-inline-gap-wrap">' +
-              '<textarea id="' + gapId + '" class="cu-gap-input cu-sync-input cu-gap-inline-textarea" rows="1" wrap="soft" spellcheck="false" ' +
-              'data-sync-group="' + syncGroup + '" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" ' +
-              'oninput="BentoGrid._syncInputGroup(this);BentoGrid._resizeCuInput(this)"></textarea>' +
-              '</span>';
+            return self._renderCuMobileInlineGap({
+              id: gapId,
+              placeholder: '...',
+              textareaClassName: 'cu-gap-input cu-sync-input cu-gap-inline-textarea',
+              ceClassName: 'cu-gap-input cu-sync-input cu-gap-inline-editable cu-gap-editable-empty',
+              extraAttrs: ' data-sync-group="' + syncGroup + '"',
+              textareaOnInput: 'BentoGrid._syncInputGroup(this);BentoGrid._resizeCuInput(this)'
+            });
           });
           html += '<div class="cu-sync-sentence">' + sentHtml + '</div>';
         });
@@ -2603,10 +2667,10 @@
     _syncInputGroup: function(input) {
       var group = input.getAttribute('data-sync-group');
       if (!group) return;
-      var val = input.value;
+      var val = BentoGrid._cuGapGetValue(input);
       document.querySelectorAll('.cu-sync-input[data-sync-group="' + group + '"]').forEach(function(inp) {
         if (inp !== input) {
-          inp.value = val;
+          BentoGrid._cuGapSetValue(inp, val);
           BentoGrid._resizeCuInput(inp);
         }
       });
@@ -3728,6 +3792,36 @@
       return self._renderCourseExSentenceParts(sentence, inputIdBase, false, useTextarea, beforeStandalone, gapPlaceholder);
     },
 
+    /** Inline gap: on narrow viewports use contenteditable (non-atomic inline flow); else textarea. */
+    _renderCuMobileInlineGap: function(opts) {
+      var self = this;
+      var mobileCe = typeof window.matchMedia === 'function' && window.matchMedia(
+        '(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)'
+      ).matches;
+      var idAttr = opts.id ? (' id="' + opts.id + '"') : '';
+      var phRaw = opts.placeholder != null ? String(opts.placeholder) : '';
+      var phAttr = self._escapeHTML(phRaw);
+      var extra = opts.extraAttrs || '';
+      var oninput = opts.textareaOnInput || 'BentoGrid._resizeCuInput(this)';
+      if (mobileCe) {
+        var wrapCls = 'cu-inline-gap-wrap cu-inline-gap-wrap--ce' + (opts.block ? ' cu-inline-gap-wrap--block' : '');
+        var ceCls = opts.ceClassName || 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty';
+        return '<span class="' + wrapCls + '">' +
+          '<span' + idAttr + ' class="' + ceCls + '" contenteditable="true" spellcheck="false" autocorrect="off" autocomplete="off" role="textbox"' +
+          ' data-placeholder="' + phAttr + '"' + extra +
+          ' onfocus="BentoGrid._cuLastFocusedGap=this"' +
+          ' oninput="BentoGrid._onCuGapEditableInput(this)"' +
+          ' onpaste="BentoGrid._onCuGapEditablePaste(event)"' +
+          '></span></span>';
+      }
+      var wrapCls = 'cu-inline-gap-wrap' + (opts.block ? ' cu-inline-gap-wrap--block' : '');
+      var taCls = opts.textareaClassName || 'cu-gap-input cu-gap-inline-textarea';
+      return '<span class="' + wrapCls + '">' +
+        '<textarea' + idAttr + ' class="' + taCls + '" rows="1" wrap="soft" spellcheck="false"' +
+        ' placeholder="' + phAttr + '"' + extra +
+        ' onfocus="BentoGrid._cuLastFocusedGap=this" oninput="' + oninput + '"></textarea></span>';
+    },
+
     _renderCourseExSentenceParts: function(sentence, inputIdBase, noStandalone, useTextarea, beforeStandalone, gapPlaceholder) {
       var self = this;
       var gapPh = (gapPlaceholder !== undefined && gapPlaceholder !== null) ? String(gapPlaceholder) : '...';
@@ -3961,10 +4055,7 @@
           if (useTextarea) {
             return '<textarea id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input cu-gap-textarea" placeholder="Your answer..." rows="2" aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           }
-          return '<span class="cu-inline-gap-wrap">' +
-            '<textarea id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input cu-gap-inline-textarea" rows="1" wrap="soft" spellcheck="false" ' +
-            'placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
-            '</span>';
+          return self._renderCuMobileInlineGap({ id: inputIdBase + '_g' + (gapCount++), placeholder: gapPh });
         } else if (p.type === 'gap-wf') {
           // Word-formation gap: input + word-badge together
           var gId = inputIdBase + '_g' + (gapCount++);
@@ -4010,10 +4101,13 @@
           if (useTextarea) {
             return (beforeStandalone || '') + '<br><textarea class="cu-gap-input cu-gap-textarea cu-gap-standalone" placeholder="Your answer..." rows="2" aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           }
-          return '<br><span class="cu-inline-gap-wrap cu-inline-gap-wrap--block">' +
-            '<textarea class="cu-gap-input cu-gap-inline-textarea cu-gap-standalone" rows="1" wrap="soft" spellcheck="false" ' +
-            'placeholder="Your answer..." aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
-            '</span>';
+          return '<br>' + self._renderCuMobileInlineGap({
+            block: true,
+            placeholder: 'Your answer...',
+            textareaClassName: 'cu-gap-input cu-gap-inline-textarea cu-gap-standalone',
+            ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-gap-standalone',
+            extraAttrs: ' aria-label="Your answer"'
+          });
         }
         return '';
       }).join('');
@@ -4062,7 +4156,7 @@
       if (!item) return;
       var input = item.querySelector('.cu-gap-input:not(.cu-gap-textarea)');
       if (!input) return;
-      var text = input.value.trim();
+      var text = BentoGrid._cuGapGetValue(input).trim();
       if (!text) return;
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).catch(function() {});
@@ -4091,8 +4185,9 @@
         var item = btn.closest('.cu-ex-item');
         if (item) input = item.querySelector('.cu-gap-input');
       }
-      if (input && !input.disabled) {
-        input.value = input.value === 'OK' ? '' : 'OK';
+      if (input && BentoGrid._cuGapIsInteractive(input)) {
+        var cur = BentoGrid._cuGapGetValue(input).trim();
+        BentoGrid._cuGapSetValue(input, cur === 'OK' ? '' : 'OK');
         BentoGrid._resizeCuInput(input);
         BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
       }
@@ -4100,6 +4195,7 @@
 
     // Auto-resize a course gap input to fit its content (like test inputs)
     _resizeCuInput: function(input) {
+      if (input.classList.contains('cu-gap-inline-editable')) return;
       // Textarea inputs: auto-grow height; hint-pill fields also sync width on desktop
       if (input.tagName === 'TEXTAREA') {
         if (input.classList.contains('cu-gap-inline-textarea')) {
@@ -4714,7 +4810,7 @@
     _getReviewSectionAnswers: function(sec) {
       var answers = {};
       var inputVals = [];
-      sec.querySelectorAll('.cu-gap-input').forEach(function(inp) { inputVals.push(inp.value || ''); });
+      sec.querySelectorAll('.cu-gap-input').forEach(function(inp) { inputVals.push(BentoGrid._cuGapGetValue(inp)); });
       answers.inputs = inputVals;
       // Build option state as arrays (supports both single-select and multi-select)
       var optionState = {};
@@ -4805,7 +4901,9 @@
       if (!answers) return;
       if (answers.inputs) {
         var inputs = sec.querySelectorAll('.cu-gap-input');
-        inputs.forEach(function(inp, i) { if (answers.inputs[i] !== undefined) inp.value = answers.inputs[i]; });
+        inputs.forEach(function(inp, i) {
+          if (answers.inputs[i] !== undefined) BentoGrid._cuGapSetValue(inp, answers.inputs[i]);
+        });
       }
       // Restore crossword letter boxes from the hidden backing inputs
       sec.querySelectorAll('.cu-cw-clue-item').forEach(function(item) {
@@ -5866,7 +5964,7 @@
           if (g) { if (!ynGroups[g]) ynGroups[g] = []; ynGroups[g].push(btn); }
         });
         var isEmpty = true;
-        inputs.forEach(function(inp) { if ((inp.value || '').trim() !== '') isEmpty = false; });
+        inputs.forEach(function(inp) { if (BentoGrid._cuGapGetValue(inp).trim() !== '') isEmpty = false; });
         Object.keys(optGroups).forEach(function(g) {
           if (optGroups[g].some(function(b) { return b.classList.contains('cu-option-selected'); })) isEmpty = false;
         });
@@ -5888,7 +5986,7 @@
       sec.querySelectorAll('.cu-bc-item').forEach(function(item, idx) {
         var input = item.querySelector('.cu-bc-input');
         var okBtn = item.querySelector('.cu-bc-ok-btn');
-        var hasInput = input && (input.value || '').trim() !== '';
+        var hasInput = input && BentoGrid._cuGapGetValue(input).trim() !== '';
         var hasOk = okBtn && okBtn.classList.contains('cu-bc-ok-selected');
         if (!hasInput && !hasOk) unanswered.push(idx + 1);
       });
@@ -5997,7 +6095,7 @@
         var okBtn = item.querySelector('.cu-bc-ok-btn');
         var input = item.querySelector('.cu-bc-input');
         var okSelected = okBtn && okBtn.classList.contains('cu-bc-ok-selected');
-        var given = input ? (input.value || '').trim() : '';
+        var given = input ? BentoGrid._cuGapGetValue(input).trim() : '';
 
         // Disable controls
         if (okBtn) okBtn.disabled = true;
@@ -6218,10 +6316,10 @@
       }
       // Handle passage exercises (word formation passage like Exercise O)
       sec.querySelectorAll('.cu-passage-exercise').forEach(function(passageEl) {
-        passageEl.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(input) {
+          passageEl.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(input) {
           totalItems++;
           var expected = BentoGrid._normalizeCompareText((input.getAttribute('data-answer') || '').trim());
-          var given = BentoGrid._normalizeCompareText((input.value || '').trim());
+          var given = BentoGrid._normalizeCompareText(BentoGrid._cuGapGetValue(input).trim());
           var alts = [];
           expected.split(/\s*\/\s*/).forEach(function(a) {
             BentoGrid._expandOptionals(a.trim()).forEach(function(opt) {
@@ -6234,7 +6332,7 @@
           input.classList.remove('cu-input-correct', 'cu-input-incorrect');
           if (filled) input.classList.add(ok ? 'cu-input-correct' : 'cu-input-incorrect');
           if (ok) correctItems++;
-          input.disabled = true;
+          BentoGrid._cuGapSetDisabled(input, true);
         });
       });
       // Handle yn-items
@@ -6398,7 +6496,7 @@
         inputs.forEach(function(input) {
           totalItems++;
           var expected = BentoGrid._normalizeCompareText((answerParts[partIdx] || '').trim());
-          var given = BentoGrid._normalizeCompareText((input.value || '').trim());
+          var given = BentoGrid._normalizeCompareText(BentoGrid._cuGapGetValue(input).trim());
           var alts = [];
           expected.split(/\s*\/\s*/).forEach(function(a) {
             BentoGrid._expandOptionals(a.trim()).forEach(function(opt) {
@@ -6595,7 +6693,7 @@
         if (hasWrongInput) {
           // Store student answers and correct answers on inputs
           inputs.forEach(function(inp, i) {
-            inp.setAttribute('data-student-value', inp.value || '');
+            inp.setAttribute('data-student-value', BentoGrid._cuGapGetValue(inp) || '');
             var correctRaw = (answerParts[i] || '').trim();
             // Store raw (with all alternatives) and first alternative for display
             inp.setAttribute('data-correct-raw', correctRaw);
@@ -6605,7 +6703,7 @@
               var syncGroup = inp.getAttribute('data-sync-group');
               if (syncGroup) {
                 item.querySelectorAll('.cu-sync-input[data-sync-group="' + syncGroup + '"]').forEach(function(syncInp) {
-                  syncInp.setAttribute('data-student-value', syncInp.value || '');
+                  syncInp.setAttribute('data-student-value', BentoGrid._cuGapGetValue(syncInp) || '');
                   syncInp.setAttribute('data-correct-raw', correctRaw);
                   syncInp.setAttribute('data-correct-value', correctRaw.split(/\s*\/\s*/)[0].trim());
                 });
@@ -6670,7 +6768,7 @@
       var showBtn = sec.querySelector('.cu-show-all-btn');
       if (showBtn) showBtn.style.display = (hasCwItems && !hasNonCwItems) ? '' : 'none';
       // Disable all inputs, option buttons, and OK chips
-      sec.querySelectorAll('.cu-gap-input').forEach(function(input) { input.disabled = true; });
+      sec.querySelectorAll('.cu-gap-input').forEach(function(input) { BentoGrid._cuGapSetDisabled(input, true); });
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) { btn.disabled = true; });
       sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = true; });
       sec.querySelectorAll('.cu-bc-ok-btn').forEach(function(btn) { btn.disabled = true; });
@@ -6809,7 +6907,7 @@
           }
           var answerParts = BentoGrid._splitCourseAnswerParts(answer, inputs.length);
           inputs.forEach(function(inp, i) {
-            inp.setAttribute('data-saved-value', inp.value);
+            inp.setAttribute('data-saved-value', BentoGrid._cuGapGetValue(inp));
             var correctRaw = (answerParts[i] || answerParts[0] || '').trim();
             var alts = [];
             correctRaw.split(/\s*\/\s*/).forEach(function(a) {
@@ -6818,7 +6916,7 @@
               });
             });
             var correctDisplay = alts[0] || '';
-            inp.value = correctDisplay;
+            BentoGrid._cuGapSetValue(inp, correctDisplay);
             inp.classList.add('cu-input-show-correct');
             BentoGrid._resizeCuInput(inp);
             BentoGrid._attachAltBadge(inp, alts);
@@ -6828,8 +6926,8 @@
               if (syncGroup) {
                 item.querySelectorAll('.cu-sync-input[data-sync-group="' + syncGroup + '"]').forEach(function(syncInp) {
                   if (syncInp !== inp) {
-                    syncInp.setAttribute('data-saved-value', syncInp.value);
-                    syncInp.value = correctDisplay;
+                    syncInp.setAttribute('data-saved-value', BentoGrid._cuGapGetValue(syncInp));
+                    BentoGrid._cuGapSetValue(syncInp, correctDisplay);
                     syncInp.classList.add('cu-input-show-correct');
                     BentoGrid._resizeCuInput(syncInp);
                     BentoGrid._attachAltBadge(syncInp, alts);
@@ -6913,8 +7011,8 @@
             });
           });
           var correct = alts[0] || '';
-          inp.setAttribute('data-saved-value', inp.value);
-          inp.value = correct;
+          inp.setAttribute('data-saved-value', BentoGrid._cuGapGetValue(inp));
+          BentoGrid._cuGapSetValue(inp, correct);
           inp.classList.add('cu-input-show-correct');
           BentoGrid._resizeCuInput(inp);
           BentoGrid._attachAltBadge(inp, alts);
@@ -7040,10 +7138,10 @@
           var input = item.querySelector('.cu-bc-input');
           var okBtn = item.querySelector('.cu-bc-ok-btn');
           if (input) {
-            input.setAttribute('data-saved-value', input.value);
             input.disabled = true;
+            input.setAttribute('data-saved-value', BentoGrid._cuGapGetValue(input));
             if (isOkAnswer) {
-              input.value = '';
+              BentoGrid._cuGapSetValue(input, '');
               input.classList.add('cu-input-show-correct');
               BentoGrid._resizeCuInput(input);
             } else {
@@ -7091,13 +7189,17 @@
         sec.querySelectorAll('.cu-gap-input').forEach(function(inp) {
           var saved = inp.getAttribute('data-saved-value');
           if (saved !== null) {
-            inp.value = saved;
+            BentoGrid._cuGapSetValue(inp, saved);
             inp.removeAttribute('data-saved-value');
           }
           inp.removeAttribute('data-alt-answers');
           inp.removeAttribute('data-alt-idx');
           if (inp._cuAltClickHandler) { inp.removeEventListener('click', inp._cuAltClickHandler); inp._cuAltClickHandler = null; }
-          inp.readOnly = false;
+          if (BentoGrid._cuGapIsContentEditable(inp)) {
+            inp.setAttribute('contenteditable', 'true');
+          } else {
+            inp.readOnly = false;
+          }
           inp._cuAltBadge = null;
           inp.classList.remove('cu-input-show-correct');
           BentoGrid._resizeCuInput(inp);
@@ -7238,7 +7340,7 @@
           if (input) {
             input.style.display = '';
             var saved = input.getAttribute('data-saved-value');
-            if (saved !== null) { input.value = saved; input.removeAttribute('data-saved-value'); }
+            if (saved !== null) { BentoGrid._cuGapSetValue(input, saved); input.removeAttribute('data-saved-value'); }
             input.classList.remove('cu-input-show-correct');
             input.disabled = false;
             input.removeAttribute('data-alt-answers');
@@ -7313,7 +7415,11 @@
       var anchor = inp.closest('.cu-hint-pill') || inp;
       anchor.parentNode.insertBefore(badge, anchor.nextSibling);
       // Make the input non-editable; clicking it cycles through alternatives
-      inp.readOnly = true;
+      if (BentoGrid._cuGapIsContentEditable(inp)) {
+        inp.setAttribute('contenteditable', 'false');
+      } else {
+        inp.readOnly = true;
+      }
       inp._cuAltClickHandler = function() { BentoGrid._cycleInputAlt(inp); };
       inp.addEventListener('click', inp._cuAltClickHandler);
     },
@@ -7324,7 +7430,7 @@
       if (alts.length <= 1) return;
       var idx = (parseInt(inp.getAttribute('data-alt-idx') || '0') + 1) % alts.length;
       inp.setAttribute('data-alt-idx', String(idx));
-      inp.value = alts[idx];
+      BentoGrid._cuGapSetValue(inp, alts[idx]);
       BentoGrid._resizeCuInput(inp);
       var badge = inp._cuAltBadge;
       if (badge) badge.textContent = (idx + 1) + '/' + alts.length;
@@ -7336,7 +7442,7 @@
           sec.querySelectorAll('.cu-gap-input[data-sync-group="' + syncGroup + '"]').forEach(function(sibling) {
             if (sibling === inp) return;
             sibling.setAttribute('data-alt-idx', String(idx));
-            sibling.value = alts[idx];
+            BentoGrid._cuGapSetValue(sibling, alts[idx]);
             BentoGrid._resizeCuInput(sibling);
             var sibBadge = sibling._cuAltBadge;
             if (sibBadge) sibBadge.textContent = (idx + 1) + '/' + alts.length;
@@ -7440,7 +7546,7 @@
               if (opt && alts.indexOf(opt) === -1) alts.push(opt);
             });
           });
-          inp.value = alts[0] || '';
+          BentoGrid._cuGapSetValue(inp, alts[0] || '');
           inp.classList.remove('cu-input-correct', 'cu-input-incorrect');
           inp.classList.add('cu-input-show-correct');
           BentoGrid._attachAltBadge(inp, alts);
@@ -7448,10 +7554,14 @@
           // Clean up alt badge, readonly and click handler
           if (inp._cuAltBadge) { inp._cuAltBadge.remove(); inp._cuAltBadge = null; }
           if (inp._cuAltClickHandler) { inp.removeEventListener('click', inp._cuAltClickHandler); inp._cuAltClickHandler = null; }
-          inp.readOnly = false;
+          if (BentoGrid._cuGapIsContentEditable(inp)) {
+            inp.setAttribute('contenteditable', 'true');
+          } else {
+            inp.readOnly = false;
+          }
           inp.removeAttribute('data-alt-answers');
           inp.removeAttribute('data-alt-idx');
-          inp.value = inp.getAttribute('data-student-value') || '';
+          BentoGrid._cuGapSetValue(inp, inp.getAttribute('data-student-value') || '');
           inp.classList.remove('cu-input-show-correct');
           // Restore the original check result class (correct or incorrect per input)
           var savedClass = inp.getAttribute('data-check-class');
