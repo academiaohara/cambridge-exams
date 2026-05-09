@@ -155,65 +155,6 @@ content: '';
   flex-direction: column;
   gap: 16px;
 }
-.grade-evolution-expand-btn {
-  order: -1;
-  align-self: flex-end;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(45, 46, 95, 0.12);
-  background: rgba(255, 255, 255, 0.95);
-  color: #334155;
-  font-size: 0.78rem;
-  font-weight: 700;
-  cursor: pointer;
-  margin: 0 0 -8px 0;
-}
-.grade-evolution-expand-btn .material-symbols-outlined {
-  font-size: 1.1rem;
-}
-@media (hover: hover) and (pointer: fine) {
-  .grade-evolution-expand-btn:hover {
-    border-color: rgba(59, 130, 246, 0.35);
-    background: rgba(239, 246, 255, 0.95);
-    color: #1e3a8a;
-  }
-}
-.grade-evolution-body-inner {
-  width: 100%;
-}
-.grade-evolution-section.grade-evolution-expanded .grade-evolution-body-inner {
-  position: fixed;
-  z-index: 2200;
-  inset: max(10px, env(safe-area-inset-top, 0px)) max(10px, env(safe-area-inset-right, 0px)) max(10px, env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-left, 0px));
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.28);
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 14px 14px 18px;
-  box-sizing: border-box;
-}
-.grade-evolution-section.grade-evolution-expanded .grade-evolution-expand-btn {
-  position: fixed;
-  z-index: 2201;
-  top: max(14px, calc(env(safe-area-inset-top, 0px) + 8px));
-  right: max(14px, calc(env(safe-area-inset-right, 0px) + 8px));
-  margin: 0;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
-}
-.grade-evolution-section.grade-evolution-expanded .ge-chart-svg {
-  width: 100%;
-  height: auto;
-  max-height: min(88vh, 88vw);
-}
-@media (orientation: landscape) and (max-height: 520px) {
-  .grade-evolution-section.grade-evolution-expanded .ge-chart-svg {
-    max-height: min(92vh, 96vw);
-  }
-}
 .grade-evo-no-data {
   font-size: 0.85rem;
   color: var(--text-light);

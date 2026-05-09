@@ -91,24 +91,6 @@
       }
     },
 
-    _toggleGradeEvolutionExpand: function() {
-      var sec = document.querySelector('.grade-evolution-section');
-      if (!sec) return;
-      sec.classList.toggle('grade-evolution-expanded');
-      var btn = sec.querySelector('.grade-evolution-expand-btn');
-      if (btn) {
-        var expanded = sec.classList.contains('grade-evolution-expanded');
-        btn.setAttribute('aria-pressed', expanded ? 'true' : 'false');
-        var icon = btn.querySelector('.material-symbols-outlined');
-        if (icon) icon.textContent = expanded ? 'close_fullscreen' : 'open_in_full';
-        var lbl = btn.querySelector('.grade-evolution-expand-label');
-        if (lbl) lbl.textContent = expanded ? 'Close' : 'Larger';
-      }
-      try {
-        window.dispatchEvent(new Event('resize'));
-      } catch (e) { /* ignore */ }
-    },
-
     selectMode: function(mode) {
       if (typeof Dashboard !== 'undefined' && Dashboard.renderSubpage) {
         var modeState = { view: 'subpage', mode: mode };
@@ -197,13 +179,7 @@
                   '<div class="subpage-subtitle">' + level + ' · ' + 'Track your progress across exams' + '</div>' +
                 '</div>' +
               '</div>' +
-              '<div class="grade-evolution-body">' +
-                '<button type="button" class="grade-evolution-expand-btn" onclick="BentoGrid._toggleGradeEvolutionExpand()" title="Larger chart" aria-label="Larger chart">' +
-                  '<span class="material-symbols-outlined" aria-hidden="true">open_in_full</span>' +
-                  '<span class="grade-evolution-expand-label">Larger</span>' +
-                '</button>' +
-                '<div class="grade-evolution-body-inner">' + bodyHtml + '</div>' +
-              '</div>' +
+              '<div class="grade-evolution-body">' + bodyHtml + '</div>' +
             '</div>' +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell

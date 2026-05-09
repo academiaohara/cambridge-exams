@@ -145,13 +145,14 @@
       if (!leftSidebar || !centerSection) return;
 
       var headerHtml =
-        '<div class="subpage-header subpage-header--course-theory">' +
+        '<div class="subpage-header subpage-header--with-levels">' +
           '<button type="button" class="subpage-back-btn" onclick="BentoGrid.openLessons()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
           '<div class="subpage-header-core">' +
             '<div class="subpage-header-titles">' +
               '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
               '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
             '</div>' +
+            BentoGrid._buildCourseTheoryLevelButtons(level) +
           '</div>' +
         '</div>';
 
@@ -331,13 +332,14 @@
       var level = BentoGrid._courseLevel || 'C1';
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var headerHtml =
-        '<div class="subpage-header subpage-header--course-theory">' +
+        '<div class="subpage-header subpage-header--with-levels">' +
           '<button type="button" class="subpage-back-btn" onclick="BentoGrid.openLessons()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
           '<div class="subpage-header-core">' +
             '<div class="subpage-header-titles">' +
               '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
               '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
             '</div>' +
+            BentoGrid._buildCourseTheoryLevelButtons(level) +
           '</div>' +
         '</div>';
       centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
@@ -5008,7 +5010,7 @@
 
       html += '<div class="cu-overview-block-filter-wrap">' +
         '<div class="cu-overview-block-filter-icon">' + _mi('filter_alt') + '</div>' +
-        '<div class="cu-overview-block-filter-scroll">';
+        '<div class="cu-overview-block-filter-buttons">';
       blockOrder.forEach(function(bk) {
         var chipLabel = bk === 'misc' ? 'OT' : bk;
         var ptMatch = bk.match(/^pt(\d+)$/);
@@ -5017,9 +5019,7 @@
         if (ptMatch) chipLabel = 'PT' + ptMatch[1];
         html += '<button type="button" class="cu-obf-btn cu-obf-block-btn cu-obf-btn-active" data-overview-filter-btn="' + escapedBk + '" title="' + escapedLabel + '">' + self._escapeHTML(chipLabel) + '</button>';
       });
-      html += '</div>' +
-        '<div class="cu-overview-block-filter-fixed" title="Filter actions">' +
-        '<button type="button" class="cu-obf-btn cu-obf-select-all cu-obf-btn-active" data-overview-filter-action="all" title="Select all blocks">' + _mi('done_all') + '</button>' +
+      html += '<button type="button" class="cu-obf-btn cu-obf-select-all cu-obf-btn-active" data-overview-filter-action="all" title="Select all blocks">' + _mi('done_all') + '</button>' +
         '<button type="button" class="cu-obf-btn cu-obf-select-none" data-overview-filter-action="none" title="Deselect all blocks">' + _mi('block') + '</button>' +
         '</div>' +
       '</div>';

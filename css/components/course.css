@@ -1112,36 +1112,6 @@
   color: #64748b;
 }
 
-/* Course theory overview header (B1/B2/C1 live on hub tiles, not in this bar) */
-.subpage-header--course-theory {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  flex-wrap: nowrap;
-}
-.subpage-header--course-theory .subpage-header-core {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.subpage-header--course-theory .subpage-title {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
-  line-height: 1.25;
-  font-size: 1.05rem;
-  font-weight: 800;
-}
-.subpage-header--course-theory .subpage-subtitle {
-  margin: 0;
-  font-size: 0.8rem;
-  color: #64748b;
-  line-height: 1.35;
-}
-
 /* Section card */
 .cu-section {
   background: rgba(255, 255, 255, 0.94);
@@ -1265,8 +1235,7 @@
 }
 .cu-wordbank-item {
   display: inline-block;
-  padding: 1px 9px 2px;
-  line-height: 1.2;
+  padding: 2px 9px;
   background: #fff;
   border: 1.5px solid rgba(59, 130, 246, 0.25);
   border-radius: 6px;
@@ -1276,12 +1245,9 @@
   cursor: pointer;
   transition: background 0.15s, color 0.15s, text-decoration 0.15s, opacity 0.15s;
   user-select: none;
-  vertical-align: baseline;
 }
-@media (hover: hover) and (pointer: fine) {
-  .cu-wordbank-item:hover {
-    background: rgba(59, 130, 246, 0.08);
-  }
+.cu-wordbank-item:hover {
+  background: rgba(59, 130, 246, 0.08);
 }
 .cu-wordbank-item.cu-wordbank-used {
   text-decoration: line-through;
@@ -2400,51 +2366,6 @@ textarea.cu-gap-input.cu-gap-textarea {
   box-shadow: 0 4px 16px rgba(45, 46, 95, 0.06);
 }
 
-.cu-overview-block-filter-scroll {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-  min-width: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  flex-wrap: nowrap;
-  padding-bottom: 2px;
-  scrollbar-width: thin;
-}
-
-.cu-overview-block-filter-scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.cu-overview-block-filter-scroll::-webkit-scrollbar-thumb {
-  background: rgba(45, 46, 95, 0.2);
-  border-radius: 4px;
-}
-
-.cu-overview-block-filter-fixed {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-  margin-left: auto;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .cu-obf-btn:hover {
-    border-color: rgba(59, 130, 246, 0.75);
-    background: rgba(59, 130, 246, 0.1);
-    color: #1e3a8a;
-    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
-  }
-
-  .cu-obf-btn-active:hover {
-    background: linear-gradient(90deg, #2563eb, #2ea6db);
-    border-color: #2563eb;
-    color: #fff;
-  }
-}
-
 .cu-overview-block-filter-icon {
   display: flex;
   align-items: center;
@@ -2459,6 +2380,13 @@ textarea.cu-gap-input.cu-gap-textarea {
 
 .cu-overview-block-filter-icon .material-symbols-outlined {
   font-size: 1.05rem;
+}
+
+.cu-overview-block-filter-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .cu-obf-btn {
@@ -2482,11 +2410,24 @@ textarea.cu-gap-input.cu-gap-textarea {
   font-size: 1.05rem;
 }
 
+.cu-obf-btn:hover {
+  border-color: rgba(59, 130, 246, 0.75);
+  background: rgba(59, 130, 246, 0.1);
+  color: #1e3a8a;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
+}
+
 .cu-obf-btn-active {
   background: linear-gradient(90deg, #3b82f6, #46B1E1);
   border-color: #3b82f6;
   color: #fff;
   box-shadow: 0 6px 14px rgba(59, 130, 246, 0.25);
+}
+
+.cu-obf-btn-active:hover {
+  background: linear-gradient(90deg, #2563eb, #2ea6db);
+  border-color: #2563eb;
+  color: #fff;
 }
 
 .cu-obf-select-none.cu-obf-btn-active {
@@ -3006,11 +2947,23 @@ textarea.cu-gap-input.cu-gap-textarea {
     padding: 8px 10px;
     overflow: hidden;
   }
-  .cu-overview-block-filter-scroll {
+  .cu-overview-block-filter-buttons {
+    display: flex;
+    flex-wrap: nowrap;
     gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    min-width: 0;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
   }
-  .cu-overview-block-filter-fixed {
-    gap: 6px;
+  .cu-overview-block-filter-buttons::-webkit-scrollbar {
+    height: 4px;
+  }
+  .cu-overview-block-filter-buttons::-webkit-scrollbar-thumb {
+    background: rgba(45, 46, 95, 0.2);
+    border-radius: 4px;
   }
   .cu-obf-btn {
     flex: 0 0 auto;
@@ -4869,20 +4822,6 @@ textarea.cu-gap-input.cu-gap-textarea {
     font-size: 1.05rem;
   }
 
-  .subpage-header--course-theory {
-    padding: 8px 10px;
-    gap: 8px;
-    border-radius: 14px;
-    align-items: center;
-  }
-  .subpage-header--course-theory .subpage-subtitle {
-    display: none;
-  }
-  .subpage-header--course-theory .subpage-title {
-    font-size: 0.95rem;
-    line-height: 1.25;
-  }
-
   .cu-section {
     padding: 14px 14px;
     border-radius: 14px;
@@ -4908,8 +4847,8 @@ textarea.cu-gap-input.cu-gap-textarea {
     display: inline-block;
     vertical-align: baseline;
     width: auto !important;
-    min-width: 5ch;
-    max-width: min(100%, 20ch);
+    min-width: 2.75rem;
+    max-width: min(100%, calc(100vw - 56px));
     margin: 4px 2px;
     padding: 3px 6px 5px !important;
     font-size: 0.86rem !important;
@@ -4919,13 +4858,6 @@ textarea.cu-gap-input.cu-gap-textarea {
     background: transparent !important;
     box-shadow: none !important;
     box-sizing: border-box;
-  }
-
-  @supports (field-sizing: content) {
-    input.cu-gap-input:not(.cu-gap-textarea),
-    input.cu-hint-pill-input {
-      field-sizing: content;
-    }
   }
 
   input.cu-gap-input:not(.cu-gap-textarea):focus,
@@ -4945,10 +4877,9 @@ textarea.cu-gap-input.cu-gap-textarea {
   }
 
   .cu-hint-pill-input {
-    flex: 0 1 auto;
-    max-width: min(100%, 20ch) !important;
-    min-width: 5ch !important;
-    width: auto !important;
+    flex: 1 1 6rem;
+    max-width: 100% !important;
+    min-width: 2.75rem !important;
   }
 
   .cu-hint-pill-mid {
@@ -4982,8 +4913,7 @@ textarea.cu-gap-input.cu-gap-textarea {
 
   .cu-wordbank-item {
     font-size: 0.76rem;
-    padding: 0 7px 1px;
-    line-height: 1.15;
+    padding: 4px 8px;
   }
 
   .cu-ex-item {
