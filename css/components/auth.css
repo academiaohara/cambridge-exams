@@ -498,11 +498,84 @@
   margin: 0 auto;
   padding: 8px 16px 28px;
 }
+
+/* Apple-style full profile (Settings-like): calm gray canvas, grouped cards */
+.profile-section--apple {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: -0.01em;
+  max-width: 680px;
+  padding: 12px 16px 36px;
+}
+.profile-section--apple .profile-section-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 14px;
+  border: 1px solid rgba(60, 60, 67, 0.12);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  padding: 20px 20px 22px;
+  margin-bottom: 12px;
+}
+.profile-section--apple .profile-section-card h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-medium);
+  margin-bottom: 14px;
+  gap: 8px;
+}
+.profile-section--apple .profile-section-card h3 .material-symbols-outlined {
+  font-size: 1.15rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  opacity: 0.85;
+}
+.profile-section--apple .profile-name {
+  font-size: 1.28rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.profile-section--apple .profile-email {
+  font-size: 0.9rem;
+}
+.profile-section--apple .profile-section-sub-badge {
+  border-radius: 8px;
+  font-weight: 500;
+}
+.profile-section--apple .pref-row {
+  padding: 12px 0;
+  border-top: 1px solid rgba(60, 60, 67, 0.08);
+  margin: 0 -4px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.profile-section--apple .profile-section-card .pref-row:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+.profile-section--apple .pref-row select {
+  border-radius: 10px;
+  border: 1px solid rgba(60, 60, 67, 0.18);
+  padding: 10px 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+}
+.profile-section--apple .profile-signout-btn {
+  border-radius: 12px;
+  font-weight: 500;
+}
+
 .profile-section-header {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 24px;
+}
+.profile-section-header--apple h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: var(--text-dark);
 }
 .profile-section-header .btn-back {
   display: inline-flex;
@@ -714,19 +787,54 @@
   margin: 0 auto;
   padding: 0 16px;
 }
-.premium-plans-header {
-  text-align: center;
-  margin-bottom: 32px;
+
+/* Title row: back + “Choose your Pack” (mobile: title lives in header like iOS) */
+.premium-plans-page-header {
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
 }
-.premium-plans-header h2 {
-  font-size: 1.6rem;
-  font-weight: 800;
+.premium-plans-header-titles {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 2px;
+}
+.premium-plans-header-titles h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--text-dark);
-  margin: 0 0 8px;
+  margin: 0;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
-.premium-plans-header p {
+.premium-plans-header-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.premium-plans-header-desc {
+  margin: 0;
   color: var(--text-medium);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+@media (min-width: 769px) {
+  .premium-plans-page-header {
+    align-items: center;
+    margin-bottom: 28px;
+  }
+  .premium-plans-header-titles h2 {
+    font-size: 1.5rem;
+  }
+  .premium-plans-header-desc {
+    font-size: 0.92rem;
+  }
 }
 .premium-plans-grid {
   display: grid;
@@ -923,6 +1031,38 @@
     line-height: 1.1;
   }
 
+  .profile-section--apple {
+    padding: 8px 12px 32px;
+  }
+
+  .profile-section--apple .profile-section-card {
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+  }
+
+  .profile-section-header--apple h2 {
+    font-size: 1.45rem;
+  }
+
+  .premium-plans-section {
+    padding: 0 12px;
+  }
+
+  .premium-plans-page-header .premium-plans-header-titles h2 {
+    font-size: 1.12rem;
+    gap: 6px;
+  }
+
+  .premium-plans-page-header .premium-plans-header-icon {
+    font-size: 1.15rem;
+  }
+
+  .premium-plans-page-header .premium-plans-header-desc {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
   .profile-section-card {
     margin-bottom: 14px;
     padding: 18px;
@@ -969,65 +1109,88 @@
   }
 }
 
-/* Duration selector */
+/* Duration selector — full width, no horizontal scroll; discount always visible */
 .premium-duration-selector {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
-  justify-content: center;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: 28px;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
+  overflow: visible;
+  padding: 0;
 }
 .premium-duration-btn {
-  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   min-width: 0;
-  padding: 8px 8px;
-  border-radius: 50px;
+  padding: 10px 6px;
+  border-radius: 14px;
   border: 2px solid var(--primary);
   background: transparent;
   color: var(--primary);
-  font-size: 0.72rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   position: relative;
-  white-space: nowrap;
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.15;
+  box-sizing: border-box;
 }
-@media (min-width: 420px) {
+.premium-duration-btn-label {
+  font-size: clamp(0.62rem, 2.8vw, 0.82rem);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+@media (min-width: 480px) {
   .premium-duration-btn {
-    font-size: 0.8rem;
-    padding: 8px 12px;
+    padding: 12px 10px;
   }
-}
-@media (min-width: 560px) {
-  .premium-duration-btn {
+  .premium-duration-btn-label {
     font-size: 0.85rem;
-    padding: 8px 16px;
+    white-space: normal;
   }
 }
 .premium-duration-btn.active {
   background: var(--primary);
   color: #fff;
 }
+.premium-duration-btn.active .premium-duration-badge {
+  background: rgba(255, 255, 255, 0.95);
+  color: #047857;
+}
 .premium-duration-badge {
-  position: absolute;
-  top: -10px;
-  right: -4px;
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: #10b981;
   color: #fff;
-  font-size: 0.62rem;
+  font-size: clamp(0.52rem, 2.2vw, 0.65rem);
   font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 50px;
+  padding: 3px 7px;
+  border-radius: 8px;
   white-space: nowrap;
+  max-width: 100%;
+  line-height: 1.2;
+}
+
+@media (max-width: 380px) {
+  .premium-duration-selector {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .premium-duration-btn {
+    min-height: 64px;
+  }
 }
 
 /* Pack cards grid — 3 columns */

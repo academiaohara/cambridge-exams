@@ -247,13 +247,13 @@
       var atRisk = this.isAtRisk();
       var statusClass = d.practicedToday ? 'streak-safe' : (atRisk ? 'streak-risk' : '');
       var statusText = d.practicedToday
-        ? '<span class="streak-status streak-safe"><span class="material-symbols-outlined">check_circle</span> Streak safe!</span>'
+        ? '<span class="streak-status streak-safe"><span class="bento-streak-status-emoji" aria-hidden="true">✅</span> Streak safe!</span>'
         : (atRisk
-          ? '<span class="streak-status streak-risk"><span class="material-symbols-outlined">warning</span> Streak at risk!</span>'
+          ? '<span class="streak-status streak-risk"><span class="bento-streak-status-emoji" aria-hidden="true">⚠️</span> Streak at risk!</span>'
           : '');
 
       return '<div class="streak-widget ' + statusClass + '">' +
-        '<div class="streak-fire"><span class="material-symbols-outlined">local_fire_department</span></div>' +
+        '<div class="streak-fire"><span class="bento-streak-status-emoji" aria-hidden="true">🔥</span></div>' +
         '<div class="streak-info">' +
           '<div class="streak-count">' + streak + '</div>' +
           '<div class="streak-label">' + (streak === 1 ? 'day streak' : 'days streak') + '</div>' +

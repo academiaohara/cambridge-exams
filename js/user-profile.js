@@ -390,8 +390,8 @@
         }).join('');
       }
 
-      var html = '<div class="profile-section">' +
-        '<div class="profile-section-header">' +
+      var html = '<div class="profile-section profile-section--apple">' +
+        '<div class="profile-section-header profile-section-header--apple">' +
           '<button class="btn-back" onclick="loadDashboard()" aria-label="Back"><i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Back</span></button>' +
           '<h2>' + 'My Profile' + '</h2>' +
         '</div>' +
@@ -533,17 +533,17 @@
       var selectedDuration = 'm1';
 
       var html = '<div class="premium-plans-section">' +
-        '<div class="profile-section-header">' +
+        '<div class="profile-section-header premium-plans-page-header">' +
           '<button class="btn-back" onclick="loadDashboard()" aria-label="Back"><i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Back</span></button>' +
-        '</div>' +
-        '<div class="premium-plans-header">' +
-          '<h2><span class="material-symbols-outlined">workspace_premium</span> Choose your Pack</h2>' +
-          '<p>Select duration and unlock exactly what you need</p>' +
+          '<div class="premium-plans-header-titles">' +
+            '<h2><span class="premium-plans-header-icon" aria-hidden="true">👑</span> Choose your Pack</h2>' +
+            '<p class="premium-plans-header-desc">Select duration and unlock exactly what you need</p>' +
+          '</div>' +
         '</div>' +
         '<div class="premium-duration-selector" id="premium-duration-selector">' +
           durationOptions.map(function (opt) {
-            return '<button class="premium-duration-btn' + (opt.key === selectedDuration ? ' active' : '') + '" data-duration="' + opt.key + '">' +
-              opt.label +
+            return '<button type="button" class="premium-duration-btn' + (opt.key === selectedDuration ? ' active' : '') + '" data-duration="' + opt.key + '">' +
+              '<span class="premium-duration-btn-label">' + opt.label + '</span>' +
               (opt.badge ? '<span class="premium-duration-badge">' + opt.badge + '</span>' : '') +
             '</button>';
           }).join('') +
