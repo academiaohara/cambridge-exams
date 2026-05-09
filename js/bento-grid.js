@@ -130,7 +130,7 @@
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var profileMarkup = this._buildMobileBottomNavProfileMarkup(_mi);
       return '<nav class="mobile-bottom-nav" aria-label="Mobile dashboard">' +
-        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="home" onclick="BentoGrid.setMobileDashboardTab(\'home\')">' + _mi('home') + '<span>Inicio</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="home" onclick="BentoGrid.goMobileHome()">' + _mi('home') + '<span>Inicio</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="learn" onclick="BentoGrid.setMobileDashboardTab(\'learn\')">' + _mi('school') + '<span>Learn</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn mobile-bottom-level" onclick="BentoGrid.openMobileLevelModal()" aria-label="Change level"><strong>' + this._escapeHTML(level || 'C1') + '</strong><span>Level</span></button>' +
@@ -181,6 +181,14 @@
       document.querySelectorAll('.mobile-bottom-nav-btn[data-mobile-tab]').forEach(function(btn) {
         btn.classList.toggle('active', btn.getAttribute('data-mobile-tab') === tab);
       });
+    },
+
+    /** Leave any screen (profile, course, exercises, subpages) and open the main dashboard home. */
+    goMobileHome: function() {
+      this._mobileDashboardTab = 'home';
+      if (typeof loadDashboard === 'function') {
+        loadDashboard();
+      }
     },
 
     cycleMobileLevel: function() {
@@ -1506,10 +1514,10 @@
       calHtml += '</div>';
 
       var statusHtml = practicedToday
-        ? '<div class="bento-streak-modal-status bento-streak-safe"><span class="material-symbols-outlined">check_circle</span> ' + 'Streak safe today!' + '</div>'
+        ? '<div class="bento-streak-modal-status bento-streak-safe"><span class="bento-streak-status-emoji" aria-hidden="true">🔥</span><span class="bento-streak-status-text">' + 'Streak safe today!' + '</span></div>'
         : (typeof StreakManager !== 'undefined' && StreakManager.isAtRisk && StreakManager.isAtRisk()
-          ? '<div class="bento-streak-modal-status bento-streak-risk"><span class="material-symbols-outlined">warning</span> ' + 'Practice now to keep your streak!' + '</div>'
-          : '<div class="bento-streak-modal-status">' + 'Start today\'s practice to build your streak' + '</div>');
+          ? '<div class="bento-streak-modal-status bento-streak-risk"><span class="bento-streak-status-emoji" aria-hidden="true">🔥</span><span class="bento-streak-status-text">' + 'Practice now to keep your streak!' + '</span></div>'
+          : '<div class="bento-streak-modal-status bento-streak-neutral"><span class="bento-streak-status-emoji" aria-hidden="true">🔥</span><span class="bento-streak-status-text">' + 'Start today\'s practice to build your streak' + '</span></div>');
 
       var el = document.createElement('div');
       el.className = 'bento-streak-modal-overlay';

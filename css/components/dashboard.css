@@ -1757,6 +1757,8 @@
 .subpage-view-toggle {
   display: flex;
   gap: 4px;
+  justify-content: center;
+  align-items: stretch;
   background: rgba(45, 46, 95, 0.04);
   border-radius: 12px;
   padding: 4px;
@@ -1938,15 +1940,22 @@
 @media (max-width: 540px) {
   .mode-toggle,
   .subpage-view-toggle {
-    overflow-x: auto;
-    justify-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
     -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
   }
 
   .mode-btn,
   .subpage-view-btn {
-    flex: 0 0 auto;
-    min-width: 132px;
+    flex: 1 1 auto;
+    min-width: min(160px, 46vw);
+    max-width: 100%;
     padding: 10px 14px;
   }
 

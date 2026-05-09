@@ -513,7 +513,7 @@
           '<div class="fe-info-stat">' + totalDone + '/' + totalAll + ' ' + 'items' + '</div>' +
         '</div>' +
         '<button class="fe-reset-level-btn" onclick="FastExercises._confirmResetLevel(\'' + catMeta.id + '\', \'' + activeLevel + '\')">' +
-          _mi('restart_alt') + ' ' + 'Reset Level' +
+          _mi('refresh') + ' ' + 'Reset Level' +
         '</button>' +
       '</div>';
     },
