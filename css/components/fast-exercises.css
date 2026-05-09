@@ -1241,7 +1241,7 @@
   display: none !important;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .fe-map-outer .fe-map-page-dots,
   .fe-map-outer .fe-map-arrow-btn {
     display: none !important;
@@ -1265,6 +1265,7 @@
     align-items: stretch;
     gap: 10px;
     margin-bottom: 14px;
+    min-width: 0;
   }
   .fe-map-container .fe-map-lesson .fe-map-points-row,
   .cu-unit-section .fe-map-lesson .fe-map-points-row {
@@ -1274,8 +1275,10 @@
     justify-content: flex-start;
     gap: 4px;
     width: 100%;
+    max-width: 100%;
     min-width: 0;
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
     scrollbar-width: thin;
