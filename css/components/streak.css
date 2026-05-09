@@ -12,7 +12,14 @@
 }
 
 .streak-fire {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.streak-fire .bento-streak-status-emoji {
   font-size: 2rem;
+  line-height: 1;
   animation: fireFlicker 1.5s ease-in-out infinite;
 }
 
@@ -40,8 +47,16 @@
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 20px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   margin-top: 2px;
+}
+
+.streak-status .bento-streak-status-emoji {
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .streak-status.streak-safe {
