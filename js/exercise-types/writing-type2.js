@@ -44,14 +44,12 @@
               <div class="writing-type2-word-count">
                 <span id="writing-type2-count">0</span> words written
               </div>
-              <div class="writing-toolbar-actions">
-                <button class="btn-copy-clipboard" onclick="WritingType2.copyToClipboard()" title="Copy to clipboard">
-                  <i class="fas fa-copy"></i><span class="writing-btn-label"> Copy to clipboard</span>
-                </button>
-                ${AppState.currentMode !== 'exam' ? `<button class="btn-evaluate-ai" id="writing-type2-evaluate-btn" onclick="WritingType2.evaluateWithAI()" title="Evaluate with AI">
-                  <i class="fas fa-robot"></i><span class="writing-btn-label"> Evaluate with AI</span>
-                </button>` : ''}
-              </div>
+              <button class="btn-copy-clipboard" onclick="WritingType2.copyToClipboard()" title="Copy to clipboard">
+                <i class="fas fa-copy"></i><span class="writing-btn-label"> Copy to clipboard</span>
+              </button>
+              ${AppState.currentMode !== 'exam' ? `<button class="btn-evaluate-ai" id="writing-type2-evaluate-btn" onclick="WritingType2.evaluateWithAI()" title="Evaluate with AI">
+                <i class="fas fa-robot"></i><span class="writing-btn-label"> Evaluate with AI</span>
+              </button>` : ''}
             </div>
             <div class="writing-inline-msg" id="writing-type2-msg" style="display:none;"></div>
             <div class="writing-type2-ai-results" id="writing-type2-ai-results" style="display:none;">

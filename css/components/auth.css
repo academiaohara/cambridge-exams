@@ -818,6 +818,29 @@
   transition: all 0.2s;
 }
 
+.premium-plan-btn.current-plan {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  text-align: center;
+  background: #f0fdf4;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+  cursor: default;
+}
+
+.premium-plan-btn.current-plan .material-symbols-outlined,
+.premium-plan-btn.current-plan i {
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .profile-section .premium-plan-btn {
   display: inline-flex;
   align-items: center;
@@ -847,12 +870,6 @@
   background: transparent;
   color: var(--text-medium);
   border: 2px solid #e2e8f0;
-}
-.premium-plan-btn.current-plan {
-  background: #f0fdf4;
-  color: var(--secondary);
-  border: 2px solid var(--secondary);
-  cursor: default;
 }
 
 .profile-pack-badges {
@@ -955,22 +972,46 @@
 /* Duration selector */
 .premium-duration-selector {
   display: flex;
-  gap: 8px;
+  flex-wrap: nowrap;
+  align-items: stretch;
   justify-content: center;
+  gap: 6px;
   margin-bottom: 28px;
-  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 .premium-duration-btn {
-  padding: 8px 18px;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 8px 8px;
   border-radius: 50px;
   border: 2px solid var(--primary);
   background: transparent;
   color: var(--primary);
-  font-size: 0.85rem;
+  font-size: 0.72rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
   position: relative;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.2;
+}
+@media (min-width: 420px) {
+  .premium-duration-btn {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+}
+@media (min-width: 560px) {
+  .premium-duration-btn {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
 }
 .premium-duration-btn.active {
   background: var(--primary);
