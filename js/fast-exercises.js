@@ -806,7 +806,7 @@
     // ── COMPACT DOTS ─────────────────────────────────────────────────────
     // If a points row wraps to more than one line, shrink the dots to fit.
     _compactDots: function() {
-      if (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 640px)').matches) {
+      if (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches) {
         document.querySelectorAll('.fe-map-points-row').forEach(function(row) {
           row.classList.remove('fe-dots-compact');
         });
