@@ -2239,9 +2239,9 @@ margin-top: -2px;
 
   .mobile-app-actions {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px;
-    max-width: 420px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    max-width: 360px;
     margin: 0 auto;
   }
 

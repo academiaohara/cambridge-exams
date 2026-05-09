@@ -1188,10 +1188,8 @@
   transition: all 0.2s;
   flex-shrink: 0;
 }
-@media (hover: hover) and (pointer: fine) {
-  .fe-map-page-dot:hover {
-    background: rgba(45, 46, 95, 0.3);
-  }
+.fe-map-page-dot:hover {
+  background: rgba(45, 46, 95, 0.3);
 }
 .fe-map-page-dot-active {
   background: var(--primary, #3b82f6);
@@ -1226,55 +1224,95 @@
   margin: 4px auto;
   font-size: 1.4rem;
 }
-@media (hover: hover) and (pointer: fine) {
-  .fe-map-arrow-btn:hover {
-    background: #f1f5f9;
-    color: var(--primary, #3b82f6);
-    border-color: rgba(59, 130, 246, 0.3);
-    transform: scale(1.05);
-  }
+.fe-map-arrow-btn:hover {
+  background: #f1f5f9;
+  color: var(--primary, #3b82f6);
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: scale(1.05);
 }
 .fe-map-arrow-btn .material-symbols-outlined { font-size: 1.4rem; }
 
-/* Mobile: scroll all lessons vertically (no drill-in roadmap) */
+/* Back to lesson list — mobile roadmap drill-in */
 .fe-map-mobile-back {
-  display: none !important;
+  display: none;
+  align-self: stretch;
+  margin-bottom: 8px;
+}
+.fe-map-outer.fe-mobile-roadmap-active .fe-map-mobile-back {
+  display: inline-flex;
 }
 
 @media (max-width: 640px) {
-  .fe-map-outer .fe-map-page-dots,
-  .fe-map-outer .fe-map-arrow-btn {
+  /* Lesson drill-in: fullscreen-style map, hide chrome */
+  .fe-section.fe-mobile-lesson-drill-active .subpage-header.subpage-header--with-levels {
     display: none !important;
   }
-  .fe-map-outer .fe-map-page {
-    display: block !important;
-    margin-bottom: 18px;
+  .fe-section.fe-mobile-lesson-drill-active .fe-bottom-bar {
+    display: none !important;
   }
-  .fe-map-outer .fe-map-page:last-of-type {
-    margin-bottom: 0;
+  .fe-map-outer.fe-mobile-roadmap-active .fe-map-page-dots,
+  .fe-map-outer.fe-mobile-roadmap-active .fe-map-arrow-btn {
+    display: none !important;
   }
-  .fe-map-outer .fe-map-main {
-    width: 100%;
-    min-width: 0;
+  .fe-map-outer.fe-mobile-roadmap-active .fe-map-main {
+    padding-top: max(4px, env(safe-area-inset-top, 0px));
   }
+
   .fe-map-legend-top {
     display: none !important;
   }
-  .fe-map-container .fe-map-lesson {
+  .fe-map-container:not(.fe-mobile-roadmap-active) .fe-map-lesson .fe-map-points-row {
+    display: none !important;
+  }
+  .fe-map-container:not(.fe-mobile-roadmap-active) .fe-map-lesson-title {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    flex: 1;
+    min-width: 0;
+  }
+  .fe-map-container.fe-mobile-roadmap-active .fe-map-lesson:not(.fe-map-lesson-mobile-selected) {
+    display: none !important;
+  }
+  .fe-map-container.fe-mobile-roadmap-active .fe-map-lesson.fe-map-lesson-mobile-selected {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
-    margin-bottom: 14px;
+    gap: 16px;
   }
-  .fe-map-container .fe-map-lesson .fe-map-points-row {
-    display: flex !important;
-    flex-wrap: wrap;
-    justify-content: center;
+  .fe-map-container.fe-mobile-roadmap-active .fe-map-lesson.fe-map-lesson-mobile-selected .fe-map-lesson-title {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
     width: 100%;
   }
-  .fe-map-lesson-title {
-    cursor: default;
-    -webkit-tap-highlight-color: transparent;
+  .fe-map-container.fe-mobile-roadmap-active .fe-map-lesson.fe-map-lesson-mobile-selected .fe-map-lesson-name {
+    line-height: 1.35;
+  }
+  .fe-map-container.fe-mobile-roadmap-active .fe-map-connector {
+    display: none !important;
+  }
+  .fe-map-points-row.fe-mobile-vertical-roadmap {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 8px 0 16px;
+    gap: 16px;
+  }
+  .fe-map-points-row.fe-mobile-vertical-roadmap .fe-map-line {
+    display: none !important;
+  }
+  .fe-map-points-row.fe-mobile-vertical-roadmap .fe-review-row {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 641px) {
+  .fe-map-mobile-back {
+    display: none !important;
   }
 }
 
@@ -5112,21 +5150,17 @@
   cursor: pointer;
   transition: background 0.15s, box-shadow 0.15s;
 }
-@media (hover: hover) and (pointer: fine) {
-  .vocab-cw-btn:hover:not(:disabled) {
-    background: #f1f5f9;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  }
+.vocab-cw-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 .vocab-cw-btn .material-symbols-outlined { font-size: 1rem; }
 .vocab-cw-hint-btn { color: #d97706; border-color: #fde68a; background: #fffbeb; }
+.vocab-cw-hint-btn:hover:not(:disabled) { background: #fef3c7; }
 .vocab-cw-solve-btn { color: #7c3aed; border-color: #ddd6fe; background: #f5f3ff; }
+.vocab-cw-solve-btn:hover:not(:disabled) { background: #ede9fe; }
 .vocab-cw-check-btn { color: #059669; border-color: #a7f3d0; background: #ecfdf5; }
-@media (hover: hover) and (pointer: fine) {
-  .vocab-cw-hint-btn:hover:not(:disabled) { background: #fef3c7; }
-  .vocab-cw-solve-btn:hover:not(:disabled) { background: #ede9fe; }
-  .vocab-cw-check-btn:hover:not(:disabled) { background: #d1fae5; }
-}
+.vocab-cw-check-btn:hover:not(:disabled) { background: #d1fae5; }
 .vocab-cw-reset-btn { color: #64748b; }
 
 /* Board */
@@ -5149,9 +5183,6 @@
   max-width: 100%;
   overflow-x: auto;
   box-sizing: border-box;
-}
-.vocab-cw-grid-viewport {
-  display: contents;
 }
 .vocab-cw-grid-wrap {
   overflow-x: auto;
@@ -5609,58 +5640,28 @@
 
 /* Mobile responsive */
 @media (max-width: 700px) {
-  #cw-strip-cells {
-    display: none !important;
-  }
-  .vocab-cw-word-strip {
-    padding-bottom: 4px;
-  }
-  .vocab-cw-grid-outer {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 8px;
-    --cw-gap: 2px;
-    --cw-pad: 16px;
-    --cw-cell-fit: calc((100% - var(--cw-pad) - (var(--cw-cols) - 1) * var(--cw-gap)) / var(--cw-cols));
-    height: calc(var(--cw-cell-fit) * var(--cw-rows) + (var(--cw-rows) - 1) * var(--cw-gap) + var(--cw-pad));
-    max-height: none;
-    overflow: hidden;
-    align-items: stretch;
-  }
-  .vocab-cw-grid-viewport {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x pan-y pinch-zoom;
-    overscroll-behavior: contain;
-  }
+  /* Square cells: fill grid width evenly (same total width as before) */
   .vocab-cw-grid-wrap {
-    width: max-content;
-    min-width: 100%;
-    max-width: none;
-    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
   }
   .vocab-cw-grid {
-    width: fit-content;
-    margin: 0 auto;
-    max-width: none;
-    grid-template-columns: repeat(var(--cw-cols), var(--cw-cell-fit)) !important;
-    grid-auto-rows: var(--cw-cell-fit);
-    gap: var(--cw-gap);
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: repeat(var(--cw-cols), minmax(0, 1fr)) !important;
+    grid-auto-rows: auto;
   }
   .vocab-cw-cell {
-    width: var(--cw-cell-fit);
-    height: var(--cw-cell-fit);
+    width: 100%;
     min-width: 0;
-    box-sizing: border-box;
+    height: auto;
+    aspect-ratio: 1;
   }
   .vocab-cw-board { flex-direction: column; gap: 12px; }
+  .vocab-cw-grid-outer { width: 100%; padding: 6px; align-items: stretch; }
   .vocab-cw-main {
     padding: 10px;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 120px);
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 168px);
     box-sizing: border-box;
   }
   .vocab-cw-clues {
@@ -5706,14 +5707,16 @@
     justify-content: center;
     padding: 8px 12px;
   }
+  .vocab-cw-strip-cell { width: 44px; height: 44px; font-size: 1rem; }
 }
 @media (max-width: 420px) {
   .vocab-cw-main {
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 124px);
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 172px);
   }
   .vocab-cw-cell-letter { font-size: 0.72rem; }
   .vocab-cw-cell-num { font-size: 7px; }
   .vocab-cw-wordle-box { font-size: 0.9rem; }
+  .vocab-cw-strip-cell { width: 40px; height: 40px; font-size: 0.95rem; }
 }
 
 /* ── Dictionaries Home Modal ── */
