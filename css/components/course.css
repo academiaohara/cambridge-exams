@@ -5003,14 +5003,29 @@ textarea.cu-gap-input.cu-gap-textarea {
     gap: 6px;
   }
 
-  /* No numeric labels inside exercise content on phones (badges, gap nums, hint pills, etc.) */
-  .cu-ex-num-badge,
-  .cu-ex-num-circle,
-  .cu-hint-pill-num,
-  .cu-mc-passage-gap-num,
-  .cu-cw-clue-num,
-  .cu-match-num,
-  .cu-alt-badge:not(.cu-theory-alt-badge) {
+  /* No numeric labels inside course exercise sections on phones (badges, gap nums, hint pills,
+     embedded reading/listening gap markers, etc.). Scoped to .cu-exercise so hub/overview UI keeps block labels. */
+  .cu-section.cu-exercise :is(
+    .cu-ex-num-badge,
+    .cu-ex-num-circle,
+    .cu-hint-pill-num,
+    .cu-mc-passage-gap-num,
+    .cu-cw-clue-num,
+    .cu-match-num,
+    .cu-alt-badge:not(.cu-theory-alt-badge),
+    .reading-type1-gap-number,
+    .reading-type2-gap-number,
+    .reading-type3-gap-number,
+    .reading-type7-gap-num,
+    .reading-type7-gap-number,
+    .gap-number,
+    .gap-number-outside,
+    .reading-type4-number,
+    .reading-type4-answer-route-num,
+    .reading-type5-question-number,
+    .listening-type4-q-number,
+    .listening-type1-extract-number
+  ) {
     display: none !important;
   }
 
