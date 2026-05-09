@@ -2202,11 +2202,11 @@
           ? '<textarea class="cu-gap-input cu-bc-input cu-gap-textarea" id="' + inputId + '" ' +
               'autocomplete="off" autocorrect="off" spellcheck="false" rows="2" ' +
               'oninput="BentoGrid._onCuBcInput(this);BentoGrid._resizeCuInput(this)" ' +
-              'placeholder="Rewrite the full sentence correctly…"></textarea>'
+              'placeholder="Rewrite… or type OK if correct"></textarea>'
           : '<input type="text" class="cu-gap-input cu-bc-input" id="' + inputId + '" ' +
               'autocomplete="off" autocorrect="off" spellcheck="false" ' +
               'oninput="BentoGrid._onCuBcInput(this)" ' +
-              'placeholder="correction…" />';
+              'placeholder="correction or OK" />';
         html += '<div class="cu-bc-item' + (useTextarea ? ' cu-bc-item-textarea' : '') + '" data-answer="' + self._escapeHTML(answer) + '">' +
           '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
           '<div class="cu-bc-row' + (useTextarea ? ' cu-bc-row-textarea' : '') + '">' +
@@ -2727,8 +2727,9 @@
       function makeGapPill(num, hintWord) {
         var gId = idBase + '-p' + num;
         var ans = self._escapeHTML(answerMap[num] || '');
+        var slashClass = hintWord && String(hintWord).indexOf('/') !== -1 ? ' cu-hint-pill-slash-hint' : '';
         return '<span class="cu-wf-gap-wrap">' +
-          '<span class="cu-hint-pill">' +
+          '<span class="cu-hint-pill' + slashClass + '">' +
             '<span class="cu-hint-pill-num">' + num + '</span>' +
             '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." ' +
               'data-passage-num="' + num + '" data-answer="' + ans + '" ' +
@@ -2783,8 +2784,9 @@
           var gId = idBase + '-pi' + gapNum;
           var ans = self._escapeHTML(answerMap[gapNum] || '');
           var hintWord = hintMap[gapNum] || null;
+          var slashClass = hintWord && String(hintWord).indexOf('/') !== -1 ? ' cu-hint-pill-slash-hint' : '';
           return '<span class="cu-pi-gap-wrap">' +
-            '<span class="cu-hint-pill cu-pi-pill">' +
+            '<span class="cu-hint-pill cu-pi-pill' + slashClass + '">' +
               '<span class="cu-hint-pill-num">' + num + '</span>' +
               '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input cu-pi-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
               (hintWord ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>' : '') +
@@ -3467,7 +3469,7 @@
       // alongside the text input. Clicking OK fills the input with "OK". The answer field
       // stores either "OK" (correct as written) or a correction word.
       if (showOkBtn) {
-        var sentHtmlOk = self._renderCourseExSentence(sentence, inputId, useTextarea);
+        var sentHtmlOk = self._renderCourseExSentence(sentence, inputId, useTextarea, undefined, 'OK or correction');
         return '<div class="cu-ex-item cu-ok-btn-item" data-answer="' + self._escapeHTML(answer) + '">' +
           numBadgeHtml +
           contextHtml +
@@ -3680,7 +3682,7 @@
       return result;
     },
 
-    _renderCourseExSentence: function(sentence, inputIdBase, useTextarea, beforeStandalone) {
+    _renderCourseExSentence: function(sentence, inputIdBase, useTextarea, beforeStandalone, gapPlaceholder) {
       var self = this;
 
       // Key Word Transformation: two sentences separated by \n with a visible gap marker
@@ -3709,21 +3711,23 @@
         return '<div class="cu-ex-kwtrans">' +
           '<div class="cu-ex-kwtrans-row">' +
             '<span class="cu-ex-kwtrans-label">A</span>' +
-            '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(sentA, inputIdBase, true) + '</div>' +
+            '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(sentA, inputIdBase, true, undefined, undefined, gapPlaceholder) + '</div>' +
           '</div>' +
           (keyword ? '<div class="cu-kwtrans-keyword-row"><span class="cu-kwtrans-keyword">' + self._escapeHTML(keyword) + '</span></div>' : '') +
           '<div class="cu-ex-kwtrans-row">' +
             '<span class="cu-ex-kwtrans-label">B</span>' +
-            '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(sentB, inputIdBase) + '</div>' +
+            '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(sentB, inputIdBase, undefined, undefined, undefined, gapPlaceholder) + '</div>' +
           '</div>' +
         '</div>';
       }
 
-      return self._renderCourseExSentenceParts(sentence, inputIdBase, false, useTextarea, beforeStandalone);
+      return self._renderCourseExSentenceParts(sentence, inputIdBase, false, useTextarea, beforeStandalone, gapPlaceholder);
     },
 
-    _renderCourseExSentenceParts: function(sentence, inputIdBase, noStandalone, useTextarea, beforeStandalone) {
+    _renderCourseExSentenceParts: function(sentence, inputIdBase, noStandalone, useTextarea, beforeStandalone, gapPlaceholder) {
       var self = this;
+      var gapPh = (gapPlaceholder !== undefined && gapPlaceholder !== null) ? String(gapPlaceholder) : '...';
+      var gapPhAttr = self._escapeHTML(gapPh);
       // Tokenise sentence into: plain text, gap markers, bold+option patterns, plain bold
       // Compound patterns (hint+gap pill) are matched first so they take priority:
       //   Pattern A: optional (number)  (hint)  gap_marker  → dark pill with [num] [input] [hint]
@@ -3953,21 +3957,24 @@
           if (useTextarea) {
             return '<textarea id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input cu-gap-textarea" placeholder="Your answer..." rows="2" aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           }
-          return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
+          return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
         } else if (p.type === 'gap-wf') {
           // Word-formation gap: input + word-badge together
           var gId = inputIdBase + '_g' + (gapCount++);
-          return '<span class="cu-hint-pill">' +
-            '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
+          var wfSlash = p.wfWord && String(p.wfWord).indexOf('/') !== -1;
+          var wfPillClass = 'cu-hint-pill' + (wfSlash ? ' cu-hint-pill-slash-hint' : '');
+          return '<span class="' + wfPillClass + '">' +
+            '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
             '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(p.wfWord) + '</span>' +
             '</span>';
         } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
           var gId = inputIdBase + '_g' + (gapCount++);
-          var pillHtml = '<span class="cu-hint-pill">';
+          var hintSlash = p.hint && String(p.hint).indexOf('/') !== -1;
+          var pillHtml = '<span class="cu-hint-pill' + (hintSlash ? ' cu-hint-pill-slash-hint' : '') + '">';
           if (p.num) {
             pillHtml += '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>';
           }
-          pillHtml += '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
+          pillHtml += '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           if (p.hint) {
             var hintShown = p.hintBrackets ? ('[' + p.hint + ']') : p.hint;
             pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(hintShown) + '</span>';
@@ -3979,9 +3986,9 @@
           var gId1 = inputIdBase + '_g' + (gapCount++);
           var gId2 = inputIdBase + '_g' + (gapCount++);
           var groupHtml = '<span class="cu-hint-pill">' +
-            '<textarea id="' + gId1 + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
+            '<textarea id="' + gId1 + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
             '<span class="cu-hint-pill-mid">' + self._escapeHTML(p.midText.trim()) + '</span>' +
-            '<textarea id="' + gId2 + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
+            '<textarea id="' + gId2 + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           if (p.hint) {
             groupHtml += '<span class="cu-hint-pill-word">' + self._escapeHTML(p.hint) + '</span>';
           }
