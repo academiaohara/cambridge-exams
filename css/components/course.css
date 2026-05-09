@@ -4626,7 +4626,7 @@ textarea.cu-gap-input.cu-gap-textarea {
   background: #bfdbfe;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .course-hub-grid {
     gap: 10px;
   }

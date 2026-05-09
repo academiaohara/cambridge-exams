@@ -585,7 +585,7 @@ content: '';
   box-shadow: 0 4px 16px rgba(45, 46, 95, 0.2);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .bento-center-wrapper {
     border-radius: 20px;
     padding: 12px;
@@ -2137,7 +2137,7 @@ margin-top: -2px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .mobile-app-hero,
   .mobile-stats-section {
     display: block;
@@ -2432,7 +2432,7 @@ margin-top: -2px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .bento-grid {
     padding-bottom: calc(52px + env(safe-area-inset-bottom));
   }

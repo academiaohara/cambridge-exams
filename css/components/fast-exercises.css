@@ -194,7 +194,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .subpage-header--with-levels {
     flex-wrap: nowrap;
     align-items: flex-start;

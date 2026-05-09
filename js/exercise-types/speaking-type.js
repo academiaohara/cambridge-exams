@@ -728,7 +728,7 @@ function roleName(role) {
       sim.querySelectorAll('.speaking-img-card').forEach(function(card) {
         card.addEventListener('click', function(ev) {
           ev.stopPropagation();
-          if (typeof window.matchMedia === 'function' && !window.matchMedia('(max-width: 768px)').matches) {
+          if (typeof window.matchMedia === 'function' && !window.matchMedia('(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)').matches) {
             return;
           }
           card.classList.toggle('speaking-img-card--expanded');
