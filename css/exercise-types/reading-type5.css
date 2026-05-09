@@ -93,7 +93,7 @@
 }
 
 @supports selector(:has(*)) {
-  @media (max-width: 768px) {
+  @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
     .reading-type5-option input[type="radio"] {
       position: absolute;
       opacity: 0;

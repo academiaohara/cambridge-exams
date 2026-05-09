@@ -1,5 +1,10 @@
 /* css/components/responsive.css */
 
+/*
+ * Mobile layout applies when:
+ * - viewport width ≤768px (phones portrait, narrow windows), or
+ * - landscape with limited height (typical phone horizontal: wide width would otherwise skip mobile-only rules).
+ */
 /* ============================================
    DESKTOP DEFAULTS
    ============================================ */
@@ -19,7 +24,7 @@
   display: none !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   html,
   body {
     width: 100%;

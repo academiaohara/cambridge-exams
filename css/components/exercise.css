@@ -760,7 +760,7 @@
   text-align: justify;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .exercise-container {
     border-radius: 18px;
     padding: 18px;
@@ -859,7 +859,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .exercise-container {
     position: relative;
     padding: 14px;
