@@ -3804,15 +3804,16 @@
       var extra = opts.extraAttrs || '';
       var oninput = opts.textareaOnInput || 'BentoGrid._resizeCuInput(this)';
       if (mobileCe) {
-        var wrapCls = 'cu-inline-gap-wrap cu-inline-gap-wrap--ce' + (opts.block ? ' cu-inline-gap-wrap--block' : '');
+        // Single span (no wrapper): static sentence text and the gap are siblings inside the
+        // same block parent — avoids inline-flex / nested boxes that break natural line wrapping.
+        var wrapCls = 'cu-inline-gap-wrap' + (opts.block ? ' cu-inline-gap-wrap--block' : '');
         var ceCls = opts.ceClassName || 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty';
-        return '<span class="' + wrapCls + '">' +
-          '<span' + idAttr + ' class="' + ceCls + '" contenteditable="true" spellcheck="false" autocorrect="off" autocomplete="off" role="textbox"' +
+        return '<span' + idAttr + ' class="' + wrapCls + ' ' + ceCls + '" contenteditable="true" spellcheck="false" autocorrect="off" autocomplete="off" role="textbox"' +
           ' data-placeholder="' + phAttr + '"' + extra +
           ' onfocus="BentoGrid._cuLastFocusedGap=this"' +
           ' oninput="BentoGrid._onCuGapEditableInput(this)"' +
           ' onpaste="BentoGrid._onCuGapEditablePaste(event)"' +
-          '></span></span>';
+          '></span>';
       }
       var wrapCls = 'cu-inline-gap-wrap' + (opts.block ? ' cu-inline-gap-wrap--block' : '');
       var taCls = opts.textareaClassName || 'cu-gap-input cu-gap-inline-textarea';
