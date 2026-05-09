@@ -1745,6 +1745,11 @@ textarea.cu-hint-pill-input {
   margin-top: 8px;
 }
 
+/* Mobile inline CE wrapper: no box — children participate directly in the sentence line boxes */
+.cu-inline-gap-wrap--ce {
+  display: contents;
+}
+
 /* Inline gaps: auto-resize textarea flows with sentence text (replaces one-line <input>) */
 .cu-inline-gap-wrap {
   display: inline-flex;
@@ -5167,6 +5172,62 @@ textarea.cu-gap-input.cu-gap-textarea {
     padding: 2px 0;
   }
 
+  /* Sentence gaps (mobile): contenteditable is true inline — wraps with surrounding words, not as one atomic box */
+  span.cu-gap-input.cu-gap-inline-editable {
+    display: inline;
+    vertical-align: baseline;
+    min-width: 3ch;
+    padding: 0 2px 2px;
+    margin: 0 1px;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: pre-wrap;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.55);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    cursor: text;
+    -webkit-user-select: text;
+    user-select: text;
+    box-sizing: border-box;
+  }
+
+  span.cu-gap-input.cu-gap-inline-editable:focus {
+    border-bottom-color: #2563eb;
+    background: rgba(59, 130, 246, 0.06);
+  }
+
+  span.cu-gap-input.cu-gap-inline-editable.cu-gap-editable-empty[data-placeholder]::before {
+    content: attr(data-placeholder);
+    color: #94a3b8;
+    pointer-events: none;
+  }
+
+  .cu-inline-gap-wrap--block span.cu-gap-input.cu-gap-inline-editable {
+    display: block;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  span.cu-gap-input.cu-gap-inline-editable[contenteditable="false"] {
+    cursor: default;
+    opacity: 0.92;
+  }
+
   /* Inline gaps: underline-only, fluid wrap (textarea auto-grows height) */
   input.cu-gap-input:not(.cu-gap-textarea):not(.cu-cw-input),
   textarea.cu-gap-input.cu-gap-inline-textarea {
@@ -5318,18 +5379,21 @@ textarea.cu-gap-input.cu-gap-textarea {
 
   input.cu-gap-input.cu-input-correct:not(.cu-gap-textarea):not(.cu-cw-input),
   textarea.cu-gap-input.cu-gap-inline-textarea.cu-input-correct,
+  span.cu-gap-input.cu-gap-inline-editable.cu-input-correct,
   textarea.cu-hint-pill-input.cu-input-correct {
     border-bottom-color: #059669 !important;
     background: rgba(5, 150, 105, 0.08) !important;
   }
   input.cu-gap-input.cu-input-incorrect:not(.cu-gap-textarea):not(.cu-cw-input),
   textarea.cu-gap-input.cu-gap-inline-textarea.cu-input-incorrect,
+  span.cu-gap-input.cu-gap-inline-editable.cu-input-incorrect,
   textarea.cu-hint-pill-input.cu-input-incorrect {
     border-bottom-color: #d97706 !important;
     background: rgba(217, 119, 6, 0.08) !important;
   }
   input.cu-gap-input.cu-input-show-correct:not(.cu-gap-textarea):not(.cu-cw-input),
   textarea.cu-gap-input.cu-gap-inline-textarea.cu-input-show-correct,
+  span.cu-gap-input.cu-gap-inline-editable.cu-input-show-correct,
   textarea.cu-hint-pill-input.cu-input-show-correct {
     border-bottom-color: #7c3aed !important;
     background: rgba(124, 58, 237, 0.08) !important;
