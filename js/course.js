@@ -2203,10 +2203,10 @@
               'autocomplete="off" autocorrect="off" spellcheck="false" rows="2" ' +
               'oninput="BentoGrid._onCuBcInput(this);BentoGrid._resizeCuInput(this)" ' +
               'placeholder="Rewrite… or type OK if correct"></textarea>'
-          : '<input type="text" class="cu-gap-input cu-bc-input" id="' + inputId + '" ' +
-              'autocomplete="off" autocorrect="off" spellcheck="false" ' +
-              'oninput="BentoGrid._onCuBcInput(this)" ' +
-              'placeholder="correction or OK" />';
+          : '<textarea class="cu-gap-input cu-bc-input cu-gap-inline-textarea" id="' + inputId + '" ' +
+              'autocomplete="off" autocorrect="off" spellcheck="false" rows="1" wrap="soft" ' +
+              'oninput="BentoGrid._onCuBcInput(this);BentoGrid._resizeCuInput(this)" ' +
+              'placeholder="correction or OK"></textarea>';
         html += '<div class="cu-bc-item' + (useTextarea ? ' cu-bc-item-textarea' : '') + '" data-answer="' + self._escapeHTML(answer) + '">' +
           '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
           '<div class="cu-bc-row' + (useTextarea ? ' cu-bc-row-textarea' : '') + '">' +
@@ -2585,7 +2585,11 @@
         sentences.forEach(function(sent, sIdx) {
           var gapId = syncGroup + '-g' + sIdx;
           var sentHtml = self._escapeHTML(sent).replace(/……+|\.{5,}/g, function() {
-            return '<input type="text" id="' + gapId + '" class="cu-gap-input cu-sync-input" data-sync-group="' + syncGroup + '" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._syncInputGroup(this);BentoGrid._resizeCuInput(this)">';
+            return '<span class="cu-inline-gap-wrap">' +
+              '<textarea id="' + gapId + '" class="cu-gap-input cu-sync-input cu-gap-inline-textarea" rows="1" wrap="soft" spellcheck="false" ' +
+              'data-sync-group="' + syncGroup + '" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" ' +
+              'oninput="BentoGrid._syncInputGroup(this);BentoGrid._resizeCuInput(this)"></textarea>' +
+              '</span>';
           });
           html += '<div class="cu-sync-sentence">' + sentHtml + '</div>';
         });
@@ -3957,7 +3961,10 @@
           if (useTextarea) {
             return '<textarea id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input cu-gap-textarea" placeholder="Your answer..." rows="2" aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           }
-          return '<input type="text" id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input" placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
+          return '<span class="cu-inline-gap-wrap">' +
+            '<textarea id="' + inputIdBase + '_g' + (gapCount++) + '" class="cu-gap-input cu-gap-inline-textarea" rows="1" wrap="soft" spellcheck="false" ' +
+            'placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
+            '</span>';
         } else if (p.type === 'gap-wf') {
           // Word-formation gap: input + word-badge together
           var gId = inputIdBase + '_g' + (gapCount++);
@@ -4003,7 +4010,10 @@
           if (useTextarea) {
             return (beforeStandalone || '') + '<br><textarea class="cu-gap-input cu-gap-textarea cu-gap-standalone" placeholder="Your answer..." rows="2" aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           }
-          return '<br><input type="text" class="cu-gap-input cu-gap-standalone" placeholder="Your answer..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
+          return '<br><span class="cu-inline-gap-wrap cu-inline-gap-wrap--block">' +
+            '<textarea class="cu-gap-input cu-gap-inline-textarea cu-gap-standalone" rows="1" wrap="soft" spellcheck="false" ' +
+            'placeholder="Your answer..." aria-label="Your answer" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
+            '</span>';
         }
         return '';
       }).join('');
@@ -4092,6 +4102,55 @@
     _resizeCuInput: function(input) {
       // Textarea inputs: auto-grow height; hint-pill fields also sync width on desktop
       if (input.tagName === 'TEXTAREA') {
+        if (input.classList.contains('cu-gap-inline-textarea')) {
+          var skipWidthJs = input.classList.contains('cu-gap-standalone') ||
+            input.classList.contains('cu-bc-input');
+          var mobileFluid = typeof window.matchMedia === 'function' && window.matchMedia(
+            '(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)'
+          ).matches;
+          if (!skipWidthJs && !mobileFluid) {
+            var minInlineW = 80;
+            var spanInline = document.getElementById('cu-resize-span');
+            if (!spanInline) {
+              spanInline = document.createElement('span');
+              spanInline.id = 'cu-resize-span';
+              spanInline.style.cssText = 'visibility:hidden;position:absolute;white-space:pre;pointer-events:none;font-size:0.9rem;';
+              document.body.appendChild(spanInline);
+            }
+            spanInline.style.font = window.getComputedStyle(input).font;
+            var measureInline = input.value || input.placeholder || '';
+            var linesInline = measureInline.split(/\r?\n/);
+            var longestInline = linesInline.reduce(function(a, b) {
+              return a.length >= b.length ? a : b;
+            }, '');
+            spanInline.textContent = longestInline || ' ';
+            var newInlineW = Math.max(minInlineW, spanInline.getBoundingClientRect().width + 28);
+            var widthHostInline = input.closest(
+              '.cu-hint-pill, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text'
+            );
+            var maxInlineW = 0;
+            if (widthHostInline && widthHostInline.getBoundingClientRect) {
+              maxInlineW = Math.max(120, Math.floor(widthHostInline.getBoundingClientRect().width - 24));
+            }
+            if (input.classList.contains('cu-input-show-correct')) {
+              var viewportMaxInline = Math.max(minInlineW, Math.floor(window.innerWidth * 0.92));
+              newInlineW = Math.min(newInlineW, viewportMaxInline);
+            } else if (maxInlineW > 0) {
+              newInlineW = Math.min(newInlineW, maxInlineW);
+            }
+            input.style.width = newInlineW + 'px';
+          } else {
+            input.style.width = '';
+            input.style.minWidth = '';
+            if (!input.classList.contains('cu-bc-input')) {
+              input.style.maxWidth = '';
+            }
+          }
+          input.style.height = 'auto';
+          input.style.height = input.scrollHeight + 'px';
+          BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
+          return;
+        }
         if (input.classList.contains('cu-hint-pill-input') || input.classList.contains('cu-pi-input')) {
           var mobilePill = typeof window.matchMedia === 'function' && window.matchMedia(
             '(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)'
