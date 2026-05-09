@@ -1596,7 +1596,10 @@
           if (ex.instructions) html += '<div class="cu-ex-instructions">' + _bold(ex.instructions) + '</div>';
           var questions = ex.questions || [];
           var isWordTickExercise = !questions.length && ex.words && ex.words.length && ex.answer;
-          if (ex.type !== 'drag-category' && !isWordTickExercise) html += self._renderCuWordBank(ex.words);
+          if (ex.type !== 'drag-category' && !isWordTickExercise) {
+            var kwTopClass = ex.type === 'kwtrans' ? ' cu-ex-wordbank--kwtrans-top' : '';
+            html += self._renderCuWordBank(ex.words, kwTopClass);
+          }
 
           if (ex.type === 'grouped') {
             html += self._renderCuGroupedExercise(ex, idBase, secId);
@@ -1622,7 +1625,7 @@
           } else if (ex.type === 'kwtrans') {
             // Key-word transformation (reading4 style) (e.g. Exercise K)
             html += '<div class="cu-ex-items">';
-            html += self._renderCuKwtransItems(questions, idBase, secId);
+            html += self._renderCuKwtransItems(questions, idBase, secId, ex.words);
             html += '</div>';
             if (questions.length) html += self._renderCuExFooter(secId);
           } else if (ex.type === 'sync') {
@@ -1791,10 +1794,11 @@
       return !!(item && (item.sentence || item.sentenceA !== undefined || item.sentenceB !== undefined));
     },
 
-    _renderCuWordBank: function(words) {
+    _renderCuWordBank: function(words, extraClass) {
       var self = this;
       if (!words || !words.length) return '';
-      return '<div class="cu-ex-wordbank">' +
+      var wbClass = 'cu-ex-wordbank' + (extraClass ? ' ' + extraClass : '');
+      return '<div class="' + wbClass + '">' +
         '<span class="material-symbols-outlined">view_list</span>' +
         words.map(function(w) {
           return '<span class="cu-wordbank-item" role="button" tabindex="0" onclick="BentoGrid._clickWordBankItem(this)" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){BentoGrid._clickWordBankItem(this);event.preventDefault();}" title="Click to mark/unmark">' + self._escapeHTML(w) + '</span>';
@@ -2529,10 +2533,15 @@
     },
 
     // --- Key Word Transformation exercise renderer (reading4 style) ---
-    _renderCuKwtransItems: function(questions, idBase, secId) {
+    _renderCuKwtransItems: function(questions, idBase, secId, words) {
       var self = this;
       if (!questions || !questions.length) return '';
       var html = '';
+      var inlineWordbank = words && words.length
+        ? '<div class="cu-kwtrans-wordbank-slot">' +
+            self._renderCuWordBank(words, 'cu-ex-wordbank--kwtrans-inline') +
+          '</div>'
+        : '';
       questions.forEach(function(item, idx) {
         var iId = idBase + '-kw-' + idx;
         var sentence = item.sentence || '';
@@ -2551,6 +2560,7 @@
           '<div class="cu-kwtrans-block">' +
             '<div class="cu-kwtrans-original">' + self._escapeHTML(sentA) + '</div>' +
             (keyword ? '<div class="cu-kwtrans-keyword-row"><span class="cu-kwtrans-keyword">' + self._escapeHTML(keyword) + '</span></div>' : '') +
+            inlineWordbank +
             '<div class="cu-kwtrans-second">' + self._renderCourseExSentenceParts(sentB, iId) + '</div>' +
           '</div>' +
           '<div class="cu-ex-foot"><div class="cu-answer" style="display:none">' + self._escapeHTML(item.answer || '') + '</div></div>' +
@@ -2720,9 +2730,9 @@
         return '<span class="cu-wf-gap-wrap">' +
           '<span class="cu-hint-pill">' +
             '<span class="cu-hint-pill-num">' + num + '</span>' +
-            '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." ' +
+            '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." ' +
               'data-passage-num="' + num + '" data-answer="' + ans + '" ' +
-              'onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">' +
+              'onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
             (hintWord ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>' : '') +
           '</span>' +
         '</span>';
@@ -2776,7 +2786,7 @@
           return '<span class="cu-pi-gap-wrap">' +
             '<span class="cu-hint-pill cu-pi-pill">' +
               '<span class="cu-hint-pill-num">' + num + '</span>' +
-              '<input type="text" id="' + gId + '" class="cu-gap-input cu-pi-input" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '" oninput="BentoGrid._resizeCuInput(this)">' +
+              '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input cu-pi-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." data-passage-num="' + num + '" data-answer="' + ans + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
               (hintWord ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>' : '') +
             '</span>' +
           '</span>';
@@ -3944,7 +3954,7 @@
           // Word-formation gap: input + word-badge together
           var gId = inputIdBase + '_g' + (gapCount++);
           return '<span class="cu-hint-pill">' +
-            '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">' +
+            '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
             '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(p.wfWord) + '</span>' +
             '</span>';
         } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
@@ -3953,7 +3963,7 @@
           if (p.num) {
             pillHtml += '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>';
           }
-          pillHtml += '<input type="text" id="' + gId + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
+          pillHtml += '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           if (p.hint) {
             pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(p.hint) + '</span>';
           }
@@ -3964,9 +3974,9 @@
           var gId1 = inputIdBase + '_g' + (gapCount++);
           var gId2 = inputIdBase + '_g' + (gapCount++);
           var groupHtml = '<span class="cu-hint-pill">' +
-            '<input type="text" id="' + gId1 + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">' +
+            '<textarea id="' + gId1 + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
             '<span class="cu-hint-pill-mid">' + self._escapeHTML(p.midText.trim()) + '</span>' +
-            '<input type="text" id="' + gId2 + '" class="cu-gap-input cu-hint-pill-input" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)">';
+            '<textarea id="' + gId2 + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           if (p.hint) {
             groupHtml += '<span class="cu-hint-pill-word">' + self._escapeHTML(p.hint) + '</span>';
           }
@@ -4068,8 +4078,44 @@
 
     // Auto-resize a course gap input to fit its content (like test inputs)
     _resizeCuInput: function(input) {
-      // Textarea inputs: auto-grow height to show all content without scrolling
+      // Textarea inputs: auto-grow height; hint-pill fields also sync width on desktop
       if (input.tagName === 'TEXTAREA') {
+        if (input.classList.contains('cu-hint-pill-input') || input.classList.contains('cu-pi-input')) {
+          var mobilePill = typeof window.matchMedia === 'function' && window.matchMedia(
+            '(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)'
+          ).matches;
+          if (mobilePill) {
+            input.style.width = '100%';
+            input.style.boxSizing = 'border-box';
+          } else {
+            var minW = 80;
+            var span = document.getElementById('cu-resize-span');
+            if (!span) {
+              span = document.createElement('span');
+              span.id = 'cu-resize-span';
+              span.style.cssText = 'visibility:hidden;position:absolute;white-space:pre;pointer-events:none;font-size:0.9rem;';
+              document.body.appendChild(span);
+            }
+            span.style.font = window.getComputedStyle(input).font;
+            var measure = input.value || input.placeholder || '';
+            var lines = measure.split(/\r?\n/);
+            var longest = lines.reduce(function(a, b) { return a.length >= b.length ? a : b; }, '');
+            span.textContent = longest || ' ';
+            var newW = Math.max(minW, span.getBoundingClientRect().width + 28);
+            var widthHost = input.closest('.cu-hint-pill, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text');
+            var maxW = 0;
+            if (widthHost && widthHost.getBoundingClientRect) {
+              maxW = Math.max(120, Math.floor(widthHost.getBoundingClientRect().width - 24));
+            }
+            if (input.classList.contains('cu-input-show-correct')) {
+              var viewportMax = Math.max(minW, Math.floor(window.innerWidth * 0.92));
+              newW = Math.min(newW, viewportMax);
+            } else if (maxW > 0) {
+              newW = Math.min(newW, maxW);
+            }
+            input.style.width = newW + 'px';
+          }
+        }
         input.style.height = 'auto';
         input.style.height = input.scrollHeight + 'px';
         BentoGrid._saveCuExSectionState(input.closest('.cu-section'));

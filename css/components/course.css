@@ -1358,9 +1358,20 @@
   padding: 3px 8px !important;
   width: 80px;
   min-width: 65px;
+  max-width: 100%;
   font-size: 0.9rem !important;
   font-family: 'Nunito', sans-serif;
   font-weight: 500;
+  resize: none;
+  vertical-align: middle;
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+textarea.cu-hint-pill-input {
+  overflow-wrap: normal;
+  word-break: normal;
 }
 .cu-hint-pill-input:focus {
   border-color: #3b82f6 !important;
@@ -4063,6 +4074,11 @@ textarea.cu-gap-input.cu-gap-textarea {
   line-height: 2;
 }
 
+/* Inline word bank for KW transform: shown on small screens only (see mobile + display rule) */
+.cu-kwtrans-wordbank-slot {
+  display: none;
+}
+
 /* ── Sync (one-word-for-three) exercise ──────────────────────────────── */
 .cu-sync-sentences {
   display: flex;
@@ -4902,9 +4918,116 @@ textarea.cu-gap-input.cu-gap-textarea {
     word-break: break-word;
   }
 
-  /* Inline gaps: underline-style chips so lines wrap without blowing past the card */
-  input.cu-gap-input:not(.cu-gap-textarea),
-  input.cu-hint-pill-input {
+  .cu-kwtrans-wordbank-slot {
+    display: block;
+    margin: 4px 0 10px;
+  }
+
+  .cu-ex-wordbank--kwtrans-top {
+    display: none !important;
+  }
+
+  .cu-kwtrans-wordbank-slot .cu-ex-wordbank {
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-height: 2.75rem;
+    padding: 8px 10px;
+    gap: 5px 8px;
+    align-content: center;
+    border-style: dashed;
+    border-color: rgba(59, 130, 246, 0.22);
+    background: rgba(59, 130, 246, 0.04);
+  }
+
+  /* KW trans match: circular A/B buttons (avoid stretched ovals on narrow rows) */
+  button.cu-ex-kwtrans-label.cu-ab-btn {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    align-self: flex-start;
+    line-height: 1;
+    font-size: 0.76rem;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .cu-wf-gap-wrap,
+  .cu-pi-gap-wrap {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 6px 0;
+  }
+
+  /* Hint-gap "pills": no chrome; stacked field + hint, full width for wrapping textarea */
+  .cu-hint-pill,
+  .cu-hint-pill.cu-pi-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-self: stretch;
+    gap: 6px;
+    width: 100%;
+    max-width: 100%;
+    margin: 6px 0;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    box-sizing: border-box;
+  }
+
+  .cu-hint-pill:focus-within {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .cu-hint-pill-num {
+    align-self: flex-start;
+    background: transparent !important;
+    padding: 0 !important;
+    font-weight: 700;
+    color: #64748b;
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+
+  .cu-hint-pill-word,
+  .cu-hint-pill .cu-hint-word {
+    align-self: flex-start;
+    max-width: 100%;
+    margin-top: 0;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    color: #6d28d9;
+    font-weight: 600;
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .cu-hint-pill-mid {
+    white-space: normal;
+    line-height: 1.5;
+    padding: 2px 0;
+  }
+
+  /* Inline gaps (plain inputs): underline style */
+  input.cu-gap-input:not(.cu-gap-textarea) {
     display: inline-block;
     vertical-align: baseline;
     width: auto !important;
@@ -4921,38 +5044,41 @@ textarea.cu-gap-input.cu-gap-textarea {
     box-sizing: border-box;
   }
 
+  textarea.cu-hint-pill-input {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 2.25rem;
+    margin: 0 !important;
+    padding: 4px 2px 6px !important;
+    font-size: 0.86rem !important;
+    border-radius: 0 !important;
+    border: none !important;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.55) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.5;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    flex: none;
+  }
+
   @supports (field-sizing: content) {
-    input.cu-gap-input:not(.cu-gap-textarea),
-    input.cu-hint-pill-input {
+    input.cu-gap-input:not(.cu-gap-textarea) {
       field-sizing: content;
     }
   }
 
   input.cu-gap-input:not(.cu-gap-textarea):focus,
-  input.cu-hint-pill-input:focus {
+  textarea.cu-hint-pill-input:focus {
     border-bottom-color: #2563eb !important;
     box-shadow: none !important;
     background: rgba(59, 130, 246, 0.06) !important;
-  }
-
-  .cu-hint-pill {
-    max-width: min(100%, calc(100vw - 32px));
-    flex-wrap: wrap;
-    row-gap: 6px;
-    align-items: center;
-    width: max-content;
-    box-sizing: border-box;
-  }
-
-  .cu-hint-pill-input {
-    flex: 0 1 auto;
-    max-width: min(100%, 20ch) !important;
-    min-width: 5ch !important;
-    width: auto !important;
-  }
-
-  .cu-hint-pill-mid {
-    white-space: normal;
   }
 
   .cu-bc-controls {
@@ -4967,10 +5093,10 @@ textarea.cu-gap-input.cu-gap-textarea {
     width: 100% !important;
   }
 
-  .cu-pi-input {
-    min-width: 0;
-    max-width: min(100%, 10rem);
-    width: auto;
+  .cu-pi-input.cu-hint-pill-input {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
   .cu-ex-wordbank,
@@ -4993,17 +5119,17 @@ textarea.cu-gap-input.cu-gap-textarea {
   }
 
   input.cu-gap-input.cu-input-correct:not(.cu-gap-textarea),
-  input.cu-hint-pill-input.cu-input-correct {
+  textarea.cu-hint-pill-input.cu-input-correct {
     border-bottom-color: #059669 !important;
     background: rgba(5, 150, 105, 0.08) !important;
   }
   input.cu-gap-input.cu-input-incorrect:not(.cu-gap-textarea),
-  input.cu-hint-pill-input.cu-input-incorrect {
+  textarea.cu-hint-pill-input.cu-input-incorrect {
     border-bottom-color: #d97706 !important;
     background: rgba(217, 119, 6, 0.08) !important;
   }
   input.cu-gap-input.cu-input-show-correct:not(.cu-gap-textarea),
-  input.cu-hint-pill-input.cu-input-show-correct {
+  textarea.cu-hint-pill-input.cu-input-show-correct {
     border-bottom-color: #7c3aed !important;
     background: rgba(124, 58, 237, 0.08) !important;
   }
