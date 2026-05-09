@@ -5026,7 +5026,8 @@ textarea.cu-gap-input.cu-gap-textarea {
 
   .cu-ex-sentence,
   .cu-bc-sentence,
-  .cu-sync-sentence {
+  .cu-sync-sentence,
+  .cu-passage-text {
     display: block;
     line-height: 1.75;
     overflow-wrap: anywhere;
@@ -5162,6 +5163,40 @@ textarea.cu-gap-input.cu-gap-textarea {
     white-space: normal;
     line-height: 1.5;
     padding: 2px 0;
+  }
+
+  /* Slash hints: contenteditable block field below hint row (same as textarea ordering) */
+  .cu-hint-pill-slash-hint span.cu-inline-gap-wrap.cu-gap-inline-editable.cu-inline-gap-wrap--block {
+    order: 2 !important;
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Non-slash hint pills: no flex row — field + hint flow like normal inline text (ex. B, passage-input F) */
+  .cu-ex-sentence .cu-hint-pill:not(.cu-hint-pill-slash-hint),
+  .cu-bc-sentence .cu-hint-pill:not(.cu-hint-pill-slash-hint),
+  .cu-sync-sentence .cu-hint-pill:not(.cu-hint-pill-slash-hint),
+  .cu-ex-kwtrans-text .cu-hint-pill:not(.cu-hint-pill-slash-hint),
+  .cu-passage-text .cu-hint-pill.cu-pi-pill:not(.cu-hint-pill-slash-hint) {
+    display: inline !important;
+    flex-direction: unset !important;
+    flex-wrap: unset !important;
+    align-items: baseline !important;
+    align-content: unset !important;
+    gap: 0 !important;
+    vertical-align: baseline;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .cu-passage-text .cu-pi-gap-wrap {
+    display: inline !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 2px 0 0;
+    vertical-align: baseline;
   }
 
   /* Sentence gaps (mobile): one contenteditable span (.cu-inline-gap-wrap) — true inline flow + per-line notebook underline */
