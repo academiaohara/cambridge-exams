@@ -4846,10 +4846,12 @@ textarea.cu-gap-input.cu-gap-textarea {
     width: 44px;
     height: 44px;
     min-height: 44px !important;
-    padding: 8px 12px;
+    padding: 0;
     font-size: 0;
     border-radius: 14px;
     justify-content: center;
+    align-items: center;
+    gap: 0;
   }
 
   .cu-check-btn .material-symbols-outlined,
@@ -4857,6 +4859,15 @@ textarea.cu-gap-input.cu-gap-textarea {
   .cu-retry-btn .material-symbols-outlined {
     font-size: 1.25rem;
     margin: 0;
+    line-height: 1;
+  }
+
+  /* Middle column stretches on phones; center icon + label in the bar */
+  .cu-section-nav .cu-entendido-btn {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
   }
 
   .cu-ex-page-dots {
