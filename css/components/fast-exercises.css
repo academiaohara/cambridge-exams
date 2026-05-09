@@ -1266,11 +1266,68 @@
     gap: 10px;
     margin-bottom: 14px;
   }
-  .fe-map-container .fe-map-lesson .fe-map-points-row {
+  .fe-map-container .fe-map-lesson .fe-map-points-row,
+  .cu-unit-section .fe-map-lesson .fe-map-points-row {
     display: flex !important;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
     width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    padding: 2px 0 6px;
+  }
+  .fe-map-container .fe-map-lesson .fe-map-points-row .fe-map-line,
+  .cu-unit-section .fe-map-lesson .fe-map-points-row .fe-map-line {
+    display: none !important;
+  }
+  .fe-map-container .fe-map-lesson .fe-map-points-row > .fe-dot,
+  .cu-unit-section .fe-map-lesson .fe-map-points-row > .fe-dot {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    border-width: 2px;
+  }
+  .fe-map-container .fe-map-lesson .fe-map-points-row > .fe-dot .material-symbols-outlined,
+  .cu-unit-section .fe-map-lesson .fe-map-points-row > .fe-dot .material-symbols-outlined {
+    font-size: 0.82rem;
+  }
+  .fe-map-container .fe-map-lesson .fe-map-points-row > .fe-review-row,
+  .cu-unit-section .fe-map-lesson .fe-map-points-row > .fe-review-row {
+    width: auto;
+    max-width: min(200px, 46vw);
+    flex: 0 0 auto;
+    margin-top: 0;
+    margin-left: 2px;
+    padding: 5px 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .fe-map-container .fe-map-lesson .fe-map-points-row > .fe-review-row .fe-level-name,
+  .cu-unit-section .fe-map-lesson .fe-map-points-row > .fe-review-row .fe-level-name {
+    font-size: 0.72rem;
+  }
+  .fe-map-container .fe-map-lesson .fe-map-points-row > .fe-review-row .fe-level-pct,
+  .cu-unit-section .fe-map-lesson .fe-map-points-row > .fe-review-row .fe-level-pct {
+    font-size: 0.65rem;
+  }
+  .fe-map-container .fe-map-lesson .fe-map-points-row .fe-dot-section-marker .fe-dot-label,
+  .cu-unit-section .fe-map-lesson .fe-map-points-row .fe-dot-section-marker .fe-dot-label {
+    font-size: 0.52rem;
+    font-weight: 800;
+    line-height: 1.05;
+    max-width: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
   }
   .fe-map-lesson-title {
     cursor: default;
