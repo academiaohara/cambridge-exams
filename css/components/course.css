@@ -1745,6 +1745,70 @@ textarea.cu-hint-pill-input {
   margin-top: 8px;
 }
 
+/* Inline gaps: auto-resize textarea flows with sentence text (replaces one-line <input>) */
+.cu-inline-gap-wrap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  vertical-align: text-bottom;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.cu-inline-gap-wrap--block {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin-top: 8px;
+}
+.cu-inline-gap-wrap--block textarea.cu-gap-inline-textarea.cu-gap-standalone {
+  margin-top: 0;
+}
+textarea.cu-gap-input.cu-gap-inline-textarea {
+  display: inline-block;
+  vertical-align: middle;
+  width: 80px;
+  min-width: 5ch;
+  max-width: 100%;
+  min-height: 1.55em;
+  padding: 3px 10px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  line-height: 1.45;
+  color: var(--text-dark, #0f172a);
+  background: #f8fafc;
+  border: 2px solid rgba(59, 130, 246, 0.28);
+  border-radius: 8px;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  margin: 0 3px;
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.06);
+  transition: border-color 0.18s, box-shadow 0.18s, background 0.18s, width 0.12s;
+}
+textarea.cu-gap-input.cu-gap-inline-textarea:focus {
+  border-color: #3b82f6;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16);
+}
+.cu-inline-gap-wrap--block textarea.cu-gap-input.cu-gap-inline-textarea {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+textarea.cu-gap-input.cu-bc-input.cu-gap-inline-textarea {
+  width: 100%;
+  max-width: 100%;
+  flex: 1 1 auto;
+  min-height: 2em;
+  margin: 0;
+}
+
 /* Textarea variant for long free-write answers (e.g. error-correction rewrite exercises) */
 textarea.cu-gap-input.cu-gap-textarea {
   display: block;
@@ -4935,7 +4999,8 @@ textarea.cu-gap-input.cu-gap-textarea {
   }
 
   .cu-ex-sentence,
-  .cu-bc-sentence {
+  .cu-bc-sentence,
+  .cu-sync-sentence {
     line-height: 1.75;
     overflow-wrap: anywhere;
     word-break: break-word;
@@ -5102,13 +5167,14 @@ textarea.cu-gap-input.cu-gap-textarea {
     padding: 2px 0;
   }
 
-  /* Inline gaps (plain inputs): underline style */
-  input.cu-gap-input:not(.cu-gap-textarea) {
+  /* Inline gaps: underline-only, fluid wrap (textarea auto-grows height) */
+  input.cu-gap-input:not(.cu-gap-textarea):not(.cu-cw-input),
+  textarea.cu-gap-input.cu-gap-inline-textarea {
     display: inline-block;
     vertical-align: baseline;
     width: auto !important;
     min-width: 5ch;
-    max-width: min(100%, 20ch);
+    max-width: 100%;
     margin: 4px 2px;
     padding: 3px 6px 5px !important;
     font-size: 0.86rem !important;
@@ -5118,6 +5184,26 @@ textarea.cu-gap-input.cu-gap-textarea {
     background: transparent !important;
     box-shadow: none !important;
     box-sizing: border-box;
+  }
+
+  .cu-inline-gap-wrap:not(.cu-inline-gap-wrap--block) textarea.cu-gap-input.cu-gap-inline-textarea {
+    flex: 1 1 10ch;
+    min-width: 5ch !important;
+    max-width: 100% !important;
+    width: auto !important;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.45;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .cu-inline-gap-wrap--block textarea.cu-gap-input.cu-gap-inline-textarea {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    flex: none;
   }
 
   textarea.cu-hint-pill-input {
@@ -5145,12 +5231,14 @@ textarea.cu-gap-input.cu-gap-textarea {
   }
 
   @supports (field-sizing: content) {
-    input.cu-gap-input:not(.cu-gap-textarea) {
+    input.cu-gap-input:not(.cu-gap-textarea):not(.cu-cw-input),
+    textarea.cu-gap-input.cu-gap-inline-textarea {
       field-sizing: content;
     }
   }
 
-  input.cu-gap-input:not(.cu-gap-textarea):focus,
+  input.cu-gap-input:not(.cu-gap-textarea):not(.cu-cw-input):focus,
+  textarea.cu-gap-input.cu-gap-inline-textarea:focus,
   textarea.cu-hint-pill-input:focus {
     border-bottom-color: #2563eb !important;
     box-shadow: none !important;
@@ -5173,6 +5261,10 @@ textarea.cu-gap-input.cu-gap-textarea {
     min-width: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
+  }
+
+  textarea.cu-bc-input.cu-gap-inline-textarea {
+    display: block !important;
   }
 
   /* Passage-input gaps: same inline underline behaviour as other hint pills */
@@ -5224,17 +5316,20 @@ textarea.cu-gap-input.cu-gap-textarea {
     min-width: 0;
   }
 
-  input.cu-gap-input.cu-input-correct:not(.cu-gap-textarea),
+  input.cu-gap-input.cu-input-correct:not(.cu-gap-textarea):not(.cu-cw-input),
+  textarea.cu-gap-input.cu-gap-inline-textarea.cu-input-correct,
   textarea.cu-hint-pill-input.cu-input-correct {
     border-bottom-color: #059669 !important;
     background: rgba(5, 150, 105, 0.08) !important;
   }
-  input.cu-gap-input.cu-input-incorrect:not(.cu-gap-textarea),
+  input.cu-gap-input.cu-input-incorrect:not(.cu-gap-textarea):not(.cu-cw-input),
+  textarea.cu-gap-input.cu-gap-inline-textarea.cu-input-incorrect,
   textarea.cu-hint-pill-input.cu-input-incorrect {
     border-bottom-color: #d97706 !important;
     background: rgba(217, 119, 6, 0.08) !important;
   }
-  input.cu-gap-input.cu-input-show-correct:not(.cu-gap-textarea),
+  input.cu-gap-input.cu-input-show-correct:not(.cu-gap-textarea):not(.cu-cw-input),
+  textarea.cu-gap-input.cu-gap-inline-textarea.cu-input-show-correct,
   textarea.cu-hint-pill-input.cu-input-show-correct {
     border-bottom-color: #7c3aed !important;
     background: rgba(124, 58, 237, 0.08) !important;
