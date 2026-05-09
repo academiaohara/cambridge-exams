@@ -128,12 +128,47 @@
 
     _renderMobileBottomNav: function(level) {
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+      var profileMarkup = this._buildMobileBottomNavProfileMarkup(_mi);
       return '<nav class="mobile-bottom-nav" aria-label="Mobile dashboard">' +
-        '<button class="mobile-bottom-nav-btn" data-mobile-tab="home" onclick="BentoGrid.setMobileDashboardTab(\'home\')">' + _mi('home') + '<span>Inicio</span></button>' +
-        '<button class="mobile-bottom-nav-btn" data-mobile-tab="learn" onclick="BentoGrid.setMobileDashboardTab(\'learn\')">' + _mi('school') + '<span>Learn</span></button>' +
-        '<button class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
-        '<button class="mobile-bottom-nav-btn mobile-bottom-level" onclick="BentoGrid.openMobileLevelModal()" aria-label="Change level"><strong>' + this._escapeHTML(level || 'C1') + '</strong><span>Level</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="home" onclick="BentoGrid.setMobileDashboardTab(\'home\')">' + _mi('home') + '<span>Inicio</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="learn" onclick="BentoGrid.setMobileDashboardTab(\'learn\')">' + _mi('school') + '<span>Learn</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn mobile-bottom-level" onclick="BentoGrid.openMobileLevelModal()" aria-label="Change level"><strong>' + this._escapeHTML(level || 'C1') + '</strong><span>Level</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn mobile-bottom-nav-profile" onclick="BentoGrid.openMobileProfile()" aria-label="Account">' + profileMarkup + '</button>' +
       '</nav>';
+    },
+
+    _buildMobileBottomNavProfileMarkup: function(_mi) {
+      var isAuth = !!(typeof AppState !== 'undefined' && AppState.isAuthenticated);
+      if (!isAuth) {
+        return _mi('person') + '<span>Sign in</span>';
+      }
+      var avatarUrl = '';
+      var prof = (typeof UserProfile !== 'undefined' && UserProfile._profile) ? UserProfile._profile : null;
+      if (prof && prof.avatar_url) {
+        avatarUrl = String(prof.avatar_url);
+      } else if (typeof Auth !== 'undefined' && Auth.getUser) {
+        var u = Auth.getUser();
+        if (u && u.user_metadata && u.user_metadata.avatar_url) {
+          avatarUrl = String(u.user_metadata.avatar_url);
+        }
+      }
+      if (avatarUrl) {
+        return '<span class="mobile-bottom-nav-avatar-wrap"><img class="mobile-bottom-nav-avatar" src="' + this._escapeHTML(avatarUrl) + '" alt=""></span><span>Profile</span>';
+      }
+      var name = this._getUserName() || 'User';
+      var initials = name.trim().split(/\s+/).map(function(p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || 'Me';
+      return '<span class="mobile-bottom-nav-initials" aria-hidden="true">' + this._escapeHTML(initials) + '</span><span>Profile</span>';
+    },
+
+    openMobileProfile: function() {
+      if (typeof AppState !== 'undefined' && AppState.isAuthenticated) {
+        if (typeof UserProfile !== 'undefined' && UserProfile.renderProfileSection) {
+          UserProfile.renderProfileSection();
+        }
+      } else if (typeof Auth !== 'undefined' && Auth._showAuthModal) {
+        Auth._showAuthModal();
+      }
     },
 
     setMobileDashboardTab: function(tab) {

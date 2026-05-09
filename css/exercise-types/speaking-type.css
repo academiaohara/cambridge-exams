@@ -334,6 +334,9 @@
   transition: all 0.2s;
   font-size: 0.9rem;
   flex-shrink: 0;
+  box-sizing: border-box;
+  aspect-ratio: 1;
+  padding: 0;
 }
 .speaking-end-btn:hover { background: #dc2626; transform: scale(1.1); }
 
@@ -650,6 +653,16 @@
   cursor: pointer;
   font-size: 0.95rem;
   transition: opacity 0.2s, transform 0.1s;
+  box-sizing: border-box;
+  aspect-ratio: 1;
+  padding: 0;
+  flex-shrink: 0;
+}
+.speaking-mic-btn i,
+.speaking-send-btn i,
+.speaking-end-btn i {
+  line-height: 1;
+  display: block;
 }
 .speaking-mic-btn { background: var(--secondary, #1E9D8E); color: var(--white); }
 .speaking-send-btn { background: var(--primary); color: var(--white); }
@@ -1293,6 +1306,21 @@
     justify-content: center;
   }
 
+  .speaking-controls {
+    padding: 0.45rem 0.55rem;
+  }
+
+  .speaking-input-row {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .speaking-text-input {
+    min-width: 0;
+    font-size: 0.84rem;
+    padding: 0.48rem 0.7rem;
+  }
+
   .speaking-img-candidate-badge {
     display: none !important;
   }
@@ -1342,5 +1370,19 @@
     margin-top: 0.5rem;
     border-radius: 6px;
     flex-shrink: 0;
+  }
+}
+
+/* Very narrow phones: typing field full width, icon row below */
+@media (max-width: 420px) {
+  .speaking-chat .speaking-input-row {
+    flex-wrap: wrap;
+  }
+  .speaking-chat .speaking-text-input {
+    flex: 1 0 100%;
+    width: 100%;
+    order: -1;
+    margin-bottom: 0.25rem;
+    max-width: none;
   }
 }

@@ -1062,6 +1062,32 @@
   padding-bottom: 32px;
 }
 
+/* Course unit page header (mobile-friendly) */
+.subpage-header--course-unit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+.subpage-header--course-unit .subpage-header-unit-core {
+  flex: 1;
+  min-width: 0;
+}
+.subpage-header--course-unit .subpage-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  line-height: 1.3;
+  font-size: 1rem;
+  font-weight: 800;
+}
+.subpage-header--course-unit .subpage-subtitle {
+  margin-top: 2px;
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
 /* Section card */
 .cu-section {
   background: rgba(255, 255, 255, 0.94);
@@ -1085,6 +1111,10 @@
 .cu-section-title .material-symbols-outlined {
   font-size: 1.15rem;
   color: #3b82f6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 .cu-theory .cu-section-title .material-symbols-outlined { color: #3b82f6; }
 .cu-exercise .cu-section-title .material-symbols-outlined { color: #8b5cf6; }
@@ -4733,5 +4763,134 @@ textarea.cu-gap-input.cu-gap-textarea {
   .cu-ex-page-dots {
     gap: 7px;
     margin-bottom: 10px;
+  }
+
+  /* Unit header: one compact row on phones */
+  .subpage-header--course-unit {
+    padding: 8px 10px;
+    gap: 8px;
+    border-radius: 14px;
+  }
+  .subpage-header--course-unit .subpage-subtitle {
+    display: none;
+  }
+  .subpage-header--course-unit .subpage-title {
+    font-size: 0.92rem;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .subpage-header--course-unit .subpage-title .material-symbols-outlined {
+    font-size: 1.05rem;
+  }
+
+  .cu-section {
+    padding: 14px 14px;
+    border-radius: 14px;
+  }
+
+  .cu-section-title {
+    font-size: 0.92rem;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    gap: 6px;
+  }
+
+  .cu-ex-sentence,
+  .cu-bc-sentence {
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Inline gaps: underline-style chips so lines wrap without blowing past the card */
+  input.cu-gap-input:not(.cu-gap-textarea),
+  input.cu-hint-pill-input {
+    display: inline-block;
+    vertical-align: baseline;
+    width: auto !important;
+    min-width: 2.75rem;
+    max-width: min(11rem, 88vw);
+    margin: 4px 2px;
+    padding: 3px 6px 5px !important;
+    font-size: 0.86rem !important;
+    border-radius: 0 !important;
+    border: none !important;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.55) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    box-sizing: border-box;
+  }
+
+  input.cu-gap-input:not(.cu-gap-textarea):focus,
+  input.cu-hint-pill-input:focus {
+    border-bottom-color: #2563eb !important;
+    box-shadow: none !important;
+    background: rgba(59, 130, 246, 0.06) !important;
+  }
+
+  .cu-hint-pill {
+    max-width: 100%;
+    flex-wrap: wrap;
+    row-gap: 6px;
+    align-items: center;
+  }
+
+  .cu-hint-pill-mid {
+    white-space: normal;
+  }
+
+  .cu-bc-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cu-bc-input {
+    flex: 1 1 auto;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .cu-pi-input {
+    min-width: 0;
+    max-width: min(100%, 10rem);
+    width: auto;
+  }
+
+  .cu-ex-wordbank,
+  .cu-ex-instructions {
+    font-size: 0.8rem;
+    padding: 8px 10px;
+    line-height: 1.45;
+  }
+
+  .cu-wordbank-item {
+    font-size: 0.76rem;
+    padding: 4px 8px;
+  }
+
+  .cu-ex-item {
+    padding: 12px 12px;
+    padding-top: 20px;
+    min-width: 0;
+  }
+
+  input.cu-gap-input.cu-input-correct:not(.cu-gap-textarea),
+  input.cu-hint-pill-input.cu-input-correct {
+    border-bottom-color: #059669 !important;
+    background: rgba(5, 150, 105, 0.08) !important;
+  }
+  input.cu-gap-input.cu-input-incorrect:not(.cu-gap-textarea),
+  input.cu-hint-pill-input.cu-input-incorrect {
+    border-bottom-color: #d97706 !important;
+    background: rgba(217, 119, 6, 0.08) !important;
+  }
+  input.cu-gap-input.cu-input-show-correct:not(.cu-gap-textarea),
+  input.cu-hint-pill-input.cu-input-show-correct {
+    border-bottom-color: #7c3aed !important;
+    background: rgba(124, 58, 237, 0.08) !important;
   }
 }

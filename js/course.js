@@ -145,13 +145,15 @@
       if (!leftSidebar || !centerSection) return;
 
       var headerHtml =
-        '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
-          '<div class="subpage-header-titles">' +
-            '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
-            '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
+        '<div class="subpage-header subpage-header--with-levels">' +
+          '<button type="button" class="subpage-back-btn" onclick="BentoGrid.openLessons()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
+          '<div class="subpage-header-core">' +
+            '<div class="subpage-header-titles">' +
+              '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
+              '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
+            '</div>' +
+            BentoGrid._buildCourseTheoryLevelButtons(level) +
           '</div>' +
-          BentoGrid._buildCourseTheoryLevelButtons(level) +
         '</div>';
 
       if (indexData && indexData.items && indexData.items.length > 0) {
@@ -197,11 +199,15 @@
     _buildCourseTheoryLevelButtons: function(activeLevel) {
       var currentLevel = (activeLevel || '').toUpperCase();
       var levels = ['B1', 'B2', 'C1'];
+      var icons = { B1: 'school', B2: 'workspace_premium', C1: 'auto_stories' };
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var buttons = levels.map(function(lv) {
         var isActive = lv === currentLevel;
         var style = isActive ? 'background:#0369a1' : 'background:#0284c7';
         var action = isActive ? 'return false;' : 'event.stopPropagation();BentoGrid.openCourseTheory(\'' + lv + '\')';
-        return '<button class="fe-cat-level-btn' + (isActive ? ' active' : '') + '" style="' + style + '" onclick="' + action + '">' + lv + '</button>';
+        var ic = icons[lv] || 'school';
+        return '<button type="button" class="fe-cat-level-btn fe-cat-level-btn--icon' + (isActive ? ' active' : '') + '" style="' + style + '" onclick="' + action + '" title="' + lv + '">' +
+          _mi(ic) + '<span class="fe-cat-level-btn-label">' + lv + '</span></button>';
       }).join('');
       return '<div class="fe-cat-level-btns fe-cat-level-btns-header">' + buttons + '</div>';
     },
@@ -211,9 +217,9 @@
 
       // Theory tile: full-width card styled like fe-category-card with B1/B2/C1 level buttons
       var theoryLevelBtns =
-        '<button class="fe-cat-level-btn" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'B1\')">B1</button>' +
-        '<button class="fe-cat-level-btn" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'B2\')">B2</button>' +
-        '<button class="fe-cat-level-btn" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'C1\')">C1</button>';
+        '<button type="button" class="fe-cat-level-btn fe-cat-level-btn--icon" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'B1\')">' + _mi('school') + '<span class="fe-cat-level-btn-label">B1</span></button>' +
+        '<button type="button" class="fe-cat-level-btn fe-cat-level-btn--icon" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'B2\')">' + _mi('workspace_premium') + '<span class="fe-cat-level-btn-label">B2</span></button>' +
+        '<button type="button" class="fe-cat-level-btn fe-cat-level-btn--icon" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'C1\')">' + _mi('auto_stories') + '<span class="fe-cat-level-btn-label">C1</span></button>';
       var theoryCard =
         '<div class="fe-category-card fe-category-card--theory" style="--cat-color:#0284c7" onclick="BentoGrid.openCourseTheory()">' +
           '<div class="fe-category-card-header">' +
@@ -326,13 +332,15 @@
       var level = BentoGrid._courseLevel || 'C1';
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var headerHtml =
-        '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="BentoGrid.openLessons()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
-          '<div class="subpage-header-titles">' +
-            '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
-            '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
+        '<div class="subpage-header subpage-header--with-levels">' +
+          '<button type="button" class="subpage-back-btn" onclick="BentoGrid.openLessons()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
+          '<div class="subpage-header-core">' +
+            '<div class="subpage-header-titles">' +
+              '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
+              '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
+            '</div>' +
+            BentoGrid._buildCourseTheoryLevelButtons(level) +
           '</div>' +
-          BentoGrid._buildCourseTheoryLevelButtons(level) +
         '</div>';
       centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
       BentoGrid._bindCourseOverviewFilterEvents();
@@ -709,9 +717,9 @@
         : '';
 
       var html =
-        '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="' + backFn + '" title="' + backLabel + '">' + _mi('arrow_back') + '<span>' + backLabel + '</span></button>' +
-          '<div>' +
+        '<div class="subpage-header subpage-header--course-unit">' +
+          '<button type="button" class="subpage-back-btn" onclick="' + backFn + '" title="' + backLabel + '">' + _mi('arrow_back') + '<span>' + backLabel + '</span></button>' +
+          '<div class="subpage-header-unit-core">' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' ' + (unitData.unitTitle || '') + '</div>' +
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
           '</div>' +

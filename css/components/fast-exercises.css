@@ -180,6 +180,25 @@
   text-align: center;
 }
 
+.fe-cat-level-btn.fe-cat-level-btn--icon {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  line-height: 1;
+  min-height: 44px;
+}
+.fe-cat-level-btn.fe-cat-level-btn--icon .material-symbols-outlined {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.fe-cat-level-btn-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
 .subpage-header--with-levels .subpage-header-core {
   flex: 1;
   min-width: 0;
@@ -235,6 +254,19 @@
 
   .subpage-header--with-levels .subpage-info-btn {
     align-self: flex-start;
+  }
+
+  /* Course theory: level pills in a row under the title on small screens */
+  .subpage-header--with-levels .fe-cat-level-btns-header {
+    flex-direction: row;
+    align-self: stretch;
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .subpage-header--with-levels .fe-cat-level-btns-header .fe-cat-level-btn {
+    flex: 1;
+    min-width: 0;
   }
 
   .fe-subpage-level-row {
