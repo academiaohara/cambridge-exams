@@ -667,7 +667,7 @@
           var lessonClass = lessonLocked ? 'fe-lesson-locked' : (lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending'));
 
           html += '<div class="fe-map-lesson ' + lessonClass + '" data-lesson-global-idx="' + li + '">' +
-            '<div class="fe-map-lesson-title" role="button" tabindex="0" onclick="FastExercises._mobileLessonTitleClick(event,\'' + catMeta.id + '\',\'' + activeLevel + '\',' + li + ')">' +
+            '<div class="fe-map-lesson-title">' +
               '<span class="fe-map-lesson-num">' + 'Lesson' + ' ' + (li + 1) + '</span>' +
               '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
             '</div>' +
@@ -823,37 +823,7 @@
     },
 
     _mobileLessonTitleClick: function(e, categoryId, levelId, lessonGlobalIdx) {
-      if (typeof window.matchMedia !== 'function' || !window.matchMedia('(max-width: 640px)').matches) return;
-      if (e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      var page = document.querySelector('.fe-map-page.fe-map-page-active');
-      var container = page ? page.querySelector('.fe-map-container') : document.querySelector('.fe-map-container');
-      var outer = document.querySelector('.fe-map-outer');
-      if (!container || !outer) return;
-      var lessons = container.querySelectorAll('.fe-map-lesson');
-      var lessonEl = null;
-      for (var i = 0; i < lessons.length; i++) {
-        if (parseInt(lessons[i].getAttribute('data-lesson-global-idx'), 10) === lessonGlobalIdx) {
-          lessonEl = lessons[i];
-          break;
-        }
-      }
-      if (!lessonEl || lessonEl.classList.contains('fe-lesson-locked')) return;
-      outer.classList.add('fe-mobile-roadmap-active');
-      container.classList.add('fe-mobile-roadmap-active');
-      var feSection = document.querySelector('.dashboard-center .fe-section');
-      if (feSection) feSection.classList.add('fe-mobile-lesson-drill-active');
-      for (var j = 0; j < lessons.length; j++) {
-        lessons[j].classList.remove('fe-map-lesson-mobile-selected');
-        var pr = lessons[j].querySelector('.fe-map-points-row');
-        if (pr) pr.classList.remove('fe-mobile-vertical-roadmap');
-      }
-      lessonEl.classList.add('fe-map-lesson-mobile-selected');
-      var row = lessonEl.querySelector('.fe-map-points-row');
-      if (row) row.classList.add('fe-mobile-vertical-roadmap');
-      requestAnimationFrame(function() { FastExercises._compactDots(); });
+      /* Mobile roadmap drill-in removed: lessons scroll in the map instead. */
     },
 
     _closeMobileLessonRoadmap: function() {
@@ -6214,11 +6184,13 @@
         '</div>' +
         '<div class="vocab-cw-active-def" id="cw-active-def"><em>Click a clue to begin</em></div>' +
         '<div class="vocab-cw-board">' +
-          '<div class="vocab-cw-grid-outer" style="--cw-cols:' + cols + '">' +
+          '<div class="vocab-cw-grid-outer" style="--cw-cols:' + cols + ';--cw-rows:' + rows + '">' +
+            '<div class="vocab-cw-grid-viewport">' +
             '<div class="vocab-cw-grid-wrap" id="cw-grid-wrap">' +
               '<div class="vocab-cw-grid" id="cw-grid" style="grid-template-columns:repeat(' + cols + ',var(--cw-cell-size,36px))">' +
                 gridHtml +
               '</div>' +
+            '</div>' +
             '</div>' +
             '<div class="vocab-cw-wordle-area" id="cw-wordle-area" style="display:none"></div>' +
           '</div>' +
