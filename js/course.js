@@ -308,7 +308,7 @@
       var blockHasProgress = blockItems.some(function(i) { return !!blockProgress[i.id]; });
       var isPtBlock = /^pt\d+$/.test(blockKey);
       var resetBlockBtn = (!isPtBlock && blockHasProgress)
-        ? '<button class="cu-reset-btn" onclick="BentoGrid._resetCourseBlock(\'' + blockKey + '\')" title="Restart block">' + _mi('restart_alt') + '<span>Restart</span></button>'
+        ? '<button class="cu-reset-btn" onclick="BentoGrid._resetCourseBlock(\'' + blockKey + '\')" title="Restart block">' + _mi('refresh') + '<span>Restart</span></button>'
         : '';
       var blockLabel = BentoGrid._getBlockLabel(blockKey);
       var headerHtml =
@@ -412,7 +412,7 @@
             });
             html += '</div>';
           } else {
-            html += '<div class="cu-pt-block-cta">' + (isPtDone ? _mi('restart_alt') + ' Retake Test' : _mi('play_arrow') + ' Take the Test') + '</div>';
+            html += '<div class="cu-pt-block-cta">' + (isPtDone ? _mi('refresh') + ' Retake Test' : _mi('play_arrow') + ' Take the Test') + '</div>';
           }
           html += '</div>';
         } else {
@@ -713,7 +713,7 @@
       var backLabel = blockNum ? BentoGrid._getBlockLabel(String(blockNum)) : 'Back';
       var unitHasProgress = !!(BentoGrid._getCourseSectionProgress(level)[unitId] && Object.keys(BentoGrid._getCourseSectionProgress(level)[unitId]).length);
       var resetUnitBtn = (unitData.type !== 'progress_test' && unitHasProgress)
-        ? '<button class="cu-reset-btn" onclick="BentoGrid._resetCourseUnit(\'' + unitId + '\')" title="Restart unit">' + _mi('restart_alt') + '<span>Restart</span></button>'
+        ? '<button class="cu-reset-btn" onclick="BentoGrid._resetCourseUnit(\'' + unitId + '\')" title="Restart unit">' + _mi('refresh') + '<span>Restart</span></button>'
         : '';
 
       var html =
@@ -5113,7 +5113,7 @@
             : ' onclick="BentoGrid._selectCourseBlock(\'' + bk + '\')" style="cursor:pointer"')
           : '';
         var resetBlockOverviewBtn = (hasAvailable && doneCount > 0)
-          ? '<button class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseBlock(\'' + bk + '\')" title="Restart block">' + _mi('restart_alt') + '</button>'
+          ? '<button class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseBlock(\'' + bk + '\')" title="Restart block">' + _mi('refresh') + '</button>'
           : '';
         html += '<div class="cu-block-card-header"' + headerOnClick + '>' +
           '<span class="cu-block-num">' + self._escapeHTML(BentoGrid._getBlockLabel(bk)) + '</span>' +
@@ -5137,7 +5137,7 @@
 
           if (isAvail) {
             var resetUnitOverviewBtn = isDone
-              ? '<button class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseUnit(\'' + item.id + '\')" title="Restart unit">' + _mi('restart_alt') + '</button>'
+              ? '<button class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseUnit(\'' + item.id + '\')" title="Restart unit">' + _mi('refresh') + '</button>'
               : '';
             html += '<div class="cu-block-unit-row cu-block-unit-available" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'data/Course/' + level + '/' + item.file + '\')">' +
               '<span class="cu-bur-icon" style="color:' + typeColor + '">' + _mi(typeIcon) + '</span>' +

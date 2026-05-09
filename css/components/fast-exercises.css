@@ -256,17 +256,42 @@
     align-self: flex-start;
   }
 
-  /* Course theory: level pills in a row under the title on small screens */
-  .subpage-header--with-levels .fe-cat-level-btns-header {
-    flex-direction: row;
-    align-self: stretch;
-    width: 100%;
-    justify-content: space-between;
+  /* Level pills: fixed strip above safe area (matches mobile-bottom-nav feel) */
+  .subpage-header--with-levels .fe-cat-level-btns-header,
+  .subpage-header--with-levels .fe-subpage-level-row {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: max(10px, env(safe-area-inset-bottom, 0px));
+    z-index: 1190;
+    flex-direction: row !important;
+    align-self: stretch !important;
+    width: auto !important;
+    margin: 0 10px;
+    padding: 6px 8px;
+    justify-content: stretch;
     gap: 6px;
+    border-radius: 16px;
+    border: 1px solid rgba(45, 46, 95, 0.1);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 -4px 22px rgba(45, 46, 95, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
-  .subpage-header--with-levels .fe-cat-level-btns-header .fe-cat-level-btn {
+
+  .subpage-header--with-levels .fe-cat-level-btns-header .fe-cat-level-btn,
+  .subpage-header--with-levels .fe-subpage-level-row .fe-subpage-lv-btn {
     flex: 1;
     min-width: 0;
+  }
+
+  .dashboard-center .fe-section:has(.subpage-header--with-levels) {
+    padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .fe-section.fe-mobile-lesson-drill-active .fe-subpage-level-row,
+  .fe-section.fe-mobile-lesson-drill-active .fe-cat-level-btns-header {
+    display: none !important;
   }
 
   .fe-subpage-level-row {

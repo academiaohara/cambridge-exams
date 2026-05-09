@@ -71,12 +71,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-width: 0;
 }
 
 .cu-section-nav-center .cu-ex-footer {
   margin-top: 0;
   padding-top: 0;
   border-top: none;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.cu-section-nav-center .cu-ex-footer > * {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
 }
 
@@ -724,6 +734,20 @@
   min-height: 36px;
   justify-content: center;
   font-size: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--text-medium, #64748b);
+}
+
+.cu-reset-btn-sm:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.cu-reset-btn-sm:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.45);
+  outline-offset: 2px;
 }
 
 .cu-reset-btn-sm .material-symbols-outlined {
@@ -4703,8 +4727,13 @@ textarea.cu-gap-input.cu-gap-textarea {
     gap: 8px;
   }
 
+  .cu-section-nav > :nth-child(2) {
+    justify-self: stretch;
+    min-width: 0;
+  }
+
   .cu-nav-btn,
-  .cu-reset-btn,
+  .cu-reset-btn:not(.cu-reset-btn-sm),
   #courseCenterSection .subpage-back-btn {
     gap: 0;
     min-width: 42px;
@@ -4717,7 +4746,7 @@ textarea.cu-gap-input.cu-gap-textarea {
   }
 
   .cu-nav-btn .material-symbols-outlined,
-  .cu-reset-btn .material-symbols-outlined,
+  .cu-reset-btn:not(.cu-reset-btn-sm) .material-symbols-outlined,
   .subpage-back-btn .material-symbols-outlined {
     font-size: 1.25rem;
   }
@@ -4729,6 +4758,13 @@ textarea.cu-gap-input.cu-gap-textarea {
     height: 40px;
     padding: 0;
     justify-content: center;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .cu-reset-btn-sm:hover {
+    background: rgba(239, 68, 68, 0.12) !important;
   }
 
   .cu-reset-btn-sm .material-symbols-outlined {
@@ -4812,7 +4848,7 @@ textarea.cu-gap-input.cu-gap-textarea {
     vertical-align: baseline;
     width: auto !important;
     min-width: 2.75rem;
-    max-width: min(11rem, 88vw);
+    max-width: min(100%, calc(100vw - 56px));
     margin: 4px 2px;
     padding: 3px 6px 5px !important;
     font-size: 0.86rem !important;
@@ -4832,10 +4868,18 @@ textarea.cu-gap-input.cu-gap-textarea {
   }
 
   .cu-hint-pill {
-    max-width: 100%;
+    max-width: min(100%, calc(100vw - 32px));
     flex-wrap: wrap;
     row-gap: 6px;
     align-items: center;
+    width: max-content;
+    box-sizing: border-box;
+  }
+
+  .cu-hint-pill-input {
+    flex: 1 1 6rem;
+    max-width: 100% !important;
+    min-width: 2.75rem !important;
   }
 
   .cu-hint-pill-mid {
