@@ -5672,7 +5672,7 @@
   .vocab-cw-word-strip {
     padding-bottom: 4px;
   }
-  /* Grid keeps a readable cell size; pan horizontally (and vertically if needed) like zoomed content */
+  /* Grid keeps a readable cell size; pan horizontally like zoomed content (page scroll for tall grids) */
   .vocab-cw-grid-outer {
     width: 100%;
     max-width: 100%;
