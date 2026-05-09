@@ -1745,11 +1745,6 @@ textarea.cu-hint-pill-input {
   margin-top: 8px;
 }
 
-/* Mobile inline CE wrapper: no box — children participate directly in the sentence line boxes */
-.cu-inline-gap-wrap--ce {
-  display: contents;
-}
-
 /* Inline gaps: auto-resize textarea flows with sentence text (replaces one-line <input>) */
 .cu-inline-gap-wrap {
   display: inline-flex;
@@ -5032,6 +5027,7 @@ textarea.cu-gap-input.cu-gap-textarea {
   .cu-ex-sentence,
   .cu-bc-sentence,
   .cu-sync-sentence {
+    display: block;
     line-height: 1.75;
     overflow-wrap: anywhere;
     word-break: break-word;
@@ -5168,12 +5164,16 @@ textarea.cu-gap-input.cu-gap-textarea {
     padding: 2px 0;
   }
 
-  /* Sentence gaps (mobile): contenteditable is true inline — wraps with surrounding words, not as one atomic box */
-  span.cu-gap-input.cu-gap-inline-editable {
-    display: inline;
+  /* Sentence gaps (mobile): one contenteditable span (.cu-inline-gap-wrap) — true inline flow + per-line notebook underline */
+  span.cu-inline-gap-wrap.cu-gap-inline-editable:not(.cu-inline-gap-wrap--block) {
+    display: inline !important;
     vertical-align: baseline;
-    min-width: 3ch;
-    padding: 0 2px 2px;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    flex: none !important;
+    flex-grow: 0 !important;
+    padding: 0 2px 1px;
     margin: 0 1px;
     font-size: inherit;
     line-height: inherit;
@@ -5181,16 +5181,20 @@ textarea.cu-gap-input.cu-gap-textarea {
     font-weight: inherit;
     color: inherit;
     letter-spacing: inherit;
+    text-decoration: none;
     word-wrap: break-word;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
     word-break: break-word;
     white-space: pre-wrap;
-    border: none;
+    border: none !important;
     border-radius: 0;
-    border-bottom: 2px solid rgba(59, 130, 246, 0.55);
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-    background: transparent;
+    background-color: transparent;
+    background-image: linear-gradient(to right, #7a9cff 100%, #7a9cff 100%);
+    background-position: 0 1.15em;
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
     box-shadow: none;
     outline: none;
     cursor: text;
@@ -5199,27 +5203,58 @@ textarea.cu-gap-input.cu-gap-textarea {
     box-sizing: border-box;
   }
 
-  span.cu-gap-input.cu-gap-inline-editable:focus {
-    border-bottom-color: #2563eb;
-    background: rgba(59, 130, 246, 0.06);
+  span.cu-inline-gap-wrap.cu-gap-inline-editable:not(.cu-inline-gap-wrap--block):focus {
+    background-color: rgba(59, 130, 246, 0.06);
+    background-image: linear-gradient(to right, #2563eb 100%, #2563eb 100%);
+    background-position: 0 1.15em;
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
   }
 
-  span.cu-gap-input.cu-gap-inline-editable.cu-gap-editable-empty[data-placeholder]::before {
+  span.cu-inline-gap-wrap.cu-gap-inline-editable.cu-gap-editable-empty[data-placeholder]::before {
     content: attr(data-placeholder);
     color: #94a3b8;
     pointer-events: none;
   }
 
-  .cu-inline-gap-wrap--block span.cu-gap-input.cu-gap-inline-editable {
-    display: block;
-    width: 100%;
-    max-width: none;
+  span.cu-inline-gap-wrap.cu-inline-gap-wrap--block.cu-gap-inline-editable {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    flex: none !important;
     box-sizing: border-box;
     margin-left: 0;
     margin-right: 0;
+    margin-top: 6px;
+    text-decoration: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    border: none !important;
+    border-radius: 0;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background-color: transparent;
+    background-image: linear-gradient(to right, #7a9cff 100%, #7a9cff 100%);
+    background-position: 0 1.15em;
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+    outline: none;
+    cursor: text;
+    -webkit-user-select: text;
+    user-select: text;
   }
 
-  span.cu-gap-input.cu-gap-inline-editable[contenteditable="false"] {
+  span.cu-inline-gap-wrap.cu-inline-gap-wrap--block.cu-gap-inline-editable:focus {
+    background-color: rgba(59, 130, 246, 0.06);
+    background-image: linear-gradient(to right, #2563eb 100%, #2563eb 100%);
+    background-position: 0 1.15em;
+    background-size: 100% 2px;
+    background-repeat: no-repeat;
+  }
+
+  span.cu-inline-gap-wrap.cu-gap-inline-editable[contenteditable="false"] {
     cursor: default;
     opacity: 0.92;
   }
@@ -5374,23 +5409,44 @@ textarea.cu-gap-input.cu-gap-textarea {
 
   input.cu-gap-input.cu-input-correct:not(.cu-gap-textarea):not(.cu-cw-input),
   textarea.cu-gap-input.cu-gap-inline-textarea.cu-input-correct,
-  span.cu-gap-input.cu-gap-inline-editable.cu-input-correct,
   textarea.cu-hint-pill-input.cu-input-correct {
     border-bottom-color: #059669 !important;
     background: rgba(5, 150, 105, 0.08) !important;
   }
+  span.cu-inline-gap-wrap.cu-gap-inline-editable.cu-input-correct {
+    border: none !important;
+    background-color: rgba(5, 150, 105, 0.08) !important;
+    background-image: linear-gradient(to right, #059669 100%, #059669 100%) !important;
+    background-position: 0 1.15em !important;
+    background-size: 100% 2px !important;
+    background-repeat: no-repeat !important;
+  }
   input.cu-gap-input.cu-input-incorrect:not(.cu-gap-textarea):not(.cu-cw-input),
   textarea.cu-gap-input.cu-gap-inline-textarea.cu-input-incorrect,
-  span.cu-gap-input.cu-gap-inline-editable.cu-input-incorrect,
   textarea.cu-hint-pill-input.cu-input-incorrect {
     border-bottom-color: #d97706 !important;
     background: rgba(217, 119, 6, 0.08) !important;
   }
+  span.cu-inline-gap-wrap.cu-gap-inline-editable.cu-input-incorrect {
+    border: none !important;
+    background-color: rgba(217, 119, 6, 0.08) !important;
+    background-image: linear-gradient(to right, #d97706 100%, #d97706 100%) !important;
+    background-position: 0 1.15em !important;
+    background-size: 100% 2px !important;
+    background-repeat: no-repeat !important;
+  }
   input.cu-gap-input.cu-input-show-correct:not(.cu-gap-textarea):not(.cu-cw-input),
   textarea.cu-gap-input.cu-gap-inline-textarea.cu-input-show-correct,
-  span.cu-gap-input.cu-gap-inline-editable.cu-input-show-correct,
   textarea.cu-hint-pill-input.cu-input-show-correct {
     border-bottom-color: #7c3aed !important;
     background: rgba(124, 58, 237, 0.08) !important;
+  }
+  span.cu-inline-gap-wrap.cu-gap-inline-editable.cu-input-show-correct {
+    border: none !important;
+    background-color: rgba(124, 58, 237, 0.08) !important;
+    background-image: linear-gradient(to right, #7c3aed 100%, #7c3aed 100%) !important;
+    background-position: 0 1.15em !important;
+    background-size: 100% 2px !important;
+    background-repeat: no-repeat !important;
   }
 }
