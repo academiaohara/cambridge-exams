@@ -3732,16 +3732,17 @@
       // Individual sub-patterns:
       //   numParen    – optional number-only parens like "(1) "
       //   hintParen   – hint text in parens like "(you)" or "(I / just)"
-      //   gapMarker   – five or more dots/ellipsis characters or underscore blanks
+      //   gapMarker   – five or more dots/ellipsis, or four+ underscores (e.g. "____")
       //   boldMarker  – text enclosed in **double asterisks**
       var numParen    = '(\\(\\d+\\)\\s+)?';
       var hintParen   = '\\(([^)]+)\\)';
-      var gapMarker   = '(?:[.\\u2026]{5,}|\\u2026{2,}|_{5,})';
+      var gapMarker   = '(?:[.\\u2026]{5,}|\\u2026{2,}|_{4,})';
       var boldMarker  = '\\*\\*[^*]+\\*\\*';
       var strikeMarker = '\\*[^*]+\\*';
       var tokenRegex = new RegExp(
         numParen + hintParen + '\\s*' + gapMarker +    // Pattern A: (num?) (hint) gap
         '|' + gapMarker + '\\s*' + hintParen +         // Pattern B: gap (hint)
+        '|' + gapMarker + '\\s*' + '\\[([^\\]]+)\\]' + // Pattern B2: gap [hint]
         '|' + gapMarker +                              // Simple gap
         '|' + boldMarker +                             // Bold text **...**
         '|' + strikeMarker,                            // Strikethrough text *...*
@@ -3770,6 +3771,9 @@
         } else if (match[3] !== undefined) {
           // Pattern B: gap (hint)
           parts.push({ type: 'gap-hint', hint: match[3].trim() });
+        } else if (match[4] !== undefined) {
+          // Pattern B2: gap [hint] — e.g. word-formation style "____ [write]"
+          parts.push({ type: 'gap-hint', hint: match[4].trim(), hintBrackets: true });
         } else if (m.startsWith('**')) {
           // Bold marker **...**
           var inner = m.slice(2, -2);
@@ -3965,7 +3969,8 @@
           }
           pillHtml += '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
           if (p.hint) {
-            pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(p.hint) + '</span>';
+            var hintShown = p.hintBrackets ? ('[' + p.hint + ']') : p.hint;
+            pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(hintShown) + '</span>';
           }
           pillHtml += '</span>';
           return pillHtml;
@@ -4085,7 +4090,10 @@
             '(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)'
           ).matches;
           if (mobilePill) {
-            input.style.width = '100%';
+            /* Let CSS (inline-flex + flex) size the field so the gap flows in the sentence
+               and wraps with the hint like printed text — avoid full-width blocks on phones. */
+            input.style.width = '';
+            input.style.minWidth = '';
             input.style.boxSizing = 'border-box';
           } else {
             var minW = 80;

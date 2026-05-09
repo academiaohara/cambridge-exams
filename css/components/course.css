@@ -4973,32 +4973,37 @@ textarea.cu-gap-input.cu-gap-textarea {
     appearance: none;
   }
 
+  /* Keep gaps inside the sentence flow (not full-width rows) so text + answer + hint wrap
+     naturally, e.g. "… he [answer wraps] [write] a letter …" */
   .cu-wf-gap-wrap,
   .cu-pi-gap-wrap {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: auto;
     max-width: 100%;
     box-sizing: border-box;
-    margin: 6px 0;
+    margin: 0 2px 2px;
+    vertical-align: text-bottom;
   }
 
-  /* Hint-gap "pills": no chrome; stacked field + hint, full width for wrapping textarea */
+  /* Hint-gap: one compact row (num + underline field + hint); wraps as a unit in the passage */
   .cu-hint-pill,
   .cu-hint-pill.cu-pi-pill {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    align-self: stretch;
-    gap: 6px;
-    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    align-content: flex-start;
+    gap: 4px 8px;
+    width: auto;
     max-width: 100%;
-    margin: 6px 0;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0 1px !important;
     background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     box-sizing: border-box;
+    vertical-align: text-bottom;
   }
 
   .cu-hint-pill:focus-within {
@@ -5007,28 +5012,32 @@ textarea.cu-gap-input.cu-gap-textarea {
   }
 
   .cu-hint-pill-num {
-    align-self: flex-start;
-    background: transparent !important;
-    padding: 0 !important;
+    flex-shrink: 0;
+    align-self: flex-end;
+    margin-bottom: 2px;
+    background: rgba(226, 232, 240, 0.9) !important;
+    padding: 1px 5px !important;
+    border-radius: 6px;
     font-weight: 700;
     color: #64748b;
-    font-size: 0.72rem;
-    line-height: 1.3;
+    font-size: 0.68rem;
+    line-height: 1.25;
   }
 
   .cu-hint-pill-word,
   .cu-hint-pill .cu-hint-word {
-    align-self: flex-start;
+    flex-shrink: 0;
+    align-self: flex-end;
     max-width: 100%;
-    margin-top: 0;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    color: #6d28d9;
+    margin: 0 0 2px 1px;
+    padding: 1px 7px !important;
+    border-radius: 6px !important;
+    background: rgba(124, 58, 237, 0.12) !important;
+    border: 1px solid rgba(124, 58, 237, 0.28) !important;
+    color: #5b21b6;
     font-weight: 600;
-    font-size: 0.78rem;
-    line-height: 1.4;
+    font-size: 0.74rem;
+    line-height: 1.35;
   }
 
   .cu-hint-pill-mid {
@@ -5057,13 +5066,14 @@ textarea.cu-gap-input.cu-gap-textarea {
 
   textarea.cu-hint-pill-input {
     display: block;
-    width: 100% !important;
+    flex: 1 1 10ch;
+    width: auto !important;
     max-width: 100% !important;
-    min-width: 0 !important;
-    min-height: 2.25rem;
-    margin: 0 !important;
-    padding: 4px 2px 6px !important;
-    font-size: 0.86rem !important;
+    min-width: 5ch !important;
+    min-height: 1.75rem;
+    margin: 0 2px 2px 0 !important;
+    padding: 2px 2px 5px !important;
+    font-size: 0.9rem !important;
     border-radius: 0 !important;
     border: none !important;
     border-bottom: 2px solid rgba(59, 130, 246, 0.55) !important;
@@ -5073,10 +5083,9 @@ textarea.cu-gap-input.cu-gap-textarea {
     white-space: pre-wrap;
     overflow-wrap: break-word;
     word-break: break-word;
-    line-height: 1.5;
+    line-height: 1.45;
     overflow-x: hidden;
     overflow-y: hidden;
-    flex: none;
   }
 
   @supports (field-sizing: content) {
@@ -5104,10 +5113,11 @@ textarea.cu-gap-input.cu-gap-textarea {
     width: 100% !important;
   }
 
+  /* Passage-input gaps: same inline underline behaviour as other hint pills */
   .cu-pi-input.cu-hint-pill-input {
-    min-width: 0 !important;
+    min-width: 5ch !important;
     max-width: 100% !important;
-    width: 100% !important;
+    width: auto !important;
   }
 
   .cu-ex-wordbank,
