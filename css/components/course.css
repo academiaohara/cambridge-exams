@@ -5052,6 +5052,50 @@ textarea.cu-gap-input.cu-gap-textarea {
     line-height: 1.35;
   }
 
+  /* Slash-separated hints (e.g. I / just): hint (+ optional num) on first row, full-width input below */
+  .cu-hint-pill.cu-hint-pill-slash-hint {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    align-content: flex-start;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cu-hint-pill-slash-hint .cu-hint-pill-num {
+    order: 1;
+  }
+
+  .cu-hint-pill-slash-hint:has(.cu-hint-pill-num) .cu-hint-word,
+  .cu-hint-pill-slash-hint:has(.cu-hint-pill-num) .cu-hint-pill-word {
+    order: 2;
+    flex: 1 1 auto;
+    align-self: flex-end;
+  }
+
+  .cu-hint-pill-slash-hint:has(.cu-hint-pill-num) textarea.cu-hint-pill-input {
+    order: 3;
+    flex: 1 1 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .cu-hint-pill-slash-hint:not(:has(.cu-hint-pill-num)) .cu-hint-word,
+  .cu-hint-pill-slash-hint:not(:has(.cu-hint-pill-num)) .cu-hint-pill-word {
+    order: 1;
+    align-self: flex-end;
+  }
+
+  .cu-hint-pill-slash-hint:not(:has(.cu-hint-pill-num)) textarea.cu-hint-pill-input {
+    order: 2;
+    flex: 1 1 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
   .cu-hint-pill-mid {
     white-space: normal;
     line-height: 1.5;
@@ -5116,6 +5160,12 @@ textarea.cu-gap-input.cu-gap-textarea {
   .cu-bc-controls {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  /* Error-correction OK chips: on phones students type OK in the field (button hidden) */
+  .cu-ok-inline-row .cu-ok-fill-btn,
+  .cu-bc-ok-btn {
+    display: none !important;
   }
 
   .cu-bc-input {
