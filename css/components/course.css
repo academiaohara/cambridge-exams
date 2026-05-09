@@ -1251,8 +1251,9 @@
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 6px 8px;
 }
 .cu-ex-wordbank strong {
   color: var(--text-dark, #0f172a);
@@ -1262,14 +1263,21 @@
 .cu-ex-wordbank .material-symbols-outlined {
   font-size: 1rem;
   color: #3b82f6;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 0.2em;
 }
 .cu-wordbank-item {
-  display: inline-block;
-  padding: 1px 9px 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px 4px;
+  min-height: 1.65rem;
+  box-sizing: border-box;
   line-height: 1.2;
   background: #fff;
   border: 1.5px solid rgba(59, 130, 246, 0.25);
-  border-radius: 6px;
+  border-radius: 7px;
   font-weight: 600;
   color: #1e40af;
   font-size: 0.83rem;
@@ -1277,6 +1285,10 @@
   transition: background 0.15s, color 0.15s, text-decoration 0.15s, opacity 0.15s;
   user-select: none;
   vertical-align: baseline;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: center;
 }
 @media (hover: hover) and (pointer: fine) {
   .cu-wordbank-item:hover {
@@ -5120,17 +5132,40 @@ textarea.cu-gap-input.cu-gap-textarea {
     width: auto !important;
   }
 
-  .cu-ex-wordbank,
   .cu-ex-instructions {
     font-size: 0.8rem;
     padding: 8px 10px;
     line-height: 1.45;
   }
 
+  /* Word bank: pill chips that wrap cleanly on narrow screens (touch-friendly) */
+  .cu-ex-wordbank {
+    font-size: 0.86rem;
+    padding: 10px 12px;
+    line-height: 1.35;
+    border-radius: 14px;
+    gap: 8px 10px;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+
+  .cu-ex-wordbank .material-symbols-outlined {
+    font-size: 1.15rem;
+    margin-top: 0.28em;
+  }
+
   .cu-wordbank-item {
-    font-size: 0.76rem;
-    padding: 0 7px 1px;
-    line-height: 1.15;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    min-height: 36px;
+    line-height: 1.25;
+    border-radius: 9px;
+    border-width: 1.5px;
+    box-sizing: border-box;
   }
 
   .cu-ex-item {
