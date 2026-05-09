@@ -5003,6 +5003,17 @@ textarea.cu-gap-input.cu-gap-textarea {
     gap: 6px;
   }
 
+  /* No numeric labels inside exercise content on phones (badges, gap nums, hint pills, etc.) */
+  .cu-ex-num-badge,
+  .cu-ex-num-circle,
+  .cu-hint-pill-num,
+  .cu-mc-passage-gap-num,
+  .cu-cw-clue-num,
+  .cu-match-num,
+  .cu-alt-badge:not(.cu-theory-alt-badge) {
+    display: none !important;
+  }
+
   .cu-ex-sentence,
   .cu-bc-sentence,
   .cu-sync-sentence {
@@ -5093,19 +5104,6 @@ textarea.cu-gap-input.cu-gap-textarea {
     box-shadow: none !important;
   }
 
-  .cu-hint-pill-num {
-    flex-shrink: 0;
-    align-self: flex-end;
-    margin-bottom: 2px;
-    background: rgba(226, 232, 240, 0.9) !important;
-    padding: 1px 5px !important;
-    border-radius: 6px;
-    font-weight: 700;
-    color: #64748b;
-    font-size: 0.68rem;
-    line-height: 1.25;
-  }
-
   .cu-hint-pill-word,
   .cu-hint-pill .cu-hint-word {
     flex-shrink: 0;
@@ -5133,33 +5131,16 @@ textarea.cu-gap-input.cu-gap-textarea {
     box-sizing: border-box;
   }
 
-  .cu-hint-pill-slash-hint .cu-hint-pill-num {
-    order: 1;
-  }
-
-  .cu-hint-pill-slash-hint:has(.cu-hint-pill-num) .cu-hint-word,
-  .cu-hint-pill-slash-hint:has(.cu-hint-pill-num) .cu-hint-pill-word {
-    order: 2;
+  /* Slash hints: pill numbers hidden on mobile — layout as if no num (DOM may still contain span) */
+  .cu-hint-pill-slash-hint .cu-hint-word,
+  .cu-hint-pill-slash-hint .cu-hint-pill-word {
+    order: 1 !important;
     flex: 1 1 auto;
     align-self: flex-end;
   }
 
-  .cu-hint-pill-slash-hint:has(.cu-hint-pill-num) textarea.cu-hint-pill-input {
-    order: 3;
-    flex: 1 1 100%;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  .cu-hint-pill-slash-hint:not(:has(.cu-hint-pill-num)) .cu-hint-word,
-  .cu-hint-pill-slash-hint:not(:has(.cu-hint-pill-num)) .cu-hint-pill-word {
-    order: 1;
-    align-self: flex-end;
-  }
-
-  .cu-hint-pill-slash-hint:not(:has(.cu-hint-pill-num)) textarea.cu-hint-pill-input {
-    order: 2;
+  .cu-hint-pill-slash-hint textarea.cu-hint-pill-input {
+    order: 2 !important;
     flex: 1 1 100%;
     width: 100% !important;
     max-width: 100% !important;
@@ -5373,7 +5354,6 @@ textarea.cu-gap-input.cu-gap-textarea {
 
   .cu-ex-item {
     padding: 12px 12px;
-    padding-top: 20px;
     min-width: 0;
   }
 
