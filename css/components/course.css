@@ -1442,8 +1442,7 @@ textarea.cu-hint-pill-input {
 }
 .cu-hint-gap-fieldline .cu-gap-input:not(.cu-gap-textarea),
 .cu-hint-gap-fieldline textarea.cu-gap-inline-textarea {
-  width: auto !important;
-  max-width: 100% !important;
+  /* width: moved below base .cu-gap-inline-textarea rules — avoid !important vs JS inline width */
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 0 !important;
@@ -1929,6 +1928,14 @@ textarea.cu-gap-input.cu-gap-inline-textarea:focus {
   background: #fff;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16);
 }
+
+/* Hint-gap row: beat base 80px gap width; no !important so _resizeCuInput inline width applies */
+.cu-hint-gap-fieldline textarea.cu-gap-input.cu-gap-inline-textarea,
+.cu-hint-gap-fieldline input.cu-gap-input:not(.cu-gap-textarea):not(.cu-cw-input) {
+  width: auto;
+  max-width: 100%;
+}
+
 .cu-inline-gap-wrap--block textarea.cu-gap-input.cu-gap-inline-textarea,
 .cu-inline-gap-wrap--block input.cu-gap-input:not(.cu-cw-input) {
   display: block;
