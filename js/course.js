@@ -6610,11 +6610,6 @@
           }
         });
         var anyInputWrong = false;
-        var skipInlineRevealOnPhone =
-          typeof window.matchMedia === 'function' &&
-          window.matchMedia(
-            '(max-width: 768px), ((max-height: 520px) and (orientation: landscape) and (max-width: 1024px) and ((pointer: coarse) or (any-pointer: coarse)))'
-          ).matches;
         var partIdx = 0;
         inputs.forEach(function(input) {
           totalItems++;
@@ -6650,18 +6645,9 @@
               input.setAttribute('data-check-class', checkClass);
             }
           }
-          // Show correct answer inline next to incorrect inputs
+          // Correct answer is shown via section "show correct answer" only; strip any legacy inline chips
           var oldReveal = input.nextSibling;
           if (oldReveal && oldReveal.classList && oldReveal.classList.contains('cu-input-inline-reveal')) oldReveal.remove();
-          if (checkClass === 'cu-input-incorrect' && !skipInlineRevealOnPhone) {
-            var revealText = (answerParts[partIdx] || '').trim();
-            if (revealText) {
-              var revSpan = document.createElement('span');
-              revSpan.className = 'cu-input-inline-reveal';
-              revSpan.textContent = revealText;
-              if (input.parentNode) input.parentNode.insertBefore(revSpan, input.nextSibling);
-            }
-          }
           if (ok) correctItems++;
           if (!ok) anyInputWrong = true;
           partIdx++;

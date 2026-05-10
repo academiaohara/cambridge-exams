@@ -1755,26 +1755,6 @@ textarea.cu-hint-pill-input {
   color: #78350f !important;
   animation: feShake 0.4s ease;
 }
-/* Inline correct-answer reveal shown next to incorrect inputs after checking */
-.cu-input-inline-reveal {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: middle;
-  background: rgba(124, 58, 237, 0.1);
-  color: #5b21b6;
-  border: 1.5px solid rgba(124, 58, 237, 0.3);
-  border-radius: 20px;
-  padding: 1px 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-left: 4px;
-  white-space: nowrap;
-  animation: feBounceIn 0.3s ease;
-}
-.cu-input-inline-reveal::before {
-  content: '✓ ';
-  color: #7c3aed;
-}
 /* Show correct answer in input (toggle mode) */
 .cu-gap-input.cu-input-show-correct {
   border-color: #7c3aed !important;
@@ -5441,11 +5421,6 @@ textarea.cu-gap-input.cu-gap-textarea {
   span.cu-inline-gap-wrap.cu-gap-inline-editable[contenteditable="false"] {
     cursor: default;
     opacity: 0.92;
-  }
-
-  /* Correct answer is toggled via section control; hide inline chip on phones */
-  .cu-input-inline-reveal {
-    display: none !important;
   }
 
   /* Inline gaps: underline-only, fluid wrap (textarea auto-grows height) */
