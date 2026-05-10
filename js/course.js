@@ -1816,6 +1816,13 @@
       return !!(el && el.nodeType === 1 && el.classList && el.classList.contains('cu-gap-inline-editable'));
     },
 
+    /** True when course gaps use mobile inline UX (contenteditable / underline), not desktop pills plus input fields. */
+    _cuCourseUseMobileInlineGaps: function() {
+      return typeof window.matchMedia === 'function' && window.matchMedia(
+        '(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)'
+      ).matches;
+    },
+
     _cuGapGetValue: function(el) {
       if (!el) return '';
       if (BentoGrid._cuGapIsContentEditable(el)) {
@@ -2264,10 +2271,15 @@
               'autocomplete="off" autocorrect="off" spellcheck="false" rows="2" ' +
               'oninput="BentoGrid._onCuBcInput(this);BentoGrid._resizeCuInput(this)" ' +
               'placeholder="Rewrite… or type OK if correct"></textarea>'
-          : '<textarea class="cu-gap-input cu-bc-input cu-gap-inline-textarea" id="' + inputId + '" ' +
-              'autocomplete="off" autocorrect="off" spellcheck="false" rows="1" wrap="soft" ' +
-              'oninput="BentoGrid._onCuBcInput(this);BentoGrid._resizeCuInput(this)" ' +
-              'placeholder="correction or OK"></textarea>';
+          : (BentoGrid._cuCourseUseMobileInlineGaps()
+            ? '<textarea class="cu-gap-input cu-bc-input cu-gap-inline-textarea" id="' + inputId + '" ' +
+                'autocomplete="off" autocorrect="off" spellcheck="false" rows="1" wrap="soft" ' +
+                'oninput="BentoGrid._onCuBcInput(this);BentoGrid._resizeCuInput(this)" ' +
+                'placeholder="correction or OK"></textarea>'
+            : '<input type="text" class="cu-gap-input cu-bc-input" id="' + inputId + '" ' +
+                'autocomplete="off" autocorrect="off" spellcheck="false" ' +
+                'oninput="BentoGrid._onCuBcInput(this);BentoGrid._resizeCuInput(this)" ' +
+                'placeholder="correction or OK" />');
         html += '<div class="cu-bc-item' + (useTextarea ? ' cu-bc-item-textarea' : '') + '" data-answer="' + self._escapeHTML(answer) + '">' +
           '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
           '<div class="cu-bc-row' + (useTextarea ? ' cu-bc-row-textarea' : '') + '">' +
@@ -2799,9 +2811,15 @@
         return '<span class="cu-wf-gap-wrap">' +
           '<span class="cu-hint-pill' + slashClass + '">' +
             '<span class="cu-hint-pill-num">' + num + '</span>' +
-            '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="..." ' +
-              'data-passage-num="' + num + '" data-answer="' + ans + '" ' +
-              'onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
+            self._renderCuMobileInlineGap({
+              id: gId,
+              placeholder: '...',
+              block: !!slashClass,
+              textareaClassName: 'cu-gap-input cu-hint-pill-input',
+              ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
+              extraAttrs: ' data-passage-num="' + num + '" data-answer="' + ans + '"',
+              textareaOnInput: 'BentoGrid._resizeCuInput(this)'
+            }) +
             (hintWord ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>' : '') +
           '</span>' +
         '</span>';
@@ -3801,21 +3819,20 @@
       return self._renderCourseExSentenceParts(sentence, inputIdBase, false, useTextarea, beforeStandalone, gapPlaceholder);
     },
 
-    /** Inline gap: on narrow viewports use contenteditable (non-atomic inline flow); else textarea. */
+    /** Inline gap: narrow viewports use contenteditable; desktop uses classic single-line input. */
     _renderCuMobileInlineGap: function(opts) {
       var self = this;
-      var mobileCe = typeof window.matchMedia === 'function' && window.matchMedia(
-        '(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)'
-      ).matches;
+      opts = opts || {};
+      var mobileCe = self._cuCourseUseMobileInlineGaps();
       var idAttr = opts.id ? (' id="' + opts.id + '"') : '';
       var phRaw = opts.placeholder != null ? String(opts.placeholder) : '';
       var phAttr = self._escapeHTML(phRaw);
       var extra = opts.extraAttrs || '';
       var oninput = opts.textareaOnInput || 'BentoGrid._resizeCuInput(this)';
+      var wrapCls = 'cu-inline-gap-wrap' + (opts.block ? ' cu-inline-gap-wrap--block' : '');
       if (mobileCe) {
         // Single span (no wrapper): static sentence text and the gap are siblings inside the
         // same block parent — avoids inline-flex / nested boxes that break natural line wrapping.
-        var wrapCls = 'cu-inline-gap-wrap' + (opts.block ? ' cu-inline-gap-wrap--block' : '');
         var ceCls = opts.ceClassName || 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty';
         return '<span' + idAttr + ' class="' + wrapCls + ' ' + ceCls + '" contenteditable="true" spellcheck="false" autocorrect="off" autocomplete="off" role="textbox"' +
           ' data-placeholder="' + phAttr + '"' + extra +
@@ -3824,12 +3841,16 @@
           ' onpaste="BentoGrid._onCuGapEditablePaste(event)"' +
           '></span>';
       }
-      var wrapCls = 'cu-inline-gap-wrap' + (opts.block ? ' cu-inline-gap-wrap--block' : '');
       var taCls = opts.textareaClassName || 'cu-gap-input cu-gap-inline-textarea';
+      var inputCls = opts.inputClassName;
+      if (!inputCls) {
+        inputCls = String(taCls).replace(/\s*cu-gap-inline-textarea\s*/g, ' ').replace(/\s+/g, ' ').trim();
+      }
       return '<span class="' + wrapCls + '">' +
-        '<textarea' + idAttr + ' class="' + taCls + '" rows="1" wrap="soft" spellcheck="false"' +
+        '<input type="text"' + idAttr + ' class="' + inputCls + '" spellcheck="false"' +
         ' placeholder="' + phAttr + '"' + extra +
-        ' onfocus="BentoGrid._cuLastFocusedGap=this" oninput="' + oninput + '"></textarea></span>';
+        ' onfocus="BentoGrid._cuLastFocusedGap=this" oninput="' + oninput + '" />' +
+        '</span>';
     },
 
     _renderCourseExSentenceParts: function(sentence, inputIdBase, noStandalone, useTextarea, beforeStandalone, gapPlaceholder) {
@@ -4072,7 +4093,14 @@
           var wfSlash = p.wfWord && String(p.wfWord).indexOf('/') !== -1;
           var wfPillClass = 'cu-hint-pill' + (wfSlash ? ' cu-hint-pill-slash-hint' : '');
           return '<span class="' + wfPillClass + '">' +
-            '<textarea id="' + gId + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
+            self._renderCuMobileInlineGap({
+              id: gId,
+              placeholder: gapPh,
+              block: wfSlash,
+              textareaClassName: 'cu-gap-input cu-hint-pill-input',
+              ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
+              textareaOnInput: 'BentoGrid._resizeCuInput(this)'
+            }) +
             '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(p.wfWord) + '</span>' +
             '</span>';
         } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
@@ -4101,9 +4129,21 @@
           var gId1 = inputIdBase + '_g' + (gapCount++);
           var gId2 = inputIdBase + '_g' + (gapCount++);
           var groupHtml = '<span class="cu-hint-pill">' +
-            '<textarea id="' + gId1 + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>' +
+            self._renderCuMobileInlineGap({
+              id: gId1,
+              placeholder: gapPh,
+              textareaClassName: 'cu-gap-input cu-hint-pill-input',
+              ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
+              textareaOnInput: 'BentoGrid._resizeCuInput(this)'
+            }) +
             '<span class="cu-hint-pill-mid">' + self._escapeHTML(p.midText.trim()) + '</span>' +
-            '<textarea id="' + gId2 + '" class="cu-gap-input cu-hint-pill-input" rows="1" wrap="soft" spellcheck="false" placeholder="' + gapPhAttr + '" onfocus="BentoGrid._cuLastFocusedGap=this" oninput="BentoGrid._resizeCuInput(this)"></textarea>';
+            self._renderCuMobileInlineGap({
+              id: gId2,
+              placeholder: gapPh,
+              textareaClassName: 'cu-gap-input cu-hint-pill-input',
+              ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
+              textareaOnInput: 'BentoGrid._resizeCuInput(this)'
+            });
           if (p.hint) {
             groupHtml += '<span class="cu-hint-pill-word">' + self._escapeHTML(p.hint) + '</span>';
           }
@@ -4218,9 +4258,7 @@
         if (input.classList.contains('cu-gap-inline-textarea')) {
           var skipWidthJs = input.classList.contains('cu-gap-standalone') ||
             input.classList.contains('cu-bc-input');
-          var mobileFluid = typeof window.matchMedia === 'function' && window.matchMedia(
-            '(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)'
-          ).matches;
+          var mobileFluid = BentoGrid._cuCourseUseMobileInlineGaps();
           if (!skipWidthJs && !mobileFluid) {
             var minInlineW = 80;
             var spanInline = document.getElementById('cu-resize-span');
@@ -4265,9 +4303,7 @@
           return;
         }
         if (input.classList.contains('cu-hint-pill-input') || input.classList.contains('cu-pi-input')) {
-          var mobilePill = typeof window.matchMedia === 'function' && window.matchMedia(
-            '(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)'
-          ).matches;
+          var mobilePill = BentoGrid._cuCourseUseMobileInlineGaps();
           if (mobilePill) {
             /* Let CSS (inline-flex + flex) size the field so the gap flows in the sentence
                and wraps with the hint like printed text — avoid full-width blocks on phones. */
