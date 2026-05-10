@@ -1819,7 +1819,7 @@
     /** True when course gaps use mobile inline UX (contenteditable / underline), not desktop pills plus input fields. */
     _cuCourseUseMobileInlineGaps: function() {
       return typeof window.matchMedia === 'function' && window.matchMedia(
-        '(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)'
+        '(max-width: 768px), ((max-height: 520px) and (orientation: landscape) and (max-width: 1024px) and ((pointer: coarse) or (any-pointer: coarse)))'
       ).matches;
     },
 
