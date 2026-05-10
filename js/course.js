@@ -2808,7 +2808,6 @@
         var gId = idBase + '-p' + num;
         var ans = self._escapeHTML(answerMap[num] || '');
         var isSlashHint = hintWord && String(hintWord).indexOf('/') !== -1;
-        var slashClass = isSlashHint ? ' cu-hint-pill-slash-hint' : '';
         var pillInner =
           '<span class="cu-hint-pill-num">' + num + '</span>' +
           self._renderCuMobileInlineGap({
@@ -2823,7 +2822,9 @@
           (!isSlashHint && hintWord
             ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>'
             : '');
-        var pill = '<span class="cu-hint-pill' + slashClass + '">' + pillInner + '</span>';
+        var pill = isSlashHint
+          ? '<span class="cu-hint-slash-field">' + pillInner + '</span>'
+          : '<span class="cu-hint-pill">' + pillInner + '</span>';
         if (isSlashHint && hintWord) {
           return (
             '<span class="cu-wf-gap-wrap cu-hint-pill-slash-wrap">' +
@@ -2883,7 +2884,6 @@
           var ans = self._escapeHTML(answerMap[gapNum] || '');
           var hintWord = hintMap[gapNum] || null;
           var hintSlashPi = hintWord && String(hintWord).indexOf('/') !== -1;
-          var slashClass = hintSlashPi ? ' cu-hint-pill-slash-hint' : '';
           var piPillInner =
             '<span class="cu-hint-pill-num">' + num + '</span>' +
             self._renderCuMobileInlineGap({
@@ -2898,7 +2898,9 @@
             (!hintSlashPi && hintWord
               ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>'
               : '');
-          var piPill = '<span class="cu-hint-pill cu-pi-pill' + slashClass + '">' + piPillInner + '</span>';
+          var piPill = hintSlashPi
+            ? '<span class="cu-hint-slash-field cu-pi-pill">' + piPillInner + '</span>'
+            : '<span class="cu-hint-pill cu-pi-pill">' + piPillInner + '</span>';
           if (hintSlashPi && hintWord) {
             return (
               '<span class="cu-pi-gap-wrap cu-hint-pill-slash-wrap">' +
@@ -3865,6 +3867,21 @@
           '></span>';
       }
       var taCls = opts.textareaClassName || 'cu-gap-input cu-gap-inline-textarea';
+      // Slash-style block gaps (hint row above): desktop uses a textarea so long answers wrap;
+      // JS resize keeps width near content up to the sentence width. Skip for standalone fields.
+      var slashStyleDesktop =
+        opts.block && String(taCls).indexOf('cu-gap-standalone') === -1;
+      if (slashStyleDesktop) {
+        var taDeskCls = String(taCls).trim();
+        if (taDeskCls.indexOf('cu-gap-inline-textarea') === -1) {
+          taDeskCls += ' cu-gap-inline-textarea';
+        }
+        return '<span class="' + wrapCls + '">' +
+          '<textarea' + idAttr + ' class="' + taDeskCls + '" rows="1" spellcheck="false"' +
+          ' placeholder="' + phAttr + '"' + extra +
+          ' onfocus="BentoGrid._cuLastFocusedGap=this" oninput="' + oninput + '"></textarea>' +
+          '</span>';
+      }
       var inputCls = opts.inputClassName;
       if (!inputCls) {
         inputCls = String(taCls).replace(/\s*cu-gap-inline-textarea\s*/g, ' ').replace(/\s+/g, ' ').trim();
@@ -4114,9 +4131,7 @@
           // Word-formation gap: input + word-badge together
           var gId = inputIdBase + '_g' + (gapCount++);
           var wfSlash = p.wfWord && String(p.wfWord).indexOf('/') !== -1;
-          var wfPillClass = 'cu-hint-pill' + (wfSlash ? ' cu-hint-pill-slash-hint' : '');
-          var wfPill =
-            '<span class="' + wfPillClass + '">' +
+          var wfInner =
             self._renderCuMobileInlineGap({
               id: gId,
               placeholder: gapPh,
@@ -4125,8 +4140,10 @@
               ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
               textareaOnInput: 'BentoGrid._resizeCuInput(this)'
             }) +
-            (!wfSlash ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(p.wfWord) + '</span>' : '') +
-            '</span>';
+            (!wfSlash ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(p.wfWord) + '</span>' : '');
+          var wfPill = wfSlash
+            ? '<span class="cu-hint-slash-field">' + wfInner + '</span>'
+            : '<span class="cu-hint-pill">' + wfInner + '</span>';
           if (wfSlash) {
             return (
               '<span class="cu-hint-pill-slash-wrap">' +
@@ -4160,7 +4177,7 @@
               }) +
               '</span></span>';
           }
-          var pillHtml = '<span class="cu-hint-pill' + (hintSlash ? ' cu-hint-pill-slash-hint' : '') + '">';
+          var pillHtml = '<span class="' + (hintSlash ? 'cu-hint-slash-field' : 'cu-hint-pill') + '">';
           if (p.num) {
             pillHtml += '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>';
           }
@@ -4299,7 +4316,7 @@
     // (e.g. Exercise H style where each item has a standalone OK button). Toggles the fill
     // so clicking OK a second time clears the input.
     _fillOkChip: function(btn) {
-      var pill = btn.closest('.cu-hint-pill') || btn.closest('.cu-hint-gap-stack');
+      var pill = btn.closest('.cu-hint-pill') || btn.closest('.cu-hint-slash-field') || btn.closest('.cu-hint-gap-stack');
       var input;
       if (pill) {
         input = pill.querySelector('.cu-gap-input');
@@ -4325,7 +4342,7 @@
             input.classList.contains('cu-bc-input');
           var mobileFluid = BentoGrid._cuCourseUseMobileInlineGaps();
           if (!skipWidthJs && !mobileFluid) {
-            var minInlineW = 80;
+            var minInlineW = input.closest('.cu-hint-pill-slash-wrap') ? 44 : 80;
             var spanInline = document.getElementById('cu-resize-span');
             if (!spanInline) {
               spanInline = document.createElement('span');
@@ -4342,7 +4359,7 @@
             spanInline.textContent = longestInline || ' ';
             var newInlineW = Math.max(minInlineW, spanInline.getBoundingClientRect().width + 28);
             var widthHostInline = input.closest(
-              '.cu-hint-pill, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text'
+              '.cu-hint-pill, .cu-hint-slash-field, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text'
             );
             var maxInlineW = 0;
             if (widthHostInline && widthHostInline.getBoundingClientRect) {
@@ -4376,7 +4393,7 @@
             input.style.minWidth = '';
             input.style.boxSizing = 'border-box';
           } else {
-            var minW = 80;
+            var minW = input.closest('.cu-hint-pill-slash-wrap') ? 44 : 80;
             var span = document.getElementById('cu-resize-span');
             if (!span) {
               span = document.createElement('span');
@@ -4390,7 +4407,7 @@
             var longest = lines.reduce(function(a, b) { return a.length >= b.length ? a : b; }, '');
             span.textContent = longest || ' ';
             var newW = Math.max(minW, span.getBoundingClientRect().width + 28);
-            var widthHost = input.closest('.cu-hint-pill, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text');
+            var widthHost = input.closest('.cu-hint-pill, .cu-hint-slash-field, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text');
             var maxW = 0;
             if (widthHost && widthHost.getBoundingClientRect) {
               maxW = Math.max(120, Math.floor(widthHost.getBoundingClientRect().width - 24));
@@ -4409,7 +4426,7 @@
         BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
         return;
       }
-      var minWidth = 80;
+      var minWidth = input.closest('.cu-hint-pill-slash-wrap') ? 44 : 80;
       var span = document.getElementById('cu-resize-span');
       if (!span) {
         span = document.createElement('span');
@@ -4420,7 +4437,7 @@
       span.style.font = window.getComputedStyle(input).font;
       span.textContent = input.value || input.placeholder || '';
       var newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 28);
-      var widthHost = input.closest('.cu-hint-pill, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text');
+      var widthHost = input.closest('.cu-hint-pill, .cu-hint-slash-field, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text');
       var maxWidth = 0;
       if (widthHost && widthHost.getBoundingClientRect) {
         maxWidth = Math.max(120, Math.floor(widthHost.getBoundingClientRect().width - 24));
@@ -7518,7 +7535,7 @@
         badge.addEventListener('click', function() { BentoGrid._cycleInputAlt(capturedInp); });
       })(inp);
       inp._cuAltBadge = badge;
-      var anchor = inp.closest('.cu-hint-pill') || inp.closest('.cu-hint-gap-stack') || inp;
+      var anchor = inp.closest('.cu-hint-pill') || inp.closest('.cu-hint-slash-field') || inp.closest('.cu-hint-gap-stack') || inp;
       anchor.parentNode.insertBefore(badge, anchor.nextSibling);
       // Make the input non-editable; clicking it cycles through alternatives
       if (BentoGrid._cuGapIsContentEditable(inp)) {
