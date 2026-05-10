@@ -1405,12 +1405,12 @@ textarea.cu-hint-pill-input {
   background: rgba(124, 58, 237, 0.1);
 }
 
-/* Course gap + word hint: hint on its own row, input below (same on desktop and mobile) */
+/* Course gap + word hint: input first, hint badge to the right (DOM: hintline then fieldline — reorder with flex) */
 .cu-hint-gap-stack {
   display: inline-flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 6px 8px;
   vertical-align: text-bottom;
   max-width: 100%;
@@ -1424,7 +1424,7 @@ textarea.cu-hint-pill-input {
   gap: 6px 8px;
   width: fit-content;
   max-width: 100%;
-  order: 1;
+  order: 2;
 }
 .cu-hint-gap-fieldline {
   display: inline-block;
@@ -1432,7 +1432,7 @@ textarea.cu-hint-pill-input {
   max-width: min(100%, 480px);
   box-sizing: border-box;
   margin-top: 0;
-  order: 2;
+  order: 1;
 }
 .cu-hint-gap-fieldline > .cu-inline-gap-wrap {
   display: inline-block;
@@ -5185,9 +5185,9 @@ textarea.cu-gap-input.cu-gap-textarea {
 
   .cu-hint-gap-stack {
     display: inline-flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 4px 8px;
     vertical-align: text-bottom;
     max-width: 100%;
@@ -5201,7 +5201,7 @@ textarea.cu-gap-input.cu-gap-textarea {
     gap: 4px 8px;
     width: fit-content;
     max-width: 100%;
-    order: 1;
+    order: 2;
   }
   .cu-hint-gap-fieldline {
     display: inline-block;
@@ -5209,7 +5209,7 @@ textarea.cu-gap-input.cu-gap-textarea {
     max-width: 100%;
     box-sizing: border-box;
     margin-top: 0;
-    order: 2;
+    order: 1;
   }
   .cu-hint-gap-fieldline > .cu-inline-gap-wrap {
     display: inline-block !important;
@@ -5607,7 +5607,7 @@ textarea.cu-gap-input.cu-gap-textarea {
   textarea.cu-hint-pill-input.cu-input-show-correct {
     border-bottom-color: #7c3aed !important;
     background: rgba(124, 58, 237, 0.08) !important;
-    padding-bottom: 0 !important;
+    padding-bottom: 10px !important;
   }
   span.cu-inline-gap-wrap.cu-gap-inline-editable.cu-input-show-correct {
     border: none !important;
@@ -5616,6 +5616,6 @@ textarea.cu-gap-input.cu-gap-textarea {
     background-position: 0 100% !important;
     background-size: 100% 2px !important;
     background-repeat: no-repeat !important;
-    padding-bottom: 0 !important;
+    padding-bottom: 10px !important;
   }
 }
