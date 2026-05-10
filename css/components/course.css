@@ -724,8 +724,11 @@
   color: #dc2626;
 }
 
-.cu-reset-btn .material-symbols-outlined {
-  font-size: 1rem;
+.cu-reset-btn .cu-reset-icon {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
 }
 
 .cu-reset-btn-sm {
@@ -750,10 +753,9 @@
   outline-offset: 2px;
 }
 
-.cu-reset-btn-sm .material-symbols-outlined {
-  font-size: 1.2rem;
-  line-height: 1;
-  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+.cu-reset-btn-sm .cu-reset-icon {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 /* Review section slots in block view */
@@ -5005,9 +5007,10 @@ textarea.cu-gap-input.cu-gap-textarea {
   }
 
   .cu-nav-btn .material-symbols-outlined,
-  .cu-reset-btn:not(.cu-reset-btn-sm) .material-symbols-outlined,
+  .cu-reset-btn:not(.cu-reset-btn-sm) .cu-reset-icon,
   .subpage-back-btn .material-symbols-outlined {
-    font-size: 1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 
   .cu-reset-btn-sm,
@@ -5026,8 +5029,9 @@ textarea.cu-gap-input.cu-gap-textarea {
     background: rgba(239, 68, 68, 0.12) !important;
   }
 
-  .cu-reset-btn-sm .material-symbols-outlined {
-    font-size: 1.3rem;
+  .cu-reset-btn-sm .cu-reset-icon {
+    width: 1.35rem;
+    height: 1.35rem;
   }
 
   .cu-reset-btn span,
