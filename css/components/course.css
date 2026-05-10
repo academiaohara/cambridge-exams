@@ -1450,6 +1450,25 @@ textarea.cu-hint-pill-input {
   box-sizing: border-box;
 }
 
+/* Slash-separated hints: hint on its own row above the pill (outside pill border). */
+.cu-hint-pill-slash-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px 6px;
+  vertical-align: text-bottom;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.cu-hint-slash-hint-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* Pills where the gap field is followed by .cu-hint-word: keep hint on the same row to the right; no extra space under the field */
 .cu-hint-pill:has(.cu-hint-word):not(.cu-hint-pill-slash-hint) {
   flex-wrap: nowrap;
@@ -5229,7 +5248,9 @@ textarea.cu-gap-input.cu-gap-textarea {
 
   .cu-hint-pill-word,
   .cu-hint-pill .cu-hint-word,
-  .cu-hint-gap-stack .cu-hint-word {
+  .cu-hint-gap-stack .cu-hint-word,
+  .cu-hint-pill-slash-wrap .cu-hint-slash-hint-line .cu-hint-word,
+  .cu-hint-pill-slash-wrap .cu-hint-slash-hint-line .cu-hint-pill-word {
     flex-shrink: 0;
     align-self: center;
     max-width: 100%;
@@ -5244,7 +5265,17 @@ textarea.cu-gap-input.cu-gap-textarea {
     line-height: 1.35;
   }
 
-  /* Slash-separated hints (e.g. I / just): hint (+ optional num) on first row, full-width input below */
+  /* Slash-separated hints: full-width input row; hint badge sits on the line above (outside the pill). */
+  .cu-hint-pill-slash-wrap {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    gap: 4px 8px;
+  }
+
   .cu-hint-pill.cu-hint-pill-slash-hint {
     display: flex !important;
     flex-wrap: wrap;
@@ -5256,11 +5287,9 @@ textarea.cu-gap-input.cu-gap-textarea {
   }
 
   /* Slash hints: pill numbers hidden on mobile — layout as if no num (DOM may still contain span) */
-  .cu-hint-pill-slash-hint .cu-hint-word,
-  .cu-hint-pill-slash-hint .cu-hint-pill-word {
-    order: 1 !important;
-    flex: 1 1 auto;
-    align-self: flex-end;
+  .cu-hint-pill-slash-wrap .cu-hint-slash-hint-line .cu-hint-word,
+  .cu-hint-pill-slash-wrap .cu-hint-slash-hint-line .cu-hint-pill-word {
+    align-self: flex-start;
   }
 
   .cu-hint-pill-slash-hint textarea.cu-hint-pill-input {
@@ -5309,6 +5338,15 @@ textarea.cu-gap-input.cu-gap-textarea {
     max-width: none !important;
     margin: 0 2px 0 0;
     vertical-align: baseline;
+  }
+
+  .cu-passage-text .cu-pi-gap-wrap.cu-hint-pill-slash-wrap,
+  .cu-passage-text .cu-wf-gap-wrap.cu-hint-pill-slash-wrap {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    width: auto !important;
+    max-width: 100% !important;
+    vertical-align: text-bottom;
   }
 
   /* Sentence gaps (mobile): contenteditable inline flow; underline anchored to bottom padding so it does not cross text */
