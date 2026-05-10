@@ -1430,7 +1430,7 @@ textarea.cu-hint-pill-input {
 .cu-hint-gap-fieldline {
   display: inline-block;
   width: auto;
-  max-width: 100%;
+  max-width: min(100%, 480px);
   box-sizing: border-box;
   margin-top: 0;
   order: 1;
@@ -1486,12 +1486,6 @@ textarea.cu-hint-pill-input {
   border: none;
   border-radius: 0;
   box-shadow: none;
-}
-
-.cu-hint-pill-slash-wrap > .cu-hint-slash-field {
-  align-self: stretch;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .cu-hint-pill-slash-wrap > .cu-inline-gap-wrap--block,
@@ -1825,11 +1819,6 @@ textarea.cu-hint-pill-input {
   color: #5b21b6 !important;
   animation: feBounceIn 0.3s ease;
   max-width: none;
-}
-/* Multi-line gap textareas must stay inside the exercise card (single-line inputs may grow with JS). */
-textarea.cu-gap-input.cu-input-show-correct,
-textarea.cu-hint-pill-input.cu-input-show-correct {
-  max-width: 100%;
 }
 /* Alt-solution cycle badge — shown next to inputs that have multiple valid answers */
 .cu-alt-badge {
