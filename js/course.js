@@ -6610,6 +6610,11 @@
           }
         });
         var anyInputWrong = false;
+        var skipInlineRevealOnPhone =
+          typeof window.matchMedia === 'function' &&
+          window.matchMedia(
+            '(max-width: 768px), ((max-height: 520px) and (orientation: landscape) and (max-width: 1024px) and ((pointer: coarse) or (any-pointer: coarse)))'
+          ).matches;
         var partIdx = 0;
         inputs.forEach(function(input) {
           totalItems++;
@@ -6648,7 +6653,7 @@
           // Show correct answer inline next to incorrect inputs
           var oldReveal = input.nextSibling;
           if (oldReveal && oldReveal.classList && oldReveal.classList.contains('cu-input-inline-reveal')) oldReveal.remove();
-          if (checkClass === 'cu-input-incorrect') {
+          if (checkClass === 'cu-input-incorrect' && !skipInlineRevealOnPhone) {
             var revealText = (answerParts[partIdx] || '').trim();
             if (revealText) {
               var revSpan = document.createElement('span');
