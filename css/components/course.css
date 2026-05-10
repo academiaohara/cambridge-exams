@@ -1503,7 +1503,9 @@ textarea.cu-hint-pill-input {
   vertical-align: text-bottom;
 }
 
-/* Desktop: slash-hint gaps use a textarea — compact min width, grows with content (JS), wraps within the sentence */
+/* Desktop: slash-hint gap field below the hint row — single-line input (matches non-slash gaps).
+   Textarea selector kept for legacy markup only. */
+.cu-hint-pill-slash-wrap input.cu-hint-pill-input,
 .cu-hint-pill-slash-wrap textarea.cu-hint-pill-input.cu-gap-inline-textarea {
   display: inline-block;
   vertical-align: text-bottom;
@@ -1511,9 +1513,6 @@ textarea.cu-hint-pill-input {
   min-width: 3.25ch;
   max-width: 100%;
   margin: 0;
-  white-space: pre-wrap !important;
-  overflow-wrap: break-word;
-  word-break: break-word;
   border-radius: 8px;
   border: 1.5px solid #e2e8f0 !important;
   background: #fff !important;
@@ -1524,7 +1523,13 @@ textarea.cu-hint-pill-input {
   padding: 3px 8px !important;
   font-size: 0.9rem !important;
 }
+.cu-hint-pill-slash-wrap textarea.cu-hint-pill-input.cu-gap-inline-textarea {
+  white-space: pre-wrap !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
 
+.cu-hint-pill-slash-wrap input.cu-hint-pill-input:focus,
 .cu-hint-pill-slash-wrap textarea.cu-hint-pill-input.cu-gap-inline-textarea:focus {
   border-color: #3b82f6 !important;
   outline: none;
@@ -5360,7 +5365,8 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     align-self: flex-start;
   }
 
-  .cu-hint-slash-field textarea.cu-hint-pill-input {
+  .cu-hint-slash-field textarea.cu-hint-pill-input,
+  .cu-hint-slash-field input.cu-hint-pill-input {
     order: 2 !important;
     flex: 1 1 100%;
     width: 100% !important;
