@@ -1405,11 +1405,13 @@ textarea.cu-hint-pill-input {
   background: rgba(124, 58, 237, 0.1);
 }
 
-/* Course gap + word hint: hint line (fit content) and field below — not one pill wrapper */
+/* Course gap + word hint: input first, hint badge to the right (DOM: hintline then fieldline — reorder with flex) */
 .cu-hint-gap-stack {
   display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
   vertical-align: text-bottom;
   max-width: 100%;
   margin: 0 4px 6px 0;
@@ -1422,26 +1424,41 @@ textarea.cu-hint-pill-input {
   gap: 6px 8px;
   width: fit-content;
   max-width: 100%;
+  order: 2;
 }
 .cu-hint-gap-fieldline {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: auto;
   max-width: min(100%, 480px);
   box-sizing: border-box;
-  margin-top: 5px;
+  margin-top: 0;
+  order: 1;
 }
 .cu-hint-gap-fieldline > .cu-inline-gap-wrap {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: auto;
   max-width: 100%;
 }
 .cu-hint-gap-fieldline .cu-gap-input:not(.cu-gap-textarea),
 .cu-hint-gap-fieldline textarea.cu-gap-inline-textarea {
-  width: 100% !important;
+  width: auto !important;
   max-width: 100% !important;
   margin-left: 0;
   margin-right: 0;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
   box-sizing: border-box;
+}
+
+/* Pills where the gap field is followed by .cu-hint-word: keep hint on the same row to the right; no extra space under the field */
+.cu-hint-pill:has(.cu-hint-word):not(.cu-hint-pill-slash-hint) {
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.cu-hint-pill:has(.cu-hint-word):not(.cu-hint-pill-slash-hint) textarea.cu-hint-pill-input,
+.cu-hint-pill:has(.cu-hint-word):not(.cu-hint-pill-slash-hint) input.cu-hint-pill-input {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 /* Middle text between two inputs in a grouped gap pill */
@@ -5168,8 +5185,10 @@ textarea.cu-gap-input.cu-gap-textarea {
 
   .cu-hint-gap-stack {
     display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
     vertical-align: text-bottom;
     max-width: 100%;
     margin: 0 2px 6px 0;
@@ -5182,27 +5201,39 @@ textarea.cu-gap-input.cu-gap-textarea {
     gap: 4px 8px;
     width: fit-content;
     max-width: 100%;
+    order: 2;
   }
   .cu-hint-gap-fieldline {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: auto;
     max-width: 100%;
     box-sizing: border-box;
-    margin-top: 3px;
+    margin-top: 0;
+    order: 1;
   }
   .cu-hint-gap-fieldline > .cu-inline-gap-wrap {
-    display: block !important;
-    width: 100% !important;
+    display: inline-block !important;
+    width: auto !important;
     max-width: 100% !important;
+  }
+
+  .cu-hint-pill:has(.cu-hint-word):not(.cu-hint-pill-slash-hint) {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .cu-hint-pill:has(.cu-hint-word):not(.cu-hint-pill-slash-hint) span.cu-inline-gap-wrap.cu-hint-pill-input.cu-gap-inline-editable:not(.cu-inline-gap-wrap--block) {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   .cu-hint-pill-word,
   .cu-hint-pill .cu-hint-word,
   .cu-hint-gap-stack .cu-hint-word {
     flex-shrink: 0;
-    align-self: flex-end;
+    align-self: center;
     max-width: 100%;
-    margin: 0 0 2px 1px;
+    margin: 0 0 0 1px;
     padding: 1px 7px !important;
     border-radius: 6px !important;
     background: rgba(124, 58, 237, 0.12) !important;
@@ -5437,6 +5468,24 @@ textarea.cu-gap-input.cu-gap-textarea {
     line-height: 1.45;
     overflow-x: hidden;
     overflow-y: hidden;
+  }
+
+  /* Hint + gap row: no extra space under the field (overrides general gap textarea/input rules above) */
+  .cu-hint-gap-fieldline textarea.cu-gap-input.cu-gap-inline-textarea,
+  .cu-hint-gap-fieldline input.cu-gap-input:not(.cu-gap-textarea):not(.cu-cw-input) {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .cu-hint-gap-fieldline span.cu-inline-gap-wrap.cu-gap-inline-editable:not(.cu-inline-gap-wrap--block) {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .cu-hint-pill:has(.cu-hint-word):not(.cu-hint-pill-slash-hint) textarea.cu-hint-pill-input,
+  .cu-hint-pill:has(.cu-hint-word):not(.cu-hint-pill-slash-hint) input.cu-hint-pill-input {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   @supports (field-sizing: content) {
