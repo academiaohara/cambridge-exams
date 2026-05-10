@@ -4337,6 +4337,31 @@
       }
     },
 
+    // Max width (px) for JS-sized inline gaps: anchor to the exercise card / passage so
+    // slash-hint textareas use the full .cu-ex-item column (not the narrow .cu-hint-slash-field row).
+    _cuGapResizeMaxWidthPx: function(input, minFloor) {
+      var floor = minFloor > 0 ? minFloor : 120;
+      var el = input.closest('.cu-ex-item') ||
+        input.closest('.cu-sync-item') ||
+        input.closest('.cu-passage-text') ||
+        input.closest('.cu-mc-inline-continuous') ||
+        input.closest('.cu-ex-sentence') ||
+        input.closest('.cu-sync-sentence') ||
+        input.closest('.cu-ex-kwtrans-text') ||
+        input.closest('.cu-hint-pill-slash-wrap') ||
+        input.closest('.cu-hint-pill, .cu-hint-slash-field, .cu-hint-gap-stack');
+      if (!el || !el.getBoundingClientRect) return 0;
+      try {
+        var rect = el.getBoundingClientRect();
+        var cs = window.getComputedStyle(el);
+        var pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+        var w = Math.floor(rect.width - pad - 20);
+        return Math.max(floor, w);
+      } catch (e) {
+        return 0;
+      }
+    },
+
     // Auto-resize a course gap input to fit its content (like test inputs)
     _resizeCuInput: function(input) {
       if (input.classList.contains('cu-gap-inline-editable')) return;
@@ -4363,17 +4388,16 @@
             }, '');
             spanInline.textContent = longestInline || ' ';
             var newInlineW = Math.max(minInlineW, spanInline.getBoundingClientRect().width + 28);
-            var widthHostInline = input.closest(
-              '.cu-hint-pill, .cu-hint-slash-field, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text'
-            );
-            var maxInlineW = 0;
-            if (widthHostInline && widthHostInline.getBoundingClientRect) {
-              maxInlineW = Math.max(120, Math.floor(widthHostInline.getBoundingClientRect().width - 24));
+            var maxInlineW = BentoGrid._cuGapResizeMaxWidthPx(input, Math.max(120, minInlineW));
+            if (!maxInlineW) {
+              var widthHostInline = input.closest(
+                '.cu-hint-pill, .cu-hint-slash-field, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text'
+              );
+              if (widthHostInline && widthHostInline.getBoundingClientRect) {
+                maxInlineW = Math.max(120, Math.floor(widthHostInline.getBoundingClientRect().width - 24));
+              }
             }
-            if (input.classList.contains('cu-input-show-correct')) {
-              var viewportMaxInline = Math.max(minInlineW, Math.floor(window.innerWidth * 0.92));
-              newInlineW = Math.min(newInlineW, viewportMaxInline);
-            } else if (maxInlineW > 0) {
+            if (maxInlineW > 0) {
               newInlineW = Math.min(newInlineW, maxInlineW);
             }
             input.style.width = newInlineW + 'px';
@@ -4384,7 +4408,7 @@
               input.style.maxWidth = '';
             }
           }
-          input.style.height = 'auto';
+          input.style.height = '0px';
           input.style.height = input.scrollHeight + 'px';
           BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
           return;
@@ -4412,21 +4436,20 @@
             var longest = lines.reduce(function(a, b) { return a.length >= b.length ? a : b; }, '');
             span.textContent = longest || ' ';
             var newW = Math.max(minW, span.getBoundingClientRect().width + 28);
-            var widthHost = input.closest('.cu-hint-pill, .cu-hint-slash-field, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text');
-            var maxW = 0;
-            if (widthHost && widthHost.getBoundingClientRect) {
-              maxW = Math.max(120, Math.floor(widthHost.getBoundingClientRect().width - 24));
+            var maxW = BentoGrid._cuGapResizeMaxWidthPx(input, Math.max(120, minW));
+            if (!maxW) {
+              var widthHost = input.closest('.cu-hint-pill, .cu-hint-slash-field, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text');
+              if (widthHost && widthHost.getBoundingClientRect) {
+                maxW = Math.max(120, Math.floor(widthHost.getBoundingClientRect().width - 24));
+              }
             }
-            if (input.classList.contains('cu-input-show-correct')) {
-              var viewportMax = Math.max(minW, Math.floor(window.innerWidth * 0.92));
-              newW = Math.min(newW, viewportMax);
-            } else if (maxW > 0) {
+            if (maxW > 0) {
               newW = Math.min(newW, maxW);
             }
             input.style.width = newW + 'px';
           }
         }
-        input.style.height = 'auto';
+        input.style.height = '0px';
         input.style.height = input.scrollHeight + 'px';
         BentoGrid._saveCuExSectionState(input.closest('.cu-section'));
         return;
@@ -4442,15 +4465,14 @@
       span.style.font = window.getComputedStyle(input).font;
       span.textContent = input.value || input.placeholder || '';
       var newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 28);
-      var widthHost = input.closest('.cu-hint-pill, .cu-hint-slash-field, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text');
-      var maxWidth = 0;
-      if (widthHost && widthHost.getBoundingClientRect) {
-        maxWidth = Math.max(120, Math.floor(widthHost.getBoundingClientRect().width - 24));
+      var maxWidth = BentoGrid._cuGapResizeMaxWidthPx(input, Math.max(120, minWidth));
+      if (!maxWidth) {
+        var widthHost = input.closest('.cu-hint-pill, .cu-hint-slash-field, .cu-hint-gap-stack, .cu-ex-sentence, .cu-sync-sentence, .cu-passage-text, .cu-ex-kwtrans-text');
+        if (widthHost && widthHost.getBoundingClientRect) {
+          maxWidth = Math.max(120, Math.floor(widthHost.getBoundingClientRect().width - 24));
+        }
       }
-      if (input.classList.contains('cu-input-show-correct')) {
-        var viewportMax = Math.max(minWidth, Math.floor(window.innerWidth * 0.92));
-        newWidth = Math.min(newWidth, viewportMax);
-      } else if (maxWidth > 0) {
+      if (maxWidth > 0) {
         newWidth = Math.min(newWidth, maxWidth);
       }
       input.style.width = newWidth + 'px';
