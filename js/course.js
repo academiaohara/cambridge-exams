@@ -3872,21 +3872,10 @@
           '></span>';
       }
       var taCls = opts.textareaClassName || 'cu-gap-input cu-gap-inline-textarea';
-      // Slash-style block gaps (hint row above): desktop uses a textarea so long answers wrap;
-      // JS resize keeps width near content up to the sentence width. Skip for standalone fields.
-      var slashStyleDesktop =
-        opts.block && String(taCls).indexOf('cu-gap-standalone') === -1;
-      if (slashStyleDesktop) {
-        var taDeskCls = String(taCls).trim();
-        if (taDeskCls.indexOf('cu-gap-inline-textarea') === -1) {
-          taDeskCls += ' cu-gap-inline-textarea';
-        }
-        return '<span class="' + wrapCls + '">' +
-          '<textarea' + idAttr + ' class="' + taDeskCls + '" rows="1" spellcheck="false"' +
-          ' placeholder="' + phAttr + '"' + extra +
-          ' onfocus="BentoGrid._cuLastFocusedGap=this" oninput="' + oninput + '"></textarea>' +
-          '</span>';
-      }
+      // Slash-style hints (pista con "/") used to force a desktop <textarea> so answers wrapped,
+      // but that matched exercise B poorly — _resizeCuInput grew full-sentence answers to huge
+      // heights. Use the same single-line <input> as non-slash gaps; long typing scrolls inline
+      // (cu-hint-pill-input nowrap + overflow-x on desktop).
       var inputCls = opts.inputClassName;
       if (!inputCls) {
         inputCls = String(taCls).replace(/\s*cu-gap-inline-textarea\s*/g, ' ').replace(/\s+/g, ' ').trim();
@@ -4338,7 +4327,7 @@
     },
 
     // Max width (px) for JS-sized inline gaps: anchor to the exercise card / passage so
-    // slash-hint textareas use the full .cu-ex-item column (not the narrow .cu-hint-slash-field row).
+    // slash-hint inline gaps use the full .cu-ex-item column (not the narrow .cu-hint-slash-field row).
     _cuGapResizeMaxWidthPx: function(input, minFloor) {
       var floor = minFloor > 0 ? minFloor : 120;
       var el = input.closest('.cu-ex-item') ||
