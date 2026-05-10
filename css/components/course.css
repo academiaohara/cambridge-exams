@@ -1405,23 +1405,43 @@ textarea.cu-hint-pill-input {
   background: rgba(124, 58, 237, 0.1);
 }
 
-/* Desktop: word hint above the gap field (e.g. unit exercises with "(HINT) ……") */
-@media (min-width: 769px) {
-  .cu-hint-pill:has(> .cu-hint-word) {
-    flex-wrap: wrap;
-    align-content: flex-start;
-    align-items: flex-end;
-  }
-  .cu-hint-pill:has(> .cu-hint-word) > .cu-hint-word {
-    order: -1;
-    flex: 1 1 100%;
-    width: 100%;
-    box-sizing: border-box;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 4px;
-    align-self: flex-start;
-  }
+/* Course gap + word hint: hint line (fit content) and field below — not one pill wrapper */
+.cu-hint-gap-stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  vertical-align: text-bottom;
+  max-width: 100%;
+  margin: 0 4px 6px 0;
+  box-sizing: border-box;
+}
+.cu-hint-gap-hintline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  width: fit-content;
+  max-width: 100%;
+}
+.cu-hint-gap-fieldline {
+  display: block;
+  width: 100%;
+  max-width: min(100%, 480px);
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+.cu-hint-gap-fieldline > .cu-inline-gap-wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+.cu-hint-gap-fieldline .cu-gap-input:not(.cu-gap-textarea),
+.cu-hint-gap-fieldline textarea.cu-gap-inline-textarea {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
 }
 
 /* Middle text between two inputs in a grouped gap pill */
@@ -5146,13 +5166,39 @@ textarea.cu-gap-input.cu-gap-textarea {
     box-shadow: none !important;
   }
 
-  /* Do not show inline correct-answer chips beside gaps on phones */
-  .cu-input-inline-reveal {
-    display: none !important;
+  .cu-hint-gap-stack {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    vertical-align: text-bottom;
+    max-width: 100%;
+    margin: 0 2px 6px 0;
+    box-sizing: border-box;
+  }
+  .cu-hint-gap-hintline {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+    width: fit-content;
+    max-width: 100%;
+  }
+  .cu-hint-gap-fieldline {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 3px;
+  }
+  .cu-hint-gap-fieldline > .cu-inline-gap-wrap {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .cu-hint-pill-word,
-  .cu-hint-pill .cu-hint-word {
+  .cu-hint-pill .cu-hint-word,
+  .cu-hint-gap-stack .cu-hint-word {
     flex-shrink: 0;
     align-self: flex-end;
     max-width: 100%;
@@ -5506,5 +5552,21 @@ textarea.cu-gap-input.cu-gap-textarea {
     background-position: 0 100% !important;
     background-size: 100% 2px !important;
     background-repeat: no-repeat !important;
+  }
+  input.cu-gap-input.cu-input-show-correct:not(.cu-gap-textarea):not(.cu-cw-input),
+  textarea.cu-gap-input.cu-gap-inline-textarea.cu-input-show-correct,
+  textarea.cu-hint-pill-input.cu-input-show-correct {
+    border-bottom-color: #7c3aed !important;
+    background: rgba(124, 58, 237, 0.08) !important;
+    padding-bottom: 10px !important;
+  }
+  span.cu-inline-gap-wrap.cu-gap-inline-editable.cu-input-show-correct {
+    border: none !important;
+    background-color: rgba(124, 58, 237, 0.08) !important;
+    background-image: linear-gradient(to right, #7c3aed 100%, #7c3aed 100%) !important;
+    background-position: 0 100% !important;
+    background-size: 100% 2px !important;
+    background-repeat: no-repeat !important;
+    padding-bottom: 10px !important;
   }
 }
