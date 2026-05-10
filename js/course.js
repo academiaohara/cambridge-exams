@@ -2807,22 +2807,34 @@
       function makeGapPill(num, hintWord) {
         var gId = idBase + '-p' + num;
         var ans = self._escapeHTML(answerMap[num] || '');
-        var slashClass = hintWord && String(hintWord).indexOf('/') !== -1 ? ' cu-hint-pill-slash-hint' : '';
-        return '<span class="cu-wf-gap-wrap">' +
-          '<span class="cu-hint-pill' + slashClass + '">' +
-            '<span class="cu-hint-pill-num">' + num + '</span>' +
-            self._renderCuMobileInlineGap({
-              id: gId,
-              placeholder: '...',
-              block: !!slashClass,
-              textareaClassName: 'cu-gap-input cu-hint-pill-input',
-              ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
-              extraAttrs: ' data-passage-num="' + num + '" data-answer="' + ans + '"',
-              textareaOnInput: 'BentoGrid._resizeCuInput(this)'
-            }) +
-            (hintWord ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>' : '') +
-          '</span>' +
-        '</span>';
+        var isSlashHint = hintWord && String(hintWord).indexOf('/') !== -1;
+        var slashClass = isSlashHint ? ' cu-hint-pill-slash-hint' : '';
+        var pillInner =
+          '<span class="cu-hint-pill-num">' + num + '</span>' +
+          self._renderCuMobileInlineGap({
+            id: gId,
+            placeholder: '...',
+            block: isSlashHint,
+            textareaClassName: 'cu-gap-input cu-hint-pill-input',
+            ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
+            extraAttrs: ' data-passage-num="' + num + '" data-answer="' + ans + '"',
+            textareaOnInput: 'BentoGrid._resizeCuInput(this)'
+          }) +
+          (!isSlashHint && hintWord
+            ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>'
+            : '');
+        var pill = '<span class="cu-hint-pill' + slashClass + '">' + pillInner + '</span>';
+        if (isSlashHint && hintWord) {
+          return (
+            '<span class="cu-wf-gap-wrap cu-hint-pill-slash-wrap">' +
+            '<span class="cu-hint-slash-hint-line"><span class="cu-hint-pill-word cu-wf-pill-word">' +
+            self._escapeHTML(hintWord) +
+            '</span></span>' +
+            pill +
+            '</span>'
+          );
+        }
+        return '<span class="cu-wf-gap-wrap">' + pill + '</span>';
       }
       // Render passage: replace both gap formats with interactive pill widgets.
       // Format A (old): …(N)… (WORD)
@@ -2872,21 +2884,32 @@
           var hintWord = hintMap[gapNum] || null;
           var hintSlashPi = hintWord && String(hintWord).indexOf('/') !== -1;
           var slashClass = hintSlashPi ? ' cu-hint-pill-slash-hint' : '';
-          return '<span class="cu-pi-gap-wrap">' +
-            '<span class="cu-hint-pill cu-pi-pill' + slashClass + '">' +
-              '<span class="cu-hint-pill-num">' + num + '</span>' +
-              self._renderCuMobileInlineGap({
-                id: gId,
-                placeholder: '...',
-                block: hintSlashPi,
-                textareaClassName: 'cu-gap-input cu-hint-pill-input cu-pi-input',
-                ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input cu-pi-input',
-                extraAttrs: ' data-passage-num="' + num + '" data-answer="' + ans + '"',
-                textareaOnInput: 'BentoGrid._resizeCuInput(this)'
-              }) +
-              (hintWord ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>' : '') +
-            '</span>' +
-          '</span>';
+          var piPillInner =
+            '<span class="cu-hint-pill-num">' + num + '</span>' +
+            self._renderCuMobileInlineGap({
+              id: gId,
+              placeholder: '...',
+              block: hintSlashPi,
+              textareaClassName: 'cu-gap-input cu-hint-pill-input cu-pi-input',
+              ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input cu-pi-input',
+              extraAttrs: ' data-passage-num="' + num + '" data-answer="' + ans + '"',
+              textareaOnInput: 'BentoGrid._resizeCuInput(this)'
+            }) +
+            (!hintSlashPi && hintWord
+              ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>'
+              : '');
+          var piPill = '<span class="cu-hint-pill cu-pi-pill' + slashClass + '">' + piPillInner + '</span>';
+          if (hintSlashPi && hintWord) {
+            return (
+              '<span class="cu-pi-gap-wrap cu-hint-pill-slash-wrap">' +
+              '<span class="cu-hint-slash-hint-line"><span class="cu-hint-pill-word cu-wf-pill-word">' +
+              self._escapeHTML(hintWord) +
+              '</span></span>' +
+              piPill +
+              '</span>'
+            );
+          }
+          return '<span class="cu-pi-gap-wrap">' + piPill + '</span>';
         }
       ).replace(/\n/g, '<br>');
       var piTitleHtml = ex.passageTitle
@@ -4092,7 +4115,8 @@
           var gId = inputIdBase + '_g' + (gapCount++);
           var wfSlash = p.wfWord && String(p.wfWord).indexOf('/') !== -1;
           var wfPillClass = 'cu-hint-pill' + (wfSlash ? ' cu-hint-pill-slash-hint' : '');
-          return '<span class="' + wfPillClass + '">' +
+          var wfPill =
+            '<span class="' + wfPillClass + '">' +
             self._renderCuMobileInlineGap({
               id: gId,
               placeholder: gapPh,
@@ -4101,8 +4125,19 @@
               ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
               textareaOnInput: 'BentoGrid._resizeCuInput(this)'
             }) +
-            '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(p.wfWord) + '</span>' +
+            (!wfSlash ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(p.wfWord) + '</span>' : '') +
             '</span>';
+          if (wfSlash) {
+            return (
+              '<span class="cu-hint-pill-slash-wrap">' +
+              '<span class="cu-hint-slash-hint-line"><span class="cu-hint-pill-word cu-wf-pill-word">' +
+              self._escapeHTML(p.wfWord) +
+              '</span></span>' +
+              wfPill +
+              '</span>'
+            );
+          }
+          return wfPill;
         } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
           var gId = inputIdBase + '_g' + (gapCount++);
           var hintSlash = p.hint && String(p.hint).indexOf('/') !== -1;
@@ -4137,11 +4172,22 @@
             ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
             textareaOnInput: 'BentoGrid._resizeCuInput(this)'
           });
-          if (p.hint) {
-            var hintShown = p.hintBrackets ? ('[' + p.hint + ']') : p.hint;
-            pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(hintShown) + '</span>';
+          if (p.hint && !hintSlash) {
+            var hintShownInline = p.hintBrackets ? ('[' + p.hint + ']') : p.hint;
+            pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(hintShownInline) + '</span>';
           }
           pillHtml += '</span>';
+          if (p.hint && hintSlash) {
+            var hintShownSlash = p.hintBrackets ? ('[' + p.hint + ']') : p.hint;
+            return (
+              '<span class="cu-hint-pill-slash-wrap">' +
+              '<span class="cu-hint-slash-hint-line"><span class="cu-hint-word">' +
+              self._escapeHTML(hintShownSlash) +
+              '</span></span>' +
+              pillHtml +
+              '</span>'
+            );
+          }
           return pillHtml;
         } else if (p.type === 'gap-group') {
           // Two inputs joined by middle text, both styled as hint-pill inputs
