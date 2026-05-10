@@ -1891,7 +1891,10 @@ input.cu-gap-input.cu-bc-input {
   width: 100%;
   max-width: 100%;
   flex: 1 1 auto;
-  min-height: 2em;
+  /* One-line correction: avoid 2em min-height (inflates the box vs sentence text) */
+  min-height: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
   margin: 0;
   box-sizing: border-box;
 }
@@ -1938,7 +1941,10 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-inline-textarea {
   width: 100%;
   max-width: 100%;
   flex: 1 1 auto;
-  min-height: 2em;
+  /* Mobile bold-correct: single-line field; JS (_resizeCuInput) grows height with content */
+  min-height: calc(1.45em + 6px);
+  padding-top: 2px;
+  padding-bottom: 2px;
   margin: 0;
 }
 
@@ -1956,6 +1962,13 @@ textarea.cu-gap-input.cu-gap-textarea {
   box-sizing: border-box;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+/* Bold-correct sections that use textareaAnswer: keep a compact initial row */
+textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
+  min-height: 2.2em;
+  padding: 4px 10px;
+  margin-top: 4px;
 }
 
 /* Option buttons (circle the correct word) — WCAG: min 44px touch target */
