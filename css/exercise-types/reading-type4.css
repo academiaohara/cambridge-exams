@@ -143,6 +143,16 @@
   line-height: inherit;
 }
 
+/* Paragraph lh (1.8) inside textarea + min-height leaves the first line stuck to the top */
+.reading-type4-second textarea.reading-type4-inline-input.reading-type4-inline-textarea {
+  line-height: 1.45;
+}
+
+/* Match the sentence line box so the pill sits vertically with surrounding text */
+.reading-type4-second .reading-type4-inline-wrap {
+  line-height: inherit;
+}
+
 .reading-type4-inline-input {
   width: 120px;
   min-width: 80px;
@@ -458,6 +468,10 @@ textarea.reading-type4-inline-input.reading-type4-inline-textarea {
     min-height: 2.75rem;
     max-width: 100%;
     box-sizing: border-box;
+  }
+
+  .reading-type4-second textarea.reading-type4-inline-input.reading-type4-inline-textarea {
+    line-height: 1.4;
   }
 
   .reading-type4-inline-wrap:focus-within {
