@@ -228,7 +228,7 @@
       if (!span) {
         span = document.createElement('span');
         span.id = 'reading-type4-resize-span';
-        span.style.cssText = 'visibility:hidden;position:absolute;white-space:pre-wrap;word-wrap:break-word;pointer-events:none;';
+        span.style.cssText = 'visibility:hidden;position:absolute;white-space:nowrap;pointer-events:none;';
         document.body.appendChild(span);
       }
       span.style.font = window.getComputedStyle(input).font;
@@ -245,8 +245,7 @@
       var measured = span.getBoundingClientRect().width + (isNarrow ? 44 : 40);
       var targetWidth = Math.min(maxWidth, Math.max(minWidth, measured));
       input.style.width = targetWidth + 'px';
-      input.style.height = 'auto';
-      input.style.height = Math.max(input.scrollHeight, parseFloat(window.getComputedStyle(input).lineHeight) || 22) + 'px';
+      input.style.height = '';
     },
     
     _buildPartRegex: function(text) {
