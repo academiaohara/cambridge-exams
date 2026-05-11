@@ -223,7 +223,8 @@
     
     resizeInput: function(input) {
       var isNarrow = typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 480px)').matches;
-      var minWidth = isNarrow ? 92 : 120;
+      /* Narrow: ~5ch + horizontal padding (underline gap style, aligned with course inline gaps) */
+      var minWidth = isNarrow ? 72 : 120;
       var span = document.getElementById('reading-type4-resize-span');
       if (!span) {
         span = document.createElement('span');
@@ -242,7 +243,7 @@
       var maxWidth = line ? Math.max(minWidth, line.clientWidth - padX) : window.innerWidth - 48;
       span.style.maxWidth = maxWidth + 'px';
       span.textContent = input.value || input.placeholder || '';
-      var measured = span.getBoundingClientRect().width + (isNarrow ? 44 : 40);
+      var measured = span.getBoundingClientRect().width + (isNarrow ? 28 : 40);
       var targetWidth = Math.min(maxWidth, Math.max(minWidth, measured));
       input.style.width = targetWidth + 'px';
       input.style.height = '';
