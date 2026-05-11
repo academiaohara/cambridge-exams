@@ -133,6 +133,15 @@
     padding: 44px 18px max(18px, env(safe-area-inset-bottom));
   }
 
+  /* Reading part 3 (word formation): full-width sheet, no × — confirm button closes */
+  .modal-content:has(.reading-type3-modal-field-row) {
+    padding-top: 0;
+  }
+
+  .modal-content:has(.reading-type3-modal-field-row) .modal-close {
+    display: none;
+  }
+
   .modal-header-row {
     align-items: center;
   }
