@@ -588,7 +588,8 @@
     // ── CENTER MAP ───────────────────────────────────────────────────────
     _buildProgressionMap: function(catMeta, data, activeLevel) {
       var self = this;
-      var LESSONS_PER_PAGE = 4;
+      var _mobileMap =
+        typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches;
 
       var level = null;
       for (var i = 0; i < data.levels.length; i++) {
@@ -599,6 +600,8 @@
       }
 
       var totalLessons = level.lessons.length;
+      /* On narrow viewports, one vertical list is easier than paginated horizontal cards. */
+      var LESSONS_PER_PAGE = _mobileMap ? totalLessons : 4;
       var totalPages = Math.ceil(totalLessons / LESSONS_PER_PAGE);
 
       // Find page containing the first incomplete lesson
