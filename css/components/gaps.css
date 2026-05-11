@@ -193,7 +193,7 @@
   }
 
   @supports (field-sizing: content) {
-    .gap-input {
+    .gap-input:not(.reading-type4-inline-input) {
       field-sizing: content;
     }
   }
