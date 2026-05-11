@@ -54,17 +54,31 @@
 /* Inline input + keyword badge wrapper */
 .reading-type4-inline-wrap {
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 6px;
   background: white;
   border: 2px solid #cbd5e1;
   border-radius: 30px;
-  padding: 0 4px 0 2px;
+  padding: 2px 6px 2px 4px;
   margin: 0 4px;
   vertical-align: middle;
-  transition: all 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   position: relative;
   line-height: 1.2;
+  box-sizing: border-box;
+  max-width: 100%;
+  flex-wrap: wrap;
+  white-space: normal;
+}
+
+.reading-type4-inline-wrap:focus-within {
+  border-color: var(--primary, #2d2e5f);
+  box-shadow: 0 0 0 3px rgba(45, 46, 95, 0.12);
+}
+
+.reading-type4-inline-wrap.reading-type4-purple:focus-within {
+  border-color: var(--primary-light, #4a4b7c);
+  box-shadow: 0 0 0 3px rgba(74, 75, 124, 0.14);
 }
 
 .reading-type4-inline-wrap.incorrect::after {
@@ -124,33 +138,47 @@
 .reading-type4-inline-input {
   width: 120px;
   min-width: 80px;
-  max-width: 80vw;
-  padding: 4px 16px;
+  max-width: min(100%, calc(100vw - 72px));
+  padding: 6px 14px;
   border: none;
   border-radius: 28px;
   font-family: 'Nunito', sans-serif;
   font-weight: 500;
   font-size: 1.05rem;
-  line-height: 1.35;
+  line-height: 1.45;
   text-align: center;
   background: transparent;
-  transition: width 0.15s;
+  transition: width 0.15s, min-height 0.15s;
   box-sizing: border-box;
   height: auto;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Outer wrap already draws the pill; neutralise shared .gap-input chrome */
+.reading-type4-inline-wrap textarea.reading-type4-inline-input.gap-input,
+.reading-type4-inline-wrap textarea.reading-type4-inline-input.gap-input:focus,
+.reading-type4-inline-wrap textarea.reading-type4-inline-input.gap-input:focus-visible {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 22px;
 }
 
 textarea.reading-type4-inline-input.reading-type4-inline-textarea {
   resize: none;
   overflow: hidden;
+  overflow-wrap: anywhere;
   vertical-align: middle;
   white-space: pre-wrap;
   word-break: break-word;
   text-align: left;
-  min-height: 2.25em;
+  min-height: 2.35em;
   max-height: 40vh;
 }
 
-.reading-type4-inline-input:focus {
+.reading-type4-inline-input:focus,
+.reading-type4-inline-input:focus-visible {
   outline: none;
 }
 
@@ -346,16 +374,6 @@ textarea.reading-type4-inline-input.reading-type4-inline-textarea {
   overflow-wrap: anywhere;
 }
 
-.reading-type4-inline-wrap {
-  max-width: 100%;
-  flex-wrap: wrap;
-  white-space: normal;
-}
-
-.reading-type4-inline-input {
-  max-width: min(100%, calc(100vw - 72px));
-}
-
 .reading-type4-inline-answer,
 .reading-type4-answer-route-text {
   white-space: normal;
@@ -390,39 +408,56 @@ textarea.reading-type4-inline-input.reading-type4-inline-textarea {
     padding: 3px 10px;
   }
 
+  /* ≥16px avoids iOS Safari auto-zoom on focus */
   .reading-type4-inline-input {
-    min-width: 96px;
-    padding: 4px 10px;
-    font-size: 0.85rem;
-    line-height: 1.35;
+    min-width: 5.75rem;
+    padding: 8px 12px;
+    font-size: 1rem;
+    line-height: 1.4;
   }
 
   .reading-type4-inline-answer {
-    padding: 4px 10px;
-    font-size: 0.85rem;
+    padding: 6px 12px;
+    font-size: 0.92rem;
   }
 
   .reading-type4-inline-wrap {
-    padding: 0;
-    margin: 0 2px;
-    vertical-align: baseline;
-    border-radius: 0;
+    padding: 3px 8px 3px 6px;
+    margin: 3px 2px;
+    vertical-align: middle;
+    border-radius: 14px;
     max-width: calc(100% - 4px);
     box-sizing: border-box;
+    gap: 4px;
   }
 
-  .reading-type4-inline-wrap .reading-type4-inline-input,
+  .reading-type4-inline-wrap .reading-type4-inline-input {
+    text-align: left;
+    max-width: 100%;
+    min-width: 5.5rem;
+    border-radius: 10px;
+  }
+
   .reading-type4-inline-wrap .reading-type4-inline-answer {
-    padding: 0;
-    border-radius: 0;
     text-align: left;
     max-width: 100%;
     min-width: 0;
+    border-radius: 10px;
   }
 
   textarea.reading-type4-inline-input.reading-type4-inline-textarea {
-    width: 100% !important;
+    min-height: 2.75rem;
     max-width: 100%;
     box-sizing: border-box;
+  }
+
+  .reading-type4-inline-wrap:focus-within {
+    box-shadow: 0 0 0 3px rgba(45, 46, 95, 0.14);
+  }
+}
+
+@media (pointer: coarse) and (max-width: 480px) {
+  textarea.reading-type4-inline-input.reading-type4-inline-textarea.gap-input {
+    min-height: 2.75rem;
   }
 }

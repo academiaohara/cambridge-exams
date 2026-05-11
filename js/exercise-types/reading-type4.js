@@ -222,7 +222,8 @@
     },
     
     resizeInput: function(input) {
-      const minWidth = 120;
+      var isNarrow = typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 480px)').matches;
+      var minWidth = isNarrow ? 92 : 120;
       var span = document.getElementById('reading-type4-resize-span');
       if (!span) {
         span = document.createElement('span');
@@ -233,10 +234,15 @@
       span.style.font = window.getComputedStyle(input).font;
       span.style.width = '';
       var line = input.closest('.reading-type4-second');
-      var maxWidth = line ? Math.max(minWidth, line.clientWidth - 24) : window.innerWidth - 48;
+      var padX = 24;
+      if (line) {
+        var cs = window.getComputedStyle(line);
+        padX = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0) + 16;
+      }
+      var maxWidth = line ? Math.max(minWidth, line.clientWidth - padX) : window.innerWidth - 48;
       span.style.maxWidth = maxWidth + 'px';
       span.textContent = input.value || input.placeholder || '';
-      var measured = span.getBoundingClientRect().width + 36;
+      var measured = span.getBoundingClientRect().width + (isNarrow ? 44 : 40);
       var targetWidth = Math.min(maxWidth, Math.max(minWidth, measured));
       input.style.width = targetWidth + 'px';
       input.style.height = 'auto';
