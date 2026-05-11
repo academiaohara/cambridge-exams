@@ -1347,6 +1347,10 @@
     margin-bottom: 14px;
     min-width: 0;
   }
+  /* Single-page roadmap: lessons stack tighter (no extra bottom margin per lesson) */
+  .fe-map-outer.fe-map-single-page .fe-map-container > .fe-map-lesson {
+    margin-bottom: 0;
+  }
   .fe-map-container .fe-map-lesson .fe-map-points-row,
   .cu-unit-section .fe-map-lesson .fe-map-points-row {
     display: flex !important;
@@ -1363,6 +1367,10 @@
     overscroll-behavior-x: contain;
     scrollbar-width: thin;
     padding: 2px 0 6px;
+  }
+  .fe-map-outer.fe-map-single-page .fe-map-container .fe-map-lesson .fe-map-points-row {
+    justify-content: center;
+    gap: 12px;
   }
   .fe-map-container .fe-map-lesson .fe-map-points-row .fe-map-line,
   .cu-unit-section .fe-map-lesson .fe-map-points-row .fe-map-line {
