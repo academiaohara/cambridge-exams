@@ -36,7 +36,8 @@
       badge.addEventListener('click', function() { self._cycleGapAlt(gap); });
       gap._cuAltBadge = badge;
       var answerEl = gap.querySelector('.reading-type3-answered-word');
-      if (answerEl) answerEl.insertAdjacentElement('afterend', badge);
+      var anchor = (gap.querySelector('.reading-type3-wf-pill .cu-wf-pill-word') || answerEl);
+      if (anchor) anchor.insertAdjacentElement('afterend', badge);
     },
 
     _cycleGapAlt: function(gap) {
@@ -62,13 +63,23 @@
       return '<span class="cu-hint-pill reading-type3-wf-pill">' + inner + '</span>';
     },
 
+    /** Stem word in capitals (unchanged), shown inside the pill after the input / answer. */
+    _stemHintHtml: function(word) {
+      if (!word) return '';
+      var w = String(word).trim();
+      if (!w) return '';
+      return '<span class="cu-hint-pill-word cu-wf-pill-word">' + this._escapeHtml(w) + '</span>';
+    },
+
     renderGap: function(question, qNum, isChecked, userAnswer) {
       var outerOpen = '<span class="reading-type3-gap-inline" data-type3-q="' + qNum + '">';
+      var stemHint = this._stemHintHtml(question && question.word);
 
       if (qNum === 0) {
         var exText = this._escapeHtml(userAnswer || '');
         var inner = '<span class="cu-hint-pill-num">' + qNum + '</span>' +
-          '<span class="reading-type3-answered reading-type3-example-answer">' + exText + '</span>';
+          '<span class="reading-type3-answered reading-type3-example-answer">' + exText + '</span>' +
+          stemHint;
         return outerOpen + this._renderPill(inner) + '</span>';
       }
 
@@ -80,7 +91,8 @@
         var escapedAnswer = this._escapeHtml(answerText);
         var dataAttr = !isCorrect ? ' data-correct="✓ ' + escapedCorrect + '"' : '';
         var innerChecked = '<span class="cu-hint-pill-num">' + qNum + '</span>' +
-          '<span class="reading-type3-answered-word ' + colorClass + '">' + escapedAnswer + '</span>';
+          '<span class="reading-type3-answered-word ' + colorClass + '">' + escapedAnswer + '</span>' +
+          stemHint;
         return (
           '<span class="reading-type3-gap-inline' + (!isCorrect ? ' incorrect' : '') + '" data-type3-q="' + qNum + '"' +
           dataAttr + ' data-student-value="' + escapedAnswer + '" data-correct-raw="' + this._escapeAttr(String(question.correct || '')) + '"' +
@@ -95,7 +107,8 @@
       var inner = '<span class="cu-hint-pill-num">' + qNum + '</span>' +
         '<input type="text" class="cu-gap-input cu-hint-pill-input gap-input reading-type3-pill-input" data-question="' + qNum + '" ' +
         'value="' + escapedVal + '" placeholder="..." ' +
-        'oninput="ReadingType3.handlePillInput(' + qNum + ', this)">';
+        'oninput="ReadingType3.handlePillInput(' + qNum + ', this)">' +
+        stemHint;
       return outerOpen + this._renderPill(inner) + '</span>';
     },
 
@@ -139,7 +152,8 @@
           if (!isCorrect) gap.setAttribute('data-correct', '✓ ' + escapedCorrect);
           else gap.removeAttribute('data-correct');
           var inner = '<span class="cu-hint-pill-num">' + q.number + '</span>' +
-            '<span class="reading-type3-answered-word ' + colorClass + '">' + escapedAnswerText + '</span>';
+            '<span class="reading-type3-answered-word ' + colorClass + '">' + escapedAnswerText + '</span>' +
+            this._stemHintHtml(q.word);
           gap.innerHTML = this._renderPill(inner);
         });
       });
