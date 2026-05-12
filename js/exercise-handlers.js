@@ -249,13 +249,6 @@
           break;
           
         case 'word-formation':
-          // Modal-based design for word formation - disable slot clicks
-          document.querySelectorAll('.reading-type3-gap-slot').forEach(slot => {
-            slot.style.pointerEvents = 'none';
-          });
-          document.querySelectorAll('.reading-type3-answered-word').forEach(word => {
-            word.style.pointerEvents = 'none';
-          });
           document.querySelectorAll('.gap-input').forEach(input => { input.disabled = true; });
           break;
 

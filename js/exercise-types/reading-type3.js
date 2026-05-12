@@ -49,120 +49,62 @@
       if (gap._cuAltBadge) gap._cuAltBadge.textContent = (idx + 1) + '/' + alternatives.length;
     },
 
-    renderGap: function(question, qNum, isChecked, userAnswer) {
-      if (qNum === 0) {
-        return `
-          <span class="reading-type3-gap-inline">
-            <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered reading-type3-example-answer">${userAnswer || ''}</span>
-          </span>
-        `;
-      }
-      // Intentionally render checked unanswered gaps as "_____" to allow toggle mode on restored attempts.
-      if (isChecked) {
-        const isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
-        const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
-        const escapedCorrect = String(question.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        const answerText = userAnswer || '_____';
-        const escapedAnswer = this._escapeHtml(answerText);
-        const dataAttr = !isCorrect ? ` data-correct="✓ ${escapedCorrect}"` : '';
-        return `
-          <span class="reading-type3-gap-inline${!isCorrect ? ' incorrect' : ''}"${dataAttr} data-student-value="${escapedAnswer}" data-correct-raw="${escapedCorrect}" data-check-class="${colorClass}">
-            <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered-word ${colorClass}">${escapedAnswer}</span>
-          </span>
-        `;
-      }
-      
-      if (userAnswer) {
-        const escapedAnswer = this._escapeHtml(userAnswer);
-        return `
-          <span class="reading-type3-gap-inline">
-            <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(${qNum})">${escapedAnswer}</span>
-          </span>
-        `;
-      }
-      
-      return `
-        <span class="reading-type3-gap-inline">
-          <span class="reading-type3-gap-number">(${qNum})</span>
-          <span class="reading-type3-gap-slot" onclick="ReadingType3.openModal(${qNum})"></span>
-        </span>
-      `;
-    },
-    
     _escapeHtml: function(str) {
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     },
 
-    openModal: function(qNum) {
-      const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
-      if (!question) return;
-      
-      // Close tools panel when modal opens
-      if (window.Tools) Tools.closeSidebar();
-      
-      const overlay = document.getElementById('exercise-modal-overlay');
-      const body = document.getElementById('modal-body');
-      
-      const currentAnswer = AppState.currentExercise.answers?.[qNum] || '';
-      const escapedCurrentAnswer = this._escapeHtml(currentAnswer);
-      const escapedWord = this._escapeHtml(question.word || '');
-
-      let html = '';
-      html += '<div class="reading-type3-modal-field-row">';
-      html += '<div class="reading-type3-input-word-row">';
-      html += '<span class="modal-q-circle reading-type3-modal-q">' + qNum + '</span>';
-      html += '<input type="text" class="reading-type3-modal-input" id="type3-modal-input" value="' + escapedCurrentAnswer + '" placeholder="..." autofocus>';
-      html += '<span class="reading-type3-word-badge">' + escapedWord + '</span>';
-      html += '</div>';
-      html += '<button type="button" class="reading-type3-confirm-btn" onclick="ReadingType3.submitAnswer(' + qNum + ')" title="Confirm"><span class="material-symbols-outlined">check</span></button>';
-      html += '</div>';
-      
-      body.innerHTML = html;
-      overlay.style.display = 'flex';
-      
-      setTimeout(function() {
-        var inp = document.getElementById('type3-modal-input');
-        if (inp) {
-          inp.focus();
-          inp.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-              ReadingType3.submitAnswer(qNum);
-            }
-          });
-        }
-      }, 100);
+    _escapeAttr: function(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     },
-    
-    submitAnswer: function(qNum) {
-      var inp = document.getElementById('type3-modal-input');
-      var value = inp ? inp.value : '';
-      var escapedValue = this._escapeHtml(value);
-      
+
+    /** Inline pill (course-style cu-hint-pill); passage keeps the stem word after the gap, so we only wrap number + field. */
+    _renderPill: function(inner) {
+      return '<span class="cu-hint-pill reading-type3-wf-pill">' + inner + '</span>';
+    },
+
+    renderGap: function(question, qNum, isChecked, userAnswer) {
+      var outerOpen = '<span class="reading-type3-gap-inline" data-type3-q="' + qNum + '">';
+
+      if (qNum === 0) {
+        var exText = this._escapeHtml(userAnswer || '');
+        var inner = '<span class="cu-hint-pill-num">' + qNum + '</span>' +
+          '<span class="reading-type3-answered reading-type3-example-answer">' + exText + '</span>';
+        return outerOpen + this._renderPill(inner) + '</span>';
+      }
+
+      if (isChecked) {
+        var isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
+        var colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
+        var escapedCorrect = String(question.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        var answerText = userAnswer || '_____';
+        var escapedAnswer = this._escapeHtml(answerText);
+        var dataAttr = !isCorrect ? ' data-correct="✓ ' + escapedCorrect + '"' : '';
+        var innerChecked = '<span class="cu-hint-pill-num">' + qNum + '</span>' +
+          '<span class="reading-type3-answered-word ' + colorClass + '">' + escapedAnswer + '</span>';
+        return (
+          '<span class="reading-type3-gap-inline' + (!isCorrect ? ' incorrect' : '') + '" data-type3-q="' + qNum + '"' +
+          dataAttr + ' data-student-value="' + escapedAnswer + '" data-correct-raw="' + this._escapeAttr(String(question.correct || '')) + '"' +
+          ' data-check-class="' + colorClass + '">' +
+          this._renderPill(innerChecked) +
+          '</span>'
+        );
+      }
+
+      var val = userAnswer != null ? userAnswer : '';
+      var escapedVal = this._escapeAttr(val);
+      var inner = '<span class="cu-hint-pill-num">' + qNum + '</span>' +
+        '<input type="text" class="cu-gap-input cu-hint-pill-input gap-input reading-type3-pill-input" data-question="' + qNum + '" ' +
+        'value="' + escapedVal + '" placeholder="..." ' +
+        'oninput="ReadingType3.handlePillInput(' + qNum + ', this)">';
+      return outerOpen + this._renderPill(inner) + '</span>';
+    },
+
+    handlePillInput: function(qNum, el) {
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
-      AppState.currentExercise.answers[qNum] = value;
-      
-      // Update the gap in place
-      var gaps = document.querySelectorAll('.reading-type3-gap-inline');
-      gaps.forEach(function(gap) {
-        var numSpan = gap.querySelector('.reading-type3-gap-number');
-        if (numSpan && numSpan.textContent.trim() === '(' + qNum + ')') {
-          if (value.trim()) {
-            gap.innerHTML = '<span class="reading-type3-gap-number">(' + qNum + ')</span>' +
-              '<span class="reading-type3-answered-word reading-type3-purple" onclick="ReadingType3.openModal(' + qNum + ')">' + escapedValue + '</span>';
-          } else {
-            gap.innerHTML = '<span class="reading-type3-gap-number">(' + qNum + ')</span>' +
-              '<span class="reading-type3-gap-slot" onclick="ReadingType3.openModal(' + qNum + ')"></span>';
-          }
-        }
-      });
-      
-      document.getElementById('exercise-modal-overlay').style.display = 'none';
+      AppState.currentExercise.answers[qNum] = el.value;
       Timer.updateScoreDisplay();
     },
-    
+
     isAnswerCorrect: function(userAnswer, correctAnswer) {
       if (!userAnswer) return false;
       if (typeof correctAnswer === 'string' && correctAnswer.includes('/')) {
@@ -172,48 +114,44 @@
       }
       return userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
     },
-    
+
     checkAnswers: function() {
       const questions = AppState.currentExercise.content.questions;
       let correct = 0;
-      
+
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
         const isCorrect = this.isAnswerCorrect(userAnswer, q.correct);
         if (isCorrect) correct++;
-        
-        // Update visual state
-        const gaps = document.querySelectorAll('.reading-type3-gap-inline');
+
+        const gaps = document.querySelectorAll('.reading-type3-gap-inline[data-type3-q]');
         gaps.forEach(gap => {
-          const numSpan = gap.querySelector('.reading-type3-gap-number');
-          if (numSpan && numSpan.textContent.trim() === `(${q.number})`) {
-            const answerText = userAnswer || '_____';
-            const escapedAnswerText = this._escapeHtml(answerText);
-            const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
-            const escapedCorrect = String(q.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            gap.setAttribute('data-student-value', answerText);
-            gap.setAttribute('data-correct-raw', q.correct || '');
-            gap.setAttribute('data-check-class', colorClass);
-            this._clearAltBadgeForGap(gap);
-            gap.className = 'reading-type3-gap-inline' + (!isCorrect ? ' incorrect' : '');
-            if (!isCorrect) gap.setAttribute('data-correct', '✓ ' + escapedCorrect);
-            else gap.removeAttribute('data-correct');
-            gap.innerHTML = `
-              <span class="reading-type3-gap-number">(${q.number})</span>
-              <span class="reading-type3-answered-word ${colorClass}">${escapedAnswerText}</span>
-            `;
-          }
+          if (gap.getAttribute('data-type3-q') !== String(q.number)) return;
+          const answerText = userAnswer || '_____';
+          const escapedAnswerText = this._escapeHtml(answerText);
+          const colorClass = isCorrect ? 'reading-type3-correct' : 'reading-type3-incorrect';
+          const escapedCorrect = String(q.correct).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          gap.setAttribute('data-student-value', answerText);
+          gap.setAttribute('data-correct-raw', q.correct || '');
+          gap.setAttribute('data-check-class', colorClass);
+          this._clearAltBadgeForGap(gap);
+          gap.className = 'reading-type3-gap-inline' + (!isCorrect ? ' incorrect' : '');
+          if (!isCorrect) gap.setAttribute('data-correct', '✓ ' + escapedCorrect);
+          else gap.removeAttribute('data-correct');
+          var inner = '<span class="cu-hint-pill-num">' + q.number + '</span>' +
+            '<span class="reading-type3-answered-word ' + colorClass + '">' + escapedAnswerText + '</span>';
+          gap.innerHTML = this._renderPill(inner);
         });
       });
-      
+
       return correct;
     },
 
     setAnswerMode: function(mode) {
       var self = this;
-      document.querySelectorAll('.reading-type3-gap-inline').forEach(function(gap) {
-        var numberEl = gap.querySelector('.reading-type3-gap-number');
-        if (!numberEl || numberEl.textContent.trim() === '(0)') return;
+      document.querySelectorAll('.reading-type3-gap-inline[data-type3-q]').forEach(function(gap) {
+        var qStr = gap.getAttribute('data-type3-q');
+        if (!qStr || qStr === '0') return;
         var answerEl = gap.querySelector('.reading-type3-answered-word');
         if (!answerEl) return;
         var studentValue = gap.getAttribute('data-student-value') || '_____';

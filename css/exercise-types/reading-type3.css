@@ -24,6 +24,24 @@
   position: relative;
 }
 
+/* Word-formation inline gap: course-style pill (number + input / result) */
+.reading-type3-wf-pill:focus-within {
+  border-color: #1e9d8e;
+  box-shadow: 0 0 0 3px rgba(30, 157, 142, 0.12);
+}
+
+.reading-type3-wf-pill.reading-type3-gap-pill--example {
+  pointer-events: none;
+}
+
+.reading-type3-wf-pill .reading-type3-answered-word {
+  margin-left: 0;
+}
+
+.reading-type3-wf-pill .reading-type3-pill-input {
+  min-width: 72px;
+}
+
 .reading-type3-gap-inline.incorrect {
   cursor: help;
 }
