@@ -832,12 +832,14 @@
       }
       
       if (partConfig.type === 'word-formation') {
-        return `
-          <span class="reading-type3-gap-inline">
-            <span class="reading-type3-gap-number">(${qNum})</span>
-            <span class="reading-type3-answered reading-type3-example-answer">${exampleText}</span>
-          </span>
-        `;
+        const exEsc = (exampleText || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return (
+          '<span class="reading-type3-gap-inline" data-type3-q="' + qNum + '">' +
+          '<span class="cu-hint-pill reading-type3-wf-pill reading-type3-gap-pill--example">' +
+          '<span class="cu-hint-pill-num">' + qNum + '</span>' +
+          '<span class="reading-type3-answered reading-type3-example-answer">' + exEsc + '</span>' +
+          '</span></span>'
+        );
       }
       
       if (partConfig.type === 'open-cloze') {
