@@ -833,11 +833,17 @@
       
       if (partConfig.type === 'word-formation') {
         const exEsc = (exampleText || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const exWord = exampleData && exampleData.word ? String(exampleData.word) : '';
+        const wordEsc = exWord.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const stemPill = exWord
+          ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + wordEsc + '</span>'
+          : '';
         return (
           '<span class="reading-type3-gap-inline" data-type3-q="' + qNum + '">' +
           '<span class="cu-hint-pill reading-type3-wf-pill reading-type3-gap-pill--example">' +
           '<span class="cu-hint-pill-num">' + qNum + '</span>' +
           '<span class="reading-type3-answered reading-type3-example-answer">' + exEsc + '</span>' +
+          stemPill +
           '</span></span>'
         );
       }

@@ -42,6 +42,16 @@
   min-width: 72px;
 }
 
+/* Match solution / example text size to the pill input (cu-hint-pill-input uses 0.9rem). */
+.reading-type3-wf-pill .reading-type3-answered-word,
+.reading-type3-wf-pill .reading-type3-example-answer {
+  font-size: 0.9rem;
+}
+
+.reading-type3-wf-pill .cu-hint-pill-word.cu-wf-pill-word {
+  font-size: 0.9rem;
+}
+
 .reading-type3-gap-inline.incorrect {
   cursor: help;
 }
