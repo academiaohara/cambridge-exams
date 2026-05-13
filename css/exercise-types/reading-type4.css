@@ -143,9 +143,12 @@
   line-height: inherit;
 }
 
-/* Paragraph lh (1.8) inside textarea + min-height leaves the first line stuck to the top */
-.reading-type4-second textarea.reading-type4-inline-input.reading-type4-inline-textarea {
-  line-height: 1.45;
+/* Match the example gap (.reading-type4-inline-answer) so the empty/checked pill matches reading-type4-inline-wrap.reading-type4-correct */
+.reading-type4-second .reading-type4-inline-wrap textarea.reading-type4-inline-input.reading-type4-inline-textarea {
+  font-size: 1.05rem;
+  line-height: 1.2;
+  padding: 4px 16px;
+  min-height: calc(1.2em + 8px);
 }
 
 /* Match the sentence line box so the pill sits vertically with surrounding text */
@@ -397,13 +400,6 @@ textarea.reading-type4-inline-input.reading-type4-inline-textarea {
   white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
-}
-
-/* Desktop: alt-solution badge sits slightly low vs. the textarea box; nudge to match line height */
-@media (min-width: 481px) {
-  .reading-type4-inline-wrap > .cu-alt-badge {
-    margin: 7px 2px 0;
-  }
 }
 
 @media (max-width: 480px) {
