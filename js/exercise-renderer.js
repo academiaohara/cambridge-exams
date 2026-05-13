@@ -64,9 +64,23 @@
         
         questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
         
-        const secondToggleI18nKey = 'showQuestions';
-        const i18nMap = { showQuestions: 'Questions', showText: 'Text' };
+        const isGappedWithParagraphs = partConfig.type === 'gapped-text' &&
+          exercise.content.paragraphs && Object.keys(exercise.content.paragraphs).length > 0;
+        const secondToggleI18nKey = isGappedWithParagraphs
+          ? (AppState.currentLevel === 'B2' && part === 6 ? 'showSentences' : 'showParagraphs')
+          : 'showQuestions';
+        const i18nMap = {
+          showQuestions: 'Questions',
+          showParagraphs: 'Paragraphs',
+          showSentences: 'Sentences',
+          showText: 'Text'
+        };
         const secondToggleLabel = i18nMap[secondToggleI18nKey] || secondToggleI18nKey;
+        const secondToggleIconClass = secondToggleI18nKey === 'showSentences'
+          ? 'fa-stream'
+          : secondToggleI18nKey === 'showParagraphs'
+            ? 'fa-align-left'
+            : 'fa-question-circle';
         const isReadingPart5to8 = section === 'reading' && part >= 5;
         const showExplanationBtn = isReadingPart5to8;
         toggleHTML = `
@@ -75,7 +89,7 @@
               <i class="fas fa-file-alt"></i> <span data-i18n="showText">Text</span>
             </button>
             <button class="toggle-view-btn" id="toggle-questions-btn" onclick="ExerciseRenderer.toggleView('questions')">
-              <i class="fas fa-question-circle"></i> <span data-i18n="${secondToggleI18nKey}">${secondToggleLabel}</span>
+              <i class="fas ${secondToggleIconClass}"></i> <span data-i18n="${secondToggleI18nKey}">${secondToggleLabel}</span>
             </button>
             ${showExplanationBtn ? `
             <button class="toggle-view-btn btn-explanation-mode" id="toggle-explanation-btn"
@@ -426,6 +440,75 @@
       html += '</div>';
       return html;
     },
+
+    /**
+     * B2 Reading 6 / C1 Reading 7: full paragraph or sentence cards with gap assignment buttons.
+     * Inner HTML only (wrapper is added by renderToggleQuestions).
+     */
+    renderGappedTextParagraphToggleInner: function(exercise, partConfig) {
+      var paragraphs = exercise.content.paragraphs || {};
+      var questions = exercise.content.questions || [];
+      var userAnswer = (AppState.currentExercise && AppState.currentExercise.answers) || {};
+      var isChecked = AppState.answersChecked;
+      var escapeHtml = function(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      };
+      var keys = Object.keys(paragraphs).sort(function(a, b) { return a.localeCompare(b); });
+      var html = '';
+      keys.forEach(function(key) {
+        var raw = paragraphs[key] || '';
+        var bodyHtml = escapeHtml(ReadingType7._stripBrackets(raw)).replace(/\n/g, '<br>');
+        var cardCls = 'reading-type7-toggle-card';
+        var assignedQ = null;
+        questions.forEach(function(q) {
+          if (userAnswer[q.number] === key) assignedQ = q;
+        });
+        if (isChecked) {
+          if (assignedQ) {
+            cardCls += userAnswer[assignedQ.number] === assignedQ.correct
+              ? ' reading-type7-toggle-card-correct'
+              : ' reading-type7-toggle-card-incorrect';
+          } else {
+            cardCls += ' reading-type7-toggle-card-unused';
+          }
+        }
+        html += '<div class="' + cardCls + '" data-letter="' + escapeHtml(key) + '">';
+        html += '<div class="reading-type7-toggle-card-head">';
+        html += '<span class="reading-type7-toggle-letter">' + escapeHtml(key) + '</span>';
+        html += '</div>';
+        html += '<div class="reading-type7-toggle-card-body">' + bodyHtml + '</div>';
+        html += '<div class="reading-type7-toggle-card-actions">';
+        html += '<span class="reading-type7-toggle-actions-label">Gap</span>';
+        questions.forEach(function(q) {
+          var qNum = q.number;
+          var selected = userAnswer[qNum] === key;
+          var btnCls = 'reading-type7-toggle-gapbtn';
+          if (selected) btnCls += ' selected';
+          if (isChecked) {
+            if (selected && userAnswer[qNum]) {
+              btnCls += ' checked';
+              btnCls += userAnswer[qNum] === q.correct ? ' correct' : ' incorrect';
+            }
+          } else if (userAnswer[qNum] && userAnswer[qNum] !== key) {
+            btnCls += ' other-filled';
+          }
+          var attrs = 'type="button" class="' + btnCls + '" data-qnum="' + qNum + '" data-letter="' + escapeHtml(key) + '"';
+          if (isChecked) {
+            attrs += ' disabled';
+          } else {
+            attrs += ' onclick="ReadingType7.handleSelect(' + qNum + ', \'' + key + '\')"';
+          }
+          html += '<button ' + attrs + '>' + qNum + '</button>';
+        });
+        html += '</div></div>';
+      });
+      return html;
+    },
     
     renderToggleQuestions: function(exercise, partConfig) {
       const questions = exercise.content.questions || [];
@@ -437,30 +520,10 @@
       
       let html = '';
       
-      // For gapped-text (Part 6/7), show questions in reading-type8-question card format
+      // For gapped-text (B2 Part 6 / C1 Part 7): list each paragraph/sentence with gap buttons
       if (partConfig.type === 'gapped-text') {
-        html += '<div class="reading-type8-questions">';
-        questions.forEach(function(q) {
-          var qNum = q.number;
-          var ua = userAnswer[qNum] || '';
-          var btnCls = 'gap-box gap-box-small';
-          if (ua) btnCls += ' answered';
-          if (isChecked) {
-            btnCls += ' checked';
-            if (ua) btnCls += ua === q.correct ? ' correct' : ' incorrect';
-          }
-          var correctAttr = (isChecked && ua && ua !== q.correct) ? 'data-correct="✓ ' + q.correct + '"' : '';
-          var onclickAttr = !isChecked ? 'onclick="ReadingType7.openSelectModal(' + qNum + ')"' : '';
-          var displayText = ua || '.........';
-          html += '<div class="reading-type8-question">';
-          html += '<span class="gap-container">';
-          html += '<span class="gap-number-outside">' + qNum + ')</span>';
-          html += '<span class="' + btnCls + '" ' + correctAttr + ' ' + onclickAttr + '>';
-          html += '<span class="gap-answer" id="answer-' + qNum + '"><span class="gap-text">' + displayText + '</span></span>';
-          html += '</span>';
-          html += '</span>';
-          html += '</div>';
-        });
+        html += '<div id="reading-type7-paragraph-toggle" class="reading-type7-toggle-paras">';
+        html += this.renderGappedTextParagraphToggleInner(exercise, partConfig);
         html += '</div>';
         return html;
       }

@@ -93,6 +93,23 @@
       if (overlay) overlay.style.display = 'none';
       ReadingType7.handleSelect(qNum, key);
     },
+
+    _refreshSingleGapDom: function(qNum, value) {
+      const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
+      const gap = document.querySelector('.reading-type7-gap[data-qnum="' + qNum + '"]');
+      if (gap && question) {
+        const isInline = gap.dataset.inline === 'true';
+        const isChecked = AppState.answersChecked;
+        gap.outerHTML = ReadingType7.renderGap(question, qNum, isChecked, value || '', isInline);
+      }
+    },
+
+    refreshParagraphToggleDOM: function() {
+      const el = document.getElementById('reading-type7-paragraph-toggle');
+      if (!el || typeof ExerciseRenderer === 'undefined') return;
+      const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
+      el.innerHTML = ExerciseRenderer.renderGappedTextParagraphToggleInner(AppState.currentExercise, partConfig);
+    },
     
     toggleReveal: function(qNum, btn) {
       const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
@@ -124,34 +141,19 @@
     
     handleSelect: function(qNum, value) {
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
-      AppState.currentExercise.answers[qNum] = value;
-      
-      // Update the gap display in the text section
-      const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
-      const gap = document.querySelector(`.reading-type7-gap[data-qnum="${qNum}"]`);
-      if (gap && question) {
-        const isInline = gap.dataset.inline === 'true';
-        const isChecked = AppState.answersChecked;
-        gap.outerHTML = ReadingType7.renderGap(question, qNum, isChecked, value, isInline);
+      const answers = AppState.currentExercise.answers;
+      if (value) {
+        Object.keys(answers).forEach(function(n) {
+          const ni = parseInt(n, 10);
+          if (ni !== qNum && answers[n] === value) {
+            answers[n] = '';
+            ReadingType7._refreshSingleGapDom(ni, '');
+          }
+        });
       }
-      
-      // Also update the gap box in the toggle questions section
-      const answerSpan = document.getElementById('answer-' + qNum);
-      if (answerSpan) {
-        const gapTextSpan = answerSpan.querySelector('.gap-text');
-        if (gapTextSpan) {
-          gapTextSpan.textContent = value;
-        } else {
-          const span = document.createElement('span');
-          span.className = 'gap-text';
-          span.textContent = value;
-          answerSpan.innerHTML = '';
-          answerSpan.appendChild(span);
-        }
-        const gapBox = answerSpan.closest('.gap-box');
-        if (gapBox) gapBox.classList.add('answered');
-      }
-      
+      answers[qNum] = value;
+      ReadingType7._refreshSingleGapDom(qNum, value);
+      ReadingType7.refreshParagraphToggleDOM();
       Timer.updateScoreDisplay();
     },
     
@@ -272,23 +274,10 @@
           gap.outerHTML = ReadingType7.renderGap(q, q.number, true, userAnswer || '', isInline);
         }
         
-        // Also update the gap box in the toggle questions section (reading-type8-question format)
-        const answerSpan = document.getElementById('answer-' + q.number);
-        if (answerSpan) {
-          const gapBox = answerSpan.closest('.gap-box');
-          if (gapBox) {
-            gapBox.classList.add('checked');
-            if (userAnswer) {
-              gapBox.classList.add(isCorrect ? 'correct' : 'incorrect');
-              if (!isCorrect) {
-                gapBox.setAttribute('data-correct', '✓ ' + q.correct);
-              }
-            }
-            gapBox.onclick = null;
-          }
-        }
       });
-      
+
+      ReadingType7.refreshParagraphToggleDOM();
+
       return correct;
     }
   };

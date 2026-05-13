@@ -271,6 +271,9 @@
           
         case 'gapped-text':
           document.querySelectorAll('select.paragraph-select').forEach(select => select.disabled = true);
+          document.querySelectorAll('.reading-type7-toggle-gapbtn').forEach(function(btn) {
+            btn.disabled = true;
+          });
           break;
 
         case 'essay':
