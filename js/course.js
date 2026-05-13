@@ -4333,6 +4333,7 @@
       var el = input.closest('.cu-ex-item') ||
         input.closest('.cu-sync-item') ||
         input.closest('.cu-passage-text') ||
+        input.closest('.reading-text-enhanced') ||
         input.closest('.cu-mc-inline-continuous') ||
         input.closest('.cu-ex-sentence') ||
         input.closest('.cu-sync-sentence') ||

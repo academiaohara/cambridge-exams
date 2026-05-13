@@ -500,7 +500,14 @@
           case 'word-formation':
           case 'sentence-completion':
             const input = document.querySelector(`input[data-question="${qNum}"]`);
-            if (input) input.value = answer;
+            if (input) {
+              input.value = answer;
+              if (partConfig.type === 'word-formation' &&
+                typeof BentoGrid !== 'undefined' &&
+                typeof BentoGrid._resizeCuInput === 'function') {
+                BentoGrid._resizeCuInput(input);
+              }
+            }
             break;
             
           case 'transformations':
