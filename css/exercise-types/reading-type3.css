@@ -26,8 +26,12 @@
 
 /* Word-formation inline gap: course-style pill (number + input / result) */
 .reading-type3-wf-pill:focus-within {
-  border-color: #1e9d8e;
-  box-shadow: 0 0 0 3px rgba(30, 157, 142, 0.12);
+  border-color: #9333ea;
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.14);
+}
+
+.reading-type3-wf-pill .cu-hint-pill-input:focus {
+  border-color: #9333ea !important;
 }
 
 .reading-type3-wf-pill.reading-type3-gap-pill--example {

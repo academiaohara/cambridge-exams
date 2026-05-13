@@ -833,6 +833,15 @@
             });
           }, 50);
           break;
+        case 'word-formation':
+          setTimeout(function() {
+            document.querySelectorAll('.reading-type3-pill-input').forEach(function(inp) {
+              if (typeof BentoGrid !== 'undefined' && typeof BentoGrid._resizeCuInput === 'function') {
+                BentoGrid._resizeCuInput(inp);
+              }
+            });
+          }, 50);
+          break;
         case 'multiple-choice-text':
           if (AppState.currentSection === 'listening' && typeof ListeningType1?.initListeners === 'function') {
             ListeningType1.initListeners();
