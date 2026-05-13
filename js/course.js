@@ -2922,7 +2922,8 @@
       var piTitleHtml = ex.passageTitle
         ? '<div class="cu-passage-title">' + self._escapeHTML(ex.passageTitle) + '</div>'
         : '';
-      var html = '<div class="cu-passage-exercise" id="' + idBase + '-pi-passage">' +
+      var piHideInlineAttr = ex.hideCorrectInline ? ' data-hide-correct-inline="true"' : '';
+      var html = '<div class="cu-passage-exercise"' + piHideInlineAttr + ' id="' + idBase + '-pi-passage">' +
         piTitleHtml +
         '<div class="cu-passage-text">' + passageHtml + '</div>' +
         '</div>';
@@ -6494,7 +6495,7 @@
           if (gapHost) {
             gapHost.querySelectorAll('.cu-correct-inline').forEach(function(el) { el.remove(); });
           }
-          if (!ok && expectedRaw) {
+          if (!ok && expectedRaw && passageEl.getAttribute('data-hide-correct-inline') !== 'true') {
             var revealEl = document.createElement('span');
             revealEl.className = 'cu-correct-inline';
             revealEl.textContent = expectedRaw;
