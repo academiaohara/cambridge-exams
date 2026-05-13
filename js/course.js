@@ -6470,7 +6470,8 @@
       sec.querySelectorAll('.cu-passage-exercise').forEach(function(passageEl) {
           passageEl.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(input) {
           totalItems++;
-          var expected = BentoGrid._normalizeCompareText((input.getAttribute('data-answer') || '').trim());
+          var expectedRaw = (input.getAttribute('data-answer') || '').trim();
+          var expected = BentoGrid._normalizeCompareText(expectedRaw);
           var given = BentoGrid._normalizeCompareText(BentoGrid._cuGapGetValue(input).trim());
           var alts = [];
           expected.split(/\s*\/\s*/).forEach(function(a) {
@@ -6482,9 +6483,24 @@
           var filled = given !== '';
           var ok = filled && alts.some(function(a) { return given === a; });
           input.classList.remove('cu-input-correct', 'cu-input-incorrect');
-          if (filled) input.classList.add(ok ? 'cu-input-correct' : 'cu-input-incorrect');
+          if (ok) {
+            input.classList.add('cu-input-correct');
+          } else {
+            input.classList.add('cu-input-incorrect');
+          }
           if (ok) correctItems++;
           BentoGrid._cuGapSetDisabled(input, true);
+          var gapHost = input.closest('.cu-pi-gap-wrap, .cu-wf-gap-wrap');
+          if (gapHost) {
+            gapHost.querySelectorAll('.cu-correct-inline').forEach(function(el) { el.remove(); });
+          }
+          if (!ok && expectedRaw) {
+            var revealEl = document.createElement('span');
+            revealEl.className = 'cu-correct-inline';
+            revealEl.textContent = expectedRaw;
+            if (gapHost) gapHost.appendChild(revealEl);
+            else if (input.parentNode) input.parentNode.appendChild(revealEl);
+          }
         });
       });
       // Handle yn-items
@@ -6904,9 +6920,14 @@
       // If crossword has no other item types, keep "Show answers" visible (per-item toggles don't exist for crossword)
       var hasCwItems = sec.querySelectorAll('.cu-cw-clue-item').length > 0;
       var hasNonCwItems = sec.querySelectorAll('.cu-ex-item, .cu-comma-item').length > 0;
-      // Hide "Show answers" button — per-item toggles replace it after checking
+      var hasPassageCloze = sec.querySelectorAll('.cu-passage-exercise .cu-gap-input[data-passage-num]').length > 0;
+      // Hide "Show answers" when per-item toggles replace it — except pure crossword sections,
+      // passage-cloze sections (no .cu-ex-item rows), or other cases that still need global reveal.
       var showBtn = sec.querySelector('.cu-show-all-btn');
-      if (showBtn) showBtn.style.display = (hasCwItems && !hasNonCwItems) ? '' : 'none';
+      if (showBtn) {
+        var keepShowAnswersVisible = (hasCwItems && !hasNonCwItems) || hasPassageCloze;
+        showBtn.style.display = keepShowAnswersVisible ? '' : 'none';
+      }
       // Disable all inputs, option buttons, and OK chips
       sec.querySelectorAll('.cu-gap-input').forEach(function(input) { BentoGrid._cuGapSetDisabled(input, true); });
       sec.querySelectorAll('.cu-option-btn').forEach(function(btn) { btn.disabled = true; });
@@ -7027,6 +7048,9 @@
         // Disable OK chips while answers are shown
         sec.querySelectorAll('.cu-few-ok-btn').forEach(function(btn) { btn.disabled = true; });
         sec.querySelectorAll('.cu-ok-fill-btn').forEach(function(btn) { btn.disabled = true; });
+
+        // Remove check-time inline correct chips before filling model answers (passage cloze, etc.)
+        sec.querySelectorAll('.cu-correct-inline').forEach(function(el) { el.remove(); });
 
         // Text inputs from cu-ex-items
         sec.querySelectorAll('.cu-ex-item, .cu-sync-item').forEach(function(item) {
