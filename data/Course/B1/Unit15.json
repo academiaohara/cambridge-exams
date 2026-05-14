@@ -6,161 +6,47 @@
   "sections": {
     "topic_vocabulary": {
       "buying_and_selling": [
-        {
-          "word": "advertisement",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "afford",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "bargain",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "brand",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "catalogue",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "change",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "coin",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "cost",
-          "part_of_speech": "v, n"
-        },
-        {
-          "word": "customer",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "debt",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "demand",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "export",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "fee",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "fortune",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "import",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "invest",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "obtain",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "owe",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "own",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "profit",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "property",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "purchase",
-          "part_of_speech": "v, n"
-        },
-        {
-          "word": "receipt",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "require",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "sale",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "save",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "select",
-          "part_of_speech": "v"
-        },
-        {
-          "word": "supply",
-          "part_of_speech": "v, n"
-        },
-        {
-          "word": "variety",
-          "part_of_speech": "n"
-        },
-        {
-          "word": "waste",
-          "part_of_speech": "v, n"
-        }
+        { "word": "advertisement", "part_of_speech": "n" },
+        { "word": "afford", "part_of_speech": "v" },
+        { "word": "bargain", "part_of_speech": "n" },
+        { "word": "brand", "part_of_speech": "n" },
+        { "word": "catalogue", "part_of_speech": "n" },
+        { "word": "change", "part_of_speech": "n" },
+        { "word": "coin", "part_of_speech": "n" },
+        { "word": "cost", "part_of_speech": "v, n" },
+        { "word": "customer", "part_of_speech": "n" },
+        { "word": "debt", "part_of_speech": "n" },
+        { "word": "demand", "part_of_speech": "v" },
+        { "word": "export", "part_of_speech": "v" },
+        { "word": "fee", "part_of_speech": "n" },
+        { "word": "fortune", "part_of_speech": "n" },
+        { "word": "import", "part_of_speech": "v" },
+        { "word": "invest", "part_of_speech": "v" },
+        { "word": "obtain", "part_of_speech": "v" },
+        { "word": "owe", "part_of_speech": "v" },
+        { "word": "own", "part_of_speech": "v" },
+        { "word": "profit", "part_of_speech": "n" },
+        { "word": "property", "part_of_speech": "n" },
+        { "word": "purchase", "part_of_speech": "v, n" },
+        { "word": "receipt", "part_of_speech": "n" },
+        { "word": "require", "part_of_speech": "v" },
+        { "word": "sale", "part_of_speech": "n" },
+        { "word": "save", "part_of_speech": "v" },
+        { "word": "select", "part_of_speech": "v" },
+        { "word": "supply", "part_of_speech": "v, n" },
+        { "word": "variety", "part_of_speech": "n" },
+        { "word": "waste", "part_of_speech": "v, n" }
       ]
     },
     "phrasal_verbs": [
-      {
-        "verb": "add up",
-        "meaning": "find the total of"
-      },
-      {
-        "verb": "come back (from)",
-        "meaning": "return (from)"
-      },
-      {
-        "verb": "give away",
-        "meaning": "give something free of charge"
-      },
-      {
-        "verb": "hurry up",
-        "meaning": "do something more quickly"
-      },
-      {
-        "verb": "pay back",
-        "meaning": "return money (to somebody)"
-      },
-      {
-        "verb": "save up (for)",
-        "meaning": "save money (for a specific purpose)"
-      },
-      {
-        "verb": "take back",
-        "meaning": "return something to the place it came from"
-      },
-      {
-        "verb": "take down",
-        "meaning": "remove (from a high place)"
-      }
+      { "verb": "add up", "meaning": "find the total of" },
+      { "verb": "come back (from)", "meaning": "return (from)" },
+      { "verb": "give away", "meaning": "give something free of charge" },
+      { "verb": "hurry up", "meaning": "do something more quickly" },
+      { "verb": "pay back", "meaning": "return money (to somebody)" },
+      { "verb": "save up (for)", "meaning": "save money (for a specific purpose)" },
+      { "verb": "take back", "meaning": "return something to the place it came from" },
+      { "verb": "take down", "meaning": "remove (from a high place)" }
     ],
     "collocations_patterns": {
       "Prepositional phrases": [
@@ -190,70 +76,16 @@
       ]
     },
     "word_formation": [
-      {
-        "base": "add",
-        "derivatives": [
-          "addition"
-        ]
-      },
-      {
-        "base": "afford",
-        "derivatives": [
-          "affordable"
-        ]
-      },
-      {
-        "base": "compare",
-        "derivatives": [
-          "comparison"
-        ]
-      },
-      {
-        "base": "decide",
-        "derivatives": [
-          "decision"
-        ]
-      },
-      {
-        "base": "expense",
-        "derivatives": [
-          "(in)expensive"
-        ]
-      },
-      {
-        "base": "judge",
-        "derivatives": [
-          "judgement"
-        ]
-      },
-      {
-        "base": "serve",
-        "derivatives": [
-          "service",
-          "servant"
-        ]
-      },
-      {
-        "base": "true",
-        "derivatives": [
-          "truth",
-          "untrue",
-          "truthful"
-        ]
-      },
-      {
-        "base": "use",
-        "derivatives": [
-          "useful",
-          "useless"
-        ]
-      },
-      {
-        "base": "value",
-        "derivatives": [
-          "valuable"
-        ]
-      }
+      { "base": "add", "derivatives": ["addition"] },
+      { "base": "afford", "derivatives": ["affordable"] },
+      { "base": "compare", "derivatives": ["comparison"] },
+      { "base": "decide", "derivatives": ["decision"] },
+      { "base": "expense", "derivatives": ["(in)expensive"] },
+      { "base": "judge", "derivatives": ["judgement"] },
+      { "base": "serve", "derivatives": ["service", "servant"] },
+      { "base": "true", "derivatives": ["truth", "untrue", "truthful"] },
+      { "base": "use", "derivatives": ["useful", "useless"] },
+      { "base": "value", "derivatives": ["valuable"] }
     ],
     "exercises": {
       "A": {
@@ -261,35 +93,35 @@
         "instructions": "Complete the sentences with words from the unit.",
         "questions": [
           {
-            "sentence": "I saw your ...... in the local newspaper this morning.",
+            "sentence": "There was an ...... for a new phone on the bus stop.",
             "answer": "advertisement"
           },
           {
-            "sentence": "We couldn't ...... the new laptop, so we bought a second-hand one.",
+            "sentence": "I can't ...... those trainers because they cost too much.",
             "answer": "afford"
           },
           {
-            "sentence": "This jacket was a real ...... because it was half price.",
+            "sentence": "This second-hand bike was a real ...... at only €40.",
             "answer": "bargain"
           },
           {
-            "sentence": "Can I have the ......, please? I may need to return it.",
+            "sentence": "Always keep the ...... in case you need to take something back.",
             "answer": "receipt"
           },
           {
-            "sentence": "I paid with a €20 note and got some ...... .",
+            "sentence": "I gave the assistant €10 and waited for my ...... .",
             "answer": "change"
           },
           {
-            "sentence": "That shop has a wide ...... of sports shoes.",
+            "sentence": "The market sells a wide ...... of fresh fruit and vegetables.",
             "answer": "variety"
           },
           {
-            "sentence": "We tried to ...... electricity by turning off all the lights.",
+            "sentence": "I'm trying to ...... enough money for a tablet.",
             "answer": "save"
           },
           {
-            "sentence": "The house is in very good ...... for its age.",
+            "sentence": "The sofa is used, but it's still in excellent ...... .",
             "answer": "condition"
           }
         ]
@@ -309,27 +141,27 @@
         ],
         "questions": [
           {
-            "sentence": "Can you ...... these prices for me?",
+            "sentence": "Could you ...... the total cost before we pay?",
             "answer": "add up"
           },
           {
-            "sentence": "I need to ...... this shirt because it's too small.",
+            "sentence": "I'm going to ...... these shoes because they hurt my feet.",
             "answer": "take back"
           },
           {
-            "sentence": "Please ......! The shop closes in five minutes.",
+            "sentence": "Please ......! The sale ends in ten minutes.",
             "answer": "hurry up"
           },
           {
-            "sentence": "I borrowed €20 yesterday and I'll ...... tomorrow.",
+            "sentence": "I borrowed £15 from Mia and promised to ...... it ...... on Friday.",
             "answer": "pay back"
           },
           {
-            "sentence": "We're ...... for a new bike at the moment.",
-            "answer": "save up"
+            "sentence": "Liam is ...... for a new games console.",
+            "answer": "saving up"
           },
           {
-            "sentence": "They decided to ...... old stock before moving stores.",
+            "sentence": "The shop will ...... free bags to the first fifty customers.",
             "answer": "give away"
           }
         ]
@@ -339,27 +171,27 @@
         "instructions": "Choose the correct phrase to complete each sentence.",
         "questions": [
           {
-            "sentence": "Would you like to pay **for rent / in cash / in debt**?",
+            "sentence": "Do you want to pay **in cash / for rent / in debt** or by card?",
             "answer": "in cash"
           },
           {
-            "sentence": "That flat is **by credit card / in debt / for sale**.",
+            "sentence": "Their old car is **for sale / in cash / by credit card**.",
             "answer": "for sale"
           },
           {
-            "sentence": "This room is available **in cash / in good condition / for rent**.",
+            "sentence": "That small office is **for rent / in debt / in cash**.",
             "answer": "for rent"
           },
           {
-            "sentence": "He bought the tickets **in debt / for sale / by credit card**.",
+            "sentence": "She paid for the hotel **by credit card / for sale / in debt**.",
             "answer": "by credit card"
           },
           {
-            "sentence": "Many families are **for rent / in debt / by credit card** after rising prices.",
+            "sentence": "He was **in debt / for rent / in good condition** after borrowing too much money.",
             "answer": "in debt"
           },
           {
-            "sentence": "The car is old but still **in cash / for sale / in good condition**.",
+            "sentence": "The phone is second-hand but **in good condition / for sale / in cash**.",
             "answer": "in good condition"
           }
         ]
@@ -369,35 +201,35 @@
         "instructions": "Complete each sentence with one suitable preposition.",
         "questions": [
           {
-            "sentence": "This bag belongs ...... my sister.",
+            "sentence": "This jacket belongs ...... my brother.",
             "answer": "to"
           },
           {
-            "sentence": "Can I borrow some money ...... you?",
+            "sentence": "Did you borrow that book ...... the library?",
             "answer": "from"
           },
           {
-            "sentence": "We bought this table ...... a local shop.",
+            "sentence": "We bought our sofa ...... a furniture shop outside town.",
             "answer": "from"
           },
           {
-            "sentence": "It's hard to choose ...... these two phones.",
+            "sentence": "I can't choose ...... the red bag and the blue one.",
             "answer": "between"
           },
           {
-            "sentence": "Don't compare me ...... my brother.",
-            "answer": "to"
-          },
-          {
-            "sentence": "Have you decided ...... a new car yet?",
+            "sentence": "It's useful to compare prices ...... different websites.",
             "answer": "on"
           },
           {
-            "sentence": "Could you lend €10 ...... me?",
+            "sentence": "Have you decided ...... a birthday present for Tom?",
+            "answer": "on"
+          },
+          {
+            "sentence": "Can you lend your calculator ...... me for a minute?",
             "answer": "to"
           },
           {
-            "sentence": "How much did you spend ...... your new headphones?",
+            "sentence": "She spent all her money ...... clothes.",
             "answer": "on"
           }
         ]
@@ -407,35 +239,35 @@
         "instructions": "Complete the sentence with the correct form of the word in capitals.",
         "questions": [
           {
-            "sentence": "Could you check the ...... before paying? (ADD)",
+            "sentence": "The final bill included an ...... for service. (ADD)",
             "answer": "addition"
           },
           {
-            "sentence": "This restaurant is surprisingly ...... for students. (AFFORD)",
+            "sentence": "This online course is cheap and very ...... . (AFFORD)",
             "answer": "affordable"
           },
           {
-            "sentence": "I made a quick ...... between the two offers. (COMPARE)",
+            "sentence": "There is no ...... between the two products; they are almost the same. (COMPARE)",
             "answer": "comparison"
           },
           {
-            "sentence": "Buying that old car was a bad ...... . (DECIDE)",
+            "sentence": "Choosing the smaller flat was a sensible ...... . (DECIDE)",
             "answer": "decision"
           },
           {
-            "sentence": "The hotel is clean but a bit ...... . (EXPENSE)",
+            "sentence": "This watch looks nice, but it isn't very ...... . (EXPENSE)",
             "answer": "expensive"
           },
           {
-            "sentence": "The new assistant is very ...... and always polite. (USE)",
+            "sentence": "That shopping app is really ...... for comparing prices. (USE)",
             "answer": "useful"
           },
           {
-            "sentence": "Please tell me the ...... about the final price. (TRUE)",
+            "sentence": "Please tell me the ...... about how much it cost. (TRUE)",
             "answer": "truth"
           },
           {
-            "sentence": "This painting is very ...... and probably expensive. (VALUE)",
+            "sentence": "This old coin is quite ...... . (VALUE)",
             "answer": "valuable"
           }
         ]
@@ -445,27 +277,27 @@
         "instructions": "Complete each sentence with the correct form of the word in capitals.",
         "questions": [
           {
-            "sentence": "She made a wise ...... in a local property last year. (INVEST)",
+            "sentence": "My parents made a good ...... when they bought that property. (INVEST)",
             "answer": "investment"
           },
           {
-            "sentence": "They became very ...... after their small business became popular. (WEALTH)",
+            "sentence": "The business owner became very ...... after opening five shops. (WEALTH)",
             "answer": "wealthy"
           },
           {
-            "sentence": "The ...... of the new shopping centre attracted hundreds of visitors. (OPEN)",
+            "sentence": "The ...... of the new supermarket is on Saturday. (OPEN)",
             "answer": "opening"
           },
           {
-            "sentence": "She showed great financial ...... when managing the family accounts. (RESPONSIBLE)",
+            "sentence": "You need financial ...... if you use a credit card. (RESPONSIBLE)",
             "answer": "responsibility"
           },
           {
-            "sentence": "The store offered a 15% ...... on all products during the sale. (REDUCE)",
+            "sentence": "There was a 20% ...... on winter coats. (REDUCE)",
             "answer": "reduction"
           },
           {
-            "sentence": "There are many ...... opportunities for young people in the city centre. (EMPLOY)",
+            "sentence": "The company offers ...... to many local people. (EMPLOY)",
             "answer": "employment"
           }
         ]
@@ -475,27 +307,27 @@
         "instructions": "Complete each sentence with the correct form of the word in brackets.",
         "questions": [
           {
-            "sentence": "The team showed great ...... during the difficult project. (DETERMINE)",
+            "sentence": "Her ...... helped her save enough money for the trip. (DETERMINE)",
             "answer": "determination"
           },
           {
-            "sentence": "Her ...... in art class was remarkable. (CREATE)",
+            "sentence": "The shop window showed a lot of ...... . (CREATE)",
             "answer": "creativity"
           },
           {
-            "sentence": "He showed enormous ...... by climbing the mountain. (BRAVE)",
+            "sentence": "It took real ...... to start a business at sixteen. (BRAVE)",
             "answer": "bravery"
           },
           {
-            "sentence": "The ...... of the project was impressive. (ORGANISE)",
+            "sentence": "The ...... of the charity sale was excellent. (ORGANISE)",
             "answer": "organisation"
           },
           {
-            "sentence": "She had a natural ...... for languages. (ABLE)",
+            "sentence": "His ...... to bargain helped him get a lower price. (ABLE)",
             "answer": "ability"
           },
           {
-            "sentence": "His ...... to detail made him a great editor. (ATTEND)",
+            "sentence": "You must pay ...... to the small details on the receipt. (ATTEND)",
             "answer": "attention"
           }
         ],
