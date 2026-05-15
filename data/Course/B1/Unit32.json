@@ -151,28 +151,28 @@
       "instructions": "Rewrite the direct questions as reported questions using if.",
       "items": [
         {
-          "sentence": "\"Do you need help?\" she asked me.",
-          "answer": "She asked me if I needed help."
+          "sentence": "\"Are you feeling better?\" the nurse asked me.",
+          "answer": "The nurse asked me if I was feeling better."
         },
         {
-          "sentence": "\"Have they finished the project?\" Tom asked.",
-          "answer": "Tom asked if they had finished the project."
+          "sentence": "\"Have you sent the email?\" Liam asked.",
+          "answer": "Liam asked if I had sent the email."
         },
         {
-          "sentence": "\"Can you drive?\" my uncle asked me.",
-          "answer": "My uncle asked me if I could drive."
+          "sentence": "\"Can you speak Italian?\" Sara asked Tom.",
+          "answer": "Sara asked Tom if he could speak Italian."
         },
         {
-          "sentence": "\"Will she come tomorrow?\" he asked.",
-          "answer": "He asked if she would come the next day."
+          "sentence": "\"Will they arrive tonight?\" Mum asked.",
+          "answer": "Mum asked if they would arrive that night."
         },
         {
-          "sentence": "\"Should I call the manager?\" Ana asked.",
-          "answer": "Ana asked if she should call the manager."
+          "sentence": "\"Should we wait outside?\" Daniel asked.",
+          "answer": "Daniel asked if they should wait outside."
         },
         {
-          "sentence": "\"Did you see Ben?\" Mum asked me.",
-          "answer": "Mum asked me if I had seen Ben."
+          "sentence": "\"Did you lock the door?\" Dad asked me.",
+          "answer": "Dad asked me if I had locked the door."
         }
       ]
     },
@@ -182,28 +182,28 @@
       "instructions": "Complete each reported question with the correct form.",
       "items": [
         {
-          "sentence": "\"Where do they live?\" she asked. → She asked where they ...... .",
-          "answer": "lived"
+          "sentence": "\"Where does your cousin work?\" he asked. → He asked where my cousin ...... .",
+          "answer": "worked"
         },
         {
-          "sentence": "\"Why are you late?\" Dad asked me. → Dad asked me why I ...... late.",
-          "answer": "was"
+          "sentence": "\"Why are they laughing?\" she asked. → She asked why they ...... laughing.",
+          "answer": "were"
         },
         {
-          "sentence": "\"When will the class start?\" he asked. → He asked when the class ...... .",
-          "answer": "would start"
+          "sentence": "\"When will the concert finish?\" I asked. → I asked when the concert ...... .",
+          "answer": "would finish"
         },
         {
-          "sentence": "\"Who did you meet?\" Liam asked. → Liam asked who I ...... .",
-          "answer": "had met"
+          "sentence": "\"Who did you invite?\" Emma asked. → Emma asked who I ...... .",
+          "answer": "had invited"
         },
         {
-          "sentence": "\"How much did it cost?\" I asked. → I asked how much it ...... .",
-          "answer": "had cost"
+          "sentence": "\"How long did the film last?\" Tom asked. → Tom asked how long the film ...... .",
+          "answer": "had lasted"
         },
         {
-          "sentence": "\"Which one do you want?\" Sara asked. → Sara asked which one I ...... .",
-          "answer": "wanted"
+          "sentence": "\"Which colour do you prefer?\" Mia asked. → Mia asked which colour I ...... .",
+          "answer": "preferred"
         }
       ]
     },
@@ -213,28 +213,28 @@
       "instructions": "Rewrite using told/asked + (not) to infinitive.",
       "items": [
         {
-          "sentence": "\"Close the window,\" the teacher said to me.",
-          "answer": "The teacher told me to close the window."
+          "sentence": "\"Open your books,\" the teacher said to us.",
+          "answer": "The teacher told us to open our books."
         },
         {
-          "sentence": "\"Don't touch that button,\" Dad said to us.",
-          "answer": "Dad told us not to touch that button."
+          "sentence": "\"Don't park here,\" the police officer said to me.",
+          "answer": "The police officer told me not to park there."
         },
         {
-          "sentence": "\"Please wait for me,\" Carla said to Ben.",
-          "answer": "Carla asked Ben to wait for her."
+          "sentence": "\"Please carry this bag,\" Grandma said to Leo.",
+          "answer": "Grandma asked Leo to carry that bag."
         },
         {
-          "sentence": "\"Please don't be late,\" the coach said to the team.",
-          "answer": "The coach asked the team not to be late."
+          "sentence": "\"Please don't make any noise,\" the librarian said to the children.",
+          "answer": "The librarian asked the children not to make any noise."
         },
         {
-          "sentence": "\"Send me the file,\" the manager said to Tom.",
-          "answer": "The manager told Tom to send him the file."
+          "sentence": "\"Bring me the receipt,\" the assistant said to Anna.",
+          "answer": "The assistant told Anna to bring him the receipt."
         },
         {
-          "sentence": "\"Please don't use my laptop,\" Nina said to me.",
-          "answer": "Nina asked me not to use her laptop."
+          "sentence": "\"Please don't eat my sandwich,\" Mark said to me.",
+          "answer": "Mark asked me not to eat his sandwich."
         }
       ]
     },
@@ -244,47 +244,47 @@
       "instructions": "Choose the correct answer.",
       "items": [
         {
-          "sentence": "\"Are you busy?\" she asked me. She asked me ...... busy.",
+          "sentence": "\"Do you live nearby?\" he asked me. He asked me ...... nearby.",
           "options": [
-            "A if I am",
-            "B if I was",
-            "C whether was I",
-            "D that I was"
+            "A if I lived",
+            "B if did I live",
+            "C whether I live",
+            "D that I lived"
+          ],
+          "answer": "A"
+        },
+        {
+          "sentence": "\"Where did you put the keys?\" she asked. She asked ...... the keys.",
+          "options": [
+            "A where did I put",
+            "B where I had put",
+            "C where had I put",
+            "D where I putted"
           ],
           "answer": "B"
         },
         {
-          "sentence": "\"Why did you leave early?\" he asked. He asked ...... early.",
+          "sentence": "\"Please wait here,\" the receptionist said. The receptionist ...... there.",
           "options": [
-            "A why did I leave",
-            "B why I had left",
-            "C why had I left",
-            "D why I leave"
+            "A asked me wait",
+            "B told me to wait",
+            "C said me to wait",
+            "D asked that I waited"
           ],
           "answer": "B"
         },
         {
-          "sentence": "\"Please sit down,\" the doctor said. The doctor ...... down.",
+          "sentence": "\"Don't touch the screen,\" Dad said. Dad told us ...... the screen.",
           "options": [
-            "A asked me sit",
-            "B told me to sit",
-            "C said me to sit",
-            "D asked that I sit"
-          ],
-          "answer": "B"
-        },
-        {
-          "sentence": "\"Don't open the door,\" Mum said. Mum told us ...... the door.",
-          "options": [
-            "A to not open",
-            "B don't open",
-            "C not to open",
-            "D not open"
+            "A to not touch",
+            "B don't touch",
+            "C not to touch",
+            "D not touch"
           ],
           "answer": "C"
         },
         {
-          "sentence": "\"Can you help me?\" she asked. She asked me if I ...... help her.",
+          "sentence": "\"Can you open the window?\" she asked. She asked me if I ...... open the window.",
           "options": [
             "A can",
             "B could",
@@ -294,12 +294,12 @@
           "answer": "B"
         },
         {
-          "sentence": "\"When will they arrive?\" he asked. He asked when they ...... .",
+          "sentence": "\"When will the shop close?\" he asked. He asked when the shop ...... .",
           "options": [
-            "A will arrive",
-            "B would arrive",
-            "C did arrive",
-            "D arrive"
+            "A will close",
+            "B would close",
+            "C did close",
+            "D closes"
           ],
           "answer": "B"
         }
@@ -311,28 +311,28 @@
       "instructions": "Complete the second sentence so that it has a similar meaning.",
       "items": [
         {
-          "sentence": "\"Do you like jazz?\" he asked me. **IF**\nHe asked me ...... jazz.",
-          "answer": "if I liked"
+          "sentence": "\"Do you play tennis?\" she asked me. **IF**\nShe asked me ...... tennis.",
+          "answer": "if I played"
         },
         {
-          "sentence": "\"Where did you buy that jacket?\" Anna asked. **WHERE**\nAnna asked ...... that jacket.",
-          "answer": "where I had bought"
+          "sentence": "\"Where did you find that wallet?\" Tom asked. **WHERE**\nTom asked ...... that wallet.",
+          "answer": "where I had found"
         },
         {
-          "sentence": "\"Please call me tonight,\" she said to him. **ASKED**\nShe ...... her that night.",
-          "answer": "asked him to call"
+          "sentence": "\"Please text me later,\" Amy said to Ben. **ASKED**\nAmy ...... later.",
+          "answer": "asked Ben to text her"
         },
         {
-          "sentence": "\"Don't run in the corridor,\" the teacher said. **TOLD**\nThe teacher ...... in the corridor.",
-          "answer": "told us not to run"
+          "sentence": "\"Don't shout in class,\" the teacher said. **TOLD**\nThe teacher ...... in class.",
+          "answer": "told us not to shout"
         },
         {
-          "sentence": "\"When are they leaving?\" I asked. **WHEN**\nI asked ...... leaving.",
-          "answer": "when they were"
+          "sentence": "\"When are you moving house?\" I asked. **WHEN**\nI asked ...... house.",
+          "answer": "when they were moving"
         },
         {
-          "sentence": "\"Can I borrow your notes?\" Mark asked me. **WHETHER**\nMark asked me ...... my notes.",
-          "answer": "whether he could borrow"
+          "sentence": "\"Can I use your charger?\" Lucy asked me. **WHETHER**\nLucy asked me ...... my charger.",
+          "answer": "whether she could use"
         }
       ]
     }
