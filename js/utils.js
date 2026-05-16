@@ -107,26 +107,32 @@
       switch(questionType) {
         case 'open-cloze':
         case 'word-formation':
-        case 'sentence-completion':
-          if (typeof correctAnswer === 'string' && correctAnswer.includes('/')) {
-            return correctAnswer.split('/').some(ans =>
-              userAnswer.trim().toLowerCase() === ans.trim().toLowerCase()
-            );
+        case 'sentence-completion': {
+          var ua = String(userAnswer == null ? '' : userAnswer).trim();
+          if (!ua) return false;
+          var ca = String(correctAnswer == null ? '' : correctAnswer);
+          if (ca.indexOf('/') !== -1) {
+            return ca.split('/').some(function(ans) {
+              return ua.toLowerCase() === ans.trim().toLowerCase();
+            });
           }
-          return userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+          return ua.toLowerCase() === ca.trim().toLowerCase();
+        }
           
-        case 'transformations':
+        case 'transformations': {
+          var ut = String(userAnswer == null ? '' : userAnswer);
           if (Array.isArray(correctAnswer)) {
-            return correctAnswer.some(ans => 
-              userAnswer.toLowerCase().includes(ans.toLowerCase())
-            );
+            return correctAnswer.some(function(ans) {
+              return ut.toLowerCase().includes(String(ans).toLowerCase());
+            });
           }
           if (typeof correctAnswer === 'string' && correctAnswer.includes('/')) {
-            return correctAnswer.split('/').some(ans =>
-              userAnswer.toLowerCase().includes(ans.trim().toLowerCase())
-            );
+            return correctAnswer.split('/').some(function(ans) {
+              return ut.toLowerCase().includes(ans.trim().toLowerCase());
+            });
           }
-          return userAnswer.toLowerCase().includes(correctAnswer.toLowerCase());
+          return ut.toLowerCase().includes(String(correctAnswer).toLowerCase());
+        }
           
         default:
           return userAnswer === correctAnswer;

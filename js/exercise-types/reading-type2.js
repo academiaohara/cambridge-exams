@@ -114,13 +114,15 @@
     },
     
     isAnswerCorrect: function(userAnswer, correctAnswer) {
-      if (!userAnswer) return false;
-      if (typeof correctAnswer === 'string' && correctAnswer.includes('/')) {
-        return correctAnswer.split('/').some(ans =>
-          userAnswer.trim().toLowerCase() === ans.trim().toLowerCase()
-        );
+      var ua = String(userAnswer == null ? '' : userAnswer).trim();
+      if (!ua) return false;
+      var ca = String(correctAnswer == null ? '' : correctAnswer);
+      if (ca.indexOf('/') !== -1) {
+        return ca.split('/').some(function(ans) {
+          return ua.toLowerCase() === ans.trim().toLowerCase();
+        });
       }
-      return userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+      return ua.toLowerCase() === ca.trim().toLowerCase();
     },
     
     checkAnswers: function() {
