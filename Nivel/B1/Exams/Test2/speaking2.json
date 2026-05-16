@@ -1,0 +1,50 @@
+{
+    "title":  "Speaking - Part 2",
+    "level":  "B1",
+    "exam":  "Preliminary",
+    "part":  2,
+    "type":  "photo-description",
+    "time":  1,
+    "totalQuestions":  2,
+    "description":  "Look at the photographs and answer the examiner's questions.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "2A",
+                                      "candidate":  "Candidate A",
+                                      "topic":  "reading",
+                                      "instructions":  "Look at the photograph and describe what you can see.",
+                                      "images":  [
+                                                     {
+                                                         "label":  "A",
+                                                         "url":  "https://b1-exams.b-cdn.net/test2_2a.jpg",
+                                                         "description":  "A girl reading a book in a quiet park.",
+                                                         "imagePrompt":  "A girl reading a book in a quiet park. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
+                                                     }
+                                                 ],
+                                      "followUp":  {
+                                                       "recipient":  "Candidate B",
+                                                       "question":  "Would you enjoy reading like this? Why or why not?"
+                                                   }
+                                  },
+                                  {
+                                      "id":  "2B",
+                                      "candidate":  "Candidate B",
+                                      "topic":  "shopping",
+                                      "instructions":  "Look at the photograph and describe what you can see.",
+                                      "images":  [
+                                                     {
+                                                         "label":  "B",
+                                                         "url":  "https://b1-exams.b-cdn.net/test2_2b.jpg",
+                                                         "description":  "Two friends carrying shopping bags in a busy shopping street.",
+                                                         "imagePrompt":  "Two friends carrying shopping bags in a busy shopping street. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
+                                                     }
+                                                 ],
+                                      "followUp":  {
+                                                       "recipient":  "Candidate A",
+                                                       "question":  "Do you think shopping is popular with young people? Why?"
+                                                   }
+                                  }
+                              ]
+                }
+}
