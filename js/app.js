@@ -243,9 +243,9 @@
     
     syncExamsFromFolders: async function() {
       const levels = Object.keys(EXAMS_DATA || {});
-      const getSectionTemplate = function(level) {
-        var readingTotal = level === 'B2' ? 7 : 8;
-        var readingLabel = level === 'B2' ? 'Reading 1-7' : 'Reading 1-8';
+        const getSectionTemplate = function(level) {
+        var readingTotal = CONFIG.getReadingPartCount(level);
+        var readingLabel = 'Reading 1-' + readingTotal;
         return {
           reading: { name: 'READING & UOE', icon: 'book-open', total: readingTotal, completed: [], inProgress: [] },
           listening: { name: 'LISTENING', icon: 'headphones', total: 4, completed: [], inProgress: [] },

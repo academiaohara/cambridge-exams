@@ -65,7 +65,7 @@
       var level = AppState.currentLevel || 'C1';
 
       // Determine part counts for this level
-      var readingTotal = level === 'B2' ? 7 : 8;
+      var readingTotal = CONFIG.getReadingPartCount(level);
       var listeningTotal = 4;
       var writingTotal = 2;
       var speakingTotal = 4;

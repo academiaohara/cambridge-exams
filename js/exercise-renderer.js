@@ -382,7 +382,10 @@
     getSectionTotalQuestions: function(section) {
       if (section === 'reading') {
         var level = (typeof AppState !== 'undefined') ? AppState.currentLevel : 'C1';
-        var readingParts = level === 'B2' ? [1,2,3,4,5,6,7] : [1,2,3,4,5,6,7,8];
+        if (level === 'B1' && typeof CONFIG.B1_READING_MAX_RAW === 'number') {
+          return CONFIG.B1_READING_MAX_RAW;
+        }
+        var readingParts = CONFIG.getReadingPartNumbers(level);
         return readingParts.reduce((sum, part) => {
           const cfg = CONFIG.getPartConfig(section, part);
           return sum + (cfg ? (cfg.maxMarks || cfg.total || 0) : 0);
