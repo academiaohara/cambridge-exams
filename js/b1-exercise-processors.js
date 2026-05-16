@@ -18,9 +18,19 @@
     });
   }
 
+  function sanitizeHtmlTypos(str) {
+    if (str == null || typeof str !== 'string') return str;
+    return str
+      .replace(/<strong</gi, '<strong>')
+      .replace(/<\/strong</gi, '</strong>');
+  }
+
   function normalizeQuestion(q) {
     if (!q || typeof q !== 'object') return q;
     var out = Object.assign({}, q);
+    if (out.question != null && typeof out.question === 'string') {
+      out.question = sanitizeHtmlTypos(out.question);
+    }
     if (out.answer != null && out.correct == null) {
       out.correct = out.answer;
     }
@@ -50,6 +60,8 @@
     if (!ex.description && ex.instructions) {
       ex.description = ex.instructions;
     }
+    if (ex.instructions) ex.instructions = sanitizeHtmlTypos(ex.instructions);
+    if (ex.description) ex.description = sanitizeHtmlTypos(ex.description);
   }
 
   function readingPart1(ex) {
@@ -57,8 +69,8 @@
     qs.forEach(function(q) {
       if (!q.question) {
         var bits = [];
-        if (q.notice) bits.push('<strong>Notice:</strong> ' + q.notice);
-        if (q.topic) bits.push('<em>' + q.topic + '</em>');
+        if (q.notice) bits.push('<strong>Notice:</strong> ' + sanitizeHtmlTypos(q.notice));
+        if (q.topic) bits.push('<em>' + sanitizeHtmlTypos(q.topic) + '</em>');
         q.question = bits.join('<br>');
       }
     });
@@ -77,14 +89,15 @@
     textsArr.forEach(function(t) {
       var id = (t.id || '').toString().trim().toUpperCase();
       if (!id) return;
-      var title = (t.title || '').toString().trim();
-      var body = (t.text || '').toString().trim();
+      var title = sanitizeHtmlTypos((t.title || '').toString().trim());
+      var body = sanitizeHtmlTypos((t.text || '').toString().trim());
       textsObj[id] = title ? '### ' + title + '\n\n' + body : body;
     });
     var qs = normalizeQuestionsArray(ex.questions || []).map(function(q) {
       var o = Object.assign({}, q);
-      var who = q.person ? '<strong>' + q.person + '</strong>' : '';
-      var needs = q.needs || '';
+      var person = q.person ? sanitizeHtmlTypos(q.person.toString()) : '';
+      var who = person ? '<strong>' + person + '</strong>' : '';
+      var needs = sanitizeHtmlTypos((q.needs || '').toString());
       o.question = (who ? who + ' — ' : '') + needs;
       return o;
     });
@@ -98,7 +111,7 @@
 
   function readingPart3or5(ex) {
     var title = ex.articleTitle || '';
-    var article = (ex.article || '').toString();
+    var article = sanitizeHtmlTypos((ex.article || '').toString());
     ex.content = {
       title: title,
       subtitle: '',
@@ -117,7 +130,7 @@
         paragraphs[k] = String(opts[k]).trim();
       });
     }
-    var article = (ex.article || '').toString();
+    var article = sanitizeHtmlTypos((ex.article || '').toString());
     var gapText = article.replace(/_{3,}/g, '(1)');
     var correct = (ex.answer != null ? ex.answer : (ex.answers && ex.answers[0]) || '').toString().trim();
     ex.content = {
@@ -135,8 +148,8 @@
   }
 
   function readingPart6(ex) {
-    var subject = (ex.subject || '').toString().trim();
-    var email = (ex.email || '').toString();
+    var subject = sanitizeHtmlTypos((ex.subject || '').toString()).trim();
+    var email = sanitizeHtmlTypos((ex.email || '').toString());
     var answersList = Array.isArray(ex.answers) ? ex.answers.slice() : [];
     answersList.sort(function(a, b) { return (a.number || 0) - (b.number || 0); });
     var byNum = {};
@@ -237,28 +250,30 @@
   }
 
   function processReading(ex, part) {
+    var p = parseInt(part, 10);
+    if (isNaN(p)) p = 0;
     var t = (ex.type || '').toString();
-    if (part === 1) {
+    if (p === 1) {
       readingPart1(ex);
       return;
     }
-    if (part === 2 || t === 'matching') {
+    if (p === 2 || t === 'matching') {
       readingPart2(ex);
       return;
     }
-    if (part === 3 || t === 'multiple-choice-long-text') {
+    if (p === 3 || t === 'multiple-choice-long-text') {
       readingPart3or5(ex);
       return;
     }
-    if (part === 4 || t === 'gapped-text') {
+    if (p === 4 || t === 'gapped-text') {
       readingPart4(ex);
       return;
     }
-    if (part === 5 || t === 'multiple-choice-reading') {
+    if (p === 5 || t === 'multiple-choice-reading') {
       readingPart3or5(ex);
       return;
     }
-    if (part === 6 || t === 'gapped-email') {
+    if (p === 6 || t === 'gapped-email') {
       readingPart6(ex);
       return;
     }
@@ -277,8 +292,10 @@
   }
 
   function processWriting(ex, part) {
-    if (part === 1) writingPart1(ex);
-    else if (part === 2) writingPart2(ex);
+    var p = parseInt(part, 10);
+    if (isNaN(p)) p = 0;
+    if (p === 1) writingPart1(ex);
+    else if (p === 2) writingPart2(ex);
   }
 
   function processSpeaking(ex) {
