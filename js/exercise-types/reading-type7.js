@@ -265,7 +265,7 @@
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
         const isCorrect = this.isAnswerCorrect(q, userAnswer);
-        if (isCorrect) correct += 2;
+        if (isCorrect) correct += (AppState.currentExercise && AppState.currentExercise._b1PetScoring) ? 1 : 2;
         
         // Update gap display in the text section (pill design)
         const gap = document.querySelector(`.reading-type7-gap[data-qnum="${q.number}"]`);

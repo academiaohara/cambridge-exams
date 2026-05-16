@@ -347,6 +347,10 @@
       try {
         const response = await Utils.fetchWithNoCache(targetUrl);
         const exercise = await response.json();
+
+        if (AppState.currentLevel === 'B1' && window.B1ExerciseProcessors) {
+          B1ExerciseProcessors.normalizeExercise(exercise, section, part);
+        }
         
         // Transform listening extracts format to standard content format
         if (!exercise.content && exercise.extracts) {
@@ -667,6 +671,10 @@
         
         var response = await Utils.fetchWithNoCache(targetUrl);
         var exercise = await response.json();
+
+        if (AppState.currentLevel === 'B1' && window.B1ExerciseProcessors) {
+          B1ExerciseProcessors.normalizeExercise(exercise, section, part);
+        }
         
         // Normalise listening format
         if (!exercise.content && exercise.extracts) {

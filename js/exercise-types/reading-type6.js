@@ -79,7 +79,7 @@
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
         const isCorrect = this.isAnswerCorrect(q, userAnswer);
-        if (isCorrect) correct += 2;
+        if (isCorrect) correct += (AppState.currentExercise && AppState.currentExercise._b1PetScoring) ? 1 : 2;
         
         // Visual feedback
         const answerSpan = document.getElementById(`answer-${q.number}`);

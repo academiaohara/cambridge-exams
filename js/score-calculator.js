@@ -333,7 +333,10 @@
         }, 0);
       }
       if (section === 'listening') {
-        return [1,2,3,4].reduce(function(s,p){ return s + (CONFIG.PART_TYPES['listening'+p]?.total || 0); }, 0);
+        return [1, 2, 3, 4].reduce(function(s, p) {
+          var cfg = CONFIG.getPartConfig(section, p);
+          return s + (cfg ? (cfg.total || 0) : 0);
+        }, 0);
       }
       if (section === 'writing') {
         return [1,2].reduce(function(s,p){ return s + (CONFIG.PART_TYPES['writing'+p]?.total || 0); }, 0);
