@@ -377,9 +377,65 @@ def text_con_huecos_wf(raw_text, questions, example=None):
     return re.sub(r"\((\d+)\)", repl, raw_text)
 
 
+def fix_malformed_strong_tags(text):
+    """Corrige etiquetas HTML rotas típicas (<strong< → <strong>)."""
+    if not isinstance(text, str):
+        return text
+    text = re.sub(r"<strong<", "<strong>", text, flags=re.IGNORECASE)
+    text = re.sub(r"</strong<", "</strong>", text, flags=re.IGNORECASE)
+    return text
+
+
 def strip_markers(text):
     """Elimina marcadores tipo [41] y [/41] del texto."""
+    if not isinstance(text, str):
+        return text
+    text = fix_malformed_strong_tags(text)
     return re.sub(r"\[/?(\d+)\]", "", text)
+
+
+def is_b1_gapped_email(data):
+    """PET Reading 6: JSON plano con email + answers (sin content.texts A–D)."""
+    if not isinstance(data, dict):
+        return False
+    if data.get("type") == "gapped-email":
+        return True
+    return bool(data.get("email")) and isinstance(data.get("answers"), list)
+
+
+def b1_reading6_questions_for_gaps(data):
+    answers = data.get("answers") or []
+    rows = [a for a in answers if isinstance(a, dict) and a.get("number") is not None]
+
+    def _nkey(a):
+        try:
+            return int(a["number"])
+        except (TypeError, ValueError):
+            return 0
+
+    rows.sort(key=_nkey)
+    return [{"number": a["number"], "correct": str(a.get("answer", "") or "")} for a in rows]
+
+
+def b1_reading6_student_email_block(data):
+    """Asunto + cuerpo del email; añade marcadores (N) ausentes como en el procesador web."""
+    email = fix_malformed_strong_tags(str(data.get("email") or ""))
+    subject = fix_malformed_strong_tags(str(data.get("subject") or "").strip())
+    answers = data.get("answers") or []
+    nums = []
+    for a in answers:
+        if not isinstance(a, dict) or a.get("number") is None:
+            continue
+        try:
+            nums.append(int(a["number"]))
+        except (TypeError, ValueError):
+            continue
+    for n in sorted(set(nums)):
+        marker = f"({n})"
+        if marker not in email:
+            email += f"\n\n{marker} {GAP_DOTS}"
+    header = f"Subject: {subject}\n\n" if subject else ""
+    return header + email
 
 
 def _strip_option_letter(opt):
@@ -544,8 +600,14 @@ def fill_slide_reading5_preguntas(slide, data, test_num):
 
 
 def fill_slide_reading6_texto(slide, data, test_num):
-    """Diapositiva 8: Reading 6 — título y texto con párrafos A–D."""
+    """Diapositiva 8: Reading 6 — C1: textos A–D; B1 PET: email con huecos."""
     set_nombre_test(slide, test_num)
+    if is_b1_gapped_email(data):
+        questions = b1_reading6_questions_for_gaps(data)
+        raw = b1_reading6_student_email_block(data)
+        set_text(slide, "titulo", data.get("title", ""))
+        set_text(slide, "texto", format_parrafos(text_con_huecos(raw, questions, None)))
+        return
     content = data.get("content", {})
     title = content.get("title", data.get("title", ""))
     texts = content.get("texts", {})
@@ -559,8 +621,20 @@ def fill_slide_reading6_texto(slide, data, test_num):
 
 
 def fill_slide_reading6_tablas(slide, data, test_num):
-    """Diapositiva 9: Reading 6 — tablas de preguntas 37–40."""
+    """Diapositiva 9: Reading 6 — C1: preguntas en tablas 37–40; B1 PET: clave por hueco 1–5."""
     set_nombre_test(slide, test_num)
+    if is_b1_gapped_email(data):
+        for a in sorted(
+            (x for x in (data.get("answers") or []) if isinstance(x, dict)),
+            key=lambda x: int(x.get("number") or 0),
+        ):
+            num = a.get("number", "")
+            ans = str(a.get("answer", "") or "")
+            expl = str(a.get("explanation", "") or "").strip()
+            line = f"{num}. {ans}" + (f" — {expl}" if expl else "")
+            table = get_table(slide, str(num))
+            fill_table_cell(table, 0, 0, line)
+        return
     content = data.get("content", {})
     texts = content.get("texts", {})
     questions = texts.get("questions", content.get("questions", []))
