@@ -1,0 +1,50 @@
+{
+    "title":  "Speaking - Part 2",
+    "level":  "B1",
+    "exam":  "Preliminary",
+    "part":  2,
+    "type":  "photo-description",
+    "time":  1,
+    "totalQuestions":  2,
+    "description":  "Look at the photographs and answer the examiner's questions.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "36A",
+                                      "candidate":  "Candidate A",
+                                      "topic":  "doing sport",
+                                      "instructions":  "Look at the photograph and describe what you can see.",
+                                      "images":  [
+                                                     {
+                                                         "label":  "A",
+                                                         "url":  "https://b1-exams.b-cdn.net/test36_2a.jpg",
+                                                         "description":  "A teenager playing basketball in an outdoor court after school.",
+                                                         "imagePrompt":  "A teenager playing basketball in an outdoor court after school. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
+                                                     }
+                                                 ],
+                                      "followUp":  {
+                                                       "recipient":  "Candidate B",
+                                                       "question":  "Would you enjoy doing sport like this? Why or why not?"
+                                                   }
+                                  },
+                                  {
+                                      "id":  "36B",
+                                      "candidate":  "Candidate B",
+                                      "topic":  "music",
+                                      "instructions":  "Look at the photograph and describe what you can see.",
+                                      "images":  [
+                                                     {
+                                                         "label":  "B",
+                                                         "url":  "https://b1-exams.b-cdn.net/test36_2b.jpg",
+                                                         "description":  "A young person playing guitar in a small music room.",
+                                                         "imagePrompt":  "A young person playing guitar in a small music room. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
+                                                     }
+                                                 ],
+                                      "followUp":  {
+                                                       "recipient":  "Candidate A",
+                                                       "question":  "Do you think music is popular with young people? Why?"
+                                                   }
+                                  }
+                              ]
+                }
+}

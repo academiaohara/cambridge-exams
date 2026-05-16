@@ -1,0 +1,50 @@
+{
+    "title":  "Speaking - Part 2",
+    "level":  "B1",
+    "exam":  "Preliminary",
+    "part":  2,
+    "type":  "photo-description",
+    "time":  1,
+    "totalQuestions":  2,
+    "description":  "Look at the photographs and answer the examiner's questions.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "37A",
+                                      "candidate":  "Candidate A",
+                                      "topic":  "technology",
+                                      "instructions":  "Look at the photograph and describe what you can see.",
+                                      "images":  [
+                                                     {
+                                                         "label":  "A",
+                                                         "url":  "https://b1-exams.b-cdn.net/test37_2a.jpg",
+                                                         "description":  "A student using a tablet in a classroom.",
+                                                         "imagePrompt":  "A student using a tablet in a classroom. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
+                                                     }
+                                                 ],
+                                      "followUp":  {
+                                                       "recipient":  "Candidate B",
+                                                       "question":  "Would you enjoy technology like this? Why or why not?"
+                                                   }
+                                  },
+                                  {
+                                      "id":  "37B",
+                                      "candidate":  "Candidate B",
+                                      "topic":  "reading",
+                                      "instructions":  "Look at the photograph and describe what you can see.",
+                                      "images":  [
+                                                     {
+                                                         "label":  "B",
+                                                         "url":  "https://b1-exams.b-cdn.net/test37_2b.jpg",
+                                                         "description":  "A girl reading a book in a quiet park.",
+                                                         "imagePrompt":  "A girl reading a book in a quiet park. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
+                                                     }
+                                                 ],
+                                      "followUp":  {
+                                                       "recipient":  "Candidate A",
+                                                       "question":  "Do you think reading is popular with young people? Why?"
+                                                   }
+                                  }
+                              ]
+                }
+}
