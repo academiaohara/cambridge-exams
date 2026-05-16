@@ -323,7 +323,10 @@
     getSectionMaxRaw: function(section) {
       if (section === 'reading') {
         var level = (typeof AppState !== 'undefined') ? AppState.currentLevel : 'C1';
-        var parts = level === 'B2' ? [1,2,3,4,5,6,7] : [1,2,3,4,5,6,7,8];
+        if (level === 'B1' && typeof CONFIG.B1_READING_MAX_RAW === 'number') {
+          return CONFIG.B1_READING_MAX_RAW;
+        }
+        var parts = CONFIG.getReadingPartNumbers(level);
         return parts.reduce(function(s,p){
           var cfg = CONFIG.getPartConfig('reading', p);
           return s + (cfg ? (cfg.maxMarks || cfg.total || 0) : 0);
@@ -383,11 +386,17 @@
           results.push({ skill: 'Reading', raw: readDisplayRaw, maxRaw: readDisplayMax, scale: getScaleScore(readNormalized, data.tables['Reading']) });
         } else {
           // A2/B1: All parts → Reading
-          var rawTotal = 0; var maxTotal = 0;
-          for (var p3 = 1; p3 <= 8; p3++) {
+          var rawTotal = 0;
+          var maxTotal = examType === 'B1' && typeof CONFIG.B1_READING_MAX_RAW === 'number'
+            ? CONFIG.B1_READING_MAX_RAW
+            : 0;
+          var readEnd = examType === 'B1' ? CONFIG.getReadingPartCount('B1') : 8;
+          for (var p3 = 1; p3 <= readEnd; p3++) {
             rawTotal += self.getStoredSectionScore(examId, 'reading', p3);
-            var cfg3 = CONFIG.getPartConfig('reading', p3);
-            maxTotal += cfg3 ? (cfg3.maxMarks || cfg3.total || 0) : 0;
+            if (examType !== 'B1') {
+              var cfg3 = CONFIG.getPartConfig('reading', p3);
+              maxTotal += cfg3 ? (cfg3.maxMarks || cfg3.total || 0) : 0;
+            }
           }
           var tableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
           var normalized = maxTotal > 0 ? Math.round(rawTotal / maxTotal * tableMax) : 0;
@@ -502,15 +511,21 @@
           var readDisplayMax = isB2 ? readTableMax : readMax;
           results.push({ skill: 'Reading', raw: readDisplayRaw, maxRaw: readDisplayMax, scale: getScaleScore(readNormalized, data.tables['Reading']) });
         } else {
-          var rawTotal = 0; var maxTotal = 0;
-          for (var p3 = 1; p3 <= 8; p3++) {
-            rawTotal += self.getLiveSectionScore(examId, 'reading', p3);
-            var cfg3 = CONFIG.getPartConfig('reading', p3);
-            maxTotal += cfg3 ? (cfg3.maxMarks || cfg3.total || 0) : 0;
+          var rawTotal2 = 0;
+          var maxTotal2 = examType === 'B1' && typeof CONFIG.B1_READING_MAX_RAW === 'number'
+            ? CONFIG.B1_READING_MAX_RAW
+            : 0;
+          var readEnd2 = examType === 'B1' ? CONFIG.getReadingPartCount('B1') : 8;
+          for (var p3 = 1; p3 <= readEnd2; p3++) {
+            rawTotal2 += self.getLiveSectionScore(examId, 'reading', p3);
+            if (examType !== 'B1') {
+              var cfg3b = CONFIG.getPartConfig('reading', p3);
+              maxTotal2 += cfg3b ? (cfg3b.maxMarks || cfg3b.total || 0) : 0;
+            }
           }
-          var tableMax = data.tables['Reading'][data.tables['Reading'].length-1][0];
-          var normalized = maxTotal > 0 ? Math.round(rawTotal / maxTotal * tableMax) : 0;
-          results.push({ skill: 'Reading', raw: rawTotal, maxRaw: maxTotal, scale: getScaleScore(normalized, data.tables['Reading']) });
+          var tableMax2 = data.tables['Reading'][data.tables['Reading'].length-1][0];
+          var normalized2 = maxTotal2 > 0 ? Math.round(rawTotal2 / maxTotal2 * tableMax2) : 0;
+          results.push({ skill: 'Reading', raw: rawTotal2, maxRaw: maxTotal2, scale: getScaleScore(normalized2, data.tables['Reading']) });
         }
       } else {
         var skillName = sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);

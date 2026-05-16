@@ -152,4 +152,21 @@
     var key = section === 'reading' ? part : section + part;
     return (section === 'reading' && levelOverrides[part]) || window.CONFIG.PART_TYPES[key] || window.CONFIG.PART_TYPES[1];
   };
+
+  /** B1 Preliminary: six reading parts (PET); each test folder has reading1–reading6 only. */
+  window.CONFIG.getReadingPartCount = function(level) {
+    if (level === 'B1') return 6;
+    if (level === 'B2') return 7;
+    return 8;
+  };
+
+  window.CONFIG.getReadingPartNumbers = function(level) {
+    var n = window.CONFIG.getReadingPartCount(level);
+    var a = [];
+    for (var i = 1; i <= n; i++) a.push(i);
+    return a;
+  };
+
+  /** Sum of totalQuestions across B1 reading parts 1–6 in each test (5+5+5+1+5+5). */
+  window.CONFIG.B1_READING_MAX_RAW = 26;
 })();
