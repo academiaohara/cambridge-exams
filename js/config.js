@@ -114,6 +114,19 @@
       6: { type: 'gapped-text', inputMode: 'select', total: 6, maxMarks: 12 },
       // B2 Part 7 is Multiple Matching (like C1 Part 8), not Gapped Text
       7: { type: 'multiple-matching', inputMode: 'modal', total: 10 }
+    },
+    /** B1 Preliminary (PET): reading parts 1–6 and listening totals differ from C1/B2. */
+    B1: {
+      1: { type: 'multiple-choice-text', inputMode: 'radio', total: 5, maxMarks: 5 },
+      2: { type: 'multiple-matching', inputMode: 'modal', total: 5, maxMarks: 5 },
+      3: { type: 'multiple-choice-text', inputMode: 'radio', total: 5, maxMarks: 5 },
+      4: { type: 'gapped-text', inputMode: 'select', total: 1, maxMarks: 1 },
+      5: { type: 'multiple-choice-text', inputMode: 'radio', total: 5, maxMarks: 5 },
+      6: { type: 'open-cloze', inputMode: 'text', total: 5, maxMarks: 5 },
+      listening1: { type: 'multiple-choice-text', inputMode: 'radio', total: 7, maxMarks: 7 },
+      listening2: { type: 'multiple-choice-text', inputMode: 'radio', total: 6, maxMarks: 6 },
+      listening3: { type: 'sentence-completion', inputMode: 'text', total: 6, maxMarks: 6 },
+      listening4: { type: 'multiple-choice-text', inputMode: 'radio', total: 6, maxMarks: 6 }
     }
   };
 
@@ -150,7 +163,13 @@
     var level = (typeof AppState !== 'undefined') ? AppState.currentLevel : null;
     var levelOverrides = level && window.CONFIG.LEVEL_PART_TYPES ? (window.CONFIG.LEVEL_PART_TYPES[level] || {}) : {};
     var key = section === 'reading' ? part : section + part;
-    return (section === 'reading' && levelOverrides[part]) || window.CONFIG.PART_TYPES[key] || window.CONFIG.PART_TYPES[1];
+    if (section === 'reading' && levelOverrides[part]) {
+      return levelOverrides[part];
+    }
+    if ((section === 'listening' || section === 'writing' || section === 'speaking') && levelOverrides[key]) {
+      return levelOverrides[key];
+    }
+    return window.CONFIG.PART_TYPES[key] || window.CONFIG.PART_TYPES[1];
   };
 
   /** B1 Preliminary: six reading parts (PET); each test folder has reading1–reading6 only. */

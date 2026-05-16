@@ -392,7 +392,10 @@
         }, 0);
       }
       if (section === 'listening') {
-        return [1, 2, 3, 4].reduce((sum, part) => sum + (CONFIG.PART_TYPES[`listening${part}`]?.total || 0), 0);
+        return [1, 2, 3, 4].reduce(function(sum, part) {
+          var cfg = CONFIG.getPartConfig(section, part);
+          return sum + (cfg ? (cfg.total || 0) : 0);
+        }, 0);
       }
       if (section === 'writing') {
         return [1, 2].reduce((sum, part) => sum + (CONFIG.PART_TYPES[`writing${part}`]?.total || 0), 0);
