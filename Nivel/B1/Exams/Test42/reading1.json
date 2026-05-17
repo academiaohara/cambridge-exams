@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  42,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "notice",
+                          "heading":  "Sports Hall",
+                          "text":  "The sports hall floor has just been cleaned. Please do not enter until the green sign is displayed on the door. Basketball practice will begin as soon as the floor is dry.",
+                          "question":  "What does the notice mean?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "Students must wait before using the hall.",
+                                          "B":  "Basketball practice has been moved outside.",
+                                          "C":  "The hall cannot be cleaned today."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students should wait until the green sign is shown."
                       },
                       {
                           "number":  2,
-                          "topic":  "museum",
-                          "notice":  "Photography is not allowed in this room.",
-                          "question":  "What information is given in the message?",
+                          "format":  "text_message",
+                          "heading":  "Message from Jamie to Noor",
+                          "text":  "Noor, I’m still coming to the study group, but I need to take my sister home first. Please start without me and save the grammar exercises until I arrive.",
+                          "question":  "Why is Jamie texting Noor?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A change or important detail."
+                                          "A":  "To say which part he hopes to do later.",
+                                          "B":  "To cancel the study group completely.",
+                                          "C":  "To ask Noor to take his sister home."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Jamie asks them to save the grammar exercises until he arrives."
                       },
                       {
                           "number":  3,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What information is given in the message?",
+                          "format":  "label",
+                          "heading":  "Science Room Models",
+                          "text":  "Please do not touch the volcano models on this table. They are being judged tomorrow morning. If a label has fallen off, tell the teacher instead of trying to replace it.",
+                          "question":  "What should students do?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A change or important detail."
+                                          "A":  "Ask for help if something is wrong.",
+                                          "B":  "Repair the models before judging begins.",
+                                          "C":  "Move the models to another table."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students should tell the teacher if a label has fallen off."
                       },
                       {
                           "number":  4,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "email",
+                          "heading":  "From: Aunt Sara / Subject: The tickets",
+                          "text":  "I bought tickets for the afternoon show because the evening one was sold out. If that is too early for you, I can try to exchange them, but there may be an extra charge.",
+                          "question":  "What is Aunt Sara saying?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Changing the tickets might cost more money.",
+                                          "B":  "The evening show tickets were cheaper.",
+                                          "C":  "She forgot to buy any tickets."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "She can try to exchange the tickets, but it may cost extra."
                       },
                       {
                           "number":  5,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "What information is given in the message?",
+                          "format":  "advert",
+                          "heading":  "Teenage First Aid Course",
+                          "text":  "Learn basic first aid skills in a one-day course at the community centre. You do not need experience, but you must be at least thirteen. Places are limited to twenty students.",
+                          "question":  "Who can join the course?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A change or important detail.",
-                                          "C":  "A complaint about a problem."
+                                          "A":  "Teenagers of the correct age who book early.",
+                                          "B":  "Only students with first aid experience.",
+                                          "C":  "Any child under the age of thirteen."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students must be at least thirteen, and places are limited."
                       }
                   ]
 }

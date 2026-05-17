@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  28,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "museum",
-                          "notice":  "Photography is not allowed in this room.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "Music Practice Rooms",
+                          "text":  "Practice rooms can now be booked online up to two days before you need them. If you cannot use a room you booked, cancel it online so another student can take the time.",
+                          "question":  "What are students asked to do?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Cancel bookings they no longer need.",
+                                          "B":  "Book rooms more than two days ahead.",
+                                          "C":  "Use rooms without booking online first."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students should cancel unused bookings so others can use the room."
                       },
                       {
                           "number":  2,
-                          "topic":  "cinema",
-                          "notice":  "No food or drinks inside the screen area.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "text_message",
+                          "heading":  "Message from Jamie to Lily",
+                          "text":  "Lily, I’ve just seen that the history test is in Room 11, not our usual classroom. I’m going there now to get a good seat. See you outside Room 11.",
+                          "question":  "Why has Jamie messaged Lily?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To give useful information.",
-                                          "C":  "To ask people for help."
+                                          "A":  "To tell her the test is in another room.",
+                                          "B":  "To ask her where the usual classroom is.",
+                                          "C":  "To say the history test is cancelled."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Jamie says the test is in Room 11 instead of the usual classroom."
                       },
                       {
                           "number":  3,
-                          "topic":  "cinema",
-                          "notice":  "No food or drinks inside the screen area.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "poster",
+                          "heading":  "Town Park Concert",
+                          "text":  "Bring a blanket for sitting on the grass during Saturday’s concert. Chairs are only allowed in the marked area at the back, so that people sitting on blankets can still see the stage.",
+                          "question":  "What does the poster explain?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "Chairs can only be used in one place.",
+                                          "B":  "Everyone must sit at the back.",
+                                          "C":  "Blankets are not allowed near the stage."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Chairs are allowed only in the marked area at the back."
                       },
                       {
                           "number":  4,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What information is given in the message?",
+                          "format":  "email",
+                          "heading":  "From: Dad / Subject: Your phone",
+                          "text":  "Your phone was delivered this morning, but the box looks slightly damaged. I haven’t opened it. Check it carefully when you get home, and we can contact the shop if there’s a problem.",
+                          "question":  "What does Dad want the reader to do?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "Check whether the new phone is damaged.",
+                                          "B":  "Open the box before coming home.",
+                                          "C":  "Return the phone to the delivery driver."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Dad wants the reader to check the phone when they get home."
                       },
                       {
                           "number":  5,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What information is given in the message?",
+                          "format":  "advert",
+                          "heading":  "Weekend Cooking Class",
+                          "text":  "Learn to cook three simple meals in one morning. The class is for teenagers who usually cook little or nothing at home. You will eat one dish there and take the others away.",
+                          "question":  "Who is the class for?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "Teenagers with very little cooking experience.",
+                                          "B":  "Teenagers who already cook meals every day.",
+                                          "C":  "Teenagers who want to teach cooking."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "The class is for teenagers who usually cook little or nothing."
                       }
                   ]
 }

@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  22,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "music club",
-                          "notice":  "Practice starts at 5:15 every Thursday.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "notice",
+                          "heading":  "Swimming Gala",
+                          "text":  "Parents watching the swimming gala should sit upstairs in the viewing area. The poolside is for swimmers and teachers only. Please do not call students over once races have started.",
+                          "question":  "What are parents asked to do?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "Watch from the correct area upstairs.",
+                                          "B":  "Stand beside swimmers during their races.",
+                                          "C":  "Call students over before every race."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Parents must sit upstairs in the viewing area, not by the pool."
                       },
                       {
                           "number":  2,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "text_message",
+                          "heading":  "Message from Millie to Jack",
+                          "text":  "Jack, I borrowed your geography notes because mine were missing. I’ve copied the important pages now, so I’ll leave them in your locker before lunch. Thanks — they really helped.",
+                          "question":  "Why has Millie messaged Jack?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To give useful information.",
-                                          "C":  "To ask people for help."
+                                          "A":  "To say she is returning something she used.",
+                                          "B":  "To ask him for geography notes again.",
+                                          "C":  "To tell him her locker is missing."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Millie borrowed Jack’s notes and says she will return them before lunch."
                       },
                       {
                           "number":  3,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "label",
+                          "heading":  "Library Study Desks",
+                          "text":  "These desks are for silent study only. If you need to discuss group work, please use the tables near the entrance. Students using phones for calls will be asked to leave this area.",
+                          "question":  "What does the label mean?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Talking should happen in another part of the library.",
+                                          "B":  "Students cannot study at these desks after school.",
+                                          "C":  "Group work is not allowed anywhere inside."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Group discussion should happen at the entrance tables, not the silent desks."
                       },
                       {
                           "number":  4,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "email",
+                          "heading":  "From: Ethan / Subject: Concert practice",
+                          "text":  "I know we planned to practise after school, but my guitar string broke. I’m going to the music shop first. Could we start at four instead of half past three?",
+                          "question":  "What does Ethan want?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "To begin practice later than originally planned.",
+                                          "B":  "To borrow a guitar from the reader.",
+                                          "C":  "To cancel practice for the whole afternoon."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Ethan asks to start at four instead of 3:30."
                       },
                       {
                           "number":  5,
-                          "topic":  "train station",
-                          "notice":  "The 6:30 train is delayed by 20 minutes.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "advert",
+                          "heading":  "Museum Family Day",
+                          "text":  "Children can build model bridges in the museum workshop this Sunday. The activity is free with a museum ticket, but adults must stay with children under eight during the whole session.",
+                          "question":  "What does the advert say?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Some children need an adult with them.",
+                                          "B":  "Adults can leave young children after booking.",
+                                          "C":  "Everyone must pay extra for the workshop."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Adults must stay with children under eight during the session."
                       }
                   ]
 }

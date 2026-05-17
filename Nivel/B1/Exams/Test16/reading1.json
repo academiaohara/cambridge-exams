@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  16,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "sports centre",
-                          "notice":  "Members can book classes online.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "notice",
+                          "heading":  "Art Exhibition",
+                          "text":  "Students whose work is in the exhibition may invite two guests to the opening evening. Please give their names to the office by Monday, so security staff know who is expected.",
+                          "question":  "What must students do?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "Register the people they want to invite.",
+                                          "B":  "Collect their artwork from the office.",
+                                          "C":  "Pay for guests before Monday morning."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Students must give guest names to the office."
                       },
                       {
                           "number":  2,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "text_message",
+                          "heading":  "Message from Nathan to Izzy",
+                          "text":  "Izzy, I borrowed your calculator for the test and forgot to give it back. I’ll put it in your locker before lunch unless you need it for first lesson. Sorry about that!",
+                          "question":  "Why is Nathan texting Izzy?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "To explain when he will return something.",
+                                          "B":  "To ask if he can borrow her calculator.",
+                                          "C":  "To tell her the test is before lunch."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Nathan explains he still has the calculator and when he will return it."
                       },
                       {
                           "number":  3,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "advert",
+                          "heading":  "Photography Walk",
+                          "text":  "Bring a phone or camera and learn how to take better photos of buildings. The walk is free, but places must be booked online because the group leader can only take twelve people.",
+                          "question":  "What does the advert say?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "People need to reserve a place first.",
+                                          "B":  "People must pay online before joining.",
+                                          "C":  "People can only use professional cameras."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Places must be booked online because the group is limited."
                       },
                       {
                           "number":  4,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What information is given in the message?",
+                          "format":  "email",
+                          "heading":  "From: Aunt Helen / Subject: Saturday",
+                          "text":  "I’m happy to take you shopping on Saturday, but I have to leave town by three. If you want to look for shoes as well as a jacket, we should go as soon as the shops open.",
+                          "question":  "What does Aunt Helen mean?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "They need an early start to do everything.",
+                                          "B":  "They cannot go shopping on Saturday.",
+                                          "C":  "She only has time to buy shoes."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "She has limited time, so they should go when shops open."
                       },
                       {
                           "number":  5,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "Homework Club",
+                          "text":  "Homework club is moving to Room 14 while the library is being painted. You can still use laptops there, but printing will not be available until the library opens again next week.",
+                          "question":  "What is different about homework club?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "One service is temporarily unavailable this week.",
+                                          "B":  "Students cannot use laptops this week.",
+                                          "C":  "The club has closed until next week."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Printing is not available until the library reopens."
                       }
                   ]
 }

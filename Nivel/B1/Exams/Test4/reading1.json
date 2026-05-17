@@ -3,74 +3,80 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "music club",
-                          "notice":  "Practice starts at 5:15 every Thursday.",
-                          "question":  "What information is given in the message?",
+                          "format":  "notice",
+                          "heading":  "Science Fair",
+                          "text":  "Students showing projects at Friday’s science fair should arrive by 4 p.m. to set up their tables. Parents may enter from 5 p.m. Please keep experiments running until the judges have visited you.",
+                          "question":  "What must students do at the science fair?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "Prepare their display before visitors arrive.",
+                                          "B":  "Bring their parents to help set up tables.",
+                                          "C":  "Stop their experiments when parents enter."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Students set up before parents arrive."
                       },
                       {
                           "number":  2,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "text_message",
+                          "heading":  "Message from Sam to Holly",
+                          "text":  "Holly, I know we planned to walk to the station, but Dad can drive us if we leave ten minutes earlier. That means we won’t have to carry our bags so far. Shall I tell him yes? Sam",
+                          "question":  "What is Sam doing?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "Suggesting a change to their travel plan.",
+                                          "B":  "Explaining why he missed the train.",
+                                          "C":  "Asking Holly to carry his bag."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Sam suggests going by car instead of walking."
                       },
                       {
                           "number":  3,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "advert",
+                          "heading":  "Guitar Lessons",
+                          "text":  "Learn guitar in small groups at the community centre. The first lesson is free if you book a four-week course. Guitars are available to borrow during lessons, but students cannot take them home.",
+                          "question":  "What does the advert say?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Students may try one lesson without paying separately.",
+                                          "B":  "Students receive a free guitar after four weeks.",
+                                          "C":  "Students must bring their own guitar to lessons."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The first lesson is free with a four-week course."
                       },
                       {
                           "number":  4,
-                          "topic":  "cinema",
-                          "notice":  "No food or drinks inside the screen area.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "email",
+                          "heading":  "From: Mrs Lane / Subject: History visit",
+                          "text":  "The coach for tomorrow’s museum visit will leave at 8:45, not 9:00 as printed on the programme. Please wait by the sports field, not outside Reception, because another group is using that entrance.",
+                          "question":  "What is Mrs Lane telling students?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "There are changes to the time and meeting place.",
+                                          "B":  "The museum visit has been moved to another day.",
+                                          "C":  "They should enter the school through Reception."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Both the time and meeting place have changed."
                       },
                       {
                           "number":  5,
-                          "topic":  "museum",
-                          "notice":  "Photography is not allowed in this room.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "label",
+                          "heading":  "Homemade Soup",
+                          "text":  "Keep refrigerated and eat within two days of opening. This soup contains milk and celery. Ask a member of staff if you need information about other ingredients used in today’s meals.",
+                          "question":  "What information is given on the label?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "Some people may need to check before eating it.",
+                                          "B":  "The soup is safe to eat for two weeks.",
+                                          "C":  "Staff can change the ingredients for customers."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "The label lists ingredients and says customers can ask staff."
                       }
                   ]
 }

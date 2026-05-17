@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  27,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What information is given in the message?",
+                          "format":  "notice",
+                          "heading":  "Science Museum Visit",
+                          "text":  "The 3D film is included in your museum ticket, but seats must be reserved at the information desk. The film is popular, so book your seat when you arrive, not just before it starts.",
+                          "question":  "What should visitors do?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A change or important detail."
+                                          "A":  "Reserve film seats early at the museum.",
+                                          "B":  "Buy a separate ticket for the film.",
+                                          "C":  "Arrive only when the film starts."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Visitors should reserve seats when they arrive."
                       },
                       {
                           "number":  2,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "text_message",
+                          "heading":  "Message from Grace to Tom",
+                          "text":  "Tom, I found the website for the campsite. It looks nice, but there’s no shop nearby. We should take breakfast food with us, even if we plan to eat out later.",
+                          "question":  "What is Grace suggesting?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "They should bring some food with them.",
+                                          "B":  "They should choose a campsite near shops.",
+                                          "C":  "They should avoid eating out later."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Grace says they should take breakfast food."
                       },
                       {
                           "number":  3,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "label",
+                          "heading":  "Borrowed Laptops",
+                          "text":  "School laptops may be taken home for homework, but they must be returned by 9 a.m. the next school day. Please report any damage before using the laptop, not after returning it.",
+                          "question":  "What does the label tell students?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "They should mention problems before they start.",
+                                          "B":  "They can keep laptops for several days.",
+                                          "C":  "They must repair damaged laptops themselves."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students should report damage before using the laptop."
                       },
                       {
                           "number":  4,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "email",
+                          "heading":  "From: Coach Martin / Subject: Saturday match",
+                          "text":  "The match will go ahead on Saturday, but the grass pitch is too wet. We’ll play on the artificial pitch instead, so please bring trainers as well as football boots.",
+                          "question":  "What is Coach Martin telling players?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "They need footwear for a different surface.",
+                                          "B":  "The match has been moved to Sunday.",
+                                          "C":  "They should leave football boots at home."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Players need trainers because they will play on the artificial pitch."
                       },
                       {
                           "number":  5,
-                          "topic":  "cinema",
-                          "notice":  "No food or drinks inside the screen area.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "advert",
+                          "heading":  "Craft Workshop",
+                          "text":  "Make a wooden photo frame in our craft workshop. Children under ten must work with an adult because small tools are used. Finished frames can be painted at home after the glue has dried.",
+                          "question":  "What does the advert say?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "Younger children need adult help in the workshop.",
+                                          "B":  "All painting must be finished during the workshop.",
+                                          "C":  "Adults cannot take part in making frames."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Children under ten must work with an adult."
                       }
                   ]
 }

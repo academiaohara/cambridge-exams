@@ -3,74 +3,80 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "museum",
-                          "notice":  "Photography is not allowed in this room.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "After-school Cooking",
+                          "text":  "The cooking course starts next Tuesday in the food technology room. Students do not need to bring ingredients for the first week, but they should bring a container to take food home.",
+                          "question":  "What should students bring to the first lesson?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Something to carry their cooking in.",
+                                          "B":  "All the ingredients for their recipe.",
+                                          "C":  "A list of food they want to make."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students need a container to take food home."
                       },
                       {
                           "number":  2,
-                          "topic":  "cinema",
-                          "notice":  "No food or drinks inside the screen area.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "text_message",
+                          "heading":  "Message from Amy to Jack",
+                          "text":  "Jack, I’ve finished the poster for our history presentation, but I’m not sure about the title. I’ll send you a photo now. Can you tell me whether it sounds interesting enough? Amy",
+                          "question":  "Why is Amy texting Jack?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "To ask for his opinion on part of their work.",
+                                          "B":  "To tell him he must finish the poster.",
+                                          "C":  "To explain why the presentation is late."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Amy asks Jack whether the title sounds interesting enough."
                       },
                       {
                           "number":  3,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "label",
+                          "heading":  "Sports Centre Lockers",
+                          "text":  "Lockers are free for customers using the gym or pool. Please remove all items before closing time. Anything left overnight will be kept at Reception for one week and then given to charity.",
+                          "question":  "What does the notice warn customers?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "Items left too long may not be returned.",
+                                          "B":  "Customers must pay before using lockers.",
+                                          "C":  "Reception sells things left in lockers."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Items are only kept for one week before being given away."
                       },
                       {
                           "number":  4,
-                          "topic":  "train station",
-                          "notice":  "The 6:30 train is delayed by 20 minutes.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "email",
+                          "heading":  "From: Noah / Subject: Class party",
+                          "text":  "I’ve asked the head teacher about using the hall for our class party. She says yes, but only if two parents stay to help clear up afterwards. Could you ask at home tonight?",
+                          "question":  "What does Noah want the reader to do?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "Find out if an adult can help after the party.",
+                                          "B":  "Ask the head teacher to change her decision.",
+                                          "C":  "Tell classmates the party has been cancelled."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Noah wants the reader to ask at home about parent help."
                       },
                       {
                           "number":  5,
-                          "topic":  "sports centre",
-                          "notice":  "Members can book classes online.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "poster",
+                          "heading":  "Photography Competition",
+                          "text":  "Send us one photograph showing life in your town. Photos can be colour or black and white, but they must be your own work. Winners will have their pictures displayed in the library.",
+                          "question":  "What rule must people follow?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "They must enter a photo they took themselves.",
+                                          "B":  "They must send both colour and black-and-white photos.",
+                                          "C":  "They must take their photo inside the library."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The poster says photos must be the entrant’s own work."
                       }
                   ]
 }

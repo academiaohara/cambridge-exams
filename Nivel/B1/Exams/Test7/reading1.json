@@ -3,74 +3,80 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What information is given in the message?",
+                          "format":  "advert",
+                          "heading":  "Dance Workshop",
+                          "text":  "Try street dance with professional teachers this Friday. No special clothes are needed, but trainers are safer than school shoes. Parents may watch the final fifteen minutes of the workshop.",
+                          "question":  "What does the advert advise students?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A change or important detail."
+                                          "A":  "Wear suitable shoes for the activity.",
+                                          "B":  "Bring special clothes for the performance.",
+                                          "C":  "Ask parents to stay for the whole workshop."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The advert says trainers are safer than school shoes."
                       },
                       {
                           "number":  2,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "text_message",
+                          "heading":  "Message from Eva to Dan",
+                          "text":  "Dan, the restaurant I booked has just called. Their upstairs room is closed, but they can give us a table downstairs. It’ll be noisier, so tell me if you’d rather go somewhere else. Eva",
+                          "question":  "Why is Eva texting Dan?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "To check whether he accepts a change.",
+                                          "B":  "To ask him to book another restaurant.",
+                                          "C":  "To say the restaurant has cancelled everything."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Eva explains the change and asks if Dan would prefer another place."
                       },
                       {
                           "number":  3,
-                          "topic":  "museum",
-                          "notice":  "Photography is not allowed in this room.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "Library Computers",
+                          "text":  "Because exam week starts on Monday, library computers can only be booked for revision or coursework. Students wishing to print photos or watch videos should use the media room instead.",
+                          "question":  "What does the notice mean?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "Some computer activities must be done elsewhere.",
+                                          "B":  "The library computers are closed during exam week.",
+                                          "C":  "Students cannot print anything at school now."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Printing photos or watching videos should happen in the media room."
                       },
                       {
                           "number":  4,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What information is given in the message?",
+                          "format":  "email",
+                          "heading":  "From: Uncle Mark / Subject: Bike",
+                          "text":  "I found a second-hand bike that might suit you. It needs a new light, but the tyres are good and it’s the right size. I can collect it tomorrow if you want me to.",
+                          "question":  "What is Uncle Mark doing?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A change or important detail.",
-                                          "C":  "A complaint about a problem."
+                                          "A":  "Offering to get a bike he has seen.",
+                                          "B":  "Explaining how to repair the bike’s tyres.",
+                                          "C":  "Asking to borrow a bike tomorrow."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "He has found a bike and offers to collect it."
                       },
                       {
                           "number":  5,
-                          "topic":  "cinema",
-                          "notice":  "No food or drinks inside the screen area.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "School Garden Club",
+                          "text":  "Garden club members should meet by the greenhouse today, not the main gate. We will be planting vegetables, so bring old shoes. If you joined last week, your membership card is ready.",
+                          "question":  "What information is given to garden club members?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "They should go to a different meeting point.",
+                                          "B":  "They must collect vegetables from the greenhouse.",
+                                          "C":  "They need a card before joining the club."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Members should meet by the greenhouse instead of the main gate."
                       }
                   ]
 }

@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  14,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "train station",
-                          "notice":  "The 6:30 train is delayed by 20 minutes.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "School Reception",
+                          "text":  "Students collecting exam certificates should come to Reception during morning break only. If you cannot come yourself, a parent may collect them, but they must bring identification.",
+                          "question":  "What does the notice explain?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "How certificates can be collected safely.",
+                                          "B":  "Why certificates are not ready yet.",
+                                          "C":  "Which exams students can take next."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The notice gives times and rules for collecting certificates."
                       },
                       {
                           "number":  2,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "text_message",
+                          "heading":  "Message from Jake to Mia",
+                          "text":  "Mia, the pizza place is closed for repairs tonight. I’ve booked the café next door instead. It’s not as cheap, but it has bigger tables, so it might actually be better for the whole group.",
+                          "question":  "What is Jake doing?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "Explaining a new arrangement for the evening.",
+                                          "B":  "Asking Mia to repair the pizza place.",
+                                          "C":  "Cancelling the meal with the whole group."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Jake explains that the group will go to a different place."
                       },
                       {
                           "number":  3,
-                          "topic":  "cinema",
-                          "notice":  "No food or drinks inside the screen area.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "poster",
+                          "heading":  "School Choir",
+                          "text":  "The choir needs more lower voices for the winter concert. You do not need to read music, but you must be able to attend practice every Tuesday until December. See Mr Evans after lunch.",
+                          "question":  "Who is the poster aimed at?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "Students who can practise regularly every week.",
+                                          "B":  "Students who already read music well.",
+                                          "C":  "Students who want Tuesday afternoons free."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The poster says students must attend practice every Tuesday."
                       },
                       {
                           "number":  4,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "email",
+                          "heading":  "From: Olivia / Subject: Homework app",
+                          "text":  "I tried the homework app on my phone, but the screen is too small for the grammar exercises. It works much better on my laptop. You could use it for vocabulary practice, though.",
+                          "question":  "What does Olivia say about the app?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "It is better for some activities than others.",
+                                          "B":  "It cannot be used on a laptop.",
+                                          "C":  "It has no useful exercises for students."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Olivia says grammar is better on a laptop, but vocabulary works on the phone."
                       },
                       {
                           "number":  5,
-                          "topic":  "sports centre",
-                          "notice":  "Members can book classes online.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "label",
+                          "heading":  "Lost Camera",
+                          "text":  "This camera was found near the lake on Sunday afternoon. To collect it, please describe the photos on the memory card. Ask at the visitor centre before 5 p.m.",
+                          "question":  "What must the owner do?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To give useful information.",
-                                          "C":  "To ask people for help."
+                                          "A":  "Prove the camera belongs to them.",
+                                          "B":  "Pay for a new memory card.",
+                                          "C":  "Return to the lake on Sunday."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The owner must describe the photos to prove it is theirs."
                       }
                   ]
 }

@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  23,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "poster",
+                          "heading":  "School Running Club",
+                          "text":  "Running club will not train on the track today because a football match is taking place there. Meet outside the sports hall at 4 p.m. for a shorter run around the park.",
+                          "question":  "What should running club members do?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "Meet somewhere else for a different route.",
+                                          "B":  "Join the football match on the track.",
+                                          "C":  "Train on the track after the match."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "They should meet outside the sports hall and run around the park."
                       },
                       {
                           "number":  2,
-                          "topic":  "music club",
-                          "notice":  "Practice starts at 5:15 every Thursday.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "text_message",
+                          "heading":  "Message from Zoe to Liam",
+                          "text":  "Liam, I’ve seen the shoes you wanted in the sale, but only in black. They’re much cheaper than last week. Do you want me to buy them, or should I wait for the blue ones?",
+                          "question":  "Why is Zoe texting Liam?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "To ask him to choose between price and colour.",
+                                          "B":  "To say the shoes are no longer available.",
+                                          "C":  "To tell him blue shoes are cheaper now."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Zoe asks whether Liam wants the cheaper black shoes or wants to wait."
                       },
                       {
                           "number":  3,
-                          "topic":  "sports centre",
-                          "notice":  "Members can book classes online.",
-                          "question":  "What information is given in the message?",
+                          "format":  "notice",
+                          "heading":  "Computer Club",
+                          "text":  "Computer club members should save their work online before Friday. The old computers will be replaced during the weekend, and anything saved only on those machines may be lost.",
+                          "question":  "What does the notice warn members?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "They should protect their work before the computers change.",
+                                          "B":  "They cannot use online storage after Friday.",
+                                          "C":  "The club will stop meeting at weekends."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Members need to save work online so it is not lost."
                       },
                       {
                           "number":  4,
-                          "topic":  "music club",
-                          "notice":  "Practice starts at 5:15 every Thursday.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "email",
+                          "heading":  "From: Mr Lewis / Subject: Music homework",
+                          "text":  "Your recordings were good, but several people forgot to say their names at the start. Please upload a new version only if your name is missing. Everyone else can leave their work as it is.",
+                          "question":  "Who needs to upload their work again?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Students who did not introduce themselves.",
+                                          "B":  "Students who dislike their own recordings.",
+                                          "C":  "Everyone who completed the music homework."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Only students whose names are missing must upload a new version."
                       },
                       {
                           "number":  5,
-                          "topic":  "music club",
-                          "notice":  "Practice starts at 5:15 every Thursday.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "label",
+                          "heading":  "Camping Stove",
+                          "text":  "Use this stove outside only and keep it away from tents. Wait until it is completely cool before packing it away. Children should not use the stove without adult help.",
+                          "question":  "What does the label warn users about?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "They must use the stove safely outdoors.",
+                                          "B":  "They should pack the stove while hot.",
+                                          "C":  "Children can use the stove alone."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The label gives safety rules for using the stove outside."
                       }
                   ]
 }

@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  47,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "advert",
+                          "heading":  "School Holiday Club",
+                          "text":  "The holiday club is open from 8 a.m. for parents who start work early. Breakfast is available until 8:30. Children arriving later should eat before they come.",
+                          "question":  "What does the advert say?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "Breakfast is only available for early arrivals.",
+                                          "B":  "All children must arrive before eight.",
+                                          "C":  "Parents can eat breakfast at the club."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Breakfast is available only until 8:30."
                       },
                       {
                           "number":  2,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "text_message",
+                          "heading":  "Message from Bella to Theo",
+                          "text":  "Theo, I’ve spoken to the teacher about our missing worksheet. She says we can collect another copy tomorrow, but we need to finish it before Friday’s lesson.",
+                          "question":  "What has Bella found out?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "They can get the worksheet again soon.",
+                                          "B":  "The teacher has cancelled Friday’s lesson.",
+                                          "C":  "They must find the original worksheet."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The teacher will provide another copy tomorrow."
                       },
                       {
                           "number":  3,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "Town Library",
+                          "text":  "The children’s area is closed today while new shelves are fitted. Children may choose books from the display near the main desk, but story time will not take place.",
+                          "question":  "What can children do today?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "Borrow books from a temporary display.",
+                                          "B":  "Attend story time beside the main desk.",
+                                          "C":  "Use the children’s area as usual."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Children can choose books from the display near the desk."
                       },
                       {
                           "number":  4,
-                          "topic":  "music club",
-                          "notice":  "Practice starts at 5:15 every Thursday.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "email",
+                          "heading":  "From: Grandpa / Subject: Your bike",
+                          "text":  "I repaired the brakes on your bike, but the front tyre still loses air slowly. You can ride it to school tomorrow, but let’s replace the tyre at the weekend.",
+                          "question":  "What does Grandpa mean?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "The bike can be used briefly before another repair.",
+                                          "B":  "The bike is too dangerous to ride tomorrow.",
+                                          "C":  "He has replaced every part of the bike."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The bike can be used tomorrow, but the tyre still needs replacing."
                       },
                       {
                           "number":  5,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "poster",
+                          "heading":  "School Photography Display",
+                          "text":  "Photos chosen for the display will be put up in the main corridor next week. If your photo is selected, please write a short sentence explaining where you took it.",
+                          "question":  "What should selected students do?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Provide information to go with their photo.",
+                                          "B":  "Take another photograph next week instead.",
+                                          "C":  "Put their photo in the corridor themselves."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Selected students need to write a sentence about where the photo was taken."
                       }
                   ]
 }

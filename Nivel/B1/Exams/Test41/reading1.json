@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  41,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "School Trip Bags",
+                          "text":  "Students going on the castle trip should bring one small bag only. Large bags cannot be taken inside the castle and there is nowhere safe to leave them on the coach.",
+                          "question":  "What does the notice tell students?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "They should avoid bringing too much luggage.",
+                                          "B":  "They must leave bags on the coach.",
+                                          "C":  "They cannot take anything into the castle."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students are told to bring one small bag because large bags are unsuitable."
                       },
                       {
                           "number":  2,
-                          "topic":  "sports centre",
-                          "notice":  "Members can book classes online.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "text_message",
+                          "heading":  "Message from Ava to Dylan",
+                          "text":  "Dylan, I’ve found the recipe book we need, but the library copy is for reference only. I’ll take photos of the pages if that’s allowed, so we can use them at home.",
+                          "question":  "Why is Ava texting Dylan?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "To explain how they might use the book.",
+                                          "B":  "To ask him to return a library book.",
+                                          "C":  "To say the recipe book is missing."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The book cannot be borrowed, so Ava suggests taking photos if possible."
                       },
                       {
                           "number":  3,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What information is given in the message?",
+                          "format":  "advert",
+                          "heading":  "Weekend Pottery Class",
+                          "text":  "Make a small bowl in our pottery class this Saturday. Your bowl will need to dry before it is painted, so you must return the following week to finish it.",
+                          "question":  "What should people understand?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "The activity cannot be completed in one session.",
+                                          "B":  "They need to bring a bowl from home.",
+                                          "C":  "Painting will happen before the bowl dries."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Participants must return the following week to finish their bowl."
                       },
                       {
                           "number":  4,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "email",
+                          "heading":  "From: Mr Allen / Subject: Reading homework",
+                          "text":  "Several students chose books that are too difficult for the review task. If you cannot explain the main story easily, choose another book before Monday and tell me your new title.",
+                          "question":  "What does Mr Allen advise?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "Change books if the story is unclear.",
+                                          "B":  "Review a difficult book before Monday.",
+                                          "C":  "Explain every title to the class."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Students should choose another book if they cannot explain the story easily."
                       },
                       {
                           "number":  5,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "poster",
+                          "heading":  "School Festival Volunteers",
+                          "text":  "We need volunteers to show visitors around the school festival. You will work in pairs, and maps will be provided. Please come to a short meeting on Wednesday to choose your time.",
+                          "question":  "What must volunteers do first?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "Attend a meeting to arrange their work.",
+                                          "B":  "Make maps for visitors before Wednesday.",
+                                          "C":  "Show visitors around without a partner."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Volunteers need to attend a meeting to choose their time."
                       }
                   ]
 }

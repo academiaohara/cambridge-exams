@@ -3,74 +3,80 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "text_message",
+                          "heading":  "Message from Tom to Grace",
+                          "text":  "Grace, I found your science notebook under the desk after you left. I’ll give it to our teacher before registration tomorrow unless you need it tonight. Text me if you want to collect it from my house.",
+                          "question":  "Why is Tom texting Grace?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "To explain how she can get something back.",
+                                          "B":  "To ask her to bring his notebook tomorrow.",
+                                          "C":  "To remind her to finish some science homework."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Tom has found Grace’s notebook and offers ways to get it back."
                       },
                       {
                           "number":  2,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "poster",
+                          "heading":  "Drama Club Auditions",
+                          "text":  "Auditions for the summer play are on Thursday after school in Room 8. You don’t need to prepare anything, but you must stay until 5 p.m. so everyone can read scenes with different students.",
+                          "question":  "What does the poster say about the auditions?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "Students should learn a scene before they arrive.",
+                                          "B":  "Students must be available for the whole session.",
+                                          "C":  "Only students in Room 8 can try for the play."
                                       },
-                          "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "answer":  "B",
+                          "explanation":  "The poster says students must stay until 5 p.m."
                       },
                       {
                           "number":  3,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "label",
+                          "heading":  "City Museum Tickets",
+                          "text":  "Family tickets include two adults and up to three children under sixteen. Extra children’s tickets can be bought at half price. Tickets are valid all day, but visitors cannot leave the museum and return later.",
+                          "question":  "What should visitors understand?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "A family ticket may not cover every child in a group.",
+                                          "B":  "Visitors can use the same ticket on another day.",
+                                          "C":  "Children under sixteen enter the museum free."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The family ticket includes up to three children only."
                       },
                       {
                           "number":  4,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What information is given in the message?",
+                          "format":  "email",
+                          "heading":  "From: Carla / Subject: Saturday practice",
+                          "text":  "Hi everyone, the sports hall is being cleaned on Saturday morning, so basketball practice will start outside on the playground. Bring a jacket as well as trainers. If it rains heavily, we’ll move into the small gym.",
+                          "question":  "What is Carla telling the team?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "They should be ready to practise in a different place.",
+                                          "B":  "They cannot play basketball at school on Saturday.",
+                                          "C":  "They need special shoes for the small gym."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Practice starts on the playground and may move to the gym."
                       },
                       {
                           "number":  5,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "notice",
+                          "heading":  "Art Room",
+                          "text":  "Please wash all brushes and put them back in the pots before you leave. Paint left on tables or sinks makes extra work for the next class. Students who finish early should help tidy the shelves.",
+                          "question":  "What does the notice ask students to do?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To give useful information.",
-                                          "C":  "To ask people for help."
+                                          "A":  "Leave the art room ready for other students.",
+                                          "B":  "Put finished paintings on the shelves.",
+                                          "C":  "Ask the next class to clean the tables."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students must clean brushes and tidy the room."
                       }
                   ]
 }

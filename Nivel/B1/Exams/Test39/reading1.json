@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  39,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "cinema",
-                          "notice":  "No food or drinks inside the screen area.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "advert",
+                          "heading":  "Family Theatre Tickets",
+                          "text":  "Family tickets for Saturday afternoon’s play include two adults and two children. Extra child tickets can be bought at a reduced price. Tickets are cheaper online until Thursday evening.",
+                          "question":  "What does the advert say?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "Some families may need to buy extra tickets.",
+                                          "B":  "Online tickets are cheaper after Thursday.",
+                                          "C":  "Family tickets include any number of children."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Family tickets include two children; extra children need extra tickets."
                       },
                       {
                           "number":  2,
-                          "topic":  "music club",
-                          "notice":  "Practice starts at 5:15 every Thursday.",
-                          "question":  "What information is given in the message?",
+                          "format":  "text_message",
+                          "heading":  "Message from Mia to Nathan",
+                          "text":  "Nathan, I’m in the music room now, but the piano lesson before mine is running late. I’ll meet you outside the hall as soon as it finishes, probably about ten past four.",
+                          "question":  "Why is Mia texting Nathan?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "To explain why she will be late.",
+                                          "B":  "To ask him to move the piano.",
+                                          "C":  "To cancel her piano lesson today."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Mia’s lesson is delayed, so she will meet him later."
                       },
                       {
                           "number":  3,
-                          "topic":  "sports centre",
-                          "notice":  "Members can book classes online.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "notice",
+                          "heading":  "School Garden",
+                          "text":  "Students may water the school garden during break, but only use the green watering cans. The hose is for staff because it reaches across the path and could cause accidents.",
+                          "question":  "What does the notice explain?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To give useful information.",
-                                          "C":  "To ask people for help."
+                                          "A":  "Students should use safer equipment only.",
+                                          "B":  "Students cannot help in the garden.",
+                                          "C":  "Staff must water the garden at break."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students should use green watering cans, not the hose."
                       },
                       {
                           "number":  4,
-                          "topic":  "sports centre",
-                          "notice":  "Members can book classes online.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "email",
+                          "heading":  "From: Carla / Subject: Your application",
+                          "text":  "Your application for the summer course is almost complete. You’ve included your school report, but the form still needs your parent’s signature. Send it again after that and I can accept it.",
+                          "question":  "What does Carla mean?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "One thing is missing from the application.",
+                                          "B":  "The school report should be removed now.",
+                                          "C":  "The application has already been accepted."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "The application still needs a parent’s signature."
                       },
                       {
                           "number":  5,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "poster",
+                          "heading":  "Basketball Match",
+                          "text":  "Students watching today’s basketball match should enter through the side door near the gym. The main entrance is being used by players only. Please show your ticket before sitting down.",
+                          "question":  "What should spectators do?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "Use a different entrance from the players.",
+                                          "B":  "Enter through the main door with players.",
+                                          "C":  "Sit down before showing their tickets."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Spectators should use the side door, while players use the main entrance."
                       }
                   ]
 }

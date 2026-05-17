@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  30,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "museum",
-                          "notice":  "Photography is not allowed in this room.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "advert",
+                          "heading":  "Summer Photography Day",
+                          "text":  "Spend a day taking photos by the river with a local photographer. Cameras can be borrowed if booked in advance. Participants should bring lunch, as the group will not return to town until late afternoon.",
+                          "question":  "What should participants know?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "They need to arrange some equipment early.",
+                                          "B":  "They will have lunch in town together.",
+                                          "C":  "They must own a camera to attend."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Cameras can be borrowed if they are booked in advance."
                       },
                       {
                           "number":  2,
-                          "topic":  "train station",
-                          "notice":  "The 6:30 train is delayed by 20 minutes.",
-                          "question":  "What information is given in the message?",
+                          "format":  "text_message",
+                          "heading":  "Message from Poppy to Dan",
+                          "text":  "Dan, I’ve saved you a seat near the front, but the room is filling up quickly. If you arrive after the talk starts, you may have to sit at the back.",
+                          "question":  "Why is Poppy texting Dan?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "To warn him not to arrive too late.",
+                                          "B":  "To ask him to save her a seat.",
+                                          "C":  "To say the talk has already ended."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Poppy says the room is filling and late arrival may mean sitting at the back."
                       },
                       {
                           "number":  3,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What information is given in the message?",
+                          "format":  "notice",
+                          "heading":  "Art Gallery Visitors",
+                          "text":  "You may take photographs in the entrance hall, but not inside the exhibition rooms. Sketching is allowed everywhere if you use pencils only. Please leave large bags at the desk.",
+                          "question":  "What does the notice say?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A change or important detail.",
-                                          "C":  "A complaint about a problem."
+                                          "A":  "Different activities are allowed in different areas.",
+                                          "B":  "Photography is allowed in all exhibition rooms.",
+                                          "C":  "Visitors must leave pencils at the desk."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Photos are limited to the entrance hall, while sketching has rules too."
                       },
                       {
                           "number":  4,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What information is given in the message?",
+                          "format":  "email",
+                          "heading":  "From: Mum / Subject: Dinner",
+                          "text":  "I’ll be home later than usual, so please put the pasta in the oven at six. Don’t turn it on before then, or it will be dry when we eat after football practice.",
+                          "question":  "What does Mum want the reader to do?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "Start cooking at the right time.",
+                                          "B":  "Eat dinner before football practice starts.",
+                                          "C":  "Buy pasta on the way home."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Mum says when to put the pasta in the oven."
                       },
                       {
                           "number":  5,
-                          "topic":  "sports centre",
-                          "notice":  "Members can book classes online.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "poster",
+                          "heading":  "School Environment Team",
+                          "text":  "The environment team is looking for students to help reduce waste at school. Members will check recycling bins once a week and design posters reminding students to use them correctly.",
+                          "question":  "What will team members do?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "Encourage other students to recycle properly.",
+                                          "B":  "Empty all school bins every day.",
+                                          "C":  "Stop students from designing recycling posters."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Members check recycling bins and design reminder posters."
                       }
                   ]
 }

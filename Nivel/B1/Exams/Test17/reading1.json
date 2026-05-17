@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  17,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "poster",
+                          "heading":  "School Talent Show",
+                          "text":  "Anyone interested in performing should write their name on the list outside the drama room. If your act needs music, send the file to Mr Jones before Wednesday so he can test the sound system.",
+                          "question":  "What should performers with music do?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Give it to the teacher before the show.",
+                                          "B":  "Write the song name on the drama room list.",
+                                          "C":  "Test the sound system themselves on Wednesday."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Music files must be sent to Mr Jones before Wednesday."
                       },
                       {
                           "number":  2,
-                          "topic":  "train station",
-                          "notice":  "The 6:30 train is delayed by 20 minutes.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "text_message",
+                          "heading":  "Message from Erin to Luke",
+                          "text":  "Luke, I watched the video you recommended. The first part was confusing, but the examples later were really useful. I’m going to watch that section again before tomorrow’s lesson.",
+                          "question":  "What does Erin think about the video?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "Part of it helped her understand better.",
+                                          "B":  "It was too confusing to be useful.",
+                                          "C":  "It should be watched after the lesson."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Erin says the later examples were useful."
                       },
                       {
                           "number":  3,
-                          "topic":  "music club",
-                          "notice":  "Practice starts at 5:15 every Thursday.",
-                          "question":  "What information is given in the message?",
+                          "format":  "notice",
+                          "heading":  "Science Lab",
+                          "text":  "Students must wear safety glasses when heating liquids. If you forget yours, ask the teacher before the experiment begins. Do not borrow glasses from another student during practical work.",
+                          "question":  "What does the notice tell students?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "Get help before starting if equipment is missing.",
+                                          "B":  "Share safety glasses with another student.",
+                                          "C":  "Heat liquids only after practical work ends."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Students without glasses should ask the teacher before the experiment begins."
                       },
                       {
                           "number":  4,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "What information is given in the message?",
+                          "format":  "email",
+                          "heading":  "From: Sophie / Subject: Dance practice",
+                          "text":  "I know the competition routine is nearly ready, but the ending still looks untidy. Could we spend most of tomorrow’s practice on the last thirty seconds instead of starting something new?",
+                          "question":  "What does Sophie suggest?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "Practising one part more carefully tomorrow.",
+                                          "B":  "Changing the whole competition routine completely.",
+                                          "C":  "Beginning a new dance tomorrow instead."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "She wants to focus on the last thirty seconds."
                       },
                       {
                           "number":  5,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "advert",
+                          "heading":  "Farm Shop",
+                          "text":  "Fresh strawberries are available today, but only in small boxes because the weather has slowed the crop. Larger boxes should be ready next week. Customers may order them in advance.",
+                          "question":  "What does the advert explain?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "A bigger amount can be reserved for later.",
+                                          "B":  "Strawberries are not being sold today.",
+                                          "C":  "Large boxes are cheaper this week."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Larger boxes are expected next week and can be ordered in advance."
                       }
                   ]
 }
