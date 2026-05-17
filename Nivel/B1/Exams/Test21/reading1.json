@@ -1,83 +1,83 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "testNumber":  21,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "notice",
-                          "heading":  "School Photography",
-                          "text":  "Students having photographs taken on Thursday should wear normal school uniform, not sports clothes. If you are absent, there will be one extra session next Monday, but only for individual photos.",
-                          "question":  "What does the notice tell students?",
-                          "options":  {
-                                          "A":  "They should dress correctly for Thursday’s photographs.",
-                                          "B":  "They can have team photos next Monday instead.",
-                                          "C":  "They must wear sports clothes for photographs."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Students having photos on Thursday should wear normal school uniform."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Noah to Freya",
-                          "text":  "Freya, I’ve finished my part of the science poster, but it won’t fit on one page with yours. Could you bring your laptop tomorrow so we can move things around before printing it?",
-                          "question":  "Why is Noah texting Freya?",
-                          "options":  {
-                                          "A":  "To arrange how they can edit their project.",
-                                          "B":  "To say he has printed the poster already.",
-                                          "C":  "To ask her to complete his science work."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Noah wants Freya to bring her laptop so they can edit the poster layout."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "advert",
-                          "heading":  "Evening Art Classes",
-                          "text":  "Try drawing, painting and printing in our evening art classes for beginners. Materials are included in the price. The first class is a taster session, so you can decide afterwards whether to continue.",
-                          "question":  "What does the advert offer?",
-                          "options":  {
-                                          "A":  "A chance to try classes before joining fully.",
-                                          "B":  "Free materials for people who teach art.",
-                                          "C":  "Advanced painting lessons for experienced artists."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The first class lets people try the course before deciding whether to continue."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Grandma / Subject: Saturday lunch",
-                          "text":  "I’ve booked the table for half past twelve because the restaurant gets very busy later. If your bus is delayed, don’t worry — I’ll order drinks and wait for you before choosing food.",
-                          "question":  "What is Grandma saying?",
-                          "options":  {
-                                          "A":  "She will wait if the reader arrives late.",
-                                          "B":  "She wants the reader to order lunch first.",
-                                          "C":  "She has cancelled the restaurant booking."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Grandma says she will wait before choosing food if the bus is delayed."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "poster",
-                          "heading":  "After-school Film Club",
-                          "text":  "This week’s film club will meet in the drama room because the hall is being used for exams. The film is shorter than usual, so students can still catch the late bus home.",
-                          "question":  "What has changed this week?",
-                          "options":  {
-                                          "A":  "Film club is meeting in a different room.",
-                                          "B":  "Students must leave before the film ends.",
-                                          "C":  "The late bus will not run today."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Film club has moved from the hall to the drama room."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "testNumber": 21,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "notice",
+            "heading": "School Photography",
+            "text": "Students having photographs taken on Thursday should wear normal school uniform, not sports clothes. If you are absent, there will be one extra session next Monday, but only for individual photos.",
+            "question": "What does the notice tell students?",
+            "options": {
+                "A": "They should dress correctly for Thursday’s photographs.",
+                "B": "They can have team photos next Monday instead.",
+                "C": "They must wear sports clothes for photographs."
+            },
+            "answer": "A",
+            "explanation": "Students having photos on Thursday should wear normal school uniform."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Noah to Freya",
+            "text": "Freya, I’ve finished my part of the science poster, but it won’t fit on one page with yours. Could you bring your laptop tomorrow so we can move things around before printing it?",
+            "question": "Why is Noah texting Freya?",
+            "options": {
+                "B": "To arrange how they can edit their project.",
+                "A": "To say he has printed the poster already.",
+                "C": "To ask her to complete his science work."
+            },
+            "answer": "B",
+            "explanation": "Noah wants Freya to bring her laptop so they can edit the poster layout."
+        },
+        {
+            "number": 3,
+            "format": "advert",
+            "heading": "Evening Art Classes",
+            "text": "Try drawing, painting and printing in our evening art classes for beginners. Materials are included in the price. The first class is a taster session, so you can decide afterwards whether to continue.",
+            "question": "What does the advert offer?",
+            "options": {
+                "C": "A chance to try classes before joining fully.",
+                "A": "Free materials for people who teach art.",
+                "B": "Advanced painting lessons for experienced artists."
+            },
+            "answer": "C",
+            "explanation": "The first class lets people try the course before deciding whether to continue."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Grandma / Subject: Saturday lunch",
+            "text": "I’ve booked the table for half past twelve because the restaurant gets very busy later. If your bus is delayed, don’t worry — I’ll order drinks and wait for you before choosing food.",
+            "question": "What is Grandma saying?",
+            "options": {
+                "A": "She will wait if the reader arrives late.",
+                "B": "She wants the reader to order lunch first.",
+                "C": "She has cancelled the restaurant booking."
+            },
+            "answer": "A",
+            "explanation": "Grandma says she will wait before choosing food if the bus is delayed."
+        },
+        {
+            "number": 5,
+            "format": "poster",
+            "heading": "After-school Film Club",
+            "text": "This week’s film club will meet in the drama room because the hall is being used for exams. The film is shorter than usual, so students can still catch the late bus home.",
+            "question": "What has changed this week?",
+            "options": {
+                "B": "Film club is meeting in a different room.",
+                "A": "Students must leave before the film ends.",
+                "C": "The late bus will not run today."
+            },
+            "answer": "B",
+            "explanation": "Film club has moved from the hall to the drama room."
+        }
+    ]
 }

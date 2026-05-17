@@ -1,83 +1,83 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "testNumber":  19,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "advert",
-                          "heading":  "Cycle Hire",
-                          "text":  "Bikes can be hired from the visitor centre for up to three hours. Helmets are included in the price. Please return bikes before closing time, or you will be charged for an extra day.",
-                          "question":  "What does the advert warn customers?",
-                          "options":  {
-                                          "A":  "Returning bikes late will cost more.",
-                                          "B":  "Helmets must be paid for separately.",
-                                          "C":  "Bikes can be kept overnight for free."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Late bike returns are charged as an extra day."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Lucy to Omar",
-                          "text":  "Omar, the teacher liked our poster but said the writing is hard to read from the back of the room. Could you make the headings bigger before we print the final copy?",
-                          "question":  "What does Lucy ask Omar to do?",
-                          "options":  {
-                                          "A":  "Improve how clear the poster is.",
-                                          "B":  "Write a completely new poster instead.",
-                                          "C":  "Print the poster before changing it."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Lucy asks him to make the headings bigger."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "notice",
-                          "heading":  "School Bus",
-                          "text":  "From next Monday, the school bus will stop outside the sports centre instead of the library. This is because roadworks near the library are expected to continue for three weeks.",
-                          "question":  "What does the notice tell students?",
-                          "options":  {
-                                          "A":  "The bus stop will change temporarily.",
-                                          "B":  "The school bus will stop running.",
-                                          "C":  "Roadworks near the sports centre are finished."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The bus stop changes because of roadworks expected to last three weeks."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Grandma / Subject: Your visit",
-                          "text":  "I’m really looking forward to seeing you on Sunday. If the weather is good, we can walk by the river. If not, I’ve got a new board game I think you’ll enjoy.",
-                          "question":  "What is Grandma doing?",
-                          "options":  {
-                                          "A":  "Suggesting plans for different weather conditions.",
-                                          "B":  "Cancelling the visit because of rain.",
-                                          "C":  "Asking where the river walk begins."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "She gives one plan for good weather and another for bad weather."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "poster",
-                          "heading":  "School Magazine",
-                          "text":  "The magazine team needs short reviews of books, films or games. Reviews should be under 150 words and include your opinion. Send them by Friday if you want them in this month’s issue.",
-                          "question":  "What should students send?",
-                          "options":  {
-                                          "A":  "Brief reviews that say what they think.",
-                                          "B":  "Long articles about this month’s magazine.",
-                                          "C":  "Lists of books without personal opinions."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Reviews should be short and include an opinion."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "testNumber": 19,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "advert",
+            "heading": "Cycle Hire",
+            "text": "Bikes can be hired from the visitor centre for up to three hours. Helmets are included in the price. Please return bikes before closing time, or you will be charged for an extra day.",
+            "question": "What does the advert warn customers?",
+            "options": {
+                "B": "Returning bikes late will cost more.",
+                "A": "Helmets must be paid for separately.",
+                "C": "Bikes can be kept overnight for free."
+            },
+            "answer": "B",
+            "explanation": "Late bike returns are charged as an extra day."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Lucy to Omar",
+            "text": "Omar, the teacher liked our poster but said the writing is hard to read from the back of the room. Could you make the headings bigger before we print the final copy?",
+            "question": "What does Lucy ask Omar to do?",
+            "options": {
+                "C": "Improve how clear the poster is.",
+                "A": "Write a completely new poster instead.",
+                "B": "Print the poster before changing it."
+            },
+            "answer": "C",
+            "explanation": "Lucy asks him to make the headings bigger."
+        },
+        {
+            "number": 3,
+            "format": "notice",
+            "heading": "School Bus",
+            "text": "From next Monday, the school bus will stop outside the sports centre instead of the library. This is because roadworks near the library are expected to continue for three weeks.",
+            "question": "What does the notice tell students?",
+            "options": {
+                "A": "The bus stop will change temporarily.",
+                "B": "The school bus will stop running.",
+                "C": "Roadworks near the sports centre are finished."
+            },
+            "answer": "A",
+            "explanation": "The bus stop changes because of roadworks expected to last three weeks."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Grandma / Subject: Your visit",
+            "text": "I’m really looking forward to seeing you on Sunday. If the weather is good, we can walk by the river. If not, I’ve got a new board game I think you’ll enjoy.",
+            "question": "What is Grandma doing?",
+            "options": {
+                "B": "Suggesting plans for different weather conditions.",
+                "A": "Cancelling the visit because of rain.",
+                "C": "Asking where the river walk begins."
+            },
+            "answer": "B",
+            "explanation": "She gives one plan for good weather and another for bad weather."
+        },
+        {
+            "number": 5,
+            "format": "poster",
+            "heading": "School Magazine",
+            "text": "The magazine team needs short reviews of books, films or games. Reviews should be under 150 words and include your opinion. Send them by Friday if you want them in this month’s issue.",
+            "question": "What should students send?",
+            "options": {
+                "C": "Brief reviews that say what they think.",
+                "A": "Long articles about this month’s magazine.",
+                "B": "Lists of books without personal opinions."
+            },
+            "answer": "C",
+            "explanation": "Reviews should be short and include an opinion."
+        }
+    ]
 }

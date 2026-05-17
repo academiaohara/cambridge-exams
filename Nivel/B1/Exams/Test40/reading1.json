@@ -1,83 +1,83 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "testNumber":  40,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "notice",
-                          "heading":  "Class Trip Photos",
-                          "text":  "Photos from the class trip are now on the school website. Students who do not want their photo included should tell the office by Wednesday. After that, the page will be shared with parents.",
-                          "question":  "What does the notice tell students?",
-                          "options":  {
-                                          "A":  "They can ask for photos to be removed soon.",
-                                          "B":  "They must send photos to parents by Wednesday.",
-                                          "C":  "They cannot see the photos before parents."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Students can tell the office by Wednesday if they do not want their photo included."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Aaron to Beth",
-                          "text":  "Beth, I’ve got the science tickets, but the workshop starts at 10:15, not 10:45 like I thought. We’ll need to catch the earlier bus if we want to be on time.",
-                          "question":  "Why is Aaron texting Beth?",
-                          "options":  {
-                                          "A":  "To change their travel plan for the workshop.",
-                                          "B":  "To say the science tickets are unavailable.",
-                                          "C":  "To ask her to buy earlier tickets."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The workshop starts earlier, so they need an earlier bus."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "advert",
-                          "heading":  "Weekend Language Films",
-                          "text":  "Watch short films in French and Spanish at the library this weekend. English subtitles are provided. The event is free, but it is mainly for students who are already learning one of these languages.",
-                          "question":  "Who is the event mainly for?",
-                          "options":  {
-                                          "A":  "Language students who want extra practice.",
-                                          "B":  "People who cannot read English subtitles.",
-                                          "C":  "Teachers who want to make films."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The event is mainly for students already learning French or Spanish."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Zoe / Subject: Table tennis",
-                          "text":  "I’ve booked the table tennis table for half an hour after school. If we want longer, we can ask when we arrive, but another group may have booked the time after us.",
-                          "question":  "What does Zoe say?",
-                          "options":  {
-                                          "A":  "They might not be able to play longer.",
-                                          "B":  "Another group has cancelled their booking.",
-                                          "C":  "They can definitely play all afternoon."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "A later booking by another group may stop them playing longer."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "label",
-                          "heading":  "Science Classroom",
-                          "text":  "These plants are part of a class experiment. Please do not move them or water them unless your teacher asks you to. Different groups are testing different amounts of water.",
-                          "question":  "What does the label warn students?",
-                          "options":  {
-                                          "A":  "Changing the plants could affect the experiment.",
-                                          "B":  "All plants need watering by every group.",
-                                          "C":  "The teacher has finished the experiment."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The experiment depends on different water amounts, so students should not interfere."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "testNumber": 40,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "notice",
+            "heading": "Class Trip Photos",
+            "text": "Photos from the class trip are now on the school website. Students who do not want their photo included should tell the office by Wednesday. After that, the page will be shared with parents.",
+            "question": "What does the notice tell students?",
+            "options": {
+                "B": "They can ask for photos to be removed soon.",
+                "A": "They must send photos to parents by Wednesday.",
+                "C": "They cannot see the photos before parents."
+            },
+            "answer": "B",
+            "explanation": "Students can tell the office by Wednesday if they do not want their photo included."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Aaron to Beth",
+            "text": "Beth, I’ve got the science tickets, but the workshop starts at 10:15, not 10:45 like I thought. We’ll need to catch the earlier bus if we want to be on time.",
+            "question": "Why is Aaron texting Beth?",
+            "options": {
+                "C": "To change their travel plan for the workshop.",
+                "A": "To say the science tickets are unavailable.",
+                "B": "To ask her to buy earlier tickets."
+            },
+            "answer": "C",
+            "explanation": "The workshop starts earlier, so they need an earlier bus."
+        },
+        {
+            "number": 3,
+            "format": "advert",
+            "heading": "Weekend Language Films",
+            "text": "Watch short films in French and Spanish at the library this weekend. English subtitles are provided. The event is free, but it is mainly for students who are already learning one of these languages.",
+            "question": "Who is the event mainly for?",
+            "options": {
+                "A": "Language students who want extra practice.",
+                "B": "People who cannot read English subtitles.",
+                "C": "Teachers who want to make films."
+            },
+            "answer": "A",
+            "explanation": "The event is mainly for students already learning French or Spanish."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Zoe / Subject: Table tennis",
+            "text": "I’ve booked the table tennis table for half an hour after school. If we want longer, we can ask when we arrive, but another group may have booked the time after us.",
+            "question": "What does Zoe say?",
+            "options": {
+                "B": "They might not be able to play longer.",
+                "A": "Another group has cancelled their booking.",
+                "C": "They can definitely play all afternoon."
+            },
+            "answer": "B",
+            "explanation": "A later booking by another group may stop them playing longer."
+        },
+        {
+            "number": 5,
+            "format": "label",
+            "heading": "Science Classroom",
+            "text": "These plants are part of a class experiment. Please do not move them or water them unless your teacher asks you to. Different groups are testing different amounts of water.",
+            "question": "What does the label warn students?",
+            "options": {
+                "C": "Changing the plants could affect the experiment.",
+                "A": "All plants need watering by every group.",
+                "B": "The teacher has finished the experiment."
+            },
+            "answer": "C",
+            "explanation": "The experiment depends on different water amounts, so students should not interfere."
+        }
+    ]
 }

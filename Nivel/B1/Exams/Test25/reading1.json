@@ -1,83 +1,83 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "testNumber":  25,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "advert",
-                          "heading":  "Teen Book Club",
-                          "text":  "This month we are reading a mystery story set in London. New members may come even if they have not read the book yet. We will choose next month’s book together at the end.",
-                          "question":  "What does the advert say?",
-                          "options":  {
-                                          "A":  "New people can join before finishing the book.",
-                                          "B":  "Only members who read mysteries can attend.",
-                                          "C":  "The next book has already been chosen."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "New members can attend even without reading the current book."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Oscar to Ruby",
-                          "text":  "Ruby, I’m at the station now, but the ticket machine isn’t working. I’ll buy my ticket on the train if the guard says that’s OK. Don’t wait outside in the rain.",
-                          "question":  "Why is Oscar texting Ruby?",
-                          "options":  {
-                                          "A":  "To explain why he may take longer.",
-                                          "B":  "To ask her to fix the ticket machine.",
-                                          "C":  "To tell her not to travel today."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Oscar has a ticket problem and tells Ruby not to wait outside."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "notice",
-                          "heading":  "School Theatre",
-                          "text":  "Please enter the theatre quietly if you arrive after the play has started. Seats at the front are reserved for actors between scenes, so late visitors should use the back rows.",
-                          "question":  "What should late visitors do?",
-                          "options":  {
-                                          "A":  "Sit near the back without disturbing others.",
-                                          "B":  "Use the front seats if they are empty.",
-                                          "C":  "Wait outside until the play finishes."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Late visitors should enter quietly and use the back rows."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Nina / Subject: Cake sale",
-                          "text":  "Thanks for offering to make biscuits for the cake sale. Could you put a note on them if they contain nuts? Some younger students have allergies, and teachers need to know what is safe.",
-                          "question":  "What does Nina ask the reader to do?",
-                          "options":  {
-                                          "A":  "Label the biscuits if they have nuts.",
-                                          "B":  "Make cakes for younger students only.",
-                                          "C":  "Ask teachers to bake safer biscuits."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Nina asks for a note if the biscuits contain nuts."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "label",
-                          "heading":  "Sports Drink",
-                          "text":  "This drink is designed for use after exercise. It contains sugar and fruit juice, but no caffeine. Once opened, keep it cold and drink it within twenty-four hours.",
-                          "question":  "What does the label say?",
-                          "options":  {
-                                          "A":  "The drink should be used soon after opening.",
-                                          "B":  "The drink is mainly for use before sleeping.",
-                                          "C":  "The drink contains caffeine and fruit juice."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The bottle should be kept cold and drunk within twenty-four hours."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "testNumber": 25,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "advert",
+            "heading": "Teen Book Club",
+            "text": "This month we are reading a mystery story set in London. New members may come even if they have not read the book yet. We will choose next month’s book together at the end.",
+            "question": "What does the advert say?",
+            "options": {
+                "B": "New people can join before finishing the book.",
+                "A": "Only members who read mysteries can attend.",
+                "C": "The next book has already been chosen."
+            },
+            "answer": "B",
+            "explanation": "New members can attend even without reading the current book."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Oscar to Ruby",
+            "text": "Ruby, I’m at the station now, but the ticket machine isn’t working. I’ll buy my ticket on the train if the guard says that’s OK. Don’t wait outside in the rain.",
+            "question": "Why is Oscar texting Ruby?",
+            "options": {
+                "C": "To explain why he may take longer.",
+                "A": "To ask her to fix the ticket machine.",
+                "B": "To tell her not to travel today."
+            },
+            "answer": "C",
+            "explanation": "Oscar has a ticket problem and tells Ruby not to wait outside."
+        },
+        {
+            "number": 3,
+            "format": "notice",
+            "heading": "School Theatre",
+            "text": "Please enter the theatre quietly if you arrive after the play has started. Seats at the front are reserved for actors between scenes, so late visitors should use the back rows.",
+            "question": "What should late visitors do?",
+            "options": {
+                "A": "Sit near the back without disturbing others.",
+                "B": "Use the front seats if they are empty.",
+                "C": "Wait outside until the play finishes."
+            },
+            "answer": "A",
+            "explanation": "Late visitors should enter quietly and use the back rows."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Nina / Subject: Cake sale",
+            "text": "Thanks for offering to make biscuits for the cake sale. Could you put a note on them if they contain nuts? Some younger students have allergies, and teachers need to know what is safe.",
+            "question": "What does Nina ask the reader to do?",
+            "options": {
+                "B": "Label the biscuits if they have nuts.",
+                "A": "Make cakes for younger students only.",
+                "C": "Ask teachers to bake safer biscuits."
+            },
+            "answer": "B",
+            "explanation": "Nina asks for a note if the biscuits contain nuts."
+        },
+        {
+            "number": 5,
+            "format": "label",
+            "heading": "Sports Drink",
+            "text": "This drink is designed for use after exercise. It contains sugar and fruit juice, but no caffeine. Once opened, keep it cold and drink it within twenty-four hours.",
+            "question": "What does the label say?",
+            "options": {
+                "C": "The drink should be used soon after opening.",
+                "A": "The drink is mainly for use before sleeping.",
+                "B": "The drink contains caffeine and fruit juice."
+            },
+            "answer": "C",
+            "explanation": "The bottle should be kept cold and drunk within twenty-four hours."
+        }
+    ]
 }

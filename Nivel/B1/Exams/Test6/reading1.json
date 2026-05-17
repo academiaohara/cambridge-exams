@@ -1,82 +1,82 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "notice",
-                          "heading":  "After-school Cooking",
-                          "text":  "The cooking course starts next Tuesday in the food technology room. Students do not need to bring ingredients for the first week, but they should bring a container to take food home.",
-                          "question":  "What should students bring to the first lesson?",
-                          "options":  {
-                                          "A":  "Something to carry their cooking in.",
-                                          "B":  "All the ingredients for their recipe.",
-                                          "C":  "A list of food they want to make."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Students need a container to take food home."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Amy to Jack",
-                          "text":  "Jack, I’ve finished the poster for our history presentation, but I’m not sure about the title. I’ll send you a photo now. Can you tell me whether it sounds interesting enough? Amy",
-                          "question":  "Why is Amy texting Jack?",
-                          "options":  {
-                                          "A":  "To ask for his opinion on part of their work.",
-                                          "B":  "To tell him he must finish the poster.",
-                                          "C":  "To explain why the presentation is late."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Amy asks Jack whether the title sounds interesting enough."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "label",
-                          "heading":  "Sports Centre Lockers",
-                          "text":  "Lockers are free for customers using the gym or pool. Please remove all items before closing time. Anything left overnight will be kept at Reception for one week and then given to charity.",
-                          "question":  "What does the notice warn customers?",
-                          "options":  {
-                                          "A":  "Items left too long may not be returned.",
-                                          "B":  "Customers must pay before using lockers.",
-                                          "C":  "Reception sells things left in lockers."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Items are only kept for one week before being given away."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Noah / Subject: Class party",
-                          "text":  "I’ve asked the head teacher about using the hall for our class party. She says yes, but only if two parents stay to help clear up afterwards. Could you ask at home tonight?",
-                          "question":  "What does Noah want the reader to do?",
-                          "options":  {
-                                          "A":  "Find out if an adult can help after the party.",
-                                          "B":  "Ask the head teacher to change her decision.",
-                                          "C":  "Tell classmates the party has been cancelled."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Noah wants the reader to ask at home about parent help."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "poster",
-                          "heading":  "Photography Competition",
-                          "text":  "Send us one photograph showing life in your town. Photos can be colour or black and white, but they must be your own work. Winners will have their pictures displayed in the library.",
-                          "question":  "What rule must people follow?",
-                          "options":  {
-                                          "A":  "They must enter a photo they took themselves.",
-                                          "B":  "They must send both colour and black-and-white photos.",
-                                          "C":  "They must take their photo inside the library."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The poster says photos must be the entrant’s own work."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "notice",
+            "heading": "After-school Cooking",
+            "text": "The cooking course starts next Tuesday in the food technology room. Students do not need to bring ingredients for the first week, but they should bring a container to take food home.",
+            "question": "What should students bring to the first lesson?",
+            "options": {
+                "A": "Something to carry their cooking in.",
+                "B": "All the ingredients for their recipe.",
+                "C": "A list of food they want to make."
+            },
+            "answer": "A",
+            "explanation": "Students need a container to take food home."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Amy to Jack",
+            "text": "Jack, I’ve finished the poster for our history presentation, but I’m not sure about the title. I’ll send you a photo now. Can you tell me whether it sounds interesting enough? Amy",
+            "question": "Why is Amy texting Jack?",
+            "options": {
+                "B": "To ask for his opinion on part of their work.",
+                "A": "To tell him he must finish the poster.",
+                "C": "To explain why the presentation is late."
+            },
+            "answer": "B",
+            "explanation": "Amy asks Jack whether the title sounds interesting enough."
+        },
+        {
+            "number": 3,
+            "format": "label",
+            "heading": "Sports Centre Lockers",
+            "text": "Lockers are free for customers using the gym or pool. Please remove all items before closing time. Anything left overnight will be kept at Reception for one week and then given to charity.",
+            "question": "What does the notice warn customers?",
+            "options": {
+                "C": "Items left too long may not be returned.",
+                "A": "Customers must pay before using lockers.",
+                "B": "Reception sells things left in lockers."
+            },
+            "answer": "C",
+            "explanation": "Items are only kept for one week before being given away."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Noah / Subject: Class party",
+            "text": "I’ve asked the head teacher about using the hall for our class party. She says yes, but only if two parents stay to help clear up afterwards. Could you ask at home tonight?",
+            "question": "What does Noah want the reader to do?",
+            "options": {
+                "A": "Find out if an adult can help after the party.",
+                "B": "Ask the head teacher to change her decision.",
+                "C": "Tell classmates the party has been cancelled."
+            },
+            "answer": "A",
+            "explanation": "Noah wants the reader to ask at home about parent help."
+        },
+        {
+            "number": 5,
+            "format": "poster",
+            "heading": "Photography Competition",
+            "text": "Send us one photograph showing life in your town. Photos can be colour or black and white, but they must be your own work. Winners will have their pictures displayed in the library.",
+            "question": "What rule must people follow?",
+            "options": {
+                "B": "They must enter a photo they took themselves.",
+                "A": "They must send both colour and black-and-white photos.",
+                "C": "They must take their photo inside the library."
+            },
+            "answer": "B",
+            "explanation": "The poster says photos must be the entrant’s own work."
+        }
+    ]
 }

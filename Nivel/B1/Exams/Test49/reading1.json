@@ -1,83 +1,83 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "testNumber":  49,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "poster",
-                          "heading":  "Weekend Drama Workshop",
-                          "text":  "Spend Saturday learning how actors use movement on stage. Wear clothes that are easy to move in. Participants do not need to prepare a speech, as all activities will be done in groups.",
-                          "question":  "What should participants know?",
-                          "options":  {
-                                          "A":  "They should wear suitable clothes for movement.",
-                                          "B":  "They must prepare a speech before Saturday.",
-                                          "C":  "They will work alone during every activity."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The workshop involves movement, so suitable clothes are needed."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Megan to Ali",
-                          "text":  "Ali, the science club meeting is shorter today because the teacher has another appointment. We’ll build the model next week, but today we’re just planning who brings each material.",
-                          "question":  "What is Megan telling Ali?",
-                          "options":  {
-                                          "A":  "They will only organise the project today.",
-                                          "B":  "Science club has been cancelled completely.",
-                                          "C":  "The model must be finished today."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Today’s shorter meeting is for planning materials, not building the model."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "notice",
-                          "heading":  "Swimming Pool Lockers",
-                          "text":  "Locker keys must be returned before you leave the swimming pool. Lost keys cost £5 to replace. If a locker does not open properly, ask staff instead of forcing it.",
-                          "question":  "What does the notice tell swimmers?",
-                          "options":  {
-                                          "A":  "Get help if there is a locker problem.",
-                                          "B":  "Pay five pounds before using lockers.",
-                                          "C":  "Leave locker keys at home safely."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Swimmers should ask staff if a locker does not open."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Dad / Subject: Your tablet",
-                          "text":  "I updated your tablet this morning, but one game no longer opens. The school apps are working, so you can still use it for homework tonight. I’ll check the game later.",
-                          "question":  "What is Dad saying?",
-                          "options":  {
-                                          "A":  "The tablet is still useful for schoolwork.",
-                                          "B":  "The tablet cannot be used tonight.",
-                                          "C":  "All apps stopped working after the update."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The school apps are working, so homework can still be done."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "advert",
-                          "heading":  "Local Market Stall",
-                          "text":  "Our bread is baked early each morning. If you want a large loaf, please order the day before, as they often sell out by lunchtime. Small rolls are usually available all day.",
-                          "question":  "What does the advert advise customers?",
-                          "options":  {
-                                          "A":  "Order some bread early to avoid disappointment.",
-                                          "B":  "Buy small rolls only before lunchtime.",
-                                          "C":  "Collect large loaves before they are baked."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Large loaves often sell out, so ordering ahead is advised."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "testNumber": 49,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "poster",
+            "heading": "Weekend Drama Workshop",
+            "text": "Spend Saturday learning how actors use movement on stage. Wear clothes that are easy to move in. Participants do not need to prepare a speech, as all activities will be done in groups.",
+            "question": "What should participants know?",
+            "options": {
+                "B": "They should wear suitable clothes for movement.",
+                "A": "They must prepare a speech before Saturday.",
+                "C": "They will work alone during every activity."
+            },
+            "answer": "B",
+            "explanation": "The workshop involves movement, so suitable clothes are needed."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Megan to Ali",
+            "text": "Ali, the science club meeting is shorter today because the teacher has another appointment. We’ll build the model next week, but today we’re just planning who brings each material.",
+            "question": "What is Megan telling Ali?",
+            "options": {
+                "C": "They will only organise the project today.",
+                "A": "Science club has been cancelled completely.",
+                "B": "The model must be finished today."
+            },
+            "answer": "C",
+            "explanation": "Today’s shorter meeting is for planning materials, not building the model."
+        },
+        {
+            "number": 3,
+            "format": "notice",
+            "heading": "Swimming Pool Lockers",
+            "text": "Locker keys must be returned before you leave the swimming pool. Lost keys cost £5 to replace. If a locker does not open properly, ask staff instead of forcing it.",
+            "question": "What does the notice tell swimmers?",
+            "options": {
+                "A": "Get help if there is a locker problem.",
+                "B": "Pay five pounds before using lockers.",
+                "C": "Leave locker keys at home safely."
+            },
+            "answer": "A",
+            "explanation": "Swimmers should ask staff if a locker does not open."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Dad / Subject: Your tablet",
+            "text": "I updated your tablet this morning, but one game no longer opens. The school apps are working, so you can still use it for homework tonight. I’ll check the game later.",
+            "question": "What is Dad saying?",
+            "options": {
+                "B": "The tablet is still useful for schoolwork.",
+                "A": "The tablet cannot be used tonight.",
+                "C": "All apps stopped working after the update."
+            },
+            "answer": "B",
+            "explanation": "The school apps are working, so homework can still be done."
+        },
+        {
+            "number": 5,
+            "format": "advert",
+            "heading": "Local Market Stall",
+            "text": "Our bread is baked early each morning. If you want a large loaf, please order the day before, as they often sell out by lunchtime. Small rolls are usually available all day.",
+            "question": "What does the advert advise customers?",
+            "options": {
+                "C": "Order some bread early to avoid disappointment.",
+                "A": "Buy small rolls only before lunchtime.",
+                "B": "Collect large loaves before they are baked."
+            },
+            "answer": "C",
+            "explanation": "Large loaves often sell out, so ordering ahead is advised."
+        }
+    ]
 }

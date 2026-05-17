@@ -1,83 +1,83 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "testNumber":  24,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "notice",
-                          "heading":  "Lost Sports Kit",
-                          "text":  "A bag of football kit was left in the changing rooms after yesterday’s match. The owner should collect it from Reception before Friday. After that, it will be taken to the main lost property office.",
-                          "question":  "What should the owner do?",
-                          "options":  {
-                                          "A":  "Collect the bag before it is moved elsewhere.",
-                                          "B":  "Look for the bag at yesterday’s match.",
-                                          "C":  "Leave the football kit in Reception."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The bag can be collected from Reception before Friday, then it moves elsewhere."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Aisha to Ben",
-                          "text":  "Ben, I’m bringing the picnic blanket, but I couldn’t find the plastic cups. Could you bring some if you have any? If not, we can buy drinks at the park café.",
-                          "question":  "What is Aisha doing?",
-                          "options":  {
-                                          "A":  "Suggesting what Ben could bring to the picnic.",
-                                          "B":  "Asking Ben to choose a different park.",
-                                          "C":  "Saying she has cancelled the picnic."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Aisha asks Ben to bring plastic cups if possible."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "advert",
-                          "heading":  "Maths Help Sessions",
-                          "text":  "Need help before the end-of-term test? Come to Room 5 on Tuesday or Thursday lunchtime. You do not need to book, but bring one question you have tried and found difficult.",
-                          "question":  "What should students do before attending?",
-                          "options":  {
-                                          "A":  "Prepare a problem they want help with.",
-                                          "B":  "Reserve a place for Tuesday or Thursday.",
-                                          "C":  "Complete the whole test at home."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Students should bring one difficult question they have tried."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Uncle Joe / Subject: Your visit",
-                          "text":  "The weather looks good for Sunday, so let’s go cycling instead of visiting the indoor climbing centre. I can lend you a helmet, but bring a jacket because it may be windy near the river.",
-                          "question":  "What has Uncle Joe decided?",
-                          "options":  {
-                                          "A":  "They should do an outdoor activity instead.",
-                                          "B":  "They should go climbing because of the weather.",
-                                          "C":  "The reader must buy a new helmet."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "He suggests cycling instead of the indoor climbing centre."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "poster",
-                          "heading":  "Dance Show Tickets",
-                          "text":  "Tickets for the dance show are now available from the school office. Students performing in the show get one free family ticket, but any extra tickets must be paid for when collected.",
-                          "question":  "What does the poster explain?",
-                          "options":  {
-                                          "A":  "Performers can get one ticket without paying.",
-                                          "B":  "All family tickets are free for students.",
-                                          "C":  "Extra tickets can be collected after the show."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Students performing get one free family ticket."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "testNumber": 24,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "notice",
+            "heading": "Lost Sports Kit",
+            "text": "A bag of football kit was left in the changing rooms after yesterday’s match. The owner should collect it from Reception before Friday. After that, it will be taken to the main lost property office.",
+            "question": "What should the owner do?",
+            "options": {
+                "A": "Collect the bag before it is moved elsewhere.",
+                "B": "Look for the bag at yesterday’s match.",
+                "C": "Leave the football kit in Reception."
+            },
+            "answer": "A",
+            "explanation": "The bag can be collected from Reception before Friday, then it moves elsewhere."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Aisha to Ben",
+            "text": "Ben, I’m bringing the picnic blanket, but I couldn’t find the plastic cups. Could you bring some if you have any? If not, we can buy drinks at the park café.",
+            "question": "What is Aisha doing?",
+            "options": {
+                "B": "Suggesting what Ben could bring to the picnic.",
+                "A": "Asking Ben to choose a different park.",
+                "C": "Saying she has cancelled the picnic."
+            },
+            "answer": "B",
+            "explanation": "Aisha asks Ben to bring plastic cups if possible."
+        },
+        {
+            "number": 3,
+            "format": "advert",
+            "heading": "Maths Help Sessions",
+            "text": "Need help before the end-of-term test? Come to Room 5 on Tuesday or Thursday lunchtime. You do not need to book, but bring one question you have tried and found difficult.",
+            "question": "What should students do before attending?",
+            "options": {
+                "C": "Prepare a problem they want help with.",
+                "A": "Reserve a place for Tuesday or Thursday.",
+                "B": "Complete the whole test at home."
+            },
+            "answer": "C",
+            "explanation": "Students should bring one difficult question they have tried."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Uncle Joe / Subject: Your visit",
+            "text": "The weather looks good for Sunday, so let’s go cycling instead of visiting the indoor climbing centre. I can lend you a helmet, but bring a jacket because it may be windy near the river.",
+            "question": "What has Uncle Joe decided?",
+            "options": {
+                "A": "They should do an outdoor activity instead.",
+                "B": "They should go climbing because of the weather.",
+                "C": "The reader must buy a new helmet."
+            },
+            "answer": "A",
+            "explanation": "He suggests cycling instead of the indoor climbing centre."
+        },
+        {
+            "number": 5,
+            "format": "poster",
+            "heading": "Dance Show Tickets",
+            "text": "Tickets for the dance show are now available from the school office. Students performing in the show get one free family ticket, but any extra tickets must be paid for when collected.",
+            "question": "What does the poster explain?",
+            "options": {
+                "B": "Performers can get one ticket without paying.",
+                "A": "All family tickets are free for students.",
+                "C": "Extra tickets can be collected after the show."
+            },
+            "answer": "B",
+            "explanation": "Students performing get one free family ticket."
+        }
+    ]
 }
