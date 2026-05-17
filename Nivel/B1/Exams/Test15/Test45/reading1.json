@@ -1,0 +1,83 @@
+{
+    "title":  "Reading - Part 1",
+    "level":  "B1",
+    "exam":  "Preliminary",
+    "part":  1,
+    "testNumber":  45,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
+    "totalQuestions":  5,
+    "instructions":  "For each question, choose the correct answer.",
+    "questions":  [
+                      {
+                          "number":  1,
+                          "format":  "label",
+                          "heading":  "Classroom Tablets",
+                          "text":  "These tablets are for today’s geography lesson only. Please do not change the settings or download apps. At the end, leave your tablet on the front desk with the screen switched off.",
+                          "question":  "What does the label tell students?",
+                          "options":  {
+                                          "A":  "Use the tablets only as instructed today.",
+                                          "B":  "Download geography apps before the lesson.",
+                                          "C":  "Take the tablets home after class."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Students should use the tablets only for the lesson and leave them afterwards."
+                      },
+                      {
+                          "number":  2,
+                          "format":  "text_message",
+                          "heading":  "Message from Owen to Chloe",
+                          "text":  "Chloe, I’ve checked the route to the museum. Walking from the station takes nearly thirty minutes. Let’s take the bus, especially because we’ll be carrying our project materials.",
+                          "question":  "What is Owen suggesting?",
+                          "options":  {
+                                          "A":  "Using transport because walking is inconvenient.",
+                                          "B":  "Leaving the project materials at the station.",
+                                          "C":  "Walking quickly to arrive in thirty minutes."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Owen suggests the bus because walking is long and they have materials."
+                      },
+                      {
+                          "number":  3,
+                          "format":  "notice",
+                          "heading":  "School Play Costumes",
+                          "text":  "Costumes for the school play must stay in the drama room until the final performance. If you need to practise wearing yours, ask Mrs King. Do not take costumes home.",
+                          "question":  "What must students remember?",
+                          "options":  {
+                                          "A":  "They need permission to use costumes for practice.",
+                                          "B":  "They should practise at home in costume.",
+                                          "C":  "They must wash costumes after each performance."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Students must ask Mrs King to practise wearing costumes."
+                      },
+                      {
+                          "number":  4,
+                          "format":  "email",
+                          "heading":  "From: Leo / Subject: Your video",
+                          "text":  "Your video about the science experiment is clear, but the sound is quiet when you explain the results. Could you record that part again before we send it to the teacher?",
+                          "question":  "What does Leo want changed?",
+                          "options":  {
+                                          "A":  "The audio in one section of the video.",
+                                          "B":  "The whole experiment shown in the video.",
+                                          "C":  "The teacher receiving the video first."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Leo says the sound is quiet when the results are explained."
+                      },
+                      {
+                          "number":  5,
+                          "format":  "advert",
+                          "heading":  "Summer Reading Challenge",
+                          "text":  "Read any four books during the summer and write a short comment about each one. Bring your comments to the library in September to receive a certificate.",
+                          "question":  "What must students do to get a certificate?",
+                          "options":  {
+                                          "A":  "Read books and write brief opinions.",
+                                          "B":  "Borrow four books every September holiday.",
+                                          "C":  "Read only books chosen by teachers."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Students must read four books and write comments."
+                      }
+                  ]
+}

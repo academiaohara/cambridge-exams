@@ -1,0 +1,83 @@
+{
+    "title":  "Reading - Part 1",
+    "level":  "B1",
+    "exam":  "Preliminary",
+    "part":  1,
+    "testNumber":  18,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
+    "totalQuestions":  5,
+    "instructions":  "For each question, choose the correct answer.",
+    "questions":  [
+                      {
+                          "number":  1,
+                          "format":  "notice",
+                          "heading":  "Theatre Tickets",
+                          "text":  "Tickets bought online can be collected from the theatre desk after 6 p.m. Please bring the card used for payment. Tickets will not be posted, even if you bought them several weeks ago.",
+                          "question":  "What should online customers do?",
+                          "options":  {
+                                          "A":  "Collect their tickets at the theatre.",
+                                          "B":  "Wait for tickets to arrive by post.",
+                                          "C":  "Pay again at the theatre desk."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Online tickets are collected at the desk and will not be posted."
+                      },
+                      {
+                          "number":  2,
+                          "format":  "text_message",
+                          "heading":  "Message from Beth to Connor",
+                          "text":  "Connor, I spoke to the coach. She says you can join training today, but you’ll have to watch the first game because the team list was finished yesterday. Hope that’s OK.",
+                          "question":  "What has Beth found out?",
+                          "options":  {
+                                          "A":  "Connor can practise but not play immediately.",
+                                          "B":  "Connor has been chosen for the first game.",
+                                          "C":  "Training has been moved to yesterday."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Connor can join training but must watch the first game."
+                      },
+                      {
+                          "number":  3,
+                          "format":  "email",
+                          "heading":  "From: Daniel / Subject: Camping trip",
+                          "text":  "The campsite allows small fires, but only in the metal cooking areas. We should bring easy food because there isn’t a shop nearby. I’ll take matches if you can bring the pan.",
+                          "question":  "What is Daniel doing?",
+                          "options":  {
+                                          "A":  "Planning what they need for cooking.",
+                                          "B":  "Asking where the nearest shop is.",
+                                          "C":  "Saying fires are not allowed there."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Daniel discusses fires, food, matches and a pan."
+                      },
+                      {
+                          "number":  4,
+                          "format":  "label",
+                          "heading":  "Sports Water Bottle",
+                          "text":  "This bottle can be washed in warm water, but do not put it in a dishwasher. The coloured design may fade if it becomes too hot. Not suitable for hot drinks.",
+                          "question":  "What does the label warn users?",
+                          "options":  {
+                                          "A":  "Heat may damage the bottle’s appearance.",
+                                          "B":  "The bottle cannot be washed at all.",
+                                          "C":  "Cold drinks should not be put inside."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "The coloured design may fade if it becomes too hot."
+                      },
+                      {
+                          "number":  5,
+                          "format":  "poster",
+                          "heading":  "Student Volunteers Needed",
+                          "text":  "We need students to help younger children during reading afternoon. Volunteers will listen to children read and help them choose books. Training is at lunchtime on Thursday and is required.",
+                          "question":  "Who can volunteer?",
+                          "options":  {
+                                          "A":  "Students who attend the training session.",
+                                          "B":  "Students who already work in libraries.",
+                                          "C":  "Students who can bring younger children."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Training on Thursday is required for volunteers."
+                      }
+                  ]
+}

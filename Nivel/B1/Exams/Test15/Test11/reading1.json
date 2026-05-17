@@ -1,0 +1,83 @@
+{
+    "title":  "Reading - Part 1",
+    "level":  "B1",
+    "exam":  "Preliminary",
+    "part":  1,
+    "testNumber":  11,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
+    "totalQuestions":  5,
+    "instructions":  "For each question, choose the correct answer.",
+    "questions":  [
+                      {
+                          "number":  1,
+                          "format":  "notice",
+                          "heading":  "School Library",
+                          "text":  "Books borrowed before the holiday must be returned by Friday. Students who still need them for revision should speak to the librarian before then. Any books returned late may not be borrowed again this term.",
+                          "question":  "What does the notice tell students?",
+                          "options":  {
+                                          "A":  "They can keep books longer if they ask first.",
+                                          "B":  "They must return all books after the holiday.",
+                                          "C":  "They cannot borrow books for revision now."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Students may keep books for revision only if they speak to the librarian before Friday."
+                      },
+                      {
+                          "number":  2,
+                          "format":  "text_message",
+                          "heading":  "Message from Ella to Max",
+                          "text":  "Max, I’ve got the tickets for the concert, but they gave us seats near the back. I know you wanted to stand, but those tickets had already sold out. Tell me if you still want to come.",
+                          "question":  "Why is Ella texting Max?",
+                          "options":  {
+                                          "A":  "To check if he accepts different tickets.",
+                                          "B":  "To say she forgot to buy concert tickets.",
+                                          "C":  "To ask him where they should sit."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Ella explains the tickets are not what Max wanted and asks if he still wants to come."
+                      },
+                      {
+                          "number":  3,
+                          "format":  "advert",
+                          "heading":  "Weekend Tennis",
+                          "text":  "Junior tennis sessions start again this Saturday. Players who joined last year do not need to complete another form, but new members should bring one signed by a parent before they play.",
+                          "question":  "What does the advert say?",
+                          "options":  {
+                                          "A":  "Some players must bring permission before joining.",
+                                          "B":  "Everyone must complete a new form this year.",
+                                          "C":  "Parents have to stay during tennis sessions."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "New members need a form signed by a parent before they play."
+                      },
+                      {
+                          "number":  4,
+                          "format":  "email",
+                          "heading":  "From: Ms Clarke / Subject: Class newspaper",
+                          "text":  "Your reports about the sports day are good, but they are all quite similar. Before Friday, please add one detail that only you noticed. This will make the class newspaper more interesting to read.",
+                          "question":  "What does Ms Clarke want students to do?",
+                          "options":  {
+                                          "A":  "Make their reports more personal and clear.",
+                                          "B":  "Write a report about a different event.",
+                                          "C":  "Read the newspaper carefully before Friday."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "She asks each student to add a detail only they noticed."
+                      },
+                      {
+                          "number":  5,
+                          "format":  "poster",
+                          "heading":  "New Music Room Rules",
+                          "text":  "Students may use the music room at lunchtime if a teacher is nearby. Instruments must be put away before afternoon lessons begin. Food and drinks should be left outside the room.",
+                          "question":  "What is the main rule on the poster?",
+                          "options":  {
+                                          "A":  "Students can use the room only with supervision.",
+                                          "B":  "Students must practise music after lessons.",
+                                          "C":  "Students should bring drinks for lunchtime practice."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "The room may be used only if a teacher is nearby."
+                      }
+                  ]
+}

@@ -1,0 +1,83 @@
+{
+    "title":  "Reading - Part 1",
+    "level":  "B1",
+    "exam":  "Preliminary",
+    "part":  1,
+    "testNumber":  32,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
+    "totalQuestions":  5,
+    "instructions":  "For each question, choose the correct answer.",
+    "questions":  [
+                      {
+                          "number":  1,
+                          "format":  "notice",
+                          "heading":  "Art Gallery Café",
+                          "text":  "The gallery café is closed for painting today. Visitors can buy drinks from the small shop near the entrance. Food may not be eaten in the exhibition rooms or the garden.",
+                          "question":  "What does the notice tell visitors?",
+                          "options":  {
+                                          "A":  "They can still buy drinks in another place.",
+                                          "B":  "They may eat food in the garden today.",
+                                          "C":  "The whole gallery is closed for painting."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "The café is closed, but drinks are available in the shop."
+                      },
+                      {
+                          "number":  2,
+                          "format":  "text_message",
+                          "heading":  "Message from Ruby to George",
+                          "text":  "George, I tried calling the sports centre, but nobody answered. I’ve booked badminton online for six o’clock anyway. If you hear from them about rackets, can you let me know?",
+                          "question":  "Why is Ruby texting George?",
+                          "options":  {
+                                          "A":  "To ask him to pass on extra information.",
+                                          "B":  "To say badminton cannot be booked online.",
+                                          "C":  "To ask him to call her at six."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Ruby wants George to tell her if he hears about rackets."
+                      },
+                      {
+                          "number":  3,
+                          "format":  "label",
+                          "heading":  "School Laptop Charger",
+                          "text":  "This charger is for laptop number 18 only. Please return it with the laptop at the end of the lesson. Using the wrong charger may damage school equipment.",
+                          "question":  "What is the purpose of this label?",
+                          "options":  {
+                                          "A":  "To prevent students using the charger incorrectly.",
+                                          "B":  "To explain how to repair laptop number 18.",
+                                          "C":  "To ask students to charge phones elsewhere."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "The label says the charger is only for one laptop."
+                      },
+                      {
+                          "number":  4,
+                          "format":  "email",
+                          "heading":  "From: Alex / Subject: History notes",
+                          "text":  "I’ve typed up my notes from today’s history lesson. They include the dates, but not the examples Miss Reed gave at the end. Could you add those before we share them with Sam?",
+                          "question":  "What does Alex want the reader to do?",
+                          "options":  {
+                                          "A":  "Add missing information to the lesson notes.",
+                                          "B":  "Send Sam the notes without checking them.",
+                                          "C":  "Ask Miss Reed for all the dates."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Alex asks the reader to add the examples."
+                      },
+                      {
+                          "number":  5,
+                          "format":  "advert",
+                          "heading":  "Evening Yoga",
+                          "text":  "Our evening yoga class is moving to the community hall this month because the sports centre is being repaired. Classes will still begin at 7 p.m., and the same teacher will take them.",
+                          "question":  "What has changed about the yoga class?",
+                          "options":  {
+                                          "A":  "It is taking place in a new location.",
+                                          "B":  "It is starting at a different time.",
+                                          "C":  "It has a different teacher this month."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "The class has moved to the community hall."
+                      }
+                  ]
+}
