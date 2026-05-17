@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  20,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "Exam Practice Room",
+                          "text":  "Room 6 is open every lunchtime this week for students who want quiet exam practice. Teachers will not give lessons there, but answer sheets are available for you to check your own work.",
+                          "question":  "What is offered in Room 6?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "A place for independent exam practice.",
+                                          "B":  "Extra lunchtime lessons with teachers present.",
+                                          "C":  "Answers that students cannot check themselves."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Students can practise quietly and check their own answers."
                       },
                       {
                           "number":  2,
-                          "topic":  "sports centre",
-                          "notice":  "Members can book classes online.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "text_message",
+                          "heading":  "Message from Maria to Alex",
+                          "text":  "Alex, I’ve just noticed the invitation says the party starts at seven, not six. I’m glad I checked before leaving! Shall we meet at the bus stop an hour later than we planned?",
+                          "question":  "Why is Maria texting Alex?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "To change their meeting time later.",
+                                          "B":  "To say she cannot go to the party.",
+                                          "C":  "To ask where the invitation is."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Maria realises the party starts later and suggests meeting later."
                       },
                       {
                           "number":  3,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "What information is given in the message?",
+                          "format":  "advert",
+                          "heading":  "Language Exchange Café",
+                          "text":  "Practise English or French with local students every Thursday evening. You do not need to speak perfectly, but you should be ready to talk in pairs. Drinks are cheaper for participants.",
+                          "question":  "Who is the café event for?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "People willing to practise speaking with others.",
+                                          "B":  "People who only want private language lessons.",
+                                          "C":  "People who already speak languages perfectly."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Participants should be ready to talk in pairs."
                       },
                       {
                           "number":  4,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "email",
+                          "heading":  "From: Tania / Subject: Science club",
+                          "text":  "The rocket experiment worked well, but we used nearly all the materials. Before next week’s meeting, could you ask Mr White whether we can have more card and tape?",
+                          "question":  "What does Tania want?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "Someone to request extra materials for them.",
+                                          "B":  "Someone to repeat the experiment alone.",
+                                          "C":  "Mr White to cancel science club."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Tania asks the reader to request more card and tape."
                       },
                       {
                           "number":  5,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "label",
+                          "heading":  "Museum Audio Guide",
+                          "text":  "Audio guides are free with your ticket. Choose the children’s version if you prefer shorter explanations. Please return the guide to the desk before visiting the café or gift shop.",
+                          "question":  "What should visitors do?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "Give back the guide before leaving the exhibitions.",
+                                          "B":  "Pay extra for the children’s audio guide.",
+                                          "C":  "Keep the guide while visiting the café."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Visitors should return the guide before going to the café or gift shop."
                       }
                   ]
 }

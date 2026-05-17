@@ -3,74 +3,80 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "train station",
-                          "notice":  "The 6:30 train is delayed by 20 minutes.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "poster",
+                          "heading":  "Book Week Event",
+                          "text":  "Local author Sara Bell will talk about creating mystery stories on Wednesday. Students who have already read one of her books may join a small writing workshop afterwards. Bring your own notebook.",
+                          "question":  "Who can attend the writing workshop?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "Students familiar with Sara Bell’s work.",
+                                          "B":  "Students who bring a mystery book.",
+                                          "C":  "Anyone who wants to meet a local author."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "The workshop is for students who have already read one of her books."
                       },
                       {
                           "number":  2,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "text_message",
+                          "heading":  "Message from Anna to Rob",
+                          "text":  "Rob, I’m still coming to your house this afternoon, but I need to stop at the post office first. Don’t start the science model without me — I’ve got the instructions in my bag. Anna",
+                          "question":  "Why is Anna texting Rob?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "To tell him to wait before beginning their work.",
+                                          "B":  "To say she cannot come to his house.",
+                                          "C":  "To ask him to collect something for her."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Anna tells Rob not to start because she has the instructions."
                       },
                       {
                           "number":  3,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What information is given in the message?",
+                          "format":  "notice",
+                          "heading":  "Community Centre",
+                          "text":  "The upstairs rooms are closed while new windows are fitted. Yoga and art classes will meet downstairs this week. Please check the board near the entrance before going to your usual room.",
+                          "question":  "What should people do this week?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A change or important detail."
+                                          "A":  "Look for information about temporary room changes.",
+                                          "B":  "Use the upstairs rooms only for quiet classes.",
+                                          "C":  "Enter the centre through a different door."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Classes are meeting downstairs, and people should check the board."
                       },
                       {
                           "number":  4,
-                          "topic":  "café",
-                          "notice":  "Customers should pay before sitting down.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "email",
+                          "heading":  "From: Yasmin / Subject: Party music",
+                          "text":  "I’ve made a playlist for the party, but it’s mostly dance music. Could you add some quieter songs too? We’ll need something playing while people arrive and while we’re eating.",
+                          "question":  "What does Yasmin want?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To give useful information.",
-                                          "C":  "To ask people for help."
+                                          "A":  "A wider choice of music for different moments.",
+                                          "B":  "Someone to remove dance music from the playlist.",
+                                          "C":  "Advice about where to hold the party."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Yasmin asks for quieter songs as well as dance music."
                       },
                       {
                           "number":  5,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "Photography Studio",
+                          "text":  "Passport photos are available without an appointment from 10 to 3. For family portraits, please book at least two days in advance. Payment is made after you choose the pictures you want.",
+                          "question":  "What does the notice explain?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Some types of photograph need to be arranged earlier.",
+                                          "B":  "Customers must pay before seeing their pictures.",
+                                          "C":  "Passport photos are only taken with appointments."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Family portraits must be booked at least two days in advance."
                       }
                   ]
 }

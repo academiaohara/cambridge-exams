@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  18,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What information is given in the message?",
+                          "format":  "notice",
+                          "heading":  "Theatre Tickets",
+                          "text":  "Tickets bought online can be collected from the theatre desk after 6 p.m. Please bring the card used for payment. Tickets will not be posted, even if you bought them several weeks ago.",
+                          "question":  "What should online customers do?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A change or important detail.",
-                                          "C":  "A complaint about a problem."
+                                          "A":  "Collect their tickets at the theatre.",
+                                          "B":  "Wait for tickets to arrive by post.",
+                                          "C":  "Pay again at the theatre desk."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Online tickets are collected at the desk and will not be posted."
                       },
                       {
                           "number":  2,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What information is given in the message?",
+                          "format":  "text_message",
+                          "heading":  "Message from Beth to Connor",
+                          "text":  "Connor, I spoke to the coach. She says you can join training today, but you’ll have to watch the first game because the team list was finished yesterday. Hope that’s OK.",
+                          "question":  "What has Beth found out?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A change or important detail."
+                                          "A":  "Connor can practise but not play immediately.",
+                                          "B":  "Connor has been chosen for the first game.",
+                                          "C":  "Training has been moved to yesterday."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Connor can join training but must watch the first game."
                       },
                       {
                           "number":  3,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "email",
+                          "heading":  "From: Daniel / Subject: Camping trip",
+                          "text":  "The campsite allows small fires, but only in the metal cooking areas. We should bring easy food because there isn’t a shop nearby. I’ll take matches if you can bring the pan.",
+                          "question":  "What is Daniel doing?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "Planning what they need for cooking.",
+                                          "B":  "Asking where the nearest shop is.",
+                                          "C":  "Saying fires are not allowed there."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Daniel discusses fires, food, matches and a pan."
                       },
                       {
                           "number":  4,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "label",
+                          "heading":  "Sports Water Bottle",
+                          "text":  "This bottle can be washed in warm water, but do not put it in a dishwasher. The coloured design may fade if it becomes too hot. Not suitable for hot drinks.",
+                          "question":  "What does the label warn users?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "Heat may damage the bottle’s appearance.",
+                                          "B":  "The bottle cannot be washed at all.",
+                                          "C":  "Cold drinks should not be put inside."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The coloured design may fade if it becomes too hot."
                       },
                       {
                           "number":  5,
-                          "topic":  "museum",
-                          "notice":  "Photography is not allowed in this room.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "poster",
+                          "heading":  "Student Volunteers Needed",
+                          "text":  "We need students to help younger children during reading afternoon. Volunteers will listen to children read and help them choose books. Training is at lunchtime on Thursday and is required.",
+                          "question":  "Who can volunteer?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "Students who attend the training session.",
+                                          "B":  "Students who already work in libraries.",
+                                          "C":  "Students who can bring younger children."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Training on Thursday is required for volunteers."
                       }
                   ]
 }

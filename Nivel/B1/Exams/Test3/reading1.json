@@ -3,74 +3,80 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "school library",
-                          "notice":  "Students must return books before Friday.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "advert",
+                          "heading":  "Weekend Language Club",
+                          "text":  "Practise Spanish with students from other schools every Saturday afternoon. Activities include games, short films and conversation tasks. Beginners are welcome, but you should already know numbers, colours and simple greetings.",
+                          "question":  "Who is the club suitable for?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Students with a little knowledge of Spanish.",
+                                          "B":  "Students who want private Spanish lessons.",
+                                          "C":  "Students who can already speak Spanish fluently."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Beginners are welcome, but they need basic Spanish."
                       },
                       {
                           "number":  2,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What information is given in the message?",
+                          "format":  "text_message",
+                          "heading":  "Message from Nina to Oscar",
+                          "text":  "Oscar, the library book you wanted is back, but I’ve put it on the desk because I’m leaving early. If you still need it for your project, ask Mrs Green before another student borrows it. Nina",
+                          "question":  "Why has Nina sent this message?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A change or important detail.",
-                                          "C":  "A complaint about a problem."
+                                          "A":  "To tell Oscar he can now collect a book.",
+                                          "B":  "To ask Oscar to return a library book.",
+                                          "C":  "To explain why she cannot help with his project."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The book Oscar wanted is available now."
                       },
                       {
                           "number":  3,
-                          "topic":  "train station",
-                          "notice":  "The 6:30 train is delayed by 20 minutes.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "Swimming Pool Users",
+                          "text":  "The small pool is closed today because a children’s lesson has moved there from Friday. Adults may use lanes 1 and 2 in the main pool. Please keep lane 3 free for swimming club training.",
+                          "question":  "What does the notice tell swimmers?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "Some adults can swim, but only in certain lanes.",
+                                          "B":  "The children’s swimming lesson has been cancelled.",
+                                          "C":  "The swimming club will use the small pool today."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Adults can use lanes 1 and 2 only."
                       },
                       {
                           "number":  4,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "email",
+                          "heading":  "From: Jenny / Subject: Photos",
+                          "text":  "Thanks for sending the photos from the concert. They’re great, but please don’t put the one of me singing online. I look terrible in it! You can share the group photo if everyone else agrees.",
+                          "question":  "What does Jenny want?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "To choose which photo may appear online.",
+                                          "B":  "To ask for more photos from the concert.",
+                                          "C":  "To stop anyone sharing the group photo."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Jenny says one photo should not go online, but another may be shared."
                       },
                       {
                           "number":  5,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "What information is given in the message?",
+                          "format":  "poster",
+                          "heading":  "Used Uniform Sale",
+                          "text":  "Clean school jackets, skirts and sports shirts will be sold in the main hall on Tuesday. Prices are lower than in shops. Please bring cash, as we cannot take card payments during the sale.",
+                          "question":  "What should people know about the sale?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A change or important detail.",
-                                          "C":  "A complaint about a problem."
+                                          "A":  "They need to pay in a particular way.",
+                                          "B":  "They can sell their own clothes there.",
+                                          "C":  "They must buy all uniform items new."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The poster says people must bring cash."
                       }
                   ]
 }

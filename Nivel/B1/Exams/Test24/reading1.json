@@ -3,74 +3,81 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "testNumber":  24,
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "What information is given in the message?",
+                          "format":  "notice",
+                          "heading":  "Lost Sports Kit",
+                          "text":  "A bag of football kit was left in the changing rooms after yesterday’s match. The owner should collect it from Reception before Friday. After that, it will be taken to the main lost property office.",
+                          "question":  "What should the owner do?",
                           "options":  {
-                                          "A":  "A personal invitation.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A change or important detail."
+                                          "A":  "Collect the bag before it is moved elsewhere.",
+                                          "B":  "Look for the bag at yesterday’s match.",
+                                          "C":  "Leave the football kit in Reception."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "The bag can be collected from Reception before Friday, then it moves elsewhere."
                       },
                       {
                           "number":  2,
-                          "topic":  "music club",
-                          "notice":  "Practice starts at 5:15 every Thursday.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "text_message",
+                          "heading":  "Message from Aisha to Ben",
+                          "text":  "Ben, I’m bringing the picnic blanket, but I couldn’t find the plastic cups. Could you bring some if you have any? If not, we can buy drinks at the park café.",
+                          "question":  "What is Aisha doing?",
                           "options":  {
-                                          "A":  "To advertise a competition.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To give useful information."
+                                          "A":  "Suggesting what Ben could bring to the picnic.",
+                                          "B":  "Asking Ben to choose a different park.",
+                                          "C":  "Saying she has cancelled the picnic."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Aisha asks Ben to bring plastic cups if possible."
                       },
                       {
                           "number":  3,
-                          "topic":  "museum",
-                          "notice":  "Photography is not allowed in this room.",
-                          "question":  "What information is given in the message?",
+                          "format":  "advert",
+                          "heading":  "Maths Help Sessions",
+                          "text":  "Need help before the end-of-term test? Come to Room 5 on Tuesday or Thursday lunchtime. You do not need to book, but bring one question you have tried and found difficult.",
+                          "question":  "What should students do before attending?",
                           "options":  {
-                                          "A":  "A change or important detail.",
-                                          "B":  "A complaint about a problem.",
-                                          "C":  "A personal invitation."
+                                          "A":  "Prepare a problem they want help with.",
+                                          "B":  "Reserve a place for Tuesday or Thursday.",
+                                          "C":  "Complete the whole test at home."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Students should bring one difficult question they have tried."
                       },
                       {
                           "number":  4,
-                          "topic":  "museum",
-                          "notice":  "Photography is not allowed in this room.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "email",
+                          "heading":  "From: Uncle Joe / Subject: Your visit",
+                          "text":  "The weather looks good for Sunday, so let’s go cycling instead of visiting the indoor climbing centre. I can lend you a helmet, but bring a jacket because it may be windy near the river.",
+                          "question":  "What has Uncle Joe decided?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Follow a rule or instruction.",
-                                          "C":  "Ask for permission later."
+                                          "A":  "They should do an outdoor activity instead.",
+                                          "B":  "They should go climbing because of the weather.",
+                                          "C":  "The reader must buy a new helmet."
                                       },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "He suggests cycling instead of the indoor climbing centre."
                       },
                       {
                           "number":  5,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "poster",
+                          "heading":  "Dance Show Tickets",
+                          "text":  "Tickets for the dance show are now available from the school office. Students performing in the show get one free family ticket, but any extra tickets must be paid for when collected.",
+                          "question":  "What does the poster explain?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Performers can get one ticket without paying.",
+                                          "B":  "All family tickets are free for students.",
+                                          "C":  "Extra tickets can be collected after the show."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students performing get one free family ticket."
                       }
                   ]
 }

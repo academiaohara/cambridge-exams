@@ -50,6 +50,22 @@
   color: #451a03;
 }
 
+.reading-type5-passage-heading {
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #78350f;
+  margin-bottom: 10px;
+}
+
+.reading-type5-passage-body {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: #451a03;
+  white-space: pre-wrap;
+}
+
 @media (min-width: 900px) {
   .reading-type5-with-notice {
     flex-direction: row;

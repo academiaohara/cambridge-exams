@@ -3,74 +3,80 @@
     "level":  "B1",
     "exam":  "Preliminary",
     "part":  1,
-    "type":  "multiple-choice-notices",
+    "type":  "multiple-choice-short-texts",
+    "time":  8,
     "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
+    "instructions":  "For each question, choose the correct answer.",
     "questions":  [
                       {
                           "number":  1,
-                          "topic":  "swimming pool",
-                          "notice":  "Children under 12 must be with an adult.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "Final-year Students",
+                          "text":  "Ex-students from our course are coming here next week to talk to you about how to do well in your first job. Space for a maximum of thirty students, so sign up now.",
+                          "question":  "What does the notice tell students?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Former students will help people apply for jobs.",
+                                          "B":  "Students should register soon if they want to attend.",
+                                          "C":  "Only thirty students from the course may attend."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "B",
+                          "explanation":  "The limited space means students need to sign up quickly."
                       },
                       {
                           "number":  2,
-                          "topic":  "cinema",
-                          "notice":  "No food or drinks inside the screen area.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "text_message",
+                          "heading":  "Message from Lily to Ben",
+                          "text":  "Ben, I’m sorry but I can’t meet you outside the cinema at six. My music lesson is finishing late today. I’ve bought our tickets online, so go in and I’ll find you before the film starts. Lily",
+                          "question":  "Why is Lily texting Ben?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "To tell him she will arrive later than planned.",
+                                          "B":  "To ask him to buy the cinema tickets.",
+                                          "C":  "To cancel their visit to the cinema."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Lily will still go, but she cannot meet Ben at the planned time."
                       },
                       {
                           "number":  3,
-                          "topic":  "train station",
-                          "notice":  "The 6:30 train is delayed by 20 minutes.",
-                          "question":  "Why has this notice been written?",
+                          "format":  "advert",
+                          "heading":  "Bike Repair Morning",
+                          "text":  "Bring your bike to the sports centre this Saturday between 9 and 12. Our mechanics will check brakes and tyres for free. Small repairs can be done while you wait, but new parts must be paid for.",
+                          "question":  "What does the advert say?",
                           "options":  {
-                                          "A":  "To give useful information.",
-                                          "B":  "To ask people for help.",
-                                          "C":  "To advertise a competition."
+                                          "A":  "Some bike problems can be fixed without an appointment.",
+                                          "B":  "All repairs at the sports centre are free this Saturday.",
+                                          "C":  "Cyclists must buy new parts before the mechanics help."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Small repairs can be done while people wait, so no appointment is mentioned."
                       },
                       {
                           "number":  4,
-                          "topic":  "park",
-                          "notice":  "Dogs must be kept on a lead.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "email",
+                          "heading":  "From: Mr Patel / Subject: Geography homework",
+                          "text":  "Well done for finishing your map work. For next lesson, please choose one coastal town and find out how tourism has changed it. Bring notes, not a printed article, because we’ll discuss your own ideas in groups.",
+                          "question":  "What should students do before the next lesson?",
                           "options":  {
-                                          "A":  "Ignore the timetable.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Follow a rule or instruction."
+                                          "A":  "Prepare information to use in a class discussion.",
+                                          "B":  "Print an article about tourism in coastal towns.",
+                                          "C":  "Finish drawing the map they started in class."
                                       },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the notice gives useful information or instructions."
+                          "answer":  "A",
+                          "explanation":  "Students must bring notes about a coastal town for discussion."
                       },
                       {
                           "number":  5,
-                          "topic":  "school trip",
-                          "notice":  "Bring a packed lunch and comfortable shoes.",
-                          "question":  "What does the notice tell people to do?",
+                          "format":  "notice",
+                          "heading":  "School Café",
+                          "text":  "From Monday, hot lunches must be ordered before morning break. Students who forget can still buy sandwiches or fruit at lunchtime. This change will help kitchen staff prepare the right amount of food.",
+                          "question":  "What is changing in the school café?",
                           "options":  {
-                                          "A":  "Follow a rule or instruction.",
-                                          "B":  "Ask for permission later.",
-                                          "C":  "Ignore the timetable."
+                                          "A":  "Students need to order cooked food earlier in the day.",
+                                          "B":  "Sandwiches will no longer be sold at lunchtime.",
+                                          "C":  "Kitchen staff will decide what students can eat."
                                       },
                           "answer":  "A",
-                          "explanation":  "The correct answer is A because the notice gives useful information or instructions."
+                          "explanation":  "Hot lunches must now be ordered before morning break."
                       }
                   ]
 }

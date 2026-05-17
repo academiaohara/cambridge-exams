@@ -2,10 +2,37 @@
 // Multiple choice text - Part 5
 
 (function() {
+  'use strict';
+
+  function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function sourceCardLabel(format) {
+    var f = (format || '').toString();
+    if (f === 'notice') return 'Notice';
+    if (f === 'text_message') return 'Message';
+    if (f === 'advert') return 'Advert';
+    if (f === 'email') return 'Email';
+    return 'Text';
+  }
+
   window.ReadingType5 = {
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
       const notice = question.notice;
-      const hasNotice = notice != null && String(notice).trim() !== '';
+      const hasLegacyNotice = notice != null && String(notice).trim() !== '';
+      const heading = question.heading;
+      const bodyText = question.text;
+      const hasPassage =
+        (heading != null && String(heading).trim() !== '') ||
+        (bodyText != null && String(bodyText).trim() !== '');
+      const showSourceCard = hasLegacyNotice || hasPassage;
       const questionBlock = `
         <div class="reading-type5-question">
           <div class="reading-type5-question-header">
@@ -17,14 +44,30 @@
           </div>
         </div>
       `;
-      if (!hasNotice) {
+      if (!showSourceCard) {
         return questionBlock;
+      }
+      var label = 'Notice';
+      var innerBody = '';
+      if (hasLegacyNotice) {
+        innerBody = '<div class="reading-type5-notice-text">' + notice + '</div>';
+      } else {
+        label = sourceCardLabel(question.format);
+        var hBlock =
+          heading != null && String(heading).trim() !== ''
+            ? '<div class="reading-type5-passage-heading">' + escapeHtml(heading) + '</div>'
+            : '';
+        var tBlock =
+          bodyText != null && String(bodyText).trim() !== ''
+            ? '<div class="reading-type5-passage-body">' + escapeHtml(bodyText) + '</div>'
+            : '';
+        innerBody = hBlock + tBlock;
       }
       return `
         <div class="reading-type5-with-notice">
-          <aside class="reading-type5-notice-card" aria-label="Notice">
-            <div class="reading-type5-notice-label">Notice</div>
-            <div class="reading-type5-notice-text">${notice}</div>
+          <aside class="reading-type5-notice-card" aria-label="${escapeHtml(label)}">
+            <div class="reading-type5-notice-label">${escapeHtml(label)}</div>
+            ${innerBody}
           </aside>
           ${questionBlock}
         </div>
