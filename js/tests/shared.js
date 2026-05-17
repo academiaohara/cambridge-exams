@@ -1,7 +1,14 @@
-// js/tests.js
-// Tests section: exam/practice mode and grade evolution
+// js/tests/shared.js
+// Tests section: exam/practice mode and grade evolution (per-level scales in js/tests/b1|b2|c1/config.js)
 
 (function() {
+  function _testsGradeEvoConfigForLevel(level) {
+    var LC = window.TestsLevelConfig;
+    if (LC && LC[level]) return LC[level];
+    if (LC && LC.C1) return LC.C1;
+    return { scaleBounds: [140, 210], gradeBands: [] };
+  }
+
   Object.assign(window.BentoGrid, {
     _renderTopRow: function(exams) {
       var available = (exams || []).filter(function(e) { return e.status === 'available'; });
@@ -140,18 +147,11 @@
         'Total': '#6366f1'
       };
 
-      var scaleBounds = { A2: [80, 140], B1: [80, 160], B2: [120, 190], C1: [140, 210], C2: [160, 230] };
-      var bounds = scaleBounds[level] || [140, 210];
+      var evo = _testsGradeEvoConfigForLevel(level);
+      var bounds = evo.scaleBounds || [140, 210];
       var scaleMin = bounds[0];
       var scaleMax = bounds[1];
-
-      var gradeBandsByLevel = {
-        'A2': [{ min: 120, label: 'Grade A' }, { min: 110, label: 'Grade B' }, { min: 100, label: 'Grade C' }, { min: 82, label: 'Level A1' }],
-        'B1': [{ min: 140, label: 'Grade A' }, { min: 133, label: 'Grade B' }, { min: 120, label: 'Grade C' }, { min: 102, label: 'Level A2' }, { min: 82, label: 'Level A1' }],
-        'B2': [{ min: 180, label: 'Grade A' }, { min: 173, label: 'Grade B' }, { min: 160, label: 'Grade C' }, { min: 140, label: 'Level B1' }, { min: 120, label: 'Level A2' }],
-        'C1': [{ min: 200, label: 'Grade A' }, { min: 193, label: 'Grade B' }, { min: 180, label: 'Grade C' }, { min: 160, label: 'Level B2' }, { min: 142, label: 'Level B1' }],
-        'C2': [{ min: 220, label: 'Grade A' }, { min: 213, label: 'Grade B' }, { min: 200, label: 'Grade C' }, { min: 180, label: 'Level C1' }]
-      };
+      var gradeBands = evo.gradeBands || [];
 
       // Gather per-exam skill scores
       var examScores = []; // [{ examId, skills: { skill: scaleScore } }]
@@ -169,7 +169,7 @@
         } catch (e) { /* skip */ }
       });
 
-      var bodyHtml = BentoGrid._buildGradeEvoChart(examScores, allSkills, skillColors, gradeBandsByLevel[level] || [], scaleMin, scaleMax);
+      var bodyHtml = BentoGrid._buildGradeEvoChart(examScores, allSkills, skillColors, gradeBands, scaleMin, scaleMax);
 
       // Build sidebars like main dashboard
       var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';

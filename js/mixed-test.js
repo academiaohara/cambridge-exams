@@ -209,7 +209,8 @@
 
     /** Called when the user reaches the end of the plan. */
     finish: function () {
-      if (plan) {
+      var plan = AppState.mixedTestPlan || _loadPlan();
+      if (plan && plan.length) {
         var allDone = new Set(Array.from({ length: plan.length }, function(_, i) { return i; }));
         _saveCompleted(allDone);
       }
