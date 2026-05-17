@@ -23,6 +23,14 @@
     return 'Text';
   }
 
+  /** Normalized key for CSS theming of the source card (aside). */
+  function sourceCardFormatKey(hasLegacyNotice, format) {
+    if (hasLegacyNotice) return 'notice';
+    var f = String(format || '').trim();
+    if (f === 'notice' || f === 'text_message' || f === 'advert' || f === 'email') return f;
+    return 'text';
+  }
+
   window.ReadingType5 = {
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
       const notice = question.notice;
@@ -63,9 +71,10 @@
             : '';
         innerBody = hBlock + tBlock;
       }
+      var sourceKey = sourceCardFormatKey(hasLegacyNotice, question.format);
       return `
         <div class="reading-type5-with-notice">
-          <aside class="reading-type5-notice-card" aria-label="${escapeHtml(label)}">
+          <aside class="reading-type5-notice-card" data-reading-type5-source="${sourceKey}" aria-label="${escapeHtml(label)}">
             <div class="reading-type5-notice-label">${escapeHtml(label)}</div>
             ${innerBody}
           </aside>
