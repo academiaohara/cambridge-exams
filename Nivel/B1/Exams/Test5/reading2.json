@@ -1,78 +1,95 @@
-{
-    "title":  "Reading - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "matching",
-    "totalQuestions":  5,
-    "instructions":  "For questions 1–5, choose the correct text (A–F) for each person.",
-    "texts":  [
+﻿{
+    "tests":  [
                   {
-                      "id":  "C",
-                      "title":  "Central Library",
-                      "text":  "The library offers silent study rooms, free Wi‑Fi and computers. It stays open until 9 p.m. during the week."
-                  },
-                  {
-                      "id":  "E",
-                      "title":  "Stage Stars",
-                      "text":  "Young people can practise singing, acting and dancing before performing in local shows. Weekly rehearsals take place every Friday evening."
-                  },
-                  {
-                      "id":  "D",
-                      "title":  "Fitness Together",
-                      "text":  "Friendly trainers help teenagers improve their fitness through fun group classes. No experience is needed and everyone works at their own level."
-                  },
-                  {
-                      "id":  "A",
-                      "title":  "City Art Club",
-                      "text":  "Students meet every Wednesday to learn painting and drawing techniques together. Beginners are welcome and there are regular social events after classes."
-                  },
-                  {
-                      "id":  "F",
-                      "title":  "Chess Corner",
-                      "text":  "A small club for students who enjoy strategy games and quiet indoor activities after school."
-                  },
-                  {
-                      "id":  "B",
-                      "title":  "Mountain Walkers",
-                      "text":  "This group organises hiking trips in the countryside every Saturday morning. Transport is included and members should enjoy physical activity outdoors."
+                      "test":  5,
+                      "title":  "Choosing a course",
+                      "theme":  "courses",
+                      "people":  [
+                                     {
+                                         "number":  6,
+                                         "text":  "Javier wants to improve his cooking but only has Monday evenings free. He prefers practical lessons and wants to learn quick meals he can make after work. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  7,
+                                         "text":  "Hannah wants a photography course outdoors. She already knows the basics and would like feedback on her pictures from a teacher. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  8,
+                                         "text":  "Ravi wants to learn Spanish for travel. He needs a beginner course with speaking practice and cannot attend classes that require homework every week. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  9,
+                                         "text":  "Chloe wants a short business course to improve presentations. She needs online lessons because she lives far from the training centre. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  10,
+                                         "text":  "Max wants to try creative writing in a relaxed group. He is nervous about sharing work, so he wants a supportive course for beginners. They also want clear information before deciding, so they can choose with confidence."
+                                     }
+                                 ],
+                      "texts":  [
+                                    {
+                                        "letter":  "A",
+                                        "text":  "After-Work Cooking meets on Monday evenings in a teaching kitchen. Students prepare simple dinners that take less than thirty minutes at home. The course is practical, with everyone cooking in pairs and tasting the meals before leaving. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "B",
+                                        "text":  "Outdoor Camera Skills is for people who understand basic camera settings. Classes take place in parks and streets, and the tutor reviews each studentâ€™s photos at the end of every session. Participants should bring their own camera. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "C",
+                                        "text":  "Spanish for Holidays is a beginner course focused on speaking in travel situations. There is no weekly homework, although students receive optional practice sheets. Lessons include ordering food, asking directions and booking hotel rooms. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "D",
+                                        "text":  "Powerful Presentations Online is a four-week business course taught by video call. It covers clear slides, confident speaking and answering questions. Students practise short talks in small online groups and receive feedback from the trainer. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "E",
+                                        "text":  "Writing First Steps welcomes beginners who want to try stories and poems. The tutor creates a relaxed atmosphere, and nobody has to read aloud until they feel ready. The group focuses on encouragement rather than criticism. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "F",
+                                        "text":  "Weekend Cooking Skills teaches traditional dishes on Saturday mornings. The recipes are interesting but often take two or three hours to prepare. Students need to practise at home and bring notes to the next class. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "G",
+                                        "text":  "Spanish Grammar Plus is for learners who already know common travel phrases. It includes weekly written homework and grammar tests. Speaking practice is limited because the class focuses mainly on accuracy in written exercises. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "H",
+                                        "text":  "Creative Writing Advanced is for experienced writers preparing work for publication. Students must share writing every week and respond to detailed criticism. The course can be useful, but it is not aimed at nervous beginners. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    }
+                                ],
+                      "answers":  [
+                                      {
+                                          "question":  6,
+                                          "answer":  "A",
+                                          "explanation":  "Javier needs Monday evening practical cooking for quick after-work meals; A fits."
+                                      },
+                                      {
+                                          "question":  7,
+                                          "answer":  "B",
+                                          "explanation":  "Hannah wants outdoor photography beyond basics with teacher feedback; B matches."
+                                      },
+                                      {
+                                          "question":  8,
+                                          "answer":  "C",
+                                          "explanation":  "Ravi needs beginner travel Spanish, speaking practice and no required homework; C fits."
+                                      },
+                                      {
+                                          "question":  9,
+                                          "answer":  "D",
+                                          "explanation":  "Chloe needs an online business presentations course; D matches."
+                                      },
+                                      {
+                                          "question":  10,
+                                          "answer":  "E",
+                                          "explanation":  "Max wants supportive beginner creative writing without pressure to share; E fits."
+                                      }
+                                  ]
                   }
               ],
-    "questions":  [
-                      {
-                          "number":  1,
-                          "person":  "Mia",
-                          "needs":  "is interested in music and performing in front of people",
-                          "answer":  "E",
-                          "explanation":  "Mia matches option E because it best fits the description."
-                      },
-                      {
-                          "number":  2,
-                          "person":  "Emma",
-                          "needs":  "wants to learn something creative after school and meet new people",
-                          "answer":  "A",
-                          "explanation":  "Emma matches option A because it best fits the description."
-                      },
-                      {
-                          "number":  3,
-                          "person":  "Daniel",
-                          "needs":  "would like to improve his fitness in a friendly environment",
-                          "answer":  "D",
-                          "explanation":  "Daniel matches option D because it best fits the description."
-                      },
-                      {
-                          "number":  4,
-                          "person":  "Leo",
-                          "needs":  "is looking for outdoor activities at the weekend",
-                          "answer":  "B",
-                          "explanation":  "Leo matches option B because it best fits the description."
-                      },
-                      {
-                          "number":  5,
-                          "person":  "Sofia",
-                          "needs":  "needs a quiet place to study with internet access",
-                          "answer":  "C",
-                          "explanation":  "Sofia matches option C because it best fits the description."
-                      }
-                  ]
+    "batch":  1,
+    "part":  "Reading Part 2",
+    "level":  "B1"
 }

@@ -1,78 +1,95 @@
-{
-    "title":  "Reading - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "matching",
-    "totalQuestions":  5,
-    "instructions":  "For questions 1–5, choose the correct text (A–F) for each person.",
-    "texts":  [
+﻿{
+    "tests":  [
                   {
-                      "id":  "C",
-                      "title":  "Central Library",
-                      "text":  "The library offers silent study rooms, free Wi‑Fi and computers. It stays open until 9 p.m. during the week."
-                  },
-                  {
-                      "id":  "A",
-                      "title":  "City Art Club",
-                      "text":  "Students meet every Wednesday to learn painting and drawing techniques together. Beginners are welcome and there are regular social events after classes."
-                  },
-                  {
-                      "id":  "D",
-                      "title":  "Fitness Together",
-                      "text":  "Friendly trainers help teenagers improve their fitness through fun group classes. No experience is needed and everyone works at their own level."
-                  },
-                  {
-                      "id":  "F",
-                      "title":  "Chess Corner",
-                      "text":  "A small club for students who enjoy strategy games and quiet indoor activities after school."
-                  },
-                  {
-                      "id":  "B",
-                      "title":  "Mountain Walkers",
-                      "text":  "This group organises hiking trips in the countryside every Saturday morning. Transport is included and members should enjoy physical activity outdoors."
-                  },
-                  {
-                      "id":  "E",
-                      "title":  "Stage Stars",
-                      "text":  "Young people can practise singing, acting and dancing before performing in local shows. Weekly rehearsals take place every Friday evening."
+                      "test":  1,
+                      "title":  "Choosing a book club",
+                      "theme":  "books",
+                      "people":  [
+                                     {
+                                         "number":  6,
+                                         "text":  "Emma wants a friendly book club where members discuss modern novels. She can only go on weekday evenings and would prefer meetings where people do not need to finish a whole book every time."
+                                     },
+                                     {
+                                         "number":  7,
+                                         "text":  "Lucas enjoys crime stories and wants a club with lively discussion rather than quiet reading. He needs online access because he travels often for work, but he dislikes very large groups."
+                                     },
+                                     {
+                                         "number":  8,
+                                         "text":  "Maya is trying to improve her English and wants short, easy books with help on vocabulary. She is free on Saturday mornings and would like a club that welcomes nervous speakers."
+                                     },
+                                     {
+                                         "number":  9,
+                                         "text":  "Oliver wants to read classic literature with people who already know a lot about books. He prefers serious discussion and can attend in the city centre after work. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  10,
+                                         "text":  "Sofia wants to meet other parents and read books connected with family life. She needs a place where young children can stay safely nearby during the meeting. They also want clear information before deciding, so they can choose with confidence."
+                                     }
+                                 ],
+                      "texts":  [
+                                    {
+                                        "letter":  "A",
+                                        "text":  "Page Turners meets every Wednesday at 7 p.m. in a small cafÃ© near the station. Members read recent novels, but each meeting focuses on selected chapters, so nobody worries if they are busy. The atmosphere is relaxed and new people are paired with a regular member for their first discussion. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "B",
+                                        "text":  "Mystery Circle is for fans of detective and crime fiction. The group meets online twice a month and limits each session to twelve people, so everyone can speak. Members are expected to read the full book, and discussions often include guessing how the writer builds suspense. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "C",
+                                        "text":  "Saturday Stories is designed for English learners at lower intermediate level. Members read short books and receive a vocabulary list before each meeting. The group meets at 10 a.m. on Saturdays, and the leader encourages everyone to speak, even if they make mistakes. Visitors receive clear information before booking, and staff are happy to answer simple questions."
+                                    },
+                                    {
+                                        "letter":  "D",
+                                        "text":  "The Classics Forum meets in the central library on Thursday evenings. It is aimed at confident readers who enjoy detailed discussion of older literature. Members prepare notes before meetings, and talks often include history, writing style and different interpretations of difficult passages. Visitors receive clear information before booking, and staff are happy to answer simple questions."
+                                    },
+                                    {
+                                        "letter":  "E",
+                                        "text":  "Parentsâ€™ Pages meets in a community centre with a supervised playroom next door. The books usually explore home, school or family relationships. Meetings are informal, and parents can pause whenever their children need them. Sessions are on Sunday afternoons. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "F",
+                                        "text":  "Quick Reads Lunch Club meets on Mondays at 1 p.m. in a bookshop. Members read short modern novels and talk for only forty minutes. It suits office workers nearby, but there is no evening session and the group does not meet online. Visitors receive clear information before booking, and staff are happy to answer simple questions."
+                                    },
+                                    {
+                                        "letter":  "G",
+                                        "text":  "Silent Library Hour offers a quiet space to read classic books independently. There is no group discussion, although members sometimes exchange recommendations afterwards. It takes place on Saturday mornings and is popular with people who want peaceful reading time. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "H",
+                                        "text":  "Family Book Basket lends childrenâ€™s picture books and runs storytelling activities for toddlers. Parents can chat while children listen, but adults do not read or discuss a shared book. The sessions are free and happen every Tuesday morning. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    }
+                                ],
+                      "answers":  [
+                                      {
+                                          "question":  6,
+                                          "answer":  "A",
+                                          "explanation":  "Emma needs modern novels, weekday evenings and no need to finish a whole book; A matches all three."
+                                      },
+                                      {
+                                          "question":  7,
+                                          "answer":  "B",
+                                          "explanation":  "Lucas wants crime fiction, online access and a small discussion group; B fits these requirements."
+                                      },
+                                      {
+                                          "question":  8,
+                                          "answer":  "C",
+                                          "explanation":  "Maya needs English support, short books and Saturday morning meetings; C matches these details."
+                                      },
+                                      {
+                                          "question":  9,
+                                          "answer":  "D",
+                                          "explanation":  "Oliver wants serious classic literature discussion in the city centre after work; D is the best match."
+                                      },
+                                      {
+                                          "question":  10,
+                                          "answer":  "E",
+                                          "explanation":  "Sofia wants parent-focused books with safe childcare nearby; E provides both."
+                                      }
+                                  ]
                   }
               ],
-    "questions":  [
-                      {
-                          "number":  1,
-                          "person":  "Emma",
-                          "needs":  "wants to learn something creative after school and meet new people",
-                          "answer":  "A",
-                          "explanation":  "Emma matches option A because it best fits the description."
-                      },
-                      {
-                          "number":  2,
-                          "person":  "Sofia",
-                          "needs":  "needs a quiet place to study with internet access",
-                          "answer":  "C",
-                          "explanation":  "Sofia matches option C because it best fits the description."
-                      },
-                      {
-                          "number":  3,
-                          "person":  "Daniel",
-                          "needs":  "would like to improve his fitness in a friendly environment",
-                          "answer":  "D",
-                          "explanation":  "Daniel matches option D because it best fits the description."
-                      },
-                      {
-                          "number":  4,
-                          "person":  "Mia",
-                          "needs":  "is interested in music and performing in front of people",
-                          "answer":  "E",
-                          "explanation":  "Mia matches option E because it best fits the description."
-                      },
-                      {
-                          "number":  5,
-                          "person":  "Leo",
-                          "needs":  "is looking for outdoor activities at the weekend",
-                          "answer":  "B",
-                          "explanation":  "Leo matches option B because it best fits the description."
-                      }
-                  ]
+    "batch":  1,
+    "part":  "Reading Part 2",
+    "level":  "B1"
 }

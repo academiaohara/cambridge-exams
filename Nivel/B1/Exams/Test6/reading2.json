@@ -1,78 +1,95 @@
-{
-    "title":  "Reading - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "matching",
-    "totalQuestions":  5,
-    "instructions":  "For questions 1–5, choose the correct text (A–F) for each person.",
-    "texts":  [
+﻿{
+    "tests":  [
                   {
-                      "id":  "F",
-                      "title":  "Chess Corner",
-                      "text":  "A small club for students who enjoy strategy games and quiet indoor activities after school."
-                  },
-                  {
-                      "id":  "B",
-                      "title":  "Mountain Walkers",
-                      "text":  "This group organises hiking trips in the countryside every Saturday morning. Transport is included and members should enjoy physical activity outdoors."
-                  },
-                  {
-                      "id":  "A",
-                      "title":  "City Art Club",
-                      "text":  "Students meet every Wednesday to learn painting and drawing techniques together. Beginners are welcome and there are regular social events after classes."
-                  },
-                  {
-                      "id":  "C",
-                      "title":  "Central Library",
-                      "text":  "The library offers silent study rooms, free Wi‑Fi and computers. It stays open until 9 p.m. during the week."
-                  },
-                  {
-                      "id":  "D",
-                      "title":  "Fitness Together",
-                      "text":  "Friendly trainers help teenagers improve their fitness through fun group classes. No experience is needed and everyone works at their own level."
-                  },
-                  {
-                      "id":  "E",
-                      "title":  "Stage Stars",
-                      "text":  "Young people can practise singing, acting and dancing before performing in local shows. Weekly rehearsals take place every Friday evening."
+                      "test":  6,
+                      "title":  "Choosing a film",
+                      "theme":  "films",
+                      "people":  [
+                                     {
+                                         "number":  6,
+                                         "text":  "Olivia wants a funny film to watch with her younger sister. It must be suitable for children, and she prefers stories about animals rather than superheroes. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  7,
+                                         "text":  "Ethan likes science fiction with exciting action scenes. He does not enjoy slow films and wants something with impressive special effects. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  8,
+                                         "text":  "Zara wants a romantic film, but not one that is too sad. She would like a modern story set in a big city. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  9,
+                                         "text":  "Noah wants a documentary about sport. He prefers real interviews with athletes and is especially interested in training and preparation. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  10,
+                                         "text":  "Freya wants a mystery film she can watch with her grandparents. It should not be violent, and they enjoy stories set in the countryside. They also want clear information before deciding, so they can choose with confidence."
+                                     }
+                                 ],
+                      "texts":  [
+                                    {
+                                        "letter":  "A",
+                                        "text":  "The Lost Puppy is a family comedy about a clever dog that accidentally joins a school trip. It has gentle jokes, animal characters and no frightening scenes. The film is recommended for children over six and is easy for younger viewers to follow. Visitors receive clear information before booking, and staff are happy to answer simple questions."
+                                    },
+                                    {
+                                        "letter":  "B",
+                                        "text":  "Galaxy Chase is a fast science-fiction adventure full of space battles, racing ships and dramatic rescues. Reviewers praise its visual effects and quick pace. It is not a thoughtful film, but it is ideal for viewers wanting action. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "C",
+                                        "text":  "City Hearts is a light romantic comedy about two neighbours in a busy apartment block. The story is modern, cheerful and set among cafÃ©s, offices and crowded streets. There are a few emotional moments, but the ending is happy. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "D",
+                                        "text":  "Ready to Win follows three real athletes preparing for an international competition. The documentary uses interviews, training footage and conversations with coaches to show the pressure behind sport. It focuses more on preparation than on the final results. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "E",
+                                        "text":  "Village Secrets is a gentle mystery set in a quiet farming area. When an old map disappears, three neighbours investigate. There is no violence, and the film depends on clues, humour and countryside characters rather than danger. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "F",
+                                        "text":  "Robot Friends is a childrenâ€™s superhero cartoon with bright colours and loud battles. It is suitable for families, but most of the story is about saving the city from villains rather than animals or everyday comedy. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "G",
+                                        "text":  "Last Letter is a romantic drama about two people separated for many years. It is beautifully filmed, but the story is slow and very sad. Viewers who want a cheerful modern romance may find it too serious. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "H",
+                                        "text":  "Mountain Crime is a tense mystery with several violent scenes. It is set in beautiful countryside, but the story is dark and frightening. It is recommended only for adults who enjoy serious crime films. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    }
+                                ],
+                      "answers":  [
+                                      {
+                                          "question":  6,
+                                          "answer":  "A",
+                                          "explanation":  "Olivia needs a child-friendly comedy about animals; A matches."
+                                      },
+                                      {
+                                          "question":  7,
+                                          "answer":  "B",
+                                          "explanation":  "Ethan wants fast science fiction action with strong effects; B fits."
+                                      },
+                                      {
+                                          "question":  8,
+                                          "answer":  "C",
+                                          "explanation":  "Zara wants a cheerful modern city romance; C is best."
+                                      },
+                                      {
+                                          "question":  9,
+                                          "answer":  "D",
+                                          "explanation":  "Noah wants a sports documentary with interviews and training; D matches."
+                                      },
+                                      {
+                                          "question":  10,
+                                          "answer":  "E",
+                                          "explanation":  "Freya needs a non-violent countryside mystery for grandparents; E fits."
+                                      }
+                                  ]
                   }
               ],
-    "questions":  [
-                      {
-                          "number":  1,
-                          "person":  "Sofia",
-                          "needs":  "needs a quiet place to study with internet access",
-                          "answer":  "C",
-                          "explanation":  "Sofia matches option C because it best fits the description."
-                      },
-                      {
-                          "number":  2,
-                          "person":  "Emma",
-                          "needs":  "wants to learn something creative after school and meet new people",
-                          "answer":  "A",
-                          "explanation":  "Emma matches option A because it best fits the description."
-                      },
-                      {
-                          "number":  3,
-                          "person":  "Mia",
-                          "needs":  "is interested in music and performing in front of people",
-                          "answer":  "E",
-                          "explanation":  "Mia matches option E because it best fits the description."
-                      },
-                      {
-                          "number":  4,
-                          "person":  "Leo",
-                          "needs":  "is looking for outdoor activities at the weekend",
-                          "answer":  "B",
-                          "explanation":  "Leo matches option B because it best fits the description."
-                      },
-                      {
-                          "number":  5,
-                          "person":  "Daniel",
-                          "needs":  "would like to improve his fitness in a friendly environment",
-                          "answer":  "D",
-                          "explanation":  "Daniel matches option D because it best fits the description."
-                      }
-                  ]
+    "batch":  1,
+    "part":  "Reading Part 2",
+    "level":  "B1"
 }

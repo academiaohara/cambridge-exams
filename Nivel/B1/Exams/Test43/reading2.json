@@ -1,78 +1,95 @@
-{
-    "title":  "Reading - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "matching",
-    "totalQuestions":  5,
-    "instructions":  "For questions 1–5, choose the correct text (A–F) for each person.",
-    "texts":  [
+﻿{
+    "tests":  [
                   {
-                      "id":  "F",
-                      "title":  "Chess Corner",
-                      "text":  "A small club for students who enjoy strategy games and quiet indoor activities after school."
-                  },
-                  {
-                      "id":  "B",
-                      "title":  "Mountain Walkers",
-                      "text":  "This group organises hiking trips in the countryside every Saturday morning. Transport is included and members should enjoy physical activity outdoors."
-                  },
-                  {
-                      "id":  "C",
-                      "title":  "Central Library",
-                      "text":  "The library offers silent study rooms, free Wi‑Fi and computers. It stays open until 9 p.m. during the week."
-                  },
-                  {
-                      "id":  "E",
-                      "title":  "Stage Stars",
-                      "text":  "Young people can practise singing, acting and dancing before performing in local shows. Weekly rehearsals take place every Friday evening."
-                  },
-                  {
-                      "id":  "A",
-                      "title":  "City Art Club",
-                      "text":  "Students meet every Wednesday to learn painting and drawing techniques together. Beginners are welcome and there are regular social events after classes."
-                  },
-                  {
-                      "id":  "D",
-                      "title":  "Fitness Together",
-                      "text":  "Friendly trainers help teenagers improve their fitness through fun group classes. No experience is needed and everyone works at their own level."
+                      "test":  43,
+                      "title":  "Choosing a volunteer activity",
+                      "theme":  "volunteering",
+                      "people":  [
+                                     {
+                                         "number":  6,
+                                         "text":  "Harper wants to start learning about volunteering and needs beginner-friendly support."
+                                     },
+                                     {
+                                         "number":  7,
+                                         "text":  "Logan enjoys social evening activities connected with volunteering."
+                                     },
+                                     {
+                                         "number":  8,
+                                         "text":  "Quinn prefers quiet, well-organised activities without large crowds."
+                                     },
+                                     {
+                                         "number":  9,
+                                         "text":  "Parker needs a cheap activity close to buses or trains."
+                                     },
+                                     {
+                                         "number":  10,
+                                         "text":  "Reese enjoys creative work and wants advice from experienced instructors."
+                                     }
+                                 ],
+                      "texts":  [
+                                    {
+                                        "letter":  "A",
+                                        "text":  "This beginner course introduces the basics of volunteering with friendly support and simple instructions."
+                                    },
+                                    {
+                                        "letter":  "B",
+                                        "text":  "Evening meetings include opportunities to chat and work together in relaxed groups."
+                                    },
+                                    {
+                                        "letter":  "C",
+                                        "text":  "Small numbers and careful planning create a peaceful environment for participants."
+                                    },
+                                    {
+                                        "letter":  "D",
+                                        "text":  "The activity is inexpensive and takes place near major public transport connections."
+                                    },
+                                    {
+                                        "letter":  "E",
+                                        "text":  "Experienced leaders provide personal feedback and encourage creative ideas from participants."
+                                    },
+                                    {
+                                        "letter":  "F",
+                                        "text":  "This programme is designed for advanced users who complete extra work independently."
+                                    },
+                                    {
+                                        "letter":  "G",
+                                        "text":  "Weekend sessions are mainly intended for children and family groups."
+                                    },
+                                    {
+                                        "letter":  "H",
+                                        "text":  "Participants train for competitions and need previous high-level experience."
+                                    }
+                                ],
+                      "answers":  [
+                                      {
+                                          "question":  6,
+                                          "answer":  "A",
+                                          "explanation":  "Harper needs beginner-friendly guidance."
+                                      },
+                                      {
+                                          "question":  7,
+                                          "answer":  "B",
+                                          "explanation":  "Logan wants social evening activities."
+                                      },
+                                      {
+                                          "question":  8,
+                                          "answer":  "C",
+                                          "explanation":  "Quinn prefers calm and organised settings."
+                                      },
+                                      {
+                                          "question":  9,
+                                          "answer":  "D",
+                                          "explanation":  "Parker needs a low-cost option with transport access."
+                                      },
+                                      {
+                                          "question":  10,
+                                          "answer":  "E",
+                                          "explanation":  "Reese wants creative work and expert advice."
+                                      }
+                                  ]
                   }
               ],
-    "questions":  [
-                      {
-                          "number":  1,
-                          "person":  "Leo",
-                          "needs":  "is looking for outdoor activities at the weekend",
-                          "answer":  "B",
-                          "explanation":  "Leo matches option B because it best fits the description."
-                      },
-                      {
-                          "number":  2,
-                          "person":  "Daniel",
-                          "needs":  "would like to improve his fitness in a friendly environment",
-                          "answer":  "D",
-                          "explanation":  "Daniel matches option D because it best fits the description."
-                      },
-                      {
-                          "number":  3,
-                          "person":  "Mia",
-                          "needs":  "is interested in music and performing in front of people",
-                          "answer":  "E",
-                          "explanation":  "Mia matches option E because it best fits the description."
-                      },
-                      {
-                          "number":  4,
-                          "person":  "Emma",
-                          "needs":  "wants to learn something creative after school and meet new people",
-                          "answer":  "A",
-                          "explanation":  "Emma matches option A because it best fits the description."
-                      },
-                      {
-                          "number":  5,
-                          "person":  "Sofia",
-                          "needs":  "needs a quiet place to study with internet access",
-                          "answer":  "C",
-                          "explanation":  "Sofia matches option C because it best fits the description."
-                      }
-                  ]
+    "batch":  5,
+    "part":  "Reading Part 2",
+    "level":  "B1"
 }

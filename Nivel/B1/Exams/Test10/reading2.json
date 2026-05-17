@@ -1,78 +1,95 @@
-{
-    "title":  "Reading - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "matching",
-    "totalQuestions":  5,
-    "instructions":  "For questions 1–5, choose the correct text (A–F) for each person.",
-    "texts":  [
+﻿{
+    "tests":  [
                   {
-                      "id":  "F",
-                      "title":  "Chess Corner",
-                      "text":  "A small club for students who enjoy strategy games and quiet indoor activities after school."
-                  },
-                  {
-                      "id":  "E",
-                      "title":  "Stage Stars",
-                      "text":  "Young people can practise singing, acting and dancing before performing in local shows. Weekly rehearsals take place every Friday evening."
-                  },
-                  {
-                      "id":  "D",
-                      "title":  "Fitness Together",
-                      "text":  "Friendly trainers help teenagers improve their fitness through fun group classes. No experience is needed and everyone works at their own level."
-                  },
-                  {
-                      "id":  "B",
-                      "title":  "Mountain Walkers",
-                      "text":  "This group organises hiking trips in the countryside every Saturday morning. Transport is included and members should enjoy physical activity outdoors."
-                  },
-                  {
-                      "id":  "C",
-                      "title":  "Central Library",
-                      "text":  "The library offers silent study rooms, free Wi‑Fi and computers. It stays open until 9 p.m. during the week."
-                  },
-                  {
-                      "id":  "A",
-                      "title":  "City Art Club",
-                      "text":  "Students meet every Wednesday to learn painting and drawing techniques together. Beginners are welcome and there are regular social events after classes."
+                      "test":  10,
+                      "title":  "Choosing a holiday",
+                      "theme":  "holidays",
+                      "people":  [
+                                     {
+                                         "number":  6,
+                                         "text":  "Rosa wants a relaxing beach holiday where meals are included. She dislikes noisy nightlife and would prefer a small hotel close to the sea. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  7,
+                                         "text":  "Jack wants an active mountain holiday with guided walks. He has never hiked before, so he needs routes suitable for beginners. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  8,
+                                         "text":  "Amira wants a city break focused on art galleries. She would like a hotel within walking distance of museums and needs free time to explore alone. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  9,
+                                         "text":  "Henry wants a family holiday with activities for teenagers. He needs a swimming pool and sports options, but his children do not enjoy long coach trips. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  10,
+                                         "text":  "Elena wants a wildlife holiday where she can see birds and take photos. She prefers small groups and needs an expert guide. They also want clear information before deciding, so they can choose with confidence."
+                                     }
+                                 ],
+                      "texts":  [
+                                    {
+                                        "letter":  "A",
+                                        "text":  "Blue Bay Hotel is a small seaside hotel offering breakfast and dinner in the price. It is two minutes from a quiet beach and has no late-night entertainment. Guests usually come for swimming, reading and peaceful evenings. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "B",
+                                        "text":  "First Peaks Walking Week includes guided mountain walks for people with little hiking experience. Routes are short at first and become slightly longer during the week. Guides explain safety and provide advice about boots and clothing. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "C",
+                                        "text":  "Art City Escape includes a central hotel ten minutes on foot from three major galleries. The programme has morning museum visits and free afternoons, so travellers can explore independently or return to favourite exhibitions. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "D",
+                                        "text":  "Sports Coast Resort has a large pool, tennis courts, football sessions and evening activities for teenagers. Most facilities are on site, so families do not spend much time on coaches. The beach is also nearby. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "E",
+                                        "text":  "Birdwatch Photo Trip takes groups of no more than eight people to lakes and forests with a professional wildlife guide. The focus is on finding birds, understanding their behaviour and allowing time for photography. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "F",
+                                        "text":  "Party Sands is a large beach resort with several nightclubs and loud evening shows. Meals are not included, although there are many restaurants nearby. It suits young travellers who want nightlife more than peace. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "G",
+                                        "text":  "High Mountain Challenge offers difficult hikes for experienced walkers. Some routes last eight hours and cross steep paths. Beginners are not accepted unless they have completed a training weekend first. Visitors receive clear information before booking, and staff are happy to answer simple questions. Visitors receive clear information before booking, and staff are happy to answer simple questions."
+                                    },
+                                    {
+                                        "letter":  "H",
+                                        "text":  "Family Explorer Tour visits several cities by coach, with daily journeys of three or four hours. Hotels have small pools, but most activities are sightseeing tours rather than sport. Teenagers who dislike travel may get bored. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    }
+                                ],
+                      "answers":  [
+                                      {
+                                          "question":  6,
+                                          "answer":  "A",
+                                          "explanation":  "Rosa needs a quiet small beach hotel with meals included; A matches."
+                                      },
+                                      {
+                                          "question":  7,
+                                          "answer":  "B",
+                                          "explanation":  "Jack wants guided beginner mountain walks; B fits."
+                                      },
+                                      {
+                                          "question":  8,
+                                          "answer":  "C",
+                                          "explanation":  "Amira needs art galleries, a walkable hotel and free time; C matches."
+                                      },
+                                      {
+                                          "question":  9,
+                                          "answer":  "D",
+                                          "explanation":  "Henry needs teen activities, pool, sports and little coach travel; D fits."
+                                      },
+                                      {
+                                          "question":  10,
+                                          "answer":  "E",
+                                          "explanation":  "Elena wants small-group bird photography with an expert guide; E fits."
+                                      }
+                                  ]
                   }
               ],
-    "questions":  [
-                      {
-                          "number":  1,
-                          "person":  "Emma",
-                          "needs":  "wants to learn something creative after school and meet new people",
-                          "answer":  "A",
-                          "explanation":  "Emma matches option A because it best fits the description."
-                      },
-                      {
-                          "number":  2,
-                          "person":  "Leo",
-                          "needs":  "is looking for outdoor activities at the weekend",
-                          "answer":  "B",
-                          "explanation":  "Leo matches option B because it best fits the description."
-                      },
-                      {
-                          "number":  3,
-                          "person":  "Sofia",
-                          "needs":  "needs a quiet place to study with internet access",
-                          "answer":  "C",
-                          "explanation":  "Sofia matches option C because it best fits the description."
-                      },
-                      {
-                          "number":  4,
-                          "person":  "Daniel",
-                          "needs":  "would like to improve his fitness in a friendly environment",
-                          "answer":  "D",
-                          "explanation":  "Daniel matches option D because it best fits the description."
-                      },
-                      {
-                          "number":  5,
-                          "person":  "Mia",
-                          "needs":  "is interested in music and performing in front of people",
-                          "answer":  "E",
-                          "explanation":  "Mia matches option E because it best fits the description."
-                      }
-                  ]
+    "batch":  1,
+    "part":  "Reading Part 2",
+    "level":  "B1"
 }

@@ -1,78 +1,95 @@
-{
-    "title":  "Reading - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "matching",
-    "totalQuestions":  5,
-    "instructions":  "For questions 1–5, choose the correct text (A–F) for each person.",
-    "texts":  [
+﻿{
+    "tests":  [
                   {
-                      "id":  "E",
-                      "title":  "Stage Stars",
-                      "text":  "Young people can practise singing, acting and dancing before performing in local shows. Weekly rehearsals take place every Friday evening."
-                  },
-                  {
-                      "id":  "A",
-                      "title":  "City Art Club",
-                      "text":  "Students meet every Wednesday to learn painting and drawing techniques together. Beginners are welcome and there are regular social events after classes."
-                  },
-                  {
-                      "id":  "B",
-                      "title":  "Mountain Walkers",
-                      "text":  "This group organises hiking trips in the countryside every Saturday morning. Transport is included and members should enjoy physical activity outdoors."
-                  },
-                  {
-                      "id":  "F",
-                      "title":  "Chess Corner",
-                      "text":  "A small club for students who enjoy strategy games and quiet indoor activities after school."
-                  },
-                  {
-                      "id":  "C",
-                      "title":  "Central Library",
-                      "text":  "The library offers silent study rooms, free Wi‑Fi and computers. It stays open until 9 p.m. during the week."
-                  },
-                  {
-                      "id":  "D",
-                      "title":  "Fitness Together",
-                      "text":  "Friendly trainers help teenagers improve their fitness through fun group classes. No experience is needed and everyone works at their own level."
+                      "test":  8,
+                      "title":  "Choosing an app",
+                      "theme":  "apps",
+                      "people":  [
+                                     {
+                                         "number":  6,
+                                         "text":  "Victor wants an app to organise school assignments. He needs reminders before deadlines and wants to attach photos of notes from class. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  7,
+                                         "text":  "Leah wants to sleep better. She would like relaxing sounds and simple advice, but she does not want an app that tracks personal health data. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  8,
+                                         "text":  "Omar wants to learn new words in English. He needs short daily practice and would like the app to work without internet on the train. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  9,
+                                         "text":  "Kate wants an app for sharing family shopping lists. Several people must be able to edit the same list, and she wants notifications when items are added. They also want clear information before deciding, so they can choose with confidence."
+                                     },
+                                     {
+                                         "number":  10,
+                                         "text":  "Felix wants to start running. He needs a beginner plan and spoken instructions during exercise, but he does not care about sharing results online. They also want clear information before deciding, so they can choose with confidence."
+                                     }
+                                 ],
+                      "texts":  [
+                                    {
+                                        "letter":  "A",
+                                        "text":  "StudyTrack lets students create assignment lists, set deadline reminders and attach photos or documents to each task. It also has a calendar view for exams. The app is designed for school and college work rather than office projects. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "B",
+                                        "text":  "SleepSound offers relaxing music, rain sounds and short bedtime tips. It does not collect heart rate, sleep movement or other health data. Users can set a timer so the sounds stop automatically after they fall asleep. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "C",
+                                        "text":  "WordSteps gives five-minute English vocabulary exercises every day. Lessons can be downloaded for offline use, which is helpful on trains or buses. The app reviews difficult words automatically and includes pronunciation examples. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "D",
+                                        "text":  "FamilyBasket allows several users to edit one shopping list in real time. It sends notifications when someone adds or removes an item. Lists can be organised by shop section, and changes appear immediately on everyoneâ€™s phone. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "E",
+                                        "text":  "RunStart provides a gentle eight-week plan for new runners. During each session, a voice tells users when to walk, run or rest. The app records progress privately, and social sharing is optional. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "F",
+                                        "text":  "HealthNight analyses sleep patterns using movement and heart-rate data. It gives detailed charts and advice, but users must allow personal health tracking. There are relaxing sounds, although data collection is central to the app. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "G",
+                                        "text":  "WordWorld is a large online English dictionary with games and videos. It has many useful examples, but most activities require an internet connection. There is no structured short daily practice programme. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    },
+                                    {
+                                        "letter":  "H",
+                                        "text":  "RunnerShare is aimed at experienced runners who enjoy competing online. It posts results to leaderboards and connects with social networks. There are training plans, but beginners may find them too difficult. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                    }
+                                ],
+                      "answers":  [
+                                      {
+                                          "question":  6,
+                                          "answer":  "A",
+                                          "explanation":  "Victor needs school assignment reminders and note photos; A matches."
+                                      },
+                                      {
+                                          "question":  7,
+                                          "answer":  "B",
+                                          "explanation":  "Leah wants relaxing sleep sounds and advice without health tracking; B fits."
+                                      },
+                                      {
+                                          "question":  8,
+                                          "answer":  "C",
+                                          "explanation":  "Omar needs short English vocabulary practice offline; C matches."
+                                      },
+                                      {
+                                          "question":  9,
+                                          "answer":  "D",
+                                          "explanation":  "Kate needs shared editable shopping lists with notifications; D fits."
+                                      },
+                                      {
+                                          "question":  10,
+                                          "answer":  "E",
+                                          "explanation":  "Felix needs a beginner running plan with spoken instructions; E matches."
+                                      }
+                                  ]
                   }
               ],
-    "questions":  [
-                      {
-                          "number":  1,
-                          "person":  "Leo",
-                          "needs":  "is looking for outdoor activities at the weekend",
-                          "answer":  "B",
-                          "explanation":  "Leo matches option B because it best fits the description."
-                      },
-                      {
-                          "number":  2,
-                          "person":  "Sofia",
-                          "needs":  "needs a quiet place to study with internet access",
-                          "answer":  "C",
-                          "explanation":  "Sofia matches option C because it best fits the description."
-                      },
-                      {
-                          "number":  3,
-                          "person":  "Emma",
-                          "needs":  "wants to learn something creative after school and meet new people",
-                          "answer":  "A",
-                          "explanation":  "Emma matches option A because it best fits the description."
-                      },
-                      {
-                          "number":  4,
-                          "person":  "Mia",
-                          "needs":  "is interested in music and performing in front of people",
-                          "answer":  "E",
-                          "explanation":  "Mia matches option E because it best fits the description."
-                      },
-                      {
-                          "number":  5,
-                          "person":  "Daniel",
-                          "needs":  "would like to improve his fitness in a friendly environment",
-                          "answer":  "D",
-                          "explanation":  "Daniel matches option D because it best fits the description."
-                      }
-                  ]
+    "batch":  1,
+    "part":  "Reading Part 2",
+    "level":  "B1"
 }
