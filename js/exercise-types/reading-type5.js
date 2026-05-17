@@ -4,7 +4,9 @@
 (function() {
   window.ReadingType5 = {
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
-      return `
+      const notice = question.notice;
+      const hasNotice = notice != null && String(notice).trim() !== '';
+      const questionBlock = `
         <div class="reading-type5-question">
           <div class="reading-type5-question-header">
             <div class="reading-type5-question-number">${qNum}</div>
@@ -13,6 +15,18 @@
           <div class="reading-type5-options">
             ${this.renderOptions(question, qNum, isChecked, userAnswer)}
           </div>
+        </div>
+      `;
+      if (!hasNotice) {
+        return questionBlock;
+      }
+      return `
+        <div class="reading-type5-with-notice">
+          <aside class="reading-type5-notice-card" aria-label="Notice">
+            <div class="reading-type5-notice-label">Notice</div>
+            <div class="reading-type5-notice-text">${notice}</div>
+          </aside>
+          ${questionBlock}
         </div>
       `;
     },

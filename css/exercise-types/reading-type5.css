@@ -1,6 +1,69 @@
 /* css/exercise-types/reading-type5.css */
 /* Multiple choice text - Part 5 */
 
+/* B1 Part 1 notices: poster-style text beside the question (desktop) or above (mobile) */
+.reading-type5-with-notice {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.reading-type5-with-notice .reading-type5-question {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.reading-type5-notice-card {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 3px double #b45309;
+  background: linear-gradient(165deg, #fffbeb 0%, #fef3c7 55%, #fde68a 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 4px 14px rgba(180, 83, 9, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 4.5rem;
+}
+
+.reading-type5-notice-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #92400e;
+  margin-bottom: 8px;
+}
+
+.reading-type5-notice-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: #451a03;
+}
+
+@media (min-width: 900px) {
+  .reading-type5-with-notice {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .reading-type5-notice-card {
+    flex: 0 0 36%;
+    max-width: 380px;
+    align-self: stretch;
+  }
+}
+
 .reading-type5-container {
   background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
   border-radius: 20px;

@@ -67,11 +67,13 @@
   function readingPart1(ex) {
     var qs = normalizeQuestionsArray(ex.questions || []);
     qs.forEach(function(q) {
+      if (q.notice != null && q.notice !== '') {
+        q.notice = sanitizeHtmlTypos(String(q.notice));
+      }
       if (!q.question) {
-        var bits = [];
-        if (q.notice) bits.push('<strong>Notice:</strong> ' + sanitizeHtmlTypos(q.notice));
-        if (q.topic) bits.push('<em>' + sanitizeHtmlTypos(q.topic) + '</em>');
-        q.question = bits.join('<br>');
+        q.question = q.topic
+          ? '<em>' + sanitizeHtmlTypos(String(q.topic)) + '</em>'
+          : 'Choose the correct answer.';
       }
     });
     ex.content = {

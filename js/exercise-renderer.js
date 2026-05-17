@@ -170,7 +170,9 @@
       
       // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
       let contentHeaderHTML = '';
-      if (isToggleType || hasTranscript) {
+      // Only when there is a real toggle/transcript bar; avoid empty header for
+      // B1 reading part 1 (multiple-choice-text with questions only, no passage).
+      if (needsToggle || hasTranscript) {
         contentHeaderHTML = `
           <div class="content-section-header">
             ${questionNavRowHTML}
