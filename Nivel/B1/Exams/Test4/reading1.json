@@ -1,82 +1,82 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "notice",
-                          "heading":  "Science Fair",
-                          "text":  "Students showing projects at Friday’s science fair should arrive by 4 p.m. to set up their tables. Parents may enter from 5 p.m. Please keep experiments running until the judges have visited you.",
-                          "question":  "What must students do at the science fair?",
-                          "options":  {
-                                          "A":  "Prepare their display before visitors arrive.",
-                                          "B":  "Bring their parents to help set up tables.",
-                                          "C":  "Stop their experiments when parents enter."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Students set up before parents arrive."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Sam to Holly",
-                          "text":  "Holly, I know we planned to walk to the station, but Dad can drive us if we leave ten minutes earlier. That means we won’t have to carry our bags so far. Shall I tell him yes? Sam",
-                          "question":  "What is Sam doing?",
-                          "options":  {
-                                          "A":  "Suggesting a change to their travel plan.",
-                                          "B":  "Explaining why he missed the train.",
-                                          "C":  "Asking Holly to carry his bag."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Sam suggests going by car instead of walking."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "advert",
-                          "heading":  "Guitar Lessons",
-                          "text":  "Learn guitar in small groups at the community centre. The first lesson is free if you book a four-week course. Guitars are available to borrow during lessons, but students cannot take them home.",
-                          "question":  "What does the advert say?",
-                          "options":  {
-                                          "A":  "Students may try one lesson without paying separately.",
-                                          "B":  "Students receive a free guitar after four weeks.",
-                                          "C":  "Students must bring their own guitar to lessons."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The first lesson is free with a four-week course."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Mrs Lane / Subject: History visit",
-                          "text":  "The coach for tomorrow’s museum visit will leave at 8:45, not 9:00 as printed on the programme. Please wait by the sports field, not outside Reception, because another group is using that entrance.",
-                          "question":  "What is Mrs Lane telling students?",
-                          "options":  {
-                                          "A":  "There are changes to the time and meeting place.",
-                                          "B":  "The museum visit has been moved to another day.",
-                                          "C":  "They should enter the school through Reception."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Both the time and meeting place have changed."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "label",
-                          "heading":  "Homemade Soup",
-                          "text":  "Keep refrigerated and eat within two days of opening. This soup contains milk and celery. Ask a member of staff if you need information about other ingredients used in today’s meals.",
-                          "question":  "What information is given on the label?",
-                          "options":  {
-                                          "A":  "Some people may need to check before eating it.",
-                                          "B":  "The soup is safe to eat for two weeks.",
-                                          "C":  "Staff can change the ingredients for customers."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The label lists ingredients and says customers can ask staff."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "notice",
+            "heading": "Science Fair",
+            "text": "Students showing projects at Friday’s science fair should arrive by 4 p.m. to set up their tables. Parents may enter from 5 p.m. Please keep experiments running until the judges have visited you.",
+            "question": "What must students do at the science fair?",
+            "options": {
+                "B": "Prepare their display before visitors arrive.",
+                "A": "Bring their parents to help set up tables.",
+                "C": "Stop their experiments when parents enter."
+            },
+            "answer": "B",
+            "explanation": "Students set up before parents arrive."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Sam to Holly",
+            "text": "Holly, I know we planned to walk to the station, but Dad can drive us if we leave ten minutes earlier. That means we won’t have to carry our bags so far. Shall I tell him yes? Sam",
+            "question": "What is Sam doing?",
+            "options": {
+                "C": "Suggesting a change to their travel plan.",
+                "A": "Explaining why he missed the train.",
+                "B": "Asking Holly to carry his bag."
+            },
+            "answer": "C",
+            "explanation": "Sam suggests going by car instead of walking."
+        },
+        {
+            "number": 3,
+            "format": "advert",
+            "heading": "Guitar Lessons",
+            "text": "Learn guitar in small groups at the community centre. The first lesson is free if you book a four-week course. Guitars are available to borrow during lessons, but students cannot take them home.",
+            "question": "What does the advert say?",
+            "options": {
+                "A": "Students may try one lesson without paying separately.",
+                "B": "Students receive a free guitar after four weeks.",
+                "C": "Students must bring their own guitar to lessons."
+            },
+            "answer": "A",
+            "explanation": "The first lesson is free with a four-week course."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Mrs Lane / Subject: History visit",
+            "text": "The coach for tomorrow’s museum visit will leave at 8:45, not 9:00 as printed on the programme. Please wait by the sports field, not outside Reception, because another group is using that entrance.",
+            "question": "What is Mrs Lane telling students?",
+            "options": {
+                "B": "There are changes to the time and meeting place.",
+                "A": "The museum visit has been moved to another day.",
+                "C": "They should enter the school through Reception."
+            },
+            "answer": "B",
+            "explanation": "Both the time and meeting place have changed."
+        },
+        {
+            "number": 5,
+            "format": "label",
+            "heading": "Homemade Soup",
+            "text": "Keep refrigerated and eat within two days of opening. This soup contains milk and celery. Ask a member of staff if you need information about other ingredients used in today’s meals.",
+            "question": "What information is given on the label?",
+            "options": {
+                "C": "Some people may need to check before eating it.",
+                "A": "The soup is safe to eat for two weeks.",
+                "B": "Staff can change the ingredients for customers."
+            },
+            "answer": "C",
+            "explanation": "The label lists ingredients and says customers can ask staff."
+        }
+    ]
 }

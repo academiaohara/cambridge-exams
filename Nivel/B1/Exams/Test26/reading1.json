@@ -1,83 +1,83 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "testNumber":  26,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "notice",
-                          "heading":  "Geography Field Trip",
-                          "text":  "Students going on the geography trip should bring waterproof shoes. The coach will stop near the beach, but the group will also walk across wet grass to reach the study area.",
-                          "question":  "Why should students bring waterproof shoes?",
-                          "options":  {
-                                          "A":  "Part of the visit may be wet underfoot.",
-                                          "B":  "They will spend the whole day swimming.",
-                                          "C":  "The coach cannot stop near the beach."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Students will walk across wet grass."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Harry to Isla",
-                          "text":  "Isla, I’ve checked the homework page and we only have to answer questions 1 to 4 tonight. Question 5 is for Friday, so don’t spend all evening on it like I nearly did!",
-                          "question":  "What is Harry telling Isla?",
-                          "options":  {
-                                          "A":  "She has less homework tonight than expected.",
-                                          "B":  "She must finish question 5 this evening.",
-                                          "C":  "The homework page has disappeared online."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Only questions 1 to 4 are due tonight."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "advert",
-                          "heading":  "Local Café Jobs",
-                          "text":  "We need weekend staff to serve customers and clear tables. The job is suitable for students, but applicants must be sixteen or over. Full training will be given during the first two shifts.",
-                          "question":  "Who can apply for the job?",
-                          "options":  {
-                                          "A":  "Students old enough to work weekends.",
-                                          "B":  "Any student looking for evening work.",
-                                          "C":  "Only people with café experience already."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Applicants must be sixteen or over and work weekends."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Ella / Subject: Your story",
-                          "text":  "I liked the beginning of your story, especially the description of the storm. The ending happens too suddenly, though. Maybe add one more paragraph to explain how the family got home.",
-                          "question":  "What does Ella suggest?",
-                          "options":  {
-                                          "A":  "Making the final part of the story clearer.",
-                                          "B":  "Removing the description of the storm.",
-                                          "C":  "Starting the story with the family at home."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Ella suggests adding a paragraph to explain the ending."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "poster",
-                          "heading":  "Chess Club",
-                          "text":  "Chess club is open to all students on Wednesday lunchtimes. Beginners should come at 12:30 for help with the rules. More experienced players can arrive at 1:00 for friendly games.",
-                          "question":  "What does the poster explain?",
-                          "options":  {
-                                          "A":  "Students should arrive at different times by level.",
-                                          "B":  "Only beginners can join the chess club.",
-                                          "C":  "Experienced players must teach the rules."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Beginners and experienced players arrive at different times."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "testNumber": 26,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "notice",
+            "heading": "Geography Field Trip",
+            "text": "Students going on the geography trip should bring waterproof shoes. The coach will stop near the beach, but the group will also walk across wet grass to reach the study area.",
+            "question": "Why should students bring waterproof shoes?",
+            "options": {
+                "C": "Part of the visit may be wet underfoot.",
+                "A": "They will spend the whole day swimming.",
+                "B": "The coach cannot stop near the beach."
+            },
+            "answer": "C",
+            "explanation": "Students will walk across wet grass."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Harry to Isla",
+            "text": "Isla, I’ve checked the homework page and we only have to answer questions 1 to 4 tonight. Question 5 is for Friday, so don’t spend all evening on it like I nearly did!",
+            "question": "What is Harry telling Isla?",
+            "options": {
+                "A": "She has less homework tonight than expected.",
+                "B": "She must finish question 5 this evening.",
+                "C": "The homework page has disappeared online."
+            },
+            "answer": "A",
+            "explanation": "Only questions 1 to 4 are due tonight."
+        },
+        {
+            "number": 3,
+            "format": "advert",
+            "heading": "Local Café Jobs",
+            "text": "We need weekend staff to serve customers and clear tables. The job is suitable for students, but applicants must be sixteen or over. Full training will be given during the first two shifts.",
+            "question": "Who can apply for the job?",
+            "options": {
+                "B": "Students old enough to work weekends.",
+                "A": "Any student looking for evening work.",
+                "C": "Only people with café experience already."
+            },
+            "answer": "B",
+            "explanation": "Applicants must be sixteen or over and work weekends."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Ella / Subject: Your story",
+            "text": "I liked the beginning of your story, especially the description of the storm. The ending happens too suddenly, though. Maybe add one more paragraph to explain how the family got home.",
+            "question": "What does Ella suggest?",
+            "options": {
+                "C": "Making the final part of the story clearer.",
+                "A": "Removing the description of the storm.",
+                "B": "Starting the story with the family at home."
+            },
+            "answer": "C",
+            "explanation": "Ella suggests adding a paragraph to explain the ending."
+        },
+        {
+            "number": 5,
+            "format": "poster",
+            "heading": "Chess Club",
+            "text": "Chess club is open to all students on Wednesday lunchtimes. Beginners should come at 12:30 for help with the rules. More experienced players can arrive at 1:00 for friendly games.",
+            "question": "What does the poster explain?",
+            "options": {
+                "A": "Students should arrive at different times by level.",
+                "B": "Only beginners can join the chess club.",
+                "C": "Experienced players must teach the rules."
+            },
+            "answer": "A",
+            "explanation": "Beginners and experienced players arrive at different times."
+        }
+    ]
 }

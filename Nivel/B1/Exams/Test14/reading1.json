@@ -1,83 +1,83 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "testNumber":  14,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "notice",
-                          "heading":  "School Reception",
-                          "text":  "Students collecting exam certificates should come to Reception during morning break only. If you cannot come yourself, a parent may collect them, but they must bring identification.",
-                          "question":  "What does the notice explain?",
-                          "options":  {
-                                          "A":  "How certificates can be collected safely.",
-                                          "B":  "Why certificates are not ready yet.",
-                                          "C":  "Which exams students can take next."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The notice gives times and rules for collecting certificates."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Jake to Mia",
-                          "text":  "Mia, the pizza place is closed for repairs tonight. I’ve booked the café next door instead. It’s not as cheap, but it has bigger tables, so it might actually be better for the whole group.",
-                          "question":  "What is Jake doing?",
-                          "options":  {
-                                          "A":  "Explaining a new arrangement for the evening.",
-                                          "B":  "Asking Mia to repair the pizza place.",
-                                          "C":  "Cancelling the meal with the whole group."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Jake explains that the group will go to a different place."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "poster",
-                          "heading":  "School Choir",
-                          "text":  "The choir needs more lower voices for the winter concert. You do not need to read music, but you must be able to attend practice every Tuesday until December. See Mr Evans after lunch.",
-                          "question":  "Who is the poster aimed at?",
-                          "options":  {
-                                          "A":  "Students who can practise regularly every week.",
-                                          "B":  "Students who already read music well.",
-                                          "C":  "Students who want Tuesday afternoons free."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The poster says students must attend practice every Tuesday."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Olivia / Subject: Homework app",
-                          "text":  "I tried the homework app on my phone, but the screen is too small for the grammar exercises. It works much better on my laptop. You could use it for vocabulary practice, though.",
-                          "question":  "What does Olivia say about the app?",
-                          "options":  {
-                                          "A":  "It is better for some activities than others.",
-                                          "B":  "It cannot be used on a laptop.",
-                                          "C":  "It has no useful exercises for students."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Olivia says grammar is better on a laptop, but vocabulary works on the phone."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "label",
-                          "heading":  "Lost Camera",
-                          "text":  "This camera was found near the lake on Sunday afternoon. To collect it, please describe the photos on the memory card. Ask at the visitor centre before 5 p.m.",
-                          "question":  "What must the owner do?",
-                          "options":  {
-                                          "A":  "Prove the camera belongs to them.",
-                                          "B":  "Pay for a new memory card.",
-                                          "C":  "Return to the lake on Sunday."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The owner must describe the photos to prove it is theirs."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "testNumber": 14,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "notice",
+            "heading": "School Reception",
+            "text": "Students collecting exam certificates should come to Reception during morning break only. If you cannot come yourself, a parent may collect them, but they must bring identification.",
+            "question": "What does the notice explain?",
+            "options": {
+                "C": "How certificates can be collected safely.",
+                "A": "Why certificates are not ready yet.",
+                "B": "Which exams students can take next."
+            },
+            "answer": "C",
+            "explanation": "The notice gives times and rules for collecting certificates."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Jake to Mia",
+            "text": "Mia, the pizza place is closed for repairs tonight. I’ve booked the café next door instead. It’s not as cheap, but it has bigger tables, so it might actually be better for the whole group.",
+            "question": "What is Jake doing?",
+            "options": {
+                "A": "Explaining a new arrangement for the evening.",
+                "B": "Asking Mia to repair the pizza place.",
+                "C": "Cancelling the meal with the whole group."
+            },
+            "answer": "A",
+            "explanation": "Jake explains that the group will go to a different place."
+        },
+        {
+            "number": 3,
+            "format": "poster",
+            "heading": "School Choir",
+            "text": "The choir needs more lower voices for the winter concert. You do not need to read music, but you must be able to attend practice every Tuesday until December. See Mr Evans after lunch.",
+            "question": "Who is the poster aimed at?",
+            "options": {
+                "B": "Students who can practise regularly every week.",
+                "A": "Students who already read music well.",
+                "C": "Students who want Tuesday afternoons free."
+            },
+            "answer": "B",
+            "explanation": "The poster says students must attend practice every Tuesday."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Olivia / Subject: Homework app",
+            "text": "I tried the homework app on my phone, but the screen is too small for the grammar exercises. It works much better on my laptop. You could use it for vocabulary practice, though.",
+            "question": "What does Olivia say about the app?",
+            "options": {
+                "C": "It is better for some activities than others.",
+                "A": "It cannot be used on a laptop.",
+                "B": "It has no useful exercises for students."
+            },
+            "answer": "C",
+            "explanation": "Olivia says grammar is better on a laptop, but vocabulary works on the phone."
+        },
+        {
+            "number": 5,
+            "format": "label",
+            "heading": "Lost Camera",
+            "text": "This camera was found near the lake on Sunday afternoon. To collect it, please describe the photos on the memory card. Ask at the visitor centre before 5 p.m.",
+            "question": "What must the owner do?",
+            "options": {
+                "A": "Prove the camera belongs to them.",
+                "B": "Pay for a new memory card.",
+                "C": "Return to the lake on Sunday."
+            },
+            "answer": "A",
+            "explanation": "The owner must describe the photos to prove it is theirs."
+        }
+    ]
 }

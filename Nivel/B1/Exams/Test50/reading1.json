@@ -1,83 +1,83 @@
 {
-    "title":  "Reading - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "testNumber":  50,
-    "type":  "multiple-choice-short-texts",
-    "time":  8,
-    "totalQuestions":  5,
-    "instructions":  "For each question, choose the correct answer.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "format":  "notice",
-                          "heading":  "Exam Results",
-                          "text":  "Exam results will be available online from 9 a.m. on Thursday. Students who want printed copies should collect them from the office after lunch. Teachers cannot give results out earlier.",
-                          "question":  "What does the notice explain?",
-                          "options":  {
-                                          "A":  "How and when students can get results.",
-                                          "B":  "Why teachers changed the exam results.",
-                                          "C":  "Where students should take their exams."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The notice gives times and methods for getting results."
-                      },
-                      {
-                          "number":  2,
-                          "format":  "text_message",
-                          "heading":  "Message from Tilly to Max",
-                          "text":  "Max, the swimming pool is open, but the slides are closed for repairs. I still want to go because the diving area is open. Tell me if that’s still fun for you.",
-                          "question":  "Why is Tilly texting Max?",
-                          "options":  {
-                                          "A":  "To check if he still wants to go swimming.",
-                                          "B":  "To say the whole pool is closed.",
-                                          "C":  "To ask him to repair the slides."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Some facilities are closed, so Tilly checks whether Max still wants to go."
-                      },
-                      {
-                          "number":  3,
-                          "format":  "advert",
-                          "heading":  "School Magazine Team",
-                          "text":  "We need students to interview teachers for the next magazine. You should enjoy asking questions and writing short articles. Training will be given, so experience is helpful but not necessary.",
-                          "question":  "Who is the advert aimed at?",
-                          "options":  {
-                                          "A":  "Students interested in interviewing and writing.",
-                                          "B":  "Teachers wanting to write magazine articles.",
-                                          "C":  "Students with professional journalism experience only."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The team needs students who enjoy asking questions and writing articles."
-                      },
-                      {
-                          "number":  4,
-                          "format":  "email",
-                          "heading":  "From: Rosie / Subject: The poster",
-                          "text":  "The poster looks great, but the date is in very small writing. Could you make it larger? People may not notice when the concert is, even if they like the design.",
-                          "question":  "What does Rosie suggest?",
-                          "options":  {
-                                          "A":  "Make important information easier to see.",
-                                          "B":  "Change the concert to another date.",
-                                          "C":  "Remove the design from the poster."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Rosie wants the date to be made larger."
-                      },
-                      {
-                          "number":  5,
-                          "format":  "label",
-                          "heading":  "Borrowed Camera",
-                          "text":  "This camera belongs to the media department. Please return it with the battery charged and all photos deleted. Ask before changing the memory card, as some cards are used for exams.",
-                          "question":  "What should users do?",
-                          "options":  {
-                                          "A":  "Return the camera ready for another user.",
-                                          "B":  "Keep exam photos on the camera.",
-                                          "C":  "Change the memory card every time."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "Users should charge the battery and delete photos before returning the camera."
-                      }
-                  ]
+    "title": "Reading - Part 1",
+    "level": "B1",
+    "exam": "Preliminary",
+    "part": 1,
+    "testNumber": 50,
+    "type": "multiple-choice-short-texts",
+    "time": 8,
+    "totalQuestions": 5,
+    "instructions": "For each question, choose the correct answer.",
+    "questions": [
+        {
+            "number": 1,
+            "format": "notice",
+            "heading": "Exam Results",
+            "text": "Exam results will be available online from 9 a.m. on Thursday. Students who want printed copies should collect them from the office after lunch. Teachers cannot give results out earlier.",
+            "question": "What does the notice explain?",
+            "options": {
+                "C": "How and when students can get results.",
+                "A": "Why teachers changed the exam results.",
+                "B": "Where students should take their exams."
+            },
+            "answer": "C",
+            "explanation": "The notice gives times and methods for getting results."
+        },
+        {
+            "number": 2,
+            "format": "text_message",
+            "heading": "Message from Tilly to Max",
+            "text": "Max, the swimming pool is open, but the slides are closed for repairs. I still want to go because the diving area is open. Tell me if that’s still fun for you.",
+            "question": "Why is Tilly texting Max?",
+            "options": {
+                "A": "To check if he still wants to go swimming.",
+                "B": "To say the whole pool is closed.",
+                "C": "To ask him to repair the slides."
+            },
+            "answer": "A",
+            "explanation": "Some facilities are closed, so Tilly checks whether Max still wants to go."
+        },
+        {
+            "number": 3,
+            "format": "advert",
+            "heading": "School Magazine Team",
+            "text": "We need students to interview teachers for the next magazine. You should enjoy asking questions and writing short articles. Training will be given, so experience is helpful but not necessary.",
+            "question": "Who is the advert aimed at?",
+            "options": {
+                "B": "Students interested in interviewing and writing.",
+                "A": "Teachers wanting to write magazine articles.",
+                "C": "Students with professional journalism experience only."
+            },
+            "answer": "B",
+            "explanation": "The team needs students who enjoy asking questions and writing articles."
+        },
+        {
+            "number": 4,
+            "format": "email",
+            "heading": "From: Rosie / Subject: The poster",
+            "text": "The poster looks great, but the date is in very small writing. Could you make it larger? People may not notice when the concert is, even if they like the design.",
+            "question": "What does Rosie suggest?",
+            "options": {
+                "C": "Make important information easier to see.",
+                "A": "Change the concert to another date.",
+                "B": "Remove the design from the poster."
+            },
+            "answer": "C",
+            "explanation": "Rosie wants the date to be made larger."
+        },
+        {
+            "number": 5,
+            "format": "label",
+            "heading": "Borrowed Camera",
+            "text": "This camera belongs to the media department. Please return it with the battery charged and all photos deleted. Ask before changing the memory card, as some cards are used for exams.",
+            "question": "What should users do?",
+            "options": {
+                "A": "Return the camera ready for another user.",
+                "B": "Keep exam photos on the camera.",
+                "C": "Change the memory card every time."
+            },
+            "answer": "A",
+            "explanation": "Users should charge the battery and delete photos before returning the camera."
+        }
+    ]
 }
