@@ -606,6 +606,52 @@
   margin-top: 4px;
 }
 
+/* Evidence [n]...[/n]: hide bracketed view unless .explanation-mode-text is active */
+.evidence-explanation-mode {
+  display: none;
+}
+
+.explanation-mode-text .evidence-wrap > .evidence-normal {
+  display: none;
+}
+
+.explanation-mode-text .evidence-wrap > .evidence-explanation-mode {
+  display: inline;
+}
+
+.explanation-mode-text .evidence-explanation-mode {
+  color: #ea580c;
+  background: #fff7ed;
+  border-radius: 3px;
+  padding: 0 2px;
+  text-decoration: underline;
+  text-decoration-color: #f97316;
+  text-underline-offset: 2px;
+}
+
+.explanation-mode-text .evidence-explanation-mode .evidence-bracket {
+  font-weight: 600;
+}
+
+/* B1 Reading Part 2 explanation strip: correct letter callout */
+.eq-b1r2-correct-callout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.eq-b1r2-correct-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-medium);
+}
+
+.eq-b1r2-correct-letter {
+  font-size: 1rem;
+}
+
 /* Evidence markers in text (rendered from [n]...[/n]) */
 .evidence-marker {
   transition: background 0.2s, border-bottom 0.2s;

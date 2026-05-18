@@ -20,10 +20,13 @@
         return;
       }
       var body = String(rawText || '').replace(/\r\n/g, '\n');
+      var escaped = this._b1PreviewEscape(body).replace(/\n/g, '<br>');
+      var bodyHtml = typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.processEvidenceMarkers
+        ? ExerciseRenderer.processEvidenceMarkers(escaped)
+        : escaped;
       var html = '<div class="b1-reading2-preview-inner">';
       html += '<span class="b1-reading2-preview-letter">' + letter + '</span>';
-      html += '<div class="b1-reading2-preview-text">' +
-        this._b1PreviewEscape(body).replace(/\n/g, '<br>') + '</div>';
+      html += '<div class="b1-reading2-preview-text">' + bodyHtml + '</div>';
       html += '</div>';
       el.innerHTML = html;
       el.classList.add('has-text');

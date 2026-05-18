@@ -312,12 +312,36 @@
       if (AppState.explanationMode) {
         if (btn) btn.classList.add('explanation-active');
 
-        const navRow = document.getElementById('question-nav-row');
-        if (navRow) navRow.classList.add('explanation-mode');
+        var navRow = document.getElementById('question-nav-row');
+        if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui && navRow &&
+            typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.renderB1Reading2ExplanationQuestionNav) {
+          navRow.outerHTML = ExerciseRenderer.renderB1Reading2ExplanationQuestionNav(AppState.currentExercise);
+        } else if (navRow) {
+          navRow.classList.add('explanation-mode');
+        }
 
         // Apply explanation mode paragraph styling
         const textContainer = document.getElementById('selectable-text');
         if (textContainer) textContainer.classList.add('explanation-mode-text');
+
+        if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) {
+          document.querySelectorAll('.b1-reading2-select').forEach(function(sel) {
+            var qn = parseInt(sel.getAttribute('data-qnum'), 10);
+            var qsList = AppState.currentExercise.content.questions || [];
+            var q = qsList.find(function(x) { return x.number === qn; });
+            if (!q) return;
+            if (sel.dataset.b1ExplPrev === undefined) {
+              sel.dataset.b1ExplPrev = sel.value;
+            }
+            if (q.correct) {
+              sel.value = q.correct;
+            }
+            sel.classList.add('b1-reading2-select-expl-show');
+          });
+          if (typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
+            ReadingType8.initB1Reading2StripIfNeeded();
+          }
+        }
 
         // Show explanations panel
         var panel = document.getElementById('explanations-panel');
@@ -351,6 +375,30 @@
         }
       } else {
         if (btn) btn.classList.remove('explanation-active');
+
+        if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) {
+          document.querySelectorAll('.b1-reading2-select').forEach(function(sel) {
+            if (sel.dataset.b1ExplPrev !== undefined) {
+              sel.value = sel.dataset.b1ExplPrev;
+              delete sel.dataset.b1ExplPrev;
+            }
+            sel.classList.remove('b1-reading2-select-expl-show');
+          });
+          if (typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
+            ReadingType8.initB1Reading2StripIfNeeded();
+          }
+        }
+
+        if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui &&
+            typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.renderB1Reading2LetterNav) {
+          var b1Nav = document.getElementById('question-nav-row');
+          if (b1Nav) {
+            b1Nav.outerHTML = ExerciseRenderer.renderB1Reading2LetterNav(AppState.currentExercise);
+          }
+          if (typeof QuestionNav !== 'undefined' && QuestionNav.updateAllNavCells) {
+            QuestionNav.updateAllNavCells();
+          }
+        }
 
         const navRow = document.getElementById('question-nav-row');
         if (navRow) navRow.classList.remove('explanation-mode');
@@ -511,6 +559,13 @@
 
       var html = '<span class="eq-number">' + qNum + '</span>';
       html += '<div class="eq-content">';
+
+      if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui && question.correct) {
+        html += '<div class="eq-b1r2-correct-callout">' +
+          '<span class="eq-b1r2-correct-label">Correct answer</span> ' +
+          '<span class="eq-option eq-option-correct eq-b1r2-correct-letter">' + question.correct + '</span>' +
+          '</div>';
+      }
 
       // Add question text
       if (question.question) {

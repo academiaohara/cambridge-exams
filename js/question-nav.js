@@ -159,7 +159,7 @@
         '<div class="qnav-header">' +
         '<div class="qnav-header-main">' +
         '<span class="qnav-title">' + this._escapeHtml(letter) + '</span>' +
-        '<span class="qnav-question-text qnav-question-text-header">Texto ' + this._escapeHtml(letter) + '</span>' +
+        '<span class="qnav-question-text qnav-question-text-header">Text ' + this._escapeHtml(letter) + '</span>' +
         '</div>' +
         '<button type="button" class="qnav-close-btn" onclick="QuestionNav.close()">' +
         '<i class="fas fa-times"></i></button>' +
