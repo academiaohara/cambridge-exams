@@ -25,7 +25,7 @@
       }
     },
     
-    // Cargar CSS específico del tipo de ejercicio (siempre refetch para ver cambios al desarrollar)
+    // Cargar CSS específico del tipo de ejercicio
     loadExerciseTypeCSS: function(type) {
       const fileInfo = window.CONFIG?.EXERCISE_TYPE_FILES?.[type];
       if (!fileInfo || !fileInfo.css) {
@@ -34,22 +34,23 @@
       }
       
       const cssId = `css-${type}`;
-      var prev = document.getElementById(cssId);
-      if (prev) prev.remove();
+      if (document.getElementById(cssId)) {
+        console.log(`✅ CSS ya cargado para tipo: ${type}`);
+        return Promise.resolve();
+      }
       
       return new Promise(function(resolve) {
         const link = document.createElement('link');
         link.id = cssId;
         link.rel = 'stylesheet';
-        var base = `${window.CONFIG.CSS_BASE_URL}exercise-types/${fileInfo.css}`;
-        link.href = base + (base.indexOf('?') >= 0 ? '&' : '?') + 'v=' + Date.now();
+        link.href = `${window.CONFIG.CSS_BASE_URL}exercise-types/${fileInfo.css}`;
         link.onload = function() { console.log(`🎨 CSS cargado: ${fileInfo.css}`); resolve(); };
         link.onerror = function() { console.error(`❌ Error cargando CSS: ${fileInfo.css}`); resolve(); };
         document.head.appendChild(link);
       });
     },
     
-    // Cargar JS específico del tipo de ejercicio (siempre refetch)
+    // Cargar JS específico del tipo de ejercicio
     loadExerciseTypeJS: function(type) {
       const fileInfo = window.CONFIG?.EXERCISE_TYPE_FILES?.[type];
       if (!fileInfo || !fileInfo.js) {
@@ -58,21 +59,22 @@
       }
       
       const jsId = `js-${type}`;
-      var prevJs = document.getElementById(jsId);
-      if (prevJs) prevJs.remove();
+      if (document.getElementById(jsId)) {
+        console.log(`✅ JS ya cargado para tipo: ${type}`);
+        return Promise.resolve();
+      }
       
       return new Promise(function(resolve) {
         const script = document.createElement('script');
         script.id = jsId;
-        var jbase = `${window.CONFIG.JS_BASE_URL}exercise-types/${fileInfo.js}`;
-        script.src = jbase + (jbase.indexOf('?') >= 0 ? '&' : '?') + 'v=' + Date.now();
+        script.src = `${window.CONFIG.JS_BASE_URL}exercise-types/${fileInfo.js}`;
         script.onload = function() { console.log(`📦 JS cargado: ${fileInfo.js}`); resolve(); };
         script.onerror = function() { console.error(`❌ Error cargando JS: ${fileInfo.js}`); resolve(); };
         document.body.appendChild(script);
       });
     },
     
-    // Cargar CSS base de components (siempre refetch)
+    // NUEVO: Cargar CSS base que antes estaba en components
     loadBaseExerciseCSS: function() {
       const baseCSSFiles = [
         { id: 'base-example-css', file: 'example.css' },
@@ -80,15 +82,14 @@
       ];
       
       baseCSSFiles.forEach(item => {
-        var old = document.getElementById(item.id);
-        if (old) old.remove();
-        const link = document.createElement('link');
-        link.id = item.id;
-        link.rel = 'stylesheet';
-        var href = `${window.CONFIG.CSS_BASE_URL}components/${item.file}`;
-        link.href = href + (href.indexOf('?') >= 0 ? '&' : '?') + 'v=' + Date.now();
-        document.head.appendChild(link);
-        console.log(`📁 CSS base cargado: ${item.file}`);
+        if (!document.getElementById(item.id)) {
+          const link = document.createElement('link');
+          link.id = item.id;
+          link.rel = 'stylesheet';
+          link.href = `${window.CONFIG.CSS_BASE_URL}components/${item.file}`;
+          document.head.appendChild(link);
+          console.log(`📁 CSS base cargado: ${item.file}`);
+        }
       });
     },
     

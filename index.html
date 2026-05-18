@@ -44,18 +44,6 @@
     <link rel="stylesheet" href="css/components/course.css">
     <link rel="stylesheet" href="css/components/tips-page.css">
     <link rel="stylesheet" href="css/components/static-pages.css">
-    <script>
-    (function () {
-      var bust = Date.now();
-      var links = document.querySelectorAll('link[rel="stylesheet"]');
-      for (var i = 0; i < links.length; i++) {
-        var el = links[i];
-        var raw = el.getAttribute('href');
-        if (!raw || /^https?:\/\//i.test(raw) || raw.indexOf('//') === 0) continue;
-        el.setAttribute('href', raw.replace(/\?.*$/, '') + '?v=' + bust);
-      }
-    })();
-    </script>
     
     <!-- CSS DE TIPOS DE EJERCICIO (se cargarán dinámicamente según sea necesario)
          Estos son solo respaldo, normalmente se cargan mediante Utils.loadExerciseTypeCSS() -->
