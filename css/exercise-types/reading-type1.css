@@ -21,14 +21,18 @@
 }
 
 .reading-type1-gap {
-  display: inline;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 .reading-type1-gap-number {
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--primary);
+  line-height: 1;
 }
 
 .reading-type1-gap-slot {
@@ -39,8 +43,7 @@
   border: 1.5px solid var(--primary-light);
   border-radius: 6px;
   cursor: pointer;
-  vertical-align: middle;
-  margin-left: 4px;
+  flex-shrink: 0;
   transition: all 0.2s;
 }
 
@@ -58,8 +61,7 @@
   background: #f5f3ff;
   font-weight: 600;
   font-size: 1.05rem;
-  margin-left: 4px;
-  vertical-align: middle;
+  flex-shrink: 0;
   text-align: center;
 }
 

@@ -147,6 +147,7 @@
     },
 
     shouldEnableAnswerToggle: function() {
+      if (AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle) return false;
       if (AppState.currentSection === 'reading') {
         return AppState.currentPart >= 1 && AppState.currentPart <= 4;
       }
