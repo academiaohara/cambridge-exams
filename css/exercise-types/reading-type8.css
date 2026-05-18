@@ -281,17 +281,38 @@
   color: #64748b;
 }
 
-.explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show {
+/* Explanation mode: letter select shows the key only, in orange (not user attempt colours). */
+.explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show,
+.explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show:disabled,
+.explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show.b1-reading2-select-correct,
+.explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show.b1-reading2-select-incorrect,
+.explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show.b1-reading2-select-unanswered,
+.explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show.b1-reading2-select-answer-toggle-correct {
   pointer-events: none;
   min-width: 2.75rem !important;
   height: 36px !important;
   padding: 0 28px 0 10px !important;
-  border: 2px solid var(--primary-dark) !important;
-  background-color: var(--bg-light, #f4f7ff) !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%231e1f42' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
+  border: 2px solid #ea580c !important;
+  background-color: #fff7ed !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23c2410c' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
   background-repeat: no-repeat !important;
   background-position: right 8px center !important;
-  color: var(--primary-dark) !important;
+  color: #c2410c !important;
+}
+
+.explanation-mode-text .b1-reading2-preview {
+  display: none !important;
+}
+
+.explanation-mode-text .b1-reading2-person-card.b1-reading2-row-correct,
+.explanation-mode-text .b1-reading2-person-card.b1-reading2-row-incorrect,
+.explanation-mode-text .b1-reading2-person-card.b1-reading2-row-unanswered {
+  border-color: #e9d5ff;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.06);
+}
+
+.explanation-mode-text .b1-reading2-select-wrap[data-correct]::after {
+  display: none !important;
 }
 
 .b1-reading2-solution-expl {
