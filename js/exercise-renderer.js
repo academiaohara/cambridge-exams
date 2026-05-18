@@ -1243,7 +1243,8 @@
       var isListening = AppState.currentSection === 'listening';
       // In mixed mode, use actual section part for content-based conditions (explanations)
       var actualPart = AppState.currentPart || part;
-      var supportsAnswerToggle = (isReading && actualPart >= 1 && actualPart <= 4) || (isListening && actualPart === 2);
+      var supportsAnswerToggle = ((isReading && actualPart >= 1 && actualPart <= 4) || (isListening && actualPart === 2)) &&
+        !(AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle);
       var answerToggleLabel = AppState.answerViewMode === 'correct' ? 'Show your answer' : 'Show correct answer';
       var answerToggleIcon = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
       let footer = '';

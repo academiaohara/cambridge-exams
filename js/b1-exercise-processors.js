@@ -92,6 +92,8 @@
     };
     mergeDescription(ex);
     ex._b1PetScoring = true;
+    // PET Reading 1: gaps show correct/incorrect inline; footer toggle is redundant.
+    ex._b1PetHideAnswerToggle = true;
   }
 
   function readingPart2(ex) {
