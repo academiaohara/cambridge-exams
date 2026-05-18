@@ -87,7 +87,9 @@
       }
 
       // For reading parts 5–8 and listening: reveal the explanation toggle button in the toggle-view-header
-      if ((AppState.currentSection === 'reading' && AppState.currentPart >= 5) || AppState.currentSection === 'listening') {
+      if ((AppState.currentSection === 'reading' && AppState.currentPart >= 5) ||
+          (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) ||
+          AppState.currentSection === 'listening') {
         const explBtn = document.getElementById('toggle-explanation-btn');
         if (explBtn) explBtn.style.display = '';
       }
@@ -190,11 +192,14 @@
             if (gapBox) {
               gapBox.classList.add('checked');
               gapBox.classList.add(isCorrect ? 'correct' : 'incorrect');
-              
+
               if (!isCorrect) {
                 const question = AppState.currentExercise.content.questions.find(q => q.number === qNum);
-                const correctOption = question.options.find(opt => opt.startsWith(correctAnswer));
-                const correctText = correctOption ? correctOption.substring(2).trim() : correctAnswer;
+                var correctText = correctAnswer;
+                if (question && Array.isArray(question.options)) {
+                  const correctOption = question.options.find(opt => opt.startsWith(correctAnswer + ')'));
+                  correctText = correctOption ? correctOption.substring(2).trim() : correctAnswer;
+                }
                 gapBox.setAttribute('data-correct', `✓ ${correctText}`);
               }
             }
@@ -245,6 +250,9 @@
         case 'multiple-matching':
           document.querySelectorAll('.gap-box').forEach(box => {
             box.classList.add('checked');
+          });
+          document.querySelectorAll('.b1-reading2-select').forEach(function(sel) {
+            sel.disabled = true;
           });
           break;
           
@@ -484,7 +492,8 @@
 
       // Apply sticky-mode for Listening parts 2-3 and Reading parts 5, 6, 8
       if ((AppState.currentSection === 'listening' && (AppState.currentPart === 2 || AppState.currentPart === 3)) ||
-          (AppState.currentSection === 'reading' && (AppState.currentPart === 5 || AppState.currentPart === 6 || AppState.currentPart === 8))) {
+          (AppState.currentSection === 'reading' && (AppState.currentPart === 5 || AppState.currentPart === 6 || AppState.currentPart === 8)) ||
+          (AppState.currentSection === 'reading' && AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui)) {
         qDisplay.classList.add('sticky-mode');
       } else {
         qDisplay.classList.remove('sticky-mode');
@@ -721,7 +730,19 @@
             }
             span.removeAttribute('data-correct');
           });
-          
+
+          document.querySelectorAll('.b1-reading2-select').forEach(function(sel) {
+            sel.disabled = false;
+            sel.value = '';
+          });
+          document.querySelectorAll('.b1-reading2-preview').forEach(function(p) {
+            p.innerHTML = '';
+            p.classList.remove('has-text');
+          });
+          document.querySelectorAll('.b1-reading2-row').forEach(function(row) {
+            row.classList.remove('b1-reading2-row-correct', 'b1-reading2-row-incorrect', 'b1-reading2-row-unanswered');
+          });
+
           document.querySelectorAll('.gap-box').forEach(box => {
             const answerSpan = box.querySelector('.gap-answer');
             const match = answerSpan?.textContent.match(/(\d+)\)/);

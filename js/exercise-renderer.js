@@ -54,39 +54,54 @@
       if (needsToggle) {
         let textsSectionHTML = '';
         let questionsSectionHTML = '';
-        
-        if (hasTextsContent) {
-          textsSectionHTML = this.renderTextsCards(exercise, partConfig);
+        const isB1Reading2Pet = !!exercise._b1PetReading2Ui;
+
+        if (isB1Reading2Pet) {
+          textsSectionHTML = this.renderB1Reading2PeopleCards(exercise);
+          questionsSectionHTML = this.renderTextsCards(exercise, partConfig);
+        } else {
+          if (hasTextsContent) {
+            textsSectionHTML = this.renderTextsCards(exercise, partConfig);
+          }
+          if (hasTextContent) {
+            textsSectionHTML = paragraphsHTML;
+          }
+          questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
         }
-        if (hasTextContent) {
-          textsSectionHTML = paragraphsHTML;
-        }
-        
-        questionsSectionHTML = this.renderToggleQuestions(exercise, partConfig);
-        
+
         const isGappedWithParagraphs = partConfig.type === 'gapped-text' &&
           exercise.content.paragraphs && Object.keys(exercise.content.paragraphs).length > 0;
-        const secondToggleI18nKey = isGappedWithParagraphs
+        let secondToggleI18nKey = isGappedWithParagraphs
           ? (AppState.currentLevel === 'B2' && part === 6 ? 'showSentences' : 'showParagraphs')
           : 'showQuestions';
+        if (isB1Reading2Pet) {
+          secondToggleI18nKey = 'showOptionsReading2';
+        }
         const i18nMap = {
           showQuestions: 'Questions',
           showParagraphs: 'Paragraphs',
           showSentences: 'Sentences',
-          showText: 'Text'
+          showText: 'Text',
+          showPeopleReading2: 'Personas',
+          showOptionsReading2: 'Opciones (A–H)'
         };
         const secondToggleLabel = i18nMap[secondToggleI18nKey] || secondToggleI18nKey;
-        const secondToggleIconClass = secondToggleI18nKey === 'showSentences'
-          ? 'fa-stream'
-          : secondToggleI18nKey === 'showParagraphs'
-            ? 'fa-align-left'
-            : 'fa-question-circle';
+        const secondToggleIconClass = isB1Reading2Pet
+          ? 'fa-list-ul'
+          : secondToggleI18nKey === 'showSentences'
+            ? 'fa-stream'
+            : secondToggleI18nKey === 'showParagraphs'
+              ? 'fa-align-left'
+              : 'fa-question-circle';
+        const firstToggleI18nKey = isB1Reading2Pet ? 'showPeopleReading2' : 'showText';
+        const firstToggleLabel = i18nMap[firstToggleI18nKey] || firstToggleI18nKey;
+        const firstToggleIconClass = isB1Reading2Pet ? 'fa-users' : 'fa-file-alt';
         const isReadingPart5to8 = section === 'reading' && part >= 5;
-        const showExplanationBtn = isReadingPart5to8;
+        const showExplanationBtn = isReadingPart5to8 || isB1Reading2Pet;
         toggleHTML = `
           <div class="toggle-view-header">
             <button class="toggle-view-btn active" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
-              <i class="fas fa-file-alt"></i> <span data-i18n="showText">Text</span>
+              <i class="fas ${firstToggleIconClass}"></i> <span data-i18n="${firstToggleI18nKey}">${firstToggleLabel}</span>
             </button>
             <button class="toggle-view-btn" id="toggle-questions-btn" onclick="ExerciseRenderer.toggleView('questions')">
               <i class="fas ${secondToggleIconClass}"></i> <span data-i18n="${secondToggleI18nKey}">${secondToggleLabel}</span>
@@ -100,8 +115,10 @@
             ` : ''}
           </div>
         `;
-        
-        questionNavRowHTML = this.renderQuestionNavRow(exercise, partConfig);
+
+        questionNavRowHTML = isB1Reading2Pet
+          ? this.renderB1Reading2LetterNav(exercise)
+          : this.renderQuestionNavRow(exercise, partConfig);
         const cTitle = exercise.content?.title || '';
         const cSubtitle = (section === 'reading' && part === 5) ? (exercise.content?.subtitle || '') : '';
         contentTitleBlockHTML = `
@@ -110,7 +127,8 @@
             ${cSubtitle ? `<div class="content-subtitle" title="${cSubtitle}">${cSubtitle}</div>` : ''}
           </div>
         `;
-        
+
+        const b1MatchStrip = isB1Reading2Pet ? this.renderB1Reading2MatchStrip(exercise) : '';
         paragraphsHTML = `
           <div class="toggle-text-section" id="toggle-text-section">
             ${contentTitleBlockHTML}
@@ -119,6 +137,7 @@
           <div class="toggle-questions-section" id="toggle-questions-section" style="display: none;">
             ${questionsSectionHTML}
           </div>
+          ${b1MatchStrip}
         `;
       } else if (hasTranscript) {
         // Listening toggle: Questions (active) | Transcript | Explanation
@@ -443,6 +462,87 @@
           html += '<span class="' + typePrefix + '-text-label">' + key + '</span>';
           html += '<div class="' + typePrefix + '-text-content">' + self.processEvidenceMarkers(text) + '</div>';
         }
+        html += '</div>';
+      });
+      html += '</div>';
+      return html;
+    },
+
+    _escapeHtmlAttr: function(value) {
+      return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    },
+
+    /** B1 Preliminary Reading Part 2: person descriptions only (reference while matching). */
+    renderB1Reading2PeopleCards: function(exercise) {
+      var questions = exercise.content.questions || [];
+      var html = '<div class="reading-type8-texts b1-reading2-people">';
+      questions.forEach(function(q) {
+        var body = (q.personText != null ? q.personText : '').toString();
+        var safe = this._escapeHtmlAttr(body).replace(/\n/g, '<br>');
+        html += '<div class="reading-type8-text-card b1-reading2-person-card">';
+        html += '<span class="reading-type8-text-label">' + q.number + '</span>';
+        html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
+        html += '</div>';
+      });
+      html += '</div>';
+      return html;
+    },
+
+    /** B1 Reading Part 2: quick access to notices A–H (opens read-only detail). */
+    renderB1Reading2LetterNav: function(exercise) {
+      var texts = exercise.content.texts || {};
+      var keys = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
+      var answers = AppState.currentExercise && AppState.currentExercise.answers ? AppState.currentExercise.answers : {};
+      var isChecked = AppState.answersChecked;
+      var used = {};
+      Object.keys(answers).forEach(function(k) {
+        var v = answers[k];
+        if (v) used[v] = true;
+      });
+      var cells = '';
+      keys.forEach(function(letter) {
+        var cls = 'question-nav-cell question-nav-letter';
+        if (isChecked) {
+          cls += used[letter] ? ' answered' : '';
+        } else if (used[letter]) {
+          cls += ' answered';
+        }
+        cells += '<button type="button" class="' + cls + '" data-letter="' + letter + '" onclick="QuestionNav.openReading2Letter(\'' + letter + '\')">' + letter + '</button>';
+      });
+      return '<div class="question-nav-row question-nav-row-letters" id="question-nav-row" data-nav-letters="1">' + cells + '</div>';
+    },
+
+    /** B1 Reading Part 2: per-question letter select + chosen notice preview. */
+    renderB1Reading2MatchStrip: function(exercise) {
+      var texts = exercise.content.texts || {};
+      var letters = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
+      var questions = exercise.content.questions || [];
+      var userAnswer = AppState.currentExercise && AppState.currentExercise.answers ? AppState.currentExercise.answers : {};
+      var isChecked = AppState.answersChecked;
+      var html = '<div class="b1-reading2-match-strip" id="b1-reading2-match-strip">';
+      questions.forEach(function(q) {
+        var qNum = q.number;
+        var sel = userAnswer[qNum] || '';
+        var rowCls = 'b1-reading2-row';
+        if (isChecked) {
+          rowCls += sel ? (sel === q.correct ? ' b1-reading2-row-correct' : ' b1-reading2-row-incorrect') : ' b1-reading2-row-unanswered';
+        }
+        html += '<div class="' + rowCls + '" data-qnum="' + qNum + '">';
+        html += '<div class="b1-reading2-row-head"><span class="b1-reading2-qnum">' + qNum + '</span>';
+        html += '<label class="b1-reading2-select-wrap"><span class="b1-reading2-select-label">Opción</span>';
+        html += '<select class="b1-reading2-select" data-qnum="' + qNum + '"' + (isChecked ? ' disabled' : '') +
+          ' onchange="ReadingType8.onB1Reading2SelectChange(' + qNum + ', this.value)">';
+        html += '<option value="">' + (isChecked ? '—' : 'Elegir…') + '</option>';
+        letters.forEach(function(L) {
+          html += '<option value="' + L + '"' + (sel === L ? ' selected' : '') + '>' + L + '</option>';
+        });
+        html += '</select></label></div>';
+        html += '<div class="b1-reading2-preview" data-qpreview="' + qNum + '"></div>';
         html += '</div>';
       });
       html += '</div>';
@@ -880,6 +980,13 @@
           break;
         case 'dual-matching':
           if (typeof ListeningType4?.initListeners === 'function') ListeningType4.initListeners();
+          break;
+        case 'multiple-matching':
+          setTimeout(function() {
+            if (typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
+              ReadingType8.initB1Reading2StripIfNeeded();
+            }
+          }, 0);
           break;
       }
     },

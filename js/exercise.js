@@ -488,6 +488,9 @@
           case 'multiple-choice':
           case 'cross-text-matching':
           case 'multiple-matching':
+            if (AppState.currentExercise._b1PetReading2Ui) {
+              break;
+            }
             const option = question.options?.find(opt => opt.startsWith(answer));
             if (option) {
               const text = option.substring(2).trim();
@@ -533,7 +536,12 @@
             break;
         }
       });
-      
+
+      if (partConfig.type === 'multiple-matching' && AppState.currentExercise._b1PetReading2Ui &&
+          typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
+        ReadingType8.initB1Reading2StripIfNeeded();
+      }
+
       Timer.updateScoreDisplay();
     },
     

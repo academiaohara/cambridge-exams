@@ -116,6 +116,20 @@
       var questions = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions) || [];
       var answers = (AppState.currentExercise && AppState.currentExercise.answers) || {};
       var isChecked = AppState.answersChecked;
+      var letterRow = document.getElementById('question-nav-row');
+      if (letterRow && letterRow.getAttribute('data-nav-letters') === '1') {
+        var used = {};
+        Object.keys(answers).forEach(function(k) {
+          var v = answers[k];
+          if (v) used[v] = true;
+        });
+        letterRow.querySelectorAll('.question-nav-cell[data-letter]').forEach(function(cell) {
+          var L = cell.getAttribute('data-letter');
+          cell.classList.toggle('answered', !!(L && used[L] && !isChecked));
+          cell.classList.remove('correct', 'incorrect', 'unanswered-checked');
+        });
+        return;
+      }
       questions.forEach(function(q) {
         var cell = document.querySelector('.question-nav-cell[data-qnum="' + q.number + '"]');
         if (!cell) return;
@@ -125,6 +139,33 @@
         cell.classList.toggle('incorrect', !!(isChecked && answer && answer !== q.correct));
         cell.classList.toggle('unanswered-checked', !!(isChecked && !answer));
       });
+    },
+
+    openReading2Letter: function(letter) {
+      if (AppState.explanationMode) return;
+      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      var texts = AppState.currentExercise.content.texts || {};
+      var body = texts[letter];
+      if (body == null) return;
+
+      if (window.Tools) Tools.closeSidebar();
+
+      var overlay = document.getElementById('question-nav-overlay');
+      var bodyEl = document.getElementById('question-nav-body');
+      if (!overlay || !bodyEl) return;
+
+      var safeBody = this._escapeHtml(String(body)).replace(/\n/g, '<br>');
+      bodyEl.innerHTML =
+        '<div class="qnav-header">' +
+        '<div class="qnav-header-main">' +
+        '<span class="qnav-title">' + this._escapeHtml(letter) + '</span>' +
+        '<span class="qnav-question-text qnav-question-text-header">Texto ' + this._escapeHtml(letter) + '</span>' +
+        '</div>' +
+        '<button type="button" class="qnav-close-btn" onclick="QuestionNav.close()">' +
+        '<i class="fas fa-times"></i></button>' +
+        '</div>' +
+        '<div class="qnav-body"><div class="b1-reading2-letter-modal-text">' + safeBody + '</div></div>';
+      overlay.style.display = 'flex';
     },
 
     // --- content builders ---
@@ -238,9 +279,7 @@
 
     _buildPart8: function(question, qNum, isChecked, userAnswer) {
       var texts = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts) || {};
-      var keys = ['A', 'B', 'C', 'D'].filter(function(key) {
-        return Object.prototype.hasOwnProperty.call(texts, key);
-      });
+      var keys = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
       var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
       keys.forEach(function(key) {
         var isSelected = userAnswer === key;

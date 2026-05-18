@@ -25,6 +25,15 @@
       .replace(/<\/strong</gi, '</strong>');
   }
 
+  function escapeHtml(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   function normalizeQuestion(q) {
     if (!q || typeof q !== 'object') return q;
     var out = Object.assign({}, q);
@@ -86,6 +95,56 @@
   }
 
   function readingPart2(ex) {
+    // Batch JSON: tests[0] with people / texts (letter+text) / answers (PET-style)
+    if (Array.isArray(ex.tests) && ex.tests.length) {
+      var testBlock = ex.tests[0];
+      var textsObj = {};
+      (testBlock.texts || []).forEach(function(t) {
+        var letter = (t.letter || '').toString().trim().toUpperCase().charAt(0);
+        if (!letter) return;
+        textsObj[letter] = sanitizeHtmlTypos((t.text || '').toString().trim());
+      });
+      var explainByQ = {};
+      (testBlock.answers || []).forEach(function(a) {
+        if (a && a.question != null) {
+          explainByQ[a.question] = sanitizeHtmlTypos((a.explanation || '').toString());
+        }
+      });
+      var answersArr = testBlock.answers || [];
+      var qs = (testBlock.people || []).map(function(p) {
+        var n = p.number;
+        var body = sanitizeHtmlTypos((p.text || '').toString().trim());
+        var correct = '';
+        for (var ai = 0; ai < answersArr.length; ai++) {
+          var a = answersArr[ai];
+          if (a && a.question === n) {
+            correct = String(a.answer || '').trim().toUpperCase().charAt(0);
+            break;
+          }
+        }
+        return {
+          number: n,
+          correct: correct,
+          explanation: explainByQ[n] || '',
+          personText: body,
+          question: '<div class="b1-r2-person-body">' + escapeHtml(body).replace(/\n/g, '<br>') + '</div>'
+        };
+      });
+      qs.sort(function(a, b) { return (a.number || 0) - (b.number || 0); });
+      ex.content = {
+        title: sanitizeHtmlTypos((testBlock.title || '').toString().trim()),
+        texts: textsObj,
+        questions: qs
+      };
+      if (!ex.title) ex.title = ex.content.title || ex.part || 'Reading Part 2';
+      ex.type = ex.type || 'multiple-matching';
+      ex.totalQuestions = qs.length;
+      ex._b1PetReading2Ui = true;
+      mergeDescription(ex);
+      ex._b1PetScoring = true;
+      return;
+    }
+
     var textsArr = ex.texts || [];
     var textsObj = {};
     textsArr.forEach(function(t) {
