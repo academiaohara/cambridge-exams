@@ -606,7 +606,7 @@
   margin-top: 4px;
 }
 
-/* Evidence [n]...[/n]: hide bracketed view unless .explanation-mode-text is active */
+/* Evidence [n]...[/n]: explanation styling only under .explanation-mode-text */
 .evidence-explanation-mode {
   display: none;
 }
@@ -629,26 +629,7 @@
   text-underline-offset: 2px;
 }
 
-.explanation-mode-text .evidence-explanation-mode .evidence-bracket {
-  font-weight: 600;
-}
-
-/* Evidence phrase in normal reading view: brackets stripped in markup; tint the quoted span */
-.reading-text-enhanced .evidence-wrap > .evidence-normal,
-.reading-type8-text-content .evidence-wrap > .evidence-normal,
-.b1-reading2-person-content .evidence-wrap > .evidence-normal,
-.b1-reading2-letter-modal-text .evidence-wrap > .evidence-normal,
-.b1-reading2-preview-text .evidence-wrap > .evidence-normal,
-.b1-reading2-solution-expl .evidence-wrap > .evidence-normal {
-  background: #fff7ed;
-  color: #7c2d12;
-  border-radius: 4px;
-  padding: 0 3px;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-/* Explanation mode: inner quoted words — lighter wash, darker type for contrast */
+/* Evidence phrase in normal reading view: no special styling for .evidence-normal (plain text). */
 .explanation-mode-text .evidence-explanation-mode .evidence-core {
   background: #ffedd5;
   color: #431407;

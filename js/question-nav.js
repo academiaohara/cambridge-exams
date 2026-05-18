@@ -157,7 +157,7 @@
       var safeBody = '';
       var raw = String(body).replace(/\r\n/g, '\n');
       if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.formatB1Reading2NoticeHtml) {
-        safeBody = ExerciseRenderer.formatB1Reading2NoticeHtml(raw);
+        safeBody = ExerciseRenderer.formatB1Reading2NoticeHtml(raw, !!AppState.answersChecked);
       } else {
         safeBody = this._escapeHtml(raw).replace(/\n/g, '<br>');
       }
