@@ -818,8 +818,8 @@
             sel.value = '';
             sel.classList.remove('b1-reading2-select-correct', 'b1-reading2-select-incorrect', 'b1-reading2-select-unanswered');
           });
-          document.querySelectorAll('.b1-reading2-correct-hint').forEach(function(h) {
-            h.remove();
+          document.querySelectorAll('.b1-reading2-select-wrap').forEach(function(w) {
+            w.removeAttribute('data-correct');
           });
           document.querySelectorAll('.b1-reading2-preview').forEach(function(p) {
             p.innerHTML = '';
