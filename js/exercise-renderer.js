@@ -82,8 +82,8 @@
           showParagraphs: 'Paragraphs',
           showSentences: 'Sentences',
           showText: 'Text',
-          showPeopleReading2: 'Personas',
-          showOptionsReading2: 'Opciones (A–H)'
+          showPeopleReading2: 'People',
+          showOptionsReading2: 'Options (A–H)'
         };
         const secondToggleLabel = i18nMap[secondToggleI18nKey] || secondToggleI18nKey;
         const secondToggleIconClass = isB1Reading2Pet
@@ -342,8 +342,17 @@
       this.initTypeSpecificListeners(partConfig.type);
     },
     
+    /** [n]...[/n] evidence: plain inner text normally; bracketed orange block in .explanation-mode-text. */
     processEvidenceMarkers: function(text) {
-      return text.replace(/\[(\d+)\]([\s\S]*?)\[\/\1\]/g, '<span class="evidence-marker" data-qnum="$1">$2</span>');
+      return String(text || '').replace(/\[(\d+)\]([\s\S]*?)\[\/\1\]/g, function(_, n, inner) {
+        return '<span class="evidence-wrap" data-qnum="' + n + '">' +
+          '<span class="evidence-normal">' + inner + '</span>' +
+          '<span class="evidence-explanation-mode evidence-marker" data-qnum="' + n + '">' +
+          '<span class="evidence-bracket">[' + n + ']</span>' +
+          '<span class="evidence-core">' + inner + '</span>' +
+          '<span class="evidence-bracket">[/' + n + ']</span>' +
+          '</span></span>';
+      });
     },
 
     renderParagraphs: function(paragraphs, exercise, partConfig) {
@@ -487,7 +496,7 @@
       questions.forEach(function(q) {
         var qNum = q.number;
         var body = (q.personText != null ? q.personText : '').toString();
-        var safe = self._escapeHtmlAttr(body).replace(/\n/g, '<br>');
+        var safe = self.processEvidenceMarkers(self._escapeHtmlAttr(body).replace(/\n/g, '<br>'));
         var sel = userAnswer[qNum] || '';
         var cardCls = 'reading-type8-text-card b1-reading2-person-card';
         if (isChecked) {
@@ -497,10 +506,10 @@
         html += '<span class="reading-type8-text-label">' + qNum + '</span>';
         html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
         html += '<div class="b1-reading2-person-toolbar">';
-        html += '<label class="b1-reading2-select-wrap"><span class="b1-reading2-select-label">Opción</span>';
+        html += '<label class="b1-reading2-select-wrap"><span class="b1-reading2-select-label">Option</span>';
         html += '<select class="b1-reading2-select" data-qnum="' + qNum + '"' + (isChecked ? ' disabled' : '') +
           ' onchange="ReadingType8.onB1Reading2SelectChange(' + qNum + ', this.value)">';
-        html += '<option value="">' + (isChecked ? '—' : 'Elegir…') + '</option>';
+        html += '<option value="">' + (isChecked ? '—' : 'Choose…') + '</option>';
         letters.forEach(function(L) {
           html += '<option value="' + L + '"' + (sel === L ? ' selected' : '') + '>' + L + '</option>';
         });
@@ -534,6 +543,21 @@
         cells += '<button type="button" class="' + cls + '" data-letter="' + letter + '" onclick="QuestionNav.openReading2Letter(\'' + letter + '\')">' + letter + '</button>';
       });
       return '<div class="question-nav-row question-nav-row-letters" id="question-nav-row" data-nav-letters="1">' + cells + '</div>';
+    },
+
+    /** B1 Reading Part 2: in explanation mode, nav shows question numbers to switch explanations. */
+    renderB1Reading2ExplanationQuestionNav: function(exercise) {
+      var questions = (exercise && exercise.content && exercise.content.questions) || [];
+      var activeQ = typeof AppState !== 'undefined' ? AppState.explanationActiveQuestion : null;
+      var cells = '';
+      questions.forEach(function(q) {
+        var qNum = q.number;
+        var cls = 'question-nav-cell question-nav-letter';
+        if (activeQ != null && qNum === activeQ) cls += ' explanation-active';
+        cells += '<button type="button" class="' + cls + '" data-qnum="' + qNum + '"' +
+          ' onclick="ExerciseHandlers.selectExplanationQuestion(' + qNum + ')">' + qNum + '</button>';
+      });
+      return '<div class="question-nav-row question-nav-row-letters question-nav-row-b1r2-expl explanation-mode" id="question-nav-row" data-nav-letters="0">' + cells + '</div>';
     },
 
     /**

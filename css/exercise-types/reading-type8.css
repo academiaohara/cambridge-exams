@@ -171,6 +171,14 @@
   color: var(--text-dark);
 }
 
+.explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show {
+  pointer-events: none;
+  border-color: #f97316;
+  background: #fff7ed;
+  color: #ea580c;
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.35);
+}
+
 .b1-reading2-preview {
   margin-top: 12px;
 }
