@@ -128,7 +128,6 @@
           </div>
         `;
 
-        const b1MatchStrip = isB1Reading2Pet ? this.renderB1Reading2MatchStrip(exercise) : '';
         paragraphsHTML = `
           <div class="toggle-text-section" id="toggle-text-section">
             ${contentTitleBlockHTML}
@@ -137,7 +136,6 @@
           <div class="toggle-questions-section" id="toggle-questions-section" style="display: none;">
             ${questionsSectionHTML}
           </div>
-          ${b1MatchStrip}
         `;
       } else if (hasTranscript) {
         // Listening toggle: Questions (active) | Transcript | Explanation
@@ -477,17 +475,37 @@
         .replace(/'/g, '&#39;');
     },
 
-    /** B1 Preliminary Reading Part 2: person descriptions only (reference while matching). */
+    /** B1 Preliminary Reading Part 2: person card + letter select + chosen notice preview. */
     renderB1Reading2PeopleCards: function(exercise) {
       var questions = exercise.content.questions || [];
+      var texts = exercise.content.texts || {};
+      var letters = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
+      var userAnswer = AppState.currentExercise && AppState.currentExercise.answers ? AppState.currentExercise.answers : {};
+      var isChecked = AppState.answersChecked;
       var self = this;
       var html = '<div class="reading-type8-texts b1-reading2-people">';
       questions.forEach(function(q) {
+        var qNum = q.number;
         var body = (q.personText != null ? q.personText : '').toString();
         var safe = self._escapeHtmlAttr(body).replace(/\n/g, '<br>');
-        html += '<div class="reading-type8-text-card b1-reading2-person-card">';
-        html += '<span class="reading-type8-text-label">' + q.number + '</span>';
+        var sel = userAnswer[qNum] || '';
+        var cardCls = 'reading-type8-text-card b1-reading2-person-card';
+        if (isChecked) {
+          cardCls += sel ? (sel === q.correct ? ' b1-reading2-row-correct' : ' b1-reading2-row-incorrect') : ' b1-reading2-row-unanswered';
+        }
+        html += '<div class="' + cardCls + '" data-qnum="' + qNum + '">';
+        html += '<span class="reading-type8-text-label">' + qNum + '</span>';
         html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
+        html += '<div class="b1-reading2-person-toolbar">';
+        html += '<label class="b1-reading2-select-wrap"><span class="b1-reading2-select-label">Opción</span>';
+        html += '<select class="b1-reading2-select" data-qnum="' + qNum + '"' + (isChecked ? ' disabled' : '') +
+          ' onchange="ReadingType8.onB1Reading2SelectChange(' + qNum + ', this.value)">';
+        html += '<option value="">' + (isChecked ? '—' : 'Elegir…') + '</option>';
+        letters.forEach(function(L) {
+          html += '<option value="' + L + '"' + (sel === L ? ' selected' : '') + '>' + L + '</option>';
+        });
+        html += '</select></label></div>';
+        html += '<div class="b1-reading2-preview" data-qpreview="' + qNum + '"></div>';
         html += '</div>';
       });
       html += '</div>';
@@ -516,38 +534,6 @@
         cells += '<button type="button" class="' + cls + '" data-letter="' + letter + '" onclick="QuestionNav.openReading2Letter(\'' + letter + '\')">' + letter + '</button>';
       });
       return '<div class="question-nav-row question-nav-row-letters" id="question-nav-row" data-nav-letters="1">' + cells + '</div>';
-    },
-
-    /** B1 Reading Part 2: per-question letter select + chosen notice preview. */
-    renderB1Reading2MatchStrip: function(exercise) {
-      var texts = exercise.content.texts || {};
-      var letters = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
-      var questions = exercise.content.questions || [];
-      var userAnswer = AppState.currentExercise && AppState.currentExercise.answers ? AppState.currentExercise.answers : {};
-      var isChecked = AppState.answersChecked;
-      var html = '<div class="b1-reading2-match-strip" id="b1-reading2-match-strip">';
-      questions.forEach(function(q) {
-        var qNum = q.number;
-        var sel = userAnswer[qNum] || '';
-        var rowCls = 'b1-reading2-row';
-        if (isChecked) {
-          rowCls += sel ? (sel === q.correct ? ' b1-reading2-row-correct' : ' b1-reading2-row-incorrect') : ' b1-reading2-row-unanswered';
-        }
-        html += '<div class="' + rowCls + '" data-qnum="' + qNum + '">';
-        html += '<div class="b1-reading2-row-head"><span class="b1-reading2-qnum">' + qNum + '</span>';
-        html += '<label class="b1-reading2-select-wrap"><span class="b1-reading2-select-label">Opción</span>';
-        html += '<select class="b1-reading2-select" data-qnum="' + qNum + '"' + (isChecked ? ' disabled' : '') +
-          ' onchange="ReadingType8.onB1Reading2SelectChange(' + qNum + ', this.value)">';
-        html += '<option value="">' + (isChecked ? '—' : 'Elegir…') + '</option>';
-        letters.forEach(function(L) {
-          html += '<option value="' + L + '"' + (sel === L ? ' selected' : '') + '>' + L + '</option>';
-        });
-        html += '</select></label></div>';
-        html += '<div class="b1-reading2-preview" data-qpreview="' + qNum + '"></div>';
-        html += '</div>';
-      });
-      html += '</div>';
-      return html;
     },
 
     /**

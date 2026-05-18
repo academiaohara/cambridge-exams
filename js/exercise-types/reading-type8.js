@@ -20,9 +20,11 @@
         return;
       }
       var body = String(rawText || '').replace(/\r\n/g, '\n');
-      var html = '<span class="b1-reading2-preview-letter">' + letter + '</span>';
+      var html = '<div class="b1-reading2-preview-inner">';
+      html += '<span class="b1-reading2-preview-letter">' + letter + '</span>';
       html += '<div class="b1-reading2-preview-text">' +
         this._b1PreviewEscape(body).replace(/\n/g, '<br>') + '</div>';
+      html += '</div>';
       el.innerHTML = html;
       el.classList.add('has-text');
     },
@@ -139,13 +141,13 @@
         if (isCorrect) correct++;
 
         if (isB1) {
-          var row = document.querySelector('.b1-reading2-row[data-qnum="' + q.number + '"]');
-          if (row) {
-            row.classList.remove('b1-reading2-row-correct', 'b1-reading2-row-incorrect', 'b1-reading2-row-unanswered');
+          var card = document.querySelector('.b1-reading2-person-card[data-qnum="' + q.number + '"]');
+          if (card) {
+            card.classList.remove('b1-reading2-row-correct', 'b1-reading2-row-incorrect', 'b1-reading2-row-unanswered');
             if (userAnswer) {
-              row.classList.add(isCorrect ? 'b1-reading2-row-correct' : 'b1-reading2-row-incorrect');
+              card.classList.add(isCorrect ? 'b1-reading2-row-correct' : 'b1-reading2-row-incorrect');
             } else {
-              row.classList.add('b1-reading2-row-unanswered');
+              card.classList.add('b1-reading2-row-unanswered');
             }
           }
         }
