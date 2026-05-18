@@ -150,15 +150,6 @@
   font-size: 1rem;
 }
 
-.explanation-mode-text .b1-reading2-person-header {
-  padding: 12px 14px;
-  border: 1px solid #fdba74;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-  box-shadow: 0 1px 2px rgba(234, 88, 12, 0.08);
-  margin-bottom: 14px;
-}
-
 .question-nav-row-letters {
   flex-wrap: wrap;
   gap: 6px;
@@ -171,27 +162,39 @@
 .b1-reading2-select-wrap {
   display: inline-flex;
   align-items: center;
-  align-content: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   font-size: 0.9rem;
   color: var(--text-muted, #64748b);
-  max-width: 100%;
 }
 
 .b1-reading2-select-label {
   white-space: nowrap;
 }
 
+/* Letter chip: match .question-nav-cell.question-nav-letter.explanation-active (question-nav.css) */
 .b1-reading2-select {
-  min-width: 7rem;
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid #fdba74;
-  background: #fff7ed;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #c2410c;
+  box-sizing: border-box;
+  min-width: 2.25rem;
+  height: 36px;
+  padding: 0 26px 0 8px;
+  border-radius: 8px;
+  border: 2px solid #f97316;
+  background: #f97316 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23ffffff' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.b1-reading2-select:invalid {
+  border-color: #e2e8f0;
+  background: #f8fafc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%2364748b' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
+  color: #64748b;
 }
 
 .b1-reading2-select:disabled.b1-reading2-select-correct {
@@ -209,13 +212,16 @@
 }
 
 .b1-reading2-select:disabled.b1-reading2-select-unanswered {
-  border-color: #f59e0b;
-  background: #fffbeb;
-  color: #92400e;
+  border-color: #f97316;
+  background: #f97316 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23ffffff' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
+  color: #fff;
 }
 
 .explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show {
   pointer-events: none;
+  border-color: #f97316 !important;
+  background: #f97316 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23ffffff' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center !important;
+  color: #fff !important;
 }
 
 .explanation-mode-text .b1-reading2-correct-hint {
