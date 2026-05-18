@@ -1,0 +1,95 @@
+﻿{
+    "tests":  [
+                  {
+                      "test":  21,
+                      "title":  "Choosing a fitness class",
+                      "theme":  "fitness",
+                      "people":  [
+                                     {
+                                         "number":  6,
+                                         "text":  "Emily wants gentle exercise after work because she spends all day sitting. She prefers indoor classes with calm music."
+                                     },
+                                     {
+                                         "number":  7,
+                                         "text":  "Jake enjoys competitive team sports and wants evening training sessions during the week."
+                                     },
+                                     {
+                                         "number":  8,
+                                         "text":  "Hana wants to improve flexibility and reduce stress. She prefers small classes with experienced instructors."
+                                     },
+                                     {
+                                         "number":  9,
+                                         "text":  "Leo needs cheap exercise classes near the city centre because he travels by bus after work."
+                                     },
+                                     {
+                                         "number":  10,
+                                         "text":  "Sophie wants energetic dance workouts suitable for beginners who have never used a gym."
+                                     }
+                                 ],
+                      "texts":  [
+                                    {
+                                        "letter":  "A",
+                                        "text":  "Stretch and Relax combines [6]gentle indoor exercise[/6] with soft music and simple movements. It is designed for people who spend [6]long hours sitting at work[/6]."
+                                    },
+                                    {
+                                        "letter":  "B",
+                                        "text":  "City Basketball Club offers [7]weekday evening training[/7] and regular matches against local teams. New players who enjoy [7]competitive sports[/7] are welcome."
+                                    },
+                                    {
+                                        "letter":  "C",
+                                        "text":  "Quiet Yoga runs in groups of ten and focuses on [8]improving flexibility[/8] and reducing stress. Classes are led by [8]experienced instructors[/8] with many years of teaching."
+                                    },
+                                    {
+                                        "letter":  "D",
+                                        "text":  "Active Centre provides [9]low-cost fitness sessions[/9] close to the main bus station in the [9]city centre[/9]."
+                                    },
+                                    {
+                                        "letter":  "E",
+                                        "text":  "Dance Burn uses simple routines and modern music. It is [10]designed for beginners[/10] who want [10]high-energy dance exercise[/10] without traditional gym training."
+                                    },
+                                    {
+                                        "letter":  "F",
+                                        "text":  "Mountain Cycling prepares experienced riders for difficult countryside races."
+                                    },
+                                    {
+                                        "letter":  "G",
+                                        "text":  "School Swim Club is only available to teenagers under sixteen."
+                                    },
+                                    {
+                                        "letter":  "H",
+                                        "text":  "Power Lifting requires previous weight-training experience and personal equipment."
+                                    }
+                                ],
+                      "answers":  [
+                                      {
+                                          "question":  6,
+                                          "answer":  "A",
+                                          "explanation":  "Emily needs gentle indoor exercise after sitting all day."
+                                      },
+                                      {
+                                          "question":  7,
+                                          "answer":  "B",
+                                          "explanation":  "Jake wants competitive evening team sports."
+                                      },
+                                      {
+                                          "question":  8,
+                                          "answer":  "C",
+                                          "explanation":  "Hana wants flexibility training and experienced teachers."
+                                      },
+                                      {
+                                          "question":  9,
+                                          "answer":  "D",
+                                          "explanation":  "Leo needs cheap classes near buses."
+                                      },
+                                      {
+                                          "question":  10,
+                                          "answer":  "E",
+                                          "explanation":  "Sophie wants beginner dance fitness."
+                                      }
+                                  ]
+                  }
+              ],
+    "batch":  3,
+    "part":  "Reading Part 2",
+    "level":  "B1"
+}
