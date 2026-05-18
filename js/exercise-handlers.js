@@ -739,8 +739,8 @@
             p.innerHTML = '';
             p.classList.remove('has-text');
           });
-          document.querySelectorAll('.b1-reading2-row').forEach(function(row) {
-            row.classList.remove('b1-reading2-row-correct', 'b1-reading2-row-incorrect', 'b1-reading2-row-unanswered');
+          document.querySelectorAll('.b1-reading2-person-card').forEach(function(card) {
+            card.classList.remove('b1-reading2-row-correct', 'b1-reading2-row-incorrect', 'b1-reading2-row-unanswered');
           });
 
           document.querySelectorAll('.gap-box').forEach(box => {
