@@ -1273,7 +1273,10 @@
         // Reading parts 1–3: show explanations button (part 4 is excluded because
         // key-word transformations don't have auto-explanations; parts 5–8 have
         // their explanation button in the toggle-view-header instead).
-        if (isReading && actualPart > 0 && actualPart < 4) {
+        // B1 Preliminary Reading Part 2 (people/notices): use header "Explanation" only
+        // (_b1PetReading2Ui); footer "Show explanations" would duplicate it.
+        if (isReading && actualPart > 0 && actualPart < 4 &&
+            !(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui)) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span>
