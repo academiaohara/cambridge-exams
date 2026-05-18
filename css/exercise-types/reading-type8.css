@@ -320,3 +320,23 @@
   line-height: 1.65;
   color: var(--text-dark);
 }
+
+/* B1 Reading Part 2: in explanation mode only the active question keeps evidence marker chrome;
+   other [n]…[/n] spans stay as plain text (see .explanation-mode-text .evidence-explanation-mode in exercise.css). */
+.explanation-mode-text:has(.b1-reading2-people) .evidence-explanation-mode.evidence-marker:not(.evidence-active) {
+  color: inherit;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+/* B1 Reading Part 2: in explanation mode only the active question keeps evidence marker chrome;
+   other [n]…[/n] spans stay as plain text (see .explanation-mode-text .evidence-explanation-mode in exercise.css). */
+.explanation-mode-text:has(.b1-reading2-people) .evidence-explanation-mode.evidence-marker:not(.evidence-active) {
+  color: inherit;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  text-decoration: none;
+}
