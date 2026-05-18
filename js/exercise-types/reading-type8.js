@@ -20,10 +20,15 @@
         return;
       }
       var body = String(rawText || '').replace(/\r\n/g, '\n');
-      var escaped = this._b1PreviewEscape(body).replace(/\n/g, '<br>');
-      var bodyHtml = typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.processEvidenceMarkers
-        ? ExerciseRenderer.processEvidenceMarkers(escaped)
-        : escaped;
+      var bodyHtml;
+      if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.formatB1Reading2NoticeHtml) {
+        bodyHtml = ExerciseRenderer.formatB1Reading2NoticeHtml(body);
+      } else {
+        var escaped = this._b1PreviewEscape(body).replace(/\n/g, '<br>');
+        bodyHtml = typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.processEvidenceMarkers
+          ? ExerciseRenderer.processEvidenceMarkers(escaped)
+          : escaped;
+      }
       var html = '<div class="b1-reading2-preview-inner">';
       html += '<span class="b1-reading2-preview-letter">' + letter + '</span>';
       html += '<div class="b1-reading2-preview-text">' + bodyHtml + '</div>';
@@ -151,6 +156,27 @@
               card.classList.add(isCorrect ? 'b1-reading2-row-correct' : 'b1-reading2-row-incorrect');
             } else {
               card.classList.add('b1-reading2-row-unanswered');
+            }
+          }
+          var selEl = document.querySelector('.b1-reading2-select[data-qnum="' + q.number + '"]');
+          if (selEl) {
+            selEl.classList.remove('b1-reading2-select-correct', 'b1-reading2-select-incorrect', 'b1-reading2-select-unanswered');
+            if (userAnswer) {
+              selEl.classList.add(isCorrect ? 'b1-reading2-select-correct' : 'b1-reading2-select-incorrect');
+            } else {
+              selEl.classList.add('b1-reading2-select-unanswered');
+            }
+            selEl.disabled = true;
+          }
+          var lab = document.querySelector('.b1-reading2-person-card[data-qnum="' + q.number + '"] .b1-reading2-select-wrap');
+          if (lab) {
+            var prevHint = lab.querySelector('.b1-reading2-correct-hint');
+            if (prevHint) prevHint.remove();
+            if (userAnswer && !isCorrect) {
+              var hint = document.createElement('span');
+              hint.className = 'b1-reading2-correct-hint';
+              hint.textContent = 'Correct: ' + q.correct;
+              lab.appendChild(hint);
             }
           }
         }
