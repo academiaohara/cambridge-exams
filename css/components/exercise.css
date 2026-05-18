@@ -629,8 +629,18 @@
   text-underline-offset: 2px;
 }
 
-/* Evidence phrase in normal reading view: no special styling for .evidence-normal (plain text). */
+/* Inner phrase: matches parent until this wrap is the active explanation question (.evidence-active-q). */
 .explanation-mode-text .evidence-explanation-mode .evidence-core {
+  background: transparent;
+  color: inherit;
+  border-radius: 0;
+  padding: 0;
+  font-weight: inherit;
+  text-decoration: inherit;
+  text-underline-offset: inherit;
+}
+
+.explanation-mode-text .evidence-wrap.evidence-active-q .evidence-explanation-mode .evidence-core {
   background: #ffedd5;
   color: #431407;
   border-radius: 3px;
