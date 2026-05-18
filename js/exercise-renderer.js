@@ -531,9 +531,8 @@
           else selClass += ' b1-reading2-select-incorrect';
         }
         html += '<div class="' + cardCls + '" data-qnum="' + qNum + '">';
+        html += '<div class="b1-reading2-person-header">';
         html += '<span class="reading-type8-text-label">' + qNum + '</span>';
-        html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
-        html += '<div class="b1-reading2-person-toolbar">';
         html += '<label class="b1-reading2-select-wrap"><span class="b1-reading2-select-label">Option</span>';
         html += '<select class="' + selClass + '" data-qnum="' + qNum + '"' + (isChecked ? ' disabled' : '') +
           ' onchange="ReadingType8.onB1Reading2SelectChange(' + qNum + ', this.value)">';
@@ -546,6 +545,7 @@
           html += '<span class="b1-reading2-correct-hint">Correct: ' + self._escapeHtmlAttr(q.correct) + '</span>';
         }
         html += '</label></div>';
+        html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
         var solKey = q.correct ? String(q.correct).trim().toUpperCase().charAt(0) : '';
         var solRaw = solKey && texts[solKey] != null ? texts[solKey] : '';
         if (solRaw) {
