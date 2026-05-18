@@ -211,7 +211,7 @@
 
 .reading-type5-option {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   padding: 12px 16px;
   border-radius: 10px;
@@ -219,6 +219,10 @@
   transition: all 0.2s;
   border: 2px solid #e2e8f0;
   background: #f8fafc;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  font-weight: 500;
+  color: var(--text-dark);
 }
 
 .reading-type5-option:hover:not(.disabled) {
@@ -231,6 +235,15 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+  margin: 0;
+  margin-top: 4px;
+  margin-top: calc(0.5lh - 9px);
+  align-self: flex-start;
+}
+
+.reading-type5-option > span {
+  flex: 1;
+  min-width: 0;
 }
 
 @supports selector(:has(*)) {
