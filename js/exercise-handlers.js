@@ -361,6 +361,7 @@
           document.querySelectorAll('.explanation-card').forEach(function(card) {
             card.classList.add('explanation-active');
           });
+          this._syncEvidenceActiveQuestionWrapsAll();
         } else {
           // Add explanation tooltips to evidence markers
           this._addEvidenceTooltips();
@@ -406,6 +407,10 @@
         // Remove explanation mode paragraph styling
         const textContainer = document.getElementById('selectable-text');
         if (textContainer) textContainer.classList.remove('explanation-mode-text');
+
+        document.querySelectorAll('.evidence-wrap.evidence-active-q').forEach(function(wrap) {
+          wrap.classList.remove('evidence-active-q');
+        });
 
         document.querySelectorAll('.question-nav-cell.explanation-active').forEach(function(cell) {
           cell.classList.remove('explanation-active');
@@ -488,6 +493,8 @@
 
       var cell = document.querySelector('.question-nav-cell[data-qnum="' + qNum + '"]');
       if (cell) cell.classList.add('explanation-active');
+
+      this._syncEvidenceActiveQuestionWraps(qNum);
 
       // Update explanation panel cards
       document.querySelectorAll('.explanation-card.explanation-active').forEach(function(card) {
@@ -621,6 +628,25 @@
       html += '<span class="eq-text">' + (question.explanation || '') + '</span>';
       html += '</div>';
       qDisplay.innerHTML = html;
+    },
+
+    /** Strong .evidence-core styling only for markers of the active explanation question (nav .explanation-active). */
+    _syncEvidenceActiveQuestionWraps: function(qNum) {
+      document.querySelectorAll('.evidence-wrap.evidence-active-q').forEach(function(wrap) {
+        wrap.classList.remove('evidence-active-q');
+      });
+      document.querySelectorAll('.evidence-wrap[data-qnum="' + qNum + '"]').forEach(function(wrap) {
+        wrap.classList.add('evidence-active-q');
+      });
+    },
+
+    _syncEvidenceActiveQuestionWrapsAll: function() {
+      document.querySelectorAll('.evidence-wrap.evidence-active-q').forEach(function(wrap) {
+        wrap.classList.remove('evidence-active-q');
+      });
+      document.querySelectorAll('.evidence-wrap').forEach(function(wrap) {
+        wrap.classList.add('evidence-active-q');
+      });
     },
 
     _applyEvidenceHighlight: function(qNum) {
