@@ -98,7 +98,7 @@
         if (explBtn) explBtn.style.display = '';
       }
 
-      // For parts 1–3 and listening: reveal the footer explanation button
+      // Reveal the footer explanation button when present (reading parts 1–3 except B1 Reading 2 PET; other sections per footer markup).
       const footerExplBtn = document.querySelector('.btn-explanations');
       if (footerExplBtn) footerExplBtn.style.display = '';
       this.syncAnswerToggleButton();
