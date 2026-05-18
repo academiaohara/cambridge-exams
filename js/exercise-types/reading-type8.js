@@ -41,6 +41,14 @@
       if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
       var texts = AppState.currentExercise.content.texts || {};
       var answers = AppState.currentExercise.answers || {};
+      if (AppState.explanationMode) {
+        (AppState.currentExercise.content.questions || []).forEach(function(q) {
+          var sel = document.querySelector('.b1-reading2-select[data-qnum="' + q.number + '"]');
+          if (sel && q.correct) sel.value = q.correct;
+          ReadingType8._setB1Reading2Preview(q.number, '', '');
+        });
+        return;
+      }
       (AppState.currentExercise.content.questions || []).forEach(function(q) {
         var v = answers[q.number];
         if (!v) return;
