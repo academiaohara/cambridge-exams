@@ -480,10 +480,11 @@
     /** B1 Preliminary Reading Part 2: person descriptions only (reference while matching). */
     renderB1Reading2PeopleCards: function(exercise) {
       var questions = exercise.content.questions || [];
+      var self = this;
       var html = '<div class="reading-type8-texts b1-reading2-people">';
       questions.forEach(function(q) {
         var body = (q.personText != null ? q.personText : '').toString();
-        var safe = this._escapeHtmlAttr(body).replace(/\n/g, '<br>');
+        var safe = self._escapeHtmlAttr(body).replace(/\n/g, '<br>');
         html += '<div class="reading-type8-text-card b1-reading2-person-card">';
         html += '<span class="reading-type8-text-label">' + q.number + '</span>';
         html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
