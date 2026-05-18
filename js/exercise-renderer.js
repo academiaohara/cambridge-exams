@@ -522,19 +522,18 @@
         var sel = userAnswer[qNum] || '';
         var cardCls = 'reading-type8-text-card b1-reading2-person-card';
         if (isChecked) {
-          cardCls += sel ? (sel === q.correct ? ' b1-reading2-row-correct' : ' b1-reading2-row-incorrect') : ' b1-reading2-row-unanswered';
+          cardCls += sel === q.correct ? ' b1-reading2-row-correct' : ' b1-reading2-row-incorrect';
         }
         var selClass = 'b1-reading2-select';
         if (isChecked) {
-          if (!sel) selClass += ' b1-reading2-select-unanswered';
-          else if (sel === q.correct) selClass += ' b1-reading2-select-correct';
+          if (sel === q.correct) selClass += ' b1-reading2-select-correct';
           else selClass += ' b1-reading2-select-incorrect';
         }
         html += '<div class="' + cardCls + '" data-qnum="' + qNum + '">';
         html += '<div class="b1-reading2-person-header">';
         html += '<span class="reading-type8-text-label">' + qNum + '</span>';
         var wrapDataCorrect = '';
-        if (isChecked && sel && sel !== q.correct) {
+        if (isChecked && q.correct && sel !== q.correct) {
           wrapDataCorrect = ' data-correct="✓ ' + self._escapeHtmlAttr(String(q.correct)) + '"';
         }
         html += '<label class="b1-reading2-select-wrap"' + wrapDataCorrect + '><span class="b1-reading2-select-label">Option</span>';

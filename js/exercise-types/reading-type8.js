@@ -173,6 +173,54 @@
       if (typeof ReadingType8.initB1Reading2StripIfNeeded === 'function') {
         ReadingType8.initB1Reading2StripIfNeeded();
       }
+    },
+
+    /**
+     * Footer "Show correct answer" for B1 Reading Part 2: swap the letter selects (and previews)
+     * between the student's choices and the key; purple styling while showing the key.
+     */
+    setAnswerMode: function(mode) {
+      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      var answers = AppState.currentExercise.answers || {};
+      var questions = AppState.currentExercise.content.questions || [];
+      questions.forEach(function(q) {
+        var sel = document.querySelector('.b1-reading2-select[data-qnum="' + q.number + '"]');
+        if (!sel) return;
+        if (sel.dataset.b1AnsToggleStored === undefined) {
+          var fromState = answers[q.number];
+          sel.dataset.b1AnsToggleStored = (fromState != null && String(fromState).trim() !== '')
+            ? String(fromState).trim()
+            : (sel.value || '');
+        }
+        if (mode === 'correct') {
+          if (q.correct) sel.value = q.correct;
+          sel.classList.add('b1-reading2-select-answer-toggle-correct');
+        } else {
+          sel.value = sel.dataset.b1AnsToggleStored || '';
+          sel.classList.remove('b1-reading2-select-answer-toggle-correct');
+        }
+      });
+      ReadingType8._refreshB1Reading2PreviewsForAnswerMode(mode);
+    },
+
+    _refreshB1Reading2PreviewsForAnswerMode: function(mode) {
+      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      var texts = AppState.currentExercise.content.texts || {};
+      var answers = AppState.currentExercise.answers || {};
+      (AppState.currentExercise.content.questions || []).forEach(function(q) {
+        var letter = '';
+        if (mode === 'correct') {
+          letter = q.correct ? String(q.correct).trim() : '';
+        } else {
+          var a = answers[q.number];
+          letter = (a != null && String(a).trim() !== '') ? String(a).trim() : '';
+        }
+        ReadingType8._setB1Reading2Preview(q.number, letter, letter ? texts[letter] : '');
+        var prev = document.querySelector('.b1-reading2-preview[data-qpreview="' + q.number + '"]');
+        if (prev) {
+          prev.classList.toggle('b1-reading2-preview-key-mode', mode === 'correct' && !!letter);
+        }
+      });
     }
   };
 })();

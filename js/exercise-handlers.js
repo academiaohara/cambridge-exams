@@ -80,10 +80,14 @@
         }
       }
       
-      // For types 5, 6, 8: auto-switch to questions view after correction so user sees results
+      // For types 5, 6, 8: auto-switch after correction so user sees results (B1 Reading 2 → People strip).
       const autoSwitchTypes = ['multiple-choice-text', 'cross-text-matching', 'multiple-matching'];
-      if (autoSwitchTypes.includes(partConfig.type) && typeof ExerciseRenderer !== 'undefined') {
-        ExerciseRenderer.toggleView('questions');
+      if (typeof ExerciseRenderer !== 'undefined') {
+        if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) {
+          ExerciseRenderer.toggleView('text');
+        } else if (autoSwitchTypes.includes(partConfig.type)) {
+          ExerciseRenderer.toggleView('questions');
+        }
       }
 
       // For reading parts 5–8 and listening: reveal the explanation toggle button in the toggle-view-header
@@ -756,12 +760,13 @@
       });
       
       // Remove type-specific correction classes
-      document.querySelectorAll('.reading-type1-correct, .reading-type1-incorrect, .reading-type1-show-correct, .reading-type3-correct, .reading-type3-incorrect, .reading-type3-show-correct, .reading-type4-correct, .reading-type4-incorrect, .reading-type4-show-correct').forEach(function(el) {
+      document.querySelectorAll('.reading-type1-correct, .reading-type1-incorrect, .reading-type1-show-correct, .reading-type3-correct, .reading-type3-incorrect, .reading-type3-show-correct, .reading-type4-correct, .reading-type4-incorrect, .reading-type4-show-correct, .b1-reading2-select-answer-toggle-correct').forEach(function(el) {
         el.classList.remove(
           'reading-type1-correct', 'reading-type1-incorrect',
           'reading-type1-show-correct',
           'reading-type3-correct', 'reading-type3-incorrect', 'reading-type3-show-correct',
-          'reading-type4-correct', 'reading-type4-incorrect', 'reading-type4-show-correct'
+          'reading-type4-correct', 'reading-type4-incorrect', 'reading-type4-show-correct',
+          'b1-reading2-select-answer-toggle-correct'
         );
       });
 
@@ -774,6 +779,10 @@
       // Remove data-correct attributes (correction tooltips)
       document.querySelectorAll('[data-correct]').forEach(function(el) {
         el.removeAttribute('data-correct');
+      });
+      
+      document.querySelectorAll('.b1-reading2-preview-key-mode').forEach(function(el) {
+        el.classList.remove('b1-reading2-preview-key-mode');
       });
       
       // Remove injected correction text spans (e.g., reading-type4)

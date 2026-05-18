@@ -343,6 +343,16 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
+.b1-reading2-preview.has-text.b1-reading2-preview-key-mode {
+  border-left-color: #7c3aed;
+  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+  border-color: #e9d5ff;
+}
+
+.b1-reading2-preview-key-mode .b1-reading2-preview-letter {
+  background: #7c3aed;
+}
+
 .b1-reading2-preview-inner {
   display: flex;
   align-items: flex-start;
@@ -382,6 +392,14 @@
 .b1-reading2-person-card.b1-reading2-row-unanswered {
   border-color: #94a3b8;
   box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
+}
+
+/* Footer toggle: show key answer in purple (distinct from green correct / red incorrect after check). */
+.b1-reading2-select:disabled.b1-reading2-select-answer-toggle-correct {
+  border-color: #7c3aed !important;
+  background-color: #f5f3ff !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%237c3aed' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
+  color: #5b21b6 !important;
 }
 
 .b1-reading2-letter-modal-text {
