@@ -2,89 +2,89 @@
     "tests":  [
                   {
                       "test":  17,
-                      "title":  "Choosing a study app",
-                      "theme":  "technology",
+                      "title":  "Choosing a travel website",
+                      "theme":  "travel",
                       "people":  [
                                      {
                                          "number":  6,
-                                         "text":  "Person A is looking for an activity connected with technology. They want something practical and beginner-friendly."
+                                         "text":  "Amir wants cheap train tickets for a weekend trip. He needs to compare times and prices easily."
                                      },
                                      {
                                          "number":  7,
-                                         "text":  "Person B prefers flexible schedules and enjoys meeting other people interested in technology."
+                                         "text":  "Lily is planning a walking holiday and wants maps showing routes, distances and difficulty levels."
                                      },
                                      {
                                          "number":  8,
-                                         "text":  "Person C wants clear instructions and does not enjoy stressful environments."
+                                         "text":  "Ben wants reviews of family hotels. He needs places with child-friendly facilities and nearby restaurants."
                                      },
                                      {
                                          "number":  9,
-                                         "text":  "Person D needs something inexpensive and easy to reach after work."
+                                         "text":  "Eva wants ideas for short city visits. She prefers free museums and activities she can do in one day."
                                      },
                                      {
                                          "number":  10,
-                                         "text":  "Person E prefers creative activities and likes small groups with personal feedback."
+                                         "text":  "Jorge is travelling by bicycle and needs advice about safe roads and repair shops along the way."
                                      }
                                  ],
                       "texts":  [
                                     {
                                         "letter":  "A",
-                                        "text":  "This option offers practical beginner sessions connected with technology. Trainers explain tasks step by step and welcome first-time visitors."
+                                        "text":  "Rail Saver compares [6]ticket prices and departure times[/6] from several train companies. Users can quickly find the cheapest route for [6]weekend journeys[/6] and book through one page."
                                     },
                                     {
                                         "letter":  "B",
-                                        "text":  "This group meets at different times each week and encourages members to socialise before activities begin."
+                                        "text":  "WalkMore offers downloadable maps with route length, expected time and [7]difficulty level[/7]. It is useful for travellers planning [7]walking holidays[/7] in the countryside."
                                     },
                                     {
                                         "letter":  "C",
-                                        "text":  "This service focuses on calm learning with simple guidance, making it suitable for nervous newcomers."
+                                        "text":  "Family Stay Reviews focuses on hotels with children’s pools, play areas and large rooms. Parents comment on [8]child-friendly facilities[/8] and whether nearby restaurants suit families."
                                     },
                                     {
                                         "letter":  "D",
-                                        "text":  "This choice is affordable and located near public transport, making it useful for people finishing work late."
+                                        "text":  "City Day Out suggests short routes for visitors who only have one day. It highlights [9]free museums[/9], parks and simple activities within walking distance of the centre."
                                     },
                                     {
                                         "letter":  "E",
-                                        "text":  "This workshop is designed for small groups and includes detailed feedback from experienced leaders."
+                                        "text":  "Cycle Roads shows quieter roads, steep sections and places where riders can fix problems. The map includes [10]bicycle repair shops[/10] and safety notes from other cyclists."
                                     },
                                     {
                                         "letter":  "F",
-                                        "text":  "This programme is aimed at advanced users and expects independent preparation before sessions."
+                                        "text":  "Luxury Islands recommends expensive beach resorts and private boat trips for long holidays."
                                     },
                                     {
                                         "letter":  "G",
-                                        "text":  "This activity is mainly for children and families visiting during school holidays."
+                                        "text":  "Airport Lounge Guide reviews waiting areas inside international airports."
                                     },
                                     {
                                         "letter":  "H",
-                                        "text":  "This service is expensive and mainly attracts experienced participants preparing for competitions."
+                                        "text":  "Food Abroad lists famous restaurants but does not include transport or hotel advice."
                                     }
                                 ],
                       "answers":  [
                                       {
                                           "question":  6,
                                           "answer":  "A",
-                                          "explanation":  "The option is beginner-friendly and practical."
+                                          "explanation":  "Amir needs cheap train comparisons for a weekend trip."
                                       },
                                       {
                                           "question":  7,
                                           "answer":  "B",
-                                          "explanation":  "It offers flexible schedules and social activities."
+                                          "explanation":  "Lily wants walking routes with distances and difficulty."
                                       },
                                       {
                                           "question":  8,
                                           "answer":  "C",
-                                          "explanation":  "The service focuses on calm learning and clear guidance."
+                                          "explanation":  "Ben needs family hotel reviews and facilities."
                                       },
                                       {
                                           "question":  9,
                                           "answer":  "D",
-                                          "explanation":  "It is affordable and easy to reach after work."
+                                          "explanation":  "Eva wants free one-day city activities."
                                       },
                                       {
                                           "question":  10,
                                           "answer":  "E",
-                                          "explanation":  "It provides creative small-group work with feedback."
+                                          "explanation":  "Jorge needs cycling safety and repair information."
                                       }
                                   ]
                   }

@@ -2,89 +2,89 @@
     "tests":  [
                   {
                       "test":  3,
-                      "title":  "Choosing places to visit",
-                      "theme":  "places",
+                      "title":  "Choosing a weekend activity",
+                      "theme":  "activities",
                       "people":  [
                                      {
                                          "number":  6,
-                                         "text":  "Isabel wants somewhere outdoors for a quiet walk with her grandfather. He cannot manage steep paths, and she would like a café where they can rest afterwards. They also want clear information before deciding, so they can choose with confidence."
+                                         "text":  "Alex wants beginner-friendly activities lessons with patient teachers and practical activities."
                                      },
                                      {
                                          "number":  7,
-                                         "text":  "Marco wants an exciting place to take his teenage cousins. They enjoy climbing and physical challenges, but the activity must continue if it rains. They also want clear information before deciding, so they can choose with confidence."
+                                         "text":  "Jamie enjoys social evening activities connected with activities and meeting new people."
                                      },
                                      {
                                          "number":  8,
-                                         "text":  "Lena loves old buildings and wants a guided tour in the afternoon. She is not interested in museums with objects in glass cases. They also want clear information before deciding, so they can choose with confidence."
+                                         "text":  "Taylor prefers calm, organised environments with clear instructions and small groups."
                                      },
                                      {
                                          "number":  9,
-                                         "text":  "Sam wants a cheap place for a picnic with friends. They need space for ball games and would like to arrive by bus from the town centre. They also want clear information before deciding, so they can choose with confidence."
+                                         "text":  "Morgan needs an inexpensive option near public transport because they finish work late."
                                      },
                                      {
                                          "number":  10,
-                                         "text":  "Aisha wants to photograph unusual views of the city at sunset. She does not mind walking uphill, but she needs the place to stay open until evening. They also want clear information before deciding, so they can choose with confidence."
+                                         "text":  "Casey enjoys creative activities and wants personal advice from experienced instructors."
                                      }
                                  ],
                       "texts":  [
                                     {
                                         "letter":  "A",
-                                        "text":  "Riverside Gardens has flat paths beside the water, plenty of benches and a small café near the main gate. It is popular with older visitors and families who want a gentle walk. The gardens close at 6 p.m. and bikes are not allowed. Visitors receive clear information before booking, and staff are happy to answer simple questions."
+                                        "text":  "This course introduces [6]basic activities skills[/6] through practical sessions. Teachers give [6]clear support for complete beginners[/6] and answer questions patiently."
                                     },
                                     {
                                         "letter":  "B",
-                                        "text":  "Adventure Dome is an indoor centre with climbing walls, rope bridges and timed obstacle courses. It is designed mainly for older children and teenagers, and all activities run whatever the weather. Visitors should book in advance at weekends. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                        "text":  "Members meet [7]on weekday evenings[/7] and spend time socialising before activities begin. The atmosphere is relaxed and friendly."
                                     },
                                     {
                                         "letter":  "C",
-                                        "text":  "Old Market Hall offers afternoon tours led by local historians. Visitors walk through the building, hear stories about traders and see rooms usually closed to the public. There are no display cabinets or formal exhibitions, just the building itself. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                        "text":  "This programme uses [8]small groups and carefully organised sessions[/8]. Staff provide [8]simple step-by-step instructions[/8] for nervous newcomers."
                                     },
                                     {
                                         "letter":  "D",
-                                        "text":  "West Park is free to enter and has wide lawns for football, frisbee and picnics. Several buses from the town centre stop outside the main entrance. There are toilets, but no café, so visitors usually bring their own food. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                        "text":  "The centre offers [9]low-cost sessions[/9] close to the main train station, making it useful for [9]people travelling after work[/9]."
                                     },
                                     {
                                         "letter":  "E",
-                                        "text":  "Hilltop Tower gives wide views across the city and is especially popular with photographers in the evening. The path is steep in places, but the tower stays open until 9 p.m. in summer. Tripods are allowed outside. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                        "text":  "Experienced leaders provide [10]individual feedback[/10] and encourage participants to develop [10]creative personal ideas[/10]."
                                     },
                                     {
                                         "letter":  "F",
-                                        "text":  "City Museum has a large collection of local objects in glass cases, including coins, tools and costumes. Guided tours run in the morning only. It is indoors, central and useful for visitors interested in detailed historical collections. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                        "text":  "Advanced participants prepare independently and complete extra practice at home every week."
                                     },
                                     {
                                         "letter":  "G",
-                                        "text":  "Lakeside Trail is a beautiful walking route, but parts of it are muddy and steep. There is no café, although there are picnic tables near the car park. The trail is difficult for visitors with limited mobility. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                        "text":  "Weekend family sessions are mainly designed for children under twelve."
                                     },
                                     {
                                         "letter":  "H",
-                                        "text":  "Skyline Café has excellent sunset views from its windows, but photography is not allowed inside. The café is reached by lift, so no climbing is needed. It closes at 7 p.m. and tables are expensive in the evening. Visitors receive clear information before booking, and staff are happy to answer simple questions. The service is easy to understand, with practical details clearly explained for new users."
+                                        "text":  "This intensive programme prepares experienced users for national competitions."
                                     }
                                 ],
                       "answers":  [
                                       {
                                           "question":  6,
                                           "answer":  "A",
-                                          "explanation":  "Isabel needs flat outdoor paths and a café for her grandfather; A is suitable."
+                                          "explanation":  "Alex needs beginner lessons with practical support."
                                       },
                                       {
                                           "question":  7,
                                           "answer":  "B",
-                                          "explanation":  "Marco needs indoor physical challenges for teenagers; B fits."
+                                          "explanation":  "Jamie wants social evening activities."
                                       },
                                       {
                                           "question":  8,
                                           "answer":  "C",
-                                          "explanation":  "Lena wants an afternoon guided tour of an old building, not display cases; C matches."
+                                          "explanation":  "Taylor prefers organised small-group sessions."
                                       },
                                       {
                                           "question":  9,
                                           "answer":  "D",
-                                          "explanation":  "Sam needs a cheap picnic place with ball-game space and bus access; D fits."
+                                          "explanation":  "Morgan needs cheap transport-friendly options."
                                       },
                                       {
                                           "question":  10,
                                           "answer":  "E",
-                                          "explanation":  "Aisha wants sunset city views and can walk uphill; E is best."
+                                          "explanation":  "Casey wants creativity and personal feedback."
                                       }
                                   ]
                   }
