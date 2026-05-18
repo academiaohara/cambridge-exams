@@ -154,7 +154,10 @@
       var bodyEl = document.getElementById('question-nav-body');
       if (!overlay || !bodyEl) return;
 
-      var safeBody = this._escapeHtml(String(body)).replace(/\n/g, '<br>');
+      var escaped = this._escapeHtml(String(body)).replace(/\n/g, '<br>');
+      var safeBody = typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.processEvidenceMarkers
+        ? ExerciseRenderer.processEvidenceMarkers(escaped)
+        : escaped;
       bodyEl.innerHTML =
         '<div class="qnav-header">' +
         '<div class="qnav-header-main">' +
