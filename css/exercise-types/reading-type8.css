@@ -139,6 +139,40 @@
   gap: 10px;
 }
 
+/* Explanation mode: option row highlighted like C1 evidence (orange) */
+.explanation-mode-text .b1-reading2-person-toolbar {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-top: 1px solid #fed7aa;
+  border-radius: 12px 12px 0 0;
+  background: #fff7ed;
+  box-shadow: inset 0 0 0 1px rgba(249, 115, 22, 0.28);
+}
+
+/* Solution text sits directly under the toolbar (same visual block) */
+.b1-reading2-expl-solution {
+  display: none;
+  margin-top: 0;
+  padding: 12px 14px 14px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.explanation-mode-text .b1-reading2-expl-solution {
+  display: block;
+  background: #fff7ed;
+  border: 1px solid rgba(249, 115, 22, 0.28);
+  border-top: 1px dashed rgba(249, 115, 22, 0.35);
+  border-radius: 0 0 12px 12px;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.explanation-mode-text .b1-reading2-person-card--expl-active {
+  border-color: #fb923c;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.22);
+}
+
 .question-nav-row-letters {
   flex-wrap: wrap;
   gap: 6px;
