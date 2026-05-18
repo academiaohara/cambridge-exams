@@ -534,7 +534,7 @@
         html += '<div class="b1-reading2-person-header">';
         html += '<span class="reading-type8-text-label">' + qNum + '</span>';
         html += '<label class="b1-reading2-select-wrap"><span class="b1-reading2-select-label">Option</span>';
-        html += '<select class="' + selClass + '" data-qnum="' + qNum + '"' + (isChecked ? ' disabled' : '') +
+        html += '<select class="' + selClass + '" data-qnum="' + qNum + '"' + (isChecked ? ' disabled' : ' required') +
           ' onchange="ReadingType8.onB1Reading2SelectChange(' + qNum + ', this.value)">';
         html += '<option value="">' + (isChecked ? '—' : 'Choose…') + '</option>';
         letters.forEach(function(L) {
