@@ -141,45 +141,10 @@
     checkAnswers: function() {
       const questions = AppState.currentExercise.content.questions;
       let correct = 0;
-      const isB1 = AppState.currentExercise._b1PetReading2Ui;
-
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
         const isCorrect = this.isAnswerCorrect(q, userAnswer);
         if (isCorrect) correct++;
-
-        if (isB1) {
-          var card = document.querySelector('.b1-reading2-person-card[data-qnum="' + q.number + '"]');
-          if (card) {
-            card.classList.remove('b1-reading2-row-correct', 'b1-reading2-row-incorrect', 'b1-reading2-row-unanswered');
-            if (userAnswer) {
-              card.classList.add(isCorrect ? 'b1-reading2-row-correct' : 'b1-reading2-row-incorrect');
-            } else {
-              card.classList.add('b1-reading2-row-unanswered');
-            }
-          }
-          var selEl = document.querySelector('.b1-reading2-select[data-qnum="' + q.number + '"]');
-          if (selEl) {
-            selEl.classList.remove('b1-reading2-select-correct', 'b1-reading2-select-incorrect', 'b1-reading2-select-unanswered');
-            if (userAnswer) {
-              selEl.classList.add(isCorrect ? 'b1-reading2-select-correct' : 'b1-reading2-select-incorrect');
-            } else {
-              selEl.classList.add('b1-reading2-select-unanswered');
-            }
-            selEl.disabled = true;
-          }
-          var lab = document.querySelector('.b1-reading2-person-card[data-qnum="' + q.number + '"] .b1-reading2-select-wrap');
-          if (lab) {
-            var prevHint = lab.querySelector('.b1-reading2-correct-hint');
-            if (prevHint) prevHint.remove();
-            if (userAnswer && !isCorrect) {
-              var hint = document.createElement('span');
-              hint.className = 'b1-reading2-correct-hint';
-              hint.textContent = 'Correct: ' + q.correct;
-              lab.appendChild(hint);
-            }
-          }
-        }
 
         const answerSpan = document.getElementById('answer-' + q.number);
         if (answerSpan) {

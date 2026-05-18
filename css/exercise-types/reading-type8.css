@@ -166,74 +166,108 @@
   gap: 6px;
   font-size: 0.9rem;
   color: var(--text-muted, #64748b);
+  position: relative;
 }
 
 .b1-reading2-select-label {
   white-space: nowrap;
 }
 
-/* Letter chip: match .question-nav-cell.question-nav-letter.explanation-active (question-nav.css) */
+/* Post-check: show correct letter on hover (same idea as .gap-box.incorrect in gaps.css). */
+.b1-reading2-select-wrap[data-correct]::after {
+  content: attr(data-correct);
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background: var(--primary-dark);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  display: none;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .b1-reading2-select-wrap[data-correct]:hover::after {
+    display: block;
+  }
+}
+
+/* Letter select: blues while practising (cf. .gap-box / .gap-box.answered in gaps.css). */
 .b1-reading2-select {
   box-sizing: border-box;
   min-width: 2.25rem;
   height: 36px;
-  padding: 0 26px 0 8px;
+  padding: 0 26px 0 10px;
   border-radius: 8px;
-  border: 2px solid #f97316;
-  background: #f97316 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23ffffff' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
+  border: 2px solid var(--primary-dark);
+  background: var(--primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23ffffff' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
   font-weight: 700;
   font-size: 0.85rem;
   color: #fff;
   cursor: pointer;
-  text-align: center;
+  text-align: left;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
+.b1-reading2-select option {
+  text-align: left;
+  direction: ltr;
+  font-weight: 600;
+  color: var(--text-dark, #1e293b);
+  background: #fff;
+}
+
 .b1-reading2-select:invalid {
-  border-color: #e2e8f0;
-  background: #f8fafc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%2364748b' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
-  color: #64748b;
+  border: 2px solid var(--primary-light);
+  background: linear-gradient(135deg, #f0f4ff, #e6ecfe) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%234f46e5' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
+  color: var(--primary);
+}
+
+.b1-reading2-select:disabled {
+  cursor: not-allowed;
+}
+
+.b1-reading2-select-wrap[data-correct] {
+  cursor: help;
 }
 
 .b1-reading2-select:disabled.b1-reading2-select-correct {
   border-color: #22c55e;
-  background: #f0fdf4;
+  background: #f0fdf4 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23166534' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
   color: #166534;
   box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.2);
 }
 
 .b1-reading2-select:disabled.b1-reading2-select-incorrect {
   border-color: #ef4444;
-  background: #fef2f2;
+  background: #fef2f2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23991b1b' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
   color: #991b1b;
   box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2);
 }
 
+.b1-reading2-select-wrap[data-correct] .b1-reading2-select:disabled {
+  cursor: help;
+}
+
 .b1-reading2-select:disabled.b1-reading2-select-unanswered {
-  border-color: #f97316;
-  background: #f97316 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23ffffff' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
-  color: #fff;
+  border-color: #cbd5e1;
+  background: #f1f5f9 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%2364748b' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center;
+  color: #64748b;
 }
 
 .explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show {
   pointer-events: none;
-  border-color: #f97316 !important;
-  background: #f97316 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23ffffff' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center !important;
+  border-color: var(--primary-dark) !important;
+  background: var(--primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23ffffff' d='M5 7L1 3h8z'/%3E%3C/svg%3E") no-repeat right 7px center !important;
   color: #fff !important;
-}
-
-.explanation-mode-text .b1-reading2-correct-hint {
-  display: none;
-}
-
-.b1-reading2-correct-hint {
-  flex-basis: 100%;
-  margin: 2px 0 0;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #b91c1c;
 }
 
 .b1-reading2-solution-expl {
@@ -322,23 +356,14 @@
 }
 
 .b1-reading2-person-card.b1-reading2-row-unanswered {
-  border-color: #f59e0b;
+  border-color: #94a3b8;
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
 }
 
 .b1-reading2-letter-modal-text {
   font-size: 1rem;
   line-height: 1.65;
   color: var(--text-dark);
-}
-
-/* B1 Reading Part 2: in explanation mode only the active question keeps evidence marker chrome;
-   other [n]…[/n] spans stay as plain text (see .explanation-mode-text .evidence-explanation-mode in exercise.css). */
-.explanation-mode-text:has(.b1-reading2-people) .evidence-explanation-mode.evidence-marker:not(.evidence-active) {
-  color: inherit;
-  background: transparent;
-  border-radius: 0;
-  padding: 0;
-  text-decoration: none;
 }
 
 /* B1 Reading Part 2: in explanation mode only the active question keeps evidence marker chrome;
