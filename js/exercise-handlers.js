@@ -407,10 +407,6 @@
         const textContainer = document.getElementById('selectable-text');
         if (textContainer) textContainer.classList.remove('explanation-mode-text');
 
-        document.querySelectorAll('.b1-reading2-person-card--expl-active').forEach(function(el) {
-          el.classList.remove('b1-reading2-person-card--expl-active');
-        });
-
         document.querySelectorAll('.question-nav-cell.explanation-active').forEach(function(cell) {
           cell.classList.remove('explanation-active');
         });
@@ -493,19 +489,6 @@
       var cell = document.querySelector('.question-nav-cell[data-qnum="' + qNum + '"]');
       if (cell) cell.classList.add('explanation-active');
 
-      if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) {
-        document.querySelectorAll('.b1-reading2-person-card--expl-active').forEach(function(el) {
-          el.classList.remove('b1-reading2-person-card--expl-active');
-        });
-        var b1card = document.querySelector('.b1-reading2-person-card[data-qnum="' + qNum + '"]');
-        if (b1card) {
-          b1card.classList.add('b1-reading2-person-card--expl-active');
-          if (typeof b1card.scrollIntoView === 'function') {
-            b1card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        }
-      }
-
       // Update explanation panel cards
       document.querySelectorAll('.explanation-card.explanation-active').forEach(function(card) {
         card.classList.remove('explanation-active');
@@ -577,12 +560,15 @@
       var html = '<span class="eq-number">' + qNum + '</span>';
       html += '<div class="eq-content">';
 
-      if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) {
-        html += '<p class="eq-b1r2-sticky-hint">The explanation for this person appears below the option bar on the card.</p>';
+      if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui && question.correct) {
+        html += '<div class="eq-b1r2-correct-callout">' +
+          '<span class="eq-b1r2-correct-label">Correct answer</span> ' +
+          '<span class="eq-option eq-option-correct eq-b1r2-correct-letter">' + question.correct + '</span>' +
+          '</div>';
       }
 
       // Add question text
-      if (question.question && !(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui)) {
+      if (question.question) {
         html += '<span class="eq-question-text">' + question.question + '</span>';
       }
 
@@ -609,7 +595,7 @@
         }
       }
 
-      if (options.length > 0 && !(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui)) {
+      if (options.length > 0) {
         var layoutClass = (partType === 'multiple-choice-text' || partType === 'multiple-choice') ? 'eq-options eq-options-rows' : 'eq-options eq-options-columns';
         html += '<div class="' + layoutClass + '">';
         options.forEach(function(opt) {
@@ -631,10 +617,8 @@
         html += '<span class="eq-option eq-option-correct" style="display:inline-block;margin-top:4px">' + question.correct + '</span>';
       }
 
-      // Add explanation text (B1 Reading Part 2 shows this on each person card under the toolbar)
-      if (!(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui)) {
-        html += '<span class="eq-text">' + (question.explanation || '') + '</span>';
-      }
+      // Add explanation text
+      html += '<span class="eq-text">' + (question.explanation || '') + '</span>';
       html += '</div>';
       qDisplay.innerHTML = html;
     },

@@ -630,7 +630,7 @@
 }
 
 .explanation-mode-text .evidence-explanation-mode .evidence-bracket {
-  display: none;
+  font-weight: 600;
 }
 
 /* B1 Reading Part 2 explanation strip: correct letter callout */
@@ -650,14 +650,6 @@
 
 .eq-b1r2-correct-letter {
   font-size: 1rem;
-}
-
-.eq-b1r2-sticky-hint {
-  margin: 0 0 4px;
-  font-size: 0.88rem;
-  color: var(--text-muted, #64748b);
-  line-height: 1.45;
-  max-width: 28rem;
 }
 
 /* Evidence markers in text (rendered from [n]...[/n]) */

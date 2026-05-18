@@ -514,9 +514,6 @@
           html += '<option value="' + L + '"' + (sel === L ? ' selected' : '') + '>' + L + '</option>';
         });
         html += '</select></label></div>';
-        var explRaw = (q.explanation != null ? q.explanation : '').toString();
-        var explSafe = self._escapeHtmlAttr(explRaw).replace(/\n/g, '<br>');
-        html += '<div class="b1-reading2-expl-solution" data-qexpl="' + qNum + '">' + explSafe + '</div>';
         html += '<div class="b1-reading2-preview" data-qpreview="' + qNum + '"></div>';
         html += '</div>';
       });
