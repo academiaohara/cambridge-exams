@@ -22,7 +22,7 @@
       var body = String(rawText || '').replace(/\r\n/g, '\n');
       var bodyHtml;
       if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.formatB1Reading2NoticeHtml) {
-        bodyHtml = ExerciseRenderer.formatB1Reading2NoticeHtml(body);
+        bodyHtml = ExerciseRenderer.formatB1Reading2NoticeHtml(body, !!AppState.answersChecked);
       } else {
         var escaped = this._b1PreviewEscape(body).replace(/\n/g, '<br>');
         bodyHtml = typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.processEvidenceMarkers
@@ -196,6 +196,18 @@
       });
 
       return correct;
+    },
+
+    /** After check answers, rebuild people strip so notice markup uses post-check classes. */
+    reRender: function() {
+      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      var root = document.getElementById('b1-reading2-people-root');
+      if (root && typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.renderB1Reading2PeopleCards) {
+        root.outerHTML = ExerciseRenderer.renderB1Reading2PeopleCards(AppState.currentExercise);
+      }
+      if (typeof ReadingType8.initB1Reading2StripIfNeeded === 'function') {
+        ReadingType8.initB1Reading2StripIfNeeded();
+      }
     }
   };
 })();

@@ -342,15 +342,13 @@
       this.initTypeSpecificListeners(partConfig.type);
     },
     
-    /** [n]...[/n] evidence: plain inner text normally; bracketed orange block in .explanation-mode-text. */
+    /** [n]...[/n] evidence: plain inner text; styled phrase only under .explanation-mode-text (no bracket labels). */
     processEvidenceMarkers: function(text) {
       return String(text || '').replace(/\[(\d+)\]([\s\S]*?)\[\/\1\]/g, function(_, n, inner) {
         return '<span class="evidence-wrap" data-qnum="' + n + '">' +
           '<span class="evidence-normal">' + inner + '</span>' +
           '<span class="evidence-explanation-mode evidence-marker" data-qnum="' + n + '">' +
-          '<span class="evidence-bracket">[' + n + ']</span>' +
           '<span class="evidence-core">' + inner + '</span>' +
-          '<span class="evidence-bracket">[/' + n + ']</span>' +
           '</span></span>';
       });
     },
@@ -487,9 +485,12 @@
     /**
      * B1 Reading Part 2 / type8 notice: optional ### title line + body with [n]…[/n] evidence markers.
      * Returns safe HTML (content escaped before markers are applied).
+     * @param {boolean} [withNoticeBodyClasses] When true (after answers are checked), use reading-type8 notice typography classes.
      */
-    formatB1Reading2NoticeHtml: function(raw) {
+    formatB1Reading2NoticeHtml: function(raw, withNoticeBodyClasses) {
       var self = this;
+      var useNotice = !!withNoticeBodyClasses;
+      var bodyCls = useNotice ? 'reading-type8-text-content b1-reading2-notice-body' : 'b1-reading2-notice-plain';
       var r = String(raw == null ? '' : raw).replace(/\r\n/g, '\n');
       if (r.startsWith('### ')) {
         var nl = r.indexOf('\n');
@@ -497,11 +498,11 @@
         var bodyText = nl !== -1 ? r.substring(nl + 1) : '';
         var head = '<div class="reading-type8-text-header b1-reading2-notice-head">' +
           '<strong class="reading-type8-text-title">' + self._escapeHtmlAttr(titleLine) + '</strong></div>';
-        var body = '<div class="reading-type8-text-content b1-reading2-notice-body">' +
+        var body = '<div class="' + bodyCls + '">' +
           self.processEvidenceMarkers(self._escapeHtmlAttr(bodyText).replace(/\n/g, '<br>')) + '</div>';
         return head + body;
       }
-      return '<div class="reading-type8-text-content b1-reading2-notice-body">' +
+      return '<div class="' + bodyCls + '">' +
         self.processEvidenceMarkers(self._escapeHtmlAttr(r).replace(/\n/g, '<br>')) + '</div>';
     },
 
@@ -513,7 +514,7 @@
       var userAnswer = AppState.currentExercise && AppState.currentExercise.answers ? AppState.currentExercise.answers : {};
       var isChecked = AppState.answersChecked;
       var self = this;
-      var html = '<div class="reading-type8-texts b1-reading2-people">';
+      var html = '<div class="reading-type8-texts b1-reading2-people" id="b1-reading2-people-root">';
       questions.forEach(function(q) {
         var qNum = q.number;
         var body = (q.personText != null ? q.personText : '').toString().replace(/\r\n/g, '\n');
@@ -549,8 +550,7 @@
         var solRaw = solKey && texts[solKey] != null ? texts[solKey] : '';
         if (solRaw) {
           html += '<div class="b1-reading2-solution-expl" data-sol-letter="' + self._escapeHtmlAttr(solKey) + '">';
-          html += '<div class="b1-reading2-solution-expl-heading">Notice ' + self._escapeHtmlAttr(solKey) + '</div>';
-          html += self.formatB1Reading2NoticeHtml(solRaw);
+          html += self.formatB1Reading2NoticeHtml(solRaw, isChecked);
           html += '</div>';
         }
         html += '<div class="b1-reading2-preview" data-qpreview="' + qNum + '"></div>';
