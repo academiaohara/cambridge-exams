@@ -484,6 +484,27 @@
         .replace(/'/g, '&#39;');
     },
 
+    /**
+     * B1 Reading Part 2 / type8 notice: optional ### title line + body with [n]…[/n] evidence markers.
+     * Returns safe HTML (content escaped before markers are applied).
+     */
+    formatB1Reading2NoticeHtml: function(raw) {
+      var self = this;
+      var r = String(raw == null ? '' : raw).replace(/\r\n/g, '\n');
+      if (r.startsWith('### ')) {
+        var nl = r.indexOf('\n');
+        var titleLine = nl !== -1 ? r.substring(4, nl).trim() : r.substring(4).trim();
+        var bodyText = nl !== -1 ? r.substring(nl + 1) : '';
+        var head = '<div class="reading-type8-text-header b1-reading2-notice-head">' +
+          '<strong class="reading-type8-text-title">' + self._escapeHtmlAttr(titleLine) + '</strong></div>';
+        var body = '<div class="reading-type8-text-content b1-reading2-notice-body">' +
+          self.processEvidenceMarkers(self._escapeHtmlAttr(bodyText).replace(/\n/g, '<br>')) + '</div>';
+        return head + body;
+      }
+      return '<div class="reading-type8-text-content b1-reading2-notice-body">' +
+        self.processEvidenceMarkers(self._escapeHtmlAttr(r).replace(/\n/g, '<br>')) + '</div>';
+    },
+
     /** B1 Preliminary Reading Part 2: person card + letter select + chosen notice preview. */
     renderB1Reading2PeopleCards: function(exercise) {
       var questions = exercise.content.questions || [];
@@ -495,25 +516,43 @@
       var html = '<div class="reading-type8-texts b1-reading2-people">';
       questions.forEach(function(q) {
         var qNum = q.number;
-        var body = (q.personText != null ? q.personText : '').toString();
+        var body = (q.personText != null ? q.personText : '').toString().replace(/\r\n/g, '\n');
         var safe = self.processEvidenceMarkers(self._escapeHtmlAttr(body).replace(/\n/g, '<br>'));
         var sel = userAnswer[qNum] || '';
         var cardCls = 'reading-type8-text-card b1-reading2-person-card';
         if (isChecked) {
           cardCls += sel ? (sel === q.correct ? ' b1-reading2-row-correct' : ' b1-reading2-row-incorrect') : ' b1-reading2-row-unanswered';
         }
+        var selClass = 'b1-reading2-select';
+        if (isChecked) {
+          if (!sel) selClass += ' b1-reading2-select-unanswered';
+          else if (sel === q.correct) selClass += ' b1-reading2-select-correct';
+          else selClass += ' b1-reading2-select-incorrect';
+        }
         html += '<div class="' + cardCls + '" data-qnum="' + qNum + '">';
         html += '<span class="reading-type8-text-label">' + qNum + '</span>';
         html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
         html += '<div class="b1-reading2-person-toolbar">';
         html += '<label class="b1-reading2-select-wrap"><span class="b1-reading2-select-label">Option</span>';
-        html += '<select class="b1-reading2-select" data-qnum="' + qNum + '"' + (isChecked ? ' disabled' : '') +
+        html += '<select class="' + selClass + '" data-qnum="' + qNum + '"' + (isChecked ? ' disabled' : '') +
           ' onchange="ReadingType8.onB1Reading2SelectChange(' + qNum + ', this.value)">';
         html += '<option value="">' + (isChecked ? '—' : 'Choose…') + '</option>';
         letters.forEach(function(L) {
           html += '<option value="' + L + '"' + (sel === L ? ' selected' : '') + '>' + L + '</option>';
         });
-        html += '</select></label></div>';
+        html += '</select>';
+        if (isChecked && sel && sel !== q.correct) {
+          html += '<span class="b1-reading2-correct-hint">Correct: ' + self._escapeHtmlAttr(q.correct) + '</span>';
+        }
+        html += '</label></div>';
+        var solKey = q.correct ? String(q.correct).trim().toUpperCase().charAt(0) : '';
+        var solRaw = solKey && texts[solKey] != null ? texts[solKey] : '';
+        if (solRaw) {
+          html += '<div class="b1-reading2-solution-expl" data-sol-letter="' + self._escapeHtmlAttr(solKey) + '">';
+          html += '<div class="b1-reading2-solution-expl-heading">Notice ' + self._escapeHtmlAttr(solKey) + '</div>';
+          html += self.formatB1Reading2NoticeHtml(solRaw);
+          html += '</div>';
+        }
         html += '<div class="b1-reading2-preview" data-qpreview="' + qNum + '"></div>';
         html += '</div>';
       });
