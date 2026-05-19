@@ -506,14 +506,42 @@
         self.processEvidenceMarkers(self._escapeHtmlAttr(r).replace(/\n/g, '<br>')) + '</div>';
     },
 
+    /**
+     * Random order for B1 Reading 2 letter dropdowns (notices stay A–H in the letter strip).
+     * Cached on the exercise so re-renders (e.g. after Check answers) do not reshuffle options.
+     */
+    _getB1Reading2ShuffledOptionLetters: function(exercise, texts) {
+      var keys = Object.keys(texts || {}).sort(function(a, b) { return a.localeCompare(b); });
+      if (!keys.length) return keys;
+      var cached = exercise._b1Reading2OptionLetterOrder;
+      if (Array.isArray(cached) && cached.length === keys.length) {
+        var present = {};
+        keys.forEach(function(k) { present[k] = true; });
+        var ok = true;
+        for (var i = 0; i < cached.length; i++) {
+          if (!present[cached[i]]) { ok = false; break; }
+        }
+        if (ok) return cached;
+      }
+      var letters = keys.slice();
+      for (var j = letters.length - 1; j > 0; j--) {
+        var rIdx = Math.floor(Math.random() * (j + 1));
+        var tmp = letters[j];
+        letters[j] = letters[rIdx];
+        letters[rIdx] = tmp;
+      }
+      exercise._b1Reading2OptionLetterOrder = letters;
+      return letters;
+    },
+
     /** B1 Preliminary Reading Part 2: person card + letter select + chosen notice preview. */
     renderB1Reading2PeopleCards: function(exercise) {
       var questions = exercise.content.questions || [];
       var texts = exercise.content.texts || {};
-      var letters = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
+      var self = this;
+      var letters = self._getB1Reading2ShuffledOptionLetters(exercise, texts);
       var userAnswer = AppState.currentExercise && AppState.currentExercise.answers ? AppState.currentExercise.answers : {};
       var isChecked = AppState.answersChecked;
-      var self = this;
       var html = '<div class="reading-type8-texts b1-reading2-people" id="b1-reading2-people-root">';
       questions.forEach(function(q) {
         var qNum = q.number;

@@ -838,6 +838,17 @@
             card.classList.remove('b1-reading2-row-correct', 'b1-reading2-row-incorrect', 'b1-reading2-row-unanswered');
           });
 
+          if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) {
+            delete AppState.currentExercise._b1Reading2OptionLetterOrder;
+            var b1PeopleRoot = document.getElementById('b1-reading2-people-root');
+            if (b1PeopleRoot && typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.renderB1Reading2PeopleCards) {
+              b1PeopleRoot.outerHTML = ExerciseRenderer.renderB1Reading2PeopleCards(AppState.currentExercise);
+            }
+            if (typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
+              ReadingType8.initB1Reading2StripIfNeeded();
+            }
+          }
+
           document.querySelectorAll('.gap-box').forEach(box => {
             const answerSpan = box.querySelector('.gap-answer');
             const match = answerSpan?.textContent.match(/(\d+)\)/);

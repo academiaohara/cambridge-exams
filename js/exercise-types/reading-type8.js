@@ -101,7 +101,13 @@
       html += `<div class="modal-header"><h3>Question ${qNum}</h3><p>Select an option</p></div>`;
       html += '<div class="options-grid">';
       
-      Object.keys(texts).forEach(key => {
+      let letterKeys = Object.keys(texts);
+      if (AppState.currentExercise._b1PetReading2Ui &&
+          typeof ExerciseRenderer !== 'undefined' &&
+          typeof ExerciseRenderer._getB1Reading2ShuffledOptionLetters === 'function') {
+        letterKeys = ExerciseRenderer._getB1Reading2ShuffledOptionLetters(AppState.currentExercise, texts);
+      }
+      letterKeys.forEach(key => {
         html += `
           <button class="opt-btn" onclick="ReadingType8.selectAnswer(${qNum}, '${key}')">
             ${key}
