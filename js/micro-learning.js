@@ -70,8 +70,14 @@
           var r4 = await fetch('Nivel/' + level + '/Exams/' + exam.id + '/reading4.json');
           if (r4.ok) {
             var data4 = await r4.json();
-            if (data4.content && data4.content.questions) {
-              data4.content.questions.forEach(function(q) {
+            var r4Questions = (data4.content && data4.content.questions) || [];
+            // B1/B2 reading4.json is often gapped-text (sentence insertion), not key-word transformations.
+            var looksLikeKeyWordTransform = r4Questions.some(function(q) {
+              return q && (q.keyWord != null || (q.routes && q.routes.length) ||
+                (q.sentence && (q.gapped != null || q.secondSentence != null)));
+            });
+            if (looksLikeKeyWordTransform) {
+              r4Questions.forEach(function(q) {
                 self.cards.push({
                   type: 'transform',
                   source: 'Part 4 – Key Word Transformations',

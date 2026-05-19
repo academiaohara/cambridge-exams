@@ -120,7 +120,7 @@
       1: { type: 'multiple-choice-text', inputMode: 'radio', total: 5, maxMarks: 5 },
       2: { type: 'multiple-matching', inputMode: 'modal', total: 5, maxMarks: 5 },
       3: { type: 'multiple-choice-text', inputMode: 'radio', total: 5, maxMarks: 5 },
-      4: { type: 'gapped-text', inputMode: 'select', total: 1, maxMarks: 1 },
+      4: { type: 'gapped-text', inputMode: 'select', total: 5, maxMarks: 5 },
       5: { type: 'multiple-choice-text', inputMode: 'radio', total: 5, maxMarks: 5 },
       6: { type: 'open-cloze', inputMode: 'text', total: 5, maxMarks: 5 },
       listening1: { type: 'multiple-choice-text', inputMode: 'radio', total: 7, maxMarks: 7 },
@@ -186,6 +186,6 @@
     return a;
   };
 
-  /** Sum of totalQuestions across B1 reading parts 1–6 in each test (5+5+5+1+5+5). */
-  window.CONFIG.B1_READING_MAX_RAW = 26;
+  /** Sum of totalQuestions across B1 reading parts 1–6 in each test (5+5+5+5+5+5). */
+  window.CONFIG.B1_READING_MAX_RAW = 30;
 })();
