@@ -201,6 +201,32 @@
   }
 
   /**
+   * New B1 reading4 JSON: batch file with `tests: [{ type: 'gapped-text', content: { text, paragraphs, questions } }]`
+   * (same canonical shape as B2 Reading Part 6). Optional `test` number matches the exam folder.
+   */
+  function pickB1Reading4BatchBlock(ex, examId) {
+    if (!Array.isArray(ex.tests) || !ex.tests.length) return null;
+    var want = parseExamFolderTestNumber(examId);
+    var candidates = ex.tests.filter(function(t) {
+      if (!t || typeof t !== 'object') return false;
+      var inner = t.content;
+      if (!inner || typeof inner !== 'object') return false;
+      var typ = (t.type || '').toString();
+      if (typ && typ !== 'gapped-text') return false;
+      return typeof inner.text === 'string' && inner.text.trim() !== '' &&
+        inner.paragraphs && typeof inner.paragraphs === 'object' && !Array.isArray(inner.paragraphs) &&
+        Array.isArray(inner.questions) && inner.questions.length > 0;
+    });
+    if (!candidates.length) return null;
+    if (want != null) {
+      for (var i = 0; i < candidates.length; i++) {
+        if (parseInt(candidates[i].test, 10) === want) return candidates[i];
+      }
+    }
+    return candidates[0];
+  }
+
+  /**
    * Wrap canonical PET-style “try something new” article phrases in [n]…[/n] markers so
    * explanation mode can highlight evidence in the passage (see ExerciseRenderer.processEvidenceMarkers).
    */
@@ -282,7 +308,38 @@
     ex._b1PetScoring = true;
   }
 
-  function readingPart4(ex) {
+  function readingPart4(ex, examId) {
+    var batchBlock = pickB1Reading4BatchBlock(ex, examId);
+    if (batchBlock && batchBlock.content && typeof batchBlock.content === 'object') {
+      var c = batchBlock.content;
+      var paragraphs = {};
+      if (c.paragraphs && typeof c.paragraphs === 'object' && !Array.isArray(c.paragraphs)) {
+        sortOptionKeys(Object.keys(c.paragraphs)).forEach(function(k) {
+          paragraphs[k] = sanitizeHtmlTypos(String(c.paragraphs[k]).trim());
+        });
+      }
+      ex.content = {
+        title: sanitizeHtmlTypos((c.title || '').toString().trim()),
+        text: sanitizeHtmlTypos((c.text || '').toString()),
+        paragraphs: paragraphs,
+        questions: normalizeQuestionsArray(c.questions || [])
+      };
+      ex.type = 'gapped-text';
+      if (batchBlock.title && !ex.title) {
+        ex.title = sanitizeHtmlTypos((batchBlock.title || '').toString().trim());
+      }
+      if (batchBlock.time != null && batchBlock.time !== '') ex.time = batchBlock.time;
+      if (batchBlock.description) ex.description = sanitizeHtmlTypos(batchBlock.description);
+      if (batchBlock.totalQuestions != null && batchBlock.totalQuestions !== '') {
+        ex.totalQuestions = batchBlock.totalQuestions;
+      } else if (ex.content.questions.length) {
+        ex.totalQuestions = ex.content.questions.length;
+      }
+      mergeDescription(ex);
+      ex._b1PetScoring = true;
+      return;
+    }
+
     var opts = ex.options;
     var paragraphs = {};
     if (opts && typeof opts === 'object' && !Array.isArray(opts)) {
@@ -426,7 +483,7 @@
       return;
     }
     if (p === 4 || t === 'gapped-text') {
-      readingPart4(ex);
+      readingPart4(ex, examId);
       return;
     }
     if (p === 5 || t === 'multiple-choice-reading') {
