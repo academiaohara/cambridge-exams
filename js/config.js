@@ -121,7 +121,7 @@
       2: { type: 'multiple-matching', inputMode: 'modal', total: 5, maxMarks: 5 },
       3: { type: 'multiple-choice-text', inputMode: 'radio', total: 5, maxMarks: 5 },
       4: { type: 'gapped-text', inputMode: 'select', total: 5, maxMarks: 5 },
-      5: { type: 'multiple-choice-text', inputMode: 'radio', total: 5, maxMarks: 5 },
+      5: { type: 'multiple-choice-text', inputMode: 'radio', total: 6, maxMarks: 6 },
       6: { type: 'open-cloze', inputMode: 'text', total: 5, maxMarks: 5 },
       listening1: { type: 'multiple-choice-text', inputMode: 'radio', total: 7, maxMarks: 7 },
       listening2: { type: 'multiple-choice-text', inputMode: 'radio', total: 6, maxMarks: 6 },

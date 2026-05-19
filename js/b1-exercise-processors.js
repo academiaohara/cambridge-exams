@@ -227,6 +227,43 @@
   }
 
   /**
+   * New B1 reading5 JSON: batch root `{ tests: [{ title, type: 'multiple-choice-text', content: { text, questions[, example] } }], … }`
+   * Same cloze shape as B2/C1 reading part 1. Optional `examId` matches the exam folder.
+   */
+  function pickB1Reading5BatchBlock(ex, examId) {
+    if (!Array.isArray(ex.tests) || !ex.tests.length) return null;
+    var want = parseExamFolderTestNumber(examId);
+    var candidates = ex.tests.filter(function(t) {
+      if (!t || typeof t !== 'object') return false;
+      var c = t.content;
+      if (!c || typeof c !== 'object') return false;
+      if (typeof c.text !== 'string' || c.text.trim() === '') return false;
+      if (!Array.isArray(c.questions) || !c.questions.length) return false;
+      if (c.paragraphs && typeof c.paragraphs === 'object' && !Array.isArray(c.paragraphs) &&
+        Object.keys(c.paragraphs).length) {
+        return false;
+      }
+      var typ = (t.type || '').toString();
+      if (typ && typ !== 'multiple-choice-text') return false;
+      return true;
+    });
+    if (!candidates.length) return null;
+    var folderId = examId != null ? String(examId) : '';
+    for (var j = 0; j < candidates.length; j++) {
+      if (folderId && candidates[j].examId != null &&
+        String(candidates[j].examId) === folderId) {
+        return candidates[j];
+      }
+    }
+    if (want != null) {
+      for (var i = 0; i < candidates.length; i++) {
+        if (parseInt(candidates[i].test, 10) === want) return candidates[i];
+      }
+    }
+    return candidates[0];
+  }
+
+  /**
    * Wrap canonical PET-style “try something new” article phrases in [n]…[/n] markers so
    * explanation mode can highlight evidence in the passage (see ExerciseRenderer.processEvidenceMarkers).
    */
@@ -271,7 +308,37 @@
   function readingPart3or5(ex, appPart, examId) {
     var partNum = parseInt(appPart, 10);
     var batchBlock = !isNaN(partNum) && partNum === 3 ? pickB1Reading3BatchBlock(ex, examId) : null;
+    if (!batchBlock && !isNaN(partNum) && partNum === 5) {
+      batchBlock = pickB1Reading5BatchBlock(ex, examId);
+    }
     if (batchBlock) {
+      if (!isNaN(partNum) && partNum === 5) {
+        var c = batchBlock.content || {};
+        var title5 = sanitizeHtmlTypos((batchBlock.title || '').toString().trim());
+        var article5 = sanitizeHtmlTypos((c.text || '').toString());
+        var qs5 = normalizeQuestionsArray(c.questions || []);
+        ex.content = {
+          title: title5,
+          subtitle: '',
+          text: article5,
+          questions: qs5
+        };
+        if (c.example && typeof c.example === 'object') {
+          ex.content.example = normalizeQuestion(Object.assign({}, c.example));
+        }
+        if (batchBlock.description) ex.description = sanitizeHtmlTypos(batchBlock.description);
+        if (batchBlock.time != null && batchBlock.time !== '') ex.time = batchBlock.time;
+        if (batchBlock.totalQuestions != null && batchBlock.totalQuestions !== '') {
+          ex.totalQuestions = batchBlock.totalQuestions;
+        } else if (qs5.length) {
+          ex.totalQuestions = qs5.length;
+        }
+        if (batchBlock.type) ex.type = batchBlock.type;
+        if (!ex.title) ex.title = title5 || ex.part || 'Reading Part 5';
+        mergeDescription(ex);
+        ex._b1PetScoring = true;
+        return;
+      }
       var title = sanitizeHtmlTypos((batchBlock.title || '').toString().trim());
       var subtitle = sanitizeHtmlTypos((batchBlock.subtitle || '').toString().trim());
       var article = sanitizeHtmlTypos((batchBlock.text || '').toString());
