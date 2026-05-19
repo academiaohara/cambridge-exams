@@ -363,7 +363,8 @@
 }
 
 .reading-type5-gap-choice {
-  display: block;
+  display: flex;
+  align-items: center;
   width: 100%;
   margin: 0;
   padding: 10px 12px;
@@ -378,6 +379,39 @@
   color: var(--text-dark);
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
+}
+
+/* B1 Reading Part 5: numbered blue circle + option word (no A/B/C/D prefix in the label) */
+.reading-type5-opt-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.reading-type5-opt-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75em;
+  height: 1.75em;
+  padding: 0 5px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.82em;
+  font-weight: 800;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.reading-type5-opt-word {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  font-weight: 600;
 }
 
 .reading-type5-gap-choice:hover:not(:disabled) {
