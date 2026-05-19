@@ -619,7 +619,7 @@
       if (options.length > 0) {
         var layoutClass = (partType === 'multiple-choice-text' || partType === 'multiple-choice') ? 'eq-options eq-options-rows' : 'eq-options eq-options-columns';
         html += '<div class="' + layoutClass + '">';
-        options.forEach(function(opt) {
+        options.forEach(function(opt, optIdx) {
           var optText = opt;
           var optLetter = '';
           if (partType === 'multiple-choice-text' || partType === 'multiple-choice' || partType === 'dual-matching') {
@@ -628,7 +628,13 @@
             optLetter = opt;
           }
           var isCorrect = optLetter === question.correct;
-          html += '<span class="eq-option' + (isCorrect ? ' eq-option-correct' : '') + '">' + optText + '</span>';
+          var optBody = optText;
+          if (partType === 'multiple-choice-text' && typeof window.ReadingType5 !== 'undefined' &&
+              typeof ReadingType5.explanationOptionHtml === 'function') {
+            var rich = ReadingType5.explanationOptionHtml(opt, optIdx + 1);
+            if (rich) optBody = rich;
+          }
+          html += '<span class="eq-option' + (isCorrect ? ' eq-option-correct' : '') + '">' + optBody + '</span>';
         });
         html += '</div>';
       }

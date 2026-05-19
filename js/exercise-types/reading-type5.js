@@ -20,6 +20,44 @@
       .replace(/'/g, '\\\'');
   }
 
+  /** Matches "A) word" style options used in B1 reading cloze JSON. */
+  function parseMcTextOption(opt) {
+    var s = String(opt == null ? '' : opt).trim();
+    var m = s.match(/^([A-Z])\)\s*(.*)$/);
+    if (m) {
+      var word = (m[2] != null ? String(m[2]) : '').trim();
+      return { letter: m[1], word: word || m[1] };
+    }
+    return { letter: s.charAt(0) || '', word: s };
+  }
+
+  function isB1ReadingPart5() {
+    return typeof AppState !== 'undefined' &&
+      AppState.currentLevel === 'B1' &&
+      AppState.currentSection === 'reading' &&
+      AppState.currentPart === 5;
+  }
+
+  function wordFromQuestionOption(question, letter) {
+    if (!letter || !question || !Array.isArray(question.options)) return letter || '';
+    var L = String(letter).trim().toUpperCase();
+    for (var i = 0; i < question.options.length; i++) {
+      var p = parseMcTextOption(question.options[i]);
+      if (p.letter === L) return p.word;
+    }
+    return letter;
+  }
+
+  function optionInnerHtmlNumbered(opt, indexOneBased) {
+    var p = parseMcTextOption(opt);
+    return (
+      '<span class="reading-type5-opt-line">' +
+      '<span class="reading-type5-opt-circle" aria-hidden="true">' + indexOneBased + '</span>' +
+      '<span class="reading-type5-opt-word">' + escapeHtml(p.word) + '</span>' +
+      '</span>'
+    );
+  }
+
   function sourceCardLabel(format) {
     var f = (format || '').toString();
     if (f === 'notice') return 'Notice';
@@ -37,10 +75,11 @@
     return 'text';
   }
 
-  function gapTriggerLabel(qNum, userAnswer) {
+  function gapTriggerLabel(qNum, userAnswer, question) {
     var letter = (userAnswer || '').trim();
-    if (letter) return letter;
-    return '(' + qNum + ')';
+    if (!letter) return '(' + qNum + ')';
+    if (isB1ReadingPart5()) return wordFromQuestionOption(question, letter) || letter;
+    return letter;
   }
 
   window.ReadingType5 = {
@@ -50,11 +89,12 @@
      */
     renderInlineGap: function(question, qNum, isChecked, userAnswer) {
       var options = question.options || ['A', 'B', 'C', 'D'];
-      var label = gapTriggerLabel(qNum, userAnswer);
+      var label = gapTriggerLabel(qNum, userAnswer, question);
       var triggerDisabled = isChecked ? ' disabled' : '';
       var choicesHtml = '';
-      options.forEach(function(opt) {
-        var letter = opt.charAt(0);
+      var b1r5 = isB1ReadingPart5();
+      options.forEach(function(opt, optIdx) {
+        var letter = parseMcTextOption(opt).letter;
         var picked = userAnswer === letter;
         var choiceCls = 'reading-type5-gap-choice';
         if (isChecked) {
@@ -67,9 +107,10 @@
         var onpick = isChecked
           ? ''
           : ' onclick="event.stopPropagation(); ReadingType5.pickGapAnswer(' + qNum + ', \'' + escapeJsString(letter) + '\')"';
+        var choiceBody = b1r5 ? optionInnerHtmlNumbered(opt, optIdx + 1) : escapeHtml(opt);
         choicesHtml +=
           '<button type="button" class="' + choiceCls + '" data-letter="' + escapeHtml(letter) + '"' + onpick + '>' +
-          escapeHtml(opt) +
+          choiceBody +
           '</button>';
       });
       var trigCls = 'reading-type5-gap-trigger';
@@ -162,22 +203,33 @@
     renderOptions: function(question, qNum, isChecked, userAnswer) {
       let html = '';
       const options = question.options || ['A', 'B', 'C', 'D'];
-      options.forEach(opt => {
-        const letter = opt.charAt(0);
+      const b1r5 = isB1ReadingPart5();
+      options.forEach(function(opt, idx) {
+        const letter = parseMcTextOption(opt).letter;
         const checked = userAnswer === letter ? 'checked' : '';
         const labelClass = isChecked
           ? (letter === question.correct ? 'correct' : (userAnswer === letter ? 'incorrect' : ''))
           : '';
+        const inner = b1r5 ? optionInnerHtmlNumbered(opt, idx + 1) : '<span>' + escapeHtml(opt) + '</span>';
 
         html += `
           <label class="reading-type5-option ${labelClass} ${isChecked ? 'disabled' : ''}">
             <input type="radio" name="q${qNum}" value="${letter}" ${checked} ${isChecked ? 'disabled' : ''}
                    onchange="ReadingType5.selectAnswer(${qNum}, '${letter}')">
-            <span>${opt}</span>
+            ${inner}
           </label>
         `;
       });
       return html;
+    },
+
+    /**
+     * When active exercise is B1 Reading Part 5, returns HTML (numbered blue circle + option word)
+     * for explanation panels; otherwise returns null so callers keep the raw option string.
+     */
+    explanationOptionHtml: function(opt, indexOneBased) {
+      if (!isB1ReadingPart5()) return null;
+      return optionInnerHtmlNumbered(opt, indexOneBased);
     },
 
     toggleGapPopover: function(ev, qNum) {
@@ -226,7 +278,17 @@
       var btn = wrap.querySelector('.reading-type5-gap-trigger');
       if (!btn) return;
       var checked = typeof AppState !== 'undefined' && AppState.answersChecked;
-      btn.textContent = gapTriggerLabel(qNum, letter);
+      var question = null;
+      if (typeof AppState !== 'undefined' && AppState.currentExercise && AppState.currentExercise.content) {
+        var qs = AppState.currentExercise.content.questions || [];
+        for (var i = 0; i < qs.length; i++) {
+          if (qs[i].number === qNum) {
+            question = qs[i];
+            break;
+          }
+        }
+      }
+      btn.textContent = gapTriggerLabel(qNum, letter, question);
       if (checked) return;
       if (letter) {
         btn.classList.add('filled');
@@ -298,7 +360,7 @@
             if (userAnswer === q.correct) trig.classList.add('correct');
             else if (userAnswer) trig.classList.add('incorrect');
             else trig.classList.add('unanswered-checked');
-            trig.textContent = gapTriggerLabel(q.number, userAnswer || '');
+            trig.textContent = gapTriggerLabel(q.number, userAnswer || '', q);
           }
           wrap.querySelectorAll('.reading-type5-gap-choice').forEach(function(btn) {
             btn.disabled = true;
