@@ -47,7 +47,7 @@ Contiene la lógica específica de cada tipo de ejercicio. Los archivos se carga
 | `reading-type2.js` | `open-cloze` — Part 2 Reading |
 | `reading-type3.js` | `word-formation` — Part 3 Reading |
 | `reading-type4.js` | `transformations` — Part 4 Reading |
-| `reading-type5.js` | `multiple-choice-text` — Part 5 Reading |
+| `reading-type5.js` | `multiple-choice-text` — Part 5 Reading (huecos en el texto + fila en vista “Questions”; cuatro o más opciones en `questions[].options`) |
 | `reading-type6.js` | `cross-text-matching` — Part 6 Reading |
 | `reading-type7.js` | `gapped-text` — Part 7 Reading |
 | `reading-type8.js` | `multiple-matching` — Part 8 Reading |

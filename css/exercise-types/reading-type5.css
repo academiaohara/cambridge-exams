@@ -284,3 +284,163 @@
   cursor: not-allowed;
   opacity: 0.85;
 }
+
+/* B1 (and reading) Part 5 cloze: inline tap-to-choose gap in the passage */
+.reading-type5-gap-wrap {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0 1px;
+  max-width: 100%;
+}
+
+.reading-type5-gap-trigger {
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.35;
+  padding: 2px 10px 3px;
+  margin: 0;
+  border-radius: 8px;
+  border: 2px dashed #94a3b8;
+  background: #f8fafc;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.reading-type5-gap-trigger:hover:not(:disabled) {
+  background: #ede9fe;
+  border-color: var(--primary-light);
+}
+
+.reading-type5-gap-trigger.filled:not(:disabled) {
+  border-style: solid;
+  border-color: #c4b5fd;
+  background: #faf5ff;
+}
+
+.reading-type5-gap-trigger:disabled {
+  cursor: default;
+}
+
+.reading-type5-gap-trigger.correct {
+  background: #d1fae5;
+  border-color: var(--correct);
+  border-style: solid;
+}
+
+.reading-type5-gap-trigger.incorrect {
+  background: #fee2e2;
+  border-color: var(--incorrect);
+  border-style: solid;
+}
+
+.reading-type5-gap-trigger.unanswered-checked {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  border-style: solid;
+}
+
+.reading-type5-gap-panel {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px);
+  min-width: min(320px, calc(100vw - 32px));
+  max-width: min(420px, calc(100vw - 24px));
+  z-index: 40;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.12);
+}
+
+.reading-type5-gap-wrap.reading-type5-gap-open .reading-type5-gap-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reading-type5-gap-choice {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: left;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.reading-type5-gap-choice:hover:not(:disabled) {
+  background: #ede9fe;
+  border-color: var(--primary-light);
+}
+
+.reading-type5-gap-choice.selected:not(:disabled) {
+  border-color: var(--primary);
+  background: #faf5ff;
+}
+
+.reading-type5-gap-choice.correct {
+  background: #d1fae5;
+  border-color: var(--correct);
+}
+
+.reading-type5-gap-choice.incorrect {
+  background: #fee2e2;
+  border-color: var(--incorrect);
+}
+
+.reading-type5-gap-choice:disabled {
+  cursor: default;
+  opacity: 0.95;
+}
+
+/* “Questions” tab: number + A–D (or A–E) on one row */
+.reading-type5-cloze-row {
+  margin: 10px 0;
+}
+
+.reading-type5-cloze-row-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 12px;
+  width: 100%;
+}
+
+.reading-type5-cloze-row .reading-type5-question-number {
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.reading-type5-options-row {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.reading-type5-options-row .reading-type5-option {
+  flex: 1 1 140px;
+  min-width: 120px;
+  margin: 0;
+}
+
+.reading-type5-cloze-row.reading-type5-question {
+  padding: 14px 16px;
+  margin: 8px 0;
+}

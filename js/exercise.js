@@ -526,8 +526,10 @@
             break;
             
           case 'multiple-choice-text':
-            const radio = document.querySelector(`input[name="q${qNum}"][value="${answer}"]`);
-            if (radio) radio.checked = true;
+            if (AppState.currentSection !== 'reading') {
+              const radioMc = document.querySelector(`input[name="q${qNum}"][value="${answer}"]`);
+              if (radioMc) radioMc.checked = true;
+            }
             break;
             
           case 'gapped-text':
@@ -536,6 +538,11 @@
             break;
         }
       });
+
+      if (partConfig.type === 'multiple-choice-text' && AppState.currentSection === 'reading' &&
+          typeof ReadingType5 !== 'undefined' && typeof ReadingType5.syncAllFromAppState === 'function') {
+        ReadingType5.syncAllFromAppState();
+      }
 
       if (partConfig.type === 'multiple-matching' && AppState.currentExercise._b1PetReading2Ui &&
           typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {

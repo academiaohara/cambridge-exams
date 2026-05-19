@@ -190,7 +190,7 @@
         inner = this._buildPart8(question, qNum, isChecked, userAnswer);
       }
       var titleText = showHeaderQuestion ? qNum : 'Question' + ' ' + qNum;
-      var headerQuestion = showHeaderQuestion
+      var headerQuestion = showHeaderQuestion && String(question.question || '').trim() !== ''
         ? '<span class="qnav-question-text qnav-question-text-header">' + this._escapeHtml(question.question) + '</span>'
         : '';
       return '<div class="qnav-header">' +

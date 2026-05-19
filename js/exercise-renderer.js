@@ -24,7 +24,7 @@
       await Promise.all([...cssPromises, ...jsPromises]);
       
       const paragraphs = exercise.content.text ? exercise.content.text.split('||') : [];
-      let paragraphsHTML = this.renderParagraphs(paragraphs, exercise, partConfig);
+      let paragraphsHTML = this.renderParagraphs(paragraphs, exercise, partConfig, section);
       
       // For transformations (Part 4), render questions directly if no text
       if (partConfig.type === 'transformations' && !exercise.content.text && exercise.content.questions) {
@@ -363,8 +363,9 @@
       });
     },
 
-    renderParagraphs: function(paragraphs, exercise, partConfig) {
+    renderParagraphs: function(paragraphs, exercise, partConfig, section) {
       let html = '';
+      var sec = section || (typeof AppState !== 'undefined' ? AppState.currentSection : '');
       paragraphs.forEach(para => {
         if (para.trim() === '') return;
         
@@ -375,7 +376,10 @@
         // or inline gaps within surrounding text (B2 style)
         const isIsolatedGap = partConfig.type === 'gapped-text' && gapNumbers.length > 0 &&
           para.trim().match(/^\(\d+\)$/);
-        const isInlineGapContext = partConfig.type === 'gapped-text' && gapNumbers.length > 0 && !isIsolatedGap;
+        const isInlineGapContext = gapNumbers.length > 0 && !isIsolatedGap && (
+          partConfig.type === 'gapped-text' ||
+          (partConfig.type === 'multiple-choice-text' && sec === 'reading')
+        );
         
         let paraProcessed = para;
         
@@ -721,7 +725,11 @@
         } else if (partConfig.type === 'multiple-matching' && typeof window.ReadingType8 !== 'undefined') {
           questionGap = ReadingType8.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
         } else if (typeof window.ReadingType5 !== 'undefined') {
-          questionGap = ReadingType5.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
+          var isClozeMcText = partConfig.type === 'multiple-choice-text' &&
+            exercise.content && typeof exercise.content.text === 'string' && exercise.content.text.trim() !== '';
+          questionGap = isClozeMcText
+            ? ReadingType5.renderQuestionRow(q, q.number, isChecked, userAnswer[q.number] || '')
+            : ReadingType5.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
         }
         if (partConfig.type === 'multiple-choice-text') {
           html += questionGap;
@@ -805,6 +813,16 @@
         questionsSection.style.display = '';
         if (questionsBtn) questionsBtn.classList.add('active');
         if (textBtn) textBtn.classList.remove('active');
+      }
+
+      if (typeof ReadingType5 !== 'undefined' && typeof ReadingType5.syncAllFromAppState === 'function' &&
+          typeof AppState !== 'undefined' && AppState.currentSection === 'reading') {
+        var pc = typeof CONFIG !== 'undefined' && CONFIG.getPartConfig
+          ? CONFIG.getPartConfig('reading', AppState.currentPart)
+          : null;
+        if (pc && pc.type === 'multiple-choice-text') {
+          ReadingType5.syncAllFromAppState();
+        }
       }
     },
 
@@ -960,6 +978,9 @@
           if (AppState.currentSection === 'listening' && typeof window.ListeningType1 !== 'undefined') {
             return ListeningType1.renderQuestion(question, qNum, isChecked, userAnswer);
           } else if (typeof window.ReadingType5 !== 'undefined') {
+            if (isInline && typeof ReadingType5.renderInlineGap === 'function') {
+              return ReadingType5.renderInlineGap(question, qNum, isChecked, userAnswer);
+            }
             return ReadingType5.renderQuestion(question, qNum, isChecked, userAnswer);
           }
           break;

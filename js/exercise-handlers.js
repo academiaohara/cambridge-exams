@@ -283,6 +283,9 @@
           
         case 'multiple-choice-text':
           document.querySelectorAll('input[type="radio"]').forEach(radio => radio.disabled = true);
+          document.querySelectorAll('.reading-type5-gap-trigger, .reading-type5-gap-choice').forEach(function(btn) {
+            btn.disabled = true;
+          });
           break;
           
         case 'gapped-text':
@@ -901,6 +904,20 @@
             if (label) {
               label.classList.remove('correct', 'incorrect', 'disabled');
             }
+          });
+          document.querySelectorAll('.reading-type5-gap-wrap').forEach(function(wrap) {
+            wrap.classList.remove('reading-type5-gap-open');
+            wrap.querySelectorAll('.reading-type5-gap-trigger').forEach(function(btn) {
+              btn.disabled = false;
+              btn.classList.remove('correct', 'incorrect', 'unanswered-checked', 'filled');
+              var qn = parseInt(wrap.getAttribute('data-qnum'), 10);
+              if (!isNaN(qn)) btn.textContent = '(' + qn + ')';
+              btn.setAttribute('aria-expanded', 'false');
+            });
+            wrap.querySelectorAll('.reading-type5-gap-choice').forEach(function(btn) {
+              btn.disabled = false;
+              btn.classList.remove('correct', 'incorrect', 'disabled', 'selected');
+            });
           });
           break;
           
