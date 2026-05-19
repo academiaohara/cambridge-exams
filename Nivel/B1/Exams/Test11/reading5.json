@@ -1,68 +1,89 @@
-{
-    "title":  "Reading - Part 5",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  5,
-    "type":  "multiple-choice-reading",
-    "totalQuestions":  5,
-    "instructions":  "Read the text and choose the correct answer (A, B or C) for each question.",
-    "articleTitle":  "Working After School",
-    "article":  "Last year, I found a part-time job in a small café near my school. My main responsibilities included serving customers, cleaning tables and preparing drinks. At the beginning, I felt nervous about speaking to strangers, especially during busy periods. Over time, though, I became more organised and learned how to work efficiently under pressure. The experience also helped me save money for future travel plans.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "question":  "What happened first during the experience?",
-                          "options":  {
-                                          "A":  "The writer prepared for the activity.",
-                                          "B":  "The writer met new people.",
-                                          "C":  "The writer solved a difficult problem."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The text supports option A."
-                      },
-                      {
-                          "number":  2,
-                          "question":  "How did the writer feel at the beginning?",
-                          "options":  {
-                                          "A":  "Relaxed",
-                                          "B":  "Nervous",
-                                          "C":  "Disappointed"
-                                      },
-                          "answer":  "B",
-                          "explanation":  "The text supports option B."
-                      },
-                      {
-                          "number":  3,
-                          "question":  "What positive result is mentioned in the text?",
-                          "options":  {
-                                          "A":  "The writer became more confident.",
-                                          "B":  "The writer won a competition.",
-                                          "C":  "The writer travelled abroad."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The text supports option A."
-                      },
-                      {
-                          "number":  4,
-                          "question":  "What does the writer say about the experience overall?",
-                          "options":  {
-                                          "A":  "It was more difficult than expected but rewarding.",
-                                          "B":  "It was easy from the start.",
-                                          "C":  "It caused too many problems."
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The text supports option A."
-                      },
-                      {
-                          "number":  5,
-                          "question":  "What can the reader learn from the text?",
-                          "options":  {
-                                          "A":  "Success usually happens immediately.",
-                                          "B":  "Practice and patience are important.",
-                                          "C":  "People should avoid new experiences."
-                                      },
-                          "answer":  "B",
-                          "explanation":  "The text supports option B."
-                      }
-                  ]
+﻿{
+    "tests":  [
+                  {
+                      "id":  "B1-reading5-test11",
+                      "examId":  "Test11",
+                      "section":  "reading",
+                      "part":  5,
+                      "title":  "The history of coffee",
+                      "type":  "multiple-choice-text",
+                      "time":  10,
+                      "totalQuestions":  6,
+                      "description":  "For each question, choose the correct answer.",
+                      "content":  {
+                                      "text":  "The history of coffee is an interesting topic connected with food. Many people are surprised when they discover how these ideas first (21) part of everyday life. Researchers have carefully (22) information from books, reports and historical documents to understand the complete story. At the time, many people did not realise how (23) these developments would later become. Over the years, experts have continued studying the subject in order to (24) more about its history and importance. Today, millions of people around the world are (25) in this topic in different ways. Teachers hope future generations will continue to (26) an interest in learning more about it.",
+                                      "questions":  [
+                                                        {
+                                                            "number":  21,
+                                                            "options":  [
+                                                                            "A) became",
+                                                                            "B) turned",
+                                                                            "C) reached",
+                                                                            "D) entered"
+                                                                        ],
+                                                            "correct":  "A",
+                                                            "explanation":  "\u0027Become part of\u0027 is the correct expression."
+                                                        },
+                                                        {
+                                                            "number":  22,
+                                                            "options":  [
+                                                                            "A) collected",
+                                                                            "B) delivered",
+                                                                            "C) achieved",
+                                                                            "D) carried"
+                                                                        ],
+                                                            "correct":  "A",
+                                                            "explanation":  "\u0027Collected information\u0027 is the natural collocation."
+                                                        },
+                                                        {
+                                                            "number":  23,
+                                                            "options":  [
+                                                                            "A) ordinary",
+                                                                            "B) usual",
+                                                                            "C) important",
+                                                                            "D) simple"
+                                                                        ],
+                                                            "correct":  "C",
+                                                            "explanation":  "\u0027Important\u0027 best fits the meaning."
+                                                        },
+                                                        {
+                                                            "number":  24,
+                                                            "options":  [
+                                                                            "A) realise",
+                                                                            "B) discover",
+                                                                            "C) create",
+                                                                            "D) invent"
+                                                                        ],
+                                                            "correct":  "B",
+                                                            "explanation":  "\u0027Discover more about\u0027 is the correct phrase."
+                                                        },
+                                                        {
+                                                            "number":  25,
+                                                            "options":  [
+                                                                            "A) involved",
+                                                                            "B) interested",
+                                                                            "C) prepared",
+                                                                            "D) familiar"
+                                                                        ],
+                                                            "correct":  "B",
+                                                            "explanation":  "\u0027Interested in\u0027 is the correct collocation."
+                                                        },
+                                                        {
+                                                            "number":  26,
+                                                            "options":  [
+                                                                            "A) take",
+                                                                            "B) keep",
+                                                                            "C) give",
+                                                                            "D) make"
+                                                                        ],
+                                                            "correct":  "A",
+                                                            "explanation":  "\u0027Take an interest in\u0027 is the correct expression."
+                                                        }
+                                                    ]
+                                  }
+                  }
+              ],
+    "batch":  2,
+    "part":  "Reading Part 5",
+    "level":  "B1"
 }
