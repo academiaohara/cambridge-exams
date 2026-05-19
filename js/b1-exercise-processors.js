@@ -172,9 +172,51 @@
     ex._b1PetScoring = true;
   }
 
+  /**
+   * Wrap canonical PET-style “try something new” article phrases in [n]…[/n] markers so
+   * explanation mode can highlight evidence in the passage (see ExerciseRenderer.processEvidenceMarkers).
+   */
+  function injectB1ReadingPart3EvidenceMarkers(article) {
+    var markers = [
+      {
+        n: 1,
+        s: 'A friend had mentioned it several times and eventually persuaded me to give it a chance.'
+      },
+      {
+        n: 2,
+        s: 'I expected it to be interesting, but I also worried that I might not be good enough.'
+      },
+      {
+        n: 3,
+        s: 'One thing that really surprised me was how friendly everyone was.'
+      },
+      {
+        n: 4,
+        s: 'I became better at solving \nproblems, communicating with different people and staying calm when things changed unexpectedly.'
+      },
+      {
+        n: 5,
+        s: 'I\u2019d definitely encourage \nother teenagers to do the same, even if they feel uncertain at first.'
+      }
+    ];
+    var out = article;
+    markers.slice().sort(function(a, b) {
+      return b.s.length - a.s.length;
+    }).forEach(function(m) {
+      var idx = out.indexOf(m.s);
+      if (idx === -1) return;
+      out = out.slice(0, idx) + '[' + m.n + ']' + m.s + '[/' + m.n + ']' + out.slice(idx + m.s.length);
+    });
+    return out;
+  }
+
   function readingPart3or5(ex) {
     var title = ex.articleTitle || '';
     var article = sanitizeHtmlTypos((ex.article || '').toString());
+    var partNum = parseInt(ex.part, 10);
+    if (partNum === 3) {
+      article = injectB1ReadingPart3EvidenceMarkers(article);
+    }
     ex.content = {
       title: title,
       subtitle: '',
