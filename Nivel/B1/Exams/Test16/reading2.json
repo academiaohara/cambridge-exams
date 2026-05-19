@@ -1,95 +1,96 @@
-﻿{
-    "tests":  [
-                  {
-                      "test":  16,
-                      "title":  "Choosing a film",
-                      "theme":  "films",
-                      "people":  [
-                                     {
-                                         "number":  6,
-                                         "text":  "Olivia wants a funny film for her younger sister. It must be suitable for children and she prefers stories about animals."
-                                     },
-                                     {
-                                         "number":  7,
-                                         "text":  "Ethan likes science fiction with exciting action scenes. He does not enjoy slow films and wants impressive special effects."
-                                     },
-                                     {
-                                         "number":  8,
-                                         "text":  "Mila wants a romantic film, but she dislikes sad endings. She prefers something light and modern."
-                                     },
-                                     {
-                                         "number":  9,
-                                         "text":  "Noah enjoys documentaries about real people. He is especially interested in music and how artists become successful."
-                                     },
-                                     {
-                                         "number":  10,
-                                         "text":  "Zoe wants a mystery film with clever clues. She does not want anything frightening or violent."
-                                     }
-                                 ],
-                      "texts":  [
-                                    {
-                                        "letter":  "A",
-                                        "text":  "Paws on Holiday is a cheerful comedy about a dog and a cat who get lost at the seaside. It is [6]suitable for children[/6] and full of [6]funny animal adventures[/6]."
-                                    },
-                                    {
-                                        "letter":  "B",
-                                        "text":  "Stars Beyond Earth is a fast-moving science-fiction film with spaceship battles, dangerous missions and [7]impressive visual effects[/7]. The story begins quickly and has little quiet dialogue."
-                                    },
-                                    {
-                                        "letter":  "C",
-                                        "text":  "Love in April is a modern romantic comedy about two neighbours who keep meeting by accident. It has a [8]happy ending[/8] and a light, humorous style throughout."
-                                    },
-                                    {
-                                        "letter":  "D",
-                                        "text":  "The First Song follows a young singer from small local concerts to international fame. This [9]documentary[/9] includes interviews, early recordings and the singer’s family memories."
-                                    },
-                                    {
-                                        "letter":  "E",
-                                        "text":  "The Missing Key is a gentle mystery in which a student solves a puzzle using [10]clever clues[/10]. There are no violent scenes, and the story is more playful than scary."
-                                    },
-                                    {
-                                        "letter":  "F",
-                                        "text":  "Dark Harbour is a serious thriller with frightening scenes and a complicated police investigation."
-                                    },
-                                    {
-                                        "letter":  "G",
-                                        "text":  "The Long Winter is a slow historical drama about a family living in a mountain village."
-                                    },
-                                    {
-                                        "letter":  "H",
-                                        "text":  "Goal Season is a sports film about a football team trying to win the final match."
-                                    }
-                                ],
-                      "answers":  [
-                                      {
-                                          "question":  6,
-                                          "answer":  "A",
-                                          "explanation":  "Olivia needs a child-friendly funny animal film."
-                                      },
-                                      {
-                                          "question":  7,
-                                          "answer":  "B",
-                                          "explanation":  "Ethan wants exciting science fiction with effects."
-                                      },
-                                      {
-                                          "question":  8,
-                                          "answer":  "C",
-                                          "explanation":  "Mila wants a light romance with a happy ending."
-                                      },
-                                      {
-                                          "question":  9,
-                                          "answer":  "D",
-                                          "explanation":  "Noah wants a music documentary about real success."
-                                      },
-                                      {
-                                          "question":  10,
-                                          "answer":  "E",
-                                          "explanation":  "Zoe wants a non-violent mystery with clues."
-                                      }
-                                  ]
-                  }
-              ],
-    "batch":  2,
-    "part":  "Reading Part 2",
-    "level":  "B1"
+{
+    "tests": [
+        {
+            "test": 16,
+            "title": "Choosing a film",
+            "theme": "films",
+            "people": [
+                {
+                    "number": 6,
+                    "text": "Olivia wants a funny film for her younger sister. It must be suitable for children and she prefers stories about animals."
+                },
+                {
+                    "number": 7,
+                    "text": "Ethan likes science fiction with exciting action scenes. He does not enjoy slow films and wants impressive special effects."
+                },
+                {
+                    "number": 8,
+                    "text": "Mila wants a romantic film, but she dislikes sad endings. She prefers something light and modern."
+                },
+                {
+                    "number": 9,
+                    "text": "Noah enjoys documentaries about real people. He is especially interested in music and how artists become successful."
+                },
+                {
+                    "number": 10,
+                    "text": "Zoe wants a mystery film with clever clues. She does not want anything frightening or violent."
+                }
+            ],
+            "texts": [
+                {
+                    "letter": "A",
+                    "text": "The First Song follows a young singer from small local concerts to international fame. This [9]documentary[/9] includes interviews, early recordings and the singer’s family memories."
+                },
+                {
+                    "letter": "B",
+                    "text": "Paws on Holiday is a cheerful comedy about a dog and a cat who get lost at the seaside. It is [6]suitable for children[/6] and full of [6]funny animal adventures[/6]."
+                },
+                {
+                    "letter": "C",
+                    "text": "The Long Winter is a slow historical drama about a family living in a mountain village."
+                },
+                {
+                    "letter": "D",
+                    "text": "Love in April is a modern romantic comedy about two neighbours who keep meeting by accident. It has a [8]happy ending[/8] and a light, humorous style throughout."
+                },
+                {
+                    "letter": "E",
+                    "text": "Stars Beyond Earth is a fast-moving science-fiction film with spaceship battles, dangerous missions and [7]impressive visual effects[/7]. The story begins quickly and has little quiet dialogue."
+                },
+                {
+                    "letter": "F",
+                    "text": "The Missing Key is a gentle mystery in which a student solves a puzzle using [10]clever clues[/10]. There are no violent scenes, and the story is more playful than scary."
+                },
+                {
+                    "letter": "G",
+                    "text": "Goal Season is a sports film about a football team trying to win the final match."
+                },
+                {
+                    "letter": "H",
+                    "text": "Dark Harbour is a serious thriller with frightening scenes and a complicated police investigation."
+                }
+            ],
+            "answers": [
+                {
+                    "question": 6,
+                    "answer": "B",
+                    "explanation": "Olivia needs a child-friendly funny animal film."
+                },
+                {
+                    "question": 7,
+                    "answer": "E",
+                    "explanation": "Ethan wants exciting science fiction with effects."
+                },
+                {
+                    "question": 8,
+                    "answer": "D",
+                    "explanation": "Mila wants a light romance with a happy ending."
+                },
+                {
+                    "question": 9,
+                    "answer": "A",
+                    "explanation": "Noah wants a music documentary about real success."
+                },
+                {
+                    "question": 10,
+                    "answer": "F",
+                    "explanation": "Zoe wants a non-violent mystery with clues."
+                }
+            ]
+        }
+    ],
+    "batch": 2,
+    "part": "Reading Part 2",
+    "level": "B1",
+    "_reading2_notice_labels_permuted": true
 }

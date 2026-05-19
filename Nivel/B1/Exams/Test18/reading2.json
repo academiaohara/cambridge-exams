@@ -1,95 +1,96 @@
-﻿{
-    "tests":  [
-                  {
-                      "test":  18,
-                      "title":  "Choosing a music event",
-                      "theme":  "music",
-                      "people":  [
-                                     {
-                                         "number":  6,
-                                         "text":  "Ella wants to hear classical music in a relaxed place. She has never been to a concert before and feels nervous."
-                                     },
-                                     {
-                                         "number":  7,
-                                         "text":  "Max enjoys dancing and wants live music outdoors. He is going with friends on Saturday night."
-                                     },
-                                     {
-                                         "number":  8,
-                                         "text":  "Sara plays guitar and wants to learn from professional musicians. She would like a small workshop, not just a show."
-                                     },
-                                     {
-                                         "number":  9,
-                                         "text":  "Owen wants a music event for his young children. It should be during the day and not too long."
-                                     },
-                                     {
-                                         "number":  10,
-                                         "text":  "Priya likes discovering new local bands. She wants cheap tickets and a place near the bus station."
-                                     }
-                                 ],
-                      "texts":  [
-                                    {
-                                        "letter":  "A",
-                                        "text":  "First Notes is an informal classical concert for beginners. The presenter explains each piece simply, and the relaxed hall helps [6]people attending their first concert[/6] feel comfortable."
-                                    },
-                                    {
-                                        "letter":  "B",
-                                        "text":  "Summer Beats takes place [7]outside in Riverside Park[/7] on [7]Saturday evening[/7]. Several bands play dance music, and there is plenty of space for groups of friends."
-                                    },
-                                    {
-                                        "letter":  "C",
-                                        "text":  "Guitar Lab is a workshop for twenty players. Professional musicians demonstrate techniques and then give [8]personal advice[/8] while participants practise in small groups."
-                                    },
-                                    {
-                                        "letter":  "D",
-                                        "text":  "Mini Music Morning is for [9]children aged three to seven[/9]. It starts at [9]11 a.m.[/9], lasts forty minutes and includes simple songs, movement and percussion games."
-                                    },
-                                    {
-                                        "letter":  "E",
-                                        "text":  "New Sounds Night presents three local bands each week. Tickets are [10]low-priced[/10], and the venue is five minutes from [10]the main bus station[/10]."
-                                    },
-                                    {
-                                        "letter":  "F",
-                                        "text":  "Opera Gold is a formal evening performance with expensive seats and no spoken introductions."
-                                    },
-                                    {
-                                        "letter":  "G",
-                                        "text":  "Drum Marathon lasts six hours and is recommended for experienced adult musicians only."
-                                    },
-                                    {
-                                        "letter":  "H",
-                                        "text":  "Choir History is a lecture about church music, with no live performance."
-                                    }
-                                ],
-                      "answers":  [
-                                      {
-                                          "question":  6,
-                                          "answer":  "A",
-                                          "explanation":  "Ella needs a relaxed classical concert for beginners."
-                                      },
-                                      {
-                                          "question":  7,
-                                          "answer":  "B",
-                                          "explanation":  "Max wants outdoor live dance music on Saturday night."
-                                      },
-                                      {
-                                          "question":  8,
-                                          "answer":  "C",
-                                          "explanation":  "Sara needs a small guitar workshop with professionals."
-                                      },
-                                      {
-                                          "question":  9,
-                                          "answer":  "D",
-                                          "explanation":  "Owen needs a short daytime event for children."
-                                      },
-                                      {
-                                          "question":  10,
-                                          "answer":  "E",
-                                          "explanation":  "Priya wants cheap local bands near buses."
-                                      }
-                                  ]
-                  }
-              ],
-    "batch":  2,
-    "part":  "Reading Part 2",
-    "level":  "B1"
+{
+    "tests": [
+        {
+            "test": 18,
+            "title": "Choosing a music event",
+            "theme": "music",
+            "people": [
+                {
+                    "number": 6,
+                    "text": "Ella wants to hear classical music in a relaxed place. She has never been to a concert before and feels nervous."
+                },
+                {
+                    "number": 7,
+                    "text": "Max enjoys dancing and wants live music outdoors. He is going with friends on Saturday night."
+                },
+                {
+                    "number": 8,
+                    "text": "Sara plays guitar and wants to learn from professional musicians. She would like a small workshop, not just a show."
+                },
+                {
+                    "number": 9,
+                    "text": "Owen wants a music event for his young children. It should be during the day and not too long."
+                },
+                {
+                    "number": 10,
+                    "text": "Priya likes discovering new local bands. She wants cheap tickets and a place near the bus station."
+                }
+            ],
+            "texts": [
+                {
+                    "letter": "A",
+                    "text": "Summer Beats takes place [7]outside in Riverside Park[/7] on [7]Saturday evening[/7]. Several bands play dance music, and there is plenty of space for groups of friends."
+                },
+                {
+                    "letter": "B",
+                    "text": "Choir History is a lecture about church music, with no live performance."
+                },
+                {
+                    "letter": "C",
+                    "text": "First Notes is an informal classical concert for beginners. The presenter explains each piece simply, and the relaxed hall helps [6]people attending their first concert[/6] feel comfortable."
+                },
+                {
+                    "letter": "D",
+                    "text": "Guitar Lab is a workshop for twenty players. Professional musicians demonstrate techniques and then give [8]personal advice[/8] while participants practise in small groups."
+                },
+                {
+                    "letter": "E",
+                    "text": "Drum Marathon lasts six hours and is recommended for experienced adult musicians only."
+                },
+                {
+                    "letter": "F",
+                    "text": "Opera Gold is a formal evening performance with expensive seats and no spoken introductions."
+                },
+                {
+                    "letter": "G",
+                    "text": "Mini Music Morning is for [9]children aged three to seven[/9]. It starts at [9]11 a.m.[/9], lasts forty minutes and includes simple songs, movement and percussion games."
+                },
+                {
+                    "letter": "H",
+                    "text": "New Sounds Night presents three local bands each week. Tickets are [10]low-priced[/10], and the venue is five minutes from [10]the main bus station[/10]."
+                }
+            ],
+            "answers": [
+                {
+                    "question": 6,
+                    "answer": "C",
+                    "explanation": "Ella needs a relaxed classical concert for beginners."
+                },
+                {
+                    "question": 7,
+                    "answer": "A",
+                    "explanation": "Max wants outdoor live dance music on Saturday night."
+                },
+                {
+                    "question": 8,
+                    "answer": "D",
+                    "explanation": "Sara needs a small guitar workshop with professionals."
+                },
+                {
+                    "question": 9,
+                    "answer": "G",
+                    "explanation": "Owen needs a short daytime event for children."
+                },
+                {
+                    "question": 10,
+                    "answer": "H",
+                    "explanation": "Priya wants cheap local bands near buses."
+                }
+            ]
+        }
+    ],
+    "batch": 2,
+    "part": "Reading Part 2",
+    "level": "B1",
+    "_reading2_notice_labels_permuted": true
 }
