@@ -90,11 +90,11 @@
         }
       }
 
-      // For reading parts 5–8, B1 reading part 3, and listening: reveal the explanation toggle in the header
+      // For reading parts 5–8, B1 reading parts 3–4, and listening: reveal the explanation toggle in the header
       if ((AppState.currentSection === 'reading' && AppState.currentPart >= 5) ||
           (AppState.currentSection === 'reading' &&
             AppState.currentLevel === 'B1' &&
-            AppState.currentPart === 3) ||
+            (AppState.currentPart === 3 || AppState.currentPart === 4)) ||
           (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) ||
           AppState.currentSection === 'listening') {
         const explBtn = document.getElementById('toggle-explanation-btn');

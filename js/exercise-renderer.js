@@ -71,8 +71,11 @@
 
         const isGappedWithParagraphs = partConfig.type === 'gapped-text' &&
           exercise.content.paragraphs && Object.keys(exercise.content.paragraphs).length > 0;
+        const isGappedSentencesToggle = isGappedWithParagraphs &&
+          ((AppState.currentLevel === 'B2' && part === 6) ||
+            (AppState.currentLevel === 'B1' && section === 'reading' && part === 4));
         let secondToggleI18nKey = isGappedWithParagraphs
-          ? (AppState.currentLevel === 'B2' && part === 6 ? 'showSentences' : 'showParagraphs')
+          ? (isGappedSentencesToggle ? 'showSentences' : 'showParagraphs')
           : 'showQuestions';
         if (isB1Reading2Pet) {
           secondToggleI18nKey = 'showOptionsReading2';
@@ -99,7 +102,10 @@
         const isReadingPart5to8 = section === 'reading' && part >= 5;
         const isB1Reading3Explanation =
           AppState.currentLevel === 'B1' && section === 'reading' && part === 3;
-        const showExplanationBtn = isReadingPart5to8 || isB1Reading2Pet || isB1Reading3Explanation;
+        const isB1Reading4Explanation =
+          AppState.currentLevel === 'B1' && section === 'reading' && part === 4;
+        const showExplanationBtn = isReadingPart5to8 || isB1Reading2Pet || isB1Reading3Explanation ||
+          isB1Reading4Explanation;
         toggleHTML = `
           <div class="toggle-view-header">
             <button class="toggle-view-btn active" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
@@ -612,6 +618,15 @@
       var questions = exercise.content.questions || [];
       var userAnswer = (AppState.currentExercise && AppState.currentExercise.answers) || {};
       var isChecked = AppState.answersChecked;
+      var viewAsCorrect = typeof AppState !== 'undefined' && isChecked &&
+        AppState.answerViewMode === 'correct';
+      var effectiveAnswer = function(qNum) {
+        if (viewAsCorrect) {
+          var fq = questions.find(function(x) { return x.number === qNum; });
+          return fq ? fq.correct : userAnswer[qNum];
+        }
+        return userAnswer[qNum];
+      };
       var escapeHtml = function(value) {
         return String(value)
           .replace(/&/g, '&amp;')
@@ -628,13 +643,17 @@
         var cardCls = 'reading-type7-toggle-card';
         var assignedQ = null;
         questions.forEach(function(q) {
-          if (userAnswer[q.number] === key) assignedQ = q;
+          if (effectiveAnswer(q.number) === key) assignedQ = q;
         });
         if (isChecked) {
           if (assignedQ) {
-            cardCls += userAnswer[assignedQ.number] === assignedQ.correct
-              ? ' reading-type7-toggle-card-correct'
-              : ' reading-type7-toggle-card-incorrect';
+            if (viewAsCorrect) {
+              cardCls += ' reading-type7-toggle-card-show-correct';
+            } else {
+              cardCls += userAnswer[assignedQ.number] === assignedQ.correct
+                ? ' reading-type7-toggle-card-correct'
+                : ' reading-type7-toggle-card-incorrect';
+            }
           } else {
             cardCls += ' reading-type7-toggle-card-unused';
           }
@@ -648,11 +667,15 @@
         html += '<span class="reading-type7-toggle-actions-label">Gap</span>';
         questions.forEach(function(q) {
           var qNum = q.number;
-          var selected = userAnswer[qNum] === key;
+          var selected = effectiveAnswer(qNum) === key;
           var btnCls = 'reading-type7-toggle-gapbtn';
           if (selected) btnCls += ' selected';
           if (isChecked) {
-            if (selected && userAnswer[qNum]) {
+            if (viewAsCorrect) {
+              if (selected && effectiveAnswer(qNum)) {
+                btnCls += ' checked rt7-gapbtn-show-correct';
+              }
+            } else if (selected && userAnswer[qNum]) {
               btnCls += ' checked';
               btnCls += userAnswer[qNum] === q.correct ? ' correct' : ' incorrect';
             }

@@ -16,26 +16,38 @@
       const inlineAttr = isInline ? ' data-inline="true"' : '';
       
       if (isChecked) {
-        const isCorrect = this.isAnswerCorrect(question, userAnswer);
-        const chosenText = userAnswer ? (paragraphs[userAnswer] || '') : '';
-        const pillClass = isCorrect ? 'reading-type7-gap-pill correct' : 'reading-type7-gap-pill incorrect';
-        const circleColor = isCorrect ? '#065f46' : '#ef4444';
+        var showCorrectOnly = typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
+        var isCorrect = showCorrectOnly ? true : this.isAnswerCorrect(question, userAnswer);
+        var displayLetter = showCorrectOnly ? (question.correct || '') : userAnswer;
+        var chosenText = displayLetter ? (paragraphs[displayLetter] || '') : '';
+
+        var pillClass;
+        var circleStyle = '';
+        if (showCorrectOnly) {
+          pillClass = 'reading-type7-gap-pill rt7-pill-show-correct';
+        } else {
+          pillClass = isCorrect ? 'reading-type7-gap-pill correct' : 'reading-type7-gap-pill incorrect';
+          circleStyle = ' style="color:' + (isCorrect ? '#065f46' : '#ef4444') + '"';
+        }
 
         let html = `<span class="reading-type7-gap${inlineClass}" data-qnum="${qNum}"${inlineAttr}>`;
-        html += `<span class="reading-type7-gap-check-row"${!isCorrect ? ` data-correct="✓ ${question.correct}"` : ''}>`;
+        html += `<span class="reading-type7-gap-check-row"${!showCorrectOnly && !isCorrect ? ` data-correct="✓ ${question.correct}"` : ''}>`;
         html += `<span class="${pillClass}">`;
         html += `<span class="reading-type7-gap-num">${qNum}</span>`;
-        html += `<span class="reading-type7-gap-circle" style="color:${circleColor}">${userAnswer || '—'}</span>`;
+        html += `<span class="reading-type7-gap-circle"${circleStyle}>${displayLetter || '—'}</span>`;
         html += `</span>`;
-        if (!isCorrect) {
+        if (!showCorrectOnly && !isCorrect) {
           html += `<button class="reading-type7-reveal-btn" onclick="ReadingType7.toggleReveal(${qNum}, this)" data-revealed="false">`;
           html += `<i class="fas fa-eye"></i>`;
           html += `<span class="reading-type7-correct-circle">${question.correct}</span>`;
           html += `</button>`;
         }
         html += `</span>`;
-        html += `<span class="reading-type7-answer-block ${isCorrect ? 'correct' : 'incorrect'}" data-qnum-block="${qNum}">`;
-        if (userAnswer) {
+        var blockClass = showCorrectOnly
+          ? 'reading-type7-answer-block rt7-show-correct'
+          : 'reading-type7-answer-block ' + (isCorrect ? 'correct' : 'incorrect');
+        html += `<span class="${blockClass}" data-qnum-block="${qNum}">`;
+        if (displayLetter) {
           html += `<span class="reading-type7-para-text">${this._escapeHtml(this._stripBrackets(chosenText))}</span>`;
         } else {
           html += `<span class="reading-type7-para-empty">—</span>`;
@@ -181,7 +193,8 @@
 
       questions.forEach(function(q) {
         var userAnswer = answers[q.number];
-        var isCorrect = userAnswer === q.correct;
+        var viewCorrect = typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
+        var isCorrect = viewCorrect ? true : (userAnswer === q.correct);
         var gap = document.querySelector('.reading-type7-gap[data-qnum="' + q.number + '"]');
         if (!gap || gap.dataset.rt7ExplMode === '1') return;
         gap.dataset.rt7ExplMode = '1';
@@ -221,7 +234,8 @@
 
       questions.forEach(function(q) {
         var userAnswer = answers[q.number];
-        var isCorrect = userAnswer === q.correct;
+        var viewCorrect = typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
+        var isCorrect = viewCorrect ? true : (userAnswer === q.correct);
         var gap = document.querySelector('.reading-type7-gap[data-qnum="' + q.number + '"]');
         if (!gap || gap.dataset.rt7ExplMode !== '1') return;
         delete gap.dataset.rt7ExplMode;
@@ -279,6 +293,24 @@
       ReadingType7.refreshParagraphToggleDOM();
 
       return correct;
+    },
+
+    /**
+     * After checking answers, "Show correct answer" swaps the passage and sentence cards to the key + text in purple.
+     */
+    setAnswerMode: function(mode) {
+      if (!AppState.currentExercise || !AppState.answersChecked) return;
+      var questions = AppState.currentExercise.content.questions || [];
+      questions.forEach(function(q) {
+        if (!q || q.number === 0) return;
+        var gap = document.querySelector('.reading-type7-gap[data-qnum="' + q.number + '"]');
+        if (!gap) return;
+        var isInline = gap.dataset.inline === 'true';
+        var ua = (AppState.currentExercise.answers && AppState.currentExercise.answers[q.number]) || '';
+        var display = mode === 'correct' ? (q.correct || '') : ua;
+        gap.outerHTML = ReadingType7.renderGap(q, q.number, true, display, isInline);
+      });
+      ReadingType7.refreshParagraphToggleDOM();
     }
   };
 })();
