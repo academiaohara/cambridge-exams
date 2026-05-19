@@ -1,95 +1,96 @@
-﻿{
-    "tests":  [
-                  {
-                      "test":  15,
-                      "title":  "Choosing a holiday activity",
-                      "theme":  "holidays",
-                      "people":  [
-                                     {
-                                         "number":  6,
-                                         "text":  "Isabel wants a flat outdoor walk for her grandfather. He cannot walk far and needs a café nearby."
-                                     },
-                                     {
-                                         "number":  7,
-                                         "text":  "Marco is taking two teenagers on a rainy day. They want indoor physical challenges, not a museum."
-                                     },
-                                     {
-                                         "number":  8,
-                                         "text":  "Lena loves old buildings and wants a guided afternoon visit where she can hear stories about the past."
-                                     },
-                                     {
-                                         "number":  9,
-                                         "text":  "Sam wants a cheap place for a picnic with friends. They need space for ball games and bus access."
-                                     },
-                                     {
-                                         "number":  10,
-                                         "text":  "Aisha wants to photograph city views at sunset. She does not mind walking uphill."
-                                     }
-                                 ],
-                      "texts":  [
-                                    {
-                                        "letter":  "A",
-                                        "text":  "River Garden has [6]flat paths[/6], benches every few minutes and a small [6]café beside the entrance[/6]. The shortest route takes about twenty minutes and is suitable for visitors who tire easily."
-                                    },
-                                    {
-                                        "letter":  "B",
-                                        "text":  "Climb Hall is an [7]indoor centre[/7] with rope bridges, low climbing walls and team challenges. It is popular with [7]teenagers[/7], especially when the weather is wet."
-                                    },
-                                    {
-                                        "letter":  "C",
-                                        "text":  "Castle Stories offers [8]guided afternoon tours[/8] of the old castle. Guides explain how people lived there and share local legends connected with each room."
-                                    },
-                                    {
-                                        "letter":  "D",
-                                        "text":  "Green Park is [9]free to enter[/9] and has open grass for [9]football or volleyball[/9]. Several buses stop nearby, and picnic tables are available near the lake."
-                                    },
-                                    {
-                                        "letter":  "E",
-                                        "text":  "Hilltop Viewpoint is reached by a steep path, but photographers often go there for [10]wide city views[/10] and warm [10]sunset light[/10]."
-                                    },
-                                    {
-                                        "letter":  "F",
-                                        "text":  "The Aquarium is indoors and has displays of tropical fish, but visitors must book expensive tickets online."
-                                    },
-                                    {
-                                        "letter":  "G",
-                                        "text":  "Lakeside Trail is beautiful, but parts are muddy and too steep for visitors with limited mobility."
-                                    },
-                                    {
-                                        "letter":  "H",
-                                        "text":  "Skyline Café has excellent views through its windows, but photography is not allowed inside."
-                                    }
-                                ],
-                      "answers":  [
-                                      {
-                                          "question":  6,
-                                          "answer":  "A",
-                                          "explanation":  "Isabel needs flat paths and a nearby café."
-                                      },
-                                      {
-                                          "question":  7,
-                                          "answer":  "B",
-                                          "explanation":  "Marco needs indoor physical challenges for teenagers."
-                                      },
-                                      {
-                                          "question":  8,
-                                          "answer":  "C",
-                                          "explanation":  "Lena wants an afternoon guided visit to an old building."
-                                      },
-                                      {
-                                          "question":  9,
-                                          "answer":  "D",
-                                          "explanation":  "Sam needs a cheap picnic place with games and buses."
-                                      },
-                                      {
-                                          "question":  10,
-                                          "answer":  "E",
-                                          "explanation":  "Aisha wants sunset city views and can walk uphill."
-                                      }
-                                  ]
-                  }
-              ],
-    "batch":  2,
-    "part":  "Reading Part 2",
-    "level":  "B1"
+{
+    "tests": [
+        {
+            "test": 15,
+            "title": "Choosing a holiday activity",
+            "theme": "holidays",
+            "people": [
+                {
+                    "number": 6,
+                    "text": "Isabel wants a flat outdoor walk for her grandfather. He cannot walk far and needs a café nearby."
+                },
+                {
+                    "number": 7,
+                    "text": "Marco is taking two teenagers on a rainy day. They want indoor physical challenges, not a museum."
+                },
+                {
+                    "number": 8,
+                    "text": "Lena loves old buildings and wants a guided afternoon visit where she can hear stories about the past."
+                },
+                {
+                    "number": 9,
+                    "text": "Sam wants a cheap place for a picnic with friends. They need space for ball games and bus access."
+                },
+                {
+                    "number": 10,
+                    "text": "Aisha wants to photograph city views at sunset. She does not mind walking uphill."
+                }
+            ],
+            "texts": [
+                {
+                    "letter": "A",
+                    "text": "Skyline Café has excellent views through its windows, but photography is not allowed inside."
+                },
+                {
+                    "letter": "B",
+                    "text": "Climb Hall is an [7]indoor centre[/7] with rope bridges, low climbing walls and team challenges. It is popular with [7]teenagers[/7], especially when the weather is wet."
+                },
+                {
+                    "letter": "C",
+                    "text": "Green Park is [9]free to enter[/9] and has open grass for [9]football or volleyball[/9]. Several buses stop nearby, and picnic tables are available near the lake."
+                },
+                {
+                    "letter": "D",
+                    "text": "Lakeside Trail is beautiful, but parts are muddy and too steep for visitors with limited mobility."
+                },
+                {
+                    "letter": "E",
+                    "text": "River Garden has [6]flat paths[/6], benches every few minutes and a small [6]café beside the entrance[/6]. The shortest route takes about twenty minutes and is suitable for visitors who tire easily."
+                },
+                {
+                    "letter": "F",
+                    "text": "Hilltop Viewpoint is reached by a steep path, but photographers often go there for [10]wide city views[/10] and warm [10]sunset light[/10]."
+                },
+                {
+                    "letter": "G",
+                    "text": "The Aquarium is indoors and has displays of tropical fish, but visitors must book expensive tickets online."
+                },
+                {
+                    "letter": "H",
+                    "text": "Castle Stories offers [8]guided afternoon tours[/8] of the old castle. Guides explain how people lived there and share local legends connected with each room."
+                }
+            ],
+            "answers": [
+                {
+                    "question": 6,
+                    "answer": "E",
+                    "explanation": "Isabel needs flat paths and a nearby café."
+                },
+                {
+                    "question": 7,
+                    "answer": "B",
+                    "explanation": "Marco needs indoor physical challenges for teenagers."
+                },
+                {
+                    "question": 8,
+                    "answer": "H",
+                    "explanation": "Lena wants an afternoon guided visit to an old building."
+                },
+                {
+                    "question": 9,
+                    "answer": "C",
+                    "explanation": "Sam needs a cheap picnic place with games and buses."
+                },
+                {
+                    "question": 10,
+                    "answer": "F",
+                    "explanation": "Aisha wants sunset city views and can walk uphill."
+                }
+            ]
+        }
+    ],
+    "batch": 2,
+    "part": "Reading Part 2",
+    "level": "B1",
+    "_reading2_notice_labels_permuted": true
 }

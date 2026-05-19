@@ -1,95 +1,96 @@
-﻿{
-    "tests":  [
-                  {
-                      "test":  1,
-                      "title":  "Choosing a book club",
-                      "theme":  "books",
-                      "people":  [
-                                     {
-                                         "number":  6,
-                                         "text":  "Emma wants a friendly book club where members discuss modern novels. She can only attend on weekday evenings and prefers meetings where people do not need to finish a whole book every time."
-                                     },
-                                     {
-                                         "number":  7,
-                                         "text":  "Lucas enjoys crime fiction and wants lively online discussions in a small group because he travels often for work."
-                                     },
-                                     {
-                                         "number":  8,
-                                         "text":  "Maya is improving her English and wants short books with vocabulary help. She is free on Saturday mornings and feels nervous speaking."
-                                     },
-                                     {
-                                         "number":  9,
-                                         "text":  "Oliver wants serious discussions about classic literature with experienced readers. He can attend meetings in the city centre after work."
-                                     },
-                                     {
-                                         "number":  10,
-                                         "text":  "Sofia wants to meet other parents and read books about family life. She needs somewhere children can stay safely nearby."
-                                     }
-                                 ],
-                      "texts":  [
-                                    {
-                                        "letter":  "A",
-                                        "text":  "Page Turners meets every Wednesday evening in a small café near the station. Members discuss [6]recent novels[/6], but meetings focus on [6]selected chapters rather than whole books[/6]. New members are welcomed warmly and discussions are relaxed."
-                                    },
-                                    {
-                                        "letter":  "B",
-                                        "text":  "Mystery Circle is designed for fans of detective stories. The club meets [7]online twice a month[/7] and limits sessions to [7]twelve members so everyone can speak[/7]. Members discuss famous crime writers and surprising endings."
-                                    },
-                                    {
-                                        "letter":  "C",
-                                        "text":  "Saturday Stories is for lower-intermediate English learners. Members read [8]short easy books[/8], receive [8]help with difficult vocabulary[/8] and meet on Saturday mornings. The group leader encourages shy students to join discussions confidently."
-                                    },
-                                    {
-                                        "letter":  "D",
-                                        "text":  "The Classics Forum meets in the central library on Thursday evenings. It is aimed at confident readers who enjoy detailed conversations about older literature and literary history."
-                                    },
-                                    {
-                                        "letter":  "E",
-                                        "text":  "Parents’ Pages meets in a community centre beside a supervised playroom. Members read novels connected with [10]family relationships[/10], and [10]children can stay safely nearby during meetings[/10]."
-                                    },
-                                    {
-                                        "letter":  "F",
-                                        "text":  "Poetry Exchange welcomes university students interested in writing and performing original poems for competitions."
-                                    },
-                                    {
-                                        "letter":  "G",
-                                        "text":  "History Readers focuses on biographies and historical non-fiction. Meetings usually last three hours and include guest speakers."
-                                    },
-                                    {
-                                        "letter":  "H",
-                                        "text":  "Weekend Comics Club is for teenagers who enjoy graphic novels, manga and drawing activities."
-                                    }
-                                ],
-                      "answers":  [
-                                      {
-                                          "question":  6,
-                                          "answer":  "A",
-                                          "explanation":  "Emma needs weekday evening discussions about modern novels without full-book reading."
-                                      },
-                                      {
-                                          "question":  7,
-                                          "answer":  "B",
-                                          "explanation":  "Lucas wants online crime-fiction discussions in a small group."
-                                      },
-                                      {
-                                          "question":  8,
-                                          "answer":  "C",
-                                          "explanation":  "Maya needs easy books, vocabulary support and Saturday morning meetings."
-                                      },
-                                      {
-                                          "question":  9,
-                                          "answer":  "D",
-                                          "explanation":  "Oliver wants serious classic literature discussions after work."
-                                      },
-                                      {
-                                          "question":  10,
-                                          "answer":  "E",
-                                          "explanation":  "Sofia needs family-themed books and childcare nearby."
-                                      }
-                                  ]
-                  }
-              ],
-    "batch":  1,
-    "part":  "Reading Part 2",
-    "level":  "B1"
+{
+    "tests": [
+        {
+            "test": 1,
+            "title": "Choosing a book club",
+            "theme": "books",
+            "people": [
+                {
+                    "number": 6,
+                    "text": "Emma wants a friendly book club where members discuss modern novels. She can only attend on weekday evenings and prefers meetings where people do not need to finish a whole book every time."
+                },
+                {
+                    "number": 7,
+                    "text": "Lucas enjoys crime fiction and wants lively online discussions in a small group because he travels often for work."
+                },
+                {
+                    "number": 8,
+                    "text": "Maya is improving her English and wants short books with vocabulary help. She is free on Saturday mornings and feels nervous speaking."
+                },
+                {
+                    "number": 9,
+                    "text": "Oliver wants serious discussions about classic literature with experienced readers. He can attend meetings in the city centre after work."
+                },
+                {
+                    "number": 10,
+                    "text": "Sofia wants to meet other parents and read books about family life. She needs somewhere children can stay safely nearby."
+                }
+            ],
+            "texts": [
+                {
+                    "letter": "A",
+                    "text": "Parents’ Pages meets in a community centre beside a supervised playroom. Members read novels connected with [10]family relationships[/10], and [10]children can stay safely nearby during meetings[/10]."
+                },
+                {
+                    "letter": "B",
+                    "text": "History Readers focuses on biographies and historical non-fiction. Meetings usually last three hours and include guest speakers."
+                },
+                {
+                    "letter": "C",
+                    "text": "Saturday Stories is for lower-intermediate English learners. Members read [8]short easy books[/8], receive [8]help with difficult vocabulary[/8] and meet on Saturday mornings. The group leader encourages shy students to join discussions confidently."
+                },
+                {
+                    "letter": "D",
+                    "text": "Weekend Comics Club is for teenagers who enjoy graphic novels, manga and drawing activities."
+                },
+                {
+                    "letter": "E",
+                    "text": "Page Turners meets every Wednesday evening in a small café near the station. Members discuss [6]recent novels[/6], but meetings focus on [6]selected chapters rather than whole books[/6]. New members are welcomed warmly and discussions are relaxed."
+                },
+                {
+                    "letter": "F",
+                    "text": "Mystery Circle is designed for fans of detective stories. The club meets [7]online twice a month[/7] and limits sessions to [7]twelve members so everyone can speak[/7]. Members discuss famous crime writers and surprising endings."
+                },
+                {
+                    "letter": "G",
+                    "text": "Poetry Exchange welcomes university students interested in writing and performing original poems for competitions."
+                },
+                {
+                    "letter": "H",
+                    "text": "The Classics Forum meets in the central library on Thursday evenings. It is aimed at confident readers who enjoy detailed conversations about older literature and literary history."
+                }
+            ],
+            "answers": [
+                {
+                    "question": 6,
+                    "answer": "E",
+                    "explanation": "Emma needs weekday evening discussions about modern novels without full-book reading."
+                },
+                {
+                    "question": 7,
+                    "answer": "F",
+                    "explanation": "Lucas wants online crime-fiction discussions in a small group."
+                },
+                {
+                    "question": 8,
+                    "answer": "C",
+                    "explanation": "Maya needs easy books, vocabulary support and Saturday morning meetings."
+                },
+                {
+                    "question": 9,
+                    "answer": "H",
+                    "explanation": "Oliver wants serious classic literature discussions after work."
+                },
+                {
+                    "question": 10,
+                    "answer": "A",
+                    "explanation": "Sofia needs family-themed books and childcare nearby."
+                }
+            ]
+        }
+    ],
+    "batch": 1,
+    "part": "Reading Part 2",
+    "level": "B1",
+    "_reading2_notice_labels_permuted": true
 }

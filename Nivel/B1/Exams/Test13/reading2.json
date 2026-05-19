@@ -1,95 +1,96 @@
-﻿{
-    "tests":  [
-                  {
-                      "test":  13,
-                      "title":  "Choosing a mobile app",
-                      "theme":  "apps",
-                      "people":  [
-                                     {
-                                         "number":  6,
-                                         "text":  "Clara wants help planning school homework. She often forgets dates and needs reminders for different subjects."
-                                     },
-                                     {
-                                         "number":  7,
-                                         "text":  "Oscar is training for a charity run. He wants to record distance and compare his progress each week."
-                                     },
-                                     {
-                                         "number":  8,
-                                         "text":  "Mei is travelling abroad soon. She wants to learn useful phrases and hear how words are pronounced."
-                                     },
-                                     {
-                                         "number":  9,
-                                         "text":  "Daniel wants simple vegetarian dinner ideas. He needs recipes that do not take long after work."
-                                     },
-                                     {
-                                         "number":  10,
-                                         "text":  "Iris often loses her car in large car parks. She wants an app that can guide her back to it."
-                                     }
-                                 ],
-                      "texts":  [
-                                    {
-                                        "letter":  "A",
-                                        "text":  "Study Planner lets students create separate lists for each subject. It sends [6]homework reminders[/6] and shows upcoming [6]deadline dates[/6] clearly on one calendar."
-                                    },
-                                    {
-                                        "letter":  "B",
-                                        "text":  "Run Track records every route on a map and measures [7]distance and speed[/7]. Weekly charts show whether runners are [7]improving over time[/7]."
-                                    },
-                                    {
-                                        "letter":  "C",
-                                        "text":  "Travel Talk teaches short phrases for hotels, shops and restaurants. Users can listen to [8]clear pronunciation recordings[/8] and repeat common [8]travel expressions[/8]."
-                                    },
-                                    {
-                                        "letter":  "D",
-                                        "text":  "Veggie Quick suggests [9]vegetarian meals[/9] using everyday ingredients. Most recipes take [9]less than thirty minutes[/9] and include simple photos for each stage."
-                                    },
-                                    {
-                                        "letter":  "E",
-                                        "text":  "Find My Spot saves where you parked and then gives walking directions back. It is useful in [10]large car parks[/10] or unfamiliar city streets."
-                                    },
-                                    {
-                                        "letter":  "F",
-                                        "text":  "Film Finder recommends new cinema releases and lets users buy tickets for nearby screens."
-                                    },
-                                    {
-                                        "letter":  "G",
-                                        "text":  "Weather Week gives long-range forecasts for people planning outdoor events."
-                                    },
-                                    {
-                                        "letter":  "H",
-                                        "text":  "Pet Notes stores vaccination information and feeding times for cats and dogs."
-                                    }
-                                ],
-                      "answers":  [
-                                      {
-                                          "question":  6,
-                                          "answer":  "A",
-                                          "explanation":  "Clara needs homework planning with reminders."
-                                      },
-                                      {
-                                          "question":  7,
-                                          "answer":  "B",
-                                          "explanation":  "Oscar needs running distance and progress tracking."
-                                      },
-                                      {
-                                          "question":  8,
-                                          "answer":  "C",
-                                          "explanation":  "Mei wants travel phrases with pronunciation."
-                                      },
-                                      {
-                                          "question":  9,
-                                          "answer":  "D",
-                                          "explanation":  "Daniel needs quick vegetarian recipes."
-                                      },
-                                      {
-                                          "question":  10,
-                                          "answer":  "E",
-                                          "explanation":  "Iris needs help finding her parked car."
-                                      }
-                                  ]
-                  }
-              ],
-    "batch":  2,
-    "part":  "Reading Part 2",
-    "level":  "B1"
+{
+    "tests": [
+        {
+            "test": 13,
+            "title": "Choosing a mobile app",
+            "theme": "apps",
+            "people": [
+                {
+                    "number": 6,
+                    "text": "Clara wants help planning school homework. She often forgets dates and needs reminders for different subjects."
+                },
+                {
+                    "number": 7,
+                    "text": "Oscar is training for a charity run. He wants to record distance and compare his progress each week."
+                },
+                {
+                    "number": 8,
+                    "text": "Mei is travelling abroad soon. She wants to learn useful phrases and hear how words are pronounced."
+                },
+                {
+                    "number": 9,
+                    "text": "Daniel wants simple vegetarian dinner ideas. He needs recipes that do not take long after work."
+                },
+                {
+                    "number": 10,
+                    "text": "Iris often loses her car in large car parks. She wants an app that can guide her back to it."
+                }
+            ],
+            "texts": [
+                {
+                    "letter": "A",
+                    "text": "Study Planner lets students create separate lists for each subject. It sends [6]homework reminders[/6] and shows upcoming [6]deadline dates[/6] clearly on one calendar."
+                },
+                {
+                    "letter": "B",
+                    "text": "Film Finder recommends new cinema releases and lets users buy tickets for nearby screens."
+                },
+                {
+                    "letter": "C",
+                    "text": "Pet Notes stores vaccination information and feeding times for cats and dogs."
+                },
+                {
+                    "letter": "D",
+                    "text": "Run Track records every route on a map and measures [7]distance and speed[/7]. Weekly charts show whether runners are [7]improving over time[/7]."
+                },
+                {
+                    "letter": "E",
+                    "text": "Travel Talk teaches short phrases for hotels, shops and restaurants. Users can listen to [8]clear pronunciation recordings[/8] and repeat common [8]travel expressions[/8]."
+                },
+                {
+                    "letter": "F",
+                    "text": "Find My Spot saves where you parked and then gives walking directions back. It is useful in [10]large car parks[/10] or unfamiliar city streets."
+                },
+                {
+                    "letter": "G",
+                    "text": "Weather Week gives long-range forecasts for people planning outdoor events."
+                },
+                {
+                    "letter": "H",
+                    "text": "Veggie Quick suggests [9]vegetarian meals[/9] using everyday ingredients. Most recipes take [9]less than thirty minutes[/9] and include simple photos for each stage."
+                }
+            ],
+            "answers": [
+                {
+                    "question": 6,
+                    "answer": "A",
+                    "explanation": "Clara needs homework planning with reminders."
+                },
+                {
+                    "question": 7,
+                    "answer": "D",
+                    "explanation": "Oscar needs running distance and progress tracking."
+                },
+                {
+                    "question": 8,
+                    "answer": "E",
+                    "explanation": "Mei wants travel phrases with pronunciation."
+                },
+                {
+                    "question": 9,
+                    "answer": "H",
+                    "explanation": "Daniel needs quick vegetarian recipes."
+                },
+                {
+                    "question": 10,
+                    "answer": "F",
+                    "explanation": "Iris needs help finding her parked car."
+                }
+            ]
+        }
+    ],
+    "batch": 2,
+    "part": "Reading Part 2",
+    "level": "B1",
+    "_reading2_notice_labels_permuted": true
 }

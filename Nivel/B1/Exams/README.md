@@ -92,6 +92,10 @@ El examen consta de cuatro pruebas:
 | **Part 5** | Open cloze | Texto con 6 huecos. Completar con UNA palabra. | Gramática y vocabulario. | 6 |
 | **Part 6** | Word formation | Texto con 6 huecos. Transformar la palabra dada. | Vocabulario (prefijos, sufijos). | 6 |
 
+### Datos de la Reading Part 2 (`reading2.json`)
+
+En la aplicación, las personas y los avisos **A–H** se muestran en orden numérico y alfabético. Para que la clave (pregunta → letra) no siga siempre el mismo patrón entre tests, el contenido de cada aviso se **re-etiqueta** en el JSON con una permutación fija por archivo. El script `scripts/permute_b1_reading2_notice_labels.py` hace ese cambio de forma determinista (semilla = ruta del archivo); los archivos llevan `"_reading2_notice_labels_permuted": true` para no volver a barajar al ejecutarlo otra vez. Usa `--force` solo si quieres una nueva permutación.
+
 ### Desafíos y Soluciones (Reading)
 
 - **Textos largos:** Practica el *skimming* para captar la idea general antes de leer las preguntas.
