@@ -207,6 +207,34 @@
   background: #fee2e2;
 }
 
+/* "Show correct answer" toggle: purple highlight for key + inserted sentence (text + sentence cards) */
+.reading-type7-gap-pill.rt7-pill-show-correct {
+  border-color: #8b5cf6;
+  background: #f5f3ff;
+}
+
+.reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-circle {
+  color: #5b21b6 !important;
+}
+
+.reading-type7-answer-block.rt7-show-correct {
+  border-color: #8b5cf6;
+  background: #f5f3ff;
+  color: #5b21b6;
+}
+
+.reading-type7-toggle-card.reading-type7-toggle-card-show-correct {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 1px #a78bfa;
+  background: #faf5ff;
+}
+
+.reading-type7-toggle-gapbtn.checked.rt7-gapbtn-show-correct {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #fff;
+}
+
 /* Explanation mode: orange border for correct block, and added correct-answer block for incorrect */
 .reading-type7-answer-block.correct.rt7-explanation,
 .reading-type7-explanation-block {
@@ -436,6 +464,12 @@
 .reading-type7-gap--inline .reading-type7-explanation-block {
   background: transparent;
   border-color: #f97316;
+}
+
+.reading-type7-gap--inline .reading-type7-answer-block.rt7-show-correct {
+  border-color: #8b5cf6;
+  background: #f5f3ff;
+  color: #5b21b6;
 }
 
 .reading-type7-gap--inline .reading-type7-answer-block.incorrect {
