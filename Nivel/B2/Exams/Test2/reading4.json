@@ -1,102 +1,55 @@
-{
-  "title": "Reading and Use of English - Part 4",
-  "type": "transformations",
-  "time": 10,
-  "totalQuestions": 6,
-  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between two and five words, including the word given. Here is an example (0).",
-  "content": {
-    "example": {
-      "number": 0,
-      "firstSentence": "Someone stole my bicycle last night.",
-      "keyWord": "WAS",
-      "beforeGap": "My bicycle",
-      "afterGap": "last night.",
-      "routes": [
-        {
-          "p1": "was",
-          "p2": "stolen"
-        }
-      ]
-    },
-    "questions": [
-      {
-        "number": 25,
-        "firstSentence": "The teacher said to us, 'Open your books.'",
-        "keyWord": "TOLD",
-        "beforeGap": "The teacher",
-        "afterGap": "to open our books.",
-        "routes": [
-          {
-            "p1": "told",
-            "p2": "us"
-          }
-        ]
-      },
-      {
-        "number": 26,
-        "firstSentence": "I don't have a car, so I can't drive to work.",
-        "keyWord": "WOULD",
-        "beforeGap": "If I had a car, I",
-        "afterGap": "to work.",
-        "routes": [
-          {
-            "p1": "would",
-            "p2": "drive"
-          }
-        ]
-      },
-      {
-        "number": 27,
-        "firstSentence": "She is too short to reach the top shelf.",
-        "keyWord": "TALL",
-        "beforeGap": "She isn't",
-        "afterGap": "to reach the top shelf.",
-        "routes": [
-          {
-            "p1": "tall",
-            "p2": "enough"
-          }
-        ]
-      },
-      {
-        "number": 28,
-        "firstSentence": "A plumber fixed our leaking pipe.",
-        "keyWord": "HAD",
-        "beforeGap": "We",
-        "afterGap": "our leaking pipe fixed.",
-        "routes": [
-          {
-            "p1": "had",
-            "p2": "a plumber fix"
-          }
-        ]
-      },
-      {
-        "number": 29,
-        "firstSentence": "He doesn't go to the gym anymore.",
-        "keyWord": "USED",
-        "beforeGap": "He",
-        "afterGap": "the gym.",
-        "routes": [
-          {
-            "p1": "used to",
-            "p2": "go to"
-          }
-        ]
-      },
-      {
-        "number": 30,
-        "firstSentence": "Where is the nearest hospital?",
-        "keyWord": "KNOW",
-        "beforeGap": "Do you",
-        "afterGap": "is?",
-        "routes": [
-          {
-            "p1": "know",
-            "p2": "where the nearest hospital"
-          }
-        ]
-      }
-    ]
-  }
+﻿{
+    "tests":  [
+                  {
+                      "title":  "Reading Part 4",
+                      "type":  "gapped-text",
+                      "time":  12,
+                      "totalQuestions":  5,
+                      "description":  "You are going to read an article from which five sentences have been removed. Choose from the sentences A–H the one which fits each gap (16–20). There are three extra sentences which you do not need to use.",
+                      "content":  {
+                                      "title":  "My First Music Festival",
+                                      "text":  "My First Music Festival became an important experience for Jamie last year. He was nervous before the activity started because he did not know anybody there. (16) [16]However, the organiser welcomed new members warmly and introduced everyone before the activity began.[/16] After that, Jamie felt much more relaxed and confident. || During the first few days, some activities were more difficult than Jamie expected. He sometimes made mistakes and needed extra help from older students. (17) [17]They explained things patiently and showed him how to improve step by step.[/17] Jamie soon realised that asking questions was the best way to learn. || Later in the programme, participants worked together in small groups to complete a practical task. Jamie enjoyed sharing ideas and solving problems with people his own age. (18) [18]By the end of the week, the group had become much more confident working together.[/18] The organisers were pleased with the progress everyone had made. || At first, Jamie thought he would forget the experience quickly after returning home. Instead, he continued practising the new skills every weekend. (19) [19]He even started teaching some of the basic techniques to his younger brother.[/19] His parents were surprised by how interested he had become. || Now Jamie recommends the programme to friends at school who want to try something different. He believes the experience helped him become more independent and confident. (20) [20]He says the best part was meeting people who shared similar interests.[/20]",
+                                      "paragraphs":  {
+                                                         "A":  "Several experienced students offered support whenever he needed it.",
+                                                         "B":  "The weather became worse later that evening.",
+                                                         "C":  "Nobody expected the activity to continue for so long.",
+                                                         "D":  "Some participants preferred working alone most of the time.",
+                                                         "E":  "He had expected people to ignore him completely.",
+                                                         "F":  "The organisers decided to cancel one activity the next morning.",
+                                                         "G":  "They continued communicating online after the programme ended.",
+                                                         "H":  "Jamie had never travelled outside his town before."
+                                                     },
+                                      "questions":  [
+                                                        {
+                                                            "number":  16,
+                                                            "correct":  "E",
+                                                            "explanation":  "Jamie expected people to ignore him."
+                                                        },
+                                                        {
+                                                            "number":  17,
+                                                            "correct":  "A",
+                                                            "explanation":  "Older students supported him patiently."
+                                                        },
+                                                        {
+                                                            "number":  18,
+                                                            "correct":  "G",
+                                                            "explanation":  "The group stayed connected afterwards."
+                                                        },
+                                                        {
+                                                            "number":  19,
+                                                            "correct":  "H",
+                                                            "explanation":  "The sentence contrasts with his new confidence."
+                                                        },
+                                                        {
+                                                            "number":  20,
+                                                            "correct":  "D",
+                                                            "explanation":  "It contrasts with Jamie enjoying shared interests."
+                                                        }
+                                                    ]
+                                  }
+                  }
+              ],
+    "batch":  1,
+    "part":  "Reading Part 4",
+    "level":  "B1"
 }

@@ -1,102 +1,55 @@
-{
-  "title": "Reading and Use of English - Part 4",
-  "type": "transformations",
-  "time": 10,
-  "totalQuestions": 6,
-  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between two and five words, including the word given. Here is an example (0).",
-  "content": {
-    "example": {
-      "number": 0,
-      "firstSentence": "She finally found the answer to the puzzle.",
-      "keyWord": "WORKED",
-      "beforeGap": "She finally",
-      "afterGap": "the puzzle.",
-      "routes": [
-        {
-          "p1": "worked",
-          "p2": "out"
-        }
-      ]
-    },
-    "questions": [
-      {
-        "number": 25,
-        "firstSentence": "The company had introduced a new policy the previous year.",
-        "keyWord": "BEEN",
-        "beforeGap": "A new policy had",
-        "afterGap": "the previous year.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "introduced"
-          }
-        ]
-      },
-      {
-        "number": 26,
-        "firstSentence": "He is too short to ride the biggest roller coaster.",
-        "keyWord": "TALL",
-        "beforeGap": "He isn't",
-        "afterGap": "to ride the biggest roller coaster.",
-        "routes": [
-          {
-            "p1": "tall",
-            "p2": "enough"
-          }
-        ]
-      },
-      {
-        "number": 27,
-        "firstSentence": "She kept the job offer a secret from everyone.",
-        "keyWord": "TOLD",
-        "beforeGap": "She",
-        "afterGap": "the job offer.",
-        "routes": [
-          {
-            "p1": "told",
-            "p2": "nobody about"
-          }
-        ]
-      },
-      {
-        "number": 28,
-        "firstSentence": "I regret not buying that house when I had the chance.",
-        "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "that house when I had the chance.",
-        "routes": [
-          {
-            "p1": "wish",
-            "p2": "I had bought"
-          }
-        ]
-      },
-      {
-        "number": 29,
-        "firstSentence": "He was obliged to cancel his holiday due to work.",
-        "keyWord": "HAD",
-        "beforeGap": "He",
-        "afterGap": "his holiday due to work.",
-        "routes": [
-          {
-            "p1": "had",
-            "p2": "to cancel"
-          }
-        ]
-      },
-      {
-        "number": 30,
-        "firstSentence": "The journalist said to the mayor, 'Please explain the decision.'",
-        "keyWord": "ASKED",
-        "beforeGap": "The journalist",
-        "afterGap": "the decision.",
-        "routes": [
-          {
-            "p1": "asked",
-            "p2": "the mayor to explain"
-          }
-        ]
-      }
-    ]
-  }
+﻿{
+    "tests":  [
+                  {
+                      "title":  "Reading Part 4",
+                      "type":  "gapped-text",
+                      "time":  12,
+                      "totalQuestions":  5,
+                      "description":  "You are going to read an article from which five sentences have been removed. Choose from the sentences A–H the one which fits each gap (16–20). There are three extra sentences which you do not need to use.",
+                      "content":  {
+                                      "title":  "A Community Art Festival",
+                                      "text":  "A Community Art Festival became one of the most exciting experiences Ethan had during the year. Before the programme began, he felt nervous because he did not know any of the other participants. (16) [16]He worried that the other students already knew each other and would not include him in conversations.[/16] Fortunately, the organisers encouraged everyone to work together from the beginning. || At first, some activities were more difficult than Ethan expected. He sometimes made mistakes and needed extra support from older students. (17) [17]Experienced participants explained tasks patiently and gave useful advice whenever he became confused.[/17] After a few days, Ethan became more confident asking questions and trying unfamiliar activities. || Later in the programme, participants worked together in small teams to complete a practical project. Everyone shared ideas and solved problems together. (18) [18]By the end of the week, many participants continued sharing ideas and communicating online.[/18] The organisers were pleased to see people becoming comfortable working together. || When Ethan returned home, he expected to forget many of the things he had learned. Instead, he continued practising regularly every weekend. (19) [19]He even showed some of the new techniques to friends who were interested in the programme.[/19] His parents were surprised by how enthusiastic he had become. || Now Ethan recommends the programme to younger students at school. He believes the experience helped him become more independent and confident. (20) [20]Meeting people with similar interests was the thing he enjoyed most.[/20]",
+                                      "paragraphs":  {
+                                                         "A":  "The organisers changed the timetable because of bad weather.",
+                                                         "B":  "Ethan had never travelled outside his region before joining the programme.",
+                                                         "C":  "Several experienced students offered support whenever he needed help.",
+                                                         "D":  "Some participants preferred spending free time quietly on their own.",
+                                                         "E":  "The activity centre closed earlier than expected one evening.",
+                                                         "F":  "Ethan thought nobody would want to talk to him.",
+                                                         "G":  "The weather became much colder during the second week.",
+                                                         "H":  "Many participants stayed in contact after the programme finished."
+                                                     },
+                                      "questions":  [
+                                                        {
+                                                            "number":  16,
+                                                            "correct":  "F",
+                                                            "explanation":  "Ethan worried the others would ignore him."
+                                                        },
+                                                        {
+                                                            "number":  17,
+                                                            "correct":  "C",
+                                                            "explanation":  "Experienced students supported him carefully."
+                                                        },
+                                                        {
+                                                            "number":  18,
+                                                            "correct":  "H",
+                                                            "explanation":  "Participants remained in contact afterwards."
+                                                        },
+                                                        {
+                                                            "number":  19,
+                                                            "correct":  "B",
+                                                            "explanation":  "It contrasts with Ethan\u0027s increased confidence."
+                                                        },
+                                                        {
+                                                            "number":  20,
+                                                            "correct":  "D",
+                                                            "explanation":  "It contrasts with Ethan enjoying shared interests."
+                                                        }
+                                                    ]
+                                  }
+                  }
+              ],
+    "batch":  5,
+    "part":  "Reading Part 4",
+    "level":  "B1"
 }

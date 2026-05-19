@@ -1,102 +1,55 @@
-{
-  "title": "Reading and Use of English - Part 4",
-  "type": "transformations",
-  "time": 10,
-  "totalQuestions": 6,
-  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between two and five words, including the word given. Here is an example (0).",
-  "content": {
-    "example": {
-      "number": 0,
-      "firstSentence": "All guests must check out by midday.",
-      "keyWord": "REQUIRED",
-      "beforeGap": "All guests are",
-      "afterGap": "by midday.",
-      "routes": [
-        {
-          "p1": "required",
-          "p2": "to check out"
-        }
-      ]
-    },
-    "questions": [
-      {
-        "number": 25,
-        "firstSentence": "A cleaner tidied the office before we arrived.",
-        "keyWord": "BEEN",
-        "beforeGap": "The office had",
-        "afterGap": "before we arrived.",
-        "routes": [
-          {
-            "p1": "been",
-            "p2": "tidied"
-          }
-        ]
-      },
-      {
-        "number": 26,
-        "firstSentence": "The book was so long that she took a month to read it.",
-        "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that she took a month to read it.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "a long book"
-          }
-        ]
-      },
-      {
-        "number": 27,
-        "firstSentence": "She decided to stop working overtime.",
-        "keyWord": "GAVE",
-        "beforeGap": "She",
-        "afterGap": "working overtime.",
-        "routes": [
-          {
-            "p1": "gave",
-            "p2": "up"
-          }
-        ]
-      },
-      {
-        "number": 28,
-        "firstSentence": "Tom is taller than any other boy in his class.",
-        "keyWord": "TALLEST",
-        "beforeGap": "Tom is",
-        "afterGap": "in his class.",
-        "routes": [
-          {
-            "p1": "the tallest",
-            "p2": "boy"
-          }
-        ]
-      },
-      {
-        "number": 29,
-        "firstSentence": "Even though he practised every day, he didn't improve.",
-        "keyWord": "DESPITE",
-        "beforeGap": "He didn't improve",
-        "afterGap": "every day.",
-        "routes": [
-          {
-            "p1": "despite",
-            "p2": "practising"
-          }
-        ]
-      },
-      {
-        "number": 30,
-        "firstSentence": "The manager said to them, 'Please arrive on time.'",
-        "keyWord": "TOLD",
-        "beforeGap": "The manager",
-        "afterGap": "on time.",
-        "routes": [
-          {
-            "p1": "told",
-            "p2": "them to arrive"
-          }
-        ]
-      }
-    ]
-  }
+﻿{
+    "tests":  [
+                  {
+                      "title":  "Reading Part 4",
+                      "type":  "gapped-text",
+                      "time":  12,
+                      "totalQuestions":  5,
+                      "description":  "You are going to read an article from which five sentences have been removed. Choose from the sentences A–H the one which fits each gap (16–20). There are three extra sentences which you do not need to use.",
+                      "content":  {
+                                      "title":  "A Community Garden Project",
+                                      "text":  "A Community Garden Project became one of the most memorable experiences Mia had that year. Before the programme started, she felt nervous because she did not know anyone there. (16) [16]She worried that the other participants would already be friends and would ignore her completely.[/16] Fortunately, the organisers encouraged everyone to introduce themselves and work together from the beginning. || At first, some activities were more difficult than Mia expected. She made several mistakes and sometimes needed extra help from older students. (17) [17]Experienced participants explained each activity carefully and gave useful advice whenever she felt confused.[/17] After a few days, Mia became much more confident asking questions and trying new ideas. || Later in the programme, participants worked together in small groups to complete a practical project. Everyone shared ideas and solved problems together. (18) [18]By the end of the programme, many participants continued communicating and sharing ideas online.[/18] The organisers were pleased to see people supporting each other so naturally. || When Mia returned home, she expected to forget many of the skills she had learned. Instead, she continued practising every weekend. (19) [19]She even demonstrated some of the techniques to classmates who were interested in the programme.[/19] Her parents were surprised by how enthusiastic she had become. || Now Mia recommends the programme to younger students at school. She believes the experience helped her become more independent and confident. (20) [20]Meeting people with similar interests was the part she enjoyed most.[/20]",
+                                      "paragraphs":  {
+                                                         "A":  "The organisers decided to change the timetable the following day.",
+                                                         "B":  "Mia had never travelled outside her town before joining the programme.",
+                                                         "C":  "Some participants preferred spending time quietly on their own.",
+                                                         "D":  "Several experienced students offered help whenever she needed support.",
+                                                         "E":  "The weather became colder later that evening.",
+                                                         "F":  "Mia thought nobody would want to speak to her.",
+                                                         "G":  "The activity centre closed earlier than expected that afternoon.",
+                                                         "H":  "Many participants stayed in contact after the programme ended."
+                                                     },
+                                      "questions":  [
+                                                        {
+                                                            "number":  16,
+                                                            "correct":  "F",
+                                                            "explanation":  "Mia worried the others would ignore her."
+                                                        },
+                                                        {
+                                                            "number":  17,
+                                                            "correct":  "D",
+                                                            "explanation":  "Older students helped her carefully."
+                                                        },
+                                                        {
+                                                            "number":  18,
+                                                            "correct":  "H",
+                                                            "explanation":  "Participants continued communicating afterwards."
+                                                        },
+                                                        {
+                                                            "number":  19,
+                                                            "correct":  "B",
+                                                            "explanation":  "It contrasts with Mia\u0027s increased confidence."
+                                                        },
+                                                        {
+                                                            "number":  20,
+                                                            "correct":  "C",
+                                                            "explanation":  "It contrasts with Mia enjoying shared interests."
+                                                        }
+                                                    ]
+                                  }
+                  }
+              ],
+    "batch":  4,
+    "part":  "Reading Part 4",
+    "level":  "B1"
 }

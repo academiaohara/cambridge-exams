@@ -1,102 +1,55 @@
-{
-  "title": "Reading and Use of English - Part 4",
-  "type": "transformations",
-  "time": 10,
-  "totalQuestions": 6,
-  "description": "For questions 25 – 30, complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between two and five words, including the word given. Here is an example (0).",
-  "content": {
-    "example": {
-      "number": 0,
-      "firstSentence": "They grew all these vegetables in the greenhouse.",
-      "keyWord": "WERE",
-      "beforeGap": "All these vegetables",
-      "afterGap": "in the greenhouse.",
-      "routes": [
-        {
-          "p1": "were",
-          "p2": "grown"
-        }
-      ]
-    },
-    "questions": [
-      {
-        "number": 25,
-        "firstSentence": "It's not necessary for you to send a printed copy.",
-        "keyWord": "NEED",
-        "beforeGap": "You",
-        "afterGap": "a printed copy.",
-        "routes": [
-          {
-            "p1": "needn't",
-            "p2": "send"
-          }
-        ]
-      },
-      {
-        "number": 26,
-        "firstSentence": "The documentary was so informative that we watched it twice.",
-        "keyWord": "SUCH",
-        "beforeGap": "It was",
-        "afterGap": "that we watched it twice.",
-        "routes": [
-          {
-            "p1": "such",
-            "p2": "an informative documentary"
-          }
-        ]
-      },
-      {
-        "number": 27,
-        "firstSentence": "We discovered that the museum was free on Sundays.",
-        "keyWord": "FOUND",
-        "beforeGap": "We",
-        "afterGap": "the museum was free on Sundays.",
-        "routes": [
-          {
-            "p1": "found",
-            "p2": "out that"
-          }
-        ]
-      },
-      {
-        "number": 28,
-        "firstSentence": "I regret not saving enough money when I was younger.",
-        "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "enough money when I was younger.",
-        "routes": [
-          {
-            "p1": "wish",
-            "p2": "I had saved"
-          }
-        ]
-      },
-      {
-        "number": 29,
-        "firstSentence": "They had broken the window before we arrived.",
-        "keyWord": "HAD",
-        "beforeGap": "The window",
-        "afterGap": "before we arrived.",
-        "routes": [
-          {
-            "p1": "had",
-            "p2": "been broken"
-          }
-        ]
-      },
-      {
-        "number": 30,
-        "firstSentence": "Could you tell me how much this jacket costs?",
-        "keyWord": "KNOW",
-        "beforeGap": "Do you",
-        "afterGap": "this jacket costs?",
-        "routes": [
-          {
-            "p1": "know",
-            "p2": "how much"
-          }
-        ]
-      }
-    ]
-  }
+﻿{
+    "tests":  [
+                  {
+                      "title":  "Reading Part 4",
+                      "type":  "gapped-text",
+                      "time":  12,
+                      "totalQuestions":  5,
+                      "description":  "You are going to read an article from which five sentences have been removed. Choose from the sentences A–H the one which fits each gap (16–20). There are three extra sentences which you do not need to use.",
+                      "content":  {
+                                      "title":  "A Weekend Art Course",
+                                      "text":  "A Weekend Art Course became one of the most interesting experiences Alex had during the year. Before the activity began, he felt nervous because he did not know the other participants. (16) [16]He worried that everyone else already knew each other well and would ignore him.[/16] Fortunately, the organisers encouraged everyone to introduce themselves at the start. || During the first few days, some activities were more difficult than Alex expected. He sometimes made mistakes and needed additional help from older students. (17) [17]Experienced participants explained the activities carefully and gave him useful advice whenever he felt confused.[/17] After a short time, Alex became much more confident asking questions and trying new ideas. || Later in the programme, participants worked together in teams to complete a practical challenge. Everyone shared ideas and solved problems together. (18) [18]By the end of the week, many participants continued talking and sharing ideas outside the organised activities.[/18] The organisers were pleased to see people becoming more comfortable working together. || When Alex returned home, he expected to forget many of the skills he had learned. Instead, he continued practising regularly every weekend. (19) [19]He even demonstrated some of the techniques to friends at school who were interested.[/19] His family were surprised by how enthusiastic he had become. || Now Alex recommends the programme to younger students. He believes the experience helped him become more independent and confident. (20) [20]Meeting people with similar interests was the thing he enjoyed most about the experience.[/20]",
+                                      "paragraphs":  {
+                                                         "A":  "Several experienced students offered help whenever he needed support.",
+                                                         "B":  "The organisers decided to change the timetable the following morning.",
+                                                         "C":  "Alex had never visited the city before the programme started.",
+                                                         "D":  "Some participants preferred working quietly on their own.",
+                                                         "E":  "The weather became colder later that evening.",
+                                                         "F":  "Many participants stayed in contact online after the programme ended.",
+                                                         "G":  "Alex thought nobody would want to speak to him.",
+                                                         "H":  "The activity centre closed earlier than expected that day."
+                                                     },
+                                      "questions":  [
+                                                        {
+                                                            "number":  16,
+                                                            "correct":  "G",
+                                                            "explanation":  "Alex worried people would ignore him."
+                                                        },
+                                                        {
+                                                            "number":  17,
+                                                            "correct":  "A",
+                                                            "explanation":  "Older students supported him carefully."
+                                                        },
+                                                        {
+                                                            "number":  18,
+                                                            "correct":  "F",
+                                                            "explanation":  "Participants remained in contact afterwards."
+                                                        },
+                                                        {
+                                                            "number":  19,
+                                                            "correct":  "C",
+                                                            "explanation":  "It contrasts with Alex\u0027s increased confidence."
+                                                        },
+                                                        {
+                                                            "number":  20,
+                                                            "correct":  "D",
+                                                            "explanation":  "It contrasts with Alex enjoying shared interests."
+                                                        }
+                                                    ]
+                                  }
+                  }
+              ],
+    "batch":  3,
+    "part":  "Reading Part 4",
+    "level":  "B1"
 }
