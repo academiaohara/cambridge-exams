@@ -1,22 +1,55 @@
-{
-    "title":  "Reading - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "gapped-text",
-    "totalQuestions":  1,
-    "instructions":  "Choose the correct sentence (A–F) to complete the gap in the text.",
-    "articleTitle":  "Joining A Photography Course",
-    "article":  "Last year I decided to try joining a photography course. I was excited, but also nervous because I had never done anything similar before.\n\n_____\n\nDuring the first few days, everything felt unfamiliar. I had to meet new people, learn new routines and adapt quickly.\n\nAfter some time, I started feeling more comfortable. I realised that making mistakes was a normal part of learning.\n\nThe experience also taught me how important patience can be. Some skills take much longer to develop than people expect.\n\nLooking back now, I’m very glad I continued. I learned a lot about myself and became much more confident.",
-    "options":  {
-                    "A":  "At first, I thought I would find it easy.",
-                    "B":  "Fortunately, things improved after a few weeks.",
-                    "C":  "I also learned the importance of planning ahead.",
-                    "D":  "That experience completely changed my attitude.",
-                    "E":  "Some moments were much more stressful than expected.",
-                    "F":  "In the end, the effort was definitely worth it."
-                },
-    "answer":  "D",
-    "correctSentence":  "That experience completely changed my attitude.",
-    "explanation":  "The missing sentence connects logically with the ideas before and after the gap."
+﻿{
+    "tests":  [
+                  {
+                      "title":  "Reading Part 4",
+                      "type":  "gapped-text",
+                      "time":  12,
+                      "totalQuestions":  5,
+                      "description":  "You are going to read an article from which five sentences have been removed. Choose from the sentences A–H the one which fits each gap (16–20). There are three extra sentences which you do not need to use.",
+                      "content":  {
+                                      "title":  "A Weekend Cycling Course",
+                                      "text":  "A Weekend Cycling Course was one of the most memorable experiences Sam had last year. Before the programme started, he felt nervous because he did not know anyone there. (16) [16]He thought the other participants might already be close friends and ignore him completely.[/16] Fortunately, the organisers introduced everyone carefully and encouraged people to work together. || At first, some activities were more difficult than Sam expected. He made several mistakes and sometimes needed extra help. (17) [17]Older participants explained each activity slowly and gave useful advice whenever he felt confused.[/17] After a few days, Sam became much more confident asking questions and trying new things. || Later in the week, the group completed a project together in small teams. Everyone shared ideas and helped solve problems during the activity. (18) [18]By the end of the programme, many participants had become close friends outside the activities too.[/18] The organisers were pleased to see people supporting each other so naturally. || When Sam returned home, he expected to forget most of what he had learned. Instead, he continued practising the new skills every weekend. (19) [19]He even showed some of the techniques to classmates who were interested in the programme.[/19] His parents were surprised by how enthusiastic he had become. || Now Sam recommends the programme to younger students at school. He says the experience helped him become more independent and confident. (20) [20]Meeting people with similar interests was the part he enjoyed most.[/20]",
+                                      "paragraphs":  {
+                                                         "A":  "Some participants preferred spending time quietly on their own.",
+                                                         "B":  "The weather became much colder later that evening.",
+                                                         "C":  "The organisers cancelled one activity because of heavy rain.",
+                                                         "D":  "He had never travelled outside his town before joining the programme.",
+                                                         "E":  "Several experienced students offered support whenever he needed it.",
+                                                         "F":  "The café near the activity centre closed earlier than expected.",
+                                                         "G":  "Many students stayed in contact online after the programme finished.",
+                                                         "H":  "Sam worried that nobody would want to speak to him."
+                                                     },
+                                      "questions":  [
+                                                        {
+                                                            "number":  16,
+                                                            "correct":  "H",
+                                                            "explanation":  "Sam feared people would ignore him."
+                                                        },
+                                                        {
+                                                            "number":  17,
+                                                            "correct":  "E",
+                                                            "explanation":  "Experienced students helped him patiently."
+                                                        },
+                                                        {
+                                                            "number":  18,
+                                                            "correct":  "G",
+                                                            "explanation":  "Friendships continued after the programme."
+                                                        },
+                                                        {
+                                                            "number":  19,
+                                                            "correct":  "D",
+                                                            "explanation":  "It contrasts with Sam\u0027s growing confidence."
+                                                        },
+                                                        {
+                                                            "number":  20,
+                                                            "correct":  "A",
+                                                            "explanation":  "It contrasts with Sam enjoying shared interests."
+                                                        }
+                                                    ]
+                                  }
+                  }
+              ],
+    "batch":  2,
+    "part":  "Reading Part 4",
+    "level":  "B1"
 }
