@@ -611,11 +611,21 @@
   display: none;
 }
 
-.explanation-mode-text .evidence-wrap > .evidence-normal {
+/* Only the active explanation question shows passage highlighting; others stay plain text.
+   (Part 7 adds .evidence-active-q to all wraps so every gap stays highlighted there.) */
+.explanation-mode-text .evidence-wrap:not(.evidence-active-q) > .evidence-normal {
+  display: inline;
+}
+
+.explanation-mode-text .evidence-wrap:not(.evidence-active-q) > .evidence-explanation-mode {
   display: none;
 }
 
-.explanation-mode-text .evidence-wrap > .evidence-explanation-mode {
+.explanation-mode-text .evidence-wrap.evidence-active-q > .evidence-normal {
+  display: none;
+}
+
+.explanation-mode-text .evidence-wrap.evidence-active-q > .evidence-explanation-mode {
   display: inline;
 }
 
@@ -627,6 +637,17 @@
   text-decoration: underline;
   text-decoration-color: #f97316;
   text-underline-offset: 2px;
+}
+
+/* Active question only: inner .evidence-core carries the orange highlight; avoid stacking
+   .evidence-explanation-mode underline/background with .evidence-marker.evidence-active border. */
+.explanation-mode-text .evidence-wrap.evidence-active-q > .evidence-explanation-mode.evidence-marker.evidence-active {
+  color: inherit;
+  background: transparent;
+  border-bottom: none;
+  text-decoration: none;
+  padding: 0;
+  border-radius: 0;
 }
 
 /* Inner phrase: matches parent until this wrap is the active explanation question (.evidence-active-q). */
