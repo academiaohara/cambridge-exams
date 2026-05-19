@@ -90,15 +90,18 @@
         }
       }
 
-      // For reading parts 5–8 and listening: reveal the explanation toggle button in the toggle-view-header
+      // For reading parts 5–8, B1 reading part 3, and listening: reveal the explanation toggle in the header
       if ((AppState.currentSection === 'reading' && AppState.currentPart >= 5) ||
+          (AppState.currentSection === 'reading' &&
+            AppState.currentLevel === 'B1' &&
+            AppState.currentPart === 3) ||
           (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) ||
           AppState.currentSection === 'listening') {
         const explBtn = document.getElementById('toggle-explanation-btn');
         if (explBtn) explBtn.style.display = '';
       }
 
-      // Reveal the footer explanation button when present (reading parts 1–3 except B1 Reading 2 PET; other sections per footer markup).
+      // Reveal the footer "Show explanations" button when present (B1 Reading 3 uses the header Explanation control; B1 Reading 2 PET also uses the header only).
       const footerExplBtn = document.querySelector('.btn-explanations');
       if (footerExplBtn) footerExplBtn.style.display = '';
       this.syncAnswerToggleButton();
@@ -553,6 +556,9 @@
       // Apply sticky-mode for Listening parts 2-3 and Reading parts 5, 6, 8
       if ((AppState.currentSection === 'listening' && (AppState.currentPart === 2 || AppState.currentPart === 3)) ||
           (AppState.currentSection === 'reading' && (AppState.currentPart === 5 || AppState.currentPart === 6 || AppState.currentPart === 8)) ||
+          (AppState.currentSection === 'reading' &&
+            AppState.currentLevel === 'B1' &&
+            AppState.currentPart === 3) ||
           (AppState.currentSection === 'reading' && AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui)) {
         qDisplay.classList.add('sticky-mode');
       } else {

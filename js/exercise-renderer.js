@@ -97,7 +97,9 @@
         const firstToggleLabel = i18nMap[firstToggleI18nKey] || firstToggleI18nKey;
         const firstToggleIconClass = isB1Reading2Pet ? 'fa-users' : 'fa-file-alt';
         const isReadingPart5to8 = section === 'reading' && part >= 5;
-        const showExplanationBtn = isReadingPart5to8 || isB1Reading2Pet;
+        const isB1Reading3Explanation =
+          AppState.currentLevel === 'B1' && section === 'reading' && part === 3;
+        const showExplanationBtn = isReadingPart5to8 || isB1Reading2Pet || isB1Reading3Explanation;
         toggleHTML = `
           <div class="toggle-view-header">
             <button class="toggle-view-btn active" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
@@ -1270,13 +1272,11 @@
         // Reading part 4: never show (broken); reading parts 5-8: explanation button is in toggle-view-header
         // Listening: explanation button is now in toggle-view-header
         // all other sections: always show in practice mode
-        // Reading parts 1–3: show explanations button (part 4 is excluded because
-        // key-word transformations don't have auto-explanations; parts 5–8 have
-        // their explanation button in the toggle-view-header instead).
-        // B1 Preliminary Reading Part 2 (people/notices): use header "Explanation" only
-        // (_b1PetReading2Ui); footer "Show explanations" would duplicate it.
+        // Reading parts 1–2: footer "Show explanations" (part 4 excluded; parts 5–8 and B1 part 3 use header Explanation;
+        // B1 Preliminary Reading Part 2 uses header only).
         if (isReading && actualPart > 0 && actualPart < 4 &&
-            !(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui)) {
+            !(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) &&
+            !(AppState.currentLevel === 'B1' && actualPart === 3)) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span>
