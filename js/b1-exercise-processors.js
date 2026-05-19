@@ -261,6 +261,8 @@
       if (!ex.title) ex.title = title || ex.part || 'Reading Part 3';
       mergeDescription(ex);
       ex._b1PetScoring = true;
+      // Same as Reading Part 1: answers are clear in the UI; hide footer "Show correct answer".
+      ex._b1PetHideAnswerToggle = true;
       return;
     }
 
