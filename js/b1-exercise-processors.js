@@ -172,6 +172,34 @@
     ex._b1PetScoring = true;
   }
 
+  function parseExamFolderTestNumber(examId) {
+    if (examId == null) return null;
+    var m = String(examId).match(/(\d+)/);
+    if (!m) return null;
+    var n = parseInt(m[1], 10);
+    return isNaN(n) ? null : n;
+  }
+
+  /**
+   * New B1 reading3 JSON: { tests: [{ test, title, subtitle, text, questions }], batch, part, level }.
+   * Pick the block for this exam folder (e.g. Test35 → test === 35), else first block with text + questions.
+   */
+  function pickB1Reading3BatchBlock(ex, examId) {
+    if (!Array.isArray(ex.tests) || !ex.tests.length) return null;
+    var want = parseExamFolderTestNumber(examId);
+    var candidates = ex.tests.filter(function(t) {
+      return t && typeof t.text === 'string' && t.text.trim() !== '' &&
+        Array.isArray(t.questions) && t.questions.length;
+    });
+    if (!candidates.length) return null;
+    if (want != null) {
+      for (var i = 0; i < candidates.length; i++) {
+        if (parseInt(candidates[i].test, 10) === want) return candidates[i];
+      }
+    }
+    return candidates[0];
+  }
+
   /**
    * Wrap canonical PET-style “try something new” article phrases in [n]…[/n] markers so
    * explanation mode can highlight evidence in the passage (see ExerciseRenderer.processEvidenceMarkers).
@@ -210,11 +238,36 @@
     return out;
   }
 
-  function readingPart3or5(ex) {
+  /**
+   * B1 Reading Part 3 (batch JSON) or Part 5 (flat article): `appPart` is the section part
+   * index from the app (1–6), not necessarily `ex.part` from the file (e.g. "Reading Part 3").
+   */
+  function readingPart3or5(ex, appPart, examId) {
+    var partNum = parseInt(appPart, 10);
+    var batchBlock = !isNaN(partNum) && partNum === 3 ? pickB1Reading3BatchBlock(ex, examId) : null;
+    if (batchBlock) {
+      var title = sanitizeHtmlTypos((batchBlock.title || '').toString().trim());
+      var subtitle = sanitizeHtmlTypos((batchBlock.subtitle || '').toString().trim());
+      var article = sanitizeHtmlTypos((batchBlock.text || '').toString());
+      ex.content = {
+        title: title,
+        subtitle: subtitle,
+        text: article,
+        questions: normalizeQuestionsArray(batchBlock.questions || [])
+      };
+      if (ex.content.questions.length && (ex.totalQuestions == null || ex.totalQuestions === 0)) {
+        ex.totalQuestions = ex.content.questions.length;
+      }
+      if (!ex.title) ex.title = title || ex.part || 'Reading Part 3';
+      mergeDescription(ex);
+      ex._b1PetScoring = true;
+      return;
+    }
+
     var title = ex.articleTitle || '';
     var article = sanitizeHtmlTypos((ex.article || '').toString());
-    var partNum = parseInt(ex.part, 10);
-    if (partNum === 3) {
+    var legacyPart = parseInt(ex.part, 10);
+    if (!isNaN(legacyPart) && legacyPart === 3) {
       article = injectB1ReadingPart3EvidenceMarkers(article);
     }
     ex.content = {
@@ -354,7 +407,7 @@
     mergeDescription(ex);
   }
 
-  function processReading(ex, part) {
+  function processReading(ex, part, examId) {
     var p = parseInt(part, 10);
     if (isNaN(p)) p = 0;
     var t = (ex.type || '').toString();
@@ -367,7 +420,7 @@
       return;
     }
     if (p === 3 || t === 'multiple-choice-long-text') {
-      readingPart3or5(ex);
+      readingPart3or5(ex, p, examId);
       return;
     }
     if (p === 4 || t === 'gapped-text') {
@@ -375,7 +428,7 @@
       return;
     }
     if (p === 5 || t === 'multiple-choice-reading') {
-      readingPart3or5(ex);
+      readingPart3or5(ex, p, examId);
       return;
     }
     if (p === 6 || t === 'gapped-email') {
@@ -423,9 +476,9 @@
    * @param {number} part 1-based part index
    * @returns {object} same exercise mutated (and returned)
    */
-  function normalizeExercise(exercise, section, part) {
+  function normalizeExercise(exercise, section, part, examId) {
     if (!exercise || typeof exercise !== 'object') return exercise;
-    if (section === 'reading') processReading(exercise, part);
+    if (section === 'reading') processReading(exercise, part, examId);
     else if (section === 'listening') processListening(exercise, part);
     else if (section === 'writing') processWriting(exercise, part);
     else if (section === 'speaking') processSpeaking(exercise);

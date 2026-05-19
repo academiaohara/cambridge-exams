@@ -122,7 +122,9 @@
           ? this.renderB1Reading2LetterNav(exercise)
           : this.renderQuestionNavRow(exercise, partConfig);
         const cTitle = exercise.content?.title || '';
-        const cSubtitle = (section === 'reading' && part === 5) ? (exercise.content?.subtitle || '') : '';
+        const cSubtitle = (section === 'reading' && (part === 5 || (AppState.currentLevel === 'B1' && part === 3)))
+          ? (exercise.content?.subtitle || '')
+          : '';
         contentTitleBlockHTML = `
           <div class="content-title-block">
             <div class="content-title" title="${cTitle}">${cTitle}</div>

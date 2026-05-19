@@ -349,7 +349,7 @@
         const exercise = await response.json();
 
         if (AppState.currentLevel === 'B1' && window.B1ExerciseProcessors) {
-          B1ExerciseProcessors.normalizeExercise(exercise, section, part);
+          B1ExerciseProcessors.normalizeExercise(exercise, section, part, examId);
         }
         
         // Transform listening extracts format to standard content format
@@ -681,7 +681,7 @@
         var exercise = await response.json();
 
         if (AppState.currentLevel === 'B1' && window.B1ExerciseProcessors) {
-          B1ExerciseProcessors.normalizeExercise(exercise, section, part);
+          B1ExerciseProcessors.normalizeExercise(exercise, section, part, examId);
         }
         
         // Normalise listening format
