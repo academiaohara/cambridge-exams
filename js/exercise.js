@@ -34,6 +34,9 @@
       if (!AppState.currentExamId || !AppState.currentSection) return;
       var key = this.getSectionTimerKey(AppState.currentExamId, AppState.currentSection);
       try { localStorage.setItem(key, String(AppState.sectionElapsedSeconds || 0)); } catch(e) { console.warn('Could not save section timer:', e); }
+      if (typeof SyncManager !== 'undefined' && SyncManager.requestSyncSoon) {
+        SyncManager.requestSyncSoon();
+      }
     },
     
     loadSectionTimerState: function(examId, section) {
@@ -50,6 +53,18 @@
       try { localStorage.removeItem(key); } catch(e) { console.warn('Could not clear section timer:', e); }
     },
     
+    /** Write exam part blob to localStorage and queue Supabase sync when signed in. */
+    _persistPartStateBlob: function(key, data) {
+      data.updatedAt = new Date().toISOString();
+      if (typeof Auth !== 'undefined' && Auth.getUser && Auth.getUser()) {
+        data.synced = false;
+      }
+      try { localStorage.setItem(key, JSON.stringify(data)); } catch(e) { console.warn('Could not save state:', e); }
+      if (typeof SyncManager !== 'undefined' && SyncManager.requestSyncSoon) {
+        SyncManager.requestSyncSoon();
+      }
+    },
+
     savePartState: function() {
       if (!AppState.currentExamId || !AppState.currentSection || !AppState.currentPart) return;
       var key = this.getStorageKey(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
@@ -61,7 +76,7 @@
         examFullMode: AppState.examFullMode,
         examCurrentSectionIndex: AppState.examCurrentSectionIndex || 0
       };
-      try { localStorage.setItem(key, JSON.stringify(data)); } catch(e) { console.warn('Could not save state:', e); }
+      this._persistPartStateBlob(key, data);
     },
     
     loadPartState: function(examId, section, part) {
@@ -655,7 +670,7 @@
         if (!savedState) {
           // No answers saved — store empty checked state
           var key = this.getStorageKey(examId, section, i);
-          try { localStorage.setItem(key, JSON.stringify({ answers: {}, answersChecked: true, partScore: 0, elapsedSeconds: 0 })); } catch(e) {}
+          this._persistPartStateBlob(key, { answers: {}, answersChecked: true, partScore: 0, elapsedSeconds: 0 });
           AppState.sectionScores[sectionKey][i] = 0;
         } else if (!savedState.answersChecked) {
           if (isWriting) {
@@ -726,7 +741,7 @@
         });
         
         var key = this.getStorageKey(examId, section, part);
-        try { localStorage.setItem(key, JSON.stringify(Object.assign({}, savedState, { answersChecked: true, partScore: score }))); } catch(e) {}
+        this._persistPartStateBlob(key, Object.assign({}, savedState, { answersChecked: true, partScore: score }));
         
         var sectionKey = examId + '_' + section;
         if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
@@ -800,7 +815,7 @@
         }
         
         var key = this.getStorageKey(examId, section, part);
-        try { localStorage.setItem(key, JSON.stringify(Object.assign({}, savedState, { answers: answers, answersChecked: true, partScore: score }))); } catch(e) {}
+        this._persistPartStateBlob(key, Object.assign({}, savedState, { answers: answers, answersChecked: true, partScore: score }));
         
         var sectionKey = examId + '_' + section;
         if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
@@ -846,7 +861,7 @@
         }
         
         var key = this.getStorageKey(examId, section, part);
-        try { localStorage.setItem(key, JSON.stringify(Object.assign({}, savedState, { answers: answers, answersChecked: true, partScore: score }))); } catch(e) {}
+        this._persistPartStateBlob(key, Object.assign({}, savedState, { answers: answers, answersChecked: true, partScore: score }));
         
         var sectionKey = examId + '_' + section;
         if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};

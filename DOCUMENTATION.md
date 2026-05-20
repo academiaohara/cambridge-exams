@@ -475,7 +475,9 @@ Mapea cada parte del examen a su configuración de renderizado. Las partes de Re
 
 ---
 
-## 8. Persistencia con localStorage
+## 8. Persistencia (localStorage y Supabase)
+
+Con **sesión iniciada** (Google), el progreso de **tests** (`practice`, `exam`, `mixed`), los **timers de sección** en modo examen completo y el mapa de **Fast Learning** se sincronizan con la tabla `user_progress` de Supabase (además del `localStorage`). Sin sesión, todo sigue solo en el navegador.
 
 ### Claves de localStorage
 
@@ -483,7 +485,7 @@ Mapea cada parte del examen a su configuración de renderizado. Las partes de Re
 |---|---|
 | `preferred_level` | Nivel CEFR seleccionado (`"C1"`, etc.) |
 | `preferred_language` | Código de idioma (`"es"`, `"en"`, etc.) |
-| `cambridge_{level}_{examId}_{section}_{part}` | Estado de una parte de ejercicio |
+| `cambridge_{mode}_{level}_{examId}_{section}_{part}` | Estado de una parte de ejercicio (test) |
 | `openai_api_key` | Clave API de OpenAI (opcional, introducida por el usuario) |
 
 ### Estructura del estado de una parte
