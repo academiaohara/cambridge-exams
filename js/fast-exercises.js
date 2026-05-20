@@ -82,6 +82,9 @@
 
     _saveProgress: function(progress) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+      if (typeof SyncManager !== 'undefined' && SyncManager.notifyFastLearningDirty) {
+        SyncManager.notifyFastLearningDirty();
+      }
     },
 
     _getCategoryProgress: function(categoryId) {
