@@ -395,12 +395,25 @@ def strip_markers(text):
 
 
 def is_b1_gapped_email(data):
-    """PET Reading 6: JSON plano con email + answers (sin content.texts A–D)."""
+    """PET Reading 6 (legado): JSON plano con email + answers (sin content.texts A–D)."""
     if not isinstance(data, dict):
         return False
     if data.get("type") == "gapped-email":
         return True
     return bool(data.get("email")) and isinstance(data.get("answers"), list)
+
+
+def is_b1_reading6_open_cloze(data):
+    """PET Reading 6 actual: open cloze en content.text + content.questions (tipo open-cloze)."""
+    if is_b1_gapped_email(data):
+        return False
+    if not isinstance(data, dict) or data.get("type") != "open-cloze":
+        return False
+    c = data.get("content") or {}
+    if not isinstance(c, dict):
+        return False
+    qs = c.get("questions")
+    return bool(c.get("text")) and isinstance(qs, list) and len(qs) > 0
 
 
 def b1_reading6_questions_for_gaps(data):
@@ -600,13 +613,20 @@ def fill_slide_reading5_preguntas(slide, data, test_num):
 
 
 def fill_slide_reading6_texto(slide, data, test_num):
-    """Diapositiva 8: Reading 6 — C1: textos A–D; B1 PET: email con huecos."""
+    """Diapositiva 8: Reading 6 — C1: textos A–D; B1 PET: email con huecos o open cloze."""
     set_nombre_test(slide, test_num)
     if is_b1_gapped_email(data):
         questions = b1_reading6_questions_for_gaps(data)
         raw = b1_reading6_student_email_block(data)
         set_text(slide, "titulo", data.get("title", ""))
         set_text(slide, "texto", format_parrafos(text_con_huecos(raw, questions, None)))
+        return
+    if is_b1_reading6_open_cloze(data):
+        content = data.get("content", {})
+        raw_text = content.get("text", "")
+        questions = content.get("questions", [])
+        set_text(slide, "titulo", data.get("title", ""))
+        set_text(slide, "texto", format_parrafos(text_con_huecos(raw_text, questions, None)))
         return
     content = data.get("content", {})
     title = content.get("title", data.get("title", ""))
@@ -621,7 +641,7 @@ def fill_slide_reading6_texto(slide, data, test_num):
 
 
 def fill_slide_reading6_tablas(slide, data, test_num):
-    """Diapositiva 9: Reading 6 — C1: preguntas en tablas 37–40; B1 PET: clave por hueco 1–5."""
+    """Diapositiva 9: Reading 6 — C1: preguntas en tablas 37–40; B1 PET: clave por hueco."""
     set_nombre_test(slide, test_num)
     if is_b1_gapped_email(data):
         for a in sorted(
@@ -631,6 +651,24 @@ def fill_slide_reading6_tablas(slide, data, test_num):
             num = a.get("number", "")
             ans = str(a.get("answer", "") or "")
             expl = str(a.get("explanation", "") or "").strip()
+            line = f"{num}. {ans}" + (f" — {expl}" if expl else "")
+            table = get_table(slide, str(num))
+            fill_table_cell(table, 0, 0, line)
+        return
+    if is_b1_reading6_open_cloze(data):
+        content = data.get("content", {})
+        questions = content.get("questions", [])
+
+        def _qnum(q):
+            try:
+                return int(q.get("number") or 0)
+            except (TypeError, ValueError):
+                return 0
+
+        for q in sorted((x for x in questions if isinstance(x, dict)), key=_qnum):
+            num = q.get("number", "")
+            ans = str(q.get("correct", q.get("answer", "")) or "")
+            expl = str(q.get("explanation", "") or "").strip()
             line = f"{num}. {ans}" + (f" — {expl}" if expl else "")
             table = get_table(slide, str(num))
             fill_table_cell(table, 0, 0, line)

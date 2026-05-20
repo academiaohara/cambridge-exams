@@ -1,38 +1,40 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test40",
+    "examId":  "Test40",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "School Trip",
-    "email":  "Hi Alex,\n\nI’m really excited about the school trip next week. We’re leaving early on Friday morning, so don’t (1) _____ to bring everything you need. The teachers said we should wear comfortable clothes because we’ll be walking a lot. I’ve already packed my (3) _____ and some snacks for the journey.\n\nSee you soon,\nSam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A school newspaper interview",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "This week, I helped write an interview for the school newspaper. Our teacher asked me to speak to a student who had recently won a national art competition. Before the interview, I wrote down several questions so that I would not forget anything important. The student explained that she had been interested (27) painting since she was very young. She also said that practising regularly was more important (28) having natural talent alone. During the interview, I listened carefully and took notes while she was speaking. At first, I felt nervous, but the conversation became easier (29) I relaxed. Afterwards, I typed the interview and showed it to my teacher. She was impressed (30) how clearly the student had explained her ideas. I think writing interviews is useful (31) improving communication skills and learning how to ask good questions. I am looking forward (32) reading the article when it is printed next month.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "in"
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "than"
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "after"
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "by"
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "for"
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "to"
+                                      }
+                                  ]
+                }
 }

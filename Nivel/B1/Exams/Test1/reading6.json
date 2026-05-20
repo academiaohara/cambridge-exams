@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test1",
+    "examId":  "Test1",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "New Sports Club",
-    "email":  "Hi Mia,\n\nI joined a new sports club last month and I’m enjoying it much more than I expected. At first, I was nervous because I didn’t know anyone there. However, the other students were really (5) _____ and helped me learn the rules quickly. Now I go (3) _____ a week after school.\n\nBest wishes,\nLiam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A weekend in York",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Last month, my cousin and I spent a weekend in York, a city in the north of England. We arrived by train on Saturday morning and walked from the station (27) the city centre. The streets were busy, although it was still easy to find quiet places away from the crowds. We visited an old museum which was full (28) interesting objects from the past. Later, we climbed the city walls and looked down (29) the roofs of the houses below. The weather was colder (30) we had expected, so we stopped in a café for hot chocolate. In the evening, we walked through a narrow street (31) was famous for its old shops. I enjoyed the trip very much, and I hope to go back there (32) day.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "to",
+                                          "explanation":  "Preposition of movement: from the station to the city centre."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "of",
+                                          "explanation":  "Fixed phrase: full of."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "at",
+                                          "explanation":  "Looked down at something below."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: colder than."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "which",
+                                          "explanation":  "Relative pronoun referring to a street."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "one",
+                                          "explanation":  "Fixed time expression: one day."
+                                      }
+                                  ]
+                }
 }

@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test15",
+    "examId":  "Test15",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "New Sports Club",
-    "email":  "Hi Mia,\n\nI joined a new sports club last month and I’m enjoying it much more than I expected. At first, I was nervous because I didn’t know anyone there. However, the other students were really (2) _____ and helped me learn the rules quickly. Now I go (5) _____ a week after school.\n\nBest wishes,\nLiam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "Learning about space",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Our science teacher has started a new topic about space, and I am finding it really interesting. Last lesson, we learned (27) the planets and how they move around the sun. The teacher showed us a video which explained the topic more clearly (28) the textbook. I was especially interested in Mars because scientists hope people may travel there one day. During the lesson, we worked (29) pairs and answered questions together. My partner knew a lot, so I learned several new facts from him. At the end, the teacher asked us to write a short paragraph (30) what we had discovered. I found the task difficult at first, but it became easier (31) I looked at my notes. I would like to visit a science museum soon because I want to find (32) more about space.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "about",
+                                          "explanation":  "Learn about a topic."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: more clearly than."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "in",
+                                          "explanation":  "Fixed phrase: work in pairs."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "on",
+                                          "explanation":  "Paragraph on/about a topic; \u0027on\u0027 is accepted here."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "after",
+                                          "explanation":  "After introduces a later action."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "out",
+                                          "explanation":  "Phrasal verb: find out."
+                                      }
+                                  ]
+                }
 }

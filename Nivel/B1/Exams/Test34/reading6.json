@@ -1,38 +1,44 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test34",
+    "examId":  "Test34",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "New Sports Club",
-    "email":  "Hi Mia,\n\nI joined a new sports club last month and I’m enjoying it much more than I expected. At first, I was nervous because I didn’t know anyone there. However, the other students were really (5) _____ and helped me learn the rules quickly. Now I go (2) _____ a week after school.\n\nBest wishes,\nLiam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "Learning to skateboard",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "A few months ago, I decided to learn how to skateboard. At first, I found it extremely difficult to balance properly, and I fell over several times. My friend Jake, who is very good (27) skateboarding, offered to teach me. We practised every Saturday afternoon at a park near my house. Jake explained that improving is very different (28) what most beginners expect. After a few weeks, I became more confident and was finally able to turn corners smoothly. Last weekend, I learned how to go down a small ramp without stopping. I was pleased (29) myself because I had worked hard to improve. Some people think skateboarding is dangerous, but I believe it is safe (30) you wear the right equipment. I still make mistakes sometimes, although I now enjoy the sport much more (31) before. I hope to become skilled enough to enter a competition (32) day.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "at"
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "from"
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "with"
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "if",
+                                          "acceptedAnswers":  [
+                                                                  "if",
+                                                                  "provided"
+                                                              ]
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "than"
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "one"
+                                      }
+                                  ]
+                }
 }

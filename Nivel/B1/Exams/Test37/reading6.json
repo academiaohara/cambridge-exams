@@ -1,38 +1,40 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test37",
+    "examId":  "Test37",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "New Sports Club",
-    "email":  "Hi Mia,\n\nI joined a new sports club last month and I’m enjoying it much more than I expected. At first, I was nervous because I didn’t know anyone there. However, the other students were really (5) _____ and helped me learn the rules quickly. Now I go twice a week after school.\n\nBest wishes,\nLiam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "An afternoon in town",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Yesterday afternoon, I went into town with two friends to buy presents for a birthday party. The streets were crowded because there was a festival taking place (27) the main square. We spent a long time looking (28) different shops because none of us could decide what to buy. Eventually, my friend Mia found a scarf that she thought would be perfect. While she was paying for it, I looked around a bookshop nearby. One of the assistants recommended a novel which sounded more interesting (29) I had expected, so I decided to buy it for myself. After shopping, we stopped at a café to have drinks and rest our feet. I was surprised (30) how quickly the afternoon passed. Before going home, we checked whether we had remembered to bring everything (31) us. Even though the town was busy, we still managed to enjoy ourselves (32) a lot.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "in"
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "through"
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "than"
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "by"
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "with"
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "quite"
+                                      }
+                                  ]
+                }
 }

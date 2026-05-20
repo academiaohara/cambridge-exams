@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test21",
+    "examId":  "Test21",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "School Trip",
-    "email":  "Hi Alex,\n\nI’m really excited about the school trip next week. We’re leaving early on Friday morning, so don’t (3) _____ to bring everything you need. The teachers said we should wear comfortable clothes because we’ll be walking a lot. I’ve already packed my (2) _____ and some snacks for the journey.\n\nSee you soon,\nSam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A visit to a TV studio",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Last month, our media studies class visited a television studio in the city. We were shown around (27) a producer who explained how programmes are made. I was surprised (28) how many people work behind the cameras during a live show. First, we saw the room where presenters prepare their notes before going on air. Then we walked (29) a long corridor to the main studio. The lights were much brighter (30) I had expected, and the cameras were enormous. One student asked whether it was difficult to speak naturally (31) front of so many people. The producer said practice was very important. Before we left, we watched part of a programme being recorded, which was the most exciting part (32) the visit.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "by",
+                                          "explanation":  "Passive agent: shown around by someone."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "at",
+                                          "explanation":  "Surprised at something can express reaction."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "along",
+                                          "explanation":  "Movement along a corridor."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: brighter than."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "in",
+                                          "explanation":  "Fixed phrase: in front of."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "of",
+                                          "explanation":  "Part of something."
+                                      }
+                                  ]
+                }
 }

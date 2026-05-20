@@ -1,38 +1,40 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test43",
+    "examId":  "Test43",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "New Sports Club",
-    "email":  "Hi Mia,\n\nI joined a new sports club last month and I’m enjoying it much more than I expected. At first, I was nervous because I didn’t know anyone there. However, the other students were really (5) _____ and helped me learn the rules quickly. Now I go twice a week after school.\n\nBest wishes,\nLiam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A drama performance",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Our drama club performed a short play in front of the school last week. I had a small part, but I was still nervous (27) going on stage. We had practised for several weeks, and our teacher reminded us to speak clearly and slowly. The play was about a group of friends who get lost during a camping trip. At first, the audience was very quiet, but later they started laughing (28) the funny scenes. One actor forgot a line, although another student helped him continue without stopping. The performance went much better (29) we had expected. After the show, our teacher thanked everyone (30) working so hard. My parents said they were proud (31) me, which made me feel happy. I would like to take part in another performance (32) year.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "about"
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "at"
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "than"
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "for"
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "of"
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "next"
+                                      }
+                                  ]
+                }
 }

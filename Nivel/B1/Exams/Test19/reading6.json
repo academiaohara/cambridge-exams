@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test19",
+    "examId":  "Test19",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "Weekend Plans",
-    "email":  "Hi Emma,\n\nThanks for your message. I’d love to meet this weekend if you’re still (2) _____. There’s a new café in the town centre that everyone has been talking about recently. After that, we could go shopping or maybe (5) _____ a film at the cinema.\n\nSee you,\nChloe",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A music exam",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Next week, I am taking a piano exam, so I have been practising every evening. I started learning the piano three years ago, and I have become much more confident (27) then. My teacher says the most important thing is to play slowly and clearly, even if I feel nervous. Last lesson, she listened carefully (28) each piece and told me which parts needed more practice. One piece is more difficult (29) the others because it has several fast sections. I sometimes make mistakes when I try to play it too quickly. My teacher advised me to practise (30) a few minutes at a time rather than for hours without stopping. She also reminded me to breathe calmly before I begin. I am worried (31) the exam, but I know I have prepared well. I hope I will be pleased (32) my result.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "since",
+                                          "explanation":  "Since then."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "to",
+                                          "explanation":  "Listen to something."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: more difficult than."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "for",
+                                          "explanation":  "For a few minutes."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "about",
+                                          "explanation":  "Worried about something."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "with",
+                                          "explanation":  "Pleased with something."
+                                      }
+                                  ]
+                }
 }

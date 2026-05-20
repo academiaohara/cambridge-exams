@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test11",
+    "examId":  "Test11",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "New Sports Club",
-    "email":  "Hi Mia,\n\nI joined a new sports club last month and I’m enjoying it much more than I expected. At first, I was nervous because I didn’t know anyone there. However, the other students were really (5) _____ and helped me learn the rules quickly. Now I go (1) _____ a week after school.\n\nBest wishes,\nLiam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A new sports hall",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Our town opened a new sports hall last month, and my class visited it on Friday. The building is next (27) the swimming pool, so it is easy to find. Inside, there are two large courts, a climbing wall and several rooms for fitness classes. I was impressed (28) how modern everything looked. A coach showed us around and explained the rules we needed to follow. Some students wanted to try basketball, while others were more interested (29) climbing. At first, I was nervous, but the instructor helped me put on the safety equipment. Climbing was harder (30) I had expected, although it was also very exciting. After the activity, we sat in the café and talked (31) the sports we wanted to try next. I think the centre will be popular (32) teenagers in the area.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "to",
+                                          "explanation":  "Fixed phrase: next to."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "by",
+                                          "explanation":  "Impressed by something."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "in",
+                                          "explanation":  "Interested in something."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: harder than."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "about",
+                                          "explanation":  "Talk about a topic."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "with",
+                                          "explanation":  "Popular with a group of people."
+                                      }
+                                  ]
+                }
 }

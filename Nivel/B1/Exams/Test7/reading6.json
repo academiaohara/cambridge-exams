@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test7",
+    "examId":  "Test7",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "Weekend Plans",
-    "email":  "Hi Emma,\n\nThanks for your message. I’d love to meet this weekend if you’re still (3) _____. There’s a new café in the town centre that everyone has been talking about recently. After that, we could go shopping or maybe (4) _____ a film at the cinema.\n\nSee you,\nChloe",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "An art exhibition",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "On Saturday, I went to an art exhibition with two friends from college. The exhibition was held (27) a modern gallery near the river. I do not usually visit galleries, so I was not sure whether I would enjoy it. However, some of the paintings were much more colourful (28) I had expected. One room was full of pictures painted (29) young local artists, and I liked seeing work by people close to my own age. A guide told us about the ideas behind several paintings and explained why the artists had chosen certain colours. My friend Anna spent a long time looking (30) one picture of a busy street because it reminded her of her neighbourhood. Before leaving, we wrote comments in a book (31) visitors could share their opinions. I would recommend the exhibition to anyone (32) enjoys modern art.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "in",
+                                          "explanation":  "Held in a place."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: more colourful than."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "by",
+                                          "explanation":  "Passive agent: painted by."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "at",
+                                          "explanation":  "Look at a picture."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "where",
+                                          "explanation":  "Relative adverb referring to a place/book for comments."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "who",
+                                          "explanation":  "Relative pronoun for people."
+                                      }
+                                  ]
+                }
 }

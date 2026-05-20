@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test22",
+    "examId":  "Test22",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "New Sports Club",
-    "email":  "Hi Mia,\n\nI joined a new sports club last month and I’m enjoying it much more than I expected. At first, I was nervous because I didn’t know anyone there. However, the other students were really (4) _____ and helped me learn the rules quickly. Now I go twice a week after school.\n\nBest wishes,\nLiam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "Preparing for a concert",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Our school orchestra is preparing for a concert next Friday. I play the violin, and I have been practising every evening (27) two weeks. At first, I found one of the pieces very difficult because it was faster (28) the music we usually play. Our teacher asked us to listen carefully (29) each other so that the whole group sounded better. During rehearsals, we work (30) a team and try not to stop when someone makes a small mistake. Yesterday, the music teacher said she was pleased (31) our progress. I am still a little nervous, although I know the concert will probably go well. My parents are coming to watch, and I hope they will be proud (32) me.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "for",
+                                          "explanation":  "Duration: for two weeks."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: faster than."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "to",
+                                          "explanation":  "Listen to someone/something."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "as",
+                                          "explanation":  "Work as a team."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "with",
+                                          "explanation":  "Pleased with something."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "of",
+                                          "explanation":  "Proud of someone."
+                                      }
+                                  ]
+                }
 }
