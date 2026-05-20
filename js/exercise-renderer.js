@@ -100,11 +100,17 @@
         const firstToggleLabel = i18nMap[firstToggleI18nKey] || firstToggleI18nKey;
         const firstToggleIconClass = isB1Reading2Pet ? 'fa-users' : 'fa-file-alt';
         const isReadingPart5to8 = section === 'reading' && part >= 5;
+        const isB1Reading5FooterExplanations =
+          AppState.currentLevel === 'B1' && section === 'reading' && part === 5;
         const isB1Reading3Explanation =
           AppState.currentLevel === 'B1' && section === 'reading' && part === 3;
         const isB1Reading4Explanation =
           AppState.currentLevel === 'B1' && section === 'reading' && part === 4;
-        const showExplanationBtn = isReadingPart5to8 || isB1Reading2Pet || isB1Reading3Explanation ||
+        // B1 Reading Part 5: footer "Show explanations" only (no header Explanation mode).
+        const showExplanationBtn =
+          (isReadingPart5to8 && !isB1Reading5FooterExplanations) ||
+          isB1Reading2Pet ||
+          isB1Reading3Explanation ||
           isB1Reading4Explanation;
         toggleHTML = `
           <div class="toggle-view-header">
@@ -337,7 +343,9 @@
             </div>
 
             ${this.renderExplanationsSection(exercise)}
-            ${(needsToggle || hasTranscript) ? this.renderExplanationsPanel(exercise, partConfig) : ''}
+            ${(needsToggle || hasTranscript) && !(AppState.currentLevel === 'B1' && section === 'reading' && part === 5)
+              ? this.renderExplanationsPanel(exercise, partConfig)
+              : ''}
             
             <div class="exercise-footer">
               ${this.renderExerciseFooter(displayPart, totalParts)}
@@ -1315,14 +1323,18 @@
         `;
 
         // Reading and listening: show explanations only after answers have been checked
-        // Reading part 4: never show (broken); reading parts 5-8: explanation button is in toggle-view-header
-        // Listening: explanation button is now in toggle-view-header
+        // Reading part 4: never show (broken); reading parts 5–8 (except B1 part 5): header Explanation mode
+        // B1 Reading Part 5: footer "Show explanations" like parts 1–2
+        // Listening: explanation button is in toggle-view-header
         // all other sections: always show in practice mode
-        // Reading parts 1–2: footer "Show explanations" (part 4 excluded; parts 5–8 and B1 part 3 use header Explanation;
+        // Reading parts 1–2: footer "Show explanations" (part 4 excluded; B1 part 3 and other 5–8 use header Explanation;
         // B1 Preliminary Reading Part 2 uses header only).
-        if (isReading && actualPart > 0 && actualPart < 4 &&
+        var isB1Reading5FooterExplanations =
+          AppState.currentLevel === 'B1' && isReading && actualPart === 5;
+        if ((isReading && actualPart > 0 && actualPart < 4 &&
             !(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) &&
-            !(AppState.currentLevel === 'B1' && actualPart === 3)) {
+            !(AppState.currentLevel === 'B1' && actualPart === 3)) ||
+            isB1Reading5FooterExplanations) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span>
