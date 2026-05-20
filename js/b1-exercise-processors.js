@@ -573,6 +573,17 @@
   }
 
   function writingPart2(ex) {
+    var existing = ex.content;
+    // B1 writing2.json ships with content.tasks (Article vs Story, prompts, model answers).
+    // Do not replace that with a single synthetic task — it hides the choice UI (WritingType2).
+    if (existing && Array.isArray(existing.tasks) && existing.tasks.length > 0) {
+      var first = existing.tasks[0];
+      if (first && typeof first === 'object' &&
+          (first.prompt != null || first.title != null || first.type != null)) {
+        mergeDescription(ex);
+        return;
+      }
+    }
     var task = ex.task || {};
     var id = 'b1-writing2';
     var promptParts = [];
