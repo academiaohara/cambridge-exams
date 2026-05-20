@@ -1075,6 +1075,9 @@
         case 'essay':
           if (typeof WritingType1?.initListeners === 'function') WritingType1.initListeners();
           break;
+        case 'email':
+          if (typeof WritingType1?.initListeners === 'function') WritingType1.initListeners();
+          break;
         case 'choice':
           if (typeof WritingType2?.initListeners === 'function') WritingType2.initListeners();
           break;

@@ -529,14 +529,45 @@
   function writingPart1(ex) {
     var task = ex.task || {};
     var notes = Array.isArray(task.notes) ? task.notes : [];
-    var bullets = notes.map(function(n) { return '• ' + n; }).join('\n');
+
+    // B1 Preliminary Part 1: reply to an email (initial message + handwritten notes)
+    if (ex.type === 'email' && task.initialEmail) {
+      var wr = ex.wordRange || {};
+      var minW = typeof wr.min === 'number' ? wr.min : 90;
+      var maxW = typeof wr.max === 'number' ? wr.max : 120;
+      var sample = ex.sampleAnswer || {};
+      var model = typeof sample.text === 'string' ? sample.text.replace(/\|\|/g, '\n') : '';
+      ex.content = {
+        question: (ex.instructions || 'Write your email using all the notes.').toString(),
+        wordLimit: minW + '-' + maxW + ' words',
+        modelAnswer: model,
+        b1EmailTask: {
+          from: (task.from || '').toString(),
+          subject: (task.subject || '').toString(),
+          initialEmail: (task.initialEmail || '').toString(),
+          notes: notes.map(function(n) {
+            if (typeof n === 'object' && n && n.text != null) {
+              return { id: n.id, text: String(n.text) };
+            }
+            return { id: 0, text: String(n) };
+          })
+        }
+      };
+      mergeDescription(ex);
+      return;
+    }
+
+    var bullets = notes.map(function(n) {
+      if (typeof n === 'object' && n && n.text != null) return '• ' + n.text;
+      return '• ' + String(n);
+    }).join('\n');
     var prompt = (task.prompt || '').toString();
     var topic = (task.topic || '').toString();
     var body = prompt;
     if (topic) body += '\n\nTopic: ' + topic;
     if (bullets) body += '\n\n' + bullets;
     ex.content = {
-      question: body
+      question: body || (ex.instructions || '')
     };
     mergeDescription(ex);
   }

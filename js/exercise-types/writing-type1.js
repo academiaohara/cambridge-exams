@@ -4,6 +4,83 @@
 (function() {
   window.WritingType1 = {
 
+    _escapeHtml: function(str) {
+      return String(str == null ? '' : str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    },
+
+    _isB1EmailTask: function(exercise) {
+      return !!(exercise && exercise.type === 'email' && exercise.content && exercise.content.b1EmailTask);
+    },
+
+    /**
+     * Full task text for AI evaluation (B1 email reply or C1/B2 essay prompt).
+     * Used by WritingType1 and Exercise._evaluateWritingPart.
+     */
+    buildTaskPromptForAi: function(exercise) {
+      if (!exercise || !exercise.content) return '';
+      if (this._isB1EmailTask(exercise)) {
+        var t = exercise.content.b1EmailTask;
+        var lines = [];
+        lines.push(exercise.content.question || '');
+        lines.push('');
+        lines.push('From: ' + (t.from || ''));
+        lines.push('Subject: ' + (t.subject || ''));
+        lines.push('');
+        lines.push('--- Original email ---');
+        lines.push((t.initialEmail || '').replace(/\|\|/g, '\n'));
+        lines.push('');
+        lines.push('--- Notes you must address in your reply ---');
+        (t.notes || []).forEach(function(n) {
+          var id = n.id != null && n.id !== '' ? String(n.id) : '';
+          lines.push((id ? id + ') ' : '• ') + (n.text || ''));
+        });
+        return lines.join('\n');
+      }
+      return exercise.content.question || '';
+    },
+
+    _formatB1InitialEmailParagraphHtml: function(para) {
+      var self = this;
+      var re = /\[(\d+)\]([\s\S]*?)\[\/\1\]/g;
+      var out = '';
+      var last = 0;
+      var m;
+      while ((m = re.exec(para)) !== null) {
+        out += self._escapeHtml(para.slice(last, m.index));
+        out += '<span class="writing-b1-reply-slot"><span class="writing-b1-slot-num">' + self._escapeHtml(m[1]) + '</span>' +
+          self._escapeHtml(m[2]) + '</span>';
+        last = m.index + m[0].length;
+      }
+      out += self._escapeHtml(para.slice(last));
+      return out;
+    },
+
+    _formatB1InitialEmailToHtml: function(raw) {
+      if (!raw) return '';
+      var parts = String(raw).split('||');
+      var self = this;
+      return parts.map(function(p) {
+        if (!p.trim()) return '';
+        return '<p class="writing-b1-email-para">' + self._formatB1InitialEmailParagraphHtml(p) + '</p>';
+      }).join('');
+    },
+
+    _buildB1EmailNotesHtml: function(notes) {
+      if (!notes || !notes.length) return '';
+      var self = this;
+      var html = '<div class="writing-b1-notes-hint"><strong>Your notes (respond to each point in your email):</strong><ul class="writing-b1-notes-checklist">';
+      notes.forEach(function(n) {
+        var label = n.id != null && n.id !== '' && n.id !== 0 ? '<span class="writing-b1-note-pill">' + self._escapeHtml(String(n.id)) + '</span> ' : '';
+        html += '<li>' + label + self._escapeHtml(n.text || '') + '</li>';
+      });
+      html += '</ul></div>';
+      return html;
+    },
+
     initListeners: function() {
       const exercise = AppState.currentExercise;
       if (!exercise) return;
@@ -11,26 +88,56 @@
       const container = document.getElementById('selectable-text');
       if (!container) return;
 
+      const isB1Email = this._isB1EmailTask(exercise);
       const question = exercise.content.question || '';
       const level = (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1';
       const defaultWordLimit = level === 'B2' ? '140-190' : '220-260';
       const wordLimit = exercise.content.wordLimit || defaultWordLimit;
       const savedAnswer = exercise.answers?.[1] || '';
-      const notesHtml = this._buildNotesHtml(exercise.content.notes);
+      const notesHtml = isB1Email
+        ? this._buildB1EmailNotesHtml(exercise.content.b1EmailTask.notes)
+        : this._buildNotesHtml(exercise.content.notes);
 
-      const html = `
-        <div class="writing-type1-wrapper">
-          <div class="writing-type1-prompt">
-            <h3><i class="fas fa-pencil-alt"></i> Write your essay</h3>
+      const headingIcon = isB1Email ? 'fa-envelope' : 'fa-pencil-alt';
+      const headingText = isB1Email ? 'Write your email' : 'Write your essay';
+      const placeholder = isB1Email ? 'Write your email here...' : 'Write your essay...';
+      const textareaClass = isB1Email ? 'writing-type1-textarea writing-textarea writing-type1-textarea-b1-email' : 'writing-type1-textarea writing-textarea';
+
+      let promptInner;
+      if (isB1Email) {
+        const t = exercise.content.b1EmailTask;
+        promptInner = `
+            <h3><i class="fas ${headingIcon}"></i> ${headingText}</h3>
+            <p class="writing-type1-question">${this._escapeHtml(question)}</p>
+            <div class="writing-b1-email-meta">
+              <div><strong>From:</strong> ${this._escapeHtml(t.from)}</div>
+              <div><strong>Subject:</strong> ${this._escapeHtml(t.subject)}</div>
+            </div>
+            <div class="writing-b1-initial-mail" aria-label="Email you are replying to">
+              ${this._formatB1InitialEmailToHtml(t.initialEmail)}
+            </div>
+            ${notesHtml}
+            <div class="writing-type1-word-limit">
+              <i class="fas fa-info-circle"></i> ${this._escapeHtml(wordLimit)}
+            </div>`;
+      } else {
+        promptInner = `
+            <h3><i class="fas ${headingIcon}"></i> ${headingText}</h3>
             <p class="writing-type1-question">${question}</p>
             ${notesHtml}
             <div class="writing-type1-word-limit">
               <i class="fas fa-info-circle"></i> ${wordLimit} words
-            </div>
+            </div>`;
+      }
+
+      const html = `
+        <div class="writing-type1-wrapper">
+          <div class="writing-type1-prompt">
+            ${promptInner}
           </div>
-          <textarea class="writing-type1-textarea writing-textarea"
+          <textarea class="${textareaClass}"
                     lang="en" spellcheck="true"
-                    placeholder="Write your essay..."
+                    placeholder="${placeholder}"
                     oninput="WritingType1.handleInput(this.value)">${savedAnswer}</textarea>
           <div class="writing-corrected-text" id="writing-type1-corrected" style="display:none;"></div>
           <div class="writing-type1-toolbar">
@@ -133,9 +240,19 @@
       const el = document.getElementById('writing-type1-count');
       if (el) {
         el.textContent = count;
-        if (typeof WritingValidator !== 'undefined') {
-          el.className = 'wv-counter-number ' + WritingValidator.getColorClass(count);
+        const ex = AppState.currentExercise;
+        let cls;
+        if (this._isB1EmailTask(ex) && ex.wordRange && typeof ex.wordRange.min === 'number') {
+          const mx = typeof ex.wordRange.max === 'number' ? ex.wordRange.max : null;
+          cls = typeof WritingValidator !== 'undefined'
+            ? WritingValidator.getColorClassForRange(count, ex.wordRange.min, mx)
+            : 'wv-green';
+        } else if (typeof WritingValidator !== 'undefined') {
+          cls = WritingValidator.getColorClass(count);
+        } else {
+          cls = 'wv-green';
         }
+        el.className = 'wv-counter-number ' + cls;
       }
     },
 
@@ -156,8 +273,9 @@
 
     copyToClipboard: function() {
       const essay = AppState.currentExercise.answers?.[1] || '';
+      const emptyMsg = this._isB1EmailTask(AppState.currentExercise) ? 'Write your email' : 'Write your essay';
       if (!essay.trim()) {
-        this._showMsg('Write your essay');
+        this._showMsg(emptyMsg);
         return;
       }
       navigator.clipboard.writeText(essay).then(() => {
@@ -167,11 +285,12 @@
       });
     },
 
-    sendWriting: async function(text, taskPrompt) {
+    sendWriting: async function(text, taskPrompt, taskType) {
+      const tt = taskType || 'Essay';
       const res = await fetch("/api/writing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, taskType: "Essay", taskPrompt, examLevel: AppState.currentLevel || 'C1' })
+        body: JSON.stringify({ text, taskType: tt, taskPrompt, examLevel: AppState.currentLevel || 'C1' })
       });
 
       const data = await res.json();
@@ -222,16 +341,28 @@
 
     evaluateWithAI: function() {
       const essay = AppState.currentExercise.answers?.[1] || '';
+      const emptyMsg = this._isB1EmailTask(AppState.currentExercise) ? 'Write your email' : 'Write your essay';
       if (!essay.trim()) {
-        this._showMsg('Write your essay');
+        this._showMsg(emptyMsg);
         return;
       }
 
       // Pre-submit word count validation
       if (typeof WritingValidator !== 'undefined') {
-        WritingValidator.validateBeforeSubmit(essay, () => {
-          this._doEvaluate(essay);
-        }, null);
+        const ex = AppState.currentExercise;
+        const wr = ex && ex.wordRange;
+        const rangeOpts = (this._isB1EmailTask(ex) && wr && typeof wr.min === 'number')
+          ? { min: wr.min, max: typeof wr.max === 'number' ? wr.max : undefined }
+          : null;
+        if (rangeOpts) {
+          WritingValidator.validateBeforeSubmit(essay, () => {
+            this._doEvaluate(essay);
+          }, null, rangeOpts);
+        } else {
+          WritingValidator.validateBeforeSubmit(essay, () => {
+            this._doEvaluate(essay);
+          }, null);
+        }
         return;
       }
 
@@ -250,8 +381,9 @@
       if (textarea) textarea.disabled = true;
       if (evalBtn) evalBtn.disabled = true;
 
-      const question = AppState.currentExercise.content.question || '';
-      this.sendWriting(essay, question)
+      const taskPrompt = this.buildTaskPromptForAi(AppState.currentExercise);
+      const taskType = AppState.currentExercise.type === 'email' ? 'Email' : 'Essay';
+      this.sendWriting(essay, taskPrompt, taskType)
         .then(text => {
           // Extract and display corrected text
           const correctedText = this._extractCorrectedText(text);
