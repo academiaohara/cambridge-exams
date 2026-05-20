@@ -157,7 +157,10 @@
     shouldEnableAnswerToggle: function() {
       if (AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle) return false;
       if (AppState.currentSection === 'reading') {
-        return AppState.currentPart >= 1 && AppState.currentPart <= 4;
+        var in14 = AppState.currentPart >= 1 && AppState.currentPart <= 4;
+        var b1r5 =
+          AppState.currentLevel === 'B1' && AppState.currentPart === 5;
+        return in14 || b1r5;
       }
       return AppState.currentSection === 'listening' && AppState.currentPart === 2;
     },
@@ -170,7 +173,11 @@
         return;
       }
       btn.style.display = '';
-      const label = AppState.answerViewMode === 'correct' ? 'Show your answer' : 'Show correct answer';
+      const isB1Reading5Toggle =
+        AppState.currentLevel === 'B1' && AppState.currentSection === 'reading' && AppState.currentPart === 5;
+      const label = AppState.answerViewMode === 'correct'
+        ? 'Show your answer'
+        : (isB1Reading5Toggle ? 'Show correct answers' : 'Show correct answer');
       const iconName = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
       const labelSpan = btn.querySelector('.btn-toggle-answer-label');
       const iconSpan = btn.querySelector('.btn-toggle-answer-icon');
@@ -805,6 +812,13 @@
       document.querySelectorAll('.reading-type4-correction-text').forEach(function(el) {
         el.remove();
       });
+
+      document.querySelectorAll('.reading-type5-gap-trigger-show-correct').forEach(function(el) {
+        el.classList.remove('reading-type5-gap-trigger-show-correct');
+      });
+      document.querySelectorAll('.reading-type5-option-key').forEach(function(el) {
+        el.classList.remove('reading-type5-option-key');
+      });
       
       // Remove title tooltips that show correct answers
       document.querySelectorAll('[title^="✓"]').forEach(function(el) {
@@ -914,9 +928,16 @@
           });
           document.querySelectorAll('.reading-type5-gap-wrap').forEach(function(wrap) {
             wrap.classList.remove('reading-type5-gap-open');
+            wrap.removeAttribute('data-correct');
             wrap.querySelectorAll('.reading-type5-gap-trigger').forEach(function(btn) {
               btn.disabled = false;
-              btn.classList.remove('correct', 'incorrect', 'unanswered-checked', 'filled');
+              btn.classList.remove(
+                'correct',
+                'incorrect',
+                'unanswered-checked',
+                'filled',
+                'reading-type5-gap-trigger-show-correct'
+              );
               var qn = parseInt(wrap.getAttribute('data-qnum'), 10);
               if (!isNaN(qn)) btn.textContent = '(' + qn + ')';
               btn.setAttribute('aria-expanded', 'false');
@@ -925,6 +946,9 @@
               btn.disabled = false;
               btn.classList.remove('correct', 'incorrect', 'disabled', 'selected');
             });
+          });
+          document.querySelectorAll('.reading-type5-option.reading-type5-option-key').forEach(function(lab) {
+            lab.classList.remove('reading-type5-option-key');
           });
           break;
           
