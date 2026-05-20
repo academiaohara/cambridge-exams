@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test19",
+    "examId":  "Test19",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The day everything changed",
-                 "prompt":  "Your story must begin or end with the title: 'The day everything changed'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_19",
+                                      "question":  2,
+                                      "title":  "Inviting a friend",
+                                      "type":  "Email",
+                                      "prompt":  "Write an email to your English-speaking friend.||Invite your friend to spend a weekend with you.||Explain what you are planning to do and what your friend should bring.||Write your email.",
+                                      "modelAnswer":  "Hi Ben,||I hope you are well. I’m writing because I’d like to invite you to spend next weekend at my house. I think it will be a lot of fun because there are several things we can do together.||On Saturday, we are planning to go cycling in the countryside and then have dinner at a small restaurant near the river. On Sunday, we might visit the sports centre or watch a film at home.||You should bring comfortable clothes and your swimming things in case we go to the pool.||I hope you can come.||See you soon,||Daniel",
+                                      "modelAnswerWordCount":  103
+                                  },
+                                  {
+                                      "id":  "q3_19",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||When the lights came back on, everybody started laughing.||Write your story.",
+                                      "startingSentence":  "When the lights came back on, everybody started laughing.",
+                                      "modelAnswer":  "When the lights came back on, everybody started laughing. During the power cut, my brother had accidentally covered his face with chocolate ice cream, but nobody could see him in the dark.||As soon as the electricity returned, we all noticed the mess. Even my brother laughed when he looked in the mirror. My mother quickly took a photograph before he cleaned his face.||For the rest of the evening, everyone continued joking about the situation. It became a funny memory that our family still talks about today.||It was an experience that nobody there would ever forget.",
+                                      "modelAnswerWordCount":  98
+                                  }
+                              ]
+                }
 }

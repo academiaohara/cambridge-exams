@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test14",
+    "examId":  "Test14",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The forgotten bag",
-                 "prompt":  "Your story must begin or end with the title: 'The forgotten bag'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_14",
+                                      "question":  2,
+                                      "title":  "Advice for a school exchange",
+                                      "type":  "Email",
+                                      "prompt":  "Your English-speaking friend is coming to stay with your family as part of a school exchange.||Write an email to your friend.||Tell them what clothes to bring, what activities you will do and what the weather is usually like.||Write your email.",
+                                      "modelAnswer":  "Hi Mia,||I’m really excited that you’re coming to stay with my family next month. The weather here is usually warm during the day, but it can become cold in the evening, so bring both light clothes and a jacket.||While you are here, we are going to visit the old town, go shopping and spend a day at the beach. My friends also want to meet you because they enjoy speaking English.||You should bring comfortable shoes because we will walk a lot during the week.||I’m sure you’ll have a great time here.||See you soon,||Laura",
+                                      "modelAnswerWordCount":  103
+                                  },
+                                  {
+                                      "id":  "q3_14",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||The teacher smiled and handed me a piece of paper.||Write your story.",
+                                      "startingSentence":  "The teacher smiled and handed me a piece of paper.",
+                                      "modelAnswer":  "The teacher smiled and handed me a piece of paper. At first, I thought it was another homework exercise, but then I saw that it was actually a certificate for winning the school writing competition.||I felt shocked because I had never won anything before. My classmates congratulated me, and the teacher asked me to read part of my story to the class.||Although I was nervous, I stood up and read it aloud. After that day, I started enjoying writing much more than before.||It was an experience that nobody there would ever forget.",
+                                      "modelAnswerWordCount":  95
+                                  }
+                              ]
+                }
 }

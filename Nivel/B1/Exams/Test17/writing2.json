@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test17",
+    "examId":  "Test17",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The perfect solution",
-                 "prompt":  "Your story must begin or end with the title: 'The perfect solution'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_17",
+                                      "question":  2,
+                                      "title":  "Travelling by train",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement on an English-language website.||Articles wanted!||Travelling by train||Do you enjoy travelling by train?||What are the best and worst things about train journeys?||Write your article.",
+                                      "modelAnswer":  "Why I like train journeys||I enjoy travelling by train because it is usually comfortable and relaxing. I often travel by train when I visit my grandparents in another city. During the journey, I can read, listen to music or look out of the window.||The best thing about trains is that they are often faster than cars in busy areas. They are also better for the environment. However, trains can sometimes be late or crowded, especially during holidays.||Overall, I think train journeys are a good way to travel, especially for longer distances.",
+                                      "modelAnswerWordCount":  94
+                                  },
+                                  {
+                                      "id":  "q3_17",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||The old man slowly opened the door and looked at us carefully.||Write your story.",
+                                      "startingSentence":  "The old man slowly opened the door and looked at us carefully.",
+                                      "modelAnswer":  "The old man slowly opened the door and looked at us carefully. For a moment, nobody spoke because the house looked dark and mysterious from outside.||Then the man smiled and invited us in. He explained that he used to be a famous painter and showed us dozens of beautiful pictures on the walls. My friends and I were amazed by his work.||Before we left, he gave each of us a small drawing to remember the visit. It turned into an unforgettable afternoon.||It was an experience that nobody there would ever forget.",
+                                      "modelAnswerWordCount":  94
+                                  }
+                              ]
+                }
 }

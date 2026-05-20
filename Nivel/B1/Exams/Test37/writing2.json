@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test37",
+    "examId":  "Test37",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The forgotten bag",
-                 "prompt":  "Your story must begin or end with the title: 'The forgotten bag'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_37",
+                                      "question":  2,
+                                      "title":  "Article 37",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement in an English-language magazine.||Articles wanted!||Teenage activities||Write your article.",
+                                      "modelAnswer":  "Student activities||Many teenagers enjoy spending time with friends and taking part in different activities after school or at weekends. Popular activities include sports, music, films and meeting people in cafés or parks.||I think these activities are important because they help students relax and forget about school stress for a while. They also improve confidence and communication skills. Teachers and parents usually support activities that encourage teamwork and creativity among young people.||In conclusion, having interesting activities is an important part of teenage life and can help students feel happier and more confident.",
+                                      "modelAnswerWordCount":  94
+                                  },
+                                  {
+                                      "id":  "q3_37",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||The bus driver stopped the vehicle in the middle of the road.||Write your story.",
+                                      "startingSentence":  "The bus driver stopped the vehicle in the middle of the road.",
+                                      "modelAnswer":  "The bus driver stopped the vehicle in the middle of the road. At first, I did not understand what was happening, but after a few minutes everything became clear. My friends and family helped solve the problem, and soon everybody felt much calmer again.||Later that day, we talked about the situation and laughed together because it had seemed much more serious at the beginning. Although the experience was unexpected, it became a funny memory that I will always remember.||When I finally went home that evening, I felt tired but extremely happy about the way everything ended.",
+                                      "modelAnswerWordCount":  98
+                                  }
+                              ]
+                }
 }

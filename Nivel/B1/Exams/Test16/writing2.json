@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test16",
+    "examId":  "Test16",
+    "section":  "writing",
     "part":  2,
-    "type":  "article-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an article answering the question below.",
-    "task":  {
-                 "topic":  "The best way to spend a weekend",
-                 "prompt":  "Your English teacher has asked you to write an article about: 'The best way to spend a weekend'.",
-                 "notes":  [
-                               "Give your opinion",
-                               "Explain your reasons",
-                               "Include examples if possible"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_16",
+                                      "question":  2,
+                                      "title":  "Mobile phones",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement in an English-language magazine.||Articles wanted!||Mobile phones||How important are mobile phones for teenagers today?||What are the advantages and disadvantages of using them?||Write your article.",
+                                      "modelAnswer":  "Mobile phones and teenagers||Mobile phones are very important for teenagers today because they help us communicate with friends and family quickly. Many students also use their phones for homework or to listen to music while travelling.||However, there are some disadvantages too. Some teenagers spend too much time online and do not exercise enough. Mobile phones can also distract students during lessons if they are not careful.||In my opinion, mobile phones are useful if people use them responsibly. Teenagers should remember to spend time doing other activities away from screens as well.",
+                                      "modelAnswerWordCount":  94
+                                  },
+                                  {
+                                      "id":  "q3_16",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||I looked into my backpack and suddenly felt afraid.||Write your story.",
+                                      "startingSentence":  "I looked into my backpack and suddenly felt afraid.",
+                                      "modelAnswer":  "I looked into my backpack and suddenly felt afraid. My passport was missing, and my flight was leaving in less than two hours. I quickly checked all my pockets, but it was nowhere to be found.||Then my friend remembered that I had shown my passport at the café earlier that morning. We ran back there as fast as possible. Luckily, one of the workers had found it and kept it safe behind the counter.||When I finally sat down on the plane, I felt extremely relieved and very tired.",
+                                      "modelAnswerWordCount":  90
+                                  }
+                              ]
+                }
 }

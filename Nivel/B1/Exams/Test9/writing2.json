@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test9",
+    "examId":  "Test9",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The forgotten bag",
-                 "prompt":  "Your story must begin or end with the title: 'The forgotten bag'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_9",
+                                      "question":  2,
+                                      "title":  "Advice for a visitor",
+                                      "type":  "Email",
+                                      "prompt":  "Your English-speaking friend is visiting your town next month and has asked for advice.||Write an email to your friend.||Say what places they should visit, what food they should try and what they should bring.||Write your email.",
+                                      "modelAnswer":  "Hi Alex,||I’m really happy that you’re coming to my town next month. I think you should visit the old castle because it is the most famous place here. You should also walk around the main square, where there are lots of small shops.||You must try the local cake because it is delicious, especially with hot chocolate. If you like pizza, there is also a great restaurant near the park.||You should bring comfortable shoes because we will probably walk a lot. It might rain, so bring a jacket too.||I’m sure you’ll have a great time.||See you soon,||Tom",
+                                      "modelAnswerWordCount":  106
+                                  },
+                                  {
+                                      "id":  "q3_9",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||I picked up the phone and heard a voice I did not recognise.||Write your story.",
+                                      "startingSentence":  "I picked up the phone and heard a voice I did not recognise.",
+                                      "modelAnswer":  "I picked up the phone and heard a voice I did not recognise. The person asked for my brother and sounded very worried. I explained that my brother was at football practice.||The man said he had found my brother’s school bag on a bench near the park. I quickly called my mum, and we went there together. Luckily, the man was waiting with the bag. Nothing was missing, but my brother’s homework was inside.||When my brother came home, he was very relieved. He promised to be more careful, but I knew he would probably forget something again soon.",
+                                      "modelAnswerWordCount":  102
+                                  }
+                              ]
+                }
 }

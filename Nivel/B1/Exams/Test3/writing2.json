@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test3",
+    "examId":  "Test3",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The perfect solution",
-                 "prompt":  "Your story must begin or end with the title: 'The perfect solution'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_3",
+                                      "question":  2,
+                                      "title":  "Computer games",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement in an English-language magazine.||Articles wanted!||Computer games||Do you and your friends enjoy playing computer games?||What are the good and bad things about computer games?||Write your article.",
+                                      "modelAnswer":  "Computer games: good or bad?||Most of my friends enjoy playing computer games, and I do too. We often play online at weekends, especially when the weather is bad. Games are fun because they help us relax and sometimes we can work together as a team.||However, there are also some bad things about computer games. If you play for too long, you can waste time and forget about homework or exercise. Some games can also make people angry.||In my opinion, computer games are fine if you do not play too much and still do other activities.",
+                                      "modelAnswerWordCount":  98
+                                  },
+                                  {
+                                      "id":  "q3_3",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||It was my first time in the jungle and I was so excited.||Write your story.",
+                                      "startingSentence":  "It was my first time in the jungle and I was so excited.",
+                                      "modelAnswer":  "It was my first time in the jungle and I was so excited. I was travelling with my uncle, who worked as a photographer. We walked slowly because the path was wet and full of leaves.||Suddenly, we heard a loud noise above us. I looked up and saw a group of monkeys jumping through the trees. My uncle quickly took out his camera, but one monkey came down and stole his hat.||We followed it for ten minutes until it dropped the hat near a river. I was tired, but I knew I would never forget that day.",
+                                      "modelAnswerWordCount":  99
+                                  }
+                              ]
+                }
 }

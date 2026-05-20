@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test8",
+    "examId":  "Test8",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The perfect solution",
-                 "prompt":  "Your story must begin or end with the title: 'The perfect solution'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_8",
+                                      "question":  2,
+                                      "title":  "A healthy lifestyle",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement on an English-language website.||Articles wanted!||A healthy lifestyle||What do you do to stay healthy?||What advice would you give to other teenagers?||Write your article.",
+                                      "modelAnswer":  "How to stay healthy||I think it is important for teenagers to have a healthy lifestyle. I try to stay healthy by walking to school, playing basketball twice a week and eating fruit every day. I also try not to go to bed too late during the week.||My advice to other teenagers is simple. First, find a sport or activity you enjoy, because exercise is easier when it is fun. Second, do not eat too many sweets or snacks. Finally, remember to rest.||You do not need to be perfect, but small changes can make you feel much better.",
+                                      "modelAnswerWordCount":  100
+                                  },
+                                  {
+                                      "id":  "q3_8",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||The lights went out just as we were finishing our dinner.||Write your story.",
+                                      "startingSentence":  "The lights went out just as we were finishing our dinner.",
+                                      "modelAnswer":  "The lights went out just as we were finishing our dinner. Everyone stopped talking, and the room became completely dark. My little brother screamed, but Dad quickly found a torch in the kitchen.||We looked outside and saw that all the houses in the street were dark too. Mum suggested playing cards until the electricity came back. At first, I was annoyed because I wanted to watch TV, but soon we were all laughing.||After an hour, the lights came on again. Surprisingly, nobody wanted to watch TV anymore because the game was more fun.",
+                                      "modelAnswerWordCount":  95
+                                  }
+                              ]
+                }
 }

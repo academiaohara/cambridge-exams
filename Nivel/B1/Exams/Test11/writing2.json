@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test11",
+    "examId":  "Test11",
+    "section":  "writing",
     "part":  2,
-    "type":  "article-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an article answering the question below.",
-    "task":  {
-                 "topic":  "The best way to spend a weekend",
-                 "prompt":  "Your English teacher has asked you to write an article about: 'The best way to spend a weekend'.",
-                 "notes":  [
-                               "Give your opinion",
-                               "Explain your reasons",
-                               "Include examples if possible"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_11",
+                                      "question":  2,
+                                      "title":  "Music festivals",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement in an English-language magazine.||Articles wanted!||Music festivals||Do young people enjoy music festivals where you live?||What makes a festival successful?||Write your article.",
+                                      "modelAnswer":  "Music festivals near me||Many young people where I live enjoy music festivals because they can listen to live bands and spend time with friends outdoors. Festivals are especially popular during the summer holidays.||I think a successful festival needs good music, safe places to sit and enough food stalls. It is also important that tickets are not too expensive for teenagers.||Personally, I enjoy festivals because they create a happy atmosphere and people can discover new music. However, organisers should make sure there is good security and enough public transport after the concerts finish.",
+                                      "modelAnswerWordCount":  95
+                                  },
+                                  {
+                                      "id":  "q3_11",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||When we arrived at the hotel, we realised something was wrong.||Write your story.",
+                                      "startingSentence":  "When we arrived at the hotel, we realised something was wrong.",
+                                      "modelAnswer":  "When we arrived at the hotel, we realised something was wrong. There were no lights inside, and the reception area was completely empty. My parents looked worried, but my little brother thought it was exciting.||A few minutes later, a man appeared and explained that there had been a problem with the electricity in the village. He gave us candles and showed us to our room.||That evening, we played card games together and talked for hours. Surprisingly, it became one of the best nights of our holiday because nobody spent time using phones or watching television.",
+                                      "modelAnswerWordCount":  97
+                                  }
+                              ]
+                }
 }

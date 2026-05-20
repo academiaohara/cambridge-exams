@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test1",
+    "examId":  "Test1",
+    "section":  "writing",
     "part":  2,
-    "type":  "article-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an article answering the question below.",
-    "task":  {
-                 "topic":  "A place young people should visit",
-                 "prompt":  "Your English teacher has asked you to write an article about: 'A place young people should visit'.",
-                 "notes":  [
-                               "Give your opinion",
-                               "Explain your reasons",
-                               "Include examples if possible"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_1",
+                                      "question":  2,
+                                      "title":  "Shopping with friends",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement in an English-language magazine.||Articles wanted!||Shopping with friends||Do you enjoy going shopping with your friends?||What shops do you like visiting most?||Write your article.",
+                                      "modelAnswer":  "Shopping with friends||I really enjoy going shopping with my friends because it is more fun than going alone. We usually go on Saturday afternoons, when we have finished our homework. I like visiting clothes shops most because I enjoy trying on different things, even if I do not buy anything.||The best part is that my friends always give me honest advice. Sometimes we also go to a café afterwards and talk about school or music.||In my opinion, shopping is not only about spending money. It is also a good way to relax and spend time with people you like.",
+                                      "modelAnswerWordCount":  102
+                                  },
+                                  {
+                                      "id":  "q3_1",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||When I opened the front door, I saw a small box on the ground.||Write your story.",
+                                      "startingSentence":  "When I opened the front door, I saw a small box on the ground.",
+                                      "modelAnswer":  "When I opened the front door, I saw a small box on the ground. At first, I thought it was for my parents, but my name was written on it. I carried it inside and opened it carefully.||Inside the box, there was an old key and a short note. The note said, “Go to the garden and look under the big tree.” I felt nervous, but I went outside.||Under the tree, I found my birthday present: a new bike. My family was hiding behind the garage, laughing. It was the best surprise I had ever had.",
+                                      "modelAnswerWordCount":  98
+                                  }
+                              ]
+                }
 }

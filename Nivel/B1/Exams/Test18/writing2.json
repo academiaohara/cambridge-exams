@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test18",
+    "examId":  "Test18",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The day everything changed",
-                 "prompt":  "Your story must begin or end with the title: 'The day everything changed'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_18",
+                                      "question":  2,
+                                      "title":  "A shopping centre review",
+                                      "type":  "Review",
+                                      "prompt":  "You see this notice on an English-language website.||Reviews wanted!||Shopping centres||Write a review of a shopping centre you know.||Describe the shops, facilities and atmosphere.||Write your review.",
+                                      "modelAnswer":  "River Mall Review||River Mall is the biggest shopping centre in my area, and many teenagers enjoy spending time there at weekends. There are lots of clothes shops, sports shops and cafés, so there is something for everyone.||The shopping centre is modern and clean, and there is a cinema on the top floor. I especially like the large food court because there are many different kinds of food available. However, the mall can become very crowded on Saturdays.||I would recommend River Mall because it is a fun place to shop, eat and meet friends.",
+                                      "modelAnswerWordCount":  96
+                                  },
+                                  {
+                                      "id":  "q3_18",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||At first, I thought it was just an ordinary school day.||Write your story.",
+                                      "startingSentence":  "At first, I thought it was just an ordinary school day.",
+                                      "modelAnswer":  "At first, I thought it was just an ordinary school day. However, when I entered the classroom, I saw balloons, music and a huge cake on the teacher’s desk.||My friends suddenly shouted “Happy Birthday!” and I realised they had organised a surprise party for me. I could not stop smiling because I had not expected anything at all.||During the break, we ate cake, played games and took lots of photographs together. It was definitely the best birthday I had ever had at school.||It was an experience that nobody there would ever forget.",
+                                      "modelAnswerWordCount":  96
+                                  }
+                              ]
+                }
 }

@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test13",
+    "examId":  "Test13",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "A surprising message",
-                 "prompt":  "Your story must begin or end with the title: 'A surprising message'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_13",
+                                      "question":  2,
+                                      "title":  "Keeping fit",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement on an English-language website.||Articles wanted!||Keeping fit||What do teenagers do to keep fit where you live?||What advice would you give to someone who wants to become healthier?||Write your article.",
+                                      "modelAnswer":  "Keeping fit as a teenager||In my town, many teenagers keep fit by playing football, going to the gym or cycling with friends. Some students also walk to school instead of travelling by car or bus.||I think the best advice for someone who wants to become healthier is to start slowly. It is easier to continue exercising if you choose an activity you really enjoy. Eating more fruit and vegetables is important too.||In my opinion, staying healthy is not only about sport. Teenagers also need enough sleep and time to relax after studying.",
+                                      "modelAnswerWordCount":  95
+                                  },
+                                  {
+                                      "id":  "q3_13",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||Nobody in the classroom knew where the strange noise was coming from.||Write your story.",
+                                      "startingSentence":  "Nobody in the classroom knew where the strange noise was coming from.",
+                                      "modelAnswer":  "Nobody in the classroom knew where the strange noise was coming from. It sounded like a small animal moving behind the cupboards near the back wall. Everyone stopped working and looked around nervously.||Finally, the teacher opened the cupboard carefully and discovered a tiny bird trapped inside. It must have flown through the open window earlier that morning.||The teacher carried the bird outside and released it into the playground. All the students clapped, and the lesson continued normally again after the excitement ended.||It was an experience that nobody there would ever forget.",
+                                      "modelAnswerWordCount":  94
+                                  }
+                              ]
+                }
 }

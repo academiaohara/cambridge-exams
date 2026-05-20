@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test2",
+    "examId":  "Test2",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "An unexpected journey",
-                 "prompt":  "Your story must begin or end with the title: 'An unexpected journey'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_2",
+                                      "question":  2,
+                                      "title":  "Free-time activities",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement on an English-language website.||Articles wanted!||Free-time activities||What activities can young people do in their free time where you live?||What new activity would you like to try?||Write your article.",
+                                      "modelAnswer":  "Free-time activities in my town||There are several things young people can do in their free time where I live. Many teenagers play football in the park, go swimming at the sports centre or meet friends in cafés. At weekends, the cinema is also very popular, especially when a new film comes out.||I usually enjoy playing basketball with my friends because it helps me relax after school. However, I would like to try photography because there are many beautiful places near my town.||I think free-time activities are important because they help young people make friends and feel less stressed.",
+                                      "modelAnswerWordCount":  103
+                                  },
+                                  {
+                                      "id":  "q3_2",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||As I came out of the supermarket, I saw someone I had wanted to meet for a long time.||Write your story.",
+                                      "startingSentence":  "As I came out of the supermarket, I saw someone I had wanted to meet for a long time.",
+                                      "modelAnswer":  "As I came out of the supermarket, I saw someone I had wanted to meet for a long time. It was my favourite singer, standing near the entrance with two bags of shopping. I was so surprised that I almost dropped my phone.||At first, I was too shy to speak, but then she smiled and asked me where the bus stop was. I showed her the way and told her I loved her music.||She thanked me and signed my notebook before leaving. When I got home, nobody believed my story until I showed them the autograph.",
+                                      "modelAnswerWordCount":  98
+                                  }
+                              ]
+                }
 }

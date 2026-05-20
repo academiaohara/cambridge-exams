@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test4",
+    "examId":  "Test4",
+    "section":  "writing",
     "part":  2,
-    "type":  "article-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an article answering the question below.",
-    "task":  {
-                 "topic":  "The best way to spend a weekend",
-                 "prompt":  "Your English teacher has asked you to write an article about: 'The best way to spend a weekend'.",
-                 "notes":  [
-                               "Give your opinion",
-                               "Explain your reasons",
-                               "Include examples if possible"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_4",
+                                      "question":  2,
+                                      "title":  "Learning languages",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement in an English-language magazine.||Articles wanted!||Learning languages||Do you think it is important to learn a foreign language?||Is it better to learn in a group or on your own? Why?||Write your article.",
+                                      "modelAnswer":  "Why learn languages?||I think learning a foreign language is very important. It helps you speak to people from other countries and understand different cultures. It can also be useful when you travel or when you look for a job in the future.||In my opinion, it is better to learn in a group than on your own. When you study with other people, you can practise speaking and help each other. It is also more enjoyable because lessons feel less boring.||Learning a language takes time, but it is worth the effort because it gives you many new opportunities.",
+                                      "modelAnswerWordCount":  100
+                                  },
+                                  {
+                                      "id":  "q3_4",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||The friends got off the bus and ran over to join the long queue of people.||Write your story.",
+                                      "startingSentence":  "The friends got off the bus and ran over to join the long queue of people.",
+                                      "modelAnswer":  "The friends got off the bus and ran over to join the long queue of people. They had waited all month for the music festival, and they did not want to miss the first band. The queue moved slowly, but everyone was excited.||Suddenly, Mia realised that she had left the tickets on the bus. Her face went white. Tom ran back to the bus stop as fast as he could. Luckily, the driver was still there and had found the tickets.||When Tom returned, everyone cheered. The friends got inside just as the music started.",
+                                      "modelAnswerWordCount":  96
+                                  }
+                              ]
+                }
 }

@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test23",
+    "examId":  "Test23",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "A surprising message",
-                 "prompt":  "Your story must begin or end with the title: 'A surprising message'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_23",
+                                      "question":  2,
+                                      "title":  "Article 23",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement in an English-language magazine.||Articles wanted!||Write your article.",
+                                      "modelAnswer":  "Teenagers and activities||Many teenagers enjoy taking part in activities after school because they can relax, spend time with friends and learn useful skills at the same time. Popular activities include sports, music, gaming and meeting people in cafés or parks.||I think these activities are important because they help students forget about stress from homework and exams. They also improve confidence and communication skills. Teachers and parents usually support activities that encourage teamwork and creativity among young people.||In conclusion, free-time activities are an important part of teenage life and can help students become happier, healthier and more confident in everyday situations.",
+                                      "modelAnswerWordCount":  104
+                                  },
+                                  {
+                                      "id":  "q3_23",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||This was the strangest day of my life number 23.||Write your story.",
+                                      "startingSentence":  "This was the strangest day of my life number 23.",
+                                      "modelAnswer":  "This was the strangest day of my life number 23. I woke up early that morning and immediately realised something unusual was happening outside my house. People were standing in the street and talking excitedly together.||A few minutes later, I discovered that a famous actor was filming a movie near our school. My friends and I watched the filming for several hours and even spoke to some actors. Everybody felt excited and surprised by the unexpected event in our quiet town.||At the end of the day, we returned home feeling tired but extremely happy because it had been an unforgettable experience for everyone there.",
+                                      "modelAnswerWordCount":  106
+                                  }
+                              ]
+                }
 }

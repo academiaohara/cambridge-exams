@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test12",
+    "examId":  "Test12",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The forgotten bag",
-                 "prompt":  "Your story must begin or end with the title: 'The forgotten bag'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_12",
+                                      "question":  2,
+                                      "title":  "A restaurant review",
+                                      "type":  "Review",
+                                      "prompt":  "You see this notice on an English-language website.||Reviews wanted!||Restaurants for families||Write a review of a restaurant you know.||Describe the food, the atmosphere and whether you would recommend it.||Write your review.",
+                                      "modelAnswer":  "Mario’s Restaurant||Last weekend I went to Mario’s Restaurant with my family, and we all enjoyed the experience. The restaurant is small but comfortable, and the waiters were friendly from the moment we arrived.||I ordered pizza and my sister had pasta. The food was fresh, hot and very tasty. The desserts were excellent too, especially the chocolate ice cream. The atmosphere was relaxed, although the restaurant became noisy later in the evening.||I would recommend Mario’s Restaurant because the prices are reasonable and there are many different dishes to choose from.",
+                                      "modelAnswerWordCount":  95
+                                  },
+                                  {
+                                      "id":  "q3_12",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||I opened the window and saw snow falling for the first time that year.||Write your story.",
+                                      "startingSentence":  "I opened the window and saw snow falling for the first time that year.",
+                                      "modelAnswer":  "I opened the window and saw snow falling for the first time that year. Everything outside looked white and quiet, and I immediately felt excited. My sister shouted when she saw it too.||After breakfast, we put on warm clothes and went outside. We built a snowman in the garden and had a snowball fight with our neighbours. Even my dad joined us for a while.||Later that evening, we sat near the fire drinking hot chocolate. It was a cold day, but everybody in my family was happy.||It was an experience that nobody there would ever forget.",
+                                      "modelAnswerWordCount":  99
+                                  }
+                              ]
+                }
 }

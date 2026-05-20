@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test15",
+    "examId":  "Test15",
+    "section":  "writing",
     "part":  2,
-    "type":  "article-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an article answering the question below.",
-    "task":  {
-                 "topic":  "How students can stay healthy",
-                 "prompt":  "Your English teacher has asked you to write an article about: 'How students can stay healthy'.",
-                 "notes":  [
-                               "Give your opinion",
-                               "Explain your reasons",
-                               "Include examples if possible"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_15",
+                                      "question":  2,
+                                      "title":  "A book review",
+                                      "type":  "Review",
+                                      "prompt":  "You see this notice in an English-language magazine.||Reviews wanted!||Books for teenagers||Write a review of a book you enjoyed reading.||Say what the book is about and why you liked it.||Write your review.",
+                                      "modelAnswer":  "A great book for teenagers||Recently, I finished reading a book called The Secret Lake, and I enjoyed it very much. The story is about two children who discover a hidden lake near their home and have an exciting adventure there.||I liked the book because the story was interesting from the first page. There were many surprising moments, and I wanted to continue reading every evening. The characters were also friendly and realistic.||I would recommend this book to teenagers because it is exciting, easy to understand and full of mystery.",
+                                      "modelAnswerWordCount":  92
+                                  },
+                                  {
+                                      "id":  "q3_15",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||As soon as the match finished, everybody ran onto the field.||Write your story.",
+                                      "startingSentence":  "As soon as the match finished, everybody ran onto the field.",
+                                      "modelAnswer":  "As soon as the match finished, everybody ran onto the field. Our school team had just won the regional football competition for the first time in ten years, and the players were celebrating excitedly.||The coach thanked everyone for supporting the team during the season. Then the captain lifted the trophy while parents and teachers took photographs.||Later, we all went back to school for a small party in the hall. It was one of the happiest evenings I had ever experienced with my classmates.||It was an experience that nobody there would ever forget.",
+                                      "modelAnswerWordCount":  95
+                                  }
+                              ]
+                }
 }

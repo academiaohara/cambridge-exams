@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test20",
+    "examId":  "Test20",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "A surprising message",
-                 "prompt":  "Your story must begin or end with the title: 'A surprising message'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_20",
+                                      "question":  2,
+                                      "title":  "Learning online",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement in an English-language magazine.||Articles wanted!||Learning online||Do students enjoy learning online?||What are the advantages and disadvantages of online learning?||Write your article.",
+                                      "modelAnswer":  "Online learning for students||Many students enjoy learning online because they can study at home and use videos or interactive activities. During online lessons, students can also communicate easily through messages and video calls.||One advantage of online learning is flexibility because students can sometimes choose when to study. However, there are disadvantages too. Some students find it difficult to concentrate at home, and others miss spending time with classmates.||In my opinion, online learning is useful for some subjects, but students still need normal lessons at school because learning together is important.",
+                                      "modelAnswerWordCount":  93
+                                  },
+                                  {
+                                      "id":  "q3_20",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||I could not believe what I saw at the end of the street.||Write your story.",
+                                      "startingSentence":  "I could not believe what I saw at the end of the street.",
+                                      "modelAnswer":  "I could not believe what I saw at the end of the street. A huge film crew was standing outside the old cinema, and actors were walking around in strange costumes.||My friends and I moved closer and discovered that they were filming a historical adventure movie. One of the directors even asked us to stand in the background during a scene.||Although we only appeared for a few seconds, we felt extremely proud afterwards. We could not wait to tell everybody at school about the experience.||It was an experience that nobody there would ever forget.",
+                                      "modelAnswerWordCount":  97
+                                  }
+                              ]
+                }
 }

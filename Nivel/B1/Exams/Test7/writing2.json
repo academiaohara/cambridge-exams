@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test7",
+    "examId":  "Test7",
+    "section":  "writing",
     "part":  2,
-    "type":  "article-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an article answering the question below.",
-    "task":  {
-                 "topic":  "The advantages of learning English",
-                 "prompt":  "Your English teacher has asked you to write an article about: 'The advantages of learning English'.",
-                 "notes":  [
-                               "Give your opinion",
-                               "Explain your reasons",
-                               "Include examples if possible"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_7",
+                                      "question":  2,
+                                      "title":  "A film review",
+                                      "type":  "Review",
+                                      "prompt":  "You see this notice in an English-language magazine.||Reviews wanted!||Films for teenagers||Write a review of a film you enjoyed.||Say what the film is about and why you would recommend it.||Write your review.",
+                                      "modelAnswer":  "A film worth watching||Last week I watched a film called The Lost Island, and I really enjoyed it. It is about three teenagers who find an old map and travel to an island to look for treasure.||The story is exciting from the beginning, and there are some funny moments too. I liked the main characters because they were brave but also made mistakes, so they seemed real. The music and scenery were excellent, especially during the storm scene.||I would recommend this film to teenagers who enjoy adventure stories. It is exciting, easy to follow and never boring.",
+                                      "modelAnswerWordCount":  100
+                                  },
+                                  {
+                                      "id":  "q3_7",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||Anna looked inside her school bag and found a letter she had never seen before.||Write your story.",
+                                      "startingSentence":  "Anna looked inside her school bag and found a letter she had never seen before.",
+                                      "modelAnswer":  "Anna looked inside her school bag and found a letter she had never seen before. It was in a blue envelope, but there was no name on it. She opened it carefully and read the message inside.||The letter said, “Go to the music room at lunchtime.” Anna felt nervous, but she was also curious. When she arrived, all her friends jumped out and shouted, “Surprise!” They had organised a small party because it was her birthday.||Anna laughed and almost cried at the same time. It was the nicest surprise she had ever had at school.",
+                                      "modelAnswerWordCount":  97
+                                  }
+                              ]
+                }
 }

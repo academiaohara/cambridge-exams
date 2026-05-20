@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test5",
+    "examId":  "Test5",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The day everything changed",
-                 "prompt":  "Your story must begin or end with the title: 'The day everything changed'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_5",
+                                      "question":  2,
+                                      "title":  "A café review",
+                                      "type":  "Review",
+                                      "prompt":  "You see this notice on an English-language website.||Reviews wanted!||A café near you||Write a review of a café you know.||Say what the food and service are like and whether you would recommend it.||Write your review.",
+                                      "modelAnswer":  "The Blue Cup Café||The Blue Cup Café is a small café near my school. I went there last Saturday with two friends, and we all enjoyed it. The café is modern and comfortable, with large windows and quiet music.||The food was very good. I had a cheese sandwich and a chocolate cake, which were both fresh and tasty. The drinks were not too expensive either. The service was friendly, although we had to wait a few minutes because the café was busy.||I would recommend The Blue Cup Café to students because it is a nice place to relax after school.",
+                                      "modelAnswerWordCount":  103
+                                  },
+                                  {
+                                      "id":  "q3_5",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||I was walking home when I suddenly heard somebody calling my name.||Write your story.",
+                                      "startingSentence":  "I was walking home when I suddenly heard somebody calling my name.",
+                                      "modelAnswer":  "I was walking home when I suddenly heard somebody calling my name. I turned round and saw my old friend Daniel, who had moved to another city two years before. I was really surprised to see him.||He told me he was visiting his grandparents for the weekend and had hoped to meet me. We decided to go to a café and talk. He told me about his new school, and I told him about my football team.||Before he left, we promised to stay in contact. It was a short meeting, but it made me very happy.",
+                                      "modelAnswerWordCount":  98
+                                  }
+                              ]
+                }
 }

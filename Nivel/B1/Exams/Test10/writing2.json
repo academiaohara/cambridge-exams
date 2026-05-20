@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test10",
+    "examId":  "Test10",
+    "section":  "writing",
     "part":  2,
-    "type":  "article-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an article answering the question below.",
-    "task":  {
-                 "topic":  "Why hobbies are important",
-                 "prompt":  "Your English teacher has asked you to write an article about: 'Why hobbies are important'.",
-                 "notes":  [
-                               "Give your opinion",
-                               "Explain your reasons",
-                               "Include examples if possible"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_10",
+                                      "question":  2,
+                                      "title":  "A sports centre review",
+                                      "type":  "Review",
+                                      "prompt":  "You see this notice on an English-language website.||Reviews wanted!||Sports centres||Write a review of a sports centre you know.||Say what activities you can do there and whether you would recommend it.||Write your review.",
+                                      "modelAnswer":  "Green Park Sports Centre||Green Park Sports Centre is near my house, and I go there almost every week. It is a large, modern building with a swimming pool, basketball courts and a small gym. There are also dance and fitness classes for teenagers.||The staff are friendly and helpful, especially if you are trying an activity for the first time. The changing rooms are usually clean, although they can be crowded on Saturdays. The prices are quite good for students.||I would recommend this sports centre because there is something for everyone. It is a great place to exercise and meet friends.",
+                                      "modelAnswerWordCount":  103
+                                  },
+                                  {
+                                      "id":  "q3_10",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||Tom was the last person to leave the classroom that afternoon.||Write your story.",
+                                      "startingSentence":  "Tom was the last person to leave the classroom that afternoon.",
+                                      "modelAnswer":  "Tom was the last person to leave the classroom that afternoon. He was putting his books into his bag when he noticed a strange noise coming from the cupboard. At first, he thought it was the wind.||He opened the cupboard slowly and saw a small grey kitten hiding behind some boxes. Tom was surprised, but he gently picked it up and took it to the teacher’s office. The teachers called the local animal shelter.||The next day, Tom found out that the kitten was safe. His classmates called him a hero, and he felt very proud.",
+                                      "modelAnswerWordCount":  98
+                                  }
+                              ]
+                }
 }

@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test41",
+    "examId":  "Test41",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "The perfect solution",
-                 "prompt":  "Your story must begin or end with the title: 'The perfect solution'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_41",
+                                      "question":  2,
+                                      "title":  "Article 41",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement in an English-language magazine.||Articles wanted!||Teenage hobbies||What hobbies are popular where you live?||Why are hobbies important for teenagers?||Write your article.",
+                                      "modelAnswer":  "Young people and hobbies||Many teenagers enjoy hobbies because they help them relax after busy school days. Popular hobbies include sport, music, reading and spending time with friends in town.||I think hobbies are important because they improve confidence and allow people to learn useful skills outside school. They can also help teenagers make new friends and feel less stressed during difficult weeks.||In conclusion, hobbies are an important part of teenage life and everybody should try to find an activity they really enjoy doing in their free time. Teenagers also become more independent and creative through regular activities.",
+                                      "modelAnswerWordCount":  99
+                                  },
+                                  {
+                                      "id":  "q3_41",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||I will never forget what happened that afternoon number 41.||Write your story.",
+                                      "startingSentence":  "I will never forget what happened that afternoon number 41.",
+                                      "modelAnswer":  "I will never forget what happened that afternoon number 41. I was walking home from school when I suddenly noticed a crowd of people near the park entrance. Everybody seemed excited and curious about something unusual happening nearby.||A few minutes later, I discovered that a famous singer was filming a music video in our town centre. My friends and I watched the filming for over an hour and even spoke to some members of the film crew.||At the end of the afternoon, we returned home feeling amazed and extremely happy because it had been such an unexpected experience for all of us.",
+                                      "modelAnswerWordCount":  104
+                                  }
+                              ]
+                }
 }

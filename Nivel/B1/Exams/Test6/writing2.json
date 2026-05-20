@@ -1,24 +1,33 @@
 {
-    "title":  "Writing - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing2-test6",
+    "examId":  "Test6",
+    "section":  "writing",
     "part":  2,
-    "type":  "story-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write a story using the title below.",
-    "task":  {
-                 "titlePrompt":  "An unexpected journey",
-                 "prompt":  "Your story must begin or end with the title: 'An unexpected journey'.",
-                 "notes":  [
-                               "Write a clear beginning and ending",
-                               "Use past tenses",
-                               "Include interesting details"
-                           ]
-             },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ]
+    "level":  "B1",
+    "time":  25,
+    "totalQuestions":  2,
+    "description":  "Choose one of the following writing tasks and write your answer in about 100 words.",
+    "content":  {
+                    "tasks":  [
+                                  {
+                                      "id":  "q2_6",
+                                      "question":  2,
+                                      "title":  "The best school subject",
+                                      "type":  "Article",
+                                      "prompt":  "You see this announcement in an English-language magazine.||Articles wanted!||The best school subject||What is your favourite school subject?||Why do you enjoy it, and how could schools make lessons more interesting?||Write your article.",
+                                      "modelAnswer":  "My favourite school subject||My favourite school subject is history because I enjoy learning about how people lived in the past. I especially like lessons about castles, explorers and important events. History is interesting because it often feels like listening to a story.||I enjoy this subject because my teacher explains things clearly and uses videos, pictures and maps. These things help me understand the topic better.||I think schools could make lessons more interesting by organising more trips to museums or historical places. Students remember things more easily when they can see real objects instead of only reading textbooks.",
+                                      "modelAnswerWordCount":  100
+                                  },
+                                  {
+                                      "id":  "q3_6",
+                                      "question":  3,
+                                      "title":  "Story",
+                                      "type":  "Story",
+                                      "prompt":  "Your English teacher has asked you to write a story.||Your story must begin with this sentence:||The train doors opened, and I realised I was in the wrong city.||Write your story.",
+                                      "startingSentence":  "The train doors opened, and I realised I was in the wrong city.",
+                                      "modelAnswer":  "The train doors opened, and I realised I was in the wrong city. I had been listening to music and had not noticed the announcements. For a moment, I felt completely lost.||I looked at the timetable and saw that the next train back was in twenty minutes. While I was waiting, an old woman asked me for help with her suitcase. We started talking, and she told me interesting stories about the city.||When my train finally arrived, I was no longer upset. My mistake had turned into a small adventure, and I even made a new friend.",
+                                      "modelAnswerWordCount":  99
+                                  }
+                              ]
+                }
 }
