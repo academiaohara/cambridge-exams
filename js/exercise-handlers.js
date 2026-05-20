@@ -90,8 +90,9 @@
         }
       }
 
-      // For reading parts 5–8, B1 reading parts 3–4, and listening: reveal the explanation toggle in the header
-      if ((AppState.currentSection === 'reading' && AppState.currentPart >= 5) ||
+      // For reading parts 5–8 (except B1 part 5), B1 reading parts 3–4, and listening: reveal the header Explanation toggle
+      if (((AppState.currentSection === 'reading' && AppState.currentPart >= 5) &&
+            !(AppState.currentLevel === 'B1' && AppState.currentPart === 5)) ||
           (AppState.currentSection === 'reading' &&
             AppState.currentLevel === 'B1' &&
             (AppState.currentPart === 3 || AppState.currentPart === 4)) ||
@@ -101,7 +102,7 @@
         if (explBtn) explBtn.style.display = '';
       }
 
-      // Reveal the footer "Show explanations" button when present (B1 Reading 3 uses the header Explanation control; B1 Reading 2 PET also uses the header only).
+      // Reveal the footer "Show explanations" button when present (B1 Reading 3 uses the header Explanation control; B1 Reading 2 PET uses the header only; B1 Reading 5 uses this footer control).
       const footerExplBtn = document.querySelector('.btn-explanations');
       if (footerExplBtn) footerExplBtn.style.display = '';
       this.syncAnswerToggleButton();
