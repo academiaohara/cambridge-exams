@@ -69,6 +69,47 @@
       }).join('');
     },
 
+    /**
+     * Ideal model answer (B1 email): strip [n]…[/n] markers, underline the inner text,
+     * and expose the matching handwritten note in a native tooltip (title).
+     */
+    _formatB1IdealModelAnswerHtml: function(raw, notes) {
+      var self = this;
+      if (!raw) return '';
+      var noteMap = {};
+      (notes || []).forEach(function(n) {
+        var key = n.id != null && n.id !== '' && n.id !== 0 ? String(n.id) : '';
+        if (key) noteMap[key] = n.text || '';
+      });
+      function escapeAttr(str) {
+        return String(str == null ? '' : str)
+          .replace(/&/g, '&amp;')
+          .replace(/"/g, '&quot;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/\r?\n/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+      function escapeAndBr(str) {
+        return self._escapeHtml(str).replace(/\r\n/g, '\n').replace(/\n/g, '<br>');
+      }
+      var re = /\[(\d+)\]([\s\S]*?)\[\/\1\]/g;
+      var out = '';
+      var last = 0;
+      var m;
+      while ((m = re.exec(raw)) !== null) {
+        out += escapeAndBr(raw.slice(last, m.index));
+        var nid = m[1];
+        var noteBody = Object.prototype.hasOwnProperty.call(noteMap, nid) ? noteMap[nid] : '';
+        var titleStr = noteBody ? ('Note ' + nid + ': ' + noteBody) : ('Note ' + nid);
+        out += '<span class="writing-b1-ideal-note-ref" title="' + escapeAttr(titleStr) + '">' + escapeAndBr(m[2]) + '</span>';
+        last = m.index + m[0].length;
+      }
+      out += escapeAndBr(raw.slice(last));
+      return out;
+    },
+
     _buildB1EmailNotesHtml: function(notes) {
       if (!notes || !notes.length) return '';
       var self = this;
@@ -475,10 +516,14 @@
       });
       html += '</div>';
 
+      const exercise = AppState.currentExercise;
       tabs.forEach((tab, i) => {
         const isIdeal = tab.id === 'ideal';
+        const idealB1Email = isIdeal && this._isB1EmailTask(exercise);
         const contentHtml = isIdeal
-          ? '<div class="writing-model-answer">' + tab.content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>') + '</div>'
+          ? '<div class="writing-model-answer">' + (idealB1Email
+            ? this._formatB1IdealModelAnswerHtml(tab.content, exercise.content.b1EmailTask.notes)
+            : tab.content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>')) + '</div>'
           : '<div class="writing-ai-feedback">' + this._formatSectionContent(tab.content) + '</div>';
         html += `<div class="writing-feedback-tab-panel${i === 0 ? ' active' : ''}" id="panel-${prefix}-${tab.id}">
           ${contentHtml}
