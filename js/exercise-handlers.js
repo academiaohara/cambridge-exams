@@ -631,7 +631,7 @@
           var optBody = optText;
           if (partType === 'multiple-choice-text' && typeof window.ReadingType5 !== 'undefined' &&
               typeof ReadingType5.explanationOptionHtml === 'function') {
-            var rich = ReadingType5.explanationOptionHtml(opt, optIdx + 1);
+            var rich = ReadingType5.explanationOptionHtml(opt);
             if (rich) optBody = rich;
           }
           html += '<span class="eq-option' + (isCorrect ? ' eq-option-correct' : '') + '">' + optBody + '</span>';

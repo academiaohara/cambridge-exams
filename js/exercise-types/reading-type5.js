@@ -48,11 +48,10 @@
     return letter;
   }
 
-  function optionInnerHtmlNumbered(opt, indexOneBased) {
+  function optionInnerHtmlNumbered(opt) {
     var p = parseMcTextOption(opt);
     return (
       '<span class="reading-type5-opt-line">' +
-      '<span class="reading-type5-opt-circle" aria-hidden="true">' + indexOneBased + '</span>' +
       '<span class="reading-type5-opt-word">' + escapeHtml(p.word) + '</span>' +
       '</span>'
     );
@@ -78,7 +77,10 @@
   function gapTriggerLabel(qNum, userAnswer, question) {
     var letter = (userAnswer || '').trim();
     if (!letter) return '(' + qNum + ')';
-    if (isB1ReadingPart5()) return wordFromQuestionOption(question, letter) || letter;
+    if (isB1ReadingPart5()) {
+      var w = wordFromQuestionOption(question, letter) || letter;
+      return '(' + qNum + ') ' + w;
+    }
     return letter;
   }
 
@@ -93,7 +95,7 @@
       var triggerDisabled = isChecked ? ' disabled' : '';
       var choicesHtml = '';
       var b1r5 = isB1ReadingPart5();
-      options.forEach(function(opt, optIdx) {
+      options.forEach(function(opt) {
         var letter = parseMcTextOption(opt).letter;
         var picked = userAnswer === letter;
         var choiceCls = 'reading-type5-gap-choice';
@@ -107,7 +109,7 @@
         var onpick = isChecked
           ? ''
           : ' onclick="event.stopPropagation(); ReadingType5.pickGapAnswer(' + qNum + ', \'' + escapeJsString(letter) + '\')"';
-        var choiceBody = b1r5 ? optionInnerHtmlNumbered(opt, optIdx + 1) : escapeHtml(opt);
+        var choiceBody = b1r5 ? optionInnerHtmlNumbered(opt) : escapeHtml(opt);
         choicesHtml +=
           '<button type="button" class="' + choiceCls + '" data-letter="' + escapeHtml(letter) + '"' + onpick + '>' +
           choiceBody +
@@ -210,7 +212,7 @@
         const labelClass = isChecked
           ? (letter === question.correct ? 'correct' : (userAnswer === letter ? 'incorrect' : ''))
           : '';
-        const inner = b1r5 ? optionInnerHtmlNumbered(opt, idx + 1) : '<span>' + escapeHtml(opt) + '</span>';
+        const inner = b1r5 ? optionInnerHtmlNumbered(opt) : '<span>' + escapeHtml(opt) + '</span>';
 
         html += `
           <label class="reading-type5-option ${labelClass} ${isChecked ? 'disabled' : ''}">
@@ -224,12 +226,12 @@
     },
 
     /**
-     * When active exercise is B1 Reading Part 5, returns HTML (numbered blue circle + option word)
+     * When active exercise is B1 Reading Part 5, returns HTML (option word only)
      * for explanation panels; otherwise returns null so callers keep the raw option string.
      */
-    explanationOptionHtml: function(opt, indexOneBased) {
+    explanationOptionHtml: function(opt) {
       if (!isB1ReadingPart5()) return null;
-      return optionInnerHtmlNumbered(opt, indexOneBased);
+      return optionInnerHtmlNumbered(opt);
     },
 
     toggleGapPopover: function(ev, qNum) {
