@@ -342,11 +342,33 @@
 
 /* B1 email ideal answer: segment ↔ handwritten note (tooltip via title) */
 .writing-b1-ideal-note-ref {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
-  text-decoration-color: #d97706;
+  display: inline;
+  padding: 0.1em 0.4em 0.12em;
+  margin: 0 0.04em;
+  color: inherit;
   cursor: help;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 251, 235, 0.98) 0%,
+    rgba(254, 243, 199, 0.72) 100%
+  );
+  border: 1px solid rgba(217, 119, 6, 0.38);
+  border-radius: 0.35em;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 1px 3px rgba(180, 83, 9, 0.1);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.writing-b1-ideal-note-ref:hover {
+  background: linear-gradient(180deg, #fffbeb 0%, #fde68a 100%);
+  border-color: #d97706;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.75) inset,
+    0 2px 8px rgba(180, 83, 9, 0.18);
 }
 
 /* Notes box (proposals/ideas) */
