@@ -1,38 +1,40 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test42",
+    "examId":  "Test42",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "New Sports Club",
-    "email":  "Hi Mia,\n\nI joined a new sports club last month and I’m enjoying it much more than I expected. At first, I was nervous because I didn’t know anyone there. However, the other students were really (1) _____ and helped me learn the rules quickly. Now I go (5) _____ a week after school.\n\nBest wishes,\nLiam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "Helping at home",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "My parents were very busy last weekend, so I decided to help more at home. On Saturday morning, I cleaned the kitchen and put everything back (27) its proper place. Then I went shopping with my dad because we needed food for the week. The supermarket was more crowded (28) usual, and it took us a long time to find everything. When we got home, I helped cook lunch, although I am not very good (29) preparing vegetables quickly. My mum was pleased (30) the meal because everyone enjoyed it. In the afternoon, I looked after my younger brother while my parents finished some work. We played a game together and then watched a film. I felt tired (31) the end of the day, but I was glad I had been useful. I think helping at home is important (32) everyone in a family.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "in"
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "than"
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "at"
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "with"
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "by"
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "for"
+                                      }
+                                  ]
+                }
 }

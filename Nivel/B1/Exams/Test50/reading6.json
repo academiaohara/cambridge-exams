@@ -1,38 +1,40 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test50",
+    "examId":  "Test50",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "Weekend Plans",
-    "email":  "Hi Emma,\n\nThanks for your message. I’d love to meet this weekend if you’re still (4) _____. There’s a new café in the town centre that everyone has been talking about recently. After that, we could go shopping or maybe (5) _____ a film at the cinema.\n\nSee you,\nChloe",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "An online course",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "During the holidays, I started an online course about drawing comics. I chose it because I wanted to improve my drawing skills and learn (27) to create characters. The course includes short videos, exercises and comments from the teacher. At first, I was worried (28) studying online because I thought it might be difficult to stay motivated. However, the lessons were clear and easy to follow. Each week, we had to upload a drawing and wait (29) feedback arrived. Some students were much better than me, but seeing their work helped me learn. The teacher said my drawings had improved a lot (30) the first lesson. I now feel more confident and enjoy drawing every day. I think online courses are suitable (31) people who cannot travel to regular classes. I hope to take another course (32) soon.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "how"
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "about"
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "until"
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "since"
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "for"
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "very"
+                                      }
+                                  ]
+                }
 }

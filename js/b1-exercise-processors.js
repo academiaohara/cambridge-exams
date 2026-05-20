@@ -432,6 +432,18 @@
   }
 
   function readingPart6(ex) {
+    // Canonical PET Reading Part 6 JSON (former reading_part6.json): open cloze in content.*
+    var existing = ex.content && typeof ex.content === 'object';
+    if (existing && typeof ex.content.text === 'string' && ex.content.text.length &&
+        Array.isArray(ex.content.questions) && ex.content.questions.length) {
+      ex.content.text = sanitizeHtmlTypos(ex.content.text);
+      ex.content.questions = normalizeQuestionsArray(ex.content.questions);
+      ex.type = 'open-cloze';
+      mergeDescription(ex);
+      ex._b1PetScoring = true;
+      return;
+    }
+
     var subject = sanitizeHtmlTypos((ex.subject || '').toString()).trim();
     var email = sanitizeHtmlTypos((ex.email || '').toString());
     var answersList = Array.isArray(ex.answers) ? ex.answers.slice() : [];

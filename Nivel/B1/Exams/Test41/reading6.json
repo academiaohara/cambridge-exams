@@ -1,38 +1,40 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test41",
+    "examId":  "Test41",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "New Sports Club",
-    "email":  "Hi Mia,\n\nI joined a new sports club last month and I’m enjoying it much more than I expected. At first, I was nervous because I didn’t know anyone there. However, the other students were really (5) _____ and helped me learn the rules quickly. Now I go (1) _____ a week after school.\n\nBest wishes,\nLiam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A visit to the planetarium",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Last Friday, our science class visited a planetarium in the city. We arrived early, so we had time to look (27) the exhibition before the main show began. There were models of planets, old telescopes and screens showing pictures from space. I was especially interested (28) the section about Mars because scientists are still studying it carefully. During the show, the room became dark and thousands of stars appeared above us. The presenter explained everything more clearly (29) our textbook, which helped me understand the topic better. Afterwards, she answered questions from students and told us how satellites travel (30) the Earth. Before leaving, our teacher asked us to write notes (31) what we had learned. It was one of the most interesting school trips I have been on (32) years.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "at"
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "in"
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "than"
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "around"
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "about"
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "for"
+                                      }
+                                  ]
+                }
 }

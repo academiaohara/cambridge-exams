@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test18",
+    "examId":  "Test18",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "School Trip",
-    "email":  "Hi Alex,\n\nI’m really excited about the school trip next week. We’re leaving early on Friday morning, so don’t forget to bring everything you need. The teachers said we should wear comfortable clothes because we’ll be walking a lot. I’ve already packed my (4) _____ and some snacks for the journey.\n\nSee you soon,\nSam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A day at the zoo",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "On Sunday, I went to the zoo with my younger cousins. We arrived early because we wanted to see the animals before the zoo became too crowded. The first animals we visited were the penguins, which were swimming quickly (27) the water. My cousins laughed because one penguin kept falling over on the ice. Later, we watched a keeper feeding the elephants and learned that they eat a huge amount (28) food every day. I was surprised (29) how gentle such large animals could be. At lunchtime, we sat under some trees and ate sandwiches. The weather was warmer (30) expected, so we bought ice creams before continuing. In the afternoon, we visited a new area where visitors can learn (31) protecting wild animals. It was a tiring day, but my cousins said it was the best trip they had been on (32) ages.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "through",
+                                          "explanation":  "Movement through water."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "of",
+                                          "explanation":  "Amount of something."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "by",
+                                          "explanation":  "Surprised by something."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "than",
+                                          "explanation":  "Warmer than expected."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "about",
+                                          "explanation":  "Learn about a topic."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "for",
+                                          "explanation":  "Fixed phrase: for ages."
+                                      }
+                                  ]
+                }
 }

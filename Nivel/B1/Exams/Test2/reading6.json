@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test2",
+    "examId":  "Test2",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "New Sports Club",
-    "email":  "Hi Mia,\n\nI joined a new sports club last month and I’m enjoying it much more than I expected. At first, I was nervous because I didn’t know anyone there. However, the other students were really friendly and helped me learn the rules quickly. Now I go (1) _____ a week after school.\n\nBest wishes,\nLiam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "Starting a new club",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Our school has recently started a film club, and I joined it last week. I have always been interested (27) films, but I had never discussed them seriously with other students before. The club meets every Thursday after lessons, and each week we watch part of a film or talk about a director. Our teacher asked us to choose a short scene and explain why it was important (28) the story. At first, I was nervous about speaking, but everyone listened carefully. One student said my ideas were clearer (29) I thought they were. Next month, we are going to make our own short film, which sounds exciting. We will need to work (30) a team and share different jobs, such as writing, filming and editing. I think the club is useful (31) students who enjoy being creative. I am already excited (32) the next meeting.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "in",
+                                          "explanation":  "Fixed phrase: interested in."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "to",
+                                          "explanation":  "Important to something/someone."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: clearer than."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "as",
+                                          "explanation":  "Fixed phrase: work as a team."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "for",
+                                          "explanation":  "Useful for someone."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "about",
+                                          "explanation":  "Excited about something."
+                                      }
+                                  ]
+                }
 }

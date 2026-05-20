@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test23",
+    "examId":  "Test23",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "School Trip",
-    "email":  "Hi Alex,\n\nI’m really excited about the school trip next week. We’re leaving early on Friday morning, so don’t (4) _____ to bring everything you need. The teachers said we should wear comfortable clothes because we’ll be walking a lot. I’ve already packed my (3) _____ and some snacks for the journey.\n\nSee you soon,\nSam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A new student",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "A new student joined our class last Monday. Our teacher asked me to show him around because I know the school well. He had moved here (27) another town, so everything was unfamiliar to him. During the break, I introduced him to some of my friends, who were very friendly (28) him. He told us that his old school had been smaller (29) ours and that he was worried about getting lost. I explained where the library, gym and science rooms were. After lunch, we worked together (30) a geography task, and he seemed much more relaxed. At the end of the day, he thanked me (31) helping him. I think starting somewhere new can be difficult, especially (32) you do not know anyone.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "from",
+                                          "explanation":  "Moved from a place."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "to",
+                                          "explanation":  "Friendly to someone."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: smaller than."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "on",
+                                          "explanation":  "Work on a task."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "for",
+                                          "explanation":  "Thank someone for doing something."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "when",
+                                          "explanation":  "When introduces a situation."
+                                      }
+                                  ]
+                }
 }

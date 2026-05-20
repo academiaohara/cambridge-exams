@@ -1,38 +1,40 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test47",
+    "examId":  "Test47",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "Weekend Plans",
-    "email":  "Hi Emma,\n\nThanks for your message. I’d love to meet this weekend if you’re still (2) _____. There’s a new café in the town centre that everyone has been talking about recently. After that, we could go shopping or maybe (3) _____ a film at the cinema.\n\nSee you,\nChloe",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A visit to a fire station",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Our class visited the local fire station yesterday morning. A firefighter showed us around and explained what happens when someone calls for help. We saw the equipment used (27) firefighters during emergencies, including helmets, hoses and special clothing. I was surprised (28) how heavy some of the equipment was. The firefighter told us that the team practises every day so that they can work quickly and safely. We were allowed to sit inside a fire engine, which was much larger (29) I had imagined. Later, he explained how important it is to stay calm (30) a fire starts. Before leaving, we asked questions about training and rescue work. The visit helped me understand more (31) the job and the risks involved. I think firefighters are respected (32) the community because their work is so important.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "by"
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "at"
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "than"
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "if"
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "about"
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "in"
+                                      }
+                                  ]
+                }
 }

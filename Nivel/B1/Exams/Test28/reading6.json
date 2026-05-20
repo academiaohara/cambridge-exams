@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test28",
+    "examId":  "Test28",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "Weekend Plans",
-    "email":  "Hi Emma,\n\nThanks for your message. I’d love to meet this weekend if you’re still (4) _____. There’s a new café in the town centre that everyone has been talking about recently. After that, we could go shopping or maybe (2) _____ a film at the cinema.\n\nSee you,\nChloe",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A lesson in the garden",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "Our biology teacher took us outside for a lesson in the school garden. We were studying insects, so she asked us to look carefully (27) the plants and the soil. At first, I did not see much, but after a few minutes I noticed several tiny insects moving under a leaf. The teacher explained that gardens are full (28) living things, even when they look quiet. We worked in pairs and wrote notes about what we found. My partner drew pictures while I measured some of the leaves. The lesson was more enjoyable (29) sitting in the classroom because we could discover things ourselves. Before going back inside, we put everything carefully (30) it belonged. The teacher said outdoor lessons were useful (31) helping students understand nature. I hope we do more activities like this (32) spring.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "at",
+                                          "explanation":  "Look at something."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "of",
+                                          "explanation":  "Full of something."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: more enjoyable than."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "where",
+                                          "explanation":  "Where it belonged."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "for",
+                                          "explanation":  "Useful for doing something."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "next",
+                                          "explanation":  "Next spring."
+                                      }
+                                  ]
+                }
 }

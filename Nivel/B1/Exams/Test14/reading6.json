@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test14",
+    "examId":  "Test14",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "Weekend Plans",
-    "email":  "Hi Emma,\n\nThanks for your message. I’d love to meet this weekend if you’re still (4) _____. There’s a new café in the town centre that everyone has been talking about recently. After that, we could go shopping or maybe watch a film at the cinema.\n\nSee you,\nChloe",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "twice",
-                        "explanation":  "The missing word is 'twice'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A visit to my grandparents",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "I spent last weekend with my grandparents, who live in a village outside the city. I had not visited them (27) the winter, so I was excited to see them again. On Saturday morning, my grandfather took me to the market, where he buys fresh vegetables every week. The market was busier (28) usual because there was a local food festival. My grandmother cooked lunch while we were out, and the meal was ready (29) the time we returned. In the afternoon, she showed me some old photos of my parents when they were young. We laughed (30) some of the clothes they used to wear. Before I left, my grandparents gave me a cake to take home (31) my family. I always enjoy staying there because life in the village feels very different (32) life in the city.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "since",
+                                          "explanation":  "Present perfect with since."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "than",
+                                          "explanation":  "Busier than usual."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "by",
+                                          "explanation":  "Fixed phrase: by the time."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "at",
+                                          "explanation":  "Laugh at something."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "for",
+                                          "explanation":  "For my family."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "from",
+                                          "explanation":  "Different from."
+                                      }
+                                  ]
+                }
 }

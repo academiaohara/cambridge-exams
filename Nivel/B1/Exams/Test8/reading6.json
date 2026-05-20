@@ -1,38 +1,46 @@
 {
-    "title":  "Reading - Part 6",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-reading6-test8",
+    "examId":  "Test8",
+    "section":  "reading",
     "part":  6,
-    "type":  "gapped-email",
-    "totalQuestions":  5,
-    "instructions":  "Complete the email with the correct words.",
-    "subject":  "School Trip",
-    "email":  "Hi Alex,\n\nI’m really excited about the school trip next week. We’re leaving early on Friday morning, so don’t (2) _____ to bring everything you need. The teachers said we should wear comfortable clothes because we’ll be walking a lot. I’ve already packed my (4) _____ and some snacks for the journey.\n\nSee you soon,\nSam",
-    "answers":  [
-                    {
-                        "number":  1,
-                        "answer":  "watch",
-                        "explanation":  "The missing word is 'watch'."
-                    },
-                    {
-                        "number":  2,
-                        "answer":  "forget",
-                        "explanation":  "The missing word is 'forget'."
-                    },
-                    {
-                        "number":  3,
-                        "answer":  "free",
-                        "explanation":  "The missing word is 'free'."
-                    },
-                    {
-                        "number":  4,
-                        "answer":  "camera",
-                        "explanation":  "The missing word is 'camera'."
-                    },
-                    {
-                        "number":  5,
-                        "answer":  "friendly",
-                        "explanation":  "The missing word is 'friendly'."
-                    }
-                ]
+    "type":  "open-cloze",
+    "title":  "A problem at the airport",
+    "time":  10,
+    "totalQuestions":  6,
+    "description":  "For each question, write the correct answer. Write one word for each gap.",
+    "content":  {
+                    "text":  "When we arrived at the airport last summer, our flight had been delayed. Nobody knew exactly (27) the plane would leave, so many passengers were waiting near the information screens. My parents stayed calm, but I was worried because we had to catch a bus after landing. The delay lasted (28) almost three hours, which felt much longer because the airport was crowded. To pass the time, I read a magazine and listened (29) music on my phone. My sister bought sandwiches, although they were more expensive (30) the ones in town. Eventually, the airline announced that our flight was ready. We walked quickly (31) the gate and boarded the plane. Although the journey started badly, everything went smoothly (32) we arrived.",
+                    "questions":  [
+                                      {
+                                          "number":  27,
+                                          "correct":  "when",
+                                          "explanation":  "Question word for time: when the plane would leave."
+                                      },
+                                      {
+                                          "number":  28,
+                                          "correct":  "for",
+                                          "explanation":  "Duration: for almost three hours."
+                                      },
+                                      {
+                                          "number":  29,
+                                          "correct":  "to",
+                                          "explanation":  "Fixed phrase: listen to."
+                                      },
+                                      {
+                                          "number":  30,
+                                          "correct":  "than",
+                                          "explanation":  "Comparative structure: more expensive than."
+                                      },
+                                      {
+                                          "number":  31,
+                                          "correct":  "towards",
+                                          "explanation":  "Movement in the direction of something: towards the gate."
+                                      },
+                                      {
+                                          "number":  32,
+                                          "correct":  "after",
+                                          "explanation":  "After introduces the later event."
+                                      }
+                                  ]
+                }
 }
