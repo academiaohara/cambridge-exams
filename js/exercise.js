@@ -744,19 +744,26 @@
         
         var response = await Utils.fetchWithNoCache(targetUrl);
         var exercise = await response.json();
-        
+
+        if (AppState.currentLevel === 'B1' && window.B1ExerciseProcessors) {
+          B1ExerciseProcessors.normalizeExercise(exercise, section, part, examId);
+        }
+
         var answers = Object.assign({}, savedState.answers || {});
         var score = 0;
-        
+
         if (part === 1) {
           var essay = answers[1] || '';
           if (essay.trim()) {
-            var question = (exercise.content && exercise.content.question) || '';
+            var question = (typeof WritingType1 !== 'undefined' && WritingType1.buildTaskPromptForAi)
+              ? WritingType1.buildTaskPromptForAi(exercise)
+              : ((exercise.content && exercise.content.question) || '');
+            var taskType = exercise.type === 'email' ? 'Email' : 'Essay';
             try {
               var res = await fetch('/api/writing', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text: essay, taskType: 'Essay', taskPrompt: question, examLevel: AppState.currentLevel || 'C1' })
+                body: JSON.stringify({ text: essay, taskType: taskType, taskPrompt: question, examLevel: AppState.currentLevel || 'C1' })
               });
               var data = await res.json();
               if (!data.error && data.corrected) {

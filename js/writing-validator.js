@@ -19,6 +19,14 @@
       return 'wv-red';
     },
 
+    /** Word-count colour for tasks with an explicit min/max (e.g. B1 email). */
+    getColorClassForRange: function(count, min, max) {
+      if (typeof min !== 'number') return this.getColorClass(count);
+      if (count < min) return 'wv-red';
+      if (typeof max === 'number' && count > max) return 'wv-orange';
+      return 'wv-green';
+    },
+
     getEstimatedScore: function(count) {
       if (count < 50) return '0-5';
       if (count < this.MIN_WORDS) return '5-12';
@@ -46,16 +54,39 @@
       update();
     },
 
-    validateBeforeSubmit: function(text, onProceed, onCancel) {
+    validateBeforeSubmit: function(text, onProceed, onCancel, options) {
+      var opts = options || {};
       var count = this.countWords(text);
+      var min = typeof opts.min === 'number' ? opts.min : this.MIN_WORDS;
+      var max = typeof opts.max === 'number' ? opts.max : null;
+      var inRange = count >= min && (max == null || count <= max);
 
-      if (count >= this.MIN_WORDS) {
+      if (inRange) {
         if (typeof onProceed === 'function') onProceed();
         return;
       }
 
       var estimated = this.getEstimatedScore(count);
       var self = this;
+      var title = 'Short response';
+      var mainP;
+      if (max != null && count > max) {
+        title = 'Long response';
+        mainP = 'Your response is <strong>' + count + ' words</strong>. For this task, aim for about <strong>' + min + '–' + max + ' words</strong>.';
+      } else if (max != null && count < min) {
+        mainP = 'Your response is <strong>' + count + ' words</strong>. The task asks for about <strong>' + min + '–' + max + ' words</strong>.';
+      } else {
+        mainP = 'Your response is <strong>' + count + ' words</strong>. The recommended length is <strong>' + self.IDEAL_MIN + '+ words</strong> for a good score (minimum accepted: ' + min + ').';
+      }
+
+      var extraNote = '';
+      if (count < 50 && max == null) {
+        extraNote = '<p class="wv-modal-note wv-red">This response may be too short to evaluate properly.</p>';
+      } else if (max == null && count < min) {
+        extraNote = '<p class="wv-modal-note">Estimated score at current length: <strong>' + estimated + ' pts</strong></p>';
+      } else if (max != null && count < min) {
+        extraNote = '<p class="wv-modal-note">Estimated score at current length: <strong>' + estimated + ' pts</strong></p>';
+      }
 
       // Create a simple inline confirmation dialog
       var overlay = document.createElement('div');
@@ -63,12 +94,9 @@
       overlay.innerHTML =
         '<div class="wv-modal-dialog">' +
           '<div class="wv-modal-icon">⚠️</div>' +
-          '<h4 class="wv-modal-title">Short Response</h4>' +
-          '<p>Your response is <strong>' + count + ' words</strong>. ' +
-          'The recommended length is <strong>' + self.IDEAL_MIN + '+ words</strong> for a good score (minimum accepted: ' + self.MIN_WORDS + ').</p>' +
-          (count < 50
-            ? '<p class="wv-modal-note wv-red">This response may be too short to evaluate properly.</p>'
-            : '<p class="wv-modal-note">Estimated score at current length: <strong>' + estimated + ' pts</strong></p>') +
+          '<h4 class="wv-modal-title">' + title + '</h4>' +
+          '<p>' + mainP + '</p>' +
+          extraNote +
           '<div class="wv-modal-actions">' +
             '<button class="wv-modal-btn wv-modal-btn-primary" id="wv-keep-writing">✏️ Keep writing</button>' +
             '<button class="wv-modal-btn wv-modal-btn-secondary" id="wv-submit-anyway">Submit anyway</button>' +

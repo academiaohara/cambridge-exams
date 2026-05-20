@@ -384,6 +384,102 @@
   line-height: 1.4;
 }
 
+/* B1 Preliminary Writing Part 1 — reply to email */
+.writing-type1-textarea-b1-email {
+  min-height: 280px;
+}
+
+.writing-b1-email-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  font-size: 0.9rem;
+  margin: 0.65rem 0 0.5rem 0;
+  padding: 0.65rem 1rem;
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  color: var(--text-dark);
+}
+
+.writing-b1-initial-mail {
+  margin: 0.75rem 0 0.25rem 0;
+  padding: 1rem 1.1rem;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  border-left: 4px solid #f59e0b;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-dark);
+}
+
+.writing-b1-email-para {
+  margin: 0.4rem 0;
+}
+
+.writing-b1-email-para:first-child {
+  margin-top: 0;
+}
+
+.writing-b1-email-para:last-child {
+  margin-bottom: 0;
+}
+
+.writing-b1-reply-slot {
+  background: linear-gradient(transparent 60%, rgba(245, 158, 11, 0.35) 60%);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+.writing-b1-slot-num {
+  display: inline-block;
+  font-weight: 700;
+  color: #b45309;
+  margin-right: 0.2rem;
+  font-size: 0.85em;
+}
+
+.writing-b1-notes-hint {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--text-dark);
+}
+
+.writing-b1-notes-checklist {
+  list-style: none;
+  margin: 0.5rem 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.writing-b1-notes-checklist li {
+  padding: 0.4rem 0.55rem;
+  background: var(--white);
+  border-left: 3px solid #22c55e;
+  border-radius: 4px;
+}
+
+.writing-b1-note-pill {
+  display: inline-block;
+  min-width: 1.4rem;
+  margin-right: 0.35rem;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: #16a34a;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .writing-type1-toolbar {
     flex-wrap: nowrap;

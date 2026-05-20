@@ -306,6 +306,7 @@
           break;
 
         case 'essay':
+        case 'email':
         case 'choice':
           document.querySelectorAll('.writing-textarea').forEach(t => t.disabled = true);
           break;
@@ -964,6 +965,7 @@
           break;
 
         case 'essay':
+        case 'email':
         case 'choice':
           document.querySelectorAll('.writing-textarea').forEach(t => {
             t.value = '';

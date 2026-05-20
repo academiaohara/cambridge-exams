@@ -74,6 +74,10 @@
         css: 'writing-type1.css',
         js: 'writing-type1.js'
       },
+      'email': {
+        css: 'writing-type1.css',
+        js: 'writing-type1.js'
+      },
       'choice': {
         css: 'writing-type2.css',
         js: 'writing-type2.js'
@@ -126,7 +130,9 @@
       listening1: { type: 'multiple-choice-text', inputMode: 'radio', total: 7, maxMarks: 7 },
       listening2: { type: 'multiple-choice-text', inputMode: 'radio', total: 6, maxMarks: 6 },
       listening3: { type: 'sentence-completion', inputMode: 'text', total: 6, maxMarks: 6 },
-      listening4: { type: 'multiple-choice-text', inputMode: 'radio', total: 6, maxMarks: 6 }
+      listening4: { type: 'multiple-choice-text', inputMode: 'radio', total: 6, maxMarks: 6 },
+      /** B1 Preliminary Writing Part 1: reply to an email (not C1-style essay). */
+      writing1: { type: 'email', inputMode: 'textarea', total: 20 }
     }
   };
 
