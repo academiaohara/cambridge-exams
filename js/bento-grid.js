@@ -2,7 +2,6 @@
 // Premium Bento Grid dashboard sections rendered above the exam list
 
 (function() {
-  var _levelSelectorPreviewIdx = 0;
   var _levelColors = {
     'C1': { bg: '#ffffff', label: '#104862', code: '#46B1E1' },
     'B1': { bg: '#fff3e0', label: '#bf360c', code: '#ff9800' },
@@ -1193,13 +1192,7 @@
     },
 
     _buildLevelSelectorSidebarHtml: function() {
-      var self = this;
       var currentLevel = AppState.currentLevel || 'C1';
-      var levels = [
-        { code: 'B1', icon: 'fas fa-book-reader', label: 'B1 Preliminary' },
-        { code: 'B2', icon: 'fas fa-graduation-cap', label: 'B2 First' },
-        { code: 'C1', icon: 'fas fa-award', label: 'C1 Advanced' }
-      ];
 
       // Level-specific badge colors
       var lc = _levelColors[currentLevel] || _levelColors['C1'];
@@ -1209,24 +1202,10 @@
       // "YOU ARE STUDYING" header + level badge
       var html = '<div class="sidebar-widget" style="background:transparent;box-shadow:none;border:none;padding:0;">' +
         '<div style="font-size:0.78rem;font-weight:700;color:#5a7a9a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;text-align:center;">' + 'You are studying' + '</div>' +
-        '<div class="sidebar-level-badge" data-level="' + currentLevel + '" onclick="BentoGrid.toggleLevelDropdown()" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid.toggleLevelDropdown()}" role="button" tabindex="0" aria-expanded="false" style="cursor:pointer;background:' + lc.bg + '">' +
+        '<div class="sidebar-level-badge" data-level="' + currentLevel + '" onclick="BentoGrid.openMobileLevelModal()" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid.openMobileLevelModal()}" role="button" tabindex="0" aria-haspopup="dialog" style="cursor:pointer;background:' + lc.bg + '">' +
           '<div class="sidebar-level-badge-label" style="color:' + lc.label + '">' + 'Level' + '</div>' +
           '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + currentLevel + '</div>' +
         '</div>';
-
-      // Level dropdown (hidden by default) — carousel style
-      html += '<div class="level-selector-options level-selector-collapsed" id="level-selector-options-panel">' +
-        '<div class="level-selector-changing-to">' + 'You are changing to:' + '</div>' +
-        '<div class="level-selector-carousel">' +
-          '<button class="level-selector-arrow" onclick="event.stopPropagation(); BentoGrid.navigateLevelSelector(-1)" aria-label="Previous level">' +
-            '<span class="material-symbols-outlined">chevron_left</span>' +
-          '</button>' +
-          '<div id="level-selector-carousel-badge"></div>' +
-          '<button class="level-selector-arrow" onclick="event.stopPropagation(); BentoGrid.navigateLevelSelector(1)" aria-label="Next level">' +
-            '<span class="material-symbols-outlined">chevron_right</span>' +
-          '</button>' +
-        '</div>' +
-      '</div>';
 
       // Widget: Next Exam in progress (moved from right sidebar)
       var nextLesson = BentoGrid._findNextLesson(exams);
@@ -1236,55 +1215,6 @@
 
       html += '</div>';
       return html;
-    },
-
-    toggleLevelDropdown: function() {
-      var options = document.getElementById('level-selector-options-panel') ||
-                    document.querySelector('.level-selector-options');
-      var badge = document.querySelector('.sidebar-level-badge');
-      if (!options) return;
-      var isCollapsed = options.classList.contains('level-selector-collapsed');
-      if (isCollapsed) {
-        options.classList.remove('level-selector-collapsed');
-        options.classList.add('level-selector-expanded');
-        if (badge) badge.setAttribute('aria-expanded', 'true');
-        // Initialize carousel at index 0
-        _levelSelectorPreviewIdx = 0;
-        this._updateCarouselBadge();
-      } else {
-        options.classList.add('level-selector-collapsed');
-        options.classList.remove('level-selector-expanded');
-        if (badge) badge.setAttribute('aria-expanded', 'false');
-      }
-    },
-
-    _getOtherLevels: function() {
-      var currentLevel = AppState.currentLevel || 'C1';
-      var levels = ['B1', 'B2', 'C1'];
-      return levels.filter(function(l) { return l !== currentLevel; });
-    },
-
-    _updateCarouselBadge: function() {
-      var badgeContainer = document.getElementById('level-selector-carousel-badge');
-      if (!badgeContainer) return;
-      var otherLevels = this._getOtherLevels();
-      if (!otherLevels.length) return;
-      if (_levelSelectorPreviewIdx < 0) _levelSelectorPreviewIdx = otherLevels.length - 1;
-      if (_levelSelectorPreviewIdx >= otherLevels.length) _levelSelectorPreviewIdx = 0;
-      var lvl = otherLevels[_levelSelectorPreviewIdx];
-      var lc = _levelColors[lvl] || _levelColors['C1'];
-      badgeContainer.innerHTML =
-        '<div class="sidebar-level-badge level-selector-preview-badge" data-level="' + lvl + '" ' +
-          'onclick="event.stopPropagation(); BentoGrid.changeLevel(\'' + lvl + '\')" ' +
-          'role="button" tabindex="0" style="cursor:pointer;background:' + lc.bg + '">' +
-          '<div class="sidebar-level-badge-label" style="color:' + lc.label + '">' + 'Level' + '</div>' +
-          '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + lvl + '</div>' +
-        '</div>';
-    },
-
-    navigateLevelSelector: function(dir) {
-      _levelSelectorPreviewIdx += dir;
-      this._updateCarouselBadge();
     },
 
     _toggleUnit: function(el) {
@@ -1312,13 +1242,6 @@
     },
 
     changeLevel: function(level) {
-      // Collapse the dropdown before changing level
-      var options = document.getElementById('level-selector-options-panel') ||
-                    document.querySelector('.level-selector-options');
-      if (options) {
-        options.classList.add('level-selector-collapsed');
-        options.classList.remove('level-selector-expanded');
-      }
       if (typeof filterByLevel === 'function') {
         filterByLevel(level);
       } else if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
