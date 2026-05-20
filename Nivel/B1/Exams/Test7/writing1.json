@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test7",
+    "examId":  "Test7",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a school trip",
-                 "prompt":  "You are planning a school trip. Write an email to your English-speaking friend.",
+                 "from":  "Harry",
+                 "subject":  "Mum’s birthday present",
+                 "initialEmail":  "Hi,||It’s Mum’s birthday next week, and I think we should buy her a present together. [1]Do you think flowers are a good idea?[/1]||[2]How much money can you spend?[/2] I don’t want the present to be too expensive.||[3]Where should we buy it?[/3] There are several shops in town.||[4]Can you come shopping with me on Thursday?[/4]||Let me know||Harry",
+                 "initialEmailWordCount":  65,
                  "notes":  [
-                               "explain where you are going",
-                               "say what you are planning to do",
-                               "ask your friend to join you"
+                               {
+                                   "id":  1,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Tell Harry"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Sorry ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Harry,||Thanks for your email. [1]I don’t think flowers are the best idea, but maybe we could buy Mum a new bag because she needs one for work.[/1]||[2]I can spend about fifteen pounds. I think that should be enough if we share the cost.[/2]||[3]We should buy the present in the shopping centre because there are lots of different shops there.[/3]||[4]I’m sorry, but I can’t come shopping on Thursday because I have a music lesson after school. Could we go on Friday instead?[/4]||See you later,||Olivia",
+                         "wordCount":  93
+                     }
 }

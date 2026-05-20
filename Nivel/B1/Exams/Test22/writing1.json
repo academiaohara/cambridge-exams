@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test22",
+    "examId":  "Test22",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a school trip",
-                 "prompt":  "You are planning a school trip. Write an email to your English-speaking friend.",
+                 "from":  "Callum",
+                 "subject":  "A present for Sam",
+                 "initialEmail":  "Hi,||Sam’s birthday is on Friday, and I want to buy him something nice. [1]Do you think a football shirt is a good present?[/1]||[2]How much money can you give?[/2] I don’t want to spend too much.||[3]Where should we go shopping?[/3]||[4]Can you come with me tomorrow afternoon?[/4]||Let me know||Callum",
+                 "initialEmailWordCount":  55,
                  "notes":  [
-                               "explain where you are going",
-                               "say what you are planning to do",
-                               "ask your friend to join you"
+                               {
+                                   "id":  1,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Tell Callum"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "No, because ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Callum,||Thanks for your message. [1]Yes, I think a football shirt is a good present because Sam loves football and he watches his team every weekend.[/1]||[2]I can give ten pounds. I know it isn’t a lot, but maybe it will be enough if you add some money too.[/2]||[3]We should go shopping in the sports shop near the station because it has lots of shirts and the prices are usually good.[/3]||[4]I’m sorry, but I can’t come tomorrow afternoon because I have extra maths after school.[/4]||See you soon,||Elliot",
+                         "wordCount":  95
+                     }
 }

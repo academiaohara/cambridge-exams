@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test8",
+    "examId":  "Test8",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a sports event",
-                 "prompt":  "You are planning a sports event. Write an email to your English-speaking friend.",
+                 "from":  "Noah",
+                 "subject":  "History project",
+                 "initialEmail":  "Hi,||We need to finish our history project before Monday. [1]Do you think we should write about castles?[/1]||[2]Can we work at your house this afternoon?[/2] My computer isn’t working at the moment.||[3]What pictures should we use?[/3] The teacher said the project must look interesting.||[4]Should we ask the teacher for more time?[/4]||Write back soon||Noah",
+                 "initialEmailWordCount":  59,
                  "notes":  [
-                               "say what event you are preparing for",
-                               "explain why you are excited",
-                               "ask for advice"
+                               {
+                                   "id":  1,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Sorry ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "No, because ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Noah,||Thanks for your message. [1]Yes, I think writing about castles is a good idea because there is a lot of information about them online.[/1]||[2]I’m sorry, but we can’t work at my house this afternoon because my cousins are visiting and it will be too noisy.[/2]||[3]We should use pictures of old castles, maps and maybe a drawing of how people lived inside them.[/3]||[4]No, I don’t think we should ask the teacher for more time because we can finish it tomorrow if we work hard.[/4]||See you soon,||Grace",
+                         "wordCount":  95
+                     }
 }

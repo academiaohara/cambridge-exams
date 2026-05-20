@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test16",
+    "examId":  "Test16",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a birthday party",
-                 "prompt":  "You are planning a birthday party. Write an email to your English-speaking friend.",
+                 "from":  "Jack",
+                 "subject":  "Helping with the school garden",
+                 "initialEmail":  "Hi,||Some students are helping to improve the school garden next week. [1]Would you like to help us?[/1]||[2]We’re starting at 8 a.m. on Saturday. Is that too early?[/2]||[3]What should we plant in the garden?[/3] The teachers want it to look colourful.||[4]Can you bring any tools from home?[/4]||Write back soon||Jack",
+                 "initialEmailWordCount":  56,
                  "notes":  [
-                               "invite your friend",
-                               "say where the party will be",
-                               "ask what food they would like"
+                               {
+                                   "id":  1,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Yes, because ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Say what"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Jack,||Thanks for telling me about the garden. [1]Yes, I’d like to help because I enjoy working outside and I think the school garden needs to look better.[/1]||[2]Yes, eight o’clock is too early for me because I usually have breakfast with my family on Saturday mornings. Could I come at nine?[/2]||[3]We should plant some bright flowers near the entrance because everyone will see them there.[/3]||[4]I can bring a small spade and some gardening gloves from home.[/4]||I can also bring some water.||See you on Saturday,||Ethan",
+                         "wordCount":  93
+                     }
 }

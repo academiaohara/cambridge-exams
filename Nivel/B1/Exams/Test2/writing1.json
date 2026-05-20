@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test2",
+    "examId":  "Test2",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a school trip",
-                 "prompt":  "You are planning a school trip. Write an email to your English-speaking friend.",
+                 "from":  "Mia",
+                 "subject":  "Your visit this weekend",
+                 "initialEmail":  "Hi,||I’m really happy that you’re coming to stay with me this weekend. [1]Are you still arriving on Friday evening?[/1]||[2]My brother wants to come with us when we go into town on Saturday. Is that OK?[/2]||[3]What would you like to do on Saturday afternoon?[/3] There’s a new café, a sports centre and a small museum near my house.||[4]Do you need me to meet you at the station?[/4]||Write soon||Mia",
+                 "initialEmailWordCount":  76,
                  "notes":  [
-                               "explain where you are going",
-                               "say what you are planning to do",
-                               "ask your friend to join you"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, because ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Choose ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Ask Mia ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Mia,||Thanks for your email. [1]Yes, I’m still arriving on Friday evening. My train gets to the station at about seven o’clock, so I should be at your house soon after that.[/1]||[2]I’m sorry, but I’d prefer your brother not to come with us because I haven’t seen you for ages and I’d like to spend some time just with you.[/2]||[3]On Saturday afternoon, I’d like to go to the new café. It sounds relaxing, and we can talk there.[/3]||[4]Could you meet me at the station, please? I don’t know the way to your house very well.[/4]||See you soon,||Lucy",
+                         "wordCount":  111
+                     }
 }

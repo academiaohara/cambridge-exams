@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test4",
+    "examId":  "Test4",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a weekend visit",
-                 "prompt":  "You are planning a weekend visit. Write an email to your English-speaking friend.",
+                 "from":  "Tom",
+                 "subject":  "Joining a sports club",
+                 "initialEmail":  "Hi,||I want to join a sports club this term, and I thought you might like to join one too. [1]Would you prefer basketball or swimming?[/1]||[2]The club meets twice a week. Is that too often for you?[/2]||[3]What day is best for you to go?[/3] I’m free on Mondays and Thursdays.||[4]Do you think we should ask Jack to join us?[/4]||Write back soon||Tom",
+                 "initialEmailWordCount":  67,
                  "notes":  [
-                               "say when your friend should come",
-                               "describe your plans",
-                               "ask what they want to do"
+                               {
+                                   "id":  1,
+                                   "text":  "Choose one"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, because ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Tell Tom"
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Yes, but ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Tom,||Thanks for your message. [1]I’d prefer swimming because I already play basketball at school, and I’d like to try something different this term.[/1]||[2]No, meeting twice a week isn’t too often for me because I want to get fitter and I usually have free time after school.[/2]||[3]Thursday is the best day for me because I visit my grandparents on Mondays.[/3]||[4]Yes, I think we should ask Jack to join us, but we should tell him soon because the club may become full.[/4]||See you later,||Chris",
+                         "wordCount":  92
+                     }
 }

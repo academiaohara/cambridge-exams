@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test18",
+    "examId":  "Test18",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a sports event",
-                 "prompt":  "You are planning a sports event. Write an email to your English-speaking friend.",
+                 "from":  "Oscar",
+                 "subject":  "The class website",
+                 "initialEmail":  "Hi,||Our teacher wants us to create a simple website for our class. [1]Do you think we should include photos of school trips?[/1]||[2]Can you write a short introduction for the home page?[/2]||[3]What colour should the website be?[/3]||[4]Should we ask the teacher before we put students’ photos online?[/4]||Write soon||Oscar",
+                 "initialEmailWordCount":  53,
                  "notes":  [
-                               "say what event you are preparing for",
-                               "explain why you are excited",
-                               "ask for advice"
+                               {
+                                   "id":  1,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Sorry ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Choose ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Say yes"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Oscar,||Thanks for your email. [1]Yes, I think we should include photos of school trips because they will make the website more interesting.[/1]||[2]I’m sorry, but I can’t write the introduction today because I have a lot of homework. I can do it tomorrow evening.[/2]||[3]I think the website should be blue because it looks calm and it is our school colour.[/3]||[4]Yes, we should definitely ask the teacher before putting students’ photos online because it is important to be careful.[/4]||I can help with photos too.||See you soon,||Eva",
+                         "wordCount":  94
+                     }
 }

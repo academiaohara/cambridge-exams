@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test11",
+    "examId":  "Test11",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a birthday party",
-                 "prompt":  "You are planning a birthday party. Write an email to your English-speaking friend.",
+                 "from":  "Daniel",
+                 "subject":  "Planning our video project",
+                 "initialEmail":  "Hi,||We need to make a short video for our English class next week. [1]Do you think we should make it about healthy food?[/1]||[2]Can we film it at your house on Saturday?[/2] My house is too small and noisy.||[3]Who should act in the video?[/3] We need at least three people.||[4]Should we add music at the end?[/4]||Write back soon||Daniel",
+                 "initialEmailWordCount":  63,
                  "notes":  [
-                               "invite your friend",
-                               "say where the party will be",
-                               "ask what food they would like"
+                               {
+                                   "id":  1,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Sorry ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Give your opinion"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Daniel,||Thanks for your email. [1]I don’t think healthy food is the best topic, but maybe we could make the video about school sports because it would be easier to film.[/1]||[2]I’m sorry, but we can’t film at my house on Saturday because my grandparents are visiting and it will be too busy.[/2]||[3]I think you, me and Sara should act in the video. Sara is confident and she speaks clearly.[/3]||[4]In my opinion, we should add music at the end because it will make the video more interesting.[/4]||See you soon,||Mark",
+                         "wordCount":  97
+                     }
 }

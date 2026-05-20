@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test3",
+    "examId":  "Test3",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a sports event",
-                 "prompt":  "You are planning a sports event. Write an email to your English-speaking friend.",
+                 "from":  "Ben",
+                 "subject":  "End-of-term party",
+                 "initialEmail":  "Hi,||Our class is planning an end-of-term party next Friday. [1]Do you think we should have it in the school hall?[/1]||[2]Can you bring some food for everyone?[/2] We already have drinks, but we need snacks.||[3]What music should we play at the party?[/3] I know you like choosing songs.||[4]Would you like to help me decorate the room after school?[/4]||Let me know||Ben",
+                 "initialEmailWordCount":  67,
                  "notes":  [
-                               "say what event you are preparing for",
-                               "explain why you are excited",
-                               "ask for advice"
+                               {
+                                   "id":  1,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Say what"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Sorry ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Ben,||Thanks for writing. [1]I think having the party in the school hall is a great idea because it’s big enough for everyone and we won’t disturb other classes.[/1]||[2]I can bring some sandwiches and a chocolate cake. My mum said she can help me make them on Thursday evening.[/2]||[3]For the music, we should play some pop songs because most people in our class like them. I can make a playlist.[/3]||[4]I’m sorry, but I can’t help decorate the room after school because I have a dentist appointment.[/4]||See you tomorrow,||Anna",
+                         "wordCount":  98
+                     }
 }

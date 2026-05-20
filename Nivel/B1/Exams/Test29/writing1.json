@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test29",
+    "examId":  "Test29",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a weekend visit",
-                 "prompt":  "You are planning a weekend visit. Write an email to your English-speaking friend.",
+                 "from":  "Poppy",
+                 "subject":  "Practising English",
+                 "initialEmail":  "Hi,||I want to improve my English speaking before the exam. [1]Would you like to practise with me?[/1]||[2]Can we practise every day this week?[/2]||[3]Where should we meet?[/3] It needs to be somewhere quiet.||[4]What topics should we talk about?[/4]||Thanks||Poppy",
+                 "initialEmailWordCount":  43,
                  "notes":  [
-                               "say when your friend should come",
-                               "describe your plans",
-                               "ask what they want to do"
+                               {
+                                   "id":  1,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Tell Poppy"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Poppy,||Thanks for your email. [1]Yes, I’d like to practise with you because I need to improve my speaking too.[/1]||[2]I can’t practise every day this week, but I’m free on Tuesday, Thursday and Saturday afternoon.[/2]||[3]We should meet in the library study room because it is quiet and we can use our notes there.[/3]||[4]We could talk about hobbies, holidays, school and future plans, because those topics often come up in exams.[/4]||I think this will really help us both.||Good luck with your revision,||Holly",
+                         "wordCount":  91
+                     }
 }

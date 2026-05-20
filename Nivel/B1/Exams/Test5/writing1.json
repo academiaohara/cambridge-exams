@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test5",
+    "examId":  "Test5",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a music concert",
-                 "prompt":  "You are planning a music concert. Write an email to your English-speaking friend.",
+                 "from":  "Ella",
+                 "subject":  "My library book",
+                 "initialEmail":  "Hi,||I think I left my library book at your house yesterday. [1]Have you seen it anywhere?[/1]||[2]Could you bring it to school tomorrow if you find it?[/2] I need to return it before Friday.||[3]What was the homework for English?[/3] I forgot to write it down.||[4]Do you want to study together after school tomorrow?[/4]||Thanks||Ella",
+                 "initialEmailWordCount":  58,
                  "notes":  [
-                               "say who you are going with",
-                               "explain why you want to go",
-                               "ask your friend if they are interested"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Tell Ella"
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "No, because ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Ella,||Thanks for your email. [1]Yes, I’ve seen your library book. You left it on the table in my bedroom after we finished our project yesterday.[/1]||[2]I’ll bring it to school tomorrow morning, so don’t worry. I’ll put it in my bag tonight so I don’t forget it.[/2]||[3]The English homework is to read chapter five and answer the questions on page thirty-two.[/3]||[4]I’m sorry, but I can’t study after school tomorrow because I have to help my dad at home.[/4]||See you tomorrow,||Max",
+                         "wordCount":  94
+                     }
 }

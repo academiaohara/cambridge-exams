@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test10",
+    "examId":  "Test10",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a music concert",
-                 "prompt":  "You are planning a music concert. Write an email to your English-speaking friend.",
+                 "from":  "Ruby",
+                 "subject":  "Trip to the museum",
+                 "initialEmail":  "Hi,||Our class is going to the museum next Tuesday. [1]Are you excited about the trip?[/1]||[2]The teacher says we have to bring lunch. What are you going to take?[/2]||[3]Would you like to sit next to me on the coach?[/3] It will take about an hour to get there.||[4]Do you want to do the worksheet together at the museum?[/4]||See you tomorrow||Ruby",
+                 "initialEmailWordCount":  65,
                  "notes":  [
-                               "say who you are going with",
-                               "explain why you want to go",
-                               "ask your friend if they are interested"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Tell Ruby"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "No, because ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Ruby,||Thanks for writing. [1]Yes, I’m really excited about the trip because I like museums and we don’t often have lessons outside school.[/1]||[2]I’m going to take some sandwiches, an apple and a bottle of water for lunch.[/2]||[3]Yes, I’d like to sit next to you on the coach. We can listen to music or talk during the journey.[/3]||[4]I’m sorry, but I don’t think we should do the worksheet together because the teacher said everyone must write their own answers.[/4]||See you tomorrow,||Leo",
+                         "wordCount":  92
+                     }
 }

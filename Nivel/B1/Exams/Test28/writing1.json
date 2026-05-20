@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test28",
+    "examId":  "Test28",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a sports event",
-                 "prompt":  "You are planning a sports event. Write an email to your English-speaking friend.",
+                 "from":  "Dylan",
+                 "subject":  "The history museum",
+                 "initialEmail":  "Hi,||I want to visit the history museum this weekend because there’s a new exhibition. [1]Would you like to come with me?[/1]||[2]The tickets cost six pounds. Is that too expensive?[/2]||[3]How should we get there?[/3]||[4]Do you want to have lunch in town afterwards?[/4]||Write back soon||Dylan",
+                 "initialEmailWordCount":  50,
                  "notes":  [
-                               "say what event you are preparing for",
-                               "explain why you are excited",
-                               "ask for advice"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, because ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Agree"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Dylan,||Thanks for your message. [1]Yes, I’d like to come with you because I enjoy history and the new exhibition sounds interesting.[/1]||[2]No, six pounds isn’t too expensive because the museum is usually very good and we can spend a long time there.[/2]||[3]We should get there by bus because it stops near the museum and it will be cheaper than taking a taxi.[/3]||[4]I agree that we should have lunch in town afterwards. There’s a nice café near the square.[/4]||We can decide the exact time later.||See you soon,||Noah",
+                         "wordCount":  96
+                     }
 }

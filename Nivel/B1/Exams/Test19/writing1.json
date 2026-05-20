@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test19",
+    "examId":  "Test19",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a weekend visit",
-                 "prompt":  "You are planning a weekend visit. Write an email to your English-speaking friend.",
+                 "from":  "Tara",
+                 "subject":  "Choosing a book",
+                 "initialEmail":  "Hi,||We need to choose a book for our reading club. [1]Do you want to read a mystery story?[/1]||[2]The book has 250 pages. Is that too long?[/2]||[3]Where should we meet to talk about it?[/3]||[4]Should everyone read the whole book before the meeting?[/4]||Let me know||Tara",
+                 "initialEmailWordCount":  49,
                  "notes":  [
-                               "say when your friend should come",
-                               "describe your plans",
-                               "ask what they want to do"
+                               {
+                                   "id":  1,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, because ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Give your opinion"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Tara,||Thanks for your message. [1]I don’t really want to read a mystery story, but maybe we could choose a funny book instead because it would be more enjoyable.[/1]||[2]No, I don’t think 250 pages is too long because we have three weeks before the next meeting.[/2]||[3]We should meet in the library because it is quiet and there are big tables where we can sit together.[/3]||[4]In my opinion, everyone should read the whole book before the meeting, or the discussion won’t be very useful.[/4]||See you soon,||Beth",
+                         "wordCount":  94
+                     }
 }

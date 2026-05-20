@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test17",
+    "examId":  "Test17",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a school trip",
-                 "prompt":  "You are planning a school trip. Write an email to your English-speaking friend.",
+                 "from":  "Hannah",
+                 "subject":  "A new student",
+                 "initialEmail":  "Hi,||A new student is joining our class tomorrow, and our teacher asked us to help her. [1]Can you show her around the school with me?[/1]||[2]Should we invite her to sit with us at lunch?[/2]||[3]What clubs should we tell her about?[/3] She likes sport and music.||[4]Do you think we should give her a map of the school?[/4]||See you tomorrow||Hannah",
+                 "initialEmailWordCount":  64,
                  "notes":  [
-                               "explain where you are going",
-                               "say what you are planning to do",
-                               "ask your friend to join you"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "No, because ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Hannah,||Thanks for your message. [1]Yes, I can show her around the school with you tomorrow morning. I know where most of the classrooms are.[/1]||[2]I agree that we should invite her to sit with us at lunch because she may feel nervous on her first day.[/2]||[3]We should tell her about the football club and the music club because they match her interests.[/3]||[4]I don’t think we need to give her a map because we can show her the important places ourselves.[/4]||She will probably feel much better.||See you tomorrow,||Amy",
+                         "wordCount":  95
+                     }
 }

@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test38",
+    "examId":  "Test38",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a sports event",
-                 "prompt":  "You are planning a sports event. Write an email to your English-speaking friend.",
+                 "from":  "Lily",
+                 "subject":  "Choosing a birthday cake",
+                 "initialEmail":  "Hi,||I’m organising choosing a birthday cake soon. [1]Do you think we should choose chocolate instead of fruit?[/1]||[2]Can you help me on Friday afternoon?[/2] I need to finish everything before the weekend.||[3]Where should we meet?[/3]||[4]Do you think we should invite more people?[/4]||Write soon||Lily",
+                 "initialEmailWordCount":  49,
                  "notes":  [
-                               "say what event you are preparing for",
-                               "explain why you are excited",
-                               "ask for advice"
+                               {
+                                   "id":  1,
+                                   "text":  "Agree or disagree"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Sorry / Yes"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Give opinion"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Lily,||Thanks for your email. [1]I think we should choose chocolate because it sounds more interesting and I think more students will enjoy it.[/1]||[2]I’m sorry, but I can’t help you on Friday afternoon because I have an important family dinner. However, I can help on Saturday morning if you want.[/2]||[3]We should meet in the town library because it is quiet and there is plenty of space for everyone to work comfortably together.[/3]||[4]In my opinion, we should invite a few more people because it will make the activity more fun and everyone can help with the work too.[/4]||See you soon,||Sam",
+                         "wordCount":  107
+                     }
 }

@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test1",
+    "examId":  "Test1",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a birthday party",
-                 "prompt":  "You are planning a birthday party. Write an email to your English-speaking friend.",
+                 "from":  "Alex",
+                 "subject":  "College science presentation",
+                 "initialEmail":  "Hi,||It’s great that we’re going to work together on the college science presentation. [1]Do you think we should choose the rainforest as our topic?[/1]||[2]We only have two weeks to prepare, so can we start tomorrow?[/2]||[3]Where can we go to prepare the presentation?[/3] My cousins are staying at my house at the moment, so we can’t work there because it’s too noisy.||[4]We can give our presentation to the class either in the morning or the afternoon. Which would you prefer?[/4]||Let me know||Alex",
+                 "initialEmailWordCount":  91,
                  "notes":  [
-                               "invite your friend",
-                               "say where the party will be",
-                               "ask what food they would like"
+                               {
+                                   "id":  1,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Sorry ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Tell Alex ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Alex,||Thanks for your email. [1]I don’t think the rainforest is the best topic, but maybe we could do the presentation about climate change instead because there’s more information online.[/1]||[2]I’m sorry, but I can’t start tomorrow because I have football practice after college. Could we meet on Wednesday afternoon instead?[/2]||[3]I think we should prepare the presentation at the library because it’s quiet there and we can use the computers too.[/3]||[4]I’d prefer to give the presentation in the morning because I’m usually less nervous earlier in the day.[/4]||See you soon,||Sam",
+                         "wordCount":  102
+                     }
 }

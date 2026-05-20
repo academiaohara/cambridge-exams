@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test47",
+    "examId":  "Test47",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a school trip",
-                 "prompt":  "You are planning a school trip. Write an email to your English-speaking friend.",
+                 "from":  "Lucas",
+                 "subject":  "The town festival",
+                 "initialEmail":  "Hi,||I’m planning the town festival soon. [1]Do you think we should choose Saturday instead of Friday?[/1]||[2]Can you help me this weekend?[/2] I need to organise everything before next week.||[3]Where should we meet to discuss the plans?[/3]||[4]Do you think we should invite more people to help us?[/4]||Write soon||Lucas",
+                 "initialEmailWordCount":  54,
                  "notes":  [
-                               "explain where you are going",
-                               "say what you are planning to do",
-                               "ask your friend to join you"
+                               {
+                                   "id":  1,
+                                   "text":  "Agree or disagree"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Yes / Sorry"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Give opinion"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Lucas,||Thanks for your email. [1]I think we should choose Saturday because it sounds more exciting and I believe more students will be interested in it.[/1]||[2]Yes, I can help you this weekend because I don’t have many plans and I’d like to help organise everything properly.[/2]||[3]We should meet in the school library because it is quiet and there are tables where we can work comfortably together.[/3]||[4]In my opinion, we should invite a few more people because it will make the work easier and everyone can share ideas.[/4]||See you soon,||Chris",
+                         "wordCount":  97
+                     }
 }

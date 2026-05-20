@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test27",
+    "examId":  "Test27",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a school trip",
-                 "prompt":  "You are planning a school trip. Write an email to your English-speaking friend.",
+                 "from":  "Emily",
+                 "subject":  "Our cooking plan",
+                 "initialEmail":  "Hi,||My parents said we can cook dinner for everyone on Friday. [1]Do you think pasta is a good idea?[/1]||[2]Can you come to my house at four o’clock?[/2] We need time to prepare everything.||[3]What dessert should we make?[/3]||[4]Should we ask my sister to help us?[/4]||Write soon||Emily",
+                 "initialEmailWordCount":  52,
                  "notes":  [
-                               "explain where you are going",
-                               "say what you are planning to do",
-                               "ask your friend to join you"
+                               {
+                                   "id":  1,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Give your opinion"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Emily,||Thanks for your email. [1]Yes, I think pasta is a good idea because it is easy to make and most people like it.[/1]||[2]I can’t come at four o’clock, but I can arrive at half past four after my piano lesson.[/2]||[3]For dessert, we could make fruit salad because it is simple and healthy. We could serve it with ice cream too.[/3]||[4]In my opinion, we should ask your sister to help us because she is good at cooking and we will finish faster.[/4]||See you Friday,||Mia",
+                         "wordCount":  92
+                     }
 }

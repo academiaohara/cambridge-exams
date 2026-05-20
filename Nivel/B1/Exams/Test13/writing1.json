@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test13",
+    "examId":  "Test13",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a sports event",
-                 "prompt":  "You are planning a sports event. Write an email to your English-speaking friend.",
+                 "from":  "Freya",
+                 "subject":  "A picnic on Sunday",
+                 "initialEmail":  "Hi,||The weather should be good on Sunday, so I’m planning a picnic in the park. [1]Would you like to come?[/1]||[2]Can you bring something to eat?[/2] I’m going to bring drinks and fruit.||[3]Where in the park should we meet?[/3] It’s quite big.||[4]Do you think we should invite our classmates too?[/4]||Write soon||Freya",
+                 "initialEmailWordCount":  59,
                  "notes":  [
-                               "say what event you are preparing for",
-                               "explain why you are excited",
-                               "ask for advice"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Tell Freya"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "No, because ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Freya,||Thanks for your email. [1]Yes, I’d love to come to the picnic because I haven’t been to the park for ages.[/1]||[2]I can bring some sandwiches and biscuits. I’ll make enough for several people, so don’t worry about food.[/2]||[3]I think we should meet near the lake because it is easy to find and there is lots of space to sit.[/3]||[4]I don’t think we should invite all our classmates because the picnic might become too difficult to organise.[/4]||See you on Sunday,||Molly",
+                         "wordCount":  91
+                     }
 }

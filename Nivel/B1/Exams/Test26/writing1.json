@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test26",
+    "examId":  "Test26",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a birthday party",
-                 "prompt":  "You are planning a birthday party. Write an email to your English-speaking friend.",
+                 "from":  "Adam",
+                 "subject":  "Saturday football",
+                 "initialEmail":  "Hi,||Some of us are playing football in the park on Saturday morning. [1]Would you like to join us?[/1]||[2]Can you bring an extra ball?[/2] We only have one at the moment.||[3]What time should we start?[/3]||[4]Do you think we should invite some students from another class?[/4]||Let me know||Adam",
+                 "initialEmailWordCount":  52,
                  "notes":  [
-                               "invite your friend",
-                               "say where the party will be",
-                               "ask what food they would like"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Sorry ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "No, because ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Adam,||Thanks for inviting me. [1]Yes, I’d like to join you because I haven’t played football for a few weeks and it sounds fun.[/1]||[2]I’m sorry, but I can’t bring an extra ball because mine is broken. Maybe someone else has one.[/2]||[3]I suggest starting at ten o’clock because it won’t be too early, but we’ll still have most of the morning to play.[/3]||[4]I don’t think we should invite students from another class because there may be too many people.[/4]||See you on Saturday,||Luke",
+                         "wordCount":  95
+                     }
 }

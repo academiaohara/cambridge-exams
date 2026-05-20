@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test6",
+    "examId":  "Test6",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a birthday party",
-                 "prompt":  "You are planning a birthday party. Write an email to your English-speaking friend.",
+                 "from":  "Sophie",
+                 "subject":  "Cinema on Saturday",
+                 "initialEmail":  "Hi,||There’s a new adventure film at the cinema this Saturday. [1]Would you like to come with me?[/1]||[2]The film starts at 8 p.m. Is that too late for you?[/2]||[3]How should we get there?[/3] My parents can’t drive us because they’re busy.||[4]Do you want to invite anyone else?[/4]||Write soon||Sophie",
+                 "initialEmailWordCount":  57,
                  "notes":  [
-                               "invite your friend",
-                               "say where the party will be",
-                               "ask what food they would like"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Tell Sophie ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Sophie,||Thanks for inviting me. [1]Yes, I’d love to come with you on Saturday because the film sounds really exciting.[/1]||[2]No, eight o’clock isn’t too late for me, but I’ll need to ask my parents if they can pick me up afterwards.[/2]||[3]I think we should get there by bus. There’s one that stops near the cinema, and it isn’t expensive.[/3]||[4]Let’s invite Daniel too because he likes adventure films and he is always fun to be with.[/4]||See you soon,||Emma",
+                         "wordCount":  90
+                     }
 }

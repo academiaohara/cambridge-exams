@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test24",
+    "examId":  "Test24",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a weekend visit",
-                 "prompt":  "You are planning a weekend visit. Write an email to your English-speaking friend.",
+                 "from":  "Nathan",
+                 "subject":  "Looking after my dog",
+                 "initialEmail":  "Hi,||My family is going away for one night next weekend. [1]Could you look after my dog on Saturday?[/1]||[2]He needs a walk in the evening. Is that OK?[/2]||[3]What time should I bring him to your house?[/3]||[4]Would you like me to pay you?[/4]||Thanks||Nathan",
+                 "initialEmailWordCount":  47,
                  "notes":  [
-                               "say when your friend should come",
-                               "describe your plans",
-                               "ask what they want to do"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Tell Nathan"
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "No, because ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Nathan,||Thanks for asking me. [1]Yes, I can look after your dog on Saturday. I like him, and my parents said it is fine.[/1]||[2]I’m sorry, but I can’t walk him in the evening because I’m going to my cousin’s party. I can walk him in the afternoon instead.[/2]||[3]You should bring him to my house at about eleven o’clock, because I’ll be at home then.[/3]||[4]No, you don’t need to pay me because we are friends and it will be fun.[/4]||See you soon,||Ben",
+                         "wordCount":  94
+                     }
 }

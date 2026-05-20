@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test14",
+    "examId":  "Test14",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a weekend visit",
-                 "prompt":  "You are planning a weekend visit. Write an email to your English-speaking friend.",
+                 "from":  "Owen",
+                 "subject":  "Our music homework",
+                 "initialEmail":  "Hi,||We have to prepare a short talk about a famous musician for homework. [1]Do you think we should choose Ed Sheeran?[/1]||[2]Can we work on it after school today?[/2] I don’t want to leave it until the weekend.||[3]Where can we find good information?[/3]||[4]Would you like to present the first part?[/4]||Let me know||Owen",
+                 "initialEmailWordCount":  58,
                  "notes":  [
-                               "say when your friend should come",
-                               "describe your plans",
-                               "ask what they want to do"
+                               {
+                                   "id":  1,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Sorry ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Agree"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Owen,||Thanks for your message. [1]I don’t think we should choose Ed Sheeran, but maybe we could choose Adele because her life and music are very interesting.[/1]||[2]I’m sorry, but I can’t work on it after school today because I have basketball practice. Could we meet tomorrow?[/2]||[3]We can find good information on the library computers and on music websites. We should also watch an interview.[/3]||[4]Yes, I’d be happy to present the first part because I don’t mind speaking first.[/4]||See you soon,||Liam",
+                         "wordCount":  91
+                     }
 }

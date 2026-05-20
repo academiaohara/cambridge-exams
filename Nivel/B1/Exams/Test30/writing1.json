@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test30",
+    "examId":  "Test30",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a music concert",
-                 "prompt":  "You are planning a music concert. Write an email to your English-speaking friend.",
+                 "from":  "Zoe",
+                 "subject":  "A class photo",
+                 "initialEmail":  "Hi,||Our teacher wants to take a class photo for the school website. [1]Do you think Friday morning is a good time?[/1]||[2]Can you remind everyone to wear the school uniform?[/2]||[3]Where should we take the photo?[/3]||[4]Should we ask the teacher if students can see the photo before it goes online?[/4]||See you tomorrow||Zoe",
+                 "initialEmailWordCount":  56,
                  "notes":  [
-                               "say who you are going with",
-                               "explain why you want to go",
-                               "ask your friend if they are interested"
+                               {
+                                   "id":  1,
+                                   "text":  "No, because ..."
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Say yes"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Zoe,||Thanks for writing. [1]I don’t think Friday morning is a good time because some students have a sports lesson and may be late.[/1]||[2]Yes, I can remind everyone to wear the school uniform. I’ll send a message to our class group tonight.[/2]||[3]We should take the photo in the garden because the light is better outside and the background looks nicer.[/3]||[4]Yes, we should ask the teacher if students can see the photo first, because some people may not like it.[/4]||I can help organise everyone quickly.||See you tomorrow,||Finn",
+                         "wordCount":  95
+                     }
 }

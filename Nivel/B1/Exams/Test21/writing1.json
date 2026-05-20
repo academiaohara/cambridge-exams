@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test21",
+    "examId":  "Test21",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a birthday party",
-                 "prompt":  "You are planning a birthday party. Write an email to your English-speaking friend.",
+                 "from":  "Megan",
+                 "subject":  "Our geography homework",
+                 "initialEmail":  "Hi,||We have to make a poster for geography about a European city. [1]Do you think we should choose Paris?[/1]||[2]Can we meet at the library after school today?[/2] I need to use the computers there.||[3]What information should we put on the poster?[/3]||[4]Should we draw the pictures ourselves?[/4]||Write soon||Megan",
+                 "initialEmailWordCount":  53,
                  "notes":  [
-                               "invite your friend",
-                               "say where the party will be",
-                               "ask what food they would like"
+                               {
+                                   "id":  1,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Sorry ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Give your opinion"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Megan,||Thanks for your email. [1]I don’t think Paris is the best choice, but maybe we could choose Barcelona because it has interesting buildings and beaches.[/1]||[2]I’m sorry, but I can’t meet at the library today because I have to go to the dentist after school.[/2]||[3]We should include information about the weather, famous places and transport, because those things will make the poster useful.[/3]||[4]In my opinion, we should draw some pictures ourselves, but we can also print a small map from the internet.[/4]||See you tomorrow,||Josh",
+                         "wordCount":  93
+                     }
 }

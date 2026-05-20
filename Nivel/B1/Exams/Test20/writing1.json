@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test20",
+    "examId":  "Test20",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a music concert",
-                 "prompt":  "You are planning a music concert. Write an email to your English-speaking friend.",
+                 "from":  "Lucas",
+                 "subject":  "A weekend bike ride",
+                 "initialEmail":  "Hi,||I’m planning a bike ride on Sunday morning. [1]Would you like to come with me?[/1]||[2]Can we start at 7 a.m.?[/2] It gets busy on the roads later.||[3]Where should we cycle?[/3] I don’t want to go anywhere dangerous.||[4]Do you think we should take food with us?[/4]||Write back soon||Lucas",
+                 "initialEmailWordCount":  56,
                  "notes":  [
-                               "say who you are going with",
-                               "explain why you want to go",
-                               "ask your friend if they are interested"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Agree"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Lucas,||Thanks for inviting me. [1]Yes, I’d like to come on the bike ride because I need some exercise and Sunday morning is free for me.[/1]||[2]Seven o’clock is too early, but we could start at eight instead and still avoid most of the traffic.[/2]||[3]I suggest cycling along the river path because there aren’t many cars and the views are nice.[/3]||[4]I agree that we should take some food with us. We could stop for a picnic halfway.[/4]||I’ll bring my helmet too.||See you then,||Dan",
+                         "wordCount":  93
+                     }
 }

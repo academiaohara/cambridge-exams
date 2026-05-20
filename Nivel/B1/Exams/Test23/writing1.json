@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test23",
+    "examId":  "Test23",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a sports event",
-                 "prompt":  "You are planning a sports event. Write an email to your English-speaking friend.",
+                 "from":  "Amelia",
+                 "subject":  "The school talent show",
+                 "initialEmail":  "Hi,||The school talent show is next month, and I’m thinking of taking part. [1]Do you think I should sing or play the piano?[/1]||[2]Would you like to perform with me?[/2] It might be less scary together.||[3]When should we practise?[/3]||[4]Can you help me choose a song?[/4]||Thanks||Amelia",
+                 "initialEmailWordCount":  51,
                  "notes":  [
-                               "say what event you are preparing for",
-                               "explain why you are excited",
-                               "ask for advice"
+                               {
+                                   "id":  1,
+                                   "text":  "Choose one"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Agree"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Amelia,||Thanks for writing. [1]I think you should play the piano because you practise a lot and you sound really good when you play.[/1]||[2]Yes, I’d like to perform with you. I’m nervous too, but it will be more fun if we do it together.[/2]||[3]We could practise on Tuesday and Thursday after school in the music room, if the teacher says it is free.[/3]||[4]I agree that I can help you choose a song. We should pick something cheerful and not too difficult.[/4]||See you tomorrow,||Kate",
+                         "wordCount":  91
+                     }
 }

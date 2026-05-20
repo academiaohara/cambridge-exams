@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test15",
+    "examId":  "Test15",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a music concert",
-                 "prompt":  "You are planning a music concert. Write an email to your English-speaking friend.",
+                 "from":  "Isla",
+                 "subject":  "Borrowing your camera",
+                 "initialEmail":  "Hi,||I’m going to my cousin’s birthday party this weekend, and I want to take some good photos. [1]Could I borrow your camera?[/1]||[2]I can give it back on Monday. Is that OK?[/2]||[3]Do you have any advice about taking photos indoors?[/3] The party will be in a restaurant.||[4]Would you like to come to the party too?[/4]||Thanks||Isla",
+                 "initialEmailWordCount":  62,
                  "notes":  [
-                               "say who you are going with",
-                               "explain why you want to go",
-                               "ask your friend if they are interested"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Give advice"
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Sorry ..."
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Isla,||Thanks for your email. [1]Yes, you can borrow my camera for the party. I’ll bring it to school on Friday.[/1]||[2]Monday isn’t a good day to give it back because I need it for an art project, but Sunday evening would be fine.[/2]||[3]My advice is to stand near the lights and not too far from the people you are photographing.[/3]||[4]I’m sorry, but I can’t come to the party because I’m visiting my uncle this weekend.[/4]||I hope she enjoys it.||Have a great time,||Nina",
+                         "wordCount":  94
+                     }
 }

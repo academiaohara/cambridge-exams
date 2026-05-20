@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test25",
+    "examId":  "Test25",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a music concert",
-                 "prompt":  "You are planning a music concert. Write an email to your English-speaking friend.",
+                 "from":  "Grace",
+                 "subject":  "Art homework",
+                 "initialEmail":  "Hi,||We have to draw a picture of an important place for art homework. [1]Do you think I should draw the old bridge?[/1]||[2]Can I borrow your coloured pencils?[/2] Mine are nearly finished.||[3]Where can we sit and draw after school?[/3]||[4]Should we show our drawings to the teacher before Friday?[/4]||Write back soon||Grace",
+                 "initialEmailWordCount":  55,
                  "notes":  [
-                               "say who you are going with",
-                               "explain why you want to go",
-                               "ask your friend if they are interested"
+                               {
+                                   "id":  1,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Say yes"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Grace,||Thanks for your email. [1]I don’t think the old bridge is very interesting, but you could draw the town square because there are lots of people and buildings there.[/1]||[2]Yes, you can borrow my coloured pencils. I’ll bring them to school tomorrow and you can keep them for a few days.[/2]||[3]We could sit and draw in the park after school because there is a good view of the square from there.[/3]||[4]Yes, we should show our drawings to the teacher before Friday, so we can improve them if necessary.[/4]||See you tomorrow,||Sofia",
+                         "wordCount":  98
+                     }
 }

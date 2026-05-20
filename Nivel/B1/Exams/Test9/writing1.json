@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test9",
+    "examId":  "Test9",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a weekend visit",
-                 "prompt":  "You are planning a weekend visit. Write an email to your English-speaking friend.",
+                 "from":  "Lily",
+                 "subject":  "New café",
+                 "initialEmail":  "Hi,||A new café has opened near the park, and I’d like to try it this weekend. [1]Do you want to come with me?[/1]||[2]Would Saturday morning be a good time?[/2] I have to visit my aunt in the afternoon.||[3]What should we do after the café?[/3] The weather should be nice.||[4]Do you think we should invite Maria too?[/4]||Write soon||Lily",
+                 "initialEmailWordCount":  64,
                  "notes":  [
-                               "say when your friend should come",
-                               "describe your plans",
-                               "ask what they want to do"
+                               {
+                                   "id":  1,
+                                   "text":  "Say yes"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, but ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Agree"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Lily,||Thanks for your email. [1]Yes, I’d like to come with you because I’ve heard the new café sells really good cakes.[/1]||[2]Saturday morning isn’t a good time for me because I have football training, but I’m free at lunchtime.[/2]||[3]After the café, we could walk in the park or take some photos if the weather is sunny.[/3]||[4]I agree that we should invite Maria too. She lives near the park, so it will be easy for her to meet us there.[/4]||See you soon,||Jake",
+                         "wordCount":  91
+                     }
 }
