@@ -91,10 +91,20 @@
      */
     renderInlineGap: function(question, qNum, isChecked, userAnswer) {
       var options = question.options || ['A', 'B', 'C', 'D'];
-      var label = gapTriggerLabel(qNum, userAnswer, question);
+      var b1r5 = isB1ReadingPart5();
+      var ua = userAnswer;
+      var viewCorrect =
+        typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
+      var showAnswerKey = isChecked && b1r5 && viewCorrect;
+      var label;
+      if (showAnswerKey) {
+        var keyWord = wordFromQuestionOption(question, question.correct) || question.correct;
+        label = '(' + qNum + ') ' + keyWord;
+      } else {
+        label = gapTriggerLabel(qNum, userAnswer, question);
+      }
       var triggerDisabled = isChecked ? ' disabled' : '';
       var choicesHtml = '';
-      var b1r5 = isB1ReadingPart5();
       options.forEach(function(opt) {
         var letter = parseMcTextOption(opt).letter;
         var picked = userAnswer === letter;
@@ -118,18 +128,34 @@
       var trigCls = 'reading-type5-gap-trigger';
       if (isChecked) {
         trigCls += ' disabled';
-        var ua = userAnswer;
-        if (ua === question.correct) trigCls += ' correct';
-        else if (ua) trigCls += ' incorrect';
-        else trigCls += ' unanswered-checked';
+        if (b1r5) {
+          if (showAnswerKey) {
+            trigCls += ' reading-type5-gap-trigger-show-correct';
+          } else if (ua === question.correct) {
+            trigCls += ' correct';
+          } else {
+            trigCls += ' incorrect';
+          }
+        } else if (ua === question.correct) {
+          trigCls += ' correct';
+        } else if (ua) {
+          trigCls += ' incorrect';
+        } else {
+          trigCls += ' unanswered-checked';
+        }
       } else if (userAnswer) {
         trigCls += ' filled';
       }
       var onTrig = isChecked
         ? ''
         : ' onclick="event.stopPropagation(); ReadingType5.toggleGapPopover(event, ' + qNum + ')"';
+      var wrapTooltip = '';
+      if (isChecked && b1r5 && !showAnswerKey && ua !== question.correct) {
+        var tipWord = wordFromQuestionOption(question, question.correct) || question.correct;
+        wrapTooltip = ' data-correct="' + escapeHtml('\u2713 ' + tipWord) + '"';
+      }
       return (
-        '<span class="reading-type5-gap-wrap" data-qnum="' + qNum + '">' +
+        '<span class="reading-type5-gap-wrap" data-qnum="' + qNum + '"' + wrapTooltip + '>' +
         '<button type="button" class="' + trigCls + '" aria-haspopup="listbox" aria-expanded="false"' +
         triggerDisabled + onTrig + '>' + escapeHtml(label) + '</button>' +
         '<span class="reading-type5-gap-panel" role="listbox" aria-label="Question ' + qNum + '">' +
@@ -206,12 +232,20 @@
       let html = '';
       const options = question.options || ['A', 'B', 'C', 'D'];
       const b1r5 = isB1ReadingPart5();
+      const viewKey =
+        isChecked && b1r5 && typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
       options.forEach(function(opt, idx) {
         const letter = parseMcTextOption(opt).letter;
         const checked = userAnswer === letter ? 'checked' : '';
-        const labelClass = isChecked
-          ? (letter === question.correct ? 'correct' : (userAnswer === letter ? 'incorrect' : ''))
-          : '';
+        let labelClass = '';
+        if (isChecked) {
+          if (viewKey) {
+            if (letter === question.correct) labelClass = 'reading-type5-option-key';
+          } else {
+            labelClass =
+              letter === question.correct ? 'correct' : userAnswer === letter ? 'incorrect' : '';
+          }
+        }
         const inner = b1r5 ? optionInnerHtmlNumbered(opt) : '<span>' + escapeHtml(opt) + '</span>';
 
         html += `
@@ -290,6 +324,32 @@
           }
         }
       }
+      var b1r5 = isB1ReadingPart5();
+      if (checked && b1r5 && question) {
+        var viewCorrect = typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
+        if (viewCorrect) {
+          var keyWord = wordFromQuestionOption(question, question.correct) || question.correct;
+          btn.textContent = '(' + qNum + ') ' + keyWord;
+          btn.classList.remove('correct', 'incorrect', 'unanswered-checked', 'filled');
+          btn.classList.add('reading-type5-gap-trigger-show-correct');
+          wrap.removeAttribute('data-correct');
+        } else {
+          btn.textContent = gapTriggerLabel(qNum, letter, question);
+          btn.classList.remove('reading-type5-gap-trigger-show-correct', 'filled');
+          if (letter === question.correct) {
+            btn.classList.add('correct');
+            btn.classList.remove('incorrect');
+            wrap.removeAttribute('data-correct');
+          } else {
+            btn.classList.add('incorrect');
+            btn.classList.remove('correct');
+            var tipW = wordFromQuestionOption(question, question.correct) || question.correct;
+            wrap.setAttribute('data-correct', '\u2713 ' + tipW);
+          }
+        }
+        return;
+      }
+
       btn.textContent = gapTriggerLabel(qNum, letter, question);
       if (checked) return;
       if (letter) {
@@ -358,10 +418,30 @@
           var trig = wrap.querySelector('.reading-type5-gap-trigger');
           if (trig) {
             trig.disabled = true;
-            trig.classList.remove('correct', 'incorrect', 'unanswered-checked', 'filled');
-            if (userAnswer === q.correct) trig.classList.add('correct');
-            else if (userAnswer) trig.classList.add('incorrect');
-            else trig.classList.add('unanswered-checked');
+            trig.classList.remove(
+              'correct',
+              'incorrect',
+              'unanswered-checked',
+              'filled',
+              'reading-type5-gap-trigger-show-correct'
+            );
+            var b1r5 = isB1ReadingPart5();
+            if (b1r5) {
+              wrap.removeAttribute('data-correct');
+              if (userAnswer === q.correct) {
+                trig.classList.add('correct');
+              } else {
+                trig.classList.add('incorrect');
+                var tipW = wordFromQuestionOption(q, q.correct) || q.correct;
+                wrap.setAttribute('data-correct', '\u2713 ' + tipW);
+              }
+            } else if (userAnswer === q.correct) {
+              trig.classList.add('correct');
+            } else if (userAnswer) {
+              trig.classList.add('incorrect');
+            } else {
+              trig.classList.add('unanswered-checked');
+            }
             trig.textContent = gapTriggerLabel(q.number, userAnswer || '', q);
           }
           wrap.querySelectorAll('.reading-type5-gap-choice').forEach(function(btn) {
@@ -375,6 +455,34 @@
       });
 
       return correct;
+    },
+
+    /**
+     * B1 Reading Part 5: footer toggle swaps passage gaps and Questions tab between
+     * the student's marked answers and the key "(n) word" in purple.
+     */
+    setAnswerMode: function(mode) {
+      if (!AppState.currentExercise || !AppState.answersChecked) return;
+      if (!isB1ReadingPart5()) return;
+      var qs = AppState.currentExercise.content.questions || [];
+      qs.forEach(function(q) {
+        if (!q || q.number === 0) return;
+        var wrap = document.querySelector('.reading-type5-gap-wrap[data-qnum="' + q.number + '"]');
+        if (!wrap) return;
+        var ua = (AppState.currentExercise.answers && AppState.currentExercise.answers[q.number]) || '';
+        wrap.outerHTML = ReadingType5.renderInlineGap(q, q.number, true, ua);
+      });
+      var tqs = document.getElementById('toggle-questions-section');
+      if (tqs && typeof ExerciseRenderer !== 'undefined' &&
+        typeof ExerciseRenderer.renderToggleQuestions === 'function') {
+        var pc = typeof CONFIG !== 'undefined' && CONFIG.getPartConfig
+          ? CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart)
+          : null;
+        if (pc && pc.type === 'multiple-choice-text') {
+          tqs.innerHTML = ExerciseRenderer.renderToggleQuestions(AppState.currentExercise, pc);
+        }
+      }
+      ReadingType5.syncAllFromAppState();
     }
   };
 })();

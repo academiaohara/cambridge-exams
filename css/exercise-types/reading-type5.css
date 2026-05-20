@@ -280,6 +280,17 @@
   border-color: var(--incorrect);
 }
 
+/* B1 Reading Part 5 — Questions row: highlight key option when showing correct answers */
+.reading-type5-option.reading-type5-option-key {
+  background: #f3e8ff;
+  border-color: #7c3aed;
+  color: #5b21b6;
+}
+
+.reading-type5-option.reading-type5-option-key .reading-type5-opt-word {
+  color: #5b21b6;
+}
+
 .reading-type5-option.disabled {
   cursor: not-allowed;
   opacity: 0.85;
@@ -339,6 +350,42 @@
   background: #fef3c7;
   border-color: #f59e0b;
   border-style: solid;
+}
+
+/* Hover label: correct word for wrong or unanswered gaps (B1 Reading Part 5) */
+.reading-type5-gap-wrap[data-correct] {
+  position: relative;
+}
+
+.reading-type5-gap-wrap[data-correct]::after {
+  content: attr(data-correct);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  background: #1a3a5c;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  display: none;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.reading-type5-gap-wrap[data-correct]:hover::after {
+  display: block;
+}
+
+/* "Show correct answers" mode: gap number + key word */
+.reading-type5-gap-trigger.reading-type5-gap-trigger-show-correct {
+  background: #f3e8ff;
+  border-color: #7c3aed;
+  color: #5b21b6;
+  border-style: solid;
+  font-weight: 700;
 }
 
 .reading-type5-gap-panel {
