@@ -1301,14 +1301,17 @@
       var actualPart = AppState.currentPart || part;
       var isB1Reading5AnswerToggle =
         AppState.currentLevel === 'B1' && isReading && actualPart === 5;
+      var isB1Reading6AnswerToggle =
+        AppState.currentLevel === 'B1' && isReading && actualPart === 6;
       var supportsAnswerToggle =
         ((isReading && actualPart >= 1 && actualPart <= 4) ||
           isB1Reading5AnswerToggle ||
+          isB1Reading6AnswerToggle ||
           (isListening && actualPart === 2)) &&
         !(AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle);
       var answerToggleLabel = AppState.answerViewMode === 'correct'
         ? 'Show your answer'
-        : (isB1Reading5AnswerToggle ? 'Show correct answers' : 'Show correct answer');
+        : (isB1Reading5AnswerToggle || isB1Reading6AnswerToggle ? 'Show correct answers' : 'Show correct answer');
       var answerToggleIcon = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
       let footer = '';
 
@@ -1330,18 +1333,18 @@
         `;
 
         // Reading and listening: show explanations only after answers have been checked
-        // Reading part 4: never show (broken); reading parts 5–8 (except B1 part 5): header Explanation mode
-        // B1 Reading Part 5: footer "Show explanations" like parts 1–2
+        // Reading part 4: never show (broken); reading parts 5–8 (except B1 parts 5–6): header Explanation mode
+        // B1 Reading Parts 5–6: footer "Show explanations" like parts 1–2
         // Listening: explanation button is in toggle-view-header
         // all other sections: always show in practice mode
         // Reading parts 1–2: footer "Show explanations" (part 4 excluded; B1 part 3 and other 5–8 use header Explanation;
         // B1 Preliminary Reading Part 2 uses header only).
-        var isB1Reading5FooterExplanations =
-          AppState.currentLevel === 'B1' && isReading && actualPart === 5;
+        var isB1Reading5Or6FooterExplanations =
+          AppState.currentLevel === 'B1' && isReading && (actualPart === 5 || actualPart === 6);
         if ((isReading && actualPart > 0 && actualPart < 4 &&
             !(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) &&
             !(AppState.currentLevel === 'B1' && actualPart === 3)) ||
-            isB1Reading5FooterExplanations) {
+            isB1Reading5Or6FooterExplanations) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
             <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span>

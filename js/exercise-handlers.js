@@ -102,7 +102,7 @@
         if (explBtn) explBtn.style.display = '';
       }
 
-      // Reveal the footer "Show explanations" button when present (B1 Reading 3 uses the header Explanation control; B1 Reading 2 PET uses the header only; B1 Reading 5 uses this footer control).
+      // Reveal the footer "Show explanations" button when present (B1 Reading 3 uses the header Explanation control; B1 Reading 2 PET uses the header only; B1 Reading 5–6 use this footer control).
       const footerExplBtn = document.querySelector('.btn-explanations');
       if (footerExplBtn) footerExplBtn.style.display = '';
       this.syncAnswerToggleButton();
@@ -158,9 +158,10 @@
       if (AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle) return false;
       if (AppState.currentSection === 'reading') {
         var in14 = AppState.currentPart >= 1 && AppState.currentPart <= 4;
-        var b1r5 =
-          AppState.currentLevel === 'B1' && AppState.currentPart === 5;
-        return in14 || b1r5;
+        var b1r5or6 =
+          AppState.currentLevel === 'B1' &&
+          (AppState.currentPart === 5 || AppState.currentPart === 6);
+        return in14 || b1r5or6;
       }
       return AppState.currentSection === 'listening' && AppState.currentPart === 2;
     },
@@ -173,11 +174,12 @@
         return;
       }
       btn.style.display = '';
-      const isB1Reading5Toggle =
-        AppState.currentLevel === 'B1' && AppState.currentSection === 'reading' && AppState.currentPart === 5;
+      const isB1Reading5Or6Toggle =
+        AppState.currentLevel === 'B1' && AppState.currentSection === 'reading' &&
+        (AppState.currentPart === 5 || AppState.currentPart === 6);
       const label = AppState.answerViewMode === 'correct'
         ? 'Show your answer'
-        : (isB1Reading5Toggle ? 'Show correct answers' : 'Show correct answer');
+        : (isB1Reading5Or6Toggle ? 'Show correct answers' : 'Show correct answer');
       const iconName = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
       const labelSpan = btn.querySelector('.btn-toggle-answer-label');
       const iconSpan = btn.querySelector('.btn-toggle-answer-icon');
