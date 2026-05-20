@@ -70,8 +70,8 @@
     },
 
     /**
-     * Ideal model answer (B1 email): strip [n]…[/n] markers, underline the inner text,
-     * and expose the matching handwritten note in a native tooltip (title).
+     * Ideal model answer (B1 email): strip [n]…[/n] markers, style the inner text,
+     * and show the matching handwritten note in a styled hover/focus tooltip (not title).
      */
     _formatB1IdealModelAnswerHtml: function(raw, notes) {
       var self = this;
@@ -102,8 +102,26 @@
         out += escapeAndBr(raw.slice(last, m.index));
         var nid = m[1];
         var noteBody = Object.prototype.hasOwnProperty.call(noteMap, nid) ? noteMap[nid] : '';
-        var titleStr = noteBody ? ('Note ' + nid + ': ' + noteBody) : ('Note ' + nid);
-        out += '<span class="writing-b1-ideal-note-ref" title="' + escapeAttr(titleStr) + '">' + escapeAndBr(m[2]) + '</span>';
+        var ariaLabel = noteBody ? ('Note ' + nid + ': ' + noteBody) : ('Note ' + nid);
+        var tipBody = noteBody
+          ? '<span class="writing-b1-ideal-note-ref__tip-body">' +
+            self._escapeHtml(noteBody).replace(/\r\n/g, '\n').replace(/\n/g, '<br>') +
+            '</span>'
+          : '';
+        out +=
+          '<span class="writing-b1-ideal-note-ref" tabindex="0" aria-label="' +
+          escapeAttr(ariaLabel) +
+          '">' +
+          '<span class="writing-b1-ideal-note-ref__seg">' +
+          escapeAndBr(m[2]) +
+          '</span>' +
+          '<span class="writing-b1-ideal-note-ref__tip" role="tooltip">' +
+          '<span class="writing-b1-ideal-note-ref__tip-kicker">Note ' +
+          self._escapeHtml(nid) +
+          '</span>' +
+          tipBody +
+          '</span>' +
+          '</span>';
         last = m.index + m[0].length;
       }
       out += escapeAndBr(raw.slice(last));
