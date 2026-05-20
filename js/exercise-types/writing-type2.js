@@ -5,6 +5,91 @@
   window.WritingType2 = {
     selectedTaskId: null,
 
+    /** Escape text for safe HTML insertion. */
+    _escapeHtml: function(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    },
+
+    /** Escape for double-quoted HTML attributes. */
+    _escapeAttr: function(s) {
+      return this._escapeHtml(s).replace(/'/g, '&#39;');
+    },
+
+    /**
+     * B1 Preliminary JSON uses "||" between lines in prompts and model answers.
+     * @returns {string}
+     */
+    _promptToPlainLines: function(raw) {
+      return String(raw == null ? '' : raw).replace(/\|\|/g, '\n');
+    },
+
+    /** Prompt / model answer body: normalize delimiters, escape, then line breaks for display. */
+    _formatPromptBodyHtml: function(raw) {
+      var text = this._promptToPlainLines(raw);
+      return this._escapeHtml(text).replace(/\n/g, '<br>');
+    },
+
+    /** Short plain preview (first ~len chars) for task cards. */
+    _previewSnippet: function(raw, len) {
+      var plain = this._promptToPlainLines(raw).replace(/\s+/g, ' ').trim();
+      var cap = typeof len === 'number' ? len : 100;
+      if (plain.length <= cap) return this._escapeHtml(plain);
+      return this._escapeHtml(plain.substring(0, cap)) + '…';
+    },
+
+    /**
+     * Parse a suggested word range from the exercise description (B1 "about 100 words",
+     * B2 "140-190 words", C1 "220-260 words", etc.).
+     * @returns {{ min: number, max: number }|null}
+     */
+    _parseWordRangeFromDescription: function(exercise) {
+      var desc = exercise && exercise.description != null ? String(exercise.description) : '';
+      var m = desc.match(/(\d+)\s*[-–]\s*(\d+)\s+words/i);
+      if (m) {
+        var a = parseInt(m[1], 10);
+        var b = parseInt(m[2], 10);
+        if (!isNaN(a) && !isNaN(b) && b >= a) return { min: a, max: b };
+      }
+      m = desc.match(/about\s+(\d+)\s+words/i);
+      if (m) {
+        var n = parseInt(m[1], 10);
+        if (!isNaN(n)) {
+          return { min: Math.max(35, Math.floor(n * 0.75)), max: Math.ceil(n * 1.2) };
+        }
+      }
+      return null;
+    },
+
+    _getActiveWordRange: function() {
+      var ex = typeof AppState !== 'undefined' ? AppState.currentExercise : null;
+      var r = this._parseWordRangeFromDescription(ex);
+      if (r) return r;
+      if (ex && ex.level === 'B1' && parseInt(ex.part, 10) === 2) {
+        return { min: 80, max: 120 };
+      }
+      return null;
+    },
+
+    _normalizePromptForApi: function(raw) {
+      return this._promptToPlainLines(raw);
+    },
+
+    _placeholderText: function() {
+      var range = this._getActiveWordRange();
+      var isB1 = typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
+      if (isB1 || range) return 'Write your answer...';
+      return 'Write your essay...';
+    },
+
+    _emptyAnswerMsg: function() {
+      var isB1 = typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
+      return isB1 ? 'Write your answer' : 'Write your essay';
+    },
+
     initListeners: function() {
       const exercise = AppState.currentExercise;
       if (!exercise) return;
@@ -12,24 +97,36 @@
       const container = document.getElementById('selectable-text');
       if (!container) return;
 
-      const tasks = exercise.content.tasks || [];
+      const tasks = (exercise.content && exercise.content.tasks) || [];
+      const range = this._getActiveWordRange();
+      const rangeHint = range
+        ? '<p class="writing-type2-range-hint">Your answer should be about <strong>' +
+          range.min + '–' + range.max + ' words</strong>.</p>'
+        : '';
 
-      let tasksHTML = tasks.map(task => `
-        <div class="writing-type2-task-option" data-task-id="${task.id}"
-             onclick="WritingType2.selectTask('${task.id}')">
+      let tasksHTML = tasks.map(task => {
+        const escType = WritingType2._escapeHtml(task.type);
+        const escTitle = WritingType2._escapeHtml(task.title);
+        const escId = WritingType2._escapeAttr(task.id);
+        const preview = WritingType2._previewSnippet(task.prompt, 100);
+        const fullHtml = WritingType2._formatPromptBodyHtml(task.prompt);
+        return `
+        <div class="writing-type2-task-option" data-task-id="${escId}" role="button" tabindex="0">
           <div class="writing-type2-task-header">
-            <span class="writing-type2-task-badge">${task.type}</span>
-            <span class="writing-type2-task-title">${task.title}</span>
+            <span class="writing-type2-task-badge">${escType}</span>
+            <span class="writing-type2-task-title">${escTitle}</span>
           </div>
-          <p class="writing-type2-task-preview">${task.prompt.substring(0, 100)}${task.prompt.length > 100 ? '…' : ''}</p>
-          <div class="writing-type2-task-full-prompt" style="display:none;">${task.prompt}</div>
+          <p class="writing-type2-task-preview">${preview}</p>
+          <div class="writing-type2-task-full-prompt writing-type2-task-full-prompt--formatted" style="display:none;">${fullHtml}</div>
         </div>
-      `).join('');
+      `;
+      }).join('');
 
       const html = `
         <div class="writing-type2-wrapper">
           <div class="writing-type2-select-section">
             <h3><i class="fas fa-tasks"></i> Select a task</h3>
+            ${rangeHint}
             <div class="writing-type2-tasks-list">
               ${tasksHTML}
             </div>
@@ -37,7 +134,7 @@
           <div class="writing-type2-writing-section" id="writing-type2-writing-area" style="display:none;">
             <textarea class="writing-type2-textarea writing-textarea"
                       lang="en" spellcheck="true"
-                      placeholder="Write your essay..."
+                      placeholder="${WritingType2._escapeAttr(WritingType2._placeholderText())}"
                       oninput="WritingType2.handleInput(this.value)"></textarea>
             <div class="writing-corrected-text" id="writing-type2-corrected" style="display:none;"></div>
             <div class="writing-type2-toolbar">
@@ -65,6 +162,16 @@
       wrapper.className = 'writing-type2-container';
       wrapper.innerHTML = html;
       container.insertBefore(wrapper, noteCreator);
+
+      const tasksList = wrapper.querySelector('.writing-type2-tasks-list');
+      if (tasksList) {
+        tasksList.addEventListener('click', function(ev) {
+          const opt = ev.target.closest('.writing-type2-task-option');
+          if (!opt || !tasksList.contains(opt)) return;
+          const id = opt.getAttribute('data-task-id');
+          if (id) WritingType2.selectTask(id);
+        });
+      }
 
       const checkBtn = document.querySelector('.btn-check');
       const explBtn = document.querySelector('.btn-explanations');
@@ -149,7 +256,11 @@
       if (el) {
         el.textContent = count;
         if (typeof WritingValidator !== 'undefined') {
-          el.className = 'wv-counter-number ' + WritingValidator.getColorClass(count);
+          const range = this._getActiveWordRange();
+          const cls = range && typeof WritingValidator.getColorClassForRange === 'function'
+            ? WritingValidator.getColorClassForRange(count, range.min, range.max)
+            : WritingValidator.getColorClass(count);
+          el.className = 'wv-counter-number ' + cls;
         }
       }
     },
@@ -172,7 +283,7 @@
     copyToClipboard: function() {
       const essay = AppState.currentExercise.answers?.[this.selectedTaskId] || '';
       if (!essay.trim()) {
-        this._showMsg('Write your essay');
+        this._showMsg(this._emptyAnswerMsg());
         return;
       }
       navigator.clipboard.writeText(essay).then(() => {
@@ -243,15 +354,17 @@
 
       const essay = AppState.currentExercise.answers?.[this.selectedTaskId] || '';
       if (!essay.trim()) {
-        this._showMsg('Write your essay');
+        this._showMsg(this._emptyAnswerMsg());
         return;
       }
 
       // Pre-submit word count validation
       if (typeof WritingValidator !== 'undefined') {
+        const range = this._getActiveWordRange();
+        const opts = range ? { min: range.min, max: range.max } : {};
         WritingValidator.validateBeforeSubmit(essay, () => {
           this._doEvaluate(essay);
-        }, null);
+        }, null, opts);
         return;
       }
 
@@ -273,7 +386,7 @@
       const tasks = AppState.currentExercise.content.tasks || [];
       const task = tasks.find(t => t.id === this.selectedTaskId);
       const taskType = task?.type || '';
-      const taskPrompt = task?.prompt || '';
+      const taskPrompt = this._normalizePromptForApi(task?.prompt || '');
 
       this.sendWriting(essay, taskType, taskPrompt)
         .then(text => {
@@ -370,7 +483,7 @@
       tabs.forEach((tab, i) => {
         const isIdeal = tab.id === 'ideal';
         const contentHtml = isIdeal
-          ? '<div class="writing-model-answer">' + tab.content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>') + '</div>'
+          ? '<div class="writing-model-answer">' + this._formatPromptBodyHtml(tab.content) + '</div>'
           : '<div class="writing-ai-feedback">' + this._formatSectionContent(tab.content) + '</div>';
         html += `<div class="writing-feedback-tab-panel${i === 0 ? ' active' : ''}" id="panel-${prefix}-${tab.id}">
           ${contentHtml}
