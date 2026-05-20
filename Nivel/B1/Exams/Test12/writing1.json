@@ -1,26 +1,42 @@
 {
-    "title":  "Writing - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
+    "id":  "B1-writing-part1-test12",
+    "examId":  "Test12",
+    "section":  "writing",
     "part":  1,
-    "type":  "email-writing",
-    "wordRange":  "100-120",
-    "instructions":  "Write an email to your English-speaking friend.",
+    "type":  "email",
+    "level":  "B1",
+    "time":  20,
+    "wordRange":  {
+                      "min":  90,
+                      "max":  120
+                  },
+    "instructions":  "Write your email using all the notes.",
     "task":  {
-                 "topic":  "a school trip",
-                 "prompt":  "You are planning a school trip. Write an email to your English-speaking friend.",
+                 "from":  "Chloe",
+                 "subject":  "The school magazine",
+                 "initialEmail":  "Hi,||I’m helping with the next school magazine, and I’d like you to write something for it. [1]Would you like to write a review of a film?[/1]||[2]Can you send it to me by Friday?[/2] The magazine has to be ready soon.||[3]What photos should we put with your article?[/3]||[4]Do you want your name to appear under the article?[/4]||Thanks||Chloe",
+                 "initialEmailWordCount":  64,
                  "notes":  [
-                               "explain where you are going",
-                               "say what you are planning to do",
-                               "ask your friend to join you"
+                               {
+                                   "id":  1,
+                                   "text":  "Agree"
+                               },
+                               {
+                                   "id":  2,
+                                   "text":  "No, because ..."
+                               },
+                               {
+                                   "id":  3,
+                                   "text":  "Suggest ..."
+                               },
+                               {
+                                   "id":  4,
+                                   "text":  "Say yes"
+                               }
                            ]
              },
-    "assessmentCriteria":  [
-                               "Content",
-                               "Communicative Achievement",
-                               "Organisation",
-                               "Language"
-                           ],
-    "sampleOpening":  "Hi Alex,",
-    "sampleClosing":  "See you soon,"
+    "sampleAnswer":  {
+                         "text":  "Hi Chloe,||Thanks for asking me. [1]Yes, I’d like to write a review of a film because I watched a really good adventure film last weekend.[/1]||[2]I’m sorry, but I can’t send it by Friday because I have two tests this week. I can send it on Sunday evening instead.[/2]||[3]We could put a picture of the cinema and maybe a photo of the film poster with the article.[/3]||[4]Yes, I’d like my name to appear under it because I’m proud of my writing.[/4]||See you tomorrow,||Ryan",
+                         "wordCount":  93
+                     }
 }
