@@ -340,6 +340,15 @@
   border-radius: 8px;
 }
 
+/* B1 email ideal answer: segment ↔ handwritten note (tooltip via title) */
+.writing-b1-ideal-note-ref {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-color: #d97706;
+  cursor: help;
+}
+
 /* Notes box (proposals/ideas) */
 .writing-type1-notes {
   display: flex;
