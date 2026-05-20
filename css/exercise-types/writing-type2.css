@@ -79,6 +79,21 @@
   white-space: pre-line;
 }
 
+.writing-type2-task-full-prompt--formatted {
+  white-space: normal;
+}
+
+.writing-type2-range-hint {
+  margin: -0.25rem 0 1rem 0;
+  font-size: 0.875rem;
+  color: var(--text-medium);
+  line-height: 1.45;
+}
+
+.writing-type2-range-hint strong {
+  color: var(--text-dark);
+}
+
 .writing-type2-writing-section {
   display: flex;
   flex-direction: column;
