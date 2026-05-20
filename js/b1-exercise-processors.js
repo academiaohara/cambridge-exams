@@ -461,8 +461,22 @@
       }
     });
     var header = subject ? 'Subject: ' + subject + '\n\n' : '';
+    var fullText = header + email;
+    // Same layout pipeline as B2/C1 Reading Part 2 (open cloze): `||` splits
+    // `renderParagraphs` into separate <p> blocks. Plain newlines in PET emails
+    // otherwise collapse into one paragraph and lose structure in the UI.
+    var paraChunks = fullText.split(/\n\n+/).map(function(chunk) {
+      return String(chunk == null ? '' : chunk)
+        .replace(/\r\n/g, '\n')
+        .replace(/\n/g, ' ')
+        .replace(/[ \t]{2,}/g, ' ')
+        .trim();
+    }).filter(function(s) { return s.length > 0; });
+    if (!paraChunks.length) {
+      paraChunks.push(fullText.replace(/\r\n/g, '\n').replace(/\n/g, ' ').trim());
+    }
     ex.content = {
-      text: header + email,
+      text: paraChunks.join('||'),
       questions: answersList.map(function(a) {
         return {
           number: a.number,
