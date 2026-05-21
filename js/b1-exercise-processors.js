@@ -513,9 +513,20 @@
         q.extractId = q.number;
       }
     });
-    ex.content = {
-      questions: qs
-    };
+    var base = { questions: qs };
+    if (ex.audio_script != null && String(ex.audio_script).trim() !== '' && base.audio_script == null) {
+      base.audio_script = ex.audio_script;
+    }
+    if (ex.audio_source != null && String(ex.audio_source).trim() !== '' && base.audio_source == null) {
+      base.audio_source = ex.audio_source;
+    }
+    if (ex.context != null && String(ex.context).trim() !== '' && base.context == null) {
+      base.context = ex.context;
+    }
+    if (Array.isArray(ex.dialogue) && ex.dialogue.length && !base.dialogue) {
+      base.dialogue = ex.dialogue;
+    }
+    ex.content = base;
     mergeDescription(ex);
   }
 

@@ -839,6 +839,9 @@
         if (exercise.content.extracts.some(function(e) { return !!e.audio_script; })) return true;
       }
       if (exercise.content.audio_script) return true;
+      if (Array.isArray(exercise.content.dialogue) && exercise.content.dialogue.length > 0) {
+        return true;
+      }
       var qs = exercise.content.questions || [];
       return qs.some(function(q) { return q && q.audio_script; });
     },
@@ -860,6 +863,14 @@
         return withMarkers.replace(/(\|\||\n)/g, '<br>');
       };
 
+      if (exercise.content.context && String(exercise.content.context).trim() !== '') {
+        html += '<div class="listening-transcript-context" role="note">';
+        html += '<span class="listening-transcript-context-label">Context</span>';
+        html += '<p class="listening-transcript-context-text">' +
+          escapeHtml(String(exercise.content.context).trim()).replace(/\n/g, '<br>') + '</p>';
+        html += '</div>';
+      }
+
       if (exercise.content.extracts && exercise.content.extracts.length > 0) {
         exercise.content.extracts.forEach(function(extract) {
           if (!extract.audio_script) return;
@@ -875,8 +886,40 @@
         var parts = exercise.content.audio_script.split('||');
         parts.forEach(function(part, idx) {
           if (part.trim() === '') return;
-          html += '<div class="transcript-extract" data-speaker-index="' + (idx + 1) + '">';
+          var trimmed = part.trim();
+          var turnExtra = ' transcript-extract-interview';
+          if (/^Interviewer\s*:/i.test(trimmed)) {
+            turnExtra += ' transcript-turn-interviewer';
+          } else if (/^Guest\s*:/i.test(trimmed)) {
+            turnExtra += ' transcript-turn-guest';
+          }
+          html += '<div class="transcript-extract' + turnExtra + '" data-speaker-index="' + (idx + 1) + '">';
           html += '<div class="transcript-text">' + processScript(part) + '</div>';
+          html += '</div>';
+        });
+      } else if (Array.isArray(exercise.content.dialogue) && exercise.content.dialogue.length > 0) {
+        exercise.content.dialogue.forEach(function(turn, idx) {
+          if (!turn || typeof turn !== 'object') return;
+          var sp = String(turn.speaker || '').toLowerCase().trim();
+          var turnClass = 'transcript-extract transcript-extract-interview';
+          var label = 'Speaker';
+          if (sp === 'interviewer') {
+            turnClass += ' transcript-turn-interviewer';
+            label = 'Interviewer';
+          } else if (sp === 'guest') {
+            turnClass += ' transcript-turn-guest';
+            label = 'Guest';
+          } else if (turn.speaker) {
+            label = String(turn.speaker).trim();
+            turnClass += ' transcript-turn-other';
+          } else {
+            turnClass += ' transcript-turn-other';
+          }
+          var bodyRaw = String(turn.text == null ? '' : turn.text);
+          var body = self.processEvidenceMarkers(escapeHtml(bodyRaw)).replace(/\n/g, '<br>');
+          html += '<div class="' + turnClass + '" data-dialogue-index="' + (idx + 1) + '">';
+          html += '<div class="transcript-speaker-label">' + escapeHtml(label) + '</div>';
+          html += '<div class="transcript-text">' + body + '</div>';
           html += '</div>';
         });
       } else {

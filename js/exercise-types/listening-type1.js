@@ -11,6 +11,10 @@
       .replace(/>/g, '&gt;');
   }
 
+  function nlToBrEscaped(str) {
+    return escapeAttr(String(str == null ? '' : str)).replace(/\r\n/g, '\n').replace(/\n/g, '<br>');
+  }
+
   function optionLabelHtml(text) {
     return '<span>' + escapeAttr(text) + '</span>';
   }
@@ -244,7 +248,11 @@
 
         const isChecked = AppState.answersChecked;
         const extracts = exercise.content.extracts || [];
-        var audioSource = exercise.audio_source || exercise.audioUrl || '';
+        var audioSource =
+          exercise.audio_source ||
+          exercise.audioUrl ||
+          (exercise.content && exercise.content.audio_source) ||
+          '';
         var hasAudioSource = false;
         try {
           if (audioSource) {
@@ -256,14 +264,41 @@
         }
         let html = '';
 
+        var isB1Listening4 =
+          typeof AppState !== 'undefined' &&
+          AppState.currentLevel === 'B1' &&
+          AppState.currentSection === 'listening' &&
+          AppState.currentPart === 4;
+        var ctxBlock = '';
+        if (exercise.content && exercise.content.context) {
+          var ctxTrim = String(exercise.content.context).trim();
+          if (ctxTrim) {
+            ctxBlock =
+              '<aside class="listening-type1-context-strip" lang="en">' +
+              '<span class="listening-type1-context-strip-kicker">Interview</span>' +
+              '<p class="listening-type1-context-strip-text">' + nlToBrEscaped(ctxTrim) + '</p>' +
+              '</aside>';
+          }
+        }
+
         if (hasAudioSource) {
           var safeUrl = audioSource.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
           html += '<div class="listening-type1-audio-section">';
-          html += '<p><strong>Click play to start the listening test:</strong></p>';
-          html += '<audio controls controlsList="nodownload">';
+          if (isB1Listening4) {
+            html +=
+              '<p class="listening-type1-audio-lead"><strong>Listening</strong> — Play the recording when you are ready. ' +
+              'You can open the <strong>Transcript</strong> tab above to follow the interview while you answer.</p>';
+          } else {
+            html += '<p><strong>Click play to start the listening test:</strong></p>';
+          }
+          html += '<audio controls controlsList="nodownload" preload="metadata">';
           html += '<source src="' + safeUrl + '" type="audio/mpeg">';
           html += '</audio>';
           html += '</div>';
+        }
+
+        if (ctxBlock) {
+          html += ctxBlock;
         }
 
         if (extracts.length > 0) {
@@ -323,7 +358,8 @@
 
         const noteCreator = container.querySelector('#note-creator');
         const wrapper = document.createElement('div');
-        wrapper.className = 'listening-type1-questions-wrapper';
+        wrapper.className =
+          'listening-type1-questions-wrapper' + (isB1Listening4 ? ' listening-type1-b1-interview' : '');
         wrapper.innerHTML = html;
         if (noteCreator) {
           container.insertBefore(wrapper, noteCreator);

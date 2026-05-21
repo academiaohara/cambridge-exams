@@ -847,6 +847,74 @@
   text-align: justify;
 }
 
+.listening-transcript-context {
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 60%);
+  border: 1px solid #a7f3d0;
+}
+
+.listening-transcript-context-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #047857;
+  margin-bottom: 8px;
+}
+
+.listening-transcript-context-text {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--text-dark);
+  text-align: left;
+}
+
+.listening-transcript-main .transcript-extract-interview {
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+}
+
+.listening-transcript-main .transcript-turn-interviewer {
+  border-left: 4px solid #0284c7;
+  background: #f0f9ff;
+}
+
+.listening-transcript-main .transcript-turn-guest {
+  border-left: 4px solid #0d9488;
+  background: #f0fdfa;
+}
+
+.listening-transcript-main .transcript-turn-other {
+  border-left: 4px solid #94a3b8;
+}
+
+.listening-transcript-main .transcript-speaker-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.listening-transcript-main .transcript-turn-interviewer .transcript-speaker-label {
+  color: #0369a1;
+}
+
+.listening-transcript-main .transcript-turn-guest .transcript-speaker-label {
+  color: #0f766e;
+}
+
+.listening-transcript-main .transcript-extract-interview .transcript-text {
+  text-align: left;
+}
+
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .exercise-container {
     border-radius: 18px;
