@@ -1,271 +1,373 @@
 {
-    "title":  "Listening - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "type":  "picture-multiple-choice",
-    "time":  6,
+    "test_id":  13,
+    "title":  "B1 Listening Part 1 - Test 13",
+    "exam_part":  1,
+    "type":  "multiple-choice-image",
     "totalQuestions":  7,
-    "instructions":  "For each question, choose the correct picture (A, B or C).",
+    "instructions":  "For each question, listen to the short recording and choose the correct picture: A, B or C.",
     "questions":  [
                       {
                           "number":  1,
-                          "context":  "A conversation about holidays.",
-                          "question":  "Which picture matches the conversation?",
-                          "audio_script":  "I originally planned something different, but in the end I chose the option shown in picture A. It seemed more interesting and easier for everyone.",
+                          "context":  "You hear a phone message.",
+                          "voices":  {
+                                         "speaker":  "en-GB-LibbyNeural"
+                                     },
+                          "audio_script":  "Speaker: Hi, it's Ben. I'm calling about tomorrow's dentist appointment. I told you it was at ten, but that was my mistake. The dentist is seeing another patient then, and the room is not free after twelve. So [1]your appointment is at quarter to eleven[/1]. You don't need to bring your form because there are some in the classroom. If you are late, wait by the reception desk and I'll come down during the break. I know this is short notice, but it should still finish before lunch.",
                           "dialogue":  [
                                            {
-                                               "speaker":  "speaker1",
-                                               "text":  "I originally planned something different, but in the end I chose the option shown in picture A. It seemed more interesting and easier for everyone."
+                                               "speaker":  "speaker",
+                                               "text":  "Hi, it's Ben. I'm calling about tomorrow's dentist appointment. I told you it was at ten, but that was my mistake. The dentist is seeing another patient then, and the room is not free after twelve. So your appointment is at quarter to eleven. You don't need to bring your form because there are some in the classroom. If you are late, wait by the reception desk and I'll come down during the break. I know this is short notice, but it should still finish before lunch."
                                            }
                                        ],
-                          "voices":  {
-                                         "speaker1":  "en-GB-RyanNeural"
-                                     },
-                          "images":  [
-                                         {
-                                             "label":  "A",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_11a.jpg",
-                                             "description":  "family camping in mountains",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, family camping in mountains, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "B",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_11b.jpg",
-                                             "description":  "friends at a beach",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, friends at a beach, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "C",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_11c.jpg",
-                                             "description":  "tourists visiting a city",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, tourists visiting a city, flat educational drawing, minimal details, clean white background."
-                                         }
-                                     ],
+                          "question":  "What time should the listener arrive for the dentist appointment?",
+                          "options":  {
+                                          "A":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_1a.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, analogue clock with hands at quarter to eleven and no numbers, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "B":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_1b.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, analogue clock with hands at twelve o'clock and no numbers, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "C":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_1c.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, analogue clock with hands at ten o'clock and no numbers, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                }
+                                      },
                           "answer":  "A",
-                          "explanation":  "The speaker clearly refers to picture A."
+                          "explanation":  "The speaker says the appointment is at quarter to eleven."
                       },
                       {
                           "number":  2,
-                          "context":  "A conversation about shopping.",
-                          "question":  "Which picture matches the conversation?",
-                          "audio_script":  "I originally planned something different, but in the end I chose the option shown in picture A. It seemed more interesting and easier for everyone.",
+                          "context":  "You hear two people talking about travelling to the airport.",
+                          "voices":  {
+                                         "man":  "en-GB-RyanNeural",
+                                         "woman":  "en-GB-SoniaNeural"
+                                     },
+                          "audio_script":  "Man: How are you getting to the airport on Friday? || Woman: I was going to take a taxi, but it is much too expensive at that time. || Man: I can ask someone to drive us. || Woman: That's kind, but the train station is closed for repairs. I checked the timetable, and [1]the airport coach leaves from our street[/1]. || Man: Great. Does it leave near your house? || Woman: Yes, every twenty minutes. Let's take the one after lunch so we don't have to rush. I already have a travel card. That makes it cheaper for me.",
                           "dialogue":  [
                                            {
-                                               "speaker":  "speaker1",
-                                               "text":  "I originally planned something different, but in the end I chose the option shown in picture A. It seemed more interesting and easier for everyone."
+                                               "speaker":  "man",
+                                               "text":  "How are you getting to the airport on Friday?"
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "I was going to take a taxi, but it is much too expensive at that time."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "I can ask someone to drive us."
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "That's kind, but the train station is closed for repairs. I checked the timetable, and the airport coach leaves from our street."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "Great. Does it leave near your house?"
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "Yes, every twenty minutes. Let's take the one after lunch so we don't have to rush. I already have a travel card. That makes it cheaper for me."
                                            }
                                        ],
-                          "voices":  {
-                                         "speaker1":  "en-GB-RyanNeural"
-                                     },
-                          "images":  [
-                                         {
-                                             "label":  "A",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_12a.jpg",
-                                             "description":  "woman carrying shopping bags",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, woman carrying shopping bags, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "B",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_12b.jpg",
-                                             "description":  "man paying at a supermarket",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, man paying at a supermarket, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "C",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_12c.jpg",
-                                             "description":  "teenagers in a clothes shop",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, teenagers in a clothes shop, flat educational drawing, minimal details, clean white background."
-                                         }
-                                     ],
-                          "answer":  "A",
-                          "explanation":  "The speaker clearly refers to picture A."
+                          "question":  "How will they travel to the airport?",
+                          "options":  {
+                                          "A":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_2a.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, closed railway station platform, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "B":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_2b.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, taxi waiting outside a house, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "C":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_2c.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, coach bus waiting on a street, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                }
+                                      },
+                          "answer":  "C",
+                          "explanation":  "The woman says the airport coach leaves from their street."
                       },
                       {
                           "number":  3,
-                          "context":  "A conversation about music.",
-                          "question":  "Which picture matches the conversation?",
-                          "audio_script":  "I originally planned something different, but in the end I chose the option shown in picture B. It seemed more interesting and easier for everyone.",
+                          "context":  "You hear a customer talking to a shop assistant.",
+                          "voices":  {
+                                         "assistant":  "en-GB-NoahNeural",
+                                         "customer":  "en-GB-SoniaNeural"
+                                     },
+                          "audio_script":  "Assistant: Can I help you with those headphones? || Customer: Yes, I like the large ones, but they are too heavy. My old ones broke last week, so I need new ones today. || Assistant: We also have a cheaper plastic pair. || Customer: I want good sound. I just need something for listening on the bus. || Assistant: In that case, try these. || Customer: Thanks. [1]I'll buy the small wireless headphones[/1], if you have them. || Assistant: I do. You can sit here while I get them from the store room. || Assistant: That should make things easier.",
                           "dialogue":  [
                                            {
-                                               "speaker":  "speaker1",
-                                               "text":  "I originally planned something different, but in the end I chose the option shown in picture B. It seemed more interesting and easier for everyone."
+                                               "speaker":  "assistant",
+                                               "text":  "Can I help you with those headphones?"
+                                           },
+                                           {
+                                               "speaker":  "customer",
+                                               "text":  "Yes, I like the large ones, but they are too heavy. My old ones broke last week, so I need new ones today."
+                                           },
+                                           {
+                                               "speaker":  "assistant",
+                                               "text":  "We also have a cheaper plastic pair."
+                                           },
+                                           {
+                                               "speaker":  "customer",
+                                               "text":  "I want good sound. I just need something for listening on the bus."
+                                           },
+                                           {
+                                               "speaker":  "assistant",
+                                               "text":  "In that case, try these."
+                                           },
+                                           {
+                                               "speaker":  "customer",
+                                               "text":  "Thanks. I'll buy the small wireless headphones, if you have them."
+                                           },
+                                           {
+                                               "speaker":  "assistant",
+                                               "text":  "I do. You can sit here while I get them from the store room."
+                                           },
+                                           {
+                                               "speaker":  "assistant",
+                                               "text":  "That should make things easier."
                                            }
                                        ],
-                          "voices":  {
-                                         "speaker1":  "en-GB-RyanNeural"
-                                     },
-                          "images":  [
-                                         {
-                                             "label":  "A",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_13a.jpg",
-                                             "description":  "girl playing piano",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, girl playing piano, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "B",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_13b.jpg",
-                                             "description":  "boy listening to headphones",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, boy listening to headphones, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "C",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_13c.jpg",
-                                             "description":  "band performing on stage",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, band performing on stage, flat educational drawing, minimal details, clean white background."
-                                         }
-                                     ],
+                          "question":  "What does the customer decide to buy?",
+                          "options":  {
+                                          "A":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_3a.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, large heavy headphones, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "B":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_3b.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, small wireless headphones, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "C":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_3c.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, cheap plastic headphones, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                }
+                                      },
                           "answer":  "B",
-                          "explanation":  "The speaker clearly refers to picture B."
+                          "explanation":  "The customer says they will buy the small wireless headphones."
                       },
                       {
                           "number":  4,
-                          "context":  "A conversation about free time.",
-                          "question":  "Which picture matches the conversation?",
-                          "audio_script":  "I originally planned something different, but in the end I chose the option shown in picture A. It seemed more interesting and easier for everyone.",
+                          "context":  "You hear two people talking about what to take.",
+                          "voices":  {
+                                         "man":  "en-GB-RyanNeural",
+                                         "woman":  "en-GB-SoniaNeural"
+                                     },
+                          "audio_script":  "Man: Have you packed for the picnic? || Woman: Almost. I put in sandals and a thin top because the forecast was warm yesterday. || Man: It changed this morning. The radio said it may get cold while we sit by the lake. || Woman: Really? Then I should change something. || Man: I would. [1]Wear your boots and a warm jumper[/1]. || Woman: Good idea. I don't want to carry an umbrella all day, and the jumper will fit in my small bag. I'll pack it now before I forget. Thanks for warning me.",
                           "dialogue":  [
                                            {
-                                               "speaker":  "speaker1",
-                                               "text":  "I originally planned something different, but in the end I chose the option shown in picture A. It seemed more interesting and easier for everyone."
+                                               "speaker":  "man",
+                                               "text":  "Have you packed for the picnic?"
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "Almost. I put in sandals and a thin top because the forecast was warm yesterday."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "It changed this morning. The radio said it may get cold while we sit by the lake."
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "Really? Then I should change something."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "I would. Wear your boots and a warm jumper."
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "Good idea. I don't want to carry an umbrella all day, and the jumper will fit in my small bag. I'll pack it now before I forget. Thanks for warning me."
                                            }
                                        ],
-                          "voices":  {
-                                         "speaker1":  "en-GB-RyanNeural"
-                                     },
-                          "images":  [
-                                         {
-                                             "label":  "A",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_14a.jpg",
-                                             "description":  "teenagers watching a film",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, teenagers watching a film, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "B",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_14b.jpg",
-                                             "description":  "friends playing video games",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, friends playing video games, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "C",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_14c.jpg",
-                                             "description":  "people having picnic in park",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, people having picnic in park, flat educational drawing, minimal details, clean white background."
-                                         }
-                                     ],
-                          "answer":  "A",
-                          "explanation":  "The speaker clearly refers to picture A."
+                          "question":  "What should the woman take?",
+                          "options":  {
+                                          "A":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_4a.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, rain umbrella beside a bag, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "B":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_4b.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, boots and a warm jumper, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "C":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_4c.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, sandals and a thin top, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                }
+                                      },
+                          "answer":  "B",
+                          "explanation":  "The man tells the woman to wear boots and a warm jumper."
                       },
                       {
                           "number":  5,
-                          "context":  "A conversation about music.",
-                          "question":  "Which picture matches the conversation?",
-                          "audio_script":  "I originally planned something different, but in the end I chose the option shown in picture C. It seemed more interesting and easier for everyone.",
+                          "context":  "You hear two people in a café.",
+                          "voices":  {
+                                         "woman":  "en-GB-SoniaNeural",
+                                         "man":  "en-GB-RyanNeural"
+                                     },
+                          "audio_script":  "Woman: What are you ordering for breakfast? || Man: I wanted the pancakes, but the kitchen has run out of eggs. || Woman: The fruit bowl looks good. || Man: It does, but I need something hot before my exam. I think [1]I'll order the porridge with honey[/1]. || Woman: Nice choice. I'm having that too. || Man: Great. Could you save us a table near the window while I pay? The café is getting busy, and I don't want to sit outside. It's still cold today. || Man: That should make things easier. || Man: I did not want to decide at the last minute.",
                           "dialogue":  [
                                            {
-                                               "speaker":  "speaker1",
-                                               "text":  "I originally planned something different, but in the end I chose the option shown in picture C. It seemed more interesting and easier for everyone."
+                                               "speaker":  "woman",
+                                               "text":  "What are you ordering for breakfast?"
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "I wanted the pancakes, but the kitchen has run out of eggs."
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "The fruit bowl looks good."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "It does, but I need something hot before my exam. I think I'll order the porridge with honey."
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "Nice choice. I'm having that too."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "Great. Could you save us a table near the window while I pay? The café is getting busy, and I don't want to sit outside. It's still cold today."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "That should make things easier."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "I did not want to decide at the last minute."
                                            }
                                        ],
-                          "voices":  {
-                                         "speaker1":  "en-GB-RyanNeural"
-                                     },
-                          "images":  [
-                                         {
-                                             "label":  "A",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_15a.jpg",
-                                             "description":  "girl playing piano",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, girl playing piano, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "B",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_15b.jpg",
-                                             "description":  "boy listening to headphones",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, boy listening to headphones, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "C",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_15c.jpg",
-                                             "description":  "band performing on stage",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, band performing on stage, flat educational drawing, minimal details, clean white background."
-                                         }
-                                     ],
+                          "question":  "What will the man have?",
+                          "options":  {
+                                          "A":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_5a.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, stack of pancakes, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "B":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_5b.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, bowl of mixed fruit, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "C":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_5c.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, bowl of porridge with honey, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                }
+                                      },
                           "answer":  "C",
-                          "explanation":  "The speaker clearly refers to picture C."
+                          "explanation":  "The man says he will order the porridge with honey."
                       },
                       {
                           "number":  6,
-                          "context":  "A conversation about free time.",
-                          "question":  "Which picture matches the conversation?",
-                          "audio_script":  "I originally planned something different, but in the end I chose the option shown in picture A. It seemed more interesting and easier for everyone.",
+                          "context":  "You hear two people talking about a lost phone.",
+                          "voices":  {
+                                         "man":  "en-GB-RyanNeural",
+                                         "woman":  "en-GB-SoniaNeural"
+                                     },
+                          "audio_script":  "Man: Did you find your phone? || Woman: Not yet. I checked the library, because I was sure I had it there after studying. || Man: And what about the school office? You went there afterwards. || Woman: I asked, but nobody had seen it. Just now, a woman from the bakery phoned and said [1]my phone was left on a small table in the bakery[/1]. I'm going to collect it before the place closes. || Man: Good. You looked worried this morning. || Woman: I was. I need it for tomorrow, so that is a big relief.",
                           "dialogue":  [
                                            {
-                                               "speaker":  "speaker1",
-                                               "text":  "I originally planned something different, but in the end I chose the option shown in picture A. It seemed more interesting and easier for everyone."
+                                               "speaker":  "man",
+                                               "text":  "Did you find your phone?"
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "Not yet. I checked the library, because I was sure I had it there after studying."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "And what about the school office? You went there afterwards."
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "I asked, but nobody had seen it. Just now, a woman from the bakery phoned and said my phone was left on a small table in the bakery. I'm going to collect it before the place closes."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "Good. You looked worried this morning."
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "I was. I need it for tomorrow, so that is a big relief."
                                            }
                                        ],
-                          "voices":  {
-                                         "speaker1":  "en-GB-RyanNeural"
-                                     },
-                          "images":  [
-                                         {
-                                             "label":  "A",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_16a.jpg",
-                                             "description":  "teenagers watching a film",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, teenagers watching a film, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "B",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_16b.jpg",
-                                             "description":  "friends playing video games",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, friends playing video games, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "C",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_16c.jpg",
-                                             "description":  "people having picnic in park",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, people having picnic in park, flat educational drawing, minimal details, clean white background."
-                                         }
-                                     ],
-                          "answer":  "A",
-                          "explanation":  "The speaker clearly refers to picture A."
+                          "question":  "Where is the phone?",
+                          "options":  {
+                                          "A":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_6a.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, mobile phone on an office counter, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "B":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_6b.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, mobile phone on a small table in a bakery, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "C":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_6c.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, mobile phone on a library desk, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                }
+                                      },
+                          "answer":  "B",
+                          "explanation":  "The woman says a woman from the bakery found her phone on a small table there."
                       },
                       {
                           "number":  7,
-                          "context":  "A conversation about sports.",
-                          "question":  "Which picture matches the conversation?",
-                          "audio_script":  "I originally planned something different, but in the end I chose the option shown in picture C. It seemed more interesting and easier for everyone.",
+                          "context":  "You hear two friends making plans.",
+                          "voices":  {
+                                         "woman":  "en-GB-SoniaNeural",
+                                         "man":  "en-GB-RyanNeural"
+                                     },
+                          "audio_script":  "Woman: Are we still going to the cinema after lunch? || Man: I don't think so. The film we wanted is sold out. || Woman: We could go to the beach instead. || Man: Maybe, but the wind is too strong. There's a new climbing wall near the station, so [1]we can try indoor climbing this afternoon[/1]. || Woman: That sounds fine. Shall we meet outside the station? || Man: Yes, at four. Bring your student card, because they sometimes ask for it at the desk. The bus is quicker. || Man: That should make things easier.",
                           "dialogue":  [
                                            {
-                                               "speaker":  "speaker1",
-                                               "text":  "I originally planned something different, but in the end I chose the option shown in picture C. It seemed more interesting and easier for everyone."
+                                               "speaker":  "woman",
+                                               "text":  "Are we still going to the cinema after lunch?"
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "I don't think so. The film we wanted is sold out."
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "We could go to the beach instead."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "Maybe, but the wind is too strong. There's a new climbing wall near the station, so we can try indoor climbing this afternoon."
+                                           },
+                                           {
+                                               "speaker":  "woman",
+                                               "text":  "That sounds fine. Shall we meet outside the station?"
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "Yes, at four. Bring your student card, because they sometimes ask for it at the desk. The bus is quicker."
+                                           },
+                                           {
+                                               "speaker":  "man",
+                                               "text":  "That should make things easier."
                                            }
                                        ],
-                          "voices":  {
-                                         "speaker1":  "en-GB-RyanNeural"
-                                     },
-                          "images":  [
-                                         {
-                                             "label":  "A",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_17a.jpg",
-                                             "description":  "girl playing tennis",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, girl playing tennis, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "B",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_17b.jpg",
-                                             "description":  "boys playing football",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, boys playing football, flat educational drawing, minimal details, clean white background."
-                                         },
-                                         {
-                                             "label":  "C",
-                                             "url":  "https://b1-exams.b-cdn.net/test13_17c.jpg",
-                                             "description":  "person swimming in a pool",
-                                             "imagePrompt":  "Simple Cambridge exam illustration style, person swimming in a pool, flat educational drawing, minimal details, clean white background."
-                                         }
-                                     ],
-                          "answer":  "C",
-                          "explanation":  "The speaker clearly refers to picture C."
+                          "question":  "What are they going to do?",
+                          "options":  {
+                                          "A":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_7a.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, indoor climbing wall with ropes, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "B":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_7b.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, cinema seats facing a screen, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                },
+                                          "C":  {
+                                                    "image":  "https://b1-exams.b-cdn.net/test13_7c.jpg",
+                                                    "imagePrompt":  "Simple Cambridge exam illustration style, windy beach with waves, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
+                                                }
+                                      },
+                          "answer":  "A",
+                          "explanation":  "The man says they can try indoor climbing this afternoon."
                       }
                   ]
 }
