@@ -513,7 +513,71 @@
     mergeDescription(ex);
   }
 
-  function listeningNestedContent(ex) {
+  /**
+   * B1 Preliminary Listening Part 3 (PET): JSON uses type "gap-fill", prompts per gap,
+   * and script/audio on the exercise root. listeningFlat() alone leaves questions without
+   * `question` (ListeningType2 expects "(n) ..." gaps) and omits `content.audio_script`
+   * (transcript toggle never appears).
+   */
+  function isB1ListeningPart3GapFill(ex) {
+    var t = String(ex.type || '').toLowerCase();
+    if (t === 'gap-fill') return true;
+    if (Array.isArray(ex.note_sheet) && ex.note_sheet.length) return true;
+    var raw = ex.questions || [];
+    if (Array.isArray(raw) && raw.length) {
+      var first = raw[0];
+      if (first && typeof first === 'object' && first.prompt != null &&
+          String(first.prompt).trim() !== '' && !first.options) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function listeningPart3GapFill(ex) {
+    var raw = ex.questions || (ex.content && ex.content.questions) || [];
+    var qs = normalizeQuestionsArray(raw);
+    qs.forEach(function(q) {
+      var n = q.number;
+      var promptText = (q.prompt != null ? String(q.prompt) : '').trim();
+      if (!q.question && promptText) {
+        q.question = escapeHtml(sanitizeHtmlTypos(promptText)) + ' (' + n + ') ...';
+      } else if (q.question && typeof q.question === 'string') {
+        q.question = sanitizeHtmlTypos(q.question).replace(/_{3,}/g, '(' + n + ') ...');
+      }
+      if (Array.isArray(q.accepted_answers) && q.accepted_answers.length) {
+        var parts = [];
+        var primary = (q.correct != null ? String(q.correct).trim() : '');
+        if (primary) parts.push(primary);
+        q.accepted_answers.forEach(function(alt) {
+          var a = String(alt == null ? '' : alt).trim();
+          if (a && parts.indexOf(a) === -1) parts.push(a);
+        });
+        if (parts.length) q.correct = parts.join('/');
+      }
+    });
+    var base = (ex.content && typeof ex.content === 'object') ? Object.assign({}, ex.content) : {};
+    base.questions = qs;
+    if (ex.audio_script != null && ex.audio_script !== '' && base.audio_script == null) {
+      base.audio_script = ex.audio_script;
+    }
+    if (ex.audio_source != null && ex.audio_source !== '' && base.audio_source == null) {
+      base.audio_source = ex.audio_source;
+    }
+    if (Array.isArray(ex.note_sheet) && !base.note_sheet) {
+      base.note_sheet = ex.note_sheet;
+    }
+    if (ex.context != null && ex.context !== '' && base.context == null) {
+      base.context = ex.context;
+    }
+    if (ex.form_title != null && ex.form_title !== '' && base.form_title == null) {
+      base.form_title = ex.form_title;
+    }
+    ex.content = base;
+    mergeDescription(ex);
+  }
+
+  function listeningNestedContent(ex, part) {
     var inner = ex.content;
     if (!inner || typeof inner !== 'object') return;
     mergeDescription(ex);
@@ -521,7 +585,8 @@
       ex.content.audio_script = inner.audio_script;
     }
     var qs = normalizeQuestionsArray(inner.questions || []);
-    if (ex.part === 3) {
+    var p = parseInt(part, 10);
+    if (!isNaN(p) && p === 3) {
       qs.forEach(function(q) {
         var n = q.number;
         if (q.question && typeof q.question === 'string') {
@@ -642,8 +707,13 @@
   }
 
   function processListening(ex, part) {
+    var p = parseInt(part, 10);
+    if (!isNaN(p) && p === 3 && isB1ListeningPart3GapFill(ex)) {
+      listeningPart3GapFill(ex);
+      return;
+    }
     if (ex.content && ex.content.questions && Array.isArray(ex.content.questions)) {
-      listeningNestedContent(ex);
+      listeningNestedContent(ex, part);
       return;
     }
     listeningFlat(ex);
