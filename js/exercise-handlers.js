@@ -559,6 +559,12 @@
               });
             }
             // For single audio_script exercises (e.g. Part 3), all transcript extracts remain visible
+          } else if ((exercise.content.questions || []).some(function(q) { return q && q.audio_script; })) {
+            // Per-question scripts (e.g. B1 Listening Part 1): match renderListeningTranscript data-extract-id
+            var blockId = question.extractId != null ? question.extractId : qNum;
+            document.querySelectorAll('.transcript-extract[data-extract-id]').forEach(function(div) {
+              div.style.display = (String(div.getAttribute('data-extract-id')) === String(blockId)) ? '' : 'none';
+            });
           }
         }
       }
