@@ -1,174 +1,350 @@
 {
+    "test_number":  6,
+    "exam_part":  2,
     "title":  "Listening - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "short-dialogues-multiple-choice",
-    "time":  7,
+    "type":  "multiple-choice-text",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "context":  "A conversation about organising a birthday party.",
-                          "question":  "What does the woman suggest?",
-                          "audio_script":  "Woman: Are you still interested in organising a birthday party this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  8,
+    "extracts":  [
+                     {
+                         "id":  8,
+                         "context":  "You will hear two friends talking about a mobile phone.",
+                         "voices":  {
+                                        "man":  "en-GB-ThomasNeural",
+                                        "woman":  "en-GB-MaisieNeural"
+                                    },
+                         "audio_script":  "Man: Have you decided which phone to buy? || Woman: I liked the expensive one in the advert, but I don't need such a good camera. || Man: What about the cheaper model? || Woman: That's the one I'm considering. [8]It has enough memory for my music and photos, and the battery lasts longer than on my old phone[/8]. || Man: Sounds practical. || Woman: Exactly. I want something useful, not just fashionable. || Man: That sounds sensible. || Woman: Yes, I think it will make things much easier next time.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Have you decided which phone to buy?"
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "I liked the expensive one in the advert, but I don't need such a good camera."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "What about the cheaper model?"
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "That's the one I'm considering. It has enough memory for my music and photos, and the battery lasts longer than on my old phone."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Sounds practical."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Exactly. I want something useful, not just fashionable."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "That sounds sensible."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Yes, I think it will make things much easier next time."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  8,
+                                               "question":  "Why does the woman like the cheaper phone?",
+                                               "options":  {
+                                                               "A":  "It has the features she needs.",
+                                                               "B":  "It looks more fashionable.",
+                                                               "C":  "It has the best camera."
+                                                           },
+                                               "answer":  "A",
+                                               "explanation":  "She says it has enough memory and a better battery, so it has what she needs."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "Meeting earlier",
-                                          "B":  "Travelling by train",
-                                          "C":  "Buying tickets online"
-                                      },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the conversation clearly supports this idea."
-                      },
-                      {
-                          "number":  2,
-                          "context":  "A conversation about visiting a science museum.",
-                          "question":  "What does the man recommend?",
-                          "audio_script":  "Woman: Are you still interested in visiting a science museum this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+                                       ]
+                     },
+                     {
+                         "id":  9,
+                         "context":  "You will hear a woman telling a friend about a train journey.",
+                         "voices":  {
+                                        "man":  "en-GB-RyanNeural",
+                                        "woman":  "en-GB-SoniaNeural"
+                                    },
+                         "audio_script":  "Man: Was your train journey okay? || Woman: Not really. It left on time, and I found a seat, so that was fine. But then we stopped outside Reading for ages. || Man: Was there a problem with the weather? || Woman: No, [9]they said another train had broken down in front of us, so we couldn't move until the line was clear[/9]. || Man: How late were you? || Woman: Nearly an hour. || Man: I can see why. || Woman: Yes, it wasn't what I expected, but I learnt something useful.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Was your train journey okay?"
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Not really. It left on time, and I found a seat, so that was fine. But then we stopped outside Reading for ages."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Was there a problem with the weather?"
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "No, they said another train had broken down in front of us, so we couldn't move until the line was clear."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "How late were you?"
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Nearly an hour."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "I can see why."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Yes, it wasn't what I expected, but I learnt something useful."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  9,
+                                               "question":  "Why was the woman delayed?",
+                                               "options":  {
+                                                               "A":  "The weather was bad.",
+                                                               "B":  "She couldn't find a seat.",
+                                                               "C":  "There was a problem with another train."
+                                                           },
+                                               "answer":  "C",
+                                               "explanation":  "She says another train had broken down in front of them."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "Trying a different restaurant",
-                                          "B":  "Booking a table early",
-                                          "C":  "Inviting more friends"
-                                      },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the conversation clearly supports this idea."
-                      },
-                      {
-                          "number":  3,
-                          "context":  "A conversation about buying concert tickets.",
-                          "question":  "What does the man recommend?",
-                          "audio_script":  "Woman: Are you still interested in buying concert tickets this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+                                       ]
+                     },
+                     {
+                         "id":  10,
+                         "context":  "You will hear two people talking about a local swimming pool.",
+                         "voices":  {
+                                        "man":  "en-GB-NoahNeural",
+                                        "woman":  "en-GB-LibbyNeural"
+                                    },
+                         "audio_script":  "Woman: Have you been to the swimming pool since it reopened? || Man: Yes, yesterday. The new changing rooms are much cleaner, and the café looks nice. || Woman: Is the water warmer now? || Man: A little, but [10]I was disappointed that the pool still gets so crowded after school. I could hardly swim properly[/10]. || Woman: Maybe mornings are quieter. || Man: I might try that next time. || Woman: Good idea. || Man: I'll do that, and then I won't have to worry about it again.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Have you been to the swimming pool since it reopened?"
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Yes, yesterday. The new changing rooms are much cleaner, and the café looks nice."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Is the water warmer now?"
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "A little, but I was disappointed that the pool still gets so crowded after school. I could hardly swim properly."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Maybe mornings are quieter."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "I might try that next time."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Good idea."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "I'll do that, and then I won't have to worry about it again."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  10,
+                                               "question":  "What disappointed the man about the swimming pool?",
+                                               "options":  {
+                                                               "A":  "The water was too cold.",
+                                                               "B":  "There were too many people.",
+                                                               "C":  "The changing rooms were dirty."
+                                                           },
+                                               "answer":  "B",
+                                               "explanation":  "He says the pool was crowded and he could hardly swim properly."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "Trying a different restaurant",
-                                          "B":  "Booking a table early",
-                                          "C":  "Inviting more friends"
-                                      },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the conversation clearly supports this idea."
-                      },
-                      {
-                          "number":  4,
-                          "context":  "A conversation about taking driving lessons.",
-                          "question":  "Why is the girl excited?",
-                          "audio_script":  "Woman: Are you still interested in taking driving lessons this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+                                       ]
+                     },
+                     {
+                         "id":  11,
+                         "context":  "You will hear a woman telling a colleague about a conference.",
+                         "voices":  {
+                                        "man":  "en-GB-ThomasNeural",
+                                        "woman":  "en-GB-MaisieNeural"
+                                    },
+                         "audio_script":  "Man: How was the conference in Leeds? || Woman: Useful overall. The hotel wasn't special, but it was close to the station. || Man: Were the talks interesting? || Woman: Some were. [11]The best session was about helping customers online; I got several ideas we could use in our department[/11]. || Man: That's good. Did you meet many people? || Woman: A few, but networking wasn't really the main benefit for me. || Man: That makes sense. || Woman: Exactly, and I feel much happier about it now.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "How was the conference in Leeds?"
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Useful overall. The hotel wasn't special, but it was close to the station."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Were the talks interesting?"
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Some were. The best session was about helping customers online; I got several ideas we could use in our department."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "That's good. Did you meet many people?"
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "A few, but networking wasn't really the main benefit for me."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "That makes sense."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Exactly, and I feel much happier about it now."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  11,
+                                               "question":  "What did the woman find most useful at the conference?",
+                                               "options":  {
+                                                               "A":  "meeting new business contacts",
+                                                               "B":  "learning ideas for her work",
+                                                               "C":  "staying near the station"
+                                                           },
+                                               "answer":  "B",
+                                               "explanation":  "She says the best session gave her ideas they could use in her department."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "She passed an exam",
-                                          "B":  "She won a competition",
-                                          "C":  "She is going on holiday"
-                                      },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the conversation clearly supports this idea."
-                      },
-                      {
-                          "number":  5,
-                          "context":  "A conversation about learning to cook.",
-                          "question":  "What are the speakers mainly discussing?",
-                          "audio_script":  "Woman: Are you still interested in learning to cook this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+                                       ]
+                     },
+                     {
+                         "id":  12,
+                         "context":  "You will hear two friends talking about a book club.",
+                         "voices":  {
+                                        "man":  "en-GB-RyanNeural",
+                                        "woman":  "en-GB-SoniaNeural"
+                                    },
+                         "audio_script":  "Woman: Are you still going to the book club? || Man: Yes, although I nearly stopped going. The books are sometimes longer than I can manage. || Woman: Is the group friendly? || Man: Very. [12]That's why I keep going. Even when I haven't finished the book, the discussions are relaxed and people listen to each other[/12]. || Woman: That sounds nice. || Man: It is. I just need to read faster. || Woman: I'm sure that will help. || Man: I hope so. It's better to sort it out early.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Are you still going to the book club?"
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Yes, although I nearly stopped going. The books are sometimes longer than I can manage."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Is the group friendly?"
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Very. That's why I keep going. Even when I haven't finished the book, the discussions are relaxed and people listen to each other."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "That sounds nice."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "It is. I just need to read faster."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "I'm sure that will help."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "I hope so. It's better to sort it out early."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  12,
+                                               "question":  "Why does the man continue going to the book club?",
+                                               "options":  {
+                                                               "A":  "He enjoys the atmosphere.",
+                                                               "B":  "He likes reading long books.",
+                                                               "C":  "He wants to make new friends."
+                                                           },
+                                               "answer":  "A",
+                                               "explanation":  "He says the relaxed discussions and listening atmosphere are why he keeps going."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "A future event",
-                                          "B":  "A school project",
-                                          "C":  "A family problem"
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The correct answer is A because the conversation clearly supports this idea."
-                      },
-                      {
-                          "number":  6,
-                          "context":  "A conversation about planning a school trip.",
-                          "question":  "Why is the girl excited?",
-                          "audio_script":  "Woman: Are you still interested in planning a school trip this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+                                       ]
+                     },
+                     {
+                         "id":  13,
+                         "context":  "You will hear a girl talking about a school music performance.",
+                         "voices":  {
+                                        "boy":  "en-GB-OliverNeural",
+                                        "girl":  "en-GB-MaisieNeural"
+                                    },
+                         "audio_script":  "Boy: Are you nervous about playing in the concert? || Girl: A bit, but not as much as last year. || Boy: Have you practised enough? || Girl: Yes. [13]What worries me is that my parents are sitting in the front row, and I always make mistakes when I know they're watching closely[/13]. || Boy: They just want to support you. || Girl: I know, but I wish they'd sit further back. || Boy: That sounds fair. || Girl: Yes, and I think everyone will understand the situation.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "boy",
+                                              "text":  "Are you nervous about playing in the concert?"
+                                          },
+                                          {
+                                              "speaker":  "girl",
+                                              "text":  "A bit, but not as much as last year."
+                                          },
+                                          {
+                                              "speaker":  "boy",
+                                              "text":  "Have you practised enough?"
+                                          },
+                                          {
+                                              "speaker":  "girl",
+                                              "text":  "Yes. What worries me is that my parents are sitting in the front row, and I always make mistakes when I know they're watching closely."
+                                          },
+                                          {
+                                              "speaker":  "boy",
+                                              "text":  "They just want to support you."
+                                          },
+                                          {
+                                              "speaker":  "girl",
+                                              "text":  "I know, but I wish they'd sit further back."
+                                          },
+                                          {
+                                              "speaker":  "boy",
+                                              "text":  "That sounds fair."
+                                          },
+                                          {
+                                              "speaker":  "girl",
+                                              "text":  "Yes, and I think everyone will understand the situation."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  13,
+                                               "question":  "Why is the girl nervous?",
+                                               "options":  {
+                                                               "A":  "She has not practised enough.",
+                                                               "B":  "She performed badly last year.",
+                                                               "C":  "Her parents will be watching her."
+                                                           },
+                                               "answer":  "C",
+                                               "explanation":  "She says she worries because her parents will be sitting in the front row watching closely."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "She passed an exam",
-                                          "B":  "She won a competition",
-                                          "C":  "She is going on holiday"
-                                      },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the conversation clearly supports this idea."
-                      }
-                  ]
+                                       ]
+                     }
+                 ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%206.mp3"
 }

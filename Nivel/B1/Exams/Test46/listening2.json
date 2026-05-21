@@ -1,174 +1,236 @@
 {
+    "test_number":  46,
+    "exam_part":  2,
     "title":  "Listening - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "short-dialogues-multiple-choice",
-    "time":  7,
+    "type":  "multiple-choice-text",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "context":  "A conversation about buying concert tickets.",
-                          "question":  "Why is the speaker calling?",
-                          "audio_script":  "Woman: Are you still interested in buying concert tickets this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  8,
+    "extracts":  [
+                     {
+                         "id":  8,
+                         "context":  "You hear two friends discussing a camping trip.",
+                         "voices":  {
+                                        "man":  "en-GB-RyanNeural",
+                                        "woman":  "en-GB-SoniaNeural"
+                                    },
+                         "audio_script":  "Woman: Have you checked the campsite for next weekend? || Man: Yes. It has a shop and showers, but no kitchen area, so we'll need to cook outside. || Woman: I can bring my small stove. || Man: Good. [8]The website says we must arrive before six, because the gate is locked after that[/8]. If traffic is bad, we should leave earlier than planned. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Have you checked the campsite for next weekend?"
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Yes. It has a shop and showers, but no kitchen area, so we'll need to cook outside."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "I can bring my small stove."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Good. The website says we must arrive before six, because the gate is locked after that. If traffic is bad, we should leave earlier than planned. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  8,
+                                               "question":  "What do they need to remember?",
+                                               "options":  {
+                                                               "A":  "to arrive before the gate closes",
+                                                               "B":  "to book the showers",
+                                                               "C":  "to buy food at the campsite"
+                                                           },
+                                               "answer":  "A",
+                                               "explanation":  "The man says they must arrive before six because the gate is locked after that."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "To ask for information",
-                                          "B":  "To change some plans",
-                                          "C":  "To make a complaint"
-                                      },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the conversation clearly supports this idea."
-                      },
-                      {
-                          "number":  2,
-                          "context":  "A conversation about taking driving lessons.",
-                          "question":  "What are the speakers mainly discussing?",
-                          "audio_script":  "Woman: Are you still interested in taking driving lessons this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+                                       ]
+                     },
+                     {
+                         "id":  9,
+                         "context":  "You hear a woman talking about a new pair of glasses.",
+                         "voices":  {
+                                        "speaker":  "en-GB-OliviaNeural"
+                                    },
+                         "audio_script":  "Speaker: I collected my new glasses yesterday. The assistant said the red frames looked fashionable, but they were too bright for me. The black ones were comfortable, although they were almost the same as my old pair. || Speaker: [9]I chose the brown frames in the end because they suited my face and felt light[/9]. They cost a bit more, but I wear glasses every day. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "speaker",
+                                              "text":  "I collected my new glasses yesterday. The assistant said the red frames looked fashionable, but they were too bright for me. The black ones were comfortable, although they were almost the same as my old pair."
+                                          },
+                                          {
+                                              "speaker":  "speaker",
+                                              "text":  "I chose the brown frames in the end because they suited my face and felt light. They cost a bit more, but I wear glasses every day. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  9,
+                                               "question":  "Which glasses did the woman choose?",
+                                               "options":  {
+                                                               "A":  "the red frames",
+                                                               "B":  "the brown frames",
+                                                               "C":  "the black frames"
+                                                           },
+                                               "answer":  "B",
+                                               "explanation":  "She says she chose the brown frames because they suited her face and felt light."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "A future event",
-                                          "B":  "A school project",
-                                          "C":  "A family problem"
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The correct answer is A because the conversation clearly supports this idea."
-                      },
-                      {
-                          "number":  3,
-                          "context":  "A conversation about starting a photography course.",
-                          "question":  "Why is the speaker calling?",
-                          "audio_script":  "Woman: Are you still interested in starting a photography course this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+                                       ]
+                     },
+                     {
+                         "id":  10,
+                         "context":  "You hear two students talking about an art homework task.",
+                         "voices":  {
+                                        "boy":  "en-GB-OliverNeural",
+                                        "girl":  "en-GB-MaisieNeural"
+                                    },
+                         "audio_script":  "Boy: I thought the art homework was to paint a landscape, so I started one last night. || Girl: I nearly did that too, but I checked the school website. || Boy: Was I wrong? || Girl: A bit. [10]We have to draw an object from home using only pencil, and bring the object to class as well[/10]. The landscape task is for next week. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "boy",
+                                              "text":  "I thought the art homework was to paint a landscape, so I started one last night."
+                                          },
+                                          {
+                                              "speaker":  "girl",
+                                              "text":  "I nearly did that too, but I checked the school website."
+                                          },
+                                          {
+                                              "speaker":  "boy",
+                                              "text":  "Was I wrong?"
+                                          },
+                                          {
+                                              "speaker":  "girl",
+                                              "text":  "A bit. We have to draw an object from home using only pencil, and bring the object to class as well. The landscape task is for next week. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  10,
+                                               "question":  "What is the art homework?",
+                                               "options":  {
+                                                               "A":  "paint a landscape",
+                                                               "B":  "copy a picture from the website",
+                                                               "C":  "draw an object from home"
+                                                           },
+                                               "answer":  "C",
+                                               "explanation":  "The girl says they have to draw an object from home using only pencil and bring it to class."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "To ask for information",
-                                          "B":  "To change some plans",
-                                          "C":  "To make a complaint"
-                                      },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the conversation clearly supports this idea."
-                      },
-                      {
-                          "number":  4,
-                          "context":  "A conversation about joining a sports club.",
-                          "question":  "Why is the girl excited?",
-                          "audio_script":  "Woman: Are you still interested in joining a sports club this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+                                       ]
+                     },
+                     {
+                         "id":  11,
+                         "context":  "You hear two people talking about a hotel.",
+                         "voices":  {
+                                        "man":  "en-GB-NoahNeural",
+                                        "woman":  "en-GB-LibbyNeural"
+                                    },
+                         "audio_script":  "Man: How was the hotel by the coast? The photos looked amazing. || Woman: The view was lovely, and the room was clean. Breakfast was simple, but that was fine. || Man: So you'd recommend it? || Woman: Not to anyone without a car. [11]It said the beach was five minutes away, but that was by car, not on foot[/11]. Walking there took nearly half an hour. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "How was the hotel by the coast? The photos looked amazing."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "The view was lovely, and the room was clean. Breakfast was simple, but that was fine."
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "So you'd recommend it?"
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Not to anyone without a car. It said the beach was five minutes away, but that was by car, not on foot. Walking there took nearly half an hour. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  11,
+                                               "question":  "What was disappointing about the hotel?",
+                                               "options":  {
+                                                               "A":  "the room was dirty",
+                                                               "B":  "the beach was not as close as advertised",
+                                                               "C":  "the breakfast was poor"
+                                                           },
+                                               "answer":  "B",
+                                               "explanation":  "The hotel advertised the beach as five minutes away, but that was by car, and walking took much longer."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "She passed an exam",
-                                          "B":  "She won a competition",
-                                          "C":  "She is going on holiday"
-                                      },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the conversation clearly supports this idea."
-                      },
-                      {
-                          "number":  5,
-                          "context":  "A conversation about learning to cook.",
-                          "question":  "What does the woman suggest?",
-                          "audio_script":  "Woman: Are you still interested in learning to cook this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+                                       ]
+                     },
+                     {
+                         "id":  12,
+                         "context":  "You hear a man talking to a friend about a book club.",
+                         "voices":  {
+                                        "woman":  "en-GB-HollieNeural",
+                                        "man":  "en-GB-AlfieNeural"
+                                    },
+                         "audio_script":  "Woman: Are you enjoying the book club at the community centre? || Man: Yes, though the first book was difficult. I liked hearing what other people thought, even when I disagreed. || Woman: Will you keep going? || Man: Definitely. [12]Next month we're choosing a shorter book, so more people should finish it before the meeting[/12]. That will make the discussion better. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Are you enjoying the book club at the community centre?"
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Yes, though the first book was difficult. I liked hearing what other people thought, even when I disagreed."
+                                          },
+                                          {
+                                              "speaker":  "woman",
+                                              "text":  "Will you keep going?"
+                                          },
+                                          {
+                                              "speaker":  "man",
+                                              "text":  "Definitely. Next month we're choosing a shorter book, so more people should finish it before the meeting. That will make the discussion better. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  12,
+                                               "question":  "What change will the book club make next month?",
+                                               "options":  {
+                                                               "A":  "read a shorter book",
+                                                               "B":  "meet at a new place",
+                                                               "C":  "invite more people"
+                                                           },
+                                               "answer":  "A",
+                                               "explanation":  "The man says they are choosing a shorter book so more people will finish it."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "Meeting earlier",
-                                          "B":  "Travelling by train",
-                                          "C":  "Buying tickets online"
-                                      },
-                          "answer":  "C",
-                          "explanation":  "The correct answer is C because the conversation clearly supports this idea."
-                      },
-                      {
-                          "number":  6,
-                          "context":  "A conversation about learning to cook.",
-                          "question":  "What does the man recommend?",
-                          "audio_script":  "Woman: Are you still interested in learning to cook this weekend?\n\nMan: Yes, definitely. I checked the information online yesterday, but I realised we may need to change our original plans slightly.\n\nWoman: Really? I thought everything was already organised.\n\nMan: Most of it is, but I discovered that tickets are selling faster than expected. I think it would be better if we booked online tonight instead of waiting until Saturday.\n\nWoman: That sounds sensible. It would be disappointing if there were no places left when we arrived.\n\nMan: Exactly. Also, if we book now, we can choose better times and avoid long queues.\n\nWoman: Good idea. I’ll do it this evening.",
-                          "dialogue":  [
+                                       ]
+                     },
+                     {
+                         "id":  13,
+                         "context":  "You hear an announcement in a sports shop.",
+                         "voices":  {
+                                        "speaker":  "en-GB-ThomasNeural"
+                                    },
+                         "audio_script":  "Speaker: Good morning, shoppers. Today there is twenty percent off running shoes on the first floor. Football shirts are still full price until next weekend. || Speaker: [13]Customers who are here to collect repaired bicycles should go to the back door, where a member of staff will check your ticket[/13]. Please do not bring bicycles through the main shop area because it is very busy. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+                         "dialogue":  [
+                                          {
+                                              "speaker":  "speaker",
+                                              "text":  "Good morning, shoppers. Today there is twenty percent off running shoes on the first floor. Football shirts are still full price until next weekend."
+                                          },
+                                          {
+                                              "speaker":  "speaker",
+                                              "text":  "Customers who are here to collect repaired bicycles should go to the back door, where a member of staff will check your ticket. Please do not bring bicycles through the main shop area because it is very busy. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+                                          }
+                                      ],
+                         "questions":  [
                                            {
-                                               "speaker":  "woman",
-                                               "text":  "Are you still interested in this weekend plans?"
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but I think we should book online tonight."
+                                               "number":  13,
+                                               "question":  "Where should customers collect repaired bicycles?",
+                                               "options":  {
+                                                               "A":  "on the first floor",
+                                                               "B":  "at the back door",
+                                                               "C":  "in the main shop area"
+                                                           },
+                                               "answer":  "B",
+                                               "explanation":  "The announcement says customers collecting repaired bicycles should go to the back door."
                                            }
-                                       ],
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "options":  {
-                                          "A":  "Trying a different restaurant",
-                                          "B":  "Booking a table early",
-                                          "C":  "Inviting more friends"
-                                      },
-                          "answer":  "B",
-                          "explanation":  "The correct answer is B because the conversation clearly supports this idea."
-                      }
-                  ]
+                                       ]
+                     }
+                 ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2046.mp3"
 }
